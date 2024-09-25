@@ -2,7 +2,7 @@
 # Licensed under the Apache License, Version 2.0, see LICENSE for details.
 # SPDX-License-Identifier: Apache-2.0
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional
 
 from design.mubi import prim_mubi
 
@@ -83,10 +83,10 @@ class Field:
 
     @staticmethod
     def resval_from_raw(field_bits: Bits,
-                        bindings: Dict[str, int],
+                        bindings: dict[str, int],
                         raw_value: Any,
                         is_mubi: bool,
-                        where: str) -> Optional[Union[str, int]]:
+                        where: str) -> str | int | None:
         '''Calculate any specific resval for the field
 
         field_bits is an object giving the (indices of the) bits that make up
