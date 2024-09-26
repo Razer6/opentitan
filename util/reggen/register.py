@@ -100,9 +100,9 @@ class Register(RegBase):
                  name: str,
                  alias_target: Optional[str],
                  desc: str,
-                 async_name: Optional[str],
+                 async_name: str,
                  async_clk: Optional[ClockingItem],
-                 sync_name: Optional[str],
+                 sync_name: str,
                  sync_clk: Optional[ClockingItem],
                  hwext: bool,
                  hwqe: bool,
@@ -116,8 +116,8 @@ class Register(RegBase):
                  storage_err_alert: Optional[str],
                  writes_ignore_errors: bool):
         super().__init__(name, offset,
-                         async_name, async_clk, sync_name, sync_clk,
-                         alias_target)
+                         async_name, async_clk, sync_name, sync_clk)
+        self.alias_target = alias_target
         self.desc = desc
         self.hwext = hwext
         self.hwqe = hwqe

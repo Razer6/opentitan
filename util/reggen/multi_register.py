@@ -187,14 +187,21 @@ class MultiRegister(RegBase):
             for key, value in rd.items() if key in reg_allowed_keys
         }
 
-        # Parse the dictionary multiple times, passing in a value for
-        # "multireg_idx". Collect up the resulting parsed pseudo-registers into
-        # a pregs list.
-        pregs = [Register.from_raw(reg_width, offset, params, reg_rd, clocks,
-                                   is_alias, multireg_idx)
-                 for multireg_idx in range(count)]
+        reg = Register.from_raw(reg_width, offset, params, reg_rd, clocks,
+                                is_alias)
 
-        alias_target = None
+        name = check_name(rd['name'], 'name of multi-register')
+
+        super().__init__(name, offset,
+                         reg.async_name, reg.async_clk,
+                         reg.sync_name, reg.sync_clk)
+
+        self.reg = reg
+
+        self.cname = check_name(rd['cname'],
+                                f'cname field of multireg {self.reg.name}')
+
+        self.alias_target = None
         if is_alias:
             if 'alias_target' in rd:
                 alias_target = check_name(rd['alias_target'],
@@ -209,43 +216,26 @@ class MultiRegister(RegBase):
                                      f'multiregister {name} (this is not an '
                                      f'alias register block).')
 
-        cname = check_name(rd['cname'], f'cname field of multireg {name}')
-        regwen_multi = check_bool(rd.get('regwen_multi', False),
-                                  f'regwen_multi field of multireg {name}')
+        self.regwen_multi = check_bool(rd.get('regwen_multi', False),
+                                       f'regwen_multi in multireg {self.name}')
 
-        # Check whether every preg has just one field, and compute the maximum
-        # preg width. That maximum width only matters if single_field_per_preg
-        # is True, so we just measure the first field each time.
-        single_field_per_preg = True
-        preg_max_width = 0
-        for preg in pregs:
-            preg_max_width = max(preg_max_width, preg.fields[0].bits.msb + 1)
-            if len(preg.fields) != 1:
-                single_field_per_preg = False
-                break
+        default_compact = len(self.reg.fields) == 1 and not self.regwen_multi
+        self.compact = check_bool(rd.get('compact', default_compact),
+                                  f'compact field of multireg {self.name}')
+        if self.compact and len(self.reg.fields) > 1:
+            raise ValueError(f'Multireg {self.name} sets the compact flag '
+                             f'but has multiple fields.')
 
-        # Should the multi-register be compact? We expect it to be considered
-        # compact if both of:
-        #
-        #  - Each pseudo-register has just one field.
-        #
-        #  - The regwen_multi flag is false. (If not, we need a different
-        #    regwen and hence concrete register for each pseudo-register)
-        #
-        # The dictionary can override this to stop the multi-register being
-        # compact even though these two properties are both true, but we check
-        # in the other direction.
+        if self.regwen_multi and self.compact:
+            raise ValueError(f'Multireg {self.name} sets the compact flag '
+                             f'but has regwen_multi set.')
 
-        default_compact = single_field_per_preg and not regwen_multi
-        compact = check_bool(rd.get('compact', default_compact),
-                             f'compact field of multireg {name}')
-
-        if compact and not single_field_per_preg:
-            raise ValueError(f'Multireg {name} sets the compact flag '
-                             'but has multiple fields.')
-        if compact and regwen_multi:
-            raise ValueError(f'Multireg {name} sets the compact flag '
-                             'but has regwen_multi set.')
+        count_str = check_str(rd['count'],
+                              f'count field of multireg {self.name}')
+        self.count = params.expand(count_str,
+                                   'count field of multireg ' + self.name)
+        if self.count <= 0:
+            raise EmptyMultiRegException(self.reg.name, self.count)
 
         # Generate the registers that this multireg expands into. Here, a
         # "creg" is a "compacted register", which might contain multiple actual
