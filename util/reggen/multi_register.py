@@ -63,6 +63,39 @@ class MultiRegister(RegBase):
 
     Instance variables:
 
+      reg          Represents the underlying register itself
+
+      cname        The basename used for the concrete registers that make up
+                   the multiregister.
+
+      regwen_multi If this is true, each of the copies of the replicated
+                   register has its own regwen.
+
+      compact      If this is true, multiple copies of the replicated register
+                   might share a concrete register.
+
+      count        The number of copies of the replicated register.
+
+      regs         The concrete registers that make up the multiregister.
+                   These will each contain at least one copy of the replicated
+                   register.
+
+      dv_compact   If this is true then the concrete registers in the
+                   multi-register are all identical (either because there is
+                   only one concrete register or because the replicated copies
+                   of reg divide evenly into a whole number of concrete
+                   registers).
+    """
+
+    def __init__(self,
+                 offset: int,
+                 addrsep: int,
+                 reg_width: int,
+                 params: ReggenParams,
+                 raw: object,
+                 clocks: Clocking,
+                 is_alias: bool):
+
       pregs        The "pseudo-registers" that get represented by the
                    MultiRegister. These will be represented by concrete
                    registers in the design and each concrete register will
