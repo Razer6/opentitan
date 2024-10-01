@@ -364,12 +364,51 @@ class Field:
             n_bits += int(not hwext)
         return n_bits
 
-    def make_translated(self, delta: int) -> 'Field':
-        '''Return a copy of this field, translated by delta bits'''
-        return Field(self.name, self.alias_target, self.desc, self.tags,
-                     self.swaccess, self.hwaccess, self.hwqe,
-                     self.bits.make_translated(delta),
-                     self.resval, self.enum, self.mubi, self.auto_split)
+    def make_multi(self,
+                   min_reg_idx: int,
+                   max_reg_idx: int,
+                   cname: str,
+                   creg_idx: int,
+                   stripped: bool) -> List['Field']:
+        assert 0 <= min_reg_idx <= max_reg_idx
+
+        field_width = self.bits.msb + 1
+
+        desc = f'For {cname}{creg_idx}' if stripped else self.desc
+        enum = None if stripped else self.enum
+
+        ret = []
+        for reg_idx in range(min_reg_idx, max_reg_idx + 1):
+            name = f'{self.name}_{reg_idx}'
+            # In case this is an alias register, we need to make sure that
+            # the alias_target name is expanded as well.
+            alias_target = None
+            if self.alias_target is not None:
+                alias_target = f'{self.alias_target}_{reg_idx}'
+
+            bit_offset = field_width * (reg_idx - min_reg_idx)
+            bits = (self.bits if bit_offset == 0 else
+                    self.bits.make_translated(bit_offset))
+
+            ret.append(
+                Field(name, alias_target, desc, self.tags, self.swaccess,
+                      self.hwaccess, self.hwqe, bits, self.resval, enum,
+                      self.mubi, self.auto_split))
+
+        return ret
+
+    def make_suffixed(self, suffix: str, cname: str, creg_idx: int,
+                      stripped: bool) -> 'Field':
+        desc = f'For {cname}{creg_idx}' if stripped else self.desc
+        enum = None if stripped else self.enum
+
+        alias_target = None
+        if self.alias_target is not None:
+            alias_target = self.alias_target + suffix
+
+        return Field(self.name + suffix, alias_target, desc, self.tags,
+                     self.swaccess, self.hwaccess, self.hwqe, self.bits,
+                     self.resval, enum, self.mubi, self.auto_split)
 
     def _asdict(self) -> Dict[str, object]:
         rd = {

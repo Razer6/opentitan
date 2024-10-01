@@ -497,72 +497,33 @@ class Register(RegBase):
         If regwen is not None, this names a regwen register that should be used
         by the merged register. We check ensures that it has a non-None value
         if any element of regs has a regwen.
-
-        If field_desc_override is not None, it will be used instead of fields' desc
-        values.
-
-        If strip_field is True, we drop any values from field enum types.
         '''
-        assert regs
 
-        fields = []
-        bit_idx = 0
+        if compact:
+            # Compacting multiple registers into a single "compacted" register.
+            # This is only supported if we have exactly one field (checked at
+            # the call-site)
+            assert len(self.fields) == 1
+            new_fields = self.fields[0].make_multi(min_reg_idx, max_reg_idx,
+                                                   cname, creg_idx,
+                                                   strip_field)
+        else:
+            # No compacting going on, but we still choose to rename the fields
+            # to match the registers
+            assert creg_idx == min_reg_idx
+            new_fields = [
+                field.make_suffixed(f'_{creg_idx}', cname, creg_idx,
+                                    strip_field) for field in self.fields
+            ]
 
-        reg0 = regs[0][0]
-
-        # Check that the registers can be collected together (because they have
-        # compatible values for other instance variables). This is done with
-        # "assert" because if it fails then this is probably a programming
-        # error in reggen.
-        for reg, _ in regs[1:]:
-            assert reg.desc == reg0.desc
-            assert reg.async_name == reg0.async_name
-            assert reg.async_clk == reg0.async_clk
-            assert reg.sync_name == reg0.sync_name
-            assert reg.sync_clk == reg0.sync_clk
-            assert reg.hwext == reg0.hwext
-            assert reg.hwqe == reg0.hwqe
-            assert reg.hwre == reg0.hwre
-            assert reg.tags == reg0.tags
-            assert reg.shadowed == reg0.shadowed
-            assert reg.update_err_alert == reg0.update_err_alert
-            assert reg.storage_err_alert == reg0.storage_err_alert
-            assert reg.writes_ignore_errors == reg0.writes_ignore_errors
-
-        for reg, reg_idx in regs:
-            assert reg.regwen is None or regwen is not None
-
-            # We want to collect up all the fields from this input register,
-            # starting with an LSB of bit_idx
-            reg_bit0 = bit_idx
-            bit_idx += reg.fields[-1].bits.msb + 1
-
-            for field in reg.fields:
-                field_name_suff = f'_{reg_idx}'
-
-                # Translate the field to match the copy of the register that
-                # started at reg_bit0
-                field_copy = field.make_translated(reg_bit0)
-
-                # The generated field will need a name based on reg_idx (the
-                # index of the register copy that's being used). Similarly, we
-                # have to redirect any alias_target if there is one.
-                field_copy.name += field_name_suff
-                if field_copy.alias_target is not None:
-                    field_copy.alias_target += field_name_suff
-
-                # Apply field_desc_override (which allows the caller to
-                # simplify documentation for the field when there are lots of
-                # copies).
-                if field_desc_override is not None:
-                    field_copy.desc = field_desc_override
-
-                # Finally, strip out any associated enum type if that was
-                # requested.
-                if strip_field:
-                    field_copy.enum = None
-
-                fields.append(field_copy)
+        # Check that the replicated field will fit in the target register.
+        # The msb of the last copy should be less than reg_width.
+        if new_fields[-1].bits.msb >= reg_width:
+            raise ValueError(
+                f'Cannot replicate field {self.fields[0].name} to make '
+                f'copies {min_reg_idx}-{max_reg_idx}: the resulting '
+                f'msb is {new_fields[-1].bits.msb}, but the register '
+                f'width is just {reg_width}.')
 
         # Don't specify a reset value for the new register. Any reset value
         # defined for the original register will have propagated to its fields,
