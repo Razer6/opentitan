@@ -76,42 +76,6 @@ class MultiRegister(RegBase):
 
       count        The number of copies of the replicated register.
 
-      regs         The concrete registers that make up the multiregister.
-                   These will each contain at least one copy of the replicated
-                   register.
-
-      dv_compact   If this is true then the concrete registers in the
-                   multi-register are all identical (either because there is
-                   only one concrete register or because the replicated copies
-                   of reg divide evenly into a whole number of concrete
-                   registers).
-    """
-
-    def __init__(self,
-                 offset: int,
-                 addrsep: int,
-                 reg_width: int,
-                 params: ReggenParams,
-                 raw: object,
-                 clocks: Clocking,
-                 is_alias: bool):
-        """
-      pregs        The "pseudo-registers" that get represented by the
-                   MultiRegister. These will be represented by concrete
-                   registers in the design and each concrete register will
-                   contain one or more pseudo-registers.
-
-      cname        The basename used for the concrete registers that make up
-                   the multiregister.
-
-      regwen_multi If this is true, each of the copies of the replicated
-                   register has its own regwen.
-
-      compact      If this is true, multiple copies of the replicated register
-                   might share a concrete register.
-
-      count        The number of copies of the replicated register.
-
       cregs        The concrete registers that make up the multiregister.
                    These will each contain at least one copy of the replicated
                    register.
@@ -121,60 +85,29 @@ class MultiRegister(RegBase):
                    only one concrete register or because the replicated copies
                    of reg divide evenly into a whole number of concrete
                    registers).
-
-      needs_qe     This is true iff at least one of the pseudo-registers in the
-                   multi-register needs a q-enable signal.
     """
 
     def __init__(self,
                  name: str,
                  offset: int,
                  alias_target: Optional[str],
-                 pregs: List[Register],
+                 reg: Register,
                  cname: str,
                  regwen_multi: bool,
                  compact: bool,
                  dv_compact: bool,
+                 count: int,
                  cregs: List[Register]):
-
-        # There should be at least one preg and creg. This will be checked in
-        # the caller, so we can just assert it here.
-        assert pregs
-        assert cregs
-
-        # This only makes sense if all the pseudo-registers are "compatible".
-        # This means:
-        #
-        # - They should have the same associated clocks (async_name, async_clk,
-        #   sync_name, sync_clk). We expect that to be checked in the caller
-        #   (probably MultiRegister.from_raw), so can check it with just an
-        #   assertion here.
-        #
-        # - They should either all have homogeneous fields or none of them
-        #   should have them.
-        #
-        # While we iterate over the pseudo-registers, we can also compute
-        # needs_qe.
-        homogeneous = pregs[0].is_homogeneous()
-        needs_qe = False
-        for preg in pregs[1:]:
-            assert preg.async_name == pregs[0].async_name
-            assert preg.async_clk == pregs[0].async_clk
-            assert preg.sync_name == pregs[0].sync_name
-            assert preg.sync_clk == pregs[0].sync_clk
-            assert preg.is_homogeneous() == homogeneous
-            needs_qe |= preg.needs_qe()
-
         super().__init__(name, offset,
-                         pregs[0].async_name, pregs[0].async_clk,
-                         pregs[0].sync_name, pregs[0].sync_clk, alias_target)
-        self.pregs = pregs
+                         reg.async_name, reg.async_clk,
+                         reg.sync_name, reg.sync_clk, alias_target)
+        self.reg = reg
         self.cname = cname
         self.regwen_multi = regwen_multi
         self.compact = compact
         self.dv_compact = dv_compact
+        self.count = count
         self.cregs = cregs
-        self._needs_qe = needs_qe
 
     @staticmethod
     def from_raw(raw: object, reg_width: int, offset: int, addrsep: int,
@@ -220,7 +153,7 @@ class MultiRegister(RegBase):
             for key, value in rd.items() if key in reg_allowed_keys
         }
 
-        reg = Register.from_raw(reg_width, offset, params, reg_rd, clocks,
+        preg = Register.from_raw(reg_width, offset, params, reg_rd, clocks,
                                 is_alias)
 
         name = check_name(rd['name'], 'name of multi-register')
@@ -240,33 +173,25 @@ class MultiRegister(RegBase):
                                      f'multiregister {name} (this is not an '
                                      f'alias register block).')
 
-        super().__init__(name, offset,
-                         reg.async_name, reg.async_clk,
-                         reg.sync_name, reg.sync_clk, alias_target)
+        cname = check_name(rd['cname'], f'cname field of multireg {name}')
+        regwen_multi = check_bool(rd.get('regwen_multi', False),
+                                  f'regwen_multi field of multireg {name}')
 
-        self.reg = reg
+        default_compact = len(preg.fields) == 1 and not regwen_multi
+        compact = check_bool(rd.get('compact', default_compact),
+                             f'compact field of multireg {name}')
 
-        self.cname = check_name(rd['cname'],
-                                f'cname field of multireg {self.name}')
+        if compact:
+            if len(preg.fields) > 1:
+                raise ValueError(f'Multireg {name} sets the compact flag '
+                                 'but has multiple fields.')
+            if regwen_multi:
+                raise ValueError(f'Multireg {name} sets the compact flag '
+                                 'but has regwen_multi set.')
 
-        self.regwen_multi = check_bool(rd.get('regwen_multi', False),
-                                       f'regwen_multi in multireg {self.name}')
+        count_str = check_str(rd['count'], f'count field of multireg {name}')
+        count = params.expand(count_str, f'count field of multireg {name}')
 
-        default_compact = len(self.reg.fields) == 1 and not self.regwen_multi
-        self.compact = check_bool(rd.get('compact', default_compact),
-                                  f'compact field of multireg {self.name}')
-        if self.compact and len(self.reg.fields) > 1:
-            raise ValueError(f'Multireg {self.name} sets the compact flag '
-                             f'but has multiple fields.')
-
-        if self.regwen_multi and self.compact:
-            raise ValueError(f'Multireg {self.name} sets the compact flag '
-                             f'but has regwen_multi set.')
-
-        count_str = check_str(rd['count'],
-                              f'count field of multireg {self.name}')
-        self.count = params.expand(count_str,
-                                   'count field of multireg ' + self.name)
         if self.count <= 0:
             raise EmptyMultiRegException(self.reg.name, self.count)
 
@@ -274,8 +199,10 @@ class MultiRegister(RegBase):
         # "creg" is a "compacted register", which might contain multiple actual
         # registers.
         if compact:
-            assert preg_max_width <= reg_width
-            regs_per_creg = reg_width // preg_max_width
+            assert len(preg.fields) == 1
+            width_per_reg = preg.fields[0].bits.msb + 1
+            assert width_per_reg <= reg_width
+            regs_per_creg = reg_width // width_per_reg
         else:
             regs_per_creg = 1
 
@@ -286,43 +213,19 @@ class MultiRegister(RegBase):
             max_reg_idx = min(min_reg_idx + regs_per_creg, count) - 1
             creg_offset = offset + creg_idx * addrsep
 
-            pregs_for_creg = [(pregs[i], i)
-                              for i in range(min_reg_idx, max_reg_idx + 1)]
-            preg0 = pregs_for_creg[0][0]
-
-            creg_suff = f'_{creg_idx}' if creg_count > 1 else ''
-            alias_target = (alias_target + creg_suff
-                            if alias_target is not None else None)
-
-            if regwen_multi and preg0.regwen is not None and creg_count > 1:
-                merged_regwen = preg0.regwen + creg_suff  # type: Optional[str]
-            else:
-                merged_regwen = preg0.regwen
-
-            field_desc_override = None
-            strip_field = False
-            if creg_idx > 0:
-                field_desc_override = f'For {cname}{creg_idx}'
-                strip_field = True
-
-            creg = Register.collect_registers(creg_offset,
-                                              preg0.name + creg_suff,
-                                              pregs_for_creg,
-                                              alias_target,
-                                              merged_regwen,
-                                              field_desc_override,
-                                              strip_field)
-
-            # Check that we haven't overflowed the register width. This
-            # shouldn't happen (because of how we calculate regs_per_creg).
-            assert creg.fields[-1].bits.msb < reg_width
-
+            creg = preg.make_multi(reg_width,
+                                   creg_offset, creg_idx, creg_count,
+                                   regwen_multi, compact,
+                                   min_reg_idx, max_reg_idx, cname)
             cregs.append(creg)
 
         # dv_compact is true if the multireg can be equally divided, and we can
         # pack them as an array
-        self.dv_compact = (self.count < regs_per_creg or
-                           (self.count % regs_per_creg) == 0)
+        dv_compact = (count < regs_per_creg or (count % regs_per_creg) == 0)
+
+        return MultiRegister(name, offset, alias_target,
+                             preg, cname, regwen_multi,
+                             compact, dv_compact, count, cregs)
 
     def next_offset(self, addrsep: int) -> int:
         return self.offset + len(self.cregs) * addrsep

@@ -284,8 +284,9 @@ class RegBlock:
 
         try:
             mr = MultiRegister.from_raw(body,
-                                        self._reg_width, self.offset, self._addrsep,
-                                        self._params, clocks, is_alias)
+                                        self._reg_width, self.offset,
+                                        self._addrsep, self._params,
+                                        clocks, is_alias)
         except EmptyMultiRegException:
             return
 
