@@ -494,10 +494,9 @@ class Register(RegBase):
         If alias_target is not None, the merged register will be an alias
         register that points at the named register.
 
-        If regwen is not None, this names a regwen register that should be used
-        by the merged register. We check ensures that it has a non-None value
-        if any element of regs has a regwen.
         '''
+        strip_field = creg_idx > 0
+        desc_override = f'For {cname}{creg_idx}' if creg_idx > 0 else None
 
         if compact:
             # Compacting multiple registers into a single "compacted" register.
@@ -509,20 +508,21 @@ class Register(RegBase):
             # the field description slightly so that it just says which
             # register it is used in.
             field = self.fields[0]
-            field_desc = (f'For {cname}{creg_idx}'
-                          if creg_idx > 0 else field.desc)
 
             num_copies = max_reg_idx - min_reg_idx + 1
             new_fields = self.fields[0].replicate(min_reg_idx, num_copies,
-                                                  field_desc, strip_field)
+                                                  desc_override or field.desc,
+                                                  strip_field)
         else:
             # No compacting going on, but we still choose to rename the fields
             # to match the registers
             assert creg_idx == min_reg_idx
-            new_fields = [
-                field.make_suffixed(f'_{creg_idx}', cname, creg_idx,
-                                    strip_field) for field in self.fields
-            ]
+
+            new_fields = []
+            for field in self.fields:
+                new_fields += field.replicate(creg_idx, 1,
+                                              desc_override or field.desc,
+                                              strip_field)
 
         # Check that the replicated field will fit in the target register.
         # The msb of the last copy should be less than reg_width.
