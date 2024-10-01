@@ -95,7 +95,7 @@ class MultiRegister(RegBase):
                  raw: object,
                  clocks: Clocking,
                  is_alias: bool):
-
+        """
       pregs        The "pseudo-registers" that get represented by the
                    MultiRegister. These will be represented by concrete
                    registers in the design and each concrete register will
@@ -321,11 +321,8 @@ class MultiRegister(RegBase):
 
         # dv_compact is true if the multireg can be equally divided, and we can
         # pack them as an array
-        dv_compact = (count < regs_per_creg or (count % regs_per_creg) == 0)
-
-        return MultiRegister(name, offset, alias_target,
-                             pregs, cname, regwen_multi,
-                             compact, dv_compact, cregs)
+        self.dv_compact = (self.count < regs_per_creg or
+                           (self.count % regs_per_creg) == 0)
 
     def next_offset(self, addrsep: int) -> int:
         return self.offset + len(self.cregs) * addrsep
