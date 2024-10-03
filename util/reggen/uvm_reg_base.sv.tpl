@@ -16,7 +16,7 @@
     inst_regs = {} # type: Dict[inst_name:Register]
     if isinstance(r, MultiRegister):
       if r.dv_compact:
-        inst_base = r.reg.name.lower()
+        inst_base = r.pregs[0].name.lower()
         for idx, reg in enumerate(r.cregs):
           inst_name = f'{inst_base}[{idx}]'
           inst_regs[inst_name] = reg
@@ -88,7 +88,7 @@ ${make_ral_pkg_window_class(dv_base_names.mem, esc_if_name, window)}
       count = 0
       if isinstance(r, MultiRegister):
         if r.dv_compact:
-          regs = [r.reg]
+          regs = [r.pregs[0]]
           count = len(r.cregs)
         else:
           regs = r.cregs
@@ -311,8 +311,8 @@ reg_block_path, reg, mr, reg_idx)">\
       fields = mr.pregs[0].fields
     else:
       fields = mr.cregs[reg_idx].fields
-      compact_field_inst_name = mr.reg.fields[0].name.lower()
-      compact_alias_field_inst_name = mr.reg.fields[0].alias_target
+      compact_field_inst_name = mr.pregs[0].fields[0].name.lower()
+      compact_alias_field_inst_name = mr.pregs[0].fields[0].alias_target
       if mr.dv_compact:
         # The dv_compact flag means that the fields of the multi-reg divide equally into registers.
         # In this case, there's an array of registers and make_ral_pkg_reg_class() gets called once

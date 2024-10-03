@@ -63,7 +63,10 @@ class MultiRegister(RegBase):
 
     Instance variables:
 
-      reg          Represents the underlying register itself
+      pregs        The "pseudo-registers" that get represented by the
+                   MultiRegister. These will be represented by concrete
+                   registers in the design and each concrete register will
+                   contain one or more pseudo-registers.
 
       cname        The basename used for the concrete registers that make up
                    the multiregister.
@@ -85,29 +88,60 @@ class MultiRegister(RegBase):
                    only one concrete register or because the replicated copies
                    of reg divide evenly into a whole number of concrete
                    registers).
+
+      needs_qe     This is true iff at least one of the pseudo-registers in the
+                   multi-register needs a q-enable signal.
     """
 
     def __init__(self,
                  name: str,
                  offset: int,
                  alias_target: Optional[str],
-                 reg: Register,
+                 pregs: List[Register],
                  cname: str,
                  regwen_multi: bool,
                  compact: bool,
                  dv_compact: bool,
-                 count: int,
                  cregs: List[Register]):
+
+        # There should be at least one preg and creg. This will be checked in
+        # the caller, so we can just assert it here.
+        assert pregs
+        assert cregs
+
+        # This only makes sense if all the pseudo-registers are "compatible".
+        # This means:
+        #
+        # - They should have the same associated clocks (async_name, async_clk,
+        #   sync_name, sync_clk). We expect that to be checked in the caller
+        #   (probably MultiRegister.from_raw), so can check it with just an
+        #   assertion here.
+        #
+        # - They should either all have homogeneous fields or none of them
+        #   should have them.
+        #
+        # While we iterate over the pseudo-registers, we can also compute
+        # needs_qe.
+        homogeneous = pregs[0].is_homogeneous()
+        needs_qe = False
+        for preg in pregs[1:]:
+            assert preg.async_name == pregs[0].async_name
+            assert preg.async_clk == pregs[0].async_clk
+            assert preg.sync_name == pregs[0].sync_name
+            assert preg.sync_clk == pregs[0].sync_clk
+            assert preg.is_homogeneous() == homogeneous
+            needs_qe |= preg.needs_qe()
+
         super().__init__(name, offset,
-                         reg.async_name, reg.async_clk,
-                         reg.sync_name, reg.sync_clk, alias_target)
-        self.reg = reg
+                         pregs[0].async_name, pregs[0].async_clk,
+                         pregs[0].sync_name, pregs[0].sync_clk, alias_target)
+        self.pregs = pregs
         self.cname = cname
         self.regwen_multi = regwen_multi
         self.compact = compact
         self.dv_compact = dv_compact
-        self.count = count
         self.cregs = cregs
+        self._needs_qe = needs_qe
 
     @staticmethod
     def from_raw(raw: object, reg_width: int, offset: int, addrsep: int,
@@ -223,9 +257,14 @@ class MultiRegister(RegBase):
         # pack them as an array
         dv_compact = (count < regs_per_creg or (count % regs_per_creg) == 0)
 
+        # This is a temporary construction of the pseudo-registers: eventually
+        # they might differ! But replicating preg here allows us to the code
+        # downstream to handle them being different.
+        pregs = [preg] * count
+
         return MultiRegister(name, offset, alias_target,
-                             preg, cname, regwen_multi,
-                             compact, dv_compact, count, cregs)
+                             pregs, cname, regwen_multi,
+                             compact, dv_compact, cregs)
 
     def next_offset(self, addrsep: int) -> int:
         return self.offset + len(self.cregs) * addrsep
