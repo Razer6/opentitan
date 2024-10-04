@@ -216,7 +216,7 @@ class Field:
                  shadowed: bool,
                  is_alias: bool,
                  raw: object,
-                 bindings: Dict[str, int]) -> 'Field':
+                 bindings: dict[str, int]) -> 'Field':
         where = f'field {field_idx} of {reg_name} register'
         rd = check_keys(raw, where, list(REQUIRED_FIELDS.keys()),
                         list(OPTIONAL_FIELDS.keys()))
