@@ -31,6 +31,15 @@ Have a look at [CONTRIBUTING](CONTRIBUTING.md) and our [documentation on
 project organization and processes](./doc/project_governance/README.md)
 for guidelines on how to contribute code to this repository.
 
+### Cloning instructions.
+  ```shell
+  # clone this project
+  git clone -b rivos/ga0 git@gitlab.ba.rivosinc.com:rv/si/ext/opentitan-integrated.git
+  cd opentitan-integrated
+  # Install pre-commit and commit-msg hooks for pre-commit tool
+  pre-commit install
+  ```
+
 ## Licensing
 
 Unless otherwise noted, everything in this repository is covered by the Apache
