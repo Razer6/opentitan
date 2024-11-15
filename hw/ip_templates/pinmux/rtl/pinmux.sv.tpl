@@ -370,6 +370,10 @@ module pinmux
   end
 % endif
 
+  // Local versions of the input signals
+  logic [NMioPads-1:0] mio_out, mio_oe, mio_in;
+  logic [NDioPads-1:0] dio_out, dio_oe, dio_in;
+
 % if enable_strap_sampling:
 
   //////////////////////////
@@ -409,10 +413,6 @@ module pinmux
     assign unused_strap_en_override = strap_en_override_i;
     assign strap_en = strap_en_i;
   end
-
-  // Local versions of the input signals
-  logic [NMioPads-1:0] mio_out, mio_oe, mio_in;
-  logic [NDioPads-1:0] dio_out, dio_oe, dio_in;
 
   // This module contains the strap sampling and JTAG mux.
   // Affected inputs are intercepted/tapped before they go to the pinmux
