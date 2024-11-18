@@ -374,10 +374,6 @@ module pinmux
   logic [NMioPads-1:0] mio_out, mio_oe, mio_in;
   logic [NDioPads-1:0] dio_out, dio_oe, dio_in;
 
-  // Local versions of the input signals
-  logic [NMioPads-1:0] mio_out, mio_oe, mio_in;
-  logic [NDioPads-1:0] dio_out, dio_oe, dio_in;
-
 % if enable_strap_sampling:
 
   //////////////////////////
