@@ -69,5 +69,11 @@
       type: "bool"
       default: "1"
     }
+    {
+      name: "use_rivos_config"
+      desc: "Set to true to use the Rivos internal pinmux configuration"
+      type: "bool"
+      default: "false"
+    }
   ]
 }

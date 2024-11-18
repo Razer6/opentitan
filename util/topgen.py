@@ -326,7 +326,8 @@ def generate_pinmux(top: Dict[str, object], out_path: Path) -> None:
         "n_dio_periph_in": n_dio_periph_in,
         "n_dio_periph_out": n_dio_periph_out,
         "enable_usb_wakeup": pinmux['enable_usb_wakeup'],
-        "enable_strap_sampling": pinmux['enable_strap_sampling']
+        "enable_strap_sampling": pinmux['enable_strap_sampling'],
+        "use_rivos_config": pinmux.get('use_rivos_config', False)
     }
 
     ipgen_render("pinmux", topname, params, out_path)

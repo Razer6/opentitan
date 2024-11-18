@@ -38,6 +38,24 @@ package prim_pad_wrapper_pkg;
     logic invert;                          // Input/output inversion.
   } pad_attr_t;
 
+  // Synopsys TSMC3FFE 1.8V Fail-safe GPIO
+  typedef struct packed {
+    logic [2:0] drv;                    // Drive strength (000: weakest, 111: strongest).
+    logic smten;                        // Schmitt trigger enable.
+    logic pden;                         // Pull-down enable.
+    logic puen;                         // Pull-up enable
+  } pad_snps_attr_t;
+
+  // Synopsys TSMC3FFE 1.8V I3C GPIO
+  typedef struct packed {
+    logic rinten;                       // enable strong pull-up in pad cell
+    logic i2cen;                        // enable I2C mode, open-drain, not-push-pull driver 
+    logic dlyen;                        // enable 7ns delay on input receiver
+    logic filten;                       // 50ns glitch filtre enable
+    logic pden;                         // Weak pull-down enable.
+    logic puen;                         // Weak pull-up enable
+  } pad_snps_i3c_attr_t;
+
   parameter int AttrDw = $bits(pad_attr_t);
 
   // Power OK signals (library dependent)

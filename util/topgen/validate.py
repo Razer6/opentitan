@@ -84,6 +84,7 @@ pinmux_optional = {
         'd', 'Number of bits in wakeup detector counters'
     ],
     'signals': ['l', 'List of Dedicated IOs.'],
+    'use_rivos_config': ['pb', 'Use Rivos internal pinmux config']
 }
 pinmux_added = {
     'ios': ['l', 'Full list of IO'],

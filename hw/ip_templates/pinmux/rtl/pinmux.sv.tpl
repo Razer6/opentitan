@@ -100,12 +100,20 @@ module pinmux
   output logic [NDioPads-1:0]      dio_to_periph_o,
   // Pad side
   // MIOs
+% if use_rivos_config:
+  output pad_snps_attr_t                  [NMioPads-1:0] mio_attr_o,
+% else:
   output prim_pad_wrapper_pkg::pad_attr_t [NMioPads-1:0] mio_attr_o,
+% endif
   output logic                            [NMioPads-1:0] mio_out_o,
   output logic                            [NMioPads-1:0] mio_oe_o,
   input                                   [NMioPads-1:0] mio_in_i,
   // DIOs
+% if use_rivos_config:
+  output pad_snps_attr_t                  [NDioPads-1:0] dio_attr_o,
+% else:
   output prim_pad_wrapper_pkg::pad_attr_t [NDioPads-1:0] dio_attr_o,
+% endif
   output logic                            [NDioPads-1:0] dio_out_o,
   output logic                            [NDioPads-1:0] dio_oe_o,
   input                                   [NDioPads-1:0] dio_in_i
@@ -161,12 +169,20 @@ module pinmux
   // Pad attribute registers //
   /////////////////////////////
 
+% if use_rivos_config:
+  prim_pad_wrapper_pkg::pad_snps_attr_t [NDioPads-1:0] dio_pad_attr_q;
+  prim_pad_wrapper_pkg::pad_snps_attr_t [NMioPads-1:0] mio_pad_attr_q;
+% else:
   prim_pad_wrapper_pkg::pad_attr_t [NDioPads-1:0] dio_pad_attr_q;
   prim_pad_wrapper_pkg::pad_attr_t [NMioPads-1:0] mio_pad_attr_q;
+% endif
 
   always_ff @(posedge clk_i or negedge rst_ni) begin : p_regs
     if (!rst_ni) begin
       dio_pad_attr_q <= '0;
+    % if use_rivos_config:
+      mio_pad_attr_q <= '0;
+    % else:
       for (int kk = 0; kk < NMioPads; kk++) begin
         if (kk == TargetCfg.tap_strap0_idx) begin
           // TAP strap 0 is sampled after reset (and only once for life cycle states that are not
@@ -178,7 +194,40 @@ module pinmux
           mio_pad_attr_q[kk] <= '0;
         end
       end
+    % endif
     end else begin
+    % if use_rivos_config:
+      // dedicated generic GPIO pads
+      for (int kk = 0; kk < NDioPads; kk++) begin
+        if (reg2hw.dio_pad_attr[kk].drv.qe) begin
+          dio_pad_attr_q[kk].drv    <= reg2hw.dio_pad_attr[kk].drv.q;
+        end
+        if (reg2hw.dio_pad_attr[kk].smten.qe) begin
+          dio_pad_attr_q[kk].smten  <= reg2hw.dio_pad_attr[kk].smten.q;
+        end
+        if (reg2hw.dio_pad_attr[kk].pden.qe) begin
+          dio_pad_attr_q[kk].pden   <= reg2hw.dio_pad_attr[kk].pden.q;
+        end
+        if (reg2hw.dio_pad_attr[kk].puen.qe) begin
+          dio_pad_attr_q[kk].puen   <= reg2hw.dio_pad_attr[kk].puen.q;
+        end
+      end
+      // muxed pads
+      for (int kk = 0; kk < NMioPads; kk++) begin
+        if (reg2hw.mio_pad_attr[kk].drv.qe) begin
+          mio_pad_attr_q[kk].drv    <= reg2hw.mio_pad_attr[kk].drv.q;
+        end
+        if (reg2hw.mio_pad_attr[kk].smten.qe) begin
+          mio_pad_attr_q[kk].smten  <= reg2hw.mio_pad_attr[kk].smten.q;
+        end
+        if (reg2hw.mio_pad_attr[kk].pden.qe) begin
+          mio_pad_attr_q[kk].pden   <= reg2hw.mio_pad_attr[kk].pden.q;
+        end
+        if (reg2hw.mio_pad_attr[kk].puen.qe) begin
+          mio_pad_attr_q[kk].puen   <= reg2hw.mio_pad_attr[kk].puen.q;
+        end
+      end
+    % else:
       // dedicated pads
       for (int kk = 0; kk < NDioPads; kk++) begin
         if (reg2hw.dio_pad_attr[kk].drive_strength.qe) begin
@@ -245,6 +294,7 @@ module pinmux
           mio_pad_attr_q[kk].invert         <= reg2hw.mio_pad_attr[kk].invert.q;
         end
       end
+    % endif
     end
   end
 
@@ -252,6 +302,25 @@ module pinmux
   // Connect attributes //
   ////////////////////////
 
+% if use_rivos_config:
+  pad_snps_attr_t [NDioPads-1:0] dio_attr;
+  for (genvar k = 0; k < NDioPads; k++) begin : gen_dio_attr
+    assign dio_attr[k]                      = dio_pad_attr_q[k];
+    assign hw2reg.dio_pad_attr[k].drv.d     = dio_attr[k].drv;
+    assign hw2reg.dio_pad_attr[k].smten.d   = dio_attr[k].smten;
+    assign hw2reg.dio_pad_attr[k].pden.d    = dio_attr[k].pden;
+    assign hw2reg.dio_pad_attr[k].puen.d    = dio_attr[k].puen;
+  end
+
+  pad_snps_attr_t [NMioPads-1:0] mio_attr;
+  for (genvar k = 0; k < NMioPads; k++) begin : gen_mio_attr
+    assign mio_attr[k]                      = mio_pad_attr_q[k];
+    assign hw2reg.mio_pad_attr[k].drv.d     = mio_attr[k].drv;
+    assign hw2reg.mio_pad_attr[k].smten.d   = mio_attr[k].smten;
+    assign hw2reg.mio_pad_attr[k].pden.d    = mio_attr[k].pden;
+    assign hw2reg.mio_pad_attr[k].puen.d    = mio_attr[k].puen;
+  end
+% else:
   pad_attr_t [NDioPads-1:0] dio_attr;
   for (genvar k = 0; k < NDioPads; k++) begin : gen_dio_attr
     pad_attr_t warl_mask;
@@ -297,6 +366,7 @@ module pinmux
     assign hw2reg.mio_pad_attr[k].virtual_od_en.d  = mio_attr[k].virt_od_en;
     assign hw2reg.mio_pad_attr[k].invert.d         = mio_attr[k].invert;
   end
+% endif
 
 % if enable_strap_sampling:
 

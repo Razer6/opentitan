@@ -544,6 +544,45 @@
                   ]
                 }
     },
+  % if use_rivos_config:
+    { multireg: { name:     "MIO_PAD_ATTR",
+                  desc:     '''
+                            Muxed pad control of generic GPIO pad.
+                            ''',
+                  count:        "NMioPads",
+                  compact:      "false",
+                  swaccess:     "rw",
+                  hwaccess:     "hrw",
+                  hwext:        "true",
+                  hwqe:         "true",
+                  regwen:       "MIO_PAD_ATTR_REGWEN",
+                  regwen_multi: "true",
+                  cname:        "MIO_PAD",
+                  resval:       0
+                  fields: [
+                    { bits: "0",
+                      name: "PUEN",
+                      desc: "Active high pull-up enable."
+                    },
+                    { bits: "1",
+                      name: "PDEN",
+                      desc: "Active high pull-down enable."
+                    },
+                    { bits: "2",
+                      name: "SMTEN",
+                      desc: "Active high Schmitt trigger enable."
+                    },
+                    { bits: "6:4",
+                      name: "DRV",
+                      desc: "Programmable drive strength (0x0: weakest, 0x7: strongest)"
+                    }
+                  ],
+                  // these CSRs have hardware side effects since they drive the
+                  // pad attributes, and hence no random data should be written to them.
+                  tags: ["excl:CsrAllTests:CsrExclWrite"]
+                }
+    },
+  % else:
     { multireg: { name:     "MIO_PAD_ATTR",
                   desc:     '''
                             Muxed pad attributes.
@@ -624,6 +663,7 @@
                   tags: ["excl:CsrAllTests:CsrExclAll"]
                 }
     },
+    % endif
 
 //////////////////////////
 // DIO PAD attributes   //
@@ -648,6 +688,45 @@
                   ]
                 }
     },
+  % if use_rivos_config:
+    { multireg: { name:     "DIO_PAD_ATTR",
+                  desc:     '''
+                            Dedicated pad control of generic GPIO pad.
+                            ''',
+                  count:        "NDioPads",
+                  compact:      "false",
+                  swaccess:     "rw",
+                  hwaccess:     "hrw",
+                  hwext:        "true",
+                  hwqe:         "true",
+                  regwen:       "DIO_PAD_ATTR_REGWEN",
+                  regwen_multi: "true",
+                  cname:        "DIO_PAD",
+		  resval:       0,
+                  fields: [
+                    { bits: "0",
+                      name: "PUEN",
+                      desc: "Active high pull-up enable."
+                    },
+                    { bits: "1",
+                      name: "PDEN",
+                      desc: "Active high pull-down enable."
+                    },
+                    { bits: "2",
+                      name: "SMTEN",
+                      desc: "Active high Schmitt trigger enable."
+                    },
+                    { bits: "6:4",
+                      name: "DRV",
+                      desc: "Programmable drive strength (0x0: weakest, 0x7: strongest)"
+                    }
+                  ],
+                  // these CSRs have have hardware side effects since they drive the
+                  // pad attributes, and hence no random data should be written to them.
+                  tags: ["excl:CsrAllTests:CsrExclWrite"]
+                }
+    },
+  % else:
     { multireg: { name:     "DIO_PAD_ATTR",
                   desc:     '''
                             Dedicated pad attributes.
@@ -726,6 +805,7 @@
                   tags: ["excl:CsrAllTests:CsrExclWrite"]
                 }
     },
+  % endif
 
 //////////////////////////
 // MIO PAD sleep mode   //
