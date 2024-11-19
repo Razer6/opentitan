@@ -1,0 +1,8 @@
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+#
+# waiver file for prim_rdp_ram_1p
+
+waive -rules ALWAYS_SPEC -location {prim_rdp_ram_1p.sv} -regexp {Edge triggered block may be more accurately modeled as always_ff} \
+      -comment "Vivado requires here an always instead of always_ff"

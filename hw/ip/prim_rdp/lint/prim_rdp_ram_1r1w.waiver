@@ -1,0 +1,28 @@
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+#
+# waiver file for prim_rdp_ram_1r1w
+
+waive -rules ALWAYS_SPEC       -location {prim_rdp_ram_1r1w.sv} -regexp {Edge triggered block may be more accurately modeled as always_ff} \
+      -comment "Vivado requires here an always instead of always_ff"
+waive -rules HIER_NET_NOT_READ -regexp {Connected net '(addr|wdata)_i' at prim_rdp_ram_1r1w.sv.* is not read from in module 'prim_rdp_ram_1r1w'} \
+      -comment "Ascentlint blackboxes very deep RAMs to speed up runtime. This blackboxing causes above lint errors."
+waive -rules IFDEF_CODE -location {prim_rdp_ram_1r1w.sv} -regexp {Assignment to 'unused_cfg' contained within `ifndef} \
+      -comment "Declaration of signal and assignment to it are in same `ifndef"
+
+waive -rules STRUCT_INDEX -location {prim_rdp_ram_1r1w.sv} -regexp {Bit select '\[g_i\]' of 'sram_test_cfg' of struct type encountered} \
+      -comment "ok per rivos rules"
+waive -rules STRUCT_INDEX -location {prim_rdp_ram_1r1w.sv} -regexp {Bit select '\[g_i\]' of 'sync_sram_test_cfg' of struct type encountered} \
+      -comment "ok per rivos rules"
+
+waive -rules HIER_NET_NOT_READ -location {prim_rdp_ram_1r1w.sv} -regexp {Net 'sync_sram_test_cfg.tstrst' is not read from in module 'prim_rdp_ram_1r1w'} \
+      -comment "only used based on parameter setting"
+waive -rules HIER_NET_NOT_READ -location {prim_rdp_ram_1r1w.sv} -regexp {Net 'sync_sram_test_cfg.tstrstsel' is not read from in module 'prim_rdp_ram_1r1w'} \
+      -comment "only used based on parameter setting"
+waive -rules HIER_NET_NOT_READ -location {prim_rdp_ram_1r1w.sv} -regexp {Net 'gen_sync_dft_cfg.sync_sram_err_inj_in.err_inj_en' is not read from in module 'prim_rdp_ram_1r1w'} \
+      -comment "ok per rivos rules"
+waive -rules NOT_READ          -location {prim_rdp_ram_1r1w.sv} -regexp {Signal 'sync_sram_test_cfg.tstrst' is not read from in module 'prim_rdp_ram_1r1w'} \
+      -comment "only used based on parameter setting"
+waive -rules NOT_READ          -location {prim_rdp_ram_1r1w.sv} -regexp {Signal 'sync_sram_test_cfg.tstrstsel' is not read from in module 'prim_rdp_ram_1r1w'} \
+      -comment "only used based on parameter setting"
