@@ -15,11 +15,12 @@ module prim_generic_rom import prim_rom_pkg::*; #(
   input  logic             req_i,
   input  logic [Aw-1:0]    addr_i,
   output logic [Width-1:0] rdata_o,
-  input rom_cfg_t          cfg_i
+  input rom_cfg_t          cfg_i,
+  input  prim_misc_dft_pkg::rom_test_cfg_t rom_test_cfg_i
 );
 
   logic unused_cfg;
-  assign unused_cfg = ^cfg_i;
+  assign unused_cfg = ^{cfg_i, rom_test_cfg_i};
 
   logic [Width-1:0] mem [Depth];
 

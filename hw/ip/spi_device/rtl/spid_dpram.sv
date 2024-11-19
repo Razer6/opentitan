@@ -45,6 +45,18 @@ module spid_dpram
   output logic [SramDw-1:0]  spi_rdata_o,
   output logic [1:0]         spi_rerror_o,
 
+  // compiled ram dft
+  input prim_misc_dft_pkg::spi_sram_test_cfg_t spi2sys_sram_test_cfg,
+  input prim_misc_dft_pkg::sram_err_inj_in_t   spi2sys_sram_err_inj_in,
+  output logic                                 spi2sys_err_inj_done,
+  output prim_misc_dft_pkg::spi_sram_dft_t     spi2sys_sram_dft,
+
+  input prim_misc_dft_pkg::spi_sram_test_cfg_t sys2spi_sram_test_cfg,
+  input prim_misc_dft_pkg::sram_err_inj_in_t   sys2spi_sram_err_inj_in,
+  output logic                                 sys2spi_err_inj_done,
+  output prim_misc_dft_pkg::spi_sram_dft_t     sys2spi_sram_dft,
+
+
   input ram_2p_cfg_t         cfg_i
   );
 
@@ -202,6 +214,11 @@ module spid_dpram
       .b_rvalid_o                (spi_rvalid_o),
       .b_rerror_o                (spi_rerror_o),
 
+      .sram_test_cfg             (sys2spi_sram_test_cfg),
+      .sram_err_inj_in           (sys2spi_sram_err_inj_in),
+      .err_inj_done              (sys2spi_err_inj_done),
+      .sram_dft                  (sys2spi_sram_dft),
+
       .cfg_i
     );
 
@@ -230,6 +247,11 @@ module spid_dpram
       .b_rdata_o                 (sys_rdata_o),
       .b_rvalid_o                (sys_rvalid_o),
       .b_rerror_o                (sys_rerror_o),
+
+      .sram_test_cfg             (spi2sys_sram_test_cfg),
+      .sram_err_inj_in           (spi2sys_sram_err_inj_in),
+      .err_inj_done              (spi2sys_err_inj_done),
+      .sram_dft                  (spi2sys_sram_dft),
 
       .cfg_i
     );

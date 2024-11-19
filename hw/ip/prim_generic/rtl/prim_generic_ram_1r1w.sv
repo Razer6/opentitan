@@ -28,6 +28,11 @@ module prim_generic_ram_1r1w import prim_ram_2p_pkg::*; #(
   input        [Aw-1:0]    b_addr_i,
   output logic [Width-1:0] b_rdata_o,
 
+  input  prim_misc_dft_pkg::spi_sram_test_cfg_t sram_test_cfg,
+  input  prim_misc_dft_pkg::sram_err_inj_in_t   sram_err_inj_in,
+  output logic                                  err_inj_done,
+  output prim_misc_dft_pkg::spi_sram_dft_t      sram_dft,
+
   input ram_2p_cfg_t       cfg_i
 );
 
@@ -40,6 +45,12 @@ module prim_generic_ram_1r1w import prim_ram_2p_pkg::*; #(
 // same memory variable concurrently. To this end, we exclude the entire logic in this module in
 // these runs with the following macro.
 `ifndef SYNTHESIS_MEMORY_BLACK_BOXING
+
+  logic unused_signals;
+  assign unused_signals = ^{sram_test_cfg, sram_err_inj_in, cfg_i, rst_a_ni, rst_b_ni};
+
+  assign err_inj_done = 1'b0;
+  assign sram_dft     = '0;
 
   logic unused_cfg;
   assign unused_cfg = ^cfg_i;

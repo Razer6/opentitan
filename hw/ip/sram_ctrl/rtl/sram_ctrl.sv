@@ -26,7 +26,15 @@ module sram_ctrl
   parameter otp_ctrl_pkg::sram_key_t   RndCnstSramKey   = RndCnstSramKeyDefault,
   parameter otp_ctrl_pkg::sram_nonce_t RndCnstSramNonce = RndCnstSramNonceDefault,
   parameter lfsr_seed_t                RndCnstLfsrSeed  = RndCnstLfsrSeedDefault,
-  parameter lfsr_perm_t                RndCnstLfsrPerm  = RndCnstLfsrPermDefault
+  parameter lfsr_perm_t                RndCnstLfsrPerm  = RndCnstLfsrPermDefault,
+  parameter bit                        UseCompiledRam   = 0,
+  parameter bit                        FlopRamOutput    = 0,
+  parameter bit                        UseOTIntegErr    = 0, // set this to report errors to tlul adapter
+                                                             // otherwise they will be sent to error record
+  parameter int                        MaxRamInst       = 1,
+  parameter int                        InstDepth        = 1024,
+  // The maximum number of outstanding TL-UL requests to the memory
+  parameter int                        Outstanding      = 6
 ) (
   // SRAM Clock
   input  logic                                       clk_i,
@@ -56,7 +64,17 @@ module sram_ctrl
   output otp_ctrl_pkg::sram_otp_key_req_t            sram_otp_key_o,
   input  otp_ctrl_pkg::sram_otp_key_rsp_t            sram_otp_key_i,
   // config
-  input  prim_ram_1p_pkg::ram_1p_cfg_t               cfg_i
+  input  prim_ram_1p_pkg::ram_1p_cfg_t               cfg_i,
+
+  input  prim_misc_dft_pkg::sram_test_cfg_t        [MaxRamInst-1:0] sram_test_cfg_i,
+  input  prim_misc_dft_pkg::sram_err_inj_in_t      [MaxRamInst-1:0] sram_err_inj_in_i, 
+  output logic                                     [MaxRamInst-1:0] err_inj_done_o,
+  output prim_misc_dft_pkg::sram_dft_t             [MaxRamInst-1:0] sram_dft_o,
+
+  output logic                                     sram_error_record_uncor_err_o,
+  output logic                                     sram_error_record_corr_err_o,
+  output logic [top_pkg::TL_AW-1:0]                sram_error_record_err_addr_o 
+
 );
 
   import lc_ctrl_pkg::lc_tx_t;
@@ -459,7 +477,8 @@ module sram_ctrl
   logic [AddrWidth-1:0] tlul_addr;
   logic [DataWidth-1:0] tlul_wdata, tlul_wmask;
 
-  logic sram_intg_error, sram_req, sram_gnt, sram_we, sram_rvalid;
+  logic sram_intg_error, sram_req, sram_gnt, sram_we, sram_rvalid, sram_rvalid_qual;
+  logic [1:0] sram_rerror, tlul_sram_rerror;
   logic [AddrWidth-1:0] sram_addr;
   logic [DataWidth-1:0] sram_wdata, sram_wmask, sram_rdata;
   logic                 sram_wpending, sram_wr_collision;
@@ -474,7 +493,7 @@ module sram_ctrl
   tlul_adapter_sram #(
     .SramAw(AddrWidth),
     .SramDw(DataWidth - tlul_pkg::DataIntgWidth),
-    .Outstanding(2),
+    .Outstanding(Outstanding),
     .ByteAccess(1),
     .CmdIntgCheck(1),
     .EnableRspIntgGen(1),
@@ -498,7 +517,7 @@ module sram_ctrl
     // SEC_CM: BUS.INTEGRITY
     .intg_error_o               (bus_integ_error[1]),
     .rdata_i                    (sram_rdata),
-    .rvalid_i                   (sram_rvalid),
+    .rvalid_i                   (sram_rvalid_qual),
     .rerror_i                   ('0),
     .compound_txn_in_progress_o (sram_compound_txn_in_progress),
     .readback_en_i              (reg_readback_en),
@@ -560,13 +579,53 @@ module sram_ctrl
     .wmask_i          (sram_wmask),
     .rdata_o          (sram_rdata),
     .rvalid_o         (sram_rvalid),
-    .rerror_o         ( ),
-    .raddr_o          ( ),
+    .rerror_o         (sram_rerror),
+    .raddr_o          (sram_error_record_err_addr_o),
     .cfg_i,
     .wr_collision_o   (sram_wr_collision),
     .write_pending_o  (sram_wpending),
     .alert_o          (sram_alert)
   );
+
+  // bit 1: uncorrectable
+  assign sram_rvalid_qual = sram_rvalid && (!((!UseOTIntegErr) && sram_rerror[1]));  
+
+  always_comb begin
+    next_sram_uncor_capture = sram_uncor_capture;
+    next_sram_corr_capture  = sram_corr_capture;
+
+    if(sram_rvalid) begin
+      next_sram_uncor_capture = sram_rerror[1];
+      next_sram_corr_capture  = sram_rerror[0];
+    end
+  end
+
+  assign tlul_sram_rerror = {2{UseOTIntegErr}} & sram_rerror;
+
+  prim_flop_en #(
+    .Width(1)
+  ) u_flop_uncor_error_capture (
+    .clk_i  ( clk_i                   ),
+    .rst_ni ( rst_ni                  ),
+    .en_i   ( sram_rvalid             ),
+    .d_i    ( next_sram_uncor_capture ),
+    .q_o    ( sram_uncor_capture      )
+  );
+
+  prim_flop_en #(
+    .Width(1)
+  ) u_flop_corr_error_capture (
+    .clk_i  ( clk_i                  ),
+    .rst_ni ( rst_ni                 ),
+    .en_i   ( sram_rvalid            ),
+    .d_i    ( next_sram_corr_capture ),
+    .q_o    ( sram_corr_capture      )
+  );
+
+  assign sram_error_record_uncor_err_o = (!UseOTIntegErr) &&  
+                                          next_sram_uncor_capture && (!sram_uncor_capture);
+  assign sram_error_record_corr_err_o  = (!UseOTIntegErr) &&
+                                          next_sram_corr_capture  && (!sram_corr_capture);
 
   logic unused_sram_gnt;
   // Ignore sram_gnt signal to avoid creating a bad timing path, see comment on `tlul_gnt` above for

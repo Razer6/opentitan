@@ -58,10 +58,22 @@ module spi_device
   // External clock sensor
   output logic sck_monitor_o,
 
+  // compiled ram test control
+  input prim_misc_dft_pkg::spi_sram_test_cfg_t  spi2sys_sram_test_cfg_i,
+  input prim_misc_dft_pkg::sram_err_inj_in_t    spi2sys_sram_err_inj_in_i,
+  output logic                                  spi2sys_err_inj_done_o,
+  output prim_misc_dft_pkg::spi_sram_dft_t      spi2sys_sram_dft_o,
+
+  input prim_misc_dft_pkg::spi_sram_test_cfg_t  sys2spi_sram_test_cfg_i,
+  input prim_misc_dft_pkg::sram_err_inj_in_t    sys2spi_sram_err_inj_in_i,
+  output logic                                  sys2spi_err_inj_done_o,
+  output prim_misc_dft_pkg::spi_sram_dft_t      sys2spi_sram_dft_o,
+
   // DFT related controls
   input mbist_en_i,
   input scan_clk_i,
   input scan_rst_ni,
+  input prim_mubi_pkg::mubi4_t tston_i,
   input prim_mubi_pkg::mubi4_t scanmode_i
 );
 
@@ -169,6 +181,9 @@ module spi_device
   logic [AddrFifoPtrW-1:0]   addrfifo_depth;
   logic [PayloadDepthW-1:0]  payload_depth;
   logic [PayloadIdxW-1:0]    payload_start_idx;
+
+  // All unused signals
+  logic unused_sigs = ^{mbist_en_i};
 
   assign payload_notempty = payload_depth != '0;
 
@@ -653,7 +668,7 @@ module spi_device
   ) u_clk_spi_in_mux (
     .clk0_i(clk_spi_in),
     .clk1_i(scan_clk_i),
-    .sel_i(prim_mubi_pkg::mubi4_test_true_strict(scanmode[ClkMuxSel]) | mbist_en_i),
+    .sel_i(prim_mubi_pkg::mubi4_test_true_strict(tston_i)),
     .clk_o(clk_spi_in_muxed)
   );
 
@@ -1836,6 +1851,16 @@ module spi_device
     .spi_rvalid_o   (mem_b_rvalid),
     .spi_rdata_o    (mem_b_rdata),
     .spi_rerror_o   (mem_b_rerror),
+
+    .spi2sys_sram_test_cfg   (spi2sys_sram_test_cfg_i),
+    .spi2sys_sram_err_inj_in (spi2sys_sram_err_inj_in_i),
+    .spi2sys_err_inj_done    (spi2sys_err_inj_done_o),
+    .spi2sys_sram_dft        (spi2sys_sram_dft_o),
+ 
+    .sys2spi_sram_test_cfg   (sys2spi_sram_test_cfg_i),
+    .sys2spi_sram_err_inj_in (sys2spi_sram_err_inj_in_i),
+    .sys2spi_err_inj_done    (sys2spi_err_inj_done_o),
+    .sys2spi_sram_dft        (sys2spi_sram_dft_o),
 
     .cfg_i          (ram_cfg_i)
   );

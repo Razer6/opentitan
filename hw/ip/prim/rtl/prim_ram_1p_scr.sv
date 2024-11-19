@@ -82,6 +82,11 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   output logic [1:0]                rerror_o, // Bit1: Uncorrectable, Bit0: Correctable
   output logic [31:0]               raddr_o,  // Read address for error reporting.
 
+  input prim_misc_dft_pkg::sram_test_cfg_t   sram_test_cfg,
+  input prim_misc_dft_pkg::sram_err_inj_in_t sram_err_inj_in,
+  output logic                               err_inj_done,
+  output prim_misc_dft_pkg::sram_dft_t       sram_dft,
+
   // config
   input ram_1p_cfg_t                cfg_i,
 
@@ -496,6 +501,10 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
     .wdata_i  ( wdata_scr   ),
     .wmask_i  ( wmask_q     ),
     .rdata_o  ( rdata_scr   ),
+    .sram_test_cfg   (sram_test_cfg),
+    .sram_dft        (sram_dft),
+    .sram_err_inj_in (sram_err_inj_in),
+    .err_inj_done    (err_inj_done),
     .rvalid_o ( ),
     .rerror_o,
     .cfg_i,

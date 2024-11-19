@@ -301,6 +301,85 @@
       name:    "sck_monitor"
       act:     "req"
     }
+    // SRAM DFT Logic signals
+    { struct:  "sram_err_inj_in"
+      type:    "uni"
+      name:    "spi2sys_sram_err_inj_in"
+      act:     "rcv"
+      desc:    '''
+               SRAM error injection inputs
+               ''',
+      package: "prim_misc_dft_pkg"
+    },
+    { struct:  "logic",
+      type:    "uni",
+      name:    "spi2sys_err_inj_done",
+      act:     "req",
+      desc:    '''
+               SRAM error injection done
+               ''',
+      default: "'0"
+    },
+    { struct:  "spi_sram_test_cfg"
+      type:    "uni"
+      name:    "spi2sys_sram_test_cfg"
+      act:     "rcv"
+      desc:    '''
+               SRAM test configuration
+               ''',
+      package: "prim_misc_dft_pkg"
+    },
+    { struct:  "spi_sram_dft"
+      type:    "uni"
+      name:    "spi2sys_sram_dft"
+      act:     "req"
+      desc:    '''
+               SRAM dft outputs
+               ''',
+      package: "prim_misc_dft_pkg"
+    },
+    { struct:  "sram_err_inj_in"
+      type:    "uni"
+      name:    "sys2spi_sram_err_inj_in"
+      act:     "rcv"
+      desc:    '''
+               SRAM error injection inputs
+               ''',
+      package: "prim_misc_dft_pkg"
+    },
+    { struct:  "logic",
+      type:    "uni",
+      name:    "sys2spi_err_inj_done",
+      act:     "req",
+      desc:    '''
+               SRAM error injection done
+               ''',
+      default: "'0"
+    },
+    { struct:  "spi_sram_test_cfg"
+      type:    "uni"
+      name:    "sys2spi_sram_test_cfg"
+      act:     "rcv"
+      desc:    '''
+               SRAM test configuration
+               ''',
+      package: "prim_misc_dft_pkg"
+    },
+    { struct:  "spi_sram_dft"
+      type:    "uni"
+      name:    "sys2spi_sram_dft"
+      act:     "req"
+      desc:    '''
+               SRAM dft outputs
+               ''',
+      package: "prim_misc_dft_pkg"
+    },
+    { struct:  "mubi4",
+      type:    "uni",
+      name:    "tston",
+      act:     "rcv",
+      package: "prim_mubi_pkg",
+    }
   ],
   features: [
     {

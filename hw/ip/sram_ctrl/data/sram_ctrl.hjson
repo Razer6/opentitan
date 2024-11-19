@@ -93,6 +93,41 @@
       expose:    "true",
       default:   "3"
     },
+    { name:      "UseOTIntegErr",
+      desc:      "When set to 0, use Rivos error logging",
+      type:      "bit",
+      local:     "false",
+      expose:    "true",
+      default:   "1"
+    },
+    { name:      "UseCompiledRam",
+      desc:      "When set to 1, use compiled SRAM macros",
+      type:      "bit",
+      local:     "false",
+      expose:    "true",
+      default:   "1"
+    },
+    { name:      "MaxRamInst",
+      desc:      "Number of RAM macro instances for this SRAM Ctrl",
+      type:      "int",
+      local:     "false",
+      expose:    "true",
+      default:   "1"
+    },
+    { name:      "InstDepth",
+      desc:      "Depth of a single SRAM macro",
+      type:      "int",
+      local:     "false",
+      expose:    "true",
+      default:   "1024"
+    },
+    { name:      "FlopRamOutput",
+      desc:      "Flop the output s",
+      type:      "bit",
+      local:     "false",
+      expose:    "true",
+      default:   "1"
+    },
   ]
 
   features: [
@@ -179,6 +214,70 @@
       act:     "rcv",
       package: "prim_mubi_pkg",
       default: "prim_mubi_pkg::MuBi8False"
+    },
+    // SRAM DFT Logic signals
+    { struct:  "sram_err_inj_in"
+      type:    "uni"
+      name:    "sram_err_inj_in"
+      act:     "rcv"
+      desc:    '''
+               SRAM error injection inputs
+               ''',
+      package: "prim_misc_dft_pkg"
+    },
+    { struct:  "logic",
+      type:    "uni",
+      name:    "err_inj_done",
+      width:   "MaxRamInst"
+      act:     "req",
+      desc:    '''
+               SRAM error injection done
+               ''',
+      default: "'0"
+    },
+    { struct:  "sram_test_cfg"
+      type:    "uni"
+      name:    "sram_test_cfg"
+      width:   "MaxRamInst"
+      act:     "rcv"
+      desc:    '''
+               SRAM test configuration
+               ''',
+      package: "prim_misc_dft_pkg"
+    },
+    { struct:  "sram_dft"
+      type:    "uni"
+      name:    "sram_dft"
+      width:   "MaxRamInst"
+      act:     "req"
+      desc:    '''
+               SRAM dft outputs
+               ''',
+      package: "prim_misc_dft_pkg"
+    },
+    { struct:  "logic",
+      type:    "uni",
+      name:    "sram_error_record_uncor_err",
+      act:     "req",
+      desc:    '''
+               SRAM Error injection reporting
+               ''',
+    },
+    { struct:  "logic",
+      type:    "uni",
+      name:    "sram_error_record_corr_err",
+      act:     "req",
+      desc:    '''
+               SRAM Error injection reporting
+               ''',
+    },
+    { struct:  "logic [top_pkg::TL_AW-1:0]",
+      type:    "uni",
+      name:    "sram_error_record_err_addr",
+      act:     "req",
+      desc:    '''
+               SRAM Error injection reporting
+               ''',
     },
   ]
 

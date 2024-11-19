@@ -52,6 +52,11 @@ module prim_ram_1r1w_async_adv import prim_ram_2p_pkg::*; #(
   output logic             b_rvalid_o, // read response (b_rdata_o) is valid
   output logic [1:0]       b_rerror_o, // Bit1: Uncorrectable, Bit0: Correctable
 
+  input prim_misc_dft_pkg::spi_sram_test_cfg_t sram_test_cfg,
+  input prim_misc_dft_pkg::sram_err_inj_in_t   sram_err_inj_in,
+  output logic                                 err_inj_done,
+  output prim_misc_dft_pkg::spi_sram_dft_t     sram_dft,
+
   // config
   input ram_2p_cfg_t       cfg_i
 );
@@ -110,6 +115,11 @@ module prim_ram_1r1w_async_adv import prim_ram_2p_pkg::*; #(
     .b_req_i    (b_req_q),
     .b_addr_i   (b_addr_q),
     .b_rdata_o  (b_rdata_sram),
+
+    .sram_test_cfg   (sram_test_cfg),
+    .sram_err_inj_in (sram_err_inj_in),
+    .err_inj_done    (err_inj_done),
+    .sram_dft        (sram_dft),
 
     .cfg_i
   );

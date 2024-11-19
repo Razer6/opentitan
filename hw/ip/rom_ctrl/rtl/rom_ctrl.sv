@@ -40,7 +40,9 @@ module rom_ctrl
   output rom_ctrl_pkg::pwrmgr_data_t pwrmgr_data_o,
   output rom_ctrl_pkg::keymgr_data_t keymgr_data_o,
   input  kmac_pkg::app_rsp_t         kmac_data_i,
-  output kmac_pkg::app_req_t         kmac_data_o
+  output kmac_pkg::app_req_t         kmac_data_o,
+
+  input  prim_misc_dft_pkg::rom_test_cfg_t rom_test_cfg_i
 );
 
   import rom_ctrl_pkg::*;
@@ -271,13 +273,14 @@ module rom_ctrl
     ) u_rom (
       .clk_i,
       .rst_ni,
-      .req_i         (rom_req),
-      .rom_addr_i    (rom_rom_index),
-      .prince_addr_i (rom_prince_index),
-      .rvalid_o      (rom_rvalid),
-      .scr_rdata_o   (rom_scr_rdata),
-      .clr_rdata_o   (rom_clr_rdata),
-      .cfg_i         (rom_cfg_i)
+      .req_i          (rom_req),
+      .rom_addr_i     (rom_rom_index),
+      .prince_addr_i  (rom_prince_index),
+      .rvalid_o       (rom_rvalid),
+      .scr_rdata_o    (rom_scr_rdata),
+      .clr_rdata_o    (rom_clr_rdata),
+      .cfg_i          (rom_cfg_i),
+      .rom_test_cfg_i (rom_test_cfg_i)
     );
 
   end : gen_rom_scramble_enabled
@@ -289,15 +292,17 @@ module rom_ctrl
     prim_rom_adv #(
       .Width       (DataWidth),
       .Depth       (RomSizeWords),
-      .MemInitFile (BootRomInitFile)
+      .MemInitFile (BootRomInitFile),
+      .EnableECC   (1'b0)
     ) u_rom (
       .clk_i,
       .rst_ni,
-      .req_i    (rom_req),
-      .addr_i   (rom_rom_index),
-      .rvalid_o (rom_rvalid),
-      .rdata_o  (rom_scr_rdata),
-      .cfg_i    (rom_cfg_i)
+      .req_i          (rom_req),
+      .addr_i         (rom_rom_index),
+      .rvalid_o       (rom_rvalid),
+      .rdata_o        (rom_scr_rdata),
+      .cfg_i          (rom_cfg_i),
+      .rom_test_cfg_i (rom_test_cfg_i)
     );
 
     // There's no scrambling, so "scrambled" and "clear" rdata are equal.
