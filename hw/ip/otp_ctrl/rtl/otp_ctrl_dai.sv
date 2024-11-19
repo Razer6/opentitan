@@ -5,6 +5,7 @@
 // Direct access interface for OTP controller.
 //
 
+`include "prim_assert.sv"
 `include "prim_flop_macros.sv"
 
 module otp_ctrl_dai
@@ -56,6 +57,7 @@ module otp_ctrl_dai
   input                                  otp_rvalid_i,
   input  [ScrmblBlockWidth-1:0]          otp_rdata_i,
   input  prim_otp_pkg::err_e             otp_err_i,
+  input  logic [1:0]                     otp_macro_mode_i,
   // Scrambling mutex request
   output logic                           scrmbl_mtx_req_o,
   input                                  scrmbl_mtx_gnt_i,
@@ -161,18 +163,6 @@ module otp_ctrl_dai
   logic [NumPart-1:0][OtpAddrWidth-1:0] digest_addr_lut;
   logic part_sel_valid;
 
-  // Depending on the partition configuration, the wrapper is instructed to ignore integrity
-  // calculations and checks. To be on the safe side, the partition filters error responses at this
-  // point and does not report any integrity errors if integrity is disabled.
-  otp_err_e otp_err;
-  always_comb begin
-    otp_err = otp_err_e'(otp_err_i);
-    if (!PartInfo[part_idx].integrity &&
-        otp_err_e'(otp_err_i) inside {MacroEccCorrError, MacroEccUncorrError}) begin
-      otp_err = NoError;
-    end
-  end
-
   // Output partition error state.
   assign error_o       = error_q;
   // Working register is connected to data outputs.
@@ -247,9 +237,9 @@ module otp_ctrl_dai
         init_done_o = 1'b0;
         dai_prog_idle_o = 1'b0;
         if (otp_rvalid_i) begin
-          if ((!(otp_err inside {NoError, MacroEccCorrError}))) begin
+          if ((!(otp_err_e'(otp_err_i) inside {NoError, MacroEccCorrError}))) begin
             state_d = ErrorSt;
-            error_d = otp_err;
+            error_d = otp_err_e'(otp_err_i);
           end else begin
             state_d = InitPartSt;
           end
@@ -344,7 +334,7 @@ module otp_ctrl_dai
                                                                digest_addr_lut[part_idx])) begin
           if (otp_rvalid_i) begin
             // Check OTP return code.
-            if (otp_err inside {NoError, MacroEccCorrError}) begin
+            if (otp_err_e'(otp_err_i) inside {NoError, MacroEccCorrError}) begin
               data_en = 1'b1;
               // We do not need to descramble the digest values.
               if (PartInfo[part_idx].secret && otp_addr_o != digest_addr_lut[part_idx]) begin
@@ -354,12 +344,12 @@ module otp_ctrl_dai
                 dai_cmd_done_o = 1'b1;
               end
               // At this point the only error that we could have gotten are correctable ECC errors.
-              if (otp_err != NoError) begin
+              if (otp_err_e'(otp_err_i) != NoError) begin
                 error_d = MacroEccCorrError;
               end
             end else begin
               state_d = ErrorSt;
-              error_d = otp_err;
+              error_d = otp_err_e'(otp_err_i);
             end
           end
         // At this point, this check MUST succeed - otherwise this means that
@@ -455,17 +445,17 @@ module otp_ctrl_dai
 
           if (otp_rvalid_i) begin
             // Check OTP return code. Note that non-blank errors are recoverable.
-            if ((!(otp_err inside {NoError, MacroWriteBlankError}))) begin
+            if ((!(otp_err_e'(otp_err_i) inside {NoError, MacroWriteBlankError}))) begin
               state_d = ErrorSt;
-              error_d = otp_err;
+              error_d = otp_err_e'(otp_err_i);
             end else begin
               // Clear working register state.
               data_clr = 1'b1;
               state_d = IdleSt;
               dai_cmd_done_o = 1'b1;
               // Signal non-blank state, but do not go to terminal error state.
-              if (otp_err == MacroWriteBlankError) begin
-                error_d = otp_err;
+              if (otp_err_e'(otp_err_i) == MacroWriteBlankError) begin
+                error_d = otp_err_e'(otp_err_i);
               end
             end
           end
@@ -578,15 +568,15 @@ module otp_ctrl_dai
         if (otp_rvalid_i) begin
           cnt_en = 1'b1;
           // Check OTP return code.
-          if ((!(otp_err inside {NoError, MacroEccCorrError}))) begin
+          if ((!(otp_err_e'(otp_err_i) inside {NoError, MacroEccCorrError}))) begin
             state_d = ErrorSt;
-            error_d = otp_err;
+            error_d = otp_err_e'(otp_err_i);
           end else begin
             data_en = 1'b1;
             state_d = DigSt;
             // Signal soft ECC errors, but do not go into terminal error state.
-            if (otp_err == MacroEccCorrError) begin
-              error_d = otp_err;
+            if (otp_err_e'(otp_err_i) == MacroEccCorrError) begin
+              error_d = otp_err_e'(otp_err_i);
             end
           end
         end
@@ -753,20 +743,22 @@ module otp_ctrl_dai
     otp_size_o = OtpSizeWidth'(unsigned'(32 / OtpWidth - 1));
     addr_base = {dai_addr_i[OtpByteAddrWidth-1:2], 2'h0};
 
-    // 64bit transaction for scrambled partitions.
-    if (PartInfo[part_idx].secret) begin
-      otp_size_o = OtpSizeWidth'(unsigned'(ScrmblBlockWidth / OtpWidth - 1));
-      addr_base = {dai_addr_i[OtpByteAddrWidth-1:3], 3'h0};
-    // 64bit transaction if computing a digest.
-    end else if (PartInfo[part_idx].hw_digest && (base_sel_q == PartOffset)) begin
+    if (otp_macro_mode_i == 2'b00) begin // only do OT addr_base/size selection in normal operation mode
+      // 64bit transaction for scrambled partitions.
+      if (PartInfo[part_idx].secret) begin
         otp_size_o = OtpSizeWidth'(unsigned'(ScrmblBlockWidth / OtpWidth - 1));
-        addr_base = PartInfo[part_idx].offset;
-    // 64bit transaction if the DAI address points to the partition's digest offset.
-    end else if ((PartInfo[part_idx].hw_digest || PartInfo[part_idx].sw_digest) &&
-        (base_sel_q == DaiOffset) &&
-        ({dai_addr_i[OtpByteAddrWidth-1:3], 2'b0} == digest_addr_lut[part_idx])) begin
-      otp_size_o = OtpSizeWidth'(unsigned'(ScrmblBlockWidth / OtpWidth - 1));
-      addr_base = {dai_addr_i[OtpByteAddrWidth-1:3], 3'h0};
+        addr_base = {dai_addr_i[OtpByteAddrWidth-1:3], 3'h0};
+      // 64bit transaction if computing a digest.
+      end else if (PartInfo[part_idx].hw_digest && (base_sel_q == PartOffset)) begin
+          otp_size_o = OtpSizeWidth'(unsigned'(ScrmblBlockWidth / OtpWidth - 1));
+          addr_base = PartInfo[part_idx].offset;
+      // 64bit transaction if the DAI address points to the partition's digest offset.
+      end else if ((PartInfo[part_idx].hw_digest || PartInfo[part_idx].sw_digest) &&
+          (base_sel_q == DaiOffset) &&
+          ({dai_addr_i[OtpByteAddrWidth-1:3], 2'b0} == digest_addr_lut[part_idx])) begin
+        otp_size_o = OtpSizeWidth'(unsigned'(ScrmblBlockWidth / OtpWidth - 1));
+        addr_base = {dai_addr_i[OtpByteAddrWidth-1:3], 3'h0};
+      end
     end
   end
 
@@ -851,8 +843,8 @@ module otp_ctrl_dai
   // OTP error response
   `ASSERT(OtpErrorState_A,
       state_q inside {InitOtpSt, ReadWaitSt, WriteWaitSt, DigReadWaitSt} && otp_rvalid_i &&
-      !(otp_err inside {NoError, MacroEccCorrError, MacroWriteBlankError})
+      !(otp_err_e'(otp_err_i) inside {NoError, MacroEccCorrError, MacroWriteBlankError})
       |=>
-      state_q == ErrorSt && error_o == $past(otp_err))
+      state_q == ErrorSt && error_o == $past(otp_err_e'(otp_err_i)))
 
 endmodule : otp_ctrl_dai

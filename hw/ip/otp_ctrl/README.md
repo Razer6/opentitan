@@ -1,10 +1,6 @@
 # OTP Controller Technical Specification
 
-[`otp_ctrl`](https://reports.opentitan.org/hw/ip/otp_ctrl/dv/latest/report.html):
-![](https://dashboards.lowrisc.org/badges/dv/otp_ctrl/test.svg)
-![](https://dashboards.lowrisc.org/badges/dv/otp_ctrl/passing.svg)
-![](https://dashboards.lowrisc.org/badges/dv/otp_ctrl/functional.svg)
-![](https://dashboards.lowrisc.org/badges/dv/otp_ctrl/code.svg)
+{{#block-dashboard otp_ctrl}}
 
 # Overview
 

@@ -11,8 +11,8 @@ digest_parts = [part for part in parts if
 read_locked_csr_parts = [part for part in parts if part["read_lock"] == "CSR"]
 secret_parts = [part for part in parts if part["secret"] == "true"]
 %>\
-#ifndef OPENTITAN_SW_DEVICE_LIB_DIF_DIF_OTP_CTRL_H_
-#define OPENTITAN_SW_DEVICE_LIB_DIF_DIF_OTP_CTRL_H_
+#ifndef OPENTITAN_SW_IP_OTP_CTRL_DIF_DIF_OTP_CTRL_H_
+#define OPENTITAN_SW_IP_OTP_CTRL_DIF_DIF_OTP_CTRL_H_
 
 /**
  * @file
@@ -22,11 +22,11 @@ secret_parts = [part for part in parts if part["secret"] == "true"]
 
 #include <stdint.h>
 
-#include "sw/device/lib/base/macros.h"
-#include "sw/device/lib/base/mmio.h"
-#include "sw/device/lib/dif/dif_base.h"
+#include "sw/ip/base/dif/dif_base.h"
+#include "sw/lib/sw/device/base/macros.h"
+#include "sw/lib/sw/device/base/mmio.h"
 
-#include "sw/device/lib/dif/autogen/dif_otp_ctrl_autogen.h"
+#include "sw/ip/otp_ctrl/dif/autogen/dif_otp_ctrl_autogen.h"
 
 // Header Extern Guard (so header can be used from C and C++)
 #ifdef __cplusplus
@@ -167,6 +167,10 @@ typedef enum dif_otp_ctrl_status_code {
    * Indicates that an integrity or consistency check is currently pending.
    */
   kDifOtpCtrlStatusCodeCheckPending,
+  /**
+   * Indicates that a software reset is allowed. Only for simulation.
+   */
+  kDifOtpCtrlStatusCodeResetAllowed,
 } dif_otp_ctrl_status_code_t;
 
 /**
@@ -289,38 +293,10 @@ OT_WARN_UNUSED_RESULT
 dif_result_t dif_otp_ctrl_check_consistency(const dif_otp_ctrl_t *otp);
 
 /**
- * Locks out access to the direct access interface registers.
- *
- * This function is idempotent: calling it while functionality is locked will
- * have no effect and return `kDifOk`.
- *
- * @param otp An OTP handle.
- * @return The result of the operation.
- */
-OT_WARN_UNUSED_RESULT
-dif_result_t dif_otp_ctrl_dai_lock(const dif_otp_ctrl_t *otp);
-
-/**
- * Checks whether access to the direct access interface is locked.
- *
- * Note that besides locking the DAI out until the next reset using the
- * dif_otp_ctrl_dai_lock function, the DAI is also temporarily locked by the
- * HW itself when it is busy processing a DAI command. In such a case, the
- * kDifOtpCtrlStatusCodeDaiIdle status bit will be set to 0 as well.
- *
- * @param otp An OTP handle.
- * @param[out] is_locked Out-param for the locked state.
- * @return The result of the operation.
- */
-OT_WARN_UNUSED_RESULT
-dif_result_t dif_otp_ctrl_dai_is_locked(const dif_otp_ctrl_t *otp,
-                                        bool *is_locked);
-
-/**
  * Locks out `dif_otp_ctrl_configure()` function.
  *
- * This function is idempotent: calling it while functionality is locked will
- * have no effect and return `kDifOk`.
+ * This function is reentrant: calling it while functionality is locked will
+ * have no effect and return `kDifOtpCtrlOk`.
  *
  * @param otp An OTP handle.
  * @return The result of the operation.
@@ -342,8 +318,8 @@ dif_result_t dif_otp_ctrl_config_is_locked(const dif_otp_ctrl_t *otp,
 /**
  * Locks out `dif_otp_ctrl_check_*()` functions.
  *
- * This function is idempotent: calling it while functionality is locked will
- * have no effect and return `kDifOk`.
+ * This function is reentrant: calling it while functionality is locked will
+ * have no effect and return `kDifOtpCtrlOk`.
  *
  * @param otp An OTP handle.
  * @return The result of the operation.
@@ -372,8 +348,8 @@ dif_result_t dif_otp_ctrl_check_trigger_is_locked(const dif_otp_ctrl_t *otp,
  * `dif_otp_ctrl_dai_digest()`. In particular, the effects of this function will
  * not persist past a system reset.
  *
- * This function is idempotent: calling it while functionality is locked will
- * have no effect and return `kDifOk`.
+ * This function is reentrant: calling it while functionality is locked will
+ * have no effect and return `kDifOtpCtrlOk`.
  *
  * @param otp An OTP handle.
  * @param partition The SW partition to lock.
@@ -612,4 +588,4 @@ dif_result_t dif_otp_ctrl_read_blocking(const dif_otp_ctrl_t *otp,
 }  // extern "C"
 #endif  // __cplusplus
 
-#endif  // OPENTITAN_SW_DEVICE_LIB_DIF_DIF_OTP_CTRL_H_
+#endif  // OPENTITAN_SW_IP_OTP_CTRL_DIF_DIF_OTP_CTRL_H_

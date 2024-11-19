@@ -29,36 +29,27 @@ class otp_ctrl_dai_lock_vseq extends otp_ctrl_smoke_vseq;
   constraint partition_index_c {part_idx inside {[0:LifeCycleIdx]};}
 
   constraint dai_wr_legal_addr_c {
-    if (part_idx == VendorTestIdx) {
-      dai_addr inside `PART_ADDR_RANGE(VendorTestIdx);
-    }
-    if (part_idx == CreatorSwCfgIdx) {
-      dai_addr inside `PART_ADDR_RANGE(CreatorSwCfgIdx);
-    }
-    if (part_idx == OwnerSwCfgIdx) {
-      dai_addr inside `PART_ADDR_RANGE(OwnerSwCfgIdx);
-    }
-    if (part_idx == RotCreatorAuthCodesignIdx) {
-      dai_addr inside `PART_ADDR_RANGE(RotCreatorAuthCodesignIdx);
-    }
-    if (part_idx == RotCreatorAuthStateIdx) {
-      dai_addr inside `PART_ADDR_RANGE(RotCreatorAuthStateIdx);
-    }
-    if (part_idx == HwCfg0Idx) {
-      dai_addr inside `PART_ADDR_RANGE(HwCfg0Idx);
-    }
-    if (part_idx == HwCfg1Idx) {
-      dai_addr inside `PART_ADDR_RANGE(HwCfg1Idx);
-    }
-    if (part_idx == Secret0Idx) {
-      dai_addr inside `PART_ADDR_RANGE(Secret0Idx);
-    }
-    if (part_idx == Secret1Idx) {
-      dai_addr inside `PART_ADDR_RANGE(Secret1Idx);
-    }
-    if (part_idx == Secret2Idx) {
-      dai_addr inside `PART_ADDR_RANGE(Secret2Idx);
-    }
+    if (part_idx == VendorTestIdx) dai_addr inside `PART_ADDR_RANGE(VendorTestIdx);
+    if (part_idx == CreatorSwCfgIdx) dai_addr inside `PART_ADDR_RANGE(CreatorSwCfgIdx);
+    if (part_idx == OwnerSwCfgIdx) dai_addr inside `PART_ADDR_RANGE(OwnerSwCfgIdx);
+    if (part_idx == OwnershipSlotStateIdx) dai_addr inside `PART_ADDR_RANGE(OwnershipSlotStateIdx);
+    if (part_idx == RotCreatorAuthIdx) dai_addr inside `PART_ADDR_RANGE(RotCreatorAuthIdx);
+    if (part_idx == RotOwnerAuthSlot0Idx) dai_addr inside `PART_ADDR_RANGE(RotOwnerAuthSlot0Idx);
+    if (part_idx == RotOwnerAuthSlot1Idx) dai_addr inside `PART_ADDR_RANGE(RotOwnerAuthSlot1Idx);
+    if (part_idx == PlatIntegAuthSlot0Idx) dai_addr inside `PART_ADDR_RANGE(PlatIntegAuthSlot0Idx);
+    if (part_idx == PlatIntegAuthSlot1Idx) dai_addr inside `PART_ADDR_RANGE(PlatIntegAuthSlot1Idx);
+    if (part_idx == PlatOwnerAuthSlot0Idx) dai_addr inside `PART_ADDR_RANGE(PlatOwnerAuthSlot0Idx);
+    if (part_idx == PlatOwnerAuthSlot1Idx) dai_addr inside `PART_ADDR_RANGE(PlatOwnerAuthSlot1Idx);
+    if (part_idx == PlatOwnerAuthSlot2Idx) dai_addr inside `PART_ADDR_RANGE(PlatOwnerAuthSlot2Idx);
+    if (part_idx == PlatOwnerAuthSlot3Idx) dai_addr inside `PART_ADDR_RANGE(PlatOwnerAuthSlot3Idx);
+    if (part_idx == ExtNvmIdx) dai_addr inside `PART_ADDR_RANGE(ExtNvmIdx);
+    if (part_idx == RomPatchIdx) dai_addr inside `PART_ADDR_RANGE(RomPatchIdx);
+    if (part_idx == HwCfg0Idx) dai_addr inside `PART_ADDR_RANGE(HwCfg0Idx);
+    if (part_idx == HwCfg1Idx) dai_addr inside `PART_ADDR_RANGE(HwCfg1Idx);
+    if (part_idx == Secret0Idx) dai_addr inside `PART_ADDR_RANGE(Secret0Idx);
+    if (part_idx == Secret1Idx) dai_addr inside `PART_ADDR_RANGE(Secret1Idx);
+    if (part_idx == Secret2Idx) dai_addr inside `PART_ADDR_RANGE(Secret2Idx);
+    if (part_idx == Secret3Idx) dai_addr inside `PART_ADDR_RANGE(Secret3Idx);
     if (part_idx == LifeCycleIdx) {
       if (write_unused_addr) {
         dai_addr inside {[PartInfo[LifeCycleIdx].offset : {OTP_ADDR_WIDTH{1'b1}}]};
@@ -75,13 +66,22 @@ class otp_ctrl_dai_lock_vseq extends otp_ctrl_smoke_vseq;
         VendorTestDigestOffset,
         CreatorSwCfgDigestOffset,
         OwnerSwCfgDigestOffset,
-        RotCreatorAuthCodesignDigestOffset,
-        RotCreatorAuthStateDigestOffset,
+        RotCreatorAuthDigestOffset,
+        RotOwnerAuthSlot0DigestOffset,
+        RotOwnerAuthSlot1DigestOffset,
+        PlatIntegAuthSlot0DigestOffset,
+        PlatIntegAuthSlot1DigestOffset,
+        PlatOwnerAuthSlot0DigestOffset,
+        PlatOwnerAuthSlot1DigestOffset,
+        PlatOwnerAuthSlot2DigestOffset,
+        PlatOwnerAuthSlot3DigestOffset,
+        RomPatchDigestOffset,
         HwCfg0DigestOffset,
         HwCfg1DigestOffset,
         Secret0DigestOffset,
         Secret1DigestOffset,
-        Secret2DigestOffset
+        Secret2DigestOffset,
+        Secret3DigestOffset
       } :/ 1,
       [VendorTestOffset : '1] :/ 9
     };

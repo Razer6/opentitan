@@ -31,7 +31,7 @@ otp_size_as_uint32 = otp_size_as_bytes // 4
   design_spec:        "../doc",
   dv_doc:             "../doc/dv",
   hw_checklist:       "../doc/checklist",
-  sw_checklist:       "/sw/device/lib/dif/dif_otp_ctrl",
+  sw_checklist:       "/sw/ip/otp_ctrl/dif/dif_otp_ctrl",
   revisions: [
     {
       version:            "0.1.0",
@@ -53,8 +53,8 @@ otp_size_as_uint32 = otp_size_as_bytes // 4
     {
       version:            "2.0.0",
       life_stage:         "L1",
-      design_stage:       "D3",
-      verification_stage: "V2S",
+      design_stage:       "D1",
+      verification_stage: "V1",
       dif_stage:          "S2",
       notes:              "",
     }
@@ -248,6 +248,15 @@ otp_size_as_uint32 = otp_size_as_bytes // 4
       default: "'0"
       package: "",
     }
+    // OTP dedicated clock connection from AST
+    { struct:  "logic"
+      type:    "uni"
+      name:    "clk_efuse"
+      act:     "rcv"
+      default: "'0"
+      package: "",
+      desc:    "Fixed freq clock for tech fuse macro."
+    }
     // Power sequencing signals to AST
     { struct:  "otp_ast_req"
       type:    "uni"
@@ -283,7 +292,152 @@ otp_size_as_uint32 = otp_size_as_bytes // 4
       package: "pwrmgr_pkg"
       desc:    "Initialization request/acknowledge from/to power manager."
     }
-    // Macro-specific test signals to/from LC TAP
+    { 
+        struct: "logic" 
+        type: "uni" 
+        name: "tstrst"   
+        act: "rcv" 
+        default: "'0" 
+        package: "" 
+        desc: "dft reset control"
+    }
+    { 
+        struct: "logic" 
+        type: "uni" 
+        name: "tstrstsel"   
+        act: "rcv" 
+        default: "'0" 
+        package: "" 
+        desc: "dft reset control"
+    }
+    { 
+        struct: "logic" 
+        type: "uni" 
+        name: "mbist_otp_mbist_mode"   
+        act: "rcv" 
+        default: "'0" 
+        package: "" 
+        desc: "MBIST Interface to OTP"
+    }
+    { 
+        struct: "num_fuse_mbist_arrays" 
+        type: "uni" 
+        name: "mbist_otp_csb"  	    
+        act: "rcv" 
+        default: "'0" 
+        package: "otp_ctrl_pkg" 
+        desc: "MBIST Interface to OTP" 
+    }
+    { 
+        struct: "num_fuse_mbist_arrays" 
+        type: "uni" 
+        name: "mbist_otp_load"  	    
+        act: "rcv" default: "'0" 
+        package: "otp_ctrl_pkg" 
+        desc: "MBIST Interface to OTP" 
+    }
+    { 
+        struct: "num_fuse_mbist_arrays" 
+        type: "uni" 
+        name: "mbist_otp_pgenb"  	    
+        act: "rcv" 
+        default: "'0" 
+        package: "otp_ctrl_pkg" 
+        desc: "MBIST Interface to OTP" 
+    }
+    { 
+        struct: "num_fuse_mbist_arrays" 
+        type: "uni" 
+        name: "mbist_otp_ps"  		    
+        act: "rcv" 
+        default: "'0" 
+        package: "otp_ctrl_pkg" 
+        desc: "MBIST Interface to OTP" 
+    }
+    { 
+        struct: "num_fuse_mbist_arrays" 
+        type: "uni" 
+        name: "mbist_otp_pd"  		    
+        act: "rcv" 
+        default: "'0" 
+        package: "otp_ctrl_pkg" 
+        desc: "MBIST Interface to OTP" 
+    }
+    { 
+        struct: "logic" 
+        type: "uni" 
+        name: "mbist_otp_mr"  		    
+        act: "rcv" 
+        default: "'0" 
+        package: "" 
+        desc: "MBIST Interface to OTP" 
+    }
+    { 
+        struct: "logic" 
+        type: "uni" 
+        name: "mbist_otp_rwl"  	    
+        act: "rcv" 
+        default: "'0" 
+        package: "" 
+        desc: "MBIST Interface to OTP" 
+    }
+    { 
+        struct: "logic" 
+        type: "uni" 
+        name: "mbist_otp_rsb"  	    
+        act: "rcv" 
+        default: "'0" 
+        package: "" 
+        desc: "MBIST Interface to OTP" 
+    }
+    { 
+        struct: "num_fuse_mbist_arrays"
+        type: "uni" 
+        name: "mbist_otp_strobe_array" 
+        act: "rcv" 
+        default: "'0" 
+        package: "otp_ctrl_pkg" 
+        desc: "MBIST Interface to OTP" 
+    }
+    { 
+        struct: "num_fuse_mbist_arrays"
+        type: "uni" 
+        name: "mbist_otp_address"  
+        act: "rcv" 
+        width: "13" 
+        default: "'0" 
+        package: "otp_ctrl_pkg" 
+        desc: "MBIST Interface to OTP" 
+    }
+    { 
+        struct: "num_fuse_mbist_arrays"
+        type: "uni" 
+        name: "otp_mbist_fuse_data"    
+        act: "req" 
+        width: "32"   
+        default: ""   
+        package: "otp_ctrl_pkg" 
+        desc: "MBIST Interface to OTP" 
+    }
+    { 
+        struct: "num_fuse_mbist_arrays"
+        type: "uni" 
+        name: "otp_mbist_fuse_rf_data"    
+        act: "req" 
+        width: "8"   
+        default: ""   
+        package: "otp_ctrl_pkg" 
+        desc: "MBIST Interface to OTP" 
+    }
+    { 
+        struct: "logic" 
+        type: "uni" name: "sel_wr_timing"          
+        act: "rcv" 
+        default: "'0" 
+        package: "" 
+        desc: "MBIST Interface to OTP" 
+    }
+    
     { struct:  "lc_otp_vendor_test"
       type:    "req_rsp"
       name:    "lc_otp_vendor_test"
@@ -595,104 +749,6 @@ otp_size_as_uint32 = otp_size_as_bytes // 4
     }
   ]
 
-  features: [
-    {
-      name: "OTP_CTRL.PARTITION.VENDOR_TEST"
-      desc: '''Vendor test partition is used for OTP programming smoke check during manufacturing flow.
-      In this partition, ECC uncorrectable errors will not lead to fatal errors and alerts.
-      Instead the error will be reported as correctable ECC error.
-      '''
-    }
-    {
-      name: "OTP_CTRL.PARTITION.CREATOR_SW_CFG"
-      desc: '''During calibration stage, various parameters (clock, voltage, and timing sources) are calibrated and recorded to CREATOR_SW_CFG partition.
-      '''
-    }
-    {
-      name: "OTP_CTRL.PARTITION.OWNER_SW_CFG"
-      desc: "Define attriutes for rom code execution"
-    }
-    {
-      name: "OTP_CTRL.INIT"
-      desc: '''When power is up, OTP controller reads devices status.
-      After all reads complete, the controller performs integrity check on the HW_CFG* and SECRET partitions.
-      Once all integrity checks are complete, the controller marks outputs as valid.
-      '''
-    }
-    {
-      name: "OTP_CTRL.ENTROPY_READ"
-      desc: '''Firmware can read entropy from ENTROPY_SRC block by configuring following field of HW_CFG* partition.
-        - EN_CSRNG_SW_APP_READ
-      '''
-    }
-    {
-      name: "OTP_CTRL.KEY_DERIVATION"
-      desc: "OTP controller participate key derivation process by providing scramble key seed to SRAM_CTRL and FLASH_CTRL."
-    }
-    {
-      name: "OTP_CTRL.PROGRAM"
-      desc: '''All other partitions except life cycle partition are programmed through DAI interface.
-      And once non-zero digest is programmed to these partition, no further write access is allowed.
-      Life cycle partition is programmed by LC_CTRL.
-      '''
-    }
-    {
-      name: "OTP_CTRL.PARTITION.SECRET0"
-      desc: "Test unlock tokens, Test exit token"
-    }
-    {
-      name: "OTP_CTRL.PARTITION.SECRET1"
-      desc: "SRAM and FLASH scrambling key"
-    }
-    {
-      name: "OTP_CTRL.PARTITION.SECRET2"
-      desc: "RMA unlock token and creator root key"
-    }
-    {
-      name: "OTP_CTRL.PARTITION.LIFE_CYCLE"
-      desc: '''LC state, LC transition count.
-      This feature is owned by the LC_CTRL and cannot be tested well through the OTP_CTRL CSR interface.
-      '''
-    }
-    {
-      name: "OTP_CTRL.PARTITIONS_FEATURE.READ_LOCK"
-      desc: '''Following partitions can be read lockable by CSR.
-                 - VENDOR_TEST
-                 - CREATOR_SW_CFG
-                 - OWNER_SW_CFG
-               Following partitions can be read lockable by writing digest.
-                 - SECRET0
-                 - SECRET1
-                 - RECRET2
-      All read attempt to these partitions after read is locked will trigger AccessError (recoverable).
-      '''
-    }
-    {
-      name: "OTP_CTRL.PARTITIONS_FEATURE.WRITE_LOCK"
-      desc: "All partitions except LIFE_CYCLE can be write lockable by writing digest."
-    }
-    {
-      name: "OTP_CTRL.ERROR_HANDLING.RECOVERABLE"
-      desc: "Recoverable error is created when unauthorized access atempt are detected via dai interface."
-    }
-    {
-      name: "OTP_CTRL.ERROR_HANDLING.FATAL"
-      desc: "Unrecoverable errors are created for uncorrectable ecc error, otp macro malfunction and unauthorized access via lc_ctrl."
-    }
-    {
-      name: "OTP_CTRL.BACKGROUND_CHECK.CHECK_TIMEOUT"
-      desc: "Timeout value for the integrity and consistency checks."
-    }
-    {
-      name: "OTP_CTRL.BACKGROUND_CHECK.INTEGRITY_CHECK_PERIOD"
-      desc: "The interval which the digest of the partition is recomputed to check integrity of locked partition."
-    }
-    {
-      name: "OTP_CTRL.BACKGROUND_CHECK.CONSISTENCY_CHECK_PERIOD"
-      desc: "Re-read period of the buffer registers to ensure data is matched with the associated OTP partition."
-    }
-  ]
-
   ///////////////
   // Registers //
   ///////////////
@@ -778,6 +834,10 @@ otp_size_as_uint32 = otp_size_as_bytes // 4
           { bits: "${num_part+8}"
             name: "CHECK_PENDING"
             desc: "Set to 1 if an integrity or consistency check triggered by the LFSR timer or via !!CHECK_TRIGGER is pending."
+          }
+          { bits: "${num_part+9}"
+            name: "RESET_ALLOWED"
+            desc: "Indicates a SW reset is allowed. For simulation only."
           }
         ]
       }
@@ -882,24 +942,19 @@ otp_size_as_uint32 = otp_size_as_bytes // 4
         desc: '''
               Register write enable for all direct access interface registers.
               ''',
-        swaccess: "rw0c",
-        hwaccess: "hrw",
+        swaccess: "ro",
+        hwaccess: "hwo",
         hwext:    "true",
-        hwqe:     "true",
         tags: [ // OTP internal HW will set this enable register to 0 when OTP is not under IDLE
                 // state, so could not auto-predict its value
                 "excl:CsrNonInitTests:CsrExclCheck"],
         fields: [
           {
               bits:   "0",
-              desc: '''
-              This bit controls whether the DAI registers can be written.
-              Write 0 to it in order to clear the bit.
-
-              Note that the hardware also modulates this bit and sets it to 0 temporarily
-              during an OTP operation such that the corresponding address and data registers
-              cannot be modified while an operation is pending. The !!DAI_IDLE status bit
-              will also be set to 0 in such a case.
+              desc: ''' This bit is hardware-managed and only readable by software.
+              The DAI sets this bit temporarily to 0 during an OTP operation such that
+              the corresponding address and data registers cannot be modified while
+              the operation is pending.
               '''
               resval: 1,
           },
@@ -1239,29 +1294,46 @@ otp_size_as_uint32 = otp_size_as_bytes // 4
 
     // OTP wrapper-specific registers
     prim: [
-      { name: "CSR0",
-        desc: ""
+      { name: "MACRO_CONTROL",
+        desc: "fuse macro mode control"
         swaccess: "rw",
         hwaccess: "hro",
         hwext:    "false",
         hwqe:     "false",
+        tags: [ // Write to MACRO_CONTROL randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
         fields: [
-          { bits: "0",
-            name: "field0",
-            desc: "",
-            resval: "0x0",
-          }
-          { bits: "1",
-            name: "field1",
-            desc: "",
+          { bits: "1:0",
+            name: "macro_mode",
+            desc: "0: standard array, 1: redundancy array, 2: test array",
             resval: "0x0",
           }
           { bits: "2",
-            name: "field2",
-            desc: "",
+            name: "ecc_sel",
+            desc: "select ecc array when in redundancy or test modes",
             resval: "0x0",
           }
-          { bits: "13:4",
+          { bits: "4:3",
+            name: "test_row_col_sel",
+            desc: "used to control row or colum selection in test array mode. 00 = 1st test row, 01 = 2nd test row, 10 = 1st test col, 11 = 2nd test col"
+            resval: "0x0",
+          }
+          { bits: "5",
+            name: "read_margin",
+            desc: "Setting this bit enables fuse reads in high margin mode"
+            resval: "0x0",
+          }
+          { bits: "6",
+            name: "ecc_disable",
+            desc: "this bit disables ecc fuse writing and read checking"
+            resval: "0x0",
+          }
+          { bits: "7",
+            name: "redundancy_autoinit_disable",
+            desc: "this bit disables automatic tsmc redundancy flop initialization"
+            resval: "0x0",
+          }
+          { bits: "13:8",
             name: "field3",
             desc: ""
             resval: "0x0",
@@ -1273,261 +1345,789 @@ otp_size_as_uint32 = otp_size_as_bytes // 4
           }
         ]
       },
-      { name: "CSR1",
-        desc: ""
-        swaccess: "rw",
-        hwaccess: "hro",
-        hwext:    "false",
-        hwqe:     "false",
-        fields: [
-          { bits: "6:0",
-            name: "field0",
-            desc: ""
-            resval: "0x0",
-          }
-          { bits: "7:7",
-            name: "field1",
-            desc: "",
-            resval: "0x0",
-          }
-          { bits: "14:8",
-            name: "field2",
-            desc: ""
-            resval: "0x0",
-          }
-          { bits: "15:15",
-            name: "field3",
-            desc: "",
-            resval: "0x0",
-          }
-          { bits: "31:16",
-            name: "field4",
-            desc: "",
-            resval: "0x0",
-          }
-        ]
-      },
-      { name: "CSR2",
-        desc: ""
-        swaccess: "rw",
-        hwaccess: "hro",
-        hwext:    "false",
-        hwqe:     "false",
-        fields: [
-          { bits: "0",
-            name: "field0",
-            desc: "",
-            resval: "0x0",
-          }
-        ]
-      },
-      { name: "CSR3",
-        desc: ""
-        swaccess: "rw",
-        hwaccess: "hrw",
-        hwext:    "false",
-        hwqe:     "false",
-        fields: [
-         { bits: "2:0",
-            name: "field0",
-            desc: ""
-            swaccess: "rw1c",
-            resval: "0x0",
-         }
-         { bits: "13:4",
-            name: "field1",
-            desc: "",
-            swaccess: "rw1c",
-            resval: "0x0",
-         }
-         { bits: "16",
-            name: "field2",
-            desc: "",
-            swaccess: "rw1c",
-            resval: "0x0",
-         }
-         { bits: "17",
-            name: "field3",
-            desc: "",
-            swaccess: "ro",
-            resval: "0x0",
-         }
-         { bits: "18",
-            name: "field4",
-            desc: "",
-            swaccess: "ro",
-            resval: "0x0",
-         }
-         { bits: "19",
-            name: "field5",
-            desc: "",
-            swaccess: "ro",
-            resval: "0x0",
-         }
-         { bits: "20",
-            name: "field6",
-            desc: "",
-            swaccess: "ro",
-            resval: "0x0",
-         }
-         { bits: "21",
-            name: "field7",
-            desc: "",
-            swaccess: "ro",
-            resval: "0x0",
-         }
-         { bits: "22",
-            name: "field8",
-            desc: "",
-            swaccess: "ro",
-            resval: "0x0",
-         }
-        ]
-      },
-      { name: "CSR4",
-        desc: ""
-        swaccess: "rw",
-        hwaccess: "hro",
-        hwext:    "false",
-        hwqe:     "false",
-        fields: [
-          { bits: "9:0",
-            name: "field0",
-            desc: ""
-            resval: "0x0",
-          }
-          { bits: "12",
-            name: "field1",
-            desc: ""
-            resval: "0x0",
-          }
-          { bits: "13",
-            name: "field2",
-            desc: ""
-            resval: "0x0",
-          }
-          { bits: "14",
-            name: "field3",
-            desc: ""
-            resval: "0x0",
-          }
-        ]
-      },
-      { name: "CSR5",
-        desc: ""
-        swaccess: "rw",
-        hwaccess: "hrw",
-        hwext:    "false",
-        hwqe:     "false",
-        fields: [
-         { bits: "5:0",
-            name: "field0",
-            desc: ""
-            swaccess: "rw",
-            resval: "0x0",
-         }
-         { bits: "7:6",
-            name: "field1",
-            desc: ""
-            swaccess: "rw",
-            resval: "0x0",
-         }
-         { bits: "8",
-            name: "field2",
-            desc: "",
-            swaccess: "ro",
-            resval: "0x0",
-         }
-         { bits: "11:9",
-           name: "field3",
-           desc: ""
-           swaccess: "ro",
-           resval: "0x0",
-         }
-         { bits: "12",
-           name: "field4",
-           desc: ""
-           swaccess: "ro",
-           resval: "0x0",
-         }
-         { bits: "13",
-           name: "field5",
-           desc: ""
-           swaccess: "ro",
-           resval: "0x0",
-         }
-         { bits: "31:16",
-            name: "field6",
-            desc: ""
-            swaccess: "rw",
-            resval: "0x0",
-         }
-        ]
-      },
-      { name: "CSR6",
-        desc: ""
-        swaccess: "rw",
-        hwaccess: "hro",
-        hwext:    "false",
-        hwqe:     "false",
-        fields: [
-          { bits: "9:0",
-            name: "field0",
-            desc: ""
-            resval: "0x0",
-          }
-          { bits: "11",
-            name: "field1",
-            desc: "",
-            swaccess: "rw",
-            resval: "0x0",
-          }
-          { bits: "12",
-            name: "field2",
-            desc: "",
-            swaccess: "rw",
-            resval: "0x0",
-          }
-          { bits: "31:16",
-            name: "field3",
-            desc: ""
-            resval: "0x0",
-          }
-        ]
-      },
-      { name: "CSR7",
-        desc: "",
+      { name: "READ_ECC_INFO",
+        desc: "ecc info from previous fuse read"
         swaccess: "ro",
         hwaccess: "hrw",
         hwext:    "false",
         hwqe:     "false",
+        tags: [ // Write to READ_ECC_INFO randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
         fields: [
-         { bits: "5:0",
-           name: "field0",
-           desc: ""
-           swaccess: "ro",
-           resval: "0x0",
+          { bits: "7:0",
+            name: "ecc_info_0",
+            desc: "fuse word 0 ecc info",
+            resval: "0x0", 
+          }
+          { bits: "15:8",
+            name: "ecc_info_1",
+            desc: "fuse word 1 ecc info",
+            resval: "0x0",
+          }
+          { bits: "23:16",
+            name: "ecc_info_2",
+            desc: "fuse word 2 ecc info",
+            resval: "0x0",
+          }
+          { bits: "31:24",
+            name: "ecc_info_3",
+            desc: "fuse word 3 ecc info",
+            resval: "0x0",
+          }
+        ]
+      },
+
+      { name: "FUSE_WRAPPER_RD_CFG_0",
+        desc: "fuse macro wrapper read timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to FUSE_WRAPPER_RD_CFG_0 randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "11:0",
+            name: "TSUR_PD_PS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUR_PD_PS timing"
+            resval: "0x147",
+          }
+          { bits: "21:12",
+            name: "TSUR_PS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUR_PS timing"
+            resval: "0x57",
+          }
+          { bits: "30:22",
+            name: "TSUR_PS_CS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUR_PS_CS timing"
+            resval: "0x40",
+          }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_1",
+        desc: "fuse macro wrapper read timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "8:0",
+            name: "TSUP_PS_CS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUP_PS_CS timing"
+            resval: "0x40",
+          }
+          { bits: "18:9",
+            name: "TSUP_PS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUP_PS timing"
+            resval: "0x57",
+          }
+          { bits: "28:19",
+            name: "TSQ_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSQ timing"
+            resval: "0x57",
+          }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_2",
+        desc: "fuse macro wrapper read timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "10:0",
+            name: "TSQ_M_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSQ_M timing"
+            resval: "0xDA",
          }
-         { bits: "10:8",
-           name: "field1",
-           desc: "",
-           swaccess: "ro",
-           resval: "0x0",
+         { bits: "24:11",
+            name: "TPGM_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TPGM timing"
+            resval: "0x753",
          }
-         { bits: "14",
-           name: "field2",
-           desc: "",
-           swaccess: "ro",
-           resval: "0x0",
-         }
-         { bits: "15",
-           name: "field3",
-           desc: "",
-           swaccess: "ro",
-           resval: "0x0",
+         { bits: "31:25",
+            name: "TSUR_LD_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUR_LD timing"
+            resval: "0x31",
          }
         ]
       },
-    ]
+      { name: "FUSE_WRAPPER_RD_CFG_3",
+        desc: "fuse macro wrapper read timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "9:0",
+            name: "THR_PS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THR_PS timing"
+            resval: "0x5E",
+          }
+          { bits: "19:10",
+            name: "THP_PS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THP_PS timing"
+            resval: "0x5E",
+          }
+          { bits: "28:20",
+            name: "THP_CS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THP_CS timing"
+            resval: "0x2A",
+          }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_4",
+        desc: "fuse macro wrapper read timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "8:0",
+            name: "THR_CS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THR_CS timing"
+            resval: "0x2A",
+         }
+         { bits: "17:9",
+            name: "THP_PS_CS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THP_PS_CS timing"
+            resval: "0x35",
+         }
+         { bits: "26:18",
+            name: "THR_PS_CS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THR_PS_CS timing"
+            resval: "0x35",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_5",
+        desc: "fuse macro wrapper read timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "7:0",
+            name: "TSUR_A_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUR_A timing"
+            resval: "0xF",
+          }
+          { bits: "15:8",
+            name: "TSUP_A_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUP_A timing"
+            resval: "0xF",
+          }
+          { bits: "23:16",
+            name: "THP_A_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THP_A timing"
+            resval: "0xF",
+          }
+         { bits: "31:24",
+            name: "TSUP_LD_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUP_LD timing"
+            resval: "0x31",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_6",
+        desc: "fuse macro wrapper read timing config",
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "9:0",
+           name: "TRD_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy TRD timing"
+           resval: "0x5A",
+         }
+         { bits: "20:10",
+           name: "TRD_M_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy TRD_M timing"
+           resval: "0xDA",
+         }
+         { bits: "28:21",
+           name: "THR_A_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy THR_A timing"
+           resval: "0x13",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_7",
+        desc: "fuse macro wrapper read timing config",
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "7:0",
+           name: "THP_PD_PS_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy THP_PD_PS timing"
+           resval: "0x1B",
+         }
+         { bits: "15:8",
+           name: "DATA_CAPTURE_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy DATA_CAPTURE timing"
+           resval: "0x1",
+         }
+         { bits: "23:16",
+           name: "ADDR_CAPTURE_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy ADDR_CAPTURE timing"
+           resval: "0x1",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_8",
+        desc: "fuse macro wrapper read timing config",
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "17:0",
+           name: "TRIGGER_POWER_DOWN_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy TRIGGER_POWER_DOWN timing"
+           resval: "0x493E",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_0",
+        desc: "fuse macro wrapper write timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "11:0",
+            name: "TSUR_PD_PS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUR_PD_PS timing"
+            resval: "0x57",
+          }
+          { bits: "21:12",
+            name: "TSUR_PS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUR_PS timing"
+            resval: "0x17",
+          }
+          { bits: "30:22",
+            name: "TSUR_PS_CS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUR_PS_CS timing"
+            resval: "0x11",
+          }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_1",
+        desc: "fuse macro wrapper write timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "8:0",
+            name: "TSUP_PS_CS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUP_PS_CS timing"
+            resval: "0x11",
+          }
+          { bits: "18:9",
+            name: "TSUP_PS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUP_PS timing"
+            resval: "0x17",
+          }
+          { bits: "28:19",
+            name: "TSQ_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSQ timing"
+            resval: "0x17",
+          }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_2",
+        desc: "fuse macro wrapper write timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "10:0",
+            name: "TSQ_M_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSQ_M timing"
+            resval: "0x3A",
+         }
+         { bits: "24:11",
+            name: "TPGM_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TPGM timing"
+            resval: "0x1F4",
+         }
+         { bits: "31:25",
+            name: "TSUR_LD_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUR_LD timing"
+            resval: "0xD",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_3",
+        desc: "fuse macro wrapper write timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "9:0",
+            name: "THR_PS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THR_PS timing"
+            resval: "0x19",
+          }
+          { bits: "19:10",
+            name: "THP_PS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THP_PS timing"
+            resval: "0x19",
+          }
+          { bits: "28:20",
+            name: "THP_CS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THP_CS timing"
+            resval: "0xB",
+          }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_4",
+        desc: "fuse macro wrapper write timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "8:0",
+            name: "THR_CS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THR_CS timing"
+            resval: "0xB",
+         }
+         { bits: "17:9",
+            name: "THP_PS_CS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THP_PS_CS timing"
+            resval: "0xE",
+         }
+         { bits: "26:18",
+            name: "THR_PS_CS_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THR_PS_CS timing"
+            resval: "0xE",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_5",
+        desc: "fuse macro wrapper write timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "7:0",
+            name: "TSUR_A_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUR_A timing"
+            resval: "0x4",
+          }
+          { bits: "15:8",
+            name: "TSUP_A_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUP_A timing"
+            resval: "0x4",
+          }
+          { bits: "23:16",
+            name: "THP_A_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy THP_A timing"
+            resval: "0x5",
+          }
+         { bits: "31:24",
+            name: "TSUP_LD_CYCLES",
+            desc: "number oscialltor clock cycles to satisfy TSUP_LD timing"
+            resval: "0xD",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_6",
+        desc: "fuse macro wrapper write timing config",
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "9:0",
+           name: "TRD_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy TRD timing"
+           resval: "0x1B",
+         }
+         { bits: "20:10",
+           name: "TRD_M_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy TRD_M timing"
+           resval: "0x3A",
+         }
+         { bits: "28:21",
+           name: "THR_A_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy THR_A timing"
+           resval: "0x5",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_7",
+        desc: "fuse macro wrapper write timing config",
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "7:0",
+           name: "THP_PD_PS_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy THP_PD_PS timing"
+           resval: "0x7",
+         }
+         { bits: "15:8",
+           name: "DATA_CAPTURE_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy DATA_CAPTURE timing"
+           resval: "0x1",
+         }
+         { bits: "23:16",
+           name: "ADDR_CAPTURE_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy ADDR_CAPTURE timing"
+           resval: "0x1",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_8",
+        desc: "fuse macro wrapper write timing config",
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "17:0",
+           name: "TRIGGER_POWER_DOWN_CYCLES",
+           desc: "number oscialltor clock cycles to satisfy TRIGGER_POWER_DOWN timing"
+           resval: "0x1388",
+         }
+        ]
+      },
+    ],
+    
+    // OTP wrapper-specific registers
+/// prim: [
+///   { name: "CSR0",
+///     desc: ""
+///     swaccess: "rw",
+///     hwaccess: "hro",
+///     hwext:    "false",
+///     hwqe:     "false",
+///     fields: [
+///       { bits: "0",
+///         name: "field0",
+///         desc: "",
+///         resval: "0x0",
+///       }
+///       { bits: "1",
+///         name: "field1",
+///         desc: "",
+///         resval: "0x0",
+///       }
+///       { bits: "2",
+///         name: "field2",
+///         desc: "",
+///         resval: "0x0",
+///       }
+///       { bits: "13:4",
+///         name: "field3",
+///         desc: ""
+///         resval: "0x0",
+///       }
+///       { bits: "26:16",
+///         name: "field4",
+///         desc: ""
+///         resval: "0x0",
+///       }
+///     ]
+///   },
+///   { name: "CSR1",
+///     desc: ""
+///     swaccess: "rw",
+///     hwaccess: "hro",
+///     hwext:    "false",
+///     hwqe:     "false",
+///     fields: [
+///       { bits: "6:0",
+///         name: "field0",
+///         desc: ""
+///         resval: "0x0",
+///       }
+///       { bits: "7:7",
+///         name: "field1",
+///         desc: "",
+///         resval: "0x0",
+///       }
+///       { bits: "14:8",
+///         name: "field2",
+///         desc: ""
+///         resval: "0x0",
+///       }
+///       { bits: "15:15",
+///         name: "field3",
+///         desc: "",
+///         resval: "0x0",
+///       }
+///       { bits: "31:16",
+///         name: "field4",
+///         desc: "",
+///         resval: "0x0",
+///       }
+///     ]
+///   },
+///   { name: "CSR2",
+///     desc: ""
+///     swaccess: "rw",
+///     hwaccess: "hro",
+///     hwext:    "false",
+///     hwqe:     "false",
+///     fields: [
+///       { bits: "0",
+///         name: "field0",
+///         desc: "",
+///         resval: "0x0",
+///       }
+///     ]
+///   },
+///   { name: "CSR3",
+///     desc: ""
+///     swaccess: "rw",
+///     hwaccess: "hrw",
+///     hwext:    "false",
+///     hwqe:     "false",
+///     fields: [
+///      { bits: "2:0",
+///         name: "field0",
+///         desc: ""
+///         swaccess: "rw1c",
+///         resval: "0x0",
+///      }
+///      { bits: "13:4",
+///         name: "field1",
+///         desc: "",
+///         swaccess: "rw1c",
+///         resval: "0x0",
+///      }
+///      { bits: "16",
+///         name: "field2",
+///         desc: "",
+///         swaccess: "rw1c",
+///         resval: "0x0",
+///      }
+///      { bits: "17",
+///         name: "field3",
+///         desc: "",
+///         swaccess: "ro",
+///         resval: "0x0",
+///      }
+///      { bits: "18",
+///         name: "field4",
+///         desc: "",
+///         swaccess: "ro",
+///         resval: "0x0",
+///      }
+///      { bits: "19",
+///         name: "field5",
+///         desc: "",
+///         swaccess: "ro",
+///         resval: "0x0",
+///      }
+///      { bits: "20",
+///         name: "field6",
+///         desc: "",
+///         swaccess: "ro",
+///         resval: "0x0",
+///      }
+///      { bits: "21",
+///         name: "field7",
+///         desc: "",
+///         swaccess: "ro",
+///         resval: "0x0",
+///      }
+///      { bits: "22",
+///         name: "field8",
+///         desc: "",
+///         swaccess: "ro",
+///         resval: "0x0",
+///      }
+///     ]
+///   },
+///   { name: "CSR4",
+///     desc: ""
+///     swaccess: "rw",
+///     hwaccess: "hro",
+///     hwext:    "false",
+///     hwqe:     "false",
+///     fields: [
+///       { bits: "9:0",
+///         name: "field0",
+///         desc: ""
+///         resval: "0x0",
+///       }
+///       { bits: "12",
+///         name: "field1",
+///         desc: ""
+///         resval: "0x0",
+///       }
+///       { bits: "13",
+///         name: "field2",
+///         desc: ""
+///         resval: "0x0",
+///       }
+///       { bits: "14",
+///         name: "field3",
+///         desc: ""
+///         resval: "0x0",
+///       }
+///     ]
+///   },
+///   { name: "CSR5",
+///     desc: ""
+///     swaccess: "rw",
+///     hwaccess: "hrw",
+///     hwext:    "false",
+///     hwqe:     "false",
+///     fields: [
+///      { bits: "5:0",
+///         name: "field0",
+///         desc: ""
+///         swaccess: "rw",
+///         resval: "0x0",
+///      }
+///      { bits: "7:6",
+///         name: "field1",
+///         desc: ""
+///         swaccess: "rw",
+///         resval: "0x0",
+///      }
+///      { bits: "8",
+///         name: "field2",
+///         desc: "",
+///         swaccess: "ro",
+///         resval: "0x0",
+///      }
+///      { bits: "11:9",
+///        name: "field3",
+///        desc: ""
+///        swaccess: "ro",
+///        resval: "0x0",
+///      }
+///      { bits: "12",
+///        name: "field4",
+///        desc: ""
+///        swaccess: "ro",
+///        resval: "0x0",
+///      }
+///      { bits: "13",
+///        name: "field5",
+///        desc: ""
+///        swaccess: "ro",
+///        resval: "0x0",
+///      }
+///      { bits: "31:16",
+///         name: "field6",
+///         desc: ""
+///         swaccess: "rw",
+///         resval: "0x0",
+///      }
+///     ]
+///   },
+///   { name: "CSR6",
+///     desc: ""
+///     swaccess: "rw",
+///     hwaccess: "hro",
+///     hwext:    "false",
+///     hwqe:     "false",
+///     fields: [
+///       { bits: "9:0",
+///         name: "field0",
+///         desc: ""
+///         resval: "0x0",
+///       }
+///       { bits: "11",
+///         name: "field1",
+///         desc: "",
+///         swaccess: "rw",
+///         resval: "0x0",
+///       }
+///       { bits: "12",
+///         name: "field2",
+///         desc: "",
+///         swaccess: "rw",
+///         resval: "0x0",
+///       }
+///       { bits: "31:16",
+///         name: "field3",
+///         desc: ""
+///         resval: "0x0",
+///       }
+///     ]
+///   },
+///   { name: "CSR7",
+///     desc: "",
+///     swaccess: "ro",
+///     hwaccess: "hrw",
+///     hwext:    "false",
+///     hwqe:     "false",
+///     fields: [
+///      { bits: "5:0",
+///        name: "field0",
+///        desc: ""
+///        swaccess: "ro",
+///        resval: "0x0",
+///      }
+///      { bits: "10:8",
+///        name: "field1",
+///        desc: "",
+///        swaccess: "ro",
+///        resval: "0x0",
+///      }
+///      { bits: "14",
+///        name: "field2",
+///        desc: "",
+///        swaccess: "ro",
+///        resval: "0x0",
+///      }
+///      { bits: "15",
+///        name: "field3",
+///        desc: "",
+///        swaccess: "ro",
+///        resval: "0x0",
+///      }
+///     ]
+///   },
+/// ]
   }
 }

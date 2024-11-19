@@ -25,6 +25,11 @@ module otp_ctrl
   // OTP clock
   input                                              clk_i,
   input                                              rst_ni,
+  // Fixed Freq clock for tech specific macro
+  input  logic                                       clk_efuse_i,
+  // dft control for tech specific reset sync
+  input  logic                                       tstrst_i,
+  input  logic                                       tstrstsel_i,
   // EDN clock and interface
   logic                                              clk_edn_i,
   logic                                              rst_edn_ni,
@@ -85,7 +90,25 @@ module otp_ctrl
   input prim_mubi_pkg::mubi4_t                       scanmode_i,
   // Test-related GPIO output
   output logic [OtpTestVectWidth-1:0]                cio_test_o,
-  output logic [OtpTestVectWidth-1:0]                cio_test_en_o
+  output logic [OtpTestVectWidth-1:0]                cio_test_en_o,
+
+  // [RIVOS: fuse macro clocking]
+  input  logic                                       sel_wr_timing_i,
+
+  // [RIVOS: mbist]
+  input  logic                                       mbist_otp_mbist_mode_i,
+  input  num_fuse_mbist_arrays_t                     mbist_otp_csb_i,
+  input  num_fuse_mbist_arrays_t                     mbist_otp_load_i,
+  input  num_fuse_mbist_arrays_t                     mbist_otp_pgenb_i,
+  input  num_fuse_mbist_arrays_t                     mbist_otp_ps_i,
+  input  num_fuse_mbist_arrays_t                     mbist_otp_pd_i,
+  input  logic                                       mbist_otp_mr_i,
+  input  logic                                       mbist_otp_rwl_i,
+  input  logic                                       mbist_otp_rsb_i,
+  input  num_fuse_mbist_arrays_t                     mbist_otp_strobe_array_i,
+  input  num_fuse_mbist_arrays_t[12:0]               mbist_otp_address_i,
+  output num_fuse_mbist_arrays_t[7:0]                otp_mbist_fuse_rf_data_o,
+  output num_fuse_mbist_arrays_t[31:0]               otp_mbist_fuse_data_o
 );
 
   import prim_mubi_pkg::*;
@@ -108,6 +131,8 @@ module otp_ctrl
   `ASSERT_INIT(OtpErrorCode4_A,
                int'(MacroWriteBlankError) == int'(prim_otp_pkg::MacroWriteBlankError))
 
+  logic [1:0] otp_macro_mode;
+  
   /////////////
   // Regfile //
   /////////////
@@ -132,7 +157,8 @@ module otp_ctrl
     .reg2hw    ( reg2hw        ),
     .hw2reg    ( hw2reg        ),
     // SEC_CM: BUS.INTEGRITY
-    .intg_err_o( intg_error[0] )
+    .intg_err_o( intg_error[0] ),
+    .devmode_i ( 1'b1          )
   );
 
   ///////////////////////////////////////
@@ -221,26 +247,22 @@ module otp_ctrl
   ) u_tlul_adapter_sram (
     .clk_i,
     .rst_ni,
-    .en_ifetch_i                ( MuBi4False         ),
-    .tl_i                       ( tl_win_h2d         ),
-    .tl_o                       ( tl_win_d2h         ),
-    .req_o                      (  tlul_req          ),
-    .gnt_i                      (  tlul_gnt          ),
-    .we_o                       (                    ), // unused
-    .addr_o                     (  tlul_addr         ),
-    .wdata_o                    (                    ), // unused
-    .wmask_o                    (                    ), // unused
+    .en_ifetch_i ( MuBi4False         ),
+    .tl_i        ( tl_win_h2d         ),
+    .tl_o        ( tl_win_d2h         ),
+    .req_o       (  tlul_req          ),
+    .gnt_i       (  tlul_gnt          ),
+    .we_o        (                    ), // unused
+    .user_rsvd_o (                    ), // unused
+    .addr_o      (  tlul_addr         ),
+    .wdata_o     (                    ), // unused
+    .wmask_o     (                    ), // unused
     // SEC_CM: BUS.INTEGRITY
-    .intg_error_o               (  intg_error[1]     ),
-    .rdata_i                    (  tlul_rdata        ),
-    .rvalid_i                   (  tlul_rvalid       ),
-    .rerror_i                   (  tlul_rerror       ),
-    .req_type_o                 (                    ),
-    .compound_txn_in_progress_o (                    ),
-    .readback_en_i              ( MuBi4False         ),
-    .readback_error_o           (                    ),
-    .wr_collision_i             ( 1'b0               ),
-    .write_pending_i            ( 1'b0               )
+    .intg_error_o(  intg_error[1]     ),
+    .rdata_i     (  tlul_rdata        ),
+    .rvalid_i    (  tlul_rvalid       ),
+    .rerror_i    (  tlul_rerror       ),
+    .req_type_o  (                    )
   );
 
   logic [NumPart-1:0] tlul_part_sel_oh;
@@ -376,11 +398,6 @@ module otp_ctrl
   dai_cmd_e                     dai_cmd;
   logic [OtpByteAddrWidth-1:0]  dai_addr;
   logic [NumDaiWords-1:0][31:0] dai_wdata, dai_rdata;
-  logic direct_access_regwen_d, direct_access_regwen_q;
-
-  // This is the HWEXT implementation of a RW0C regwen bit.
-  assign direct_access_regwen_d = (reg2hw.direct_access_regwen.qe &&
-                                   !reg2hw.direct_access_regwen.q) ? 1'b0 : direct_access_regwen_q;
 
   // Any write to this register triggers a DAI command.
   assign dai_req = reg2hw.direct_access_cmd.digest.qe |
@@ -403,14 +420,11 @@ module otp_ctrl
   assign otp_idle_d = lci_prog_idle & dai_prog_idle;
   assign pwr_otp_o.otp_idle = otp_idle_q;
 
-  always_ff @(posedge clk_i or negedge rst_ni) begin : p_idle_regwen_regs
+  always_ff @(posedge clk_i or negedge rst_ni) begin : p_idle_reg
     if (!rst_ni) begin
       otp_idle_q <= 1'b0;
-      // The regwen bit has to reset to 1 so that CSR accesses are enabled by default.
-      direct_access_regwen_q  <= 1'b1;
     end else begin
       otp_idle_q <= otp_idle_d;
-      direct_access_regwen_q <= direct_access_regwen_d;
     end
   end
 
@@ -427,6 +441,7 @@ module otp_ctrl
   logic fatal_check_error_d, fatal_check_error_q;
   logic fatal_bus_integ_error_d, fatal_bus_integ_error_q;
   logic chk_pending, chk_timeout;
+  logic reset_allowed;
   logic lfsr_fsm_err, scrmbl_fsm_err;
   always_comb begin : p_errors_alerts
     // Note: since these are all fatal alert events, we latch them and keep on sending
@@ -523,8 +538,8 @@ module otp_ctrl
     hw2reg = named_reg_assign(part_digest);
     // DAI related CSRs
     hw2reg.direct_access_rdata = dai_rdata;
-    // ANDing this state with dai_idle write-protects all DAI regs during pending operations.
-    hw2reg.direct_access_regwen.d = direct_access_regwen_q & dai_idle;
+    // This write-protects all DAI regs during pending operations.
+    hw2reg.direct_access_regwen.d = dai_idle;
     // Assign these to the status register.
     hw2reg.status = {part_errors_reduced,
                      chk_timeout,
@@ -533,7 +548,8 @@ module otp_ctrl
                      part_fsm_err[KdiIdx],
                      fatal_bus_integ_error_q,
                      dai_idle,
-                     chk_pending};
+                     chk_pending,
+                     reset_allowed};
     // Error code registers.
     hw2reg.err_code = part_error;
     // Interrupt signals
@@ -810,9 +826,11 @@ end
     .TestVectWidth    ( OtpTestVectWidth    ),
     .MemInitFile      ( MemInitFile         ),
     .VendorTestOffset ( VendorTestOffset    ),
-    .VendorTestSize   ( VendorTestSize      )
+    .VendorTestSize   ( VendorTestSize      ),
+    .FUSE_NUM_ARRAYS  ( NumFuseArrays       )
   ) u_otp (
     .clk_i,
+    .clk_efuse_i,
     .rst_ni,
     // Observability controls to/from AST
     .obs_ctrl_i,
@@ -827,7 +845,10 @@ end
     .test_vect_o      ( otp_test_vect                 ),
     .test_tl_i        ( prim_tl_h2d_gated             ),
     .test_tl_o        ( prim_tl_d2h_gated             ),
+    // macro mode
+    .macro_mode_o     ( otp_macro_mode       ), // needed for DAI interface addr selection
     // Other DFT signals
+    .sel_wr_timing_i,
     .scan_en_i,
     .scan_rst_ni,
     .scanmode_i,
@@ -844,7 +865,45 @@ end
     // Read data out
     .valid_o          ( otp_rvalid           ),
     .rdata_o          ( part_otp_rdata       ),
-    .err_o            ( part_otp_err         )
+    .err_o            ( part_otp_err         ),
+
+    .tstrst_i         ( tstrst_i             ),
+    .tstrstsel_i      ( tstrstsel_i          ),
+
+    .mbist_sel_i               ( mbist_otp_mbist_mode_i   ),
+    .mbist_fuse_csb_i          ( mbist_otp_csb_i          ),
+    .mbist_fuse_load_i         ( mbist_otp_load_i         ),
+    .mbist_fuse_pgenb_i        ( mbist_otp_pgenb_i        ),
+    .mbist_fuse_ps_i           ( mbist_otp_ps_i           ),
+    .mbist_fuse_pd_i           ( mbist_otp_pd_i           ),
+    .mbist_fuse_mr_i           ( mbist_otp_mr_i           ),
+    .mbist_fuse_rwl_i          ( mbist_otp_rwl_i          ),
+    .mbist_fuse_rsb_i          ( mbist_otp_rsb_i          ),
+    .mbist_fuse_strobe_array_i ( mbist_otp_strobe_array_i ),
+    .mbist_fuse_address_i      ( mbist_otp_address_i      ),
+    .mbist_fuse_rf_data_o      ( otp_mbist_fuse_rf_data_o ),
+    .mbist_fuse_data_o         ( otp_mbist_fuse_data_o    ),
+    .reset_allowed_o           ( reset_allowed            ),
+    .trace_en_i                (1'b0),
+    .trace_final_fuse_mr_o     (),
+    .trace_final_fuse_rsb_o    (),
+    .trace_final_fuse_rwl_o    (),
+    .trace_final_fuse_tcrs_o   (),
+    .trace_fuse_address_o      (),
+    .trace_fuse_array_sel_o    (),
+    .trace_fuse_csb_o          (),
+    .trace_fuse_data_o         (),
+    .trace_fuse_ecc_address_o  (),
+    .trace_fuse_ecc_array_sel_o(),
+    .trace_fuse_ecc_data_o     (),
+    .trace_fuse_ecc_ps_o       (),
+    .trace_fuse_ecc_strobe_o   (),
+    .trace_fuse_load_o         (),
+    .trace_fuse_pd_o           (),
+    .trace_fuse_pgenb_o        (),
+    .trace_fuse_ps_o           (),
+    .trace_fuse_strobe_o       (),
+    .trace_fuse_test_address_o ()
   );
 
   logic otp_fifo_valid;
@@ -1023,6 +1082,7 @@ end
     .otp_rvalid_i     ( part_otp_rvalid[DaiIdx]               ),
     .otp_rdata_i      ( part_otp_rdata                        ),
     .otp_err_i        ( part_otp_err                          ),
+    .otp_macro_mode_i ( otp_macro_mode                        ),
     .scrmbl_mtx_req_o ( part_scrmbl_mtx_req[DaiIdx]           ),
     .scrmbl_mtx_gnt_i ( part_scrmbl_mtx_gnt[DaiIdx]           ),
     .scrmbl_cmd_o     ( part_scrmbl_req_bundle[DaiIdx].cmd    ),
@@ -1134,6 +1194,7 @@ end
   // Partition Instances //
   /////////////////////////
 
+// (neal) PartInvDefault, part_buf_data only cover implemented fuse space
   logic [$bits(PartInvDefault)/8-1:0][7:0] part_buf_data;
 
   for (genvar k = 0; k < NumPart; k ++) begin : gen_partitions
@@ -1565,5 +1626,10 @@ end
         u_otp.gen_generic.u_impl_generic.u_state_regs, alert_tx_o[3])
     `ASSERT_PRIM_REG_WE_ONEHOT_ERROR_TRIGGER_ALERT(PrimRegWeOnehotCheck_A,
         u_otp.gen_generic.u_impl_generic.u_reg_top, alert_tx_o[3])
+  end else if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin : gen_reg_we_assert_rdp
+    `ASSERT_PRIM_FSM_ERROR_TRIGGER_ALERT(PrimFsmCheck_A,
+        u_otp.gen_rdp.u_impl_rdp.u_state_regs, alert_tx_o[3])
+    `ASSERT_PRIM_REG_WE_ONEHOT_ERROR_TRIGGER_ALERT(PrimRegWeOnehotCheck_A,
+        u_otp.gen_rdp.u_impl_rdp.u_reg_top, alert_tx_o[3])
   end
 endmodule : otp_ctrl

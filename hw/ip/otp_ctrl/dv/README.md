@@ -10,7 +10,7 @@
 ## Current status
 * [Design & verification stage](../../../README.md)
   * [HW development stages](../../../../doc/project_governance/development_stages.md)
-* [Simulation results](https://reports.opentitan.org/hw/ip/otp_ctrl/dv/latest/report.html)
+* [Simulation results](https://reports.opentitan.org/integrated/hw/ip/otp_ctrl/dv/latest/report.html)
 
 ## Design features
 For detailed information on OTP_CTRL design features, please see the [OTP_CTRL HW IP technical specification](../README.md).
@@ -29,6 +29,7 @@ In addition, it instantiates the following interfaces, connects them to the DUT 
 * OTP_CTRL IOs
 * Interrupts ([`pins_if`](../../../dv/sv/common_ifs/README.md))
 * Alerts ([`alert_esc_if`](../../../dv/sv/alert_esc_agent/README.md))
+* Devmode ([`pins_if`](../../../dv/sv/common_ifs/README.md))
 
 ### Common DV utility components
 The following utilities provide generic helper tasks and functions to perform activities that are common across the project:

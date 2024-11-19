@@ -234,10 +234,16 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
       illegal_bins illegal_err = default;
     }
     partition: coverpoint part_idx {
-% for part in otp_mmap.config["partitions"]:
-<% part_name = Name.from_snake_case(part["name"]) %>\
-      bins ${part["name"].lower()} = {${part_name.as_camel_case()}Idx};
-% endfor
+      bins vendor_test    = {VendorTestIdx};
+      bins creator_sw_cfg = {CreatorSwCfgIdx};
+      bins owner_sw_cfg   = {OwnerSwCfgIdx};
+      bins hw_cfg0        = {HwCfg0Idx};
+      bins hw_cfg1        = {HwCfg1Idx};
+      bins secret0        = {Secret0Idx};
+      bins secret1        = {Secret1Idx};
+      bins secret2        = {Secret2Idx};
+      bins secret3        = {Secret3Idx};
+      bins lc_or_oob      = {LifeCycleIdx};
       bins illegal_idx    = default;
     }
     // LC partition has a separate LCI err_code to collect macro related errors.
@@ -245,7 +251,7 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
       // Illegal bin - vendor_test partition does not have EccUncorrectable error.
       illegal_bins vendor_test_ecc_uncorrectable_err =
                    binsof (partition.vendor_test) && binsof (err_code_vals.ecc_uncorr_err);
-      ignore_bins life_cycle_ignore = binsof (partition.life_cycle) &&
+      ignore_bins lc_or_oob_ignore = binsof (partition.lc_or_oob) &&
                   binsof(err_code_vals) intersect {[OtpMacroError:OtpMacroWriteBlankError]};
     }
   endgroup
@@ -273,6 +279,16 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
     dai_access_secret2: cross lc_creator_seed_sw_rw_en, dai_access_cmd;
   endgroup
 
+  covergroup dai_access_secret3_cg with function sample(bit lc_rw_en, dai_cmd_e dai_cmd);
+    lc_creator_seed_sw_rw_en: coverpoint lc_rw_en;
+    dai_access_cmd: coverpoint dai_cmd {
+      bins dai_rd     = {DaiRead};
+      bins dai_wr     = {DaiWrite};
+      bins dai_digest = {DaiDigest};
+    }
+    dai_access_secret3: cross lc_creator_seed_sw_rw_en, dai_access_cmd;
+  endgroup
+
   function new(string name, uvm_component parent);
     super.new(name, parent);
     // Create coverage from local covergroups.
@@ -285,6 +301,7 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
     dai_err_code_cg               = new();
     lci_err_code_cg               = new();
     dai_access_secret2_cg         = new();
+    dai_access_secret3_cg         = new();
   endfunction : new
 
   virtual function void build_phase(uvm_phase phase);

@@ -51,7 +51,7 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
   // when LC error bit is set.
   bit default_req_blocking = 1;
   bit lc_prog_blocking     = 1;
-  bit dai_wr_inprogress = 0;
+
   uint32_t op_done_spinwait_timeout_ns = 20_000_000;
 
   // Collect current lc_state and lc_cnt. This is used to create next lc_state and lc_cnt without
@@ -75,6 +75,15 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     // deasserts earlier than edn reset, some OTP outputs might remain X or Z when dut clock is
     // running.
     otp_ctrl_vif_init();
+
+    if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin
+      // Wait until the fuse macro enters pd state before pulling mis-sim reset.
+      // Keeps macro behav model happy
+      if (cfg.clk_rst_vif.rst_n) begin
+        wait(cfg.otp_ctrl_vif.otp_macro_pd == 'h1);
+      end
+    end
+
     super.dut_init(reset_kind);
     callback_vseq.dut_init_callback();
 
@@ -126,6 +135,13 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
           wait (cfg.otp_ctrl_vif.pwr_otp_done_o == 1);)
       if (cfg.otp_ctrl_vif.pwr_otp_done_o == 0) begin
         cfg.otp_ctrl_vif.drive_pwr_otp_init(0);
+        if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin
+          // Wait until the fuse macro enters pd state before pulling mis-sim reset.
+          // Keeps macro behav model happy
+          if (cfg.clk_rst_vif.rst_n) begin
+            wait(cfg.otp_ctrl_vif.otp_macro_pd == 'h1);
+          end
+        end
         apply_reset();
         cfg.otp_ctrl_vif.drive_pwr_otp_init(1);
       end
@@ -162,11 +178,9 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
                       bit [TL_DW-1:0] wdata0,
                       bit [TL_DW-1:0] wdata1 = 0);
     bit [TL_DW-1:0] val;
-    dai_wr_inprogress = 1;
     if (write_unused_addr) begin
       if (used_dai_addrs.exists(addr[OTP_ADDR_WIDTH - 1 : 0])) begin
         `uvm_info(`gfn, $sformatf("addr %0h is already written!", addr), UVM_MEDIUM)
-        dai_wr_inprogress = 0;
         return;
       end else begin
         used_dai_addrs[addr] = 1;
@@ -195,7 +209,6 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     end
     wait_dai_op_done();
     rd_and_clear_intrs();
-    dai_wr_inprogress = 0;
   endtask : dai_wr
 
   // This task triggers an OTP readout sequence via the DAI interface
@@ -352,11 +365,9 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     end
   endtask
 
-  // This function backdoor inject error according to ecc_err:
-  // - for OtpEccUncorrErr it injects a 2 bit eror
-  // - for OtpEccCorrErr it injects a 1 bit eror
-  // This function will output original backdoor read data for the given address
-  // so the error can be cleared.
+  // This function backdoor inject error according to ecc_err.
+  // For example, if err_mask is set to 'b01, bit 1 in OTP macro will be flipped.
+  // This function will output original backdoor read data for the given address.
   virtual function bit [TL_DW-1:0] backdoor_inject_ecc_err(bit [TL_DW-1:0] addr,
                                                            otp_ecc_err_e   ecc_err);
     bit [TL_DW-1:0] val;
@@ -411,11 +422,8 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
   endtask
 
   // For a DAI interface operation to finish, either way until status dai_idle is set, or check
-  // err_code and see if fatal error happened. In any case, break out of this wait if there
-  // is a need to stop transaction generators, since a spinwait will otherwise just stop
-  // when it times-out.
+  // err_code and see if fatal error happened.
   virtual task wait_dai_op_done();
-    if (cfg.stop_transaction_generators()) return;
     fork begin
       fork
         begin
@@ -431,12 +439,6 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
             csr_rd(.ptr(ral.err_code[DaiIdx].err_code), .value(err_val), .backdoor(1));
             // Break if error will cause fatal alerts
             if (err_val inside {OTP_TERMINAL_ERRS}) break;
-          end
-        end
-        begin
-          forever begin
-            cfg.clk_rst_vif.wait_clks(1);
-            if (cfg.stop_transaction_generators()) break;
           end
         end
       join_any
@@ -620,14 +622,14 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
   // This test access OTP_CTRL's test_access memory. The open-sourced code only test if the access
   // is valid. Please override this task in proprietary OTP.
   virtual task otp_test_access();
-    if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplGeneric) begin
+    if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplGeneric ||
+        `PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin
       repeat (10) begin
         bit [TL_DW-1:0] data;
         bit test_access_en;
         bit [TL_AW-1:0] rand_addr = $urandom_range(0, NUM_PRIM_REG - 1) * 4;
         bit [TL_AW-1:0] tlul_addr =
             cfg.ral_models["otp_ctrl_prim_reg_block"].get_addr_from_offset(rand_addr);
-        if (cfg.stop_transaction_generators()) break;
         rand_drive_dft_en();
         `DV_CHECK_STD_RANDOMIZE_FATAL(data)
         test_access_en = cfg.otp_ctrl_vif.lc_dft_en_i == lc_ctrl_pkg::On;

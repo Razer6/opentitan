@@ -126,6 +126,7 @@ package otp_ctrl_env_pkg;
     OtpBusIntegErrorIdx,
     OtpDaiIdleIdx,
     OtpCheckPendingIdx,
+    OtpResetAllowedIdx,
     OtpStatusFieldSize
   } otp_status_e;
 
@@ -226,15 +227,6 @@ package otp_ctrl_env_pkg;
 
   function automatic bit is_sw_part_idx(int part_idx);
     return (PartInfo[part_idx].variant == Unbuffered);
-  endfunction
-
-  function automatic bit is_hw_part(bit [TL_DW-1:0] addr);
-    int part_idx = get_part_index(addr);
-    return is_hw_part_idx(part_idx);
-  endfunction
-
-  function automatic bit is_hw_part_idx(int part_idx);
-    return (PartInfo[part_idx].variant == Buffered);
   endfunction
 
   // Returns true if this partition supports ECC. Otherwise, no ECC errors are reported, and

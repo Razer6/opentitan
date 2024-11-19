@@ -41,7 +41,7 @@ package otp_ctrl_env_pkg;
   parameter uint NUM_EDN                 = 1;
 
   parameter uint DIGEST_SIZE             = 8;
-  parameter uint SW_WINDOW_BASE_ADDR     = 'h800;
+  parameter uint SW_WINDOW_BASE_ADDR     = 'h4000;
   parameter uint SW_WINDOW_SIZE          = NumSwCfgWindowWords * 4;
 
   parameter uint TL_SIZE = (TL_DW / 8);
@@ -76,13 +76,24 @@ package otp_ctrl_env_pkg;
     VendorTestOffset,
     CreatorSwCfgOffset,
     OwnerSwCfgOffset,
-    RotCreatorAuthCodesignOffset,
-    RotCreatorAuthStateOffset,
+    OwnershipSlotStateOffset,
+    RotCreatorAuthOffset,
+    RotOwnerAuthSlot0Offset,
+    RotOwnerAuthSlot1Offset,
+    PlatIntegAuthSlot0Offset,
+    PlatIntegAuthSlot1Offset,
+    PlatOwnerAuthSlot0Offset,
+    PlatOwnerAuthSlot1Offset,
+    PlatOwnerAuthSlot2Offset,
+    PlatOwnerAuthSlot3Offset,
+    ExtNvmOffset,
+    RomPatchOffset,
     HwCfg0Offset,
     HwCfg1Offset,
     Secret0Offset,
     Secret1Offset,
-    Secret2Offset
+    Secret2Offset,
+    Secret3Offset
   };
 
   // lc does not have digest
@@ -90,13 +101,24 @@ package otp_ctrl_env_pkg;
     VendorTestDigestOffset >> 2,
     CreatorSwCfgDigestOffset >> 2,
     OwnerSwCfgDigestOffset >> 2,
-    RotCreatorAuthCodesignDigestOffset >> 2,
-    RotCreatorAuthStateDigestOffset >> 2,
+    -1, // This partition does not have a digest.
+    RotCreatorAuthDigestOffset >> 2,
+    RotOwnerAuthSlot0DigestOffset >> 2,
+    RotOwnerAuthSlot1DigestOffset >> 2,
+    PlatIntegAuthSlot0DigestOffset >> 2,
+    PlatIntegAuthSlot1DigestOffset >> 2,
+    PlatOwnerAuthSlot0DigestOffset >> 2,
+    PlatOwnerAuthSlot1DigestOffset >> 2,
+    PlatOwnerAuthSlot2DigestOffset >> 2,
+    PlatOwnerAuthSlot3DigestOffset >> 2,
+    -1, // This partition does not have a digest.
+    RomPatchDigestOffset >> 2,
     HwCfg0DigestOffset >> 2,
     HwCfg1DigestOffset >> 2,
     Secret0DigestOffset >> 2,
     Secret1DigestOffset >> 2,
-    Secret2DigestOffset >> 2
+    Secret2DigestOffset >> 2,
+    Secret3DigestOffset >> 2
   };
 
   // types
@@ -110,13 +132,24 @@ package otp_ctrl_env_pkg;
     OtpVendorTestErrIdx,
     OtpCreatorSwCfgErrIdx,
     OtpOwnerSwCfgErrIdx,
-    OtpRotCreatorAuthCodesignErrIdx,
-    OtpRotCreatorAuthStateErrIdx,
+    OtpOwnershipSlotStateErrIdx,
+    OtpRotCreatorAuthErrIdx,
+    OtpRotOwnerAuthSlot0ErrIdx,
+    OtpRotOwnerAuthSlot1ErrIdx,
+    OtpPlatIntegAuthSlot0ErrIdx,
+    OtpPlatIntegAuthSlot1ErrIdx,
+    OtpPlatOwnerAuthSlot0ErrIdx,
+    OtpPlatOwnerAuthSlot1ErrIdx,
+    OtpPlatOwnerAuthSlot2ErrIdx,
+    OtpPlatOwnerAuthSlot3ErrIdx,
+    OtpExtNvmErrIdx,
+    OtpRomPatchErrIdx,
     OtpHwCfg0ErrIdx,
     OtpHwCfg1ErrIdx,
     OtpSecret0ErrIdx,
     OtpSecret1ErrIdx,
     OtpSecret2ErrIdx,
+    OtpSecret3ErrIdx,
     OtpLifeCycleErrIdx,
     OtpDaiErrIdx,
     OtpLciErrIdx,
@@ -127,6 +160,7 @@ package otp_ctrl_env_pkg;
     OtpBusIntegErrorIdx,
     OtpDaiIdleIdx,
     OtpCheckPendingIdx,
+    OtpResetAllowedIdx,
     OtpStatusFieldSize
   } otp_status_e;
 
@@ -227,15 +261,6 @@ package otp_ctrl_env_pkg;
 
   function automatic bit is_sw_part_idx(int part_idx);
     return (PartInfo[part_idx].variant == Unbuffered);
-  endfunction
-
-  function automatic bit is_hw_part(bit [TL_DW-1:0] addr);
-    int part_idx = get_part_index(addr);
-    return is_hw_part_idx(part_idx);
-  endfunction
-
-  function automatic bit is_hw_part_idx(int part_idx);
-    return (PartInfo[part_idx].variant == Buffered);
   endfunction
 
   // Returns true if this partition supports ECC. Otherwise, no ECC errors are reported, and

@@ -8,6 +8,7 @@ filesets:
   files_rtl:
     depend:
       - lowrisc:ip:otp_ctrl
+      - lowrisc:prim:clock_div
 
   files_dv:
     depend:

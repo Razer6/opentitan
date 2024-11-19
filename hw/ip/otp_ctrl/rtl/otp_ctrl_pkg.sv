@@ -45,7 +45,11 @@ package otp_ctrl_pkg;
     DaiWrite  = 3'b010,
     DaiDigest = 3'b100
   } dai_cmd_e;
+  parameter NumFuseArrays = 16;
+  parameter NumFuseMbistArrays = 1; // need to set to 1 so things build, these signals are not used in OT
+  typedef logic [NumFuseMbistArrays-1:0] num_fuse_mbist_arrays_t;
 
+  
   parameter int DeviceIdWidth = 256;
   typedef logic [DeviceIdWidth-1:0] otp_device_id_t;
 
@@ -267,6 +271,14 @@ package otp_ctrl_pkg;
     key: '0,
     nonce: '0,
     seed_valid: 1'b1
+  };
+
+  // FIXME: Neeraj Is this needed? Another way?
+  parameter sram_otp_key_rsp_t SRAM_OTP_KEY_RSP_UNCOND = '{
+    ack: 1'b0,
+    key: '0,
+    nonce: '0,
+    seed_valid: 1'b0
   };
 
   typedef struct packed {

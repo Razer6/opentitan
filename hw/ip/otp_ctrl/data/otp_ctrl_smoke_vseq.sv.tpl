@@ -105,7 +105,6 @@ class otp_ctrl_smoke_vseq extends otp_ctrl_base_vseq;
   task body();
     for (int i = 1; i <= num_trans; i++) begin
       bit [TL_DW-1:0] tlul_val;
-      if (cfg.stop_transaction_generators()) break;
       `uvm_info(`gfn, $sformatf("starting seq %0d/%0d", i, num_trans), UVM_LOW)
 
       // to avoid access locked OTP partions, issue reset and clear the OTP memory to all 0.
@@ -138,6 +137,7 @@ class otp_ctrl_smoke_vseq extends otp_ctrl_base_vseq;
         req_flash_data_key();
         req_all_sram_keys();
       end
+
       if (do_lc_trans && !cfg.otp_ctrl_vif.alert_reqs) begin
         req_lc_transition(do_lc_trans, lc_prog_blocking);
         if (cfg.otp_ctrl_vif.lc_prog_req == 0) begin
@@ -149,7 +149,6 @@ class otp_ctrl_smoke_vseq extends otp_ctrl_base_vseq;
 
       for (int i = 0; i < num_dai_op; i++) begin
         bit [TL_DW-1:0] rdata0, rdata1, backdoor_rd_val;
-        if (cfg.stop_transaction_generators()) break;
 
         `DV_CHECK_RANDOMIZE_FATAL(this)
         // recalculate part_idx in case some test turn off constraint dai_wr_legal_addr_c
@@ -169,8 +168,6 @@ class otp_ctrl_smoke_vseq extends otp_ctrl_base_vseq;
 
         // Inject ECC error.
         if (ecc_otp_err != OtpNoEccErr && dai_addr < LifeCycleOffset) begin
-          `uvm_info(`gfn, $sformatf("Injecting ecc error %0d at 0x%x", ecc_otp_err, dai_addr),
-                    UVM_HIGH)
           backdoor_rd_val = backdoor_inject_ecc_err(dai_addr, ecc_otp_err);
         end
 
@@ -189,10 +186,8 @@ class otp_ctrl_smoke_vseq extends otp_ctrl_base_vseq;
 
         // Backdoor restore injected ECC error, but should not affect fatal alerts.
         if (ecc_otp_err != OtpNoEccErr && dai_addr < LifeCycleOffset) begin
-          `uvm_info(`gfn, $sformatf("Injecting ecc error %0d at 0x%x", ecc_otp_err, dai_addr),
-                    UVM_HIGH)
           cfg.mem_bkdr_util_h.write32({dai_addr[TL_DW-3:2], 2'b00}, backdoor_rd_val);
-          // Wait for two lock cycles to make sure the local escalation error propagates to other
+          // Wait for two lock cycles to make sure the local escalation error propogates to other
           // patitions and err_code reg.
           cfg.clk_rst_vif.wait_clks(2);
         end
@@ -224,6 +219,17 @@ class otp_ctrl_smoke_vseq extends otp_ctrl_base_vseq;
       end
 
       if ($urandom_range(0, 1)) rd_digests();
+
+      if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin
+        // Wait until the fuse macro enters pd state before pulling mis-sim reset.
+        // Keeps macro behav model happy
+        if (cfg.clk_rst_vif.rst_n) begin
+          wait(cfg.otp_ctrl_vif.otp_macro_pd == 'h1);
+        end
+      end
+
+      @(posedge cfg.otp_ctrl_vif.clk_i); 
+
       if (do_dut_init) dut_init();
 
       // read and check digest in scb

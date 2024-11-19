@@ -1,0 +1,139 @@
+{
+  "partitions": [
+    {
+      "name": "ROT_CREATOR_AUTH",
+      "items": [
+        {
+          "name": "ROT_CREATOR_AUTH_NON_RAW_MFW_CODESIGN_KEY_TYPE",
+          "value": "0x43a839ad"
+        },
+        {
+          "name": "ROT_CREATOR_AUTH_NON_RAW_MFW_CODESIGN_KEY_ROLE",
+          "value": "0x918adc12"
+        },
+        {
+          "name": "ROT_CREATOR_AUTH_NON_RAW_MFW_CODESIGN_KEY",
+          "value": [
+            "0xe55bd31d",
+            "0xc46db786",
+            "0xe7600d28",
+            "0x3cf1447c",
+            "0x8deb4bfd",
+            "0x0475e3af",
+            "0xea8c8da6",
+            "0x8dc27297",
+            "0xacee59b1",
+            "0xdad33503",
+            "0x9df1af4a",
+            "0x84ade061",
+            "0xc8c2eaab",
+            "0x049d3842",
+            "0xcd2a4142",
+            "0xbe935361"
+          ]
+        },
+        {
+          "name": "ROT_CREATOR_AUTH_ROM2_PATCH_SIGVERIFY_KEY_TYPE",
+          "value": "0x43a839ad"
+        },
+        {
+          "name": "ROT_CREATOR_AUTH_ROM2_PATCH_SIGVERIFY_KEY_ROLE",
+          "value": "0xeee1ee0e"
+        },
+        {
+          "name": "ROT_CREATOR_AUTH_ROM2_PATCH_SIGVERIFY_KEY",
+          "value": [
+            "0x3e18441e",
+            "0xafc7f4b1",
+            "0x661c4eb6",
+            "0xcd9321ea",
+            "0x46dcc014",
+            "0x2a0c98d1",
+            "0xf2e96062",
+            "0x38e72353",
+            "0x89e073e9",
+            "0x3986dc7c",
+            "0xba5da823",
+            "0xcf75b35a",
+            "0x27c8c1e9",
+            "0x090450a5",
+            "0xce453a5a",
+            "0xf0b45401"
+          ]
+        },
+        {
+          "name": "ROT_CREATOR_AUTH_KEYMANIFEST_KEY_TYPE",
+          "value": "0x43a839ad"
+        },
+        {
+          "name": "ROT_CREATOR_AUTH_KEYMANIFEST_KEY_ROLE",
+          "value": "0x2642f8b5"
+        },
+        {
+          "name": "ROT_CREATOR_AUTH_KEYMANIFEST_KEY",
+          "value": [
+            "0xd2425e66",
+            "0xc6b36e8a",
+            "0x76029885",
+            "0xb900a6ce",
+            "0xd3560e37",
+            "0xba18be08",
+            "0xcfd76be7",
+            "0x6591f45b",
+            "0x2ee87b6e",
+            "0xd8ca46b6",
+            "0x6ff05fc5",
+            "0xa76bc5b9",
+            "0x27555a66",
+            "0x4292da80",
+            "0x57d4667c",
+            "0xb19efd49"
+          ]
+        },
+        {
+          "name": "ROT_CREATOR_AUTH_KEY_DEVICE_ID",
+          "value": [
+            "0x00000000",
+            "0x00000000",
+            "0x00000000",
+            "0x00000000",
+            "0x00000000",
+            "0x00000000",
+            "0x00000000",
+            "0x00000000"
+          ]
+        },
+        {
+          "name": "ROT_CREATOR_AUTH_KEY_METADATA",
+          "value": [
+            "0x00000000",
+            "0x00000000",
+            "0x00000000",
+            "0x00000000"
+          ]
+        },
+        {
+          "name": "ROT_CREATOR_AUTH_KEY_SIGNATURE",
+          "value": [
+            "0xf5243fa2",
+            "0x61a5f4cf",
+            "0xc358765c",
+            "0xe9ad3103",
+            "0x0d2b4492",
+            "0x1f9a3dc9",
+            "0x3794fa4a",
+            "0x05cf3223",
+            "0x93bd3384",
+            "0x29b4555d",
+            "0x214ff4c4",
+            "0xc6f4bdb2",
+            "0x206c2ea9",
+            "0xf701e834",
+            "0x063cc817",
+            "0xfb0ff8a1"
+          ]
+        }
+      ]
+    }
+  ]
+}

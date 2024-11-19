@@ -39,10 +39,6 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
   // This bit is used for DAI interface to mark if the read access is valid.
   bit dai_read_valid;
 
-  // This captures the regwen state as configured by the SW side (i.e. without HW modulation
-  // with the idle signal overlaid).
-  bit direct_access_regwen_state = 1;
-
   // ICEBOX(#17798): currently scb will skip checking the readout value if the ECC error is
   // uncorrectable. Because if the error is uncorrectable, current scb does not track all the
   // backdoor injected values.
@@ -156,7 +152,7 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
 
           if (cfg.otp_ctrl_vif.under_error_states() == 0) begin
             // Dai access is unlocked because the power init is done
-            void'(ral.direct_access_regwen.predict(direct_access_regwen_state));
+            void'(ral.direct_access_regwen.predict(1));
 
             // Dai idle is set because the otp init is done
             exp_status[OtpDaiIdleIdx] = 1;
@@ -166,14 +162,11 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
           exp_hw_cfg0_data = cfg.otp_ctrl_vif.under_error_states() ?
                              otp_ctrl_part_pkg::PartInvDefault[HwCfg0Offset*8 +: HwCfg0Size*8] :
                              otp_hw_cfg0_data_t'({<<32 {otp_a[HwCfg0Offset/4 +: HwCfg0Size/4]}});
-          `DV_CHECK_EQ(cfg.otp_ctrl_vif.otp_broadcast_o.valid, lc_ctrl_pkg::On)
-          `DV_CHECK_EQ(cfg.otp_ctrl_vif.otp_broadcast_o.hw_cfg0_data, exp_hw_cfg0_data)
-
-          // Hwcfg_o gets data from OTP HW cfg partition
           exp_hw_cfg1_data = cfg.otp_ctrl_vif.under_error_states() ?
                              otp_ctrl_part_pkg::PartInvDefault[HwCfg1Offset*8 +: HwCfg1Size*8] :
                              otp_hw_cfg1_data_t'({<<32 {otp_a[HwCfg1Offset/4 +: HwCfg1Size/4]}});
           `DV_CHECK_EQ(cfg.otp_ctrl_vif.otp_broadcast_o.valid, lc_ctrl_pkg::On)
+          `DV_CHECK_EQ(cfg.otp_ctrl_vif.otp_broadcast_o.hw_cfg0_data, exp_hw_cfg0_data)
           `DV_CHECK_EQ(cfg.otp_ctrl_vif.otp_broadcast_o.hw_cfg1_data, exp_hw_cfg1_data)
 
           if (!cfg.otp_ctrl_vif.under_error_states()) begin
@@ -569,10 +562,6 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
     bit         do_read_check = 1;
     uvm_reg     csr;
     dv_base_reg dv_reg;
-    string      csr_name;
-
-    `uvm_info(`gfn, $sformatf("sw state %d, reg state %d", direct_access_regwen_state,
-                             `gmv(ral.direct_access_regwen)), UVM_LOW);
 
     // if access was to a valid csr, get the csr handle
     if (csr_addr inside {cfg.ral_models[ral_name].csr_addrs}) begin
@@ -640,18 +629,14 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
       `uvm_fatal(`gfn, $sformatf("Access unexpected addr 0x%0h", csr_addr))
     end
 
-    csr_name = csr.get_name();
-
     if (addr_phase_write) begin
-      if (cfg.en_cov && cfg.otp_ctrl_vif.alert_reqs && csr_name == "direct_access_cmd") begin
+      if (cfg.en_cov && cfg.otp_ctrl_vif.alert_reqs && csr.get_name == "direct_access_cmd") begin
         cov.req_dai_access_after_alert_cg.sample(item.a_data);
       end
 
       // Skip predict if the register is locked by `direct_access_regwen`.
-      // An exception is the direct_access_regwen which may always be written.
       if (ral.direct_access_regwen.locks_reg_or_fld(dv_reg) &&
-          `gmv(ral.direct_access_regwen) == 0 &&
-          csr_name != "direct_access_regwen") return;
+          `gmv(ral.direct_access_regwen) == 0) return;
 
       void'(csr.predict(.value(item.a_data), .kind(UVM_PREDICT_WRITE), .be(item.a_mask)));
     end
@@ -659,7 +644,7 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
     // process the csr req
     // for write, update local variable and fifo at address phase
     // for read, update predication at address phase and compare at data phase
-    case (csr_name)
+    case (csr.get_name())
       // add individual case item for each csr
       "intr_state": begin
         if (data_phase_read) begin
@@ -731,6 +716,10 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
               if (part_idx == Secret2Idx) begin
                 cov.dai_access_secret2_cg.sample(
                     !(cfg.otp_ctrl_vif.lc_creator_seed_sw_rw_en_i != lc_ctrl_pkg::On),
+                    dai_cmd_e'(item.a_data));
+              end else if (part_idx == Secret3Idx) begin
+                cov.dai_access_secret3_cg.sample(
+                    !(cfg.otp_ctrl_vif.lc_owner_seed_sw_rw_en_i != lc_ctrl_pkg::On),
                     dai_cmd_e'(item.a_data));
               end else if (is_sw_part_idx(part_idx) && part_has_digest(part_idx) &&
                            item.a_data inside {DaiRead, DaiWrite}) begin
@@ -807,9 +796,6 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
                     predict_no_err(OtpDaiErrIdx);
                     predict_rdata(is_secret(dai_addr) || is_digest(dai_addr),
                                   read_out0, read_out1);
-                    // do not check direct_access_rdata_* on ECC errors in
-                    // non-integrity partitions
-                    check_dai_rd_data = 0;
                   end else begin
                     predict_no_err(OtpDaiErrIdx);
                     predict_rdata(is_secret(dai_addr) || is_digest(dai_addr),
@@ -898,6 +884,12 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
 
           // update status mask
           status_mask = 0;
+
+          // For the prim generic implementation, reset is always allowed
+          if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplGeneric) begin
+            status_mask[OtpResetAllowedIdx] = 1;
+          end
+
           // Mask out check_pending field - we do not know how long it takes to process checks.
           // Check failure can trigger all kinds of errors.
           if (under_chk) status_mask = '1;
@@ -943,7 +935,7 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
           if (under_dai_access && !cfg.otp_ctrl_vif.under_error_states()) begin
             if (item.d_data[OtpDaiIdleIdx]) begin
               under_dai_access = 0;
-              void'(ral.direct_access_regwen.predict(direct_access_regwen_state));
+              void'(ral.direct_access_regwen.predict(1));
               void'(ral.intr_state.otp_operation_done.predict(1));
             end
           end
@@ -957,11 +949,11 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
         end
 
         if (addr_phase_write && `gmv(ral.check_trigger_regwen) && item.a_data inside {[1:3]}) begin
-          bit [TL_DW-1:0] check_timeout = `gmv(ral.check_timeout) == 0 ? '1 :
+          bit [TL_DW-1:0] check_timout = `gmv(ral.check_timeout) == 0 ? '1 :
                                                                         `gmv(ral.check_timeout);
           exp_status[OtpCheckPendingIdx] = 1;
           under_chk = 1;
-          if (check_timeout <= CHK_TIMEOUT_CYC) begin
+          if (check_timout <= CHK_TIMEOUT_CYC) begin
             set_exp_alert("fatal_check_error", 1, `gmv(ral.check_timeout));
             predict_err(OtpTimeoutErrIdx);
           end else begin
@@ -971,20 +963,11 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
                   predict_err(otp_status_e'(i), OtpMacroEccCorrError);
                 end else if (cfg.ecc_chk_err[i] == OtpEccUncorrErr &&
                              part_has_integrity(i)) begin
-                  set_exp_alert("fatal_macro_error", 1, 40_000);
+                  set_exp_alert("fatal_macro_error", 1, check_timout);
                   predict_err(otp_status_e'(i), OtpMacroEccUncorrError);
                 end
               end
             end
-          end
-        end
-      end
-      "direct_access_regwen": begin
-        if (addr_phase_write) begin
-          // This locks the DAI until the next reset.
-          if (!item.a_data[0]) begin
-            direct_access_regwen_state = 0;
-            void'(ral.direct_access_regwen.predict(0));
           end
         end
       end
@@ -1015,6 +998,7 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
 <% part_name_snake = Name.from_snake_case(part["name"]).as_snake_case() %>\
       "${part_name_snake}_read_lock",
 % endfor
+      "direct_access_regwen",
       "direct_access_wdata_0",
       "direct_access_wdata_1",
       "direct_access_address",
@@ -1118,7 +1102,6 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
       sram_fifos[i].flush();
     end
 
-    direct_access_regwen_state = 1;
     under_chk             = 0;
     under_dai_access      = 0;
     ignore_digest_chk     = 0;

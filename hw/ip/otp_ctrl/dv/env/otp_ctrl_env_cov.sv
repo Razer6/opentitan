@@ -66,10 +66,26 @@ class otp_ctrl_csr_rd_after_alert_cg_wrap;
         ral.creator_sw_cfg_digest[1].get_offset(),
         ral.owner_sw_cfg_digest[0].get_offset(),
         ral.owner_sw_cfg_digest[1].get_offset(),
-        ral.rot_creator_auth_codesign_digest[0].get_offset(),
-        ral.rot_creator_auth_codesign_digest[1].get_offset(),
-        ral.rot_creator_auth_state_digest[0].get_offset(),
-        ral.rot_creator_auth_state_digest[1].get_offset()
+        ral.rot_creator_auth_digest[0].get_offset(),
+        ral.rot_creator_auth_digest[1].get_offset(),
+        ral.rot_owner_auth_slot0_digest[0].get_offset(),
+        ral.rot_owner_auth_slot0_digest[1].get_offset(),
+        ral.rot_owner_auth_slot1_digest[0].get_offset(),
+        ral.rot_owner_auth_slot1_digest[1].get_offset(),
+        ral.plat_integ_auth_slot0_digest[0].get_offset(),
+        ral.plat_integ_auth_slot0_digest[1].get_offset(),
+        ral.plat_integ_auth_slot1_digest[0].get_offset(),
+        ral.plat_integ_auth_slot1_digest[1].get_offset(),
+        ral.plat_owner_auth_slot0_digest[0].get_offset(),
+        ral.plat_owner_auth_slot0_digest[1].get_offset(),
+        ral.plat_owner_auth_slot1_digest[0].get_offset(),
+        ral.plat_owner_auth_slot1_digest[1].get_offset(),
+        ral.plat_owner_auth_slot2_digest[0].get_offset(),
+        ral.plat_owner_auth_slot2_digest[1].get_offset(),
+        ral.plat_owner_auth_slot3_digest[0].get_offset(),
+        ral.plat_owner_auth_slot3_digest[1].get_offset(),
+        ral.rom_patch_digest[0].get_offset(),
+        ral.rom_patch_digest[1].get_offset()
       };
       bins hw_digests          = {
         ral.hw_cfg0_digest[0].get_offset(),
@@ -83,7 +99,9 @@ class otp_ctrl_csr_rd_after_alert_cg_wrap;
         ral.secret1_digest[0].get_offset(),
         ral.secret1_digest[1].get_offset(),
         ral.secret2_digest[0].get_offset(),
-        ral.secret2_digest[1].get_offset()
+        ral.secret2_digest[1].get_offset(),
+        ral.secret3_digest[0].get_offset(),
+        ral.secret3_digest[1].get_offset()
       };
       bins direct_access_rdata = {
         ral.direct_access_rdata[0].get_offset(),
@@ -105,7 +123,18 @@ class otp_ctrl_csr_rd_after_alert_cg_wrap;
         ral.err_code[9].get_offset(),
         ral.err_code[10].get_offset(),
         ral.err_code[11].get_offset(),
-        ral.err_code[12].get_offset()
+        ral.err_code[12].get_offset(),
+        ral.err_code[13].get_offset(),
+        ral.err_code[14].get_offset(),
+        ral.err_code[15].get_offset(),
+        ral.err_code[16].get_offset(),
+        ral.err_code[17].get_offset(),
+        ral.err_code[18].get_offset(),
+        ral.err_code[19].get_offset(),
+        ral.err_code[20].get_offset(),
+        ral.err_code[21].get_offset(),
+        ral.err_code[22].get_offset(),
+        ral.err_code[23].get_offset()
       };
     }
   endgroup
@@ -167,13 +196,24 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
     vendor_test_lock: coverpoint parts_locked[0];
     creator_sw_cfg_lock: coverpoint parts_locked[1];
     owner_sw_cfg_lock: coverpoint parts_locked[2];
-    rot_creator_auth_codesign_lock: coverpoint parts_locked[3];
-    rot_creator_auth_state_lock: coverpoint parts_locked[4];
-    hw_cfg0_lock: coverpoint parts_locked[5];
-    hw_cfg1_lock: coverpoint parts_locked[6];
-    secret0_lock: coverpoint parts_locked[7];
-    secret1_lock: coverpoint parts_locked[8];
-    secret2_lock: coverpoint parts_locked[9];
+    ownership_slot_state_lock: coverpoint parts_locked[3];
+    rot_creator_auth_lock: coverpoint parts_locked[4];
+    rot_owner_auth_slot0_lock: coverpoint parts_locked[5];
+    rot_owner_auth_slot1_lock: coverpoint parts_locked[6];
+    plat_integ_auth_slot0_lock: coverpoint parts_locked[7];
+    plat_integ_auth_slot1_lock: coverpoint parts_locked[8];
+    plat_owner_auth_slot0_lock: coverpoint parts_locked[9];
+    plat_owner_auth_slot1_lock: coverpoint parts_locked[10];
+    plat_owner_auth_slot2_lock: coverpoint parts_locked[11];
+    plat_owner_auth_slot3_lock: coverpoint parts_locked[12];
+    ext_nvm_lock: coverpoint parts_locked[13];
+    rom_patch_lock: coverpoint parts_locked[14];
+    hw_cfg0_lock: coverpoint parts_locked[15];
+    hw_cfg1_lock: coverpoint parts_locked[16];
+    secret0_lock: coverpoint parts_locked[17];
+    secret1_lock: coverpoint parts_locked[18];
+    secret2_lock: coverpoint parts_locked[19];
+    secret3_lock: coverpoint parts_locked[20];
   endgroup
 
   // This covergroup is sampled only if flash request passed scb check.
@@ -236,17 +276,16 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
       illegal_bins illegal_err = default;
     }
     partition: coverpoint part_idx {
-      bins vendor_test = {VendorTestIdx};
+      bins vendor_test    = {VendorTestIdx};
       bins creator_sw_cfg = {CreatorSwCfgIdx};
-      bins owner_sw_cfg = {OwnerSwCfgIdx};
-      bins rot_creator_auth_codesign = {RotCreatorAuthCodesignIdx};
-      bins rot_creator_auth_state = {RotCreatorAuthStateIdx};
-      bins hw_cfg0 = {HwCfg0Idx};
-      bins hw_cfg1 = {HwCfg1Idx};
-      bins secret0 = {Secret0Idx};
-      bins secret1 = {Secret1Idx};
-      bins secret2 = {Secret2Idx};
-      bins life_cycle = {LifeCycleIdx};
+      bins owner_sw_cfg   = {OwnerSwCfgIdx};
+      bins hw_cfg0        = {HwCfg0Idx};
+      bins hw_cfg1        = {HwCfg1Idx};
+      bins secret0        = {Secret0Idx};
+      bins secret1        = {Secret1Idx};
+      bins secret2        = {Secret2Idx};
+      bins secret3        = {Secret3Idx};
+      bins lc_or_oob      = {LifeCycleIdx};
       bins illegal_idx    = default;
     }
     // LC partition has a separate LCI err_code to collect macro related errors.
@@ -254,7 +293,7 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
       // Illegal bin - vendor_test partition does not have EccUncorrectable error.
       illegal_bins vendor_test_ecc_uncorrectable_err =
                    binsof (partition.vendor_test) && binsof (err_code_vals.ecc_uncorr_err);
-      ignore_bins life_cycle_ignore = binsof (partition.life_cycle) &&
+      ignore_bins lc_or_oob_ignore = binsof (partition.lc_or_oob) &&
                   binsof(err_code_vals) intersect {[OtpMacroError:OtpMacroWriteBlankError]};
     }
   endgroup
@@ -282,6 +321,16 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
     dai_access_secret2: cross lc_creator_seed_sw_rw_en, dai_access_cmd;
   endgroup
 
+  covergroup dai_access_secret3_cg with function sample(bit lc_rw_en, dai_cmd_e dai_cmd);
+    lc_creator_seed_sw_rw_en: coverpoint lc_rw_en;
+    dai_access_cmd: coverpoint dai_cmd {
+      bins dai_rd     = {DaiRead};
+      bins dai_wr     = {DaiWrite};
+      bins dai_digest = {DaiDigest};
+    }
+    dai_access_secret3: cross lc_creator_seed_sw_rw_en, dai_access_cmd;
+  endgroup
+
   function new(string name, uvm_component parent);
     super.new(name, parent);
     // Create coverage from local covergroups.
@@ -294,6 +343,7 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
     dai_err_code_cg               = new();
     lci_err_code_cg               = new();
     dai_access_secret2_cg         = new();
+    dai_access_secret3_cg         = new();
   endfunction : new
 
   virtual function void build_phase(uvm_phase phase);
@@ -352,10 +402,40 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
       OtpOwnerSwCfgErrIdx: begin
         unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
       end
-      OtpRotCreatorAuthCodesignErrIdx: begin
+      OtpOwnershipSlotStateErrIdx: begin
         unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
       end
-      OtpRotCreatorAuthStateErrIdx: begin
+      OtpRotCreatorAuthErrIdx: begin
+        unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
+      end
+      OtpRotOwnerAuthSlot0ErrIdx: begin
+        unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
+      end
+      OtpRotOwnerAuthSlot1ErrIdx: begin
+        unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
+      end
+      OtpPlatIntegAuthSlot0ErrIdx: begin
+        unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
+      end
+      OtpPlatIntegAuthSlot1ErrIdx: begin
+        unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
+      end
+      OtpPlatOwnerAuthSlot0ErrIdx: begin
+        unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
+      end
+      OtpPlatOwnerAuthSlot1ErrIdx: begin
+        unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
+      end
+      OtpPlatOwnerAuthSlot2ErrIdx: begin
+        unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
+      end
+      OtpPlatOwnerAuthSlot3ErrIdx: begin
+        unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
+      end
+      OtpExtNvmErrIdx: begin
+        unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
+      end
+      OtpRomPatchErrIdx: begin
         unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
       end
       OtpHwCfg0ErrIdx: begin
@@ -371,6 +451,9 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
         buf_err_code_cg_wrap[part_idx - NumPartUnbuf].buf_err_code_cg.sample(val);
       end
       OtpSecret2ErrIdx: begin
+        buf_err_code_cg_wrap[part_idx - NumPartUnbuf].buf_err_code_cg.sample(val);
+      end
+      OtpSecret3ErrIdx: begin
         buf_err_code_cg_wrap[part_idx - NumPartUnbuf].buf_err_code_cg.sample(val);
       end
       OtpLifeCycleErrIdx: begin

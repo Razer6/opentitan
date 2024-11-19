@@ -75,6 +75,7 @@ class otp_ctrl_common_vseq extends otp_ctrl_base_vseq;
 
   virtual task wait_to_issue_reset(uint reset_delay_bound = 10_000_000);
     `DV_CHECK_MEMBER_RANDOMIZE_FATAL(reset_drive_cond)
+    `uvm_info(`gfn, {"ENTERING WAIT TO ISSUE RESET ", reset_drive_cond}, UVM_MEDIUM)
     case (reset_drive_cond)
       DriveRandomly: begin
         super.wait_to_issue_reset(reset_delay_bound);
@@ -83,21 +84,21 @@ class otp_ctrl_common_vseq extends otp_ctrl_base_vseq;
         `DV_SPINWAIT_EXIT(
             wait (do_otp_wr);
             cfg.clk_rst_vif.wait_clks($urandom_range(1, 70));,
-            super.wait_to_issue_reset(reset_delay_bound);)
+            cfg.clk_rst_vif.wait_clks(reset_delay_bound);)
         #($urandom_range(0, cfg.clk_rst_vif.clk_period_ps) * 1ps);
       end
       DuringOTPDaiDigest: begin
         `DV_SPINWAIT_EXIT(
             wait (do_digest_cal);
             cfg.clk_rst_vif.wait_clks($urandom_range(1, 350));,
-            super.wait_to_issue_reset(reset_delay_bound);)
+            cfg.clk_rst_vif.wait_clks(reset_delay_bound);)
         #($urandom_range(0, cfg.clk_rst_vif.clk_period_ps) * 1ps);
       end
       DuringOTPRead: begin
         `DV_SPINWAIT_EXIT(
             wait (do_otp_rd);
             cfg.clk_rst_vif.wait_clks($urandom_range(1, 10));,
-            super.wait_to_issue_reset(reset_delay_bound);)
+            cfg.clk_rst_vif.wait_clks(reset_delay_bound);)
         #($urandom_range(0, cfg.clk_rst_vif.clk_period_ps) * 1ps);
       end
       default: `uvm_fatal(`gfn, $sformatf("Unsupported reset_drive_cond %0d", reset_drive_cond))

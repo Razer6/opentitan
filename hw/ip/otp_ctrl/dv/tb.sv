@@ -10,6 +10,7 @@ module tb;
   import otp_ctrl_test_pkg::*;
   import otp_ctrl_reg_pkg::*;
   import mem_bkdr_util_pkg::mem_bkdr_util;
+  import mem_bkdr_util_pkg::rivos_otp_mem_bkdr_util;
 
   // macro includes
   `include "uvm_macros.svh"
@@ -25,12 +26,14 @@ module tb;
   // since partner base tests inherit from otp_ctrl_base_test#(CFG_T, ENV_T) and
   // specify directly (CFG_T, ENV_T) via the class extension and use a different
   // UVM_TESTNAME
-  if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplGeneric) begin : gen_spec_base_test_params
+  if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplGeneric ||
+      `PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin : gen_spec_base_test_params
     typedef otp_ctrl_base_test #(.CFG_T(otp_ctrl_env_cfg),
                                  .ENV_T(otp_ctrl_env)) otp_ctrl_base_test_t;
   end
 
   wire clk, rst_n;
+  wire devmode;
   wire otp_ctrl_pkg::flash_otp_key_req_t flash_req;
   wire otp_ctrl_pkg::flash_otp_key_rsp_t flash_rsp;
   wire otp_ctrl_pkg::otbn_otp_key_req_t  otbn_req;
@@ -50,6 +53,7 @@ module tb;
   // interfaces
   clk_rst_if clk_rst_if(.clk(clk), .rst_n(rst_n));
   pins_if #(NUM_MAX_INTERRUPTS) intr_if(interrupts);
+  pins_if #(1) devmode_if(devmode);
 
   // lc_otp interfaces
   push_pull_if #(.HostDataWidth(LC_PROG_DATA_SIZE), .DeviceDataWidth(1))
@@ -84,8 +88,26 @@ module tb;
   // The correctness of this probed signal is checked in otp_ctrl's scb as well.
   assign otp_ctrl_if.alert_reqs = dut.alerts[0] | dut.alerts[1];
 
+  if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin
+    assign otp_ctrl_if.otp_macro_pd = {'0, tb.dut.u_otp.gen_rdp.u_impl_rdp.u_fuse_wrapper.fuse_pd};
+  end else begin
+    assign otp_ctrl_if.otp_macro_pd = '0;
+  end
+
   // connected to interface
   wire otp_ext_voltage_h = otp_ctrl_if.ext_voltage_h_io;
+
+  logic clk_fuse;
+  prim_clock_div #(
+    .Divisor( 2 )
+  ) u_fuse_clock_gen (
+    .clk_i           ( clk ),
+    .rst_ni          ( rst_n ),
+    .step_down_req_i ( '0 ),
+    .step_down_ack_o ( ),
+    .test_en_i       ( '0 ),
+    .clk_o           ( clk_fuse )
+  );
 
   // dut
   otp_ctrl dut (
@@ -147,6 +169,24 @@ module tb;
     .scan_rst_ni                (otp_ctrl_if.scan_rst_ni),
     .scanmode_i                 (otp_ctrl_if.scanmode_i),
 
+  //.clk_efuse_i                ( clk                   ),
+    .tstrst_i                   ('0),
+    .tstrstsel_i                ('0),
+    .clk_efuse_i                ( clk_fuse                   ),
+    .sel_wr_timing_i            (1),
+    .mbist_otp_mbist_mode_i     ('0),
+    .mbist_otp_csb_i            ('0),
+    .mbist_otp_load_i           ('0),
+    .mbist_otp_pgenb_i          ('0),
+    .mbist_otp_ps_i             ('0),
+    .mbist_otp_pd_i             ('0),
+    .mbist_otp_mr_i             ('0),
+    .mbist_otp_rwl_i            ('0),
+    .mbist_otp_rsb_i            ('0),
+    .mbist_otp_strobe_array_i   ('0),
+    .mbist_otp_address_i        ('0),
+    .otp_mbist_fuse_rf_data_o   (  ),
+    .otp_mbist_fuse_data_o      (  ),
     // Test-related GPIO output
     .cio_test_o                 (otp_ctrl_if.cio_test_o),
     .cio_test_en_o              (otp_ctrl_if.cio_test_en_o)
@@ -177,7 +217,6 @@ module tb;
 
   // Instantitate the memory backdoor util instance only for OS implementation
   // Proprietary IP will instantiate their own backdoor util
-
   if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplGeneric) begin : gen_impl_generic
     `define MEM_MODULE_PATH \
         tb.dut.u_otp.gen_generic.u_impl_generic.u_prim_ram_1p_adv
@@ -198,18 +237,39 @@ module tb;
 
     `undef MEM_ARRAY_PATH
     `undef MEM_MODULE_PATH
-  end : gen_impl_generic
+  end else if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin : gen_impl_rdp
+    `define MEM_MODULE_PATH \
+        tb.dut.u_otp.gen_rdp.u_impl_rdp.u_fuse_wrapper
 
-  // DV forced otp_cmd_i to reach invalid state, thus violate the assertions
-  for (genvar idx = 0; idx < NumPart; idx++) begin : gen_assertoff_loop
-    if (is_hw_part_idx(idx)) begin : gen_assertoff
-      initial begin
-        $assertoff(0, tb.dut.gen_partitions[idx].gen_buffered.u_part_buf.OtpErrorState_A);
-      end
-    end
-  end
+    `define MEM_ARRAY_PATH \
+        tb.dut.u_otp.gen_rdp.u_impl_rdp.u_fuse_wrapper
 
+    initial begin : mem_bkdr_util_gen
+      mem_bkdr_util m_mem_bkdr_util;
+      rivos_otp_mem_bkdr_util  m_otp_mem_bkdr_util;
+      m_otp_mem_bkdr_util = new(.name("mem_bkdr_util[Otp]"),
+                            .path(`DV_STRINGIFY(`MEM_ARRAY_PATH)),
+                            .depth (8192),
+                            .n_bits(8192*24),
+                            .err_detection_scheme(mem_bkdr_util_pkg::EccHamming_22_16));
+
+      m_mem_bkdr_util     = m_otp_mem_bkdr_util;
+      uvm_config_db#(mem_bkdr_util)::set(null, "*.env", "mem_bkdr_util", m_mem_bkdr_util);
+    end : mem_bkdr_util_gen
+
+    `undef MEM_ARRAY_PATH
+    `undef MEM_MODULE_PATH
+  end : gen_impl_rdp
+
+  `define OTP_SVA_PATH gen_buffered.u_part_buf.OtpErrorState_A
   initial begin
+    // DV forced otp_cmd_i to reach invalid state, thus violate the assertions
+    $assertoff(0, tb.dut.gen_partitions[otp_ctrl_part_pkg::HwCfg0Idx].`OTP_SVA_PATH);
+    $assertoff(0, tb.dut.gen_partitions[otp_ctrl_part_pkg::HwCfg1Idx].`OTP_SVA_PATH);
+    $assertoff(0, tb.dut.gen_partitions[otp_ctrl_part_pkg::Secret0Idx].`OTP_SVA_PATH);
+    $assertoff(0, tb.dut.gen_partitions[otp_ctrl_part_pkg::Secret1Idx].`OTP_SVA_PATH);
+    $assertoff(0, tb.dut.gen_partitions[otp_ctrl_part_pkg::Secret2Idx].`OTP_SVA_PATH);
+    $assertoff(0, tb.dut.gen_partitions[otp_ctrl_part_pkg::Secret3Idx].`OTP_SVA_PATH);
     // drive clk and rst_n from clk_if
     clk_rst_if.set_active();
     uvm_config_db#(virtual clk_rst_if)::set(null, "*.env", "clk_rst_vif", clk_rst_if);
@@ -229,10 +289,12 @@ module tb;
                    set(null, "*env.m_lc_prog_pull_agent*", "vif", lc_prog_if);
 
     uvm_config_db#(intr_vif)::set(null, "*.env", "intr_vif", intr_if);
+    uvm_config_db#(devmode_vif)::set(null, "*.env", "devmode_vif", devmode_if);
 
     uvm_config_db#(virtual otp_ctrl_if)::set(null, "*.env", "otp_ctrl_vif", otp_ctrl_if);
     $timeformat(-12, 0, " ps", 12);
     run_test();
   end
+  `undef OTP_SVA_PATH
 
 endmodule

@@ -2,20 +2,14 @@
 # Licensed under the Apache License, Version 2.0, see LICENSE for details.
 # SPDX-License-Identifier: Apache-2.0
 
-load("@bazel_skylib//rules:common_settings.bzl", "int_flag", "string_flag")
-load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
-load(
-    "//rules:autogen.bzl",
-    "autogen_hjson_c_header",
-    "autogen_hjson_rust_header",
-)
-load("//rules:const.bzl", "CONST", "EARLGREY_ALERTS", "EARLGREY_LOC_ALERTS")
+load("//rules:autogen.bzl", "autogen_hjson_header")
 load(
     "//rules:otp.bzl",
-    "OTP_SIGVERIFY_FAKE_KEYS",
     "STD_OTP_OVERLAYS",
+    "STD_OTP_OVERLAYS_WITHOUT_SECRET_PARTITIONS",
     "otp_alert_classification",
     "otp_alert_digest",
+    "otp_bytestring",
     "otp_hex",
     "otp_image",
     "otp_json",
@@ -24,6 +18,10 @@ load(
     "otp_per_class_ints",
     "otp_per_class_lists",
 )
+load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
+load("@bazel_skylib//rules:common_settings.bzl", "int_flag", "string_flag")
+load("//rules:const.bzl", "CONST")
+load("//rules:const-darjeeling.bzl", "DARJEELING_ALERTS", "DARJEELING_LOC_ALERTS")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -65,20 +63,12 @@ filegroup(
 
 exports_files(["otp_ctrl_img.h.tpl"])
 
-autogen_hjson_c_header(
-    name = "otp_ctrl_c_regs",
+autogen_hjson_header(
+    name = "otp_ctrl_regs",
     srcs = [
         "otp_ctrl.hjson",
     ],
-    node = "core",
-)
-
-autogen_hjson_rust_header(
-    name = "otp_ctrl_rust_regs",
-    srcs = [
-        "otp_ctrl.hjson",
-    ],
-    node = "core",
+    interface = "core",
 )
 
 exports_files(["otp_ctrl_mmap.hjson"])
@@ -89,12 +79,29 @@ otp_json(
         otp_partition(
             name = "CREATOR_SW_CFG",
             items = {
-                # Disable SPX+ signature verification. See the definition of
-                # `kSigverifySpxDisabledOtp` in
-                # sw/device/silicon_creator/lib/sigverify/spx_verify.h.
+                # Use software mod_exp implementation for signature
+                # verification. See the definition of `hardened_bool_t` in
+                # sw/lib/sw/device/base/hardened.h.
+                "CREATOR_SW_CFG_SIGVERIFY_RSA_MOD_EXP_IBEX_EN": otp_hex(CONST.HARDENED_TRUE),
+                # Mark the first three keys as valid and remaining as invalid
+                # since we currently have only three keys. See the definition of
+                # `hardened_byte_bool_t` in sw/lib/sw/device/base/hardened.h.
+                "CREATOR_SW_CFG_SIGVERIFY_RSA_KEY_EN": otp_bytestring([
+                    CONST.HARDENED_BYTE_TRUE,  # key0
+                    CONST.HARDENED_BYTE_TRUE,  # key1
+                    CONST.HARDENED_BYTE_TRUE,  # key2
+                    CONST.HARDENED_BYTE_TRUE,  # key3
+                    CONST.HARDENED_BYTE_TRUE,  # key4
+                    CONST.HARDENED_BYTE_TRUE,  # key5
+                    CONST.HARDENED_BYTE_TRUE,  # key6
+                    CONST.HARDENED_BYTE_FALSE,  # key7
+                ]),
+                # Disable SPX+ signature verification. See the definitions of
+                # `kSigverifySpxDisabledOtp` and `kSigverifySpxEnabledOtp` in
+                # sw/lib/sw/device/silicon_creator/sigverify/spx_verify.h.
                 "CREATOR_SW_CFG_SIGVERIFY_SPX_EN": otp_hex(0x8d6c8c17),
                 # Enable use of entropy for countermeasures. See the definition
-                # of `hardened_bool_t` in sw/device/lib/base/hardened.h.
+                # of `hardened_bool_t` in sw/lib/sw/device/base/hardened.h.
                 "CREATOR_SW_CFG_RNG_EN": otp_hex(CONST.HARDENED_TRUE),
                 # ROM execution is enabled if this item is set to a non-zero
                 # value.
@@ -112,7 +119,7 @@ otp_json(
                 "CREATOR_SW_CFG_MIN_SEC_VER_BL0": otp_hex(0x0),
                 # Enable the default boot data in PROD and PROD_END life cycle
                 # states. See the definition of `hardened_bool_t` in
-                # sw/device/lib/base/hardened.h.
+                # sw/lib/sw/device/base/hardened.h.
                 "CREATOR_SW_CFG_DEFAULT_BOOT_DATA_IN_PROD_EN": otp_hex(CONST.HARDENED_TRUE),
                 # Enable AST initialization.
                 "CREATOR_SW_CFG_AST_INIT_EN": otp_hex(CONST.MUBI4_TRUE),
@@ -136,6 +143,11 @@ otp_json(
                 "CREATOR_SW_CFG_RNG_EXTHT_LO_THRESHOLDS": otp_hex(0x0),
                 "CREATOR_SW_CFG_RNG_ALERT_THRESHOLD": otp_hex(0xfffd0002),
                 "CREATOR_SW_CFG_RNG_HEALTH_CONFIG_DIGEST": otp_hex(0x8264cf75),
+                # Enable all security chicken bits.
+                # With that configuration, the ROM does NOT generate nor verify
+                # ECDSA signatures through OTBN, secure boot is completely
+                # disabled.
+                "CREATOR_SW_CFG_ROM_PERMISSIVE_SECURITY": otp_hex(0x0),
             },
         ),
     ],
@@ -159,18 +171,66 @@ otp_json(
 )
 
 otp_json(
+    name = "otp_json_creator_sw_cfg_ga0_no_sec_boot",
+    partitions = [
+        otp_partition(
+            name = "CREATOR_SW_CFG",
+            items = {
+                # Enable all security chicken bits.
+                # With that configuration, the ROM does NOT generate nor verify
+                # ECDSA signatures through OTBN, secure boot is completely
+                # disabled.
+                "CREATOR_SW_CFG_ROM_PERMISSIVE_SECURITY": otp_hex(0x0),
+            },
+        ),
+    ],
+)
+
+otp_json(
+    name = "otp_json_creator_sw_cfg_ga0_sec_boot",
+    partitions = [
+        otp_partition(
+            name = "CREATOR_SW_CFG",
+            items = {
+                # Disable all security chicken bits.
+                # With that configuration, the ROM generates and verifies ECDSA
+                # signatures for all assets, through OTBN.
+                "CREATOR_SW_CFG_ROM_PERMISSIVE_SECURITY": otp_hex(0xf),
+            },
+        ),
+    ],
+)
+
+
+otp_json(
+    name = "otp_json_creator_sw_cfg_ga0_no_asset_verify",
+    partitions = [
+        otp_partition(
+            name = "CREATOR_SW_CFG",
+            items = {
+                # Disable all security chicken bits, except for the asset
+                # verification ones.
+                # With that configuration, the ROM does generates and verify
+                # all ECDSA signatures through OTBN, except for the external
+                # flash ones.
+                "CREATOR_SW_CFG_ROM_PERMISSIVE_SECURITY": otp_hex(0x7),
+            },
+        ),
+    ],
+)
+
+otp_json(
     name = "otp_json_owner_sw_cfg",
     partitions = [
         otp_partition(
             name = "OWNER_SW_CFG",
             items = {
                 # Enable bootstrap. See `hardened_bool_t` in
-                # sw/device/lib/base/hardened.h.
+                # sw/lib/sw/device/base/hardened.h.
                 "OWNER_SW_CFG_ROM_BOOTSTRAP_DIS": otp_hex(CONST.HARDENED_FALSE),
-                # Set to 0x739 to use the OTP hash measurement of the software
-                # readable OTP partitions as the key manager attestation binding
-                # value.
-                "OWNER_SW_CFG_ROM_KEYMGR_OTP_MEAS_EN": otp_hex(0x0),
+                # Set to 0x739 to use the ROM_EXT hash measurement as the key
+                # manager attestation binding value.
+                "OWNER_SW_CFG_ROM_KEYMGR_ROM_EXT_MEAS_EN": otp_hex(0x0),
                 # Report errors without any redaction.
                 "OWNER_SW_CFG_ROM_ERROR_REPORTING": otp_hex(CONST.SHUTDOWN.REDACT.NONE),
                 # Set the enables to kAlertEnableNone.
@@ -195,7 +255,7 @@ otp_json(
                 # See `alert_class_t` in
                 # sw/device/silicon_creator/lib/drivers/alert.h
                 "OWNER_SW_CFG_ROM_ALERT_CLASSIFICATION": otp_alert_classification(
-                    alert_list = EARLGREY_ALERTS,
+                    alert_list = DARJEELING_ALERTS,
                     # The ordering is "prod, prod_end, dev, rma"
                     default = "X, X, X, X",
                 ),
@@ -203,7 +263,7 @@ otp_json(
                 # Set the classifications to kAlertClassX. See `alert_class_t` in
                 # sw/device/silicon_creator/lib/drivers/alert.h
                 "OWNER_SW_CFG_ROM_LOCAL_ALERT_CLASSIFICATION": otp_alert_classification(
-                    alert_list = EARLGREY_LOC_ALERTS,
+                    alert_list = DARJEELING_LOC_ALERTS,
                     # The ordering is "prod, prod_end, dev, rma"
                     default = "X, X, X, X",
                 ),
@@ -229,20 +289,6 @@ otp_json(
                     C = "0x0, 0x0, 0x0, 0x0",
                     D = "0x0, 0x0, 0x0, 0x0",
                 ),
-                # By default, ROM_EXT's bootstrap feature should be disabled.
-                "OWNER_SW_CFG_ROM_EXT_BOOTSTRAP_EN": otp_hex(CONST.HARDENED_FALSE),
-                # Disable SRAM readback for both ret-ram and main sram.
-                "OWNER_SW_CFG_ROM_SRAM_READBACK_EN": otp_hex(CONST.MUBI4_FALSE << 4 | CONST.MUBI4_FALSE),
-                "OWNER_SW_CFG_ROM_PRESERVE_RESET_REASON_EN": otp_hex(CONST.HARDENED_FALSE),
-                "OWNER_SW_CFG_ROM_RESET_REASON_CHECK_VALUE": otp_hex(CONST.HARDENED_FALSE << 16 | CONST.HARDENED_FALSE),
-                "OWNER_SW_CFG_ROM_FLASH_ECC_EXC_HANDLER_EN": otp_hex(CONST.HARDENED_TRUE),
-                # By default, the sensor_ctrl should disable all sensors and mark
-                # alerts as recoverable.
-                "OWNER_SW_CFG_ROM_SENSOR_CTRL_ALERT_CFG": [
-                    otp_hex(0x69696969),
-                    otp_hex(0x69696969),
-                    otp_hex(0x69696969),
-                ],
             },
         ),
     ],
@@ -267,13 +313,8 @@ otp_json(
         otp_partition(
             name = "HW_CFG1",
             items = {
-                # Enable code execution from SRAM in PROD state.
                 "EN_SRAM_IFETCH": True,
-                # Cryptolib and chip-level tests require access to the CSRNG
-                # software interfaces.
-                "EN_CSRNG_SW_APP_READ": True,
-                # Use legacy behavior and disable late debug enable.
-                "DIS_RV_DM_LATE_DEBUG": True,
+                "SOC_DBG_STATE": otp_hex(CONST.SCD.SOC_DBG_PROD),
             },
             lock = True,
         ),
@@ -288,25 +329,6 @@ otp_json(
             items = {
                 "TEST_UNLOCK_TOKEN": "<random>",
                 "TEST_EXIT_TOKEN": "<random>",
-            },
-            lock = True,
-        ),
-    ],
-)
-
-otp_json(
-    name = "otp_json_fixed_secret0",
-    partitions = [
-        otp_partition(
-            name = "SECRET0",
-            items = {
-                # These match their cSHAKE-128 (w/ "LC_CTRL" customization string)
-                # preimage counterpart of: 0x1111_1111_1111_1111_1111_1111_1111_1111,
-                # which is hardcoded into the test that use this overlay.
-                # The script that generated this token is:
-                # //sw/host/tests/manuf/manuf_cp_device_info_flash_wr:gen_test_exit_token
-                "TEST_UNLOCK_TOKEN": "0xde0a1f1e0d6a649fd35fadb75ec82674",
-                "TEST_EXIT_TOKEN": "0xde0a1f1e0d6a649fd35fadb75ec82674",
             },
             lock = True,
         ),
@@ -337,6 +359,7 @@ otp_json(
                 "RMA_TOKEN": "<random>",
                 "CREATOR_ROOT_KEY_SHARE0": "<random>",
                 "CREATOR_ROOT_KEY_SHARE1": "<random>",
+                "CREATOR_SEED": "<random>",
             },
             lock = True,
         ),
@@ -352,6 +375,7 @@ otp_json(
                 "RMA_TOKEN": "<random>",
                 "CREATOR_ROOT_KEY_SHARE0": "<random>",
                 "CREATOR_ROOT_KEY_SHARE1": "<random>",
+                "CREATOR_SEED": "<random>",
             },
             lock = False,
         ),
@@ -359,16 +383,54 @@ otp_json(
 )
 
 otp_json(
-    name = "otp_json_fixed_secret2",
+    name = "otp_json_secret3",
     partitions = [
         otp_partition(
-            name = "SECRET2",
+            name = "SECRET3",
             items = {
-                # We aren't testing keymgr for ROM_EXT tests and we want
-                # reproducible bitstreams for all tests.
-                "RMA_TOKEN": "0x1faf9056acde66561685549803a28bec",
-                "CREATOR_ROOT_KEY_SHARE0": "1111111111111111111111111111111111111111111111111111111111111111",
-                "CREATOR_ROOT_KEY_SHARE1": "2222222222222222222222222222222222222222222222222222222222222222",
+                "OWNER_SEED": "<random>",
+            },
+            lock = True,
+        ),
+    ],
+)
+
+otp_json(
+    name = "otp_json_soc_dbg_raw",
+    partitions = [
+        otp_partition(
+            name = "HW_CFG1",
+            items = {
+                "EN_SRAM_IFETCH": True,
+                "SOC_DBG_STATE": otp_hex(CONST.SCD.SOC_DBG_RAW),
+            },
+            lock = True,
+        ),
+    ],
+)
+
+otp_json(
+    name = "otp_json_soc_dbg_pre_prod",
+    partitions = [
+        otp_partition(
+            name = "HW_CFG1",
+            items = {
+                "EN_SRAM_IFETCH": True,
+                "SOC_DBG_STATE": otp_hex(CONST.SCD.SOC_DBG_PRE_PROD),
+            },
+            lock = True,
+        ),
+    ],
+)
+
+otp_json(
+    name = "otp_json_soc_dbg_prod",
+    partitions = [
+        otp_partition(
+            name = "HW_CFG1",
+            items = {
+                "EN_SRAM_IFETCH": True,
+                "SOC_DBG_STATE": otp_hex(CONST.SCD.SOC_DBG_PROD),
             },
             lock = True,
         ),
@@ -491,7 +553,7 @@ otp_image(
         overlays = [
             ":otp_json_secret0",
             ":otp_json_creator_sw_cfg_test_unlocked",
-        ] + OTP_SIGVERIFY_FAKE_KEYS,
+        ],
     )
     for i in range(0, 8)
 ]
@@ -508,22 +570,33 @@ otp_image(
     for i in range(0, 7)
 ]
 
-# Represents a TEST_UNLOCKED1 state OTP image emulating the state of the device
-# after the test tokens have been applied and before running individualization.
-# The following partitions are missing to ensure the image is initialized with
-# values that would be present prior to the final individualization
-# manufacturing stage: SECRET1, SECRET2, HW_CFG0/1.
-# The following partitions are expected to be configured in previous
-# manufacturing stages: SECRET0, CREATOR_SW, OWNER_SW.
+# Represents a DEV state OTP image emulating the state of the device after the
+# exit test token has been applied and before running individualization.
+# The following partitions are missing to ensure the image is initialize with
+# default values: SECRET1, SECRET2, HW_CFG.
+# The following partitions are expected to be configured in previous lifecycle
+# stages: SECRET0, CREATOR_SW, OWNER_SW.
 otp_image(
-    name = "img_test_unlocked1_initial",
-    src = ":otp_json_test_unlocked1",
+    name = "img_dev_initial",
+    src = ":otp_json_dev",
     overlays = [
         ":otp_json_secret0",
         ":otp_json_creator_sw_cfg",
         ":otp_json_owner_sw_cfg",
         ":otp_json_alert_digest_cfg",
-    ] + OTP_SIGVERIFY_FAKE_KEYS,
+        "creator_sw_cfg_ga0.hjson",
+    ],
+)
+
+# Represents a device in DEV state with the SECRET0 and SECRET1 partitions in
+# locked state. SECRET2 partition is unlocked.
+otp_image(
+    name = "img_dev_individualized",
+    src = ":otp_json_dev",
+    overlays = [
+        ":otp_json_secret0",
+        ":otp_json_secret1",
+    ] + STD_OTP_OVERLAYS_WITHOUT_SECRET_PARTITIONS,
 )
 
 otp_image(
@@ -549,6 +622,91 @@ otp_image(
     src = ":otp_json_rma",
     overlays = STD_OTP_OVERLAYS,
 )
+
+[
+    otp_image(
+        name = "img_{}_ga0".format(t),
+        src = ":otp_json_{}".format(t),
+        overlays = STD_OTP_OVERLAYS + [
+            ":otp_json_creator_sw_cfg_ga0_sec_boot",
+            "si_creator_prod.hjson",
+            "plat_int_prod.hjson",
+            "creator_sw_cfg_ga0.hjson",
+        ],
+    )
+    for t in ["dev", "prod", "prod_end", "rma"]
+]
+
+otp_image(
+    name = "img_prod_ga0_patch",
+    src = ":otp_json_prod",
+    overlays = STD_OTP_OVERLAYS + [
+        ":otp_json_creator_sw_cfg_ga0_no_sec_boot",
+        "si_creator_prod.hjson",
+        "plat_int_prod.hjson",
+        "creator_sw_cfg_ga0.hjson",
+        "second_rom_e2e_patch.hjson",
+    ],
+)
+
+otp_image(
+    name = "img_prod_ga0_no_sec_boot",
+    src = ":otp_json_prod",
+    overlays = STD_OTP_OVERLAYS + [
+        ":otp_json_creator_sw_cfg_ga0_no_sec_boot",
+        "si_creator_prod.hjson",
+        "plat_int_prod.hjson",
+        "creator_sw_cfg_ga0.hjson",
+    ],
+)
+
+otp_image(
+    name = "img_prod_ga0_no_asset_verify",
+    src = ":otp_json_prod",
+    overlays = STD_OTP_OVERLAYS + [
+        ":otp_json_creator_sw_cfg_ga0_no_asset_verify",
+        "si_creator_prod.hjson",
+        "plat_int_prod.hjson",
+        "creator_sw_cfg_ga0.hjson",
+    ],
+)
+
+otp_image(
+    name = "img_prod_soc_dbg_raw",
+    src = ":otp_json_prod",
+    overlays = STD_OTP_OVERLAYS + [
+        ":otp_json_soc_dbg_raw",
+        ":otp_json_creator_sw_cfg_ga0_no_sec_boot",
+        "creator_sw_cfg_ga0.hjson",
+    ],
+)
+
+otp_image(
+    name = "img_prod_soc_dbg_pre_prod",
+    src = ":otp_json_prod",
+    overlays = STD_OTP_OVERLAYS + [
+        ":otp_json_creator_sw_cfg_ga0_sec_boot",
+        ":otp_json_soc_dbg_pre_prod",
+        "si_creator_prod.hjson",
+        "plat_int_prod.hjson",
+        "creator_sw_cfg_ga0.hjson",
+    ],
+)
+
+[
+    otp_image(
+        name = "img_{}_soc_dbg_prod".format(t),
+        src = ":otp_json_{}".format(t),
+        overlays = STD_OTP_OVERLAYS + [
+            ":otp_json_creator_sw_cfg_ga0_sec_boot",
+            ":otp_json_soc_dbg_prod",
+            "si_creator_prod.hjson",
+            "plat_int_prod.hjson",
+            "creator_sw_cfg_ga0.hjson",
+        ],
+    )
+    for t in ["dev", "prod"]
+]
 
 # Create an execution-disabling overlay
 otp_json(
@@ -588,9 +746,12 @@ filegroup(
     name = "otp_imgs",
     srcs = [
         ":img_dev",
+        ":img_dev_individualized",
+        ":img_dev_initial",
         ":img_prod",
         ":img_raw",
         ":img_rma",
+        ":img_rma_patch",
         ":img_test_locked0",
         ":img_test_locked1",
         ":img_test_locked2",
@@ -600,7 +761,6 @@ filegroup(
         ":img_test_locked6",
         ":img_test_unlocked0",
         ":img_test_unlocked1",
-        ":img_test_unlocked1_initial",
         ":img_test_unlocked2",
         ":img_test_unlocked3",
         ":img_test_unlocked4",
@@ -610,14 +770,29 @@ filegroup(
     ],
 )
 
-pkg_files(
-    name = "package",
-    srcs = [":otp_imgs"],
-    prefix = "earlgrey/otp",
+filegroup(
+    name = "otp_ga0_imgs",
+    srcs = [
+        ":img_dev_ga0",
+        ":img_prod_end_ga0",
+        ":img_prod_ga0",
+        ":img_prod_ga0_patch",
+        ":img_prod_ga0_no_asset_verify",
+        ":img_prod_ga0_no_sec_boot",
+        ":img_dev_soc_dbg_prod",
+        ":img_prod_soc_dbg_pre_prod",
+        ":img_prod_soc_dbg_prod",
+        ":img_prod_soc_dbg_raw",
+        ":img_raw",
+        ":img_rma_ga0",
+    ],
 )
 
-# Partition used to set a fixed seed value in `otp_image_consts` targets.
-otp_json(
-    name = "otp_json_baseline",
-    seed = "85452983286950371191603618368782861611109037138182535346147818831008789508651",
+pkg_files(
+    name = "package",
+    srcs = [
+        ":otp_imgs",
+        ":otp_ga0_imgs",
+    ],
+    prefix = "darjeeling/otp",
 )

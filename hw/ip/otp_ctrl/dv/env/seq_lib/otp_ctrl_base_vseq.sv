@@ -38,7 +38,7 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
   // when LC error bit is set.
   bit default_req_blocking = 1;
   bit lc_prog_blocking     = 1;
-  bit dai_wr_inprogress = 0;
+
   uint32_t op_done_spinwait_timeout_ns = 20_000_000;
 
   // Collect current lc_state and lc_cnt. This is used to create next lc_state and lc_cnt without
@@ -62,6 +62,15 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     // deasserts earlier than edn reset, some OTP outputs might remain X or Z when dut clock is
     // running.
     otp_ctrl_vif_init();
+
+    if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin
+      // Wait until the fuse macro enters pd state before pulling mis-sim reset.
+      // Keeps macro behav model happy
+      if (cfg.clk_rst_vif.rst_n) begin
+        wait(cfg.otp_ctrl_vif.otp_macro_pd == 'h1);
+      end
+    end
+
     super.dut_init(reset_kind);
     callback_vseq.dut_init_callback();
 
@@ -113,6 +122,13 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
           wait (cfg.otp_ctrl_vif.pwr_otp_done_o == 1);)
       if (cfg.otp_ctrl_vif.pwr_otp_done_o == 0) begin
         cfg.otp_ctrl_vif.drive_pwr_otp_init(0);
+        if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin
+          // Wait until the fuse macro enters pd state before pulling mis-sim reset.
+          // Keeps macro behav model happy
+          if (cfg.clk_rst_vif.rst_n) begin
+            wait(cfg.otp_ctrl_vif.otp_macro_pd == 'h1);
+          end
+        end
         apply_reset();
         cfg.otp_ctrl_vif.drive_pwr_otp_init(1);
       end
@@ -149,11 +165,9 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
                       bit [TL_DW-1:0] wdata0,
                       bit [TL_DW-1:0] wdata1 = 0);
     bit [TL_DW-1:0] val;
-    dai_wr_inprogress = 1;
     if (write_unused_addr) begin
       if (used_dai_addrs.exists(addr[OTP_ADDR_WIDTH - 1 : 0])) begin
         `uvm_info(`gfn, $sformatf("addr %0h is already written!", addr), UVM_MEDIUM)
-        dai_wr_inprogress = 0;
         return;
       end else begin
         used_dai_addrs[addr] = 1;
@@ -182,7 +196,6 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     end
     wait_dai_op_done();
     rd_and_clear_intrs();
-    dai_wr_inprogress = 0;
   endtask : dai_wr
 
   // This task triggers an OTP readout sequence via the DAI interface
@@ -265,13 +278,45 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
       `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
       dai_wr(OwnerSwCfgDigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
     end
-    if (wr_digest[RotCreatorAuthCodesignIdx]) begin
+    if (wr_digest[RotCreatorAuthIdx]) begin
       `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
-      dai_wr(RotCreatorAuthCodesignDigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
+      dai_wr(RotCreatorAuthDigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
     end
-    if (wr_digest[RotCreatorAuthStateIdx]) begin
+    if (wr_digest[RotOwnerAuthSlot0Idx]) begin
       `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
-      dai_wr(RotCreatorAuthStateDigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
+      dai_wr(RotOwnerAuthSlot0DigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
+    end
+    if (wr_digest[RotOwnerAuthSlot1Idx]) begin
+      `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
+      dai_wr(RotOwnerAuthSlot1DigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
+    end
+    if (wr_digest[PlatIntegAuthSlot0Idx]) begin
+      `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
+      dai_wr(PlatIntegAuthSlot0DigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
+    end
+    if (wr_digest[PlatIntegAuthSlot1Idx]) begin
+      `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
+      dai_wr(PlatIntegAuthSlot1DigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
+    end
+    if (wr_digest[PlatOwnerAuthSlot0Idx]) begin
+      `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
+      dai_wr(PlatOwnerAuthSlot0DigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
+    end
+    if (wr_digest[PlatOwnerAuthSlot1Idx]) begin
+      `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
+      dai_wr(PlatOwnerAuthSlot1DigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
+    end
+    if (wr_digest[PlatOwnerAuthSlot2Idx]) begin
+      `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
+      dai_wr(PlatOwnerAuthSlot2DigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
+    end
+    if (wr_digest[PlatOwnerAuthSlot3Idx]) begin
+      `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
+      dai_wr(PlatOwnerAuthSlot3DigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
+    end
+    if (wr_digest[RomPatchIdx]) begin
+      `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
+      dai_wr(RomPatchDigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
     end
   endtask
 
@@ -279,8 +324,18 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     if (do_rd_lock[VendorTestIdx]) csr_wr(ral.vendor_test_read_lock, 0);
     if (do_rd_lock[CreatorSwCfgIdx]) csr_wr(ral.creator_sw_cfg_read_lock, 0);
     if (do_rd_lock[OwnerSwCfgIdx]) csr_wr(ral.owner_sw_cfg_read_lock, 0);
-    if (do_rd_lock[RotCreatorAuthCodesignIdx]) csr_wr(ral.rot_creator_auth_codesign_read_lock, 0);
-    if (do_rd_lock[RotCreatorAuthStateIdx]) csr_wr(ral.rot_creator_auth_state_read_lock, 0);
+    if (do_rd_lock[OwnershipSlotStateIdx]) csr_wr(ral.ownership_slot_state_read_lock, 0);
+    if (do_rd_lock[RotCreatorAuthIdx]) csr_wr(ral.rot_creator_auth_read_lock, 0);
+    if (do_rd_lock[RotOwnerAuthSlot0Idx]) csr_wr(ral.rot_owner_auth_slot0_read_lock, 0);
+    if (do_rd_lock[RotOwnerAuthSlot1Idx]) csr_wr(ral.rot_owner_auth_slot1_read_lock, 0);
+    if (do_rd_lock[PlatIntegAuthSlot0Idx]) csr_wr(ral.plat_integ_auth_slot0_read_lock, 0);
+    if (do_rd_lock[PlatIntegAuthSlot1Idx]) csr_wr(ral.plat_integ_auth_slot1_read_lock, 0);
+    if (do_rd_lock[PlatOwnerAuthSlot0Idx]) csr_wr(ral.plat_owner_auth_slot0_read_lock, 0);
+    if (do_rd_lock[PlatOwnerAuthSlot1Idx]) csr_wr(ral.plat_owner_auth_slot1_read_lock, 0);
+    if (do_rd_lock[PlatOwnerAuthSlot2Idx]) csr_wr(ral.plat_owner_auth_slot2_read_lock, 0);
+    if (do_rd_lock[PlatOwnerAuthSlot3Idx]) csr_wr(ral.plat_owner_auth_slot3_read_lock, 0);
+    if (do_rd_lock[ExtNvmIdx]) csr_wr(ral.ext_nvm_read_lock, 0);
+    if (do_rd_lock[RomPatchIdx]) csr_wr(ral.rom_patch_read_lock, 0);
   endtask
 
   // The digest CSR values are verified in otp_ctrl_scoreboard
@@ -292,10 +347,26 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     csr_rd(.ptr(ral.creator_sw_cfg_digest[1]), .value(val));
     csr_rd(.ptr(ral.owner_sw_cfg_digest[0]), .value(val));
     csr_rd(.ptr(ral.owner_sw_cfg_digest[1]), .value(val));
-    csr_rd(.ptr(ral.rot_creator_auth_codesign_digest[0]), .value(val));
-    csr_rd(.ptr(ral.rot_creator_auth_codesign_digest[1]), .value(val));
-    csr_rd(.ptr(ral.rot_creator_auth_state_digest[0]), .value(val));
-    csr_rd(.ptr(ral.rot_creator_auth_state_digest[1]), .value(val));
+    csr_rd(.ptr(ral.rot_creator_auth_digest[0]), .value(val));
+    csr_rd(.ptr(ral.rot_creator_auth_digest[1]), .value(val));
+    csr_rd(.ptr(ral.rot_owner_auth_slot0_digest[0]), .value(val));
+    csr_rd(.ptr(ral.rot_owner_auth_slot0_digest[1]), .value(val));
+    csr_rd(.ptr(ral.rot_owner_auth_slot1_digest[0]), .value(val));
+    csr_rd(.ptr(ral.rot_owner_auth_slot1_digest[1]), .value(val));
+    csr_rd(.ptr(ral.plat_integ_auth_slot0_digest[0]), .value(val));
+    csr_rd(.ptr(ral.plat_integ_auth_slot0_digest[1]), .value(val));
+    csr_rd(.ptr(ral.plat_integ_auth_slot1_digest[0]), .value(val));
+    csr_rd(.ptr(ral.plat_integ_auth_slot1_digest[1]), .value(val));
+    csr_rd(.ptr(ral.plat_owner_auth_slot0_digest[0]), .value(val));
+    csr_rd(.ptr(ral.plat_owner_auth_slot0_digest[1]), .value(val));
+    csr_rd(.ptr(ral.plat_owner_auth_slot1_digest[0]), .value(val));
+    csr_rd(.ptr(ral.plat_owner_auth_slot1_digest[1]), .value(val));
+    csr_rd(.ptr(ral.plat_owner_auth_slot2_digest[0]), .value(val));
+    csr_rd(.ptr(ral.plat_owner_auth_slot2_digest[1]), .value(val));
+    csr_rd(.ptr(ral.plat_owner_auth_slot3_digest[0]), .value(val));
+    csr_rd(.ptr(ral.plat_owner_auth_slot3_digest[1]), .value(val));
+    csr_rd(.ptr(ral.rom_patch_digest[0]), .value(val));
+    csr_rd(.ptr(ral.rom_patch_digest[1]), .value(val));
     csr_rd(.ptr(ral.hw_cfg0_digest[0]), .value(val));
     csr_rd(.ptr(ral.hw_cfg0_digest[1]), .value(val));
     csr_rd(.ptr(ral.hw_cfg1_digest[0]), .value(val));
@@ -306,6 +377,8 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     csr_rd(.ptr(ral.secret1_digest[1]), .value(val));
     csr_rd(.ptr(ral.secret2_digest[0]), .value(val));
     csr_rd(.ptr(ral.secret2_digest[1]), .value(val));
+    csr_rd(.ptr(ral.secret3_digest[0]), .value(val));
+    csr_rd(.ptr(ral.secret3_digest[1]), .value(val));
   endtask
 
   // If the partition is read/write locked, there is 20% chance we will force the internal mubi
@@ -332,15 +405,55 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
           !$urandom_range(0, 4)) begin
         forced_mubi_part_access[OwnerSwCfgIdx].write_lock = 1;
       end
-      if ((`gmv(ral.rot_creator_auth_codesign_digest[0]) ||
-           `gmv(ral.rot_creator_auth_codesign_digest[1])) &&
+      if ((`gmv(ral.rot_creator_auth_digest[0]) ||
+           `gmv(ral.rot_creator_auth_digest[1])) &&
           !$urandom_range(0, 4)) begin
-        forced_mubi_part_access[RotCreatorAuthCodesignIdx].write_lock = 1;
+        forced_mubi_part_access[RotCreatorAuthIdx].write_lock = 1;
       end
-      if ((`gmv(ral.rot_creator_auth_state_digest[0]) ||
-           `gmv(ral.rot_creator_auth_state_digest[1])) &&
+      if ((`gmv(ral.rot_owner_auth_slot0_digest[0]) ||
+           `gmv(ral.rot_owner_auth_slot0_digest[1])) &&
           !$urandom_range(0, 4)) begin
-        forced_mubi_part_access[RotCreatorAuthStateIdx].write_lock = 1;
+        forced_mubi_part_access[RotOwnerAuthSlot0Idx].write_lock = 1;
+      end
+      if ((`gmv(ral.rot_owner_auth_slot1_digest[0]) ||
+           `gmv(ral.rot_owner_auth_slot1_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[RotOwnerAuthSlot1Idx].write_lock = 1;
+      end
+      if ((`gmv(ral.plat_integ_auth_slot0_digest[0]) ||
+           `gmv(ral.plat_integ_auth_slot0_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[PlatIntegAuthSlot0Idx].write_lock = 1;
+      end
+      if ((`gmv(ral.plat_integ_auth_slot1_digest[0]) ||
+           `gmv(ral.plat_integ_auth_slot1_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[PlatIntegAuthSlot1Idx].write_lock = 1;
+      end
+      if ((`gmv(ral.plat_owner_auth_slot0_digest[0]) ||
+           `gmv(ral.plat_owner_auth_slot0_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[PlatOwnerAuthSlot0Idx].write_lock = 1;
+      end
+      if ((`gmv(ral.plat_owner_auth_slot1_digest[0]) ||
+           `gmv(ral.plat_owner_auth_slot1_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[PlatOwnerAuthSlot1Idx].write_lock = 1;
+      end
+      if ((`gmv(ral.plat_owner_auth_slot2_digest[0]) ||
+           `gmv(ral.plat_owner_auth_slot2_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[PlatOwnerAuthSlot2Idx].write_lock = 1;
+      end
+      if ((`gmv(ral.plat_owner_auth_slot3_digest[0]) ||
+           `gmv(ral.plat_owner_auth_slot3_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[PlatOwnerAuthSlot3Idx].write_lock = 1;
+      end
+      if ((`gmv(ral.rom_patch_digest[0]) ||
+           `gmv(ral.rom_patch_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[RomPatchIdx].write_lock = 1;
       end
       if ((`gmv(ral.hw_cfg0_digest[0]) ||
            `gmv(ral.hw_cfg0_digest[1])) &&
@@ -367,6 +480,11 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
           !$urandom_range(0, 4)) begin
         forced_mubi_part_access[Secret2Idx].write_lock = 1;
       end
+      if ((`gmv(ral.secret3_digest[0]) ||
+           `gmv(ral.secret3_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[Secret3Idx].write_lock = 1;
+      end
 
       // CSR read locks
       if ((`gmv(ral.vendor_test_read_lock) == 0) && !$urandom_range(0, 4)) begin
@@ -378,11 +496,41 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
       if ((`gmv(ral.owner_sw_cfg_read_lock) == 0) && !$urandom_range(0, 4)) begin
         forced_mubi_part_access[OwnerSwCfgIdx].read_lock = 1;
       end
-      if ((`gmv(ral.rot_creator_auth_codesign_read_lock) == 0) && !$urandom_range(0, 4)) begin
-        forced_mubi_part_access[RotCreatorAuthCodesignIdx].read_lock = 1;
+      if ((`gmv(ral.ownership_slot_state_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[OwnershipSlotStateIdx].read_lock = 1;
       end
-      if ((`gmv(ral.rot_creator_auth_state_read_lock) == 0) && !$urandom_range(0, 4)) begin
-        forced_mubi_part_access[RotCreatorAuthStateIdx].read_lock = 1;
+      if ((`gmv(ral.rot_creator_auth_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[RotCreatorAuthIdx].read_lock = 1;
+      end
+      if ((`gmv(ral.rot_owner_auth_slot0_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[RotOwnerAuthSlot0Idx].read_lock = 1;
+      end
+      if ((`gmv(ral.rot_owner_auth_slot1_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[RotOwnerAuthSlot1Idx].read_lock = 1;
+      end
+      if ((`gmv(ral.plat_integ_auth_slot0_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[PlatIntegAuthSlot0Idx].read_lock = 1;
+      end
+      if ((`gmv(ral.plat_integ_auth_slot1_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[PlatIntegAuthSlot1Idx].read_lock = 1;
+      end
+      if ((`gmv(ral.plat_owner_auth_slot0_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[PlatOwnerAuthSlot0Idx].read_lock = 1;
+      end
+      if ((`gmv(ral.plat_owner_auth_slot1_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[PlatOwnerAuthSlot1Idx].read_lock = 1;
+      end
+      if ((`gmv(ral.plat_owner_auth_slot2_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[PlatOwnerAuthSlot2Idx].read_lock = 1;
+      end
+      if ((`gmv(ral.plat_owner_auth_slot3_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[PlatOwnerAuthSlot3Idx].read_lock = 1;
+      end
+      if ((`gmv(ral.ext_nvm_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[ExtNvmIdx].read_lock = 1;
+      end
+      if ((`gmv(ral.rom_patch_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[RomPatchIdx].read_lock = 1;
       end
 
 
@@ -402,6 +550,11 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
           !$urandom_range(0, 4)) begin
         forced_mubi_part_access[Secret2Idx].read_lock = 1;
       end
+      if ((`gmv(ral.secret3_digest[0]) ||
+           `gmv(ral.secret3_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[Secret3Idx].read_lock = 1;
+      end
 
       foreach (forced_mubi_part_access[i]) begin
         `uvm_info(`gfn, $sformatf("partition %0d inject mubi value: read=%0b, write=%0b", i,
@@ -412,11 +565,9 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     end
   endtask
 
-  // This function backdoor inject error according to ecc_err:
-  // - for OtpEccUncorrErr it injects a 2 bit eror
-  // - for OtpEccCorrErr it injects a 1 bit eror
-  // This function will output original backdoor read data for the given address
-  // so the error can be cleared.
+  // This function backdoor inject error according to ecc_err.
+  // For example, if err_mask is set to 'b01, bit 1 in OTP macro will be flipped.
+  // This function will output original backdoor read data for the given address.
   virtual function bit [TL_DW-1:0] backdoor_inject_ecc_err(bit [TL_DW-1:0] addr,
                                                            otp_ecc_err_e   ecc_err);
     bit [TL_DW-1:0] val;
@@ -471,11 +622,8 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
   endtask
 
   // For a DAI interface operation to finish, either way until status dai_idle is set, or check
-  // err_code and see if fatal error happened. In any case, break out of this wait if there
-  // is a need to stop transaction generators, since a spinwait will otherwise just stop
-  // when it times-out.
+  // err_code and see if fatal error happened.
   virtual task wait_dai_op_done();
-    if (cfg.stop_transaction_generators()) return;
     fork begin
       fork
         begin
@@ -491,12 +639,6 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
             csr_rd(.ptr(ral.err_code[DaiIdx].err_code), .value(err_val), .backdoor(1));
             // Break if error will cause fatal alerts
             if (err_val inside {OTP_TERMINAL_ERRS}) break;
-          end
-        end
-        begin
-          forever begin
-            cfg.clk_rst_vif.wait_clks(1);
-            if (cfg.stop_transaction_generators()) break;
           end
         end
       join_any
@@ -680,14 +822,14 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
   // This test access OTP_CTRL's test_access memory. The open-sourced code only test if the access
   // is valid. Please override this task in proprietary OTP.
   virtual task otp_test_access();
-    if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplGeneric) begin
+    if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplGeneric ||
+        `PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin
       repeat (10) begin
         bit [TL_DW-1:0] data;
         bit test_access_en;
         bit [TL_AW-1:0] rand_addr = $urandom_range(0, NUM_PRIM_REG - 1) * 4;
         bit [TL_AW-1:0] tlul_addr =
             cfg.ral_models["otp_ctrl_prim_reg_block"].get_addr_from_offset(rand_addr);
-        if (cfg.stop_transaction_generators()) break;
         rand_drive_dft_en();
         `DV_CHECK_STD_RANDOMIZE_FATAL(data)
         test_access_en = cfg.otp_ctrl_vif.lc_dft_en_i == lc_ctrl_pkg::On;

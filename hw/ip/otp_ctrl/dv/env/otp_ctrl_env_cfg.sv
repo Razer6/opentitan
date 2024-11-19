@@ -2,16 +2,18 @@
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
 
+//  6       :/ 2, \
+//  [24:25] :/ 2, \
+//  [26:47] :/ 1, \
+//  [48:50] :/ 2, \
+//  [51:95] :/ 1, \
+//  96      :/ 1, \
+//  [97:99] :/ 1, \
+//  100     :/ 2, \
+//   200      :/ 1,\
 `define OTP_CLK_CONSTRAINT(FREQ_) \
   FREQ_ dist { \
-    6       :/ 2, \
-    [24:25] :/ 2, \
-    [26:47] :/ 1, \
-    [48:50] :/ 2, \
-    [51:95] :/ 1, \
-    96      :/ 1, \
-    [97:99] :/ 1, \
-    100     :/ 1  \
+    200 :/ 4 \
   };
 
 class otp_ctrl_env_cfg extends cip_base_env_cfg #(.RAL_T(otp_ctrl_core_reg_block));
@@ -91,7 +93,12 @@ class otp_ctrl_env_cfg extends cip_base_env_cfg #(.RAL_T(otp_ctrl_core_reg_block
     m_lc_prog_pull_agent_cfg.agent_type = PullAgent;
 
     // set num_interrupts & num_alerts
-    num_interrupts = ral.intr_state.get_n_used_bits();
+    begin
+      uvm_reg rg = ral.get_reg_by_name("intr_state");
+      if (rg != null) begin
+        num_interrupts = ral.intr_state.get_n_used_bits();
+      end
+    end
 
     // only support 1 outstanding TL items in tlul_adapter
     m_tl_agent_cfg.max_outstanding_req = 1;

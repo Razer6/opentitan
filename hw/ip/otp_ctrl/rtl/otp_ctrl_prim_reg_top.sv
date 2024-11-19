@@ -16,12 +16,15 @@ module otp_ctrl_prim_reg_top (
   input  otp_ctrl_reg_pkg::otp_ctrl_prim_hw2reg_t hw2reg, // Read
 
   // Integrity check errors
-  output logic intg_err_o
+  output logic intg_err_o,
+
+  // Config
+  input devmode_i // If 1, explicit error return for unmapped register access
 );
 
   import otp_ctrl_reg_pkg::* ;
 
-  localparam int AW = 5;
+  localparam int AW = 7;
   localparam int DW = 32;
   localparam int DBW = DW/8;                    // Byte Width
 
@@ -52,9 +55,9 @@ module otp_ctrl_prim_reg_top (
 
   // also check for spurious write enables
   logic reg_we_err;
-  logic [7:0] reg_we_check;
+  logic [19:0] reg_we_check;
   prim_reg_we_check #(
-    .OneHotWidth(8)
+    .OneHotWidth(20)
   ) u_prim_reg_we_check (
     .clk_i(clk_i),
     .rst_ni(rst_ni),
@@ -116,98 +119,197 @@ module otp_ctrl_prim_reg_top (
   // cdc oversampling signals
 
   assign reg_rdata = reg_rdata_next ;
-  assign reg_error = addrmiss | wr_err | intg_err;
+  assign reg_error = (devmode_i & addrmiss) | wr_err | intg_err;
 
   // Define SW related signals
   // Format: <reg>_<field>_{wd|we|qs}
   //        or <reg>_{wd|we|qs} if field == 1 or 0
-  logic csr0_we;
-  logic csr0_field0_qs;
-  logic csr0_field0_wd;
-  logic csr0_field1_qs;
-  logic csr0_field1_wd;
-  logic csr0_field2_qs;
-  logic csr0_field2_wd;
-  logic [9:0] csr0_field3_qs;
-  logic [9:0] csr0_field3_wd;
-  logic [10:0] csr0_field4_qs;
-  logic [10:0] csr0_field4_wd;
-  logic csr1_we;
-  logic [6:0] csr1_field0_qs;
-  logic [6:0] csr1_field0_wd;
-  logic csr1_field1_qs;
-  logic csr1_field1_wd;
-  logic [6:0] csr1_field2_qs;
-  logic [6:0] csr1_field2_wd;
-  logic csr1_field3_qs;
-  logic csr1_field3_wd;
-  logic [15:0] csr1_field4_qs;
-  logic [15:0] csr1_field4_wd;
-  logic csr2_we;
-  logic csr2_qs;
-  logic csr2_wd;
-  logic csr3_we;
-  logic [2:0] csr3_field0_qs;
-  logic [2:0] csr3_field0_wd;
-  logic [9:0] csr3_field1_qs;
-  logic [9:0] csr3_field1_wd;
-  logic csr3_field2_qs;
-  logic csr3_field2_wd;
-  logic csr3_field3_qs;
-  logic csr3_field4_qs;
-  logic csr3_field5_qs;
-  logic csr3_field6_qs;
-  logic csr3_field7_qs;
-  logic csr3_field8_qs;
-  logic csr4_we;
-  logic [9:0] csr4_field0_qs;
-  logic [9:0] csr4_field0_wd;
-  logic csr4_field1_qs;
-  logic csr4_field1_wd;
-  logic csr4_field2_qs;
-  logic csr4_field2_wd;
-  logic csr4_field3_qs;
-  logic csr4_field3_wd;
-  logic csr5_we;
-  logic [5:0] csr5_field0_qs;
-  logic [5:0] csr5_field0_wd;
-  logic [1:0] csr5_field1_qs;
-  logic [1:0] csr5_field1_wd;
-  logic csr5_field2_qs;
-  logic [2:0] csr5_field3_qs;
-  logic csr5_field4_qs;
-  logic csr5_field5_qs;
-  logic [15:0] csr5_field6_qs;
-  logic [15:0] csr5_field6_wd;
-  logic csr6_we;
-  logic [9:0] csr6_field0_qs;
-  logic [9:0] csr6_field0_wd;
-  logic csr6_field1_qs;
-  logic csr6_field1_wd;
-  logic csr6_field2_qs;
-  logic csr6_field2_wd;
-  logic [15:0] csr6_field3_qs;
-  logic [15:0] csr6_field3_wd;
-  logic [5:0] csr7_field0_qs;
-  logic [2:0] csr7_field1_qs;
-  logic csr7_field2_qs;
-  logic csr7_field3_qs;
+  logic macro_control_we;
+  logic [1:0] macro_control_macro_mode_qs;
+  logic [1:0] macro_control_macro_mode_wd;
+  logic macro_control_ecc_sel_qs;
+  logic macro_control_ecc_sel_wd;
+  logic [1:0] macro_control_test_row_col_sel_qs;
+  logic [1:0] macro_control_test_row_col_sel_wd;
+  logic macro_control_read_margin_qs;
+  logic macro_control_read_margin_wd;
+  logic macro_control_ecc_disable_qs;
+  logic macro_control_ecc_disable_wd;
+  logic macro_control_redundancy_autoinit_disable_qs;
+  logic macro_control_redundancy_autoinit_disable_wd;
+  logic [5:0] macro_control_field3_qs;
+  logic [5:0] macro_control_field3_wd;
+  logic [10:0] macro_control_field4_qs;
+  logic [10:0] macro_control_field4_wd;
+  logic [7:0] read_ecc_info_ecc_info_0_qs;
+  logic [7:0] read_ecc_info_ecc_info_1_qs;
+  logic [7:0] read_ecc_info_ecc_info_2_qs;
+  logic [7:0] read_ecc_info_ecc_info_3_qs;
+  logic fuse_wrapper_rd_cfg_0_we;
+  logic [11:0] fuse_wrapper_rd_cfg_0_tsur_pd_ps_cycles_qs;
+  logic [11:0] fuse_wrapper_rd_cfg_0_tsur_pd_ps_cycles_wd;
+  logic [9:0] fuse_wrapper_rd_cfg_0_tsur_ps_cycles_qs;
+  logic [9:0] fuse_wrapper_rd_cfg_0_tsur_ps_cycles_wd;
+  logic [8:0] fuse_wrapper_rd_cfg_0_tsur_ps_cs_cycles_qs;
+  logic [8:0] fuse_wrapper_rd_cfg_0_tsur_ps_cs_cycles_wd;
+  logic fuse_wrapper_rd_cfg_1_we;
+  logic [8:0] fuse_wrapper_rd_cfg_1_tsup_ps_cs_cycles_qs;
+  logic [8:0] fuse_wrapper_rd_cfg_1_tsup_ps_cs_cycles_wd;
+  logic [9:0] fuse_wrapper_rd_cfg_1_tsup_ps_cycles_qs;
+  logic [9:0] fuse_wrapper_rd_cfg_1_tsup_ps_cycles_wd;
+  logic [9:0] fuse_wrapper_rd_cfg_1_tsq_cycles_qs;
+  logic [9:0] fuse_wrapper_rd_cfg_1_tsq_cycles_wd;
+  logic fuse_wrapper_rd_cfg_2_we;
+  logic [10:0] fuse_wrapper_rd_cfg_2_tsq_m_cycles_qs;
+  logic [10:0] fuse_wrapper_rd_cfg_2_tsq_m_cycles_wd;
+  logic [13:0] fuse_wrapper_rd_cfg_2_tpgm_cycles_qs;
+  logic [13:0] fuse_wrapper_rd_cfg_2_tpgm_cycles_wd;
+  logic [6:0] fuse_wrapper_rd_cfg_2_tsur_ld_cycles_qs;
+  logic [6:0] fuse_wrapper_rd_cfg_2_tsur_ld_cycles_wd;
+  logic fuse_wrapper_rd_cfg_3_we;
+  logic [9:0] fuse_wrapper_rd_cfg_3_thr_ps_cycles_qs;
+  logic [9:0] fuse_wrapper_rd_cfg_3_thr_ps_cycles_wd;
+  logic [9:0] fuse_wrapper_rd_cfg_3_thp_ps_cycles_qs;
+  logic [9:0] fuse_wrapper_rd_cfg_3_thp_ps_cycles_wd;
+  logic [8:0] fuse_wrapper_rd_cfg_3_thp_cs_cycles_qs;
+  logic [8:0] fuse_wrapper_rd_cfg_3_thp_cs_cycles_wd;
+  logic fuse_wrapper_rd_cfg_4_we;
+  logic [8:0] fuse_wrapper_rd_cfg_4_thr_cs_cycles_qs;
+  logic [8:0] fuse_wrapper_rd_cfg_4_thr_cs_cycles_wd;
+  logic [8:0] fuse_wrapper_rd_cfg_4_thp_ps_cs_cycles_qs;
+  logic [8:0] fuse_wrapper_rd_cfg_4_thp_ps_cs_cycles_wd;
+  logic [8:0] fuse_wrapper_rd_cfg_4_thr_ps_cs_cycles_qs;
+  logic [8:0] fuse_wrapper_rd_cfg_4_thr_ps_cs_cycles_wd;
+  logic fuse_wrapper_rd_cfg_5_we;
+  logic [7:0] fuse_wrapper_rd_cfg_5_tsur_a_cycles_qs;
+  logic [7:0] fuse_wrapper_rd_cfg_5_tsur_a_cycles_wd;
+  logic [7:0] fuse_wrapper_rd_cfg_5_tsup_a_cycles_qs;
+  logic [7:0] fuse_wrapper_rd_cfg_5_tsup_a_cycles_wd;
+  logic [7:0] fuse_wrapper_rd_cfg_5_thp_a_cycles_qs;
+  logic [7:0] fuse_wrapper_rd_cfg_5_thp_a_cycles_wd;
+  logic [7:0] fuse_wrapper_rd_cfg_5_tsup_ld_cycles_qs;
+  logic [7:0] fuse_wrapper_rd_cfg_5_tsup_ld_cycles_wd;
+  logic fuse_wrapper_rd_cfg_6_we;
+  logic [9:0] fuse_wrapper_rd_cfg_6_trd_cycles_qs;
+  logic [9:0] fuse_wrapper_rd_cfg_6_trd_cycles_wd;
+  logic [10:0] fuse_wrapper_rd_cfg_6_trd_m_cycles_qs;
+  logic [10:0] fuse_wrapper_rd_cfg_6_trd_m_cycles_wd;
+  logic [7:0] fuse_wrapper_rd_cfg_6_thr_a_cycles_qs;
+  logic [7:0] fuse_wrapper_rd_cfg_6_thr_a_cycles_wd;
+  logic fuse_wrapper_rd_cfg_7_we;
+  logic [7:0] fuse_wrapper_rd_cfg_7_thp_pd_ps_cycles_qs;
+  logic [7:0] fuse_wrapper_rd_cfg_7_thp_pd_ps_cycles_wd;
+  logic [7:0] fuse_wrapper_rd_cfg_7_data_capture_cycles_qs;
+  logic [7:0] fuse_wrapper_rd_cfg_7_data_capture_cycles_wd;
+  logic [7:0] fuse_wrapper_rd_cfg_7_addr_capture_cycles_qs;
+  logic [7:0] fuse_wrapper_rd_cfg_7_addr_capture_cycles_wd;
+  logic fuse_wrapper_rd_cfg_8_we;
+  logic [17:0] fuse_wrapper_rd_cfg_8_qs;
+  logic [17:0] fuse_wrapper_rd_cfg_8_wd;
+  logic fuse_wrapper_wr_cfg_0_we;
+  logic [11:0] fuse_wrapper_wr_cfg_0_tsur_pd_ps_cycles_qs;
+  logic [11:0] fuse_wrapper_wr_cfg_0_tsur_pd_ps_cycles_wd;
+  logic [9:0] fuse_wrapper_wr_cfg_0_tsur_ps_cycles_qs;
+  logic [9:0] fuse_wrapper_wr_cfg_0_tsur_ps_cycles_wd;
+  logic [8:0] fuse_wrapper_wr_cfg_0_tsur_ps_cs_cycles_qs;
+  logic [8:0] fuse_wrapper_wr_cfg_0_tsur_ps_cs_cycles_wd;
+  logic fuse_wrapper_wr_cfg_1_we;
+  logic [8:0] fuse_wrapper_wr_cfg_1_tsup_ps_cs_cycles_qs;
+  logic [8:0] fuse_wrapper_wr_cfg_1_tsup_ps_cs_cycles_wd;
+  logic [9:0] fuse_wrapper_wr_cfg_1_tsup_ps_cycles_qs;
+  logic [9:0] fuse_wrapper_wr_cfg_1_tsup_ps_cycles_wd;
+  logic [9:0] fuse_wrapper_wr_cfg_1_tsq_cycles_qs;
+  logic [9:0] fuse_wrapper_wr_cfg_1_tsq_cycles_wd;
+  logic fuse_wrapper_wr_cfg_2_we;
+  logic [10:0] fuse_wrapper_wr_cfg_2_tsq_m_cycles_qs;
+  logic [10:0] fuse_wrapper_wr_cfg_2_tsq_m_cycles_wd;
+  logic [13:0] fuse_wrapper_wr_cfg_2_tpgm_cycles_qs;
+  logic [13:0] fuse_wrapper_wr_cfg_2_tpgm_cycles_wd;
+  logic [6:0] fuse_wrapper_wr_cfg_2_tsur_ld_cycles_qs;
+  logic [6:0] fuse_wrapper_wr_cfg_2_tsur_ld_cycles_wd;
+  logic fuse_wrapper_wr_cfg_3_we;
+  logic [9:0] fuse_wrapper_wr_cfg_3_thr_ps_cycles_qs;
+  logic [9:0] fuse_wrapper_wr_cfg_3_thr_ps_cycles_wd;
+  logic [9:0] fuse_wrapper_wr_cfg_3_thp_ps_cycles_qs;
+  logic [9:0] fuse_wrapper_wr_cfg_3_thp_ps_cycles_wd;
+  logic [8:0] fuse_wrapper_wr_cfg_3_thp_cs_cycles_qs;
+  logic [8:0] fuse_wrapper_wr_cfg_3_thp_cs_cycles_wd;
+  logic fuse_wrapper_wr_cfg_4_we;
+  logic [8:0] fuse_wrapper_wr_cfg_4_thr_cs_cycles_qs;
+  logic [8:0] fuse_wrapper_wr_cfg_4_thr_cs_cycles_wd;
+  logic [8:0] fuse_wrapper_wr_cfg_4_thp_ps_cs_cycles_qs;
+  logic [8:0] fuse_wrapper_wr_cfg_4_thp_ps_cs_cycles_wd;
+  logic [8:0] fuse_wrapper_wr_cfg_4_thr_ps_cs_cycles_qs;
+  logic [8:0] fuse_wrapper_wr_cfg_4_thr_ps_cs_cycles_wd;
+  logic fuse_wrapper_wr_cfg_5_we;
+  logic [7:0] fuse_wrapper_wr_cfg_5_tsur_a_cycles_qs;
+  logic [7:0] fuse_wrapper_wr_cfg_5_tsur_a_cycles_wd;
+  logic [7:0] fuse_wrapper_wr_cfg_5_tsup_a_cycles_qs;
+  logic [7:0] fuse_wrapper_wr_cfg_5_tsup_a_cycles_wd;
+  logic [7:0] fuse_wrapper_wr_cfg_5_thp_a_cycles_qs;
+  logic [7:0] fuse_wrapper_wr_cfg_5_thp_a_cycles_wd;
+  logic [7:0] fuse_wrapper_wr_cfg_5_tsup_ld_cycles_qs;
+  logic [7:0] fuse_wrapper_wr_cfg_5_tsup_ld_cycles_wd;
+  logic fuse_wrapper_wr_cfg_6_we;
+  logic [9:0] fuse_wrapper_wr_cfg_6_trd_cycles_qs;
+  logic [9:0] fuse_wrapper_wr_cfg_6_trd_cycles_wd;
+  logic [10:0] fuse_wrapper_wr_cfg_6_trd_m_cycles_qs;
+  logic [10:0] fuse_wrapper_wr_cfg_6_trd_m_cycles_wd;
+  logic [7:0] fuse_wrapper_wr_cfg_6_thr_a_cycles_qs;
+  logic [7:0] fuse_wrapper_wr_cfg_6_thr_a_cycles_wd;
+  logic fuse_wrapper_wr_cfg_7_we;
+  logic [7:0] fuse_wrapper_wr_cfg_7_thp_pd_ps_cycles_qs;
+  logic [7:0] fuse_wrapper_wr_cfg_7_thp_pd_ps_cycles_wd;
+  logic [7:0] fuse_wrapper_wr_cfg_7_data_capture_cycles_qs;
+  logic [7:0] fuse_wrapper_wr_cfg_7_data_capture_cycles_wd;
+  logic [7:0] fuse_wrapper_wr_cfg_7_addr_capture_cycles_qs;
+  logic [7:0] fuse_wrapper_wr_cfg_7_addr_capture_cycles_wd;
+  logic fuse_wrapper_wr_cfg_8_we;
+  logic [17:0] fuse_wrapper_wr_cfg_8_qs;
+  logic [17:0] fuse_wrapper_wr_cfg_8_wd;
 
   // Register instances
-  // R[csr0]: V(False)
-  //   F[field0]: 0:0
+  // R[macro_control]: V(False)
+  //   F[macro_mode]: 1:0
+  prim_subreg #(
+    .DW      (2),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (2'h0),
+    .Mubi    (1'b0)
+  ) u_macro_control_macro_mode (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (macro_control_we),
+    .wd     (macro_control_macro_mode_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.macro_control.macro_mode.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (macro_control_macro_mode_qs)
+  );
+
+  //   F[ecc_sel]: 2:2
   prim_subreg #(
     .DW      (1),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (1'h0),
     .Mubi    (1'b0)
-  ) u_csr0_field0 (
+  ) u_macro_control_ecc_sel (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (csr0_we),
-    .wd     (csr0_field0_wd),
+    .we     (macro_control_we),
+    .wd     (macro_control_ecc_sel_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -215,26 +317,53 @@ module otp_ctrl_prim_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr0.field0.q),
+    .q      (reg2hw.macro_control.ecc_sel.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr0_field0_qs)
+    .qs     (macro_control_ecc_sel_qs)
   );
 
-  //   F[field1]: 1:1
+  //   F[test_row_col_sel]: 4:3
+  prim_subreg #(
+    .DW      (2),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (2'h0),
+    .Mubi    (1'b0)
+  ) u_macro_control_test_row_col_sel (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (macro_control_we),
+    .wd     (macro_control_test_row_col_sel_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.macro_control.test_row_col_sel.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (macro_control_test_row_col_sel_qs)
+  );
+
+  //   F[read_margin]: 5:5
   prim_subreg #(
     .DW      (1),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (1'h0),
     .Mubi    (1'b0)
-  ) u_csr0_field1 (
+  ) u_macro_control_read_margin (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (csr0_we),
-    .wd     (csr0_field1_wd),
+    .we     (macro_control_we),
+    .wd     (macro_control_read_margin_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -242,26 +371,26 @@ module otp_ctrl_prim_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr0.field1.q),
+    .q      (reg2hw.macro_control.read_margin.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr0_field1_qs)
+    .qs     (macro_control_read_margin_qs)
   );
 
-  //   F[field2]: 2:2
+  //   F[ecc_disable]: 6:6
   prim_subreg #(
     .DW      (1),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (1'h0),
     .Mubi    (1'b0)
-  ) u_csr0_field2 (
+  ) u_macro_control_ecc_disable (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (csr0_we),
-    .wd     (csr0_field2_wd),
+    .we     (macro_control_we),
+    .wd     (macro_control_ecc_disable_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -269,26 +398,26 @@ module otp_ctrl_prim_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr0.field2.q),
+    .q      (reg2hw.macro_control.ecc_disable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr0_field2_qs)
+    .qs     (macro_control_ecc_disable_qs)
   );
 
-  //   F[field3]: 13:4
+  //   F[redundancy_autoinit_disable]: 7:7
   prim_subreg #(
-    .DW      (10),
+    .DW      (1),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (10'h0),
+    .RESVAL  (1'h0),
     .Mubi    (1'b0)
-  ) u_csr0_field3 (
+  ) u_macro_control_redundancy_autoinit_disable (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (csr0_we),
-    .wd     (csr0_field3_wd),
+    .we     (macro_control_we),
+    .wd     (macro_control_redundancy_autoinit_disable_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -296,11 +425,38 @@ module otp_ctrl_prim_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr0.field3.q),
+    .q      (reg2hw.macro_control.redundancy_autoinit_disable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr0_field3_qs)
+    .qs     (macro_control_redundancy_autoinit_disable_qs)
+  );
+
+  //   F[field3]: 13:8
+  prim_subreg #(
+    .DW      (6),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (6'h0),
+    .Mubi    (1'b0)
+  ) u_macro_control_field3 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (macro_control_we),
+    .wd     (macro_control_field3_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.macro_control.field3.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (macro_control_field3_qs)
   );
 
   //   F[field4]: 26:16
@@ -309,13 +465,13 @@ module otp_ctrl_prim_reg_top (
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (11'h0),
     .Mubi    (1'b0)
-  ) u_csr0_field4 (
+  ) u_macro_control_field4 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (csr0_we),
-    .wd     (csr0_field4_wd),
+    .we     (macro_control_we),
+    .wd     (macro_control_field4_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -323,28 +479,358 @@ module otp_ctrl_prim_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr0.field4.q),
+    .q      (reg2hw.macro_control.field4.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr0_field4_qs)
+    .qs     (macro_control_field4_qs)
   );
 
 
-  // R[csr1]: V(False)
-  //   F[field0]: 6:0
+  // R[read_ecc_info]: V(False)
+  //   F[ecc_info_0]: 7:0
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRO),
+    .RESVAL  (8'h0),
+    .Mubi    (1'b0)
+  ) u_read_ecc_info_ecc_info_0 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (1'b0),
+    .wd     ('0),
+
+    // from internal hardware
+    .de     (hw2reg.read_ecc_info.ecc_info_0.de),
+    .d      (hw2reg.read_ecc_info.ecc_info_0.d),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.read_ecc_info.ecc_info_0.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (read_ecc_info_ecc_info_0_qs)
+  );
+
+  //   F[ecc_info_1]: 15:8
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRO),
+    .RESVAL  (8'h0),
+    .Mubi    (1'b0)
+  ) u_read_ecc_info_ecc_info_1 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (1'b0),
+    .wd     ('0),
+
+    // from internal hardware
+    .de     (hw2reg.read_ecc_info.ecc_info_1.de),
+    .d      (hw2reg.read_ecc_info.ecc_info_1.d),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.read_ecc_info.ecc_info_1.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (read_ecc_info_ecc_info_1_qs)
+  );
+
+  //   F[ecc_info_2]: 23:16
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRO),
+    .RESVAL  (8'h0),
+    .Mubi    (1'b0)
+  ) u_read_ecc_info_ecc_info_2 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (1'b0),
+    .wd     ('0),
+
+    // from internal hardware
+    .de     (hw2reg.read_ecc_info.ecc_info_2.de),
+    .d      (hw2reg.read_ecc_info.ecc_info_2.d),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.read_ecc_info.ecc_info_2.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (read_ecc_info_ecc_info_2_qs)
+  );
+
+  //   F[ecc_info_3]: 31:24
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRO),
+    .RESVAL  (8'h0),
+    .Mubi    (1'b0)
+  ) u_read_ecc_info_ecc_info_3 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (1'b0),
+    .wd     ('0),
+
+    // from internal hardware
+    .de     (hw2reg.read_ecc_info.ecc_info_3.de),
+    .d      (hw2reg.read_ecc_info.ecc_info_3.d),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.read_ecc_info.ecc_info_3.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (read_ecc_info_ecc_info_3_qs)
+  );
+
+
+  // R[fuse_wrapper_rd_cfg_0]: V(False)
+  //   F[tsur_pd_ps_cycles]: 11:0
+  prim_subreg #(
+    .DW      (12),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (12'h147),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_0_tsur_pd_ps_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_0_we),
+    .wd     (fuse_wrapper_rd_cfg_0_tsur_pd_ps_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_0.tsur_pd_ps_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_0_tsur_pd_ps_cycles_qs)
+  );
+
+  //   F[tsur_ps_cycles]: 21:12
+  prim_subreg #(
+    .DW      (10),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (10'h57),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_0_tsur_ps_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_0_we),
+    .wd     (fuse_wrapper_rd_cfg_0_tsur_ps_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_0_tsur_ps_cycles_qs)
+  );
+
+  //   F[tsur_ps_cs_cycles]: 30:22
+  prim_subreg #(
+    .DW      (9),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (9'h40),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_0_tsur_ps_cs_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_0_we),
+    .wd     (fuse_wrapper_rd_cfg_0_tsur_ps_cs_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cs_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_0_tsur_ps_cs_cycles_qs)
+  );
+
+
+  // R[fuse_wrapper_rd_cfg_1]: V(False)
+  //   F[tsup_ps_cs_cycles]: 8:0
+  prim_subreg #(
+    .DW      (9),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (9'h40),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_1_tsup_ps_cs_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_1_we),
+    .wd     (fuse_wrapper_rd_cfg_1_tsup_ps_cs_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cs_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_1_tsup_ps_cs_cycles_qs)
+  );
+
+  //   F[tsup_ps_cycles]: 18:9
+  prim_subreg #(
+    .DW      (10),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (10'h57),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_1_tsup_ps_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_1_we),
+    .wd     (fuse_wrapper_rd_cfg_1_tsup_ps_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_1_tsup_ps_cycles_qs)
+  );
+
+  //   F[tsq_cycles]: 28:19
+  prim_subreg #(
+    .DW      (10),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (10'h57),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_1_tsq_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_1_we),
+    .wd     (fuse_wrapper_rd_cfg_1_tsq_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_1.tsq_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_1_tsq_cycles_qs)
+  );
+
+
+  // R[fuse_wrapper_rd_cfg_2]: V(False)
+  //   F[tsq_m_cycles]: 10:0
+  prim_subreg #(
+    .DW      (11),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (11'hda),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_2_tsq_m_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_2_we),
+    .wd     (fuse_wrapper_rd_cfg_2_tsq_m_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_2.tsq_m_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_2_tsq_m_cycles_qs)
+  );
+
+  //   F[tpgm_cycles]: 24:11
+  prim_subreg #(
+    .DW      (14),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (14'h753),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_2_tpgm_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_2_we),
+    .wd     (fuse_wrapper_rd_cfg_2_tpgm_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_2.tpgm_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_2_tpgm_cycles_qs)
+  );
+
+  //   F[tsur_ld_cycles]: 31:25
   prim_subreg #(
     .DW      (7),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (7'h0),
+    .RESVAL  (7'h31),
     .Mubi    (1'b0)
-  ) u_csr1_field0 (
+  ) u_fuse_wrapper_rd_cfg_2_tsur_ld_cycles (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (csr1_we),
-    .wd     (csr1_field0_wd),
+    .we     (fuse_wrapper_rd_cfg_2_we),
+    .wd     (fuse_wrapper_rd_cfg_2_tsur_ld_cycles_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -352,26 +838,28 @@ module otp_ctrl_prim_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr1.field0.q),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_2.tsur_ld_cycles.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr1_field0_qs)
+    .qs     (fuse_wrapper_rd_cfg_2_tsur_ld_cycles_qs)
   );
 
-  //   F[field1]: 7:7
+
+  // R[fuse_wrapper_rd_cfg_3]: V(False)
+  //   F[thr_ps_cycles]: 9:0
   prim_subreg #(
-    .DW      (1),
+    .DW      (10),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (1'h0),
+    .RESVAL  (10'h5e),
     .Mubi    (1'b0)
-  ) u_csr1_field1 (
+  ) u_fuse_wrapper_rd_cfg_3_thr_ps_cycles (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (csr1_we),
-    .wd     (csr1_field1_wd),
+    .we     (fuse_wrapper_rd_cfg_3_we),
+    .wd     (fuse_wrapper_rd_cfg_3_thr_ps_cycles_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -379,26 +867,689 @@ module otp_ctrl_prim_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr1.field1.q),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_3.thr_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr1_field1_qs)
+    .qs     (fuse_wrapper_rd_cfg_3_thr_ps_cycles_qs)
   );
 
-  //   F[field2]: 14:8
+  //   F[thp_ps_cycles]: 19:10
+  prim_subreg #(
+    .DW      (10),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (10'h5e),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_3_thp_ps_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_3_we),
+    .wd     (fuse_wrapper_rd_cfg_3_thp_ps_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_3.thp_ps_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_3_thp_ps_cycles_qs)
+  );
+
+  //   F[thp_cs_cycles]: 28:20
+  prim_subreg #(
+    .DW      (9),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (9'h2a),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_3_thp_cs_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_3_we),
+    .wd     (fuse_wrapper_rd_cfg_3_thp_cs_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_3.thp_cs_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_3_thp_cs_cycles_qs)
+  );
+
+
+  // R[fuse_wrapper_rd_cfg_4]: V(False)
+  //   F[thr_cs_cycles]: 8:0
+  prim_subreg #(
+    .DW      (9),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (9'h2a),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_4_thr_cs_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_4_we),
+    .wd     (fuse_wrapper_rd_cfg_4_thr_cs_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_4.thr_cs_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_4_thr_cs_cycles_qs)
+  );
+
+  //   F[thp_ps_cs_cycles]: 17:9
+  prim_subreg #(
+    .DW      (9),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (9'h35),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_4_thp_ps_cs_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_4_we),
+    .wd     (fuse_wrapper_rd_cfg_4_thp_ps_cs_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_4.thp_ps_cs_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_4_thp_ps_cs_cycles_qs)
+  );
+
+  //   F[thr_ps_cs_cycles]: 26:18
+  prim_subreg #(
+    .DW      (9),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (9'h35),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_4_thr_ps_cs_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_4_we),
+    .wd     (fuse_wrapper_rd_cfg_4_thr_ps_cs_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_4.thr_ps_cs_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_4_thr_ps_cs_cycles_qs)
+  );
+
+
+  // R[fuse_wrapper_rd_cfg_5]: V(False)
+  //   F[tsur_a_cycles]: 7:0
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'hf),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_5_tsur_a_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_5_we),
+    .wd     (fuse_wrapper_rd_cfg_5_tsur_a_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_5.tsur_a_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_5_tsur_a_cycles_qs)
+  );
+
+  //   F[tsup_a_cycles]: 15:8
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'hf),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_5_tsup_a_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_5_we),
+    .wd     (fuse_wrapper_rd_cfg_5_tsup_a_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_5.tsup_a_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_5_tsup_a_cycles_qs)
+  );
+
+  //   F[thp_a_cycles]: 23:16
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'hf),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_5_thp_a_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_5_we),
+    .wd     (fuse_wrapper_rd_cfg_5_thp_a_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_5.thp_a_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_5_thp_a_cycles_qs)
+  );
+
+  //   F[tsup_ld_cycles]: 31:24
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'h31),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_5_tsup_ld_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_5_we),
+    .wd     (fuse_wrapper_rd_cfg_5_tsup_ld_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_5.tsup_ld_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_5_tsup_ld_cycles_qs)
+  );
+
+
+  // R[fuse_wrapper_rd_cfg_6]: V(False)
+  //   F[trd_cycles]: 9:0
+  prim_subreg #(
+    .DW      (10),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (10'h5a),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_6_trd_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_6_we),
+    .wd     (fuse_wrapper_rd_cfg_6_trd_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_6.trd_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_6_trd_cycles_qs)
+  );
+
+  //   F[trd_m_cycles]: 20:10
+  prim_subreg #(
+    .DW      (11),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (11'hda),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_6_trd_m_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_6_we),
+    .wd     (fuse_wrapper_rd_cfg_6_trd_m_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_6.trd_m_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_6_trd_m_cycles_qs)
+  );
+
+  //   F[thr_a_cycles]: 28:21
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'h13),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_6_thr_a_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_6_we),
+    .wd     (fuse_wrapper_rd_cfg_6_thr_a_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_6.thr_a_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_6_thr_a_cycles_qs)
+  );
+
+
+  // R[fuse_wrapper_rd_cfg_7]: V(False)
+  //   F[thp_pd_ps_cycles]: 7:0
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'h1b),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_7_thp_pd_ps_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_7_we),
+    .wd     (fuse_wrapper_rd_cfg_7_thp_pd_ps_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_7.thp_pd_ps_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_7_thp_pd_ps_cycles_qs)
+  );
+
+  //   F[data_capture_cycles]: 15:8
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'h1),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_7_data_capture_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_7_we),
+    .wd     (fuse_wrapper_rd_cfg_7_data_capture_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_7.data_capture_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_7_data_capture_cycles_qs)
+  );
+
+  //   F[addr_capture_cycles]: 23:16
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'h1),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_7_addr_capture_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_7_we),
+    .wd     (fuse_wrapper_rd_cfg_7_addr_capture_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_7.addr_capture_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_7_addr_capture_cycles_qs)
+  );
+
+
+  // R[fuse_wrapper_rd_cfg_8]: V(False)
+  prim_subreg #(
+    .DW      (18),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (18'h493e),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_rd_cfg_8 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_rd_cfg_8_we),
+    .wd     (fuse_wrapper_rd_cfg_8_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_rd_cfg_8.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_rd_cfg_8_qs)
+  );
+
+
+  // R[fuse_wrapper_wr_cfg_0]: V(False)
+  //   F[tsur_pd_ps_cycles]: 11:0
+  prim_subreg #(
+    .DW      (12),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (12'h57),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_0_tsur_pd_ps_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_0_we),
+    .wd     (fuse_wrapper_wr_cfg_0_tsur_pd_ps_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_0.tsur_pd_ps_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_0_tsur_pd_ps_cycles_qs)
+  );
+
+  //   F[tsur_ps_cycles]: 21:12
+  prim_subreg #(
+    .DW      (10),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (10'h17),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_0_tsur_ps_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_0_we),
+    .wd     (fuse_wrapper_wr_cfg_0_tsur_ps_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_0_tsur_ps_cycles_qs)
+  );
+
+  //   F[tsur_ps_cs_cycles]: 30:22
+  prim_subreg #(
+    .DW      (9),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (9'h11),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_0_tsur_ps_cs_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_0_we),
+    .wd     (fuse_wrapper_wr_cfg_0_tsur_ps_cs_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cs_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_0_tsur_ps_cs_cycles_qs)
+  );
+
+
+  // R[fuse_wrapper_wr_cfg_1]: V(False)
+  //   F[tsup_ps_cs_cycles]: 8:0
+  prim_subreg #(
+    .DW      (9),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (9'h11),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_1_tsup_ps_cs_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_1_we),
+    .wd     (fuse_wrapper_wr_cfg_1_tsup_ps_cs_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cs_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_1_tsup_ps_cs_cycles_qs)
+  );
+
+  //   F[tsup_ps_cycles]: 18:9
+  prim_subreg #(
+    .DW      (10),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (10'h17),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_1_tsup_ps_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_1_we),
+    .wd     (fuse_wrapper_wr_cfg_1_tsup_ps_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_1_tsup_ps_cycles_qs)
+  );
+
+  //   F[tsq_cycles]: 28:19
+  prim_subreg #(
+    .DW      (10),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (10'h17),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_1_tsq_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_1_we),
+    .wd     (fuse_wrapper_wr_cfg_1_tsq_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_1.tsq_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_1_tsq_cycles_qs)
+  );
+
+
+  // R[fuse_wrapper_wr_cfg_2]: V(False)
+  //   F[tsq_m_cycles]: 10:0
+  prim_subreg #(
+    .DW      (11),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (11'h3a),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_2_tsq_m_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_2_we),
+    .wd     (fuse_wrapper_wr_cfg_2_tsq_m_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_2.tsq_m_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_2_tsq_m_cycles_qs)
+  );
+
+  //   F[tpgm_cycles]: 24:11
+  prim_subreg #(
+    .DW      (14),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (14'h1f4),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_2_tpgm_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_2_we),
+    .wd     (fuse_wrapper_wr_cfg_2_tpgm_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_2.tpgm_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_2_tpgm_cycles_qs)
+  );
+
+  //   F[tsur_ld_cycles]: 31:25
   prim_subreg #(
     .DW      (7),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (7'h0),
+    .RESVAL  (7'hd),
     .Mubi    (1'b0)
-  ) u_csr1_field2 (
+  ) u_fuse_wrapper_wr_cfg_2_tsur_ld_cycles (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (csr1_we),
-    .wd     (csr1_field2_wd),
+    .we     (fuse_wrapper_wr_cfg_2_we),
+    .wd     (fuse_wrapper_wr_cfg_2_tsur_ld_cycles_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -406,355 +1557,28 @@ module otp_ctrl_prim_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr1.field2.q),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_2.tsur_ld_cycles.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr1_field2_qs)
-  );
-
-  //   F[field3]: 15:15
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr1_field3 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (csr1_we),
-    .wd     (csr1_field3_wd),
-
-    // from internal hardware
-    .de     (1'b0),
-    .d      ('0),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr1.field3.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr1_field3_qs)
-  );
-
-  //   F[field4]: 31:16
-  prim_subreg #(
-    .DW      (16),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (16'h0),
-    .Mubi    (1'b0)
-  ) u_csr1_field4 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (csr1_we),
-    .wd     (csr1_field4_wd),
-
-    // from internal hardware
-    .de     (1'b0),
-    .d      ('0),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr1.field4.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr1_field4_qs)
+    .qs     (fuse_wrapper_wr_cfg_2_tsur_ld_cycles_qs)
   );
 
 
-  // R[csr2]: V(False)
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr2 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (csr2_we),
-    .wd     (csr2_wd),
-
-    // from internal hardware
-    .de     (1'b0),
-    .d      ('0),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr2.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr2_qs)
-  );
-
-
-  // R[csr3]: V(False)
-  //   F[field0]: 2:0
-  prim_subreg #(
-    .DW      (3),
-    .SwAccess(prim_subreg_pkg::SwAccessW1C),
-    .RESVAL  (3'h0),
-    .Mubi    (1'b0)
-  ) u_csr3_field0 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (csr3_we),
-    .wd     (csr3_field0_wd),
-
-    // from internal hardware
-    .de     (hw2reg.csr3.field0.de),
-    .d      (hw2reg.csr3.field0.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr3.field0.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr3_field0_qs)
-  );
-
-  //   F[field1]: 13:4
-  prim_subreg #(
-    .DW      (10),
-    .SwAccess(prim_subreg_pkg::SwAccessW1C),
-    .RESVAL  (10'h0),
-    .Mubi    (1'b0)
-  ) u_csr3_field1 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (csr3_we),
-    .wd     (csr3_field1_wd),
-
-    // from internal hardware
-    .de     (hw2reg.csr3.field1.de),
-    .d      (hw2reg.csr3.field1.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr3.field1.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr3_field1_qs)
-  );
-
-  //   F[field2]: 16:16
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessW1C),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr3_field2 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (csr3_we),
-    .wd     (csr3_field2_wd),
-
-    // from internal hardware
-    .de     (hw2reg.csr3.field2.de),
-    .d      (hw2reg.csr3.field2.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr3.field2.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr3_field2_qs)
-  );
-
-  //   F[field3]: 17:17
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr3_field3 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (1'b0),
-    .wd     ('0),
-
-    // from internal hardware
-    .de     (hw2reg.csr3.field3.de),
-    .d      (hw2reg.csr3.field3.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr3.field3.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr3_field3_qs)
-  );
-
-  //   F[field4]: 18:18
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr3_field4 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (1'b0),
-    .wd     ('0),
-
-    // from internal hardware
-    .de     (hw2reg.csr3.field4.de),
-    .d      (hw2reg.csr3.field4.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr3.field4.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr3_field4_qs)
-  );
-
-  //   F[field5]: 19:19
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr3_field5 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (1'b0),
-    .wd     ('0),
-
-    // from internal hardware
-    .de     (hw2reg.csr3.field5.de),
-    .d      (hw2reg.csr3.field5.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr3.field5.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr3_field5_qs)
-  );
-
-  //   F[field6]: 20:20
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr3_field6 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (1'b0),
-    .wd     ('0),
-
-    // from internal hardware
-    .de     (hw2reg.csr3.field6.de),
-    .d      (hw2reg.csr3.field6.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr3.field6.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr3_field6_qs)
-  );
-
-  //   F[field7]: 21:21
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr3_field7 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (1'b0),
-    .wd     ('0),
-
-    // from internal hardware
-    .de     (hw2reg.csr3.field7.de),
-    .d      (hw2reg.csr3.field7.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr3.field7.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr3_field7_qs)
-  );
-
-  //   F[field8]: 22:22
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr3_field8 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (1'b0),
-    .wd     ('0),
-
-    // from internal hardware
-    .de     (hw2reg.csr3.field8.de),
-    .d      (hw2reg.csr3.field8.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr3.field8.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr3_field8_qs)
-  );
-
-
-  // R[csr4]: V(False)
-  //   F[field0]: 9:0
+  // R[fuse_wrapper_wr_cfg_3]: V(False)
+  //   F[thr_ps_cycles]: 9:0
   prim_subreg #(
     .DW      (10),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (10'h0),
+    .RESVAL  (10'h19),
     .Mubi    (1'b0)
-  ) u_csr4_field0 (
+  ) u_fuse_wrapper_wr_cfg_3_thr_ps_cycles (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (csr4_we),
-    .wd     (csr4_field0_wd),
+    .we     (fuse_wrapper_wr_cfg_3_we),
+    .wd     (fuse_wrapper_wr_cfg_3_thr_ps_cycles_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -762,300 +1586,26 @@ module otp_ctrl_prim_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr4.field0.q),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_3.thr_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr4_field0_qs)
+    .qs     (fuse_wrapper_wr_cfg_3_thr_ps_cycles_qs)
   );
 
-  //   F[field1]: 12:12
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr4_field1 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (csr4_we),
-    .wd     (csr4_field1_wd),
-
-    // from internal hardware
-    .de     (1'b0),
-    .d      ('0),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr4.field1.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr4_field1_qs)
-  );
-
-  //   F[field2]: 13:13
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr4_field2 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (csr4_we),
-    .wd     (csr4_field2_wd),
-
-    // from internal hardware
-    .de     (1'b0),
-    .d      ('0),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr4.field2.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr4_field2_qs)
-  );
-
-  //   F[field3]: 14:14
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr4_field3 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (csr4_we),
-    .wd     (csr4_field3_wd),
-
-    // from internal hardware
-    .de     (1'b0),
-    .d      ('0),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr4.field3.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr4_field3_qs)
-  );
-
-
-  // R[csr5]: V(False)
-  //   F[field0]: 5:0
-  prim_subreg #(
-    .DW      (6),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (6'h0),
-    .Mubi    (1'b0)
-  ) u_csr5_field0 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (csr5_we),
-    .wd     (csr5_field0_wd),
-
-    // from internal hardware
-    .de     (hw2reg.csr5.field0.de),
-    .d      (hw2reg.csr5.field0.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr5.field0.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr5_field0_qs)
-  );
-
-  //   F[field1]: 7:6
-  prim_subreg #(
-    .DW      (2),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (2'h0),
-    .Mubi    (1'b0)
-  ) u_csr5_field1 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (csr5_we),
-    .wd     (csr5_field1_wd),
-
-    // from internal hardware
-    .de     (hw2reg.csr5.field1.de),
-    .d      (hw2reg.csr5.field1.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr5.field1.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr5_field1_qs)
-  );
-
-  //   F[field2]: 8:8
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr5_field2 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (1'b0),
-    .wd     ('0),
-
-    // from internal hardware
-    .de     (hw2reg.csr5.field2.de),
-    .d      (hw2reg.csr5.field2.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr5.field2.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr5_field2_qs)
-  );
-
-  //   F[field3]: 11:9
-  prim_subreg #(
-    .DW      (3),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (3'h0),
-    .Mubi    (1'b0)
-  ) u_csr5_field3 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (1'b0),
-    .wd     ('0),
-
-    // from internal hardware
-    .de     (hw2reg.csr5.field3.de),
-    .d      (hw2reg.csr5.field3.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr5.field3.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr5_field3_qs)
-  );
-
-  //   F[field4]: 12:12
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr5_field4 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (1'b0),
-    .wd     ('0),
-
-    // from internal hardware
-    .de     (hw2reg.csr5.field4.de),
-    .d      (hw2reg.csr5.field4.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr5.field4.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr5_field4_qs)
-  );
-
-  //   F[field5]: 13:13
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_csr5_field5 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (1'b0),
-    .wd     ('0),
-
-    // from internal hardware
-    .de     (hw2reg.csr5.field5.de),
-    .d      (hw2reg.csr5.field5.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr5.field5.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr5_field5_qs)
-  );
-
-  //   F[field6]: 31:16
-  prim_subreg #(
-    .DW      (16),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (16'h0),
-    .Mubi    (1'b0)
-  ) u_csr5_field6 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (csr5_we),
-    .wd     (csr5_field6_wd),
-
-    // from internal hardware
-    .de     (hw2reg.csr5.field6.de),
-    .d      (hw2reg.csr5.field6.d),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.csr5.field6.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (csr5_field6_qs)
-  );
-
-
-  // R[csr6]: V(False)
-  //   F[field0]: 9:0
+  //   F[thp_ps_cycles]: 19:10
   prim_subreg #(
     .DW      (10),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (10'h0),
+    .RESVAL  (10'h19),
     .Mubi    (1'b0)
-  ) u_csr6_field0 (
+  ) u_fuse_wrapper_wr_cfg_3_thp_ps_cycles (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (csr6_we),
-    .wd     (csr6_field0_wd),
+    .we     (fuse_wrapper_wr_cfg_3_we),
+    .wd     (fuse_wrapper_wr_cfg_3_thp_ps_cycles_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -1063,26 +1613,26 @@ module otp_ctrl_prim_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr6.field0.q),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_3.thp_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr6_field0_qs)
+    .qs     (fuse_wrapper_wr_cfg_3_thp_ps_cycles_qs)
   );
 
-  //   F[field1]: 11:11
+  //   F[thp_cs_cycles]: 28:20
   prim_subreg #(
-    .DW      (1),
+    .DW      (9),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (1'h0),
+    .RESVAL  (9'hb),
     .Mubi    (1'b0)
-  ) u_csr6_field1 (
+  ) u_fuse_wrapper_wr_cfg_3_thp_cs_cycles (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (csr6_we),
-    .wd     (csr6_field1_wd),
+    .we     (fuse_wrapper_wr_cfg_3_we),
+    .wd     (fuse_wrapper_wr_cfg_3_thp_cs_cycles_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -1090,26 +1640,28 @@ module otp_ctrl_prim_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr6.field1.q),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_3.thp_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr6_field1_qs)
+    .qs     (fuse_wrapper_wr_cfg_3_thp_cs_cycles_qs)
   );
 
-  //   F[field2]: 12:12
+
+  // R[fuse_wrapper_wr_cfg_4]: V(False)
+  //   F[thr_cs_cycles]: 8:0
   prim_subreg #(
-    .DW      (1),
+    .DW      (9),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (1'h0),
+    .RESVAL  (9'hb),
     .Mubi    (1'b0)
-  ) u_csr6_field2 (
+  ) u_fuse_wrapper_wr_cfg_4_thr_cs_cycles (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (csr6_we),
-    .wd     (csr6_field2_wd),
+    .we     (fuse_wrapper_wr_cfg_4_we),
+    .wd     (fuse_wrapper_wr_cfg_4_thr_cs_cycles_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -1117,26 +1669,26 @@ module otp_ctrl_prim_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr6.field2.q),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_4.thr_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr6_field2_qs)
+    .qs     (fuse_wrapper_wr_cfg_4_thr_cs_cycles_qs)
   );
 
-  //   F[field3]: 31:16
+  //   F[thp_ps_cs_cycles]: 17:9
   prim_subreg #(
-    .DW      (16),
+    .DW      (9),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (16'h0),
+    .RESVAL  (9'he),
     .Mubi    (1'b0)
-  ) u_csr6_field3 (
+  ) u_fuse_wrapper_wr_cfg_4_thp_ps_cs_cycles (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (csr6_we),
-    .wd     (csr6_field3_wd),
+    .we     (fuse_wrapper_wr_cfg_4_we),
+    .wd     (fuse_wrapper_wr_cfg_4_thp_ps_cs_cycles_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -1144,136 +1696,369 @@ module otp_ctrl_prim_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr6.field3.q),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_4.thp_ps_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr6_field3_qs)
+    .qs     (fuse_wrapper_wr_cfg_4_thp_ps_cs_cycles_qs)
   );
 
-
-  // R[csr7]: V(False)
-  //   F[field0]: 5:0
+  //   F[thr_ps_cs_cycles]: 26:18
   prim_subreg #(
-    .DW      (6),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (6'h0),
+    .DW      (9),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (9'he),
     .Mubi    (1'b0)
-  ) u_csr7_field0 (
+  ) u_fuse_wrapper_wr_cfg_4_thr_ps_cs_cycles (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (1'b0),
-    .wd     ('0),
+    .we     (fuse_wrapper_wr_cfg_4_we),
+    .wd     (fuse_wrapper_wr_cfg_4_thr_ps_cs_cycles_wd),
 
     // from internal hardware
-    .de     (hw2reg.csr7.field0.de),
-    .d      (hw2reg.csr7.field0.d),
+    .de     (1'b0),
+    .d      ('0),
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr7.field0.q),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_4.thr_ps_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr7_field0_qs)
+    .qs     (fuse_wrapper_wr_cfg_4_thr_ps_cs_cycles_qs)
   );
 
-  //   F[field1]: 10:8
+
+  // R[fuse_wrapper_wr_cfg_5]: V(False)
+  //   F[tsur_a_cycles]: 7:0
   prim_subreg #(
-    .DW      (3),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (3'h0),
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'h4),
     .Mubi    (1'b0)
-  ) u_csr7_field1 (
+  ) u_fuse_wrapper_wr_cfg_5_tsur_a_cycles (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (1'b0),
-    .wd     ('0),
+    .we     (fuse_wrapper_wr_cfg_5_we),
+    .wd     (fuse_wrapper_wr_cfg_5_tsur_a_cycles_wd),
 
     // from internal hardware
-    .de     (hw2reg.csr7.field1.de),
-    .d      (hw2reg.csr7.field1.d),
+    .de     (1'b0),
+    .d      ('0),
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr7.field1.q),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_5.tsur_a_cycles.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr7_field1_qs)
+    .qs     (fuse_wrapper_wr_cfg_5_tsur_a_cycles_qs)
   );
 
-  //   F[field2]: 14:14
+  //   F[tsup_a_cycles]: 15:8
   prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (1'h0),
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'h4),
     .Mubi    (1'b0)
-  ) u_csr7_field2 (
+  ) u_fuse_wrapper_wr_cfg_5_tsup_a_cycles (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (1'b0),
-    .wd     ('0),
+    .we     (fuse_wrapper_wr_cfg_5_we),
+    .wd     (fuse_wrapper_wr_cfg_5_tsup_a_cycles_wd),
 
     // from internal hardware
-    .de     (hw2reg.csr7.field2.de),
-    .d      (hw2reg.csr7.field2.d),
+    .de     (1'b0),
+    .d      ('0),
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr7.field2.q),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_5.tsup_a_cycles.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr7_field2_qs)
+    .qs     (fuse_wrapper_wr_cfg_5_tsup_a_cycles_qs)
   );
 
-  //   F[field3]: 15:15
+  //   F[thp_a_cycles]: 23:16
   prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (1'h0),
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'h5),
     .Mubi    (1'b0)
-  ) u_csr7_field3 (
+  ) u_fuse_wrapper_wr_cfg_5_thp_a_cycles (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (1'b0),
-    .wd     ('0),
+    .we     (fuse_wrapper_wr_cfg_5_we),
+    .wd     (fuse_wrapper_wr_cfg_5_thp_a_cycles_wd),
 
     // from internal hardware
-    .de     (hw2reg.csr7.field3.de),
-    .d      (hw2reg.csr7.field3.d),
+    .de     (1'b0),
+    .d      ('0),
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.csr7.field3.q),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_5.thp_a_cycles.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (csr7_field3_qs)
+    .qs     (fuse_wrapper_wr_cfg_5_thp_a_cycles_qs)
+  );
+
+  //   F[tsup_ld_cycles]: 31:24
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'hd),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_5_tsup_ld_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_5_we),
+    .wd     (fuse_wrapper_wr_cfg_5_tsup_ld_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_5.tsup_ld_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_5_tsup_ld_cycles_qs)
+  );
+
+
+  // R[fuse_wrapper_wr_cfg_6]: V(False)
+  //   F[trd_cycles]: 9:0
+  prim_subreg #(
+    .DW      (10),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (10'h1b),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_6_trd_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_6_we),
+    .wd     (fuse_wrapper_wr_cfg_6_trd_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_6.trd_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_6_trd_cycles_qs)
+  );
+
+  //   F[trd_m_cycles]: 20:10
+  prim_subreg #(
+    .DW      (11),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (11'h3a),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_6_trd_m_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_6_we),
+    .wd     (fuse_wrapper_wr_cfg_6_trd_m_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_6.trd_m_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_6_trd_m_cycles_qs)
+  );
+
+  //   F[thr_a_cycles]: 28:21
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'h5),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_6_thr_a_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_6_we),
+    .wd     (fuse_wrapper_wr_cfg_6_thr_a_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_6.thr_a_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_6_thr_a_cycles_qs)
+  );
+
+
+  // R[fuse_wrapper_wr_cfg_7]: V(False)
+  //   F[thp_pd_ps_cycles]: 7:0
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'h7),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_7_thp_pd_ps_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_7_we),
+    .wd     (fuse_wrapper_wr_cfg_7_thp_pd_ps_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_7.thp_pd_ps_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_7_thp_pd_ps_cycles_qs)
+  );
+
+  //   F[data_capture_cycles]: 15:8
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'h1),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_7_data_capture_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_7_we),
+    .wd     (fuse_wrapper_wr_cfg_7_data_capture_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_7.data_capture_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_7_data_capture_cycles_qs)
+  );
+
+  //   F[addr_capture_cycles]: 23:16
+  prim_subreg #(
+    .DW      (8),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (8'h1),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_7_addr_capture_cycles (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_7_we),
+    .wd     (fuse_wrapper_wr_cfg_7_addr_capture_cycles_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_7.addr_capture_cycles.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_7_addr_capture_cycles_qs)
+  );
+
+
+  // R[fuse_wrapper_wr_cfg_8]: V(False)
+  prim_subreg #(
+    .DW      (18),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (18'h1388),
+    .Mubi    (1'b0)
+  ) u_fuse_wrapper_wr_cfg_8 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (fuse_wrapper_wr_cfg_8_we),
+    .wd     (fuse_wrapper_wr_cfg_8_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.fuse_wrapper_wr_cfg_8.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (fuse_wrapper_wr_cfg_8_qs)
   );
 
 
 
-  logic [7:0] addr_hit;
+  logic [19:0] addr_hit;
   always_comb begin
     addr_hit = '0;
-    addr_hit[0] = (reg_addr == OTP_CTRL_CSR0_OFFSET);
-    addr_hit[1] = (reg_addr == OTP_CTRL_CSR1_OFFSET);
-    addr_hit[2] = (reg_addr == OTP_CTRL_CSR2_OFFSET);
-    addr_hit[3] = (reg_addr == OTP_CTRL_CSR3_OFFSET);
-    addr_hit[4] = (reg_addr == OTP_CTRL_CSR4_OFFSET);
-    addr_hit[5] = (reg_addr == OTP_CTRL_CSR5_OFFSET);
-    addr_hit[6] = (reg_addr == OTP_CTRL_CSR6_OFFSET);
-    addr_hit[7] = (reg_addr == OTP_CTRL_CSR7_OFFSET);
+    addr_hit[ 0] = (reg_addr == OTP_CTRL_MACRO_CONTROL_OFFSET);
+    addr_hit[ 1] = (reg_addr == OTP_CTRL_READ_ECC_INFO_OFFSET);
+    addr_hit[ 2] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_RD_CFG_0_OFFSET);
+    addr_hit[ 3] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_RD_CFG_1_OFFSET);
+    addr_hit[ 4] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_RD_CFG_2_OFFSET);
+    addr_hit[ 5] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_RD_CFG_3_OFFSET);
+    addr_hit[ 6] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_RD_CFG_4_OFFSET);
+    addr_hit[ 7] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_RD_CFG_5_OFFSET);
+    addr_hit[ 8] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_RD_CFG_6_OFFSET);
+    addr_hit[ 9] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_RD_CFG_7_OFFSET);
+    addr_hit[10] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_RD_CFG_8_OFFSET);
+    addr_hit[11] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_WR_CFG_0_OFFSET);
+    addr_hit[12] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_WR_CFG_1_OFFSET);
+    addr_hit[13] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_WR_CFG_2_OFFSET);
+    addr_hit[14] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_WR_CFG_3_OFFSET);
+    addr_hit[15] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_WR_CFG_4_OFFSET);
+    addr_hit[16] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_WR_CFG_5_OFFSET);
+    addr_hit[17] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_WR_CFG_6_OFFSET);
+    addr_hit[18] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_WR_CFG_7_OFFSET);
+    addr_hit[19] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_WR_CFG_8_OFFSET);
   end
 
   assign addrmiss = (reg_re || reg_we) ? ~|addr_hit : 1'b0 ;
@@ -1281,86 +2066,192 @@ module otp_ctrl_prim_reg_top (
   // Check sub-word write is permitted
   always_comb begin
     wr_err = (reg_we &
-              ((addr_hit[0] & (|(OTP_CTRL_PRIM_PERMIT[0] & ~reg_be))) |
-               (addr_hit[1] & (|(OTP_CTRL_PRIM_PERMIT[1] & ~reg_be))) |
-               (addr_hit[2] & (|(OTP_CTRL_PRIM_PERMIT[2] & ~reg_be))) |
-               (addr_hit[3] & (|(OTP_CTRL_PRIM_PERMIT[3] & ~reg_be))) |
-               (addr_hit[4] & (|(OTP_CTRL_PRIM_PERMIT[4] & ~reg_be))) |
-               (addr_hit[5] & (|(OTP_CTRL_PRIM_PERMIT[5] & ~reg_be))) |
-               (addr_hit[6] & (|(OTP_CTRL_PRIM_PERMIT[6] & ~reg_be))) |
-               (addr_hit[7] & (|(OTP_CTRL_PRIM_PERMIT[7] & ~reg_be)))));
+              ((addr_hit[ 0] & (|(OTP_CTRL_PRIM_PERMIT[ 0] & ~reg_be))) |
+               (addr_hit[ 1] & (|(OTP_CTRL_PRIM_PERMIT[ 1] & ~reg_be))) |
+               (addr_hit[ 2] & (|(OTP_CTRL_PRIM_PERMIT[ 2] & ~reg_be))) |
+               (addr_hit[ 3] & (|(OTP_CTRL_PRIM_PERMIT[ 3] & ~reg_be))) |
+               (addr_hit[ 4] & (|(OTP_CTRL_PRIM_PERMIT[ 4] & ~reg_be))) |
+               (addr_hit[ 5] & (|(OTP_CTRL_PRIM_PERMIT[ 5] & ~reg_be))) |
+               (addr_hit[ 6] & (|(OTP_CTRL_PRIM_PERMIT[ 6] & ~reg_be))) |
+               (addr_hit[ 7] & (|(OTP_CTRL_PRIM_PERMIT[ 7] & ~reg_be))) |
+               (addr_hit[ 8] & (|(OTP_CTRL_PRIM_PERMIT[ 8] & ~reg_be))) |
+               (addr_hit[ 9] & (|(OTP_CTRL_PRIM_PERMIT[ 9] & ~reg_be))) |
+               (addr_hit[10] & (|(OTP_CTRL_PRIM_PERMIT[10] & ~reg_be))) |
+               (addr_hit[11] & (|(OTP_CTRL_PRIM_PERMIT[11] & ~reg_be))) |
+               (addr_hit[12] & (|(OTP_CTRL_PRIM_PERMIT[12] & ~reg_be))) |
+               (addr_hit[13] & (|(OTP_CTRL_PRIM_PERMIT[13] & ~reg_be))) |
+               (addr_hit[14] & (|(OTP_CTRL_PRIM_PERMIT[14] & ~reg_be))) |
+               (addr_hit[15] & (|(OTP_CTRL_PRIM_PERMIT[15] & ~reg_be))) |
+               (addr_hit[16] & (|(OTP_CTRL_PRIM_PERMIT[16] & ~reg_be))) |
+               (addr_hit[17] & (|(OTP_CTRL_PRIM_PERMIT[17] & ~reg_be))) |
+               (addr_hit[18] & (|(OTP_CTRL_PRIM_PERMIT[18] & ~reg_be))) |
+               (addr_hit[19] & (|(OTP_CTRL_PRIM_PERMIT[19] & ~reg_be)))));
   end
 
   // Generate write-enables
-  assign csr0_we = addr_hit[0] & reg_we & !reg_error;
+  assign macro_control_we = addr_hit[0] & reg_we & !reg_error;
 
-  assign csr0_field0_wd = reg_wdata[0];
+  assign macro_control_macro_mode_wd = reg_wdata[1:0];
 
-  assign csr0_field1_wd = reg_wdata[1];
+  assign macro_control_ecc_sel_wd = reg_wdata[2];
 
-  assign csr0_field2_wd = reg_wdata[2];
+  assign macro_control_test_row_col_sel_wd = reg_wdata[4:3];
 
-  assign csr0_field3_wd = reg_wdata[13:4];
+  assign macro_control_read_margin_wd = reg_wdata[5];
 
-  assign csr0_field4_wd = reg_wdata[26:16];
-  assign csr1_we = addr_hit[1] & reg_we & !reg_error;
+  assign macro_control_ecc_disable_wd = reg_wdata[6];
 
-  assign csr1_field0_wd = reg_wdata[6:0];
+  assign macro_control_redundancy_autoinit_disable_wd = reg_wdata[7];
 
-  assign csr1_field1_wd = reg_wdata[7];
+  assign macro_control_field3_wd = reg_wdata[13:8];
 
-  assign csr1_field2_wd = reg_wdata[14:8];
+  assign macro_control_field4_wd = reg_wdata[26:16];
+  assign fuse_wrapper_rd_cfg_0_we = addr_hit[2] & reg_we & !reg_error;
 
-  assign csr1_field3_wd = reg_wdata[15];
+  assign fuse_wrapper_rd_cfg_0_tsur_pd_ps_cycles_wd = reg_wdata[11:0];
 
-  assign csr1_field4_wd = reg_wdata[31:16];
-  assign csr2_we = addr_hit[2] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_0_tsur_ps_cycles_wd = reg_wdata[21:12];
 
-  assign csr2_wd = reg_wdata[0];
-  assign csr3_we = addr_hit[3] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_0_tsur_ps_cs_cycles_wd = reg_wdata[30:22];
+  assign fuse_wrapper_rd_cfg_1_we = addr_hit[3] & reg_we & !reg_error;
 
-  assign csr3_field0_wd = reg_wdata[2:0];
+  assign fuse_wrapper_rd_cfg_1_tsup_ps_cs_cycles_wd = reg_wdata[8:0];
 
-  assign csr3_field1_wd = reg_wdata[13:4];
+  assign fuse_wrapper_rd_cfg_1_tsup_ps_cycles_wd = reg_wdata[18:9];
 
-  assign csr3_field2_wd = reg_wdata[16];
-  assign csr4_we = addr_hit[4] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_1_tsq_cycles_wd = reg_wdata[28:19];
+  assign fuse_wrapper_rd_cfg_2_we = addr_hit[4] & reg_we & !reg_error;
 
-  assign csr4_field0_wd = reg_wdata[9:0];
+  assign fuse_wrapper_rd_cfg_2_tsq_m_cycles_wd = reg_wdata[10:0];
 
-  assign csr4_field1_wd = reg_wdata[12];
+  assign fuse_wrapper_rd_cfg_2_tpgm_cycles_wd = reg_wdata[24:11];
 
-  assign csr4_field2_wd = reg_wdata[13];
+  assign fuse_wrapper_rd_cfg_2_tsur_ld_cycles_wd = reg_wdata[31:25];
+  assign fuse_wrapper_rd_cfg_3_we = addr_hit[5] & reg_we & !reg_error;
 
-  assign csr4_field3_wd = reg_wdata[14];
-  assign csr5_we = addr_hit[5] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_3_thr_ps_cycles_wd = reg_wdata[9:0];
 
-  assign csr5_field0_wd = reg_wdata[5:0];
+  assign fuse_wrapper_rd_cfg_3_thp_ps_cycles_wd = reg_wdata[19:10];
 
-  assign csr5_field1_wd = reg_wdata[7:6];
+  assign fuse_wrapper_rd_cfg_3_thp_cs_cycles_wd = reg_wdata[28:20];
+  assign fuse_wrapper_rd_cfg_4_we = addr_hit[6] & reg_we & !reg_error;
 
-  assign csr5_field6_wd = reg_wdata[31:16];
-  assign csr6_we = addr_hit[6] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_4_thr_cs_cycles_wd = reg_wdata[8:0];
 
-  assign csr6_field0_wd = reg_wdata[9:0];
+  assign fuse_wrapper_rd_cfg_4_thp_ps_cs_cycles_wd = reg_wdata[17:9];
 
-  assign csr6_field1_wd = reg_wdata[11];
+  assign fuse_wrapper_rd_cfg_4_thr_ps_cs_cycles_wd = reg_wdata[26:18];
+  assign fuse_wrapper_rd_cfg_5_we = addr_hit[7] & reg_we & !reg_error;
 
-  assign csr6_field2_wd = reg_wdata[12];
+  assign fuse_wrapper_rd_cfg_5_tsur_a_cycles_wd = reg_wdata[7:0];
 
-  assign csr6_field3_wd = reg_wdata[31:16];
+  assign fuse_wrapper_rd_cfg_5_tsup_a_cycles_wd = reg_wdata[15:8];
+
+  assign fuse_wrapper_rd_cfg_5_thp_a_cycles_wd = reg_wdata[23:16];
+
+  assign fuse_wrapper_rd_cfg_5_tsup_ld_cycles_wd = reg_wdata[31:24];
+  assign fuse_wrapper_rd_cfg_6_we = addr_hit[8] & reg_we & !reg_error;
+
+  assign fuse_wrapper_rd_cfg_6_trd_cycles_wd = reg_wdata[9:0];
+
+  assign fuse_wrapper_rd_cfg_6_trd_m_cycles_wd = reg_wdata[20:10];
+
+  assign fuse_wrapper_rd_cfg_6_thr_a_cycles_wd = reg_wdata[28:21];
+  assign fuse_wrapper_rd_cfg_7_we = addr_hit[9] & reg_we & !reg_error;
+
+  assign fuse_wrapper_rd_cfg_7_thp_pd_ps_cycles_wd = reg_wdata[7:0];
+
+  assign fuse_wrapper_rd_cfg_7_data_capture_cycles_wd = reg_wdata[15:8];
+
+  assign fuse_wrapper_rd_cfg_7_addr_capture_cycles_wd = reg_wdata[23:16];
+  assign fuse_wrapper_rd_cfg_8_we = addr_hit[10] & reg_we & !reg_error;
+
+  assign fuse_wrapper_rd_cfg_8_wd = reg_wdata[17:0];
+  assign fuse_wrapper_wr_cfg_0_we = addr_hit[11] & reg_we & !reg_error;
+
+  assign fuse_wrapper_wr_cfg_0_tsur_pd_ps_cycles_wd = reg_wdata[11:0];
+
+  assign fuse_wrapper_wr_cfg_0_tsur_ps_cycles_wd = reg_wdata[21:12];
+
+  assign fuse_wrapper_wr_cfg_0_tsur_ps_cs_cycles_wd = reg_wdata[30:22];
+  assign fuse_wrapper_wr_cfg_1_we = addr_hit[12] & reg_we & !reg_error;
+
+  assign fuse_wrapper_wr_cfg_1_tsup_ps_cs_cycles_wd = reg_wdata[8:0];
+
+  assign fuse_wrapper_wr_cfg_1_tsup_ps_cycles_wd = reg_wdata[18:9];
+
+  assign fuse_wrapper_wr_cfg_1_tsq_cycles_wd = reg_wdata[28:19];
+  assign fuse_wrapper_wr_cfg_2_we = addr_hit[13] & reg_we & !reg_error;
+
+  assign fuse_wrapper_wr_cfg_2_tsq_m_cycles_wd = reg_wdata[10:0];
+
+  assign fuse_wrapper_wr_cfg_2_tpgm_cycles_wd = reg_wdata[24:11];
+
+  assign fuse_wrapper_wr_cfg_2_tsur_ld_cycles_wd = reg_wdata[31:25];
+  assign fuse_wrapper_wr_cfg_3_we = addr_hit[14] & reg_we & !reg_error;
+
+  assign fuse_wrapper_wr_cfg_3_thr_ps_cycles_wd = reg_wdata[9:0];
+
+  assign fuse_wrapper_wr_cfg_3_thp_ps_cycles_wd = reg_wdata[19:10];
+
+  assign fuse_wrapper_wr_cfg_3_thp_cs_cycles_wd = reg_wdata[28:20];
+  assign fuse_wrapper_wr_cfg_4_we = addr_hit[15] & reg_we & !reg_error;
+
+  assign fuse_wrapper_wr_cfg_4_thr_cs_cycles_wd = reg_wdata[8:0];
+
+  assign fuse_wrapper_wr_cfg_4_thp_ps_cs_cycles_wd = reg_wdata[17:9];
+
+  assign fuse_wrapper_wr_cfg_4_thr_ps_cs_cycles_wd = reg_wdata[26:18];
+  assign fuse_wrapper_wr_cfg_5_we = addr_hit[16] & reg_we & !reg_error;
+
+  assign fuse_wrapper_wr_cfg_5_tsur_a_cycles_wd = reg_wdata[7:0];
+
+  assign fuse_wrapper_wr_cfg_5_tsup_a_cycles_wd = reg_wdata[15:8];
+
+  assign fuse_wrapper_wr_cfg_5_thp_a_cycles_wd = reg_wdata[23:16];
+
+  assign fuse_wrapper_wr_cfg_5_tsup_ld_cycles_wd = reg_wdata[31:24];
+  assign fuse_wrapper_wr_cfg_6_we = addr_hit[17] & reg_we & !reg_error;
+
+  assign fuse_wrapper_wr_cfg_6_trd_cycles_wd = reg_wdata[9:0];
+
+  assign fuse_wrapper_wr_cfg_6_trd_m_cycles_wd = reg_wdata[20:10];
+
+  assign fuse_wrapper_wr_cfg_6_thr_a_cycles_wd = reg_wdata[28:21];
+  assign fuse_wrapper_wr_cfg_7_we = addr_hit[18] & reg_we & !reg_error;
+
+  assign fuse_wrapper_wr_cfg_7_thp_pd_ps_cycles_wd = reg_wdata[7:0];
+
+  assign fuse_wrapper_wr_cfg_7_data_capture_cycles_wd = reg_wdata[15:8];
+
+  assign fuse_wrapper_wr_cfg_7_addr_capture_cycles_wd = reg_wdata[23:16];
+  assign fuse_wrapper_wr_cfg_8_we = addr_hit[19] & reg_we & !reg_error;
+
+  assign fuse_wrapper_wr_cfg_8_wd = reg_wdata[17:0];
 
   // Assign write-enables to checker logic vector.
   always_comb begin
     reg_we_check = '0;
-    reg_we_check[0] = csr0_we;
-    reg_we_check[1] = csr1_we;
-    reg_we_check[2] = csr2_we;
-    reg_we_check[3] = csr3_we;
-    reg_we_check[4] = csr4_we;
-    reg_we_check[5] = csr5_we;
-    reg_we_check[6] = csr6_we;
-    reg_we_check[7] = 1'b0;
+    reg_we_check[0] = macro_control_we;
+    reg_we_check[1] = 1'b0;
+    reg_we_check[2] = fuse_wrapper_rd_cfg_0_we;
+    reg_we_check[3] = fuse_wrapper_rd_cfg_1_we;
+    reg_we_check[4] = fuse_wrapper_rd_cfg_2_we;
+    reg_we_check[5] = fuse_wrapper_rd_cfg_3_we;
+    reg_we_check[6] = fuse_wrapper_rd_cfg_4_we;
+    reg_we_check[7] = fuse_wrapper_rd_cfg_5_we;
+    reg_we_check[8] = fuse_wrapper_rd_cfg_6_we;
+    reg_we_check[9] = fuse_wrapper_rd_cfg_7_we;
+    reg_we_check[10] = fuse_wrapper_rd_cfg_8_we;
+    reg_we_check[11] = fuse_wrapper_wr_cfg_0_we;
+    reg_we_check[12] = fuse_wrapper_wr_cfg_1_we;
+    reg_we_check[13] = fuse_wrapper_wr_cfg_2_we;
+    reg_we_check[14] = fuse_wrapper_wr_cfg_3_we;
+    reg_we_check[15] = fuse_wrapper_wr_cfg_4_we;
+    reg_we_check[16] = fuse_wrapper_wr_cfg_5_we;
+    reg_we_check[17] = fuse_wrapper_wr_cfg_6_we;
+    reg_we_check[18] = fuse_wrapper_wr_cfg_7_we;
+    reg_we_check[19] = fuse_wrapper_wr_cfg_8_we;
   end
 
   // Read data return
@@ -1368,66 +2259,127 @@ module otp_ctrl_prim_reg_top (
     reg_rdata_next = '0;
     unique case (1'b1)
       addr_hit[0]: begin
-        reg_rdata_next[0] = csr0_field0_qs;
-        reg_rdata_next[1] = csr0_field1_qs;
-        reg_rdata_next[2] = csr0_field2_qs;
-        reg_rdata_next[13:4] = csr0_field3_qs;
-        reg_rdata_next[26:16] = csr0_field4_qs;
+        reg_rdata_next[1:0] = macro_control_macro_mode_qs;
+        reg_rdata_next[2] = macro_control_ecc_sel_qs;
+        reg_rdata_next[4:3] = macro_control_test_row_col_sel_qs;
+        reg_rdata_next[5] = macro_control_read_margin_qs;
+        reg_rdata_next[6] = macro_control_ecc_disable_qs;
+        reg_rdata_next[7] = macro_control_redundancy_autoinit_disable_qs;
+        reg_rdata_next[13:8] = macro_control_field3_qs;
+        reg_rdata_next[26:16] = macro_control_field4_qs;
       end
 
       addr_hit[1]: begin
-        reg_rdata_next[6:0] = csr1_field0_qs;
-        reg_rdata_next[7] = csr1_field1_qs;
-        reg_rdata_next[14:8] = csr1_field2_qs;
-        reg_rdata_next[15] = csr1_field3_qs;
-        reg_rdata_next[31:16] = csr1_field4_qs;
+        reg_rdata_next[7:0] = read_ecc_info_ecc_info_0_qs;
+        reg_rdata_next[15:8] = read_ecc_info_ecc_info_1_qs;
+        reg_rdata_next[23:16] = read_ecc_info_ecc_info_2_qs;
+        reg_rdata_next[31:24] = read_ecc_info_ecc_info_3_qs;
       end
 
       addr_hit[2]: begin
-        reg_rdata_next[0] = csr2_qs;
+        reg_rdata_next[11:0] = fuse_wrapper_rd_cfg_0_tsur_pd_ps_cycles_qs;
+        reg_rdata_next[21:12] = fuse_wrapper_rd_cfg_0_tsur_ps_cycles_qs;
+        reg_rdata_next[30:22] = fuse_wrapper_rd_cfg_0_tsur_ps_cs_cycles_qs;
       end
 
       addr_hit[3]: begin
-        reg_rdata_next[2:0] = csr3_field0_qs;
-        reg_rdata_next[13:4] = csr3_field1_qs;
-        reg_rdata_next[16] = csr3_field2_qs;
-        reg_rdata_next[17] = csr3_field3_qs;
-        reg_rdata_next[18] = csr3_field4_qs;
-        reg_rdata_next[19] = csr3_field5_qs;
-        reg_rdata_next[20] = csr3_field6_qs;
-        reg_rdata_next[21] = csr3_field7_qs;
-        reg_rdata_next[22] = csr3_field8_qs;
+        reg_rdata_next[8:0] = fuse_wrapper_rd_cfg_1_tsup_ps_cs_cycles_qs;
+        reg_rdata_next[18:9] = fuse_wrapper_rd_cfg_1_tsup_ps_cycles_qs;
+        reg_rdata_next[28:19] = fuse_wrapper_rd_cfg_1_tsq_cycles_qs;
       end
 
       addr_hit[4]: begin
-        reg_rdata_next[9:0] = csr4_field0_qs;
-        reg_rdata_next[12] = csr4_field1_qs;
-        reg_rdata_next[13] = csr4_field2_qs;
-        reg_rdata_next[14] = csr4_field3_qs;
+        reg_rdata_next[10:0] = fuse_wrapper_rd_cfg_2_tsq_m_cycles_qs;
+        reg_rdata_next[24:11] = fuse_wrapper_rd_cfg_2_tpgm_cycles_qs;
+        reg_rdata_next[31:25] = fuse_wrapper_rd_cfg_2_tsur_ld_cycles_qs;
       end
 
       addr_hit[5]: begin
-        reg_rdata_next[5:0] = csr5_field0_qs;
-        reg_rdata_next[7:6] = csr5_field1_qs;
-        reg_rdata_next[8] = csr5_field2_qs;
-        reg_rdata_next[11:9] = csr5_field3_qs;
-        reg_rdata_next[12] = csr5_field4_qs;
-        reg_rdata_next[13] = csr5_field5_qs;
-        reg_rdata_next[31:16] = csr5_field6_qs;
+        reg_rdata_next[9:0] = fuse_wrapper_rd_cfg_3_thr_ps_cycles_qs;
+        reg_rdata_next[19:10] = fuse_wrapper_rd_cfg_3_thp_ps_cycles_qs;
+        reg_rdata_next[28:20] = fuse_wrapper_rd_cfg_3_thp_cs_cycles_qs;
       end
 
       addr_hit[6]: begin
-        reg_rdata_next[9:0] = csr6_field0_qs;
-        reg_rdata_next[11] = csr6_field1_qs;
-        reg_rdata_next[12] = csr6_field2_qs;
-        reg_rdata_next[31:16] = csr6_field3_qs;
+        reg_rdata_next[8:0] = fuse_wrapper_rd_cfg_4_thr_cs_cycles_qs;
+        reg_rdata_next[17:9] = fuse_wrapper_rd_cfg_4_thp_ps_cs_cycles_qs;
+        reg_rdata_next[26:18] = fuse_wrapper_rd_cfg_4_thr_ps_cs_cycles_qs;
       end
 
       addr_hit[7]: begin
-        reg_rdata_next[5:0] = csr7_field0_qs;
-        reg_rdata_next[10:8] = csr7_field1_qs;
-        reg_rdata_next[14] = csr7_field2_qs;
-        reg_rdata_next[15] = csr7_field3_qs;
+        reg_rdata_next[7:0] = fuse_wrapper_rd_cfg_5_tsur_a_cycles_qs;
+        reg_rdata_next[15:8] = fuse_wrapper_rd_cfg_5_tsup_a_cycles_qs;
+        reg_rdata_next[23:16] = fuse_wrapper_rd_cfg_5_thp_a_cycles_qs;
+        reg_rdata_next[31:24] = fuse_wrapper_rd_cfg_5_tsup_ld_cycles_qs;
+      end
+
+      addr_hit[8]: begin
+        reg_rdata_next[9:0] = fuse_wrapper_rd_cfg_6_trd_cycles_qs;
+        reg_rdata_next[20:10] = fuse_wrapper_rd_cfg_6_trd_m_cycles_qs;
+        reg_rdata_next[28:21] = fuse_wrapper_rd_cfg_6_thr_a_cycles_qs;
+      end
+
+      addr_hit[9]: begin
+        reg_rdata_next[7:0] = fuse_wrapper_rd_cfg_7_thp_pd_ps_cycles_qs;
+        reg_rdata_next[15:8] = fuse_wrapper_rd_cfg_7_data_capture_cycles_qs;
+        reg_rdata_next[23:16] = fuse_wrapper_rd_cfg_7_addr_capture_cycles_qs;
+      end
+
+      addr_hit[10]: begin
+        reg_rdata_next[17:0] = fuse_wrapper_rd_cfg_8_qs;
+      end
+
+      addr_hit[11]: begin
+        reg_rdata_next[11:0] = fuse_wrapper_wr_cfg_0_tsur_pd_ps_cycles_qs;
+        reg_rdata_next[21:12] = fuse_wrapper_wr_cfg_0_tsur_ps_cycles_qs;
+        reg_rdata_next[30:22] = fuse_wrapper_wr_cfg_0_tsur_ps_cs_cycles_qs;
+      end
+
+      addr_hit[12]: begin
+        reg_rdata_next[8:0] = fuse_wrapper_wr_cfg_1_tsup_ps_cs_cycles_qs;
+        reg_rdata_next[18:9] = fuse_wrapper_wr_cfg_1_tsup_ps_cycles_qs;
+        reg_rdata_next[28:19] = fuse_wrapper_wr_cfg_1_tsq_cycles_qs;
+      end
+
+      addr_hit[13]: begin
+        reg_rdata_next[10:0] = fuse_wrapper_wr_cfg_2_tsq_m_cycles_qs;
+        reg_rdata_next[24:11] = fuse_wrapper_wr_cfg_2_tpgm_cycles_qs;
+        reg_rdata_next[31:25] = fuse_wrapper_wr_cfg_2_tsur_ld_cycles_qs;
+      end
+
+      addr_hit[14]: begin
+        reg_rdata_next[9:0] = fuse_wrapper_wr_cfg_3_thr_ps_cycles_qs;
+        reg_rdata_next[19:10] = fuse_wrapper_wr_cfg_3_thp_ps_cycles_qs;
+        reg_rdata_next[28:20] = fuse_wrapper_wr_cfg_3_thp_cs_cycles_qs;
+      end
+
+      addr_hit[15]: begin
+        reg_rdata_next[8:0] = fuse_wrapper_wr_cfg_4_thr_cs_cycles_qs;
+        reg_rdata_next[17:9] = fuse_wrapper_wr_cfg_4_thp_ps_cs_cycles_qs;
+        reg_rdata_next[26:18] = fuse_wrapper_wr_cfg_4_thr_ps_cs_cycles_qs;
+      end
+
+      addr_hit[16]: begin
+        reg_rdata_next[7:0] = fuse_wrapper_wr_cfg_5_tsur_a_cycles_qs;
+        reg_rdata_next[15:8] = fuse_wrapper_wr_cfg_5_tsup_a_cycles_qs;
+        reg_rdata_next[23:16] = fuse_wrapper_wr_cfg_5_thp_a_cycles_qs;
+        reg_rdata_next[31:24] = fuse_wrapper_wr_cfg_5_tsup_ld_cycles_qs;
+      end
+
+      addr_hit[17]: begin
+        reg_rdata_next[9:0] = fuse_wrapper_wr_cfg_6_trd_cycles_qs;
+        reg_rdata_next[20:10] = fuse_wrapper_wr_cfg_6_trd_m_cycles_qs;
+        reg_rdata_next[28:21] = fuse_wrapper_wr_cfg_6_thr_a_cycles_qs;
+      end
+
+      addr_hit[18]: begin
+        reg_rdata_next[7:0] = fuse_wrapper_wr_cfg_7_thp_pd_ps_cycles_qs;
+        reg_rdata_next[15:8] = fuse_wrapper_wr_cfg_7_data_capture_cycles_qs;
+        reg_rdata_next[23:16] = fuse_wrapper_wr_cfg_7_addr_capture_cycles_qs;
+      end
+
+      addr_hit[19]: begin
+        reg_rdata_next[17:0] = fuse_wrapper_wr_cfg_8_qs;
       end
 
       default: begin
