@@ -22,7 +22,7 @@ filesets:
       - lowrisc:prim:otp_pkg
       - lowrisc:ip:otp_ctrl_pkg
       - lowrisc:ip:otp_ctrl_prim_reg_top
-      - lowrisc:ip:rstmgr
+      - lowrisc:ip_interfaces:rstmgr_pkg
       - rivos:prim:misc_dft_pkg
     files:
       - rtl/prim_rdp_otp.sv
