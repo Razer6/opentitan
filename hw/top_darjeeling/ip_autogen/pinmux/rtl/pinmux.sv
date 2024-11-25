@@ -46,12 +46,12 @@ module pinmux
   output logic [NDioPads-1:0]      dio_to_periph_o,
   // Pad side
   // MIOs
-  output prim_pad_wrapper_pkg::pad_attr_t [NMioPads-1:0] mio_attr_o,
+  output pad_snps_attr_t                  [NMioPads-1:0] mio_attr_o,
   output logic                            [NMioPads-1:0] mio_out_o,
   output logic                            [NMioPads-1:0] mio_oe_o,
   input                                   [NMioPads-1:0] mio_in_i,
   // DIOs
-  output prim_pad_wrapper_pkg::pad_attr_t [NDioPads-1:0] dio_attr_o,
+  output pad_snps_attr_t                  [NDioPads-1:0] dio_attr_o,
   output logic                            [NDioPads-1:0] dio_out_o,
   output logic                            [NDioPads-1:0] dio_oe_o,
   input                                   [NDioPads-1:0] dio_in_i
@@ -107,88 +107,42 @@ module pinmux
   // Pad attribute registers //
   /////////////////////////////
 
-  prim_pad_wrapper_pkg::pad_attr_t [NDioPads-1:0] dio_pad_attr_q;
-  prim_pad_wrapper_pkg::pad_attr_t [NMioPads-1:0] mio_pad_attr_q;
+  prim_pad_wrapper_pkg::pad_snps_attr_t [NDioPads-1:0] dio_pad_attr_q;
+  prim_pad_wrapper_pkg::pad_snps_attr_t [NMioPads-1:0] mio_pad_attr_q;
 
   always_ff @(posedge clk_i or negedge rst_ni) begin : p_regs
     if (!rst_ni) begin
       dio_pad_attr_q <= '0;
-      for (int kk = 0; kk < NMioPads; kk++) begin
-        if (kk == TargetCfg.tap_strap0_idx) begin
-          // TAP strap 0 is sampled after reset (and only once for life cycle states that are not
-          // TEST_UNLOCKED* or RMA).  To ensure it gets sampled as 0 unless driven to 1 from an
-          // external source (and specifically that it gets sampled as 0 when left floating / not
-          // connected), this enables the pull-down of the pad at reset.
-          mio_pad_attr_q[kk] <= '{pull_en: 1'b1, default: '0};
-        end else begin
-          mio_pad_attr_q[kk] <= '0;
-        end
-      end
+      mio_pad_attr_q <= '0;
     end else begin
-      // dedicated pads
+      // dedicated generic GPIO pads
       for (int kk = 0; kk < NDioPads; kk++) begin
-        if (reg2hw.dio_pad_attr[kk].drive_strength.qe) begin
-          dio_pad_attr_q[kk].drive_strength <= reg2hw.dio_pad_attr[kk].drive_strength.q;
+        if (reg2hw.dio_pad_attr[kk].drv.qe) begin
+          dio_pad_attr_q[kk].drv    <= reg2hw.dio_pad_attr[kk].drv.q;
         end
-        if (reg2hw.dio_pad_attr[kk].slew_rate.qe) begin
-          dio_pad_attr_q[kk].slew_rate      <= reg2hw.dio_pad_attr[kk].slew_rate.q;
+        if (reg2hw.dio_pad_attr[kk].smten.qe) begin
+          dio_pad_attr_q[kk].smten  <= reg2hw.dio_pad_attr[kk].smten.q;
         end
-        if (reg2hw.dio_pad_attr[kk].input_disable.qe) begin
-          dio_pad_attr_q[kk].input_disable  <= reg2hw.dio_pad_attr[kk].input_disable.q;
+        if (reg2hw.dio_pad_attr[kk].pden.qe) begin
+          dio_pad_attr_q[kk].pden   <= reg2hw.dio_pad_attr[kk].pden.q;
         end
-        if (reg2hw.dio_pad_attr[kk].od_en.qe) begin
-          dio_pad_attr_q[kk].od_en          <= reg2hw.dio_pad_attr[kk].od_en.q;
-        end
-        if (reg2hw.dio_pad_attr[kk].schmitt_en.qe) begin
-          dio_pad_attr_q[kk].schmitt_en     <= reg2hw.dio_pad_attr[kk].schmitt_en.q;
-        end
-        if (reg2hw.dio_pad_attr[kk].keeper_en.qe) begin
-          dio_pad_attr_q[kk].keep_en        <= reg2hw.dio_pad_attr[kk].keeper_en.q;
-        end
-        if (reg2hw.dio_pad_attr[kk].pull_select.qe) begin
-          dio_pad_attr_q[kk].pull_select    <= reg2hw.dio_pad_attr[kk].pull_select.q;
-        end
-        if (reg2hw.dio_pad_attr[kk].pull_en.qe) begin
-          dio_pad_attr_q[kk].pull_en        <= reg2hw.dio_pad_attr[kk].pull_en.q;
-        end
-        if (reg2hw.dio_pad_attr[kk].virtual_od_en.qe) begin
-          dio_pad_attr_q[kk].virt_od_en     <= reg2hw.dio_pad_attr[kk].virtual_od_en.q;
-        end
-        if (reg2hw.dio_pad_attr[kk].invert.qe) begin
-          dio_pad_attr_q[kk].invert         <= reg2hw.dio_pad_attr[kk].invert.q;
+        if (reg2hw.dio_pad_attr[kk].puen.qe) begin
+          dio_pad_attr_q[kk].puen   <= reg2hw.dio_pad_attr[kk].puen.q;
         end
       end
       // muxed pads
       for (int kk = 0; kk < NMioPads; kk++) begin
-        if (reg2hw.mio_pad_attr[kk].drive_strength.qe) begin
-          mio_pad_attr_q[kk].drive_strength <= reg2hw.mio_pad_attr[kk].drive_strength.q;
+        if (reg2hw.mio_pad_attr[kk].drv.qe) begin
+          mio_pad_attr_q[kk].drv    <= reg2hw.mio_pad_attr[kk].drv.q;
         end
-        if (reg2hw.mio_pad_attr[kk].slew_rate.qe) begin
-          mio_pad_attr_q[kk].slew_rate      <= reg2hw.mio_pad_attr[kk].slew_rate.q;
+        if (reg2hw.mio_pad_attr[kk].smten.qe) begin
+          mio_pad_attr_q[kk].smten  <= reg2hw.mio_pad_attr[kk].smten.q;
         end
-        if (reg2hw.mio_pad_attr[kk].input_disable.qe) begin
-          mio_pad_attr_q[kk].input_disable  <= reg2hw.mio_pad_attr[kk].input_disable.q;
+        if (reg2hw.mio_pad_attr[kk].pden.qe) begin
+          mio_pad_attr_q[kk].pden   <= reg2hw.mio_pad_attr[kk].pden.q;
         end
-        if (reg2hw.mio_pad_attr[kk].od_en.qe) begin
-          mio_pad_attr_q[kk].od_en          <= reg2hw.mio_pad_attr[kk].od_en.q;
-        end
-        if (reg2hw.mio_pad_attr[kk].schmitt_en.qe) begin
-          mio_pad_attr_q[kk].schmitt_en     <= reg2hw.mio_pad_attr[kk].schmitt_en.q;
-        end
-        if (reg2hw.mio_pad_attr[kk].keeper_en.qe) begin
-          mio_pad_attr_q[kk].keep_en        <= reg2hw.mio_pad_attr[kk].keeper_en.q;
-        end
-        if (reg2hw.mio_pad_attr[kk].pull_select.qe) begin
-          mio_pad_attr_q[kk].pull_select    <= reg2hw.mio_pad_attr[kk].pull_select.q;
-        end
-        if (reg2hw.mio_pad_attr[kk].pull_en.qe) begin
-          mio_pad_attr_q[kk].pull_en        <= reg2hw.mio_pad_attr[kk].pull_en.q;
-        end
-        if (reg2hw.mio_pad_attr[kk].virtual_od_en.qe) begin
-          mio_pad_attr_q[kk].virt_od_en     <= reg2hw.mio_pad_attr[kk].virtual_od_en.q;
-        end
-        if (reg2hw.mio_pad_attr[kk].invert.qe) begin
-          mio_pad_attr_q[kk].invert         <= reg2hw.mio_pad_attr[kk].invert.q;
+        if (reg2hw.mio_pad_attr[kk].puen.qe) begin
+          mio_pad_attr_q[kk].puen   <= reg2hw.mio_pad_attr[kk].puen.q;
         end
       end
     end
@@ -198,50 +152,22 @@ module pinmux
   // Connect attributes //
   ////////////////////////
 
-  pad_attr_t [NDioPads-1:0] dio_attr;
+  pad_snps_attr_t [NDioPads-1:0] dio_attr;
   for (genvar k = 0; k < NDioPads; k++) begin : gen_dio_attr
-    pad_attr_t warl_mask;
-
-    prim_pad_attr #(
-      .PadType(TargetCfg.dio_pad_type[k])
-    ) u_prim_pad_attr (
-      .attr_warl_o(warl_mask)
-    );
-
-    assign dio_attr[k]                             = dio_pad_attr_q[k] & warl_mask;
-    assign hw2reg.dio_pad_attr[k].drive_strength.d = dio_attr[k].drive_strength;
-    assign hw2reg.dio_pad_attr[k].slew_rate.d      = dio_attr[k].slew_rate;
-    assign hw2reg.dio_pad_attr[k].input_disable.d  = dio_attr[k].input_disable;
-    assign hw2reg.dio_pad_attr[k].od_en.d          = dio_attr[k].od_en;
-    assign hw2reg.dio_pad_attr[k].schmitt_en.d     = dio_attr[k].schmitt_en;
-    assign hw2reg.dio_pad_attr[k].keeper_en.d      = dio_attr[k].keep_en;
-    assign hw2reg.dio_pad_attr[k].pull_select.d    = dio_attr[k].pull_select;
-    assign hw2reg.dio_pad_attr[k].pull_en.d        = dio_attr[k].pull_en;
-    assign hw2reg.dio_pad_attr[k].virtual_od_en.d  = dio_attr[k].virt_od_en;
-    assign hw2reg.dio_pad_attr[k].invert.d         = dio_attr[k].invert;
+    assign dio_attr[k]                      = dio_pad_attr_q[k];
+    assign hw2reg.dio_pad_attr[k].drv.d     = dio_attr[k].drv;
+    assign hw2reg.dio_pad_attr[k].smten.d   = dio_attr[k].smten;
+    assign hw2reg.dio_pad_attr[k].pden.d    = dio_attr[k].pden;
+    assign hw2reg.dio_pad_attr[k].puen.d    = dio_attr[k].puen;
   end
 
-  pad_attr_t [NMioPads-1:0] mio_attr;
+  pad_snps_attr_t [NMioPads-1:0] mio_attr;
   for (genvar k = 0; k < NMioPads; k++) begin : gen_mio_attr
-    pad_attr_t warl_mask;
-
-    prim_pad_attr #(
-      .PadType(TargetCfg.mio_pad_type[k])
-    ) u_prim_pad_attr (
-      .attr_warl_o(warl_mask)
-    );
-
-    assign mio_attr[k]                             = mio_pad_attr_q[k] & warl_mask;
-    assign hw2reg.mio_pad_attr[k].drive_strength.d = mio_attr[k].drive_strength;
-    assign hw2reg.mio_pad_attr[k].slew_rate.d      = mio_attr[k].slew_rate;
-    assign hw2reg.mio_pad_attr[k].input_disable.d  = mio_attr[k].input_disable;
-    assign hw2reg.mio_pad_attr[k].od_en.d          = mio_attr[k].od_en;
-    assign hw2reg.mio_pad_attr[k].schmitt_en.d     = mio_attr[k].schmitt_en;
-    assign hw2reg.mio_pad_attr[k].keeper_en.d      = mio_attr[k].keep_en;
-    assign hw2reg.mio_pad_attr[k].pull_select.d    = mio_attr[k].pull_select;
-    assign hw2reg.mio_pad_attr[k].pull_en.d        = mio_attr[k].pull_en;
-    assign hw2reg.mio_pad_attr[k].virtual_od_en.d  = mio_attr[k].virt_od_en;
-    assign hw2reg.mio_pad_attr[k].invert.d         = mio_attr[k].invert;
+    assign mio_attr[k]                      = mio_pad_attr_q[k];
+    assign hw2reg.mio_pad_attr[k].drv.d     = mio_attr[k].drv;
+    assign hw2reg.mio_pad_attr[k].smten.d   = mio_attr[k].smten;
+    assign hw2reg.mio_pad_attr[k].pden.d    = mio_attr[k].pden;
+    assign hw2reg.mio_pad_attr[k].puen.d    = mio_attr[k].puen;
   end
 
   // Local versions of the input signals

@@ -259,268 +259,124 @@ module pinmux_reg_top (
   logic mio_pad_attr_regwen_11_wd;
   logic mio_pad_attr_0_re;
   logic mio_pad_attr_0_we;
-  logic mio_pad_attr_0_invert_0_qs;
-  logic mio_pad_attr_0_invert_0_wd;
-  logic mio_pad_attr_0_virtual_od_en_0_qs;
-  logic mio_pad_attr_0_virtual_od_en_0_wd;
-  logic mio_pad_attr_0_pull_en_0_qs;
-  logic mio_pad_attr_0_pull_en_0_wd;
-  logic mio_pad_attr_0_pull_select_0_qs;
-  logic mio_pad_attr_0_pull_select_0_wd;
-  logic mio_pad_attr_0_keeper_en_0_qs;
-  logic mio_pad_attr_0_keeper_en_0_wd;
-  logic mio_pad_attr_0_schmitt_en_0_qs;
-  logic mio_pad_attr_0_schmitt_en_0_wd;
-  logic mio_pad_attr_0_od_en_0_qs;
-  logic mio_pad_attr_0_od_en_0_wd;
-  logic mio_pad_attr_0_input_disable_0_qs;
-  logic mio_pad_attr_0_input_disable_0_wd;
-  logic [1:0] mio_pad_attr_0_slew_rate_0_qs;
-  logic [1:0] mio_pad_attr_0_slew_rate_0_wd;
-  logic [3:0] mio_pad_attr_0_drive_strength_0_qs;
-  logic [3:0] mio_pad_attr_0_drive_strength_0_wd;
+  logic mio_pad_attr_0_puen_0_qs;
+  logic mio_pad_attr_0_puen_0_wd;
+  logic mio_pad_attr_0_pden_0_qs;
+  logic mio_pad_attr_0_pden_0_wd;
+  logic mio_pad_attr_0_smten_0_qs;
+  logic mio_pad_attr_0_smten_0_wd;
+  logic [2:0] mio_pad_attr_0_drv_0_qs;
+  logic [2:0] mio_pad_attr_0_drv_0_wd;
   logic mio_pad_attr_1_re;
   logic mio_pad_attr_1_we;
-  logic mio_pad_attr_1_invert_1_qs;
-  logic mio_pad_attr_1_invert_1_wd;
-  logic mio_pad_attr_1_virtual_od_en_1_qs;
-  logic mio_pad_attr_1_virtual_od_en_1_wd;
-  logic mio_pad_attr_1_pull_en_1_qs;
-  logic mio_pad_attr_1_pull_en_1_wd;
-  logic mio_pad_attr_1_pull_select_1_qs;
-  logic mio_pad_attr_1_pull_select_1_wd;
-  logic mio_pad_attr_1_keeper_en_1_qs;
-  logic mio_pad_attr_1_keeper_en_1_wd;
-  logic mio_pad_attr_1_schmitt_en_1_qs;
-  logic mio_pad_attr_1_schmitt_en_1_wd;
-  logic mio_pad_attr_1_od_en_1_qs;
-  logic mio_pad_attr_1_od_en_1_wd;
-  logic mio_pad_attr_1_input_disable_1_qs;
-  logic mio_pad_attr_1_input_disable_1_wd;
-  logic [1:0] mio_pad_attr_1_slew_rate_1_qs;
-  logic [1:0] mio_pad_attr_1_slew_rate_1_wd;
-  logic [3:0] mio_pad_attr_1_drive_strength_1_qs;
-  logic [3:0] mio_pad_attr_1_drive_strength_1_wd;
+  logic mio_pad_attr_1_puen_1_qs;
+  logic mio_pad_attr_1_puen_1_wd;
+  logic mio_pad_attr_1_pden_1_qs;
+  logic mio_pad_attr_1_pden_1_wd;
+  logic mio_pad_attr_1_smten_1_qs;
+  logic mio_pad_attr_1_smten_1_wd;
+  logic [2:0] mio_pad_attr_1_drv_1_qs;
+  logic [2:0] mio_pad_attr_1_drv_1_wd;
   logic mio_pad_attr_2_re;
   logic mio_pad_attr_2_we;
-  logic mio_pad_attr_2_invert_2_qs;
-  logic mio_pad_attr_2_invert_2_wd;
-  logic mio_pad_attr_2_virtual_od_en_2_qs;
-  logic mio_pad_attr_2_virtual_od_en_2_wd;
-  logic mio_pad_attr_2_pull_en_2_qs;
-  logic mio_pad_attr_2_pull_en_2_wd;
-  logic mio_pad_attr_2_pull_select_2_qs;
-  logic mio_pad_attr_2_pull_select_2_wd;
-  logic mio_pad_attr_2_keeper_en_2_qs;
-  logic mio_pad_attr_2_keeper_en_2_wd;
-  logic mio_pad_attr_2_schmitt_en_2_qs;
-  logic mio_pad_attr_2_schmitt_en_2_wd;
-  logic mio_pad_attr_2_od_en_2_qs;
-  logic mio_pad_attr_2_od_en_2_wd;
-  logic mio_pad_attr_2_input_disable_2_qs;
-  logic mio_pad_attr_2_input_disable_2_wd;
-  logic [1:0] mio_pad_attr_2_slew_rate_2_qs;
-  logic [1:0] mio_pad_attr_2_slew_rate_2_wd;
-  logic [3:0] mio_pad_attr_2_drive_strength_2_qs;
-  logic [3:0] mio_pad_attr_2_drive_strength_2_wd;
+  logic mio_pad_attr_2_puen_2_qs;
+  logic mio_pad_attr_2_puen_2_wd;
+  logic mio_pad_attr_2_pden_2_qs;
+  logic mio_pad_attr_2_pden_2_wd;
+  logic mio_pad_attr_2_smten_2_qs;
+  logic mio_pad_attr_2_smten_2_wd;
+  logic [2:0] mio_pad_attr_2_drv_2_qs;
+  logic [2:0] mio_pad_attr_2_drv_2_wd;
   logic mio_pad_attr_3_re;
   logic mio_pad_attr_3_we;
-  logic mio_pad_attr_3_invert_3_qs;
-  logic mio_pad_attr_3_invert_3_wd;
-  logic mio_pad_attr_3_virtual_od_en_3_qs;
-  logic mio_pad_attr_3_virtual_od_en_3_wd;
-  logic mio_pad_attr_3_pull_en_3_qs;
-  logic mio_pad_attr_3_pull_en_3_wd;
-  logic mio_pad_attr_3_pull_select_3_qs;
-  logic mio_pad_attr_3_pull_select_3_wd;
-  logic mio_pad_attr_3_keeper_en_3_qs;
-  logic mio_pad_attr_3_keeper_en_3_wd;
-  logic mio_pad_attr_3_schmitt_en_3_qs;
-  logic mio_pad_attr_3_schmitt_en_3_wd;
-  logic mio_pad_attr_3_od_en_3_qs;
-  logic mio_pad_attr_3_od_en_3_wd;
-  logic mio_pad_attr_3_input_disable_3_qs;
-  logic mio_pad_attr_3_input_disable_3_wd;
-  logic [1:0] mio_pad_attr_3_slew_rate_3_qs;
-  logic [1:0] mio_pad_attr_3_slew_rate_3_wd;
-  logic [3:0] mio_pad_attr_3_drive_strength_3_qs;
-  logic [3:0] mio_pad_attr_3_drive_strength_3_wd;
+  logic mio_pad_attr_3_puen_3_qs;
+  logic mio_pad_attr_3_puen_3_wd;
+  logic mio_pad_attr_3_pden_3_qs;
+  logic mio_pad_attr_3_pden_3_wd;
+  logic mio_pad_attr_3_smten_3_qs;
+  logic mio_pad_attr_3_smten_3_wd;
+  logic [2:0] mio_pad_attr_3_drv_3_qs;
+  logic [2:0] mio_pad_attr_3_drv_3_wd;
   logic mio_pad_attr_4_re;
   logic mio_pad_attr_4_we;
-  logic mio_pad_attr_4_invert_4_qs;
-  logic mio_pad_attr_4_invert_4_wd;
-  logic mio_pad_attr_4_virtual_od_en_4_qs;
-  logic mio_pad_attr_4_virtual_od_en_4_wd;
-  logic mio_pad_attr_4_pull_en_4_qs;
-  logic mio_pad_attr_4_pull_en_4_wd;
-  logic mio_pad_attr_4_pull_select_4_qs;
-  logic mio_pad_attr_4_pull_select_4_wd;
-  logic mio_pad_attr_4_keeper_en_4_qs;
-  logic mio_pad_attr_4_keeper_en_4_wd;
-  logic mio_pad_attr_4_schmitt_en_4_qs;
-  logic mio_pad_attr_4_schmitt_en_4_wd;
-  logic mio_pad_attr_4_od_en_4_qs;
-  logic mio_pad_attr_4_od_en_4_wd;
-  logic mio_pad_attr_4_input_disable_4_qs;
-  logic mio_pad_attr_4_input_disable_4_wd;
-  logic [1:0] mio_pad_attr_4_slew_rate_4_qs;
-  logic [1:0] mio_pad_attr_4_slew_rate_4_wd;
-  logic [3:0] mio_pad_attr_4_drive_strength_4_qs;
-  logic [3:0] mio_pad_attr_4_drive_strength_4_wd;
+  logic mio_pad_attr_4_puen_4_qs;
+  logic mio_pad_attr_4_puen_4_wd;
+  logic mio_pad_attr_4_pden_4_qs;
+  logic mio_pad_attr_4_pden_4_wd;
+  logic mio_pad_attr_4_smten_4_qs;
+  logic mio_pad_attr_4_smten_4_wd;
+  logic [2:0] mio_pad_attr_4_drv_4_qs;
+  logic [2:0] mio_pad_attr_4_drv_4_wd;
   logic mio_pad_attr_5_re;
   logic mio_pad_attr_5_we;
-  logic mio_pad_attr_5_invert_5_qs;
-  logic mio_pad_attr_5_invert_5_wd;
-  logic mio_pad_attr_5_virtual_od_en_5_qs;
-  logic mio_pad_attr_5_virtual_od_en_5_wd;
-  logic mio_pad_attr_5_pull_en_5_qs;
-  logic mio_pad_attr_5_pull_en_5_wd;
-  logic mio_pad_attr_5_pull_select_5_qs;
-  logic mio_pad_attr_5_pull_select_5_wd;
-  logic mio_pad_attr_5_keeper_en_5_qs;
-  logic mio_pad_attr_5_keeper_en_5_wd;
-  logic mio_pad_attr_5_schmitt_en_5_qs;
-  logic mio_pad_attr_5_schmitt_en_5_wd;
-  logic mio_pad_attr_5_od_en_5_qs;
-  logic mio_pad_attr_5_od_en_5_wd;
-  logic mio_pad_attr_5_input_disable_5_qs;
-  logic mio_pad_attr_5_input_disable_5_wd;
-  logic [1:0] mio_pad_attr_5_slew_rate_5_qs;
-  logic [1:0] mio_pad_attr_5_slew_rate_5_wd;
-  logic [3:0] mio_pad_attr_5_drive_strength_5_qs;
-  logic [3:0] mio_pad_attr_5_drive_strength_5_wd;
+  logic mio_pad_attr_5_puen_5_qs;
+  logic mio_pad_attr_5_puen_5_wd;
+  logic mio_pad_attr_5_pden_5_qs;
+  logic mio_pad_attr_5_pden_5_wd;
+  logic mio_pad_attr_5_smten_5_qs;
+  logic mio_pad_attr_5_smten_5_wd;
+  logic [2:0] mio_pad_attr_5_drv_5_qs;
+  logic [2:0] mio_pad_attr_5_drv_5_wd;
   logic mio_pad_attr_6_re;
   logic mio_pad_attr_6_we;
-  logic mio_pad_attr_6_invert_6_qs;
-  logic mio_pad_attr_6_invert_6_wd;
-  logic mio_pad_attr_6_virtual_od_en_6_qs;
-  logic mio_pad_attr_6_virtual_od_en_6_wd;
-  logic mio_pad_attr_6_pull_en_6_qs;
-  logic mio_pad_attr_6_pull_en_6_wd;
-  logic mio_pad_attr_6_pull_select_6_qs;
-  logic mio_pad_attr_6_pull_select_6_wd;
-  logic mio_pad_attr_6_keeper_en_6_qs;
-  logic mio_pad_attr_6_keeper_en_6_wd;
-  logic mio_pad_attr_6_schmitt_en_6_qs;
-  logic mio_pad_attr_6_schmitt_en_6_wd;
-  logic mio_pad_attr_6_od_en_6_qs;
-  logic mio_pad_attr_6_od_en_6_wd;
-  logic mio_pad_attr_6_input_disable_6_qs;
-  logic mio_pad_attr_6_input_disable_6_wd;
-  logic [1:0] mio_pad_attr_6_slew_rate_6_qs;
-  logic [1:0] mio_pad_attr_6_slew_rate_6_wd;
-  logic [3:0] mio_pad_attr_6_drive_strength_6_qs;
-  logic [3:0] mio_pad_attr_6_drive_strength_6_wd;
+  logic mio_pad_attr_6_puen_6_qs;
+  logic mio_pad_attr_6_puen_6_wd;
+  logic mio_pad_attr_6_pden_6_qs;
+  logic mio_pad_attr_6_pden_6_wd;
+  logic mio_pad_attr_6_smten_6_qs;
+  logic mio_pad_attr_6_smten_6_wd;
+  logic [2:0] mio_pad_attr_6_drv_6_qs;
+  logic [2:0] mio_pad_attr_6_drv_6_wd;
   logic mio_pad_attr_7_re;
   logic mio_pad_attr_7_we;
-  logic mio_pad_attr_7_invert_7_qs;
-  logic mio_pad_attr_7_invert_7_wd;
-  logic mio_pad_attr_7_virtual_od_en_7_qs;
-  logic mio_pad_attr_7_virtual_od_en_7_wd;
-  logic mio_pad_attr_7_pull_en_7_qs;
-  logic mio_pad_attr_7_pull_en_7_wd;
-  logic mio_pad_attr_7_pull_select_7_qs;
-  logic mio_pad_attr_7_pull_select_7_wd;
-  logic mio_pad_attr_7_keeper_en_7_qs;
-  logic mio_pad_attr_7_keeper_en_7_wd;
-  logic mio_pad_attr_7_schmitt_en_7_qs;
-  logic mio_pad_attr_7_schmitt_en_7_wd;
-  logic mio_pad_attr_7_od_en_7_qs;
-  logic mio_pad_attr_7_od_en_7_wd;
-  logic mio_pad_attr_7_input_disable_7_qs;
-  logic mio_pad_attr_7_input_disable_7_wd;
-  logic [1:0] mio_pad_attr_7_slew_rate_7_qs;
-  logic [1:0] mio_pad_attr_7_slew_rate_7_wd;
-  logic [3:0] mio_pad_attr_7_drive_strength_7_qs;
-  logic [3:0] mio_pad_attr_7_drive_strength_7_wd;
+  logic mio_pad_attr_7_puen_7_qs;
+  logic mio_pad_attr_7_puen_7_wd;
+  logic mio_pad_attr_7_pden_7_qs;
+  logic mio_pad_attr_7_pden_7_wd;
+  logic mio_pad_attr_7_smten_7_qs;
+  logic mio_pad_attr_7_smten_7_wd;
+  logic [2:0] mio_pad_attr_7_drv_7_qs;
+  logic [2:0] mio_pad_attr_7_drv_7_wd;
   logic mio_pad_attr_8_re;
   logic mio_pad_attr_8_we;
-  logic mio_pad_attr_8_invert_8_qs;
-  logic mio_pad_attr_8_invert_8_wd;
-  logic mio_pad_attr_8_virtual_od_en_8_qs;
-  logic mio_pad_attr_8_virtual_od_en_8_wd;
-  logic mio_pad_attr_8_pull_en_8_qs;
-  logic mio_pad_attr_8_pull_en_8_wd;
-  logic mio_pad_attr_8_pull_select_8_qs;
-  logic mio_pad_attr_8_pull_select_8_wd;
-  logic mio_pad_attr_8_keeper_en_8_qs;
-  logic mio_pad_attr_8_keeper_en_8_wd;
-  logic mio_pad_attr_8_schmitt_en_8_qs;
-  logic mio_pad_attr_8_schmitt_en_8_wd;
-  logic mio_pad_attr_8_od_en_8_qs;
-  logic mio_pad_attr_8_od_en_8_wd;
-  logic mio_pad_attr_8_input_disable_8_qs;
-  logic mio_pad_attr_8_input_disable_8_wd;
-  logic [1:0] mio_pad_attr_8_slew_rate_8_qs;
-  logic [1:0] mio_pad_attr_8_slew_rate_8_wd;
-  logic [3:0] mio_pad_attr_8_drive_strength_8_qs;
-  logic [3:0] mio_pad_attr_8_drive_strength_8_wd;
+  logic mio_pad_attr_8_puen_8_qs;
+  logic mio_pad_attr_8_puen_8_wd;
+  logic mio_pad_attr_8_pden_8_qs;
+  logic mio_pad_attr_8_pden_8_wd;
+  logic mio_pad_attr_8_smten_8_qs;
+  logic mio_pad_attr_8_smten_8_wd;
+  logic [2:0] mio_pad_attr_8_drv_8_qs;
+  logic [2:0] mio_pad_attr_8_drv_8_wd;
   logic mio_pad_attr_9_re;
   logic mio_pad_attr_9_we;
-  logic mio_pad_attr_9_invert_9_qs;
-  logic mio_pad_attr_9_invert_9_wd;
-  logic mio_pad_attr_9_virtual_od_en_9_qs;
-  logic mio_pad_attr_9_virtual_od_en_9_wd;
-  logic mio_pad_attr_9_pull_en_9_qs;
-  logic mio_pad_attr_9_pull_en_9_wd;
-  logic mio_pad_attr_9_pull_select_9_qs;
-  logic mio_pad_attr_9_pull_select_9_wd;
-  logic mio_pad_attr_9_keeper_en_9_qs;
-  logic mio_pad_attr_9_keeper_en_9_wd;
-  logic mio_pad_attr_9_schmitt_en_9_qs;
-  logic mio_pad_attr_9_schmitt_en_9_wd;
-  logic mio_pad_attr_9_od_en_9_qs;
-  logic mio_pad_attr_9_od_en_9_wd;
-  logic mio_pad_attr_9_input_disable_9_qs;
-  logic mio_pad_attr_9_input_disable_9_wd;
-  logic [1:0] mio_pad_attr_9_slew_rate_9_qs;
-  logic [1:0] mio_pad_attr_9_slew_rate_9_wd;
-  logic [3:0] mio_pad_attr_9_drive_strength_9_qs;
-  logic [3:0] mio_pad_attr_9_drive_strength_9_wd;
+  logic mio_pad_attr_9_puen_9_qs;
+  logic mio_pad_attr_9_puen_9_wd;
+  logic mio_pad_attr_9_pden_9_qs;
+  logic mio_pad_attr_9_pden_9_wd;
+  logic mio_pad_attr_9_smten_9_qs;
+  logic mio_pad_attr_9_smten_9_wd;
+  logic [2:0] mio_pad_attr_9_drv_9_qs;
+  logic [2:0] mio_pad_attr_9_drv_9_wd;
   logic mio_pad_attr_10_re;
   logic mio_pad_attr_10_we;
-  logic mio_pad_attr_10_invert_10_qs;
-  logic mio_pad_attr_10_invert_10_wd;
-  logic mio_pad_attr_10_virtual_od_en_10_qs;
-  logic mio_pad_attr_10_virtual_od_en_10_wd;
-  logic mio_pad_attr_10_pull_en_10_qs;
-  logic mio_pad_attr_10_pull_en_10_wd;
-  logic mio_pad_attr_10_pull_select_10_qs;
-  logic mio_pad_attr_10_pull_select_10_wd;
-  logic mio_pad_attr_10_keeper_en_10_qs;
-  logic mio_pad_attr_10_keeper_en_10_wd;
-  logic mio_pad_attr_10_schmitt_en_10_qs;
-  logic mio_pad_attr_10_schmitt_en_10_wd;
-  logic mio_pad_attr_10_od_en_10_qs;
-  logic mio_pad_attr_10_od_en_10_wd;
-  logic mio_pad_attr_10_input_disable_10_qs;
-  logic mio_pad_attr_10_input_disable_10_wd;
-  logic [1:0] mio_pad_attr_10_slew_rate_10_qs;
-  logic [1:0] mio_pad_attr_10_slew_rate_10_wd;
-  logic [3:0] mio_pad_attr_10_drive_strength_10_qs;
-  logic [3:0] mio_pad_attr_10_drive_strength_10_wd;
+  logic mio_pad_attr_10_puen_10_qs;
+  logic mio_pad_attr_10_puen_10_wd;
+  logic mio_pad_attr_10_pden_10_qs;
+  logic mio_pad_attr_10_pden_10_wd;
+  logic mio_pad_attr_10_smten_10_qs;
+  logic mio_pad_attr_10_smten_10_wd;
+  logic [2:0] mio_pad_attr_10_drv_10_qs;
+  logic [2:0] mio_pad_attr_10_drv_10_wd;
   logic mio_pad_attr_11_re;
   logic mio_pad_attr_11_we;
-  logic mio_pad_attr_11_invert_11_qs;
-  logic mio_pad_attr_11_invert_11_wd;
-  logic mio_pad_attr_11_virtual_od_en_11_qs;
-  logic mio_pad_attr_11_virtual_od_en_11_wd;
-  logic mio_pad_attr_11_pull_en_11_qs;
-  logic mio_pad_attr_11_pull_en_11_wd;
-  logic mio_pad_attr_11_pull_select_11_qs;
-  logic mio_pad_attr_11_pull_select_11_wd;
-  logic mio_pad_attr_11_keeper_en_11_qs;
-  logic mio_pad_attr_11_keeper_en_11_wd;
-  logic mio_pad_attr_11_schmitt_en_11_qs;
-  logic mio_pad_attr_11_schmitt_en_11_wd;
-  logic mio_pad_attr_11_od_en_11_qs;
-  logic mio_pad_attr_11_od_en_11_wd;
-  logic mio_pad_attr_11_input_disable_11_qs;
-  logic mio_pad_attr_11_input_disable_11_wd;
-  logic [1:0] mio_pad_attr_11_slew_rate_11_qs;
-  logic [1:0] mio_pad_attr_11_slew_rate_11_wd;
-  logic [3:0] mio_pad_attr_11_drive_strength_11_qs;
-  logic [3:0] mio_pad_attr_11_drive_strength_11_wd;
+  logic mio_pad_attr_11_puen_11_qs;
+  logic mio_pad_attr_11_puen_11_wd;
+  logic mio_pad_attr_11_pden_11_qs;
+  logic mio_pad_attr_11_pden_11_wd;
+  logic mio_pad_attr_11_smten_11_qs;
+  logic mio_pad_attr_11_smten_11_wd;
+  logic [2:0] mio_pad_attr_11_drv_11_qs;
+  logic [2:0] mio_pad_attr_11_drv_11_wd;
   logic dio_pad_attr_regwen_0_we;
   logic dio_pad_attr_regwen_0_qs;
   logic dio_pad_attr_regwen_0_wd;
@@ -742,1610 +598,734 @@ module pinmux_reg_top (
   logic dio_pad_attr_regwen_72_wd;
   logic dio_pad_attr_0_re;
   logic dio_pad_attr_0_we;
-  logic dio_pad_attr_0_invert_0_qs;
-  logic dio_pad_attr_0_invert_0_wd;
-  logic dio_pad_attr_0_virtual_od_en_0_qs;
-  logic dio_pad_attr_0_virtual_od_en_0_wd;
-  logic dio_pad_attr_0_pull_en_0_qs;
-  logic dio_pad_attr_0_pull_en_0_wd;
-  logic dio_pad_attr_0_pull_select_0_qs;
-  logic dio_pad_attr_0_pull_select_0_wd;
-  logic dio_pad_attr_0_keeper_en_0_qs;
-  logic dio_pad_attr_0_keeper_en_0_wd;
-  logic dio_pad_attr_0_schmitt_en_0_qs;
-  logic dio_pad_attr_0_schmitt_en_0_wd;
-  logic dio_pad_attr_0_od_en_0_qs;
-  logic dio_pad_attr_0_od_en_0_wd;
-  logic dio_pad_attr_0_input_disable_0_qs;
-  logic dio_pad_attr_0_input_disable_0_wd;
-  logic [1:0] dio_pad_attr_0_slew_rate_0_qs;
-  logic [1:0] dio_pad_attr_0_slew_rate_0_wd;
-  logic [3:0] dio_pad_attr_0_drive_strength_0_qs;
-  logic [3:0] dio_pad_attr_0_drive_strength_0_wd;
+  logic dio_pad_attr_0_puen_0_qs;
+  logic dio_pad_attr_0_puen_0_wd;
+  logic dio_pad_attr_0_pden_0_qs;
+  logic dio_pad_attr_0_pden_0_wd;
+  logic dio_pad_attr_0_smten_0_qs;
+  logic dio_pad_attr_0_smten_0_wd;
+  logic [2:0] dio_pad_attr_0_drv_0_qs;
+  logic [2:0] dio_pad_attr_0_drv_0_wd;
   logic dio_pad_attr_1_re;
   logic dio_pad_attr_1_we;
-  logic dio_pad_attr_1_invert_1_qs;
-  logic dio_pad_attr_1_invert_1_wd;
-  logic dio_pad_attr_1_virtual_od_en_1_qs;
-  logic dio_pad_attr_1_virtual_od_en_1_wd;
-  logic dio_pad_attr_1_pull_en_1_qs;
-  logic dio_pad_attr_1_pull_en_1_wd;
-  logic dio_pad_attr_1_pull_select_1_qs;
-  logic dio_pad_attr_1_pull_select_1_wd;
-  logic dio_pad_attr_1_keeper_en_1_qs;
-  logic dio_pad_attr_1_keeper_en_1_wd;
-  logic dio_pad_attr_1_schmitt_en_1_qs;
-  logic dio_pad_attr_1_schmitt_en_1_wd;
-  logic dio_pad_attr_1_od_en_1_qs;
-  logic dio_pad_attr_1_od_en_1_wd;
-  logic dio_pad_attr_1_input_disable_1_qs;
-  logic dio_pad_attr_1_input_disable_1_wd;
-  logic [1:0] dio_pad_attr_1_slew_rate_1_qs;
-  logic [1:0] dio_pad_attr_1_slew_rate_1_wd;
-  logic [3:0] dio_pad_attr_1_drive_strength_1_qs;
-  logic [3:0] dio_pad_attr_1_drive_strength_1_wd;
+  logic dio_pad_attr_1_puen_1_qs;
+  logic dio_pad_attr_1_puen_1_wd;
+  logic dio_pad_attr_1_pden_1_qs;
+  logic dio_pad_attr_1_pden_1_wd;
+  logic dio_pad_attr_1_smten_1_qs;
+  logic dio_pad_attr_1_smten_1_wd;
+  logic [2:0] dio_pad_attr_1_drv_1_qs;
+  logic [2:0] dio_pad_attr_1_drv_1_wd;
   logic dio_pad_attr_2_re;
   logic dio_pad_attr_2_we;
-  logic dio_pad_attr_2_invert_2_qs;
-  logic dio_pad_attr_2_invert_2_wd;
-  logic dio_pad_attr_2_virtual_od_en_2_qs;
-  logic dio_pad_attr_2_virtual_od_en_2_wd;
-  logic dio_pad_attr_2_pull_en_2_qs;
-  logic dio_pad_attr_2_pull_en_2_wd;
-  logic dio_pad_attr_2_pull_select_2_qs;
-  logic dio_pad_attr_2_pull_select_2_wd;
-  logic dio_pad_attr_2_keeper_en_2_qs;
-  logic dio_pad_attr_2_keeper_en_2_wd;
-  logic dio_pad_attr_2_schmitt_en_2_qs;
-  logic dio_pad_attr_2_schmitt_en_2_wd;
-  logic dio_pad_attr_2_od_en_2_qs;
-  logic dio_pad_attr_2_od_en_2_wd;
-  logic dio_pad_attr_2_input_disable_2_qs;
-  logic dio_pad_attr_2_input_disable_2_wd;
-  logic [1:0] dio_pad_attr_2_slew_rate_2_qs;
-  logic [1:0] dio_pad_attr_2_slew_rate_2_wd;
-  logic [3:0] dio_pad_attr_2_drive_strength_2_qs;
-  logic [3:0] dio_pad_attr_2_drive_strength_2_wd;
+  logic dio_pad_attr_2_puen_2_qs;
+  logic dio_pad_attr_2_puen_2_wd;
+  logic dio_pad_attr_2_pden_2_qs;
+  logic dio_pad_attr_2_pden_2_wd;
+  logic dio_pad_attr_2_smten_2_qs;
+  logic dio_pad_attr_2_smten_2_wd;
+  logic [2:0] dio_pad_attr_2_drv_2_qs;
+  logic [2:0] dio_pad_attr_2_drv_2_wd;
   logic dio_pad_attr_3_re;
   logic dio_pad_attr_3_we;
-  logic dio_pad_attr_3_invert_3_qs;
-  logic dio_pad_attr_3_invert_3_wd;
-  logic dio_pad_attr_3_virtual_od_en_3_qs;
-  logic dio_pad_attr_3_virtual_od_en_3_wd;
-  logic dio_pad_attr_3_pull_en_3_qs;
-  logic dio_pad_attr_3_pull_en_3_wd;
-  logic dio_pad_attr_3_pull_select_3_qs;
-  logic dio_pad_attr_3_pull_select_3_wd;
-  logic dio_pad_attr_3_keeper_en_3_qs;
-  logic dio_pad_attr_3_keeper_en_3_wd;
-  logic dio_pad_attr_3_schmitt_en_3_qs;
-  logic dio_pad_attr_3_schmitt_en_3_wd;
-  logic dio_pad_attr_3_od_en_3_qs;
-  logic dio_pad_attr_3_od_en_3_wd;
-  logic dio_pad_attr_3_input_disable_3_qs;
-  logic dio_pad_attr_3_input_disable_3_wd;
-  logic [1:0] dio_pad_attr_3_slew_rate_3_qs;
-  logic [1:0] dio_pad_attr_3_slew_rate_3_wd;
-  logic [3:0] dio_pad_attr_3_drive_strength_3_qs;
-  logic [3:0] dio_pad_attr_3_drive_strength_3_wd;
+  logic dio_pad_attr_3_puen_3_qs;
+  logic dio_pad_attr_3_puen_3_wd;
+  logic dio_pad_attr_3_pden_3_qs;
+  logic dio_pad_attr_3_pden_3_wd;
+  logic dio_pad_attr_3_smten_3_qs;
+  logic dio_pad_attr_3_smten_3_wd;
+  logic [2:0] dio_pad_attr_3_drv_3_qs;
+  logic [2:0] dio_pad_attr_3_drv_3_wd;
   logic dio_pad_attr_4_re;
   logic dio_pad_attr_4_we;
-  logic dio_pad_attr_4_invert_4_qs;
-  logic dio_pad_attr_4_invert_4_wd;
-  logic dio_pad_attr_4_virtual_od_en_4_qs;
-  logic dio_pad_attr_4_virtual_od_en_4_wd;
-  logic dio_pad_attr_4_pull_en_4_qs;
-  logic dio_pad_attr_4_pull_en_4_wd;
-  logic dio_pad_attr_4_pull_select_4_qs;
-  logic dio_pad_attr_4_pull_select_4_wd;
-  logic dio_pad_attr_4_keeper_en_4_qs;
-  logic dio_pad_attr_4_keeper_en_4_wd;
-  logic dio_pad_attr_4_schmitt_en_4_qs;
-  logic dio_pad_attr_4_schmitt_en_4_wd;
-  logic dio_pad_attr_4_od_en_4_qs;
-  logic dio_pad_attr_4_od_en_4_wd;
-  logic dio_pad_attr_4_input_disable_4_qs;
-  logic dio_pad_attr_4_input_disable_4_wd;
-  logic [1:0] dio_pad_attr_4_slew_rate_4_qs;
-  logic [1:0] dio_pad_attr_4_slew_rate_4_wd;
-  logic [3:0] dio_pad_attr_4_drive_strength_4_qs;
-  logic [3:0] dio_pad_attr_4_drive_strength_4_wd;
+  logic dio_pad_attr_4_puen_4_qs;
+  logic dio_pad_attr_4_puen_4_wd;
+  logic dio_pad_attr_4_pden_4_qs;
+  logic dio_pad_attr_4_pden_4_wd;
+  logic dio_pad_attr_4_smten_4_qs;
+  logic dio_pad_attr_4_smten_4_wd;
+  logic [2:0] dio_pad_attr_4_drv_4_qs;
+  logic [2:0] dio_pad_attr_4_drv_4_wd;
   logic dio_pad_attr_5_re;
   logic dio_pad_attr_5_we;
-  logic dio_pad_attr_5_invert_5_qs;
-  logic dio_pad_attr_5_invert_5_wd;
-  logic dio_pad_attr_5_virtual_od_en_5_qs;
-  logic dio_pad_attr_5_virtual_od_en_5_wd;
-  logic dio_pad_attr_5_pull_en_5_qs;
-  logic dio_pad_attr_5_pull_en_5_wd;
-  logic dio_pad_attr_5_pull_select_5_qs;
-  logic dio_pad_attr_5_pull_select_5_wd;
-  logic dio_pad_attr_5_keeper_en_5_qs;
-  logic dio_pad_attr_5_keeper_en_5_wd;
-  logic dio_pad_attr_5_schmitt_en_5_qs;
-  logic dio_pad_attr_5_schmitt_en_5_wd;
-  logic dio_pad_attr_5_od_en_5_qs;
-  logic dio_pad_attr_5_od_en_5_wd;
-  logic dio_pad_attr_5_input_disable_5_qs;
-  logic dio_pad_attr_5_input_disable_5_wd;
-  logic [1:0] dio_pad_attr_5_slew_rate_5_qs;
-  logic [1:0] dio_pad_attr_5_slew_rate_5_wd;
-  logic [3:0] dio_pad_attr_5_drive_strength_5_qs;
-  logic [3:0] dio_pad_attr_5_drive_strength_5_wd;
+  logic dio_pad_attr_5_puen_5_qs;
+  logic dio_pad_attr_5_puen_5_wd;
+  logic dio_pad_attr_5_pden_5_qs;
+  logic dio_pad_attr_5_pden_5_wd;
+  logic dio_pad_attr_5_smten_5_qs;
+  logic dio_pad_attr_5_smten_5_wd;
+  logic [2:0] dio_pad_attr_5_drv_5_qs;
+  logic [2:0] dio_pad_attr_5_drv_5_wd;
   logic dio_pad_attr_6_re;
   logic dio_pad_attr_6_we;
-  logic dio_pad_attr_6_invert_6_qs;
-  logic dio_pad_attr_6_invert_6_wd;
-  logic dio_pad_attr_6_virtual_od_en_6_qs;
-  logic dio_pad_attr_6_virtual_od_en_6_wd;
-  logic dio_pad_attr_6_pull_en_6_qs;
-  logic dio_pad_attr_6_pull_en_6_wd;
-  logic dio_pad_attr_6_pull_select_6_qs;
-  logic dio_pad_attr_6_pull_select_6_wd;
-  logic dio_pad_attr_6_keeper_en_6_qs;
-  logic dio_pad_attr_6_keeper_en_6_wd;
-  logic dio_pad_attr_6_schmitt_en_6_qs;
-  logic dio_pad_attr_6_schmitt_en_6_wd;
-  logic dio_pad_attr_6_od_en_6_qs;
-  logic dio_pad_attr_6_od_en_6_wd;
-  logic dio_pad_attr_6_input_disable_6_qs;
-  logic dio_pad_attr_6_input_disable_6_wd;
-  logic [1:0] dio_pad_attr_6_slew_rate_6_qs;
-  logic [1:0] dio_pad_attr_6_slew_rate_6_wd;
-  logic [3:0] dio_pad_attr_6_drive_strength_6_qs;
-  logic [3:0] dio_pad_attr_6_drive_strength_6_wd;
+  logic dio_pad_attr_6_puen_6_qs;
+  logic dio_pad_attr_6_puen_6_wd;
+  logic dio_pad_attr_6_pden_6_qs;
+  logic dio_pad_attr_6_pden_6_wd;
+  logic dio_pad_attr_6_smten_6_qs;
+  logic dio_pad_attr_6_smten_6_wd;
+  logic [2:0] dio_pad_attr_6_drv_6_qs;
+  logic [2:0] dio_pad_attr_6_drv_6_wd;
   logic dio_pad_attr_7_re;
   logic dio_pad_attr_7_we;
-  logic dio_pad_attr_7_invert_7_qs;
-  logic dio_pad_attr_7_invert_7_wd;
-  logic dio_pad_attr_7_virtual_od_en_7_qs;
-  logic dio_pad_attr_7_virtual_od_en_7_wd;
-  logic dio_pad_attr_7_pull_en_7_qs;
-  logic dio_pad_attr_7_pull_en_7_wd;
-  logic dio_pad_attr_7_pull_select_7_qs;
-  logic dio_pad_attr_7_pull_select_7_wd;
-  logic dio_pad_attr_7_keeper_en_7_qs;
-  logic dio_pad_attr_7_keeper_en_7_wd;
-  logic dio_pad_attr_7_schmitt_en_7_qs;
-  logic dio_pad_attr_7_schmitt_en_7_wd;
-  logic dio_pad_attr_7_od_en_7_qs;
-  logic dio_pad_attr_7_od_en_7_wd;
-  logic dio_pad_attr_7_input_disable_7_qs;
-  logic dio_pad_attr_7_input_disable_7_wd;
-  logic [1:0] dio_pad_attr_7_slew_rate_7_qs;
-  logic [1:0] dio_pad_attr_7_slew_rate_7_wd;
-  logic [3:0] dio_pad_attr_7_drive_strength_7_qs;
-  logic [3:0] dio_pad_attr_7_drive_strength_7_wd;
+  logic dio_pad_attr_7_puen_7_qs;
+  logic dio_pad_attr_7_puen_7_wd;
+  logic dio_pad_attr_7_pden_7_qs;
+  logic dio_pad_attr_7_pden_7_wd;
+  logic dio_pad_attr_7_smten_7_qs;
+  logic dio_pad_attr_7_smten_7_wd;
+  logic [2:0] dio_pad_attr_7_drv_7_qs;
+  logic [2:0] dio_pad_attr_7_drv_7_wd;
   logic dio_pad_attr_8_re;
   logic dio_pad_attr_8_we;
-  logic dio_pad_attr_8_invert_8_qs;
-  logic dio_pad_attr_8_invert_8_wd;
-  logic dio_pad_attr_8_virtual_od_en_8_qs;
-  logic dio_pad_attr_8_virtual_od_en_8_wd;
-  logic dio_pad_attr_8_pull_en_8_qs;
-  logic dio_pad_attr_8_pull_en_8_wd;
-  logic dio_pad_attr_8_pull_select_8_qs;
-  logic dio_pad_attr_8_pull_select_8_wd;
-  logic dio_pad_attr_8_keeper_en_8_qs;
-  logic dio_pad_attr_8_keeper_en_8_wd;
-  logic dio_pad_attr_8_schmitt_en_8_qs;
-  logic dio_pad_attr_8_schmitt_en_8_wd;
-  logic dio_pad_attr_8_od_en_8_qs;
-  logic dio_pad_attr_8_od_en_8_wd;
-  logic dio_pad_attr_8_input_disable_8_qs;
-  logic dio_pad_attr_8_input_disable_8_wd;
-  logic [1:0] dio_pad_attr_8_slew_rate_8_qs;
-  logic [1:0] dio_pad_attr_8_slew_rate_8_wd;
-  logic [3:0] dio_pad_attr_8_drive_strength_8_qs;
-  logic [3:0] dio_pad_attr_8_drive_strength_8_wd;
+  logic dio_pad_attr_8_puen_8_qs;
+  logic dio_pad_attr_8_puen_8_wd;
+  logic dio_pad_attr_8_pden_8_qs;
+  logic dio_pad_attr_8_pden_8_wd;
+  logic dio_pad_attr_8_smten_8_qs;
+  logic dio_pad_attr_8_smten_8_wd;
+  logic [2:0] dio_pad_attr_8_drv_8_qs;
+  logic [2:0] dio_pad_attr_8_drv_8_wd;
   logic dio_pad_attr_9_re;
   logic dio_pad_attr_9_we;
-  logic dio_pad_attr_9_invert_9_qs;
-  logic dio_pad_attr_9_invert_9_wd;
-  logic dio_pad_attr_9_virtual_od_en_9_qs;
-  logic dio_pad_attr_9_virtual_od_en_9_wd;
-  logic dio_pad_attr_9_pull_en_9_qs;
-  logic dio_pad_attr_9_pull_en_9_wd;
-  logic dio_pad_attr_9_pull_select_9_qs;
-  logic dio_pad_attr_9_pull_select_9_wd;
-  logic dio_pad_attr_9_keeper_en_9_qs;
-  logic dio_pad_attr_9_keeper_en_9_wd;
-  logic dio_pad_attr_9_schmitt_en_9_qs;
-  logic dio_pad_attr_9_schmitt_en_9_wd;
-  logic dio_pad_attr_9_od_en_9_qs;
-  logic dio_pad_attr_9_od_en_9_wd;
-  logic dio_pad_attr_9_input_disable_9_qs;
-  logic dio_pad_attr_9_input_disable_9_wd;
-  logic [1:0] dio_pad_attr_9_slew_rate_9_qs;
-  logic [1:0] dio_pad_attr_9_slew_rate_9_wd;
-  logic [3:0] dio_pad_attr_9_drive_strength_9_qs;
-  logic [3:0] dio_pad_attr_9_drive_strength_9_wd;
+  logic dio_pad_attr_9_puen_9_qs;
+  logic dio_pad_attr_9_puen_9_wd;
+  logic dio_pad_attr_9_pden_9_qs;
+  logic dio_pad_attr_9_pden_9_wd;
+  logic dio_pad_attr_9_smten_9_qs;
+  logic dio_pad_attr_9_smten_9_wd;
+  logic [2:0] dio_pad_attr_9_drv_9_qs;
+  logic [2:0] dio_pad_attr_9_drv_9_wd;
   logic dio_pad_attr_10_re;
   logic dio_pad_attr_10_we;
-  logic dio_pad_attr_10_invert_10_qs;
-  logic dio_pad_attr_10_invert_10_wd;
-  logic dio_pad_attr_10_virtual_od_en_10_qs;
-  logic dio_pad_attr_10_virtual_od_en_10_wd;
-  logic dio_pad_attr_10_pull_en_10_qs;
-  logic dio_pad_attr_10_pull_en_10_wd;
-  logic dio_pad_attr_10_pull_select_10_qs;
-  logic dio_pad_attr_10_pull_select_10_wd;
-  logic dio_pad_attr_10_keeper_en_10_qs;
-  logic dio_pad_attr_10_keeper_en_10_wd;
-  logic dio_pad_attr_10_schmitt_en_10_qs;
-  logic dio_pad_attr_10_schmitt_en_10_wd;
-  logic dio_pad_attr_10_od_en_10_qs;
-  logic dio_pad_attr_10_od_en_10_wd;
-  logic dio_pad_attr_10_input_disable_10_qs;
-  logic dio_pad_attr_10_input_disable_10_wd;
-  logic [1:0] dio_pad_attr_10_slew_rate_10_qs;
-  logic [1:0] dio_pad_attr_10_slew_rate_10_wd;
-  logic [3:0] dio_pad_attr_10_drive_strength_10_qs;
-  logic [3:0] dio_pad_attr_10_drive_strength_10_wd;
+  logic dio_pad_attr_10_puen_10_qs;
+  logic dio_pad_attr_10_puen_10_wd;
+  logic dio_pad_attr_10_pden_10_qs;
+  logic dio_pad_attr_10_pden_10_wd;
+  logic dio_pad_attr_10_smten_10_qs;
+  logic dio_pad_attr_10_smten_10_wd;
+  logic [2:0] dio_pad_attr_10_drv_10_qs;
+  logic [2:0] dio_pad_attr_10_drv_10_wd;
   logic dio_pad_attr_11_re;
   logic dio_pad_attr_11_we;
-  logic dio_pad_attr_11_invert_11_qs;
-  logic dio_pad_attr_11_invert_11_wd;
-  logic dio_pad_attr_11_virtual_od_en_11_qs;
-  logic dio_pad_attr_11_virtual_od_en_11_wd;
-  logic dio_pad_attr_11_pull_en_11_qs;
-  logic dio_pad_attr_11_pull_en_11_wd;
-  logic dio_pad_attr_11_pull_select_11_qs;
-  logic dio_pad_attr_11_pull_select_11_wd;
-  logic dio_pad_attr_11_keeper_en_11_qs;
-  logic dio_pad_attr_11_keeper_en_11_wd;
-  logic dio_pad_attr_11_schmitt_en_11_qs;
-  logic dio_pad_attr_11_schmitt_en_11_wd;
-  logic dio_pad_attr_11_od_en_11_qs;
-  logic dio_pad_attr_11_od_en_11_wd;
-  logic dio_pad_attr_11_input_disable_11_qs;
-  logic dio_pad_attr_11_input_disable_11_wd;
-  logic [1:0] dio_pad_attr_11_slew_rate_11_qs;
-  logic [1:0] dio_pad_attr_11_slew_rate_11_wd;
-  logic [3:0] dio_pad_attr_11_drive_strength_11_qs;
-  logic [3:0] dio_pad_attr_11_drive_strength_11_wd;
+  logic dio_pad_attr_11_puen_11_qs;
+  logic dio_pad_attr_11_puen_11_wd;
+  logic dio_pad_attr_11_pden_11_qs;
+  logic dio_pad_attr_11_pden_11_wd;
+  logic dio_pad_attr_11_smten_11_qs;
+  logic dio_pad_attr_11_smten_11_wd;
+  logic [2:0] dio_pad_attr_11_drv_11_qs;
+  logic [2:0] dio_pad_attr_11_drv_11_wd;
   logic dio_pad_attr_12_re;
   logic dio_pad_attr_12_we;
-  logic dio_pad_attr_12_invert_12_qs;
-  logic dio_pad_attr_12_invert_12_wd;
-  logic dio_pad_attr_12_virtual_od_en_12_qs;
-  logic dio_pad_attr_12_virtual_od_en_12_wd;
-  logic dio_pad_attr_12_pull_en_12_qs;
-  logic dio_pad_attr_12_pull_en_12_wd;
-  logic dio_pad_attr_12_pull_select_12_qs;
-  logic dio_pad_attr_12_pull_select_12_wd;
-  logic dio_pad_attr_12_keeper_en_12_qs;
-  logic dio_pad_attr_12_keeper_en_12_wd;
-  logic dio_pad_attr_12_schmitt_en_12_qs;
-  logic dio_pad_attr_12_schmitt_en_12_wd;
-  logic dio_pad_attr_12_od_en_12_qs;
-  logic dio_pad_attr_12_od_en_12_wd;
-  logic dio_pad_attr_12_input_disable_12_qs;
-  logic dio_pad_attr_12_input_disable_12_wd;
-  logic [1:0] dio_pad_attr_12_slew_rate_12_qs;
-  logic [1:0] dio_pad_attr_12_slew_rate_12_wd;
-  logic [3:0] dio_pad_attr_12_drive_strength_12_qs;
-  logic [3:0] dio_pad_attr_12_drive_strength_12_wd;
+  logic dio_pad_attr_12_puen_12_qs;
+  logic dio_pad_attr_12_puen_12_wd;
+  logic dio_pad_attr_12_pden_12_qs;
+  logic dio_pad_attr_12_pden_12_wd;
+  logic dio_pad_attr_12_smten_12_qs;
+  logic dio_pad_attr_12_smten_12_wd;
+  logic [2:0] dio_pad_attr_12_drv_12_qs;
+  logic [2:0] dio_pad_attr_12_drv_12_wd;
   logic dio_pad_attr_13_re;
   logic dio_pad_attr_13_we;
-  logic dio_pad_attr_13_invert_13_qs;
-  logic dio_pad_attr_13_invert_13_wd;
-  logic dio_pad_attr_13_virtual_od_en_13_qs;
-  logic dio_pad_attr_13_virtual_od_en_13_wd;
-  logic dio_pad_attr_13_pull_en_13_qs;
-  logic dio_pad_attr_13_pull_en_13_wd;
-  logic dio_pad_attr_13_pull_select_13_qs;
-  logic dio_pad_attr_13_pull_select_13_wd;
-  logic dio_pad_attr_13_keeper_en_13_qs;
-  logic dio_pad_attr_13_keeper_en_13_wd;
-  logic dio_pad_attr_13_schmitt_en_13_qs;
-  logic dio_pad_attr_13_schmitt_en_13_wd;
-  logic dio_pad_attr_13_od_en_13_qs;
-  logic dio_pad_attr_13_od_en_13_wd;
-  logic dio_pad_attr_13_input_disable_13_qs;
-  logic dio_pad_attr_13_input_disable_13_wd;
-  logic [1:0] dio_pad_attr_13_slew_rate_13_qs;
-  logic [1:0] dio_pad_attr_13_slew_rate_13_wd;
-  logic [3:0] dio_pad_attr_13_drive_strength_13_qs;
-  logic [3:0] dio_pad_attr_13_drive_strength_13_wd;
+  logic dio_pad_attr_13_puen_13_qs;
+  logic dio_pad_attr_13_puen_13_wd;
+  logic dio_pad_attr_13_pden_13_qs;
+  logic dio_pad_attr_13_pden_13_wd;
+  logic dio_pad_attr_13_smten_13_qs;
+  logic dio_pad_attr_13_smten_13_wd;
+  logic [2:0] dio_pad_attr_13_drv_13_qs;
+  logic [2:0] dio_pad_attr_13_drv_13_wd;
   logic dio_pad_attr_14_re;
   logic dio_pad_attr_14_we;
-  logic dio_pad_attr_14_invert_14_qs;
-  logic dio_pad_attr_14_invert_14_wd;
-  logic dio_pad_attr_14_virtual_od_en_14_qs;
-  logic dio_pad_attr_14_virtual_od_en_14_wd;
-  logic dio_pad_attr_14_pull_en_14_qs;
-  logic dio_pad_attr_14_pull_en_14_wd;
-  logic dio_pad_attr_14_pull_select_14_qs;
-  logic dio_pad_attr_14_pull_select_14_wd;
-  logic dio_pad_attr_14_keeper_en_14_qs;
-  logic dio_pad_attr_14_keeper_en_14_wd;
-  logic dio_pad_attr_14_schmitt_en_14_qs;
-  logic dio_pad_attr_14_schmitt_en_14_wd;
-  logic dio_pad_attr_14_od_en_14_qs;
-  logic dio_pad_attr_14_od_en_14_wd;
-  logic dio_pad_attr_14_input_disable_14_qs;
-  logic dio_pad_attr_14_input_disable_14_wd;
-  logic [1:0] dio_pad_attr_14_slew_rate_14_qs;
-  logic [1:0] dio_pad_attr_14_slew_rate_14_wd;
-  logic [3:0] dio_pad_attr_14_drive_strength_14_qs;
-  logic [3:0] dio_pad_attr_14_drive_strength_14_wd;
+  logic dio_pad_attr_14_puen_14_qs;
+  logic dio_pad_attr_14_puen_14_wd;
+  logic dio_pad_attr_14_pden_14_qs;
+  logic dio_pad_attr_14_pden_14_wd;
+  logic dio_pad_attr_14_smten_14_qs;
+  logic dio_pad_attr_14_smten_14_wd;
+  logic [2:0] dio_pad_attr_14_drv_14_qs;
+  logic [2:0] dio_pad_attr_14_drv_14_wd;
   logic dio_pad_attr_15_re;
   logic dio_pad_attr_15_we;
-  logic dio_pad_attr_15_invert_15_qs;
-  logic dio_pad_attr_15_invert_15_wd;
-  logic dio_pad_attr_15_virtual_od_en_15_qs;
-  logic dio_pad_attr_15_virtual_od_en_15_wd;
-  logic dio_pad_attr_15_pull_en_15_qs;
-  logic dio_pad_attr_15_pull_en_15_wd;
-  logic dio_pad_attr_15_pull_select_15_qs;
-  logic dio_pad_attr_15_pull_select_15_wd;
-  logic dio_pad_attr_15_keeper_en_15_qs;
-  logic dio_pad_attr_15_keeper_en_15_wd;
-  logic dio_pad_attr_15_schmitt_en_15_qs;
-  logic dio_pad_attr_15_schmitt_en_15_wd;
-  logic dio_pad_attr_15_od_en_15_qs;
-  logic dio_pad_attr_15_od_en_15_wd;
-  logic dio_pad_attr_15_input_disable_15_qs;
-  logic dio_pad_attr_15_input_disable_15_wd;
-  logic [1:0] dio_pad_attr_15_slew_rate_15_qs;
-  logic [1:0] dio_pad_attr_15_slew_rate_15_wd;
-  logic [3:0] dio_pad_attr_15_drive_strength_15_qs;
-  logic [3:0] dio_pad_attr_15_drive_strength_15_wd;
+  logic dio_pad_attr_15_puen_15_qs;
+  logic dio_pad_attr_15_puen_15_wd;
+  logic dio_pad_attr_15_pden_15_qs;
+  logic dio_pad_attr_15_pden_15_wd;
+  logic dio_pad_attr_15_smten_15_qs;
+  logic dio_pad_attr_15_smten_15_wd;
+  logic [2:0] dio_pad_attr_15_drv_15_qs;
+  logic [2:0] dio_pad_attr_15_drv_15_wd;
   logic dio_pad_attr_16_re;
   logic dio_pad_attr_16_we;
-  logic dio_pad_attr_16_invert_16_qs;
-  logic dio_pad_attr_16_invert_16_wd;
-  logic dio_pad_attr_16_virtual_od_en_16_qs;
-  logic dio_pad_attr_16_virtual_od_en_16_wd;
-  logic dio_pad_attr_16_pull_en_16_qs;
-  logic dio_pad_attr_16_pull_en_16_wd;
-  logic dio_pad_attr_16_pull_select_16_qs;
-  logic dio_pad_attr_16_pull_select_16_wd;
-  logic dio_pad_attr_16_keeper_en_16_qs;
-  logic dio_pad_attr_16_keeper_en_16_wd;
-  logic dio_pad_attr_16_schmitt_en_16_qs;
-  logic dio_pad_attr_16_schmitt_en_16_wd;
-  logic dio_pad_attr_16_od_en_16_qs;
-  logic dio_pad_attr_16_od_en_16_wd;
-  logic dio_pad_attr_16_input_disable_16_qs;
-  logic dio_pad_attr_16_input_disable_16_wd;
-  logic [1:0] dio_pad_attr_16_slew_rate_16_qs;
-  logic [1:0] dio_pad_attr_16_slew_rate_16_wd;
-  logic [3:0] dio_pad_attr_16_drive_strength_16_qs;
-  logic [3:0] dio_pad_attr_16_drive_strength_16_wd;
+  logic dio_pad_attr_16_puen_16_qs;
+  logic dio_pad_attr_16_puen_16_wd;
+  logic dio_pad_attr_16_pden_16_qs;
+  logic dio_pad_attr_16_pden_16_wd;
+  logic dio_pad_attr_16_smten_16_qs;
+  logic dio_pad_attr_16_smten_16_wd;
+  logic [2:0] dio_pad_attr_16_drv_16_qs;
+  logic [2:0] dio_pad_attr_16_drv_16_wd;
   logic dio_pad_attr_17_re;
   logic dio_pad_attr_17_we;
-  logic dio_pad_attr_17_invert_17_qs;
-  logic dio_pad_attr_17_invert_17_wd;
-  logic dio_pad_attr_17_virtual_od_en_17_qs;
-  logic dio_pad_attr_17_virtual_od_en_17_wd;
-  logic dio_pad_attr_17_pull_en_17_qs;
-  logic dio_pad_attr_17_pull_en_17_wd;
-  logic dio_pad_attr_17_pull_select_17_qs;
-  logic dio_pad_attr_17_pull_select_17_wd;
-  logic dio_pad_attr_17_keeper_en_17_qs;
-  logic dio_pad_attr_17_keeper_en_17_wd;
-  logic dio_pad_attr_17_schmitt_en_17_qs;
-  logic dio_pad_attr_17_schmitt_en_17_wd;
-  logic dio_pad_attr_17_od_en_17_qs;
-  logic dio_pad_attr_17_od_en_17_wd;
-  logic dio_pad_attr_17_input_disable_17_qs;
-  logic dio_pad_attr_17_input_disable_17_wd;
-  logic [1:0] dio_pad_attr_17_slew_rate_17_qs;
-  logic [1:0] dio_pad_attr_17_slew_rate_17_wd;
-  logic [3:0] dio_pad_attr_17_drive_strength_17_qs;
-  logic [3:0] dio_pad_attr_17_drive_strength_17_wd;
+  logic dio_pad_attr_17_puen_17_qs;
+  logic dio_pad_attr_17_puen_17_wd;
+  logic dio_pad_attr_17_pden_17_qs;
+  logic dio_pad_attr_17_pden_17_wd;
+  logic dio_pad_attr_17_smten_17_qs;
+  logic dio_pad_attr_17_smten_17_wd;
+  logic [2:0] dio_pad_attr_17_drv_17_qs;
+  logic [2:0] dio_pad_attr_17_drv_17_wd;
   logic dio_pad_attr_18_re;
   logic dio_pad_attr_18_we;
-  logic dio_pad_attr_18_invert_18_qs;
-  logic dio_pad_attr_18_invert_18_wd;
-  logic dio_pad_attr_18_virtual_od_en_18_qs;
-  logic dio_pad_attr_18_virtual_od_en_18_wd;
-  logic dio_pad_attr_18_pull_en_18_qs;
-  logic dio_pad_attr_18_pull_en_18_wd;
-  logic dio_pad_attr_18_pull_select_18_qs;
-  logic dio_pad_attr_18_pull_select_18_wd;
-  logic dio_pad_attr_18_keeper_en_18_qs;
-  logic dio_pad_attr_18_keeper_en_18_wd;
-  logic dio_pad_attr_18_schmitt_en_18_qs;
-  logic dio_pad_attr_18_schmitt_en_18_wd;
-  logic dio_pad_attr_18_od_en_18_qs;
-  logic dio_pad_attr_18_od_en_18_wd;
-  logic dio_pad_attr_18_input_disable_18_qs;
-  logic dio_pad_attr_18_input_disable_18_wd;
-  logic [1:0] dio_pad_attr_18_slew_rate_18_qs;
-  logic [1:0] dio_pad_attr_18_slew_rate_18_wd;
-  logic [3:0] dio_pad_attr_18_drive_strength_18_qs;
-  logic [3:0] dio_pad_attr_18_drive_strength_18_wd;
+  logic dio_pad_attr_18_puen_18_qs;
+  logic dio_pad_attr_18_puen_18_wd;
+  logic dio_pad_attr_18_pden_18_qs;
+  logic dio_pad_attr_18_pden_18_wd;
+  logic dio_pad_attr_18_smten_18_qs;
+  logic dio_pad_attr_18_smten_18_wd;
+  logic [2:0] dio_pad_attr_18_drv_18_qs;
+  logic [2:0] dio_pad_attr_18_drv_18_wd;
   logic dio_pad_attr_19_re;
   logic dio_pad_attr_19_we;
-  logic dio_pad_attr_19_invert_19_qs;
-  logic dio_pad_attr_19_invert_19_wd;
-  logic dio_pad_attr_19_virtual_od_en_19_qs;
-  logic dio_pad_attr_19_virtual_od_en_19_wd;
-  logic dio_pad_attr_19_pull_en_19_qs;
-  logic dio_pad_attr_19_pull_en_19_wd;
-  logic dio_pad_attr_19_pull_select_19_qs;
-  logic dio_pad_attr_19_pull_select_19_wd;
-  logic dio_pad_attr_19_keeper_en_19_qs;
-  logic dio_pad_attr_19_keeper_en_19_wd;
-  logic dio_pad_attr_19_schmitt_en_19_qs;
-  logic dio_pad_attr_19_schmitt_en_19_wd;
-  logic dio_pad_attr_19_od_en_19_qs;
-  logic dio_pad_attr_19_od_en_19_wd;
-  logic dio_pad_attr_19_input_disable_19_qs;
-  logic dio_pad_attr_19_input_disable_19_wd;
-  logic [1:0] dio_pad_attr_19_slew_rate_19_qs;
-  logic [1:0] dio_pad_attr_19_slew_rate_19_wd;
-  logic [3:0] dio_pad_attr_19_drive_strength_19_qs;
-  logic [3:0] dio_pad_attr_19_drive_strength_19_wd;
+  logic dio_pad_attr_19_puen_19_qs;
+  logic dio_pad_attr_19_puen_19_wd;
+  logic dio_pad_attr_19_pden_19_qs;
+  logic dio_pad_attr_19_pden_19_wd;
+  logic dio_pad_attr_19_smten_19_qs;
+  logic dio_pad_attr_19_smten_19_wd;
+  logic [2:0] dio_pad_attr_19_drv_19_qs;
+  logic [2:0] dio_pad_attr_19_drv_19_wd;
   logic dio_pad_attr_20_re;
   logic dio_pad_attr_20_we;
-  logic dio_pad_attr_20_invert_20_qs;
-  logic dio_pad_attr_20_invert_20_wd;
-  logic dio_pad_attr_20_virtual_od_en_20_qs;
-  logic dio_pad_attr_20_virtual_od_en_20_wd;
-  logic dio_pad_attr_20_pull_en_20_qs;
-  logic dio_pad_attr_20_pull_en_20_wd;
-  logic dio_pad_attr_20_pull_select_20_qs;
-  logic dio_pad_attr_20_pull_select_20_wd;
-  logic dio_pad_attr_20_keeper_en_20_qs;
-  logic dio_pad_attr_20_keeper_en_20_wd;
-  logic dio_pad_attr_20_schmitt_en_20_qs;
-  logic dio_pad_attr_20_schmitt_en_20_wd;
-  logic dio_pad_attr_20_od_en_20_qs;
-  logic dio_pad_attr_20_od_en_20_wd;
-  logic dio_pad_attr_20_input_disable_20_qs;
-  logic dio_pad_attr_20_input_disable_20_wd;
-  logic [1:0] dio_pad_attr_20_slew_rate_20_qs;
-  logic [1:0] dio_pad_attr_20_slew_rate_20_wd;
-  logic [3:0] dio_pad_attr_20_drive_strength_20_qs;
-  logic [3:0] dio_pad_attr_20_drive_strength_20_wd;
+  logic dio_pad_attr_20_puen_20_qs;
+  logic dio_pad_attr_20_puen_20_wd;
+  logic dio_pad_attr_20_pden_20_qs;
+  logic dio_pad_attr_20_pden_20_wd;
+  logic dio_pad_attr_20_smten_20_qs;
+  logic dio_pad_attr_20_smten_20_wd;
+  logic [2:0] dio_pad_attr_20_drv_20_qs;
+  logic [2:0] dio_pad_attr_20_drv_20_wd;
   logic dio_pad_attr_21_re;
   logic dio_pad_attr_21_we;
-  logic dio_pad_attr_21_invert_21_qs;
-  logic dio_pad_attr_21_invert_21_wd;
-  logic dio_pad_attr_21_virtual_od_en_21_qs;
-  logic dio_pad_attr_21_virtual_od_en_21_wd;
-  logic dio_pad_attr_21_pull_en_21_qs;
-  logic dio_pad_attr_21_pull_en_21_wd;
-  logic dio_pad_attr_21_pull_select_21_qs;
-  logic dio_pad_attr_21_pull_select_21_wd;
-  logic dio_pad_attr_21_keeper_en_21_qs;
-  logic dio_pad_attr_21_keeper_en_21_wd;
-  logic dio_pad_attr_21_schmitt_en_21_qs;
-  logic dio_pad_attr_21_schmitt_en_21_wd;
-  logic dio_pad_attr_21_od_en_21_qs;
-  logic dio_pad_attr_21_od_en_21_wd;
-  logic dio_pad_attr_21_input_disable_21_qs;
-  logic dio_pad_attr_21_input_disable_21_wd;
-  logic [1:0] dio_pad_attr_21_slew_rate_21_qs;
-  logic [1:0] dio_pad_attr_21_slew_rate_21_wd;
-  logic [3:0] dio_pad_attr_21_drive_strength_21_qs;
-  logic [3:0] dio_pad_attr_21_drive_strength_21_wd;
+  logic dio_pad_attr_21_puen_21_qs;
+  logic dio_pad_attr_21_puen_21_wd;
+  logic dio_pad_attr_21_pden_21_qs;
+  logic dio_pad_attr_21_pden_21_wd;
+  logic dio_pad_attr_21_smten_21_qs;
+  logic dio_pad_attr_21_smten_21_wd;
+  logic [2:0] dio_pad_attr_21_drv_21_qs;
+  logic [2:0] dio_pad_attr_21_drv_21_wd;
   logic dio_pad_attr_22_re;
   logic dio_pad_attr_22_we;
-  logic dio_pad_attr_22_invert_22_qs;
-  logic dio_pad_attr_22_invert_22_wd;
-  logic dio_pad_attr_22_virtual_od_en_22_qs;
-  logic dio_pad_attr_22_virtual_od_en_22_wd;
-  logic dio_pad_attr_22_pull_en_22_qs;
-  logic dio_pad_attr_22_pull_en_22_wd;
-  logic dio_pad_attr_22_pull_select_22_qs;
-  logic dio_pad_attr_22_pull_select_22_wd;
-  logic dio_pad_attr_22_keeper_en_22_qs;
-  logic dio_pad_attr_22_keeper_en_22_wd;
-  logic dio_pad_attr_22_schmitt_en_22_qs;
-  logic dio_pad_attr_22_schmitt_en_22_wd;
-  logic dio_pad_attr_22_od_en_22_qs;
-  logic dio_pad_attr_22_od_en_22_wd;
-  logic dio_pad_attr_22_input_disable_22_qs;
-  logic dio_pad_attr_22_input_disable_22_wd;
-  logic [1:0] dio_pad_attr_22_slew_rate_22_qs;
-  logic [1:0] dio_pad_attr_22_slew_rate_22_wd;
-  logic [3:0] dio_pad_attr_22_drive_strength_22_qs;
-  logic [3:0] dio_pad_attr_22_drive_strength_22_wd;
+  logic dio_pad_attr_22_puen_22_qs;
+  logic dio_pad_attr_22_puen_22_wd;
+  logic dio_pad_attr_22_pden_22_qs;
+  logic dio_pad_attr_22_pden_22_wd;
+  logic dio_pad_attr_22_smten_22_qs;
+  logic dio_pad_attr_22_smten_22_wd;
+  logic [2:0] dio_pad_attr_22_drv_22_qs;
+  logic [2:0] dio_pad_attr_22_drv_22_wd;
   logic dio_pad_attr_23_re;
   logic dio_pad_attr_23_we;
-  logic dio_pad_attr_23_invert_23_qs;
-  logic dio_pad_attr_23_invert_23_wd;
-  logic dio_pad_attr_23_virtual_od_en_23_qs;
-  logic dio_pad_attr_23_virtual_od_en_23_wd;
-  logic dio_pad_attr_23_pull_en_23_qs;
-  logic dio_pad_attr_23_pull_en_23_wd;
-  logic dio_pad_attr_23_pull_select_23_qs;
-  logic dio_pad_attr_23_pull_select_23_wd;
-  logic dio_pad_attr_23_keeper_en_23_qs;
-  logic dio_pad_attr_23_keeper_en_23_wd;
-  logic dio_pad_attr_23_schmitt_en_23_qs;
-  logic dio_pad_attr_23_schmitt_en_23_wd;
-  logic dio_pad_attr_23_od_en_23_qs;
-  logic dio_pad_attr_23_od_en_23_wd;
-  logic dio_pad_attr_23_input_disable_23_qs;
-  logic dio_pad_attr_23_input_disable_23_wd;
-  logic [1:0] dio_pad_attr_23_slew_rate_23_qs;
-  logic [1:0] dio_pad_attr_23_slew_rate_23_wd;
-  logic [3:0] dio_pad_attr_23_drive_strength_23_qs;
-  logic [3:0] dio_pad_attr_23_drive_strength_23_wd;
+  logic dio_pad_attr_23_puen_23_qs;
+  logic dio_pad_attr_23_puen_23_wd;
+  logic dio_pad_attr_23_pden_23_qs;
+  logic dio_pad_attr_23_pden_23_wd;
+  logic dio_pad_attr_23_smten_23_qs;
+  logic dio_pad_attr_23_smten_23_wd;
+  logic [2:0] dio_pad_attr_23_drv_23_qs;
+  logic [2:0] dio_pad_attr_23_drv_23_wd;
   logic dio_pad_attr_24_re;
   logic dio_pad_attr_24_we;
-  logic dio_pad_attr_24_invert_24_qs;
-  logic dio_pad_attr_24_invert_24_wd;
-  logic dio_pad_attr_24_virtual_od_en_24_qs;
-  logic dio_pad_attr_24_virtual_od_en_24_wd;
-  logic dio_pad_attr_24_pull_en_24_qs;
-  logic dio_pad_attr_24_pull_en_24_wd;
-  logic dio_pad_attr_24_pull_select_24_qs;
-  logic dio_pad_attr_24_pull_select_24_wd;
-  logic dio_pad_attr_24_keeper_en_24_qs;
-  logic dio_pad_attr_24_keeper_en_24_wd;
-  logic dio_pad_attr_24_schmitt_en_24_qs;
-  logic dio_pad_attr_24_schmitt_en_24_wd;
-  logic dio_pad_attr_24_od_en_24_qs;
-  logic dio_pad_attr_24_od_en_24_wd;
-  logic dio_pad_attr_24_input_disable_24_qs;
-  logic dio_pad_attr_24_input_disable_24_wd;
-  logic [1:0] dio_pad_attr_24_slew_rate_24_qs;
-  logic [1:0] dio_pad_attr_24_slew_rate_24_wd;
-  logic [3:0] dio_pad_attr_24_drive_strength_24_qs;
-  logic [3:0] dio_pad_attr_24_drive_strength_24_wd;
+  logic dio_pad_attr_24_puen_24_qs;
+  logic dio_pad_attr_24_puen_24_wd;
+  logic dio_pad_attr_24_pden_24_qs;
+  logic dio_pad_attr_24_pden_24_wd;
+  logic dio_pad_attr_24_smten_24_qs;
+  logic dio_pad_attr_24_smten_24_wd;
+  logic [2:0] dio_pad_attr_24_drv_24_qs;
+  logic [2:0] dio_pad_attr_24_drv_24_wd;
   logic dio_pad_attr_25_re;
   logic dio_pad_attr_25_we;
-  logic dio_pad_attr_25_invert_25_qs;
-  logic dio_pad_attr_25_invert_25_wd;
-  logic dio_pad_attr_25_virtual_od_en_25_qs;
-  logic dio_pad_attr_25_virtual_od_en_25_wd;
-  logic dio_pad_attr_25_pull_en_25_qs;
-  logic dio_pad_attr_25_pull_en_25_wd;
-  logic dio_pad_attr_25_pull_select_25_qs;
-  logic dio_pad_attr_25_pull_select_25_wd;
-  logic dio_pad_attr_25_keeper_en_25_qs;
-  logic dio_pad_attr_25_keeper_en_25_wd;
-  logic dio_pad_attr_25_schmitt_en_25_qs;
-  logic dio_pad_attr_25_schmitt_en_25_wd;
-  logic dio_pad_attr_25_od_en_25_qs;
-  logic dio_pad_attr_25_od_en_25_wd;
-  logic dio_pad_attr_25_input_disable_25_qs;
-  logic dio_pad_attr_25_input_disable_25_wd;
-  logic [1:0] dio_pad_attr_25_slew_rate_25_qs;
-  logic [1:0] dio_pad_attr_25_slew_rate_25_wd;
-  logic [3:0] dio_pad_attr_25_drive_strength_25_qs;
-  logic [3:0] dio_pad_attr_25_drive_strength_25_wd;
+  logic dio_pad_attr_25_puen_25_qs;
+  logic dio_pad_attr_25_puen_25_wd;
+  logic dio_pad_attr_25_pden_25_qs;
+  logic dio_pad_attr_25_pden_25_wd;
+  logic dio_pad_attr_25_smten_25_qs;
+  logic dio_pad_attr_25_smten_25_wd;
+  logic [2:0] dio_pad_attr_25_drv_25_qs;
+  logic [2:0] dio_pad_attr_25_drv_25_wd;
   logic dio_pad_attr_26_re;
   logic dio_pad_attr_26_we;
-  logic dio_pad_attr_26_invert_26_qs;
-  logic dio_pad_attr_26_invert_26_wd;
-  logic dio_pad_attr_26_virtual_od_en_26_qs;
-  logic dio_pad_attr_26_virtual_od_en_26_wd;
-  logic dio_pad_attr_26_pull_en_26_qs;
-  logic dio_pad_attr_26_pull_en_26_wd;
-  logic dio_pad_attr_26_pull_select_26_qs;
-  logic dio_pad_attr_26_pull_select_26_wd;
-  logic dio_pad_attr_26_keeper_en_26_qs;
-  logic dio_pad_attr_26_keeper_en_26_wd;
-  logic dio_pad_attr_26_schmitt_en_26_qs;
-  logic dio_pad_attr_26_schmitt_en_26_wd;
-  logic dio_pad_attr_26_od_en_26_qs;
-  logic dio_pad_attr_26_od_en_26_wd;
-  logic dio_pad_attr_26_input_disable_26_qs;
-  logic dio_pad_attr_26_input_disable_26_wd;
-  logic [1:0] dio_pad_attr_26_slew_rate_26_qs;
-  logic [1:0] dio_pad_attr_26_slew_rate_26_wd;
-  logic [3:0] dio_pad_attr_26_drive_strength_26_qs;
-  logic [3:0] dio_pad_attr_26_drive_strength_26_wd;
+  logic dio_pad_attr_26_puen_26_qs;
+  logic dio_pad_attr_26_puen_26_wd;
+  logic dio_pad_attr_26_pden_26_qs;
+  logic dio_pad_attr_26_pden_26_wd;
+  logic dio_pad_attr_26_smten_26_qs;
+  logic dio_pad_attr_26_smten_26_wd;
+  logic [2:0] dio_pad_attr_26_drv_26_qs;
+  logic [2:0] dio_pad_attr_26_drv_26_wd;
   logic dio_pad_attr_27_re;
   logic dio_pad_attr_27_we;
-  logic dio_pad_attr_27_invert_27_qs;
-  logic dio_pad_attr_27_invert_27_wd;
-  logic dio_pad_attr_27_virtual_od_en_27_qs;
-  logic dio_pad_attr_27_virtual_od_en_27_wd;
-  logic dio_pad_attr_27_pull_en_27_qs;
-  logic dio_pad_attr_27_pull_en_27_wd;
-  logic dio_pad_attr_27_pull_select_27_qs;
-  logic dio_pad_attr_27_pull_select_27_wd;
-  logic dio_pad_attr_27_keeper_en_27_qs;
-  logic dio_pad_attr_27_keeper_en_27_wd;
-  logic dio_pad_attr_27_schmitt_en_27_qs;
-  logic dio_pad_attr_27_schmitt_en_27_wd;
-  logic dio_pad_attr_27_od_en_27_qs;
-  logic dio_pad_attr_27_od_en_27_wd;
-  logic dio_pad_attr_27_input_disable_27_qs;
-  logic dio_pad_attr_27_input_disable_27_wd;
-  logic [1:0] dio_pad_attr_27_slew_rate_27_qs;
-  logic [1:0] dio_pad_attr_27_slew_rate_27_wd;
-  logic [3:0] dio_pad_attr_27_drive_strength_27_qs;
-  logic [3:0] dio_pad_attr_27_drive_strength_27_wd;
+  logic dio_pad_attr_27_puen_27_qs;
+  logic dio_pad_attr_27_puen_27_wd;
+  logic dio_pad_attr_27_pden_27_qs;
+  logic dio_pad_attr_27_pden_27_wd;
+  logic dio_pad_attr_27_smten_27_qs;
+  logic dio_pad_attr_27_smten_27_wd;
+  logic [2:0] dio_pad_attr_27_drv_27_qs;
+  logic [2:0] dio_pad_attr_27_drv_27_wd;
   logic dio_pad_attr_28_re;
   logic dio_pad_attr_28_we;
-  logic dio_pad_attr_28_invert_28_qs;
-  logic dio_pad_attr_28_invert_28_wd;
-  logic dio_pad_attr_28_virtual_od_en_28_qs;
-  logic dio_pad_attr_28_virtual_od_en_28_wd;
-  logic dio_pad_attr_28_pull_en_28_qs;
-  logic dio_pad_attr_28_pull_en_28_wd;
-  logic dio_pad_attr_28_pull_select_28_qs;
-  logic dio_pad_attr_28_pull_select_28_wd;
-  logic dio_pad_attr_28_keeper_en_28_qs;
-  logic dio_pad_attr_28_keeper_en_28_wd;
-  logic dio_pad_attr_28_schmitt_en_28_qs;
-  logic dio_pad_attr_28_schmitt_en_28_wd;
-  logic dio_pad_attr_28_od_en_28_qs;
-  logic dio_pad_attr_28_od_en_28_wd;
-  logic dio_pad_attr_28_input_disable_28_qs;
-  logic dio_pad_attr_28_input_disable_28_wd;
-  logic [1:0] dio_pad_attr_28_slew_rate_28_qs;
-  logic [1:0] dio_pad_attr_28_slew_rate_28_wd;
-  logic [3:0] dio_pad_attr_28_drive_strength_28_qs;
-  logic [3:0] dio_pad_attr_28_drive_strength_28_wd;
+  logic dio_pad_attr_28_puen_28_qs;
+  logic dio_pad_attr_28_puen_28_wd;
+  logic dio_pad_attr_28_pden_28_qs;
+  logic dio_pad_attr_28_pden_28_wd;
+  logic dio_pad_attr_28_smten_28_qs;
+  logic dio_pad_attr_28_smten_28_wd;
+  logic [2:0] dio_pad_attr_28_drv_28_qs;
+  logic [2:0] dio_pad_attr_28_drv_28_wd;
   logic dio_pad_attr_29_re;
   logic dio_pad_attr_29_we;
-  logic dio_pad_attr_29_invert_29_qs;
-  logic dio_pad_attr_29_invert_29_wd;
-  logic dio_pad_attr_29_virtual_od_en_29_qs;
-  logic dio_pad_attr_29_virtual_od_en_29_wd;
-  logic dio_pad_attr_29_pull_en_29_qs;
-  logic dio_pad_attr_29_pull_en_29_wd;
-  logic dio_pad_attr_29_pull_select_29_qs;
-  logic dio_pad_attr_29_pull_select_29_wd;
-  logic dio_pad_attr_29_keeper_en_29_qs;
-  logic dio_pad_attr_29_keeper_en_29_wd;
-  logic dio_pad_attr_29_schmitt_en_29_qs;
-  logic dio_pad_attr_29_schmitt_en_29_wd;
-  logic dio_pad_attr_29_od_en_29_qs;
-  logic dio_pad_attr_29_od_en_29_wd;
-  logic dio_pad_attr_29_input_disable_29_qs;
-  logic dio_pad_attr_29_input_disable_29_wd;
-  logic [1:0] dio_pad_attr_29_slew_rate_29_qs;
-  logic [1:0] dio_pad_attr_29_slew_rate_29_wd;
-  logic [3:0] dio_pad_attr_29_drive_strength_29_qs;
-  logic [3:0] dio_pad_attr_29_drive_strength_29_wd;
+  logic dio_pad_attr_29_puen_29_qs;
+  logic dio_pad_attr_29_puen_29_wd;
+  logic dio_pad_attr_29_pden_29_qs;
+  logic dio_pad_attr_29_pden_29_wd;
+  logic dio_pad_attr_29_smten_29_qs;
+  logic dio_pad_attr_29_smten_29_wd;
+  logic [2:0] dio_pad_attr_29_drv_29_qs;
+  logic [2:0] dio_pad_attr_29_drv_29_wd;
   logic dio_pad_attr_30_re;
   logic dio_pad_attr_30_we;
-  logic dio_pad_attr_30_invert_30_qs;
-  logic dio_pad_attr_30_invert_30_wd;
-  logic dio_pad_attr_30_virtual_od_en_30_qs;
-  logic dio_pad_attr_30_virtual_od_en_30_wd;
-  logic dio_pad_attr_30_pull_en_30_qs;
-  logic dio_pad_attr_30_pull_en_30_wd;
-  logic dio_pad_attr_30_pull_select_30_qs;
-  logic dio_pad_attr_30_pull_select_30_wd;
-  logic dio_pad_attr_30_keeper_en_30_qs;
-  logic dio_pad_attr_30_keeper_en_30_wd;
-  logic dio_pad_attr_30_schmitt_en_30_qs;
-  logic dio_pad_attr_30_schmitt_en_30_wd;
-  logic dio_pad_attr_30_od_en_30_qs;
-  logic dio_pad_attr_30_od_en_30_wd;
-  logic dio_pad_attr_30_input_disable_30_qs;
-  logic dio_pad_attr_30_input_disable_30_wd;
-  logic [1:0] dio_pad_attr_30_slew_rate_30_qs;
-  logic [1:0] dio_pad_attr_30_slew_rate_30_wd;
-  logic [3:0] dio_pad_attr_30_drive_strength_30_qs;
-  logic [3:0] dio_pad_attr_30_drive_strength_30_wd;
+  logic dio_pad_attr_30_puen_30_qs;
+  logic dio_pad_attr_30_puen_30_wd;
+  logic dio_pad_attr_30_pden_30_qs;
+  logic dio_pad_attr_30_pden_30_wd;
+  logic dio_pad_attr_30_smten_30_qs;
+  logic dio_pad_attr_30_smten_30_wd;
+  logic [2:0] dio_pad_attr_30_drv_30_qs;
+  logic [2:0] dio_pad_attr_30_drv_30_wd;
   logic dio_pad_attr_31_re;
   logic dio_pad_attr_31_we;
-  logic dio_pad_attr_31_invert_31_qs;
-  logic dio_pad_attr_31_invert_31_wd;
-  logic dio_pad_attr_31_virtual_od_en_31_qs;
-  logic dio_pad_attr_31_virtual_od_en_31_wd;
-  logic dio_pad_attr_31_pull_en_31_qs;
-  logic dio_pad_attr_31_pull_en_31_wd;
-  logic dio_pad_attr_31_pull_select_31_qs;
-  logic dio_pad_attr_31_pull_select_31_wd;
-  logic dio_pad_attr_31_keeper_en_31_qs;
-  logic dio_pad_attr_31_keeper_en_31_wd;
-  logic dio_pad_attr_31_schmitt_en_31_qs;
-  logic dio_pad_attr_31_schmitt_en_31_wd;
-  logic dio_pad_attr_31_od_en_31_qs;
-  logic dio_pad_attr_31_od_en_31_wd;
-  logic dio_pad_attr_31_input_disable_31_qs;
-  logic dio_pad_attr_31_input_disable_31_wd;
-  logic [1:0] dio_pad_attr_31_slew_rate_31_qs;
-  logic [1:0] dio_pad_attr_31_slew_rate_31_wd;
-  logic [3:0] dio_pad_attr_31_drive_strength_31_qs;
-  logic [3:0] dio_pad_attr_31_drive_strength_31_wd;
+  logic dio_pad_attr_31_puen_31_qs;
+  logic dio_pad_attr_31_puen_31_wd;
+  logic dio_pad_attr_31_pden_31_qs;
+  logic dio_pad_attr_31_pden_31_wd;
+  logic dio_pad_attr_31_smten_31_qs;
+  logic dio_pad_attr_31_smten_31_wd;
+  logic [2:0] dio_pad_attr_31_drv_31_qs;
+  logic [2:0] dio_pad_attr_31_drv_31_wd;
   logic dio_pad_attr_32_re;
   logic dio_pad_attr_32_we;
-  logic dio_pad_attr_32_invert_32_qs;
-  logic dio_pad_attr_32_invert_32_wd;
-  logic dio_pad_attr_32_virtual_od_en_32_qs;
-  logic dio_pad_attr_32_virtual_od_en_32_wd;
-  logic dio_pad_attr_32_pull_en_32_qs;
-  logic dio_pad_attr_32_pull_en_32_wd;
-  logic dio_pad_attr_32_pull_select_32_qs;
-  logic dio_pad_attr_32_pull_select_32_wd;
-  logic dio_pad_attr_32_keeper_en_32_qs;
-  logic dio_pad_attr_32_keeper_en_32_wd;
-  logic dio_pad_attr_32_schmitt_en_32_qs;
-  logic dio_pad_attr_32_schmitt_en_32_wd;
-  logic dio_pad_attr_32_od_en_32_qs;
-  logic dio_pad_attr_32_od_en_32_wd;
-  logic dio_pad_attr_32_input_disable_32_qs;
-  logic dio_pad_attr_32_input_disable_32_wd;
-  logic [1:0] dio_pad_attr_32_slew_rate_32_qs;
-  logic [1:0] dio_pad_attr_32_slew_rate_32_wd;
-  logic [3:0] dio_pad_attr_32_drive_strength_32_qs;
-  logic [3:0] dio_pad_attr_32_drive_strength_32_wd;
+  logic dio_pad_attr_32_puen_32_qs;
+  logic dio_pad_attr_32_puen_32_wd;
+  logic dio_pad_attr_32_pden_32_qs;
+  logic dio_pad_attr_32_pden_32_wd;
+  logic dio_pad_attr_32_smten_32_qs;
+  logic dio_pad_attr_32_smten_32_wd;
+  logic [2:0] dio_pad_attr_32_drv_32_qs;
+  logic [2:0] dio_pad_attr_32_drv_32_wd;
   logic dio_pad_attr_33_re;
   logic dio_pad_attr_33_we;
-  logic dio_pad_attr_33_invert_33_qs;
-  logic dio_pad_attr_33_invert_33_wd;
-  logic dio_pad_attr_33_virtual_od_en_33_qs;
-  logic dio_pad_attr_33_virtual_od_en_33_wd;
-  logic dio_pad_attr_33_pull_en_33_qs;
-  logic dio_pad_attr_33_pull_en_33_wd;
-  logic dio_pad_attr_33_pull_select_33_qs;
-  logic dio_pad_attr_33_pull_select_33_wd;
-  logic dio_pad_attr_33_keeper_en_33_qs;
-  logic dio_pad_attr_33_keeper_en_33_wd;
-  logic dio_pad_attr_33_schmitt_en_33_qs;
-  logic dio_pad_attr_33_schmitt_en_33_wd;
-  logic dio_pad_attr_33_od_en_33_qs;
-  logic dio_pad_attr_33_od_en_33_wd;
-  logic dio_pad_attr_33_input_disable_33_qs;
-  logic dio_pad_attr_33_input_disable_33_wd;
-  logic [1:0] dio_pad_attr_33_slew_rate_33_qs;
-  logic [1:0] dio_pad_attr_33_slew_rate_33_wd;
-  logic [3:0] dio_pad_attr_33_drive_strength_33_qs;
-  logic [3:0] dio_pad_attr_33_drive_strength_33_wd;
+  logic dio_pad_attr_33_puen_33_qs;
+  logic dio_pad_attr_33_puen_33_wd;
+  logic dio_pad_attr_33_pden_33_qs;
+  logic dio_pad_attr_33_pden_33_wd;
+  logic dio_pad_attr_33_smten_33_qs;
+  logic dio_pad_attr_33_smten_33_wd;
+  logic [2:0] dio_pad_attr_33_drv_33_qs;
+  logic [2:0] dio_pad_attr_33_drv_33_wd;
   logic dio_pad_attr_34_re;
   logic dio_pad_attr_34_we;
-  logic dio_pad_attr_34_invert_34_qs;
-  logic dio_pad_attr_34_invert_34_wd;
-  logic dio_pad_attr_34_virtual_od_en_34_qs;
-  logic dio_pad_attr_34_virtual_od_en_34_wd;
-  logic dio_pad_attr_34_pull_en_34_qs;
-  logic dio_pad_attr_34_pull_en_34_wd;
-  logic dio_pad_attr_34_pull_select_34_qs;
-  logic dio_pad_attr_34_pull_select_34_wd;
-  logic dio_pad_attr_34_keeper_en_34_qs;
-  logic dio_pad_attr_34_keeper_en_34_wd;
-  logic dio_pad_attr_34_schmitt_en_34_qs;
-  logic dio_pad_attr_34_schmitt_en_34_wd;
-  logic dio_pad_attr_34_od_en_34_qs;
-  logic dio_pad_attr_34_od_en_34_wd;
-  logic dio_pad_attr_34_input_disable_34_qs;
-  logic dio_pad_attr_34_input_disable_34_wd;
-  logic [1:0] dio_pad_attr_34_slew_rate_34_qs;
-  logic [1:0] dio_pad_attr_34_slew_rate_34_wd;
-  logic [3:0] dio_pad_attr_34_drive_strength_34_qs;
-  logic [3:0] dio_pad_attr_34_drive_strength_34_wd;
+  logic dio_pad_attr_34_puen_34_qs;
+  logic dio_pad_attr_34_puen_34_wd;
+  logic dio_pad_attr_34_pden_34_qs;
+  logic dio_pad_attr_34_pden_34_wd;
+  logic dio_pad_attr_34_smten_34_qs;
+  logic dio_pad_attr_34_smten_34_wd;
+  logic [2:0] dio_pad_attr_34_drv_34_qs;
+  logic [2:0] dio_pad_attr_34_drv_34_wd;
   logic dio_pad_attr_35_re;
   logic dio_pad_attr_35_we;
-  logic dio_pad_attr_35_invert_35_qs;
-  logic dio_pad_attr_35_invert_35_wd;
-  logic dio_pad_attr_35_virtual_od_en_35_qs;
-  logic dio_pad_attr_35_virtual_od_en_35_wd;
-  logic dio_pad_attr_35_pull_en_35_qs;
-  logic dio_pad_attr_35_pull_en_35_wd;
-  logic dio_pad_attr_35_pull_select_35_qs;
-  logic dio_pad_attr_35_pull_select_35_wd;
-  logic dio_pad_attr_35_keeper_en_35_qs;
-  logic dio_pad_attr_35_keeper_en_35_wd;
-  logic dio_pad_attr_35_schmitt_en_35_qs;
-  logic dio_pad_attr_35_schmitt_en_35_wd;
-  logic dio_pad_attr_35_od_en_35_qs;
-  logic dio_pad_attr_35_od_en_35_wd;
-  logic dio_pad_attr_35_input_disable_35_qs;
-  logic dio_pad_attr_35_input_disable_35_wd;
-  logic [1:0] dio_pad_attr_35_slew_rate_35_qs;
-  logic [1:0] dio_pad_attr_35_slew_rate_35_wd;
-  logic [3:0] dio_pad_attr_35_drive_strength_35_qs;
-  logic [3:0] dio_pad_attr_35_drive_strength_35_wd;
+  logic dio_pad_attr_35_puen_35_qs;
+  logic dio_pad_attr_35_puen_35_wd;
+  logic dio_pad_attr_35_pden_35_qs;
+  logic dio_pad_attr_35_pden_35_wd;
+  logic dio_pad_attr_35_smten_35_qs;
+  logic dio_pad_attr_35_smten_35_wd;
+  logic [2:0] dio_pad_attr_35_drv_35_qs;
+  logic [2:0] dio_pad_attr_35_drv_35_wd;
   logic dio_pad_attr_36_re;
   logic dio_pad_attr_36_we;
-  logic dio_pad_attr_36_invert_36_qs;
-  logic dio_pad_attr_36_invert_36_wd;
-  logic dio_pad_attr_36_virtual_od_en_36_qs;
-  logic dio_pad_attr_36_virtual_od_en_36_wd;
-  logic dio_pad_attr_36_pull_en_36_qs;
-  logic dio_pad_attr_36_pull_en_36_wd;
-  logic dio_pad_attr_36_pull_select_36_qs;
-  logic dio_pad_attr_36_pull_select_36_wd;
-  logic dio_pad_attr_36_keeper_en_36_qs;
-  logic dio_pad_attr_36_keeper_en_36_wd;
-  logic dio_pad_attr_36_schmitt_en_36_qs;
-  logic dio_pad_attr_36_schmitt_en_36_wd;
-  logic dio_pad_attr_36_od_en_36_qs;
-  logic dio_pad_attr_36_od_en_36_wd;
-  logic dio_pad_attr_36_input_disable_36_qs;
-  logic dio_pad_attr_36_input_disable_36_wd;
-  logic [1:0] dio_pad_attr_36_slew_rate_36_qs;
-  logic [1:0] dio_pad_attr_36_slew_rate_36_wd;
-  logic [3:0] dio_pad_attr_36_drive_strength_36_qs;
-  logic [3:0] dio_pad_attr_36_drive_strength_36_wd;
+  logic dio_pad_attr_36_puen_36_qs;
+  logic dio_pad_attr_36_puen_36_wd;
+  logic dio_pad_attr_36_pden_36_qs;
+  logic dio_pad_attr_36_pden_36_wd;
+  logic dio_pad_attr_36_smten_36_qs;
+  logic dio_pad_attr_36_smten_36_wd;
+  logic [2:0] dio_pad_attr_36_drv_36_qs;
+  logic [2:0] dio_pad_attr_36_drv_36_wd;
   logic dio_pad_attr_37_re;
   logic dio_pad_attr_37_we;
-  logic dio_pad_attr_37_invert_37_qs;
-  logic dio_pad_attr_37_invert_37_wd;
-  logic dio_pad_attr_37_virtual_od_en_37_qs;
-  logic dio_pad_attr_37_virtual_od_en_37_wd;
-  logic dio_pad_attr_37_pull_en_37_qs;
-  logic dio_pad_attr_37_pull_en_37_wd;
-  logic dio_pad_attr_37_pull_select_37_qs;
-  logic dio_pad_attr_37_pull_select_37_wd;
-  logic dio_pad_attr_37_keeper_en_37_qs;
-  logic dio_pad_attr_37_keeper_en_37_wd;
-  logic dio_pad_attr_37_schmitt_en_37_qs;
-  logic dio_pad_attr_37_schmitt_en_37_wd;
-  logic dio_pad_attr_37_od_en_37_qs;
-  logic dio_pad_attr_37_od_en_37_wd;
-  logic dio_pad_attr_37_input_disable_37_qs;
-  logic dio_pad_attr_37_input_disable_37_wd;
-  logic [1:0] dio_pad_attr_37_slew_rate_37_qs;
-  logic [1:0] dio_pad_attr_37_slew_rate_37_wd;
-  logic [3:0] dio_pad_attr_37_drive_strength_37_qs;
-  logic [3:0] dio_pad_attr_37_drive_strength_37_wd;
+  logic dio_pad_attr_37_puen_37_qs;
+  logic dio_pad_attr_37_puen_37_wd;
+  logic dio_pad_attr_37_pden_37_qs;
+  logic dio_pad_attr_37_pden_37_wd;
+  logic dio_pad_attr_37_smten_37_qs;
+  logic dio_pad_attr_37_smten_37_wd;
+  logic [2:0] dio_pad_attr_37_drv_37_qs;
+  logic [2:0] dio_pad_attr_37_drv_37_wd;
   logic dio_pad_attr_38_re;
   logic dio_pad_attr_38_we;
-  logic dio_pad_attr_38_invert_38_qs;
-  logic dio_pad_attr_38_invert_38_wd;
-  logic dio_pad_attr_38_virtual_od_en_38_qs;
-  logic dio_pad_attr_38_virtual_od_en_38_wd;
-  logic dio_pad_attr_38_pull_en_38_qs;
-  logic dio_pad_attr_38_pull_en_38_wd;
-  logic dio_pad_attr_38_pull_select_38_qs;
-  logic dio_pad_attr_38_pull_select_38_wd;
-  logic dio_pad_attr_38_keeper_en_38_qs;
-  logic dio_pad_attr_38_keeper_en_38_wd;
-  logic dio_pad_attr_38_schmitt_en_38_qs;
-  logic dio_pad_attr_38_schmitt_en_38_wd;
-  logic dio_pad_attr_38_od_en_38_qs;
-  logic dio_pad_attr_38_od_en_38_wd;
-  logic dio_pad_attr_38_input_disable_38_qs;
-  logic dio_pad_attr_38_input_disable_38_wd;
-  logic [1:0] dio_pad_attr_38_slew_rate_38_qs;
-  logic [1:0] dio_pad_attr_38_slew_rate_38_wd;
-  logic [3:0] dio_pad_attr_38_drive_strength_38_qs;
-  logic [3:0] dio_pad_attr_38_drive_strength_38_wd;
+  logic dio_pad_attr_38_puen_38_qs;
+  logic dio_pad_attr_38_puen_38_wd;
+  logic dio_pad_attr_38_pden_38_qs;
+  logic dio_pad_attr_38_pden_38_wd;
+  logic dio_pad_attr_38_smten_38_qs;
+  logic dio_pad_attr_38_smten_38_wd;
+  logic [2:0] dio_pad_attr_38_drv_38_qs;
+  logic [2:0] dio_pad_attr_38_drv_38_wd;
   logic dio_pad_attr_39_re;
   logic dio_pad_attr_39_we;
-  logic dio_pad_attr_39_invert_39_qs;
-  logic dio_pad_attr_39_invert_39_wd;
-  logic dio_pad_attr_39_virtual_od_en_39_qs;
-  logic dio_pad_attr_39_virtual_od_en_39_wd;
-  logic dio_pad_attr_39_pull_en_39_qs;
-  logic dio_pad_attr_39_pull_en_39_wd;
-  logic dio_pad_attr_39_pull_select_39_qs;
-  logic dio_pad_attr_39_pull_select_39_wd;
-  logic dio_pad_attr_39_keeper_en_39_qs;
-  logic dio_pad_attr_39_keeper_en_39_wd;
-  logic dio_pad_attr_39_schmitt_en_39_qs;
-  logic dio_pad_attr_39_schmitt_en_39_wd;
-  logic dio_pad_attr_39_od_en_39_qs;
-  logic dio_pad_attr_39_od_en_39_wd;
-  logic dio_pad_attr_39_input_disable_39_qs;
-  logic dio_pad_attr_39_input_disable_39_wd;
-  logic [1:0] dio_pad_attr_39_slew_rate_39_qs;
-  logic [1:0] dio_pad_attr_39_slew_rate_39_wd;
-  logic [3:0] dio_pad_attr_39_drive_strength_39_qs;
-  logic [3:0] dio_pad_attr_39_drive_strength_39_wd;
+  logic dio_pad_attr_39_puen_39_qs;
+  logic dio_pad_attr_39_puen_39_wd;
+  logic dio_pad_attr_39_pden_39_qs;
+  logic dio_pad_attr_39_pden_39_wd;
+  logic dio_pad_attr_39_smten_39_qs;
+  logic dio_pad_attr_39_smten_39_wd;
+  logic [2:0] dio_pad_attr_39_drv_39_qs;
+  logic [2:0] dio_pad_attr_39_drv_39_wd;
   logic dio_pad_attr_40_re;
   logic dio_pad_attr_40_we;
-  logic dio_pad_attr_40_invert_40_qs;
-  logic dio_pad_attr_40_invert_40_wd;
-  logic dio_pad_attr_40_virtual_od_en_40_qs;
-  logic dio_pad_attr_40_virtual_od_en_40_wd;
-  logic dio_pad_attr_40_pull_en_40_qs;
-  logic dio_pad_attr_40_pull_en_40_wd;
-  logic dio_pad_attr_40_pull_select_40_qs;
-  logic dio_pad_attr_40_pull_select_40_wd;
-  logic dio_pad_attr_40_keeper_en_40_qs;
-  logic dio_pad_attr_40_keeper_en_40_wd;
-  logic dio_pad_attr_40_schmitt_en_40_qs;
-  logic dio_pad_attr_40_schmitt_en_40_wd;
-  logic dio_pad_attr_40_od_en_40_qs;
-  logic dio_pad_attr_40_od_en_40_wd;
-  logic dio_pad_attr_40_input_disable_40_qs;
-  logic dio_pad_attr_40_input_disable_40_wd;
-  logic [1:0] dio_pad_attr_40_slew_rate_40_qs;
-  logic [1:0] dio_pad_attr_40_slew_rate_40_wd;
-  logic [3:0] dio_pad_attr_40_drive_strength_40_qs;
-  logic [3:0] dio_pad_attr_40_drive_strength_40_wd;
+  logic dio_pad_attr_40_puen_40_qs;
+  logic dio_pad_attr_40_puen_40_wd;
+  logic dio_pad_attr_40_pden_40_qs;
+  logic dio_pad_attr_40_pden_40_wd;
+  logic dio_pad_attr_40_smten_40_qs;
+  logic dio_pad_attr_40_smten_40_wd;
+  logic [2:0] dio_pad_attr_40_drv_40_qs;
+  logic [2:0] dio_pad_attr_40_drv_40_wd;
   logic dio_pad_attr_41_re;
   logic dio_pad_attr_41_we;
-  logic dio_pad_attr_41_invert_41_qs;
-  logic dio_pad_attr_41_invert_41_wd;
-  logic dio_pad_attr_41_virtual_od_en_41_qs;
-  logic dio_pad_attr_41_virtual_od_en_41_wd;
-  logic dio_pad_attr_41_pull_en_41_qs;
-  logic dio_pad_attr_41_pull_en_41_wd;
-  logic dio_pad_attr_41_pull_select_41_qs;
-  logic dio_pad_attr_41_pull_select_41_wd;
-  logic dio_pad_attr_41_keeper_en_41_qs;
-  logic dio_pad_attr_41_keeper_en_41_wd;
-  logic dio_pad_attr_41_schmitt_en_41_qs;
-  logic dio_pad_attr_41_schmitt_en_41_wd;
-  logic dio_pad_attr_41_od_en_41_qs;
-  logic dio_pad_attr_41_od_en_41_wd;
-  logic dio_pad_attr_41_input_disable_41_qs;
-  logic dio_pad_attr_41_input_disable_41_wd;
-  logic [1:0] dio_pad_attr_41_slew_rate_41_qs;
-  logic [1:0] dio_pad_attr_41_slew_rate_41_wd;
-  logic [3:0] dio_pad_attr_41_drive_strength_41_qs;
-  logic [3:0] dio_pad_attr_41_drive_strength_41_wd;
+  logic dio_pad_attr_41_puen_41_qs;
+  logic dio_pad_attr_41_puen_41_wd;
+  logic dio_pad_attr_41_pden_41_qs;
+  logic dio_pad_attr_41_pden_41_wd;
+  logic dio_pad_attr_41_smten_41_qs;
+  logic dio_pad_attr_41_smten_41_wd;
+  logic [2:0] dio_pad_attr_41_drv_41_qs;
+  logic [2:0] dio_pad_attr_41_drv_41_wd;
   logic dio_pad_attr_42_re;
   logic dio_pad_attr_42_we;
-  logic dio_pad_attr_42_invert_42_qs;
-  logic dio_pad_attr_42_invert_42_wd;
-  logic dio_pad_attr_42_virtual_od_en_42_qs;
-  logic dio_pad_attr_42_virtual_od_en_42_wd;
-  logic dio_pad_attr_42_pull_en_42_qs;
-  logic dio_pad_attr_42_pull_en_42_wd;
-  logic dio_pad_attr_42_pull_select_42_qs;
-  logic dio_pad_attr_42_pull_select_42_wd;
-  logic dio_pad_attr_42_keeper_en_42_qs;
-  logic dio_pad_attr_42_keeper_en_42_wd;
-  logic dio_pad_attr_42_schmitt_en_42_qs;
-  logic dio_pad_attr_42_schmitt_en_42_wd;
-  logic dio_pad_attr_42_od_en_42_qs;
-  logic dio_pad_attr_42_od_en_42_wd;
-  logic dio_pad_attr_42_input_disable_42_qs;
-  logic dio_pad_attr_42_input_disable_42_wd;
-  logic [1:0] dio_pad_attr_42_slew_rate_42_qs;
-  logic [1:0] dio_pad_attr_42_slew_rate_42_wd;
-  logic [3:0] dio_pad_attr_42_drive_strength_42_qs;
-  logic [3:0] dio_pad_attr_42_drive_strength_42_wd;
+  logic dio_pad_attr_42_puen_42_qs;
+  logic dio_pad_attr_42_puen_42_wd;
+  logic dio_pad_attr_42_pden_42_qs;
+  logic dio_pad_attr_42_pden_42_wd;
+  logic dio_pad_attr_42_smten_42_qs;
+  logic dio_pad_attr_42_smten_42_wd;
+  logic [2:0] dio_pad_attr_42_drv_42_qs;
+  logic [2:0] dio_pad_attr_42_drv_42_wd;
   logic dio_pad_attr_43_re;
   logic dio_pad_attr_43_we;
-  logic dio_pad_attr_43_invert_43_qs;
-  logic dio_pad_attr_43_invert_43_wd;
-  logic dio_pad_attr_43_virtual_od_en_43_qs;
-  logic dio_pad_attr_43_virtual_od_en_43_wd;
-  logic dio_pad_attr_43_pull_en_43_qs;
-  logic dio_pad_attr_43_pull_en_43_wd;
-  logic dio_pad_attr_43_pull_select_43_qs;
-  logic dio_pad_attr_43_pull_select_43_wd;
-  logic dio_pad_attr_43_keeper_en_43_qs;
-  logic dio_pad_attr_43_keeper_en_43_wd;
-  logic dio_pad_attr_43_schmitt_en_43_qs;
-  logic dio_pad_attr_43_schmitt_en_43_wd;
-  logic dio_pad_attr_43_od_en_43_qs;
-  logic dio_pad_attr_43_od_en_43_wd;
-  logic dio_pad_attr_43_input_disable_43_qs;
-  logic dio_pad_attr_43_input_disable_43_wd;
-  logic [1:0] dio_pad_attr_43_slew_rate_43_qs;
-  logic [1:0] dio_pad_attr_43_slew_rate_43_wd;
-  logic [3:0] dio_pad_attr_43_drive_strength_43_qs;
-  logic [3:0] dio_pad_attr_43_drive_strength_43_wd;
+  logic dio_pad_attr_43_puen_43_qs;
+  logic dio_pad_attr_43_puen_43_wd;
+  logic dio_pad_attr_43_pden_43_qs;
+  logic dio_pad_attr_43_pden_43_wd;
+  logic dio_pad_attr_43_smten_43_qs;
+  logic dio_pad_attr_43_smten_43_wd;
+  logic [2:0] dio_pad_attr_43_drv_43_qs;
+  logic [2:0] dio_pad_attr_43_drv_43_wd;
   logic dio_pad_attr_44_re;
   logic dio_pad_attr_44_we;
-  logic dio_pad_attr_44_invert_44_qs;
-  logic dio_pad_attr_44_invert_44_wd;
-  logic dio_pad_attr_44_virtual_od_en_44_qs;
-  logic dio_pad_attr_44_virtual_od_en_44_wd;
-  logic dio_pad_attr_44_pull_en_44_qs;
-  logic dio_pad_attr_44_pull_en_44_wd;
-  logic dio_pad_attr_44_pull_select_44_qs;
-  logic dio_pad_attr_44_pull_select_44_wd;
-  logic dio_pad_attr_44_keeper_en_44_qs;
-  logic dio_pad_attr_44_keeper_en_44_wd;
-  logic dio_pad_attr_44_schmitt_en_44_qs;
-  logic dio_pad_attr_44_schmitt_en_44_wd;
-  logic dio_pad_attr_44_od_en_44_qs;
-  logic dio_pad_attr_44_od_en_44_wd;
-  logic dio_pad_attr_44_input_disable_44_qs;
-  logic dio_pad_attr_44_input_disable_44_wd;
-  logic [1:0] dio_pad_attr_44_slew_rate_44_qs;
-  logic [1:0] dio_pad_attr_44_slew_rate_44_wd;
-  logic [3:0] dio_pad_attr_44_drive_strength_44_qs;
-  logic [3:0] dio_pad_attr_44_drive_strength_44_wd;
+  logic dio_pad_attr_44_puen_44_qs;
+  logic dio_pad_attr_44_puen_44_wd;
+  logic dio_pad_attr_44_pden_44_qs;
+  logic dio_pad_attr_44_pden_44_wd;
+  logic dio_pad_attr_44_smten_44_qs;
+  logic dio_pad_attr_44_smten_44_wd;
+  logic [2:0] dio_pad_attr_44_drv_44_qs;
+  logic [2:0] dio_pad_attr_44_drv_44_wd;
   logic dio_pad_attr_45_re;
   logic dio_pad_attr_45_we;
-  logic dio_pad_attr_45_invert_45_qs;
-  logic dio_pad_attr_45_invert_45_wd;
-  logic dio_pad_attr_45_virtual_od_en_45_qs;
-  logic dio_pad_attr_45_virtual_od_en_45_wd;
-  logic dio_pad_attr_45_pull_en_45_qs;
-  logic dio_pad_attr_45_pull_en_45_wd;
-  logic dio_pad_attr_45_pull_select_45_qs;
-  logic dio_pad_attr_45_pull_select_45_wd;
-  logic dio_pad_attr_45_keeper_en_45_qs;
-  logic dio_pad_attr_45_keeper_en_45_wd;
-  logic dio_pad_attr_45_schmitt_en_45_qs;
-  logic dio_pad_attr_45_schmitt_en_45_wd;
-  logic dio_pad_attr_45_od_en_45_qs;
-  logic dio_pad_attr_45_od_en_45_wd;
-  logic dio_pad_attr_45_input_disable_45_qs;
-  logic dio_pad_attr_45_input_disable_45_wd;
-  logic [1:0] dio_pad_attr_45_slew_rate_45_qs;
-  logic [1:0] dio_pad_attr_45_slew_rate_45_wd;
-  logic [3:0] dio_pad_attr_45_drive_strength_45_qs;
-  logic [3:0] dio_pad_attr_45_drive_strength_45_wd;
+  logic dio_pad_attr_45_puen_45_qs;
+  logic dio_pad_attr_45_puen_45_wd;
+  logic dio_pad_attr_45_pden_45_qs;
+  logic dio_pad_attr_45_pden_45_wd;
+  logic dio_pad_attr_45_smten_45_qs;
+  logic dio_pad_attr_45_smten_45_wd;
+  logic [2:0] dio_pad_attr_45_drv_45_qs;
+  logic [2:0] dio_pad_attr_45_drv_45_wd;
   logic dio_pad_attr_46_re;
   logic dio_pad_attr_46_we;
-  logic dio_pad_attr_46_invert_46_qs;
-  logic dio_pad_attr_46_invert_46_wd;
-  logic dio_pad_attr_46_virtual_od_en_46_qs;
-  logic dio_pad_attr_46_virtual_od_en_46_wd;
-  logic dio_pad_attr_46_pull_en_46_qs;
-  logic dio_pad_attr_46_pull_en_46_wd;
-  logic dio_pad_attr_46_pull_select_46_qs;
-  logic dio_pad_attr_46_pull_select_46_wd;
-  logic dio_pad_attr_46_keeper_en_46_qs;
-  logic dio_pad_attr_46_keeper_en_46_wd;
-  logic dio_pad_attr_46_schmitt_en_46_qs;
-  logic dio_pad_attr_46_schmitt_en_46_wd;
-  logic dio_pad_attr_46_od_en_46_qs;
-  logic dio_pad_attr_46_od_en_46_wd;
-  logic dio_pad_attr_46_input_disable_46_qs;
-  logic dio_pad_attr_46_input_disable_46_wd;
-  logic [1:0] dio_pad_attr_46_slew_rate_46_qs;
-  logic [1:0] dio_pad_attr_46_slew_rate_46_wd;
-  logic [3:0] dio_pad_attr_46_drive_strength_46_qs;
-  logic [3:0] dio_pad_attr_46_drive_strength_46_wd;
+  logic dio_pad_attr_46_puen_46_qs;
+  logic dio_pad_attr_46_puen_46_wd;
+  logic dio_pad_attr_46_pden_46_qs;
+  logic dio_pad_attr_46_pden_46_wd;
+  logic dio_pad_attr_46_smten_46_qs;
+  logic dio_pad_attr_46_smten_46_wd;
+  logic [2:0] dio_pad_attr_46_drv_46_qs;
+  logic [2:0] dio_pad_attr_46_drv_46_wd;
   logic dio_pad_attr_47_re;
   logic dio_pad_attr_47_we;
-  logic dio_pad_attr_47_invert_47_qs;
-  logic dio_pad_attr_47_invert_47_wd;
-  logic dio_pad_attr_47_virtual_od_en_47_qs;
-  logic dio_pad_attr_47_virtual_od_en_47_wd;
-  logic dio_pad_attr_47_pull_en_47_qs;
-  logic dio_pad_attr_47_pull_en_47_wd;
-  logic dio_pad_attr_47_pull_select_47_qs;
-  logic dio_pad_attr_47_pull_select_47_wd;
-  logic dio_pad_attr_47_keeper_en_47_qs;
-  logic dio_pad_attr_47_keeper_en_47_wd;
-  logic dio_pad_attr_47_schmitt_en_47_qs;
-  logic dio_pad_attr_47_schmitt_en_47_wd;
-  logic dio_pad_attr_47_od_en_47_qs;
-  logic dio_pad_attr_47_od_en_47_wd;
-  logic dio_pad_attr_47_input_disable_47_qs;
-  logic dio_pad_attr_47_input_disable_47_wd;
-  logic [1:0] dio_pad_attr_47_slew_rate_47_qs;
-  logic [1:0] dio_pad_attr_47_slew_rate_47_wd;
-  logic [3:0] dio_pad_attr_47_drive_strength_47_qs;
-  logic [3:0] dio_pad_attr_47_drive_strength_47_wd;
+  logic dio_pad_attr_47_puen_47_qs;
+  logic dio_pad_attr_47_puen_47_wd;
+  logic dio_pad_attr_47_pden_47_qs;
+  logic dio_pad_attr_47_pden_47_wd;
+  logic dio_pad_attr_47_smten_47_qs;
+  logic dio_pad_attr_47_smten_47_wd;
+  logic [2:0] dio_pad_attr_47_drv_47_qs;
+  logic [2:0] dio_pad_attr_47_drv_47_wd;
   logic dio_pad_attr_48_re;
   logic dio_pad_attr_48_we;
-  logic dio_pad_attr_48_invert_48_qs;
-  logic dio_pad_attr_48_invert_48_wd;
-  logic dio_pad_attr_48_virtual_od_en_48_qs;
-  logic dio_pad_attr_48_virtual_od_en_48_wd;
-  logic dio_pad_attr_48_pull_en_48_qs;
-  logic dio_pad_attr_48_pull_en_48_wd;
-  logic dio_pad_attr_48_pull_select_48_qs;
-  logic dio_pad_attr_48_pull_select_48_wd;
-  logic dio_pad_attr_48_keeper_en_48_qs;
-  logic dio_pad_attr_48_keeper_en_48_wd;
-  logic dio_pad_attr_48_schmitt_en_48_qs;
-  logic dio_pad_attr_48_schmitt_en_48_wd;
-  logic dio_pad_attr_48_od_en_48_qs;
-  logic dio_pad_attr_48_od_en_48_wd;
-  logic dio_pad_attr_48_input_disable_48_qs;
-  logic dio_pad_attr_48_input_disable_48_wd;
-  logic [1:0] dio_pad_attr_48_slew_rate_48_qs;
-  logic [1:0] dio_pad_attr_48_slew_rate_48_wd;
-  logic [3:0] dio_pad_attr_48_drive_strength_48_qs;
-  logic [3:0] dio_pad_attr_48_drive_strength_48_wd;
+  logic dio_pad_attr_48_puen_48_qs;
+  logic dio_pad_attr_48_puen_48_wd;
+  logic dio_pad_attr_48_pden_48_qs;
+  logic dio_pad_attr_48_pden_48_wd;
+  logic dio_pad_attr_48_smten_48_qs;
+  logic dio_pad_attr_48_smten_48_wd;
+  logic [2:0] dio_pad_attr_48_drv_48_qs;
+  logic [2:0] dio_pad_attr_48_drv_48_wd;
   logic dio_pad_attr_49_re;
   logic dio_pad_attr_49_we;
-  logic dio_pad_attr_49_invert_49_qs;
-  logic dio_pad_attr_49_invert_49_wd;
-  logic dio_pad_attr_49_virtual_od_en_49_qs;
-  logic dio_pad_attr_49_virtual_od_en_49_wd;
-  logic dio_pad_attr_49_pull_en_49_qs;
-  logic dio_pad_attr_49_pull_en_49_wd;
-  logic dio_pad_attr_49_pull_select_49_qs;
-  logic dio_pad_attr_49_pull_select_49_wd;
-  logic dio_pad_attr_49_keeper_en_49_qs;
-  logic dio_pad_attr_49_keeper_en_49_wd;
-  logic dio_pad_attr_49_schmitt_en_49_qs;
-  logic dio_pad_attr_49_schmitt_en_49_wd;
-  logic dio_pad_attr_49_od_en_49_qs;
-  logic dio_pad_attr_49_od_en_49_wd;
-  logic dio_pad_attr_49_input_disable_49_qs;
-  logic dio_pad_attr_49_input_disable_49_wd;
-  logic [1:0] dio_pad_attr_49_slew_rate_49_qs;
-  logic [1:0] dio_pad_attr_49_slew_rate_49_wd;
-  logic [3:0] dio_pad_attr_49_drive_strength_49_qs;
-  logic [3:0] dio_pad_attr_49_drive_strength_49_wd;
+  logic dio_pad_attr_49_puen_49_qs;
+  logic dio_pad_attr_49_puen_49_wd;
+  logic dio_pad_attr_49_pden_49_qs;
+  logic dio_pad_attr_49_pden_49_wd;
+  logic dio_pad_attr_49_smten_49_qs;
+  logic dio_pad_attr_49_smten_49_wd;
+  logic [2:0] dio_pad_attr_49_drv_49_qs;
+  logic [2:0] dio_pad_attr_49_drv_49_wd;
   logic dio_pad_attr_50_re;
   logic dio_pad_attr_50_we;
-  logic dio_pad_attr_50_invert_50_qs;
-  logic dio_pad_attr_50_invert_50_wd;
-  logic dio_pad_attr_50_virtual_od_en_50_qs;
-  logic dio_pad_attr_50_virtual_od_en_50_wd;
-  logic dio_pad_attr_50_pull_en_50_qs;
-  logic dio_pad_attr_50_pull_en_50_wd;
-  logic dio_pad_attr_50_pull_select_50_qs;
-  logic dio_pad_attr_50_pull_select_50_wd;
-  logic dio_pad_attr_50_keeper_en_50_qs;
-  logic dio_pad_attr_50_keeper_en_50_wd;
-  logic dio_pad_attr_50_schmitt_en_50_qs;
-  logic dio_pad_attr_50_schmitt_en_50_wd;
-  logic dio_pad_attr_50_od_en_50_qs;
-  logic dio_pad_attr_50_od_en_50_wd;
-  logic dio_pad_attr_50_input_disable_50_qs;
-  logic dio_pad_attr_50_input_disable_50_wd;
-  logic [1:0] dio_pad_attr_50_slew_rate_50_qs;
-  logic [1:0] dio_pad_attr_50_slew_rate_50_wd;
-  logic [3:0] dio_pad_attr_50_drive_strength_50_qs;
-  logic [3:0] dio_pad_attr_50_drive_strength_50_wd;
+  logic dio_pad_attr_50_puen_50_qs;
+  logic dio_pad_attr_50_puen_50_wd;
+  logic dio_pad_attr_50_pden_50_qs;
+  logic dio_pad_attr_50_pden_50_wd;
+  logic dio_pad_attr_50_smten_50_qs;
+  logic dio_pad_attr_50_smten_50_wd;
+  logic [2:0] dio_pad_attr_50_drv_50_qs;
+  logic [2:0] dio_pad_attr_50_drv_50_wd;
   logic dio_pad_attr_51_re;
   logic dio_pad_attr_51_we;
-  logic dio_pad_attr_51_invert_51_qs;
-  logic dio_pad_attr_51_invert_51_wd;
-  logic dio_pad_attr_51_virtual_od_en_51_qs;
-  logic dio_pad_attr_51_virtual_od_en_51_wd;
-  logic dio_pad_attr_51_pull_en_51_qs;
-  logic dio_pad_attr_51_pull_en_51_wd;
-  logic dio_pad_attr_51_pull_select_51_qs;
-  logic dio_pad_attr_51_pull_select_51_wd;
-  logic dio_pad_attr_51_keeper_en_51_qs;
-  logic dio_pad_attr_51_keeper_en_51_wd;
-  logic dio_pad_attr_51_schmitt_en_51_qs;
-  logic dio_pad_attr_51_schmitt_en_51_wd;
-  logic dio_pad_attr_51_od_en_51_qs;
-  logic dio_pad_attr_51_od_en_51_wd;
-  logic dio_pad_attr_51_input_disable_51_qs;
-  logic dio_pad_attr_51_input_disable_51_wd;
-  logic [1:0] dio_pad_attr_51_slew_rate_51_qs;
-  logic [1:0] dio_pad_attr_51_slew_rate_51_wd;
-  logic [3:0] dio_pad_attr_51_drive_strength_51_qs;
-  logic [3:0] dio_pad_attr_51_drive_strength_51_wd;
+  logic dio_pad_attr_51_puen_51_qs;
+  logic dio_pad_attr_51_puen_51_wd;
+  logic dio_pad_attr_51_pden_51_qs;
+  logic dio_pad_attr_51_pden_51_wd;
+  logic dio_pad_attr_51_smten_51_qs;
+  logic dio_pad_attr_51_smten_51_wd;
+  logic [2:0] dio_pad_attr_51_drv_51_qs;
+  logic [2:0] dio_pad_attr_51_drv_51_wd;
   logic dio_pad_attr_52_re;
   logic dio_pad_attr_52_we;
-  logic dio_pad_attr_52_invert_52_qs;
-  logic dio_pad_attr_52_invert_52_wd;
-  logic dio_pad_attr_52_virtual_od_en_52_qs;
-  logic dio_pad_attr_52_virtual_od_en_52_wd;
-  logic dio_pad_attr_52_pull_en_52_qs;
-  logic dio_pad_attr_52_pull_en_52_wd;
-  logic dio_pad_attr_52_pull_select_52_qs;
-  logic dio_pad_attr_52_pull_select_52_wd;
-  logic dio_pad_attr_52_keeper_en_52_qs;
-  logic dio_pad_attr_52_keeper_en_52_wd;
-  logic dio_pad_attr_52_schmitt_en_52_qs;
-  logic dio_pad_attr_52_schmitt_en_52_wd;
-  logic dio_pad_attr_52_od_en_52_qs;
-  logic dio_pad_attr_52_od_en_52_wd;
-  logic dio_pad_attr_52_input_disable_52_qs;
-  logic dio_pad_attr_52_input_disable_52_wd;
-  logic [1:0] dio_pad_attr_52_slew_rate_52_qs;
-  logic [1:0] dio_pad_attr_52_slew_rate_52_wd;
-  logic [3:0] dio_pad_attr_52_drive_strength_52_qs;
-  logic [3:0] dio_pad_attr_52_drive_strength_52_wd;
+  logic dio_pad_attr_52_puen_52_qs;
+  logic dio_pad_attr_52_puen_52_wd;
+  logic dio_pad_attr_52_pden_52_qs;
+  logic dio_pad_attr_52_pden_52_wd;
+  logic dio_pad_attr_52_smten_52_qs;
+  logic dio_pad_attr_52_smten_52_wd;
+  logic [2:0] dio_pad_attr_52_drv_52_qs;
+  logic [2:0] dio_pad_attr_52_drv_52_wd;
   logic dio_pad_attr_53_re;
   logic dio_pad_attr_53_we;
-  logic dio_pad_attr_53_invert_53_qs;
-  logic dio_pad_attr_53_invert_53_wd;
-  logic dio_pad_attr_53_virtual_od_en_53_qs;
-  logic dio_pad_attr_53_virtual_od_en_53_wd;
-  logic dio_pad_attr_53_pull_en_53_qs;
-  logic dio_pad_attr_53_pull_en_53_wd;
-  logic dio_pad_attr_53_pull_select_53_qs;
-  logic dio_pad_attr_53_pull_select_53_wd;
-  logic dio_pad_attr_53_keeper_en_53_qs;
-  logic dio_pad_attr_53_keeper_en_53_wd;
-  logic dio_pad_attr_53_schmitt_en_53_qs;
-  logic dio_pad_attr_53_schmitt_en_53_wd;
-  logic dio_pad_attr_53_od_en_53_qs;
-  logic dio_pad_attr_53_od_en_53_wd;
-  logic dio_pad_attr_53_input_disable_53_qs;
-  logic dio_pad_attr_53_input_disable_53_wd;
-  logic [1:0] dio_pad_attr_53_slew_rate_53_qs;
-  logic [1:0] dio_pad_attr_53_slew_rate_53_wd;
-  logic [3:0] dio_pad_attr_53_drive_strength_53_qs;
-  logic [3:0] dio_pad_attr_53_drive_strength_53_wd;
+  logic dio_pad_attr_53_puen_53_qs;
+  logic dio_pad_attr_53_puen_53_wd;
+  logic dio_pad_attr_53_pden_53_qs;
+  logic dio_pad_attr_53_pden_53_wd;
+  logic dio_pad_attr_53_smten_53_qs;
+  logic dio_pad_attr_53_smten_53_wd;
+  logic [2:0] dio_pad_attr_53_drv_53_qs;
+  logic [2:0] dio_pad_attr_53_drv_53_wd;
   logic dio_pad_attr_54_re;
   logic dio_pad_attr_54_we;
-  logic dio_pad_attr_54_invert_54_qs;
-  logic dio_pad_attr_54_invert_54_wd;
-  logic dio_pad_attr_54_virtual_od_en_54_qs;
-  logic dio_pad_attr_54_virtual_od_en_54_wd;
-  logic dio_pad_attr_54_pull_en_54_qs;
-  logic dio_pad_attr_54_pull_en_54_wd;
-  logic dio_pad_attr_54_pull_select_54_qs;
-  logic dio_pad_attr_54_pull_select_54_wd;
-  logic dio_pad_attr_54_keeper_en_54_qs;
-  logic dio_pad_attr_54_keeper_en_54_wd;
-  logic dio_pad_attr_54_schmitt_en_54_qs;
-  logic dio_pad_attr_54_schmitt_en_54_wd;
-  logic dio_pad_attr_54_od_en_54_qs;
-  logic dio_pad_attr_54_od_en_54_wd;
-  logic dio_pad_attr_54_input_disable_54_qs;
-  logic dio_pad_attr_54_input_disable_54_wd;
-  logic [1:0] dio_pad_attr_54_slew_rate_54_qs;
-  logic [1:0] dio_pad_attr_54_slew_rate_54_wd;
-  logic [3:0] dio_pad_attr_54_drive_strength_54_qs;
-  logic [3:0] dio_pad_attr_54_drive_strength_54_wd;
+  logic dio_pad_attr_54_puen_54_qs;
+  logic dio_pad_attr_54_puen_54_wd;
+  logic dio_pad_attr_54_pden_54_qs;
+  logic dio_pad_attr_54_pden_54_wd;
+  logic dio_pad_attr_54_smten_54_qs;
+  logic dio_pad_attr_54_smten_54_wd;
+  logic [2:0] dio_pad_attr_54_drv_54_qs;
+  logic [2:0] dio_pad_attr_54_drv_54_wd;
   logic dio_pad_attr_55_re;
   logic dio_pad_attr_55_we;
-  logic dio_pad_attr_55_invert_55_qs;
-  logic dio_pad_attr_55_invert_55_wd;
-  logic dio_pad_attr_55_virtual_od_en_55_qs;
-  logic dio_pad_attr_55_virtual_od_en_55_wd;
-  logic dio_pad_attr_55_pull_en_55_qs;
-  logic dio_pad_attr_55_pull_en_55_wd;
-  logic dio_pad_attr_55_pull_select_55_qs;
-  logic dio_pad_attr_55_pull_select_55_wd;
-  logic dio_pad_attr_55_keeper_en_55_qs;
-  logic dio_pad_attr_55_keeper_en_55_wd;
-  logic dio_pad_attr_55_schmitt_en_55_qs;
-  logic dio_pad_attr_55_schmitt_en_55_wd;
-  logic dio_pad_attr_55_od_en_55_qs;
-  logic dio_pad_attr_55_od_en_55_wd;
-  logic dio_pad_attr_55_input_disable_55_qs;
-  logic dio_pad_attr_55_input_disable_55_wd;
-  logic [1:0] dio_pad_attr_55_slew_rate_55_qs;
-  logic [1:0] dio_pad_attr_55_slew_rate_55_wd;
-  logic [3:0] dio_pad_attr_55_drive_strength_55_qs;
-  logic [3:0] dio_pad_attr_55_drive_strength_55_wd;
+  logic dio_pad_attr_55_puen_55_qs;
+  logic dio_pad_attr_55_puen_55_wd;
+  logic dio_pad_attr_55_pden_55_qs;
+  logic dio_pad_attr_55_pden_55_wd;
+  logic dio_pad_attr_55_smten_55_qs;
+  logic dio_pad_attr_55_smten_55_wd;
+  logic [2:0] dio_pad_attr_55_drv_55_qs;
+  logic [2:0] dio_pad_attr_55_drv_55_wd;
   logic dio_pad_attr_56_re;
   logic dio_pad_attr_56_we;
-  logic dio_pad_attr_56_invert_56_qs;
-  logic dio_pad_attr_56_invert_56_wd;
-  logic dio_pad_attr_56_virtual_od_en_56_qs;
-  logic dio_pad_attr_56_virtual_od_en_56_wd;
-  logic dio_pad_attr_56_pull_en_56_qs;
-  logic dio_pad_attr_56_pull_en_56_wd;
-  logic dio_pad_attr_56_pull_select_56_qs;
-  logic dio_pad_attr_56_pull_select_56_wd;
-  logic dio_pad_attr_56_keeper_en_56_qs;
-  logic dio_pad_attr_56_keeper_en_56_wd;
-  logic dio_pad_attr_56_schmitt_en_56_qs;
-  logic dio_pad_attr_56_schmitt_en_56_wd;
-  logic dio_pad_attr_56_od_en_56_qs;
-  logic dio_pad_attr_56_od_en_56_wd;
-  logic dio_pad_attr_56_input_disable_56_qs;
-  logic dio_pad_attr_56_input_disable_56_wd;
-  logic [1:0] dio_pad_attr_56_slew_rate_56_qs;
-  logic [1:0] dio_pad_attr_56_slew_rate_56_wd;
-  logic [3:0] dio_pad_attr_56_drive_strength_56_qs;
-  logic [3:0] dio_pad_attr_56_drive_strength_56_wd;
+  logic dio_pad_attr_56_puen_56_qs;
+  logic dio_pad_attr_56_puen_56_wd;
+  logic dio_pad_attr_56_pden_56_qs;
+  logic dio_pad_attr_56_pden_56_wd;
+  logic dio_pad_attr_56_smten_56_qs;
+  logic dio_pad_attr_56_smten_56_wd;
+  logic [2:0] dio_pad_attr_56_drv_56_qs;
+  logic [2:0] dio_pad_attr_56_drv_56_wd;
   logic dio_pad_attr_57_re;
   logic dio_pad_attr_57_we;
-  logic dio_pad_attr_57_invert_57_qs;
-  logic dio_pad_attr_57_invert_57_wd;
-  logic dio_pad_attr_57_virtual_od_en_57_qs;
-  logic dio_pad_attr_57_virtual_od_en_57_wd;
-  logic dio_pad_attr_57_pull_en_57_qs;
-  logic dio_pad_attr_57_pull_en_57_wd;
-  logic dio_pad_attr_57_pull_select_57_qs;
-  logic dio_pad_attr_57_pull_select_57_wd;
-  logic dio_pad_attr_57_keeper_en_57_qs;
-  logic dio_pad_attr_57_keeper_en_57_wd;
-  logic dio_pad_attr_57_schmitt_en_57_qs;
-  logic dio_pad_attr_57_schmitt_en_57_wd;
-  logic dio_pad_attr_57_od_en_57_qs;
-  logic dio_pad_attr_57_od_en_57_wd;
-  logic dio_pad_attr_57_input_disable_57_qs;
-  logic dio_pad_attr_57_input_disable_57_wd;
-  logic [1:0] dio_pad_attr_57_slew_rate_57_qs;
-  logic [1:0] dio_pad_attr_57_slew_rate_57_wd;
-  logic [3:0] dio_pad_attr_57_drive_strength_57_qs;
-  logic [3:0] dio_pad_attr_57_drive_strength_57_wd;
+  logic dio_pad_attr_57_puen_57_qs;
+  logic dio_pad_attr_57_puen_57_wd;
+  logic dio_pad_attr_57_pden_57_qs;
+  logic dio_pad_attr_57_pden_57_wd;
+  logic dio_pad_attr_57_smten_57_qs;
+  logic dio_pad_attr_57_smten_57_wd;
+  logic [2:0] dio_pad_attr_57_drv_57_qs;
+  logic [2:0] dio_pad_attr_57_drv_57_wd;
   logic dio_pad_attr_58_re;
   logic dio_pad_attr_58_we;
-  logic dio_pad_attr_58_invert_58_qs;
-  logic dio_pad_attr_58_invert_58_wd;
-  logic dio_pad_attr_58_virtual_od_en_58_qs;
-  logic dio_pad_attr_58_virtual_od_en_58_wd;
-  logic dio_pad_attr_58_pull_en_58_qs;
-  logic dio_pad_attr_58_pull_en_58_wd;
-  logic dio_pad_attr_58_pull_select_58_qs;
-  logic dio_pad_attr_58_pull_select_58_wd;
-  logic dio_pad_attr_58_keeper_en_58_qs;
-  logic dio_pad_attr_58_keeper_en_58_wd;
-  logic dio_pad_attr_58_schmitt_en_58_qs;
-  logic dio_pad_attr_58_schmitt_en_58_wd;
-  logic dio_pad_attr_58_od_en_58_qs;
-  logic dio_pad_attr_58_od_en_58_wd;
-  logic dio_pad_attr_58_input_disable_58_qs;
-  logic dio_pad_attr_58_input_disable_58_wd;
-  logic [1:0] dio_pad_attr_58_slew_rate_58_qs;
-  logic [1:0] dio_pad_attr_58_slew_rate_58_wd;
-  logic [3:0] dio_pad_attr_58_drive_strength_58_qs;
-  logic [3:0] dio_pad_attr_58_drive_strength_58_wd;
+  logic dio_pad_attr_58_puen_58_qs;
+  logic dio_pad_attr_58_puen_58_wd;
+  logic dio_pad_attr_58_pden_58_qs;
+  logic dio_pad_attr_58_pden_58_wd;
+  logic dio_pad_attr_58_smten_58_qs;
+  logic dio_pad_attr_58_smten_58_wd;
+  logic [2:0] dio_pad_attr_58_drv_58_qs;
+  logic [2:0] dio_pad_attr_58_drv_58_wd;
   logic dio_pad_attr_59_re;
   logic dio_pad_attr_59_we;
-  logic dio_pad_attr_59_invert_59_qs;
-  logic dio_pad_attr_59_invert_59_wd;
-  logic dio_pad_attr_59_virtual_od_en_59_qs;
-  logic dio_pad_attr_59_virtual_od_en_59_wd;
-  logic dio_pad_attr_59_pull_en_59_qs;
-  logic dio_pad_attr_59_pull_en_59_wd;
-  logic dio_pad_attr_59_pull_select_59_qs;
-  logic dio_pad_attr_59_pull_select_59_wd;
-  logic dio_pad_attr_59_keeper_en_59_qs;
-  logic dio_pad_attr_59_keeper_en_59_wd;
-  logic dio_pad_attr_59_schmitt_en_59_qs;
-  logic dio_pad_attr_59_schmitt_en_59_wd;
-  logic dio_pad_attr_59_od_en_59_qs;
-  logic dio_pad_attr_59_od_en_59_wd;
-  logic dio_pad_attr_59_input_disable_59_qs;
-  logic dio_pad_attr_59_input_disable_59_wd;
-  logic [1:0] dio_pad_attr_59_slew_rate_59_qs;
-  logic [1:0] dio_pad_attr_59_slew_rate_59_wd;
-  logic [3:0] dio_pad_attr_59_drive_strength_59_qs;
-  logic [3:0] dio_pad_attr_59_drive_strength_59_wd;
+  logic dio_pad_attr_59_puen_59_qs;
+  logic dio_pad_attr_59_puen_59_wd;
+  logic dio_pad_attr_59_pden_59_qs;
+  logic dio_pad_attr_59_pden_59_wd;
+  logic dio_pad_attr_59_smten_59_qs;
+  logic dio_pad_attr_59_smten_59_wd;
+  logic [2:0] dio_pad_attr_59_drv_59_qs;
+  logic [2:0] dio_pad_attr_59_drv_59_wd;
   logic dio_pad_attr_60_re;
   logic dio_pad_attr_60_we;
-  logic dio_pad_attr_60_invert_60_qs;
-  logic dio_pad_attr_60_invert_60_wd;
-  logic dio_pad_attr_60_virtual_od_en_60_qs;
-  logic dio_pad_attr_60_virtual_od_en_60_wd;
-  logic dio_pad_attr_60_pull_en_60_qs;
-  logic dio_pad_attr_60_pull_en_60_wd;
-  logic dio_pad_attr_60_pull_select_60_qs;
-  logic dio_pad_attr_60_pull_select_60_wd;
-  logic dio_pad_attr_60_keeper_en_60_qs;
-  logic dio_pad_attr_60_keeper_en_60_wd;
-  logic dio_pad_attr_60_schmitt_en_60_qs;
-  logic dio_pad_attr_60_schmitt_en_60_wd;
-  logic dio_pad_attr_60_od_en_60_qs;
-  logic dio_pad_attr_60_od_en_60_wd;
-  logic dio_pad_attr_60_input_disable_60_qs;
-  logic dio_pad_attr_60_input_disable_60_wd;
-  logic [1:0] dio_pad_attr_60_slew_rate_60_qs;
-  logic [1:0] dio_pad_attr_60_slew_rate_60_wd;
-  logic [3:0] dio_pad_attr_60_drive_strength_60_qs;
-  logic [3:0] dio_pad_attr_60_drive_strength_60_wd;
+  logic dio_pad_attr_60_puen_60_qs;
+  logic dio_pad_attr_60_puen_60_wd;
+  logic dio_pad_attr_60_pden_60_qs;
+  logic dio_pad_attr_60_pden_60_wd;
+  logic dio_pad_attr_60_smten_60_qs;
+  logic dio_pad_attr_60_smten_60_wd;
+  logic [2:0] dio_pad_attr_60_drv_60_qs;
+  logic [2:0] dio_pad_attr_60_drv_60_wd;
   logic dio_pad_attr_61_re;
   logic dio_pad_attr_61_we;
-  logic dio_pad_attr_61_invert_61_qs;
-  logic dio_pad_attr_61_invert_61_wd;
-  logic dio_pad_attr_61_virtual_od_en_61_qs;
-  logic dio_pad_attr_61_virtual_od_en_61_wd;
-  logic dio_pad_attr_61_pull_en_61_qs;
-  logic dio_pad_attr_61_pull_en_61_wd;
-  logic dio_pad_attr_61_pull_select_61_qs;
-  logic dio_pad_attr_61_pull_select_61_wd;
-  logic dio_pad_attr_61_keeper_en_61_qs;
-  logic dio_pad_attr_61_keeper_en_61_wd;
-  logic dio_pad_attr_61_schmitt_en_61_qs;
-  logic dio_pad_attr_61_schmitt_en_61_wd;
-  logic dio_pad_attr_61_od_en_61_qs;
-  logic dio_pad_attr_61_od_en_61_wd;
-  logic dio_pad_attr_61_input_disable_61_qs;
-  logic dio_pad_attr_61_input_disable_61_wd;
-  logic [1:0] dio_pad_attr_61_slew_rate_61_qs;
-  logic [1:0] dio_pad_attr_61_slew_rate_61_wd;
-  logic [3:0] dio_pad_attr_61_drive_strength_61_qs;
-  logic [3:0] dio_pad_attr_61_drive_strength_61_wd;
+  logic dio_pad_attr_61_puen_61_qs;
+  logic dio_pad_attr_61_puen_61_wd;
+  logic dio_pad_attr_61_pden_61_qs;
+  logic dio_pad_attr_61_pden_61_wd;
+  logic dio_pad_attr_61_smten_61_qs;
+  logic dio_pad_attr_61_smten_61_wd;
+  logic [2:0] dio_pad_attr_61_drv_61_qs;
+  logic [2:0] dio_pad_attr_61_drv_61_wd;
   logic dio_pad_attr_62_re;
   logic dio_pad_attr_62_we;
-  logic dio_pad_attr_62_invert_62_qs;
-  logic dio_pad_attr_62_invert_62_wd;
-  logic dio_pad_attr_62_virtual_od_en_62_qs;
-  logic dio_pad_attr_62_virtual_od_en_62_wd;
-  logic dio_pad_attr_62_pull_en_62_qs;
-  logic dio_pad_attr_62_pull_en_62_wd;
-  logic dio_pad_attr_62_pull_select_62_qs;
-  logic dio_pad_attr_62_pull_select_62_wd;
-  logic dio_pad_attr_62_keeper_en_62_qs;
-  logic dio_pad_attr_62_keeper_en_62_wd;
-  logic dio_pad_attr_62_schmitt_en_62_qs;
-  logic dio_pad_attr_62_schmitt_en_62_wd;
-  logic dio_pad_attr_62_od_en_62_qs;
-  logic dio_pad_attr_62_od_en_62_wd;
-  logic dio_pad_attr_62_input_disable_62_qs;
-  logic dio_pad_attr_62_input_disable_62_wd;
-  logic [1:0] dio_pad_attr_62_slew_rate_62_qs;
-  logic [1:0] dio_pad_attr_62_slew_rate_62_wd;
-  logic [3:0] dio_pad_attr_62_drive_strength_62_qs;
-  logic [3:0] dio_pad_attr_62_drive_strength_62_wd;
+  logic dio_pad_attr_62_puen_62_qs;
+  logic dio_pad_attr_62_puen_62_wd;
+  logic dio_pad_attr_62_pden_62_qs;
+  logic dio_pad_attr_62_pden_62_wd;
+  logic dio_pad_attr_62_smten_62_qs;
+  logic dio_pad_attr_62_smten_62_wd;
+  logic [2:0] dio_pad_attr_62_drv_62_qs;
+  logic [2:0] dio_pad_attr_62_drv_62_wd;
   logic dio_pad_attr_63_re;
   logic dio_pad_attr_63_we;
-  logic dio_pad_attr_63_invert_63_qs;
-  logic dio_pad_attr_63_invert_63_wd;
-  logic dio_pad_attr_63_virtual_od_en_63_qs;
-  logic dio_pad_attr_63_virtual_od_en_63_wd;
-  logic dio_pad_attr_63_pull_en_63_qs;
-  logic dio_pad_attr_63_pull_en_63_wd;
-  logic dio_pad_attr_63_pull_select_63_qs;
-  logic dio_pad_attr_63_pull_select_63_wd;
-  logic dio_pad_attr_63_keeper_en_63_qs;
-  logic dio_pad_attr_63_keeper_en_63_wd;
-  logic dio_pad_attr_63_schmitt_en_63_qs;
-  logic dio_pad_attr_63_schmitt_en_63_wd;
-  logic dio_pad_attr_63_od_en_63_qs;
-  logic dio_pad_attr_63_od_en_63_wd;
-  logic dio_pad_attr_63_input_disable_63_qs;
-  logic dio_pad_attr_63_input_disable_63_wd;
-  logic [1:0] dio_pad_attr_63_slew_rate_63_qs;
-  logic [1:0] dio_pad_attr_63_slew_rate_63_wd;
-  logic [3:0] dio_pad_attr_63_drive_strength_63_qs;
-  logic [3:0] dio_pad_attr_63_drive_strength_63_wd;
+  logic dio_pad_attr_63_puen_63_qs;
+  logic dio_pad_attr_63_puen_63_wd;
+  logic dio_pad_attr_63_pden_63_qs;
+  logic dio_pad_attr_63_pden_63_wd;
+  logic dio_pad_attr_63_smten_63_qs;
+  logic dio_pad_attr_63_smten_63_wd;
+  logic [2:0] dio_pad_attr_63_drv_63_qs;
+  logic [2:0] dio_pad_attr_63_drv_63_wd;
   logic dio_pad_attr_64_re;
   logic dio_pad_attr_64_we;
-  logic dio_pad_attr_64_invert_64_qs;
-  logic dio_pad_attr_64_invert_64_wd;
-  logic dio_pad_attr_64_virtual_od_en_64_qs;
-  logic dio_pad_attr_64_virtual_od_en_64_wd;
-  logic dio_pad_attr_64_pull_en_64_qs;
-  logic dio_pad_attr_64_pull_en_64_wd;
-  logic dio_pad_attr_64_pull_select_64_qs;
-  logic dio_pad_attr_64_pull_select_64_wd;
-  logic dio_pad_attr_64_keeper_en_64_qs;
-  logic dio_pad_attr_64_keeper_en_64_wd;
-  logic dio_pad_attr_64_schmitt_en_64_qs;
-  logic dio_pad_attr_64_schmitt_en_64_wd;
-  logic dio_pad_attr_64_od_en_64_qs;
-  logic dio_pad_attr_64_od_en_64_wd;
-  logic dio_pad_attr_64_input_disable_64_qs;
-  logic dio_pad_attr_64_input_disable_64_wd;
-  logic [1:0] dio_pad_attr_64_slew_rate_64_qs;
-  logic [1:0] dio_pad_attr_64_slew_rate_64_wd;
-  logic [3:0] dio_pad_attr_64_drive_strength_64_qs;
-  logic [3:0] dio_pad_attr_64_drive_strength_64_wd;
+  logic dio_pad_attr_64_puen_64_qs;
+  logic dio_pad_attr_64_puen_64_wd;
+  logic dio_pad_attr_64_pden_64_qs;
+  logic dio_pad_attr_64_pden_64_wd;
+  logic dio_pad_attr_64_smten_64_qs;
+  logic dio_pad_attr_64_smten_64_wd;
+  logic [2:0] dio_pad_attr_64_drv_64_qs;
+  logic [2:0] dio_pad_attr_64_drv_64_wd;
   logic dio_pad_attr_65_re;
   logic dio_pad_attr_65_we;
-  logic dio_pad_attr_65_invert_65_qs;
-  logic dio_pad_attr_65_invert_65_wd;
-  logic dio_pad_attr_65_virtual_od_en_65_qs;
-  logic dio_pad_attr_65_virtual_od_en_65_wd;
-  logic dio_pad_attr_65_pull_en_65_qs;
-  logic dio_pad_attr_65_pull_en_65_wd;
-  logic dio_pad_attr_65_pull_select_65_qs;
-  logic dio_pad_attr_65_pull_select_65_wd;
-  logic dio_pad_attr_65_keeper_en_65_qs;
-  logic dio_pad_attr_65_keeper_en_65_wd;
-  logic dio_pad_attr_65_schmitt_en_65_qs;
-  logic dio_pad_attr_65_schmitt_en_65_wd;
-  logic dio_pad_attr_65_od_en_65_qs;
-  logic dio_pad_attr_65_od_en_65_wd;
-  logic dio_pad_attr_65_input_disable_65_qs;
-  logic dio_pad_attr_65_input_disable_65_wd;
-  logic [1:0] dio_pad_attr_65_slew_rate_65_qs;
-  logic [1:0] dio_pad_attr_65_slew_rate_65_wd;
-  logic [3:0] dio_pad_attr_65_drive_strength_65_qs;
-  logic [3:0] dio_pad_attr_65_drive_strength_65_wd;
+  logic dio_pad_attr_65_puen_65_qs;
+  logic dio_pad_attr_65_puen_65_wd;
+  logic dio_pad_attr_65_pden_65_qs;
+  logic dio_pad_attr_65_pden_65_wd;
+  logic dio_pad_attr_65_smten_65_qs;
+  logic dio_pad_attr_65_smten_65_wd;
+  logic [2:0] dio_pad_attr_65_drv_65_qs;
+  logic [2:0] dio_pad_attr_65_drv_65_wd;
   logic dio_pad_attr_66_re;
   logic dio_pad_attr_66_we;
-  logic dio_pad_attr_66_invert_66_qs;
-  logic dio_pad_attr_66_invert_66_wd;
-  logic dio_pad_attr_66_virtual_od_en_66_qs;
-  logic dio_pad_attr_66_virtual_od_en_66_wd;
-  logic dio_pad_attr_66_pull_en_66_qs;
-  logic dio_pad_attr_66_pull_en_66_wd;
-  logic dio_pad_attr_66_pull_select_66_qs;
-  logic dio_pad_attr_66_pull_select_66_wd;
-  logic dio_pad_attr_66_keeper_en_66_qs;
-  logic dio_pad_attr_66_keeper_en_66_wd;
-  logic dio_pad_attr_66_schmitt_en_66_qs;
-  logic dio_pad_attr_66_schmitt_en_66_wd;
-  logic dio_pad_attr_66_od_en_66_qs;
-  logic dio_pad_attr_66_od_en_66_wd;
-  logic dio_pad_attr_66_input_disable_66_qs;
-  logic dio_pad_attr_66_input_disable_66_wd;
-  logic [1:0] dio_pad_attr_66_slew_rate_66_qs;
-  logic [1:0] dio_pad_attr_66_slew_rate_66_wd;
-  logic [3:0] dio_pad_attr_66_drive_strength_66_qs;
-  logic [3:0] dio_pad_attr_66_drive_strength_66_wd;
+  logic dio_pad_attr_66_puen_66_qs;
+  logic dio_pad_attr_66_puen_66_wd;
+  logic dio_pad_attr_66_pden_66_qs;
+  logic dio_pad_attr_66_pden_66_wd;
+  logic dio_pad_attr_66_smten_66_qs;
+  logic dio_pad_attr_66_smten_66_wd;
+  logic [2:0] dio_pad_attr_66_drv_66_qs;
+  logic [2:0] dio_pad_attr_66_drv_66_wd;
   logic dio_pad_attr_67_re;
   logic dio_pad_attr_67_we;
-  logic dio_pad_attr_67_invert_67_qs;
-  logic dio_pad_attr_67_invert_67_wd;
-  logic dio_pad_attr_67_virtual_od_en_67_qs;
-  logic dio_pad_attr_67_virtual_od_en_67_wd;
-  logic dio_pad_attr_67_pull_en_67_qs;
-  logic dio_pad_attr_67_pull_en_67_wd;
-  logic dio_pad_attr_67_pull_select_67_qs;
-  logic dio_pad_attr_67_pull_select_67_wd;
-  logic dio_pad_attr_67_keeper_en_67_qs;
-  logic dio_pad_attr_67_keeper_en_67_wd;
-  logic dio_pad_attr_67_schmitt_en_67_qs;
-  logic dio_pad_attr_67_schmitt_en_67_wd;
-  logic dio_pad_attr_67_od_en_67_qs;
-  logic dio_pad_attr_67_od_en_67_wd;
-  logic dio_pad_attr_67_input_disable_67_qs;
-  logic dio_pad_attr_67_input_disable_67_wd;
-  logic [1:0] dio_pad_attr_67_slew_rate_67_qs;
-  logic [1:0] dio_pad_attr_67_slew_rate_67_wd;
-  logic [3:0] dio_pad_attr_67_drive_strength_67_qs;
-  logic [3:0] dio_pad_attr_67_drive_strength_67_wd;
+  logic dio_pad_attr_67_puen_67_qs;
+  logic dio_pad_attr_67_puen_67_wd;
+  logic dio_pad_attr_67_pden_67_qs;
+  logic dio_pad_attr_67_pden_67_wd;
+  logic dio_pad_attr_67_smten_67_qs;
+  logic dio_pad_attr_67_smten_67_wd;
+  logic [2:0] dio_pad_attr_67_drv_67_qs;
+  logic [2:0] dio_pad_attr_67_drv_67_wd;
   logic dio_pad_attr_68_re;
   logic dio_pad_attr_68_we;
-  logic dio_pad_attr_68_invert_68_qs;
-  logic dio_pad_attr_68_invert_68_wd;
-  logic dio_pad_attr_68_virtual_od_en_68_qs;
-  logic dio_pad_attr_68_virtual_od_en_68_wd;
-  logic dio_pad_attr_68_pull_en_68_qs;
-  logic dio_pad_attr_68_pull_en_68_wd;
-  logic dio_pad_attr_68_pull_select_68_qs;
-  logic dio_pad_attr_68_pull_select_68_wd;
-  logic dio_pad_attr_68_keeper_en_68_qs;
-  logic dio_pad_attr_68_keeper_en_68_wd;
-  logic dio_pad_attr_68_schmitt_en_68_qs;
-  logic dio_pad_attr_68_schmitt_en_68_wd;
-  logic dio_pad_attr_68_od_en_68_qs;
-  logic dio_pad_attr_68_od_en_68_wd;
-  logic dio_pad_attr_68_input_disable_68_qs;
-  logic dio_pad_attr_68_input_disable_68_wd;
-  logic [1:0] dio_pad_attr_68_slew_rate_68_qs;
-  logic [1:0] dio_pad_attr_68_slew_rate_68_wd;
-  logic [3:0] dio_pad_attr_68_drive_strength_68_qs;
-  logic [3:0] dio_pad_attr_68_drive_strength_68_wd;
+  logic dio_pad_attr_68_puen_68_qs;
+  logic dio_pad_attr_68_puen_68_wd;
+  logic dio_pad_attr_68_pden_68_qs;
+  logic dio_pad_attr_68_pden_68_wd;
+  logic dio_pad_attr_68_smten_68_qs;
+  logic dio_pad_attr_68_smten_68_wd;
+  logic [2:0] dio_pad_attr_68_drv_68_qs;
+  logic [2:0] dio_pad_attr_68_drv_68_wd;
   logic dio_pad_attr_69_re;
   logic dio_pad_attr_69_we;
-  logic dio_pad_attr_69_invert_69_qs;
-  logic dio_pad_attr_69_invert_69_wd;
-  logic dio_pad_attr_69_virtual_od_en_69_qs;
-  logic dio_pad_attr_69_virtual_od_en_69_wd;
-  logic dio_pad_attr_69_pull_en_69_qs;
-  logic dio_pad_attr_69_pull_en_69_wd;
-  logic dio_pad_attr_69_pull_select_69_qs;
-  logic dio_pad_attr_69_pull_select_69_wd;
-  logic dio_pad_attr_69_keeper_en_69_qs;
-  logic dio_pad_attr_69_keeper_en_69_wd;
-  logic dio_pad_attr_69_schmitt_en_69_qs;
-  logic dio_pad_attr_69_schmitt_en_69_wd;
-  logic dio_pad_attr_69_od_en_69_qs;
-  logic dio_pad_attr_69_od_en_69_wd;
-  logic dio_pad_attr_69_input_disable_69_qs;
-  logic dio_pad_attr_69_input_disable_69_wd;
-  logic [1:0] dio_pad_attr_69_slew_rate_69_qs;
-  logic [1:0] dio_pad_attr_69_slew_rate_69_wd;
-  logic [3:0] dio_pad_attr_69_drive_strength_69_qs;
-  logic [3:0] dio_pad_attr_69_drive_strength_69_wd;
+  logic dio_pad_attr_69_puen_69_qs;
+  logic dio_pad_attr_69_puen_69_wd;
+  logic dio_pad_attr_69_pden_69_qs;
+  logic dio_pad_attr_69_pden_69_wd;
+  logic dio_pad_attr_69_smten_69_qs;
+  logic dio_pad_attr_69_smten_69_wd;
+  logic [2:0] dio_pad_attr_69_drv_69_qs;
+  logic [2:0] dio_pad_attr_69_drv_69_wd;
   logic dio_pad_attr_70_re;
   logic dio_pad_attr_70_we;
-  logic dio_pad_attr_70_invert_70_qs;
-  logic dio_pad_attr_70_invert_70_wd;
-  logic dio_pad_attr_70_virtual_od_en_70_qs;
-  logic dio_pad_attr_70_virtual_od_en_70_wd;
-  logic dio_pad_attr_70_pull_en_70_qs;
-  logic dio_pad_attr_70_pull_en_70_wd;
-  logic dio_pad_attr_70_pull_select_70_qs;
-  logic dio_pad_attr_70_pull_select_70_wd;
-  logic dio_pad_attr_70_keeper_en_70_qs;
-  logic dio_pad_attr_70_keeper_en_70_wd;
-  logic dio_pad_attr_70_schmitt_en_70_qs;
-  logic dio_pad_attr_70_schmitt_en_70_wd;
-  logic dio_pad_attr_70_od_en_70_qs;
-  logic dio_pad_attr_70_od_en_70_wd;
-  logic dio_pad_attr_70_input_disable_70_qs;
-  logic dio_pad_attr_70_input_disable_70_wd;
-  logic [1:0] dio_pad_attr_70_slew_rate_70_qs;
-  logic [1:0] dio_pad_attr_70_slew_rate_70_wd;
-  logic [3:0] dio_pad_attr_70_drive_strength_70_qs;
-  logic [3:0] dio_pad_attr_70_drive_strength_70_wd;
+  logic dio_pad_attr_70_puen_70_qs;
+  logic dio_pad_attr_70_puen_70_wd;
+  logic dio_pad_attr_70_pden_70_qs;
+  logic dio_pad_attr_70_pden_70_wd;
+  logic dio_pad_attr_70_smten_70_qs;
+  logic dio_pad_attr_70_smten_70_wd;
+  logic [2:0] dio_pad_attr_70_drv_70_qs;
+  logic [2:0] dio_pad_attr_70_drv_70_wd;
   logic dio_pad_attr_71_re;
   logic dio_pad_attr_71_we;
-  logic dio_pad_attr_71_invert_71_qs;
-  logic dio_pad_attr_71_invert_71_wd;
-  logic dio_pad_attr_71_virtual_od_en_71_qs;
-  logic dio_pad_attr_71_virtual_od_en_71_wd;
-  logic dio_pad_attr_71_pull_en_71_qs;
-  logic dio_pad_attr_71_pull_en_71_wd;
-  logic dio_pad_attr_71_pull_select_71_qs;
-  logic dio_pad_attr_71_pull_select_71_wd;
-  logic dio_pad_attr_71_keeper_en_71_qs;
-  logic dio_pad_attr_71_keeper_en_71_wd;
-  logic dio_pad_attr_71_schmitt_en_71_qs;
-  logic dio_pad_attr_71_schmitt_en_71_wd;
-  logic dio_pad_attr_71_od_en_71_qs;
-  logic dio_pad_attr_71_od_en_71_wd;
-  logic dio_pad_attr_71_input_disable_71_qs;
-  logic dio_pad_attr_71_input_disable_71_wd;
-  logic [1:0] dio_pad_attr_71_slew_rate_71_qs;
-  logic [1:0] dio_pad_attr_71_slew_rate_71_wd;
-  logic [3:0] dio_pad_attr_71_drive_strength_71_qs;
-  logic [3:0] dio_pad_attr_71_drive_strength_71_wd;
+  logic dio_pad_attr_71_puen_71_qs;
+  logic dio_pad_attr_71_puen_71_wd;
+  logic dio_pad_attr_71_pden_71_qs;
+  logic dio_pad_attr_71_pden_71_wd;
+  logic dio_pad_attr_71_smten_71_qs;
+  logic dio_pad_attr_71_smten_71_wd;
+  logic [2:0] dio_pad_attr_71_drv_71_qs;
+  logic [2:0] dio_pad_attr_71_drv_71_wd;
   logic dio_pad_attr_72_re;
   logic dio_pad_attr_72_we;
-  logic dio_pad_attr_72_invert_72_qs;
-  logic dio_pad_attr_72_invert_72_wd;
-  logic dio_pad_attr_72_virtual_od_en_72_qs;
-  logic dio_pad_attr_72_virtual_od_en_72_wd;
-  logic dio_pad_attr_72_pull_en_72_qs;
-  logic dio_pad_attr_72_pull_en_72_wd;
-  logic dio_pad_attr_72_pull_select_72_qs;
-  logic dio_pad_attr_72_pull_select_72_wd;
-  logic dio_pad_attr_72_keeper_en_72_qs;
-  logic dio_pad_attr_72_keeper_en_72_wd;
-  logic dio_pad_attr_72_schmitt_en_72_qs;
-  logic dio_pad_attr_72_schmitt_en_72_wd;
-  logic dio_pad_attr_72_od_en_72_qs;
-  logic dio_pad_attr_72_od_en_72_wd;
-  logic dio_pad_attr_72_input_disable_72_qs;
-  logic dio_pad_attr_72_input_disable_72_wd;
-  logic [1:0] dio_pad_attr_72_slew_rate_72_qs;
-  logic [1:0] dio_pad_attr_72_slew_rate_72_wd;
-  logic [3:0] dio_pad_attr_72_drive_strength_72_qs;
-  logic [3:0] dio_pad_attr_72_drive_strength_72_wd;
+  logic dio_pad_attr_72_puen_72_qs;
+  logic dio_pad_attr_72_puen_72_wd;
+  logic dio_pad_attr_72_pden_72_qs;
+  logic dio_pad_attr_72_pden_72_wd;
+  logic dio_pad_attr_72_smten_72_qs;
+  logic dio_pad_attr_72_smten_72_wd;
+  logic [2:0] dio_pad_attr_72_drv_72_qs;
+  logic [2:0] dio_pad_attr_72_drv_72_wd;
   logic mio_pad_sleep_status_we;
   logic mio_pad_sleep_status_en_0_qs;
   logic mio_pad_sleep_status_en_0_wd;
@@ -5798,2029 +4778,877 @@ module pinmux_reg_top (
   // Subregister 0 of Multireg mio_pad_attr
   // R[mio_pad_attr_0]: V(True)
   logic mio_pad_attr_0_qe;
-  logic [9:0] mio_pad_attr_0_flds_we;
+  logic [3:0] mio_pad_attr_0_flds_we;
   assign mio_pad_attr_0_qe = &mio_pad_attr_0_flds_we;
   // Create REGWEN-gated WE signal
   logic mio_pad_attr_0_gated_we;
   assign mio_pad_attr_0_gated_we = mio_pad_attr_0_we & mio_pad_attr_regwen_0_qs;
-  //   F[invert_0]: 0:0
+  //   F[puen_0]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_0_invert_0 (
+  ) u_mio_pad_attr_0_puen_0 (
     .re     (mio_pad_attr_0_re),
     .we     (mio_pad_attr_0_gated_we),
-    .wd     (mio_pad_attr_0_invert_0_wd),
-    .d      (hw2reg.mio_pad_attr[0].invert.d),
+    .wd     (mio_pad_attr_0_puen_0_wd),
+    .d      (hw2reg.mio_pad_attr[0].puen.d),
     .qre    (),
     .qe     (mio_pad_attr_0_flds_we[0]),
-    .q      (reg2hw.mio_pad_attr[0].invert.q),
+    .q      (reg2hw.mio_pad_attr[0].puen.q),
     .ds     (),
-    .qs     (mio_pad_attr_0_invert_0_qs)
+    .qs     (mio_pad_attr_0_puen_0_qs)
   );
-  assign reg2hw.mio_pad_attr[0].invert.qe = mio_pad_attr_0_qe;
+  assign reg2hw.mio_pad_attr[0].puen.qe = mio_pad_attr_0_qe;
 
-  //   F[virtual_od_en_0]: 1:1
+  //   F[pden_0]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_0_virtual_od_en_0 (
+  ) u_mio_pad_attr_0_pden_0 (
     .re     (mio_pad_attr_0_re),
     .we     (mio_pad_attr_0_gated_we),
-    .wd     (mio_pad_attr_0_virtual_od_en_0_wd),
-    .d      (hw2reg.mio_pad_attr[0].virtual_od_en.d),
+    .wd     (mio_pad_attr_0_pden_0_wd),
+    .d      (hw2reg.mio_pad_attr[0].pden.d),
     .qre    (),
     .qe     (mio_pad_attr_0_flds_we[1]),
-    .q      (reg2hw.mio_pad_attr[0].virtual_od_en.q),
+    .q      (reg2hw.mio_pad_attr[0].pden.q),
     .ds     (),
-    .qs     (mio_pad_attr_0_virtual_od_en_0_qs)
+    .qs     (mio_pad_attr_0_pden_0_qs)
   );
-  assign reg2hw.mio_pad_attr[0].virtual_od_en.qe = mio_pad_attr_0_qe;
+  assign reg2hw.mio_pad_attr[0].pden.qe = mio_pad_attr_0_qe;
 
-  //   F[pull_en_0]: 2:2
+  //   F[smten_0]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_0_pull_en_0 (
+  ) u_mio_pad_attr_0_smten_0 (
     .re     (mio_pad_attr_0_re),
     .we     (mio_pad_attr_0_gated_we),
-    .wd     (mio_pad_attr_0_pull_en_0_wd),
-    .d      (hw2reg.mio_pad_attr[0].pull_en.d),
+    .wd     (mio_pad_attr_0_smten_0_wd),
+    .d      (hw2reg.mio_pad_attr[0].smten.d),
     .qre    (),
     .qe     (mio_pad_attr_0_flds_we[2]),
-    .q      (reg2hw.mio_pad_attr[0].pull_en.q),
+    .q      (reg2hw.mio_pad_attr[0].smten.q),
     .ds     (),
-    .qs     (mio_pad_attr_0_pull_en_0_qs)
+    .qs     (mio_pad_attr_0_smten_0_qs)
   );
-  assign reg2hw.mio_pad_attr[0].pull_en.qe = mio_pad_attr_0_qe;
+  assign reg2hw.mio_pad_attr[0].smten.qe = mio_pad_attr_0_qe;
 
-  //   F[pull_select_0]: 3:3
+  //   F[drv_0]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_0_pull_select_0 (
+    .DW    (3)
+  ) u_mio_pad_attr_0_drv_0 (
     .re     (mio_pad_attr_0_re),
     .we     (mio_pad_attr_0_gated_we),
-    .wd     (mio_pad_attr_0_pull_select_0_wd),
-    .d      (hw2reg.mio_pad_attr[0].pull_select.d),
+    .wd     (mio_pad_attr_0_drv_0_wd),
+    .d      (hw2reg.mio_pad_attr[0].drv.d),
     .qre    (),
     .qe     (mio_pad_attr_0_flds_we[3]),
-    .q      (reg2hw.mio_pad_attr[0].pull_select.q),
+    .q      (reg2hw.mio_pad_attr[0].drv.q),
     .ds     (),
-    .qs     (mio_pad_attr_0_pull_select_0_qs)
+    .qs     (mio_pad_attr_0_drv_0_qs)
   );
-  assign reg2hw.mio_pad_attr[0].pull_select.qe = mio_pad_attr_0_qe;
-
-  //   F[keeper_en_0]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_0_keeper_en_0 (
-    .re     (mio_pad_attr_0_re),
-    .we     (mio_pad_attr_0_gated_we),
-    .wd     (mio_pad_attr_0_keeper_en_0_wd),
-    .d      (hw2reg.mio_pad_attr[0].keeper_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_0_flds_we[4]),
-    .q      (reg2hw.mio_pad_attr[0].keeper_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_0_keeper_en_0_qs)
-  );
-  assign reg2hw.mio_pad_attr[0].keeper_en.qe = mio_pad_attr_0_qe;
-
-  //   F[schmitt_en_0]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_0_schmitt_en_0 (
-    .re     (mio_pad_attr_0_re),
-    .we     (mio_pad_attr_0_gated_we),
-    .wd     (mio_pad_attr_0_schmitt_en_0_wd),
-    .d      (hw2reg.mio_pad_attr[0].schmitt_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_0_flds_we[5]),
-    .q      (reg2hw.mio_pad_attr[0].schmitt_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_0_schmitt_en_0_qs)
-  );
-  assign reg2hw.mio_pad_attr[0].schmitt_en.qe = mio_pad_attr_0_qe;
-
-  //   F[od_en_0]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_0_od_en_0 (
-    .re     (mio_pad_attr_0_re),
-    .we     (mio_pad_attr_0_gated_we),
-    .wd     (mio_pad_attr_0_od_en_0_wd),
-    .d      (hw2reg.mio_pad_attr[0].od_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_0_flds_we[6]),
-    .q      (reg2hw.mio_pad_attr[0].od_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_0_od_en_0_qs)
-  );
-  assign reg2hw.mio_pad_attr[0].od_en.qe = mio_pad_attr_0_qe;
-
-  //   F[input_disable_0]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_0_input_disable_0 (
-    .re     (mio_pad_attr_0_re),
-    .we     (mio_pad_attr_0_gated_we),
-    .wd     (mio_pad_attr_0_input_disable_0_wd),
-    .d      (hw2reg.mio_pad_attr[0].input_disable.d),
-    .qre    (),
-    .qe     (mio_pad_attr_0_flds_we[7]),
-    .q      (reg2hw.mio_pad_attr[0].input_disable.q),
-    .ds     (),
-    .qs     (mio_pad_attr_0_input_disable_0_qs)
-  );
-  assign reg2hw.mio_pad_attr[0].input_disable.qe = mio_pad_attr_0_qe;
-
-  //   F[slew_rate_0]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_mio_pad_attr_0_slew_rate_0 (
-    .re     (mio_pad_attr_0_re),
-    .we     (mio_pad_attr_0_gated_we),
-    .wd     (mio_pad_attr_0_slew_rate_0_wd),
-    .d      (hw2reg.mio_pad_attr[0].slew_rate.d),
-    .qre    (),
-    .qe     (mio_pad_attr_0_flds_we[8]),
-    .q      (reg2hw.mio_pad_attr[0].slew_rate.q),
-    .ds     (),
-    .qs     (mio_pad_attr_0_slew_rate_0_qs)
-  );
-  assign reg2hw.mio_pad_attr[0].slew_rate.qe = mio_pad_attr_0_qe;
-
-  //   F[drive_strength_0]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_mio_pad_attr_0_drive_strength_0 (
-    .re     (mio_pad_attr_0_re),
-    .we     (mio_pad_attr_0_gated_we),
-    .wd     (mio_pad_attr_0_drive_strength_0_wd),
-    .d      (hw2reg.mio_pad_attr[0].drive_strength.d),
-    .qre    (),
-    .qe     (mio_pad_attr_0_flds_we[9]),
-    .q      (reg2hw.mio_pad_attr[0].drive_strength.q),
-    .ds     (),
-    .qs     (mio_pad_attr_0_drive_strength_0_qs)
-  );
-  assign reg2hw.mio_pad_attr[0].drive_strength.qe = mio_pad_attr_0_qe;
+  assign reg2hw.mio_pad_attr[0].drv.qe = mio_pad_attr_0_qe;
 
 
   // Subregister 1 of Multireg mio_pad_attr
   // R[mio_pad_attr_1]: V(True)
   logic mio_pad_attr_1_qe;
-  logic [9:0] mio_pad_attr_1_flds_we;
+  logic [3:0] mio_pad_attr_1_flds_we;
   assign mio_pad_attr_1_qe = &mio_pad_attr_1_flds_we;
   // Create REGWEN-gated WE signal
   logic mio_pad_attr_1_gated_we;
   assign mio_pad_attr_1_gated_we = mio_pad_attr_1_we & mio_pad_attr_regwen_1_qs;
-  //   F[invert_1]: 0:0
+  //   F[puen_1]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_1_invert_1 (
+  ) u_mio_pad_attr_1_puen_1 (
     .re     (mio_pad_attr_1_re),
     .we     (mio_pad_attr_1_gated_we),
-    .wd     (mio_pad_attr_1_invert_1_wd),
-    .d      (hw2reg.mio_pad_attr[1].invert.d),
+    .wd     (mio_pad_attr_1_puen_1_wd),
+    .d      (hw2reg.mio_pad_attr[1].puen.d),
     .qre    (),
     .qe     (mio_pad_attr_1_flds_we[0]),
-    .q      (reg2hw.mio_pad_attr[1].invert.q),
+    .q      (reg2hw.mio_pad_attr[1].puen.q),
     .ds     (),
-    .qs     (mio_pad_attr_1_invert_1_qs)
+    .qs     (mio_pad_attr_1_puen_1_qs)
   );
-  assign reg2hw.mio_pad_attr[1].invert.qe = mio_pad_attr_1_qe;
+  assign reg2hw.mio_pad_attr[1].puen.qe = mio_pad_attr_1_qe;
 
-  //   F[virtual_od_en_1]: 1:1
+  //   F[pden_1]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_1_virtual_od_en_1 (
+  ) u_mio_pad_attr_1_pden_1 (
     .re     (mio_pad_attr_1_re),
     .we     (mio_pad_attr_1_gated_we),
-    .wd     (mio_pad_attr_1_virtual_od_en_1_wd),
-    .d      (hw2reg.mio_pad_attr[1].virtual_od_en.d),
+    .wd     (mio_pad_attr_1_pden_1_wd),
+    .d      (hw2reg.mio_pad_attr[1].pden.d),
     .qre    (),
     .qe     (mio_pad_attr_1_flds_we[1]),
-    .q      (reg2hw.mio_pad_attr[1].virtual_od_en.q),
+    .q      (reg2hw.mio_pad_attr[1].pden.q),
     .ds     (),
-    .qs     (mio_pad_attr_1_virtual_od_en_1_qs)
+    .qs     (mio_pad_attr_1_pden_1_qs)
   );
-  assign reg2hw.mio_pad_attr[1].virtual_od_en.qe = mio_pad_attr_1_qe;
+  assign reg2hw.mio_pad_attr[1].pden.qe = mio_pad_attr_1_qe;
 
-  //   F[pull_en_1]: 2:2
+  //   F[smten_1]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_1_pull_en_1 (
+  ) u_mio_pad_attr_1_smten_1 (
     .re     (mio_pad_attr_1_re),
     .we     (mio_pad_attr_1_gated_we),
-    .wd     (mio_pad_attr_1_pull_en_1_wd),
-    .d      (hw2reg.mio_pad_attr[1].pull_en.d),
+    .wd     (mio_pad_attr_1_smten_1_wd),
+    .d      (hw2reg.mio_pad_attr[1].smten.d),
     .qre    (),
     .qe     (mio_pad_attr_1_flds_we[2]),
-    .q      (reg2hw.mio_pad_attr[1].pull_en.q),
+    .q      (reg2hw.mio_pad_attr[1].smten.q),
     .ds     (),
-    .qs     (mio_pad_attr_1_pull_en_1_qs)
+    .qs     (mio_pad_attr_1_smten_1_qs)
   );
-  assign reg2hw.mio_pad_attr[1].pull_en.qe = mio_pad_attr_1_qe;
+  assign reg2hw.mio_pad_attr[1].smten.qe = mio_pad_attr_1_qe;
 
-  //   F[pull_select_1]: 3:3
+  //   F[drv_1]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_1_pull_select_1 (
+    .DW    (3)
+  ) u_mio_pad_attr_1_drv_1 (
     .re     (mio_pad_attr_1_re),
     .we     (mio_pad_attr_1_gated_we),
-    .wd     (mio_pad_attr_1_pull_select_1_wd),
-    .d      (hw2reg.mio_pad_attr[1].pull_select.d),
+    .wd     (mio_pad_attr_1_drv_1_wd),
+    .d      (hw2reg.mio_pad_attr[1].drv.d),
     .qre    (),
     .qe     (mio_pad_attr_1_flds_we[3]),
-    .q      (reg2hw.mio_pad_attr[1].pull_select.q),
+    .q      (reg2hw.mio_pad_attr[1].drv.q),
     .ds     (),
-    .qs     (mio_pad_attr_1_pull_select_1_qs)
+    .qs     (mio_pad_attr_1_drv_1_qs)
   );
-  assign reg2hw.mio_pad_attr[1].pull_select.qe = mio_pad_attr_1_qe;
-
-  //   F[keeper_en_1]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_1_keeper_en_1 (
-    .re     (mio_pad_attr_1_re),
-    .we     (mio_pad_attr_1_gated_we),
-    .wd     (mio_pad_attr_1_keeper_en_1_wd),
-    .d      (hw2reg.mio_pad_attr[1].keeper_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_1_flds_we[4]),
-    .q      (reg2hw.mio_pad_attr[1].keeper_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_1_keeper_en_1_qs)
-  );
-  assign reg2hw.mio_pad_attr[1].keeper_en.qe = mio_pad_attr_1_qe;
-
-  //   F[schmitt_en_1]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_1_schmitt_en_1 (
-    .re     (mio_pad_attr_1_re),
-    .we     (mio_pad_attr_1_gated_we),
-    .wd     (mio_pad_attr_1_schmitt_en_1_wd),
-    .d      (hw2reg.mio_pad_attr[1].schmitt_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_1_flds_we[5]),
-    .q      (reg2hw.mio_pad_attr[1].schmitt_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_1_schmitt_en_1_qs)
-  );
-  assign reg2hw.mio_pad_attr[1].schmitt_en.qe = mio_pad_attr_1_qe;
-
-  //   F[od_en_1]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_1_od_en_1 (
-    .re     (mio_pad_attr_1_re),
-    .we     (mio_pad_attr_1_gated_we),
-    .wd     (mio_pad_attr_1_od_en_1_wd),
-    .d      (hw2reg.mio_pad_attr[1].od_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_1_flds_we[6]),
-    .q      (reg2hw.mio_pad_attr[1].od_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_1_od_en_1_qs)
-  );
-  assign reg2hw.mio_pad_attr[1].od_en.qe = mio_pad_attr_1_qe;
-
-  //   F[input_disable_1]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_1_input_disable_1 (
-    .re     (mio_pad_attr_1_re),
-    .we     (mio_pad_attr_1_gated_we),
-    .wd     (mio_pad_attr_1_input_disable_1_wd),
-    .d      (hw2reg.mio_pad_attr[1].input_disable.d),
-    .qre    (),
-    .qe     (mio_pad_attr_1_flds_we[7]),
-    .q      (reg2hw.mio_pad_attr[1].input_disable.q),
-    .ds     (),
-    .qs     (mio_pad_attr_1_input_disable_1_qs)
-  );
-  assign reg2hw.mio_pad_attr[1].input_disable.qe = mio_pad_attr_1_qe;
-
-  //   F[slew_rate_1]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_mio_pad_attr_1_slew_rate_1 (
-    .re     (mio_pad_attr_1_re),
-    .we     (mio_pad_attr_1_gated_we),
-    .wd     (mio_pad_attr_1_slew_rate_1_wd),
-    .d      (hw2reg.mio_pad_attr[1].slew_rate.d),
-    .qre    (),
-    .qe     (mio_pad_attr_1_flds_we[8]),
-    .q      (reg2hw.mio_pad_attr[1].slew_rate.q),
-    .ds     (),
-    .qs     (mio_pad_attr_1_slew_rate_1_qs)
-  );
-  assign reg2hw.mio_pad_attr[1].slew_rate.qe = mio_pad_attr_1_qe;
-
-  //   F[drive_strength_1]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_mio_pad_attr_1_drive_strength_1 (
-    .re     (mio_pad_attr_1_re),
-    .we     (mio_pad_attr_1_gated_we),
-    .wd     (mio_pad_attr_1_drive_strength_1_wd),
-    .d      (hw2reg.mio_pad_attr[1].drive_strength.d),
-    .qre    (),
-    .qe     (mio_pad_attr_1_flds_we[9]),
-    .q      (reg2hw.mio_pad_attr[1].drive_strength.q),
-    .ds     (),
-    .qs     (mio_pad_attr_1_drive_strength_1_qs)
-  );
-  assign reg2hw.mio_pad_attr[1].drive_strength.qe = mio_pad_attr_1_qe;
+  assign reg2hw.mio_pad_attr[1].drv.qe = mio_pad_attr_1_qe;
 
 
   // Subregister 2 of Multireg mio_pad_attr
   // R[mio_pad_attr_2]: V(True)
   logic mio_pad_attr_2_qe;
-  logic [9:0] mio_pad_attr_2_flds_we;
+  logic [3:0] mio_pad_attr_2_flds_we;
   assign mio_pad_attr_2_qe = &mio_pad_attr_2_flds_we;
   // Create REGWEN-gated WE signal
   logic mio_pad_attr_2_gated_we;
   assign mio_pad_attr_2_gated_we = mio_pad_attr_2_we & mio_pad_attr_regwen_2_qs;
-  //   F[invert_2]: 0:0
+  //   F[puen_2]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_2_invert_2 (
+  ) u_mio_pad_attr_2_puen_2 (
     .re     (mio_pad_attr_2_re),
     .we     (mio_pad_attr_2_gated_we),
-    .wd     (mio_pad_attr_2_invert_2_wd),
-    .d      (hw2reg.mio_pad_attr[2].invert.d),
+    .wd     (mio_pad_attr_2_puen_2_wd),
+    .d      (hw2reg.mio_pad_attr[2].puen.d),
     .qre    (),
     .qe     (mio_pad_attr_2_flds_we[0]),
-    .q      (reg2hw.mio_pad_attr[2].invert.q),
+    .q      (reg2hw.mio_pad_attr[2].puen.q),
     .ds     (),
-    .qs     (mio_pad_attr_2_invert_2_qs)
+    .qs     (mio_pad_attr_2_puen_2_qs)
   );
-  assign reg2hw.mio_pad_attr[2].invert.qe = mio_pad_attr_2_qe;
+  assign reg2hw.mio_pad_attr[2].puen.qe = mio_pad_attr_2_qe;
 
-  //   F[virtual_od_en_2]: 1:1
+  //   F[pden_2]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_2_virtual_od_en_2 (
+  ) u_mio_pad_attr_2_pden_2 (
     .re     (mio_pad_attr_2_re),
     .we     (mio_pad_attr_2_gated_we),
-    .wd     (mio_pad_attr_2_virtual_od_en_2_wd),
-    .d      (hw2reg.mio_pad_attr[2].virtual_od_en.d),
+    .wd     (mio_pad_attr_2_pden_2_wd),
+    .d      (hw2reg.mio_pad_attr[2].pden.d),
     .qre    (),
     .qe     (mio_pad_attr_2_flds_we[1]),
-    .q      (reg2hw.mio_pad_attr[2].virtual_od_en.q),
+    .q      (reg2hw.mio_pad_attr[2].pden.q),
     .ds     (),
-    .qs     (mio_pad_attr_2_virtual_od_en_2_qs)
+    .qs     (mio_pad_attr_2_pden_2_qs)
   );
-  assign reg2hw.mio_pad_attr[2].virtual_od_en.qe = mio_pad_attr_2_qe;
+  assign reg2hw.mio_pad_attr[2].pden.qe = mio_pad_attr_2_qe;
 
-  //   F[pull_en_2]: 2:2
+  //   F[smten_2]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_2_pull_en_2 (
+  ) u_mio_pad_attr_2_smten_2 (
     .re     (mio_pad_attr_2_re),
     .we     (mio_pad_attr_2_gated_we),
-    .wd     (mio_pad_attr_2_pull_en_2_wd),
-    .d      (hw2reg.mio_pad_attr[2].pull_en.d),
+    .wd     (mio_pad_attr_2_smten_2_wd),
+    .d      (hw2reg.mio_pad_attr[2].smten.d),
     .qre    (),
     .qe     (mio_pad_attr_2_flds_we[2]),
-    .q      (reg2hw.mio_pad_attr[2].pull_en.q),
+    .q      (reg2hw.mio_pad_attr[2].smten.q),
     .ds     (),
-    .qs     (mio_pad_attr_2_pull_en_2_qs)
+    .qs     (mio_pad_attr_2_smten_2_qs)
   );
-  assign reg2hw.mio_pad_attr[2].pull_en.qe = mio_pad_attr_2_qe;
+  assign reg2hw.mio_pad_attr[2].smten.qe = mio_pad_attr_2_qe;
 
-  //   F[pull_select_2]: 3:3
+  //   F[drv_2]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_2_pull_select_2 (
+    .DW    (3)
+  ) u_mio_pad_attr_2_drv_2 (
     .re     (mio_pad_attr_2_re),
     .we     (mio_pad_attr_2_gated_we),
-    .wd     (mio_pad_attr_2_pull_select_2_wd),
-    .d      (hw2reg.mio_pad_attr[2].pull_select.d),
+    .wd     (mio_pad_attr_2_drv_2_wd),
+    .d      (hw2reg.mio_pad_attr[2].drv.d),
     .qre    (),
     .qe     (mio_pad_attr_2_flds_we[3]),
-    .q      (reg2hw.mio_pad_attr[2].pull_select.q),
+    .q      (reg2hw.mio_pad_attr[2].drv.q),
     .ds     (),
-    .qs     (mio_pad_attr_2_pull_select_2_qs)
+    .qs     (mio_pad_attr_2_drv_2_qs)
   );
-  assign reg2hw.mio_pad_attr[2].pull_select.qe = mio_pad_attr_2_qe;
-
-  //   F[keeper_en_2]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_2_keeper_en_2 (
-    .re     (mio_pad_attr_2_re),
-    .we     (mio_pad_attr_2_gated_we),
-    .wd     (mio_pad_attr_2_keeper_en_2_wd),
-    .d      (hw2reg.mio_pad_attr[2].keeper_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_2_flds_we[4]),
-    .q      (reg2hw.mio_pad_attr[2].keeper_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_2_keeper_en_2_qs)
-  );
-  assign reg2hw.mio_pad_attr[2].keeper_en.qe = mio_pad_attr_2_qe;
-
-  //   F[schmitt_en_2]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_2_schmitt_en_2 (
-    .re     (mio_pad_attr_2_re),
-    .we     (mio_pad_attr_2_gated_we),
-    .wd     (mio_pad_attr_2_schmitt_en_2_wd),
-    .d      (hw2reg.mio_pad_attr[2].schmitt_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_2_flds_we[5]),
-    .q      (reg2hw.mio_pad_attr[2].schmitt_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_2_schmitt_en_2_qs)
-  );
-  assign reg2hw.mio_pad_attr[2].schmitt_en.qe = mio_pad_attr_2_qe;
-
-  //   F[od_en_2]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_2_od_en_2 (
-    .re     (mio_pad_attr_2_re),
-    .we     (mio_pad_attr_2_gated_we),
-    .wd     (mio_pad_attr_2_od_en_2_wd),
-    .d      (hw2reg.mio_pad_attr[2].od_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_2_flds_we[6]),
-    .q      (reg2hw.mio_pad_attr[2].od_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_2_od_en_2_qs)
-  );
-  assign reg2hw.mio_pad_attr[2].od_en.qe = mio_pad_attr_2_qe;
-
-  //   F[input_disable_2]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_2_input_disable_2 (
-    .re     (mio_pad_attr_2_re),
-    .we     (mio_pad_attr_2_gated_we),
-    .wd     (mio_pad_attr_2_input_disable_2_wd),
-    .d      (hw2reg.mio_pad_attr[2].input_disable.d),
-    .qre    (),
-    .qe     (mio_pad_attr_2_flds_we[7]),
-    .q      (reg2hw.mio_pad_attr[2].input_disable.q),
-    .ds     (),
-    .qs     (mio_pad_attr_2_input_disable_2_qs)
-  );
-  assign reg2hw.mio_pad_attr[2].input_disable.qe = mio_pad_attr_2_qe;
-
-  //   F[slew_rate_2]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_mio_pad_attr_2_slew_rate_2 (
-    .re     (mio_pad_attr_2_re),
-    .we     (mio_pad_attr_2_gated_we),
-    .wd     (mio_pad_attr_2_slew_rate_2_wd),
-    .d      (hw2reg.mio_pad_attr[2].slew_rate.d),
-    .qre    (),
-    .qe     (mio_pad_attr_2_flds_we[8]),
-    .q      (reg2hw.mio_pad_attr[2].slew_rate.q),
-    .ds     (),
-    .qs     (mio_pad_attr_2_slew_rate_2_qs)
-  );
-  assign reg2hw.mio_pad_attr[2].slew_rate.qe = mio_pad_attr_2_qe;
-
-  //   F[drive_strength_2]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_mio_pad_attr_2_drive_strength_2 (
-    .re     (mio_pad_attr_2_re),
-    .we     (mio_pad_attr_2_gated_we),
-    .wd     (mio_pad_attr_2_drive_strength_2_wd),
-    .d      (hw2reg.mio_pad_attr[2].drive_strength.d),
-    .qre    (),
-    .qe     (mio_pad_attr_2_flds_we[9]),
-    .q      (reg2hw.mio_pad_attr[2].drive_strength.q),
-    .ds     (),
-    .qs     (mio_pad_attr_2_drive_strength_2_qs)
-  );
-  assign reg2hw.mio_pad_attr[2].drive_strength.qe = mio_pad_attr_2_qe;
+  assign reg2hw.mio_pad_attr[2].drv.qe = mio_pad_attr_2_qe;
 
 
   // Subregister 3 of Multireg mio_pad_attr
   // R[mio_pad_attr_3]: V(True)
   logic mio_pad_attr_3_qe;
-  logic [9:0] mio_pad_attr_3_flds_we;
+  logic [3:0] mio_pad_attr_3_flds_we;
   assign mio_pad_attr_3_qe = &mio_pad_attr_3_flds_we;
   // Create REGWEN-gated WE signal
   logic mio_pad_attr_3_gated_we;
   assign mio_pad_attr_3_gated_we = mio_pad_attr_3_we & mio_pad_attr_regwen_3_qs;
-  //   F[invert_3]: 0:0
+  //   F[puen_3]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_3_invert_3 (
+  ) u_mio_pad_attr_3_puen_3 (
     .re     (mio_pad_attr_3_re),
     .we     (mio_pad_attr_3_gated_we),
-    .wd     (mio_pad_attr_3_invert_3_wd),
-    .d      (hw2reg.mio_pad_attr[3].invert.d),
+    .wd     (mio_pad_attr_3_puen_3_wd),
+    .d      (hw2reg.mio_pad_attr[3].puen.d),
     .qre    (),
     .qe     (mio_pad_attr_3_flds_we[0]),
-    .q      (reg2hw.mio_pad_attr[3].invert.q),
+    .q      (reg2hw.mio_pad_attr[3].puen.q),
     .ds     (),
-    .qs     (mio_pad_attr_3_invert_3_qs)
+    .qs     (mio_pad_attr_3_puen_3_qs)
   );
-  assign reg2hw.mio_pad_attr[3].invert.qe = mio_pad_attr_3_qe;
+  assign reg2hw.mio_pad_attr[3].puen.qe = mio_pad_attr_3_qe;
 
-  //   F[virtual_od_en_3]: 1:1
+  //   F[pden_3]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_3_virtual_od_en_3 (
+  ) u_mio_pad_attr_3_pden_3 (
     .re     (mio_pad_attr_3_re),
     .we     (mio_pad_attr_3_gated_we),
-    .wd     (mio_pad_attr_3_virtual_od_en_3_wd),
-    .d      (hw2reg.mio_pad_attr[3].virtual_od_en.d),
+    .wd     (mio_pad_attr_3_pden_3_wd),
+    .d      (hw2reg.mio_pad_attr[3].pden.d),
     .qre    (),
     .qe     (mio_pad_attr_3_flds_we[1]),
-    .q      (reg2hw.mio_pad_attr[3].virtual_od_en.q),
+    .q      (reg2hw.mio_pad_attr[3].pden.q),
     .ds     (),
-    .qs     (mio_pad_attr_3_virtual_od_en_3_qs)
+    .qs     (mio_pad_attr_3_pden_3_qs)
   );
-  assign reg2hw.mio_pad_attr[3].virtual_od_en.qe = mio_pad_attr_3_qe;
+  assign reg2hw.mio_pad_attr[3].pden.qe = mio_pad_attr_3_qe;
 
-  //   F[pull_en_3]: 2:2
+  //   F[smten_3]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_3_pull_en_3 (
+  ) u_mio_pad_attr_3_smten_3 (
     .re     (mio_pad_attr_3_re),
     .we     (mio_pad_attr_3_gated_we),
-    .wd     (mio_pad_attr_3_pull_en_3_wd),
-    .d      (hw2reg.mio_pad_attr[3].pull_en.d),
+    .wd     (mio_pad_attr_3_smten_3_wd),
+    .d      (hw2reg.mio_pad_attr[3].smten.d),
     .qre    (),
     .qe     (mio_pad_attr_3_flds_we[2]),
-    .q      (reg2hw.mio_pad_attr[3].pull_en.q),
+    .q      (reg2hw.mio_pad_attr[3].smten.q),
     .ds     (),
-    .qs     (mio_pad_attr_3_pull_en_3_qs)
+    .qs     (mio_pad_attr_3_smten_3_qs)
   );
-  assign reg2hw.mio_pad_attr[3].pull_en.qe = mio_pad_attr_3_qe;
+  assign reg2hw.mio_pad_attr[3].smten.qe = mio_pad_attr_3_qe;
 
-  //   F[pull_select_3]: 3:3
+  //   F[drv_3]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_3_pull_select_3 (
+    .DW    (3)
+  ) u_mio_pad_attr_3_drv_3 (
     .re     (mio_pad_attr_3_re),
     .we     (mio_pad_attr_3_gated_we),
-    .wd     (mio_pad_attr_3_pull_select_3_wd),
-    .d      (hw2reg.mio_pad_attr[3].pull_select.d),
+    .wd     (mio_pad_attr_3_drv_3_wd),
+    .d      (hw2reg.mio_pad_attr[3].drv.d),
     .qre    (),
     .qe     (mio_pad_attr_3_flds_we[3]),
-    .q      (reg2hw.mio_pad_attr[3].pull_select.q),
+    .q      (reg2hw.mio_pad_attr[3].drv.q),
     .ds     (),
-    .qs     (mio_pad_attr_3_pull_select_3_qs)
+    .qs     (mio_pad_attr_3_drv_3_qs)
   );
-  assign reg2hw.mio_pad_attr[3].pull_select.qe = mio_pad_attr_3_qe;
-
-  //   F[keeper_en_3]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_3_keeper_en_3 (
-    .re     (mio_pad_attr_3_re),
-    .we     (mio_pad_attr_3_gated_we),
-    .wd     (mio_pad_attr_3_keeper_en_3_wd),
-    .d      (hw2reg.mio_pad_attr[3].keeper_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_3_flds_we[4]),
-    .q      (reg2hw.mio_pad_attr[3].keeper_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_3_keeper_en_3_qs)
-  );
-  assign reg2hw.mio_pad_attr[3].keeper_en.qe = mio_pad_attr_3_qe;
-
-  //   F[schmitt_en_3]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_3_schmitt_en_3 (
-    .re     (mio_pad_attr_3_re),
-    .we     (mio_pad_attr_3_gated_we),
-    .wd     (mio_pad_attr_3_schmitt_en_3_wd),
-    .d      (hw2reg.mio_pad_attr[3].schmitt_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_3_flds_we[5]),
-    .q      (reg2hw.mio_pad_attr[3].schmitt_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_3_schmitt_en_3_qs)
-  );
-  assign reg2hw.mio_pad_attr[3].schmitt_en.qe = mio_pad_attr_3_qe;
-
-  //   F[od_en_3]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_3_od_en_3 (
-    .re     (mio_pad_attr_3_re),
-    .we     (mio_pad_attr_3_gated_we),
-    .wd     (mio_pad_attr_3_od_en_3_wd),
-    .d      (hw2reg.mio_pad_attr[3].od_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_3_flds_we[6]),
-    .q      (reg2hw.mio_pad_attr[3].od_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_3_od_en_3_qs)
-  );
-  assign reg2hw.mio_pad_attr[3].od_en.qe = mio_pad_attr_3_qe;
-
-  //   F[input_disable_3]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_3_input_disable_3 (
-    .re     (mio_pad_attr_3_re),
-    .we     (mio_pad_attr_3_gated_we),
-    .wd     (mio_pad_attr_3_input_disable_3_wd),
-    .d      (hw2reg.mio_pad_attr[3].input_disable.d),
-    .qre    (),
-    .qe     (mio_pad_attr_3_flds_we[7]),
-    .q      (reg2hw.mio_pad_attr[3].input_disable.q),
-    .ds     (),
-    .qs     (mio_pad_attr_3_input_disable_3_qs)
-  );
-  assign reg2hw.mio_pad_attr[3].input_disable.qe = mio_pad_attr_3_qe;
-
-  //   F[slew_rate_3]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_mio_pad_attr_3_slew_rate_3 (
-    .re     (mio_pad_attr_3_re),
-    .we     (mio_pad_attr_3_gated_we),
-    .wd     (mio_pad_attr_3_slew_rate_3_wd),
-    .d      (hw2reg.mio_pad_attr[3].slew_rate.d),
-    .qre    (),
-    .qe     (mio_pad_attr_3_flds_we[8]),
-    .q      (reg2hw.mio_pad_attr[3].slew_rate.q),
-    .ds     (),
-    .qs     (mio_pad_attr_3_slew_rate_3_qs)
-  );
-  assign reg2hw.mio_pad_attr[3].slew_rate.qe = mio_pad_attr_3_qe;
-
-  //   F[drive_strength_3]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_mio_pad_attr_3_drive_strength_3 (
-    .re     (mio_pad_attr_3_re),
-    .we     (mio_pad_attr_3_gated_we),
-    .wd     (mio_pad_attr_3_drive_strength_3_wd),
-    .d      (hw2reg.mio_pad_attr[3].drive_strength.d),
-    .qre    (),
-    .qe     (mio_pad_attr_3_flds_we[9]),
-    .q      (reg2hw.mio_pad_attr[3].drive_strength.q),
-    .ds     (),
-    .qs     (mio_pad_attr_3_drive_strength_3_qs)
-  );
-  assign reg2hw.mio_pad_attr[3].drive_strength.qe = mio_pad_attr_3_qe;
+  assign reg2hw.mio_pad_attr[3].drv.qe = mio_pad_attr_3_qe;
 
 
   // Subregister 4 of Multireg mio_pad_attr
   // R[mio_pad_attr_4]: V(True)
   logic mio_pad_attr_4_qe;
-  logic [9:0] mio_pad_attr_4_flds_we;
+  logic [3:0] mio_pad_attr_4_flds_we;
   assign mio_pad_attr_4_qe = &mio_pad_attr_4_flds_we;
   // Create REGWEN-gated WE signal
   logic mio_pad_attr_4_gated_we;
   assign mio_pad_attr_4_gated_we = mio_pad_attr_4_we & mio_pad_attr_regwen_4_qs;
-  //   F[invert_4]: 0:0
+  //   F[puen_4]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_4_invert_4 (
+  ) u_mio_pad_attr_4_puen_4 (
     .re     (mio_pad_attr_4_re),
     .we     (mio_pad_attr_4_gated_we),
-    .wd     (mio_pad_attr_4_invert_4_wd),
-    .d      (hw2reg.mio_pad_attr[4].invert.d),
+    .wd     (mio_pad_attr_4_puen_4_wd),
+    .d      (hw2reg.mio_pad_attr[4].puen.d),
     .qre    (),
     .qe     (mio_pad_attr_4_flds_we[0]),
-    .q      (reg2hw.mio_pad_attr[4].invert.q),
+    .q      (reg2hw.mio_pad_attr[4].puen.q),
     .ds     (),
-    .qs     (mio_pad_attr_4_invert_4_qs)
+    .qs     (mio_pad_attr_4_puen_4_qs)
   );
-  assign reg2hw.mio_pad_attr[4].invert.qe = mio_pad_attr_4_qe;
+  assign reg2hw.mio_pad_attr[4].puen.qe = mio_pad_attr_4_qe;
 
-  //   F[virtual_od_en_4]: 1:1
+  //   F[pden_4]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_4_virtual_od_en_4 (
+  ) u_mio_pad_attr_4_pden_4 (
     .re     (mio_pad_attr_4_re),
     .we     (mio_pad_attr_4_gated_we),
-    .wd     (mio_pad_attr_4_virtual_od_en_4_wd),
-    .d      (hw2reg.mio_pad_attr[4].virtual_od_en.d),
+    .wd     (mio_pad_attr_4_pden_4_wd),
+    .d      (hw2reg.mio_pad_attr[4].pden.d),
     .qre    (),
     .qe     (mio_pad_attr_4_flds_we[1]),
-    .q      (reg2hw.mio_pad_attr[4].virtual_od_en.q),
+    .q      (reg2hw.mio_pad_attr[4].pden.q),
     .ds     (),
-    .qs     (mio_pad_attr_4_virtual_od_en_4_qs)
+    .qs     (mio_pad_attr_4_pden_4_qs)
   );
-  assign reg2hw.mio_pad_attr[4].virtual_od_en.qe = mio_pad_attr_4_qe;
+  assign reg2hw.mio_pad_attr[4].pden.qe = mio_pad_attr_4_qe;
 
-  //   F[pull_en_4]: 2:2
+  //   F[smten_4]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_4_pull_en_4 (
+  ) u_mio_pad_attr_4_smten_4 (
     .re     (mio_pad_attr_4_re),
     .we     (mio_pad_attr_4_gated_we),
-    .wd     (mio_pad_attr_4_pull_en_4_wd),
-    .d      (hw2reg.mio_pad_attr[4].pull_en.d),
+    .wd     (mio_pad_attr_4_smten_4_wd),
+    .d      (hw2reg.mio_pad_attr[4].smten.d),
     .qre    (),
     .qe     (mio_pad_attr_4_flds_we[2]),
-    .q      (reg2hw.mio_pad_attr[4].pull_en.q),
+    .q      (reg2hw.mio_pad_attr[4].smten.q),
     .ds     (),
-    .qs     (mio_pad_attr_4_pull_en_4_qs)
+    .qs     (mio_pad_attr_4_smten_4_qs)
   );
-  assign reg2hw.mio_pad_attr[4].pull_en.qe = mio_pad_attr_4_qe;
+  assign reg2hw.mio_pad_attr[4].smten.qe = mio_pad_attr_4_qe;
 
-  //   F[pull_select_4]: 3:3
+  //   F[drv_4]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_4_pull_select_4 (
+    .DW    (3)
+  ) u_mio_pad_attr_4_drv_4 (
     .re     (mio_pad_attr_4_re),
     .we     (mio_pad_attr_4_gated_we),
-    .wd     (mio_pad_attr_4_pull_select_4_wd),
-    .d      (hw2reg.mio_pad_attr[4].pull_select.d),
+    .wd     (mio_pad_attr_4_drv_4_wd),
+    .d      (hw2reg.mio_pad_attr[4].drv.d),
     .qre    (),
     .qe     (mio_pad_attr_4_flds_we[3]),
-    .q      (reg2hw.mio_pad_attr[4].pull_select.q),
+    .q      (reg2hw.mio_pad_attr[4].drv.q),
     .ds     (),
-    .qs     (mio_pad_attr_4_pull_select_4_qs)
+    .qs     (mio_pad_attr_4_drv_4_qs)
   );
-  assign reg2hw.mio_pad_attr[4].pull_select.qe = mio_pad_attr_4_qe;
-
-  //   F[keeper_en_4]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_4_keeper_en_4 (
-    .re     (mio_pad_attr_4_re),
-    .we     (mio_pad_attr_4_gated_we),
-    .wd     (mio_pad_attr_4_keeper_en_4_wd),
-    .d      (hw2reg.mio_pad_attr[4].keeper_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_4_flds_we[4]),
-    .q      (reg2hw.mio_pad_attr[4].keeper_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_4_keeper_en_4_qs)
-  );
-  assign reg2hw.mio_pad_attr[4].keeper_en.qe = mio_pad_attr_4_qe;
-
-  //   F[schmitt_en_4]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_4_schmitt_en_4 (
-    .re     (mio_pad_attr_4_re),
-    .we     (mio_pad_attr_4_gated_we),
-    .wd     (mio_pad_attr_4_schmitt_en_4_wd),
-    .d      (hw2reg.mio_pad_attr[4].schmitt_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_4_flds_we[5]),
-    .q      (reg2hw.mio_pad_attr[4].schmitt_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_4_schmitt_en_4_qs)
-  );
-  assign reg2hw.mio_pad_attr[4].schmitt_en.qe = mio_pad_attr_4_qe;
-
-  //   F[od_en_4]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_4_od_en_4 (
-    .re     (mio_pad_attr_4_re),
-    .we     (mio_pad_attr_4_gated_we),
-    .wd     (mio_pad_attr_4_od_en_4_wd),
-    .d      (hw2reg.mio_pad_attr[4].od_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_4_flds_we[6]),
-    .q      (reg2hw.mio_pad_attr[4].od_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_4_od_en_4_qs)
-  );
-  assign reg2hw.mio_pad_attr[4].od_en.qe = mio_pad_attr_4_qe;
-
-  //   F[input_disable_4]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_4_input_disable_4 (
-    .re     (mio_pad_attr_4_re),
-    .we     (mio_pad_attr_4_gated_we),
-    .wd     (mio_pad_attr_4_input_disable_4_wd),
-    .d      (hw2reg.mio_pad_attr[4].input_disable.d),
-    .qre    (),
-    .qe     (mio_pad_attr_4_flds_we[7]),
-    .q      (reg2hw.mio_pad_attr[4].input_disable.q),
-    .ds     (),
-    .qs     (mio_pad_attr_4_input_disable_4_qs)
-  );
-  assign reg2hw.mio_pad_attr[4].input_disable.qe = mio_pad_attr_4_qe;
-
-  //   F[slew_rate_4]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_mio_pad_attr_4_slew_rate_4 (
-    .re     (mio_pad_attr_4_re),
-    .we     (mio_pad_attr_4_gated_we),
-    .wd     (mio_pad_attr_4_slew_rate_4_wd),
-    .d      (hw2reg.mio_pad_attr[4].slew_rate.d),
-    .qre    (),
-    .qe     (mio_pad_attr_4_flds_we[8]),
-    .q      (reg2hw.mio_pad_attr[4].slew_rate.q),
-    .ds     (),
-    .qs     (mio_pad_attr_4_slew_rate_4_qs)
-  );
-  assign reg2hw.mio_pad_attr[4].slew_rate.qe = mio_pad_attr_4_qe;
-
-  //   F[drive_strength_4]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_mio_pad_attr_4_drive_strength_4 (
-    .re     (mio_pad_attr_4_re),
-    .we     (mio_pad_attr_4_gated_we),
-    .wd     (mio_pad_attr_4_drive_strength_4_wd),
-    .d      (hw2reg.mio_pad_attr[4].drive_strength.d),
-    .qre    (),
-    .qe     (mio_pad_attr_4_flds_we[9]),
-    .q      (reg2hw.mio_pad_attr[4].drive_strength.q),
-    .ds     (),
-    .qs     (mio_pad_attr_4_drive_strength_4_qs)
-  );
-  assign reg2hw.mio_pad_attr[4].drive_strength.qe = mio_pad_attr_4_qe;
+  assign reg2hw.mio_pad_attr[4].drv.qe = mio_pad_attr_4_qe;
 
 
   // Subregister 5 of Multireg mio_pad_attr
   // R[mio_pad_attr_5]: V(True)
   logic mio_pad_attr_5_qe;
-  logic [9:0] mio_pad_attr_5_flds_we;
+  logic [3:0] mio_pad_attr_5_flds_we;
   assign mio_pad_attr_5_qe = &mio_pad_attr_5_flds_we;
   // Create REGWEN-gated WE signal
   logic mio_pad_attr_5_gated_we;
   assign mio_pad_attr_5_gated_we = mio_pad_attr_5_we & mio_pad_attr_regwen_5_qs;
-  //   F[invert_5]: 0:0
+  //   F[puen_5]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_5_invert_5 (
+  ) u_mio_pad_attr_5_puen_5 (
     .re     (mio_pad_attr_5_re),
     .we     (mio_pad_attr_5_gated_we),
-    .wd     (mio_pad_attr_5_invert_5_wd),
-    .d      (hw2reg.mio_pad_attr[5].invert.d),
+    .wd     (mio_pad_attr_5_puen_5_wd),
+    .d      (hw2reg.mio_pad_attr[5].puen.d),
     .qre    (),
     .qe     (mio_pad_attr_5_flds_we[0]),
-    .q      (reg2hw.mio_pad_attr[5].invert.q),
+    .q      (reg2hw.mio_pad_attr[5].puen.q),
     .ds     (),
-    .qs     (mio_pad_attr_5_invert_5_qs)
+    .qs     (mio_pad_attr_5_puen_5_qs)
   );
-  assign reg2hw.mio_pad_attr[5].invert.qe = mio_pad_attr_5_qe;
+  assign reg2hw.mio_pad_attr[5].puen.qe = mio_pad_attr_5_qe;
 
-  //   F[virtual_od_en_5]: 1:1
+  //   F[pden_5]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_5_virtual_od_en_5 (
+  ) u_mio_pad_attr_5_pden_5 (
     .re     (mio_pad_attr_5_re),
     .we     (mio_pad_attr_5_gated_we),
-    .wd     (mio_pad_attr_5_virtual_od_en_5_wd),
-    .d      (hw2reg.mio_pad_attr[5].virtual_od_en.d),
+    .wd     (mio_pad_attr_5_pden_5_wd),
+    .d      (hw2reg.mio_pad_attr[5].pden.d),
     .qre    (),
     .qe     (mio_pad_attr_5_flds_we[1]),
-    .q      (reg2hw.mio_pad_attr[5].virtual_od_en.q),
+    .q      (reg2hw.mio_pad_attr[5].pden.q),
     .ds     (),
-    .qs     (mio_pad_attr_5_virtual_od_en_5_qs)
+    .qs     (mio_pad_attr_5_pden_5_qs)
   );
-  assign reg2hw.mio_pad_attr[5].virtual_od_en.qe = mio_pad_attr_5_qe;
+  assign reg2hw.mio_pad_attr[5].pden.qe = mio_pad_attr_5_qe;
 
-  //   F[pull_en_5]: 2:2
+  //   F[smten_5]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_5_pull_en_5 (
+  ) u_mio_pad_attr_5_smten_5 (
     .re     (mio_pad_attr_5_re),
     .we     (mio_pad_attr_5_gated_we),
-    .wd     (mio_pad_attr_5_pull_en_5_wd),
-    .d      (hw2reg.mio_pad_attr[5].pull_en.d),
+    .wd     (mio_pad_attr_5_smten_5_wd),
+    .d      (hw2reg.mio_pad_attr[5].smten.d),
     .qre    (),
     .qe     (mio_pad_attr_5_flds_we[2]),
-    .q      (reg2hw.mio_pad_attr[5].pull_en.q),
+    .q      (reg2hw.mio_pad_attr[5].smten.q),
     .ds     (),
-    .qs     (mio_pad_attr_5_pull_en_5_qs)
+    .qs     (mio_pad_attr_5_smten_5_qs)
   );
-  assign reg2hw.mio_pad_attr[5].pull_en.qe = mio_pad_attr_5_qe;
+  assign reg2hw.mio_pad_attr[5].smten.qe = mio_pad_attr_5_qe;
 
-  //   F[pull_select_5]: 3:3
+  //   F[drv_5]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_5_pull_select_5 (
+    .DW    (3)
+  ) u_mio_pad_attr_5_drv_5 (
     .re     (mio_pad_attr_5_re),
     .we     (mio_pad_attr_5_gated_we),
-    .wd     (mio_pad_attr_5_pull_select_5_wd),
-    .d      (hw2reg.mio_pad_attr[5].pull_select.d),
+    .wd     (mio_pad_attr_5_drv_5_wd),
+    .d      (hw2reg.mio_pad_attr[5].drv.d),
     .qre    (),
     .qe     (mio_pad_attr_5_flds_we[3]),
-    .q      (reg2hw.mio_pad_attr[5].pull_select.q),
+    .q      (reg2hw.mio_pad_attr[5].drv.q),
     .ds     (),
-    .qs     (mio_pad_attr_5_pull_select_5_qs)
+    .qs     (mio_pad_attr_5_drv_5_qs)
   );
-  assign reg2hw.mio_pad_attr[5].pull_select.qe = mio_pad_attr_5_qe;
-
-  //   F[keeper_en_5]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_5_keeper_en_5 (
-    .re     (mio_pad_attr_5_re),
-    .we     (mio_pad_attr_5_gated_we),
-    .wd     (mio_pad_attr_5_keeper_en_5_wd),
-    .d      (hw2reg.mio_pad_attr[5].keeper_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_5_flds_we[4]),
-    .q      (reg2hw.mio_pad_attr[5].keeper_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_5_keeper_en_5_qs)
-  );
-  assign reg2hw.mio_pad_attr[5].keeper_en.qe = mio_pad_attr_5_qe;
-
-  //   F[schmitt_en_5]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_5_schmitt_en_5 (
-    .re     (mio_pad_attr_5_re),
-    .we     (mio_pad_attr_5_gated_we),
-    .wd     (mio_pad_attr_5_schmitt_en_5_wd),
-    .d      (hw2reg.mio_pad_attr[5].schmitt_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_5_flds_we[5]),
-    .q      (reg2hw.mio_pad_attr[5].schmitt_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_5_schmitt_en_5_qs)
-  );
-  assign reg2hw.mio_pad_attr[5].schmitt_en.qe = mio_pad_attr_5_qe;
-
-  //   F[od_en_5]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_5_od_en_5 (
-    .re     (mio_pad_attr_5_re),
-    .we     (mio_pad_attr_5_gated_we),
-    .wd     (mio_pad_attr_5_od_en_5_wd),
-    .d      (hw2reg.mio_pad_attr[5].od_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_5_flds_we[6]),
-    .q      (reg2hw.mio_pad_attr[5].od_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_5_od_en_5_qs)
-  );
-  assign reg2hw.mio_pad_attr[5].od_en.qe = mio_pad_attr_5_qe;
-
-  //   F[input_disable_5]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_5_input_disable_5 (
-    .re     (mio_pad_attr_5_re),
-    .we     (mio_pad_attr_5_gated_we),
-    .wd     (mio_pad_attr_5_input_disable_5_wd),
-    .d      (hw2reg.mio_pad_attr[5].input_disable.d),
-    .qre    (),
-    .qe     (mio_pad_attr_5_flds_we[7]),
-    .q      (reg2hw.mio_pad_attr[5].input_disable.q),
-    .ds     (),
-    .qs     (mio_pad_attr_5_input_disable_5_qs)
-  );
-  assign reg2hw.mio_pad_attr[5].input_disable.qe = mio_pad_attr_5_qe;
-
-  //   F[slew_rate_5]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_mio_pad_attr_5_slew_rate_5 (
-    .re     (mio_pad_attr_5_re),
-    .we     (mio_pad_attr_5_gated_we),
-    .wd     (mio_pad_attr_5_slew_rate_5_wd),
-    .d      (hw2reg.mio_pad_attr[5].slew_rate.d),
-    .qre    (),
-    .qe     (mio_pad_attr_5_flds_we[8]),
-    .q      (reg2hw.mio_pad_attr[5].slew_rate.q),
-    .ds     (),
-    .qs     (mio_pad_attr_5_slew_rate_5_qs)
-  );
-  assign reg2hw.mio_pad_attr[5].slew_rate.qe = mio_pad_attr_5_qe;
-
-  //   F[drive_strength_5]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_mio_pad_attr_5_drive_strength_5 (
-    .re     (mio_pad_attr_5_re),
-    .we     (mio_pad_attr_5_gated_we),
-    .wd     (mio_pad_attr_5_drive_strength_5_wd),
-    .d      (hw2reg.mio_pad_attr[5].drive_strength.d),
-    .qre    (),
-    .qe     (mio_pad_attr_5_flds_we[9]),
-    .q      (reg2hw.mio_pad_attr[5].drive_strength.q),
-    .ds     (),
-    .qs     (mio_pad_attr_5_drive_strength_5_qs)
-  );
-  assign reg2hw.mio_pad_attr[5].drive_strength.qe = mio_pad_attr_5_qe;
+  assign reg2hw.mio_pad_attr[5].drv.qe = mio_pad_attr_5_qe;
 
 
   // Subregister 6 of Multireg mio_pad_attr
   // R[mio_pad_attr_6]: V(True)
   logic mio_pad_attr_6_qe;
-  logic [9:0] mio_pad_attr_6_flds_we;
+  logic [3:0] mio_pad_attr_6_flds_we;
   assign mio_pad_attr_6_qe = &mio_pad_attr_6_flds_we;
   // Create REGWEN-gated WE signal
   logic mio_pad_attr_6_gated_we;
   assign mio_pad_attr_6_gated_we = mio_pad_attr_6_we & mio_pad_attr_regwen_6_qs;
-  //   F[invert_6]: 0:0
+  //   F[puen_6]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_6_invert_6 (
+  ) u_mio_pad_attr_6_puen_6 (
     .re     (mio_pad_attr_6_re),
     .we     (mio_pad_attr_6_gated_we),
-    .wd     (mio_pad_attr_6_invert_6_wd),
-    .d      (hw2reg.mio_pad_attr[6].invert.d),
+    .wd     (mio_pad_attr_6_puen_6_wd),
+    .d      (hw2reg.mio_pad_attr[6].puen.d),
     .qre    (),
     .qe     (mio_pad_attr_6_flds_we[0]),
-    .q      (reg2hw.mio_pad_attr[6].invert.q),
+    .q      (reg2hw.mio_pad_attr[6].puen.q),
     .ds     (),
-    .qs     (mio_pad_attr_6_invert_6_qs)
+    .qs     (mio_pad_attr_6_puen_6_qs)
   );
-  assign reg2hw.mio_pad_attr[6].invert.qe = mio_pad_attr_6_qe;
+  assign reg2hw.mio_pad_attr[6].puen.qe = mio_pad_attr_6_qe;
 
-  //   F[virtual_od_en_6]: 1:1
+  //   F[pden_6]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_6_virtual_od_en_6 (
+  ) u_mio_pad_attr_6_pden_6 (
     .re     (mio_pad_attr_6_re),
     .we     (mio_pad_attr_6_gated_we),
-    .wd     (mio_pad_attr_6_virtual_od_en_6_wd),
-    .d      (hw2reg.mio_pad_attr[6].virtual_od_en.d),
+    .wd     (mio_pad_attr_6_pden_6_wd),
+    .d      (hw2reg.mio_pad_attr[6].pden.d),
     .qre    (),
     .qe     (mio_pad_attr_6_flds_we[1]),
-    .q      (reg2hw.mio_pad_attr[6].virtual_od_en.q),
+    .q      (reg2hw.mio_pad_attr[6].pden.q),
     .ds     (),
-    .qs     (mio_pad_attr_6_virtual_od_en_6_qs)
+    .qs     (mio_pad_attr_6_pden_6_qs)
   );
-  assign reg2hw.mio_pad_attr[6].virtual_od_en.qe = mio_pad_attr_6_qe;
+  assign reg2hw.mio_pad_attr[6].pden.qe = mio_pad_attr_6_qe;
 
-  //   F[pull_en_6]: 2:2
+  //   F[smten_6]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_6_pull_en_6 (
+  ) u_mio_pad_attr_6_smten_6 (
     .re     (mio_pad_attr_6_re),
     .we     (mio_pad_attr_6_gated_we),
-    .wd     (mio_pad_attr_6_pull_en_6_wd),
-    .d      (hw2reg.mio_pad_attr[6].pull_en.d),
+    .wd     (mio_pad_attr_6_smten_6_wd),
+    .d      (hw2reg.mio_pad_attr[6].smten.d),
     .qre    (),
     .qe     (mio_pad_attr_6_flds_we[2]),
-    .q      (reg2hw.mio_pad_attr[6].pull_en.q),
+    .q      (reg2hw.mio_pad_attr[6].smten.q),
     .ds     (),
-    .qs     (mio_pad_attr_6_pull_en_6_qs)
+    .qs     (mio_pad_attr_6_smten_6_qs)
   );
-  assign reg2hw.mio_pad_attr[6].pull_en.qe = mio_pad_attr_6_qe;
+  assign reg2hw.mio_pad_attr[6].smten.qe = mio_pad_attr_6_qe;
 
-  //   F[pull_select_6]: 3:3
+  //   F[drv_6]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_6_pull_select_6 (
+    .DW    (3)
+  ) u_mio_pad_attr_6_drv_6 (
     .re     (mio_pad_attr_6_re),
     .we     (mio_pad_attr_6_gated_we),
-    .wd     (mio_pad_attr_6_pull_select_6_wd),
-    .d      (hw2reg.mio_pad_attr[6].pull_select.d),
+    .wd     (mio_pad_attr_6_drv_6_wd),
+    .d      (hw2reg.mio_pad_attr[6].drv.d),
     .qre    (),
     .qe     (mio_pad_attr_6_flds_we[3]),
-    .q      (reg2hw.mio_pad_attr[6].pull_select.q),
+    .q      (reg2hw.mio_pad_attr[6].drv.q),
     .ds     (),
-    .qs     (mio_pad_attr_6_pull_select_6_qs)
+    .qs     (mio_pad_attr_6_drv_6_qs)
   );
-  assign reg2hw.mio_pad_attr[6].pull_select.qe = mio_pad_attr_6_qe;
-
-  //   F[keeper_en_6]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_6_keeper_en_6 (
-    .re     (mio_pad_attr_6_re),
-    .we     (mio_pad_attr_6_gated_we),
-    .wd     (mio_pad_attr_6_keeper_en_6_wd),
-    .d      (hw2reg.mio_pad_attr[6].keeper_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_6_flds_we[4]),
-    .q      (reg2hw.mio_pad_attr[6].keeper_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_6_keeper_en_6_qs)
-  );
-  assign reg2hw.mio_pad_attr[6].keeper_en.qe = mio_pad_attr_6_qe;
-
-  //   F[schmitt_en_6]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_6_schmitt_en_6 (
-    .re     (mio_pad_attr_6_re),
-    .we     (mio_pad_attr_6_gated_we),
-    .wd     (mio_pad_attr_6_schmitt_en_6_wd),
-    .d      (hw2reg.mio_pad_attr[6].schmitt_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_6_flds_we[5]),
-    .q      (reg2hw.mio_pad_attr[6].schmitt_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_6_schmitt_en_6_qs)
-  );
-  assign reg2hw.mio_pad_attr[6].schmitt_en.qe = mio_pad_attr_6_qe;
-
-  //   F[od_en_6]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_6_od_en_6 (
-    .re     (mio_pad_attr_6_re),
-    .we     (mio_pad_attr_6_gated_we),
-    .wd     (mio_pad_attr_6_od_en_6_wd),
-    .d      (hw2reg.mio_pad_attr[6].od_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_6_flds_we[6]),
-    .q      (reg2hw.mio_pad_attr[6].od_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_6_od_en_6_qs)
-  );
-  assign reg2hw.mio_pad_attr[6].od_en.qe = mio_pad_attr_6_qe;
-
-  //   F[input_disable_6]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_6_input_disable_6 (
-    .re     (mio_pad_attr_6_re),
-    .we     (mio_pad_attr_6_gated_we),
-    .wd     (mio_pad_attr_6_input_disable_6_wd),
-    .d      (hw2reg.mio_pad_attr[6].input_disable.d),
-    .qre    (),
-    .qe     (mio_pad_attr_6_flds_we[7]),
-    .q      (reg2hw.mio_pad_attr[6].input_disable.q),
-    .ds     (),
-    .qs     (mio_pad_attr_6_input_disable_6_qs)
-  );
-  assign reg2hw.mio_pad_attr[6].input_disable.qe = mio_pad_attr_6_qe;
-
-  //   F[slew_rate_6]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_mio_pad_attr_6_slew_rate_6 (
-    .re     (mio_pad_attr_6_re),
-    .we     (mio_pad_attr_6_gated_we),
-    .wd     (mio_pad_attr_6_slew_rate_6_wd),
-    .d      (hw2reg.mio_pad_attr[6].slew_rate.d),
-    .qre    (),
-    .qe     (mio_pad_attr_6_flds_we[8]),
-    .q      (reg2hw.mio_pad_attr[6].slew_rate.q),
-    .ds     (),
-    .qs     (mio_pad_attr_6_slew_rate_6_qs)
-  );
-  assign reg2hw.mio_pad_attr[6].slew_rate.qe = mio_pad_attr_6_qe;
-
-  //   F[drive_strength_6]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_mio_pad_attr_6_drive_strength_6 (
-    .re     (mio_pad_attr_6_re),
-    .we     (mio_pad_attr_6_gated_we),
-    .wd     (mio_pad_attr_6_drive_strength_6_wd),
-    .d      (hw2reg.mio_pad_attr[6].drive_strength.d),
-    .qre    (),
-    .qe     (mio_pad_attr_6_flds_we[9]),
-    .q      (reg2hw.mio_pad_attr[6].drive_strength.q),
-    .ds     (),
-    .qs     (mio_pad_attr_6_drive_strength_6_qs)
-  );
-  assign reg2hw.mio_pad_attr[6].drive_strength.qe = mio_pad_attr_6_qe;
+  assign reg2hw.mio_pad_attr[6].drv.qe = mio_pad_attr_6_qe;
 
 
   // Subregister 7 of Multireg mio_pad_attr
   // R[mio_pad_attr_7]: V(True)
   logic mio_pad_attr_7_qe;
-  logic [9:0] mio_pad_attr_7_flds_we;
+  logic [3:0] mio_pad_attr_7_flds_we;
   assign mio_pad_attr_7_qe = &mio_pad_attr_7_flds_we;
   // Create REGWEN-gated WE signal
   logic mio_pad_attr_7_gated_we;
   assign mio_pad_attr_7_gated_we = mio_pad_attr_7_we & mio_pad_attr_regwen_7_qs;
-  //   F[invert_7]: 0:0
+  //   F[puen_7]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_7_invert_7 (
+  ) u_mio_pad_attr_7_puen_7 (
     .re     (mio_pad_attr_7_re),
     .we     (mio_pad_attr_7_gated_we),
-    .wd     (mio_pad_attr_7_invert_7_wd),
-    .d      (hw2reg.mio_pad_attr[7].invert.d),
+    .wd     (mio_pad_attr_7_puen_7_wd),
+    .d      (hw2reg.mio_pad_attr[7].puen.d),
     .qre    (),
     .qe     (mio_pad_attr_7_flds_we[0]),
-    .q      (reg2hw.mio_pad_attr[7].invert.q),
+    .q      (reg2hw.mio_pad_attr[7].puen.q),
     .ds     (),
-    .qs     (mio_pad_attr_7_invert_7_qs)
+    .qs     (mio_pad_attr_7_puen_7_qs)
   );
-  assign reg2hw.mio_pad_attr[7].invert.qe = mio_pad_attr_7_qe;
+  assign reg2hw.mio_pad_attr[7].puen.qe = mio_pad_attr_7_qe;
 
-  //   F[virtual_od_en_7]: 1:1
+  //   F[pden_7]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_7_virtual_od_en_7 (
+  ) u_mio_pad_attr_7_pden_7 (
     .re     (mio_pad_attr_7_re),
     .we     (mio_pad_attr_7_gated_we),
-    .wd     (mio_pad_attr_7_virtual_od_en_7_wd),
-    .d      (hw2reg.mio_pad_attr[7].virtual_od_en.d),
+    .wd     (mio_pad_attr_7_pden_7_wd),
+    .d      (hw2reg.mio_pad_attr[7].pden.d),
     .qre    (),
     .qe     (mio_pad_attr_7_flds_we[1]),
-    .q      (reg2hw.mio_pad_attr[7].virtual_od_en.q),
+    .q      (reg2hw.mio_pad_attr[7].pden.q),
     .ds     (),
-    .qs     (mio_pad_attr_7_virtual_od_en_7_qs)
+    .qs     (mio_pad_attr_7_pden_7_qs)
   );
-  assign reg2hw.mio_pad_attr[7].virtual_od_en.qe = mio_pad_attr_7_qe;
+  assign reg2hw.mio_pad_attr[7].pden.qe = mio_pad_attr_7_qe;
 
-  //   F[pull_en_7]: 2:2
+  //   F[smten_7]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_7_pull_en_7 (
+  ) u_mio_pad_attr_7_smten_7 (
     .re     (mio_pad_attr_7_re),
     .we     (mio_pad_attr_7_gated_we),
-    .wd     (mio_pad_attr_7_pull_en_7_wd),
-    .d      (hw2reg.mio_pad_attr[7].pull_en.d),
+    .wd     (mio_pad_attr_7_smten_7_wd),
+    .d      (hw2reg.mio_pad_attr[7].smten.d),
     .qre    (),
     .qe     (mio_pad_attr_7_flds_we[2]),
-    .q      (reg2hw.mio_pad_attr[7].pull_en.q),
+    .q      (reg2hw.mio_pad_attr[7].smten.q),
     .ds     (),
-    .qs     (mio_pad_attr_7_pull_en_7_qs)
+    .qs     (mio_pad_attr_7_smten_7_qs)
   );
-  assign reg2hw.mio_pad_attr[7].pull_en.qe = mio_pad_attr_7_qe;
+  assign reg2hw.mio_pad_attr[7].smten.qe = mio_pad_attr_7_qe;
 
-  //   F[pull_select_7]: 3:3
+  //   F[drv_7]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_7_pull_select_7 (
+    .DW    (3)
+  ) u_mio_pad_attr_7_drv_7 (
     .re     (mio_pad_attr_7_re),
     .we     (mio_pad_attr_7_gated_we),
-    .wd     (mio_pad_attr_7_pull_select_7_wd),
-    .d      (hw2reg.mio_pad_attr[7].pull_select.d),
+    .wd     (mio_pad_attr_7_drv_7_wd),
+    .d      (hw2reg.mio_pad_attr[7].drv.d),
     .qre    (),
     .qe     (mio_pad_attr_7_flds_we[3]),
-    .q      (reg2hw.mio_pad_attr[7].pull_select.q),
+    .q      (reg2hw.mio_pad_attr[7].drv.q),
     .ds     (),
-    .qs     (mio_pad_attr_7_pull_select_7_qs)
+    .qs     (mio_pad_attr_7_drv_7_qs)
   );
-  assign reg2hw.mio_pad_attr[7].pull_select.qe = mio_pad_attr_7_qe;
-
-  //   F[keeper_en_7]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_7_keeper_en_7 (
-    .re     (mio_pad_attr_7_re),
-    .we     (mio_pad_attr_7_gated_we),
-    .wd     (mio_pad_attr_7_keeper_en_7_wd),
-    .d      (hw2reg.mio_pad_attr[7].keeper_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_7_flds_we[4]),
-    .q      (reg2hw.mio_pad_attr[7].keeper_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_7_keeper_en_7_qs)
-  );
-  assign reg2hw.mio_pad_attr[7].keeper_en.qe = mio_pad_attr_7_qe;
-
-  //   F[schmitt_en_7]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_7_schmitt_en_7 (
-    .re     (mio_pad_attr_7_re),
-    .we     (mio_pad_attr_7_gated_we),
-    .wd     (mio_pad_attr_7_schmitt_en_7_wd),
-    .d      (hw2reg.mio_pad_attr[7].schmitt_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_7_flds_we[5]),
-    .q      (reg2hw.mio_pad_attr[7].schmitt_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_7_schmitt_en_7_qs)
-  );
-  assign reg2hw.mio_pad_attr[7].schmitt_en.qe = mio_pad_attr_7_qe;
-
-  //   F[od_en_7]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_7_od_en_7 (
-    .re     (mio_pad_attr_7_re),
-    .we     (mio_pad_attr_7_gated_we),
-    .wd     (mio_pad_attr_7_od_en_7_wd),
-    .d      (hw2reg.mio_pad_attr[7].od_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_7_flds_we[6]),
-    .q      (reg2hw.mio_pad_attr[7].od_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_7_od_en_7_qs)
-  );
-  assign reg2hw.mio_pad_attr[7].od_en.qe = mio_pad_attr_7_qe;
-
-  //   F[input_disable_7]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_7_input_disable_7 (
-    .re     (mio_pad_attr_7_re),
-    .we     (mio_pad_attr_7_gated_we),
-    .wd     (mio_pad_attr_7_input_disable_7_wd),
-    .d      (hw2reg.mio_pad_attr[7].input_disable.d),
-    .qre    (),
-    .qe     (mio_pad_attr_7_flds_we[7]),
-    .q      (reg2hw.mio_pad_attr[7].input_disable.q),
-    .ds     (),
-    .qs     (mio_pad_attr_7_input_disable_7_qs)
-  );
-  assign reg2hw.mio_pad_attr[7].input_disable.qe = mio_pad_attr_7_qe;
-
-  //   F[slew_rate_7]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_mio_pad_attr_7_slew_rate_7 (
-    .re     (mio_pad_attr_7_re),
-    .we     (mio_pad_attr_7_gated_we),
-    .wd     (mio_pad_attr_7_slew_rate_7_wd),
-    .d      (hw2reg.mio_pad_attr[7].slew_rate.d),
-    .qre    (),
-    .qe     (mio_pad_attr_7_flds_we[8]),
-    .q      (reg2hw.mio_pad_attr[7].slew_rate.q),
-    .ds     (),
-    .qs     (mio_pad_attr_7_slew_rate_7_qs)
-  );
-  assign reg2hw.mio_pad_attr[7].slew_rate.qe = mio_pad_attr_7_qe;
-
-  //   F[drive_strength_7]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_mio_pad_attr_7_drive_strength_7 (
-    .re     (mio_pad_attr_7_re),
-    .we     (mio_pad_attr_7_gated_we),
-    .wd     (mio_pad_attr_7_drive_strength_7_wd),
-    .d      (hw2reg.mio_pad_attr[7].drive_strength.d),
-    .qre    (),
-    .qe     (mio_pad_attr_7_flds_we[9]),
-    .q      (reg2hw.mio_pad_attr[7].drive_strength.q),
-    .ds     (),
-    .qs     (mio_pad_attr_7_drive_strength_7_qs)
-  );
-  assign reg2hw.mio_pad_attr[7].drive_strength.qe = mio_pad_attr_7_qe;
+  assign reg2hw.mio_pad_attr[7].drv.qe = mio_pad_attr_7_qe;
 
 
   // Subregister 8 of Multireg mio_pad_attr
   // R[mio_pad_attr_8]: V(True)
   logic mio_pad_attr_8_qe;
-  logic [9:0] mio_pad_attr_8_flds_we;
+  logic [3:0] mio_pad_attr_8_flds_we;
   assign mio_pad_attr_8_qe = &mio_pad_attr_8_flds_we;
   // Create REGWEN-gated WE signal
   logic mio_pad_attr_8_gated_we;
   assign mio_pad_attr_8_gated_we = mio_pad_attr_8_we & mio_pad_attr_regwen_8_qs;
-  //   F[invert_8]: 0:0
+  //   F[puen_8]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_8_invert_8 (
+  ) u_mio_pad_attr_8_puen_8 (
     .re     (mio_pad_attr_8_re),
     .we     (mio_pad_attr_8_gated_we),
-    .wd     (mio_pad_attr_8_invert_8_wd),
-    .d      (hw2reg.mio_pad_attr[8].invert.d),
+    .wd     (mio_pad_attr_8_puen_8_wd),
+    .d      (hw2reg.mio_pad_attr[8].puen.d),
     .qre    (),
     .qe     (mio_pad_attr_8_flds_we[0]),
-    .q      (reg2hw.mio_pad_attr[8].invert.q),
+    .q      (reg2hw.mio_pad_attr[8].puen.q),
     .ds     (),
-    .qs     (mio_pad_attr_8_invert_8_qs)
+    .qs     (mio_pad_attr_8_puen_8_qs)
   );
-  assign reg2hw.mio_pad_attr[8].invert.qe = mio_pad_attr_8_qe;
+  assign reg2hw.mio_pad_attr[8].puen.qe = mio_pad_attr_8_qe;
 
-  //   F[virtual_od_en_8]: 1:1
+  //   F[pden_8]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_8_virtual_od_en_8 (
+  ) u_mio_pad_attr_8_pden_8 (
     .re     (mio_pad_attr_8_re),
     .we     (mio_pad_attr_8_gated_we),
-    .wd     (mio_pad_attr_8_virtual_od_en_8_wd),
-    .d      (hw2reg.mio_pad_attr[8].virtual_od_en.d),
+    .wd     (mio_pad_attr_8_pden_8_wd),
+    .d      (hw2reg.mio_pad_attr[8].pden.d),
     .qre    (),
     .qe     (mio_pad_attr_8_flds_we[1]),
-    .q      (reg2hw.mio_pad_attr[8].virtual_od_en.q),
+    .q      (reg2hw.mio_pad_attr[8].pden.q),
     .ds     (),
-    .qs     (mio_pad_attr_8_virtual_od_en_8_qs)
+    .qs     (mio_pad_attr_8_pden_8_qs)
   );
-  assign reg2hw.mio_pad_attr[8].virtual_od_en.qe = mio_pad_attr_8_qe;
+  assign reg2hw.mio_pad_attr[8].pden.qe = mio_pad_attr_8_qe;
 
-  //   F[pull_en_8]: 2:2
+  //   F[smten_8]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_8_pull_en_8 (
+  ) u_mio_pad_attr_8_smten_8 (
     .re     (mio_pad_attr_8_re),
     .we     (mio_pad_attr_8_gated_we),
-    .wd     (mio_pad_attr_8_pull_en_8_wd),
-    .d      (hw2reg.mio_pad_attr[8].pull_en.d),
+    .wd     (mio_pad_attr_8_smten_8_wd),
+    .d      (hw2reg.mio_pad_attr[8].smten.d),
     .qre    (),
     .qe     (mio_pad_attr_8_flds_we[2]),
-    .q      (reg2hw.mio_pad_attr[8].pull_en.q),
+    .q      (reg2hw.mio_pad_attr[8].smten.q),
     .ds     (),
-    .qs     (mio_pad_attr_8_pull_en_8_qs)
+    .qs     (mio_pad_attr_8_smten_8_qs)
   );
-  assign reg2hw.mio_pad_attr[8].pull_en.qe = mio_pad_attr_8_qe;
+  assign reg2hw.mio_pad_attr[8].smten.qe = mio_pad_attr_8_qe;
 
-  //   F[pull_select_8]: 3:3
+  //   F[drv_8]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_8_pull_select_8 (
+    .DW    (3)
+  ) u_mio_pad_attr_8_drv_8 (
     .re     (mio_pad_attr_8_re),
     .we     (mio_pad_attr_8_gated_we),
-    .wd     (mio_pad_attr_8_pull_select_8_wd),
-    .d      (hw2reg.mio_pad_attr[8].pull_select.d),
+    .wd     (mio_pad_attr_8_drv_8_wd),
+    .d      (hw2reg.mio_pad_attr[8].drv.d),
     .qre    (),
     .qe     (mio_pad_attr_8_flds_we[3]),
-    .q      (reg2hw.mio_pad_attr[8].pull_select.q),
+    .q      (reg2hw.mio_pad_attr[8].drv.q),
     .ds     (),
-    .qs     (mio_pad_attr_8_pull_select_8_qs)
+    .qs     (mio_pad_attr_8_drv_8_qs)
   );
-  assign reg2hw.mio_pad_attr[8].pull_select.qe = mio_pad_attr_8_qe;
-
-  //   F[keeper_en_8]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_8_keeper_en_8 (
-    .re     (mio_pad_attr_8_re),
-    .we     (mio_pad_attr_8_gated_we),
-    .wd     (mio_pad_attr_8_keeper_en_8_wd),
-    .d      (hw2reg.mio_pad_attr[8].keeper_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_8_flds_we[4]),
-    .q      (reg2hw.mio_pad_attr[8].keeper_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_8_keeper_en_8_qs)
-  );
-  assign reg2hw.mio_pad_attr[8].keeper_en.qe = mio_pad_attr_8_qe;
-
-  //   F[schmitt_en_8]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_8_schmitt_en_8 (
-    .re     (mio_pad_attr_8_re),
-    .we     (mio_pad_attr_8_gated_we),
-    .wd     (mio_pad_attr_8_schmitt_en_8_wd),
-    .d      (hw2reg.mio_pad_attr[8].schmitt_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_8_flds_we[5]),
-    .q      (reg2hw.mio_pad_attr[8].schmitt_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_8_schmitt_en_8_qs)
-  );
-  assign reg2hw.mio_pad_attr[8].schmitt_en.qe = mio_pad_attr_8_qe;
-
-  //   F[od_en_8]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_8_od_en_8 (
-    .re     (mio_pad_attr_8_re),
-    .we     (mio_pad_attr_8_gated_we),
-    .wd     (mio_pad_attr_8_od_en_8_wd),
-    .d      (hw2reg.mio_pad_attr[8].od_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_8_flds_we[6]),
-    .q      (reg2hw.mio_pad_attr[8].od_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_8_od_en_8_qs)
-  );
-  assign reg2hw.mio_pad_attr[8].od_en.qe = mio_pad_attr_8_qe;
-
-  //   F[input_disable_8]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_8_input_disable_8 (
-    .re     (mio_pad_attr_8_re),
-    .we     (mio_pad_attr_8_gated_we),
-    .wd     (mio_pad_attr_8_input_disable_8_wd),
-    .d      (hw2reg.mio_pad_attr[8].input_disable.d),
-    .qre    (),
-    .qe     (mio_pad_attr_8_flds_we[7]),
-    .q      (reg2hw.mio_pad_attr[8].input_disable.q),
-    .ds     (),
-    .qs     (mio_pad_attr_8_input_disable_8_qs)
-  );
-  assign reg2hw.mio_pad_attr[8].input_disable.qe = mio_pad_attr_8_qe;
-
-  //   F[slew_rate_8]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_mio_pad_attr_8_slew_rate_8 (
-    .re     (mio_pad_attr_8_re),
-    .we     (mio_pad_attr_8_gated_we),
-    .wd     (mio_pad_attr_8_slew_rate_8_wd),
-    .d      (hw2reg.mio_pad_attr[8].slew_rate.d),
-    .qre    (),
-    .qe     (mio_pad_attr_8_flds_we[8]),
-    .q      (reg2hw.mio_pad_attr[8].slew_rate.q),
-    .ds     (),
-    .qs     (mio_pad_attr_8_slew_rate_8_qs)
-  );
-  assign reg2hw.mio_pad_attr[8].slew_rate.qe = mio_pad_attr_8_qe;
-
-  //   F[drive_strength_8]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_mio_pad_attr_8_drive_strength_8 (
-    .re     (mio_pad_attr_8_re),
-    .we     (mio_pad_attr_8_gated_we),
-    .wd     (mio_pad_attr_8_drive_strength_8_wd),
-    .d      (hw2reg.mio_pad_attr[8].drive_strength.d),
-    .qre    (),
-    .qe     (mio_pad_attr_8_flds_we[9]),
-    .q      (reg2hw.mio_pad_attr[8].drive_strength.q),
-    .ds     (),
-    .qs     (mio_pad_attr_8_drive_strength_8_qs)
-  );
-  assign reg2hw.mio_pad_attr[8].drive_strength.qe = mio_pad_attr_8_qe;
+  assign reg2hw.mio_pad_attr[8].drv.qe = mio_pad_attr_8_qe;
 
 
   // Subregister 9 of Multireg mio_pad_attr
   // R[mio_pad_attr_9]: V(True)
   logic mio_pad_attr_9_qe;
-  logic [9:0] mio_pad_attr_9_flds_we;
+  logic [3:0] mio_pad_attr_9_flds_we;
   assign mio_pad_attr_9_qe = &mio_pad_attr_9_flds_we;
   // Create REGWEN-gated WE signal
   logic mio_pad_attr_9_gated_we;
   assign mio_pad_attr_9_gated_we = mio_pad_attr_9_we & mio_pad_attr_regwen_9_qs;
-  //   F[invert_9]: 0:0
+  //   F[puen_9]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_9_invert_9 (
+  ) u_mio_pad_attr_9_puen_9 (
     .re     (mio_pad_attr_9_re),
     .we     (mio_pad_attr_9_gated_we),
-    .wd     (mio_pad_attr_9_invert_9_wd),
-    .d      (hw2reg.mio_pad_attr[9].invert.d),
+    .wd     (mio_pad_attr_9_puen_9_wd),
+    .d      (hw2reg.mio_pad_attr[9].puen.d),
     .qre    (),
     .qe     (mio_pad_attr_9_flds_we[0]),
-    .q      (reg2hw.mio_pad_attr[9].invert.q),
+    .q      (reg2hw.mio_pad_attr[9].puen.q),
     .ds     (),
-    .qs     (mio_pad_attr_9_invert_9_qs)
+    .qs     (mio_pad_attr_9_puen_9_qs)
   );
-  assign reg2hw.mio_pad_attr[9].invert.qe = mio_pad_attr_9_qe;
+  assign reg2hw.mio_pad_attr[9].puen.qe = mio_pad_attr_9_qe;
 
-  //   F[virtual_od_en_9]: 1:1
+  //   F[pden_9]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_9_virtual_od_en_9 (
+  ) u_mio_pad_attr_9_pden_9 (
     .re     (mio_pad_attr_9_re),
     .we     (mio_pad_attr_9_gated_we),
-    .wd     (mio_pad_attr_9_virtual_od_en_9_wd),
-    .d      (hw2reg.mio_pad_attr[9].virtual_od_en.d),
+    .wd     (mio_pad_attr_9_pden_9_wd),
+    .d      (hw2reg.mio_pad_attr[9].pden.d),
     .qre    (),
     .qe     (mio_pad_attr_9_flds_we[1]),
-    .q      (reg2hw.mio_pad_attr[9].virtual_od_en.q),
+    .q      (reg2hw.mio_pad_attr[9].pden.q),
     .ds     (),
-    .qs     (mio_pad_attr_9_virtual_od_en_9_qs)
+    .qs     (mio_pad_attr_9_pden_9_qs)
   );
-  assign reg2hw.mio_pad_attr[9].virtual_od_en.qe = mio_pad_attr_9_qe;
+  assign reg2hw.mio_pad_attr[9].pden.qe = mio_pad_attr_9_qe;
 
-  //   F[pull_en_9]: 2:2
+  //   F[smten_9]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_9_pull_en_9 (
+  ) u_mio_pad_attr_9_smten_9 (
     .re     (mio_pad_attr_9_re),
     .we     (mio_pad_attr_9_gated_we),
-    .wd     (mio_pad_attr_9_pull_en_9_wd),
-    .d      (hw2reg.mio_pad_attr[9].pull_en.d),
+    .wd     (mio_pad_attr_9_smten_9_wd),
+    .d      (hw2reg.mio_pad_attr[9].smten.d),
     .qre    (),
     .qe     (mio_pad_attr_9_flds_we[2]),
-    .q      (reg2hw.mio_pad_attr[9].pull_en.q),
+    .q      (reg2hw.mio_pad_attr[9].smten.q),
     .ds     (),
-    .qs     (mio_pad_attr_9_pull_en_9_qs)
+    .qs     (mio_pad_attr_9_smten_9_qs)
   );
-  assign reg2hw.mio_pad_attr[9].pull_en.qe = mio_pad_attr_9_qe;
+  assign reg2hw.mio_pad_attr[9].smten.qe = mio_pad_attr_9_qe;
 
-  //   F[pull_select_9]: 3:3
+  //   F[drv_9]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_9_pull_select_9 (
+    .DW    (3)
+  ) u_mio_pad_attr_9_drv_9 (
     .re     (mio_pad_attr_9_re),
     .we     (mio_pad_attr_9_gated_we),
-    .wd     (mio_pad_attr_9_pull_select_9_wd),
-    .d      (hw2reg.mio_pad_attr[9].pull_select.d),
+    .wd     (mio_pad_attr_9_drv_9_wd),
+    .d      (hw2reg.mio_pad_attr[9].drv.d),
     .qre    (),
     .qe     (mio_pad_attr_9_flds_we[3]),
-    .q      (reg2hw.mio_pad_attr[9].pull_select.q),
+    .q      (reg2hw.mio_pad_attr[9].drv.q),
     .ds     (),
-    .qs     (mio_pad_attr_9_pull_select_9_qs)
+    .qs     (mio_pad_attr_9_drv_9_qs)
   );
-  assign reg2hw.mio_pad_attr[9].pull_select.qe = mio_pad_attr_9_qe;
-
-  //   F[keeper_en_9]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_9_keeper_en_9 (
-    .re     (mio_pad_attr_9_re),
-    .we     (mio_pad_attr_9_gated_we),
-    .wd     (mio_pad_attr_9_keeper_en_9_wd),
-    .d      (hw2reg.mio_pad_attr[9].keeper_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_9_flds_we[4]),
-    .q      (reg2hw.mio_pad_attr[9].keeper_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_9_keeper_en_9_qs)
-  );
-  assign reg2hw.mio_pad_attr[9].keeper_en.qe = mio_pad_attr_9_qe;
-
-  //   F[schmitt_en_9]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_9_schmitt_en_9 (
-    .re     (mio_pad_attr_9_re),
-    .we     (mio_pad_attr_9_gated_we),
-    .wd     (mio_pad_attr_9_schmitt_en_9_wd),
-    .d      (hw2reg.mio_pad_attr[9].schmitt_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_9_flds_we[5]),
-    .q      (reg2hw.mio_pad_attr[9].schmitt_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_9_schmitt_en_9_qs)
-  );
-  assign reg2hw.mio_pad_attr[9].schmitt_en.qe = mio_pad_attr_9_qe;
-
-  //   F[od_en_9]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_9_od_en_9 (
-    .re     (mio_pad_attr_9_re),
-    .we     (mio_pad_attr_9_gated_we),
-    .wd     (mio_pad_attr_9_od_en_9_wd),
-    .d      (hw2reg.mio_pad_attr[9].od_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_9_flds_we[6]),
-    .q      (reg2hw.mio_pad_attr[9].od_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_9_od_en_9_qs)
-  );
-  assign reg2hw.mio_pad_attr[9].od_en.qe = mio_pad_attr_9_qe;
-
-  //   F[input_disable_9]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_9_input_disable_9 (
-    .re     (mio_pad_attr_9_re),
-    .we     (mio_pad_attr_9_gated_we),
-    .wd     (mio_pad_attr_9_input_disable_9_wd),
-    .d      (hw2reg.mio_pad_attr[9].input_disable.d),
-    .qre    (),
-    .qe     (mio_pad_attr_9_flds_we[7]),
-    .q      (reg2hw.mio_pad_attr[9].input_disable.q),
-    .ds     (),
-    .qs     (mio_pad_attr_9_input_disable_9_qs)
-  );
-  assign reg2hw.mio_pad_attr[9].input_disable.qe = mio_pad_attr_9_qe;
-
-  //   F[slew_rate_9]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_mio_pad_attr_9_slew_rate_9 (
-    .re     (mio_pad_attr_9_re),
-    .we     (mio_pad_attr_9_gated_we),
-    .wd     (mio_pad_attr_9_slew_rate_9_wd),
-    .d      (hw2reg.mio_pad_attr[9].slew_rate.d),
-    .qre    (),
-    .qe     (mio_pad_attr_9_flds_we[8]),
-    .q      (reg2hw.mio_pad_attr[9].slew_rate.q),
-    .ds     (),
-    .qs     (mio_pad_attr_9_slew_rate_9_qs)
-  );
-  assign reg2hw.mio_pad_attr[9].slew_rate.qe = mio_pad_attr_9_qe;
-
-  //   F[drive_strength_9]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_mio_pad_attr_9_drive_strength_9 (
-    .re     (mio_pad_attr_9_re),
-    .we     (mio_pad_attr_9_gated_we),
-    .wd     (mio_pad_attr_9_drive_strength_9_wd),
-    .d      (hw2reg.mio_pad_attr[9].drive_strength.d),
-    .qre    (),
-    .qe     (mio_pad_attr_9_flds_we[9]),
-    .q      (reg2hw.mio_pad_attr[9].drive_strength.q),
-    .ds     (),
-    .qs     (mio_pad_attr_9_drive_strength_9_qs)
-  );
-  assign reg2hw.mio_pad_attr[9].drive_strength.qe = mio_pad_attr_9_qe;
+  assign reg2hw.mio_pad_attr[9].drv.qe = mio_pad_attr_9_qe;
 
 
   // Subregister 10 of Multireg mio_pad_attr
   // R[mio_pad_attr_10]: V(True)
   logic mio_pad_attr_10_qe;
-  logic [9:0] mio_pad_attr_10_flds_we;
+  logic [3:0] mio_pad_attr_10_flds_we;
   assign mio_pad_attr_10_qe = &mio_pad_attr_10_flds_we;
   // Create REGWEN-gated WE signal
   logic mio_pad_attr_10_gated_we;
   assign mio_pad_attr_10_gated_we = mio_pad_attr_10_we & mio_pad_attr_regwen_10_qs;
-  //   F[invert_10]: 0:0
+  //   F[puen_10]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_10_invert_10 (
+  ) u_mio_pad_attr_10_puen_10 (
     .re     (mio_pad_attr_10_re),
     .we     (mio_pad_attr_10_gated_we),
-    .wd     (mio_pad_attr_10_invert_10_wd),
-    .d      (hw2reg.mio_pad_attr[10].invert.d),
+    .wd     (mio_pad_attr_10_puen_10_wd),
+    .d      (hw2reg.mio_pad_attr[10].puen.d),
     .qre    (),
     .qe     (mio_pad_attr_10_flds_we[0]),
-    .q      (reg2hw.mio_pad_attr[10].invert.q),
+    .q      (reg2hw.mio_pad_attr[10].puen.q),
     .ds     (),
-    .qs     (mio_pad_attr_10_invert_10_qs)
+    .qs     (mio_pad_attr_10_puen_10_qs)
   );
-  assign reg2hw.mio_pad_attr[10].invert.qe = mio_pad_attr_10_qe;
+  assign reg2hw.mio_pad_attr[10].puen.qe = mio_pad_attr_10_qe;
 
-  //   F[virtual_od_en_10]: 1:1
+  //   F[pden_10]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_10_virtual_od_en_10 (
+  ) u_mio_pad_attr_10_pden_10 (
     .re     (mio_pad_attr_10_re),
     .we     (mio_pad_attr_10_gated_we),
-    .wd     (mio_pad_attr_10_virtual_od_en_10_wd),
-    .d      (hw2reg.mio_pad_attr[10].virtual_od_en.d),
+    .wd     (mio_pad_attr_10_pden_10_wd),
+    .d      (hw2reg.mio_pad_attr[10].pden.d),
     .qre    (),
     .qe     (mio_pad_attr_10_flds_we[1]),
-    .q      (reg2hw.mio_pad_attr[10].virtual_od_en.q),
+    .q      (reg2hw.mio_pad_attr[10].pden.q),
     .ds     (),
-    .qs     (mio_pad_attr_10_virtual_od_en_10_qs)
+    .qs     (mio_pad_attr_10_pden_10_qs)
   );
-  assign reg2hw.mio_pad_attr[10].virtual_od_en.qe = mio_pad_attr_10_qe;
+  assign reg2hw.mio_pad_attr[10].pden.qe = mio_pad_attr_10_qe;
 
-  //   F[pull_en_10]: 2:2
+  //   F[smten_10]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_10_pull_en_10 (
+  ) u_mio_pad_attr_10_smten_10 (
     .re     (mio_pad_attr_10_re),
     .we     (mio_pad_attr_10_gated_we),
-    .wd     (mio_pad_attr_10_pull_en_10_wd),
-    .d      (hw2reg.mio_pad_attr[10].pull_en.d),
+    .wd     (mio_pad_attr_10_smten_10_wd),
+    .d      (hw2reg.mio_pad_attr[10].smten.d),
     .qre    (),
     .qe     (mio_pad_attr_10_flds_we[2]),
-    .q      (reg2hw.mio_pad_attr[10].pull_en.q),
+    .q      (reg2hw.mio_pad_attr[10].smten.q),
     .ds     (),
-    .qs     (mio_pad_attr_10_pull_en_10_qs)
+    .qs     (mio_pad_attr_10_smten_10_qs)
   );
-  assign reg2hw.mio_pad_attr[10].pull_en.qe = mio_pad_attr_10_qe;
+  assign reg2hw.mio_pad_attr[10].smten.qe = mio_pad_attr_10_qe;
 
-  //   F[pull_select_10]: 3:3
+  //   F[drv_10]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_10_pull_select_10 (
+    .DW    (3)
+  ) u_mio_pad_attr_10_drv_10 (
     .re     (mio_pad_attr_10_re),
     .we     (mio_pad_attr_10_gated_we),
-    .wd     (mio_pad_attr_10_pull_select_10_wd),
-    .d      (hw2reg.mio_pad_attr[10].pull_select.d),
+    .wd     (mio_pad_attr_10_drv_10_wd),
+    .d      (hw2reg.mio_pad_attr[10].drv.d),
     .qre    (),
     .qe     (mio_pad_attr_10_flds_we[3]),
-    .q      (reg2hw.mio_pad_attr[10].pull_select.q),
+    .q      (reg2hw.mio_pad_attr[10].drv.q),
     .ds     (),
-    .qs     (mio_pad_attr_10_pull_select_10_qs)
+    .qs     (mio_pad_attr_10_drv_10_qs)
   );
-  assign reg2hw.mio_pad_attr[10].pull_select.qe = mio_pad_attr_10_qe;
-
-  //   F[keeper_en_10]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_10_keeper_en_10 (
-    .re     (mio_pad_attr_10_re),
-    .we     (mio_pad_attr_10_gated_we),
-    .wd     (mio_pad_attr_10_keeper_en_10_wd),
-    .d      (hw2reg.mio_pad_attr[10].keeper_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_10_flds_we[4]),
-    .q      (reg2hw.mio_pad_attr[10].keeper_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_10_keeper_en_10_qs)
-  );
-  assign reg2hw.mio_pad_attr[10].keeper_en.qe = mio_pad_attr_10_qe;
-
-  //   F[schmitt_en_10]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_10_schmitt_en_10 (
-    .re     (mio_pad_attr_10_re),
-    .we     (mio_pad_attr_10_gated_we),
-    .wd     (mio_pad_attr_10_schmitt_en_10_wd),
-    .d      (hw2reg.mio_pad_attr[10].schmitt_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_10_flds_we[5]),
-    .q      (reg2hw.mio_pad_attr[10].schmitt_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_10_schmitt_en_10_qs)
-  );
-  assign reg2hw.mio_pad_attr[10].schmitt_en.qe = mio_pad_attr_10_qe;
-
-  //   F[od_en_10]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_10_od_en_10 (
-    .re     (mio_pad_attr_10_re),
-    .we     (mio_pad_attr_10_gated_we),
-    .wd     (mio_pad_attr_10_od_en_10_wd),
-    .d      (hw2reg.mio_pad_attr[10].od_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_10_flds_we[6]),
-    .q      (reg2hw.mio_pad_attr[10].od_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_10_od_en_10_qs)
-  );
-  assign reg2hw.mio_pad_attr[10].od_en.qe = mio_pad_attr_10_qe;
-
-  //   F[input_disable_10]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_10_input_disable_10 (
-    .re     (mio_pad_attr_10_re),
-    .we     (mio_pad_attr_10_gated_we),
-    .wd     (mio_pad_attr_10_input_disable_10_wd),
-    .d      (hw2reg.mio_pad_attr[10].input_disable.d),
-    .qre    (),
-    .qe     (mio_pad_attr_10_flds_we[7]),
-    .q      (reg2hw.mio_pad_attr[10].input_disable.q),
-    .ds     (),
-    .qs     (mio_pad_attr_10_input_disable_10_qs)
-  );
-  assign reg2hw.mio_pad_attr[10].input_disable.qe = mio_pad_attr_10_qe;
-
-  //   F[slew_rate_10]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_mio_pad_attr_10_slew_rate_10 (
-    .re     (mio_pad_attr_10_re),
-    .we     (mio_pad_attr_10_gated_we),
-    .wd     (mio_pad_attr_10_slew_rate_10_wd),
-    .d      (hw2reg.mio_pad_attr[10].slew_rate.d),
-    .qre    (),
-    .qe     (mio_pad_attr_10_flds_we[8]),
-    .q      (reg2hw.mio_pad_attr[10].slew_rate.q),
-    .ds     (),
-    .qs     (mio_pad_attr_10_slew_rate_10_qs)
-  );
-  assign reg2hw.mio_pad_attr[10].slew_rate.qe = mio_pad_attr_10_qe;
-
-  //   F[drive_strength_10]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_mio_pad_attr_10_drive_strength_10 (
-    .re     (mio_pad_attr_10_re),
-    .we     (mio_pad_attr_10_gated_we),
-    .wd     (mio_pad_attr_10_drive_strength_10_wd),
-    .d      (hw2reg.mio_pad_attr[10].drive_strength.d),
-    .qre    (),
-    .qe     (mio_pad_attr_10_flds_we[9]),
-    .q      (reg2hw.mio_pad_attr[10].drive_strength.q),
-    .ds     (),
-    .qs     (mio_pad_attr_10_drive_strength_10_qs)
-  );
-  assign reg2hw.mio_pad_attr[10].drive_strength.qe = mio_pad_attr_10_qe;
+  assign reg2hw.mio_pad_attr[10].drv.qe = mio_pad_attr_10_qe;
 
 
   // Subregister 11 of Multireg mio_pad_attr
   // R[mio_pad_attr_11]: V(True)
   logic mio_pad_attr_11_qe;
-  logic [9:0] mio_pad_attr_11_flds_we;
+  logic [3:0] mio_pad_attr_11_flds_we;
   assign mio_pad_attr_11_qe = &mio_pad_attr_11_flds_we;
   // Create REGWEN-gated WE signal
   logic mio_pad_attr_11_gated_we;
   assign mio_pad_attr_11_gated_we = mio_pad_attr_11_we & mio_pad_attr_regwen_11_qs;
-  //   F[invert_11]: 0:0
+  //   F[puen_11]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_11_invert_11 (
+  ) u_mio_pad_attr_11_puen_11 (
     .re     (mio_pad_attr_11_re),
     .we     (mio_pad_attr_11_gated_we),
-    .wd     (mio_pad_attr_11_invert_11_wd),
-    .d      (hw2reg.mio_pad_attr[11].invert.d),
+    .wd     (mio_pad_attr_11_puen_11_wd),
+    .d      (hw2reg.mio_pad_attr[11].puen.d),
     .qre    (),
     .qe     (mio_pad_attr_11_flds_we[0]),
-    .q      (reg2hw.mio_pad_attr[11].invert.q),
+    .q      (reg2hw.mio_pad_attr[11].puen.q),
     .ds     (),
-    .qs     (mio_pad_attr_11_invert_11_qs)
+    .qs     (mio_pad_attr_11_puen_11_qs)
   );
-  assign reg2hw.mio_pad_attr[11].invert.qe = mio_pad_attr_11_qe;
+  assign reg2hw.mio_pad_attr[11].puen.qe = mio_pad_attr_11_qe;
 
-  //   F[virtual_od_en_11]: 1:1
+  //   F[pden_11]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_11_virtual_od_en_11 (
+  ) u_mio_pad_attr_11_pden_11 (
     .re     (mio_pad_attr_11_re),
     .we     (mio_pad_attr_11_gated_we),
-    .wd     (mio_pad_attr_11_virtual_od_en_11_wd),
-    .d      (hw2reg.mio_pad_attr[11].virtual_od_en.d),
+    .wd     (mio_pad_attr_11_pden_11_wd),
+    .d      (hw2reg.mio_pad_attr[11].pden.d),
     .qre    (),
     .qe     (mio_pad_attr_11_flds_we[1]),
-    .q      (reg2hw.mio_pad_attr[11].virtual_od_en.q),
+    .q      (reg2hw.mio_pad_attr[11].pden.q),
     .ds     (),
-    .qs     (mio_pad_attr_11_virtual_od_en_11_qs)
+    .qs     (mio_pad_attr_11_pden_11_qs)
   );
-  assign reg2hw.mio_pad_attr[11].virtual_od_en.qe = mio_pad_attr_11_qe;
+  assign reg2hw.mio_pad_attr[11].pden.qe = mio_pad_attr_11_qe;
 
-  //   F[pull_en_11]: 2:2
+  //   F[smten_11]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_mio_pad_attr_11_pull_en_11 (
+  ) u_mio_pad_attr_11_smten_11 (
     .re     (mio_pad_attr_11_re),
     .we     (mio_pad_attr_11_gated_we),
-    .wd     (mio_pad_attr_11_pull_en_11_wd),
-    .d      (hw2reg.mio_pad_attr[11].pull_en.d),
+    .wd     (mio_pad_attr_11_smten_11_wd),
+    .d      (hw2reg.mio_pad_attr[11].smten.d),
     .qre    (),
     .qe     (mio_pad_attr_11_flds_we[2]),
-    .q      (reg2hw.mio_pad_attr[11].pull_en.q),
+    .q      (reg2hw.mio_pad_attr[11].smten.q),
     .ds     (),
-    .qs     (mio_pad_attr_11_pull_en_11_qs)
+    .qs     (mio_pad_attr_11_smten_11_qs)
   );
-  assign reg2hw.mio_pad_attr[11].pull_en.qe = mio_pad_attr_11_qe;
+  assign reg2hw.mio_pad_attr[11].smten.qe = mio_pad_attr_11_qe;
 
-  //   F[pull_select_11]: 3:3
+  //   F[drv_11]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_11_pull_select_11 (
+    .DW    (3)
+  ) u_mio_pad_attr_11_drv_11 (
     .re     (mio_pad_attr_11_re),
     .we     (mio_pad_attr_11_gated_we),
-    .wd     (mio_pad_attr_11_pull_select_11_wd),
-    .d      (hw2reg.mio_pad_attr[11].pull_select.d),
+    .wd     (mio_pad_attr_11_drv_11_wd),
+    .d      (hw2reg.mio_pad_attr[11].drv.d),
     .qre    (),
     .qe     (mio_pad_attr_11_flds_we[3]),
-    .q      (reg2hw.mio_pad_attr[11].pull_select.q),
+    .q      (reg2hw.mio_pad_attr[11].drv.q),
     .ds     (),
-    .qs     (mio_pad_attr_11_pull_select_11_qs)
+    .qs     (mio_pad_attr_11_drv_11_qs)
   );
-  assign reg2hw.mio_pad_attr[11].pull_select.qe = mio_pad_attr_11_qe;
-
-  //   F[keeper_en_11]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_11_keeper_en_11 (
-    .re     (mio_pad_attr_11_re),
-    .we     (mio_pad_attr_11_gated_we),
-    .wd     (mio_pad_attr_11_keeper_en_11_wd),
-    .d      (hw2reg.mio_pad_attr[11].keeper_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_11_flds_we[4]),
-    .q      (reg2hw.mio_pad_attr[11].keeper_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_11_keeper_en_11_qs)
-  );
-  assign reg2hw.mio_pad_attr[11].keeper_en.qe = mio_pad_attr_11_qe;
-
-  //   F[schmitt_en_11]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_11_schmitt_en_11 (
-    .re     (mio_pad_attr_11_re),
-    .we     (mio_pad_attr_11_gated_we),
-    .wd     (mio_pad_attr_11_schmitt_en_11_wd),
-    .d      (hw2reg.mio_pad_attr[11].schmitt_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_11_flds_we[5]),
-    .q      (reg2hw.mio_pad_attr[11].schmitt_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_11_schmitt_en_11_qs)
-  );
-  assign reg2hw.mio_pad_attr[11].schmitt_en.qe = mio_pad_attr_11_qe;
-
-  //   F[od_en_11]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_11_od_en_11 (
-    .re     (mio_pad_attr_11_re),
-    .we     (mio_pad_attr_11_gated_we),
-    .wd     (mio_pad_attr_11_od_en_11_wd),
-    .d      (hw2reg.mio_pad_attr[11].od_en.d),
-    .qre    (),
-    .qe     (mio_pad_attr_11_flds_we[6]),
-    .q      (reg2hw.mio_pad_attr[11].od_en.q),
-    .ds     (),
-    .qs     (mio_pad_attr_11_od_en_11_qs)
-  );
-  assign reg2hw.mio_pad_attr[11].od_en.qe = mio_pad_attr_11_qe;
-
-  //   F[input_disable_11]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_mio_pad_attr_11_input_disable_11 (
-    .re     (mio_pad_attr_11_re),
-    .we     (mio_pad_attr_11_gated_we),
-    .wd     (mio_pad_attr_11_input_disable_11_wd),
-    .d      (hw2reg.mio_pad_attr[11].input_disable.d),
-    .qre    (),
-    .qe     (mio_pad_attr_11_flds_we[7]),
-    .q      (reg2hw.mio_pad_attr[11].input_disable.q),
-    .ds     (),
-    .qs     (mio_pad_attr_11_input_disable_11_qs)
-  );
-  assign reg2hw.mio_pad_attr[11].input_disable.qe = mio_pad_attr_11_qe;
-
-  //   F[slew_rate_11]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_mio_pad_attr_11_slew_rate_11 (
-    .re     (mio_pad_attr_11_re),
-    .we     (mio_pad_attr_11_gated_we),
-    .wd     (mio_pad_attr_11_slew_rate_11_wd),
-    .d      (hw2reg.mio_pad_attr[11].slew_rate.d),
-    .qre    (),
-    .qe     (mio_pad_attr_11_flds_we[8]),
-    .q      (reg2hw.mio_pad_attr[11].slew_rate.q),
-    .ds     (),
-    .qs     (mio_pad_attr_11_slew_rate_11_qs)
-  );
-  assign reg2hw.mio_pad_attr[11].slew_rate.qe = mio_pad_attr_11_qe;
-
-  //   F[drive_strength_11]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_mio_pad_attr_11_drive_strength_11 (
-    .re     (mio_pad_attr_11_re),
-    .we     (mio_pad_attr_11_gated_we),
-    .wd     (mio_pad_attr_11_drive_strength_11_wd),
-    .d      (hw2reg.mio_pad_attr[11].drive_strength.d),
-    .qre    (),
-    .qe     (mio_pad_attr_11_flds_we[9]),
-    .q      (reg2hw.mio_pad_attr[11].drive_strength.q),
-    .ds     (),
-    .qs     (mio_pad_attr_11_drive_strength_11_qs)
-  );
-  assign reg2hw.mio_pad_attr[11].drive_strength.qe = mio_pad_attr_11_qe;
+  assign reg2hw.mio_pad_attr[11].drv.qe = mio_pad_attr_11_qe;
 
 
   // Subregister 0 of Multireg dio_pad_attr_regwen
@@ -9943,12338 +7771,5330 @@ module pinmux_reg_top (
   // Subregister 0 of Multireg dio_pad_attr
   // R[dio_pad_attr_0]: V(True)
   logic dio_pad_attr_0_qe;
-  logic [9:0] dio_pad_attr_0_flds_we;
+  logic [3:0] dio_pad_attr_0_flds_we;
   assign dio_pad_attr_0_qe = &dio_pad_attr_0_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_0_gated_we;
   assign dio_pad_attr_0_gated_we = dio_pad_attr_0_we & dio_pad_attr_regwen_0_qs;
-  //   F[invert_0]: 0:0
+  //   F[puen_0]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_0_invert_0 (
+  ) u_dio_pad_attr_0_puen_0 (
     .re     (dio_pad_attr_0_re),
     .we     (dio_pad_attr_0_gated_we),
-    .wd     (dio_pad_attr_0_invert_0_wd),
-    .d      (hw2reg.dio_pad_attr[0].invert.d),
+    .wd     (dio_pad_attr_0_puen_0_wd),
+    .d      (hw2reg.dio_pad_attr[0].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_0_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[0].invert.q),
+    .q      (reg2hw.dio_pad_attr[0].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_0_invert_0_qs)
+    .qs     (dio_pad_attr_0_puen_0_qs)
   );
-  assign reg2hw.dio_pad_attr[0].invert.qe = dio_pad_attr_0_qe;
+  assign reg2hw.dio_pad_attr[0].puen.qe = dio_pad_attr_0_qe;
 
-  //   F[virtual_od_en_0]: 1:1
+  //   F[pden_0]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_0_virtual_od_en_0 (
+  ) u_dio_pad_attr_0_pden_0 (
     .re     (dio_pad_attr_0_re),
     .we     (dio_pad_attr_0_gated_we),
-    .wd     (dio_pad_attr_0_virtual_od_en_0_wd),
-    .d      (hw2reg.dio_pad_attr[0].virtual_od_en.d),
+    .wd     (dio_pad_attr_0_pden_0_wd),
+    .d      (hw2reg.dio_pad_attr[0].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_0_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[0].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[0].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_0_virtual_od_en_0_qs)
+    .qs     (dio_pad_attr_0_pden_0_qs)
   );
-  assign reg2hw.dio_pad_attr[0].virtual_od_en.qe = dio_pad_attr_0_qe;
+  assign reg2hw.dio_pad_attr[0].pden.qe = dio_pad_attr_0_qe;
 
-  //   F[pull_en_0]: 2:2
+  //   F[smten_0]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_0_pull_en_0 (
+  ) u_dio_pad_attr_0_smten_0 (
     .re     (dio_pad_attr_0_re),
     .we     (dio_pad_attr_0_gated_we),
-    .wd     (dio_pad_attr_0_pull_en_0_wd),
-    .d      (hw2reg.dio_pad_attr[0].pull_en.d),
+    .wd     (dio_pad_attr_0_smten_0_wd),
+    .d      (hw2reg.dio_pad_attr[0].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_0_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[0].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[0].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_0_pull_en_0_qs)
+    .qs     (dio_pad_attr_0_smten_0_qs)
   );
-  assign reg2hw.dio_pad_attr[0].pull_en.qe = dio_pad_attr_0_qe;
+  assign reg2hw.dio_pad_attr[0].smten.qe = dio_pad_attr_0_qe;
 
-  //   F[pull_select_0]: 3:3
+  //   F[drv_0]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_0_pull_select_0 (
+    .DW    (3)
+  ) u_dio_pad_attr_0_drv_0 (
     .re     (dio_pad_attr_0_re),
     .we     (dio_pad_attr_0_gated_we),
-    .wd     (dio_pad_attr_0_pull_select_0_wd),
-    .d      (hw2reg.dio_pad_attr[0].pull_select.d),
+    .wd     (dio_pad_attr_0_drv_0_wd),
+    .d      (hw2reg.dio_pad_attr[0].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_0_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[0].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[0].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_0_pull_select_0_qs)
+    .qs     (dio_pad_attr_0_drv_0_qs)
   );
-  assign reg2hw.dio_pad_attr[0].pull_select.qe = dio_pad_attr_0_qe;
-
-  //   F[keeper_en_0]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_0_keeper_en_0 (
-    .re     (dio_pad_attr_0_re),
-    .we     (dio_pad_attr_0_gated_we),
-    .wd     (dio_pad_attr_0_keeper_en_0_wd),
-    .d      (hw2reg.dio_pad_attr[0].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_0_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[0].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_0_keeper_en_0_qs)
-  );
-  assign reg2hw.dio_pad_attr[0].keeper_en.qe = dio_pad_attr_0_qe;
-
-  //   F[schmitt_en_0]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_0_schmitt_en_0 (
-    .re     (dio_pad_attr_0_re),
-    .we     (dio_pad_attr_0_gated_we),
-    .wd     (dio_pad_attr_0_schmitt_en_0_wd),
-    .d      (hw2reg.dio_pad_attr[0].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_0_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[0].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_0_schmitt_en_0_qs)
-  );
-  assign reg2hw.dio_pad_attr[0].schmitt_en.qe = dio_pad_attr_0_qe;
-
-  //   F[od_en_0]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_0_od_en_0 (
-    .re     (dio_pad_attr_0_re),
-    .we     (dio_pad_attr_0_gated_we),
-    .wd     (dio_pad_attr_0_od_en_0_wd),
-    .d      (hw2reg.dio_pad_attr[0].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_0_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[0].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_0_od_en_0_qs)
-  );
-  assign reg2hw.dio_pad_attr[0].od_en.qe = dio_pad_attr_0_qe;
-
-  //   F[input_disable_0]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_0_input_disable_0 (
-    .re     (dio_pad_attr_0_re),
-    .we     (dio_pad_attr_0_gated_we),
-    .wd     (dio_pad_attr_0_input_disable_0_wd),
-    .d      (hw2reg.dio_pad_attr[0].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_0_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[0].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_0_input_disable_0_qs)
-  );
-  assign reg2hw.dio_pad_attr[0].input_disable.qe = dio_pad_attr_0_qe;
-
-  //   F[slew_rate_0]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_0_slew_rate_0 (
-    .re     (dio_pad_attr_0_re),
-    .we     (dio_pad_attr_0_gated_we),
-    .wd     (dio_pad_attr_0_slew_rate_0_wd),
-    .d      (hw2reg.dio_pad_attr[0].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_0_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[0].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_0_slew_rate_0_qs)
-  );
-  assign reg2hw.dio_pad_attr[0].slew_rate.qe = dio_pad_attr_0_qe;
-
-  //   F[drive_strength_0]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_0_drive_strength_0 (
-    .re     (dio_pad_attr_0_re),
-    .we     (dio_pad_attr_0_gated_we),
-    .wd     (dio_pad_attr_0_drive_strength_0_wd),
-    .d      (hw2reg.dio_pad_attr[0].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_0_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[0].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_0_drive_strength_0_qs)
-  );
-  assign reg2hw.dio_pad_attr[0].drive_strength.qe = dio_pad_attr_0_qe;
+  assign reg2hw.dio_pad_attr[0].drv.qe = dio_pad_attr_0_qe;
 
 
   // Subregister 1 of Multireg dio_pad_attr
   // R[dio_pad_attr_1]: V(True)
   logic dio_pad_attr_1_qe;
-  logic [9:0] dio_pad_attr_1_flds_we;
+  logic [3:0] dio_pad_attr_1_flds_we;
   assign dio_pad_attr_1_qe = &dio_pad_attr_1_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_1_gated_we;
   assign dio_pad_attr_1_gated_we = dio_pad_attr_1_we & dio_pad_attr_regwen_1_qs;
-  //   F[invert_1]: 0:0
+  //   F[puen_1]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_1_invert_1 (
+  ) u_dio_pad_attr_1_puen_1 (
     .re     (dio_pad_attr_1_re),
     .we     (dio_pad_attr_1_gated_we),
-    .wd     (dio_pad_attr_1_invert_1_wd),
-    .d      (hw2reg.dio_pad_attr[1].invert.d),
+    .wd     (dio_pad_attr_1_puen_1_wd),
+    .d      (hw2reg.dio_pad_attr[1].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_1_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[1].invert.q),
+    .q      (reg2hw.dio_pad_attr[1].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_1_invert_1_qs)
+    .qs     (dio_pad_attr_1_puen_1_qs)
   );
-  assign reg2hw.dio_pad_attr[1].invert.qe = dio_pad_attr_1_qe;
+  assign reg2hw.dio_pad_attr[1].puen.qe = dio_pad_attr_1_qe;
 
-  //   F[virtual_od_en_1]: 1:1
+  //   F[pden_1]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_1_virtual_od_en_1 (
+  ) u_dio_pad_attr_1_pden_1 (
     .re     (dio_pad_attr_1_re),
     .we     (dio_pad_attr_1_gated_we),
-    .wd     (dio_pad_attr_1_virtual_od_en_1_wd),
-    .d      (hw2reg.dio_pad_attr[1].virtual_od_en.d),
+    .wd     (dio_pad_attr_1_pden_1_wd),
+    .d      (hw2reg.dio_pad_attr[1].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_1_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[1].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[1].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_1_virtual_od_en_1_qs)
+    .qs     (dio_pad_attr_1_pden_1_qs)
   );
-  assign reg2hw.dio_pad_attr[1].virtual_od_en.qe = dio_pad_attr_1_qe;
+  assign reg2hw.dio_pad_attr[1].pden.qe = dio_pad_attr_1_qe;
 
-  //   F[pull_en_1]: 2:2
+  //   F[smten_1]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_1_pull_en_1 (
+  ) u_dio_pad_attr_1_smten_1 (
     .re     (dio_pad_attr_1_re),
     .we     (dio_pad_attr_1_gated_we),
-    .wd     (dio_pad_attr_1_pull_en_1_wd),
-    .d      (hw2reg.dio_pad_attr[1].pull_en.d),
+    .wd     (dio_pad_attr_1_smten_1_wd),
+    .d      (hw2reg.dio_pad_attr[1].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_1_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[1].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[1].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_1_pull_en_1_qs)
+    .qs     (dio_pad_attr_1_smten_1_qs)
   );
-  assign reg2hw.dio_pad_attr[1].pull_en.qe = dio_pad_attr_1_qe;
+  assign reg2hw.dio_pad_attr[1].smten.qe = dio_pad_attr_1_qe;
 
-  //   F[pull_select_1]: 3:3
+  //   F[drv_1]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_1_pull_select_1 (
+    .DW    (3)
+  ) u_dio_pad_attr_1_drv_1 (
     .re     (dio_pad_attr_1_re),
     .we     (dio_pad_attr_1_gated_we),
-    .wd     (dio_pad_attr_1_pull_select_1_wd),
-    .d      (hw2reg.dio_pad_attr[1].pull_select.d),
+    .wd     (dio_pad_attr_1_drv_1_wd),
+    .d      (hw2reg.dio_pad_attr[1].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_1_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[1].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[1].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_1_pull_select_1_qs)
+    .qs     (dio_pad_attr_1_drv_1_qs)
   );
-  assign reg2hw.dio_pad_attr[1].pull_select.qe = dio_pad_attr_1_qe;
-
-  //   F[keeper_en_1]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_1_keeper_en_1 (
-    .re     (dio_pad_attr_1_re),
-    .we     (dio_pad_attr_1_gated_we),
-    .wd     (dio_pad_attr_1_keeper_en_1_wd),
-    .d      (hw2reg.dio_pad_attr[1].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_1_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[1].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_1_keeper_en_1_qs)
-  );
-  assign reg2hw.dio_pad_attr[1].keeper_en.qe = dio_pad_attr_1_qe;
-
-  //   F[schmitt_en_1]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_1_schmitt_en_1 (
-    .re     (dio_pad_attr_1_re),
-    .we     (dio_pad_attr_1_gated_we),
-    .wd     (dio_pad_attr_1_schmitt_en_1_wd),
-    .d      (hw2reg.dio_pad_attr[1].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_1_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[1].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_1_schmitt_en_1_qs)
-  );
-  assign reg2hw.dio_pad_attr[1].schmitt_en.qe = dio_pad_attr_1_qe;
-
-  //   F[od_en_1]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_1_od_en_1 (
-    .re     (dio_pad_attr_1_re),
-    .we     (dio_pad_attr_1_gated_we),
-    .wd     (dio_pad_attr_1_od_en_1_wd),
-    .d      (hw2reg.dio_pad_attr[1].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_1_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[1].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_1_od_en_1_qs)
-  );
-  assign reg2hw.dio_pad_attr[1].od_en.qe = dio_pad_attr_1_qe;
-
-  //   F[input_disable_1]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_1_input_disable_1 (
-    .re     (dio_pad_attr_1_re),
-    .we     (dio_pad_attr_1_gated_we),
-    .wd     (dio_pad_attr_1_input_disable_1_wd),
-    .d      (hw2reg.dio_pad_attr[1].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_1_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[1].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_1_input_disable_1_qs)
-  );
-  assign reg2hw.dio_pad_attr[1].input_disable.qe = dio_pad_attr_1_qe;
-
-  //   F[slew_rate_1]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_1_slew_rate_1 (
-    .re     (dio_pad_attr_1_re),
-    .we     (dio_pad_attr_1_gated_we),
-    .wd     (dio_pad_attr_1_slew_rate_1_wd),
-    .d      (hw2reg.dio_pad_attr[1].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_1_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[1].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_1_slew_rate_1_qs)
-  );
-  assign reg2hw.dio_pad_attr[1].slew_rate.qe = dio_pad_attr_1_qe;
-
-  //   F[drive_strength_1]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_1_drive_strength_1 (
-    .re     (dio_pad_attr_1_re),
-    .we     (dio_pad_attr_1_gated_we),
-    .wd     (dio_pad_attr_1_drive_strength_1_wd),
-    .d      (hw2reg.dio_pad_attr[1].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_1_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[1].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_1_drive_strength_1_qs)
-  );
-  assign reg2hw.dio_pad_attr[1].drive_strength.qe = dio_pad_attr_1_qe;
+  assign reg2hw.dio_pad_attr[1].drv.qe = dio_pad_attr_1_qe;
 
 
   // Subregister 2 of Multireg dio_pad_attr
   // R[dio_pad_attr_2]: V(True)
   logic dio_pad_attr_2_qe;
-  logic [9:0] dio_pad_attr_2_flds_we;
+  logic [3:0] dio_pad_attr_2_flds_we;
   assign dio_pad_attr_2_qe = &dio_pad_attr_2_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_2_gated_we;
   assign dio_pad_attr_2_gated_we = dio_pad_attr_2_we & dio_pad_attr_regwen_2_qs;
-  //   F[invert_2]: 0:0
+  //   F[puen_2]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_2_invert_2 (
+  ) u_dio_pad_attr_2_puen_2 (
     .re     (dio_pad_attr_2_re),
     .we     (dio_pad_attr_2_gated_we),
-    .wd     (dio_pad_attr_2_invert_2_wd),
-    .d      (hw2reg.dio_pad_attr[2].invert.d),
+    .wd     (dio_pad_attr_2_puen_2_wd),
+    .d      (hw2reg.dio_pad_attr[2].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_2_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[2].invert.q),
+    .q      (reg2hw.dio_pad_attr[2].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_2_invert_2_qs)
+    .qs     (dio_pad_attr_2_puen_2_qs)
   );
-  assign reg2hw.dio_pad_attr[2].invert.qe = dio_pad_attr_2_qe;
+  assign reg2hw.dio_pad_attr[2].puen.qe = dio_pad_attr_2_qe;
 
-  //   F[virtual_od_en_2]: 1:1
+  //   F[pden_2]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_2_virtual_od_en_2 (
+  ) u_dio_pad_attr_2_pden_2 (
     .re     (dio_pad_attr_2_re),
     .we     (dio_pad_attr_2_gated_we),
-    .wd     (dio_pad_attr_2_virtual_od_en_2_wd),
-    .d      (hw2reg.dio_pad_attr[2].virtual_od_en.d),
+    .wd     (dio_pad_attr_2_pden_2_wd),
+    .d      (hw2reg.dio_pad_attr[2].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_2_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[2].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[2].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_2_virtual_od_en_2_qs)
+    .qs     (dio_pad_attr_2_pden_2_qs)
   );
-  assign reg2hw.dio_pad_attr[2].virtual_od_en.qe = dio_pad_attr_2_qe;
+  assign reg2hw.dio_pad_attr[2].pden.qe = dio_pad_attr_2_qe;
 
-  //   F[pull_en_2]: 2:2
+  //   F[smten_2]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_2_pull_en_2 (
+  ) u_dio_pad_attr_2_smten_2 (
     .re     (dio_pad_attr_2_re),
     .we     (dio_pad_attr_2_gated_we),
-    .wd     (dio_pad_attr_2_pull_en_2_wd),
-    .d      (hw2reg.dio_pad_attr[2].pull_en.d),
+    .wd     (dio_pad_attr_2_smten_2_wd),
+    .d      (hw2reg.dio_pad_attr[2].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_2_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[2].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[2].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_2_pull_en_2_qs)
+    .qs     (dio_pad_attr_2_smten_2_qs)
   );
-  assign reg2hw.dio_pad_attr[2].pull_en.qe = dio_pad_attr_2_qe;
+  assign reg2hw.dio_pad_attr[2].smten.qe = dio_pad_attr_2_qe;
 
-  //   F[pull_select_2]: 3:3
+  //   F[drv_2]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_2_pull_select_2 (
+    .DW    (3)
+  ) u_dio_pad_attr_2_drv_2 (
     .re     (dio_pad_attr_2_re),
     .we     (dio_pad_attr_2_gated_we),
-    .wd     (dio_pad_attr_2_pull_select_2_wd),
-    .d      (hw2reg.dio_pad_attr[2].pull_select.d),
+    .wd     (dio_pad_attr_2_drv_2_wd),
+    .d      (hw2reg.dio_pad_attr[2].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_2_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[2].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[2].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_2_pull_select_2_qs)
+    .qs     (dio_pad_attr_2_drv_2_qs)
   );
-  assign reg2hw.dio_pad_attr[2].pull_select.qe = dio_pad_attr_2_qe;
-
-  //   F[keeper_en_2]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_2_keeper_en_2 (
-    .re     (dio_pad_attr_2_re),
-    .we     (dio_pad_attr_2_gated_we),
-    .wd     (dio_pad_attr_2_keeper_en_2_wd),
-    .d      (hw2reg.dio_pad_attr[2].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_2_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[2].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_2_keeper_en_2_qs)
-  );
-  assign reg2hw.dio_pad_attr[2].keeper_en.qe = dio_pad_attr_2_qe;
-
-  //   F[schmitt_en_2]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_2_schmitt_en_2 (
-    .re     (dio_pad_attr_2_re),
-    .we     (dio_pad_attr_2_gated_we),
-    .wd     (dio_pad_attr_2_schmitt_en_2_wd),
-    .d      (hw2reg.dio_pad_attr[2].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_2_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[2].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_2_schmitt_en_2_qs)
-  );
-  assign reg2hw.dio_pad_attr[2].schmitt_en.qe = dio_pad_attr_2_qe;
-
-  //   F[od_en_2]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_2_od_en_2 (
-    .re     (dio_pad_attr_2_re),
-    .we     (dio_pad_attr_2_gated_we),
-    .wd     (dio_pad_attr_2_od_en_2_wd),
-    .d      (hw2reg.dio_pad_attr[2].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_2_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[2].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_2_od_en_2_qs)
-  );
-  assign reg2hw.dio_pad_attr[2].od_en.qe = dio_pad_attr_2_qe;
-
-  //   F[input_disable_2]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_2_input_disable_2 (
-    .re     (dio_pad_attr_2_re),
-    .we     (dio_pad_attr_2_gated_we),
-    .wd     (dio_pad_attr_2_input_disable_2_wd),
-    .d      (hw2reg.dio_pad_attr[2].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_2_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[2].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_2_input_disable_2_qs)
-  );
-  assign reg2hw.dio_pad_attr[2].input_disable.qe = dio_pad_attr_2_qe;
-
-  //   F[slew_rate_2]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_2_slew_rate_2 (
-    .re     (dio_pad_attr_2_re),
-    .we     (dio_pad_attr_2_gated_we),
-    .wd     (dio_pad_attr_2_slew_rate_2_wd),
-    .d      (hw2reg.dio_pad_attr[2].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_2_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[2].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_2_slew_rate_2_qs)
-  );
-  assign reg2hw.dio_pad_attr[2].slew_rate.qe = dio_pad_attr_2_qe;
-
-  //   F[drive_strength_2]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_2_drive_strength_2 (
-    .re     (dio_pad_attr_2_re),
-    .we     (dio_pad_attr_2_gated_we),
-    .wd     (dio_pad_attr_2_drive_strength_2_wd),
-    .d      (hw2reg.dio_pad_attr[2].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_2_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[2].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_2_drive_strength_2_qs)
-  );
-  assign reg2hw.dio_pad_attr[2].drive_strength.qe = dio_pad_attr_2_qe;
+  assign reg2hw.dio_pad_attr[2].drv.qe = dio_pad_attr_2_qe;
 
 
   // Subregister 3 of Multireg dio_pad_attr
   // R[dio_pad_attr_3]: V(True)
   logic dio_pad_attr_3_qe;
-  logic [9:0] dio_pad_attr_3_flds_we;
+  logic [3:0] dio_pad_attr_3_flds_we;
   assign dio_pad_attr_3_qe = &dio_pad_attr_3_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_3_gated_we;
   assign dio_pad_attr_3_gated_we = dio_pad_attr_3_we & dio_pad_attr_regwen_3_qs;
-  //   F[invert_3]: 0:0
+  //   F[puen_3]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_3_invert_3 (
+  ) u_dio_pad_attr_3_puen_3 (
     .re     (dio_pad_attr_3_re),
     .we     (dio_pad_attr_3_gated_we),
-    .wd     (dio_pad_attr_3_invert_3_wd),
-    .d      (hw2reg.dio_pad_attr[3].invert.d),
+    .wd     (dio_pad_attr_3_puen_3_wd),
+    .d      (hw2reg.dio_pad_attr[3].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_3_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[3].invert.q),
+    .q      (reg2hw.dio_pad_attr[3].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_3_invert_3_qs)
+    .qs     (dio_pad_attr_3_puen_3_qs)
   );
-  assign reg2hw.dio_pad_attr[3].invert.qe = dio_pad_attr_3_qe;
+  assign reg2hw.dio_pad_attr[3].puen.qe = dio_pad_attr_3_qe;
 
-  //   F[virtual_od_en_3]: 1:1
+  //   F[pden_3]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_3_virtual_od_en_3 (
+  ) u_dio_pad_attr_3_pden_3 (
     .re     (dio_pad_attr_3_re),
     .we     (dio_pad_attr_3_gated_we),
-    .wd     (dio_pad_attr_3_virtual_od_en_3_wd),
-    .d      (hw2reg.dio_pad_attr[3].virtual_od_en.d),
+    .wd     (dio_pad_attr_3_pden_3_wd),
+    .d      (hw2reg.dio_pad_attr[3].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_3_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[3].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[3].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_3_virtual_od_en_3_qs)
+    .qs     (dio_pad_attr_3_pden_3_qs)
   );
-  assign reg2hw.dio_pad_attr[3].virtual_od_en.qe = dio_pad_attr_3_qe;
+  assign reg2hw.dio_pad_attr[3].pden.qe = dio_pad_attr_3_qe;
 
-  //   F[pull_en_3]: 2:2
+  //   F[smten_3]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_3_pull_en_3 (
+  ) u_dio_pad_attr_3_smten_3 (
     .re     (dio_pad_attr_3_re),
     .we     (dio_pad_attr_3_gated_we),
-    .wd     (dio_pad_attr_3_pull_en_3_wd),
-    .d      (hw2reg.dio_pad_attr[3].pull_en.d),
+    .wd     (dio_pad_attr_3_smten_3_wd),
+    .d      (hw2reg.dio_pad_attr[3].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_3_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[3].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[3].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_3_pull_en_3_qs)
+    .qs     (dio_pad_attr_3_smten_3_qs)
   );
-  assign reg2hw.dio_pad_attr[3].pull_en.qe = dio_pad_attr_3_qe;
+  assign reg2hw.dio_pad_attr[3].smten.qe = dio_pad_attr_3_qe;
 
-  //   F[pull_select_3]: 3:3
+  //   F[drv_3]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_3_pull_select_3 (
+    .DW    (3)
+  ) u_dio_pad_attr_3_drv_3 (
     .re     (dio_pad_attr_3_re),
     .we     (dio_pad_attr_3_gated_we),
-    .wd     (dio_pad_attr_3_pull_select_3_wd),
-    .d      (hw2reg.dio_pad_attr[3].pull_select.d),
+    .wd     (dio_pad_attr_3_drv_3_wd),
+    .d      (hw2reg.dio_pad_attr[3].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_3_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[3].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[3].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_3_pull_select_3_qs)
+    .qs     (dio_pad_attr_3_drv_3_qs)
   );
-  assign reg2hw.dio_pad_attr[3].pull_select.qe = dio_pad_attr_3_qe;
-
-  //   F[keeper_en_3]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_3_keeper_en_3 (
-    .re     (dio_pad_attr_3_re),
-    .we     (dio_pad_attr_3_gated_we),
-    .wd     (dio_pad_attr_3_keeper_en_3_wd),
-    .d      (hw2reg.dio_pad_attr[3].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_3_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[3].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_3_keeper_en_3_qs)
-  );
-  assign reg2hw.dio_pad_attr[3].keeper_en.qe = dio_pad_attr_3_qe;
-
-  //   F[schmitt_en_3]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_3_schmitt_en_3 (
-    .re     (dio_pad_attr_3_re),
-    .we     (dio_pad_attr_3_gated_we),
-    .wd     (dio_pad_attr_3_schmitt_en_3_wd),
-    .d      (hw2reg.dio_pad_attr[3].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_3_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[3].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_3_schmitt_en_3_qs)
-  );
-  assign reg2hw.dio_pad_attr[3].schmitt_en.qe = dio_pad_attr_3_qe;
-
-  //   F[od_en_3]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_3_od_en_3 (
-    .re     (dio_pad_attr_3_re),
-    .we     (dio_pad_attr_3_gated_we),
-    .wd     (dio_pad_attr_3_od_en_3_wd),
-    .d      (hw2reg.dio_pad_attr[3].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_3_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[3].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_3_od_en_3_qs)
-  );
-  assign reg2hw.dio_pad_attr[3].od_en.qe = dio_pad_attr_3_qe;
-
-  //   F[input_disable_3]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_3_input_disable_3 (
-    .re     (dio_pad_attr_3_re),
-    .we     (dio_pad_attr_3_gated_we),
-    .wd     (dio_pad_attr_3_input_disable_3_wd),
-    .d      (hw2reg.dio_pad_attr[3].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_3_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[3].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_3_input_disable_3_qs)
-  );
-  assign reg2hw.dio_pad_attr[3].input_disable.qe = dio_pad_attr_3_qe;
-
-  //   F[slew_rate_3]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_3_slew_rate_3 (
-    .re     (dio_pad_attr_3_re),
-    .we     (dio_pad_attr_3_gated_we),
-    .wd     (dio_pad_attr_3_slew_rate_3_wd),
-    .d      (hw2reg.dio_pad_attr[3].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_3_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[3].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_3_slew_rate_3_qs)
-  );
-  assign reg2hw.dio_pad_attr[3].slew_rate.qe = dio_pad_attr_3_qe;
-
-  //   F[drive_strength_3]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_3_drive_strength_3 (
-    .re     (dio_pad_attr_3_re),
-    .we     (dio_pad_attr_3_gated_we),
-    .wd     (dio_pad_attr_3_drive_strength_3_wd),
-    .d      (hw2reg.dio_pad_attr[3].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_3_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[3].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_3_drive_strength_3_qs)
-  );
-  assign reg2hw.dio_pad_attr[3].drive_strength.qe = dio_pad_attr_3_qe;
+  assign reg2hw.dio_pad_attr[3].drv.qe = dio_pad_attr_3_qe;
 
 
   // Subregister 4 of Multireg dio_pad_attr
   // R[dio_pad_attr_4]: V(True)
   logic dio_pad_attr_4_qe;
-  logic [9:0] dio_pad_attr_4_flds_we;
+  logic [3:0] dio_pad_attr_4_flds_we;
   assign dio_pad_attr_4_qe = &dio_pad_attr_4_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_4_gated_we;
   assign dio_pad_attr_4_gated_we = dio_pad_attr_4_we & dio_pad_attr_regwen_4_qs;
-  //   F[invert_4]: 0:0
+  //   F[puen_4]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_4_invert_4 (
+  ) u_dio_pad_attr_4_puen_4 (
     .re     (dio_pad_attr_4_re),
     .we     (dio_pad_attr_4_gated_we),
-    .wd     (dio_pad_attr_4_invert_4_wd),
-    .d      (hw2reg.dio_pad_attr[4].invert.d),
+    .wd     (dio_pad_attr_4_puen_4_wd),
+    .d      (hw2reg.dio_pad_attr[4].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_4_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[4].invert.q),
+    .q      (reg2hw.dio_pad_attr[4].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_4_invert_4_qs)
+    .qs     (dio_pad_attr_4_puen_4_qs)
   );
-  assign reg2hw.dio_pad_attr[4].invert.qe = dio_pad_attr_4_qe;
+  assign reg2hw.dio_pad_attr[4].puen.qe = dio_pad_attr_4_qe;
 
-  //   F[virtual_od_en_4]: 1:1
+  //   F[pden_4]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_4_virtual_od_en_4 (
+  ) u_dio_pad_attr_4_pden_4 (
     .re     (dio_pad_attr_4_re),
     .we     (dio_pad_attr_4_gated_we),
-    .wd     (dio_pad_attr_4_virtual_od_en_4_wd),
-    .d      (hw2reg.dio_pad_attr[4].virtual_od_en.d),
+    .wd     (dio_pad_attr_4_pden_4_wd),
+    .d      (hw2reg.dio_pad_attr[4].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_4_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[4].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[4].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_4_virtual_od_en_4_qs)
+    .qs     (dio_pad_attr_4_pden_4_qs)
   );
-  assign reg2hw.dio_pad_attr[4].virtual_od_en.qe = dio_pad_attr_4_qe;
+  assign reg2hw.dio_pad_attr[4].pden.qe = dio_pad_attr_4_qe;
 
-  //   F[pull_en_4]: 2:2
+  //   F[smten_4]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_4_pull_en_4 (
+  ) u_dio_pad_attr_4_smten_4 (
     .re     (dio_pad_attr_4_re),
     .we     (dio_pad_attr_4_gated_we),
-    .wd     (dio_pad_attr_4_pull_en_4_wd),
-    .d      (hw2reg.dio_pad_attr[4].pull_en.d),
+    .wd     (dio_pad_attr_4_smten_4_wd),
+    .d      (hw2reg.dio_pad_attr[4].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_4_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[4].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[4].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_4_pull_en_4_qs)
+    .qs     (dio_pad_attr_4_smten_4_qs)
   );
-  assign reg2hw.dio_pad_attr[4].pull_en.qe = dio_pad_attr_4_qe;
+  assign reg2hw.dio_pad_attr[4].smten.qe = dio_pad_attr_4_qe;
 
-  //   F[pull_select_4]: 3:3
+  //   F[drv_4]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_4_pull_select_4 (
+    .DW    (3)
+  ) u_dio_pad_attr_4_drv_4 (
     .re     (dio_pad_attr_4_re),
     .we     (dio_pad_attr_4_gated_we),
-    .wd     (dio_pad_attr_4_pull_select_4_wd),
-    .d      (hw2reg.dio_pad_attr[4].pull_select.d),
+    .wd     (dio_pad_attr_4_drv_4_wd),
+    .d      (hw2reg.dio_pad_attr[4].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_4_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[4].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[4].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_4_pull_select_4_qs)
+    .qs     (dio_pad_attr_4_drv_4_qs)
   );
-  assign reg2hw.dio_pad_attr[4].pull_select.qe = dio_pad_attr_4_qe;
-
-  //   F[keeper_en_4]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_4_keeper_en_4 (
-    .re     (dio_pad_attr_4_re),
-    .we     (dio_pad_attr_4_gated_we),
-    .wd     (dio_pad_attr_4_keeper_en_4_wd),
-    .d      (hw2reg.dio_pad_attr[4].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_4_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[4].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_4_keeper_en_4_qs)
-  );
-  assign reg2hw.dio_pad_attr[4].keeper_en.qe = dio_pad_attr_4_qe;
-
-  //   F[schmitt_en_4]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_4_schmitt_en_4 (
-    .re     (dio_pad_attr_4_re),
-    .we     (dio_pad_attr_4_gated_we),
-    .wd     (dio_pad_attr_4_schmitt_en_4_wd),
-    .d      (hw2reg.dio_pad_attr[4].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_4_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[4].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_4_schmitt_en_4_qs)
-  );
-  assign reg2hw.dio_pad_attr[4].schmitt_en.qe = dio_pad_attr_4_qe;
-
-  //   F[od_en_4]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_4_od_en_4 (
-    .re     (dio_pad_attr_4_re),
-    .we     (dio_pad_attr_4_gated_we),
-    .wd     (dio_pad_attr_4_od_en_4_wd),
-    .d      (hw2reg.dio_pad_attr[4].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_4_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[4].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_4_od_en_4_qs)
-  );
-  assign reg2hw.dio_pad_attr[4].od_en.qe = dio_pad_attr_4_qe;
-
-  //   F[input_disable_4]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_4_input_disable_4 (
-    .re     (dio_pad_attr_4_re),
-    .we     (dio_pad_attr_4_gated_we),
-    .wd     (dio_pad_attr_4_input_disable_4_wd),
-    .d      (hw2reg.dio_pad_attr[4].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_4_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[4].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_4_input_disable_4_qs)
-  );
-  assign reg2hw.dio_pad_attr[4].input_disable.qe = dio_pad_attr_4_qe;
-
-  //   F[slew_rate_4]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_4_slew_rate_4 (
-    .re     (dio_pad_attr_4_re),
-    .we     (dio_pad_attr_4_gated_we),
-    .wd     (dio_pad_attr_4_slew_rate_4_wd),
-    .d      (hw2reg.dio_pad_attr[4].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_4_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[4].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_4_slew_rate_4_qs)
-  );
-  assign reg2hw.dio_pad_attr[4].slew_rate.qe = dio_pad_attr_4_qe;
-
-  //   F[drive_strength_4]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_4_drive_strength_4 (
-    .re     (dio_pad_attr_4_re),
-    .we     (dio_pad_attr_4_gated_we),
-    .wd     (dio_pad_attr_4_drive_strength_4_wd),
-    .d      (hw2reg.dio_pad_attr[4].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_4_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[4].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_4_drive_strength_4_qs)
-  );
-  assign reg2hw.dio_pad_attr[4].drive_strength.qe = dio_pad_attr_4_qe;
+  assign reg2hw.dio_pad_attr[4].drv.qe = dio_pad_attr_4_qe;
 
 
   // Subregister 5 of Multireg dio_pad_attr
   // R[dio_pad_attr_5]: V(True)
   logic dio_pad_attr_5_qe;
-  logic [9:0] dio_pad_attr_5_flds_we;
+  logic [3:0] dio_pad_attr_5_flds_we;
   assign dio_pad_attr_5_qe = &dio_pad_attr_5_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_5_gated_we;
   assign dio_pad_attr_5_gated_we = dio_pad_attr_5_we & dio_pad_attr_regwen_5_qs;
-  //   F[invert_5]: 0:0
+  //   F[puen_5]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_5_invert_5 (
+  ) u_dio_pad_attr_5_puen_5 (
     .re     (dio_pad_attr_5_re),
     .we     (dio_pad_attr_5_gated_we),
-    .wd     (dio_pad_attr_5_invert_5_wd),
-    .d      (hw2reg.dio_pad_attr[5].invert.d),
+    .wd     (dio_pad_attr_5_puen_5_wd),
+    .d      (hw2reg.dio_pad_attr[5].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_5_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[5].invert.q),
+    .q      (reg2hw.dio_pad_attr[5].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_5_invert_5_qs)
+    .qs     (dio_pad_attr_5_puen_5_qs)
   );
-  assign reg2hw.dio_pad_attr[5].invert.qe = dio_pad_attr_5_qe;
+  assign reg2hw.dio_pad_attr[5].puen.qe = dio_pad_attr_5_qe;
 
-  //   F[virtual_od_en_5]: 1:1
+  //   F[pden_5]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_5_virtual_od_en_5 (
+  ) u_dio_pad_attr_5_pden_5 (
     .re     (dio_pad_attr_5_re),
     .we     (dio_pad_attr_5_gated_we),
-    .wd     (dio_pad_attr_5_virtual_od_en_5_wd),
-    .d      (hw2reg.dio_pad_attr[5].virtual_od_en.d),
+    .wd     (dio_pad_attr_5_pden_5_wd),
+    .d      (hw2reg.dio_pad_attr[5].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_5_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[5].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[5].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_5_virtual_od_en_5_qs)
+    .qs     (dio_pad_attr_5_pden_5_qs)
   );
-  assign reg2hw.dio_pad_attr[5].virtual_od_en.qe = dio_pad_attr_5_qe;
+  assign reg2hw.dio_pad_attr[5].pden.qe = dio_pad_attr_5_qe;
 
-  //   F[pull_en_5]: 2:2
+  //   F[smten_5]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_5_pull_en_5 (
+  ) u_dio_pad_attr_5_smten_5 (
     .re     (dio_pad_attr_5_re),
     .we     (dio_pad_attr_5_gated_we),
-    .wd     (dio_pad_attr_5_pull_en_5_wd),
-    .d      (hw2reg.dio_pad_attr[5].pull_en.d),
+    .wd     (dio_pad_attr_5_smten_5_wd),
+    .d      (hw2reg.dio_pad_attr[5].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_5_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[5].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[5].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_5_pull_en_5_qs)
+    .qs     (dio_pad_attr_5_smten_5_qs)
   );
-  assign reg2hw.dio_pad_attr[5].pull_en.qe = dio_pad_attr_5_qe;
+  assign reg2hw.dio_pad_attr[5].smten.qe = dio_pad_attr_5_qe;
 
-  //   F[pull_select_5]: 3:3
+  //   F[drv_5]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_5_pull_select_5 (
+    .DW    (3)
+  ) u_dio_pad_attr_5_drv_5 (
     .re     (dio_pad_attr_5_re),
     .we     (dio_pad_attr_5_gated_we),
-    .wd     (dio_pad_attr_5_pull_select_5_wd),
-    .d      (hw2reg.dio_pad_attr[5].pull_select.d),
+    .wd     (dio_pad_attr_5_drv_5_wd),
+    .d      (hw2reg.dio_pad_attr[5].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_5_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[5].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[5].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_5_pull_select_5_qs)
+    .qs     (dio_pad_attr_5_drv_5_qs)
   );
-  assign reg2hw.dio_pad_attr[5].pull_select.qe = dio_pad_attr_5_qe;
-
-  //   F[keeper_en_5]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_5_keeper_en_5 (
-    .re     (dio_pad_attr_5_re),
-    .we     (dio_pad_attr_5_gated_we),
-    .wd     (dio_pad_attr_5_keeper_en_5_wd),
-    .d      (hw2reg.dio_pad_attr[5].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_5_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[5].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_5_keeper_en_5_qs)
-  );
-  assign reg2hw.dio_pad_attr[5].keeper_en.qe = dio_pad_attr_5_qe;
-
-  //   F[schmitt_en_5]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_5_schmitt_en_5 (
-    .re     (dio_pad_attr_5_re),
-    .we     (dio_pad_attr_5_gated_we),
-    .wd     (dio_pad_attr_5_schmitt_en_5_wd),
-    .d      (hw2reg.dio_pad_attr[5].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_5_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[5].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_5_schmitt_en_5_qs)
-  );
-  assign reg2hw.dio_pad_attr[5].schmitt_en.qe = dio_pad_attr_5_qe;
-
-  //   F[od_en_5]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_5_od_en_5 (
-    .re     (dio_pad_attr_5_re),
-    .we     (dio_pad_attr_5_gated_we),
-    .wd     (dio_pad_attr_5_od_en_5_wd),
-    .d      (hw2reg.dio_pad_attr[5].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_5_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[5].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_5_od_en_5_qs)
-  );
-  assign reg2hw.dio_pad_attr[5].od_en.qe = dio_pad_attr_5_qe;
-
-  //   F[input_disable_5]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_5_input_disable_5 (
-    .re     (dio_pad_attr_5_re),
-    .we     (dio_pad_attr_5_gated_we),
-    .wd     (dio_pad_attr_5_input_disable_5_wd),
-    .d      (hw2reg.dio_pad_attr[5].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_5_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[5].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_5_input_disable_5_qs)
-  );
-  assign reg2hw.dio_pad_attr[5].input_disable.qe = dio_pad_attr_5_qe;
-
-  //   F[slew_rate_5]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_5_slew_rate_5 (
-    .re     (dio_pad_attr_5_re),
-    .we     (dio_pad_attr_5_gated_we),
-    .wd     (dio_pad_attr_5_slew_rate_5_wd),
-    .d      (hw2reg.dio_pad_attr[5].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_5_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[5].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_5_slew_rate_5_qs)
-  );
-  assign reg2hw.dio_pad_attr[5].slew_rate.qe = dio_pad_attr_5_qe;
-
-  //   F[drive_strength_5]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_5_drive_strength_5 (
-    .re     (dio_pad_attr_5_re),
-    .we     (dio_pad_attr_5_gated_we),
-    .wd     (dio_pad_attr_5_drive_strength_5_wd),
-    .d      (hw2reg.dio_pad_attr[5].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_5_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[5].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_5_drive_strength_5_qs)
-  );
-  assign reg2hw.dio_pad_attr[5].drive_strength.qe = dio_pad_attr_5_qe;
+  assign reg2hw.dio_pad_attr[5].drv.qe = dio_pad_attr_5_qe;
 
 
   // Subregister 6 of Multireg dio_pad_attr
   // R[dio_pad_attr_6]: V(True)
   logic dio_pad_attr_6_qe;
-  logic [9:0] dio_pad_attr_6_flds_we;
+  logic [3:0] dio_pad_attr_6_flds_we;
   assign dio_pad_attr_6_qe = &dio_pad_attr_6_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_6_gated_we;
   assign dio_pad_attr_6_gated_we = dio_pad_attr_6_we & dio_pad_attr_regwen_6_qs;
-  //   F[invert_6]: 0:0
+  //   F[puen_6]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_6_invert_6 (
+  ) u_dio_pad_attr_6_puen_6 (
     .re     (dio_pad_attr_6_re),
     .we     (dio_pad_attr_6_gated_we),
-    .wd     (dio_pad_attr_6_invert_6_wd),
-    .d      (hw2reg.dio_pad_attr[6].invert.d),
+    .wd     (dio_pad_attr_6_puen_6_wd),
+    .d      (hw2reg.dio_pad_attr[6].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_6_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[6].invert.q),
+    .q      (reg2hw.dio_pad_attr[6].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_6_invert_6_qs)
+    .qs     (dio_pad_attr_6_puen_6_qs)
   );
-  assign reg2hw.dio_pad_attr[6].invert.qe = dio_pad_attr_6_qe;
+  assign reg2hw.dio_pad_attr[6].puen.qe = dio_pad_attr_6_qe;
 
-  //   F[virtual_od_en_6]: 1:1
+  //   F[pden_6]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_6_virtual_od_en_6 (
+  ) u_dio_pad_attr_6_pden_6 (
     .re     (dio_pad_attr_6_re),
     .we     (dio_pad_attr_6_gated_we),
-    .wd     (dio_pad_attr_6_virtual_od_en_6_wd),
-    .d      (hw2reg.dio_pad_attr[6].virtual_od_en.d),
+    .wd     (dio_pad_attr_6_pden_6_wd),
+    .d      (hw2reg.dio_pad_attr[6].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_6_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[6].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[6].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_6_virtual_od_en_6_qs)
+    .qs     (dio_pad_attr_6_pden_6_qs)
   );
-  assign reg2hw.dio_pad_attr[6].virtual_od_en.qe = dio_pad_attr_6_qe;
+  assign reg2hw.dio_pad_attr[6].pden.qe = dio_pad_attr_6_qe;
 
-  //   F[pull_en_6]: 2:2
+  //   F[smten_6]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_6_pull_en_6 (
+  ) u_dio_pad_attr_6_smten_6 (
     .re     (dio_pad_attr_6_re),
     .we     (dio_pad_attr_6_gated_we),
-    .wd     (dio_pad_attr_6_pull_en_6_wd),
-    .d      (hw2reg.dio_pad_attr[6].pull_en.d),
+    .wd     (dio_pad_attr_6_smten_6_wd),
+    .d      (hw2reg.dio_pad_attr[6].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_6_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[6].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[6].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_6_pull_en_6_qs)
+    .qs     (dio_pad_attr_6_smten_6_qs)
   );
-  assign reg2hw.dio_pad_attr[6].pull_en.qe = dio_pad_attr_6_qe;
+  assign reg2hw.dio_pad_attr[6].smten.qe = dio_pad_attr_6_qe;
 
-  //   F[pull_select_6]: 3:3
+  //   F[drv_6]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_6_pull_select_6 (
+    .DW    (3)
+  ) u_dio_pad_attr_6_drv_6 (
     .re     (dio_pad_attr_6_re),
     .we     (dio_pad_attr_6_gated_we),
-    .wd     (dio_pad_attr_6_pull_select_6_wd),
-    .d      (hw2reg.dio_pad_attr[6].pull_select.d),
+    .wd     (dio_pad_attr_6_drv_6_wd),
+    .d      (hw2reg.dio_pad_attr[6].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_6_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[6].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[6].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_6_pull_select_6_qs)
+    .qs     (dio_pad_attr_6_drv_6_qs)
   );
-  assign reg2hw.dio_pad_attr[6].pull_select.qe = dio_pad_attr_6_qe;
-
-  //   F[keeper_en_6]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_6_keeper_en_6 (
-    .re     (dio_pad_attr_6_re),
-    .we     (dio_pad_attr_6_gated_we),
-    .wd     (dio_pad_attr_6_keeper_en_6_wd),
-    .d      (hw2reg.dio_pad_attr[6].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_6_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[6].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_6_keeper_en_6_qs)
-  );
-  assign reg2hw.dio_pad_attr[6].keeper_en.qe = dio_pad_attr_6_qe;
-
-  //   F[schmitt_en_6]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_6_schmitt_en_6 (
-    .re     (dio_pad_attr_6_re),
-    .we     (dio_pad_attr_6_gated_we),
-    .wd     (dio_pad_attr_6_schmitt_en_6_wd),
-    .d      (hw2reg.dio_pad_attr[6].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_6_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[6].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_6_schmitt_en_6_qs)
-  );
-  assign reg2hw.dio_pad_attr[6].schmitt_en.qe = dio_pad_attr_6_qe;
-
-  //   F[od_en_6]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_6_od_en_6 (
-    .re     (dio_pad_attr_6_re),
-    .we     (dio_pad_attr_6_gated_we),
-    .wd     (dio_pad_attr_6_od_en_6_wd),
-    .d      (hw2reg.dio_pad_attr[6].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_6_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[6].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_6_od_en_6_qs)
-  );
-  assign reg2hw.dio_pad_attr[6].od_en.qe = dio_pad_attr_6_qe;
-
-  //   F[input_disable_6]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_6_input_disable_6 (
-    .re     (dio_pad_attr_6_re),
-    .we     (dio_pad_attr_6_gated_we),
-    .wd     (dio_pad_attr_6_input_disable_6_wd),
-    .d      (hw2reg.dio_pad_attr[6].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_6_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[6].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_6_input_disable_6_qs)
-  );
-  assign reg2hw.dio_pad_attr[6].input_disable.qe = dio_pad_attr_6_qe;
-
-  //   F[slew_rate_6]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_6_slew_rate_6 (
-    .re     (dio_pad_attr_6_re),
-    .we     (dio_pad_attr_6_gated_we),
-    .wd     (dio_pad_attr_6_slew_rate_6_wd),
-    .d      (hw2reg.dio_pad_attr[6].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_6_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[6].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_6_slew_rate_6_qs)
-  );
-  assign reg2hw.dio_pad_attr[6].slew_rate.qe = dio_pad_attr_6_qe;
-
-  //   F[drive_strength_6]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_6_drive_strength_6 (
-    .re     (dio_pad_attr_6_re),
-    .we     (dio_pad_attr_6_gated_we),
-    .wd     (dio_pad_attr_6_drive_strength_6_wd),
-    .d      (hw2reg.dio_pad_attr[6].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_6_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[6].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_6_drive_strength_6_qs)
-  );
-  assign reg2hw.dio_pad_attr[6].drive_strength.qe = dio_pad_attr_6_qe;
+  assign reg2hw.dio_pad_attr[6].drv.qe = dio_pad_attr_6_qe;
 
 
   // Subregister 7 of Multireg dio_pad_attr
   // R[dio_pad_attr_7]: V(True)
   logic dio_pad_attr_7_qe;
-  logic [9:0] dio_pad_attr_7_flds_we;
+  logic [3:0] dio_pad_attr_7_flds_we;
   assign dio_pad_attr_7_qe = &dio_pad_attr_7_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_7_gated_we;
   assign dio_pad_attr_7_gated_we = dio_pad_attr_7_we & dio_pad_attr_regwen_7_qs;
-  //   F[invert_7]: 0:0
+  //   F[puen_7]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_7_invert_7 (
+  ) u_dio_pad_attr_7_puen_7 (
     .re     (dio_pad_attr_7_re),
     .we     (dio_pad_attr_7_gated_we),
-    .wd     (dio_pad_attr_7_invert_7_wd),
-    .d      (hw2reg.dio_pad_attr[7].invert.d),
+    .wd     (dio_pad_attr_7_puen_7_wd),
+    .d      (hw2reg.dio_pad_attr[7].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_7_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[7].invert.q),
+    .q      (reg2hw.dio_pad_attr[7].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_7_invert_7_qs)
+    .qs     (dio_pad_attr_7_puen_7_qs)
   );
-  assign reg2hw.dio_pad_attr[7].invert.qe = dio_pad_attr_7_qe;
+  assign reg2hw.dio_pad_attr[7].puen.qe = dio_pad_attr_7_qe;
 
-  //   F[virtual_od_en_7]: 1:1
+  //   F[pden_7]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_7_virtual_od_en_7 (
+  ) u_dio_pad_attr_7_pden_7 (
     .re     (dio_pad_attr_7_re),
     .we     (dio_pad_attr_7_gated_we),
-    .wd     (dio_pad_attr_7_virtual_od_en_7_wd),
-    .d      (hw2reg.dio_pad_attr[7].virtual_od_en.d),
+    .wd     (dio_pad_attr_7_pden_7_wd),
+    .d      (hw2reg.dio_pad_attr[7].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_7_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[7].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[7].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_7_virtual_od_en_7_qs)
+    .qs     (dio_pad_attr_7_pden_7_qs)
   );
-  assign reg2hw.dio_pad_attr[7].virtual_od_en.qe = dio_pad_attr_7_qe;
+  assign reg2hw.dio_pad_attr[7].pden.qe = dio_pad_attr_7_qe;
 
-  //   F[pull_en_7]: 2:2
+  //   F[smten_7]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_7_pull_en_7 (
+  ) u_dio_pad_attr_7_smten_7 (
     .re     (dio_pad_attr_7_re),
     .we     (dio_pad_attr_7_gated_we),
-    .wd     (dio_pad_attr_7_pull_en_7_wd),
-    .d      (hw2reg.dio_pad_attr[7].pull_en.d),
+    .wd     (dio_pad_attr_7_smten_7_wd),
+    .d      (hw2reg.dio_pad_attr[7].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_7_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[7].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[7].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_7_pull_en_7_qs)
+    .qs     (dio_pad_attr_7_smten_7_qs)
   );
-  assign reg2hw.dio_pad_attr[7].pull_en.qe = dio_pad_attr_7_qe;
+  assign reg2hw.dio_pad_attr[7].smten.qe = dio_pad_attr_7_qe;
 
-  //   F[pull_select_7]: 3:3
+  //   F[drv_7]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_7_pull_select_7 (
+    .DW    (3)
+  ) u_dio_pad_attr_7_drv_7 (
     .re     (dio_pad_attr_7_re),
     .we     (dio_pad_attr_7_gated_we),
-    .wd     (dio_pad_attr_7_pull_select_7_wd),
-    .d      (hw2reg.dio_pad_attr[7].pull_select.d),
+    .wd     (dio_pad_attr_7_drv_7_wd),
+    .d      (hw2reg.dio_pad_attr[7].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_7_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[7].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[7].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_7_pull_select_7_qs)
+    .qs     (dio_pad_attr_7_drv_7_qs)
   );
-  assign reg2hw.dio_pad_attr[7].pull_select.qe = dio_pad_attr_7_qe;
-
-  //   F[keeper_en_7]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_7_keeper_en_7 (
-    .re     (dio_pad_attr_7_re),
-    .we     (dio_pad_attr_7_gated_we),
-    .wd     (dio_pad_attr_7_keeper_en_7_wd),
-    .d      (hw2reg.dio_pad_attr[7].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_7_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[7].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_7_keeper_en_7_qs)
-  );
-  assign reg2hw.dio_pad_attr[7].keeper_en.qe = dio_pad_attr_7_qe;
-
-  //   F[schmitt_en_7]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_7_schmitt_en_7 (
-    .re     (dio_pad_attr_7_re),
-    .we     (dio_pad_attr_7_gated_we),
-    .wd     (dio_pad_attr_7_schmitt_en_7_wd),
-    .d      (hw2reg.dio_pad_attr[7].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_7_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[7].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_7_schmitt_en_7_qs)
-  );
-  assign reg2hw.dio_pad_attr[7].schmitt_en.qe = dio_pad_attr_7_qe;
-
-  //   F[od_en_7]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_7_od_en_7 (
-    .re     (dio_pad_attr_7_re),
-    .we     (dio_pad_attr_7_gated_we),
-    .wd     (dio_pad_attr_7_od_en_7_wd),
-    .d      (hw2reg.dio_pad_attr[7].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_7_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[7].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_7_od_en_7_qs)
-  );
-  assign reg2hw.dio_pad_attr[7].od_en.qe = dio_pad_attr_7_qe;
-
-  //   F[input_disable_7]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_7_input_disable_7 (
-    .re     (dio_pad_attr_7_re),
-    .we     (dio_pad_attr_7_gated_we),
-    .wd     (dio_pad_attr_7_input_disable_7_wd),
-    .d      (hw2reg.dio_pad_attr[7].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_7_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[7].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_7_input_disable_7_qs)
-  );
-  assign reg2hw.dio_pad_attr[7].input_disable.qe = dio_pad_attr_7_qe;
-
-  //   F[slew_rate_7]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_7_slew_rate_7 (
-    .re     (dio_pad_attr_7_re),
-    .we     (dio_pad_attr_7_gated_we),
-    .wd     (dio_pad_attr_7_slew_rate_7_wd),
-    .d      (hw2reg.dio_pad_attr[7].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_7_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[7].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_7_slew_rate_7_qs)
-  );
-  assign reg2hw.dio_pad_attr[7].slew_rate.qe = dio_pad_attr_7_qe;
-
-  //   F[drive_strength_7]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_7_drive_strength_7 (
-    .re     (dio_pad_attr_7_re),
-    .we     (dio_pad_attr_7_gated_we),
-    .wd     (dio_pad_attr_7_drive_strength_7_wd),
-    .d      (hw2reg.dio_pad_attr[7].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_7_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[7].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_7_drive_strength_7_qs)
-  );
-  assign reg2hw.dio_pad_attr[7].drive_strength.qe = dio_pad_attr_7_qe;
+  assign reg2hw.dio_pad_attr[7].drv.qe = dio_pad_attr_7_qe;
 
 
   // Subregister 8 of Multireg dio_pad_attr
   // R[dio_pad_attr_8]: V(True)
   logic dio_pad_attr_8_qe;
-  logic [9:0] dio_pad_attr_8_flds_we;
+  logic [3:0] dio_pad_attr_8_flds_we;
   assign dio_pad_attr_8_qe = &dio_pad_attr_8_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_8_gated_we;
   assign dio_pad_attr_8_gated_we = dio_pad_attr_8_we & dio_pad_attr_regwen_8_qs;
-  //   F[invert_8]: 0:0
+  //   F[puen_8]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_8_invert_8 (
+  ) u_dio_pad_attr_8_puen_8 (
     .re     (dio_pad_attr_8_re),
     .we     (dio_pad_attr_8_gated_we),
-    .wd     (dio_pad_attr_8_invert_8_wd),
-    .d      (hw2reg.dio_pad_attr[8].invert.d),
+    .wd     (dio_pad_attr_8_puen_8_wd),
+    .d      (hw2reg.dio_pad_attr[8].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_8_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[8].invert.q),
+    .q      (reg2hw.dio_pad_attr[8].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_8_invert_8_qs)
+    .qs     (dio_pad_attr_8_puen_8_qs)
   );
-  assign reg2hw.dio_pad_attr[8].invert.qe = dio_pad_attr_8_qe;
+  assign reg2hw.dio_pad_attr[8].puen.qe = dio_pad_attr_8_qe;
 
-  //   F[virtual_od_en_8]: 1:1
+  //   F[pden_8]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_8_virtual_od_en_8 (
+  ) u_dio_pad_attr_8_pden_8 (
     .re     (dio_pad_attr_8_re),
     .we     (dio_pad_attr_8_gated_we),
-    .wd     (dio_pad_attr_8_virtual_od_en_8_wd),
-    .d      (hw2reg.dio_pad_attr[8].virtual_od_en.d),
+    .wd     (dio_pad_attr_8_pden_8_wd),
+    .d      (hw2reg.dio_pad_attr[8].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_8_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[8].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[8].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_8_virtual_od_en_8_qs)
+    .qs     (dio_pad_attr_8_pden_8_qs)
   );
-  assign reg2hw.dio_pad_attr[8].virtual_od_en.qe = dio_pad_attr_8_qe;
+  assign reg2hw.dio_pad_attr[8].pden.qe = dio_pad_attr_8_qe;
 
-  //   F[pull_en_8]: 2:2
+  //   F[smten_8]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_8_pull_en_8 (
+  ) u_dio_pad_attr_8_smten_8 (
     .re     (dio_pad_attr_8_re),
     .we     (dio_pad_attr_8_gated_we),
-    .wd     (dio_pad_attr_8_pull_en_8_wd),
-    .d      (hw2reg.dio_pad_attr[8].pull_en.d),
+    .wd     (dio_pad_attr_8_smten_8_wd),
+    .d      (hw2reg.dio_pad_attr[8].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_8_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[8].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[8].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_8_pull_en_8_qs)
+    .qs     (dio_pad_attr_8_smten_8_qs)
   );
-  assign reg2hw.dio_pad_attr[8].pull_en.qe = dio_pad_attr_8_qe;
+  assign reg2hw.dio_pad_attr[8].smten.qe = dio_pad_attr_8_qe;
 
-  //   F[pull_select_8]: 3:3
+  //   F[drv_8]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_8_pull_select_8 (
+    .DW    (3)
+  ) u_dio_pad_attr_8_drv_8 (
     .re     (dio_pad_attr_8_re),
     .we     (dio_pad_attr_8_gated_we),
-    .wd     (dio_pad_attr_8_pull_select_8_wd),
-    .d      (hw2reg.dio_pad_attr[8].pull_select.d),
+    .wd     (dio_pad_attr_8_drv_8_wd),
+    .d      (hw2reg.dio_pad_attr[8].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_8_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[8].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[8].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_8_pull_select_8_qs)
+    .qs     (dio_pad_attr_8_drv_8_qs)
   );
-  assign reg2hw.dio_pad_attr[8].pull_select.qe = dio_pad_attr_8_qe;
-
-  //   F[keeper_en_8]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_8_keeper_en_8 (
-    .re     (dio_pad_attr_8_re),
-    .we     (dio_pad_attr_8_gated_we),
-    .wd     (dio_pad_attr_8_keeper_en_8_wd),
-    .d      (hw2reg.dio_pad_attr[8].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_8_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[8].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_8_keeper_en_8_qs)
-  );
-  assign reg2hw.dio_pad_attr[8].keeper_en.qe = dio_pad_attr_8_qe;
-
-  //   F[schmitt_en_8]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_8_schmitt_en_8 (
-    .re     (dio_pad_attr_8_re),
-    .we     (dio_pad_attr_8_gated_we),
-    .wd     (dio_pad_attr_8_schmitt_en_8_wd),
-    .d      (hw2reg.dio_pad_attr[8].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_8_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[8].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_8_schmitt_en_8_qs)
-  );
-  assign reg2hw.dio_pad_attr[8].schmitt_en.qe = dio_pad_attr_8_qe;
-
-  //   F[od_en_8]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_8_od_en_8 (
-    .re     (dio_pad_attr_8_re),
-    .we     (dio_pad_attr_8_gated_we),
-    .wd     (dio_pad_attr_8_od_en_8_wd),
-    .d      (hw2reg.dio_pad_attr[8].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_8_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[8].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_8_od_en_8_qs)
-  );
-  assign reg2hw.dio_pad_attr[8].od_en.qe = dio_pad_attr_8_qe;
-
-  //   F[input_disable_8]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_8_input_disable_8 (
-    .re     (dio_pad_attr_8_re),
-    .we     (dio_pad_attr_8_gated_we),
-    .wd     (dio_pad_attr_8_input_disable_8_wd),
-    .d      (hw2reg.dio_pad_attr[8].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_8_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[8].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_8_input_disable_8_qs)
-  );
-  assign reg2hw.dio_pad_attr[8].input_disable.qe = dio_pad_attr_8_qe;
-
-  //   F[slew_rate_8]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_8_slew_rate_8 (
-    .re     (dio_pad_attr_8_re),
-    .we     (dio_pad_attr_8_gated_we),
-    .wd     (dio_pad_attr_8_slew_rate_8_wd),
-    .d      (hw2reg.dio_pad_attr[8].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_8_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[8].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_8_slew_rate_8_qs)
-  );
-  assign reg2hw.dio_pad_attr[8].slew_rate.qe = dio_pad_attr_8_qe;
-
-  //   F[drive_strength_8]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_8_drive_strength_8 (
-    .re     (dio_pad_attr_8_re),
-    .we     (dio_pad_attr_8_gated_we),
-    .wd     (dio_pad_attr_8_drive_strength_8_wd),
-    .d      (hw2reg.dio_pad_attr[8].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_8_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[8].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_8_drive_strength_8_qs)
-  );
-  assign reg2hw.dio_pad_attr[8].drive_strength.qe = dio_pad_attr_8_qe;
+  assign reg2hw.dio_pad_attr[8].drv.qe = dio_pad_attr_8_qe;
 
 
   // Subregister 9 of Multireg dio_pad_attr
   // R[dio_pad_attr_9]: V(True)
   logic dio_pad_attr_9_qe;
-  logic [9:0] dio_pad_attr_9_flds_we;
+  logic [3:0] dio_pad_attr_9_flds_we;
   assign dio_pad_attr_9_qe = &dio_pad_attr_9_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_9_gated_we;
   assign dio_pad_attr_9_gated_we = dio_pad_attr_9_we & dio_pad_attr_regwen_9_qs;
-  //   F[invert_9]: 0:0
+  //   F[puen_9]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_9_invert_9 (
+  ) u_dio_pad_attr_9_puen_9 (
     .re     (dio_pad_attr_9_re),
     .we     (dio_pad_attr_9_gated_we),
-    .wd     (dio_pad_attr_9_invert_9_wd),
-    .d      (hw2reg.dio_pad_attr[9].invert.d),
+    .wd     (dio_pad_attr_9_puen_9_wd),
+    .d      (hw2reg.dio_pad_attr[9].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_9_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[9].invert.q),
+    .q      (reg2hw.dio_pad_attr[9].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_9_invert_9_qs)
+    .qs     (dio_pad_attr_9_puen_9_qs)
   );
-  assign reg2hw.dio_pad_attr[9].invert.qe = dio_pad_attr_9_qe;
+  assign reg2hw.dio_pad_attr[9].puen.qe = dio_pad_attr_9_qe;
 
-  //   F[virtual_od_en_9]: 1:1
+  //   F[pden_9]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_9_virtual_od_en_9 (
+  ) u_dio_pad_attr_9_pden_9 (
     .re     (dio_pad_attr_9_re),
     .we     (dio_pad_attr_9_gated_we),
-    .wd     (dio_pad_attr_9_virtual_od_en_9_wd),
-    .d      (hw2reg.dio_pad_attr[9].virtual_od_en.d),
+    .wd     (dio_pad_attr_9_pden_9_wd),
+    .d      (hw2reg.dio_pad_attr[9].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_9_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[9].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[9].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_9_virtual_od_en_9_qs)
+    .qs     (dio_pad_attr_9_pden_9_qs)
   );
-  assign reg2hw.dio_pad_attr[9].virtual_od_en.qe = dio_pad_attr_9_qe;
+  assign reg2hw.dio_pad_attr[9].pden.qe = dio_pad_attr_9_qe;
 
-  //   F[pull_en_9]: 2:2
+  //   F[smten_9]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_9_pull_en_9 (
+  ) u_dio_pad_attr_9_smten_9 (
     .re     (dio_pad_attr_9_re),
     .we     (dio_pad_attr_9_gated_we),
-    .wd     (dio_pad_attr_9_pull_en_9_wd),
-    .d      (hw2reg.dio_pad_attr[9].pull_en.d),
+    .wd     (dio_pad_attr_9_smten_9_wd),
+    .d      (hw2reg.dio_pad_attr[9].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_9_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[9].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[9].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_9_pull_en_9_qs)
+    .qs     (dio_pad_attr_9_smten_9_qs)
   );
-  assign reg2hw.dio_pad_attr[9].pull_en.qe = dio_pad_attr_9_qe;
+  assign reg2hw.dio_pad_attr[9].smten.qe = dio_pad_attr_9_qe;
 
-  //   F[pull_select_9]: 3:3
+  //   F[drv_9]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_9_pull_select_9 (
+    .DW    (3)
+  ) u_dio_pad_attr_9_drv_9 (
     .re     (dio_pad_attr_9_re),
     .we     (dio_pad_attr_9_gated_we),
-    .wd     (dio_pad_attr_9_pull_select_9_wd),
-    .d      (hw2reg.dio_pad_attr[9].pull_select.d),
+    .wd     (dio_pad_attr_9_drv_9_wd),
+    .d      (hw2reg.dio_pad_attr[9].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_9_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[9].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[9].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_9_pull_select_9_qs)
+    .qs     (dio_pad_attr_9_drv_9_qs)
   );
-  assign reg2hw.dio_pad_attr[9].pull_select.qe = dio_pad_attr_9_qe;
-
-  //   F[keeper_en_9]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_9_keeper_en_9 (
-    .re     (dio_pad_attr_9_re),
-    .we     (dio_pad_attr_9_gated_we),
-    .wd     (dio_pad_attr_9_keeper_en_9_wd),
-    .d      (hw2reg.dio_pad_attr[9].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_9_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[9].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_9_keeper_en_9_qs)
-  );
-  assign reg2hw.dio_pad_attr[9].keeper_en.qe = dio_pad_attr_9_qe;
-
-  //   F[schmitt_en_9]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_9_schmitt_en_9 (
-    .re     (dio_pad_attr_9_re),
-    .we     (dio_pad_attr_9_gated_we),
-    .wd     (dio_pad_attr_9_schmitt_en_9_wd),
-    .d      (hw2reg.dio_pad_attr[9].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_9_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[9].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_9_schmitt_en_9_qs)
-  );
-  assign reg2hw.dio_pad_attr[9].schmitt_en.qe = dio_pad_attr_9_qe;
-
-  //   F[od_en_9]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_9_od_en_9 (
-    .re     (dio_pad_attr_9_re),
-    .we     (dio_pad_attr_9_gated_we),
-    .wd     (dio_pad_attr_9_od_en_9_wd),
-    .d      (hw2reg.dio_pad_attr[9].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_9_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[9].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_9_od_en_9_qs)
-  );
-  assign reg2hw.dio_pad_attr[9].od_en.qe = dio_pad_attr_9_qe;
-
-  //   F[input_disable_9]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_9_input_disable_9 (
-    .re     (dio_pad_attr_9_re),
-    .we     (dio_pad_attr_9_gated_we),
-    .wd     (dio_pad_attr_9_input_disable_9_wd),
-    .d      (hw2reg.dio_pad_attr[9].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_9_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[9].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_9_input_disable_9_qs)
-  );
-  assign reg2hw.dio_pad_attr[9].input_disable.qe = dio_pad_attr_9_qe;
-
-  //   F[slew_rate_9]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_9_slew_rate_9 (
-    .re     (dio_pad_attr_9_re),
-    .we     (dio_pad_attr_9_gated_we),
-    .wd     (dio_pad_attr_9_slew_rate_9_wd),
-    .d      (hw2reg.dio_pad_attr[9].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_9_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[9].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_9_slew_rate_9_qs)
-  );
-  assign reg2hw.dio_pad_attr[9].slew_rate.qe = dio_pad_attr_9_qe;
-
-  //   F[drive_strength_9]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_9_drive_strength_9 (
-    .re     (dio_pad_attr_9_re),
-    .we     (dio_pad_attr_9_gated_we),
-    .wd     (dio_pad_attr_9_drive_strength_9_wd),
-    .d      (hw2reg.dio_pad_attr[9].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_9_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[9].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_9_drive_strength_9_qs)
-  );
-  assign reg2hw.dio_pad_attr[9].drive_strength.qe = dio_pad_attr_9_qe;
+  assign reg2hw.dio_pad_attr[9].drv.qe = dio_pad_attr_9_qe;
 
 
   // Subregister 10 of Multireg dio_pad_attr
   // R[dio_pad_attr_10]: V(True)
   logic dio_pad_attr_10_qe;
-  logic [9:0] dio_pad_attr_10_flds_we;
+  logic [3:0] dio_pad_attr_10_flds_we;
   assign dio_pad_attr_10_qe = &dio_pad_attr_10_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_10_gated_we;
   assign dio_pad_attr_10_gated_we = dio_pad_attr_10_we & dio_pad_attr_regwen_10_qs;
-  //   F[invert_10]: 0:0
+  //   F[puen_10]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_10_invert_10 (
+  ) u_dio_pad_attr_10_puen_10 (
     .re     (dio_pad_attr_10_re),
     .we     (dio_pad_attr_10_gated_we),
-    .wd     (dio_pad_attr_10_invert_10_wd),
-    .d      (hw2reg.dio_pad_attr[10].invert.d),
+    .wd     (dio_pad_attr_10_puen_10_wd),
+    .d      (hw2reg.dio_pad_attr[10].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_10_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[10].invert.q),
+    .q      (reg2hw.dio_pad_attr[10].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_10_invert_10_qs)
+    .qs     (dio_pad_attr_10_puen_10_qs)
   );
-  assign reg2hw.dio_pad_attr[10].invert.qe = dio_pad_attr_10_qe;
+  assign reg2hw.dio_pad_attr[10].puen.qe = dio_pad_attr_10_qe;
 
-  //   F[virtual_od_en_10]: 1:1
+  //   F[pden_10]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_10_virtual_od_en_10 (
+  ) u_dio_pad_attr_10_pden_10 (
     .re     (dio_pad_attr_10_re),
     .we     (dio_pad_attr_10_gated_we),
-    .wd     (dio_pad_attr_10_virtual_od_en_10_wd),
-    .d      (hw2reg.dio_pad_attr[10].virtual_od_en.d),
+    .wd     (dio_pad_attr_10_pden_10_wd),
+    .d      (hw2reg.dio_pad_attr[10].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_10_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[10].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[10].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_10_virtual_od_en_10_qs)
+    .qs     (dio_pad_attr_10_pden_10_qs)
   );
-  assign reg2hw.dio_pad_attr[10].virtual_od_en.qe = dio_pad_attr_10_qe;
+  assign reg2hw.dio_pad_attr[10].pden.qe = dio_pad_attr_10_qe;
 
-  //   F[pull_en_10]: 2:2
+  //   F[smten_10]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_10_pull_en_10 (
+  ) u_dio_pad_attr_10_smten_10 (
     .re     (dio_pad_attr_10_re),
     .we     (dio_pad_attr_10_gated_we),
-    .wd     (dio_pad_attr_10_pull_en_10_wd),
-    .d      (hw2reg.dio_pad_attr[10].pull_en.d),
+    .wd     (dio_pad_attr_10_smten_10_wd),
+    .d      (hw2reg.dio_pad_attr[10].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_10_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[10].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[10].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_10_pull_en_10_qs)
+    .qs     (dio_pad_attr_10_smten_10_qs)
   );
-  assign reg2hw.dio_pad_attr[10].pull_en.qe = dio_pad_attr_10_qe;
+  assign reg2hw.dio_pad_attr[10].smten.qe = dio_pad_attr_10_qe;
 
-  //   F[pull_select_10]: 3:3
+  //   F[drv_10]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_10_pull_select_10 (
+    .DW    (3)
+  ) u_dio_pad_attr_10_drv_10 (
     .re     (dio_pad_attr_10_re),
     .we     (dio_pad_attr_10_gated_we),
-    .wd     (dio_pad_attr_10_pull_select_10_wd),
-    .d      (hw2reg.dio_pad_attr[10].pull_select.d),
+    .wd     (dio_pad_attr_10_drv_10_wd),
+    .d      (hw2reg.dio_pad_attr[10].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_10_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[10].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[10].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_10_pull_select_10_qs)
+    .qs     (dio_pad_attr_10_drv_10_qs)
   );
-  assign reg2hw.dio_pad_attr[10].pull_select.qe = dio_pad_attr_10_qe;
-
-  //   F[keeper_en_10]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_10_keeper_en_10 (
-    .re     (dio_pad_attr_10_re),
-    .we     (dio_pad_attr_10_gated_we),
-    .wd     (dio_pad_attr_10_keeper_en_10_wd),
-    .d      (hw2reg.dio_pad_attr[10].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_10_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[10].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_10_keeper_en_10_qs)
-  );
-  assign reg2hw.dio_pad_attr[10].keeper_en.qe = dio_pad_attr_10_qe;
-
-  //   F[schmitt_en_10]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_10_schmitt_en_10 (
-    .re     (dio_pad_attr_10_re),
-    .we     (dio_pad_attr_10_gated_we),
-    .wd     (dio_pad_attr_10_schmitt_en_10_wd),
-    .d      (hw2reg.dio_pad_attr[10].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_10_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[10].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_10_schmitt_en_10_qs)
-  );
-  assign reg2hw.dio_pad_attr[10].schmitt_en.qe = dio_pad_attr_10_qe;
-
-  //   F[od_en_10]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_10_od_en_10 (
-    .re     (dio_pad_attr_10_re),
-    .we     (dio_pad_attr_10_gated_we),
-    .wd     (dio_pad_attr_10_od_en_10_wd),
-    .d      (hw2reg.dio_pad_attr[10].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_10_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[10].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_10_od_en_10_qs)
-  );
-  assign reg2hw.dio_pad_attr[10].od_en.qe = dio_pad_attr_10_qe;
-
-  //   F[input_disable_10]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_10_input_disable_10 (
-    .re     (dio_pad_attr_10_re),
-    .we     (dio_pad_attr_10_gated_we),
-    .wd     (dio_pad_attr_10_input_disable_10_wd),
-    .d      (hw2reg.dio_pad_attr[10].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_10_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[10].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_10_input_disable_10_qs)
-  );
-  assign reg2hw.dio_pad_attr[10].input_disable.qe = dio_pad_attr_10_qe;
-
-  //   F[slew_rate_10]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_10_slew_rate_10 (
-    .re     (dio_pad_attr_10_re),
-    .we     (dio_pad_attr_10_gated_we),
-    .wd     (dio_pad_attr_10_slew_rate_10_wd),
-    .d      (hw2reg.dio_pad_attr[10].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_10_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[10].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_10_slew_rate_10_qs)
-  );
-  assign reg2hw.dio_pad_attr[10].slew_rate.qe = dio_pad_attr_10_qe;
-
-  //   F[drive_strength_10]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_10_drive_strength_10 (
-    .re     (dio_pad_attr_10_re),
-    .we     (dio_pad_attr_10_gated_we),
-    .wd     (dio_pad_attr_10_drive_strength_10_wd),
-    .d      (hw2reg.dio_pad_attr[10].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_10_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[10].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_10_drive_strength_10_qs)
-  );
-  assign reg2hw.dio_pad_attr[10].drive_strength.qe = dio_pad_attr_10_qe;
+  assign reg2hw.dio_pad_attr[10].drv.qe = dio_pad_attr_10_qe;
 
 
   // Subregister 11 of Multireg dio_pad_attr
   // R[dio_pad_attr_11]: V(True)
   logic dio_pad_attr_11_qe;
-  logic [9:0] dio_pad_attr_11_flds_we;
+  logic [3:0] dio_pad_attr_11_flds_we;
   assign dio_pad_attr_11_qe = &dio_pad_attr_11_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_11_gated_we;
   assign dio_pad_attr_11_gated_we = dio_pad_attr_11_we & dio_pad_attr_regwen_11_qs;
-  //   F[invert_11]: 0:0
+  //   F[puen_11]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_11_invert_11 (
+  ) u_dio_pad_attr_11_puen_11 (
     .re     (dio_pad_attr_11_re),
     .we     (dio_pad_attr_11_gated_we),
-    .wd     (dio_pad_attr_11_invert_11_wd),
-    .d      (hw2reg.dio_pad_attr[11].invert.d),
+    .wd     (dio_pad_attr_11_puen_11_wd),
+    .d      (hw2reg.dio_pad_attr[11].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_11_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[11].invert.q),
+    .q      (reg2hw.dio_pad_attr[11].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_11_invert_11_qs)
+    .qs     (dio_pad_attr_11_puen_11_qs)
   );
-  assign reg2hw.dio_pad_attr[11].invert.qe = dio_pad_attr_11_qe;
+  assign reg2hw.dio_pad_attr[11].puen.qe = dio_pad_attr_11_qe;
 
-  //   F[virtual_od_en_11]: 1:1
+  //   F[pden_11]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_11_virtual_od_en_11 (
+  ) u_dio_pad_attr_11_pden_11 (
     .re     (dio_pad_attr_11_re),
     .we     (dio_pad_attr_11_gated_we),
-    .wd     (dio_pad_attr_11_virtual_od_en_11_wd),
-    .d      (hw2reg.dio_pad_attr[11].virtual_od_en.d),
+    .wd     (dio_pad_attr_11_pden_11_wd),
+    .d      (hw2reg.dio_pad_attr[11].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_11_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[11].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[11].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_11_virtual_od_en_11_qs)
+    .qs     (dio_pad_attr_11_pden_11_qs)
   );
-  assign reg2hw.dio_pad_attr[11].virtual_od_en.qe = dio_pad_attr_11_qe;
+  assign reg2hw.dio_pad_attr[11].pden.qe = dio_pad_attr_11_qe;
 
-  //   F[pull_en_11]: 2:2
+  //   F[smten_11]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_11_pull_en_11 (
+  ) u_dio_pad_attr_11_smten_11 (
     .re     (dio_pad_attr_11_re),
     .we     (dio_pad_attr_11_gated_we),
-    .wd     (dio_pad_attr_11_pull_en_11_wd),
-    .d      (hw2reg.dio_pad_attr[11].pull_en.d),
+    .wd     (dio_pad_attr_11_smten_11_wd),
+    .d      (hw2reg.dio_pad_attr[11].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_11_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[11].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[11].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_11_pull_en_11_qs)
+    .qs     (dio_pad_attr_11_smten_11_qs)
   );
-  assign reg2hw.dio_pad_attr[11].pull_en.qe = dio_pad_attr_11_qe;
+  assign reg2hw.dio_pad_attr[11].smten.qe = dio_pad_attr_11_qe;
 
-  //   F[pull_select_11]: 3:3
+  //   F[drv_11]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_11_pull_select_11 (
+    .DW    (3)
+  ) u_dio_pad_attr_11_drv_11 (
     .re     (dio_pad_attr_11_re),
     .we     (dio_pad_attr_11_gated_we),
-    .wd     (dio_pad_attr_11_pull_select_11_wd),
-    .d      (hw2reg.dio_pad_attr[11].pull_select.d),
+    .wd     (dio_pad_attr_11_drv_11_wd),
+    .d      (hw2reg.dio_pad_attr[11].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_11_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[11].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[11].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_11_pull_select_11_qs)
+    .qs     (dio_pad_attr_11_drv_11_qs)
   );
-  assign reg2hw.dio_pad_attr[11].pull_select.qe = dio_pad_attr_11_qe;
-
-  //   F[keeper_en_11]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_11_keeper_en_11 (
-    .re     (dio_pad_attr_11_re),
-    .we     (dio_pad_attr_11_gated_we),
-    .wd     (dio_pad_attr_11_keeper_en_11_wd),
-    .d      (hw2reg.dio_pad_attr[11].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_11_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[11].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_11_keeper_en_11_qs)
-  );
-  assign reg2hw.dio_pad_attr[11].keeper_en.qe = dio_pad_attr_11_qe;
-
-  //   F[schmitt_en_11]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_11_schmitt_en_11 (
-    .re     (dio_pad_attr_11_re),
-    .we     (dio_pad_attr_11_gated_we),
-    .wd     (dio_pad_attr_11_schmitt_en_11_wd),
-    .d      (hw2reg.dio_pad_attr[11].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_11_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[11].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_11_schmitt_en_11_qs)
-  );
-  assign reg2hw.dio_pad_attr[11].schmitt_en.qe = dio_pad_attr_11_qe;
-
-  //   F[od_en_11]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_11_od_en_11 (
-    .re     (dio_pad_attr_11_re),
-    .we     (dio_pad_attr_11_gated_we),
-    .wd     (dio_pad_attr_11_od_en_11_wd),
-    .d      (hw2reg.dio_pad_attr[11].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_11_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[11].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_11_od_en_11_qs)
-  );
-  assign reg2hw.dio_pad_attr[11].od_en.qe = dio_pad_attr_11_qe;
-
-  //   F[input_disable_11]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_11_input_disable_11 (
-    .re     (dio_pad_attr_11_re),
-    .we     (dio_pad_attr_11_gated_we),
-    .wd     (dio_pad_attr_11_input_disable_11_wd),
-    .d      (hw2reg.dio_pad_attr[11].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_11_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[11].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_11_input_disable_11_qs)
-  );
-  assign reg2hw.dio_pad_attr[11].input_disable.qe = dio_pad_attr_11_qe;
-
-  //   F[slew_rate_11]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_11_slew_rate_11 (
-    .re     (dio_pad_attr_11_re),
-    .we     (dio_pad_attr_11_gated_we),
-    .wd     (dio_pad_attr_11_slew_rate_11_wd),
-    .d      (hw2reg.dio_pad_attr[11].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_11_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[11].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_11_slew_rate_11_qs)
-  );
-  assign reg2hw.dio_pad_attr[11].slew_rate.qe = dio_pad_attr_11_qe;
-
-  //   F[drive_strength_11]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_11_drive_strength_11 (
-    .re     (dio_pad_attr_11_re),
-    .we     (dio_pad_attr_11_gated_we),
-    .wd     (dio_pad_attr_11_drive_strength_11_wd),
-    .d      (hw2reg.dio_pad_attr[11].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_11_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[11].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_11_drive_strength_11_qs)
-  );
-  assign reg2hw.dio_pad_attr[11].drive_strength.qe = dio_pad_attr_11_qe;
+  assign reg2hw.dio_pad_attr[11].drv.qe = dio_pad_attr_11_qe;
 
 
   // Subregister 12 of Multireg dio_pad_attr
   // R[dio_pad_attr_12]: V(True)
   logic dio_pad_attr_12_qe;
-  logic [9:0] dio_pad_attr_12_flds_we;
+  logic [3:0] dio_pad_attr_12_flds_we;
   assign dio_pad_attr_12_qe = &dio_pad_attr_12_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_12_gated_we;
   assign dio_pad_attr_12_gated_we = dio_pad_attr_12_we & dio_pad_attr_regwen_12_qs;
-  //   F[invert_12]: 0:0
+  //   F[puen_12]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_12_invert_12 (
+  ) u_dio_pad_attr_12_puen_12 (
     .re     (dio_pad_attr_12_re),
     .we     (dio_pad_attr_12_gated_we),
-    .wd     (dio_pad_attr_12_invert_12_wd),
-    .d      (hw2reg.dio_pad_attr[12].invert.d),
+    .wd     (dio_pad_attr_12_puen_12_wd),
+    .d      (hw2reg.dio_pad_attr[12].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_12_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[12].invert.q),
+    .q      (reg2hw.dio_pad_attr[12].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_12_invert_12_qs)
+    .qs     (dio_pad_attr_12_puen_12_qs)
   );
-  assign reg2hw.dio_pad_attr[12].invert.qe = dio_pad_attr_12_qe;
+  assign reg2hw.dio_pad_attr[12].puen.qe = dio_pad_attr_12_qe;
 
-  //   F[virtual_od_en_12]: 1:1
+  //   F[pden_12]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_12_virtual_od_en_12 (
+  ) u_dio_pad_attr_12_pden_12 (
     .re     (dio_pad_attr_12_re),
     .we     (dio_pad_attr_12_gated_we),
-    .wd     (dio_pad_attr_12_virtual_od_en_12_wd),
-    .d      (hw2reg.dio_pad_attr[12].virtual_od_en.d),
+    .wd     (dio_pad_attr_12_pden_12_wd),
+    .d      (hw2reg.dio_pad_attr[12].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_12_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[12].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[12].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_12_virtual_od_en_12_qs)
+    .qs     (dio_pad_attr_12_pden_12_qs)
   );
-  assign reg2hw.dio_pad_attr[12].virtual_od_en.qe = dio_pad_attr_12_qe;
+  assign reg2hw.dio_pad_attr[12].pden.qe = dio_pad_attr_12_qe;
 
-  //   F[pull_en_12]: 2:2
+  //   F[smten_12]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_12_pull_en_12 (
+  ) u_dio_pad_attr_12_smten_12 (
     .re     (dio_pad_attr_12_re),
     .we     (dio_pad_attr_12_gated_we),
-    .wd     (dio_pad_attr_12_pull_en_12_wd),
-    .d      (hw2reg.dio_pad_attr[12].pull_en.d),
+    .wd     (dio_pad_attr_12_smten_12_wd),
+    .d      (hw2reg.dio_pad_attr[12].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_12_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[12].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[12].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_12_pull_en_12_qs)
+    .qs     (dio_pad_attr_12_smten_12_qs)
   );
-  assign reg2hw.dio_pad_attr[12].pull_en.qe = dio_pad_attr_12_qe;
+  assign reg2hw.dio_pad_attr[12].smten.qe = dio_pad_attr_12_qe;
 
-  //   F[pull_select_12]: 3:3
+  //   F[drv_12]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_12_pull_select_12 (
+    .DW    (3)
+  ) u_dio_pad_attr_12_drv_12 (
     .re     (dio_pad_attr_12_re),
     .we     (dio_pad_attr_12_gated_we),
-    .wd     (dio_pad_attr_12_pull_select_12_wd),
-    .d      (hw2reg.dio_pad_attr[12].pull_select.d),
+    .wd     (dio_pad_attr_12_drv_12_wd),
+    .d      (hw2reg.dio_pad_attr[12].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_12_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[12].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[12].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_12_pull_select_12_qs)
+    .qs     (dio_pad_attr_12_drv_12_qs)
   );
-  assign reg2hw.dio_pad_attr[12].pull_select.qe = dio_pad_attr_12_qe;
-
-  //   F[keeper_en_12]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_12_keeper_en_12 (
-    .re     (dio_pad_attr_12_re),
-    .we     (dio_pad_attr_12_gated_we),
-    .wd     (dio_pad_attr_12_keeper_en_12_wd),
-    .d      (hw2reg.dio_pad_attr[12].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_12_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[12].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_12_keeper_en_12_qs)
-  );
-  assign reg2hw.dio_pad_attr[12].keeper_en.qe = dio_pad_attr_12_qe;
-
-  //   F[schmitt_en_12]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_12_schmitt_en_12 (
-    .re     (dio_pad_attr_12_re),
-    .we     (dio_pad_attr_12_gated_we),
-    .wd     (dio_pad_attr_12_schmitt_en_12_wd),
-    .d      (hw2reg.dio_pad_attr[12].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_12_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[12].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_12_schmitt_en_12_qs)
-  );
-  assign reg2hw.dio_pad_attr[12].schmitt_en.qe = dio_pad_attr_12_qe;
-
-  //   F[od_en_12]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_12_od_en_12 (
-    .re     (dio_pad_attr_12_re),
-    .we     (dio_pad_attr_12_gated_we),
-    .wd     (dio_pad_attr_12_od_en_12_wd),
-    .d      (hw2reg.dio_pad_attr[12].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_12_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[12].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_12_od_en_12_qs)
-  );
-  assign reg2hw.dio_pad_attr[12].od_en.qe = dio_pad_attr_12_qe;
-
-  //   F[input_disable_12]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_12_input_disable_12 (
-    .re     (dio_pad_attr_12_re),
-    .we     (dio_pad_attr_12_gated_we),
-    .wd     (dio_pad_attr_12_input_disable_12_wd),
-    .d      (hw2reg.dio_pad_attr[12].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_12_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[12].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_12_input_disable_12_qs)
-  );
-  assign reg2hw.dio_pad_attr[12].input_disable.qe = dio_pad_attr_12_qe;
-
-  //   F[slew_rate_12]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_12_slew_rate_12 (
-    .re     (dio_pad_attr_12_re),
-    .we     (dio_pad_attr_12_gated_we),
-    .wd     (dio_pad_attr_12_slew_rate_12_wd),
-    .d      (hw2reg.dio_pad_attr[12].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_12_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[12].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_12_slew_rate_12_qs)
-  );
-  assign reg2hw.dio_pad_attr[12].slew_rate.qe = dio_pad_attr_12_qe;
-
-  //   F[drive_strength_12]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_12_drive_strength_12 (
-    .re     (dio_pad_attr_12_re),
-    .we     (dio_pad_attr_12_gated_we),
-    .wd     (dio_pad_attr_12_drive_strength_12_wd),
-    .d      (hw2reg.dio_pad_attr[12].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_12_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[12].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_12_drive_strength_12_qs)
-  );
-  assign reg2hw.dio_pad_attr[12].drive_strength.qe = dio_pad_attr_12_qe;
+  assign reg2hw.dio_pad_attr[12].drv.qe = dio_pad_attr_12_qe;
 
 
   // Subregister 13 of Multireg dio_pad_attr
   // R[dio_pad_attr_13]: V(True)
   logic dio_pad_attr_13_qe;
-  logic [9:0] dio_pad_attr_13_flds_we;
+  logic [3:0] dio_pad_attr_13_flds_we;
   assign dio_pad_attr_13_qe = &dio_pad_attr_13_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_13_gated_we;
   assign dio_pad_attr_13_gated_we = dio_pad_attr_13_we & dio_pad_attr_regwen_13_qs;
-  //   F[invert_13]: 0:0
+  //   F[puen_13]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_13_invert_13 (
+  ) u_dio_pad_attr_13_puen_13 (
     .re     (dio_pad_attr_13_re),
     .we     (dio_pad_attr_13_gated_we),
-    .wd     (dio_pad_attr_13_invert_13_wd),
-    .d      (hw2reg.dio_pad_attr[13].invert.d),
+    .wd     (dio_pad_attr_13_puen_13_wd),
+    .d      (hw2reg.dio_pad_attr[13].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_13_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[13].invert.q),
+    .q      (reg2hw.dio_pad_attr[13].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_13_invert_13_qs)
+    .qs     (dio_pad_attr_13_puen_13_qs)
   );
-  assign reg2hw.dio_pad_attr[13].invert.qe = dio_pad_attr_13_qe;
+  assign reg2hw.dio_pad_attr[13].puen.qe = dio_pad_attr_13_qe;
 
-  //   F[virtual_od_en_13]: 1:1
+  //   F[pden_13]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_13_virtual_od_en_13 (
+  ) u_dio_pad_attr_13_pden_13 (
     .re     (dio_pad_attr_13_re),
     .we     (dio_pad_attr_13_gated_we),
-    .wd     (dio_pad_attr_13_virtual_od_en_13_wd),
-    .d      (hw2reg.dio_pad_attr[13].virtual_od_en.d),
+    .wd     (dio_pad_attr_13_pden_13_wd),
+    .d      (hw2reg.dio_pad_attr[13].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_13_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[13].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[13].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_13_virtual_od_en_13_qs)
+    .qs     (dio_pad_attr_13_pden_13_qs)
   );
-  assign reg2hw.dio_pad_attr[13].virtual_od_en.qe = dio_pad_attr_13_qe;
+  assign reg2hw.dio_pad_attr[13].pden.qe = dio_pad_attr_13_qe;
 
-  //   F[pull_en_13]: 2:2
+  //   F[smten_13]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_13_pull_en_13 (
+  ) u_dio_pad_attr_13_smten_13 (
     .re     (dio_pad_attr_13_re),
     .we     (dio_pad_attr_13_gated_we),
-    .wd     (dio_pad_attr_13_pull_en_13_wd),
-    .d      (hw2reg.dio_pad_attr[13].pull_en.d),
+    .wd     (dio_pad_attr_13_smten_13_wd),
+    .d      (hw2reg.dio_pad_attr[13].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_13_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[13].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[13].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_13_pull_en_13_qs)
+    .qs     (dio_pad_attr_13_smten_13_qs)
   );
-  assign reg2hw.dio_pad_attr[13].pull_en.qe = dio_pad_attr_13_qe;
+  assign reg2hw.dio_pad_attr[13].smten.qe = dio_pad_attr_13_qe;
 
-  //   F[pull_select_13]: 3:3
+  //   F[drv_13]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_13_pull_select_13 (
+    .DW    (3)
+  ) u_dio_pad_attr_13_drv_13 (
     .re     (dio_pad_attr_13_re),
     .we     (dio_pad_attr_13_gated_we),
-    .wd     (dio_pad_attr_13_pull_select_13_wd),
-    .d      (hw2reg.dio_pad_attr[13].pull_select.d),
+    .wd     (dio_pad_attr_13_drv_13_wd),
+    .d      (hw2reg.dio_pad_attr[13].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_13_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[13].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[13].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_13_pull_select_13_qs)
+    .qs     (dio_pad_attr_13_drv_13_qs)
   );
-  assign reg2hw.dio_pad_attr[13].pull_select.qe = dio_pad_attr_13_qe;
-
-  //   F[keeper_en_13]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_13_keeper_en_13 (
-    .re     (dio_pad_attr_13_re),
-    .we     (dio_pad_attr_13_gated_we),
-    .wd     (dio_pad_attr_13_keeper_en_13_wd),
-    .d      (hw2reg.dio_pad_attr[13].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_13_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[13].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_13_keeper_en_13_qs)
-  );
-  assign reg2hw.dio_pad_attr[13].keeper_en.qe = dio_pad_attr_13_qe;
-
-  //   F[schmitt_en_13]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_13_schmitt_en_13 (
-    .re     (dio_pad_attr_13_re),
-    .we     (dio_pad_attr_13_gated_we),
-    .wd     (dio_pad_attr_13_schmitt_en_13_wd),
-    .d      (hw2reg.dio_pad_attr[13].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_13_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[13].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_13_schmitt_en_13_qs)
-  );
-  assign reg2hw.dio_pad_attr[13].schmitt_en.qe = dio_pad_attr_13_qe;
-
-  //   F[od_en_13]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_13_od_en_13 (
-    .re     (dio_pad_attr_13_re),
-    .we     (dio_pad_attr_13_gated_we),
-    .wd     (dio_pad_attr_13_od_en_13_wd),
-    .d      (hw2reg.dio_pad_attr[13].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_13_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[13].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_13_od_en_13_qs)
-  );
-  assign reg2hw.dio_pad_attr[13].od_en.qe = dio_pad_attr_13_qe;
-
-  //   F[input_disable_13]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_13_input_disable_13 (
-    .re     (dio_pad_attr_13_re),
-    .we     (dio_pad_attr_13_gated_we),
-    .wd     (dio_pad_attr_13_input_disable_13_wd),
-    .d      (hw2reg.dio_pad_attr[13].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_13_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[13].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_13_input_disable_13_qs)
-  );
-  assign reg2hw.dio_pad_attr[13].input_disable.qe = dio_pad_attr_13_qe;
-
-  //   F[slew_rate_13]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_13_slew_rate_13 (
-    .re     (dio_pad_attr_13_re),
-    .we     (dio_pad_attr_13_gated_we),
-    .wd     (dio_pad_attr_13_slew_rate_13_wd),
-    .d      (hw2reg.dio_pad_attr[13].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_13_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[13].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_13_slew_rate_13_qs)
-  );
-  assign reg2hw.dio_pad_attr[13].slew_rate.qe = dio_pad_attr_13_qe;
-
-  //   F[drive_strength_13]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_13_drive_strength_13 (
-    .re     (dio_pad_attr_13_re),
-    .we     (dio_pad_attr_13_gated_we),
-    .wd     (dio_pad_attr_13_drive_strength_13_wd),
-    .d      (hw2reg.dio_pad_attr[13].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_13_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[13].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_13_drive_strength_13_qs)
-  );
-  assign reg2hw.dio_pad_attr[13].drive_strength.qe = dio_pad_attr_13_qe;
+  assign reg2hw.dio_pad_attr[13].drv.qe = dio_pad_attr_13_qe;
 
 
   // Subregister 14 of Multireg dio_pad_attr
   // R[dio_pad_attr_14]: V(True)
   logic dio_pad_attr_14_qe;
-  logic [9:0] dio_pad_attr_14_flds_we;
+  logic [3:0] dio_pad_attr_14_flds_we;
   assign dio_pad_attr_14_qe = &dio_pad_attr_14_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_14_gated_we;
   assign dio_pad_attr_14_gated_we = dio_pad_attr_14_we & dio_pad_attr_regwen_14_qs;
-  //   F[invert_14]: 0:0
+  //   F[puen_14]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_14_invert_14 (
+  ) u_dio_pad_attr_14_puen_14 (
     .re     (dio_pad_attr_14_re),
     .we     (dio_pad_attr_14_gated_we),
-    .wd     (dio_pad_attr_14_invert_14_wd),
-    .d      (hw2reg.dio_pad_attr[14].invert.d),
+    .wd     (dio_pad_attr_14_puen_14_wd),
+    .d      (hw2reg.dio_pad_attr[14].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_14_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[14].invert.q),
+    .q      (reg2hw.dio_pad_attr[14].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_14_invert_14_qs)
+    .qs     (dio_pad_attr_14_puen_14_qs)
   );
-  assign reg2hw.dio_pad_attr[14].invert.qe = dio_pad_attr_14_qe;
+  assign reg2hw.dio_pad_attr[14].puen.qe = dio_pad_attr_14_qe;
 
-  //   F[virtual_od_en_14]: 1:1
+  //   F[pden_14]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_14_virtual_od_en_14 (
+  ) u_dio_pad_attr_14_pden_14 (
     .re     (dio_pad_attr_14_re),
     .we     (dio_pad_attr_14_gated_we),
-    .wd     (dio_pad_attr_14_virtual_od_en_14_wd),
-    .d      (hw2reg.dio_pad_attr[14].virtual_od_en.d),
+    .wd     (dio_pad_attr_14_pden_14_wd),
+    .d      (hw2reg.dio_pad_attr[14].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_14_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[14].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[14].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_14_virtual_od_en_14_qs)
+    .qs     (dio_pad_attr_14_pden_14_qs)
   );
-  assign reg2hw.dio_pad_attr[14].virtual_od_en.qe = dio_pad_attr_14_qe;
+  assign reg2hw.dio_pad_attr[14].pden.qe = dio_pad_attr_14_qe;
 
-  //   F[pull_en_14]: 2:2
+  //   F[smten_14]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_14_pull_en_14 (
+  ) u_dio_pad_attr_14_smten_14 (
     .re     (dio_pad_attr_14_re),
     .we     (dio_pad_attr_14_gated_we),
-    .wd     (dio_pad_attr_14_pull_en_14_wd),
-    .d      (hw2reg.dio_pad_attr[14].pull_en.d),
+    .wd     (dio_pad_attr_14_smten_14_wd),
+    .d      (hw2reg.dio_pad_attr[14].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_14_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[14].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[14].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_14_pull_en_14_qs)
+    .qs     (dio_pad_attr_14_smten_14_qs)
   );
-  assign reg2hw.dio_pad_attr[14].pull_en.qe = dio_pad_attr_14_qe;
+  assign reg2hw.dio_pad_attr[14].smten.qe = dio_pad_attr_14_qe;
 
-  //   F[pull_select_14]: 3:3
+  //   F[drv_14]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_14_pull_select_14 (
+    .DW    (3)
+  ) u_dio_pad_attr_14_drv_14 (
     .re     (dio_pad_attr_14_re),
     .we     (dio_pad_attr_14_gated_we),
-    .wd     (dio_pad_attr_14_pull_select_14_wd),
-    .d      (hw2reg.dio_pad_attr[14].pull_select.d),
+    .wd     (dio_pad_attr_14_drv_14_wd),
+    .d      (hw2reg.dio_pad_attr[14].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_14_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[14].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[14].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_14_pull_select_14_qs)
+    .qs     (dio_pad_attr_14_drv_14_qs)
   );
-  assign reg2hw.dio_pad_attr[14].pull_select.qe = dio_pad_attr_14_qe;
-
-  //   F[keeper_en_14]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_14_keeper_en_14 (
-    .re     (dio_pad_attr_14_re),
-    .we     (dio_pad_attr_14_gated_we),
-    .wd     (dio_pad_attr_14_keeper_en_14_wd),
-    .d      (hw2reg.dio_pad_attr[14].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_14_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[14].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_14_keeper_en_14_qs)
-  );
-  assign reg2hw.dio_pad_attr[14].keeper_en.qe = dio_pad_attr_14_qe;
-
-  //   F[schmitt_en_14]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_14_schmitt_en_14 (
-    .re     (dio_pad_attr_14_re),
-    .we     (dio_pad_attr_14_gated_we),
-    .wd     (dio_pad_attr_14_schmitt_en_14_wd),
-    .d      (hw2reg.dio_pad_attr[14].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_14_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[14].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_14_schmitt_en_14_qs)
-  );
-  assign reg2hw.dio_pad_attr[14].schmitt_en.qe = dio_pad_attr_14_qe;
-
-  //   F[od_en_14]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_14_od_en_14 (
-    .re     (dio_pad_attr_14_re),
-    .we     (dio_pad_attr_14_gated_we),
-    .wd     (dio_pad_attr_14_od_en_14_wd),
-    .d      (hw2reg.dio_pad_attr[14].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_14_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[14].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_14_od_en_14_qs)
-  );
-  assign reg2hw.dio_pad_attr[14].od_en.qe = dio_pad_attr_14_qe;
-
-  //   F[input_disable_14]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_14_input_disable_14 (
-    .re     (dio_pad_attr_14_re),
-    .we     (dio_pad_attr_14_gated_we),
-    .wd     (dio_pad_attr_14_input_disable_14_wd),
-    .d      (hw2reg.dio_pad_attr[14].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_14_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[14].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_14_input_disable_14_qs)
-  );
-  assign reg2hw.dio_pad_attr[14].input_disable.qe = dio_pad_attr_14_qe;
-
-  //   F[slew_rate_14]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_14_slew_rate_14 (
-    .re     (dio_pad_attr_14_re),
-    .we     (dio_pad_attr_14_gated_we),
-    .wd     (dio_pad_attr_14_slew_rate_14_wd),
-    .d      (hw2reg.dio_pad_attr[14].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_14_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[14].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_14_slew_rate_14_qs)
-  );
-  assign reg2hw.dio_pad_attr[14].slew_rate.qe = dio_pad_attr_14_qe;
-
-  //   F[drive_strength_14]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_14_drive_strength_14 (
-    .re     (dio_pad_attr_14_re),
-    .we     (dio_pad_attr_14_gated_we),
-    .wd     (dio_pad_attr_14_drive_strength_14_wd),
-    .d      (hw2reg.dio_pad_attr[14].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_14_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[14].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_14_drive_strength_14_qs)
-  );
-  assign reg2hw.dio_pad_attr[14].drive_strength.qe = dio_pad_attr_14_qe;
+  assign reg2hw.dio_pad_attr[14].drv.qe = dio_pad_attr_14_qe;
 
 
   // Subregister 15 of Multireg dio_pad_attr
   // R[dio_pad_attr_15]: V(True)
   logic dio_pad_attr_15_qe;
-  logic [9:0] dio_pad_attr_15_flds_we;
+  logic [3:0] dio_pad_attr_15_flds_we;
   assign dio_pad_attr_15_qe = &dio_pad_attr_15_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_15_gated_we;
   assign dio_pad_attr_15_gated_we = dio_pad_attr_15_we & dio_pad_attr_regwen_15_qs;
-  //   F[invert_15]: 0:0
+  //   F[puen_15]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_15_invert_15 (
+  ) u_dio_pad_attr_15_puen_15 (
     .re     (dio_pad_attr_15_re),
     .we     (dio_pad_attr_15_gated_we),
-    .wd     (dio_pad_attr_15_invert_15_wd),
-    .d      (hw2reg.dio_pad_attr[15].invert.d),
+    .wd     (dio_pad_attr_15_puen_15_wd),
+    .d      (hw2reg.dio_pad_attr[15].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_15_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[15].invert.q),
+    .q      (reg2hw.dio_pad_attr[15].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_15_invert_15_qs)
+    .qs     (dio_pad_attr_15_puen_15_qs)
   );
-  assign reg2hw.dio_pad_attr[15].invert.qe = dio_pad_attr_15_qe;
+  assign reg2hw.dio_pad_attr[15].puen.qe = dio_pad_attr_15_qe;
 
-  //   F[virtual_od_en_15]: 1:1
+  //   F[pden_15]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_15_virtual_od_en_15 (
+  ) u_dio_pad_attr_15_pden_15 (
     .re     (dio_pad_attr_15_re),
     .we     (dio_pad_attr_15_gated_we),
-    .wd     (dio_pad_attr_15_virtual_od_en_15_wd),
-    .d      (hw2reg.dio_pad_attr[15].virtual_od_en.d),
+    .wd     (dio_pad_attr_15_pden_15_wd),
+    .d      (hw2reg.dio_pad_attr[15].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_15_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[15].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[15].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_15_virtual_od_en_15_qs)
+    .qs     (dio_pad_attr_15_pden_15_qs)
   );
-  assign reg2hw.dio_pad_attr[15].virtual_od_en.qe = dio_pad_attr_15_qe;
+  assign reg2hw.dio_pad_attr[15].pden.qe = dio_pad_attr_15_qe;
 
-  //   F[pull_en_15]: 2:2
+  //   F[smten_15]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_15_pull_en_15 (
+  ) u_dio_pad_attr_15_smten_15 (
     .re     (dio_pad_attr_15_re),
     .we     (dio_pad_attr_15_gated_we),
-    .wd     (dio_pad_attr_15_pull_en_15_wd),
-    .d      (hw2reg.dio_pad_attr[15].pull_en.d),
+    .wd     (dio_pad_attr_15_smten_15_wd),
+    .d      (hw2reg.dio_pad_attr[15].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_15_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[15].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[15].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_15_pull_en_15_qs)
+    .qs     (dio_pad_attr_15_smten_15_qs)
   );
-  assign reg2hw.dio_pad_attr[15].pull_en.qe = dio_pad_attr_15_qe;
+  assign reg2hw.dio_pad_attr[15].smten.qe = dio_pad_attr_15_qe;
 
-  //   F[pull_select_15]: 3:3
+  //   F[drv_15]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_15_pull_select_15 (
+    .DW    (3)
+  ) u_dio_pad_attr_15_drv_15 (
     .re     (dio_pad_attr_15_re),
     .we     (dio_pad_attr_15_gated_we),
-    .wd     (dio_pad_attr_15_pull_select_15_wd),
-    .d      (hw2reg.dio_pad_attr[15].pull_select.d),
+    .wd     (dio_pad_attr_15_drv_15_wd),
+    .d      (hw2reg.dio_pad_attr[15].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_15_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[15].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[15].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_15_pull_select_15_qs)
+    .qs     (dio_pad_attr_15_drv_15_qs)
   );
-  assign reg2hw.dio_pad_attr[15].pull_select.qe = dio_pad_attr_15_qe;
-
-  //   F[keeper_en_15]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_15_keeper_en_15 (
-    .re     (dio_pad_attr_15_re),
-    .we     (dio_pad_attr_15_gated_we),
-    .wd     (dio_pad_attr_15_keeper_en_15_wd),
-    .d      (hw2reg.dio_pad_attr[15].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_15_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[15].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_15_keeper_en_15_qs)
-  );
-  assign reg2hw.dio_pad_attr[15].keeper_en.qe = dio_pad_attr_15_qe;
-
-  //   F[schmitt_en_15]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_15_schmitt_en_15 (
-    .re     (dio_pad_attr_15_re),
-    .we     (dio_pad_attr_15_gated_we),
-    .wd     (dio_pad_attr_15_schmitt_en_15_wd),
-    .d      (hw2reg.dio_pad_attr[15].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_15_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[15].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_15_schmitt_en_15_qs)
-  );
-  assign reg2hw.dio_pad_attr[15].schmitt_en.qe = dio_pad_attr_15_qe;
-
-  //   F[od_en_15]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_15_od_en_15 (
-    .re     (dio_pad_attr_15_re),
-    .we     (dio_pad_attr_15_gated_we),
-    .wd     (dio_pad_attr_15_od_en_15_wd),
-    .d      (hw2reg.dio_pad_attr[15].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_15_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[15].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_15_od_en_15_qs)
-  );
-  assign reg2hw.dio_pad_attr[15].od_en.qe = dio_pad_attr_15_qe;
-
-  //   F[input_disable_15]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_15_input_disable_15 (
-    .re     (dio_pad_attr_15_re),
-    .we     (dio_pad_attr_15_gated_we),
-    .wd     (dio_pad_attr_15_input_disable_15_wd),
-    .d      (hw2reg.dio_pad_attr[15].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_15_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[15].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_15_input_disable_15_qs)
-  );
-  assign reg2hw.dio_pad_attr[15].input_disable.qe = dio_pad_attr_15_qe;
-
-  //   F[slew_rate_15]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_15_slew_rate_15 (
-    .re     (dio_pad_attr_15_re),
-    .we     (dio_pad_attr_15_gated_we),
-    .wd     (dio_pad_attr_15_slew_rate_15_wd),
-    .d      (hw2reg.dio_pad_attr[15].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_15_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[15].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_15_slew_rate_15_qs)
-  );
-  assign reg2hw.dio_pad_attr[15].slew_rate.qe = dio_pad_attr_15_qe;
-
-  //   F[drive_strength_15]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_15_drive_strength_15 (
-    .re     (dio_pad_attr_15_re),
-    .we     (dio_pad_attr_15_gated_we),
-    .wd     (dio_pad_attr_15_drive_strength_15_wd),
-    .d      (hw2reg.dio_pad_attr[15].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_15_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[15].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_15_drive_strength_15_qs)
-  );
-  assign reg2hw.dio_pad_attr[15].drive_strength.qe = dio_pad_attr_15_qe;
+  assign reg2hw.dio_pad_attr[15].drv.qe = dio_pad_attr_15_qe;
 
 
   // Subregister 16 of Multireg dio_pad_attr
   // R[dio_pad_attr_16]: V(True)
   logic dio_pad_attr_16_qe;
-  logic [9:0] dio_pad_attr_16_flds_we;
+  logic [3:0] dio_pad_attr_16_flds_we;
   assign dio_pad_attr_16_qe = &dio_pad_attr_16_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_16_gated_we;
   assign dio_pad_attr_16_gated_we = dio_pad_attr_16_we & dio_pad_attr_regwen_16_qs;
-  //   F[invert_16]: 0:0
+  //   F[puen_16]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_16_invert_16 (
+  ) u_dio_pad_attr_16_puen_16 (
     .re     (dio_pad_attr_16_re),
     .we     (dio_pad_attr_16_gated_we),
-    .wd     (dio_pad_attr_16_invert_16_wd),
-    .d      (hw2reg.dio_pad_attr[16].invert.d),
+    .wd     (dio_pad_attr_16_puen_16_wd),
+    .d      (hw2reg.dio_pad_attr[16].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_16_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[16].invert.q),
+    .q      (reg2hw.dio_pad_attr[16].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_16_invert_16_qs)
+    .qs     (dio_pad_attr_16_puen_16_qs)
   );
-  assign reg2hw.dio_pad_attr[16].invert.qe = dio_pad_attr_16_qe;
+  assign reg2hw.dio_pad_attr[16].puen.qe = dio_pad_attr_16_qe;
 
-  //   F[virtual_od_en_16]: 1:1
+  //   F[pden_16]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_16_virtual_od_en_16 (
+  ) u_dio_pad_attr_16_pden_16 (
     .re     (dio_pad_attr_16_re),
     .we     (dio_pad_attr_16_gated_we),
-    .wd     (dio_pad_attr_16_virtual_od_en_16_wd),
-    .d      (hw2reg.dio_pad_attr[16].virtual_od_en.d),
+    .wd     (dio_pad_attr_16_pden_16_wd),
+    .d      (hw2reg.dio_pad_attr[16].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_16_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[16].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[16].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_16_virtual_od_en_16_qs)
+    .qs     (dio_pad_attr_16_pden_16_qs)
   );
-  assign reg2hw.dio_pad_attr[16].virtual_od_en.qe = dio_pad_attr_16_qe;
+  assign reg2hw.dio_pad_attr[16].pden.qe = dio_pad_attr_16_qe;
 
-  //   F[pull_en_16]: 2:2
+  //   F[smten_16]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_16_pull_en_16 (
+  ) u_dio_pad_attr_16_smten_16 (
     .re     (dio_pad_attr_16_re),
     .we     (dio_pad_attr_16_gated_we),
-    .wd     (dio_pad_attr_16_pull_en_16_wd),
-    .d      (hw2reg.dio_pad_attr[16].pull_en.d),
+    .wd     (dio_pad_attr_16_smten_16_wd),
+    .d      (hw2reg.dio_pad_attr[16].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_16_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[16].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[16].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_16_pull_en_16_qs)
+    .qs     (dio_pad_attr_16_smten_16_qs)
   );
-  assign reg2hw.dio_pad_attr[16].pull_en.qe = dio_pad_attr_16_qe;
+  assign reg2hw.dio_pad_attr[16].smten.qe = dio_pad_attr_16_qe;
 
-  //   F[pull_select_16]: 3:3
+  //   F[drv_16]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_16_pull_select_16 (
+    .DW    (3)
+  ) u_dio_pad_attr_16_drv_16 (
     .re     (dio_pad_attr_16_re),
     .we     (dio_pad_attr_16_gated_we),
-    .wd     (dio_pad_attr_16_pull_select_16_wd),
-    .d      (hw2reg.dio_pad_attr[16].pull_select.d),
+    .wd     (dio_pad_attr_16_drv_16_wd),
+    .d      (hw2reg.dio_pad_attr[16].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_16_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[16].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[16].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_16_pull_select_16_qs)
+    .qs     (dio_pad_attr_16_drv_16_qs)
   );
-  assign reg2hw.dio_pad_attr[16].pull_select.qe = dio_pad_attr_16_qe;
-
-  //   F[keeper_en_16]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_16_keeper_en_16 (
-    .re     (dio_pad_attr_16_re),
-    .we     (dio_pad_attr_16_gated_we),
-    .wd     (dio_pad_attr_16_keeper_en_16_wd),
-    .d      (hw2reg.dio_pad_attr[16].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_16_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[16].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_16_keeper_en_16_qs)
-  );
-  assign reg2hw.dio_pad_attr[16].keeper_en.qe = dio_pad_attr_16_qe;
-
-  //   F[schmitt_en_16]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_16_schmitt_en_16 (
-    .re     (dio_pad_attr_16_re),
-    .we     (dio_pad_attr_16_gated_we),
-    .wd     (dio_pad_attr_16_schmitt_en_16_wd),
-    .d      (hw2reg.dio_pad_attr[16].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_16_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[16].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_16_schmitt_en_16_qs)
-  );
-  assign reg2hw.dio_pad_attr[16].schmitt_en.qe = dio_pad_attr_16_qe;
-
-  //   F[od_en_16]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_16_od_en_16 (
-    .re     (dio_pad_attr_16_re),
-    .we     (dio_pad_attr_16_gated_we),
-    .wd     (dio_pad_attr_16_od_en_16_wd),
-    .d      (hw2reg.dio_pad_attr[16].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_16_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[16].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_16_od_en_16_qs)
-  );
-  assign reg2hw.dio_pad_attr[16].od_en.qe = dio_pad_attr_16_qe;
-
-  //   F[input_disable_16]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_16_input_disable_16 (
-    .re     (dio_pad_attr_16_re),
-    .we     (dio_pad_attr_16_gated_we),
-    .wd     (dio_pad_attr_16_input_disable_16_wd),
-    .d      (hw2reg.dio_pad_attr[16].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_16_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[16].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_16_input_disable_16_qs)
-  );
-  assign reg2hw.dio_pad_attr[16].input_disable.qe = dio_pad_attr_16_qe;
-
-  //   F[slew_rate_16]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_16_slew_rate_16 (
-    .re     (dio_pad_attr_16_re),
-    .we     (dio_pad_attr_16_gated_we),
-    .wd     (dio_pad_attr_16_slew_rate_16_wd),
-    .d      (hw2reg.dio_pad_attr[16].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_16_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[16].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_16_slew_rate_16_qs)
-  );
-  assign reg2hw.dio_pad_attr[16].slew_rate.qe = dio_pad_attr_16_qe;
-
-  //   F[drive_strength_16]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_16_drive_strength_16 (
-    .re     (dio_pad_attr_16_re),
-    .we     (dio_pad_attr_16_gated_we),
-    .wd     (dio_pad_attr_16_drive_strength_16_wd),
-    .d      (hw2reg.dio_pad_attr[16].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_16_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[16].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_16_drive_strength_16_qs)
-  );
-  assign reg2hw.dio_pad_attr[16].drive_strength.qe = dio_pad_attr_16_qe;
+  assign reg2hw.dio_pad_attr[16].drv.qe = dio_pad_attr_16_qe;
 
 
   // Subregister 17 of Multireg dio_pad_attr
   // R[dio_pad_attr_17]: V(True)
   logic dio_pad_attr_17_qe;
-  logic [9:0] dio_pad_attr_17_flds_we;
+  logic [3:0] dio_pad_attr_17_flds_we;
   assign dio_pad_attr_17_qe = &dio_pad_attr_17_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_17_gated_we;
   assign dio_pad_attr_17_gated_we = dio_pad_attr_17_we & dio_pad_attr_regwen_17_qs;
-  //   F[invert_17]: 0:0
+  //   F[puen_17]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_17_invert_17 (
+  ) u_dio_pad_attr_17_puen_17 (
     .re     (dio_pad_attr_17_re),
     .we     (dio_pad_attr_17_gated_we),
-    .wd     (dio_pad_attr_17_invert_17_wd),
-    .d      (hw2reg.dio_pad_attr[17].invert.d),
+    .wd     (dio_pad_attr_17_puen_17_wd),
+    .d      (hw2reg.dio_pad_attr[17].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_17_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[17].invert.q),
+    .q      (reg2hw.dio_pad_attr[17].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_17_invert_17_qs)
+    .qs     (dio_pad_attr_17_puen_17_qs)
   );
-  assign reg2hw.dio_pad_attr[17].invert.qe = dio_pad_attr_17_qe;
+  assign reg2hw.dio_pad_attr[17].puen.qe = dio_pad_attr_17_qe;
 
-  //   F[virtual_od_en_17]: 1:1
+  //   F[pden_17]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_17_virtual_od_en_17 (
+  ) u_dio_pad_attr_17_pden_17 (
     .re     (dio_pad_attr_17_re),
     .we     (dio_pad_attr_17_gated_we),
-    .wd     (dio_pad_attr_17_virtual_od_en_17_wd),
-    .d      (hw2reg.dio_pad_attr[17].virtual_od_en.d),
+    .wd     (dio_pad_attr_17_pden_17_wd),
+    .d      (hw2reg.dio_pad_attr[17].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_17_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[17].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[17].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_17_virtual_od_en_17_qs)
+    .qs     (dio_pad_attr_17_pden_17_qs)
   );
-  assign reg2hw.dio_pad_attr[17].virtual_od_en.qe = dio_pad_attr_17_qe;
+  assign reg2hw.dio_pad_attr[17].pden.qe = dio_pad_attr_17_qe;
 
-  //   F[pull_en_17]: 2:2
+  //   F[smten_17]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_17_pull_en_17 (
+  ) u_dio_pad_attr_17_smten_17 (
     .re     (dio_pad_attr_17_re),
     .we     (dio_pad_attr_17_gated_we),
-    .wd     (dio_pad_attr_17_pull_en_17_wd),
-    .d      (hw2reg.dio_pad_attr[17].pull_en.d),
+    .wd     (dio_pad_attr_17_smten_17_wd),
+    .d      (hw2reg.dio_pad_attr[17].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_17_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[17].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[17].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_17_pull_en_17_qs)
+    .qs     (dio_pad_attr_17_smten_17_qs)
   );
-  assign reg2hw.dio_pad_attr[17].pull_en.qe = dio_pad_attr_17_qe;
+  assign reg2hw.dio_pad_attr[17].smten.qe = dio_pad_attr_17_qe;
 
-  //   F[pull_select_17]: 3:3
+  //   F[drv_17]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_17_pull_select_17 (
+    .DW    (3)
+  ) u_dio_pad_attr_17_drv_17 (
     .re     (dio_pad_attr_17_re),
     .we     (dio_pad_attr_17_gated_we),
-    .wd     (dio_pad_attr_17_pull_select_17_wd),
-    .d      (hw2reg.dio_pad_attr[17].pull_select.d),
+    .wd     (dio_pad_attr_17_drv_17_wd),
+    .d      (hw2reg.dio_pad_attr[17].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_17_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[17].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[17].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_17_pull_select_17_qs)
+    .qs     (dio_pad_attr_17_drv_17_qs)
   );
-  assign reg2hw.dio_pad_attr[17].pull_select.qe = dio_pad_attr_17_qe;
-
-  //   F[keeper_en_17]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_17_keeper_en_17 (
-    .re     (dio_pad_attr_17_re),
-    .we     (dio_pad_attr_17_gated_we),
-    .wd     (dio_pad_attr_17_keeper_en_17_wd),
-    .d      (hw2reg.dio_pad_attr[17].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_17_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[17].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_17_keeper_en_17_qs)
-  );
-  assign reg2hw.dio_pad_attr[17].keeper_en.qe = dio_pad_attr_17_qe;
-
-  //   F[schmitt_en_17]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_17_schmitt_en_17 (
-    .re     (dio_pad_attr_17_re),
-    .we     (dio_pad_attr_17_gated_we),
-    .wd     (dio_pad_attr_17_schmitt_en_17_wd),
-    .d      (hw2reg.dio_pad_attr[17].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_17_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[17].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_17_schmitt_en_17_qs)
-  );
-  assign reg2hw.dio_pad_attr[17].schmitt_en.qe = dio_pad_attr_17_qe;
-
-  //   F[od_en_17]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_17_od_en_17 (
-    .re     (dio_pad_attr_17_re),
-    .we     (dio_pad_attr_17_gated_we),
-    .wd     (dio_pad_attr_17_od_en_17_wd),
-    .d      (hw2reg.dio_pad_attr[17].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_17_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[17].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_17_od_en_17_qs)
-  );
-  assign reg2hw.dio_pad_attr[17].od_en.qe = dio_pad_attr_17_qe;
-
-  //   F[input_disable_17]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_17_input_disable_17 (
-    .re     (dio_pad_attr_17_re),
-    .we     (dio_pad_attr_17_gated_we),
-    .wd     (dio_pad_attr_17_input_disable_17_wd),
-    .d      (hw2reg.dio_pad_attr[17].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_17_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[17].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_17_input_disable_17_qs)
-  );
-  assign reg2hw.dio_pad_attr[17].input_disable.qe = dio_pad_attr_17_qe;
-
-  //   F[slew_rate_17]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_17_slew_rate_17 (
-    .re     (dio_pad_attr_17_re),
-    .we     (dio_pad_attr_17_gated_we),
-    .wd     (dio_pad_attr_17_slew_rate_17_wd),
-    .d      (hw2reg.dio_pad_attr[17].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_17_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[17].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_17_slew_rate_17_qs)
-  );
-  assign reg2hw.dio_pad_attr[17].slew_rate.qe = dio_pad_attr_17_qe;
-
-  //   F[drive_strength_17]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_17_drive_strength_17 (
-    .re     (dio_pad_attr_17_re),
-    .we     (dio_pad_attr_17_gated_we),
-    .wd     (dio_pad_attr_17_drive_strength_17_wd),
-    .d      (hw2reg.dio_pad_attr[17].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_17_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[17].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_17_drive_strength_17_qs)
-  );
-  assign reg2hw.dio_pad_attr[17].drive_strength.qe = dio_pad_attr_17_qe;
+  assign reg2hw.dio_pad_attr[17].drv.qe = dio_pad_attr_17_qe;
 
 
   // Subregister 18 of Multireg dio_pad_attr
   // R[dio_pad_attr_18]: V(True)
   logic dio_pad_attr_18_qe;
-  logic [9:0] dio_pad_attr_18_flds_we;
+  logic [3:0] dio_pad_attr_18_flds_we;
   assign dio_pad_attr_18_qe = &dio_pad_attr_18_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_18_gated_we;
   assign dio_pad_attr_18_gated_we = dio_pad_attr_18_we & dio_pad_attr_regwen_18_qs;
-  //   F[invert_18]: 0:0
+  //   F[puen_18]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_18_invert_18 (
+  ) u_dio_pad_attr_18_puen_18 (
     .re     (dio_pad_attr_18_re),
     .we     (dio_pad_attr_18_gated_we),
-    .wd     (dio_pad_attr_18_invert_18_wd),
-    .d      (hw2reg.dio_pad_attr[18].invert.d),
+    .wd     (dio_pad_attr_18_puen_18_wd),
+    .d      (hw2reg.dio_pad_attr[18].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_18_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[18].invert.q),
+    .q      (reg2hw.dio_pad_attr[18].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_18_invert_18_qs)
+    .qs     (dio_pad_attr_18_puen_18_qs)
   );
-  assign reg2hw.dio_pad_attr[18].invert.qe = dio_pad_attr_18_qe;
+  assign reg2hw.dio_pad_attr[18].puen.qe = dio_pad_attr_18_qe;
 
-  //   F[virtual_od_en_18]: 1:1
+  //   F[pden_18]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_18_virtual_od_en_18 (
+  ) u_dio_pad_attr_18_pden_18 (
     .re     (dio_pad_attr_18_re),
     .we     (dio_pad_attr_18_gated_we),
-    .wd     (dio_pad_attr_18_virtual_od_en_18_wd),
-    .d      (hw2reg.dio_pad_attr[18].virtual_od_en.d),
+    .wd     (dio_pad_attr_18_pden_18_wd),
+    .d      (hw2reg.dio_pad_attr[18].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_18_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[18].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[18].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_18_virtual_od_en_18_qs)
+    .qs     (dio_pad_attr_18_pden_18_qs)
   );
-  assign reg2hw.dio_pad_attr[18].virtual_od_en.qe = dio_pad_attr_18_qe;
+  assign reg2hw.dio_pad_attr[18].pden.qe = dio_pad_attr_18_qe;
 
-  //   F[pull_en_18]: 2:2
+  //   F[smten_18]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_18_pull_en_18 (
+  ) u_dio_pad_attr_18_smten_18 (
     .re     (dio_pad_attr_18_re),
     .we     (dio_pad_attr_18_gated_we),
-    .wd     (dio_pad_attr_18_pull_en_18_wd),
-    .d      (hw2reg.dio_pad_attr[18].pull_en.d),
+    .wd     (dio_pad_attr_18_smten_18_wd),
+    .d      (hw2reg.dio_pad_attr[18].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_18_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[18].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[18].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_18_pull_en_18_qs)
+    .qs     (dio_pad_attr_18_smten_18_qs)
   );
-  assign reg2hw.dio_pad_attr[18].pull_en.qe = dio_pad_attr_18_qe;
+  assign reg2hw.dio_pad_attr[18].smten.qe = dio_pad_attr_18_qe;
 
-  //   F[pull_select_18]: 3:3
+  //   F[drv_18]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_18_pull_select_18 (
+    .DW    (3)
+  ) u_dio_pad_attr_18_drv_18 (
     .re     (dio_pad_attr_18_re),
     .we     (dio_pad_attr_18_gated_we),
-    .wd     (dio_pad_attr_18_pull_select_18_wd),
-    .d      (hw2reg.dio_pad_attr[18].pull_select.d),
+    .wd     (dio_pad_attr_18_drv_18_wd),
+    .d      (hw2reg.dio_pad_attr[18].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_18_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[18].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[18].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_18_pull_select_18_qs)
+    .qs     (dio_pad_attr_18_drv_18_qs)
   );
-  assign reg2hw.dio_pad_attr[18].pull_select.qe = dio_pad_attr_18_qe;
-
-  //   F[keeper_en_18]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_18_keeper_en_18 (
-    .re     (dio_pad_attr_18_re),
-    .we     (dio_pad_attr_18_gated_we),
-    .wd     (dio_pad_attr_18_keeper_en_18_wd),
-    .d      (hw2reg.dio_pad_attr[18].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_18_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[18].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_18_keeper_en_18_qs)
-  );
-  assign reg2hw.dio_pad_attr[18].keeper_en.qe = dio_pad_attr_18_qe;
-
-  //   F[schmitt_en_18]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_18_schmitt_en_18 (
-    .re     (dio_pad_attr_18_re),
-    .we     (dio_pad_attr_18_gated_we),
-    .wd     (dio_pad_attr_18_schmitt_en_18_wd),
-    .d      (hw2reg.dio_pad_attr[18].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_18_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[18].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_18_schmitt_en_18_qs)
-  );
-  assign reg2hw.dio_pad_attr[18].schmitt_en.qe = dio_pad_attr_18_qe;
-
-  //   F[od_en_18]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_18_od_en_18 (
-    .re     (dio_pad_attr_18_re),
-    .we     (dio_pad_attr_18_gated_we),
-    .wd     (dio_pad_attr_18_od_en_18_wd),
-    .d      (hw2reg.dio_pad_attr[18].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_18_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[18].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_18_od_en_18_qs)
-  );
-  assign reg2hw.dio_pad_attr[18].od_en.qe = dio_pad_attr_18_qe;
-
-  //   F[input_disable_18]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_18_input_disable_18 (
-    .re     (dio_pad_attr_18_re),
-    .we     (dio_pad_attr_18_gated_we),
-    .wd     (dio_pad_attr_18_input_disable_18_wd),
-    .d      (hw2reg.dio_pad_attr[18].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_18_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[18].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_18_input_disable_18_qs)
-  );
-  assign reg2hw.dio_pad_attr[18].input_disable.qe = dio_pad_attr_18_qe;
-
-  //   F[slew_rate_18]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_18_slew_rate_18 (
-    .re     (dio_pad_attr_18_re),
-    .we     (dio_pad_attr_18_gated_we),
-    .wd     (dio_pad_attr_18_slew_rate_18_wd),
-    .d      (hw2reg.dio_pad_attr[18].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_18_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[18].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_18_slew_rate_18_qs)
-  );
-  assign reg2hw.dio_pad_attr[18].slew_rate.qe = dio_pad_attr_18_qe;
-
-  //   F[drive_strength_18]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_18_drive_strength_18 (
-    .re     (dio_pad_attr_18_re),
-    .we     (dio_pad_attr_18_gated_we),
-    .wd     (dio_pad_attr_18_drive_strength_18_wd),
-    .d      (hw2reg.dio_pad_attr[18].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_18_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[18].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_18_drive_strength_18_qs)
-  );
-  assign reg2hw.dio_pad_attr[18].drive_strength.qe = dio_pad_attr_18_qe;
+  assign reg2hw.dio_pad_attr[18].drv.qe = dio_pad_attr_18_qe;
 
 
   // Subregister 19 of Multireg dio_pad_attr
   // R[dio_pad_attr_19]: V(True)
   logic dio_pad_attr_19_qe;
-  logic [9:0] dio_pad_attr_19_flds_we;
+  logic [3:0] dio_pad_attr_19_flds_we;
   assign dio_pad_attr_19_qe = &dio_pad_attr_19_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_19_gated_we;
   assign dio_pad_attr_19_gated_we = dio_pad_attr_19_we & dio_pad_attr_regwen_19_qs;
-  //   F[invert_19]: 0:0
+  //   F[puen_19]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_19_invert_19 (
+  ) u_dio_pad_attr_19_puen_19 (
     .re     (dio_pad_attr_19_re),
     .we     (dio_pad_attr_19_gated_we),
-    .wd     (dio_pad_attr_19_invert_19_wd),
-    .d      (hw2reg.dio_pad_attr[19].invert.d),
+    .wd     (dio_pad_attr_19_puen_19_wd),
+    .d      (hw2reg.dio_pad_attr[19].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_19_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[19].invert.q),
+    .q      (reg2hw.dio_pad_attr[19].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_19_invert_19_qs)
+    .qs     (dio_pad_attr_19_puen_19_qs)
   );
-  assign reg2hw.dio_pad_attr[19].invert.qe = dio_pad_attr_19_qe;
+  assign reg2hw.dio_pad_attr[19].puen.qe = dio_pad_attr_19_qe;
 
-  //   F[virtual_od_en_19]: 1:1
+  //   F[pden_19]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_19_virtual_od_en_19 (
+  ) u_dio_pad_attr_19_pden_19 (
     .re     (dio_pad_attr_19_re),
     .we     (dio_pad_attr_19_gated_we),
-    .wd     (dio_pad_attr_19_virtual_od_en_19_wd),
-    .d      (hw2reg.dio_pad_attr[19].virtual_od_en.d),
+    .wd     (dio_pad_attr_19_pden_19_wd),
+    .d      (hw2reg.dio_pad_attr[19].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_19_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[19].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[19].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_19_virtual_od_en_19_qs)
+    .qs     (dio_pad_attr_19_pden_19_qs)
   );
-  assign reg2hw.dio_pad_attr[19].virtual_od_en.qe = dio_pad_attr_19_qe;
+  assign reg2hw.dio_pad_attr[19].pden.qe = dio_pad_attr_19_qe;
 
-  //   F[pull_en_19]: 2:2
+  //   F[smten_19]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_19_pull_en_19 (
+  ) u_dio_pad_attr_19_smten_19 (
     .re     (dio_pad_attr_19_re),
     .we     (dio_pad_attr_19_gated_we),
-    .wd     (dio_pad_attr_19_pull_en_19_wd),
-    .d      (hw2reg.dio_pad_attr[19].pull_en.d),
+    .wd     (dio_pad_attr_19_smten_19_wd),
+    .d      (hw2reg.dio_pad_attr[19].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_19_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[19].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[19].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_19_pull_en_19_qs)
+    .qs     (dio_pad_attr_19_smten_19_qs)
   );
-  assign reg2hw.dio_pad_attr[19].pull_en.qe = dio_pad_attr_19_qe;
+  assign reg2hw.dio_pad_attr[19].smten.qe = dio_pad_attr_19_qe;
 
-  //   F[pull_select_19]: 3:3
+  //   F[drv_19]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_19_pull_select_19 (
+    .DW    (3)
+  ) u_dio_pad_attr_19_drv_19 (
     .re     (dio_pad_attr_19_re),
     .we     (dio_pad_attr_19_gated_we),
-    .wd     (dio_pad_attr_19_pull_select_19_wd),
-    .d      (hw2reg.dio_pad_attr[19].pull_select.d),
+    .wd     (dio_pad_attr_19_drv_19_wd),
+    .d      (hw2reg.dio_pad_attr[19].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_19_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[19].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[19].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_19_pull_select_19_qs)
+    .qs     (dio_pad_attr_19_drv_19_qs)
   );
-  assign reg2hw.dio_pad_attr[19].pull_select.qe = dio_pad_attr_19_qe;
-
-  //   F[keeper_en_19]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_19_keeper_en_19 (
-    .re     (dio_pad_attr_19_re),
-    .we     (dio_pad_attr_19_gated_we),
-    .wd     (dio_pad_attr_19_keeper_en_19_wd),
-    .d      (hw2reg.dio_pad_attr[19].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_19_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[19].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_19_keeper_en_19_qs)
-  );
-  assign reg2hw.dio_pad_attr[19].keeper_en.qe = dio_pad_attr_19_qe;
-
-  //   F[schmitt_en_19]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_19_schmitt_en_19 (
-    .re     (dio_pad_attr_19_re),
-    .we     (dio_pad_attr_19_gated_we),
-    .wd     (dio_pad_attr_19_schmitt_en_19_wd),
-    .d      (hw2reg.dio_pad_attr[19].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_19_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[19].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_19_schmitt_en_19_qs)
-  );
-  assign reg2hw.dio_pad_attr[19].schmitt_en.qe = dio_pad_attr_19_qe;
-
-  //   F[od_en_19]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_19_od_en_19 (
-    .re     (dio_pad_attr_19_re),
-    .we     (dio_pad_attr_19_gated_we),
-    .wd     (dio_pad_attr_19_od_en_19_wd),
-    .d      (hw2reg.dio_pad_attr[19].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_19_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[19].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_19_od_en_19_qs)
-  );
-  assign reg2hw.dio_pad_attr[19].od_en.qe = dio_pad_attr_19_qe;
-
-  //   F[input_disable_19]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_19_input_disable_19 (
-    .re     (dio_pad_attr_19_re),
-    .we     (dio_pad_attr_19_gated_we),
-    .wd     (dio_pad_attr_19_input_disable_19_wd),
-    .d      (hw2reg.dio_pad_attr[19].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_19_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[19].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_19_input_disable_19_qs)
-  );
-  assign reg2hw.dio_pad_attr[19].input_disable.qe = dio_pad_attr_19_qe;
-
-  //   F[slew_rate_19]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_19_slew_rate_19 (
-    .re     (dio_pad_attr_19_re),
-    .we     (dio_pad_attr_19_gated_we),
-    .wd     (dio_pad_attr_19_slew_rate_19_wd),
-    .d      (hw2reg.dio_pad_attr[19].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_19_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[19].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_19_slew_rate_19_qs)
-  );
-  assign reg2hw.dio_pad_attr[19].slew_rate.qe = dio_pad_attr_19_qe;
-
-  //   F[drive_strength_19]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_19_drive_strength_19 (
-    .re     (dio_pad_attr_19_re),
-    .we     (dio_pad_attr_19_gated_we),
-    .wd     (dio_pad_attr_19_drive_strength_19_wd),
-    .d      (hw2reg.dio_pad_attr[19].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_19_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[19].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_19_drive_strength_19_qs)
-  );
-  assign reg2hw.dio_pad_attr[19].drive_strength.qe = dio_pad_attr_19_qe;
+  assign reg2hw.dio_pad_attr[19].drv.qe = dio_pad_attr_19_qe;
 
 
   // Subregister 20 of Multireg dio_pad_attr
   // R[dio_pad_attr_20]: V(True)
   logic dio_pad_attr_20_qe;
-  logic [9:0] dio_pad_attr_20_flds_we;
+  logic [3:0] dio_pad_attr_20_flds_we;
   assign dio_pad_attr_20_qe = &dio_pad_attr_20_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_20_gated_we;
   assign dio_pad_attr_20_gated_we = dio_pad_attr_20_we & dio_pad_attr_regwen_20_qs;
-  //   F[invert_20]: 0:0
+  //   F[puen_20]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_20_invert_20 (
+  ) u_dio_pad_attr_20_puen_20 (
     .re     (dio_pad_attr_20_re),
     .we     (dio_pad_attr_20_gated_we),
-    .wd     (dio_pad_attr_20_invert_20_wd),
-    .d      (hw2reg.dio_pad_attr[20].invert.d),
+    .wd     (dio_pad_attr_20_puen_20_wd),
+    .d      (hw2reg.dio_pad_attr[20].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_20_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[20].invert.q),
+    .q      (reg2hw.dio_pad_attr[20].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_20_invert_20_qs)
+    .qs     (dio_pad_attr_20_puen_20_qs)
   );
-  assign reg2hw.dio_pad_attr[20].invert.qe = dio_pad_attr_20_qe;
+  assign reg2hw.dio_pad_attr[20].puen.qe = dio_pad_attr_20_qe;
 
-  //   F[virtual_od_en_20]: 1:1
+  //   F[pden_20]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_20_virtual_od_en_20 (
+  ) u_dio_pad_attr_20_pden_20 (
     .re     (dio_pad_attr_20_re),
     .we     (dio_pad_attr_20_gated_we),
-    .wd     (dio_pad_attr_20_virtual_od_en_20_wd),
-    .d      (hw2reg.dio_pad_attr[20].virtual_od_en.d),
+    .wd     (dio_pad_attr_20_pden_20_wd),
+    .d      (hw2reg.dio_pad_attr[20].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_20_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[20].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[20].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_20_virtual_od_en_20_qs)
+    .qs     (dio_pad_attr_20_pden_20_qs)
   );
-  assign reg2hw.dio_pad_attr[20].virtual_od_en.qe = dio_pad_attr_20_qe;
+  assign reg2hw.dio_pad_attr[20].pden.qe = dio_pad_attr_20_qe;
 
-  //   F[pull_en_20]: 2:2
+  //   F[smten_20]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_20_pull_en_20 (
+  ) u_dio_pad_attr_20_smten_20 (
     .re     (dio_pad_attr_20_re),
     .we     (dio_pad_attr_20_gated_we),
-    .wd     (dio_pad_attr_20_pull_en_20_wd),
-    .d      (hw2reg.dio_pad_attr[20].pull_en.d),
+    .wd     (dio_pad_attr_20_smten_20_wd),
+    .d      (hw2reg.dio_pad_attr[20].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_20_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[20].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[20].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_20_pull_en_20_qs)
+    .qs     (dio_pad_attr_20_smten_20_qs)
   );
-  assign reg2hw.dio_pad_attr[20].pull_en.qe = dio_pad_attr_20_qe;
+  assign reg2hw.dio_pad_attr[20].smten.qe = dio_pad_attr_20_qe;
 
-  //   F[pull_select_20]: 3:3
+  //   F[drv_20]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_20_pull_select_20 (
+    .DW    (3)
+  ) u_dio_pad_attr_20_drv_20 (
     .re     (dio_pad_attr_20_re),
     .we     (dio_pad_attr_20_gated_we),
-    .wd     (dio_pad_attr_20_pull_select_20_wd),
-    .d      (hw2reg.dio_pad_attr[20].pull_select.d),
+    .wd     (dio_pad_attr_20_drv_20_wd),
+    .d      (hw2reg.dio_pad_attr[20].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_20_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[20].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[20].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_20_pull_select_20_qs)
+    .qs     (dio_pad_attr_20_drv_20_qs)
   );
-  assign reg2hw.dio_pad_attr[20].pull_select.qe = dio_pad_attr_20_qe;
-
-  //   F[keeper_en_20]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_20_keeper_en_20 (
-    .re     (dio_pad_attr_20_re),
-    .we     (dio_pad_attr_20_gated_we),
-    .wd     (dio_pad_attr_20_keeper_en_20_wd),
-    .d      (hw2reg.dio_pad_attr[20].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_20_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[20].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_20_keeper_en_20_qs)
-  );
-  assign reg2hw.dio_pad_attr[20].keeper_en.qe = dio_pad_attr_20_qe;
-
-  //   F[schmitt_en_20]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_20_schmitt_en_20 (
-    .re     (dio_pad_attr_20_re),
-    .we     (dio_pad_attr_20_gated_we),
-    .wd     (dio_pad_attr_20_schmitt_en_20_wd),
-    .d      (hw2reg.dio_pad_attr[20].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_20_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[20].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_20_schmitt_en_20_qs)
-  );
-  assign reg2hw.dio_pad_attr[20].schmitt_en.qe = dio_pad_attr_20_qe;
-
-  //   F[od_en_20]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_20_od_en_20 (
-    .re     (dio_pad_attr_20_re),
-    .we     (dio_pad_attr_20_gated_we),
-    .wd     (dio_pad_attr_20_od_en_20_wd),
-    .d      (hw2reg.dio_pad_attr[20].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_20_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[20].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_20_od_en_20_qs)
-  );
-  assign reg2hw.dio_pad_attr[20].od_en.qe = dio_pad_attr_20_qe;
-
-  //   F[input_disable_20]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_20_input_disable_20 (
-    .re     (dio_pad_attr_20_re),
-    .we     (dio_pad_attr_20_gated_we),
-    .wd     (dio_pad_attr_20_input_disable_20_wd),
-    .d      (hw2reg.dio_pad_attr[20].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_20_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[20].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_20_input_disable_20_qs)
-  );
-  assign reg2hw.dio_pad_attr[20].input_disable.qe = dio_pad_attr_20_qe;
-
-  //   F[slew_rate_20]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_20_slew_rate_20 (
-    .re     (dio_pad_attr_20_re),
-    .we     (dio_pad_attr_20_gated_we),
-    .wd     (dio_pad_attr_20_slew_rate_20_wd),
-    .d      (hw2reg.dio_pad_attr[20].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_20_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[20].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_20_slew_rate_20_qs)
-  );
-  assign reg2hw.dio_pad_attr[20].slew_rate.qe = dio_pad_attr_20_qe;
-
-  //   F[drive_strength_20]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_20_drive_strength_20 (
-    .re     (dio_pad_attr_20_re),
-    .we     (dio_pad_attr_20_gated_we),
-    .wd     (dio_pad_attr_20_drive_strength_20_wd),
-    .d      (hw2reg.dio_pad_attr[20].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_20_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[20].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_20_drive_strength_20_qs)
-  );
-  assign reg2hw.dio_pad_attr[20].drive_strength.qe = dio_pad_attr_20_qe;
+  assign reg2hw.dio_pad_attr[20].drv.qe = dio_pad_attr_20_qe;
 
 
   // Subregister 21 of Multireg dio_pad_attr
   // R[dio_pad_attr_21]: V(True)
   logic dio_pad_attr_21_qe;
-  logic [9:0] dio_pad_attr_21_flds_we;
+  logic [3:0] dio_pad_attr_21_flds_we;
   assign dio_pad_attr_21_qe = &dio_pad_attr_21_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_21_gated_we;
   assign dio_pad_attr_21_gated_we = dio_pad_attr_21_we & dio_pad_attr_regwen_21_qs;
-  //   F[invert_21]: 0:0
+  //   F[puen_21]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_21_invert_21 (
+  ) u_dio_pad_attr_21_puen_21 (
     .re     (dio_pad_attr_21_re),
     .we     (dio_pad_attr_21_gated_we),
-    .wd     (dio_pad_attr_21_invert_21_wd),
-    .d      (hw2reg.dio_pad_attr[21].invert.d),
+    .wd     (dio_pad_attr_21_puen_21_wd),
+    .d      (hw2reg.dio_pad_attr[21].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_21_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[21].invert.q),
+    .q      (reg2hw.dio_pad_attr[21].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_21_invert_21_qs)
+    .qs     (dio_pad_attr_21_puen_21_qs)
   );
-  assign reg2hw.dio_pad_attr[21].invert.qe = dio_pad_attr_21_qe;
+  assign reg2hw.dio_pad_attr[21].puen.qe = dio_pad_attr_21_qe;
 
-  //   F[virtual_od_en_21]: 1:1
+  //   F[pden_21]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_21_virtual_od_en_21 (
+  ) u_dio_pad_attr_21_pden_21 (
     .re     (dio_pad_attr_21_re),
     .we     (dio_pad_attr_21_gated_we),
-    .wd     (dio_pad_attr_21_virtual_od_en_21_wd),
-    .d      (hw2reg.dio_pad_attr[21].virtual_od_en.d),
+    .wd     (dio_pad_attr_21_pden_21_wd),
+    .d      (hw2reg.dio_pad_attr[21].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_21_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[21].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[21].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_21_virtual_od_en_21_qs)
+    .qs     (dio_pad_attr_21_pden_21_qs)
   );
-  assign reg2hw.dio_pad_attr[21].virtual_od_en.qe = dio_pad_attr_21_qe;
+  assign reg2hw.dio_pad_attr[21].pden.qe = dio_pad_attr_21_qe;
 
-  //   F[pull_en_21]: 2:2
+  //   F[smten_21]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_21_pull_en_21 (
+  ) u_dio_pad_attr_21_smten_21 (
     .re     (dio_pad_attr_21_re),
     .we     (dio_pad_attr_21_gated_we),
-    .wd     (dio_pad_attr_21_pull_en_21_wd),
-    .d      (hw2reg.dio_pad_attr[21].pull_en.d),
+    .wd     (dio_pad_attr_21_smten_21_wd),
+    .d      (hw2reg.dio_pad_attr[21].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_21_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[21].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[21].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_21_pull_en_21_qs)
+    .qs     (dio_pad_attr_21_smten_21_qs)
   );
-  assign reg2hw.dio_pad_attr[21].pull_en.qe = dio_pad_attr_21_qe;
+  assign reg2hw.dio_pad_attr[21].smten.qe = dio_pad_attr_21_qe;
 
-  //   F[pull_select_21]: 3:3
+  //   F[drv_21]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_21_pull_select_21 (
+    .DW    (3)
+  ) u_dio_pad_attr_21_drv_21 (
     .re     (dio_pad_attr_21_re),
     .we     (dio_pad_attr_21_gated_we),
-    .wd     (dio_pad_attr_21_pull_select_21_wd),
-    .d      (hw2reg.dio_pad_attr[21].pull_select.d),
+    .wd     (dio_pad_attr_21_drv_21_wd),
+    .d      (hw2reg.dio_pad_attr[21].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_21_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[21].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[21].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_21_pull_select_21_qs)
+    .qs     (dio_pad_attr_21_drv_21_qs)
   );
-  assign reg2hw.dio_pad_attr[21].pull_select.qe = dio_pad_attr_21_qe;
-
-  //   F[keeper_en_21]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_21_keeper_en_21 (
-    .re     (dio_pad_attr_21_re),
-    .we     (dio_pad_attr_21_gated_we),
-    .wd     (dio_pad_attr_21_keeper_en_21_wd),
-    .d      (hw2reg.dio_pad_attr[21].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_21_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[21].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_21_keeper_en_21_qs)
-  );
-  assign reg2hw.dio_pad_attr[21].keeper_en.qe = dio_pad_attr_21_qe;
-
-  //   F[schmitt_en_21]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_21_schmitt_en_21 (
-    .re     (dio_pad_attr_21_re),
-    .we     (dio_pad_attr_21_gated_we),
-    .wd     (dio_pad_attr_21_schmitt_en_21_wd),
-    .d      (hw2reg.dio_pad_attr[21].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_21_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[21].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_21_schmitt_en_21_qs)
-  );
-  assign reg2hw.dio_pad_attr[21].schmitt_en.qe = dio_pad_attr_21_qe;
-
-  //   F[od_en_21]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_21_od_en_21 (
-    .re     (dio_pad_attr_21_re),
-    .we     (dio_pad_attr_21_gated_we),
-    .wd     (dio_pad_attr_21_od_en_21_wd),
-    .d      (hw2reg.dio_pad_attr[21].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_21_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[21].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_21_od_en_21_qs)
-  );
-  assign reg2hw.dio_pad_attr[21].od_en.qe = dio_pad_attr_21_qe;
-
-  //   F[input_disable_21]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_21_input_disable_21 (
-    .re     (dio_pad_attr_21_re),
-    .we     (dio_pad_attr_21_gated_we),
-    .wd     (dio_pad_attr_21_input_disable_21_wd),
-    .d      (hw2reg.dio_pad_attr[21].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_21_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[21].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_21_input_disable_21_qs)
-  );
-  assign reg2hw.dio_pad_attr[21].input_disable.qe = dio_pad_attr_21_qe;
-
-  //   F[slew_rate_21]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_21_slew_rate_21 (
-    .re     (dio_pad_attr_21_re),
-    .we     (dio_pad_attr_21_gated_we),
-    .wd     (dio_pad_attr_21_slew_rate_21_wd),
-    .d      (hw2reg.dio_pad_attr[21].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_21_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[21].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_21_slew_rate_21_qs)
-  );
-  assign reg2hw.dio_pad_attr[21].slew_rate.qe = dio_pad_attr_21_qe;
-
-  //   F[drive_strength_21]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_21_drive_strength_21 (
-    .re     (dio_pad_attr_21_re),
-    .we     (dio_pad_attr_21_gated_we),
-    .wd     (dio_pad_attr_21_drive_strength_21_wd),
-    .d      (hw2reg.dio_pad_attr[21].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_21_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[21].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_21_drive_strength_21_qs)
-  );
-  assign reg2hw.dio_pad_attr[21].drive_strength.qe = dio_pad_attr_21_qe;
+  assign reg2hw.dio_pad_attr[21].drv.qe = dio_pad_attr_21_qe;
 
 
   // Subregister 22 of Multireg dio_pad_attr
   // R[dio_pad_attr_22]: V(True)
   logic dio_pad_attr_22_qe;
-  logic [9:0] dio_pad_attr_22_flds_we;
+  logic [3:0] dio_pad_attr_22_flds_we;
   assign dio_pad_attr_22_qe = &dio_pad_attr_22_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_22_gated_we;
   assign dio_pad_attr_22_gated_we = dio_pad_attr_22_we & dio_pad_attr_regwen_22_qs;
-  //   F[invert_22]: 0:0
+  //   F[puen_22]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_22_invert_22 (
+  ) u_dio_pad_attr_22_puen_22 (
     .re     (dio_pad_attr_22_re),
     .we     (dio_pad_attr_22_gated_we),
-    .wd     (dio_pad_attr_22_invert_22_wd),
-    .d      (hw2reg.dio_pad_attr[22].invert.d),
+    .wd     (dio_pad_attr_22_puen_22_wd),
+    .d      (hw2reg.dio_pad_attr[22].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_22_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[22].invert.q),
+    .q      (reg2hw.dio_pad_attr[22].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_22_invert_22_qs)
+    .qs     (dio_pad_attr_22_puen_22_qs)
   );
-  assign reg2hw.dio_pad_attr[22].invert.qe = dio_pad_attr_22_qe;
+  assign reg2hw.dio_pad_attr[22].puen.qe = dio_pad_attr_22_qe;
 
-  //   F[virtual_od_en_22]: 1:1
+  //   F[pden_22]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_22_virtual_od_en_22 (
+  ) u_dio_pad_attr_22_pden_22 (
     .re     (dio_pad_attr_22_re),
     .we     (dio_pad_attr_22_gated_we),
-    .wd     (dio_pad_attr_22_virtual_od_en_22_wd),
-    .d      (hw2reg.dio_pad_attr[22].virtual_od_en.d),
+    .wd     (dio_pad_attr_22_pden_22_wd),
+    .d      (hw2reg.dio_pad_attr[22].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_22_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[22].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[22].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_22_virtual_od_en_22_qs)
+    .qs     (dio_pad_attr_22_pden_22_qs)
   );
-  assign reg2hw.dio_pad_attr[22].virtual_od_en.qe = dio_pad_attr_22_qe;
+  assign reg2hw.dio_pad_attr[22].pden.qe = dio_pad_attr_22_qe;
 
-  //   F[pull_en_22]: 2:2
+  //   F[smten_22]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_22_pull_en_22 (
+  ) u_dio_pad_attr_22_smten_22 (
     .re     (dio_pad_attr_22_re),
     .we     (dio_pad_attr_22_gated_we),
-    .wd     (dio_pad_attr_22_pull_en_22_wd),
-    .d      (hw2reg.dio_pad_attr[22].pull_en.d),
+    .wd     (dio_pad_attr_22_smten_22_wd),
+    .d      (hw2reg.dio_pad_attr[22].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_22_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[22].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[22].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_22_pull_en_22_qs)
+    .qs     (dio_pad_attr_22_smten_22_qs)
   );
-  assign reg2hw.dio_pad_attr[22].pull_en.qe = dio_pad_attr_22_qe;
+  assign reg2hw.dio_pad_attr[22].smten.qe = dio_pad_attr_22_qe;
 
-  //   F[pull_select_22]: 3:3
+  //   F[drv_22]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_22_pull_select_22 (
+    .DW    (3)
+  ) u_dio_pad_attr_22_drv_22 (
     .re     (dio_pad_attr_22_re),
     .we     (dio_pad_attr_22_gated_we),
-    .wd     (dio_pad_attr_22_pull_select_22_wd),
-    .d      (hw2reg.dio_pad_attr[22].pull_select.d),
+    .wd     (dio_pad_attr_22_drv_22_wd),
+    .d      (hw2reg.dio_pad_attr[22].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_22_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[22].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[22].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_22_pull_select_22_qs)
+    .qs     (dio_pad_attr_22_drv_22_qs)
   );
-  assign reg2hw.dio_pad_attr[22].pull_select.qe = dio_pad_attr_22_qe;
-
-  //   F[keeper_en_22]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_22_keeper_en_22 (
-    .re     (dio_pad_attr_22_re),
-    .we     (dio_pad_attr_22_gated_we),
-    .wd     (dio_pad_attr_22_keeper_en_22_wd),
-    .d      (hw2reg.dio_pad_attr[22].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_22_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[22].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_22_keeper_en_22_qs)
-  );
-  assign reg2hw.dio_pad_attr[22].keeper_en.qe = dio_pad_attr_22_qe;
-
-  //   F[schmitt_en_22]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_22_schmitt_en_22 (
-    .re     (dio_pad_attr_22_re),
-    .we     (dio_pad_attr_22_gated_we),
-    .wd     (dio_pad_attr_22_schmitt_en_22_wd),
-    .d      (hw2reg.dio_pad_attr[22].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_22_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[22].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_22_schmitt_en_22_qs)
-  );
-  assign reg2hw.dio_pad_attr[22].schmitt_en.qe = dio_pad_attr_22_qe;
-
-  //   F[od_en_22]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_22_od_en_22 (
-    .re     (dio_pad_attr_22_re),
-    .we     (dio_pad_attr_22_gated_we),
-    .wd     (dio_pad_attr_22_od_en_22_wd),
-    .d      (hw2reg.dio_pad_attr[22].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_22_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[22].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_22_od_en_22_qs)
-  );
-  assign reg2hw.dio_pad_attr[22].od_en.qe = dio_pad_attr_22_qe;
-
-  //   F[input_disable_22]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_22_input_disable_22 (
-    .re     (dio_pad_attr_22_re),
-    .we     (dio_pad_attr_22_gated_we),
-    .wd     (dio_pad_attr_22_input_disable_22_wd),
-    .d      (hw2reg.dio_pad_attr[22].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_22_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[22].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_22_input_disable_22_qs)
-  );
-  assign reg2hw.dio_pad_attr[22].input_disable.qe = dio_pad_attr_22_qe;
-
-  //   F[slew_rate_22]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_22_slew_rate_22 (
-    .re     (dio_pad_attr_22_re),
-    .we     (dio_pad_attr_22_gated_we),
-    .wd     (dio_pad_attr_22_slew_rate_22_wd),
-    .d      (hw2reg.dio_pad_attr[22].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_22_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[22].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_22_slew_rate_22_qs)
-  );
-  assign reg2hw.dio_pad_attr[22].slew_rate.qe = dio_pad_attr_22_qe;
-
-  //   F[drive_strength_22]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_22_drive_strength_22 (
-    .re     (dio_pad_attr_22_re),
-    .we     (dio_pad_attr_22_gated_we),
-    .wd     (dio_pad_attr_22_drive_strength_22_wd),
-    .d      (hw2reg.dio_pad_attr[22].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_22_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[22].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_22_drive_strength_22_qs)
-  );
-  assign reg2hw.dio_pad_attr[22].drive_strength.qe = dio_pad_attr_22_qe;
+  assign reg2hw.dio_pad_attr[22].drv.qe = dio_pad_attr_22_qe;
 
 
   // Subregister 23 of Multireg dio_pad_attr
   // R[dio_pad_attr_23]: V(True)
   logic dio_pad_attr_23_qe;
-  logic [9:0] dio_pad_attr_23_flds_we;
+  logic [3:0] dio_pad_attr_23_flds_we;
   assign dio_pad_attr_23_qe = &dio_pad_attr_23_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_23_gated_we;
   assign dio_pad_attr_23_gated_we = dio_pad_attr_23_we & dio_pad_attr_regwen_23_qs;
-  //   F[invert_23]: 0:0
+  //   F[puen_23]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_23_invert_23 (
+  ) u_dio_pad_attr_23_puen_23 (
     .re     (dio_pad_attr_23_re),
     .we     (dio_pad_attr_23_gated_we),
-    .wd     (dio_pad_attr_23_invert_23_wd),
-    .d      (hw2reg.dio_pad_attr[23].invert.d),
+    .wd     (dio_pad_attr_23_puen_23_wd),
+    .d      (hw2reg.dio_pad_attr[23].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_23_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[23].invert.q),
+    .q      (reg2hw.dio_pad_attr[23].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_23_invert_23_qs)
+    .qs     (dio_pad_attr_23_puen_23_qs)
   );
-  assign reg2hw.dio_pad_attr[23].invert.qe = dio_pad_attr_23_qe;
+  assign reg2hw.dio_pad_attr[23].puen.qe = dio_pad_attr_23_qe;
 
-  //   F[virtual_od_en_23]: 1:1
+  //   F[pden_23]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_23_virtual_od_en_23 (
+  ) u_dio_pad_attr_23_pden_23 (
     .re     (dio_pad_attr_23_re),
     .we     (dio_pad_attr_23_gated_we),
-    .wd     (dio_pad_attr_23_virtual_od_en_23_wd),
-    .d      (hw2reg.dio_pad_attr[23].virtual_od_en.d),
+    .wd     (dio_pad_attr_23_pden_23_wd),
+    .d      (hw2reg.dio_pad_attr[23].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_23_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[23].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[23].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_23_virtual_od_en_23_qs)
+    .qs     (dio_pad_attr_23_pden_23_qs)
   );
-  assign reg2hw.dio_pad_attr[23].virtual_od_en.qe = dio_pad_attr_23_qe;
+  assign reg2hw.dio_pad_attr[23].pden.qe = dio_pad_attr_23_qe;
 
-  //   F[pull_en_23]: 2:2
+  //   F[smten_23]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_23_pull_en_23 (
+  ) u_dio_pad_attr_23_smten_23 (
     .re     (dio_pad_attr_23_re),
     .we     (dio_pad_attr_23_gated_we),
-    .wd     (dio_pad_attr_23_pull_en_23_wd),
-    .d      (hw2reg.dio_pad_attr[23].pull_en.d),
+    .wd     (dio_pad_attr_23_smten_23_wd),
+    .d      (hw2reg.dio_pad_attr[23].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_23_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[23].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[23].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_23_pull_en_23_qs)
+    .qs     (dio_pad_attr_23_smten_23_qs)
   );
-  assign reg2hw.dio_pad_attr[23].pull_en.qe = dio_pad_attr_23_qe;
+  assign reg2hw.dio_pad_attr[23].smten.qe = dio_pad_attr_23_qe;
 
-  //   F[pull_select_23]: 3:3
+  //   F[drv_23]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_23_pull_select_23 (
+    .DW    (3)
+  ) u_dio_pad_attr_23_drv_23 (
     .re     (dio_pad_attr_23_re),
     .we     (dio_pad_attr_23_gated_we),
-    .wd     (dio_pad_attr_23_pull_select_23_wd),
-    .d      (hw2reg.dio_pad_attr[23].pull_select.d),
+    .wd     (dio_pad_attr_23_drv_23_wd),
+    .d      (hw2reg.dio_pad_attr[23].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_23_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[23].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[23].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_23_pull_select_23_qs)
+    .qs     (dio_pad_attr_23_drv_23_qs)
   );
-  assign reg2hw.dio_pad_attr[23].pull_select.qe = dio_pad_attr_23_qe;
-
-  //   F[keeper_en_23]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_23_keeper_en_23 (
-    .re     (dio_pad_attr_23_re),
-    .we     (dio_pad_attr_23_gated_we),
-    .wd     (dio_pad_attr_23_keeper_en_23_wd),
-    .d      (hw2reg.dio_pad_attr[23].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_23_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[23].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_23_keeper_en_23_qs)
-  );
-  assign reg2hw.dio_pad_attr[23].keeper_en.qe = dio_pad_attr_23_qe;
-
-  //   F[schmitt_en_23]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_23_schmitt_en_23 (
-    .re     (dio_pad_attr_23_re),
-    .we     (dio_pad_attr_23_gated_we),
-    .wd     (dio_pad_attr_23_schmitt_en_23_wd),
-    .d      (hw2reg.dio_pad_attr[23].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_23_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[23].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_23_schmitt_en_23_qs)
-  );
-  assign reg2hw.dio_pad_attr[23].schmitt_en.qe = dio_pad_attr_23_qe;
-
-  //   F[od_en_23]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_23_od_en_23 (
-    .re     (dio_pad_attr_23_re),
-    .we     (dio_pad_attr_23_gated_we),
-    .wd     (dio_pad_attr_23_od_en_23_wd),
-    .d      (hw2reg.dio_pad_attr[23].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_23_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[23].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_23_od_en_23_qs)
-  );
-  assign reg2hw.dio_pad_attr[23].od_en.qe = dio_pad_attr_23_qe;
-
-  //   F[input_disable_23]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_23_input_disable_23 (
-    .re     (dio_pad_attr_23_re),
-    .we     (dio_pad_attr_23_gated_we),
-    .wd     (dio_pad_attr_23_input_disable_23_wd),
-    .d      (hw2reg.dio_pad_attr[23].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_23_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[23].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_23_input_disable_23_qs)
-  );
-  assign reg2hw.dio_pad_attr[23].input_disable.qe = dio_pad_attr_23_qe;
-
-  //   F[slew_rate_23]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_23_slew_rate_23 (
-    .re     (dio_pad_attr_23_re),
-    .we     (dio_pad_attr_23_gated_we),
-    .wd     (dio_pad_attr_23_slew_rate_23_wd),
-    .d      (hw2reg.dio_pad_attr[23].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_23_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[23].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_23_slew_rate_23_qs)
-  );
-  assign reg2hw.dio_pad_attr[23].slew_rate.qe = dio_pad_attr_23_qe;
-
-  //   F[drive_strength_23]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_23_drive_strength_23 (
-    .re     (dio_pad_attr_23_re),
-    .we     (dio_pad_attr_23_gated_we),
-    .wd     (dio_pad_attr_23_drive_strength_23_wd),
-    .d      (hw2reg.dio_pad_attr[23].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_23_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[23].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_23_drive_strength_23_qs)
-  );
-  assign reg2hw.dio_pad_attr[23].drive_strength.qe = dio_pad_attr_23_qe;
+  assign reg2hw.dio_pad_attr[23].drv.qe = dio_pad_attr_23_qe;
 
 
   // Subregister 24 of Multireg dio_pad_attr
   // R[dio_pad_attr_24]: V(True)
   logic dio_pad_attr_24_qe;
-  logic [9:0] dio_pad_attr_24_flds_we;
+  logic [3:0] dio_pad_attr_24_flds_we;
   assign dio_pad_attr_24_qe = &dio_pad_attr_24_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_24_gated_we;
   assign dio_pad_attr_24_gated_we = dio_pad_attr_24_we & dio_pad_attr_regwen_24_qs;
-  //   F[invert_24]: 0:0
+  //   F[puen_24]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_24_invert_24 (
+  ) u_dio_pad_attr_24_puen_24 (
     .re     (dio_pad_attr_24_re),
     .we     (dio_pad_attr_24_gated_we),
-    .wd     (dio_pad_attr_24_invert_24_wd),
-    .d      (hw2reg.dio_pad_attr[24].invert.d),
+    .wd     (dio_pad_attr_24_puen_24_wd),
+    .d      (hw2reg.dio_pad_attr[24].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_24_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[24].invert.q),
+    .q      (reg2hw.dio_pad_attr[24].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_24_invert_24_qs)
+    .qs     (dio_pad_attr_24_puen_24_qs)
   );
-  assign reg2hw.dio_pad_attr[24].invert.qe = dio_pad_attr_24_qe;
+  assign reg2hw.dio_pad_attr[24].puen.qe = dio_pad_attr_24_qe;
 
-  //   F[virtual_od_en_24]: 1:1
+  //   F[pden_24]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_24_virtual_od_en_24 (
+  ) u_dio_pad_attr_24_pden_24 (
     .re     (dio_pad_attr_24_re),
     .we     (dio_pad_attr_24_gated_we),
-    .wd     (dio_pad_attr_24_virtual_od_en_24_wd),
-    .d      (hw2reg.dio_pad_attr[24].virtual_od_en.d),
+    .wd     (dio_pad_attr_24_pden_24_wd),
+    .d      (hw2reg.dio_pad_attr[24].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_24_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[24].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[24].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_24_virtual_od_en_24_qs)
+    .qs     (dio_pad_attr_24_pden_24_qs)
   );
-  assign reg2hw.dio_pad_attr[24].virtual_od_en.qe = dio_pad_attr_24_qe;
+  assign reg2hw.dio_pad_attr[24].pden.qe = dio_pad_attr_24_qe;
 
-  //   F[pull_en_24]: 2:2
+  //   F[smten_24]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_24_pull_en_24 (
+  ) u_dio_pad_attr_24_smten_24 (
     .re     (dio_pad_attr_24_re),
     .we     (dio_pad_attr_24_gated_we),
-    .wd     (dio_pad_attr_24_pull_en_24_wd),
-    .d      (hw2reg.dio_pad_attr[24].pull_en.d),
+    .wd     (dio_pad_attr_24_smten_24_wd),
+    .d      (hw2reg.dio_pad_attr[24].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_24_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[24].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[24].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_24_pull_en_24_qs)
+    .qs     (dio_pad_attr_24_smten_24_qs)
   );
-  assign reg2hw.dio_pad_attr[24].pull_en.qe = dio_pad_attr_24_qe;
+  assign reg2hw.dio_pad_attr[24].smten.qe = dio_pad_attr_24_qe;
 
-  //   F[pull_select_24]: 3:3
+  //   F[drv_24]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_24_pull_select_24 (
+    .DW    (3)
+  ) u_dio_pad_attr_24_drv_24 (
     .re     (dio_pad_attr_24_re),
     .we     (dio_pad_attr_24_gated_we),
-    .wd     (dio_pad_attr_24_pull_select_24_wd),
-    .d      (hw2reg.dio_pad_attr[24].pull_select.d),
+    .wd     (dio_pad_attr_24_drv_24_wd),
+    .d      (hw2reg.dio_pad_attr[24].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_24_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[24].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[24].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_24_pull_select_24_qs)
+    .qs     (dio_pad_attr_24_drv_24_qs)
   );
-  assign reg2hw.dio_pad_attr[24].pull_select.qe = dio_pad_attr_24_qe;
-
-  //   F[keeper_en_24]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_24_keeper_en_24 (
-    .re     (dio_pad_attr_24_re),
-    .we     (dio_pad_attr_24_gated_we),
-    .wd     (dio_pad_attr_24_keeper_en_24_wd),
-    .d      (hw2reg.dio_pad_attr[24].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_24_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[24].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_24_keeper_en_24_qs)
-  );
-  assign reg2hw.dio_pad_attr[24].keeper_en.qe = dio_pad_attr_24_qe;
-
-  //   F[schmitt_en_24]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_24_schmitt_en_24 (
-    .re     (dio_pad_attr_24_re),
-    .we     (dio_pad_attr_24_gated_we),
-    .wd     (dio_pad_attr_24_schmitt_en_24_wd),
-    .d      (hw2reg.dio_pad_attr[24].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_24_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[24].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_24_schmitt_en_24_qs)
-  );
-  assign reg2hw.dio_pad_attr[24].schmitt_en.qe = dio_pad_attr_24_qe;
-
-  //   F[od_en_24]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_24_od_en_24 (
-    .re     (dio_pad_attr_24_re),
-    .we     (dio_pad_attr_24_gated_we),
-    .wd     (dio_pad_attr_24_od_en_24_wd),
-    .d      (hw2reg.dio_pad_attr[24].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_24_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[24].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_24_od_en_24_qs)
-  );
-  assign reg2hw.dio_pad_attr[24].od_en.qe = dio_pad_attr_24_qe;
-
-  //   F[input_disable_24]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_24_input_disable_24 (
-    .re     (dio_pad_attr_24_re),
-    .we     (dio_pad_attr_24_gated_we),
-    .wd     (dio_pad_attr_24_input_disable_24_wd),
-    .d      (hw2reg.dio_pad_attr[24].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_24_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[24].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_24_input_disable_24_qs)
-  );
-  assign reg2hw.dio_pad_attr[24].input_disable.qe = dio_pad_attr_24_qe;
-
-  //   F[slew_rate_24]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_24_slew_rate_24 (
-    .re     (dio_pad_attr_24_re),
-    .we     (dio_pad_attr_24_gated_we),
-    .wd     (dio_pad_attr_24_slew_rate_24_wd),
-    .d      (hw2reg.dio_pad_attr[24].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_24_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[24].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_24_slew_rate_24_qs)
-  );
-  assign reg2hw.dio_pad_attr[24].slew_rate.qe = dio_pad_attr_24_qe;
-
-  //   F[drive_strength_24]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_24_drive_strength_24 (
-    .re     (dio_pad_attr_24_re),
-    .we     (dio_pad_attr_24_gated_we),
-    .wd     (dio_pad_attr_24_drive_strength_24_wd),
-    .d      (hw2reg.dio_pad_attr[24].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_24_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[24].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_24_drive_strength_24_qs)
-  );
-  assign reg2hw.dio_pad_attr[24].drive_strength.qe = dio_pad_attr_24_qe;
+  assign reg2hw.dio_pad_attr[24].drv.qe = dio_pad_attr_24_qe;
 
 
   // Subregister 25 of Multireg dio_pad_attr
   // R[dio_pad_attr_25]: V(True)
   logic dio_pad_attr_25_qe;
-  logic [9:0] dio_pad_attr_25_flds_we;
+  logic [3:0] dio_pad_attr_25_flds_we;
   assign dio_pad_attr_25_qe = &dio_pad_attr_25_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_25_gated_we;
   assign dio_pad_attr_25_gated_we = dio_pad_attr_25_we & dio_pad_attr_regwen_25_qs;
-  //   F[invert_25]: 0:0
+  //   F[puen_25]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_25_invert_25 (
+  ) u_dio_pad_attr_25_puen_25 (
     .re     (dio_pad_attr_25_re),
     .we     (dio_pad_attr_25_gated_we),
-    .wd     (dio_pad_attr_25_invert_25_wd),
-    .d      (hw2reg.dio_pad_attr[25].invert.d),
+    .wd     (dio_pad_attr_25_puen_25_wd),
+    .d      (hw2reg.dio_pad_attr[25].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_25_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[25].invert.q),
+    .q      (reg2hw.dio_pad_attr[25].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_25_invert_25_qs)
+    .qs     (dio_pad_attr_25_puen_25_qs)
   );
-  assign reg2hw.dio_pad_attr[25].invert.qe = dio_pad_attr_25_qe;
+  assign reg2hw.dio_pad_attr[25].puen.qe = dio_pad_attr_25_qe;
 
-  //   F[virtual_od_en_25]: 1:1
+  //   F[pden_25]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_25_virtual_od_en_25 (
+  ) u_dio_pad_attr_25_pden_25 (
     .re     (dio_pad_attr_25_re),
     .we     (dio_pad_attr_25_gated_we),
-    .wd     (dio_pad_attr_25_virtual_od_en_25_wd),
-    .d      (hw2reg.dio_pad_attr[25].virtual_od_en.d),
+    .wd     (dio_pad_attr_25_pden_25_wd),
+    .d      (hw2reg.dio_pad_attr[25].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_25_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[25].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[25].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_25_virtual_od_en_25_qs)
+    .qs     (dio_pad_attr_25_pden_25_qs)
   );
-  assign reg2hw.dio_pad_attr[25].virtual_od_en.qe = dio_pad_attr_25_qe;
+  assign reg2hw.dio_pad_attr[25].pden.qe = dio_pad_attr_25_qe;
 
-  //   F[pull_en_25]: 2:2
+  //   F[smten_25]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_25_pull_en_25 (
+  ) u_dio_pad_attr_25_smten_25 (
     .re     (dio_pad_attr_25_re),
     .we     (dio_pad_attr_25_gated_we),
-    .wd     (dio_pad_attr_25_pull_en_25_wd),
-    .d      (hw2reg.dio_pad_attr[25].pull_en.d),
+    .wd     (dio_pad_attr_25_smten_25_wd),
+    .d      (hw2reg.dio_pad_attr[25].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_25_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[25].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[25].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_25_pull_en_25_qs)
+    .qs     (dio_pad_attr_25_smten_25_qs)
   );
-  assign reg2hw.dio_pad_attr[25].pull_en.qe = dio_pad_attr_25_qe;
+  assign reg2hw.dio_pad_attr[25].smten.qe = dio_pad_attr_25_qe;
 
-  //   F[pull_select_25]: 3:3
+  //   F[drv_25]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_25_pull_select_25 (
+    .DW    (3)
+  ) u_dio_pad_attr_25_drv_25 (
     .re     (dio_pad_attr_25_re),
     .we     (dio_pad_attr_25_gated_we),
-    .wd     (dio_pad_attr_25_pull_select_25_wd),
-    .d      (hw2reg.dio_pad_attr[25].pull_select.d),
+    .wd     (dio_pad_attr_25_drv_25_wd),
+    .d      (hw2reg.dio_pad_attr[25].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_25_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[25].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[25].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_25_pull_select_25_qs)
+    .qs     (dio_pad_attr_25_drv_25_qs)
   );
-  assign reg2hw.dio_pad_attr[25].pull_select.qe = dio_pad_attr_25_qe;
-
-  //   F[keeper_en_25]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_25_keeper_en_25 (
-    .re     (dio_pad_attr_25_re),
-    .we     (dio_pad_attr_25_gated_we),
-    .wd     (dio_pad_attr_25_keeper_en_25_wd),
-    .d      (hw2reg.dio_pad_attr[25].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_25_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[25].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_25_keeper_en_25_qs)
-  );
-  assign reg2hw.dio_pad_attr[25].keeper_en.qe = dio_pad_attr_25_qe;
-
-  //   F[schmitt_en_25]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_25_schmitt_en_25 (
-    .re     (dio_pad_attr_25_re),
-    .we     (dio_pad_attr_25_gated_we),
-    .wd     (dio_pad_attr_25_schmitt_en_25_wd),
-    .d      (hw2reg.dio_pad_attr[25].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_25_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[25].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_25_schmitt_en_25_qs)
-  );
-  assign reg2hw.dio_pad_attr[25].schmitt_en.qe = dio_pad_attr_25_qe;
-
-  //   F[od_en_25]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_25_od_en_25 (
-    .re     (dio_pad_attr_25_re),
-    .we     (dio_pad_attr_25_gated_we),
-    .wd     (dio_pad_attr_25_od_en_25_wd),
-    .d      (hw2reg.dio_pad_attr[25].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_25_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[25].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_25_od_en_25_qs)
-  );
-  assign reg2hw.dio_pad_attr[25].od_en.qe = dio_pad_attr_25_qe;
-
-  //   F[input_disable_25]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_25_input_disable_25 (
-    .re     (dio_pad_attr_25_re),
-    .we     (dio_pad_attr_25_gated_we),
-    .wd     (dio_pad_attr_25_input_disable_25_wd),
-    .d      (hw2reg.dio_pad_attr[25].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_25_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[25].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_25_input_disable_25_qs)
-  );
-  assign reg2hw.dio_pad_attr[25].input_disable.qe = dio_pad_attr_25_qe;
-
-  //   F[slew_rate_25]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_25_slew_rate_25 (
-    .re     (dio_pad_attr_25_re),
-    .we     (dio_pad_attr_25_gated_we),
-    .wd     (dio_pad_attr_25_slew_rate_25_wd),
-    .d      (hw2reg.dio_pad_attr[25].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_25_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[25].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_25_slew_rate_25_qs)
-  );
-  assign reg2hw.dio_pad_attr[25].slew_rate.qe = dio_pad_attr_25_qe;
-
-  //   F[drive_strength_25]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_25_drive_strength_25 (
-    .re     (dio_pad_attr_25_re),
-    .we     (dio_pad_attr_25_gated_we),
-    .wd     (dio_pad_attr_25_drive_strength_25_wd),
-    .d      (hw2reg.dio_pad_attr[25].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_25_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[25].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_25_drive_strength_25_qs)
-  );
-  assign reg2hw.dio_pad_attr[25].drive_strength.qe = dio_pad_attr_25_qe;
+  assign reg2hw.dio_pad_attr[25].drv.qe = dio_pad_attr_25_qe;
 
 
   // Subregister 26 of Multireg dio_pad_attr
   // R[dio_pad_attr_26]: V(True)
   logic dio_pad_attr_26_qe;
-  logic [9:0] dio_pad_attr_26_flds_we;
+  logic [3:0] dio_pad_attr_26_flds_we;
   assign dio_pad_attr_26_qe = &dio_pad_attr_26_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_26_gated_we;
   assign dio_pad_attr_26_gated_we = dio_pad_attr_26_we & dio_pad_attr_regwen_26_qs;
-  //   F[invert_26]: 0:0
+  //   F[puen_26]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_26_invert_26 (
+  ) u_dio_pad_attr_26_puen_26 (
     .re     (dio_pad_attr_26_re),
     .we     (dio_pad_attr_26_gated_we),
-    .wd     (dio_pad_attr_26_invert_26_wd),
-    .d      (hw2reg.dio_pad_attr[26].invert.d),
+    .wd     (dio_pad_attr_26_puen_26_wd),
+    .d      (hw2reg.dio_pad_attr[26].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_26_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[26].invert.q),
+    .q      (reg2hw.dio_pad_attr[26].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_26_invert_26_qs)
+    .qs     (dio_pad_attr_26_puen_26_qs)
   );
-  assign reg2hw.dio_pad_attr[26].invert.qe = dio_pad_attr_26_qe;
+  assign reg2hw.dio_pad_attr[26].puen.qe = dio_pad_attr_26_qe;
 
-  //   F[virtual_od_en_26]: 1:1
+  //   F[pden_26]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_26_virtual_od_en_26 (
+  ) u_dio_pad_attr_26_pden_26 (
     .re     (dio_pad_attr_26_re),
     .we     (dio_pad_attr_26_gated_we),
-    .wd     (dio_pad_attr_26_virtual_od_en_26_wd),
-    .d      (hw2reg.dio_pad_attr[26].virtual_od_en.d),
+    .wd     (dio_pad_attr_26_pden_26_wd),
+    .d      (hw2reg.dio_pad_attr[26].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_26_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[26].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[26].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_26_virtual_od_en_26_qs)
+    .qs     (dio_pad_attr_26_pden_26_qs)
   );
-  assign reg2hw.dio_pad_attr[26].virtual_od_en.qe = dio_pad_attr_26_qe;
+  assign reg2hw.dio_pad_attr[26].pden.qe = dio_pad_attr_26_qe;
 
-  //   F[pull_en_26]: 2:2
+  //   F[smten_26]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_26_pull_en_26 (
+  ) u_dio_pad_attr_26_smten_26 (
     .re     (dio_pad_attr_26_re),
     .we     (dio_pad_attr_26_gated_we),
-    .wd     (dio_pad_attr_26_pull_en_26_wd),
-    .d      (hw2reg.dio_pad_attr[26].pull_en.d),
+    .wd     (dio_pad_attr_26_smten_26_wd),
+    .d      (hw2reg.dio_pad_attr[26].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_26_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[26].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[26].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_26_pull_en_26_qs)
+    .qs     (dio_pad_attr_26_smten_26_qs)
   );
-  assign reg2hw.dio_pad_attr[26].pull_en.qe = dio_pad_attr_26_qe;
+  assign reg2hw.dio_pad_attr[26].smten.qe = dio_pad_attr_26_qe;
 
-  //   F[pull_select_26]: 3:3
+  //   F[drv_26]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_26_pull_select_26 (
+    .DW    (3)
+  ) u_dio_pad_attr_26_drv_26 (
     .re     (dio_pad_attr_26_re),
     .we     (dio_pad_attr_26_gated_we),
-    .wd     (dio_pad_attr_26_pull_select_26_wd),
-    .d      (hw2reg.dio_pad_attr[26].pull_select.d),
+    .wd     (dio_pad_attr_26_drv_26_wd),
+    .d      (hw2reg.dio_pad_attr[26].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_26_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[26].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[26].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_26_pull_select_26_qs)
+    .qs     (dio_pad_attr_26_drv_26_qs)
   );
-  assign reg2hw.dio_pad_attr[26].pull_select.qe = dio_pad_attr_26_qe;
-
-  //   F[keeper_en_26]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_26_keeper_en_26 (
-    .re     (dio_pad_attr_26_re),
-    .we     (dio_pad_attr_26_gated_we),
-    .wd     (dio_pad_attr_26_keeper_en_26_wd),
-    .d      (hw2reg.dio_pad_attr[26].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_26_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[26].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_26_keeper_en_26_qs)
-  );
-  assign reg2hw.dio_pad_attr[26].keeper_en.qe = dio_pad_attr_26_qe;
-
-  //   F[schmitt_en_26]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_26_schmitt_en_26 (
-    .re     (dio_pad_attr_26_re),
-    .we     (dio_pad_attr_26_gated_we),
-    .wd     (dio_pad_attr_26_schmitt_en_26_wd),
-    .d      (hw2reg.dio_pad_attr[26].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_26_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[26].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_26_schmitt_en_26_qs)
-  );
-  assign reg2hw.dio_pad_attr[26].schmitt_en.qe = dio_pad_attr_26_qe;
-
-  //   F[od_en_26]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_26_od_en_26 (
-    .re     (dio_pad_attr_26_re),
-    .we     (dio_pad_attr_26_gated_we),
-    .wd     (dio_pad_attr_26_od_en_26_wd),
-    .d      (hw2reg.dio_pad_attr[26].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_26_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[26].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_26_od_en_26_qs)
-  );
-  assign reg2hw.dio_pad_attr[26].od_en.qe = dio_pad_attr_26_qe;
-
-  //   F[input_disable_26]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_26_input_disable_26 (
-    .re     (dio_pad_attr_26_re),
-    .we     (dio_pad_attr_26_gated_we),
-    .wd     (dio_pad_attr_26_input_disable_26_wd),
-    .d      (hw2reg.dio_pad_attr[26].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_26_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[26].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_26_input_disable_26_qs)
-  );
-  assign reg2hw.dio_pad_attr[26].input_disable.qe = dio_pad_attr_26_qe;
-
-  //   F[slew_rate_26]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_26_slew_rate_26 (
-    .re     (dio_pad_attr_26_re),
-    .we     (dio_pad_attr_26_gated_we),
-    .wd     (dio_pad_attr_26_slew_rate_26_wd),
-    .d      (hw2reg.dio_pad_attr[26].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_26_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[26].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_26_slew_rate_26_qs)
-  );
-  assign reg2hw.dio_pad_attr[26].slew_rate.qe = dio_pad_attr_26_qe;
-
-  //   F[drive_strength_26]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_26_drive_strength_26 (
-    .re     (dio_pad_attr_26_re),
-    .we     (dio_pad_attr_26_gated_we),
-    .wd     (dio_pad_attr_26_drive_strength_26_wd),
-    .d      (hw2reg.dio_pad_attr[26].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_26_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[26].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_26_drive_strength_26_qs)
-  );
-  assign reg2hw.dio_pad_attr[26].drive_strength.qe = dio_pad_attr_26_qe;
+  assign reg2hw.dio_pad_attr[26].drv.qe = dio_pad_attr_26_qe;
 
 
   // Subregister 27 of Multireg dio_pad_attr
   // R[dio_pad_attr_27]: V(True)
   logic dio_pad_attr_27_qe;
-  logic [9:0] dio_pad_attr_27_flds_we;
+  logic [3:0] dio_pad_attr_27_flds_we;
   assign dio_pad_attr_27_qe = &dio_pad_attr_27_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_27_gated_we;
   assign dio_pad_attr_27_gated_we = dio_pad_attr_27_we & dio_pad_attr_regwen_27_qs;
-  //   F[invert_27]: 0:0
+  //   F[puen_27]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_27_invert_27 (
+  ) u_dio_pad_attr_27_puen_27 (
     .re     (dio_pad_attr_27_re),
     .we     (dio_pad_attr_27_gated_we),
-    .wd     (dio_pad_attr_27_invert_27_wd),
-    .d      (hw2reg.dio_pad_attr[27].invert.d),
+    .wd     (dio_pad_attr_27_puen_27_wd),
+    .d      (hw2reg.dio_pad_attr[27].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_27_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[27].invert.q),
+    .q      (reg2hw.dio_pad_attr[27].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_27_invert_27_qs)
+    .qs     (dio_pad_attr_27_puen_27_qs)
   );
-  assign reg2hw.dio_pad_attr[27].invert.qe = dio_pad_attr_27_qe;
+  assign reg2hw.dio_pad_attr[27].puen.qe = dio_pad_attr_27_qe;
 
-  //   F[virtual_od_en_27]: 1:1
+  //   F[pden_27]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_27_virtual_od_en_27 (
+  ) u_dio_pad_attr_27_pden_27 (
     .re     (dio_pad_attr_27_re),
     .we     (dio_pad_attr_27_gated_we),
-    .wd     (dio_pad_attr_27_virtual_od_en_27_wd),
-    .d      (hw2reg.dio_pad_attr[27].virtual_od_en.d),
+    .wd     (dio_pad_attr_27_pden_27_wd),
+    .d      (hw2reg.dio_pad_attr[27].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_27_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[27].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[27].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_27_virtual_od_en_27_qs)
+    .qs     (dio_pad_attr_27_pden_27_qs)
   );
-  assign reg2hw.dio_pad_attr[27].virtual_od_en.qe = dio_pad_attr_27_qe;
+  assign reg2hw.dio_pad_attr[27].pden.qe = dio_pad_attr_27_qe;
 
-  //   F[pull_en_27]: 2:2
+  //   F[smten_27]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_27_pull_en_27 (
+  ) u_dio_pad_attr_27_smten_27 (
     .re     (dio_pad_attr_27_re),
     .we     (dio_pad_attr_27_gated_we),
-    .wd     (dio_pad_attr_27_pull_en_27_wd),
-    .d      (hw2reg.dio_pad_attr[27].pull_en.d),
+    .wd     (dio_pad_attr_27_smten_27_wd),
+    .d      (hw2reg.dio_pad_attr[27].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_27_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[27].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[27].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_27_pull_en_27_qs)
+    .qs     (dio_pad_attr_27_smten_27_qs)
   );
-  assign reg2hw.dio_pad_attr[27].pull_en.qe = dio_pad_attr_27_qe;
+  assign reg2hw.dio_pad_attr[27].smten.qe = dio_pad_attr_27_qe;
 
-  //   F[pull_select_27]: 3:3
+  //   F[drv_27]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_27_pull_select_27 (
+    .DW    (3)
+  ) u_dio_pad_attr_27_drv_27 (
     .re     (dio_pad_attr_27_re),
     .we     (dio_pad_attr_27_gated_we),
-    .wd     (dio_pad_attr_27_pull_select_27_wd),
-    .d      (hw2reg.dio_pad_attr[27].pull_select.d),
+    .wd     (dio_pad_attr_27_drv_27_wd),
+    .d      (hw2reg.dio_pad_attr[27].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_27_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[27].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[27].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_27_pull_select_27_qs)
+    .qs     (dio_pad_attr_27_drv_27_qs)
   );
-  assign reg2hw.dio_pad_attr[27].pull_select.qe = dio_pad_attr_27_qe;
-
-  //   F[keeper_en_27]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_27_keeper_en_27 (
-    .re     (dio_pad_attr_27_re),
-    .we     (dio_pad_attr_27_gated_we),
-    .wd     (dio_pad_attr_27_keeper_en_27_wd),
-    .d      (hw2reg.dio_pad_attr[27].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_27_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[27].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_27_keeper_en_27_qs)
-  );
-  assign reg2hw.dio_pad_attr[27].keeper_en.qe = dio_pad_attr_27_qe;
-
-  //   F[schmitt_en_27]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_27_schmitt_en_27 (
-    .re     (dio_pad_attr_27_re),
-    .we     (dio_pad_attr_27_gated_we),
-    .wd     (dio_pad_attr_27_schmitt_en_27_wd),
-    .d      (hw2reg.dio_pad_attr[27].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_27_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[27].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_27_schmitt_en_27_qs)
-  );
-  assign reg2hw.dio_pad_attr[27].schmitt_en.qe = dio_pad_attr_27_qe;
-
-  //   F[od_en_27]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_27_od_en_27 (
-    .re     (dio_pad_attr_27_re),
-    .we     (dio_pad_attr_27_gated_we),
-    .wd     (dio_pad_attr_27_od_en_27_wd),
-    .d      (hw2reg.dio_pad_attr[27].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_27_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[27].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_27_od_en_27_qs)
-  );
-  assign reg2hw.dio_pad_attr[27].od_en.qe = dio_pad_attr_27_qe;
-
-  //   F[input_disable_27]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_27_input_disable_27 (
-    .re     (dio_pad_attr_27_re),
-    .we     (dio_pad_attr_27_gated_we),
-    .wd     (dio_pad_attr_27_input_disable_27_wd),
-    .d      (hw2reg.dio_pad_attr[27].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_27_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[27].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_27_input_disable_27_qs)
-  );
-  assign reg2hw.dio_pad_attr[27].input_disable.qe = dio_pad_attr_27_qe;
-
-  //   F[slew_rate_27]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_27_slew_rate_27 (
-    .re     (dio_pad_attr_27_re),
-    .we     (dio_pad_attr_27_gated_we),
-    .wd     (dio_pad_attr_27_slew_rate_27_wd),
-    .d      (hw2reg.dio_pad_attr[27].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_27_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[27].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_27_slew_rate_27_qs)
-  );
-  assign reg2hw.dio_pad_attr[27].slew_rate.qe = dio_pad_attr_27_qe;
-
-  //   F[drive_strength_27]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_27_drive_strength_27 (
-    .re     (dio_pad_attr_27_re),
-    .we     (dio_pad_attr_27_gated_we),
-    .wd     (dio_pad_attr_27_drive_strength_27_wd),
-    .d      (hw2reg.dio_pad_attr[27].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_27_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[27].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_27_drive_strength_27_qs)
-  );
-  assign reg2hw.dio_pad_attr[27].drive_strength.qe = dio_pad_attr_27_qe;
+  assign reg2hw.dio_pad_attr[27].drv.qe = dio_pad_attr_27_qe;
 
 
   // Subregister 28 of Multireg dio_pad_attr
   // R[dio_pad_attr_28]: V(True)
   logic dio_pad_attr_28_qe;
-  logic [9:0] dio_pad_attr_28_flds_we;
+  logic [3:0] dio_pad_attr_28_flds_we;
   assign dio_pad_attr_28_qe = &dio_pad_attr_28_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_28_gated_we;
   assign dio_pad_attr_28_gated_we = dio_pad_attr_28_we & dio_pad_attr_regwen_28_qs;
-  //   F[invert_28]: 0:0
+  //   F[puen_28]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_28_invert_28 (
+  ) u_dio_pad_attr_28_puen_28 (
     .re     (dio_pad_attr_28_re),
     .we     (dio_pad_attr_28_gated_we),
-    .wd     (dio_pad_attr_28_invert_28_wd),
-    .d      (hw2reg.dio_pad_attr[28].invert.d),
+    .wd     (dio_pad_attr_28_puen_28_wd),
+    .d      (hw2reg.dio_pad_attr[28].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_28_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[28].invert.q),
+    .q      (reg2hw.dio_pad_attr[28].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_28_invert_28_qs)
+    .qs     (dio_pad_attr_28_puen_28_qs)
   );
-  assign reg2hw.dio_pad_attr[28].invert.qe = dio_pad_attr_28_qe;
+  assign reg2hw.dio_pad_attr[28].puen.qe = dio_pad_attr_28_qe;
 
-  //   F[virtual_od_en_28]: 1:1
+  //   F[pden_28]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_28_virtual_od_en_28 (
+  ) u_dio_pad_attr_28_pden_28 (
     .re     (dio_pad_attr_28_re),
     .we     (dio_pad_attr_28_gated_we),
-    .wd     (dio_pad_attr_28_virtual_od_en_28_wd),
-    .d      (hw2reg.dio_pad_attr[28].virtual_od_en.d),
+    .wd     (dio_pad_attr_28_pden_28_wd),
+    .d      (hw2reg.dio_pad_attr[28].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_28_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[28].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[28].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_28_virtual_od_en_28_qs)
+    .qs     (dio_pad_attr_28_pden_28_qs)
   );
-  assign reg2hw.dio_pad_attr[28].virtual_od_en.qe = dio_pad_attr_28_qe;
+  assign reg2hw.dio_pad_attr[28].pden.qe = dio_pad_attr_28_qe;
 
-  //   F[pull_en_28]: 2:2
+  //   F[smten_28]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_28_pull_en_28 (
+  ) u_dio_pad_attr_28_smten_28 (
     .re     (dio_pad_attr_28_re),
     .we     (dio_pad_attr_28_gated_we),
-    .wd     (dio_pad_attr_28_pull_en_28_wd),
-    .d      (hw2reg.dio_pad_attr[28].pull_en.d),
+    .wd     (dio_pad_attr_28_smten_28_wd),
+    .d      (hw2reg.dio_pad_attr[28].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_28_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[28].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[28].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_28_pull_en_28_qs)
+    .qs     (dio_pad_attr_28_smten_28_qs)
   );
-  assign reg2hw.dio_pad_attr[28].pull_en.qe = dio_pad_attr_28_qe;
+  assign reg2hw.dio_pad_attr[28].smten.qe = dio_pad_attr_28_qe;
 
-  //   F[pull_select_28]: 3:3
+  //   F[drv_28]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_28_pull_select_28 (
+    .DW    (3)
+  ) u_dio_pad_attr_28_drv_28 (
     .re     (dio_pad_attr_28_re),
     .we     (dio_pad_attr_28_gated_we),
-    .wd     (dio_pad_attr_28_pull_select_28_wd),
-    .d      (hw2reg.dio_pad_attr[28].pull_select.d),
+    .wd     (dio_pad_attr_28_drv_28_wd),
+    .d      (hw2reg.dio_pad_attr[28].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_28_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[28].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[28].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_28_pull_select_28_qs)
+    .qs     (dio_pad_attr_28_drv_28_qs)
   );
-  assign reg2hw.dio_pad_attr[28].pull_select.qe = dio_pad_attr_28_qe;
-
-  //   F[keeper_en_28]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_28_keeper_en_28 (
-    .re     (dio_pad_attr_28_re),
-    .we     (dio_pad_attr_28_gated_we),
-    .wd     (dio_pad_attr_28_keeper_en_28_wd),
-    .d      (hw2reg.dio_pad_attr[28].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_28_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[28].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_28_keeper_en_28_qs)
-  );
-  assign reg2hw.dio_pad_attr[28].keeper_en.qe = dio_pad_attr_28_qe;
-
-  //   F[schmitt_en_28]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_28_schmitt_en_28 (
-    .re     (dio_pad_attr_28_re),
-    .we     (dio_pad_attr_28_gated_we),
-    .wd     (dio_pad_attr_28_schmitt_en_28_wd),
-    .d      (hw2reg.dio_pad_attr[28].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_28_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[28].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_28_schmitt_en_28_qs)
-  );
-  assign reg2hw.dio_pad_attr[28].schmitt_en.qe = dio_pad_attr_28_qe;
-
-  //   F[od_en_28]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_28_od_en_28 (
-    .re     (dio_pad_attr_28_re),
-    .we     (dio_pad_attr_28_gated_we),
-    .wd     (dio_pad_attr_28_od_en_28_wd),
-    .d      (hw2reg.dio_pad_attr[28].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_28_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[28].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_28_od_en_28_qs)
-  );
-  assign reg2hw.dio_pad_attr[28].od_en.qe = dio_pad_attr_28_qe;
-
-  //   F[input_disable_28]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_28_input_disable_28 (
-    .re     (dio_pad_attr_28_re),
-    .we     (dio_pad_attr_28_gated_we),
-    .wd     (dio_pad_attr_28_input_disable_28_wd),
-    .d      (hw2reg.dio_pad_attr[28].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_28_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[28].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_28_input_disable_28_qs)
-  );
-  assign reg2hw.dio_pad_attr[28].input_disable.qe = dio_pad_attr_28_qe;
-
-  //   F[slew_rate_28]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_28_slew_rate_28 (
-    .re     (dio_pad_attr_28_re),
-    .we     (dio_pad_attr_28_gated_we),
-    .wd     (dio_pad_attr_28_slew_rate_28_wd),
-    .d      (hw2reg.dio_pad_attr[28].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_28_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[28].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_28_slew_rate_28_qs)
-  );
-  assign reg2hw.dio_pad_attr[28].slew_rate.qe = dio_pad_attr_28_qe;
-
-  //   F[drive_strength_28]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_28_drive_strength_28 (
-    .re     (dio_pad_attr_28_re),
-    .we     (dio_pad_attr_28_gated_we),
-    .wd     (dio_pad_attr_28_drive_strength_28_wd),
-    .d      (hw2reg.dio_pad_attr[28].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_28_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[28].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_28_drive_strength_28_qs)
-  );
-  assign reg2hw.dio_pad_attr[28].drive_strength.qe = dio_pad_attr_28_qe;
+  assign reg2hw.dio_pad_attr[28].drv.qe = dio_pad_attr_28_qe;
 
 
   // Subregister 29 of Multireg dio_pad_attr
   // R[dio_pad_attr_29]: V(True)
   logic dio_pad_attr_29_qe;
-  logic [9:0] dio_pad_attr_29_flds_we;
+  logic [3:0] dio_pad_attr_29_flds_we;
   assign dio_pad_attr_29_qe = &dio_pad_attr_29_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_29_gated_we;
   assign dio_pad_attr_29_gated_we = dio_pad_attr_29_we & dio_pad_attr_regwen_29_qs;
-  //   F[invert_29]: 0:0
+  //   F[puen_29]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_29_invert_29 (
+  ) u_dio_pad_attr_29_puen_29 (
     .re     (dio_pad_attr_29_re),
     .we     (dio_pad_attr_29_gated_we),
-    .wd     (dio_pad_attr_29_invert_29_wd),
-    .d      (hw2reg.dio_pad_attr[29].invert.d),
+    .wd     (dio_pad_attr_29_puen_29_wd),
+    .d      (hw2reg.dio_pad_attr[29].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_29_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[29].invert.q),
+    .q      (reg2hw.dio_pad_attr[29].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_29_invert_29_qs)
+    .qs     (dio_pad_attr_29_puen_29_qs)
   );
-  assign reg2hw.dio_pad_attr[29].invert.qe = dio_pad_attr_29_qe;
+  assign reg2hw.dio_pad_attr[29].puen.qe = dio_pad_attr_29_qe;
 
-  //   F[virtual_od_en_29]: 1:1
+  //   F[pden_29]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_29_virtual_od_en_29 (
+  ) u_dio_pad_attr_29_pden_29 (
     .re     (dio_pad_attr_29_re),
     .we     (dio_pad_attr_29_gated_we),
-    .wd     (dio_pad_attr_29_virtual_od_en_29_wd),
-    .d      (hw2reg.dio_pad_attr[29].virtual_od_en.d),
+    .wd     (dio_pad_attr_29_pden_29_wd),
+    .d      (hw2reg.dio_pad_attr[29].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_29_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[29].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[29].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_29_virtual_od_en_29_qs)
+    .qs     (dio_pad_attr_29_pden_29_qs)
   );
-  assign reg2hw.dio_pad_attr[29].virtual_od_en.qe = dio_pad_attr_29_qe;
+  assign reg2hw.dio_pad_attr[29].pden.qe = dio_pad_attr_29_qe;
 
-  //   F[pull_en_29]: 2:2
+  //   F[smten_29]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_29_pull_en_29 (
+  ) u_dio_pad_attr_29_smten_29 (
     .re     (dio_pad_attr_29_re),
     .we     (dio_pad_attr_29_gated_we),
-    .wd     (dio_pad_attr_29_pull_en_29_wd),
-    .d      (hw2reg.dio_pad_attr[29].pull_en.d),
+    .wd     (dio_pad_attr_29_smten_29_wd),
+    .d      (hw2reg.dio_pad_attr[29].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_29_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[29].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[29].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_29_pull_en_29_qs)
+    .qs     (dio_pad_attr_29_smten_29_qs)
   );
-  assign reg2hw.dio_pad_attr[29].pull_en.qe = dio_pad_attr_29_qe;
+  assign reg2hw.dio_pad_attr[29].smten.qe = dio_pad_attr_29_qe;
 
-  //   F[pull_select_29]: 3:3
+  //   F[drv_29]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_29_pull_select_29 (
+    .DW    (3)
+  ) u_dio_pad_attr_29_drv_29 (
     .re     (dio_pad_attr_29_re),
     .we     (dio_pad_attr_29_gated_we),
-    .wd     (dio_pad_attr_29_pull_select_29_wd),
-    .d      (hw2reg.dio_pad_attr[29].pull_select.d),
+    .wd     (dio_pad_attr_29_drv_29_wd),
+    .d      (hw2reg.dio_pad_attr[29].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_29_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[29].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[29].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_29_pull_select_29_qs)
+    .qs     (dio_pad_attr_29_drv_29_qs)
   );
-  assign reg2hw.dio_pad_attr[29].pull_select.qe = dio_pad_attr_29_qe;
-
-  //   F[keeper_en_29]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_29_keeper_en_29 (
-    .re     (dio_pad_attr_29_re),
-    .we     (dio_pad_attr_29_gated_we),
-    .wd     (dio_pad_attr_29_keeper_en_29_wd),
-    .d      (hw2reg.dio_pad_attr[29].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_29_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[29].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_29_keeper_en_29_qs)
-  );
-  assign reg2hw.dio_pad_attr[29].keeper_en.qe = dio_pad_attr_29_qe;
-
-  //   F[schmitt_en_29]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_29_schmitt_en_29 (
-    .re     (dio_pad_attr_29_re),
-    .we     (dio_pad_attr_29_gated_we),
-    .wd     (dio_pad_attr_29_schmitt_en_29_wd),
-    .d      (hw2reg.dio_pad_attr[29].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_29_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[29].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_29_schmitt_en_29_qs)
-  );
-  assign reg2hw.dio_pad_attr[29].schmitt_en.qe = dio_pad_attr_29_qe;
-
-  //   F[od_en_29]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_29_od_en_29 (
-    .re     (dio_pad_attr_29_re),
-    .we     (dio_pad_attr_29_gated_we),
-    .wd     (dio_pad_attr_29_od_en_29_wd),
-    .d      (hw2reg.dio_pad_attr[29].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_29_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[29].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_29_od_en_29_qs)
-  );
-  assign reg2hw.dio_pad_attr[29].od_en.qe = dio_pad_attr_29_qe;
-
-  //   F[input_disable_29]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_29_input_disable_29 (
-    .re     (dio_pad_attr_29_re),
-    .we     (dio_pad_attr_29_gated_we),
-    .wd     (dio_pad_attr_29_input_disable_29_wd),
-    .d      (hw2reg.dio_pad_attr[29].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_29_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[29].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_29_input_disable_29_qs)
-  );
-  assign reg2hw.dio_pad_attr[29].input_disable.qe = dio_pad_attr_29_qe;
-
-  //   F[slew_rate_29]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_29_slew_rate_29 (
-    .re     (dio_pad_attr_29_re),
-    .we     (dio_pad_attr_29_gated_we),
-    .wd     (dio_pad_attr_29_slew_rate_29_wd),
-    .d      (hw2reg.dio_pad_attr[29].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_29_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[29].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_29_slew_rate_29_qs)
-  );
-  assign reg2hw.dio_pad_attr[29].slew_rate.qe = dio_pad_attr_29_qe;
-
-  //   F[drive_strength_29]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_29_drive_strength_29 (
-    .re     (dio_pad_attr_29_re),
-    .we     (dio_pad_attr_29_gated_we),
-    .wd     (dio_pad_attr_29_drive_strength_29_wd),
-    .d      (hw2reg.dio_pad_attr[29].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_29_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[29].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_29_drive_strength_29_qs)
-  );
-  assign reg2hw.dio_pad_attr[29].drive_strength.qe = dio_pad_attr_29_qe;
+  assign reg2hw.dio_pad_attr[29].drv.qe = dio_pad_attr_29_qe;
 
 
   // Subregister 30 of Multireg dio_pad_attr
   // R[dio_pad_attr_30]: V(True)
   logic dio_pad_attr_30_qe;
-  logic [9:0] dio_pad_attr_30_flds_we;
+  logic [3:0] dio_pad_attr_30_flds_we;
   assign dio_pad_attr_30_qe = &dio_pad_attr_30_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_30_gated_we;
   assign dio_pad_attr_30_gated_we = dio_pad_attr_30_we & dio_pad_attr_regwen_30_qs;
-  //   F[invert_30]: 0:0
+  //   F[puen_30]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_30_invert_30 (
+  ) u_dio_pad_attr_30_puen_30 (
     .re     (dio_pad_attr_30_re),
     .we     (dio_pad_attr_30_gated_we),
-    .wd     (dio_pad_attr_30_invert_30_wd),
-    .d      (hw2reg.dio_pad_attr[30].invert.d),
+    .wd     (dio_pad_attr_30_puen_30_wd),
+    .d      (hw2reg.dio_pad_attr[30].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_30_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[30].invert.q),
+    .q      (reg2hw.dio_pad_attr[30].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_30_invert_30_qs)
+    .qs     (dio_pad_attr_30_puen_30_qs)
   );
-  assign reg2hw.dio_pad_attr[30].invert.qe = dio_pad_attr_30_qe;
+  assign reg2hw.dio_pad_attr[30].puen.qe = dio_pad_attr_30_qe;
 
-  //   F[virtual_od_en_30]: 1:1
+  //   F[pden_30]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_30_virtual_od_en_30 (
+  ) u_dio_pad_attr_30_pden_30 (
     .re     (dio_pad_attr_30_re),
     .we     (dio_pad_attr_30_gated_we),
-    .wd     (dio_pad_attr_30_virtual_od_en_30_wd),
-    .d      (hw2reg.dio_pad_attr[30].virtual_od_en.d),
+    .wd     (dio_pad_attr_30_pden_30_wd),
+    .d      (hw2reg.dio_pad_attr[30].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_30_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[30].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[30].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_30_virtual_od_en_30_qs)
+    .qs     (dio_pad_attr_30_pden_30_qs)
   );
-  assign reg2hw.dio_pad_attr[30].virtual_od_en.qe = dio_pad_attr_30_qe;
+  assign reg2hw.dio_pad_attr[30].pden.qe = dio_pad_attr_30_qe;
 
-  //   F[pull_en_30]: 2:2
+  //   F[smten_30]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_30_pull_en_30 (
+  ) u_dio_pad_attr_30_smten_30 (
     .re     (dio_pad_attr_30_re),
     .we     (dio_pad_attr_30_gated_we),
-    .wd     (dio_pad_attr_30_pull_en_30_wd),
-    .d      (hw2reg.dio_pad_attr[30].pull_en.d),
+    .wd     (dio_pad_attr_30_smten_30_wd),
+    .d      (hw2reg.dio_pad_attr[30].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_30_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[30].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[30].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_30_pull_en_30_qs)
+    .qs     (dio_pad_attr_30_smten_30_qs)
   );
-  assign reg2hw.dio_pad_attr[30].pull_en.qe = dio_pad_attr_30_qe;
+  assign reg2hw.dio_pad_attr[30].smten.qe = dio_pad_attr_30_qe;
 
-  //   F[pull_select_30]: 3:3
+  //   F[drv_30]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_30_pull_select_30 (
+    .DW    (3)
+  ) u_dio_pad_attr_30_drv_30 (
     .re     (dio_pad_attr_30_re),
     .we     (dio_pad_attr_30_gated_we),
-    .wd     (dio_pad_attr_30_pull_select_30_wd),
-    .d      (hw2reg.dio_pad_attr[30].pull_select.d),
+    .wd     (dio_pad_attr_30_drv_30_wd),
+    .d      (hw2reg.dio_pad_attr[30].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_30_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[30].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[30].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_30_pull_select_30_qs)
+    .qs     (dio_pad_attr_30_drv_30_qs)
   );
-  assign reg2hw.dio_pad_attr[30].pull_select.qe = dio_pad_attr_30_qe;
-
-  //   F[keeper_en_30]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_30_keeper_en_30 (
-    .re     (dio_pad_attr_30_re),
-    .we     (dio_pad_attr_30_gated_we),
-    .wd     (dio_pad_attr_30_keeper_en_30_wd),
-    .d      (hw2reg.dio_pad_attr[30].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_30_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[30].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_30_keeper_en_30_qs)
-  );
-  assign reg2hw.dio_pad_attr[30].keeper_en.qe = dio_pad_attr_30_qe;
-
-  //   F[schmitt_en_30]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_30_schmitt_en_30 (
-    .re     (dio_pad_attr_30_re),
-    .we     (dio_pad_attr_30_gated_we),
-    .wd     (dio_pad_attr_30_schmitt_en_30_wd),
-    .d      (hw2reg.dio_pad_attr[30].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_30_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[30].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_30_schmitt_en_30_qs)
-  );
-  assign reg2hw.dio_pad_attr[30].schmitt_en.qe = dio_pad_attr_30_qe;
-
-  //   F[od_en_30]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_30_od_en_30 (
-    .re     (dio_pad_attr_30_re),
-    .we     (dio_pad_attr_30_gated_we),
-    .wd     (dio_pad_attr_30_od_en_30_wd),
-    .d      (hw2reg.dio_pad_attr[30].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_30_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[30].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_30_od_en_30_qs)
-  );
-  assign reg2hw.dio_pad_attr[30].od_en.qe = dio_pad_attr_30_qe;
-
-  //   F[input_disable_30]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_30_input_disable_30 (
-    .re     (dio_pad_attr_30_re),
-    .we     (dio_pad_attr_30_gated_we),
-    .wd     (dio_pad_attr_30_input_disable_30_wd),
-    .d      (hw2reg.dio_pad_attr[30].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_30_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[30].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_30_input_disable_30_qs)
-  );
-  assign reg2hw.dio_pad_attr[30].input_disable.qe = dio_pad_attr_30_qe;
-
-  //   F[slew_rate_30]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_30_slew_rate_30 (
-    .re     (dio_pad_attr_30_re),
-    .we     (dio_pad_attr_30_gated_we),
-    .wd     (dio_pad_attr_30_slew_rate_30_wd),
-    .d      (hw2reg.dio_pad_attr[30].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_30_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[30].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_30_slew_rate_30_qs)
-  );
-  assign reg2hw.dio_pad_attr[30].slew_rate.qe = dio_pad_attr_30_qe;
-
-  //   F[drive_strength_30]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_30_drive_strength_30 (
-    .re     (dio_pad_attr_30_re),
-    .we     (dio_pad_attr_30_gated_we),
-    .wd     (dio_pad_attr_30_drive_strength_30_wd),
-    .d      (hw2reg.dio_pad_attr[30].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_30_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[30].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_30_drive_strength_30_qs)
-  );
-  assign reg2hw.dio_pad_attr[30].drive_strength.qe = dio_pad_attr_30_qe;
+  assign reg2hw.dio_pad_attr[30].drv.qe = dio_pad_attr_30_qe;
 
 
   // Subregister 31 of Multireg dio_pad_attr
   // R[dio_pad_attr_31]: V(True)
   logic dio_pad_attr_31_qe;
-  logic [9:0] dio_pad_attr_31_flds_we;
+  logic [3:0] dio_pad_attr_31_flds_we;
   assign dio_pad_attr_31_qe = &dio_pad_attr_31_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_31_gated_we;
   assign dio_pad_attr_31_gated_we = dio_pad_attr_31_we & dio_pad_attr_regwen_31_qs;
-  //   F[invert_31]: 0:0
+  //   F[puen_31]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_31_invert_31 (
+  ) u_dio_pad_attr_31_puen_31 (
     .re     (dio_pad_attr_31_re),
     .we     (dio_pad_attr_31_gated_we),
-    .wd     (dio_pad_attr_31_invert_31_wd),
-    .d      (hw2reg.dio_pad_attr[31].invert.d),
+    .wd     (dio_pad_attr_31_puen_31_wd),
+    .d      (hw2reg.dio_pad_attr[31].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_31_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[31].invert.q),
+    .q      (reg2hw.dio_pad_attr[31].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_31_invert_31_qs)
+    .qs     (dio_pad_attr_31_puen_31_qs)
   );
-  assign reg2hw.dio_pad_attr[31].invert.qe = dio_pad_attr_31_qe;
+  assign reg2hw.dio_pad_attr[31].puen.qe = dio_pad_attr_31_qe;
 
-  //   F[virtual_od_en_31]: 1:1
+  //   F[pden_31]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_31_virtual_od_en_31 (
+  ) u_dio_pad_attr_31_pden_31 (
     .re     (dio_pad_attr_31_re),
     .we     (dio_pad_attr_31_gated_we),
-    .wd     (dio_pad_attr_31_virtual_od_en_31_wd),
-    .d      (hw2reg.dio_pad_attr[31].virtual_od_en.d),
+    .wd     (dio_pad_attr_31_pden_31_wd),
+    .d      (hw2reg.dio_pad_attr[31].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_31_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[31].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[31].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_31_virtual_od_en_31_qs)
+    .qs     (dio_pad_attr_31_pden_31_qs)
   );
-  assign reg2hw.dio_pad_attr[31].virtual_od_en.qe = dio_pad_attr_31_qe;
+  assign reg2hw.dio_pad_attr[31].pden.qe = dio_pad_attr_31_qe;
 
-  //   F[pull_en_31]: 2:2
+  //   F[smten_31]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_31_pull_en_31 (
+  ) u_dio_pad_attr_31_smten_31 (
     .re     (dio_pad_attr_31_re),
     .we     (dio_pad_attr_31_gated_we),
-    .wd     (dio_pad_attr_31_pull_en_31_wd),
-    .d      (hw2reg.dio_pad_attr[31].pull_en.d),
+    .wd     (dio_pad_attr_31_smten_31_wd),
+    .d      (hw2reg.dio_pad_attr[31].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_31_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[31].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[31].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_31_pull_en_31_qs)
+    .qs     (dio_pad_attr_31_smten_31_qs)
   );
-  assign reg2hw.dio_pad_attr[31].pull_en.qe = dio_pad_attr_31_qe;
+  assign reg2hw.dio_pad_attr[31].smten.qe = dio_pad_attr_31_qe;
 
-  //   F[pull_select_31]: 3:3
+  //   F[drv_31]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_31_pull_select_31 (
+    .DW    (3)
+  ) u_dio_pad_attr_31_drv_31 (
     .re     (dio_pad_attr_31_re),
     .we     (dio_pad_attr_31_gated_we),
-    .wd     (dio_pad_attr_31_pull_select_31_wd),
-    .d      (hw2reg.dio_pad_attr[31].pull_select.d),
+    .wd     (dio_pad_attr_31_drv_31_wd),
+    .d      (hw2reg.dio_pad_attr[31].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_31_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[31].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[31].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_31_pull_select_31_qs)
+    .qs     (dio_pad_attr_31_drv_31_qs)
   );
-  assign reg2hw.dio_pad_attr[31].pull_select.qe = dio_pad_attr_31_qe;
-
-  //   F[keeper_en_31]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_31_keeper_en_31 (
-    .re     (dio_pad_attr_31_re),
-    .we     (dio_pad_attr_31_gated_we),
-    .wd     (dio_pad_attr_31_keeper_en_31_wd),
-    .d      (hw2reg.dio_pad_attr[31].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_31_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[31].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_31_keeper_en_31_qs)
-  );
-  assign reg2hw.dio_pad_attr[31].keeper_en.qe = dio_pad_attr_31_qe;
-
-  //   F[schmitt_en_31]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_31_schmitt_en_31 (
-    .re     (dio_pad_attr_31_re),
-    .we     (dio_pad_attr_31_gated_we),
-    .wd     (dio_pad_attr_31_schmitt_en_31_wd),
-    .d      (hw2reg.dio_pad_attr[31].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_31_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[31].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_31_schmitt_en_31_qs)
-  );
-  assign reg2hw.dio_pad_attr[31].schmitt_en.qe = dio_pad_attr_31_qe;
-
-  //   F[od_en_31]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_31_od_en_31 (
-    .re     (dio_pad_attr_31_re),
-    .we     (dio_pad_attr_31_gated_we),
-    .wd     (dio_pad_attr_31_od_en_31_wd),
-    .d      (hw2reg.dio_pad_attr[31].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_31_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[31].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_31_od_en_31_qs)
-  );
-  assign reg2hw.dio_pad_attr[31].od_en.qe = dio_pad_attr_31_qe;
-
-  //   F[input_disable_31]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_31_input_disable_31 (
-    .re     (dio_pad_attr_31_re),
-    .we     (dio_pad_attr_31_gated_we),
-    .wd     (dio_pad_attr_31_input_disable_31_wd),
-    .d      (hw2reg.dio_pad_attr[31].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_31_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[31].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_31_input_disable_31_qs)
-  );
-  assign reg2hw.dio_pad_attr[31].input_disable.qe = dio_pad_attr_31_qe;
-
-  //   F[slew_rate_31]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_31_slew_rate_31 (
-    .re     (dio_pad_attr_31_re),
-    .we     (dio_pad_attr_31_gated_we),
-    .wd     (dio_pad_attr_31_slew_rate_31_wd),
-    .d      (hw2reg.dio_pad_attr[31].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_31_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[31].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_31_slew_rate_31_qs)
-  );
-  assign reg2hw.dio_pad_attr[31].slew_rate.qe = dio_pad_attr_31_qe;
-
-  //   F[drive_strength_31]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_31_drive_strength_31 (
-    .re     (dio_pad_attr_31_re),
-    .we     (dio_pad_attr_31_gated_we),
-    .wd     (dio_pad_attr_31_drive_strength_31_wd),
-    .d      (hw2reg.dio_pad_attr[31].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_31_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[31].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_31_drive_strength_31_qs)
-  );
-  assign reg2hw.dio_pad_attr[31].drive_strength.qe = dio_pad_attr_31_qe;
+  assign reg2hw.dio_pad_attr[31].drv.qe = dio_pad_attr_31_qe;
 
 
   // Subregister 32 of Multireg dio_pad_attr
   // R[dio_pad_attr_32]: V(True)
   logic dio_pad_attr_32_qe;
-  logic [9:0] dio_pad_attr_32_flds_we;
+  logic [3:0] dio_pad_attr_32_flds_we;
   assign dio_pad_attr_32_qe = &dio_pad_attr_32_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_32_gated_we;
   assign dio_pad_attr_32_gated_we = dio_pad_attr_32_we & dio_pad_attr_regwen_32_qs;
-  //   F[invert_32]: 0:0
+  //   F[puen_32]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_32_invert_32 (
+  ) u_dio_pad_attr_32_puen_32 (
     .re     (dio_pad_attr_32_re),
     .we     (dio_pad_attr_32_gated_we),
-    .wd     (dio_pad_attr_32_invert_32_wd),
-    .d      (hw2reg.dio_pad_attr[32].invert.d),
+    .wd     (dio_pad_attr_32_puen_32_wd),
+    .d      (hw2reg.dio_pad_attr[32].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_32_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[32].invert.q),
+    .q      (reg2hw.dio_pad_attr[32].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_32_invert_32_qs)
+    .qs     (dio_pad_attr_32_puen_32_qs)
   );
-  assign reg2hw.dio_pad_attr[32].invert.qe = dio_pad_attr_32_qe;
+  assign reg2hw.dio_pad_attr[32].puen.qe = dio_pad_attr_32_qe;
 
-  //   F[virtual_od_en_32]: 1:1
+  //   F[pden_32]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_32_virtual_od_en_32 (
+  ) u_dio_pad_attr_32_pden_32 (
     .re     (dio_pad_attr_32_re),
     .we     (dio_pad_attr_32_gated_we),
-    .wd     (dio_pad_attr_32_virtual_od_en_32_wd),
-    .d      (hw2reg.dio_pad_attr[32].virtual_od_en.d),
+    .wd     (dio_pad_attr_32_pden_32_wd),
+    .d      (hw2reg.dio_pad_attr[32].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_32_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[32].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[32].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_32_virtual_od_en_32_qs)
+    .qs     (dio_pad_attr_32_pden_32_qs)
   );
-  assign reg2hw.dio_pad_attr[32].virtual_od_en.qe = dio_pad_attr_32_qe;
+  assign reg2hw.dio_pad_attr[32].pden.qe = dio_pad_attr_32_qe;
 
-  //   F[pull_en_32]: 2:2
+  //   F[smten_32]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_32_pull_en_32 (
+  ) u_dio_pad_attr_32_smten_32 (
     .re     (dio_pad_attr_32_re),
     .we     (dio_pad_attr_32_gated_we),
-    .wd     (dio_pad_attr_32_pull_en_32_wd),
-    .d      (hw2reg.dio_pad_attr[32].pull_en.d),
+    .wd     (dio_pad_attr_32_smten_32_wd),
+    .d      (hw2reg.dio_pad_attr[32].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_32_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[32].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[32].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_32_pull_en_32_qs)
+    .qs     (dio_pad_attr_32_smten_32_qs)
   );
-  assign reg2hw.dio_pad_attr[32].pull_en.qe = dio_pad_attr_32_qe;
+  assign reg2hw.dio_pad_attr[32].smten.qe = dio_pad_attr_32_qe;
 
-  //   F[pull_select_32]: 3:3
+  //   F[drv_32]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_32_pull_select_32 (
+    .DW    (3)
+  ) u_dio_pad_attr_32_drv_32 (
     .re     (dio_pad_attr_32_re),
     .we     (dio_pad_attr_32_gated_we),
-    .wd     (dio_pad_attr_32_pull_select_32_wd),
-    .d      (hw2reg.dio_pad_attr[32].pull_select.d),
+    .wd     (dio_pad_attr_32_drv_32_wd),
+    .d      (hw2reg.dio_pad_attr[32].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_32_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[32].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[32].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_32_pull_select_32_qs)
+    .qs     (dio_pad_attr_32_drv_32_qs)
   );
-  assign reg2hw.dio_pad_attr[32].pull_select.qe = dio_pad_attr_32_qe;
-
-  //   F[keeper_en_32]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_32_keeper_en_32 (
-    .re     (dio_pad_attr_32_re),
-    .we     (dio_pad_attr_32_gated_we),
-    .wd     (dio_pad_attr_32_keeper_en_32_wd),
-    .d      (hw2reg.dio_pad_attr[32].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_32_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[32].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_32_keeper_en_32_qs)
-  );
-  assign reg2hw.dio_pad_attr[32].keeper_en.qe = dio_pad_attr_32_qe;
-
-  //   F[schmitt_en_32]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_32_schmitt_en_32 (
-    .re     (dio_pad_attr_32_re),
-    .we     (dio_pad_attr_32_gated_we),
-    .wd     (dio_pad_attr_32_schmitt_en_32_wd),
-    .d      (hw2reg.dio_pad_attr[32].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_32_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[32].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_32_schmitt_en_32_qs)
-  );
-  assign reg2hw.dio_pad_attr[32].schmitt_en.qe = dio_pad_attr_32_qe;
-
-  //   F[od_en_32]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_32_od_en_32 (
-    .re     (dio_pad_attr_32_re),
-    .we     (dio_pad_attr_32_gated_we),
-    .wd     (dio_pad_attr_32_od_en_32_wd),
-    .d      (hw2reg.dio_pad_attr[32].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_32_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[32].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_32_od_en_32_qs)
-  );
-  assign reg2hw.dio_pad_attr[32].od_en.qe = dio_pad_attr_32_qe;
-
-  //   F[input_disable_32]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_32_input_disable_32 (
-    .re     (dio_pad_attr_32_re),
-    .we     (dio_pad_attr_32_gated_we),
-    .wd     (dio_pad_attr_32_input_disable_32_wd),
-    .d      (hw2reg.dio_pad_attr[32].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_32_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[32].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_32_input_disable_32_qs)
-  );
-  assign reg2hw.dio_pad_attr[32].input_disable.qe = dio_pad_attr_32_qe;
-
-  //   F[slew_rate_32]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_32_slew_rate_32 (
-    .re     (dio_pad_attr_32_re),
-    .we     (dio_pad_attr_32_gated_we),
-    .wd     (dio_pad_attr_32_slew_rate_32_wd),
-    .d      (hw2reg.dio_pad_attr[32].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_32_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[32].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_32_slew_rate_32_qs)
-  );
-  assign reg2hw.dio_pad_attr[32].slew_rate.qe = dio_pad_attr_32_qe;
-
-  //   F[drive_strength_32]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_32_drive_strength_32 (
-    .re     (dio_pad_attr_32_re),
-    .we     (dio_pad_attr_32_gated_we),
-    .wd     (dio_pad_attr_32_drive_strength_32_wd),
-    .d      (hw2reg.dio_pad_attr[32].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_32_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[32].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_32_drive_strength_32_qs)
-  );
-  assign reg2hw.dio_pad_attr[32].drive_strength.qe = dio_pad_attr_32_qe;
+  assign reg2hw.dio_pad_attr[32].drv.qe = dio_pad_attr_32_qe;
 
 
   // Subregister 33 of Multireg dio_pad_attr
   // R[dio_pad_attr_33]: V(True)
   logic dio_pad_attr_33_qe;
-  logic [9:0] dio_pad_attr_33_flds_we;
+  logic [3:0] dio_pad_attr_33_flds_we;
   assign dio_pad_attr_33_qe = &dio_pad_attr_33_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_33_gated_we;
   assign dio_pad_attr_33_gated_we = dio_pad_attr_33_we & dio_pad_attr_regwen_33_qs;
-  //   F[invert_33]: 0:0
+  //   F[puen_33]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_33_invert_33 (
+  ) u_dio_pad_attr_33_puen_33 (
     .re     (dio_pad_attr_33_re),
     .we     (dio_pad_attr_33_gated_we),
-    .wd     (dio_pad_attr_33_invert_33_wd),
-    .d      (hw2reg.dio_pad_attr[33].invert.d),
+    .wd     (dio_pad_attr_33_puen_33_wd),
+    .d      (hw2reg.dio_pad_attr[33].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_33_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[33].invert.q),
+    .q      (reg2hw.dio_pad_attr[33].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_33_invert_33_qs)
+    .qs     (dio_pad_attr_33_puen_33_qs)
   );
-  assign reg2hw.dio_pad_attr[33].invert.qe = dio_pad_attr_33_qe;
+  assign reg2hw.dio_pad_attr[33].puen.qe = dio_pad_attr_33_qe;
 
-  //   F[virtual_od_en_33]: 1:1
+  //   F[pden_33]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_33_virtual_od_en_33 (
+  ) u_dio_pad_attr_33_pden_33 (
     .re     (dio_pad_attr_33_re),
     .we     (dio_pad_attr_33_gated_we),
-    .wd     (dio_pad_attr_33_virtual_od_en_33_wd),
-    .d      (hw2reg.dio_pad_attr[33].virtual_od_en.d),
+    .wd     (dio_pad_attr_33_pden_33_wd),
+    .d      (hw2reg.dio_pad_attr[33].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_33_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[33].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[33].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_33_virtual_od_en_33_qs)
+    .qs     (dio_pad_attr_33_pden_33_qs)
   );
-  assign reg2hw.dio_pad_attr[33].virtual_od_en.qe = dio_pad_attr_33_qe;
+  assign reg2hw.dio_pad_attr[33].pden.qe = dio_pad_attr_33_qe;
 
-  //   F[pull_en_33]: 2:2
+  //   F[smten_33]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_33_pull_en_33 (
+  ) u_dio_pad_attr_33_smten_33 (
     .re     (dio_pad_attr_33_re),
     .we     (dio_pad_attr_33_gated_we),
-    .wd     (dio_pad_attr_33_pull_en_33_wd),
-    .d      (hw2reg.dio_pad_attr[33].pull_en.d),
+    .wd     (dio_pad_attr_33_smten_33_wd),
+    .d      (hw2reg.dio_pad_attr[33].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_33_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[33].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[33].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_33_pull_en_33_qs)
+    .qs     (dio_pad_attr_33_smten_33_qs)
   );
-  assign reg2hw.dio_pad_attr[33].pull_en.qe = dio_pad_attr_33_qe;
+  assign reg2hw.dio_pad_attr[33].smten.qe = dio_pad_attr_33_qe;
 
-  //   F[pull_select_33]: 3:3
+  //   F[drv_33]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_33_pull_select_33 (
+    .DW    (3)
+  ) u_dio_pad_attr_33_drv_33 (
     .re     (dio_pad_attr_33_re),
     .we     (dio_pad_attr_33_gated_we),
-    .wd     (dio_pad_attr_33_pull_select_33_wd),
-    .d      (hw2reg.dio_pad_attr[33].pull_select.d),
+    .wd     (dio_pad_attr_33_drv_33_wd),
+    .d      (hw2reg.dio_pad_attr[33].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_33_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[33].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[33].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_33_pull_select_33_qs)
+    .qs     (dio_pad_attr_33_drv_33_qs)
   );
-  assign reg2hw.dio_pad_attr[33].pull_select.qe = dio_pad_attr_33_qe;
-
-  //   F[keeper_en_33]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_33_keeper_en_33 (
-    .re     (dio_pad_attr_33_re),
-    .we     (dio_pad_attr_33_gated_we),
-    .wd     (dio_pad_attr_33_keeper_en_33_wd),
-    .d      (hw2reg.dio_pad_attr[33].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_33_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[33].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_33_keeper_en_33_qs)
-  );
-  assign reg2hw.dio_pad_attr[33].keeper_en.qe = dio_pad_attr_33_qe;
-
-  //   F[schmitt_en_33]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_33_schmitt_en_33 (
-    .re     (dio_pad_attr_33_re),
-    .we     (dio_pad_attr_33_gated_we),
-    .wd     (dio_pad_attr_33_schmitt_en_33_wd),
-    .d      (hw2reg.dio_pad_attr[33].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_33_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[33].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_33_schmitt_en_33_qs)
-  );
-  assign reg2hw.dio_pad_attr[33].schmitt_en.qe = dio_pad_attr_33_qe;
-
-  //   F[od_en_33]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_33_od_en_33 (
-    .re     (dio_pad_attr_33_re),
-    .we     (dio_pad_attr_33_gated_we),
-    .wd     (dio_pad_attr_33_od_en_33_wd),
-    .d      (hw2reg.dio_pad_attr[33].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_33_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[33].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_33_od_en_33_qs)
-  );
-  assign reg2hw.dio_pad_attr[33].od_en.qe = dio_pad_attr_33_qe;
-
-  //   F[input_disable_33]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_33_input_disable_33 (
-    .re     (dio_pad_attr_33_re),
-    .we     (dio_pad_attr_33_gated_we),
-    .wd     (dio_pad_attr_33_input_disable_33_wd),
-    .d      (hw2reg.dio_pad_attr[33].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_33_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[33].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_33_input_disable_33_qs)
-  );
-  assign reg2hw.dio_pad_attr[33].input_disable.qe = dio_pad_attr_33_qe;
-
-  //   F[slew_rate_33]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_33_slew_rate_33 (
-    .re     (dio_pad_attr_33_re),
-    .we     (dio_pad_attr_33_gated_we),
-    .wd     (dio_pad_attr_33_slew_rate_33_wd),
-    .d      (hw2reg.dio_pad_attr[33].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_33_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[33].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_33_slew_rate_33_qs)
-  );
-  assign reg2hw.dio_pad_attr[33].slew_rate.qe = dio_pad_attr_33_qe;
-
-  //   F[drive_strength_33]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_33_drive_strength_33 (
-    .re     (dio_pad_attr_33_re),
-    .we     (dio_pad_attr_33_gated_we),
-    .wd     (dio_pad_attr_33_drive_strength_33_wd),
-    .d      (hw2reg.dio_pad_attr[33].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_33_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[33].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_33_drive_strength_33_qs)
-  );
-  assign reg2hw.dio_pad_attr[33].drive_strength.qe = dio_pad_attr_33_qe;
+  assign reg2hw.dio_pad_attr[33].drv.qe = dio_pad_attr_33_qe;
 
 
   // Subregister 34 of Multireg dio_pad_attr
   // R[dio_pad_attr_34]: V(True)
   logic dio_pad_attr_34_qe;
-  logic [9:0] dio_pad_attr_34_flds_we;
+  logic [3:0] dio_pad_attr_34_flds_we;
   assign dio_pad_attr_34_qe = &dio_pad_attr_34_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_34_gated_we;
   assign dio_pad_attr_34_gated_we = dio_pad_attr_34_we & dio_pad_attr_regwen_34_qs;
-  //   F[invert_34]: 0:0
+  //   F[puen_34]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_34_invert_34 (
+  ) u_dio_pad_attr_34_puen_34 (
     .re     (dio_pad_attr_34_re),
     .we     (dio_pad_attr_34_gated_we),
-    .wd     (dio_pad_attr_34_invert_34_wd),
-    .d      (hw2reg.dio_pad_attr[34].invert.d),
+    .wd     (dio_pad_attr_34_puen_34_wd),
+    .d      (hw2reg.dio_pad_attr[34].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_34_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[34].invert.q),
+    .q      (reg2hw.dio_pad_attr[34].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_34_invert_34_qs)
+    .qs     (dio_pad_attr_34_puen_34_qs)
   );
-  assign reg2hw.dio_pad_attr[34].invert.qe = dio_pad_attr_34_qe;
+  assign reg2hw.dio_pad_attr[34].puen.qe = dio_pad_attr_34_qe;
 
-  //   F[virtual_od_en_34]: 1:1
+  //   F[pden_34]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_34_virtual_od_en_34 (
+  ) u_dio_pad_attr_34_pden_34 (
     .re     (dio_pad_attr_34_re),
     .we     (dio_pad_attr_34_gated_we),
-    .wd     (dio_pad_attr_34_virtual_od_en_34_wd),
-    .d      (hw2reg.dio_pad_attr[34].virtual_od_en.d),
+    .wd     (dio_pad_attr_34_pden_34_wd),
+    .d      (hw2reg.dio_pad_attr[34].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_34_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[34].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[34].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_34_virtual_od_en_34_qs)
+    .qs     (dio_pad_attr_34_pden_34_qs)
   );
-  assign reg2hw.dio_pad_attr[34].virtual_od_en.qe = dio_pad_attr_34_qe;
+  assign reg2hw.dio_pad_attr[34].pden.qe = dio_pad_attr_34_qe;
 
-  //   F[pull_en_34]: 2:2
+  //   F[smten_34]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_34_pull_en_34 (
+  ) u_dio_pad_attr_34_smten_34 (
     .re     (dio_pad_attr_34_re),
     .we     (dio_pad_attr_34_gated_we),
-    .wd     (dio_pad_attr_34_pull_en_34_wd),
-    .d      (hw2reg.dio_pad_attr[34].pull_en.d),
+    .wd     (dio_pad_attr_34_smten_34_wd),
+    .d      (hw2reg.dio_pad_attr[34].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_34_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[34].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[34].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_34_pull_en_34_qs)
+    .qs     (dio_pad_attr_34_smten_34_qs)
   );
-  assign reg2hw.dio_pad_attr[34].pull_en.qe = dio_pad_attr_34_qe;
+  assign reg2hw.dio_pad_attr[34].smten.qe = dio_pad_attr_34_qe;
 
-  //   F[pull_select_34]: 3:3
+  //   F[drv_34]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_34_pull_select_34 (
+    .DW    (3)
+  ) u_dio_pad_attr_34_drv_34 (
     .re     (dio_pad_attr_34_re),
     .we     (dio_pad_attr_34_gated_we),
-    .wd     (dio_pad_attr_34_pull_select_34_wd),
-    .d      (hw2reg.dio_pad_attr[34].pull_select.d),
+    .wd     (dio_pad_attr_34_drv_34_wd),
+    .d      (hw2reg.dio_pad_attr[34].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_34_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[34].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[34].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_34_pull_select_34_qs)
+    .qs     (dio_pad_attr_34_drv_34_qs)
   );
-  assign reg2hw.dio_pad_attr[34].pull_select.qe = dio_pad_attr_34_qe;
-
-  //   F[keeper_en_34]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_34_keeper_en_34 (
-    .re     (dio_pad_attr_34_re),
-    .we     (dio_pad_attr_34_gated_we),
-    .wd     (dio_pad_attr_34_keeper_en_34_wd),
-    .d      (hw2reg.dio_pad_attr[34].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_34_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[34].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_34_keeper_en_34_qs)
-  );
-  assign reg2hw.dio_pad_attr[34].keeper_en.qe = dio_pad_attr_34_qe;
-
-  //   F[schmitt_en_34]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_34_schmitt_en_34 (
-    .re     (dio_pad_attr_34_re),
-    .we     (dio_pad_attr_34_gated_we),
-    .wd     (dio_pad_attr_34_schmitt_en_34_wd),
-    .d      (hw2reg.dio_pad_attr[34].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_34_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[34].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_34_schmitt_en_34_qs)
-  );
-  assign reg2hw.dio_pad_attr[34].schmitt_en.qe = dio_pad_attr_34_qe;
-
-  //   F[od_en_34]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_34_od_en_34 (
-    .re     (dio_pad_attr_34_re),
-    .we     (dio_pad_attr_34_gated_we),
-    .wd     (dio_pad_attr_34_od_en_34_wd),
-    .d      (hw2reg.dio_pad_attr[34].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_34_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[34].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_34_od_en_34_qs)
-  );
-  assign reg2hw.dio_pad_attr[34].od_en.qe = dio_pad_attr_34_qe;
-
-  //   F[input_disable_34]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_34_input_disable_34 (
-    .re     (dio_pad_attr_34_re),
-    .we     (dio_pad_attr_34_gated_we),
-    .wd     (dio_pad_attr_34_input_disable_34_wd),
-    .d      (hw2reg.dio_pad_attr[34].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_34_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[34].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_34_input_disable_34_qs)
-  );
-  assign reg2hw.dio_pad_attr[34].input_disable.qe = dio_pad_attr_34_qe;
-
-  //   F[slew_rate_34]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_34_slew_rate_34 (
-    .re     (dio_pad_attr_34_re),
-    .we     (dio_pad_attr_34_gated_we),
-    .wd     (dio_pad_attr_34_slew_rate_34_wd),
-    .d      (hw2reg.dio_pad_attr[34].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_34_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[34].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_34_slew_rate_34_qs)
-  );
-  assign reg2hw.dio_pad_attr[34].slew_rate.qe = dio_pad_attr_34_qe;
-
-  //   F[drive_strength_34]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_34_drive_strength_34 (
-    .re     (dio_pad_attr_34_re),
-    .we     (dio_pad_attr_34_gated_we),
-    .wd     (dio_pad_attr_34_drive_strength_34_wd),
-    .d      (hw2reg.dio_pad_attr[34].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_34_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[34].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_34_drive_strength_34_qs)
-  );
-  assign reg2hw.dio_pad_attr[34].drive_strength.qe = dio_pad_attr_34_qe;
+  assign reg2hw.dio_pad_attr[34].drv.qe = dio_pad_attr_34_qe;
 
 
   // Subregister 35 of Multireg dio_pad_attr
   // R[dio_pad_attr_35]: V(True)
   logic dio_pad_attr_35_qe;
-  logic [9:0] dio_pad_attr_35_flds_we;
+  logic [3:0] dio_pad_attr_35_flds_we;
   assign dio_pad_attr_35_qe = &dio_pad_attr_35_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_35_gated_we;
   assign dio_pad_attr_35_gated_we = dio_pad_attr_35_we & dio_pad_attr_regwen_35_qs;
-  //   F[invert_35]: 0:0
+  //   F[puen_35]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_35_invert_35 (
+  ) u_dio_pad_attr_35_puen_35 (
     .re     (dio_pad_attr_35_re),
     .we     (dio_pad_attr_35_gated_we),
-    .wd     (dio_pad_attr_35_invert_35_wd),
-    .d      (hw2reg.dio_pad_attr[35].invert.d),
+    .wd     (dio_pad_attr_35_puen_35_wd),
+    .d      (hw2reg.dio_pad_attr[35].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_35_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[35].invert.q),
+    .q      (reg2hw.dio_pad_attr[35].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_35_invert_35_qs)
+    .qs     (dio_pad_attr_35_puen_35_qs)
   );
-  assign reg2hw.dio_pad_attr[35].invert.qe = dio_pad_attr_35_qe;
+  assign reg2hw.dio_pad_attr[35].puen.qe = dio_pad_attr_35_qe;
 
-  //   F[virtual_od_en_35]: 1:1
+  //   F[pden_35]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_35_virtual_od_en_35 (
+  ) u_dio_pad_attr_35_pden_35 (
     .re     (dio_pad_attr_35_re),
     .we     (dio_pad_attr_35_gated_we),
-    .wd     (dio_pad_attr_35_virtual_od_en_35_wd),
-    .d      (hw2reg.dio_pad_attr[35].virtual_od_en.d),
+    .wd     (dio_pad_attr_35_pden_35_wd),
+    .d      (hw2reg.dio_pad_attr[35].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_35_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[35].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[35].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_35_virtual_od_en_35_qs)
+    .qs     (dio_pad_attr_35_pden_35_qs)
   );
-  assign reg2hw.dio_pad_attr[35].virtual_od_en.qe = dio_pad_attr_35_qe;
+  assign reg2hw.dio_pad_attr[35].pden.qe = dio_pad_attr_35_qe;
 
-  //   F[pull_en_35]: 2:2
+  //   F[smten_35]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_35_pull_en_35 (
+  ) u_dio_pad_attr_35_smten_35 (
     .re     (dio_pad_attr_35_re),
     .we     (dio_pad_attr_35_gated_we),
-    .wd     (dio_pad_attr_35_pull_en_35_wd),
-    .d      (hw2reg.dio_pad_attr[35].pull_en.d),
+    .wd     (dio_pad_attr_35_smten_35_wd),
+    .d      (hw2reg.dio_pad_attr[35].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_35_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[35].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[35].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_35_pull_en_35_qs)
+    .qs     (dio_pad_attr_35_smten_35_qs)
   );
-  assign reg2hw.dio_pad_attr[35].pull_en.qe = dio_pad_attr_35_qe;
+  assign reg2hw.dio_pad_attr[35].smten.qe = dio_pad_attr_35_qe;
 
-  //   F[pull_select_35]: 3:3
+  //   F[drv_35]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_35_pull_select_35 (
+    .DW    (3)
+  ) u_dio_pad_attr_35_drv_35 (
     .re     (dio_pad_attr_35_re),
     .we     (dio_pad_attr_35_gated_we),
-    .wd     (dio_pad_attr_35_pull_select_35_wd),
-    .d      (hw2reg.dio_pad_attr[35].pull_select.d),
+    .wd     (dio_pad_attr_35_drv_35_wd),
+    .d      (hw2reg.dio_pad_attr[35].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_35_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[35].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[35].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_35_pull_select_35_qs)
+    .qs     (dio_pad_attr_35_drv_35_qs)
   );
-  assign reg2hw.dio_pad_attr[35].pull_select.qe = dio_pad_attr_35_qe;
-
-  //   F[keeper_en_35]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_35_keeper_en_35 (
-    .re     (dio_pad_attr_35_re),
-    .we     (dio_pad_attr_35_gated_we),
-    .wd     (dio_pad_attr_35_keeper_en_35_wd),
-    .d      (hw2reg.dio_pad_attr[35].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_35_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[35].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_35_keeper_en_35_qs)
-  );
-  assign reg2hw.dio_pad_attr[35].keeper_en.qe = dio_pad_attr_35_qe;
-
-  //   F[schmitt_en_35]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_35_schmitt_en_35 (
-    .re     (dio_pad_attr_35_re),
-    .we     (dio_pad_attr_35_gated_we),
-    .wd     (dio_pad_attr_35_schmitt_en_35_wd),
-    .d      (hw2reg.dio_pad_attr[35].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_35_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[35].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_35_schmitt_en_35_qs)
-  );
-  assign reg2hw.dio_pad_attr[35].schmitt_en.qe = dio_pad_attr_35_qe;
-
-  //   F[od_en_35]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_35_od_en_35 (
-    .re     (dio_pad_attr_35_re),
-    .we     (dio_pad_attr_35_gated_we),
-    .wd     (dio_pad_attr_35_od_en_35_wd),
-    .d      (hw2reg.dio_pad_attr[35].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_35_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[35].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_35_od_en_35_qs)
-  );
-  assign reg2hw.dio_pad_attr[35].od_en.qe = dio_pad_attr_35_qe;
-
-  //   F[input_disable_35]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_35_input_disable_35 (
-    .re     (dio_pad_attr_35_re),
-    .we     (dio_pad_attr_35_gated_we),
-    .wd     (dio_pad_attr_35_input_disable_35_wd),
-    .d      (hw2reg.dio_pad_attr[35].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_35_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[35].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_35_input_disable_35_qs)
-  );
-  assign reg2hw.dio_pad_attr[35].input_disable.qe = dio_pad_attr_35_qe;
-
-  //   F[slew_rate_35]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_35_slew_rate_35 (
-    .re     (dio_pad_attr_35_re),
-    .we     (dio_pad_attr_35_gated_we),
-    .wd     (dio_pad_attr_35_slew_rate_35_wd),
-    .d      (hw2reg.dio_pad_attr[35].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_35_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[35].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_35_slew_rate_35_qs)
-  );
-  assign reg2hw.dio_pad_attr[35].slew_rate.qe = dio_pad_attr_35_qe;
-
-  //   F[drive_strength_35]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_35_drive_strength_35 (
-    .re     (dio_pad_attr_35_re),
-    .we     (dio_pad_attr_35_gated_we),
-    .wd     (dio_pad_attr_35_drive_strength_35_wd),
-    .d      (hw2reg.dio_pad_attr[35].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_35_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[35].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_35_drive_strength_35_qs)
-  );
-  assign reg2hw.dio_pad_attr[35].drive_strength.qe = dio_pad_attr_35_qe;
+  assign reg2hw.dio_pad_attr[35].drv.qe = dio_pad_attr_35_qe;
 
 
   // Subregister 36 of Multireg dio_pad_attr
   // R[dio_pad_attr_36]: V(True)
   logic dio_pad_attr_36_qe;
-  logic [9:0] dio_pad_attr_36_flds_we;
+  logic [3:0] dio_pad_attr_36_flds_we;
   assign dio_pad_attr_36_qe = &dio_pad_attr_36_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_36_gated_we;
   assign dio_pad_attr_36_gated_we = dio_pad_attr_36_we & dio_pad_attr_regwen_36_qs;
-  //   F[invert_36]: 0:0
+  //   F[puen_36]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_36_invert_36 (
+  ) u_dio_pad_attr_36_puen_36 (
     .re     (dio_pad_attr_36_re),
     .we     (dio_pad_attr_36_gated_we),
-    .wd     (dio_pad_attr_36_invert_36_wd),
-    .d      (hw2reg.dio_pad_attr[36].invert.d),
+    .wd     (dio_pad_attr_36_puen_36_wd),
+    .d      (hw2reg.dio_pad_attr[36].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_36_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[36].invert.q),
+    .q      (reg2hw.dio_pad_attr[36].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_36_invert_36_qs)
+    .qs     (dio_pad_attr_36_puen_36_qs)
   );
-  assign reg2hw.dio_pad_attr[36].invert.qe = dio_pad_attr_36_qe;
+  assign reg2hw.dio_pad_attr[36].puen.qe = dio_pad_attr_36_qe;
 
-  //   F[virtual_od_en_36]: 1:1
+  //   F[pden_36]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_36_virtual_od_en_36 (
+  ) u_dio_pad_attr_36_pden_36 (
     .re     (dio_pad_attr_36_re),
     .we     (dio_pad_attr_36_gated_we),
-    .wd     (dio_pad_attr_36_virtual_od_en_36_wd),
-    .d      (hw2reg.dio_pad_attr[36].virtual_od_en.d),
+    .wd     (dio_pad_attr_36_pden_36_wd),
+    .d      (hw2reg.dio_pad_attr[36].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_36_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[36].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[36].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_36_virtual_od_en_36_qs)
+    .qs     (dio_pad_attr_36_pden_36_qs)
   );
-  assign reg2hw.dio_pad_attr[36].virtual_od_en.qe = dio_pad_attr_36_qe;
+  assign reg2hw.dio_pad_attr[36].pden.qe = dio_pad_attr_36_qe;
 
-  //   F[pull_en_36]: 2:2
+  //   F[smten_36]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_36_pull_en_36 (
+  ) u_dio_pad_attr_36_smten_36 (
     .re     (dio_pad_attr_36_re),
     .we     (dio_pad_attr_36_gated_we),
-    .wd     (dio_pad_attr_36_pull_en_36_wd),
-    .d      (hw2reg.dio_pad_attr[36].pull_en.d),
+    .wd     (dio_pad_attr_36_smten_36_wd),
+    .d      (hw2reg.dio_pad_attr[36].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_36_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[36].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[36].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_36_pull_en_36_qs)
+    .qs     (dio_pad_attr_36_smten_36_qs)
   );
-  assign reg2hw.dio_pad_attr[36].pull_en.qe = dio_pad_attr_36_qe;
+  assign reg2hw.dio_pad_attr[36].smten.qe = dio_pad_attr_36_qe;
 
-  //   F[pull_select_36]: 3:3
+  //   F[drv_36]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_36_pull_select_36 (
+    .DW    (3)
+  ) u_dio_pad_attr_36_drv_36 (
     .re     (dio_pad_attr_36_re),
     .we     (dio_pad_attr_36_gated_we),
-    .wd     (dio_pad_attr_36_pull_select_36_wd),
-    .d      (hw2reg.dio_pad_attr[36].pull_select.d),
+    .wd     (dio_pad_attr_36_drv_36_wd),
+    .d      (hw2reg.dio_pad_attr[36].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_36_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[36].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[36].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_36_pull_select_36_qs)
+    .qs     (dio_pad_attr_36_drv_36_qs)
   );
-  assign reg2hw.dio_pad_attr[36].pull_select.qe = dio_pad_attr_36_qe;
-
-  //   F[keeper_en_36]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_36_keeper_en_36 (
-    .re     (dio_pad_attr_36_re),
-    .we     (dio_pad_attr_36_gated_we),
-    .wd     (dio_pad_attr_36_keeper_en_36_wd),
-    .d      (hw2reg.dio_pad_attr[36].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_36_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[36].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_36_keeper_en_36_qs)
-  );
-  assign reg2hw.dio_pad_attr[36].keeper_en.qe = dio_pad_attr_36_qe;
-
-  //   F[schmitt_en_36]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_36_schmitt_en_36 (
-    .re     (dio_pad_attr_36_re),
-    .we     (dio_pad_attr_36_gated_we),
-    .wd     (dio_pad_attr_36_schmitt_en_36_wd),
-    .d      (hw2reg.dio_pad_attr[36].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_36_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[36].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_36_schmitt_en_36_qs)
-  );
-  assign reg2hw.dio_pad_attr[36].schmitt_en.qe = dio_pad_attr_36_qe;
-
-  //   F[od_en_36]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_36_od_en_36 (
-    .re     (dio_pad_attr_36_re),
-    .we     (dio_pad_attr_36_gated_we),
-    .wd     (dio_pad_attr_36_od_en_36_wd),
-    .d      (hw2reg.dio_pad_attr[36].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_36_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[36].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_36_od_en_36_qs)
-  );
-  assign reg2hw.dio_pad_attr[36].od_en.qe = dio_pad_attr_36_qe;
-
-  //   F[input_disable_36]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_36_input_disable_36 (
-    .re     (dio_pad_attr_36_re),
-    .we     (dio_pad_attr_36_gated_we),
-    .wd     (dio_pad_attr_36_input_disable_36_wd),
-    .d      (hw2reg.dio_pad_attr[36].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_36_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[36].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_36_input_disable_36_qs)
-  );
-  assign reg2hw.dio_pad_attr[36].input_disable.qe = dio_pad_attr_36_qe;
-
-  //   F[slew_rate_36]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_36_slew_rate_36 (
-    .re     (dio_pad_attr_36_re),
-    .we     (dio_pad_attr_36_gated_we),
-    .wd     (dio_pad_attr_36_slew_rate_36_wd),
-    .d      (hw2reg.dio_pad_attr[36].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_36_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[36].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_36_slew_rate_36_qs)
-  );
-  assign reg2hw.dio_pad_attr[36].slew_rate.qe = dio_pad_attr_36_qe;
-
-  //   F[drive_strength_36]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_36_drive_strength_36 (
-    .re     (dio_pad_attr_36_re),
-    .we     (dio_pad_attr_36_gated_we),
-    .wd     (dio_pad_attr_36_drive_strength_36_wd),
-    .d      (hw2reg.dio_pad_attr[36].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_36_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[36].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_36_drive_strength_36_qs)
-  );
-  assign reg2hw.dio_pad_attr[36].drive_strength.qe = dio_pad_attr_36_qe;
+  assign reg2hw.dio_pad_attr[36].drv.qe = dio_pad_attr_36_qe;
 
 
   // Subregister 37 of Multireg dio_pad_attr
   // R[dio_pad_attr_37]: V(True)
   logic dio_pad_attr_37_qe;
-  logic [9:0] dio_pad_attr_37_flds_we;
+  logic [3:0] dio_pad_attr_37_flds_we;
   assign dio_pad_attr_37_qe = &dio_pad_attr_37_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_37_gated_we;
   assign dio_pad_attr_37_gated_we = dio_pad_attr_37_we & dio_pad_attr_regwen_37_qs;
-  //   F[invert_37]: 0:0
+  //   F[puen_37]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_37_invert_37 (
+  ) u_dio_pad_attr_37_puen_37 (
     .re     (dio_pad_attr_37_re),
     .we     (dio_pad_attr_37_gated_we),
-    .wd     (dio_pad_attr_37_invert_37_wd),
-    .d      (hw2reg.dio_pad_attr[37].invert.d),
+    .wd     (dio_pad_attr_37_puen_37_wd),
+    .d      (hw2reg.dio_pad_attr[37].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_37_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[37].invert.q),
+    .q      (reg2hw.dio_pad_attr[37].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_37_invert_37_qs)
+    .qs     (dio_pad_attr_37_puen_37_qs)
   );
-  assign reg2hw.dio_pad_attr[37].invert.qe = dio_pad_attr_37_qe;
+  assign reg2hw.dio_pad_attr[37].puen.qe = dio_pad_attr_37_qe;
 
-  //   F[virtual_od_en_37]: 1:1
+  //   F[pden_37]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_37_virtual_od_en_37 (
+  ) u_dio_pad_attr_37_pden_37 (
     .re     (dio_pad_attr_37_re),
     .we     (dio_pad_attr_37_gated_we),
-    .wd     (dio_pad_attr_37_virtual_od_en_37_wd),
-    .d      (hw2reg.dio_pad_attr[37].virtual_od_en.d),
+    .wd     (dio_pad_attr_37_pden_37_wd),
+    .d      (hw2reg.dio_pad_attr[37].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_37_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[37].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[37].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_37_virtual_od_en_37_qs)
+    .qs     (dio_pad_attr_37_pden_37_qs)
   );
-  assign reg2hw.dio_pad_attr[37].virtual_od_en.qe = dio_pad_attr_37_qe;
+  assign reg2hw.dio_pad_attr[37].pden.qe = dio_pad_attr_37_qe;
 
-  //   F[pull_en_37]: 2:2
+  //   F[smten_37]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_37_pull_en_37 (
+  ) u_dio_pad_attr_37_smten_37 (
     .re     (dio_pad_attr_37_re),
     .we     (dio_pad_attr_37_gated_we),
-    .wd     (dio_pad_attr_37_pull_en_37_wd),
-    .d      (hw2reg.dio_pad_attr[37].pull_en.d),
+    .wd     (dio_pad_attr_37_smten_37_wd),
+    .d      (hw2reg.dio_pad_attr[37].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_37_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[37].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[37].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_37_pull_en_37_qs)
+    .qs     (dio_pad_attr_37_smten_37_qs)
   );
-  assign reg2hw.dio_pad_attr[37].pull_en.qe = dio_pad_attr_37_qe;
+  assign reg2hw.dio_pad_attr[37].smten.qe = dio_pad_attr_37_qe;
 
-  //   F[pull_select_37]: 3:3
+  //   F[drv_37]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_37_pull_select_37 (
+    .DW    (3)
+  ) u_dio_pad_attr_37_drv_37 (
     .re     (dio_pad_attr_37_re),
     .we     (dio_pad_attr_37_gated_we),
-    .wd     (dio_pad_attr_37_pull_select_37_wd),
-    .d      (hw2reg.dio_pad_attr[37].pull_select.d),
+    .wd     (dio_pad_attr_37_drv_37_wd),
+    .d      (hw2reg.dio_pad_attr[37].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_37_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[37].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[37].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_37_pull_select_37_qs)
+    .qs     (dio_pad_attr_37_drv_37_qs)
   );
-  assign reg2hw.dio_pad_attr[37].pull_select.qe = dio_pad_attr_37_qe;
-
-  //   F[keeper_en_37]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_37_keeper_en_37 (
-    .re     (dio_pad_attr_37_re),
-    .we     (dio_pad_attr_37_gated_we),
-    .wd     (dio_pad_attr_37_keeper_en_37_wd),
-    .d      (hw2reg.dio_pad_attr[37].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_37_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[37].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_37_keeper_en_37_qs)
-  );
-  assign reg2hw.dio_pad_attr[37].keeper_en.qe = dio_pad_attr_37_qe;
-
-  //   F[schmitt_en_37]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_37_schmitt_en_37 (
-    .re     (dio_pad_attr_37_re),
-    .we     (dio_pad_attr_37_gated_we),
-    .wd     (dio_pad_attr_37_schmitt_en_37_wd),
-    .d      (hw2reg.dio_pad_attr[37].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_37_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[37].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_37_schmitt_en_37_qs)
-  );
-  assign reg2hw.dio_pad_attr[37].schmitt_en.qe = dio_pad_attr_37_qe;
-
-  //   F[od_en_37]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_37_od_en_37 (
-    .re     (dio_pad_attr_37_re),
-    .we     (dio_pad_attr_37_gated_we),
-    .wd     (dio_pad_attr_37_od_en_37_wd),
-    .d      (hw2reg.dio_pad_attr[37].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_37_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[37].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_37_od_en_37_qs)
-  );
-  assign reg2hw.dio_pad_attr[37].od_en.qe = dio_pad_attr_37_qe;
-
-  //   F[input_disable_37]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_37_input_disable_37 (
-    .re     (dio_pad_attr_37_re),
-    .we     (dio_pad_attr_37_gated_we),
-    .wd     (dio_pad_attr_37_input_disable_37_wd),
-    .d      (hw2reg.dio_pad_attr[37].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_37_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[37].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_37_input_disable_37_qs)
-  );
-  assign reg2hw.dio_pad_attr[37].input_disable.qe = dio_pad_attr_37_qe;
-
-  //   F[slew_rate_37]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_37_slew_rate_37 (
-    .re     (dio_pad_attr_37_re),
-    .we     (dio_pad_attr_37_gated_we),
-    .wd     (dio_pad_attr_37_slew_rate_37_wd),
-    .d      (hw2reg.dio_pad_attr[37].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_37_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[37].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_37_slew_rate_37_qs)
-  );
-  assign reg2hw.dio_pad_attr[37].slew_rate.qe = dio_pad_attr_37_qe;
-
-  //   F[drive_strength_37]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_37_drive_strength_37 (
-    .re     (dio_pad_attr_37_re),
-    .we     (dio_pad_attr_37_gated_we),
-    .wd     (dio_pad_attr_37_drive_strength_37_wd),
-    .d      (hw2reg.dio_pad_attr[37].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_37_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[37].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_37_drive_strength_37_qs)
-  );
-  assign reg2hw.dio_pad_attr[37].drive_strength.qe = dio_pad_attr_37_qe;
+  assign reg2hw.dio_pad_attr[37].drv.qe = dio_pad_attr_37_qe;
 
 
   // Subregister 38 of Multireg dio_pad_attr
   // R[dio_pad_attr_38]: V(True)
   logic dio_pad_attr_38_qe;
-  logic [9:0] dio_pad_attr_38_flds_we;
+  logic [3:0] dio_pad_attr_38_flds_we;
   assign dio_pad_attr_38_qe = &dio_pad_attr_38_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_38_gated_we;
   assign dio_pad_attr_38_gated_we = dio_pad_attr_38_we & dio_pad_attr_regwen_38_qs;
-  //   F[invert_38]: 0:0
+  //   F[puen_38]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_38_invert_38 (
+  ) u_dio_pad_attr_38_puen_38 (
     .re     (dio_pad_attr_38_re),
     .we     (dio_pad_attr_38_gated_we),
-    .wd     (dio_pad_attr_38_invert_38_wd),
-    .d      (hw2reg.dio_pad_attr[38].invert.d),
+    .wd     (dio_pad_attr_38_puen_38_wd),
+    .d      (hw2reg.dio_pad_attr[38].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_38_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[38].invert.q),
+    .q      (reg2hw.dio_pad_attr[38].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_38_invert_38_qs)
+    .qs     (dio_pad_attr_38_puen_38_qs)
   );
-  assign reg2hw.dio_pad_attr[38].invert.qe = dio_pad_attr_38_qe;
+  assign reg2hw.dio_pad_attr[38].puen.qe = dio_pad_attr_38_qe;
 
-  //   F[virtual_od_en_38]: 1:1
+  //   F[pden_38]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_38_virtual_od_en_38 (
+  ) u_dio_pad_attr_38_pden_38 (
     .re     (dio_pad_attr_38_re),
     .we     (dio_pad_attr_38_gated_we),
-    .wd     (dio_pad_attr_38_virtual_od_en_38_wd),
-    .d      (hw2reg.dio_pad_attr[38].virtual_od_en.d),
+    .wd     (dio_pad_attr_38_pden_38_wd),
+    .d      (hw2reg.dio_pad_attr[38].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_38_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[38].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[38].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_38_virtual_od_en_38_qs)
+    .qs     (dio_pad_attr_38_pden_38_qs)
   );
-  assign reg2hw.dio_pad_attr[38].virtual_od_en.qe = dio_pad_attr_38_qe;
+  assign reg2hw.dio_pad_attr[38].pden.qe = dio_pad_attr_38_qe;
 
-  //   F[pull_en_38]: 2:2
+  //   F[smten_38]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_38_pull_en_38 (
+  ) u_dio_pad_attr_38_smten_38 (
     .re     (dio_pad_attr_38_re),
     .we     (dio_pad_attr_38_gated_we),
-    .wd     (dio_pad_attr_38_pull_en_38_wd),
-    .d      (hw2reg.dio_pad_attr[38].pull_en.d),
+    .wd     (dio_pad_attr_38_smten_38_wd),
+    .d      (hw2reg.dio_pad_attr[38].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_38_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[38].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[38].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_38_pull_en_38_qs)
+    .qs     (dio_pad_attr_38_smten_38_qs)
   );
-  assign reg2hw.dio_pad_attr[38].pull_en.qe = dio_pad_attr_38_qe;
+  assign reg2hw.dio_pad_attr[38].smten.qe = dio_pad_attr_38_qe;
 
-  //   F[pull_select_38]: 3:3
+  //   F[drv_38]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_38_pull_select_38 (
+    .DW    (3)
+  ) u_dio_pad_attr_38_drv_38 (
     .re     (dio_pad_attr_38_re),
     .we     (dio_pad_attr_38_gated_we),
-    .wd     (dio_pad_attr_38_pull_select_38_wd),
-    .d      (hw2reg.dio_pad_attr[38].pull_select.d),
+    .wd     (dio_pad_attr_38_drv_38_wd),
+    .d      (hw2reg.dio_pad_attr[38].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_38_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[38].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[38].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_38_pull_select_38_qs)
+    .qs     (dio_pad_attr_38_drv_38_qs)
   );
-  assign reg2hw.dio_pad_attr[38].pull_select.qe = dio_pad_attr_38_qe;
-
-  //   F[keeper_en_38]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_38_keeper_en_38 (
-    .re     (dio_pad_attr_38_re),
-    .we     (dio_pad_attr_38_gated_we),
-    .wd     (dio_pad_attr_38_keeper_en_38_wd),
-    .d      (hw2reg.dio_pad_attr[38].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_38_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[38].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_38_keeper_en_38_qs)
-  );
-  assign reg2hw.dio_pad_attr[38].keeper_en.qe = dio_pad_attr_38_qe;
-
-  //   F[schmitt_en_38]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_38_schmitt_en_38 (
-    .re     (dio_pad_attr_38_re),
-    .we     (dio_pad_attr_38_gated_we),
-    .wd     (dio_pad_attr_38_schmitt_en_38_wd),
-    .d      (hw2reg.dio_pad_attr[38].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_38_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[38].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_38_schmitt_en_38_qs)
-  );
-  assign reg2hw.dio_pad_attr[38].schmitt_en.qe = dio_pad_attr_38_qe;
-
-  //   F[od_en_38]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_38_od_en_38 (
-    .re     (dio_pad_attr_38_re),
-    .we     (dio_pad_attr_38_gated_we),
-    .wd     (dio_pad_attr_38_od_en_38_wd),
-    .d      (hw2reg.dio_pad_attr[38].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_38_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[38].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_38_od_en_38_qs)
-  );
-  assign reg2hw.dio_pad_attr[38].od_en.qe = dio_pad_attr_38_qe;
-
-  //   F[input_disable_38]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_38_input_disable_38 (
-    .re     (dio_pad_attr_38_re),
-    .we     (dio_pad_attr_38_gated_we),
-    .wd     (dio_pad_attr_38_input_disable_38_wd),
-    .d      (hw2reg.dio_pad_attr[38].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_38_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[38].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_38_input_disable_38_qs)
-  );
-  assign reg2hw.dio_pad_attr[38].input_disable.qe = dio_pad_attr_38_qe;
-
-  //   F[slew_rate_38]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_38_slew_rate_38 (
-    .re     (dio_pad_attr_38_re),
-    .we     (dio_pad_attr_38_gated_we),
-    .wd     (dio_pad_attr_38_slew_rate_38_wd),
-    .d      (hw2reg.dio_pad_attr[38].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_38_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[38].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_38_slew_rate_38_qs)
-  );
-  assign reg2hw.dio_pad_attr[38].slew_rate.qe = dio_pad_attr_38_qe;
-
-  //   F[drive_strength_38]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_38_drive_strength_38 (
-    .re     (dio_pad_attr_38_re),
-    .we     (dio_pad_attr_38_gated_we),
-    .wd     (dio_pad_attr_38_drive_strength_38_wd),
-    .d      (hw2reg.dio_pad_attr[38].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_38_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[38].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_38_drive_strength_38_qs)
-  );
-  assign reg2hw.dio_pad_attr[38].drive_strength.qe = dio_pad_attr_38_qe;
+  assign reg2hw.dio_pad_attr[38].drv.qe = dio_pad_attr_38_qe;
 
 
   // Subregister 39 of Multireg dio_pad_attr
   // R[dio_pad_attr_39]: V(True)
   logic dio_pad_attr_39_qe;
-  logic [9:0] dio_pad_attr_39_flds_we;
+  logic [3:0] dio_pad_attr_39_flds_we;
   assign dio_pad_attr_39_qe = &dio_pad_attr_39_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_39_gated_we;
   assign dio_pad_attr_39_gated_we = dio_pad_attr_39_we & dio_pad_attr_regwen_39_qs;
-  //   F[invert_39]: 0:0
+  //   F[puen_39]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_39_invert_39 (
+  ) u_dio_pad_attr_39_puen_39 (
     .re     (dio_pad_attr_39_re),
     .we     (dio_pad_attr_39_gated_we),
-    .wd     (dio_pad_attr_39_invert_39_wd),
-    .d      (hw2reg.dio_pad_attr[39].invert.d),
+    .wd     (dio_pad_attr_39_puen_39_wd),
+    .d      (hw2reg.dio_pad_attr[39].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_39_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[39].invert.q),
+    .q      (reg2hw.dio_pad_attr[39].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_39_invert_39_qs)
+    .qs     (dio_pad_attr_39_puen_39_qs)
   );
-  assign reg2hw.dio_pad_attr[39].invert.qe = dio_pad_attr_39_qe;
+  assign reg2hw.dio_pad_attr[39].puen.qe = dio_pad_attr_39_qe;
 
-  //   F[virtual_od_en_39]: 1:1
+  //   F[pden_39]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_39_virtual_od_en_39 (
+  ) u_dio_pad_attr_39_pden_39 (
     .re     (dio_pad_attr_39_re),
     .we     (dio_pad_attr_39_gated_we),
-    .wd     (dio_pad_attr_39_virtual_od_en_39_wd),
-    .d      (hw2reg.dio_pad_attr[39].virtual_od_en.d),
+    .wd     (dio_pad_attr_39_pden_39_wd),
+    .d      (hw2reg.dio_pad_attr[39].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_39_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[39].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[39].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_39_virtual_od_en_39_qs)
+    .qs     (dio_pad_attr_39_pden_39_qs)
   );
-  assign reg2hw.dio_pad_attr[39].virtual_od_en.qe = dio_pad_attr_39_qe;
+  assign reg2hw.dio_pad_attr[39].pden.qe = dio_pad_attr_39_qe;
 
-  //   F[pull_en_39]: 2:2
+  //   F[smten_39]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_39_pull_en_39 (
+  ) u_dio_pad_attr_39_smten_39 (
     .re     (dio_pad_attr_39_re),
     .we     (dio_pad_attr_39_gated_we),
-    .wd     (dio_pad_attr_39_pull_en_39_wd),
-    .d      (hw2reg.dio_pad_attr[39].pull_en.d),
+    .wd     (dio_pad_attr_39_smten_39_wd),
+    .d      (hw2reg.dio_pad_attr[39].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_39_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[39].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[39].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_39_pull_en_39_qs)
+    .qs     (dio_pad_attr_39_smten_39_qs)
   );
-  assign reg2hw.dio_pad_attr[39].pull_en.qe = dio_pad_attr_39_qe;
+  assign reg2hw.dio_pad_attr[39].smten.qe = dio_pad_attr_39_qe;
 
-  //   F[pull_select_39]: 3:3
+  //   F[drv_39]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_39_pull_select_39 (
+    .DW    (3)
+  ) u_dio_pad_attr_39_drv_39 (
     .re     (dio_pad_attr_39_re),
     .we     (dio_pad_attr_39_gated_we),
-    .wd     (dio_pad_attr_39_pull_select_39_wd),
-    .d      (hw2reg.dio_pad_attr[39].pull_select.d),
+    .wd     (dio_pad_attr_39_drv_39_wd),
+    .d      (hw2reg.dio_pad_attr[39].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_39_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[39].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[39].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_39_pull_select_39_qs)
+    .qs     (dio_pad_attr_39_drv_39_qs)
   );
-  assign reg2hw.dio_pad_attr[39].pull_select.qe = dio_pad_attr_39_qe;
-
-  //   F[keeper_en_39]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_39_keeper_en_39 (
-    .re     (dio_pad_attr_39_re),
-    .we     (dio_pad_attr_39_gated_we),
-    .wd     (dio_pad_attr_39_keeper_en_39_wd),
-    .d      (hw2reg.dio_pad_attr[39].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_39_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[39].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_39_keeper_en_39_qs)
-  );
-  assign reg2hw.dio_pad_attr[39].keeper_en.qe = dio_pad_attr_39_qe;
-
-  //   F[schmitt_en_39]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_39_schmitt_en_39 (
-    .re     (dio_pad_attr_39_re),
-    .we     (dio_pad_attr_39_gated_we),
-    .wd     (dio_pad_attr_39_schmitt_en_39_wd),
-    .d      (hw2reg.dio_pad_attr[39].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_39_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[39].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_39_schmitt_en_39_qs)
-  );
-  assign reg2hw.dio_pad_attr[39].schmitt_en.qe = dio_pad_attr_39_qe;
-
-  //   F[od_en_39]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_39_od_en_39 (
-    .re     (dio_pad_attr_39_re),
-    .we     (dio_pad_attr_39_gated_we),
-    .wd     (dio_pad_attr_39_od_en_39_wd),
-    .d      (hw2reg.dio_pad_attr[39].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_39_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[39].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_39_od_en_39_qs)
-  );
-  assign reg2hw.dio_pad_attr[39].od_en.qe = dio_pad_attr_39_qe;
-
-  //   F[input_disable_39]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_39_input_disable_39 (
-    .re     (dio_pad_attr_39_re),
-    .we     (dio_pad_attr_39_gated_we),
-    .wd     (dio_pad_attr_39_input_disable_39_wd),
-    .d      (hw2reg.dio_pad_attr[39].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_39_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[39].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_39_input_disable_39_qs)
-  );
-  assign reg2hw.dio_pad_attr[39].input_disable.qe = dio_pad_attr_39_qe;
-
-  //   F[slew_rate_39]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_39_slew_rate_39 (
-    .re     (dio_pad_attr_39_re),
-    .we     (dio_pad_attr_39_gated_we),
-    .wd     (dio_pad_attr_39_slew_rate_39_wd),
-    .d      (hw2reg.dio_pad_attr[39].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_39_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[39].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_39_slew_rate_39_qs)
-  );
-  assign reg2hw.dio_pad_attr[39].slew_rate.qe = dio_pad_attr_39_qe;
-
-  //   F[drive_strength_39]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_39_drive_strength_39 (
-    .re     (dio_pad_attr_39_re),
-    .we     (dio_pad_attr_39_gated_we),
-    .wd     (dio_pad_attr_39_drive_strength_39_wd),
-    .d      (hw2reg.dio_pad_attr[39].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_39_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[39].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_39_drive_strength_39_qs)
-  );
-  assign reg2hw.dio_pad_attr[39].drive_strength.qe = dio_pad_attr_39_qe;
+  assign reg2hw.dio_pad_attr[39].drv.qe = dio_pad_attr_39_qe;
 
 
   // Subregister 40 of Multireg dio_pad_attr
   // R[dio_pad_attr_40]: V(True)
   logic dio_pad_attr_40_qe;
-  logic [9:0] dio_pad_attr_40_flds_we;
+  logic [3:0] dio_pad_attr_40_flds_we;
   assign dio_pad_attr_40_qe = &dio_pad_attr_40_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_40_gated_we;
   assign dio_pad_attr_40_gated_we = dio_pad_attr_40_we & dio_pad_attr_regwen_40_qs;
-  //   F[invert_40]: 0:0
+  //   F[puen_40]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_40_invert_40 (
+  ) u_dio_pad_attr_40_puen_40 (
     .re     (dio_pad_attr_40_re),
     .we     (dio_pad_attr_40_gated_we),
-    .wd     (dio_pad_attr_40_invert_40_wd),
-    .d      (hw2reg.dio_pad_attr[40].invert.d),
+    .wd     (dio_pad_attr_40_puen_40_wd),
+    .d      (hw2reg.dio_pad_attr[40].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_40_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[40].invert.q),
+    .q      (reg2hw.dio_pad_attr[40].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_40_invert_40_qs)
+    .qs     (dio_pad_attr_40_puen_40_qs)
   );
-  assign reg2hw.dio_pad_attr[40].invert.qe = dio_pad_attr_40_qe;
+  assign reg2hw.dio_pad_attr[40].puen.qe = dio_pad_attr_40_qe;
 
-  //   F[virtual_od_en_40]: 1:1
+  //   F[pden_40]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_40_virtual_od_en_40 (
+  ) u_dio_pad_attr_40_pden_40 (
     .re     (dio_pad_attr_40_re),
     .we     (dio_pad_attr_40_gated_we),
-    .wd     (dio_pad_attr_40_virtual_od_en_40_wd),
-    .d      (hw2reg.dio_pad_attr[40].virtual_od_en.d),
+    .wd     (dio_pad_attr_40_pden_40_wd),
+    .d      (hw2reg.dio_pad_attr[40].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_40_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[40].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[40].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_40_virtual_od_en_40_qs)
+    .qs     (dio_pad_attr_40_pden_40_qs)
   );
-  assign reg2hw.dio_pad_attr[40].virtual_od_en.qe = dio_pad_attr_40_qe;
+  assign reg2hw.dio_pad_attr[40].pden.qe = dio_pad_attr_40_qe;
 
-  //   F[pull_en_40]: 2:2
+  //   F[smten_40]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_40_pull_en_40 (
+  ) u_dio_pad_attr_40_smten_40 (
     .re     (dio_pad_attr_40_re),
     .we     (dio_pad_attr_40_gated_we),
-    .wd     (dio_pad_attr_40_pull_en_40_wd),
-    .d      (hw2reg.dio_pad_attr[40].pull_en.d),
+    .wd     (dio_pad_attr_40_smten_40_wd),
+    .d      (hw2reg.dio_pad_attr[40].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_40_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[40].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[40].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_40_pull_en_40_qs)
+    .qs     (dio_pad_attr_40_smten_40_qs)
   );
-  assign reg2hw.dio_pad_attr[40].pull_en.qe = dio_pad_attr_40_qe;
+  assign reg2hw.dio_pad_attr[40].smten.qe = dio_pad_attr_40_qe;
 
-  //   F[pull_select_40]: 3:3
+  //   F[drv_40]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_40_pull_select_40 (
+    .DW    (3)
+  ) u_dio_pad_attr_40_drv_40 (
     .re     (dio_pad_attr_40_re),
     .we     (dio_pad_attr_40_gated_we),
-    .wd     (dio_pad_attr_40_pull_select_40_wd),
-    .d      (hw2reg.dio_pad_attr[40].pull_select.d),
+    .wd     (dio_pad_attr_40_drv_40_wd),
+    .d      (hw2reg.dio_pad_attr[40].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_40_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[40].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[40].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_40_pull_select_40_qs)
+    .qs     (dio_pad_attr_40_drv_40_qs)
   );
-  assign reg2hw.dio_pad_attr[40].pull_select.qe = dio_pad_attr_40_qe;
-
-  //   F[keeper_en_40]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_40_keeper_en_40 (
-    .re     (dio_pad_attr_40_re),
-    .we     (dio_pad_attr_40_gated_we),
-    .wd     (dio_pad_attr_40_keeper_en_40_wd),
-    .d      (hw2reg.dio_pad_attr[40].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_40_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[40].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_40_keeper_en_40_qs)
-  );
-  assign reg2hw.dio_pad_attr[40].keeper_en.qe = dio_pad_attr_40_qe;
-
-  //   F[schmitt_en_40]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_40_schmitt_en_40 (
-    .re     (dio_pad_attr_40_re),
-    .we     (dio_pad_attr_40_gated_we),
-    .wd     (dio_pad_attr_40_schmitt_en_40_wd),
-    .d      (hw2reg.dio_pad_attr[40].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_40_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[40].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_40_schmitt_en_40_qs)
-  );
-  assign reg2hw.dio_pad_attr[40].schmitt_en.qe = dio_pad_attr_40_qe;
-
-  //   F[od_en_40]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_40_od_en_40 (
-    .re     (dio_pad_attr_40_re),
-    .we     (dio_pad_attr_40_gated_we),
-    .wd     (dio_pad_attr_40_od_en_40_wd),
-    .d      (hw2reg.dio_pad_attr[40].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_40_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[40].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_40_od_en_40_qs)
-  );
-  assign reg2hw.dio_pad_attr[40].od_en.qe = dio_pad_attr_40_qe;
-
-  //   F[input_disable_40]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_40_input_disable_40 (
-    .re     (dio_pad_attr_40_re),
-    .we     (dio_pad_attr_40_gated_we),
-    .wd     (dio_pad_attr_40_input_disable_40_wd),
-    .d      (hw2reg.dio_pad_attr[40].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_40_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[40].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_40_input_disable_40_qs)
-  );
-  assign reg2hw.dio_pad_attr[40].input_disable.qe = dio_pad_attr_40_qe;
-
-  //   F[slew_rate_40]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_40_slew_rate_40 (
-    .re     (dio_pad_attr_40_re),
-    .we     (dio_pad_attr_40_gated_we),
-    .wd     (dio_pad_attr_40_slew_rate_40_wd),
-    .d      (hw2reg.dio_pad_attr[40].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_40_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[40].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_40_slew_rate_40_qs)
-  );
-  assign reg2hw.dio_pad_attr[40].slew_rate.qe = dio_pad_attr_40_qe;
-
-  //   F[drive_strength_40]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_40_drive_strength_40 (
-    .re     (dio_pad_attr_40_re),
-    .we     (dio_pad_attr_40_gated_we),
-    .wd     (dio_pad_attr_40_drive_strength_40_wd),
-    .d      (hw2reg.dio_pad_attr[40].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_40_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[40].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_40_drive_strength_40_qs)
-  );
-  assign reg2hw.dio_pad_attr[40].drive_strength.qe = dio_pad_attr_40_qe;
+  assign reg2hw.dio_pad_attr[40].drv.qe = dio_pad_attr_40_qe;
 
 
   // Subregister 41 of Multireg dio_pad_attr
   // R[dio_pad_attr_41]: V(True)
   logic dio_pad_attr_41_qe;
-  logic [9:0] dio_pad_attr_41_flds_we;
+  logic [3:0] dio_pad_attr_41_flds_we;
   assign dio_pad_attr_41_qe = &dio_pad_attr_41_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_41_gated_we;
   assign dio_pad_attr_41_gated_we = dio_pad_attr_41_we & dio_pad_attr_regwen_41_qs;
-  //   F[invert_41]: 0:0
+  //   F[puen_41]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_41_invert_41 (
+  ) u_dio_pad_attr_41_puen_41 (
     .re     (dio_pad_attr_41_re),
     .we     (dio_pad_attr_41_gated_we),
-    .wd     (dio_pad_attr_41_invert_41_wd),
-    .d      (hw2reg.dio_pad_attr[41].invert.d),
+    .wd     (dio_pad_attr_41_puen_41_wd),
+    .d      (hw2reg.dio_pad_attr[41].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_41_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[41].invert.q),
+    .q      (reg2hw.dio_pad_attr[41].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_41_invert_41_qs)
+    .qs     (dio_pad_attr_41_puen_41_qs)
   );
-  assign reg2hw.dio_pad_attr[41].invert.qe = dio_pad_attr_41_qe;
+  assign reg2hw.dio_pad_attr[41].puen.qe = dio_pad_attr_41_qe;
 
-  //   F[virtual_od_en_41]: 1:1
+  //   F[pden_41]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_41_virtual_od_en_41 (
+  ) u_dio_pad_attr_41_pden_41 (
     .re     (dio_pad_attr_41_re),
     .we     (dio_pad_attr_41_gated_we),
-    .wd     (dio_pad_attr_41_virtual_od_en_41_wd),
-    .d      (hw2reg.dio_pad_attr[41].virtual_od_en.d),
+    .wd     (dio_pad_attr_41_pden_41_wd),
+    .d      (hw2reg.dio_pad_attr[41].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_41_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[41].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[41].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_41_virtual_od_en_41_qs)
+    .qs     (dio_pad_attr_41_pden_41_qs)
   );
-  assign reg2hw.dio_pad_attr[41].virtual_od_en.qe = dio_pad_attr_41_qe;
+  assign reg2hw.dio_pad_attr[41].pden.qe = dio_pad_attr_41_qe;
 
-  //   F[pull_en_41]: 2:2
+  //   F[smten_41]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_41_pull_en_41 (
+  ) u_dio_pad_attr_41_smten_41 (
     .re     (dio_pad_attr_41_re),
     .we     (dio_pad_attr_41_gated_we),
-    .wd     (dio_pad_attr_41_pull_en_41_wd),
-    .d      (hw2reg.dio_pad_attr[41].pull_en.d),
+    .wd     (dio_pad_attr_41_smten_41_wd),
+    .d      (hw2reg.dio_pad_attr[41].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_41_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[41].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[41].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_41_pull_en_41_qs)
+    .qs     (dio_pad_attr_41_smten_41_qs)
   );
-  assign reg2hw.dio_pad_attr[41].pull_en.qe = dio_pad_attr_41_qe;
+  assign reg2hw.dio_pad_attr[41].smten.qe = dio_pad_attr_41_qe;
 
-  //   F[pull_select_41]: 3:3
+  //   F[drv_41]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_41_pull_select_41 (
+    .DW    (3)
+  ) u_dio_pad_attr_41_drv_41 (
     .re     (dio_pad_attr_41_re),
     .we     (dio_pad_attr_41_gated_we),
-    .wd     (dio_pad_attr_41_pull_select_41_wd),
-    .d      (hw2reg.dio_pad_attr[41].pull_select.d),
+    .wd     (dio_pad_attr_41_drv_41_wd),
+    .d      (hw2reg.dio_pad_attr[41].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_41_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[41].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[41].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_41_pull_select_41_qs)
+    .qs     (dio_pad_attr_41_drv_41_qs)
   );
-  assign reg2hw.dio_pad_attr[41].pull_select.qe = dio_pad_attr_41_qe;
-
-  //   F[keeper_en_41]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_41_keeper_en_41 (
-    .re     (dio_pad_attr_41_re),
-    .we     (dio_pad_attr_41_gated_we),
-    .wd     (dio_pad_attr_41_keeper_en_41_wd),
-    .d      (hw2reg.dio_pad_attr[41].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_41_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[41].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_41_keeper_en_41_qs)
-  );
-  assign reg2hw.dio_pad_attr[41].keeper_en.qe = dio_pad_attr_41_qe;
-
-  //   F[schmitt_en_41]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_41_schmitt_en_41 (
-    .re     (dio_pad_attr_41_re),
-    .we     (dio_pad_attr_41_gated_we),
-    .wd     (dio_pad_attr_41_schmitt_en_41_wd),
-    .d      (hw2reg.dio_pad_attr[41].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_41_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[41].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_41_schmitt_en_41_qs)
-  );
-  assign reg2hw.dio_pad_attr[41].schmitt_en.qe = dio_pad_attr_41_qe;
-
-  //   F[od_en_41]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_41_od_en_41 (
-    .re     (dio_pad_attr_41_re),
-    .we     (dio_pad_attr_41_gated_we),
-    .wd     (dio_pad_attr_41_od_en_41_wd),
-    .d      (hw2reg.dio_pad_attr[41].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_41_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[41].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_41_od_en_41_qs)
-  );
-  assign reg2hw.dio_pad_attr[41].od_en.qe = dio_pad_attr_41_qe;
-
-  //   F[input_disable_41]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_41_input_disable_41 (
-    .re     (dio_pad_attr_41_re),
-    .we     (dio_pad_attr_41_gated_we),
-    .wd     (dio_pad_attr_41_input_disable_41_wd),
-    .d      (hw2reg.dio_pad_attr[41].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_41_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[41].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_41_input_disable_41_qs)
-  );
-  assign reg2hw.dio_pad_attr[41].input_disable.qe = dio_pad_attr_41_qe;
-
-  //   F[slew_rate_41]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_41_slew_rate_41 (
-    .re     (dio_pad_attr_41_re),
-    .we     (dio_pad_attr_41_gated_we),
-    .wd     (dio_pad_attr_41_slew_rate_41_wd),
-    .d      (hw2reg.dio_pad_attr[41].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_41_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[41].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_41_slew_rate_41_qs)
-  );
-  assign reg2hw.dio_pad_attr[41].slew_rate.qe = dio_pad_attr_41_qe;
-
-  //   F[drive_strength_41]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_41_drive_strength_41 (
-    .re     (dio_pad_attr_41_re),
-    .we     (dio_pad_attr_41_gated_we),
-    .wd     (dio_pad_attr_41_drive_strength_41_wd),
-    .d      (hw2reg.dio_pad_attr[41].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_41_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[41].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_41_drive_strength_41_qs)
-  );
-  assign reg2hw.dio_pad_attr[41].drive_strength.qe = dio_pad_attr_41_qe;
+  assign reg2hw.dio_pad_attr[41].drv.qe = dio_pad_attr_41_qe;
 
 
   // Subregister 42 of Multireg dio_pad_attr
   // R[dio_pad_attr_42]: V(True)
   logic dio_pad_attr_42_qe;
-  logic [9:0] dio_pad_attr_42_flds_we;
+  logic [3:0] dio_pad_attr_42_flds_we;
   assign dio_pad_attr_42_qe = &dio_pad_attr_42_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_42_gated_we;
   assign dio_pad_attr_42_gated_we = dio_pad_attr_42_we & dio_pad_attr_regwen_42_qs;
-  //   F[invert_42]: 0:0
+  //   F[puen_42]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_42_invert_42 (
+  ) u_dio_pad_attr_42_puen_42 (
     .re     (dio_pad_attr_42_re),
     .we     (dio_pad_attr_42_gated_we),
-    .wd     (dio_pad_attr_42_invert_42_wd),
-    .d      (hw2reg.dio_pad_attr[42].invert.d),
+    .wd     (dio_pad_attr_42_puen_42_wd),
+    .d      (hw2reg.dio_pad_attr[42].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_42_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[42].invert.q),
+    .q      (reg2hw.dio_pad_attr[42].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_42_invert_42_qs)
+    .qs     (dio_pad_attr_42_puen_42_qs)
   );
-  assign reg2hw.dio_pad_attr[42].invert.qe = dio_pad_attr_42_qe;
+  assign reg2hw.dio_pad_attr[42].puen.qe = dio_pad_attr_42_qe;
 
-  //   F[virtual_od_en_42]: 1:1
+  //   F[pden_42]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_42_virtual_od_en_42 (
+  ) u_dio_pad_attr_42_pden_42 (
     .re     (dio_pad_attr_42_re),
     .we     (dio_pad_attr_42_gated_we),
-    .wd     (dio_pad_attr_42_virtual_od_en_42_wd),
-    .d      (hw2reg.dio_pad_attr[42].virtual_od_en.d),
+    .wd     (dio_pad_attr_42_pden_42_wd),
+    .d      (hw2reg.dio_pad_attr[42].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_42_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[42].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[42].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_42_virtual_od_en_42_qs)
+    .qs     (dio_pad_attr_42_pden_42_qs)
   );
-  assign reg2hw.dio_pad_attr[42].virtual_od_en.qe = dio_pad_attr_42_qe;
+  assign reg2hw.dio_pad_attr[42].pden.qe = dio_pad_attr_42_qe;
 
-  //   F[pull_en_42]: 2:2
+  //   F[smten_42]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_42_pull_en_42 (
+  ) u_dio_pad_attr_42_smten_42 (
     .re     (dio_pad_attr_42_re),
     .we     (dio_pad_attr_42_gated_we),
-    .wd     (dio_pad_attr_42_pull_en_42_wd),
-    .d      (hw2reg.dio_pad_attr[42].pull_en.d),
+    .wd     (dio_pad_attr_42_smten_42_wd),
+    .d      (hw2reg.dio_pad_attr[42].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_42_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[42].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[42].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_42_pull_en_42_qs)
+    .qs     (dio_pad_attr_42_smten_42_qs)
   );
-  assign reg2hw.dio_pad_attr[42].pull_en.qe = dio_pad_attr_42_qe;
+  assign reg2hw.dio_pad_attr[42].smten.qe = dio_pad_attr_42_qe;
 
-  //   F[pull_select_42]: 3:3
+  //   F[drv_42]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_42_pull_select_42 (
+    .DW    (3)
+  ) u_dio_pad_attr_42_drv_42 (
     .re     (dio_pad_attr_42_re),
     .we     (dio_pad_attr_42_gated_we),
-    .wd     (dio_pad_attr_42_pull_select_42_wd),
-    .d      (hw2reg.dio_pad_attr[42].pull_select.d),
+    .wd     (dio_pad_attr_42_drv_42_wd),
+    .d      (hw2reg.dio_pad_attr[42].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_42_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[42].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[42].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_42_pull_select_42_qs)
+    .qs     (dio_pad_attr_42_drv_42_qs)
   );
-  assign reg2hw.dio_pad_attr[42].pull_select.qe = dio_pad_attr_42_qe;
-
-  //   F[keeper_en_42]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_42_keeper_en_42 (
-    .re     (dio_pad_attr_42_re),
-    .we     (dio_pad_attr_42_gated_we),
-    .wd     (dio_pad_attr_42_keeper_en_42_wd),
-    .d      (hw2reg.dio_pad_attr[42].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_42_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[42].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_42_keeper_en_42_qs)
-  );
-  assign reg2hw.dio_pad_attr[42].keeper_en.qe = dio_pad_attr_42_qe;
-
-  //   F[schmitt_en_42]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_42_schmitt_en_42 (
-    .re     (dio_pad_attr_42_re),
-    .we     (dio_pad_attr_42_gated_we),
-    .wd     (dio_pad_attr_42_schmitt_en_42_wd),
-    .d      (hw2reg.dio_pad_attr[42].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_42_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[42].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_42_schmitt_en_42_qs)
-  );
-  assign reg2hw.dio_pad_attr[42].schmitt_en.qe = dio_pad_attr_42_qe;
-
-  //   F[od_en_42]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_42_od_en_42 (
-    .re     (dio_pad_attr_42_re),
-    .we     (dio_pad_attr_42_gated_we),
-    .wd     (dio_pad_attr_42_od_en_42_wd),
-    .d      (hw2reg.dio_pad_attr[42].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_42_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[42].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_42_od_en_42_qs)
-  );
-  assign reg2hw.dio_pad_attr[42].od_en.qe = dio_pad_attr_42_qe;
-
-  //   F[input_disable_42]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_42_input_disable_42 (
-    .re     (dio_pad_attr_42_re),
-    .we     (dio_pad_attr_42_gated_we),
-    .wd     (dio_pad_attr_42_input_disable_42_wd),
-    .d      (hw2reg.dio_pad_attr[42].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_42_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[42].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_42_input_disable_42_qs)
-  );
-  assign reg2hw.dio_pad_attr[42].input_disable.qe = dio_pad_attr_42_qe;
-
-  //   F[slew_rate_42]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_42_slew_rate_42 (
-    .re     (dio_pad_attr_42_re),
-    .we     (dio_pad_attr_42_gated_we),
-    .wd     (dio_pad_attr_42_slew_rate_42_wd),
-    .d      (hw2reg.dio_pad_attr[42].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_42_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[42].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_42_slew_rate_42_qs)
-  );
-  assign reg2hw.dio_pad_attr[42].slew_rate.qe = dio_pad_attr_42_qe;
-
-  //   F[drive_strength_42]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_42_drive_strength_42 (
-    .re     (dio_pad_attr_42_re),
-    .we     (dio_pad_attr_42_gated_we),
-    .wd     (dio_pad_attr_42_drive_strength_42_wd),
-    .d      (hw2reg.dio_pad_attr[42].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_42_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[42].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_42_drive_strength_42_qs)
-  );
-  assign reg2hw.dio_pad_attr[42].drive_strength.qe = dio_pad_attr_42_qe;
+  assign reg2hw.dio_pad_attr[42].drv.qe = dio_pad_attr_42_qe;
 
 
   // Subregister 43 of Multireg dio_pad_attr
   // R[dio_pad_attr_43]: V(True)
   logic dio_pad_attr_43_qe;
-  logic [9:0] dio_pad_attr_43_flds_we;
+  logic [3:0] dio_pad_attr_43_flds_we;
   assign dio_pad_attr_43_qe = &dio_pad_attr_43_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_43_gated_we;
   assign dio_pad_attr_43_gated_we = dio_pad_attr_43_we & dio_pad_attr_regwen_43_qs;
-  //   F[invert_43]: 0:0
+  //   F[puen_43]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_43_invert_43 (
+  ) u_dio_pad_attr_43_puen_43 (
     .re     (dio_pad_attr_43_re),
     .we     (dio_pad_attr_43_gated_we),
-    .wd     (dio_pad_attr_43_invert_43_wd),
-    .d      (hw2reg.dio_pad_attr[43].invert.d),
+    .wd     (dio_pad_attr_43_puen_43_wd),
+    .d      (hw2reg.dio_pad_attr[43].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_43_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[43].invert.q),
+    .q      (reg2hw.dio_pad_attr[43].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_43_invert_43_qs)
+    .qs     (dio_pad_attr_43_puen_43_qs)
   );
-  assign reg2hw.dio_pad_attr[43].invert.qe = dio_pad_attr_43_qe;
+  assign reg2hw.dio_pad_attr[43].puen.qe = dio_pad_attr_43_qe;
 
-  //   F[virtual_od_en_43]: 1:1
+  //   F[pden_43]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_43_virtual_od_en_43 (
+  ) u_dio_pad_attr_43_pden_43 (
     .re     (dio_pad_attr_43_re),
     .we     (dio_pad_attr_43_gated_we),
-    .wd     (dio_pad_attr_43_virtual_od_en_43_wd),
-    .d      (hw2reg.dio_pad_attr[43].virtual_od_en.d),
+    .wd     (dio_pad_attr_43_pden_43_wd),
+    .d      (hw2reg.dio_pad_attr[43].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_43_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[43].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[43].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_43_virtual_od_en_43_qs)
+    .qs     (dio_pad_attr_43_pden_43_qs)
   );
-  assign reg2hw.dio_pad_attr[43].virtual_od_en.qe = dio_pad_attr_43_qe;
+  assign reg2hw.dio_pad_attr[43].pden.qe = dio_pad_attr_43_qe;
 
-  //   F[pull_en_43]: 2:2
+  //   F[smten_43]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_43_pull_en_43 (
+  ) u_dio_pad_attr_43_smten_43 (
     .re     (dio_pad_attr_43_re),
     .we     (dio_pad_attr_43_gated_we),
-    .wd     (dio_pad_attr_43_pull_en_43_wd),
-    .d      (hw2reg.dio_pad_attr[43].pull_en.d),
+    .wd     (dio_pad_attr_43_smten_43_wd),
+    .d      (hw2reg.dio_pad_attr[43].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_43_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[43].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[43].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_43_pull_en_43_qs)
+    .qs     (dio_pad_attr_43_smten_43_qs)
   );
-  assign reg2hw.dio_pad_attr[43].pull_en.qe = dio_pad_attr_43_qe;
+  assign reg2hw.dio_pad_attr[43].smten.qe = dio_pad_attr_43_qe;
 
-  //   F[pull_select_43]: 3:3
+  //   F[drv_43]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_43_pull_select_43 (
+    .DW    (3)
+  ) u_dio_pad_attr_43_drv_43 (
     .re     (dio_pad_attr_43_re),
     .we     (dio_pad_attr_43_gated_we),
-    .wd     (dio_pad_attr_43_pull_select_43_wd),
-    .d      (hw2reg.dio_pad_attr[43].pull_select.d),
+    .wd     (dio_pad_attr_43_drv_43_wd),
+    .d      (hw2reg.dio_pad_attr[43].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_43_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[43].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[43].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_43_pull_select_43_qs)
+    .qs     (dio_pad_attr_43_drv_43_qs)
   );
-  assign reg2hw.dio_pad_attr[43].pull_select.qe = dio_pad_attr_43_qe;
-
-  //   F[keeper_en_43]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_43_keeper_en_43 (
-    .re     (dio_pad_attr_43_re),
-    .we     (dio_pad_attr_43_gated_we),
-    .wd     (dio_pad_attr_43_keeper_en_43_wd),
-    .d      (hw2reg.dio_pad_attr[43].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_43_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[43].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_43_keeper_en_43_qs)
-  );
-  assign reg2hw.dio_pad_attr[43].keeper_en.qe = dio_pad_attr_43_qe;
-
-  //   F[schmitt_en_43]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_43_schmitt_en_43 (
-    .re     (dio_pad_attr_43_re),
-    .we     (dio_pad_attr_43_gated_we),
-    .wd     (dio_pad_attr_43_schmitt_en_43_wd),
-    .d      (hw2reg.dio_pad_attr[43].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_43_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[43].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_43_schmitt_en_43_qs)
-  );
-  assign reg2hw.dio_pad_attr[43].schmitt_en.qe = dio_pad_attr_43_qe;
-
-  //   F[od_en_43]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_43_od_en_43 (
-    .re     (dio_pad_attr_43_re),
-    .we     (dio_pad_attr_43_gated_we),
-    .wd     (dio_pad_attr_43_od_en_43_wd),
-    .d      (hw2reg.dio_pad_attr[43].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_43_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[43].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_43_od_en_43_qs)
-  );
-  assign reg2hw.dio_pad_attr[43].od_en.qe = dio_pad_attr_43_qe;
-
-  //   F[input_disable_43]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_43_input_disable_43 (
-    .re     (dio_pad_attr_43_re),
-    .we     (dio_pad_attr_43_gated_we),
-    .wd     (dio_pad_attr_43_input_disable_43_wd),
-    .d      (hw2reg.dio_pad_attr[43].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_43_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[43].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_43_input_disable_43_qs)
-  );
-  assign reg2hw.dio_pad_attr[43].input_disable.qe = dio_pad_attr_43_qe;
-
-  //   F[slew_rate_43]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_43_slew_rate_43 (
-    .re     (dio_pad_attr_43_re),
-    .we     (dio_pad_attr_43_gated_we),
-    .wd     (dio_pad_attr_43_slew_rate_43_wd),
-    .d      (hw2reg.dio_pad_attr[43].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_43_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[43].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_43_slew_rate_43_qs)
-  );
-  assign reg2hw.dio_pad_attr[43].slew_rate.qe = dio_pad_attr_43_qe;
-
-  //   F[drive_strength_43]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_43_drive_strength_43 (
-    .re     (dio_pad_attr_43_re),
-    .we     (dio_pad_attr_43_gated_we),
-    .wd     (dio_pad_attr_43_drive_strength_43_wd),
-    .d      (hw2reg.dio_pad_attr[43].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_43_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[43].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_43_drive_strength_43_qs)
-  );
-  assign reg2hw.dio_pad_attr[43].drive_strength.qe = dio_pad_attr_43_qe;
+  assign reg2hw.dio_pad_attr[43].drv.qe = dio_pad_attr_43_qe;
 
 
   // Subregister 44 of Multireg dio_pad_attr
   // R[dio_pad_attr_44]: V(True)
   logic dio_pad_attr_44_qe;
-  logic [9:0] dio_pad_attr_44_flds_we;
+  logic [3:0] dio_pad_attr_44_flds_we;
   assign dio_pad_attr_44_qe = &dio_pad_attr_44_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_44_gated_we;
   assign dio_pad_attr_44_gated_we = dio_pad_attr_44_we & dio_pad_attr_regwen_44_qs;
-  //   F[invert_44]: 0:0
+  //   F[puen_44]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_44_invert_44 (
+  ) u_dio_pad_attr_44_puen_44 (
     .re     (dio_pad_attr_44_re),
     .we     (dio_pad_attr_44_gated_we),
-    .wd     (dio_pad_attr_44_invert_44_wd),
-    .d      (hw2reg.dio_pad_attr[44].invert.d),
+    .wd     (dio_pad_attr_44_puen_44_wd),
+    .d      (hw2reg.dio_pad_attr[44].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_44_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[44].invert.q),
+    .q      (reg2hw.dio_pad_attr[44].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_44_invert_44_qs)
+    .qs     (dio_pad_attr_44_puen_44_qs)
   );
-  assign reg2hw.dio_pad_attr[44].invert.qe = dio_pad_attr_44_qe;
+  assign reg2hw.dio_pad_attr[44].puen.qe = dio_pad_attr_44_qe;
 
-  //   F[virtual_od_en_44]: 1:1
+  //   F[pden_44]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_44_virtual_od_en_44 (
+  ) u_dio_pad_attr_44_pden_44 (
     .re     (dio_pad_attr_44_re),
     .we     (dio_pad_attr_44_gated_we),
-    .wd     (dio_pad_attr_44_virtual_od_en_44_wd),
-    .d      (hw2reg.dio_pad_attr[44].virtual_od_en.d),
+    .wd     (dio_pad_attr_44_pden_44_wd),
+    .d      (hw2reg.dio_pad_attr[44].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_44_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[44].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[44].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_44_virtual_od_en_44_qs)
+    .qs     (dio_pad_attr_44_pden_44_qs)
   );
-  assign reg2hw.dio_pad_attr[44].virtual_od_en.qe = dio_pad_attr_44_qe;
+  assign reg2hw.dio_pad_attr[44].pden.qe = dio_pad_attr_44_qe;
 
-  //   F[pull_en_44]: 2:2
+  //   F[smten_44]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_44_pull_en_44 (
+  ) u_dio_pad_attr_44_smten_44 (
     .re     (dio_pad_attr_44_re),
     .we     (dio_pad_attr_44_gated_we),
-    .wd     (dio_pad_attr_44_pull_en_44_wd),
-    .d      (hw2reg.dio_pad_attr[44].pull_en.d),
+    .wd     (dio_pad_attr_44_smten_44_wd),
+    .d      (hw2reg.dio_pad_attr[44].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_44_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[44].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[44].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_44_pull_en_44_qs)
+    .qs     (dio_pad_attr_44_smten_44_qs)
   );
-  assign reg2hw.dio_pad_attr[44].pull_en.qe = dio_pad_attr_44_qe;
+  assign reg2hw.dio_pad_attr[44].smten.qe = dio_pad_attr_44_qe;
 
-  //   F[pull_select_44]: 3:3
+  //   F[drv_44]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_44_pull_select_44 (
+    .DW    (3)
+  ) u_dio_pad_attr_44_drv_44 (
     .re     (dio_pad_attr_44_re),
     .we     (dio_pad_attr_44_gated_we),
-    .wd     (dio_pad_attr_44_pull_select_44_wd),
-    .d      (hw2reg.dio_pad_attr[44].pull_select.d),
+    .wd     (dio_pad_attr_44_drv_44_wd),
+    .d      (hw2reg.dio_pad_attr[44].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_44_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[44].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[44].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_44_pull_select_44_qs)
+    .qs     (dio_pad_attr_44_drv_44_qs)
   );
-  assign reg2hw.dio_pad_attr[44].pull_select.qe = dio_pad_attr_44_qe;
-
-  //   F[keeper_en_44]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_44_keeper_en_44 (
-    .re     (dio_pad_attr_44_re),
-    .we     (dio_pad_attr_44_gated_we),
-    .wd     (dio_pad_attr_44_keeper_en_44_wd),
-    .d      (hw2reg.dio_pad_attr[44].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_44_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[44].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_44_keeper_en_44_qs)
-  );
-  assign reg2hw.dio_pad_attr[44].keeper_en.qe = dio_pad_attr_44_qe;
-
-  //   F[schmitt_en_44]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_44_schmitt_en_44 (
-    .re     (dio_pad_attr_44_re),
-    .we     (dio_pad_attr_44_gated_we),
-    .wd     (dio_pad_attr_44_schmitt_en_44_wd),
-    .d      (hw2reg.dio_pad_attr[44].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_44_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[44].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_44_schmitt_en_44_qs)
-  );
-  assign reg2hw.dio_pad_attr[44].schmitt_en.qe = dio_pad_attr_44_qe;
-
-  //   F[od_en_44]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_44_od_en_44 (
-    .re     (dio_pad_attr_44_re),
-    .we     (dio_pad_attr_44_gated_we),
-    .wd     (dio_pad_attr_44_od_en_44_wd),
-    .d      (hw2reg.dio_pad_attr[44].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_44_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[44].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_44_od_en_44_qs)
-  );
-  assign reg2hw.dio_pad_attr[44].od_en.qe = dio_pad_attr_44_qe;
-
-  //   F[input_disable_44]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_44_input_disable_44 (
-    .re     (dio_pad_attr_44_re),
-    .we     (dio_pad_attr_44_gated_we),
-    .wd     (dio_pad_attr_44_input_disable_44_wd),
-    .d      (hw2reg.dio_pad_attr[44].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_44_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[44].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_44_input_disable_44_qs)
-  );
-  assign reg2hw.dio_pad_attr[44].input_disable.qe = dio_pad_attr_44_qe;
-
-  //   F[slew_rate_44]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_44_slew_rate_44 (
-    .re     (dio_pad_attr_44_re),
-    .we     (dio_pad_attr_44_gated_we),
-    .wd     (dio_pad_attr_44_slew_rate_44_wd),
-    .d      (hw2reg.dio_pad_attr[44].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_44_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[44].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_44_slew_rate_44_qs)
-  );
-  assign reg2hw.dio_pad_attr[44].slew_rate.qe = dio_pad_attr_44_qe;
-
-  //   F[drive_strength_44]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_44_drive_strength_44 (
-    .re     (dio_pad_attr_44_re),
-    .we     (dio_pad_attr_44_gated_we),
-    .wd     (dio_pad_attr_44_drive_strength_44_wd),
-    .d      (hw2reg.dio_pad_attr[44].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_44_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[44].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_44_drive_strength_44_qs)
-  );
-  assign reg2hw.dio_pad_attr[44].drive_strength.qe = dio_pad_attr_44_qe;
+  assign reg2hw.dio_pad_attr[44].drv.qe = dio_pad_attr_44_qe;
 
 
   // Subregister 45 of Multireg dio_pad_attr
   // R[dio_pad_attr_45]: V(True)
   logic dio_pad_attr_45_qe;
-  logic [9:0] dio_pad_attr_45_flds_we;
+  logic [3:0] dio_pad_attr_45_flds_we;
   assign dio_pad_attr_45_qe = &dio_pad_attr_45_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_45_gated_we;
   assign dio_pad_attr_45_gated_we = dio_pad_attr_45_we & dio_pad_attr_regwen_45_qs;
-  //   F[invert_45]: 0:0
+  //   F[puen_45]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_45_invert_45 (
+  ) u_dio_pad_attr_45_puen_45 (
     .re     (dio_pad_attr_45_re),
     .we     (dio_pad_attr_45_gated_we),
-    .wd     (dio_pad_attr_45_invert_45_wd),
-    .d      (hw2reg.dio_pad_attr[45].invert.d),
+    .wd     (dio_pad_attr_45_puen_45_wd),
+    .d      (hw2reg.dio_pad_attr[45].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_45_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[45].invert.q),
+    .q      (reg2hw.dio_pad_attr[45].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_45_invert_45_qs)
+    .qs     (dio_pad_attr_45_puen_45_qs)
   );
-  assign reg2hw.dio_pad_attr[45].invert.qe = dio_pad_attr_45_qe;
+  assign reg2hw.dio_pad_attr[45].puen.qe = dio_pad_attr_45_qe;
 
-  //   F[virtual_od_en_45]: 1:1
+  //   F[pden_45]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_45_virtual_od_en_45 (
+  ) u_dio_pad_attr_45_pden_45 (
     .re     (dio_pad_attr_45_re),
     .we     (dio_pad_attr_45_gated_we),
-    .wd     (dio_pad_attr_45_virtual_od_en_45_wd),
-    .d      (hw2reg.dio_pad_attr[45].virtual_od_en.d),
+    .wd     (dio_pad_attr_45_pden_45_wd),
+    .d      (hw2reg.dio_pad_attr[45].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_45_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[45].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[45].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_45_virtual_od_en_45_qs)
+    .qs     (dio_pad_attr_45_pden_45_qs)
   );
-  assign reg2hw.dio_pad_attr[45].virtual_od_en.qe = dio_pad_attr_45_qe;
+  assign reg2hw.dio_pad_attr[45].pden.qe = dio_pad_attr_45_qe;
 
-  //   F[pull_en_45]: 2:2
+  //   F[smten_45]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_45_pull_en_45 (
+  ) u_dio_pad_attr_45_smten_45 (
     .re     (dio_pad_attr_45_re),
     .we     (dio_pad_attr_45_gated_we),
-    .wd     (dio_pad_attr_45_pull_en_45_wd),
-    .d      (hw2reg.dio_pad_attr[45].pull_en.d),
+    .wd     (dio_pad_attr_45_smten_45_wd),
+    .d      (hw2reg.dio_pad_attr[45].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_45_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[45].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[45].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_45_pull_en_45_qs)
+    .qs     (dio_pad_attr_45_smten_45_qs)
   );
-  assign reg2hw.dio_pad_attr[45].pull_en.qe = dio_pad_attr_45_qe;
+  assign reg2hw.dio_pad_attr[45].smten.qe = dio_pad_attr_45_qe;
 
-  //   F[pull_select_45]: 3:3
+  //   F[drv_45]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_45_pull_select_45 (
+    .DW    (3)
+  ) u_dio_pad_attr_45_drv_45 (
     .re     (dio_pad_attr_45_re),
     .we     (dio_pad_attr_45_gated_we),
-    .wd     (dio_pad_attr_45_pull_select_45_wd),
-    .d      (hw2reg.dio_pad_attr[45].pull_select.d),
+    .wd     (dio_pad_attr_45_drv_45_wd),
+    .d      (hw2reg.dio_pad_attr[45].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_45_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[45].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[45].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_45_pull_select_45_qs)
+    .qs     (dio_pad_attr_45_drv_45_qs)
   );
-  assign reg2hw.dio_pad_attr[45].pull_select.qe = dio_pad_attr_45_qe;
-
-  //   F[keeper_en_45]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_45_keeper_en_45 (
-    .re     (dio_pad_attr_45_re),
-    .we     (dio_pad_attr_45_gated_we),
-    .wd     (dio_pad_attr_45_keeper_en_45_wd),
-    .d      (hw2reg.dio_pad_attr[45].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_45_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[45].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_45_keeper_en_45_qs)
-  );
-  assign reg2hw.dio_pad_attr[45].keeper_en.qe = dio_pad_attr_45_qe;
-
-  //   F[schmitt_en_45]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_45_schmitt_en_45 (
-    .re     (dio_pad_attr_45_re),
-    .we     (dio_pad_attr_45_gated_we),
-    .wd     (dio_pad_attr_45_schmitt_en_45_wd),
-    .d      (hw2reg.dio_pad_attr[45].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_45_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[45].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_45_schmitt_en_45_qs)
-  );
-  assign reg2hw.dio_pad_attr[45].schmitt_en.qe = dio_pad_attr_45_qe;
-
-  //   F[od_en_45]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_45_od_en_45 (
-    .re     (dio_pad_attr_45_re),
-    .we     (dio_pad_attr_45_gated_we),
-    .wd     (dio_pad_attr_45_od_en_45_wd),
-    .d      (hw2reg.dio_pad_attr[45].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_45_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[45].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_45_od_en_45_qs)
-  );
-  assign reg2hw.dio_pad_attr[45].od_en.qe = dio_pad_attr_45_qe;
-
-  //   F[input_disable_45]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_45_input_disable_45 (
-    .re     (dio_pad_attr_45_re),
-    .we     (dio_pad_attr_45_gated_we),
-    .wd     (dio_pad_attr_45_input_disable_45_wd),
-    .d      (hw2reg.dio_pad_attr[45].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_45_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[45].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_45_input_disable_45_qs)
-  );
-  assign reg2hw.dio_pad_attr[45].input_disable.qe = dio_pad_attr_45_qe;
-
-  //   F[slew_rate_45]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_45_slew_rate_45 (
-    .re     (dio_pad_attr_45_re),
-    .we     (dio_pad_attr_45_gated_we),
-    .wd     (dio_pad_attr_45_slew_rate_45_wd),
-    .d      (hw2reg.dio_pad_attr[45].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_45_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[45].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_45_slew_rate_45_qs)
-  );
-  assign reg2hw.dio_pad_attr[45].slew_rate.qe = dio_pad_attr_45_qe;
-
-  //   F[drive_strength_45]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_45_drive_strength_45 (
-    .re     (dio_pad_attr_45_re),
-    .we     (dio_pad_attr_45_gated_we),
-    .wd     (dio_pad_attr_45_drive_strength_45_wd),
-    .d      (hw2reg.dio_pad_attr[45].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_45_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[45].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_45_drive_strength_45_qs)
-  );
-  assign reg2hw.dio_pad_attr[45].drive_strength.qe = dio_pad_attr_45_qe;
+  assign reg2hw.dio_pad_attr[45].drv.qe = dio_pad_attr_45_qe;
 
 
   // Subregister 46 of Multireg dio_pad_attr
   // R[dio_pad_attr_46]: V(True)
   logic dio_pad_attr_46_qe;
-  logic [9:0] dio_pad_attr_46_flds_we;
+  logic [3:0] dio_pad_attr_46_flds_we;
   assign dio_pad_attr_46_qe = &dio_pad_attr_46_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_46_gated_we;
   assign dio_pad_attr_46_gated_we = dio_pad_attr_46_we & dio_pad_attr_regwen_46_qs;
-  //   F[invert_46]: 0:0
+  //   F[puen_46]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_46_invert_46 (
+  ) u_dio_pad_attr_46_puen_46 (
     .re     (dio_pad_attr_46_re),
     .we     (dio_pad_attr_46_gated_we),
-    .wd     (dio_pad_attr_46_invert_46_wd),
-    .d      (hw2reg.dio_pad_attr[46].invert.d),
+    .wd     (dio_pad_attr_46_puen_46_wd),
+    .d      (hw2reg.dio_pad_attr[46].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_46_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[46].invert.q),
+    .q      (reg2hw.dio_pad_attr[46].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_46_invert_46_qs)
+    .qs     (dio_pad_attr_46_puen_46_qs)
   );
-  assign reg2hw.dio_pad_attr[46].invert.qe = dio_pad_attr_46_qe;
+  assign reg2hw.dio_pad_attr[46].puen.qe = dio_pad_attr_46_qe;
 
-  //   F[virtual_od_en_46]: 1:1
+  //   F[pden_46]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_46_virtual_od_en_46 (
+  ) u_dio_pad_attr_46_pden_46 (
     .re     (dio_pad_attr_46_re),
     .we     (dio_pad_attr_46_gated_we),
-    .wd     (dio_pad_attr_46_virtual_od_en_46_wd),
-    .d      (hw2reg.dio_pad_attr[46].virtual_od_en.d),
+    .wd     (dio_pad_attr_46_pden_46_wd),
+    .d      (hw2reg.dio_pad_attr[46].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_46_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[46].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[46].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_46_virtual_od_en_46_qs)
+    .qs     (dio_pad_attr_46_pden_46_qs)
   );
-  assign reg2hw.dio_pad_attr[46].virtual_od_en.qe = dio_pad_attr_46_qe;
+  assign reg2hw.dio_pad_attr[46].pden.qe = dio_pad_attr_46_qe;
 
-  //   F[pull_en_46]: 2:2
+  //   F[smten_46]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_46_pull_en_46 (
+  ) u_dio_pad_attr_46_smten_46 (
     .re     (dio_pad_attr_46_re),
     .we     (dio_pad_attr_46_gated_we),
-    .wd     (dio_pad_attr_46_pull_en_46_wd),
-    .d      (hw2reg.dio_pad_attr[46].pull_en.d),
+    .wd     (dio_pad_attr_46_smten_46_wd),
+    .d      (hw2reg.dio_pad_attr[46].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_46_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[46].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[46].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_46_pull_en_46_qs)
+    .qs     (dio_pad_attr_46_smten_46_qs)
   );
-  assign reg2hw.dio_pad_attr[46].pull_en.qe = dio_pad_attr_46_qe;
+  assign reg2hw.dio_pad_attr[46].smten.qe = dio_pad_attr_46_qe;
 
-  //   F[pull_select_46]: 3:3
+  //   F[drv_46]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_46_pull_select_46 (
+    .DW    (3)
+  ) u_dio_pad_attr_46_drv_46 (
     .re     (dio_pad_attr_46_re),
     .we     (dio_pad_attr_46_gated_we),
-    .wd     (dio_pad_attr_46_pull_select_46_wd),
-    .d      (hw2reg.dio_pad_attr[46].pull_select.d),
+    .wd     (dio_pad_attr_46_drv_46_wd),
+    .d      (hw2reg.dio_pad_attr[46].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_46_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[46].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[46].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_46_pull_select_46_qs)
+    .qs     (dio_pad_attr_46_drv_46_qs)
   );
-  assign reg2hw.dio_pad_attr[46].pull_select.qe = dio_pad_attr_46_qe;
-
-  //   F[keeper_en_46]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_46_keeper_en_46 (
-    .re     (dio_pad_attr_46_re),
-    .we     (dio_pad_attr_46_gated_we),
-    .wd     (dio_pad_attr_46_keeper_en_46_wd),
-    .d      (hw2reg.dio_pad_attr[46].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_46_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[46].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_46_keeper_en_46_qs)
-  );
-  assign reg2hw.dio_pad_attr[46].keeper_en.qe = dio_pad_attr_46_qe;
-
-  //   F[schmitt_en_46]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_46_schmitt_en_46 (
-    .re     (dio_pad_attr_46_re),
-    .we     (dio_pad_attr_46_gated_we),
-    .wd     (dio_pad_attr_46_schmitt_en_46_wd),
-    .d      (hw2reg.dio_pad_attr[46].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_46_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[46].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_46_schmitt_en_46_qs)
-  );
-  assign reg2hw.dio_pad_attr[46].schmitt_en.qe = dio_pad_attr_46_qe;
-
-  //   F[od_en_46]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_46_od_en_46 (
-    .re     (dio_pad_attr_46_re),
-    .we     (dio_pad_attr_46_gated_we),
-    .wd     (dio_pad_attr_46_od_en_46_wd),
-    .d      (hw2reg.dio_pad_attr[46].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_46_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[46].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_46_od_en_46_qs)
-  );
-  assign reg2hw.dio_pad_attr[46].od_en.qe = dio_pad_attr_46_qe;
-
-  //   F[input_disable_46]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_46_input_disable_46 (
-    .re     (dio_pad_attr_46_re),
-    .we     (dio_pad_attr_46_gated_we),
-    .wd     (dio_pad_attr_46_input_disable_46_wd),
-    .d      (hw2reg.dio_pad_attr[46].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_46_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[46].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_46_input_disable_46_qs)
-  );
-  assign reg2hw.dio_pad_attr[46].input_disable.qe = dio_pad_attr_46_qe;
-
-  //   F[slew_rate_46]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_46_slew_rate_46 (
-    .re     (dio_pad_attr_46_re),
-    .we     (dio_pad_attr_46_gated_we),
-    .wd     (dio_pad_attr_46_slew_rate_46_wd),
-    .d      (hw2reg.dio_pad_attr[46].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_46_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[46].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_46_slew_rate_46_qs)
-  );
-  assign reg2hw.dio_pad_attr[46].slew_rate.qe = dio_pad_attr_46_qe;
-
-  //   F[drive_strength_46]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_46_drive_strength_46 (
-    .re     (dio_pad_attr_46_re),
-    .we     (dio_pad_attr_46_gated_we),
-    .wd     (dio_pad_attr_46_drive_strength_46_wd),
-    .d      (hw2reg.dio_pad_attr[46].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_46_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[46].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_46_drive_strength_46_qs)
-  );
-  assign reg2hw.dio_pad_attr[46].drive_strength.qe = dio_pad_attr_46_qe;
+  assign reg2hw.dio_pad_attr[46].drv.qe = dio_pad_attr_46_qe;
 
 
   // Subregister 47 of Multireg dio_pad_attr
   // R[dio_pad_attr_47]: V(True)
   logic dio_pad_attr_47_qe;
-  logic [9:0] dio_pad_attr_47_flds_we;
+  logic [3:0] dio_pad_attr_47_flds_we;
   assign dio_pad_attr_47_qe = &dio_pad_attr_47_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_47_gated_we;
   assign dio_pad_attr_47_gated_we = dio_pad_attr_47_we & dio_pad_attr_regwen_47_qs;
-  //   F[invert_47]: 0:0
+  //   F[puen_47]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_47_invert_47 (
+  ) u_dio_pad_attr_47_puen_47 (
     .re     (dio_pad_attr_47_re),
     .we     (dio_pad_attr_47_gated_we),
-    .wd     (dio_pad_attr_47_invert_47_wd),
-    .d      (hw2reg.dio_pad_attr[47].invert.d),
+    .wd     (dio_pad_attr_47_puen_47_wd),
+    .d      (hw2reg.dio_pad_attr[47].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_47_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[47].invert.q),
+    .q      (reg2hw.dio_pad_attr[47].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_47_invert_47_qs)
+    .qs     (dio_pad_attr_47_puen_47_qs)
   );
-  assign reg2hw.dio_pad_attr[47].invert.qe = dio_pad_attr_47_qe;
+  assign reg2hw.dio_pad_attr[47].puen.qe = dio_pad_attr_47_qe;
 
-  //   F[virtual_od_en_47]: 1:1
+  //   F[pden_47]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_47_virtual_od_en_47 (
+  ) u_dio_pad_attr_47_pden_47 (
     .re     (dio_pad_attr_47_re),
     .we     (dio_pad_attr_47_gated_we),
-    .wd     (dio_pad_attr_47_virtual_od_en_47_wd),
-    .d      (hw2reg.dio_pad_attr[47].virtual_od_en.d),
+    .wd     (dio_pad_attr_47_pden_47_wd),
+    .d      (hw2reg.dio_pad_attr[47].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_47_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[47].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[47].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_47_virtual_od_en_47_qs)
+    .qs     (dio_pad_attr_47_pden_47_qs)
   );
-  assign reg2hw.dio_pad_attr[47].virtual_od_en.qe = dio_pad_attr_47_qe;
+  assign reg2hw.dio_pad_attr[47].pden.qe = dio_pad_attr_47_qe;
 
-  //   F[pull_en_47]: 2:2
+  //   F[smten_47]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_47_pull_en_47 (
+  ) u_dio_pad_attr_47_smten_47 (
     .re     (dio_pad_attr_47_re),
     .we     (dio_pad_attr_47_gated_we),
-    .wd     (dio_pad_attr_47_pull_en_47_wd),
-    .d      (hw2reg.dio_pad_attr[47].pull_en.d),
+    .wd     (dio_pad_attr_47_smten_47_wd),
+    .d      (hw2reg.dio_pad_attr[47].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_47_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[47].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[47].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_47_pull_en_47_qs)
+    .qs     (dio_pad_attr_47_smten_47_qs)
   );
-  assign reg2hw.dio_pad_attr[47].pull_en.qe = dio_pad_attr_47_qe;
+  assign reg2hw.dio_pad_attr[47].smten.qe = dio_pad_attr_47_qe;
 
-  //   F[pull_select_47]: 3:3
+  //   F[drv_47]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_47_pull_select_47 (
+    .DW    (3)
+  ) u_dio_pad_attr_47_drv_47 (
     .re     (dio_pad_attr_47_re),
     .we     (dio_pad_attr_47_gated_we),
-    .wd     (dio_pad_attr_47_pull_select_47_wd),
-    .d      (hw2reg.dio_pad_attr[47].pull_select.d),
+    .wd     (dio_pad_attr_47_drv_47_wd),
+    .d      (hw2reg.dio_pad_attr[47].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_47_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[47].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[47].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_47_pull_select_47_qs)
+    .qs     (dio_pad_attr_47_drv_47_qs)
   );
-  assign reg2hw.dio_pad_attr[47].pull_select.qe = dio_pad_attr_47_qe;
-
-  //   F[keeper_en_47]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_47_keeper_en_47 (
-    .re     (dio_pad_attr_47_re),
-    .we     (dio_pad_attr_47_gated_we),
-    .wd     (dio_pad_attr_47_keeper_en_47_wd),
-    .d      (hw2reg.dio_pad_attr[47].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_47_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[47].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_47_keeper_en_47_qs)
-  );
-  assign reg2hw.dio_pad_attr[47].keeper_en.qe = dio_pad_attr_47_qe;
-
-  //   F[schmitt_en_47]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_47_schmitt_en_47 (
-    .re     (dio_pad_attr_47_re),
-    .we     (dio_pad_attr_47_gated_we),
-    .wd     (dio_pad_attr_47_schmitt_en_47_wd),
-    .d      (hw2reg.dio_pad_attr[47].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_47_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[47].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_47_schmitt_en_47_qs)
-  );
-  assign reg2hw.dio_pad_attr[47].schmitt_en.qe = dio_pad_attr_47_qe;
-
-  //   F[od_en_47]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_47_od_en_47 (
-    .re     (dio_pad_attr_47_re),
-    .we     (dio_pad_attr_47_gated_we),
-    .wd     (dio_pad_attr_47_od_en_47_wd),
-    .d      (hw2reg.dio_pad_attr[47].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_47_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[47].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_47_od_en_47_qs)
-  );
-  assign reg2hw.dio_pad_attr[47].od_en.qe = dio_pad_attr_47_qe;
-
-  //   F[input_disable_47]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_47_input_disable_47 (
-    .re     (dio_pad_attr_47_re),
-    .we     (dio_pad_attr_47_gated_we),
-    .wd     (dio_pad_attr_47_input_disable_47_wd),
-    .d      (hw2reg.dio_pad_attr[47].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_47_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[47].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_47_input_disable_47_qs)
-  );
-  assign reg2hw.dio_pad_attr[47].input_disable.qe = dio_pad_attr_47_qe;
-
-  //   F[slew_rate_47]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_47_slew_rate_47 (
-    .re     (dio_pad_attr_47_re),
-    .we     (dio_pad_attr_47_gated_we),
-    .wd     (dio_pad_attr_47_slew_rate_47_wd),
-    .d      (hw2reg.dio_pad_attr[47].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_47_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[47].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_47_slew_rate_47_qs)
-  );
-  assign reg2hw.dio_pad_attr[47].slew_rate.qe = dio_pad_attr_47_qe;
-
-  //   F[drive_strength_47]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_47_drive_strength_47 (
-    .re     (dio_pad_attr_47_re),
-    .we     (dio_pad_attr_47_gated_we),
-    .wd     (dio_pad_attr_47_drive_strength_47_wd),
-    .d      (hw2reg.dio_pad_attr[47].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_47_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[47].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_47_drive_strength_47_qs)
-  );
-  assign reg2hw.dio_pad_attr[47].drive_strength.qe = dio_pad_attr_47_qe;
+  assign reg2hw.dio_pad_attr[47].drv.qe = dio_pad_attr_47_qe;
 
 
   // Subregister 48 of Multireg dio_pad_attr
   // R[dio_pad_attr_48]: V(True)
   logic dio_pad_attr_48_qe;
-  logic [9:0] dio_pad_attr_48_flds_we;
+  logic [3:0] dio_pad_attr_48_flds_we;
   assign dio_pad_attr_48_qe = &dio_pad_attr_48_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_48_gated_we;
   assign dio_pad_attr_48_gated_we = dio_pad_attr_48_we & dio_pad_attr_regwen_48_qs;
-  //   F[invert_48]: 0:0
+  //   F[puen_48]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_48_invert_48 (
+  ) u_dio_pad_attr_48_puen_48 (
     .re     (dio_pad_attr_48_re),
     .we     (dio_pad_attr_48_gated_we),
-    .wd     (dio_pad_attr_48_invert_48_wd),
-    .d      (hw2reg.dio_pad_attr[48].invert.d),
+    .wd     (dio_pad_attr_48_puen_48_wd),
+    .d      (hw2reg.dio_pad_attr[48].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_48_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[48].invert.q),
+    .q      (reg2hw.dio_pad_attr[48].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_48_invert_48_qs)
+    .qs     (dio_pad_attr_48_puen_48_qs)
   );
-  assign reg2hw.dio_pad_attr[48].invert.qe = dio_pad_attr_48_qe;
+  assign reg2hw.dio_pad_attr[48].puen.qe = dio_pad_attr_48_qe;
 
-  //   F[virtual_od_en_48]: 1:1
+  //   F[pden_48]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_48_virtual_od_en_48 (
+  ) u_dio_pad_attr_48_pden_48 (
     .re     (dio_pad_attr_48_re),
     .we     (dio_pad_attr_48_gated_we),
-    .wd     (dio_pad_attr_48_virtual_od_en_48_wd),
-    .d      (hw2reg.dio_pad_attr[48].virtual_od_en.d),
+    .wd     (dio_pad_attr_48_pden_48_wd),
+    .d      (hw2reg.dio_pad_attr[48].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_48_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[48].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[48].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_48_virtual_od_en_48_qs)
+    .qs     (dio_pad_attr_48_pden_48_qs)
   );
-  assign reg2hw.dio_pad_attr[48].virtual_od_en.qe = dio_pad_attr_48_qe;
+  assign reg2hw.dio_pad_attr[48].pden.qe = dio_pad_attr_48_qe;
 
-  //   F[pull_en_48]: 2:2
+  //   F[smten_48]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_48_pull_en_48 (
+  ) u_dio_pad_attr_48_smten_48 (
     .re     (dio_pad_attr_48_re),
     .we     (dio_pad_attr_48_gated_we),
-    .wd     (dio_pad_attr_48_pull_en_48_wd),
-    .d      (hw2reg.dio_pad_attr[48].pull_en.d),
+    .wd     (dio_pad_attr_48_smten_48_wd),
+    .d      (hw2reg.dio_pad_attr[48].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_48_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[48].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[48].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_48_pull_en_48_qs)
+    .qs     (dio_pad_attr_48_smten_48_qs)
   );
-  assign reg2hw.dio_pad_attr[48].pull_en.qe = dio_pad_attr_48_qe;
+  assign reg2hw.dio_pad_attr[48].smten.qe = dio_pad_attr_48_qe;
 
-  //   F[pull_select_48]: 3:3
+  //   F[drv_48]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_48_pull_select_48 (
+    .DW    (3)
+  ) u_dio_pad_attr_48_drv_48 (
     .re     (dio_pad_attr_48_re),
     .we     (dio_pad_attr_48_gated_we),
-    .wd     (dio_pad_attr_48_pull_select_48_wd),
-    .d      (hw2reg.dio_pad_attr[48].pull_select.d),
+    .wd     (dio_pad_attr_48_drv_48_wd),
+    .d      (hw2reg.dio_pad_attr[48].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_48_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[48].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[48].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_48_pull_select_48_qs)
+    .qs     (dio_pad_attr_48_drv_48_qs)
   );
-  assign reg2hw.dio_pad_attr[48].pull_select.qe = dio_pad_attr_48_qe;
-
-  //   F[keeper_en_48]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_48_keeper_en_48 (
-    .re     (dio_pad_attr_48_re),
-    .we     (dio_pad_attr_48_gated_we),
-    .wd     (dio_pad_attr_48_keeper_en_48_wd),
-    .d      (hw2reg.dio_pad_attr[48].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_48_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[48].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_48_keeper_en_48_qs)
-  );
-  assign reg2hw.dio_pad_attr[48].keeper_en.qe = dio_pad_attr_48_qe;
-
-  //   F[schmitt_en_48]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_48_schmitt_en_48 (
-    .re     (dio_pad_attr_48_re),
-    .we     (dio_pad_attr_48_gated_we),
-    .wd     (dio_pad_attr_48_schmitt_en_48_wd),
-    .d      (hw2reg.dio_pad_attr[48].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_48_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[48].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_48_schmitt_en_48_qs)
-  );
-  assign reg2hw.dio_pad_attr[48].schmitt_en.qe = dio_pad_attr_48_qe;
-
-  //   F[od_en_48]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_48_od_en_48 (
-    .re     (dio_pad_attr_48_re),
-    .we     (dio_pad_attr_48_gated_we),
-    .wd     (dio_pad_attr_48_od_en_48_wd),
-    .d      (hw2reg.dio_pad_attr[48].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_48_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[48].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_48_od_en_48_qs)
-  );
-  assign reg2hw.dio_pad_attr[48].od_en.qe = dio_pad_attr_48_qe;
-
-  //   F[input_disable_48]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_48_input_disable_48 (
-    .re     (dio_pad_attr_48_re),
-    .we     (dio_pad_attr_48_gated_we),
-    .wd     (dio_pad_attr_48_input_disable_48_wd),
-    .d      (hw2reg.dio_pad_attr[48].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_48_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[48].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_48_input_disable_48_qs)
-  );
-  assign reg2hw.dio_pad_attr[48].input_disable.qe = dio_pad_attr_48_qe;
-
-  //   F[slew_rate_48]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_48_slew_rate_48 (
-    .re     (dio_pad_attr_48_re),
-    .we     (dio_pad_attr_48_gated_we),
-    .wd     (dio_pad_attr_48_slew_rate_48_wd),
-    .d      (hw2reg.dio_pad_attr[48].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_48_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[48].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_48_slew_rate_48_qs)
-  );
-  assign reg2hw.dio_pad_attr[48].slew_rate.qe = dio_pad_attr_48_qe;
-
-  //   F[drive_strength_48]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_48_drive_strength_48 (
-    .re     (dio_pad_attr_48_re),
-    .we     (dio_pad_attr_48_gated_we),
-    .wd     (dio_pad_attr_48_drive_strength_48_wd),
-    .d      (hw2reg.dio_pad_attr[48].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_48_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[48].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_48_drive_strength_48_qs)
-  );
-  assign reg2hw.dio_pad_attr[48].drive_strength.qe = dio_pad_attr_48_qe;
+  assign reg2hw.dio_pad_attr[48].drv.qe = dio_pad_attr_48_qe;
 
 
   // Subregister 49 of Multireg dio_pad_attr
   // R[dio_pad_attr_49]: V(True)
   logic dio_pad_attr_49_qe;
-  logic [9:0] dio_pad_attr_49_flds_we;
+  logic [3:0] dio_pad_attr_49_flds_we;
   assign dio_pad_attr_49_qe = &dio_pad_attr_49_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_49_gated_we;
   assign dio_pad_attr_49_gated_we = dio_pad_attr_49_we & dio_pad_attr_regwen_49_qs;
-  //   F[invert_49]: 0:0
+  //   F[puen_49]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_49_invert_49 (
+  ) u_dio_pad_attr_49_puen_49 (
     .re     (dio_pad_attr_49_re),
     .we     (dio_pad_attr_49_gated_we),
-    .wd     (dio_pad_attr_49_invert_49_wd),
-    .d      (hw2reg.dio_pad_attr[49].invert.d),
+    .wd     (dio_pad_attr_49_puen_49_wd),
+    .d      (hw2reg.dio_pad_attr[49].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_49_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[49].invert.q),
+    .q      (reg2hw.dio_pad_attr[49].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_49_invert_49_qs)
+    .qs     (dio_pad_attr_49_puen_49_qs)
   );
-  assign reg2hw.dio_pad_attr[49].invert.qe = dio_pad_attr_49_qe;
+  assign reg2hw.dio_pad_attr[49].puen.qe = dio_pad_attr_49_qe;
 
-  //   F[virtual_od_en_49]: 1:1
+  //   F[pden_49]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_49_virtual_od_en_49 (
+  ) u_dio_pad_attr_49_pden_49 (
     .re     (dio_pad_attr_49_re),
     .we     (dio_pad_attr_49_gated_we),
-    .wd     (dio_pad_attr_49_virtual_od_en_49_wd),
-    .d      (hw2reg.dio_pad_attr[49].virtual_od_en.d),
+    .wd     (dio_pad_attr_49_pden_49_wd),
+    .d      (hw2reg.dio_pad_attr[49].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_49_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[49].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[49].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_49_virtual_od_en_49_qs)
+    .qs     (dio_pad_attr_49_pden_49_qs)
   );
-  assign reg2hw.dio_pad_attr[49].virtual_od_en.qe = dio_pad_attr_49_qe;
+  assign reg2hw.dio_pad_attr[49].pden.qe = dio_pad_attr_49_qe;
 
-  //   F[pull_en_49]: 2:2
+  //   F[smten_49]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_49_pull_en_49 (
+  ) u_dio_pad_attr_49_smten_49 (
     .re     (dio_pad_attr_49_re),
     .we     (dio_pad_attr_49_gated_we),
-    .wd     (dio_pad_attr_49_pull_en_49_wd),
-    .d      (hw2reg.dio_pad_attr[49].pull_en.d),
+    .wd     (dio_pad_attr_49_smten_49_wd),
+    .d      (hw2reg.dio_pad_attr[49].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_49_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[49].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[49].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_49_pull_en_49_qs)
+    .qs     (dio_pad_attr_49_smten_49_qs)
   );
-  assign reg2hw.dio_pad_attr[49].pull_en.qe = dio_pad_attr_49_qe;
+  assign reg2hw.dio_pad_attr[49].smten.qe = dio_pad_attr_49_qe;
 
-  //   F[pull_select_49]: 3:3
+  //   F[drv_49]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_49_pull_select_49 (
+    .DW    (3)
+  ) u_dio_pad_attr_49_drv_49 (
     .re     (dio_pad_attr_49_re),
     .we     (dio_pad_attr_49_gated_we),
-    .wd     (dio_pad_attr_49_pull_select_49_wd),
-    .d      (hw2reg.dio_pad_attr[49].pull_select.d),
+    .wd     (dio_pad_attr_49_drv_49_wd),
+    .d      (hw2reg.dio_pad_attr[49].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_49_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[49].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[49].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_49_pull_select_49_qs)
+    .qs     (dio_pad_attr_49_drv_49_qs)
   );
-  assign reg2hw.dio_pad_attr[49].pull_select.qe = dio_pad_attr_49_qe;
-
-  //   F[keeper_en_49]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_49_keeper_en_49 (
-    .re     (dio_pad_attr_49_re),
-    .we     (dio_pad_attr_49_gated_we),
-    .wd     (dio_pad_attr_49_keeper_en_49_wd),
-    .d      (hw2reg.dio_pad_attr[49].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_49_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[49].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_49_keeper_en_49_qs)
-  );
-  assign reg2hw.dio_pad_attr[49].keeper_en.qe = dio_pad_attr_49_qe;
-
-  //   F[schmitt_en_49]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_49_schmitt_en_49 (
-    .re     (dio_pad_attr_49_re),
-    .we     (dio_pad_attr_49_gated_we),
-    .wd     (dio_pad_attr_49_schmitt_en_49_wd),
-    .d      (hw2reg.dio_pad_attr[49].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_49_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[49].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_49_schmitt_en_49_qs)
-  );
-  assign reg2hw.dio_pad_attr[49].schmitt_en.qe = dio_pad_attr_49_qe;
-
-  //   F[od_en_49]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_49_od_en_49 (
-    .re     (dio_pad_attr_49_re),
-    .we     (dio_pad_attr_49_gated_we),
-    .wd     (dio_pad_attr_49_od_en_49_wd),
-    .d      (hw2reg.dio_pad_attr[49].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_49_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[49].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_49_od_en_49_qs)
-  );
-  assign reg2hw.dio_pad_attr[49].od_en.qe = dio_pad_attr_49_qe;
-
-  //   F[input_disable_49]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_49_input_disable_49 (
-    .re     (dio_pad_attr_49_re),
-    .we     (dio_pad_attr_49_gated_we),
-    .wd     (dio_pad_attr_49_input_disable_49_wd),
-    .d      (hw2reg.dio_pad_attr[49].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_49_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[49].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_49_input_disable_49_qs)
-  );
-  assign reg2hw.dio_pad_attr[49].input_disable.qe = dio_pad_attr_49_qe;
-
-  //   F[slew_rate_49]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_49_slew_rate_49 (
-    .re     (dio_pad_attr_49_re),
-    .we     (dio_pad_attr_49_gated_we),
-    .wd     (dio_pad_attr_49_slew_rate_49_wd),
-    .d      (hw2reg.dio_pad_attr[49].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_49_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[49].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_49_slew_rate_49_qs)
-  );
-  assign reg2hw.dio_pad_attr[49].slew_rate.qe = dio_pad_attr_49_qe;
-
-  //   F[drive_strength_49]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_49_drive_strength_49 (
-    .re     (dio_pad_attr_49_re),
-    .we     (dio_pad_attr_49_gated_we),
-    .wd     (dio_pad_attr_49_drive_strength_49_wd),
-    .d      (hw2reg.dio_pad_attr[49].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_49_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[49].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_49_drive_strength_49_qs)
-  );
-  assign reg2hw.dio_pad_attr[49].drive_strength.qe = dio_pad_attr_49_qe;
+  assign reg2hw.dio_pad_attr[49].drv.qe = dio_pad_attr_49_qe;
 
 
   // Subregister 50 of Multireg dio_pad_attr
   // R[dio_pad_attr_50]: V(True)
   logic dio_pad_attr_50_qe;
-  logic [9:0] dio_pad_attr_50_flds_we;
+  logic [3:0] dio_pad_attr_50_flds_we;
   assign dio_pad_attr_50_qe = &dio_pad_attr_50_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_50_gated_we;
   assign dio_pad_attr_50_gated_we = dio_pad_attr_50_we & dio_pad_attr_regwen_50_qs;
-  //   F[invert_50]: 0:0
+  //   F[puen_50]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_50_invert_50 (
+  ) u_dio_pad_attr_50_puen_50 (
     .re     (dio_pad_attr_50_re),
     .we     (dio_pad_attr_50_gated_we),
-    .wd     (dio_pad_attr_50_invert_50_wd),
-    .d      (hw2reg.dio_pad_attr[50].invert.d),
+    .wd     (dio_pad_attr_50_puen_50_wd),
+    .d      (hw2reg.dio_pad_attr[50].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_50_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[50].invert.q),
+    .q      (reg2hw.dio_pad_attr[50].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_50_invert_50_qs)
+    .qs     (dio_pad_attr_50_puen_50_qs)
   );
-  assign reg2hw.dio_pad_attr[50].invert.qe = dio_pad_attr_50_qe;
+  assign reg2hw.dio_pad_attr[50].puen.qe = dio_pad_attr_50_qe;
 
-  //   F[virtual_od_en_50]: 1:1
+  //   F[pden_50]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_50_virtual_od_en_50 (
+  ) u_dio_pad_attr_50_pden_50 (
     .re     (dio_pad_attr_50_re),
     .we     (dio_pad_attr_50_gated_we),
-    .wd     (dio_pad_attr_50_virtual_od_en_50_wd),
-    .d      (hw2reg.dio_pad_attr[50].virtual_od_en.d),
+    .wd     (dio_pad_attr_50_pden_50_wd),
+    .d      (hw2reg.dio_pad_attr[50].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_50_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[50].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[50].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_50_virtual_od_en_50_qs)
+    .qs     (dio_pad_attr_50_pden_50_qs)
   );
-  assign reg2hw.dio_pad_attr[50].virtual_od_en.qe = dio_pad_attr_50_qe;
+  assign reg2hw.dio_pad_attr[50].pden.qe = dio_pad_attr_50_qe;
 
-  //   F[pull_en_50]: 2:2
+  //   F[smten_50]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_50_pull_en_50 (
+  ) u_dio_pad_attr_50_smten_50 (
     .re     (dio_pad_attr_50_re),
     .we     (dio_pad_attr_50_gated_we),
-    .wd     (dio_pad_attr_50_pull_en_50_wd),
-    .d      (hw2reg.dio_pad_attr[50].pull_en.d),
+    .wd     (dio_pad_attr_50_smten_50_wd),
+    .d      (hw2reg.dio_pad_attr[50].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_50_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[50].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[50].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_50_pull_en_50_qs)
+    .qs     (dio_pad_attr_50_smten_50_qs)
   );
-  assign reg2hw.dio_pad_attr[50].pull_en.qe = dio_pad_attr_50_qe;
+  assign reg2hw.dio_pad_attr[50].smten.qe = dio_pad_attr_50_qe;
 
-  //   F[pull_select_50]: 3:3
+  //   F[drv_50]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_50_pull_select_50 (
+    .DW    (3)
+  ) u_dio_pad_attr_50_drv_50 (
     .re     (dio_pad_attr_50_re),
     .we     (dio_pad_attr_50_gated_we),
-    .wd     (dio_pad_attr_50_pull_select_50_wd),
-    .d      (hw2reg.dio_pad_attr[50].pull_select.d),
+    .wd     (dio_pad_attr_50_drv_50_wd),
+    .d      (hw2reg.dio_pad_attr[50].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_50_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[50].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[50].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_50_pull_select_50_qs)
+    .qs     (dio_pad_attr_50_drv_50_qs)
   );
-  assign reg2hw.dio_pad_attr[50].pull_select.qe = dio_pad_attr_50_qe;
-
-  //   F[keeper_en_50]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_50_keeper_en_50 (
-    .re     (dio_pad_attr_50_re),
-    .we     (dio_pad_attr_50_gated_we),
-    .wd     (dio_pad_attr_50_keeper_en_50_wd),
-    .d      (hw2reg.dio_pad_attr[50].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_50_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[50].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_50_keeper_en_50_qs)
-  );
-  assign reg2hw.dio_pad_attr[50].keeper_en.qe = dio_pad_attr_50_qe;
-
-  //   F[schmitt_en_50]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_50_schmitt_en_50 (
-    .re     (dio_pad_attr_50_re),
-    .we     (dio_pad_attr_50_gated_we),
-    .wd     (dio_pad_attr_50_schmitt_en_50_wd),
-    .d      (hw2reg.dio_pad_attr[50].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_50_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[50].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_50_schmitt_en_50_qs)
-  );
-  assign reg2hw.dio_pad_attr[50].schmitt_en.qe = dio_pad_attr_50_qe;
-
-  //   F[od_en_50]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_50_od_en_50 (
-    .re     (dio_pad_attr_50_re),
-    .we     (dio_pad_attr_50_gated_we),
-    .wd     (dio_pad_attr_50_od_en_50_wd),
-    .d      (hw2reg.dio_pad_attr[50].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_50_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[50].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_50_od_en_50_qs)
-  );
-  assign reg2hw.dio_pad_attr[50].od_en.qe = dio_pad_attr_50_qe;
-
-  //   F[input_disable_50]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_50_input_disable_50 (
-    .re     (dio_pad_attr_50_re),
-    .we     (dio_pad_attr_50_gated_we),
-    .wd     (dio_pad_attr_50_input_disable_50_wd),
-    .d      (hw2reg.dio_pad_attr[50].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_50_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[50].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_50_input_disable_50_qs)
-  );
-  assign reg2hw.dio_pad_attr[50].input_disable.qe = dio_pad_attr_50_qe;
-
-  //   F[slew_rate_50]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_50_slew_rate_50 (
-    .re     (dio_pad_attr_50_re),
-    .we     (dio_pad_attr_50_gated_we),
-    .wd     (dio_pad_attr_50_slew_rate_50_wd),
-    .d      (hw2reg.dio_pad_attr[50].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_50_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[50].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_50_slew_rate_50_qs)
-  );
-  assign reg2hw.dio_pad_attr[50].slew_rate.qe = dio_pad_attr_50_qe;
-
-  //   F[drive_strength_50]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_50_drive_strength_50 (
-    .re     (dio_pad_attr_50_re),
-    .we     (dio_pad_attr_50_gated_we),
-    .wd     (dio_pad_attr_50_drive_strength_50_wd),
-    .d      (hw2reg.dio_pad_attr[50].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_50_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[50].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_50_drive_strength_50_qs)
-  );
-  assign reg2hw.dio_pad_attr[50].drive_strength.qe = dio_pad_attr_50_qe;
+  assign reg2hw.dio_pad_attr[50].drv.qe = dio_pad_attr_50_qe;
 
 
   // Subregister 51 of Multireg dio_pad_attr
   // R[dio_pad_attr_51]: V(True)
   logic dio_pad_attr_51_qe;
-  logic [9:0] dio_pad_attr_51_flds_we;
+  logic [3:0] dio_pad_attr_51_flds_we;
   assign dio_pad_attr_51_qe = &dio_pad_attr_51_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_51_gated_we;
   assign dio_pad_attr_51_gated_we = dio_pad_attr_51_we & dio_pad_attr_regwen_51_qs;
-  //   F[invert_51]: 0:0
+  //   F[puen_51]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_51_invert_51 (
+  ) u_dio_pad_attr_51_puen_51 (
     .re     (dio_pad_attr_51_re),
     .we     (dio_pad_attr_51_gated_we),
-    .wd     (dio_pad_attr_51_invert_51_wd),
-    .d      (hw2reg.dio_pad_attr[51].invert.d),
+    .wd     (dio_pad_attr_51_puen_51_wd),
+    .d      (hw2reg.dio_pad_attr[51].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_51_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[51].invert.q),
+    .q      (reg2hw.dio_pad_attr[51].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_51_invert_51_qs)
+    .qs     (dio_pad_attr_51_puen_51_qs)
   );
-  assign reg2hw.dio_pad_attr[51].invert.qe = dio_pad_attr_51_qe;
+  assign reg2hw.dio_pad_attr[51].puen.qe = dio_pad_attr_51_qe;
 
-  //   F[virtual_od_en_51]: 1:1
+  //   F[pden_51]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_51_virtual_od_en_51 (
+  ) u_dio_pad_attr_51_pden_51 (
     .re     (dio_pad_attr_51_re),
     .we     (dio_pad_attr_51_gated_we),
-    .wd     (dio_pad_attr_51_virtual_od_en_51_wd),
-    .d      (hw2reg.dio_pad_attr[51].virtual_od_en.d),
+    .wd     (dio_pad_attr_51_pden_51_wd),
+    .d      (hw2reg.dio_pad_attr[51].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_51_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[51].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[51].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_51_virtual_od_en_51_qs)
+    .qs     (dio_pad_attr_51_pden_51_qs)
   );
-  assign reg2hw.dio_pad_attr[51].virtual_od_en.qe = dio_pad_attr_51_qe;
+  assign reg2hw.dio_pad_attr[51].pden.qe = dio_pad_attr_51_qe;
 
-  //   F[pull_en_51]: 2:2
+  //   F[smten_51]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_51_pull_en_51 (
+  ) u_dio_pad_attr_51_smten_51 (
     .re     (dio_pad_attr_51_re),
     .we     (dio_pad_attr_51_gated_we),
-    .wd     (dio_pad_attr_51_pull_en_51_wd),
-    .d      (hw2reg.dio_pad_attr[51].pull_en.d),
+    .wd     (dio_pad_attr_51_smten_51_wd),
+    .d      (hw2reg.dio_pad_attr[51].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_51_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[51].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[51].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_51_pull_en_51_qs)
+    .qs     (dio_pad_attr_51_smten_51_qs)
   );
-  assign reg2hw.dio_pad_attr[51].pull_en.qe = dio_pad_attr_51_qe;
+  assign reg2hw.dio_pad_attr[51].smten.qe = dio_pad_attr_51_qe;
 
-  //   F[pull_select_51]: 3:3
+  //   F[drv_51]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_51_pull_select_51 (
+    .DW    (3)
+  ) u_dio_pad_attr_51_drv_51 (
     .re     (dio_pad_attr_51_re),
     .we     (dio_pad_attr_51_gated_we),
-    .wd     (dio_pad_attr_51_pull_select_51_wd),
-    .d      (hw2reg.dio_pad_attr[51].pull_select.d),
+    .wd     (dio_pad_attr_51_drv_51_wd),
+    .d      (hw2reg.dio_pad_attr[51].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_51_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[51].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[51].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_51_pull_select_51_qs)
+    .qs     (dio_pad_attr_51_drv_51_qs)
   );
-  assign reg2hw.dio_pad_attr[51].pull_select.qe = dio_pad_attr_51_qe;
-
-  //   F[keeper_en_51]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_51_keeper_en_51 (
-    .re     (dio_pad_attr_51_re),
-    .we     (dio_pad_attr_51_gated_we),
-    .wd     (dio_pad_attr_51_keeper_en_51_wd),
-    .d      (hw2reg.dio_pad_attr[51].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_51_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[51].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_51_keeper_en_51_qs)
-  );
-  assign reg2hw.dio_pad_attr[51].keeper_en.qe = dio_pad_attr_51_qe;
-
-  //   F[schmitt_en_51]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_51_schmitt_en_51 (
-    .re     (dio_pad_attr_51_re),
-    .we     (dio_pad_attr_51_gated_we),
-    .wd     (dio_pad_attr_51_schmitt_en_51_wd),
-    .d      (hw2reg.dio_pad_attr[51].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_51_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[51].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_51_schmitt_en_51_qs)
-  );
-  assign reg2hw.dio_pad_attr[51].schmitt_en.qe = dio_pad_attr_51_qe;
-
-  //   F[od_en_51]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_51_od_en_51 (
-    .re     (dio_pad_attr_51_re),
-    .we     (dio_pad_attr_51_gated_we),
-    .wd     (dio_pad_attr_51_od_en_51_wd),
-    .d      (hw2reg.dio_pad_attr[51].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_51_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[51].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_51_od_en_51_qs)
-  );
-  assign reg2hw.dio_pad_attr[51].od_en.qe = dio_pad_attr_51_qe;
-
-  //   F[input_disable_51]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_51_input_disable_51 (
-    .re     (dio_pad_attr_51_re),
-    .we     (dio_pad_attr_51_gated_we),
-    .wd     (dio_pad_attr_51_input_disable_51_wd),
-    .d      (hw2reg.dio_pad_attr[51].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_51_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[51].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_51_input_disable_51_qs)
-  );
-  assign reg2hw.dio_pad_attr[51].input_disable.qe = dio_pad_attr_51_qe;
-
-  //   F[slew_rate_51]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_51_slew_rate_51 (
-    .re     (dio_pad_attr_51_re),
-    .we     (dio_pad_attr_51_gated_we),
-    .wd     (dio_pad_attr_51_slew_rate_51_wd),
-    .d      (hw2reg.dio_pad_attr[51].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_51_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[51].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_51_slew_rate_51_qs)
-  );
-  assign reg2hw.dio_pad_attr[51].slew_rate.qe = dio_pad_attr_51_qe;
-
-  //   F[drive_strength_51]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_51_drive_strength_51 (
-    .re     (dio_pad_attr_51_re),
-    .we     (dio_pad_attr_51_gated_we),
-    .wd     (dio_pad_attr_51_drive_strength_51_wd),
-    .d      (hw2reg.dio_pad_attr[51].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_51_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[51].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_51_drive_strength_51_qs)
-  );
-  assign reg2hw.dio_pad_attr[51].drive_strength.qe = dio_pad_attr_51_qe;
+  assign reg2hw.dio_pad_attr[51].drv.qe = dio_pad_attr_51_qe;
 
 
   // Subregister 52 of Multireg dio_pad_attr
   // R[dio_pad_attr_52]: V(True)
   logic dio_pad_attr_52_qe;
-  logic [9:0] dio_pad_attr_52_flds_we;
+  logic [3:0] dio_pad_attr_52_flds_we;
   assign dio_pad_attr_52_qe = &dio_pad_attr_52_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_52_gated_we;
   assign dio_pad_attr_52_gated_we = dio_pad_attr_52_we & dio_pad_attr_regwen_52_qs;
-  //   F[invert_52]: 0:0
+  //   F[puen_52]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_52_invert_52 (
+  ) u_dio_pad_attr_52_puen_52 (
     .re     (dio_pad_attr_52_re),
     .we     (dio_pad_attr_52_gated_we),
-    .wd     (dio_pad_attr_52_invert_52_wd),
-    .d      (hw2reg.dio_pad_attr[52].invert.d),
+    .wd     (dio_pad_attr_52_puen_52_wd),
+    .d      (hw2reg.dio_pad_attr[52].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_52_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[52].invert.q),
+    .q      (reg2hw.dio_pad_attr[52].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_52_invert_52_qs)
+    .qs     (dio_pad_attr_52_puen_52_qs)
   );
-  assign reg2hw.dio_pad_attr[52].invert.qe = dio_pad_attr_52_qe;
+  assign reg2hw.dio_pad_attr[52].puen.qe = dio_pad_attr_52_qe;
 
-  //   F[virtual_od_en_52]: 1:1
+  //   F[pden_52]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_52_virtual_od_en_52 (
+  ) u_dio_pad_attr_52_pden_52 (
     .re     (dio_pad_attr_52_re),
     .we     (dio_pad_attr_52_gated_we),
-    .wd     (dio_pad_attr_52_virtual_od_en_52_wd),
-    .d      (hw2reg.dio_pad_attr[52].virtual_od_en.d),
+    .wd     (dio_pad_attr_52_pden_52_wd),
+    .d      (hw2reg.dio_pad_attr[52].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_52_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[52].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[52].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_52_virtual_od_en_52_qs)
+    .qs     (dio_pad_attr_52_pden_52_qs)
   );
-  assign reg2hw.dio_pad_attr[52].virtual_od_en.qe = dio_pad_attr_52_qe;
+  assign reg2hw.dio_pad_attr[52].pden.qe = dio_pad_attr_52_qe;
 
-  //   F[pull_en_52]: 2:2
+  //   F[smten_52]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_52_pull_en_52 (
+  ) u_dio_pad_attr_52_smten_52 (
     .re     (dio_pad_attr_52_re),
     .we     (dio_pad_attr_52_gated_we),
-    .wd     (dio_pad_attr_52_pull_en_52_wd),
-    .d      (hw2reg.dio_pad_attr[52].pull_en.d),
+    .wd     (dio_pad_attr_52_smten_52_wd),
+    .d      (hw2reg.dio_pad_attr[52].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_52_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[52].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[52].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_52_pull_en_52_qs)
+    .qs     (dio_pad_attr_52_smten_52_qs)
   );
-  assign reg2hw.dio_pad_attr[52].pull_en.qe = dio_pad_attr_52_qe;
+  assign reg2hw.dio_pad_attr[52].smten.qe = dio_pad_attr_52_qe;
 
-  //   F[pull_select_52]: 3:3
+  //   F[drv_52]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_52_pull_select_52 (
+    .DW    (3)
+  ) u_dio_pad_attr_52_drv_52 (
     .re     (dio_pad_attr_52_re),
     .we     (dio_pad_attr_52_gated_we),
-    .wd     (dio_pad_attr_52_pull_select_52_wd),
-    .d      (hw2reg.dio_pad_attr[52].pull_select.d),
+    .wd     (dio_pad_attr_52_drv_52_wd),
+    .d      (hw2reg.dio_pad_attr[52].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_52_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[52].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[52].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_52_pull_select_52_qs)
+    .qs     (dio_pad_attr_52_drv_52_qs)
   );
-  assign reg2hw.dio_pad_attr[52].pull_select.qe = dio_pad_attr_52_qe;
-
-  //   F[keeper_en_52]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_52_keeper_en_52 (
-    .re     (dio_pad_attr_52_re),
-    .we     (dio_pad_attr_52_gated_we),
-    .wd     (dio_pad_attr_52_keeper_en_52_wd),
-    .d      (hw2reg.dio_pad_attr[52].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_52_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[52].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_52_keeper_en_52_qs)
-  );
-  assign reg2hw.dio_pad_attr[52].keeper_en.qe = dio_pad_attr_52_qe;
-
-  //   F[schmitt_en_52]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_52_schmitt_en_52 (
-    .re     (dio_pad_attr_52_re),
-    .we     (dio_pad_attr_52_gated_we),
-    .wd     (dio_pad_attr_52_schmitt_en_52_wd),
-    .d      (hw2reg.dio_pad_attr[52].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_52_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[52].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_52_schmitt_en_52_qs)
-  );
-  assign reg2hw.dio_pad_attr[52].schmitt_en.qe = dio_pad_attr_52_qe;
-
-  //   F[od_en_52]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_52_od_en_52 (
-    .re     (dio_pad_attr_52_re),
-    .we     (dio_pad_attr_52_gated_we),
-    .wd     (dio_pad_attr_52_od_en_52_wd),
-    .d      (hw2reg.dio_pad_attr[52].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_52_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[52].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_52_od_en_52_qs)
-  );
-  assign reg2hw.dio_pad_attr[52].od_en.qe = dio_pad_attr_52_qe;
-
-  //   F[input_disable_52]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_52_input_disable_52 (
-    .re     (dio_pad_attr_52_re),
-    .we     (dio_pad_attr_52_gated_we),
-    .wd     (dio_pad_attr_52_input_disable_52_wd),
-    .d      (hw2reg.dio_pad_attr[52].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_52_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[52].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_52_input_disable_52_qs)
-  );
-  assign reg2hw.dio_pad_attr[52].input_disable.qe = dio_pad_attr_52_qe;
-
-  //   F[slew_rate_52]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_52_slew_rate_52 (
-    .re     (dio_pad_attr_52_re),
-    .we     (dio_pad_attr_52_gated_we),
-    .wd     (dio_pad_attr_52_slew_rate_52_wd),
-    .d      (hw2reg.dio_pad_attr[52].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_52_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[52].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_52_slew_rate_52_qs)
-  );
-  assign reg2hw.dio_pad_attr[52].slew_rate.qe = dio_pad_attr_52_qe;
-
-  //   F[drive_strength_52]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_52_drive_strength_52 (
-    .re     (dio_pad_attr_52_re),
-    .we     (dio_pad_attr_52_gated_we),
-    .wd     (dio_pad_attr_52_drive_strength_52_wd),
-    .d      (hw2reg.dio_pad_attr[52].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_52_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[52].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_52_drive_strength_52_qs)
-  );
-  assign reg2hw.dio_pad_attr[52].drive_strength.qe = dio_pad_attr_52_qe;
+  assign reg2hw.dio_pad_attr[52].drv.qe = dio_pad_attr_52_qe;
 
 
   // Subregister 53 of Multireg dio_pad_attr
   // R[dio_pad_attr_53]: V(True)
   logic dio_pad_attr_53_qe;
-  logic [9:0] dio_pad_attr_53_flds_we;
+  logic [3:0] dio_pad_attr_53_flds_we;
   assign dio_pad_attr_53_qe = &dio_pad_attr_53_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_53_gated_we;
   assign dio_pad_attr_53_gated_we = dio_pad_attr_53_we & dio_pad_attr_regwen_53_qs;
-  //   F[invert_53]: 0:0
+  //   F[puen_53]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_53_invert_53 (
+  ) u_dio_pad_attr_53_puen_53 (
     .re     (dio_pad_attr_53_re),
     .we     (dio_pad_attr_53_gated_we),
-    .wd     (dio_pad_attr_53_invert_53_wd),
-    .d      (hw2reg.dio_pad_attr[53].invert.d),
+    .wd     (dio_pad_attr_53_puen_53_wd),
+    .d      (hw2reg.dio_pad_attr[53].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_53_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[53].invert.q),
+    .q      (reg2hw.dio_pad_attr[53].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_53_invert_53_qs)
+    .qs     (dio_pad_attr_53_puen_53_qs)
   );
-  assign reg2hw.dio_pad_attr[53].invert.qe = dio_pad_attr_53_qe;
+  assign reg2hw.dio_pad_attr[53].puen.qe = dio_pad_attr_53_qe;
 
-  //   F[virtual_od_en_53]: 1:1
+  //   F[pden_53]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_53_virtual_od_en_53 (
+  ) u_dio_pad_attr_53_pden_53 (
     .re     (dio_pad_attr_53_re),
     .we     (dio_pad_attr_53_gated_we),
-    .wd     (dio_pad_attr_53_virtual_od_en_53_wd),
-    .d      (hw2reg.dio_pad_attr[53].virtual_od_en.d),
+    .wd     (dio_pad_attr_53_pden_53_wd),
+    .d      (hw2reg.dio_pad_attr[53].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_53_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[53].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[53].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_53_virtual_od_en_53_qs)
+    .qs     (dio_pad_attr_53_pden_53_qs)
   );
-  assign reg2hw.dio_pad_attr[53].virtual_od_en.qe = dio_pad_attr_53_qe;
+  assign reg2hw.dio_pad_attr[53].pden.qe = dio_pad_attr_53_qe;
 
-  //   F[pull_en_53]: 2:2
+  //   F[smten_53]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_53_pull_en_53 (
+  ) u_dio_pad_attr_53_smten_53 (
     .re     (dio_pad_attr_53_re),
     .we     (dio_pad_attr_53_gated_we),
-    .wd     (dio_pad_attr_53_pull_en_53_wd),
-    .d      (hw2reg.dio_pad_attr[53].pull_en.d),
+    .wd     (dio_pad_attr_53_smten_53_wd),
+    .d      (hw2reg.dio_pad_attr[53].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_53_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[53].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[53].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_53_pull_en_53_qs)
+    .qs     (dio_pad_attr_53_smten_53_qs)
   );
-  assign reg2hw.dio_pad_attr[53].pull_en.qe = dio_pad_attr_53_qe;
+  assign reg2hw.dio_pad_attr[53].smten.qe = dio_pad_attr_53_qe;
 
-  //   F[pull_select_53]: 3:3
+  //   F[drv_53]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_53_pull_select_53 (
+    .DW    (3)
+  ) u_dio_pad_attr_53_drv_53 (
     .re     (dio_pad_attr_53_re),
     .we     (dio_pad_attr_53_gated_we),
-    .wd     (dio_pad_attr_53_pull_select_53_wd),
-    .d      (hw2reg.dio_pad_attr[53].pull_select.d),
+    .wd     (dio_pad_attr_53_drv_53_wd),
+    .d      (hw2reg.dio_pad_attr[53].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_53_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[53].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[53].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_53_pull_select_53_qs)
+    .qs     (dio_pad_attr_53_drv_53_qs)
   );
-  assign reg2hw.dio_pad_attr[53].pull_select.qe = dio_pad_attr_53_qe;
-
-  //   F[keeper_en_53]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_53_keeper_en_53 (
-    .re     (dio_pad_attr_53_re),
-    .we     (dio_pad_attr_53_gated_we),
-    .wd     (dio_pad_attr_53_keeper_en_53_wd),
-    .d      (hw2reg.dio_pad_attr[53].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_53_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[53].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_53_keeper_en_53_qs)
-  );
-  assign reg2hw.dio_pad_attr[53].keeper_en.qe = dio_pad_attr_53_qe;
-
-  //   F[schmitt_en_53]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_53_schmitt_en_53 (
-    .re     (dio_pad_attr_53_re),
-    .we     (dio_pad_attr_53_gated_we),
-    .wd     (dio_pad_attr_53_schmitt_en_53_wd),
-    .d      (hw2reg.dio_pad_attr[53].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_53_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[53].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_53_schmitt_en_53_qs)
-  );
-  assign reg2hw.dio_pad_attr[53].schmitt_en.qe = dio_pad_attr_53_qe;
-
-  //   F[od_en_53]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_53_od_en_53 (
-    .re     (dio_pad_attr_53_re),
-    .we     (dio_pad_attr_53_gated_we),
-    .wd     (dio_pad_attr_53_od_en_53_wd),
-    .d      (hw2reg.dio_pad_attr[53].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_53_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[53].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_53_od_en_53_qs)
-  );
-  assign reg2hw.dio_pad_attr[53].od_en.qe = dio_pad_attr_53_qe;
-
-  //   F[input_disable_53]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_53_input_disable_53 (
-    .re     (dio_pad_attr_53_re),
-    .we     (dio_pad_attr_53_gated_we),
-    .wd     (dio_pad_attr_53_input_disable_53_wd),
-    .d      (hw2reg.dio_pad_attr[53].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_53_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[53].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_53_input_disable_53_qs)
-  );
-  assign reg2hw.dio_pad_attr[53].input_disable.qe = dio_pad_attr_53_qe;
-
-  //   F[slew_rate_53]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_53_slew_rate_53 (
-    .re     (dio_pad_attr_53_re),
-    .we     (dio_pad_attr_53_gated_we),
-    .wd     (dio_pad_attr_53_slew_rate_53_wd),
-    .d      (hw2reg.dio_pad_attr[53].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_53_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[53].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_53_slew_rate_53_qs)
-  );
-  assign reg2hw.dio_pad_attr[53].slew_rate.qe = dio_pad_attr_53_qe;
-
-  //   F[drive_strength_53]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_53_drive_strength_53 (
-    .re     (dio_pad_attr_53_re),
-    .we     (dio_pad_attr_53_gated_we),
-    .wd     (dio_pad_attr_53_drive_strength_53_wd),
-    .d      (hw2reg.dio_pad_attr[53].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_53_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[53].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_53_drive_strength_53_qs)
-  );
-  assign reg2hw.dio_pad_attr[53].drive_strength.qe = dio_pad_attr_53_qe;
+  assign reg2hw.dio_pad_attr[53].drv.qe = dio_pad_attr_53_qe;
 
 
   // Subregister 54 of Multireg dio_pad_attr
   // R[dio_pad_attr_54]: V(True)
   logic dio_pad_attr_54_qe;
-  logic [9:0] dio_pad_attr_54_flds_we;
+  logic [3:0] dio_pad_attr_54_flds_we;
   assign dio_pad_attr_54_qe = &dio_pad_attr_54_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_54_gated_we;
   assign dio_pad_attr_54_gated_we = dio_pad_attr_54_we & dio_pad_attr_regwen_54_qs;
-  //   F[invert_54]: 0:0
+  //   F[puen_54]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_54_invert_54 (
+  ) u_dio_pad_attr_54_puen_54 (
     .re     (dio_pad_attr_54_re),
     .we     (dio_pad_attr_54_gated_we),
-    .wd     (dio_pad_attr_54_invert_54_wd),
-    .d      (hw2reg.dio_pad_attr[54].invert.d),
+    .wd     (dio_pad_attr_54_puen_54_wd),
+    .d      (hw2reg.dio_pad_attr[54].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_54_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[54].invert.q),
+    .q      (reg2hw.dio_pad_attr[54].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_54_invert_54_qs)
+    .qs     (dio_pad_attr_54_puen_54_qs)
   );
-  assign reg2hw.dio_pad_attr[54].invert.qe = dio_pad_attr_54_qe;
+  assign reg2hw.dio_pad_attr[54].puen.qe = dio_pad_attr_54_qe;
 
-  //   F[virtual_od_en_54]: 1:1
+  //   F[pden_54]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_54_virtual_od_en_54 (
+  ) u_dio_pad_attr_54_pden_54 (
     .re     (dio_pad_attr_54_re),
     .we     (dio_pad_attr_54_gated_we),
-    .wd     (dio_pad_attr_54_virtual_od_en_54_wd),
-    .d      (hw2reg.dio_pad_attr[54].virtual_od_en.d),
+    .wd     (dio_pad_attr_54_pden_54_wd),
+    .d      (hw2reg.dio_pad_attr[54].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_54_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[54].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[54].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_54_virtual_od_en_54_qs)
+    .qs     (dio_pad_attr_54_pden_54_qs)
   );
-  assign reg2hw.dio_pad_attr[54].virtual_od_en.qe = dio_pad_attr_54_qe;
+  assign reg2hw.dio_pad_attr[54].pden.qe = dio_pad_attr_54_qe;
 
-  //   F[pull_en_54]: 2:2
+  //   F[smten_54]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_54_pull_en_54 (
+  ) u_dio_pad_attr_54_smten_54 (
     .re     (dio_pad_attr_54_re),
     .we     (dio_pad_attr_54_gated_we),
-    .wd     (dio_pad_attr_54_pull_en_54_wd),
-    .d      (hw2reg.dio_pad_attr[54].pull_en.d),
+    .wd     (dio_pad_attr_54_smten_54_wd),
+    .d      (hw2reg.dio_pad_attr[54].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_54_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[54].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[54].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_54_pull_en_54_qs)
+    .qs     (dio_pad_attr_54_smten_54_qs)
   );
-  assign reg2hw.dio_pad_attr[54].pull_en.qe = dio_pad_attr_54_qe;
+  assign reg2hw.dio_pad_attr[54].smten.qe = dio_pad_attr_54_qe;
 
-  //   F[pull_select_54]: 3:3
+  //   F[drv_54]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_54_pull_select_54 (
+    .DW    (3)
+  ) u_dio_pad_attr_54_drv_54 (
     .re     (dio_pad_attr_54_re),
     .we     (dio_pad_attr_54_gated_we),
-    .wd     (dio_pad_attr_54_pull_select_54_wd),
-    .d      (hw2reg.dio_pad_attr[54].pull_select.d),
+    .wd     (dio_pad_attr_54_drv_54_wd),
+    .d      (hw2reg.dio_pad_attr[54].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_54_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[54].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[54].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_54_pull_select_54_qs)
+    .qs     (dio_pad_attr_54_drv_54_qs)
   );
-  assign reg2hw.dio_pad_attr[54].pull_select.qe = dio_pad_attr_54_qe;
-
-  //   F[keeper_en_54]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_54_keeper_en_54 (
-    .re     (dio_pad_attr_54_re),
-    .we     (dio_pad_attr_54_gated_we),
-    .wd     (dio_pad_attr_54_keeper_en_54_wd),
-    .d      (hw2reg.dio_pad_attr[54].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_54_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[54].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_54_keeper_en_54_qs)
-  );
-  assign reg2hw.dio_pad_attr[54].keeper_en.qe = dio_pad_attr_54_qe;
-
-  //   F[schmitt_en_54]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_54_schmitt_en_54 (
-    .re     (dio_pad_attr_54_re),
-    .we     (dio_pad_attr_54_gated_we),
-    .wd     (dio_pad_attr_54_schmitt_en_54_wd),
-    .d      (hw2reg.dio_pad_attr[54].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_54_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[54].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_54_schmitt_en_54_qs)
-  );
-  assign reg2hw.dio_pad_attr[54].schmitt_en.qe = dio_pad_attr_54_qe;
-
-  //   F[od_en_54]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_54_od_en_54 (
-    .re     (dio_pad_attr_54_re),
-    .we     (dio_pad_attr_54_gated_we),
-    .wd     (dio_pad_attr_54_od_en_54_wd),
-    .d      (hw2reg.dio_pad_attr[54].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_54_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[54].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_54_od_en_54_qs)
-  );
-  assign reg2hw.dio_pad_attr[54].od_en.qe = dio_pad_attr_54_qe;
-
-  //   F[input_disable_54]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_54_input_disable_54 (
-    .re     (dio_pad_attr_54_re),
-    .we     (dio_pad_attr_54_gated_we),
-    .wd     (dio_pad_attr_54_input_disable_54_wd),
-    .d      (hw2reg.dio_pad_attr[54].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_54_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[54].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_54_input_disable_54_qs)
-  );
-  assign reg2hw.dio_pad_attr[54].input_disable.qe = dio_pad_attr_54_qe;
-
-  //   F[slew_rate_54]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_54_slew_rate_54 (
-    .re     (dio_pad_attr_54_re),
-    .we     (dio_pad_attr_54_gated_we),
-    .wd     (dio_pad_attr_54_slew_rate_54_wd),
-    .d      (hw2reg.dio_pad_attr[54].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_54_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[54].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_54_slew_rate_54_qs)
-  );
-  assign reg2hw.dio_pad_attr[54].slew_rate.qe = dio_pad_attr_54_qe;
-
-  //   F[drive_strength_54]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_54_drive_strength_54 (
-    .re     (dio_pad_attr_54_re),
-    .we     (dio_pad_attr_54_gated_we),
-    .wd     (dio_pad_attr_54_drive_strength_54_wd),
-    .d      (hw2reg.dio_pad_attr[54].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_54_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[54].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_54_drive_strength_54_qs)
-  );
-  assign reg2hw.dio_pad_attr[54].drive_strength.qe = dio_pad_attr_54_qe;
+  assign reg2hw.dio_pad_attr[54].drv.qe = dio_pad_attr_54_qe;
 
 
   // Subregister 55 of Multireg dio_pad_attr
   // R[dio_pad_attr_55]: V(True)
   logic dio_pad_attr_55_qe;
-  logic [9:0] dio_pad_attr_55_flds_we;
+  logic [3:0] dio_pad_attr_55_flds_we;
   assign dio_pad_attr_55_qe = &dio_pad_attr_55_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_55_gated_we;
   assign dio_pad_attr_55_gated_we = dio_pad_attr_55_we & dio_pad_attr_regwen_55_qs;
-  //   F[invert_55]: 0:0
+  //   F[puen_55]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_55_invert_55 (
+  ) u_dio_pad_attr_55_puen_55 (
     .re     (dio_pad_attr_55_re),
     .we     (dio_pad_attr_55_gated_we),
-    .wd     (dio_pad_attr_55_invert_55_wd),
-    .d      (hw2reg.dio_pad_attr[55].invert.d),
+    .wd     (dio_pad_attr_55_puen_55_wd),
+    .d      (hw2reg.dio_pad_attr[55].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_55_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[55].invert.q),
+    .q      (reg2hw.dio_pad_attr[55].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_55_invert_55_qs)
+    .qs     (dio_pad_attr_55_puen_55_qs)
   );
-  assign reg2hw.dio_pad_attr[55].invert.qe = dio_pad_attr_55_qe;
+  assign reg2hw.dio_pad_attr[55].puen.qe = dio_pad_attr_55_qe;
 
-  //   F[virtual_od_en_55]: 1:1
+  //   F[pden_55]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_55_virtual_od_en_55 (
+  ) u_dio_pad_attr_55_pden_55 (
     .re     (dio_pad_attr_55_re),
     .we     (dio_pad_attr_55_gated_we),
-    .wd     (dio_pad_attr_55_virtual_od_en_55_wd),
-    .d      (hw2reg.dio_pad_attr[55].virtual_od_en.d),
+    .wd     (dio_pad_attr_55_pden_55_wd),
+    .d      (hw2reg.dio_pad_attr[55].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_55_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[55].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[55].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_55_virtual_od_en_55_qs)
+    .qs     (dio_pad_attr_55_pden_55_qs)
   );
-  assign reg2hw.dio_pad_attr[55].virtual_od_en.qe = dio_pad_attr_55_qe;
+  assign reg2hw.dio_pad_attr[55].pden.qe = dio_pad_attr_55_qe;
 
-  //   F[pull_en_55]: 2:2
+  //   F[smten_55]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_55_pull_en_55 (
+  ) u_dio_pad_attr_55_smten_55 (
     .re     (dio_pad_attr_55_re),
     .we     (dio_pad_attr_55_gated_we),
-    .wd     (dio_pad_attr_55_pull_en_55_wd),
-    .d      (hw2reg.dio_pad_attr[55].pull_en.d),
+    .wd     (dio_pad_attr_55_smten_55_wd),
+    .d      (hw2reg.dio_pad_attr[55].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_55_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[55].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[55].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_55_pull_en_55_qs)
+    .qs     (dio_pad_attr_55_smten_55_qs)
   );
-  assign reg2hw.dio_pad_attr[55].pull_en.qe = dio_pad_attr_55_qe;
+  assign reg2hw.dio_pad_attr[55].smten.qe = dio_pad_attr_55_qe;
 
-  //   F[pull_select_55]: 3:3
+  //   F[drv_55]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_55_pull_select_55 (
+    .DW    (3)
+  ) u_dio_pad_attr_55_drv_55 (
     .re     (dio_pad_attr_55_re),
     .we     (dio_pad_attr_55_gated_we),
-    .wd     (dio_pad_attr_55_pull_select_55_wd),
-    .d      (hw2reg.dio_pad_attr[55].pull_select.d),
+    .wd     (dio_pad_attr_55_drv_55_wd),
+    .d      (hw2reg.dio_pad_attr[55].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_55_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[55].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[55].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_55_pull_select_55_qs)
+    .qs     (dio_pad_attr_55_drv_55_qs)
   );
-  assign reg2hw.dio_pad_attr[55].pull_select.qe = dio_pad_attr_55_qe;
-
-  //   F[keeper_en_55]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_55_keeper_en_55 (
-    .re     (dio_pad_attr_55_re),
-    .we     (dio_pad_attr_55_gated_we),
-    .wd     (dio_pad_attr_55_keeper_en_55_wd),
-    .d      (hw2reg.dio_pad_attr[55].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_55_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[55].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_55_keeper_en_55_qs)
-  );
-  assign reg2hw.dio_pad_attr[55].keeper_en.qe = dio_pad_attr_55_qe;
-
-  //   F[schmitt_en_55]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_55_schmitt_en_55 (
-    .re     (dio_pad_attr_55_re),
-    .we     (dio_pad_attr_55_gated_we),
-    .wd     (dio_pad_attr_55_schmitt_en_55_wd),
-    .d      (hw2reg.dio_pad_attr[55].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_55_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[55].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_55_schmitt_en_55_qs)
-  );
-  assign reg2hw.dio_pad_attr[55].schmitt_en.qe = dio_pad_attr_55_qe;
-
-  //   F[od_en_55]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_55_od_en_55 (
-    .re     (dio_pad_attr_55_re),
-    .we     (dio_pad_attr_55_gated_we),
-    .wd     (dio_pad_attr_55_od_en_55_wd),
-    .d      (hw2reg.dio_pad_attr[55].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_55_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[55].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_55_od_en_55_qs)
-  );
-  assign reg2hw.dio_pad_attr[55].od_en.qe = dio_pad_attr_55_qe;
-
-  //   F[input_disable_55]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_55_input_disable_55 (
-    .re     (dio_pad_attr_55_re),
-    .we     (dio_pad_attr_55_gated_we),
-    .wd     (dio_pad_attr_55_input_disable_55_wd),
-    .d      (hw2reg.dio_pad_attr[55].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_55_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[55].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_55_input_disable_55_qs)
-  );
-  assign reg2hw.dio_pad_attr[55].input_disable.qe = dio_pad_attr_55_qe;
-
-  //   F[slew_rate_55]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_55_slew_rate_55 (
-    .re     (dio_pad_attr_55_re),
-    .we     (dio_pad_attr_55_gated_we),
-    .wd     (dio_pad_attr_55_slew_rate_55_wd),
-    .d      (hw2reg.dio_pad_attr[55].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_55_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[55].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_55_slew_rate_55_qs)
-  );
-  assign reg2hw.dio_pad_attr[55].slew_rate.qe = dio_pad_attr_55_qe;
-
-  //   F[drive_strength_55]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_55_drive_strength_55 (
-    .re     (dio_pad_attr_55_re),
-    .we     (dio_pad_attr_55_gated_we),
-    .wd     (dio_pad_attr_55_drive_strength_55_wd),
-    .d      (hw2reg.dio_pad_attr[55].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_55_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[55].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_55_drive_strength_55_qs)
-  );
-  assign reg2hw.dio_pad_attr[55].drive_strength.qe = dio_pad_attr_55_qe;
+  assign reg2hw.dio_pad_attr[55].drv.qe = dio_pad_attr_55_qe;
 
 
   // Subregister 56 of Multireg dio_pad_attr
   // R[dio_pad_attr_56]: V(True)
   logic dio_pad_attr_56_qe;
-  logic [9:0] dio_pad_attr_56_flds_we;
+  logic [3:0] dio_pad_attr_56_flds_we;
   assign dio_pad_attr_56_qe = &dio_pad_attr_56_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_56_gated_we;
   assign dio_pad_attr_56_gated_we = dio_pad_attr_56_we & dio_pad_attr_regwen_56_qs;
-  //   F[invert_56]: 0:0
+  //   F[puen_56]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_56_invert_56 (
+  ) u_dio_pad_attr_56_puen_56 (
     .re     (dio_pad_attr_56_re),
     .we     (dio_pad_attr_56_gated_we),
-    .wd     (dio_pad_attr_56_invert_56_wd),
-    .d      (hw2reg.dio_pad_attr[56].invert.d),
+    .wd     (dio_pad_attr_56_puen_56_wd),
+    .d      (hw2reg.dio_pad_attr[56].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_56_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[56].invert.q),
+    .q      (reg2hw.dio_pad_attr[56].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_56_invert_56_qs)
+    .qs     (dio_pad_attr_56_puen_56_qs)
   );
-  assign reg2hw.dio_pad_attr[56].invert.qe = dio_pad_attr_56_qe;
+  assign reg2hw.dio_pad_attr[56].puen.qe = dio_pad_attr_56_qe;
 
-  //   F[virtual_od_en_56]: 1:1
+  //   F[pden_56]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_56_virtual_od_en_56 (
+  ) u_dio_pad_attr_56_pden_56 (
     .re     (dio_pad_attr_56_re),
     .we     (dio_pad_attr_56_gated_we),
-    .wd     (dio_pad_attr_56_virtual_od_en_56_wd),
-    .d      (hw2reg.dio_pad_attr[56].virtual_od_en.d),
+    .wd     (dio_pad_attr_56_pden_56_wd),
+    .d      (hw2reg.dio_pad_attr[56].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_56_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[56].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[56].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_56_virtual_od_en_56_qs)
+    .qs     (dio_pad_attr_56_pden_56_qs)
   );
-  assign reg2hw.dio_pad_attr[56].virtual_od_en.qe = dio_pad_attr_56_qe;
+  assign reg2hw.dio_pad_attr[56].pden.qe = dio_pad_attr_56_qe;
 
-  //   F[pull_en_56]: 2:2
+  //   F[smten_56]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_56_pull_en_56 (
+  ) u_dio_pad_attr_56_smten_56 (
     .re     (dio_pad_attr_56_re),
     .we     (dio_pad_attr_56_gated_we),
-    .wd     (dio_pad_attr_56_pull_en_56_wd),
-    .d      (hw2reg.dio_pad_attr[56].pull_en.d),
+    .wd     (dio_pad_attr_56_smten_56_wd),
+    .d      (hw2reg.dio_pad_attr[56].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_56_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[56].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[56].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_56_pull_en_56_qs)
+    .qs     (dio_pad_attr_56_smten_56_qs)
   );
-  assign reg2hw.dio_pad_attr[56].pull_en.qe = dio_pad_attr_56_qe;
+  assign reg2hw.dio_pad_attr[56].smten.qe = dio_pad_attr_56_qe;
 
-  //   F[pull_select_56]: 3:3
+  //   F[drv_56]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_56_pull_select_56 (
+    .DW    (3)
+  ) u_dio_pad_attr_56_drv_56 (
     .re     (dio_pad_attr_56_re),
     .we     (dio_pad_attr_56_gated_we),
-    .wd     (dio_pad_attr_56_pull_select_56_wd),
-    .d      (hw2reg.dio_pad_attr[56].pull_select.d),
+    .wd     (dio_pad_attr_56_drv_56_wd),
+    .d      (hw2reg.dio_pad_attr[56].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_56_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[56].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[56].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_56_pull_select_56_qs)
+    .qs     (dio_pad_attr_56_drv_56_qs)
   );
-  assign reg2hw.dio_pad_attr[56].pull_select.qe = dio_pad_attr_56_qe;
-
-  //   F[keeper_en_56]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_56_keeper_en_56 (
-    .re     (dio_pad_attr_56_re),
-    .we     (dio_pad_attr_56_gated_we),
-    .wd     (dio_pad_attr_56_keeper_en_56_wd),
-    .d      (hw2reg.dio_pad_attr[56].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_56_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[56].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_56_keeper_en_56_qs)
-  );
-  assign reg2hw.dio_pad_attr[56].keeper_en.qe = dio_pad_attr_56_qe;
-
-  //   F[schmitt_en_56]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_56_schmitt_en_56 (
-    .re     (dio_pad_attr_56_re),
-    .we     (dio_pad_attr_56_gated_we),
-    .wd     (dio_pad_attr_56_schmitt_en_56_wd),
-    .d      (hw2reg.dio_pad_attr[56].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_56_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[56].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_56_schmitt_en_56_qs)
-  );
-  assign reg2hw.dio_pad_attr[56].schmitt_en.qe = dio_pad_attr_56_qe;
-
-  //   F[od_en_56]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_56_od_en_56 (
-    .re     (dio_pad_attr_56_re),
-    .we     (dio_pad_attr_56_gated_we),
-    .wd     (dio_pad_attr_56_od_en_56_wd),
-    .d      (hw2reg.dio_pad_attr[56].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_56_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[56].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_56_od_en_56_qs)
-  );
-  assign reg2hw.dio_pad_attr[56].od_en.qe = dio_pad_attr_56_qe;
-
-  //   F[input_disable_56]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_56_input_disable_56 (
-    .re     (dio_pad_attr_56_re),
-    .we     (dio_pad_attr_56_gated_we),
-    .wd     (dio_pad_attr_56_input_disable_56_wd),
-    .d      (hw2reg.dio_pad_attr[56].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_56_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[56].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_56_input_disable_56_qs)
-  );
-  assign reg2hw.dio_pad_attr[56].input_disable.qe = dio_pad_attr_56_qe;
-
-  //   F[slew_rate_56]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_56_slew_rate_56 (
-    .re     (dio_pad_attr_56_re),
-    .we     (dio_pad_attr_56_gated_we),
-    .wd     (dio_pad_attr_56_slew_rate_56_wd),
-    .d      (hw2reg.dio_pad_attr[56].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_56_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[56].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_56_slew_rate_56_qs)
-  );
-  assign reg2hw.dio_pad_attr[56].slew_rate.qe = dio_pad_attr_56_qe;
-
-  //   F[drive_strength_56]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_56_drive_strength_56 (
-    .re     (dio_pad_attr_56_re),
-    .we     (dio_pad_attr_56_gated_we),
-    .wd     (dio_pad_attr_56_drive_strength_56_wd),
-    .d      (hw2reg.dio_pad_attr[56].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_56_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[56].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_56_drive_strength_56_qs)
-  );
-  assign reg2hw.dio_pad_attr[56].drive_strength.qe = dio_pad_attr_56_qe;
+  assign reg2hw.dio_pad_attr[56].drv.qe = dio_pad_attr_56_qe;
 
 
   // Subregister 57 of Multireg dio_pad_attr
   // R[dio_pad_attr_57]: V(True)
   logic dio_pad_attr_57_qe;
-  logic [9:0] dio_pad_attr_57_flds_we;
+  logic [3:0] dio_pad_attr_57_flds_we;
   assign dio_pad_attr_57_qe = &dio_pad_attr_57_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_57_gated_we;
   assign dio_pad_attr_57_gated_we = dio_pad_attr_57_we & dio_pad_attr_regwen_57_qs;
-  //   F[invert_57]: 0:0
+  //   F[puen_57]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_57_invert_57 (
+  ) u_dio_pad_attr_57_puen_57 (
     .re     (dio_pad_attr_57_re),
     .we     (dio_pad_attr_57_gated_we),
-    .wd     (dio_pad_attr_57_invert_57_wd),
-    .d      (hw2reg.dio_pad_attr[57].invert.d),
+    .wd     (dio_pad_attr_57_puen_57_wd),
+    .d      (hw2reg.dio_pad_attr[57].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_57_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[57].invert.q),
+    .q      (reg2hw.dio_pad_attr[57].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_57_invert_57_qs)
+    .qs     (dio_pad_attr_57_puen_57_qs)
   );
-  assign reg2hw.dio_pad_attr[57].invert.qe = dio_pad_attr_57_qe;
+  assign reg2hw.dio_pad_attr[57].puen.qe = dio_pad_attr_57_qe;
 
-  //   F[virtual_od_en_57]: 1:1
+  //   F[pden_57]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_57_virtual_od_en_57 (
+  ) u_dio_pad_attr_57_pden_57 (
     .re     (dio_pad_attr_57_re),
     .we     (dio_pad_attr_57_gated_we),
-    .wd     (dio_pad_attr_57_virtual_od_en_57_wd),
-    .d      (hw2reg.dio_pad_attr[57].virtual_od_en.d),
+    .wd     (dio_pad_attr_57_pden_57_wd),
+    .d      (hw2reg.dio_pad_attr[57].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_57_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[57].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[57].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_57_virtual_od_en_57_qs)
+    .qs     (dio_pad_attr_57_pden_57_qs)
   );
-  assign reg2hw.dio_pad_attr[57].virtual_od_en.qe = dio_pad_attr_57_qe;
+  assign reg2hw.dio_pad_attr[57].pden.qe = dio_pad_attr_57_qe;
 
-  //   F[pull_en_57]: 2:2
+  //   F[smten_57]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_57_pull_en_57 (
+  ) u_dio_pad_attr_57_smten_57 (
     .re     (dio_pad_attr_57_re),
     .we     (dio_pad_attr_57_gated_we),
-    .wd     (dio_pad_attr_57_pull_en_57_wd),
-    .d      (hw2reg.dio_pad_attr[57].pull_en.d),
+    .wd     (dio_pad_attr_57_smten_57_wd),
+    .d      (hw2reg.dio_pad_attr[57].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_57_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[57].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[57].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_57_pull_en_57_qs)
+    .qs     (dio_pad_attr_57_smten_57_qs)
   );
-  assign reg2hw.dio_pad_attr[57].pull_en.qe = dio_pad_attr_57_qe;
+  assign reg2hw.dio_pad_attr[57].smten.qe = dio_pad_attr_57_qe;
 
-  //   F[pull_select_57]: 3:3
+  //   F[drv_57]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_57_pull_select_57 (
+    .DW    (3)
+  ) u_dio_pad_attr_57_drv_57 (
     .re     (dio_pad_attr_57_re),
     .we     (dio_pad_attr_57_gated_we),
-    .wd     (dio_pad_attr_57_pull_select_57_wd),
-    .d      (hw2reg.dio_pad_attr[57].pull_select.d),
+    .wd     (dio_pad_attr_57_drv_57_wd),
+    .d      (hw2reg.dio_pad_attr[57].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_57_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[57].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[57].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_57_pull_select_57_qs)
+    .qs     (dio_pad_attr_57_drv_57_qs)
   );
-  assign reg2hw.dio_pad_attr[57].pull_select.qe = dio_pad_attr_57_qe;
-
-  //   F[keeper_en_57]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_57_keeper_en_57 (
-    .re     (dio_pad_attr_57_re),
-    .we     (dio_pad_attr_57_gated_we),
-    .wd     (dio_pad_attr_57_keeper_en_57_wd),
-    .d      (hw2reg.dio_pad_attr[57].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_57_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[57].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_57_keeper_en_57_qs)
-  );
-  assign reg2hw.dio_pad_attr[57].keeper_en.qe = dio_pad_attr_57_qe;
-
-  //   F[schmitt_en_57]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_57_schmitt_en_57 (
-    .re     (dio_pad_attr_57_re),
-    .we     (dio_pad_attr_57_gated_we),
-    .wd     (dio_pad_attr_57_schmitt_en_57_wd),
-    .d      (hw2reg.dio_pad_attr[57].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_57_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[57].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_57_schmitt_en_57_qs)
-  );
-  assign reg2hw.dio_pad_attr[57].schmitt_en.qe = dio_pad_attr_57_qe;
-
-  //   F[od_en_57]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_57_od_en_57 (
-    .re     (dio_pad_attr_57_re),
-    .we     (dio_pad_attr_57_gated_we),
-    .wd     (dio_pad_attr_57_od_en_57_wd),
-    .d      (hw2reg.dio_pad_attr[57].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_57_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[57].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_57_od_en_57_qs)
-  );
-  assign reg2hw.dio_pad_attr[57].od_en.qe = dio_pad_attr_57_qe;
-
-  //   F[input_disable_57]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_57_input_disable_57 (
-    .re     (dio_pad_attr_57_re),
-    .we     (dio_pad_attr_57_gated_we),
-    .wd     (dio_pad_attr_57_input_disable_57_wd),
-    .d      (hw2reg.dio_pad_attr[57].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_57_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[57].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_57_input_disable_57_qs)
-  );
-  assign reg2hw.dio_pad_attr[57].input_disable.qe = dio_pad_attr_57_qe;
-
-  //   F[slew_rate_57]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_57_slew_rate_57 (
-    .re     (dio_pad_attr_57_re),
-    .we     (dio_pad_attr_57_gated_we),
-    .wd     (dio_pad_attr_57_slew_rate_57_wd),
-    .d      (hw2reg.dio_pad_attr[57].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_57_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[57].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_57_slew_rate_57_qs)
-  );
-  assign reg2hw.dio_pad_attr[57].slew_rate.qe = dio_pad_attr_57_qe;
-
-  //   F[drive_strength_57]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_57_drive_strength_57 (
-    .re     (dio_pad_attr_57_re),
-    .we     (dio_pad_attr_57_gated_we),
-    .wd     (dio_pad_attr_57_drive_strength_57_wd),
-    .d      (hw2reg.dio_pad_attr[57].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_57_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[57].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_57_drive_strength_57_qs)
-  );
-  assign reg2hw.dio_pad_attr[57].drive_strength.qe = dio_pad_attr_57_qe;
+  assign reg2hw.dio_pad_attr[57].drv.qe = dio_pad_attr_57_qe;
 
 
   // Subregister 58 of Multireg dio_pad_attr
   // R[dio_pad_attr_58]: V(True)
   logic dio_pad_attr_58_qe;
-  logic [9:0] dio_pad_attr_58_flds_we;
+  logic [3:0] dio_pad_attr_58_flds_we;
   assign dio_pad_attr_58_qe = &dio_pad_attr_58_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_58_gated_we;
   assign dio_pad_attr_58_gated_we = dio_pad_attr_58_we & dio_pad_attr_regwen_58_qs;
-  //   F[invert_58]: 0:0
+  //   F[puen_58]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_58_invert_58 (
+  ) u_dio_pad_attr_58_puen_58 (
     .re     (dio_pad_attr_58_re),
     .we     (dio_pad_attr_58_gated_we),
-    .wd     (dio_pad_attr_58_invert_58_wd),
-    .d      (hw2reg.dio_pad_attr[58].invert.d),
+    .wd     (dio_pad_attr_58_puen_58_wd),
+    .d      (hw2reg.dio_pad_attr[58].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_58_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[58].invert.q),
+    .q      (reg2hw.dio_pad_attr[58].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_58_invert_58_qs)
+    .qs     (dio_pad_attr_58_puen_58_qs)
   );
-  assign reg2hw.dio_pad_attr[58].invert.qe = dio_pad_attr_58_qe;
+  assign reg2hw.dio_pad_attr[58].puen.qe = dio_pad_attr_58_qe;
 
-  //   F[virtual_od_en_58]: 1:1
+  //   F[pden_58]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_58_virtual_od_en_58 (
+  ) u_dio_pad_attr_58_pden_58 (
     .re     (dio_pad_attr_58_re),
     .we     (dio_pad_attr_58_gated_we),
-    .wd     (dio_pad_attr_58_virtual_od_en_58_wd),
-    .d      (hw2reg.dio_pad_attr[58].virtual_od_en.d),
+    .wd     (dio_pad_attr_58_pden_58_wd),
+    .d      (hw2reg.dio_pad_attr[58].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_58_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[58].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[58].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_58_virtual_od_en_58_qs)
+    .qs     (dio_pad_attr_58_pden_58_qs)
   );
-  assign reg2hw.dio_pad_attr[58].virtual_od_en.qe = dio_pad_attr_58_qe;
+  assign reg2hw.dio_pad_attr[58].pden.qe = dio_pad_attr_58_qe;
 
-  //   F[pull_en_58]: 2:2
+  //   F[smten_58]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_58_pull_en_58 (
+  ) u_dio_pad_attr_58_smten_58 (
     .re     (dio_pad_attr_58_re),
     .we     (dio_pad_attr_58_gated_we),
-    .wd     (dio_pad_attr_58_pull_en_58_wd),
-    .d      (hw2reg.dio_pad_attr[58].pull_en.d),
+    .wd     (dio_pad_attr_58_smten_58_wd),
+    .d      (hw2reg.dio_pad_attr[58].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_58_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[58].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[58].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_58_pull_en_58_qs)
+    .qs     (dio_pad_attr_58_smten_58_qs)
   );
-  assign reg2hw.dio_pad_attr[58].pull_en.qe = dio_pad_attr_58_qe;
+  assign reg2hw.dio_pad_attr[58].smten.qe = dio_pad_attr_58_qe;
 
-  //   F[pull_select_58]: 3:3
+  //   F[drv_58]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_58_pull_select_58 (
+    .DW    (3)
+  ) u_dio_pad_attr_58_drv_58 (
     .re     (dio_pad_attr_58_re),
     .we     (dio_pad_attr_58_gated_we),
-    .wd     (dio_pad_attr_58_pull_select_58_wd),
-    .d      (hw2reg.dio_pad_attr[58].pull_select.d),
+    .wd     (dio_pad_attr_58_drv_58_wd),
+    .d      (hw2reg.dio_pad_attr[58].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_58_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[58].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[58].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_58_pull_select_58_qs)
+    .qs     (dio_pad_attr_58_drv_58_qs)
   );
-  assign reg2hw.dio_pad_attr[58].pull_select.qe = dio_pad_attr_58_qe;
-
-  //   F[keeper_en_58]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_58_keeper_en_58 (
-    .re     (dio_pad_attr_58_re),
-    .we     (dio_pad_attr_58_gated_we),
-    .wd     (dio_pad_attr_58_keeper_en_58_wd),
-    .d      (hw2reg.dio_pad_attr[58].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_58_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[58].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_58_keeper_en_58_qs)
-  );
-  assign reg2hw.dio_pad_attr[58].keeper_en.qe = dio_pad_attr_58_qe;
-
-  //   F[schmitt_en_58]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_58_schmitt_en_58 (
-    .re     (dio_pad_attr_58_re),
-    .we     (dio_pad_attr_58_gated_we),
-    .wd     (dio_pad_attr_58_schmitt_en_58_wd),
-    .d      (hw2reg.dio_pad_attr[58].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_58_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[58].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_58_schmitt_en_58_qs)
-  );
-  assign reg2hw.dio_pad_attr[58].schmitt_en.qe = dio_pad_attr_58_qe;
-
-  //   F[od_en_58]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_58_od_en_58 (
-    .re     (dio_pad_attr_58_re),
-    .we     (dio_pad_attr_58_gated_we),
-    .wd     (dio_pad_attr_58_od_en_58_wd),
-    .d      (hw2reg.dio_pad_attr[58].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_58_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[58].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_58_od_en_58_qs)
-  );
-  assign reg2hw.dio_pad_attr[58].od_en.qe = dio_pad_attr_58_qe;
-
-  //   F[input_disable_58]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_58_input_disable_58 (
-    .re     (dio_pad_attr_58_re),
-    .we     (dio_pad_attr_58_gated_we),
-    .wd     (dio_pad_attr_58_input_disable_58_wd),
-    .d      (hw2reg.dio_pad_attr[58].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_58_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[58].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_58_input_disable_58_qs)
-  );
-  assign reg2hw.dio_pad_attr[58].input_disable.qe = dio_pad_attr_58_qe;
-
-  //   F[slew_rate_58]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_58_slew_rate_58 (
-    .re     (dio_pad_attr_58_re),
-    .we     (dio_pad_attr_58_gated_we),
-    .wd     (dio_pad_attr_58_slew_rate_58_wd),
-    .d      (hw2reg.dio_pad_attr[58].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_58_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[58].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_58_slew_rate_58_qs)
-  );
-  assign reg2hw.dio_pad_attr[58].slew_rate.qe = dio_pad_attr_58_qe;
-
-  //   F[drive_strength_58]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_58_drive_strength_58 (
-    .re     (dio_pad_attr_58_re),
-    .we     (dio_pad_attr_58_gated_we),
-    .wd     (dio_pad_attr_58_drive_strength_58_wd),
-    .d      (hw2reg.dio_pad_attr[58].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_58_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[58].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_58_drive_strength_58_qs)
-  );
-  assign reg2hw.dio_pad_attr[58].drive_strength.qe = dio_pad_attr_58_qe;
+  assign reg2hw.dio_pad_attr[58].drv.qe = dio_pad_attr_58_qe;
 
 
   // Subregister 59 of Multireg dio_pad_attr
   // R[dio_pad_attr_59]: V(True)
   logic dio_pad_attr_59_qe;
-  logic [9:0] dio_pad_attr_59_flds_we;
+  logic [3:0] dio_pad_attr_59_flds_we;
   assign dio_pad_attr_59_qe = &dio_pad_attr_59_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_59_gated_we;
   assign dio_pad_attr_59_gated_we = dio_pad_attr_59_we & dio_pad_attr_regwen_59_qs;
-  //   F[invert_59]: 0:0
+  //   F[puen_59]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_59_invert_59 (
+  ) u_dio_pad_attr_59_puen_59 (
     .re     (dio_pad_attr_59_re),
     .we     (dio_pad_attr_59_gated_we),
-    .wd     (dio_pad_attr_59_invert_59_wd),
-    .d      (hw2reg.dio_pad_attr[59].invert.d),
+    .wd     (dio_pad_attr_59_puen_59_wd),
+    .d      (hw2reg.dio_pad_attr[59].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_59_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[59].invert.q),
+    .q      (reg2hw.dio_pad_attr[59].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_59_invert_59_qs)
+    .qs     (dio_pad_attr_59_puen_59_qs)
   );
-  assign reg2hw.dio_pad_attr[59].invert.qe = dio_pad_attr_59_qe;
+  assign reg2hw.dio_pad_attr[59].puen.qe = dio_pad_attr_59_qe;
 
-  //   F[virtual_od_en_59]: 1:1
+  //   F[pden_59]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_59_virtual_od_en_59 (
+  ) u_dio_pad_attr_59_pden_59 (
     .re     (dio_pad_attr_59_re),
     .we     (dio_pad_attr_59_gated_we),
-    .wd     (dio_pad_attr_59_virtual_od_en_59_wd),
-    .d      (hw2reg.dio_pad_attr[59].virtual_od_en.d),
+    .wd     (dio_pad_attr_59_pden_59_wd),
+    .d      (hw2reg.dio_pad_attr[59].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_59_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[59].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[59].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_59_virtual_od_en_59_qs)
+    .qs     (dio_pad_attr_59_pden_59_qs)
   );
-  assign reg2hw.dio_pad_attr[59].virtual_od_en.qe = dio_pad_attr_59_qe;
+  assign reg2hw.dio_pad_attr[59].pden.qe = dio_pad_attr_59_qe;
 
-  //   F[pull_en_59]: 2:2
+  //   F[smten_59]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_59_pull_en_59 (
+  ) u_dio_pad_attr_59_smten_59 (
     .re     (dio_pad_attr_59_re),
     .we     (dio_pad_attr_59_gated_we),
-    .wd     (dio_pad_attr_59_pull_en_59_wd),
-    .d      (hw2reg.dio_pad_attr[59].pull_en.d),
+    .wd     (dio_pad_attr_59_smten_59_wd),
+    .d      (hw2reg.dio_pad_attr[59].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_59_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[59].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[59].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_59_pull_en_59_qs)
+    .qs     (dio_pad_attr_59_smten_59_qs)
   );
-  assign reg2hw.dio_pad_attr[59].pull_en.qe = dio_pad_attr_59_qe;
+  assign reg2hw.dio_pad_attr[59].smten.qe = dio_pad_attr_59_qe;
 
-  //   F[pull_select_59]: 3:3
+  //   F[drv_59]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_59_pull_select_59 (
+    .DW    (3)
+  ) u_dio_pad_attr_59_drv_59 (
     .re     (dio_pad_attr_59_re),
     .we     (dio_pad_attr_59_gated_we),
-    .wd     (dio_pad_attr_59_pull_select_59_wd),
-    .d      (hw2reg.dio_pad_attr[59].pull_select.d),
+    .wd     (dio_pad_attr_59_drv_59_wd),
+    .d      (hw2reg.dio_pad_attr[59].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_59_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[59].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[59].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_59_pull_select_59_qs)
+    .qs     (dio_pad_attr_59_drv_59_qs)
   );
-  assign reg2hw.dio_pad_attr[59].pull_select.qe = dio_pad_attr_59_qe;
-
-  //   F[keeper_en_59]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_59_keeper_en_59 (
-    .re     (dio_pad_attr_59_re),
-    .we     (dio_pad_attr_59_gated_we),
-    .wd     (dio_pad_attr_59_keeper_en_59_wd),
-    .d      (hw2reg.dio_pad_attr[59].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_59_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[59].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_59_keeper_en_59_qs)
-  );
-  assign reg2hw.dio_pad_attr[59].keeper_en.qe = dio_pad_attr_59_qe;
-
-  //   F[schmitt_en_59]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_59_schmitt_en_59 (
-    .re     (dio_pad_attr_59_re),
-    .we     (dio_pad_attr_59_gated_we),
-    .wd     (dio_pad_attr_59_schmitt_en_59_wd),
-    .d      (hw2reg.dio_pad_attr[59].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_59_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[59].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_59_schmitt_en_59_qs)
-  );
-  assign reg2hw.dio_pad_attr[59].schmitt_en.qe = dio_pad_attr_59_qe;
-
-  //   F[od_en_59]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_59_od_en_59 (
-    .re     (dio_pad_attr_59_re),
-    .we     (dio_pad_attr_59_gated_we),
-    .wd     (dio_pad_attr_59_od_en_59_wd),
-    .d      (hw2reg.dio_pad_attr[59].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_59_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[59].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_59_od_en_59_qs)
-  );
-  assign reg2hw.dio_pad_attr[59].od_en.qe = dio_pad_attr_59_qe;
-
-  //   F[input_disable_59]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_59_input_disable_59 (
-    .re     (dio_pad_attr_59_re),
-    .we     (dio_pad_attr_59_gated_we),
-    .wd     (dio_pad_attr_59_input_disable_59_wd),
-    .d      (hw2reg.dio_pad_attr[59].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_59_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[59].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_59_input_disable_59_qs)
-  );
-  assign reg2hw.dio_pad_attr[59].input_disable.qe = dio_pad_attr_59_qe;
-
-  //   F[slew_rate_59]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_59_slew_rate_59 (
-    .re     (dio_pad_attr_59_re),
-    .we     (dio_pad_attr_59_gated_we),
-    .wd     (dio_pad_attr_59_slew_rate_59_wd),
-    .d      (hw2reg.dio_pad_attr[59].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_59_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[59].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_59_slew_rate_59_qs)
-  );
-  assign reg2hw.dio_pad_attr[59].slew_rate.qe = dio_pad_attr_59_qe;
-
-  //   F[drive_strength_59]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_59_drive_strength_59 (
-    .re     (dio_pad_attr_59_re),
-    .we     (dio_pad_attr_59_gated_we),
-    .wd     (dio_pad_attr_59_drive_strength_59_wd),
-    .d      (hw2reg.dio_pad_attr[59].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_59_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[59].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_59_drive_strength_59_qs)
-  );
-  assign reg2hw.dio_pad_attr[59].drive_strength.qe = dio_pad_attr_59_qe;
+  assign reg2hw.dio_pad_attr[59].drv.qe = dio_pad_attr_59_qe;
 
 
   // Subregister 60 of Multireg dio_pad_attr
   // R[dio_pad_attr_60]: V(True)
   logic dio_pad_attr_60_qe;
-  logic [9:0] dio_pad_attr_60_flds_we;
+  logic [3:0] dio_pad_attr_60_flds_we;
   assign dio_pad_attr_60_qe = &dio_pad_attr_60_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_60_gated_we;
   assign dio_pad_attr_60_gated_we = dio_pad_attr_60_we & dio_pad_attr_regwen_60_qs;
-  //   F[invert_60]: 0:0
+  //   F[puen_60]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_60_invert_60 (
+  ) u_dio_pad_attr_60_puen_60 (
     .re     (dio_pad_attr_60_re),
     .we     (dio_pad_attr_60_gated_we),
-    .wd     (dio_pad_attr_60_invert_60_wd),
-    .d      (hw2reg.dio_pad_attr[60].invert.d),
+    .wd     (dio_pad_attr_60_puen_60_wd),
+    .d      (hw2reg.dio_pad_attr[60].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_60_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[60].invert.q),
+    .q      (reg2hw.dio_pad_attr[60].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_60_invert_60_qs)
+    .qs     (dio_pad_attr_60_puen_60_qs)
   );
-  assign reg2hw.dio_pad_attr[60].invert.qe = dio_pad_attr_60_qe;
+  assign reg2hw.dio_pad_attr[60].puen.qe = dio_pad_attr_60_qe;
 
-  //   F[virtual_od_en_60]: 1:1
+  //   F[pden_60]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_60_virtual_od_en_60 (
+  ) u_dio_pad_attr_60_pden_60 (
     .re     (dio_pad_attr_60_re),
     .we     (dio_pad_attr_60_gated_we),
-    .wd     (dio_pad_attr_60_virtual_od_en_60_wd),
-    .d      (hw2reg.dio_pad_attr[60].virtual_od_en.d),
+    .wd     (dio_pad_attr_60_pden_60_wd),
+    .d      (hw2reg.dio_pad_attr[60].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_60_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[60].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[60].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_60_virtual_od_en_60_qs)
+    .qs     (dio_pad_attr_60_pden_60_qs)
   );
-  assign reg2hw.dio_pad_attr[60].virtual_od_en.qe = dio_pad_attr_60_qe;
+  assign reg2hw.dio_pad_attr[60].pden.qe = dio_pad_attr_60_qe;
 
-  //   F[pull_en_60]: 2:2
+  //   F[smten_60]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_60_pull_en_60 (
+  ) u_dio_pad_attr_60_smten_60 (
     .re     (dio_pad_attr_60_re),
     .we     (dio_pad_attr_60_gated_we),
-    .wd     (dio_pad_attr_60_pull_en_60_wd),
-    .d      (hw2reg.dio_pad_attr[60].pull_en.d),
+    .wd     (dio_pad_attr_60_smten_60_wd),
+    .d      (hw2reg.dio_pad_attr[60].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_60_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[60].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[60].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_60_pull_en_60_qs)
+    .qs     (dio_pad_attr_60_smten_60_qs)
   );
-  assign reg2hw.dio_pad_attr[60].pull_en.qe = dio_pad_attr_60_qe;
+  assign reg2hw.dio_pad_attr[60].smten.qe = dio_pad_attr_60_qe;
 
-  //   F[pull_select_60]: 3:3
+  //   F[drv_60]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_60_pull_select_60 (
+    .DW    (3)
+  ) u_dio_pad_attr_60_drv_60 (
     .re     (dio_pad_attr_60_re),
     .we     (dio_pad_attr_60_gated_we),
-    .wd     (dio_pad_attr_60_pull_select_60_wd),
-    .d      (hw2reg.dio_pad_attr[60].pull_select.d),
+    .wd     (dio_pad_attr_60_drv_60_wd),
+    .d      (hw2reg.dio_pad_attr[60].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_60_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[60].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[60].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_60_pull_select_60_qs)
+    .qs     (dio_pad_attr_60_drv_60_qs)
   );
-  assign reg2hw.dio_pad_attr[60].pull_select.qe = dio_pad_attr_60_qe;
-
-  //   F[keeper_en_60]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_60_keeper_en_60 (
-    .re     (dio_pad_attr_60_re),
-    .we     (dio_pad_attr_60_gated_we),
-    .wd     (dio_pad_attr_60_keeper_en_60_wd),
-    .d      (hw2reg.dio_pad_attr[60].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_60_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[60].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_60_keeper_en_60_qs)
-  );
-  assign reg2hw.dio_pad_attr[60].keeper_en.qe = dio_pad_attr_60_qe;
-
-  //   F[schmitt_en_60]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_60_schmitt_en_60 (
-    .re     (dio_pad_attr_60_re),
-    .we     (dio_pad_attr_60_gated_we),
-    .wd     (dio_pad_attr_60_schmitt_en_60_wd),
-    .d      (hw2reg.dio_pad_attr[60].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_60_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[60].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_60_schmitt_en_60_qs)
-  );
-  assign reg2hw.dio_pad_attr[60].schmitt_en.qe = dio_pad_attr_60_qe;
-
-  //   F[od_en_60]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_60_od_en_60 (
-    .re     (dio_pad_attr_60_re),
-    .we     (dio_pad_attr_60_gated_we),
-    .wd     (dio_pad_attr_60_od_en_60_wd),
-    .d      (hw2reg.dio_pad_attr[60].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_60_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[60].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_60_od_en_60_qs)
-  );
-  assign reg2hw.dio_pad_attr[60].od_en.qe = dio_pad_attr_60_qe;
-
-  //   F[input_disable_60]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_60_input_disable_60 (
-    .re     (dio_pad_attr_60_re),
-    .we     (dio_pad_attr_60_gated_we),
-    .wd     (dio_pad_attr_60_input_disable_60_wd),
-    .d      (hw2reg.dio_pad_attr[60].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_60_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[60].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_60_input_disable_60_qs)
-  );
-  assign reg2hw.dio_pad_attr[60].input_disable.qe = dio_pad_attr_60_qe;
-
-  //   F[slew_rate_60]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_60_slew_rate_60 (
-    .re     (dio_pad_attr_60_re),
-    .we     (dio_pad_attr_60_gated_we),
-    .wd     (dio_pad_attr_60_slew_rate_60_wd),
-    .d      (hw2reg.dio_pad_attr[60].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_60_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[60].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_60_slew_rate_60_qs)
-  );
-  assign reg2hw.dio_pad_attr[60].slew_rate.qe = dio_pad_attr_60_qe;
-
-  //   F[drive_strength_60]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_60_drive_strength_60 (
-    .re     (dio_pad_attr_60_re),
-    .we     (dio_pad_attr_60_gated_we),
-    .wd     (dio_pad_attr_60_drive_strength_60_wd),
-    .d      (hw2reg.dio_pad_attr[60].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_60_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[60].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_60_drive_strength_60_qs)
-  );
-  assign reg2hw.dio_pad_attr[60].drive_strength.qe = dio_pad_attr_60_qe;
+  assign reg2hw.dio_pad_attr[60].drv.qe = dio_pad_attr_60_qe;
 
 
   // Subregister 61 of Multireg dio_pad_attr
   // R[dio_pad_attr_61]: V(True)
   logic dio_pad_attr_61_qe;
-  logic [9:0] dio_pad_attr_61_flds_we;
+  logic [3:0] dio_pad_attr_61_flds_we;
   assign dio_pad_attr_61_qe = &dio_pad_attr_61_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_61_gated_we;
   assign dio_pad_attr_61_gated_we = dio_pad_attr_61_we & dio_pad_attr_regwen_61_qs;
-  //   F[invert_61]: 0:0
+  //   F[puen_61]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_61_invert_61 (
+  ) u_dio_pad_attr_61_puen_61 (
     .re     (dio_pad_attr_61_re),
     .we     (dio_pad_attr_61_gated_we),
-    .wd     (dio_pad_attr_61_invert_61_wd),
-    .d      (hw2reg.dio_pad_attr[61].invert.d),
+    .wd     (dio_pad_attr_61_puen_61_wd),
+    .d      (hw2reg.dio_pad_attr[61].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_61_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[61].invert.q),
+    .q      (reg2hw.dio_pad_attr[61].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_61_invert_61_qs)
+    .qs     (dio_pad_attr_61_puen_61_qs)
   );
-  assign reg2hw.dio_pad_attr[61].invert.qe = dio_pad_attr_61_qe;
+  assign reg2hw.dio_pad_attr[61].puen.qe = dio_pad_attr_61_qe;
 
-  //   F[virtual_od_en_61]: 1:1
+  //   F[pden_61]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_61_virtual_od_en_61 (
+  ) u_dio_pad_attr_61_pden_61 (
     .re     (dio_pad_attr_61_re),
     .we     (dio_pad_attr_61_gated_we),
-    .wd     (dio_pad_attr_61_virtual_od_en_61_wd),
-    .d      (hw2reg.dio_pad_attr[61].virtual_od_en.d),
+    .wd     (dio_pad_attr_61_pden_61_wd),
+    .d      (hw2reg.dio_pad_attr[61].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_61_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[61].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[61].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_61_virtual_od_en_61_qs)
+    .qs     (dio_pad_attr_61_pden_61_qs)
   );
-  assign reg2hw.dio_pad_attr[61].virtual_od_en.qe = dio_pad_attr_61_qe;
+  assign reg2hw.dio_pad_attr[61].pden.qe = dio_pad_attr_61_qe;
 
-  //   F[pull_en_61]: 2:2
+  //   F[smten_61]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_61_pull_en_61 (
+  ) u_dio_pad_attr_61_smten_61 (
     .re     (dio_pad_attr_61_re),
     .we     (dio_pad_attr_61_gated_we),
-    .wd     (dio_pad_attr_61_pull_en_61_wd),
-    .d      (hw2reg.dio_pad_attr[61].pull_en.d),
+    .wd     (dio_pad_attr_61_smten_61_wd),
+    .d      (hw2reg.dio_pad_attr[61].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_61_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[61].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[61].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_61_pull_en_61_qs)
+    .qs     (dio_pad_attr_61_smten_61_qs)
   );
-  assign reg2hw.dio_pad_attr[61].pull_en.qe = dio_pad_attr_61_qe;
+  assign reg2hw.dio_pad_attr[61].smten.qe = dio_pad_attr_61_qe;
 
-  //   F[pull_select_61]: 3:3
+  //   F[drv_61]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_61_pull_select_61 (
+    .DW    (3)
+  ) u_dio_pad_attr_61_drv_61 (
     .re     (dio_pad_attr_61_re),
     .we     (dio_pad_attr_61_gated_we),
-    .wd     (dio_pad_attr_61_pull_select_61_wd),
-    .d      (hw2reg.dio_pad_attr[61].pull_select.d),
+    .wd     (dio_pad_attr_61_drv_61_wd),
+    .d      (hw2reg.dio_pad_attr[61].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_61_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[61].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[61].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_61_pull_select_61_qs)
+    .qs     (dio_pad_attr_61_drv_61_qs)
   );
-  assign reg2hw.dio_pad_attr[61].pull_select.qe = dio_pad_attr_61_qe;
-
-  //   F[keeper_en_61]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_61_keeper_en_61 (
-    .re     (dio_pad_attr_61_re),
-    .we     (dio_pad_attr_61_gated_we),
-    .wd     (dio_pad_attr_61_keeper_en_61_wd),
-    .d      (hw2reg.dio_pad_attr[61].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_61_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[61].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_61_keeper_en_61_qs)
-  );
-  assign reg2hw.dio_pad_attr[61].keeper_en.qe = dio_pad_attr_61_qe;
-
-  //   F[schmitt_en_61]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_61_schmitt_en_61 (
-    .re     (dio_pad_attr_61_re),
-    .we     (dio_pad_attr_61_gated_we),
-    .wd     (dio_pad_attr_61_schmitt_en_61_wd),
-    .d      (hw2reg.dio_pad_attr[61].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_61_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[61].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_61_schmitt_en_61_qs)
-  );
-  assign reg2hw.dio_pad_attr[61].schmitt_en.qe = dio_pad_attr_61_qe;
-
-  //   F[od_en_61]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_61_od_en_61 (
-    .re     (dio_pad_attr_61_re),
-    .we     (dio_pad_attr_61_gated_we),
-    .wd     (dio_pad_attr_61_od_en_61_wd),
-    .d      (hw2reg.dio_pad_attr[61].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_61_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[61].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_61_od_en_61_qs)
-  );
-  assign reg2hw.dio_pad_attr[61].od_en.qe = dio_pad_attr_61_qe;
-
-  //   F[input_disable_61]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_61_input_disable_61 (
-    .re     (dio_pad_attr_61_re),
-    .we     (dio_pad_attr_61_gated_we),
-    .wd     (dio_pad_attr_61_input_disable_61_wd),
-    .d      (hw2reg.dio_pad_attr[61].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_61_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[61].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_61_input_disable_61_qs)
-  );
-  assign reg2hw.dio_pad_attr[61].input_disable.qe = dio_pad_attr_61_qe;
-
-  //   F[slew_rate_61]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_61_slew_rate_61 (
-    .re     (dio_pad_attr_61_re),
-    .we     (dio_pad_attr_61_gated_we),
-    .wd     (dio_pad_attr_61_slew_rate_61_wd),
-    .d      (hw2reg.dio_pad_attr[61].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_61_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[61].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_61_slew_rate_61_qs)
-  );
-  assign reg2hw.dio_pad_attr[61].slew_rate.qe = dio_pad_attr_61_qe;
-
-  //   F[drive_strength_61]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_61_drive_strength_61 (
-    .re     (dio_pad_attr_61_re),
-    .we     (dio_pad_attr_61_gated_we),
-    .wd     (dio_pad_attr_61_drive_strength_61_wd),
-    .d      (hw2reg.dio_pad_attr[61].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_61_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[61].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_61_drive_strength_61_qs)
-  );
-  assign reg2hw.dio_pad_attr[61].drive_strength.qe = dio_pad_attr_61_qe;
+  assign reg2hw.dio_pad_attr[61].drv.qe = dio_pad_attr_61_qe;
 
 
   // Subregister 62 of Multireg dio_pad_attr
   // R[dio_pad_attr_62]: V(True)
   logic dio_pad_attr_62_qe;
-  logic [9:0] dio_pad_attr_62_flds_we;
+  logic [3:0] dio_pad_attr_62_flds_we;
   assign dio_pad_attr_62_qe = &dio_pad_attr_62_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_62_gated_we;
   assign dio_pad_attr_62_gated_we = dio_pad_attr_62_we & dio_pad_attr_regwen_62_qs;
-  //   F[invert_62]: 0:0
+  //   F[puen_62]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_62_invert_62 (
+  ) u_dio_pad_attr_62_puen_62 (
     .re     (dio_pad_attr_62_re),
     .we     (dio_pad_attr_62_gated_we),
-    .wd     (dio_pad_attr_62_invert_62_wd),
-    .d      (hw2reg.dio_pad_attr[62].invert.d),
+    .wd     (dio_pad_attr_62_puen_62_wd),
+    .d      (hw2reg.dio_pad_attr[62].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_62_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[62].invert.q),
+    .q      (reg2hw.dio_pad_attr[62].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_62_invert_62_qs)
+    .qs     (dio_pad_attr_62_puen_62_qs)
   );
-  assign reg2hw.dio_pad_attr[62].invert.qe = dio_pad_attr_62_qe;
+  assign reg2hw.dio_pad_attr[62].puen.qe = dio_pad_attr_62_qe;
 
-  //   F[virtual_od_en_62]: 1:1
+  //   F[pden_62]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_62_virtual_od_en_62 (
+  ) u_dio_pad_attr_62_pden_62 (
     .re     (dio_pad_attr_62_re),
     .we     (dio_pad_attr_62_gated_we),
-    .wd     (dio_pad_attr_62_virtual_od_en_62_wd),
-    .d      (hw2reg.dio_pad_attr[62].virtual_od_en.d),
+    .wd     (dio_pad_attr_62_pden_62_wd),
+    .d      (hw2reg.dio_pad_attr[62].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_62_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[62].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[62].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_62_virtual_od_en_62_qs)
+    .qs     (dio_pad_attr_62_pden_62_qs)
   );
-  assign reg2hw.dio_pad_attr[62].virtual_od_en.qe = dio_pad_attr_62_qe;
+  assign reg2hw.dio_pad_attr[62].pden.qe = dio_pad_attr_62_qe;
 
-  //   F[pull_en_62]: 2:2
+  //   F[smten_62]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_62_pull_en_62 (
+  ) u_dio_pad_attr_62_smten_62 (
     .re     (dio_pad_attr_62_re),
     .we     (dio_pad_attr_62_gated_we),
-    .wd     (dio_pad_attr_62_pull_en_62_wd),
-    .d      (hw2reg.dio_pad_attr[62].pull_en.d),
+    .wd     (dio_pad_attr_62_smten_62_wd),
+    .d      (hw2reg.dio_pad_attr[62].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_62_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[62].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[62].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_62_pull_en_62_qs)
+    .qs     (dio_pad_attr_62_smten_62_qs)
   );
-  assign reg2hw.dio_pad_attr[62].pull_en.qe = dio_pad_attr_62_qe;
+  assign reg2hw.dio_pad_attr[62].smten.qe = dio_pad_attr_62_qe;
 
-  //   F[pull_select_62]: 3:3
+  //   F[drv_62]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_62_pull_select_62 (
+    .DW    (3)
+  ) u_dio_pad_attr_62_drv_62 (
     .re     (dio_pad_attr_62_re),
     .we     (dio_pad_attr_62_gated_we),
-    .wd     (dio_pad_attr_62_pull_select_62_wd),
-    .d      (hw2reg.dio_pad_attr[62].pull_select.d),
+    .wd     (dio_pad_attr_62_drv_62_wd),
+    .d      (hw2reg.dio_pad_attr[62].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_62_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[62].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[62].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_62_pull_select_62_qs)
+    .qs     (dio_pad_attr_62_drv_62_qs)
   );
-  assign reg2hw.dio_pad_attr[62].pull_select.qe = dio_pad_attr_62_qe;
-
-  //   F[keeper_en_62]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_62_keeper_en_62 (
-    .re     (dio_pad_attr_62_re),
-    .we     (dio_pad_attr_62_gated_we),
-    .wd     (dio_pad_attr_62_keeper_en_62_wd),
-    .d      (hw2reg.dio_pad_attr[62].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_62_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[62].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_62_keeper_en_62_qs)
-  );
-  assign reg2hw.dio_pad_attr[62].keeper_en.qe = dio_pad_attr_62_qe;
-
-  //   F[schmitt_en_62]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_62_schmitt_en_62 (
-    .re     (dio_pad_attr_62_re),
-    .we     (dio_pad_attr_62_gated_we),
-    .wd     (dio_pad_attr_62_schmitt_en_62_wd),
-    .d      (hw2reg.dio_pad_attr[62].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_62_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[62].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_62_schmitt_en_62_qs)
-  );
-  assign reg2hw.dio_pad_attr[62].schmitt_en.qe = dio_pad_attr_62_qe;
-
-  //   F[od_en_62]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_62_od_en_62 (
-    .re     (dio_pad_attr_62_re),
-    .we     (dio_pad_attr_62_gated_we),
-    .wd     (dio_pad_attr_62_od_en_62_wd),
-    .d      (hw2reg.dio_pad_attr[62].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_62_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[62].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_62_od_en_62_qs)
-  );
-  assign reg2hw.dio_pad_attr[62].od_en.qe = dio_pad_attr_62_qe;
-
-  //   F[input_disable_62]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_62_input_disable_62 (
-    .re     (dio_pad_attr_62_re),
-    .we     (dio_pad_attr_62_gated_we),
-    .wd     (dio_pad_attr_62_input_disable_62_wd),
-    .d      (hw2reg.dio_pad_attr[62].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_62_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[62].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_62_input_disable_62_qs)
-  );
-  assign reg2hw.dio_pad_attr[62].input_disable.qe = dio_pad_attr_62_qe;
-
-  //   F[slew_rate_62]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_62_slew_rate_62 (
-    .re     (dio_pad_attr_62_re),
-    .we     (dio_pad_attr_62_gated_we),
-    .wd     (dio_pad_attr_62_slew_rate_62_wd),
-    .d      (hw2reg.dio_pad_attr[62].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_62_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[62].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_62_slew_rate_62_qs)
-  );
-  assign reg2hw.dio_pad_attr[62].slew_rate.qe = dio_pad_attr_62_qe;
-
-  //   F[drive_strength_62]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_62_drive_strength_62 (
-    .re     (dio_pad_attr_62_re),
-    .we     (dio_pad_attr_62_gated_we),
-    .wd     (dio_pad_attr_62_drive_strength_62_wd),
-    .d      (hw2reg.dio_pad_attr[62].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_62_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[62].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_62_drive_strength_62_qs)
-  );
-  assign reg2hw.dio_pad_attr[62].drive_strength.qe = dio_pad_attr_62_qe;
+  assign reg2hw.dio_pad_attr[62].drv.qe = dio_pad_attr_62_qe;
 
 
   // Subregister 63 of Multireg dio_pad_attr
   // R[dio_pad_attr_63]: V(True)
   logic dio_pad_attr_63_qe;
-  logic [9:0] dio_pad_attr_63_flds_we;
+  logic [3:0] dio_pad_attr_63_flds_we;
   assign dio_pad_attr_63_qe = &dio_pad_attr_63_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_63_gated_we;
   assign dio_pad_attr_63_gated_we = dio_pad_attr_63_we & dio_pad_attr_regwen_63_qs;
-  //   F[invert_63]: 0:0
+  //   F[puen_63]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_63_invert_63 (
+  ) u_dio_pad_attr_63_puen_63 (
     .re     (dio_pad_attr_63_re),
     .we     (dio_pad_attr_63_gated_we),
-    .wd     (dio_pad_attr_63_invert_63_wd),
-    .d      (hw2reg.dio_pad_attr[63].invert.d),
+    .wd     (dio_pad_attr_63_puen_63_wd),
+    .d      (hw2reg.dio_pad_attr[63].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_63_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[63].invert.q),
+    .q      (reg2hw.dio_pad_attr[63].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_63_invert_63_qs)
+    .qs     (dio_pad_attr_63_puen_63_qs)
   );
-  assign reg2hw.dio_pad_attr[63].invert.qe = dio_pad_attr_63_qe;
+  assign reg2hw.dio_pad_attr[63].puen.qe = dio_pad_attr_63_qe;
 
-  //   F[virtual_od_en_63]: 1:1
+  //   F[pden_63]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_63_virtual_od_en_63 (
+  ) u_dio_pad_attr_63_pden_63 (
     .re     (dio_pad_attr_63_re),
     .we     (dio_pad_attr_63_gated_we),
-    .wd     (dio_pad_attr_63_virtual_od_en_63_wd),
-    .d      (hw2reg.dio_pad_attr[63].virtual_od_en.d),
+    .wd     (dio_pad_attr_63_pden_63_wd),
+    .d      (hw2reg.dio_pad_attr[63].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_63_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[63].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[63].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_63_virtual_od_en_63_qs)
+    .qs     (dio_pad_attr_63_pden_63_qs)
   );
-  assign reg2hw.dio_pad_attr[63].virtual_od_en.qe = dio_pad_attr_63_qe;
+  assign reg2hw.dio_pad_attr[63].pden.qe = dio_pad_attr_63_qe;
 
-  //   F[pull_en_63]: 2:2
+  //   F[smten_63]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_63_pull_en_63 (
+  ) u_dio_pad_attr_63_smten_63 (
     .re     (dio_pad_attr_63_re),
     .we     (dio_pad_attr_63_gated_we),
-    .wd     (dio_pad_attr_63_pull_en_63_wd),
-    .d      (hw2reg.dio_pad_attr[63].pull_en.d),
+    .wd     (dio_pad_attr_63_smten_63_wd),
+    .d      (hw2reg.dio_pad_attr[63].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_63_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[63].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[63].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_63_pull_en_63_qs)
+    .qs     (dio_pad_attr_63_smten_63_qs)
   );
-  assign reg2hw.dio_pad_attr[63].pull_en.qe = dio_pad_attr_63_qe;
+  assign reg2hw.dio_pad_attr[63].smten.qe = dio_pad_attr_63_qe;
 
-  //   F[pull_select_63]: 3:3
+  //   F[drv_63]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_63_pull_select_63 (
+    .DW    (3)
+  ) u_dio_pad_attr_63_drv_63 (
     .re     (dio_pad_attr_63_re),
     .we     (dio_pad_attr_63_gated_we),
-    .wd     (dio_pad_attr_63_pull_select_63_wd),
-    .d      (hw2reg.dio_pad_attr[63].pull_select.d),
+    .wd     (dio_pad_attr_63_drv_63_wd),
+    .d      (hw2reg.dio_pad_attr[63].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_63_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[63].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[63].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_63_pull_select_63_qs)
+    .qs     (dio_pad_attr_63_drv_63_qs)
   );
-  assign reg2hw.dio_pad_attr[63].pull_select.qe = dio_pad_attr_63_qe;
-
-  //   F[keeper_en_63]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_63_keeper_en_63 (
-    .re     (dio_pad_attr_63_re),
-    .we     (dio_pad_attr_63_gated_we),
-    .wd     (dio_pad_attr_63_keeper_en_63_wd),
-    .d      (hw2reg.dio_pad_attr[63].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_63_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[63].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_63_keeper_en_63_qs)
-  );
-  assign reg2hw.dio_pad_attr[63].keeper_en.qe = dio_pad_attr_63_qe;
-
-  //   F[schmitt_en_63]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_63_schmitt_en_63 (
-    .re     (dio_pad_attr_63_re),
-    .we     (dio_pad_attr_63_gated_we),
-    .wd     (dio_pad_attr_63_schmitt_en_63_wd),
-    .d      (hw2reg.dio_pad_attr[63].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_63_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[63].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_63_schmitt_en_63_qs)
-  );
-  assign reg2hw.dio_pad_attr[63].schmitt_en.qe = dio_pad_attr_63_qe;
-
-  //   F[od_en_63]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_63_od_en_63 (
-    .re     (dio_pad_attr_63_re),
-    .we     (dio_pad_attr_63_gated_we),
-    .wd     (dio_pad_attr_63_od_en_63_wd),
-    .d      (hw2reg.dio_pad_attr[63].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_63_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[63].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_63_od_en_63_qs)
-  );
-  assign reg2hw.dio_pad_attr[63].od_en.qe = dio_pad_attr_63_qe;
-
-  //   F[input_disable_63]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_63_input_disable_63 (
-    .re     (dio_pad_attr_63_re),
-    .we     (dio_pad_attr_63_gated_we),
-    .wd     (dio_pad_attr_63_input_disable_63_wd),
-    .d      (hw2reg.dio_pad_attr[63].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_63_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[63].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_63_input_disable_63_qs)
-  );
-  assign reg2hw.dio_pad_attr[63].input_disable.qe = dio_pad_attr_63_qe;
-
-  //   F[slew_rate_63]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_63_slew_rate_63 (
-    .re     (dio_pad_attr_63_re),
-    .we     (dio_pad_attr_63_gated_we),
-    .wd     (dio_pad_attr_63_slew_rate_63_wd),
-    .d      (hw2reg.dio_pad_attr[63].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_63_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[63].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_63_slew_rate_63_qs)
-  );
-  assign reg2hw.dio_pad_attr[63].slew_rate.qe = dio_pad_attr_63_qe;
-
-  //   F[drive_strength_63]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_63_drive_strength_63 (
-    .re     (dio_pad_attr_63_re),
-    .we     (dio_pad_attr_63_gated_we),
-    .wd     (dio_pad_attr_63_drive_strength_63_wd),
-    .d      (hw2reg.dio_pad_attr[63].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_63_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[63].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_63_drive_strength_63_qs)
-  );
-  assign reg2hw.dio_pad_attr[63].drive_strength.qe = dio_pad_attr_63_qe;
+  assign reg2hw.dio_pad_attr[63].drv.qe = dio_pad_attr_63_qe;
 
 
   // Subregister 64 of Multireg dio_pad_attr
   // R[dio_pad_attr_64]: V(True)
   logic dio_pad_attr_64_qe;
-  logic [9:0] dio_pad_attr_64_flds_we;
+  logic [3:0] dio_pad_attr_64_flds_we;
   assign dio_pad_attr_64_qe = &dio_pad_attr_64_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_64_gated_we;
   assign dio_pad_attr_64_gated_we = dio_pad_attr_64_we & dio_pad_attr_regwen_64_qs;
-  //   F[invert_64]: 0:0
+  //   F[puen_64]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_64_invert_64 (
+  ) u_dio_pad_attr_64_puen_64 (
     .re     (dio_pad_attr_64_re),
     .we     (dio_pad_attr_64_gated_we),
-    .wd     (dio_pad_attr_64_invert_64_wd),
-    .d      (hw2reg.dio_pad_attr[64].invert.d),
+    .wd     (dio_pad_attr_64_puen_64_wd),
+    .d      (hw2reg.dio_pad_attr[64].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_64_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[64].invert.q),
+    .q      (reg2hw.dio_pad_attr[64].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_64_invert_64_qs)
+    .qs     (dio_pad_attr_64_puen_64_qs)
   );
-  assign reg2hw.dio_pad_attr[64].invert.qe = dio_pad_attr_64_qe;
+  assign reg2hw.dio_pad_attr[64].puen.qe = dio_pad_attr_64_qe;
 
-  //   F[virtual_od_en_64]: 1:1
+  //   F[pden_64]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_64_virtual_od_en_64 (
+  ) u_dio_pad_attr_64_pden_64 (
     .re     (dio_pad_attr_64_re),
     .we     (dio_pad_attr_64_gated_we),
-    .wd     (dio_pad_attr_64_virtual_od_en_64_wd),
-    .d      (hw2reg.dio_pad_attr[64].virtual_od_en.d),
+    .wd     (dio_pad_attr_64_pden_64_wd),
+    .d      (hw2reg.dio_pad_attr[64].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_64_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[64].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[64].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_64_virtual_od_en_64_qs)
+    .qs     (dio_pad_attr_64_pden_64_qs)
   );
-  assign reg2hw.dio_pad_attr[64].virtual_od_en.qe = dio_pad_attr_64_qe;
+  assign reg2hw.dio_pad_attr[64].pden.qe = dio_pad_attr_64_qe;
 
-  //   F[pull_en_64]: 2:2
+  //   F[smten_64]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_64_pull_en_64 (
+  ) u_dio_pad_attr_64_smten_64 (
     .re     (dio_pad_attr_64_re),
     .we     (dio_pad_attr_64_gated_we),
-    .wd     (dio_pad_attr_64_pull_en_64_wd),
-    .d      (hw2reg.dio_pad_attr[64].pull_en.d),
+    .wd     (dio_pad_attr_64_smten_64_wd),
+    .d      (hw2reg.dio_pad_attr[64].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_64_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[64].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[64].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_64_pull_en_64_qs)
+    .qs     (dio_pad_attr_64_smten_64_qs)
   );
-  assign reg2hw.dio_pad_attr[64].pull_en.qe = dio_pad_attr_64_qe;
+  assign reg2hw.dio_pad_attr[64].smten.qe = dio_pad_attr_64_qe;
 
-  //   F[pull_select_64]: 3:3
+  //   F[drv_64]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_64_pull_select_64 (
+    .DW    (3)
+  ) u_dio_pad_attr_64_drv_64 (
     .re     (dio_pad_attr_64_re),
     .we     (dio_pad_attr_64_gated_we),
-    .wd     (dio_pad_attr_64_pull_select_64_wd),
-    .d      (hw2reg.dio_pad_attr[64].pull_select.d),
+    .wd     (dio_pad_attr_64_drv_64_wd),
+    .d      (hw2reg.dio_pad_attr[64].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_64_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[64].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[64].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_64_pull_select_64_qs)
+    .qs     (dio_pad_attr_64_drv_64_qs)
   );
-  assign reg2hw.dio_pad_attr[64].pull_select.qe = dio_pad_attr_64_qe;
-
-  //   F[keeper_en_64]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_64_keeper_en_64 (
-    .re     (dio_pad_attr_64_re),
-    .we     (dio_pad_attr_64_gated_we),
-    .wd     (dio_pad_attr_64_keeper_en_64_wd),
-    .d      (hw2reg.dio_pad_attr[64].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_64_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[64].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_64_keeper_en_64_qs)
-  );
-  assign reg2hw.dio_pad_attr[64].keeper_en.qe = dio_pad_attr_64_qe;
-
-  //   F[schmitt_en_64]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_64_schmitt_en_64 (
-    .re     (dio_pad_attr_64_re),
-    .we     (dio_pad_attr_64_gated_we),
-    .wd     (dio_pad_attr_64_schmitt_en_64_wd),
-    .d      (hw2reg.dio_pad_attr[64].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_64_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[64].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_64_schmitt_en_64_qs)
-  );
-  assign reg2hw.dio_pad_attr[64].schmitt_en.qe = dio_pad_attr_64_qe;
-
-  //   F[od_en_64]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_64_od_en_64 (
-    .re     (dio_pad_attr_64_re),
-    .we     (dio_pad_attr_64_gated_we),
-    .wd     (dio_pad_attr_64_od_en_64_wd),
-    .d      (hw2reg.dio_pad_attr[64].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_64_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[64].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_64_od_en_64_qs)
-  );
-  assign reg2hw.dio_pad_attr[64].od_en.qe = dio_pad_attr_64_qe;
-
-  //   F[input_disable_64]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_64_input_disable_64 (
-    .re     (dio_pad_attr_64_re),
-    .we     (dio_pad_attr_64_gated_we),
-    .wd     (dio_pad_attr_64_input_disable_64_wd),
-    .d      (hw2reg.dio_pad_attr[64].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_64_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[64].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_64_input_disable_64_qs)
-  );
-  assign reg2hw.dio_pad_attr[64].input_disable.qe = dio_pad_attr_64_qe;
-
-  //   F[slew_rate_64]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_64_slew_rate_64 (
-    .re     (dio_pad_attr_64_re),
-    .we     (dio_pad_attr_64_gated_we),
-    .wd     (dio_pad_attr_64_slew_rate_64_wd),
-    .d      (hw2reg.dio_pad_attr[64].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_64_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[64].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_64_slew_rate_64_qs)
-  );
-  assign reg2hw.dio_pad_attr[64].slew_rate.qe = dio_pad_attr_64_qe;
-
-  //   F[drive_strength_64]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_64_drive_strength_64 (
-    .re     (dio_pad_attr_64_re),
-    .we     (dio_pad_attr_64_gated_we),
-    .wd     (dio_pad_attr_64_drive_strength_64_wd),
-    .d      (hw2reg.dio_pad_attr[64].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_64_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[64].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_64_drive_strength_64_qs)
-  );
-  assign reg2hw.dio_pad_attr[64].drive_strength.qe = dio_pad_attr_64_qe;
+  assign reg2hw.dio_pad_attr[64].drv.qe = dio_pad_attr_64_qe;
 
 
   // Subregister 65 of Multireg dio_pad_attr
   // R[dio_pad_attr_65]: V(True)
   logic dio_pad_attr_65_qe;
-  logic [9:0] dio_pad_attr_65_flds_we;
+  logic [3:0] dio_pad_attr_65_flds_we;
   assign dio_pad_attr_65_qe = &dio_pad_attr_65_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_65_gated_we;
   assign dio_pad_attr_65_gated_we = dio_pad_attr_65_we & dio_pad_attr_regwen_65_qs;
-  //   F[invert_65]: 0:0
+  //   F[puen_65]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_65_invert_65 (
+  ) u_dio_pad_attr_65_puen_65 (
     .re     (dio_pad_attr_65_re),
     .we     (dio_pad_attr_65_gated_we),
-    .wd     (dio_pad_attr_65_invert_65_wd),
-    .d      (hw2reg.dio_pad_attr[65].invert.d),
+    .wd     (dio_pad_attr_65_puen_65_wd),
+    .d      (hw2reg.dio_pad_attr[65].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_65_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[65].invert.q),
+    .q      (reg2hw.dio_pad_attr[65].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_65_invert_65_qs)
+    .qs     (dio_pad_attr_65_puen_65_qs)
   );
-  assign reg2hw.dio_pad_attr[65].invert.qe = dio_pad_attr_65_qe;
+  assign reg2hw.dio_pad_attr[65].puen.qe = dio_pad_attr_65_qe;
 
-  //   F[virtual_od_en_65]: 1:1
+  //   F[pden_65]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_65_virtual_od_en_65 (
+  ) u_dio_pad_attr_65_pden_65 (
     .re     (dio_pad_attr_65_re),
     .we     (dio_pad_attr_65_gated_we),
-    .wd     (dio_pad_attr_65_virtual_od_en_65_wd),
-    .d      (hw2reg.dio_pad_attr[65].virtual_od_en.d),
+    .wd     (dio_pad_attr_65_pden_65_wd),
+    .d      (hw2reg.dio_pad_attr[65].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_65_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[65].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[65].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_65_virtual_od_en_65_qs)
+    .qs     (dio_pad_attr_65_pden_65_qs)
   );
-  assign reg2hw.dio_pad_attr[65].virtual_od_en.qe = dio_pad_attr_65_qe;
+  assign reg2hw.dio_pad_attr[65].pden.qe = dio_pad_attr_65_qe;
 
-  //   F[pull_en_65]: 2:2
+  //   F[smten_65]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_65_pull_en_65 (
+  ) u_dio_pad_attr_65_smten_65 (
     .re     (dio_pad_attr_65_re),
     .we     (dio_pad_attr_65_gated_we),
-    .wd     (dio_pad_attr_65_pull_en_65_wd),
-    .d      (hw2reg.dio_pad_attr[65].pull_en.d),
+    .wd     (dio_pad_attr_65_smten_65_wd),
+    .d      (hw2reg.dio_pad_attr[65].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_65_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[65].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[65].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_65_pull_en_65_qs)
+    .qs     (dio_pad_attr_65_smten_65_qs)
   );
-  assign reg2hw.dio_pad_attr[65].pull_en.qe = dio_pad_attr_65_qe;
+  assign reg2hw.dio_pad_attr[65].smten.qe = dio_pad_attr_65_qe;
 
-  //   F[pull_select_65]: 3:3
+  //   F[drv_65]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_65_pull_select_65 (
+    .DW    (3)
+  ) u_dio_pad_attr_65_drv_65 (
     .re     (dio_pad_attr_65_re),
     .we     (dio_pad_attr_65_gated_we),
-    .wd     (dio_pad_attr_65_pull_select_65_wd),
-    .d      (hw2reg.dio_pad_attr[65].pull_select.d),
+    .wd     (dio_pad_attr_65_drv_65_wd),
+    .d      (hw2reg.dio_pad_attr[65].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_65_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[65].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[65].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_65_pull_select_65_qs)
+    .qs     (dio_pad_attr_65_drv_65_qs)
   );
-  assign reg2hw.dio_pad_attr[65].pull_select.qe = dio_pad_attr_65_qe;
-
-  //   F[keeper_en_65]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_65_keeper_en_65 (
-    .re     (dio_pad_attr_65_re),
-    .we     (dio_pad_attr_65_gated_we),
-    .wd     (dio_pad_attr_65_keeper_en_65_wd),
-    .d      (hw2reg.dio_pad_attr[65].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_65_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[65].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_65_keeper_en_65_qs)
-  );
-  assign reg2hw.dio_pad_attr[65].keeper_en.qe = dio_pad_attr_65_qe;
-
-  //   F[schmitt_en_65]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_65_schmitt_en_65 (
-    .re     (dio_pad_attr_65_re),
-    .we     (dio_pad_attr_65_gated_we),
-    .wd     (dio_pad_attr_65_schmitt_en_65_wd),
-    .d      (hw2reg.dio_pad_attr[65].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_65_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[65].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_65_schmitt_en_65_qs)
-  );
-  assign reg2hw.dio_pad_attr[65].schmitt_en.qe = dio_pad_attr_65_qe;
-
-  //   F[od_en_65]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_65_od_en_65 (
-    .re     (dio_pad_attr_65_re),
-    .we     (dio_pad_attr_65_gated_we),
-    .wd     (dio_pad_attr_65_od_en_65_wd),
-    .d      (hw2reg.dio_pad_attr[65].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_65_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[65].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_65_od_en_65_qs)
-  );
-  assign reg2hw.dio_pad_attr[65].od_en.qe = dio_pad_attr_65_qe;
-
-  //   F[input_disable_65]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_65_input_disable_65 (
-    .re     (dio_pad_attr_65_re),
-    .we     (dio_pad_attr_65_gated_we),
-    .wd     (dio_pad_attr_65_input_disable_65_wd),
-    .d      (hw2reg.dio_pad_attr[65].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_65_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[65].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_65_input_disable_65_qs)
-  );
-  assign reg2hw.dio_pad_attr[65].input_disable.qe = dio_pad_attr_65_qe;
-
-  //   F[slew_rate_65]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_65_slew_rate_65 (
-    .re     (dio_pad_attr_65_re),
-    .we     (dio_pad_attr_65_gated_we),
-    .wd     (dio_pad_attr_65_slew_rate_65_wd),
-    .d      (hw2reg.dio_pad_attr[65].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_65_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[65].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_65_slew_rate_65_qs)
-  );
-  assign reg2hw.dio_pad_attr[65].slew_rate.qe = dio_pad_attr_65_qe;
-
-  //   F[drive_strength_65]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_65_drive_strength_65 (
-    .re     (dio_pad_attr_65_re),
-    .we     (dio_pad_attr_65_gated_we),
-    .wd     (dio_pad_attr_65_drive_strength_65_wd),
-    .d      (hw2reg.dio_pad_attr[65].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_65_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[65].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_65_drive_strength_65_qs)
-  );
-  assign reg2hw.dio_pad_attr[65].drive_strength.qe = dio_pad_attr_65_qe;
+  assign reg2hw.dio_pad_attr[65].drv.qe = dio_pad_attr_65_qe;
 
 
   // Subregister 66 of Multireg dio_pad_attr
   // R[dio_pad_attr_66]: V(True)
   logic dio_pad_attr_66_qe;
-  logic [9:0] dio_pad_attr_66_flds_we;
+  logic [3:0] dio_pad_attr_66_flds_we;
   assign dio_pad_attr_66_qe = &dio_pad_attr_66_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_66_gated_we;
   assign dio_pad_attr_66_gated_we = dio_pad_attr_66_we & dio_pad_attr_regwen_66_qs;
-  //   F[invert_66]: 0:0
+  //   F[puen_66]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_66_invert_66 (
+  ) u_dio_pad_attr_66_puen_66 (
     .re     (dio_pad_attr_66_re),
     .we     (dio_pad_attr_66_gated_we),
-    .wd     (dio_pad_attr_66_invert_66_wd),
-    .d      (hw2reg.dio_pad_attr[66].invert.d),
+    .wd     (dio_pad_attr_66_puen_66_wd),
+    .d      (hw2reg.dio_pad_attr[66].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_66_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[66].invert.q),
+    .q      (reg2hw.dio_pad_attr[66].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_66_invert_66_qs)
+    .qs     (dio_pad_attr_66_puen_66_qs)
   );
-  assign reg2hw.dio_pad_attr[66].invert.qe = dio_pad_attr_66_qe;
+  assign reg2hw.dio_pad_attr[66].puen.qe = dio_pad_attr_66_qe;
 
-  //   F[virtual_od_en_66]: 1:1
+  //   F[pden_66]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_66_virtual_od_en_66 (
+  ) u_dio_pad_attr_66_pden_66 (
     .re     (dio_pad_attr_66_re),
     .we     (dio_pad_attr_66_gated_we),
-    .wd     (dio_pad_attr_66_virtual_od_en_66_wd),
-    .d      (hw2reg.dio_pad_attr[66].virtual_od_en.d),
+    .wd     (dio_pad_attr_66_pden_66_wd),
+    .d      (hw2reg.dio_pad_attr[66].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_66_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[66].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[66].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_66_virtual_od_en_66_qs)
+    .qs     (dio_pad_attr_66_pden_66_qs)
   );
-  assign reg2hw.dio_pad_attr[66].virtual_od_en.qe = dio_pad_attr_66_qe;
+  assign reg2hw.dio_pad_attr[66].pden.qe = dio_pad_attr_66_qe;
 
-  //   F[pull_en_66]: 2:2
+  //   F[smten_66]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_66_pull_en_66 (
+  ) u_dio_pad_attr_66_smten_66 (
     .re     (dio_pad_attr_66_re),
     .we     (dio_pad_attr_66_gated_we),
-    .wd     (dio_pad_attr_66_pull_en_66_wd),
-    .d      (hw2reg.dio_pad_attr[66].pull_en.d),
+    .wd     (dio_pad_attr_66_smten_66_wd),
+    .d      (hw2reg.dio_pad_attr[66].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_66_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[66].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[66].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_66_pull_en_66_qs)
+    .qs     (dio_pad_attr_66_smten_66_qs)
   );
-  assign reg2hw.dio_pad_attr[66].pull_en.qe = dio_pad_attr_66_qe;
+  assign reg2hw.dio_pad_attr[66].smten.qe = dio_pad_attr_66_qe;
 
-  //   F[pull_select_66]: 3:3
+  //   F[drv_66]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_66_pull_select_66 (
+    .DW    (3)
+  ) u_dio_pad_attr_66_drv_66 (
     .re     (dio_pad_attr_66_re),
     .we     (dio_pad_attr_66_gated_we),
-    .wd     (dio_pad_attr_66_pull_select_66_wd),
-    .d      (hw2reg.dio_pad_attr[66].pull_select.d),
+    .wd     (dio_pad_attr_66_drv_66_wd),
+    .d      (hw2reg.dio_pad_attr[66].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_66_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[66].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[66].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_66_pull_select_66_qs)
+    .qs     (dio_pad_attr_66_drv_66_qs)
   );
-  assign reg2hw.dio_pad_attr[66].pull_select.qe = dio_pad_attr_66_qe;
-
-  //   F[keeper_en_66]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_66_keeper_en_66 (
-    .re     (dio_pad_attr_66_re),
-    .we     (dio_pad_attr_66_gated_we),
-    .wd     (dio_pad_attr_66_keeper_en_66_wd),
-    .d      (hw2reg.dio_pad_attr[66].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_66_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[66].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_66_keeper_en_66_qs)
-  );
-  assign reg2hw.dio_pad_attr[66].keeper_en.qe = dio_pad_attr_66_qe;
-
-  //   F[schmitt_en_66]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_66_schmitt_en_66 (
-    .re     (dio_pad_attr_66_re),
-    .we     (dio_pad_attr_66_gated_we),
-    .wd     (dio_pad_attr_66_schmitt_en_66_wd),
-    .d      (hw2reg.dio_pad_attr[66].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_66_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[66].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_66_schmitt_en_66_qs)
-  );
-  assign reg2hw.dio_pad_attr[66].schmitt_en.qe = dio_pad_attr_66_qe;
-
-  //   F[od_en_66]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_66_od_en_66 (
-    .re     (dio_pad_attr_66_re),
-    .we     (dio_pad_attr_66_gated_we),
-    .wd     (dio_pad_attr_66_od_en_66_wd),
-    .d      (hw2reg.dio_pad_attr[66].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_66_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[66].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_66_od_en_66_qs)
-  );
-  assign reg2hw.dio_pad_attr[66].od_en.qe = dio_pad_attr_66_qe;
-
-  //   F[input_disable_66]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_66_input_disable_66 (
-    .re     (dio_pad_attr_66_re),
-    .we     (dio_pad_attr_66_gated_we),
-    .wd     (dio_pad_attr_66_input_disable_66_wd),
-    .d      (hw2reg.dio_pad_attr[66].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_66_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[66].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_66_input_disable_66_qs)
-  );
-  assign reg2hw.dio_pad_attr[66].input_disable.qe = dio_pad_attr_66_qe;
-
-  //   F[slew_rate_66]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_66_slew_rate_66 (
-    .re     (dio_pad_attr_66_re),
-    .we     (dio_pad_attr_66_gated_we),
-    .wd     (dio_pad_attr_66_slew_rate_66_wd),
-    .d      (hw2reg.dio_pad_attr[66].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_66_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[66].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_66_slew_rate_66_qs)
-  );
-  assign reg2hw.dio_pad_attr[66].slew_rate.qe = dio_pad_attr_66_qe;
-
-  //   F[drive_strength_66]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_66_drive_strength_66 (
-    .re     (dio_pad_attr_66_re),
-    .we     (dio_pad_attr_66_gated_we),
-    .wd     (dio_pad_attr_66_drive_strength_66_wd),
-    .d      (hw2reg.dio_pad_attr[66].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_66_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[66].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_66_drive_strength_66_qs)
-  );
-  assign reg2hw.dio_pad_attr[66].drive_strength.qe = dio_pad_attr_66_qe;
+  assign reg2hw.dio_pad_attr[66].drv.qe = dio_pad_attr_66_qe;
 
 
   // Subregister 67 of Multireg dio_pad_attr
   // R[dio_pad_attr_67]: V(True)
   logic dio_pad_attr_67_qe;
-  logic [9:0] dio_pad_attr_67_flds_we;
+  logic [3:0] dio_pad_attr_67_flds_we;
   assign dio_pad_attr_67_qe = &dio_pad_attr_67_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_67_gated_we;
   assign dio_pad_attr_67_gated_we = dio_pad_attr_67_we & dio_pad_attr_regwen_67_qs;
-  //   F[invert_67]: 0:0
+  //   F[puen_67]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_67_invert_67 (
+  ) u_dio_pad_attr_67_puen_67 (
     .re     (dio_pad_attr_67_re),
     .we     (dio_pad_attr_67_gated_we),
-    .wd     (dio_pad_attr_67_invert_67_wd),
-    .d      (hw2reg.dio_pad_attr[67].invert.d),
+    .wd     (dio_pad_attr_67_puen_67_wd),
+    .d      (hw2reg.dio_pad_attr[67].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_67_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[67].invert.q),
+    .q      (reg2hw.dio_pad_attr[67].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_67_invert_67_qs)
+    .qs     (dio_pad_attr_67_puen_67_qs)
   );
-  assign reg2hw.dio_pad_attr[67].invert.qe = dio_pad_attr_67_qe;
+  assign reg2hw.dio_pad_attr[67].puen.qe = dio_pad_attr_67_qe;
 
-  //   F[virtual_od_en_67]: 1:1
+  //   F[pden_67]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_67_virtual_od_en_67 (
+  ) u_dio_pad_attr_67_pden_67 (
     .re     (dio_pad_attr_67_re),
     .we     (dio_pad_attr_67_gated_we),
-    .wd     (dio_pad_attr_67_virtual_od_en_67_wd),
-    .d      (hw2reg.dio_pad_attr[67].virtual_od_en.d),
+    .wd     (dio_pad_attr_67_pden_67_wd),
+    .d      (hw2reg.dio_pad_attr[67].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_67_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[67].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[67].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_67_virtual_od_en_67_qs)
+    .qs     (dio_pad_attr_67_pden_67_qs)
   );
-  assign reg2hw.dio_pad_attr[67].virtual_od_en.qe = dio_pad_attr_67_qe;
+  assign reg2hw.dio_pad_attr[67].pden.qe = dio_pad_attr_67_qe;
 
-  //   F[pull_en_67]: 2:2
+  //   F[smten_67]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_67_pull_en_67 (
+  ) u_dio_pad_attr_67_smten_67 (
     .re     (dio_pad_attr_67_re),
     .we     (dio_pad_attr_67_gated_we),
-    .wd     (dio_pad_attr_67_pull_en_67_wd),
-    .d      (hw2reg.dio_pad_attr[67].pull_en.d),
+    .wd     (dio_pad_attr_67_smten_67_wd),
+    .d      (hw2reg.dio_pad_attr[67].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_67_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[67].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[67].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_67_pull_en_67_qs)
+    .qs     (dio_pad_attr_67_smten_67_qs)
   );
-  assign reg2hw.dio_pad_attr[67].pull_en.qe = dio_pad_attr_67_qe;
+  assign reg2hw.dio_pad_attr[67].smten.qe = dio_pad_attr_67_qe;
 
-  //   F[pull_select_67]: 3:3
+  //   F[drv_67]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_67_pull_select_67 (
+    .DW    (3)
+  ) u_dio_pad_attr_67_drv_67 (
     .re     (dio_pad_attr_67_re),
     .we     (dio_pad_attr_67_gated_we),
-    .wd     (dio_pad_attr_67_pull_select_67_wd),
-    .d      (hw2reg.dio_pad_attr[67].pull_select.d),
+    .wd     (dio_pad_attr_67_drv_67_wd),
+    .d      (hw2reg.dio_pad_attr[67].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_67_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[67].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[67].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_67_pull_select_67_qs)
+    .qs     (dio_pad_attr_67_drv_67_qs)
   );
-  assign reg2hw.dio_pad_attr[67].pull_select.qe = dio_pad_attr_67_qe;
-
-  //   F[keeper_en_67]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_67_keeper_en_67 (
-    .re     (dio_pad_attr_67_re),
-    .we     (dio_pad_attr_67_gated_we),
-    .wd     (dio_pad_attr_67_keeper_en_67_wd),
-    .d      (hw2reg.dio_pad_attr[67].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_67_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[67].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_67_keeper_en_67_qs)
-  );
-  assign reg2hw.dio_pad_attr[67].keeper_en.qe = dio_pad_attr_67_qe;
-
-  //   F[schmitt_en_67]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_67_schmitt_en_67 (
-    .re     (dio_pad_attr_67_re),
-    .we     (dio_pad_attr_67_gated_we),
-    .wd     (dio_pad_attr_67_schmitt_en_67_wd),
-    .d      (hw2reg.dio_pad_attr[67].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_67_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[67].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_67_schmitt_en_67_qs)
-  );
-  assign reg2hw.dio_pad_attr[67].schmitt_en.qe = dio_pad_attr_67_qe;
-
-  //   F[od_en_67]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_67_od_en_67 (
-    .re     (dio_pad_attr_67_re),
-    .we     (dio_pad_attr_67_gated_we),
-    .wd     (dio_pad_attr_67_od_en_67_wd),
-    .d      (hw2reg.dio_pad_attr[67].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_67_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[67].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_67_od_en_67_qs)
-  );
-  assign reg2hw.dio_pad_attr[67].od_en.qe = dio_pad_attr_67_qe;
-
-  //   F[input_disable_67]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_67_input_disable_67 (
-    .re     (dio_pad_attr_67_re),
-    .we     (dio_pad_attr_67_gated_we),
-    .wd     (dio_pad_attr_67_input_disable_67_wd),
-    .d      (hw2reg.dio_pad_attr[67].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_67_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[67].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_67_input_disable_67_qs)
-  );
-  assign reg2hw.dio_pad_attr[67].input_disable.qe = dio_pad_attr_67_qe;
-
-  //   F[slew_rate_67]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_67_slew_rate_67 (
-    .re     (dio_pad_attr_67_re),
-    .we     (dio_pad_attr_67_gated_we),
-    .wd     (dio_pad_attr_67_slew_rate_67_wd),
-    .d      (hw2reg.dio_pad_attr[67].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_67_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[67].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_67_slew_rate_67_qs)
-  );
-  assign reg2hw.dio_pad_attr[67].slew_rate.qe = dio_pad_attr_67_qe;
-
-  //   F[drive_strength_67]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_67_drive_strength_67 (
-    .re     (dio_pad_attr_67_re),
-    .we     (dio_pad_attr_67_gated_we),
-    .wd     (dio_pad_attr_67_drive_strength_67_wd),
-    .d      (hw2reg.dio_pad_attr[67].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_67_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[67].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_67_drive_strength_67_qs)
-  );
-  assign reg2hw.dio_pad_attr[67].drive_strength.qe = dio_pad_attr_67_qe;
+  assign reg2hw.dio_pad_attr[67].drv.qe = dio_pad_attr_67_qe;
 
 
   // Subregister 68 of Multireg dio_pad_attr
   // R[dio_pad_attr_68]: V(True)
   logic dio_pad_attr_68_qe;
-  logic [9:0] dio_pad_attr_68_flds_we;
+  logic [3:0] dio_pad_attr_68_flds_we;
   assign dio_pad_attr_68_qe = &dio_pad_attr_68_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_68_gated_we;
   assign dio_pad_attr_68_gated_we = dio_pad_attr_68_we & dio_pad_attr_regwen_68_qs;
-  //   F[invert_68]: 0:0
+  //   F[puen_68]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_68_invert_68 (
+  ) u_dio_pad_attr_68_puen_68 (
     .re     (dio_pad_attr_68_re),
     .we     (dio_pad_attr_68_gated_we),
-    .wd     (dio_pad_attr_68_invert_68_wd),
-    .d      (hw2reg.dio_pad_attr[68].invert.d),
+    .wd     (dio_pad_attr_68_puen_68_wd),
+    .d      (hw2reg.dio_pad_attr[68].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_68_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[68].invert.q),
+    .q      (reg2hw.dio_pad_attr[68].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_68_invert_68_qs)
+    .qs     (dio_pad_attr_68_puen_68_qs)
   );
-  assign reg2hw.dio_pad_attr[68].invert.qe = dio_pad_attr_68_qe;
+  assign reg2hw.dio_pad_attr[68].puen.qe = dio_pad_attr_68_qe;
 
-  //   F[virtual_od_en_68]: 1:1
+  //   F[pden_68]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_68_virtual_od_en_68 (
+  ) u_dio_pad_attr_68_pden_68 (
     .re     (dio_pad_attr_68_re),
     .we     (dio_pad_attr_68_gated_we),
-    .wd     (dio_pad_attr_68_virtual_od_en_68_wd),
-    .d      (hw2reg.dio_pad_attr[68].virtual_od_en.d),
+    .wd     (dio_pad_attr_68_pden_68_wd),
+    .d      (hw2reg.dio_pad_attr[68].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_68_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[68].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[68].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_68_virtual_od_en_68_qs)
+    .qs     (dio_pad_attr_68_pden_68_qs)
   );
-  assign reg2hw.dio_pad_attr[68].virtual_od_en.qe = dio_pad_attr_68_qe;
+  assign reg2hw.dio_pad_attr[68].pden.qe = dio_pad_attr_68_qe;
 
-  //   F[pull_en_68]: 2:2
+  //   F[smten_68]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_68_pull_en_68 (
+  ) u_dio_pad_attr_68_smten_68 (
     .re     (dio_pad_attr_68_re),
     .we     (dio_pad_attr_68_gated_we),
-    .wd     (dio_pad_attr_68_pull_en_68_wd),
-    .d      (hw2reg.dio_pad_attr[68].pull_en.d),
+    .wd     (dio_pad_attr_68_smten_68_wd),
+    .d      (hw2reg.dio_pad_attr[68].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_68_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[68].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[68].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_68_pull_en_68_qs)
+    .qs     (dio_pad_attr_68_smten_68_qs)
   );
-  assign reg2hw.dio_pad_attr[68].pull_en.qe = dio_pad_attr_68_qe;
+  assign reg2hw.dio_pad_attr[68].smten.qe = dio_pad_attr_68_qe;
 
-  //   F[pull_select_68]: 3:3
+  //   F[drv_68]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_68_pull_select_68 (
+    .DW    (3)
+  ) u_dio_pad_attr_68_drv_68 (
     .re     (dio_pad_attr_68_re),
     .we     (dio_pad_attr_68_gated_we),
-    .wd     (dio_pad_attr_68_pull_select_68_wd),
-    .d      (hw2reg.dio_pad_attr[68].pull_select.d),
+    .wd     (dio_pad_attr_68_drv_68_wd),
+    .d      (hw2reg.dio_pad_attr[68].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_68_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[68].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[68].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_68_pull_select_68_qs)
+    .qs     (dio_pad_attr_68_drv_68_qs)
   );
-  assign reg2hw.dio_pad_attr[68].pull_select.qe = dio_pad_attr_68_qe;
-
-  //   F[keeper_en_68]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_68_keeper_en_68 (
-    .re     (dio_pad_attr_68_re),
-    .we     (dio_pad_attr_68_gated_we),
-    .wd     (dio_pad_attr_68_keeper_en_68_wd),
-    .d      (hw2reg.dio_pad_attr[68].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_68_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[68].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_68_keeper_en_68_qs)
-  );
-  assign reg2hw.dio_pad_attr[68].keeper_en.qe = dio_pad_attr_68_qe;
-
-  //   F[schmitt_en_68]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_68_schmitt_en_68 (
-    .re     (dio_pad_attr_68_re),
-    .we     (dio_pad_attr_68_gated_we),
-    .wd     (dio_pad_attr_68_schmitt_en_68_wd),
-    .d      (hw2reg.dio_pad_attr[68].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_68_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[68].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_68_schmitt_en_68_qs)
-  );
-  assign reg2hw.dio_pad_attr[68].schmitt_en.qe = dio_pad_attr_68_qe;
-
-  //   F[od_en_68]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_68_od_en_68 (
-    .re     (dio_pad_attr_68_re),
-    .we     (dio_pad_attr_68_gated_we),
-    .wd     (dio_pad_attr_68_od_en_68_wd),
-    .d      (hw2reg.dio_pad_attr[68].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_68_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[68].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_68_od_en_68_qs)
-  );
-  assign reg2hw.dio_pad_attr[68].od_en.qe = dio_pad_attr_68_qe;
-
-  //   F[input_disable_68]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_68_input_disable_68 (
-    .re     (dio_pad_attr_68_re),
-    .we     (dio_pad_attr_68_gated_we),
-    .wd     (dio_pad_attr_68_input_disable_68_wd),
-    .d      (hw2reg.dio_pad_attr[68].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_68_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[68].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_68_input_disable_68_qs)
-  );
-  assign reg2hw.dio_pad_attr[68].input_disable.qe = dio_pad_attr_68_qe;
-
-  //   F[slew_rate_68]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_68_slew_rate_68 (
-    .re     (dio_pad_attr_68_re),
-    .we     (dio_pad_attr_68_gated_we),
-    .wd     (dio_pad_attr_68_slew_rate_68_wd),
-    .d      (hw2reg.dio_pad_attr[68].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_68_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[68].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_68_slew_rate_68_qs)
-  );
-  assign reg2hw.dio_pad_attr[68].slew_rate.qe = dio_pad_attr_68_qe;
-
-  //   F[drive_strength_68]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_68_drive_strength_68 (
-    .re     (dio_pad_attr_68_re),
-    .we     (dio_pad_attr_68_gated_we),
-    .wd     (dio_pad_attr_68_drive_strength_68_wd),
-    .d      (hw2reg.dio_pad_attr[68].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_68_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[68].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_68_drive_strength_68_qs)
-  );
-  assign reg2hw.dio_pad_attr[68].drive_strength.qe = dio_pad_attr_68_qe;
+  assign reg2hw.dio_pad_attr[68].drv.qe = dio_pad_attr_68_qe;
 
 
   // Subregister 69 of Multireg dio_pad_attr
   // R[dio_pad_attr_69]: V(True)
   logic dio_pad_attr_69_qe;
-  logic [9:0] dio_pad_attr_69_flds_we;
+  logic [3:0] dio_pad_attr_69_flds_we;
   assign dio_pad_attr_69_qe = &dio_pad_attr_69_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_69_gated_we;
   assign dio_pad_attr_69_gated_we = dio_pad_attr_69_we & dio_pad_attr_regwen_69_qs;
-  //   F[invert_69]: 0:0
+  //   F[puen_69]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_69_invert_69 (
+  ) u_dio_pad_attr_69_puen_69 (
     .re     (dio_pad_attr_69_re),
     .we     (dio_pad_attr_69_gated_we),
-    .wd     (dio_pad_attr_69_invert_69_wd),
-    .d      (hw2reg.dio_pad_attr[69].invert.d),
+    .wd     (dio_pad_attr_69_puen_69_wd),
+    .d      (hw2reg.dio_pad_attr[69].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_69_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[69].invert.q),
+    .q      (reg2hw.dio_pad_attr[69].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_69_invert_69_qs)
+    .qs     (dio_pad_attr_69_puen_69_qs)
   );
-  assign reg2hw.dio_pad_attr[69].invert.qe = dio_pad_attr_69_qe;
+  assign reg2hw.dio_pad_attr[69].puen.qe = dio_pad_attr_69_qe;
 
-  //   F[virtual_od_en_69]: 1:1
+  //   F[pden_69]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_69_virtual_od_en_69 (
+  ) u_dio_pad_attr_69_pden_69 (
     .re     (dio_pad_attr_69_re),
     .we     (dio_pad_attr_69_gated_we),
-    .wd     (dio_pad_attr_69_virtual_od_en_69_wd),
-    .d      (hw2reg.dio_pad_attr[69].virtual_od_en.d),
+    .wd     (dio_pad_attr_69_pden_69_wd),
+    .d      (hw2reg.dio_pad_attr[69].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_69_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[69].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[69].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_69_virtual_od_en_69_qs)
+    .qs     (dio_pad_attr_69_pden_69_qs)
   );
-  assign reg2hw.dio_pad_attr[69].virtual_od_en.qe = dio_pad_attr_69_qe;
+  assign reg2hw.dio_pad_attr[69].pden.qe = dio_pad_attr_69_qe;
 
-  //   F[pull_en_69]: 2:2
+  //   F[smten_69]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_69_pull_en_69 (
+  ) u_dio_pad_attr_69_smten_69 (
     .re     (dio_pad_attr_69_re),
     .we     (dio_pad_attr_69_gated_we),
-    .wd     (dio_pad_attr_69_pull_en_69_wd),
-    .d      (hw2reg.dio_pad_attr[69].pull_en.d),
+    .wd     (dio_pad_attr_69_smten_69_wd),
+    .d      (hw2reg.dio_pad_attr[69].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_69_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[69].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[69].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_69_pull_en_69_qs)
+    .qs     (dio_pad_attr_69_smten_69_qs)
   );
-  assign reg2hw.dio_pad_attr[69].pull_en.qe = dio_pad_attr_69_qe;
+  assign reg2hw.dio_pad_attr[69].smten.qe = dio_pad_attr_69_qe;
 
-  //   F[pull_select_69]: 3:3
+  //   F[drv_69]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_69_pull_select_69 (
+    .DW    (3)
+  ) u_dio_pad_attr_69_drv_69 (
     .re     (dio_pad_attr_69_re),
     .we     (dio_pad_attr_69_gated_we),
-    .wd     (dio_pad_attr_69_pull_select_69_wd),
-    .d      (hw2reg.dio_pad_attr[69].pull_select.d),
+    .wd     (dio_pad_attr_69_drv_69_wd),
+    .d      (hw2reg.dio_pad_attr[69].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_69_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[69].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[69].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_69_pull_select_69_qs)
+    .qs     (dio_pad_attr_69_drv_69_qs)
   );
-  assign reg2hw.dio_pad_attr[69].pull_select.qe = dio_pad_attr_69_qe;
-
-  //   F[keeper_en_69]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_69_keeper_en_69 (
-    .re     (dio_pad_attr_69_re),
-    .we     (dio_pad_attr_69_gated_we),
-    .wd     (dio_pad_attr_69_keeper_en_69_wd),
-    .d      (hw2reg.dio_pad_attr[69].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_69_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[69].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_69_keeper_en_69_qs)
-  );
-  assign reg2hw.dio_pad_attr[69].keeper_en.qe = dio_pad_attr_69_qe;
-
-  //   F[schmitt_en_69]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_69_schmitt_en_69 (
-    .re     (dio_pad_attr_69_re),
-    .we     (dio_pad_attr_69_gated_we),
-    .wd     (dio_pad_attr_69_schmitt_en_69_wd),
-    .d      (hw2reg.dio_pad_attr[69].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_69_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[69].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_69_schmitt_en_69_qs)
-  );
-  assign reg2hw.dio_pad_attr[69].schmitt_en.qe = dio_pad_attr_69_qe;
-
-  //   F[od_en_69]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_69_od_en_69 (
-    .re     (dio_pad_attr_69_re),
-    .we     (dio_pad_attr_69_gated_we),
-    .wd     (dio_pad_attr_69_od_en_69_wd),
-    .d      (hw2reg.dio_pad_attr[69].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_69_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[69].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_69_od_en_69_qs)
-  );
-  assign reg2hw.dio_pad_attr[69].od_en.qe = dio_pad_attr_69_qe;
-
-  //   F[input_disable_69]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_69_input_disable_69 (
-    .re     (dio_pad_attr_69_re),
-    .we     (dio_pad_attr_69_gated_we),
-    .wd     (dio_pad_attr_69_input_disable_69_wd),
-    .d      (hw2reg.dio_pad_attr[69].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_69_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[69].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_69_input_disable_69_qs)
-  );
-  assign reg2hw.dio_pad_attr[69].input_disable.qe = dio_pad_attr_69_qe;
-
-  //   F[slew_rate_69]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_69_slew_rate_69 (
-    .re     (dio_pad_attr_69_re),
-    .we     (dio_pad_attr_69_gated_we),
-    .wd     (dio_pad_attr_69_slew_rate_69_wd),
-    .d      (hw2reg.dio_pad_attr[69].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_69_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[69].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_69_slew_rate_69_qs)
-  );
-  assign reg2hw.dio_pad_attr[69].slew_rate.qe = dio_pad_attr_69_qe;
-
-  //   F[drive_strength_69]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_69_drive_strength_69 (
-    .re     (dio_pad_attr_69_re),
-    .we     (dio_pad_attr_69_gated_we),
-    .wd     (dio_pad_attr_69_drive_strength_69_wd),
-    .d      (hw2reg.dio_pad_attr[69].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_69_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[69].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_69_drive_strength_69_qs)
-  );
-  assign reg2hw.dio_pad_attr[69].drive_strength.qe = dio_pad_attr_69_qe;
+  assign reg2hw.dio_pad_attr[69].drv.qe = dio_pad_attr_69_qe;
 
 
   // Subregister 70 of Multireg dio_pad_attr
   // R[dio_pad_attr_70]: V(True)
   logic dio_pad_attr_70_qe;
-  logic [9:0] dio_pad_attr_70_flds_we;
+  logic [3:0] dio_pad_attr_70_flds_we;
   assign dio_pad_attr_70_qe = &dio_pad_attr_70_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_70_gated_we;
   assign dio_pad_attr_70_gated_we = dio_pad_attr_70_we & dio_pad_attr_regwen_70_qs;
-  //   F[invert_70]: 0:0
+  //   F[puen_70]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_70_invert_70 (
+  ) u_dio_pad_attr_70_puen_70 (
     .re     (dio_pad_attr_70_re),
     .we     (dio_pad_attr_70_gated_we),
-    .wd     (dio_pad_attr_70_invert_70_wd),
-    .d      (hw2reg.dio_pad_attr[70].invert.d),
+    .wd     (dio_pad_attr_70_puen_70_wd),
+    .d      (hw2reg.dio_pad_attr[70].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_70_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[70].invert.q),
+    .q      (reg2hw.dio_pad_attr[70].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_70_invert_70_qs)
+    .qs     (dio_pad_attr_70_puen_70_qs)
   );
-  assign reg2hw.dio_pad_attr[70].invert.qe = dio_pad_attr_70_qe;
+  assign reg2hw.dio_pad_attr[70].puen.qe = dio_pad_attr_70_qe;
 
-  //   F[virtual_od_en_70]: 1:1
+  //   F[pden_70]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_70_virtual_od_en_70 (
+  ) u_dio_pad_attr_70_pden_70 (
     .re     (dio_pad_attr_70_re),
     .we     (dio_pad_attr_70_gated_we),
-    .wd     (dio_pad_attr_70_virtual_od_en_70_wd),
-    .d      (hw2reg.dio_pad_attr[70].virtual_od_en.d),
+    .wd     (dio_pad_attr_70_pden_70_wd),
+    .d      (hw2reg.dio_pad_attr[70].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_70_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[70].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[70].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_70_virtual_od_en_70_qs)
+    .qs     (dio_pad_attr_70_pden_70_qs)
   );
-  assign reg2hw.dio_pad_attr[70].virtual_od_en.qe = dio_pad_attr_70_qe;
+  assign reg2hw.dio_pad_attr[70].pden.qe = dio_pad_attr_70_qe;
 
-  //   F[pull_en_70]: 2:2
+  //   F[smten_70]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_70_pull_en_70 (
+  ) u_dio_pad_attr_70_smten_70 (
     .re     (dio_pad_attr_70_re),
     .we     (dio_pad_attr_70_gated_we),
-    .wd     (dio_pad_attr_70_pull_en_70_wd),
-    .d      (hw2reg.dio_pad_attr[70].pull_en.d),
+    .wd     (dio_pad_attr_70_smten_70_wd),
+    .d      (hw2reg.dio_pad_attr[70].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_70_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[70].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[70].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_70_pull_en_70_qs)
+    .qs     (dio_pad_attr_70_smten_70_qs)
   );
-  assign reg2hw.dio_pad_attr[70].pull_en.qe = dio_pad_attr_70_qe;
+  assign reg2hw.dio_pad_attr[70].smten.qe = dio_pad_attr_70_qe;
 
-  //   F[pull_select_70]: 3:3
+  //   F[drv_70]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_70_pull_select_70 (
+    .DW    (3)
+  ) u_dio_pad_attr_70_drv_70 (
     .re     (dio_pad_attr_70_re),
     .we     (dio_pad_attr_70_gated_we),
-    .wd     (dio_pad_attr_70_pull_select_70_wd),
-    .d      (hw2reg.dio_pad_attr[70].pull_select.d),
+    .wd     (dio_pad_attr_70_drv_70_wd),
+    .d      (hw2reg.dio_pad_attr[70].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_70_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[70].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[70].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_70_pull_select_70_qs)
+    .qs     (dio_pad_attr_70_drv_70_qs)
   );
-  assign reg2hw.dio_pad_attr[70].pull_select.qe = dio_pad_attr_70_qe;
-
-  //   F[keeper_en_70]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_70_keeper_en_70 (
-    .re     (dio_pad_attr_70_re),
-    .we     (dio_pad_attr_70_gated_we),
-    .wd     (dio_pad_attr_70_keeper_en_70_wd),
-    .d      (hw2reg.dio_pad_attr[70].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_70_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[70].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_70_keeper_en_70_qs)
-  );
-  assign reg2hw.dio_pad_attr[70].keeper_en.qe = dio_pad_attr_70_qe;
-
-  //   F[schmitt_en_70]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_70_schmitt_en_70 (
-    .re     (dio_pad_attr_70_re),
-    .we     (dio_pad_attr_70_gated_we),
-    .wd     (dio_pad_attr_70_schmitt_en_70_wd),
-    .d      (hw2reg.dio_pad_attr[70].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_70_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[70].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_70_schmitt_en_70_qs)
-  );
-  assign reg2hw.dio_pad_attr[70].schmitt_en.qe = dio_pad_attr_70_qe;
-
-  //   F[od_en_70]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_70_od_en_70 (
-    .re     (dio_pad_attr_70_re),
-    .we     (dio_pad_attr_70_gated_we),
-    .wd     (dio_pad_attr_70_od_en_70_wd),
-    .d      (hw2reg.dio_pad_attr[70].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_70_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[70].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_70_od_en_70_qs)
-  );
-  assign reg2hw.dio_pad_attr[70].od_en.qe = dio_pad_attr_70_qe;
-
-  //   F[input_disable_70]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_70_input_disable_70 (
-    .re     (dio_pad_attr_70_re),
-    .we     (dio_pad_attr_70_gated_we),
-    .wd     (dio_pad_attr_70_input_disable_70_wd),
-    .d      (hw2reg.dio_pad_attr[70].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_70_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[70].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_70_input_disable_70_qs)
-  );
-  assign reg2hw.dio_pad_attr[70].input_disable.qe = dio_pad_attr_70_qe;
-
-  //   F[slew_rate_70]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_70_slew_rate_70 (
-    .re     (dio_pad_attr_70_re),
-    .we     (dio_pad_attr_70_gated_we),
-    .wd     (dio_pad_attr_70_slew_rate_70_wd),
-    .d      (hw2reg.dio_pad_attr[70].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_70_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[70].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_70_slew_rate_70_qs)
-  );
-  assign reg2hw.dio_pad_attr[70].slew_rate.qe = dio_pad_attr_70_qe;
-
-  //   F[drive_strength_70]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_70_drive_strength_70 (
-    .re     (dio_pad_attr_70_re),
-    .we     (dio_pad_attr_70_gated_we),
-    .wd     (dio_pad_attr_70_drive_strength_70_wd),
-    .d      (hw2reg.dio_pad_attr[70].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_70_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[70].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_70_drive_strength_70_qs)
-  );
-  assign reg2hw.dio_pad_attr[70].drive_strength.qe = dio_pad_attr_70_qe;
+  assign reg2hw.dio_pad_attr[70].drv.qe = dio_pad_attr_70_qe;
 
 
   // Subregister 71 of Multireg dio_pad_attr
   // R[dio_pad_attr_71]: V(True)
   logic dio_pad_attr_71_qe;
-  logic [9:0] dio_pad_attr_71_flds_we;
+  logic [3:0] dio_pad_attr_71_flds_we;
   assign dio_pad_attr_71_qe = &dio_pad_attr_71_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_71_gated_we;
   assign dio_pad_attr_71_gated_we = dio_pad_attr_71_we & dio_pad_attr_regwen_71_qs;
-  //   F[invert_71]: 0:0
+  //   F[puen_71]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_71_invert_71 (
+  ) u_dio_pad_attr_71_puen_71 (
     .re     (dio_pad_attr_71_re),
     .we     (dio_pad_attr_71_gated_we),
-    .wd     (dio_pad_attr_71_invert_71_wd),
-    .d      (hw2reg.dio_pad_attr[71].invert.d),
+    .wd     (dio_pad_attr_71_puen_71_wd),
+    .d      (hw2reg.dio_pad_attr[71].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_71_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[71].invert.q),
+    .q      (reg2hw.dio_pad_attr[71].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_71_invert_71_qs)
+    .qs     (dio_pad_attr_71_puen_71_qs)
   );
-  assign reg2hw.dio_pad_attr[71].invert.qe = dio_pad_attr_71_qe;
+  assign reg2hw.dio_pad_attr[71].puen.qe = dio_pad_attr_71_qe;
 
-  //   F[virtual_od_en_71]: 1:1
+  //   F[pden_71]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_71_virtual_od_en_71 (
+  ) u_dio_pad_attr_71_pden_71 (
     .re     (dio_pad_attr_71_re),
     .we     (dio_pad_attr_71_gated_we),
-    .wd     (dio_pad_attr_71_virtual_od_en_71_wd),
-    .d      (hw2reg.dio_pad_attr[71].virtual_od_en.d),
+    .wd     (dio_pad_attr_71_pden_71_wd),
+    .d      (hw2reg.dio_pad_attr[71].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_71_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[71].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[71].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_71_virtual_od_en_71_qs)
+    .qs     (dio_pad_attr_71_pden_71_qs)
   );
-  assign reg2hw.dio_pad_attr[71].virtual_od_en.qe = dio_pad_attr_71_qe;
+  assign reg2hw.dio_pad_attr[71].pden.qe = dio_pad_attr_71_qe;
 
-  //   F[pull_en_71]: 2:2
+  //   F[smten_71]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_71_pull_en_71 (
+  ) u_dio_pad_attr_71_smten_71 (
     .re     (dio_pad_attr_71_re),
     .we     (dio_pad_attr_71_gated_we),
-    .wd     (dio_pad_attr_71_pull_en_71_wd),
-    .d      (hw2reg.dio_pad_attr[71].pull_en.d),
+    .wd     (dio_pad_attr_71_smten_71_wd),
+    .d      (hw2reg.dio_pad_attr[71].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_71_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[71].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[71].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_71_pull_en_71_qs)
+    .qs     (dio_pad_attr_71_smten_71_qs)
   );
-  assign reg2hw.dio_pad_attr[71].pull_en.qe = dio_pad_attr_71_qe;
+  assign reg2hw.dio_pad_attr[71].smten.qe = dio_pad_attr_71_qe;
 
-  //   F[pull_select_71]: 3:3
+  //   F[drv_71]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_71_pull_select_71 (
+    .DW    (3)
+  ) u_dio_pad_attr_71_drv_71 (
     .re     (dio_pad_attr_71_re),
     .we     (dio_pad_attr_71_gated_we),
-    .wd     (dio_pad_attr_71_pull_select_71_wd),
-    .d      (hw2reg.dio_pad_attr[71].pull_select.d),
+    .wd     (dio_pad_attr_71_drv_71_wd),
+    .d      (hw2reg.dio_pad_attr[71].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_71_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[71].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[71].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_71_pull_select_71_qs)
+    .qs     (dio_pad_attr_71_drv_71_qs)
   );
-  assign reg2hw.dio_pad_attr[71].pull_select.qe = dio_pad_attr_71_qe;
-
-  //   F[keeper_en_71]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_71_keeper_en_71 (
-    .re     (dio_pad_attr_71_re),
-    .we     (dio_pad_attr_71_gated_we),
-    .wd     (dio_pad_attr_71_keeper_en_71_wd),
-    .d      (hw2reg.dio_pad_attr[71].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_71_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[71].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_71_keeper_en_71_qs)
-  );
-  assign reg2hw.dio_pad_attr[71].keeper_en.qe = dio_pad_attr_71_qe;
-
-  //   F[schmitt_en_71]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_71_schmitt_en_71 (
-    .re     (dio_pad_attr_71_re),
-    .we     (dio_pad_attr_71_gated_we),
-    .wd     (dio_pad_attr_71_schmitt_en_71_wd),
-    .d      (hw2reg.dio_pad_attr[71].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_71_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[71].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_71_schmitt_en_71_qs)
-  );
-  assign reg2hw.dio_pad_attr[71].schmitt_en.qe = dio_pad_attr_71_qe;
-
-  //   F[od_en_71]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_71_od_en_71 (
-    .re     (dio_pad_attr_71_re),
-    .we     (dio_pad_attr_71_gated_we),
-    .wd     (dio_pad_attr_71_od_en_71_wd),
-    .d      (hw2reg.dio_pad_attr[71].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_71_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[71].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_71_od_en_71_qs)
-  );
-  assign reg2hw.dio_pad_attr[71].od_en.qe = dio_pad_attr_71_qe;
-
-  //   F[input_disable_71]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_71_input_disable_71 (
-    .re     (dio_pad_attr_71_re),
-    .we     (dio_pad_attr_71_gated_we),
-    .wd     (dio_pad_attr_71_input_disable_71_wd),
-    .d      (hw2reg.dio_pad_attr[71].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_71_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[71].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_71_input_disable_71_qs)
-  );
-  assign reg2hw.dio_pad_attr[71].input_disable.qe = dio_pad_attr_71_qe;
-
-  //   F[slew_rate_71]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_71_slew_rate_71 (
-    .re     (dio_pad_attr_71_re),
-    .we     (dio_pad_attr_71_gated_we),
-    .wd     (dio_pad_attr_71_slew_rate_71_wd),
-    .d      (hw2reg.dio_pad_attr[71].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_71_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[71].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_71_slew_rate_71_qs)
-  );
-  assign reg2hw.dio_pad_attr[71].slew_rate.qe = dio_pad_attr_71_qe;
-
-  //   F[drive_strength_71]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_71_drive_strength_71 (
-    .re     (dio_pad_attr_71_re),
-    .we     (dio_pad_attr_71_gated_we),
-    .wd     (dio_pad_attr_71_drive_strength_71_wd),
-    .d      (hw2reg.dio_pad_attr[71].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_71_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[71].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_71_drive_strength_71_qs)
-  );
-  assign reg2hw.dio_pad_attr[71].drive_strength.qe = dio_pad_attr_71_qe;
+  assign reg2hw.dio_pad_attr[71].drv.qe = dio_pad_attr_71_qe;
 
 
   // Subregister 72 of Multireg dio_pad_attr
   // R[dio_pad_attr_72]: V(True)
   logic dio_pad_attr_72_qe;
-  logic [9:0] dio_pad_attr_72_flds_we;
+  logic [3:0] dio_pad_attr_72_flds_we;
   assign dio_pad_attr_72_qe = &dio_pad_attr_72_flds_we;
   // Create REGWEN-gated WE signal
   logic dio_pad_attr_72_gated_we;
   assign dio_pad_attr_72_gated_we = dio_pad_attr_72_we & dio_pad_attr_regwen_72_qs;
-  //   F[invert_72]: 0:0
+  //   F[puen_72]: 0:0
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_72_invert_72 (
+  ) u_dio_pad_attr_72_puen_72 (
     .re     (dio_pad_attr_72_re),
     .we     (dio_pad_attr_72_gated_we),
-    .wd     (dio_pad_attr_72_invert_72_wd),
-    .d      (hw2reg.dio_pad_attr[72].invert.d),
+    .wd     (dio_pad_attr_72_puen_72_wd),
+    .d      (hw2reg.dio_pad_attr[72].puen.d),
     .qre    (),
     .qe     (dio_pad_attr_72_flds_we[0]),
-    .q      (reg2hw.dio_pad_attr[72].invert.q),
+    .q      (reg2hw.dio_pad_attr[72].puen.q),
     .ds     (),
-    .qs     (dio_pad_attr_72_invert_72_qs)
+    .qs     (dio_pad_attr_72_puen_72_qs)
   );
-  assign reg2hw.dio_pad_attr[72].invert.qe = dio_pad_attr_72_qe;
+  assign reg2hw.dio_pad_attr[72].puen.qe = dio_pad_attr_72_qe;
 
-  //   F[virtual_od_en_72]: 1:1
+  //   F[pden_72]: 1:1
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_72_virtual_od_en_72 (
+  ) u_dio_pad_attr_72_pden_72 (
     .re     (dio_pad_attr_72_re),
     .we     (dio_pad_attr_72_gated_we),
-    .wd     (dio_pad_attr_72_virtual_od_en_72_wd),
-    .d      (hw2reg.dio_pad_attr[72].virtual_od_en.d),
+    .wd     (dio_pad_attr_72_pden_72_wd),
+    .d      (hw2reg.dio_pad_attr[72].pden.d),
     .qre    (),
     .qe     (dio_pad_attr_72_flds_we[1]),
-    .q      (reg2hw.dio_pad_attr[72].virtual_od_en.q),
+    .q      (reg2hw.dio_pad_attr[72].pden.q),
     .ds     (),
-    .qs     (dio_pad_attr_72_virtual_od_en_72_qs)
+    .qs     (dio_pad_attr_72_pden_72_qs)
   );
-  assign reg2hw.dio_pad_attr[72].virtual_od_en.qe = dio_pad_attr_72_qe;
+  assign reg2hw.dio_pad_attr[72].pden.qe = dio_pad_attr_72_qe;
 
-  //   F[pull_en_72]: 2:2
+  //   F[smten_72]: 2:2
   prim_subreg_ext #(
     .DW    (1)
-  ) u_dio_pad_attr_72_pull_en_72 (
+  ) u_dio_pad_attr_72_smten_72 (
     .re     (dio_pad_attr_72_re),
     .we     (dio_pad_attr_72_gated_we),
-    .wd     (dio_pad_attr_72_pull_en_72_wd),
-    .d      (hw2reg.dio_pad_attr[72].pull_en.d),
+    .wd     (dio_pad_attr_72_smten_72_wd),
+    .d      (hw2reg.dio_pad_attr[72].smten.d),
     .qre    (),
     .qe     (dio_pad_attr_72_flds_we[2]),
-    .q      (reg2hw.dio_pad_attr[72].pull_en.q),
+    .q      (reg2hw.dio_pad_attr[72].smten.q),
     .ds     (),
-    .qs     (dio_pad_attr_72_pull_en_72_qs)
+    .qs     (dio_pad_attr_72_smten_72_qs)
   );
-  assign reg2hw.dio_pad_attr[72].pull_en.qe = dio_pad_attr_72_qe;
+  assign reg2hw.dio_pad_attr[72].smten.qe = dio_pad_attr_72_qe;
 
-  //   F[pull_select_72]: 3:3
+  //   F[drv_72]: 6:4
   prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_72_pull_select_72 (
+    .DW    (3)
+  ) u_dio_pad_attr_72_drv_72 (
     .re     (dio_pad_attr_72_re),
     .we     (dio_pad_attr_72_gated_we),
-    .wd     (dio_pad_attr_72_pull_select_72_wd),
-    .d      (hw2reg.dio_pad_attr[72].pull_select.d),
+    .wd     (dio_pad_attr_72_drv_72_wd),
+    .d      (hw2reg.dio_pad_attr[72].drv.d),
     .qre    (),
     .qe     (dio_pad_attr_72_flds_we[3]),
-    .q      (reg2hw.dio_pad_attr[72].pull_select.q),
+    .q      (reg2hw.dio_pad_attr[72].drv.q),
     .ds     (),
-    .qs     (dio_pad_attr_72_pull_select_72_qs)
+    .qs     (dio_pad_attr_72_drv_72_qs)
   );
-  assign reg2hw.dio_pad_attr[72].pull_select.qe = dio_pad_attr_72_qe;
-
-  //   F[keeper_en_72]: 4:4
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_72_keeper_en_72 (
-    .re     (dio_pad_attr_72_re),
-    .we     (dio_pad_attr_72_gated_we),
-    .wd     (dio_pad_attr_72_keeper_en_72_wd),
-    .d      (hw2reg.dio_pad_attr[72].keeper_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_72_flds_we[4]),
-    .q      (reg2hw.dio_pad_attr[72].keeper_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_72_keeper_en_72_qs)
-  );
-  assign reg2hw.dio_pad_attr[72].keeper_en.qe = dio_pad_attr_72_qe;
-
-  //   F[schmitt_en_72]: 5:5
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_72_schmitt_en_72 (
-    .re     (dio_pad_attr_72_re),
-    .we     (dio_pad_attr_72_gated_we),
-    .wd     (dio_pad_attr_72_schmitt_en_72_wd),
-    .d      (hw2reg.dio_pad_attr[72].schmitt_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_72_flds_we[5]),
-    .q      (reg2hw.dio_pad_attr[72].schmitt_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_72_schmitt_en_72_qs)
-  );
-  assign reg2hw.dio_pad_attr[72].schmitt_en.qe = dio_pad_attr_72_qe;
-
-  //   F[od_en_72]: 6:6
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_72_od_en_72 (
-    .re     (dio_pad_attr_72_re),
-    .we     (dio_pad_attr_72_gated_we),
-    .wd     (dio_pad_attr_72_od_en_72_wd),
-    .d      (hw2reg.dio_pad_attr[72].od_en.d),
-    .qre    (),
-    .qe     (dio_pad_attr_72_flds_we[6]),
-    .q      (reg2hw.dio_pad_attr[72].od_en.q),
-    .ds     (),
-    .qs     (dio_pad_attr_72_od_en_72_qs)
-  );
-  assign reg2hw.dio_pad_attr[72].od_en.qe = dio_pad_attr_72_qe;
-
-  //   F[input_disable_72]: 7:7
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_dio_pad_attr_72_input_disable_72 (
-    .re     (dio_pad_attr_72_re),
-    .we     (dio_pad_attr_72_gated_we),
-    .wd     (dio_pad_attr_72_input_disable_72_wd),
-    .d      (hw2reg.dio_pad_attr[72].input_disable.d),
-    .qre    (),
-    .qe     (dio_pad_attr_72_flds_we[7]),
-    .q      (reg2hw.dio_pad_attr[72].input_disable.q),
-    .ds     (),
-    .qs     (dio_pad_attr_72_input_disable_72_qs)
-  );
-  assign reg2hw.dio_pad_attr[72].input_disable.qe = dio_pad_attr_72_qe;
-
-  //   F[slew_rate_72]: 17:16
-  prim_subreg_ext #(
-    .DW    (2)
-  ) u_dio_pad_attr_72_slew_rate_72 (
-    .re     (dio_pad_attr_72_re),
-    .we     (dio_pad_attr_72_gated_we),
-    .wd     (dio_pad_attr_72_slew_rate_72_wd),
-    .d      (hw2reg.dio_pad_attr[72].slew_rate.d),
-    .qre    (),
-    .qe     (dio_pad_attr_72_flds_we[8]),
-    .q      (reg2hw.dio_pad_attr[72].slew_rate.q),
-    .ds     (),
-    .qs     (dio_pad_attr_72_slew_rate_72_qs)
-  );
-  assign reg2hw.dio_pad_attr[72].slew_rate.qe = dio_pad_attr_72_qe;
-
-  //   F[drive_strength_72]: 23:20
-  prim_subreg_ext #(
-    .DW    (4)
-  ) u_dio_pad_attr_72_drive_strength_72 (
-    .re     (dio_pad_attr_72_re),
-    .we     (dio_pad_attr_72_gated_we),
-    .wd     (dio_pad_attr_72_drive_strength_72_wd),
-    .d      (hw2reg.dio_pad_attr[72].drive_strength.d),
-    .qre    (),
-    .qe     (dio_pad_attr_72_flds_we[9]),
-    .q      (reg2hw.dio_pad_attr[72].drive_strength.q),
-    .ds     (),
-    .qs     (dio_pad_attr_72_drive_strength_72_qs)
-  );
-  assign reg2hw.dio_pad_attr[72].drive_strength.qe = dio_pad_attr_72_qe;
+  assign reg2hw.dio_pad_attr[72].drv.qe = dio_pad_attr_72_qe;
 
 
   // Subregister 0 of Multireg mio_pad_sleep_status
@@ -35580,267 +26400,123 @@ module pinmux_reg_top (
   assign mio_pad_attr_0_re = addr_hit[45] & reg_re & !reg_error;
   assign mio_pad_attr_0_we = addr_hit[45] & reg_we & !reg_error;
 
-  assign mio_pad_attr_0_invert_0_wd = reg_wdata[0];
+  assign mio_pad_attr_0_puen_0_wd = reg_wdata[0];
 
-  assign mio_pad_attr_0_virtual_od_en_0_wd = reg_wdata[1];
+  assign mio_pad_attr_0_pden_0_wd = reg_wdata[1];
 
-  assign mio_pad_attr_0_pull_en_0_wd = reg_wdata[2];
+  assign mio_pad_attr_0_smten_0_wd = reg_wdata[2];
 
-  assign mio_pad_attr_0_pull_select_0_wd = reg_wdata[3];
-
-  assign mio_pad_attr_0_keeper_en_0_wd = reg_wdata[4];
-
-  assign mio_pad_attr_0_schmitt_en_0_wd = reg_wdata[5];
-
-  assign mio_pad_attr_0_od_en_0_wd = reg_wdata[6];
-
-  assign mio_pad_attr_0_input_disable_0_wd = reg_wdata[7];
-
-  assign mio_pad_attr_0_slew_rate_0_wd = reg_wdata[17:16];
-
-  assign mio_pad_attr_0_drive_strength_0_wd = reg_wdata[23:20];
+  assign mio_pad_attr_0_drv_0_wd = reg_wdata[6:4];
   assign mio_pad_attr_1_re = addr_hit[46] & reg_re & !reg_error;
   assign mio_pad_attr_1_we = addr_hit[46] & reg_we & !reg_error;
 
-  assign mio_pad_attr_1_invert_1_wd = reg_wdata[0];
+  assign mio_pad_attr_1_puen_1_wd = reg_wdata[0];
 
-  assign mio_pad_attr_1_virtual_od_en_1_wd = reg_wdata[1];
+  assign mio_pad_attr_1_pden_1_wd = reg_wdata[1];
 
-  assign mio_pad_attr_1_pull_en_1_wd = reg_wdata[2];
+  assign mio_pad_attr_1_smten_1_wd = reg_wdata[2];
 
-  assign mio_pad_attr_1_pull_select_1_wd = reg_wdata[3];
-
-  assign mio_pad_attr_1_keeper_en_1_wd = reg_wdata[4];
-
-  assign mio_pad_attr_1_schmitt_en_1_wd = reg_wdata[5];
-
-  assign mio_pad_attr_1_od_en_1_wd = reg_wdata[6];
-
-  assign mio_pad_attr_1_input_disable_1_wd = reg_wdata[7];
-
-  assign mio_pad_attr_1_slew_rate_1_wd = reg_wdata[17:16];
-
-  assign mio_pad_attr_1_drive_strength_1_wd = reg_wdata[23:20];
+  assign mio_pad_attr_1_drv_1_wd = reg_wdata[6:4];
   assign mio_pad_attr_2_re = addr_hit[47] & reg_re & !reg_error;
   assign mio_pad_attr_2_we = addr_hit[47] & reg_we & !reg_error;
 
-  assign mio_pad_attr_2_invert_2_wd = reg_wdata[0];
+  assign mio_pad_attr_2_puen_2_wd = reg_wdata[0];
 
-  assign mio_pad_attr_2_virtual_od_en_2_wd = reg_wdata[1];
+  assign mio_pad_attr_2_pden_2_wd = reg_wdata[1];
 
-  assign mio_pad_attr_2_pull_en_2_wd = reg_wdata[2];
+  assign mio_pad_attr_2_smten_2_wd = reg_wdata[2];
 
-  assign mio_pad_attr_2_pull_select_2_wd = reg_wdata[3];
-
-  assign mio_pad_attr_2_keeper_en_2_wd = reg_wdata[4];
-
-  assign mio_pad_attr_2_schmitt_en_2_wd = reg_wdata[5];
-
-  assign mio_pad_attr_2_od_en_2_wd = reg_wdata[6];
-
-  assign mio_pad_attr_2_input_disable_2_wd = reg_wdata[7];
-
-  assign mio_pad_attr_2_slew_rate_2_wd = reg_wdata[17:16];
-
-  assign mio_pad_attr_2_drive_strength_2_wd = reg_wdata[23:20];
+  assign mio_pad_attr_2_drv_2_wd = reg_wdata[6:4];
   assign mio_pad_attr_3_re = addr_hit[48] & reg_re & !reg_error;
   assign mio_pad_attr_3_we = addr_hit[48] & reg_we & !reg_error;
 
-  assign mio_pad_attr_3_invert_3_wd = reg_wdata[0];
+  assign mio_pad_attr_3_puen_3_wd = reg_wdata[0];
 
-  assign mio_pad_attr_3_virtual_od_en_3_wd = reg_wdata[1];
+  assign mio_pad_attr_3_pden_3_wd = reg_wdata[1];
 
-  assign mio_pad_attr_3_pull_en_3_wd = reg_wdata[2];
+  assign mio_pad_attr_3_smten_3_wd = reg_wdata[2];
 
-  assign mio_pad_attr_3_pull_select_3_wd = reg_wdata[3];
-
-  assign mio_pad_attr_3_keeper_en_3_wd = reg_wdata[4];
-
-  assign mio_pad_attr_3_schmitt_en_3_wd = reg_wdata[5];
-
-  assign mio_pad_attr_3_od_en_3_wd = reg_wdata[6];
-
-  assign mio_pad_attr_3_input_disable_3_wd = reg_wdata[7];
-
-  assign mio_pad_attr_3_slew_rate_3_wd = reg_wdata[17:16];
-
-  assign mio_pad_attr_3_drive_strength_3_wd = reg_wdata[23:20];
+  assign mio_pad_attr_3_drv_3_wd = reg_wdata[6:4];
   assign mio_pad_attr_4_re = addr_hit[49] & reg_re & !reg_error;
   assign mio_pad_attr_4_we = addr_hit[49] & reg_we & !reg_error;
 
-  assign mio_pad_attr_4_invert_4_wd = reg_wdata[0];
+  assign mio_pad_attr_4_puen_4_wd = reg_wdata[0];
 
-  assign mio_pad_attr_4_virtual_od_en_4_wd = reg_wdata[1];
+  assign mio_pad_attr_4_pden_4_wd = reg_wdata[1];
 
-  assign mio_pad_attr_4_pull_en_4_wd = reg_wdata[2];
+  assign mio_pad_attr_4_smten_4_wd = reg_wdata[2];
 
-  assign mio_pad_attr_4_pull_select_4_wd = reg_wdata[3];
-
-  assign mio_pad_attr_4_keeper_en_4_wd = reg_wdata[4];
-
-  assign mio_pad_attr_4_schmitt_en_4_wd = reg_wdata[5];
-
-  assign mio_pad_attr_4_od_en_4_wd = reg_wdata[6];
-
-  assign mio_pad_attr_4_input_disable_4_wd = reg_wdata[7];
-
-  assign mio_pad_attr_4_slew_rate_4_wd = reg_wdata[17:16];
-
-  assign mio_pad_attr_4_drive_strength_4_wd = reg_wdata[23:20];
+  assign mio_pad_attr_4_drv_4_wd = reg_wdata[6:4];
   assign mio_pad_attr_5_re = addr_hit[50] & reg_re & !reg_error;
   assign mio_pad_attr_5_we = addr_hit[50] & reg_we & !reg_error;
 
-  assign mio_pad_attr_5_invert_5_wd = reg_wdata[0];
+  assign mio_pad_attr_5_puen_5_wd = reg_wdata[0];
 
-  assign mio_pad_attr_5_virtual_od_en_5_wd = reg_wdata[1];
+  assign mio_pad_attr_5_pden_5_wd = reg_wdata[1];
 
-  assign mio_pad_attr_5_pull_en_5_wd = reg_wdata[2];
+  assign mio_pad_attr_5_smten_5_wd = reg_wdata[2];
 
-  assign mio_pad_attr_5_pull_select_5_wd = reg_wdata[3];
-
-  assign mio_pad_attr_5_keeper_en_5_wd = reg_wdata[4];
-
-  assign mio_pad_attr_5_schmitt_en_5_wd = reg_wdata[5];
-
-  assign mio_pad_attr_5_od_en_5_wd = reg_wdata[6];
-
-  assign mio_pad_attr_5_input_disable_5_wd = reg_wdata[7];
-
-  assign mio_pad_attr_5_slew_rate_5_wd = reg_wdata[17:16];
-
-  assign mio_pad_attr_5_drive_strength_5_wd = reg_wdata[23:20];
+  assign mio_pad_attr_5_drv_5_wd = reg_wdata[6:4];
   assign mio_pad_attr_6_re = addr_hit[51] & reg_re & !reg_error;
   assign mio_pad_attr_6_we = addr_hit[51] & reg_we & !reg_error;
 
-  assign mio_pad_attr_6_invert_6_wd = reg_wdata[0];
+  assign mio_pad_attr_6_puen_6_wd = reg_wdata[0];
 
-  assign mio_pad_attr_6_virtual_od_en_6_wd = reg_wdata[1];
+  assign mio_pad_attr_6_pden_6_wd = reg_wdata[1];
 
-  assign mio_pad_attr_6_pull_en_6_wd = reg_wdata[2];
+  assign mio_pad_attr_6_smten_6_wd = reg_wdata[2];
 
-  assign mio_pad_attr_6_pull_select_6_wd = reg_wdata[3];
-
-  assign mio_pad_attr_6_keeper_en_6_wd = reg_wdata[4];
-
-  assign mio_pad_attr_6_schmitt_en_6_wd = reg_wdata[5];
-
-  assign mio_pad_attr_6_od_en_6_wd = reg_wdata[6];
-
-  assign mio_pad_attr_6_input_disable_6_wd = reg_wdata[7];
-
-  assign mio_pad_attr_6_slew_rate_6_wd = reg_wdata[17:16];
-
-  assign mio_pad_attr_6_drive_strength_6_wd = reg_wdata[23:20];
+  assign mio_pad_attr_6_drv_6_wd = reg_wdata[6:4];
   assign mio_pad_attr_7_re = addr_hit[52] & reg_re & !reg_error;
   assign mio_pad_attr_7_we = addr_hit[52] & reg_we & !reg_error;
 
-  assign mio_pad_attr_7_invert_7_wd = reg_wdata[0];
+  assign mio_pad_attr_7_puen_7_wd = reg_wdata[0];
 
-  assign mio_pad_attr_7_virtual_od_en_7_wd = reg_wdata[1];
+  assign mio_pad_attr_7_pden_7_wd = reg_wdata[1];
 
-  assign mio_pad_attr_7_pull_en_7_wd = reg_wdata[2];
+  assign mio_pad_attr_7_smten_7_wd = reg_wdata[2];
 
-  assign mio_pad_attr_7_pull_select_7_wd = reg_wdata[3];
-
-  assign mio_pad_attr_7_keeper_en_7_wd = reg_wdata[4];
-
-  assign mio_pad_attr_7_schmitt_en_7_wd = reg_wdata[5];
-
-  assign mio_pad_attr_7_od_en_7_wd = reg_wdata[6];
-
-  assign mio_pad_attr_7_input_disable_7_wd = reg_wdata[7];
-
-  assign mio_pad_attr_7_slew_rate_7_wd = reg_wdata[17:16];
-
-  assign mio_pad_attr_7_drive_strength_7_wd = reg_wdata[23:20];
+  assign mio_pad_attr_7_drv_7_wd = reg_wdata[6:4];
   assign mio_pad_attr_8_re = addr_hit[53] & reg_re & !reg_error;
   assign mio_pad_attr_8_we = addr_hit[53] & reg_we & !reg_error;
 
-  assign mio_pad_attr_8_invert_8_wd = reg_wdata[0];
+  assign mio_pad_attr_8_puen_8_wd = reg_wdata[0];
 
-  assign mio_pad_attr_8_virtual_od_en_8_wd = reg_wdata[1];
+  assign mio_pad_attr_8_pden_8_wd = reg_wdata[1];
 
-  assign mio_pad_attr_8_pull_en_8_wd = reg_wdata[2];
+  assign mio_pad_attr_8_smten_8_wd = reg_wdata[2];
 
-  assign mio_pad_attr_8_pull_select_8_wd = reg_wdata[3];
-
-  assign mio_pad_attr_8_keeper_en_8_wd = reg_wdata[4];
-
-  assign mio_pad_attr_8_schmitt_en_8_wd = reg_wdata[5];
-
-  assign mio_pad_attr_8_od_en_8_wd = reg_wdata[6];
-
-  assign mio_pad_attr_8_input_disable_8_wd = reg_wdata[7];
-
-  assign mio_pad_attr_8_slew_rate_8_wd = reg_wdata[17:16];
-
-  assign mio_pad_attr_8_drive_strength_8_wd = reg_wdata[23:20];
+  assign mio_pad_attr_8_drv_8_wd = reg_wdata[6:4];
   assign mio_pad_attr_9_re = addr_hit[54] & reg_re & !reg_error;
   assign mio_pad_attr_9_we = addr_hit[54] & reg_we & !reg_error;
 
-  assign mio_pad_attr_9_invert_9_wd = reg_wdata[0];
+  assign mio_pad_attr_9_puen_9_wd = reg_wdata[0];
 
-  assign mio_pad_attr_9_virtual_od_en_9_wd = reg_wdata[1];
+  assign mio_pad_attr_9_pden_9_wd = reg_wdata[1];
 
-  assign mio_pad_attr_9_pull_en_9_wd = reg_wdata[2];
+  assign mio_pad_attr_9_smten_9_wd = reg_wdata[2];
 
-  assign mio_pad_attr_9_pull_select_9_wd = reg_wdata[3];
-
-  assign mio_pad_attr_9_keeper_en_9_wd = reg_wdata[4];
-
-  assign mio_pad_attr_9_schmitt_en_9_wd = reg_wdata[5];
-
-  assign mio_pad_attr_9_od_en_9_wd = reg_wdata[6];
-
-  assign mio_pad_attr_9_input_disable_9_wd = reg_wdata[7];
-
-  assign mio_pad_attr_9_slew_rate_9_wd = reg_wdata[17:16];
-
-  assign mio_pad_attr_9_drive_strength_9_wd = reg_wdata[23:20];
+  assign mio_pad_attr_9_drv_9_wd = reg_wdata[6:4];
   assign mio_pad_attr_10_re = addr_hit[55] & reg_re & !reg_error;
   assign mio_pad_attr_10_we = addr_hit[55] & reg_we & !reg_error;
 
-  assign mio_pad_attr_10_invert_10_wd = reg_wdata[0];
+  assign mio_pad_attr_10_puen_10_wd = reg_wdata[0];
 
-  assign mio_pad_attr_10_virtual_od_en_10_wd = reg_wdata[1];
+  assign mio_pad_attr_10_pden_10_wd = reg_wdata[1];
 
-  assign mio_pad_attr_10_pull_en_10_wd = reg_wdata[2];
+  assign mio_pad_attr_10_smten_10_wd = reg_wdata[2];
 
-  assign mio_pad_attr_10_pull_select_10_wd = reg_wdata[3];
-
-  assign mio_pad_attr_10_keeper_en_10_wd = reg_wdata[4];
-
-  assign mio_pad_attr_10_schmitt_en_10_wd = reg_wdata[5];
-
-  assign mio_pad_attr_10_od_en_10_wd = reg_wdata[6];
-
-  assign mio_pad_attr_10_input_disable_10_wd = reg_wdata[7];
-
-  assign mio_pad_attr_10_slew_rate_10_wd = reg_wdata[17:16];
-
-  assign mio_pad_attr_10_drive_strength_10_wd = reg_wdata[23:20];
+  assign mio_pad_attr_10_drv_10_wd = reg_wdata[6:4];
   assign mio_pad_attr_11_re = addr_hit[56] & reg_re & !reg_error;
   assign mio_pad_attr_11_we = addr_hit[56] & reg_we & !reg_error;
 
-  assign mio_pad_attr_11_invert_11_wd = reg_wdata[0];
+  assign mio_pad_attr_11_puen_11_wd = reg_wdata[0];
 
-  assign mio_pad_attr_11_virtual_od_en_11_wd = reg_wdata[1];
+  assign mio_pad_attr_11_pden_11_wd = reg_wdata[1];
 
-  assign mio_pad_attr_11_pull_en_11_wd = reg_wdata[2];
+  assign mio_pad_attr_11_smten_11_wd = reg_wdata[2];
 
-  assign mio_pad_attr_11_pull_select_11_wd = reg_wdata[3];
-
-  assign mio_pad_attr_11_keeper_en_11_wd = reg_wdata[4];
-
-  assign mio_pad_attr_11_schmitt_en_11_wd = reg_wdata[5];
-
-  assign mio_pad_attr_11_od_en_11_wd = reg_wdata[6];
-
-  assign mio_pad_attr_11_input_disable_11_wd = reg_wdata[7];
-
-  assign mio_pad_attr_11_slew_rate_11_wd = reg_wdata[17:16];
-
-  assign mio_pad_attr_11_drive_strength_11_wd = reg_wdata[23:20];
+  assign mio_pad_attr_11_drv_11_wd = reg_wdata[6:4];
   assign dio_pad_attr_regwen_0_we = addr_hit[57] & reg_we & !reg_error;
 
   assign dio_pad_attr_regwen_0_wd = reg_wdata[0];
@@ -36063,1609 +26739,733 @@ module pinmux_reg_top (
   assign dio_pad_attr_0_re = addr_hit[130] & reg_re & !reg_error;
   assign dio_pad_attr_0_we = addr_hit[130] & reg_we & !reg_error;
 
-  assign dio_pad_attr_0_invert_0_wd = reg_wdata[0];
+  assign dio_pad_attr_0_puen_0_wd = reg_wdata[0];
 
-  assign dio_pad_attr_0_virtual_od_en_0_wd = reg_wdata[1];
+  assign dio_pad_attr_0_pden_0_wd = reg_wdata[1];
 
-  assign dio_pad_attr_0_pull_en_0_wd = reg_wdata[2];
+  assign dio_pad_attr_0_smten_0_wd = reg_wdata[2];
 
-  assign dio_pad_attr_0_pull_select_0_wd = reg_wdata[3];
-
-  assign dio_pad_attr_0_keeper_en_0_wd = reg_wdata[4];
-
-  assign dio_pad_attr_0_schmitt_en_0_wd = reg_wdata[5];
-
-  assign dio_pad_attr_0_od_en_0_wd = reg_wdata[6];
-
-  assign dio_pad_attr_0_input_disable_0_wd = reg_wdata[7];
-
-  assign dio_pad_attr_0_slew_rate_0_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_0_drive_strength_0_wd = reg_wdata[23:20];
+  assign dio_pad_attr_0_drv_0_wd = reg_wdata[6:4];
   assign dio_pad_attr_1_re = addr_hit[131] & reg_re & !reg_error;
   assign dio_pad_attr_1_we = addr_hit[131] & reg_we & !reg_error;
 
-  assign dio_pad_attr_1_invert_1_wd = reg_wdata[0];
+  assign dio_pad_attr_1_puen_1_wd = reg_wdata[0];
 
-  assign dio_pad_attr_1_virtual_od_en_1_wd = reg_wdata[1];
+  assign dio_pad_attr_1_pden_1_wd = reg_wdata[1];
 
-  assign dio_pad_attr_1_pull_en_1_wd = reg_wdata[2];
+  assign dio_pad_attr_1_smten_1_wd = reg_wdata[2];
 
-  assign dio_pad_attr_1_pull_select_1_wd = reg_wdata[3];
-
-  assign dio_pad_attr_1_keeper_en_1_wd = reg_wdata[4];
-
-  assign dio_pad_attr_1_schmitt_en_1_wd = reg_wdata[5];
-
-  assign dio_pad_attr_1_od_en_1_wd = reg_wdata[6];
-
-  assign dio_pad_attr_1_input_disable_1_wd = reg_wdata[7];
-
-  assign dio_pad_attr_1_slew_rate_1_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_1_drive_strength_1_wd = reg_wdata[23:20];
+  assign dio_pad_attr_1_drv_1_wd = reg_wdata[6:4];
   assign dio_pad_attr_2_re = addr_hit[132] & reg_re & !reg_error;
   assign dio_pad_attr_2_we = addr_hit[132] & reg_we & !reg_error;
 
-  assign dio_pad_attr_2_invert_2_wd = reg_wdata[0];
+  assign dio_pad_attr_2_puen_2_wd = reg_wdata[0];
 
-  assign dio_pad_attr_2_virtual_od_en_2_wd = reg_wdata[1];
+  assign dio_pad_attr_2_pden_2_wd = reg_wdata[1];
 
-  assign dio_pad_attr_2_pull_en_2_wd = reg_wdata[2];
+  assign dio_pad_attr_2_smten_2_wd = reg_wdata[2];
 
-  assign dio_pad_attr_2_pull_select_2_wd = reg_wdata[3];
-
-  assign dio_pad_attr_2_keeper_en_2_wd = reg_wdata[4];
-
-  assign dio_pad_attr_2_schmitt_en_2_wd = reg_wdata[5];
-
-  assign dio_pad_attr_2_od_en_2_wd = reg_wdata[6];
-
-  assign dio_pad_attr_2_input_disable_2_wd = reg_wdata[7];
-
-  assign dio_pad_attr_2_slew_rate_2_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_2_drive_strength_2_wd = reg_wdata[23:20];
+  assign dio_pad_attr_2_drv_2_wd = reg_wdata[6:4];
   assign dio_pad_attr_3_re = addr_hit[133] & reg_re & !reg_error;
   assign dio_pad_attr_3_we = addr_hit[133] & reg_we & !reg_error;
 
-  assign dio_pad_attr_3_invert_3_wd = reg_wdata[0];
+  assign dio_pad_attr_3_puen_3_wd = reg_wdata[0];
 
-  assign dio_pad_attr_3_virtual_od_en_3_wd = reg_wdata[1];
+  assign dio_pad_attr_3_pden_3_wd = reg_wdata[1];
 
-  assign dio_pad_attr_3_pull_en_3_wd = reg_wdata[2];
+  assign dio_pad_attr_3_smten_3_wd = reg_wdata[2];
 
-  assign dio_pad_attr_3_pull_select_3_wd = reg_wdata[3];
-
-  assign dio_pad_attr_3_keeper_en_3_wd = reg_wdata[4];
-
-  assign dio_pad_attr_3_schmitt_en_3_wd = reg_wdata[5];
-
-  assign dio_pad_attr_3_od_en_3_wd = reg_wdata[6];
-
-  assign dio_pad_attr_3_input_disable_3_wd = reg_wdata[7];
-
-  assign dio_pad_attr_3_slew_rate_3_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_3_drive_strength_3_wd = reg_wdata[23:20];
+  assign dio_pad_attr_3_drv_3_wd = reg_wdata[6:4];
   assign dio_pad_attr_4_re = addr_hit[134] & reg_re & !reg_error;
   assign dio_pad_attr_4_we = addr_hit[134] & reg_we & !reg_error;
 
-  assign dio_pad_attr_4_invert_4_wd = reg_wdata[0];
+  assign dio_pad_attr_4_puen_4_wd = reg_wdata[0];
 
-  assign dio_pad_attr_4_virtual_od_en_4_wd = reg_wdata[1];
+  assign dio_pad_attr_4_pden_4_wd = reg_wdata[1];
 
-  assign dio_pad_attr_4_pull_en_4_wd = reg_wdata[2];
+  assign dio_pad_attr_4_smten_4_wd = reg_wdata[2];
 
-  assign dio_pad_attr_4_pull_select_4_wd = reg_wdata[3];
-
-  assign dio_pad_attr_4_keeper_en_4_wd = reg_wdata[4];
-
-  assign dio_pad_attr_4_schmitt_en_4_wd = reg_wdata[5];
-
-  assign dio_pad_attr_4_od_en_4_wd = reg_wdata[6];
-
-  assign dio_pad_attr_4_input_disable_4_wd = reg_wdata[7];
-
-  assign dio_pad_attr_4_slew_rate_4_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_4_drive_strength_4_wd = reg_wdata[23:20];
+  assign dio_pad_attr_4_drv_4_wd = reg_wdata[6:4];
   assign dio_pad_attr_5_re = addr_hit[135] & reg_re & !reg_error;
   assign dio_pad_attr_5_we = addr_hit[135] & reg_we & !reg_error;
 
-  assign dio_pad_attr_5_invert_5_wd = reg_wdata[0];
+  assign dio_pad_attr_5_puen_5_wd = reg_wdata[0];
 
-  assign dio_pad_attr_5_virtual_od_en_5_wd = reg_wdata[1];
+  assign dio_pad_attr_5_pden_5_wd = reg_wdata[1];
 
-  assign dio_pad_attr_5_pull_en_5_wd = reg_wdata[2];
+  assign dio_pad_attr_5_smten_5_wd = reg_wdata[2];
 
-  assign dio_pad_attr_5_pull_select_5_wd = reg_wdata[3];
-
-  assign dio_pad_attr_5_keeper_en_5_wd = reg_wdata[4];
-
-  assign dio_pad_attr_5_schmitt_en_5_wd = reg_wdata[5];
-
-  assign dio_pad_attr_5_od_en_5_wd = reg_wdata[6];
-
-  assign dio_pad_attr_5_input_disable_5_wd = reg_wdata[7];
-
-  assign dio_pad_attr_5_slew_rate_5_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_5_drive_strength_5_wd = reg_wdata[23:20];
+  assign dio_pad_attr_5_drv_5_wd = reg_wdata[6:4];
   assign dio_pad_attr_6_re = addr_hit[136] & reg_re & !reg_error;
   assign dio_pad_attr_6_we = addr_hit[136] & reg_we & !reg_error;
 
-  assign dio_pad_attr_6_invert_6_wd = reg_wdata[0];
+  assign dio_pad_attr_6_puen_6_wd = reg_wdata[0];
 
-  assign dio_pad_attr_6_virtual_od_en_6_wd = reg_wdata[1];
+  assign dio_pad_attr_6_pden_6_wd = reg_wdata[1];
 
-  assign dio_pad_attr_6_pull_en_6_wd = reg_wdata[2];
+  assign dio_pad_attr_6_smten_6_wd = reg_wdata[2];
 
-  assign dio_pad_attr_6_pull_select_6_wd = reg_wdata[3];
-
-  assign dio_pad_attr_6_keeper_en_6_wd = reg_wdata[4];
-
-  assign dio_pad_attr_6_schmitt_en_6_wd = reg_wdata[5];
-
-  assign dio_pad_attr_6_od_en_6_wd = reg_wdata[6];
-
-  assign dio_pad_attr_6_input_disable_6_wd = reg_wdata[7];
-
-  assign dio_pad_attr_6_slew_rate_6_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_6_drive_strength_6_wd = reg_wdata[23:20];
+  assign dio_pad_attr_6_drv_6_wd = reg_wdata[6:4];
   assign dio_pad_attr_7_re = addr_hit[137] & reg_re & !reg_error;
   assign dio_pad_attr_7_we = addr_hit[137] & reg_we & !reg_error;
 
-  assign dio_pad_attr_7_invert_7_wd = reg_wdata[0];
+  assign dio_pad_attr_7_puen_7_wd = reg_wdata[0];
 
-  assign dio_pad_attr_7_virtual_od_en_7_wd = reg_wdata[1];
+  assign dio_pad_attr_7_pden_7_wd = reg_wdata[1];
 
-  assign dio_pad_attr_7_pull_en_7_wd = reg_wdata[2];
+  assign dio_pad_attr_7_smten_7_wd = reg_wdata[2];
 
-  assign dio_pad_attr_7_pull_select_7_wd = reg_wdata[3];
-
-  assign dio_pad_attr_7_keeper_en_7_wd = reg_wdata[4];
-
-  assign dio_pad_attr_7_schmitt_en_7_wd = reg_wdata[5];
-
-  assign dio_pad_attr_7_od_en_7_wd = reg_wdata[6];
-
-  assign dio_pad_attr_7_input_disable_7_wd = reg_wdata[7];
-
-  assign dio_pad_attr_7_slew_rate_7_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_7_drive_strength_7_wd = reg_wdata[23:20];
+  assign dio_pad_attr_7_drv_7_wd = reg_wdata[6:4];
   assign dio_pad_attr_8_re = addr_hit[138] & reg_re & !reg_error;
   assign dio_pad_attr_8_we = addr_hit[138] & reg_we & !reg_error;
 
-  assign dio_pad_attr_8_invert_8_wd = reg_wdata[0];
+  assign dio_pad_attr_8_puen_8_wd = reg_wdata[0];
 
-  assign dio_pad_attr_8_virtual_od_en_8_wd = reg_wdata[1];
+  assign dio_pad_attr_8_pden_8_wd = reg_wdata[1];
 
-  assign dio_pad_attr_8_pull_en_8_wd = reg_wdata[2];
+  assign dio_pad_attr_8_smten_8_wd = reg_wdata[2];
 
-  assign dio_pad_attr_8_pull_select_8_wd = reg_wdata[3];
-
-  assign dio_pad_attr_8_keeper_en_8_wd = reg_wdata[4];
-
-  assign dio_pad_attr_8_schmitt_en_8_wd = reg_wdata[5];
-
-  assign dio_pad_attr_8_od_en_8_wd = reg_wdata[6];
-
-  assign dio_pad_attr_8_input_disable_8_wd = reg_wdata[7];
-
-  assign dio_pad_attr_8_slew_rate_8_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_8_drive_strength_8_wd = reg_wdata[23:20];
+  assign dio_pad_attr_8_drv_8_wd = reg_wdata[6:4];
   assign dio_pad_attr_9_re = addr_hit[139] & reg_re & !reg_error;
   assign dio_pad_attr_9_we = addr_hit[139] & reg_we & !reg_error;
 
-  assign dio_pad_attr_9_invert_9_wd = reg_wdata[0];
+  assign dio_pad_attr_9_puen_9_wd = reg_wdata[0];
 
-  assign dio_pad_attr_9_virtual_od_en_9_wd = reg_wdata[1];
+  assign dio_pad_attr_9_pden_9_wd = reg_wdata[1];
 
-  assign dio_pad_attr_9_pull_en_9_wd = reg_wdata[2];
+  assign dio_pad_attr_9_smten_9_wd = reg_wdata[2];
 
-  assign dio_pad_attr_9_pull_select_9_wd = reg_wdata[3];
-
-  assign dio_pad_attr_9_keeper_en_9_wd = reg_wdata[4];
-
-  assign dio_pad_attr_9_schmitt_en_9_wd = reg_wdata[5];
-
-  assign dio_pad_attr_9_od_en_9_wd = reg_wdata[6];
-
-  assign dio_pad_attr_9_input_disable_9_wd = reg_wdata[7];
-
-  assign dio_pad_attr_9_slew_rate_9_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_9_drive_strength_9_wd = reg_wdata[23:20];
+  assign dio_pad_attr_9_drv_9_wd = reg_wdata[6:4];
   assign dio_pad_attr_10_re = addr_hit[140] & reg_re & !reg_error;
   assign dio_pad_attr_10_we = addr_hit[140] & reg_we & !reg_error;
 
-  assign dio_pad_attr_10_invert_10_wd = reg_wdata[0];
+  assign dio_pad_attr_10_puen_10_wd = reg_wdata[0];
 
-  assign dio_pad_attr_10_virtual_od_en_10_wd = reg_wdata[1];
+  assign dio_pad_attr_10_pden_10_wd = reg_wdata[1];
 
-  assign dio_pad_attr_10_pull_en_10_wd = reg_wdata[2];
+  assign dio_pad_attr_10_smten_10_wd = reg_wdata[2];
 
-  assign dio_pad_attr_10_pull_select_10_wd = reg_wdata[3];
-
-  assign dio_pad_attr_10_keeper_en_10_wd = reg_wdata[4];
-
-  assign dio_pad_attr_10_schmitt_en_10_wd = reg_wdata[5];
-
-  assign dio_pad_attr_10_od_en_10_wd = reg_wdata[6];
-
-  assign dio_pad_attr_10_input_disable_10_wd = reg_wdata[7];
-
-  assign dio_pad_attr_10_slew_rate_10_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_10_drive_strength_10_wd = reg_wdata[23:20];
+  assign dio_pad_attr_10_drv_10_wd = reg_wdata[6:4];
   assign dio_pad_attr_11_re = addr_hit[141] & reg_re & !reg_error;
   assign dio_pad_attr_11_we = addr_hit[141] & reg_we & !reg_error;
 
-  assign dio_pad_attr_11_invert_11_wd = reg_wdata[0];
+  assign dio_pad_attr_11_puen_11_wd = reg_wdata[0];
 
-  assign dio_pad_attr_11_virtual_od_en_11_wd = reg_wdata[1];
+  assign dio_pad_attr_11_pden_11_wd = reg_wdata[1];
 
-  assign dio_pad_attr_11_pull_en_11_wd = reg_wdata[2];
+  assign dio_pad_attr_11_smten_11_wd = reg_wdata[2];
 
-  assign dio_pad_attr_11_pull_select_11_wd = reg_wdata[3];
-
-  assign dio_pad_attr_11_keeper_en_11_wd = reg_wdata[4];
-
-  assign dio_pad_attr_11_schmitt_en_11_wd = reg_wdata[5];
-
-  assign dio_pad_attr_11_od_en_11_wd = reg_wdata[6];
-
-  assign dio_pad_attr_11_input_disable_11_wd = reg_wdata[7];
-
-  assign dio_pad_attr_11_slew_rate_11_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_11_drive_strength_11_wd = reg_wdata[23:20];
+  assign dio_pad_attr_11_drv_11_wd = reg_wdata[6:4];
   assign dio_pad_attr_12_re = addr_hit[142] & reg_re & !reg_error;
   assign dio_pad_attr_12_we = addr_hit[142] & reg_we & !reg_error;
 
-  assign dio_pad_attr_12_invert_12_wd = reg_wdata[0];
+  assign dio_pad_attr_12_puen_12_wd = reg_wdata[0];
 
-  assign dio_pad_attr_12_virtual_od_en_12_wd = reg_wdata[1];
+  assign dio_pad_attr_12_pden_12_wd = reg_wdata[1];
 
-  assign dio_pad_attr_12_pull_en_12_wd = reg_wdata[2];
+  assign dio_pad_attr_12_smten_12_wd = reg_wdata[2];
 
-  assign dio_pad_attr_12_pull_select_12_wd = reg_wdata[3];
-
-  assign dio_pad_attr_12_keeper_en_12_wd = reg_wdata[4];
-
-  assign dio_pad_attr_12_schmitt_en_12_wd = reg_wdata[5];
-
-  assign dio_pad_attr_12_od_en_12_wd = reg_wdata[6];
-
-  assign dio_pad_attr_12_input_disable_12_wd = reg_wdata[7];
-
-  assign dio_pad_attr_12_slew_rate_12_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_12_drive_strength_12_wd = reg_wdata[23:20];
+  assign dio_pad_attr_12_drv_12_wd = reg_wdata[6:4];
   assign dio_pad_attr_13_re = addr_hit[143] & reg_re & !reg_error;
   assign dio_pad_attr_13_we = addr_hit[143] & reg_we & !reg_error;
 
-  assign dio_pad_attr_13_invert_13_wd = reg_wdata[0];
+  assign dio_pad_attr_13_puen_13_wd = reg_wdata[0];
 
-  assign dio_pad_attr_13_virtual_od_en_13_wd = reg_wdata[1];
+  assign dio_pad_attr_13_pden_13_wd = reg_wdata[1];
 
-  assign dio_pad_attr_13_pull_en_13_wd = reg_wdata[2];
+  assign dio_pad_attr_13_smten_13_wd = reg_wdata[2];
 
-  assign dio_pad_attr_13_pull_select_13_wd = reg_wdata[3];
-
-  assign dio_pad_attr_13_keeper_en_13_wd = reg_wdata[4];
-
-  assign dio_pad_attr_13_schmitt_en_13_wd = reg_wdata[5];
-
-  assign dio_pad_attr_13_od_en_13_wd = reg_wdata[6];
-
-  assign dio_pad_attr_13_input_disable_13_wd = reg_wdata[7];
-
-  assign dio_pad_attr_13_slew_rate_13_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_13_drive_strength_13_wd = reg_wdata[23:20];
+  assign dio_pad_attr_13_drv_13_wd = reg_wdata[6:4];
   assign dio_pad_attr_14_re = addr_hit[144] & reg_re & !reg_error;
   assign dio_pad_attr_14_we = addr_hit[144] & reg_we & !reg_error;
 
-  assign dio_pad_attr_14_invert_14_wd = reg_wdata[0];
+  assign dio_pad_attr_14_puen_14_wd = reg_wdata[0];
 
-  assign dio_pad_attr_14_virtual_od_en_14_wd = reg_wdata[1];
+  assign dio_pad_attr_14_pden_14_wd = reg_wdata[1];
 
-  assign dio_pad_attr_14_pull_en_14_wd = reg_wdata[2];
+  assign dio_pad_attr_14_smten_14_wd = reg_wdata[2];
 
-  assign dio_pad_attr_14_pull_select_14_wd = reg_wdata[3];
-
-  assign dio_pad_attr_14_keeper_en_14_wd = reg_wdata[4];
-
-  assign dio_pad_attr_14_schmitt_en_14_wd = reg_wdata[5];
-
-  assign dio_pad_attr_14_od_en_14_wd = reg_wdata[6];
-
-  assign dio_pad_attr_14_input_disable_14_wd = reg_wdata[7];
-
-  assign dio_pad_attr_14_slew_rate_14_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_14_drive_strength_14_wd = reg_wdata[23:20];
+  assign dio_pad_attr_14_drv_14_wd = reg_wdata[6:4];
   assign dio_pad_attr_15_re = addr_hit[145] & reg_re & !reg_error;
   assign dio_pad_attr_15_we = addr_hit[145] & reg_we & !reg_error;
 
-  assign dio_pad_attr_15_invert_15_wd = reg_wdata[0];
+  assign dio_pad_attr_15_puen_15_wd = reg_wdata[0];
 
-  assign dio_pad_attr_15_virtual_od_en_15_wd = reg_wdata[1];
+  assign dio_pad_attr_15_pden_15_wd = reg_wdata[1];
 
-  assign dio_pad_attr_15_pull_en_15_wd = reg_wdata[2];
+  assign dio_pad_attr_15_smten_15_wd = reg_wdata[2];
 
-  assign dio_pad_attr_15_pull_select_15_wd = reg_wdata[3];
-
-  assign dio_pad_attr_15_keeper_en_15_wd = reg_wdata[4];
-
-  assign dio_pad_attr_15_schmitt_en_15_wd = reg_wdata[5];
-
-  assign dio_pad_attr_15_od_en_15_wd = reg_wdata[6];
-
-  assign dio_pad_attr_15_input_disable_15_wd = reg_wdata[7];
-
-  assign dio_pad_attr_15_slew_rate_15_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_15_drive_strength_15_wd = reg_wdata[23:20];
+  assign dio_pad_attr_15_drv_15_wd = reg_wdata[6:4];
   assign dio_pad_attr_16_re = addr_hit[146] & reg_re & !reg_error;
   assign dio_pad_attr_16_we = addr_hit[146] & reg_we & !reg_error;
 
-  assign dio_pad_attr_16_invert_16_wd = reg_wdata[0];
+  assign dio_pad_attr_16_puen_16_wd = reg_wdata[0];
 
-  assign dio_pad_attr_16_virtual_od_en_16_wd = reg_wdata[1];
+  assign dio_pad_attr_16_pden_16_wd = reg_wdata[1];
 
-  assign dio_pad_attr_16_pull_en_16_wd = reg_wdata[2];
+  assign dio_pad_attr_16_smten_16_wd = reg_wdata[2];
 
-  assign dio_pad_attr_16_pull_select_16_wd = reg_wdata[3];
-
-  assign dio_pad_attr_16_keeper_en_16_wd = reg_wdata[4];
-
-  assign dio_pad_attr_16_schmitt_en_16_wd = reg_wdata[5];
-
-  assign dio_pad_attr_16_od_en_16_wd = reg_wdata[6];
-
-  assign dio_pad_attr_16_input_disable_16_wd = reg_wdata[7];
-
-  assign dio_pad_attr_16_slew_rate_16_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_16_drive_strength_16_wd = reg_wdata[23:20];
+  assign dio_pad_attr_16_drv_16_wd = reg_wdata[6:4];
   assign dio_pad_attr_17_re = addr_hit[147] & reg_re & !reg_error;
   assign dio_pad_attr_17_we = addr_hit[147] & reg_we & !reg_error;
 
-  assign dio_pad_attr_17_invert_17_wd = reg_wdata[0];
+  assign dio_pad_attr_17_puen_17_wd = reg_wdata[0];
 
-  assign dio_pad_attr_17_virtual_od_en_17_wd = reg_wdata[1];
+  assign dio_pad_attr_17_pden_17_wd = reg_wdata[1];
 
-  assign dio_pad_attr_17_pull_en_17_wd = reg_wdata[2];
+  assign dio_pad_attr_17_smten_17_wd = reg_wdata[2];
 
-  assign dio_pad_attr_17_pull_select_17_wd = reg_wdata[3];
-
-  assign dio_pad_attr_17_keeper_en_17_wd = reg_wdata[4];
-
-  assign dio_pad_attr_17_schmitt_en_17_wd = reg_wdata[5];
-
-  assign dio_pad_attr_17_od_en_17_wd = reg_wdata[6];
-
-  assign dio_pad_attr_17_input_disable_17_wd = reg_wdata[7];
-
-  assign dio_pad_attr_17_slew_rate_17_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_17_drive_strength_17_wd = reg_wdata[23:20];
+  assign dio_pad_attr_17_drv_17_wd = reg_wdata[6:4];
   assign dio_pad_attr_18_re = addr_hit[148] & reg_re & !reg_error;
   assign dio_pad_attr_18_we = addr_hit[148] & reg_we & !reg_error;
 
-  assign dio_pad_attr_18_invert_18_wd = reg_wdata[0];
+  assign dio_pad_attr_18_puen_18_wd = reg_wdata[0];
 
-  assign dio_pad_attr_18_virtual_od_en_18_wd = reg_wdata[1];
+  assign dio_pad_attr_18_pden_18_wd = reg_wdata[1];
 
-  assign dio_pad_attr_18_pull_en_18_wd = reg_wdata[2];
+  assign dio_pad_attr_18_smten_18_wd = reg_wdata[2];
 
-  assign dio_pad_attr_18_pull_select_18_wd = reg_wdata[3];
-
-  assign dio_pad_attr_18_keeper_en_18_wd = reg_wdata[4];
-
-  assign dio_pad_attr_18_schmitt_en_18_wd = reg_wdata[5];
-
-  assign dio_pad_attr_18_od_en_18_wd = reg_wdata[6];
-
-  assign dio_pad_attr_18_input_disable_18_wd = reg_wdata[7];
-
-  assign dio_pad_attr_18_slew_rate_18_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_18_drive_strength_18_wd = reg_wdata[23:20];
+  assign dio_pad_attr_18_drv_18_wd = reg_wdata[6:4];
   assign dio_pad_attr_19_re = addr_hit[149] & reg_re & !reg_error;
   assign dio_pad_attr_19_we = addr_hit[149] & reg_we & !reg_error;
 
-  assign dio_pad_attr_19_invert_19_wd = reg_wdata[0];
+  assign dio_pad_attr_19_puen_19_wd = reg_wdata[0];
 
-  assign dio_pad_attr_19_virtual_od_en_19_wd = reg_wdata[1];
+  assign dio_pad_attr_19_pden_19_wd = reg_wdata[1];
 
-  assign dio_pad_attr_19_pull_en_19_wd = reg_wdata[2];
+  assign dio_pad_attr_19_smten_19_wd = reg_wdata[2];
 
-  assign dio_pad_attr_19_pull_select_19_wd = reg_wdata[3];
-
-  assign dio_pad_attr_19_keeper_en_19_wd = reg_wdata[4];
-
-  assign dio_pad_attr_19_schmitt_en_19_wd = reg_wdata[5];
-
-  assign dio_pad_attr_19_od_en_19_wd = reg_wdata[6];
-
-  assign dio_pad_attr_19_input_disable_19_wd = reg_wdata[7];
-
-  assign dio_pad_attr_19_slew_rate_19_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_19_drive_strength_19_wd = reg_wdata[23:20];
+  assign dio_pad_attr_19_drv_19_wd = reg_wdata[6:4];
   assign dio_pad_attr_20_re = addr_hit[150] & reg_re & !reg_error;
   assign dio_pad_attr_20_we = addr_hit[150] & reg_we & !reg_error;
 
-  assign dio_pad_attr_20_invert_20_wd = reg_wdata[0];
+  assign dio_pad_attr_20_puen_20_wd = reg_wdata[0];
 
-  assign dio_pad_attr_20_virtual_od_en_20_wd = reg_wdata[1];
+  assign dio_pad_attr_20_pden_20_wd = reg_wdata[1];
 
-  assign dio_pad_attr_20_pull_en_20_wd = reg_wdata[2];
+  assign dio_pad_attr_20_smten_20_wd = reg_wdata[2];
 
-  assign dio_pad_attr_20_pull_select_20_wd = reg_wdata[3];
-
-  assign dio_pad_attr_20_keeper_en_20_wd = reg_wdata[4];
-
-  assign dio_pad_attr_20_schmitt_en_20_wd = reg_wdata[5];
-
-  assign dio_pad_attr_20_od_en_20_wd = reg_wdata[6];
-
-  assign dio_pad_attr_20_input_disable_20_wd = reg_wdata[7];
-
-  assign dio_pad_attr_20_slew_rate_20_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_20_drive_strength_20_wd = reg_wdata[23:20];
+  assign dio_pad_attr_20_drv_20_wd = reg_wdata[6:4];
   assign dio_pad_attr_21_re = addr_hit[151] & reg_re & !reg_error;
   assign dio_pad_attr_21_we = addr_hit[151] & reg_we & !reg_error;
 
-  assign dio_pad_attr_21_invert_21_wd = reg_wdata[0];
+  assign dio_pad_attr_21_puen_21_wd = reg_wdata[0];
 
-  assign dio_pad_attr_21_virtual_od_en_21_wd = reg_wdata[1];
+  assign dio_pad_attr_21_pden_21_wd = reg_wdata[1];
 
-  assign dio_pad_attr_21_pull_en_21_wd = reg_wdata[2];
+  assign dio_pad_attr_21_smten_21_wd = reg_wdata[2];
 
-  assign dio_pad_attr_21_pull_select_21_wd = reg_wdata[3];
-
-  assign dio_pad_attr_21_keeper_en_21_wd = reg_wdata[4];
-
-  assign dio_pad_attr_21_schmitt_en_21_wd = reg_wdata[5];
-
-  assign dio_pad_attr_21_od_en_21_wd = reg_wdata[6];
-
-  assign dio_pad_attr_21_input_disable_21_wd = reg_wdata[7];
-
-  assign dio_pad_attr_21_slew_rate_21_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_21_drive_strength_21_wd = reg_wdata[23:20];
+  assign dio_pad_attr_21_drv_21_wd = reg_wdata[6:4];
   assign dio_pad_attr_22_re = addr_hit[152] & reg_re & !reg_error;
   assign dio_pad_attr_22_we = addr_hit[152] & reg_we & !reg_error;
 
-  assign dio_pad_attr_22_invert_22_wd = reg_wdata[0];
+  assign dio_pad_attr_22_puen_22_wd = reg_wdata[0];
 
-  assign dio_pad_attr_22_virtual_od_en_22_wd = reg_wdata[1];
+  assign dio_pad_attr_22_pden_22_wd = reg_wdata[1];
 
-  assign dio_pad_attr_22_pull_en_22_wd = reg_wdata[2];
+  assign dio_pad_attr_22_smten_22_wd = reg_wdata[2];
 
-  assign dio_pad_attr_22_pull_select_22_wd = reg_wdata[3];
-
-  assign dio_pad_attr_22_keeper_en_22_wd = reg_wdata[4];
-
-  assign dio_pad_attr_22_schmitt_en_22_wd = reg_wdata[5];
-
-  assign dio_pad_attr_22_od_en_22_wd = reg_wdata[6];
-
-  assign dio_pad_attr_22_input_disable_22_wd = reg_wdata[7];
-
-  assign dio_pad_attr_22_slew_rate_22_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_22_drive_strength_22_wd = reg_wdata[23:20];
+  assign dio_pad_attr_22_drv_22_wd = reg_wdata[6:4];
   assign dio_pad_attr_23_re = addr_hit[153] & reg_re & !reg_error;
   assign dio_pad_attr_23_we = addr_hit[153] & reg_we & !reg_error;
 
-  assign dio_pad_attr_23_invert_23_wd = reg_wdata[0];
+  assign dio_pad_attr_23_puen_23_wd = reg_wdata[0];
 
-  assign dio_pad_attr_23_virtual_od_en_23_wd = reg_wdata[1];
+  assign dio_pad_attr_23_pden_23_wd = reg_wdata[1];
 
-  assign dio_pad_attr_23_pull_en_23_wd = reg_wdata[2];
+  assign dio_pad_attr_23_smten_23_wd = reg_wdata[2];
 
-  assign dio_pad_attr_23_pull_select_23_wd = reg_wdata[3];
-
-  assign dio_pad_attr_23_keeper_en_23_wd = reg_wdata[4];
-
-  assign dio_pad_attr_23_schmitt_en_23_wd = reg_wdata[5];
-
-  assign dio_pad_attr_23_od_en_23_wd = reg_wdata[6];
-
-  assign dio_pad_attr_23_input_disable_23_wd = reg_wdata[7];
-
-  assign dio_pad_attr_23_slew_rate_23_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_23_drive_strength_23_wd = reg_wdata[23:20];
+  assign dio_pad_attr_23_drv_23_wd = reg_wdata[6:4];
   assign dio_pad_attr_24_re = addr_hit[154] & reg_re & !reg_error;
   assign dio_pad_attr_24_we = addr_hit[154] & reg_we & !reg_error;
 
-  assign dio_pad_attr_24_invert_24_wd = reg_wdata[0];
+  assign dio_pad_attr_24_puen_24_wd = reg_wdata[0];
 
-  assign dio_pad_attr_24_virtual_od_en_24_wd = reg_wdata[1];
+  assign dio_pad_attr_24_pden_24_wd = reg_wdata[1];
 
-  assign dio_pad_attr_24_pull_en_24_wd = reg_wdata[2];
+  assign dio_pad_attr_24_smten_24_wd = reg_wdata[2];
 
-  assign dio_pad_attr_24_pull_select_24_wd = reg_wdata[3];
-
-  assign dio_pad_attr_24_keeper_en_24_wd = reg_wdata[4];
-
-  assign dio_pad_attr_24_schmitt_en_24_wd = reg_wdata[5];
-
-  assign dio_pad_attr_24_od_en_24_wd = reg_wdata[6];
-
-  assign dio_pad_attr_24_input_disable_24_wd = reg_wdata[7];
-
-  assign dio_pad_attr_24_slew_rate_24_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_24_drive_strength_24_wd = reg_wdata[23:20];
+  assign dio_pad_attr_24_drv_24_wd = reg_wdata[6:4];
   assign dio_pad_attr_25_re = addr_hit[155] & reg_re & !reg_error;
   assign dio_pad_attr_25_we = addr_hit[155] & reg_we & !reg_error;
 
-  assign dio_pad_attr_25_invert_25_wd = reg_wdata[0];
+  assign dio_pad_attr_25_puen_25_wd = reg_wdata[0];
 
-  assign dio_pad_attr_25_virtual_od_en_25_wd = reg_wdata[1];
+  assign dio_pad_attr_25_pden_25_wd = reg_wdata[1];
 
-  assign dio_pad_attr_25_pull_en_25_wd = reg_wdata[2];
+  assign dio_pad_attr_25_smten_25_wd = reg_wdata[2];
 
-  assign dio_pad_attr_25_pull_select_25_wd = reg_wdata[3];
-
-  assign dio_pad_attr_25_keeper_en_25_wd = reg_wdata[4];
-
-  assign dio_pad_attr_25_schmitt_en_25_wd = reg_wdata[5];
-
-  assign dio_pad_attr_25_od_en_25_wd = reg_wdata[6];
-
-  assign dio_pad_attr_25_input_disable_25_wd = reg_wdata[7];
-
-  assign dio_pad_attr_25_slew_rate_25_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_25_drive_strength_25_wd = reg_wdata[23:20];
+  assign dio_pad_attr_25_drv_25_wd = reg_wdata[6:4];
   assign dio_pad_attr_26_re = addr_hit[156] & reg_re & !reg_error;
   assign dio_pad_attr_26_we = addr_hit[156] & reg_we & !reg_error;
 
-  assign dio_pad_attr_26_invert_26_wd = reg_wdata[0];
+  assign dio_pad_attr_26_puen_26_wd = reg_wdata[0];
 
-  assign dio_pad_attr_26_virtual_od_en_26_wd = reg_wdata[1];
+  assign dio_pad_attr_26_pden_26_wd = reg_wdata[1];
 
-  assign dio_pad_attr_26_pull_en_26_wd = reg_wdata[2];
+  assign dio_pad_attr_26_smten_26_wd = reg_wdata[2];
 
-  assign dio_pad_attr_26_pull_select_26_wd = reg_wdata[3];
-
-  assign dio_pad_attr_26_keeper_en_26_wd = reg_wdata[4];
-
-  assign dio_pad_attr_26_schmitt_en_26_wd = reg_wdata[5];
-
-  assign dio_pad_attr_26_od_en_26_wd = reg_wdata[6];
-
-  assign dio_pad_attr_26_input_disable_26_wd = reg_wdata[7];
-
-  assign dio_pad_attr_26_slew_rate_26_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_26_drive_strength_26_wd = reg_wdata[23:20];
+  assign dio_pad_attr_26_drv_26_wd = reg_wdata[6:4];
   assign dio_pad_attr_27_re = addr_hit[157] & reg_re & !reg_error;
   assign dio_pad_attr_27_we = addr_hit[157] & reg_we & !reg_error;
 
-  assign dio_pad_attr_27_invert_27_wd = reg_wdata[0];
+  assign dio_pad_attr_27_puen_27_wd = reg_wdata[0];
 
-  assign dio_pad_attr_27_virtual_od_en_27_wd = reg_wdata[1];
+  assign dio_pad_attr_27_pden_27_wd = reg_wdata[1];
 
-  assign dio_pad_attr_27_pull_en_27_wd = reg_wdata[2];
+  assign dio_pad_attr_27_smten_27_wd = reg_wdata[2];
 
-  assign dio_pad_attr_27_pull_select_27_wd = reg_wdata[3];
-
-  assign dio_pad_attr_27_keeper_en_27_wd = reg_wdata[4];
-
-  assign dio_pad_attr_27_schmitt_en_27_wd = reg_wdata[5];
-
-  assign dio_pad_attr_27_od_en_27_wd = reg_wdata[6];
-
-  assign dio_pad_attr_27_input_disable_27_wd = reg_wdata[7];
-
-  assign dio_pad_attr_27_slew_rate_27_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_27_drive_strength_27_wd = reg_wdata[23:20];
+  assign dio_pad_attr_27_drv_27_wd = reg_wdata[6:4];
   assign dio_pad_attr_28_re = addr_hit[158] & reg_re & !reg_error;
   assign dio_pad_attr_28_we = addr_hit[158] & reg_we & !reg_error;
 
-  assign dio_pad_attr_28_invert_28_wd = reg_wdata[0];
+  assign dio_pad_attr_28_puen_28_wd = reg_wdata[0];
 
-  assign dio_pad_attr_28_virtual_od_en_28_wd = reg_wdata[1];
+  assign dio_pad_attr_28_pden_28_wd = reg_wdata[1];
 
-  assign dio_pad_attr_28_pull_en_28_wd = reg_wdata[2];
+  assign dio_pad_attr_28_smten_28_wd = reg_wdata[2];
 
-  assign dio_pad_attr_28_pull_select_28_wd = reg_wdata[3];
-
-  assign dio_pad_attr_28_keeper_en_28_wd = reg_wdata[4];
-
-  assign dio_pad_attr_28_schmitt_en_28_wd = reg_wdata[5];
-
-  assign dio_pad_attr_28_od_en_28_wd = reg_wdata[6];
-
-  assign dio_pad_attr_28_input_disable_28_wd = reg_wdata[7];
-
-  assign dio_pad_attr_28_slew_rate_28_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_28_drive_strength_28_wd = reg_wdata[23:20];
+  assign dio_pad_attr_28_drv_28_wd = reg_wdata[6:4];
   assign dio_pad_attr_29_re = addr_hit[159] & reg_re & !reg_error;
   assign dio_pad_attr_29_we = addr_hit[159] & reg_we & !reg_error;
 
-  assign dio_pad_attr_29_invert_29_wd = reg_wdata[0];
+  assign dio_pad_attr_29_puen_29_wd = reg_wdata[0];
 
-  assign dio_pad_attr_29_virtual_od_en_29_wd = reg_wdata[1];
+  assign dio_pad_attr_29_pden_29_wd = reg_wdata[1];
 
-  assign dio_pad_attr_29_pull_en_29_wd = reg_wdata[2];
+  assign dio_pad_attr_29_smten_29_wd = reg_wdata[2];
 
-  assign dio_pad_attr_29_pull_select_29_wd = reg_wdata[3];
-
-  assign dio_pad_attr_29_keeper_en_29_wd = reg_wdata[4];
-
-  assign dio_pad_attr_29_schmitt_en_29_wd = reg_wdata[5];
-
-  assign dio_pad_attr_29_od_en_29_wd = reg_wdata[6];
-
-  assign dio_pad_attr_29_input_disable_29_wd = reg_wdata[7];
-
-  assign dio_pad_attr_29_slew_rate_29_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_29_drive_strength_29_wd = reg_wdata[23:20];
+  assign dio_pad_attr_29_drv_29_wd = reg_wdata[6:4];
   assign dio_pad_attr_30_re = addr_hit[160] & reg_re & !reg_error;
   assign dio_pad_attr_30_we = addr_hit[160] & reg_we & !reg_error;
 
-  assign dio_pad_attr_30_invert_30_wd = reg_wdata[0];
+  assign dio_pad_attr_30_puen_30_wd = reg_wdata[0];
 
-  assign dio_pad_attr_30_virtual_od_en_30_wd = reg_wdata[1];
+  assign dio_pad_attr_30_pden_30_wd = reg_wdata[1];
 
-  assign dio_pad_attr_30_pull_en_30_wd = reg_wdata[2];
+  assign dio_pad_attr_30_smten_30_wd = reg_wdata[2];
 
-  assign dio_pad_attr_30_pull_select_30_wd = reg_wdata[3];
-
-  assign dio_pad_attr_30_keeper_en_30_wd = reg_wdata[4];
-
-  assign dio_pad_attr_30_schmitt_en_30_wd = reg_wdata[5];
-
-  assign dio_pad_attr_30_od_en_30_wd = reg_wdata[6];
-
-  assign dio_pad_attr_30_input_disable_30_wd = reg_wdata[7];
-
-  assign dio_pad_attr_30_slew_rate_30_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_30_drive_strength_30_wd = reg_wdata[23:20];
+  assign dio_pad_attr_30_drv_30_wd = reg_wdata[6:4];
   assign dio_pad_attr_31_re = addr_hit[161] & reg_re & !reg_error;
   assign dio_pad_attr_31_we = addr_hit[161] & reg_we & !reg_error;
 
-  assign dio_pad_attr_31_invert_31_wd = reg_wdata[0];
+  assign dio_pad_attr_31_puen_31_wd = reg_wdata[0];
 
-  assign dio_pad_attr_31_virtual_od_en_31_wd = reg_wdata[1];
+  assign dio_pad_attr_31_pden_31_wd = reg_wdata[1];
 
-  assign dio_pad_attr_31_pull_en_31_wd = reg_wdata[2];
+  assign dio_pad_attr_31_smten_31_wd = reg_wdata[2];
 
-  assign dio_pad_attr_31_pull_select_31_wd = reg_wdata[3];
-
-  assign dio_pad_attr_31_keeper_en_31_wd = reg_wdata[4];
-
-  assign dio_pad_attr_31_schmitt_en_31_wd = reg_wdata[5];
-
-  assign dio_pad_attr_31_od_en_31_wd = reg_wdata[6];
-
-  assign dio_pad_attr_31_input_disable_31_wd = reg_wdata[7];
-
-  assign dio_pad_attr_31_slew_rate_31_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_31_drive_strength_31_wd = reg_wdata[23:20];
+  assign dio_pad_attr_31_drv_31_wd = reg_wdata[6:4];
   assign dio_pad_attr_32_re = addr_hit[162] & reg_re & !reg_error;
   assign dio_pad_attr_32_we = addr_hit[162] & reg_we & !reg_error;
 
-  assign dio_pad_attr_32_invert_32_wd = reg_wdata[0];
+  assign dio_pad_attr_32_puen_32_wd = reg_wdata[0];
 
-  assign dio_pad_attr_32_virtual_od_en_32_wd = reg_wdata[1];
+  assign dio_pad_attr_32_pden_32_wd = reg_wdata[1];
 
-  assign dio_pad_attr_32_pull_en_32_wd = reg_wdata[2];
+  assign dio_pad_attr_32_smten_32_wd = reg_wdata[2];
 
-  assign dio_pad_attr_32_pull_select_32_wd = reg_wdata[3];
-
-  assign dio_pad_attr_32_keeper_en_32_wd = reg_wdata[4];
-
-  assign dio_pad_attr_32_schmitt_en_32_wd = reg_wdata[5];
-
-  assign dio_pad_attr_32_od_en_32_wd = reg_wdata[6];
-
-  assign dio_pad_attr_32_input_disable_32_wd = reg_wdata[7];
-
-  assign dio_pad_attr_32_slew_rate_32_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_32_drive_strength_32_wd = reg_wdata[23:20];
+  assign dio_pad_attr_32_drv_32_wd = reg_wdata[6:4];
   assign dio_pad_attr_33_re = addr_hit[163] & reg_re & !reg_error;
   assign dio_pad_attr_33_we = addr_hit[163] & reg_we & !reg_error;
 
-  assign dio_pad_attr_33_invert_33_wd = reg_wdata[0];
+  assign dio_pad_attr_33_puen_33_wd = reg_wdata[0];
 
-  assign dio_pad_attr_33_virtual_od_en_33_wd = reg_wdata[1];
+  assign dio_pad_attr_33_pden_33_wd = reg_wdata[1];
 
-  assign dio_pad_attr_33_pull_en_33_wd = reg_wdata[2];
+  assign dio_pad_attr_33_smten_33_wd = reg_wdata[2];
 
-  assign dio_pad_attr_33_pull_select_33_wd = reg_wdata[3];
-
-  assign dio_pad_attr_33_keeper_en_33_wd = reg_wdata[4];
-
-  assign dio_pad_attr_33_schmitt_en_33_wd = reg_wdata[5];
-
-  assign dio_pad_attr_33_od_en_33_wd = reg_wdata[6];
-
-  assign dio_pad_attr_33_input_disable_33_wd = reg_wdata[7];
-
-  assign dio_pad_attr_33_slew_rate_33_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_33_drive_strength_33_wd = reg_wdata[23:20];
+  assign dio_pad_attr_33_drv_33_wd = reg_wdata[6:4];
   assign dio_pad_attr_34_re = addr_hit[164] & reg_re & !reg_error;
   assign dio_pad_attr_34_we = addr_hit[164] & reg_we & !reg_error;
 
-  assign dio_pad_attr_34_invert_34_wd = reg_wdata[0];
+  assign dio_pad_attr_34_puen_34_wd = reg_wdata[0];
 
-  assign dio_pad_attr_34_virtual_od_en_34_wd = reg_wdata[1];
+  assign dio_pad_attr_34_pden_34_wd = reg_wdata[1];
 
-  assign dio_pad_attr_34_pull_en_34_wd = reg_wdata[2];
+  assign dio_pad_attr_34_smten_34_wd = reg_wdata[2];
 
-  assign dio_pad_attr_34_pull_select_34_wd = reg_wdata[3];
-
-  assign dio_pad_attr_34_keeper_en_34_wd = reg_wdata[4];
-
-  assign dio_pad_attr_34_schmitt_en_34_wd = reg_wdata[5];
-
-  assign dio_pad_attr_34_od_en_34_wd = reg_wdata[6];
-
-  assign dio_pad_attr_34_input_disable_34_wd = reg_wdata[7];
-
-  assign dio_pad_attr_34_slew_rate_34_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_34_drive_strength_34_wd = reg_wdata[23:20];
+  assign dio_pad_attr_34_drv_34_wd = reg_wdata[6:4];
   assign dio_pad_attr_35_re = addr_hit[165] & reg_re & !reg_error;
   assign dio_pad_attr_35_we = addr_hit[165] & reg_we & !reg_error;
 
-  assign dio_pad_attr_35_invert_35_wd = reg_wdata[0];
+  assign dio_pad_attr_35_puen_35_wd = reg_wdata[0];
 
-  assign dio_pad_attr_35_virtual_od_en_35_wd = reg_wdata[1];
+  assign dio_pad_attr_35_pden_35_wd = reg_wdata[1];
 
-  assign dio_pad_attr_35_pull_en_35_wd = reg_wdata[2];
+  assign dio_pad_attr_35_smten_35_wd = reg_wdata[2];
 
-  assign dio_pad_attr_35_pull_select_35_wd = reg_wdata[3];
-
-  assign dio_pad_attr_35_keeper_en_35_wd = reg_wdata[4];
-
-  assign dio_pad_attr_35_schmitt_en_35_wd = reg_wdata[5];
-
-  assign dio_pad_attr_35_od_en_35_wd = reg_wdata[6];
-
-  assign dio_pad_attr_35_input_disable_35_wd = reg_wdata[7];
-
-  assign dio_pad_attr_35_slew_rate_35_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_35_drive_strength_35_wd = reg_wdata[23:20];
+  assign dio_pad_attr_35_drv_35_wd = reg_wdata[6:4];
   assign dio_pad_attr_36_re = addr_hit[166] & reg_re & !reg_error;
   assign dio_pad_attr_36_we = addr_hit[166] & reg_we & !reg_error;
 
-  assign dio_pad_attr_36_invert_36_wd = reg_wdata[0];
+  assign dio_pad_attr_36_puen_36_wd = reg_wdata[0];
 
-  assign dio_pad_attr_36_virtual_od_en_36_wd = reg_wdata[1];
+  assign dio_pad_attr_36_pden_36_wd = reg_wdata[1];
 
-  assign dio_pad_attr_36_pull_en_36_wd = reg_wdata[2];
+  assign dio_pad_attr_36_smten_36_wd = reg_wdata[2];
 
-  assign dio_pad_attr_36_pull_select_36_wd = reg_wdata[3];
-
-  assign dio_pad_attr_36_keeper_en_36_wd = reg_wdata[4];
-
-  assign dio_pad_attr_36_schmitt_en_36_wd = reg_wdata[5];
-
-  assign dio_pad_attr_36_od_en_36_wd = reg_wdata[6];
-
-  assign dio_pad_attr_36_input_disable_36_wd = reg_wdata[7];
-
-  assign dio_pad_attr_36_slew_rate_36_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_36_drive_strength_36_wd = reg_wdata[23:20];
+  assign dio_pad_attr_36_drv_36_wd = reg_wdata[6:4];
   assign dio_pad_attr_37_re = addr_hit[167] & reg_re & !reg_error;
   assign dio_pad_attr_37_we = addr_hit[167] & reg_we & !reg_error;
 
-  assign dio_pad_attr_37_invert_37_wd = reg_wdata[0];
+  assign dio_pad_attr_37_puen_37_wd = reg_wdata[0];
 
-  assign dio_pad_attr_37_virtual_od_en_37_wd = reg_wdata[1];
+  assign dio_pad_attr_37_pden_37_wd = reg_wdata[1];
 
-  assign dio_pad_attr_37_pull_en_37_wd = reg_wdata[2];
+  assign dio_pad_attr_37_smten_37_wd = reg_wdata[2];
 
-  assign dio_pad_attr_37_pull_select_37_wd = reg_wdata[3];
-
-  assign dio_pad_attr_37_keeper_en_37_wd = reg_wdata[4];
-
-  assign dio_pad_attr_37_schmitt_en_37_wd = reg_wdata[5];
-
-  assign dio_pad_attr_37_od_en_37_wd = reg_wdata[6];
-
-  assign dio_pad_attr_37_input_disable_37_wd = reg_wdata[7];
-
-  assign dio_pad_attr_37_slew_rate_37_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_37_drive_strength_37_wd = reg_wdata[23:20];
+  assign dio_pad_attr_37_drv_37_wd = reg_wdata[6:4];
   assign dio_pad_attr_38_re = addr_hit[168] & reg_re & !reg_error;
   assign dio_pad_attr_38_we = addr_hit[168] & reg_we & !reg_error;
 
-  assign dio_pad_attr_38_invert_38_wd = reg_wdata[0];
+  assign dio_pad_attr_38_puen_38_wd = reg_wdata[0];
 
-  assign dio_pad_attr_38_virtual_od_en_38_wd = reg_wdata[1];
+  assign dio_pad_attr_38_pden_38_wd = reg_wdata[1];
 
-  assign dio_pad_attr_38_pull_en_38_wd = reg_wdata[2];
+  assign dio_pad_attr_38_smten_38_wd = reg_wdata[2];
 
-  assign dio_pad_attr_38_pull_select_38_wd = reg_wdata[3];
-
-  assign dio_pad_attr_38_keeper_en_38_wd = reg_wdata[4];
-
-  assign dio_pad_attr_38_schmitt_en_38_wd = reg_wdata[5];
-
-  assign dio_pad_attr_38_od_en_38_wd = reg_wdata[6];
-
-  assign dio_pad_attr_38_input_disable_38_wd = reg_wdata[7];
-
-  assign dio_pad_attr_38_slew_rate_38_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_38_drive_strength_38_wd = reg_wdata[23:20];
+  assign dio_pad_attr_38_drv_38_wd = reg_wdata[6:4];
   assign dio_pad_attr_39_re = addr_hit[169] & reg_re & !reg_error;
   assign dio_pad_attr_39_we = addr_hit[169] & reg_we & !reg_error;
 
-  assign dio_pad_attr_39_invert_39_wd = reg_wdata[0];
+  assign dio_pad_attr_39_puen_39_wd = reg_wdata[0];
 
-  assign dio_pad_attr_39_virtual_od_en_39_wd = reg_wdata[1];
+  assign dio_pad_attr_39_pden_39_wd = reg_wdata[1];
 
-  assign dio_pad_attr_39_pull_en_39_wd = reg_wdata[2];
+  assign dio_pad_attr_39_smten_39_wd = reg_wdata[2];
 
-  assign dio_pad_attr_39_pull_select_39_wd = reg_wdata[3];
-
-  assign dio_pad_attr_39_keeper_en_39_wd = reg_wdata[4];
-
-  assign dio_pad_attr_39_schmitt_en_39_wd = reg_wdata[5];
-
-  assign dio_pad_attr_39_od_en_39_wd = reg_wdata[6];
-
-  assign dio_pad_attr_39_input_disable_39_wd = reg_wdata[7];
-
-  assign dio_pad_attr_39_slew_rate_39_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_39_drive_strength_39_wd = reg_wdata[23:20];
+  assign dio_pad_attr_39_drv_39_wd = reg_wdata[6:4];
   assign dio_pad_attr_40_re = addr_hit[170] & reg_re & !reg_error;
   assign dio_pad_attr_40_we = addr_hit[170] & reg_we & !reg_error;
 
-  assign dio_pad_attr_40_invert_40_wd = reg_wdata[0];
+  assign dio_pad_attr_40_puen_40_wd = reg_wdata[0];
 
-  assign dio_pad_attr_40_virtual_od_en_40_wd = reg_wdata[1];
+  assign dio_pad_attr_40_pden_40_wd = reg_wdata[1];
 
-  assign dio_pad_attr_40_pull_en_40_wd = reg_wdata[2];
+  assign dio_pad_attr_40_smten_40_wd = reg_wdata[2];
 
-  assign dio_pad_attr_40_pull_select_40_wd = reg_wdata[3];
-
-  assign dio_pad_attr_40_keeper_en_40_wd = reg_wdata[4];
-
-  assign dio_pad_attr_40_schmitt_en_40_wd = reg_wdata[5];
-
-  assign dio_pad_attr_40_od_en_40_wd = reg_wdata[6];
-
-  assign dio_pad_attr_40_input_disable_40_wd = reg_wdata[7];
-
-  assign dio_pad_attr_40_slew_rate_40_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_40_drive_strength_40_wd = reg_wdata[23:20];
+  assign dio_pad_attr_40_drv_40_wd = reg_wdata[6:4];
   assign dio_pad_attr_41_re = addr_hit[171] & reg_re & !reg_error;
   assign dio_pad_attr_41_we = addr_hit[171] & reg_we & !reg_error;
 
-  assign dio_pad_attr_41_invert_41_wd = reg_wdata[0];
+  assign dio_pad_attr_41_puen_41_wd = reg_wdata[0];
 
-  assign dio_pad_attr_41_virtual_od_en_41_wd = reg_wdata[1];
+  assign dio_pad_attr_41_pden_41_wd = reg_wdata[1];
 
-  assign dio_pad_attr_41_pull_en_41_wd = reg_wdata[2];
+  assign dio_pad_attr_41_smten_41_wd = reg_wdata[2];
 
-  assign dio_pad_attr_41_pull_select_41_wd = reg_wdata[3];
-
-  assign dio_pad_attr_41_keeper_en_41_wd = reg_wdata[4];
-
-  assign dio_pad_attr_41_schmitt_en_41_wd = reg_wdata[5];
-
-  assign dio_pad_attr_41_od_en_41_wd = reg_wdata[6];
-
-  assign dio_pad_attr_41_input_disable_41_wd = reg_wdata[7];
-
-  assign dio_pad_attr_41_slew_rate_41_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_41_drive_strength_41_wd = reg_wdata[23:20];
+  assign dio_pad_attr_41_drv_41_wd = reg_wdata[6:4];
   assign dio_pad_attr_42_re = addr_hit[172] & reg_re & !reg_error;
   assign dio_pad_attr_42_we = addr_hit[172] & reg_we & !reg_error;
 
-  assign dio_pad_attr_42_invert_42_wd = reg_wdata[0];
+  assign dio_pad_attr_42_puen_42_wd = reg_wdata[0];
 
-  assign dio_pad_attr_42_virtual_od_en_42_wd = reg_wdata[1];
+  assign dio_pad_attr_42_pden_42_wd = reg_wdata[1];
 
-  assign dio_pad_attr_42_pull_en_42_wd = reg_wdata[2];
+  assign dio_pad_attr_42_smten_42_wd = reg_wdata[2];
 
-  assign dio_pad_attr_42_pull_select_42_wd = reg_wdata[3];
-
-  assign dio_pad_attr_42_keeper_en_42_wd = reg_wdata[4];
-
-  assign dio_pad_attr_42_schmitt_en_42_wd = reg_wdata[5];
-
-  assign dio_pad_attr_42_od_en_42_wd = reg_wdata[6];
-
-  assign dio_pad_attr_42_input_disable_42_wd = reg_wdata[7];
-
-  assign dio_pad_attr_42_slew_rate_42_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_42_drive_strength_42_wd = reg_wdata[23:20];
+  assign dio_pad_attr_42_drv_42_wd = reg_wdata[6:4];
   assign dio_pad_attr_43_re = addr_hit[173] & reg_re & !reg_error;
   assign dio_pad_attr_43_we = addr_hit[173] & reg_we & !reg_error;
 
-  assign dio_pad_attr_43_invert_43_wd = reg_wdata[0];
+  assign dio_pad_attr_43_puen_43_wd = reg_wdata[0];
 
-  assign dio_pad_attr_43_virtual_od_en_43_wd = reg_wdata[1];
+  assign dio_pad_attr_43_pden_43_wd = reg_wdata[1];
 
-  assign dio_pad_attr_43_pull_en_43_wd = reg_wdata[2];
+  assign dio_pad_attr_43_smten_43_wd = reg_wdata[2];
 
-  assign dio_pad_attr_43_pull_select_43_wd = reg_wdata[3];
-
-  assign dio_pad_attr_43_keeper_en_43_wd = reg_wdata[4];
-
-  assign dio_pad_attr_43_schmitt_en_43_wd = reg_wdata[5];
-
-  assign dio_pad_attr_43_od_en_43_wd = reg_wdata[6];
-
-  assign dio_pad_attr_43_input_disable_43_wd = reg_wdata[7];
-
-  assign dio_pad_attr_43_slew_rate_43_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_43_drive_strength_43_wd = reg_wdata[23:20];
+  assign dio_pad_attr_43_drv_43_wd = reg_wdata[6:4];
   assign dio_pad_attr_44_re = addr_hit[174] & reg_re & !reg_error;
   assign dio_pad_attr_44_we = addr_hit[174] & reg_we & !reg_error;
 
-  assign dio_pad_attr_44_invert_44_wd = reg_wdata[0];
+  assign dio_pad_attr_44_puen_44_wd = reg_wdata[0];
 
-  assign dio_pad_attr_44_virtual_od_en_44_wd = reg_wdata[1];
+  assign dio_pad_attr_44_pden_44_wd = reg_wdata[1];
 
-  assign dio_pad_attr_44_pull_en_44_wd = reg_wdata[2];
+  assign dio_pad_attr_44_smten_44_wd = reg_wdata[2];
 
-  assign dio_pad_attr_44_pull_select_44_wd = reg_wdata[3];
-
-  assign dio_pad_attr_44_keeper_en_44_wd = reg_wdata[4];
-
-  assign dio_pad_attr_44_schmitt_en_44_wd = reg_wdata[5];
-
-  assign dio_pad_attr_44_od_en_44_wd = reg_wdata[6];
-
-  assign dio_pad_attr_44_input_disable_44_wd = reg_wdata[7];
-
-  assign dio_pad_attr_44_slew_rate_44_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_44_drive_strength_44_wd = reg_wdata[23:20];
+  assign dio_pad_attr_44_drv_44_wd = reg_wdata[6:4];
   assign dio_pad_attr_45_re = addr_hit[175] & reg_re & !reg_error;
   assign dio_pad_attr_45_we = addr_hit[175] & reg_we & !reg_error;
 
-  assign dio_pad_attr_45_invert_45_wd = reg_wdata[0];
+  assign dio_pad_attr_45_puen_45_wd = reg_wdata[0];
 
-  assign dio_pad_attr_45_virtual_od_en_45_wd = reg_wdata[1];
+  assign dio_pad_attr_45_pden_45_wd = reg_wdata[1];
 
-  assign dio_pad_attr_45_pull_en_45_wd = reg_wdata[2];
+  assign dio_pad_attr_45_smten_45_wd = reg_wdata[2];
 
-  assign dio_pad_attr_45_pull_select_45_wd = reg_wdata[3];
-
-  assign dio_pad_attr_45_keeper_en_45_wd = reg_wdata[4];
-
-  assign dio_pad_attr_45_schmitt_en_45_wd = reg_wdata[5];
-
-  assign dio_pad_attr_45_od_en_45_wd = reg_wdata[6];
-
-  assign dio_pad_attr_45_input_disable_45_wd = reg_wdata[7];
-
-  assign dio_pad_attr_45_slew_rate_45_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_45_drive_strength_45_wd = reg_wdata[23:20];
+  assign dio_pad_attr_45_drv_45_wd = reg_wdata[6:4];
   assign dio_pad_attr_46_re = addr_hit[176] & reg_re & !reg_error;
   assign dio_pad_attr_46_we = addr_hit[176] & reg_we & !reg_error;
 
-  assign dio_pad_attr_46_invert_46_wd = reg_wdata[0];
+  assign dio_pad_attr_46_puen_46_wd = reg_wdata[0];
 
-  assign dio_pad_attr_46_virtual_od_en_46_wd = reg_wdata[1];
+  assign dio_pad_attr_46_pden_46_wd = reg_wdata[1];
 
-  assign dio_pad_attr_46_pull_en_46_wd = reg_wdata[2];
+  assign dio_pad_attr_46_smten_46_wd = reg_wdata[2];
 
-  assign dio_pad_attr_46_pull_select_46_wd = reg_wdata[3];
-
-  assign dio_pad_attr_46_keeper_en_46_wd = reg_wdata[4];
-
-  assign dio_pad_attr_46_schmitt_en_46_wd = reg_wdata[5];
-
-  assign dio_pad_attr_46_od_en_46_wd = reg_wdata[6];
-
-  assign dio_pad_attr_46_input_disable_46_wd = reg_wdata[7];
-
-  assign dio_pad_attr_46_slew_rate_46_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_46_drive_strength_46_wd = reg_wdata[23:20];
+  assign dio_pad_attr_46_drv_46_wd = reg_wdata[6:4];
   assign dio_pad_attr_47_re = addr_hit[177] & reg_re & !reg_error;
   assign dio_pad_attr_47_we = addr_hit[177] & reg_we & !reg_error;
 
-  assign dio_pad_attr_47_invert_47_wd = reg_wdata[0];
+  assign dio_pad_attr_47_puen_47_wd = reg_wdata[0];
 
-  assign dio_pad_attr_47_virtual_od_en_47_wd = reg_wdata[1];
+  assign dio_pad_attr_47_pden_47_wd = reg_wdata[1];
 
-  assign dio_pad_attr_47_pull_en_47_wd = reg_wdata[2];
+  assign dio_pad_attr_47_smten_47_wd = reg_wdata[2];
 
-  assign dio_pad_attr_47_pull_select_47_wd = reg_wdata[3];
-
-  assign dio_pad_attr_47_keeper_en_47_wd = reg_wdata[4];
-
-  assign dio_pad_attr_47_schmitt_en_47_wd = reg_wdata[5];
-
-  assign dio_pad_attr_47_od_en_47_wd = reg_wdata[6];
-
-  assign dio_pad_attr_47_input_disable_47_wd = reg_wdata[7];
-
-  assign dio_pad_attr_47_slew_rate_47_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_47_drive_strength_47_wd = reg_wdata[23:20];
+  assign dio_pad_attr_47_drv_47_wd = reg_wdata[6:4];
   assign dio_pad_attr_48_re = addr_hit[178] & reg_re & !reg_error;
   assign dio_pad_attr_48_we = addr_hit[178] & reg_we & !reg_error;
 
-  assign dio_pad_attr_48_invert_48_wd = reg_wdata[0];
+  assign dio_pad_attr_48_puen_48_wd = reg_wdata[0];
 
-  assign dio_pad_attr_48_virtual_od_en_48_wd = reg_wdata[1];
+  assign dio_pad_attr_48_pden_48_wd = reg_wdata[1];
 
-  assign dio_pad_attr_48_pull_en_48_wd = reg_wdata[2];
+  assign dio_pad_attr_48_smten_48_wd = reg_wdata[2];
 
-  assign dio_pad_attr_48_pull_select_48_wd = reg_wdata[3];
-
-  assign dio_pad_attr_48_keeper_en_48_wd = reg_wdata[4];
-
-  assign dio_pad_attr_48_schmitt_en_48_wd = reg_wdata[5];
-
-  assign dio_pad_attr_48_od_en_48_wd = reg_wdata[6];
-
-  assign dio_pad_attr_48_input_disable_48_wd = reg_wdata[7];
-
-  assign dio_pad_attr_48_slew_rate_48_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_48_drive_strength_48_wd = reg_wdata[23:20];
+  assign dio_pad_attr_48_drv_48_wd = reg_wdata[6:4];
   assign dio_pad_attr_49_re = addr_hit[179] & reg_re & !reg_error;
   assign dio_pad_attr_49_we = addr_hit[179] & reg_we & !reg_error;
 
-  assign dio_pad_attr_49_invert_49_wd = reg_wdata[0];
+  assign dio_pad_attr_49_puen_49_wd = reg_wdata[0];
 
-  assign dio_pad_attr_49_virtual_od_en_49_wd = reg_wdata[1];
+  assign dio_pad_attr_49_pden_49_wd = reg_wdata[1];
 
-  assign dio_pad_attr_49_pull_en_49_wd = reg_wdata[2];
+  assign dio_pad_attr_49_smten_49_wd = reg_wdata[2];
 
-  assign dio_pad_attr_49_pull_select_49_wd = reg_wdata[3];
-
-  assign dio_pad_attr_49_keeper_en_49_wd = reg_wdata[4];
-
-  assign dio_pad_attr_49_schmitt_en_49_wd = reg_wdata[5];
-
-  assign dio_pad_attr_49_od_en_49_wd = reg_wdata[6];
-
-  assign dio_pad_attr_49_input_disable_49_wd = reg_wdata[7];
-
-  assign dio_pad_attr_49_slew_rate_49_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_49_drive_strength_49_wd = reg_wdata[23:20];
+  assign dio_pad_attr_49_drv_49_wd = reg_wdata[6:4];
   assign dio_pad_attr_50_re = addr_hit[180] & reg_re & !reg_error;
   assign dio_pad_attr_50_we = addr_hit[180] & reg_we & !reg_error;
 
-  assign dio_pad_attr_50_invert_50_wd = reg_wdata[0];
+  assign dio_pad_attr_50_puen_50_wd = reg_wdata[0];
 
-  assign dio_pad_attr_50_virtual_od_en_50_wd = reg_wdata[1];
+  assign dio_pad_attr_50_pden_50_wd = reg_wdata[1];
 
-  assign dio_pad_attr_50_pull_en_50_wd = reg_wdata[2];
+  assign dio_pad_attr_50_smten_50_wd = reg_wdata[2];
 
-  assign dio_pad_attr_50_pull_select_50_wd = reg_wdata[3];
-
-  assign dio_pad_attr_50_keeper_en_50_wd = reg_wdata[4];
-
-  assign dio_pad_attr_50_schmitt_en_50_wd = reg_wdata[5];
-
-  assign dio_pad_attr_50_od_en_50_wd = reg_wdata[6];
-
-  assign dio_pad_attr_50_input_disable_50_wd = reg_wdata[7];
-
-  assign dio_pad_attr_50_slew_rate_50_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_50_drive_strength_50_wd = reg_wdata[23:20];
+  assign dio_pad_attr_50_drv_50_wd = reg_wdata[6:4];
   assign dio_pad_attr_51_re = addr_hit[181] & reg_re & !reg_error;
   assign dio_pad_attr_51_we = addr_hit[181] & reg_we & !reg_error;
 
-  assign dio_pad_attr_51_invert_51_wd = reg_wdata[0];
+  assign dio_pad_attr_51_puen_51_wd = reg_wdata[0];
 
-  assign dio_pad_attr_51_virtual_od_en_51_wd = reg_wdata[1];
+  assign dio_pad_attr_51_pden_51_wd = reg_wdata[1];
 
-  assign dio_pad_attr_51_pull_en_51_wd = reg_wdata[2];
+  assign dio_pad_attr_51_smten_51_wd = reg_wdata[2];
 
-  assign dio_pad_attr_51_pull_select_51_wd = reg_wdata[3];
-
-  assign dio_pad_attr_51_keeper_en_51_wd = reg_wdata[4];
-
-  assign dio_pad_attr_51_schmitt_en_51_wd = reg_wdata[5];
-
-  assign dio_pad_attr_51_od_en_51_wd = reg_wdata[6];
-
-  assign dio_pad_attr_51_input_disable_51_wd = reg_wdata[7];
-
-  assign dio_pad_attr_51_slew_rate_51_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_51_drive_strength_51_wd = reg_wdata[23:20];
+  assign dio_pad_attr_51_drv_51_wd = reg_wdata[6:4];
   assign dio_pad_attr_52_re = addr_hit[182] & reg_re & !reg_error;
   assign dio_pad_attr_52_we = addr_hit[182] & reg_we & !reg_error;
 
-  assign dio_pad_attr_52_invert_52_wd = reg_wdata[0];
+  assign dio_pad_attr_52_puen_52_wd = reg_wdata[0];
 
-  assign dio_pad_attr_52_virtual_od_en_52_wd = reg_wdata[1];
+  assign dio_pad_attr_52_pden_52_wd = reg_wdata[1];
 
-  assign dio_pad_attr_52_pull_en_52_wd = reg_wdata[2];
+  assign dio_pad_attr_52_smten_52_wd = reg_wdata[2];
 
-  assign dio_pad_attr_52_pull_select_52_wd = reg_wdata[3];
-
-  assign dio_pad_attr_52_keeper_en_52_wd = reg_wdata[4];
-
-  assign dio_pad_attr_52_schmitt_en_52_wd = reg_wdata[5];
-
-  assign dio_pad_attr_52_od_en_52_wd = reg_wdata[6];
-
-  assign dio_pad_attr_52_input_disable_52_wd = reg_wdata[7];
-
-  assign dio_pad_attr_52_slew_rate_52_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_52_drive_strength_52_wd = reg_wdata[23:20];
+  assign dio_pad_attr_52_drv_52_wd = reg_wdata[6:4];
   assign dio_pad_attr_53_re = addr_hit[183] & reg_re & !reg_error;
   assign dio_pad_attr_53_we = addr_hit[183] & reg_we & !reg_error;
 
-  assign dio_pad_attr_53_invert_53_wd = reg_wdata[0];
+  assign dio_pad_attr_53_puen_53_wd = reg_wdata[0];
 
-  assign dio_pad_attr_53_virtual_od_en_53_wd = reg_wdata[1];
+  assign dio_pad_attr_53_pden_53_wd = reg_wdata[1];
 
-  assign dio_pad_attr_53_pull_en_53_wd = reg_wdata[2];
+  assign dio_pad_attr_53_smten_53_wd = reg_wdata[2];
 
-  assign dio_pad_attr_53_pull_select_53_wd = reg_wdata[3];
-
-  assign dio_pad_attr_53_keeper_en_53_wd = reg_wdata[4];
-
-  assign dio_pad_attr_53_schmitt_en_53_wd = reg_wdata[5];
-
-  assign dio_pad_attr_53_od_en_53_wd = reg_wdata[6];
-
-  assign dio_pad_attr_53_input_disable_53_wd = reg_wdata[7];
-
-  assign dio_pad_attr_53_slew_rate_53_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_53_drive_strength_53_wd = reg_wdata[23:20];
+  assign dio_pad_attr_53_drv_53_wd = reg_wdata[6:4];
   assign dio_pad_attr_54_re = addr_hit[184] & reg_re & !reg_error;
   assign dio_pad_attr_54_we = addr_hit[184] & reg_we & !reg_error;
 
-  assign dio_pad_attr_54_invert_54_wd = reg_wdata[0];
+  assign dio_pad_attr_54_puen_54_wd = reg_wdata[0];
 
-  assign dio_pad_attr_54_virtual_od_en_54_wd = reg_wdata[1];
+  assign dio_pad_attr_54_pden_54_wd = reg_wdata[1];
 
-  assign dio_pad_attr_54_pull_en_54_wd = reg_wdata[2];
+  assign dio_pad_attr_54_smten_54_wd = reg_wdata[2];
 
-  assign dio_pad_attr_54_pull_select_54_wd = reg_wdata[3];
-
-  assign dio_pad_attr_54_keeper_en_54_wd = reg_wdata[4];
-
-  assign dio_pad_attr_54_schmitt_en_54_wd = reg_wdata[5];
-
-  assign dio_pad_attr_54_od_en_54_wd = reg_wdata[6];
-
-  assign dio_pad_attr_54_input_disable_54_wd = reg_wdata[7];
-
-  assign dio_pad_attr_54_slew_rate_54_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_54_drive_strength_54_wd = reg_wdata[23:20];
+  assign dio_pad_attr_54_drv_54_wd = reg_wdata[6:4];
   assign dio_pad_attr_55_re = addr_hit[185] & reg_re & !reg_error;
   assign dio_pad_attr_55_we = addr_hit[185] & reg_we & !reg_error;
 
-  assign dio_pad_attr_55_invert_55_wd = reg_wdata[0];
+  assign dio_pad_attr_55_puen_55_wd = reg_wdata[0];
 
-  assign dio_pad_attr_55_virtual_od_en_55_wd = reg_wdata[1];
+  assign dio_pad_attr_55_pden_55_wd = reg_wdata[1];
 
-  assign dio_pad_attr_55_pull_en_55_wd = reg_wdata[2];
+  assign dio_pad_attr_55_smten_55_wd = reg_wdata[2];
 
-  assign dio_pad_attr_55_pull_select_55_wd = reg_wdata[3];
-
-  assign dio_pad_attr_55_keeper_en_55_wd = reg_wdata[4];
-
-  assign dio_pad_attr_55_schmitt_en_55_wd = reg_wdata[5];
-
-  assign dio_pad_attr_55_od_en_55_wd = reg_wdata[6];
-
-  assign dio_pad_attr_55_input_disable_55_wd = reg_wdata[7];
-
-  assign dio_pad_attr_55_slew_rate_55_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_55_drive_strength_55_wd = reg_wdata[23:20];
+  assign dio_pad_attr_55_drv_55_wd = reg_wdata[6:4];
   assign dio_pad_attr_56_re = addr_hit[186] & reg_re & !reg_error;
   assign dio_pad_attr_56_we = addr_hit[186] & reg_we & !reg_error;
 
-  assign dio_pad_attr_56_invert_56_wd = reg_wdata[0];
+  assign dio_pad_attr_56_puen_56_wd = reg_wdata[0];
 
-  assign dio_pad_attr_56_virtual_od_en_56_wd = reg_wdata[1];
+  assign dio_pad_attr_56_pden_56_wd = reg_wdata[1];
 
-  assign dio_pad_attr_56_pull_en_56_wd = reg_wdata[2];
+  assign dio_pad_attr_56_smten_56_wd = reg_wdata[2];
 
-  assign dio_pad_attr_56_pull_select_56_wd = reg_wdata[3];
-
-  assign dio_pad_attr_56_keeper_en_56_wd = reg_wdata[4];
-
-  assign dio_pad_attr_56_schmitt_en_56_wd = reg_wdata[5];
-
-  assign dio_pad_attr_56_od_en_56_wd = reg_wdata[6];
-
-  assign dio_pad_attr_56_input_disable_56_wd = reg_wdata[7];
-
-  assign dio_pad_attr_56_slew_rate_56_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_56_drive_strength_56_wd = reg_wdata[23:20];
+  assign dio_pad_attr_56_drv_56_wd = reg_wdata[6:4];
   assign dio_pad_attr_57_re = addr_hit[187] & reg_re & !reg_error;
   assign dio_pad_attr_57_we = addr_hit[187] & reg_we & !reg_error;
 
-  assign dio_pad_attr_57_invert_57_wd = reg_wdata[0];
+  assign dio_pad_attr_57_puen_57_wd = reg_wdata[0];
 
-  assign dio_pad_attr_57_virtual_od_en_57_wd = reg_wdata[1];
+  assign dio_pad_attr_57_pden_57_wd = reg_wdata[1];
 
-  assign dio_pad_attr_57_pull_en_57_wd = reg_wdata[2];
+  assign dio_pad_attr_57_smten_57_wd = reg_wdata[2];
 
-  assign dio_pad_attr_57_pull_select_57_wd = reg_wdata[3];
-
-  assign dio_pad_attr_57_keeper_en_57_wd = reg_wdata[4];
-
-  assign dio_pad_attr_57_schmitt_en_57_wd = reg_wdata[5];
-
-  assign dio_pad_attr_57_od_en_57_wd = reg_wdata[6];
-
-  assign dio_pad_attr_57_input_disable_57_wd = reg_wdata[7];
-
-  assign dio_pad_attr_57_slew_rate_57_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_57_drive_strength_57_wd = reg_wdata[23:20];
+  assign dio_pad_attr_57_drv_57_wd = reg_wdata[6:4];
   assign dio_pad_attr_58_re = addr_hit[188] & reg_re & !reg_error;
   assign dio_pad_attr_58_we = addr_hit[188] & reg_we & !reg_error;
 
-  assign dio_pad_attr_58_invert_58_wd = reg_wdata[0];
+  assign dio_pad_attr_58_puen_58_wd = reg_wdata[0];
 
-  assign dio_pad_attr_58_virtual_od_en_58_wd = reg_wdata[1];
+  assign dio_pad_attr_58_pden_58_wd = reg_wdata[1];
 
-  assign dio_pad_attr_58_pull_en_58_wd = reg_wdata[2];
+  assign dio_pad_attr_58_smten_58_wd = reg_wdata[2];
 
-  assign dio_pad_attr_58_pull_select_58_wd = reg_wdata[3];
-
-  assign dio_pad_attr_58_keeper_en_58_wd = reg_wdata[4];
-
-  assign dio_pad_attr_58_schmitt_en_58_wd = reg_wdata[5];
-
-  assign dio_pad_attr_58_od_en_58_wd = reg_wdata[6];
-
-  assign dio_pad_attr_58_input_disable_58_wd = reg_wdata[7];
-
-  assign dio_pad_attr_58_slew_rate_58_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_58_drive_strength_58_wd = reg_wdata[23:20];
+  assign dio_pad_attr_58_drv_58_wd = reg_wdata[6:4];
   assign dio_pad_attr_59_re = addr_hit[189] & reg_re & !reg_error;
   assign dio_pad_attr_59_we = addr_hit[189] & reg_we & !reg_error;
 
-  assign dio_pad_attr_59_invert_59_wd = reg_wdata[0];
+  assign dio_pad_attr_59_puen_59_wd = reg_wdata[0];
 
-  assign dio_pad_attr_59_virtual_od_en_59_wd = reg_wdata[1];
+  assign dio_pad_attr_59_pden_59_wd = reg_wdata[1];
 
-  assign dio_pad_attr_59_pull_en_59_wd = reg_wdata[2];
+  assign dio_pad_attr_59_smten_59_wd = reg_wdata[2];
 
-  assign dio_pad_attr_59_pull_select_59_wd = reg_wdata[3];
-
-  assign dio_pad_attr_59_keeper_en_59_wd = reg_wdata[4];
-
-  assign dio_pad_attr_59_schmitt_en_59_wd = reg_wdata[5];
-
-  assign dio_pad_attr_59_od_en_59_wd = reg_wdata[6];
-
-  assign dio_pad_attr_59_input_disable_59_wd = reg_wdata[7];
-
-  assign dio_pad_attr_59_slew_rate_59_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_59_drive_strength_59_wd = reg_wdata[23:20];
+  assign dio_pad_attr_59_drv_59_wd = reg_wdata[6:4];
   assign dio_pad_attr_60_re = addr_hit[190] & reg_re & !reg_error;
   assign dio_pad_attr_60_we = addr_hit[190] & reg_we & !reg_error;
 
-  assign dio_pad_attr_60_invert_60_wd = reg_wdata[0];
+  assign dio_pad_attr_60_puen_60_wd = reg_wdata[0];
 
-  assign dio_pad_attr_60_virtual_od_en_60_wd = reg_wdata[1];
+  assign dio_pad_attr_60_pden_60_wd = reg_wdata[1];
 
-  assign dio_pad_attr_60_pull_en_60_wd = reg_wdata[2];
+  assign dio_pad_attr_60_smten_60_wd = reg_wdata[2];
 
-  assign dio_pad_attr_60_pull_select_60_wd = reg_wdata[3];
-
-  assign dio_pad_attr_60_keeper_en_60_wd = reg_wdata[4];
-
-  assign dio_pad_attr_60_schmitt_en_60_wd = reg_wdata[5];
-
-  assign dio_pad_attr_60_od_en_60_wd = reg_wdata[6];
-
-  assign dio_pad_attr_60_input_disable_60_wd = reg_wdata[7];
-
-  assign dio_pad_attr_60_slew_rate_60_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_60_drive_strength_60_wd = reg_wdata[23:20];
+  assign dio_pad_attr_60_drv_60_wd = reg_wdata[6:4];
   assign dio_pad_attr_61_re = addr_hit[191] & reg_re & !reg_error;
   assign dio_pad_attr_61_we = addr_hit[191] & reg_we & !reg_error;
 
-  assign dio_pad_attr_61_invert_61_wd = reg_wdata[0];
+  assign dio_pad_attr_61_puen_61_wd = reg_wdata[0];
 
-  assign dio_pad_attr_61_virtual_od_en_61_wd = reg_wdata[1];
+  assign dio_pad_attr_61_pden_61_wd = reg_wdata[1];
 
-  assign dio_pad_attr_61_pull_en_61_wd = reg_wdata[2];
+  assign dio_pad_attr_61_smten_61_wd = reg_wdata[2];
 
-  assign dio_pad_attr_61_pull_select_61_wd = reg_wdata[3];
-
-  assign dio_pad_attr_61_keeper_en_61_wd = reg_wdata[4];
-
-  assign dio_pad_attr_61_schmitt_en_61_wd = reg_wdata[5];
-
-  assign dio_pad_attr_61_od_en_61_wd = reg_wdata[6];
-
-  assign dio_pad_attr_61_input_disable_61_wd = reg_wdata[7];
-
-  assign dio_pad_attr_61_slew_rate_61_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_61_drive_strength_61_wd = reg_wdata[23:20];
+  assign dio_pad_attr_61_drv_61_wd = reg_wdata[6:4];
   assign dio_pad_attr_62_re = addr_hit[192] & reg_re & !reg_error;
   assign dio_pad_attr_62_we = addr_hit[192] & reg_we & !reg_error;
 
-  assign dio_pad_attr_62_invert_62_wd = reg_wdata[0];
+  assign dio_pad_attr_62_puen_62_wd = reg_wdata[0];
 
-  assign dio_pad_attr_62_virtual_od_en_62_wd = reg_wdata[1];
+  assign dio_pad_attr_62_pden_62_wd = reg_wdata[1];
 
-  assign dio_pad_attr_62_pull_en_62_wd = reg_wdata[2];
+  assign dio_pad_attr_62_smten_62_wd = reg_wdata[2];
 
-  assign dio_pad_attr_62_pull_select_62_wd = reg_wdata[3];
-
-  assign dio_pad_attr_62_keeper_en_62_wd = reg_wdata[4];
-
-  assign dio_pad_attr_62_schmitt_en_62_wd = reg_wdata[5];
-
-  assign dio_pad_attr_62_od_en_62_wd = reg_wdata[6];
-
-  assign dio_pad_attr_62_input_disable_62_wd = reg_wdata[7];
-
-  assign dio_pad_attr_62_slew_rate_62_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_62_drive_strength_62_wd = reg_wdata[23:20];
+  assign dio_pad_attr_62_drv_62_wd = reg_wdata[6:4];
   assign dio_pad_attr_63_re = addr_hit[193] & reg_re & !reg_error;
   assign dio_pad_attr_63_we = addr_hit[193] & reg_we & !reg_error;
 
-  assign dio_pad_attr_63_invert_63_wd = reg_wdata[0];
+  assign dio_pad_attr_63_puen_63_wd = reg_wdata[0];
 
-  assign dio_pad_attr_63_virtual_od_en_63_wd = reg_wdata[1];
+  assign dio_pad_attr_63_pden_63_wd = reg_wdata[1];
 
-  assign dio_pad_attr_63_pull_en_63_wd = reg_wdata[2];
+  assign dio_pad_attr_63_smten_63_wd = reg_wdata[2];
 
-  assign dio_pad_attr_63_pull_select_63_wd = reg_wdata[3];
-
-  assign dio_pad_attr_63_keeper_en_63_wd = reg_wdata[4];
-
-  assign dio_pad_attr_63_schmitt_en_63_wd = reg_wdata[5];
-
-  assign dio_pad_attr_63_od_en_63_wd = reg_wdata[6];
-
-  assign dio_pad_attr_63_input_disable_63_wd = reg_wdata[7];
-
-  assign dio_pad_attr_63_slew_rate_63_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_63_drive_strength_63_wd = reg_wdata[23:20];
+  assign dio_pad_attr_63_drv_63_wd = reg_wdata[6:4];
   assign dio_pad_attr_64_re = addr_hit[194] & reg_re & !reg_error;
   assign dio_pad_attr_64_we = addr_hit[194] & reg_we & !reg_error;
 
-  assign dio_pad_attr_64_invert_64_wd = reg_wdata[0];
+  assign dio_pad_attr_64_puen_64_wd = reg_wdata[0];
 
-  assign dio_pad_attr_64_virtual_od_en_64_wd = reg_wdata[1];
+  assign dio_pad_attr_64_pden_64_wd = reg_wdata[1];
 
-  assign dio_pad_attr_64_pull_en_64_wd = reg_wdata[2];
+  assign dio_pad_attr_64_smten_64_wd = reg_wdata[2];
 
-  assign dio_pad_attr_64_pull_select_64_wd = reg_wdata[3];
-
-  assign dio_pad_attr_64_keeper_en_64_wd = reg_wdata[4];
-
-  assign dio_pad_attr_64_schmitt_en_64_wd = reg_wdata[5];
-
-  assign dio_pad_attr_64_od_en_64_wd = reg_wdata[6];
-
-  assign dio_pad_attr_64_input_disable_64_wd = reg_wdata[7];
-
-  assign dio_pad_attr_64_slew_rate_64_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_64_drive_strength_64_wd = reg_wdata[23:20];
+  assign dio_pad_attr_64_drv_64_wd = reg_wdata[6:4];
   assign dio_pad_attr_65_re = addr_hit[195] & reg_re & !reg_error;
   assign dio_pad_attr_65_we = addr_hit[195] & reg_we & !reg_error;
 
-  assign dio_pad_attr_65_invert_65_wd = reg_wdata[0];
+  assign dio_pad_attr_65_puen_65_wd = reg_wdata[0];
 
-  assign dio_pad_attr_65_virtual_od_en_65_wd = reg_wdata[1];
+  assign dio_pad_attr_65_pden_65_wd = reg_wdata[1];
 
-  assign dio_pad_attr_65_pull_en_65_wd = reg_wdata[2];
+  assign dio_pad_attr_65_smten_65_wd = reg_wdata[2];
 
-  assign dio_pad_attr_65_pull_select_65_wd = reg_wdata[3];
-
-  assign dio_pad_attr_65_keeper_en_65_wd = reg_wdata[4];
-
-  assign dio_pad_attr_65_schmitt_en_65_wd = reg_wdata[5];
-
-  assign dio_pad_attr_65_od_en_65_wd = reg_wdata[6];
-
-  assign dio_pad_attr_65_input_disable_65_wd = reg_wdata[7];
-
-  assign dio_pad_attr_65_slew_rate_65_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_65_drive_strength_65_wd = reg_wdata[23:20];
+  assign dio_pad_attr_65_drv_65_wd = reg_wdata[6:4];
   assign dio_pad_attr_66_re = addr_hit[196] & reg_re & !reg_error;
   assign dio_pad_attr_66_we = addr_hit[196] & reg_we & !reg_error;
 
-  assign dio_pad_attr_66_invert_66_wd = reg_wdata[0];
+  assign dio_pad_attr_66_puen_66_wd = reg_wdata[0];
 
-  assign dio_pad_attr_66_virtual_od_en_66_wd = reg_wdata[1];
+  assign dio_pad_attr_66_pden_66_wd = reg_wdata[1];
 
-  assign dio_pad_attr_66_pull_en_66_wd = reg_wdata[2];
+  assign dio_pad_attr_66_smten_66_wd = reg_wdata[2];
 
-  assign dio_pad_attr_66_pull_select_66_wd = reg_wdata[3];
-
-  assign dio_pad_attr_66_keeper_en_66_wd = reg_wdata[4];
-
-  assign dio_pad_attr_66_schmitt_en_66_wd = reg_wdata[5];
-
-  assign dio_pad_attr_66_od_en_66_wd = reg_wdata[6];
-
-  assign dio_pad_attr_66_input_disable_66_wd = reg_wdata[7];
-
-  assign dio_pad_attr_66_slew_rate_66_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_66_drive_strength_66_wd = reg_wdata[23:20];
+  assign dio_pad_attr_66_drv_66_wd = reg_wdata[6:4];
   assign dio_pad_attr_67_re = addr_hit[197] & reg_re & !reg_error;
   assign dio_pad_attr_67_we = addr_hit[197] & reg_we & !reg_error;
 
-  assign dio_pad_attr_67_invert_67_wd = reg_wdata[0];
+  assign dio_pad_attr_67_puen_67_wd = reg_wdata[0];
 
-  assign dio_pad_attr_67_virtual_od_en_67_wd = reg_wdata[1];
+  assign dio_pad_attr_67_pden_67_wd = reg_wdata[1];
 
-  assign dio_pad_attr_67_pull_en_67_wd = reg_wdata[2];
+  assign dio_pad_attr_67_smten_67_wd = reg_wdata[2];
 
-  assign dio_pad_attr_67_pull_select_67_wd = reg_wdata[3];
-
-  assign dio_pad_attr_67_keeper_en_67_wd = reg_wdata[4];
-
-  assign dio_pad_attr_67_schmitt_en_67_wd = reg_wdata[5];
-
-  assign dio_pad_attr_67_od_en_67_wd = reg_wdata[6];
-
-  assign dio_pad_attr_67_input_disable_67_wd = reg_wdata[7];
-
-  assign dio_pad_attr_67_slew_rate_67_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_67_drive_strength_67_wd = reg_wdata[23:20];
+  assign dio_pad_attr_67_drv_67_wd = reg_wdata[6:4];
   assign dio_pad_attr_68_re = addr_hit[198] & reg_re & !reg_error;
   assign dio_pad_attr_68_we = addr_hit[198] & reg_we & !reg_error;
 
-  assign dio_pad_attr_68_invert_68_wd = reg_wdata[0];
+  assign dio_pad_attr_68_puen_68_wd = reg_wdata[0];
 
-  assign dio_pad_attr_68_virtual_od_en_68_wd = reg_wdata[1];
+  assign dio_pad_attr_68_pden_68_wd = reg_wdata[1];
 
-  assign dio_pad_attr_68_pull_en_68_wd = reg_wdata[2];
+  assign dio_pad_attr_68_smten_68_wd = reg_wdata[2];
 
-  assign dio_pad_attr_68_pull_select_68_wd = reg_wdata[3];
-
-  assign dio_pad_attr_68_keeper_en_68_wd = reg_wdata[4];
-
-  assign dio_pad_attr_68_schmitt_en_68_wd = reg_wdata[5];
-
-  assign dio_pad_attr_68_od_en_68_wd = reg_wdata[6];
-
-  assign dio_pad_attr_68_input_disable_68_wd = reg_wdata[7];
-
-  assign dio_pad_attr_68_slew_rate_68_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_68_drive_strength_68_wd = reg_wdata[23:20];
+  assign dio_pad_attr_68_drv_68_wd = reg_wdata[6:4];
   assign dio_pad_attr_69_re = addr_hit[199] & reg_re & !reg_error;
   assign dio_pad_attr_69_we = addr_hit[199] & reg_we & !reg_error;
 
-  assign dio_pad_attr_69_invert_69_wd = reg_wdata[0];
+  assign dio_pad_attr_69_puen_69_wd = reg_wdata[0];
 
-  assign dio_pad_attr_69_virtual_od_en_69_wd = reg_wdata[1];
+  assign dio_pad_attr_69_pden_69_wd = reg_wdata[1];
 
-  assign dio_pad_attr_69_pull_en_69_wd = reg_wdata[2];
+  assign dio_pad_attr_69_smten_69_wd = reg_wdata[2];
 
-  assign dio_pad_attr_69_pull_select_69_wd = reg_wdata[3];
-
-  assign dio_pad_attr_69_keeper_en_69_wd = reg_wdata[4];
-
-  assign dio_pad_attr_69_schmitt_en_69_wd = reg_wdata[5];
-
-  assign dio_pad_attr_69_od_en_69_wd = reg_wdata[6];
-
-  assign dio_pad_attr_69_input_disable_69_wd = reg_wdata[7];
-
-  assign dio_pad_attr_69_slew_rate_69_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_69_drive_strength_69_wd = reg_wdata[23:20];
+  assign dio_pad_attr_69_drv_69_wd = reg_wdata[6:4];
   assign dio_pad_attr_70_re = addr_hit[200] & reg_re & !reg_error;
   assign dio_pad_attr_70_we = addr_hit[200] & reg_we & !reg_error;
 
-  assign dio_pad_attr_70_invert_70_wd = reg_wdata[0];
+  assign dio_pad_attr_70_puen_70_wd = reg_wdata[0];
 
-  assign dio_pad_attr_70_virtual_od_en_70_wd = reg_wdata[1];
+  assign dio_pad_attr_70_pden_70_wd = reg_wdata[1];
 
-  assign dio_pad_attr_70_pull_en_70_wd = reg_wdata[2];
+  assign dio_pad_attr_70_smten_70_wd = reg_wdata[2];
 
-  assign dio_pad_attr_70_pull_select_70_wd = reg_wdata[3];
-
-  assign dio_pad_attr_70_keeper_en_70_wd = reg_wdata[4];
-
-  assign dio_pad_attr_70_schmitt_en_70_wd = reg_wdata[5];
-
-  assign dio_pad_attr_70_od_en_70_wd = reg_wdata[6];
-
-  assign dio_pad_attr_70_input_disable_70_wd = reg_wdata[7];
-
-  assign dio_pad_attr_70_slew_rate_70_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_70_drive_strength_70_wd = reg_wdata[23:20];
+  assign dio_pad_attr_70_drv_70_wd = reg_wdata[6:4];
   assign dio_pad_attr_71_re = addr_hit[201] & reg_re & !reg_error;
   assign dio_pad_attr_71_we = addr_hit[201] & reg_we & !reg_error;
 
-  assign dio_pad_attr_71_invert_71_wd = reg_wdata[0];
+  assign dio_pad_attr_71_puen_71_wd = reg_wdata[0];
 
-  assign dio_pad_attr_71_virtual_od_en_71_wd = reg_wdata[1];
+  assign dio_pad_attr_71_pden_71_wd = reg_wdata[1];
 
-  assign dio_pad_attr_71_pull_en_71_wd = reg_wdata[2];
+  assign dio_pad_attr_71_smten_71_wd = reg_wdata[2];
 
-  assign dio_pad_attr_71_pull_select_71_wd = reg_wdata[3];
-
-  assign dio_pad_attr_71_keeper_en_71_wd = reg_wdata[4];
-
-  assign dio_pad_attr_71_schmitt_en_71_wd = reg_wdata[5];
-
-  assign dio_pad_attr_71_od_en_71_wd = reg_wdata[6];
-
-  assign dio_pad_attr_71_input_disable_71_wd = reg_wdata[7];
-
-  assign dio_pad_attr_71_slew_rate_71_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_71_drive_strength_71_wd = reg_wdata[23:20];
+  assign dio_pad_attr_71_drv_71_wd = reg_wdata[6:4];
   assign dio_pad_attr_72_re = addr_hit[202] & reg_re & !reg_error;
   assign dio_pad_attr_72_we = addr_hit[202] & reg_we & !reg_error;
 
-  assign dio_pad_attr_72_invert_72_wd = reg_wdata[0];
+  assign dio_pad_attr_72_puen_72_wd = reg_wdata[0];
 
-  assign dio_pad_attr_72_virtual_od_en_72_wd = reg_wdata[1];
+  assign dio_pad_attr_72_pden_72_wd = reg_wdata[1];
 
-  assign dio_pad_attr_72_pull_en_72_wd = reg_wdata[2];
+  assign dio_pad_attr_72_smten_72_wd = reg_wdata[2];
 
-  assign dio_pad_attr_72_pull_select_72_wd = reg_wdata[3];
-
-  assign dio_pad_attr_72_keeper_en_72_wd = reg_wdata[4];
-
-  assign dio_pad_attr_72_schmitt_en_72_wd = reg_wdata[5];
-
-  assign dio_pad_attr_72_od_en_72_wd = reg_wdata[6];
-
-  assign dio_pad_attr_72_input_disable_72_wd = reg_wdata[7];
-
-  assign dio_pad_attr_72_slew_rate_72_wd = reg_wdata[17:16];
-
-  assign dio_pad_attr_72_drive_strength_72_wd = reg_wdata[23:20];
+  assign dio_pad_attr_72_drv_72_wd = reg_wdata[6:4];
   assign mio_pad_sleep_status_we = addr_hit[203] & reg_we & !reg_error;
 
   assign mio_pad_sleep_status_en_0_wd = reg_wdata[0];
@@ -39420,159 +29220,87 @@ module pinmux_reg_top (
       end
 
       addr_hit[45]: begin
-        reg_rdata_next[0] = mio_pad_attr_0_invert_0_qs;
-        reg_rdata_next[1] = mio_pad_attr_0_virtual_od_en_0_qs;
-        reg_rdata_next[2] = mio_pad_attr_0_pull_en_0_qs;
-        reg_rdata_next[3] = mio_pad_attr_0_pull_select_0_qs;
-        reg_rdata_next[4] = mio_pad_attr_0_keeper_en_0_qs;
-        reg_rdata_next[5] = mio_pad_attr_0_schmitt_en_0_qs;
-        reg_rdata_next[6] = mio_pad_attr_0_od_en_0_qs;
-        reg_rdata_next[7] = mio_pad_attr_0_input_disable_0_qs;
-        reg_rdata_next[17:16] = mio_pad_attr_0_slew_rate_0_qs;
-        reg_rdata_next[23:20] = mio_pad_attr_0_drive_strength_0_qs;
+        reg_rdata_next[0] = mio_pad_attr_0_puen_0_qs;
+        reg_rdata_next[1] = mio_pad_attr_0_pden_0_qs;
+        reg_rdata_next[2] = mio_pad_attr_0_smten_0_qs;
+        reg_rdata_next[6:4] = mio_pad_attr_0_drv_0_qs;
       end
 
       addr_hit[46]: begin
-        reg_rdata_next[0] = mio_pad_attr_1_invert_1_qs;
-        reg_rdata_next[1] = mio_pad_attr_1_virtual_od_en_1_qs;
-        reg_rdata_next[2] = mio_pad_attr_1_pull_en_1_qs;
-        reg_rdata_next[3] = mio_pad_attr_1_pull_select_1_qs;
-        reg_rdata_next[4] = mio_pad_attr_1_keeper_en_1_qs;
-        reg_rdata_next[5] = mio_pad_attr_1_schmitt_en_1_qs;
-        reg_rdata_next[6] = mio_pad_attr_1_od_en_1_qs;
-        reg_rdata_next[7] = mio_pad_attr_1_input_disable_1_qs;
-        reg_rdata_next[17:16] = mio_pad_attr_1_slew_rate_1_qs;
-        reg_rdata_next[23:20] = mio_pad_attr_1_drive_strength_1_qs;
+        reg_rdata_next[0] = mio_pad_attr_1_puen_1_qs;
+        reg_rdata_next[1] = mio_pad_attr_1_pden_1_qs;
+        reg_rdata_next[2] = mio_pad_attr_1_smten_1_qs;
+        reg_rdata_next[6:4] = mio_pad_attr_1_drv_1_qs;
       end
 
       addr_hit[47]: begin
-        reg_rdata_next[0] = mio_pad_attr_2_invert_2_qs;
-        reg_rdata_next[1] = mio_pad_attr_2_virtual_od_en_2_qs;
-        reg_rdata_next[2] = mio_pad_attr_2_pull_en_2_qs;
-        reg_rdata_next[3] = mio_pad_attr_2_pull_select_2_qs;
-        reg_rdata_next[4] = mio_pad_attr_2_keeper_en_2_qs;
-        reg_rdata_next[5] = mio_pad_attr_2_schmitt_en_2_qs;
-        reg_rdata_next[6] = mio_pad_attr_2_od_en_2_qs;
-        reg_rdata_next[7] = mio_pad_attr_2_input_disable_2_qs;
-        reg_rdata_next[17:16] = mio_pad_attr_2_slew_rate_2_qs;
-        reg_rdata_next[23:20] = mio_pad_attr_2_drive_strength_2_qs;
+        reg_rdata_next[0] = mio_pad_attr_2_puen_2_qs;
+        reg_rdata_next[1] = mio_pad_attr_2_pden_2_qs;
+        reg_rdata_next[2] = mio_pad_attr_2_smten_2_qs;
+        reg_rdata_next[6:4] = mio_pad_attr_2_drv_2_qs;
       end
 
       addr_hit[48]: begin
-        reg_rdata_next[0] = mio_pad_attr_3_invert_3_qs;
-        reg_rdata_next[1] = mio_pad_attr_3_virtual_od_en_3_qs;
-        reg_rdata_next[2] = mio_pad_attr_3_pull_en_3_qs;
-        reg_rdata_next[3] = mio_pad_attr_3_pull_select_3_qs;
-        reg_rdata_next[4] = mio_pad_attr_3_keeper_en_3_qs;
-        reg_rdata_next[5] = mio_pad_attr_3_schmitt_en_3_qs;
-        reg_rdata_next[6] = mio_pad_attr_3_od_en_3_qs;
-        reg_rdata_next[7] = mio_pad_attr_3_input_disable_3_qs;
-        reg_rdata_next[17:16] = mio_pad_attr_3_slew_rate_3_qs;
-        reg_rdata_next[23:20] = mio_pad_attr_3_drive_strength_3_qs;
+        reg_rdata_next[0] = mio_pad_attr_3_puen_3_qs;
+        reg_rdata_next[1] = mio_pad_attr_3_pden_3_qs;
+        reg_rdata_next[2] = mio_pad_attr_3_smten_3_qs;
+        reg_rdata_next[6:4] = mio_pad_attr_3_drv_3_qs;
       end
 
       addr_hit[49]: begin
-        reg_rdata_next[0] = mio_pad_attr_4_invert_4_qs;
-        reg_rdata_next[1] = mio_pad_attr_4_virtual_od_en_4_qs;
-        reg_rdata_next[2] = mio_pad_attr_4_pull_en_4_qs;
-        reg_rdata_next[3] = mio_pad_attr_4_pull_select_4_qs;
-        reg_rdata_next[4] = mio_pad_attr_4_keeper_en_4_qs;
-        reg_rdata_next[5] = mio_pad_attr_4_schmitt_en_4_qs;
-        reg_rdata_next[6] = mio_pad_attr_4_od_en_4_qs;
-        reg_rdata_next[7] = mio_pad_attr_4_input_disable_4_qs;
-        reg_rdata_next[17:16] = mio_pad_attr_4_slew_rate_4_qs;
-        reg_rdata_next[23:20] = mio_pad_attr_4_drive_strength_4_qs;
+        reg_rdata_next[0] = mio_pad_attr_4_puen_4_qs;
+        reg_rdata_next[1] = mio_pad_attr_4_pden_4_qs;
+        reg_rdata_next[2] = mio_pad_attr_4_smten_4_qs;
+        reg_rdata_next[6:4] = mio_pad_attr_4_drv_4_qs;
       end
 
       addr_hit[50]: begin
-        reg_rdata_next[0] = mio_pad_attr_5_invert_5_qs;
-        reg_rdata_next[1] = mio_pad_attr_5_virtual_od_en_5_qs;
-        reg_rdata_next[2] = mio_pad_attr_5_pull_en_5_qs;
-        reg_rdata_next[3] = mio_pad_attr_5_pull_select_5_qs;
-        reg_rdata_next[4] = mio_pad_attr_5_keeper_en_5_qs;
-        reg_rdata_next[5] = mio_pad_attr_5_schmitt_en_5_qs;
-        reg_rdata_next[6] = mio_pad_attr_5_od_en_5_qs;
-        reg_rdata_next[7] = mio_pad_attr_5_input_disable_5_qs;
-        reg_rdata_next[17:16] = mio_pad_attr_5_slew_rate_5_qs;
-        reg_rdata_next[23:20] = mio_pad_attr_5_drive_strength_5_qs;
+        reg_rdata_next[0] = mio_pad_attr_5_puen_5_qs;
+        reg_rdata_next[1] = mio_pad_attr_5_pden_5_qs;
+        reg_rdata_next[2] = mio_pad_attr_5_smten_5_qs;
+        reg_rdata_next[6:4] = mio_pad_attr_5_drv_5_qs;
       end
 
       addr_hit[51]: begin
-        reg_rdata_next[0] = mio_pad_attr_6_invert_6_qs;
-        reg_rdata_next[1] = mio_pad_attr_6_virtual_od_en_6_qs;
-        reg_rdata_next[2] = mio_pad_attr_6_pull_en_6_qs;
-        reg_rdata_next[3] = mio_pad_attr_6_pull_select_6_qs;
-        reg_rdata_next[4] = mio_pad_attr_6_keeper_en_6_qs;
-        reg_rdata_next[5] = mio_pad_attr_6_schmitt_en_6_qs;
-        reg_rdata_next[6] = mio_pad_attr_6_od_en_6_qs;
-        reg_rdata_next[7] = mio_pad_attr_6_input_disable_6_qs;
-        reg_rdata_next[17:16] = mio_pad_attr_6_slew_rate_6_qs;
-        reg_rdata_next[23:20] = mio_pad_attr_6_drive_strength_6_qs;
+        reg_rdata_next[0] = mio_pad_attr_6_puen_6_qs;
+        reg_rdata_next[1] = mio_pad_attr_6_pden_6_qs;
+        reg_rdata_next[2] = mio_pad_attr_6_smten_6_qs;
+        reg_rdata_next[6:4] = mio_pad_attr_6_drv_6_qs;
       end
 
       addr_hit[52]: begin
-        reg_rdata_next[0] = mio_pad_attr_7_invert_7_qs;
-        reg_rdata_next[1] = mio_pad_attr_7_virtual_od_en_7_qs;
-        reg_rdata_next[2] = mio_pad_attr_7_pull_en_7_qs;
-        reg_rdata_next[3] = mio_pad_attr_7_pull_select_7_qs;
-        reg_rdata_next[4] = mio_pad_attr_7_keeper_en_7_qs;
-        reg_rdata_next[5] = mio_pad_attr_7_schmitt_en_7_qs;
-        reg_rdata_next[6] = mio_pad_attr_7_od_en_7_qs;
-        reg_rdata_next[7] = mio_pad_attr_7_input_disable_7_qs;
-        reg_rdata_next[17:16] = mio_pad_attr_7_slew_rate_7_qs;
-        reg_rdata_next[23:20] = mio_pad_attr_7_drive_strength_7_qs;
+        reg_rdata_next[0] = mio_pad_attr_7_puen_7_qs;
+        reg_rdata_next[1] = mio_pad_attr_7_pden_7_qs;
+        reg_rdata_next[2] = mio_pad_attr_7_smten_7_qs;
+        reg_rdata_next[6:4] = mio_pad_attr_7_drv_7_qs;
       end
 
       addr_hit[53]: begin
-        reg_rdata_next[0] = mio_pad_attr_8_invert_8_qs;
-        reg_rdata_next[1] = mio_pad_attr_8_virtual_od_en_8_qs;
-        reg_rdata_next[2] = mio_pad_attr_8_pull_en_8_qs;
-        reg_rdata_next[3] = mio_pad_attr_8_pull_select_8_qs;
-        reg_rdata_next[4] = mio_pad_attr_8_keeper_en_8_qs;
-        reg_rdata_next[5] = mio_pad_attr_8_schmitt_en_8_qs;
-        reg_rdata_next[6] = mio_pad_attr_8_od_en_8_qs;
-        reg_rdata_next[7] = mio_pad_attr_8_input_disable_8_qs;
-        reg_rdata_next[17:16] = mio_pad_attr_8_slew_rate_8_qs;
-        reg_rdata_next[23:20] = mio_pad_attr_8_drive_strength_8_qs;
+        reg_rdata_next[0] = mio_pad_attr_8_puen_8_qs;
+        reg_rdata_next[1] = mio_pad_attr_8_pden_8_qs;
+        reg_rdata_next[2] = mio_pad_attr_8_smten_8_qs;
+        reg_rdata_next[6:4] = mio_pad_attr_8_drv_8_qs;
       end
 
       addr_hit[54]: begin
-        reg_rdata_next[0] = mio_pad_attr_9_invert_9_qs;
-        reg_rdata_next[1] = mio_pad_attr_9_virtual_od_en_9_qs;
-        reg_rdata_next[2] = mio_pad_attr_9_pull_en_9_qs;
-        reg_rdata_next[3] = mio_pad_attr_9_pull_select_9_qs;
-        reg_rdata_next[4] = mio_pad_attr_9_keeper_en_9_qs;
-        reg_rdata_next[5] = mio_pad_attr_9_schmitt_en_9_qs;
-        reg_rdata_next[6] = mio_pad_attr_9_od_en_9_qs;
-        reg_rdata_next[7] = mio_pad_attr_9_input_disable_9_qs;
-        reg_rdata_next[17:16] = mio_pad_attr_9_slew_rate_9_qs;
-        reg_rdata_next[23:20] = mio_pad_attr_9_drive_strength_9_qs;
+        reg_rdata_next[0] = mio_pad_attr_9_puen_9_qs;
+        reg_rdata_next[1] = mio_pad_attr_9_pden_9_qs;
+        reg_rdata_next[2] = mio_pad_attr_9_smten_9_qs;
+        reg_rdata_next[6:4] = mio_pad_attr_9_drv_9_qs;
       end
 
       addr_hit[55]: begin
-        reg_rdata_next[0] = mio_pad_attr_10_invert_10_qs;
-        reg_rdata_next[1] = mio_pad_attr_10_virtual_od_en_10_qs;
-        reg_rdata_next[2] = mio_pad_attr_10_pull_en_10_qs;
-        reg_rdata_next[3] = mio_pad_attr_10_pull_select_10_qs;
-        reg_rdata_next[4] = mio_pad_attr_10_keeper_en_10_qs;
-        reg_rdata_next[5] = mio_pad_attr_10_schmitt_en_10_qs;
-        reg_rdata_next[6] = mio_pad_attr_10_od_en_10_qs;
-        reg_rdata_next[7] = mio_pad_attr_10_input_disable_10_qs;
-        reg_rdata_next[17:16] = mio_pad_attr_10_slew_rate_10_qs;
-        reg_rdata_next[23:20] = mio_pad_attr_10_drive_strength_10_qs;
+        reg_rdata_next[0] = mio_pad_attr_10_puen_10_qs;
+        reg_rdata_next[1] = mio_pad_attr_10_pden_10_qs;
+        reg_rdata_next[2] = mio_pad_attr_10_smten_10_qs;
+        reg_rdata_next[6:4] = mio_pad_attr_10_drv_10_qs;
       end
 
       addr_hit[56]: begin
-        reg_rdata_next[0] = mio_pad_attr_11_invert_11_qs;
-        reg_rdata_next[1] = mio_pad_attr_11_virtual_od_en_11_qs;
-        reg_rdata_next[2] = mio_pad_attr_11_pull_en_11_qs;
-        reg_rdata_next[3] = mio_pad_attr_11_pull_select_11_qs;
-        reg_rdata_next[4] = mio_pad_attr_11_keeper_en_11_qs;
-        reg_rdata_next[5] = mio_pad_attr_11_schmitt_en_11_qs;
-        reg_rdata_next[6] = mio_pad_attr_11_od_en_11_qs;
-        reg_rdata_next[7] = mio_pad_attr_11_input_disable_11_qs;
-        reg_rdata_next[17:16] = mio_pad_attr_11_slew_rate_11_qs;
-        reg_rdata_next[23:20] = mio_pad_attr_11_drive_strength_11_qs;
+        reg_rdata_next[0] = mio_pad_attr_11_puen_11_qs;
+        reg_rdata_next[1] = mio_pad_attr_11_pden_11_qs;
+        reg_rdata_next[2] = mio_pad_attr_11_smten_11_qs;
+        reg_rdata_next[6:4] = mio_pad_attr_11_drv_11_qs;
       end
 
       addr_hit[57]: begin
@@ -39868,952 +29596,514 @@ module pinmux_reg_top (
       end
 
       addr_hit[130]: begin
-        reg_rdata_next[0] = dio_pad_attr_0_invert_0_qs;
-        reg_rdata_next[1] = dio_pad_attr_0_virtual_od_en_0_qs;
-        reg_rdata_next[2] = dio_pad_attr_0_pull_en_0_qs;
-        reg_rdata_next[3] = dio_pad_attr_0_pull_select_0_qs;
-        reg_rdata_next[4] = dio_pad_attr_0_keeper_en_0_qs;
-        reg_rdata_next[5] = dio_pad_attr_0_schmitt_en_0_qs;
-        reg_rdata_next[6] = dio_pad_attr_0_od_en_0_qs;
-        reg_rdata_next[7] = dio_pad_attr_0_input_disable_0_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_0_slew_rate_0_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_0_drive_strength_0_qs;
+        reg_rdata_next[0] = dio_pad_attr_0_puen_0_qs;
+        reg_rdata_next[1] = dio_pad_attr_0_pden_0_qs;
+        reg_rdata_next[2] = dio_pad_attr_0_smten_0_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_0_drv_0_qs;
       end
 
       addr_hit[131]: begin
-        reg_rdata_next[0] = dio_pad_attr_1_invert_1_qs;
-        reg_rdata_next[1] = dio_pad_attr_1_virtual_od_en_1_qs;
-        reg_rdata_next[2] = dio_pad_attr_1_pull_en_1_qs;
-        reg_rdata_next[3] = dio_pad_attr_1_pull_select_1_qs;
-        reg_rdata_next[4] = dio_pad_attr_1_keeper_en_1_qs;
-        reg_rdata_next[5] = dio_pad_attr_1_schmitt_en_1_qs;
-        reg_rdata_next[6] = dio_pad_attr_1_od_en_1_qs;
-        reg_rdata_next[7] = dio_pad_attr_1_input_disable_1_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_1_slew_rate_1_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_1_drive_strength_1_qs;
+        reg_rdata_next[0] = dio_pad_attr_1_puen_1_qs;
+        reg_rdata_next[1] = dio_pad_attr_1_pden_1_qs;
+        reg_rdata_next[2] = dio_pad_attr_1_smten_1_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_1_drv_1_qs;
       end
 
       addr_hit[132]: begin
-        reg_rdata_next[0] = dio_pad_attr_2_invert_2_qs;
-        reg_rdata_next[1] = dio_pad_attr_2_virtual_od_en_2_qs;
-        reg_rdata_next[2] = dio_pad_attr_2_pull_en_2_qs;
-        reg_rdata_next[3] = dio_pad_attr_2_pull_select_2_qs;
-        reg_rdata_next[4] = dio_pad_attr_2_keeper_en_2_qs;
-        reg_rdata_next[5] = dio_pad_attr_2_schmitt_en_2_qs;
-        reg_rdata_next[6] = dio_pad_attr_2_od_en_2_qs;
-        reg_rdata_next[7] = dio_pad_attr_2_input_disable_2_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_2_slew_rate_2_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_2_drive_strength_2_qs;
+        reg_rdata_next[0] = dio_pad_attr_2_puen_2_qs;
+        reg_rdata_next[1] = dio_pad_attr_2_pden_2_qs;
+        reg_rdata_next[2] = dio_pad_attr_2_smten_2_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_2_drv_2_qs;
       end
 
       addr_hit[133]: begin
-        reg_rdata_next[0] = dio_pad_attr_3_invert_3_qs;
-        reg_rdata_next[1] = dio_pad_attr_3_virtual_od_en_3_qs;
-        reg_rdata_next[2] = dio_pad_attr_3_pull_en_3_qs;
-        reg_rdata_next[3] = dio_pad_attr_3_pull_select_3_qs;
-        reg_rdata_next[4] = dio_pad_attr_3_keeper_en_3_qs;
-        reg_rdata_next[5] = dio_pad_attr_3_schmitt_en_3_qs;
-        reg_rdata_next[6] = dio_pad_attr_3_od_en_3_qs;
-        reg_rdata_next[7] = dio_pad_attr_3_input_disable_3_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_3_slew_rate_3_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_3_drive_strength_3_qs;
+        reg_rdata_next[0] = dio_pad_attr_3_puen_3_qs;
+        reg_rdata_next[1] = dio_pad_attr_3_pden_3_qs;
+        reg_rdata_next[2] = dio_pad_attr_3_smten_3_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_3_drv_3_qs;
       end
 
       addr_hit[134]: begin
-        reg_rdata_next[0] = dio_pad_attr_4_invert_4_qs;
-        reg_rdata_next[1] = dio_pad_attr_4_virtual_od_en_4_qs;
-        reg_rdata_next[2] = dio_pad_attr_4_pull_en_4_qs;
-        reg_rdata_next[3] = dio_pad_attr_4_pull_select_4_qs;
-        reg_rdata_next[4] = dio_pad_attr_4_keeper_en_4_qs;
-        reg_rdata_next[5] = dio_pad_attr_4_schmitt_en_4_qs;
-        reg_rdata_next[6] = dio_pad_attr_4_od_en_4_qs;
-        reg_rdata_next[7] = dio_pad_attr_4_input_disable_4_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_4_slew_rate_4_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_4_drive_strength_4_qs;
+        reg_rdata_next[0] = dio_pad_attr_4_puen_4_qs;
+        reg_rdata_next[1] = dio_pad_attr_4_pden_4_qs;
+        reg_rdata_next[2] = dio_pad_attr_4_smten_4_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_4_drv_4_qs;
       end
 
       addr_hit[135]: begin
-        reg_rdata_next[0] = dio_pad_attr_5_invert_5_qs;
-        reg_rdata_next[1] = dio_pad_attr_5_virtual_od_en_5_qs;
-        reg_rdata_next[2] = dio_pad_attr_5_pull_en_5_qs;
-        reg_rdata_next[3] = dio_pad_attr_5_pull_select_5_qs;
-        reg_rdata_next[4] = dio_pad_attr_5_keeper_en_5_qs;
-        reg_rdata_next[5] = dio_pad_attr_5_schmitt_en_5_qs;
-        reg_rdata_next[6] = dio_pad_attr_5_od_en_5_qs;
-        reg_rdata_next[7] = dio_pad_attr_5_input_disable_5_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_5_slew_rate_5_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_5_drive_strength_5_qs;
+        reg_rdata_next[0] = dio_pad_attr_5_puen_5_qs;
+        reg_rdata_next[1] = dio_pad_attr_5_pden_5_qs;
+        reg_rdata_next[2] = dio_pad_attr_5_smten_5_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_5_drv_5_qs;
       end
 
       addr_hit[136]: begin
-        reg_rdata_next[0] = dio_pad_attr_6_invert_6_qs;
-        reg_rdata_next[1] = dio_pad_attr_6_virtual_od_en_6_qs;
-        reg_rdata_next[2] = dio_pad_attr_6_pull_en_6_qs;
-        reg_rdata_next[3] = dio_pad_attr_6_pull_select_6_qs;
-        reg_rdata_next[4] = dio_pad_attr_6_keeper_en_6_qs;
-        reg_rdata_next[5] = dio_pad_attr_6_schmitt_en_6_qs;
-        reg_rdata_next[6] = dio_pad_attr_6_od_en_6_qs;
-        reg_rdata_next[7] = dio_pad_attr_6_input_disable_6_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_6_slew_rate_6_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_6_drive_strength_6_qs;
+        reg_rdata_next[0] = dio_pad_attr_6_puen_6_qs;
+        reg_rdata_next[1] = dio_pad_attr_6_pden_6_qs;
+        reg_rdata_next[2] = dio_pad_attr_6_smten_6_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_6_drv_6_qs;
       end
 
       addr_hit[137]: begin
-        reg_rdata_next[0] = dio_pad_attr_7_invert_7_qs;
-        reg_rdata_next[1] = dio_pad_attr_7_virtual_od_en_7_qs;
-        reg_rdata_next[2] = dio_pad_attr_7_pull_en_7_qs;
-        reg_rdata_next[3] = dio_pad_attr_7_pull_select_7_qs;
-        reg_rdata_next[4] = dio_pad_attr_7_keeper_en_7_qs;
-        reg_rdata_next[5] = dio_pad_attr_7_schmitt_en_7_qs;
-        reg_rdata_next[6] = dio_pad_attr_7_od_en_7_qs;
-        reg_rdata_next[7] = dio_pad_attr_7_input_disable_7_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_7_slew_rate_7_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_7_drive_strength_7_qs;
+        reg_rdata_next[0] = dio_pad_attr_7_puen_7_qs;
+        reg_rdata_next[1] = dio_pad_attr_7_pden_7_qs;
+        reg_rdata_next[2] = dio_pad_attr_7_smten_7_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_7_drv_7_qs;
       end
 
       addr_hit[138]: begin
-        reg_rdata_next[0] = dio_pad_attr_8_invert_8_qs;
-        reg_rdata_next[1] = dio_pad_attr_8_virtual_od_en_8_qs;
-        reg_rdata_next[2] = dio_pad_attr_8_pull_en_8_qs;
-        reg_rdata_next[3] = dio_pad_attr_8_pull_select_8_qs;
-        reg_rdata_next[4] = dio_pad_attr_8_keeper_en_8_qs;
-        reg_rdata_next[5] = dio_pad_attr_8_schmitt_en_8_qs;
-        reg_rdata_next[6] = dio_pad_attr_8_od_en_8_qs;
-        reg_rdata_next[7] = dio_pad_attr_8_input_disable_8_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_8_slew_rate_8_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_8_drive_strength_8_qs;
+        reg_rdata_next[0] = dio_pad_attr_8_puen_8_qs;
+        reg_rdata_next[1] = dio_pad_attr_8_pden_8_qs;
+        reg_rdata_next[2] = dio_pad_attr_8_smten_8_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_8_drv_8_qs;
       end
 
       addr_hit[139]: begin
-        reg_rdata_next[0] = dio_pad_attr_9_invert_9_qs;
-        reg_rdata_next[1] = dio_pad_attr_9_virtual_od_en_9_qs;
-        reg_rdata_next[2] = dio_pad_attr_9_pull_en_9_qs;
-        reg_rdata_next[3] = dio_pad_attr_9_pull_select_9_qs;
-        reg_rdata_next[4] = dio_pad_attr_9_keeper_en_9_qs;
-        reg_rdata_next[5] = dio_pad_attr_9_schmitt_en_9_qs;
-        reg_rdata_next[6] = dio_pad_attr_9_od_en_9_qs;
-        reg_rdata_next[7] = dio_pad_attr_9_input_disable_9_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_9_slew_rate_9_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_9_drive_strength_9_qs;
+        reg_rdata_next[0] = dio_pad_attr_9_puen_9_qs;
+        reg_rdata_next[1] = dio_pad_attr_9_pden_9_qs;
+        reg_rdata_next[2] = dio_pad_attr_9_smten_9_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_9_drv_9_qs;
       end
 
       addr_hit[140]: begin
-        reg_rdata_next[0] = dio_pad_attr_10_invert_10_qs;
-        reg_rdata_next[1] = dio_pad_attr_10_virtual_od_en_10_qs;
-        reg_rdata_next[2] = dio_pad_attr_10_pull_en_10_qs;
-        reg_rdata_next[3] = dio_pad_attr_10_pull_select_10_qs;
-        reg_rdata_next[4] = dio_pad_attr_10_keeper_en_10_qs;
-        reg_rdata_next[5] = dio_pad_attr_10_schmitt_en_10_qs;
-        reg_rdata_next[6] = dio_pad_attr_10_od_en_10_qs;
-        reg_rdata_next[7] = dio_pad_attr_10_input_disable_10_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_10_slew_rate_10_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_10_drive_strength_10_qs;
+        reg_rdata_next[0] = dio_pad_attr_10_puen_10_qs;
+        reg_rdata_next[1] = dio_pad_attr_10_pden_10_qs;
+        reg_rdata_next[2] = dio_pad_attr_10_smten_10_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_10_drv_10_qs;
       end
 
       addr_hit[141]: begin
-        reg_rdata_next[0] = dio_pad_attr_11_invert_11_qs;
-        reg_rdata_next[1] = dio_pad_attr_11_virtual_od_en_11_qs;
-        reg_rdata_next[2] = dio_pad_attr_11_pull_en_11_qs;
-        reg_rdata_next[3] = dio_pad_attr_11_pull_select_11_qs;
-        reg_rdata_next[4] = dio_pad_attr_11_keeper_en_11_qs;
-        reg_rdata_next[5] = dio_pad_attr_11_schmitt_en_11_qs;
-        reg_rdata_next[6] = dio_pad_attr_11_od_en_11_qs;
-        reg_rdata_next[7] = dio_pad_attr_11_input_disable_11_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_11_slew_rate_11_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_11_drive_strength_11_qs;
+        reg_rdata_next[0] = dio_pad_attr_11_puen_11_qs;
+        reg_rdata_next[1] = dio_pad_attr_11_pden_11_qs;
+        reg_rdata_next[2] = dio_pad_attr_11_smten_11_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_11_drv_11_qs;
       end
 
       addr_hit[142]: begin
-        reg_rdata_next[0] = dio_pad_attr_12_invert_12_qs;
-        reg_rdata_next[1] = dio_pad_attr_12_virtual_od_en_12_qs;
-        reg_rdata_next[2] = dio_pad_attr_12_pull_en_12_qs;
-        reg_rdata_next[3] = dio_pad_attr_12_pull_select_12_qs;
-        reg_rdata_next[4] = dio_pad_attr_12_keeper_en_12_qs;
-        reg_rdata_next[5] = dio_pad_attr_12_schmitt_en_12_qs;
-        reg_rdata_next[6] = dio_pad_attr_12_od_en_12_qs;
-        reg_rdata_next[7] = dio_pad_attr_12_input_disable_12_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_12_slew_rate_12_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_12_drive_strength_12_qs;
+        reg_rdata_next[0] = dio_pad_attr_12_puen_12_qs;
+        reg_rdata_next[1] = dio_pad_attr_12_pden_12_qs;
+        reg_rdata_next[2] = dio_pad_attr_12_smten_12_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_12_drv_12_qs;
       end
 
       addr_hit[143]: begin
-        reg_rdata_next[0] = dio_pad_attr_13_invert_13_qs;
-        reg_rdata_next[1] = dio_pad_attr_13_virtual_od_en_13_qs;
-        reg_rdata_next[2] = dio_pad_attr_13_pull_en_13_qs;
-        reg_rdata_next[3] = dio_pad_attr_13_pull_select_13_qs;
-        reg_rdata_next[4] = dio_pad_attr_13_keeper_en_13_qs;
-        reg_rdata_next[5] = dio_pad_attr_13_schmitt_en_13_qs;
-        reg_rdata_next[6] = dio_pad_attr_13_od_en_13_qs;
-        reg_rdata_next[7] = dio_pad_attr_13_input_disable_13_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_13_slew_rate_13_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_13_drive_strength_13_qs;
+        reg_rdata_next[0] = dio_pad_attr_13_puen_13_qs;
+        reg_rdata_next[1] = dio_pad_attr_13_pden_13_qs;
+        reg_rdata_next[2] = dio_pad_attr_13_smten_13_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_13_drv_13_qs;
       end
 
       addr_hit[144]: begin
-        reg_rdata_next[0] = dio_pad_attr_14_invert_14_qs;
-        reg_rdata_next[1] = dio_pad_attr_14_virtual_od_en_14_qs;
-        reg_rdata_next[2] = dio_pad_attr_14_pull_en_14_qs;
-        reg_rdata_next[3] = dio_pad_attr_14_pull_select_14_qs;
-        reg_rdata_next[4] = dio_pad_attr_14_keeper_en_14_qs;
-        reg_rdata_next[5] = dio_pad_attr_14_schmitt_en_14_qs;
-        reg_rdata_next[6] = dio_pad_attr_14_od_en_14_qs;
-        reg_rdata_next[7] = dio_pad_attr_14_input_disable_14_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_14_slew_rate_14_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_14_drive_strength_14_qs;
+        reg_rdata_next[0] = dio_pad_attr_14_puen_14_qs;
+        reg_rdata_next[1] = dio_pad_attr_14_pden_14_qs;
+        reg_rdata_next[2] = dio_pad_attr_14_smten_14_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_14_drv_14_qs;
       end
 
       addr_hit[145]: begin
-        reg_rdata_next[0] = dio_pad_attr_15_invert_15_qs;
-        reg_rdata_next[1] = dio_pad_attr_15_virtual_od_en_15_qs;
-        reg_rdata_next[2] = dio_pad_attr_15_pull_en_15_qs;
-        reg_rdata_next[3] = dio_pad_attr_15_pull_select_15_qs;
-        reg_rdata_next[4] = dio_pad_attr_15_keeper_en_15_qs;
-        reg_rdata_next[5] = dio_pad_attr_15_schmitt_en_15_qs;
-        reg_rdata_next[6] = dio_pad_attr_15_od_en_15_qs;
-        reg_rdata_next[7] = dio_pad_attr_15_input_disable_15_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_15_slew_rate_15_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_15_drive_strength_15_qs;
+        reg_rdata_next[0] = dio_pad_attr_15_puen_15_qs;
+        reg_rdata_next[1] = dio_pad_attr_15_pden_15_qs;
+        reg_rdata_next[2] = dio_pad_attr_15_smten_15_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_15_drv_15_qs;
       end
 
       addr_hit[146]: begin
-        reg_rdata_next[0] = dio_pad_attr_16_invert_16_qs;
-        reg_rdata_next[1] = dio_pad_attr_16_virtual_od_en_16_qs;
-        reg_rdata_next[2] = dio_pad_attr_16_pull_en_16_qs;
-        reg_rdata_next[3] = dio_pad_attr_16_pull_select_16_qs;
-        reg_rdata_next[4] = dio_pad_attr_16_keeper_en_16_qs;
-        reg_rdata_next[5] = dio_pad_attr_16_schmitt_en_16_qs;
-        reg_rdata_next[6] = dio_pad_attr_16_od_en_16_qs;
-        reg_rdata_next[7] = dio_pad_attr_16_input_disable_16_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_16_slew_rate_16_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_16_drive_strength_16_qs;
+        reg_rdata_next[0] = dio_pad_attr_16_puen_16_qs;
+        reg_rdata_next[1] = dio_pad_attr_16_pden_16_qs;
+        reg_rdata_next[2] = dio_pad_attr_16_smten_16_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_16_drv_16_qs;
       end
 
       addr_hit[147]: begin
-        reg_rdata_next[0] = dio_pad_attr_17_invert_17_qs;
-        reg_rdata_next[1] = dio_pad_attr_17_virtual_od_en_17_qs;
-        reg_rdata_next[2] = dio_pad_attr_17_pull_en_17_qs;
-        reg_rdata_next[3] = dio_pad_attr_17_pull_select_17_qs;
-        reg_rdata_next[4] = dio_pad_attr_17_keeper_en_17_qs;
-        reg_rdata_next[5] = dio_pad_attr_17_schmitt_en_17_qs;
-        reg_rdata_next[6] = dio_pad_attr_17_od_en_17_qs;
-        reg_rdata_next[7] = dio_pad_attr_17_input_disable_17_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_17_slew_rate_17_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_17_drive_strength_17_qs;
+        reg_rdata_next[0] = dio_pad_attr_17_puen_17_qs;
+        reg_rdata_next[1] = dio_pad_attr_17_pden_17_qs;
+        reg_rdata_next[2] = dio_pad_attr_17_smten_17_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_17_drv_17_qs;
       end
 
       addr_hit[148]: begin
-        reg_rdata_next[0] = dio_pad_attr_18_invert_18_qs;
-        reg_rdata_next[1] = dio_pad_attr_18_virtual_od_en_18_qs;
-        reg_rdata_next[2] = dio_pad_attr_18_pull_en_18_qs;
-        reg_rdata_next[3] = dio_pad_attr_18_pull_select_18_qs;
-        reg_rdata_next[4] = dio_pad_attr_18_keeper_en_18_qs;
-        reg_rdata_next[5] = dio_pad_attr_18_schmitt_en_18_qs;
-        reg_rdata_next[6] = dio_pad_attr_18_od_en_18_qs;
-        reg_rdata_next[7] = dio_pad_attr_18_input_disable_18_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_18_slew_rate_18_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_18_drive_strength_18_qs;
+        reg_rdata_next[0] = dio_pad_attr_18_puen_18_qs;
+        reg_rdata_next[1] = dio_pad_attr_18_pden_18_qs;
+        reg_rdata_next[2] = dio_pad_attr_18_smten_18_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_18_drv_18_qs;
       end
 
       addr_hit[149]: begin
-        reg_rdata_next[0] = dio_pad_attr_19_invert_19_qs;
-        reg_rdata_next[1] = dio_pad_attr_19_virtual_od_en_19_qs;
-        reg_rdata_next[2] = dio_pad_attr_19_pull_en_19_qs;
-        reg_rdata_next[3] = dio_pad_attr_19_pull_select_19_qs;
-        reg_rdata_next[4] = dio_pad_attr_19_keeper_en_19_qs;
-        reg_rdata_next[5] = dio_pad_attr_19_schmitt_en_19_qs;
-        reg_rdata_next[6] = dio_pad_attr_19_od_en_19_qs;
-        reg_rdata_next[7] = dio_pad_attr_19_input_disable_19_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_19_slew_rate_19_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_19_drive_strength_19_qs;
+        reg_rdata_next[0] = dio_pad_attr_19_puen_19_qs;
+        reg_rdata_next[1] = dio_pad_attr_19_pden_19_qs;
+        reg_rdata_next[2] = dio_pad_attr_19_smten_19_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_19_drv_19_qs;
       end
 
       addr_hit[150]: begin
-        reg_rdata_next[0] = dio_pad_attr_20_invert_20_qs;
-        reg_rdata_next[1] = dio_pad_attr_20_virtual_od_en_20_qs;
-        reg_rdata_next[2] = dio_pad_attr_20_pull_en_20_qs;
-        reg_rdata_next[3] = dio_pad_attr_20_pull_select_20_qs;
-        reg_rdata_next[4] = dio_pad_attr_20_keeper_en_20_qs;
-        reg_rdata_next[5] = dio_pad_attr_20_schmitt_en_20_qs;
-        reg_rdata_next[6] = dio_pad_attr_20_od_en_20_qs;
-        reg_rdata_next[7] = dio_pad_attr_20_input_disable_20_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_20_slew_rate_20_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_20_drive_strength_20_qs;
+        reg_rdata_next[0] = dio_pad_attr_20_puen_20_qs;
+        reg_rdata_next[1] = dio_pad_attr_20_pden_20_qs;
+        reg_rdata_next[2] = dio_pad_attr_20_smten_20_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_20_drv_20_qs;
       end
 
       addr_hit[151]: begin
-        reg_rdata_next[0] = dio_pad_attr_21_invert_21_qs;
-        reg_rdata_next[1] = dio_pad_attr_21_virtual_od_en_21_qs;
-        reg_rdata_next[2] = dio_pad_attr_21_pull_en_21_qs;
-        reg_rdata_next[3] = dio_pad_attr_21_pull_select_21_qs;
-        reg_rdata_next[4] = dio_pad_attr_21_keeper_en_21_qs;
-        reg_rdata_next[5] = dio_pad_attr_21_schmitt_en_21_qs;
-        reg_rdata_next[6] = dio_pad_attr_21_od_en_21_qs;
-        reg_rdata_next[7] = dio_pad_attr_21_input_disable_21_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_21_slew_rate_21_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_21_drive_strength_21_qs;
+        reg_rdata_next[0] = dio_pad_attr_21_puen_21_qs;
+        reg_rdata_next[1] = dio_pad_attr_21_pden_21_qs;
+        reg_rdata_next[2] = dio_pad_attr_21_smten_21_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_21_drv_21_qs;
       end
 
       addr_hit[152]: begin
-        reg_rdata_next[0] = dio_pad_attr_22_invert_22_qs;
-        reg_rdata_next[1] = dio_pad_attr_22_virtual_od_en_22_qs;
-        reg_rdata_next[2] = dio_pad_attr_22_pull_en_22_qs;
-        reg_rdata_next[3] = dio_pad_attr_22_pull_select_22_qs;
-        reg_rdata_next[4] = dio_pad_attr_22_keeper_en_22_qs;
-        reg_rdata_next[5] = dio_pad_attr_22_schmitt_en_22_qs;
-        reg_rdata_next[6] = dio_pad_attr_22_od_en_22_qs;
-        reg_rdata_next[7] = dio_pad_attr_22_input_disable_22_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_22_slew_rate_22_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_22_drive_strength_22_qs;
+        reg_rdata_next[0] = dio_pad_attr_22_puen_22_qs;
+        reg_rdata_next[1] = dio_pad_attr_22_pden_22_qs;
+        reg_rdata_next[2] = dio_pad_attr_22_smten_22_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_22_drv_22_qs;
       end
 
       addr_hit[153]: begin
-        reg_rdata_next[0] = dio_pad_attr_23_invert_23_qs;
-        reg_rdata_next[1] = dio_pad_attr_23_virtual_od_en_23_qs;
-        reg_rdata_next[2] = dio_pad_attr_23_pull_en_23_qs;
-        reg_rdata_next[3] = dio_pad_attr_23_pull_select_23_qs;
-        reg_rdata_next[4] = dio_pad_attr_23_keeper_en_23_qs;
-        reg_rdata_next[5] = dio_pad_attr_23_schmitt_en_23_qs;
-        reg_rdata_next[6] = dio_pad_attr_23_od_en_23_qs;
-        reg_rdata_next[7] = dio_pad_attr_23_input_disable_23_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_23_slew_rate_23_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_23_drive_strength_23_qs;
+        reg_rdata_next[0] = dio_pad_attr_23_puen_23_qs;
+        reg_rdata_next[1] = dio_pad_attr_23_pden_23_qs;
+        reg_rdata_next[2] = dio_pad_attr_23_smten_23_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_23_drv_23_qs;
       end
 
       addr_hit[154]: begin
-        reg_rdata_next[0] = dio_pad_attr_24_invert_24_qs;
-        reg_rdata_next[1] = dio_pad_attr_24_virtual_od_en_24_qs;
-        reg_rdata_next[2] = dio_pad_attr_24_pull_en_24_qs;
-        reg_rdata_next[3] = dio_pad_attr_24_pull_select_24_qs;
-        reg_rdata_next[4] = dio_pad_attr_24_keeper_en_24_qs;
-        reg_rdata_next[5] = dio_pad_attr_24_schmitt_en_24_qs;
-        reg_rdata_next[6] = dio_pad_attr_24_od_en_24_qs;
-        reg_rdata_next[7] = dio_pad_attr_24_input_disable_24_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_24_slew_rate_24_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_24_drive_strength_24_qs;
+        reg_rdata_next[0] = dio_pad_attr_24_puen_24_qs;
+        reg_rdata_next[1] = dio_pad_attr_24_pden_24_qs;
+        reg_rdata_next[2] = dio_pad_attr_24_smten_24_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_24_drv_24_qs;
       end
 
       addr_hit[155]: begin
-        reg_rdata_next[0] = dio_pad_attr_25_invert_25_qs;
-        reg_rdata_next[1] = dio_pad_attr_25_virtual_od_en_25_qs;
-        reg_rdata_next[2] = dio_pad_attr_25_pull_en_25_qs;
-        reg_rdata_next[3] = dio_pad_attr_25_pull_select_25_qs;
-        reg_rdata_next[4] = dio_pad_attr_25_keeper_en_25_qs;
-        reg_rdata_next[5] = dio_pad_attr_25_schmitt_en_25_qs;
-        reg_rdata_next[6] = dio_pad_attr_25_od_en_25_qs;
-        reg_rdata_next[7] = dio_pad_attr_25_input_disable_25_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_25_slew_rate_25_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_25_drive_strength_25_qs;
+        reg_rdata_next[0] = dio_pad_attr_25_puen_25_qs;
+        reg_rdata_next[1] = dio_pad_attr_25_pden_25_qs;
+        reg_rdata_next[2] = dio_pad_attr_25_smten_25_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_25_drv_25_qs;
       end
 
       addr_hit[156]: begin
-        reg_rdata_next[0] = dio_pad_attr_26_invert_26_qs;
-        reg_rdata_next[1] = dio_pad_attr_26_virtual_od_en_26_qs;
-        reg_rdata_next[2] = dio_pad_attr_26_pull_en_26_qs;
-        reg_rdata_next[3] = dio_pad_attr_26_pull_select_26_qs;
-        reg_rdata_next[4] = dio_pad_attr_26_keeper_en_26_qs;
-        reg_rdata_next[5] = dio_pad_attr_26_schmitt_en_26_qs;
-        reg_rdata_next[6] = dio_pad_attr_26_od_en_26_qs;
-        reg_rdata_next[7] = dio_pad_attr_26_input_disable_26_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_26_slew_rate_26_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_26_drive_strength_26_qs;
+        reg_rdata_next[0] = dio_pad_attr_26_puen_26_qs;
+        reg_rdata_next[1] = dio_pad_attr_26_pden_26_qs;
+        reg_rdata_next[2] = dio_pad_attr_26_smten_26_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_26_drv_26_qs;
       end
 
       addr_hit[157]: begin
-        reg_rdata_next[0] = dio_pad_attr_27_invert_27_qs;
-        reg_rdata_next[1] = dio_pad_attr_27_virtual_od_en_27_qs;
-        reg_rdata_next[2] = dio_pad_attr_27_pull_en_27_qs;
-        reg_rdata_next[3] = dio_pad_attr_27_pull_select_27_qs;
-        reg_rdata_next[4] = dio_pad_attr_27_keeper_en_27_qs;
-        reg_rdata_next[5] = dio_pad_attr_27_schmitt_en_27_qs;
-        reg_rdata_next[6] = dio_pad_attr_27_od_en_27_qs;
-        reg_rdata_next[7] = dio_pad_attr_27_input_disable_27_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_27_slew_rate_27_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_27_drive_strength_27_qs;
+        reg_rdata_next[0] = dio_pad_attr_27_puen_27_qs;
+        reg_rdata_next[1] = dio_pad_attr_27_pden_27_qs;
+        reg_rdata_next[2] = dio_pad_attr_27_smten_27_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_27_drv_27_qs;
       end
 
       addr_hit[158]: begin
-        reg_rdata_next[0] = dio_pad_attr_28_invert_28_qs;
-        reg_rdata_next[1] = dio_pad_attr_28_virtual_od_en_28_qs;
-        reg_rdata_next[2] = dio_pad_attr_28_pull_en_28_qs;
-        reg_rdata_next[3] = dio_pad_attr_28_pull_select_28_qs;
-        reg_rdata_next[4] = dio_pad_attr_28_keeper_en_28_qs;
-        reg_rdata_next[5] = dio_pad_attr_28_schmitt_en_28_qs;
-        reg_rdata_next[6] = dio_pad_attr_28_od_en_28_qs;
-        reg_rdata_next[7] = dio_pad_attr_28_input_disable_28_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_28_slew_rate_28_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_28_drive_strength_28_qs;
+        reg_rdata_next[0] = dio_pad_attr_28_puen_28_qs;
+        reg_rdata_next[1] = dio_pad_attr_28_pden_28_qs;
+        reg_rdata_next[2] = dio_pad_attr_28_smten_28_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_28_drv_28_qs;
       end
 
       addr_hit[159]: begin
-        reg_rdata_next[0] = dio_pad_attr_29_invert_29_qs;
-        reg_rdata_next[1] = dio_pad_attr_29_virtual_od_en_29_qs;
-        reg_rdata_next[2] = dio_pad_attr_29_pull_en_29_qs;
-        reg_rdata_next[3] = dio_pad_attr_29_pull_select_29_qs;
-        reg_rdata_next[4] = dio_pad_attr_29_keeper_en_29_qs;
-        reg_rdata_next[5] = dio_pad_attr_29_schmitt_en_29_qs;
-        reg_rdata_next[6] = dio_pad_attr_29_od_en_29_qs;
-        reg_rdata_next[7] = dio_pad_attr_29_input_disable_29_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_29_slew_rate_29_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_29_drive_strength_29_qs;
+        reg_rdata_next[0] = dio_pad_attr_29_puen_29_qs;
+        reg_rdata_next[1] = dio_pad_attr_29_pden_29_qs;
+        reg_rdata_next[2] = dio_pad_attr_29_smten_29_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_29_drv_29_qs;
       end
 
       addr_hit[160]: begin
-        reg_rdata_next[0] = dio_pad_attr_30_invert_30_qs;
-        reg_rdata_next[1] = dio_pad_attr_30_virtual_od_en_30_qs;
-        reg_rdata_next[2] = dio_pad_attr_30_pull_en_30_qs;
-        reg_rdata_next[3] = dio_pad_attr_30_pull_select_30_qs;
-        reg_rdata_next[4] = dio_pad_attr_30_keeper_en_30_qs;
-        reg_rdata_next[5] = dio_pad_attr_30_schmitt_en_30_qs;
-        reg_rdata_next[6] = dio_pad_attr_30_od_en_30_qs;
-        reg_rdata_next[7] = dio_pad_attr_30_input_disable_30_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_30_slew_rate_30_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_30_drive_strength_30_qs;
+        reg_rdata_next[0] = dio_pad_attr_30_puen_30_qs;
+        reg_rdata_next[1] = dio_pad_attr_30_pden_30_qs;
+        reg_rdata_next[2] = dio_pad_attr_30_smten_30_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_30_drv_30_qs;
       end
 
       addr_hit[161]: begin
-        reg_rdata_next[0] = dio_pad_attr_31_invert_31_qs;
-        reg_rdata_next[1] = dio_pad_attr_31_virtual_od_en_31_qs;
-        reg_rdata_next[2] = dio_pad_attr_31_pull_en_31_qs;
-        reg_rdata_next[3] = dio_pad_attr_31_pull_select_31_qs;
-        reg_rdata_next[4] = dio_pad_attr_31_keeper_en_31_qs;
-        reg_rdata_next[5] = dio_pad_attr_31_schmitt_en_31_qs;
-        reg_rdata_next[6] = dio_pad_attr_31_od_en_31_qs;
-        reg_rdata_next[7] = dio_pad_attr_31_input_disable_31_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_31_slew_rate_31_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_31_drive_strength_31_qs;
+        reg_rdata_next[0] = dio_pad_attr_31_puen_31_qs;
+        reg_rdata_next[1] = dio_pad_attr_31_pden_31_qs;
+        reg_rdata_next[2] = dio_pad_attr_31_smten_31_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_31_drv_31_qs;
       end
 
       addr_hit[162]: begin
-        reg_rdata_next[0] = dio_pad_attr_32_invert_32_qs;
-        reg_rdata_next[1] = dio_pad_attr_32_virtual_od_en_32_qs;
-        reg_rdata_next[2] = dio_pad_attr_32_pull_en_32_qs;
-        reg_rdata_next[3] = dio_pad_attr_32_pull_select_32_qs;
-        reg_rdata_next[4] = dio_pad_attr_32_keeper_en_32_qs;
-        reg_rdata_next[5] = dio_pad_attr_32_schmitt_en_32_qs;
-        reg_rdata_next[6] = dio_pad_attr_32_od_en_32_qs;
-        reg_rdata_next[7] = dio_pad_attr_32_input_disable_32_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_32_slew_rate_32_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_32_drive_strength_32_qs;
+        reg_rdata_next[0] = dio_pad_attr_32_puen_32_qs;
+        reg_rdata_next[1] = dio_pad_attr_32_pden_32_qs;
+        reg_rdata_next[2] = dio_pad_attr_32_smten_32_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_32_drv_32_qs;
       end
 
       addr_hit[163]: begin
-        reg_rdata_next[0] = dio_pad_attr_33_invert_33_qs;
-        reg_rdata_next[1] = dio_pad_attr_33_virtual_od_en_33_qs;
-        reg_rdata_next[2] = dio_pad_attr_33_pull_en_33_qs;
-        reg_rdata_next[3] = dio_pad_attr_33_pull_select_33_qs;
-        reg_rdata_next[4] = dio_pad_attr_33_keeper_en_33_qs;
-        reg_rdata_next[5] = dio_pad_attr_33_schmitt_en_33_qs;
-        reg_rdata_next[6] = dio_pad_attr_33_od_en_33_qs;
-        reg_rdata_next[7] = dio_pad_attr_33_input_disable_33_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_33_slew_rate_33_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_33_drive_strength_33_qs;
+        reg_rdata_next[0] = dio_pad_attr_33_puen_33_qs;
+        reg_rdata_next[1] = dio_pad_attr_33_pden_33_qs;
+        reg_rdata_next[2] = dio_pad_attr_33_smten_33_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_33_drv_33_qs;
       end
 
       addr_hit[164]: begin
-        reg_rdata_next[0] = dio_pad_attr_34_invert_34_qs;
-        reg_rdata_next[1] = dio_pad_attr_34_virtual_od_en_34_qs;
-        reg_rdata_next[2] = dio_pad_attr_34_pull_en_34_qs;
-        reg_rdata_next[3] = dio_pad_attr_34_pull_select_34_qs;
-        reg_rdata_next[4] = dio_pad_attr_34_keeper_en_34_qs;
-        reg_rdata_next[5] = dio_pad_attr_34_schmitt_en_34_qs;
-        reg_rdata_next[6] = dio_pad_attr_34_od_en_34_qs;
-        reg_rdata_next[7] = dio_pad_attr_34_input_disable_34_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_34_slew_rate_34_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_34_drive_strength_34_qs;
+        reg_rdata_next[0] = dio_pad_attr_34_puen_34_qs;
+        reg_rdata_next[1] = dio_pad_attr_34_pden_34_qs;
+        reg_rdata_next[2] = dio_pad_attr_34_smten_34_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_34_drv_34_qs;
       end
 
       addr_hit[165]: begin
-        reg_rdata_next[0] = dio_pad_attr_35_invert_35_qs;
-        reg_rdata_next[1] = dio_pad_attr_35_virtual_od_en_35_qs;
-        reg_rdata_next[2] = dio_pad_attr_35_pull_en_35_qs;
-        reg_rdata_next[3] = dio_pad_attr_35_pull_select_35_qs;
-        reg_rdata_next[4] = dio_pad_attr_35_keeper_en_35_qs;
-        reg_rdata_next[5] = dio_pad_attr_35_schmitt_en_35_qs;
-        reg_rdata_next[6] = dio_pad_attr_35_od_en_35_qs;
-        reg_rdata_next[7] = dio_pad_attr_35_input_disable_35_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_35_slew_rate_35_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_35_drive_strength_35_qs;
+        reg_rdata_next[0] = dio_pad_attr_35_puen_35_qs;
+        reg_rdata_next[1] = dio_pad_attr_35_pden_35_qs;
+        reg_rdata_next[2] = dio_pad_attr_35_smten_35_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_35_drv_35_qs;
       end
 
       addr_hit[166]: begin
-        reg_rdata_next[0] = dio_pad_attr_36_invert_36_qs;
-        reg_rdata_next[1] = dio_pad_attr_36_virtual_od_en_36_qs;
-        reg_rdata_next[2] = dio_pad_attr_36_pull_en_36_qs;
-        reg_rdata_next[3] = dio_pad_attr_36_pull_select_36_qs;
-        reg_rdata_next[4] = dio_pad_attr_36_keeper_en_36_qs;
-        reg_rdata_next[5] = dio_pad_attr_36_schmitt_en_36_qs;
-        reg_rdata_next[6] = dio_pad_attr_36_od_en_36_qs;
-        reg_rdata_next[7] = dio_pad_attr_36_input_disable_36_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_36_slew_rate_36_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_36_drive_strength_36_qs;
+        reg_rdata_next[0] = dio_pad_attr_36_puen_36_qs;
+        reg_rdata_next[1] = dio_pad_attr_36_pden_36_qs;
+        reg_rdata_next[2] = dio_pad_attr_36_smten_36_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_36_drv_36_qs;
       end
 
       addr_hit[167]: begin
-        reg_rdata_next[0] = dio_pad_attr_37_invert_37_qs;
-        reg_rdata_next[1] = dio_pad_attr_37_virtual_od_en_37_qs;
-        reg_rdata_next[2] = dio_pad_attr_37_pull_en_37_qs;
-        reg_rdata_next[3] = dio_pad_attr_37_pull_select_37_qs;
-        reg_rdata_next[4] = dio_pad_attr_37_keeper_en_37_qs;
-        reg_rdata_next[5] = dio_pad_attr_37_schmitt_en_37_qs;
-        reg_rdata_next[6] = dio_pad_attr_37_od_en_37_qs;
-        reg_rdata_next[7] = dio_pad_attr_37_input_disable_37_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_37_slew_rate_37_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_37_drive_strength_37_qs;
+        reg_rdata_next[0] = dio_pad_attr_37_puen_37_qs;
+        reg_rdata_next[1] = dio_pad_attr_37_pden_37_qs;
+        reg_rdata_next[2] = dio_pad_attr_37_smten_37_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_37_drv_37_qs;
       end
 
       addr_hit[168]: begin
-        reg_rdata_next[0] = dio_pad_attr_38_invert_38_qs;
-        reg_rdata_next[1] = dio_pad_attr_38_virtual_od_en_38_qs;
-        reg_rdata_next[2] = dio_pad_attr_38_pull_en_38_qs;
-        reg_rdata_next[3] = dio_pad_attr_38_pull_select_38_qs;
-        reg_rdata_next[4] = dio_pad_attr_38_keeper_en_38_qs;
-        reg_rdata_next[5] = dio_pad_attr_38_schmitt_en_38_qs;
-        reg_rdata_next[6] = dio_pad_attr_38_od_en_38_qs;
-        reg_rdata_next[7] = dio_pad_attr_38_input_disable_38_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_38_slew_rate_38_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_38_drive_strength_38_qs;
+        reg_rdata_next[0] = dio_pad_attr_38_puen_38_qs;
+        reg_rdata_next[1] = dio_pad_attr_38_pden_38_qs;
+        reg_rdata_next[2] = dio_pad_attr_38_smten_38_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_38_drv_38_qs;
       end
 
       addr_hit[169]: begin
-        reg_rdata_next[0] = dio_pad_attr_39_invert_39_qs;
-        reg_rdata_next[1] = dio_pad_attr_39_virtual_od_en_39_qs;
-        reg_rdata_next[2] = dio_pad_attr_39_pull_en_39_qs;
-        reg_rdata_next[3] = dio_pad_attr_39_pull_select_39_qs;
-        reg_rdata_next[4] = dio_pad_attr_39_keeper_en_39_qs;
-        reg_rdata_next[5] = dio_pad_attr_39_schmitt_en_39_qs;
-        reg_rdata_next[6] = dio_pad_attr_39_od_en_39_qs;
-        reg_rdata_next[7] = dio_pad_attr_39_input_disable_39_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_39_slew_rate_39_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_39_drive_strength_39_qs;
+        reg_rdata_next[0] = dio_pad_attr_39_puen_39_qs;
+        reg_rdata_next[1] = dio_pad_attr_39_pden_39_qs;
+        reg_rdata_next[2] = dio_pad_attr_39_smten_39_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_39_drv_39_qs;
       end
 
       addr_hit[170]: begin
-        reg_rdata_next[0] = dio_pad_attr_40_invert_40_qs;
-        reg_rdata_next[1] = dio_pad_attr_40_virtual_od_en_40_qs;
-        reg_rdata_next[2] = dio_pad_attr_40_pull_en_40_qs;
-        reg_rdata_next[3] = dio_pad_attr_40_pull_select_40_qs;
-        reg_rdata_next[4] = dio_pad_attr_40_keeper_en_40_qs;
-        reg_rdata_next[5] = dio_pad_attr_40_schmitt_en_40_qs;
-        reg_rdata_next[6] = dio_pad_attr_40_od_en_40_qs;
-        reg_rdata_next[7] = dio_pad_attr_40_input_disable_40_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_40_slew_rate_40_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_40_drive_strength_40_qs;
+        reg_rdata_next[0] = dio_pad_attr_40_puen_40_qs;
+        reg_rdata_next[1] = dio_pad_attr_40_pden_40_qs;
+        reg_rdata_next[2] = dio_pad_attr_40_smten_40_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_40_drv_40_qs;
       end
 
       addr_hit[171]: begin
-        reg_rdata_next[0] = dio_pad_attr_41_invert_41_qs;
-        reg_rdata_next[1] = dio_pad_attr_41_virtual_od_en_41_qs;
-        reg_rdata_next[2] = dio_pad_attr_41_pull_en_41_qs;
-        reg_rdata_next[3] = dio_pad_attr_41_pull_select_41_qs;
-        reg_rdata_next[4] = dio_pad_attr_41_keeper_en_41_qs;
-        reg_rdata_next[5] = dio_pad_attr_41_schmitt_en_41_qs;
-        reg_rdata_next[6] = dio_pad_attr_41_od_en_41_qs;
-        reg_rdata_next[7] = dio_pad_attr_41_input_disable_41_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_41_slew_rate_41_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_41_drive_strength_41_qs;
+        reg_rdata_next[0] = dio_pad_attr_41_puen_41_qs;
+        reg_rdata_next[1] = dio_pad_attr_41_pden_41_qs;
+        reg_rdata_next[2] = dio_pad_attr_41_smten_41_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_41_drv_41_qs;
       end
 
       addr_hit[172]: begin
-        reg_rdata_next[0] = dio_pad_attr_42_invert_42_qs;
-        reg_rdata_next[1] = dio_pad_attr_42_virtual_od_en_42_qs;
-        reg_rdata_next[2] = dio_pad_attr_42_pull_en_42_qs;
-        reg_rdata_next[3] = dio_pad_attr_42_pull_select_42_qs;
-        reg_rdata_next[4] = dio_pad_attr_42_keeper_en_42_qs;
-        reg_rdata_next[5] = dio_pad_attr_42_schmitt_en_42_qs;
-        reg_rdata_next[6] = dio_pad_attr_42_od_en_42_qs;
-        reg_rdata_next[7] = dio_pad_attr_42_input_disable_42_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_42_slew_rate_42_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_42_drive_strength_42_qs;
+        reg_rdata_next[0] = dio_pad_attr_42_puen_42_qs;
+        reg_rdata_next[1] = dio_pad_attr_42_pden_42_qs;
+        reg_rdata_next[2] = dio_pad_attr_42_smten_42_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_42_drv_42_qs;
       end
 
       addr_hit[173]: begin
-        reg_rdata_next[0] = dio_pad_attr_43_invert_43_qs;
-        reg_rdata_next[1] = dio_pad_attr_43_virtual_od_en_43_qs;
-        reg_rdata_next[2] = dio_pad_attr_43_pull_en_43_qs;
-        reg_rdata_next[3] = dio_pad_attr_43_pull_select_43_qs;
-        reg_rdata_next[4] = dio_pad_attr_43_keeper_en_43_qs;
-        reg_rdata_next[5] = dio_pad_attr_43_schmitt_en_43_qs;
-        reg_rdata_next[6] = dio_pad_attr_43_od_en_43_qs;
-        reg_rdata_next[7] = dio_pad_attr_43_input_disable_43_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_43_slew_rate_43_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_43_drive_strength_43_qs;
+        reg_rdata_next[0] = dio_pad_attr_43_puen_43_qs;
+        reg_rdata_next[1] = dio_pad_attr_43_pden_43_qs;
+        reg_rdata_next[2] = dio_pad_attr_43_smten_43_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_43_drv_43_qs;
       end
 
       addr_hit[174]: begin
-        reg_rdata_next[0] = dio_pad_attr_44_invert_44_qs;
-        reg_rdata_next[1] = dio_pad_attr_44_virtual_od_en_44_qs;
-        reg_rdata_next[2] = dio_pad_attr_44_pull_en_44_qs;
-        reg_rdata_next[3] = dio_pad_attr_44_pull_select_44_qs;
-        reg_rdata_next[4] = dio_pad_attr_44_keeper_en_44_qs;
-        reg_rdata_next[5] = dio_pad_attr_44_schmitt_en_44_qs;
-        reg_rdata_next[6] = dio_pad_attr_44_od_en_44_qs;
-        reg_rdata_next[7] = dio_pad_attr_44_input_disable_44_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_44_slew_rate_44_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_44_drive_strength_44_qs;
+        reg_rdata_next[0] = dio_pad_attr_44_puen_44_qs;
+        reg_rdata_next[1] = dio_pad_attr_44_pden_44_qs;
+        reg_rdata_next[2] = dio_pad_attr_44_smten_44_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_44_drv_44_qs;
       end
 
       addr_hit[175]: begin
-        reg_rdata_next[0] = dio_pad_attr_45_invert_45_qs;
-        reg_rdata_next[1] = dio_pad_attr_45_virtual_od_en_45_qs;
-        reg_rdata_next[2] = dio_pad_attr_45_pull_en_45_qs;
-        reg_rdata_next[3] = dio_pad_attr_45_pull_select_45_qs;
-        reg_rdata_next[4] = dio_pad_attr_45_keeper_en_45_qs;
-        reg_rdata_next[5] = dio_pad_attr_45_schmitt_en_45_qs;
-        reg_rdata_next[6] = dio_pad_attr_45_od_en_45_qs;
-        reg_rdata_next[7] = dio_pad_attr_45_input_disable_45_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_45_slew_rate_45_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_45_drive_strength_45_qs;
+        reg_rdata_next[0] = dio_pad_attr_45_puen_45_qs;
+        reg_rdata_next[1] = dio_pad_attr_45_pden_45_qs;
+        reg_rdata_next[2] = dio_pad_attr_45_smten_45_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_45_drv_45_qs;
       end
 
       addr_hit[176]: begin
-        reg_rdata_next[0] = dio_pad_attr_46_invert_46_qs;
-        reg_rdata_next[1] = dio_pad_attr_46_virtual_od_en_46_qs;
-        reg_rdata_next[2] = dio_pad_attr_46_pull_en_46_qs;
-        reg_rdata_next[3] = dio_pad_attr_46_pull_select_46_qs;
-        reg_rdata_next[4] = dio_pad_attr_46_keeper_en_46_qs;
-        reg_rdata_next[5] = dio_pad_attr_46_schmitt_en_46_qs;
-        reg_rdata_next[6] = dio_pad_attr_46_od_en_46_qs;
-        reg_rdata_next[7] = dio_pad_attr_46_input_disable_46_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_46_slew_rate_46_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_46_drive_strength_46_qs;
+        reg_rdata_next[0] = dio_pad_attr_46_puen_46_qs;
+        reg_rdata_next[1] = dio_pad_attr_46_pden_46_qs;
+        reg_rdata_next[2] = dio_pad_attr_46_smten_46_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_46_drv_46_qs;
       end
 
       addr_hit[177]: begin
-        reg_rdata_next[0] = dio_pad_attr_47_invert_47_qs;
-        reg_rdata_next[1] = dio_pad_attr_47_virtual_od_en_47_qs;
-        reg_rdata_next[2] = dio_pad_attr_47_pull_en_47_qs;
-        reg_rdata_next[3] = dio_pad_attr_47_pull_select_47_qs;
-        reg_rdata_next[4] = dio_pad_attr_47_keeper_en_47_qs;
-        reg_rdata_next[5] = dio_pad_attr_47_schmitt_en_47_qs;
-        reg_rdata_next[6] = dio_pad_attr_47_od_en_47_qs;
-        reg_rdata_next[7] = dio_pad_attr_47_input_disable_47_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_47_slew_rate_47_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_47_drive_strength_47_qs;
+        reg_rdata_next[0] = dio_pad_attr_47_puen_47_qs;
+        reg_rdata_next[1] = dio_pad_attr_47_pden_47_qs;
+        reg_rdata_next[2] = dio_pad_attr_47_smten_47_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_47_drv_47_qs;
       end
 
       addr_hit[178]: begin
-        reg_rdata_next[0] = dio_pad_attr_48_invert_48_qs;
-        reg_rdata_next[1] = dio_pad_attr_48_virtual_od_en_48_qs;
-        reg_rdata_next[2] = dio_pad_attr_48_pull_en_48_qs;
-        reg_rdata_next[3] = dio_pad_attr_48_pull_select_48_qs;
-        reg_rdata_next[4] = dio_pad_attr_48_keeper_en_48_qs;
-        reg_rdata_next[5] = dio_pad_attr_48_schmitt_en_48_qs;
-        reg_rdata_next[6] = dio_pad_attr_48_od_en_48_qs;
-        reg_rdata_next[7] = dio_pad_attr_48_input_disable_48_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_48_slew_rate_48_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_48_drive_strength_48_qs;
+        reg_rdata_next[0] = dio_pad_attr_48_puen_48_qs;
+        reg_rdata_next[1] = dio_pad_attr_48_pden_48_qs;
+        reg_rdata_next[2] = dio_pad_attr_48_smten_48_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_48_drv_48_qs;
       end
 
       addr_hit[179]: begin
-        reg_rdata_next[0] = dio_pad_attr_49_invert_49_qs;
-        reg_rdata_next[1] = dio_pad_attr_49_virtual_od_en_49_qs;
-        reg_rdata_next[2] = dio_pad_attr_49_pull_en_49_qs;
-        reg_rdata_next[3] = dio_pad_attr_49_pull_select_49_qs;
-        reg_rdata_next[4] = dio_pad_attr_49_keeper_en_49_qs;
-        reg_rdata_next[5] = dio_pad_attr_49_schmitt_en_49_qs;
-        reg_rdata_next[6] = dio_pad_attr_49_od_en_49_qs;
-        reg_rdata_next[7] = dio_pad_attr_49_input_disable_49_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_49_slew_rate_49_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_49_drive_strength_49_qs;
+        reg_rdata_next[0] = dio_pad_attr_49_puen_49_qs;
+        reg_rdata_next[1] = dio_pad_attr_49_pden_49_qs;
+        reg_rdata_next[2] = dio_pad_attr_49_smten_49_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_49_drv_49_qs;
       end
 
       addr_hit[180]: begin
-        reg_rdata_next[0] = dio_pad_attr_50_invert_50_qs;
-        reg_rdata_next[1] = dio_pad_attr_50_virtual_od_en_50_qs;
-        reg_rdata_next[2] = dio_pad_attr_50_pull_en_50_qs;
-        reg_rdata_next[3] = dio_pad_attr_50_pull_select_50_qs;
-        reg_rdata_next[4] = dio_pad_attr_50_keeper_en_50_qs;
-        reg_rdata_next[5] = dio_pad_attr_50_schmitt_en_50_qs;
-        reg_rdata_next[6] = dio_pad_attr_50_od_en_50_qs;
-        reg_rdata_next[7] = dio_pad_attr_50_input_disable_50_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_50_slew_rate_50_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_50_drive_strength_50_qs;
+        reg_rdata_next[0] = dio_pad_attr_50_puen_50_qs;
+        reg_rdata_next[1] = dio_pad_attr_50_pden_50_qs;
+        reg_rdata_next[2] = dio_pad_attr_50_smten_50_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_50_drv_50_qs;
       end
 
       addr_hit[181]: begin
-        reg_rdata_next[0] = dio_pad_attr_51_invert_51_qs;
-        reg_rdata_next[1] = dio_pad_attr_51_virtual_od_en_51_qs;
-        reg_rdata_next[2] = dio_pad_attr_51_pull_en_51_qs;
-        reg_rdata_next[3] = dio_pad_attr_51_pull_select_51_qs;
-        reg_rdata_next[4] = dio_pad_attr_51_keeper_en_51_qs;
-        reg_rdata_next[5] = dio_pad_attr_51_schmitt_en_51_qs;
-        reg_rdata_next[6] = dio_pad_attr_51_od_en_51_qs;
-        reg_rdata_next[7] = dio_pad_attr_51_input_disable_51_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_51_slew_rate_51_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_51_drive_strength_51_qs;
+        reg_rdata_next[0] = dio_pad_attr_51_puen_51_qs;
+        reg_rdata_next[1] = dio_pad_attr_51_pden_51_qs;
+        reg_rdata_next[2] = dio_pad_attr_51_smten_51_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_51_drv_51_qs;
       end
 
       addr_hit[182]: begin
-        reg_rdata_next[0] = dio_pad_attr_52_invert_52_qs;
-        reg_rdata_next[1] = dio_pad_attr_52_virtual_od_en_52_qs;
-        reg_rdata_next[2] = dio_pad_attr_52_pull_en_52_qs;
-        reg_rdata_next[3] = dio_pad_attr_52_pull_select_52_qs;
-        reg_rdata_next[4] = dio_pad_attr_52_keeper_en_52_qs;
-        reg_rdata_next[5] = dio_pad_attr_52_schmitt_en_52_qs;
-        reg_rdata_next[6] = dio_pad_attr_52_od_en_52_qs;
-        reg_rdata_next[7] = dio_pad_attr_52_input_disable_52_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_52_slew_rate_52_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_52_drive_strength_52_qs;
+        reg_rdata_next[0] = dio_pad_attr_52_puen_52_qs;
+        reg_rdata_next[1] = dio_pad_attr_52_pden_52_qs;
+        reg_rdata_next[2] = dio_pad_attr_52_smten_52_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_52_drv_52_qs;
       end
 
       addr_hit[183]: begin
-        reg_rdata_next[0] = dio_pad_attr_53_invert_53_qs;
-        reg_rdata_next[1] = dio_pad_attr_53_virtual_od_en_53_qs;
-        reg_rdata_next[2] = dio_pad_attr_53_pull_en_53_qs;
-        reg_rdata_next[3] = dio_pad_attr_53_pull_select_53_qs;
-        reg_rdata_next[4] = dio_pad_attr_53_keeper_en_53_qs;
-        reg_rdata_next[5] = dio_pad_attr_53_schmitt_en_53_qs;
-        reg_rdata_next[6] = dio_pad_attr_53_od_en_53_qs;
-        reg_rdata_next[7] = dio_pad_attr_53_input_disable_53_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_53_slew_rate_53_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_53_drive_strength_53_qs;
+        reg_rdata_next[0] = dio_pad_attr_53_puen_53_qs;
+        reg_rdata_next[1] = dio_pad_attr_53_pden_53_qs;
+        reg_rdata_next[2] = dio_pad_attr_53_smten_53_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_53_drv_53_qs;
       end
 
       addr_hit[184]: begin
-        reg_rdata_next[0] = dio_pad_attr_54_invert_54_qs;
-        reg_rdata_next[1] = dio_pad_attr_54_virtual_od_en_54_qs;
-        reg_rdata_next[2] = dio_pad_attr_54_pull_en_54_qs;
-        reg_rdata_next[3] = dio_pad_attr_54_pull_select_54_qs;
-        reg_rdata_next[4] = dio_pad_attr_54_keeper_en_54_qs;
-        reg_rdata_next[5] = dio_pad_attr_54_schmitt_en_54_qs;
-        reg_rdata_next[6] = dio_pad_attr_54_od_en_54_qs;
-        reg_rdata_next[7] = dio_pad_attr_54_input_disable_54_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_54_slew_rate_54_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_54_drive_strength_54_qs;
+        reg_rdata_next[0] = dio_pad_attr_54_puen_54_qs;
+        reg_rdata_next[1] = dio_pad_attr_54_pden_54_qs;
+        reg_rdata_next[2] = dio_pad_attr_54_smten_54_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_54_drv_54_qs;
       end
 
       addr_hit[185]: begin
-        reg_rdata_next[0] = dio_pad_attr_55_invert_55_qs;
-        reg_rdata_next[1] = dio_pad_attr_55_virtual_od_en_55_qs;
-        reg_rdata_next[2] = dio_pad_attr_55_pull_en_55_qs;
-        reg_rdata_next[3] = dio_pad_attr_55_pull_select_55_qs;
-        reg_rdata_next[4] = dio_pad_attr_55_keeper_en_55_qs;
-        reg_rdata_next[5] = dio_pad_attr_55_schmitt_en_55_qs;
-        reg_rdata_next[6] = dio_pad_attr_55_od_en_55_qs;
-        reg_rdata_next[7] = dio_pad_attr_55_input_disable_55_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_55_slew_rate_55_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_55_drive_strength_55_qs;
+        reg_rdata_next[0] = dio_pad_attr_55_puen_55_qs;
+        reg_rdata_next[1] = dio_pad_attr_55_pden_55_qs;
+        reg_rdata_next[2] = dio_pad_attr_55_smten_55_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_55_drv_55_qs;
       end
 
       addr_hit[186]: begin
-        reg_rdata_next[0] = dio_pad_attr_56_invert_56_qs;
-        reg_rdata_next[1] = dio_pad_attr_56_virtual_od_en_56_qs;
-        reg_rdata_next[2] = dio_pad_attr_56_pull_en_56_qs;
-        reg_rdata_next[3] = dio_pad_attr_56_pull_select_56_qs;
-        reg_rdata_next[4] = dio_pad_attr_56_keeper_en_56_qs;
-        reg_rdata_next[5] = dio_pad_attr_56_schmitt_en_56_qs;
-        reg_rdata_next[6] = dio_pad_attr_56_od_en_56_qs;
-        reg_rdata_next[7] = dio_pad_attr_56_input_disable_56_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_56_slew_rate_56_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_56_drive_strength_56_qs;
+        reg_rdata_next[0] = dio_pad_attr_56_puen_56_qs;
+        reg_rdata_next[1] = dio_pad_attr_56_pden_56_qs;
+        reg_rdata_next[2] = dio_pad_attr_56_smten_56_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_56_drv_56_qs;
       end
 
       addr_hit[187]: begin
-        reg_rdata_next[0] = dio_pad_attr_57_invert_57_qs;
-        reg_rdata_next[1] = dio_pad_attr_57_virtual_od_en_57_qs;
-        reg_rdata_next[2] = dio_pad_attr_57_pull_en_57_qs;
-        reg_rdata_next[3] = dio_pad_attr_57_pull_select_57_qs;
-        reg_rdata_next[4] = dio_pad_attr_57_keeper_en_57_qs;
-        reg_rdata_next[5] = dio_pad_attr_57_schmitt_en_57_qs;
-        reg_rdata_next[6] = dio_pad_attr_57_od_en_57_qs;
-        reg_rdata_next[7] = dio_pad_attr_57_input_disable_57_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_57_slew_rate_57_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_57_drive_strength_57_qs;
+        reg_rdata_next[0] = dio_pad_attr_57_puen_57_qs;
+        reg_rdata_next[1] = dio_pad_attr_57_pden_57_qs;
+        reg_rdata_next[2] = dio_pad_attr_57_smten_57_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_57_drv_57_qs;
       end
 
       addr_hit[188]: begin
-        reg_rdata_next[0] = dio_pad_attr_58_invert_58_qs;
-        reg_rdata_next[1] = dio_pad_attr_58_virtual_od_en_58_qs;
-        reg_rdata_next[2] = dio_pad_attr_58_pull_en_58_qs;
-        reg_rdata_next[3] = dio_pad_attr_58_pull_select_58_qs;
-        reg_rdata_next[4] = dio_pad_attr_58_keeper_en_58_qs;
-        reg_rdata_next[5] = dio_pad_attr_58_schmitt_en_58_qs;
-        reg_rdata_next[6] = dio_pad_attr_58_od_en_58_qs;
-        reg_rdata_next[7] = dio_pad_attr_58_input_disable_58_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_58_slew_rate_58_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_58_drive_strength_58_qs;
+        reg_rdata_next[0] = dio_pad_attr_58_puen_58_qs;
+        reg_rdata_next[1] = dio_pad_attr_58_pden_58_qs;
+        reg_rdata_next[2] = dio_pad_attr_58_smten_58_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_58_drv_58_qs;
       end
 
       addr_hit[189]: begin
-        reg_rdata_next[0] = dio_pad_attr_59_invert_59_qs;
-        reg_rdata_next[1] = dio_pad_attr_59_virtual_od_en_59_qs;
-        reg_rdata_next[2] = dio_pad_attr_59_pull_en_59_qs;
-        reg_rdata_next[3] = dio_pad_attr_59_pull_select_59_qs;
-        reg_rdata_next[4] = dio_pad_attr_59_keeper_en_59_qs;
-        reg_rdata_next[5] = dio_pad_attr_59_schmitt_en_59_qs;
-        reg_rdata_next[6] = dio_pad_attr_59_od_en_59_qs;
-        reg_rdata_next[7] = dio_pad_attr_59_input_disable_59_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_59_slew_rate_59_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_59_drive_strength_59_qs;
+        reg_rdata_next[0] = dio_pad_attr_59_puen_59_qs;
+        reg_rdata_next[1] = dio_pad_attr_59_pden_59_qs;
+        reg_rdata_next[2] = dio_pad_attr_59_smten_59_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_59_drv_59_qs;
       end
 
       addr_hit[190]: begin
-        reg_rdata_next[0] = dio_pad_attr_60_invert_60_qs;
-        reg_rdata_next[1] = dio_pad_attr_60_virtual_od_en_60_qs;
-        reg_rdata_next[2] = dio_pad_attr_60_pull_en_60_qs;
-        reg_rdata_next[3] = dio_pad_attr_60_pull_select_60_qs;
-        reg_rdata_next[4] = dio_pad_attr_60_keeper_en_60_qs;
-        reg_rdata_next[5] = dio_pad_attr_60_schmitt_en_60_qs;
-        reg_rdata_next[6] = dio_pad_attr_60_od_en_60_qs;
-        reg_rdata_next[7] = dio_pad_attr_60_input_disable_60_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_60_slew_rate_60_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_60_drive_strength_60_qs;
+        reg_rdata_next[0] = dio_pad_attr_60_puen_60_qs;
+        reg_rdata_next[1] = dio_pad_attr_60_pden_60_qs;
+        reg_rdata_next[2] = dio_pad_attr_60_smten_60_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_60_drv_60_qs;
       end
 
       addr_hit[191]: begin
-        reg_rdata_next[0] = dio_pad_attr_61_invert_61_qs;
-        reg_rdata_next[1] = dio_pad_attr_61_virtual_od_en_61_qs;
-        reg_rdata_next[2] = dio_pad_attr_61_pull_en_61_qs;
-        reg_rdata_next[3] = dio_pad_attr_61_pull_select_61_qs;
-        reg_rdata_next[4] = dio_pad_attr_61_keeper_en_61_qs;
-        reg_rdata_next[5] = dio_pad_attr_61_schmitt_en_61_qs;
-        reg_rdata_next[6] = dio_pad_attr_61_od_en_61_qs;
-        reg_rdata_next[7] = dio_pad_attr_61_input_disable_61_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_61_slew_rate_61_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_61_drive_strength_61_qs;
+        reg_rdata_next[0] = dio_pad_attr_61_puen_61_qs;
+        reg_rdata_next[1] = dio_pad_attr_61_pden_61_qs;
+        reg_rdata_next[2] = dio_pad_attr_61_smten_61_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_61_drv_61_qs;
       end
 
       addr_hit[192]: begin
-        reg_rdata_next[0] = dio_pad_attr_62_invert_62_qs;
-        reg_rdata_next[1] = dio_pad_attr_62_virtual_od_en_62_qs;
-        reg_rdata_next[2] = dio_pad_attr_62_pull_en_62_qs;
-        reg_rdata_next[3] = dio_pad_attr_62_pull_select_62_qs;
-        reg_rdata_next[4] = dio_pad_attr_62_keeper_en_62_qs;
-        reg_rdata_next[5] = dio_pad_attr_62_schmitt_en_62_qs;
-        reg_rdata_next[6] = dio_pad_attr_62_od_en_62_qs;
-        reg_rdata_next[7] = dio_pad_attr_62_input_disable_62_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_62_slew_rate_62_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_62_drive_strength_62_qs;
+        reg_rdata_next[0] = dio_pad_attr_62_puen_62_qs;
+        reg_rdata_next[1] = dio_pad_attr_62_pden_62_qs;
+        reg_rdata_next[2] = dio_pad_attr_62_smten_62_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_62_drv_62_qs;
       end
 
       addr_hit[193]: begin
-        reg_rdata_next[0] = dio_pad_attr_63_invert_63_qs;
-        reg_rdata_next[1] = dio_pad_attr_63_virtual_od_en_63_qs;
-        reg_rdata_next[2] = dio_pad_attr_63_pull_en_63_qs;
-        reg_rdata_next[3] = dio_pad_attr_63_pull_select_63_qs;
-        reg_rdata_next[4] = dio_pad_attr_63_keeper_en_63_qs;
-        reg_rdata_next[5] = dio_pad_attr_63_schmitt_en_63_qs;
-        reg_rdata_next[6] = dio_pad_attr_63_od_en_63_qs;
-        reg_rdata_next[7] = dio_pad_attr_63_input_disable_63_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_63_slew_rate_63_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_63_drive_strength_63_qs;
+        reg_rdata_next[0] = dio_pad_attr_63_puen_63_qs;
+        reg_rdata_next[1] = dio_pad_attr_63_pden_63_qs;
+        reg_rdata_next[2] = dio_pad_attr_63_smten_63_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_63_drv_63_qs;
       end
 
       addr_hit[194]: begin
-        reg_rdata_next[0] = dio_pad_attr_64_invert_64_qs;
-        reg_rdata_next[1] = dio_pad_attr_64_virtual_od_en_64_qs;
-        reg_rdata_next[2] = dio_pad_attr_64_pull_en_64_qs;
-        reg_rdata_next[3] = dio_pad_attr_64_pull_select_64_qs;
-        reg_rdata_next[4] = dio_pad_attr_64_keeper_en_64_qs;
-        reg_rdata_next[5] = dio_pad_attr_64_schmitt_en_64_qs;
-        reg_rdata_next[6] = dio_pad_attr_64_od_en_64_qs;
-        reg_rdata_next[7] = dio_pad_attr_64_input_disable_64_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_64_slew_rate_64_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_64_drive_strength_64_qs;
+        reg_rdata_next[0] = dio_pad_attr_64_puen_64_qs;
+        reg_rdata_next[1] = dio_pad_attr_64_pden_64_qs;
+        reg_rdata_next[2] = dio_pad_attr_64_smten_64_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_64_drv_64_qs;
       end
 
       addr_hit[195]: begin
-        reg_rdata_next[0] = dio_pad_attr_65_invert_65_qs;
-        reg_rdata_next[1] = dio_pad_attr_65_virtual_od_en_65_qs;
-        reg_rdata_next[2] = dio_pad_attr_65_pull_en_65_qs;
-        reg_rdata_next[3] = dio_pad_attr_65_pull_select_65_qs;
-        reg_rdata_next[4] = dio_pad_attr_65_keeper_en_65_qs;
-        reg_rdata_next[5] = dio_pad_attr_65_schmitt_en_65_qs;
-        reg_rdata_next[6] = dio_pad_attr_65_od_en_65_qs;
-        reg_rdata_next[7] = dio_pad_attr_65_input_disable_65_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_65_slew_rate_65_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_65_drive_strength_65_qs;
+        reg_rdata_next[0] = dio_pad_attr_65_puen_65_qs;
+        reg_rdata_next[1] = dio_pad_attr_65_pden_65_qs;
+        reg_rdata_next[2] = dio_pad_attr_65_smten_65_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_65_drv_65_qs;
       end
 
       addr_hit[196]: begin
-        reg_rdata_next[0] = dio_pad_attr_66_invert_66_qs;
-        reg_rdata_next[1] = dio_pad_attr_66_virtual_od_en_66_qs;
-        reg_rdata_next[2] = dio_pad_attr_66_pull_en_66_qs;
-        reg_rdata_next[3] = dio_pad_attr_66_pull_select_66_qs;
-        reg_rdata_next[4] = dio_pad_attr_66_keeper_en_66_qs;
-        reg_rdata_next[5] = dio_pad_attr_66_schmitt_en_66_qs;
-        reg_rdata_next[6] = dio_pad_attr_66_od_en_66_qs;
-        reg_rdata_next[7] = dio_pad_attr_66_input_disable_66_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_66_slew_rate_66_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_66_drive_strength_66_qs;
+        reg_rdata_next[0] = dio_pad_attr_66_puen_66_qs;
+        reg_rdata_next[1] = dio_pad_attr_66_pden_66_qs;
+        reg_rdata_next[2] = dio_pad_attr_66_smten_66_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_66_drv_66_qs;
       end
 
       addr_hit[197]: begin
-        reg_rdata_next[0] = dio_pad_attr_67_invert_67_qs;
-        reg_rdata_next[1] = dio_pad_attr_67_virtual_od_en_67_qs;
-        reg_rdata_next[2] = dio_pad_attr_67_pull_en_67_qs;
-        reg_rdata_next[3] = dio_pad_attr_67_pull_select_67_qs;
-        reg_rdata_next[4] = dio_pad_attr_67_keeper_en_67_qs;
-        reg_rdata_next[5] = dio_pad_attr_67_schmitt_en_67_qs;
-        reg_rdata_next[6] = dio_pad_attr_67_od_en_67_qs;
-        reg_rdata_next[7] = dio_pad_attr_67_input_disable_67_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_67_slew_rate_67_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_67_drive_strength_67_qs;
+        reg_rdata_next[0] = dio_pad_attr_67_puen_67_qs;
+        reg_rdata_next[1] = dio_pad_attr_67_pden_67_qs;
+        reg_rdata_next[2] = dio_pad_attr_67_smten_67_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_67_drv_67_qs;
       end
 
       addr_hit[198]: begin
-        reg_rdata_next[0] = dio_pad_attr_68_invert_68_qs;
-        reg_rdata_next[1] = dio_pad_attr_68_virtual_od_en_68_qs;
-        reg_rdata_next[2] = dio_pad_attr_68_pull_en_68_qs;
-        reg_rdata_next[3] = dio_pad_attr_68_pull_select_68_qs;
-        reg_rdata_next[4] = dio_pad_attr_68_keeper_en_68_qs;
-        reg_rdata_next[5] = dio_pad_attr_68_schmitt_en_68_qs;
-        reg_rdata_next[6] = dio_pad_attr_68_od_en_68_qs;
-        reg_rdata_next[7] = dio_pad_attr_68_input_disable_68_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_68_slew_rate_68_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_68_drive_strength_68_qs;
+        reg_rdata_next[0] = dio_pad_attr_68_puen_68_qs;
+        reg_rdata_next[1] = dio_pad_attr_68_pden_68_qs;
+        reg_rdata_next[2] = dio_pad_attr_68_smten_68_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_68_drv_68_qs;
       end
 
       addr_hit[199]: begin
-        reg_rdata_next[0] = dio_pad_attr_69_invert_69_qs;
-        reg_rdata_next[1] = dio_pad_attr_69_virtual_od_en_69_qs;
-        reg_rdata_next[2] = dio_pad_attr_69_pull_en_69_qs;
-        reg_rdata_next[3] = dio_pad_attr_69_pull_select_69_qs;
-        reg_rdata_next[4] = dio_pad_attr_69_keeper_en_69_qs;
-        reg_rdata_next[5] = dio_pad_attr_69_schmitt_en_69_qs;
-        reg_rdata_next[6] = dio_pad_attr_69_od_en_69_qs;
-        reg_rdata_next[7] = dio_pad_attr_69_input_disable_69_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_69_slew_rate_69_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_69_drive_strength_69_qs;
+        reg_rdata_next[0] = dio_pad_attr_69_puen_69_qs;
+        reg_rdata_next[1] = dio_pad_attr_69_pden_69_qs;
+        reg_rdata_next[2] = dio_pad_attr_69_smten_69_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_69_drv_69_qs;
       end
 
       addr_hit[200]: begin
-        reg_rdata_next[0] = dio_pad_attr_70_invert_70_qs;
-        reg_rdata_next[1] = dio_pad_attr_70_virtual_od_en_70_qs;
-        reg_rdata_next[2] = dio_pad_attr_70_pull_en_70_qs;
-        reg_rdata_next[3] = dio_pad_attr_70_pull_select_70_qs;
-        reg_rdata_next[4] = dio_pad_attr_70_keeper_en_70_qs;
-        reg_rdata_next[5] = dio_pad_attr_70_schmitt_en_70_qs;
-        reg_rdata_next[6] = dio_pad_attr_70_od_en_70_qs;
-        reg_rdata_next[7] = dio_pad_attr_70_input_disable_70_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_70_slew_rate_70_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_70_drive_strength_70_qs;
+        reg_rdata_next[0] = dio_pad_attr_70_puen_70_qs;
+        reg_rdata_next[1] = dio_pad_attr_70_pden_70_qs;
+        reg_rdata_next[2] = dio_pad_attr_70_smten_70_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_70_drv_70_qs;
       end
 
       addr_hit[201]: begin
-        reg_rdata_next[0] = dio_pad_attr_71_invert_71_qs;
-        reg_rdata_next[1] = dio_pad_attr_71_virtual_od_en_71_qs;
-        reg_rdata_next[2] = dio_pad_attr_71_pull_en_71_qs;
-        reg_rdata_next[3] = dio_pad_attr_71_pull_select_71_qs;
-        reg_rdata_next[4] = dio_pad_attr_71_keeper_en_71_qs;
-        reg_rdata_next[5] = dio_pad_attr_71_schmitt_en_71_qs;
-        reg_rdata_next[6] = dio_pad_attr_71_od_en_71_qs;
-        reg_rdata_next[7] = dio_pad_attr_71_input_disable_71_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_71_slew_rate_71_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_71_drive_strength_71_qs;
+        reg_rdata_next[0] = dio_pad_attr_71_puen_71_qs;
+        reg_rdata_next[1] = dio_pad_attr_71_pden_71_qs;
+        reg_rdata_next[2] = dio_pad_attr_71_smten_71_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_71_drv_71_qs;
       end
 
       addr_hit[202]: begin
-        reg_rdata_next[0] = dio_pad_attr_72_invert_72_qs;
-        reg_rdata_next[1] = dio_pad_attr_72_virtual_od_en_72_qs;
-        reg_rdata_next[2] = dio_pad_attr_72_pull_en_72_qs;
-        reg_rdata_next[3] = dio_pad_attr_72_pull_select_72_qs;
-        reg_rdata_next[4] = dio_pad_attr_72_keeper_en_72_qs;
-        reg_rdata_next[5] = dio_pad_attr_72_schmitt_en_72_qs;
-        reg_rdata_next[6] = dio_pad_attr_72_od_en_72_qs;
-        reg_rdata_next[7] = dio_pad_attr_72_input_disable_72_qs;
-        reg_rdata_next[17:16] = dio_pad_attr_72_slew_rate_72_qs;
-        reg_rdata_next[23:20] = dio_pad_attr_72_drive_strength_72_qs;
+        reg_rdata_next[0] = dio_pad_attr_72_puen_72_qs;
+        reg_rdata_next[1] = dio_pad_attr_72_pden_72_qs;
+        reg_rdata_next[2] = dio_pad_attr_72_smten_72_qs;
+        reg_rdata_next[6:4] = dio_pad_attr_72_drv_72_qs;
       end
 
       addr_hit[203]: begin

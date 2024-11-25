@@ -246,10 +246,7 @@
     },
     { multireg: { name:     "MIO_PAD_ATTR",
                   desc:     '''
-                            Muxed pad attributes.
-                            This register has WARL behavior since not each pad type may support
-                            all attributes.
-                            The muxed pad that is used for TAP strap 0 has a different reset value, with `pull_en` set to 1.
+                            Muxed pad control of generic GPIO pad.
                             ''',
                   count:        "NMioPads",
                   compact:      "false",
@@ -263,65 +260,25 @@
                   resval:       0
                   fields: [
                     { bits: "0",
-                      name: "invert",
-                      desc: "Invert input and output levels."
+                      name: "PUEN",
+                      desc: "Active high pull-up enable."
                     },
                     { bits: "1",
-                      name: "virtual_od_en",
-                      desc: "Enable virtual open drain."
+                      name: "PDEN",
+                      desc: "Active high pull-down enable."
                     },
                     { bits: "2",
-                      name: "pull_en",
-                      desc: "Enable pull-up or pull-down resistor."
+                      name: "SMTEN",
+                      desc: "Active high Schmitt trigger enable."
                     },
-                    { bits: "3",
-                      name: "pull_select",
-                      desc: "Pull select (0: pull-down, 1: pull-up)."
-                      enum: [
-                        { value: "0",
-                          name:  "pull_down",
-                          desc:  "Select the pull-down resistor."
-                        },
-                        { value: "1",
-                          name:  "pull_up",
-                          desc:  "Select the pull-up resistor."
-                        }
-                      ]
-                    },
-                    { bits: "4",
-                      name: "keeper_en",
-                      desc: "Enable keeper termination. This weakly drives the previous pad output value when output is disabled, similar to a verilog `trireg`."
-                    },
-                    { bits: "5",
-                      name: "schmitt_en",
-                      desc: "Enable the schmitt trigger."
-                    },
-                    { bits: "6",
-                      name: "od_en",
-                      desc: "Enable open drain."
-                    },
-                    { bits: "7",
-                      name: "input_disable",
-                      desc: '''
-                            Disable input drivers.
-                            Setting this to 1 for pads that are not used as input can reduce their leakage current.
-                            '''
-                    },
-                    { bits: "17:16",
-                      name: "slew_rate",
-                      desc: "Slew rate (0x0: slowest, 0x3: fastest)."
-                    },
-                    { bits: "23:20",
-                      name: "drive_strength",
-                      desc: "Drive strength (0x0: weakest, 0xf: strongest)"
+                    { bits: "6:4",
+                      name: "DRV",
+                      desc: "Programmable drive strength (0x0: weakest, 0x7: strongest)"
                     }
                   ],
-                  // these CSRs have WARL behavior and may not
-                  // read back the same value that was written to them.
-                  // further, they have hardware side effects since they drive the
+                  // these CSRs have hardware side effects since they drive the
                   // pad attributes, and hence no random data should be written to them.
-                  // Additionally, their reset value is defined by the RTL implementation and may not equal `resval` for all instances (#24621).
-                  tags: ["excl:CsrAllTests:CsrExclAll"]
+                  tags: ["excl:CsrAllTests:CsrExclWrite"]
                 }
     },
 
@@ -350,9 +307,7 @@
     },
     { multireg: { name:     "DIO_PAD_ATTR",
                   desc:     '''
-                            Dedicated pad attributes.
-                            This register has WARL behavior since not each pad type may support
-                            all attributes.
+                            Dedicated pad control of generic GPIO pad.
                             ''',
                   count:        "NDioPads",
                   compact:      "false",
@@ -363,65 +318,26 @@
                   regwen:       "DIO_PAD_ATTR_REGWEN",
                   regwen_multi: "true",
                   cname:        "DIO_PAD",
-                  resval:       0,
+		  resval:       0,
                   fields: [
                     { bits: "0",
-                      name: "invert",
-                      desc: "Invert input and output levels."
+                      name: "PUEN",
+                      desc: "Active high pull-up enable."
                     },
                     { bits: "1",
-                      name: "virtual_od_en",
-                      desc: "Enable virtual open drain."
+                      name: "PDEN",
+                      desc: "Active high pull-down enable."
                     },
                     { bits: "2",
-                      name: "pull_en",
-                      desc: "Enable pull-up or pull-down resistor."
+                      name: "SMTEN",
+                      desc: "Active high Schmitt trigger enable."
                     },
-                    { bits: "3",
-                      name: "pull_select",
-                      desc: "Pull select (0: pull-down, 1: pull-up)."
-                      enum: [
-                        { value: "0",
-                          name:  "pull_down",
-                          desc:  "Select the pull-down resistor."
-                        },
-                        { value: "1",
-                          name:  "pull_up",
-                          desc:  "Select the pull-up resistor."
-                        }
-                      ]
-                    },
-                    { bits: "4",
-                      name: "keeper_en",
-                      desc: "Enable keeper termination. This weakly drives the previous pad output value when output is disabled, similar to a verilog `trireg`."
-                    },
-                    { bits: "5",
-                      name: "schmitt_en",
-                      desc: "Enable the schmitt trigger."
-                    },
-                    { bits: "6",
-                      name: "od_en",
-                      desc: "Enable open drain."
-                    },
-                    { bits: "7",
-                      name: "input_disable",
-                      desc: '''
-                            Disable input drivers.
-                            Setting this to 1 for pads that are not used as input can reduce their leakage current.
-                            '''
-                    },
-                    { bits: "17:16",
-                      name: "slew_rate",
-                      desc: "Slew rate (0x0: slowest, 0x3: fastest)."
-                    },
-                    { bits: "23:20",
-                      name: "drive_strength",
-                      desc: "Drive strength (0x0: weakest, 0xf: strongest)"
+                    { bits: "6:4",
+                      name: "DRV",
+                      desc: "Programmable drive strength (0x0: weakest, 0x7: strongest)"
                     }
                   ],
-                  // these CSRs have WARL behavior and may not
-                  // read back the same value that was written to them.
-                  // further, they have hardware side effects since they drive the
+                  // these CSRs have have hardware side effects since they drive the
                   // pad attributes, and hence no random data should be written to them.
                   tags: ["excl:CsrAllTests:CsrExclWrite"]
                 }

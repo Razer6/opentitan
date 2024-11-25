@@ -50,18 +50,18 @@
 | pinmux.[`MIO_PAD_ATTR_REGWEN_9`](#mio_pad_attr_regwen)         | 0xa8     |        4 | Register write enable for MIO PAD attributes.                       |
 | pinmux.[`MIO_PAD_ATTR_REGWEN_10`](#mio_pad_attr_regwen)        | 0xac     |        4 | Register write enable for MIO PAD attributes.                       |
 | pinmux.[`MIO_PAD_ATTR_REGWEN_11`](#mio_pad_attr_regwen)        | 0xb0     |        4 | Register write enable for MIO PAD attributes.                       |
-| pinmux.[`MIO_PAD_ATTR_0`](#mio_pad_attr)                       | 0xb4     |        4 | Muxed pad attributes.                                               |
-| pinmux.[`MIO_PAD_ATTR_1`](#mio_pad_attr)                       | 0xb8     |        4 | Muxed pad attributes.                                               |
-| pinmux.[`MIO_PAD_ATTR_2`](#mio_pad_attr)                       | 0xbc     |        4 | Muxed pad attributes.                                               |
-| pinmux.[`MIO_PAD_ATTR_3`](#mio_pad_attr)                       | 0xc0     |        4 | Muxed pad attributes.                                               |
-| pinmux.[`MIO_PAD_ATTR_4`](#mio_pad_attr)                       | 0xc4     |        4 | Muxed pad attributes.                                               |
-| pinmux.[`MIO_PAD_ATTR_5`](#mio_pad_attr)                       | 0xc8     |        4 | Muxed pad attributes.                                               |
-| pinmux.[`MIO_PAD_ATTR_6`](#mio_pad_attr)                       | 0xcc     |        4 | Muxed pad attributes.                                               |
-| pinmux.[`MIO_PAD_ATTR_7`](#mio_pad_attr)                       | 0xd0     |        4 | Muxed pad attributes.                                               |
-| pinmux.[`MIO_PAD_ATTR_8`](#mio_pad_attr)                       | 0xd4     |        4 | Muxed pad attributes.                                               |
-| pinmux.[`MIO_PAD_ATTR_9`](#mio_pad_attr)                       | 0xd8     |        4 | Muxed pad attributes.                                               |
-| pinmux.[`MIO_PAD_ATTR_10`](#mio_pad_attr)                      | 0xdc     |        4 | Muxed pad attributes.                                               |
-| pinmux.[`MIO_PAD_ATTR_11`](#mio_pad_attr)                      | 0xe0     |        4 | Muxed pad attributes.                                               |
+| pinmux.[`MIO_PAD_ATTR_0`](#mio_pad_attr)                       | 0xb4     |        4 | Muxed pad control of generic GPIO pad.                              |
+| pinmux.[`MIO_PAD_ATTR_1`](#mio_pad_attr)                       | 0xb8     |        4 | Muxed pad control of generic GPIO pad.                              |
+| pinmux.[`MIO_PAD_ATTR_2`](#mio_pad_attr)                       | 0xbc     |        4 | Muxed pad control of generic GPIO pad.                              |
+| pinmux.[`MIO_PAD_ATTR_3`](#mio_pad_attr)                       | 0xc0     |        4 | Muxed pad control of generic GPIO pad.                              |
+| pinmux.[`MIO_PAD_ATTR_4`](#mio_pad_attr)                       | 0xc4     |        4 | Muxed pad control of generic GPIO pad.                              |
+| pinmux.[`MIO_PAD_ATTR_5`](#mio_pad_attr)                       | 0xc8     |        4 | Muxed pad control of generic GPIO pad.                              |
+| pinmux.[`MIO_PAD_ATTR_6`](#mio_pad_attr)                       | 0xcc     |        4 | Muxed pad control of generic GPIO pad.                              |
+| pinmux.[`MIO_PAD_ATTR_7`](#mio_pad_attr)                       | 0xd0     |        4 | Muxed pad control of generic GPIO pad.                              |
+| pinmux.[`MIO_PAD_ATTR_8`](#mio_pad_attr)                       | 0xd4     |        4 | Muxed pad control of generic GPIO pad.                              |
+| pinmux.[`MIO_PAD_ATTR_9`](#mio_pad_attr)                       | 0xd8     |        4 | Muxed pad control of generic GPIO pad.                              |
+| pinmux.[`MIO_PAD_ATTR_10`](#mio_pad_attr)                      | 0xdc     |        4 | Muxed pad control of generic GPIO pad.                              |
+| pinmux.[`MIO_PAD_ATTR_11`](#mio_pad_attr)                      | 0xe0     |        4 | Muxed pad control of generic GPIO pad.                              |
 | pinmux.[`DIO_PAD_ATTR_REGWEN_0`](#dio_pad_attr_regwen)         | 0xe4     |        4 | Register write enable for DIO PAD attributes.                       |
 | pinmux.[`DIO_PAD_ATTR_REGWEN_1`](#dio_pad_attr_regwen)         | 0xe8     |        4 | Register write enable for DIO PAD attributes.                       |
 | pinmux.[`DIO_PAD_ATTR_REGWEN_2`](#dio_pad_attr_regwen)         | 0xec     |        4 | Register write enable for DIO PAD attributes.                       |
@@ -135,79 +135,79 @@
 | pinmux.[`DIO_PAD_ATTR_REGWEN_70`](#dio_pad_attr_regwen)        | 0x1fc    |        4 | Register write enable for DIO PAD attributes.                       |
 | pinmux.[`DIO_PAD_ATTR_REGWEN_71`](#dio_pad_attr_regwen)        | 0x200    |        4 | Register write enable for DIO PAD attributes.                       |
 | pinmux.[`DIO_PAD_ATTR_REGWEN_72`](#dio_pad_attr_regwen)        | 0x204    |        4 | Register write enable for DIO PAD attributes.                       |
-| pinmux.[`DIO_PAD_ATTR_0`](#dio_pad_attr)                       | 0x208    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_1`](#dio_pad_attr)                       | 0x20c    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_2`](#dio_pad_attr)                       | 0x210    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_3`](#dio_pad_attr)                       | 0x214    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_4`](#dio_pad_attr)                       | 0x218    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_5`](#dio_pad_attr)                       | 0x21c    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_6`](#dio_pad_attr)                       | 0x220    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_7`](#dio_pad_attr)                       | 0x224    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_8`](#dio_pad_attr)                       | 0x228    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_9`](#dio_pad_attr)                       | 0x22c    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_10`](#dio_pad_attr)                      | 0x230    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_11`](#dio_pad_attr)                      | 0x234    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_12`](#dio_pad_attr)                      | 0x238    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_13`](#dio_pad_attr)                      | 0x23c    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_14`](#dio_pad_attr)                      | 0x240    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_15`](#dio_pad_attr)                      | 0x244    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_16`](#dio_pad_attr)                      | 0x248    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_17`](#dio_pad_attr)                      | 0x24c    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_18`](#dio_pad_attr)                      | 0x250    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_19`](#dio_pad_attr)                      | 0x254    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_20`](#dio_pad_attr)                      | 0x258    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_21`](#dio_pad_attr)                      | 0x25c    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_22`](#dio_pad_attr)                      | 0x260    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_23`](#dio_pad_attr)                      | 0x264    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_24`](#dio_pad_attr)                      | 0x268    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_25`](#dio_pad_attr)                      | 0x26c    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_26`](#dio_pad_attr)                      | 0x270    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_27`](#dio_pad_attr)                      | 0x274    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_28`](#dio_pad_attr)                      | 0x278    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_29`](#dio_pad_attr)                      | 0x27c    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_30`](#dio_pad_attr)                      | 0x280    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_31`](#dio_pad_attr)                      | 0x284    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_32`](#dio_pad_attr)                      | 0x288    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_33`](#dio_pad_attr)                      | 0x28c    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_34`](#dio_pad_attr)                      | 0x290    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_35`](#dio_pad_attr)                      | 0x294    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_36`](#dio_pad_attr)                      | 0x298    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_37`](#dio_pad_attr)                      | 0x29c    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_38`](#dio_pad_attr)                      | 0x2a0    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_39`](#dio_pad_attr)                      | 0x2a4    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_40`](#dio_pad_attr)                      | 0x2a8    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_41`](#dio_pad_attr)                      | 0x2ac    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_42`](#dio_pad_attr)                      | 0x2b0    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_43`](#dio_pad_attr)                      | 0x2b4    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_44`](#dio_pad_attr)                      | 0x2b8    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_45`](#dio_pad_attr)                      | 0x2bc    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_46`](#dio_pad_attr)                      | 0x2c0    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_47`](#dio_pad_attr)                      | 0x2c4    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_48`](#dio_pad_attr)                      | 0x2c8    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_49`](#dio_pad_attr)                      | 0x2cc    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_50`](#dio_pad_attr)                      | 0x2d0    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_51`](#dio_pad_attr)                      | 0x2d4    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_52`](#dio_pad_attr)                      | 0x2d8    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_53`](#dio_pad_attr)                      | 0x2dc    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_54`](#dio_pad_attr)                      | 0x2e0    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_55`](#dio_pad_attr)                      | 0x2e4    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_56`](#dio_pad_attr)                      | 0x2e8    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_57`](#dio_pad_attr)                      | 0x2ec    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_58`](#dio_pad_attr)                      | 0x2f0    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_59`](#dio_pad_attr)                      | 0x2f4    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_60`](#dio_pad_attr)                      | 0x2f8    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_61`](#dio_pad_attr)                      | 0x2fc    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_62`](#dio_pad_attr)                      | 0x300    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_63`](#dio_pad_attr)                      | 0x304    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_64`](#dio_pad_attr)                      | 0x308    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_65`](#dio_pad_attr)                      | 0x30c    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_66`](#dio_pad_attr)                      | 0x310    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_67`](#dio_pad_attr)                      | 0x314    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_68`](#dio_pad_attr)                      | 0x318    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_69`](#dio_pad_attr)                      | 0x31c    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_70`](#dio_pad_attr)                      | 0x320    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_71`](#dio_pad_attr)                      | 0x324    |        4 | Dedicated pad attributes.                                           |
-| pinmux.[`DIO_PAD_ATTR_72`](#dio_pad_attr)                      | 0x328    |        4 | Dedicated pad attributes.                                           |
+| pinmux.[`DIO_PAD_ATTR_0`](#dio_pad_attr)                       | 0x208    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_1`](#dio_pad_attr)                       | 0x20c    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_2`](#dio_pad_attr)                       | 0x210    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_3`](#dio_pad_attr)                       | 0x214    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_4`](#dio_pad_attr)                       | 0x218    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_5`](#dio_pad_attr)                       | 0x21c    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_6`](#dio_pad_attr)                       | 0x220    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_7`](#dio_pad_attr)                       | 0x224    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_8`](#dio_pad_attr)                       | 0x228    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_9`](#dio_pad_attr)                       | 0x22c    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_10`](#dio_pad_attr)                      | 0x230    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_11`](#dio_pad_attr)                      | 0x234    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_12`](#dio_pad_attr)                      | 0x238    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_13`](#dio_pad_attr)                      | 0x23c    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_14`](#dio_pad_attr)                      | 0x240    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_15`](#dio_pad_attr)                      | 0x244    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_16`](#dio_pad_attr)                      | 0x248    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_17`](#dio_pad_attr)                      | 0x24c    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_18`](#dio_pad_attr)                      | 0x250    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_19`](#dio_pad_attr)                      | 0x254    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_20`](#dio_pad_attr)                      | 0x258    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_21`](#dio_pad_attr)                      | 0x25c    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_22`](#dio_pad_attr)                      | 0x260    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_23`](#dio_pad_attr)                      | 0x264    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_24`](#dio_pad_attr)                      | 0x268    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_25`](#dio_pad_attr)                      | 0x26c    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_26`](#dio_pad_attr)                      | 0x270    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_27`](#dio_pad_attr)                      | 0x274    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_28`](#dio_pad_attr)                      | 0x278    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_29`](#dio_pad_attr)                      | 0x27c    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_30`](#dio_pad_attr)                      | 0x280    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_31`](#dio_pad_attr)                      | 0x284    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_32`](#dio_pad_attr)                      | 0x288    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_33`](#dio_pad_attr)                      | 0x28c    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_34`](#dio_pad_attr)                      | 0x290    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_35`](#dio_pad_attr)                      | 0x294    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_36`](#dio_pad_attr)                      | 0x298    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_37`](#dio_pad_attr)                      | 0x29c    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_38`](#dio_pad_attr)                      | 0x2a0    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_39`](#dio_pad_attr)                      | 0x2a4    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_40`](#dio_pad_attr)                      | 0x2a8    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_41`](#dio_pad_attr)                      | 0x2ac    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_42`](#dio_pad_attr)                      | 0x2b0    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_43`](#dio_pad_attr)                      | 0x2b4    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_44`](#dio_pad_attr)                      | 0x2b8    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_45`](#dio_pad_attr)                      | 0x2bc    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_46`](#dio_pad_attr)                      | 0x2c0    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_47`](#dio_pad_attr)                      | 0x2c4    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_48`](#dio_pad_attr)                      | 0x2c8    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_49`](#dio_pad_attr)                      | 0x2cc    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_50`](#dio_pad_attr)                      | 0x2d0    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_51`](#dio_pad_attr)                      | 0x2d4    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_52`](#dio_pad_attr)                      | 0x2d8    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_53`](#dio_pad_attr)                      | 0x2dc    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_54`](#dio_pad_attr)                      | 0x2e0    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_55`](#dio_pad_attr)                      | 0x2e4    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_56`](#dio_pad_attr)                      | 0x2e8    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_57`](#dio_pad_attr)                      | 0x2ec    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_58`](#dio_pad_attr)                      | 0x2f0    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_59`](#dio_pad_attr)                      | 0x2f4    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_60`](#dio_pad_attr)                      | 0x2f8    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_61`](#dio_pad_attr)                      | 0x2fc    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_62`](#dio_pad_attr)                      | 0x300    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_63`](#dio_pad_attr)                      | 0x304    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_64`](#dio_pad_attr)                      | 0x308    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_65`](#dio_pad_attr)                      | 0x30c    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_66`](#dio_pad_attr)                      | 0x310    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_67`](#dio_pad_attr)                      | 0x314    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_68`](#dio_pad_attr)                      | 0x318    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_69`](#dio_pad_attr)                      | 0x31c    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_70`](#dio_pad_attr)                      | 0x320    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_71`](#dio_pad_attr)                      | 0x324    |        4 | Dedicated pad control of generic GPIO pad.                          |
+| pinmux.[`DIO_PAD_ATTR_72`](#dio_pad_attr)                      | 0x328    |        4 | Dedicated pad control of generic GPIO pad.                          |
 | pinmux.[`MIO_PAD_SLEEP_STATUS`](#MIO_PAD_SLEEP_STATUS)         | 0x32c    |        4 | Register indicating whether the corresponding pad is in sleep mode. |
 | pinmux.[`MIO_PAD_SLEEP_REGWEN_0`](#mio_pad_sleep_regwen)       | 0x330    |        4 | Register write enable for MIO sleep value configuration.            |
 | pinmux.[`MIO_PAD_SLEEP_REGWEN_1`](#mio_pad_sleep_regwen)       | 0x334    |        4 | Register write enable for MIO sleep value configuration.            |
@@ -681,12 +681,9 @@ Register write enable for MIO PAD attributes.
 |   0    |  rw0c  |   0x1   | EN     | Register write enable bit. If this is cleared to 0, the corresponding [`MIO_PAD_ATTR`](#mio_pad_attr) is not writable anymore. |
 
 ## MIO_PAD_ATTR
-Muxed pad attributes.
-This register has WARL behavior since not each pad type may support
-all attributes.
-The muxed pad that is used for TAP strap 0 has a different reset value, with `pull_en` set to 1.
+Muxed pad control of generic GPIO pad.
 - Reset default: `0x0`
-- Reset mask: `0xf300ff`
+- Reset mask: `0x77`
 
 ### Instances
 
@@ -709,61 +706,17 @@ The muxed pad that is used for TAP strap 0 has a different reset value, with `pu
 ### Fields
 
 ```wavejson
-{"reg": [{"name": "invert", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "virtual_od_en", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "pull_en", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "pull_select", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "keeper_en", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "schmitt_en", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "od_en", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "input_disable", "bits": 1, "attr": ["rw"], "rotate": -90}, {"bits": 8}, {"name": "slew_rate", "bits": 2, "attr": ["rw"], "rotate": -90}, {"bits": 2}, {"name": "drive_strength", "bits": 4, "attr": ["rw"], "rotate": -90}, {"bits": 8}], "config": {"lanes": 1, "fontsize": 10, "vspace": 160}}
+{"reg": [{"name": "PUEN", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "PDEN", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "SMTEN", "bits": 1, "attr": ["rw"], "rotate": -90}, {"bits": 1}, {"name": "DRV", "bits": 3, "attr": ["rw"], "rotate": 0}, {"bits": 25}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
 ```
 
-|  Bits  |  Type  |  Reset  | Name                                            |
-|:------:|:------:|:-------:|:------------------------------------------------|
-| 31:24  |        |         | Reserved                                        |
-| 23:20  |   rw   |   0x0   | [drive_strength](#mio_pad_attr--drive_strength) |
-| 19:18  |        |         | Reserved                                        |
-| 17:16  |   rw   |   0x0   | [slew_rate](#mio_pad_attr--slew_rate)           |
-|  15:8  |        |         | Reserved                                        |
-|   7    |   rw   |   0x0   | [input_disable](#mio_pad_attr--input_disable)   |
-|   6    |   rw   |   0x0   | [od_en](#mio_pad_attr--od_en)                   |
-|   5    |   rw   |   0x0   | [schmitt_en](#mio_pad_attr--schmitt_en)         |
-|   4    |   rw   |   0x0   | [keeper_en](#mio_pad_attr--keeper_en)           |
-|   3    |   rw   |   0x0   | [pull_select](#mio_pad_attr--pull_select)       |
-|   2    |   rw   |   0x0   | [pull_en](#mio_pad_attr--pull_en)               |
-|   1    |   rw   |   0x0   | [virtual_od_en](#mio_pad_attr--virtual_od_en)   |
-|   0    |   rw   |   0x0   | [invert](#mio_pad_attr--invert)                 |
-
-### MIO_PAD_ATTR . drive_strength
-Drive strength (0x0: weakest, 0xf: strongest)
-
-### MIO_PAD_ATTR . slew_rate
-Slew rate (0x0: slowest, 0x3: fastest).
-
-### MIO_PAD_ATTR . input_disable
-Disable input drivers.
-Setting this to 1 for pads that are not used as input can reduce their leakage current.
-
-### MIO_PAD_ATTR . od_en
-Enable open drain.
-
-### MIO_PAD_ATTR . schmitt_en
-Enable the schmitt trigger.
-
-### MIO_PAD_ATTR . keeper_en
-Enable keeper termination. This weakly drives the previous pad output value when output is disabled, similar to a verilog `trireg`.
-
-### MIO_PAD_ATTR . pull_select
-Pull select (0: pull-down, 1: pull-up).
-
-| Value   | Name      | Description                    |
-|:--------|:----------|:-------------------------------|
-| 0x0     | pull_down | Select the pull-down resistor. |
-| 0x1     | pull_up   | Select the pull-up resistor.   |
-
-
-### MIO_PAD_ATTR . pull_en
-Enable pull-up or pull-down resistor.
-
-### MIO_PAD_ATTR . virtual_od_en
-Enable virtual open drain.
-
-### MIO_PAD_ATTR . invert
-Invert input and output levels.
+|  Bits  |  Type  |  Reset  | Name   | Description                                                |
+|:------:|:------:|:-------:|:-------|:-----------------------------------------------------------|
+|  31:7  |        |         |        | Reserved                                                   |
+|  6:4   |   rw   |   0x0   | DRV    | Programmable drive strength (0x0: weakest, 0x7: strongest) |
+|   3    |        |         |        | Reserved                                                   |
+|   2    |   rw   |   0x0   | SMTEN  | Active high Schmitt trigger enable.                        |
+|   1    |   rw   |   0x0   | PDEN   | Active high pull-down enable.                              |
+|   0    |   rw   |   0x0   | PUEN   | Active high pull-up enable.                                |
 
 ## DIO_PAD_ATTR_REGWEN
 Register write enable for DIO PAD attributes.
@@ -861,11 +814,9 @@ Register write enable for DIO PAD attributes.
 |   0    |  rw0c  |   0x1   | EN     | Register write enable bit. If this is cleared to 0, the corresponding [`DIO_PAD_ATTR`](#dio_pad_attr) is not writable anymore. |
 
 ## DIO_PAD_ATTR
-Dedicated pad attributes.
-This register has WARL behavior since not each pad type may support
-all attributes.
+Dedicated pad control of generic GPIO pad.
 - Reset default: `0x0`
-- Reset mask: `0xf300ff`
+- Reset mask: `0x77`
 
 ### Instances
 
@@ -949,61 +900,17 @@ all attributes.
 ### Fields
 
 ```wavejson
-{"reg": [{"name": "invert", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "virtual_od_en", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "pull_en", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "pull_select", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "keeper_en", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "schmitt_en", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "od_en", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "input_disable", "bits": 1, "attr": ["rw"], "rotate": -90}, {"bits": 8}, {"name": "slew_rate", "bits": 2, "attr": ["rw"], "rotate": -90}, {"bits": 2}, {"name": "drive_strength", "bits": 4, "attr": ["rw"], "rotate": -90}, {"bits": 8}], "config": {"lanes": 1, "fontsize": 10, "vspace": 160}}
+{"reg": [{"name": "PUEN", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "PDEN", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "SMTEN", "bits": 1, "attr": ["rw"], "rotate": -90}, {"bits": 1}, {"name": "DRV", "bits": 3, "attr": ["rw"], "rotate": 0}, {"bits": 25}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
 ```
 
-|  Bits  |  Type  |  Reset  | Name                                            |
-|:------:|:------:|:-------:|:------------------------------------------------|
-| 31:24  |        |         | Reserved                                        |
-| 23:20  |   rw   |   0x0   | [drive_strength](#dio_pad_attr--drive_strength) |
-| 19:18  |        |         | Reserved                                        |
-| 17:16  |   rw   |   0x0   | [slew_rate](#dio_pad_attr--slew_rate)           |
-|  15:8  |        |         | Reserved                                        |
-|   7    |   rw   |   0x0   | [input_disable](#dio_pad_attr--input_disable)   |
-|   6    |   rw   |   0x0   | [od_en](#dio_pad_attr--od_en)                   |
-|   5    |   rw   |   0x0   | [schmitt_en](#dio_pad_attr--schmitt_en)         |
-|   4    |   rw   |   0x0   | [keeper_en](#dio_pad_attr--keeper_en)           |
-|   3    |   rw   |   0x0   | [pull_select](#dio_pad_attr--pull_select)       |
-|   2    |   rw   |   0x0   | [pull_en](#dio_pad_attr--pull_en)               |
-|   1    |   rw   |   0x0   | [virtual_od_en](#dio_pad_attr--virtual_od_en)   |
-|   0    |   rw   |   0x0   | [invert](#dio_pad_attr--invert)                 |
-
-### DIO_PAD_ATTR . drive_strength
-Drive strength (0x0: weakest, 0xf: strongest)
-
-### DIO_PAD_ATTR . slew_rate
-Slew rate (0x0: slowest, 0x3: fastest).
-
-### DIO_PAD_ATTR . input_disable
-Disable input drivers.
-Setting this to 1 for pads that are not used as input can reduce their leakage current.
-
-### DIO_PAD_ATTR . od_en
-Enable open drain.
-
-### DIO_PAD_ATTR . schmitt_en
-Enable the schmitt trigger.
-
-### DIO_PAD_ATTR . keeper_en
-Enable keeper termination. This weakly drives the previous pad output value when output is disabled, similar to a verilog `trireg`.
-
-### DIO_PAD_ATTR . pull_select
-Pull select (0: pull-down, 1: pull-up).
-
-| Value   | Name      | Description                    |
-|:--------|:----------|:-------------------------------|
-| 0x0     | pull_down | Select the pull-down resistor. |
-| 0x1     | pull_up   | Select the pull-up resistor.   |
-
-
-### DIO_PAD_ATTR . pull_en
-Enable pull-up or pull-down resistor.
-
-### DIO_PAD_ATTR . virtual_od_en
-Enable virtual open drain.
-
-### DIO_PAD_ATTR . invert
-Invert input and output levels.
+|  Bits  |  Type  |  Reset  | Name   | Description                                                |
+|:------:|:------:|:-------:|:-------|:-----------------------------------------------------------|
+|  31:7  |        |         |        | Reserved                                                   |
+|  6:4   |   rw   |   0x0   | DRV    | Programmable drive strength (0x0: weakest, 0x7: strongest) |
+|   3    |        |         |        | Reserved                                                   |
+|   2    |   rw   |   0x0   | SMTEN  | Active high Schmitt trigger enable.                        |
+|   1    |   rw   |   0x0   | PDEN   | Active high pull-down enable.                              |
+|   0    |   rw   |   0x0   | PUEN   | Active high pull-up enable.                                |
 
 ## MIO_PAD_SLEEP_STATUS
 Register indicating whether the corresponding pad is in sleep mode.
