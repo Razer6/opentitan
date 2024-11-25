@@ -1,0 +1,49 @@
+#!/bin/bash
+
+REMOTE_REPO="${1:-OT}"  # Default to "OT" if no argument is provided
+
+# Get the absolute path to the script's directory
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Construct the absolute path to the LAST_SYNC file
+LAST_SYNC_FILENAME="LAST_OPENTITAN_SYNC"
+LAST_SYNC_FILE="$SCRIPT_DIR/../$LAST_SYNC_FILENAME"
+
+echo "OT Sync: Script directory: $SCRIPT_DIR"
+echo "OT Sync: LAST_SYNC file: $LAST_SYNC_FILE"
+
+# Read the last synced SHA from the LAST_SYNC file
+LAST_SYNC=$(cat "$LAST_SYNC_FILE")
+echo "OT Sync: Last synced SHA: $LAST_SYNC"
+
+# Fetch the latest changes from the remote repository
+git fetch $REMOTE_REPO
+echo "OT Sync: Fetched latest changes from $REMOTE_REPO"
+
+# Determine the latest remote commit SHA
+LATEST_REMOTE_SHA=$(git rev-parse --short $REMOTE_REPO/master)
+echo "OT Sync: Latest remote SHA: $LATEST_REMOTE_SHA"
+
+# Check if there are new commits to cherry-pick
+if [[ "$LAST_SYNC" != "$LATEST_REMOTE_SHA" ]]; then
+    echo "OT Sync: New commits detected. Cherry-picking..."
+
+    # Cherry-pick commits between the last sync and the latest remote commit, skipping empty commits
+    git cherry-pick --empty drop $LAST_SYNC..$REMOTE_REPO/master
+
+    if [ $? -ne 0 ]; then
+        echo "OT Sync: Cherry-pick failed. Exiting script."
+        exit 1
+    fi
+    echo "OT Sync: Cherry-picked commits"
+
+    # Update the LAST_SYNC file with the latest remote SHA
+    echo "$LATEST_REMOTE_SHA" > "$LAST_SYNC_FILE"
+    echo "OT Sync: Updated $LAST_SYNC_FILENAME file to: $LATEST_REMOTE_SHA"
+
+    # Create a new commit to update the LAST_SYNC file with a descriptive message
+    git commit -s -m "[ot-sync] Update $LAST_SYNC_FILENAME: Synced to $LATEST_REMOTE_SHA" --only "$LAST_SYNC_FILE"
+    echo "OT Sync: Created commit to update $LAST_SYNC_FILENAME"
+else
+    echo "No new commits to cherry-pick."
+fi
