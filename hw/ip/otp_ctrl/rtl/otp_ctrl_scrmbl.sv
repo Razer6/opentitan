@@ -68,7 +68,6 @@
 //             - http://www.lightweightcrypto.org/present/present_ches2007.pdf
 //
 
-`include "prim_assert.sv"
 `include "prim_flop_macros.sv"
 
 module otp_ctrl_scrmbl

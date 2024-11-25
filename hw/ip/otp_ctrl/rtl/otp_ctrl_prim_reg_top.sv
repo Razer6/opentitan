@@ -16,11 +16,11 @@ module otp_ctrl_prim_reg_top (
   input  otp_ctrl_reg_pkg::otp_ctrl_prim_hw2reg_t hw2reg, // Read
 
   // Integrity check errors
-  output logic intg_err_o,
-
-  // Config
-  input devmode_i // If 1, explicit error return for unmapped register access
+  output logic intg_err_o
 );
+  // Hootfix until new OTP is available
+  logic devmode_i;
+  assign devmode_i = 1'b1;
 
   import otp_ctrl_reg_pkg::* ;
 

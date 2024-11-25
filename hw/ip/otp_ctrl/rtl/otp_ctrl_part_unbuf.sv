@@ -5,7 +5,6 @@
 // Unbuffered partition for OTP controller.
 //
 
-`include "prim_assert.sv"
 `include "prim_flop_macros.sv"
 
 module otp_ctrl_part_unbuf
