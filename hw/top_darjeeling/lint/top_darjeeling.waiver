@@ -8,7 +8,7 @@
 set_reset_drivers prim_clock_mux2 prim_flop_2sync prim_flop
 set_clock_drivers prim_clock_buf prim_clock_mux2
 
-# TODO: remove these waivers later when the USB clock was removed from the integrated system
+# TODO #25411: remove these waivers later when the USB clock was removed from the integrated system
 # in a clean way. Right now there are some dangling signals that we have to keep in order
 # to not disrupt the RTL structure and associated DV.
 waive -rules {HIER_BRANCH_NOT_READ INPUT_NOT_READ} -location {xbar_main.sv} \
@@ -23,10 +23,12 @@ waive -rules RESET_MUX -location {top_darjeeling.sv} -regexp {Asynchronous reset
 waive -rules RESET_USE -location {top_darjeeling.sv} -regexp {'scan_rst_ni' is connected to .* port 'scan_rst_ni', and used as an asynchronous reset or set 'rst_.*ni' at} \
       -comment "Scan reset is a legal asynchronous reset"
 
+# TODO: Remove waiver when #25410 is resolved
 waive -rules {HIER_BRANCH_NOT_READ} -location {pinmux.sv} \
       -msg {Net 'rst_sys_ni' is not read from in module 'pinmux'} \
       -comment "This signal is unused but cannot yet be gated in ipgen"
 
+# TODO: Remove waiver when #25410 is resolved
 waive -rules {HIER_BRANCH_NOT_READ} -location {pinmux.sv} \
       -msg {Net 'scanmode_i' is not read from in module 'pinmux'} \
       -comment "This signal is unused but cannot yet be gated in ipgen"
