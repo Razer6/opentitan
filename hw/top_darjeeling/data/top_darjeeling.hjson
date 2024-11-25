@@ -1360,6 +1360,28 @@
         'soc_proxy.soc_gpi_async'         : 'soc_gpi_async',
         'soc_proxy.soc_gpo_async'         : 'soc_gpo_async',
         'spi_device.sck_monitor'          : 'sck_monitor',
+        // Additional DFT signals
+        'spi_device.spi2sys_sram_dft'        : 'spi_device_spi2sys_sram_dft',
+        'spi_device.spi2sys_sram_test_cfg'   : 'spi_device_spi2sys_sram_test_cfg',
+        'spi_device.spi2sys_sram_err_inj_in' : 'spi_device_spi2sys_sram_err_inj_in',
+        'spi_device.spi2sys_err_inj_done'    : 'spi_device_spi2sys_err_inj_done',
+        'spi_device.sys2spi_sram_dft'        : 'spi_device_sys2spi_sram_dft',
+        'spi_device.sys2spi_sram_test_cfg'   : 'spi_device_sys2spi_sram_test_cfg',
+        'spi_device.sys2spi_sram_err_inj_in' : 'spi_device_sys2spi_sram_err_inj_in',
+        'spi_device.sys2spi_err_inj_done'    : 'spi_device_sys2spi_err_inj_done',
+        'spi_device.tston'                   : 'tston',
+        'sram_ctrl_main.sram_dft'            : 'sram_main_sram_dft',
+        'sram_ctrl_main.sram_test_cfg'       : 'sram_main_sram_test_cfg',
+        'sram_ctrl_main.sram_err_inj_in'     : 'sram_main_sram_err_inj_in',
+        'sram_ctrl_main.err_inj_done'        : 'sram_main_err_inj_done',
+        'sram_ctrl_ret_aon.sram_dft'         : 'sram_aon_sram_dft',
+        'sram_ctrl_ret_aon.sram_test_cfg'    : 'sram_aon_sram_test_cfg',
+        'sram_ctrl_ret_aon.sram_err_inj_in'  : 'sram_aon_sram_err_inj_in',
+        'sram_ctrl_ret_aon.err_inj_done'     : 'sram_aon_err_inj_done',
+        'sram_ctrl_mbox.sram_dft'            : 'sram_mbox_sram_dft',
+        'sram_ctrl_mbox.sram_test_cfg'       : 'sram_mbox_sram_test_cfg',
+        'sram_ctrl_mbox.sram_err_inj_in'     : 'sram_mbox_sram_err_inj_in',
+        'sram_ctrl_mbox.err_inj_done'        : 'sram_mbox_err_inj_done',
     },
   },
 
@@ -1527,6 +1549,9 @@
   }
 
   pinmux: {
+    // Pinmux is using a special ipgen'ed Rivos config
+    use_rivos_config: true
+
     // Signal to pinmux/pad mapping.
     // Each entry in the list below must have the following two mandatory keys:
     //
