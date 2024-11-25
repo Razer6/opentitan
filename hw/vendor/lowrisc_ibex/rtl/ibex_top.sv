@@ -595,6 +595,12 @@ module ibex_top import ibex_pkg::*; #(
           .wmask_i          ({TagSizeECC{1'b1}}),
           .intg_error_i     (1'b0),
 
+          // Rivos: not using compiled ram in this instance
+          .sram_test_cfg_i  ('0),
+          .sram_err_inj_in_i('0),
+          .sram_dft_o       (),
+          .err_inj_done_o   (),
+
           .rdata_o          (ic_tag_rdata[way]),
           .rvalid_o         (),
           .raddr_o          (),
@@ -631,6 +637,12 @@ module ibex_top import ibex_pkg::*; #(
           .wdata_i          (ic_data_wdata),
           .wmask_i          ({LineSizeECC{1'b1}}),
           .intg_error_i     (1'b0),
+
+          // Rivos: not usuing compiled ram in this instance
+          .sram_test_cfg_i  ('0),
+          .sram_err_inj_in_i('0),
+          .sram_dft_o       (),
+          .err_inj_done_o   (),
 
           .rdata_o          (ic_data_rdata[way]),
           .rvalid_o         (),
