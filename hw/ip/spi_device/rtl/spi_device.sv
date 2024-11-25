@@ -183,7 +183,8 @@ module spi_device
   logic [PayloadIdxW-1:0]    payload_start_idx;
 
   // All unused signals
-  logic unused_sigs = ^{mbist_en_i};
+  logic unused_sigs;
+  assign unused_sigs = ^{mbist_en_i};
 
   assign payload_notempty = payload_depth != '0;
 
