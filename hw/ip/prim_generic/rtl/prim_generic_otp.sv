@@ -478,7 +478,7 @@ module prim_generic_otp
     .rvalid_o ( rvalid                 ),
     .rerror_o (                        ),
     .cfg_i    ( '0                     ),
-    // Rivos: not usuing compiled ram in this instance
+    // Rivos: not using compiled ram in this instance
     .sram_test_cfg_i  ('0),
     .sram_err_inj_in_i('0),
     .sram_dft_o       (),

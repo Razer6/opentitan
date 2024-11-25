@@ -299,7 +299,7 @@ import i2c_reg_pkg::AcqFifoDepth;
     .rvalid_o(ram_rvalid),
     .rerror_o(/* unused */),
     .cfg_i   (ram_cfg_i),
-    // Rivos: not usuing compiled ram in this instance
+    // Rivos: not using compiled ram in this instance
     .sram_test_cfg_i  ('0),
     .sram_err_inj_in_i('0),
     .sram_dft_o       (),
