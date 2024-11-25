@@ -100,8 +100,8 @@ module top_${top["name"]} #(
 
 % if "pinmux" in top:
   // pad attributes to padring
-  output prim_pad_wrapper_pkg::pad_attr_t [pinmux_reg_pkg::NMioPads-1:0] mio_attr_o,
-  output prim_pad_wrapper_pkg::pad_attr_t [pinmux_reg_pkg::NDioPads-1:0] dio_attr_o,
+  output prim_pad_wrapper_pkg::pad_snps_attr_t [pinmux_reg_pkg::NMioPads-1:0] mio_attr_o,
+  output prim_pad_wrapper_pkg::pad_snps_attr_t [pinmux_reg_pkg::NDioPads-1:0] dio_attr_o,
 % endif
 
 % if num_im != 0:
