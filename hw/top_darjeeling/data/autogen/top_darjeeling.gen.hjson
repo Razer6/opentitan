@@ -7431,6 +7431,10 @@
           act: rcv
           width: 1
           inst_name: rom_ctrl0
+          default: ""
+          external: true
+          top_signame: rom_ctrl0_test_cfg
+          conn_type: false
           index: -1
         }
         {
@@ -7626,6 +7630,10 @@
           act: rcv
           width: 1
           inst_name: rom_ctrl1
+          default: ""
+          external: true
+          top_signame: rom_ctrl1_test_cfg
+          conn_type: false
           index: -1
         }
         {
@@ -10626,6 +10634,8 @@
       soc_proxy.soc_gpi_async: soc_gpi_async
       soc_proxy.soc_gpo_async: soc_gpo_async
       spi_device.sck_monitor: sck_monitor
+      rom_ctrl0.rom_test_cfg: rom_ctrl0_test_cfg
+      rom_ctrl1.rom_test_cfg: rom_ctrl1_test_cfg
       spi_device.spi2sys_sram_dft: spi_device_spi2sys_sram_dft
       spi_device.spi2sys_sram_test_cfg: spi_device_spi2sys_sram_test_cfg
       spi_device.spi2sys_sram_err_inj_in: spi_device_spi2sys_sram_err_inj_in
@@ -22612,6 +22622,10 @@
         act: rcv
         width: 1
         inst_name: rom_ctrl0
+        default: ""
+        external: true
+        top_signame: rom_ctrl0_test_cfg
+        conn_type: false
         index: -1
       }
       {
@@ -22697,6 +22711,10 @@
         act: rcv
         width: 1
         inst_name: rom_ctrl1
+        default: ""
+        external: true
+        top_signame: rom_ctrl1_test_cfg
+        conn_type: false
         index: -1
       }
       {
@@ -26257,6 +26275,30 @@
         conn_type: false
         index: -1
         netname: sck_monitor
+      }
+      {
+        package: prim_misc_dft_pkg
+        struct: rom_test_cfg
+        signame: rom_ctrl0_test_cfg_i
+        width: 1
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: rom_ctrl0_test_cfg
+      }
+      {
+        package: prim_misc_dft_pkg
+        struct: rom_test_cfg
+        signame: rom_ctrl1_test_cfg_i
+        width: 1
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: rom_ctrl1_test_cfg
       }
       {
         package: prim_misc_dft_pkg

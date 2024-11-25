@@ -161,8 +161,8 @@ module top_darjeeling #(
   output logic [72:0] dio_oe_o,
 
   // pad attributes to padring
-  output prim_pad_wrapper_pkg::pad_attr_t [pinmux_reg_pkg::NMioPads-1:0] mio_attr_o,
-  output prim_pad_wrapper_pkg::pad_attr_t [pinmux_reg_pkg::NDioPads-1:0] dio_attr_o,
+  output prim_pad_wrapper_pkg::pad_snps_attr_t [pinmux_reg_pkg::NMioPads-1:0] mio_attr_o,
+  output prim_pad_wrapper_pkg::pad_snps_attr_t [pinmux_reg_pkg::NDioPads-1:0] dio_attr_o,
 
 
   // Inter-module Signal External type
@@ -261,6 +261,8 @@ module top_darjeeling #(
   output logic [15:0] soc_gpi_async_o,
   input  logic [15:0] soc_gpo_async_i,
   output logic       sck_monitor_o,
+  input  prim_misc_dft_pkg::rom_test_cfg_t       rom_ctrl0_test_cfg_i,
+  input  prim_misc_dft_pkg::rom_test_cfg_t       rom_ctrl1_test_cfg_i,
   output prim_misc_dft_pkg::spi_sram_dft_t       spi_device_spi2sys_sram_dft_o,
   input  prim_misc_dft_pkg::spi_sram_test_cfg_t       spi_device_spi2sys_sram_test_cfg_i,
   input  prim_misc_dft_pkg::sram_err_inj_in_t       spi_device_spi2sys_sram_err_inj_in_i,
@@ -2150,7 +2152,7 @@ module top_darjeeling #(
       .keymgr_data_o(keymgr_dpe_rom_digest[0]),
       .kmac_data_o(kmac_app_req[2]),
       .kmac_data_i(kmac_app_rsp[2]),
-      .rom_test_cfg_i(prim_misc_dft_pkg::ROM_TEST_CFG_DEFAULT),
+      .rom_test_cfg_i(rom_ctrl0_test_cfg_i),
       .regs_tl_i(rom_ctrl0_regs_tl_req),
       .regs_tl_o(rom_ctrl0_regs_tl_rsp),
       .rom_tl_i(rom_ctrl0_rom_tl_req),
@@ -2178,7 +2180,7 @@ module top_darjeeling #(
       .keymgr_data_o(keymgr_dpe_rom_digest[1]),
       .kmac_data_o(kmac_app_req[3]),
       .kmac_data_i(kmac_app_rsp[3]),
-      .rom_test_cfg_i(prim_misc_dft_pkg::ROM_TEST_CFG_DEFAULT),
+      .rom_test_cfg_i(rom_ctrl1_test_cfg_i),
       .regs_tl_i(rom_ctrl1_regs_tl_req),
       .regs_tl_o(rom_ctrl1_regs_tl_rsp),
       .rom_tl_i(rom_ctrl1_rom_tl_req),

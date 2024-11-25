@@ -1360,7 +1360,9 @@
         'soc_proxy.soc_gpi_async'         : 'soc_gpi_async',
         'soc_proxy.soc_gpo_async'         : 'soc_gpo_async',
         'spi_device.sck_monitor'          : 'sck_monitor',
-        // Additional DFT signals
+        // Additional Rivos DFT signals
+        'rom_ctrl0.rom_test_cfg'             : 'rom_ctrl0_test_cfg',
+        'rom_ctrl1.rom_test_cfg'             : 'rom_ctrl1_test_cfg',
         'spi_device.spi2sys_sram_dft'        : 'spi_device_spi2sys_sram_dft',
         'spi_device.spi2sys_sram_test_cfg'   : 'spi_device_spi2sys_sram_test_cfg',
         'spi_device.spi2sys_sram_err_inj_in' : 'spi_device_spi2sys_sram_err_inj_in',
