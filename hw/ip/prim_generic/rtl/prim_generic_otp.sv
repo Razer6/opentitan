@@ -28,6 +28,7 @@ module prim_generic_otp
 ) (
   input                          clk_i,
   input                          rst_ni,
+  input  logic                   clk_efuse_i,
   // Observability
   input ast_pkg::ast_obs_ctrl_t obs_ctrl_i,
   output logic [7:0] otp_obs_o,
@@ -58,10 +59,53 @@ module prim_generic_otp
   input  cmd_e                   cmd_i,
   input [AddrWidth-1:0]          addr_i,
   input [IfWidth-1:0]            wdata_i,
+  input  logic                   sel_wr_timing_i,
   // Response channel
   output logic                   valid_o,
   output logic [IfWidth-1:0]     rdata_o,
-  output err_e                   err_o
+  output err_e                   err_o,
+
+  // Signals needed for Rivos primitives
+  output logic [1:0]             macro_mode_o,
+
+  input logic                    tstrst_i,
+  input logic                    tstrstsel_i,
+
+  input logic                                       mbist_sel_i, // select mbist mode
+  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0]         mbist_fuse_csb_i,
+  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0]         mbist_fuse_load_i,
+  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0]         mbist_fuse_pgenb_i,
+  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0]         mbist_fuse_ps_i,
+  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0]         mbist_fuse_pd_i,
+  input logic                                       mbist_fuse_mr_i,
+  input logic                                       mbist_fuse_rwl_i,
+  input logic                                       mbist_fuse_rsb_i,
+  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0]         mbist_fuse_strobe_array_i,
+  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0][(12):0] mbist_fuse_address_i,      // (neal) hardcoding mbist port to match localparams in rivos_tsmc_fuse_wrapper.sv
+  output wire [(FUSE_NUM_MBIST_ARRAYS-1):0][(7):0]  mbist_fuse_rf_data_o,      // (neal) hardcoding mbist port to match localparams in rivos_tsmc_fuse_wrapper.sv
+  output wire [(FUSE_NUM_MBIST_ARRAYS-1):0][(31):0] mbist_fuse_data_o,         // (neal) hardcoding mbist port to match localparams in rivos_tsmc_fuse_wrapper.sv
+  output logic                                      reset_allowed_o,
+
+  input  logic                                                trace_en_i,
+  output logic                                                trace_final_fuse_mr_o,  // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output logic                                                trace_final_fuse_rsb_o, // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output logic                                                trace_final_fuse_rwl_o, // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output logic                                                trace_final_fuse_tcrs_o,// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output [(FUSE_ADDR_WIDTH-1):0]                              trace_fuse_address_o,// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output [(FUSE_ARRAY_SEL_WIDTH-1):0]                         trace_fuse_array_sel_o,// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output logic                                                trace_fuse_csb_o,       // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output [(FUSE_NUM_ARRAYS-1):0][(FUSE_DATA_WIDTH-1):0]       trace_fuse_data_o,      // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output [(FUSE_ADDR_WIDTH-1):0]                              trace_fuse_ecc_address_o,// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output [(FUSE_ECC_ARRAY_SEL_WIDTH-1):0]                     trace_fuse_ecc_array_sel_o,// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output [(FUSE_NUM_ECC_ARRAYS-1):0][(FUSE_DATA_WIDTH-1):0]   trace_fuse_ecc_data_o,  // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output logic                                                trace_fuse_ecc_ps_o,    // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output logic                                                trace_fuse_ecc_strobe_o,// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output logic                                                trace_fuse_load_o,      // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output logic                                                trace_fuse_pd_o,        // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output logic                                                trace_fuse_pgenb_o,     // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output logic                                                trace_fuse_ps_o,        // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output logic                                                trace_fuse_strobe_o,    // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output [(FUSE_TEST_ADDR_WIDTH-1):0]                         trace_fuse_test_address_o// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
 );
 
   import prim_mubi_pkg::MuBi4False;
@@ -87,6 +131,41 @@ module prim_generic_otp
 
   logic unused_scan;
   assign unused_scan = ^{scanmode_i, scan_en_i, scan_rst_ni};
+
+  logic unused_clk;
+  assign unused_clk = ^clk_efuse_i;
+
+  logic unused_mbist_signals;
+  assign unused_mbist_signals = ^{mbist_sel_i, mbist_fuse_csb_i, mbist_fuse_load_i,
+                                  mbist_fuse_pgenb_i, mbist_fuse_ps_i, mbist_fuse_pd_i,
+                                  mbist_fuse_mr_i, mbist_fuse_rwl_i, mbist_fuse_rsb_i,
+                                  mbist_fuse_strobe_array_i, mbist_fuse_address_i,
+                                  tstrst_i, tstrstsel_i};
+  assign mbist_sms_server_cfg_o     = '0;
+  assign mbist_sms_server_cfg_val_o = 1'b0;
+  assign mbist_fuse_rf_data_o       = '0;
+  assign mbist_fuse_data_o          = '0;
+  assign reset_allowed_o            = 1'b1;
+
+  assign trace_final_fuse_mr_o = '0;  // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_final_fuse_rsb_o = '0; // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_final_fuse_rwl_o = '0; // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_final_fuse_tcrs_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_address_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_array_sel_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_csb_o = '0;       // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_data_o = '0;      // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_ecc_address_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_ecc_array_sel_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_ecc_data_o = '0;  // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_ecc_ps_o = '0;    // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_ecc_strobe_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_load_o = '0;      // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_pd_o = '0;        // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_pgenb_o = '0;     // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_ps_o = '0;        // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_strobe_o = '0;    // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  assign trace_fuse_test_address_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
 
   logic intg_err, fsm_err;
   assign fatal_alert_o = intg_err || fsm_err;
