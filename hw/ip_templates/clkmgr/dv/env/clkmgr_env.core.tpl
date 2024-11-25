@@ -43,6 +43,7 @@ generate:
     parameters:
       name: clkmgr
       ip_hjson: ../../data/clkmgr.hjson
+    position: prepend
 
 targets:
   default:
