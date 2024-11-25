@@ -16,6 +16,8 @@ module prim_generic_ram_1r1w import prim_ram_2p_pkg::*; #(
 ) (
   input clk_a_i,
   input clk_b_i,
+  input rst_a_ni,
+  input rst_b_ni,
 
   // Port A can only write
   input                    a_req_i,
@@ -35,6 +37,9 @@ module prim_generic_ram_1r1w import prim_ram_2p_pkg::*; #(
 
   input ram_2p_cfg_t       cfg_i
 );
+  // Unused tie-offs
+  assign err_inj_done = 1'b0;
+  assign sram_dft     = '0;
 
 // For certain synthesis experiments we compile the design with generic models to get an unmapped
 // netlist (GTECH). In these synthesis experiments, we typically black-box the memory models since
@@ -45,15 +50,8 @@ module prim_generic_ram_1r1w import prim_ram_2p_pkg::*; #(
 // same memory variable concurrently. To this end, we exclude the entire logic in this module in
 // these runs with the following macro.
 `ifndef SYNTHESIS_MEMORY_BLACK_BOXING
-
-  logic unused_signals;
-  assign unused_signals = ^{sram_test_cfg, sram_err_inj_in, cfg_i, rst_a_ni, rst_b_ni};
-
-  assign err_inj_done = 1'b0;
-  assign sram_dft     = '0;
-
   logic unused_cfg;
-  assign unused_cfg = ^cfg_i;
+  assign unused_cfg = ^{cfg_i, sram_test_cfg, sram_err_inj_in, rst_a_ni, rst_b_ni};
 
   // Width of internal write mask. Note *_wmask_i input into the module is always assumed
   // to be the full bit mask.

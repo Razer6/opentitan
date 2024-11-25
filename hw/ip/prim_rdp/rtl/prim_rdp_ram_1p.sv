@@ -30,10 +30,10 @@ module prim_rdp_ram_1p
   output logic [Width-1:0] rdata_o, // Read data. Data is returned one cycle after req_i is high.
   output logic             rvalid_o, // Read data. Data is returned one cycle after req_i is high.
 
-  input prim_misc_dft_pkg::sram_test_cfg_t   sram_test_cfg,
-  input prim_misc_dft_pkg::sram_err_inj_in_t sram_err_inj_in,
-  output logic                               err_inj_done,
-  output prim_misc_dft_pkg::sram_dft_t       sram_dft,
+  input prim_misc_dft_pkg::sram_test_cfg_t   sram_test_cfg_i,
+  input prim_misc_dft_pkg::sram_err_inj_in_t sram_err_inj_in_i,
+  output logic                               err_inj_done_o,
+  output prim_misc_dft_pkg::sram_dft_t       sram_dft_o,
   input ram_1p_cfg_t                         cfg_i
 );
   logic unused_cfg;
@@ -52,19 +52,19 @@ module prim_rdp_ram_1p
       .addr_i          (addr_i),
       .wdata_i         (wdata_i),
       .wmask_i         (wmask_i),
-      .sram_test_cfg   (sram_test_cfg),
-      .sram_err_inj_in (sram_err_inj_in),
-      .err_inj_done    (err_inj_done),
-      .sram_dft        (sram_dft),
+      .sram_test_cfg   (sram_test_cfg_i),
+      .sram_err_inj_in (sram_err_inj_in_i),
+      .err_inj_done    (err_inj_done_o),
+      .sram_dft        (sram_dft_o),
       .rdata_o         (rdata_o),
       .rvalid_o        (rvalid_o)
     );
   end else begin : gen_generic_sram
     logic unused_signals;
-    assign unused_signals = ^{sram_test_cfg, sram_err_inj_in};
+    assign unused_signals = ^{sram_test_cfg_i, sram_err_inj_in_i};
 
-    assign err_inj_done = 1'b0;
-    assign sram_dft     = '0;
+    assign err_inj_done_o = 1'b0;
+    assign sram_dft_o     = '0;
 
     // Width must be fully divisible by DataBitsPerMask
     `ASSERT_INIT(DataBitsPerMaskCheck_A, (Width % DataBitsPerMask) == 0)

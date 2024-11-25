@@ -67,13 +67,13 @@ module sram_ctrl
   input  prim_ram_1p_pkg::ram_1p_cfg_t               cfg_i,
 
   input  prim_misc_dft_pkg::sram_test_cfg_t        [MaxRamInst-1:0] sram_test_cfg_i,
-  input  prim_misc_dft_pkg::sram_err_inj_in_t      [MaxRamInst-1:0] sram_err_inj_in_i, 
+  input  prim_misc_dft_pkg::sram_err_inj_in_t      [MaxRamInst-1:0] sram_err_inj_in_i,
   output logic                                     [MaxRamInst-1:0] err_inj_done_o,
   output prim_misc_dft_pkg::sram_dft_t             [MaxRamInst-1:0] sram_dft_o,
 
   output logic                                     sram_error_record_uncor_err_o,
   output logic                                     sram_error_record_corr_err_o,
-  output logic [top_pkg::TL_AW-1:0]                sram_error_record_err_addr_o 
+  output logic [top_pkg::TL_AW-1:0]                sram_error_record_err_addr_o
 
 );
 
@@ -519,7 +519,7 @@ module sram_ctrl
     .user_rsvd_o                (),
     .rdata_i                    (sram_rdata),
     .rvalid_i                   (sram_rvalid_qual),
-    .rerror_i                   ('0),
+    .rerror_i                   (tlul_sram_rerror),
     .compound_txn_in_progress_o (sram_compound_txn_in_progress),
     .readback_en_i              (reg_readback_en),
     .readback_error_o           (readback_error),
@@ -562,7 +562,12 @@ module sram_ctrl
     .Depth(Depth),
     .EnableParity(0),
     .DataBitsPerMask(DataWidth),
-    .NumPrinceRoundsHalf(NumPrinceRoundsHalf)
+    .NumPrinceRoundsHalf(NumPrinceRoundsHalf),
+    .UseCompiledRam(UseCompiledRam),
+    .FlopRamOutput(FlopRamOutput),
+    .MaxRamInst(MaxRamInst),
+    .InstDepth(InstDepth)
+
   ) u_prim_ram_1p_scr (
     .clk_i,
     .rst_ni,
@@ -582,6 +587,10 @@ module sram_ctrl
     .rvalid_o         (sram_rvalid),
     .rerror_o         (sram_rerror),
     .raddr_o          (sram_error_record_err_addr_o),
+    .sram_test_cfg_i  (sram_test_cfg_i),
+    .sram_err_inj_in_i(sram_err_inj_in_i),
+    .err_inj_done_o   (err_inj_done_o),
+    .sram_dft_o       (sram_dft_o),
     .cfg_i,
     .wr_collision_o   (sram_wr_collision),
     .write_pending_o  (sram_wpending),
@@ -589,15 +598,18 @@ module sram_ctrl
   );
 
   // bit 1: uncorrectable
-  assign sram_rvalid_qual = sram_rvalid && (!((!UseOTIntegErr) && sram_rerror[1]));  
+  assign sram_rvalid_qual = sram_rvalid && (!((!UseOTIntegErr) && sram_rerror[1]));
+
+  logic sram_uncor_capture_q, sram_uncor_capture_d;
+  logic sram_corr_capture_q,  sram_corr_capture_d;
 
   always_comb begin
-    next_sram_uncor_capture = sram_uncor_capture;
-    next_sram_corr_capture  = sram_corr_capture;
+    sram_uncor_capture_d = sram_uncor_capture_q;
+    sram_corr_capture_d  = sram_corr_capture_q;
 
     if(sram_rvalid) begin
-      next_sram_uncor_capture = sram_rerror[1];
-      next_sram_corr_capture  = sram_rerror[0];
+      sram_uncor_capture_d = sram_rerror[1];
+      sram_corr_capture_d  = sram_rerror[0];
     end
   end
 
@@ -609,8 +621,8 @@ module sram_ctrl
     .clk_i  ( clk_i                   ),
     .rst_ni ( rst_ni                  ),
     .en_i   ( sram_rvalid             ),
-    .d_i    ( next_sram_uncor_capture ),
-    .q_o    ( sram_uncor_capture      )
+    .d_i    ( sram_uncor_capture_d    ),
+    .q_o    ( sram_uncor_capture_q    )
   );
 
   prim_flop_en #(
@@ -619,14 +631,14 @@ module sram_ctrl
     .clk_i  ( clk_i                  ),
     .rst_ni ( rst_ni                 ),
     .en_i   ( sram_rvalid            ),
-    .d_i    ( next_sram_corr_capture ),
-    .q_o    ( sram_corr_capture      )
+    .d_i    ( sram_corr_capture_d    ),
+    .q_o    ( sram_corr_capture_q    )
   );
 
-  assign sram_error_record_uncor_err_o = (!UseOTIntegErr) &&  
-                                          next_sram_uncor_capture && (!sram_uncor_capture);
+  assign sram_error_record_uncor_err_o = (!UseOTIntegErr) &&
+                                          sram_uncor_capture_d && (!sram_uncor_capture_q);
   assign sram_error_record_corr_err_o  = (!UseOTIntegErr) &&
-                                          next_sram_corr_capture  && (!sram_corr_capture);
+                                          sram_corr_capture_d  && (!sram_corr_capture_q);
 
   logic unused_sram_gnt;
   // Ignore sram_gnt signal to avoid creating a bad timing path, see comment on `tlul_gnt` above for

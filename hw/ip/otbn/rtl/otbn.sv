@@ -351,6 +351,12 @@ module otbn
     .wmask_i     (imem_wmask),
     .intg_error_i(locking),
 
+    // Rivos: not usuing compiled ram in this instance
+    .sram_test_cfg_i  ('0),
+    .sram_err_inj_in_i('0),
+    .sram_dft_o       (),
+    .err_inj_done_o   (),
+
     .rdata_o (imem_rdata),
     .rvalid_o(imem_rvalid),
     .raddr_o (),
@@ -565,6 +571,12 @@ module otbn
     .wdata_i     (dmem_wdata),
     .wmask_i     (dmem_wmask),
     .intg_error_i(locking),
+
+    // Rivos: not usuing compiled ram in this instance
+    .sram_test_cfg_i  ('0),
+    .sram_err_inj_in_i('0),
+    .sram_dft_o       (),
+    .err_inj_done_o   (),
 
     .rdata_o (dmem_rdata),
     .rvalid_o(dmem_rvalid),

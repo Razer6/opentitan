@@ -12,10 +12,13 @@ module prim_generic_ram_1p import prim_ram_1p_pkg::*; #(
   parameter  int DataBitsPerMask = 1, // Number of data bits per bit of write mask
   parameter      MemInitFile     = "", // VMEM file to initialize the memory with
 
+  // Select between compiled RAM and OT generic
+  parameter bit UseCompiledRam   = 0,
+
   localparam int Aw              = $clog2(Depth)  // derived parameter
 ) (
   input  logic             clk_i,
-
+  input  logic             rst_ni,
   input  logic             req_i,
   input  logic             write_i,
   input  logic [Aw-1:0]    addr_i,
@@ -23,12 +26,15 @@ module prim_generic_ram_1p import prim_ram_1p_pkg::*; #(
   input  logic [Width-1:0] wmask_i,
   output logic [Width-1:0] rdata_o, // Read data. Data is returned one cycle after req_i is high.
   output logic             rvalid_o, // Read data. Data is returned one cycle after req_i is high.
-  input prim_misc_dft_pkg::sram_test_cfg_t   sram_test_cfg,
-  input prim_misc_dft_pkg::sram_err_inj_in_t sram_err_inj_in,
-  output logic                               err_inj_done,
-  output prim_misc_dft_pkg::sram_dft_t       sram_dft,
+  input prim_misc_dft_pkg::sram_test_cfg_t   sram_test_cfg_i,
+  input prim_misc_dft_pkg::sram_err_inj_in_t sram_err_inj_in_i,
+  output logic                               err_inj_done_o,
+  output prim_misc_dft_pkg::sram_dft_t       sram_dft_o,
   input ram_1p_cfg_t                         cfg_i
 );
+  // Unused tie-offs
+  assign err_inj_done_o = 1'b0;
+  assign sram_dft_o     = '0;
 
 // For certain synthesis experiments we compile the design with generic models to get an unmapped
 // netlist (GTECH). In these synthesis experiments, we typically black-box the memory models since
@@ -39,17 +45,11 @@ module prim_generic_ram_1p import prim_ram_1p_pkg::*; #(
 // same memory variable concurrently. To this end, we exclude the entire logic in this module in
 // these runs with the following macro.
 `ifndef SYNTHESIS_MEMORY_BLACK_BOXING
-  logic unused_signals;
-  assign unused_signals = ^{sram_test_cfg, sram_err_inj_in};
-
-  assign err_inj_done = 1'b0;
-  assign sram_dft     = '0;
-
   // Width must be fully divisible by DataBitsPerMask
   `ASSERT_INIT(DataBitsPerMaskCheck_A, (Width % DataBitsPerMask) == 0)
 
   logic unused_cfg;
-  assign unused_cfg = ^cfg_i;
+  assign unused_cfg = ^{cfg_i, sram_test_cfg_i, sram_err_inj_in_i};
 
   // Width of internal write mask. Note wmask_i input into the module is always assumed
   // to be the full bit mask

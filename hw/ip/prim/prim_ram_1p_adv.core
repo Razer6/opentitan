@@ -11,6 +11,8 @@ filesets:
       - lowrisc:prim:util
       - lowrisc:prim:secded
       - lowrisc:prim:ram_1p
+      - lowrisc:prim:mubi
+      - rivos:prim:misc_dft_pkg
     files:
       - rtl/prim_ram_1p_adv.sv
     file_type: systemVerilogSource

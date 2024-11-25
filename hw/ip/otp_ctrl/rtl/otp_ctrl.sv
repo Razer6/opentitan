@@ -253,7 +253,6 @@ module otp_ctrl
     .req_o       (  tlul_req          ),
     .gnt_i       (  tlul_gnt          ),
     .we_o        (                    ), // unused
-    .user_rsvd_o (                    ), // unused
     .addr_o      (  tlul_addr         ),
     .wdata_o     (                    ), // unused
     .wmask_o     (                    ), // unused

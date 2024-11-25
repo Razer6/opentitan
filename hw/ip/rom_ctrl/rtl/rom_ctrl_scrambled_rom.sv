@@ -55,7 +55,9 @@ module rom_ctrl_scrambled_rom
   output logic [Width-1:0] scr_rdata_o,
   output logic [Width-1:0] clr_rdata_o,
 
-  input rom_cfg_t          cfg_i
+  input rom_cfg_t          cfg_i,
+
+  input  prim_misc_dft_pkg::rom_test_cfg_t rom_test_cfg_i
 );
 
   /////////////////////////////////////
@@ -131,9 +133,14 @@ module rom_ctrl_scrambled_rom
   // The physical ROM ==========================================================
 
   logic [Width-1:0] rdata_scr;
+  // Used to read the bit 40 stored within ROM. Should be set to 0 when we initialize the ROM.
+  logic             rdata_scr_pad;
+
+  // FIXME: Generated ROM is 40x16384 instead of 39x16384
+  localparam ECC_ROM_WIDTH = Width + 1;
 
   prim_rom_adv #(
-    .Width       (Width),
+    .Width       (ECC_ROM_WIDTH),
     .Depth       (Depth),
     .MemInitFile (MemInitFile)
   ) u_rom (
@@ -142,9 +149,13 @@ module rom_ctrl_scrambled_rom
     .req_i    (req_i),
     .addr_i   (addr_scr),
     .rvalid_o (rvalid_o),
-    .rdata_o  (rdata_scr),
-    .cfg_i    (cfg_i)
+    .rdata_o  ({rdata_scr_pad, rdata_scr}),
+    .cfg_i    (cfg_i),
+    .rom_test_cfg_i (rom_test_cfg_i)
   );
+
+  logic unused_pad;
+  assign unused_pad = rdata_scr_pad;
 
   assign scr_rdata_o = rdata_scr;
 

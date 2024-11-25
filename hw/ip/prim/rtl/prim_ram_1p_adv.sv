@@ -31,6 +31,8 @@ module prim_ram_1p_adv import prim_ram_1p_pkg::*; #(
   // It is recommended to leave this parameter at its default setting (HSIAO),
   // since this results in a more compact and faster implementation.
   parameter bit HammingECC            = 0,
+  // Select between compiled RAM and OT generic
+  parameter bit UseCompiledRam     = 0,
 
   localparam int Aw                   = prim_util_pkg::vbits(Depth)
 ) (
@@ -46,10 +48,10 @@ module prim_ram_1p_adv import prim_ram_1p_pkg::*; #(
   output logic               rvalid_o, // read response (rdata_o) is valid
   output logic [1:0]         rerror_o, // Bit1: Uncorrectable, Bit0: Correctable
 
-  input prim_misc_dft_pkg::sram_test_cfg_t   sram_test_cfg,
-  input prim_misc_dft_pkg::sram_err_inj_in_t sram_err_inj_in,
-  output logic                               err_inj_done,
-  output prim_misc_dft_pkg::sram_dft_t       sram_dft,
+  input prim_misc_dft_pkg::sram_test_cfg_t   sram_test_cfg_i,
+  input prim_misc_dft_pkg::sram_err_inj_in_t sram_err_inj_in_i,
+  output logic                               err_inj_done_o,
+  output prim_misc_dft_pkg::sram_dft_t       sram_dft_o,
 
   // config
   input ram_1p_cfg_t         cfg_i,
@@ -112,20 +114,22 @@ module prim_ram_1p_adv import prim_ram_1p_pkg::*; #(
 
     .Width           (TotalWidth),
     .Depth           (Depth),
-    .DataBitsPerMask (LocalDataBitsPerMask)
+    .DataBitsPerMask (LocalDataBitsPerMask),
+    .UseCompiledRam  (UseCompiledRam)
   ) u_mem (
     .clk_i,
-
+    .rst_ni,
     .req_i           (req_q_b),
     .write_i         (write_q_b),
     .addr_i          (addr_q),
     .wdata_i         (wdata_q),
     .wmask_i         (wmask_q),
     .rdata_o         (rdata_sram),
-    .sram_test_cfg   (sram_test_cfg),
-    .sram_err_inj_in (sram_err_inj_in),
-    .err_inj_done    (err_inj_done),
-    .sram_dft        (sram_dft),
+    .rvalid_o        (),
+    .sram_test_cfg_i (sram_test_cfg_i),
+    .sram_err_inj_in_i(sram_err_inj_in_i),
+    .err_inj_done_o  (err_inj_done_o),
+    .sram_dft_o      (sram_dft_o),
     .cfg_i
   );
 

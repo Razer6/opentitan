@@ -299,6 +299,11 @@ import i2c_reg_pkg::AcqFifoDepth;
     .rvalid_o(ram_rvalid),
     .rerror_o(/* unused */),
     .cfg_i   (ram_cfg_i),
+    // Rivos: not usuing compiled ram in this instance
+    .sram_test_cfg_i  ('0),
+    .sram_err_inj_in_i('0),
+    .sram_dft_o       (),
+    .err_inj_done_o   (),
     .alert_o (/* unused */)
   );
   assign {ram_write, ram_addr, ram_wdata} = ram_arb_oup_data;
