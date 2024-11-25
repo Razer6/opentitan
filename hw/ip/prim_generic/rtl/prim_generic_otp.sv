@@ -24,7 +24,23 @@ module prim_generic_otp
   parameter      MemInitFile   = "",
   // Vendor test partition offset and size (both in bytes)
   parameter  int VendorTestOffset = 0,
-  parameter  int VendorTestSize   = 0
+  parameter  int VendorTestSize   = 0,
+
+  parameter  int FUSE_MBIST_EN                     = 0,
+  parameter  int FUSE_MBIST_ARRAY_BASE             = 0,
+  parameter  int FUSE_MBIST_ARRAY_SIZE             = 0,
+  parameter  int FUSE_MBIST_ECC_ARRAY_BASE         = 0,
+  parameter  int FUSE_MBIST_ECC_ARRAY_SIZE         = 0,
+  parameter  int FUSE_NUM_MBIST_ARRAYS             = 1,   // (neal) default is 1 for otp, but only mbist to nsefuse
+  parameter  int FUSE_RF_DATA_WIDTH                = 8,
+  // tsmc fuse macro wrapper parameters
+  parameter  int FUSE_NUM_ARRAYS                   = 16,   // (neal) default is the value we want for otp_ctrl
+  parameter  int FUSE_ADDR_WIDTH                   = 13,
+  parameter  int FUSE_TEST_ADDR_WIDTH              = 2,
+  parameter  int FUSE_DATA_WIDTH                   = 32,
+  localparam int FUSE_ARRAY_SEL_WIDTH     = (FUSE_NUM_ARRAYS > 1) ? $clog2(FUSE_NUM_ARRAYS) : 1,
+  localparam int FUSE_NUM_ECC_ARRAYS      = (FUSE_NUM_ARRAYS > 1) ? (FUSE_NUM_ARRAYS >> 1) : 1,
+  localparam int FUSE_ECC_ARRAY_SEL_WIDTH = (FUSE_NUM_ECC_ARRAYS > 1) ? $clog2(FUSE_NUM_ECC_ARRAYS) : 1
 ) (
   input                          clk_i,
   input                          rst_ni,
@@ -140,12 +156,12 @@ module prim_generic_otp
                                   mbist_fuse_pgenb_i, mbist_fuse_ps_i, mbist_fuse_pd_i,
                                   mbist_fuse_mr_i, mbist_fuse_rwl_i, mbist_fuse_rsb_i,
                                   mbist_fuse_strobe_array_i, mbist_fuse_address_i,
-                                  tstrst_i, tstrstsel_i};
-  assign mbist_sms_server_cfg_o     = '0;
-  assign mbist_sms_server_cfg_val_o = 1'b0;
+                                  tstrst_i, tstrstsel_i, sel_wr_timing_i, trace_en_i};
   assign mbist_fuse_rf_data_o       = '0;
   assign mbist_fuse_data_o          = '0;
   assign reset_allowed_o            = 1'b1;
+
+  assign macro_mode_o                = '0;
 
   assign trace_final_fuse_mr_o = '0;  // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
   assign trace_final_fuse_rsb_o = '0; // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
@@ -462,6 +478,11 @@ module prim_generic_otp
     .rvalid_o ( rvalid                 ),
     .rerror_o (                        ),
     .cfg_i    ( '0                     ),
+    // Rivos: not usuing compiled ram in this instance
+    .sram_test_cfg_i  ('0),
+    .sram_err_inj_in_i('0),
+    .sram_dft_o       (),
+    .err_inj_done_o   (),
     .alert_o  (                        )
   );
 
