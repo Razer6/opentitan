@@ -13,7 +13,7 @@ filesets:
       - rivos:rdplib:rdp_async
       - rivos:rdplib:rdp_gate
     files:
-      - rtl/RDP_clock_inv.sv
+      - rtl/prim_rdp_clock_inv.sv
     file_type: systemVerilogSource
 
   files_verilator_waiver:
