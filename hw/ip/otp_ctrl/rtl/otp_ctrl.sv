@@ -258,11 +258,17 @@ module otp_ctrl
     .wdata_o     (                    ), // unused
     .wmask_o     (                    ), // unused
     // SEC_CM: BUS.INTEGRITY
-    .intg_error_o(  intg_error[1]     ),
-    .rdata_i     (  tlul_rdata        ),
-    .rvalid_i    (  tlul_rvalid       ),
-    .rerror_i    (  tlul_rerror       ),
-    .req_type_o  (                    )
+    .intg_error_o               (  intg_error[1]     ),
+    .user_rsvd_o                (                    ),
+    .rdata_i                    (  tlul_rdata        ),
+    .rvalid_i                   (  tlul_rvalid       ),
+    .rerror_i                   (  tlul_rerror       ),
+    .req_type_o                 (                    ),
+    .compound_txn_in_progress_o (                    ),
+    .readback_en_i              ( MuBi4False         ),
+    .readback_error_o           (                    ),
+    .wr_collision_i             ( 1'b0               ),
+    .write_pending_i            ( 1'b0               )
   );
 
   logic [NumPart-1:0] tlul_part_sel_oh;
