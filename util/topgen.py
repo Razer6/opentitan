@@ -496,6 +496,21 @@ def generate_racl(topcfg: Dict[str, object], out_path: Path) -> None:
     
     topcfg['racl'] = parse_racl_config(topcfg['racl_config'])
 
+    log.info('Generating RACL widget with ipgen')
+    topname = topcfg['name']
+
+    for racl_group, policies in topcfg['racl']['policies'].items():
+        params = {
+            "nr_racl_bits": 4,
+            "nr_policies": len(policies),
+            "policies": policies
+        }
+
+        if len(topcfg['racl']['policies']) > 1:
+            params['module_instance_name'] = racl_group
+
+        ipgen_render("racl_widget", topname, params, out_path)
+
 
 def generate_top_only(top_only_dict: Dict[str, bool], out_path: Path,
                       top_name: str, alt_hjson_path: str) -> None:
