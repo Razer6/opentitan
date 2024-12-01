@@ -5,6 +5,8 @@
 
 import hjson
 import sys
+from typing import Optional
+from reggen.ip_block import IpBlock
 from reggen.validate import check_keys
 
 # Required fields for the RACL hjson
@@ -13,12 +15,16 @@ racl_required = {
     'policies': ['g', 'Dict, specifying the policies of all RACL groups']
 }
 
-def parse_racl_config(config_file: str):
+def _read_hjson(filename: str):
     try:
-        with open(config_file, 'r') as f_racl_config:
-            racl_config = hjson.load(f_racl_config)
+        with open(filename, 'r') as f_racl_config:
+            return hjson.load(f_racl_config)
     except OSError:
         raise SystemExit(sys.exc_info()[1])
+
+
+def parse_racl_config(config_file: str):
+    racl_config = _read_hjson(config_file)
     
     errors = 0
     errors += check_keys(racl_config, racl_required, [], [], 'RACL Config')
@@ -42,3 +48,7 @@ def parse_racl_config(config_file: str):
             policy['wr_default'] = compute_policy_value('allowed_wr')
 
     return racl_config
+
+
+def parse_racl_mapping(mapping_file: str, if_name: Optional[str], ipblock: IpBlock):
+    mapping = _read_hjson(mapping_file)

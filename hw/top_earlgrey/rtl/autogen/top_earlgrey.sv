@@ -1624,6 +1624,12 @@ module top_earlgrey #(
       .alert_tx_o  ( alert_tx[19:19] ),
       .alert_rx_i  ( alert_rx[19:19] ),
 
+      // RACL Instantiation for default interface
+      .racl_policies_i(),
+      .racl_policy_sel_vec_i(),
+      .racl_error_o(),
+      .racl_error_log_o(),
+
       // Inter-module signals
       .passthrough_i(spi_device_passthrough_req),
       .passthrough_o(spi_device_passthrough_rsp),
@@ -1656,6 +1662,12 @@ module top_earlgrey #(
       // [20]: fatal_fault
       .alert_tx_o  ( alert_tx[20:20] ),
       .alert_rx_i  ( alert_rx[20:20] ),
+
+      // RACL Instantiation for default interface
+      .racl_policies_i(),
+      .racl_policy_sel_vec_i(),
+      .racl_error_o(),
+      .racl_error_log_o(),
 
       // Inter-module signals
       .passthrough_i(spi_device_pkg::PASSTHROUGH_REQ_DEFAULT),

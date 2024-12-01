@@ -495,6 +495,16 @@ slice = str(alert_idx+w-1) + ":" + str(alert_idx)
       .alert_tx_o  ( alert_tx[${slice}] ),
       .alert_rx_i  ( alert_rx[${slice}] ),
     % endif
+    % for if_name, racl_support in block.bus_interfaces.racl_support.items():
+      % if racl_support:
+<% if_postfix = f'{if_name}_' if if_name else '' %>
+      // RACL Instantiation for ${if_name if if_name else 'default'} interface
+      .racl_policies_${if_postfix}i(),
+      .racl_policy_sel_vec_${if_postfix}i(),
+      .racl_error_${if_postfix}o(),
+      .racl_error_log_${if_postfix}o(),
+      % endif
+    % endfor
     ## TODO: Inter-module Connection
     % if m.get('inter_signal_list'):
 

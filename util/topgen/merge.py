@@ -12,6 +12,7 @@ from typing import Dict, List, Union, Tuple
 from topgen import lib, secure_prng
 from .clocks import Clocks
 from .resets import Resets
+from raclgen.lib import parse_racl_mapping
 from reggen.ip_block import IpBlock
 from reggen.params import LocalParam, Parameter, RandParameter, MemSizeParameter
 from reggen.validate import check_bool
@@ -230,6 +231,25 @@ def elaborate_instance(instance, block: IpBlock):
         if err:
             raise ValueError(f'generate_dif contains invalid value {instance["generate_dif"]}')
         instance['generate_dif'] = converted_value
+
+    # An instance can either have a 'racl_mapping' or 'racl_mappings' but can't have both.
+    # 'racl_mapping' is used when the device only has a single register interface and
+    # 'racl_mappings' there are more.
+    racl_mapping = instance.get('racl_mapping')
+    racl_mappings = instance.get('racl_mappings')
+
+    if racl_mapping and racl_mappings:
+        raise ValueError(f"Cannot specify both 'racl_mapping' and 'racl_mappings'")
+    
+    racl_mapping_dict = {}
+    if racl_mapping:
+        racl_mapping_dict[None] = parse_racl_mapping(racl_mapping, None, block)
+
+    if racl_mappings:
+        for if_name, racl_mapping in racl_mappings.items():
+            racl_mapping_dict[if_name] = parse_racl_mapping(racl_mapping, if_name, block)
+
+    instance['racl_mapping'] = racl_mapping_dict
 
 
 # TODO: Replace this part to be configurable from Hjson or template

@@ -208,7 +208,11 @@ module_optional = {
                         ' (if the IP has multiple TL-UL interfaces)'],
     'memory': ['g', 'optional dict with memory region attributes'],
     'param_decl': ['g', 'optional dict that allows to override instantiation parameters'],
-    'generate_dif': ['pb', 'optional bool to indicate if a DIF should be generated for that module']
+    'generate_dif': ['pb', 'optional bool to indicate if a DIF should be generated for that '
+                     'module'],
+    'racl_mapping': ['s', 'optional RACL mapping for that IP'],
+    'racl_mappings': ['g', 'dict of RACL mappings for all registers interfaces if there are more '
+                      'than one'],
 }
 
 module_added = {

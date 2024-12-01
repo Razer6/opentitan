@@ -58,4 +58,17 @@ package top_racl_pkg;
   % endfor
 % endfor
 
+% for m in modules:
+  % if m.get('racl_mapping', False):
+    % for reg_if, mapping in m['racl_mapping']['reg_policy_mapping'].items():
+  /**
+   * RACL mapping for instance: ${m['name]}
+   */
+  parameter int unsigned RACL_POLICY_MAPPING_${m['name'].upper()}_${reg_if.upper()}[${len(mapping)}] = ${gen_racl_polic_sel_vec(m, mapping, name_to_block)};
+    % endfor 
+    % for reg_if, mapping in m['racl_mapping']['reg_window_policy_mapping'].items():
+    % endfor
+  % endif
+% endfor
+
 endpackage
