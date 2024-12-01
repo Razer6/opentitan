@@ -33,6 +33,8 @@
   reg2hw_t = gen_rtl.get_iface_tx_type(block, if_name, False)
   hw2reg_t = gen_rtl.get_iface_tx_type(block, if_name, True)
 
+  racl_support = block.bus_interfaces.racl_support[if_name]
+
   win_array_decl = f'  [{num_wins}]' if num_wins > 1 else ''
 
   # Calculate whether we're going to need an AW parameter. We use it if there
@@ -115,7 +117,13 @@
 %>
 `include "prim_assert.sv"
 
-module ${mod_name} (
+module ${mod_name}${' (' if not racl_support else ''}
+% if racl_support:
+  # (
+    parameter bit EnableRacl   = 1'b0,
+    parameter bit RaclErrorRsp = 1'b1
+  ) (
+% endif
   input clk_i,
   input rst_ni,
 % if rb.has_internal_shadowed_reg():
@@ -147,6 +155,13 @@ module ${mod_name} (
   output logic shadowed_update_err_o,
 
 %endif
+% if racl_support:
+  // RACL interface
+  input  top_racl_pkg::racl_policy_vec_t     racl_policies_i,
+  input  top_racl_pkg::racl_policy_sel_vec_t racl_policy_sel_vec_i,
+  output logic                               racl_error_o,
+  output top_racl_pkg::racl_error_log_t      racl_error_log_o,
+% endif
   // Integrity check errors
   output logic intg_err_o
 );
@@ -387,7 +402,12 @@ module ${mod_name} (
     .be_o    (reg_be),
     .busy_i  (reg_busy),
     .rdata_i (reg_rdata),
+  % if racl_support:
+    // Translate RACL error to TLUL error if enabled
+    .error_i (reg_error | (RaclErrorRsp & racl_error_o))
+  % else:
     .error_i (reg_error)
+  % endif
   );
 
   // cdc oversampling signals
@@ -640,15 +660,67 @@ ${finst_gen(sr, field, finst_name, fsig_name, fidx)}
     % endfor
   % endfor
 
+% if racl_support:
+  racl_rolt_t racl_role;
+
+  if (EnableRacl) begin : gen_racl_role_logic
+    // Retrieve RACL role from user bits and one-hot encode that for the comparison bitmap
+    assign racl_role = top_racl_pkg::tlul_extract_racl_bits(tl_i.a_user.rsvd);
+
+    logic [(2**top_racl_pkg::RaclRoleWidth)-1:0] racl_role_vec;
+    prim_onehot_enc #(
+      .OneHotWidth(2**top_racl_pkg::RaclRoleWidth)
+    ) u_racl_role_encode (
+      .in_i ( racl_role     ),
+      .en_i ( 1'b1          ),
+      .out_o( racl_role_vec )
+    );
+  end else begin
+    assign racl_role = '0;
+  end
+% endif
   logic [${len(regs_flat)-1}:0] addr_hit;
+% if racl_support:
+  logic [${len(regs_flat)-1}:0] racl_read_addr_hit;
+  logic [${len(regs_flat)-1}:0] racl_write_addr_hit;
+% endif
   always_comb begin
     addr_hit = '0;
+  % if racl_support:
+    racl_read_addr_hit  = '0;
+    racl_write_addr_hit = '0;
+  % endif
     % for i,r in enumerate(regs_flat):
-    addr_hit[${"{}".format(i).rjust(max_regs_char)}] = (reg_addr == ${ublock}_${r.name.upper()}_OFFSET);
+<% slice = '{}'.format(i).rjust(max_regs_char) %>\
+    addr_hit[${slice}] = (reg_addr == ${ublock}_${r.name.upper()}_OFFSET);
+  % if racl_support:
+    if (EnableRacl) begin : gen_racl_hit
+      racl_read_addr_hit[${slice}]  = addr_hit[${slice}] & (|(racl_policies_i[racl_policy_sel_vec_i[${slice}]].read_perm & racl_role_vec));
+      racl_write_addr_hit[${slice}] = addr_hit[${slice}] & (|(racl_policies_i[racl_policy_sel_vec_i[${slice}]].write_perm & racl_role_vec));
+    end
+  % endif
     % endfor
+  % if racl_support:
+    if (!EnableRacl) begin : gen_no_racl
+      racl_read_addr_hit = addr_hit;
+      racl_write_addr_hit = addr_hit;
+    end
+  % endif
   end
 
   assign addrmiss = (reg_re || reg_we) ? ~|addr_hit : 1'b0 ;
+% if racl_support:
+  // Address hit but failed the RACL check
+  assign racl_error_o = (|addr_hit) & ~(|(addr_hit & (racl_read_addr_hit | racl_write_addr_hit)));
+
+  if (EnableRacl) begin : gen_racl_log
+    assign racl_error_log_o.racl_role  = racl_role;
+    assign racl_error_log_o.write_read = tl_i.a_opcode == tlul_pkg::Get;
+  end else begin : gen_no_racl_log
+    assign racl_error_log_o.racl_role  = '0;
+    assign racl_error_log_o.write_read = 1'b0;
+  end
+% endif
 
   % if regs_flat:
 <%
@@ -656,9 +728,11 @@ ${finst_gen(sr, field, finst_name, fsig_name, fidx)}
     # any bytes that aren't supported by a register. That's true if a
     # addr_hit[i] and a bit is set in reg_be but not in *_PERMIT[i].
 
-    wr_err_terms = ['(addr_hit[{idx}] & (|({mod}_PERMIT[{idx}] & ~reg_be)))'
+    wr_addr_hit = 'racl_write_addr_hit' if racl_support else 'addr_hit'
+    wr_err_terms = ['({wr_addr_hit}[{idx}] & (|({mod}_PERMIT[{idx}] & ~reg_be)))'
                     .format(idx=str(i).rjust(max_regs_char),
-                            mod=u_mod_base)
+                            mod=u_mod_base,
+                            wr_addr_hit=wr_addr_hit)
                     for i in range(len(regs_flat))]
     wr_err_expr = (' |\n' + (' ' * 15)).join(wr_err_terms)
 %>\
@@ -715,18 +789,19 @@ ${field_wd_gen(f, r.name.lower() + "_" + f.name.lower(), r.hwext, r.shadowed, r.
   always_comb begin
     reg_rdata_next = '0;
     unique case (1'b1)
+<% read_addr_hit = 'racl_read_addr_hit' if racl_support else 'addr_hit' %>\
   % for i, r in enumerate(regs_flat):
     % if r.async_clk:
-      addr_hit[${i}]: begin
+      ${read_addr_hit}[${i}]: begin
         reg_rdata_next = DW'(${r.name.lower()}_qs);
       end
     % elif len(r.fields) == 1:
-      addr_hit[${i}]: begin
+      ${read_addr_hit}[${i}]: begin
 ${rdata_gen(r.fields[0], r.name.lower())}\
       end
 
     % else:
-      addr_hit[${i}]: begin
+      ${read_addr_hit}[${i}]: begin
       % for f in r.fields:
 ${rdata_gen(f, r.name.lower() + "_" + f.name.lower())}\
       % endfor
@@ -942,7 +1017,7 @@ ${bits.msb}\
       mubi_expr = "1'b1"
     else:
       mubi_expr = "1'b0"
-    
+
     # when async, the outputs are aggregated first by the cdc module
     async_suffix = '_int' if reg.async_clk else ''
     qs_expr = f'{clk_base_name}{finst_name}_qs{async_suffix}' if field.swaccess.allows_read() else ''
@@ -1068,11 +1143,12 @@ ${bits.msb}\
   % endif
 </%def>\
 <%def name="reg_enable_gen(reg, idx)">\
+<% wr_addr_hit = 'racl_write_addr_hit' if racl_support else 'addr_hit'%>\
   % if reg.needs_re():
-  assign ${reg.name.lower()}_re = addr_hit[${idx}] & reg_re & !reg_error;
+  assign ${reg.name.lower()}_re = ${wr_addr_hit}[${idx}] & reg_re & !reg_error;
   % endif
   % if reg.needs_we():
-  assign ${reg.name.lower()}_we = addr_hit[${idx}] & reg_we & !reg_error;
+  assign ${reg.name.lower()}_we = ${wr_addr_hit}[${idx}] & reg_we & !reg_error;
   % endif
 </%def>\
 <%def name="field_wd_gen(field, sig_name, hwext, shadowed, async_clk, reg_name, idx)">\

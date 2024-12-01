@@ -234,6 +234,11 @@ def check_xint(obj: object, what: str) -> Optional[int]:
                      .format(what, type(obj).__name__))
 
 
+def check_optional_bool(obj: object, what: str) -> Optional[str]:
+    '''Check that obj is a bool or None'''
+    return None if obj is None else check_bool(obj, what)
+
+
 def check_optional_str(obj: object, what: str) -> Optional[str]:
     '''Check that obj is a string or None'''
     return None if obj is None else check_str(obj, what)
