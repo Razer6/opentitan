@@ -28,8 +28,17 @@ filesets:
       - lint/prim_ram_1p_scr.vlt
     file_type: vlt
 
+  files_ascentlint_waiver:
+    depend:
+      # common waivers
+      - lowrisc:lint:common
+    files:
+      - lint/prim_ram_1p_scr.waiver
+    file_type: waiver
+
 targets:
   default:
     filesets:
-      - tool_verilator ? (files_verilator_waiver)
+      - tool_verilator  ? (files_verilator_waiver)
+      - tool_ascentlint ? (files_ascentlint_waiver)
       - files_rtl

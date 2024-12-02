@@ -46,10 +46,10 @@ package otp_ctrl_pkg;
     DaiDigest = 3'b100
   } dai_cmd_e;
   parameter NumFuseArrays = 16;
-  parameter NumFuseMbistArrays = 1; // need to set to 1 so things build, these signals are not used in OT
+  // need to set to 1 so things build, these signals are not used in OT
+  parameter NumFuseMbistArrays = 1;
   typedef logic [NumFuseMbistArrays-1:0] num_fuse_mbist_arrays_t;
 
-  
   parameter int DeviceIdWidth = 256;
   typedef logic [DeviceIdWidth-1:0] otp_device_id_t;
 

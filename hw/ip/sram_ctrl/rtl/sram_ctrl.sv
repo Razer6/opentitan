@@ -29,8 +29,8 @@ module sram_ctrl
   parameter lfsr_perm_t                RndCnstLfsrPerm  = RndCnstLfsrPermDefault,
   parameter bit                        UseCompiledRam   = 0,
   parameter bit                        FlopRamOutput    = 0,
-  parameter bit                        UseOTIntegErr    = 0, // set this to report errors to tlul adapter
-                                                             // otherwise they will be sent to error record
+  // Set this to report errors to tlul adapter, otherwise they will be sent to error record
+  parameter bit                        UseOTIntegErr    = 0,
   parameter int                        MaxRamInst       = 1,
   parameter int                        InstDepth        = 1024,
   // The maximum number of outstanding TL-UL requests to the memory

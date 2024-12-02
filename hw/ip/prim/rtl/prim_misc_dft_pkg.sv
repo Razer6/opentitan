@@ -18,7 +18,8 @@ package prim_misc_dft_pkg;
     logic       test_rnm;
     logic       test1;
     logic       testrwm;
-    logic       DFD_StopWE;  // this doesn't fit the struct logically, but easiest to not change OT interfaces
+    // this doesn't fit the struct logically, but easiest to not change OT interfaces
+    logic       DFD_StopWE;
     } sram_test_cfg_t;
 
     // spi sram test cfg
@@ -31,9 +32,12 @@ package prim_misc_dft_pkg;
     logic       test_rnm;
     logic       test1b;
     logic       test1a;
-    logic       DFD_StopWE;  // this doesn't fit the struct logically, but easiest to not change OT interfaces
-    logic       tstrst;      // this doesn't fit the struct logically, but easiest to not change OT interfaces
-    logic       tstrstsel;   // this doesn't fit the struct logically, but easiest to not change OT interfaces
+    // this doesn't fit the struct logically, but easiest to not change OT interfaces
+    logic       DFD_StopWE;
+    // this doesn't fit the struct logically, but easiest to not change OT interfaces
+    logic       tstrst;
+    // this doesn't fit the struct logically, but easiest to not change OT interfaces
+    logic       tstrstsel;
     } spi_sram_test_cfg_t;
 
     // sram error injection inputs

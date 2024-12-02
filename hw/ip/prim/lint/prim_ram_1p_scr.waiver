@@ -1,0 +1,10 @@
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+#
+# waiver file for prim_ram_1p_scr
+
+waive -rules {PARAM_NOT_USED} -location {prim_ram_1p_scr.sv} -regexp {Parameter 'MaxRamInst' not used in module 'prim_ram_1p_scr'} \
+      -comment "Logic not yet implemented."
+waive -rules {PARAM_NOT_USED} -location {prim_ram_1p_scr.sv} -regexp {Parameter 'InstDepth' not used in module 'prim_ram_1p_scr'} \
+      -comment "Logic not yet implemented."
