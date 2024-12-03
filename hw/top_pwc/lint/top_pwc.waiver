@@ -1,0 +1,23 @@
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+#
+# waiver file for top_pwc
+
+# dedicated reset drivers / muxes
+set_reset_drivers prim_clock_mux2 prim_flop_2sync prim_flop
+set_clock_drivers prim_clock_buf prim_clock_mux2
+
+# scan reset is a legal asynchronous reset
+waive -rules RESET_USE -location {top_pwc.sv} -regexp {'scan_rst_ni' is connected to .* port 'scan_rst_ni', and used as an asynchronous reset or set 'rst_.*ni' at} \
+      -comment "Scan reset is a legal asynchronous reset"
+
+waive -rules INPUT_NOT_READ -location {top_pwc.sv} -regexp {Input port 'cg_en_ext_aon_i' is not read from in module 'top_pwc'} \
+      -comment "No external alert associated with that CG/RstEn"
+
+waive -rules INPUT_NOT_READ -location {top_pwc.sv} -regexp {Input port 'rst_en_ext_rst_aon_i' is not read from in module 'top_pwc'} \
+      -comment "No external alert associated with that CG/RstEn"
+
+waive -rules {CONST_FF} -location {prim_ram_1p_adv.sv} -regexp {Flip-flop 'rerror_q' is driven by constant zeros in module 'prim_ram_1p_adv'} \
+      -comment "This particular instance is ok since we do not use the wmask when ECC is disabled."
+
