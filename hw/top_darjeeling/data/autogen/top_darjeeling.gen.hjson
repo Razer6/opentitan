@@ -22,6 +22,7 @@
     ]
     default: "0"
     wait_for_external_reset: true
+    halt_ibex_via_rom_ctrl: true
   }
   unmanaged_clocks: {}
   clocks:
@@ -2036,6 +2037,9 @@
           width: 1
           default: lc_ctrl_pkg::Off
           inst_name: lc_ctrl
+          end_idx: -1
+          top_type: broadcast
+          top_signame: lc_ctrl_lc_raw_test_rma
           index: -1
         }
         {
@@ -2841,7 +2845,7 @@
           package: rom_ctrl_pkg
           type: uni
           act: rcv
-          width: 2
+          width: 3
           default: rom_ctrl_pkg::PWRMGR_DATA_DEFAULT
           inst_name: pwrmgr_aon
           end_idx: -1
@@ -9336,6 +9340,50 @@
           index: -1
         }
         {
+          name: lc_raw_test_rma
+          desc:
+            '''
+            Test enable qualifier coming from life cycle controller.
+            This signals enables RAW, TEST and RMA mode accesses.
+            '''
+          struct: lc_tx
+          package: lc_ctrl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          default: lc_ctrl_pkg::Off
+          inst_name: soc_dbg_ctrl
+          top_signame: lc_ctrl_lc_raw_test_rma
+          index: -1
+        }
+        {
+          name: halt_cpu_boot
+          struct: logic
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: soc_dbg_ctrl
+          default: ""
+          package: ""
+          external: true
+          top_signame: debug_halt_cpu_boot
+          conn_type: false
+          index: -1
+        }
+        {
+          name: continue_cpu_boot
+          desc: Artificial ROM control input to the pwrmgr to halt the boot process.
+          struct: pwrmgr_data
+          package: rom_ctrl_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: soc_dbg_ctrl
+          default: ""
+          top_signame: pwrmgr_aon_rom_ctrl
+          index: 2
+        }
+        {
           name: core_tl
           struct: tl
           package: tlul_pkg
@@ -10201,6 +10249,7 @@
       [
         rom_ctrl0.pwrmgr_data
         rom_ctrl1.pwrmgr_data
+        soc_dbg_ctrl.continue_cpu_boot
       ]
       pwrmgr_aon.boot_status:
       [
@@ -10307,6 +10356,10 @@
       lc_ctrl.strap_en_override:
       [
         rv_dm.strap_en_override
+      ]
+      lc_ctrl.lc_raw_test_rma:
+      [
+        soc_dbg_ctrl.lc_raw_test_rma
       ]
       lc_ctrl.lc_dft_en:
       [
@@ -10839,6 +10892,7 @@
       soc_proxy.soc_gpo_async: soc_gpo_async
       spi_device.sck_monitor: sck_monitor
       soc_dbg_ctrl.soc_dbg_policy_bus: soc_dbg_policy_bus
+      soc_dbg_ctrl.halt_cpu_boot: debug_halt_cpu_boot
       rom_ctrl0.rom_test_cfg: rom_ctrl0_test_cfg
       rom_ctrl1.rom_test_cfg: rom_ctrl1_test_cfg
       spi_device.spi2sys_sram_dft: spi_device_spi2sys_sram_dft
@@ -13840,7 +13894,7 @@
               {
                 soc_dbg: 0x2300
               }
-              size_byte: 0x8
+              size_byte: 0x10
             }
           ]
           xbar: false
@@ -19834,6 +19888,9 @@
         width: 1
         default: lc_ctrl_pkg::Off
         inst_name: lc_ctrl
+        end_idx: -1
+        top_type: broadcast
+        top_signame: lc_ctrl_lc_raw_test_rma
         index: -1
       }
       {
@@ -20469,7 +20526,7 @@
         package: rom_ctrl_pkg
         type: uni
         act: rcv
-        width: 2
+        width: 3
         default: rom_ctrl_pkg::PWRMGR_DATA_DEFAULT
         inst_name: pwrmgr_aon
         end_idx: -1
@@ -24162,6 +24219,50 @@
         index: -1
       }
       {
+        name: lc_raw_test_rma
+        desc:
+          '''
+          Test enable qualifier coming from life cycle controller.
+          This signals enables RAW, TEST and RMA mode accesses.
+          '''
+        struct: lc_tx
+        package: lc_ctrl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        default: lc_ctrl_pkg::Off
+        inst_name: soc_dbg_ctrl
+        top_signame: lc_ctrl_lc_raw_test_rma
+        index: -1
+      }
+      {
+        name: halt_cpu_boot
+        struct: logic
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: soc_dbg_ctrl
+        default: ""
+        package: ""
+        external: true
+        top_signame: debug_halt_cpu_boot
+        conn_type: false
+        index: -1
+      }
+      {
+        name: continue_cpu_boot
+        desc: Artificial ROM control input to the pwrmgr to halt the boot process.
+        struct: pwrmgr_data
+        package: rom_ctrl_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: soc_dbg_ctrl
+        default: ""
+        top_signame: pwrmgr_aon_rom_ctrl
+        index: 2
+      }
+      {
         name: core_tl
         struct: tl
         package: tlul_pkg
@@ -26734,6 +26835,18 @@
         netname: soc_dbg_policy_bus
       }
       {
+        package: ""
+        struct: logic
+        signame: debug_halt_cpu_boot_i
+        width: 1
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: debug_halt_cpu_boot
+      }
+      {
         package: prim_misc_dft_pkg
         struct: rom_test_cfg
         signame: rom_ctrl0_test_cfg_i
@@ -27359,7 +27472,7 @@
         package: rom_ctrl_pkg
         struct: pwrmgr_data
         signame: pwrmgr_aon_rom_ctrl
-        width: 2
+        width: 3
         type: uni
         end_idx: -1
         act: rcv
@@ -27704,6 +27817,17 @@
         act: req
         suffix: ""
         default: 1'b0
+      }
+      {
+        package: lc_ctrl_pkg
+        struct: lc_tx
+        signame: lc_ctrl_lc_raw_test_rma
+        width: 1
+        type: uni
+        end_idx: -1
+        act: req
+        suffix: ""
+        default: lc_ctrl_pkg::Off
       }
       {
         package: lc_ctrl_pkg
