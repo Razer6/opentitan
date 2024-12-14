@@ -94,7 +94,9 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   output prim_misc_dft_pkg::sram_dft_t       sram_dft_o,
 
   // config
-  input ram_1p_cfg_t                cfg_i,
+  input  ram_1p_cfg_t               cfg_i,
+  output ram_1p_cfg_rsp_t           cfg_rsp_o,
+
 
   // Write currently pending inside this module.
   output logic                      wr_collision_o,
@@ -515,6 +517,7 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
     .rvalid_o ( ),
     .rerror_o,
     .cfg_i,
+    .cfg_rsp_o,
     .alert_o  ( ram_alert   )
   );
 

@@ -65,16 +65,11 @@ module sram_ctrl
   input  otp_ctrl_pkg::sram_otp_key_rsp_t            sram_otp_key_i,
   // config
   input  prim_ram_1p_pkg::ram_1p_cfg_t               cfg_i,
+  output  prim_ram_1p_pkg::ram_1p_cfg_rsp_t          cfg_rsp_o,
 
-  input  prim_misc_dft_pkg::sram_test_cfg_t        [MaxRamInst-1:0] sram_test_cfg_i,
-  input  prim_misc_dft_pkg::sram_err_inj_in_t      [MaxRamInst-1:0] sram_err_inj_in_i,
-  output logic                                     [MaxRamInst-1:0] err_inj_done_o,
-  output prim_misc_dft_pkg::sram_dft_t             [MaxRamInst-1:0] sram_dft_o,
-
-  output logic                                     sram_error_record_uncor_err_o,
-  output logic                                     sram_error_record_corr_err_o,
-  output logic [top_pkg::TL_AW-1:0]                sram_error_record_err_addr_o
-
+  output logic                                       sram_error_record_uncor_err_o,
+  output logic                                       sram_error_record_corr_err_o,
+  output logic [top_pkg::TL_AW-1:0]                  sram_error_record_err_addr_o
 );
 
   import lc_ctrl_pkg::lc_tx_t;
@@ -587,11 +582,8 @@ module sram_ctrl
     .rvalid_o         (sram_rvalid),
     .rerror_o         (sram_rerror),
     .raddr_o          (sram_error_record_err_addr_o),
-    .sram_test_cfg_i  (sram_test_cfg_i),
-    .sram_err_inj_in_i(sram_err_inj_in_i),
-    .err_inj_done_o   (err_inj_done_o),
-    .sram_dft_o       (sram_dft_o),
     .cfg_i,
+    .cfg_rsp_o,
     .wr_collision_o   (sram_wr_collision),
     .write_pending_o  (sram_wpending),
     .alert_o          (sram_alert)

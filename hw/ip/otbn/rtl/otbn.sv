@@ -51,7 +51,10 @@ module otbn
   output lc_ctrl_pkg::lc_tx_t lc_rma_ack_o,
 
   // Memory configuration
-  input prim_ram_1p_pkg::ram_1p_cfg_t ram_cfg_i,
+  input  prim_ram_1p_pkg::ram_1p_cfg_t     ram_cfg_imem_i,
+  input  prim_ram_1p_pkg::ram_1p_cfg_t     ram_cfg_dmem_i,
+  output prim_ram_1p_pkg::ram_1p_cfg_rsp_t ram_cfg_rsp_imem_o,
+  output prim_ram_1p_pkg::ram_1p_cfg_rsp_t ram_cfg_rsp_dmem_o,
 
   // EDN clock and interface
   input                     clk_edn_i,
@@ -329,10 +332,11 @@ module otbn
     .state_error_o(otbn_scramble_state_error)
   );
 
-  // SEC_CM: MEM.SCRAMBLE
+   // SEC_CM: MEM.SCRAMBLE
   prim_ram_1p_scr #(
     .Width          (39),
     .Depth          (ImemSizeWords),
+    .InstDepth      (ImemSizeWords),
     .DataBitsPerMask(39),
     .EnableParity   (0)
   ) u_imem (
@@ -351,17 +355,12 @@ module otbn
     .wmask_i     (imem_wmask),
     .intg_error_i(locking),
 
-    // Rivos: not using compiled ram in this instance
-    .sram_test_cfg_i  ('0),
-    .sram_err_inj_in_i('0),
-    .sram_dft_o       (),
-    .err_inj_done_o   (),
-
-    .rdata_o (imem_rdata),
-    .rvalid_o(imem_rvalid),
-    .raddr_o (),
-    .rerror_o(),
-    .cfg_i   (ram_cfg_i),
+    .rdata_o  (imem_rdata),
+    .rvalid_o (imem_rvalid),
+    .raddr_o  (),
+    .rerror_o (),
+    .cfg_i    (ram_cfg_imem_i),
+    .cfg_rsp_o(ram_cfg_rsp_imem_o),
 
     .wr_collision_o   (imem_wr_collision),
     .write_pending_o  (imem_wpending),
@@ -553,6 +552,7 @@ module otbn
   prim_ram_1p_scr #(
     .Width             (ExtWLEN),
     .Depth             (DmemSizeWords),
+    .InstDepth         (DmemSizeWords),
     .DataBitsPerMask   (39),
     .EnableParity      (0),
     .ReplicateKeyStream(1)
@@ -572,17 +572,12 @@ module otbn
     .wmask_i     (dmem_wmask),
     .intg_error_i(locking),
 
-    // Rivos: not using compiled ram in this instance
-    .sram_test_cfg_i  ('0),
-    .sram_err_inj_in_i('0),
-    .sram_dft_o       (),
-    .err_inj_done_o   (),
-
-    .rdata_o (dmem_rdata),
-    .rvalid_o(dmem_rvalid),
-    .raddr_o (),
-    .rerror_o(),
-    .cfg_i   (ram_cfg_i),
+    .rdata_o  (dmem_rdata),
+    .rvalid_o (dmem_rvalid),
+    .raddr_o  (),
+    .rerror_o (),
+    .cfg_i    (ram_cfg_dmem_i),
+    .cfg_rsp_o(ram_cfg_rsp_dmem_o),
 
     .wr_collision_o   (dmem_wr_collision),
     .write_pending_o  (dmem_wpending),
