@@ -53,27 +53,20 @@ module spi_device
   output logic intr_tpm_rdfifo_drop_o,
 
   // Memory configuration
-  input prim_ram_2p_pkg::ram_2p_cfg_t ram_cfg_i,
+  // When using a dual port RAM primitive only this RAM config port is used
+  input  prim_ram_2p_pkg::ram_2p_cfg_t     ram_cfg_sys2spi_i,
+  output prim_ram_2p_pkg::ram_2p_cfg_rsp_t ram_cfg_rsp_sys2spi_o,
+  // When using a 1R1W RAM primitive, both RAM config ports are used
+  input  prim_ram_2p_pkg::ram_2p_cfg_t     ram_cfg_spi2sys_i,
+  output prim_ram_2p_pkg::ram_2p_cfg_rsp_t ram_cfg_rsp_spi2sys_o,
 
   // External clock sensor
   output logic sck_monitor_o,
-
-  // compiled ram test control
-  input prim_misc_dft_pkg::spi_sram_test_cfg_t  spi2sys_sram_test_cfg_i,
-  input prim_misc_dft_pkg::sram_err_inj_in_t    spi2sys_sram_err_inj_in_i,
-  output logic                                  spi2sys_err_inj_done_o,
-  output prim_misc_dft_pkg::spi_sram_dft_t      spi2sys_sram_dft_o,
-
-  input prim_misc_dft_pkg::spi_sram_test_cfg_t  sys2spi_sram_test_cfg_i,
-  input prim_misc_dft_pkg::sram_err_inj_in_t    sys2spi_sram_err_inj_in_i,
-  output logic                                  sys2spi_err_inj_done_o,
-  output prim_misc_dft_pkg::spi_sram_dft_t      sys2spi_sram_dft_o,
 
   // DFT related controls
   input mbist_en_i,
   input scan_clk_i,
   input scan_rst_ni,
-  input prim_mubi_pkg::mubi4_t tston_i,
   input prim_mubi_pkg::mubi4_t scanmode_i
 );
 
@@ -181,10 +174,6 @@ module spi_device
   logic [AddrFifoPtrW-1:0]   addrfifo_depth;
   logic [PayloadDepthW-1:0]  payload_depth;
   logic [PayloadIdxW-1:0]    payload_start_idx;
-
-  // All unused signals
-  logic unused_sigs;
-  assign unused_sigs = ^{mbist_en_i};
 
   assign payload_notempty = payload_depth != '0;
 
@@ -669,7 +658,7 @@ module spi_device
   ) u_clk_spi_in_mux (
     .clk0_i(clk_spi_in),
     .clk1_i(scan_clk_i),
-    .sel_i(prim_mubi_pkg::mubi4_test_true_strict(tston_i)),
+    .sel_i(prim_mubi_pkg::mubi4_test_true_strict(scanmode[ClkMuxSel]) | mbist_en_i),
     .clk_o(clk_spi_in_muxed)
   );
 
@@ -1831,41 +1820,34 @@ module spi_device
     .EnableInputPipeline (0),
     .EnableOutputPipeline(0)
   ) u_spid_dpram (
-    .clk_sys_i      (clk_i),
-    .rst_sys_ni     (rst_ni),
+    .clk_sys_i         (clk_i),
+    .rst_sys_ni        (rst_ni),
 
-    .clk_spi_i      (clk_spi_in_buf),
-    .rst_spi_ni     (spi_dpram_rst_n),
+    .clk_spi_i         (clk_spi_in_buf),
+    .rst_spi_ni        (spi_dpram_rst_n),
 
-    .sys_req_i      (mem_a_req),
-    .sys_write_i    (mem_a_write),
-    .sys_addr_i     (mem_a_addr),
-    .sys_wdata_i    (mem_a_wdata),
-    .sys_wmask_i    (mem_a_wmask),
-    .sys_rvalid_o   (mem_a_rvalid),
-    .sys_rdata_o    (mem_a_rdata),
-    .sys_rerror_o   (mem_a_rerror),
+    .sys_req_i         (mem_a_req),
+    .sys_write_i       (mem_a_write),
+    .sys_addr_i        (mem_a_addr),
+    .sys_wdata_i       (mem_a_wdata),
+    .sys_wmask_i       (mem_a_wmask),
+    .sys_rvalid_o      (mem_a_rvalid),
+    .sys_rdata_o       (mem_a_rdata),
+    .sys_rerror_o      (mem_a_rerror),
 
-    .spi_req_i      (mem_b_req),
-    .spi_write_i    (mem_b_write),
-    .spi_addr_i     (mem_b_addr),
-    .spi_wdata_i    (mem_b_wdata),
-    .spi_wmask_i    (mem_b_wmask),
-    .spi_rvalid_o   (mem_b_rvalid),
-    .spi_rdata_o    (mem_b_rdata),
-    .spi_rerror_o   (mem_b_rerror),
+    .spi_req_i         (mem_b_req),
+    .spi_write_i       (mem_b_write),
+    .spi_addr_i        (mem_b_addr),
+    .spi_wdata_i       (mem_b_wdata),
+    .spi_wmask_i       (mem_b_wmask),
+    .spi_rvalid_o      (mem_b_rvalid),
+    .spi_rdata_o       (mem_b_rdata),
+    .spi_rerror_o      (mem_b_rerror),
 
-    .spi2sys_sram_test_cfg   (spi2sys_sram_test_cfg_i),
-    .spi2sys_sram_err_inj_in (spi2sys_sram_err_inj_in_i),
-    .spi2sys_err_inj_done    (spi2sys_err_inj_done_o),
-    .spi2sys_sram_dft        (spi2sys_sram_dft_o),
- 
-    .sys2spi_sram_test_cfg   (sys2spi_sram_test_cfg_i),
-    .sys2spi_sram_err_inj_in (sys2spi_sram_err_inj_in_i),
-    .sys2spi_err_inj_done    (sys2spi_err_inj_done_o),
-    .sys2spi_sram_dft        (sys2spi_sram_dft_o),
-
-    .cfg_i          (ram_cfg_i)
+    .cfg_sys2spi_i     (ram_cfg_sys2spi_i),
+    .cfg_rsp_sys2spi_o (ram_cfg_rsp_sys2spi_o),
+    .cfg_spi2sys_i     (ram_cfg_spi2sys_i),
+    .cfg_rsp_spi2sys_o (ram_cfg_rsp_spi2sys_o)
   );
 
   // Register module

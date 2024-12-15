@@ -18,22 +18,16 @@ Referring to the [Comportable guideline for peripheral device functionality](htt
 
 ## [Inter-Module Signals](https://opentitan.org/book/doc/contributing/hw/comportability/index.html#inter-signal-handling)
 
-| Port Name               | Package::Struct                      | Type    | Act   |   Width | Description                 |
-|:------------------------|:-------------------------------------|:--------|:------|--------:|:----------------------------|
-| ram_cfg                 | prim_ram_2p_pkg::ram_2p_cfg          | uni     | rcv   |       1 |                             |
-| passthrough             | spi_device_pkg::passthrough          | req_rsp | req   |       1 |                             |
-| mbist_en                | logic                                | uni     | rcv   |       1 |                             |
-| sck_monitor             | logic                                | uni     | req   |       1 |                             |
-| spi2sys_sram_err_inj_in | prim_misc_dft_pkg::sram_err_inj_in   | uni     | rcv   |       1 | SRAM error injection inputs |
-| spi2sys_err_inj_done    | logic                                | uni     | req   |       1 | SRAM error injection done   |
-| spi2sys_sram_test_cfg   | prim_misc_dft_pkg::spi_sram_test_cfg | uni     | rcv   |       1 | SRAM test configuration     |
-| spi2sys_sram_dft        | prim_misc_dft_pkg::spi_sram_dft      | uni     | req   |       1 | SRAM dft outputs            |
-| sys2spi_sram_err_inj_in | prim_misc_dft_pkg::sram_err_inj_in   | uni     | rcv   |       1 | SRAM error injection inputs |
-| sys2spi_err_inj_done    | logic                                | uni     | req   |       1 | SRAM error injection done   |
-| sys2spi_sram_test_cfg   | prim_misc_dft_pkg::spi_sram_test_cfg | uni     | rcv   |       1 | SRAM test configuration     |
-| sys2spi_sram_dft        | prim_misc_dft_pkg::spi_sram_dft      | uni     | req   |       1 | SRAM dft outputs            |
-| tston                   | prim_mubi_pkg::mubi4                 | uni     | rcv   |       1 |                             |
-| tl                      | tlul_pkg::tl                         | req_rsp | rsp   |       1 |                             |
+| Port Name           | Package::Struct             | Type    | Act   |   Width | Description   |
+|:--------------------|:----------------------------|:--------|:------|--------:|:--------------|
+| ram_cfg_sys2spi     | prim_ram_2p_pkg::ram_2p_cfg | uni     | rcv   |       1 |               |
+| ram_cfg_rsp_sys2spi | prim_ram_2p_pkg::ram_2p_cfg | uni     | req   |       1 |               |
+| ram_cfg_spi2sys     | prim_ram_2p_pkg::ram_2p_cfg | uni     | rcv   |       1 |               |
+| ram_cfg_rsp_spi2sys | prim_ram_2p_pkg::ram_2p_cfg | uni     | req   |       1 |               |
+| passthrough         | spi_device_pkg::passthrough | req_rsp | req   |       1 |               |
+| mbist_en            | logic                       | uni     | rcv   |       1 |               |
+| sck_monitor         | logic                       | uni     | req   |       1 |               |
+| tl                  | tlul_pkg::tl                | req_rsp | rsp   |       1 |               |
 
 ## Interrupts
 
