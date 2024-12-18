@@ -187,7 +187,7 @@ pub const OTP_CTRL_CORE_BASE_ADDR: usize = 0x40130000;
 /// memory-mapped registers associated with this peripheral should have an
 /// address between #OTP_CTRL_CORE_BASE_ADDR and
 /// `OTP_CTRL_CORE_BASE_ADDR + OTP_CTRL_CORE_SIZE_BYTES`.
-pub const OTP_CTRL_CORE_SIZE_BYTES: usize = 0x1000;
+pub const OTP_CTRL_CORE_SIZE_BYTES: usize = 0x8000;
 
 /// Peripheral base address for prim device on otp_ctrl in top earlgrey.
 ///
@@ -201,7 +201,7 @@ pub const OTP_CTRL_PRIM_BASE_ADDR: usize = 0x40138000;
 /// memory-mapped registers associated with this peripheral should have an
 /// address between #OTP_CTRL_PRIM_BASE_ADDR and
 /// `OTP_CTRL_PRIM_BASE_ADDR + OTP_CTRL_PRIM_SIZE_BYTES`.
-pub const OTP_CTRL_PRIM_SIZE_BYTES: usize = 0x20;
+pub const OTP_CTRL_PRIM_SIZE_BYTES: usize = 0x80;
 
 /// Peripheral base address for regs device on lc_ctrl in top earlgrey.
 ///

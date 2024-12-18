@@ -556,6 +556,7 @@ Register write enable for MIO peripheral input selects.
 For each peripheral input, this selects the muxable pad input.
 - Reset default: `0x0`
 - Reset mask: `0xf`
+- Register enable: [`MIO_PERIPH_INSEL_REGWEN`](#mio_periph_insel_regwen)
 
 ### Instances
 
@@ -616,6 +617,7 @@ Register write enable for MIO output selects.
 For each muxable pad, this selects the peripheral output.
 - Reset default: `0x2`
 - Reset mask: `0x7`
+- Register enable: [`MIO_OUTSEL_REGWEN`](#mio_outsel_regwen)
 
 ### Instances
 
@@ -684,6 +686,7 @@ Register write enable for MIO PAD attributes.
 Muxed pad control of generic GPIO pad.
 - Reset default: `0x0`
 - Reset mask: `0x77`
+- Register enable: [`MIO_PAD_ATTR_REGWEN`](#mio_pad_attr_regwen)
 
 ### Instances
 
@@ -817,6 +820,7 @@ Register write enable for DIO PAD attributes.
 Dedicated pad control of generic GPIO pad.
 - Reset default: `0x0`
 - Reset mask: `0x77`
+- Register enable: [`DIO_PAD_ATTR_REGWEN`](#dio_pad_attr_regwen)
 
 ### Instances
 
@@ -978,6 +982,7 @@ Register write enable for MIO sleep value configuration.
 Enables the sleep mode of the corresponding muxed pad.
 - Reset default: `0x0`
 - Reset mask: `0x1`
+- Register enable: [`MIO_PAD_SLEEP_REGWEN`](#mio_pad_sleep_regwen)
 
 ### Instances
 
@@ -1022,6 +1027,7 @@ the corresponding [`MIO_PAD_SLEEP_EN`](#mio_pad_sleep_en) bit should be set to 0
 Defines sleep behavior of the corresponding muxed pad.
 - Reset default: `0x2`
 - Reset mask: `0x3`
+- Register enable: [`MIO_PAD_SLEEP_REGWEN`](#mio_pad_sleep_regwen)
 
 ### Instances
 
@@ -1281,6 +1287,7 @@ Register write enable for DIO sleep value configuration.
 Enables the sleep mode of the corresponding dedicated pad.
 - Reset default: `0x0`
 - Reset mask: `0x1`
+- Register enable: [`DIO_PAD_SLEEP_REGWEN`](#dio_pad_sleep_regwen)
 
 ### Instances
 
@@ -1386,6 +1393,7 @@ the corresponding [`DIO_PAD_SLEEP_EN`](#dio_pad_sleep_en) bit should be set to 0
 Defines sleep behavior of the corresponding dedicated pad.
 - Reset default: `0x2`
 - Reset mask: `0x3`
+- Register enable: [`DIO_PAD_SLEEP_REGWEN`](#dio_pad_sleep_regwen)
 
 ### Instances
 
@@ -1525,6 +1533,7 @@ The first write access always completes immediately.
 However, read/write accesses following a write will block until that write has completed.
 - Reset default: `0x0`
 - Reset mask: `0x1`
+- Register enable: [`WKUP_DETECTOR_REGWEN`](#wkup_detector_regwen)
 
 ### Instances
 
@@ -1561,6 +1570,7 @@ Note that the wkup detector should be disabled by setting [`WKUP_DETECTOR_EN_0`]
 The reason for that is that the pulse width counter is NOT cleared upon a mode change while the detector is enabled.
 - Reset default: `0x0`
 - Reset mask: `0x1f`
+- Register enable: [`WKUP_DETECTOR_REGWEN`](#wkup_detector_regwen)
 
 ### Instances
 
@@ -1618,6 +1628,7 @@ The first write access always completes immediately.
 However, read/write accesses following a write will block until that write has completed.
 - Reset default: `0x0`
 - Reset mask: `0xff`
+- Register enable: [`WKUP_DETECTOR_REGWEN`](#wkup_detector_regwen)
 
 ### Instances
 
@@ -1649,6 +1660,7 @@ Pad selects for pad wakeup condition detectors.
 This register is NOT synced to the AON domain since the muxing mechanism is implemented in the same way as the pinmux muxing matrix.
 - Reset default: `0x0`
 - Reset mask: `0x3f`
+- Register enable: [`WKUP_DETECTOR_REGWEN`](#wkup_detector_regwen)
 
 ### Instances
 

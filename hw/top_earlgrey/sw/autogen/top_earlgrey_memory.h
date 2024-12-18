@@ -271,7 +271,7 @@
  * address between #TOP_EARLGREY_OTP_CTRL_CORE_BASE_ADDR and
  * `TOP_EARLGREY_OTP_CTRL_CORE_BASE_ADDR + TOP_EARLGREY_OTP_CTRL_CORE_SIZE_BYTES`.
  */
-#define TOP_EARLGREY_OTP_CTRL_CORE_SIZE_BYTES 0x1000
+#define TOP_EARLGREY_OTP_CTRL_CORE_SIZE_BYTES 0x8000
 /**
  * Peripheral base address for prim device on otp_ctrl in top earlgrey.
  *
@@ -288,7 +288,7 @@
  * address between #TOP_EARLGREY_OTP_CTRL_PRIM_BASE_ADDR and
  * `TOP_EARLGREY_OTP_CTRL_PRIM_BASE_ADDR + TOP_EARLGREY_OTP_CTRL_PRIM_SIZE_BYTES`.
  */
-#define TOP_EARLGREY_OTP_CTRL_PRIM_SIZE_BYTES 0x20
+#define TOP_EARLGREY_OTP_CTRL_PRIM_SIZE_BYTES 0x80
 /**
  * Peripheral base address for regs device on lc_ctrl in top earlgrey.
  *
