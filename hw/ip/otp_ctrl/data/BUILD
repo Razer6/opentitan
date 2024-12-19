@@ -2,7 +2,9 @@
 # Licensed under the Apache License, Version 2.0, see LICENSE for details.
 # SPDX-License-Identifier: Apache-2.0
 
-load("//rules:autogen.bzl", "autogen_hjson_header")
+load("@bazel_skylib//rules:common_settings.bzl", "int_flag", "string_flag")
+load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
+load("//rules:const.bzl", "CONST", "EARLGREY_ALERTS", "EARLGREY_LOC_ALERTS")
 load(
     "//rules:otp.bzl",
     "STD_OTP_OVERLAYS",
@@ -65,14 +67,6 @@ exports_files([
     "otp_ctrl_img.h.tpl",
     "otp_ctrl_img.c.tpl",
 ])
-
-autogen_hjson_header(
-    name = "otp_ctrl_regs",
-    srcs = [
-        "otp_ctrl.hjson",
-    ],
-    interface = "core",
-)
 
 exports_files(["otp_ctrl_mmap.hjson"])
 
