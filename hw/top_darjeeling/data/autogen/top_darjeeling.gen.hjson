@@ -753,7 +753,7 @@
         }
         {
           name: ram_cfg_rsp_sys2spi
-          struct: ram_2p_cfg
+          struct: ram_2p_cfg_rsp
           package: prim_ram_2p_pkg
           type: uni
           act: req
@@ -779,7 +779,7 @@
         }
         {
           name: ram_cfg_rsp_spi2sys
-          struct: ram_2p_cfg
+          struct: ram_2p_cfg_rsp
           package: prim_ram_2p_pkg
           type: uni
           act: req
@@ -19437,7 +19437,7 @@
       }
       {
         name: ram_cfg_rsp_sys2spi
-        struct: ram_2p_cfg
+        struct: ram_2p_cfg_rsp
         package: prim_ram_2p_pkg
         type: uni
         act: req
@@ -19463,7 +19463,7 @@
       }
       {
         name: ram_cfg_rsp_spi2sys
-        struct: ram_2p_cfg
+        struct: ram_2p_cfg_rsp
         package: prim_ram_2p_pkg
         type: uni
         act: req
@@ -26632,7 +26632,7 @@
       }
       {
         package: prim_ram_2p_pkg
-        struct: ram_2p_cfg
+        struct: ram_2p_cfg_rsp
         signame: spi_device_ram_2p_cfg_rsp_sys2spi_o
         width: 1
         type: uni
@@ -26644,7 +26644,7 @@
       }
       {
         package: prim_ram_2p_pkg
-        struct: ram_2p_cfg
+        struct: ram_2p_cfg_rsp
         signame: spi_device_ram_2p_cfg_rsp_spi2sys_o
         width: 1
         type: uni
