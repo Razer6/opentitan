@@ -4319,6 +4319,7 @@
       param_decl:
       {
         InstrExec: "0"
+        InstSize: 4096
       }
       base_addrs:
       {
@@ -4401,7 +4402,7 @@
           name: InstSize
           desc: Memory size of a single RAM tile (in bytes).
           type: int
-          default: "4096"
+          default: 4096
           local: "false"
           expose: "true"
           name_top: SramCtrlRetAonInstSize
@@ -6716,6 +6717,7 @@
       param_decl:
       {
         InstrExec: "1"
+        InstSize: 65536
       }
       base_addrs:
       {
@@ -6802,7 +6804,7 @@
           name: InstSize
           desc: Memory size of a single RAM tile (in bytes).
           type: int
-          default: "4096"
+          default: 65536
           local: "false"
           expose: "true"
           name_top: SramCtrlMainInstSize
@@ -7150,6 +7152,7 @@
       param_decl:
       {
         InstrExec: "0"
+        InstSize: 4096
       }
       base_addrs:
       {
@@ -7236,7 +7239,7 @@
           name: InstSize
           desc: Memory size of a single RAM tile (in bytes).
           type: int
-          default: "4096"
+          default: 4096
           local: "false"
           expose: "true"
           name_top: SramCtrlMboxInstSize
