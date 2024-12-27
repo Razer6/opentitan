@@ -1033,18 +1033,12 @@ module chip_darjeeling_cw310 #(
 
   // conversion from ast structure to memory centric structures
   prim_ram_1p_pkg::ram_1p_cfg_t ram_1p_cfg;
-  assign ram_1p_cfg = '{
-    ram_cfg: '{
-                test:   ast_ram_1p_cfg.test,
-                cfg_en: ast_ram_1p_cfg.marg_en,
-                cfg:    ast_ram_1p_cfg.marg
-              },
-    rf_cfg:  '{
-                test:   ast_rf_cfg.test,
-                cfg_en: ast_rf_cfg.marg_en,
-                cfg:    ast_rf_cfg.marg
-              }
-  };
+  always_comb begin
+    ram_1p_cfg                      = '0;
+    ram_1p_cfg.sram_test_cfg.wa     = 3'h5;
+    ram_1p_cfg.sram_test_cfg.rm     = 4'h4;
+    ram_1p_cfg.sram_test_cfg.test1  = 1'h1;
+  end
 
   logic unused_usb_ram_2p_cfg;
   assign unused_usb_ram_2p_cfg = ^{ast_ram_2p_fcfg.marg_en_a,
@@ -1052,24 +1046,20 @@ module chip_darjeeling_cw310 #(
                                    ast_ram_2p_fcfg.test_a,
                                    ast_ram_2p_fcfg.marg_en_b,
                                    ast_ram_2p_fcfg.marg_b,
-                                   ast_ram_2p_fcfg.test_b};
+                                   ast_ram_2p_fcfg.test_b,
+                                   ast_rf_cfg,
+                                   ast_ram_1p_cfg,
+                                   ast_ram_2p_lcfg};
 
   // this maps as follows:
   // assign spi_ram_2p_cfg = {10'h000, ram_2p_cfg_i.a_ram_lcfg, ram_2p_cfg_i.b_ram_lcfg};
   prim_ram_2p_pkg::ram_2p_cfg_t spi_ram_2p_cfg;
-  assign spi_ram_2p_cfg = '{
-    a_ram_lcfg: '{
-                   test:   ast_ram_2p_lcfg.test_a,
-                   cfg_en: ast_ram_2p_lcfg.marg_en_a,
-                   cfg:    ast_ram_2p_lcfg.marg_a
-                 },
-    b_ram_lcfg: '{
-                   test:   ast_ram_2p_lcfg.test_b,
-                   cfg_en: ast_ram_2p_lcfg.marg_en_b,
-                   cfg:    ast_ram_2p_lcfg.marg_b
-                 },
-    default: '0
-  };
+  always_comb begin
+    spi_ram_2p_cfg                   = '0;
+    spi_ram_2p_cfg.sram_test_cfg.rmb = 4'h4;
+    spi_ram_2p_cfg.sram_test_cfg.rma = 4'h4;
+  end
+
 
   prim_rom_pkg::rom_cfg_t rom_cfg;
   assign rom_cfg = '{

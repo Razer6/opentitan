@@ -889,7 +889,6 @@ end
     .mbist_fuse_rf_data_o      ( otp_mbist_fuse_rf_data_o ),
     .mbist_fuse_data_o         ( otp_mbist_fuse_data_o    ),
     .reset_allowed_o           ( reset_allowed            ),
-    .trace_en_i                (1'b0),
     .trace_final_fuse_mr_o     (),
     .trace_final_fuse_rsb_o    (),
     .trace_final_fuse_rwl_o    (),

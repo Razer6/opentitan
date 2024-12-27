@@ -64,9 +64,10 @@ module spi_device
   output logic sck_monitor_o,
 
   // DFT related controls
-  input mbist_en_i,
+  // input mbist_en_i,
   input scan_clk_i,
   input scan_rst_ni,
+  input prim_mubi_pkg::mubi4_t tston_i,
   input prim_mubi_pkg::mubi4_t scanmode_i
 );
 
@@ -658,7 +659,7 @@ module spi_device
   ) u_clk_spi_in_mux (
     .clk0_i(clk_spi_in),
     .clk1_i(scan_clk_i),
-    .sel_i(prim_mubi_pkg::mubi4_test_true_strict(scanmode[ClkMuxSel]) | mbist_en_i),
+    .sel_i(prim_mubi_pkg::mubi4_test_true_strict(tston_i)),
     .clk_o(clk_spi_in_muxed)
   );
 

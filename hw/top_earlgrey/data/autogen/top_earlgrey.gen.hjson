@@ -1046,15 +1046,6 @@
           index: -1
         }
         {
-          name: mbist_en
-          struct: logic
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: spi_device
-          index: -1
-        }
-        {
           name: sck_monitor
           struct: logic
           type: uni
@@ -1066,94 +1057,6 @@
           external: true
           top_signame: sck_monitor
           conn_type: false
-          index: -1
-        }
-        {
-          name: spi2sys_sram_err_inj_in
-          desc: SRAM error injection inputs
-          struct: sram_err_inj_in
-          package: prim_misc_dft_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: spi_device
-          index: -1
-        }
-        {
-          name: spi2sys_err_inj_done
-          desc: SRAM error injection done
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          default: "'0"
-          inst_name: spi_device
-          index: -1
-        }
-        {
-          name: spi2sys_sram_test_cfg
-          desc: SRAM test configuration
-          struct: spi_sram_test_cfg
-          package: prim_misc_dft_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: spi_device
-          index: -1
-        }
-        {
-          name: spi2sys_sram_dft
-          desc: SRAM dft outputs
-          struct: spi_sram_dft
-          package: prim_misc_dft_pkg
-          type: uni
-          act: req
-          width: 1
-          inst_name: spi_device
-          index: -1
-        }
-        {
-          name: sys2spi_sram_err_inj_in
-          desc: SRAM error injection inputs
-          struct: sram_err_inj_in
-          package: prim_misc_dft_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: spi_device
-          index: -1
-        }
-        {
-          name: sys2spi_err_inj_done
-          desc: SRAM error injection done
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          default: "'0"
-          inst_name: spi_device
-          index: -1
-        }
-        {
-          name: sys2spi_sram_test_cfg
-          desc: SRAM test configuration
-          struct: spi_sram_test_cfg
-          package: prim_misc_dft_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: spi_device
-          index: -1
-        }
-        {
-          name: sys2spi_sram_dft
-          desc: SRAM dft outputs
-          struct: spi_sram_dft
-          package: prim_misc_dft_pkg
-          type: uni
-          act: req
-          width: 1
-          inst_name: spi_device
           index: -1
         }
         {
@@ -5577,24 +5480,6 @@
           name_top: SramCtrlRetAonUseCompiledRam
         }
         {
-          name: MaxRamInst
-          desc: Number of RAM macro instances for this SRAM Ctrl
-          type: int
-          default: 1
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlRetAonMaxRamInst
-        }
-        {
-          name: InstDepth
-          desc: Depth of a single SRAM macro
-          type: int
-          default: "1024"
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlRetAonInstDepth
-        }
-        {
           name: FlopRamOutput
           desc: Flop the output s
           type: bit
@@ -5694,80 +5579,6 @@
           act: rcv
           width: 1
           default: prim_mubi_pkg::MuBi8False
-          inst_name: sram_ctrl_ret_aon
-          index: -1
-        }
-        {
-          name: sram_err_inj_in
-          desc: SRAM error injection inputs
-          struct: sram_err_inj_in
-          package: prim_misc_dft_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: sram_ctrl_ret_aon
-          index: -1
-        }
-        {
-          name: err_inj_done
-          desc: SRAM error injection done
-          struct: logic
-          type: uni
-          act: req
-          width:
-          {
-            name: MaxRamInst
-            desc: Number of RAM macro instances for this SRAM Ctrl
-            param_type: int
-            unpacked_dimensions: null
-            default: 1
-            local: false
-            expose: true
-            name_top: SramCtrlMainMaxRamInst
-          }
-          default: "'0"
-          inst_name: sram_ctrl_ret_aon
-          index: -1
-        }
-        {
-          name: sram_test_cfg
-          desc: SRAM test configuration
-          struct: sram_test_cfg
-          package: prim_misc_dft_pkg
-          type: uni
-          act: rcv
-          width:
-          {
-            name: MaxRamInst
-            desc: Number of RAM macro instances for this SRAM Ctrl
-            param_type: int
-            unpacked_dimensions: null
-            default: 1
-            local: false
-            expose: true
-            name_top: SramCtrlMainMaxRamInst
-          }
-          inst_name: sram_ctrl_ret_aon
-          index: -1
-        }
-        {
-          name: sram_dft
-          desc: SRAM dft outputs
-          struct: sram_dft
-          package: prim_misc_dft_pkg
-          type: uni
-          act: req
-          width:
-          {
-            name: MaxRamInst
-            desc: Number of RAM macro instances for this SRAM Ctrl
-            param_type: int
-            unpacked_dimensions: null
-            default: 1
-            local: false
-            expose: true
-            name_top: SramCtrlMainMaxRamInst
-          }
           inst_name: sram_ctrl_ret_aon
           index: -1
         }
@@ -8625,24 +8436,6 @@
           name_top: SramCtrlMainUseCompiledRam
         }
         {
-          name: MaxRamInst
-          desc: Number of RAM macro instances for this SRAM Ctrl
-          type: int
-          default: 1
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlMainMaxRamInst
-        }
-        {
-          name: InstDepth
-          desc: Depth of a single SRAM macro
-          type: int
-          default: "1024"
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlMainInstDepth
-        }
-        {
           name: FlopRamOutput
           desc: Flop the output s
           type: bit
@@ -8745,80 +8538,6 @@
           default: prim_mubi_pkg::MuBi8False
           inst_name: sram_ctrl_main
           top_signame: sram_ctrl_main_otp_en_sram_ifetch
-          index: -1
-        }
-        {
-          name: sram_err_inj_in
-          desc: SRAM error injection inputs
-          struct: sram_err_inj_in
-          package: prim_misc_dft_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: sram_ctrl_main
-          index: -1
-        }
-        {
-          name: err_inj_done
-          desc: SRAM error injection done
-          struct: logic
-          type: uni
-          act: req
-          width:
-          {
-            name: MaxRamInst
-            desc: Number of RAM macro instances for this SRAM Ctrl
-            param_type: int
-            unpacked_dimensions: null
-            default: 1
-            local: false
-            expose: true
-            name_top: SramCtrlMainMaxRamInst
-          }
-          default: "'0"
-          inst_name: sram_ctrl_main
-          index: -1
-        }
-        {
-          name: sram_test_cfg
-          desc: SRAM test configuration
-          struct: sram_test_cfg
-          package: prim_misc_dft_pkg
-          type: uni
-          act: rcv
-          width:
-          {
-            name: MaxRamInst
-            desc: Number of RAM macro instances for this SRAM Ctrl
-            param_type: int
-            unpacked_dimensions: null
-            default: 1
-            local: false
-            expose: true
-            name_top: SramCtrlMainMaxRamInst
-          }
-          inst_name: sram_ctrl_main
-          index: -1
-        }
-        {
-          name: sram_dft
-          desc: SRAM dft outputs
-          struct: sram_dft
-          package: prim_misc_dft_pkg
-          type: uni
-          act: req
-          width:
-          {
-            name: MaxRamInst
-            desc: Number of RAM macro instances for this SRAM Ctrl
-            param_type: int
-            unpacked_dimensions: null
-            default: 1
-            local: false
-            expose: true
-            name_top: SramCtrlMainMaxRamInst
-          }
-          inst_name: sram_ctrl_main
           index: -1
         }
         {
@@ -18168,15 +17887,6 @@
         index: -1
       }
       {
-        name: mbist_en
-        struct: logic
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: spi_device
-        index: -1
-      }
-      {
         name: sck_monitor
         struct: logic
         type: uni
@@ -18188,94 +17898,6 @@
         external: true
         top_signame: sck_monitor
         conn_type: false
-        index: -1
-      }
-      {
-        name: spi2sys_sram_err_inj_in
-        desc: SRAM error injection inputs
-        struct: sram_err_inj_in
-        package: prim_misc_dft_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: spi_device
-        index: -1
-      }
-      {
-        name: spi2sys_err_inj_done
-        desc: SRAM error injection done
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        default: "'0"
-        inst_name: spi_device
-        index: -1
-      }
-      {
-        name: spi2sys_sram_test_cfg
-        desc: SRAM test configuration
-        struct: spi_sram_test_cfg
-        package: prim_misc_dft_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: spi_device
-        index: -1
-      }
-      {
-        name: spi2sys_sram_dft
-        desc: SRAM dft outputs
-        struct: spi_sram_dft
-        package: prim_misc_dft_pkg
-        type: uni
-        act: req
-        width: 1
-        inst_name: spi_device
-        index: -1
-      }
-      {
-        name: sys2spi_sram_err_inj_in
-        desc: SRAM error injection inputs
-        struct: sram_err_inj_in
-        package: prim_misc_dft_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: spi_device
-        index: -1
-      }
-      {
-        name: sys2spi_err_inj_done
-        desc: SRAM error injection done
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        default: "'0"
-        inst_name: spi_device
-        index: -1
-      }
-      {
-        name: sys2spi_sram_test_cfg
-        desc: SRAM test configuration
-        struct: spi_sram_test_cfg
-        package: prim_misc_dft_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: spi_device
-        index: -1
-      }
-      {
-        name: sys2spi_sram_dft
-        desc: SRAM dft outputs
-        struct: spi_sram_dft
-        package: prim_misc_dft_pkg
-        type: uni
-        act: req
-        width: 1
-        inst_name: spi_device
         index: -1
       }
       {
@@ -21194,80 +20816,6 @@
         index: -1
       }
       {
-        name: sram_err_inj_in
-        desc: SRAM error injection inputs
-        struct: sram_err_inj_in
-        package: prim_misc_dft_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: sram_ctrl_ret_aon
-        index: -1
-      }
-      {
-        name: err_inj_done
-        desc: SRAM error injection done
-        struct: logic
-        type: uni
-        act: req
-        width:
-        {
-          name: MaxRamInst
-          desc: Number of RAM macro instances for this SRAM Ctrl
-          param_type: int
-          unpacked_dimensions: null
-          default: 1
-          local: false
-          expose: true
-          name_top: SramCtrlMainMaxRamInst
-        }
-        default: "'0"
-        inst_name: sram_ctrl_ret_aon
-        index: -1
-      }
-      {
-        name: sram_test_cfg
-        desc: SRAM test configuration
-        struct: sram_test_cfg
-        package: prim_misc_dft_pkg
-        type: uni
-        act: rcv
-        width:
-        {
-          name: MaxRamInst
-          desc: Number of RAM macro instances for this SRAM Ctrl
-          param_type: int
-          unpacked_dimensions: null
-          default: 1
-          local: false
-          expose: true
-          name_top: SramCtrlMainMaxRamInst
-        }
-        inst_name: sram_ctrl_ret_aon
-        index: -1
-      }
-      {
-        name: sram_dft
-        desc: SRAM dft outputs
-        struct: sram_dft
-        package: prim_misc_dft_pkg
-        type: uni
-        act: req
-        width:
-        {
-          name: MaxRamInst
-          desc: Number of RAM macro instances for this SRAM Ctrl
-          param_type: int
-          unpacked_dimensions: null
-          default: 1
-          local: false
-          expose: true
-          name_top: SramCtrlMainMaxRamInst
-        }
-        inst_name: sram_ctrl_ret_aon
-        index: -1
-      }
-      {
         name: sram_error_record_uncor_err
         desc: SRAM Error injection reporting
         struct: logic
@@ -22807,80 +22355,6 @@
         default: prim_mubi_pkg::MuBi8False
         inst_name: sram_ctrl_main
         top_signame: sram_ctrl_main_otp_en_sram_ifetch
-        index: -1
-      }
-      {
-        name: sram_err_inj_in
-        desc: SRAM error injection inputs
-        struct: sram_err_inj_in
-        package: prim_misc_dft_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: sram_ctrl_main
-        index: -1
-      }
-      {
-        name: err_inj_done
-        desc: SRAM error injection done
-        struct: logic
-        type: uni
-        act: req
-        width:
-        {
-          name: MaxRamInst
-          desc: Number of RAM macro instances for this SRAM Ctrl
-          param_type: int
-          unpacked_dimensions: null
-          default: 1
-          local: false
-          expose: true
-          name_top: SramCtrlMainMaxRamInst
-        }
-        default: "'0"
-        inst_name: sram_ctrl_main
-        index: -1
-      }
-      {
-        name: sram_test_cfg
-        desc: SRAM test configuration
-        struct: sram_test_cfg
-        package: prim_misc_dft_pkg
-        type: uni
-        act: rcv
-        width:
-        {
-          name: MaxRamInst
-          desc: Number of RAM macro instances for this SRAM Ctrl
-          param_type: int
-          unpacked_dimensions: null
-          default: 1
-          local: false
-          expose: true
-          name_top: SramCtrlMainMaxRamInst
-        }
-        inst_name: sram_ctrl_main
-        index: -1
-      }
-      {
-        name: sram_dft
-        desc: SRAM dft outputs
-        struct: sram_dft
-        package: prim_misc_dft_pkg
-        type: uni
-        act: req
-        width:
-        {
-          name: MaxRamInst
-          desc: Number of RAM macro instances for this SRAM Ctrl
-          param_type: int
-          unpacked_dimensions: null
-          default: 1
-          local: false
-          expose: true
-          name_top: SramCtrlMainMaxRamInst
-        }
-        inst_name: sram_ctrl_main
         index: -1
       }
       {

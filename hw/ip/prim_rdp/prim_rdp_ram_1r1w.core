@@ -9,10 +9,9 @@ filesets:
   files_rtl:
     depend:
       - lowrisc:prim:assert
-      - lowrisc:prim:ram_2p_pkg
+      - lowrisc:prim_rdp:ram_2p_pkg
       - lowrisc:prim:util_memload
       - rivos:ip:rvscs_ot_sram
-      - rivos:prim:misc_dft_pkg
       - scs:lib:cdc_buf
     files:
       - rtl/prim_rdp_ram_1r1w.sv

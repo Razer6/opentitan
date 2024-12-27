@@ -12,6 +12,9 @@ module prim_generic_ram_1p import prim_ram_1p_pkg::*; #(
   parameter  int DataBitsPerMask = 1, // Number of data bits per bit of write mask
   parameter      MemInitFile     = "", // VMEM file to initialize the memory with
 
+  // Select between compiled RAM and OT generic
+  parameter bit UseCompiledRam   = 0,
+
   localparam int Aw              = $clog2(Depth)  // derived parameter
 ) (
   input  logic             clk_i,

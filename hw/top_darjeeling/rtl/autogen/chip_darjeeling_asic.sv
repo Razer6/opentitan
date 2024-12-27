@@ -1193,18 +1193,12 @@ module chip_darjeeling_asic #(
 
   // conversion from ast structure to memory centric structures
   prim_ram_1p_pkg::ram_1p_cfg_t ram_1p_cfg;
-  assign ram_1p_cfg = '{
-    ram_cfg: '{
-                test:   ast_ram_1p_cfg.test,
-                cfg_en: ast_ram_1p_cfg.marg_en,
-                cfg:    ast_ram_1p_cfg.marg
-              },
-    rf_cfg:  '{
-                test:   ast_rf_cfg.test,
-                cfg_en: ast_rf_cfg.marg_en,
-                cfg:    ast_rf_cfg.marg
-              }
-  };
+  always_comb begin
+    ram_1p_cfg                      = '0;
+    ram_1p_cfg.sram_test_cfg.wa     = 3'h5;
+    ram_1p_cfg.sram_test_cfg.rm     = 4'h4;
+    ram_1p_cfg.sram_test_cfg.test1  = 1'h1;
+  end
 
   logic unused_usb_ram_2p_cfg;
   assign unused_usb_ram_2p_cfg = ^{ast_ram_2p_fcfg.marg_en_a,
@@ -1212,24 +1206,20 @@ module chip_darjeeling_asic #(
                                    ast_ram_2p_fcfg.test_a,
                                    ast_ram_2p_fcfg.marg_en_b,
                                    ast_ram_2p_fcfg.marg_b,
-                                   ast_ram_2p_fcfg.test_b};
+                                   ast_ram_2p_fcfg.test_b,
+                                   ast_rf_cfg,
+                                   ast_ram_1p_cfg,
+                                   ast_ram_2p_lcfg};
 
   // this maps as follows:
   // assign spi_ram_2p_cfg = {10'h000, ram_2p_cfg_i.a_ram_lcfg, ram_2p_cfg_i.b_ram_lcfg};
   prim_ram_2p_pkg::ram_2p_cfg_t spi_ram_2p_cfg;
-  assign spi_ram_2p_cfg = '{
-    a_ram_lcfg: '{
-                   test:   ast_ram_2p_lcfg.test_a,
-                   cfg_en: ast_ram_2p_lcfg.marg_en_a,
-                   cfg:    ast_ram_2p_lcfg.marg_a
-                 },
-    b_ram_lcfg: '{
-                   test:   ast_ram_2p_lcfg.test_b,
-                   cfg_en: ast_ram_2p_lcfg.marg_en_b,
-                   cfg:    ast_ram_2p_lcfg.marg_b
-                 },
-    default: '0
-  };
+  always_comb begin
+    spi_ram_2p_cfg                   = '0;
+    spi_ram_2p_cfg.sram_test_cfg.rmb = 4'h4;
+    spi_ram_2p_cfg.sram_test_cfg.rma = 4'h4;
+  end
+
 
   prim_rom_pkg::rom_cfg_t rom_cfg;
   assign rom_cfg = '{
@@ -1744,6 +1734,9 @@ module chip_darjeeling_asic #(
     .calib_rdy_i                       ( ast_init_done              ),
     .ast_init_done_i                   ( ast_init_done              ),
 
+    .debug_halt_cpu_boot_i             ( 1'b0                       ),
+    .soc_dbg_policy_bus_o              (                            ),
+
     // OTP external voltage
     .otp_ext_voltage_h_io              ( OTP_EXT_VOLT               ),
 
@@ -1771,6 +1764,19 @@ module chip_darjeeling_asic #(
     .spi_ram_2p_cfg_i                  ( spi_ram_2p_cfg             ),
 
     .rom_cfg_i                         ( rom_cfg                    ),
+    .rom_ctrl0_test_cfg_i              ( '0                         ),
+    .rom_ctrl1_test_cfg_i              ( '0                         ),
+
+    .i2c_ram_1p_cfg_rsp_o              (                            ),
+    .sram_ctrl_ret_aon_ram_1p_cfg_rsp_o       (                     ),
+    .sram_ctrl_main_ram_1p_cfg_rsp_o          (                     ),
+    .sram_ctrl_mbox_ram_1p_cfg_rsp_o          (                     ),
+    .otbn_imem_ram_1p_cfg_rsp_o               (                     ),
+    .otbn_dmem_ram_1p_cfg_rsp_o               (                     ),
+    .rv_core_ibex_icache_tag_ram_1p_cfg_rsp_o (                     ),
+    .rv_core_ibex_icache_data_ram_1p_cfg_rsp_o(                     ),
+    .spi_device_ram_2p_cfg_rsp_sys2spi_o      (                     ),
+    .spi_device_ram_2p_cfg_rsp_spi2sys_o      (                     ),
 
     // DFT signals
     .ast_lc_dft_en_o                   ( lc_dft_en                  ),
@@ -1778,6 +1784,7 @@ module chip_darjeeling_asic #(
     .scan_rst_ni                       ( scan_rst_n                 ),
     .scan_en_i                         ( scan_en                    ),
     .scanmode_i                        ( scanmode                   ),
+    .tston_i                           ( prim_mubi_pkg::MuBi4False  ),
 
     // FPGA build info
     .fpga_info_i                       ( '0                         )

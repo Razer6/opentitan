@@ -21,7 +21,7 @@ module prim_generic_rom import prim_rom_pkg::*; #(
 );
 
   logic unused_signals;
-  assign unused_signals = ^{cfg_i, rst_ni};
+  assign unused_signals = ^{cfg_i, rst_ni, rom_test_cfg_i};
 
   logic [Width-1:0] mem [Depth];
 

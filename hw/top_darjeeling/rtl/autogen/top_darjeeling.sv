@@ -53,8 +53,6 @@ module top_darjeeling #(
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlRetAonUseOTIntegErr = 1,
   parameter bit SramCtrlRetAonUseCompiledRam = 1,
-  parameter int SramCtrlRetAonMaxRamInst = 1,
-  parameter int SramCtrlRetAonInstDepth = 1024,
   parameter bit SramCtrlRetAonFlopRamOutput = 1,
   // parameters for rv_dm
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
@@ -97,8 +95,6 @@ module top_darjeeling #(
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMainUseOTIntegErr = 1,
   parameter bit SramCtrlMainUseCompiledRam = 1,
-  parameter int SramCtrlMainMaxRamInst = 1,
-  parameter int SramCtrlMainInstDepth = 1024,
   parameter bit SramCtrlMainFlopRamOutput = 1,
   // parameters for sram_ctrl_mbox
   parameter int SramCtrlMboxInstSize = 4096,
@@ -107,8 +103,6 @@ module top_darjeeling #(
   parameter int SramCtrlMboxNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMboxUseOTIntegErr = 1,
   parameter bit SramCtrlMboxUseCompiledRam = 1,
-  parameter int SramCtrlMboxMaxRamInst = 1,
-  parameter int SramCtrlMboxInstDepth = 1024,
   parameter bit SramCtrlMboxFlopRamOutput = 1,
   // parameters for rom_ctrl0
   parameter RomCtrl0BootRomInitFile = "",
@@ -288,27 +282,7 @@ module top_darjeeling #(
   input  logic       debug_halt_cpu_boot_i,
   input  prim_misc_dft_pkg::rom_test_cfg_t       rom_ctrl0_test_cfg_i,
   input  prim_misc_dft_pkg::rom_test_cfg_t       rom_ctrl1_test_cfg_i,
-  output prim_misc_dft_pkg::spi_sram_dft_t       spi_device_spi2sys_sram_dft_o,
-  input  prim_misc_dft_pkg::spi_sram_test_cfg_t       spi_device_spi2sys_sram_test_cfg_i,
-  input  prim_misc_dft_pkg::sram_err_inj_in_t       spi_device_spi2sys_sram_err_inj_in_i,
-  output logic       spi_device_spi2sys_err_inj_done_o,
-  output prim_misc_dft_pkg::spi_sram_dft_t       spi_device_sys2spi_sram_dft_o,
-  input  prim_misc_dft_pkg::spi_sram_test_cfg_t       spi_device_sys2spi_sram_test_cfg_i,
-  input  prim_misc_dft_pkg::sram_err_inj_in_t       spi_device_sys2spi_sram_err_inj_in_i,
-  output logic       spi_device_sys2spi_err_inj_done_o,
   input  prim_mubi_pkg::mubi4_t       tston_i,
-  output prim_misc_dft_pkg::sram_dft_t [SramCtrlMboxMaxRamInst-1:0] sram_main_sram_dft_o,
-  input  prim_misc_dft_pkg::sram_test_cfg_t [SramCtrlMboxMaxRamInst-1:0] sram_main_sram_test_cfg_i,
-  input  prim_misc_dft_pkg::sram_err_inj_in_t       sram_main_sram_err_inj_in_i,
-  output logic [SramCtrlMboxMaxRamInst-1:0] sram_main_err_inj_done_o,
-  output prim_misc_dft_pkg::sram_dft_t [SramCtrlMboxMaxRamInst-1:0] sram_aon_sram_dft_o,
-  input  prim_misc_dft_pkg::sram_test_cfg_t [SramCtrlMboxMaxRamInst-1:0] sram_aon_sram_test_cfg_i,
-  input  prim_misc_dft_pkg::sram_err_inj_in_t       sram_aon_sram_err_inj_in_i,
-  output logic [SramCtrlMboxMaxRamInst-1:0] sram_aon_err_inj_done_o,
-  output prim_misc_dft_pkg::sram_dft_t [SramCtrlMboxMaxRamInst-1:0] sram_mbox_sram_dft_o,
-  input  prim_misc_dft_pkg::sram_test_cfg_t [SramCtrlMboxMaxRamInst-1:0] sram_mbox_sram_test_cfg_i,
-  input  prim_misc_dft_pkg::sram_err_inj_in_t       sram_mbox_sram_err_inj_in_i,
-  output logic [SramCtrlMboxMaxRamInst-1:0] sram_mbox_err_inj_done_o,
 
 
   // All externally supplied clocks
@@ -775,6 +749,7 @@ module top_darjeeling #(
   otp_ctrl_part_pkg::otp_broadcast_t       otp_ctrl_otp_broadcast;
   otp_ctrl_pkg::otp_device_id_t       lc_ctrl_otp_device_id;
   otp_ctrl_pkg::otp_manuf_state_t       lc_ctrl_otp_manuf_state;
+  lc_ctrl_state_pkg::soc_dbg_state_t       soc_dbg_ctrl_soc_dbg_state;
   otp_ctrl_pkg::otp_device_id_t       keymgr_dpe_otp_device_id;
   prim_mubi_pkg::mubi8_t       sram_ctrl_main_otp_en_sram_ifetch;
 
@@ -822,6 +797,8 @@ module top_darjeeling #(
       otp_ctrl_otp_broadcast.hw_cfg1_data.en_sram_ifetch;
   assign lc_ctrl_otp_device_id =
       otp_ctrl_otp_broadcast.hw_cfg0_data.device_id;
+  assign soc_dbg_ctrl_soc_dbg_state =
+      otp_ctrl_otp_broadcast.hw_cfg1_data.soc_dbg_state;
   assign lc_ctrl_otp_manuf_state =
       otp_ctrl_otp_broadcast.hw_cfg0_data.manuf_state;
   assign keymgr_dpe_otp_device_id =
@@ -1103,16 +1080,7 @@ module top_darjeeling #(
       .ram_cfg_rsp_spi2sys_o(spi_device_ram_2p_cfg_rsp_spi2sys_o),
       .passthrough_o(spi_device_passthrough_req),
       .passthrough_i(spi_device_passthrough_rsp),
-      .mbist_en_i('0),
       .sck_monitor_o(sck_monitor_o),
-      .spi2sys_sram_err_inj_in_i(spi_device_spi2sys_sram_err_inj_in_i),
-      .spi2sys_err_inj_done_o(spi_device_spi2sys_err_inj_done_o),
-      .spi2sys_sram_test_cfg_i(spi_device_spi2sys_sram_test_cfg_i),
-      .spi2sys_sram_dft_o(spi_device_spi2sys_sram_dft_o),
-      .sys2spi_sram_err_inj_in_i(spi_device_sys2spi_sram_err_inj_in_i),
-      .sys2spi_err_inj_done_o(spi_device_sys2spi_err_inj_done_o),
-      .sys2spi_sram_test_cfg_i(spi_device_sys2spi_sram_test_cfg_i),
-      .sys2spi_sram_dft_o(spi_device_sys2spi_sram_dft_o),
       .tston_i(tston_i),
       .tl_i(spi_device_tl_req),
       .tl_o(spi_device_tl_rsp),
@@ -1731,8 +1699,6 @@ module top_darjeeling #(
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlRetAonUseOTIntegErr),
     .UseCompiledRam(SramCtrlRetAonUseCompiledRam),
-    .MaxRamInst(SramCtrlRetAonMaxRamInst),
-    .InstDepth(SramCtrlRetAonInstDepth),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput)
   ) u_sram_ctrl_ret_aon (
       // [52]: fatal_error
@@ -1747,10 +1713,6 @@ module top_darjeeling #(
       .lc_escalate_en_i(lc_ctrl_lc_escalate_en),
       .lc_hw_debug_en_i(lc_ctrl_pkg::Off),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
-      .sram_err_inj_in_i(sram_aon_sram_err_inj_in_i),
-      .err_inj_done_o(sram_aon_err_inj_done_o),
-      .sram_test_cfg_i(sram_aon_sram_test_cfg_i),
-      .sram_dft_o(sram_aon_sram_dft_o),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),
@@ -2110,8 +2072,6 @@ module top_darjeeling #(
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlMainUseOTIntegErr),
     .UseCompiledRam(SramCtrlMainUseCompiledRam),
-    .MaxRamInst(SramCtrlMainMaxRamInst),
-    .InstDepth(SramCtrlMainInstDepth),
     .FlopRamOutput(SramCtrlMainFlopRamOutput)
   ) u_sram_ctrl_main (
       // [70]: fatal_error
@@ -2126,10 +2086,6 @@ module top_darjeeling #(
       .lc_escalate_en_i(lc_ctrl_lc_escalate_en),
       .lc_hw_debug_en_i(lc_ctrl_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
-      .sram_err_inj_in_i(sram_main_sram_err_inj_in_i),
-      .err_inj_done_o(sram_main_err_inj_done_o),
-      .sram_test_cfg_i(sram_main_sram_test_cfg_i),
-      .sram_dft_o(sram_main_sram_dft_o),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),
@@ -2157,8 +2113,6 @@ module top_darjeeling #(
     .NumPrinceRoundsHalf(SramCtrlMboxNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlMboxUseOTIntegErr),
     .UseCompiledRam(SramCtrlMboxUseCompiledRam),
-    .MaxRamInst(SramCtrlMboxMaxRamInst),
-    .InstDepth(SramCtrlMboxInstDepth),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput)
   ) u_sram_ctrl_mbox (
       // [71]: fatal_error
@@ -2173,10 +2127,6 @@ module top_darjeeling #(
       .lc_escalate_en_i(lc_ctrl_lc_escalate_en),
       .lc_hw_debug_en_i(lc_ctrl_pkg::Off),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
-      .sram_err_inj_in_i(sram_mbox_sram_err_inj_in_i),
-      .err_inj_done_o(sram_mbox_err_inj_done_o),
-      .sram_test_cfg_i(sram_mbox_sram_test_cfg_i),
-      .sram_dft_o(sram_mbox_sram_dft_o),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),
@@ -2580,7 +2530,7 @@ module top_darjeeling #(
 
       // Inter-module signals
       .boot_status_i(pwrmgr_aon_boot_status),
-      .soc_dbg_state_i(lc_ctrl_state_pkg::SOC_DBG_STATE_DEFAULT),
+      .soc_dbg_state_i(soc_dbg_ctrl_soc_dbg_state),
       .soc_dbg_policy_bus_o(soc_dbg_policy_bus_o),
       .lc_hw_debug_en_i(lc_ctrl_lc_hw_debug_en),
       .lc_dft_en_i(lc_ctrl_lc_dft_en),

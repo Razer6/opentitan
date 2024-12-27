@@ -563,10 +563,7 @@ module sram_ctrl
     .DataBitsPerMask(DataWidth),
     .NumPrinceRoundsHalf(NumPrinceRoundsHalf),
     .UseCompiledRam(UseCompiledRam),
-    .FlopRamOutput(FlopRamOutput),
-    .MaxRamInst(MaxRamInst),
-    .InstDepth(InstDepth)
-
+    .FlopRamOutput(FlopRamOutput)
   ) u_prim_ram_1p_scr (
     .clk_i,
     .rst_ni,

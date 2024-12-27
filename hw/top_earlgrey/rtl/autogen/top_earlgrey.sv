@@ -66,8 +66,6 @@ module top_earlgrey #(
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlRetAonUseOTIntegErr = 1,
   parameter bit SramCtrlRetAonUseCompiledRam = 1,
-  parameter int SramCtrlRetAonMaxRamInst = 1,
-  parameter int SramCtrlRetAonInstDepth = 1024,
   parameter bit SramCtrlRetAonFlopRamOutput = 1,
   // parameters for flash_ctrl
   parameter bit SecFlashCtrlScrambleEn = 1,
@@ -116,8 +114,6 @@ module top_earlgrey #(
   parameter int SramCtrlMainNumPrinceRoundsHalf = 2,
   parameter bit SramCtrlMainUseOTIntegErr = 1,
   parameter bit SramCtrlMainUseCompiledRam = 1,
-  parameter int SramCtrlMainMaxRamInst = 1,
-  parameter int SramCtrlMainInstDepth = 1024,
   parameter bit SramCtrlMainFlopRamOutput = 1,
   // parameters for rom_ctrl
   parameter RomCtrlBootRomInitFile = "",
@@ -1264,16 +1260,7 @@ module top_earlgrey #(
       .ram_cfg_rsp_spi2sys_o(),
       .passthrough_o(spi_device_passthrough_req),
       .passthrough_i(spi_device_passthrough_rsp),
-      .mbist_en_i('0),
       .sck_monitor_o(sck_monitor_o),
-      .spi2sys_sram_err_inj_in_i(prim_misc_dft_pkg::SRAM_ERR_INJ_IN_DEFAULT),
-      .spi2sys_err_inj_done_o(),
-      .spi2sys_sram_test_cfg_i(prim_misc_dft_pkg::SPI_SRAM_TEST_CFG_DEFAULT),
-      .spi2sys_sram_dft_o(),
-      .sys2spi_sram_err_inj_in_i(prim_misc_dft_pkg::SRAM_ERR_INJ_IN_DEFAULT),
-      .sys2spi_err_inj_done_o(),
-      .sys2spi_sram_test_cfg_i(prim_misc_dft_pkg::SPI_SRAM_TEST_CFG_DEFAULT),
-      .sys2spi_sram_dft_o(),
       .tston_i(prim_mubi_pkg::MUBI4_DEFAULT),
       .tl_i(spi_device_tl_req),
       .tl_o(spi_device_tl_rsp),
@@ -2163,8 +2150,6 @@ module top_earlgrey #(
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlRetAonUseOTIntegErr),
     .UseCompiledRam(SramCtrlRetAonUseCompiledRam),
-    .MaxRamInst(SramCtrlRetAonMaxRamInst),
-    .InstDepth(SramCtrlRetAonInstDepth),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput)
   ) u_sram_ctrl_ret_aon (
       // [34]: fatal_error
@@ -2179,10 +2164,6 @@ module top_earlgrey #(
       .lc_escalate_en_i(lc_ctrl_lc_escalate_en),
       .lc_hw_debug_en_i(lc_ctrl_pkg::Off),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
-      .sram_err_inj_in_i(prim_misc_dft_pkg::SRAM_ERR_INJ_IN_DEFAULT),
-      .err_inj_done_o(),
-      .sram_test_cfg_i({SramCtrlMainMaxRamInst{prim_misc_dft_pkg::SRAM_TEST_CFG_DEFAULT}}),
-      .sram_dft_o(),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),
@@ -2659,8 +2640,6 @@ module top_earlgrey #(
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlMainUseOTIntegErr),
     .UseCompiledRam(SramCtrlMainUseCompiledRam),
-    .MaxRamInst(SramCtrlMainMaxRamInst),
-    .InstDepth(SramCtrlMainInstDepth),
     .FlopRamOutput(SramCtrlMainFlopRamOutput)
   ) u_sram_ctrl_main (
       // [59]: fatal_error
@@ -2675,10 +2654,6 @@ module top_earlgrey #(
       .lc_escalate_en_i(lc_ctrl_lc_escalate_en),
       .lc_hw_debug_en_i(lc_ctrl_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
-      .sram_err_inj_in_i(prim_misc_dft_pkg::SRAM_ERR_INJ_IN_DEFAULT),
-      .err_inj_done_o(),
-      .sram_test_cfg_i({SramCtrlMainMaxRamInst{prim_misc_dft_pkg::SRAM_TEST_CFG_DEFAULT}}),
-      .sram_dft_o(),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),
