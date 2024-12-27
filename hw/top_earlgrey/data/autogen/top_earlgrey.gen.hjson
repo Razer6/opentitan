@@ -9384,7 +9384,7 @@
           desc: Number of instruction cache ways
           type: int unsigned
           default: 2
-          local: "true"
+          local: "false"
           expose: "true"
           name_top: RvCoreIbexICacheNWays
         }
@@ -9506,7 +9506,7 @@
             param_type: int unsigned
             unpacked_dimensions: null
             default: 2
-            local: true
+            local: false
             expose: true
             name_top: RvCoreIbexICacheNWays
           }
@@ -9538,7 +9538,7 @@
             param_type: int unsigned
             unpacked_dimensions: null
             default: 2
-            local: true
+            local: false
             expose: true
             name_top: RvCoreIbexICacheNWays
           }
@@ -23062,7 +23062,7 @@
           param_type: int unsigned
           unpacked_dimensions: null
           default: 2
-          local: true
+          local: false
           expose: true
           name_top: RvCoreIbexICacheNWays
         }
@@ -23094,7 +23094,7 @@
           param_type: int unsigned
           unpacked_dimensions: null
           default: 2
-          local: true
+          local: false
           expose: true
           name_top: RvCoreIbexICacheNWays
         }
