@@ -248,6 +248,10 @@ module top_earlgrey #(
   // Local Parameters
   // local parameters for lc_ctrl
   localparam int LcCtrlNumRmaAckSigs = 2;
+  // local parameters for spi_host0
+  localparam int SpiHost0NumCS = 1;
+  // local parameters for spi_host1
+  localparam int SpiHost1NumCS = 1;
   // local parameters for rv_core_ibex
   localparam int unsigned RvCoreIbexNEscalationSeverities = alert_handler_reg_pkg::N_ESC_SEV;
   localparam int unsigned RvCoreIbexWidthPingCounter = alert_handler_reg_pkg::PING_CNT_DW;
@@ -1649,7 +1653,8 @@ module top_earlgrey #(
       .rst_edn_ni (rstmgr_aon_resets.rst_lc_n[rstmgr_pkg::Domain0Sel])
   );
   spi_host #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[19:19])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[19:19]),
+    .NumCS(SpiHost0NumCS)
   ) u_spi_host0 (
 
       // Input
@@ -1682,7 +1687,8 @@ module top_earlgrey #(
       .rst_ni (rstmgr_aon_resets.rst_spi_host0_n[rstmgr_pkg::Domain0Sel])
   );
   spi_host #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[20:20])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[20:20]),
+    .NumCS(SpiHost1NumCS)
   ) u_spi_host1 (
 
       // Input
