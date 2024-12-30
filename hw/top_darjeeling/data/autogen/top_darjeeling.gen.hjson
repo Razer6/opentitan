@@ -748,7 +748,9 @@
           width: 1
           inst_name: spi_device
           default: ""
-          top_signame: ast_spi_ram_2p_cfg
+          external: true
+          top_signame: spi_device_ram_2p_cfg_sys2spi
+          conn_type: false
           index: -1
         }
         {
@@ -774,7 +776,9 @@
           width: 1
           inst_name: spi_device
           default: ""
-          top_signame: ast_spi_ram_2p_cfg
+          external: true
+          top_signame: spi_device_ram_2p_cfg_spi2sys
+          conn_type: false
           index: -1
         }
         {
@@ -4366,7 +4370,9 @@
           }
           default: "'0"
           inst_name: sram_ctrl_ret_aon
-          top_signame: ast_ram_1p_cfg
+          external: true
+          top_signame: sram_ctrl_ret_aon_ram_1p_cfg
+          conn_type: false
           index: -1
         }
         {
@@ -5708,7 +5714,9 @@
           width: 1
           inst_name: otbn
           default: ""
-          top_signame: ast_ram_1p_cfg
+          external: true
+          top_signame: otbn_imem_ram_1p_cfg
+          conn_type: false
           index: -1
         }
         {
@@ -5720,7 +5728,9 @@
           width: 1
           inst_name: otbn
           default: ""
-          top_signame: ast_ram_1p_cfg
+          external: true
+          top_signame: otbn_dmem_ram_1p_cfg
+          conn_type: false
           index: -1
         }
         {
@@ -6660,7 +6670,9 @@
           }
           default: "'0"
           inst_name: sram_ctrl_main
-          top_signame: ast_ram_1p_cfg
+          external: true
+          top_signame: sram_ctrl_main_ram_1p_cfg
+          conn_type: false
           index: -1
         }
         {
@@ -6987,7 +6999,9 @@
           }
           default: "'0"
           inst_name: sram_ctrl_mbox
-          top_signame: ast_ram_1p_cfg
+          external: true
+          top_signame: sram_ctrl_mbox_ram_1p_cfg
+          conn_type: false
           index: -1
         }
         {
@@ -9620,7 +9634,9 @@
           width: 1
           inst_name: rv_core_ibex
           default: ""
-          top_signame: ast_ram_1p_cfg
+          external: true
+          top_signame: rv_core_ibex_icache_tag_ram_1p_cfg
+          conn_type: false
           index: -1
         }
         {
@@ -9656,7 +9672,9 @@
           width: 1
           inst_name: rv_core_ibex
           default: ""
-          top_signame: ast_ram_1p_cfg
+          external: true
+          top_signame: rv_core_ibex_icache_data_ram_1p_cfg
+          conn_type: false
           index: -1
         }
         {
@@ -9979,38 +9997,6 @@
           conn_type: true
         }
         {
-          struct: ram_1p_cfg
-          package: prim_ram_1p_pkg
-          type: uni
-          name: ram_1p_cfg
-          act: rcv
-          inst_name: ast
-          width: 1
-          default: ""
-          end_idx: -1
-          top_type: broadcast
-          top_signame: ast_ram_1p_cfg
-          index: -1
-          external: true
-          conn_type: true
-        }
-        {
-          struct: ram_2p_cfg
-          package: prim_ram_2p_pkg
-          type: uni
-          name: spi_ram_2p_cfg
-          act: rcv
-          inst_name: ast
-          width: 1
-          default: ""
-          end_idx: -1
-          top_type: broadcast
-          top_signame: ast_spi_ram_2p_cfg
-          index: -1
-          external: true
-          conn_type: true
-        }
-        {
           struct: rom_cfg
           package: prim_rom_pkg
           type: uni
@@ -10052,21 +10038,6 @@
       ast.obs_ctrl:
       [
         otp_ctrl.obs_ctrl
-      ]
-      ast.ram_1p_cfg:
-      [
-        otbn.ram_cfg_imem
-        otbn.ram_cfg_dmem
-        sram_ctrl_main.cfg
-        sram_ctrl_ret_aon.cfg
-        sram_ctrl_mbox.cfg
-        rv_core_ibex.ram_cfg_icache_tag
-        rv_core_ibex.ram_cfg_icache_data
-      ]
-      ast.spi_ram_2p_cfg:
-      [
-        spi_device.ram_cfg_sys2spi
-        spi_device.ram_cfg_spi2sys
       ]
       ast.rom_cfg:
       [
@@ -10702,19 +10673,26 @@
       ast.lc_dft_en: ""
       ast.lc_hw_debug_en: ""
       ast.obs_ctrl: obs_ctrl
-      ast.ram_1p_cfg: ram_1p_cfg
-      ast.spi_ram_2p_cfg: spi_ram_2p_cfg
       ast.rom_cfg: rom_cfg
       i2c0.ram_cfg_rsp: i2c_ram_1p_cfg_rsp
+      sram_ctrl_ret_aon.cfg: sram_ctrl_ret_aon_ram_1p_cfg
       sram_ctrl_ret_aon.cfg_rsp: sram_ctrl_ret_aon_ram_1p_cfg_rsp
+      sram_ctrl_main.cfg: sram_ctrl_main_ram_1p_cfg
       sram_ctrl_main.cfg_rsp: sram_ctrl_main_ram_1p_cfg_rsp
+      sram_ctrl_mbox.cfg: sram_ctrl_mbox_ram_1p_cfg
       sram_ctrl_mbox.cfg_rsp: sram_ctrl_mbox_ram_1p_cfg_rsp
+      otbn.ram_cfg_imem: otbn_imem_ram_1p_cfg
       otbn.ram_cfg_rsp_imem: otbn_imem_ram_1p_cfg_rsp
+      otbn.ram_cfg_dmem: otbn_dmem_ram_1p_cfg
       otbn.ram_cfg_rsp_dmem: otbn_dmem_ram_1p_cfg_rsp
+      rv_core_ibex.ram_cfg_icache_tag: rv_core_ibex_icache_tag_ram_1p_cfg
       rv_core_ibex.ram_cfg_rsp_icache_tag: rv_core_ibex_icache_tag_ram_1p_cfg_rsp
+      rv_core_ibex.ram_cfg_icache_data: rv_core_ibex_icache_data_ram_1p_cfg
       rv_core_ibex.ram_cfg_rsp_icache_data: rv_core_ibex_icache_data_ram_1p_cfg_rsp
+      spi_device.ram_cfg_sys2spi: spi_device_ram_2p_cfg_sys2spi
       spi_device.ram_cfg_rsp_sys2spi: spi_device_ram_2p_cfg_rsp_sys2spi
       spi_device.ram_cfg_rsp_spi2sys: spi_device_ram_2p_cfg_rsp_spi2sys
+      spi_device.ram_cfg_spi2sys: spi_device_ram_2p_cfg_spi2sys
       pwrmgr_aon.boot_status: pwrmgr_boot_status
       clkmgr_aon.jitter_en: clk_main_jitter_en
       clkmgr_aon.io_clk_byp_req: io_clk_byp_req
@@ -18962,7 +18940,9 @@
         width: 1
         inst_name: spi_device
         default: ""
-        top_signame: ast_spi_ram_2p_cfg
+        external: true
+        top_signame: spi_device_ram_2p_cfg_sys2spi
+        conn_type: false
         index: -1
       }
       {
@@ -18988,7 +18968,9 @@
         width: 1
         inst_name: spi_device
         default: ""
-        top_signame: ast_spi_ram_2p_cfg
+        external: true
+        top_signame: spi_device_ram_2p_cfg_spi2sys
+        conn_type: false
         index: -1
       }
       {
@@ -21316,7 +21298,9 @@
         }
         default: "'0"
         inst_name: sram_ctrl_ret_aon
-        top_signame: ast_ram_1p_cfg
+        external: true
+        top_signame: sram_ctrl_ret_aon_ram_1p_cfg
+        conn_type: false
         index: -1
       }
       {
@@ -21996,7 +21980,9 @@
         width: 1
         inst_name: otbn
         default: ""
-        top_signame: ast_ram_1p_cfg
+        external: true
+        top_signame: otbn_imem_ram_1p_cfg
+        conn_type: false
         index: -1
       }
       {
@@ -22008,7 +21994,9 @@
         width: 1
         inst_name: otbn
         default: ""
-        top_signame: ast_ram_1p_cfg
+        external: true
+        top_signame: otbn_dmem_ram_1p_cfg
+        conn_type: false
         index: -1
       }
       {
@@ -22461,7 +22449,9 @@
         }
         default: "'0"
         inst_name: sram_ctrl_main
-        top_signame: ast_ram_1p_cfg
+        external: true
+        top_signame: sram_ctrl_main_ram_1p_cfg
+        conn_type: false
         index: -1
       }
       {
@@ -22611,7 +22601,9 @@
         }
         default: "'0"
         inst_name: sram_ctrl_mbox
-        top_signame: ast_ram_1p_cfg
+        external: true
+        top_signame: sram_ctrl_mbox_ram_1p_cfg
+        conn_type: false
         index: -1
       }
       {
@@ -24083,7 +24075,9 @@
         width: 1
         inst_name: rv_core_ibex
         default: ""
-        top_signame: ast_ram_1p_cfg
+        external: true
+        top_signame: rv_core_ibex_icache_tag_ram_1p_cfg
+        conn_type: false
         index: -1
       }
       {
@@ -24119,7 +24113,9 @@
         width: 1
         inst_name: rv_core_ibex
         default: ""
-        top_signame: ast_ram_1p_cfg
+        external: true
+        top_signame: rv_core_ibex_icache_data_ram_1p_cfg
+        conn_type: false
         index: -1
       }
       {
@@ -25453,38 +25449,6 @@
         conn_type: true
       }
       {
-        struct: ram_1p_cfg
-        package: prim_ram_1p_pkg
-        type: uni
-        name: ram_1p_cfg
-        act: rcv
-        inst_name: ast
-        width: 1
-        default: ""
-        end_idx: -1
-        top_type: broadcast
-        top_signame: ast_ram_1p_cfg
-        index: -1
-        external: true
-        conn_type: true
-      }
-      {
-        struct: ram_2p_cfg
-        package: prim_ram_2p_pkg
-        type: uni
-        name: spi_ram_2p_cfg
-        act: rcv
-        inst_name: ast
-        width: 1
-        default: ""
-        end_idx: -1
-        top_type: broadcast
-        top_signame: ast_spi_ram_2p_cfg
-        index: -1
-        external: true
-        conn_type: true
-      }
-      {
         struct: rom_cfg
         package: prim_rom_pkg
         type: uni
@@ -25580,30 +25544,6 @@
         netname: ast_obs_ctrl
       }
       {
-        package: prim_ram_1p_pkg
-        struct: ram_1p_cfg
-        signame: ram_1p_cfg_i
-        width: 1
-        type: uni
-        default: ""
-        direction: in
-        conn_type: true
-        index: -1
-        netname: ast_ram_1p_cfg
-      }
-      {
-        package: prim_ram_2p_pkg
-        struct: ram_2p_cfg
-        signame: spi_ram_2p_cfg_i
-        width: 1
-        type: uni
-        default: ""
-        direction: in
-        conn_type: true
-        index: -1
-        netname: ast_spi_ram_2p_cfg
-      }
-      {
         package: prim_rom_pkg
         struct: rom_cfg
         signame: rom_cfg_i
@@ -25629,6 +25569,28 @@
       }
       {
         package: prim_ram_1p_pkg
+        struct: ram_1p_cfg
+        signame: sram_ctrl_ret_aon_ram_1p_cfg_i
+        width:
+        {
+          name: NumRamInst
+          desc: Number of internal RAM instances. Must be the same as ceil(MemSizeRam / InstSize) .
+          param_type: int
+          unpacked_dimensions: null
+          default: 1
+          local: false
+          expose: true
+          name_top: SramCtrlRetAonNumRamInst
+        }
+        type: uni
+        default: "'0"
+        direction: in
+        conn_type: false
+        index: -1
+        netname: sram_ctrl_ret_aon_ram_1p_cfg
+      }
+      {
+        package: prim_ram_1p_pkg
         struct: ram_1p_cfg_rsp
         signame: sram_ctrl_ret_aon_ram_1p_cfg_rsp_o
         width:
@@ -25648,6 +25610,28 @@
         conn_type: false
         index: -1
         netname: sram_ctrl_ret_aon_ram_1p_cfg_rsp
+      }
+      {
+        package: prim_ram_1p_pkg
+        struct: ram_1p_cfg
+        signame: sram_ctrl_main_ram_1p_cfg_i
+        width:
+        {
+          name: NumRamInst
+          desc: Number of internal RAM instances. Must be the same as ceil(MemSizeRam / InstSize) .
+          param_type: int
+          unpacked_dimensions: null
+          default: 1
+          local: false
+          expose: true
+          name_top: SramCtrlMainNumRamInst
+        }
+        type: uni
+        default: "'0"
+        direction: in
+        conn_type: false
+        index: -1
+        netname: sram_ctrl_main_ram_1p_cfg
       }
       {
         package: prim_ram_1p_pkg
@@ -25673,6 +25657,28 @@
       }
       {
         package: prim_ram_1p_pkg
+        struct: ram_1p_cfg
+        signame: sram_ctrl_mbox_ram_1p_cfg_i
+        width:
+        {
+          name: NumRamInst
+          desc: Number of internal RAM instances. Must be the same as ceil(MemSizeRam / InstSize) .
+          param_type: int
+          unpacked_dimensions: null
+          default: 1
+          local: false
+          expose: true
+          name_top: SramCtrlMboxNumRamInst
+        }
+        type: uni
+        default: "'0"
+        direction: in
+        conn_type: false
+        index: -1
+        netname: sram_ctrl_mbox_ram_1p_cfg
+      }
+      {
+        package: prim_ram_1p_pkg
         struct: ram_1p_cfg_rsp
         signame: sram_ctrl_mbox_ram_1p_cfg_rsp_o
         width:
@@ -25695,6 +25701,18 @@
       }
       {
         package: prim_ram_1p_pkg
+        struct: ram_1p_cfg
+        signame: otbn_imem_ram_1p_cfg_i
+        width: 1
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: otbn_imem_ram_1p_cfg
+      }
+      {
+        package: prim_ram_1p_pkg
         struct: ram_1p_cfg_rsp
         signame: otbn_imem_ram_1p_cfg_rsp_o
         width: 1
@@ -25707,6 +25725,18 @@
       }
       {
         package: prim_ram_1p_pkg
+        struct: ram_1p_cfg
+        signame: otbn_dmem_ram_1p_cfg_i
+        width: 1
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: otbn_dmem_ram_1p_cfg
+      }
+      {
+        package: prim_ram_1p_pkg
         struct: ram_1p_cfg_rsp
         signame: otbn_dmem_ram_1p_cfg_rsp_o
         width: 1
@@ -25716,6 +25746,18 @@
         conn_type: false
         index: -1
         netname: otbn_dmem_ram_1p_cfg_rsp
+      }
+      {
+        package: prim_ram_1p_pkg
+        struct: ram_1p_cfg
+        signame: rv_core_ibex_icache_tag_ram_1p_cfg_i
+        width: 1
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: rv_core_ibex_icache_tag_ram_1p_cfg
       }
       {
         package: prim_ram_1p_pkg
@@ -25741,6 +25783,18 @@
       }
       {
         package: prim_ram_1p_pkg
+        struct: ram_1p_cfg
+        signame: rv_core_ibex_icache_data_ram_1p_cfg_i
+        width: 1
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: rv_core_ibex_icache_data_ram_1p_cfg
+      }
+      {
+        package: prim_ram_1p_pkg
         struct: ram_1p_cfg_rsp
         signame: rv_core_ibex_icache_data_ram_1p_cfg_rsp_o
         width:
@@ -25760,6 +25814,18 @@
         conn_type: false
         index: -1
         netname: rv_core_ibex_icache_data_ram_1p_cfg_rsp
+      }
+      {
+        package: prim_ram_2p_pkg
+        struct: ram_2p_cfg
+        signame: spi_device_ram_2p_cfg_sys2spi_i
+        width: 1
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: spi_device_ram_2p_cfg_sys2spi
       }
       {
         package: prim_ram_2p_pkg
@@ -25784,6 +25850,18 @@
         conn_type: false
         index: -1
         netname: spi_device_ram_2p_cfg_rsp_spi2sys
+      }
+      {
+        package: prim_ram_2p_pkg
+        struct: ram_2p_cfg
+        signame: spi_device_ram_2p_cfg_spi2sys_i
+        width: 1
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: spi_device_ram_2p_cfg_spi2sys
       }
       {
         package: pwrmgr_pkg
@@ -26902,28 +26980,6 @@
         act: rcv
         suffix: ""
         default: ast_pkg::AST_OBS_CTRL_DEFAULT
-      }
-      {
-        package: prim_ram_1p_pkg
-        struct: ram_1p_cfg
-        signame: ast_ram_1p_cfg
-        width: 1
-        type: uni
-        end_idx: -1
-        act: rcv
-        suffix: ""
-        default: prim_ram_1p_pkg::RAM_1P_CFG_DEFAULT
-      }
-      {
-        package: prim_ram_2p_pkg
-        struct: ram_2p_cfg
-        signame: ast_spi_ram_2p_cfg
-        width: 1
-        type: uni
-        end_idx: -1
-        act: rcv
-        suffix: ""
-        default: prim_ram_2p_pkg::RAM_2P_CFG_DEFAULT
       }
       {
         package: prim_rom_pkg
