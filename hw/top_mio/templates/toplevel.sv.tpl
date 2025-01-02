@@ -521,3 +521,8 @@ slice = f"{lo+w-1}:{lo}"
   `ASSERT_KNOWN(scanmodeKnown, scanmode_i, clk_main_i, 0)
 
 endmodule
+// Local Variables:
+// fill-column:1
+// verilog-auto-arg-sort:t
+// verilog-typedef-regexp: "_[etu]$"
+// End:
