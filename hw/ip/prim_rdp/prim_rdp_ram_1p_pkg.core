@@ -10,6 +10,8 @@ virtual:
 
 filesets:
   files_rtl:
+    depend:
+      - rivos:prim:misc_dft_pkg
     files:
       - rtl/prim_ram_1p_pkg.sv
     file_type: systemVerilogSource
