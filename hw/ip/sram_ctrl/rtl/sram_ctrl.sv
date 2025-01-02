@@ -684,3 +684,9 @@ module sram_ctrl
   `ASSERT(TlulGntIsCorrect_A, tlul_req |-> (sram_gnt & ~init_req) == tlul_gnt)
 
 endmodule : sram_ctrl
+// Local Variables:
+// fill-column:1
+// verilog-auto-arg-sort:t
+// verilog-typedef-regexp: "_[teu]$"
+// verilog-library-directories:(".")
+// End:
