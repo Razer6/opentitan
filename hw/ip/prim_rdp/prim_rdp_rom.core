@@ -10,7 +10,6 @@ filesets:
     depend:
       - lowrisc:prim:assert
       - lowrisc:prim:rom_pkg
-      - lowrisc:prim:util_memload
       - rivos:ip:rvscs_ot_rom
     files:
       - rtl/prim_rdp_rom.sv
