@@ -102,6 +102,7 @@ module prim_generic_otp
   output wire [(FUSE_NUM_MBIST_ARRAYS-1):0][(31):0] mbist_fuse_data_o,         // (neal) hardcoding mbist port to match localparams in rivos_tsmc_fuse_wrapper.sv
   output logic                                      reset_allowed_o,
 
+  input  logic                                                trace_en_i,
   output logic                                                trace_final_fuse_mr_o,  // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
   output logic                                                trace_final_fuse_rsb_o, // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
   output logic                                                trace_final_fuse_rwl_o, // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
