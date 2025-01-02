@@ -78,6 +78,10 @@ module top_${top["name"]} #(
   % endfor
 
 % endif
+  % for irq_group, irqs in top['incoming_interrupt'].items():
+  // Incoming interrupt of group ${irq_group}
+  input logic [${len(irqs)-1}:0] incoming_interrupt_${irq_group}_i,
+  % endfor
 
   % for m in top["module"]:
   % if not lib.is_inst(m):
@@ -490,7 +494,14 @@ slice = f"{lo+w-1}:{lo}"
   // interrupt assignments
 <% base = interrupt_num %>\
   assign intr_vector = {
+  % for irq_group, irqs in reversed(top['incoming_interrupt'].items()):
+  <% base -= len(irqs) %>\
+    incoming_interrupt_${irq_group}_i, // IDs [${base} +: ${len(irqs)}]
+  % endfor
   % for intr in top["interrupt"][::-1]:
+    % if intr["incoming"]:
+<% continue %>\
+    % endif
 <% base -= intr["width"] %>\
       intr_${intr["name"]}, // IDs [${base} +: ${intr['width']}]
   % endfor
