@@ -38,7 +38,7 @@
     { name: "NOutputs",
       desc: "Number of PWM outputs",
       type: "int",
-      default: "6",
+      default: "8",
     }
   ]
   available_output_list: [
@@ -46,7 +46,7 @@
       desc:  '''Pulse output.  Note that though this output is always enabled, there is a formal
                 set of enable pins (pwm_en_o) which are required for top-level integration of
                 comportable IPs.'''
-      width: "6"
+      width: "8"
     }
   ]
   alert_list: [
