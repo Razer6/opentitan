@@ -81,19 +81,19 @@ module prim_rdp_ram_1r1w import prim_ram_2p_pkg::*; #(
       .err_inj_loc   (cfg_i.sram_err_inj.err_inj_loc),
       .err_inj_done  (err_inj_done_int),
 
-      .DFT_TME       (cfg_i.sram_dft.DFT_TME),
-      .DFT_TRE       (cfg_i.sram_dft.DFT_TRE),
-      .DFT_RDATA     (cfg_i.sram_dft.DFT_RDATA),
+      .DFT_TME       (cfg_rsp_o.sram_dft.DFT_TME),
+      .DFT_TRE       (cfg_rsp_o.sram_dft.DFT_TRE),
+      .DFT_RDATA     (cfg_rsp_o.sram_dft.DFT_RDATA),
     
-      .RMA        (sram_test_cfg.rma),        // Have SW control for this pin from a register.
-      .RMB        (sram_test_cfg.rmb),        // Have SW control for this pin from a register.
-      .RMEA       (sram_test_cfg.rmea),       // Have SW control for this pin from a register.
-      .RMEB       (sram_test_cfg.rmeb),       // Have SW control for this pin from a register.
-      .LS         (sram_test_cfg.ls),         // Light sleep.
-      .TEST_RNM   (sram_test_cfg.test_rnm),   // Have SW control for this pin from a register.
-      .TEST1A     (sram_test_cfg.test1a),     // Have SW control for this pin from a register.
-      .TEST1B     (sram_test_cfg.test1b),     // Have SW control for this pin from a register.
-      .DFD_StopWE (sram_test_cfg.DFD_StopWE)  // Have SW control for this pin from a register.
+      .RMA        (cfg_i.sram_test_cfg.rma),        // Have SW control for this pin from a register.
+      .RMB        (cfg_i.sram_test_cfg.rmb),        // Have SW control for this pin from a register.
+      .RMEA       (cfg_i.sram_test_cfg.rmea),       // Have SW control for this pin from a register.
+      .RMEB       (cfg_i.sram_test_cfg.rmeb),       // Have SW control for this pin from a register.
+      .LS         (cfg_i.sram_test_cfg.ls),         // Light sleep.
+      .TEST_RNM   (cfg_i.sram_test_cfg.test_rnm),   // Have SW control for this pin from a register.
+      .TEST1A     (cfg_i.sram_test_cfg.test1a),     // Have SW control for this pin from a register.
+      .TEST1B     (cfg_i.sram_test_cfg.test1b),     // Have SW control for this pin from a register.
+      .DFD_StopWE (cfg_i.sram_test_cfg.DFD_StopWE)  // Have SW control for this pin from a register.
     );
   end else if(Depth==1024) begin : gen_sys2spi_mem
     rvscs_sys2spi_sram u_sys2spi_sram
@@ -119,19 +119,19 @@ module prim_rdp_ram_1r1w import prim_ram_2p_pkg::*; #(
       .err_inj_loc   (cfg_i.sram_err_inj.err_inj_loc),
       .err_inj_done  (err_inj_done_int),
     
-      .DFT_TME       (cfg_i.sram_dft.DFT_TME),
-      .DFT_TRE       (cfg_i.sram_dft.DFT_TRE),
-      .DFT_RDATA     (cfg_i.sram_dft.DFT_RDATA),
+      .DFT_TME       (cfg_rsp_o.sram_dft.DFT_TME),
+      .DFT_TRE       (cfg_rsp_o.sram_dft.DFT_TRE),
+      .DFT_RDATA     (cfg_rsp_o.sram_dft.DFT_RDATA),
     
-      .RMA        (sram_test_cfg.rma),        // Have SW control for this pin from a register.
-      .RMB        (sram_test_cfg.rmb),        // Have SW control for this pin from a register.
-      .RMEA       (sram_test_cfg.rmea),       // Have SW control for this pin from a register.
-      .RMEB       (sram_test_cfg.rmeb),       // Have SW control for this pin from a register.
-      .LS         (sram_test_cfg.ls),         // Light sleep.
-      .TEST_RNM   (sram_test_cfg.test_rnm),   // Have SW control for this pin from a register.
-      .TEST1A     (sram_test_cfg.test1a),     // Have SW control for this pin from a register.
-      .TEST1B     (sram_test_cfg.test1b),     // Have SW control for this pin from a register.
-      .DFD_StopWE (sram_test_cfg.DFD_StopWE)  // Have SW control for this pin from a register.
+      .RMA        (cfg_i.sram_test_cfg.rma),        // Have SW control for this pin from a register.
+      .RMB        (cfg_i.sram_test_cfg.rmb),        // Have SW control for this pin from a register.
+      .RMEA       (cfg_i.sram_test_cfg.rmea),       // Have SW control for this pin from a register.
+      .RMEB       (cfg_i.sram_test_cfg.rmeb),       // Have SW control for this pin from a register.
+      .LS         (cfg_i.sram_test_cfg.ls),         // Light sleep.
+      .TEST_RNM   (cfg_i.sram_test_cfg.test_rnm),   // Have SW control for this pin from a register.
+      .TEST1A     (cfg_i.sram_test_cfg.test1a),     // Have SW control for this pin from a register.
+      .TEST1B     (cfg_i.sram_test_cfg.test1b),     // Have SW control for this pin from a register.
+      .DFD_StopWE (cfg_i.sram_test_cfg.DFD_StopWE)  // Have SW control for this pin from a register.
     );
   end else begin : gen_ot_default
     prim_generic_ram_1r1w #(
