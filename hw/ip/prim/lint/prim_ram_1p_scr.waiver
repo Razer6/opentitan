@@ -8,3 +8,6 @@ waive -rules {PARAM_NOT_USED} -location {prim_ram_1p_scr.sv} -regexp {Parameter 
       -comment "Logic not yet implemented."
 waive -rules {PARAM_NOT_USED} -location {prim_ram_1p_scr.sv} -regexp {Parameter 'InstDepth' not used in module 'prim_ram_1p_scr'} \
       -comment "Logic not yet implemented."
+
+waive -rules {SYS_TF} -location {prim_ram_1p_scr.sv} -regexp {System function call '\$ceil' encountered} \
+      -comment "Tooling issue"
