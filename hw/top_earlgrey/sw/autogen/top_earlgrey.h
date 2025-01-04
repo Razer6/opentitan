@@ -1658,14 +1658,16 @@ typedef enum top_earlgrey_pinmux_outsel {
   kTopEarlgreyPinmuxOutselPwmAonPwm3 = 68, /**< Peripheral Output 65 */
   kTopEarlgreyPinmuxOutselPwmAonPwm4 = 69, /**< Peripheral Output 66 */
   kTopEarlgreyPinmuxOutselPwmAonPwm5 = 70, /**< Peripheral Output 67 */
-  kTopEarlgreyPinmuxOutselOtpCtrlTest0 = 71, /**< Peripheral Output 68 */
-  kTopEarlgreyPinmuxOutselSysrstCtrlAonBatDisable = 72, /**< Peripheral Output 69 */
-  kTopEarlgreyPinmuxOutselSysrstCtrlAonKey0Out = 73, /**< Peripheral Output 70 */
-  kTopEarlgreyPinmuxOutselSysrstCtrlAonKey1Out = 74, /**< Peripheral Output 71 */
-  kTopEarlgreyPinmuxOutselSysrstCtrlAonKey2Out = 75, /**< Peripheral Output 72 */
-  kTopEarlgreyPinmuxOutselSysrstCtrlAonPwrbOut = 76, /**< Peripheral Output 73 */
-  kTopEarlgreyPinmuxOutselSysrstCtrlAonZ3Wakeup = 77, /**< Peripheral Output 74 */
-  kTopEarlgreyPinmuxOutselLast = 77, /**< \internal Last valid outsel value */
+  kTopEarlgreyPinmuxOutselPwmAonPwm6 = 71, /**< Peripheral Output 68 */
+  kTopEarlgreyPinmuxOutselPwmAonPwm7 = 72, /**< Peripheral Output 69 */
+  kTopEarlgreyPinmuxOutselOtpCtrlTest0 = 73, /**< Peripheral Output 70 */
+  kTopEarlgreyPinmuxOutselSysrstCtrlAonBatDisable = 74, /**< Peripheral Output 71 */
+  kTopEarlgreyPinmuxOutselSysrstCtrlAonKey0Out = 75, /**< Peripheral Output 72 */
+  kTopEarlgreyPinmuxOutselSysrstCtrlAonKey1Out = 76, /**< Peripheral Output 73 */
+  kTopEarlgreyPinmuxOutselSysrstCtrlAonKey2Out = 77, /**< Peripheral Output 74 */
+  kTopEarlgreyPinmuxOutselSysrstCtrlAonPwrbOut = 78, /**< Peripheral Output 75 */
+  kTopEarlgreyPinmuxOutselSysrstCtrlAonZ3Wakeup = 79, /**< Peripheral Output 76 */
+  kTopEarlgreyPinmuxOutselLast = 79, /**< \internal Last valid outsel value */
 } top_earlgrey_pinmux_outsel_t;
 
 /**

@@ -829,14 +829,16 @@ package top_earlgrey_pkg;
     MioOutPwmAonPwm3 = 65,
     MioOutPwmAonPwm4 = 66,
     MioOutPwmAonPwm5 = 67,
-    MioOutOtpCtrlTest0 = 68,
-    MioOutSysrstCtrlAonBatDisable = 69,
-    MioOutSysrstCtrlAonKey0Out = 70,
-    MioOutSysrstCtrlAonKey1Out = 71,
-    MioOutSysrstCtrlAonKey2Out = 72,
-    MioOutSysrstCtrlAonPwrbOut = 73,
-    MioOutSysrstCtrlAonZ3Wakeup = 74,
-    MioOutCount = 75
+    MioOutPwmAonPwm6 = 68,
+    MioOutPwmAonPwm7 = 69,
+    MioOutOtpCtrlTest0 = 70,
+    MioOutSysrstCtrlAonBatDisable = 71,
+    MioOutSysrstCtrlAonKey0Out = 72,
+    MioOutSysrstCtrlAonKey1Out = 73,
+    MioOutSysrstCtrlAonKey2Out = 74,
+    MioOutSysrstCtrlAonPwrbOut = 75,
+    MioOutSysrstCtrlAonZ3Wakeup = 76,
+    MioOutCount = 77
   } mio_out_e;
 
   // Enumeration for DIO signals, used on both the top and chip-levels.

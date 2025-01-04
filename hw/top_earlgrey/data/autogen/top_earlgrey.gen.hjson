@@ -14340,7 +14340,7 @@
       }
       {
         name: pwm_aon_pwm
-        width: 6
+        width: 8
         type: output
         idx: 0
         pad: ""
@@ -14351,7 +14351,7 @@
       }
       {
         name: pwm_aon_pwm
-        width: 6
+        width: 8
         type: output
         idx: 1
         pad: ""
@@ -14362,7 +14362,7 @@
       }
       {
         name: pwm_aon_pwm
-        width: 6
+        width: 8
         type: output
         idx: 2
         pad: ""
@@ -14373,7 +14373,7 @@
       }
       {
         name: pwm_aon_pwm
-        width: 6
+        width: 8
         type: output
         idx: 3
         pad: ""
@@ -14384,7 +14384,7 @@
       }
       {
         name: pwm_aon_pwm
-        width: 6
+        width: 8
         type: output
         idx: 4
         pad: ""
@@ -14395,7 +14395,7 @@
       }
       {
         name: pwm_aon_pwm
-        width: 6
+        width: 8
         type: output
         idx: 5
         pad: ""
@@ -14403,6 +14403,28 @@
         connection: muxed
         desc: ""
         glob_idx: 67
+      }
+      {
+        name: pwm_aon_pwm
+        width: 8
+        type: output
+        idx: 6
+        pad: ""
+        attr: ""
+        connection: muxed
+        desc: ""
+        glob_idx: 68
+      }
+      {
+        name: pwm_aon_pwm
+        width: 8
+        type: output
+        idx: 7
+        pad: ""
+        attr: ""
+        connection: muxed
+        desc: ""
+        glob_idx: 69
       }
       {
         name: otp_ctrl_test
@@ -14413,7 +14435,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 68
+        glob_idx: 70
       }
       {
         name: sysrst_ctrl_aon_bat_disable
@@ -14424,7 +14446,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 69
+        glob_idx: 71
       }
       {
         name: sysrst_ctrl_aon_key0_out
@@ -14435,7 +14457,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 70
+        glob_idx: 72
       }
       {
         name: sysrst_ctrl_aon_key1_out
@@ -14446,7 +14468,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 71
+        glob_idx: 73
       }
       {
         name: sysrst_ctrl_aon_key2_out
@@ -14457,7 +14479,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 72
+        glob_idx: 74
       }
       {
         name: sysrst_ctrl_aon_pwrb_out
@@ -14468,7 +14490,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 73
+        glob_idx: 75
       }
       {
         name: sysrst_ctrl_aon_z3_wakeup
@@ -14479,7 +14501,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 74
+        glob_idx: 76
       }
     ]
     io_counts:
@@ -14495,7 +14517,7 @@
       {
         inouts: 42
         inputs: 15
-        outputs: 33
+        outputs: 35
         pads: 47
       }
     }

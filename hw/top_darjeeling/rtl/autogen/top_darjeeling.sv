@@ -749,7 +749,6 @@ module top_darjeeling #(
   otp_ctrl_part_pkg::otp_broadcast_t       otp_ctrl_otp_broadcast;
   otp_ctrl_pkg::otp_device_id_t       lc_ctrl_otp_device_id;
   otp_ctrl_pkg::otp_manuf_state_t       lc_ctrl_otp_manuf_state;
-  lc_ctrl_state_pkg::soc_dbg_state_t       soc_dbg_ctrl_soc_dbg_state;
   otp_ctrl_pkg::otp_device_id_t       keymgr_dpe_otp_device_id;
   prim_mubi_pkg::mubi8_t       sram_ctrl_main_otp_en_sram_ifetch;
 
@@ -2530,7 +2529,7 @@ module top_darjeeling #(
 
       // Inter-module signals
       .boot_status_i(pwrmgr_aon_boot_status),
-      .soc_dbg_state_i(soc_dbg_ctrl_soc_dbg_state),
+      .soc_dbg_state_i(lc_ctrl_state_pkg::SOC_DBG_STATE_DEFAULT),
       .soc_dbg_policy_bus_o(soc_dbg_policy_bus_o),
       .lc_hw_debug_en_i(lc_ctrl_lc_hw_debug_en),
       .lc_dft_en_i(lc_ctrl_lc_dft_en),
@@ -3345,3 +3344,8 @@ module top_darjeeling #(
   `ASSERT_KNOWN(scanmodeKnown, scanmode_i, clk_main_i, 0)
 
 endmodule
+// Local Variables:
+// fill-column:1
+// verilog-auto-arg-sort:t
+// verilog-typedef-regexp: "_[etu]$"
+// End:

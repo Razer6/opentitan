@@ -9093,8 +9093,6 @@
           act: rcv
           width: 1
           inst_name: soc_dbg_ctrl
-          default: ""
-          top_signame: soc_dbg_ctrl_soc_dbg_state
           index: -1
         }
         {
@@ -10695,7 +10693,6 @@
       otp_ctrl.otp_broadcast
       lc_ctrl.otp_device_id
       lc_ctrl.otp_manuf_state
-      soc_dbg_ctrl.soc_dbg_state
       keymgr_dpe.otp_device_id
       sram_ctrl_main.otp_en_sram_ifetch
     ]
@@ -23952,8 +23949,6 @@
         act: rcv
         width: 1
         inst_name: soc_dbg_ctrl
-        default: ""
-        top_signame: soc_dbg_ctrl_soc_dbg_state
         index: -1
       }
       {
@@ -29602,15 +29597,6 @@
         type: uni
         end_idx: -1
         default: "'0"
-      }
-      {
-        package: lc_ctrl_state_pkg
-        struct: soc_dbg_state
-        signame: soc_dbg_ctrl_soc_dbg_state
-        width: 1
-        type: uni
-        end_idx: -1
-        default: ""
       }
       {
         package: otp_ctrl_pkg
