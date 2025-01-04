@@ -16,7 +16,7 @@ filesets:
       - lowrisc:ip:tlul
       - lowrisc:prim:ram_1p_scr
       - lowrisc:ip:sram_ctrl
-      - lowrisc:constants:top_pkg
+      - lowrisc:constants:top_mio_top_pkg
       - lowrisc:constants:top_mio_jtag_id_pkg
       - lowrisc:constants:top_mio_ibex_pmp_reset_pkg
       - lowrisc:ip:lc_ctrl_pkg
@@ -61,7 +61,7 @@ filesets:
       - lowrisc:lint:common
       - lowrisc:lint:comportable
     files:
-      - lint/top_mio.vbw
+      - lint/top_mio.vbl
     file_type: veribleLintWaiver
 
 

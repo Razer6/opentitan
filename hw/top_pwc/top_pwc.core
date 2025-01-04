@@ -16,7 +16,7 @@ filesets:
       - lowrisc:ip:tlul
       - lowrisc:prim:ram_1p_scr
       - lowrisc:ip:sram_ctrl
-      - lowrisc:constants:top_pkg
+      - lowrisc:constants:top_pwc_top_pkg
       - lowrisc:constants:top_pwc_jtag_id_pkg
       - lowrisc:constants:top_pwc_ibex_pmp_reset_pkg
       - lowrisc:ip:lc_ctrl_pkg
@@ -61,7 +61,7 @@ filesets:
       - lowrisc:lint:common
       - lowrisc:lint:comportable
     files:
-      - lint/top_pwc.vbw
+      - lint/top_pwc.vbl
     file_type: veribleLintWaiver
 
 

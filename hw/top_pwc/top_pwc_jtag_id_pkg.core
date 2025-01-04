@@ -5,6 +5,9 @@ CAPI=2:
 
 name: "lowrisc:constants:top_pwc_jtag_id_pkg"
 description: "jtag id for top_pwc"
+virtual:
+  - lowrisc:constants:jtag_id_pkg
+
 filesets:
   files_rtl:
     depend:
