@@ -49,8 +49,7 @@ module prim_rdp_ram_1p
       .sram_err_inj_in (cfg_i.sram_err_inj),
       .err_inj_done    (cfg_rsp_o.err_inj_done),
       .sram_dft        (cfg_rsp_o.sram_dft),
-      .rdata_o         (rdata_o),
-      .rvalid_o        ()
+      .rdata_o         (rdata_o)
     );
   end else begin : gen_generic_sram
     prim_generic_ram_1p #(
