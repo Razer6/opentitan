@@ -10,7 +10,6 @@ filesets:
     depend:
       - lowrisc:prim:assert
       - lowrisc:prim_rdp:ram_2p_pkg
-      - lowrisc:prim:util_memload
       - rivos:ip:rvscs_ot_sram
       - scs:lib:cdc_buf
     files:
