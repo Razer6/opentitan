@@ -266,6 +266,15 @@ def generate_plic(top: Dict[str, object], out_path: Path) -> None:
     params["target"] = int(top["num_cores"], 0) if "num_cores" in top else 1
     params["prio"] = 3
 
+    plic = lib.find_module(top['module'], 'rv_plic')
+    plic = None
+    for m in top['module']:
+        if m['type'].startswith('rv_plic'):
+            plic = m
+            break
+    assert plic
+    params["module_instance_name"] = plic['type']
+
     ipgen_render("rv_plic", topname, params, out_path)
 
 
@@ -801,7 +810,8 @@ def _process_top(
                     "Falling back to the default configuration of template "
                     f"{ip_name} for initial validation.")
 
-                tpl_path = IP_TEMPLATES_PATH / ip_name
+                ip_name_path = 'rv_plic' if ip_name.startswith("rv_plic") else ip_name
+                tpl_path = IP_TEMPLATES_PATH / ip_name_path
                 ip_template = IpTemplate.from_template_path(tpl_path)
                 ip_config = IpConfig(ip_template.params,
                                      f"{top_name}_{ip_name}")
@@ -814,7 +824,10 @@ def _process_top(
                     sys.exit(1)
                 name_to_hjson[ip_name.lower()] = tpl_path
                 s = "default description of IP template {}".format(ip_name)
-                ip_objs.append(IpBlock.from_text(ip_desc, [], s))
+                ip_block = IpBlock.from_text(ip_desc, [], s)
+                if ip_name.startswith("rv_plic"):
+                    ip_block.name = ip_name
+                ip_objs.append(ip_block)
             elif ip_desc_file.is_file():
                 name_to_hjson[ip_name] = ip_desc_file
                 ip_objs.append(IpBlock.from_path(str(ip_desc_file), []))
@@ -1101,7 +1114,7 @@ def main():
                         mapping = hjson.load(falert)
                         for alert_group, alerts in mapping.items():
                             topcfg['incoming_alert'][alert_group] = alerts
-            elif m['type'] == 'rv_plic':
+            elif m['type'].startswith('rv_plic'):
                 for irq_mappings_path in m.get('incoming_interrupt', []):
                     with open(Path(args.topcfg).parent / irq_mappings_path, "r") as firq:
                         irq_mapping = hjson.load(firq)
