@@ -72,24 +72,24 @@ initial begin
   if (xbar_mode) begin
     // only enable assertions in xbar as many pins are unconnected
     $assertoff(0, tb);
-    $asserton(0, tb.dut.top_pwc.u_xbar_main);
-    $asserton(0, tb.dut.top_pwc.u_xbar_peri);
-    $asserton(0, tb.dut.top_pwc.u_xbar_mbx);
+    $asserton(0, tb.dut.top_pwc.u_xbar_pwc_main);
+    $asserton(0, tb.dut.top_pwc.u_xbar_pwc_peri);
+    $asserton(0, tb.dut.top_pwc.u_xbar_pwc_mbx);
 
 
     // These are all zero-time: anything that consumes time go at the end.
 
     // bypass clkmgr, force clocks directly
-    force tb.dut.top_pwc.u_xbar_main.clk_main_i = clk_ext_main;
-    force tb.dut.top_pwc.u_xbar_main.clk_fixed_i = clk_ext_io_div4;
-    force tb.dut.top_pwc.u_xbar_peri.clk_peri_i = clk_ext_io_div4;
-    force tb.dut.top_pwc.u_xbar_mbx.clk_mbx_i = clk_ext_main;
+    force tb.dut.top_pwc.u_xbar_pwc_main.clk_main_i = clk_ext_main;
+    force tb.dut.top_pwc.u_xbar_pwc_main.clk_fixed_i = clk_ext_io_div4;
+    force tb.dut.top_pwc.u_xbar_pwc_peri.clk_peri_i = clk_ext_io_div4;
+    force tb.dut.top_pwc.u_xbar_pwc_mbx.clk_mbx_i = clk_ext_main;
 
     // bypass rstmgr, force resets directly
-    force tb.dut.top_pwc.u_xbar_main.rst_main_ni = rst_n;
-    force tb.dut.top_pwc.u_xbar_main.rst_fixed_ni = rst_n;
-    force tb.dut.top_pwc.u_xbar_peri.rst_peri_ni = rst_n;
-    force tb.dut.top_pwc.u_xbar_mbx.rst_mbx_ni = rst_n;
+    force tb.dut.top_pwc.u_xbar_pwc_main.rst_main_ni = rst_n;
+    force tb.dut.top_pwc.u_xbar_pwc_main.rst_fixed_ni = rst_n;
+    force tb.dut.top_pwc.u_xbar_pwc_peri.rst_peri_ni = rst_n;
+    force tb.dut.top_pwc.u_xbar_pwc_mbx.rst_mbx_ni = rst_n;
 
 `ifndef GATE_LEVEL
     `DRIVE_CHIP_TL_HOST_IF(rv_core_ibex__corei, rv_core_ibex, corei_tl_h)
