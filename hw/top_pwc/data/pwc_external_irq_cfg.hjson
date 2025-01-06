@@ -1,0 +1,1279 @@
+{
+  pwc_external: [
+    // IDX 0
+    {
+      name: SOC_HOT
+      module_name: PWC_LTEU
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 1
+    {
+      name: FW_TRIP
+      module_name: PWC_LTEU
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 2
+    {
+      name: CAT_TRIP
+      module_name: PWC_LTEU
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 3
+    {
+      name: IBEX_IRQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 4
+    {
+      name: IBEX_IRQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 5
+    {
+      name: IBEX_IRQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 6
+    {
+      name: SocDpaFsmstatus0
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 7
+    {
+      name: SocDpaFsmstatus1
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 8
+    {
+      name: SocDpaFsmstatus2
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 9
+    {
+      name: SocDpaFsmstatus3
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 10
+    {
+      name: SocDpaFsmstatus4
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 11
+    {
+      name: TargetCmdAVS0
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 12
+    {
+      name: TargetCmdAVS1
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 13
+    {
+      name: TargetCmdAVS2
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 14
+    {
+      name: TargetCmdAVS3
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 15
+    {
+      name: TargetCmdAVS4
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 16
+    {
+      name: TargetCmdAVS5
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 17
+    {
+      name: TargetCmdAVS6
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 18
+    {
+      name: TargetCmdAVS7
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 19
+    {
+      name: TargetCmdAVS8
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 20
+    {
+      name: TargetCmdAVS9
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 21
+    {
+      name: TargetCmdAVS10
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 22
+    {
+      name: TargetCmdAVS11
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 23
+    {
+      name: TargetCmdAVS12
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 24
+    {
+      name: TargetCmdAVS13
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 25
+    {
+      name: AVS_ERROR_0
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 26
+    {
+      name: AVS_ERROR_1
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 27
+    {
+      name: AVS_ERROR_2
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 28
+    {
+      name: AVS_ERROR_3
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 29
+    {
+      name: AVS_ERROR_4
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+
+    // IDX 30
+    {
+      name: AVS_ERROR_5
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+
+    // IDX 31
+    {
+      name: AVS_ERROR_6
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+
+    // IDX 32
+    {
+      name: AVS_ERROR_7
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 33
+    {
+      name: AVS_ERROR_8
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 34
+    {
+      name: AVS_ERROR_9
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 35
+    {
+      name: AVS_ERROR_10
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 36
+    {
+      name: AVS_ERROR_11
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 37
+    {
+      name: AVS_ERROR_12
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 38
+    {
+      name: AVS_ERROR_13
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 39
+    {
+      name: AVS_ERROR_14
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 40
+    {
+      name: AVS_ERROR_15
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 41
+    {
+      name: AVS_ERROR_16
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 42
+    {
+      name: AVS_ERROR_17
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 43
+    {
+      name: AVS_ERROR_18
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 44
+    {
+      name: AVS_ERROR_19
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 45
+    {
+      name: AVS_ERROR_20
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 46
+    {
+      name: AVS_RESPONSE_TO_FW_0
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 47
+    {
+      name: AVS_RESPONSE_TO_FW_1
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 48
+    {
+      name: AVS_RESPONSE_TO_FW_2
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 49
+    {
+      name: AVS_RESPONSE_TO_FW_3
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 50
+    {
+      name: AVS_RESPONSE_TO_FW_4
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 51
+    {
+      name: AVS_RESPONSE_TO_FW_5
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 52
+    {
+      name: AVS_RESPONSE_TO_FW_6
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 53
+    {
+      name: AVS_RESPONSE_TO_FW_7
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 54
+    {
+      name: AVS_RESPONSE_TO_FW_8
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 55
+    {
+      name: AVS_RESPONSE_TO_FW_9
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 56
+    {
+      name: AVS_RESPONSE_TO_FW_10
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 57
+    {
+      name: AVS_RESPONSE_TO_FW_11
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 58
+    {
+      name: AVS_RESPONSE_TO_FW_12
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 59
+    {
+      name: AVS_RESPONSE_TO_FW_13
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 60
+    {
+      name: AVS_RESPONSE_TO_FW_14
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 61
+    {
+      name: AVS_RESPONSE_TO_FW_15
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 62
+    {
+      name: AVS_RESPONSE_TO_FW_16
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 63
+    {
+      name: AVS_RESPONSE_TO_FW_17
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 64
+    {
+      name: AVS_RESPONSE_TO_FW_18
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 65
+    {
+      name: AVS_RESPONSE_TO_FW_19
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 66
+    {
+      name: AVS_RESPONSE_TO_FW_20
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 67
+    {
+      name: AVS_RESPONSE_TO_FW_21
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 68
+    {
+      name: AVS_RESPONSE_TO_FW_22
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 69
+    {
+      name: AVS_RESPONSE_TO_FW_23
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 70
+    {
+      name: AVS_RESPONSE_TO_FW_24
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 71
+    {
+      name: AVS_RESPONSE_TO_FW_25
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 72
+    {
+      name: AVS_RESPONSE_TO_FW_26
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 73
+    {
+      name: AVS_RESPONSE_TO_FW_27
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 74
+    {
+      name: AVS_RESPONSE_TO_FW_28
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 75
+    {
+      name: C_STATE_ENTRY
+      module_name: PWC_BCAST
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 76
+    {
+      name: C_STATE_EXIT
+      module_name: PWC_BCAST
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 77
+    {
+      name: DPA_IDLE_ENTRY
+      module_name: PWC_BCAST
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 78
+    {
+      name: DPA_IDLE_EXIT
+      module_name: PWC_BCAST
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 79
+    {
+      name: PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 80
+    {
+      name: PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 81
+    {
+      name: PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 82
+    {
+      name: PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 83
+    {
+      name: PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 84
+    {
+      name: PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 85
+    {
+      name: PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 86
+    {
+      name: PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 87
+    {
+      name: DVFS_FSM
+      module_name: PWC_CCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 88
+    {
+      name: DVFS_FSM
+      module_name: PWC_CCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 89
+    {
+      name: DVFS_FSM
+      module_name: PWC_CCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 90
+    {
+      name: DVFS_FSM
+      module_name: PWC_CCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 91
+    {
+      name: DVFS_FSM
+      module_name: PWC_CCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 92
+    {
+      name: DVFS_FSM
+      module_name: PWC_CCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 93
+    {
+      name: DVFS_FSM
+      module_name: PWC_CCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 94
+    {
+      name: DVFS_FSM
+      module_name: PWC_CCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 95
+    {
+      name: East_STATUS
+      module_name: PWC_HMS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 96
+    {
+      name: WEST_STATUS
+      module_name: PWC_HMS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 97
+    {
+      name: ALL_PORTS_STATUS
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 98
+    {
+      name: LINK_BRINGUP_0
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 99
+    {
+      name: LINK_BRINGUP_1
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 100
+    {
+      name: LINK_BRINGUP_2
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 101
+    {
+      name: LINK_BRINGUP_3
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 102
+    {
+      name: MSG_CTRL
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 103
+    {
+      name: PHY_STATUS
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 104
+    {
+      name: ALL_PORTS_STATUS
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 105
+    {
+      name: LINK_BRINGUP_0
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 106
+    {
+      name: LINK_BRINGUP_1
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 107
+    {
+      name: LINK_BRINGUP_2
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 108
+    {
+      name: LINK_BRINGUP_3
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 109
+    {
+      name: MSG_CTRL
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 110
+    {
+      name: PHY_STATUS
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 111
+    {
+      name: ALL_PORTS_STATUS
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 112
+    {
+      name: LINK_BRINGUP_0
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 113
+    {
+      name: LINK_BRINGUP_1
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 114
+    {
+      name: LINK_BRINGUP_2
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 115
+    {
+      name: LINK_BRINGUP_3
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 116
+    {
+      name: MSG_CTRL
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 117
+    {
+      name: PHY_STATUS
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 118
+    {
+      name: ALL_PORTS_STATUS
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 119
+    {
+      name: LINK_BRINGUP_0
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 120
+    {
+      name: LINK_BRINGUP_1
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 121
+    {
+      name: LINK_BRINGUP_2
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 122
+    {
+      name: LINK_BRINGUP_3
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 123
+    {
+      name: MSG_CTRL
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 124
+    {
+      name: PHY_STATUS
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 125
+    {
+      name: ALL_PORTS_STATUS
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 126
+    {
+      name: LINK_BRINGUP_0
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 127
+    {
+      name: LINK_BRINGUP_1
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 128
+    {
+      name: LINK_BRINGUP_2
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 129
+    {
+      name: LINK_BRINGUP_3
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 130
+    {
+      name: MSG_CTRL
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 131
+    {
+      name: PHY_STATUS
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 132
+    {
+      name: ALL_PORTS_STATUS
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 133
+    {
+      name: LINK_BRINGUP_0
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 134
+    {
+      name: LINK_BRINGUP_1
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 135
+    {
+      name: LINK_BRINGUP_2
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 136
+    {
+      name: LINK_BRINGUP_3
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 137
+    {
+      name: MSG_CTRL
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 138
+    {
+      name: PHY_STATUS
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 139
+    {
+      name: ALL_PORTS_STATUS
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 140
+    {
+      name: LINK_BRINGUP_0
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 141
+    {
+      name: LINK_BRINGUP_1
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 142
+    {
+      name: LINK_BRINGUP_2
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 143
+    {
+      name: LINK_BRINGUP_3
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 144
+    {
+      name: MSG_CTRL
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 145
+    {
+      name: PHY_STATUS
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 146
+    {
+      name: ALL_PORTS_STATUS
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 147
+    {
+      name: LINK_BRINGUP_0
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 148
+    {
+      name: LINK_BRINGUP_1
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 149
+    {
+      name: LINK_BRINGUP_2
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 150
+    {
+      name: LINK_BRINGUP_3
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 151
+    {
+      name: MSG_CTRL
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 152
+    {
+      name: PHY_STATUS
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 153
+    {
+      name: IPI_FROM_PWC_0
+      module_name: PWC_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 154
+    {
+      name: IPI_FROM_PWC_1
+      module_name: PWC_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 155
+    {
+      name: IPI_FROM_PWC_2
+      module_name: PWC_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 156
+    {
+      name: IPI_FROM_ROT
+      module_name: PWC_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 157
+    {
+      name: IPI_FROM_MIO
+      module_name: PWC_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 158
+    {
+      name: IPI_FROM_DUC
+      module_name: PWC_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+  ]
+}

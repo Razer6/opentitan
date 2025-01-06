@@ -21,12 +21,12 @@ module top_pwc #(
   // parameters for aon_timer_aon
   // parameters for soc_proxy
   // parameters for sram_ctrl_ret_aon
+  parameter int SramCtrlRetAonInstSize = 4096,
+  parameter int SramCtrlRetAonNumRamInst = 1,
   parameter bit SramCtrlRetAonInstrExec = 0,
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlRetAonUseOTIntegErr = 1,
   parameter bit SramCtrlRetAonUseCompiledRam = 1,
-  parameter int SramCtrlRetAonMaxRamInst = 1,
-  parameter int SramCtrlRetAonInstDepth = 1024,
   parameter bit SramCtrlRetAonFlopRamOutput = 1,
   // parameters for rv_dm
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
@@ -34,20 +34,20 @@ module top_pwc #(
   parameter bit SecRvDmVolatileRawUnlockEn = top_pkg::SecVolatileRawUnlockEn,
   // parameters for rv_plic
   // parameters for sram_ctrl_main
+  parameter int SramCtrlMainInstSize = 65536,
+  parameter int SramCtrlMainNumRamInst = 1,
   parameter bit SramCtrlMainInstrExec = 1,
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMainUseOTIntegErr = 1,
   parameter bit SramCtrlMainUseCompiledRam = 1,
-  parameter int SramCtrlMainMaxRamInst = 1,
-  parameter int SramCtrlMainInstDepth = 1024,
   parameter bit SramCtrlMainFlopRamOutput = 1,
   // parameters for sram_ctrl_mbox
+  parameter int SramCtrlMboxInstSize = 4096,
+  parameter int SramCtrlMboxNumRamInst = 1,
   parameter bit SramCtrlMboxInstrExec = 0,
   parameter int SramCtrlMboxNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMboxUseOTIntegErr = 1,
   parameter bit SramCtrlMboxUseCompiledRam = 1,
-  parameter int SramCtrlMboxMaxRamInst = 1,
-  parameter int SramCtrlMboxInstDepth = 1024,
   parameter bit SramCtrlMboxFlopRamOutput = 1,
   // parameters for dma
   parameter bit DmaEnableDataIntgGen = 1'b1,
@@ -79,10 +79,13 @@ module top_pwc #(
   parameter bit RvCoreIbexICache = 1,
   parameter bit RvCoreIbexICacheECC = 1,
   parameter bit RvCoreIbexICacheScramble = 1,
+  parameter int unsigned RvCoreIbexICacheNWays = 2,
   parameter bit RvCoreIbexBranchPredictor = 0,
   parameter bit RvCoreIbexDbgTriggerEn = 1,
   parameter int RvCoreIbexDbgHwBreakNum = 4,
   parameter bit RvCoreIbexSecureIbex = 1,
+  parameter int unsigned RvCoreIbexDmBaseAddr = 437321728,
+  parameter int unsigned RvCoreIbexDmAddrMask = 4095,
   parameter int unsigned RvCoreIbexDmHaltAddr =
       tl_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0],
   parameter int unsigned RvCoreIbexDmExceptionAddr =
@@ -105,23 +108,22 @@ module top_pwc #(
   output tlul_pkg::tl_h2d_t       ctn_tl_h2d_o,
   input  logic [31:0] rv_boot_addr_i,
   input  lc_ctrl_pkg::lc_tx_t       rv_cpu_en_i,
+  output prim_esc_pkg::esc_rx_t       rv_core_esc_rx_o,
+  input  prim_esc_pkg::esc_tx_t       rv_core_esc_tx_i,
   input  tlul_pkg::tl_d2h_t       ctn_tl_d2h_i,
   input  lc_ctrl_pkg::lc_tx_t       lc_hw_debug_en_ext_i,
   input  lc_ctrl_pkg::lc_tx_t       lc_escalate_en_ext_i,
+  input  logic [7:0] soc_lsio_trigger_i,
   input  lc_ctrl_pkg::lc_tx_t       lc_check_byp_en_i,
-  output prim_misc_dft_pkg::sram_dft_t [SramCtrlMboxMaxRamInst-1:0] sram_main_sram_dft_o,
-  input  prim_misc_dft_pkg::sram_test_cfg_t [SramCtrlMboxMaxRamInst-1:0] sram_main_sram_test_cfg_i,
-  input  prim_misc_dft_pkg::sram_err_inj_in_t       sram_main_sram_err_inj_in_i,
-  output logic [SramCtrlMboxMaxRamInst-1:0] sram_main_err_inj_done_o,
-  output prim_misc_dft_pkg::sram_dft_t [SramCtrlMboxMaxRamInst-1:0] sram_aon_sram_dft_o,
-  input  prim_misc_dft_pkg::sram_test_cfg_t [SramCtrlMboxMaxRamInst-1:0] sram_aon_sram_test_cfg_i,
-  input  prim_misc_dft_pkg::sram_err_inj_in_t       sram_aon_sram_err_inj_in_i,
-  output logic [SramCtrlMboxMaxRamInst-1:0] sram_aon_err_inj_done_o,
-  output prim_misc_dft_pkg::sram_dft_t [SramCtrlMboxMaxRamInst-1:0] sram_mbox_sram_dft_o,
-  input  prim_misc_dft_pkg::sram_test_cfg_t [SramCtrlMboxMaxRamInst-1:0] sram_mbox_sram_test_cfg_i,
-  input  prim_misc_dft_pkg::sram_err_inj_in_t       sram_mbox_sram_err_inj_in_i,
-  output logic [SramCtrlMboxMaxRamInst-1:0] sram_mbox_err_inj_done_o,
+  input  prim_ram_1p_pkg::ram_1p_cfg_t [SramCtrlRetAonNumRamInst-1:0] sram_ctrl_ret_aon_ram_1p_cfg_i,
+  output prim_ram_1p_pkg::ram_1p_cfg_rsp_t [SramCtrlRetAonNumRamInst-1:0] sram_ctrl_ret_aon_ram_1p_cfg_rsp_o,
+  input  prim_ram_1p_pkg::ram_1p_cfg_t [SramCtrlMainNumRamInst-1:0] sram_ctrl_main_ram_1p_cfg_i,
+  output prim_ram_1p_pkg::ram_1p_cfg_rsp_t [SramCtrlMainNumRamInst-1:0] sram_ctrl_main_ram_1p_cfg_rsp_o,
+  input  prim_ram_1p_pkg::ram_1p_cfg_t [SramCtrlMboxNumRamInst-1:0] sram_ctrl_mbox_ram_1p_cfg_i,
+  output prim_ram_1p_pkg::ram_1p_cfg_rsp_t [SramCtrlMboxNumRamInst-1:0] sram_ctrl_mbox_ram_1p_cfg_rsp_o,
 
+  // Incoming interrupt of group pwc_external
+  input logic [158:0] incoming_interrupt_pwc_external_i,
 
   // gpio
   input logic [31:0]                               cio_gpio_gpio_p2d_i,
@@ -185,7 +187,7 @@ module top_pwc #(
   localparam int unsigned RvCoreIbexNEscalationSeverities = 4;
   localparam int unsigned RvCoreIbexWidthPingCounter = 16;
 
-  logic [88:0]  intr_vector;
+  logic [247:0]  intr_vector;
   // Interrupt source list
   logic [31:0] intr_gpio_gpio;
   logic intr_rv_timer_timer_expired_hart0_timer0;
@@ -420,7 +422,7 @@ module top_pwc #(
       .lc_hw_debug_en_ext_i(lc_hw_debug_en_ext_i),
       .ctn_tl_h2d_o(ctn_tl_h2d_o),
       .ctn_tl_d2h_i(ctn_tl_d2h_i),
-      .soc_lsio_trigger_i('0),
+      .soc_lsio_trigger_i(soc_lsio_trigger_i),
       .dma_lsio_trigger_o(dma_lsio_trigger),
       .soc_intr_async_i('0),
       .mubi8_true_o(sram_ctrl_main_otp_en_sram_ifetch),
@@ -440,12 +442,12 @@ module top_pwc #(
     .RndCnstLfsrSeed(RndCnstSramCtrlRetAonLfsrSeed),
     .RndCnstLfsrPerm(RndCnstSramCtrlRetAonLfsrPerm),
     .MemSizeRam(4096),
+    .InstSize(SramCtrlRetAonInstSize),
+    .NumRamInst(SramCtrlRetAonNumRamInst),
     .InstrExec(SramCtrlRetAonInstrExec),
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlRetAonUseOTIntegErr),
     .UseCompiledRam(SramCtrlRetAonUseCompiledRam),
-    .MaxRamInst(SramCtrlRetAonMaxRamInst),
-    .InstDepth(SramCtrlRetAonInstDepth),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput)
   ) u_sram_ctrl_ret_aon (
       // External alert group "pwc" [4]: fatal_error
@@ -455,14 +457,11 @@ module top_pwc #(
       // Inter-module signals
       .sram_otp_key_o(),
       .sram_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
-      .cfg_i('0),
+      .cfg_i(sram_ctrl_ret_aon_ram_1p_cfg_i),
+      .cfg_rsp_o(sram_ctrl_ret_aon_ram_1p_cfg_rsp_o),
       .lc_escalate_en_i(soc_proxy_lc_escalate_en),
       .lc_hw_debug_en_i(soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
-      .sram_err_inj_in_i(sram_aon_sram_err_inj_in_i),
-      .err_inj_done_o(sram_aon_err_inj_done_o),
-      .sram_test_cfg_i(sram_aon_sram_test_cfg_i),
-      .sram_dft_o(sram_aon_sram_dft_o),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),
@@ -546,12 +545,12 @@ module top_pwc #(
     .RndCnstLfsrSeed(RndCnstSramCtrlMainLfsrSeed),
     .RndCnstLfsrPerm(RndCnstSramCtrlMainLfsrPerm),
     .MemSizeRam(65536),
+    .InstSize(SramCtrlMainInstSize),
+    .NumRamInst(SramCtrlMainNumRamInst),
     .InstrExec(SramCtrlMainInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlMainUseOTIntegErr),
     .UseCompiledRam(SramCtrlMainUseCompiledRam),
-    .MaxRamInst(SramCtrlMainMaxRamInst),
-    .InstDepth(SramCtrlMainInstDepth),
     .FlopRamOutput(SramCtrlMainFlopRamOutput)
   ) u_sram_ctrl_main (
       // External alert group "pwc" [7]: fatal_error
@@ -561,14 +560,11 @@ module top_pwc #(
       // Inter-module signals
       .sram_otp_key_o(),
       .sram_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
-      .cfg_i('0),
+      .cfg_i(sram_ctrl_main_ram_1p_cfg_i),
+      .cfg_rsp_o(sram_ctrl_main_ram_1p_cfg_rsp_o),
       .lc_escalate_en_i(soc_proxy_lc_escalate_en),
       .lc_hw_debug_en_i(soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
-      .sram_err_inj_in_i(sram_main_sram_err_inj_in_i),
-      .err_inj_done_o(sram_main_err_inj_done_o),
-      .sram_test_cfg_i(sram_main_sram_test_cfg_i),
-      .sram_dft_o(sram_main_sram_dft_o),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),
@@ -590,12 +586,12 @@ module top_pwc #(
     .RndCnstLfsrSeed(RndCnstSramCtrlMboxLfsrSeed),
     .RndCnstLfsrPerm(RndCnstSramCtrlMboxLfsrPerm),
     .MemSizeRam(4096),
+    .InstSize(SramCtrlMboxInstSize),
+    .NumRamInst(SramCtrlMboxNumRamInst),
     .InstrExec(SramCtrlMboxInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMboxNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlMboxUseOTIntegErr),
     .UseCompiledRam(SramCtrlMboxUseCompiledRam),
-    .MaxRamInst(SramCtrlMboxMaxRamInst),
-    .InstDepth(SramCtrlMboxInstDepth),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput)
   ) u_sram_ctrl_mbox (
       // External alert group "pwc" [8]: fatal_error
@@ -605,14 +601,11 @@ module top_pwc #(
       // Inter-module signals
       .sram_otp_key_o(),
       .sram_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
-      .cfg_i('0),
+      .cfg_i(sram_ctrl_mbox_ram_1p_cfg_i),
+      .cfg_rsp_o(sram_ctrl_mbox_ram_1p_cfg_rsp_o),
       .lc_escalate_en_i(soc_proxy_lc_escalate_en),
       .lc_hw_debug_en_i(soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
-      .sram_err_inj_in_i(sram_mbox_sram_err_inj_in_i),
-      .err_inj_done_o(sram_mbox_err_inj_done_o),
-      .sram_test_cfg_i(sram_mbox_sram_test_cfg_i),
-      .sram_dft_o(sram_mbox_sram_dft_o),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),
@@ -859,10 +852,13 @@ module top_pwc #(
     .ICache(RvCoreIbexICache),
     .ICacheECC(RvCoreIbexICacheECC),
     .ICacheScramble(RvCoreIbexICacheScramble),
+    .ICacheNWays(RvCoreIbexICacheNWays),
     .BranchPredictor(RvCoreIbexBranchPredictor),
     .DbgTriggerEn(RvCoreIbexDbgTriggerEn),
     .DbgHwBreakNum(RvCoreIbexDbgHwBreakNum),
     .SecureIbex(RvCoreIbexSecureIbex),
+    .DmBaseAddr(RvCoreIbexDmBaseAddr),
+    .DmAddrMask(RvCoreIbexDmAddrMask),
     .DmHaltAddr(RvCoreIbexDmHaltAddr),
     .DmExceptionAddr(RvCoreIbexDmExceptionAddr),
     .PipeLine(RvCoreIbexPipeLine)
@@ -876,14 +872,17 @@ module top_pwc #(
 
       // Inter-module signals
       .rst_cpu_n_o(),
-      .ram_cfg_i(prim_ram_1p_pkg::RAM_1P_CFG_DEFAULT),
+      .ram_cfg_icache_tag_i(prim_ram_1p_pkg::RAM_1P_CFG_DEFAULT),
+      .ram_cfg_rsp_icache_tag_o(),
+      .ram_cfg_icache_data_i(prim_ram_1p_pkg::RAM_1P_CFG_DEFAULT),
+      .ram_cfg_rsp_icache_data_o(),
       .hart_id_i(rv_core_ibex_hart_id),
       .boot_addr_i(rv_boot_addr_i),
       .irq_software_i(rv_plic_msip),
       .irq_timer_i(rv_core_ibex_irq_timer),
       .irq_external_i(rv_plic_irq),
-      .esc_tx_i(prim_esc_pkg::ESC_TX_DEFAULT),
-      .esc_rx_o(),
+      .esc_tx_i(rv_core_esc_tx_i),
+      .esc_rx_o(rv_core_esc_rx_o),
       .debug_req_i(rv_dm_debug_req),
       .crash_dump_o(),
       .lc_cpu_en_i(rv_cpu_en_i),
@@ -916,6 +915,7 @@ module top_pwc #(
   );
   // interrupt assignments
   assign intr_vector = {
+      incoming_interrupt_pwc_external_i, // IDs [89 +: 159]
       intr_mbx5_mbx_error, // IDs [88 +: 1]
       intr_mbx5_mbx_abort, // IDs [87 +: 1]
       intr_mbx5_mbx_ready, // IDs [86 +: 1]
@@ -1138,3 +1138,8 @@ module top_pwc #(
   `ASSERT_KNOWN(scanmodeKnown, scanmode_i, clk_main_i, 0)
 
 endmodule
+// Local Variables:
+// fill-column:1
+// verilog-auto-arg-sort:t
+// verilog-typedef-regexp: "_[etu]$"
+// End:
