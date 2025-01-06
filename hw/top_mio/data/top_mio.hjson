@@ -321,7 +321,7 @@
       outgoing_alert: "mio"
     },
     { name: "rv_plic",
-      type: "rv_plic",
+      type: "rv_plic_mio",
       clock_srcs: {clk_i: "ext_main"},
       clock_group: "secure",
       reset_connections: {rst_ni: "ext_rst_main"},
@@ -484,8 +484,8 @@
                    DbgTriggerEn: "1",
                    DbgHwBreakNum: "4",
                    SecureIbex: "1",
-                   DmHaltAddr: "tl_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0]",
-                   DmExceptionAddr: "tl_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0]",
+                   DmHaltAddr: "tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0]",
+                   DmExceptionAddr: "tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0]",
                    PipeLine: "0"
                   },
       clock_srcs: {

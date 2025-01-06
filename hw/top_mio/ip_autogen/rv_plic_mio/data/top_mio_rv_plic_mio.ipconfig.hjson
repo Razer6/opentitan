@@ -1,7 +1,14 @@
 // Copyright lowRISC contributors (OpenTitan project).
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
-//
-// waiver file for rv_plic
-
-`verilator_config
+{
+  instance_name: top_mio_rv_plic_mio
+  param_values:
+  {
+    src: 66
+    target: 1
+    prio: 3
+    module_instance_name: rv_plic_mio
+    topname: mio
+  }
+}

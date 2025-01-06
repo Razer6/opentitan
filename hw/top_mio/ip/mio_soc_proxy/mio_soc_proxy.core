@@ -10,10 +10,10 @@ filesets:
     depend:
       - lowrisc:prim:assert
       - lowrisc:ip:tlul
-      - lowrisc:systems:top_mio_soc_proxy_pkg
     files:
-      - rtl/soc_proxy_core_reg_top.sv
-      - rtl/soc_proxy.sv
+      - rtl/mio_soc_proxy_reg_pkg.sv
+      - rtl/mio_soc_proxy_core_reg_top.sv
+      - rtl/mio_soc_proxy.sv
     file_type: systemVerilogSource
 
   files_verilator_waiver:
@@ -28,7 +28,7 @@ filesets:
       - lowrisc:lint:common
       - lowrisc:lint:comportable
     files:
-      - lint/soc_proxy.waiver
+      - lint/mio_soc_proxy.waiver
     file_type: waiver
 
 parameters:
@@ -43,7 +43,7 @@ targets:
       - tool_verilator  ? (files_verilator_waiver)
       - tool_ascentlint ? (files_ascentlint_waiver)
       - files_rtl
-    toplevel: soc_proxy
+    toplevel: mio_soc_proxy
 
   lint:
     <<: *default_target

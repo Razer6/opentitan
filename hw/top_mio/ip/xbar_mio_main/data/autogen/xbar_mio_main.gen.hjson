@@ -275,7 +275,7 @@
       type: device
       clock: clk_main_i
       reset: rst_main_ni
-      inst_type: rv_plic
+      inst_type: rv_plic_mio
       req_fifo_pass: false
       rsp_fifo_pass: false
       addr_range:

@@ -84,9 +84,9 @@ module top_mio #(
   parameter int unsigned RvCoreIbexDmBaseAddr = 437321728,
   parameter int unsigned RvCoreIbexDmAddrMask = 4095,
   parameter int unsigned RvCoreIbexDmHaltAddr =
-      tl_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0],
+      tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0],
   parameter int unsigned RvCoreIbexDmExceptionAddr =
-      tl_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0],
+      tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0],
   parameter bit RvCoreIbexPipeLine = 0
 ) (
 
@@ -154,7 +154,7 @@ module top_mio #(
 
   import tlul_pkg::*;
   import top_pkg::*;
-  import tl_main_pkg::*;
+  import tl_mio_main_pkg::*;
   import top_mio_pkg::*;
   // Compile-time random constants
   import top_mio_rnd_cnst_pkg::*;
@@ -467,7 +467,7 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i),
       .rst_lc_ni (rst_ext_rst_main_i)
   );
-  rv_plic #(
+  rv_plic_mio #(
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[5:5])
   ) u_rv_plic (
       // External alert group "mio" [5]: fatal_fault
@@ -480,7 +480,6 @@ module top_mio #(
       .msip_o(rv_plic_msip),
       .tl_i(rv_plic_tl_req),
       .tl_o(rv_plic_tl_rsp),
-      .intr_src_i (intr_vector),
 
       // Clock and reset connections
       .clk_i (clk_ext_main_i),

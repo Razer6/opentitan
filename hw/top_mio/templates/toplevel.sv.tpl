@@ -127,7 +127,7 @@ module top_${top["name"]} #(
 
   import tlul_pkg::*;
   import top_pkg::*;
-  import tl_main_pkg::*;
+  import tl_mio_main_pkg::*;
   import top_${top["name"]}_pkg::*;
   // Compile-time random constants
   import top_${top["name"]}_rnd_cnst_pkg::*;

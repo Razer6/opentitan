@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
 //
-# RV_PLIC register template
+# RV_PLIC_MIO register template
 #
 # Parameter (given by Python tool)
 #  - src:    Number of Interrupt Sources
@@ -10,7 +10,7 @@
 #  - prio:   Max value of interrupt priorities
 #  - module_instance_name: Module instance name.
 {
-  name:               "rv_plic",
+  name:               "rv_plic_mio",
   human_name:         "RISC-V platform level interrupt controller",
   one_line_desc:      "Interrupt controller, adhering to RISC-V PLIC specification",
   one_paragraph_desc: '''
@@ -23,7 +23,7 @@
   design_spec:        "../doc",
   dv_doc:             "../doc/dv",
   hw_checklist:       "../doc/checklist",
-  sw_checklist:       "/sw/device/lib/dif/dif_rv_plic",
+  sw_checklist:       "/sw/device/lib/dif/dif_rv_plic_mio",
   revisions: [
     {
       version:            "2.0.0",
@@ -649,7 +649,7 @@
         name: "IP",
         desc: "Interrupt Pending",
         count: "NumSrc",
-        cname: "RV_PLIC",
+        cname: "RV_PLIC_MIO",
         swaccess: "ro",
         hwaccess: "hwo",
         fields: [
@@ -664,7 +664,7 @@
         name: "IE0",
         desc: "Interrupt Enable for Target 0",
         count: "NumSrc",
-        cname: "RV_PLIC",
+        cname: "RV_PLIC_MIO",
         swaccess: "rw",
         hwaccess: "hro",
         fields: [

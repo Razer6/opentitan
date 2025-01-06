@@ -2,9 +2,9 @@
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
 //
-// Testbench module for rv_plic. Intended to use with a formal tool.
+// Testbench module for rv_plic_mio. Intended to use with a formal tool.
 
-module rv_plic_tb import rv_plic_reg_pkg::*; #(
+module rv_plic_mio_tb import rv_plic_mio_reg_pkg::*; #(
   // test all implementations
   localparam int unsigned NumInstances = 1
 ) (
@@ -24,7 +24,7 @@ module rv_plic_tb import rv_plic_reg_pkg::*; #(
   // several instances with different NumSrc and NumTarget configs here
   // (in a similar way as this has been done in prim_lfsr_fpv)
   // for (genvar k = 0; k < NumInstances; k++) begin : geNumInstances
-  rv_plic dut (
+  rv_plic_mio dut (
     .clk_i      ,
     .rst_ni     ,
     .tl_i       (tl_i[0]),
@@ -37,4 +37,4 @@ module rv_plic_tb import rv_plic_reg_pkg::*; #(
     .msip_o     (msip_o[0])
   );
 
-endmodule : rv_plic_tb
+endmodule : rv_plic_mio_tb

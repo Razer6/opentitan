@@ -6,20 +6,20 @@
 
 `include "prim_assert.sv"
 
-module rv_plic_reg_top (
+module rv_plic_mio_reg_top (
   input clk_i,
   input rst_ni,
   input  tlul_pkg::tl_h2d_t tl_i,
   output tlul_pkg::tl_d2h_t tl_o,
   // To HW
-  output rv_plic_reg_pkg::rv_plic_reg2hw_t reg2hw, // Write
-  input  rv_plic_reg_pkg::rv_plic_hw2reg_t hw2reg, // Read
+  output rv_plic_mio_reg_pkg::rv_plic_mio_reg2hw_t reg2hw, // Write
+  input  rv_plic_mio_reg_pkg::rv_plic_mio_hw2reg_t hw2reg, // Read
 
   // Integrity check errors
   output logic intg_err_o
 );
 
-  import rv_plic_reg_pkg::* ;
+  import rv_plic_mio_reg_pkg::* ;
 
   localparam int AW = 27;
   localparam int DW = 32;
@@ -6064,82 +6064,82 @@ module rv_plic_reg_top (
   logic [75:0] addr_hit;
   always_comb begin
     addr_hit = '0;
-    addr_hit[ 0] = (reg_addr == RV_PLIC_PRIO0_OFFSET);
-    addr_hit[ 1] = (reg_addr == RV_PLIC_PRIO1_OFFSET);
-    addr_hit[ 2] = (reg_addr == RV_PLIC_PRIO2_OFFSET);
-    addr_hit[ 3] = (reg_addr == RV_PLIC_PRIO3_OFFSET);
-    addr_hit[ 4] = (reg_addr == RV_PLIC_PRIO4_OFFSET);
-    addr_hit[ 5] = (reg_addr == RV_PLIC_PRIO5_OFFSET);
-    addr_hit[ 6] = (reg_addr == RV_PLIC_PRIO6_OFFSET);
-    addr_hit[ 7] = (reg_addr == RV_PLIC_PRIO7_OFFSET);
-    addr_hit[ 8] = (reg_addr == RV_PLIC_PRIO8_OFFSET);
-    addr_hit[ 9] = (reg_addr == RV_PLIC_PRIO9_OFFSET);
-    addr_hit[10] = (reg_addr == RV_PLIC_PRIO10_OFFSET);
-    addr_hit[11] = (reg_addr == RV_PLIC_PRIO11_OFFSET);
-    addr_hit[12] = (reg_addr == RV_PLIC_PRIO12_OFFSET);
-    addr_hit[13] = (reg_addr == RV_PLIC_PRIO13_OFFSET);
-    addr_hit[14] = (reg_addr == RV_PLIC_PRIO14_OFFSET);
-    addr_hit[15] = (reg_addr == RV_PLIC_PRIO15_OFFSET);
-    addr_hit[16] = (reg_addr == RV_PLIC_PRIO16_OFFSET);
-    addr_hit[17] = (reg_addr == RV_PLIC_PRIO17_OFFSET);
-    addr_hit[18] = (reg_addr == RV_PLIC_PRIO18_OFFSET);
-    addr_hit[19] = (reg_addr == RV_PLIC_PRIO19_OFFSET);
-    addr_hit[20] = (reg_addr == RV_PLIC_PRIO20_OFFSET);
-    addr_hit[21] = (reg_addr == RV_PLIC_PRIO21_OFFSET);
-    addr_hit[22] = (reg_addr == RV_PLIC_PRIO22_OFFSET);
-    addr_hit[23] = (reg_addr == RV_PLIC_PRIO23_OFFSET);
-    addr_hit[24] = (reg_addr == RV_PLIC_PRIO24_OFFSET);
-    addr_hit[25] = (reg_addr == RV_PLIC_PRIO25_OFFSET);
-    addr_hit[26] = (reg_addr == RV_PLIC_PRIO26_OFFSET);
-    addr_hit[27] = (reg_addr == RV_PLIC_PRIO27_OFFSET);
-    addr_hit[28] = (reg_addr == RV_PLIC_PRIO28_OFFSET);
-    addr_hit[29] = (reg_addr == RV_PLIC_PRIO29_OFFSET);
-    addr_hit[30] = (reg_addr == RV_PLIC_PRIO30_OFFSET);
-    addr_hit[31] = (reg_addr == RV_PLIC_PRIO31_OFFSET);
-    addr_hit[32] = (reg_addr == RV_PLIC_PRIO32_OFFSET);
-    addr_hit[33] = (reg_addr == RV_PLIC_PRIO33_OFFSET);
-    addr_hit[34] = (reg_addr == RV_PLIC_PRIO34_OFFSET);
-    addr_hit[35] = (reg_addr == RV_PLIC_PRIO35_OFFSET);
-    addr_hit[36] = (reg_addr == RV_PLIC_PRIO36_OFFSET);
-    addr_hit[37] = (reg_addr == RV_PLIC_PRIO37_OFFSET);
-    addr_hit[38] = (reg_addr == RV_PLIC_PRIO38_OFFSET);
-    addr_hit[39] = (reg_addr == RV_PLIC_PRIO39_OFFSET);
-    addr_hit[40] = (reg_addr == RV_PLIC_PRIO40_OFFSET);
-    addr_hit[41] = (reg_addr == RV_PLIC_PRIO41_OFFSET);
-    addr_hit[42] = (reg_addr == RV_PLIC_PRIO42_OFFSET);
-    addr_hit[43] = (reg_addr == RV_PLIC_PRIO43_OFFSET);
-    addr_hit[44] = (reg_addr == RV_PLIC_PRIO44_OFFSET);
-    addr_hit[45] = (reg_addr == RV_PLIC_PRIO45_OFFSET);
-    addr_hit[46] = (reg_addr == RV_PLIC_PRIO46_OFFSET);
-    addr_hit[47] = (reg_addr == RV_PLIC_PRIO47_OFFSET);
-    addr_hit[48] = (reg_addr == RV_PLIC_PRIO48_OFFSET);
-    addr_hit[49] = (reg_addr == RV_PLIC_PRIO49_OFFSET);
-    addr_hit[50] = (reg_addr == RV_PLIC_PRIO50_OFFSET);
-    addr_hit[51] = (reg_addr == RV_PLIC_PRIO51_OFFSET);
-    addr_hit[52] = (reg_addr == RV_PLIC_PRIO52_OFFSET);
-    addr_hit[53] = (reg_addr == RV_PLIC_PRIO53_OFFSET);
-    addr_hit[54] = (reg_addr == RV_PLIC_PRIO54_OFFSET);
-    addr_hit[55] = (reg_addr == RV_PLIC_PRIO55_OFFSET);
-    addr_hit[56] = (reg_addr == RV_PLIC_PRIO56_OFFSET);
-    addr_hit[57] = (reg_addr == RV_PLIC_PRIO57_OFFSET);
-    addr_hit[58] = (reg_addr == RV_PLIC_PRIO58_OFFSET);
-    addr_hit[59] = (reg_addr == RV_PLIC_PRIO59_OFFSET);
-    addr_hit[60] = (reg_addr == RV_PLIC_PRIO60_OFFSET);
-    addr_hit[61] = (reg_addr == RV_PLIC_PRIO61_OFFSET);
-    addr_hit[62] = (reg_addr == RV_PLIC_PRIO62_OFFSET);
-    addr_hit[63] = (reg_addr == RV_PLIC_PRIO63_OFFSET);
-    addr_hit[64] = (reg_addr == RV_PLIC_PRIO64_OFFSET);
-    addr_hit[65] = (reg_addr == RV_PLIC_PRIO65_OFFSET);
-    addr_hit[66] = (reg_addr == RV_PLIC_IP_0_OFFSET);
-    addr_hit[67] = (reg_addr == RV_PLIC_IP_1_OFFSET);
-    addr_hit[68] = (reg_addr == RV_PLIC_IP_2_OFFSET);
-    addr_hit[69] = (reg_addr == RV_PLIC_IE0_0_OFFSET);
-    addr_hit[70] = (reg_addr == RV_PLIC_IE0_1_OFFSET);
-    addr_hit[71] = (reg_addr == RV_PLIC_IE0_2_OFFSET);
-    addr_hit[72] = (reg_addr == RV_PLIC_THRESHOLD0_OFFSET);
-    addr_hit[73] = (reg_addr == RV_PLIC_CC0_OFFSET);
-    addr_hit[74] = (reg_addr == RV_PLIC_MSIP0_OFFSET);
-    addr_hit[75] = (reg_addr == RV_PLIC_ALERT_TEST_OFFSET);
+    addr_hit[ 0] = (reg_addr == RV_PLIC_MIO_PRIO0_OFFSET);
+    addr_hit[ 1] = (reg_addr == RV_PLIC_MIO_PRIO1_OFFSET);
+    addr_hit[ 2] = (reg_addr == RV_PLIC_MIO_PRIO2_OFFSET);
+    addr_hit[ 3] = (reg_addr == RV_PLIC_MIO_PRIO3_OFFSET);
+    addr_hit[ 4] = (reg_addr == RV_PLIC_MIO_PRIO4_OFFSET);
+    addr_hit[ 5] = (reg_addr == RV_PLIC_MIO_PRIO5_OFFSET);
+    addr_hit[ 6] = (reg_addr == RV_PLIC_MIO_PRIO6_OFFSET);
+    addr_hit[ 7] = (reg_addr == RV_PLIC_MIO_PRIO7_OFFSET);
+    addr_hit[ 8] = (reg_addr == RV_PLIC_MIO_PRIO8_OFFSET);
+    addr_hit[ 9] = (reg_addr == RV_PLIC_MIO_PRIO9_OFFSET);
+    addr_hit[10] = (reg_addr == RV_PLIC_MIO_PRIO10_OFFSET);
+    addr_hit[11] = (reg_addr == RV_PLIC_MIO_PRIO11_OFFSET);
+    addr_hit[12] = (reg_addr == RV_PLIC_MIO_PRIO12_OFFSET);
+    addr_hit[13] = (reg_addr == RV_PLIC_MIO_PRIO13_OFFSET);
+    addr_hit[14] = (reg_addr == RV_PLIC_MIO_PRIO14_OFFSET);
+    addr_hit[15] = (reg_addr == RV_PLIC_MIO_PRIO15_OFFSET);
+    addr_hit[16] = (reg_addr == RV_PLIC_MIO_PRIO16_OFFSET);
+    addr_hit[17] = (reg_addr == RV_PLIC_MIO_PRIO17_OFFSET);
+    addr_hit[18] = (reg_addr == RV_PLIC_MIO_PRIO18_OFFSET);
+    addr_hit[19] = (reg_addr == RV_PLIC_MIO_PRIO19_OFFSET);
+    addr_hit[20] = (reg_addr == RV_PLIC_MIO_PRIO20_OFFSET);
+    addr_hit[21] = (reg_addr == RV_PLIC_MIO_PRIO21_OFFSET);
+    addr_hit[22] = (reg_addr == RV_PLIC_MIO_PRIO22_OFFSET);
+    addr_hit[23] = (reg_addr == RV_PLIC_MIO_PRIO23_OFFSET);
+    addr_hit[24] = (reg_addr == RV_PLIC_MIO_PRIO24_OFFSET);
+    addr_hit[25] = (reg_addr == RV_PLIC_MIO_PRIO25_OFFSET);
+    addr_hit[26] = (reg_addr == RV_PLIC_MIO_PRIO26_OFFSET);
+    addr_hit[27] = (reg_addr == RV_PLIC_MIO_PRIO27_OFFSET);
+    addr_hit[28] = (reg_addr == RV_PLIC_MIO_PRIO28_OFFSET);
+    addr_hit[29] = (reg_addr == RV_PLIC_MIO_PRIO29_OFFSET);
+    addr_hit[30] = (reg_addr == RV_PLIC_MIO_PRIO30_OFFSET);
+    addr_hit[31] = (reg_addr == RV_PLIC_MIO_PRIO31_OFFSET);
+    addr_hit[32] = (reg_addr == RV_PLIC_MIO_PRIO32_OFFSET);
+    addr_hit[33] = (reg_addr == RV_PLIC_MIO_PRIO33_OFFSET);
+    addr_hit[34] = (reg_addr == RV_PLIC_MIO_PRIO34_OFFSET);
+    addr_hit[35] = (reg_addr == RV_PLIC_MIO_PRIO35_OFFSET);
+    addr_hit[36] = (reg_addr == RV_PLIC_MIO_PRIO36_OFFSET);
+    addr_hit[37] = (reg_addr == RV_PLIC_MIO_PRIO37_OFFSET);
+    addr_hit[38] = (reg_addr == RV_PLIC_MIO_PRIO38_OFFSET);
+    addr_hit[39] = (reg_addr == RV_PLIC_MIO_PRIO39_OFFSET);
+    addr_hit[40] = (reg_addr == RV_PLIC_MIO_PRIO40_OFFSET);
+    addr_hit[41] = (reg_addr == RV_PLIC_MIO_PRIO41_OFFSET);
+    addr_hit[42] = (reg_addr == RV_PLIC_MIO_PRIO42_OFFSET);
+    addr_hit[43] = (reg_addr == RV_PLIC_MIO_PRIO43_OFFSET);
+    addr_hit[44] = (reg_addr == RV_PLIC_MIO_PRIO44_OFFSET);
+    addr_hit[45] = (reg_addr == RV_PLIC_MIO_PRIO45_OFFSET);
+    addr_hit[46] = (reg_addr == RV_PLIC_MIO_PRIO46_OFFSET);
+    addr_hit[47] = (reg_addr == RV_PLIC_MIO_PRIO47_OFFSET);
+    addr_hit[48] = (reg_addr == RV_PLIC_MIO_PRIO48_OFFSET);
+    addr_hit[49] = (reg_addr == RV_PLIC_MIO_PRIO49_OFFSET);
+    addr_hit[50] = (reg_addr == RV_PLIC_MIO_PRIO50_OFFSET);
+    addr_hit[51] = (reg_addr == RV_PLIC_MIO_PRIO51_OFFSET);
+    addr_hit[52] = (reg_addr == RV_PLIC_MIO_PRIO52_OFFSET);
+    addr_hit[53] = (reg_addr == RV_PLIC_MIO_PRIO53_OFFSET);
+    addr_hit[54] = (reg_addr == RV_PLIC_MIO_PRIO54_OFFSET);
+    addr_hit[55] = (reg_addr == RV_PLIC_MIO_PRIO55_OFFSET);
+    addr_hit[56] = (reg_addr == RV_PLIC_MIO_PRIO56_OFFSET);
+    addr_hit[57] = (reg_addr == RV_PLIC_MIO_PRIO57_OFFSET);
+    addr_hit[58] = (reg_addr == RV_PLIC_MIO_PRIO58_OFFSET);
+    addr_hit[59] = (reg_addr == RV_PLIC_MIO_PRIO59_OFFSET);
+    addr_hit[60] = (reg_addr == RV_PLIC_MIO_PRIO60_OFFSET);
+    addr_hit[61] = (reg_addr == RV_PLIC_MIO_PRIO61_OFFSET);
+    addr_hit[62] = (reg_addr == RV_PLIC_MIO_PRIO62_OFFSET);
+    addr_hit[63] = (reg_addr == RV_PLIC_MIO_PRIO63_OFFSET);
+    addr_hit[64] = (reg_addr == RV_PLIC_MIO_PRIO64_OFFSET);
+    addr_hit[65] = (reg_addr == RV_PLIC_MIO_PRIO65_OFFSET);
+    addr_hit[66] = (reg_addr == RV_PLIC_MIO_IP_0_OFFSET);
+    addr_hit[67] = (reg_addr == RV_PLIC_MIO_IP_1_OFFSET);
+    addr_hit[68] = (reg_addr == RV_PLIC_MIO_IP_2_OFFSET);
+    addr_hit[69] = (reg_addr == RV_PLIC_MIO_IE0_0_OFFSET);
+    addr_hit[70] = (reg_addr == RV_PLIC_MIO_IE0_1_OFFSET);
+    addr_hit[71] = (reg_addr == RV_PLIC_MIO_IE0_2_OFFSET);
+    addr_hit[72] = (reg_addr == RV_PLIC_MIO_THRESHOLD0_OFFSET);
+    addr_hit[73] = (reg_addr == RV_PLIC_MIO_CC0_OFFSET);
+    addr_hit[74] = (reg_addr == RV_PLIC_MIO_MSIP0_OFFSET);
+    addr_hit[75] = (reg_addr == RV_PLIC_MIO_ALERT_TEST_OFFSET);
   end
 
   assign addrmiss = (reg_re || reg_we) ? ~|addr_hit : 1'b0 ;
@@ -6147,82 +6147,82 @@ module rv_plic_reg_top (
   // Check sub-word write is permitted
   always_comb begin
     wr_err = (reg_we &
-              ((addr_hit[ 0] & (|(RV_PLIC_PERMIT[ 0] & ~reg_be))) |
-               (addr_hit[ 1] & (|(RV_PLIC_PERMIT[ 1] & ~reg_be))) |
-               (addr_hit[ 2] & (|(RV_PLIC_PERMIT[ 2] & ~reg_be))) |
-               (addr_hit[ 3] & (|(RV_PLIC_PERMIT[ 3] & ~reg_be))) |
-               (addr_hit[ 4] & (|(RV_PLIC_PERMIT[ 4] & ~reg_be))) |
-               (addr_hit[ 5] & (|(RV_PLIC_PERMIT[ 5] & ~reg_be))) |
-               (addr_hit[ 6] & (|(RV_PLIC_PERMIT[ 6] & ~reg_be))) |
-               (addr_hit[ 7] & (|(RV_PLIC_PERMIT[ 7] & ~reg_be))) |
-               (addr_hit[ 8] & (|(RV_PLIC_PERMIT[ 8] & ~reg_be))) |
-               (addr_hit[ 9] & (|(RV_PLIC_PERMIT[ 9] & ~reg_be))) |
-               (addr_hit[10] & (|(RV_PLIC_PERMIT[10] & ~reg_be))) |
-               (addr_hit[11] & (|(RV_PLIC_PERMIT[11] & ~reg_be))) |
-               (addr_hit[12] & (|(RV_PLIC_PERMIT[12] & ~reg_be))) |
-               (addr_hit[13] & (|(RV_PLIC_PERMIT[13] & ~reg_be))) |
-               (addr_hit[14] & (|(RV_PLIC_PERMIT[14] & ~reg_be))) |
-               (addr_hit[15] & (|(RV_PLIC_PERMIT[15] & ~reg_be))) |
-               (addr_hit[16] & (|(RV_PLIC_PERMIT[16] & ~reg_be))) |
-               (addr_hit[17] & (|(RV_PLIC_PERMIT[17] & ~reg_be))) |
-               (addr_hit[18] & (|(RV_PLIC_PERMIT[18] & ~reg_be))) |
-               (addr_hit[19] & (|(RV_PLIC_PERMIT[19] & ~reg_be))) |
-               (addr_hit[20] & (|(RV_PLIC_PERMIT[20] & ~reg_be))) |
-               (addr_hit[21] & (|(RV_PLIC_PERMIT[21] & ~reg_be))) |
-               (addr_hit[22] & (|(RV_PLIC_PERMIT[22] & ~reg_be))) |
-               (addr_hit[23] & (|(RV_PLIC_PERMIT[23] & ~reg_be))) |
-               (addr_hit[24] & (|(RV_PLIC_PERMIT[24] & ~reg_be))) |
-               (addr_hit[25] & (|(RV_PLIC_PERMIT[25] & ~reg_be))) |
-               (addr_hit[26] & (|(RV_PLIC_PERMIT[26] & ~reg_be))) |
-               (addr_hit[27] & (|(RV_PLIC_PERMIT[27] & ~reg_be))) |
-               (addr_hit[28] & (|(RV_PLIC_PERMIT[28] & ~reg_be))) |
-               (addr_hit[29] & (|(RV_PLIC_PERMIT[29] & ~reg_be))) |
-               (addr_hit[30] & (|(RV_PLIC_PERMIT[30] & ~reg_be))) |
-               (addr_hit[31] & (|(RV_PLIC_PERMIT[31] & ~reg_be))) |
-               (addr_hit[32] & (|(RV_PLIC_PERMIT[32] & ~reg_be))) |
-               (addr_hit[33] & (|(RV_PLIC_PERMIT[33] & ~reg_be))) |
-               (addr_hit[34] & (|(RV_PLIC_PERMIT[34] & ~reg_be))) |
-               (addr_hit[35] & (|(RV_PLIC_PERMIT[35] & ~reg_be))) |
-               (addr_hit[36] & (|(RV_PLIC_PERMIT[36] & ~reg_be))) |
-               (addr_hit[37] & (|(RV_PLIC_PERMIT[37] & ~reg_be))) |
-               (addr_hit[38] & (|(RV_PLIC_PERMIT[38] & ~reg_be))) |
-               (addr_hit[39] & (|(RV_PLIC_PERMIT[39] & ~reg_be))) |
-               (addr_hit[40] & (|(RV_PLIC_PERMIT[40] & ~reg_be))) |
-               (addr_hit[41] & (|(RV_PLIC_PERMIT[41] & ~reg_be))) |
-               (addr_hit[42] & (|(RV_PLIC_PERMIT[42] & ~reg_be))) |
-               (addr_hit[43] & (|(RV_PLIC_PERMIT[43] & ~reg_be))) |
-               (addr_hit[44] & (|(RV_PLIC_PERMIT[44] & ~reg_be))) |
-               (addr_hit[45] & (|(RV_PLIC_PERMIT[45] & ~reg_be))) |
-               (addr_hit[46] & (|(RV_PLIC_PERMIT[46] & ~reg_be))) |
-               (addr_hit[47] & (|(RV_PLIC_PERMIT[47] & ~reg_be))) |
-               (addr_hit[48] & (|(RV_PLIC_PERMIT[48] & ~reg_be))) |
-               (addr_hit[49] & (|(RV_PLIC_PERMIT[49] & ~reg_be))) |
-               (addr_hit[50] & (|(RV_PLIC_PERMIT[50] & ~reg_be))) |
-               (addr_hit[51] & (|(RV_PLIC_PERMIT[51] & ~reg_be))) |
-               (addr_hit[52] & (|(RV_PLIC_PERMIT[52] & ~reg_be))) |
-               (addr_hit[53] & (|(RV_PLIC_PERMIT[53] & ~reg_be))) |
-               (addr_hit[54] & (|(RV_PLIC_PERMIT[54] & ~reg_be))) |
-               (addr_hit[55] & (|(RV_PLIC_PERMIT[55] & ~reg_be))) |
-               (addr_hit[56] & (|(RV_PLIC_PERMIT[56] & ~reg_be))) |
-               (addr_hit[57] & (|(RV_PLIC_PERMIT[57] & ~reg_be))) |
-               (addr_hit[58] & (|(RV_PLIC_PERMIT[58] & ~reg_be))) |
-               (addr_hit[59] & (|(RV_PLIC_PERMIT[59] & ~reg_be))) |
-               (addr_hit[60] & (|(RV_PLIC_PERMIT[60] & ~reg_be))) |
-               (addr_hit[61] & (|(RV_PLIC_PERMIT[61] & ~reg_be))) |
-               (addr_hit[62] & (|(RV_PLIC_PERMIT[62] & ~reg_be))) |
-               (addr_hit[63] & (|(RV_PLIC_PERMIT[63] & ~reg_be))) |
-               (addr_hit[64] & (|(RV_PLIC_PERMIT[64] & ~reg_be))) |
-               (addr_hit[65] & (|(RV_PLIC_PERMIT[65] & ~reg_be))) |
-               (addr_hit[66] & (|(RV_PLIC_PERMIT[66] & ~reg_be))) |
-               (addr_hit[67] & (|(RV_PLIC_PERMIT[67] & ~reg_be))) |
-               (addr_hit[68] & (|(RV_PLIC_PERMIT[68] & ~reg_be))) |
-               (addr_hit[69] & (|(RV_PLIC_PERMIT[69] & ~reg_be))) |
-               (addr_hit[70] & (|(RV_PLIC_PERMIT[70] & ~reg_be))) |
-               (addr_hit[71] & (|(RV_PLIC_PERMIT[71] & ~reg_be))) |
-               (addr_hit[72] & (|(RV_PLIC_PERMIT[72] & ~reg_be))) |
-               (addr_hit[73] & (|(RV_PLIC_PERMIT[73] & ~reg_be))) |
-               (addr_hit[74] & (|(RV_PLIC_PERMIT[74] & ~reg_be))) |
-               (addr_hit[75] & (|(RV_PLIC_PERMIT[75] & ~reg_be)))));
+              ((addr_hit[ 0] & (|(RV_PLIC_MIO_PERMIT[ 0] & ~reg_be))) |
+               (addr_hit[ 1] & (|(RV_PLIC_MIO_PERMIT[ 1] & ~reg_be))) |
+               (addr_hit[ 2] & (|(RV_PLIC_MIO_PERMIT[ 2] & ~reg_be))) |
+               (addr_hit[ 3] & (|(RV_PLIC_MIO_PERMIT[ 3] & ~reg_be))) |
+               (addr_hit[ 4] & (|(RV_PLIC_MIO_PERMIT[ 4] & ~reg_be))) |
+               (addr_hit[ 5] & (|(RV_PLIC_MIO_PERMIT[ 5] & ~reg_be))) |
+               (addr_hit[ 6] & (|(RV_PLIC_MIO_PERMIT[ 6] & ~reg_be))) |
+               (addr_hit[ 7] & (|(RV_PLIC_MIO_PERMIT[ 7] & ~reg_be))) |
+               (addr_hit[ 8] & (|(RV_PLIC_MIO_PERMIT[ 8] & ~reg_be))) |
+               (addr_hit[ 9] & (|(RV_PLIC_MIO_PERMIT[ 9] & ~reg_be))) |
+               (addr_hit[10] & (|(RV_PLIC_MIO_PERMIT[10] & ~reg_be))) |
+               (addr_hit[11] & (|(RV_PLIC_MIO_PERMIT[11] & ~reg_be))) |
+               (addr_hit[12] & (|(RV_PLIC_MIO_PERMIT[12] & ~reg_be))) |
+               (addr_hit[13] & (|(RV_PLIC_MIO_PERMIT[13] & ~reg_be))) |
+               (addr_hit[14] & (|(RV_PLIC_MIO_PERMIT[14] & ~reg_be))) |
+               (addr_hit[15] & (|(RV_PLIC_MIO_PERMIT[15] & ~reg_be))) |
+               (addr_hit[16] & (|(RV_PLIC_MIO_PERMIT[16] & ~reg_be))) |
+               (addr_hit[17] & (|(RV_PLIC_MIO_PERMIT[17] & ~reg_be))) |
+               (addr_hit[18] & (|(RV_PLIC_MIO_PERMIT[18] & ~reg_be))) |
+               (addr_hit[19] & (|(RV_PLIC_MIO_PERMIT[19] & ~reg_be))) |
+               (addr_hit[20] & (|(RV_PLIC_MIO_PERMIT[20] & ~reg_be))) |
+               (addr_hit[21] & (|(RV_PLIC_MIO_PERMIT[21] & ~reg_be))) |
+               (addr_hit[22] & (|(RV_PLIC_MIO_PERMIT[22] & ~reg_be))) |
+               (addr_hit[23] & (|(RV_PLIC_MIO_PERMIT[23] & ~reg_be))) |
+               (addr_hit[24] & (|(RV_PLIC_MIO_PERMIT[24] & ~reg_be))) |
+               (addr_hit[25] & (|(RV_PLIC_MIO_PERMIT[25] & ~reg_be))) |
+               (addr_hit[26] & (|(RV_PLIC_MIO_PERMIT[26] & ~reg_be))) |
+               (addr_hit[27] & (|(RV_PLIC_MIO_PERMIT[27] & ~reg_be))) |
+               (addr_hit[28] & (|(RV_PLIC_MIO_PERMIT[28] & ~reg_be))) |
+               (addr_hit[29] & (|(RV_PLIC_MIO_PERMIT[29] & ~reg_be))) |
+               (addr_hit[30] & (|(RV_PLIC_MIO_PERMIT[30] & ~reg_be))) |
+               (addr_hit[31] & (|(RV_PLIC_MIO_PERMIT[31] & ~reg_be))) |
+               (addr_hit[32] & (|(RV_PLIC_MIO_PERMIT[32] & ~reg_be))) |
+               (addr_hit[33] & (|(RV_PLIC_MIO_PERMIT[33] & ~reg_be))) |
+               (addr_hit[34] & (|(RV_PLIC_MIO_PERMIT[34] & ~reg_be))) |
+               (addr_hit[35] & (|(RV_PLIC_MIO_PERMIT[35] & ~reg_be))) |
+               (addr_hit[36] & (|(RV_PLIC_MIO_PERMIT[36] & ~reg_be))) |
+               (addr_hit[37] & (|(RV_PLIC_MIO_PERMIT[37] & ~reg_be))) |
+               (addr_hit[38] & (|(RV_PLIC_MIO_PERMIT[38] & ~reg_be))) |
+               (addr_hit[39] & (|(RV_PLIC_MIO_PERMIT[39] & ~reg_be))) |
+               (addr_hit[40] & (|(RV_PLIC_MIO_PERMIT[40] & ~reg_be))) |
+               (addr_hit[41] & (|(RV_PLIC_MIO_PERMIT[41] & ~reg_be))) |
+               (addr_hit[42] & (|(RV_PLIC_MIO_PERMIT[42] & ~reg_be))) |
+               (addr_hit[43] & (|(RV_PLIC_MIO_PERMIT[43] & ~reg_be))) |
+               (addr_hit[44] & (|(RV_PLIC_MIO_PERMIT[44] & ~reg_be))) |
+               (addr_hit[45] & (|(RV_PLIC_MIO_PERMIT[45] & ~reg_be))) |
+               (addr_hit[46] & (|(RV_PLIC_MIO_PERMIT[46] & ~reg_be))) |
+               (addr_hit[47] & (|(RV_PLIC_MIO_PERMIT[47] & ~reg_be))) |
+               (addr_hit[48] & (|(RV_PLIC_MIO_PERMIT[48] & ~reg_be))) |
+               (addr_hit[49] & (|(RV_PLIC_MIO_PERMIT[49] & ~reg_be))) |
+               (addr_hit[50] & (|(RV_PLIC_MIO_PERMIT[50] & ~reg_be))) |
+               (addr_hit[51] & (|(RV_PLIC_MIO_PERMIT[51] & ~reg_be))) |
+               (addr_hit[52] & (|(RV_PLIC_MIO_PERMIT[52] & ~reg_be))) |
+               (addr_hit[53] & (|(RV_PLIC_MIO_PERMIT[53] & ~reg_be))) |
+               (addr_hit[54] & (|(RV_PLIC_MIO_PERMIT[54] & ~reg_be))) |
+               (addr_hit[55] & (|(RV_PLIC_MIO_PERMIT[55] & ~reg_be))) |
+               (addr_hit[56] & (|(RV_PLIC_MIO_PERMIT[56] & ~reg_be))) |
+               (addr_hit[57] & (|(RV_PLIC_MIO_PERMIT[57] & ~reg_be))) |
+               (addr_hit[58] & (|(RV_PLIC_MIO_PERMIT[58] & ~reg_be))) |
+               (addr_hit[59] & (|(RV_PLIC_MIO_PERMIT[59] & ~reg_be))) |
+               (addr_hit[60] & (|(RV_PLIC_MIO_PERMIT[60] & ~reg_be))) |
+               (addr_hit[61] & (|(RV_PLIC_MIO_PERMIT[61] & ~reg_be))) |
+               (addr_hit[62] & (|(RV_PLIC_MIO_PERMIT[62] & ~reg_be))) |
+               (addr_hit[63] & (|(RV_PLIC_MIO_PERMIT[63] & ~reg_be))) |
+               (addr_hit[64] & (|(RV_PLIC_MIO_PERMIT[64] & ~reg_be))) |
+               (addr_hit[65] & (|(RV_PLIC_MIO_PERMIT[65] & ~reg_be))) |
+               (addr_hit[66] & (|(RV_PLIC_MIO_PERMIT[66] & ~reg_be))) |
+               (addr_hit[67] & (|(RV_PLIC_MIO_PERMIT[67] & ~reg_be))) |
+               (addr_hit[68] & (|(RV_PLIC_MIO_PERMIT[68] & ~reg_be))) |
+               (addr_hit[69] & (|(RV_PLIC_MIO_PERMIT[69] & ~reg_be))) |
+               (addr_hit[70] & (|(RV_PLIC_MIO_PERMIT[70] & ~reg_be))) |
+               (addr_hit[71] & (|(RV_PLIC_MIO_PERMIT[71] & ~reg_be))) |
+               (addr_hit[72] & (|(RV_PLIC_MIO_PERMIT[72] & ~reg_be))) |
+               (addr_hit[73] & (|(RV_PLIC_MIO_PERMIT[73] & ~reg_be))) |
+               (addr_hit[74] & (|(RV_PLIC_MIO_PERMIT[74] & ~reg_be))) |
+               (addr_hit[75] & (|(RV_PLIC_MIO_PERMIT[75] & ~reg_be)))));
   end
 
   // Generate write-enables

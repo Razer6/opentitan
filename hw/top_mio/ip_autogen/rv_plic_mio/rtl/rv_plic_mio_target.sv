@@ -14,7 +14,7 @@
 
 `include "prim_assert.sv"
 
-module rv_plic_target #(
+module rv_plic_mio_target #(
   parameter int N_SOURCE = 32,
   parameter int MAX_PRIO = 7,
 
