@@ -71,24 +71,24 @@ initial begin
   if (xbar_mode) begin
     // only enable assertions in xbar as many pins are unconnected
     $assertoff(0, tb);
-    $asserton(0, tb.dut.top_mio.u_xbar_main);
-    $asserton(0, tb.dut.top_mio.u_xbar_peri);
-    $asserton(0, tb.dut.top_mio.u_xbar_mbx);
+    $asserton(0, tb.dut.top_mio.u_xbar_mio_main);
+    $asserton(0, tb.dut.top_mio.u_xbar_mio_peri);
+    $asserton(0, tb.dut.top_mio.u_xbar_mio_mbx);
 
 
     // These are all zero-time: anything that consumes time go at the end.
 
     // bypass clkmgr, force clocks directly
-    force tb.dut.top_mio.u_xbar_main.clk_main_i = clk_ext_main;
-    force tb.dut.top_mio.u_xbar_main.clk_fixed_i = clk_ext_io_div4;
-    force tb.dut.top_mio.u_xbar_peri.clk_peri_i = clk_ext_io_div4;
-    force tb.dut.top_mio.u_xbar_mbx.clk_mbx_i = clk_ext_main;
+    force tb.dut.top_mio.u_xbar_mio_main.clk_main_i = clk_ext_main;
+    force tb.dut.top_mio.u_xbar_mio_main.clk_fixed_i = clk_ext_io_div4;
+    force tb.dut.top_mio.u_xbar_mio_peri.clk_peri_i = clk_ext_io_div4;
+    force tb.dut.top_mio.u_xbar_mio_mbx.clk_mbx_i = clk_ext_main;
 
     // bypass rstmgr, force resets directly
-    force tb.dut.top_mio.u_xbar_main.rst_main_ni = rst_n;
-    force tb.dut.top_mio.u_xbar_main.rst_fixed_ni = rst_n;
-    force tb.dut.top_mio.u_xbar_peri.rst_peri_ni = rst_n;
-    force tb.dut.top_mio.u_xbar_mbx.rst_mbx_ni = rst_n;
+    force tb.dut.top_mio.u_xbar_mio_main.rst_main_ni = rst_n;
+    force tb.dut.top_mio.u_xbar_mio_main.rst_fixed_ni = rst_n;
+    force tb.dut.top_mio.u_xbar_mio_peri.rst_peri_ni = rst_n;
+    force tb.dut.top_mio.u_xbar_mio_mbx.rst_mbx_ni = rst_n;
 
 `ifndef GATE_LEVEL
     `DRIVE_CHIP_TL_HOST_IF(rv_core_ibex__corei, rv_core_ibex, corei_tl_h)

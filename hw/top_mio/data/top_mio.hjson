@@ -573,7 +573,7 @@
         'dma.sys'                           : 'dma_sys',
         'dma.ctn_tl_h2d'                    : 'dma_ctn_tl_h2d',
         'dma.ctn_tl_d2h'                    : 'dma_ctn_tl_d2h',
-        'mbx.tl_mbx'                        : 'mbx_tl',
+        'mio_mbx.tl_mio_mbx'                : 'mbx_tl',
         'rv_dm.next_dm_addr'                : 'rv_dm_next_dm_addr',
         'rv_dm.dbg_tl_d'                    : 'rv_dm_dbg',
         'rv_core_ibex.fpga_info'            : 'fpga_info'
@@ -601,7 +601,7 @@
   // This version assumes all crossbars are instantiated at the top.
   // Assume xbar.hjson is located in the same directory of top.hjson
   xbar: [
-    { name: "main",
+    { name: "mio_main",
       clock_srcs: {clk_main_i: "ext_main",
                    clk_fixed_i: "ext_io_div4"},
       clock_group: "infra",
@@ -609,13 +609,13 @@
       reset_connections: {rst_main_ni: "ext_rst_main",
                           rst_fixed_ni: "ext_rst_io_div4"}
     },
-    { name: "peri",
+    { name: "mio_peri",
       clock_srcs: {clk_peri_i: "ext_io_div4", },
       clock_group: "infra",
       reset: "ext_rst_io_div4",
       reset_connections: {rst_peri_ni: "ext_rst_io_div4"},
     },
-    { name: "mbx",
+    { name: "mio_mbx",
       clock_srcs: {clk_mbx_i: "ext_main"},
       clock_group: "infra",
       reset: "ext_rst_main",

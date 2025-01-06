@@ -204,18 +204,18 @@ module top_mio #(
   lc_ctrl_pkg::lc_tx_t       soc_proxy_lc_hw_debug_en;
   lc_ctrl_pkg::lc_tx_t       soc_proxy_lc_escalate_en;
   prim_mubi_pkg::mubi8_t       sram_ctrl_main_otp_en_sram_ifetch;
-  tlul_pkg::tl_h2d_t       main_tl_rv_core_ibex__corei_req;
-  tlul_pkg::tl_d2h_t       main_tl_rv_core_ibex__corei_rsp;
-  tlul_pkg::tl_h2d_t       main_tl_rv_core_ibex__cored_req;
-  tlul_pkg::tl_d2h_t       main_tl_rv_core_ibex__cored_rsp;
-  tlul_pkg::tl_h2d_t       main_tl_rv_dm__sba_req;
-  tlul_pkg::tl_d2h_t       main_tl_rv_dm__sba_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_rv_core_ibex__corei_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_rv_core_ibex__corei_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_rv_core_ibex__cored_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_rv_core_ibex__cored_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_rv_dm__sba_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_rv_dm__sba_rsp;
   tlul_pkg::tl_h2d_t       rv_dm_regs_tl_d_req;
   tlul_pkg::tl_d2h_t       rv_dm_regs_tl_d_rsp;
   tlul_pkg::tl_h2d_t       rv_dm_mem_tl_d_req;
   tlul_pkg::tl_d2h_t       rv_dm_mem_tl_d_rsp;
-  tlul_pkg::tl_h2d_t       main_tl_peri_req;
-  tlul_pkg::tl_d2h_t       main_tl_peri_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_mio_peri_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_mio_peri_rsp;
   tlul_pkg::tl_h2d_t       soc_proxy_core_tl_req;
   tlul_pkg::tl_d2h_t       soc_proxy_core_tl_rsp;
   tlul_pkg::tl_h2d_t       soc_proxy_ctn_tl_req;
@@ -234,32 +234,32 @@ module top_mio #(
   tlul_pkg::tl_d2h_t       sram_ctrl_mbox_ram_tl_rsp;
   tlul_pkg::tl_h2d_t       dma_tl_d_req;
   tlul_pkg::tl_d2h_t       dma_tl_d_rsp;
-  tlul_pkg::tl_h2d_t       main_tl_dma__host_req;
-  tlul_pkg::tl_d2h_t       main_tl_dma__host_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_dma__host_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_dma__host_rsp;
   tlul_pkg::tl_h2d_t       mbx0_core_tl_d_req;
   tlul_pkg::tl_d2h_t       mbx0_core_tl_d_rsp;
-  tlul_pkg::tl_h2d_t       main_tl_mbx0__sram_req;
-  tlul_pkg::tl_d2h_t       main_tl_mbx0__sram_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_mbx0__sram_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_mbx0__sram_rsp;
   tlul_pkg::tl_h2d_t       mbx1_core_tl_d_req;
   tlul_pkg::tl_d2h_t       mbx1_core_tl_d_rsp;
-  tlul_pkg::tl_h2d_t       main_tl_mbx1__sram_req;
-  tlul_pkg::tl_d2h_t       main_tl_mbx1__sram_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_mbx1__sram_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_mbx1__sram_rsp;
   tlul_pkg::tl_h2d_t       mbx2_core_tl_d_req;
   tlul_pkg::tl_d2h_t       mbx2_core_tl_d_rsp;
-  tlul_pkg::tl_h2d_t       main_tl_mbx2__sram_req;
-  tlul_pkg::tl_d2h_t       main_tl_mbx2__sram_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_mbx2__sram_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_mbx2__sram_rsp;
   tlul_pkg::tl_h2d_t       mbx3_core_tl_d_req;
   tlul_pkg::tl_d2h_t       mbx3_core_tl_d_rsp;
-  tlul_pkg::tl_h2d_t       main_tl_mbx3__sram_req;
-  tlul_pkg::tl_d2h_t       main_tl_mbx3__sram_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_mbx3__sram_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_mbx3__sram_rsp;
   tlul_pkg::tl_h2d_t       mbx4_core_tl_d_req;
   tlul_pkg::tl_d2h_t       mbx4_core_tl_d_rsp;
-  tlul_pkg::tl_h2d_t       main_tl_mbx4__sram_req;
-  tlul_pkg::tl_d2h_t       main_tl_mbx4__sram_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_mbx4__sram_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_mbx4__sram_rsp;
   tlul_pkg::tl_h2d_t       mbx5_core_tl_d_req;
   tlul_pkg::tl_d2h_t       mbx5_core_tl_d_rsp;
-  tlul_pkg::tl_h2d_t       main_tl_mbx5__sram_req;
-  tlul_pkg::tl_d2h_t       main_tl_mbx5__sram_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_mbx5__sram_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_mbx5__sram_rsp;
   tlul_pkg::tl_h2d_t       rv_timer_tl_req;
   tlul_pkg::tl_d2h_t       rv_timer_tl_rsp;
   tlul_pkg::tl_h2d_t       sram_ctrl_ret_aon_regs_tl_req;
@@ -450,8 +450,8 @@ module top_mio #(
       .lc_check_byp_en_i(lc_check_byp_en_i),
       .strap_en_i(1'b0),
       .strap_en_override_i(1'b0),
-      .sba_tl_h_o(main_tl_rv_dm__sba_req),
-      .sba_tl_h_i(main_tl_rv_dm__sba_rsp),
+      .sba_tl_h_o(mio_main_tl_rv_dm__sba_req),
+      .sba_tl_h_i(mio_main_tl_rv_dm__sba_rsp),
       .regs_tl_d_i(rv_dm_regs_tl_d_req),
       .regs_tl_d_o(rv_dm_regs_tl_d_rsp),
       .mem_tl_d_i(rv_dm_mem_tl_d_req),
@@ -591,8 +591,8 @@ module top_mio #(
       .sys_i(dma_sys_rsp_i),
       .ctn_tl_h2d_o(dma_ctn_tl_h2d_o),
       .ctn_tl_d2h_i(dma_ctn_tl_d2h_i),
-      .host_tl_h_o(main_tl_dma__host_req),
-      .host_tl_h_i(main_tl_dma__host_rsp),
+      .host_tl_h_o(mio_main_tl_dma__host_req),
+      .host_tl_h_i(mio_main_tl_dma__host_rsp),
       .tl_d_i(dma_tl_d_req),
       .tl_d_o(dma_tl_d_rsp),
       .scanmode_i,
@@ -619,8 +619,8 @@ module top_mio #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .sram_tl_h_o(main_tl_mbx0__sram_req),
-      .sram_tl_h_i(main_tl_mbx0__sram_rsp),
+      .sram_tl_h_o(mio_main_tl_mbx0__sram_req),
+      .sram_tl_h_i(mio_main_tl_mbx0__sram_rsp),
       .core_tl_d_i(mbx0_core_tl_d_req),
       .core_tl_d_o(mbx0_core_tl_d_rsp),
       .soc_tl_d_i(mbx0_soc_tl_d_req),
@@ -648,8 +648,8 @@ module top_mio #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .sram_tl_h_o(main_tl_mbx1__sram_req),
-      .sram_tl_h_i(main_tl_mbx1__sram_rsp),
+      .sram_tl_h_o(mio_main_tl_mbx1__sram_req),
+      .sram_tl_h_i(mio_main_tl_mbx1__sram_rsp),
       .core_tl_d_i(mbx1_core_tl_d_req),
       .core_tl_d_o(mbx1_core_tl_d_rsp),
       .soc_tl_d_i(mbx1_soc_tl_d_req),
@@ -677,8 +677,8 @@ module top_mio #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .sram_tl_h_o(main_tl_mbx2__sram_req),
-      .sram_tl_h_i(main_tl_mbx2__sram_rsp),
+      .sram_tl_h_o(mio_main_tl_mbx2__sram_req),
+      .sram_tl_h_i(mio_main_tl_mbx2__sram_rsp),
       .core_tl_d_i(mbx2_core_tl_d_req),
       .core_tl_d_o(mbx2_core_tl_d_rsp),
       .soc_tl_d_i(mbx2_soc_tl_d_req),
@@ -706,8 +706,8 @@ module top_mio #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .sram_tl_h_o(main_tl_mbx3__sram_req),
-      .sram_tl_h_i(main_tl_mbx3__sram_rsp),
+      .sram_tl_h_o(mio_main_tl_mbx3__sram_req),
+      .sram_tl_h_i(mio_main_tl_mbx3__sram_rsp),
       .core_tl_d_i(mbx3_core_tl_d_req),
       .core_tl_d_o(mbx3_core_tl_d_rsp),
       .soc_tl_d_i(mbx3_soc_tl_d_req),
@@ -735,8 +735,8 @@ module top_mio #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .sram_tl_h_o(main_tl_mbx4__sram_req),
-      .sram_tl_h_i(main_tl_mbx4__sram_rsp),
+      .sram_tl_h_o(mio_main_tl_mbx4__sram_req),
+      .sram_tl_h_i(mio_main_tl_mbx4__sram_rsp),
       .core_tl_d_i(mbx4_core_tl_d_req),
       .core_tl_d_o(mbx4_core_tl_d_rsp),
       .soc_tl_d_i(mbx4_soc_tl_d_req),
@@ -764,8 +764,8 @@ module top_mio #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .sram_tl_h_o(main_tl_mbx5__sram_req),
-      .sram_tl_h_i(main_tl_mbx5__sram_rsp),
+      .sram_tl_h_o(mio_main_tl_mbx5__sram_req),
+      .sram_tl_h_i(mio_main_tl_mbx5__sram_rsp),
       .core_tl_d_i(mbx5_core_tl_d_req),
       .core_tl_d_o(mbx5_core_tl_d_rsp),
       .soc_tl_d_i(mbx5_soc_tl_d_req),
@@ -842,10 +842,10 @@ module top_mio #(
       .icache_otp_key_o(),
       .icache_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
       .fpga_info_i(fpga_info_i),
-      .corei_tl_h_o(main_tl_rv_core_ibex__corei_req),
-      .corei_tl_h_i(main_tl_rv_core_ibex__corei_rsp),
-      .cored_tl_h_o(main_tl_rv_core_ibex__cored_req),
-      .cored_tl_h_i(main_tl_rv_core_ibex__cored_rsp),
+      .corei_tl_h_o(mio_main_tl_rv_core_ibex__corei_req),
+      .corei_tl_h_i(mio_main_tl_rv_core_ibex__corei_rsp),
+      .cored_tl_h_o(mio_main_tl_rv_core_ibex__cored_req),
+      .cored_tl_h_i(mio_main_tl_rv_core_ibex__cored_rsp),
       .cfg_tl_d_i(rv_core_ibex_cfg_tl_d_req),
       .cfg_tl_d_o(rv_core_ibex_cfg_tl_d_rsp),
       .scanmode_i,
@@ -893,51 +893,51 @@ module top_mio #(
   };
 
   // TL-UL Crossbar
-  xbar_main u_xbar_main (
+  xbar_mio_main u_xbar_mio_main (
     .clk_main_i (clk_ext_main_i),
     .clk_fixed_i (clk_ext_io_div4_i),
     .rst_main_ni (rst_ext_rst_main_i),
     .rst_fixed_ni (rst_ext_rst_io_div4_i),
 
     // port: tl_rv_core_ibex__corei
-    .tl_rv_core_ibex__corei_i(main_tl_rv_core_ibex__corei_req),
-    .tl_rv_core_ibex__corei_o(main_tl_rv_core_ibex__corei_rsp),
+    .tl_rv_core_ibex__corei_i(mio_main_tl_rv_core_ibex__corei_req),
+    .tl_rv_core_ibex__corei_o(mio_main_tl_rv_core_ibex__corei_rsp),
 
     // port: tl_rv_core_ibex__cored
-    .tl_rv_core_ibex__cored_i(main_tl_rv_core_ibex__cored_req),
-    .tl_rv_core_ibex__cored_o(main_tl_rv_core_ibex__cored_rsp),
+    .tl_rv_core_ibex__cored_i(mio_main_tl_rv_core_ibex__cored_req),
+    .tl_rv_core_ibex__cored_o(mio_main_tl_rv_core_ibex__cored_rsp),
 
     // port: tl_rv_dm__sba
-    .tl_rv_dm__sba_i(main_tl_rv_dm__sba_req),
-    .tl_rv_dm__sba_o(main_tl_rv_dm__sba_rsp),
+    .tl_rv_dm__sba_i(mio_main_tl_rv_dm__sba_req),
+    .tl_rv_dm__sba_o(mio_main_tl_rv_dm__sba_rsp),
 
     // port: tl_dma__host
-    .tl_dma__host_i(main_tl_dma__host_req),
-    .tl_dma__host_o(main_tl_dma__host_rsp),
+    .tl_dma__host_i(mio_main_tl_dma__host_req),
+    .tl_dma__host_o(mio_main_tl_dma__host_rsp),
 
     // port: tl_mbx0__sram
-    .tl_mbx0__sram_i(main_tl_mbx0__sram_req),
-    .tl_mbx0__sram_o(main_tl_mbx0__sram_rsp),
+    .tl_mbx0__sram_i(mio_main_tl_mbx0__sram_req),
+    .tl_mbx0__sram_o(mio_main_tl_mbx0__sram_rsp),
 
     // port: tl_mbx1__sram
-    .tl_mbx1__sram_i(main_tl_mbx1__sram_req),
-    .tl_mbx1__sram_o(main_tl_mbx1__sram_rsp),
+    .tl_mbx1__sram_i(mio_main_tl_mbx1__sram_req),
+    .tl_mbx1__sram_o(mio_main_tl_mbx1__sram_rsp),
 
     // port: tl_mbx2__sram
-    .tl_mbx2__sram_i(main_tl_mbx2__sram_req),
-    .tl_mbx2__sram_o(main_tl_mbx2__sram_rsp),
+    .tl_mbx2__sram_i(mio_main_tl_mbx2__sram_req),
+    .tl_mbx2__sram_o(mio_main_tl_mbx2__sram_rsp),
 
     // port: tl_mbx3__sram
-    .tl_mbx3__sram_i(main_tl_mbx3__sram_req),
-    .tl_mbx3__sram_o(main_tl_mbx3__sram_rsp),
+    .tl_mbx3__sram_i(mio_main_tl_mbx3__sram_req),
+    .tl_mbx3__sram_o(mio_main_tl_mbx3__sram_rsp),
 
     // port: tl_mbx4__sram
-    .tl_mbx4__sram_i(main_tl_mbx4__sram_req),
-    .tl_mbx4__sram_o(main_tl_mbx4__sram_rsp),
+    .tl_mbx4__sram_i(mio_main_tl_mbx4__sram_req),
+    .tl_mbx4__sram_o(mio_main_tl_mbx4__sram_rsp),
 
     // port: tl_mbx5__sram
-    .tl_mbx5__sram_i(main_tl_mbx5__sram_req),
-    .tl_mbx5__sram_o(main_tl_mbx5__sram_rsp),
+    .tl_mbx5__sram_i(mio_main_tl_mbx5__sram_req),
+    .tl_mbx5__sram_o(mio_main_tl_mbx5__sram_rsp),
 
     // port: tl_rv_dm__regs
     .tl_rv_dm__regs_o(rv_dm_regs_tl_d_req),
@@ -947,9 +947,9 @@ module top_mio #(
     .tl_rv_dm__mem_o(rv_dm_mem_tl_d_req),
     .tl_rv_dm__mem_i(rv_dm_mem_tl_d_rsp),
 
-    // port: tl_peri
-    .tl_peri_o(main_tl_peri_req),
-    .tl_peri_i(main_tl_peri_rsp),
+    // port: tl_mio_peri
+    .tl_mio_peri_o(mio_main_tl_mio_peri_req),
+    .tl_mio_peri_i(mio_main_tl_mio_peri_rsp),
 
     // port: tl_soc_proxy__core
     .tl_soc_proxy__core_o(soc_proxy_core_tl_req),
@@ -1014,13 +1014,13 @@ module top_mio #(
 
     .scanmode_i
   );
-  xbar_peri u_xbar_peri (
+  xbar_mio_peri u_xbar_mio_peri (
     .clk_peri_i (clk_ext_io_div4_i),
     .rst_peri_ni (rst_ext_rst_io_div4_i),
 
-    // port: tl_main
-    .tl_main_i(main_tl_peri_req),
-    .tl_main_o(main_tl_peri_rsp),
+    // port: tl_mio_main
+    .tl_mio_main_i(mio_main_tl_mio_peri_req),
+    .tl_mio_main_o(mio_main_tl_mio_peri_rsp),
 
     // port: tl_rv_timer
     .tl_rv_timer_o(rv_timer_tl_req),
@@ -1041,13 +1041,13 @@ module top_mio #(
 
     .scanmode_i
   );
-  xbar_mbx u_xbar_mbx (
+  xbar_mio_mbx u_xbar_mio_mbx (
     .clk_mbx_i (clk_ext_main_i),
     .rst_mbx_ni (rst_ext_rst_main_i),
 
-    // port: tl_mbx
-    .tl_mbx_i(mbx_tl_req_i),
-    .tl_mbx_o(mbx_tl_rsp_o),
+    // port: tl_mio_mbx
+    .tl_mio_mbx_i(mbx_tl_req_i),
+    .tl_mio_mbx_o(mbx_tl_rsp_o),
 
     // port: tl_mbx0__soc
     .tl_mbx0__soc_o(mbx0_soc_tl_d_req),

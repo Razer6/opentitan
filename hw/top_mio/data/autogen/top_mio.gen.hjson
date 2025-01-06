@@ -1433,7 +1433,7 @@
           width: 1
           inst_name: rv_dm
           default: ""
-          top_signame: main_tl_rv_dm__sba
+          top_signame: mio_main_tl_rv_dm__sba
           index: -1
         }
         {
@@ -2373,7 +2373,7 @@
           width: 1
           inst_name: dma
           default: ""
-          top_signame: main_tl_dma__host
+          top_signame: mio_main_tl_dma__host
           index: -1
         }
         {
@@ -2488,7 +2488,7 @@
           width: 1
           inst_name: mbx0
           default: ""
-          top_signame: main_tl_mbx0__sram
+          top_signame: mio_main_tl_mbx0__sram
           index: -1
         }
         {
@@ -2609,7 +2609,7 @@
           width: 1
           inst_name: mbx1
           default: ""
-          top_signame: main_tl_mbx1__sram
+          top_signame: mio_main_tl_mbx1__sram
           index: -1
         }
         {
@@ -2730,7 +2730,7 @@
           width: 1
           inst_name: mbx2
           default: ""
-          top_signame: main_tl_mbx2__sram
+          top_signame: mio_main_tl_mbx2__sram
           index: -1
         }
         {
@@ -2851,7 +2851,7 @@
           width: 1
           inst_name: mbx3
           default: ""
-          top_signame: main_tl_mbx3__sram
+          top_signame: mio_main_tl_mbx3__sram
           index: -1
         }
         {
@@ -2972,7 +2972,7 @@
           width: 1
           inst_name: mbx4
           default: ""
-          top_signame: main_tl_mbx4__sram
+          top_signame: mio_main_tl_mbx4__sram
           index: -1
         }
         {
@@ -3093,7 +3093,7 @@
           width: 1
           inst_name: mbx5
           default: ""
-          top_signame: main_tl_mbx5__sram
+          top_signame: mio_main_tl_mbx5__sram
           index: -1
         }
         {
@@ -3786,7 +3786,7 @@
           width: 1
           inst_name: rv_core_ibex
           default: ""
-          top_signame: main_tl_rv_core_ibex__corei
+          top_signame: mio_main_tl_rv_core_ibex__corei
           index: -1
         }
         {
@@ -3798,7 +3798,7 @@
           width: 1
           inst_name: rv_core_ibex
           default: ""
-          top_signame: main_tl_rv_core_ibex__cored
+          top_signame: mio_main_tl_rv_core_ibex__cored
           index: -1
         }
         {
@@ -3873,157 +3873,157 @@
       [
         soc_proxy.mubi8_true
       ]
-      main.tl_rv_core_ibex__corei:
+      mio_main.tl_rv_core_ibex__corei:
       [
         rv_core_ibex.corei_tl_h
       ]
-      main.tl_rv_core_ibex__cored:
+      mio_main.tl_rv_core_ibex__cored:
       [
         rv_core_ibex.cored_tl_h
       ]
-      main.tl_rv_dm__sba:
+      mio_main.tl_rv_dm__sba:
       [
         rv_dm.sba_tl_h
       ]
       rv_dm.regs_tl_d:
       [
-        main.tl_rv_dm__regs
+        mio_main.tl_rv_dm__regs
       ]
       rv_dm.mem_tl_d:
       [
-        main.tl_rv_dm__mem
+        mio_main.tl_rv_dm__mem
       ]
-      main.tl_peri:
+      mio_main.tl_mio_peri:
       [
-        peri.tl_main
+        mio_peri.tl_mio_main
       ]
       soc_proxy.core_tl:
       [
-        main.tl_soc_proxy__core
+        mio_main.tl_soc_proxy__core
       ]
       soc_proxy.ctn_tl:
       [
-        main.tl_soc_proxy__ctn
+        mio_main.tl_soc_proxy__ctn
       ]
       rv_plic.tl:
       [
-        main.tl_rv_plic
+        mio_main.tl_rv_plic
       ]
       rv_core_ibex.cfg_tl_d:
       [
-        main.tl_rv_core_ibex__cfg
+        mio_main.tl_rv_core_ibex__cfg
       ]
       sram_ctrl_main.regs_tl:
       [
-        main.tl_sram_ctrl_main__regs
+        mio_main.tl_sram_ctrl_main__regs
       ]
       sram_ctrl_main.ram_tl:
       [
-        main.tl_sram_ctrl_main__ram
+        mio_main.tl_sram_ctrl_main__ram
       ]
       sram_ctrl_mbox.regs_tl:
       [
-        main.tl_sram_ctrl_mbox__regs
+        mio_main.tl_sram_ctrl_mbox__regs
       ]
       sram_ctrl_mbox.ram_tl:
       [
-        main.tl_sram_ctrl_mbox__ram
+        mio_main.tl_sram_ctrl_mbox__ram
       ]
       dma.tl_d:
       [
-        main.tl_dma
+        mio_main.tl_dma
       ]
-      main.tl_dma__host:
+      mio_main.tl_dma__host:
       [
         dma.host_tl_h
       ]
       mbx0.core_tl_d:
       [
-        main.tl_mbx0__core
+        mio_main.tl_mbx0__core
       ]
-      main.tl_mbx0__sram:
+      mio_main.tl_mbx0__sram:
       [
         mbx0.sram_tl_h
       ]
       mbx1.core_tl_d:
       [
-        main.tl_mbx1__core
+        mio_main.tl_mbx1__core
       ]
-      main.tl_mbx1__sram:
+      mio_main.tl_mbx1__sram:
       [
         mbx1.sram_tl_h
       ]
       mbx2.core_tl_d:
       [
-        main.tl_mbx2__core
+        mio_main.tl_mbx2__core
       ]
-      main.tl_mbx2__sram:
+      mio_main.tl_mbx2__sram:
       [
         mbx2.sram_tl_h
       ]
       mbx3.core_tl_d:
       [
-        main.tl_mbx3__core
+        mio_main.tl_mbx3__core
       ]
-      main.tl_mbx3__sram:
+      mio_main.tl_mbx3__sram:
       [
         mbx3.sram_tl_h
       ]
       mbx4.core_tl_d:
       [
-        main.tl_mbx4__core
+        mio_main.tl_mbx4__core
       ]
-      main.tl_mbx4__sram:
+      mio_main.tl_mbx4__sram:
       [
         mbx4.sram_tl_h
       ]
       mbx5.core_tl_d:
       [
-        main.tl_mbx5__core
+        mio_main.tl_mbx5__core
       ]
-      main.tl_mbx5__sram:
+      mio_main.tl_mbx5__sram:
       [
         mbx5.sram_tl_h
       ]
       rv_timer.tl:
       [
-        peri.tl_rv_timer
+        mio_peri.tl_rv_timer
       ]
       sram_ctrl_ret_aon.regs_tl:
       [
-        peri.tl_sram_ctrl_ret_aon__regs
+        mio_peri.tl_sram_ctrl_ret_aon__regs
       ]
       sram_ctrl_ret_aon.ram_tl:
       [
-        peri.tl_sram_ctrl_ret_aon__ram
+        mio_peri.tl_sram_ctrl_ret_aon__ram
       ]
       aon_timer_aon.tl:
       [
-        peri.tl_aon_timer_aon
+        mio_peri.tl_aon_timer_aon
       ]
       mbx0.soc_tl_d:
       [
-        mbx.tl_mbx0__soc
+        mio_mbx.tl_mbx0__soc
       ]
       mbx1.soc_tl_d:
       [
-        mbx.tl_mbx1__soc
+        mio_mbx.tl_mbx1__soc
       ]
       mbx2.soc_tl_d:
       [
-        mbx.tl_mbx2__soc
+        mio_mbx.tl_mbx2__soc
       ]
       mbx3.soc_tl_d:
       [
-        mbx.tl_mbx3__soc
+        mio_mbx.tl_mbx3__soc
       ]
       mbx4.soc_tl_d:
       [
-        mbx.tl_mbx4__soc
+        mio_mbx.tl_mbx4__soc
       ]
       mbx5.soc_tl_d:
       [
-        mbx.tl_mbx5__soc
+        mio_mbx.tl_mbx5__soc
       ]
     }
     top:
@@ -4036,7 +4036,7 @@
       dma.sys: dma_sys
       dma.ctn_tl_h2d: dma_ctn_tl_h2d
       dma.ctn_tl_d2h: dma_ctn_tl_d2h
-      mbx.tl_mbx: mbx_tl
+      mio_mbx.tl_mio_mbx: mbx_tl
       rv_dm.next_dm_addr: rv_dm_next_dm_addr
       rv_dm.dbg_tl_d: rv_dm_dbg
       rv_core_ibex.fpga_info: fpga_info
@@ -4062,7 +4062,7 @@
   xbar:
   [
     {
-      name: main
+      name: mio_main
       clock_srcs:
       {
         clk_main_i: ext_main
@@ -4105,7 +4105,7 @@
           rv_dm.mem
           rv_dm.regs
           sram_ctrl_main.ram
-          peri
+          mio_peri
           rv_plic
           sram_ctrl_main.regs
           rv_core_ibex.cfg
@@ -4126,7 +4126,7 @@
           rv_dm.mem
           rv_dm.regs
           sram_ctrl_main.ram
-          peri
+          mio_peri
           rv_plic
           sram_ctrl_main.regs
           rv_core_ibex.cfg
@@ -4147,7 +4147,7 @@
           sram_ctrl_main.ram
           sram_ctrl_mbox.ram
           soc_proxy.ctn
-          peri
+          mio_peri
         ]
         mbx0.sram:
         [
@@ -4260,7 +4260,7 @@
           pipeline: true
         }
         {
-          name: peri
+          name: mio_peri
           type: device
           clock: clk_fixed_i
           reset: rst_fixed_ni
@@ -4715,10 +4715,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           end_idx: -1
-          top_signame: main_tl_rv_core_ibex__corei
+          top_signame: mio_main_tl_rv_core_ibex__corei
           index: -1
         }
         {
@@ -4728,10 +4728,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           end_idx: -1
-          top_signame: main_tl_rv_core_ibex__cored
+          top_signame: mio_main_tl_rv_core_ibex__cored
           index: -1
         }
         {
@@ -4741,10 +4741,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           end_idx: -1
-          top_signame: main_tl_rv_dm__sba
+          top_signame: mio_main_tl_rv_dm__sba
           index: -1
         }
         {
@@ -4754,10 +4754,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           end_idx: -1
-          top_signame: main_tl_dma__host
+          top_signame: mio_main_tl_dma__host
           index: -1
         }
         {
@@ -4767,10 +4767,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           end_idx: -1
-          top_signame: main_tl_mbx0__sram
+          top_signame: mio_main_tl_mbx0__sram
           index: -1
         }
         {
@@ -4780,10 +4780,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           end_idx: -1
-          top_signame: main_tl_mbx1__sram
+          top_signame: mio_main_tl_mbx1__sram
           index: -1
         }
         {
@@ -4793,10 +4793,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           end_idx: -1
-          top_signame: main_tl_mbx2__sram
+          top_signame: mio_main_tl_mbx2__sram
           index: -1
         }
         {
@@ -4806,10 +4806,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           end_idx: -1
-          top_signame: main_tl_mbx3__sram
+          top_signame: mio_main_tl_mbx3__sram
           index: -1
         }
         {
@@ -4819,10 +4819,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           end_idx: -1
-          top_signame: main_tl_mbx4__sram
+          top_signame: mio_main_tl_mbx4__sram
           index: -1
         }
         {
@@ -4832,10 +4832,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           end_idx: -1
-          top_signame: main_tl_mbx5__sram
+          top_signame: mio_main_tl_mbx5__sram
           index: -1
         }
         {
@@ -4845,7 +4845,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: rv_dm_regs_tl_d
           index: -1
@@ -4857,22 +4857,22 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: rv_dm_mem_tl_d
           index: -1
         }
         {
-          name: tl_peri
+          name: tl_mio_peri
           struct: tl
           package: tlul_pkg
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           end_idx: -1
-          top_signame: main_tl_peri
+          top_signame: mio_main_tl_mio_peri
           index: -1
         }
         {
@@ -4882,7 +4882,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: soc_proxy_core_tl
           index: -1
@@ -4894,7 +4894,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: soc_proxy_ctn_tl
           index: -1
@@ -4906,7 +4906,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: rv_plic_tl
           index: -1
@@ -4918,7 +4918,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: rv_core_ibex_cfg_tl_d
           index: -1
@@ -4930,7 +4930,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: sram_ctrl_main_regs_tl
           index: -1
@@ -4942,7 +4942,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: sram_ctrl_main_ram_tl
           index: -1
@@ -4954,7 +4954,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: sram_ctrl_mbox_regs_tl
           index: -1
@@ -4966,7 +4966,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: sram_ctrl_mbox_ram_tl
           index: -1
@@ -4978,7 +4978,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: dma_tl_d
           index: -1
@@ -4990,7 +4990,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: mbx0_core_tl_d
           index: -1
@@ -5002,7 +5002,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: mbx1_core_tl_d
           index: -1
@@ -5014,7 +5014,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: mbx2_core_tl_d
           index: -1
@@ -5026,7 +5026,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: mbx3_core_tl_d
           index: -1
@@ -5038,7 +5038,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: mbx4_core_tl_d
           index: -1
@@ -5050,7 +5050,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: main
+          inst_name: mio_main
           default: ""
           top_signame: mbx5_core_tl_d
           index: -1
@@ -5058,7 +5058,7 @@
       ]
     }
     {
-      name: peri
+      name: mio_peri
       clock_srcs:
       {
         clk_peri_i: ext_io_div4
@@ -5083,7 +5083,7 @@
       ]
       connections:
       {
-        main:
+        mio_main:
         [
           rv_timer
           sram_ctrl_ret_aon.ram
@@ -5094,7 +5094,7 @@
       nodes:
       [
         {
-          name: main
+          name: mio_main
           type: host
           addr_space: hart
           clock: clk_peri_i
@@ -5200,15 +5200,15 @@
       inter_signal_list:
       [
         {
-          name: tl_main
+          name: tl_mio_main
           struct: tl
           package: tlul_pkg
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: peri
+          inst_name: mio_peri
           default: ""
-          top_signame: main_tl_peri
+          top_signame: mio_main_tl_mio_peri
           index: -1
         }
         {
@@ -5218,7 +5218,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: peri
+          inst_name: mio_peri
           default: ""
           top_signame: rv_timer_tl
           index: -1
@@ -5230,7 +5230,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: peri
+          inst_name: mio_peri
           default: ""
           top_signame: sram_ctrl_ret_aon_regs_tl
           index: -1
@@ -5242,7 +5242,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: peri
+          inst_name: mio_peri
           default: ""
           top_signame: sram_ctrl_ret_aon_ram_tl
           index: -1
@@ -5254,7 +5254,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: peri
+          inst_name: mio_peri
           default: ""
           top_signame: aon_timer_aon_tl
           index: -1
@@ -5262,7 +5262,7 @@
       ]
     }
     {
-      name: mbx
+      name: mio_mbx
       clock_srcs:
       {
         clk_mbx_i: ext_main
@@ -5287,7 +5287,7 @@
       ]
       connections:
       {
-        mbx:
+        mio_mbx:
         [
           mbx0.soc
           mbx1.soc
@@ -5300,7 +5300,7 @@
       nodes:
       [
         {
-          name: mbx
+          name: mio_mbx
           type: host
           addr_space: soc_mbx
           clock: clk_mbx_i
@@ -5454,13 +5454,13 @@
       inter_signal_list:
       [
         {
-          name: tl_mbx
+          name: tl_mio_mbx
           struct: tl
           package: tlul_pkg
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: mbx
+          inst_name: mio_mbx
           default: ""
           external: true
           top_signame: mbx_tl
@@ -5474,7 +5474,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: mbx
+          inst_name: mio_mbx
           default: ""
           top_signame: mbx0_soc_tl_d
           index: -1
@@ -5486,7 +5486,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: mbx
+          inst_name: mio_mbx
           default: ""
           top_signame: mbx1_soc_tl_d
           index: -1
@@ -5498,7 +5498,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: mbx
+          inst_name: mio_mbx
           default: ""
           top_signame: mbx2_soc_tl_d
           index: -1
@@ -5510,7 +5510,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: mbx
+          inst_name: mio_mbx
           default: ""
           top_signame: mbx3_soc_tl_d
           index: -1
@@ -5522,7 +5522,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: mbx
+          inst_name: mio_mbx
           default: ""
           top_signame: mbx4_soc_tl_d
           index: -1
@@ -5534,7 +5534,7 @@
           type: req_rsp
           act: req
           width: 1
-          inst_name: mbx
+          inst_name: mio_mbx
           default: ""
           top_signame: mbx5_soc_tl_d
           index: -1
@@ -6936,7 +6936,7 @@
         width: 1
         inst_name: rv_dm
         default: ""
-        top_signame: main_tl_rv_dm__sba
+        top_signame: mio_main_tl_rv_dm__sba
         index: -1
       }
       {
@@ -7397,7 +7397,7 @@
         width: 1
         inst_name: dma
         default: ""
-        top_signame: main_tl_dma__host
+        top_signame: mio_main_tl_dma__host
         index: -1
       }
       {
@@ -7462,7 +7462,7 @@
         width: 1
         inst_name: mbx0
         default: ""
-        top_signame: main_tl_mbx0__sram
+        top_signame: mio_main_tl_mbx0__sram
         index: -1
       }
       {
@@ -7540,7 +7540,7 @@
         width: 1
         inst_name: mbx1
         default: ""
-        top_signame: main_tl_mbx1__sram
+        top_signame: mio_main_tl_mbx1__sram
         index: -1
       }
       {
@@ -7618,7 +7618,7 @@
         width: 1
         inst_name: mbx2
         default: ""
-        top_signame: main_tl_mbx2__sram
+        top_signame: mio_main_tl_mbx2__sram
         index: -1
       }
       {
@@ -7696,7 +7696,7 @@
         width: 1
         inst_name: mbx3
         default: ""
-        top_signame: main_tl_mbx3__sram
+        top_signame: mio_main_tl_mbx3__sram
         index: -1
       }
       {
@@ -7774,7 +7774,7 @@
         width: 1
         inst_name: mbx4
         default: ""
-        top_signame: main_tl_mbx4__sram
+        top_signame: mio_main_tl_mbx4__sram
         index: -1
       }
       {
@@ -7852,7 +7852,7 @@
         width: 1
         inst_name: mbx5
         default: ""
-        top_signame: main_tl_mbx5__sram
+        top_signame: mio_main_tl_mbx5__sram
         index: -1
       }
       {
@@ -8155,7 +8155,7 @@
         width: 1
         inst_name: rv_core_ibex
         default: ""
-        top_signame: main_tl_rv_core_ibex__corei
+        top_signame: mio_main_tl_rv_core_ibex__corei
         index: -1
       }
       {
@@ -8167,7 +8167,7 @@
         width: 1
         inst_name: rv_core_ibex
         default: ""
-        top_signame: main_tl_rv_core_ibex__cored
+        top_signame: mio_main_tl_rv_core_ibex__cored
         index: -1
       }
       {
@@ -8190,10 +8190,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         end_idx: -1
-        top_signame: main_tl_rv_core_ibex__corei
+        top_signame: mio_main_tl_rv_core_ibex__corei
         index: -1
       }
       {
@@ -8203,10 +8203,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         end_idx: -1
-        top_signame: main_tl_rv_core_ibex__cored
+        top_signame: mio_main_tl_rv_core_ibex__cored
         index: -1
       }
       {
@@ -8216,10 +8216,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         end_idx: -1
-        top_signame: main_tl_rv_dm__sba
+        top_signame: mio_main_tl_rv_dm__sba
         index: -1
       }
       {
@@ -8229,10 +8229,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         end_idx: -1
-        top_signame: main_tl_dma__host
+        top_signame: mio_main_tl_dma__host
         index: -1
       }
       {
@@ -8242,10 +8242,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         end_idx: -1
-        top_signame: main_tl_mbx0__sram
+        top_signame: mio_main_tl_mbx0__sram
         index: -1
       }
       {
@@ -8255,10 +8255,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         end_idx: -1
-        top_signame: main_tl_mbx1__sram
+        top_signame: mio_main_tl_mbx1__sram
         index: -1
       }
       {
@@ -8268,10 +8268,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         end_idx: -1
-        top_signame: main_tl_mbx2__sram
+        top_signame: mio_main_tl_mbx2__sram
         index: -1
       }
       {
@@ -8281,10 +8281,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         end_idx: -1
-        top_signame: main_tl_mbx3__sram
+        top_signame: mio_main_tl_mbx3__sram
         index: -1
       }
       {
@@ -8294,10 +8294,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         end_idx: -1
-        top_signame: main_tl_mbx4__sram
+        top_signame: mio_main_tl_mbx4__sram
         index: -1
       }
       {
@@ -8307,10 +8307,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         end_idx: -1
-        top_signame: main_tl_mbx5__sram
+        top_signame: mio_main_tl_mbx5__sram
         index: -1
       }
       {
@@ -8320,7 +8320,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: rv_dm_regs_tl_d
         index: -1
@@ -8332,22 +8332,22 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: rv_dm_mem_tl_d
         index: -1
       }
       {
-        name: tl_peri
+        name: tl_mio_peri
         struct: tl
         package: tlul_pkg
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         end_idx: -1
-        top_signame: main_tl_peri
+        top_signame: mio_main_tl_mio_peri
         index: -1
       }
       {
@@ -8357,7 +8357,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: soc_proxy_core_tl
         index: -1
@@ -8369,7 +8369,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: soc_proxy_ctn_tl
         index: -1
@@ -8381,7 +8381,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: rv_plic_tl
         index: -1
@@ -8393,7 +8393,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: rv_core_ibex_cfg_tl_d
         index: -1
@@ -8405,7 +8405,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: sram_ctrl_main_regs_tl
         index: -1
@@ -8417,7 +8417,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: sram_ctrl_main_ram_tl
         index: -1
@@ -8429,7 +8429,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: sram_ctrl_mbox_regs_tl
         index: -1
@@ -8441,7 +8441,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: sram_ctrl_mbox_ram_tl
         index: -1
@@ -8453,7 +8453,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: dma_tl_d
         index: -1
@@ -8465,7 +8465,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: mbx0_core_tl_d
         index: -1
@@ -8477,7 +8477,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: mbx1_core_tl_d
         index: -1
@@ -8489,7 +8489,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: mbx2_core_tl_d
         index: -1
@@ -8501,7 +8501,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: mbx3_core_tl_d
         index: -1
@@ -8513,7 +8513,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: mbx4_core_tl_d
         index: -1
@@ -8525,21 +8525,21 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: main
+        inst_name: mio_main
         default: ""
         top_signame: mbx5_core_tl_d
         index: -1
       }
       {
-        name: tl_main
+        name: tl_mio_main
         struct: tl
         package: tlul_pkg
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: peri
+        inst_name: mio_peri
         default: ""
-        top_signame: main_tl_peri
+        top_signame: mio_main_tl_mio_peri
         index: -1
       }
       {
@@ -8549,7 +8549,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: peri
+        inst_name: mio_peri
         default: ""
         top_signame: rv_timer_tl
         index: -1
@@ -8561,7 +8561,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: peri
+        inst_name: mio_peri
         default: ""
         top_signame: sram_ctrl_ret_aon_regs_tl
         index: -1
@@ -8573,7 +8573,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: peri
+        inst_name: mio_peri
         default: ""
         top_signame: sram_ctrl_ret_aon_ram_tl
         index: -1
@@ -8585,19 +8585,19 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: peri
+        inst_name: mio_peri
         default: ""
         top_signame: aon_timer_aon_tl
         index: -1
       }
       {
-        name: tl_mbx
+        name: tl_mio_mbx
         struct: tl
         package: tlul_pkg
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: mbx
+        inst_name: mio_mbx
         default: ""
         external: true
         top_signame: mbx_tl
@@ -8611,7 +8611,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: mbx
+        inst_name: mio_mbx
         default: ""
         top_signame: mbx0_soc_tl_d
         index: -1
@@ -8623,7 +8623,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: mbx
+        inst_name: mio_mbx
         default: ""
         top_signame: mbx1_soc_tl_d
         index: -1
@@ -8635,7 +8635,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: mbx
+        inst_name: mio_mbx
         default: ""
         top_signame: mbx2_soc_tl_d
         index: -1
@@ -8647,7 +8647,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: mbx
+        inst_name: mio_mbx
         default: ""
         top_signame: mbx3_soc_tl_d
         index: -1
@@ -8659,7 +8659,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: mbx
+        inst_name: mio_mbx
         default: ""
         top_signame: mbx4_soc_tl_d
         index: -1
@@ -8671,7 +8671,7 @@
         type: req_rsp
         act: req
         width: 1
-        inst_name: mbx
+        inst_name: mio_mbx
         default: ""
         top_signame: mbx5_soc_tl_d
         index: -1
@@ -9157,7 +9157,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: main_tl_rv_core_ibex__corei_req
+        signame: mio_main_tl_rv_core_ibex__corei_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9168,7 +9168,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: main_tl_rv_core_ibex__corei_rsp
+        signame: mio_main_tl_rv_core_ibex__corei_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9179,7 +9179,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: main_tl_rv_core_ibex__cored_req
+        signame: mio_main_tl_rv_core_ibex__cored_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9190,7 +9190,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: main_tl_rv_core_ibex__cored_rsp
+        signame: mio_main_tl_rv_core_ibex__cored_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9201,7 +9201,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: main_tl_rv_dm__sba_req
+        signame: mio_main_tl_rv_dm__sba_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9212,7 +9212,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: main_tl_rv_dm__sba_rsp
+        signame: mio_main_tl_rv_dm__sba_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9267,7 +9267,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: main_tl_peri_req
+        signame: mio_main_tl_mio_peri_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9278,7 +9278,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: main_tl_peri_rsp
+        signame: mio_main_tl_mio_peri_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9487,7 +9487,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: main_tl_dma__host_req
+        signame: mio_main_tl_dma__host_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9498,7 +9498,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: main_tl_dma__host_rsp
+        signame: mio_main_tl_dma__host_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9531,7 +9531,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: main_tl_mbx0__sram_req
+        signame: mio_main_tl_mbx0__sram_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9542,7 +9542,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: main_tl_mbx0__sram_rsp
+        signame: mio_main_tl_mbx0__sram_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9575,7 +9575,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: main_tl_mbx1__sram_req
+        signame: mio_main_tl_mbx1__sram_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9586,7 +9586,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: main_tl_mbx1__sram_rsp
+        signame: mio_main_tl_mbx1__sram_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9619,7 +9619,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: main_tl_mbx2__sram_req
+        signame: mio_main_tl_mbx2__sram_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9630,7 +9630,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: main_tl_mbx2__sram_rsp
+        signame: mio_main_tl_mbx2__sram_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9663,7 +9663,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: main_tl_mbx3__sram_req
+        signame: mio_main_tl_mbx3__sram_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9674,7 +9674,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: main_tl_mbx3__sram_rsp
+        signame: mio_main_tl_mbx3__sram_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9707,7 +9707,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: main_tl_mbx4__sram_req
+        signame: mio_main_tl_mbx4__sram_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9718,7 +9718,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: main_tl_mbx4__sram_rsp
+        signame: mio_main_tl_mbx4__sram_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9751,7 +9751,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: main_tl_mbx5__sram_req
+        signame: mio_main_tl_mbx5__sram_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -9762,7 +9762,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: main_tl_mbx5__sram_rsp
+        signame: mio_main_tl_mbx5__sram_rsp
         width: 1
         type: req_rsp
         end_idx: -1
