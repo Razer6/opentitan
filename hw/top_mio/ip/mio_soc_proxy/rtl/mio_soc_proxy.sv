@@ -6,9 +6,9 @@
 
 `include "prim_assert.sv"
 
-module soc_proxy
-  import soc_proxy_reg_pkg::*;
-  import soc_proxy_pkg::*;
+module mio_soc_proxy
+  import mio_soc_proxy_reg_pkg::*;
+  import mio_soc_proxy_pkg::*;
 #(
   parameter logic [NumAlerts-1:0] AlertAsyncOn = {NumAlerts{1'b1}}
 ) (
@@ -54,10 +54,10 @@ module soc_proxy
   assign mubi8_true_o = prim_mubi_pkg::MuBi8True; 
 
   // Register node
-  soc_proxy_core_reg2hw_t reg2hw;
-  soc_proxy_core_hw2reg_t hw2reg;
+  mio_soc_proxy_core_reg2hw_t reg2hw;
+  mio_soc_proxy_core_hw2reg_t hw2reg;
   logic reg_top_intg_err;
-  soc_proxy_core_reg_top u_reg (
+  mio_soc_proxy_core_reg_top u_reg (
     .clk_i,
     .rst_ni,
     .tl_i       (core_tl_i),

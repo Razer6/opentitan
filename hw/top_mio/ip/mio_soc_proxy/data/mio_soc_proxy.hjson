@@ -3,8 +3,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 {
-  name:               "soc_proxy"
-  human_name:         "SoC Proxy"
+  name:               "mio_soc_proxy"
+  human_name:         "MIO SoC Proxy"
   one_line_desc:      "Facilitates the breakout of signals and buses internal to OpenTitan"
   cip_id:             "38" // unique comportable IP identifier defined under KNOWN_CIP_IDS in the regtool
   design_spec:        "../doc"

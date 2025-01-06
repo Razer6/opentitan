@@ -245,7 +245,7 @@
       outgoing_alert: "mio"
     },
     { name: "soc_proxy",
-      type: "soc_proxy",
+      type: "mio_soc_proxy",
       clock_srcs: {clk_i: "ext_main"},
       reset_connections: {
         rst_ni: {

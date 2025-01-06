@@ -353,7 +353,7 @@ module top_mio #(
       .rst_ni (rst_ext_rst_io_div4_i),
       .rst_aon_ni (rst_ext_rst_aon_i)
   );
-  soc_proxy #(
+  mio_soc_proxy #(
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[2:2])
   ) u_soc_proxy (
 

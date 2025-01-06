@@ -6,7 +6,7 @@
 
 `include "prim_assert.sv"
 
-module soc_proxy_ctn_reg_top (
+module mio_soc_proxy_ctn_reg_top (
   input clk_i,
   input rst_ni,
   input  tlul_pkg::tl_h2d_t tl_i,
@@ -17,7 +17,7 @@ module soc_proxy_ctn_reg_top (
   output logic intg_err_o
 );
 
-  import soc_proxy_reg_pkg::* ;
+  import mio_soc_proxy_reg_pkg::* ;
 
 
 

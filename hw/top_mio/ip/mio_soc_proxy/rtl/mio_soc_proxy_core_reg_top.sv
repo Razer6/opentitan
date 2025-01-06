@@ -6,20 +6,20 @@
 
 `include "prim_assert.sv"
 
-module soc_proxy_core_reg_top (
+module mio_soc_proxy_core_reg_top (
   input clk_i,
   input rst_ni,
   input  tlul_pkg::tl_h2d_t tl_i,
   output tlul_pkg::tl_d2h_t tl_o,
   // To HW
-  output soc_proxy_reg_pkg::soc_proxy_core_reg2hw_t reg2hw, // Write
-  input  soc_proxy_reg_pkg::soc_proxy_core_hw2reg_t hw2reg, // Read
+  output mio_soc_proxy_reg_pkg::mio_soc_proxy_core_reg2hw_t reg2hw, // Write
+  input  mio_soc_proxy_reg_pkg::mio_soc_proxy_core_hw2reg_t hw2reg, // Read
 
   // Integrity check errors
   output logic intg_err_o
 );
 
-  import soc_proxy_reg_pkg::* ;
+  import mio_soc_proxy_reg_pkg::* ;
 
   localparam int AW = 4;
   localparam int DW = 32;
@@ -233,10 +233,10 @@ module soc_proxy_core_reg_top (
   logic [3:0] addr_hit;
   always_comb begin
     addr_hit = '0;
-    addr_hit[0] = (reg_addr == SOC_PROXY_INTR_STATE_OFFSET);
-    addr_hit[1] = (reg_addr == SOC_PROXY_INTR_ENABLE_OFFSET);
-    addr_hit[2] = (reg_addr == SOC_PROXY_INTR_TEST_OFFSET);
-    addr_hit[3] = (reg_addr == SOC_PROXY_ALERT_TEST_OFFSET);
+    addr_hit[0] = (reg_addr == MIO_SOC_PROXY_INTR_STATE_OFFSET);
+    addr_hit[1] = (reg_addr == MIO_SOC_PROXY_INTR_ENABLE_OFFSET);
+    addr_hit[2] = (reg_addr == MIO_SOC_PROXY_INTR_TEST_OFFSET);
+    addr_hit[3] = (reg_addr == MIO_SOC_PROXY_ALERT_TEST_OFFSET);
   end
 
   assign addrmiss = (reg_re || reg_we) ? ~|addr_hit : 1'b0 ;
@@ -244,10 +244,10 @@ module soc_proxy_core_reg_top (
   // Check sub-word write is permitted
   always_comb begin
     wr_err = (reg_we &
-              ((addr_hit[0] & (|(SOC_PROXY_CORE_PERMIT[0] & ~reg_be))) |
-               (addr_hit[1] & (|(SOC_PROXY_CORE_PERMIT[1] & ~reg_be))) |
-               (addr_hit[2] & (|(SOC_PROXY_CORE_PERMIT[2] & ~reg_be))) |
-               (addr_hit[3] & (|(SOC_PROXY_CORE_PERMIT[3] & ~reg_be)))));
+              ((addr_hit[0] & (|(MIO_SOC_PROXY_CORE_PERMIT[0] & ~reg_be))) |
+               (addr_hit[1] & (|(MIO_SOC_PROXY_CORE_PERMIT[1] & ~reg_be))) |
+               (addr_hit[2] & (|(MIO_SOC_PROXY_CORE_PERMIT[2] & ~reg_be))) |
+               (addr_hit[3] & (|(MIO_SOC_PROXY_CORE_PERMIT[3] & ~reg_be)))));
   end
 
   // Generate write-enables
