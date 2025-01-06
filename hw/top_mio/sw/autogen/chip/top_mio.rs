@@ -509,6 +509,24 @@ pub enum PlicIrqId {
     Mbx5MbxAbort = 55,
     /// mbx5_mbx_error
     Mbx5MbxError = 56,
+    /// MIO_HDR_IPI_FROM_MIO_0
+    MioHdrIpiFromMio0 = 57,
+    /// MIO_HDR_IPI_FROM_MIO_1
+    MioHdrIpiFromMio1 = 58,
+    /// MIO_HDR_IPI_FROM_MIO_2
+    MioHdrIpiFromMio2 = 59,
+    /// MIO_HDR_IPI_FROM_PWC
+    MioHdrIpiFromPwc = 60,
+    /// MIO_HDR_IPI_FROM_ROT
+    MioHdrIpiFromRot = 61,
+    /// MIO_HDR_IPI_FROM_PWC
+    MioHdrIpiFromPwc = 62,
+    /// LIO_GRP_A_IBEX_IRQ
+    LioGrpAIbexIrq = 63,
+    /// LIO_GRP_B_IBEX_IRQ
+    LioGrpBIbexIrq = 64,
+    /// LIO_GRP_C_IBEX_IRQ
+    LioGrpCIbexIrq = 65,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -572,6 +590,15 @@ impl TryFrom<u32> for PlicIrqId {
             54 => Ok(Self::Mbx5MbxReady),
             55 => Ok(Self::Mbx5MbxAbort),
             56 => Ok(Self::Mbx5MbxError),
+            57 => Ok(Self::MioHdrIpiFromMio0),
+            58 => Ok(Self::MioHdrIpiFromMio1),
+            59 => Ok(Self::MioHdrIpiFromMio2),
+            60 => Ok(Self::MioHdrIpiFromPwc),
+            61 => Ok(Self::MioHdrIpiFromRot),
+            62 => Ok(Self::MioHdrIpiFromPwc),
+            63 => Ok(Self::LioGrpAIbexIrq),
+            64 => Ok(Self::LioGrpBIbexIrq),
+            65 => Ok(Self::LioGrpCIbexIrq),
             _ => Err(val),
         }
     }
@@ -592,7 +619,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 57] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 66] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // RvTimerTimerExpiredHart0Timer0 -> PlicPeripheral::RvTimer
@@ -707,6 +734,24 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 57] = [
     PlicPeripheral::Mbx5,
     // Mbx5MbxError -> PlicPeripheral::Mbx5
     PlicPeripheral::Mbx5,
+    // MioHdrIpiFromMio0 -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // MioHdrIpiFromMio1 -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // MioHdrIpiFromMio2 -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // MioHdrIpiFromPwc -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // MioHdrIpiFromRot -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // MioHdrIpiFromPwc -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpAIbexIrq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpBIbexIrq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpCIbexIrq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
 ];
 
 /// MMIO Region

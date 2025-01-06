@@ -44,7 +44,7 @@
     { name: "NumSrc",
       desc: "Number of interrupt sources",
       type: "int",
-      default: "57",
+      default: "66",
       local: "true"
     },
     { name: "NumTarget",
@@ -572,6 +572,78 @@
         { bits: "1:0" }
       ],
     }
+    { name: "PRIO57",
+      desc: "Interrupt Source 57 Priority",
+      swaccess: "rw",
+      hwaccess: "hro",
+      fields: [
+        { bits: "1:0" }
+      ],
+    }
+    { name: "PRIO58",
+      desc: "Interrupt Source 58 Priority",
+      swaccess: "rw",
+      hwaccess: "hro",
+      fields: [
+        { bits: "1:0" }
+      ],
+    }
+    { name: "PRIO59",
+      desc: "Interrupt Source 59 Priority",
+      swaccess: "rw",
+      hwaccess: "hro",
+      fields: [
+        { bits: "1:0" }
+      ],
+    }
+    { name: "PRIO60",
+      desc: "Interrupt Source 60 Priority",
+      swaccess: "rw",
+      hwaccess: "hro",
+      fields: [
+        { bits: "1:0" }
+      ],
+    }
+    { name: "PRIO61",
+      desc: "Interrupt Source 61 Priority",
+      swaccess: "rw",
+      hwaccess: "hro",
+      fields: [
+        { bits: "1:0" }
+      ],
+    }
+    { name: "PRIO62",
+      desc: "Interrupt Source 62 Priority",
+      swaccess: "rw",
+      hwaccess: "hro",
+      fields: [
+        { bits: "1:0" }
+      ],
+    }
+    { name: "PRIO63",
+      desc: "Interrupt Source 63 Priority",
+      swaccess: "rw",
+      hwaccess: "hro",
+      fields: [
+        { bits: "1:0" }
+      ],
+    }
+    { name: "PRIO64",
+      desc: "Interrupt Source 64 Priority",
+      swaccess: "rw",
+      hwaccess: "hro",
+      fields: [
+        { bits: "1:0" }
+      ],
+    }
+    { name: "PRIO65",
+      desc: "Interrupt Source 65 Priority",
+      swaccess: "rw",
+      hwaccess: "hro",
+      fields: [
+        { bits: "1:0" }
+      ],
+    }
     { skipto: "0x00001000" }
     { multireg: {
         name: "IP",
@@ -618,7 +690,7 @@
       hwqe: "true",
       hwre: "true",
       fields: [
-        { bits: "5:0" }
+        { bits: "6:0" }
       ],
       tags: [// CC register value is related to IP
              "excl:CsrNonInitTests:CsrExclCheck"],

@@ -155,11 +155,20 @@ module rv_plic import rv_plic_reg_pkg::*; #(
   assign prio[54] = reg2hw.prio54.q;
   assign prio[55] = reg2hw.prio55.q;
   assign prio[56] = reg2hw.prio56.q;
+  assign prio[57] = reg2hw.prio57.q;
+  assign prio[58] = reg2hw.prio58.q;
+  assign prio[59] = reg2hw.prio59.q;
+  assign prio[60] = reg2hw.prio60.q;
+  assign prio[61] = reg2hw.prio61.q;
+  assign prio[62] = reg2hw.prio62.q;
+  assign prio[63] = reg2hw.prio63.q;
+  assign prio[64] = reg2hw.prio64.q;
+  assign prio[65] = reg2hw.prio65.q;
 
   //////////////////////
   // Interrupt Enable //
   //////////////////////
-  for (genvar s = 0; s < 57; s++) begin : gen_ie0
+  for (genvar s = 0; s < 66; s++) begin : gen_ie0
     assign ie[0][s] = reg2hw.ie0[s].q;
   end
 
@@ -185,7 +194,7 @@ module rv_plic import rv_plic_reg_pkg::*; #(
   ////////
   // IP //
   ////////
-  for (genvar s = 0; s < 57; s++) begin : gen_ip
+  for (genvar s = 0; s < 66; s++) begin : gen_ip
     assign hw2reg.ip[s].de = 1'b1; // Always write
     assign hw2reg.ip[s].d  = ip[s];
   end

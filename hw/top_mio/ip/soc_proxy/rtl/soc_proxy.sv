@@ -122,6 +122,7 @@ module soc_proxy
 
 
   // Collate LSIO trigger inputs into signal for DMA
+  // FIXME: Decide on assignment
   assign dma_lsio_trigger_o = {
     soc_lsio_trigger_i,
     3'b0

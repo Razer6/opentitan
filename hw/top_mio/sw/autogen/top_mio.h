@@ -1,6 +1,11 @@
 // Copyright lowRISC contributors (OpenTitan project).
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
+//
+// ------------------- W A R N I N G: A U T O - G E N E R A T E D   C O D E !! -------------------//
+// PLEASE DO NOT HAND-EDIT THIS FILE. IT HAS BEEN AUTO-GENERATED WITH THE FOLLOWING COMMAND:
+// util/topgen.py -t hw/top_mio/data/top_mio.hjson
+// -o hw/top_mio
 
 #ifndef OPENTITAN_HW_TOP_MIO_SW_AUTOGEN_TOP_MIO_H_
 #define OPENTITAN_HW_TOP_MIO_SW_AUTOGEN_TOP_MIO_H_
@@ -527,7 +532,16 @@ typedef enum top_mio_plic_irq_id {
   kTopMioPlicIrqIdMbx5MbxReady = 54, /**< mbx5_mbx_ready */
   kTopMioPlicIrqIdMbx5MbxAbort = 55, /**< mbx5_mbx_abort */
   kTopMioPlicIrqIdMbx5MbxError = 56, /**< mbx5_mbx_error */
-  kTopMioPlicIrqIdLast = 56, /**< \internal The Last Valid Interrupt ID. */
+  kTopMioPlicIrqIdMioHdrIpiFromMio0 = 57, /**< MIO_HDR_IPI_FROM_MIO_0 */
+  kTopMioPlicIrqIdMioHdrIpiFromMio1 = 58, /**< MIO_HDR_IPI_FROM_MIO_1 */
+  kTopMioPlicIrqIdMioHdrIpiFromMio2 = 59, /**< MIO_HDR_IPI_FROM_MIO_2 */
+  kTopMioPlicIrqIdMioHdrIpiFromPwc = 60, /**< MIO_HDR_IPI_FROM_PWC */
+  kTopMioPlicIrqIdMioHdrIpiFromRot = 61, /**< MIO_HDR_IPI_FROM_ROT */
+  kTopMioPlicIrqIdMioHdrIpiFromPwc = 62, /**< MIO_HDR_IPI_FROM_PWC */
+  kTopMioPlicIrqIdLioGrpAIbexIrq = 63, /**< LIO_GRP_A_IBEX_IRQ */
+  kTopMioPlicIrqIdLioGrpBIbexIrq = 64, /**< LIO_GRP_B_IBEX_IRQ */
+  kTopMioPlicIrqIdLioGrpCIbexIrq = 65, /**< LIO_GRP_C_IBEX_IRQ */
+  kTopMioPlicIrqIdLast = 65, /**< \internal The Last Valid Interrupt ID. */
 } top_mio_plic_irq_id_t;
 
 /**
@@ -537,7 +551,7 @@ typedef enum top_mio_plic_irq_id {
  * `top_mio_plic_peripheral_t`.
  */
 extern const top_mio_plic_peripheral_t
-    top_mio_plic_interrupt_for_peripheral[57];
+    top_mio_plic_interrupt_for_peripheral[66];
 
 /**
  * PLIC Interrupt Target.

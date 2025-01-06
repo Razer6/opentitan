@@ -6,12 +6,12 @@
 
 package tl_mbx_pkg;
 
-  localparam logic [31:0] ADDR_SPACE_MBX0__SOC = 32'h 01465000;
-  localparam logic [31:0] ADDR_SPACE_MBX1__SOC = 32'h 01465100;
-  localparam logic [31:0] ADDR_SPACE_MBX2__SOC = 32'h 01465200;
-  localparam logic [31:0] ADDR_SPACE_MBX3__SOC = 32'h 01465300;
-  localparam logic [31:0] ADDR_SPACE_MBX4__SOC = 32'h 01465400;
-  localparam logic [31:0] ADDR_SPACE_MBX5__SOC = 32'h 01465500;
+  localparam logic [31:0] ADDR_SPACE_MBX0__SOC = 32'h 01485000;
+  localparam logic [31:0] ADDR_SPACE_MBX1__SOC = 32'h 01485100;
+  localparam logic [31:0] ADDR_SPACE_MBX2__SOC = 32'h 01485200;
+  localparam logic [31:0] ADDR_SPACE_MBX3__SOC = 32'h 01485300;
+  localparam logic [31:0] ADDR_SPACE_MBX4__SOC = 32'h 01485400;
+  localparam logic [31:0] ADDR_SPACE_MBX5__SOC = 32'h 01485500;
 
   localparam logic [31:0] ADDR_MASK_MBX0__SOC = 32'h 0000001f;
   localparam logic [31:0] ADDR_MASK_MBX1__SOC = 32'h 0000001f;

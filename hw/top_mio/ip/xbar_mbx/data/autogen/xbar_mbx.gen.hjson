@@ -70,7 +70,7 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1465000
+            soc_mbx: 0x1485000
           }
           size_byte: 0x20
         }
@@ -92,7 +92,7 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1465100
+            soc_mbx: 0x1485100
           }
           size_byte: 0x20
         }
@@ -114,7 +114,7 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1465200
+            soc_mbx: 0x1485200
           }
           size_byte: 0x20
         }
@@ -136,7 +136,7 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1465300
+            soc_mbx: 0x1485300
           }
           size_byte: 0x20
         }
@@ -158,7 +158,7 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1465400
+            soc_mbx: 0x1485400
           }
           size_byte: 0x20
         }
@@ -180,7 +180,7 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1465500
+            soc_mbx: 0x1485500
           }
           size_byte: 0x20
         }
