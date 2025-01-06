@@ -656,7 +656,7 @@
     }
     {
       name: soc_proxy
-      type: soc_proxy
+      type: pwc_soc_proxy
       clock_srcs:
       {
         clk_i: ext_main
@@ -1581,7 +1581,7 @@
     }
     {
       name: rv_plic
-      type: rv_plic
+      type: rv_plic_pwc
       clock_srcs:
       {
         clk_i: ext_main
@@ -3249,8 +3249,8 @@
         DbgTriggerEn: "1"
         DbgHwBreakNum: "4"
         SecureIbex: "1"
-        DmHaltAddr: tl_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0]
-        DmExceptionAddr: tl_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0]
+        DmHaltAddr: tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0]
+        DmExceptionAddr: tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0]
         PipeLine: "0"
       }
       clock_srcs:
@@ -3587,7 +3587,7 @@
           name: DmHaltAddr
           desc: Halt address
           type: int unsigned
-          default: tl_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0]
+          default: tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0]
           local: "false"
           expose: "true"
           name_top: RvCoreIbexDmHaltAddr
@@ -3596,7 +3596,7 @@
           name: DmExceptionAddr
           desc: Exception address
           type: int unsigned
-          default: tl_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0]
+          default: tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0]
           local: "false"
           expose: "true"
           name_top: RvCoreIbexDmExceptionAddr
@@ -4388,7 +4388,7 @@
           reset: rst_main_ni
           req_fifo_pass: false
           rsp_fifo_pass: false
-          inst_type: soc_proxy
+          inst_type: pwc_soc_proxy
           addr_range:
           [
             {
@@ -4409,7 +4409,7 @@
           clock: clk_main_i
           reset: rst_main_ni
           pipefile: false
-          inst_type: soc_proxy
+          inst_type: pwc_soc_proxy
           addr_range:
           [
             {
@@ -4430,7 +4430,7 @@
           type: device
           clock: clk_main_i
           reset: rst_main_ni
-          inst_type: rv_plic
+          inst_type: rv_plic_pwc
           req_fifo_pass: false
           rsp_fifo_pass: false
           addr_range:

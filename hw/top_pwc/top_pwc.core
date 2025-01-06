@@ -22,10 +22,10 @@ filesets:
       - lowrisc:ip:lc_ctrl_pkg
       - lowrisc:ip:dma
       - lowrisc:ip:mbx
-      - lowrisc:top_pwc:xbar_main
-      - lowrisc:top_pwc:xbar_mbx
-      - lowrisc:top_pwc:xbar_peri
-      - lowrisc:opentitan:top_pwc_rv_plic
+      - lowrisc:top_pwc:xbar_pwc_main
+      - lowrisc:top_pwc:xbar_pwc_mbx
+      - lowrisc:top_pwc:xbar_pwc_peri
+      - lowrisc:opentitan:top_pwc_rv_plic_pwc
       - lowrisc:ip:aon_timer
       - lowrisc:systems:top_pwc_soc_proxy
       - lowrisc:tlul:headers

@@ -233,7 +233,7 @@
       reset: rst_main_ni
       req_fifo_pass: false
       rsp_fifo_pass: false
-      inst_type: soc_proxy
+      inst_type: pwc_soc_proxy
       addr_range:
       [
         {
@@ -254,7 +254,7 @@
       clock: clk_main_i
       reset: rst_main_ni
       pipefile: false
-      inst_type: soc_proxy
+      inst_type: pwc_soc_proxy
       addr_range:
       [
         {
@@ -275,7 +275,7 @@
       type: device
       clock: clk_main_i
       reset: rst_main_ni
-      inst_type: rv_plic
+      inst_type: rv_plic_pwc
       req_fifo_pass: false
       rsp_fifo_pass: false
       addr_range:

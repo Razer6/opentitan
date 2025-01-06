@@ -1,0 +1,155 @@
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+
+{
+  name:               "pwc_soc_proxy"
+  human_name:         "SoC Proxy"
+  one_line_desc:      "Facilitates the breakout of signals and buses internal to OpenTitan"
+  cip_id:             "38" // unique comportable IP identifier defined under KNOWN_CIP_IDS in the regtool
+  design_spec:        "../doc"
+  dv_doc:             "../doc/dv"
+  hw_checklist:       "../doc/checklist"
+  sw_checklist:       "/sw/ip/soc_proxy/dif/dif_soc_proxy"
+
+  param_list: [
+    { name:     "NumExternalIrqs"
+      type:     "int unsigned"
+      default:  "32"
+      desc:     "Number of external interrupt requests"
+      local:    "true"
+    }
+  ]
+
+  revisions: [
+    {
+      version:            "1.0.0"
+      life_stage:         "L1"
+      design_stage:       "D0"
+      verification_stage: "N/A" // block-level verification not planned
+      notes:              "Verified at the top-level."
+    }
+  ]
+
+  clocking: [
+    { clock: "clk_i", reset: "rst_ni", primary: true }
+  ]
+
+  bus_interfaces: [
+    { protocol: "tlul", direction: "device", name: "core" }
+    { protocol: "tlul", direction: "device", name: "ctn" }
+  ]
+
+  alert_list: [
+    { name: "fatal_alert_intg"
+      desc: "Fatal bus integrity alert"
+    }
+  ]
+
+  interrupt_list: [
+    { name: "external"
+      desc: "External interrupt request"
+      width: 32 // keep equal to `NumExternalIrqs`
+    }
+  ]
+
+  inter_signal_list: [
+    { struct:  "lc_tx"
+      type:    "uni"
+      name:    "lc_escalate_en"
+      act:     "req"
+      default: "lc_ctrl_pkg::Off"
+      package: "lc_ctrl_pkg",
+      desc:    '''
+               Escalation enable signal coming from life cycle controller, used for invalidating
+               the latched lc_hw_debug_en state inside the strap sampling logic.
+               '''
+    }
+    { struct:  "lc_tx"
+      type:    "uni"
+      name:    "lc_escalate_en_ext"
+      act:     "rcv"
+      default: "lc_ctrl_pkg::Off"
+      package: "lc_ctrl_pkg",
+      desc:    '''
+               Escalation enable signal coming from life cycle controller, used for invalidating
+               the latched lc_hw_debug_en state inside the strap sampling logic.
+               '''
+    }
+    { struct:  "lc_tx"
+      type:    "uni"
+      name:    "lc_hw_debug_en"
+      act:     "req"
+      default: "lc_ctrl_pkg::Off"
+      package: "lc_ctrl_pkg"
+      desc:    '''
+               Multibit life cycle hardware debug enable signal coming from life cycle controller,
+               asserted when the hardware debug mechanisms are enabled in the system.
+               '''
+    },
+    { struct:  "lc_tx"
+      type:    "uni"
+      name:    "lc_hw_debug_en_ext"
+      act:     "rcv"
+      default: "lc_ctrl_pkg::Off"
+      package: "lc_ctrl_pkg"
+      desc:    '''
+               Multibit life cycle hardware debug enable signal coming from life cycle controller,
+               asserted when the hardware debug mechanisms are enabled in the system.
+               '''
+    },
+    { struct:  "tl_h2d"
+      package: "tlul_pkg"
+      type:    "uni"
+      name:    "ctn_tl_h2d"
+      act:     "req"
+      desc:    "TL-UL host port for egress into CTN (request part), synchronous"
+    }
+    { struct:  "tl_d2h"
+      package: "tlul_pkg"
+      type:    "uni"
+      name:    "ctn_tl_d2h"
+      act:     "rcv"
+      desc:    "TL-UL host port for egress into CTN (response part), synchronous"
+    }
+    { struct:  "logic"
+      width:   8
+      type:    "uni"
+      name:    "soc_lsio_trigger"
+      act:     "rcv"
+      desc:    "LSIO trigger signal from SoC, synchronous"
+    }
+    { struct:  "lsio_trigger"
+      package: "dma_pkg"
+      type:    "uni"
+      name:    "dma_lsio_trigger"
+      act:     "req"
+      desc:    "Collated synchronous LSIO trigger signals for DMA"
+    }
+    { struct:  "logic"
+      type:    "uni"
+      name:    "soc_intr_async"
+      act:     "rcv"
+      width:   32 // keep equal to `NumExternalIrqs`
+      desc:    "Interrupt request from SoC, asynchronous, level-encoded"
+    }
+    { struct:  "mubi8",
+      type:    "uni",
+      name:    "mubi8_true",
+      act:     "req",
+      package: "prim_mubi_pkg",
+      default: "prim_mubi_pkg::MuBi8False"
+    },
+  ]
+
+  regwidth: "32"
+
+  registers: {
+    core: [
+      // no CSRs defined yet
+    ]
+    ctn: [
+      // no CSRs defined here
+    ]
+  }
+}
