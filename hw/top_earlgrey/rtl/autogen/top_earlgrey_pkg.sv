@@ -129,7 +129,7 @@ package top_earlgrey_pkg;
   /**
    * Peripheral size in bytes for core device on otp_ctrl in top earlgrey.
    */
-  parameter int unsigned TOP_EARLGREY_OTP_CTRL_CORE_SIZE_BYTES = 32'h8000;
+  parameter int unsigned TOP_EARLGREY_OTP_CTRL_CORE_SIZE_BYTES = 32'h1000;
 
   /**
    * Peripheral base address for prim device on otp_ctrl in top earlgrey.
@@ -139,7 +139,7 @@ package top_earlgrey_pkg;
   /**
    * Peripheral size in bytes for prim device on otp_ctrl in top earlgrey.
    */
-  parameter int unsigned TOP_EARLGREY_OTP_CTRL_PRIM_SIZE_BYTES = 32'h80;
+  parameter int unsigned TOP_EARLGREY_OTP_CTRL_PRIM_SIZE_BYTES = 32'h20;
 
   /**
    * Peripheral base address for regs device on lc_ctrl in top earlgrey.

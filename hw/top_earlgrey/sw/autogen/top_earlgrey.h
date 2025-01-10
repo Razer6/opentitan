@@ -244,7 +244,7 @@ extern "C" {
  * address between #TOP_EARLGREY_OTP_CTRL_CORE_BASE_ADDR and
  * `TOP_EARLGREY_OTP_CTRL_CORE_BASE_ADDR + TOP_EARLGREY_OTP_CTRL_CORE_SIZE_BYTES`.
  */
-#define TOP_EARLGREY_OTP_CTRL_CORE_SIZE_BYTES 0x8000u
+#define TOP_EARLGREY_OTP_CTRL_CORE_SIZE_BYTES 0x1000u
 
 /**
  * Peripheral base address for prim device on otp_ctrl in top earlgrey.
@@ -262,7 +262,7 @@ extern "C" {
  * address between #TOP_EARLGREY_OTP_CTRL_PRIM_BASE_ADDR and
  * `TOP_EARLGREY_OTP_CTRL_PRIM_BASE_ADDR + TOP_EARLGREY_OTP_CTRL_PRIM_SIZE_BYTES`.
  */
-#define TOP_EARLGREY_OTP_CTRL_PRIM_SIZE_BYTES 0x80u
+#define TOP_EARLGREY_OTP_CTRL_PRIM_SIZE_BYTES 0x20u
 
 /**
  * Peripheral base address for regs device on lc_ctrl in top earlgrey.
