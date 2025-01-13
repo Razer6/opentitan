@@ -1,0 +1,50 @@
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+{
+  instance_name: lio_alert_handler
+  param_values:
+  {
+    topname: lio
+    module_instance_name: lio_alert_handler
+    n_alerts: 14
+    esc_cnt_dw: 32
+    accu_cnt_dw: 16
+    async_on:
+    [
+      1'b1
+      1'b1
+      1'b1
+      1'b1
+      1'b1
+      1'b1
+      1'b1
+      1'b1
+      1'b1
+      1'b1
+      1'b1
+      1'b1
+      1'b1
+      1'b1
+    ]
+    n_classes: 4
+    n_lpg: 1
+    lpg_map:
+    [
+      1'd0
+      1'd0
+      1'd0
+      1'd0
+      1'd0
+      1'd0
+      1'd0
+      1'd0
+      1'd0
+      1'd0
+      1'd0
+      1'd0
+      1'd0
+      1'd0
+    ]
+  }
+}
