@@ -1,0 +1,17 @@
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+
+{
+    pwc_extra_alerts: [
+        {
+            name: integ_error
+            module_name: scsmio
+            index: 0
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+    ]
+}
