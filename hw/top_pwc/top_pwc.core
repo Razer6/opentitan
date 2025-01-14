@@ -11,14 +11,16 @@ filesets:
       - lowrisc:ip:uart:0.1
       - lowrisc:ip:gpio
       - lowrisc:ip:rv_core_ibex
+      - lowrisc:ibex:ibex_tracer
       - lowrisc:ip:rv_dm
       - lowrisc:ip:rv_timer
       - lowrisc:ip:tlul
       - lowrisc:prim:ram_1p_scr
       - lowrisc:ip:sram_ctrl
       - lowrisc:constants:top_pkg
-      - lowrisc:constants:top_pwc_jtag_id_pkg
-      - lowrisc:constants:top_pwc_ibex_pmp_reset_pkg
+      # Use only a single package shared between Darjeeling, MIO, PWC
+      - lowrisc:constants:top_darjeeling_jtag_id_pkg
+      - lowrisc:constants:top_darjeeling_ibex_pmp_reset_pkg
       - lowrisc:ip:lc_ctrl_pkg
       - lowrisc:ip:dma
       - lowrisc:ip:mbx
