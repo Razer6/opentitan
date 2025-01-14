@@ -25,3 +25,8 @@ package prim_alert_pkg;
                                             ack_n: 1'b1};
 
 endpackage : prim_alert_pkg
+// Local Variables:
+// fill-column:1
+// verilog-auto-arg-sort:t
+// verilog-typedef-regexp: "_[etu]$"
+// End:

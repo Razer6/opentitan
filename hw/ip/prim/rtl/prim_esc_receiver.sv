@@ -288,3 +288,8 @@ module prim_esc_receiver
   `ASSERT(EscCntEsc_A, &timeout_cnt |-> esc_req_d)
 
 endmodule : prim_esc_receiver
+// Local Variables:
+// fill-column:1
+// verilog-auto-arg-sort:t
+// verilog-typedef-regexp: "_[etu]$"
+// End:
