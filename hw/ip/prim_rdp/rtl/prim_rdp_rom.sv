@@ -9,7 +9,6 @@ module prim_rdp_rom import prim_rom_pkg::*; #(
   parameter  int Depth       = 2048, // 8kB default
   parameter      MemInitFile = "", // VMEM file to initialize the memory with
 
-  parameter  bit EnableECC   = 1'b1,
   localparam int Aw          = $clog2(Depth)
 ) (
   input  logic             clk_i,
@@ -24,7 +23,7 @@ module prim_rdp_rom import prim_rom_pkg::*; #(
   logic unused_signals;
   assign unused_signals = ^{cfg_i, req_i};
 
-  if(EnableECC) begin : gen_ecc_rom
+  if(Width > 32) begin : gen_ecc_rom
     if (Depth == 32'h2000)  begin : gen_32k_rom
         rvscs_ot_32k_ecc_rom #(
             .WIDTH       (Width),

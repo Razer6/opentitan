@@ -293,8 +293,7 @@ module rom_ctrl
     prim_rom_adv #(
       .Width       (DataWidth),
       .Depth       (RomSizeWords),
-      .MemInitFile (BootRomInitFile),
-      .EnableECC   (1'b0)
+      .MemInitFile (BootRomInitFile)
     ) u_rom (
       .clk_i,
       .rst_ni,
