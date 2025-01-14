@@ -126,6 +126,7 @@ module top_darjeeling #(
   // parameters for soc_dbg_ctrl
   // parameters for racl_ctrl
   parameter int RaclCtrlNumExternalSubscribingIps = 1,
+  // parameters for ac_range_check
   // parameters for rv_core_ibex
   parameter bit RvCoreIbexPMPEnable = 1,
   parameter int unsigned RvCoreIbexPMPGranularity = 0,
@@ -270,8 +271,6 @@ module top_darjeeling #(
   output prim_otp_cfg_pkg::otp_cfg_rsp_t       otp_cfg_rsp_o,
   input  logic [1:0] por_n_i,
   input  logic [31:0] fpga_info_i,
-  output tlul_pkg::tl_h2d_t       ctn_tl_h2d_o,
-  input  tlul_pkg::tl_d2h_t       ctn_tl_d2h_i,
   input  tlul_pkg::tl_h2d_t       ctn_misc_tl_h2d_i,
   output tlul_pkg::tl_d2h_t       ctn_misc_tl_d2h_o,
   input  soc_proxy_pkg::soc_alert_req_t [23:0] soc_fatal_alert_req_i,
@@ -289,6 +288,9 @@ module top_darjeeling #(
   input  logic       debug_halt_cpu_boot_i,
   output top_racl_pkg::racl_policy_vec_t       racl_policies_o,
   input  top_racl_pkg::racl_error_log_t [RaclCtrlNumExternalSubscribingIps-1:0] racl_error_i,
+  input  prim_mubi_pkg::mubi8_t       ac_range_check_overwrite_i,
+  output tlul_pkg::tl_h2d_t       ctn_tl_h2d_o,
+  input  tlul_pkg::tl_d2h_t       ctn_tl_d2h_i,
   input  prim_mubi_pkg::mubi4_t       tston_i,
 
   // Incoming interrupt of group rot_external
@@ -438,10 +440,11 @@ module top_darjeeling #(
   // mbx_pcie1
   // soc_dbg_ctrl
   // racl_ctrl
+  // ac_range_check
   // rv_core_ibex
 
 
-  logic [171:0]  intr_vector;
+  logic [172:0]  intr_vector;
   // Interrupt source list
   logic intr_uart0_tx_watermark;
   logic intr_uart0_rx_watermark;
@@ -538,6 +541,7 @@ module top_darjeeling #(
   logic intr_mbx_pcie1_mbx_ready;
   logic intr_mbx_pcie1_mbx_abort;
   logic intr_mbx_pcie1_mbx_error;
+  logic intr_ac_range_check_deny_cnt_reached;
 
   // Alert list
   prim_alert_pkg::alert_tx_t [alert_handler_pkg::NAlerts-1:0]  alert_tx;
@@ -618,6 +622,8 @@ module top_darjeeling #(
   prim_mubi_pkg::mubi4_t       rstmgr_aon_sw_rst_req;
   tlul_pkg::tl_h2d_t       soc_proxy_dma_tl_h2d;
   tlul_pkg::tl_d2h_t       soc_proxy_dma_tl_d2h;
+  tlul_pkg::tl_h2d_t       soc_proxy_ctn_tl_h2d;
+  tlul_pkg::tl_d2h_t       soc_proxy_ctn_tl_d2h;
   logic [3:0] pwrmgr_aon_wakeups;
   logic [1:0] pwrmgr_aon_rstreqs;
   tlul_pkg::tl_h2d_t       main_tl_rv_core_ibex__corei_req;
@@ -772,6 +778,8 @@ module top_darjeeling #(
   tlul_pkg::tl_d2h_t       mbx_pcie1_soc_tl_d_rsp;
   tlul_pkg::tl_h2d_t       racl_ctrl_tl_req;
   tlul_pkg::tl_d2h_t       racl_ctrl_tl_rsp;
+  tlul_pkg::tl_h2d_t       ac_range_check_tl_req;
+  tlul_pkg::tl_d2h_t       ac_range_check_tl_rsp;
   tlul_pkg::tl_h2d_t       rv_dm_dbg_tl_d_req;
   tlul_pkg::tl_d2h_t       rv_dm_dbg_tl_d_rsp;
   tlul_pkg::tl_h2d_t       mbx_jtag_soc_tl_d_req;
@@ -1684,8 +1692,8 @@ module top_darjeeling #(
       .wkup_internal_req_o(pwrmgr_aon_wakeups[2]),
       .wkup_external_req_o(pwrmgr_aon_wakeups[3]),
       .rst_req_external_o(pwrmgr_aon_rstreqs[1]),
-      .ctn_tl_h2d_o(ctn_tl_h2d_o),
-      .ctn_tl_d2h_i(ctn_tl_d2h_i),
+      .ctn_tl_h2d_o(soc_proxy_ctn_tl_h2d),
+      .ctn_tl_d2h_i(soc_proxy_ctn_tl_d2h),
       .i2c_lsio_trigger_i(i2c0_lsio_trigger),
       .spi_host_lsio_trigger_i(spi_host0_lsio_trigger),
       .uart_lsio_trigger_i(uart0_lsio_trigger),
@@ -2659,8 +2667,35 @@ module top_darjeeling #(
       .rst_shadowed_ni (rstmgr_aon_resets.rst_lc_shadowed_n[rstmgr_pkg::Domain0Sel]),
       .rst_ni (rstmgr_aon_resets.rst_lc_n[rstmgr_pkg::Domain0Sel])
   );
+  ac_range_check #(
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[98:97])
+  ) u_ac_range_check (
+
+      // Interrupt
+      .intr_deny_cnt_reached_o (intr_ac_range_check_deny_cnt_reached),
+      // [97]: recov_ctrl_update_err
+      // [98]: fatal_fault
+      .alert_tx_o  ( alert_tx[98:97] ),
+      .alert_rx_i  ( alert_rx[98:97] ),
+
+      // Inter-module signals
+      .range_check_overwrite_i(ac_range_check_overwrite_i),
+      .ctn_tl_h2d_i(soc_proxy_ctn_tl_h2d),
+      .ctn_tl_d2h_o(soc_proxy_ctn_tl_d2h),
+      .ctn_filtered_tl_h2d_o(ctn_tl_h2d_o),
+      .ctn_filtered_tl_d2h_i(ctn_tl_d2h_i),
+      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
+      .racl_error_o(),
+      .tl_i(ac_range_check_tl_req),
+      .tl_o(ac_range_check_tl_rsp),
+
+      // Clock and reset connections
+      .clk_i (clkmgr_aon_clocks.clk_main_secure),
+      .rst_shadowed_ni (rstmgr_aon_resets.rst_lc_shadowed_n[rstmgr_pkg::Domain0Sel]),
+      .rst_ni (rstmgr_aon_resets.rst_lc_n[rstmgr_pkg::Domain0Sel])
+  );
   rv_core_ibex #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[100:97]),
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[102:99]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexLfsrPerm),
     .RndCnstIbexKeyDefault(RndCnstRvCoreIbexIbexKeyDefault),
@@ -2696,12 +2731,12 @@ module top_darjeeling #(
     .PipeLine(RvCoreIbexPipeLine),
     .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
   ) u_rv_core_ibex (
-      // [97]: fatal_sw_err
-      // [98]: recov_sw_err
-      // [99]: fatal_hw_err
-      // [100]: recov_hw_err
-      .alert_tx_o  ( alert_tx[100:97] ),
-      .alert_rx_i  ( alert_rx[100:97] ),
+      // [99]: fatal_sw_err
+      // [100]: recov_sw_err
+      // [101]: fatal_hw_err
+      // [102]: recov_hw_err
+      .alert_tx_o  ( alert_tx[102:99] ),
+      .alert_rx_i  ( alert_rx[102:99] ),
 
       // Inter-module signals
       .rst_cpu_n_o(),
@@ -2749,109 +2784,110 @@ module top_darjeeling #(
 
 
   // Alert mapping to the alert handler for alert group mio
-  // [101]: rv_timer_fatal_fault
-  // [102]: aon_timer_aon_fatal_fault
-  // [103]: mio_soc_proxy_fatal_alert_intg
-  // [104]: sram_ctrl_ret_aon_fatal_error
-  // [105]: rv_dm_fatal_fault
-  // [106]: rv_plic_mio_fatal_fault
-  // [107]: sram_ctrl_main_fatal_error
-  // [108]: sram_ctrl_mbox_fatal_error
-  // [109]: dma_fatal_fault
-  // [110]: mbx0_fatal_fault
-  // [111]: mbx0_recov_fault
-  // [112]: mbx1_fatal_fault
-  // [113]: mbx1_recov_fault
-  // [114]: mbx2_fatal_fault
-  // [115]: mbx2_recov_fault
-  // [116]: mbx3_fatal_fault
-  // [117]: mbx3_recov_fault
-  // [118]: mbx4_fatal_fault
-  // [119]: mbx4_recov_fault
-  // [120]: mbx5_fatal_fault
-  // [121]: mbx5_recov_fault
-  // [122]: mbx_pcie0_fatal_fault
-  // [123]: mbx_pcie0_recov_fault
-  // [124]: racl_ctrl_recov_ctrl_update_err
-  // [125]: racl_ctrl_fatal_fault
-  // [126]: rv_core_ibex_fatal_sw_err
-  // [127]: rv_core_ibex_recov_sw_err
-  // [128]: rv_core_ibex_fatal_hw_err
-  // [129]: rv_core_ibex_recov_hw_err
-  assign alert_tx[129:101] = incoming_alert_mio_tx_i;
-  assign incoming_alert_mio_rx_o = alert_rx[129:101];
+  // [103]: rv_timer_fatal_fault
+  // [104]: aon_timer_aon_fatal_fault
+  // [105]: mio_soc_proxy_fatal_alert_intg
+  // [106]: sram_ctrl_ret_aon_fatal_error
+  // [107]: rv_dm_fatal_fault
+  // [108]: rv_plic_mio_fatal_fault
+  // [109]: sram_ctrl_main_fatal_error
+  // [110]: sram_ctrl_mbox_fatal_error
+  // [111]: dma_fatal_fault
+  // [112]: mbx0_fatal_fault
+  // [113]: mbx0_recov_fault
+  // [114]: mbx1_fatal_fault
+  // [115]: mbx1_recov_fault
+  // [116]: mbx2_fatal_fault
+  // [117]: mbx2_recov_fault
+  // [118]: mbx3_fatal_fault
+  // [119]: mbx3_recov_fault
+  // [120]: mbx4_fatal_fault
+  // [121]: mbx4_recov_fault
+  // [122]: mbx5_fatal_fault
+  // [123]: mbx5_recov_fault
+  // [124]: mbx_pcie0_fatal_fault
+  // [125]: mbx_pcie0_recov_fault
+  // [126]: racl_ctrl_recov_ctrl_update_err
+  // [127]: racl_ctrl_fatal_fault
+  // [128]: rv_core_ibex_fatal_sw_err
+  // [129]: rv_core_ibex_recov_sw_err
+  // [130]: rv_core_ibex_fatal_hw_err
+  // [131]: rv_core_ibex_recov_hw_err
+  assign alert_tx[131:103] = incoming_alert_mio_tx_i;
+  assign incoming_alert_mio_rx_o = alert_rx[131:103];
 
   // Alert mapping to the alert handler for alert group pwc
-  // [130]: gpio_fatal_fault
-  // [131]: rv_timer_fatal_fault
-  // [132]: aon_timer_aon_fatal_fault
-  // [133]: pwc_soc_proxy_fatal_alert_intg
-  // [134]: sram_ctrl_ret_aon_fatal_error
-  // [135]: rv_dm_fatal_fault
-  // [136]: rv_plic_pwc_fatal_fault
-  // [137]: sram_ctrl_main_fatal_error
-  // [138]: sram_ctrl_mbox_fatal_error
-  // [139]: dma_fatal_fault
-  // [140]: mbx0_fatal_fault
-  // [141]: mbx0_recov_fault
-  // [142]: mbx1_fatal_fault
-  // [143]: mbx1_recov_fault
-  // [144]: mbx2_fatal_fault
-  // [145]: mbx2_recov_fault
-  // [146]: mbx3_fatal_fault
-  // [147]: mbx3_recov_fault
-  // [148]: mbx4_fatal_fault
-  // [149]: mbx4_recov_fault
-  // [150]: mbx5_fatal_fault
-  // [151]: mbx5_recov_fault
-  // [152]: mbx_pcie0_fatal_fault
-  // [153]: mbx_pcie0_recov_fault
-  // [154]: racl_ctrl_recov_ctrl_update_err
-  // [155]: racl_ctrl_fatal_fault
-  // [156]: rv_core_ibex_fatal_sw_err
-  // [157]: rv_core_ibex_recov_sw_err
-  // [158]: rv_core_ibex_fatal_hw_err
-  // [159]: rv_core_ibex_recov_hw_err
-  assign alert_tx[159:130] = incoming_alert_pwc_tx_i;
-  assign incoming_alert_pwc_rx_o = alert_rx[159:130];
+  // [132]: gpio_fatal_fault
+  // [133]: rv_timer_fatal_fault
+  // [134]: aon_timer_aon_fatal_fault
+  // [135]: pwc_soc_proxy_fatal_alert_intg
+  // [136]: sram_ctrl_ret_aon_fatal_error
+  // [137]: rv_dm_fatal_fault
+  // [138]: rv_plic_pwc_fatal_fault
+  // [139]: sram_ctrl_main_fatal_error
+  // [140]: sram_ctrl_mbox_fatal_error
+  // [141]: dma_fatal_fault
+  // [142]: mbx0_fatal_fault
+  // [143]: mbx0_recov_fault
+  // [144]: mbx1_fatal_fault
+  // [145]: mbx1_recov_fault
+  // [146]: mbx2_fatal_fault
+  // [147]: mbx2_recov_fault
+  // [148]: mbx3_fatal_fault
+  // [149]: mbx3_recov_fault
+  // [150]: mbx4_fatal_fault
+  // [151]: mbx4_recov_fault
+  // [152]: mbx5_fatal_fault
+  // [153]: mbx5_recov_fault
+  // [154]: mbx_pcie0_fatal_fault
+  // [155]: mbx_pcie0_recov_fault
+  // [156]: racl_ctrl_recov_ctrl_update_err
+  // [157]: racl_ctrl_fatal_fault
+  // [158]: rv_core_ibex_fatal_sw_err
+  // [159]: rv_core_ibex_recov_sw_err
+  // [160]: rv_core_ibex_fatal_hw_err
+  // [161]: rv_core_ibex_recov_hw_err
+  assign alert_tx[161:132] = incoming_alert_pwc_tx_i;
+  assign incoming_alert_pwc_rx_o = alert_rx[161:132];
 
   // Alert mapping to the alert handler for alert group mio_extra_alerts
-  // [160]: integ_error
-  assign alert_tx[160:160] = incoming_alert_mio_extra_alerts_tx_i;
-  assign incoming_alert_mio_extra_alerts_rx_o = alert_rx[160:160];
+  // [162]: integ_error
+  assign alert_tx[162:162] = incoming_alert_mio_extra_alerts_tx_i;
+  assign incoming_alert_mio_extra_alerts_rx_o = alert_rx[162:162];
 
   // Alert mapping to the alert handler for alert group pwc_extra_alerts
-  // [161]: integ_error
-  assign alert_tx[161:161] = incoming_alert_pwc_extra_alerts_tx_i;
-  assign incoming_alert_pwc_extra_alerts_rx_o = alert_rx[161:161];
+  // [163]: integ_error
+  assign alert_tx[163:163] = incoming_alert_pwc_extra_alerts_tx_i;
+  assign incoming_alert_pwc_extra_alerts_rx_o = alert_rx[163:163];
 
   // Alert mapping to the alert handler for alert group rot_extra_alerts
-  // [162]: ams_ip_wrapper_integ_error
-  // [163]: ams_ip_wrapper_csrng_recov
-  // [164]: ssram_lo_integ_err
-  // [165]: ssram_hi_integ_err
-  // [166]: lsio_group_esc_err_0
-  // [167]: lsio_group_esc_err_1
-  // [168]: lsio_group_esc_err_2
-  // [169]: lsio_group_esc_err_3
-  // [170]: ns_group_integ_error
-  // [171]: lio_group_v_integ_error
-  // [172]: lio_group_p_integ_error
-  // [173]: ns_efuse_integ_error
-  // [174]: ns_efuse_prim_otp_fatal_err
-  // [175]: ns_efuse_prim_otp_recov_err
-  // [176]: rc_widget_integ_error
-  // [177]: rot_hdr_integ_error
-  // [178]: rot_pcie_adapter_integ_error
-  // [179]: ras_ctl_reset_alert
-  // [180]: scsif_regs_alert_trigger
-  // [181]: scs_rai_alert_trigger
-  assign alert_tx[181:162] = incoming_alert_rot_extra_alerts_tx_i;
-  assign incoming_alert_rot_extra_alerts_rx_o = alert_rx[181:162];
+  // [164]: ams_ip_wrapper_integ_error
+  // [165]: ams_ip_wrapper_csrng_recov
+  // [166]: ssram_lo_integ_err
+  // [167]: ssram_hi_integ_err
+  // [168]: lsio_group_esc_err_0
+  // [169]: lsio_group_esc_err_1
+  // [170]: lsio_group_esc_err_2
+  // [171]: lsio_group_esc_err_3
+  // [172]: ns_group_integ_error
+  // [173]: lio_group_v_integ_error
+  // [174]: lio_group_p_integ_error
+  // [175]: ns_efuse_integ_error
+  // [176]: ns_efuse_prim_otp_fatal_err
+  // [177]: ns_efuse_prim_otp_recov_err
+  // [178]: rc_widget_integ_error
+  // [179]: rot_hdr_integ_error
+  // [180]: rot_pcie_adapter_integ_error
+  // [181]: ras_ctl_reset_alert
+  // [182]: scsif_regs_alert_trigger
+  // [183]: scs_rai_alert_trigger
+  assign alert_tx[183:164] = incoming_alert_rot_extra_alerts_tx_i;
+  assign incoming_alert_rot_extra_alerts_rx_o = alert_rx[183:164];
 
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_rot_external_i, // IDs [158 +: 14]
+      incoming_interrupt_rot_external_i, // IDs [159 +: 14]
+      intr_ac_range_check_deny_cnt_reached, // IDs [158 +: 1]
       intr_mbx_pcie1_mbx_error, // IDs [157 +: 1]
       intr_mbx_pcie1_mbx_abort, // IDs [156 +: 1]
       intr_mbx_pcie1_mbx_ready, // IDs [155 +: 1]
@@ -3288,6 +3324,10 @@ module top_darjeeling #(
     // port: tl_racl_ctrl
     .tl_racl_ctrl_o(racl_ctrl_tl_req),
     .tl_racl_ctrl_i(racl_ctrl_tl_rsp),
+
+    // port: tl_ac_range_check
+    .tl_ac_range_check_o(ac_range_check_tl_req),
+    .tl_ac_range_check_i(ac_range_check_tl_rsp),
 
 
     .scanmode_i
