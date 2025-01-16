@@ -173,7 +173,6 @@ const top_darjeeling_alert_peripheral_t
   [kTopDarjeelingAlertIdIntegError] = kTopDarjeelingAlertPeripheralScsmio,
 };
 
-
 /**
  * PLIC Interrupt Source to Peripheral Map
  *
