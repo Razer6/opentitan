@@ -25,6 +25,9 @@ module prim_generic_otp
   // Vendor test partition offset and size (both in bytes)
   parameter  int VendorTestOffset = 0,
   parameter  int VendorTestSize   = 0,
+  // Type definitions of the config in response ports
+  parameter type CfgType_t        = prim_otp_cfg_pkg::otp_cfg_t,
+  parameter type CfgRspType_t     = prim_otp_cfg_pkg::otp_cfg_rsp_t,
 
   parameter  int FUSE_MBIST_EN                     = 0,
   parameter  int FUSE_MBIST_ARRAY_BASE             = 0,
@@ -79,8 +82,8 @@ module prim_generic_otp
   output logic [IfWidth-1:0]              rdata_o,
   output err_e                            err_o,
   // DFT config and response port
-  input  prim_otp_cfg_pkg::otp_cfg_t      cfg_i,
-  output  prim_otp_cfg_pkg::otp_cfg_rsp_t cfg_rsp_o
+  input  CfgType_t                        cfg_i,
+  output CfgRspType_t                     cfg_rsp_o
 );
 
   import prim_mubi_pkg::MuBi4False;
