@@ -1882,104 +1882,104 @@ pub enum AlertPeripheral {
     RaclCtrl = 41,
     /// rv_core_ibex
     RvCoreIbex = 42,
-    /// incoming_mio_mbx4
-    IncomingMioMbx4 = 43,
-    /// incoming_mio_rv_core_ibex
-    IncomingMioRvCoreIbex = 44,
-    /// incoming_mio_racl_ctrl
-    IncomingMioRaclCtrl = 45,
-    /// incoming_mio_rv_plic
-    IncomingMioRvPlic = 46,
-    /// incoming_mio_mbx0
-    IncomingMioMbx0 = 47,
-    /// incoming_mio_sram_ctrl_mbox
-    IncomingMioSramCtrlMbox = 48,
-    /// incoming_mio_dma
-    IncomingMioDma = 49,
-    /// incoming_mio_soc_proxy
-    IncomingMioSocProxy = 50,
-    /// incoming_mio_sram_ctrl_main
-    IncomingMioSramCtrlMain = 51,
     /// incoming_mio_mbx1
-    IncomingMioMbx1 = 52,
+    IncomingMioMbx1 = 43,
     /// incoming_mio_sram_ctrl_ret_aon
-    IncomingMioSramCtrlRetAon = 53,
-    /// incoming_mio_rv_dm
-    IncomingMioRvDm = 54,
-    /// incoming_mio_rv_timer
-    IncomingMioRvTimer = 55,
-    /// incoming_mio_mbx3
-    IncomingMioMbx3 = 56,
-    /// incoming_mio_aon_timer_aon
-    IncomingMioAonTimerAon = 57,
-    /// incoming_mio_mbx5
-    IncomingMioMbx5 = 58,
+    IncomingMioSramCtrlRetAon = 44,
+    /// incoming_mio_sram_ctrl_mbox
+    IncomingMioSramCtrlMbox = 45,
     /// incoming_mio_mbx2
-    IncomingMioMbx2 = 59,
-    /// incoming_pwc_rv_plic
-    IncomingPwcRvPlic = 60,
-    /// incoming_pwc_sram_ctrl_mbox
-    IncomingPwcSramCtrlMbox = 61,
-    /// incoming_pwc_soc_proxy
-    IncomingPwcSocProxy = 62,
-    /// incoming_pwc_sram_ctrl_ret_aon
-    IncomingPwcSramCtrlRetAon = 63,
-    /// incoming_pwc_rv_timer
-    IncomingPwcRvTimer = 64,
-    /// incoming_pwc_racl_ctrl
-    IncomingPwcRaclCtrl = 65,
-    /// incoming_pwc_rv_core_ibex
-    IncomingPwcRvCoreIbex = 66,
-    /// incoming_pwc_rv_dm
-    IncomingPwcRvDm = 67,
-    /// incoming_pwc_mbx2
-    IncomingPwcMbx2 = 68,
+    IncomingMioMbx2 = 46,
+    /// incoming_mio_rv_timer
+    IncomingMioRvTimer = 47,
+    /// incoming_mio_mbx3
+    IncomingMioMbx3 = 48,
+    /// incoming_mio_mbx5
+    IncomingMioMbx5 = 49,
+    /// incoming_mio_aon_timer_aon
+    IncomingMioAonTimerAon = 50,
+    /// incoming_mio_racl_ctrl
+    IncomingMioRaclCtrl = 51,
+    /// incoming_mio_soc_proxy
+    IncomingMioSocProxy = 52,
+    /// incoming_mio_rv_core_ibex
+    IncomingMioRvCoreIbex = 53,
+    /// incoming_mio_mbx4
+    IncomingMioMbx4 = 54,
+    /// incoming_mio_rv_plic
+    IncomingMioRvPlic = 55,
+    /// incoming_mio_dma
+    IncomingMioDma = 56,
+    /// incoming_mio_sram_ctrl_main
+    IncomingMioSramCtrlMain = 57,
+    /// incoming_mio_mbx0
+    IncomingMioMbx0 = 58,
+    /// incoming_mio_rv_dm
+    IncomingMioRvDm = 59,
     /// incoming_pwc_mbx4
-    IncomingPwcMbx4 = 69,
-    /// incoming_pwc_dma
-    IncomingPwcDma = 70,
-    /// incoming_pwc_mbx3
-    IncomingPwcMbx3 = 71,
+    IncomingPwcMbx4 = 60,
     /// incoming_pwc_mbx5
-    IncomingPwcMbx5 = 72,
-    /// incoming_pwc_aon_timer_aon
-    IncomingPwcAonTimerAon = 73,
-    /// incoming_pwc_mbx0
-    IncomingPwcMbx0 = 74,
-    /// incoming_pwc_gpio
-    IncomingPwcGpio = 75,
+    IncomingPwcMbx5 = 61,
     /// incoming_pwc_sram_ctrl_main
-    IncomingPwcSramCtrlMain = 76,
+    IncomingPwcSramCtrlMain = 62,
     /// incoming_pwc_mbx1
-    IncomingPwcMbx1 = 77,
+    IncomingPwcMbx1 = 63,
+    /// incoming_pwc_sram_ctrl_mbox
+    IncomingPwcSramCtrlMbox = 64,
+    /// incoming_pwc_soc_proxy
+    IncomingPwcSocProxy = 65,
+    /// incoming_pwc_mbx0
+    IncomingPwcMbx0 = 66,
+    /// incoming_pwc_sram_ctrl_ret_aon
+    IncomingPwcSramCtrlRetAon = 67,
+    /// incoming_pwc_rv_dm
+    IncomingPwcRvDm = 68,
+    /// incoming_pwc_rv_core_ibex
+    IncomingPwcRvCoreIbex = 69,
+    /// incoming_pwc_gpio
+    IncomingPwcGpio = 70,
+    /// incoming_pwc_racl_ctrl
+    IncomingPwcRaclCtrl = 71,
+    /// incoming_pwc_mbx2
+    IncomingPwcMbx2 = 72,
+    /// incoming_pwc_rv_timer
+    IncomingPwcRvTimer = 73,
+    /// incoming_pwc_rv_plic
+    IncomingPwcRvPlic = 74,
+    /// incoming_pwc_aon_timer_aon
+    IncomingPwcAonTimerAon = 75,
+    /// incoming_pwc_dma
+    IncomingPwcDma = 76,
+    /// incoming_pwc_mbx3
+    IncomingPwcMbx3 = 77,
     /// incoming_mio_extra_alerts_scsmio
     IncomingMioExtraAlertsScsmio = 78,
     /// incoming_pwc_extra_alerts_scsmio
     IncomingPwcExtraAlertsScsmio = 79,
-    /// incoming_rot_extra_alerts_scsif_regs
-    IncomingRotExtraAlertsScsifRegs = 80,
-    /// incoming_rot_extra_alerts_lio_group_v
-    IncomingRotExtraAlertsLioGroupV = 81,
-    /// incoming_rot_extra_alerts_lsio_group
-    IncomingRotExtraAlertsLsioGroup = 82,
-    /// incoming_rot_extra_alerts_lio_group_p
-    IncomingRotExtraAlertsLioGroupP = 83,
     /// incoming_rot_extra_alerts_ns_group
-    IncomingRotExtraAlertsNsGroup = 84,
+    IncomingRotExtraAlertsNsGroup = 80,
     /// incoming_rot_extra_alerts_rot_pcie_adapter
-    IncomingRotExtraAlertsRotPcieAdapter = 85,
-    /// incoming_rot_extra_alerts_scs_rai
-    IncomingRotExtraAlertsScsRai = 86,
-    /// incoming_rot_extra_alerts_rc_widget
-    IncomingRotExtraAlertsRcWidget = 87,
+    IncomingRotExtraAlertsRotPcieAdapter = 81,
+    /// incoming_rot_extra_alerts_lio_group_p
+    IncomingRotExtraAlertsLioGroupP = 82,
+    /// incoming_rot_extra_alerts_scsif_regs
+    IncomingRotExtraAlertsScsifRegs = 83,
+    /// incoming_rot_extra_alerts_lsio_group
+    IncomingRotExtraAlertsLsioGroup = 84,
     /// incoming_rot_extra_alerts_rot_hdr
-    IncomingRotExtraAlertsRotHdr = 88,
-    /// incoming_rot_extra_alerts_ras_ctl
-    IncomingRotExtraAlertsRasCtl = 89,
-    /// incoming_rot_extra_alerts_ams_ip_wrapper
-    IncomingRotExtraAlertsAmsIpWrapper = 90,
+    IncomingRotExtraAlertsRotHdr = 85,
     /// incoming_rot_extra_alerts_ns_efuse
-    IncomingRotExtraAlertsNsEfuse = 91,
+    IncomingRotExtraAlertsNsEfuse = 86,
+    /// incoming_rot_extra_alerts_ams_ip_wrapper
+    IncomingRotExtraAlertsAmsIpWrapper = 87,
+    /// incoming_rot_extra_alerts_rc_widget
+    IncomingRotExtraAlertsRcWidget = 88,
+    /// incoming_rot_extra_alerts_scs_rai
+    IncomingRotExtraAlertsScsRai = 89,
+    /// incoming_rot_extra_alerts_lio_group_v
+    IncomingRotExtraAlertsLioGroupV = 90,
+    /// incoming_rot_extra_alerts_ras_ctl
+    IncomingRotExtraAlertsRasCtl = 91,
     /// incoming_rot_extra_alerts_ssram
     IncomingRotExtraAlertsSsram = 92,
 }

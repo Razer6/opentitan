@@ -3872,7 +3872,7 @@
         }
         {
           name: FlopRamOutput
-          desc: Flop the output s
+          desc: Add a flop stage on the RAM macro output
           type: bit
           default: "0"
           local: "false"

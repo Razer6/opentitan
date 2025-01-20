@@ -122,7 +122,7 @@
       default:   "1"
     },
     { name:      "FlopRamOutput",
-      desc:      "Flop the output s",
+      desc:      "Add a flop stage on the RAM macro output",
       type:      "bit",
       local:     "false",
       expose:    "true",
