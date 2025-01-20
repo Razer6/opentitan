@@ -302,7 +302,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write aon_timer's alert_test reg and check alert_cause.
-  for (dif_aon_timer_alert_t i = 0; i < 1; ++i) {
+  for (dif_aon_timer_alert_t i = 0; i < 3; ++i) {
     CHECK_DIF_OK(dif_aon_timer_alert_force(&aon_timer_aon, kDifAonTimerAlertFatalFault + i));
 
     // Verify that alert handler received it.
@@ -347,7 +347,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write dma's alert_test reg and check alert_cause.
-  for (dif_dma_alert_t i = 0; i < 1; ++i) {
+  for (dif_dma_alert_t i = 0; i < 3; ++i) {
     CHECK_DIF_OK(dif_dma_alert_force(&dma, kDifDmaAlertFatalFault + i));
 
     // Verify that alert handler received it.
@@ -392,7 +392,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write gpio's alert_test reg and check alert_cause.
-  for (dif_gpio_alert_t i = 0; i < 1; ++i) {
+  for (dif_gpio_alert_t i = 0; i < 2; ++i) {
     CHECK_DIF_OK(dif_gpio_alert_force(&gpio, kDifGpioAlertFatalFault + i));
 
     // Verify that alert handler received it.
@@ -482,7 +482,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write mbx's alert_test reg and check alert_cause.
-  for (dif_mbx_alert_t i = 0; i < 2; ++i) {
+  for (dif_mbx_alert_t i = 0; i < 6; ++i) {
     CHECK_DIF_OK(dif_mbx_alert_force(&mbx0, kDifMbxAlertFatalFault + i));
 
     // Verify that alert handler received it.
@@ -497,7 +497,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write mbx's alert_test reg and check alert_cause.
-  for (dif_mbx_alert_t i = 0; i < 2; ++i) {
+  for (dif_mbx_alert_t i = 0; i < 6; ++i) {
     CHECK_DIF_OK(dif_mbx_alert_force(&mbx1, kDifMbxAlertFatalFault + i));
 
     // Verify that alert handler received it.
@@ -512,7 +512,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write mbx's alert_test reg and check alert_cause.
-  for (dif_mbx_alert_t i = 0; i < 2; ++i) {
+  for (dif_mbx_alert_t i = 0; i < 6; ++i) {
     CHECK_DIF_OK(dif_mbx_alert_force(&mbx2, kDifMbxAlertFatalFault + i));
 
     // Verify that alert handler received it.
@@ -527,7 +527,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write mbx's alert_test reg and check alert_cause.
-  for (dif_mbx_alert_t i = 0; i < 2; ++i) {
+  for (dif_mbx_alert_t i = 0; i < 6; ++i) {
     CHECK_DIF_OK(dif_mbx_alert_force(&mbx3, kDifMbxAlertFatalFault + i));
 
     // Verify that alert handler received it.
@@ -542,7 +542,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write mbx's alert_test reg and check alert_cause.
-  for (dif_mbx_alert_t i = 0; i < 2; ++i) {
+  for (dif_mbx_alert_t i = 0; i < 6; ++i) {
     CHECK_DIF_OK(dif_mbx_alert_force(&mbx4, kDifMbxAlertFatalFault + i));
 
     // Verify that alert handler received it.
@@ -557,7 +557,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write mbx's alert_test reg and check alert_cause.
-  for (dif_mbx_alert_t i = 0; i < 2; ++i) {
+  for (dif_mbx_alert_t i = 0; i < 6; ++i) {
     CHECK_DIF_OK(dif_mbx_alert_force(&mbx5, kDifMbxAlertFatalFault + i));
 
     // Verify that alert handler received it.
@@ -740,7 +740,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write rv_core_ibex's alert_test reg and check alert_cause.
-  for (dif_rv_core_ibex_alert_t i = 0; i < 4; ++i) {
+  for (dif_rv_core_ibex_alert_t i = 0; i < 12; ++i) {
     CHECK_DIF_OK(dif_rv_core_ibex_alert_force(&rv_core_ibex, kDifRvCoreIbexAlertFatalSwErr + i));
 
     // Verify that alert handler received it.
@@ -755,7 +755,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write rv_plic's alert_test reg and check alert_cause.
-  for (dif_rv_plic_alert_t i = 0; i < 1; ++i) {
+  for (dif_rv_plic_alert_t i = 0; i < 3; ++i) {
     CHECK_DIF_OK(dif_rv_plic_alert_force(&rv_plic, kDifRvPlicAlertFatalFault + i));
 
     // Verify that alert handler received it.
@@ -770,7 +770,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write rv_timer's alert_test reg and check alert_cause.
-  for (dif_rv_timer_alert_t i = 0; i < 1; ++i) {
+  for (dif_rv_timer_alert_t i = 0; i < 3; ++i) {
     CHECK_DIF_OK(dif_rv_timer_alert_force(&rv_timer, kDifRvTimerAlertFatalFault + i));
 
     // Verify that alert handler received it.
@@ -815,7 +815,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write soc_proxy's alert_test reg and check alert_cause.
-  for (dif_soc_proxy_alert_t i = 0; i < 29; ++i) {
+  for (dif_soc_proxy_alert_t i = 0; i < 31; ++i) {
     CHECK_DIF_OK(dif_soc_proxy_alert_force(&soc_proxy, kDifSocProxyAlertFatalAlertIntg + i));
 
     // Verify that alert handler received it.
@@ -860,7 +860,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write sram_ctrl's alert_test reg and check alert_cause.
-  for (dif_sram_ctrl_alert_t i = 0; i < 1; ++i) {
+  for (dif_sram_ctrl_alert_t i = 0; i < 3; ++i) {
     CHECK_DIF_OK(dif_sram_ctrl_alert_force(&sram_ctrl_main, kDifSramCtrlAlertFatalError + i));
 
     // Verify that alert handler received it.
@@ -875,7 +875,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write sram_ctrl's alert_test reg and check alert_cause.
-  for (dif_sram_ctrl_alert_t i = 0; i < 1; ++i) {
+  for (dif_sram_ctrl_alert_t i = 0; i < 3; ++i) {
     CHECK_DIF_OK(dif_sram_ctrl_alert_force(&sram_ctrl_mbox, kDifSramCtrlAlertFatalError + i));
 
     // Verify that alert handler received it.
@@ -890,7 +890,7 @@ static void trigger_alert_test(void) {
   }
 
   // Write sram_ctrl's alert_test reg and check alert_cause.
-  for (dif_sram_ctrl_alert_t i = 0; i < 1; ++i) {
+  for (dif_sram_ctrl_alert_t i = 0; i < 3; ++i) {
     CHECK_DIF_OK(dif_sram_ctrl_alert_force(&sram_ctrl_ret_aon, kDifSramCtrlAlertFatalError + i));
 
     // Verify that alert handler received it.

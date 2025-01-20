@@ -149,7 +149,7 @@ tl_device_t xbar_devices[$] = '{
         '{32'h30020000, 32'h3002003f}
     }},
     '{"alert_handler", '{
-        '{32'h30150000, 32'h301507ff}
+        '{32'h30150000, 32'h30150fff}
     }},
     '{"sram_ctrl_ret_aon__regs", '{
         '{32'h30500000, 32'h3050003f}

@@ -2126,6 +2126,13 @@
         }
       }
       attr: ipgen
+      incoming_alert:
+      [
+        ../../top_mio/data/autogen/outgoing_alerts_mio.hjson
+        ../../top_pwc/data/autogen/outgoing_alerts_pwc.hjson
+        mio_extra_alerts.hjson
+        pwc_extra_alerts.hjson
+      ]
       clock_connections:
       {
         clk_i: clkmgr_aon_clocks.clk_io_div4_secure
@@ -8949,6 +8956,8 @@
           act: rcv
           width: 1
           inst_name: soc_dbg_ctrl
+          default: ""
+          top_signame: soc_dbg_ctrl_soc_dbg_state
           index: -1
         }
         {
@@ -10507,6 +10516,7 @@
       rv_core_ibex.hart_id
       rv_core_ibex.boot_addr
       otp_ctrl.otp_broadcast
+      soc_dbg_ctrl.soc_dbg_state
       lc_ctrl.otp_device_id
       lc_ctrl.otp_manuf_state
       keymgr_dpe.otp_device_id
@@ -12705,7 +12715,7 @@
               {
                 hart: 0x30150000
               }
-              size_byte: 0x800
+              size_byte: 0x1000
             }
           ]
           xbar: false
@@ -16286,7 +16296,498 @@
       }
     }
   ]
-  incoming_alert: {}
+  incoming_alert:
+  {
+    mio:
+    [
+      {
+        name: rv_timer_fatal_fault
+        module_name: rv_timer
+        index: 0
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+      {
+        name: aon_timer_aon_fatal_fault
+        module_name: aon_timer_aon
+        index: 1
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+      {
+        name: soc_proxy_fatal_alert_intg
+        module_name: soc_proxy
+        index: 2
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: sram_ctrl_ret_aon_fatal_error
+        module_name: sram_ctrl_ret_aon
+        index: 3
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+      {
+        name: rv_dm_fatal_fault
+        module_name: rv_dm
+        index: 4
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_plic_fatal_fault
+        module_name: rv_plic
+        index: 5
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: sram_ctrl_main_fatal_error
+        module_name: sram_ctrl_main
+        index: 6
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: sram_ctrl_mbox_fatal_error
+        module_name: sram_ctrl_mbox
+        index: 7
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: dma_fatal_fault
+        module_name: dma
+        index: 8
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx0_fatal_fault
+        module_name: mbx0
+        index: 9
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx0_recov_fault
+        module_name: mbx0
+        index: 10
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx1_fatal_fault
+        module_name: mbx1
+        index: 11
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx1_recov_fault
+        module_name: mbx1
+        index: 12
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx2_fatal_fault
+        module_name: mbx2
+        index: 13
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx2_recov_fault
+        module_name: mbx2
+        index: 14
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx3_fatal_fault
+        module_name: mbx3
+        index: 15
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx3_recov_fault
+        module_name: mbx3
+        index: 16
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx4_fatal_fault
+        module_name: mbx4
+        index: 17
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx4_recov_fault
+        module_name: mbx4
+        index: 18
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx5_fatal_fault
+        module_name: mbx5
+        index: 19
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx5_recov_fault
+        module_name: mbx5
+        index: 20
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_fatal_sw_err
+        module_name: rv_core_ibex
+        index: 21
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_recov_sw_err
+        module_name: rv_core_ibex
+        index: 22
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_fatal_hw_err
+        module_name: rv_core_ibex
+        index: 23
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_recov_hw_err
+        module_name: rv_core_ibex
+        index: 24
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+    ]
+    pwc:
+    [
+      {
+        name: gpio_fatal_fault
+        module_name: gpio
+        index: 0
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+      {
+        name: rv_timer_fatal_fault
+        module_name: rv_timer
+        index: 1
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+      {
+        name: aon_timer_aon_fatal_fault
+        module_name: aon_timer_aon
+        index: 2
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+      {
+        name: soc_proxy_fatal_alert_intg
+        module_name: soc_proxy
+        index: 3
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: sram_ctrl_ret_aon_fatal_error
+        module_name: sram_ctrl_ret_aon
+        index: 4
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+      {
+        name: rv_dm_fatal_fault
+        module_name: rv_dm
+        index: 5
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_plic_fatal_fault
+        module_name: rv_plic
+        index: 6
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: sram_ctrl_main_fatal_error
+        module_name: sram_ctrl_main
+        index: 7
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: sram_ctrl_mbox_fatal_error
+        module_name: sram_ctrl_mbox
+        index: 8
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: dma_fatal_fault
+        module_name: dma
+        index: 9
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx0_fatal_fault
+        module_name: mbx0
+        index: 10
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx0_recov_fault
+        module_name: mbx0
+        index: 11
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx1_fatal_fault
+        module_name: mbx1
+        index: 12
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx1_recov_fault
+        module_name: mbx1
+        index: 13
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx2_fatal_fault
+        module_name: mbx2
+        index: 14
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx2_recov_fault
+        module_name: mbx2
+        index: 15
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx3_fatal_fault
+        module_name: mbx3
+        index: 16
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx3_recov_fault
+        module_name: mbx3
+        index: 17
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx4_fatal_fault
+        module_name: mbx4
+        index: 18
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx4_recov_fault
+        module_name: mbx4
+        index: 19
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx5_fatal_fault
+        module_name: mbx5
+        index: 20
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: mbx5_recov_fault
+        module_name: mbx5
+        index: 21
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_fatal_sw_err
+        module_name: rv_core_ibex
+        index: 22
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_recov_sw_err
+        module_name: rv_core_ibex
+        index: 23
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_fatal_hw_err
+        module_name: rv_core_ibex
+        index: 24
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_recov_hw_err
+        module_name: rv_core_ibex
+        index: 25
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+    ]
+    mio_extra_alerts:
+    [
+      {
+        name: integ_error
+        module_name: scsmio
+        index: 0
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+    ]
+    pwc_extra_alerts:
+    [
+      {
+        name: integ_error
+        module_name: scsmio
+        index: 0
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+    ]
+  }
   incoming_interrupt: {}
   exported_clks: {}
   wakeups:
@@ -23595,6 +24096,8 @@
         act: rcv
         width: 1
         inst_name: soc_dbg_ctrl
+        default: ""
+        top_signame: soc_dbg_ctrl_soc_dbg_state
         index: -1
       }
       {
@@ -29301,6 +29804,15 @@
         type: uni
         end_idx: -1
         default: "'0"
+      }
+      {
+        package: lc_ctrl_state_pkg
+        struct: soc_dbg_state
+        signame: soc_dbg_ctrl_soc_dbg_state
+        width: 1
+        type: uni
+        end_idx: -1
+        default: ""
       }
       {
         package: otp_ctrl_pkg

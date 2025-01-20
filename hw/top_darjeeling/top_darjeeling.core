@@ -14,6 +14,7 @@ filesets:
       - lowrisc:ip:uart:0.1
       - lowrisc:ip:gpio
       - lowrisc:ip:rv_core_ibex
+      - lowrisc:ibex:ibex_tracer
       - lowrisc:ip:rv_dm
       - lowrisc:ip:rv_timer
       - lowrisc:ip:tlul
@@ -29,6 +30,7 @@ filesets:
       - lowrisc:ip:hmac
       - lowrisc:ip:kmac
       - lowrisc:ip:otbn
+      - lowrisc:prim_rdp:rom_pkg
       - lowrisc:prim:ram_1p_scr
       - lowrisc:ip:sram_ctrl
       - lowrisc:ip:keymgr_dpe
@@ -98,6 +100,15 @@ parameters:
   SYNTHESIS:
     datatype: bool
     paramtype: vlogdefine
+  RDV_NO_SYSCTL:
+    datatype: bool
+    default: true
+    paramtype: vlogdefine
+  PRIM_DEFAULT_IMPL:
+    datatype: str
+    paramtype: vlogdefine
+    description: Use the RDP primitive library
+    default: prim_pkg::ImplRdp
 
 targets:
   default: &default_target
@@ -110,6 +121,8 @@ targets:
 
   sim:
     default_tool: icarus
+    parameters_append:
+      - RDV_NO_SYSCTL=true
     filesets:
       - files_rtl_generic
     toplevel: top_darjeeling

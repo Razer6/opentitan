@@ -145,7 +145,7 @@ pub const ALERT_HANDLER_BASE_ADDR: usize = 0x30150000;
 /// memory-mapped registers associated with this peripheral should have an
 /// address between #ALERT_HANDLER_BASE_ADDR and
 /// `ALERT_HANDLER_BASE_ADDR + ALERT_HANDLER_SIZE_BYTES`.
-pub const ALERT_HANDLER_SIZE_BYTES: usize = 0x800;
+pub const ALERT_HANDLER_SIZE_BYTES: usize = 0x1000;
 
 /// Peripheral base address for spi_host0 in top darjeeling.
 ///
@@ -1512,6 +1512,76 @@ pub enum AlertPeripheral {
     SocDbgCtrl = 41,
     /// rv_core_ibex
     RvCoreIbex = 42,
+    /// sram_ctrl_ret_aon
+    SramCtrlRetAon = 43,
+    /// rv_plic
+    RvPlic = 44,
+    /// rv_timer
+    RvTimer = 45,
+    /// sram_ctrl_mbox
+    SramCtrlMbox = 46,
+    /// mbx4
+    Mbx4 = 47,
+    /// rv_core_ibex
+    RvCoreIbex = 48,
+    /// mbx2
+    Mbx2 = 49,
+    /// soc_proxy
+    SocProxy = 50,
+    /// mbx0
+    Mbx0 = 51,
+    /// mbx5
+    Mbx5 = 52,
+    /// mbx3
+    Mbx3 = 53,
+    /// rv_dm
+    RvDm = 54,
+    /// dma
+    Dma = 55,
+    /// sram_ctrl_main
+    SramCtrlMain = 56,
+    /// aon_timer_aon
+    AonTimerAon = 57,
+    /// mbx1
+    Mbx1 = 58,
+    /// gpio
+    Gpio = 59,
+    /// sram_ctrl_ret_aon
+    SramCtrlRetAon = 60,
+    /// rv_plic
+    RvPlic = 61,
+    /// rv_timer
+    RvTimer = 62,
+    /// sram_ctrl_mbox
+    SramCtrlMbox = 63,
+    /// mbx4
+    Mbx4 = 64,
+    /// rv_core_ibex
+    RvCoreIbex = 65,
+    /// mbx2
+    Mbx2 = 66,
+    /// soc_proxy
+    SocProxy = 67,
+    /// mbx0
+    Mbx0 = 68,
+    /// mbx5
+    Mbx5 = 69,
+    /// mbx3
+    Mbx3 = 70,
+    /// rv_dm
+    RvDm = 71,
+    /// dma
+    Dma = 72,
+    /// sram_ctrl_main
+    SramCtrlMain = 73,
+    /// aon_timer_aon
+    AonTimerAon = 74,
+    /// mbx1
+    Mbx1 = 75,
+    /// scsmio
+    Scsmio = 76,
+    /// scsmio
+    Scsmio = 77,
 }
 
 /// Alert Handler Alert Source.
@@ -1723,6 +1793,112 @@ pub enum AlertId {
     RvCoreIbexFatalHwErr = 99,
     /// rv_core_ibex_recov_hw_err
     RvCoreIbexRecovHwErr = 100,
+    /// rv_timer_fatal_fault
+    RvTimerFatalFault = 101,
+    /// aon_timer_aon_fatal_fault
+    AonTimerAonFatalFault = 102,
+    /// soc_proxy_fatal_alert_intg
+    SocProxyFatalAlertIntg = 103,
+    /// sram_ctrl_ret_aon_fatal_error
+    SramCtrlRetAonFatalError = 104,
+    /// rv_dm_fatal_fault
+    RvDmFatalFault = 105,
+    /// rv_plic_fatal_fault
+    RvPlicFatalFault = 106,
+    /// sram_ctrl_main_fatal_error
+    SramCtrlMainFatalError = 107,
+    /// sram_ctrl_mbox_fatal_error
+    SramCtrlMboxFatalError = 108,
+    /// dma_fatal_fault
+    DmaFatalFault = 109,
+    /// mbx0_fatal_fault
+    Mbx0FatalFault = 110,
+    /// mbx0_recov_fault
+    Mbx0RecovFault = 111,
+    /// mbx1_fatal_fault
+    Mbx1FatalFault = 112,
+    /// mbx1_recov_fault
+    Mbx1RecovFault = 113,
+    /// mbx2_fatal_fault
+    Mbx2FatalFault = 114,
+    /// mbx2_recov_fault
+    Mbx2RecovFault = 115,
+    /// mbx3_fatal_fault
+    Mbx3FatalFault = 116,
+    /// mbx3_recov_fault
+    Mbx3RecovFault = 117,
+    /// mbx4_fatal_fault
+    Mbx4FatalFault = 118,
+    /// mbx4_recov_fault
+    Mbx4RecovFault = 119,
+    /// mbx5_fatal_fault
+    Mbx5FatalFault = 120,
+    /// mbx5_recov_fault
+    Mbx5RecovFault = 121,
+    /// rv_core_ibex_fatal_sw_err
+    RvCoreIbexFatalSwErr = 122,
+    /// rv_core_ibex_recov_sw_err
+    RvCoreIbexRecovSwErr = 123,
+    /// rv_core_ibex_fatal_hw_err
+    RvCoreIbexFatalHwErr = 124,
+    /// rv_core_ibex_recov_hw_err
+    RvCoreIbexRecovHwErr = 125,
+    /// gpio_fatal_fault
+    GpioFatalFault = 126,
+    /// rv_timer_fatal_fault
+    RvTimerFatalFault = 127,
+    /// aon_timer_aon_fatal_fault
+    AonTimerAonFatalFault = 128,
+    /// soc_proxy_fatal_alert_intg
+    SocProxyFatalAlertIntg = 129,
+    /// sram_ctrl_ret_aon_fatal_error
+    SramCtrlRetAonFatalError = 130,
+    /// rv_dm_fatal_fault
+    RvDmFatalFault = 131,
+    /// rv_plic_fatal_fault
+    RvPlicFatalFault = 132,
+    /// sram_ctrl_main_fatal_error
+    SramCtrlMainFatalError = 133,
+    /// sram_ctrl_mbox_fatal_error
+    SramCtrlMboxFatalError = 134,
+    /// dma_fatal_fault
+    DmaFatalFault = 135,
+    /// mbx0_fatal_fault
+    Mbx0FatalFault = 136,
+    /// mbx0_recov_fault
+    Mbx0RecovFault = 137,
+    /// mbx1_fatal_fault
+    Mbx1FatalFault = 138,
+    /// mbx1_recov_fault
+    Mbx1RecovFault = 139,
+    /// mbx2_fatal_fault
+    Mbx2FatalFault = 140,
+    /// mbx2_recov_fault
+    Mbx2RecovFault = 141,
+    /// mbx3_fatal_fault
+    Mbx3FatalFault = 142,
+    /// mbx3_recov_fault
+    Mbx3RecovFault = 143,
+    /// mbx4_fatal_fault
+    Mbx4FatalFault = 144,
+    /// mbx4_recov_fault
+    Mbx4RecovFault = 145,
+    /// mbx5_fatal_fault
+    Mbx5FatalFault = 146,
+    /// mbx5_recov_fault
+    Mbx5RecovFault = 147,
+    /// rv_core_ibex_fatal_sw_err
+    RvCoreIbexFatalSwErr = 148,
+    /// rv_core_ibex_recov_sw_err
+    RvCoreIbexRecovSwErr = 149,
+    /// rv_core_ibex_fatal_hw_err
+    RvCoreIbexFatalHwErr = 150,
+    /// rv_core_ibex_recov_hw_err
+    RvCoreIbexRecovHwErr = 151,
+    /// integ_error
+    IntegError = 152,
+    /// integ_error
+    IntegError = 153,
 }
 
 impl TryFrom<u32> for AlertId {
@@ -1830,6 +2006,59 @@ impl TryFrom<u32> for AlertId {
             98 => Ok(Self::RvCoreIbexRecovSwErr),
             99 => Ok(Self::RvCoreIbexFatalHwErr),
             100 => Ok(Self::RvCoreIbexRecovHwErr),
+            101 => Ok(Self::RvTimerFatalFault),
+            102 => Ok(Self::AonTimerAonFatalFault),
+            103 => Ok(Self::SocProxyFatalAlertIntg),
+            104 => Ok(Self::SramCtrlRetAonFatalError),
+            105 => Ok(Self::RvDmFatalFault),
+            106 => Ok(Self::RvPlicFatalFault),
+            107 => Ok(Self::SramCtrlMainFatalError),
+            108 => Ok(Self::SramCtrlMboxFatalError),
+            109 => Ok(Self::DmaFatalFault),
+            110 => Ok(Self::Mbx0FatalFault),
+            111 => Ok(Self::Mbx0RecovFault),
+            112 => Ok(Self::Mbx1FatalFault),
+            113 => Ok(Self::Mbx1RecovFault),
+            114 => Ok(Self::Mbx2FatalFault),
+            115 => Ok(Self::Mbx2RecovFault),
+            116 => Ok(Self::Mbx3FatalFault),
+            117 => Ok(Self::Mbx3RecovFault),
+            118 => Ok(Self::Mbx4FatalFault),
+            119 => Ok(Self::Mbx4RecovFault),
+            120 => Ok(Self::Mbx5FatalFault),
+            121 => Ok(Self::Mbx5RecovFault),
+            122 => Ok(Self::RvCoreIbexFatalSwErr),
+            123 => Ok(Self::RvCoreIbexRecovSwErr),
+            124 => Ok(Self::RvCoreIbexFatalHwErr),
+            125 => Ok(Self::RvCoreIbexRecovHwErr),
+            126 => Ok(Self::GpioFatalFault),
+            127 => Ok(Self::RvTimerFatalFault),
+            128 => Ok(Self::AonTimerAonFatalFault),
+            129 => Ok(Self::SocProxyFatalAlertIntg),
+            130 => Ok(Self::SramCtrlRetAonFatalError),
+            131 => Ok(Self::RvDmFatalFault),
+            132 => Ok(Self::RvPlicFatalFault),
+            133 => Ok(Self::SramCtrlMainFatalError),
+            134 => Ok(Self::SramCtrlMboxFatalError),
+            135 => Ok(Self::DmaFatalFault),
+            136 => Ok(Self::Mbx0FatalFault),
+            137 => Ok(Self::Mbx0RecovFault),
+            138 => Ok(Self::Mbx1FatalFault),
+            139 => Ok(Self::Mbx1RecovFault),
+            140 => Ok(Self::Mbx2FatalFault),
+            141 => Ok(Self::Mbx2RecovFault),
+            142 => Ok(Self::Mbx3FatalFault),
+            143 => Ok(Self::Mbx3RecovFault),
+            144 => Ok(Self::Mbx4FatalFault),
+            145 => Ok(Self::Mbx4RecovFault),
+            146 => Ok(Self::Mbx5FatalFault),
+            147 => Ok(Self::Mbx5RecovFault),
+            148 => Ok(Self::RvCoreIbexFatalSwErr),
+            149 => Ok(Self::RvCoreIbexRecovSwErr),
+            150 => Ok(Self::RvCoreIbexFatalHwErr),
+            151 => Ok(Self::RvCoreIbexRecovHwErr),
+            152 => Ok(Self::IntegError),
+            153 => Ok(Self::IntegError),
             _ => Err(val),
         }
     }
@@ -2166,7 +2395,7 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 160] = [
 ///
 /// This array is a mapping from `AlertId` to
 /// `AlertPeripheral`.
-pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 101] = [
+pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 154] = [
     // Uart0FatalFault -> AlertPeripheral::Uart0
     AlertPeripheral::Uart0,
     // GpioFatalFault -> AlertPeripheral::Gpio
@@ -2369,6 +2598,112 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 101] = [
     AlertPeripheral::RvCoreIbex,
     // RvCoreIbexRecovHwErr -> AlertPeripheral::RvCoreIbex
     AlertPeripheral::RvCoreIbex,
+    // RvTimerFatalFault -> AlertPeripheral::RvTimer
+    AlertPeripheral::RvTimer,
+    // AonTimerAonFatalFault -> AlertPeripheral::AonTimerAon
+    AlertPeripheral::AonTimerAon,
+    // SocProxyFatalAlertIntg -> AlertPeripheral::SocProxy
+    AlertPeripheral::SocProxy,
+    // SramCtrlRetAonFatalError -> AlertPeripheral::SramCtrlRetAon
+    AlertPeripheral::SramCtrlRetAon,
+    // RvDmFatalFault -> AlertPeripheral::RvDm
+    AlertPeripheral::RvDm,
+    // RvPlicFatalFault -> AlertPeripheral::RvPlic
+    AlertPeripheral::RvPlic,
+    // SramCtrlMainFatalError -> AlertPeripheral::SramCtrlMain
+    AlertPeripheral::SramCtrlMain,
+    // SramCtrlMboxFatalError -> AlertPeripheral::SramCtrlMbox
+    AlertPeripheral::SramCtrlMbox,
+    // DmaFatalFault -> AlertPeripheral::Dma
+    AlertPeripheral::Dma,
+    // Mbx0FatalFault -> AlertPeripheral::Mbx0
+    AlertPeripheral::Mbx0,
+    // Mbx0RecovFault -> AlertPeripheral::Mbx0
+    AlertPeripheral::Mbx0,
+    // Mbx1FatalFault -> AlertPeripheral::Mbx1
+    AlertPeripheral::Mbx1,
+    // Mbx1RecovFault -> AlertPeripheral::Mbx1
+    AlertPeripheral::Mbx1,
+    // Mbx2FatalFault -> AlertPeripheral::Mbx2
+    AlertPeripheral::Mbx2,
+    // Mbx2RecovFault -> AlertPeripheral::Mbx2
+    AlertPeripheral::Mbx2,
+    // Mbx3FatalFault -> AlertPeripheral::Mbx3
+    AlertPeripheral::Mbx3,
+    // Mbx3RecovFault -> AlertPeripheral::Mbx3
+    AlertPeripheral::Mbx3,
+    // Mbx4FatalFault -> AlertPeripheral::Mbx4
+    AlertPeripheral::Mbx4,
+    // Mbx4RecovFault -> AlertPeripheral::Mbx4
+    AlertPeripheral::Mbx4,
+    // Mbx5FatalFault -> AlertPeripheral::Mbx5
+    AlertPeripheral::Mbx5,
+    // Mbx5RecovFault -> AlertPeripheral::Mbx5
+    AlertPeripheral::Mbx5,
+    // RvCoreIbexFatalSwErr -> AlertPeripheral::RvCoreIbex
+    AlertPeripheral::RvCoreIbex,
+    // RvCoreIbexRecovSwErr -> AlertPeripheral::RvCoreIbex
+    AlertPeripheral::RvCoreIbex,
+    // RvCoreIbexFatalHwErr -> AlertPeripheral::RvCoreIbex
+    AlertPeripheral::RvCoreIbex,
+    // RvCoreIbexRecovHwErr -> AlertPeripheral::RvCoreIbex
+    AlertPeripheral::RvCoreIbex,
+    // GpioFatalFault -> AlertPeripheral::Gpio
+    AlertPeripheral::Gpio,
+    // RvTimerFatalFault -> AlertPeripheral::RvTimer
+    AlertPeripheral::RvTimer,
+    // AonTimerAonFatalFault -> AlertPeripheral::AonTimerAon
+    AlertPeripheral::AonTimerAon,
+    // SocProxyFatalAlertIntg -> AlertPeripheral::SocProxy
+    AlertPeripheral::SocProxy,
+    // SramCtrlRetAonFatalError -> AlertPeripheral::SramCtrlRetAon
+    AlertPeripheral::SramCtrlRetAon,
+    // RvDmFatalFault -> AlertPeripheral::RvDm
+    AlertPeripheral::RvDm,
+    // RvPlicFatalFault -> AlertPeripheral::RvPlic
+    AlertPeripheral::RvPlic,
+    // SramCtrlMainFatalError -> AlertPeripheral::SramCtrlMain
+    AlertPeripheral::SramCtrlMain,
+    // SramCtrlMboxFatalError -> AlertPeripheral::SramCtrlMbox
+    AlertPeripheral::SramCtrlMbox,
+    // DmaFatalFault -> AlertPeripheral::Dma
+    AlertPeripheral::Dma,
+    // Mbx0FatalFault -> AlertPeripheral::Mbx0
+    AlertPeripheral::Mbx0,
+    // Mbx0RecovFault -> AlertPeripheral::Mbx0
+    AlertPeripheral::Mbx0,
+    // Mbx1FatalFault -> AlertPeripheral::Mbx1
+    AlertPeripheral::Mbx1,
+    // Mbx1RecovFault -> AlertPeripheral::Mbx1
+    AlertPeripheral::Mbx1,
+    // Mbx2FatalFault -> AlertPeripheral::Mbx2
+    AlertPeripheral::Mbx2,
+    // Mbx2RecovFault -> AlertPeripheral::Mbx2
+    AlertPeripheral::Mbx2,
+    // Mbx3FatalFault -> AlertPeripheral::Mbx3
+    AlertPeripheral::Mbx3,
+    // Mbx3RecovFault -> AlertPeripheral::Mbx3
+    AlertPeripheral::Mbx3,
+    // Mbx4FatalFault -> AlertPeripheral::Mbx4
+    AlertPeripheral::Mbx4,
+    // Mbx4RecovFault -> AlertPeripheral::Mbx4
+    AlertPeripheral::Mbx4,
+    // Mbx5FatalFault -> AlertPeripheral::Mbx5
+    AlertPeripheral::Mbx5,
+    // Mbx5RecovFault -> AlertPeripheral::Mbx5
+    AlertPeripheral::Mbx5,
+    // RvCoreIbexFatalSwErr -> AlertPeripheral::RvCoreIbex
+    AlertPeripheral::RvCoreIbex,
+    // RvCoreIbexRecovSwErr -> AlertPeripheral::RvCoreIbex
+    AlertPeripheral::RvCoreIbex,
+    // RvCoreIbexFatalHwErr -> AlertPeripheral::RvCoreIbex
+    AlertPeripheral::RvCoreIbex,
+    // RvCoreIbexRecovHwErr -> AlertPeripheral::RvCoreIbex
+    AlertPeripheral::RvCoreIbex,
+    // IntegError -> AlertPeripheral::Scsmio
+    AlertPeripheral::Scsmio,
+    // IntegError -> AlertPeripheral::Scsmio
+    AlertPeripheral::Scsmio,
 ];
 
 // PERIPH_INSEL ranges from 0 to NUM_MIO_PADS + 2 -1}

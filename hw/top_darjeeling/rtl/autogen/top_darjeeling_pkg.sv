@@ -99,7 +99,7 @@ package top_darjeeling_pkg;
   /**
    * Peripheral size in bytes for alert_handler in top darjeeling.
    */
-  parameter int unsigned TOP_DARJEELING_ALERT_HANDLER_SIZE_BYTES = 32'h800;
+  parameter int unsigned TOP_DARJEELING_ALERT_HANDLER_SIZE_BYTES = 32'h1000;
 
   /**
    * Peripheral base address for spi_host0 in top darjeeling.
@@ -611,6 +611,30 @@ package top_darjeeling_pkg;
    */
   parameter int unsigned TOP_DARJEELING_ROM1_SIZE_BYTES = 32'h10000;
 
+
+  // Number of mio incoming alerts
+  parameter int unsigned NIncomingAlertsMio = 25;
+
+  // Number of LPGs for incoming alert group mio
+  parameter int unsigned NIncomingLpgsMio = 2;
+
+  // Number of pwc incoming alerts
+  parameter int unsigned NIncomingAlertsPwc = 26;
+
+  // Number of LPGs for incoming alert group pwc
+  parameter int unsigned NIncomingLpgsPwc = 2;
+
+  // Number of mio_extra_alerts incoming alerts
+  parameter int unsigned NIncomingAlertsMio_extra_alerts = 1;
+
+  // Number of LPGs for incoming alert group mio_extra_alerts
+  parameter int unsigned NIncomingLpgsMio_extra_alerts = 1;
+
+  // Number of pwc_extra_alerts incoming alerts
+  parameter int unsigned NIncomingAlertsPwc_extra_alerts = 1;
+
+  // Number of LPGs for incoming alert group pwc_extra_alerts
+  parameter int unsigned NIncomingLpgsPwc_extra_alerts = 1;
 
   // Enumeration of alert modules
   typedef enum int unsigned {
