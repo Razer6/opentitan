@@ -451,7 +451,7 @@ slice = f"{lo+w-1}:{lo}"
         % endif
       % endfor
     % endif
-    % if m["type"] == "rv_plic":
+    % if m["type"] == "rv_plic_pwc":
       .intr_src_i (intr_vector),
     % endif
     % if m["type"] == "alert_handler":
@@ -535,7 +535,7 @@ slice = f"{lo+w-1}:{lo}"
 % endfor
 
   // make sure scanmode_i is never X (including during reset)
-  `ASSERT_KNOWN(scanmodeKnown, scanmode_i, clk_main_i, 0)
+  `ASSERT_KNOWN(scanmodeKnown, scanmode_i, clk_ext_main_i, 0)
 
 endmodule
 // Local Variables:

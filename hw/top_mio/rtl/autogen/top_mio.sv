@@ -64,9 +64,9 @@ module top_mio #(
   parameter int unsigned RvCoreIbexPMPNumRegions = 16,
   parameter int unsigned RvCoreIbexMHPMCounterNum = 10,
   parameter int unsigned RvCoreIbexMHPMCounterWidth = 32,
-  parameter ibex_pkg::pmp_cfg_t RvCoreIbexPMPRstCfg[16] = ibex_pkg::PmpCfgRst,
-  parameter logic [33:0] RvCoreIbexPMPRstAddr[16] = ibex_pkg::PmpAddrRst,
-  parameter ibex_pkg::pmp_mseccfg_t RvCoreIbexPMPRstMsecCfg = ibex_pkg::PmpMseccfgRst,
+  parameter ibex_pkg::pmp_cfg_t RvCoreIbexPMPRstCfg[16] = ibex_pmp_reset_pkg::MioPmpCfgRst,
+  parameter logic [33:0] RvCoreIbexPMPRstAddr[16] = ibex_pmp_reset_pkg::MioPmpAddrRst,
+  parameter ibex_pkg::pmp_mseccfg_t RvCoreIbexPMPRstMsecCfg = ibex_pmp_reset_pkg::MioPmpMseccfgRst,
   parameter bit RvCoreIbexRV32E = 0,
   parameter ibex_pkg::rv32m_e RvCoreIbexRV32M = ibex_pkg::RV32MSingleCycle,
   parameter ibex_pkg::rv32b_e RvCoreIbexRV32B = ibex_pkg::RV32BOTEarlGrey,
@@ -480,6 +480,7 @@ module top_mio #(
       .msip_o(rv_plic_msip),
       .tl_i(rv_plic_tl_req),
       .tl_o(rv_plic_tl_rsp),
+      .intr_src_i (intr_vector),
 
       // Clock and reset connections
       .clk_i (clk_ext_main_i),
@@ -1077,7 +1078,7 @@ module top_mio #(
   );
 
   // make sure scanmode_i is never X (including during reset)
-  `ASSERT_KNOWN(scanmodeKnown, scanmode_i, clk_main_i, 0)
+  `ASSERT_KNOWN(scanmodeKnown, scanmode_i, clk_ext_main_i, 0)
 
 endmodule
 // Local Variables:

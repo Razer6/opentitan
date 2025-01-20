@@ -51,6 +51,9 @@ module top_englishbreakfast #(
   parameter int SramCtrlMainNumRamInst = 1,
   parameter bit SramCtrlMainInstrExec = 1,
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
+  parameter bit SramCtrlMainUseOTIntegErr = 1,
+  parameter bit SramCtrlMainUseCompiledRam = 1,
+  parameter bit SramCtrlMainFlopRamOutput = 1,
   // parameters for rom_ctrl
   parameter RomCtrlBootRomInitFile = "",
   parameter bit SecRomCtrlDisableScrambling = 1'b1,
@@ -676,8 +679,8 @@ module top_englishbreakfast #(
       .ram_cfg_rsp_spi2sys_o(),
       .passthrough_o(spi_device_passthrough_req),
       .passthrough_i(spi_device_passthrough_rsp),
-      .mbist_en_i('0),
       .sck_monitor_o(sck_monitor_o),
+      .tston_i(prim_mubi_pkg::MUBI4_DEFAULT),
       .tl_i(spi_device_tl_req),
       .tl_o(spi_device_tl_rsp),
       .scanmode_i,
@@ -1177,7 +1180,10 @@ module top_englishbreakfast #(
     .InstSize(SramCtrlMainInstSize),
     .NumRamInst(SramCtrlMainNumRamInst),
     .InstrExec(SramCtrlMainInstrExec),
-    .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf)
+    .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
+    .UseOTIntegErr(SramCtrlMainUseOTIntegErr),
+    .UseCompiledRam(SramCtrlMainUseCompiledRam),
+    .FlopRamOutput(SramCtrlMainFlopRamOutput)
   ) u_sram_ctrl_main (
       // [22]: fatal_error
       .alert_tx_o  ( alert_tx[22:22] ),
@@ -1191,6 +1197,9 @@ module top_englishbreakfast #(
       .lc_escalate_en_i(lc_ctrl_pkg::Off),
       .lc_hw_debug_en_i(lc_ctrl_pkg::Off),
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
+      .sram_error_record_uncor_err_o(),
+      .sram_error_record_corr_err_o(),
+      .sram_error_record_err_addr_o(),
       .regs_tl_i(sram_ctrl_main_regs_tl_req),
       .regs_tl_o(sram_ctrl_main_regs_tl_rsp),
       .ram_tl_i(sram_ctrl_main_ram_tl_req),
@@ -1220,6 +1229,7 @@ module top_englishbreakfast #(
       .keymgr_data_o(),
       .kmac_data_o(),
       .kmac_data_i(kmac_pkg::APP_RSP_DEFAULT),
+      .rom_test_cfg_i(prim_misc_dft_pkg::ROM_TEST_CFG_DEFAULT),
       .regs_tl_i(rom_ctrl_regs_tl_req),
       .regs_tl_o(rom_ctrl_regs_tl_rsp),
       .rom_tl_i(rom_ctrl_rom_tl_req),
