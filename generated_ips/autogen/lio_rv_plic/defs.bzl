@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 load("//rules/opentitan:hw.bzl", "opentitan_ip")
 
-RV_PLIC = opentitan_ip(
-    name = "rv_plic",
-    hjson = "//hw/top_lio/ip_autogen/rv_plic:data/rv_plic.hjson",
+LIO_RV_PLIC = opentitan_ip(
+    name = "lio_rv_plic",
+    hjson = "//hw/top_lio/ip_autogen/lio_rv_plic:data/lio_rv_plic.hjson",
 )
