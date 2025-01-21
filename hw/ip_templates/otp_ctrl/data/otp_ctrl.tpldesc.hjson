@@ -16,6 +16,12 @@
       default: {}
     }
     {
+      name: "module_instance_name"
+      desc: "instance name in case there are multiple otp_ctrl instances. Not yet implemented."
+      type: "string"
+      default: "otp_ctrl"
+    }
+    {
       name: "use_rivos_config"
       desc: "Set to true to use the Rivos internal OTP Ctrl configuration"
       type: "bool"

@@ -1506,6 +1506,7 @@
     {
       name: otp_ctrl
       type: otp_ctrl
+      template_type: otp_ctrl
       clock_srcs:
       {
         clk_i: io_div4
@@ -2614,6 +2615,7 @@
     {
       name: alert_handler
       type: alert_handler
+      template_type: alert_handler
       clock_srcs:
       {
         clk_i: io_div4
@@ -3253,6 +3255,7 @@
     {
       name: pwrmgr_aon
       type: pwrmgr
+      template_type: pwrmgr
       clock_group: powerup
       clock_srcs:
       {
@@ -3603,6 +3606,7 @@
     {
       name: rstmgr_aon
       type: rstmgr
+      template_type: rstmgr
       clock_srcs:
       {
         clk_i:
@@ -3807,6 +3811,7 @@
     {
       name: clkmgr_aon
       type: clkmgr
+      template_type: clkmgr
       clock_srcs:
       {
         clk_i: io_div4
@@ -4366,6 +4371,7 @@
     {
       name: pinmux_aon
       type: pinmux
+      template_type: pinmux
       clock_srcs:
       {
         clk_i: io_div4
@@ -5516,6 +5522,7 @@
     {
       name: flash_ctrl
       type: flash_ctrl
+      template_type: flash_ctrl
       clock_srcs:
       {
         clk_i: main
@@ -6327,6 +6334,7 @@
     {
       name: rv_plic
       type: rv_plic
+      template_type: rv_plic
       clock_srcs:
       {
         clk_i: main
