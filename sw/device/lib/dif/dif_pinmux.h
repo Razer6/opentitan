@@ -138,14 +138,9 @@ typedef uint8_t dif_pinmux_pad_drive_strength_t;
  *   least one of the attributes in the bitfield could not be toggled.
  */
 typedef enum dif_pinmux_pad_attr_flags {
-  kDifPinmuxPadAttrInvertLevel = 1 << 0,
-  kDifPinmuxPadAttrVirtualOpenDrain = 1 << 1,
-  kDifPinmuxPadAttrPullResistorEnable = 1 << 2,
-  kDifPinmuxPadAttrPullResistorUp = 1 << 3,
-  kDifPinmuxPadAttrKeeper = 1 << 4,
-  kDifPinmuxPadAttrSchmittTrigger = 1 << 5,
-  kDifPinmuxPadAttrOpenDrain = 1 << 6,
-  kDifPinmuxPadAttrInputDisable = 1 << 7,
+  kDifPinmuxPadPullUpEnable = 1 << 0,
+  kDifPinmuxPadPullDownEnable = 1 << 1,
+  kDifPinmuxPadAttrSchmittTriggerEnable = 1 << 2
 } dif_pinmux_pad_attr_flags_t;
 
 /**

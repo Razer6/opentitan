@@ -227,37 +227,22 @@ dif_result_t dif_pinmux_mio_select_output(const dif_pinmux_t *pinmux,
 
 static dif_pinmux_pad_attr_t dif_pinmux_reg_to_pad_attr(uint32_t reg_value) {
   dif_pinmux_pad_attr_t pad_attrs = {0};
-  pad_attrs.slew_rate = (dif_pinmux_pad_slew_rate_t)bitfield_field32_read(
-      reg_value, PINMUX_MIO_PAD_ATTR_0_SLEW_RATE_0_FIELD);
   pad_attrs.drive_strength =
       (dif_pinmux_pad_drive_strength_t)bitfield_field32_read(
-          reg_value, PINMUX_MIO_PAD_ATTR_0_DRIVE_STRENGTH_0_FIELD);
-  if (bitfield_bit32_read(reg_value, PINMUX_MIO_PAD_ATTR_0_INVERT_0_BIT)) {
-    pad_attrs.flags |= kDifPinmuxPadAttrInvertLevel;
+          reg_value, PINMUX_MIO_PAD_ATTR_0_DRV_0_FIELD);
+
+  if (bitfield_bit32_read(reg_value, PINMUX_MIO_PAD_ATTR_0_PUEN_0_BIT)) {
+    pad_attrs.flags |= kDifPinmuxPadPullUpEnable;
   }
-  if (bitfield_bit32_read(reg_value,
-                          PINMUX_MIO_PAD_ATTR_0_VIRTUAL_OD_EN_0_BIT)) {
-    pad_attrs.flags |= kDifPinmuxPadAttrVirtualOpenDrain;
+
+  if (bitfield_bit32_read(reg_value, PINMUX_MIO_PAD_ATTR_0_PDEN_0_BIT)) {
+    pad_attrs.flags |= kDifPinmuxPadPullDownEnable;
   }
-  if (bitfield_bit32_read(reg_value, PINMUX_MIO_PAD_ATTR_0_PULL_EN_0_BIT)) {
-    pad_attrs.flags |= kDifPinmuxPadAttrPullResistorEnable;
+
+  if (bitfield_bit32_read(reg_value, PINMUX_MIO_PAD_ATTR_0_SMTEN_0_BIT)) {
+    pad_attrs.flags |= kDifPinmuxPadAttrSchmittTriggerEnable;
   }
-  if (bitfield_bit32_read(reg_value, PINMUX_MIO_PAD_ATTR_0_PULL_SELECT_0_BIT)) {
-    pad_attrs.flags |= kDifPinmuxPadAttrPullResistorUp;
-  }
-  if (bitfield_bit32_read(reg_value, PINMUX_MIO_PAD_ATTR_0_KEEPER_EN_0_BIT)) {
-    pad_attrs.flags |= kDifPinmuxPadAttrKeeper;
-  }
-  if (bitfield_bit32_read(reg_value, PINMUX_MIO_PAD_ATTR_0_SCHMITT_EN_0_BIT)) {
-    pad_attrs.flags |= kDifPinmuxPadAttrSchmittTrigger;
-  }
-  if (bitfield_bit32_read(reg_value, PINMUX_MIO_PAD_ATTR_0_OD_EN_0_BIT)) {
-    pad_attrs.flags |= kDifPinmuxPadAttrOpenDrain;
-  }
-  if (bitfield_bit32_read(reg_value,
-                          PINMUX_MIO_PAD_ATTR_0_INPUT_DISABLE_0_BIT)) {
-    pad_attrs.flags |= kDifPinmuxPadAttrInputDisable;
-  }
+
   return pad_attrs;
 }
 
@@ -271,8 +256,7 @@ dif_result_t dif_pinmux_pad_write_attrs(const dif_pinmux_t *pinmux,
   if (pinmux == NULL || attrs_out == NULL) {
     return kDifBadArg;
   }
-  if (attrs_in.drive_strength > PINMUX_MIO_PAD_ATTR_0_DRIVE_STRENGTH_0_MASK ||
-      attrs_in.slew_rate > PINMUX_MIO_PAD_ATTR_0_SLEW_RATE_0_MASK) {
+  if (attrs_in.drive_strength > PINMUX_MIO_PAD_ATTR_0_DRV_0_MASK) {
     return kDifBadArg;
   }
   ptrdiff_t reg_offset;
@@ -294,44 +278,22 @@ dif_result_t dif_pinmux_pad_write_attrs(const dif_pinmux_t *pinmux,
     return kDifLocked;
   }
 
-  uint32_t reg_before = mmio_region_read32(pinmux->base_addr, reg_offset);
+  //uint32_t reg_before = mmio_region_read32(pinmux->base_addr, reg_offset);
 
   uint32_t reg_value = bitfield_field32_write(
-      0, PINMUX_MIO_PAD_ATTR_0_SLEW_RATE_0_FIELD, attrs_in.slew_rate);
-  reg_value = bitfield_field32_write(
-      reg_value, PINMUX_MIO_PAD_ATTR_0_DRIVE_STRENGTH_0_FIELD,
-      attrs_in.drive_strength);
+      0, PINMUX_MIO_PAD_ATTR_0_DRV_0_FIELD, attrs_in.drive_strength);
   reg_value =
-      bitfield_bit32_write(reg_value, PINMUX_MIO_PAD_ATTR_0_INVERT_0_BIT,
-                           attrs_in.flags & kDifPinmuxPadAttrInvertLevel);
+      bitfield_bit32_write(reg_value, PINMUX_MIO_PAD_ATTR_0_PUEN_0_BIT,
+                           attrs_in.flags & kDifPinmuxPadPullDownEnable);
   reg_value =
-      bitfield_bit32_write(reg_value, PINMUX_MIO_PAD_ATTR_0_VIRTUAL_OD_EN_0_BIT,
-                           attrs_in.flags & kDifPinmuxPadAttrVirtualOpenDrain);
+      bitfield_bit32_write(reg_value, PINMUX_MIO_PAD_ATTR_0_PDEN_0_BIT,
+                           attrs_in.flags & kDifPinmuxPadPullDownEnable);
   reg_value = bitfield_bit32_write(
-      reg_value, PINMUX_MIO_PAD_ATTR_0_PULL_EN_0_BIT,
-      attrs_in.flags & kDifPinmuxPadAttrPullResistorEnable);
-  reg_value =
-      bitfield_bit32_write(reg_value, PINMUX_MIO_PAD_ATTR_0_PULL_SELECT_0_BIT,
-                           attrs_in.flags & kDifPinmuxPadAttrPullResistorUp);
-  reg_value =
-      bitfield_bit32_write(reg_value, PINMUX_MIO_PAD_ATTR_0_KEEPER_EN_0_BIT,
-                           attrs_in.flags & kDifPinmuxPadAttrKeeper);
-  reg_value =
-      bitfield_bit32_write(reg_value, PINMUX_MIO_PAD_ATTR_0_SCHMITT_EN_0_BIT,
-                           attrs_in.flags & kDifPinmuxPadAttrSchmittTrigger);
-  reg_value = bitfield_bit32_write(reg_value, PINMUX_MIO_PAD_ATTR_0_OD_EN_0_BIT,
-                                   attrs_in.flags & kDifPinmuxPadAttrOpenDrain);
-  reg_value =
-      bitfield_bit32_write(reg_value, PINMUX_MIO_PAD_ATTR_0_INPUT_DISABLE_0_BIT,
-                           attrs_in.flags & kDifPinmuxPadAttrInputDisable);
+      reg_value, PINMUX_MIO_PAD_ATTR_0_SMTEN_0_BIT,
+      attrs_in.flags & kDifPinmuxPadAttrSchmittTriggerEnable);
   mmio_region_write32(pinmux->base_addr, reg_offset, reg_value);
 
-  // Wait for pull enable/disable changes to propagate to the physical pad.
-  dif_pinmux_pad_attr_t attrs_before = dif_pinmux_reg_to_pad_attr(reg_before);
-  if ((attrs_before.flags & kDifPinmuxPadAttrPullResistorEnable) !=
-      (attrs_in.flags & kDifPinmuxPadAttrPullResistorEnable)) {
-    busy_spin_micros(kDifPinmuxPadAttrSpinWaitMicros);
-  }
+  busy_spin_micros(kDifPinmuxPadAttrSpinWaitMicros);
 
   uint32_t read_value = mmio_region_read32(pinmux->base_addr, reg_offset);
   *attrs_out = dif_pinmux_reg_to_pad_attr(read_value);

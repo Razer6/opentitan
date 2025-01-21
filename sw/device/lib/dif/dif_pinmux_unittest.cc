@@ -113,11 +113,9 @@ TEST_F(PinmuxTest, OutputSelection) {
 
 TEST_F(PinmuxTest, PadAttributes) {
   dif_pinmux_pad_attr_t attrs = {
-      .slew_rate = 2,
       .drive_strength = 5,
       .flags = static_cast<dif_pinmux_pad_attr_flags_t>(
-          kDifPinmuxPadAttrInvertLevel | kDifPinmuxPadAttrPullResistorEnable |
-          kDifPinmuxPadAttrPullResistorUp | kDifPinmuxPadAttrInputDisable),
+          kDifPinmuxPadPullUpEnable | kDifPinmuxPadAttrSchmittTriggerEnable),
   };
   dif_pinmux_pad_attr_t attrs_check;
   EXPECT_READ32(PINMUX_MIO_PAD_ATTR_REGWEN_1_REG_OFFSET, 0);
@@ -136,26 +134,19 @@ TEST_F(PinmuxTest, PadAttributes) {
   EXPECT_READ32(PINMUX_MIO_PAD_ATTR_1_REG_OFFSET, 0);
   EXPECT_WRITE32(PINMUX_MIO_PAD_ATTR_1_REG_OFFSET,
                  {
-                     {PINMUX_MIO_PAD_ATTR_1_INVERT_1_BIT, 1},
-                     {PINMUX_MIO_PAD_ATTR_1_PULL_EN_1_BIT, 1},
-                     {PINMUX_MIO_PAD_ATTR_1_PULL_SELECT_1_BIT, 1},
-                     {PINMUX_MIO_PAD_ATTR_1_INPUT_DISABLE_1_BIT, 1},
-                     {PINMUX_MIO_PAD_ATTR_1_SLEW_RATE_1_OFFSET, 2},
-                     {PINMUX_MIO_PAD_ATTR_1_DRIVE_STRENGTH_1_OFFSET, 5},
+                     {PINMUX_MIO_PAD_ATTR_1_PUEN_1_BIT, 1},
+                     {PINMUX_MIO_PAD_ATTR_1_SMTEN_1_BIT, 1},
+                     {PINMUX_MIO_PAD_ATTR_1_DRV_1_OFFSET, 5},
                  });
   EXPECT_READ32(PINMUX_MIO_PAD_ATTR_1_REG_OFFSET,
                 {
-                    {PINMUX_MIO_PAD_ATTR_1_INVERT_1_BIT, 1},
-                    {PINMUX_MIO_PAD_ATTR_1_PULL_EN_1_BIT, 1},
-                    {PINMUX_MIO_PAD_ATTR_1_PULL_SELECT_1_BIT, 1},
-                    {PINMUX_MIO_PAD_ATTR_1_INPUT_DISABLE_1_BIT, 1},
-                    {PINMUX_MIO_PAD_ATTR_1_SLEW_RATE_1_OFFSET, 2},
-                    {PINMUX_MIO_PAD_ATTR_1_DRIVE_STRENGTH_1_OFFSET, 5},
+                    {PINMUX_MIO_PAD_ATTR_1_PUEN_1_BIT, 1},
+                    {PINMUX_MIO_PAD_ATTR_1_SMTEN_1_BIT, 1},
+                    {PINMUX_MIO_PAD_ATTR_1_DRV_1_OFFSET, 5},
                 });
   EXPECT_DIF_OK(dif_pinmux_pad_write_attrs(&dif_pinmux_, /*pad=*/1,
                                            /*type=*/kDifPinmuxPadKindMio, attrs,
                                            &attrs_check));
-  EXPECT_EQ(attrs_check.slew_rate, attrs.slew_rate);
   EXPECT_EQ(attrs_check.drive_strength, attrs.drive_strength);
   EXPECT_EQ(attrs_check.flags, attrs.flags);
 
@@ -163,47 +154,33 @@ TEST_F(PinmuxTest, PadAttributes) {
   EXPECT_READ32(PINMUX_DIO_PAD_ATTR_3_REG_OFFSET, 0);
   EXPECT_WRITE32(PINMUX_DIO_PAD_ATTR_3_REG_OFFSET,
                  {
-                     {PINMUX_DIO_PAD_ATTR_3_INVERT_3_BIT, 1},
-                     {PINMUX_DIO_PAD_ATTR_3_PULL_EN_3_BIT, 1},
-                     {PINMUX_DIO_PAD_ATTR_3_PULL_SELECT_3_BIT, 1},
-                     {PINMUX_DIO_PAD_ATTR_3_INPUT_DISABLE_3_BIT, 1},
-                     {PINMUX_DIO_PAD_ATTR_3_SLEW_RATE_3_OFFSET, 2},
-                     {PINMUX_DIO_PAD_ATTR_3_DRIVE_STRENGTH_3_OFFSET, 5},
+                     {PINMUX_MIO_PAD_ATTR_1_PUEN_1_BIT, 1},
+                     {PINMUX_MIO_PAD_ATTR_3_SMTEN_3_BIT, 1},
+                     {PINMUX_MIO_PAD_ATTR_3_DRV_3_OFFSET, 5},
                  });
   EXPECT_READ32(PINMUX_DIO_PAD_ATTR_3_REG_OFFSET,
                 {
-                    {PINMUX_DIO_PAD_ATTR_3_INVERT_3_BIT, 0},
-                    {PINMUX_DIO_PAD_ATTR_3_PULL_EN_3_BIT, 1},
-                    {PINMUX_DIO_PAD_ATTR_3_PULL_SELECT_3_BIT, 1},
-                    {PINMUX_DIO_PAD_ATTR_3_INPUT_DISABLE_3_BIT, 1},
-                    {PINMUX_DIO_PAD_ATTR_3_SLEW_RATE_3_OFFSET, 2},
-                    {PINMUX_DIO_PAD_ATTR_3_DRIVE_STRENGTH_3_OFFSET, 5},
+                    {PINMUX_MIO_PAD_ATTR_1_PUEN_1_BIT, 0},
+                    {PINMUX_MIO_PAD_ATTR_3_SMTEN_3_BIT, 1},
+                    {PINMUX_MIO_PAD_ATTR_3_DRV_3_OFFSET, 5},
                 });
   EXPECT_EQ(dif_pinmux_pad_write_attrs(&dif_pinmux_, /*pad=*/3,
                                        /*type=*/kDifPinmuxPadKindDio, attrs,
                                        &attrs_check),
             kDifError);
-  EXPECT_EQ(attrs_check.slew_rate, attrs.slew_rate);
   EXPECT_EQ(attrs_check.drive_strength, attrs.drive_strength);
-  EXPECT_EQ(attrs_check.flags, kDifPinmuxPadAttrPullResistorEnable |
-                                   kDifPinmuxPadAttrPullResistorUp |
-                                   kDifPinmuxPadAttrInputDisable);
+  EXPECT_EQ(attrs_check.flags, kDifPinmuxPadAttrSchmittTriggerEnable);
 
   EXPECT_READ32(PINMUX_MIO_PAD_ATTR_1_REG_OFFSET,
                 {
-                    {PINMUX_MIO_PAD_ATTR_1_KEEPER_EN_1_BIT, 1},
-                    {PINMUX_MIO_PAD_ATTR_1_OD_EN_1_BIT, 1},
-                    {PINMUX_MIO_PAD_ATTR_1_INPUT_DISABLE_1_BIT, 1},
-                    {PINMUX_MIO_PAD_ATTR_1_SLEW_RATE_1_OFFSET, 1},
-                    {PINMUX_MIO_PAD_ATTR_1_DRIVE_STRENGTH_1_OFFSET, 3},
+                    {PINMUX_MIO_PAD_ATTR_1_PUEN_1_BIT, 1},
+                    {PINMUX_MIO_PAD_ATTR_1_SMTEN_1_BIT, 0},
+                    {PINMUX_MIO_PAD_ATTR_1_DRV_1_OFFSET, 4},
                 });
   EXPECT_DIF_OK(dif_pinmux_pad_get_attrs(
       &dif_pinmux_, /*pad=*/1, /*type=*/kDifPinmuxPadKindMio, &attrs_check));
-  EXPECT_EQ(attrs_check.slew_rate, 1);
-  EXPECT_EQ(attrs_check.drive_strength, 3);
-  EXPECT_EQ(attrs_check.flags, kDifPinmuxPadAttrKeeper |
-                                   kDifPinmuxPadAttrOpenDrain |
-                                   kDifPinmuxPadAttrInputDisable);
+  EXPECT_EQ(attrs_check.drive_strength, 4);
+  EXPECT_EQ(attrs_check.flags, kDifPinmuxPadPullUpEnable);
 }
 
 TEST_F(PinmuxTest, SleepModeConfig) {
