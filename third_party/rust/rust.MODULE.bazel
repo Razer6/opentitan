@@ -86,7 +86,7 @@ crate.from_cargo(
 crate.annotation(
     crate = "libudev-sys",
     patch_args = ["-p1"],
-    patches = ["@//third_party/rust/patches:libudev-sys-0.1.4.patch"],
+    patches = ["@lowrisc_opentitan//third_party/rust/patches:libudev-sys-0.1.4.patch"],
     repositories = ["crate_index"],
 )
 crate.annotation(
@@ -124,6 +124,29 @@ crate.annotation(
     repositories = ["crate_index"],
 )
 use_repo(crate, "crate_index")
+
+# mdbook (separate because it has a lot of dependencies):
+crate.from_cargo(
+    name = "mdbook_index",
+    cargo_lockfile = "//third_party/mdbook:Cargo.lock",
+    manifests = ["//third_party/mdbook:Cargo.toml"],
+    supported_platform_triples = [
+        "x86_64-unknown-linux-gnu",
+    ],
+)
+crate.annotation(
+    crate = "mdbook",
+    deps = [
+        "@mdbook_index//:ignore",
+    ],
+    gen_binaries = ["mdbook"],
+    patch_args = ["-p1"],
+    patches = [
+        "@lowrisc_opentitan//third_party/mdbook/patches:mdbook-mdignore.patch",
+    ],
+    repositories = ["mdbook_index"],
+)
+use_repo(crate, "mdbook_index")
 
 # Rust bindgen toolchain:
 register_toolchains("//third_party/rust:bindgen_toolchain")
