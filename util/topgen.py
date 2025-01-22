@@ -563,6 +563,8 @@ def generate_otp_ctrl(topcfg: Dict[str, object], cfg_path: Path, out_path: Path,
     log.info("Generating otp_ctrl with ipgen")
     params = {"otp_mmap": get_params_for_otp_ctrl(cfg_path, seed)}
     topname = topcfg["name"]
+    # FIXME: Properly inject Rivos config from the HJSON
+    params['use_rivos_config'] = topname == "darjeeling"
     ipgen_render("otp_ctrl", topname, params, out_path)
 
 

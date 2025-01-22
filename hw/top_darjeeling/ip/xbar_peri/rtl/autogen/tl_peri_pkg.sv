@@ -37,7 +37,7 @@ package tl_peri_pkg;
   localparam logic [31:0] ADDR_MASK_CLKMGR_AON              = 32'h 0000007f;
   localparam logic [31:0] ADDR_MASK_PINMUX_AON              = 32'h 000007ff;
   localparam logic [31:0] ADDR_MASK_OTP_CTRL__CORE          = 32'h 00007fff;
-  localparam logic [31:0] ADDR_MASK_OTP_CTRL__PRIM          = 32'h 0000001f;
+  localparam logic [31:0] ADDR_MASK_OTP_CTRL__PRIM          = 32'h 0000007f;
   localparam logic [31:0] ADDR_MASK_LC_CTRL__REGS           = 32'h 000000ff;
   localparam logic [31:0] ADDR_MASK_ALERT_HANDLER           = 32'h 00000fff;
   localparam logic [31:0] ADDR_MASK_SRAM_CTRL_RET_AON__REGS = 32'h 0000003f;

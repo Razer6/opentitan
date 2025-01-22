@@ -15,5 +15,11 @@
       type: "object"
       default: {}
     }
+    {
+      name: "use_rivos_config"
+      desc: "Set to true to use the Rivos internal OTP Ctrl configuration"
+      type: "bool"
+      default: "false"
+    }
   ]
 }

@@ -292,7 +292,7 @@ package otp_ctrl_reg_pkg;
 
   // Address widths within the block
   parameter int CoreAw = 15;
-  parameter int PrimAw = 5;
+  parameter int PrimAw = 7;
 
   ///////////////////////////////////////////////
   // Typedefs for registers for core interface //
@@ -1248,280 +1248,365 @@ package otp_ctrl_reg_pkg;
       logic [10:0] q;
     } field4;
     struct packed {
-      logic [9:0] q;
+      logic [5:0]  q;
     } field3;
     struct packed {
       logic        q;
-    } field2;
+    } redundancy_autoinit_disable;
     struct packed {
       logic        q;
-    } field1;
+    } ecc_disable;
     struct packed {
       logic        q;
-    } field0;
-  } otp_ctrl_reg2hw_csr0_reg_t;
-
-  typedef struct packed {
-    struct packed {
-      logic [15:0] q;
-    } field4;
-    struct packed {
-      logic        q;
-    } field3;
-    struct packed {
-      logic [6:0]  q;
-    } field2;
-    struct packed {
-      logic        q;
-    } field1;
-    struct packed {
-      logic [6:0]  q;
-    } field0;
-  } otp_ctrl_reg2hw_csr1_reg_t;
-
-  typedef struct packed {
-    logic        q;
-  } otp_ctrl_reg2hw_csr2_reg_t;
-
-  typedef struct packed {
-    struct packed {
-      logic        q;
-    } field8;
-    struct packed {
-      logic        q;
-    } field7;
-    struct packed {
-      logic        q;
-    } field6;
-    struct packed {
-      logic        q;
-    } field5;
-    struct packed {
-      logic        q;
-    } field4;
-    struct packed {
-      logic        q;
-    } field3;
-    struct packed {
-      logic        q;
-    } field2;
-    struct packed {
-      logic [9:0] q;
-    } field1;
-    struct packed {
-      logic [2:0]  q;
-    } field0;
-  } otp_ctrl_reg2hw_csr3_reg_t;
-
-  typedef struct packed {
-    struct packed {
-      logic        q;
-    } field3;
-    struct packed {
-      logic        q;
-    } field2;
-    struct packed {
-      logic        q;
-    } field1;
-    struct packed {
-      logic [9:0] q;
-    } field0;
-  } otp_ctrl_reg2hw_csr4_reg_t;
-
-  typedef struct packed {
-    struct packed {
-      logic [15:0] q;
-    } field6;
-    struct packed {
-      logic        q;
-    } field5;
-    struct packed {
-      logic        q;
-    } field4;
-    struct packed {
-      logic [2:0]  q;
-    } field3;
-    struct packed {
-      logic        q;
-    } field2;
+    } read_margin;
     struct packed {
       logic [1:0]  q;
-    } field1;
+    } test_row_col_sel;
     struct packed {
-      logic [5:0]  q;
-    } field0;
-  } otp_ctrl_reg2hw_csr5_reg_t;
+      logic        q;
+    } ecc_sel;
+    struct packed {
+      logic [1:0]  q;
+    } macro_mode;
+  } otp_ctrl_reg2hw_macro_control_reg_t;
 
   typedef struct packed {
     struct packed {
-      logic [15:0] q;
-    } field3;
+      logic [7:0]  q;
+    } ecc_info_3;
     struct packed {
-      logic        q;
-    } field2;
+      logic [7:0]  q;
+    } ecc_info_2;
     struct packed {
-      logic        q;
-    } field1;
+      logic [7:0]  q;
+    } ecc_info_1;
+    struct packed {
+      logic [7:0]  q;
+    } ecc_info_0;
+  } otp_ctrl_reg2hw_read_ecc_info_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [8:0]  q;
+    } tsur_ps_cs_cycles;
     struct packed {
       logic [9:0] q;
-    } field0;
-  } otp_ctrl_reg2hw_csr6_reg_t;
+    } tsur_ps_cycles;
+    struct packed {
+      logic [11:0] q;
+    } tsur_pd_ps_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_0_reg_t;
 
   typedef struct packed {
     struct packed {
-      logic        q;
-    } field3;
+      logic [9:0] q;
+    } tsq_cycles;
     struct packed {
-      logic        q;
-    } field2;
+      logic [9:0] q;
+    } tsup_ps_cycles;
     struct packed {
-      logic [2:0]  q;
-    } field1;
-    struct packed {
-      logic [5:0]  q;
-    } field0;
-  } otp_ctrl_reg2hw_csr7_reg_t;
+      logic [8:0]  q;
+    } tsup_ps_cs_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_1_reg_t;
 
   typedef struct packed {
     struct packed {
-      logic [2:0]  d;
-      logic        de;
-    } field0;
+      logic [6:0]  q;
+    } tsur_ld_cycles;
     struct packed {
-      logic [9:0] d;
-      logic        de;
-    } field1;
+      logic [13:0] q;
+    } tpgm_cycles;
     struct packed {
-      logic        d;
-      logic        de;
-    } field2;
-    struct packed {
-      logic        d;
-      logic        de;
-    } field3;
-    struct packed {
-      logic        d;
-      logic        de;
-    } field4;
-    struct packed {
-      logic        d;
-      logic        de;
-    } field5;
-    struct packed {
-      logic        d;
-      logic        de;
-    } field6;
-    struct packed {
-      logic        d;
-      logic        de;
-    } field7;
-    struct packed {
-      logic        d;
-      logic        de;
-    } field8;
-  } otp_ctrl_hw2reg_csr3_reg_t;
+      logic [10:0] q;
+    } tsq_m_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_2_reg_t;
 
   typedef struct packed {
     struct packed {
-      logic [5:0]  d;
-      logic        de;
-    } field0;
+      logic [8:0]  q;
+    } thp_cs_cycles;
     struct packed {
-      logic [1:0]  d;
-      logic        de;
-    } field1;
+      logic [9:0] q;
+    } thp_ps_cycles;
     struct packed {
-      logic        d;
-      logic        de;
-    } field2;
-    struct packed {
-      logic [2:0]  d;
-      logic        de;
-    } field3;
-    struct packed {
-      logic        d;
-      logic        de;
-    } field4;
-    struct packed {
-      logic        d;
-      logic        de;
-    } field5;
-    struct packed {
-      logic [15:0] d;
-      logic        de;
-    } field6;
-  } otp_ctrl_hw2reg_csr5_reg_t;
+      logic [9:0] q;
+    } thr_ps_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_3_reg_t;
 
   typedef struct packed {
     struct packed {
-      logic [5:0]  d;
-      logic        de;
-    } field0;
+      logic [8:0]  q;
+    } thr_ps_cs_cycles;
     struct packed {
-      logic [2:0]  d;
-      logic        de;
-    } field1;
+      logic [8:0]  q;
+    } thp_ps_cs_cycles;
     struct packed {
-      logic        d;
-      logic        de;
-    } field2;
+      logic [8:0]  q;
+    } thr_cs_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_4_reg_t;
+
+  typedef struct packed {
     struct packed {
-      logic        d;
+      logic [7:0]  q;
+    } tsup_ld_cycles;
+    struct packed {
+      logic [7:0]  q;
+    } thp_a_cycles;
+    struct packed {
+      logic [7:0]  q;
+    } tsup_a_cycles;
+    struct packed {
+      logic [7:0]  q;
+    } tsur_a_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_5_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [7:0]  q;
+    } thr_a_cycles;
+    struct packed {
+      logic [10:0] q;
+    } trd_m_cycles;
+    struct packed {
+      logic [9:0] q;
+    } trd_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_6_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [7:0]  q;
+    } addr_capture_cycles;
+    struct packed {
+      logic [7:0]  q;
+    } data_capture_cycles;
+    struct packed {
+      logic [7:0]  q;
+    } thp_pd_ps_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_7_reg_t;
+
+  typedef struct packed {
+    logic [17:0] q;
+  } otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_8_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [8:0]  q;
+    } tsur_ps_cs_cycles;
+    struct packed {
+      logic [9:0] q;
+    } tsur_ps_cycles;
+    struct packed {
+      logic [11:0] q;
+    } tsur_pd_ps_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_0_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [9:0] q;
+    } tsq_cycles;
+    struct packed {
+      logic [9:0] q;
+    } tsup_ps_cycles;
+    struct packed {
+      logic [8:0]  q;
+    } tsup_ps_cs_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_1_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [6:0]  q;
+    } tsur_ld_cycles;
+    struct packed {
+      logic [13:0] q;
+    } tpgm_cycles;
+    struct packed {
+      logic [10:0] q;
+    } tsq_m_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_2_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [8:0]  q;
+    } thp_cs_cycles;
+    struct packed {
+      logic [9:0] q;
+    } thp_ps_cycles;
+    struct packed {
+      logic [9:0] q;
+    } thr_ps_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_3_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [8:0]  q;
+    } thr_ps_cs_cycles;
+    struct packed {
+      logic [8:0]  q;
+    } thp_ps_cs_cycles;
+    struct packed {
+      logic [8:0]  q;
+    } thr_cs_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_4_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [7:0]  q;
+    } tsup_ld_cycles;
+    struct packed {
+      logic [7:0]  q;
+    } thp_a_cycles;
+    struct packed {
+      logic [7:0]  q;
+    } tsup_a_cycles;
+    struct packed {
+      logic [7:0]  q;
+    } tsur_a_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_5_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [7:0]  q;
+    } thr_a_cycles;
+    struct packed {
+      logic [10:0] q;
+    } trd_m_cycles;
+    struct packed {
+      logic [9:0] q;
+    } trd_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_6_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [7:0]  q;
+    } addr_capture_cycles;
+    struct packed {
+      logic [7:0]  q;
+    } data_capture_cycles;
+    struct packed {
+      logic [7:0]  q;
+    } thp_pd_ps_cycles;
+  } otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_7_reg_t;
+
+  typedef struct packed {
+    logic [17:0] q;
+  } otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_8_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [7:0]  d;
       logic        de;
-    } field3;
-  } otp_ctrl_hw2reg_csr7_reg_t;
+    } ecc_info_0;
+    struct packed {
+      logic [7:0]  d;
+      logic        de;
+    } ecc_info_1;
+    struct packed {
+      logic [7:0]  d;
+      logic        de;
+    } ecc_info_2;
+    struct packed {
+      logic [7:0]  d;
+      logic        de;
+    } ecc_info_3;
+  } otp_ctrl_hw2reg_read_ecc_info_reg_t;
 
   // Register -> HW type for prim interface
   typedef struct packed {
-    otp_ctrl_reg2hw_csr0_reg_t csr0; // [158:135]
-    otp_ctrl_reg2hw_csr1_reg_t csr1; // [134:103]
-    otp_ctrl_reg2hw_csr2_reg_t csr2; // [102:102]
-    otp_ctrl_reg2hw_csr3_reg_t csr3; // [101:82]
-    otp_ctrl_reg2hw_csr4_reg_t csr4; // [81:69]
-    otp_ctrl_reg2hw_csr5_reg_t csr5; // [68:39]
-    otp_ctrl_reg2hw_csr6_reg_t csr6; // [38:11]
-    otp_ctrl_reg2hw_csr7_reg_t csr7; // [10:0]
+    otp_ctrl_reg2hw_macro_control_reg_t macro_control; // [558:534]
+    otp_ctrl_reg2hw_read_ecc_info_reg_t read_ecc_info; // [533:502]
+    otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_0_reg_t fuse_wrapper_rd_cfg_0; // [501:471]
+    otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_1_reg_t fuse_wrapper_rd_cfg_1; // [470:442]
+    otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_2_reg_t fuse_wrapper_rd_cfg_2; // [441:410]
+    otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_3_reg_t fuse_wrapper_rd_cfg_3; // [409:381]
+    otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_4_reg_t fuse_wrapper_rd_cfg_4; // [380:354]
+    otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_5_reg_t fuse_wrapper_rd_cfg_5; // [353:322]
+    otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_6_reg_t fuse_wrapper_rd_cfg_6; // [321:293]
+    otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_7_reg_t fuse_wrapper_rd_cfg_7; // [292:269]
+    otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_8_reg_t fuse_wrapper_rd_cfg_8; // [268:251]
+    otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_0_reg_t fuse_wrapper_wr_cfg_0; // [250:220]
+    otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_1_reg_t fuse_wrapper_wr_cfg_1; // [219:191]
+    otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_2_reg_t fuse_wrapper_wr_cfg_2; // [190:159]
+    otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_3_reg_t fuse_wrapper_wr_cfg_3; // [158:130]
+    otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_4_reg_t fuse_wrapper_wr_cfg_4; // [129:103]
+    otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_5_reg_t fuse_wrapper_wr_cfg_5; // [102:71]
+    otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_6_reg_t fuse_wrapper_wr_cfg_6; // [70:42]
+    otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_7_reg_t fuse_wrapper_wr_cfg_7; // [41:18]
+    otp_ctrl_reg2hw_fuse_wrapper_wr_cfg_8_reg_t fuse_wrapper_wr_cfg_8; // [17:0]
   } otp_ctrl_prim_reg2hw_t;
 
   // HW -> register type for prim interface
   typedef struct packed {
-    otp_ctrl_hw2reg_csr3_reg_t csr3; // [80:52]
-    otp_ctrl_hw2reg_csr5_reg_t csr5; // [51:15]
-    otp_ctrl_hw2reg_csr7_reg_t csr7; // [14:0]
+    otp_ctrl_hw2reg_read_ecc_info_reg_t read_ecc_info; // [35:0]
   } otp_ctrl_prim_hw2reg_t;
 
   // Register offsets for prim interface
-  parameter logic [PrimAw-1:0] OTP_CTRL_CSR0_OFFSET = 5'h 0;
-  parameter logic [PrimAw-1:0] OTP_CTRL_CSR1_OFFSET = 5'h 4;
-  parameter logic [PrimAw-1:0] OTP_CTRL_CSR2_OFFSET = 5'h 8;
-  parameter logic [PrimAw-1:0] OTP_CTRL_CSR3_OFFSET = 5'h c;
-  parameter logic [PrimAw-1:0] OTP_CTRL_CSR4_OFFSET = 5'h 10;
-  parameter logic [PrimAw-1:0] OTP_CTRL_CSR5_OFFSET = 5'h 14;
-  parameter logic [PrimAw-1:0] OTP_CTRL_CSR6_OFFSET = 5'h 18;
-  parameter logic [PrimAw-1:0] OTP_CTRL_CSR7_OFFSET = 5'h 1c;
+  parameter logic [PrimAw-1:0] OTP_CTRL_MACRO_CONTROL_OFFSET = 7'h 0;
+  parameter logic [PrimAw-1:0] OTP_CTRL_READ_ECC_INFO_OFFSET = 7'h 4;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_RD_CFG_0_OFFSET = 7'h 8;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_RD_CFG_1_OFFSET = 7'h c;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_RD_CFG_2_OFFSET = 7'h 10;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_RD_CFG_3_OFFSET = 7'h 14;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_RD_CFG_4_OFFSET = 7'h 18;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_RD_CFG_5_OFFSET = 7'h 1c;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_RD_CFG_6_OFFSET = 7'h 20;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_RD_CFG_7_OFFSET = 7'h 24;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_RD_CFG_8_OFFSET = 7'h 28;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_WR_CFG_0_OFFSET = 7'h 2c;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_WR_CFG_1_OFFSET = 7'h 30;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_WR_CFG_2_OFFSET = 7'h 34;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_WR_CFG_3_OFFSET = 7'h 38;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_WR_CFG_4_OFFSET = 7'h 3c;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_WR_CFG_5_OFFSET = 7'h 40;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_WR_CFG_6_OFFSET = 7'h 44;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_WR_CFG_7_OFFSET = 7'h 48;
+  parameter logic [PrimAw-1:0] OTP_CTRL_FUSE_WRAPPER_WR_CFG_8_OFFSET = 7'h 4c;
 
   // Register index for prim interface
   typedef enum int {
-    OTP_CTRL_CSR0,
-    OTP_CTRL_CSR1,
-    OTP_CTRL_CSR2,
-    OTP_CTRL_CSR3,
-    OTP_CTRL_CSR4,
-    OTP_CTRL_CSR5,
-    OTP_CTRL_CSR6,
-    OTP_CTRL_CSR7
+    OTP_CTRL_MACRO_CONTROL,
+    OTP_CTRL_READ_ECC_INFO,
+    OTP_CTRL_FUSE_WRAPPER_RD_CFG_0,
+    OTP_CTRL_FUSE_WRAPPER_RD_CFG_1,
+    OTP_CTRL_FUSE_WRAPPER_RD_CFG_2,
+    OTP_CTRL_FUSE_WRAPPER_RD_CFG_3,
+    OTP_CTRL_FUSE_WRAPPER_RD_CFG_4,
+    OTP_CTRL_FUSE_WRAPPER_RD_CFG_5,
+    OTP_CTRL_FUSE_WRAPPER_RD_CFG_6,
+    OTP_CTRL_FUSE_WRAPPER_RD_CFG_7,
+    OTP_CTRL_FUSE_WRAPPER_RD_CFG_8,
+    OTP_CTRL_FUSE_WRAPPER_WR_CFG_0,
+    OTP_CTRL_FUSE_WRAPPER_WR_CFG_1,
+    OTP_CTRL_FUSE_WRAPPER_WR_CFG_2,
+    OTP_CTRL_FUSE_WRAPPER_WR_CFG_3,
+    OTP_CTRL_FUSE_WRAPPER_WR_CFG_4,
+    OTP_CTRL_FUSE_WRAPPER_WR_CFG_5,
+    OTP_CTRL_FUSE_WRAPPER_WR_CFG_6,
+    OTP_CTRL_FUSE_WRAPPER_WR_CFG_7,
+    OTP_CTRL_FUSE_WRAPPER_WR_CFG_8
   } otp_ctrl_prim_id_e;
 
   // Register width information to check illegal writes for prim interface
-  parameter logic [3:0] OTP_CTRL_PRIM_PERMIT [8] = '{
-    4'b 1111, // index[0] OTP_CTRL_CSR0
-    4'b 1111, // index[1] OTP_CTRL_CSR1
-    4'b 0001, // index[2] OTP_CTRL_CSR2
-    4'b 0111, // index[3] OTP_CTRL_CSR3
-    4'b 0011, // index[4] OTP_CTRL_CSR4
-    4'b 1111, // index[5] OTP_CTRL_CSR5
-    4'b 1111, // index[6] OTP_CTRL_CSR6
-    4'b 0011  // index[7] OTP_CTRL_CSR7
+  parameter logic [3:0] OTP_CTRL_PRIM_PERMIT [20] = '{
+    4'b 1111, // index[ 0] OTP_CTRL_MACRO_CONTROL
+    4'b 1111, // index[ 1] OTP_CTRL_READ_ECC_INFO
+    4'b 1111, // index[ 2] OTP_CTRL_FUSE_WRAPPER_RD_CFG_0
+    4'b 1111, // index[ 3] OTP_CTRL_FUSE_WRAPPER_RD_CFG_1
+    4'b 1111, // index[ 4] OTP_CTRL_FUSE_WRAPPER_RD_CFG_2
+    4'b 1111, // index[ 5] OTP_CTRL_FUSE_WRAPPER_RD_CFG_3
+    4'b 1111, // index[ 6] OTP_CTRL_FUSE_WRAPPER_RD_CFG_4
+    4'b 1111, // index[ 7] OTP_CTRL_FUSE_WRAPPER_RD_CFG_5
+    4'b 1111, // index[ 8] OTP_CTRL_FUSE_WRAPPER_RD_CFG_6
+    4'b 0111, // index[ 9] OTP_CTRL_FUSE_WRAPPER_RD_CFG_7
+    4'b 0111, // index[10] OTP_CTRL_FUSE_WRAPPER_RD_CFG_8
+    4'b 1111, // index[11] OTP_CTRL_FUSE_WRAPPER_WR_CFG_0
+    4'b 1111, // index[12] OTP_CTRL_FUSE_WRAPPER_WR_CFG_1
+    4'b 1111, // index[13] OTP_CTRL_FUSE_WRAPPER_WR_CFG_2
+    4'b 1111, // index[14] OTP_CTRL_FUSE_WRAPPER_WR_CFG_3
+    4'b 1111, // index[15] OTP_CTRL_FUSE_WRAPPER_WR_CFG_4
+    4'b 1111, // index[16] OTP_CTRL_FUSE_WRAPPER_WR_CFG_5
+    4'b 1111, // index[17] OTP_CTRL_FUSE_WRAPPER_WR_CFG_6
+    4'b 0111, // index[18] OTP_CTRL_FUSE_WRAPPER_WR_CFG_7
+    4'b 0111  // index[19] OTP_CTRL_FUSE_WRAPPER_WR_CFG_8
   };
 
 endpackage

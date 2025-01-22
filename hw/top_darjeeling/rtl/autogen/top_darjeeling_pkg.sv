@@ -79,7 +79,7 @@ package top_darjeeling_pkg;
   /**
    * Peripheral size in bytes for prim device on otp_ctrl in top darjeeling.
    */
-  parameter int unsigned TOP_DARJEELING_OTP_CTRL_PRIM_SIZE_BYTES = 32'h20;
+  parameter int unsigned TOP_DARJEELING_OTP_CTRL_PRIM_SIZE_BYTES = 32'h80;
 
   /**
    * Peripheral base address for regs device on lc_ctrl in top darjeeling.

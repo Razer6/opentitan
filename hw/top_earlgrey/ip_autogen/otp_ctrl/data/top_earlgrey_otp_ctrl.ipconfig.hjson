@@ -1985,6 +1985,7 @@
         }
       ]
     }
+    use_rivos_config: false
     topname: earlgrey
   }
 }

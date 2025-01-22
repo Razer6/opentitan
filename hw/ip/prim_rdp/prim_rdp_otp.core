@@ -17,13 +17,11 @@ filesets:
       - rivos:rdplib:dv_primitives
       - rivos:rdplib:chipware
       - lowrisc:prim:util
-      - lowrisc:prim:ram_1p_adv
-      - lowrisc:systems:ast_pkg
+      - "fileset_partner  ? (partner:systems:ast_pkg)"
+      - "!fileset_partner ? (lowrisc:systems:ast_pkg)"
       - lowrisc:prim:otp_pkg
-      - lowrisc:ip:otp_ctrl_pkg
+      - lowrisc:prim_rdp:otp_cfg_pkg
       - lowrisc:ip:otp_ctrl_prim_reg_top
-      - lowrisc:ip_interfaces:rstmgr_pkg
-      - rivos:prim:misc_dft_pkg
     files:
       - rtl/prim_rdp_otp.sv
       - rtl/rivos_tsmc_fuse_wrapper.sv

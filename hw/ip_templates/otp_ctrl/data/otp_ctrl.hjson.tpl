@@ -1253,6 +1253,549 @@ otp_size_as_uint32 = otp_size_as_bytes // 4
 
     // OTP wrapper-specific registers
     prim: [
+    % if use_rivos_config:
+      { name: "MACRO_CONTROL",
+        desc: "fuse macro mode control"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to MACRO_CONTROL randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "1:0",
+            name: "macro_mode",
+            desc: "0: standard array, 1: redundancy array, 2: test array",
+            resval: "0x0",
+          }
+          { bits: "2",
+            name: "ecc_sel",
+            desc: "select ecc array when in redundancy or test modes",
+            resval: "0x0",
+          }
+          { bits: "4:3",
+            name: "test_row_col_sel",
+            desc: "used to control row or colum selection in test array mode. 00 = 1st test row, 01 = 2nd test row, 10 = 1st test col, 11 = 2nd test col"
+            resval: "0x0",
+          }
+          { bits: "5",
+            name: "read_margin",
+            desc: "Setting this bit enables fuse reads in high margin mode"
+            resval: "0x0",
+          }
+          { bits: "6",
+            name: "ecc_disable",
+            desc: "this bit disables ecc fuse writing and read checking"
+            resval: "0x0",
+          }
+          { bits: "7",
+            name: "redundancy_autoinit_disable",
+            desc: "this bit disables automatic tsmc redundancy flop initialization"
+            resval: "0x0",
+          }
+          { bits: "13:8",
+            name: "field3",
+            desc: ""
+            resval: "0x0",
+          }
+          { bits: "26:16",
+            name: "field4",
+            desc: ""
+            resval: "0x0",
+          }
+        ]
+      },
+      { name: "READ_ECC_INFO",
+        desc: "ecc info from previous fuse read"
+        swaccess: "ro",
+        hwaccess: "hrw",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to READ_ECC_INFO randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "7:0",
+            name: "ecc_info_0",
+            desc: "fuse word 0 ecc info",
+            resval: "0x0", 
+          }
+          { bits: "15:8",
+            name: "ecc_info_1",
+            desc: "fuse word 1 ecc info",
+            resval: "0x0",
+          }
+          { bits: "23:16",
+            name: "ecc_info_2",
+            desc: "fuse word 2 ecc info",
+            resval: "0x0",
+          }
+          { bits: "31:24",
+            name: "ecc_info_3",
+            desc: "fuse word 3 ecc info",
+            resval: "0x0",
+          }
+        ]
+      },
+
+      { name: "FUSE_WRAPPER_RD_CFG_0",
+        desc: "fuse macro wrapper read timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to FUSE_WRAPPER_RD_CFG_0 randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "11:0",
+            name: "TSUR_PD_PS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUR_PD_PS timing"
+            resval: "0x147",
+          }
+          { bits: "21:12",
+            name: "TSUR_PS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUR_PS timing"
+            resval: "0x57",
+          }
+          { bits: "30:22",
+            name: "TSUR_PS_CS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUR_PS_CS timing"
+            resval: "0x40",
+          }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_1",
+        desc: "fuse macro wrapper read timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "8:0",
+            name: "TSUP_PS_CS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUP_PS_CS timing"
+            resval: "0x40",
+          }
+          { bits: "18:9",
+            name: "TSUP_PS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUP_PS timing"
+            resval: "0x57",
+          }
+          { bits: "28:19",
+            name: "TSQ_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSQ timing"
+            resval: "0x57",
+          }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_2",
+        desc: "fuse macro wrapper read timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "10:0",
+            name: "TSQ_M_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSQ_M timing"
+            resval: "0xDA",
+         }
+         { bits: "24:11",
+            name: "TPGM_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TPGM timing"
+            resval: "0x753",
+         }
+         { bits: "31:25",
+            name: "TSUR_LD_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUR_LD timing"
+            resval: "0x31",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_3",
+        desc: "fuse macro wrapper read timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "9:0",
+            name: "THR_PS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THR_PS timing"
+            resval: "0x5E",
+          }
+          { bits: "19:10",
+            name: "THP_PS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THP_PS timing"
+            resval: "0x5E",
+          }
+          { bits: "28:20",
+            name: "THP_CS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THP_CS timing"
+            resval: "0x2A",
+          }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_4",
+        desc: "fuse macro wrapper read timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "8:0",
+            name: "THR_CS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THR_CS timing"
+            resval: "0x2A",
+         }
+         { bits: "17:9",
+            name: "THP_PS_CS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THP_PS_CS timing"
+            resval: "0x35",
+         }
+         { bits: "26:18",
+            name: "THR_PS_CS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THR_PS_CS timing"
+            resval: "0x35",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_5",
+        desc: "fuse macro wrapper read timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "7:0",
+            name: "TSUR_A_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUR_A timing"
+            resval: "0xF",
+          }
+          { bits: "15:8",
+            name: "TSUP_A_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUP_A timing"
+            resval: "0xF",
+          }
+          { bits: "23:16",
+            name: "THP_A_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THP_A timing"
+            resval: "0xF",
+          }
+         { bits: "31:24",
+            name: "TSUP_LD_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUP_LD timing"
+            resval: "0x31",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_6",
+        desc: "fuse macro wrapper read timing config",
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "9:0",
+           name: "TRD_CYCLES",
+           desc: "number oscillator clock cycles to satisfy TRD timing"
+           resval: "0x5A",
+         }
+         { bits: "20:10",
+           name: "TRD_M_CYCLES",
+           desc: "number oscillator clock cycles to satisfy TRD_M timing"
+           resval: "0xDA",
+         }
+         { bits: "28:21",
+           name: "THR_A_CYCLES",
+           desc: "number oscillator clock cycles to satisfy THR_A timing"
+           resval: "0x13",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_7",
+        desc: "fuse macro wrapper read timing config",
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "7:0",
+           name: "THP_PD_PS_CYCLES",
+           desc: "number oscillator clock cycles to satisfy THP_PD_PS timing"
+           resval: "0x1B",
+         }
+         { bits: "15:8",
+           name: "DATA_CAPTURE_CYCLES",
+           desc: "number oscillator clock cycles to satisfy DATA_CAPTURE timing"
+           resval: "0x1",
+         }
+         { bits: "23:16",
+           name: "ADDR_CAPTURE_CYCLES",
+           desc: "number oscillator clock cycles to satisfy ADDR_CAPTURE timing"
+           resval: "0x1",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_RD_CFG_8",
+        desc: "fuse macro wrapper read timing config",
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "17:0",
+           name: "TRIGGER_POWER_DOWN_CYCLES",
+           desc: "number oscillator clock cycles to satisfy TRIGGER_POWER_DOWN timing"
+           resval: "0x493E",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_0",
+        desc: "fuse macro wrapper write timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "11:0",
+            name: "TSUR_PD_PS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUR_PD_PS timing"
+            resval: "0x57",
+          }
+          { bits: "21:12",
+            name: "TSUR_PS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUR_PS timing"
+            resval: "0x17",
+          }
+          { bits: "30:22",
+            name: "TSUR_PS_CS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUR_PS_CS timing"
+            resval: "0x11",
+          }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_1",
+        desc: "fuse macro wrapper write timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "8:0",
+            name: "TSUP_PS_CS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUP_PS_CS timing"
+            resval: "0x11",
+          }
+          { bits: "18:9",
+            name: "TSUP_PS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUP_PS timing"
+            resval: "0x17",
+          }
+          { bits: "28:19",
+            name: "TSQ_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSQ timing"
+            resval: "0x17",
+          }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_2",
+        desc: "fuse macro wrapper write timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "10:0",
+            name: "TSQ_M_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSQ_M timing"
+            resval: "0x3A",
+         }
+         { bits: "24:11",
+            name: "TPGM_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TPGM timing"
+            resval: "0x1F4",
+         }
+         { bits: "31:25",
+            name: "TSUR_LD_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUR_LD timing"
+            resval: "0xD",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_3",
+        desc: "fuse macro wrapper write timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "9:0",
+            name: "THR_PS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THR_PS timing"
+            resval: "0x19",
+          }
+          { bits: "19:10",
+            name: "THP_PS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THP_PS timing"
+            resval: "0x19",
+          }
+          { bits: "28:20",
+            name: "THP_CS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THP_CS timing"
+            resval: "0xB",
+          }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_4",
+        desc: "fuse macro wrapper write timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "8:0",
+            name: "THR_CS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THR_CS timing"
+            resval: "0xB",
+         }
+         { bits: "17:9",
+            name: "THP_PS_CS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THP_PS_CS timing"
+            resval: "0xE",
+         }
+         { bits: "26:18",
+            name: "THR_PS_CS_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THR_PS_CS timing"
+            resval: "0xE",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_5",
+        desc: "fuse macro wrapper write timing config"
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+          { bits: "7:0",
+            name: "TSUR_A_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUR_A timing"
+            resval: "0x4",
+          }
+          { bits: "15:8",
+            name: "TSUP_A_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUP_A timing"
+            resval: "0x4",
+          }
+          { bits: "23:16",
+            name: "THP_A_CYCLES",
+            desc: "number oscillator clock cycles to satisfy THP_A timing"
+            resval: "0x5",
+          }
+         { bits: "31:24",
+            name: "TSUP_LD_CYCLES",
+            desc: "number oscillator clock cycles to satisfy TSUP_LD timing"
+            resval: "0xD",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_6",
+        desc: "fuse macro wrapper write timing config",
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "9:0",
+           name: "TRD_CYCLES",
+           desc: "number oscillator clock cycles to satisfy TRD timing"
+           resval: "0x1B",
+         }
+         { bits: "20:10",
+           name: "TRD_M_CYCLES",
+           desc: "number oscillator clock cycles to satisfy TRD_M timing"
+           resval: "0x3A",
+         }
+         { bits: "28:21",
+           name: "THR_A_CYCLES",
+           desc: "number oscillator clock cycles to satisfy THR_A timing"
+           resval: "0x5",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_7",
+        desc: "fuse macro wrapper write timing config",
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "7:0",
+           name: "THP_PD_PS_CYCLES",
+           desc: "number oscillator clock cycles to satisfy THP_PD_PS timing"
+           resval: "0x7",
+         }
+         { bits: "15:8",
+           name: "DATA_CAPTURE_CYCLES",
+           desc: "number oscillator clock cycles to satisfy DATA_CAPTURE timing"
+           resval: "0x1",
+         }
+         { bits: "23:16",
+           name: "ADDR_CAPTURE_CYCLES",
+           desc: "number oscillator clock cycles to satisfy ADDR_CAPTURE timing"
+           resval: "0x1",
+         }
+        ]
+      },
+      { name: "FUSE_WRAPPER_WR_CFG_8",
+        desc: "fuse macro wrapper write timing config",
+        swaccess: "rw",
+        hwaccess: "hro",
+        hwext:    "false",
+        hwqe:     "false",
+        tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
+                "excl:CsrAllTests:CsrExclWrite"],
+        fields: [
+         { bits: "17:0",
+           name: "TRIGGER_POWER_DOWN_CYCLES",
+           desc: "number oscillator clock cycles to satisfy TRIGGER_POWER_DOWN timing"
+           resval: "0x1388",
+         }
+        ]
+      },
+    % else:
       { name: "CSR0",
         desc: ""
         swaccess: "rw",
@@ -1542,6 +2085,7 @@ otp_size_as_uint32 = otp_size_as_bytes // 4
          }
         ]
       },
+    % endif
     ]
   }
 }

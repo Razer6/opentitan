@@ -1336,42 +1336,56 @@ will block until OTP readout has completed.
 
 ## Summary of the **`prim`** interface's registers
 
-| Name                     | Offset   |   Length | Description   |
-|:-------------------------|:---------|---------:|:--------------|
-| otp_ctrl.[`CSR0`](#csr0) | 0x0      |        4 |               |
-| otp_ctrl.[`CSR1`](#csr1) | 0x4      |        4 |               |
-| otp_ctrl.[`CSR2`](#csr2) | 0x8      |        4 |               |
-| otp_ctrl.[`CSR3`](#csr3) | 0xc      |        4 |               |
-| otp_ctrl.[`CSR4`](#csr4) | 0x10     |        4 |               |
-| otp_ctrl.[`CSR5`](#csr5) | 0x14     |        4 |               |
-| otp_ctrl.[`CSR6`](#csr6) | 0x18     |        4 |               |
-| otp_ctrl.[`CSR7`](#csr7) | 0x1c     |        4 |               |
+| Name                                                       | Offset   |   Length | Description                            |
+|:-----------------------------------------------------------|:---------|---------:|:---------------------------------------|
+| otp_ctrl.[`MACRO_CONTROL`](#macro_control)                 | 0x0      |        4 | fuse macro mode control                |
+| otp_ctrl.[`READ_ECC_INFO`](#read_ecc_info)                 | 0x4      |        4 | ecc info from previous fuse read       |
+| otp_ctrl.[`FUSE_WRAPPER_RD_CFG_0`](#fuse_wrapper_rd_cfg_0) | 0x8      |        4 | fuse macro wrapper read timing config  |
+| otp_ctrl.[`FUSE_WRAPPER_RD_CFG_1`](#fuse_wrapper_rd_cfg_1) | 0xc      |        4 | fuse macro wrapper read timing config  |
+| otp_ctrl.[`FUSE_WRAPPER_RD_CFG_2`](#fuse_wrapper_rd_cfg_2) | 0x10     |        4 | fuse macro wrapper read timing config  |
+| otp_ctrl.[`FUSE_WRAPPER_RD_CFG_3`](#fuse_wrapper_rd_cfg_3) | 0x14     |        4 | fuse macro wrapper read timing config  |
+| otp_ctrl.[`FUSE_WRAPPER_RD_CFG_4`](#fuse_wrapper_rd_cfg_4) | 0x18     |        4 | fuse macro wrapper read timing config  |
+| otp_ctrl.[`FUSE_WRAPPER_RD_CFG_5`](#fuse_wrapper_rd_cfg_5) | 0x1c     |        4 | fuse macro wrapper read timing config  |
+| otp_ctrl.[`FUSE_WRAPPER_RD_CFG_6`](#fuse_wrapper_rd_cfg_6) | 0x20     |        4 | fuse macro wrapper read timing config  |
+| otp_ctrl.[`FUSE_WRAPPER_RD_CFG_7`](#fuse_wrapper_rd_cfg_7) | 0x24     |        4 | fuse macro wrapper read timing config  |
+| otp_ctrl.[`FUSE_WRAPPER_RD_CFG_8`](#fuse_wrapper_rd_cfg_8) | 0x28     |        4 | fuse macro wrapper read timing config  |
+| otp_ctrl.[`FUSE_WRAPPER_WR_CFG_0`](#fuse_wrapper_wr_cfg_0) | 0x2c     |        4 | fuse macro wrapper write timing config |
+| otp_ctrl.[`FUSE_WRAPPER_WR_CFG_1`](#fuse_wrapper_wr_cfg_1) | 0x30     |        4 | fuse macro wrapper write timing config |
+| otp_ctrl.[`FUSE_WRAPPER_WR_CFG_2`](#fuse_wrapper_wr_cfg_2) | 0x34     |        4 | fuse macro wrapper write timing config |
+| otp_ctrl.[`FUSE_WRAPPER_WR_CFG_3`](#fuse_wrapper_wr_cfg_3) | 0x38     |        4 | fuse macro wrapper write timing config |
+| otp_ctrl.[`FUSE_WRAPPER_WR_CFG_4`](#fuse_wrapper_wr_cfg_4) | 0x3c     |        4 | fuse macro wrapper write timing config |
+| otp_ctrl.[`FUSE_WRAPPER_WR_CFG_5`](#fuse_wrapper_wr_cfg_5) | 0x40     |        4 | fuse macro wrapper write timing config |
+| otp_ctrl.[`FUSE_WRAPPER_WR_CFG_6`](#fuse_wrapper_wr_cfg_6) | 0x44     |        4 | fuse macro wrapper write timing config |
+| otp_ctrl.[`FUSE_WRAPPER_WR_CFG_7`](#fuse_wrapper_wr_cfg_7) | 0x48     |        4 | fuse macro wrapper write timing config |
+| otp_ctrl.[`FUSE_WRAPPER_WR_CFG_8`](#fuse_wrapper_wr_cfg_8) | 0x4c     |        4 | fuse macro wrapper write timing config |
 
-## CSR0
-
+## MACRO_CONTROL
+fuse macro mode control
 - Offset: `0x0`
 - Reset default: `0x0`
-- Reset mask: `0x7ff3ff7`
+- Reset mask: `0x7ff3fff`
 
 ### Fields
 
 ```wavejson
-{"reg": [{"name": "field0", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "field1", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "field2", "bits": 1, "attr": ["rw"], "rotate": -90}, {"bits": 1}, {"name": "field3", "bits": 10, "attr": ["rw"], "rotate": 0}, {"bits": 2}, {"name": "field4", "bits": 11, "attr": ["rw"], "rotate": 0}, {"bits": 5}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+{"reg": [{"name": "macro_mode", "bits": 2, "attr": ["rw"], "rotate": -90}, {"name": "ecc_sel", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "test_row_col_sel", "bits": 2, "attr": ["rw"], "rotate": -90}, {"name": "read_margin", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "ecc_disable", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "redundancy_autoinit_disable", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "field3", "bits": 6, "attr": ["rw"], "rotate": 0}, {"bits": 2}, {"name": "field4", "bits": 11, "attr": ["rw"], "rotate": 0}, {"bits": 5}], "config": {"lanes": 1, "fontsize": 10, "vspace": 290}}
 ```
 
-|  Bits  |  Type  |  Reset  | Name   | Description   |
-|:------:|:------:|:-------:|:-------|:--------------|
-| 31:27  |        |         |        | Reserved      |
-| 26:16  |   rw   |   0x0   | field4 |               |
-| 15:14  |        |         |        | Reserved      |
-|  13:4  |   rw   |   0x0   | field3 |               |
-|   3    |        |         |        | Reserved      |
-|   2    |   rw   |   0x0   | field2 |               |
-|   1    |   rw   |   0x0   | field1 |               |
-|   0    |   rw   |   0x0   | field0 |               |
+|  Bits  |  Type  |  Reset  | Name                        | Description                                                                                                                           |
+|:------:|:------:|:-------:|:----------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|
+| 31:27  |        |         |                             | Reserved                                                                                                                              |
+| 26:16  |   rw   |   0x0   | field4                      |                                                                                                                                       |
+| 15:14  |        |         |                             | Reserved                                                                                                                              |
+|  13:8  |   rw   |   0x0   | field3                      |                                                                                                                                       |
+|   7    |   rw   |   0x0   | redundancy_autoinit_disable | this bit disables automatic tsmc redundancy flop initialization                                                                       |
+|   6    |   rw   |   0x0   | ecc_disable                 | this bit disables ecc fuse writing and read checking                                                                                  |
+|   5    |   rw   |   0x0   | read_margin                 | Setting this bit enables fuse reads in high margin mode                                                                               |
+|  4:3   |   rw   |   0x0   | test_row_col_sel            | used to control row or colum selection in test array mode. 00 = 1st test row, 01 = 2nd test row, 10 = 1st test col, 11 = 2nd test col |
+|   2    |   rw   |   0x0   | ecc_sel                     | select ecc array when in redundancy or test modes                                                                                     |
+|  1:0   |   rw   |   0x0   | macro_mode                  | 0: standard array, 1: redundancy array, 2: test array                                                                                 |
 
-## CSR1
-
+## READ_ECC_INFO
+ecc info from previous fuse read
 - Offset: `0x4`
 - Reset default: `0x0`
 - Reset mask: `0xffffffff`
@@ -1379,147 +1393,351 @@ will block until OTP readout has completed.
 ### Fields
 
 ```wavejson
-{"reg": [{"name": "field0", "bits": 7, "attr": ["rw"], "rotate": 0}, {"name": "field1", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "field2", "bits": 7, "attr": ["rw"], "rotate": 0}, {"name": "field3", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "field4", "bits": 16, "attr": ["rw"], "rotate": 0}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+{"reg": [{"name": "ecc_info_0", "bits": 8, "attr": ["ro"], "rotate": 0}, {"name": "ecc_info_1", "bits": 8, "attr": ["ro"], "rotate": 0}, {"name": "ecc_info_2", "bits": 8, "attr": ["ro"], "rotate": 0}, {"name": "ecc_info_3", "bits": 8, "attr": ["ro"], "rotate": 0}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
 ```
 
-|  Bits  |  Type  |  Reset  | Name   | Description   |
-|:------:|:------:|:-------:|:-------|:--------------|
-| 31:16  |   rw   |   0x0   | field4 |               |
-|   15   |   rw   |   0x0   | field3 |               |
-|  14:8  |   rw   |   0x0   | field2 |               |
-|   7    |   rw   |   0x0   | field1 |               |
-|  6:0   |   rw   |   0x0   | field0 |               |
+|  Bits  |  Type  |  Reset  | Name       | Description          |
+|:------:|:------:|:-------:|:-----------|:---------------------|
+| 31:24  |   ro   |   0x0   | ecc_info_3 | fuse word 3 ecc info |
+| 23:16  |   ro   |   0x0   | ecc_info_2 | fuse word 2 ecc info |
+|  15:8  |   ro   |   0x0   | ecc_info_1 | fuse word 1 ecc info |
+|  7:0   |   ro   |   0x0   | ecc_info_0 | fuse word 0 ecc info |
 
-## CSR2
-
+## FUSE_WRAPPER_RD_CFG_0
+fuse macro wrapper read timing config
 - Offset: `0x8`
-- Reset default: `0x0`
-- Reset mask: `0x1`
+- Reset default: `0x10057147`
+- Reset mask: `0x7fffffff`
 
 ### Fields
 
 ```wavejson
-{"reg": [{"name": "field0", "bits": 1, "attr": ["rw"], "rotate": -90}, {"bits": 31}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+{"reg": [{"name": "TSUR_PD_PS_CYCLES", "bits": 12, "attr": ["rw"], "rotate": 0}, {"name": "TSUR_PS_CYCLES", "bits": 10, "attr": ["rw"], "rotate": 0}, {"name": "TSUR_PS_CS_CYCLES", "bits": 9, "attr": ["rw"], "rotate": -90}, {"bits": 1}], "config": {"lanes": 1, "fontsize": 10, "vspace": 190}}
 ```
 
-|  Bits  |  Type  |  Reset  | Name   | Description   |
-|:------:|:------:|:-------:|:-------|:--------------|
-|  31:1  |        |         |        | Reserved      |
-|   0    |   rw   |   0x0   | field0 |               |
+|  Bits  |  Type  |  Reset  | Name              | Description                                                 |
+|:------:|:------:|:-------:|:------------------|:------------------------------------------------------------|
+|   31   |        |         |                   | Reserved                                                    |
+| 30:22  |   rw   |  0x40   | TSUR_PS_CS_CYCLES | number oscillator clock cycles to satisfy TSUR_PS_CS timing |
+| 21:12  |   rw   |  0x57   | TSUR_PS_CYCLES    | number oscillator clock cycles to satisfy TSUR_PS timing    |
+|  11:0  |   rw   |  0x147  | TSUR_PD_PS_CYCLES | number oscillator clock cycles to satisfy TSUR_PD_PS timing |
 
-## CSR3
-
+## FUSE_WRAPPER_RD_CFG_1
+fuse macro wrapper read timing config
 - Offset: `0xc`
-- Reset default: `0x0`
-- Reset mask: `0x7f3ff7`
+- Reset default: `0x2b8ae40`
+- Reset mask: `0x1fffffff`
 
 ### Fields
 
 ```wavejson
-{"reg": [{"name": "field0", "bits": 3, "attr": ["rw1c"], "rotate": -90}, {"bits": 1}, {"name": "field1", "bits": 10, "attr": ["rw1c"], "rotate": 0}, {"bits": 2}, {"name": "field2", "bits": 1, "attr": ["rw1c"], "rotate": -90}, {"name": "field3", "bits": 1, "attr": ["ro"], "rotate": -90}, {"name": "field4", "bits": 1, "attr": ["ro"], "rotate": -90}, {"name": "field5", "bits": 1, "attr": ["ro"], "rotate": -90}, {"name": "field6", "bits": 1, "attr": ["ro"], "rotate": -90}, {"name": "field7", "bits": 1, "attr": ["ro"], "rotate": -90}, {"name": "field8", "bits": 1, "attr": ["ro"], "rotate": -90}, {"bits": 9}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+{"reg": [{"name": "TSUP_PS_CS_CYCLES", "bits": 9, "attr": ["rw"], "rotate": -90}, {"name": "TSUP_PS_CYCLES", "bits": 10, "attr": ["rw"], "rotate": 0}, {"name": "TSQ_CYCLES", "bits": 10, "attr": ["rw"], "rotate": 0}, {"bits": 3}], "config": {"lanes": 1, "fontsize": 10, "vspace": 190}}
 ```
 
-|  Bits  |  Type  |  Reset  | Name   | Description   |
-|:------:|:------:|:-------:|:-------|:--------------|
-| 31:23  |        |         |        | Reserved      |
-|   22   |   ro   |   0x0   | field8 |               |
-|   21   |   ro   |   0x0   | field7 |               |
-|   20   |   ro   |   0x0   | field6 |               |
-|   19   |   ro   |   0x0   | field5 |               |
-|   18   |   ro   |   0x0   | field4 |               |
-|   17   |   ro   |   0x0   | field3 |               |
-|   16   |  rw1c  |   0x0   | field2 |               |
-| 15:14  |        |         |        | Reserved      |
-|  13:4  |  rw1c  |   0x0   | field1 |               |
-|   3    |        |         |        | Reserved      |
-|  2:0   |  rw1c  |   0x0   | field0 |               |
+|  Bits  |  Type  |  Reset  | Name              | Description                                                 |
+|:------:|:------:|:-------:|:------------------|:------------------------------------------------------------|
+| 31:29  |        |         |                   | Reserved                                                    |
+| 28:19  |   rw   |  0x57   | TSQ_CYCLES        | number oscillator clock cycles to satisfy TSQ timing        |
+|  18:9  |   rw   |  0x57   | TSUP_PS_CYCLES    | number oscillator clock cycles to satisfy TSUP_PS timing    |
+|  8:0   |   rw   |  0x40   | TSUP_PS_CS_CYCLES | number oscillator clock cycles to satisfy TSUP_PS_CS timing |
 
-## CSR4
-
+## FUSE_WRAPPER_RD_CFG_2
+fuse macro wrapper read timing config
 - Offset: `0x10`
-- Reset default: `0x0`
-- Reset mask: `0x73ff`
+- Reset default: `0x623a98da`
+- Reset mask: `0xffffffff`
 
 ### Fields
 
 ```wavejson
-{"reg": [{"name": "field0", "bits": 10, "attr": ["rw"], "rotate": 0}, {"bits": 2}, {"name": "field1", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "field2", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "field3", "bits": 1, "attr": ["rw"], "rotate": -90}, {"bits": 17}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+{"reg": [{"name": "TSQ_M_CYCLES", "bits": 11, "attr": ["rw"], "rotate": 0}, {"name": "TPGM_CYCLES", "bits": 14, "attr": ["rw"], "rotate": 0}, {"name": "TSUR_LD_CYCLES", "bits": 7, "attr": ["rw"], "rotate": -90}], "config": {"lanes": 1, "fontsize": 10, "vspace": 160}}
 ```
 
-|  Bits  |  Type  |  Reset  | Name   | Description   |
-|:------:|:------:|:-------:|:-------|:--------------|
-| 31:15  |        |         |        | Reserved      |
-|   14   |   rw   |   0x0   | field3 |               |
-|   13   |   rw   |   0x0   | field2 |               |
-|   12   |   rw   |   0x0   | field1 |               |
-| 11:10  |        |         |        | Reserved      |
-|  9:0   |   rw   |   0x0   | field0 |               |
+|  Bits  |  Type  |  Reset  | Name           | Description                                              |
+|:------:|:------:|:-------:|:---------------|:---------------------------------------------------------|
+| 31:25  |   rw   |  0x31   | TSUR_LD_CYCLES | number oscillator clock cycles to satisfy TSUR_LD timing |
+| 24:11  |   rw   |  0x753  | TPGM_CYCLES    | number oscillator clock cycles to satisfy TPGM timing    |
+|  10:0  |   rw   |  0xda   | TSQ_M_CYCLES   | number oscillator clock cycles to satisfy TSQ_M timing   |
 
-## CSR5
-
+## FUSE_WRAPPER_RD_CFG_3
+fuse macro wrapper read timing config
 - Offset: `0x14`
-- Reset default: `0x0`
-- Reset mask: `0xffff3fff`
+- Reset default: `0x2a1785e`
+- Reset mask: `0x1fffffff`
 
 ### Fields
 
 ```wavejson
-{"reg": [{"name": "field0", "bits": 6, "attr": ["rw"], "rotate": 0}, {"name": "field1", "bits": 2, "attr": ["rw"], "rotate": -90}, {"name": "field2", "bits": 1, "attr": ["ro"], "rotate": -90}, {"name": "field3", "bits": 3, "attr": ["ro"], "rotate": -90}, {"name": "field4", "bits": 1, "attr": ["ro"], "rotate": -90}, {"name": "field5", "bits": 1, "attr": ["ro"], "rotate": -90}, {"bits": 2}, {"name": "field6", "bits": 16, "attr": ["rw"], "rotate": 0}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+{"reg": [{"name": "THR_PS_CYCLES", "bits": 10, "attr": ["rw"], "rotate": 0}, {"name": "THP_PS_CYCLES", "bits": 10, "attr": ["rw"], "rotate": 0}, {"name": "THP_CS_CYCLES", "bits": 9, "attr": ["rw"], "rotate": 0}, {"bits": 3}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
 ```
 
-|  Bits  |  Type  |  Reset  | Name   | Description   |
-|:------:|:------:|:-------:|:-------|:--------------|
-| 31:16  |   rw   |   0x0   | field6 |               |
-| 15:14  |        |         |        | Reserved      |
-|   13   |   ro   |   0x0   | field5 |               |
-|   12   |   ro   |   0x0   | field4 |               |
-|  11:9  |   ro   |   0x0   | field3 |               |
-|   8    |   ro   |   0x0   | field2 |               |
-|  7:6   |   rw   |   0x0   | field1 |               |
-|  5:0   |   rw   |   0x0   | field0 |               |
+|  Bits  |  Type  |  Reset  | Name          | Description                                             |
+|:------:|:------:|:-------:|:--------------|:--------------------------------------------------------|
+| 31:29  |        |         |               | Reserved                                                |
+| 28:20  |   rw   |  0x2a   | THP_CS_CYCLES | number oscillator clock cycles to satisfy THP_CS timing |
+| 19:10  |   rw   |  0x5e   | THP_PS_CYCLES | number oscillator clock cycles to satisfy THP_PS timing |
+|  9:0   |   rw   |  0x5e   | THR_PS_CYCLES | number oscillator clock cycles to satisfy THR_PS timing |
 
-## CSR6
-
+## FUSE_WRAPPER_RD_CFG_4
+fuse macro wrapper read timing config
 - Offset: `0x18`
-- Reset default: `0x0`
-- Reset mask: `0xffff1bff`
+- Reset default: `0xd46a2a`
+- Reset mask: `0x7ffffff`
 
 ### Fields
 
 ```wavejson
-{"reg": [{"name": "field0", "bits": 10, "attr": ["rw"], "rotate": 0}, {"bits": 1}, {"name": "field1", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "field2", "bits": 1, "attr": ["rw"], "rotate": -90}, {"bits": 3}, {"name": "field3", "bits": 16, "attr": ["rw"], "rotate": 0}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+{"reg": [{"name": "THR_CS_CYCLES", "bits": 9, "attr": ["rw"], "rotate": 0}, {"name": "THP_PS_CS_CYCLES", "bits": 9, "attr": ["rw"], "rotate": 0}, {"name": "THR_PS_CS_CYCLES", "bits": 9, "attr": ["rw"], "rotate": 0}, {"bits": 5}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
 ```
 
-|  Bits  |  Type  |  Reset  | Name   | Description   |
-|:------:|:------:|:-------:|:-------|:--------------|
-| 31:16  |   rw   |   0x0   | field3 |               |
-| 15:13  |        |         |        | Reserved      |
-|   12   |   rw   |   0x0   | field2 |               |
-|   11   |   rw   |   0x0   | field1 |               |
-|   10   |        |         |        | Reserved      |
-|  9:0   |   rw   |   0x0   | field0 |               |
+|  Bits  |  Type  |  Reset  | Name             | Description                                                |
+|:------:|:------:|:-------:|:-----------------|:-----------------------------------------------------------|
+| 31:27  |        |         |                  | Reserved                                                   |
+| 26:18  |   rw   |  0x35   | THR_PS_CS_CYCLES | number oscillator clock cycles to satisfy THR_PS_CS timing |
+|  17:9  |   rw   |  0x35   | THP_PS_CS_CYCLES | number oscillator clock cycles to satisfy THP_PS_CS timing |
+|  8:0   |   rw   |  0x2a   | THR_CS_CYCLES    | number oscillator clock cycles to satisfy THR_CS timing    |
 
-## CSR7
-
+## FUSE_WRAPPER_RD_CFG_5
+fuse macro wrapper read timing config
 - Offset: `0x1c`
-- Reset default: `0x0`
-- Reset mask: `0xc73f`
+- Reset default: `0x310f0f0f`
+- Reset mask: `0xffffffff`
 
 ### Fields
 
 ```wavejson
-{"reg": [{"name": "field0", "bits": 6, "attr": ["ro"], "rotate": 0}, {"bits": 2}, {"name": "field1", "bits": 3, "attr": ["ro"], "rotate": -90}, {"bits": 3}, {"name": "field2", "bits": 1, "attr": ["ro"], "rotate": -90}, {"name": "field3", "bits": 1, "attr": ["ro"], "rotate": -90}, {"bits": 16}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+{"reg": [{"name": "TSUR_A_CYCLES", "bits": 8, "attr": ["rw"], "rotate": 0}, {"name": "TSUP_A_CYCLES", "bits": 8, "attr": ["rw"], "rotate": 0}, {"name": "THP_A_CYCLES", "bits": 8, "attr": ["rw"], "rotate": 0}, {"name": "TSUP_LD_CYCLES", "bits": 8, "attr": ["rw"], "rotate": 0}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
 ```
 
-|  Bits  |  Type  |  Reset  | Name   | Description   |
-|:------:|:------:|:-------:|:-------|:--------------|
-| 31:16  |        |         |        | Reserved      |
-|   15   |   ro   |   0x0   | field3 |               |
-|   14   |   ro   |   0x0   | field2 |               |
-| 13:11  |        |         |        | Reserved      |
-|  10:8  |   ro   |   0x0   | field1 |               |
-|  7:6   |        |         |        | Reserved      |
-|  5:0   |   ro   |   0x0   | field0 |               |
+|  Bits  |  Type  |  Reset  | Name           | Description                                              |
+|:------:|:------:|:-------:|:---------------|:---------------------------------------------------------|
+| 31:24  |   rw   |  0x31   | TSUP_LD_CYCLES | number oscillator clock cycles to satisfy TSUP_LD timing |
+| 23:16  |   rw   |   0xf   | THP_A_CYCLES   | number oscillator clock cycles to satisfy THP_A timing   |
+|  15:8  |   rw   |   0xf   | TSUP_A_CYCLES  | number oscillator clock cycles to satisfy TSUP_A timing  |
+|  7:0   |   rw   |   0xf   | TSUR_A_CYCLES  | number oscillator clock cycles to satisfy TSUR_A timing  |
+
+## FUSE_WRAPPER_RD_CFG_6
+fuse macro wrapper read timing config
+- Offset: `0x20`
+- Reset default: `0x263685a`
+- Reset mask: `0x1fffffff`
+
+### Fields
+
+```wavejson
+{"reg": [{"name": "TRD_CYCLES", "bits": 10, "attr": ["rw"], "rotate": 0}, {"name": "TRD_M_CYCLES", "bits": 11, "attr": ["rw"], "rotate": 0}, {"name": "THR_A_CYCLES", "bits": 8, "attr": ["rw"], "rotate": 0}, {"bits": 3}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+```
+
+|  Bits  |  Type  |  Reset  | Name         | Description                                            |
+|:------:|:------:|:-------:|:-------------|:-------------------------------------------------------|
+| 31:29  |        |         |              | Reserved                                               |
+| 28:21  |   rw   |  0x13   | THR_A_CYCLES | number oscillator clock cycles to satisfy THR_A timing |
+| 20:10  |   rw   |  0xda   | TRD_M_CYCLES | number oscillator clock cycles to satisfy TRD_M timing |
+|  9:0   |   rw   |  0x5a   | TRD_CYCLES   | number oscillator clock cycles to satisfy TRD timing   |
+
+## FUSE_WRAPPER_RD_CFG_7
+fuse macro wrapper read timing config
+- Offset: `0x24`
+- Reset default: `0x1011b`
+- Reset mask: `0xffffff`
+
+### Fields
+
+```wavejson
+{"reg": [{"name": "THP_PD_PS_CYCLES", "bits": 8, "attr": ["rw"], "rotate": -90}, {"name": "DATA_CAPTURE_CYCLES", "bits": 8, "attr": ["rw"], "rotate": -90}, {"name": "ADDR_CAPTURE_CYCLES", "bits": 8, "attr": ["rw"], "rotate": -90}, {"bits": 8}], "config": {"lanes": 1, "fontsize": 10, "vspace": 210}}
+```
+
+|  Bits  |  Type  |  Reset  | Name                | Description                                                   |
+|:------:|:------:|:-------:|:--------------------|:--------------------------------------------------------------|
+| 31:24  |        |         |                     | Reserved                                                      |
+| 23:16  |   rw   |   0x1   | ADDR_CAPTURE_CYCLES | number oscillator clock cycles to satisfy ADDR_CAPTURE timing |
+|  15:8  |   rw   |   0x1   | DATA_CAPTURE_CYCLES | number oscillator clock cycles to satisfy DATA_CAPTURE timing |
+|  7:0   |   rw   |  0x1b   | THP_PD_PS_CYCLES    | number oscillator clock cycles to satisfy THP_PD_PS timing    |
+
+## FUSE_WRAPPER_RD_CFG_8
+fuse macro wrapper read timing config
+- Offset: `0x28`
+- Reset default: `0x493e`
+- Reset mask: `0x3ffff`
+
+### Fields
+
+```wavejson
+{"reg": [{"name": "TRIGGER_POWER_DOWN_CYCLES", "bits": 18, "attr": ["rw"], "rotate": 0}, {"bits": 14}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+```
+
+|  Bits  |  Type  |  Reset  | Name                      | Description                                                         |
+|:------:|:------:|:-------:|:--------------------------|:--------------------------------------------------------------------|
+| 31:18  |        |         |                           | Reserved                                                            |
+|  17:0  |   rw   | 0x493e  | TRIGGER_POWER_DOWN_CYCLES | number oscillator clock cycles to satisfy TRIGGER_POWER_DOWN timing |
+
+## FUSE_WRAPPER_WR_CFG_0
+fuse macro wrapper write timing config
+- Offset: `0x2c`
+- Reset default: `0x4417057`
+- Reset mask: `0x7fffffff`
+
+### Fields
+
+```wavejson
+{"reg": [{"name": "TSUR_PD_PS_CYCLES", "bits": 12, "attr": ["rw"], "rotate": 0}, {"name": "TSUR_PS_CYCLES", "bits": 10, "attr": ["rw"], "rotate": 0}, {"name": "TSUR_PS_CS_CYCLES", "bits": 9, "attr": ["rw"], "rotate": -90}, {"bits": 1}], "config": {"lanes": 1, "fontsize": 10, "vspace": 190}}
+```
+
+|  Bits  |  Type  |  Reset  | Name              | Description                                                 |
+|:------:|:------:|:-------:|:------------------|:------------------------------------------------------------|
+|   31   |        |         |                   | Reserved                                                    |
+| 30:22  |   rw   |  0x11   | TSUR_PS_CS_CYCLES | number oscillator clock cycles to satisfy TSUR_PS_CS timing |
+| 21:12  |   rw   |  0x17   | TSUR_PS_CYCLES    | number oscillator clock cycles to satisfy TSUR_PS timing    |
+|  11:0  |   rw   |  0x57   | TSUR_PD_PS_CYCLES | number oscillator clock cycles to satisfy TSUR_PD_PS timing |
+
+## FUSE_WRAPPER_WR_CFG_1
+fuse macro wrapper write timing config
+- Offset: `0x30`
+- Reset default: `0xb82e11`
+- Reset mask: `0x1fffffff`
+
+### Fields
+
+```wavejson
+{"reg": [{"name": "TSUP_PS_CS_CYCLES", "bits": 9, "attr": ["rw"], "rotate": -90}, {"name": "TSUP_PS_CYCLES", "bits": 10, "attr": ["rw"], "rotate": 0}, {"name": "TSQ_CYCLES", "bits": 10, "attr": ["rw"], "rotate": 0}, {"bits": 3}], "config": {"lanes": 1, "fontsize": 10, "vspace": 190}}
+```
+
+|  Bits  |  Type  |  Reset  | Name              | Description                                                 |
+|:------:|:------:|:-------:|:------------------|:------------------------------------------------------------|
+| 31:29  |        |         |                   | Reserved                                                    |
+| 28:19  |   rw   |  0x17   | TSQ_CYCLES        | number oscillator clock cycles to satisfy TSQ timing        |
+|  18:9  |   rw   |  0x17   | TSUP_PS_CYCLES    | number oscillator clock cycles to satisfy TSUP_PS timing    |
+|  8:0   |   rw   |  0x11   | TSUP_PS_CS_CYCLES | number oscillator clock cycles to satisfy TSUP_PS_CS timing |
+
+## FUSE_WRAPPER_WR_CFG_2
+fuse macro wrapper write timing config
+- Offset: `0x34`
+- Reset default: `0x1a0fa03a`
+- Reset mask: `0xffffffff`
+
+### Fields
+
+```wavejson
+{"reg": [{"name": "TSQ_M_CYCLES", "bits": 11, "attr": ["rw"], "rotate": 0}, {"name": "TPGM_CYCLES", "bits": 14, "attr": ["rw"], "rotate": 0}, {"name": "TSUR_LD_CYCLES", "bits": 7, "attr": ["rw"], "rotate": -90}], "config": {"lanes": 1, "fontsize": 10, "vspace": 160}}
+```
+
+|  Bits  |  Type  |  Reset  | Name           | Description                                              |
+|:------:|:------:|:-------:|:---------------|:---------------------------------------------------------|
+| 31:25  |   rw   |   0xd   | TSUR_LD_CYCLES | number oscillator clock cycles to satisfy TSUR_LD timing |
+| 24:11  |   rw   |  0x1f4  | TPGM_CYCLES    | number oscillator clock cycles to satisfy TPGM timing    |
+|  10:0  |   rw   |  0x3a   | TSQ_M_CYCLES   | number oscillator clock cycles to satisfy TSQ_M timing   |
+
+## FUSE_WRAPPER_WR_CFG_3
+fuse macro wrapper write timing config
+- Offset: `0x38`
+- Reset default: `0xb06419`
+- Reset mask: `0x1fffffff`
+
+### Fields
+
+```wavejson
+{"reg": [{"name": "THR_PS_CYCLES", "bits": 10, "attr": ["rw"], "rotate": 0}, {"name": "THP_PS_CYCLES", "bits": 10, "attr": ["rw"], "rotate": 0}, {"name": "THP_CS_CYCLES", "bits": 9, "attr": ["rw"], "rotate": 0}, {"bits": 3}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+```
+
+|  Bits  |  Type  |  Reset  | Name          | Description                                             |
+|:------:|:------:|:-------:|:--------------|:--------------------------------------------------------|
+| 31:29  |        |         |               | Reserved                                                |
+| 28:20  |   rw   |   0xb   | THP_CS_CYCLES | number oscillator clock cycles to satisfy THP_CS timing |
+| 19:10  |   rw   |  0x19   | THP_PS_CYCLES | number oscillator clock cycles to satisfy THP_PS timing |
+|  9:0   |   rw   |  0x19   | THR_PS_CYCLES | number oscillator clock cycles to satisfy THR_PS timing |
+
+## FUSE_WRAPPER_WR_CFG_4
+fuse macro wrapper write timing config
+- Offset: `0x3c`
+- Reset default: `0x381c0b`
+- Reset mask: `0x7ffffff`
+
+### Fields
+
+```wavejson
+{"reg": [{"name": "THR_CS_CYCLES", "bits": 9, "attr": ["rw"], "rotate": 0}, {"name": "THP_PS_CS_CYCLES", "bits": 9, "attr": ["rw"], "rotate": 0}, {"name": "THR_PS_CS_CYCLES", "bits": 9, "attr": ["rw"], "rotate": 0}, {"bits": 5}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+```
+
+|  Bits  |  Type  |  Reset  | Name             | Description                                                |
+|:------:|:------:|:-------:|:-----------------|:-----------------------------------------------------------|
+| 31:27  |        |         |                  | Reserved                                                   |
+| 26:18  |   rw   |   0xe   | THR_PS_CS_CYCLES | number oscillator clock cycles to satisfy THR_PS_CS timing |
+|  17:9  |   rw   |   0xe   | THP_PS_CS_CYCLES | number oscillator clock cycles to satisfy THP_PS_CS timing |
+|  8:0   |   rw   |   0xb   | THR_CS_CYCLES    | number oscillator clock cycles to satisfy THR_CS timing    |
+
+## FUSE_WRAPPER_WR_CFG_5
+fuse macro wrapper write timing config
+- Offset: `0x40`
+- Reset default: `0xd050404`
+- Reset mask: `0xffffffff`
+
+### Fields
+
+```wavejson
+{"reg": [{"name": "TSUR_A_CYCLES", "bits": 8, "attr": ["rw"], "rotate": 0}, {"name": "TSUP_A_CYCLES", "bits": 8, "attr": ["rw"], "rotate": 0}, {"name": "THP_A_CYCLES", "bits": 8, "attr": ["rw"], "rotate": 0}, {"name": "TSUP_LD_CYCLES", "bits": 8, "attr": ["rw"], "rotate": 0}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+```
+
+|  Bits  |  Type  |  Reset  | Name           | Description                                              |
+|:------:|:------:|:-------:|:---------------|:---------------------------------------------------------|
+| 31:24  |   rw   |   0xd   | TSUP_LD_CYCLES | number oscillator clock cycles to satisfy TSUP_LD timing |
+| 23:16  |   rw   |   0x5   | THP_A_CYCLES   | number oscillator clock cycles to satisfy THP_A timing   |
+|  15:8  |   rw   |   0x4   | TSUP_A_CYCLES  | number oscillator clock cycles to satisfy TSUP_A timing  |
+|  7:0   |   rw   |   0x4   | TSUR_A_CYCLES  | number oscillator clock cycles to satisfy TSUR_A timing  |
+
+## FUSE_WRAPPER_WR_CFG_6
+fuse macro wrapper write timing config
+- Offset: `0x44`
+- Reset default: `0xa0e81b`
+- Reset mask: `0x1fffffff`
+
+### Fields
+
+```wavejson
+{"reg": [{"name": "TRD_CYCLES", "bits": 10, "attr": ["rw"], "rotate": 0}, {"name": "TRD_M_CYCLES", "bits": 11, "attr": ["rw"], "rotate": 0}, {"name": "THR_A_CYCLES", "bits": 8, "attr": ["rw"], "rotate": 0}, {"bits": 3}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+```
+
+|  Bits  |  Type  |  Reset  | Name         | Description                                            |
+|:------:|:------:|:-------:|:-------------|:-------------------------------------------------------|
+| 31:29  |        |         |              | Reserved                                               |
+| 28:21  |   rw   |   0x5   | THR_A_CYCLES | number oscillator clock cycles to satisfy THR_A timing |
+| 20:10  |   rw   |  0x3a   | TRD_M_CYCLES | number oscillator clock cycles to satisfy TRD_M timing |
+|  9:0   |   rw   |  0x1b   | TRD_CYCLES   | number oscillator clock cycles to satisfy TRD timing   |
+
+## FUSE_WRAPPER_WR_CFG_7
+fuse macro wrapper write timing config
+- Offset: `0x48`
+- Reset default: `0x10107`
+- Reset mask: `0xffffff`
+
+### Fields
+
+```wavejson
+{"reg": [{"name": "THP_PD_PS_CYCLES", "bits": 8, "attr": ["rw"], "rotate": -90}, {"name": "DATA_CAPTURE_CYCLES", "bits": 8, "attr": ["rw"], "rotate": -90}, {"name": "ADDR_CAPTURE_CYCLES", "bits": 8, "attr": ["rw"], "rotate": -90}, {"bits": 8}], "config": {"lanes": 1, "fontsize": 10, "vspace": 210}}
+```
+
+|  Bits  |  Type  |  Reset  | Name                | Description                                                   |
+|:------:|:------:|:-------:|:--------------------|:--------------------------------------------------------------|
+| 31:24  |        |         |                     | Reserved                                                      |
+| 23:16  |   rw   |   0x1   | ADDR_CAPTURE_CYCLES | number oscillator clock cycles to satisfy ADDR_CAPTURE timing |
+|  15:8  |   rw   |   0x1   | DATA_CAPTURE_CYCLES | number oscillator clock cycles to satisfy DATA_CAPTURE timing |
+|  7:0   |   rw   |   0x7   | THP_PD_PS_CYCLES    | number oscillator clock cycles to satisfy THP_PD_PS timing    |
+
+## FUSE_WRAPPER_WR_CFG_8
+fuse macro wrapper write timing config
+- Offset: `0x4c`
+- Reset default: `0x1388`
+- Reset mask: `0x3ffff`
+
+### Fields
+
+```wavejson
+{"reg": [{"name": "TRIGGER_POWER_DOWN_CYCLES", "bits": 18, "attr": ["rw"], "rotate": 0}, {"bits": 14}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+```
+
+|  Bits  |  Type  |  Reset  | Name                      | Description                                                         |
+|:------:|:------:|:-------:|:--------------------------|:--------------------------------------------------------------------|
+| 31:18  |        |         |                           | Reserved                                                            |
+|  17:0  |   rw   | 0x1388  | TRIGGER_POWER_DOWN_CYCLES | number oscillator clock cycles to satisfy TRIGGER_POWER_DOWN timing |
 
 
 <!-- END CMDGEN -->

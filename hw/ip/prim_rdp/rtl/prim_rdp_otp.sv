@@ -15,8 +15,6 @@ module prim_rdp_otp
   parameter  int SizeWidth     = 2,
   // Width of the power sequencing signal.
   parameter  int PwrSeqWidth   = 2,
-  // Number of Test TL-UL words
-  parameter  int TlDepth       = 16,  // [Rivos]
   // Width of vendor-specific test control signal
   parameter  int TestCtrlWidth   = 32,
   parameter  int TestStatusWidth = 32,
@@ -30,105 +28,66 @@ module prim_rdp_otp
   parameter  int VendorTestOffset = 0,
   parameter  int VendorTestSize   = 0,
 
-  parameter  int FUSE_MBIST_EN                     = 0,
-  parameter  int FUSE_MBIST_ARRAY_BASE             = 0,
-  parameter  int FUSE_MBIST_ARRAY_SIZE             = 0,
-  parameter  int FUSE_MBIST_ECC_ARRAY_BASE         = 0,
-  parameter  int FUSE_MBIST_ECC_ARRAY_SIZE         = 0,
-  parameter  int FUSE_NUM_MBIST_ARRAYS             = 1,   // (neal) default is 1 for otp, but only mbist to nsefuse
-  parameter  int FUSE_RF_DATA_WIDTH                = 8,
+  parameter  bit FUSE_MBIST_EN                     = prim_otp_cfg_pkg::FUSE_MBIST_EN,
+  parameter  int FUSE_MBIST_ARRAY_BASE             = prim_otp_cfg_pkg::FUSE_MBIST_ARRAY_BASE,
+  parameter  int FUSE_MBIST_ARRAY_SIZE             = prim_otp_cfg_pkg::FUSE_MBIST_ARRAY_SIZE,
+  parameter  int FUSE_MBIST_ECC_ARRAY_BASE         = prim_otp_cfg_pkg::FUSE_MBIST_ECC_ARRAY_BASE,
+  parameter  int FUSE_MBIST_ECC_ARRAY_SIZE         = prim_otp_cfg_pkg::FUSE_MBIST_ECC_ARRAY_SIZE,
+  parameter  int FUSE_NUM_MBIST_ARRAYS             = prim_otp_cfg_pkg::FUSE_NUM_MBIST_ARRAYS,
+  parameter  int FUSE_RF_DATA_WIDTH                = prim_otp_cfg_pkg::FUSE_RF_DATA_WIDTH,
   // tsmc fuse macro wrapper parameters
-  parameter  int FUSE_NUM_ARRAYS                   = 16,   // (neal) default is the value we want for otp_ctrl
-  parameter  int FUSE_ADDR_WIDTH                   = 13,
-  parameter  int FUSE_TEST_ADDR_WIDTH              = 2,
-  parameter  int FUSE_DATA_WIDTH                   = 32,
-  localparam int FUSE_ARRAY_SEL_WIDTH     = (FUSE_NUM_ARRAYS > 1) ? $clog2(FUSE_NUM_ARRAYS) : 1,
-  localparam int FUSE_NUM_ECC_ARRAYS      = (FUSE_NUM_ARRAYS > 1) ? (FUSE_NUM_ARRAYS >> 1) : 1,
-  localparam int FUSE_ECC_ARRAY_SEL_WIDTH = (FUSE_NUM_ECC_ARRAYS > 1) ? $clog2(FUSE_NUM_ECC_ARRAYS) : 1
+  parameter  int FUSE_NUM_ARRAYS                   = prim_otp_cfg_pkg::FUSE_NUM_ARRAYS,
+  parameter  int FUSE_ADDR_WIDTH                   = prim_otp_cfg_pkg::FUSE_ADDR_WIDTH,
+  parameter  int FUSE_TEST_ADDR_WIDTH              = prim_otp_cfg_pkg::FUSE_TEST_ADDR_WIDTH,
+  parameter  int FUSE_DATA_WIDTH                   = prim_otp_cfg_pkg::FUSE_DATA_WIDTH,
+
+  // Type definitions of the config in response ports
+  parameter type CfgType_t        = prim_otp_cfg_pkg::otp_cfg_t,
+  parameter type CfgRspType_t     = prim_otp_cfg_pkg::otp_cfg_rsp_t
 ) (
-  input  logic                   clk_i,
-  input  logic                   rst_ni,
-  input  logic                   clk_efuse_i,
+  input                                  clk_i,
+  input                                  rst_ni,
   // Observability
-  input ast_pkg::ast_obs_ctrl_t obs_ctrl_i,
-  output logic [7:0] otp_obs_o,
+  input ast_pkg::ast_obs_ctrl_t          obs_ctrl_i,
+  output logic [7:0]                     otp_obs_o,
   // Macro-specific power sequencing signals to/from AST
-  output logic [PwrSeqWidth-1:0] pwr_seq_o,
-  input  logic [PwrSeqWidth-1:0] pwr_seq_h_i,
+  output logic [PwrSeqWidth-1:0]          pwr_seq_o,
+  input        [PwrSeqWidth-1:0]          pwr_seq_h_i,
   // External programming voltage
-  inout wire                     ext_voltage_io,
+  inout wire                              ext_voltage_io,
   // Test interfaces
-  input  logic [TestCtrlWidth-1:0]   test_ctrl_i,
-  output logic [TestStatusWidth-1:0] test_status_o,
-  output logic [TestVectWidth-1:0]   test_vect_o,
-  input  tlul_pkg::tl_h2d_t          test_tl_i,
-  output tlul_pkg::tl_d2h_t          test_tl_o,
+  input        [TestCtrlWidth-1:0]        test_ctrl_i,
+  output logic [TestStatusWidth-1:0]      test_status_o,
+  output logic [TestVectWidth-1:0]        test_vect_o,
+  input  tlul_pkg::tl_h2d_t               test_tl_i,
+  output tlul_pkg::tl_d2h_t               test_tl_o,
   // Other DFT signals
-  input prim_mubi_pkg::mubi4_t   scanmode_i,  // Scan Mode input
-  input  logic                   scan_en_i,   // Scan Shift
-  input  logic                   scan_rst_ni, // Scan Reset
+  input prim_mubi_pkg::mubi4_t            scanmode_i,  // Scan Mode input
+  input                                   scan_en_i,   // Scan Shift
+  input                                   scan_rst_ni, // Scan Reset
   // Alert indication (to be connected to alert sender in the instantiating IP)
-  output logic                   fatal_alert_o,
-  output logic                   recov_alert_o,
+  output logic                            fatal_alert_o,
+  output logic                            recov_alert_o,
   // Ready valid handshake for read/write command
-  output logic                   ready_o,
-  input  logic                   valid_i,
+  output logic                            ready_o,
+  input                                   valid_i,
   // #(Native words)-1, e.g. size == 0 for 1 native word.
-  input [SizeWidth-1:0]          size_i,
-  // 000: read, 001: write, 010: read raw, 011: write raw, 111: init
-  input  cmd_e                   cmd_i,
-  input  logic [AddrWidth-1:0]   addr_i,
-  input  logic [IfWidth-1:0]     wdata_i,
-  input  logic                   sel_wr_timing_i,
+  input [SizeWidth-1:0]                   size_i,
+  // See prim_otp_pkg for the command encoding.
+  input  cmd_e                            cmd_i,
+  input [AddrWidth-1:0]                   addr_i,
+  input [IfWidth-1:0]                     wdata_i,
   // Response channel
-  output logic                   valid_o,
-  output logic [IfWidth-1:0]     rdata_o,
-  output err_e                   err_o,
-
-  // TSMC mode, needed for DAI addr selection
-  output logic [1:0]             macro_mode_o,
-
-  input logic                    tstrst_i,
-  input logic                    tstrstsel_i,
-
-  input logic                                       mbist_sel_i, // select mbist mode
-  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0]         mbist_fuse_csb_i,
-  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0]         mbist_fuse_load_i,
-  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0]         mbist_fuse_pgenb_i,
-  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0]         mbist_fuse_ps_i,
-  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0]         mbist_fuse_pd_i,
-  input logic                                       mbist_fuse_mr_i,
-  input logic                                       mbist_fuse_rwl_i,
-  input logic                                       mbist_fuse_rsb_i,
-  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0]         mbist_fuse_strobe_array_i,
-  input logic [(FUSE_NUM_MBIST_ARRAYS-1):0][(12):0] mbist_fuse_address_i,      // (neal) hardcoding mbist port to match localparams in rivos_tsmc_fuse_wrapper.sv
-  output wire [(FUSE_NUM_MBIST_ARRAYS-1):0][(7):0]  mbist_fuse_rf_data_o,      // (neal) hardcoding mbist port to match localparams in rivos_tsmc_fuse_wrapper.sv
-  output wire [(FUSE_NUM_MBIST_ARRAYS-1):0][(31):0] mbist_fuse_data_o,         // (neal) hardcoding mbist port to match localparams in rivos_tsmc_fuse_wrapper.sv
-  output logic                                      reset_allowed_o,
-
-  input  logic                                                trace_en_i,
-  output logic                                                trace_final_fuse_mr_o,  // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output logic                                                trace_final_fuse_rsb_o, // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output logic                                                trace_final_fuse_rwl_o, // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output logic                                                trace_final_fuse_tcrs_o,// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output [(FUSE_ADDR_WIDTH-1):0]                              trace_fuse_address_o,// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output [(FUSE_ARRAY_SEL_WIDTH-1):0]                         trace_fuse_array_sel_o,// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output logic                                                trace_fuse_csb_o,       // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output [(FUSE_NUM_ARRAYS-1):0][(FUSE_DATA_WIDTH-1):0]       trace_fuse_data_o,      // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output [(FUSE_ADDR_WIDTH-1):0]                              trace_fuse_ecc_address_o,// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output [(FUSE_ECC_ARRAY_SEL_WIDTH-1):0]                     trace_fuse_ecc_array_sel_o,// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output [(FUSE_NUM_ECC_ARRAYS-1):0][(FUSE_DATA_WIDTH-1):0]   trace_fuse_ecc_data_o,  // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output logic                                                trace_fuse_ecc_ps_o,    // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output logic                                                trace_fuse_ecc_strobe_o,// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output logic                                                trace_fuse_load_o,      // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output logic                                                trace_fuse_pd_o,        // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output logic                                                trace_fuse_pgenb_o,     // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output logic                                                trace_fuse_ps_o,        // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output logic                                                trace_fuse_strobe_o,    // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  output [(FUSE_TEST_ADDR_WIDTH-1):0]                         trace_fuse_test_address_o// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
+  output logic                            valid_o,
+  output logic [IfWidth-1:0]              rdata_o,
+  output err_e                            err_o,
+  // DFT config and response port
+  input  CfgType_t                        cfg_i,
+  output CfgRspType_t                     cfg_rsp_o
 );
-
-  import prim_mubi_pkg::MuBi4False;
+  localparam int FUSE_ARRAY_SEL_WIDTH     = prim_util_pkg::vbits(FUSE_NUM_ARRAYS);
+  localparam int FUSE_NUM_ECC_ARRAYS      = (FUSE_NUM_ARRAYS > 1) ? (FUSE_NUM_ARRAYS >> 1) : 1;
+  localparam int FUSE_ECC_ARRAY_SEL_WIDTH = prim_util_pkg::vbits(FUSE_NUM_ECC_ARRAYS);
 
   // This is only restricted by the supported ECC poly further
   // below, and is straightforward to extend, if needed.
@@ -282,7 +241,7 @@ module prim_rdp_otp
   assign integrity_disable = reg2hw.macro_control.ecc_disable.q ||
                              (reg2hw.macro_control.macro_mode.q != 2'b00);  // only want integrity in array mode
 
-  assign macro_mode_o      = reg2hw.macro_control.macro_mode.q;
+  assign cfg_rsp_o.macro_mode = reg2hw.macro_control.macro_mode.q;
 
   always_comb begin : p_fsm
     // Default
@@ -573,7 +532,7 @@ module prim_rdp_otp
   ) u_alert_nmi_sync (
     .clk_i,
     .rst_ni,
-    .d_i(sel_wr_timing_i),
+    .d_i(cfg_i.sel_wr_timing),
     .q_o(SYNC_sel_wr_timing)
   );
 
@@ -663,25 +622,28 @@ module prim_rdp_otp
     .FUSE_MBIST_ECC_ARRAY_BASE          (FUSE_MBIST_ECC_ARRAY_BASE),
     .FUSE_MBIST_ECC_ARRAY_SIZE          (FUSE_MBIST_ECC_ARRAY_SIZE),
     .FUSE_RF_DATA_WIDTH                 (FUSE_RF_DATA_WIDTH),
-    .trace_fuse_csb_o                   (trace_fuse_csb_o),
-    .trace_fuse_strobe_o                (trace_fuse_strobe_o),
-    .trace_fuse_array_sel_o             (trace_fuse_array_sel_o[(FUSE_ARRAY_SEL_WIDTH-1):0]),
-    .trace_fuse_load_o                  (trace_fuse_load_o),
-    .trace_fuse_pgenb_o                 (trace_fuse_pgenb_o),
-    .trace_fuse_ps_o                    (trace_fuse_ps_o),
-    .trace_fuse_pd_o                    (trace_fuse_pd_o),
-    .trace_final_fuse_mr_o              (trace_final_fuse_mr_o),
-    .trace_fuse_address_o               (trace_fuse_address_o[(FUSE_ADDR_WIDTH-1):0]),
-    .trace_final_fuse_tcrs_o            (trace_final_fuse_tcrs_o),
-    .trace_fuse_test_address_o          (trace_fuse_test_address_o[(FUSE_TEST_ADDR_WIDTH-1):0]),
-    .trace_final_fuse_rsb_o             (trace_final_fuse_rsb_o),
-    .trace_final_fuse_rwl_o             (trace_final_fuse_rwl_o),
-    .trace_fuse_ecc_strobe_o            (trace_fuse_ecc_strobe_o),
-    .trace_fuse_ecc_array_sel_o         (trace_fuse_ecc_array_sel_o[(FUSE_ECC_ARRAY_SEL_WIDTH-1):0]),
-    .trace_fuse_ecc_ps_o                (trace_fuse_ecc_ps_o),
-    .trace_fuse_ecc_address_o           (trace_fuse_ecc_address_o[(FUSE_ADDR_WIDTH-1):0]),
-    .trace_fuse_data_o                  (trace_fuse_data_o[(FUSE_NUM_ARRAYS-1):0]),
-    .trace_fuse_ecc_data_o              (trace_fuse_ecc_data_o[(FUSE_NUM_ECC_ARRAYS-1):0]),
+    .FUSE_ADDR_WIDTH                    (FUSE_ADDR_WIDTH),
+    .FUSE_TEST_ADDR_WIDTH               (FUSE_TEST_ADDR_WIDTH),
+    .FUSE_DATA_WIDTH                    (FUSE_DATA_WIDTH),
+    .trace_fuse_csb_o                   (cfg_rsp_o.trace_fuse_csb),
+    .trace_fuse_strobe_o                (cfg_rsp_o.trace_fuse_strobe),
+    .trace_fuse_array_sel_o             (cfg_rsp_o.trace_fuse_array_sel[(FUSE_ARRAY_SEL_WIDTH-1):0]),
+    .trace_fuse_load_o                  (cfg_rsp_o.trace_fuse_load),
+    .trace_fuse_pgenb_o                 (cfg_rsp_o.trace_fuse_pgenb),
+    .trace_fuse_ps_o                    (cfg_rsp_o.trace_fuse_ps),
+    .trace_fuse_pd_o                    (cfg_rsp_o.trace_fuse_pd),
+    .trace_final_fuse_mr_o              (cfg_rsp_o.trace_final_fuse_mr),
+    .trace_fuse_address_o               (cfg_rsp_o.trace_fuse_address[(FUSE_ADDR_WIDTH-1):0]),
+    .trace_final_fuse_tcrs_o            (cfg_rsp_o.trace_final_fuse_tcrs),
+    .trace_fuse_test_address_o          (cfg_rsp_o.trace_fuse_test_address[(FUSE_TEST_ADDR_WIDTH-1):0]),
+    .trace_final_fuse_rsb_o             (cfg_rsp_o.trace_final_fuse_rsb),
+    .trace_final_fuse_rwl_o             (cfg_rsp_o.trace_final_fuse_rwl),
+    .trace_fuse_ecc_strobe_o            (cfg_rsp_o.trace_fuse_ecc_strobe),
+    .trace_fuse_ecc_array_sel_o         (cfg_rsp_o.trace_fuse_ecc_array_sel[(FUSE_ECC_ARRAY_SEL_WIDTH-1):0]),
+    .trace_fuse_ecc_ps_o                (cfg_rsp_o.trace_fuse_ecc_ps),
+    .trace_fuse_ecc_address_o           (cfg_rsp_o.trace_fuse_ecc_address[(FUSE_ADDR_WIDTH-1):0]),
+    .trace_fuse_data_o                  (cfg_rsp_o.trace_fuse_data[(FUSE_NUM_ARRAYS-1):0]),
+    .trace_fuse_ecc_data_o              (cfg_rsp_o.trace_fuse_ecc_data[(FUSE_NUM_ECC_ARRAYS-1):0]),
     .req_i                              (req),
     .write_i                            (wren),
     .addr_i                             (addr),
@@ -720,23 +682,24 @@ module prim_rdp_otp
     .data_capture_cycles_i              (data_capture_cycles),
     .addr_capture_cycles_i              (addr_capture_cycles),
     .trigger_power_down_cycles_i        (trigger_power_down_cycles),
-    .tstrst_i                           (tstrst_i),
-    .tstrstsel_i                        (tstrstsel_i),
+    .tstrst_i                           (cfg_i.tstrst),
+    .tstrstsel_i                        (cfg_i.tstrstsel),
     .redundancy_autoinit_disable_i      (reg2hw.macro_control.redundancy_autoinit_disable.q),
-    .mbist_sel_i                        (mbist_sel_i),
-    .mbist_fuse_csb_i                   (mbist_fuse_csb_i),
-    .mbist_fuse_load_i                  (mbist_fuse_load_i),
-    .mbist_fuse_pgenb_i                 (mbist_fuse_pgenb_i),
-    .mbist_fuse_ps_i                    (mbist_fuse_ps_i),
-    .mbist_fuse_pd_i                    (mbist_fuse_pd_i),
-    .mbist_fuse_mr_i                    (mbist_fuse_mr_i),
-    .mbist_fuse_rwl_i                   (mbist_fuse_rwl_i),
-    .mbist_fuse_rsb_i                   (mbist_fuse_rsb_i),
-    .mbist_fuse_strobe_array_i          (mbist_fuse_strobe_array_i),
-    .mbist_fuse_address_i               (mbist_fuse_address_i),
-    .mbist_fuse_rf_data_o               (mbist_fuse_rf_data_o),
-    .mbist_fuse_data_o                  (mbist_fuse_data_o),
-    .reset_allowed_o                    (reset_allowed_o),
+    .clk_efuse_i                        (cfg_i.clk_efuse),
+    .mbist_sel_i                        (cfg_i.mbist_sel),
+    .mbist_fuse_csb_i                   (cfg_i.mbist_fuse_csb),
+    .mbist_fuse_load_i                  (cfg_i.mbist_fuse_load),
+    .mbist_fuse_pgenb_i                 (cfg_i.mbist_fuse_pgenb),
+    .mbist_fuse_ps_i                    (cfg_i.mbist_fuse_ps),
+    .mbist_fuse_pd_i                    (cfg_i.mbist_fuse_pd),
+    .mbist_fuse_mr_i                    (cfg_i.mbist_fuse_mr),
+    .mbist_fuse_rwl_i                   (cfg_i.mbist_fuse_rwl),
+    .mbist_fuse_rsb_i                   (cfg_i.mbist_fuse_rsb),
+    .mbist_fuse_strobe_array_i          (cfg_i.mbist_fuse_strobe_array),
+    .mbist_fuse_address_i               (cfg_i.mbist_fuse_address),
+    .mbist_fuse_rf_data_o               (cfg_rsp_o.mbist_fuse_rf_data),
+    .mbist_fuse_data_o                  (cfg_rsp_o.mbist_fuse_data),
+    .reset_allowed_o                    (cfg_rsp_o.reset_allowed),
 );
 */
 
@@ -753,9 +716,9 @@ rivos_tsmc_fuse_wrapper
     .FUSE_MBIST_ARRAY_SIZE              (FUSE_MBIST_ARRAY_SIZE), // Templated
     .FUSE_MBIST_ECC_ARRAY_BASE          (FUSE_MBIST_ECC_ARRAY_BASE), // Templated
     .FUSE_MBIST_ECC_ARRAY_SIZE          (FUSE_MBIST_ECC_ARRAY_SIZE), // Templated
-    .FUSE_ADDR_WIDTH                    (FUSE_ADDR_WIDTH),
-    .FUSE_TEST_ADDR_WIDTH               (FUSE_TEST_ADDR_WIDTH),
-    .FUSE_DATA_WIDTH                    (FUSE_DATA_WIDTH),
+    .FUSE_ADDR_WIDTH                    (FUSE_ADDR_WIDTH),       // Templated
+    .FUSE_TEST_ADDR_WIDTH               (FUSE_TEST_ADDR_WIDTH),  // Templated
+    .FUSE_DATA_WIDTH                    (FUSE_DATA_WIDTH),       // Templated
     .FUSE_RF_DATA_WIDTH                 (FUSE_RF_DATA_WIDTH))    // Templated
   u_fuse_wrapper (/*AUTOINST*/
                   // Interfaces
@@ -764,32 +727,32 @@ rivos_tsmc_fuse_wrapper
                   .rvalid_o             (rvalid),                // Templated
                   .rdata_o              (rdata_ecc[(Width+TotalEccWidth-1):0]), // Templated
                   .wrapper_ready_o      (wrapper_ready),         // Templated
-                  .mbist_fuse_rf_data_o (mbist_fuse_rf_data_o),  // Templated
-                  .mbist_fuse_data_o    (mbist_fuse_data_o),     // Templated
-                  .reset_allowed_o      (reset_allowed_o),       // Templated
-                  .trace_fuse_csb_o     (trace_fuse_csb_o),      // Templated
-                  .trace_fuse_strobe_o  (trace_fuse_strobe_o),   // Templated
-                  .trace_fuse_array_sel_o(trace_fuse_array_sel_o[(FUSE_ARRAY_SEL_WIDTH-1):0]), // Templated
-                  .trace_fuse_load_o    (trace_fuse_load_o),     // Templated
-                  .trace_fuse_pgenb_o   (trace_fuse_pgenb_o),    // Templated
-                  .trace_fuse_ps_o      (trace_fuse_ps_o),       // Templated
-                  .trace_fuse_pd_o      (trace_fuse_pd_o),       // Templated
-                  .trace_final_fuse_mr_o(trace_final_fuse_mr_o), // Templated
-                  .trace_fuse_address_o (trace_fuse_address_o[(FUSE_ADDR_WIDTH-1):0]), // Templated
-                  .trace_final_fuse_tcrs_o(trace_final_fuse_tcrs_o), // Templated
-                  .trace_fuse_test_address_o(trace_fuse_test_address_o[(FUSE_TEST_ADDR_WIDTH-1):0]), // Templated
-                  .trace_final_fuse_rsb_o(trace_final_fuse_rsb_o), // Templated
-                  .trace_final_fuse_rwl_o(trace_final_fuse_rwl_o), // Templated
-                  .trace_fuse_ecc_strobe_o(trace_fuse_ecc_strobe_o), // Templated
-                  .trace_fuse_ecc_array_sel_o(trace_fuse_ecc_array_sel_o[(FUSE_ECC_ARRAY_SEL_WIDTH-1):0]), // Templated
-                  .trace_fuse_ecc_ps_o  (trace_fuse_ecc_ps_o),   // Templated
-                  .trace_fuse_ecc_address_o(trace_fuse_ecc_address_o[(FUSE_ADDR_WIDTH-1):0]), // Templated
-                  .trace_fuse_data_o    (trace_fuse_data_o[(FUSE_NUM_ARRAYS-1):0]), // Templated
-                  .trace_fuse_ecc_data_o(trace_fuse_ecc_data_o[(FUSE_NUM_ECC_ARRAYS-1):0]), // Templated
+                  .mbist_fuse_rf_data_o (cfg_rsp_o.mbist_fuse_rf_data), // Templated
+                  .mbist_fuse_data_o    (cfg_rsp_o.mbist_fuse_data), // Templated
+                  .reset_allowed_o      (cfg_rsp_o.reset_allowed), // Templated
+                  .trace_fuse_csb_o     (cfg_rsp_o.trace_fuse_csb), // Templated
+                  .trace_fuse_strobe_o  (cfg_rsp_o.trace_fuse_strobe), // Templated
+                  .trace_fuse_array_sel_o(cfg_rsp_o.trace_fuse_array_sel[(FUSE_ARRAY_SEL_WIDTH-1):0]), // Templated
+                  .trace_fuse_load_o    (cfg_rsp_o.trace_fuse_load), // Templated
+                  .trace_fuse_pgenb_o   (cfg_rsp_o.trace_fuse_pgenb), // Templated
+                  .trace_fuse_ps_o      (cfg_rsp_o.trace_fuse_ps), // Templated
+                  .trace_fuse_pd_o      (cfg_rsp_o.trace_fuse_pd), // Templated
+                  .trace_final_fuse_mr_o(cfg_rsp_o.trace_final_fuse_mr), // Templated
+                  .trace_fuse_address_o (cfg_rsp_o.trace_fuse_address[(FUSE_ADDR_WIDTH-1):0]), // Templated
+                  .trace_final_fuse_tcrs_o(cfg_rsp_o.trace_final_fuse_tcrs), // Templated
+                  .trace_fuse_test_address_o(cfg_rsp_o.trace_fuse_test_address[(FUSE_TEST_ADDR_WIDTH-1):0]), // Templated
+                  .trace_final_fuse_rsb_o(cfg_rsp_o.trace_final_fuse_rsb), // Templated
+                  .trace_final_fuse_rwl_o(cfg_rsp_o.trace_final_fuse_rwl), // Templated
+                  .trace_fuse_ecc_strobe_o(cfg_rsp_o.trace_fuse_ecc_strobe), // Templated
+                  .trace_fuse_ecc_array_sel_o(cfg_rsp_o.trace_fuse_ecc_array_sel[(FUSE_ECC_ARRAY_SEL_WIDTH-1):0]), // Templated
+                  .trace_fuse_ecc_ps_o  (cfg_rsp_o.trace_fuse_ecc_ps), // Templated
+                  .trace_fuse_ecc_address_o(cfg_rsp_o.trace_fuse_ecc_address[(FUSE_ADDR_WIDTH-1):0]), // Templated
+                  .trace_fuse_data_o    (cfg_rsp_o.trace_fuse_data[(FUSE_NUM_ARRAYS-1):0]), // Templated
+                  .trace_fuse_ecc_data_o(cfg_rsp_o.trace_fuse_ecc_data[(FUSE_NUM_ECC_ARRAYS-1):0]), // Templated
                   // Inputs
                   .clk_i                (clk_i),
                   .rst_ni               (rst_ni),
-                  .clk_efuse_i          (clk_efuse_i),
+                  .clk_efuse_i          (cfg_i.clk_efuse),       // Templated
                   .req_i                (req),                   // Templated
                   .write_i              (wren),                  // Templated
                   .addr_i               (addr),                  // Templated
@@ -825,19 +788,19 @@ rivos_tsmc_fuse_wrapper
                   .addr_capture_cycles_i(addr_capture_cycles),   // Templated
                   .trigger_power_down_cycles_i(trigger_power_down_cycles), // Templated
                   .redundancy_autoinit_disable_i(reg2hw.macro_control.redundancy_autoinit_disable.q), // Templated
-                  .tstrst_i             (tstrst_i),              // Templated
-                  .tstrstsel_i          (tstrstsel_i),           // Templated
-                  .mbist_sel_i          (mbist_sel_i),           // Templated
-                  .mbist_fuse_csb_i     (mbist_fuse_csb_i),      // Templated
-                  .mbist_fuse_load_i    (mbist_fuse_load_i),     // Templated
-                  .mbist_fuse_pgenb_i   (mbist_fuse_pgenb_i),    // Templated
-                  .mbist_fuse_ps_i      (mbist_fuse_ps_i),       // Templated
-                  .mbist_fuse_pd_i      (mbist_fuse_pd_i),       // Templated
-                  .mbist_fuse_mr_i      (mbist_fuse_mr_i),       // Templated
-                  .mbist_fuse_rwl_i     (mbist_fuse_rwl_i),      // Templated
-                  .mbist_fuse_rsb_i     (mbist_fuse_rsb_i),      // Templated
-                  .mbist_fuse_strobe_array_i(mbist_fuse_strobe_array_i), // Templated
-                  .mbist_fuse_address_i (mbist_fuse_address_i));  // Templated
+                  .tstrst_i             (cfg_i.tstrst),          // Templated
+                  .tstrstsel_i          (cfg_i.tstrstsel),       // Templated
+                  .mbist_sel_i          (cfg_i.mbist_sel),       // Templated
+                  .mbist_fuse_csb_i     (cfg_i.mbist_fuse_csb),  // Templated
+                  .mbist_fuse_load_i    (cfg_i.mbist_fuse_load), // Templated
+                  .mbist_fuse_pgenb_i   (cfg_i.mbist_fuse_pgenb), // Templated
+                  .mbist_fuse_ps_i      (cfg_i.mbist_fuse_ps),   // Templated
+                  .mbist_fuse_pd_i      (cfg_i.mbist_fuse_pd),   // Templated
+                  .mbist_fuse_mr_i      (cfg_i.mbist_fuse_mr),   // Templated
+                  .mbist_fuse_rwl_i     (cfg_i.mbist_fuse_rwl),  // Templated
+                  .mbist_fuse_rsb_i     (cfg_i.mbist_fuse_rsb),  // Templated
+                  .mbist_fuse_strobe_array_i(cfg_i.mbist_fuse_strobe_array), // Templated
+                  .mbist_fuse_address_i (cfg_i.mbist_fuse_address)); // Templated
 
   // Currently it is assumed that no wrap arounds can occur.
   `ASSERT(NoWrapArounds_A, req |-> (addr >= addr_q))

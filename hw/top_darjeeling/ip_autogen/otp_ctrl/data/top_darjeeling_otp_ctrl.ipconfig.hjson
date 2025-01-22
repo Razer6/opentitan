@@ -1987,6 +1987,7 @@
         }
       ]
     }
+    use_rivos_config: true
     topname: darjeeling
   }
 }

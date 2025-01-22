@@ -27,23 +27,7 @@ module prim_generic_otp
   parameter  int VendorTestSize   = 0,
   // Type definitions of the config in response ports
   parameter type CfgType_t        = prim_otp_cfg_pkg::otp_cfg_t,
-  parameter type CfgRspType_t     = prim_otp_cfg_pkg::otp_cfg_rsp_t,
-
-  parameter  int FUSE_MBIST_EN                     = 0,
-  parameter  int FUSE_MBIST_ARRAY_BASE             = 0,
-  parameter  int FUSE_MBIST_ARRAY_SIZE             = 0,
-  parameter  int FUSE_MBIST_ECC_ARRAY_BASE         = 0,
-  parameter  int FUSE_MBIST_ECC_ARRAY_SIZE         = 0,
-  parameter  int FUSE_NUM_MBIST_ARRAYS             = 1,   // (neal) default is 1 for otp, but only mbist to nsefuse
-  parameter  int FUSE_RF_DATA_WIDTH                = 8,
-  // tsmc fuse macro wrapper parameters
-  parameter  int FUSE_NUM_ARRAYS                   = 16,   // (neal) default is the value we want for otp_ctrl
-  parameter  int FUSE_ADDR_WIDTH                   = 13,
-  parameter  int FUSE_TEST_ADDR_WIDTH              = 2,
-  parameter  int FUSE_DATA_WIDTH                   = 32,
-  localparam int FUSE_ARRAY_SEL_WIDTH     = (FUSE_NUM_ARRAYS > 1) ? $clog2(FUSE_NUM_ARRAYS) : 1,
-  localparam int FUSE_NUM_ECC_ARRAYS      = (FUSE_NUM_ARRAYS > 1) ? (FUSE_NUM_ARRAYS >> 1) : 1,
-  localparam int FUSE_ECC_ARRAY_SEL_WIDTH = (FUSE_NUM_ECC_ARRAYS > 1) ? $clog2(FUSE_NUM_ECC_ARRAYS) : 1
+  parameter type CfgRspType_t     = prim_otp_cfg_pkg::otp_cfg_rsp_t
 ) (
   input                                  clk_i,
   input                                  rst_ni,
@@ -110,42 +94,6 @@ module prim_generic_otp
   logic unused_scan;
   assign unused_scan = ^{scanmode_i, scan_en_i, scan_rst_ni};
 
-  logic unused_clk;
-  assign unused_clk = ^clk_efuse_i;
-
-  logic unused_sel_wr_timing;
-  assign unused_sel_wr_timing = ^sel_wr_timing_i;
-
-  logic unused_mbist_signals;
-  assign unused_mbist_signals = ^{mbist_sel_i, mbist_fuse_csb_i, mbist_fuse_load_i,
-                                  mbist_fuse_pgenb_i, mbist_fuse_ps_i, mbist_fuse_pd_i,
-                                  mbist_fuse_mr_i, mbist_fuse_rwl_i, mbist_fuse_rsb_i,
-                                  mbist_fuse_strobe_array_i, mbist_fuse_address_i,
-                                  tstrst_i, tstrstsel_i};
-  assign mbist_fuse_rf_data_o       = '0;
-  assign mbist_fuse_data_o          = '0;
-  assign reset_allowed_o            = 1'b1;
-
-  assign trace_final_fuse_mr_o = '0;  // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_final_fuse_rsb_o = '0; // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_final_fuse_rwl_o = '0; // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_final_fuse_tcrs_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_address_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_array_sel_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_csb_o = '0;       // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_data_o = '0;      // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_ecc_address_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_ecc_array_sel_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_ecc_data_o = '0;  // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_ecc_ps_o = '0;    // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_ecc_strobe_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_load_o = '0;      // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_pd_o = '0;        // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_pgenb_o = '0;     // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_ps_o = '0;        // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_strobe_o = '0;    // From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-  assign trace_fuse_test_address_o = '0;// From u_fuse_wrapper of rivos_tsmc_fuse_wrapper.v
-
   logic intg_err, fsm_err;
   assign fatal_alert_o = intg_err || fsm_err;
   assign recov_alert_o = 1'b0;
@@ -176,8 +124,6 @@ module prim_generic_otp
   logic unused_reg_sig;
   assign unused_reg_sig = ^reg2hw;
   assign hw2reg = '0;
-
-  assign macro_mode_o = reg2hw.macro_control.macro_mode.q;
 
   ///////////////////
   // Control logic //

@@ -15,8 +15,6 @@ waive -rules {PARAM_NOT_USED} -location {prim_rdp_otp.sv} \
       -regexp {Parameter '(VendorTestOffset|VendorTestSize)' not used in module 'prim_rdp_otp'} \
       -comment "These two parameters are not used in the rdp model."
 
-waive -rules PARAM_NOT_USED -location {prim_rdp_otp.sv} -regexp {Parameter 'TlDepth' not used in module 'prim_rdp_otp'} \
-      -comment "OT code, should be addressed by them"
 waive -rules PARAM_NOT_USED -location {prim_rdp_otp.sv} -regexp {Parameter 'MemInitFile' not used in module 'prim_rdp_otp'} \
       -comment "OT code, should be addressed by them"
 
