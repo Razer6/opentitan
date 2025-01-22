@@ -3,3 +3,5 @@
 // SPDX-License-Identifier: Apache-2.0
 
 pub mod top_mio;
+pub mod top_mio_soc_dbg;
+pub mod top_mio_soc_mbx;

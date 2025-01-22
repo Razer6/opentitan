@@ -8,6 +8,7 @@
 # -o hw/top_mio
 
 load("//rules:linker.bzl", "ld_library")
+load("//hw/top:defs.bzl", "opentitan_require_top")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -20,9 +21,12 @@ cc_library(
         "top_mio.h",
         "top_mio_memory.h",
     ],
+    target_compatible_with = opentitan_require_top("mio"),
 )
 
 ld_library(
     name = "top_mio_memory",
+    defines = ["OPENTITAN_TOP_MEMORY_LD=top_mio_memory.ld"],
     includes = ["top_mio_memory.ld"],
+    target_compatible_with = opentitan_require_top("mio"),
 )

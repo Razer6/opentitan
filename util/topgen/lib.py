@@ -858,7 +858,8 @@ def find_module(modules, type):
     '''Returns the first module of a given type
     '''
     for m in modules:
-        if m['type'] == type:
+        # FIXME: Remove that hack after merging https://github.com/lowRISC/opentitan/pull/25966
+        if m['type'].startswith(type):
             return m
 
     return None

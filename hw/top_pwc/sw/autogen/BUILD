@@ -8,6 +8,7 @@
 # -o hw/top_pwc
 
 load("//rules:linker.bzl", "ld_library")
+load("//hw/top:defs.bzl", "opentitan_require_top")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -20,9 +21,12 @@ cc_library(
         "top_pwc.h",
         "top_pwc_memory.h",
     ],
+    target_compatible_with = opentitan_require_top("pwc"),
 )
 
 ld_library(
     name = "top_pwc_memory",
+    defines = ["OPENTITAN_TOP_MEMORY_LD=top_pwc_memory.ld"],
     includes = ["top_pwc_memory.ld"],
+    target_compatible_with = opentitan_require_top("pwc"),
 )

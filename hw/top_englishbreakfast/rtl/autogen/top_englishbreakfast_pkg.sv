@@ -272,6 +272,7 @@ package top_englishbreakfast_pkg;
   parameter int unsigned TOP_ENGLISHBREAKFAST_ROM_SIZE_BYTES = 32'h8000;
 
 
+
   // Enumeration of IO power domains.
   // Only used in ASIC target.
   typedef enum logic [2:0] {

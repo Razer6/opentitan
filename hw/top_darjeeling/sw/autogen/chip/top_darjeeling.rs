@@ -1810,72 +1810,72 @@ pub enum AlertPeripheral {
     SocDbgCtrl = 40,
     /// rv_core_ibex
     RvCoreIbex = 41,
-    /// mbx3
-    Mbx3 = 42,
-    /// soc_proxy
-    SocProxy = 43,
-    /// rv_dm
-    RvDm = 44,
-    /// dma
-    Dma = 45,
-    /// mbx1
-    Mbx1 = 46,
-    /// mbx4
-    Mbx4 = 47,
+    /// aon_timer_aon
+    AonTimerAon = 42,
     /// mbx5
-    Mbx5 = 48,
-    /// mbx2
-    Mbx2 = 49,
-    /// rv_plic
-    RvPlic = 50,
-    /// sram_ctrl_mbox
-    SramCtrlMbox = 51,
+    Mbx5 = 43,
+    /// soc_proxy
+    SocProxy = 44,
     /// sram_ctrl_main
-    SramCtrlMain = 52,
-    /// rv_timer
-    RvTimer = 53,
+    SramCtrlMain = 45,
+    /// dma
+    Dma = 46,
     /// mbx0
-    Mbx0 = 54,
-    /// rv_core_ibex
-    RvCoreIbex = 55,
+    Mbx0 = 47,
+    /// rv_dm
+    RvDm = 48,
+    /// sram_ctrl_mbox
+    SramCtrlMbox = 49,
+    /// rv_timer
+    RvTimer = 50,
+    /// mbx3
+    Mbx3 = 51,
+    /// rv_plic
+    RvPlic = 52,
+    /// mbx4
+    Mbx4 = 53,
+    /// mbx1
+    Mbx1 = 54,
+    /// mbx2
+    Mbx2 = 55,
     /// sram_ctrl_ret_aon
     SramCtrlRetAon = 56,
-    /// aon_timer_aon
-    AonTimerAon = 57,
-    /// mbx3
-    Mbx3 = 58,
-    /// soc_proxy
-    SocProxy = 59,
-    /// rv_dm
-    RvDm = 60,
-    /// dma
-    Dma = 61,
-    /// mbx1
-    Mbx1 = 62,
-    /// mbx4
-    Mbx4 = 63,
-    /// mbx5
-    Mbx5 = 64,
-    /// mbx2
-    Mbx2 = 65,
-    /// gpio
-    Gpio = 66,
-    /// rv_plic
-    RvPlic = 67,
-    /// sram_ctrl_mbox
-    SramCtrlMbox = 68,
-    /// sram_ctrl_main
-    SramCtrlMain = 69,
-    /// rv_timer
-    RvTimer = 70,
-    /// mbx0
-    Mbx0 = 71,
     /// rv_core_ibex
-    RvCoreIbex = 72,
+    RvCoreIbex = 57,
+    /// aon_timer_aon
+    AonTimerAon = 58,
+    /// mbx5
+    Mbx5 = 59,
+    /// soc_proxy
+    SocProxy = 60,
+    /// sram_ctrl_main
+    SramCtrlMain = 61,
+    /// dma
+    Dma = 62,
+    /// gpio
+    Gpio = 63,
+    /// mbx0
+    Mbx0 = 64,
+    /// rv_dm
+    RvDm = 65,
+    /// sram_ctrl_mbox
+    SramCtrlMbox = 66,
+    /// rv_timer
+    RvTimer = 67,
+    /// mbx3
+    Mbx3 = 68,
+    /// rv_plic
+    RvPlic = 69,
+    /// mbx4
+    Mbx4 = 70,
+    /// mbx1
+    Mbx1 = 71,
+    /// mbx2
+    Mbx2 = 72,
     /// sram_ctrl_ret_aon
     SramCtrlRetAon = 73,
-    /// aon_timer_aon
-    AonTimerAon = 74,
+    /// rv_core_ibex
+    RvCoreIbex = 74,
     /// scsmio
     Scsmio = 75,
     /// scsmio

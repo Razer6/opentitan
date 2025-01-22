@@ -74,7 +74,6 @@ package top_${top["name"]}${addr_space_suffix}_pkg;
 % endif
 
 % endfor
-% if has_alert_handler:
 %   for alert_group, alert_modules in top["outgoing_alert_module"].items():
   
   // Number of ${alert_group} outgoing alerts
@@ -115,6 +114,7 @@ package top_${top["name"]}${addr_space_suffix}_pkg;
   parameter int unsigned NIncomingLpgs${alert_group.capitalize()} = ${max(alert['lpg_idx'] for alert in alerts) + 1};
 %   endfor
 
+% if has_alert_handler:
   // Enumeration of alert modules
   typedef enum int unsigned {
 %   for mod in top["alert_module"]:
