@@ -1582,6 +1582,7 @@
     {
       name: rv_plic
       type: rv_plic_pwc
+      template_type: rv_plic
       clock_srcs:
       {
         clk_i: ext_main

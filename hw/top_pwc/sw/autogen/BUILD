@@ -21,6 +21,7 @@ cc_library(
         "top_pwc.h",
         "top_pwc_memory.h",
     ],
+    defines = ["OPENTITAN_IS_PWC"],
     target_compatible_with = opentitan_require_top("pwc"),
 )
 

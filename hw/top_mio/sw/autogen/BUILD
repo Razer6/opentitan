@@ -21,6 +21,7 @@ cc_library(
         "top_mio.h",
         "top_mio_memory.h",
     ],
+    defines = ["OPENTITAN_IS_MIO"],
     target_compatible_with = opentitan_require_top("mio"),
 )
 
