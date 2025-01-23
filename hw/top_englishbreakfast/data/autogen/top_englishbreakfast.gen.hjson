@@ -506,10 +506,6 @@
       {
         clk_i: clkmgr_aon_clocks.clk_io_div4_peri
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -576,6 +572,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: uart1
@@ -597,10 +597,6 @@
       {
         clk_i: clkmgr_aon_clocks.clk_io_div4_peri
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -667,6 +663,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: gpio
@@ -692,10 +692,6 @@
       {
         clk_i: clkmgr_aon_clocks.clk_io_div4_peri
       }
-      domain:
-      [
-        "0"
-      ]
       memory: {}
       param_list:
       [
@@ -791,6 +787,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: spi_device
@@ -814,10 +814,6 @@
         clk_i: clkmgr_aon_clocks.clk_io_div4_peri
         scan_clk_i: clkmgr_aon_clocks.clk_io_div2_peri
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       memory: {}
       param_list:
@@ -959,6 +955,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: spi_host0
@@ -980,10 +980,6 @@
       {
         clk_i: clkmgr_aon_clocks.clk_io_peri
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       memory: {}
       param_list:
@@ -1074,6 +1070,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: rv_timer
@@ -1095,10 +1095,6 @@
       {
         clk_i: clkmgr_aon_clocks.clk_io_div4_timers
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -1125,6 +1121,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: usbdev
@@ -1153,10 +1153,6 @@
         clk_i: clkmgr_aon_clocks.clk_usb_peri
         clk_aon_i: clkmgr_aon_clocks.clk_aon_peri
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       memory: {}
       param_list:
@@ -1442,6 +1438,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: pwrmgr_aon
@@ -2908,10 +2908,6 @@
         clk_ast_rng_i: clkmgr_aon_clocks.clk_main_secure
         clk_ast_usb_i: clkmgr_aon_clocks.clk_usb_peri
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -2935,6 +2931,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: flash_ctrl
@@ -3005,10 +3005,6 @@
         clk_i: clkmgr_aon_clocks.clk_main_infra
         clk_otp_i: clkmgr_aon_clocks.clk_io_div4_infra
       }
-      domain:
-      [
-        "0"
-      ]
       param_list:
       [
         {
@@ -3018,7 +3014,7 @@
           randcount: 128
           randtype: data
           name_top: RndCnstFlashCtrlAddrKey
-          default: 0x47699d7befa2eaca5e9e86b268b82b10
+          default: 0x75867e60b021e247699d7befa2eaca5e
           randwidth: 128
         }
         {
@@ -3028,7 +3024,7 @@
           randcount: 128
           randtype: data
           name_top: RndCnstFlashCtrlDataKey
-          default: 0xea8e913c65a10e10daa910cd93e9e8dd
+          default: 0x9e86b268b82b10ea8e913c65a10e10da
           randwidth: 128
         }
         {
@@ -3038,7 +3034,7 @@
           randcount: 512
           randtype: data
           name_top: RndCnstFlashCtrlAllSeeds
-          default: 0xe03e8ab0f1f4225b70de66ae2a2d2caf521284d078b2442c4dcdfffc136eaed4bf1a600233980bc4cf2116db51ec10b747b9011d99f556b893842a91cafc63cb
+          default: 0xa910cd93e9e8dde03e8ab0f1f4225b70de66ae2a2d2caf521284d078b2442c4dcdfffc136eaed4bf1a600233980bc4cf2116db51ec10b747b9011d99f556b893
           randwidth: 512
         }
         {
@@ -3048,7 +3044,7 @@
           randcount: 32
           randtype: data
           name_top: RndCnstFlashCtrlLfsrSeed
-          default: 0x10b94460
+          default: 0x842a91ca
           randwidth: 32
         }
         {
@@ -3058,7 +3054,7 @@
           randcount: 32
           randtype: perm
           name_top: RndCnstFlashCtrlLfsrPerm
-          default: 0xf71768651ac5cb1d9df2183ee9a59d6a835250c2
+          default: 0x1977a5be3574f12058f04f5aa09286e79171659f
           randwidth: 160
         }
         {
@@ -3352,6 +3348,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: rv_plic
@@ -3375,10 +3375,6 @@
       {
         clk_i: clkmgr_aon_clocks.clk_main_secure
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -3442,6 +3438,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: aes
@@ -3475,10 +3475,6 @@
         clk_i: clkmgr_aon_clocks.clk_main_aes
         clk_edn_i: clkmgr_aon_clocks.clk_main_aes
       }
-      domain:
-      [
-        "0"
-      ]
       memory: {}
       param_list:
       [
@@ -3561,7 +3557,7 @@
           randcount: 64
           randtype: data
           name_top: RndCnstAesClearingLfsrSeed
-          default: 0x213905e9cb853bc8
+          default: 0xbb78951511213905
           randwidth: 64
         }
         {
@@ -3571,7 +3567,7 @@
           randcount: 64
           randtype: perm
           name_top: RndCnstAesClearingLfsrPerm
-          default: 0x87e1885e2ad14fb137023a9568a1503e71f9372f30eb59a0fe560ea0331dcde4b45a4bac25cc42b5bf4b059a767ef538
+          default: 0x1231aaa3d2b9ed1c058932103e71d5360decd359406b35f163c98331db9e4ab5a425c0ad6ff2c1669d9fbd4e3e3a1cba
           randwidth: 384
         }
         {
@@ -3581,7 +3577,7 @@
           randcount: 64
           randtype: perm
           name_top: RndCnstAesClearingSharePerm
-          default: 0x10546c53c047bb1aa7b4d4a9ee362242b54a0af7ff4dd5f2eb321a7060245a0e668496cbc0cf65a0f675e37f9ed0e0f6
+          default: 0x131363a54d4762eb12ad17c5fa29fac3f2bdb5dcd35ef07921a7060245a0ca68496cb33797b3fce1ed0e0f6428642a95
           randwidth: 384
         }
         {
@@ -3672,6 +3668,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: sram_ctrl_main
@@ -3726,10 +3726,6 @@
         clk_i: clkmgr_aon_clocks.clk_main_secure
         clk_otp_i: clkmgr_aon_clocks.clk_io_div4_secure
       }
-      domain:
-      [
-        "0"
-      ]
       param_list:
       [
         {
@@ -4006,6 +4002,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: rom_ctrl
@@ -4053,10 +4053,6 @@
       {
         clk_i: clkmgr_aon_clocks.clk_main_infra
       }
-      domain:
-      [
-        "0"
-      ]
       param_list:
       [
         {
@@ -4181,6 +4177,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: rv_core_ibex
@@ -4245,10 +4245,6 @@
         clk_esc_i: clkmgr_aon_clocks.clk_io_div4_infra
         clk_otp_i: clkmgr_aon_clocks.clk_io_div4_infra
       }
-      domain:
-      [
-        "0"
-      ]
       memory: {}
       param_list:
       [
@@ -4866,6 +4862,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
   ]
   memory: []
@@ -5539,8 +5539,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: main_tl_rv_core_ibex__corei
@@ -5552,8 +5552,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: main_tl_rv_core_ibex__cored
@@ -5565,8 +5565,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: main
+          width: 1
           default: ""
           top_signame: rom_ctrl_rom_tl
           index: -1
@@ -5577,8 +5577,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: main
+          width: 1
           default: ""
           top_signame: rom_ctrl_regs_tl
           index: -1
@@ -5589,8 +5589,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: main_tl_peri
@@ -5602,8 +5602,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: main
+          width: 1
           default: ""
           top_signame: flash_ctrl_core_tl
           index: -1
@@ -5614,8 +5614,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: main
+          width: 1
           default: ""
           top_signame: flash_ctrl_prim_tl
           index: -1
@@ -5626,8 +5626,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: main
+          width: 1
           default: ""
           top_signame: flash_ctrl_mem_tl
           index: -1
@@ -5638,8 +5638,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: main
+          width: 1
           default: ""
           top_signame: aes_tl
           index: -1
@@ -5650,8 +5650,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: main
+          width: 1
           default: ""
           top_signame: rv_plic_tl
           index: -1
@@ -5662,8 +5662,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: main
+          width: 1
           default: ""
           top_signame: rv_core_ibex_cfg_tl_d
           index: -1
@@ -5674,8 +5674,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: main
+          width: 1
           default: ""
           top_signame: sram_ctrl_main_regs_tl
           index: -1
@@ -5686,8 +5686,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: main
+          width: 1
           default: ""
           top_signame: sram_ctrl_main_ram_tl
           index: -1
@@ -6032,8 +6032,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: peri
+          width: 1
           default: ""
           top_signame: main_tl_peri
           index: -1
@@ -6044,8 +6044,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: peri
+          width: 1
           default: ""
           top_signame: uart0_tl
           index: -1
@@ -6056,8 +6056,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: peri
+          width: 1
           default: ""
           top_signame: uart1_tl
           index: -1
@@ -6068,8 +6068,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: peri
+          width: 1
           default: ""
           top_signame: gpio_tl
           index: -1
@@ -6080,8 +6080,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: peri
+          width: 1
           default: ""
           top_signame: spi_device_tl
           index: -1
@@ -6092,8 +6092,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: peri
+          width: 1
           default: ""
           top_signame: spi_host0_tl
           index: -1
@@ -6104,8 +6104,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: peri
+          width: 1
           default: ""
           top_signame: rv_timer_tl
           index: -1
@@ -6116,8 +6116,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: peri
+          width: 1
           default: ""
           top_signame: usbdev_tl
           index: -1
@@ -6128,8 +6128,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: peri
+          width: 1
           default: ""
           top_signame: pwrmgr_aon_tl
           index: -1
@@ -6140,8 +6140,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: peri
+          width: 1
           default: ""
           top_signame: rstmgr_aon_tl
           index: -1
@@ -6152,8 +6152,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: peri
+          width: 1
           default: ""
           top_signame: clkmgr_aon_tl
           index: -1
@@ -6164,8 +6164,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: peri
+          width: 1
           default: ""
           top_signame: pinmux_aon_tl
           index: -1
@@ -6176,8 +6176,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: peri
+          width: 1
           default: ""
           external: true
           top_signame: ast_tl
@@ -6216,8 +6216,8 @@
         bank: VCC
         connection: manual
         desc: System reset
-        port_type: inout
         idx: 0
+        port_type: inout
       }
       {
         name: USB_P
@@ -6225,8 +6225,8 @@
         bank: VCC
         connection: manual
         desc: USB P signal
-        port_type: inout
         idx: 1
+        port_type: inout
       }
       {
         name: USB_N
@@ -6234,8 +6234,8 @@
         bank: VCC
         connection: manual
         desc: USB N signal
-        port_type: inout
         idx: 2
+        port_type: inout
       }
       {
         name: CC1
@@ -6243,8 +6243,8 @@
         bank: AVCC
         connection: manual
         desc: ADC input 1
-        port_type: inout
         idx: 3
+        port_type: inout
       }
       {
         name: CC2
@@ -6252,8 +6252,8 @@
         bank: AVCC
         connection: manual
         desc: ADC input 2
-        port_type: inout
         idx: 4
+        port_type: inout
       }
       {
         name: FLASH_TEST_VOLT
@@ -6261,8 +6261,8 @@
         bank: VCC
         connection: manual
         desc: Flash test voltage input
-        port_type: inout
         idx: 5
+        port_type: inout
       }
       {
         name: FLASH_TEST_MODE0
@@ -6270,8 +6270,8 @@
         bank: VCC
         connection: manual
         desc: Flash test mode signal
-        port_type: inout
         idx: 6
+        port_type: inout
       }
       {
         name: FLASH_TEST_MODE1
@@ -6279,8 +6279,8 @@
         bank: VCC
         connection: manual
         desc: Flash test mode signal
-        port_type: inout
         idx: 7
+        port_type: inout
       }
       {
         name: SPI_HOST_D0
@@ -6288,8 +6288,8 @@
         bank: VIOA
         connection: direct
         desc: SPI host data
-        port_type: inout
         idx: 8
+        port_type: inout
       }
       {
         name: SPI_HOST_D1
@@ -6297,8 +6297,8 @@
         bank: VIOA
         connection: direct
         desc: SPI host data
-        port_type: inout
         idx: 9
+        port_type: inout
       }
       {
         name: SPI_HOST_D2
@@ -6306,8 +6306,8 @@
         bank: VIOA
         connection: direct
         desc: SPI host data
-        port_type: inout
         idx: 10
+        port_type: inout
       }
       {
         name: SPI_HOST_D3
@@ -6315,8 +6315,8 @@
         bank: VIOA
         connection: direct
         desc: SPI host data
-        port_type: inout
         idx: 11
+        port_type: inout
       }
       {
         name: SPI_HOST_CLK
@@ -6324,8 +6324,8 @@
         bank: VIOA
         connection: direct
         desc: SPI host clock
-        port_type: inout
         idx: 12
+        port_type: inout
       }
       {
         name: SPI_HOST_CS_L
@@ -6333,8 +6333,8 @@
         bank: VIOA
         connection: direct
         desc: SPI host chip select
-        port_type: inout
         idx: 13
+        port_type: inout
       }
       {
         name: SPI_DEV_D0
@@ -6342,8 +6342,8 @@
         bank: VIOA
         connection: direct
         desc: SPI device data
-        port_type: inout
         idx: 14
+        port_type: inout
       }
       {
         name: SPI_DEV_D1
@@ -6351,8 +6351,8 @@
         bank: VIOA
         connection: direct
         desc: SPI device data
-        port_type: inout
         idx: 15
+        port_type: inout
       }
       {
         name: SPI_DEV_D2
@@ -6360,8 +6360,8 @@
         bank: VIOA
         connection: direct
         desc: SPI device data
-        port_type: inout
         idx: 16
+        port_type: inout
       }
       {
         name: SPI_DEV_D3
@@ -6369,8 +6369,8 @@
         bank: VIOA
         connection: direct
         desc: SPI device data
-        port_type: inout
         idx: 17
+        port_type: inout
       }
       {
         name: SPI_DEV_CLK
@@ -6378,8 +6378,8 @@
         bank: VIOA
         connection: direct
         desc: SPI device clock
-        port_type: inout
         idx: 18
+        port_type: inout
       }
       {
         name: SPI_DEV_CS_L
@@ -6387,8 +6387,8 @@
         bank: VIOA
         connection: direct
         desc: SPI device chip select
-        port_type: inout
         idx: 19
+        port_type: inout
       }
       {
         name: IOA0
@@ -6396,8 +6396,8 @@
         bank: VIOA
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 0
+        port_type: inout
       }
       {
         name: IOA1
@@ -6405,8 +6405,8 @@
         bank: VIOA
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 1
+        port_type: inout
       }
       {
         name: IOA2
@@ -6414,8 +6414,8 @@
         bank: VIOA
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 2
+        port_type: inout
       }
       {
         name: IOA3
@@ -6423,8 +6423,8 @@
         bank: VIOA
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 3
+        port_type: inout
       }
       {
         name: IOA4
@@ -6432,8 +6432,8 @@
         bank: VIOA
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 4
+        port_type: inout
       }
       {
         name: IOA5
@@ -6441,8 +6441,8 @@
         bank: VIOA
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 5
+        port_type: inout
       }
       {
         name: IOA6
@@ -6450,8 +6450,8 @@
         bank: VIOA
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 6
+        port_type: inout
       }
       {
         name: IOA7
@@ -6459,8 +6459,8 @@
         bank: VIOA
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 7
+        port_type: inout
       }
       {
         name: IOA8
@@ -6468,8 +6468,8 @@
         bank: VIOA
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 8
+        port_type: inout
       }
       {
         name: IOB0
@@ -6477,8 +6477,8 @@
         bank: VIOB
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 9
+        port_type: inout
       }
       {
         name: IOB1
@@ -6486,8 +6486,8 @@
         bank: VIOB
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 10
+        port_type: inout
       }
       {
         name: IOB2
@@ -6495,8 +6495,8 @@
         bank: VIOB
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 11
+        port_type: inout
       }
       {
         name: IOB3
@@ -6504,8 +6504,8 @@
         bank: VIOB
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 12
+        port_type: inout
       }
       {
         name: IOB4
@@ -6513,8 +6513,8 @@
         bank: VIOB
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 13
+        port_type: inout
       }
       {
         name: IOB5
@@ -6522,8 +6522,8 @@
         bank: VIOB
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 14
+        port_type: inout
       }
       {
         name: IOB6
@@ -6531,8 +6531,8 @@
         bank: VIOB
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 15
+        port_type: inout
       }
       {
         name: IOB7
@@ -6540,8 +6540,8 @@
         bank: VIOB
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 16
+        port_type: inout
       }
       {
         name: IOB8
@@ -6549,8 +6549,8 @@
         bank: VIOB
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 17
+        port_type: inout
       }
       {
         name: IOB9
@@ -6558,8 +6558,8 @@
         bank: VIOB
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 18
+        port_type: inout
       }
       {
         name: IOB10
@@ -6567,8 +6567,8 @@
         bank: VIOB
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 19
+        port_type: inout
       }
       {
         name: IOB11
@@ -6576,8 +6576,8 @@
         bank: VIOB
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 20
+        port_type: inout
       }
       {
         name: IOB12
@@ -6585,8 +6585,8 @@
         bank: VIOB
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 21
+        port_type: inout
       }
       {
         name: IOC0
@@ -6594,8 +6594,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 22
+        port_type: inout
       }
       {
         name: IOC1
@@ -6603,8 +6603,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 23
+        port_type: inout
       }
       {
         name: IOC2
@@ -6612,8 +6612,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 24
+        port_type: inout
       }
       {
         name: IOC3
@@ -6621,8 +6621,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 25
+        port_type: inout
       }
       {
         name: IOC4
@@ -6630,8 +6630,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 26
+        port_type: inout
       }
       {
         name: IOC5
@@ -6639,8 +6639,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 27
+        port_type: inout
       }
       {
         name: IOC6
@@ -6648,8 +6648,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 28
+        port_type: inout
       }
       {
         name: IOC7
@@ -6657,8 +6657,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 29
+        port_type: inout
       }
       {
         name: IOC8
@@ -6666,8 +6666,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 30
+        port_type: inout
       }
       {
         name: IOC9
@@ -6675,8 +6675,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 31
+        port_type: inout
       }
       {
         name: IOC10
@@ -6684,8 +6684,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 32
+        port_type: inout
       }
       {
         name: IOC11
@@ -6693,8 +6693,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 33
+        port_type: inout
       }
       {
         name: IOC12
@@ -6702,8 +6702,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 34
+        port_type: inout
       }
       {
         name: IOR0
@@ -6711,8 +6711,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 35
+        port_type: inout
       }
       {
         name: IOR1
@@ -6720,8 +6720,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 36
+        port_type: inout
       }
       {
         name: IOR2
@@ -6729,8 +6729,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 37
+        port_type: inout
       }
       {
         name: IOR3
@@ -6738,8 +6738,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 38
+        port_type: inout
       }
       {
         name: IOR4
@@ -6747,8 +6747,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 39
+        port_type: inout
       }
       {
         name: IOR5
@@ -6756,8 +6756,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 40
+        port_type: inout
       }
       {
         name: IOR6
@@ -6765,8 +6765,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 41
+        port_type: inout
       }
       {
         name: IOR7
@@ -6774,8 +6774,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 42
+        port_type: inout
       }
       {
         name: IOR10
@@ -6783,8 +6783,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 43
+        port_type: inout
       }
       {
         name: IOR11
@@ -6792,8 +6792,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 44
+        port_type: inout
       }
       {
         name: IOR12
@@ -6801,8 +6801,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 45
+        port_type: inout
       }
       {
         name: IOR13
@@ -6810,8 +6810,8 @@
         bank: VCC
         connection: muxed
         desc: Muxed IO pad
-        port_type: inout
         idx: 46
+        port_type: inout
       }
     ]
   }
@@ -7791,6 +7791,291 @@
       module: aon_timer_aon
     }
   ]
+  exported_rsts: {}
+  alert:
+  [
+    {
+      name: uart0_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: uart0
+      desc: uart0 fatal_fault alert
+      lpg_name: peri_lc_io_div4_0
+      lpg_idx: 0
+    }
+    {
+      name: uart1_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: uart1
+      desc: uart1 fatal_fault alert
+      lpg_name: peri_lc_io_div4_0
+      lpg_idx: 0
+    }
+    {
+      name: gpio_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: gpio
+      desc: gpio fatal_fault alert
+      lpg_name: peri_sys_io_div4_0
+      lpg_idx: 1
+    }
+    {
+      name: spi_device_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: spi_device
+      desc: spi_device fatal_fault alert
+      lpg_name: peri_spi_device_0
+      lpg_idx: 2
+    }
+    {
+      name: spi_host0_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: spi_host0
+      desc: spi_host0 fatal_fault alert
+      lpg_name: peri_spi_host0_0
+      lpg_idx: 3
+    }
+    {
+      name: rv_timer_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: rv_timer
+      desc: rv_timer fatal_fault alert
+      lpg_name: timers_sys_io_div4_0
+      lpg_idx: 4
+    }
+    {
+      name: usbdev_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: usbdev
+      desc: usbdev fatal_fault alert
+      lpg_name: peri_usb_0
+      lpg_idx: 5
+    }
+    {
+      name: pwrmgr_aon_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: pwrmgr_aon
+      desc: pwrmgr_aon fatal_fault alert
+      lpg_name: powerup_por_io_div4_Aon
+      lpg_idx: 6
+    }
+    {
+      name: rstmgr_aon_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: rstmgr_aon
+      desc: rstmgr_aon fatal_fault alert
+      lpg_name: powerup_lc_io_div4_Aon
+      lpg_idx: 7
+    }
+    {
+      name: rstmgr_aon_fatal_cnsty_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: rstmgr_aon
+      desc: rstmgr_aon fatal_cnsty_fault alert
+      lpg_name: powerup_lc_io_div4_Aon
+      lpg_idx: 7
+    }
+    {
+      name: clkmgr_aon_recov_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: clkmgr_aon
+      desc: clkmgr_aon recov_fault alert
+      lpg_name: powerup_por_io_div4_Aon
+      lpg_idx: 6
+    }
+    {
+      name: clkmgr_aon_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: clkmgr_aon
+      desc: clkmgr_aon fatal_fault alert
+      lpg_name: powerup_por_io_div4_Aon
+      lpg_idx: 6
+    }
+    {
+      name: pinmux_aon_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: pinmux_aon
+      desc: pinmux_aon fatal_fault alert
+      lpg_name: powerup_lc_io_div4_Aon
+      lpg_idx: 7
+    }
+    {
+      name: aon_timer_aon_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: aon_timer_aon
+      desc: aon_timer_aon fatal_fault alert
+      lpg_name: timers_sys_io_div4_Aon
+      lpg_idx: 8
+    }
+    {
+      name: flash_ctrl_recov_err
+      width: 1
+      type: alert
+      async: "1"
+      module_name: flash_ctrl
+      desc: flash_ctrl recov_err alert
+      lpg_name: infra_lc_0
+      lpg_idx: 10
+    }
+    {
+      name: flash_ctrl_fatal_std_err
+      width: 1
+      type: alert
+      async: "1"
+      module_name: flash_ctrl
+      desc: flash_ctrl fatal_std_err alert
+      lpg_name: infra_lc_0
+      lpg_idx: 10
+    }
+    {
+      name: flash_ctrl_fatal_err
+      width: 1
+      type: alert
+      async: "1"
+      module_name: flash_ctrl
+      desc: flash_ctrl fatal_err alert
+      lpg_name: infra_lc_0
+      lpg_idx: 10
+    }
+    {
+      name: flash_ctrl_fatal_prim_flash_alert
+      width: 1
+      type: alert
+      async: "1"
+      module_name: flash_ctrl
+      desc: flash_ctrl fatal_prim_flash_alert alert
+      lpg_name: infra_lc_0
+      lpg_idx: 10
+    }
+    {
+      name: flash_ctrl_recov_prim_flash_alert
+      width: 1
+      type: alert
+      async: "1"
+      module_name: flash_ctrl
+      desc: flash_ctrl recov_prim_flash_alert alert
+      lpg_name: infra_lc_0
+      lpg_idx: 10
+    }
+    {
+      name: rv_plic_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: rv_plic
+      desc: rv_plic fatal_fault alert
+      lpg_name: secure_sys_0
+      lpg_idx: 11
+    }
+    {
+      name: aes_recov_ctrl_update_err
+      width: 1
+      type: alert
+      async: "1"
+      module_name: aes
+      desc: aes recov_ctrl_update_err alert
+      lpg_name: aes_trans_sys_0
+      lpg_idx: 12
+    }
+    {
+      name: aes_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: aes
+      desc: aes fatal_fault alert
+      lpg_name: aes_trans_sys_0
+      lpg_idx: 12
+    }
+    {
+      name: sram_ctrl_main_fatal_error
+      width: 1
+      type: alert
+      async: "1"
+      module_name: sram_ctrl_main
+      desc: sram_ctrl_main fatal_error alert
+      lpg_name: secure_sys_0
+      lpg_idx: 11
+    }
+    {
+      name: rom_ctrl_fatal
+      width: 1
+      type: alert
+      async: "1"
+      module_name: rom_ctrl
+      desc: rom_ctrl fatal alert
+      lpg_name: infra_sys_0
+      lpg_idx: 13
+    }
+    {
+      name: rv_core_ibex_fatal_sw_err
+      width: 1
+      type: alert
+      async: "1"
+      module_name: rv_core_ibex
+      desc: rv_core_ibex fatal_sw_err alert
+      lpg_name: infra_sys_0
+      lpg_idx: 13
+    }
+    {
+      name: rv_core_ibex_recov_sw_err
+      width: 1
+      type: alert
+      async: "1"
+      module_name: rv_core_ibex
+      desc: rv_core_ibex recov_sw_err alert
+      lpg_name: infra_sys_0
+      lpg_idx: 13
+    }
+    {
+      name: rv_core_ibex_fatal_hw_err
+      width: 1
+      type: alert
+      async: "1"
+      module_name: rv_core_ibex
+      desc: rv_core_ibex fatal_hw_err alert
+      lpg_name: infra_sys_0
+      lpg_idx: 13
+    }
+    {
+      name: rv_core_ibex_recov_hw_err
+      width: 1
+      type: alert
+      async: "1"
+      module_name: rv_core_ibex
+      desc: rv_core_ibex recov_hw_err alert
+      lpg_name: infra_sys_0
+      lpg_idx: 13
+    }
+  ]
+  outgoing_alert: {}
   interrupt:
   [
     {
@@ -7798,6 +8083,7 @@
       width: 1
       type: interrupt
       module_name: uart0
+      desc: uart0 tx_watermark interrupt
       intr_type: IntrType.Status
       default_val: true
       incoming: false
@@ -7807,6 +8093,7 @@
       width: 1
       type: interrupt
       module_name: uart0
+      desc: uart0 rx_watermark interrupt
       intr_type: IntrType.Status
       default_val: false
       incoming: false
@@ -7816,6 +8103,7 @@
       width: 1
       type: interrupt
       module_name: uart0
+      desc: uart0 tx_done interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7825,6 +8113,7 @@
       width: 1
       type: interrupt
       module_name: uart0
+      desc: uart0 rx_overflow interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7834,6 +8123,7 @@
       width: 1
       type: interrupt
       module_name: uart0
+      desc: uart0 rx_frame_err interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7843,6 +8133,7 @@
       width: 1
       type: interrupt
       module_name: uart0
+      desc: uart0 rx_break_err interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7852,6 +8143,7 @@
       width: 1
       type: interrupt
       module_name: uart0
+      desc: uart0 rx_timeout interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7861,6 +8153,7 @@
       width: 1
       type: interrupt
       module_name: uart0
+      desc: uart0 rx_parity_err interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7870,6 +8163,7 @@
       width: 1
       type: interrupt
       module_name: uart0
+      desc: uart0 tx_empty interrupt
       intr_type: IntrType.Status
       default_val: true
       incoming: false
@@ -7879,6 +8173,7 @@
       width: 1
       type: interrupt
       module_name: uart1
+      desc: uart1 tx_watermark interrupt
       intr_type: IntrType.Status
       default_val: true
       incoming: false
@@ -7888,6 +8183,7 @@
       width: 1
       type: interrupt
       module_name: uart1
+      desc: uart1 rx_watermark interrupt
       intr_type: IntrType.Status
       default_val: false
       incoming: false
@@ -7897,6 +8193,7 @@
       width: 1
       type: interrupt
       module_name: uart1
+      desc: uart1 tx_done interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7906,6 +8203,7 @@
       width: 1
       type: interrupt
       module_name: uart1
+      desc: uart1 rx_overflow interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7915,6 +8213,7 @@
       width: 1
       type: interrupt
       module_name: uart1
+      desc: uart1 rx_frame_err interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7924,6 +8223,7 @@
       width: 1
       type: interrupt
       module_name: uart1
+      desc: uart1 rx_break_err interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7933,6 +8233,7 @@
       width: 1
       type: interrupt
       module_name: uart1
+      desc: uart1 rx_timeout interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7942,6 +8243,7 @@
       width: 1
       type: interrupt
       module_name: uart1
+      desc: uart1 rx_parity_err interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7951,6 +8253,7 @@
       width: 1
       type: interrupt
       module_name: uart1
+      desc: uart1 tx_empty interrupt
       intr_type: IntrType.Status
       default_val: true
       incoming: false
@@ -7960,6 +8263,7 @@
       width: 32
       type: interrupt
       module_name: gpio
+      desc: gpio gpio interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7969,6 +8273,7 @@
       width: 1
       type: interrupt
       module_name: spi_device
+      desc: spi_device upload_cmdfifo_not_empty interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7978,6 +8283,7 @@
       width: 1
       type: interrupt
       module_name: spi_device
+      desc: spi_device upload_payload_not_empty interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7987,6 +8293,7 @@
       width: 1
       type: interrupt
       module_name: spi_device
+      desc: spi_device upload_payload_overflow interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -7996,6 +8303,7 @@
       width: 1
       type: interrupt
       module_name: spi_device
+      desc: spi_device readbuf_watermark interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8005,6 +8313,7 @@
       width: 1
       type: interrupt
       module_name: spi_device
+      desc: spi_device readbuf_flip interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8014,6 +8323,7 @@
       width: 1
       type: interrupt
       module_name: spi_device
+      desc: spi_device tpm_header_not_empty interrupt
       intr_type: IntrType.Status
       default_val: false
       incoming: false
@@ -8023,6 +8333,7 @@
       width: 1
       type: interrupt
       module_name: spi_device
+      desc: spi_device tpm_rdfifo_cmd_end interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8032,6 +8343,7 @@
       width: 1
       type: interrupt
       module_name: spi_device
+      desc: spi_device tpm_rdfifo_drop interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8041,6 +8353,7 @@
       width: 1
       type: interrupt
       module_name: spi_host0
+      desc: spi_host0 error interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8050,6 +8363,7 @@
       width: 1
       type: interrupt
       module_name: spi_host0
+      desc: spi_host0 spi_event interrupt
       intr_type: IntrType.Status
       default_val: false
       incoming: false
@@ -8059,6 +8373,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev pkt_received interrupt
       intr_type: IntrType.Status
       default_val: false
       incoming: false
@@ -8068,6 +8383,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev pkt_sent interrupt
       intr_type: IntrType.Status
       default_val: false
       incoming: false
@@ -8077,6 +8393,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev disconnected interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8086,6 +8403,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev host_lost interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8095,6 +8413,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev link_reset interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8104,6 +8423,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev link_suspend interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8113,6 +8433,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev link_resume interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8122,6 +8443,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev av_out_empty interrupt
       intr_type: IntrType.Status
       default_val: false
       incoming: false
@@ -8131,6 +8453,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev rx_full interrupt
       intr_type: IntrType.Status
       default_val: false
       incoming: false
@@ -8140,6 +8463,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev av_overflow interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8149,6 +8473,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev link_in_err interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8158,6 +8483,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev rx_crc_err interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8167,6 +8493,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev rx_pid_err interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8176,6 +8503,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev rx_bitstuff_err interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8185,6 +8513,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev frame interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8194,6 +8523,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev powered interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8203,6 +8533,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev link_out_err interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8212,6 +8543,7 @@
       width: 1
       type: interrupt
       module_name: usbdev
+      desc: usbdev av_setup_empty interrupt
       intr_type: IntrType.Status
       default_val: false
       incoming: false
@@ -8221,6 +8553,7 @@
       width: 1
       type: interrupt
       module_name: pwrmgr_aon
+      desc: pwrmgr_aon wakeup interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8230,6 +8563,7 @@
       width: 1
       type: interrupt
       module_name: aon_timer_aon
+      desc: aon_timer_aon wkup_timer_expired interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8239,6 +8573,7 @@
       width: 1
       type: interrupt
       module_name: aon_timer_aon
+      desc: aon_timer_aon wdog_timer_bark interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8248,6 +8583,7 @@
       width: 1
       type: interrupt
       module_name: flash_ctrl
+      desc: flash_ctrl prog_empty interrupt
       intr_type: IntrType.Status
       default_val: true
       incoming: false
@@ -8257,6 +8593,7 @@
       width: 1
       type: interrupt
       module_name: flash_ctrl
+      desc: flash_ctrl prog_lvl interrupt
       intr_type: IntrType.Status
       default_val: true
       incoming: false
@@ -8266,6 +8603,7 @@
       width: 1
       type: interrupt
       module_name: flash_ctrl
+      desc: flash_ctrl rd_full interrupt
       intr_type: IntrType.Status
       default_val: false
       incoming: false
@@ -8275,6 +8613,7 @@
       width: 1
       type: interrupt
       module_name: flash_ctrl
+      desc: flash_ctrl rd_lvl interrupt
       intr_type: IntrType.Status
       default_val: false
       incoming: false
@@ -8284,6 +8623,7 @@
       width: 1
       type: interrupt
       module_name: flash_ctrl
+      desc: flash_ctrl op_done interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8293,6 +8633,7 @@
       width: 1
       type: interrupt
       module_name: flash_ctrl
+      desc: flash_ctrl corr_err interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -8320,263 +8661,6 @@
     rv_core_ibex
   ]
   outgoing_alert_module: {}
-  alert:
-  [
-    {
-      name: uart0_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: uart0
-      lpg_name: peri_lc_io_div4_0
-      lpg_idx: 0
-    }
-    {
-      name: uart1_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: uart1
-      lpg_name: peri_lc_io_div4_0
-      lpg_idx: 0
-    }
-    {
-      name: gpio_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: gpio
-      lpg_name: peri_sys_io_div4_0
-      lpg_idx: 1
-    }
-    {
-      name: spi_device_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: spi_device
-      lpg_name: peri_spi_device_0
-      lpg_idx: 2
-    }
-    {
-      name: spi_host0_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: spi_host0
-      lpg_name: peri_spi_host0_0
-      lpg_idx: 3
-    }
-    {
-      name: rv_timer_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: rv_timer
-      lpg_name: timers_sys_io_div4_0
-      lpg_idx: 4
-    }
-    {
-      name: usbdev_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: usbdev
-      lpg_name: peri_usb_0
-      lpg_idx: 5
-    }
-    {
-      name: pwrmgr_aon_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: pwrmgr_aon
-      lpg_name: powerup_por_io_div4_Aon
-      lpg_idx: 6
-    }
-    {
-      name: rstmgr_aon_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: rstmgr_aon
-      lpg_name: powerup_lc_io_div4_Aon
-      lpg_idx: 7
-    }
-    {
-      name: rstmgr_aon_fatal_cnsty_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: rstmgr_aon
-      lpg_name: powerup_lc_io_div4_Aon
-      lpg_idx: 7
-    }
-    {
-      name: clkmgr_aon_recov_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: clkmgr_aon
-      lpg_name: powerup_por_io_div4_Aon
-      lpg_idx: 6
-    }
-    {
-      name: clkmgr_aon_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: clkmgr_aon
-      lpg_name: powerup_por_io_div4_Aon
-      lpg_idx: 6
-    }
-    {
-      name: pinmux_aon_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: pinmux_aon
-      lpg_name: powerup_lc_io_div4_Aon
-      lpg_idx: 7
-    }
-    {
-      name: aon_timer_aon_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: aon_timer_aon
-      lpg_name: timers_sys_io_div4_Aon
-      lpg_idx: 8
-    }
-    {
-      name: flash_ctrl_recov_err
-      width: 1
-      type: alert
-      async: "1"
-      module_name: flash_ctrl
-      lpg_name: infra_lc_0
-      lpg_idx: 10
-    }
-    {
-      name: flash_ctrl_fatal_std_err
-      width: 1
-      type: alert
-      async: "1"
-      module_name: flash_ctrl
-      lpg_name: infra_lc_0
-      lpg_idx: 10
-    }
-    {
-      name: flash_ctrl_fatal_err
-      width: 1
-      type: alert
-      async: "1"
-      module_name: flash_ctrl
-      lpg_name: infra_lc_0
-      lpg_idx: 10
-    }
-    {
-      name: flash_ctrl_fatal_prim_flash_alert
-      width: 1
-      type: alert
-      async: "1"
-      module_name: flash_ctrl
-      lpg_name: infra_lc_0
-      lpg_idx: 10
-    }
-    {
-      name: flash_ctrl_recov_prim_flash_alert
-      width: 1
-      type: alert
-      async: "1"
-      module_name: flash_ctrl
-      lpg_name: infra_lc_0
-      lpg_idx: 10
-    }
-    {
-      name: rv_plic_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: rv_plic
-      lpg_name: secure_sys_0
-      lpg_idx: 11
-    }
-    {
-      name: aes_recov_ctrl_update_err
-      width: 1
-      type: alert
-      async: "1"
-      module_name: aes
-      lpg_name: aes_trans_sys_0
-      lpg_idx: 12
-    }
-    {
-      name: aes_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: aes
-      lpg_name: aes_trans_sys_0
-      lpg_idx: 12
-    }
-    {
-      name: sram_ctrl_main_fatal_error
-      width: 1
-      type: alert
-      async: "1"
-      module_name: sram_ctrl_main
-      lpg_name: secure_sys_0
-      lpg_idx: 11
-    }
-    {
-      name: rom_ctrl_fatal
-      width: 1
-      type: alert
-      async: "1"
-      module_name: rom_ctrl
-      lpg_name: infra_sys_0
-      lpg_idx: 13
-    }
-    {
-      name: rv_core_ibex_fatal_sw_err
-      width: 1
-      type: alert
-      async: "1"
-      module_name: rv_core_ibex
-      lpg_name: infra_sys_0
-      lpg_idx: 13
-    }
-    {
-      name: rv_core_ibex_recov_sw_err
-      width: 1
-      type: alert
-      async: "1"
-      module_name: rv_core_ibex
-      lpg_name: infra_sys_0
-      lpg_idx: 13
-    }
-    {
-      name: rv_core_ibex_fatal_hw_err
-      width: 1
-      type: alert
-      async: "1"
-      module_name: rv_core_ibex
-      lpg_name: infra_sys_0
-      lpg_idx: 13
-    }
-    {
-      name: rv_core_ibex_recov_hw_err
-      width: 1
-      type: alert
-      async: "1"
-      module_name: rv_core_ibex
-      lpg_name: infra_sys_0
-      lpg_idx: 13
-    }
-  ]
-  outgoing_alert: {}
-  exported_rsts: {}
   alert_lpgs:
   [
     {
@@ -11434,8 +11518,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: main_tl_rv_core_ibex__corei
@@ -11447,8 +11531,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: main_tl_rv_core_ibex__cored
@@ -11460,8 +11544,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: main
+        width: 1
         default: ""
         top_signame: rom_ctrl_rom_tl
         index: -1
@@ -11472,8 +11556,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: main
+        width: 1
         default: ""
         top_signame: rom_ctrl_regs_tl
         index: -1
@@ -11484,8 +11568,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: main_tl_peri
@@ -11497,8 +11581,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: main
+        width: 1
         default: ""
         top_signame: flash_ctrl_core_tl
         index: -1
@@ -11509,8 +11593,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: main
+        width: 1
         default: ""
         top_signame: flash_ctrl_prim_tl
         index: -1
@@ -11521,8 +11605,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: main
+        width: 1
         default: ""
         top_signame: flash_ctrl_mem_tl
         index: -1
@@ -11533,8 +11617,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: main
+        width: 1
         default: ""
         top_signame: aes_tl
         index: -1
@@ -11545,8 +11629,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: main
+        width: 1
         default: ""
         top_signame: rv_plic_tl
         index: -1
@@ -11557,8 +11641,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: main
+        width: 1
         default: ""
         top_signame: rv_core_ibex_cfg_tl_d
         index: -1
@@ -11569,8 +11653,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: main
+        width: 1
         default: ""
         top_signame: sram_ctrl_main_regs_tl
         index: -1
@@ -11581,8 +11665,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: main
+        width: 1
         default: ""
         top_signame: sram_ctrl_main_ram_tl
         index: -1
@@ -11593,8 +11677,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: peri
+        width: 1
         default: ""
         top_signame: main_tl_peri
         index: -1
@@ -11605,8 +11689,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: peri
+        width: 1
         default: ""
         top_signame: uart0_tl
         index: -1
@@ -11617,8 +11701,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: peri
+        width: 1
         default: ""
         top_signame: uart1_tl
         index: -1
@@ -11629,8 +11713,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: peri
+        width: 1
         default: ""
         top_signame: gpio_tl
         index: -1
@@ -11641,8 +11725,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: peri
+        width: 1
         default: ""
         top_signame: spi_device_tl
         index: -1
@@ -11653,8 +11737,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: peri
+        width: 1
         default: ""
         top_signame: spi_host0_tl
         index: -1
@@ -11665,8 +11749,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: peri
+        width: 1
         default: ""
         top_signame: rv_timer_tl
         index: -1
@@ -11677,8 +11761,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: peri
+        width: 1
         default: ""
         top_signame: usbdev_tl
         index: -1
@@ -11689,8 +11773,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: peri
+        width: 1
         default: ""
         top_signame: pwrmgr_aon_tl
         index: -1
@@ -11701,8 +11785,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: peri
+        width: 1
         default: ""
         top_signame: rstmgr_aon_tl
         index: -1
@@ -11713,8 +11797,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: peri
+        width: 1
         default: ""
         top_signame: clkmgr_aon_tl
         index: -1
@@ -11725,8 +11809,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: peri
+        width: 1
         default: ""
         top_signame: pinmux_aon_tl
         index: -1
@@ -11737,8 +11821,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: peri
+        width: 1
         default: ""
         external: true
         top_signame: ast_tl
