@@ -644,17 +644,17 @@
       storage_err_alert: "fatal_fault",
       fields: [
         {
-          bits: "3:0",
+          bits: "11:0",
           name: "HI",
           desc: "Max threshold for io_div4 measurement",
-          resval: "14"
+          resval: "1260"
         },
 
         {
-          bits: "7:4",
+          bits: "23:12",
           name: "LO",
           desc: "Min threshold for io_div4 measurement",
-          resval: "0"
+          resval: "1240"
         },
       ]
     },
@@ -698,17 +698,17 @@
       storage_err_alert: "fatal_fault",
       fields: [
         {
-          bits: "5:0",
+          bits: "9:0",
           name: "HI",
           desc: "Max threshold for main measurement",
-          resval: "26"
+          resval: "510"
         },
 
         {
-          bits: "11:6",
+          bits: "19:10",
           name: "LO",
           desc: "Min threshold for main measurement",
-          resval: "6"
+          resval: "490"
         },
       ]
     },
@@ -752,17 +752,17 @@
       storage_err_alert: "fatal_fault",
       fields: [
         {
-          bits: "5:0",
+          bits: "8:0",
           name: "HI",
           desc: "Max threshold for usb measurement",
-          resval: "26"
+          resval: "250"
         },
 
         {
-          bits: "11:6",
+          bits: "17:9",
           name: "LO",
           desc: "Min threshold for usb measurement",
-          resval: "6"
+          resval: "230"
         },
       ]
     },

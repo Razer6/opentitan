@@ -38,25 +38,25 @@
       {
         name: main
         aon: no
-        freq: "1000000000"
+        freq: "100000000"
         ref: false
       }
       {
         name: io
         aon: no
-        freq: "1000000000"
+        freq: "96000000"
         ref: false
       }
       {
         name: usb
         aon: no
-        freq: "1000000000"
+        freq: "48000000"
         ref: false
       }
       {
         name: aon
         aon: yes
-        freq: "62500000"
+        freq: "200000"
         ref: true
       }
     ]
