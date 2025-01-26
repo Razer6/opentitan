@@ -71,3 +71,16 @@ waive -rules SAME_NAME_TYPE -location {spi_device.sv mbx.sv} -regexp {'mbx' is u
 # intentionally unused
 waive -rules {NOT_READ HIER_NET_NOT_READ} -location {top_darjeeling.sv} -regexp {.*cio_otp_ctrl_test_(en_)?d2p\[7:1\].* is not read} \
       -comment "otp test bus made deliberately larger on purpose"
+
+ waive -rules {PARAM_NOT_USED} -location {prim_generic_ram_1p.sv} \
+      -msg {Parameter 'MemInitFile' not used in module 'prim_generic_ram_1p'} \
+      -comment "MemInitFile is not used in synthesis for Rivos"
+
+waive -rules {PARAM_NOT_USED} -location {prim_generic_ram_1r1w.sv} \
+      -msg {Parameter 'MemInitFile' not used in module 'prim_generic_ram_1r1w'} \
+      -comment "MemInitFile is not used in synthesis for Rivos"
+
+waive -rules {PARAM_NOT_USED} -location {prim_generic_rom.sv} \
+      -msg {Parameter 'MemInitFile' not used in module 'prim_generic_rom'} \
+      -comment "MemInitFile is not used in synthesis for Rivos"
+
