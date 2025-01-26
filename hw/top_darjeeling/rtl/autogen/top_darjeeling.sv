@@ -289,6 +289,8 @@ module top_darjeeling #(
   input  prim_misc_dft_pkg::rom_test_cfg_t       rom_ctrl1_test_cfg_i,
   input  prim_mubi_pkg::mubi4_t       tston_i,
 
+  // Incoming interrupt of group rot_external
+  input logic [13:0] incoming_interrupt_rot_external_i,
 
   // All externally supplied clocks
   input clk_main_i,
@@ -433,7 +435,7 @@ module top_darjeeling #(
   // rv_core_ibex
 
 
-  logic [157:0]  intr_vector;
+  logic [171:0]  intr_vector;
   // Interrupt source list
   logic intr_uart0_tx_watermark;
   logic intr_uart0_rx_watermark;
@@ -2734,6 +2736,7 @@ module top_darjeeling #(
 
   // interrupt assignments
   assign intr_vector = {
+      incoming_interrupt_rot_external_i, // IDs [158 +: 14]
       intr_mbx_pcie1_mbx_error, // IDs [157 +: 1]
       intr_mbx_pcie1_mbx_abort, // IDs [156 +: 1]
       intr_mbx_pcie1_mbx_ready, // IDs [155 +: 1]

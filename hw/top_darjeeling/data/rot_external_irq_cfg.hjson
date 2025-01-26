@@ -1,0 +1,116 @@
+{
+  rot_external: [
+    // IDX 0
+    {
+      name: IPI_FROM_DUC
+      module_name: ROT_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 1
+    {
+      name: IPI_FROM_MIO
+      module_name: ROT_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 2
+    {
+      name: IPI_FROM_PWC
+      module_name: ROT_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 3
+    {
+      name: IPI_FROM_ROT_2
+      module_name: ROT_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 4
+    {
+      name: IPI_FROM_ROT_1
+      module_name: ROT_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 5
+    {
+      name: IPI_FROM_ROT_0
+      module_name: ROT_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 6
+    {
+      name: IBEX_IRQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 7
+    {
+      name: IBEX_IRQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 8
+    {
+      name: IBEX_IRQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 9
+    {
+      name: ERROR_IRQ
+      module_name: RAS_CTRL
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 10
+    {
+      name: IBEX_IRQ
+      module_name: RAS_CTRL
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 11
+    {
+      name: REF_CLK_SLOW
+      module_name: AMS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 12
+    {
+      name: REF_CLK_FAST
+      module_name: AMS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 13
+    {
+      name: AVGS_GLITCH
+      module_name: AMS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+  ]
+}

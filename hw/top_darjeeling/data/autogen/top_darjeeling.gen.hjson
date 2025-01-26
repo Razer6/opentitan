@@ -4724,6 +4724,10 @@
         }
       }
       attr: ipgen
+      incoming_interrupt:
+      [
+        rot_external_irq_cfg.hjson
+      ]
       clock_connections:
       {
         clk_i: clkmgr_aon_clocks.clk_main_secure
@@ -16932,7 +16936,138 @@
       }
     ]
   }
-  incoming_interrupt: {}
+  incoming_interrupt:
+  {
+    rot_external:
+    [
+      {
+        name: ROT_HDR_IPI_FROM_DUC
+        module_name: ROT_HDR
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+      {
+        name: ROT_HDR_IPI_FROM_MIO
+        module_name: ROT_HDR
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+      {
+        name: ROT_HDR_IPI_FROM_PWC
+        module_name: ROT_HDR
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+      {
+        name: ROT_HDR_IPI_FROM_ROT_2
+        module_name: ROT_HDR
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+      {
+        name: ROT_HDR_IPI_FROM_ROT_1
+        module_name: ROT_HDR
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+      {
+        name: ROT_HDR_IPI_FROM_ROT_0
+        module_name: ROT_HDR
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+      {
+        name: LIO_GRP_C_IBEX_IRQ
+        module_name: LIO_GRP_C
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+      {
+        name: LIO_GRP_B_IBEX_IRQ
+        module_name: LIO_GRP_B
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+      {
+        name: LIO_GRP_A_IBEX_IRQ
+        module_name: LIO_GRP_A
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+      {
+        name: RAS_CTRL_ERROR_IRQ
+        module_name: RAS_CTRL
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+      {
+        name: RAS_CTRL_IBEX_IRQ
+        module_name: RAS_CTRL
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+      {
+        name: AMS_REF_CLK_SLOW
+        module_name: AMS
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+      {
+        name: AMS_REF_CLK_FAST
+        module_name: AMS
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+      {
+        name: AMS_AVGS_GLITCH
+        module_name: AMS
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+        incoming: true
+        width: 1
+      }
+    ]
+  }
   exported_clks: {}
   wakeups:
   [
@@ -17884,6 +18019,132 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+    }
+    {
+      name: ROT_HDR_IPI_FROM_DUC
+      module_name: ROT_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
+    }
+    {
+      name: ROT_HDR_IPI_FROM_MIO
+      module_name: ROT_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
+    }
+    {
+      name: ROT_HDR_IPI_FROM_PWC
+      module_name: ROT_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
+    }
+    {
+      name: ROT_HDR_IPI_FROM_ROT_2
+      module_name: ROT_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
+    }
+    {
+      name: ROT_HDR_IPI_FROM_ROT_1
+      module_name: ROT_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
+    }
+    {
+      name: ROT_HDR_IPI_FROM_ROT_0
+      module_name: ROT_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_IBEX_IRQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_IBEX_IRQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_IBEX_IRQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
+    }
+    {
+      name: RAS_CTRL_ERROR_IRQ
+      module_name: RAS_CTRL
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
+    }
+    {
+      name: RAS_CTRL_IBEX_IRQ
+      module_name: RAS_CTRL
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
+    }
+    {
+      name: AMS_REF_CLK_SLOW
+      module_name: AMS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
+    }
+    {
+      name: AMS_REF_CLK_FAST
+      module_name: AMS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
+    }
+    {
+      name: AMS_AVGS_GLITCH
+      module_name: AMS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: true
+      width: 1
     }
   ]
   alert_module:

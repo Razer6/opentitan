@@ -667,6 +667,9 @@
         hart: "0x28000000",
       },
       attr: "ipgen",
+      incoming_interrupt: [
+        "rot_external_irq_cfg.hjson"
+      ]
     },
     { name: "aes",
       type: "aes",

@@ -198,7 +198,7 @@ const top_darjeeling_alert_peripheral_t
  * `top_darjeeling_plic_peripheral_t`.
  */
 const top_darjeeling_plic_peripheral_t
-    top_darjeeling_plic_interrupt_for_peripheral[158] = {
+    top_darjeeling_plic_interrupt_for_peripheral[172] = {
   [kTopDarjeelingPlicIrqIdNone] = kTopDarjeelingPlicPeripheralUnknown,
   [kTopDarjeelingPlicIrqIdUart0TxWatermark] = kTopDarjeelingPlicPeripheralUart0,
   [kTopDarjeelingPlicIrqIdUart0RxWatermark] = kTopDarjeelingPlicPeripheralUart0,
@@ -357,4 +357,18 @@ const top_darjeeling_plic_peripheral_t
   [kTopDarjeelingPlicIrqIdMbxPcie1MbxReady] = kTopDarjeelingPlicPeripheralMbxPcie1,
   [kTopDarjeelingPlicIrqIdMbxPcie1MbxAbort] = kTopDarjeelingPlicPeripheralMbxPcie1,
   [kTopDarjeelingPlicIrqIdMbxPcie1MbxError] = kTopDarjeelingPlicPeripheralMbxPcie1,
+  [kTopDarjeelingPlicIrqIdRotHdrIpiFromDuc] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdRotHdrIpiFromMio] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdRotHdrIpiFromPwc] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdRotHdrIpiFromRot2] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdRotHdrIpiFromRot1] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdRotHdrIpiFromRot0] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpCIbexIrq] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpBIbexIrq] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpAIbexIrq] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdRasCtrlErrorIrq] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdRasCtrlIbexIrq] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdAmsRefClkSlow] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdAmsRefClkFast] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdAmsAvgsGlitch] = kTopDarjeelingPlicPeripheralUnknown,
 };
