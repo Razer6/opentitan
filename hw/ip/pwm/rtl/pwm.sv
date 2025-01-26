@@ -10,7 +10,7 @@ module pwm
   parameter logic [NumAlerts-1:0] AlertAsyncOn         = {NumAlerts{1'b1}},
   parameter bit                   EnableRacl           = 1'b0,
   parameter bit                   RaclErrorRsp         = 1'b1,
-  parameter int unsigned          RaclPolicySelVec[23] = '{23{0}},
+  parameter int unsigned          RaclPolicySelVec[29] = '{29{0}},
   parameter int                   PhaseCntDw           = 16,
   parameter int                   BeatCntDw            = 27
 ) (
