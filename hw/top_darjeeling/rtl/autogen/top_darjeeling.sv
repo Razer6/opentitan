@@ -319,6 +319,12 @@ module top_darjeeling #(
   output prim_alert_pkg::alert_rx_t [top_darjeeling_pkg::NIncomingAlertsPwc_extra_alerts-1:0] incoming_alert_pwc_extra_alerts_rx_o,
   input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsPwc_extra_alerts-1:0]   incoming_lpg_cg_en_pwc_extra_alerts_i,
   input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsPwc_extra_alerts-1:0]   incoming_lpg_rst_en_pwc_extra_alerts_i,
+  
+  // Incoming alerts for group rot_extra_alerts
+  input  prim_alert_pkg::alert_tx_t [top_darjeeling_pkg::NIncomingAlertsRot_extra_alerts-1:0] incoming_alert_rot_extra_alerts_tx_i,
+  output prim_alert_pkg::alert_rx_t [top_darjeeling_pkg::NIncomingAlertsRot_extra_alerts-1:0] incoming_alert_rot_extra_alerts_rx_o,
+  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsRot_extra_alerts-1:0]   incoming_lpg_cg_en_rot_extra_alerts_i,
+  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsRot_extra_alerts-1:0]   incoming_lpg_rst_en_rot_extra_alerts_i,
 
   // All clocks forwarded to ast
   output clkmgr_pkg::clkmgr_out_t clks_ast_o,
@@ -918,6 +924,8 @@ module top_darjeeling #(
   assign lpg_rst_en[22] = incoming_lpg_rst_en_mio_extra_alerts_i[0];
   assign lpg_cg_en[23] = incoming_lpg_cg_en_pwc_extra_alerts_i[0];
   assign lpg_rst_en[23] = incoming_lpg_rst_en_pwc_extra_alerts_i[0];
+  assign lpg_cg_en[24] = incoming_lpg_cg_en_rot_extra_alerts_i[0];
+  assign lpg_rst_en[24] = incoming_lpg_rst_en_rot_extra_alerts_i[0];
 
 
 // tie-off unused connections
@@ -2699,6 +2707,30 @@ module top_darjeeling #(
   // [151]: integ_error
   assign alert_tx[151:151] = incoming_alert_pwc_extra_alerts_tx_i;
   assign incoming_alert_pwc_extra_alerts_rx_o = alert_rx[151:151];
+
+  // Alert mapping to the alert handler for alert group rot_extra_alerts
+  // [152]: alert_trigger
+  // [153]: alert_trigger
+  // [154]: reset_alert
+  // [155]: integ_error
+  // [156]: integ_error
+  // [157]: integ_error
+  // [158]: prim_otp_recov_err
+  // [159]: prim_otp_fatal_err
+  // [160]: integ_error
+  // [161]: integ_error
+  // [162]: integ_error
+  // [163]: integ_error
+  // [164]: esc_err_3
+  // [165]: esc_err_2
+  // [166]: esc_err_1
+  // [167]: esc_err_0
+  // [168]: hi_integ_err
+  // [169]: lo_integ_err
+  // [170]: csrng_recov
+  // [171]: integ_error
+  assign alert_tx[171:152] = incoming_alert_rot_extra_alerts_tx_i;
+  assign incoming_alert_rot_extra_alerts_rx_o = alert_rx[171:152];
 
   // interrupt assignments
   assign intr_vector = {

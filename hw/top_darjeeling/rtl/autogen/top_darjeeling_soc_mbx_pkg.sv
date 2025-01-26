@@ -126,5 +126,11 @@ package top_darjeeling_soc_mbx_pkg;
   // Number of LPGs for incoming alert group pwc_extra_alerts
   parameter int unsigned NIncomingLpgsPwc_extra_alerts = 1;
 
+  // Number of rot_extra_alerts incoming alerts
+  parameter int unsigned NIncomingAlertsRot_extra_alerts = 20;
+
+  // Number of LPGs for incoming alert group rot_extra_alerts
+  parameter int unsigned NIncomingLpgsRot_extra_alerts = 1;
+
 
 endpackage

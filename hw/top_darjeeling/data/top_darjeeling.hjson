@@ -363,6 +363,7 @@
         '../../top_pwc/data/autogen/outgoing_alerts_pwc.hjson'
         'mio_extra_alerts.hjson'
         'pwc_extra_alerts.hjson'
+        'rot_extra_alerts.hjson'
       ]
     },
     { name: "spi_host0",
