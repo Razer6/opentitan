@@ -32,7 +32,7 @@ module top_pwc #(
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
   parameter bit RvDmUseDmiInterface = 1,
   parameter bit SecRvDmVolatileRawUnlockEn = top_pkg::SecVolatileRawUnlockEn,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] RvDmTLRsvdInitiatorId = '0,
+  parameter logic [tlul_pkg::RsvdWidth-1:0] RvDmTlulHostUserRsvdBits = '0,
   // parameters for rv_plic
   // parameters for sram_ctrl_main
   parameter int SramCtrlMainInstSize = 65536,
@@ -483,7 +483,7 @@ module top_pwc #(
     .IdcodeValue(RvDmIdcodeValue),
     .UseDmiInterface(RvDmUseDmiInterface),
     .SecVolatileRawUnlockEn(SecRvDmVolatileRawUnlockEn),
-    .TLRsvdInitiatorId(RvDmTLRsvdInitiatorId)
+    .TlulHostUserRsvdBits(RvDmTlulHostUserRsvdBits)
   ) u_rv_dm (
       // External alert group "pwc" [5]: fatal_fault
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[5:5] ),

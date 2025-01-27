@@ -57,7 +57,7 @@ module top_darjeeling #(
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
   parameter bit RvDmUseDmiInterface = 1,
   parameter bit SecRvDmVolatileRawUnlockEn = top_pkg::SecVolatileRawUnlockEn,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] RvDmTLRsvdInitiatorId = '0,
+  parameter logic [tlul_pkg::RsvdWidth-1:0] RvDmTlulHostUserRsvdBits = '0,
   // parameters for rv_plic
   // parameters for aes
   parameter bit SecAesMasking = 1,
@@ -1740,7 +1740,7 @@ module top_darjeeling #(
     .IdcodeValue(RvDmIdcodeValue),
     .UseDmiInterface(RvDmUseDmiInterface),
     .SecVolatileRawUnlockEn(SecRvDmVolatileRawUnlockEn),
-    .TLRsvdInitiatorId(RvDmTLRsvdInitiatorId)
+    .TlulHostUserRsvdBits(RvDmTlulHostUserRsvdBits)
   ) u_rv_dm (
       // [51]: fatal_fault
       .alert_tx_o  ( alert_tx[51:51] ),

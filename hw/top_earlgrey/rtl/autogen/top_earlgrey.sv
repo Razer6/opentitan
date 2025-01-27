@@ -75,7 +75,7 @@ module top_earlgrey #(
   parameter logic [31:0] RvDmIdcodeValue = jtag_id_pkg::RV_DM_JTAG_IDCODE,
   parameter bit RvDmUseDmiInterface = 0,
   parameter bit SecRvDmVolatileRawUnlockEn = 1'b0,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] RvDmTLRsvdInitiatorId = '0,
+  parameter logic [tlul_pkg::RsvdWidth-1:0] RvDmTlulHostUserRsvdBits = '0,
   // parameters for rv_plic
   // parameters for aes
   parameter bit SecAesMasking = 1,
@@ -2283,7 +2283,7 @@ module top_earlgrey #(
     .IdcodeValue(RvDmIdcodeValue),
     .UseDmiInterface(RvDmUseDmiInterface),
     .SecVolatileRawUnlockEn(SecRvDmVolatileRawUnlockEn),
-    .TLRsvdInitiatorId(RvDmTLRsvdInitiatorId)
+    .TlulHostUserRsvdBits(RvDmTlulHostUserRsvdBits)
   ) u_rv_dm (
       // [40]: fatal_fault
       .alert_tx_o  ( alert_tx[40:40] ),
