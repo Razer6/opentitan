@@ -551,7 +551,7 @@ typedef enum top_mio_plic_irq_id {
  * `top_mio_plic_peripheral_t`.
  */
 extern const top_mio_plic_peripheral_t
-    top_mio_plic_interrupt_for_peripheral[66];
+    top_mio_plic_interrupt_for_peripheral[65];
 
 /**
  * PLIC Interrupt Target.

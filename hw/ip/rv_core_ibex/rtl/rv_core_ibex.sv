@@ -48,7 +48,7 @@ module rv_core_ibex
       ibex_pkg::RndCnstIbexNonceDefault,
   parameter int unsigned                    NEscalationSeverities = 4,
   parameter int unsigned                    WidthPingCounter      = 16,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] TLRsvdInitiatorId     = 0
+  parameter logic [tlul_pkg::RsvdWidth-1:0] TlulHostUserRsvdBits  = 0
 ) (
   // Clock and Reset
   input  logic        clk_i,
@@ -596,7 +596,7 @@ module rv_core_ibex
     .wdata_i      (32'b0),
     .wdata_intg_i (instr_wdata_intg),
     .be_i         (4'hF),
-    .user_rsvd_i  (TLRsvdInitiatorId),
+    .user_rsvd_i  (TlulHostUserRsvdBits),
     .valid_o      (instr_rvalid),
     .rdata_o      (instr_rdata),
     .rdata_intg_o (instr_rdata_intg),
@@ -650,7 +650,7 @@ module rv_core_ibex
     .wdata_i      (data_wdata),
     .wdata_intg_i (data_wdata_intg),
     .be_i         (data_be),
-    .user_rsvd_i  (TLRsvdInitiatorId),
+    .user_rsvd_i  (TlulHostUserRsvdBits),
     .valid_o      (data_rvalid),
     .rdata_o      (data_rdata),
     .rdata_intg_o (data_rdata_intg),

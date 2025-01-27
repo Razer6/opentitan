@@ -85,7 +85,7 @@ module top_englishbreakfast #(
   parameter int unsigned RvCoreIbexDmHaltAddr = 0,
   parameter int unsigned RvCoreIbexDmExceptionAddr = 0,
   parameter bit RvCoreIbexPipeLine = 0,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexTLRsvdInitiatorId = '0
+  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexTlulHostUserRsvdBits = '0
 ) (
   // Multiplexed I/O
   input        [46:0] mio_in_i,
@@ -1283,7 +1283,7 @@ module top_englishbreakfast #(
     .DmHaltAddr(RvCoreIbexDmHaltAddr),
     .DmExceptionAddr(RvCoreIbexDmExceptionAddr),
     .PipeLine(RvCoreIbexPipeLine),
-    .TLRsvdInitiatorId(RvCoreIbexTLRsvdInitiatorId)
+    .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
   ) u_rv_core_ibex (
       // [24]: fatal_sw_err
       // [25]: recov_sw_err

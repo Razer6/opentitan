@@ -89,7 +89,7 @@ module top_mio #(
   parameter int unsigned RvCoreIbexDmExceptionAddr =
       tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0],
   parameter bit RvCoreIbexPipeLine = 0,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexTLRsvdInitiatorId = '0
+  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexTlulHostUserRsvdBits = '0
 ) (
 
 
@@ -622,6 +622,9 @@ module top_mio #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
+      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
+      .racl_error_o(),
+      .racl_error_log_o(),
       .sram_tl_h_o(mio_main_tl_mbx0__sram_req),
       .sram_tl_h_i(mio_main_tl_mbx0__sram_rsp),
       .core_tl_d_i(mbx0_core_tl_d_req),
@@ -651,6 +654,9 @@ module top_mio #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
+      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
+      .racl_error_o(),
+      .racl_error_log_o(),
       .sram_tl_h_o(mio_main_tl_mbx1__sram_req),
       .sram_tl_h_i(mio_main_tl_mbx1__sram_rsp),
       .core_tl_d_i(mbx1_core_tl_d_req),
@@ -680,6 +686,9 @@ module top_mio #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
+      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
+      .racl_error_o(),
+      .racl_error_log_o(),
       .sram_tl_h_o(mio_main_tl_mbx2__sram_req),
       .sram_tl_h_i(mio_main_tl_mbx2__sram_rsp),
       .core_tl_d_i(mbx2_core_tl_d_req),
@@ -709,6 +718,9 @@ module top_mio #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
+      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
+      .racl_error_o(),
+      .racl_error_log_o(),
       .sram_tl_h_o(mio_main_tl_mbx3__sram_req),
       .sram_tl_h_i(mio_main_tl_mbx3__sram_rsp),
       .core_tl_d_i(mbx3_core_tl_d_req),
@@ -738,6 +750,9 @@ module top_mio #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
+      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
+      .racl_error_o(),
+      .racl_error_log_o(),
       .sram_tl_h_o(mio_main_tl_mbx4__sram_req),
       .sram_tl_h_i(mio_main_tl_mbx4__sram_rsp),
       .core_tl_d_i(mbx4_core_tl_d_req),
@@ -767,6 +782,9 @@ module top_mio #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
+      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
+      .racl_error_o(),
+      .racl_error_log_o(),
       .sram_tl_h_o(mio_main_tl_mbx5__sram_req),
       .sram_tl_h_i(mio_main_tl_mbx5__sram_rsp),
       .core_tl_d_i(mbx5_core_tl_d_req),
@@ -813,7 +831,7 @@ module top_mio #(
     .DmHaltAddr(RvCoreIbexDmHaltAddr),
     .DmExceptionAddr(RvCoreIbexDmExceptionAddr),
     .PipeLine(RvCoreIbexPipeLine),
-    .TLRsvdInitiatorId(RvCoreIbexTLRsvdInitiatorId)
+    .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
   ) u_rv_core_ibex (
       // External alert group "mio" [21]: fatal_sw_err
       // External alert group "mio" [22]: recov_sw_err

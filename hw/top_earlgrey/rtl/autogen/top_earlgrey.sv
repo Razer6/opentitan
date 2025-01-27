@@ -149,7 +149,7 @@ module top_earlgrey #(
   parameter int unsigned RvCoreIbexDmExceptionAddr =
       tl_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0],
   parameter bit RvCoreIbexPipeLine = 0,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexTLRsvdInitiatorId = '0
+  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexTlulHostUserRsvdBits = '0
 ) (
   // Multiplexed I/O
   input        [46:0] mio_in_i,
@@ -2756,7 +2756,7 @@ module top_earlgrey #(
     .DmHaltAddr(RvCoreIbexDmHaltAddr),
     .DmExceptionAddr(RvCoreIbexDmExceptionAddr),
     .PipeLine(RvCoreIbexPipeLine),
-    .TLRsvdInitiatorId(RvCoreIbexTLRsvdInitiatorId)
+    .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
   ) u_rv_core_ibex (
       // [61]: fatal_sw_err
       // [62]: recov_sw_err

@@ -2490,6 +2490,46 @@
           index: -1
         }
         {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: mbx0
+          index: -1
+        }
+        {
+          name: racl_error
+          desc:
+            '''
+            RACL error indication signal.
+            If 1, the error log contains valid information.
+            '''
+          struct: logic
+          type: uni
+          act: req
+          width: 1
+          inst_name: mbx0
+          index: -1
+        }
+        {
+          name: racl_error_log
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: mbx0
+          index: -1
+        }
+        {
           name: sram_tl_h
           struct: tl
           package: tlul_pkg
@@ -2607,6 +2647,46 @@
           act: req
           width: 1
           default: 1'b0
+          inst_name: mbx1
+          index: -1
+        }
+        {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: mbx1
+          index: -1
+        }
+        {
+          name: racl_error
+          desc:
+            '''
+            RACL error indication signal.
+            If 1, the error log contains valid information.
+            '''
+          struct: logic
+          type: uni
+          act: req
+          width: 1
+          inst_name: mbx1
+          index: -1
+        }
+        {
+          name: racl_error_log
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
           inst_name: mbx1
           index: -1
         }
@@ -2732,6 +2812,46 @@
           index: -1
         }
         {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: mbx2
+          index: -1
+        }
+        {
+          name: racl_error
+          desc:
+            '''
+            RACL error indication signal.
+            If 1, the error log contains valid information.
+            '''
+          struct: logic
+          type: uni
+          act: req
+          width: 1
+          inst_name: mbx2
+          index: -1
+        }
+        {
+          name: racl_error_log
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: mbx2
+          index: -1
+        }
+        {
           name: sram_tl_h
           struct: tl
           package: tlul_pkg
@@ -2849,6 +2969,46 @@
           act: req
           width: 1
           default: 1'b0
+          inst_name: mbx3
+          index: -1
+        }
+        {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: mbx3
+          index: -1
+        }
+        {
+          name: racl_error
+          desc:
+            '''
+            RACL error indication signal.
+            If 1, the error log contains valid information.
+            '''
+          struct: logic
+          type: uni
+          act: req
+          width: 1
+          inst_name: mbx3
+          index: -1
+        }
+        {
+          name: racl_error_log
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
           inst_name: mbx3
           index: -1
         }
@@ -2974,6 +3134,46 @@
           index: -1
         }
         {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: mbx4
+          index: -1
+        }
+        {
+          name: racl_error
+          desc:
+            '''
+            RACL error indication signal.
+            If 1, the error log contains valid information.
+            '''
+          struct: logic
+          type: uni
+          act: req
+          width: 1
+          inst_name: mbx4
+          index: -1
+        }
+        {
+          name: racl_error_log
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: mbx4
+          index: -1
+        }
+        {
           name: sram_tl_h
           struct: tl
           package: tlul_pkg
@@ -3091,6 +3291,46 @@
           act: req
           width: 1
           default: 1'b0
+          inst_name: mbx5
+          index: -1
+        }
+        {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: mbx5
+          index: -1
+        }
+        {
+          name: racl_error
+          desc:
+            '''
+            RACL error indication signal.
+            If 1, the error log contains valid information.
+            '''
+          struct: logic
+          type: uni
+          act: req
+          width: 1
+          inst_name: mbx5
+          index: -1
+        }
+        {
+          name: racl_error_log
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
           inst_name: mbx5
           index: -1
         }
@@ -3525,13 +3765,13 @@
           name_top: RvCoreIbexPipeLine
         }
         {
-          name: TLRsvdInitiatorId
-          desc: TLUL user bits send on outgoing transfers.
+          name: TlulHostUserRsvdBits
+          desc: TLUL user bits sent on outgoing transfers.
           type: logic [tlul_pkg::RsvdWidth-1:0]
           default: "'0"
           local: "false"
           expose: "true"
-          name_top: RvCoreIbexTLRsvdInitiatorId
+          name_top: RvCoreIbexTlulHostUserRsvdBits
         }
       ]
       inter_signal_list:
@@ -7478,6 +7718,46 @@
         index: -1
       }
       {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: mbx0
+        index: -1
+      }
+      {
+        name: racl_error
+        desc:
+          '''
+          RACL error indication signal.
+          If 1, the error log contains valid information.
+          '''
+        struct: logic
+        type: uni
+        act: req
+        width: 1
+        inst_name: mbx0
+        index: -1
+      }
+      {
+        name: racl_error_log
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: mbx0
+        index: -1
+      }
+      {
         name: sram_tl_h
         struct: tl
         package: tlul_pkg
@@ -7552,6 +7832,46 @@
         act: req
         width: 1
         default: 1'b0
+        inst_name: mbx1
+        index: -1
+      }
+      {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: mbx1
+        index: -1
+      }
+      {
+        name: racl_error
+        desc:
+          '''
+          RACL error indication signal.
+          If 1, the error log contains valid information.
+          '''
+        struct: logic
+        type: uni
+        act: req
+        width: 1
+        inst_name: mbx1
+        index: -1
+      }
+      {
+        name: racl_error_log
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
         inst_name: mbx1
         index: -1
       }
@@ -7634,6 +7954,46 @@
         index: -1
       }
       {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: mbx2
+        index: -1
+      }
+      {
+        name: racl_error
+        desc:
+          '''
+          RACL error indication signal.
+          If 1, the error log contains valid information.
+          '''
+        struct: logic
+        type: uni
+        act: req
+        width: 1
+        inst_name: mbx2
+        index: -1
+      }
+      {
+        name: racl_error_log
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: mbx2
+        index: -1
+      }
+      {
         name: sram_tl_h
         struct: tl
         package: tlul_pkg
@@ -7708,6 +8068,46 @@
         act: req
         width: 1
         default: 1'b0
+        inst_name: mbx3
+        index: -1
+      }
+      {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: mbx3
+        index: -1
+      }
+      {
+        name: racl_error
+        desc:
+          '''
+          RACL error indication signal.
+          If 1, the error log contains valid information.
+          '''
+        struct: logic
+        type: uni
+        act: req
+        width: 1
+        inst_name: mbx3
+        index: -1
+      }
+      {
+        name: racl_error_log
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
         inst_name: mbx3
         index: -1
       }
@@ -7790,6 +8190,46 @@
         index: -1
       }
       {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: mbx4
+        index: -1
+      }
+      {
+        name: racl_error
+        desc:
+          '''
+          RACL error indication signal.
+          If 1, the error log contains valid information.
+          '''
+        struct: logic
+        type: uni
+        act: req
+        width: 1
+        inst_name: mbx4
+        index: -1
+      }
+      {
+        name: racl_error_log
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: mbx4
+        index: -1
+      }
+      {
         name: sram_tl_h
         struct: tl
         package: tlul_pkg
@@ -7864,6 +8304,46 @@
         act: req
         width: 1
         default: 1'b0
+        inst_name: mbx5
+        index: -1
+      }
+      {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: mbx5
+        index: -1
+      }
+      {
+        name: racl_error
+        desc:
+          '''
+          RACL error indication signal.
+          If 1, the error log contains valid information.
+          '''
+        struct: logic
+        type: uni
+        act: req
+        width: 1
+        inst_name: mbx5
+        index: -1
+      }
+      {
+        name: racl_error_log
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
         inst_name: mbx5
         index: -1
       }

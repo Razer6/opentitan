@@ -157,7 +157,7 @@ module top_darjeeling #(
   parameter int unsigned RvCoreIbexDmExceptionAddr =
       tl_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0],
   parameter bit RvCoreIbexPipeLine = 1,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexTLRsvdInitiatorId = '0
+  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexTlulHostUserRsvdBits = '0
 ) (
   // Multiplexed I/O
   input        [11:0] mio_in_i,
@@ -2619,7 +2619,7 @@ module top_darjeeling #(
     .DmHaltAddr(RvCoreIbexDmHaltAddr),
     .DmExceptionAddr(RvCoreIbexDmExceptionAddr),
     .PipeLine(RvCoreIbexPipeLine),
-    .TLRsvdInitiatorId(RvCoreIbexTLRsvdInitiatorId)
+    .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
   ) u_rv_core_ibex (
       // [95]: fatal_sw_err
       // [96]: recov_sw_err

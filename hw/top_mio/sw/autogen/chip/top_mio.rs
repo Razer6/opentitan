@@ -619,7 +619,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 66] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 65] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // RvTimerTimerExpiredHart0Timer0 -> PlicPeripheral::RvTimer
@@ -743,8 +743,6 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 66] = [
     // MioHdrIpiFromPwc -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // MioHdrIpiFromRot -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // MioHdrIpiFromPwc -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // LioGrpAIbexIrq -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,

@@ -9467,13 +9467,13 @@
           name_top: RvCoreIbexPipeLine
         }
         {
-          name: TLRsvdInitiatorId
-          desc: TLUL user bits send on outgoing transfers.
+          name: TlulHostUserRsvdBits
+          desc: TLUL user bits sent on outgoing transfers.
           type: logic [tlul_pkg::RsvdWidth-1:0]
           default: "'0"
           local: "false"
           expose: "true"
-          name_top: RvCoreIbexTLRsvdInitiatorId
+          name_top: RvCoreIbexTlulHostUserRsvdBits
         }
       ]
       inter_signal_list:
