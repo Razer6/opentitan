@@ -1575,5 +1575,10 @@ end
         u_otp.gen_generic.u_impl_generic.u_state_regs, alert_tx_o[3])
     `ASSERT_PRIM_REG_WE_ONEHOT_ERROR_TRIGGER_ALERT(PrimRegWeOnehotCheck_A,
         u_otp.gen_generic.u_impl_generic.u_reg_top, alert_tx_o[3])
+  end else if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin : gen_reg_we_assert_rdp
+    `ASSERT_PRIM_FSM_ERROR_TRIGGER_ALERT(PrimFsmCheck_A,
+        u_otp.gen_rdp.u_impl_rdp.u_state_regs, alert_tx_o[3])
+    `ASSERT_PRIM_REG_WE_ONEHOT_ERROR_TRIGGER_ALERT(PrimRegWeOnehotCheck_A,
+        u_otp.gen_rdp.u_impl_rdp.u_reg_top, alert_tx_o[3])
   end
 endmodule : otp_ctrl
