@@ -68,6 +68,13 @@
       local:   "false",
       expose:  "true"
     },
+    { name:    "TLRsvdInitiatorId"
+      type:    "logic [tlul_pkg::RsvdWidth-1:0]"
+      default: "'0"
+      desc:    "TLUL user bits send on outgoing transfers."
+      local:   "false"
+      expose:  "true"
+    },
   ]
   interrupt_list: [
   ],
