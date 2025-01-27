@@ -2706,26 +2706,26 @@ module top_darjeeling #(
   assign incoming_alert_pwc_extra_alerts_rx_o = alert_rx[151:151];
 
   // Alert mapping to the alert handler for alert group rot_extra_alerts
-  // [152]: alert_trigger
-  // [153]: alert_trigger
-  // [154]: reset_alert
-  // [155]: integ_error
-  // [156]: integ_error
-  // [157]: integ_error
-  // [158]: prim_otp_recov_err
-  // [159]: prim_otp_fatal_err
-  // [160]: integ_error
-  // [161]: integ_error
-  // [162]: integ_error
-  // [163]: integ_error
-  // [164]: esc_err_3
-  // [165]: esc_err_2
-  // [166]: esc_err_1
-  // [167]: esc_err_0
-  // [168]: hi_integ_err
-  // [169]: lo_integ_err
-  // [170]: csrng_recov
-  // [171]: integ_error
+  // [152]: ams_ip_wrapper_integ_error
+  // [153]: ams_ip_wrapper_csrng_recov
+  // [154]: ssram_lo_integ_err
+  // [155]: ssram_hi_integ_err
+  // [156]: lsio_group_esc_err_0
+  // [157]: lsio_group_esc_err_1
+  // [158]: lsio_group_esc_err_2
+  // [159]: lsio_group_esc_err_3
+  // [160]: ns_group_integ_error
+  // [161]: lio_group_v_integ_error
+  // [162]: lio_group_p_integ_error
+  // [163]: ns_efuse_integ_error
+  // [164]: ns_efuse_prim_otp_fatal_err
+  // [165]: ns_efuse_prim_otp_recov_err
+  // [166]: rc_widget_integ_error
+  // [167]: rot_hdr_integ_error
+  // [168]: rot_pcie_adapter_integ_error
+  // [169]: ras_ctl_reset_alert
+  // [170]: scsif_regs_alert_trigger
+  // [171]: scs_rai_alert_trigger
   assign alert_tx[171:152] = incoming_alert_rot_extra_alerts_tx_i;
   assign incoming_alert_rot_extra_alerts_rx_o = alert_rx[171:152];
 
