@@ -11,15 +11,14 @@ Referring to the [Comportable guideline for peripheral device functionality](htt
 
 ## [Inter-Module Signals](https://opentitan.org/book/doc/contributing/hw/comportability/index.html#inter-signal-handling)
 
-| Port Name    | Package::Struct                 | Type    | Act   |   Width | Description            |
-|:-------------|:--------------------------------|:--------|:------|--------:|:-----------------------|
-| rom_cfg      | prim_rom_pkg::rom_cfg           | uni     | rcv   |       1 |                        |
-| pwrmgr_data  | rom_ctrl_pkg::pwrmgr_data       | uni     | req   |       1 |                        |
-| keymgr_data  | rom_ctrl_pkg::keymgr_data       | uni     | req   |       1 |                        |
-| kmac_data    | kmac_pkg::app                   | req_rsp | req   |       1 |                        |
-| rom_test_cfg | prim_misc_dft_pkg::rom_test_cfg | uni     | rcv   |       1 | ROM test configuration |
-| regs_tl      | tlul_pkg::tl                    | req_rsp | rsp   |       1 |                        |
-| rom_tl       | tlul_pkg::tl                    | req_rsp | rsp   |       1 |                        |
+| Port Name   | Package::Struct           | Type    | Act   |   Width | Description   |
+|:------------|:--------------------------|:--------|:------|--------:|:--------------|
+| rom_cfg     | prim_rom_pkg::rom_cfg     | uni     | rcv   |       1 |               |
+| pwrmgr_data | rom_ctrl_pkg::pwrmgr_data | uni     | req   |       1 |               |
+| keymgr_data | rom_ctrl_pkg::keymgr_data | uni     | req   |       1 |               |
+| kmac_data   | kmac_pkg::app             | req_rsp | req   |       1 |               |
+| regs_tl     | tlul_pkg::tl              | req_rsp | rsp   |       1 |               |
+| rom_tl      | tlul_pkg::tl              | req_rsp | rsp   |       1 |               |
 
 ## Security Alerts
 

@@ -1385,8 +1385,6 @@
         'soc_dbg_ctrl.soc_dbg_policy_bus'      : 'soc_dbg_policy_bus',
         'soc_dbg_ctrl.halt_cpu_boot'           : 'debug_halt_cpu_boot',
         // Additional Rivos DFT signals
-        'rom_ctrl0.rom_test_cfg'             : 'rom_ctrl0_test_cfg',
-        'rom_ctrl1.rom_test_cfg'             : 'rom_ctrl1_test_cfg',
         'spi_device.tston'                   : 'tston',
     },
   },

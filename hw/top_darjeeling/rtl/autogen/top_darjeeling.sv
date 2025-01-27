@@ -286,8 +286,6 @@ module top_darjeeling #(
   output logic       sck_monitor_o,
   output soc_dbg_ctrl_pkg::soc_dbg_policy_t       soc_dbg_policy_bus_o,
   input  logic       debug_halt_cpu_boot_i,
-  input  prim_misc_dft_pkg::rom_test_cfg_t       rom_ctrl0_test_cfg_i,
-  input  prim_misc_dft_pkg::rom_test_cfg_t       rom_ctrl1_test_cfg_i,
   input  prim_mubi_pkg::mubi4_t       tston_i,
 
   // Incoming interrupt of group rot_external
@@ -2164,7 +2162,6 @@ module top_darjeeling #(
       .keymgr_data_o(keymgr_dpe_rom_digest[0]),
       .kmac_data_o(kmac_app_req[2]),
       .kmac_data_i(kmac_app_rsp[2]),
-      .rom_test_cfg_i(rom_ctrl0_test_cfg_i),
       .regs_tl_i(rom_ctrl0_regs_tl_req),
       .regs_tl_o(rom_ctrl0_regs_tl_rsp),
       .rom_tl_i(rom_ctrl0_rom_tl_req),
@@ -2192,7 +2189,6 @@ module top_darjeeling #(
       .keymgr_data_o(keymgr_dpe_rom_digest[1]),
       .kmac_data_o(kmac_app_req[3]),
       .kmac_data_i(kmac_app_rsp[3]),
-      .rom_test_cfg_i(rom_ctrl1_test_cfg_i),
       .regs_tl_i(rom_ctrl1_regs_tl_req),
       .regs_tl_o(rom_ctrl1_regs_tl_rsp),
       .rom_tl_i(rom_ctrl1_rom_tl_req),

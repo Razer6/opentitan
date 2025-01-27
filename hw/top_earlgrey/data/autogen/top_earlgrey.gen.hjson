@@ -8959,17 +8959,6 @@
           index: 2
         }
         {
-          name: rom_test_cfg
-          desc: ROM test configuration
-          struct: rom_test_cfg
-          package: prim_misc_dft_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: rom_ctrl
-          index: -1
-        }
-        {
           name: regs_tl
           struct: tl
           package: tlul_pkg
@@ -22832,17 +22821,6 @@
         default: ""
         top_signame: kmac_app
         index: 2
-      }
-      {
-        name: rom_test_cfg
-        desc: ROM test configuration
-        struct: rom_test_cfg
-        package: prim_misc_dft_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: rom_ctrl
-        index: -1
       }
       {
         name: regs_tl

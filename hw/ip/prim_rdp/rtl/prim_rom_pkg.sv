@@ -6,9 +6,7 @@
 package prim_rom_pkg;
 
   typedef struct packed {
-    logic       test;
-    logic       cfg_en;
-    logic [3:0] cfg;
+    prim_misc_dft_pkg::rom_test_cfg_t test_cfg;
   } rom_cfg_t;
 
   parameter rom_cfg_t ROM_CFG_DEFAULT = '0;

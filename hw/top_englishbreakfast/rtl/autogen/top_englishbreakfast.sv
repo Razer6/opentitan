@@ -1235,7 +1235,6 @@ module top_englishbreakfast #(
       .keymgr_data_o(),
       .kmac_data_o(),
       .kmac_data_i(kmac_pkg::APP_RSP_DEFAULT),
-      .rom_test_cfg_i(prim_misc_dft_pkg::ROM_TEST_CFG_DEFAULT),
       .regs_tl_i(rom_ctrl_regs_tl_req),
       .regs_tl_o(rom_ctrl_regs_tl_rsp),
       .rom_tl_i(rom_ctrl_rom_tl_req),

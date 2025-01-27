@@ -134,18 +134,6 @@
       act:     "req"
       type:    "req_rsp"
     },
-
-    // DFT signals
-    { struct:  "rom_test_cfg"
-      type:    "uni"
-      name:    "rom_test_cfg"
-      act:     "rcv"
-      desc:    '''
-               ROM test configuration
-               ''',
-      package: "prim_misc_dft_pkg"
-    },
-
   ],
   countermeasures: [
     {

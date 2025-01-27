@@ -16,8 +16,7 @@ module prim_rdp_rom import prim_rom_pkg::*; #(
   input  logic             req_i,
   input  logic [Aw-1:0]    addr_i,
   output logic [Width-1:0] rdata_o,
-  input  rom_cfg_t         cfg_i,
-  input  prim_misc_dft_pkg::rom_test_cfg_t rom_test_cfg_i
+  input  rom_cfg_t         cfg_i
 );
 
   logic unused_signals;
@@ -35,10 +34,10 @@ module prim_rdp_rom import prim_rom_pkg::*; #(
             .addr           (addr_i),
             .rdData         (rdata_o),
             // Software controller ports
-            .RM             (rom_test_cfg_i.rm),
-            .RME            (rom_test_cfg_i.rme),
-            .LS             (rom_test_cfg_i.ls),
-            .TEST1          (rom_test_cfg_i.test1)
+            .RM             (cfg_i.test_cfg.rm),
+            .RME            (cfg_i.test_cfg.rme),
+            .LS             (cfg_i.test_cfg.ls),
+            .TEST1          (cfg_i.test_cfg.test1)
         );
       end else begin : gen_64k_rom
         rvscs_ot_64k_ecc_rom #(
@@ -51,10 +50,10 @@ module prim_rdp_rom import prim_rom_pkg::*; #(
             .addr           (addr_i),
             .rdData         (rdata_o),
             // Software controller ports
-            .RM             (rom_test_cfg_i.rm),
-            .RME            (rom_test_cfg_i.rme),
-            .LS             (rom_test_cfg_i.ls),
-            .TEST1          (rom_test_cfg_i.test1)
+            .RM             (cfg_i.test_cfg.rm),
+            .RME            (cfg_i.test_cfg.rme),
+            .LS             (cfg_i.test_cfg.ls),
+            .TEST1          (cfg_i.test_cfg.test1)
         );
       end
   end else begin : gen_no_ecc_rom
@@ -69,10 +68,10 @@ module prim_rdp_rom import prim_rom_pkg::*; #(
           .addr           (addr_i),
           .rdData         (rdata_o),
           // Software controller ports
-          .RM             (rom_test_cfg_i.rm),
-          .RME            (rom_test_cfg_i.rme),
-          .LS             (rom_test_cfg_i.ls),
-          .TEST1          (rom_test_cfg_i.test1)
+          .RM             (cfg_i.test_cfg.rm),
+          .RME            (cfg_i.test_cfg.rme),
+          .LS             (cfg_i.test_cfg.ls),
+          .TEST1          (cfg_i.test_cfg.test1)
       );
     end else begin : gen_64k_rom
       rvscs_ot_64k_rom #(
@@ -85,10 +84,10 @@ module prim_rdp_rom import prim_rom_pkg::*; #(
           .addr           (addr_i),
           .rdData         (rdata_o),
           // Software controller ports
-          .RM             (rom_test_cfg_i.rm),
-          .RME            (rom_test_cfg_i.rme),
-          .LS             (rom_test_cfg_i.ls),
-          .TEST1          (rom_test_cfg_i.test1)
+          .RM             (cfg_i.test_cfg.rm),
+          .RME            (cfg_i.test_cfg.rme),
+          .LS             (cfg_i.test_cfg.ls),
+          .TEST1          (cfg_i.test_cfg.test1)
       );
     end
   end

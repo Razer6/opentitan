@@ -55,9 +55,7 @@ module rom_ctrl_scrambled_rom
   output logic [Width-1:0] scr_rdata_o,
   output logic [Width-1:0] clr_rdata_o,
 
-  input rom_cfg_t          cfg_i,
-
-  input  prim_misc_dft_pkg::rom_test_cfg_t rom_test_cfg_i
+  input rom_cfg_t          cfg_i
 );
 
   /////////////////////////////////////
@@ -150,8 +148,7 @@ module rom_ctrl_scrambled_rom
     .addr_i   (addr_scr),
     .rvalid_o (rvalid_o),
     .rdata_o  ({rdata_scr_pad, rdata_scr}),
-    .cfg_i    (cfg_i),
-    .rom_test_cfg_i (rom_test_cfg_i)
+    .cfg_i    (cfg_i)
   );
 
   logic unused_pad;

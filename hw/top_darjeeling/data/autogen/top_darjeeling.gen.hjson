@@ -7133,21 +7133,6 @@
           index: 2
         }
         {
-          name: rom_test_cfg
-          desc: ROM test configuration
-          struct: rom_test_cfg
-          package: prim_misc_dft_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: rom_ctrl0
-          default: ""
-          external: true
-          top_signame: rom_ctrl0_test_cfg
-          conn_type: false
-          index: -1
-        }
-        {
           name: regs_tl
           struct: tl
           package: tlul_pkg
@@ -7332,21 +7317,6 @@
           default: ""
           top_signame: kmac_app
           index: 3
-        }
-        {
-          name: rom_test_cfg
-          desc: ROM test configuration
-          struct: rom_test_cfg
-          package: prim_misc_dft_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: rom_ctrl1
-          default: ""
-          external: true
-          top_signame: rom_ctrl1_test_cfg
-          conn_type: false
-          index: -1
         }
         {
           name: regs_tl
@@ -10612,8 +10582,6 @@
       spi_device.sck_monitor: sck_monitor
       soc_dbg_ctrl.soc_dbg_policy_bus: soc_dbg_policy_bus
       soc_dbg_ctrl.halt_cpu_boot: debug_halt_cpu_boot
-      rom_ctrl0.rom_test_cfg: rom_ctrl0_test_cfg
-      rom_ctrl1.rom_test_cfg: rom_ctrl1_test_cfg
       spi_device.tston: tston
     }
   }
@@ -23287,21 +23255,6 @@
         index: 2
       }
       {
-        name: rom_test_cfg
-        desc: ROM test configuration
-        struct: rom_test_cfg
-        package: prim_misc_dft_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: rom_ctrl0
-        default: ""
-        external: true
-        top_signame: rom_ctrl0_test_cfg
-        conn_type: false
-        index: -1
-      }
-      {
         name: regs_tl
         struct: tl
         package: tlul_pkg
@@ -23376,21 +23329,6 @@
         default: ""
         top_signame: kmac_app
         index: 3
-      }
-      {
-        name: rom_test_cfg
-        desc: ROM test configuration
-        struct: rom_test_cfg
-        package: prim_misc_dft_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: rom_ctrl1
-        default: ""
-        external: true
-        top_signame: rom_ctrl1_test_cfg
-        conn_type: false
-        index: -1
       }
       {
         name: regs_tl
@@ -27424,30 +27362,6 @@
         conn_type: false
         index: -1
         netname: debug_halt_cpu_boot
-      }
-      {
-        package: prim_misc_dft_pkg
-        struct: rom_test_cfg
-        signame: rom_ctrl0_test_cfg_i
-        width: 1
-        type: uni
-        default: ""
-        direction: in
-        conn_type: false
-        index: -1
-        netname: rom_ctrl0_test_cfg
-      }
-      {
-        package: prim_misc_dft_pkg
-        struct: rom_test_cfg
-        signame: rom_ctrl1_test_cfg_i
-        width: 1
-        type: uni
-        default: ""
-        direction: in
-        conn_type: false
-        index: -1
-        netname: rom_ctrl1_test_cfg
       }
       {
         package: prim_mubi_pkg

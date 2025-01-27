@@ -2703,7 +2703,6 @@ module top_earlgrey #(
       .keymgr_data_o(rom_ctrl_keymgr_data),
       .kmac_data_o(kmac_app_req[2]),
       .kmac_data_i(kmac_app_rsp[2]),
-      .rom_test_cfg_i(prim_misc_dft_pkg::ROM_TEST_CFG_DEFAULT),
       .regs_tl_i(rom_ctrl_regs_tl_req),
       .regs_tl_o(rom_ctrl_regs_tl_rsp),
       .rom_tl_i(rom_ctrl_rom_tl_req),
