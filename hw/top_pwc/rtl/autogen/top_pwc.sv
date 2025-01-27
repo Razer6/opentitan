@@ -84,8 +84,8 @@ module top_pwc #(
   parameter bit RvCoreIbexDbgTriggerEn = 1,
   parameter int RvCoreIbexDbgHwBreakNum = 4,
   parameter bit RvCoreIbexSecureIbex = 1,
-  parameter int unsigned RvCoreIbexDmBaseAddr = 437321728,
-  parameter int unsigned RvCoreIbexDmAddrMask = 4095,
+  parameter int unsigned RvCoreIbexDmBaseAddr = tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM,
+  parameter int unsigned RvCoreIbexDmAddrMask = tl_pwc_main_pkg::ADDR_MASK_RV_DM__MEM,
   parameter int unsigned RvCoreIbexDmHaltAddr =
       tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0],
   parameter int unsigned RvCoreIbexDmExceptionAddr =

@@ -3152,6 +3152,8 @@
         DbgTriggerEn: "1"
         DbgHwBreakNum: "4"
         SecureIbex: "1"
+        DmBaseAddr: tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM
+        DmAddrMask: tl_mio_main_pkg::ADDR_MASK_RV_DM__MEM
         DmHaltAddr: tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0]
         DmExceptionAddr: tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0]
         PipeLine: "0"
@@ -3472,7 +3474,7 @@
           name: DmBaseAddr
           desc: Base address of Debug Module
           type: int unsigned
-          default: "437321728"
+          default: tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM
           local: "false"
           expose: "true"
           name_top: RvCoreIbexDmBaseAddr
@@ -3481,7 +3483,7 @@
           name: DmAddrMask
           desc: Adress mask of Debug Module
           type: int unsigned
-          default: "4095"
+          default: tl_mio_main_pkg::ADDR_MASK_RV_DM__MEM
           local: "false"
           expose: "true"
           name_top: RvCoreIbexDmAddrMask
