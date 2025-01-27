@@ -677,9 +677,7 @@ module rv_core_ibex
     .spare_rsp_o ());
 
 `ifdef RVFI
-  logic [31:0] tracer_hart_id;
-  assign tracer_hart_id = hart_id_i;
-
+  logic [31:0] hart_id = tracer_hart_id;
   ibex_tracer ibex_tracer_i (
     .clk_i,
     .rst_ni,
