@@ -888,6 +888,9 @@
         core: {hart: "0x22000000"},
         soc:  {soc_mbx: "0x01465000"},
       },
+      racl_mappings: {
+        soc: 'top_darjeeling/data/racl/all_rd_wr_mapping.hjson'
+      }
     },
     { name: "mbx1",
       type: "mbx",
@@ -898,6 +901,9 @@
         core: {hart: "0x22000100"},
         soc:  {soc_mbx: "0x01465100"},
       },
+      racl_mappings: {
+        soc: 'top_darjeeling/data/racl/all_rd_wr_mapping.hjson'
+      }
     },
     { name: "mbx2",
       type: "mbx",
@@ -908,6 +914,9 @@
         core: {hart: "0x22000200"},
         soc:  {soc_mbx: "0x01465200"},
       },
+      racl_mappings: {
+        soc: 'top_darjeeling/data/racl/all_rd_wr_mapping.hjson'
+      }
     },
     { name: "mbx3",
       type: "mbx",
@@ -928,6 +937,9 @@
         core: {hart: "0x22000400"},
         soc:  {soc_mbx: "0x01465400"},
       },
+      racl_mappings: {
+        soc: 'top_darjeeling/data/racl/all_rd_wr_mapping.hjson'
+      }
     },
     { name: "mbx5",
       type: "mbx",
@@ -938,6 +950,9 @@
         core: {hart: "0x22000500"},
         soc:  {soc_mbx: "0x01465500"},
       },
+      racl_mappings: {
+        soc: 'top_darjeeling/data/racl/all_rd_wr_mapping.hjson'
+      }
     },
     { name: "mbx6",
       type: "mbx",
@@ -958,6 +973,9 @@
         core: {hart: "0x22000800"},
         soc:  {soc_dbg: "0x1000"},
       },
+      racl_mappings: {
+        soc: 'top_darjeeling/data/racl/all_rd_wr_mapping.hjson'
+      }
     },
     { name: "mbx_pcie0",
       type: "mbx",
@@ -968,6 +986,9 @@
         core: {hart: "0x22040000"},
         soc:  {soc_mbx: "0x01460100"},
       },
+      racl_mappings: {
+        soc: 'top_darjeeling/data/racl/soc_rot_mapping.hjson'
+      }
     },
     { name: "mbx_pcie1",
       type: "mbx",
@@ -978,6 +999,9 @@
         core: {hart: "0x22040100"},
         soc:  {soc_mbx: "0x01460200"},
       },
+      racl_mappings: {
+        soc: 'top_darjeeling/data/racl/soc_rot_mapping.hjson'
+      }
     },
     { name: "soc_dbg_ctrl",
       type: "soc_dbg_ctrl",
