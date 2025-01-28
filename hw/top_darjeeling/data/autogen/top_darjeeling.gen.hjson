@@ -4323,6 +4323,46 @@
           index: -1
         }
         {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: sram_ctrl_ret_aon
+          index: -1
+        }
+        {
+          name: racl_error
+          desc:
+            '''
+            RACL error indication signal.
+            If 1, the error log contains valid information.
+            '''
+          struct: logic
+          type: uni
+          act: req
+          width: 1
+          inst_name: sram_ctrl_ret_aon
+          index: -1
+        }
+        {
+          name: racl_error_log
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: sram_ctrl_ret_aon
+          index: -1
+        }
+        {
           name: sram_error_record_uncor_err
           desc: SRAM Error injection reporting
           struct: logic
@@ -6639,6 +6679,46 @@
           index: -1
         }
         {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: sram_ctrl_main
+          index: -1
+        }
+        {
+          name: racl_error
+          desc:
+            '''
+            RACL error indication signal.
+            If 1, the error log contains valid information.
+            '''
+          struct: logic
+          type: uni
+          act: req
+          width: 1
+          inst_name: sram_ctrl_main
+          index: -1
+        }
+        {
+          name: racl_error_log
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: sram_ctrl_main
+          index: -1
+        }
+        {
           name: sram_error_record_uncor_err
           desc: SRAM Error injection reporting
           struct: logic
@@ -6962,6 +7042,46 @@
           act: rcv
           width: 1
           default: prim_mubi_pkg::MuBi8False
+          inst_name: sram_ctrl_mbox
+          index: -1
+        }
+        {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: sram_ctrl_mbox
+          index: -1
+        }
+        {
+          name: racl_error
+          desc:
+            '''
+            RACL error indication signal.
+            If 1, the error log contains valid information.
+            '''
+          struct: logic
+          type: uni
+          act: req
+          width: 1
+          inst_name: sram_ctrl_mbox
+          index: -1
+        }
+        {
+          name: racl_error_log
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
           inst_name: sram_ctrl_mbox
           index: -1
         }
@@ -22343,6 +22463,46 @@
         index: -1
       }
       {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: sram_ctrl_ret_aon
+        index: -1
+      }
+      {
+        name: racl_error
+        desc:
+          '''
+          RACL error indication signal.
+          If 1, the error log contains valid information.
+          '''
+        struct: logic
+        type: uni
+        act: req
+        width: 1
+        inst_name: sram_ctrl_ret_aon
+        index: -1
+      }
+      {
+        name: racl_error_log
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: sram_ctrl_ret_aon
+        index: -1
+      }
+      {
         name: sram_error_record_uncor_err
         desc: SRAM Error injection reporting
         struct: logic
@@ -23496,6 +23656,46 @@
         index: -1
       }
       {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: sram_ctrl_main
+        index: -1
+      }
+      {
+        name: racl_error
+        desc:
+          '''
+          RACL error indication signal.
+          If 1, the error log contains valid information.
+          '''
+        struct: logic
+        type: uni
+        act: req
+        width: 1
+        inst_name: sram_ctrl_main
+        index: -1
+      }
+      {
+        name: racl_error_log
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: sram_ctrl_main
+        index: -1
+      }
+      {
         name: sram_error_record_uncor_err
         desc: SRAM Error injection reporting
         struct: logic
@@ -23642,6 +23842,46 @@
         act: rcv
         width: 1
         default: prim_mubi_pkg::MuBi8False
+        inst_name: sram_ctrl_mbox
+        index: -1
+      }
+      {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: sram_ctrl_mbox
+        index: -1
+      }
+      {
+        name: racl_error
+        desc:
+          '''
+          RACL error indication signal.
+          If 1, the error log contains valid information.
+          '''
+        struct: logic
+        type: uni
+        act: req
+        width: 1
+        inst_name: sram_ctrl_mbox
+        index: -1
+      }
+      {
+        name: racl_error_log
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
         inst_name: sram_ctrl_mbox
         index: -1
       }

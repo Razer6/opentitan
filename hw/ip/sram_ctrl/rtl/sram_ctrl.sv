@@ -25,16 +25,19 @@ module sram_ctrl
   // Setting this to 3 lowers this to approximately 7 effective rounds.
   parameter int NumPrinceRoundsHalf                     = 3,
   // Random netlist constants
-  parameter otp_ctrl_pkg::sram_key_t   RndCnstSramKey   = RndCnstSramKeyDefault,
-  parameter otp_ctrl_pkg::sram_nonce_t RndCnstSramNonce = RndCnstSramNonceDefault,
-  parameter lfsr_seed_t                RndCnstLfsrSeed  = RndCnstLfsrSeedDefault,
-  parameter lfsr_perm_t                RndCnstLfsrPerm  = RndCnstLfsrPermDefault,
-  parameter bit                        UseCompiledRam   = 0,
-  parameter bit                        FlopRamOutput    = 0,
+  parameter  otp_ctrl_pkg::sram_key_t   RndCnstSramKey   = RndCnstSramKeyDefault,
+  parameter  otp_ctrl_pkg::sram_nonce_t RndCnstSramNonce = RndCnstSramNonceDefault,
+  parameter  lfsr_seed_t                RndCnstLfsrSeed  = RndCnstLfsrSeedDefault,
+  parameter  lfsr_perm_t                RndCnstLfsrPerm  = RndCnstLfsrPermDefault,
+  parameter bit          EnableRacl                      = 1'b0,
+  parameter bit          RaclErrorRsp                    = EnableRacl,
+  parameter int unsigned RaclPolicySelVecRegs[9]         = '{9{0}},
+  parameter bit                        UseCompiledRam    = 0,
+  parameter bit                        FlopRamOutput     = 0,
   // Set this to report errors to tlul adapter, otherwise they will be sent to error record
-  parameter bit                        UseOTIntegErr    = 0,
+  parameter bit                        UseOTIntegErr     = 0,
   // The maximum number of outstanding TL-UL requests to the memory
-  parameter int                        Outstanding      = 6
+  parameter int                        Outstanding       = 6
 ) (
   // SRAM Clock
   input  logic                                              clk_i,
@@ -51,6 +54,10 @@ module sram_ctrl
   // Alert outputs.
   input  prim_alert_pkg::alert_rx_t [NumAlerts-1:0]         alert_rx_i,
   output prim_alert_pkg::alert_tx_t [NumAlerts-1:0]         alert_tx_o,
+  // RACL interface
+  input  top_racl_pkg::racl_policy_vec_t                     racl_policies_i,
+  output logic                                               racl_error_o,
+  output top_racl_pkg::racl_error_log_t                      racl_error_log_o,
   // Life-cycle escalation input (scraps the scrambling keys)
   // SEC_CM: LC_ESCALATE_EN.INTERSIG.MUBI
   input  lc_ctrl_pkg::lc_tx_t                                lc_escalate_en_i,
@@ -127,13 +134,21 @@ module sram_ctrl
   // SEC_CM: CTRL.CONFIG.REGWEN
   // SEC_CM: EXEC.CONFIG.REGWEN
   // SEC_CM: READBACK.CONFIG.REGWEN
-  sram_ctrl_regs_reg_top u_reg_regs (
+  sram_ctrl_regs_reg_top #(
+    .EnableRacl       ( EnableRacl           ),
+    .RaclErrorRsp     ( RaclErrorRsp         ),
+    .RaclPolicySelVec ( RaclPolicySelVecRegs )
+  ) u_reg_regs (
     .clk_i,
     .rst_ni,
     .tl_i      (regs_tl_i),
     .tl_o      (regs_tl_o),
     .reg2hw,
     .hw2reg,
+    // RACL interface
+    .racl_policies_i  ( racl_policies_i    ),
+    .racl_error_o     ( racl_error_o       ),
+    .racl_error_log_o ( racl_error_log_o   ),
     // SEC_CM: BUS.INTEGRITY
     .intg_err_o(bus_integ_error[0])
    );
@@ -647,6 +662,8 @@ module sram_ctrl
   `ASSERT_KNOWN_IF(RamTlOutPayLoadKnown_A, ram_tl_o, ram_tl_o.d_valid)
   `ASSERT_KNOWN(AlertOutKnown_A,   alert_tx_o)
   `ASSERT_KNOWN(SramOtpKeyKnown_A, sram_otp_key_o)
+  `ASSERT_KNOWN(RaclErrorKnown_A, racl_error_o)
+  `ASSERT_KNOWN(RaclErrorLogKnown_A, racl_error_log_o)
 
   // Alert assertions for redundant counters.
   `ASSERT_PRIM_COUNT_ERROR_TRIGGER_ALERT(CntCheck_A,
