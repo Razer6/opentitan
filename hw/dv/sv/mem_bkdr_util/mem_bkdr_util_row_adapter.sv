@@ -4,7 +4,7 @@
 
 // Provide an abstract way to access the memory rows
 //
-// Integrators can subclass this to privide a specfic way of accessing a memory row
+// Integrators can subclass this to provide a specfic way of accessing a memory row
 // and incorporate the phyical architecture.
 //
 class mem_bkdr_util_row_adapter;

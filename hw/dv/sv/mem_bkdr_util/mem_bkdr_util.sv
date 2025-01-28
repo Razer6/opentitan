@@ -96,7 +96,7 @@ class mem_bkdr_util extends uvm_object;
   //
   // Optional arguments:
   //
-  //   row_adapter             Adapter to access the internal row of a memory. Integrators can
+  //  row_adapter              Adapter to access the internal row of a memory. Integrators can
   //                           provide a custom adapter for a different memory architecture.
   //
   //  num_prince_rounds_half   The number of rounds of PRINCE used to scramble the memory. This is
@@ -143,8 +143,8 @@ class mem_bkdr_util extends uvm_object;
     this.tiling_path            = tiling_path;
     this.depth                  = depth;
     this.tile_depth             = tile_depth;
-    this.width                  = (n_bits / depth) - this.row_adapter.get_num_extra_bits();
     this.tiling_suffix_fmt_str  = tiling_suffix_fmt_str;
+    this.width                  = (n_bits / depth) - this.row_adapter.get_num_extra_bits();
     this.err_detection_scheme   = err_detection_scheme;
     this.num_prince_rounds_half = num_prince_rounds_half;
 
