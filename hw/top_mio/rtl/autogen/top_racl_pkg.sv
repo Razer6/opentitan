@@ -16,10 +16,10 @@ package top_racl_pkg;
   parameter int unsigned NrRaclPolicies = 1;
 
   // Number of RACL bits transferred
-  parameter int unsigned NrRaclBits = 4;
+  parameter int unsigned NrRaclBits = 1;
 
   // Number of CTN UID bits transferred
-  parameter int unsigned NrCtnUidBits = 8;
+  parameter int unsigned NrCtnUidBits = 1;
 
   // RACL role type binary encoded
   typedef logic [NrRaclBits-1:0] racl_role_t;
@@ -39,12 +39,21 @@ package top_racl_pkg;
   // RACL policy vector for distributing RACL policies from the RACL widget to the subscribing IP
   typedef racl_policy_t [NrRaclPolicies-1:0] racl_policy_vec_t;
 
+  // Default policy vector for unconnected RACL IPs
+  parameter racl_policy_vec_t RACL_POLICY_VEC_DEFAULT = '0;
+
+  // Default ROT Private read policy value
+  parameter racl_role_vec_t RACL_POLICY_ROT_PRIVATE_RD = 2'h0;
+
+  // Default ROT Private write policy value
+  parameter racl_role_vec_t RACL_POLICY_ROT_PRIVATE_WR = 2'h0;
+
   // RACL information logged in case of a denial
   typedef struct packed {
     racl_role_t racl_role;
     ctn_uid_t   ctn_uid;
     // 0: Write access, 1: Read access
-    logic       read_not_write;
+    logic       read_access;
   } racl_error_log_t;
 
   // Extract RACL role bits from the TLUL reserved user bits
@@ -53,7 +62,7 @@ package top_racl_pkg;
     logic unused_rsvd_bits;
     unused_rsvd_bits = ^{rsvd};
 
-    return racl_role_t'(rsvd[11:8]);
+    return racl_role_t'(rsvd[0:0]);
   endfunction
 
   // Extract CTN UID bits from the TLUL reserved user bits
@@ -62,7 +71,7 @@ package top_racl_pkg;
     logic unused_rsvd_bits;
     unused_rsvd_bits = ^{rsvd};
 
-    return ctn_uid_t'(rsvd[7:0]);
+    return ctn_uid_t'(rsvd[0:0]);
   endfunction
 
 

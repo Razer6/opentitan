@@ -1208,6 +1208,15 @@
           expose: "true"
           name_top: SecRvDmVolatileRawUnlockEn
         }
+        {
+          name: TLRsvdInitiatorId
+          desc: TLUL user bits send on outgoing transfers.
+          type: logic [tlul_pkg::RsvdWidth-1:0]
+          default: "'0"
+          local: "false"
+          expose: "true"
+          name_top: RvDmTLRsvdInitiatorId
+        }
       ]
       inter_signal_list:
       [
@@ -3514,6 +3523,15 @@
           local: "false"
           expose: "true"
           name_top: RvCoreIbexPipeLine
+        }
+        {
+          name: TLRsvdInitiatorId
+          desc: TLUL user bits send on outgoing transfers.
+          type: logic [tlul_pkg::RsvdWidth-1:0]
+          default: "'0"
+          local: "false"
+          expose: "true"
+          name_top: RvCoreIbexTLRsvdInitiatorId
         }
       ]
       inter_signal_list:

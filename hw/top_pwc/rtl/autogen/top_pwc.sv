@@ -32,6 +32,7 @@ module top_pwc #(
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
   parameter bit RvDmUseDmiInterface = 1,
   parameter bit SecRvDmVolatileRawUnlockEn = top_pkg::SecVolatileRawUnlockEn,
+  parameter logic [tlul_pkg::RsvdWidth-1:0] RvDmTLRsvdInitiatorId = '0,
   // parameters for rv_plic
   // parameters for sram_ctrl_main
   parameter int SramCtrlMainInstSize = 65536,
@@ -90,7 +91,8 @@ module top_pwc #(
       tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0],
   parameter int unsigned RvCoreIbexDmExceptionAddr =
       tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0],
-  parameter bit RvCoreIbexPipeLine = 0
+  parameter bit RvCoreIbexPipeLine = 0,
+  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexTLRsvdInitiatorId = '0
 ) (
 
 
@@ -480,7 +482,8 @@ module top_pwc #(
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[5:5]),
     .IdcodeValue(RvDmIdcodeValue),
     .UseDmiInterface(RvDmUseDmiInterface),
-    .SecVolatileRawUnlockEn(SecRvDmVolatileRawUnlockEn)
+    .SecVolatileRawUnlockEn(SecRvDmVolatileRawUnlockEn),
+    .TLRsvdInitiatorId(RvDmTLRsvdInitiatorId)
   ) u_rv_dm (
       // External alert group "pwc" [5]: fatal_fault
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[5:5] ),
@@ -861,7 +864,8 @@ module top_pwc #(
     .DmAddrMask(RvCoreIbexDmAddrMask),
     .DmHaltAddr(RvCoreIbexDmHaltAddr),
     .DmExceptionAddr(RvCoreIbexDmExceptionAddr),
-    .PipeLine(RvCoreIbexPipeLine)
+    .PipeLine(RvCoreIbexPipeLine),
+    .TLRsvdInitiatorId(RvCoreIbexTLRsvdInitiatorId)
   ) u_rv_core_ibex (
       // External alert group "pwc" [22]: fatal_sw_err
       // External alert group "pwc" [23]: recov_sw_err
