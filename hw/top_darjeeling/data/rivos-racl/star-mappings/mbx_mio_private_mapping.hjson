@@ -4,6 +4,11 @@
 
 {
   Null: {
-    "*": "MIO_PRIVATE"
+    registers: {
+      "*": "MIO_PRIVATE"
+    }
+    windows: {
+      "*": "MIO_PRIVATE"
+    }
   }
 }

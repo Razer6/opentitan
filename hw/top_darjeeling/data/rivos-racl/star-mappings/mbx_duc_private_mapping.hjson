@@ -4,6 +4,11 @@
 
 {
   Null: {
-    "*": "DUC_PRIVATE"
+    registers: {
+      "*": "DUC_PRIVATE"
+    }
+    windows: {
+      "*": "DUC_PRIVATE"
+    }
   }
 }

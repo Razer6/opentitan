@@ -4,6 +4,11 @@
 
 {
   Null: {
-    "*": "PWC_PRIVATE"
+    registers: {
+      "*": "PWC_PRIVATE"
+    }
+    windows: {
+      "*": "PWC_PRIVATE"
+    }
   }
 }

@@ -4,6 +4,11 @@
 
 {
   Null: {
-    "*": "ROT_PRIVATE"
+    registers: {
+      "*": "ROT_PRIVATE"
+    }
+    windows: {
+      "*": "ROT_PRIVATE"
+    }
   }
 }

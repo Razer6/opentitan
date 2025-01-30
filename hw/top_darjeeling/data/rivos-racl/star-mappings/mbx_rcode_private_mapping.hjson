@@ -4,6 +4,11 @@
 
 {
   Null: {
-    "*": "RCODE_PRIVATE"
+    registers: {
+      "*": "RCODE_PRIVATE"
+    }
+    windows: {
+      "*": "RCODE_PRIVATE"
+    }
   }
 }

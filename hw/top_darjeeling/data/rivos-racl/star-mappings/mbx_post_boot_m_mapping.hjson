@@ -4,6 +4,11 @@
 
 {
   Null: {
-    "*": "POST_BOOT_M"
+    registers: {
+      "*": "POST_BOOT_M"
+    }
+    windows: {
+      "*": "POST_BOOT_M"
+    }
   }
 }
