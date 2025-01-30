@@ -958,7 +958,7 @@
           name: FlopRamOutput
           desc: Flop the output s
           type: bit
-          default: "1"
+          default: "0"
           local: "false"
           expose: "true"
           name_top: SramCtrlRetAonFlopRamOutput
@@ -1749,7 +1749,7 @@
           name: FlopRamOutput
           desc: Flop the output s
           type: bit
-          default: "1"
+          default: "0"
           local: "false"
           expose: "true"
           name_top: SramCtrlMainFlopRamOutput
@@ -2079,7 +2079,7 @@
           name: FlopRamOutput
           desc: Flop the output s
           type: bit
-          default: "1"
+          default: "0"
           local: "false"
           expose: "true"
           name_top: SramCtrlMboxFlopRamOutput

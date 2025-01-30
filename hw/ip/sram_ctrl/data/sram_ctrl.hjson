@@ -126,7 +126,7 @@
       type:      "bit",
       local:     "false",
       expose:    "true",
-      default:   "1"
+      default:   "0"
     },
   ]
 

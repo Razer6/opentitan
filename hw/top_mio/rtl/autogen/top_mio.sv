@@ -24,7 +24,7 @@ module top_mio #(
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlRetAonUseOTIntegErr = 1,
   parameter bit SramCtrlRetAonUseCompiledRam = 1,
-  parameter bit SramCtrlRetAonFlopRamOutput = 1,
+  parameter bit SramCtrlRetAonFlopRamOutput = 0,
   // parameters for rv_dm
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
   parameter bit RvDmUseDmiInterface = 1,
@@ -38,7 +38,7 @@ module top_mio #(
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMainUseOTIntegErr = 1,
   parameter bit SramCtrlMainUseCompiledRam = 1,
-  parameter bit SramCtrlMainFlopRamOutput = 1,
+  parameter bit SramCtrlMainFlopRamOutput = 0,
   // parameters for sram_ctrl_mbox
   parameter int SramCtrlMboxInstSize = 4096,
   parameter int SramCtrlMboxNumRamInst = 1,
@@ -46,7 +46,7 @@ module top_mio #(
   parameter int SramCtrlMboxNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMboxUseOTIntegErr = 1,
   parameter bit SramCtrlMboxUseCompiledRam = 1,
-  parameter bit SramCtrlMboxFlopRamOutput = 1,
+  parameter bit SramCtrlMboxFlopRamOutput = 0,
   // parameters for dma
   parameter bit DmaEnableDataIntgGen = 1'b1,
   parameter bit DmaEnableRspDataIntgCheck = 1'b1,

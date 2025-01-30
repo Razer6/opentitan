@@ -53,7 +53,7 @@ module top_englishbreakfast #(
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMainUseOTIntegErr = 1,
   parameter bit SramCtrlMainUseCompiledRam = 1,
-  parameter bit SramCtrlMainFlopRamOutput = 1,
+  parameter bit SramCtrlMainFlopRamOutput = 0,
   // parameters for rom_ctrl
   parameter RomCtrlBootRomInitFile = "",
   parameter bit SecRomCtrlDisableScrambling = 1'b1,

@@ -66,7 +66,7 @@ module top_earlgrey #(
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlRetAonUseOTIntegErr = 1,
   parameter bit SramCtrlRetAonUseCompiledRam = 1,
-  parameter bit SramCtrlRetAonFlopRamOutput = 1,
+  parameter bit SramCtrlRetAonFlopRamOutput = 0,
   // parameters for flash_ctrl
   parameter bit SecFlashCtrlScrambleEn = 1,
   parameter int FlashCtrlProgFifoDepth = 4,
@@ -115,7 +115,7 @@ module top_earlgrey #(
   parameter int SramCtrlMainNumPrinceRoundsHalf = 2,
   parameter bit SramCtrlMainUseOTIntegErr = 1,
   parameter bit SramCtrlMainUseCompiledRam = 1,
-  parameter bit SramCtrlMainFlopRamOutput = 1,
+  parameter bit SramCtrlMainFlopRamOutput = 0,
   // parameters for rom_ctrl
   parameter RomCtrlBootRomInitFile = "",
   parameter bit SecRomCtrlDisableScrambling = 1'b0,
