@@ -294,6 +294,10 @@ package otp_ctrl_reg_pkg;
   parameter int CoreAw = 15;
   parameter int PrimAw = 7;
 
+  // Number of registers for every interface
+  parameter int NumRegsCore = 95;
+  parameter int NumRegsPrim = 20;
+
   ///////////////////////////////////////////////
   // Typedefs for registers for core interface //
   ///////////////////////////////////////////////
