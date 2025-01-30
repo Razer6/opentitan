@@ -402,6 +402,9 @@ package alert_handler_reg_pkg;
   // Number of registers for every interface
   parameter int NumRegs = 818;
 
+  // Number of registers for every interface
+  parameter int NumRegs = 494;
+
   ////////////////////////////
   // Typedefs for registers //
   ////////////////////////////
