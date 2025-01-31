@@ -239,7 +239,7 @@ package top_englishbreakfast_pkg;
   /**
    * Peripheral size in bytes for cfg device on rv_core_ibex in top englishbreakfast.
    */
-  parameter int unsigned TOP_ENGLISHBREAKFAST_RV_CORE_IBEX_CFG_SIZE_BYTES = 32'h100;
+  parameter int unsigned TOP_ENGLISHBREAKFAST_RV_CORE_IBEX_CFG_SIZE_BYTES = 32'h800;
 
   /**
    * Memory base address for eflash in top englishbreakfast.

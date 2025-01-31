@@ -964,7 +964,7 @@ extern "C" {
  * address between #TOP_DARJEELING_RV_CORE_IBEX_CFG_BASE_ADDR and
  * `TOP_DARJEELING_RV_CORE_IBEX_CFG_BASE_ADDR + TOP_DARJEELING_RV_CORE_IBEX_CFG_SIZE_BYTES`.
  */
-#define TOP_DARJEELING_RV_CORE_IBEX_CFG_SIZE_BYTES 0x100u
+#define TOP_DARJEELING_RV_CORE_IBEX_CFG_SIZE_BYTES 0x800u
 
 
 /**
@@ -1319,54 +1319,54 @@ typedef enum top_darjeeling_alert_peripheral {
   kTopDarjeelingAlertPeripheralMbxPcie1 = 39, /**< mbx_pcie1 */
   kTopDarjeelingAlertPeripheralSocDbgCtrl = 40, /**< soc_dbg_ctrl */
   kTopDarjeelingAlertPeripheralRvCoreIbex = 41, /**< rv_core_ibex */
-  kTopDarjeelingAlertPeripheralIncomingMioMbx4 = 42, /**< incoming_mio_mbx4 */
-  kTopDarjeelingAlertPeripheralIncomingMioRvPlic = 43, /**< incoming_mio_rv_plic */
-  kTopDarjeelingAlertPeripheralIncomingMioMbx0 = 44, /**< incoming_mio_mbx0 */
-  kTopDarjeelingAlertPeripheralIncomingMioMbx3 = 45, /**< incoming_mio_mbx3 */
+  kTopDarjeelingAlertPeripheralIncomingMioSramCtrlMbox = 42, /**< incoming_mio_sram_ctrl_mbox */
+  kTopDarjeelingAlertPeripheralIncomingMioMbx1 = 43, /**< incoming_mio_mbx1 */
+  kTopDarjeelingAlertPeripheralIncomingMioSramCtrlMain = 44, /**< incoming_mio_sram_ctrl_main */
+  kTopDarjeelingAlertPeripheralIncomingMioMbx0 = 45, /**< incoming_mio_mbx0 */
   kTopDarjeelingAlertPeripheralIncomingMioRvCoreIbex = 46, /**< incoming_mio_rv_core_ibex */
-  kTopDarjeelingAlertPeripheralIncomingMioMbx2 = 47, /**< incoming_mio_mbx2 */
-  kTopDarjeelingAlertPeripheralIncomingMioSramCtrlRetAon = 48, /**< incoming_mio_sram_ctrl_ret_aon */
-  kTopDarjeelingAlertPeripheralIncomingMioSramCtrlMain = 49, /**< incoming_mio_sram_ctrl_main */
-  kTopDarjeelingAlertPeripheralIncomingMioSramCtrlMbox = 50, /**< incoming_mio_sram_ctrl_mbox */
-  kTopDarjeelingAlertPeripheralIncomingMioSocProxy = 51, /**< incoming_mio_soc_proxy */
-  kTopDarjeelingAlertPeripheralIncomingMioMbx1 = 52, /**< incoming_mio_mbx1 */
-  kTopDarjeelingAlertPeripheralIncomingMioMbx5 = 53, /**< incoming_mio_mbx5 */
-  kTopDarjeelingAlertPeripheralIncomingMioDma = 54, /**< incoming_mio_dma */
-  kTopDarjeelingAlertPeripheralIncomingMioRvDm = 55, /**< incoming_mio_rv_dm */
-  kTopDarjeelingAlertPeripheralIncomingMioAonTimerAon = 56, /**< incoming_mio_aon_timer_aon */
-  kTopDarjeelingAlertPeripheralIncomingMioRvTimer = 57, /**< incoming_mio_rv_timer */
-  kTopDarjeelingAlertPeripheralIncomingPwcRvTimer = 58, /**< incoming_pwc_rv_timer */
-  kTopDarjeelingAlertPeripheralIncomingPwcDma = 59, /**< incoming_pwc_dma */
-  kTopDarjeelingAlertPeripheralIncomingPwcMbx2 = 60, /**< incoming_pwc_mbx2 */
-  kTopDarjeelingAlertPeripheralIncomingPwcRvCoreIbex = 61, /**< incoming_pwc_rv_core_ibex */
-  kTopDarjeelingAlertPeripheralIncomingPwcSramCtrlMain = 62, /**< incoming_pwc_sram_ctrl_main */
-  kTopDarjeelingAlertPeripheralIncomingPwcRvPlic = 63, /**< incoming_pwc_rv_plic */
-  kTopDarjeelingAlertPeripheralIncomingPwcMbx0 = 64, /**< incoming_pwc_mbx0 */
-  kTopDarjeelingAlertPeripheralIncomingPwcMbx1 = 65, /**< incoming_pwc_mbx1 */
-  kTopDarjeelingAlertPeripheralIncomingPwcSramCtrlMbox = 66, /**< incoming_pwc_sram_ctrl_mbox */
-  kTopDarjeelingAlertPeripheralIncomingPwcRvDm = 67, /**< incoming_pwc_rv_dm */
-  kTopDarjeelingAlertPeripheralIncomingPwcAonTimerAon = 68, /**< incoming_pwc_aon_timer_aon */
-  kTopDarjeelingAlertPeripheralIncomingPwcMbx3 = 69, /**< incoming_pwc_mbx3 */
-  kTopDarjeelingAlertPeripheralIncomingPwcMbx4 = 70, /**< incoming_pwc_mbx4 */
-  kTopDarjeelingAlertPeripheralIncomingPwcSramCtrlRetAon = 71, /**< incoming_pwc_sram_ctrl_ret_aon */
-  kTopDarjeelingAlertPeripheralIncomingPwcGpio = 72, /**< incoming_pwc_gpio */
-  kTopDarjeelingAlertPeripheralIncomingPwcMbx5 = 73, /**< incoming_pwc_mbx5 */
-  kTopDarjeelingAlertPeripheralIncomingPwcSocProxy = 74, /**< incoming_pwc_soc_proxy */
+  kTopDarjeelingAlertPeripheralIncomingMioMbx5 = 47, /**< incoming_mio_mbx5 */
+  kTopDarjeelingAlertPeripheralIncomingMioRvPlic = 48, /**< incoming_mio_rv_plic */
+  kTopDarjeelingAlertPeripheralIncomingMioMbx2 = 49, /**< incoming_mio_mbx2 */
+  kTopDarjeelingAlertPeripheralIncomingMioMbx4 = 50, /**< incoming_mio_mbx4 */
+  kTopDarjeelingAlertPeripheralIncomingMioRvDm = 51, /**< incoming_mio_rv_dm */
+  kTopDarjeelingAlertPeripheralIncomingMioAonTimerAon = 52, /**< incoming_mio_aon_timer_aon */
+  kTopDarjeelingAlertPeripheralIncomingMioSocProxy = 53, /**< incoming_mio_soc_proxy */
+  kTopDarjeelingAlertPeripheralIncomingMioRvTimer = 54, /**< incoming_mio_rv_timer */
+  kTopDarjeelingAlertPeripheralIncomingMioDma = 55, /**< incoming_mio_dma */
+  kTopDarjeelingAlertPeripheralIncomingMioMbx3 = 56, /**< incoming_mio_mbx3 */
+  kTopDarjeelingAlertPeripheralIncomingMioSramCtrlRetAon = 57, /**< incoming_mio_sram_ctrl_ret_aon */
+  kTopDarjeelingAlertPeripheralIncomingPwcRvDm = 58, /**< incoming_pwc_rv_dm */
+  kTopDarjeelingAlertPeripheralIncomingPwcMbx4 = 59, /**< incoming_pwc_mbx4 */
+  kTopDarjeelingAlertPeripheralIncomingPwcDma = 60, /**< incoming_pwc_dma */
+  kTopDarjeelingAlertPeripheralIncomingPwcMbx1 = 61, /**< incoming_pwc_mbx1 */
+  kTopDarjeelingAlertPeripheralIncomingPwcMbx0 = 62, /**< incoming_pwc_mbx0 */
+  kTopDarjeelingAlertPeripheralIncomingPwcRvCoreIbex = 63, /**< incoming_pwc_rv_core_ibex */
+  kTopDarjeelingAlertPeripheralIncomingPwcSramCtrlMain = 64, /**< incoming_pwc_sram_ctrl_main */
+  kTopDarjeelingAlertPeripheralIncomingPwcRvPlic = 65, /**< incoming_pwc_rv_plic */
+  kTopDarjeelingAlertPeripheralIncomingPwcAonTimerAon = 66, /**< incoming_pwc_aon_timer_aon */
+  kTopDarjeelingAlertPeripheralIncomingPwcMbx5 = 67, /**< incoming_pwc_mbx5 */
+  kTopDarjeelingAlertPeripheralIncomingPwcSramCtrlRetAon = 68, /**< incoming_pwc_sram_ctrl_ret_aon */
+  kTopDarjeelingAlertPeripheralIncomingPwcGpio = 69, /**< incoming_pwc_gpio */
+  kTopDarjeelingAlertPeripheralIncomingPwcSocProxy = 70, /**< incoming_pwc_soc_proxy */
+  kTopDarjeelingAlertPeripheralIncomingPwcMbx3 = 71, /**< incoming_pwc_mbx3 */
+  kTopDarjeelingAlertPeripheralIncomingPwcMbx2 = 72, /**< incoming_pwc_mbx2 */
+  kTopDarjeelingAlertPeripheralIncomingPwcRvTimer = 73, /**< incoming_pwc_rv_timer */
+  kTopDarjeelingAlertPeripheralIncomingPwcSramCtrlMbox = 74, /**< incoming_pwc_sram_ctrl_mbox */
   kTopDarjeelingAlertPeripheralIncomingMioExtraAlertsScsmio = 75, /**< incoming_mio_extra_alerts_scsmio */
   kTopDarjeelingAlertPeripheralIncomingPwcExtraAlertsScsmio = 76, /**< incoming_pwc_extra_alerts_scsmio */
-  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsScsifRegs = 77, /**< incoming_rot_extra_alerts_scsif_regs */
+  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsNsEfuse = 77, /**< incoming_rot_extra_alerts_ns_efuse */
   kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsNsGroup = 78, /**< incoming_rot_extra_alerts_ns_group */
-  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsAmsIpWrapper = 79, /**< incoming_rot_extra_alerts_ams_ip_wrapper */
-  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsNsEfuse = 80, /**< incoming_rot_extra_alerts_ns_efuse */
-  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsRotPcieAdapter = 81, /**< incoming_rot_extra_alerts_rot_pcie_adapter */
-  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsLsioGroup = 82, /**< incoming_rot_extra_alerts_lsio_group */
-  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsLioGroupV = 83, /**< incoming_rot_extra_alerts_lio_group_v */
-  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsLioGroupP = 84, /**< incoming_rot_extra_alerts_lio_group_p */
-  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsRasCtl = 85, /**< incoming_rot_extra_alerts_ras_ctl */
-  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsSsram = 86, /**< incoming_rot_extra_alerts_ssram */
-  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsScsRai = 87, /**< incoming_rot_extra_alerts_scs_rai */
-  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsRotHdr = 88, /**< incoming_rot_extra_alerts_rot_hdr */
-  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsRcWidget = 89, /**< incoming_rot_extra_alerts_rc_widget */
+  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsRcWidget = 79, /**< incoming_rot_extra_alerts_rc_widget */
+  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsScsifRegs = 80, /**< incoming_rot_extra_alerts_scsif_regs */
+  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsSsram = 81, /**< incoming_rot_extra_alerts_ssram */
+  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsRotPcieAdapter = 82, /**< incoming_rot_extra_alerts_rot_pcie_adapter */
+  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsRasCtl = 83, /**< incoming_rot_extra_alerts_ras_ctl */
+  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsLsioGroup = 84, /**< incoming_rot_extra_alerts_lsio_group */
+  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsRotHdr = 85, /**< incoming_rot_extra_alerts_rot_hdr */
+  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsScsRai = 86, /**< incoming_rot_extra_alerts_scs_rai */
+  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsAmsIpWrapper = 87, /**< incoming_rot_extra_alerts_ams_ip_wrapper */
+  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsLioGroupV = 88, /**< incoming_rot_extra_alerts_lio_group_v */
+  kTopDarjeelingAlertPeripheralIncomingRotExtraAlertsLioGroupP = 89, /**< incoming_rot_extra_alerts_lio_group_p */
   kTopDarjeelingAlertPeripheralLast = 89, /**< \internal Final Alert peripheral */
 } top_darjeeling_alert_peripheral_t;
 

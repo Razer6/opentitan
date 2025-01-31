@@ -30,7 +30,7 @@ package tl_main_pkg;
   localparam logic [31:0] ADDR_MASK_FLASH_CTRL__MEM      = 32'h 0000ffff;
   localparam logic [31:0] ADDR_MASK_AES                  = 32'h 000000ff;
   localparam logic [31:0] ADDR_MASK_RV_PLIC              = 32'h 07ffffff;
-  localparam logic [31:0] ADDR_MASK_RV_CORE_IBEX__CFG    = 32'h 000000ff;
+  localparam logic [31:0] ADDR_MASK_RV_CORE_IBEX__CFG    = 32'h 000007ff;
   localparam logic [31:0] ADDR_MASK_SRAM_CTRL_MAIN__REGS = 32'h 0000003f;
   localparam logic [31:0] ADDR_MASK_SRAM_CTRL_MAIN__RAM  = 32'h 0001ffff;
 
