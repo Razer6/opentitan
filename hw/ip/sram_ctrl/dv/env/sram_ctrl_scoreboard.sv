@@ -210,7 +210,7 @@ class sram_ctrl_scoreboard #(parameter int AddrWidth = 10) extends cip_base_scor
     end
 
   task run_phase(uvm_phase phase);
-    string mem_path = dv_utils_pkg::get_parent_hier(cfg.sram_bkdr_util_h.get_path());
+    string mem_path = dv_utils_pkg::get_parent_hier(cfg.sram_ctrl_bkdr_util_h.get_path());
     if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin : gen_impl_rdp
       write_en_path   = $sformatf("%s.WE", mem_path);
       write_addr_path = $sformatf("%s.ADR", mem_path);
@@ -224,7 +224,7 @@ class sram_ctrl_scoreboard #(parameter int AddrWidth = 10) extends cip_base_scor
               $sformatf("Hierarchical path %0s appears to be invalid.", write_addr_path))
 
     mem_bkdr_scb = sram_ctrl_mem_bkdr_scb::type_id::create("mem_bkdr_scb");
-    mem_bkdr_scb.sram_bkdr_util_h = cfg.sram_bkdr_util_h;
+    mem_bkdr_scb.sram_ctrl_bkdr_util_h = cfg.sram_ctrl_bkdr_util_h;
     mem_bkdr_scb.en_cov = cfg.en_cov;
 
     super.run_phase(phase);
@@ -366,7 +366,7 @@ class sram_ctrl_scoreboard #(parameter int AddrWidth = 10) extends cip_base_scor
       `uvm_info(`gfn, "starting to wait for init", UVM_MEDIUM)
       // This gets interrupted by reset.
       `DV_SPINWAIT_EXIT(
-          cfg.clk_rst_vif.wait_clks(cfg.sram_bkdr_util_h.get_depth());,
+          cfg.clk_rst_vif.wait_clks(cfg.sram_ctrl_bkdr_util_h.get_depth());,
           wait (cfg.under_reset == 1'b1);,
           "Stopped waiting for ram init due to reset")
       if (cfg.under_reset) return;
