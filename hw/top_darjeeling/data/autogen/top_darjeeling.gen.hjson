@@ -9901,6 +9901,7 @@
         num_ranges: 32
       }
       attr: ipgen
+      soc: top_darjeeling/data/rivos-racl/star-mappings/reg_all_rd_wr_mapping.hjson
       clock_connections:
       {
         clk_i: clkmgr_aon_clocks.clk_main_secure

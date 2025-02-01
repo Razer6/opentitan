@@ -75,6 +75,9 @@ waive -rules {NOT_READ HIER_NET_NOT_READ} -location {top_darjeeling.sv} -regexp 
 waive -rules {LINE_LENGTH} -location {top_darjeeling.sv} -regexp {Line length of [0-9]+ exceeds 100 character limit} \
       -comment "top_darjeeling is auto-generated and adhering to the line length limit is not always feasible for auto-generated code"
 
+waive -rules {LINE_LENGTH} -location {top_racl_pkg.sv} -regexp {Line length of \[[0-9]+\] exceeds 100 character limit} \
+      -comment "top_racl_pkg is auto-generated and expected to exceed line length limit"
+
  waive -rules {PARAM_NOT_USED} -location {prim_generic_ram_1p.sv} \
       -msg {Parameter 'MemInitFile' not used in module 'prim_generic_ram_1p'} \
       -comment "MemInitFile is not used in synthesis for Rivos"
