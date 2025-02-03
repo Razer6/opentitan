@@ -33,7 +33,7 @@ module sram_ctrl
   parameter  lfsr_perm_t                RndCnstLfsrPerm    = RndCnstLfsrPermDefault,
   parameter bit          EnableRacl                        = 1'b0,
   parameter bit          RaclErrorRsp                      = EnableRacl,
-  parameter int unsigned RaclPolicySelVecRegs[NumRegsRegs] = '{NumRegsRegs{0}},
+  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVecRegs[NumRegsRegs] = '{NumRegsRegs{0}},
   // Set this to report errors to tlul adapter, otherwise they will be sent to error record
   parameter bit                        UseOTIntegErr       = 0,
   // The maximum number of outstanding TL-UL requests to the memory
