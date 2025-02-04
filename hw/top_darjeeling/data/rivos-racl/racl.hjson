@@ -1,0 +1,73 @@
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+
+{
+  error_response: true
+  ctn_uid_bit_lsb: 0
+  ctn_uid_bit_msb: 4
+  role_bit_lsb: 5
+  role_bit_msb: 8
+  roles: {
+    "NOT_TEE" :       { role_id: 0  }
+    "M_MODE":         { role_id: 1  }
+    "TEE_MODE":       { role_id: 2  }
+    "R_CODE":         { role_id: 3  }
+    "CAT2_DEBUG":     { role_id: 4  }
+    "CAT3_DEBUG":     { role_id: 5  }
+    "ROT":            { role_id: 6  }
+    "MIO":            { role_id: 7  }
+    "PWC":            { role_id: 8  }
+    "INT_SOC":        { role_id: 9  }
+    "IO_AGENT":       { role_id: 10 }
+    "TEE_IO_AGENT":   { role_id: 11 }
+    "DUC_UC":         { role_id: 12 }
+    "MIMT_R_MODE":    { role_id: 13 }
+  }
+  policies: {
+    Null: [
+      // Standard policies allowing all roles to access a register
+      { name: "ALL_RD_WR"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "HW_ROT_PWC_WR_ALL_RD"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "PRE_BOOT_M"
+        allowed_wr: [ "M_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "POST_BOOT_M"
+        allowed_wr: [ "M_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "TEE_LIMITED"
+        allowed_wr: [ "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "PWC", "INT_SOC", "TEE_IO_AGENT" ]
+        allowed_rd: [ "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "PWC", "INT_SOC", "TEE_IO_AGENT" ]
+      }
+      { name: "RCODE_PRIVATE"
+        allowed_wr: [ "R_CODE", "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "R_CODE", "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "ROT_PRIVATE"
+        rot_private: true
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "PWC_PRIVATE"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "MIO_PRIVATE"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "DUC_PRIVATE"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC", "DUC_UC", "MIMT_R_MODE" ]
+      }
+    ]
+  }
+}

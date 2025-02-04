@@ -16,7 +16,7 @@
   datawidth: "32",
 
   // Enable RACL on Darjeeling based on the following configuration
-  racl_config: 'top_darjeeling/data/racl/racl.hjson'
+  racl_config: 'top_darjeeling/data/rivos-racl/racl.hjson'
 
   // Power information for the design
   power: {
@@ -889,7 +889,7 @@
         soc:  {soc_mbx: "0x01465000"},
       },
       racl_mappings: {
-        soc: 'top_darjeeling/data/racl/all_rd_wr_mapping.hjson'
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
       }
     },
     { name: "mbx1",
@@ -902,7 +902,7 @@
         soc:  {soc_mbx: "0x01465100"},
       },
       racl_mappings: {
-        soc: 'top_darjeeling/data/racl/all_rd_wr_mapping.hjson'
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
       }
     },
     { name: "mbx2",
@@ -915,7 +915,7 @@
         soc:  {soc_mbx: "0x01465200"},
       },
       racl_mappings: {
-        soc: 'top_darjeeling/data/racl/all_rd_wr_mapping.hjson'
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
       }
     },
     { name: "mbx3",
@@ -927,6 +927,9 @@
         core: {hart: "0x22000300"},
         soc:  {soc_mbx: "0x01465300"},
       },
+      racl_mappings: {
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_pwc_private_mapping.hjson'
+      }
     },
     { name: "mbx4",
       type: "mbx",
@@ -938,7 +941,7 @@
         soc:  {soc_mbx: "0x01465400"},
       },
       racl_mappings: {
-        soc: 'top_darjeeling/data/racl/all_rd_wr_mapping.hjson'
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_mio_private_mapping.hjson'
       }
     },
     { name: "mbx5",
@@ -951,7 +954,7 @@
         soc:  {soc_mbx: "0x01465500"},
       },
       racl_mappings: {
-        soc: 'top_darjeeling/data/racl/all_rd_wr_mapping.hjson'
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_duc_private_mapping.hjson'
       }
     },
     { name: "mbx6",
@@ -963,6 +966,9 @@
         core: {hart: "0x22000600"},
         soc:  {soc_mbx: "0x01465600"},
       },
+      racl_mappings: {
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_rcode_private_mapping.hjson'
+      }
     },
     { name: "mbx_jtag",
       type: "mbx",
@@ -973,9 +979,6 @@
         core: {hart: "0x22000800"},
         soc:  {soc_dbg: "0x1000"},
       },
-      racl_mappings: {
-        soc: 'top_darjeeling/data/racl/all_rd_wr_mapping.hjson'
-      }
     },
     { name: "mbx_pcie0",
       type: "mbx",
@@ -987,7 +990,7 @@
         soc:  {soc_mbx: "0x01460100"},
       },
       racl_mappings: {
-        soc: 'top_darjeeling/data/racl/soc_rot_mapping.hjson'
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_all_rd_wr_mapping.hjson'
       }
     },
     { name: "mbx_pcie1",
@@ -1000,7 +1003,7 @@
         soc:  {soc_mbx: "0x01460200"},
       },
       racl_mappings: {
-        soc: 'top_darjeeling/data/racl/soc_rot_mapping.hjson'
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_post_boot_m_mapping.hjson'
       }
     },
     { name: "soc_dbg_ctrl",
