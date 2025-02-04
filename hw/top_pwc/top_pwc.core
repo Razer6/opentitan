@@ -27,6 +27,7 @@ filesets:
       - lowrisc:top_pwc:xbar_pwc_main
       - lowrisc:top_pwc:xbar_pwc_mbx
       - lowrisc:top_pwc:xbar_pwc_peri
+      - lowrisc:opentitan:top_pwc_racl_ctrl_pwc
       - lowrisc:opentitan:top_pwc_rv_plic_pwc
       - lowrisc:ip:aon_timer
       - lowrisc:systems:top_pwc_soc_proxy

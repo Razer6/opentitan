@@ -30,7 +30,7 @@ filesets:
       - lowrisc:lint:common
       - lowrisc:lint:comportable
     files:
-      - lint/racl_ctrl.waiver
+      - lint/racl_ctrl_pwc.waiver
     file_type: waiver
 
   files_veriblelint_waiver:
