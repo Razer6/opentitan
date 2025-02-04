@@ -13,7 +13,7 @@
   type: top
   rnd_cnst_seed: 1017106219537032642877583828875051302543807092889754935647094601236425074047
   datawidth: "32"
-  racl_config: top_darjeeling/data/racl/racl.hjson
+  racl_config: top_darjeeling/data/rivos-racl/racl.hjson
   power:
   {
     domains:
@@ -7800,15 +7800,15 @@
           racl_group: Null
           register_mapping:
           {
-            SOC_CONTROL: 0
-            SOC_STATUS: 0
-            SOC_DOE_INTR_MSG_ADDR: 0
-            SOC_DOE_INTR_MSG_DATA: 0
+            SOC_CONTROL: 6
+            SOC_STATUS: 6
+            SOC_DOE_INTR_MSG_ADDR: 6
+            SOC_DOE_INTR_MSG_DATA: 6
           }
           window_mapping:
           {
-            WDATA: 0
-            RDATA: 0
+            WDATA: 6
+            RDATA: 6
           }
         }
       }
@@ -8002,15 +8002,15 @@
           racl_group: Null
           register_mapping:
           {
-            SOC_CONTROL: 0
-            SOC_STATUS: 0
-            SOC_DOE_INTR_MSG_ADDR: 0
-            SOC_DOE_INTR_MSG_DATA: 0
+            SOC_CONTROL: 6
+            SOC_STATUS: 6
+            SOC_DOE_INTR_MSG_ADDR: 6
+            SOC_DOE_INTR_MSG_DATA: 6
           }
           window_mapping:
           {
-            WDATA: 0
-            RDATA: 0
+            WDATA: 6
+            RDATA: 6
           }
         }
       }
@@ -8204,15 +8204,15 @@
           racl_group: Null
           register_mapping:
           {
-            SOC_CONTROL: 0
-            SOC_STATUS: 0
-            SOC_DOE_INTR_MSG_ADDR: 0
-            SOC_DOE_INTR_MSG_DATA: 0
+            SOC_CONTROL: 6
+            SOC_STATUS: 6
+            SOC_DOE_INTR_MSG_ADDR: 6
+            SOC_DOE_INTR_MSG_DATA: 6
           }
           window_mapping:
           {
-            WDATA: 0
-            RDATA: 0
+            WDATA: 6
+            RDATA: 6
           }
         }
       }
@@ -8399,6 +8399,25 @@
           soc_mbx: 0x01465300
         }
       }
+      racl_mappings:
+      {
+        soc:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            SOC_CONTROL: 7
+            SOC_STATUS: 7
+            SOC_DOE_INTR_MSG_ADDR: 7
+            SOC_DOE_INTR_MSG_DATA: 7
+          }
+          window_mapping:
+          {
+            WDATA: 7
+            RDATA: 7
+          }
+        }
+      }
       clock_connections:
       {
         clk_i: clkmgr_aon_clocks.clk_main_infra
@@ -8480,6 +8499,8 @@
           act: rcv
           width: 1
           inst_name: mbx3
+          default: ""
+          top_signame: racl_ctrl_racl_policies
           index: -1
         }
         {
@@ -8494,7 +8515,10 @@
           act: req
           width: 1
           inst_name: mbx3
-          index: -1
+          default: ""
+          package: ""
+          top_signame: racl_ctrl_racl_error
+          index: 3
         }
         {
           name: racl_error_log
@@ -8505,7 +8529,9 @@
           act: req
           width: 1
           inst_name: mbx3
-          index: -1
+          default: ""
+          top_signame: racl_ctrl_racl_error_log
+          index: 3
         }
         {
           name: sram_tl_h
@@ -8582,15 +8608,15 @@
           racl_group: Null
           register_mapping:
           {
-            SOC_CONTROL: 0
-            SOC_STATUS: 0
-            SOC_DOE_INTR_MSG_ADDR: 0
-            SOC_DOE_INTR_MSG_DATA: 0
+            SOC_CONTROL: 8
+            SOC_STATUS: 8
+            SOC_DOE_INTR_MSG_ADDR: 8
+            SOC_DOE_INTR_MSG_DATA: 8
           }
           window_mapping:
           {
-            WDATA: 0
-            RDATA: 0
+            WDATA: 8
+            RDATA: 8
           }
         }
       }
@@ -8694,7 +8720,7 @@
           default: ""
           package: ""
           top_signame: racl_ctrl_racl_error
-          index: 3
+          index: 4
         }
         {
           name: racl_error_log
@@ -8707,7 +8733,7 @@
           inst_name: mbx4
           default: ""
           top_signame: racl_ctrl_racl_error_log
-          index: 3
+          index: 4
         }
         {
           name: sram_tl_h
@@ -8784,15 +8810,15 @@
           racl_group: Null
           register_mapping:
           {
-            SOC_CONTROL: 0
-            SOC_STATUS: 0
-            SOC_DOE_INTR_MSG_ADDR: 0
-            SOC_DOE_INTR_MSG_DATA: 0
+            SOC_CONTROL: 7
+            SOC_STATUS: 7
+            SOC_DOE_INTR_MSG_ADDR: 7
+            SOC_DOE_INTR_MSG_DATA: 7
           }
           window_mapping:
           {
-            WDATA: 0
-            RDATA: 0
+            WDATA: 7
+            RDATA: 7
           }
         }
       }
@@ -8896,7 +8922,7 @@
           default: ""
           package: ""
           top_signame: racl_ctrl_racl_error
-          index: 4
+          index: 5
         }
         {
           name: racl_error_log
@@ -8909,7 +8935,7 @@
           inst_name: mbx5
           default: ""
           top_signame: racl_ctrl_racl_error_log
-          index: 4
+          index: 5
         }
         {
           name: sram_tl_h
@@ -8977,6 +9003,25 @@
         soc:
         {
           soc_mbx: 0x01465600
+        }
+      }
+      racl_mappings:
+      {
+        soc:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            SOC_CONTROL: 5
+            SOC_STATUS: 5
+            SOC_DOE_INTR_MSG_ADDR: 5
+            SOC_DOE_INTR_MSG_DATA: 5
+          }
+          window_mapping:
+          {
+            WDATA: 5
+            RDATA: 5
+          }
         }
       }
       clock_connections:
@@ -9060,6 +9105,8 @@
           act: rcv
           width: 1
           inst_name: mbx6
+          default: ""
+          top_signame: racl_ctrl_racl_policies
           index: -1
         }
         {
@@ -9074,7 +9121,10 @@
           act: req
           width: 1
           inst_name: mbx6
-          index: -1
+          default: ""
+          package: ""
+          top_signame: racl_ctrl_racl_error
+          index: 6
         }
         {
           name: racl_error_log
@@ -9085,7 +9135,9 @@
           act: req
           width: 1
           inst_name: mbx6
-          index: -1
+          default: ""
+          top_signame: racl_ctrl_racl_error_log
+          index: 6
         }
         {
           name: sram_tl_h
@@ -9153,25 +9205,6 @@
         soc:
         {
           soc_dbg: 0x1000
-        }
-      }
-      racl_mappings:
-      {
-        soc:
-        {
-          racl_group: Null
-          register_mapping:
-          {
-            SOC_CONTROL: 0
-            SOC_STATUS: 0
-            SOC_DOE_INTR_MSG_ADDR: 0
-            SOC_DOE_INTR_MSG_DATA: 0
-          }
-          window_mapping:
-          {
-            WDATA: 0
-            RDATA: 0
-          }
         }
       }
       clock_connections:
@@ -9255,8 +9288,6 @@
           act: rcv
           width: 1
           inst_name: mbx_jtag
-          default: ""
-          top_signame: racl_ctrl_racl_policies
           index: -1
         }
         {
@@ -9271,10 +9302,7 @@
           act: req
           width: 1
           inst_name: mbx_jtag
-          default: ""
-          package: ""
-          top_signame: racl_ctrl_racl_error
-          index: 5
+          index: -1
         }
         {
           name: racl_error_log
@@ -9285,9 +9313,7 @@
           act: req
           width: 1
           inst_name: mbx_jtag
-          default: ""
-          top_signame: racl_ctrl_racl_error_log
-          index: 5
+          index: -1
         }
         {
           name: sram_tl_h
@@ -9364,15 +9390,15 @@
           racl_group: Null
           register_mapping:
           {
-            SOC_CONTROL: 2
-            SOC_STATUS: 2
-            SOC_DOE_INTR_MSG_ADDR: 2
-            SOC_DOE_INTR_MSG_DATA: 2
+            SOC_CONTROL: 0
+            SOC_STATUS: 0
+            SOC_DOE_INTR_MSG_ADDR: 0
+            SOC_DOE_INTR_MSG_DATA: 0
           }
           window_mapping:
           {
-            WDATA: 2
-            RDATA: 2
+            WDATA: 0
+            RDATA: 0
           }
         }
       }
@@ -9476,7 +9502,7 @@
           default: ""
           package: ""
           top_signame: racl_ctrl_racl_error
-          index: 6
+          index: 7
         }
         {
           name: racl_error_log
@@ -9489,7 +9515,7 @@
           inst_name: mbx_pcie0
           default: ""
           top_signame: racl_ctrl_racl_error_log
-          index: 6
+          index: 7
         }
         {
           name: sram_tl_h
@@ -9566,15 +9592,15 @@
           racl_group: Null
           register_mapping:
           {
-            SOC_CONTROL: 2
-            SOC_STATUS: 2
-            SOC_DOE_INTR_MSG_ADDR: 2
-            SOC_DOE_INTR_MSG_DATA: 2
+            SOC_CONTROL: 3
+            SOC_STATUS: 3
+            SOC_DOE_INTR_MSG_ADDR: 3
+            SOC_DOE_INTR_MSG_DATA: 3
           }
           window_mapping:
           {
-            WDATA: 2
-            RDATA: 2
+            WDATA: 3
+            RDATA: 3
           }
         }
       }
@@ -9678,7 +9704,7 @@
           default: ""
           package: ""
           top_signame: racl_ctrl_racl_error
-          index: 7
+          index: 8
         }
         {
           name: racl_error_log
@@ -9691,7 +9717,7 @@
           inst_name: mbx_pcie1
           default: ""
           top_signame: racl_ctrl_racl_error_log
-          index: 7
+          index: 8
         }
         {
           name: sram_tl_h
@@ -9948,7 +9974,7 @@
           name: NumSubscribingIps
           desc: Number of subscribing RACL IPs
           type: int
-          default: 8
+          default: 9
           local: "true"
           expose: "true"
           name_top: RaclCtrlNumSubscribingIps
@@ -9999,7 +10025,7 @@
             desc: Number of subscribing RACL IPs
             param_type: int
             unpacked_dimensions: null
-            default: 8
+            default: 9
             local: true
             expose: true
             name_top: RaclCtrlNumSubscribingIps
@@ -10025,7 +10051,7 @@
             desc: Number of subscribing RACL IPs
             param_type: int
             unpacked_dimensions: null
-            default: 8
+            default: 9
             local: true
             expose: true
             name_top: RaclCtrlNumSubscribingIps
@@ -11535,9 +11561,10 @@
         mbx0.racl_policies
         mbx1.racl_policies
         mbx2.racl_policies
+        mbx3.racl_policies
         mbx4.racl_policies
         mbx5.racl_policies
-        mbx_jtag.racl_policies
+        mbx6.racl_policies
         mbx_pcie0.racl_policies
         mbx_pcie1.racl_policies
       ]
@@ -11546,9 +11573,10 @@
         mbx0.racl_error
         mbx1.racl_error
         mbx2.racl_error
+        mbx3.racl_error
         mbx4.racl_error
         mbx5.racl_error
-        mbx_jtag.racl_error
+        mbx6.racl_error
         mbx_pcie0.racl_error
         mbx_pcie1.racl_error
       ]
@@ -11557,9 +11585,10 @@
         mbx0.racl_error_log
         mbx1.racl_error_log
         mbx2.racl_error_log
+        mbx3.racl_error_log
         mbx4.racl_error_log
         mbx5.racl_error_log
-        mbx_jtag.racl_error_log
+        mbx6.racl_error_log
         mbx_pcie0.racl_error_log
         mbx_pcie1.racl_error_log
       ]
@@ -14384,7 +14413,7 @@
               {
                 soc_mbx: 0x1463000
               }
-              size_byte: 0x20
+              size_byte: 0x40
             }
           ]
           xbar: false
@@ -20662,17 +20691,61 @@
     role_bit_msb: 8
     roles:
     {
-      ROT:
+      NOT_TEE:
       {
         role_id: 0
       }
-      ROLE1:
+      M_MODE:
       {
         role_id: 1
       }
-      SOC:
+      TEE_MODE:
       {
         role_id: 2
+      }
+      R_CODE:
+      {
+        role_id: 3
+      }
+      CAT2_DEBUG:
+      {
+        role_id: 4
+      }
+      CAT3_DEBUG:
+      {
+        role_id: 5
+      }
+      ROT:
+      {
+        role_id: 6
+      }
+      MIO:
+      {
+        role_id: 7
+      }
+      PWC:
+      {
+        role_id: 8
+      }
+      INT_SOC:
+      {
+        role_id: 9
+      }
+      IO_AGENT:
+      {
+        role_id: 10
+      }
+      TEE_IO_AGENT:
+      {
+        role_id: 11
+      }
+      DUC_UC:
+      {
+        role_id: 12
+      }
+      MIMT_R_MODE:
+      {
+        role_id: 13
       }
     }
     policies:
@@ -20681,57 +20754,262 @@
       [
         {
           name: ALL_RD_WR
-          allowed_rd:
-          [
-            ROT
-            ROLE1
-            SOC
-          ]
           allowed_wr:
           [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
             ROT
-            ROLE1
-            SOC
+            MIO
+            PWC
+            INT_SOC
+            IO_AGENT
+            TEE_IO_AGENT
+            DUC_UC
+            MIMT_R_MODE
           ]
-          rd_default: 7
-          wr_default: 7
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+            IO_AGENT
+            TEE_IO_AGENT
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          rd_default: 16383
+          wr_default: 16383
+        }
+        {
+          name: HW_ROT_PWC_WR_ALL_RD
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+            IO_AGENT
+            TEE_IO_AGENT
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          rd_default: 16383
+          wr_default: 864
+        }
+        {
+          name: PRE_BOOT_M
+          allowed_wr:
+          [
+            M_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          rd_default: 1023
+          wr_default: 890
+        }
+        {
+          name: POST_BOOT_M
+          allowed_wr:
+          [
+            M_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          rd_default: 1023
+          wr_default: 890
+        }
+        {
+          name: TEE_LIMITED
+          allowed_wr:
+          [
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            TEE_IO_AGENT
+          ]
+          allowed_rd:
+          [
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            TEE_IO_AGENT
+          ]
+          rd_default: 2940
+          wr_default: 2940
+        }
+        {
+          name: RCODE_PRIVATE
+          allowed_wr:
+          [
+            R_CODE
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            R_CODE
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          rd_default: 872
+          wr_default: 872
         }
         {
           name: ROT_PRIVATE
           rot_private: true
-          allowed_rd:
-          [
-            ROT
-          ]
           allowed_wr:
           [
+            CAT3_DEBUG
             ROT
           ]
-          rd_default: 1
-          wr_default: 1
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+          ]
+          rd_default: 96
+          wr_default: 96
         }
         {
-          name: SOC_ROT
-          allowed_rd:
-          [
-            ROT
-            SOC
-          ]
+          name: PWC_PRIVATE
           allowed_wr:
           [
+            CAT3_DEBUG
             ROT
-            SOC
+            PWC
+            INT_SOC
           ]
-          rd_default: 5
-          wr_default: 5
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          rd_default: 864
+          wr_default: 864
+        }
+        {
+          name: MIO_PRIVATE
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          rd_default: 992
+          wr_default: 992
+        }
+        {
+          name: DUC_PRIVATE
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          rd_default: 13152
+          wr_default: 13152
         }
       ]
     }
     nr_role_bits: 4
     nr_ctn_uid_bits: 5
-    nr_policies: 3
-    rot_private_policy_rd: 1
-    rot_private_policy_wr: 1
+    nr_policies: 10
+    rot_private_policy_rd: 96
+    rot_private_policy_wr: 96
   }
   inter_signal:
   {
@@ -25412,6 +25690,8 @@
         act: rcv
         width: 1
         inst_name: mbx3
+        default: ""
+        top_signame: racl_ctrl_racl_policies
         index: -1
       }
       {
@@ -25426,7 +25706,10 @@
         act: req
         width: 1
         inst_name: mbx3
-        index: -1
+        default: ""
+        package: ""
+        top_signame: racl_ctrl_racl_error
+        index: 3
       }
       {
         name: racl_error_log
@@ -25437,7 +25720,9 @@
         act: req
         width: 1
         inst_name: mbx3
-        index: -1
+        default: ""
+        top_signame: racl_ctrl_racl_error_log
+        index: 3
       }
       {
         name: sram_tl_h
@@ -25565,7 +25850,7 @@
         default: ""
         package: ""
         top_signame: racl_ctrl_racl_error
-        index: 3
+        index: 4
       }
       {
         name: racl_error_log
@@ -25578,7 +25863,7 @@
         inst_name: mbx4
         default: ""
         top_signame: racl_ctrl_racl_error_log
-        index: 3
+        index: 4
       }
       {
         name: sram_tl_h
@@ -25706,7 +25991,7 @@
         default: ""
         package: ""
         top_signame: racl_ctrl_racl_error
-        index: 4
+        index: 5
       }
       {
         name: racl_error_log
@@ -25719,7 +26004,7 @@
         inst_name: mbx5
         default: ""
         top_signame: racl_ctrl_racl_error_log
-        index: 4
+        index: 5
       }
       {
         name: sram_tl_h
@@ -25828,6 +26113,8 @@
         act: rcv
         width: 1
         inst_name: mbx6
+        default: ""
+        top_signame: racl_ctrl_racl_policies
         index: -1
       }
       {
@@ -25842,7 +26129,10 @@
         act: req
         width: 1
         inst_name: mbx6
-        index: -1
+        default: ""
+        package: ""
+        top_signame: racl_ctrl_racl_error
+        index: 6
       }
       {
         name: racl_error_log
@@ -25853,7 +26143,9 @@
         act: req
         width: 1
         inst_name: mbx6
-        index: -1
+        default: ""
+        top_signame: racl_ctrl_racl_error_log
+        index: 6
       }
       {
         name: sram_tl_h
@@ -25962,8 +26254,6 @@
         act: rcv
         width: 1
         inst_name: mbx_jtag
-        default: ""
-        top_signame: racl_ctrl_racl_policies
         index: -1
       }
       {
@@ -25978,10 +26268,7 @@
         act: req
         width: 1
         inst_name: mbx_jtag
-        default: ""
-        package: ""
-        top_signame: racl_ctrl_racl_error
-        index: 5
+        index: -1
       }
       {
         name: racl_error_log
@@ -25992,9 +26279,7 @@
         act: req
         width: 1
         inst_name: mbx_jtag
-        default: ""
-        top_signame: racl_ctrl_racl_error_log
-        index: 5
+        index: -1
       }
       {
         name: sram_tl_h
@@ -26122,7 +26407,7 @@
         default: ""
         package: ""
         top_signame: racl_ctrl_racl_error
-        index: 6
+        index: 7
       }
       {
         name: racl_error_log
@@ -26135,7 +26420,7 @@
         inst_name: mbx_pcie0
         default: ""
         top_signame: racl_ctrl_racl_error_log
-        index: 6
+        index: 7
       }
       {
         name: sram_tl_h
@@ -26263,7 +26548,7 @@
         default: ""
         package: ""
         top_signame: racl_ctrl_racl_error
-        index: 7
+        index: 8
       }
       {
         name: racl_error_log
@@ -26276,7 +26561,7 @@
         inst_name: mbx_pcie1
         default: ""
         top_signame: racl_ctrl_racl_error_log
-        index: 7
+        index: 8
       }
       {
         name: sram_tl_h
@@ -26488,7 +26773,7 @@
           desc: Number of subscribing RACL IPs
           param_type: int
           unpacked_dimensions: null
-          default: 8
+          default: 9
           local: true
           expose: true
           name_top: RaclCtrlNumSubscribingIps
@@ -26514,7 +26799,7 @@
           desc: Number of subscribing RACL IPs
           param_type: int
           unpacked_dimensions: null
-          default: 8
+          default: 9
           local: true
           expose: true
           name_top: RaclCtrlNumSubscribingIps
@@ -32127,7 +32412,7 @@
           desc: Number of subscribing RACL IPs
           param_type: int
           unpacked_dimensions: null
-          default: 8
+          default: 9
           local: true
           expose: true
           name_top: RaclCtrlNumSubscribingIps
@@ -32148,7 +32433,7 @@
           desc: Number of subscribing RACL IPs
           param_type: int
           unpacked_dimensions: null
-          default: 8
+          default: 9
           local: true
           expose: true
           name_top: RaclCtrlNumSubscribingIps

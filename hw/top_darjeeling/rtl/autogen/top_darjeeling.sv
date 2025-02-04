@@ -356,7 +356,7 @@ module top_darjeeling #(
   // local parameters for spi_host0
   localparam int SpiHost0NumCS = 1;
   // local parameters for racl_ctrl
-  localparam int RaclCtrlNumSubscribingIps = 8;
+  localparam int RaclCtrlNumSubscribingIps = 9;
   // local parameters for rv_core_ibex
   localparam int unsigned RvCoreIbexNEscalationSeverities = alert_handler_reg_pkg::N_ESC_SEV;
   localparam int unsigned RvCoreIbexWidthPingCounter = alert_handler_reg_pkg::PING_CNT_DW;
@@ -2378,6 +2378,11 @@ module top_darjeeling #(
       .rst_ni (rstmgr_aon_resets.rst_lc_n[rstmgr_pkg::Domain0Sel])
   );
   mbx #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(1'b1),
+    .RaclPolicySelVecSoc(top_racl_pkg::RACL_POLICY_SEL_MBX3_SOC),
+    .RaclPolicySelWinSocWdata(top_racl_pkg::RACL_POLICY_SEL_MBX3_SOC_WIN_WDATA),
+    .RaclPolicySelWinSocRdata(top_racl_pkg::RACL_POLICY_SEL_MBX3_SOC_WIN_RDATA),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[80:79])
   ) u_mbx3 (
 
@@ -2395,9 +2400,9 @@ module top_darjeeling #(
       .doe_intr_en_o(mbx3_doe_intr_en_o),
       .doe_intr_o(mbx3_doe_intr_o),
       .doe_async_msg_support_o(mbx3_doe_async_msg_support_o),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
-      .racl_error_log_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[3]),
+      .racl_error_log_o(racl_ctrl_racl_error_log[3]),
       .sram_tl_h_o(main_tl_mbx3__sram_req),
       .sram_tl_h_i(main_tl_mbx3__sram_rsp),
       .core_tl_d_i(mbx3_core_tl_d_req),
@@ -2433,8 +2438,8 @@ module top_darjeeling #(
       .doe_intr_o(mbx4_doe_intr_o),
       .doe_async_msg_support_o(mbx4_doe_async_msg_support_o),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[3]),
-      .racl_error_log_o(racl_ctrl_racl_error_log[3]),
+      .racl_error_o(racl_ctrl_racl_error[4]),
+      .racl_error_log_o(racl_ctrl_racl_error_log[4]),
       .sram_tl_h_o(main_tl_mbx4__sram_req),
       .sram_tl_h_i(main_tl_mbx4__sram_rsp),
       .core_tl_d_i(mbx4_core_tl_d_req),
@@ -2470,8 +2475,8 @@ module top_darjeeling #(
       .doe_intr_o(mbx5_doe_intr_o),
       .doe_async_msg_support_o(mbx5_doe_async_msg_support_o),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[4]),
-      .racl_error_log_o(racl_ctrl_racl_error_log[4]),
+      .racl_error_o(racl_ctrl_racl_error[5]),
+      .racl_error_log_o(racl_ctrl_racl_error_log[5]),
       .sram_tl_h_o(main_tl_mbx5__sram_req),
       .sram_tl_h_i(main_tl_mbx5__sram_rsp),
       .core_tl_d_i(mbx5_core_tl_d_req),
@@ -2484,6 +2489,11 @@ module top_darjeeling #(
       .rst_ni (rstmgr_aon_resets.rst_lc_n[rstmgr_pkg::Domain0Sel])
   );
   mbx #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(1'b1),
+    .RaclPolicySelVecSoc(top_racl_pkg::RACL_POLICY_SEL_MBX6_SOC),
+    .RaclPolicySelWinSocWdata(top_racl_pkg::RACL_POLICY_SEL_MBX6_SOC_WIN_WDATA),
+    .RaclPolicySelWinSocRdata(top_racl_pkg::RACL_POLICY_SEL_MBX6_SOC_WIN_RDATA),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[86:85])
   ) u_mbx6 (
 
@@ -2501,9 +2511,9 @@ module top_darjeeling #(
       .doe_intr_en_o(mbx6_doe_intr_en_o),
       .doe_intr_o(mbx6_doe_intr_o),
       .doe_async_msg_support_o(mbx6_doe_async_msg_support_o),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
-      .racl_error_log_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[6]),
+      .racl_error_log_o(racl_ctrl_racl_error_log[6]),
       .sram_tl_h_o(main_tl_mbx6__sram_req),
       .sram_tl_h_i(main_tl_mbx6__sram_rsp),
       .core_tl_d_i(mbx6_core_tl_d_req),
@@ -2516,11 +2526,6 @@ module top_darjeeling #(
       .rst_ni (rstmgr_aon_resets.rst_lc_n[rstmgr_pkg::Domain0Sel])
   );
   mbx #(
-    .EnableRacl(1'b1),
-    .RaclErrorRsp(1'b1),
-    .RaclPolicySelVecSoc(top_racl_pkg::RACL_POLICY_SEL_MBX_JTAG_SOC),
-    .RaclPolicySelWinSocWdata(top_racl_pkg::RACL_POLICY_SEL_MBX_JTAG_SOC_WIN_WDATA),
-    .RaclPolicySelWinSocRdata(top_racl_pkg::RACL_POLICY_SEL_MBX_JTAG_SOC_WIN_RDATA),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[88:87])
   ) u_mbx_jtag (
 
@@ -2538,9 +2543,9 @@ module top_darjeeling #(
       .doe_intr_en_o(mbx_jtag_doe_intr_en_o),
       .doe_intr_o(mbx_jtag_doe_intr_o),
       .doe_async_msg_support_o(mbx_jtag_doe_async_msg_support_o),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[5]),
-      .racl_error_log_o(racl_ctrl_racl_error_log[5]),
+      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
+      .racl_error_o(),
+      .racl_error_log_o(),
       .sram_tl_h_o(main_tl_mbx_jtag__sram_req),
       .sram_tl_h_i(main_tl_mbx_jtag__sram_rsp),
       .core_tl_d_i(mbx_jtag_core_tl_d_req),
@@ -2576,8 +2581,8 @@ module top_darjeeling #(
       .doe_intr_o(mbx_pcie0_doe_intr_o),
       .doe_async_msg_support_o(mbx_pcie0_doe_async_msg_support_o),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[6]),
-      .racl_error_log_o(racl_ctrl_racl_error_log[6]),
+      .racl_error_o(racl_ctrl_racl_error[7]),
+      .racl_error_log_o(racl_ctrl_racl_error_log[7]),
       .sram_tl_h_o(main_tl_mbx_pcie0__sram_req),
       .sram_tl_h_i(main_tl_mbx_pcie0__sram_rsp),
       .core_tl_d_i(mbx_pcie0_core_tl_d_req),
@@ -2613,8 +2618,8 @@ module top_darjeeling #(
       .doe_intr_o(mbx_pcie1_doe_intr_o),
       .doe_async_msg_support_o(mbx_pcie1_doe_async_msg_support_o),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[7]),
-      .racl_error_log_o(racl_ctrl_racl_error_log[7]),
+      .racl_error_o(racl_ctrl_racl_error[8]),
+      .racl_error_log_o(racl_ctrl_racl_error_log[8]),
       .sram_tl_h_o(main_tl_mbx_pcie1__sram_req),
       .sram_tl_h_i(main_tl_mbx_pcie1__sram_rsp),
       .core_tl_d_i(mbx_pcie1_core_tl_d_req),

@@ -33,7 +33,7 @@ module racl_ctrl_reg_top
 
   import racl_ctrl_reg_pkg::* ;
 
-  localparam int AW = 5;
+  localparam int AW = 6;
   localparam int DW = 32;
   localparam int DBW = DW/8;                    // Byte Width
 
@@ -64,9 +64,9 @@ module racl_ctrl_reg_top
 
   // also check for spurious write enables
   logic reg_we_err;
-  logic [4:0] reg_we_check;
+  logic [11:0] reg_we_check;
   prim_reg_we_check #(
-    .OneHotWidth(5)
+    .OneHotWidth(12)
   ) u_prim_reg_we_check (
     .clk_i(clk_i),
     .rst_ni(rst_ni),
@@ -154,6 +154,56 @@ module racl_ctrl_reg_top
   logic [15:0] policy_all_rd_wr_shadowed_write_perm_wd;
   logic policy_all_rd_wr_shadowed_write_perm_storage_err;
   logic policy_all_rd_wr_shadowed_write_perm_update_err;
+  logic policy_hw_rot_pwc_wr_all_rd_shadowed_re;
+  logic policy_hw_rot_pwc_wr_all_rd_shadowed_we;
+  logic [15:0] policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm_qs;
+  logic [15:0] policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm_wd;
+  logic policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm_storage_err;
+  logic policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm_update_err;
+  logic [15:0] policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm_qs;
+  logic [15:0] policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm_wd;
+  logic policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm_storage_err;
+  logic policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm_update_err;
+  logic policy_pre_boot_m_shadowed_re;
+  logic policy_pre_boot_m_shadowed_we;
+  logic [15:0] policy_pre_boot_m_shadowed_read_perm_qs;
+  logic [15:0] policy_pre_boot_m_shadowed_read_perm_wd;
+  logic policy_pre_boot_m_shadowed_read_perm_storage_err;
+  logic policy_pre_boot_m_shadowed_read_perm_update_err;
+  logic [15:0] policy_pre_boot_m_shadowed_write_perm_qs;
+  logic [15:0] policy_pre_boot_m_shadowed_write_perm_wd;
+  logic policy_pre_boot_m_shadowed_write_perm_storage_err;
+  logic policy_pre_boot_m_shadowed_write_perm_update_err;
+  logic policy_post_boot_m_shadowed_re;
+  logic policy_post_boot_m_shadowed_we;
+  logic [15:0] policy_post_boot_m_shadowed_read_perm_qs;
+  logic [15:0] policy_post_boot_m_shadowed_read_perm_wd;
+  logic policy_post_boot_m_shadowed_read_perm_storage_err;
+  logic policy_post_boot_m_shadowed_read_perm_update_err;
+  logic [15:0] policy_post_boot_m_shadowed_write_perm_qs;
+  logic [15:0] policy_post_boot_m_shadowed_write_perm_wd;
+  logic policy_post_boot_m_shadowed_write_perm_storage_err;
+  logic policy_post_boot_m_shadowed_write_perm_update_err;
+  logic policy_tee_limited_shadowed_re;
+  logic policy_tee_limited_shadowed_we;
+  logic [15:0] policy_tee_limited_shadowed_read_perm_qs;
+  logic [15:0] policy_tee_limited_shadowed_read_perm_wd;
+  logic policy_tee_limited_shadowed_read_perm_storage_err;
+  logic policy_tee_limited_shadowed_read_perm_update_err;
+  logic [15:0] policy_tee_limited_shadowed_write_perm_qs;
+  logic [15:0] policy_tee_limited_shadowed_write_perm_wd;
+  logic policy_tee_limited_shadowed_write_perm_storage_err;
+  logic policy_tee_limited_shadowed_write_perm_update_err;
+  logic policy_rcode_private_shadowed_re;
+  logic policy_rcode_private_shadowed_we;
+  logic [15:0] policy_rcode_private_shadowed_read_perm_qs;
+  logic [15:0] policy_rcode_private_shadowed_read_perm_wd;
+  logic policy_rcode_private_shadowed_read_perm_storage_err;
+  logic policy_rcode_private_shadowed_read_perm_update_err;
+  logic [15:0] policy_rcode_private_shadowed_write_perm_qs;
+  logic [15:0] policy_rcode_private_shadowed_write_perm_wd;
+  logic policy_rcode_private_shadowed_write_perm_storage_err;
+  logic policy_rcode_private_shadowed_write_perm_update_err;
   logic policy_rot_private_shadowed_re;
   logic policy_rot_private_shadowed_we;
   logic [15:0] policy_rot_private_shadowed_read_perm_qs;
@@ -164,16 +214,36 @@ module racl_ctrl_reg_top
   logic [15:0] policy_rot_private_shadowed_write_perm_wd;
   logic policy_rot_private_shadowed_write_perm_storage_err;
   logic policy_rot_private_shadowed_write_perm_update_err;
-  logic policy_soc_rot_shadowed_re;
-  logic policy_soc_rot_shadowed_we;
-  logic [15:0] policy_soc_rot_shadowed_read_perm_qs;
-  logic [15:0] policy_soc_rot_shadowed_read_perm_wd;
-  logic policy_soc_rot_shadowed_read_perm_storage_err;
-  logic policy_soc_rot_shadowed_read_perm_update_err;
-  logic [15:0] policy_soc_rot_shadowed_write_perm_qs;
-  logic [15:0] policy_soc_rot_shadowed_write_perm_wd;
-  logic policy_soc_rot_shadowed_write_perm_storage_err;
-  logic policy_soc_rot_shadowed_write_perm_update_err;
+  logic policy_pwc_private_shadowed_re;
+  logic policy_pwc_private_shadowed_we;
+  logic [15:0] policy_pwc_private_shadowed_read_perm_qs;
+  logic [15:0] policy_pwc_private_shadowed_read_perm_wd;
+  logic policy_pwc_private_shadowed_read_perm_storage_err;
+  logic policy_pwc_private_shadowed_read_perm_update_err;
+  logic [15:0] policy_pwc_private_shadowed_write_perm_qs;
+  logic [15:0] policy_pwc_private_shadowed_write_perm_wd;
+  logic policy_pwc_private_shadowed_write_perm_storage_err;
+  logic policy_pwc_private_shadowed_write_perm_update_err;
+  logic policy_mio_private_shadowed_re;
+  logic policy_mio_private_shadowed_we;
+  logic [15:0] policy_mio_private_shadowed_read_perm_qs;
+  logic [15:0] policy_mio_private_shadowed_read_perm_wd;
+  logic policy_mio_private_shadowed_read_perm_storage_err;
+  logic policy_mio_private_shadowed_read_perm_update_err;
+  logic [15:0] policy_mio_private_shadowed_write_perm_qs;
+  logic [15:0] policy_mio_private_shadowed_write_perm_wd;
+  logic policy_mio_private_shadowed_write_perm_storage_err;
+  logic policy_mio_private_shadowed_write_perm_update_err;
+  logic policy_duc_private_shadowed_re;
+  logic policy_duc_private_shadowed_we;
+  logic [15:0] policy_duc_private_shadowed_read_perm_qs;
+  logic [15:0] policy_duc_private_shadowed_read_perm_wd;
+  logic policy_duc_private_shadowed_read_perm_storage_err;
+  logic policy_duc_private_shadowed_read_perm_update_err;
+  logic [15:0] policy_duc_private_shadowed_write_perm_qs;
+  logic [15:0] policy_duc_private_shadowed_write_perm_wd;
+  logic policy_duc_private_shadowed_write_perm_storage_err;
+  logic policy_duc_private_shadowed_write_perm_update_err;
 
   // Register instances
   // R[alert_test]: V(True)
@@ -367,7 +437,7 @@ module racl_ctrl_reg_top
   prim_subreg_shadow #(
     .DW      (16),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (16'h7),
+    .RESVAL  (16'h3fff),
     .Mubi    (1'b0)
   ) u_policy_all_rd_wr_shadowed_read_perm (
     .clk_i   (clk_i),
@@ -403,7 +473,7 @@ module racl_ctrl_reg_top
   prim_subreg_shadow #(
     .DW      (16),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (16'h7),
+    .RESVAL  (16'h3fff),
     .Mubi    (1'b0)
   ) u_policy_all_rd_wr_shadowed_write_perm (
     .clk_i   (clk_i),
@@ -436,12 +506,382 @@ module racl_ctrl_reg_top
   );
 
 
+  // R[policy_hw_rot_pwc_wr_all_rd_shadowed]: V(False)
+  //   F[read_perm]: 15:0
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h3fff),
+    .Mubi    (1'b0)
+  ) u_policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_hw_rot_pwc_wr_all_rd_shadowed_re),
+    .we     (policy_hw_rot_pwc_wr_all_rd_shadowed_we),
+    .wd     (policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_hw_rot_pwc_wr_all_rd_shadowed.read_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm_update_err),
+    .err_storage (policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm_storage_err)
+  );
+
+  //   F[write_perm]: 31:16
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h360),
+    .Mubi    (1'b0)
+  ) u_policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_hw_rot_pwc_wr_all_rd_shadowed_re),
+    .we     (policy_hw_rot_pwc_wr_all_rd_shadowed_we),
+    .wd     (policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_hw_rot_pwc_wr_all_rd_shadowed.write_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm_update_err),
+    .err_storage (policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm_storage_err)
+  );
+
+
+  // R[policy_pre_boot_m_shadowed]: V(False)
+  //   F[read_perm]: 15:0
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h3ff),
+    .Mubi    (1'b0)
+  ) u_policy_pre_boot_m_shadowed_read_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_pre_boot_m_shadowed_re),
+    .we     (policy_pre_boot_m_shadowed_we),
+    .wd     (policy_pre_boot_m_shadowed_read_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_pre_boot_m_shadowed.read_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_pre_boot_m_shadowed_read_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_pre_boot_m_shadowed_read_perm_update_err),
+    .err_storage (policy_pre_boot_m_shadowed_read_perm_storage_err)
+  );
+
+  //   F[write_perm]: 31:16
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h37a),
+    .Mubi    (1'b0)
+  ) u_policy_pre_boot_m_shadowed_write_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_pre_boot_m_shadowed_re),
+    .we     (policy_pre_boot_m_shadowed_we),
+    .wd     (policy_pre_boot_m_shadowed_write_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_pre_boot_m_shadowed.write_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_pre_boot_m_shadowed_write_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_pre_boot_m_shadowed_write_perm_update_err),
+    .err_storage (policy_pre_boot_m_shadowed_write_perm_storage_err)
+  );
+
+
+  // R[policy_post_boot_m_shadowed]: V(False)
+  //   F[read_perm]: 15:0
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h3ff),
+    .Mubi    (1'b0)
+  ) u_policy_post_boot_m_shadowed_read_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_post_boot_m_shadowed_re),
+    .we     (policy_post_boot_m_shadowed_we),
+    .wd     (policy_post_boot_m_shadowed_read_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_post_boot_m_shadowed.read_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_post_boot_m_shadowed_read_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_post_boot_m_shadowed_read_perm_update_err),
+    .err_storage (policy_post_boot_m_shadowed_read_perm_storage_err)
+  );
+
+  //   F[write_perm]: 31:16
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h37a),
+    .Mubi    (1'b0)
+  ) u_policy_post_boot_m_shadowed_write_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_post_boot_m_shadowed_re),
+    .we     (policy_post_boot_m_shadowed_we),
+    .wd     (policy_post_boot_m_shadowed_write_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_post_boot_m_shadowed.write_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_post_boot_m_shadowed_write_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_post_boot_m_shadowed_write_perm_update_err),
+    .err_storage (policy_post_boot_m_shadowed_write_perm_storage_err)
+  );
+
+
+  // R[policy_tee_limited_shadowed]: V(False)
+  //   F[read_perm]: 15:0
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'hb7c),
+    .Mubi    (1'b0)
+  ) u_policy_tee_limited_shadowed_read_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_tee_limited_shadowed_re),
+    .we     (policy_tee_limited_shadowed_we),
+    .wd     (policy_tee_limited_shadowed_read_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_tee_limited_shadowed.read_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_tee_limited_shadowed_read_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_tee_limited_shadowed_read_perm_update_err),
+    .err_storage (policy_tee_limited_shadowed_read_perm_storage_err)
+  );
+
+  //   F[write_perm]: 31:16
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'hb7c),
+    .Mubi    (1'b0)
+  ) u_policy_tee_limited_shadowed_write_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_tee_limited_shadowed_re),
+    .we     (policy_tee_limited_shadowed_we),
+    .wd     (policy_tee_limited_shadowed_write_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_tee_limited_shadowed.write_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_tee_limited_shadowed_write_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_tee_limited_shadowed_write_perm_update_err),
+    .err_storage (policy_tee_limited_shadowed_write_perm_storage_err)
+  );
+
+
+  // R[policy_rcode_private_shadowed]: V(False)
+  //   F[read_perm]: 15:0
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h368),
+    .Mubi    (1'b0)
+  ) u_policy_rcode_private_shadowed_read_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_rcode_private_shadowed_re),
+    .we     (policy_rcode_private_shadowed_we),
+    .wd     (policy_rcode_private_shadowed_read_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_rcode_private_shadowed.read_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_rcode_private_shadowed_read_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_rcode_private_shadowed_read_perm_update_err),
+    .err_storage (policy_rcode_private_shadowed_read_perm_storage_err)
+  );
+
+  //   F[write_perm]: 31:16
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h368),
+    .Mubi    (1'b0)
+  ) u_policy_rcode_private_shadowed_write_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_rcode_private_shadowed_re),
+    .we     (policy_rcode_private_shadowed_we),
+    .wd     (policy_rcode_private_shadowed_write_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_rcode_private_shadowed.write_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_rcode_private_shadowed_write_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_rcode_private_shadowed_write_perm_update_err),
+    .err_storage (policy_rcode_private_shadowed_write_perm_storage_err)
+  );
+
+
   // R[policy_rot_private_shadowed]: V(False)
   //   F[read_perm]: 15:0
   prim_subreg_shadow #(
     .DW      (16),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (16'h1),
+    .RESVAL  (16'h60),
     .Mubi    (1'b0)
   ) u_policy_rot_private_shadowed_read_perm (
     .clk_i   (clk_i),
@@ -477,7 +917,7 @@ module racl_ctrl_reg_top
   prim_subreg_shadow #(
     .DW      (16),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (16'h1),
+    .RESVAL  (16'h60),
     .Mubi    (1'b0)
   ) u_policy_rot_private_shadowed_write_perm (
     .clk_i   (clk_i),
@@ -510,22 +950,22 @@ module racl_ctrl_reg_top
   );
 
 
-  // R[policy_soc_rot_shadowed]: V(False)
+  // R[policy_pwc_private_shadowed]: V(False)
   //   F[read_perm]: 15:0
   prim_subreg_shadow #(
     .DW      (16),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (16'h5),
+    .RESVAL  (16'h360),
     .Mubi    (1'b0)
-  ) u_policy_soc_rot_shadowed_read_perm (
+  ) u_policy_pwc_private_shadowed_read_perm (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
     .rst_shadowed_ni (rst_shadowed_ni),
 
     // from register interface
-    .re     (policy_soc_rot_shadowed_re),
-    .we     (policy_soc_rot_shadowed_we),
-    .wd     (policy_soc_rot_shadowed_read_perm_wd),
+    .re     (policy_pwc_private_shadowed_re),
+    .we     (policy_pwc_private_shadowed_we),
+    .wd     (policy_pwc_private_shadowed_read_perm_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -533,35 +973,35 @@ module racl_ctrl_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.policy_soc_rot_shadowed.read_perm.q),
+    .q      (reg2hw.policy_pwc_private_shadowed.read_perm.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (policy_soc_rot_shadowed_read_perm_qs),
+    .qs     (policy_pwc_private_shadowed_read_perm_qs),
 
     // Shadow register phase. Relevant for hwext only.
     .phase  (),
 
     // Shadow register error conditions
-    .err_update  (policy_soc_rot_shadowed_read_perm_update_err),
-    .err_storage (policy_soc_rot_shadowed_read_perm_storage_err)
+    .err_update  (policy_pwc_private_shadowed_read_perm_update_err),
+    .err_storage (policy_pwc_private_shadowed_read_perm_storage_err)
   );
 
   //   F[write_perm]: 31:16
   prim_subreg_shadow #(
     .DW      (16),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (16'h5),
+    .RESVAL  (16'h360),
     .Mubi    (1'b0)
-  ) u_policy_soc_rot_shadowed_write_perm (
+  ) u_policy_pwc_private_shadowed_write_perm (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
     .rst_shadowed_ni (rst_shadowed_ni),
 
     // from register interface
-    .re     (policy_soc_rot_shadowed_re),
-    .we     (policy_soc_rot_shadowed_we),
-    .wd     (policy_soc_rot_shadowed_write_perm_wd),
+    .re     (policy_pwc_private_shadowed_re),
+    .we     (policy_pwc_private_shadowed_we),
+    .wd     (policy_pwc_private_shadowed_write_perm_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -569,28 +1009,176 @@ module racl_ctrl_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.policy_soc_rot_shadowed.write_perm.q),
+    .q      (reg2hw.policy_pwc_private_shadowed.write_perm.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (policy_soc_rot_shadowed_write_perm_qs),
+    .qs     (policy_pwc_private_shadowed_write_perm_qs),
 
     // Shadow register phase. Relevant for hwext only.
     .phase  (),
 
     // Shadow register error conditions
-    .err_update  (policy_soc_rot_shadowed_write_perm_update_err),
-    .err_storage (policy_soc_rot_shadowed_write_perm_storage_err)
+    .err_update  (policy_pwc_private_shadowed_write_perm_update_err),
+    .err_storage (policy_pwc_private_shadowed_write_perm_storage_err)
+  );
+
+
+  // R[policy_mio_private_shadowed]: V(False)
+  //   F[read_perm]: 15:0
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h3e0),
+    .Mubi    (1'b0)
+  ) u_policy_mio_private_shadowed_read_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_mio_private_shadowed_re),
+    .we     (policy_mio_private_shadowed_we),
+    .wd     (policy_mio_private_shadowed_read_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_mio_private_shadowed.read_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_mio_private_shadowed_read_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_mio_private_shadowed_read_perm_update_err),
+    .err_storage (policy_mio_private_shadowed_read_perm_storage_err)
+  );
+
+  //   F[write_perm]: 31:16
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h3e0),
+    .Mubi    (1'b0)
+  ) u_policy_mio_private_shadowed_write_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_mio_private_shadowed_re),
+    .we     (policy_mio_private_shadowed_we),
+    .wd     (policy_mio_private_shadowed_write_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_mio_private_shadowed.write_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_mio_private_shadowed_write_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_mio_private_shadowed_write_perm_update_err),
+    .err_storage (policy_mio_private_shadowed_write_perm_storage_err)
+  );
+
+
+  // R[policy_duc_private_shadowed]: V(False)
+  //   F[read_perm]: 15:0
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h3360),
+    .Mubi    (1'b0)
+  ) u_policy_duc_private_shadowed_read_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_duc_private_shadowed_re),
+    .we     (policy_duc_private_shadowed_we),
+    .wd     (policy_duc_private_shadowed_read_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_duc_private_shadowed.read_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_duc_private_shadowed_read_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_duc_private_shadowed_read_perm_update_err),
+    .err_storage (policy_duc_private_shadowed_read_perm_storage_err)
+  );
+
+  //   F[write_perm]: 31:16
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h3360),
+    .Mubi    (1'b0)
+  ) u_policy_duc_private_shadowed_write_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_duc_private_shadowed_re),
+    .we     (policy_duc_private_shadowed_we),
+    .wd     (policy_duc_private_shadowed_write_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_duc_private_shadowed.write_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_duc_private_shadowed_write_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_duc_private_shadowed_write_perm_update_err),
+    .err_storage (policy_duc_private_shadowed_write_perm_storage_err)
   );
 
 
 
-  logic [4:0] addr_hit;
+  logic [11:0] addr_hit;
   top_racl_pkg::racl_role_vec_t racl_role_vec;
   top_racl_pkg::racl_role_t racl_role;
 
-  logic [4:0] racl_addr_hit_read;
-  logic [4:0] racl_addr_hit_write;
+  logic [11:0] racl_addr_hit_read;
+  logic [11:0] racl_addr_hit_write;
 
   if (EnableRacl) begin : gen_racl_role_logic
     // Retrieve RACL role from user bits and one-hot encode that for the comparison bitmap
@@ -616,14 +1204,21 @@ module racl_ctrl_reg_top
     addr_hit = '0;
     racl_addr_hit_read  = '0;
     racl_addr_hit_write = '0;
-    addr_hit[0] = (reg_addr == RACL_CTRL_ALERT_TEST_OFFSET);
-    addr_hit[1] = (reg_addr == RACL_CTRL_ERROR_LOG_OFFSET);
-    addr_hit[2] = (reg_addr == RACL_CTRL_POLICY_ALL_RD_WR_SHADOWED_OFFSET);
-    addr_hit[3] = (reg_addr == RACL_CTRL_POLICY_ROT_PRIVATE_SHADOWED_OFFSET);
-    addr_hit[4] = (reg_addr == RACL_CTRL_POLICY_SOC_ROT_SHADOWED_OFFSET);
+    addr_hit[ 0] = (reg_addr == RACL_CTRL_ALERT_TEST_OFFSET);
+    addr_hit[ 1] = (reg_addr == RACL_CTRL_ERROR_LOG_OFFSET);
+    addr_hit[ 2] = (reg_addr == RACL_CTRL_POLICY_ALL_RD_WR_SHADOWED_OFFSET);
+    addr_hit[ 3] = (reg_addr == RACL_CTRL_POLICY_HW_ROT_PWC_WR_ALL_RD_SHADOWED_OFFSET);
+    addr_hit[ 4] = (reg_addr == RACL_CTRL_POLICY_PRE_BOOT_M_SHADOWED_OFFSET);
+    addr_hit[ 5] = (reg_addr == RACL_CTRL_POLICY_POST_BOOT_M_SHADOWED_OFFSET);
+    addr_hit[ 6] = (reg_addr == RACL_CTRL_POLICY_TEE_LIMITED_SHADOWED_OFFSET);
+    addr_hit[ 7] = (reg_addr == RACL_CTRL_POLICY_RCODE_PRIVATE_SHADOWED_OFFSET);
+    addr_hit[ 8] = (reg_addr == RACL_CTRL_POLICY_ROT_PRIVATE_SHADOWED_OFFSET);
+    addr_hit[ 9] = (reg_addr == RACL_CTRL_POLICY_PWC_PRIVATE_SHADOWED_OFFSET);
+    addr_hit[10] = (reg_addr == RACL_CTRL_POLICY_MIO_PRIVATE_SHADOWED_OFFSET);
+    addr_hit[11] = (reg_addr == RACL_CTRL_POLICY_DUC_PRIVATE_SHADOWED_OFFSET);
 
     if (EnableRacl) begin : gen_racl_hit
-      for (int unsigned slice_idx = 0; slice_idx < 5; slice_idx++) begin
+      for (int unsigned slice_idx = 0; slice_idx < 12; slice_idx++) begin
         // Static RACL protection with ROT_PRIVATE policy
         racl_addr_hit_read[slice_idx] =
           addr_hit[slice_idx] & (|(top_racl_pkg::RACL_POLICY_ROT_PRIVATE_RD & racl_role_vec));
@@ -653,11 +1248,18 @@ module racl_ctrl_reg_top
   // Check sub-word write is permitted
   always_comb begin
     wr_err = (reg_we &
-              ((racl_addr_hit_write[0] & (|(RACL_CTRL_PERMIT[0] & ~reg_be))) |
-               (racl_addr_hit_write[1] & (|(RACL_CTRL_PERMIT[1] & ~reg_be))) |
-               (racl_addr_hit_write[2] & (|(RACL_CTRL_PERMIT[2] & ~reg_be))) |
-               (racl_addr_hit_write[3] & (|(RACL_CTRL_PERMIT[3] & ~reg_be))) |
-               (racl_addr_hit_write[4] & (|(RACL_CTRL_PERMIT[4] & ~reg_be)))));
+              ((racl_addr_hit_write[ 0] & (|(RACL_CTRL_PERMIT[ 0] & ~reg_be))) |
+               (racl_addr_hit_write[ 1] & (|(RACL_CTRL_PERMIT[ 1] & ~reg_be))) |
+               (racl_addr_hit_write[ 2] & (|(RACL_CTRL_PERMIT[ 2] & ~reg_be))) |
+               (racl_addr_hit_write[ 3] & (|(RACL_CTRL_PERMIT[ 3] & ~reg_be))) |
+               (racl_addr_hit_write[ 4] & (|(RACL_CTRL_PERMIT[ 4] & ~reg_be))) |
+               (racl_addr_hit_write[ 5] & (|(RACL_CTRL_PERMIT[ 5] & ~reg_be))) |
+               (racl_addr_hit_write[ 6] & (|(RACL_CTRL_PERMIT[ 6] & ~reg_be))) |
+               (racl_addr_hit_write[ 7] & (|(RACL_CTRL_PERMIT[ 7] & ~reg_be))) |
+               (racl_addr_hit_write[ 8] & (|(RACL_CTRL_PERMIT[ 8] & ~reg_be))) |
+               (racl_addr_hit_write[ 9] & (|(RACL_CTRL_PERMIT[ 9] & ~reg_be))) |
+               (racl_addr_hit_write[10] & (|(RACL_CTRL_PERMIT[10] & ~reg_be))) |
+               (racl_addr_hit_write[11] & (|(RACL_CTRL_PERMIT[11] & ~reg_be)))));
   end
 
   // Generate write-enables
@@ -675,18 +1277,60 @@ module racl_ctrl_reg_top
   assign policy_all_rd_wr_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_all_rd_wr_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign policy_rot_private_shadowed_re = racl_addr_hit_write[3] & reg_re & !reg_error;
-  assign policy_rot_private_shadowed_we = racl_addr_hit_write[3] & reg_we & !reg_error;
+  assign policy_hw_rot_pwc_wr_all_rd_shadowed_re = racl_addr_hit_write[3] & reg_re & !reg_error;
+  assign policy_hw_rot_pwc_wr_all_rd_shadowed_we = racl_addr_hit_write[3] & reg_we & !reg_error;
+
+  assign policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm_wd = reg_wdata[15:0];
+
+  assign policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm_wd = reg_wdata[31:16];
+  assign policy_pre_boot_m_shadowed_re = racl_addr_hit_write[4] & reg_re & !reg_error;
+  assign policy_pre_boot_m_shadowed_we = racl_addr_hit_write[4] & reg_we & !reg_error;
+
+  assign policy_pre_boot_m_shadowed_read_perm_wd = reg_wdata[15:0];
+
+  assign policy_pre_boot_m_shadowed_write_perm_wd = reg_wdata[31:16];
+  assign policy_post_boot_m_shadowed_re = racl_addr_hit_write[5] & reg_re & !reg_error;
+  assign policy_post_boot_m_shadowed_we = racl_addr_hit_write[5] & reg_we & !reg_error;
+
+  assign policy_post_boot_m_shadowed_read_perm_wd = reg_wdata[15:0];
+
+  assign policy_post_boot_m_shadowed_write_perm_wd = reg_wdata[31:16];
+  assign policy_tee_limited_shadowed_re = racl_addr_hit_write[6] & reg_re & !reg_error;
+  assign policy_tee_limited_shadowed_we = racl_addr_hit_write[6] & reg_we & !reg_error;
+
+  assign policy_tee_limited_shadowed_read_perm_wd = reg_wdata[15:0];
+
+  assign policy_tee_limited_shadowed_write_perm_wd = reg_wdata[31:16];
+  assign policy_rcode_private_shadowed_re = racl_addr_hit_write[7] & reg_re & !reg_error;
+  assign policy_rcode_private_shadowed_we = racl_addr_hit_write[7] & reg_we & !reg_error;
+
+  assign policy_rcode_private_shadowed_read_perm_wd = reg_wdata[15:0];
+
+  assign policy_rcode_private_shadowed_write_perm_wd = reg_wdata[31:16];
+  assign policy_rot_private_shadowed_re = racl_addr_hit_write[8] & reg_re & !reg_error;
+  assign policy_rot_private_shadowed_we = racl_addr_hit_write[8] & reg_we & !reg_error;
 
   assign policy_rot_private_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_rot_private_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign policy_soc_rot_shadowed_re = racl_addr_hit_write[4] & reg_re & !reg_error;
-  assign policy_soc_rot_shadowed_we = racl_addr_hit_write[4] & reg_we & !reg_error;
+  assign policy_pwc_private_shadowed_re = racl_addr_hit_write[9] & reg_re & !reg_error;
+  assign policy_pwc_private_shadowed_we = racl_addr_hit_write[9] & reg_we & !reg_error;
 
-  assign policy_soc_rot_shadowed_read_perm_wd = reg_wdata[15:0];
+  assign policy_pwc_private_shadowed_read_perm_wd = reg_wdata[15:0];
 
-  assign policy_soc_rot_shadowed_write_perm_wd = reg_wdata[31:16];
+  assign policy_pwc_private_shadowed_write_perm_wd = reg_wdata[31:16];
+  assign policy_mio_private_shadowed_re = racl_addr_hit_write[10] & reg_re & !reg_error;
+  assign policy_mio_private_shadowed_we = racl_addr_hit_write[10] & reg_we & !reg_error;
+
+  assign policy_mio_private_shadowed_read_perm_wd = reg_wdata[15:0];
+
+  assign policy_mio_private_shadowed_write_perm_wd = reg_wdata[31:16];
+  assign policy_duc_private_shadowed_re = racl_addr_hit_write[11] & reg_re & !reg_error;
+  assign policy_duc_private_shadowed_we = racl_addr_hit_write[11] & reg_we & !reg_error;
+
+  assign policy_duc_private_shadowed_read_perm_wd = reg_wdata[15:0];
+
+  assign policy_duc_private_shadowed_write_perm_wd = reg_wdata[31:16];
 
   // Assign write-enables to checker logic vector.
   always_comb begin
@@ -694,8 +1338,15 @@ module racl_ctrl_reg_top
     reg_we_check[0] = alert_test_we;
     reg_we_check[1] = error_log_we;
     reg_we_check[2] = policy_all_rd_wr_shadowed_we;
-    reg_we_check[3] = policy_rot_private_shadowed_we;
-    reg_we_check[4] = policy_soc_rot_shadowed_we;
+    reg_we_check[3] = policy_hw_rot_pwc_wr_all_rd_shadowed_we;
+    reg_we_check[4] = policy_pre_boot_m_shadowed_we;
+    reg_we_check[5] = policy_post_boot_m_shadowed_we;
+    reg_we_check[6] = policy_tee_limited_shadowed_we;
+    reg_we_check[7] = policy_rcode_private_shadowed_we;
+    reg_we_check[8] = policy_rot_private_shadowed_we;
+    reg_we_check[9] = policy_pwc_private_shadowed_we;
+    reg_we_check[10] = policy_mio_private_shadowed_we;
+    reg_we_check[11] = policy_duc_private_shadowed_we;
   end
 
   // Read data return
@@ -721,13 +1372,48 @@ module racl_ctrl_reg_top
       end
 
       racl_addr_hit_read[3]: begin
+        reg_rdata_next[15:0] = policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm_qs;
+        reg_rdata_next[31:16] = policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm_qs;
+      end
+
+      racl_addr_hit_read[4]: begin
+        reg_rdata_next[15:0] = policy_pre_boot_m_shadowed_read_perm_qs;
+        reg_rdata_next[31:16] = policy_pre_boot_m_shadowed_write_perm_qs;
+      end
+
+      racl_addr_hit_read[5]: begin
+        reg_rdata_next[15:0] = policy_post_boot_m_shadowed_read_perm_qs;
+        reg_rdata_next[31:16] = policy_post_boot_m_shadowed_write_perm_qs;
+      end
+
+      racl_addr_hit_read[6]: begin
+        reg_rdata_next[15:0] = policy_tee_limited_shadowed_read_perm_qs;
+        reg_rdata_next[31:16] = policy_tee_limited_shadowed_write_perm_qs;
+      end
+
+      racl_addr_hit_read[7]: begin
+        reg_rdata_next[15:0] = policy_rcode_private_shadowed_read_perm_qs;
+        reg_rdata_next[31:16] = policy_rcode_private_shadowed_write_perm_qs;
+      end
+
+      racl_addr_hit_read[8]: begin
         reg_rdata_next[15:0] = policy_rot_private_shadowed_read_perm_qs;
         reg_rdata_next[31:16] = policy_rot_private_shadowed_write_perm_qs;
       end
 
-      racl_addr_hit_read[4]: begin
-        reg_rdata_next[15:0] = policy_soc_rot_shadowed_read_perm_qs;
-        reg_rdata_next[31:16] = policy_soc_rot_shadowed_write_perm_qs;
+      racl_addr_hit_read[9]: begin
+        reg_rdata_next[15:0] = policy_pwc_private_shadowed_read_perm_qs;
+        reg_rdata_next[31:16] = policy_pwc_private_shadowed_write_perm_qs;
+      end
+
+      racl_addr_hit_read[10]: begin
+        reg_rdata_next[15:0] = policy_mio_private_shadowed_read_perm_qs;
+        reg_rdata_next[31:16] = policy_mio_private_shadowed_write_perm_qs;
+      end
+
+      racl_addr_hit_read[11]: begin
+        reg_rdata_next[15:0] = policy_duc_private_shadowed_read_perm_qs;
+        reg_rdata_next[31:16] = policy_duc_private_shadowed_write_perm_qs;
       end
 
       default: begin
@@ -763,18 +1449,46 @@ module racl_ctrl_reg_top
   assign shadowed_storage_err_o = |{
     policy_all_rd_wr_shadowed_read_perm_storage_err,
     policy_all_rd_wr_shadowed_write_perm_storage_err,
+    policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm_storage_err,
+    policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm_storage_err,
+    policy_pre_boot_m_shadowed_read_perm_storage_err,
+    policy_pre_boot_m_shadowed_write_perm_storage_err,
+    policy_post_boot_m_shadowed_read_perm_storage_err,
+    policy_post_boot_m_shadowed_write_perm_storage_err,
+    policy_tee_limited_shadowed_read_perm_storage_err,
+    policy_tee_limited_shadowed_write_perm_storage_err,
+    policy_rcode_private_shadowed_read_perm_storage_err,
+    policy_rcode_private_shadowed_write_perm_storage_err,
     policy_rot_private_shadowed_read_perm_storage_err,
     policy_rot_private_shadowed_write_perm_storage_err,
-    policy_soc_rot_shadowed_read_perm_storage_err,
-    policy_soc_rot_shadowed_write_perm_storage_err
+    policy_pwc_private_shadowed_read_perm_storage_err,
+    policy_pwc_private_shadowed_write_perm_storage_err,
+    policy_mio_private_shadowed_read_perm_storage_err,
+    policy_mio_private_shadowed_write_perm_storage_err,
+    policy_duc_private_shadowed_read_perm_storage_err,
+    policy_duc_private_shadowed_write_perm_storage_err
   };
   assign shadowed_update_err_o = |{
     policy_all_rd_wr_shadowed_read_perm_update_err,
     policy_all_rd_wr_shadowed_write_perm_update_err,
+    policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm_update_err,
+    policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm_update_err,
+    policy_pre_boot_m_shadowed_read_perm_update_err,
+    policy_pre_boot_m_shadowed_write_perm_update_err,
+    policy_post_boot_m_shadowed_read_perm_update_err,
+    policy_post_boot_m_shadowed_write_perm_update_err,
+    policy_tee_limited_shadowed_read_perm_update_err,
+    policy_tee_limited_shadowed_write_perm_update_err,
+    policy_rcode_private_shadowed_read_perm_update_err,
+    policy_rcode_private_shadowed_write_perm_update_err,
     policy_rot_private_shadowed_read_perm_update_err,
     policy_rot_private_shadowed_write_perm_update_err,
-    policy_soc_rot_shadowed_read_perm_update_err,
-    policy_soc_rot_shadowed_write_perm_update_err
+    policy_pwc_private_shadowed_read_perm_update_err,
+    policy_pwc_private_shadowed_write_perm_update_err,
+    policy_mio_private_shadowed_read_perm_update_err,
+    policy_mio_private_shadowed_write_perm_update_err,
+    policy_duc_private_shadowed_read_perm_update_err,
+    policy_duc_private_shadowed_write_perm_update_err
   };
 
   // register busy

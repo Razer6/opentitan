@@ -157,4 +157,4 @@ pub const RACL_CTRL_BASE_ADDR: usize = 0x1463000;
 /// memory-mapped registers associated with this peripheral should have an
 /// address between #RACL_CTRL_BASE_ADDR and
 /// `RACL_CTRL_BASE_ADDR + RACL_CTRL_SIZE_BYTES`.
-pub const RACL_CTRL_SIZE_BYTES: usize = 0x20;
+pub const RACL_CTRL_SIZE_BYTES: usize = 0x40;

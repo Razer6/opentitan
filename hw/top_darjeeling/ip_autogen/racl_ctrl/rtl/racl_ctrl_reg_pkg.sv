@@ -7,11 +7,11 @@
 package racl_ctrl_reg_pkg;
 
   // Param list
-  parameter int NumPolicies = 3;
+  parameter int NumPolicies = 10;
   parameter int NumAlerts = 2;
 
   // Address widths within the block
-  parameter int BlockAw = 5;
+  parameter int BlockAw = 6;
 
   ////////////////////////////
   // Typedefs for registers //
@@ -51,6 +51,51 @@ package racl_ctrl_reg_pkg;
     struct packed {
       logic [15:0] q;
     } read_perm;
+  } racl_ctrl_reg2hw_policy_hw_rot_pwc_wr_all_rd_shadowed_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [15:0] q;
+    } write_perm;
+    struct packed {
+      logic [15:0] q;
+    } read_perm;
+  } racl_ctrl_reg2hw_policy_pre_boot_m_shadowed_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [15:0] q;
+    } write_perm;
+    struct packed {
+      logic [15:0] q;
+    } read_perm;
+  } racl_ctrl_reg2hw_policy_post_boot_m_shadowed_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [15:0] q;
+    } write_perm;
+    struct packed {
+      logic [15:0] q;
+    } read_perm;
+  } racl_ctrl_reg2hw_policy_tee_limited_shadowed_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [15:0] q;
+    } write_perm;
+    struct packed {
+      logic [15:0] q;
+    } read_perm;
+  } racl_ctrl_reg2hw_policy_rcode_private_shadowed_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [15:0] q;
+    } write_perm;
+    struct packed {
+      logic [15:0] q;
+    } read_perm;
   } racl_ctrl_reg2hw_policy_rot_private_shadowed_reg_t;
 
   typedef struct packed {
@@ -60,7 +105,25 @@ package racl_ctrl_reg_pkg;
     struct packed {
       logic [15:0] q;
     } read_perm;
-  } racl_ctrl_reg2hw_policy_soc_rot_shadowed_reg_t;
+  } racl_ctrl_reg2hw_policy_pwc_private_shadowed_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [15:0] q;
+    } write_perm;
+    struct packed {
+      logic [15:0] q;
+    } read_perm;
+  } racl_ctrl_reg2hw_policy_mio_private_shadowed_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [15:0] q;
+    } write_perm;
+    struct packed {
+      logic [15:0] q;
+    } read_perm;
+  } racl_ctrl_reg2hw_policy_duc_private_shadowed_reg_t;
 
   typedef struct packed {
     struct packed {
@@ -87,11 +150,19 @@ package racl_ctrl_reg_pkg;
 
   // Register -> HW type
   typedef struct packed {
-    racl_ctrl_reg2hw_alert_test_reg_t alert_test; // [101:98]
-    racl_ctrl_reg2hw_error_log_reg_t error_log; // [97:96]
-    racl_ctrl_reg2hw_policy_all_rd_wr_shadowed_reg_t policy_all_rd_wr_shadowed; // [95:64]
-    racl_ctrl_reg2hw_policy_rot_private_shadowed_reg_t policy_rot_private_shadowed; // [63:32]
-    racl_ctrl_reg2hw_policy_soc_rot_shadowed_reg_t policy_soc_rot_shadowed; // [31:0]
+    racl_ctrl_reg2hw_alert_test_reg_t alert_test; // [325:322]
+    racl_ctrl_reg2hw_error_log_reg_t error_log; // [321:320]
+    racl_ctrl_reg2hw_policy_all_rd_wr_shadowed_reg_t policy_all_rd_wr_shadowed; // [319:288]
+    racl_ctrl_reg2hw_policy_hw_rot_pwc_wr_all_rd_shadowed_reg_t
+        policy_hw_rot_pwc_wr_all_rd_shadowed; // [287:256]
+    racl_ctrl_reg2hw_policy_pre_boot_m_shadowed_reg_t policy_pre_boot_m_shadowed; // [255:224]
+    racl_ctrl_reg2hw_policy_post_boot_m_shadowed_reg_t policy_post_boot_m_shadowed; // [223:192]
+    racl_ctrl_reg2hw_policy_tee_limited_shadowed_reg_t policy_tee_limited_shadowed; // [191:160]
+    racl_ctrl_reg2hw_policy_rcode_private_shadowed_reg_t policy_rcode_private_shadowed; // [159:128]
+    racl_ctrl_reg2hw_policy_rot_private_shadowed_reg_t policy_rot_private_shadowed; // [127:96]
+    racl_ctrl_reg2hw_policy_pwc_private_shadowed_reg_t policy_pwc_private_shadowed; // [95:64]
+    racl_ctrl_reg2hw_policy_mio_private_shadowed_reg_t policy_mio_private_shadowed; // [63:32]
+    racl_ctrl_reg2hw_policy_duc_private_shadowed_reg_t policy_duc_private_shadowed; // [31:0]
   } racl_ctrl_reg2hw_t;
 
   // HW -> register type
@@ -100,11 +171,18 @@ package racl_ctrl_reg_pkg;
   } racl_ctrl_hw2reg_t;
 
   // Register offsets
-  parameter logic [BlockAw-1:0] RACL_CTRL_ALERT_TEST_OFFSET = 5'h 0;
-  parameter logic [BlockAw-1:0] RACL_CTRL_ERROR_LOG_OFFSET = 5'h 4;
-  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_ALL_RD_WR_SHADOWED_OFFSET = 5'h 8;
-  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_ROT_PRIVATE_SHADOWED_OFFSET = 5'h c;
-  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_SOC_ROT_SHADOWED_OFFSET = 5'h 10;
+  parameter logic [BlockAw-1:0] RACL_CTRL_ALERT_TEST_OFFSET = 6'h 0;
+  parameter logic [BlockAw-1:0] RACL_CTRL_ERROR_LOG_OFFSET = 6'h 4;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_ALL_RD_WR_SHADOWED_OFFSET = 6'h 8;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_HW_ROT_PWC_WR_ALL_RD_SHADOWED_OFFSET = 6'h c;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_PRE_BOOT_M_SHADOWED_OFFSET = 6'h 10;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_POST_BOOT_M_SHADOWED_OFFSET = 6'h 14;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_TEE_LIMITED_SHADOWED_OFFSET = 6'h 18;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_RCODE_PRIVATE_SHADOWED_OFFSET = 6'h 1c;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_ROT_PRIVATE_SHADOWED_OFFSET = 6'h 20;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_PWC_PRIVATE_SHADOWED_OFFSET = 6'h 24;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_MIO_PRIVATE_SHADOWED_OFFSET = 6'h 28;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_DUC_PRIVATE_SHADOWED_OFFSET = 6'h 2c;
 
   // Reset values for hwext registers and their fields
   parameter logic [1:0] RACL_CTRL_ALERT_TEST_RESVAL = 2'h 0;
@@ -116,17 +194,31 @@ package racl_ctrl_reg_pkg;
     RACL_CTRL_ALERT_TEST,
     RACL_CTRL_ERROR_LOG,
     RACL_CTRL_POLICY_ALL_RD_WR_SHADOWED,
+    RACL_CTRL_POLICY_HW_ROT_PWC_WR_ALL_RD_SHADOWED,
+    RACL_CTRL_POLICY_PRE_BOOT_M_SHADOWED,
+    RACL_CTRL_POLICY_POST_BOOT_M_SHADOWED,
+    RACL_CTRL_POLICY_TEE_LIMITED_SHADOWED,
+    RACL_CTRL_POLICY_RCODE_PRIVATE_SHADOWED,
     RACL_CTRL_POLICY_ROT_PRIVATE_SHADOWED,
-    RACL_CTRL_POLICY_SOC_ROT_SHADOWED
+    RACL_CTRL_POLICY_PWC_PRIVATE_SHADOWED,
+    RACL_CTRL_POLICY_MIO_PRIVATE_SHADOWED,
+    RACL_CTRL_POLICY_DUC_PRIVATE_SHADOWED
   } racl_ctrl_id_e;
 
   // Register width information to check illegal writes
-  parameter logic [3:0] RACL_CTRL_PERMIT [5] = '{
-    4'b 0001, // index[0] RACL_CTRL_ALERT_TEST
-    4'b 0011, // index[1] RACL_CTRL_ERROR_LOG
-    4'b 1111, // index[2] RACL_CTRL_POLICY_ALL_RD_WR_SHADOWED
-    4'b 1111, // index[3] RACL_CTRL_POLICY_ROT_PRIVATE_SHADOWED
-    4'b 1111  // index[4] RACL_CTRL_POLICY_SOC_ROT_SHADOWED
+  parameter logic [3:0] RACL_CTRL_PERMIT [12] = '{
+    4'b 0001, // index[ 0] RACL_CTRL_ALERT_TEST
+    4'b 0011, // index[ 1] RACL_CTRL_ERROR_LOG
+    4'b 1111, // index[ 2] RACL_CTRL_POLICY_ALL_RD_WR_SHADOWED
+    4'b 1111, // index[ 3] RACL_CTRL_POLICY_HW_ROT_PWC_WR_ALL_RD_SHADOWED
+    4'b 1111, // index[ 4] RACL_CTRL_POLICY_PRE_BOOT_M_SHADOWED
+    4'b 1111, // index[ 5] RACL_CTRL_POLICY_POST_BOOT_M_SHADOWED
+    4'b 1111, // index[ 6] RACL_CTRL_POLICY_TEE_LIMITED_SHADOWED
+    4'b 1111, // index[ 7] RACL_CTRL_POLICY_RCODE_PRIVATE_SHADOWED
+    4'b 1111, // index[ 8] RACL_CTRL_POLICY_ROT_PRIVATE_SHADOWED
+    4'b 1111, // index[ 9] RACL_CTRL_POLICY_PWC_PRIVATE_SHADOWED
+    4'b 1111, // index[10] RACL_CTRL_POLICY_MIO_PRIVATE_SHADOWED
+    4'b 1111  // index[11] RACL_CTRL_POLICY_DUC_PRIVATE_SHADOWED
   };
 
 endpackage

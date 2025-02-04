@@ -26,7 +26,7 @@ package tl_mbx_pkg;
   localparam logic [31:0] ADDR_MASK_MBX6__SOC      = 32'h 0000001f;
   localparam logic [31:0] ADDR_MASK_MBX_PCIE0__SOC = 32'h 0000001f;
   localparam logic [31:0] ADDR_MASK_MBX_PCIE1__SOC = 32'h 0000001f;
-  localparam logic [31:0] ADDR_MASK_RACL_CTRL      = 32'h 0000001f;
+  localparam logic [31:0] ADDR_MASK_RACL_CTRL      = 32'h 0000003f;
 
   localparam int N_HOST   = 1;
   localparam int N_DEVICE = 10;

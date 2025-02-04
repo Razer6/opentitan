@@ -53,13 +53,13 @@
     { name: "NumPolicies",
       desc: "Number of policies",
       type: "int",
-      default: "3",
+      default: "10",
       local: "true"
     },
     { name: "NumSubscribingIps",
       desc: "Number of subscribing RACL IPs",
       type: "int",
-      default: "8",
+      default: "9",
       expose: "true"
       local: "true"
     },
@@ -175,7 +175,7 @@
     }
     { name: "POLICY_ALL_RD_WR_SHADOWED"
       desc: '''
-            Read and write policy for {'name': 'ALL_RD_WR', 'allowed_rd': ['ROT', 'ROLE1', 'SOC'], 'allowed_wr': ['ROT', 'ROLE1', 'SOC'], 'rd_default': 7, 'wr_default': 7}
+            Read and write policy for {'name': 'ALL_RD_WR', 'allowed_wr': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC', 'IO_AGENT', 'TEE_IO_AGENT', 'DUC_UC', 'MIMT_R_MODE'], 'allowed_rd': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC', 'IO_AGENT', 'TEE_IO_AGENT', 'DUC_UC', 'MIMT_R_MODE'], 'rd_default': 16383, 'wr_default': 16383}
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -185,23 +185,153 @@
       fields: [
         { bits: "31:16"
           name: "write_perm"
-          resval: 7
+          resval: 16383
           desc: '''
-                Write permission for policy {'name': 'ALL_RD_WR', 'allowed_rd': ['ROT', 'ROLE1', 'SOC'], 'allowed_wr': ['ROT', 'ROLE1', 'SOC'], 'rd_default': 7, 'wr_default': 7}
+                Write permission for policy {'name': 'ALL_RD_WR', 'allowed_wr': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC', 'IO_AGENT', 'TEE_IO_AGENT', 'DUC_UC', 'MIMT_R_MODE'], 'allowed_rd': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC', 'IO_AGENT', 'TEE_IO_AGENT', 'DUC_UC', 'MIMT_R_MODE'], 'rd_default': 16383, 'wr_default': 16383}
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
-          resval: 7
+          resval: 16383
           desc: '''
-                Read permission for policy {'name': 'ALL_RD_WR', 'allowed_rd': ['ROT', 'ROLE1', 'SOC'], 'allowed_wr': ['ROT', 'ROLE1', 'SOC'], 'rd_default': 7, 'wr_default': 7}
+                Read permission for policy {'name': 'ALL_RD_WR', 'allowed_wr': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC', 'IO_AGENT', 'TEE_IO_AGENT', 'DUC_UC', 'MIMT_R_MODE'], 'allowed_rd': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC', 'IO_AGENT', 'TEE_IO_AGENT', 'DUC_UC', 'MIMT_R_MODE'], 'rd_default': 16383, 'wr_default': 16383}
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_HW_ROT_PWC_WR_ALL_RD_SHADOWED"
+      desc: '''
+            Read and write policy for {'name': 'HW_ROT_PWC_WR_ALL_RD', 'allowed_wr': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC', 'IO_AGENT', 'TEE_IO_AGENT', 'DUC_UC', 'MIMT_R_MODE'], 'rd_default': 16383, 'wr_default': 864}
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 864
+          desc: '''
+                Write permission for policy {'name': 'HW_ROT_PWC_WR_ALL_RD', 'allowed_wr': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC', 'IO_AGENT', 'TEE_IO_AGENT', 'DUC_UC', 'MIMT_R_MODE'], 'rd_default': 16383, 'wr_default': 864}
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 16383
+          desc: '''
+                Read permission for policy {'name': 'HW_ROT_PWC_WR_ALL_RD', 'allowed_wr': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC', 'IO_AGENT', 'TEE_IO_AGENT', 'DUC_UC', 'MIMT_R_MODE'], 'rd_default': 16383, 'wr_default': 864}
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_PRE_BOOT_M_SHADOWED"
+      desc: '''
+            Read and write policy for {'name': 'PRE_BOOT_M', 'allowed_wr': ['M_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC'], 'rd_default': 1023, 'wr_default': 890}
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 890
+          desc: '''
+                Write permission for policy {'name': 'PRE_BOOT_M', 'allowed_wr': ['M_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC'], 'rd_default': 1023, 'wr_default': 890}
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 1023
+          desc: '''
+                Read permission for policy {'name': 'PRE_BOOT_M', 'allowed_wr': ['M_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC'], 'rd_default': 1023, 'wr_default': 890}
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_POST_BOOT_M_SHADOWED"
+      desc: '''
+            Read and write policy for {'name': 'POST_BOOT_M', 'allowed_wr': ['M_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC'], 'rd_default': 1023, 'wr_default': 890}
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 890
+          desc: '''
+                Write permission for policy {'name': 'POST_BOOT_M', 'allowed_wr': ['M_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC'], 'rd_default': 1023, 'wr_default': 890}
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 1023
+          desc: '''
+                Read permission for policy {'name': 'POST_BOOT_M', 'allowed_wr': ['M_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['NOT_TEE', 'M_MODE', 'TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC'], 'rd_default': 1023, 'wr_default': 890}
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_TEE_LIMITED_SHADOWED"
+      desc: '''
+            Read and write policy for {'name': 'TEE_LIMITED', 'allowed_wr': ['TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC', 'TEE_IO_AGENT'], 'allowed_rd': ['TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC', 'TEE_IO_AGENT'], 'rd_default': 2940, 'wr_default': 2940}
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 2940
+          desc: '''
+                Write permission for policy {'name': 'TEE_LIMITED', 'allowed_wr': ['TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC', 'TEE_IO_AGENT'], 'allowed_rd': ['TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC', 'TEE_IO_AGENT'], 'rd_default': 2940, 'wr_default': 2940}
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 2940
+          desc: '''
+                Read permission for policy {'name': 'TEE_LIMITED', 'allowed_wr': ['TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC', 'TEE_IO_AGENT'], 'allowed_rd': ['TEE_MODE', 'R_CODE', 'CAT2_DEBUG', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC', 'TEE_IO_AGENT'], 'rd_default': 2940, 'wr_default': 2940}
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_RCODE_PRIVATE_SHADOWED"
+      desc: '''
+            Read and write policy for {'name': 'RCODE_PRIVATE', 'allowed_wr': ['R_CODE', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['R_CODE', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'rd_default': 872, 'wr_default': 872}
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 872
+          desc: '''
+                Write permission for policy {'name': 'RCODE_PRIVATE', 'allowed_wr': ['R_CODE', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['R_CODE', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'rd_default': 872, 'wr_default': 872}
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 872
+          desc: '''
+                Read permission for policy {'name': 'RCODE_PRIVATE', 'allowed_wr': ['R_CODE', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['R_CODE', 'CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'rd_default': 872, 'wr_default': 872}
                 '''
         }
       ]
     }
     { name: "POLICY_ROT_PRIVATE_SHADOWED"
       desc: '''
-            Read and write policy for {'name': 'ROT_PRIVATE', 'rot_private': True, 'allowed_rd': ['ROT'], 'allowed_wr': ['ROT'], 'rd_default': 1, 'wr_default': 1}
+            Read and write policy for {'name': 'ROT_PRIVATE', 'rot_private': True, 'allowed_wr': ['CAT3_DEBUG', 'ROT'], 'allowed_rd': ['CAT3_DEBUG', 'ROT'], 'rd_default': 96, 'wr_default': 96}
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -211,23 +341,23 @@
       fields: [
         { bits: "31:16"
           name: "write_perm"
-          resval: 1
+          resval: 96
           desc: '''
-                Write permission for policy {'name': 'ROT_PRIVATE', 'rot_private': True, 'allowed_rd': ['ROT'], 'allowed_wr': ['ROT'], 'rd_default': 1, 'wr_default': 1}
+                Write permission for policy {'name': 'ROT_PRIVATE', 'rot_private': True, 'allowed_wr': ['CAT3_DEBUG', 'ROT'], 'allowed_rd': ['CAT3_DEBUG', 'ROT'], 'rd_default': 96, 'wr_default': 96}
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
-          resval: 1
+          resval: 96
           desc: '''
-                Read permission for policy {'name': 'ROT_PRIVATE', 'rot_private': True, 'allowed_rd': ['ROT'], 'allowed_wr': ['ROT'], 'rd_default': 1, 'wr_default': 1}
+                Read permission for policy {'name': 'ROT_PRIVATE', 'rot_private': True, 'allowed_wr': ['CAT3_DEBUG', 'ROT'], 'allowed_rd': ['CAT3_DEBUG', 'ROT'], 'rd_default': 96, 'wr_default': 96}
                 '''
         }
       ]
     }
-    { name: "POLICY_SOC_ROT_SHADOWED"
+    { name: "POLICY_PWC_PRIVATE_SHADOWED"
       desc: '''
-            Read and write policy for {'name': 'SOC_ROT', 'allowed_rd': ['ROT', 'SOC'], 'allowed_wr': ['ROT', 'SOC'], 'rd_default': 5, 'wr_default': 5}
+            Read and write policy for {'name': 'PWC_PRIVATE', 'allowed_wr': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'rd_default': 864, 'wr_default': 864}
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -237,16 +367,68 @@
       fields: [
         { bits: "31:16"
           name: "write_perm"
-          resval: 5
+          resval: 864
           desc: '''
-                Write permission for policy {'name': 'SOC_ROT', 'allowed_rd': ['ROT', 'SOC'], 'allowed_wr': ['ROT', 'SOC'], 'rd_default': 5, 'wr_default': 5}
+                Write permission for policy {'name': 'PWC_PRIVATE', 'allowed_wr': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'rd_default': 864, 'wr_default': 864}
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
-          resval: 5
+          resval: 864
           desc: '''
-                Read permission for policy {'name': 'SOC_ROT', 'allowed_rd': ['ROT', 'SOC'], 'allowed_wr': ['ROT', 'SOC'], 'rd_default': 5, 'wr_default': 5}
+                Read permission for policy {'name': 'PWC_PRIVATE', 'allowed_wr': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'allowed_rd': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC'], 'rd_default': 864, 'wr_default': 864}
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_MIO_PRIVATE_SHADOWED"
+      desc: '''
+            Read and write policy for {'name': 'MIO_PRIVATE', 'allowed_wr': ['CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC'], 'allowed_rd': ['CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC'], 'rd_default': 992, 'wr_default': 992}
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 992
+          desc: '''
+                Write permission for policy {'name': 'MIO_PRIVATE', 'allowed_wr': ['CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC'], 'allowed_rd': ['CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC'], 'rd_default': 992, 'wr_default': 992}
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 992
+          desc: '''
+                Read permission for policy {'name': 'MIO_PRIVATE', 'allowed_wr': ['CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC'], 'allowed_rd': ['CAT3_DEBUG', 'ROT', 'MIO', 'PWC', 'INT_SOC'], 'rd_default': 992, 'wr_default': 992}
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_DUC_PRIVATE_SHADOWED"
+      desc: '''
+            Read and write policy for {'name': 'DUC_PRIVATE', 'allowed_wr': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC', 'DUC_UC', 'MIMT_R_MODE'], 'allowed_rd': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC', 'DUC_UC', 'MIMT_R_MODE'], 'rd_default': 13152, 'wr_default': 13152}
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 13152
+          desc: '''
+                Write permission for policy {'name': 'DUC_PRIVATE', 'allowed_wr': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC', 'DUC_UC', 'MIMT_R_MODE'], 'allowed_rd': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC', 'DUC_UC', 'MIMT_R_MODE'], 'rd_default': 13152, 'wr_default': 13152}
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 13152
+          desc: '''
+                Read permission for policy {'name': 'DUC_PRIVATE', 'allowed_wr': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC', 'DUC_UC', 'MIMT_R_MODE'], 'allowed_rd': ['CAT3_DEBUG', 'ROT', 'PWC', 'INT_SOC', 'DUC_UC', 'MIMT_R_MODE'], 'rd_default': 13152, 'wr_default': 13152}
                 '''
         }
       ]

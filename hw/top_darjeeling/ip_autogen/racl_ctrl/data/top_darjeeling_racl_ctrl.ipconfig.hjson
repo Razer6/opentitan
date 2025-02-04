@@ -8,55 +8,260 @@
     module_instance_name: racl_ctrl
     nr_role_bits: 4
     nr_ctn_uid_bits: 5
-    nr_policies: 3
-    nr_subscribing_ips: 8
+    nr_policies: 10
+    nr_subscribing_ips: 9
     policies:
     [
       {
         name: ALL_RD_WR
-        allowed_rd:
-        [
-          ROT
-          ROLE1
-          SOC
-        ]
         allowed_wr:
         [
+          NOT_TEE
+          M_MODE
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
           ROT
-          ROLE1
-          SOC
+          MIO
+          PWC
+          INT_SOC
+          IO_AGENT
+          TEE_IO_AGENT
+          DUC_UC
+          MIMT_R_MODE
         ]
-        rd_default: 7
-        wr_default: 7
+        allowed_rd:
+        [
+          NOT_TEE
+          M_MODE
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          MIO
+          PWC
+          INT_SOC
+          IO_AGENT
+          TEE_IO_AGENT
+          DUC_UC
+          MIMT_R_MODE
+        ]
+        rd_default: 16383
+        wr_default: 16383
+      }
+      {
+        name: HW_ROT_PWC_WR_ALL_RD
+        allowed_wr:
+        [
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        allowed_rd:
+        [
+          NOT_TEE
+          M_MODE
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          MIO
+          PWC
+          INT_SOC
+          IO_AGENT
+          TEE_IO_AGENT
+          DUC_UC
+          MIMT_R_MODE
+        ]
+        rd_default: 16383
+        wr_default: 864
+      }
+      {
+        name: PRE_BOOT_M
+        allowed_wr:
+        [
+          M_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        allowed_rd:
+        [
+          NOT_TEE
+          M_MODE
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          MIO
+          PWC
+          INT_SOC
+        ]
+        rd_default: 1023
+        wr_default: 890
+      }
+      {
+        name: POST_BOOT_M
+        allowed_wr:
+        [
+          M_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        allowed_rd:
+        [
+          NOT_TEE
+          M_MODE
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          MIO
+          PWC
+          INT_SOC
+        ]
+        rd_default: 1023
+        wr_default: 890
+      }
+      {
+        name: TEE_LIMITED
+        allowed_wr:
+        [
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+          TEE_IO_AGENT
+        ]
+        allowed_rd:
+        [
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+          TEE_IO_AGENT
+        ]
+        rd_default: 2940
+        wr_default: 2940
+      }
+      {
+        name: RCODE_PRIVATE
+        allowed_wr:
+        [
+          R_CODE
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        allowed_rd:
+        [
+          R_CODE
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        rd_default: 872
+        wr_default: 872
       }
       {
         name: ROT_PRIVATE
         rot_private: true
-        allowed_rd:
-        [
-          ROT
-        ]
         allowed_wr:
         [
+          CAT3_DEBUG
           ROT
         ]
-        rd_default: 1
-        wr_default: 1
+        allowed_rd:
+        [
+          CAT3_DEBUG
+          ROT
+        ]
+        rd_default: 96
+        wr_default: 96
       }
       {
-        name: SOC_ROT
-        allowed_rd:
-        [
-          ROT
-          SOC
-        ]
+        name: PWC_PRIVATE
         allowed_wr:
         [
+          CAT3_DEBUG
           ROT
-          SOC
+          PWC
+          INT_SOC
         ]
-        rd_default: 5
-        wr_default: 5
+        allowed_rd:
+        [
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        rd_default: 864
+        wr_default: 864
+      }
+      {
+        name: MIO_PRIVATE
+        allowed_wr:
+        [
+          CAT3_DEBUG
+          ROT
+          MIO
+          PWC
+          INT_SOC
+        ]
+        allowed_rd:
+        [
+          CAT3_DEBUG
+          ROT
+          MIO
+          PWC
+          INT_SOC
+        ]
+        rd_default: 992
+        wr_default: 992
+      }
+      {
+        name: DUC_PRIVATE
+        allowed_wr:
+        [
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+          DUC_UC
+          MIMT_R_MODE
+        ]
+        allowed_rd:
+        [
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+          DUC_UC
+          MIMT_R_MODE
+        ]
+        rd_default: 13152
+        wr_default: 13152
       }
     ]
     topname: darjeeling

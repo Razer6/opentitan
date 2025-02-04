@@ -35,7 +35,7 @@ tl_device_t xbar_devices[$] = '{
         '{32'h01460200, 32'h0146021f}
     }},
     '{"racl_ctrl", '{
-        '{32'h01463000, 32'h0146301f}
+        '{32'h01463000, 32'h0146303f}
 }}};
 
   // List of Xbar hosts
