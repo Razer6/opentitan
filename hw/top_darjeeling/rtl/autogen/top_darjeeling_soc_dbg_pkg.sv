@@ -59,7 +59,7 @@ package top_darjeeling_soc_dbg_pkg;
   parameter int unsigned NIncomingLpgsMio = 2;
 
   // Number of pwc incoming alerts
-  parameter int unsigned NIncomingAlertsPwc = 26;
+  parameter int unsigned NIncomingAlertsPwc = 28;
 
   // Number of LPGs for incoming alert group pwc
   parameter int unsigned NIncomingLpgsPwc = 2;

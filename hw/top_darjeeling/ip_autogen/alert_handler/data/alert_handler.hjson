@@ -44,7 +44,7 @@
     { name: "NAlerts",
       desc: "Number of alert channels.",
       type: "int",
-      default: "176",
+      default: "178",
       local: "true"
     },
     { name: "NLpg",
@@ -88,6 +88,8 @@
                  5'd24,
                  5'd23,
                  5'd22,
+                 5'd21,
+                 5'd21,
                  5'd21,
                  5'd21,
                  5'd21,
@@ -266,6 +268,8 @@
       type: "logic [NAlerts-1:0]",
       default: '''
                {
+                 1'b1,
+                 1'b1,
                  1'b1,
                  1'b1,
                  1'b1,

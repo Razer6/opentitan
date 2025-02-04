@@ -1,0 +1,269 @@
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+{
+  instance_name: top_pwc_racl_ctrl_pwc
+  param_values:
+  {
+    module_instance_name: racl_ctrl_pwc
+    nr_role_bits: 4
+    nr_ctn_uid_bits: 5
+    nr_policies: 10
+    nr_subscribing_ips: 6
+    policies:
+    [
+      {
+        name: ALL_RD_WR
+        allowed_wr:
+        [
+          NOT_TEE
+          M_MODE
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          MIO
+          PWC
+          INT_SOC
+          IO_AGENT
+          TEE_IO_AGENT
+          DUC_UC
+          MIMT_R_MODE
+        ]
+        allowed_rd:
+        [
+          NOT_TEE
+          M_MODE
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          MIO
+          PWC
+          INT_SOC
+          IO_AGENT
+          TEE_IO_AGENT
+          DUC_UC
+          MIMT_R_MODE
+        ]
+        rd_default: 16383
+        wr_default: 16383
+      }
+      {
+        name: HW_ROT_PWC_WR_ALL_RD
+        allowed_wr:
+        [
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        allowed_rd:
+        [
+          NOT_TEE
+          M_MODE
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          MIO
+          PWC
+          INT_SOC
+          IO_AGENT
+          TEE_IO_AGENT
+          DUC_UC
+          MIMT_R_MODE
+        ]
+        rd_default: 16383
+        wr_default: 864
+      }
+      {
+        name: PRE_BOOT_M
+        allowed_wr:
+        [
+          M_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        allowed_rd:
+        [
+          NOT_TEE
+          M_MODE
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          MIO
+          PWC
+          INT_SOC
+        ]
+        rd_default: 1023
+        wr_default: 890
+      }
+      {
+        name: POST_BOOT_M
+        allowed_wr:
+        [
+          M_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        allowed_rd:
+        [
+          NOT_TEE
+          M_MODE
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          MIO
+          PWC
+          INT_SOC
+        ]
+        rd_default: 1023
+        wr_default: 890
+      }
+      {
+        name: TEE_LIMITED
+        allowed_wr:
+        [
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+          TEE_IO_AGENT
+        ]
+        allowed_rd:
+        [
+          TEE_MODE
+          R_CODE
+          CAT2_DEBUG
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+          TEE_IO_AGENT
+        ]
+        rd_default: 2940
+        wr_default: 2940
+      }
+      {
+        name: RCODE_PRIVATE
+        allowed_wr:
+        [
+          R_CODE
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        allowed_rd:
+        [
+          R_CODE
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        rd_default: 872
+        wr_default: 872
+      }
+      {
+        name: ROT_PRIVATE
+        rot_private: true
+        allowed_wr:
+        [
+          CAT3_DEBUG
+          ROT
+        ]
+        allowed_rd:
+        [
+          CAT3_DEBUG
+          ROT
+        ]
+        rd_default: 96
+        wr_default: 96
+      }
+      {
+        name: PWC_PRIVATE
+        allowed_wr:
+        [
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        allowed_rd:
+        [
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        rd_default: 864
+        wr_default: 864
+      }
+      {
+        name: MIO_PRIVATE
+        allowed_wr:
+        [
+          CAT3_DEBUG
+          ROT
+          MIO
+          PWC
+          INT_SOC
+        ]
+        allowed_rd:
+        [
+          CAT3_DEBUG
+          ROT
+          MIO
+          PWC
+          INT_SOC
+        ]
+        rd_default: 992
+        wr_default: 992
+      }
+      {
+        name: DUC_PRIVATE
+        allowed_wr:
+        [
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+          DUC_UC
+          MIMT_R_MODE
+        ]
+        allowed_rd:
+        [
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+          DUC_UC
+          MIMT_R_MODE
+        ]
+        rd_default: 13152
+        wr_default: 13152
+      }
+    ]
+    topname: pwc
+  }
+}

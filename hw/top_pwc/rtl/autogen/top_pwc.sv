@@ -62,6 +62,8 @@ module top_pwc #(
   // parameters for mbx3
   // parameters for mbx4
   // parameters for mbx5
+  // parameters for racl_ctrl
+  parameter int RaclCtrlNumExternalSubscribingIps = 1,
   // parameters for rv_core_ibex
   parameter bit RvCoreIbexPMPEnable = 1,
   parameter int unsigned RvCoreIbexPMPGranularity = 0,
@@ -123,6 +125,9 @@ module top_pwc #(
   output prim_ram_1p_pkg::ram_1p_cfg_rsp_t [SramCtrlMainNumRamInst-1:0] sram_ctrl_main_ram_1p_cfg_rsp_o,
   input  prim_ram_1p_pkg::ram_1p_cfg_t [SramCtrlMboxNumRamInst-1:0] sram_ctrl_mbox_ram_1p_cfg_i,
   output prim_ram_1p_pkg::ram_1p_cfg_rsp_t [SramCtrlMboxNumRamInst-1:0] sram_ctrl_mbox_ram_1p_cfg_rsp_o,
+  output top_racl_pkg::racl_policy_vec_t       racl_policies_o,
+  input  logic [RaclCtrlNumExternalSubscribingIps-1:0] racl_error_i,
+  input  top_racl_pkg::racl_error_log_t [RaclCtrlNumExternalSubscribingIps-1:0] racl_error_log_i,
 
   // Incoming interrupt of group pwc_external
   input logic [158:0] incoming_interrupt_pwc_external_i,
@@ -146,6 +151,7 @@ module top_pwc #(
   // mbx3
   // mbx4
   // mbx5
+  // racl_ctrl
   // rv_core_ibex
 
   // All externally supplied clocks
@@ -185,6 +191,8 @@ module top_pwc #(
   import top_pwc_rnd_cnst_pkg::*;
 
   // Local Parameters
+  // local parameters for racl_ctrl
+  localparam int RaclCtrlNumSubscribingIps = 6;
   // local parameters for rv_core_ibex
   localparam int unsigned RvCoreIbexNEscalationSeverities = 4;
   localparam int unsigned RvCoreIbexWidthPingCounter = 16;
@@ -305,10 +313,16 @@ module top_pwc #(
   tlul_pkg::tl_d2h_t       mbx4_soc_tl_d_rsp;
   tlul_pkg::tl_h2d_t       mbx5_soc_tl_d_req;
   tlul_pkg::tl_d2h_t       mbx5_soc_tl_d_rsp;
+  tlul_pkg::tl_h2d_t       racl_ctrl_tl_req;
+  tlul_pkg::tl_d2h_t       racl_ctrl_tl_rsp;
+  top_racl_pkg::racl_policy_vec_t       racl_ctrl_racl_policies;
+  logic [RaclCtrlNumSubscribingIps-1:0] racl_ctrl_racl_error;
+  top_racl_pkg::racl_error_log_t [RaclCtrlNumSubscribingIps-1:0] racl_ctrl_racl_error_log;
   logic       rv_core_ibex_irq_timer;
   logic [31:0] rv_core_ibex_hart_id;
 
   // define mixed connection to port
+  assign racl_policies_o = racl_ctrl_racl_policies;
 
   // define partial inter-module tie-off
 
@@ -686,9 +700,9 @@ module top_pwc #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
-      .racl_error_log_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[0]),
+      .racl_error_log_o(racl_ctrl_racl_error_log[0]),
       .sram_tl_h_o(pwc_main_tl_mbx0__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx0__sram_rsp),
       .core_tl_d_i(mbx0_core_tl_d_req),
@@ -718,9 +732,9 @@ module top_pwc #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
-      .racl_error_log_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[1]),
+      .racl_error_log_o(racl_ctrl_racl_error_log[1]),
       .sram_tl_h_o(pwc_main_tl_mbx1__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx1__sram_rsp),
       .core_tl_d_i(mbx1_core_tl_d_req),
@@ -750,9 +764,9 @@ module top_pwc #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
-      .racl_error_log_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[2]),
+      .racl_error_log_o(racl_ctrl_racl_error_log[2]),
       .sram_tl_h_o(pwc_main_tl_mbx2__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx2__sram_rsp),
       .core_tl_d_i(mbx2_core_tl_d_req),
@@ -782,9 +796,9 @@ module top_pwc #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
-      .racl_error_log_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[3]),
+      .racl_error_log_o(racl_ctrl_racl_error_log[3]),
       .sram_tl_h_o(pwc_main_tl_mbx3__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx3__sram_rsp),
       .core_tl_d_i(mbx3_core_tl_d_req),
@@ -814,9 +828,9 @@ module top_pwc #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
-      .racl_error_log_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[4]),
+      .racl_error_log_o(racl_ctrl_racl_error_log[4]),
       .sram_tl_h_o(pwc_main_tl_mbx4__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx4__sram_rsp),
       .core_tl_d_i(mbx4_core_tl_d_req),
@@ -846,9 +860,9 @@ module top_pwc #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
-      .racl_error_log_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[5]),
+      .racl_error_log_o(racl_ctrl_racl_error_log[5]),
       .sram_tl_h_o(pwc_main_tl_mbx5__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx5__sram_rsp),
       .core_tl_d_i(mbx5_core_tl_d_req),
@@ -860,8 +874,32 @@ module top_pwc #(
       .clk_i (clk_ext_main_i),
       .rst_ni (rst_ext_rst_main_i)
   );
+  racl_ctrl_pwc #(
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[23:22]),
+    .NumSubscribingIps(RaclCtrlNumSubscribingIps),
+    .NumExternalSubscribingIps(RaclCtrlNumExternalSubscribingIps)
+  ) u_racl_ctrl (
+      // External alert group "pwc" [22]: recov_ctrl_update_err
+      // External alert group "pwc" [23]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[23:22] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[23:22] ),
+
+      // Inter-module signals
+      .racl_policies_o(racl_ctrl_racl_policies),
+      .racl_error_i(racl_ctrl_racl_error),
+      .racl_error_log_i(racl_ctrl_racl_error_log),
+      .racl_error_external_i(racl_error_i),
+      .racl_error_log_external_i(racl_error_log_i),
+      .tl_i(racl_ctrl_tl_req),
+      .tl_o(racl_ctrl_tl_rsp),
+
+      // Clock and reset connections
+      .clk_i (clk_ext_main_i),
+      .rst_shadowed_ni (rst_ext_rst_main_i),
+      .rst_ni (rst_ext_rst_main_i)
+  );
   rv_core_ibex #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[25:22]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[27:24]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexLfsrPerm),
     .RndCnstIbexKeyDefault(RndCnstRvCoreIbexIbexKeyDefault),
@@ -897,12 +935,12 @@ module top_pwc #(
     .PipeLine(RvCoreIbexPipeLine),
     .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
   ) u_rv_core_ibex (
-      // External alert group "pwc" [22]: fatal_sw_err
-      // External alert group "pwc" [23]: recov_sw_err
-      // External alert group "pwc" [24]: fatal_hw_err
-      // External alert group "pwc" [25]: recov_hw_err
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[25:22] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[25:22] ),
+      // External alert group "pwc" [24]: fatal_sw_err
+      // External alert group "pwc" [25]: recov_sw_err
+      // External alert group "pwc" [26]: fatal_hw_err
+      // External alert group "pwc" [27]: recov_hw_err
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[27:24] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[27:24] ),
 
       // Inter-module signals
       .rst_cpu_n_o(),
@@ -1163,6 +1201,10 @@ module top_pwc #(
     // port: tl_mbx5__soc
     .tl_mbx5__soc_o(mbx5_soc_tl_d_req),
     .tl_mbx5__soc_i(mbx5_soc_tl_d_rsp),
+
+    // port: tl_racl_ctrl
+    .tl_racl_ctrl_o(racl_ctrl_tl_req),
+    .tl_racl_ctrl_i(racl_ctrl_tl_rsp),
 
 
     .scanmode_i

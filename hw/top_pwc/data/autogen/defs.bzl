@@ -13,6 +13,7 @@ load("//hw/ip/dma:defs.bzl", "DMA")
 load("//hw/ip/gpio:defs.bzl", "GPIO")
 load("//hw/ip/mbx:defs.bzl", "MBX")
 load("//hw/top_pwc/ip/pwc_soc_proxy:defs.bzl", "PWC_SOC_PROXY")
+load("//hw/top_pwc/ip_autogen/racl_ctrl_pwc:defs.bzl", "RACL_CTRL_PWC")
 load("//hw/ip/rv_core_ibex:defs.bzl", "RV_CORE_IBEX")
 load("//hw/ip/rv_dm:defs.bzl", "RV_DM")
 load("//hw/top_pwc/ip_autogen/rv_plic_pwc:defs.bzl", "RV_PLIC_PWC")
@@ -30,6 +31,7 @@ PWC = opentitan_top(
         GPIO,
         MBX,
         PWC_SOC_PROXY,
+        RACL_CTRL_PWC,
         RV_CORE_IBEX,
         RV_DM,
         RV_PLIC_PWC,

@@ -17833,8 +17833,8 @@
         lpg_idx: 1
       }
       {
-        name: rv_core_ibex_fatal_sw_err
-        module_name: rv_core_ibex
+        name: racl_ctrl_recov_ctrl_update_err
+        module_name: racl_ctrl
         index: 22
         type: alert
         async: 1
@@ -17842,8 +17842,8 @@
         lpg_idx: 1
       }
       {
-        name: rv_core_ibex_recov_sw_err
-        module_name: rv_core_ibex
+        name: racl_ctrl_fatal_fault
+        module_name: racl_ctrl
         index: 23
         type: alert
         async: 1
@@ -17851,7 +17851,7 @@
         lpg_idx: 1
       }
       {
-        name: rv_core_ibex_fatal_hw_err
+        name: rv_core_ibex_fatal_sw_err
         module_name: rv_core_ibex
         index: 24
         type: alert
@@ -17860,9 +17860,27 @@
         lpg_idx: 1
       }
       {
-        name: rv_core_ibex_recov_hw_err
+        name: rv_core_ibex_recov_sw_err
         module_name: rv_core_ibex
         index: 25
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_fatal_hw_err
+        module_name: rv_core_ibex
+        index: 26
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_recov_hw_err
+        module_name: rv_core_ibex
+        index: 27
         type: alert
         async: 1
         width: 1
