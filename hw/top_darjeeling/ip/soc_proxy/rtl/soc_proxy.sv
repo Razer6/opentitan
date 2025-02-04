@@ -33,6 +33,9 @@ module soc_proxy
 
   output logic rst_req_external_o,
 
+  // Integrator bits used for custom BAT
+  input logic [3:0] integrator_id_i,
+
   input        [NumSocGpio-1:0] cio_soc_gpi_i,
   output logic [NumSocGpio-1:0] cio_soc_gpo_o,
   output logic [NumSocGpio-1:0] cio_soc_gpo_en_o,
@@ -93,12 +96,21 @@ module soc_proxy
     .DReqDepth ( 4'd4                  ),
     .DRspDepth ( 4'd4                  )
   ) u_ctn_egress_mux (
-    .clk_i  ( clk_i        ),
-    .rst_ni ( rst_ni       ),
-    .tl_h_i ( host_tl_h2d  ),
-    .tl_h_o ( host_tl_d2h  ),
-    .tl_d_o ( ctn_tl_h2d_o ),
-    .tl_d_i ( ctn_tl_d2h_i )
+    .clk_i  ( clk_i             ),
+    .rst_ni ( rst_ni            ),
+    .tl_h_i ( host_tl_h2d       ),
+    .tl_h_o ( host_tl_d2h       ),
+    .tl_d_o ( muxed_host_tl_h2d ),
+    .tl_d_i ( muxed_host_tl_d2h )
+  );
+
+  // Perform the base address translation before exiting to the AC Ranges
+  bat u_bat (
+    .tl_in_h2d_i     ( muxed_host_tl_h2d ),
+    .tl_in_d2h_o     ( muxed_host_tl_d2h ),
+    .integrator_id_i ( integrator_id_i   )
+    .tl_out_h2d_o    ( ctn_tl_h2d_o      ),
+    .tl_out_d2h_i    ( ctn_tl_d2h_i      )
   );
 
   // GPI/O signal feed through.
