@@ -21,7 +21,7 @@ class rom_bkdr_util extends mem_bkdr_util;
                longint unsigned n_bits, err_detection_e err_detection_scheme,
                bit [127:0] key, bit [63:0] nonce, int num_prince_rounds_half = 3,
                int extra_bits_per_subword = 0, int unsigned system_base_addr = 0);
-    super.new(name, path, depth, n_bits, err_detection_scheme, num_prince_rounds_half,
+    super.new(name, path, depth, n_bits, err_detection_scheme, null, num_prince_rounds_half,
               extra_bits_per_subword, system_base_addr);
     // Remember the encryption configuration.
     m_key = key;

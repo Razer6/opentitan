@@ -11,6 +11,9 @@ package mem_bkdr_util_pkg;
   import sram_scrambler_pkg::*;
   import uvm_pkg::*;
 
+  // Exports for sub-class usages
+  export dv_utils_pkg::uint32_t;
+
   // Represents the various forms of error detection / correction supported.
   typedef enum int {
     ErrDetectionNone    = prim_secded_pkg::SecdedNone,
@@ -43,9 +46,10 @@ package mem_bkdr_util_pkg;
   `include "dv_macros.svh"
 
   // sources
+  `include "mem_bkdr_util_row_adapter.sv"
   `include "mem_bkdr_util.sv"
   // extended classes
-  `include "flash_bkdr_util.sv"
+  //`include "flash_bkdr_util.sv"
   `include "rom_bkdr_util.sv"
   `include "sram_bkdr_util.sv"
 
