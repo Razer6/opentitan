@@ -1,0 +1,20 @@
+CAPI=2:
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+name: "rivos:dv:rivos_mem_bkdr_util_row_adapter"
+description: "Backdoor read/write memory for DV"
+
+filesets:
+  files_dv:
+    depend:
+      - lowrisc:dv:mem_bkdr_util
+    files:
+      - rivos_mem_bkdr_util_row_adapter.sv: {is_include_file: true}
+      - rivos_mem_bkdr_util_row_adapter_pkg.sv
+    file_type: systemVerilogSource
+
+targets:
+  default:
+    filesets:
+      - files_dv
