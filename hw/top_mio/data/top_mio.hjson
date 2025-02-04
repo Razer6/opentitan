@@ -15,6 +15,9 @@
   // 32-bit datawidth
   datawidth: "32",
 
+  // Enable RACL on Darjeeling based on the following configuration
+  racl_config: 'top_darjeeling/data/rivos-racl/racl.hjson'
+
   // Power information for the design
   power: {
     // Power domains supported by the design
@@ -409,6 +412,9 @@
         soc:  {soc_mbx: "0x01485000"},
       },
       outgoing_alert: "mio"
+      racl_mappings: {
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_mio_private_mapping.hjson'
+      }
     },
     { name: "mbx1",
       type: "mbx",
@@ -420,6 +426,9 @@
         soc:  {soc_mbx: "0x01485100"},
       },
       outgoing_alert: "mio"
+      racl_mappings: {
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_mio_private_mapping.hjson'
+      }
     },
     { name: "mbx2",
       type: "mbx",
@@ -431,6 +440,9 @@
         soc:  {soc_mbx: "0x01485200"},
       },
       outgoing_alert: "mio"
+      racl_mappings: {
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_mio_private_mapping.hjson'
+      }
     },
     { name: "mbx3",
       type: "mbx",
@@ -442,6 +454,9 @@
         soc:  {soc_mbx: "0x01485300"},
       },
       outgoing_alert: "mio"
+      racl_mappings: {
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
+      }
     },
     { name: "mbx4",
       type: "mbx",
@@ -453,6 +468,9 @@
         soc:  {soc_mbx: "0x01485400"},
       },
       outgoing_alert: "mio"
+      racl_mappings: {
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_pwc_private_mapping.hjson'
+      }
     },
     { name: "mbx5",
       type: "mbx",
@@ -463,6 +481,21 @@
         core: {hart: "0x22000500"},
         soc:  {soc_mbx: "0x01485500"},
       },
+      outgoing_alert: "mio"
+      racl_mappings: {
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_duc_private_mapping.hjson'
+      }
+    },
+    { name: "racl_ctrl",
+      type: "racl_ctrl_mio",
+      template_type: "racl_ctrl",
+      clock_srcs: {clk_i: "ext_main"}
+      clock_group: "infra",
+      reset_connections: {rst_ni: "ext_rst_main"},
+      base_addr: {
+        soc_mbx: "0x01463000",
+      },
+      attr: "ipgen"
       outgoing_alert: "mio"
     },
     { name: "rv_core_ibex",
@@ -600,6 +633,9 @@
         'sram_ctrl_main.cfg_rsp'            : 'sram_ctrl_main_ram_1p_cfg_rsp',
         'sram_ctrl_mbox.cfg'                : 'sram_ctrl_mbox_ram_1p_cfg',
         'sram_ctrl_mbox.cfg_rsp'            : 'sram_ctrl_mbox_ram_1p_cfg_rsp',
+        'racl_ctrl.racl_policies'           : 'racl_policies',
+        'racl_ctrl.racl_error_external'     : 'racl_error',
+        'racl_ctrl.racl_error_log_external' : 'racl_error_log'
     },
   },
 
