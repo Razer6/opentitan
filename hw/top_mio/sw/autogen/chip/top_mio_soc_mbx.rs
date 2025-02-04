@@ -102,3 +102,17 @@ pub const MBX5_SOC_BASE_ADDR: usize = 0x1485500;
 /// address between #MBX5_SOC_BASE_ADDR and
 /// `MBX5_SOC_BASE_ADDR + MBX5_SOC_SIZE_BYTES`.
 pub const MBX5_SOC_SIZE_BYTES: usize = 0x20;
+
+/// Peripheral base address for racl_ctrl in top mio.
+///
+/// This should be used with #mmio_region_from_addr to access the memory-mapped
+/// registers associated with the peripheral (usually via a DIF).
+pub const RACL_CTRL_BASE_ADDR: usize = 0x1463000;
+
+/// Peripheral size for racl_ctrl in top mio.
+///
+/// This is the size (in bytes) of the peripheral's reserved memory area. All
+/// memory-mapped registers associated with this peripheral should have an
+/// address between #RACL_CTRL_BASE_ADDR and
+/// `RACL_CTRL_BASE_ADDR + RACL_CTRL_SIZE_BYTES`.
+pub const RACL_CTRL_SIZE_BYTES: usize = 0x40;

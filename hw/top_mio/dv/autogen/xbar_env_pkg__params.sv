@@ -87,6 +87,9 @@ tl_device_t xbar_devices[$] = '{
     }},
     '{"mbx5__soc", '{
         '{32'h01485500, 32'h0148551f}
+    }},
+    '{"racl_ctrl", '{
+        '{32'h01463000, 32'h0146303f}
     }}};
 
   // List of Xbar hosts

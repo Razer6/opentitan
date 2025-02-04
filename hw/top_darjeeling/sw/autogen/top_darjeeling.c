@@ -16,7 +16,7 @@
  * `top_darjeeling_alert_peripheral_t`.
  */
 const top_darjeeling_alert_peripheral_t
-    top_darjeeling_alert_for_peripheral[174] = {
+    top_darjeeling_alert_for_peripheral[176] = {
   [kTopDarjeelingAlertIdUart0FatalFault] = kTopDarjeelingAlertPeripheralUart0,
   [kTopDarjeelingAlertIdGpioFatalFault] = kTopDarjeelingAlertPeripheralGpio,
   [kTopDarjeelingAlertIdSpiDeviceFatalFault] = kTopDarjeelingAlertPeripheralSpiDevice,
@@ -139,6 +139,8 @@ const top_darjeeling_alert_peripheral_t
   [kTopDarjeelingAlertIdIncomingMioMbx4RecovFault] = kTopDarjeelingAlertPeripheralIncomingMioMbx4,
   [kTopDarjeelingAlertIdIncomingMioMbx5FatalFault] = kTopDarjeelingAlertPeripheralIncomingMioMbx5,
   [kTopDarjeelingAlertIdIncomingMioMbx5RecovFault] = kTopDarjeelingAlertPeripheralIncomingMioMbx5,
+  [kTopDarjeelingAlertIdIncomingMioRaclCtrlRecovCtrlUpdateErr] = kTopDarjeelingAlertPeripheralIncomingMioRaclCtrl,
+  [kTopDarjeelingAlertIdIncomingMioRaclCtrlFatalFault] = kTopDarjeelingAlertPeripheralIncomingMioRaclCtrl,
   [kTopDarjeelingAlertIdIncomingMioRvCoreIbexFatalSwErr] = kTopDarjeelingAlertPeripheralIncomingMioRvCoreIbex,
   [kTopDarjeelingAlertIdIncomingMioRvCoreIbexRecovSwErr] = kTopDarjeelingAlertPeripheralIncomingMioRvCoreIbex,
   [kTopDarjeelingAlertIdIncomingMioRvCoreIbexFatalHwErr] = kTopDarjeelingAlertPeripheralIncomingMioRvCoreIbex,

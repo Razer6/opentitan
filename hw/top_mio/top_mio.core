@@ -27,6 +27,7 @@ filesets:
       - lowrisc:top_mio:xbar_mio_main
       - lowrisc:top_mio:xbar_mio_mbx
       - lowrisc:top_mio:xbar_mio_peri
+      - lowrisc:opentitan:top_mio_racl_ctrl_mio
       - lowrisc:opentitan:top_mio_rv_plic_mio
       - lowrisc:ip:aon_timer
       - lowrisc:systems:top_mio_soc_proxy

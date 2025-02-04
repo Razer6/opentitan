@@ -7,13 +7,14 @@
 //
 // Interconnect
 // mio_mbx
-//   -> s1n_7
+//   -> s1n_8
 //     -> mbx0.soc
 //     -> mbx1.soc
 //     -> mbx2.soc
 //     -> mbx3.soc
 //     -> mbx4.soc
 //     -> mbx5.soc
+//     -> racl_ctrl
 
 module xbar_mio_mbx (
   input clk_mbx_i,
@@ -36,6 +37,8 @@ module xbar_mio_mbx (
   input  tlul_pkg::tl_d2h_t tl_mbx4__soc_i,
   output tlul_pkg::tl_h2d_t tl_mbx5__soc_o,
   input  tlul_pkg::tl_d2h_t tl_mbx5__soc_i,
+  output tlul_pkg::tl_h2d_t tl_racl_ctrl_o,
+  input  tlul_pkg::tl_d2h_t tl_racl_ctrl_i,
 
   input prim_mubi_pkg::mubi4_t scanmode_i
 );
@@ -48,65 +51,72 @@ module xbar_mio_mbx (
   logic unused_scanmode;
   assign unused_scanmode = ^scanmode_i;
 
-  tl_h2d_t tl_s1n_7_us_h2d ;
-  tl_d2h_t tl_s1n_7_us_d2h ;
+  tl_h2d_t tl_s1n_8_us_h2d ;
+  tl_d2h_t tl_s1n_8_us_d2h ;
 
 
-  tl_h2d_t tl_s1n_7_ds_h2d [6];
-  tl_d2h_t tl_s1n_7_ds_d2h [6];
+  tl_h2d_t tl_s1n_8_ds_h2d [7];
+  tl_d2h_t tl_s1n_8_ds_d2h [7];
 
   // Create steering signal
-  logic [2:0] dev_sel_s1n_7;
+  logic [2:0] dev_sel_s1n_8;
 
 
 
-  assign tl_mbx0__soc_o = tl_s1n_7_ds_h2d[0];
-  assign tl_s1n_7_ds_d2h[0] = tl_mbx0__soc_i;
+  assign tl_mbx0__soc_o = tl_s1n_8_ds_h2d[0];
+  assign tl_s1n_8_ds_d2h[0] = tl_mbx0__soc_i;
 
-  assign tl_mbx1__soc_o = tl_s1n_7_ds_h2d[1];
-  assign tl_s1n_7_ds_d2h[1] = tl_mbx1__soc_i;
+  assign tl_mbx1__soc_o = tl_s1n_8_ds_h2d[1];
+  assign tl_s1n_8_ds_d2h[1] = tl_mbx1__soc_i;
 
-  assign tl_mbx2__soc_o = tl_s1n_7_ds_h2d[2];
-  assign tl_s1n_7_ds_d2h[2] = tl_mbx2__soc_i;
+  assign tl_mbx2__soc_o = tl_s1n_8_ds_h2d[2];
+  assign tl_s1n_8_ds_d2h[2] = tl_mbx2__soc_i;
 
-  assign tl_mbx3__soc_o = tl_s1n_7_ds_h2d[3];
-  assign tl_s1n_7_ds_d2h[3] = tl_mbx3__soc_i;
+  assign tl_mbx3__soc_o = tl_s1n_8_ds_h2d[3];
+  assign tl_s1n_8_ds_d2h[3] = tl_mbx3__soc_i;
 
-  assign tl_mbx4__soc_o = tl_s1n_7_ds_h2d[4];
-  assign tl_s1n_7_ds_d2h[4] = tl_mbx4__soc_i;
+  assign tl_mbx4__soc_o = tl_s1n_8_ds_h2d[4];
+  assign tl_s1n_8_ds_d2h[4] = tl_mbx4__soc_i;
 
-  assign tl_mbx5__soc_o = tl_s1n_7_ds_h2d[5];
-  assign tl_s1n_7_ds_d2h[5] = tl_mbx5__soc_i;
+  assign tl_mbx5__soc_o = tl_s1n_8_ds_h2d[5];
+  assign tl_s1n_8_ds_d2h[5] = tl_mbx5__soc_i;
 
-  assign tl_s1n_7_us_h2d = tl_mio_mbx_i;
-  assign tl_mio_mbx_o = tl_s1n_7_us_d2h;
+  assign tl_racl_ctrl_o = tl_s1n_8_ds_h2d[6];
+  assign tl_s1n_8_ds_d2h[6] = tl_racl_ctrl_i;
+
+  assign tl_s1n_8_us_h2d = tl_mio_mbx_i;
+  assign tl_mio_mbx_o = tl_s1n_8_us_d2h;
 
   always_comb begin
     // default steering to generate error response if address is not within the range
-    dev_sel_s1n_7 = 3'd6;
-    if ((tl_s1n_7_us_h2d.a_address &
+    dev_sel_s1n_8 = 3'd7;
+    if ((tl_s1n_8_us_h2d.a_address &
          ~(ADDR_MASK_MBX0__SOC)) == ADDR_SPACE_MBX0__SOC) begin
-      dev_sel_s1n_7 = 3'd0;
+      dev_sel_s1n_8 = 3'd0;
 
-    end else if ((tl_s1n_7_us_h2d.a_address &
+    end else if ((tl_s1n_8_us_h2d.a_address &
                   ~(ADDR_MASK_MBX1__SOC)) == ADDR_SPACE_MBX1__SOC) begin
-      dev_sel_s1n_7 = 3'd1;
+      dev_sel_s1n_8 = 3'd1;
 
-    end else if ((tl_s1n_7_us_h2d.a_address &
+    end else if ((tl_s1n_8_us_h2d.a_address &
                   ~(ADDR_MASK_MBX2__SOC)) == ADDR_SPACE_MBX2__SOC) begin
-      dev_sel_s1n_7 = 3'd2;
+      dev_sel_s1n_8 = 3'd2;
 
-    end else if ((tl_s1n_7_us_h2d.a_address &
+    end else if ((tl_s1n_8_us_h2d.a_address &
                   ~(ADDR_MASK_MBX3__SOC)) == ADDR_SPACE_MBX3__SOC) begin
-      dev_sel_s1n_7 = 3'd3;
+      dev_sel_s1n_8 = 3'd3;
 
-    end else if ((tl_s1n_7_us_h2d.a_address &
+    end else if ((tl_s1n_8_us_h2d.a_address &
                   ~(ADDR_MASK_MBX4__SOC)) == ADDR_SPACE_MBX4__SOC) begin
-      dev_sel_s1n_7 = 3'd4;
+      dev_sel_s1n_8 = 3'd4;
 
-    end else if ((tl_s1n_7_us_h2d.a_address &
+    end else if ((tl_s1n_8_us_h2d.a_address &
                   ~(ADDR_MASK_MBX5__SOC)) == ADDR_SPACE_MBX5__SOC) begin
-      dev_sel_s1n_7 = 3'd5;
+      dev_sel_s1n_8 = 3'd5;
+
+    end else if ((tl_s1n_8_us_h2d.a_address &
+                  ~(ADDR_MASK_RACL_CTRL)) == ADDR_SPACE_RACL_CTRL) begin
+      dev_sel_s1n_8 = 3'd6;
 end
   end
 
@@ -115,17 +125,17 @@ end
   tlul_socket_1n #(
     .HReqDepth (4'h0),
     .HRspDepth (4'h0),
-    .DReqDepth (24'h0),
-    .DRspDepth (24'h0),
-    .N         (6)
-  ) u_s1n_7 (
+    .DReqDepth (28'h0),
+    .DRspDepth (28'h0),
+    .N         (7)
+  ) u_s1n_8 (
     .clk_i        (clk_mbx_i),
     .rst_ni       (rst_mbx_ni),
-    .tl_h_i       (tl_s1n_7_us_h2d),
-    .tl_h_o       (tl_s1n_7_us_d2h),
-    .tl_d_o       (tl_s1n_7_ds_h2d),
-    .tl_d_i       (tl_s1n_7_ds_d2h),
-    .dev_select_i (dev_sel_s1n_7)
+    .tl_h_i       (tl_s1n_8_us_h2d),
+    .tl_h_o       (tl_s1n_8_us_d2h),
+    .tl_d_o       (tl_s1n_8_ds_h2d),
+    .tl_d_i       (tl_s1n_8_ds_d2h),
+    .dev_select_i (dev_sel_s1n_8)
   );
 
 endmodule

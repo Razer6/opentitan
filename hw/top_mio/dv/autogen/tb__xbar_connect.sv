@@ -65,6 +65,7 @@ tl_if mbx2__soc_tl_if(clk_ext_main, rst_n);
 tl_if mbx3__soc_tl_if(clk_ext_main, rst_n);
 tl_if mbx4__soc_tl_if(clk_ext_main, rst_n);
 tl_if mbx5__soc_tl_if(clk_ext_main, rst_n);
+tl_if racl_ctrl_tl_if(clk_ext_main, rst_n);
 
 initial begin
   wait (xbar_mode !== 1'bx);
@@ -128,6 +129,7 @@ initial begin
     `DRIVE_CHIP_TL_DEVICE_IF(mbx3__soc, mbx3, soc_tl_d)
     `DRIVE_CHIP_TL_DEVICE_IF(mbx4__soc, mbx4, soc_tl_d)
     `DRIVE_CHIP_TL_DEVICE_IF(mbx5__soc, mbx5, soc_tl_d)
+    `DRIVE_CHIP_TL_DEVICE_IF(racl_ctrl, racl_ctrl, tl)
 `endif
 
     // And this can consume time, so they go at the end of this block.

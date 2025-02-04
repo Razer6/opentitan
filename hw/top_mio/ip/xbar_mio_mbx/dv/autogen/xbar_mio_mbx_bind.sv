@@ -50,5 +50,11 @@ module xbar_mio_mbx_bind;
     .h2d    (tl_mbx5__soc_o),
     .d2h    (tl_mbx5__soc_i)
   );
+  bind xbar_mio_mbx tlul_assert #(.EndpointType("Host")) tlul_assert_device_racl_ctrl (
+    .clk_i  (clk_mbx_i),
+    .rst_ni (rst_mbx_ni),
+    .h2d    (tl_racl_ctrl_o),
+    .d2h    (tl_racl_ctrl_i)
+  );
 `endif
 endmodule

@@ -23,3 +23,4 @@ initial force dut.rst_mbx_ni = rst_n;
 `CONNECT_TL_DEVICE_IF(mbx3__soc, dut, clk_mbx_i, rst_n)
 `CONNECT_TL_DEVICE_IF(mbx4__soc, dut, clk_mbx_i, rst_n)
 `CONNECT_TL_DEVICE_IF(mbx5__soc, dut, clk_mbx_i, rst_n)
+`CONNECT_TL_DEVICE_IF(racl_ctrl, dut, clk_mbx_i, rst_n)

@@ -113,7 +113,7 @@ package top_darjeeling_soc_mbx_pkg;
 
 
   // Number of mio incoming alerts
-  parameter int unsigned NIncomingAlertsMio = 25;
+  parameter int unsigned NIncomingAlertsMio = 27;
 
   // Number of LPGs for incoming alert group mio
   parameter int unsigned NIncomingLpgsMio = 2;
