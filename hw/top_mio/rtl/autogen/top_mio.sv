@@ -627,6 +627,11 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   mbx #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(1'b1),
+    .RaclPolicySelVecSoc(top_racl_pkg::RACL_POLICY_SEL_MBX0_SOC),
+    .RaclPolicySelWinSocWdata(top_racl_pkg::RACL_POLICY_SEL_MBX0_SOC_WIN_WDATA),
+    .RaclPolicySelWinSocRdata(top_racl_pkg::RACL_POLICY_SEL_MBX0_SOC_WIN_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[10:9])
   ) u_mbx0 (
 
@@ -659,6 +664,11 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   mbx #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(1'b1),
+    .RaclPolicySelVecSoc(top_racl_pkg::RACL_POLICY_SEL_MBX1_SOC),
+    .RaclPolicySelWinSocWdata(top_racl_pkg::RACL_POLICY_SEL_MBX1_SOC_WIN_WDATA),
+    .RaclPolicySelWinSocRdata(top_racl_pkg::RACL_POLICY_SEL_MBX1_SOC_WIN_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[12:11])
   ) u_mbx1 (
 
@@ -691,6 +701,11 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   mbx #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(1'b1),
+    .RaclPolicySelVecSoc(top_racl_pkg::RACL_POLICY_SEL_MBX2_SOC),
+    .RaclPolicySelWinSocWdata(top_racl_pkg::RACL_POLICY_SEL_MBX2_SOC_WIN_WDATA),
+    .RaclPolicySelWinSocRdata(top_racl_pkg::RACL_POLICY_SEL_MBX2_SOC_WIN_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[14:13])
   ) u_mbx2 (
 
@@ -723,6 +738,11 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   mbx #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(1'b1),
+    .RaclPolicySelVecSoc(top_racl_pkg::RACL_POLICY_SEL_MBX3_SOC),
+    .RaclPolicySelWinSocWdata(top_racl_pkg::RACL_POLICY_SEL_MBX3_SOC_WIN_WDATA),
+    .RaclPolicySelWinSocRdata(top_racl_pkg::RACL_POLICY_SEL_MBX3_SOC_WIN_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[16:15])
   ) u_mbx3 (
 
@@ -755,6 +775,11 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   mbx #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(1'b1),
+    .RaclPolicySelVecSoc(top_racl_pkg::RACL_POLICY_SEL_MBX4_SOC),
+    .RaclPolicySelWinSocWdata(top_racl_pkg::RACL_POLICY_SEL_MBX4_SOC_WIN_WDATA),
+    .RaclPolicySelWinSocRdata(top_racl_pkg::RACL_POLICY_SEL_MBX4_SOC_WIN_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[18:17])
   ) u_mbx4 (
 
@@ -787,6 +812,11 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   mbx #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(1'b1),
+    .RaclPolicySelVecSoc(top_racl_pkg::RACL_POLICY_SEL_MBX5_SOC),
+    .RaclPolicySelWinSocWdata(top_racl_pkg::RACL_POLICY_SEL_MBX5_SOC_WIN_WDATA),
+    .RaclPolicySelWinSocRdata(top_racl_pkg::RACL_POLICY_SEL_MBX5_SOC_WIN_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[20:19])
   ) u_mbx5 (
 
@@ -819,6 +849,7 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   racl_ctrl_mio #(
+    .RaclErrorRsp(1'b1),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[22:21]),
     .NumSubscribingIps(RaclCtrlNumSubscribingIps),
     .NumExternalSubscribingIps(RaclCtrlNumExternalSubscribingIps)
