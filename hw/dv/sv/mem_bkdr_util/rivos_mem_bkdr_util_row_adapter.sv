@@ -11,16 +11,16 @@
 
 class rivos_mem_bkdr_util_row_adapter extends mem_bkdr_util_row_adapter;
   // The width of the memory per row.
-  protected uint32_t width;
+  uint32_t width;
 
-  protected uint32_t bits_per_subword;
-  protected uint32_t subwords_per_row;
-  protected uint32_t mem_addr_lsb;
+  uint32_t bits_per_subword;
+  uint32_t subwords_per_row;
+  uint32_t mem_addr_lsb;
 
   // Translates a raw read UVM data raw from the memory in a contigious
   // row of memory.
   //
-  function new(unsigned depth, longint unsigned n_bits, 
+  function new(uint32_t depth, longint unsigned n_bits, 
                mem_bkdr_util_pkg::err_detection_e err_detection_scheme,
                uint32_t redundant_bits_per_entry,
                uint32_t extra_bits_per_subword = 0);
@@ -29,33 +29,49 @@ class rivos_mem_bkdr_util_row_adapter extends mem_bkdr_util_row_adapter;
     import prim_secded_pkg::get_ecc_parity_width;
 
     uint32_t data_width, byte_width, bytes_per_word;
-    uint32_t non_ecc_bits_per_subword, ecc_bits_per_subword, bits_per_subword;
+    uint32_t non_ecc_bits_per_subword, ecc_bits_per_subword;
 
     prim_secded_e secded_eds = prim_secded_e'(err_detection_scheme);
     non_ecc_bits_per_subword = get_ecc_data_width(secded_eds);
     ecc_bits_per_subword     = get_ecc_parity_width(secded_eds);
-    bits_per_subword         = non_ecc_bits_per_subword + ecc_bits_per_subword +
+    this.bits_per_subword    = non_ecc_bits_per_subword + ecc_bits_per_subword +
                                extra_bits_per_subword;
 
     this.num_extra_bits = redundant_bits_per_entry;
 
-    width            = (n_bits / depth) - redundant_bits_per_entry;
-    subwords_per_row = (width + bits_per_subword - 1) / bits_per_subword;
-    data_width = subwords_per_row * non_ecc_bits_per_subword;
-    byte_width = 8;
-    bytes_per_word = data_width / byte_width;
-    mem_addr_lsb = $clog2(bytes_per_word);
+    this.width            = (n_bits / depth) - redundant_bits_per_entry;
+    this.subwords_per_row = (this.width + this.bits_per_subword - 1) / this.bits_per_subword;
+    data_width            = subwords_per_row * non_ecc_bits_per_subword;
+    byte_width            = 8;
+    bytes_per_word        = data_width / byte_width;
+    this.mem_addr_lsb     = $clog2(bytes_per_word);
+
+    `uvm_info("ADAPTER", $sformatf("ADAPTER n_bits %d", n_bits), UVM_HIGH)
+    `uvm_info("ADAPTER", $sformatf("ADAPTER depth %d", depth), UVM_HIGH)
+    `uvm_info("ADAPTER", $sformatf("ADAPTER WIDTH %d", width), UVM_HIGH)
+    `uvm_info("ADAPTER", $sformatf("ADAPTER subwords_per_row %d", subwords_per_row), UVM_HIGH)
+    `uvm_info("ADAPTER", $sformatf("ADAPTER data_width %d", data_width), UVM_HIGH)
+    `uvm_info("ADAPTER", $sformatf("ADAPTER byte_width %d", byte_width), UVM_HIGH)
+    `uvm_info("ADAPTER", $sformatf("ADAPTER bytes_per_word %d", bytes_per_word), UVM_HIGH)
+    `uvm_info("ADAPTER", $sformatf("ADAPTER mem_addr_lsb %d", mem_addr_lsb), UVM_HIGH)
+    `uvm_info("ADAPTER", $sformatf("ADAPTER bits_per_subword %d", bits_per_subword), UVM_HIGH)
   endfunction
 
-  virtual function uvm_hdl_data_t read_row(uvm_hdl_data_t read_data);
-    uvm_hdl_data_t data;
+  virtual function uvm_hdl_data_t decode_row(uvm_hdl_data_t read_data);
+    uvm_hdl_data_t raw_data, data;
+
+    `uvm_info("ADAPTER", $sformatf("ADAPTER DECODE bits_per_subword %d", bits_per_subword), UVM_HIGH)
+    `uvm_info("ADAPTER", $sformatf("ADAPTER DECODE subwords_per_row %d", subwords_per_row), UVM_HIGH)
+
+
+    raw_data = read_data;
     for (int subword_idx = 0; subword_idx < subwords_per_row; subword_idx++) begin
       for (int b = 0; b < bits_per_subword; b++) begin
         int true_col_pos;
         int intrlv_col_pos;
         intrlv_col_pos     = (subword_idx + (((b * 4) + 1) * 4));
         true_col_pos       = (subword_idx * bits_per_subword) + b;
-        data[true_col_pos] = read_data[intrlv_col_pos];
+        data[true_col_pos] = raw_data[intrlv_col_pos];
       end
     end
     return data;
@@ -64,7 +80,7 @@ class rivos_mem_bkdr_util_row_adapter extends mem_bkdr_util_row_adapter;
   // Translates a contigious UVM data row to the internal organzation of a row
   // that can be written to the memory.
   //
-  virtual function uvm_hdl_data_t write_row(uvm_hdl_data_t write_data);
+  virtual function uvm_hdl_data_t encode_row(uvm_hdl_data_t write_data);
     uvm_hdl_data_t data;
     for (int subword_idx = 0; subword_idx < subwords_per_row; subword_idx++) begin
       for (int b = 0; b < bits_per_subword; b++) begin

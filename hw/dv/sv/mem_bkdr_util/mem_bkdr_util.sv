@@ -49,8 +49,12 @@ class mem_bkdr_util extends uvm_object;
   protected uint32_t bytes_per_word;  // addressable bytes
   protected uint32_t size_bytes;  // addressable bytes
   protected uint32_t addr_lsb;
+  protected uint32_t mem_addr_lsb;
   protected uint32_t addr_width;
   protected uint32_t byte_addr_width;
+
+  protected uint32_t subwords_per_word;
+
 
   // Address range of this memory in the system address map.
   protected addr_range_t addr_range;
@@ -116,6 +120,7 @@ class mem_bkdr_util extends uvm_object;
                uint32_t extra_bits_per_subword = 0, uint32_t system_base_addr = 0,
                string tiling_path = "", uint32_t tile_depth = depth);
     super.new(name);
+
     `DV_CHECK_FATAL(!(n_bits % depth), "n_bits must be divisible by depth.")
 
     if (row_adapter != null) begin
@@ -139,6 +144,11 @@ class mem_bkdr_util extends uvm_object;
                       $sformatf("Hierarchical path %0s appears to be invalid.", full_path))
     end
 
+    `uvm_info(`gfn, $sformatf("nbits %d", n_bits), UVM_HIGH)
+    `uvm_info(`gfn, $sformatf("depth %d", depth), UVM_HIGH)
+    `uvm_info(`gfn, $sformatf("ERR %s", err_detection_scheme.name), UVM_HIGH)
+    `uvm_info(`gfn, $sformatf("ERR %s", err_detection_scheme.name), UVM_HIGH)
+
     if (`HAS_ECC) begin
       import prim_secded_pkg::prim_secded_e;
       import prim_secded_pkg::get_ecc_data_width;
@@ -149,7 +159,6 @@ class mem_bkdr_util extends uvm_object;
       int ecc_bits_per_subword = get_ecc_parity_width(secded_eds);
       int bits_per_subword = non_ecc_bits_per_subword + ecc_bits_per_subword +
                              extra_bits_per_subword;
-      int subwords_per_word;
 
       // We shouldn't truncate the actual data word. This check ensures that err_detection_scheme
       // and width are related sensibly. This only checks we've got enough space for one data word
@@ -167,16 +176,20 @@ class mem_bkdr_util extends uvm_object;
       this.data_width = subwords_per_word * non_ecc_bits_per_subword;
       this.num_entries = depth * subwords_per_word;
     end else begin
+      subwords_per_word = 1;
       this.data_width = width;
       this.num_entries = depth;
     end
 
     byte_width = `HAS_PARITY ? 9 : 8;
     bytes_per_word = data_width / byte_width;
-    `DV_CHECK_LE_FATAL(bytes_per_word, 32, "data width > 32 bytes is not supported")
+    //`DV_CHECK_LE_FATAL(bytes_per_word, 32, "data width > 32 bytes is not supported")
     size_bytes = depth * bytes_per_word;
-    addr_lsb   = $clog2(bytes_per_word);
-    addr_width = $clog2(depth);
+    //addr_lsb   = $clog2(bytes_per_word);
+    mem_addr_lsb = $clog2(bytes_per_word);
+    addr_lsb     = $clog2(bytes_per_word / subwords_per_word);
+
+    addr_width = $clog2(depth) + $clog2(subwords_per_word);
     byte_addr_width = addr_width + addr_lsb;
     addr_range.start_addr = system_base_addr;
     addr_range.end_addr = system_base_addr + size_bytes - 1;
@@ -301,10 +314,20 @@ class mem_bkdr_util extends uvm_object;
     uint32_t index, ram_tile;
     uvm_hdl_data_t encoded_row, data;
     if (!check_addr_valid(addr)) return 'x;
-    index    = addr >> addr_lsb;
+    index    = addr >> mem_addr_lsb;
     ram_tile = index / tile_depth;
+
+    `uvm_info(`gfn, $sformatf("Read %x: %x %s", index, ram_tile, $sformatf("%0s[%0d]", get_full_path(ram_tile))), UVM_HIGH)
+
+
+
+
     res      = uvm_hdl_read($sformatf("%0s[%0d]", get_full_path(ram_tile), index), encoded_row);
+    `uvm_info(`gfn, $sformatf("Read RET %x", res), UVM_HIGH)
+
     data     = row_adapter.decode_row(encoded_row);
+    `uvm_info(`gfn, $sformatf("data RET %x", data), UVM_HIGH)
+
     `DV_CHECK_EQ(res, 1, $sformatf("uvm_hdl_read failed at index %0d", index))
     return data;
   endfunction
@@ -334,8 +357,25 @@ class mem_bkdr_util extends uvm_object;
 
   // this is used to read 32bit of data plus 7 raw integrity bits.
   virtual function logic [38:0] read39integ(bit [bus_params_pkg::BUS_AW-1:0] addr);
+    uvm_hdl_data_t  row_data;
+    uint32_t word_idx;
+    uint32_t byte_idx;
+    uint32_t subword_idx;
+    logic [38:0]  d;
+    
     `_ACCESS_CHECKS(addr, 32) // this is essentially an aligned 32bit access.
-    return read(addr) & 39'h7fffffffff;
+
+    // read-modify-write:
+    // Each entry may have more than one subword chunk stored
+    // So we get current data row and insert the new subword at the right location,
+    // The modified data is then written back
+    word_idx    = addr >> mem_addr_lsb;
+    byte_idx    = addr - (word_idx << mem_addr_lsb);
+    subword_idx = byte_idx >> 2;
+
+    // Note the read function eliminates interleaving, if used, and returns data in the contiguous locations
+    row_data    = read(addr);
+    return row_data[subword_idx * 39 +:39];
   endfunction
 
   virtual function logic [63:0] read64(bit [bus_params_pkg::BUS_AW-1:0] addr);
@@ -417,7 +457,7 @@ class mem_bkdr_util extends uvm_object;
     uvm_hdl_data_t encoded_row;
     uint32_t index, ram_tile;
     if (!check_addr_valid(addr)) return;
-    index       = addr >> addr_lsb;
+    index       = addr >> mem_addr_lsb;
     ram_tile    = index / tile_depth;
     encoded_row = row_adapter.encode_row(data);
     res         = uvm_hdl_deposit($sformatf("%0s[%0d]", get_full_path(ram_tile), index),
@@ -437,8 +477,8 @@ class mem_bkdr_util extends uvm_object;
     if (!check_addr_valid(addr)) return;
 
     rw_data  = read(addr);
-    word_idx = addr >> addr_lsb;
-    byte_idx = addr - (word_idx << addr_lsb);
+    word_idx = addr >> mem_addr_lsb;
+    byte_idx = addr - (word_idx << mem_addr_lsb);
 
     if (`HAS_PARITY) begin
       bit parity = (err_detection_scheme == ParityOdd) ? ~(^data) : (^data);
