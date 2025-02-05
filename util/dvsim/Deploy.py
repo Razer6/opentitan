@@ -320,6 +320,9 @@ class Deploy():
         """
         # Retain the handle to self for lookup & callbacks.
         self.launcher = get_launcher(self)
+        # Rivos change to determine xcelium builds
+        # Pass the used tool to the launcher for some tool dependent configuration
+        self.launcher.tool = self.sim_cfg.tool
 
 
 class CompileSim(Deploy):
