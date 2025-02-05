@@ -211,8 +211,13 @@ class sram_ctrl_scoreboard #(parameter int AddrWidth = 10) extends cip_base_scor
 
   task run_phase(uvm_phase phase);
     string mem_path = dv_utils_pkg::get_parent_hier(cfg.sram_bkdr_util_h.get_path());
-    write_en_path   = $sformatf("%s.write_i", mem_path);
-    write_addr_path = $sformatf("%s.addr_i", mem_path);
+    if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin : gen_impl_rdp
+      write_en_path   = $sformatf("%s.WE", mem_path);
+      write_addr_path = $sformatf("%s.ADR", mem_path);
+    end else begin : gen_generic
+      write_en_path   = $sformatf("%s.write_i", mem_path);
+      write_addr_path = $sformatf("%s.addr_i", mem_path);
+    end
     `DV_CHECK(uvm_hdl_check_path(write_en_path),
               $sformatf("Hierarchical path %0s appears to be invalid.", write_en_path))
     `DV_CHECK(uvm_hdl_check_path(write_addr_path),

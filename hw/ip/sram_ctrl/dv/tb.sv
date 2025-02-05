@@ -28,6 +28,8 @@ module tb;
   otp_ctrl_pkg::sram_key_t   key;
   otp_ctrl_pkg::sram_nonce_t nonce;
 
+  prim_ram_1p_pkg::ram_1p_cfg_t ram_cfg;
+
   wire seed_valid;
 
   // interfaces
@@ -60,12 +62,25 @@ module tb;
   `define SRAM_WORD_ADDR_WIDTH 32
 `endif
 
+  always_comb begin
+    ram_cfg = '0;
+
+    if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin : gen_impl_rdp
+      // Rivos RDP RAM config
+      ram_cfg.sram_test_cfg.wa     = 3'h5;
+      ram_cfg.sram_test_cfg.rm     = 4'h4;
+      ram_cfg.sram_test_cfg.test1  = 1'h1;
+    end
+  end
+
+
   sram_ctrl #(
     // memory size in bytes
     .MemSizeRam(4 * 2 ** `SRAM_WORD_ADDR_WIDTH),
     .InstrExec(`INSTR_EXEC),
     // number of PRINCE half rounds for the SRAM scrambling feature
-    .NumPrinceRoundsHalf(`NUM_PRINCE_ROUNDS_HALF)
+    .NumPrinceRoundsHalf(`NUM_PRINCE_ROUNDS_HALF),
+    .FlopRamOutput(1)
   ) dut (
     // main clock
     .clk_i               (clk                       ),
@@ -90,7 +105,7 @@ module tb;
     // SRAM ifetch interface
     .lc_hw_debug_en_i    (exec_if.lc_hw_debug_en    ),
     .otp_en_sram_ifetch_i(exec_if.otp_en_sram_ifetch),
-    .cfg_i               ('0                        )
+    .cfg_i               ( ram_cfg                  )
   );
 
   // KDI interface assignments
@@ -103,19 +118,30 @@ module tb;
   assign {key, nonce, seed_valid} = kdi_if.d_data;
 
   // Instantitate the memory backdoor util instance.
+  // `define SRAM_CTRL_MEM_HIER \
+  //   tb.dut.u_prim_ram_1p_scr.u_prim_ram_1p_adv.gen_ram_inst[0].u_mem.gen_generic.u_impl_generic.mem
   `define SRAM_CTRL_MEM_HIER \
-    tb.dut.u_prim_ram_1p_scr.u_prim_ram_1p_adv.gen_ram_inst[0].u_mem.gen_generic.u_impl_generic.mem
+    tb.dut.u_prim_ram_1p_scr.u_prim_ram_1p_adv.gen_ram_inst[0].u_mem.gen_rdp.u_impl_rdp.gen_compiled_sram.u_ram.COMPILED_RAM.SRAM_WIDTH_39.SRAM_SIZE_64K.scs_ot_sram_inst.ram0.u0.mem_core_array
+
 
   initial begin
     sram_bkdr_util m_sram_bkdr_util;
+    rivos_mem_bkdr_util_row_adapter_pkg::rivos_mem_bkdr_util_row_adapter row_adapter;
+    row_adapter = new(
+      .n_bits('d643072),
+      .depth ('d1024),
+      .err_detection_scheme(mem_bkdr_util_pkg::EccInv_39_32),
+      .redundant_bits_per_entry(4)
+    );
     m_sram_bkdr_util = new(.name  ("sram_bkdr_util"),
                            .path  (`DV_STRINGIFY(`SRAM_CTRL_MEM_HIER)),
                            .depth ($size(`SRAM_CTRL_MEM_HIER)),
                            .n_bits($bits(`SRAM_CTRL_MEM_HIER)),
                            // Due to the end-to-end bus integrity scheme, the memory primitive itself
                            // does not encode and decode the redundancy information.
-                           .err_detection_scheme(mem_bkdr_util_pkg::ErrDetectionNone),
-                           .num_prince_rounds_half(`NUM_PRINCE_ROUNDS_HALF));
+                           .err_detection_scheme(mem_bkdr_util_pkg::EccInv_39_32),
+                           .num_prince_rounds_half(`NUM_PRINCE_ROUNDS_HALF),
+                           .row_adapter(row_adapter));
 
     // drive clk and rst_n from clk_if
     clk_rst_if.set_active();
