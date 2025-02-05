@@ -51,7 +51,6 @@ module top_darjeeling #(
   parameter bit SramCtrlRetAonInstrExec = 0,
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlRetAonUseOTIntegErr = 1,
-  parameter bit SramCtrlRetAonUseCompiledRam = 1,
   parameter bit SramCtrlRetAonFlopRamOutput = 1,
   // parameters for rv_dm
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
@@ -94,7 +93,6 @@ module top_darjeeling #(
   parameter bit SramCtrlMainInstrExec = 1,
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMainUseOTIntegErr = 1,
-  parameter bit SramCtrlMainUseCompiledRam = 1,
   parameter bit SramCtrlMainFlopRamOutput = 1,
   // parameters for sram_ctrl_mbox
   parameter int SramCtrlMboxInstSize = 4096,
@@ -102,7 +100,6 @@ module top_darjeeling #(
   parameter bit SramCtrlMboxInstrExec = 0,
   parameter int SramCtrlMboxNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMboxUseOTIntegErr = 1,
-  parameter bit SramCtrlMboxUseCompiledRam = 1,
   parameter bit SramCtrlMboxFlopRamOutput = 1,
   // parameters for rom_ctrl0
   parameter RomCtrl0BootRomInitFile = "",
@@ -1726,7 +1723,6 @@ module top_darjeeling #(
     .InstrExec(SramCtrlRetAonInstrExec),
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlRetAonUseOTIntegErr),
-    .UseCompiledRam(SramCtrlRetAonUseCompiledRam),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput)
   ) u_sram_ctrl_ret_aon (
       // [50]: fatal_error
@@ -2103,7 +2099,6 @@ module top_darjeeling #(
     .InstrExec(SramCtrlMainInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlMainUseOTIntegErr),
-    .UseCompiledRam(SramCtrlMainUseCompiledRam),
     .FlopRamOutput(SramCtrlMainFlopRamOutput)
   ) u_sram_ctrl_main (
       // [68]: fatal_error
@@ -2147,7 +2142,6 @@ module top_darjeeling #(
     .InstrExec(SramCtrlMboxInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMboxNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlMboxUseOTIntegErr),
-    .UseCompiledRam(SramCtrlMboxUseCompiledRam),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput)
   ) u_sram_ctrl_mbox (
       // [69]: fatal_error

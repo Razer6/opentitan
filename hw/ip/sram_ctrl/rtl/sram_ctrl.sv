@@ -34,8 +34,6 @@ module sram_ctrl
   parameter bit          EnableRacl                      = 1'b0,
   parameter bit          RaclErrorRsp                    = EnableRacl,
   parameter int unsigned RaclPolicySelVecRegs[9]         = '{9{0}},
-  parameter bit                        UseCompiledRam    = 0,
-  parameter bit                        FlopRamOutput     = 0,
   // Set this to report errors to tlul adapter, otherwise they will be sent to error record
   parameter bit                        UseOTIntegErr     = 0,
   // The maximum number of outstanding TL-UL requests to the memory
@@ -579,7 +577,7 @@ module sram_ctrl
     .EnableParity(0),
     .DataBitsPerMask(DataWidth),
     .NumPrinceRoundsHalf(NumPrinceRoundsHalf),
-    .UseCompiledRam(UseCompiledRam),
+    .UseCompiledRam(1),
     .FlopRamOutput(FlopRamOutput)
   ) u_prim_ram_1p_scr (
     .clk_i,

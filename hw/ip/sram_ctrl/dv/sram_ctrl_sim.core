@@ -14,6 +14,7 @@ filesets:
   files_dv:
     depend:
       - lowrisc:dv:mem_bkdr_util
+      - rivos:dv:rivos_mem_bkdr_util_row_adapter
       - lowrisc:dv:sram_ctrl_test
       - lowrisc:dv:sram_ctrl_sva
     files:

@@ -23,7 +23,6 @@ module top_mio #(
   parameter bit SramCtrlRetAonInstrExec = 0,
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlRetAonUseOTIntegErr = 1,
-  parameter bit SramCtrlRetAonUseCompiledRam = 1,
   parameter bit SramCtrlRetAonFlopRamOutput = 0,
   // parameters for rv_dm
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
@@ -37,7 +36,6 @@ module top_mio #(
   parameter bit SramCtrlMainInstrExec = 1,
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMainUseOTIntegErr = 1,
-  parameter bit SramCtrlMainUseCompiledRam = 1,
   parameter bit SramCtrlMainFlopRamOutput = 0,
   // parameters for sram_ctrl_mbox
   parameter int SramCtrlMboxInstSize = 4096,
@@ -45,7 +43,6 @@ module top_mio #(
   parameter bit SramCtrlMboxInstrExec = 0,
   parameter int SramCtrlMboxNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMboxUseOTIntegErr = 1,
-  parameter bit SramCtrlMboxUseCompiledRam = 1,
   parameter bit SramCtrlMboxFlopRamOutput = 0,
   // parameters for dma
   parameter bit DmaEnableDataIntgGen = 1'b1,
@@ -410,7 +407,6 @@ module top_mio #(
     .InstrExec(SramCtrlRetAonInstrExec),
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlRetAonUseOTIntegErr),
-    .UseCompiledRam(SramCtrlRetAonUseCompiledRam),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput)
   ) u_sram_ctrl_ret_aon (
       // External alert group "mio" [3]: fatal_error
@@ -517,7 +513,6 @@ module top_mio #(
     .InstrExec(SramCtrlMainInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlMainUseOTIntegErr),
-    .UseCompiledRam(SramCtrlMainUseCompiledRam),
     .FlopRamOutput(SramCtrlMainFlopRamOutput)
   ) u_sram_ctrl_main (
       // External alert group "mio" [6]: fatal_error
@@ -561,7 +556,6 @@ module top_mio #(
     .InstrExec(SramCtrlMboxInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMboxNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlMboxUseOTIntegErr),
-    .UseCompiledRam(SramCtrlMboxUseCompiledRam),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput)
   ) u_sram_ctrl_mbox (
       // External alert group "mio" [7]: fatal_error

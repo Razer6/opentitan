@@ -65,7 +65,6 @@ module top_earlgrey #(
   parameter bit SramCtrlRetAonInstrExec = 0,
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlRetAonUseOTIntegErr = 1,
-  parameter bit SramCtrlRetAonUseCompiledRam = 1,
   parameter bit SramCtrlRetAonFlopRamOutput = 0,
   // parameters for flash_ctrl
   parameter bit SecFlashCtrlScrambleEn = 1,
@@ -114,7 +113,6 @@ module top_earlgrey #(
   parameter bit SramCtrlMainInstrExec = 1,
   parameter int SramCtrlMainNumPrinceRoundsHalf = 2,
   parameter bit SramCtrlMainUseOTIntegErr = 1,
-  parameter bit SramCtrlMainUseCompiledRam = 1,
   parameter bit SramCtrlMainFlopRamOutput = 0,
   // parameters for rom_ctrl
   parameter RomCtrlBootRomInitFile = "",
@@ -2180,7 +2178,6 @@ module top_earlgrey #(
     .InstrExec(SramCtrlRetAonInstrExec),
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlRetAonUseOTIntegErr),
-    .UseCompiledRam(SramCtrlRetAonUseCompiledRam),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput)
   ) u_sram_ctrl_ret_aon (
       // [34]: fatal_error
@@ -2674,7 +2671,6 @@ module top_earlgrey #(
     .InstrExec(SramCtrlMainInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlMainUseOTIntegErr),
-    .UseCompiledRam(SramCtrlMainUseCompiledRam),
     .FlopRamOutput(SramCtrlMainFlopRamOutput)
   ) u_sram_ctrl_main (
       // [59]: fatal_error

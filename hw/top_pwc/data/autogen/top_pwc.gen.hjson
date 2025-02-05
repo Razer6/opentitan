@@ -1088,15 +1088,6 @@
           name_top: SramCtrlRetAonUseOTIntegErr
         }
         {
-          name: UseCompiledRam
-          desc: When set to 1, use compiled SRAM macros
-          type: bit
-          default: "1"
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlRetAonUseCompiledRam
-        }
-        {
           name: FlopRamOutput
           desc: Add a flop stage on the RAM macro output
           type: bit
@@ -1919,15 +1910,6 @@
           name_top: SramCtrlMainUseOTIntegErr
         }
         {
-          name: UseCompiledRam
-          desc: When set to 1, use compiled SRAM macros
-          type: bit
-          default: "1"
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlMainUseCompiledRam
-        }
-        {
           name: FlopRamOutput
           desc: Add a flop stage on the RAM macro output
           type: bit
@@ -2287,15 +2269,6 @@
           local: "false"
           expose: "true"
           name_top: SramCtrlMboxUseOTIntegErr
-        }
-        {
-          name: UseCompiledRam
-          desc: When set to 1, use compiled SRAM macros
-          type: bit
-          default: "1"
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlMboxUseCompiledRam
         }
         {
           name: FlopRamOutput

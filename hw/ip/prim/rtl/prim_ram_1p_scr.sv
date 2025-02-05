@@ -64,7 +64,6 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   localparam int NonceWidth          = 64 * NumParScr,
   // Select between compiled RAM and OT generic
   parameter bit UseCompiledRam       = 0,
-  parameter bit FlopRamOutput        = 0,
   // Compute RAM tiling
   localparam int NumRamInst          = int'($ceil(Depth / real'(InstDepth)))
 ) (

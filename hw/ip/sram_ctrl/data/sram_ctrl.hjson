@@ -114,13 +114,6 @@
       expose:    "true",
       default:   "1"
     },
-    { name:      "UseCompiledRam",
-      desc:      "When set to 1, use compiled SRAM macros",
-      type:      "bit",
-      local:     "false",
-      expose:    "true",
-      default:   "1"
-    },
     { name:      "FlopRamOutput",
       desc:      "Add a flop stage on the RAM macro output",
       type:      "bit",

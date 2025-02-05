@@ -52,7 +52,6 @@ module top_englishbreakfast #(
   parameter bit SramCtrlMainInstrExec = 1,
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMainUseOTIntegErr = 1,
-  parameter bit SramCtrlMainUseCompiledRam = 1,
   parameter bit SramCtrlMainFlopRamOutput = 0,
   // parameters for rom_ctrl
   parameter RomCtrlBootRomInitFile = "",
@@ -1198,7 +1197,6 @@ module top_englishbreakfast #(
     .InstrExec(SramCtrlMainInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .UseOTIntegErr(SramCtrlMainUseOTIntegErr),
-    .UseCompiledRam(SramCtrlMainUseCompiledRam),
     .FlopRamOutput(SramCtrlMainFlopRamOutput)
   ) u_sram_ctrl_main (
       // [22]: fatal_error
