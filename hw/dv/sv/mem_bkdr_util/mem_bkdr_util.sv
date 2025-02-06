@@ -144,11 +144,6 @@ class mem_bkdr_util extends uvm_object;
                       $sformatf("Hierarchical path %0s appears to be invalid.", full_path))
     end
 
-    `uvm_info(`gfn, $sformatf("nbits %d", n_bits), UVM_HIGH)
-    `uvm_info(`gfn, $sformatf("depth %d", depth), UVM_HIGH)
-    `uvm_info(`gfn, $sformatf("ERR %s", err_detection_scheme.name), UVM_HIGH)
-    `uvm_info(`gfn, $sformatf("ERR %s", err_detection_scheme.name), UVM_HIGH)
-
     if (`HAS_ECC) begin
       import prim_secded_pkg::prim_secded_e;
       import prim_secded_pkg::get_ecc_data_width;
@@ -316,19 +311,9 @@ class mem_bkdr_util extends uvm_object;
     if (!check_addr_valid(addr)) return 'x;
     index    = addr >> mem_addr_lsb;
     ram_tile = index / tile_depth;
-
-    `uvm_info(`gfn, $sformatf("Read %x: %x %s", index, ram_tile, $sformatf("%0s[%0d]", get_full_path(ram_tile))), UVM_HIGH)
-
-
-
-
     res      = uvm_hdl_read($sformatf("%0s[%0d]", get_full_path(ram_tile), index), encoded_row);
-    `uvm_info(`gfn, $sformatf("Read RET %x", res), UVM_HIGH)
-
-    data     = row_adapter.decode_row(encoded_row);
-    `uvm_info(`gfn, $sformatf("data RET %x", data), UVM_HIGH)
-
     `DV_CHECK_EQ(res, 1, $sformatf("uvm_hdl_read failed at index %0d", index))
+    data     = row_adapter.decode_row(encoded_row);
     return data;
   endfunction
 
@@ -358,24 +343,9 @@ class mem_bkdr_util extends uvm_object;
   // this is used to read 32bit of data plus 7 raw integrity bits.
   virtual function logic [38:0] read39integ(bit [bus_params_pkg::BUS_AW-1:0] addr);
     uvm_hdl_data_t  row_data;
-    uint32_t word_idx;
-    uint32_t byte_idx;
-    uint32_t subword_idx;
-    logic [38:0]  d;
-    
     `_ACCESS_CHECKS(addr, 32) // this is essentially an aligned 32bit access.
-
-    // read-modify-write:
-    // Each entry may have more than one subword chunk stored
-    // So we get current data row and insert the new subword at the right location,
-    // The modified data is then written back
-    word_idx    = addr >> mem_addr_lsb;
-    byte_idx    = addr - (word_idx << mem_addr_lsb);
-    subword_idx = byte_idx >> 2;
-
-    // Note the read function eliminates interleaving, if used, and returns data in the contiguous locations
-    row_data    = read(addr);
-    return row_data[subword_idx * 39 +:39];
+    row_data = read(addr);
+    return row_adapter.read_row_data_39b(addr, row_data);
   endfunction
 
   virtual function logic [63:0] read64(bit [bus_params_pkg::BUS_AW-1:0] addr);
@@ -518,7 +488,7 @@ class mem_bkdr_util extends uvm_object;
     if (!check_addr_valid(addr)) return;
     // Perform a read-modify-write to access the underlying memory architecture
     rw_data = read(addr);
-    rw_data = row_adapter.access_row_data39(addr, data, rw_data);
+    rw_data = row_adapter.write_row_data_39b(addr, data, rw_data);
     // Note the write function takes care of interleaving, if used.
     write(addr, rw_data);
   endfunction

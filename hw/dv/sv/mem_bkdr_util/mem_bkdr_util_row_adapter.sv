@@ -36,10 +36,22 @@ class mem_bkdr_util_row_adapter;
   // Given decoded `row_data`, a 39-bit `data` word to be written, and an address, return the
   // decoded row data with the data word at the correct position for the memory architecture and
   // the given address.
-  virtual function uvm_hdl_data_t access_row_data39(bit [bus_params_pkg::BUS_AW-1:0] addr,
-                                                    logic [38:0] data,
-                                                    uvm_hdl_data_t row_data);
+  virtual function uvm_hdl_data_t write_row_data_39b(bit [bus_params_pkg::BUS_AW-1:0] addr,
+                                                     logic [38:0] data,
+                                                     uvm_hdl_data_t row_data);
     row_data[38:0] = data;
     return row_data;
   endfunction
+
+  // Reads a 39 bit word from decoded row data depending on the memory architecture
+
+  // Given decoded `row_data` and an address, return the 39-bit data from the correct position
+  // for the memory architecture and the given address.
+  virtual function logic [38:0] read_row_data_39b(bit [bus_params_pkg::BUS_AW-1:0] addr,
+                                                  uvm_hdl_data_t row_data);
+    logic data;
+    data = row_data[38:0];
+    return data;
+  endfunction
+
 endclass
