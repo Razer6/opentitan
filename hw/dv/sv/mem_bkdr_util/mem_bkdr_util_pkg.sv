@@ -11,6 +11,10 @@ package mem_bkdr_util_pkg;
   import sram_scrambler_pkg::*;
   import uvm_pkg::*;
 
+  import otp_ctrl_part_pkg::*;
+  import otp_ctrl_reg_pkg::*;
+  import otp_scrambler_pkg::*;
+
   // Exports for sub-class usages
   export dv_utils_pkg::uint32_t;
 
@@ -48,6 +52,8 @@ package mem_bkdr_util_pkg;
   // sources
   `include "mem_bkdr_util_row_adapter.sv"
   `include "mem_bkdr_util.sv"
+  `include "rivos_mem_bkdr_util_otp_base.sv"
+  
   // extended classes
   //`include "flash_bkdr_util.sv"
   `include "rom_bkdr_util.sv"

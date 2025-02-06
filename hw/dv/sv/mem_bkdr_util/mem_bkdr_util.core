@@ -18,10 +18,14 @@ filesets:
       #- lowrisc:ip_interfaces:flash_ctrl_pkg
       - lowrisc:dv:digestpp_dpi
       - lowrisc:ip:kmac_pkg
+      # Rivos HACK: Remove
+      - lowrisc:dv:lc_ctrl_dv_utils
+      - lowrisc:opentitan:top_darjeeling_otp_ctrl_top_specific_pkg:1.0
     files:
       - sram_scrambler_pkg.sv
       - mem_bkdr_util_pkg.sv
       - mem_bkdr_util_row_adapter.sv: {is_include_file: true}
+      - rivos_mem_bkdr_util_otp_base.sv: {is_include_file: true}
       #- flash_bkdr_util.sv: {is_include_file: true}
       - mem_bkdr_util.sv: {is_include_file: true}
       - rom_bkdr_util.sv: {is_include_file: true}
