@@ -164,8 +164,11 @@ class mem_bkdr_util extends uvm_object;
       // Normally, we'd want width to be divisible by bits_per_subword, which means that we get a
       // whole number of subwords in a word. As a special case, we also allow a having exactly one
       // subword and only keeping some of the bits. This is used by the flash controller.
-      `DV_CHECK_FATAL((this.width < bits_per_subword) || (this.width % bits_per_subword == 0),
-                      "With multiple subwords, mem width must be a multiple of the ECC width")
+      // Don't check that for the Rivos OTP memory organization
+      if (name != "m_otp_mem_bkdr_util") begin
+        `DV_CHECK_FATAL((this.width < bits_per_subword) || (this.width % bits_per_subword == 0),
+                        "With multiple subwords, mem width must be a multiple of the ECC width")
+      end
 
       subwords_per_word = (width + bits_per_subword - 1) / bits_per_subword;
       this.data_width = subwords_per_word * non_ecc_bits_per_subword;
@@ -306,13 +309,14 @@ class mem_bkdr_util extends uvm_object;
   // encryption is enabled.
   virtual function uvm_hdl_data_t read(bit [bus_params_pkg::BUS_AW-1:0] addr);
     bit res;
-    uint32_t index, ram_tile;
+    uint32_t index, ram_tile, ram_index;
     uvm_hdl_data_t encoded_row, data;
     if (!check_addr_valid(addr)) return 'x;
     index    = addr >> mem_addr_lsb;
     ram_tile = index / tile_depth;
-    res      = uvm_hdl_read($sformatf("%0s[%0d]", get_full_path(ram_tile), index), encoded_row);
-    `DV_CHECK_EQ(res, 1, $sformatf("uvm_hdl_read failed at index %0d", index))
+    ram_index = index % tile_depth;
+    res      = uvm_hdl_read($sformatf("%0s[%0d]", get_full_path(ram_tile), ram_index), encoded_row);
+    `DV_CHECK_EQ(res, 1, $sformatf("uvm_hdl_read failed at index %0d", ram_index))
     data     = row_adapter.decode_row(encoded_row);
     return data;
   endfunction
@@ -425,14 +429,15 @@ class mem_bkdr_util extends uvm_object;
   virtual function void write(bit [bus_params_pkg::BUS_AW-1:0] addr, uvm_hdl_data_t data);
     bit res;
     uvm_hdl_data_t encoded_row;
-    uint32_t index, ram_tile;
+    uint32_t index, ram_tile, ram_index;
     if (!check_addr_valid(addr)) return;
     index       = addr >> mem_addr_lsb;
     ram_tile    = index / tile_depth;
+    ram_index = index % tile_depth;
     encoded_row = row_adapter.encode_row(data);
-    res         = uvm_hdl_deposit($sformatf("%0s[%0d]", get_full_path(ram_tile), index),
+    res         = uvm_hdl_deposit($sformatf("%0s[%0d]", get_full_path(ram_tile), ram_index),
                                   encoded_row);
-    `DV_CHECK_EQ(res, 1, $sformatf("uvm_hdl_deposit failed at index %0d", index))
+    `DV_CHECK_EQ(res, 1, $sformatf("uvm_hdl_deposit failed at index %0d", ram_index))
   endfunction
 
   // Write a single byte at specified address.
