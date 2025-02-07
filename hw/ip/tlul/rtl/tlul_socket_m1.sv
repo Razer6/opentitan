@@ -201,15 +201,40 @@ module tlul_socket_m1 #(
     `ASSERT_INIT(UnknownArbImpl_A, 0)
   end
 
+  logic [  M-1:0] hstCanRcvDat;
   logic [  M-1:0] hfifo_rspvalid;
   logic [  M-1:0] dfifo_rspready;
   logic [IDW-1:0] hfifo_rspid;
   logic dfifo_rspready_merged;
 
+  logic [  M-1:0] OT_dfifo_rspready;
+  logic OT_dfifo_rspready_merged;
+
   // arb_data --> dreq_fifo_i
   //   dreq_fifo_i.hd_rspready <= dfifo_rspready
 
+  assign OT_dfifo_rspready_merged = |OT_dfifo_rspready;
+
+//
+// =-=-=-=-=-= TIMING FIX =-=-=-=-=-=
+//
+  // all the hst can reveiver the return data
+  // - if one host can't (or full), d-will-not-be-ready even the return data
+  //   is going to a ~full host
   assign dfifo_rspready_merged = |dfifo_rspready;
+
+  `ASSERT_IF(A_TimingDReady, ~(dfifo_rspready_merged ^ OT_dfifo_rspready_merged),
+             drsp_fifo_o.d_valid)
+
+  logic TIMING_dfifo_rspready_merged;
+  assign TIMING_dfifo_rspready_merged = &hstCanRcvDat;
+
+  `COVER(C_PessemisticDIsNotReady, OT_dfifo_rspready_merged & ~TIMING_dfifo_rspready_merged)
+
+//
+// =-=-=-=-=-= TIMING FIX =-=-=-=-=-=
+//
+
   assign dreq_fifo_i = '{
     a_valid:   arb_valid,
     a_opcode:  arb_data.a_opcode,
@@ -235,9 +260,20 @@ module tlul_socket_m1 #(
   for (genvar i = 0 ; i < M ; i++) begin : gen_idrouting
     assign hfifo_rspvalid[i] = drsp_fifo_o.d_valid &
                                (drsp_fifo_o.d_source[0+:STIDW] == i);
-    assign dfifo_rspready[i] = hreq_fifo_o[i].d_ready                &
+
+    // Ricky: why wait for d_valid?
+    assign OT_dfifo_rspready[i] = hreq_fifo_o[i].d_ready                &
                                (drsp_fifo_o.d_source[0+:STIDW] == i) &
                               drsp_fifo_o.d_valid;
+
+    assign dfifo_rspready[i] = hreq_fifo_o[i].d_ready
+                             // disqual d_ready if the fifo is not pointed by d_source
+                             & (drsp_fifo_o.d_source[0+:STIDW] == i);   // can NOT be X
+                             // [RVS: timing] & (drsp_fifo_o.d_valid);
+
+    // further remove .d_source, but fail ibex_core assertion
+    // - u_rv_core_ibex.u_core.PendingAccessTrackingCorrect
+    assign hstCanRcvDat[i]   = hreq_fifo_o[i].d_ready;
 
     assign hrsp_fifo_i[i] = '{
       d_valid:  hfifo_rspvalid[i],
