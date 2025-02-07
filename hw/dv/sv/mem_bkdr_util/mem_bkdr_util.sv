@@ -435,6 +435,10 @@ class mem_bkdr_util extends uvm_object;
     ram_tile    = index / tile_depth;
     ram_index = index % tile_depth;
     encoded_row = row_adapter.encode_row(data);
+    `uvm_info("MEMBKDOR",
+      $sformatf("ENC ROW (scr_addr='h%0h)",
+      encoded_row),
+      UVM_LOW)  
     res         = uvm_hdl_deposit($sformatf("%0s[%0d]", get_full_path(ram_tile), ram_index),
                                   encoded_row);
     `DV_CHECK_EQ(res, 1, $sformatf("uvm_hdl_deposit failed at index %0d", ram_index))
@@ -493,7 +497,15 @@ class mem_bkdr_util extends uvm_object;
     if (!check_addr_valid(addr)) return;
     // Perform a read-modify-write to access the underlying memory architecture
     rw_data = read(addr);
+    `uvm_info("MEMBKDOR",
+      $sformatf("READ ROW (scr_addr='h%0h)",
+      rw_data),
+      UVM_LOW)  
     rw_data = row_adapter.write_row_data_39b(addr, data, rw_data);
+    `uvm_info("MEMBKDOR",
+      $sformatf("MOD ROW (scr_addr='h%0h)",
+      rw_data),
+      UVM_LOW)  
     // Note the write function takes care of interleaving, if used.
     write(addr, rw_data);
   endfunction
