@@ -96,12 +96,7 @@ class sram_bkdr_util extends mem_bkdr_util;
                                                           int extra_addr_bits);
     logic [bus_params_pkg::BUS_AW-1:0] scr_addr = get_sram_encrypt_addr(addr, nonce,
                                                                         extra_addr_bits);
-    logic [38:0] rdata39;                                                                    
-    `uvm_info("SRAM_MEMBKDR",
-      $sformatf("Scrambled address (scr_addr='h%0h, key='h%0h, nonce='h%0h)",
-      scr_addr, key, nonce),
-      UVM_LOW)
-    rdata39 = _sram_decrypt_read39(addr, scr_addr, key, nonce, extra_addr_bits);
+    logic [38:0] rdata39 = _sram_decrypt_read39(addr, scr_addr, key, nonce, extra_addr_bits);
     return rdata39[31:0];
   endfunction : sram_encrypt_read32_integ
 
@@ -128,7 +123,7 @@ class sram_bkdr_util extends mem_bkdr_util;
     end
 
     rdata39 = read39integ(scr_addr);
-    `uvm_info(`gfn, $sformatf("scr data: 0x%0x", rdata39), UVM_LOW)
+    `uvm_info(`gfn, $sformatf("scr data: 0x%0x", rdata39), UVM_HIGH)
     rdata_arr = {<<{rdata39}};
     rdata_arr = sram_scrambler_pkg::decrypt_sram_data(
         rdata_arr, 39, 39, addr_arr, full_addr_width, key_arr, nonce_arr, num_prince_rounds_half
@@ -162,12 +157,7 @@ class sram_bkdr_util extends mem_bkdr_util;
                                             int                          extra_addr_bits,
                                             bit [38:0]                   flip_bits);
     logic [38:0] scrambled_data = get_sram_encrypt32_intg_data(addr, data, key, nonce,
-                                                               extra_addr_bits, flip_bits);
-
-    `uvm_info("SRAM_MEMBKDR",
-      $sformatf("write Scrambled address (scr_addr='h%0h, scrambled_data='h%0h, , key='h%0h, nonce='h%0h)",
-      scr_addr, scrambled_data, key, nonce),
-      UVM_LOW)                                                             
+                                                               extra_addr_bits, flip_bits);                                                        
     write39integ(scr_addr, scrambled_data);
   endfunction : _sram_encrypt_write39
 
