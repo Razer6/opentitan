@@ -188,10 +188,18 @@ package otp_ctrl_pkg;
 
   // Default for dangling connection
   parameter sram_otp_key_rsp_t SRAM_OTP_KEY_RSP_DEFAULT = '{
+  % if use_rivos_config:
+    // Rivos: Unconditionally respond with all 0 for unconnected ports in PWC and MIO
+    ack: 1'b0,
+    key: '0,
+    nonce: '0,
+    seed_valid: 1'b0
+  % else:
     ack: 1'b1,
     key: '0,
     nonce: '0,
     seed_valid: 1'b1
+  % endif
   };
 
   typedef struct packed {
