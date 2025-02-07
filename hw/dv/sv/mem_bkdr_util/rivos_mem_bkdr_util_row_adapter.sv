@@ -20,7 +20,7 @@ class rivos_mem_bkdr_util_row_adapter extends mem_bkdr_util_row_adapter;
   // Translates a raw read UVM data raw from the memory in a contigious
   // row of memory.
   //
-  function new(uint32_t depth, longint unsigned n_bits, 
+  function new(uint32_t depth, longint unsigned n_bits,
                mem_bkdr_util_pkg::err_detection_e err_detection_scheme,
                uint32_t redundant_bits_per_entry,
                uint32_t extra_bits_per_subword = 0);
@@ -45,25 +45,10 @@ class rivos_mem_bkdr_util_row_adapter extends mem_bkdr_util_row_adapter;
     byte_width            = 8;
     bytes_per_word        = data_width / byte_width;
     this.mem_addr_lsb     = $clog2(bytes_per_word);
-
-    `uvm_info("ADAPTER", $sformatf("ADAPTER n_bits %d", n_bits), UVM_HIGH)
-    `uvm_info("ADAPTER", $sformatf("ADAPTER depth %d", depth), UVM_HIGH)
-    `uvm_info("ADAPTER", $sformatf("ADAPTER WIDTH %d", width), UVM_HIGH)
-    `uvm_info("ADAPTER", $sformatf("ADAPTER subwords_per_row %d", subwords_per_row), UVM_HIGH)
-    `uvm_info("ADAPTER", $sformatf("ADAPTER data_width %d", data_width), UVM_HIGH)
-    `uvm_info("ADAPTER", $sformatf("ADAPTER byte_width %d", byte_width), UVM_HIGH)
-    `uvm_info("ADAPTER", $sformatf("ADAPTER bytes_per_word %d", bytes_per_word), UVM_HIGH)
-    `uvm_info("ADAPTER", $sformatf("ADAPTER mem_addr_lsb %d", mem_addr_lsb), UVM_HIGH)
-    `uvm_info("ADAPTER", $sformatf("ADAPTER bits_per_subword %d", bits_per_subword), UVM_HIGH)
   endfunction
 
   virtual function uvm_hdl_data_t decode_row(uvm_hdl_data_t read_data);
     uvm_hdl_data_t raw_data, data;
-
-    `uvm_info("ADAPTER", $sformatf("ADAPTER DECODE bits_per_subword %d", bits_per_subword), UVM_HIGH)
-    `uvm_info("ADAPTER", $sformatf("ADAPTER DECODE subwords_per_row %d", subwords_per_row), UVM_HIGH)
-
-
     raw_data = read_data;
     for (int subword_idx = 0; subword_idx < subwords_per_row; subword_idx++) begin
       for (int b = 0; b < bits_per_subword; b++) begin
@@ -94,10 +79,14 @@ class rivos_mem_bkdr_util_row_adapter extends mem_bkdr_util_row_adapter;
     return data;
   endfunction
 
-  // Writes a 39 bit word into the row data depending on the memory architecture
-  virtual function uvm_hdl_data_t access_row_data39(bit [bus_params_pkg::BUS_AW-1:0] addr,
-                                                    logic [38:0] data,
-                                                    uvm_hdl_data_t row_data);
+  // Writes a 39 bit word into a decoded row data depending on the memory architecture
+
+  // Given decoded `row_data`, a 39-bit `data` word to be written, and an address, return the
+  // decoded row data with the data word at the correct position for the memory architecture and
+  // the given address.
+  virtual function uvm_hdl_data_t write_row_data_39b(bit [bus_params_pkg::BUS_AW-1:0] addr,
+                                                     logic [38:0] data,
+                                                     uvm_hdl_data_t row_data);
     uint32_t word_idx;
     uint32_t byte_idx;
     uint32_t subword_idx;
@@ -109,5 +98,25 @@ class rivos_mem_bkdr_util_row_adapter extends mem_bkdr_util_row_adapter;
     return row_data;
   endfunction
 
-  
+  // Reads a 39 bit word from decoded row data depending on the memory architecture
+
+  // Given decoded `row_data` and an address, return the 39-bit data from the correct position
+  // for the memory architecture and the given address.
+  virtual function logic [38:0] read_row_data_39b(bit [bus_params_pkg::BUS_AW-1:0] addr,
+                                                  uvm_hdl_data_t row_data);
+    uint32_t word_idx;
+    uint32_t byte_idx;
+    uint32_t subword_idx;
+
+    // Each entry may have more than one subword chunk stored
+    // So we get current data row and insert the new subword at the right location,
+    // The modified data is then written back
+    word_idx    = addr >> mem_addr_lsb;
+    byte_idx    = addr - (word_idx << mem_addr_lsb);
+    subword_idx = byte_idx >> 2;
+
+    return row_data[subword_idx * 39 +:39];
+  endfunction
+
+
 endclass
