@@ -64,22 +64,22 @@ package ibex_pmp_reset_pkg;
   // regions are ignored.
   localparam pmp_cfg_t MioPmpCfgRst[16] = '{
                                                                               // Region info
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 0
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 1
-    '{lock: 1'b1, mode: PMP_MODE_NAPOT, exec: 1'b1, write: 1'b0, read: 1'b1}, // 2  [ROM: LRX]
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 3
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 4
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 5
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 6
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 7
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 8
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 9
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 10
-    '{lock: 1'b1, mode: PMP_MODE_TOR,   exec: 1'b0, write: 1'b1, read: 1'b1}, // 11 [MMIO: LRW]
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 12
-    '{lock: 1'b1, mode: PMP_MODE_NAPOT, exec: 1'b1, write: 1'b1, read: 1'b1}, // 13 [DV_ROM: LRWX]
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 14
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}  // 15
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 0
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 1
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 2
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 3
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 4
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 5
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 6
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 7
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 8
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 9
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 10
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 11
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 12
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 13
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 14
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}  // rgn 15
   };
 
   // Addresses are given in byte granularity for readibility. A minimum of two
@@ -91,7 +91,7 @@ package ibex_pmp_reset_pkg;
   localparam logic [33:0] MioPmpAddrRst[16] = '{
     34'h00000000, // rgn 0
     34'h00000000, // rgn 1
-    34'h000083fc, // rgn 2  [ROM: base=0x0000_8000 size=0x800 (2KiB)]
+    34'h00000000, // rgn 2
     34'h00000000, // rgn 3
     34'h00000000, // rgn 4
     34'h00000000, // rgn 5
@@ -99,15 +99,16 @@ package ibex_pmp_reset_pkg;
     34'h00000000, // rgn 7
     34'h00000000, // rgn 8
     34'h00000000, // rgn 9
-    34'h40000000, // rgn 10 [MMIO: lo=0x4000_0000]
-    34'h42010000, // rgn 11 [MMIO: hi=0x4201_0000]
+    34'h00000000, // rgn 10
+    34'h00000000, // rgn 11
     34'h00000000, // rgn 12
-    34'h000107fc, // rgn 13 [DV_ROM: base=0x0001_0000 size=0x1000 (4KiB)]
+    34'h00000000, // rgn 13
     34'h00000000, // rgn 14
     34'h00000000  // rgn 15
+
   };
 
-  localparam pmp_mseccfg_t MioPmpMseccfgRst = '{rlb : 1'b1, mmwp: 1'b1, mml: 1'b0};
+  localparam pmp_mseccfg_t MioPmpMseccfgRst = '{rlb : 1'b1, mmwp: 1'b0, mml: 1'b0};
 
   //------------------------------------------------------------------------------------------------
   // PWC Config
@@ -118,22 +119,22 @@ package ibex_pmp_reset_pkg;
   // regions are ignored.
   localparam pmp_cfg_t PwcPmpCfgRst[16] = '{
                                                                               // Region info
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 0
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 1
-    '{lock: 1'b1, mode: PMP_MODE_NAPOT, exec: 1'b1, write: 1'b0, read: 1'b1}, // 2  [ROM: LRX]
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 3
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 4
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 5
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 6
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 7
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 8
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 9
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 10
-    '{lock: 1'b1, mode: PMP_MODE_TOR,   exec: 1'b0, write: 1'b1, read: 1'b1}, // 11 [MMIO: LRW]
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 12
-    '{lock: 1'b1, mode: PMP_MODE_NAPOT, exec: 1'b1, write: 1'b1, read: 1'b1}, // 13 [DV_ROM: LRWX]
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}, // 14
-    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b0, write: 1'b0, read: 1'b0}  // 15
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 0
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 1
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 2
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 3
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 4
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 5
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 6
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 7
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 8
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 9
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 10
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 11
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 12
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 13
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}, // rgn 14
+    '{lock: 1'b0, mode: PMP_MODE_OFF,   exec: 1'b1, write: 1'b0, read: 1'b0}  // rgn 15
   };
 
   // Addresses are given in byte granularity for readibility. A minimum of two
@@ -145,7 +146,7 @@ package ibex_pmp_reset_pkg;
   localparam logic [33:0] PwcPmpAddrRst[16] = '{
     34'h00000000, // rgn 0
     34'h00000000, // rgn 1
-    34'h000083fc, // rgn 2  [ROM: base=0x0000_8000 size=0x800 (2KiB)]
+    34'h00000000, // rgn 2
     34'h00000000, // rgn 3
     34'h00000000, // rgn 4
     34'h00000000, // rgn 5
@@ -153,14 +154,14 @@ package ibex_pmp_reset_pkg;
     34'h00000000, // rgn 7
     34'h00000000, // rgn 8
     34'h00000000, // rgn 9
-    34'h40000000, // rgn 10 [MMIO: lo=0x4000_0000]
-    34'h42010000, // rgn 11 [MMIO: hi=0x4201_0000]
+    34'h00000000, // rgn 10
+    34'h00000000, // rgn 11
     34'h00000000, // rgn 12
-    34'h000107fc, // rgn 13 [DV_ROM: base=0x0001_0000 size=0x1000 (4KiB)]
+    34'h00000000, // rgn 13
     34'h00000000, // rgn 14
     34'h00000000  // rgn 15
   };
 
-  localparam pmp_mseccfg_t PwcPmpMseccfgRst = '{rlb : 1'b1, mmwp: 1'b1, mml: 1'b0};
+  localparam pmp_mseccfg_t PwcPmpMseccfgRst = '{rlb : 1'b1, mmwp: 1'b0, mml: 1'b0};
 
 endpackage
