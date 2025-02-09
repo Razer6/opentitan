@@ -634,6 +634,7 @@
         'rv_core_ibex.fpga_info'            : 'fpga_info'
         'soc_proxy.ctn_tl_h2d'              : 'ctn_tl_h2d',
         'rv_core_ibex.boot_addr'            : 'rv_boot_addr'
+        'rv_core_ibex.pwrmgr_cpu_en'        : 'rv_pwrmgr_cpu_en'
         'rv_core_ibex.lc_cpu_en'            : 'rv_cpu_en',
         'rv_core_ibex.esc_rx'               : 'rv_core_esc_rx'
         'rv_core_ibex.esc_tx'               : 'rv_core_esc_tx'
