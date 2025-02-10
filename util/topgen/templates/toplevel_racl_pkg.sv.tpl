@@ -5,6 +5,7 @@ ${gencmd}
 <% import textwrap %>\
 
 package top_${topcfg["name"]}_racl_pkg;
+  import top_racl_pkg::*;
 
 <%doc>
   Note: The RACL parameters must be generated identically across multiple files.
@@ -71,12 +72,12 @@ policy: ${policy_names[range['policy']]} (Idx ${f"{range['policy']}".rjust(polic
       % if len(register_mapping) > 0:
 <% policy_sel_value = ", ".join(map(str, reversed(register_mapping.values())))%>\
 <% policy_sel_value = "\n    ".join(textwrap.wrap(policy_sel_value, 94))%>\
-  parameter top_racl_pkg::racl_policy_sel_t ${policy_sel_name} [${len(register_mapping)}] = '{
+  parameter racl_policy_sel_t ${policy_sel_name} [${len(register_mapping)}] = '{
     ${policy_sel_value}
   };
       % endif
       % for window_name, policy_idx in window_mapping.items():
-  parameter top_racl_pkg::racl_policy_sel_t ${policy_sel_name}_WIN_${window_name.upper()} = ${policy_idx};
+  parameter racl_policy_sel_t ${policy_sel_name}_WIN_${window_name.upper()} = ${policy_idx};
       % endfor
       % if len(range_mapping) > 0:
   parameter racl_policy_sel_t ${policy_sel_name}_NUM_RANGES = ${len(range_mapping)};

@@ -57,6 +57,13 @@ package top_racl_pkg;
     logic       read_access;
   } racl_error_log_t;
 
+  // Range definition for RACL protected SRAM adapter
+  typedef struct packed {
+    logic [top_pkg::TL_AW-1:0] base;
+    logic [top_pkg::TL_AW-1:0] mask;
+    racl_policy_sel_t          policy_sel;
+  } racl_range_t;
+
   // Extract RACL role bits from the TLUL reserved user bits
   function automatic racl_role_t tlul_extract_racl_role_bits(logic [tlul_pkg::RsvdWidth-1:0] rsvd);
     // Waive unused bits

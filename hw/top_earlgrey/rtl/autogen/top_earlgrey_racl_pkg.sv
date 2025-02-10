@@ -12,5 +12,6 @@
 
 
 package top_earlgrey_racl_pkg;
+  import top_racl_pkg::*;
 
 endpackage

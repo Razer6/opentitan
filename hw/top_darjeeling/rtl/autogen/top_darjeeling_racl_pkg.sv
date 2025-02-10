@@ -12,6 +12,7 @@
 
 
 package top_darjeeling_racl_pkg;
+  import top_racl_pkg::*;
 
   /**
    * RACL groups:
@@ -41,11 +42,11 @@ package top_darjeeling_racl_pkg;
    *     WDATA: ROT_PRIVATE (Idx  6)
    *     RDATA: ROT_PRIVATE (Idx  6)
    */
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX0_SOC [4] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX0_SOC [4] = '{
     6, 6, 6, 6
   };
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX0_SOC_WIN_WDATA = 6;
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX0_SOC_WIN_RDATA = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX0_SOC_WIN_WDATA = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX0_SOC_WIN_RDATA = 6;
 
   /**
    * Policy selection vector for mbx1
@@ -60,11 +61,11 @@ package top_darjeeling_racl_pkg;
    *     WDATA: ROT_PRIVATE (Idx  6)
    *     RDATA: ROT_PRIVATE (Idx  6)
    */
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX1_SOC [4] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX1_SOC [4] = '{
     6, 6, 6, 6
   };
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX1_SOC_WIN_WDATA = 6;
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX1_SOC_WIN_RDATA = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX1_SOC_WIN_WDATA = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX1_SOC_WIN_RDATA = 6;
 
   /**
    * Policy selection vector for mbx2
@@ -79,11 +80,11 @@ package top_darjeeling_racl_pkg;
    *     WDATA: ROT_PRIVATE (Idx  6)
    *     RDATA: ROT_PRIVATE (Idx  6)
    */
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX2_SOC [4] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX2_SOC [4] = '{
     6, 6, 6, 6
   };
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX2_SOC_WIN_WDATA = 6;
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX2_SOC_WIN_RDATA = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX2_SOC_WIN_WDATA = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX2_SOC_WIN_RDATA = 6;
 
   /**
    * Policy selection vector for mbx3
@@ -98,11 +99,11 @@ package top_darjeeling_racl_pkg;
    *     WDATA: PWC_PRIVATE (Idx  7)
    *     RDATA: PWC_PRIVATE (Idx  7)
    */
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX3_SOC [4] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX3_SOC [4] = '{
     7, 7, 7, 7
   };
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX3_SOC_WIN_WDATA = 7;
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX3_SOC_WIN_RDATA = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX3_SOC_WIN_WDATA = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX3_SOC_WIN_RDATA = 7;
 
   /**
    * Policy selection vector for mbx4
@@ -117,11 +118,11 @@ package top_darjeeling_racl_pkg;
    *     WDATA: MIO_PRIVATE (Idx  8)
    *     RDATA: MIO_PRIVATE (Idx  8)
    */
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX4_SOC [4] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX4_SOC [4] = '{
     8, 8, 8, 8
   };
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX4_SOC_WIN_WDATA = 8;
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX4_SOC_WIN_RDATA = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX4_SOC_WIN_WDATA = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX4_SOC_WIN_RDATA = 8;
 
   /**
    * Policy selection vector for mbx5
@@ -136,11 +137,11 @@ package top_darjeeling_racl_pkg;
    *     WDATA: DUC_PRIVATE (Idx  9)
    *     RDATA: DUC_PRIVATE (Idx  9)
    */
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX5_SOC [4] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX5_SOC [4] = '{
     9, 9, 9, 9
   };
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX5_SOC_WIN_WDATA = 9;
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX5_SOC_WIN_RDATA = 9;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX5_SOC_WIN_WDATA = 9;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX5_SOC_WIN_RDATA = 9;
 
   /**
    * Policy selection vector for mbx6
@@ -155,11 +156,11 @@ package top_darjeeling_racl_pkg;
    *     WDATA: RCODE_PRIVATE (Idx  5)
    *     RDATA: RCODE_PRIVATE (Idx  5)
    */
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX6_SOC [4] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX6_SOC [4] = '{
     5, 5, 5, 5
   };
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX6_SOC_WIN_WDATA = 5;
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX6_SOC_WIN_RDATA = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX6_SOC_WIN_WDATA = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX6_SOC_WIN_RDATA = 5;
 
   /**
    * Policy selection vector for mbx_pcie0
@@ -174,11 +175,11 @@ package top_darjeeling_racl_pkg;
    *     WDATA: ALL_RD_WR (Idx  0)
    *     RDATA: ALL_RD_WR (Idx  0)
    */
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE0_SOC [4] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE0_SOC [4] = '{
     0, 0, 0, 0
   };
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE0_SOC_WIN_WDATA = 0;
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE0_SOC_WIN_RDATA = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE0_SOC_WIN_WDATA = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE0_SOC_WIN_RDATA = 0;
 
   /**
    * Policy selection vector for mbx_pcie1
@@ -193,10 +194,10 @@ package top_darjeeling_racl_pkg;
    *     WDATA: POST_BOOT_M (Idx  3)
    *     RDATA: POST_BOOT_M (Idx  3)
    */
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE1_SOC [4] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE1_SOC [4] = '{
     3, 3, 3, 3
   };
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE1_SOC_WIN_WDATA = 3;
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE1_SOC_WIN_RDATA = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE1_SOC_WIN_WDATA = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE1_SOC_WIN_RDATA = 3;
 
 endpackage
