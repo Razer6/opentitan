@@ -161,6 +161,7 @@ module top_englishbreakfast #(
   import top_englishbreakfast_pkg::*;
   // Compile-time random constants
   import top_englishbreakfast_rnd_cnst_pkg::*;
+  import top_englishbreakfast_racl_pkg::*;
 
   // Local Parameters
   // local parameters for spi_host0

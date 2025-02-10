@@ -37,6 +37,7 @@ filesets:
       - lowrisc:systems:top_mio_pkg
     files:
       - rtl/autogen/top_mio_rnd_cnst_pkg.sv
+      - rtl/autogen/top_mio_racl_pkg.sv
       - rtl/autogen/top_mio.sv
     file_type: systemVerilogSource
 

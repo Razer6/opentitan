@@ -37,6 +37,7 @@ filesets:
       - lowrisc:systems:top_pwc_pkg
     files:
       - rtl/autogen/top_pwc_rnd_cnst_pkg.sv
+      - rtl/autogen/top_pwc_racl_pkg.sv
       - rtl/autogen/top_pwc.sv
     file_type: systemVerilogSource
 
