@@ -1094,7 +1094,6 @@ module top_earlgrey #(
       .lsio_trigger_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(uart0_tl_req),
       .tl_o(uart0_tl_rsp),
 
@@ -1131,7 +1130,6 @@ module top_earlgrey #(
       .lsio_trigger_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(uart1_tl_req),
       .tl_o(uart1_tl_rsp),
 
@@ -1168,7 +1166,6 @@ module top_earlgrey #(
       .lsio_trigger_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(uart2_tl_req),
       .tl_o(uart2_tl_rsp),
 
@@ -1205,7 +1202,6 @@ module top_earlgrey #(
       .lsio_trigger_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(uart3_tl_req),
       .tl_o(uart3_tl_rsp),
 
@@ -1237,7 +1233,6 @@ module top_earlgrey #(
       .sampled_straps_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(gpio_tl_req),
       .tl_o(gpio_tl_rsp),
 
@@ -1283,7 +1278,6 @@ module top_earlgrey #(
       .sck_monitor_o(sck_monitor_o),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tston_i(prim_mubi_pkg::MUBI4_DEFAULT),
       .tl_i(spi_device_tl_req),
       .tl_o(spi_device_tl_rsp),
@@ -1336,7 +1330,6 @@ module top_earlgrey #(
       .lsio_trigger_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(i2c0_tl_req),
       .tl_o(i2c0_tl_rsp),
 
@@ -1385,7 +1378,6 @@ module top_earlgrey #(
       .lsio_trigger_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(i2c1_tl_req),
       .tl_o(i2c1_tl_rsp),
 
@@ -1434,7 +1426,6 @@ module top_earlgrey #(
       .lsio_trigger_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(i2c2_tl_req),
       .tl_o(i2c2_tl_rsp),
 
@@ -1694,7 +1685,6 @@ module top_earlgrey #(
       .lsio_trigger_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(spi_host0_tl_req),
       .tl_o(spi_host0_tl_rsp),
 
@@ -1731,7 +1721,6 @@ module top_earlgrey #(
       .lsio_trigger_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(spi_host1_tl_req),
       .tl_o(spi_host1_tl_rsp),
 
@@ -2030,7 +2019,6 @@ module top_earlgrey #(
       // Inter-module signals
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(pwm_aon_tl_req),
       .tl_o(pwm_aon_tl_rsp),
 
@@ -2195,7 +2183,6 @@ module top_earlgrey #(
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),
@@ -2688,7 +2675,6 @@ module top_earlgrey #(
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),

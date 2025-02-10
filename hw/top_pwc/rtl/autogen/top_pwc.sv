@@ -124,8 +124,7 @@ module top_pwc #(
   input  prim_ram_1p_pkg::ram_1p_cfg_t [SramCtrlMboxNumRamInst-1:0] sram_ctrl_mbox_ram_1p_cfg_i,
   output prim_ram_1p_pkg::ram_1p_cfg_rsp_t [SramCtrlMboxNumRamInst-1:0] sram_ctrl_mbox_ram_1p_cfg_rsp_o,
   output top_racl_pkg::racl_policy_vec_t       racl_policies_o,
-  input  logic [RaclCtrlNumExternalSubscribingIps-1:0] racl_error_i,
-  input  top_racl_pkg::racl_error_log_t [RaclCtrlNumExternalSubscribingIps-1:0] racl_error_log_i,
+  input  top_racl_pkg::racl_error_log_t [RaclCtrlNumExternalSubscribingIps-1:0] racl_error_i,
 
   // Incoming interrupt of group pwc_external
   input logic [158:0] incoming_interrupt_pwc_external_i,
@@ -315,8 +314,7 @@ module top_pwc #(
   tlul_pkg::tl_h2d_t       racl_ctrl_tl_req;
   tlul_pkg::tl_d2h_t       racl_ctrl_tl_rsp;
   top_racl_pkg::racl_policy_vec_t       racl_ctrl_racl_policies;
-  logic [RaclCtrlNumSubscribingIps-1:0] racl_ctrl_racl_error;
-  top_racl_pkg::racl_error_log_t [RaclCtrlNumSubscribingIps-1:0] racl_ctrl_racl_error_log;
+  top_racl_pkg::racl_error_log_t [RaclCtrlNumSubscribingIps-1:0] racl_ctrl_racl_error;
   logic       rv_core_ibex_irq_timer;
   logic [31:0] rv_core_ibex_hart_id;
 
@@ -371,7 +369,6 @@ module top_pwc #(
       .sampled_straps_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(gpio_tl_req),
       .tl_o(gpio_tl_rsp),
 
@@ -481,7 +478,6 @@ module top_pwc #(
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),
@@ -587,7 +583,6 @@ module top_pwc #(
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),
@@ -630,7 +625,6 @@ module top_pwc #(
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),
@@ -703,7 +697,6 @@ module top_pwc #(
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
       .racl_error_o(racl_ctrl_racl_error[0]),
-      .racl_error_log_o(racl_ctrl_racl_error_log[0]),
       .sram_tl_h_o(pwc_main_tl_mbx0__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx0__sram_rsp),
       .core_tl_d_i(mbx0_core_tl_d_req),
@@ -740,7 +733,6 @@ module top_pwc #(
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
       .racl_error_o(racl_ctrl_racl_error[1]),
-      .racl_error_log_o(racl_ctrl_racl_error_log[1]),
       .sram_tl_h_o(pwc_main_tl_mbx1__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx1__sram_rsp),
       .core_tl_d_i(mbx1_core_tl_d_req),
@@ -777,7 +769,6 @@ module top_pwc #(
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
       .racl_error_o(racl_ctrl_racl_error[2]),
-      .racl_error_log_o(racl_ctrl_racl_error_log[2]),
       .sram_tl_h_o(pwc_main_tl_mbx2__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx2__sram_rsp),
       .core_tl_d_i(mbx2_core_tl_d_req),
@@ -814,7 +805,6 @@ module top_pwc #(
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
       .racl_error_o(racl_ctrl_racl_error[3]),
-      .racl_error_log_o(racl_ctrl_racl_error_log[3]),
       .sram_tl_h_o(pwc_main_tl_mbx3__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx3__sram_rsp),
       .core_tl_d_i(mbx3_core_tl_d_req),
@@ -851,7 +841,6 @@ module top_pwc #(
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
       .racl_error_o(racl_ctrl_racl_error[4]),
-      .racl_error_log_o(racl_ctrl_racl_error_log[4]),
       .sram_tl_h_o(pwc_main_tl_mbx4__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx4__sram_rsp),
       .core_tl_d_i(mbx4_core_tl_d_req),
@@ -888,7 +877,6 @@ module top_pwc #(
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
       .racl_error_o(racl_ctrl_racl_error[5]),
-      .racl_error_log_o(racl_ctrl_racl_error_log[5]),
       .sram_tl_h_o(pwc_main_tl_mbx5__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx5__sram_rsp),
       .core_tl_d_i(mbx5_core_tl_d_req),
@@ -914,9 +902,7 @@ module top_pwc #(
       // Inter-module signals
       .racl_policies_o(racl_ctrl_racl_policies),
       .racl_error_i(racl_ctrl_racl_error),
-      .racl_error_log_i(racl_ctrl_racl_error_log),
       .racl_error_external_i(racl_error_i),
-      .racl_error_log_external_i(racl_error_log_i),
       .tl_i(racl_ctrl_tl_req),
       .tl_o(racl_ctrl_tl_rsp),
 

@@ -577,7 +577,6 @@ module top_englishbreakfast #(
       .lsio_trigger_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(uart0_tl_req),
       .tl_o(uart0_tl_rsp),
 
@@ -614,7 +613,6 @@ module top_englishbreakfast #(
       .lsio_trigger_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(uart1_tl_req),
       .tl_o(uart1_tl_rsp),
 
@@ -646,7 +644,6 @@ module top_englishbreakfast #(
       .sampled_straps_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(gpio_tl_req),
       .tl_o(gpio_tl_rsp),
 
@@ -692,7 +689,6 @@ module top_englishbreakfast #(
       .sck_monitor_o(sck_monitor_o),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tston_i(prim_mubi_pkg::MUBI4_DEFAULT),
       .tl_i(spi_device_tl_req),
       .tl_o(spi_device_tl_rsp),
@@ -733,7 +729,6 @@ module top_englishbreakfast #(
       .lsio_trigger_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .tl_i(spi_host0_tl_req),
       .tl_o(spi_host0_tl_rsp),
 
@@ -1214,7 +1209,6 @@ module top_englishbreakfast #(
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .racl_error_log_o(),
       .sram_error_record_uncor_err_o(),
       .sram_error_record_corr_err_o(),
       .sram_error_record_err_addr_o(),

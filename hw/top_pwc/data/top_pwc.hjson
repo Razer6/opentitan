@@ -649,9 +649,8 @@
         'sram_ctrl_main.cfg_rsp'            : 'sram_ctrl_main_ram_1p_cfg_rsp',
         'sram_ctrl_mbox.cfg'                : 'sram_ctrl_mbox_ram_1p_cfg',
         'sram_ctrl_mbox.cfg_rsp'            : 'sram_ctrl_mbox_ram_1p_cfg_rsp',
-        'racl_ctrl.racl_policies'              : 'racl_policies',
-        'racl_ctrl.racl_error_external'        : 'racl_error',
-        'racl_ctrl.racl_error_log_external'    : 'racl_error_log'
+        'racl_ctrl.racl_policies'           : 'racl_policies',
+        'racl_ctrl.racl_error_external'     : 'racl_error',
     },
   },
 

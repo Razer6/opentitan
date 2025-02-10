@@ -646,20 +646,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: uart0
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -751,20 +737,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: uart1
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -856,20 +828,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: uart2
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -961,20 +919,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: uart3
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -1100,20 +1044,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: gpio
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -1276,20 +1206,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: spi_device
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -1429,20 +1345,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: i2c0
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -1572,20 +1474,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: i2c1
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -1715,20 +1603,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: i2c2
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -3192,20 +3066,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: spi_host0
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -3319,20 +3179,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: spi_host1
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -4802,20 +4648,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: pwm_aon
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -5948,20 +5780,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: sram_ctrl_ret_aon
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -8948,20 +8766,6 @@
         }
         {
           name: racl_error
-          desc:
-            '''
-            RACL error indication signal.
-            If 1, the error log contains valid information.
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: sram_ctrl_main
-          index: -1
-        }
-        {
-          name: racl_error_log
           desc: RACL error log information of this module.
           struct: racl_error_log
           package: top_racl_pkg
@@ -18167,20 +17971,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: uart0
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg
@@ -18234,20 +18024,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: uart1
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg
@@ -18301,20 +18077,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: uart2
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg
@@ -18368,20 +18130,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: uart3
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg
@@ -18444,20 +18192,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: gpio
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg
@@ -18568,20 +18302,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: spi_device
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg
@@ -18667,20 +18387,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: i2c0
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg
@@ -18756,20 +18462,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: i2c1
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg
@@ -18845,20 +18537,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: i2c2
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg
@@ -19841,20 +19519,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: spi_host0
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg
@@ -19918,20 +19582,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: spi_host1
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg
@@ -20892,20 +20542,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: pwm_aon
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg
@@ -21589,20 +21225,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: sram_ctrl_ret_aon
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg
@@ -23171,20 +22793,6 @@
       }
       {
         name: racl_error
-        desc:
-          '''
-          RACL error indication signal.
-          If 1, the error log contains valid information.
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: sram_ctrl_main
-        index: -1
-      }
-      {
-        name: racl_error_log
         desc: RACL error log information of this module.
         struct: racl_error_log
         package: top_racl_pkg

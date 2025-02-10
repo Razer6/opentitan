@@ -27,8 +27,7 @@ Referring to the [Comportable guideline for peripheral device functionality](htt
 | passthrough         | spi_device_pkg::passthrough     | req_rsp | req   |       1 |                                                                                                                                      |
 | sck_monitor         | logic                           | uni     | req   |       1 |                                                                                                                                      |
 | racl_policies       | top_racl_pkg::racl_policy_vec   | uni     | rcv   |       1 | Incoming RACL policy vector from a racl_ctrl instance. The policy selection vector (parameter) selects the policy for each register. |
-| racl_error          | logic                           | uni     | req   |       1 | RACL error indication signal. If 1, the error log contains valid information.                                                        |
-| racl_error_log      | top_racl_pkg::racl_error_log    | uni     | req   |       1 | RACL error log information of this module.                                                                                           |
+| racl_error          | top_racl_pkg::racl_error_log    | uni     | req   |       1 | RACL error log information of this module.                                                                                           |
 | tston               | prim_mubi_pkg::mubi4            | uni     | rcv   |       1 |                                                                                                                                      |
 | tl                  | tlul_pkg::tl                    | req_rsp | rsp   |       1 |                                                                                                                                      |
 
