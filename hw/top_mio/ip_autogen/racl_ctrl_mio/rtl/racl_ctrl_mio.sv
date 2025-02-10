@@ -136,16 +136,16 @@ module racl_ctrl_mio import racl_ctrl_mio_reg_pkg::*; #(
 
   // Broadcast all policies via policy vector
   assign racl_policies_o = {
-    policy_all_rd_wr,
-    policy_hw_rot_pwc_wr_all_rd,
-    policy_pre_boot_m,
-    policy_post_boot_m,
-    policy_tee_limited,
-    policy_rcode_private,
-    policy_rot_private,
-    policy_pwc_private,
+    policy_duc_private,
     policy_mio_private,
-    policy_duc_private
+    policy_pwc_private,
+    policy_rot_private,
+    policy_rcode_private,
+    policy_tee_limited,
+    policy_post_boot_m,
+    policy_pre_boot_m,
+    policy_hw_rot_pwc_wr_all_rd,
+    policy_all_rd_wr
   };
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
