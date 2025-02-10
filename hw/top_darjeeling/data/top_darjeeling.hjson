@@ -1429,7 +1429,6 @@
         'soc_dbg_ctrl.halt_cpu_boot'           : 'debug_halt_cpu_boot',
         'racl_ctrl.racl_policies'              : 'racl_policies',
         'racl_ctrl.racl_error_external'        : 'racl_error',
-        'racl_ctrl.racl_error_log_external'    : 'racl_error_log'
         // Additional Rivos DFT signals
         'spi_device.tston'                     : 'tston',
     },
