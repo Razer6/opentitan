@@ -12,7 +12,6 @@ filesets:
       - lowrisc:prim:mubi
       - lowrisc:prim:all
       - lowrisc:prim:arbiter
-      - lowrisc:prim:onehot_check
       - lowrisc:systems:top_racl_pkg
     files:
       - rtl/${module_instance_name}_reg_pkg.sv
