@@ -122,18 +122,18 @@ module tlul_adapter_sram_racl
     assign rd_req             = req & (tl_i.a_opcode == tlul_pkg::Get);
     assign wr_req             = req & (tl_i.a_opcode == tlul_pkg::PutFullData |
                                        tl_i.a_opcode == tlul_pkg::PutPartialData);
-    assign racl_error_o       = (rd_req & ~racl_read_allowed) | (wr_req & ~racl_write_allowed);
+    assign racl_error_o.valid = (rd_req & ~racl_read_allowed) | (wr_req & ~racl_write_allowed);
 
     tlul_request_loopback #(
       .ErrorRsp(RaclErrorRsp)
     ) u_loopback (
       .clk_i,
       .rst_ni,
-      .squash_req_i ( racl_error_o    ),
-      .tl_h2d_i     ( tl_i            ),
-      .tl_d2h_o     ( tl_o            ),
-      .tl_h2d_o     ( tl_h2d_filtered ),
-      .tl_d2h_i     ( tl_d2h_filtered )
+      .squash_req_i ( racl_error_o.valid ),
+      .tl_h2d_i     ( tl_i               ),
+      .tl_d2h_o     ( tl_o               ),
+      .tl_h2d_o     ( tl_h2d_filtered    ),
+      .tl_d2h_i     ( tl_d2h_filtered    )
     );
 
     // Collect RACL error information
