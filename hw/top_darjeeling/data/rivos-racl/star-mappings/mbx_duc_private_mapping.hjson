@@ -4,6 +4,6 @@
 
 {
   Null: {
-    "*": "PWC_PRIVATE"
+    "*": "DUC_PRIVATE"
   }
 }

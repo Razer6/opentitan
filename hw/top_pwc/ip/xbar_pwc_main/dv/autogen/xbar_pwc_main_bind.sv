@@ -66,6 +66,12 @@ module xbar_pwc_main_bind;
     .h2d    (tl_mbx5__sram_i),
     .d2h    (tl_mbx5__sram_o)
   );
+  bind xbar_pwc_main tlul_assert #(.EndpointType("Device")) tlul_assert_host_mbx_pcie0__sram (
+    .clk_i  (clk_main_i),
+    .rst_ni (rst_main_ni),
+    .h2d    (tl_mbx_pcie0__sram_i),
+    .d2h    (tl_mbx_pcie0__sram_o)
+  );
 
   // Device interfaces
   bind xbar_pwc_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_rv_dm__regs (
@@ -175,6 +181,12 @@ module xbar_pwc_main_bind;
     .rst_ni (rst_main_ni),
     .h2d    (tl_mbx5__core_o),
     .d2h    (tl_mbx5__core_i)
+  );
+  bind xbar_pwc_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_mbx_pcie0__core (
+    .clk_i  (clk_main_i),
+    .rst_ni (rst_main_ni),
+    .h2d    (tl_mbx_pcie0__core_o),
+    .d2h    (tl_mbx_pcie0__core_i)
   );
 `endif
 endmodule

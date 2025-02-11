@@ -37,6 +37,7 @@ tl_if mbx2__sram_tl_if(clk_ext_main, rst_n);
 tl_if mbx3__sram_tl_if(clk_ext_main, rst_n);
 tl_if mbx4__sram_tl_if(clk_ext_main, rst_n);
 tl_if mbx5__sram_tl_if(clk_ext_main, rst_n);
+tl_if mbx_pcie0__sram_tl_if(clk_ext_main, rst_n);
 
 tl_if rv_dm__regs_tl_if(clk_ext_main, rst_n);
 tl_if rv_dm__mem_tl_if(clk_ext_main, rst_n);
@@ -55,6 +56,7 @@ tl_if mbx2__core_tl_if(clk_ext_main, rst_n);
 tl_if mbx3__core_tl_if(clk_ext_main, rst_n);
 tl_if mbx4__core_tl_if(clk_ext_main, rst_n);
 tl_if mbx5__core_tl_if(clk_ext_main, rst_n);
+tl_if mbx_pcie0__core_tl_if(clk_ext_main, rst_n);
 tl_if gpio_tl_if(clk_ext_io_div4, rst_n);
 tl_if rv_timer_tl_if(clk_ext_io_div4, rst_n);
 tl_if sram_ctrl_ret_aon__regs_tl_if(clk_ext_io_div4, rst_n);
@@ -66,6 +68,7 @@ tl_if mbx2__soc_tl_if(clk_ext_main, rst_n);
 tl_if mbx3__soc_tl_if(clk_ext_main, rst_n);
 tl_if mbx4__soc_tl_if(clk_ext_main, rst_n);
 tl_if mbx5__soc_tl_if(clk_ext_main, rst_n);
+tl_if mbx_pcie0__soc_tl_if(clk_ext_main, rst_n);
 tl_if racl_ctrl_tl_if(clk_ext_main, rst_n);
 
 initial begin
@@ -120,6 +123,8 @@ initial begin
     `DRIVE_CHIP_TL_HOST_IF(mbx4__sram, mbx4, sram_tl_h)
     `DRIVE_CHIP_TL_DEVICE_IF(mbx5__core, mbx5, core_tl_d)
     `DRIVE_CHIP_TL_HOST_IF(mbx5__sram, mbx5, sram_tl_h)
+    `DRIVE_CHIP_TL_DEVICE_IF(mbx_pcie0__core, mbx_pcie0, core_tl_d)
+    `DRIVE_CHIP_TL_HOST_IF(mbx_pcie0__sram, mbx_pcie0, sram_tl_h)
     `DRIVE_CHIP_TL_DEVICE_IF(gpio, gpio, tl)
     `DRIVE_CHIP_TL_DEVICE_IF(rv_timer, rv_timer, tl)
     `DRIVE_CHIP_TL_DEVICE_IF(sram_ctrl_ret_aon__regs, sram_ctrl_ret_aon, regs_tl)
@@ -131,6 +136,7 @@ initial begin
     `DRIVE_CHIP_TL_DEVICE_IF(mbx3__soc, mbx3, soc_tl_d)
     `DRIVE_CHIP_TL_DEVICE_IF(mbx4__soc, mbx4, soc_tl_d)
     `DRIVE_CHIP_TL_DEVICE_IF(mbx5__soc, mbx5, soc_tl_d)
+    `DRIVE_CHIP_TL_DEVICE_IF(mbx_pcie0__soc, mbx_pcie0, soc_tl_d)
     `DRIVE_CHIP_TL_DEVICE_IF(racl_ctrl, racl_ctrl, tl)
 `endif
 

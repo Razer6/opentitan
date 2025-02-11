@@ -81,6 +81,10 @@ static dif_mbx_t mbx4;
 static dif_mbx_t mbx5;
 #endif
 
+#if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
+static dif_mbx_t mbx_pcie0;
+#endif
+
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
 static dif_rv_timer_t rv_timer;
 #endif
@@ -382,6 +386,29 @@ void ottf_external_isr(uint32_t *exc_info) {
     }
 #endif
 
+#if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
+    case kTopPwcPlicPeripheralMbxPcie0: {
+      dif_mbx_irq_t irq =
+          (dif_mbx_irq_t)(plic_irq_id -
+                          (dif_rv_plic_irq_id_t)
+                              kTopPwcPlicIrqIdMbxPcie0MbxReady);
+      CHECK(irq == mbx_irq_expected,
+            "Incorrect mbx_pcie0 IRQ triggered: exp = %d, obs = %d",
+            mbx_irq_expected, irq);
+      mbx_irq_serviced = irq;
+
+      dif_mbx_irq_state_snapshot_t snapshot;
+      CHECK_DIF_OK(dif_mbx_irq_get_state(&mbx_pcie0, &snapshot));
+      CHECK(snapshot == (dif_mbx_irq_state_snapshot_t)(1 << irq),
+            "Only mbx_pcie0 IRQ %d expected to fire. Actual interrupt "
+            "status = %x",
+            irq, snapshot);
+
+      CHECK_DIF_OK(dif_mbx_irq_acknowledge(&mbx_pcie0, irq));
+      break;
+    }
+#endif
+
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
     case kTopPwcPlicPeripheralRvTimer: {
       dif_rv_timer_irq_t irq =
@@ -487,6 +514,11 @@ static void peripherals_init(void) {
   CHECK_DIF_OK(dif_mbx_init(base_addr, &mbx5));
 #endif
 
+#if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
+  base_addr = mmio_region_from_addr(TOP_PWC_MBX_PCIE0_CORE_BASE_ADDR);
+  CHECK_DIF_OK(dif_mbx_init(base_addr, &mbx_pcie0));
+#endif
+
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
   base_addr = mmio_region_from_addr(TOP_PWC_RV_TIMER_BASE_ADDR);
   CHECK_DIF_OK(dif_rv_timer_init(base_addr, &rv_timer));
@@ -539,6 +571,10 @@ static void peripheral_irqs_clear(void) {
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
   CHECK_DIF_OK(dif_mbx_irq_acknowledge_all(&mbx5));
+#endif
+
+#if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
+  CHECK_DIF_OK(dif_mbx_irq_acknowledge_all(&mbx_pcie0));
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
@@ -609,6 +645,10 @@ static void peripheral_irqs_enable(void) {
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
   CHECK_DIF_OK(dif_mbx_irq_restore_all(&mbx5, &mbx_irqs));
+#endif
+
+#if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
+  CHECK_DIF_OK(dif_mbx_irq_restore_all(&mbx_pcie0, &mbx_irqs));
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
@@ -783,6 +823,21 @@ static void peripheral_irqs_trigger(void) {
     // entering the ISR.
     IBEX_SPIN_FOR(mbx_irq_serviced == irq, 1);
     LOG_INFO("IRQ %d from mbx5 is serviced.", irq);
+  }
+#endif
+
+#if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
+  peripheral_expected = kTopPwcPlicPeripheralMbxPcie0;
+  for (dif_mbx_irq_t irq = kDifMbxIrqMbxReady; irq <= kDifMbxIrqMbxError;
+       ++irq) {
+    mbx_irq_expected = irq;
+    LOG_INFO("Triggering mbx_pcie0 IRQ %d.", irq);
+    CHECK_DIF_OK(dif_mbx_irq_force(&mbx_pcie0, irq, true));
+
+    // This avoids a race where *irq_serviced is read before
+    // entering the ISR.
+    IBEX_SPIN_FOR(mbx_irq_serviced == irq, 1);
+    LOG_INFO("IRQ %d from mbx_pcie0 is serviced.", irq);
   }
 #endif
 

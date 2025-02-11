@@ -215,6 +215,7 @@ module racl_ctrl import racl_ctrl_reg_pkg::*; #(
     .en_i   ( 1'b1                      ),
     .err_o  ( multiple_errors           )
   );
+  assign u_multiple_err_det.unused_assert_connected = 1'b1;
 
   // On the first error, we log the address and other information
   logic first_error;

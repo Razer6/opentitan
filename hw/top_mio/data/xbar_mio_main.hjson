@@ -218,6 +218,20 @@
       reset:      "rst_main_ni",
       pipeline:   false,
     },
+    { name:       "mbx_pcie0.core",
+      type:       "device",
+      addr_space: "hart",
+      clock:      "clk_main_i",
+      reset:      "rst_main_ni",
+      pipeline:   false,
+    },
+    { name:       "mbx_pcie0.sram",
+      type:       "host",
+      addr_space: "hart",
+      clock:      "clk_main_i",
+      reset:      "rst_main_ni",
+      pipeline:   false,
+    },
   ],
   connections: {
     // TODO: remove rv_core_ibex.corei - sram_ctrl_main.ram connection
@@ -228,14 +242,14 @@
       "rv_plic", "sram_ctrl_main.regs",
       "rv_core_ibex.cfg", "sram_ctrl_mbox.ram", "sram_ctrl_mbox.regs",
       "soc_proxy.ctn", "soc_proxy.core", "dma", "mbx0.core", "mbx1.core",
-      "mbx2.core", "mbx3.core", "mbx4.core", "mbx5.core",
+      "mbx2.core", "mbx3.core", "mbx4.core", "mbx5.core", "mbx_pcie0.core"
     ],
     rv_dm.sba: [
       "rv_dm.mem", "rv_dm.regs", "sram_ctrl_main.ram", "mio_peri",
       "rv_plic", "sram_ctrl_main.regs",
       "rv_core_ibex.cfg", "sram_ctrl_mbox.ram", "sram_ctrl_mbox.regs",
       "soc_proxy.ctn", "soc_proxy.core", "dma", "mbx0.core", "mbx1.core",
-      "mbx2.core", "mbx3.core", "mbx4.core", "mbx5.core",
+      "mbx2.core", "mbx3.core", "mbx4.core", "mbx5.core", "mbx_pcie0.core"
     ],
     // This is the same set of devices that rv_core_ibex.cored is connected to,
     // but without ROM0/1 and RV_DM.
@@ -259,6 +273,9 @@
       "sram_ctrl_mbox.ram",
     ],
     mbx5.sram: [
+      "sram_ctrl_mbox.ram",
+    ],
+    mbx_pcie0.sram: [
       "sram_ctrl_mbox.ram",
     ],
   },

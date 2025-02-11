@@ -23,7 +23,7 @@ use core::convert::TryFrom;
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const MBX0_SOC_BASE_ADDR: usize = 0x1465000;
+pub const MBX0_SOC_BASE_ADDR: usize = 0x1475000;
 
 /// Peripheral size for soc device on mbx0 in top pwc.
 ///
@@ -37,7 +37,7 @@ pub const MBX0_SOC_SIZE_BYTES: usize = 0x20;
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const MBX1_SOC_BASE_ADDR: usize = 0x1465100;
+pub const MBX1_SOC_BASE_ADDR: usize = 0x1475100;
 
 /// Peripheral size for soc device on mbx1 in top pwc.
 ///
@@ -51,7 +51,7 @@ pub const MBX1_SOC_SIZE_BYTES: usize = 0x20;
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const MBX2_SOC_BASE_ADDR: usize = 0x1465200;
+pub const MBX2_SOC_BASE_ADDR: usize = 0x1475200;
 
 /// Peripheral size for soc device on mbx2 in top pwc.
 ///
@@ -65,7 +65,7 @@ pub const MBX2_SOC_SIZE_BYTES: usize = 0x20;
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const MBX3_SOC_BASE_ADDR: usize = 0x1465300;
+pub const MBX3_SOC_BASE_ADDR: usize = 0x1475300;
 
 /// Peripheral size for soc device on mbx3 in top pwc.
 ///
@@ -79,7 +79,7 @@ pub const MBX3_SOC_SIZE_BYTES: usize = 0x20;
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const MBX4_SOC_BASE_ADDR: usize = 0x1465400;
+pub const MBX4_SOC_BASE_ADDR: usize = 0x1475400;
 
 /// Peripheral size for soc device on mbx4 in top pwc.
 ///
@@ -93,7 +93,7 @@ pub const MBX4_SOC_SIZE_BYTES: usize = 0x20;
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const MBX5_SOC_BASE_ADDR: usize = 0x1465500;
+pub const MBX5_SOC_BASE_ADDR: usize = 0x1475500;
 
 /// Peripheral size for soc device on mbx5 in top pwc.
 ///
@@ -103,11 +103,25 @@ pub const MBX5_SOC_BASE_ADDR: usize = 0x1465500;
 /// `MBX5_SOC_BASE_ADDR + MBX5_SOC_SIZE_BYTES`.
 pub const MBX5_SOC_SIZE_BYTES: usize = 0x20;
 
+/// Peripheral base address for soc device on mbx_pcie0 in top pwc.
+///
+/// This should be used with #mmio_region_from_addr to access the memory-mapped
+/// registers associated with the peripheral (usually via a DIF).
+pub const MBX_PCIE0_SOC_BASE_ADDR: usize = 0x1470100;
+
+/// Peripheral size for soc device on mbx_pcie0 in top pwc.
+///
+/// This is the size (in bytes) of the peripheral's reserved memory area. All
+/// memory-mapped registers associated with this peripheral should have an
+/// address between #MBX_PCIE0_SOC_BASE_ADDR and
+/// `MBX_PCIE0_SOC_BASE_ADDR + MBX_PCIE0_SOC_SIZE_BYTES`.
+pub const MBX_PCIE0_SOC_SIZE_BYTES: usize = 0x20;
+
 /// Peripheral base address for racl_ctrl in top pwc.
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const RACL_CTRL_BASE_ADDR: usize = 0x1463000;
+pub const RACL_CTRL_BASE_ADDR: usize = 0x1473000;
 
 /// Peripheral size for racl_ctrl in top pwc.
 ///

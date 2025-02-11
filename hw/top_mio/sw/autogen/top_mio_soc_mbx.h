@@ -135,6 +135,24 @@ extern "C" {
 #define TOP_MIO_SOC_MBX_MBX5_SOC_SIZE_BYTES 0x20u
 
 /**
+ * Peripheral base address for soc device on mbx_pcie0 in top mio.
+ *
+ * This should be used with #mmio_region_from_addr to access the memory-mapped
+ * registers associated with the peripheral (usually via a DIF).
+ */
+#define TOP_MIO_SOC_MBX_MBX_PCIE0_SOC_BASE_ADDR 0x1480100u
+
+/**
+ * Peripheral size for soc device on mbx_pcie0 in top mio.
+ *
+ * This is the size (in bytes) of the peripheral's reserved memory area. All
+ * memory-mapped registers associated with this peripheral should have an
+ * address between #TOP_MIO_SOC_MBX_MBX_PCIE0_SOC_BASE_ADDR and
+ * `TOP_MIO_SOC_MBX_MBX_PCIE0_SOC_BASE_ADDR + TOP_MIO_SOC_MBX_MBX_PCIE0_SOC_SIZE_BYTES`.
+ */
+#define TOP_MIO_SOC_MBX_MBX_PCIE0_SOC_SIZE_BYTES 0x20u
+
+/**
  * Peripheral base address for racl_ctrl in top mio.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped

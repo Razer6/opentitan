@@ -23,7 +23,7 @@ package top_pwc_soc_dbg_pkg;
 
   
   // Number of pwc outgoing alerts
-  parameter int unsigned NOutgoingAlertsPwc = 28;
+  parameter int unsigned NOutgoingAlertsPwc = 30;
 
   // Number of LPGs for outgoing alert group pwc
   parameter int unsigned NOutgoingLpgsPwc = 2;
@@ -46,8 +46,9 @@ package top_pwc_soc_dbg_pkg;
     TopPwcAlertPeripheralMbx3 = 13,
     TopPwcAlertPeripheralMbx4 = 14,
     TopPwcAlertPeripheralMbx5 = 15,
-    TopPwcAlertPeripheralRaclCtrl = 16,
-    TopPwcAlertPeripheralRvCoreIbex = 17,
+    TopPwcAlertPeripheralMbxPcie0 = 16,
+    TopPwcAlertPeripheralRaclCtrl = 17,
+    TopPwcAlertPeripheralRvCoreIbex = 18,
     TopPwcOutgoingAlertPwcPeripheralCount
   } outgoing_alert_pwc_peripheral_e;
 
@@ -75,17 +76,21 @@ package top_pwc_soc_dbg_pkg;
     TopPwcAlertIdMbx4RecovFault = 19,
     TopPwcAlertIdMbx5FatalFault = 20,
     TopPwcAlertIdMbx5RecovFault = 21,
-    TopPwcAlertIdRaclCtrlRecovCtrlUpdateErr = 22,
-    TopPwcAlertIdRaclCtrlFatalFault = 23,
-    TopPwcAlertIdRvCoreIbexFatalSwErr = 24,
-    TopPwcAlertIdRvCoreIbexRecovSwErr = 25,
-    TopPwcAlertIdRvCoreIbexFatalHwErr = 26,
-    TopPwcAlertIdRvCoreIbexRecovHwErr = 27,
+    TopPwcAlertIdMbxPcie0FatalFault = 22,
+    TopPwcAlertIdMbxPcie0RecovFault = 23,
+    TopPwcAlertIdRaclCtrlRecovCtrlUpdateErr = 24,
+    TopPwcAlertIdRaclCtrlFatalFault = 25,
+    TopPwcAlertIdRvCoreIbexFatalSwErr = 26,
+    TopPwcAlertIdRvCoreIbexRecovSwErr = 27,
+    TopPwcAlertIdRvCoreIbexFatalHwErr = 28,
+    TopPwcAlertIdRvCoreIbexRecovHwErr = 29,
     TopPwcOutgoingAlertPwcIdCount
   } outgoing_alert_pwc_id_e;
 
   // Enumeration of pwc outgoing alerts AsyncOn configuration
   parameter logic [NOutgoingAlertsPwc-1:0] AsyncOnOutgoingAlertPwc = {
+    1'b1,
+    1'b1,
     1'b1,
     1'b1,
     1'b1,

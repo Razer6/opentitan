@@ -424,6 +424,23 @@
  */
 #define TOP_PWC_MBX5_CORE_SIZE_BYTES 0x80
 /**
+ * Peripheral base address for core device on mbx_pcie0 in top pwc.
+ *
+ * This should be used with #mmio_region_from_addr to access the memory-mapped
+ * registers associated with the peripheral (usually via a DIF).
+ */
+#define TOP_PWC_MBX_PCIE0_CORE_BASE_ADDR 0x22040000
+
+/**
+ * Peripheral size for core device on mbx_pcie0 in top pwc.
+ *
+ * This is the size (in bytes) of the peripheral's reserved memory area. All
+ * memory-mapped registers associated with this peripheral should have an
+ * address between #TOP_PWC_MBX_PCIE0_CORE_BASE_ADDR and
+ * `TOP_PWC_MBX_PCIE0_CORE_BASE_ADDR + TOP_PWC_MBX_PCIE0_CORE_SIZE_BYTES`.
+ */
+#define TOP_PWC_MBX_PCIE0_CORE_SIZE_BYTES 0x80
+/**
  * Peripheral base address for cfg device on rv_core_ibex in top pwc.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped

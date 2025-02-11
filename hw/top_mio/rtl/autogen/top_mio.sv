@@ -56,6 +56,7 @@ module top_mio #(
   // parameters for mbx3
   // parameters for mbx4
   // parameters for mbx5
+  // parameters for mbx_pcie0
   // parameters for racl_ctrl
   parameter int RaclCtrlNumExternalSubscribingIps = 1,
   // parameters for rv_core_ibex
@@ -165,7 +166,7 @@ module top_mio #(
 
   // Local Parameters
   // local parameters for racl_ctrl
-  localparam int RaclCtrlNumSubscribingIps = 6;
+  localparam int RaclCtrlNumSubscribingIps = 7;
   // local parameters for rv_core_ibex
   localparam int unsigned RvCoreIbexNEscalationSeverities = 4;
   localparam int unsigned RvCoreIbexWidthPingCounter = 16;
@@ -173,7 +174,7 @@ module top_mio #(
   // Signals
 
 
-  logic [65:0]  intr_vector;
+  logic [68:0]  intr_vector;
   // Interrupt source list
   logic intr_rv_timer_timer_expired_hart0_timer0;
   logic intr_aon_timer_aon_wkup_timer_expired;
@@ -200,6 +201,9 @@ module top_mio #(
   logic intr_mbx5_mbx_ready;
   logic intr_mbx5_mbx_abort;
   logic intr_mbx5_mbx_error;
+  logic intr_mbx_pcie0_mbx_ready;
+  logic intr_mbx_pcie0_mbx_abort;
+  logic intr_mbx_pcie0_mbx_error;
 
   // define inter-module signals
   logic       aon_timer_aon_nmi_wdog_timer_bark;
@@ -266,6 +270,10 @@ module top_mio #(
   tlul_pkg::tl_d2h_t       mbx5_core_tl_d_rsp;
   tlul_pkg::tl_h2d_t       mio_main_tl_mbx5__sram_req;
   tlul_pkg::tl_d2h_t       mio_main_tl_mbx5__sram_rsp;
+  tlul_pkg::tl_h2d_t       mbx_pcie0_core_tl_d_req;
+  tlul_pkg::tl_d2h_t       mbx_pcie0_core_tl_d_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_mbx_pcie0__sram_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_mbx_pcie0__sram_rsp;
   tlul_pkg::tl_h2d_t       rv_timer_tl_req;
   tlul_pkg::tl_d2h_t       rv_timer_tl_rsp;
   tlul_pkg::tl_h2d_t       sram_ctrl_ret_aon_regs_tl_req;
@@ -286,6 +294,8 @@ module top_mio #(
   tlul_pkg::tl_d2h_t       mbx4_soc_tl_d_rsp;
   tlul_pkg::tl_h2d_t       mbx5_soc_tl_d_req;
   tlul_pkg::tl_d2h_t       mbx5_soc_tl_d_rsp;
+  tlul_pkg::tl_h2d_t       mbx_pcie0_soc_tl_d_req;
+  tlul_pkg::tl_d2h_t       mbx_pcie0_soc_tl_d_rsp;
   tlul_pkg::tl_h2d_t       racl_ctrl_tl_req;
   tlul_pkg::tl_d2h_t       racl_ctrl_tl_rsp;
   top_racl_pkg::racl_policy_vec_t       racl_ctrl_racl_policies;
@@ -832,16 +842,52 @@ module top_mio #(
       .clk_i (clk_ext_main_i),
       .rst_ni (rst_ext_rst_main_i)
   );
+  mbx #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(1'b1),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_MBX_PCIE0_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_MBX_PCIE0_SOC_WIN_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_MBX_PCIE0_SOC_WIN_RDATA),
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[22:21])
+  ) u_mbx_pcie0 (
+
+      // Interrupt
+      .intr_mbx_ready_o (intr_mbx_pcie0_mbx_ready),
+      .intr_mbx_abort_o (intr_mbx_pcie0_mbx_abort),
+      .intr_mbx_error_o (intr_mbx_pcie0_mbx_error),
+      // External alert group "mio" [21]: fatal_fault
+      // External alert group "mio" [22]: recov_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[22:21] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[22:21] ),
+
+      // Inter-module signals
+      .doe_intr_support_o(),
+      .doe_intr_en_o(),
+      .doe_intr_o(),
+      .doe_async_msg_support_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[6]),
+      .sram_tl_h_o(mio_main_tl_mbx_pcie0__sram_req),
+      .sram_tl_h_i(mio_main_tl_mbx_pcie0__sram_rsp),
+      .core_tl_d_i(mbx_pcie0_core_tl_d_req),
+      .core_tl_d_o(mbx_pcie0_core_tl_d_rsp),
+      .soc_tl_d_i(mbx_pcie0_soc_tl_d_req),
+      .soc_tl_d_o(mbx_pcie0_soc_tl_d_rsp),
+
+      // Clock and reset connections
+      .clk_i (clk_ext_main_i),
+      .rst_ni (rst_ext_rst_main_i)
+  );
   racl_ctrl_mio #(
     .RaclErrorRsp(1'b1),
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[22:21]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[24:23]),
     .NumSubscribingIps(RaclCtrlNumSubscribingIps),
     .NumExternalSubscribingIps(RaclCtrlNumExternalSubscribingIps)
   ) u_racl_ctrl (
-      // External alert group "mio" [21]: recov_ctrl_update_err
-      // External alert group "mio" [22]: fatal_fault
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[22:21] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[22:21] ),
+      // External alert group "mio" [23]: recov_ctrl_update_err
+      // External alert group "mio" [24]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[24:23] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[24:23] ),
 
       // Inter-module signals
       .racl_policies_o(racl_ctrl_racl_policies),
@@ -856,7 +902,7 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   rv_core_ibex #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[26:23]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[28:25]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexLfsrPerm),
     .RndCnstIbexKeyDefault(RndCnstRvCoreIbexIbexKeyDefault),
@@ -892,12 +938,12 @@ module top_mio #(
     .PipeLine(RvCoreIbexPipeLine),
     .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
   ) u_rv_core_ibex (
-      // External alert group "mio" [23]: fatal_sw_err
-      // External alert group "mio" [24]: recov_sw_err
-      // External alert group "mio" [25]: fatal_hw_err
-      // External alert group "mio" [26]: recov_hw_err
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[26:23] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[26:23] ),
+      // External alert group "mio" [25]: fatal_sw_err
+      // External alert group "mio" [26]: recov_sw_err
+      // External alert group "mio" [27]: fatal_hw_err
+      // External alert group "mio" [28]: recov_hw_err
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[28:25] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[28:25] ),
 
       // Inter-module signals
       .rst_cpu_n_o(),
@@ -944,7 +990,10 @@ module top_mio #(
   );
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_mio_external_i, // IDs [57 +: 9]
+      incoming_interrupt_mio_external_i, // IDs [60 +: 9]
+      intr_mbx_pcie0_mbx_error, // IDs [59 +: 1]
+      intr_mbx_pcie0_mbx_abort, // IDs [58 +: 1]
+      intr_mbx_pcie0_mbx_ready, // IDs [57 +: 1]
       intr_mbx5_mbx_error, // IDs [56 +: 1]
       intr_mbx5_mbx_abort, // IDs [55 +: 1]
       intr_mbx5_mbx_ready, // IDs [54 +: 1]
@@ -1020,6 +1069,10 @@ module top_mio #(
     .tl_mbx5__sram_i(mio_main_tl_mbx5__sram_req),
     .tl_mbx5__sram_o(mio_main_tl_mbx5__sram_rsp),
 
+    // port: tl_mbx_pcie0__sram
+    .tl_mbx_pcie0__sram_i(mio_main_tl_mbx_pcie0__sram_req),
+    .tl_mbx_pcie0__sram_o(mio_main_tl_mbx_pcie0__sram_rsp),
+
     // port: tl_rv_dm__regs
     .tl_rv_dm__regs_o(rv_dm_regs_tl_d_req),
     .tl_rv_dm__regs_i(rv_dm_regs_tl_d_rsp),
@@ -1092,6 +1145,10 @@ module top_mio #(
     .tl_mbx5__core_o(mbx5_core_tl_d_req),
     .tl_mbx5__core_i(mbx5_core_tl_d_rsp),
 
+    // port: tl_mbx_pcie0__core
+    .tl_mbx_pcie0__core_o(mbx_pcie0_core_tl_d_req),
+    .tl_mbx_pcie0__core_i(mbx_pcie0_core_tl_d_rsp),
+
 
     .scanmode_i
   );
@@ -1153,6 +1210,10 @@ module top_mio #(
     // port: tl_mbx5__soc
     .tl_mbx5__soc_o(mbx5_soc_tl_d_req),
     .tl_mbx5__soc_i(mbx5_soc_tl_d_rsp),
+
+    // port: tl_mbx_pcie0__soc
+    .tl_mbx_pcie0__soc_o(mbx_pcie0_soc_tl_d_req),
+    .tl_mbx_pcie0__soc_i(mbx_pcie0_soc_tl_d_rsp),
 
     // port: tl_racl_ctrl
     .tl_racl_ctrl_o(racl_ctrl_tl_req),

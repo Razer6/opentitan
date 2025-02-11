@@ -388,6 +388,24 @@ extern "C" {
 #define TOP_MIO_MBX5_CORE_SIZE_BYTES 0x80u
 
 /**
+ * Peripheral base address for core device on mbx_pcie0 in top mio.
+ *
+ * This should be used with #mmio_region_from_addr to access the memory-mapped
+ * registers associated with the peripheral (usually via a DIF).
+ */
+#define TOP_MIO_MBX_PCIE0_CORE_BASE_ADDR 0x22040000u
+
+/**
+ * Peripheral size for core device on mbx_pcie0 in top mio.
+ *
+ * This is the size (in bytes) of the peripheral's reserved memory area. All
+ * memory-mapped registers associated with this peripheral should have an
+ * address between #TOP_MIO_MBX_PCIE0_CORE_BASE_ADDR and
+ * `TOP_MIO_MBX_PCIE0_CORE_BASE_ADDR + TOP_MIO_MBX_PCIE0_CORE_SIZE_BYTES`.
+ */
+#define TOP_MIO_MBX_PCIE0_CORE_SIZE_BYTES 0x80u
+
+/**
  * Peripheral base address for cfg device on rv_core_ibex in top mio.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
@@ -465,7 +483,8 @@ typedef enum top_mio_plic_peripheral {
   kTopMioPlicPeripheralMbx3 = 8, /**< mbx3 */
   kTopMioPlicPeripheralMbx4 = 9, /**< mbx4 */
   kTopMioPlicPeripheralMbx5 = 10, /**< mbx5 */
-  kTopMioPlicPeripheralLast = 10, /**< \internal Final PLIC peripheral */
+  kTopMioPlicPeripheralMbxPcie0 = 11, /**< mbx_pcie0 */
+  kTopMioPlicPeripheralLast = 11, /**< \internal Final PLIC peripheral */
 } top_mio_plic_peripheral_t;
 
 /**
@@ -532,16 +551,19 @@ typedef enum top_mio_plic_irq_id {
   kTopMioPlicIrqIdMbx5MbxReady = 54, /**< mbx5_mbx_ready */
   kTopMioPlicIrqIdMbx5MbxAbort = 55, /**< mbx5_mbx_abort */
   kTopMioPlicIrqIdMbx5MbxError = 56, /**< mbx5_mbx_error */
-  kTopMioPlicIrqIdMioHdrIpiFromMio0 = 57, /**< MIO_HDR_IPI_FROM_MIO_0 */
-  kTopMioPlicIrqIdMioHdrIpiFromMio1 = 58, /**< MIO_HDR_IPI_FROM_MIO_1 */
-  kTopMioPlicIrqIdMioHdrIpiFromMio2 = 59, /**< MIO_HDR_IPI_FROM_MIO_2 */
-  kTopMioPlicIrqIdMioHdrIpiFromPwc = 60, /**< MIO_HDR_IPI_FROM_PWC */
-  kTopMioPlicIrqIdMioHdrIpiFromRot = 61, /**< MIO_HDR_IPI_FROM_ROT */
-  kTopMioPlicIrqIdMioHdrIpiFromPwc = 62, /**< MIO_HDR_IPI_FROM_PWC */
-  kTopMioPlicIrqIdLioGrpAIbexIrq = 63, /**< LIO_GRP_A_IBEX_IRQ */
-  kTopMioPlicIrqIdLioGrpBIbexIrq = 64, /**< LIO_GRP_B_IBEX_IRQ */
-  kTopMioPlicIrqIdLioGrpCIbexIrq = 65, /**< LIO_GRP_C_IBEX_IRQ */
-  kTopMioPlicIrqIdLast = 65, /**< \internal The Last Valid Interrupt ID. */
+  kTopMioPlicIrqIdMbxPcie0MbxReady = 57, /**< mbx_pcie0_mbx_ready */
+  kTopMioPlicIrqIdMbxPcie0MbxAbort = 58, /**< mbx_pcie0_mbx_abort */
+  kTopMioPlicIrqIdMbxPcie0MbxError = 59, /**< mbx_pcie0_mbx_error */
+  kTopMioPlicIrqIdMioHdrIpiFromMio0 = 60, /**< MIO_HDR_IPI_FROM_MIO_0 */
+  kTopMioPlicIrqIdMioHdrIpiFromMio1 = 61, /**< MIO_HDR_IPI_FROM_MIO_1 */
+  kTopMioPlicIrqIdMioHdrIpiFromMio2 = 62, /**< MIO_HDR_IPI_FROM_MIO_2 */
+  kTopMioPlicIrqIdMioHdrIpiFromPwc = 63, /**< MIO_HDR_IPI_FROM_PWC */
+  kTopMioPlicIrqIdMioHdrIpiFromRot = 64, /**< MIO_HDR_IPI_FROM_ROT */
+  kTopMioPlicIrqIdMioHdrIpiFromPwc = 65, /**< MIO_HDR_IPI_FROM_PWC */
+  kTopMioPlicIrqIdLioGrpAIbexIrq = 66, /**< LIO_GRP_A_IBEX_IRQ */
+  kTopMioPlicIrqIdLioGrpBIbexIrq = 67, /**< LIO_GRP_B_IBEX_IRQ */
+  kTopMioPlicIrqIdLioGrpCIbexIrq = 68, /**< LIO_GRP_C_IBEX_IRQ */
+  kTopMioPlicIrqIdLast = 68, /**< \internal The Last Valid Interrupt ID. */
 } top_mio_plic_irq_id_t;
 
 /**
@@ -551,7 +573,7 @@ typedef enum top_mio_plic_irq_id {
  * `top_mio_plic_peripheral_t`.
  */
 extern const top_mio_plic_peripheral_t
-    top_mio_plic_interrupt_for_peripheral[65];
+    top_mio_plic_interrupt_for_peripheral[68];
 
 /**
  * PLIC Interrupt Target.

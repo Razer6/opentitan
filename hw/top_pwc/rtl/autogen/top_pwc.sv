@@ -59,6 +59,7 @@ module top_pwc #(
   // parameters for mbx3
   // parameters for mbx4
   // parameters for mbx5
+  // parameters for mbx_pcie0
   // parameters for racl_ctrl
   parameter int RaclCtrlNumExternalSubscribingIps = 1,
   // parameters for rv_core_ibex
@@ -148,6 +149,7 @@ module top_pwc #(
   // mbx3
   // mbx4
   // mbx5
+  // mbx_pcie0
   // racl_ctrl
   // rv_core_ibex
 
@@ -190,12 +192,12 @@ module top_pwc #(
 
   // Local Parameters
   // local parameters for racl_ctrl
-  localparam int RaclCtrlNumSubscribingIps = 6;
+  localparam int RaclCtrlNumSubscribingIps = 7;
   // local parameters for rv_core_ibex
   localparam int unsigned RvCoreIbexNEscalationSeverities = 4;
   localparam int unsigned RvCoreIbexWidthPingCounter = 16;
 
-  logic [247:0]  intr_vector;
+  logic [250:0]  intr_vector;
   // Interrupt source list
   logic [31:0] intr_gpio_gpio;
   logic intr_rv_timer_timer_expired_hart0_timer0;
@@ -223,6 +225,9 @@ module top_pwc #(
   logic intr_mbx5_mbx_ready;
   logic intr_mbx5_mbx_abort;
   logic intr_mbx5_mbx_error;
+  logic intr_mbx_pcie0_mbx_ready;
+  logic intr_mbx_pcie0_mbx_abort;
+  logic intr_mbx_pcie0_mbx_error;
 
   // define inter-module signals
   logic       aon_timer_aon_nmi_wdog_timer_bark;
@@ -289,6 +294,10 @@ module top_pwc #(
   tlul_pkg::tl_d2h_t       mbx5_core_tl_d_rsp;
   tlul_pkg::tl_h2d_t       pwc_main_tl_mbx5__sram_req;
   tlul_pkg::tl_d2h_t       pwc_main_tl_mbx5__sram_rsp;
+  tlul_pkg::tl_h2d_t       mbx_pcie0_core_tl_d_req;
+  tlul_pkg::tl_d2h_t       mbx_pcie0_core_tl_d_rsp;
+  tlul_pkg::tl_h2d_t       pwc_main_tl_mbx_pcie0__sram_req;
+  tlul_pkg::tl_d2h_t       pwc_main_tl_mbx_pcie0__sram_rsp;
   tlul_pkg::tl_h2d_t       gpio_tl_req;
   tlul_pkg::tl_d2h_t       gpio_tl_rsp;
   tlul_pkg::tl_h2d_t       rv_timer_tl_req;
@@ -311,6 +320,8 @@ module top_pwc #(
   tlul_pkg::tl_d2h_t       mbx4_soc_tl_d_rsp;
   tlul_pkg::tl_h2d_t       mbx5_soc_tl_d_req;
   tlul_pkg::tl_d2h_t       mbx5_soc_tl_d_rsp;
+  tlul_pkg::tl_h2d_t       mbx_pcie0_soc_tl_d_req;
+  tlul_pkg::tl_d2h_t       mbx_pcie0_soc_tl_d_rsp;
   tlul_pkg::tl_h2d_t       racl_ctrl_tl_req;
   tlul_pkg::tl_d2h_t       racl_ctrl_tl_rsp;
   top_racl_pkg::racl_policy_vec_t       racl_ctrl_racl_policies;
@@ -888,16 +899,52 @@ module top_pwc #(
       .clk_i (clk_ext_main_i),
       .rst_ni (rst_ext_rst_main_i)
   );
+  mbx #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(1'b1),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_MBX_PCIE0_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_MBX_PCIE0_SOC_WIN_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_MBX_PCIE0_SOC_WIN_RDATA),
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[23:22])
+  ) u_mbx_pcie0 (
+
+      // Interrupt
+      .intr_mbx_ready_o (intr_mbx_pcie0_mbx_ready),
+      .intr_mbx_abort_o (intr_mbx_pcie0_mbx_abort),
+      .intr_mbx_error_o (intr_mbx_pcie0_mbx_error),
+      // External alert group "pwc" [22]: fatal_fault
+      // External alert group "pwc" [23]: recov_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[23:22] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[23:22] ),
+
+      // Inter-module signals
+      .doe_intr_support_o(),
+      .doe_intr_en_o(),
+      .doe_intr_o(),
+      .doe_async_msg_support_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[6]),
+      .sram_tl_h_o(pwc_main_tl_mbx_pcie0__sram_req),
+      .sram_tl_h_i(pwc_main_tl_mbx_pcie0__sram_rsp),
+      .core_tl_d_i(mbx_pcie0_core_tl_d_req),
+      .core_tl_d_o(mbx_pcie0_core_tl_d_rsp),
+      .soc_tl_d_i(mbx_pcie0_soc_tl_d_req),
+      .soc_tl_d_o(mbx_pcie0_soc_tl_d_rsp),
+
+      // Clock and reset connections
+      .clk_i (clk_ext_main_i),
+      .rst_ni (rst_ext_rst_main_i)
+  );
   racl_ctrl_pwc #(
     .RaclErrorRsp(1'b1),
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[23:22]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[25:24]),
     .NumSubscribingIps(RaclCtrlNumSubscribingIps),
     .NumExternalSubscribingIps(RaclCtrlNumExternalSubscribingIps)
   ) u_racl_ctrl (
-      // External alert group "pwc" [22]: recov_ctrl_update_err
-      // External alert group "pwc" [23]: fatal_fault
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[23:22] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[23:22] ),
+      // External alert group "pwc" [24]: recov_ctrl_update_err
+      // External alert group "pwc" [25]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[25:24] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[25:24] ),
 
       // Inter-module signals
       .racl_policies_o(racl_ctrl_racl_policies),
@@ -912,7 +959,7 @@ module top_pwc #(
       .rst_ni (rst_ext_rst_main_i)
   );
   rv_core_ibex #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[27:24]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[29:26]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexLfsrPerm),
     .RndCnstIbexKeyDefault(RndCnstRvCoreIbexIbexKeyDefault),
@@ -948,12 +995,12 @@ module top_pwc #(
     .PipeLine(RvCoreIbexPipeLine),
     .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
   ) u_rv_core_ibex (
-      // External alert group "pwc" [24]: fatal_sw_err
-      // External alert group "pwc" [25]: recov_sw_err
-      // External alert group "pwc" [26]: fatal_hw_err
-      // External alert group "pwc" [27]: recov_hw_err
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[27:24] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[27:24] ),
+      // External alert group "pwc" [26]: fatal_sw_err
+      // External alert group "pwc" [27]: recov_sw_err
+      // External alert group "pwc" [28]: fatal_hw_err
+      // External alert group "pwc" [29]: recov_hw_err
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[29:26] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[29:26] ),
 
       // Inter-module signals
       .rst_cpu_n_o(),
@@ -1000,7 +1047,10 @@ module top_pwc #(
   );
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_pwc_external_i, // IDs [89 +: 159]
+      incoming_interrupt_pwc_external_i, // IDs [92 +: 159]
+      intr_mbx_pcie0_mbx_error, // IDs [91 +: 1]
+      intr_mbx_pcie0_mbx_abort, // IDs [90 +: 1]
+      intr_mbx_pcie0_mbx_ready, // IDs [89 +: 1]
       intr_mbx5_mbx_error, // IDs [88 +: 1]
       intr_mbx5_mbx_abort, // IDs [87 +: 1]
       intr_mbx5_mbx_ready, // IDs [86 +: 1]
@@ -1077,6 +1127,10 @@ module top_pwc #(
     .tl_mbx5__sram_i(pwc_main_tl_mbx5__sram_req),
     .tl_mbx5__sram_o(pwc_main_tl_mbx5__sram_rsp),
 
+    // port: tl_mbx_pcie0__sram
+    .tl_mbx_pcie0__sram_i(pwc_main_tl_mbx_pcie0__sram_req),
+    .tl_mbx_pcie0__sram_o(pwc_main_tl_mbx_pcie0__sram_rsp),
+
     // port: tl_rv_dm__regs
     .tl_rv_dm__regs_o(rv_dm_regs_tl_d_req),
     .tl_rv_dm__regs_i(rv_dm_regs_tl_d_rsp),
@@ -1149,6 +1203,10 @@ module top_pwc #(
     .tl_mbx5__core_o(mbx5_core_tl_d_req),
     .tl_mbx5__core_i(mbx5_core_tl_d_rsp),
 
+    // port: tl_mbx_pcie0__core
+    .tl_mbx_pcie0__core_o(mbx_pcie0_core_tl_d_req),
+    .tl_mbx_pcie0__core_i(mbx_pcie0_core_tl_d_rsp),
+
 
     .scanmode_i
   );
@@ -1214,6 +1272,10 @@ module top_pwc #(
     // port: tl_mbx5__soc
     .tl_mbx5__soc_o(mbx5_soc_tl_d_req),
     .tl_mbx5__soc_i(mbx5_soc_tl_d_rsp),
+
+    // port: tl_mbx_pcie0__soc
+    .tl_mbx_pcie0__soc_o(mbx_pcie0_soc_tl_d_req),
+    .tl_mbx_pcie0__soc_i(mbx_pcie0_soc_tl_d_rsp),
 
     // port: tl_racl_ctrl
     .tl_racl_ctrl_o(racl_ctrl_tl_req),

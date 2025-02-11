@@ -57,6 +57,12 @@
     }
     { struct: "tl"
       type:   "req_rsp"
+      name:   "tl_mbx_pcie0__soc"
+      act:    "req"
+      package: "tlul_pkg"
+    }
+    { struct: "tl"
+      type:   "req_rsp"
       name:   "tl_racl_ctrl"
       act:    "req"
       package: "tlul_pkg"

@@ -299,6 +299,20 @@ pub const MBX5_CORE_BASE_ADDR: usize = 0x22000500;
 /// `MBX5_CORE_BASE_ADDR + MBX5_CORE_SIZE_BYTES`.
 pub const MBX5_CORE_SIZE_BYTES: usize = 0x80;
 
+/// Peripheral base address for core device on mbx_pcie0 in top mio.
+///
+/// This should be used with #mmio_region_from_addr to access the memory-mapped
+/// registers associated with the peripheral (usually via a DIF).
+pub const MBX_PCIE0_CORE_BASE_ADDR: usize = 0x22040000;
+
+/// Peripheral size for core device on mbx_pcie0 in top mio.
+///
+/// This is the size (in bytes) of the peripheral's reserved memory area. All
+/// memory-mapped registers associated with this peripheral should have an
+/// address between #MBX_PCIE0_CORE_BASE_ADDR and
+/// `MBX_PCIE0_CORE_BASE_ADDR + MBX_PCIE0_CORE_SIZE_BYTES`.
+pub const MBX_PCIE0_CORE_SIZE_BYTES: usize = 0x80;
+
 /// Peripheral base address for cfg device on rv_core_ibex in top mio.
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
@@ -366,6 +380,8 @@ pub enum PlicPeripheral {
     Mbx4 = 9,
     /// mbx5
     Mbx5 = 10,
+    /// mbx_pcie0
+    MbxPcie0 = 11,
 }
 
 impl TryFrom<u32> for PlicPeripheral {
@@ -383,6 +399,7 @@ impl TryFrom<u32> for PlicPeripheral {
             8 => Ok(Self::Mbx3),
             9 => Ok(Self::Mbx4),
             10 => Ok(Self::Mbx5),
+            11 => Ok(Self::MbxPcie0),
             _ => Err(val),
         }
     }
@@ -509,24 +526,30 @@ pub enum PlicIrqId {
     Mbx5MbxAbort = 55,
     /// mbx5_mbx_error
     Mbx5MbxError = 56,
+    /// mbx_pcie0_mbx_ready
+    MbxPcie0MbxReady = 57,
+    /// mbx_pcie0_mbx_abort
+    MbxPcie0MbxAbort = 58,
+    /// mbx_pcie0_mbx_error
+    MbxPcie0MbxError = 59,
     /// MIO_HDR_IPI_FROM_MIO_0
-    MioHdrIpiFromMio0 = 57,
+    MioHdrIpiFromMio0 = 60,
     /// MIO_HDR_IPI_FROM_MIO_1
-    MioHdrIpiFromMio1 = 58,
+    MioHdrIpiFromMio1 = 61,
     /// MIO_HDR_IPI_FROM_MIO_2
-    MioHdrIpiFromMio2 = 59,
+    MioHdrIpiFromMio2 = 62,
     /// MIO_HDR_IPI_FROM_PWC
-    MioHdrIpiFromPwc = 60,
+    MioHdrIpiFromPwc = 63,
     /// MIO_HDR_IPI_FROM_ROT
-    MioHdrIpiFromRot = 61,
+    MioHdrIpiFromRot = 64,
     /// MIO_HDR_IPI_FROM_PWC
-    MioHdrIpiFromPwc = 62,
+    MioHdrIpiFromPwc = 65,
     /// LIO_GRP_A_IBEX_IRQ
-    LioGrpAIbexIrq = 63,
+    LioGrpAIbexIrq = 66,
     /// LIO_GRP_B_IBEX_IRQ
-    LioGrpBIbexIrq = 64,
+    LioGrpBIbexIrq = 67,
     /// LIO_GRP_C_IBEX_IRQ
-    LioGrpCIbexIrq = 65,
+    LioGrpCIbexIrq = 68,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -590,15 +613,18 @@ impl TryFrom<u32> for PlicIrqId {
             54 => Ok(Self::Mbx5MbxReady),
             55 => Ok(Self::Mbx5MbxAbort),
             56 => Ok(Self::Mbx5MbxError),
-            57 => Ok(Self::MioHdrIpiFromMio0),
-            58 => Ok(Self::MioHdrIpiFromMio1),
-            59 => Ok(Self::MioHdrIpiFromMio2),
-            60 => Ok(Self::MioHdrIpiFromPwc),
-            61 => Ok(Self::MioHdrIpiFromRot),
-            62 => Ok(Self::MioHdrIpiFromPwc),
-            63 => Ok(Self::LioGrpAIbexIrq),
-            64 => Ok(Self::LioGrpBIbexIrq),
-            65 => Ok(Self::LioGrpCIbexIrq),
+            57 => Ok(Self::MbxPcie0MbxReady),
+            58 => Ok(Self::MbxPcie0MbxAbort),
+            59 => Ok(Self::MbxPcie0MbxError),
+            60 => Ok(Self::MioHdrIpiFromMio0),
+            61 => Ok(Self::MioHdrIpiFromMio1),
+            62 => Ok(Self::MioHdrIpiFromMio2),
+            63 => Ok(Self::MioHdrIpiFromPwc),
+            64 => Ok(Self::MioHdrIpiFromRot),
+            65 => Ok(Self::MioHdrIpiFromPwc),
+            66 => Ok(Self::LioGrpAIbexIrq),
+            67 => Ok(Self::LioGrpBIbexIrq),
+            68 => Ok(Self::LioGrpCIbexIrq),
             _ => Err(val),
         }
     }
@@ -619,7 +645,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 65] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 68] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // RvTimerTimerExpiredHart0Timer0 -> PlicPeripheral::RvTimer
@@ -734,6 +760,12 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 65] = [
     PlicPeripheral::Mbx5,
     // Mbx5MbxError -> PlicPeripheral::Mbx5
     PlicPeripheral::Mbx5,
+    // MbxPcie0MbxReady -> PlicPeripheral::MbxPcie0
+    PlicPeripheral::MbxPcie0,
+    // MbxPcie0MbxAbort -> PlicPeripheral::MbxPcie0
+    PlicPeripheral::MbxPcie0,
+    // MbxPcie0MbxError -> PlicPeripheral::MbxPcie0
+    PlicPeripheral::MbxPcie0,
     // MioHdrIpiFromMio0 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // MioHdrIpiFromMio1 -> PlicPeripheral::Unknown

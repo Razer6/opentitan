@@ -16,7 +16,7 @@
  * `top_pwc_plic_peripheral_t`.
  */
 const top_pwc_plic_peripheral_t
-    top_pwc_plic_interrupt_for_peripheral[248] = {
+    top_pwc_plic_interrupt_for_peripheral[251] = {
   [kTopPwcPlicIrqIdNone] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdGpioGpio0] = kTopPwcPlicPeripheralGpio,
   [kTopPwcPlicIrqIdGpioGpio1] = kTopPwcPlicPeripheralGpio,
@@ -106,6 +106,9 @@ const top_pwc_plic_peripheral_t
   [kTopPwcPlicIrqIdMbx5MbxReady] = kTopPwcPlicPeripheralMbx5,
   [kTopPwcPlicIrqIdMbx5MbxAbort] = kTopPwcPlicPeripheralMbx5,
   [kTopPwcPlicIrqIdMbx5MbxError] = kTopPwcPlicPeripheralMbx5,
+  [kTopPwcPlicIrqIdMbxPcie0MbxReady] = kTopPwcPlicPeripheralMbxPcie0,
+  [kTopPwcPlicIrqIdMbxPcie0MbxAbort] = kTopPwcPlicPeripheralMbxPcie0,
+  [kTopPwcPlicIrqIdMbxPcie0MbxError] = kTopPwcPlicPeripheralMbxPcie0,
   [kTopPwcPlicIrqIdPwcLteuSocHot] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcLteuFwTrip] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcLteuCatTrip] = kTopPwcPlicPeripheralUnknown,

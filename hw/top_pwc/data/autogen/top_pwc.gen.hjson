@@ -2612,7 +2612,7 @@
         }
         soc:
         {
-          soc_mbx: 0x01465000
+          soc_mbx: 0x01475000
         }
       }
       outgoing_alert: pwc
@@ -2782,7 +2782,7 @@
         }
         soc:
         {
-          soc_mbx: 0x01465100
+          soc_mbx: 0x01475100
         }
       }
       outgoing_alert: pwc
@@ -2952,7 +2952,7 @@
         }
         soc:
         {
-          soc_mbx: 0x01465200
+          soc_mbx: 0x01475200
         }
       }
       outgoing_alert: pwc
@@ -3122,7 +3122,7 @@
         }
         soc:
         {
-          soc_mbx: 0x01465300
+          soc_mbx: 0x01475300
         }
       }
       outgoing_alert: pwc
@@ -3292,7 +3292,7 @@
         }
         soc:
         {
-          soc_mbx: 0x01465400
+          soc_mbx: 0x01475400
         }
       }
       outgoing_alert: pwc
@@ -3462,7 +3462,7 @@
         }
         soc:
         {
-          soc_mbx: 0x01465500
+          soc_mbx: 0x01475500
         }
       }
       outgoing_alert: pwc
@@ -3473,15 +3473,15 @@
           racl_group: Null
           register_mapping:
           {
-            SOC_CONTROL: 7
-            SOC_STATUS: 7
-            SOC_DOE_INTR_MSG_ADDR: 7
-            SOC_DOE_INTR_MSG_DATA: 7
+            SOC_CONTROL: 9
+            SOC_STATUS: 9
+            SOC_DOE_INTR_MSG_ADDR: 9
+            SOC_DOE_INTR_MSG_DATA: 9
           }
           window_mapping:
           {
-            WDATA: 7
-            RDATA: 7
+            WDATA: 9
+            RDATA: 9
           }
         }
       }
@@ -3609,6 +3609,176 @@
       generate_dif: true
     }
     {
+      name: mbx_pcie0
+      type: mbx
+      clock_srcs:
+      {
+        clk_i: ext_main
+      }
+      clock_group: infra
+      reset_connections:
+      {
+        rst_ni:
+        {
+          name: ext_rst_main
+          domain: "0"
+        }
+      }
+      base_addrs:
+      {
+        core:
+        {
+          hart: 0x22040000
+        }
+        soc:
+        {
+          soc_mbx: 0x01470100
+        }
+      }
+      outgoing_alert: pwc
+      racl_mappings:
+      {
+        soc:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            SOC_CONTROL: 0
+            SOC_STATUS: 0
+            SOC_DOE_INTR_MSG_ADDR: 0
+            SOC_DOE_INTR_MSG_DATA: 0
+          }
+          window_mapping:
+          {
+            WDATA: 0
+            RDATA: 0
+          }
+        }
+      }
+      clock_connections:
+      {
+        clk_i: clk_ext_main_i
+      }
+      domain:
+      [
+        "0"
+      ]
+      param_decl: {}
+      param_list: []
+      inter_signal_list:
+      [
+        {
+          name: doe_intr_support
+          struct: logic
+          type: uni
+          act: req
+          width: 1
+          default: 1'b0
+          inst_name: mbx_pcie0
+          index: -1
+        }
+        {
+          name: doe_intr_en
+          struct: logic
+          type: uni
+          act: req
+          width: 1
+          default: 1'b0
+          inst_name: mbx_pcie0
+          index: -1
+        }
+        {
+          name: doe_intr
+          struct: logic
+          type: uni
+          act: req
+          width: 1
+          default: 1'b0
+          inst_name: mbx_pcie0
+          index: -1
+        }
+        {
+          name: doe_async_msg_support
+          struct: logic
+          type: uni
+          act: req
+          width: 1
+          default: 1'b0
+          inst_name: mbx_pcie0
+          index: -1
+        }
+        {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: mbx_pcie0
+          default: ""
+          top_signame: racl_ctrl_racl_policies
+          index: -1
+        }
+        {
+          name: racl_error
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: mbx_pcie0
+          default: ""
+          top_signame: racl_ctrl_racl_error
+          index: 6
+        }
+        {
+          name: sram_tl_h
+          struct: tl
+          package: tlul_pkg
+          type: req_rsp
+          act: req
+          width: 1
+          inst_name: mbx_pcie0
+          default: ""
+          top_signame: pwc_main_tl_mbx_pcie0__sram
+          index: -1
+        }
+        {
+          name: core_tl_d
+          struct: tl
+          package: tlul_pkg
+          type: req_rsp
+          act: rsp
+          width: 1
+          inst_name: mbx_pcie0
+          default: ""
+          end_idx: -1
+          top_signame: mbx_pcie0_core_tl_d
+          index: -1
+        }
+        {
+          name: soc_tl_d
+          struct: tl
+          package: tlul_pkg
+          type: req_rsp
+          act: rsp
+          width: 1
+          inst_name: mbx_pcie0
+          default: ""
+          end_idx: -1
+          top_signame: mbx_pcie0_soc_tl_d
+          index: -1
+        }
+      ]
+      generate_dif: true
+    }
+    {
       name: racl_ctrl
       type: racl_ctrl_pwc
       template_type: racl_ctrl
@@ -3643,7 +3813,7 @@
           name: NumSubscribingIps
           desc: Number of subscribing RACL IPs
           type: int
-          default: 6
+          default: 7
           local: "true"
           expose: "true"
           name_top: RaclCtrlNumSubscribingIps
@@ -3694,7 +3864,7 @@
             desc: Number of subscribing RACL IPs
             param_type: int
             unpacked_dimensions: null
-            default: 6
+            default: 7
             local: true
             expose: true
             name_top: RaclCtrlNumSubscribingIps
@@ -3753,7 +3923,7 @@
       {
         null:
         {
-          soc_mbx: 0x01463000
+          soc_mbx: 0x01473000
         }
       }
       generate_dif: true
@@ -4632,6 +4802,14 @@
       [
         mbx5.sram_tl_h
       ]
+      mbx_pcie0.core_tl_d:
+      [
+        pwc_main.tl_mbx_pcie0__core
+      ]
+      pwc_main.tl_mbx_pcie0__sram:
+      [
+        mbx_pcie0.sram_tl_h
+      ]
       gpio.tl:
       [
         pwc_peri.tl_gpio
@@ -4676,6 +4854,10 @@
       [
         pwc_mbx.tl_mbx5__soc
       ]
+      mbx_pcie0.soc_tl_d:
+      [
+        pwc_mbx.tl_mbx_pcie0__soc
+      ]
       racl_ctrl.tl:
       [
         pwc_mbx.tl_racl_ctrl
@@ -4688,6 +4870,7 @@
         mbx3.racl_policies
         mbx4.racl_policies
         mbx5.racl_policies
+        mbx_pcie0.racl_policies
       ]
       racl_ctrl.racl_error:
       [
@@ -4697,6 +4880,7 @@
         mbx3.racl_error
         mbx4.racl_error
         mbx5.racl_error
+        mbx_pcie0.racl_error
       ]
     }
     top:
@@ -4795,6 +4979,7 @@
           mbx3.core
           mbx4.core
           mbx5.core
+          mbx_pcie0.core
         ]
         rv_dm.sba:
         [
@@ -4816,6 +5001,7 @@
           mbx3.core
           mbx4.core
           mbx5.core
+          mbx_pcie0.core
         ]
         dma.host:
         [
@@ -4845,6 +5031,10 @@
           sram_ctrl_mbox.ram
         ]
         mbx5.sram:
+        [
+          sram_ctrl_mbox.ram
+        ]
+        mbx_pcie0.sram:
         [
           sram_ctrl_mbox.ram
         ]
@@ -5374,6 +5564,41 @@
           req_fifo_pass: true
           rsp_fifo_pass: true
         }
+        {
+          name: mbx_pcie0.core
+          type: device
+          addr_space: hart
+          clock: clk_main_i
+          reset: rst_main_ni
+          pipeline: false
+          inst_type: mbx
+          addr_range:
+          [
+            {
+              base_addrs:
+              {
+                hart: 0x22040000
+              }
+              size_byte: 0x80
+            }
+          ]
+          xbar: false
+          stub: false
+          req_fifo_pass: true
+        }
+        {
+          name: mbx_pcie0.sram
+          type: host
+          addr_space: hart
+          clock: clk_main_i
+          reset: rst_main_ni
+          pipeline: false
+          xbar: false
+          stub: false
+          inst_type: ""
+          req_fifo_pass: true
+          rsp_fifo_pass: true
+        }
       ]
       addr_spaces:
       [
@@ -5511,6 +5736,19 @@
           default: ""
           end_idx: -1
           top_signame: pwc_main_tl_mbx5__sram
+          index: -1
+        }
+        {
+          name: tl_mbx_pcie0__sram
+          struct: tl
+          package: tlul_pkg
+          type: req_rsp
+          act: rsp
+          width: 1
+          inst_name: pwc_main
+          default: ""
+          end_idx: -1
+          top_signame: pwc_main_tl_mbx_pcie0__sram
           index: -1
         }
         {
@@ -5728,6 +5966,18 @@
           inst_name: pwc_main
           default: ""
           top_signame: mbx5_core_tl_d
+          index: -1
+        }
+        {
+          name: tl_mbx_pcie0__core
+          struct: tl
+          package: tlul_pkg
+          type: req_rsp
+          act: req
+          width: 1
+          inst_name: pwc_main
+          default: ""
+          top_signame: mbx_pcie0_core_tl_d
           index: -1
         }
       ]
@@ -6004,6 +6254,7 @@
           mbx3.soc
           mbx4.soc
           mbx5.soc
+          mbx_pcie0.soc
           racl_ctrl
         ]
       }
@@ -6035,7 +6286,7 @@
             {
               base_addrs:
               {
-                soc_mbx: 0x1465000
+                soc_mbx: 0x1475000
               }
               size_byte: 0x20
             }
@@ -6057,7 +6308,7 @@
             {
               base_addrs:
               {
-                soc_mbx: 0x1465100
+                soc_mbx: 0x1475100
               }
               size_byte: 0x20
             }
@@ -6079,7 +6330,7 @@
             {
               base_addrs:
               {
-                soc_mbx: 0x1465200
+                soc_mbx: 0x1475200
               }
               size_byte: 0x20
             }
@@ -6101,7 +6352,7 @@
             {
               base_addrs:
               {
-                soc_mbx: 0x1465300
+                soc_mbx: 0x1475300
               }
               size_byte: 0x20
             }
@@ -6123,7 +6374,7 @@
             {
               base_addrs:
               {
-                soc_mbx: 0x1465400
+                soc_mbx: 0x1475400
               }
               size_byte: 0x20
             }
@@ -6145,7 +6396,29 @@
             {
               base_addrs:
               {
-                soc_mbx: 0x1465500
+                soc_mbx: 0x1475500
+              }
+              size_byte: 0x20
+            }
+          ]
+          xbar: false
+          stub: false
+          req_fifo_pass: true
+        }
+        {
+          name: mbx_pcie0.soc
+          type: device
+          addr_space: soc_mbx
+          clock: clk_mbx_i
+          reset: rst_mbx_ni
+          pipeline: false
+          inst_type: mbx
+          addr_range:
+          [
+            {
+              base_addrs:
+              {
+                soc_mbx: 0x1470100
               }
               size_byte: 0x20
             }
@@ -6167,7 +6440,7 @@
             {
               base_addrs:
               {
-                soc_mbx: 0x1463000
+                soc_mbx: 0x1473000
               }
               size_byte: 0x40
             }
@@ -6269,6 +6542,18 @@
           inst_name: pwc_mbx
           default: ""
           top_signame: mbx5_soc_tl_d
+          index: -1
+        }
+        {
+          name: tl_mbx_pcie0__soc
+          struct: tl
+          package: tlul_pkg
+          type: req_rsp
+          act: req
+          width: 1
+          inst_name: pwc_mbx
+          default: ""
+          top_signame: mbx_pcie0_soc_tl_d
           index: -1
         }
         {
@@ -7796,6 +8081,7 @@
     mbx3
     mbx4
     mbx5
+    mbx_pcie0
   ]
   interrupt:
   [
@@ -8029,6 +8315,33 @@
       width: 1
       type: interrupt
       module_name: mbx5
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx_pcie0_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx_pcie0
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx_pcie0_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx_pcie0
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx_pcie0_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx_pcie0
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -9486,6 +9799,7 @@
       mbx3
       mbx4
       mbx5
+      mbx_pcie0
       racl_ctrl
       rv_core_ibex
     ]
@@ -9690,6 +10004,24 @@
         type: alert
         async: "1"
         module_name: mbx5
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx_pcie0_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx_pcie0
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx_pcie0_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx_pcie0
         lpg_name: clk_ext_main_i_ext_rst_main_0
         lpg_idx: 1
       }
@@ -12014,6 +12346,114 @@
         index: -1
       }
       {
+        name: doe_intr_support
+        struct: logic
+        type: uni
+        act: req
+        width: 1
+        default: 1'b0
+        inst_name: mbx_pcie0
+        index: -1
+      }
+      {
+        name: doe_intr_en
+        struct: logic
+        type: uni
+        act: req
+        width: 1
+        default: 1'b0
+        inst_name: mbx_pcie0
+        index: -1
+      }
+      {
+        name: doe_intr
+        struct: logic
+        type: uni
+        act: req
+        width: 1
+        default: 1'b0
+        inst_name: mbx_pcie0
+        index: -1
+      }
+      {
+        name: doe_async_msg_support
+        struct: logic
+        type: uni
+        act: req
+        width: 1
+        default: 1'b0
+        inst_name: mbx_pcie0
+        index: -1
+      }
+      {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: mbx_pcie0
+        default: ""
+        top_signame: racl_ctrl_racl_policies
+        index: -1
+      }
+      {
+        name: racl_error
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: mbx_pcie0
+        default: ""
+        top_signame: racl_ctrl_racl_error
+        index: 6
+      }
+      {
+        name: sram_tl_h
+        struct: tl
+        package: tlul_pkg
+        type: req_rsp
+        act: req
+        width: 1
+        inst_name: mbx_pcie0
+        default: ""
+        top_signame: pwc_main_tl_mbx_pcie0__sram
+        index: -1
+      }
+      {
+        name: core_tl_d
+        struct: tl
+        package: tlul_pkg
+        type: req_rsp
+        act: rsp
+        width: 1
+        inst_name: mbx_pcie0
+        default: ""
+        end_idx: -1
+        top_signame: mbx_pcie0_core_tl_d
+        index: -1
+      }
+      {
+        name: soc_tl_d
+        struct: tl
+        package: tlul_pkg
+        type: req_rsp
+        act: rsp
+        width: 1
+        inst_name: mbx_pcie0
+        default: ""
+        end_idx: -1
+        top_signame: mbx_pcie0_soc_tl_d
+        index: -1
+      }
+      {
         name: racl_policies
         desc: Policy vector distributed to the subscribing RACL IPs.
         struct: racl_policy_vec
@@ -12047,7 +12487,7 @@
           desc: Number of subscribing RACL IPs
           param_type: int
           unpacked_dimensions: null
-          default: 6
+          default: 7
           local: true
           expose: true
           name_top: RaclCtrlNumSubscribingIps
@@ -12534,6 +12974,19 @@
         index: -1
       }
       {
+        name: tl_mbx_pcie0__sram
+        struct: tl
+        package: tlul_pkg
+        type: req_rsp
+        act: rsp
+        width: 1
+        inst_name: pwc_main
+        default: ""
+        end_idx: -1
+        top_signame: pwc_main_tl_mbx_pcie0__sram
+        index: -1
+      }
+      {
         name: tl_rv_dm__regs
         struct: tl
         package: tlul_pkg
@@ -12751,6 +13204,18 @@
         index: -1
       }
       {
+        name: tl_mbx_pcie0__core
+        struct: tl
+        package: tlul_pkg
+        type: req_rsp
+        act: req
+        width: 1
+        inst_name: pwc_main
+        default: ""
+        top_signame: mbx_pcie0_core_tl_d
+        index: -1
+      }
+      {
         name: tl_pwc_main
         struct: tl
         package: tlul_pkg
@@ -12906,6 +13371,18 @@
         inst_name: pwc_mbx
         default: ""
         top_signame: mbx5_soc_tl_d
+        index: -1
+      }
+      {
+        name: tl_mbx_pcie0__soc
+        struct: tl
+        package: tlul_pkg
+        type: req_rsp
+        act: req
+        width: 1
+        inst_name: pwc_mbx
+        default: ""
+        top_signame: mbx_pcie0_soc_tl_d
         index: -1
       }
       {
@@ -14051,6 +14528,50 @@
       {
         package: tlul_pkg
         struct: tl_h2d
+        signame: mbx_pcie0_core_tl_d_req
+        width: 1
+        type: req_rsp
+        end_idx: -1
+        act: rsp
+        suffix: req
+        default: tlul_pkg::TL_H2D_DEFAULT
+      }
+      {
+        package: tlul_pkg
+        struct: tl_d2h
+        signame: mbx_pcie0_core_tl_d_rsp
+        width: 1
+        type: req_rsp
+        end_idx: -1
+        act: rsp
+        suffix: rsp
+        default: ""
+      }
+      {
+        package: tlul_pkg
+        struct: tl_h2d
+        signame: pwc_main_tl_mbx_pcie0__sram_req
+        width: 1
+        type: req_rsp
+        end_idx: -1
+        act: rsp
+        suffix: req
+        default: tlul_pkg::TL_H2D_DEFAULT
+      }
+      {
+        package: tlul_pkg
+        struct: tl_d2h
+        signame: pwc_main_tl_mbx_pcie0__sram_rsp
+        width: 1
+        type: req_rsp
+        end_idx: -1
+        act: rsp
+        suffix: rsp
+        default: ""
+      }
+      {
+        package: tlul_pkg
+        struct: tl_h2d
         signame: gpio_tl_req
         width: 1
         type: req_rsp
@@ -14293,6 +14814,28 @@
       {
         package: tlul_pkg
         struct: tl_h2d
+        signame: mbx_pcie0_soc_tl_d_req
+        width: 1
+        type: req_rsp
+        end_idx: -1
+        act: rsp
+        suffix: req
+        default: tlul_pkg::TL_H2D_DEFAULT
+      }
+      {
+        package: tlul_pkg
+        struct: tl_d2h
+        signame: mbx_pcie0_soc_tl_d_rsp
+        width: 1
+        type: req_rsp
+        end_idx: -1
+        act: rsp
+        suffix: rsp
+        default: ""
+      }
+      {
+        package: tlul_pkg
+        struct: tl_h2d
         signame: racl_ctrl_tl_req
         width: 1
         type: req_rsp
@@ -14333,7 +14876,7 @@
           desc: Number of subscribing RACL IPs
           param_type: int
           unpacked_dimensions: null
-          default: 6
+          default: 7
           local: true
           expose: true
           name_top: RaclCtrlNumSubscribingIps

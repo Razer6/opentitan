@@ -7,7 +7,7 @@
 package rv_plic_pwc_reg_pkg;
 
   // Param list
-  parameter int NumSrc = 248;
+  parameter int NumSrc = 251;
   parameter int NumTarget = 1;
   parameter int PrioWidth = 2;
   parameter int NumAlerts = 1;
@@ -16,7 +16,7 @@ package rv_plic_pwc_reg_pkg;
   parameter int BlockAw = 27;
 
   // Number of registers for every interface
-  parameter int NumRegs = 268;
+  parameter int NumRegs = 271;
 
   ////////////////////////////
   // Typedefs for registers //
@@ -1015,6 +1015,18 @@ package rv_plic_pwc_reg_pkg;
   } rv_plic_pwc_reg2hw_prio247_reg_t;
 
   typedef struct packed {
+    logic [1:0]  q;
+  } rv_plic_pwc_reg2hw_prio248_reg_t;
+
+  typedef struct packed {
+    logic [1:0]  q;
+  } rv_plic_pwc_reg2hw_prio249_reg_t;
+
+  typedef struct packed {
+    logic [1:0]  q;
+  } rv_plic_pwc_reg2hw_prio250_reg_t;
+
+  typedef struct packed {
     logic        q;
   } rv_plic_pwc_reg2hw_ie0_mreg_t;
 
@@ -1048,255 +1060,258 @@ package rv_plic_pwc_reg_pkg;
 
   // Register -> HW type
   typedef struct packed {
-    rv_plic_pwc_reg2hw_prio0_reg_t prio0; // [758:757]
-    rv_plic_pwc_reg2hw_prio1_reg_t prio1; // [756:755]
-    rv_plic_pwc_reg2hw_prio2_reg_t prio2; // [754:753]
-    rv_plic_pwc_reg2hw_prio3_reg_t prio3; // [752:751]
-    rv_plic_pwc_reg2hw_prio4_reg_t prio4; // [750:749]
-    rv_plic_pwc_reg2hw_prio5_reg_t prio5; // [748:747]
-    rv_plic_pwc_reg2hw_prio6_reg_t prio6; // [746:745]
-    rv_plic_pwc_reg2hw_prio7_reg_t prio7; // [744:743]
-    rv_plic_pwc_reg2hw_prio8_reg_t prio8; // [742:741]
-    rv_plic_pwc_reg2hw_prio9_reg_t prio9; // [740:739]
-    rv_plic_pwc_reg2hw_prio10_reg_t prio10; // [738:737]
-    rv_plic_pwc_reg2hw_prio11_reg_t prio11; // [736:735]
-    rv_plic_pwc_reg2hw_prio12_reg_t prio12; // [734:733]
-    rv_plic_pwc_reg2hw_prio13_reg_t prio13; // [732:731]
-    rv_plic_pwc_reg2hw_prio14_reg_t prio14; // [730:729]
-    rv_plic_pwc_reg2hw_prio15_reg_t prio15; // [728:727]
-    rv_plic_pwc_reg2hw_prio16_reg_t prio16; // [726:725]
-    rv_plic_pwc_reg2hw_prio17_reg_t prio17; // [724:723]
-    rv_plic_pwc_reg2hw_prio18_reg_t prio18; // [722:721]
-    rv_plic_pwc_reg2hw_prio19_reg_t prio19; // [720:719]
-    rv_plic_pwc_reg2hw_prio20_reg_t prio20; // [718:717]
-    rv_plic_pwc_reg2hw_prio21_reg_t prio21; // [716:715]
-    rv_plic_pwc_reg2hw_prio22_reg_t prio22; // [714:713]
-    rv_plic_pwc_reg2hw_prio23_reg_t prio23; // [712:711]
-    rv_plic_pwc_reg2hw_prio24_reg_t prio24; // [710:709]
-    rv_plic_pwc_reg2hw_prio25_reg_t prio25; // [708:707]
-    rv_plic_pwc_reg2hw_prio26_reg_t prio26; // [706:705]
-    rv_plic_pwc_reg2hw_prio27_reg_t prio27; // [704:703]
-    rv_plic_pwc_reg2hw_prio28_reg_t prio28; // [702:701]
-    rv_plic_pwc_reg2hw_prio29_reg_t prio29; // [700:699]
-    rv_plic_pwc_reg2hw_prio30_reg_t prio30; // [698:697]
-    rv_plic_pwc_reg2hw_prio31_reg_t prio31; // [696:695]
-    rv_plic_pwc_reg2hw_prio32_reg_t prio32; // [694:693]
-    rv_plic_pwc_reg2hw_prio33_reg_t prio33; // [692:691]
-    rv_plic_pwc_reg2hw_prio34_reg_t prio34; // [690:689]
-    rv_plic_pwc_reg2hw_prio35_reg_t prio35; // [688:687]
-    rv_plic_pwc_reg2hw_prio36_reg_t prio36; // [686:685]
-    rv_plic_pwc_reg2hw_prio37_reg_t prio37; // [684:683]
-    rv_plic_pwc_reg2hw_prio38_reg_t prio38; // [682:681]
-    rv_plic_pwc_reg2hw_prio39_reg_t prio39; // [680:679]
-    rv_plic_pwc_reg2hw_prio40_reg_t prio40; // [678:677]
-    rv_plic_pwc_reg2hw_prio41_reg_t prio41; // [676:675]
-    rv_plic_pwc_reg2hw_prio42_reg_t prio42; // [674:673]
-    rv_plic_pwc_reg2hw_prio43_reg_t prio43; // [672:671]
-    rv_plic_pwc_reg2hw_prio44_reg_t prio44; // [670:669]
-    rv_plic_pwc_reg2hw_prio45_reg_t prio45; // [668:667]
-    rv_plic_pwc_reg2hw_prio46_reg_t prio46; // [666:665]
-    rv_plic_pwc_reg2hw_prio47_reg_t prio47; // [664:663]
-    rv_plic_pwc_reg2hw_prio48_reg_t prio48; // [662:661]
-    rv_plic_pwc_reg2hw_prio49_reg_t prio49; // [660:659]
-    rv_plic_pwc_reg2hw_prio50_reg_t prio50; // [658:657]
-    rv_plic_pwc_reg2hw_prio51_reg_t prio51; // [656:655]
-    rv_plic_pwc_reg2hw_prio52_reg_t prio52; // [654:653]
-    rv_plic_pwc_reg2hw_prio53_reg_t prio53; // [652:651]
-    rv_plic_pwc_reg2hw_prio54_reg_t prio54; // [650:649]
-    rv_plic_pwc_reg2hw_prio55_reg_t prio55; // [648:647]
-    rv_plic_pwc_reg2hw_prio56_reg_t prio56; // [646:645]
-    rv_plic_pwc_reg2hw_prio57_reg_t prio57; // [644:643]
-    rv_plic_pwc_reg2hw_prio58_reg_t prio58; // [642:641]
-    rv_plic_pwc_reg2hw_prio59_reg_t prio59; // [640:639]
-    rv_plic_pwc_reg2hw_prio60_reg_t prio60; // [638:637]
-    rv_plic_pwc_reg2hw_prio61_reg_t prio61; // [636:635]
-    rv_plic_pwc_reg2hw_prio62_reg_t prio62; // [634:633]
-    rv_plic_pwc_reg2hw_prio63_reg_t prio63; // [632:631]
-    rv_plic_pwc_reg2hw_prio64_reg_t prio64; // [630:629]
-    rv_plic_pwc_reg2hw_prio65_reg_t prio65; // [628:627]
-    rv_plic_pwc_reg2hw_prio66_reg_t prio66; // [626:625]
-    rv_plic_pwc_reg2hw_prio67_reg_t prio67; // [624:623]
-    rv_plic_pwc_reg2hw_prio68_reg_t prio68; // [622:621]
-    rv_plic_pwc_reg2hw_prio69_reg_t prio69; // [620:619]
-    rv_plic_pwc_reg2hw_prio70_reg_t prio70; // [618:617]
-    rv_plic_pwc_reg2hw_prio71_reg_t prio71; // [616:615]
-    rv_plic_pwc_reg2hw_prio72_reg_t prio72; // [614:613]
-    rv_plic_pwc_reg2hw_prio73_reg_t prio73; // [612:611]
-    rv_plic_pwc_reg2hw_prio74_reg_t prio74; // [610:609]
-    rv_plic_pwc_reg2hw_prio75_reg_t prio75; // [608:607]
-    rv_plic_pwc_reg2hw_prio76_reg_t prio76; // [606:605]
-    rv_plic_pwc_reg2hw_prio77_reg_t prio77; // [604:603]
-    rv_plic_pwc_reg2hw_prio78_reg_t prio78; // [602:601]
-    rv_plic_pwc_reg2hw_prio79_reg_t prio79; // [600:599]
-    rv_plic_pwc_reg2hw_prio80_reg_t prio80; // [598:597]
-    rv_plic_pwc_reg2hw_prio81_reg_t prio81; // [596:595]
-    rv_plic_pwc_reg2hw_prio82_reg_t prio82; // [594:593]
-    rv_plic_pwc_reg2hw_prio83_reg_t prio83; // [592:591]
-    rv_plic_pwc_reg2hw_prio84_reg_t prio84; // [590:589]
-    rv_plic_pwc_reg2hw_prio85_reg_t prio85; // [588:587]
-    rv_plic_pwc_reg2hw_prio86_reg_t prio86; // [586:585]
-    rv_plic_pwc_reg2hw_prio87_reg_t prio87; // [584:583]
-    rv_plic_pwc_reg2hw_prio88_reg_t prio88; // [582:581]
-    rv_plic_pwc_reg2hw_prio89_reg_t prio89; // [580:579]
-    rv_plic_pwc_reg2hw_prio90_reg_t prio90; // [578:577]
-    rv_plic_pwc_reg2hw_prio91_reg_t prio91; // [576:575]
-    rv_plic_pwc_reg2hw_prio92_reg_t prio92; // [574:573]
-    rv_plic_pwc_reg2hw_prio93_reg_t prio93; // [572:571]
-    rv_plic_pwc_reg2hw_prio94_reg_t prio94; // [570:569]
-    rv_plic_pwc_reg2hw_prio95_reg_t prio95; // [568:567]
-    rv_plic_pwc_reg2hw_prio96_reg_t prio96; // [566:565]
-    rv_plic_pwc_reg2hw_prio97_reg_t prio97; // [564:563]
-    rv_plic_pwc_reg2hw_prio98_reg_t prio98; // [562:561]
-    rv_plic_pwc_reg2hw_prio99_reg_t prio99; // [560:559]
-    rv_plic_pwc_reg2hw_prio100_reg_t prio100; // [558:557]
-    rv_plic_pwc_reg2hw_prio101_reg_t prio101; // [556:555]
-    rv_plic_pwc_reg2hw_prio102_reg_t prio102; // [554:553]
-    rv_plic_pwc_reg2hw_prio103_reg_t prio103; // [552:551]
-    rv_plic_pwc_reg2hw_prio104_reg_t prio104; // [550:549]
-    rv_plic_pwc_reg2hw_prio105_reg_t prio105; // [548:547]
-    rv_plic_pwc_reg2hw_prio106_reg_t prio106; // [546:545]
-    rv_plic_pwc_reg2hw_prio107_reg_t prio107; // [544:543]
-    rv_plic_pwc_reg2hw_prio108_reg_t prio108; // [542:541]
-    rv_plic_pwc_reg2hw_prio109_reg_t prio109; // [540:539]
-    rv_plic_pwc_reg2hw_prio110_reg_t prio110; // [538:537]
-    rv_plic_pwc_reg2hw_prio111_reg_t prio111; // [536:535]
-    rv_plic_pwc_reg2hw_prio112_reg_t prio112; // [534:533]
-    rv_plic_pwc_reg2hw_prio113_reg_t prio113; // [532:531]
-    rv_plic_pwc_reg2hw_prio114_reg_t prio114; // [530:529]
-    rv_plic_pwc_reg2hw_prio115_reg_t prio115; // [528:527]
-    rv_plic_pwc_reg2hw_prio116_reg_t prio116; // [526:525]
-    rv_plic_pwc_reg2hw_prio117_reg_t prio117; // [524:523]
-    rv_plic_pwc_reg2hw_prio118_reg_t prio118; // [522:521]
-    rv_plic_pwc_reg2hw_prio119_reg_t prio119; // [520:519]
-    rv_plic_pwc_reg2hw_prio120_reg_t prio120; // [518:517]
-    rv_plic_pwc_reg2hw_prio121_reg_t prio121; // [516:515]
-    rv_plic_pwc_reg2hw_prio122_reg_t prio122; // [514:513]
-    rv_plic_pwc_reg2hw_prio123_reg_t prio123; // [512:511]
-    rv_plic_pwc_reg2hw_prio124_reg_t prio124; // [510:509]
-    rv_plic_pwc_reg2hw_prio125_reg_t prio125; // [508:507]
-    rv_plic_pwc_reg2hw_prio126_reg_t prio126; // [506:505]
-    rv_plic_pwc_reg2hw_prio127_reg_t prio127; // [504:503]
-    rv_plic_pwc_reg2hw_prio128_reg_t prio128; // [502:501]
-    rv_plic_pwc_reg2hw_prio129_reg_t prio129; // [500:499]
-    rv_plic_pwc_reg2hw_prio130_reg_t prio130; // [498:497]
-    rv_plic_pwc_reg2hw_prio131_reg_t prio131; // [496:495]
-    rv_plic_pwc_reg2hw_prio132_reg_t prio132; // [494:493]
-    rv_plic_pwc_reg2hw_prio133_reg_t prio133; // [492:491]
-    rv_plic_pwc_reg2hw_prio134_reg_t prio134; // [490:489]
-    rv_plic_pwc_reg2hw_prio135_reg_t prio135; // [488:487]
-    rv_plic_pwc_reg2hw_prio136_reg_t prio136; // [486:485]
-    rv_plic_pwc_reg2hw_prio137_reg_t prio137; // [484:483]
-    rv_plic_pwc_reg2hw_prio138_reg_t prio138; // [482:481]
-    rv_plic_pwc_reg2hw_prio139_reg_t prio139; // [480:479]
-    rv_plic_pwc_reg2hw_prio140_reg_t prio140; // [478:477]
-    rv_plic_pwc_reg2hw_prio141_reg_t prio141; // [476:475]
-    rv_plic_pwc_reg2hw_prio142_reg_t prio142; // [474:473]
-    rv_plic_pwc_reg2hw_prio143_reg_t prio143; // [472:471]
-    rv_plic_pwc_reg2hw_prio144_reg_t prio144; // [470:469]
-    rv_plic_pwc_reg2hw_prio145_reg_t prio145; // [468:467]
-    rv_plic_pwc_reg2hw_prio146_reg_t prio146; // [466:465]
-    rv_plic_pwc_reg2hw_prio147_reg_t prio147; // [464:463]
-    rv_plic_pwc_reg2hw_prio148_reg_t prio148; // [462:461]
-    rv_plic_pwc_reg2hw_prio149_reg_t prio149; // [460:459]
-    rv_plic_pwc_reg2hw_prio150_reg_t prio150; // [458:457]
-    rv_plic_pwc_reg2hw_prio151_reg_t prio151; // [456:455]
-    rv_plic_pwc_reg2hw_prio152_reg_t prio152; // [454:453]
-    rv_plic_pwc_reg2hw_prio153_reg_t prio153; // [452:451]
-    rv_plic_pwc_reg2hw_prio154_reg_t prio154; // [450:449]
-    rv_plic_pwc_reg2hw_prio155_reg_t prio155; // [448:447]
-    rv_plic_pwc_reg2hw_prio156_reg_t prio156; // [446:445]
-    rv_plic_pwc_reg2hw_prio157_reg_t prio157; // [444:443]
-    rv_plic_pwc_reg2hw_prio158_reg_t prio158; // [442:441]
-    rv_plic_pwc_reg2hw_prio159_reg_t prio159; // [440:439]
-    rv_plic_pwc_reg2hw_prio160_reg_t prio160; // [438:437]
-    rv_plic_pwc_reg2hw_prio161_reg_t prio161; // [436:435]
-    rv_plic_pwc_reg2hw_prio162_reg_t prio162; // [434:433]
-    rv_plic_pwc_reg2hw_prio163_reg_t prio163; // [432:431]
-    rv_plic_pwc_reg2hw_prio164_reg_t prio164; // [430:429]
-    rv_plic_pwc_reg2hw_prio165_reg_t prio165; // [428:427]
-    rv_plic_pwc_reg2hw_prio166_reg_t prio166; // [426:425]
-    rv_plic_pwc_reg2hw_prio167_reg_t prio167; // [424:423]
-    rv_plic_pwc_reg2hw_prio168_reg_t prio168; // [422:421]
-    rv_plic_pwc_reg2hw_prio169_reg_t prio169; // [420:419]
-    rv_plic_pwc_reg2hw_prio170_reg_t prio170; // [418:417]
-    rv_plic_pwc_reg2hw_prio171_reg_t prio171; // [416:415]
-    rv_plic_pwc_reg2hw_prio172_reg_t prio172; // [414:413]
-    rv_plic_pwc_reg2hw_prio173_reg_t prio173; // [412:411]
-    rv_plic_pwc_reg2hw_prio174_reg_t prio174; // [410:409]
-    rv_plic_pwc_reg2hw_prio175_reg_t prio175; // [408:407]
-    rv_plic_pwc_reg2hw_prio176_reg_t prio176; // [406:405]
-    rv_plic_pwc_reg2hw_prio177_reg_t prio177; // [404:403]
-    rv_plic_pwc_reg2hw_prio178_reg_t prio178; // [402:401]
-    rv_plic_pwc_reg2hw_prio179_reg_t prio179; // [400:399]
-    rv_plic_pwc_reg2hw_prio180_reg_t prio180; // [398:397]
-    rv_plic_pwc_reg2hw_prio181_reg_t prio181; // [396:395]
-    rv_plic_pwc_reg2hw_prio182_reg_t prio182; // [394:393]
-    rv_plic_pwc_reg2hw_prio183_reg_t prio183; // [392:391]
-    rv_plic_pwc_reg2hw_prio184_reg_t prio184; // [390:389]
-    rv_plic_pwc_reg2hw_prio185_reg_t prio185; // [388:387]
-    rv_plic_pwc_reg2hw_prio186_reg_t prio186; // [386:385]
-    rv_plic_pwc_reg2hw_prio187_reg_t prio187; // [384:383]
-    rv_plic_pwc_reg2hw_prio188_reg_t prio188; // [382:381]
-    rv_plic_pwc_reg2hw_prio189_reg_t prio189; // [380:379]
-    rv_plic_pwc_reg2hw_prio190_reg_t prio190; // [378:377]
-    rv_plic_pwc_reg2hw_prio191_reg_t prio191; // [376:375]
-    rv_plic_pwc_reg2hw_prio192_reg_t prio192; // [374:373]
-    rv_plic_pwc_reg2hw_prio193_reg_t prio193; // [372:371]
-    rv_plic_pwc_reg2hw_prio194_reg_t prio194; // [370:369]
-    rv_plic_pwc_reg2hw_prio195_reg_t prio195; // [368:367]
-    rv_plic_pwc_reg2hw_prio196_reg_t prio196; // [366:365]
-    rv_plic_pwc_reg2hw_prio197_reg_t prio197; // [364:363]
-    rv_plic_pwc_reg2hw_prio198_reg_t prio198; // [362:361]
-    rv_plic_pwc_reg2hw_prio199_reg_t prio199; // [360:359]
-    rv_plic_pwc_reg2hw_prio200_reg_t prio200; // [358:357]
-    rv_plic_pwc_reg2hw_prio201_reg_t prio201; // [356:355]
-    rv_plic_pwc_reg2hw_prio202_reg_t prio202; // [354:353]
-    rv_plic_pwc_reg2hw_prio203_reg_t prio203; // [352:351]
-    rv_plic_pwc_reg2hw_prio204_reg_t prio204; // [350:349]
-    rv_plic_pwc_reg2hw_prio205_reg_t prio205; // [348:347]
-    rv_plic_pwc_reg2hw_prio206_reg_t prio206; // [346:345]
-    rv_plic_pwc_reg2hw_prio207_reg_t prio207; // [344:343]
-    rv_plic_pwc_reg2hw_prio208_reg_t prio208; // [342:341]
-    rv_plic_pwc_reg2hw_prio209_reg_t prio209; // [340:339]
-    rv_plic_pwc_reg2hw_prio210_reg_t prio210; // [338:337]
-    rv_plic_pwc_reg2hw_prio211_reg_t prio211; // [336:335]
-    rv_plic_pwc_reg2hw_prio212_reg_t prio212; // [334:333]
-    rv_plic_pwc_reg2hw_prio213_reg_t prio213; // [332:331]
-    rv_plic_pwc_reg2hw_prio214_reg_t prio214; // [330:329]
-    rv_plic_pwc_reg2hw_prio215_reg_t prio215; // [328:327]
-    rv_plic_pwc_reg2hw_prio216_reg_t prio216; // [326:325]
-    rv_plic_pwc_reg2hw_prio217_reg_t prio217; // [324:323]
-    rv_plic_pwc_reg2hw_prio218_reg_t prio218; // [322:321]
-    rv_plic_pwc_reg2hw_prio219_reg_t prio219; // [320:319]
-    rv_plic_pwc_reg2hw_prio220_reg_t prio220; // [318:317]
-    rv_plic_pwc_reg2hw_prio221_reg_t prio221; // [316:315]
-    rv_plic_pwc_reg2hw_prio222_reg_t prio222; // [314:313]
-    rv_plic_pwc_reg2hw_prio223_reg_t prio223; // [312:311]
-    rv_plic_pwc_reg2hw_prio224_reg_t prio224; // [310:309]
-    rv_plic_pwc_reg2hw_prio225_reg_t prio225; // [308:307]
-    rv_plic_pwc_reg2hw_prio226_reg_t prio226; // [306:305]
-    rv_plic_pwc_reg2hw_prio227_reg_t prio227; // [304:303]
-    rv_plic_pwc_reg2hw_prio228_reg_t prio228; // [302:301]
-    rv_plic_pwc_reg2hw_prio229_reg_t prio229; // [300:299]
-    rv_plic_pwc_reg2hw_prio230_reg_t prio230; // [298:297]
-    rv_plic_pwc_reg2hw_prio231_reg_t prio231; // [296:295]
-    rv_plic_pwc_reg2hw_prio232_reg_t prio232; // [294:293]
-    rv_plic_pwc_reg2hw_prio233_reg_t prio233; // [292:291]
-    rv_plic_pwc_reg2hw_prio234_reg_t prio234; // [290:289]
-    rv_plic_pwc_reg2hw_prio235_reg_t prio235; // [288:287]
-    rv_plic_pwc_reg2hw_prio236_reg_t prio236; // [286:285]
-    rv_plic_pwc_reg2hw_prio237_reg_t prio237; // [284:283]
-    rv_plic_pwc_reg2hw_prio238_reg_t prio238; // [282:281]
-    rv_plic_pwc_reg2hw_prio239_reg_t prio239; // [280:279]
-    rv_plic_pwc_reg2hw_prio240_reg_t prio240; // [278:277]
-    rv_plic_pwc_reg2hw_prio241_reg_t prio241; // [276:275]
-    rv_plic_pwc_reg2hw_prio242_reg_t prio242; // [274:273]
-    rv_plic_pwc_reg2hw_prio243_reg_t prio243; // [272:271]
-    rv_plic_pwc_reg2hw_prio244_reg_t prio244; // [270:269]
-    rv_plic_pwc_reg2hw_prio245_reg_t prio245; // [268:267]
-    rv_plic_pwc_reg2hw_prio246_reg_t prio246; // [266:265]
-    rv_plic_pwc_reg2hw_prio247_reg_t prio247; // [264:263]
-    rv_plic_pwc_reg2hw_ie0_mreg_t [247:0] ie0; // [262:15]
+    rv_plic_pwc_reg2hw_prio0_reg_t prio0; // [767:766]
+    rv_plic_pwc_reg2hw_prio1_reg_t prio1; // [765:764]
+    rv_plic_pwc_reg2hw_prio2_reg_t prio2; // [763:762]
+    rv_plic_pwc_reg2hw_prio3_reg_t prio3; // [761:760]
+    rv_plic_pwc_reg2hw_prio4_reg_t prio4; // [759:758]
+    rv_plic_pwc_reg2hw_prio5_reg_t prio5; // [757:756]
+    rv_plic_pwc_reg2hw_prio6_reg_t prio6; // [755:754]
+    rv_plic_pwc_reg2hw_prio7_reg_t prio7; // [753:752]
+    rv_plic_pwc_reg2hw_prio8_reg_t prio8; // [751:750]
+    rv_plic_pwc_reg2hw_prio9_reg_t prio9; // [749:748]
+    rv_plic_pwc_reg2hw_prio10_reg_t prio10; // [747:746]
+    rv_plic_pwc_reg2hw_prio11_reg_t prio11; // [745:744]
+    rv_plic_pwc_reg2hw_prio12_reg_t prio12; // [743:742]
+    rv_plic_pwc_reg2hw_prio13_reg_t prio13; // [741:740]
+    rv_plic_pwc_reg2hw_prio14_reg_t prio14; // [739:738]
+    rv_plic_pwc_reg2hw_prio15_reg_t prio15; // [737:736]
+    rv_plic_pwc_reg2hw_prio16_reg_t prio16; // [735:734]
+    rv_plic_pwc_reg2hw_prio17_reg_t prio17; // [733:732]
+    rv_plic_pwc_reg2hw_prio18_reg_t prio18; // [731:730]
+    rv_plic_pwc_reg2hw_prio19_reg_t prio19; // [729:728]
+    rv_plic_pwc_reg2hw_prio20_reg_t prio20; // [727:726]
+    rv_plic_pwc_reg2hw_prio21_reg_t prio21; // [725:724]
+    rv_plic_pwc_reg2hw_prio22_reg_t prio22; // [723:722]
+    rv_plic_pwc_reg2hw_prio23_reg_t prio23; // [721:720]
+    rv_plic_pwc_reg2hw_prio24_reg_t prio24; // [719:718]
+    rv_plic_pwc_reg2hw_prio25_reg_t prio25; // [717:716]
+    rv_plic_pwc_reg2hw_prio26_reg_t prio26; // [715:714]
+    rv_plic_pwc_reg2hw_prio27_reg_t prio27; // [713:712]
+    rv_plic_pwc_reg2hw_prio28_reg_t prio28; // [711:710]
+    rv_plic_pwc_reg2hw_prio29_reg_t prio29; // [709:708]
+    rv_plic_pwc_reg2hw_prio30_reg_t prio30; // [707:706]
+    rv_plic_pwc_reg2hw_prio31_reg_t prio31; // [705:704]
+    rv_plic_pwc_reg2hw_prio32_reg_t prio32; // [703:702]
+    rv_plic_pwc_reg2hw_prio33_reg_t prio33; // [701:700]
+    rv_plic_pwc_reg2hw_prio34_reg_t prio34; // [699:698]
+    rv_plic_pwc_reg2hw_prio35_reg_t prio35; // [697:696]
+    rv_plic_pwc_reg2hw_prio36_reg_t prio36; // [695:694]
+    rv_plic_pwc_reg2hw_prio37_reg_t prio37; // [693:692]
+    rv_plic_pwc_reg2hw_prio38_reg_t prio38; // [691:690]
+    rv_plic_pwc_reg2hw_prio39_reg_t prio39; // [689:688]
+    rv_plic_pwc_reg2hw_prio40_reg_t prio40; // [687:686]
+    rv_plic_pwc_reg2hw_prio41_reg_t prio41; // [685:684]
+    rv_plic_pwc_reg2hw_prio42_reg_t prio42; // [683:682]
+    rv_plic_pwc_reg2hw_prio43_reg_t prio43; // [681:680]
+    rv_plic_pwc_reg2hw_prio44_reg_t prio44; // [679:678]
+    rv_plic_pwc_reg2hw_prio45_reg_t prio45; // [677:676]
+    rv_plic_pwc_reg2hw_prio46_reg_t prio46; // [675:674]
+    rv_plic_pwc_reg2hw_prio47_reg_t prio47; // [673:672]
+    rv_plic_pwc_reg2hw_prio48_reg_t prio48; // [671:670]
+    rv_plic_pwc_reg2hw_prio49_reg_t prio49; // [669:668]
+    rv_plic_pwc_reg2hw_prio50_reg_t prio50; // [667:666]
+    rv_plic_pwc_reg2hw_prio51_reg_t prio51; // [665:664]
+    rv_plic_pwc_reg2hw_prio52_reg_t prio52; // [663:662]
+    rv_plic_pwc_reg2hw_prio53_reg_t prio53; // [661:660]
+    rv_plic_pwc_reg2hw_prio54_reg_t prio54; // [659:658]
+    rv_plic_pwc_reg2hw_prio55_reg_t prio55; // [657:656]
+    rv_plic_pwc_reg2hw_prio56_reg_t prio56; // [655:654]
+    rv_plic_pwc_reg2hw_prio57_reg_t prio57; // [653:652]
+    rv_plic_pwc_reg2hw_prio58_reg_t prio58; // [651:650]
+    rv_plic_pwc_reg2hw_prio59_reg_t prio59; // [649:648]
+    rv_plic_pwc_reg2hw_prio60_reg_t prio60; // [647:646]
+    rv_plic_pwc_reg2hw_prio61_reg_t prio61; // [645:644]
+    rv_plic_pwc_reg2hw_prio62_reg_t prio62; // [643:642]
+    rv_plic_pwc_reg2hw_prio63_reg_t prio63; // [641:640]
+    rv_plic_pwc_reg2hw_prio64_reg_t prio64; // [639:638]
+    rv_plic_pwc_reg2hw_prio65_reg_t prio65; // [637:636]
+    rv_plic_pwc_reg2hw_prio66_reg_t prio66; // [635:634]
+    rv_plic_pwc_reg2hw_prio67_reg_t prio67; // [633:632]
+    rv_plic_pwc_reg2hw_prio68_reg_t prio68; // [631:630]
+    rv_plic_pwc_reg2hw_prio69_reg_t prio69; // [629:628]
+    rv_plic_pwc_reg2hw_prio70_reg_t prio70; // [627:626]
+    rv_plic_pwc_reg2hw_prio71_reg_t prio71; // [625:624]
+    rv_plic_pwc_reg2hw_prio72_reg_t prio72; // [623:622]
+    rv_plic_pwc_reg2hw_prio73_reg_t prio73; // [621:620]
+    rv_plic_pwc_reg2hw_prio74_reg_t prio74; // [619:618]
+    rv_plic_pwc_reg2hw_prio75_reg_t prio75; // [617:616]
+    rv_plic_pwc_reg2hw_prio76_reg_t prio76; // [615:614]
+    rv_plic_pwc_reg2hw_prio77_reg_t prio77; // [613:612]
+    rv_plic_pwc_reg2hw_prio78_reg_t prio78; // [611:610]
+    rv_plic_pwc_reg2hw_prio79_reg_t prio79; // [609:608]
+    rv_plic_pwc_reg2hw_prio80_reg_t prio80; // [607:606]
+    rv_plic_pwc_reg2hw_prio81_reg_t prio81; // [605:604]
+    rv_plic_pwc_reg2hw_prio82_reg_t prio82; // [603:602]
+    rv_plic_pwc_reg2hw_prio83_reg_t prio83; // [601:600]
+    rv_plic_pwc_reg2hw_prio84_reg_t prio84; // [599:598]
+    rv_plic_pwc_reg2hw_prio85_reg_t prio85; // [597:596]
+    rv_plic_pwc_reg2hw_prio86_reg_t prio86; // [595:594]
+    rv_plic_pwc_reg2hw_prio87_reg_t prio87; // [593:592]
+    rv_plic_pwc_reg2hw_prio88_reg_t prio88; // [591:590]
+    rv_plic_pwc_reg2hw_prio89_reg_t prio89; // [589:588]
+    rv_plic_pwc_reg2hw_prio90_reg_t prio90; // [587:586]
+    rv_plic_pwc_reg2hw_prio91_reg_t prio91; // [585:584]
+    rv_plic_pwc_reg2hw_prio92_reg_t prio92; // [583:582]
+    rv_plic_pwc_reg2hw_prio93_reg_t prio93; // [581:580]
+    rv_plic_pwc_reg2hw_prio94_reg_t prio94; // [579:578]
+    rv_plic_pwc_reg2hw_prio95_reg_t prio95; // [577:576]
+    rv_plic_pwc_reg2hw_prio96_reg_t prio96; // [575:574]
+    rv_plic_pwc_reg2hw_prio97_reg_t prio97; // [573:572]
+    rv_plic_pwc_reg2hw_prio98_reg_t prio98; // [571:570]
+    rv_plic_pwc_reg2hw_prio99_reg_t prio99; // [569:568]
+    rv_plic_pwc_reg2hw_prio100_reg_t prio100; // [567:566]
+    rv_plic_pwc_reg2hw_prio101_reg_t prio101; // [565:564]
+    rv_plic_pwc_reg2hw_prio102_reg_t prio102; // [563:562]
+    rv_plic_pwc_reg2hw_prio103_reg_t prio103; // [561:560]
+    rv_plic_pwc_reg2hw_prio104_reg_t prio104; // [559:558]
+    rv_plic_pwc_reg2hw_prio105_reg_t prio105; // [557:556]
+    rv_plic_pwc_reg2hw_prio106_reg_t prio106; // [555:554]
+    rv_plic_pwc_reg2hw_prio107_reg_t prio107; // [553:552]
+    rv_plic_pwc_reg2hw_prio108_reg_t prio108; // [551:550]
+    rv_plic_pwc_reg2hw_prio109_reg_t prio109; // [549:548]
+    rv_plic_pwc_reg2hw_prio110_reg_t prio110; // [547:546]
+    rv_plic_pwc_reg2hw_prio111_reg_t prio111; // [545:544]
+    rv_plic_pwc_reg2hw_prio112_reg_t prio112; // [543:542]
+    rv_plic_pwc_reg2hw_prio113_reg_t prio113; // [541:540]
+    rv_plic_pwc_reg2hw_prio114_reg_t prio114; // [539:538]
+    rv_plic_pwc_reg2hw_prio115_reg_t prio115; // [537:536]
+    rv_plic_pwc_reg2hw_prio116_reg_t prio116; // [535:534]
+    rv_plic_pwc_reg2hw_prio117_reg_t prio117; // [533:532]
+    rv_plic_pwc_reg2hw_prio118_reg_t prio118; // [531:530]
+    rv_plic_pwc_reg2hw_prio119_reg_t prio119; // [529:528]
+    rv_plic_pwc_reg2hw_prio120_reg_t prio120; // [527:526]
+    rv_plic_pwc_reg2hw_prio121_reg_t prio121; // [525:524]
+    rv_plic_pwc_reg2hw_prio122_reg_t prio122; // [523:522]
+    rv_plic_pwc_reg2hw_prio123_reg_t prio123; // [521:520]
+    rv_plic_pwc_reg2hw_prio124_reg_t prio124; // [519:518]
+    rv_plic_pwc_reg2hw_prio125_reg_t prio125; // [517:516]
+    rv_plic_pwc_reg2hw_prio126_reg_t prio126; // [515:514]
+    rv_plic_pwc_reg2hw_prio127_reg_t prio127; // [513:512]
+    rv_plic_pwc_reg2hw_prio128_reg_t prio128; // [511:510]
+    rv_plic_pwc_reg2hw_prio129_reg_t prio129; // [509:508]
+    rv_plic_pwc_reg2hw_prio130_reg_t prio130; // [507:506]
+    rv_plic_pwc_reg2hw_prio131_reg_t prio131; // [505:504]
+    rv_plic_pwc_reg2hw_prio132_reg_t prio132; // [503:502]
+    rv_plic_pwc_reg2hw_prio133_reg_t prio133; // [501:500]
+    rv_plic_pwc_reg2hw_prio134_reg_t prio134; // [499:498]
+    rv_plic_pwc_reg2hw_prio135_reg_t prio135; // [497:496]
+    rv_plic_pwc_reg2hw_prio136_reg_t prio136; // [495:494]
+    rv_plic_pwc_reg2hw_prio137_reg_t prio137; // [493:492]
+    rv_plic_pwc_reg2hw_prio138_reg_t prio138; // [491:490]
+    rv_plic_pwc_reg2hw_prio139_reg_t prio139; // [489:488]
+    rv_plic_pwc_reg2hw_prio140_reg_t prio140; // [487:486]
+    rv_plic_pwc_reg2hw_prio141_reg_t prio141; // [485:484]
+    rv_plic_pwc_reg2hw_prio142_reg_t prio142; // [483:482]
+    rv_plic_pwc_reg2hw_prio143_reg_t prio143; // [481:480]
+    rv_plic_pwc_reg2hw_prio144_reg_t prio144; // [479:478]
+    rv_plic_pwc_reg2hw_prio145_reg_t prio145; // [477:476]
+    rv_plic_pwc_reg2hw_prio146_reg_t prio146; // [475:474]
+    rv_plic_pwc_reg2hw_prio147_reg_t prio147; // [473:472]
+    rv_plic_pwc_reg2hw_prio148_reg_t prio148; // [471:470]
+    rv_plic_pwc_reg2hw_prio149_reg_t prio149; // [469:468]
+    rv_plic_pwc_reg2hw_prio150_reg_t prio150; // [467:466]
+    rv_plic_pwc_reg2hw_prio151_reg_t prio151; // [465:464]
+    rv_plic_pwc_reg2hw_prio152_reg_t prio152; // [463:462]
+    rv_plic_pwc_reg2hw_prio153_reg_t prio153; // [461:460]
+    rv_plic_pwc_reg2hw_prio154_reg_t prio154; // [459:458]
+    rv_plic_pwc_reg2hw_prio155_reg_t prio155; // [457:456]
+    rv_plic_pwc_reg2hw_prio156_reg_t prio156; // [455:454]
+    rv_plic_pwc_reg2hw_prio157_reg_t prio157; // [453:452]
+    rv_plic_pwc_reg2hw_prio158_reg_t prio158; // [451:450]
+    rv_plic_pwc_reg2hw_prio159_reg_t prio159; // [449:448]
+    rv_plic_pwc_reg2hw_prio160_reg_t prio160; // [447:446]
+    rv_plic_pwc_reg2hw_prio161_reg_t prio161; // [445:444]
+    rv_plic_pwc_reg2hw_prio162_reg_t prio162; // [443:442]
+    rv_plic_pwc_reg2hw_prio163_reg_t prio163; // [441:440]
+    rv_plic_pwc_reg2hw_prio164_reg_t prio164; // [439:438]
+    rv_plic_pwc_reg2hw_prio165_reg_t prio165; // [437:436]
+    rv_plic_pwc_reg2hw_prio166_reg_t prio166; // [435:434]
+    rv_plic_pwc_reg2hw_prio167_reg_t prio167; // [433:432]
+    rv_plic_pwc_reg2hw_prio168_reg_t prio168; // [431:430]
+    rv_plic_pwc_reg2hw_prio169_reg_t prio169; // [429:428]
+    rv_plic_pwc_reg2hw_prio170_reg_t prio170; // [427:426]
+    rv_plic_pwc_reg2hw_prio171_reg_t prio171; // [425:424]
+    rv_plic_pwc_reg2hw_prio172_reg_t prio172; // [423:422]
+    rv_plic_pwc_reg2hw_prio173_reg_t prio173; // [421:420]
+    rv_plic_pwc_reg2hw_prio174_reg_t prio174; // [419:418]
+    rv_plic_pwc_reg2hw_prio175_reg_t prio175; // [417:416]
+    rv_plic_pwc_reg2hw_prio176_reg_t prio176; // [415:414]
+    rv_plic_pwc_reg2hw_prio177_reg_t prio177; // [413:412]
+    rv_plic_pwc_reg2hw_prio178_reg_t prio178; // [411:410]
+    rv_plic_pwc_reg2hw_prio179_reg_t prio179; // [409:408]
+    rv_plic_pwc_reg2hw_prio180_reg_t prio180; // [407:406]
+    rv_plic_pwc_reg2hw_prio181_reg_t prio181; // [405:404]
+    rv_plic_pwc_reg2hw_prio182_reg_t prio182; // [403:402]
+    rv_plic_pwc_reg2hw_prio183_reg_t prio183; // [401:400]
+    rv_plic_pwc_reg2hw_prio184_reg_t prio184; // [399:398]
+    rv_plic_pwc_reg2hw_prio185_reg_t prio185; // [397:396]
+    rv_plic_pwc_reg2hw_prio186_reg_t prio186; // [395:394]
+    rv_plic_pwc_reg2hw_prio187_reg_t prio187; // [393:392]
+    rv_plic_pwc_reg2hw_prio188_reg_t prio188; // [391:390]
+    rv_plic_pwc_reg2hw_prio189_reg_t prio189; // [389:388]
+    rv_plic_pwc_reg2hw_prio190_reg_t prio190; // [387:386]
+    rv_plic_pwc_reg2hw_prio191_reg_t prio191; // [385:384]
+    rv_plic_pwc_reg2hw_prio192_reg_t prio192; // [383:382]
+    rv_plic_pwc_reg2hw_prio193_reg_t prio193; // [381:380]
+    rv_plic_pwc_reg2hw_prio194_reg_t prio194; // [379:378]
+    rv_plic_pwc_reg2hw_prio195_reg_t prio195; // [377:376]
+    rv_plic_pwc_reg2hw_prio196_reg_t prio196; // [375:374]
+    rv_plic_pwc_reg2hw_prio197_reg_t prio197; // [373:372]
+    rv_plic_pwc_reg2hw_prio198_reg_t prio198; // [371:370]
+    rv_plic_pwc_reg2hw_prio199_reg_t prio199; // [369:368]
+    rv_plic_pwc_reg2hw_prio200_reg_t prio200; // [367:366]
+    rv_plic_pwc_reg2hw_prio201_reg_t prio201; // [365:364]
+    rv_plic_pwc_reg2hw_prio202_reg_t prio202; // [363:362]
+    rv_plic_pwc_reg2hw_prio203_reg_t prio203; // [361:360]
+    rv_plic_pwc_reg2hw_prio204_reg_t prio204; // [359:358]
+    rv_plic_pwc_reg2hw_prio205_reg_t prio205; // [357:356]
+    rv_plic_pwc_reg2hw_prio206_reg_t prio206; // [355:354]
+    rv_plic_pwc_reg2hw_prio207_reg_t prio207; // [353:352]
+    rv_plic_pwc_reg2hw_prio208_reg_t prio208; // [351:350]
+    rv_plic_pwc_reg2hw_prio209_reg_t prio209; // [349:348]
+    rv_plic_pwc_reg2hw_prio210_reg_t prio210; // [347:346]
+    rv_plic_pwc_reg2hw_prio211_reg_t prio211; // [345:344]
+    rv_plic_pwc_reg2hw_prio212_reg_t prio212; // [343:342]
+    rv_plic_pwc_reg2hw_prio213_reg_t prio213; // [341:340]
+    rv_plic_pwc_reg2hw_prio214_reg_t prio214; // [339:338]
+    rv_plic_pwc_reg2hw_prio215_reg_t prio215; // [337:336]
+    rv_plic_pwc_reg2hw_prio216_reg_t prio216; // [335:334]
+    rv_plic_pwc_reg2hw_prio217_reg_t prio217; // [333:332]
+    rv_plic_pwc_reg2hw_prio218_reg_t prio218; // [331:330]
+    rv_plic_pwc_reg2hw_prio219_reg_t prio219; // [329:328]
+    rv_plic_pwc_reg2hw_prio220_reg_t prio220; // [327:326]
+    rv_plic_pwc_reg2hw_prio221_reg_t prio221; // [325:324]
+    rv_plic_pwc_reg2hw_prio222_reg_t prio222; // [323:322]
+    rv_plic_pwc_reg2hw_prio223_reg_t prio223; // [321:320]
+    rv_plic_pwc_reg2hw_prio224_reg_t prio224; // [319:318]
+    rv_plic_pwc_reg2hw_prio225_reg_t prio225; // [317:316]
+    rv_plic_pwc_reg2hw_prio226_reg_t prio226; // [315:314]
+    rv_plic_pwc_reg2hw_prio227_reg_t prio227; // [313:312]
+    rv_plic_pwc_reg2hw_prio228_reg_t prio228; // [311:310]
+    rv_plic_pwc_reg2hw_prio229_reg_t prio229; // [309:308]
+    rv_plic_pwc_reg2hw_prio230_reg_t prio230; // [307:306]
+    rv_plic_pwc_reg2hw_prio231_reg_t prio231; // [305:304]
+    rv_plic_pwc_reg2hw_prio232_reg_t prio232; // [303:302]
+    rv_plic_pwc_reg2hw_prio233_reg_t prio233; // [301:300]
+    rv_plic_pwc_reg2hw_prio234_reg_t prio234; // [299:298]
+    rv_plic_pwc_reg2hw_prio235_reg_t prio235; // [297:296]
+    rv_plic_pwc_reg2hw_prio236_reg_t prio236; // [295:294]
+    rv_plic_pwc_reg2hw_prio237_reg_t prio237; // [293:292]
+    rv_plic_pwc_reg2hw_prio238_reg_t prio238; // [291:290]
+    rv_plic_pwc_reg2hw_prio239_reg_t prio239; // [289:288]
+    rv_plic_pwc_reg2hw_prio240_reg_t prio240; // [287:286]
+    rv_plic_pwc_reg2hw_prio241_reg_t prio241; // [285:284]
+    rv_plic_pwc_reg2hw_prio242_reg_t prio242; // [283:282]
+    rv_plic_pwc_reg2hw_prio243_reg_t prio243; // [281:280]
+    rv_plic_pwc_reg2hw_prio244_reg_t prio244; // [279:278]
+    rv_plic_pwc_reg2hw_prio245_reg_t prio245; // [277:276]
+    rv_plic_pwc_reg2hw_prio246_reg_t prio246; // [275:274]
+    rv_plic_pwc_reg2hw_prio247_reg_t prio247; // [273:272]
+    rv_plic_pwc_reg2hw_prio248_reg_t prio248; // [271:270]
+    rv_plic_pwc_reg2hw_prio249_reg_t prio249; // [269:268]
+    rv_plic_pwc_reg2hw_prio250_reg_t prio250; // [267:266]
+    rv_plic_pwc_reg2hw_ie0_mreg_t [250:0] ie0; // [265:15]
     rv_plic_pwc_reg2hw_threshold0_reg_t threshold0; // [14:13]
     rv_plic_pwc_reg2hw_cc0_reg_t cc0; // [12:3]
     rv_plic_pwc_reg2hw_msip0_reg_t msip0; // [2:2]
@@ -1305,7 +1320,7 @@ package rv_plic_pwc_reg_pkg;
 
   // HW -> register type
   typedef struct packed {
-    rv_plic_pwc_hw2reg_ip_mreg_t [247:0] ip; // [503:8]
+    rv_plic_pwc_hw2reg_ip_mreg_t [250:0] ip; // [509:8]
     rv_plic_pwc_hw2reg_cc0_reg_t cc0; // [7:0]
   } rv_plic_pwc_hw2reg_t;
 
@@ -1558,6 +1573,9 @@ package rv_plic_pwc_reg_pkg;
   parameter logic [BlockAw-1:0] RV_PLIC_PWC_PRIO245_OFFSET = 27'h 3d4;
   parameter logic [BlockAw-1:0] RV_PLIC_PWC_PRIO246_OFFSET = 27'h 3d8;
   parameter logic [BlockAw-1:0] RV_PLIC_PWC_PRIO247_OFFSET = 27'h 3dc;
+  parameter logic [BlockAw-1:0] RV_PLIC_PWC_PRIO248_OFFSET = 27'h 3e0;
+  parameter logic [BlockAw-1:0] RV_PLIC_PWC_PRIO249_OFFSET = 27'h 3e4;
+  parameter logic [BlockAw-1:0] RV_PLIC_PWC_PRIO250_OFFSET = 27'h 3e8;
   parameter logic [BlockAw-1:0] RV_PLIC_PWC_IP_0_OFFSET = 27'h 1000;
   parameter logic [BlockAw-1:0] RV_PLIC_PWC_IP_1_OFFSET = 27'h 1004;
   parameter logic [BlockAw-1:0] RV_PLIC_PWC_IP_2_OFFSET = 27'h 1008;
@@ -1833,6 +1851,9 @@ package rv_plic_pwc_reg_pkg;
     RV_PLIC_PWC_PRIO245,
     RV_PLIC_PWC_PRIO246,
     RV_PLIC_PWC_PRIO247,
+    RV_PLIC_PWC_PRIO248,
+    RV_PLIC_PWC_PRIO249,
+    RV_PLIC_PWC_PRIO250,
     RV_PLIC_PWC_IP_0,
     RV_PLIC_PWC_IP_1,
     RV_PLIC_PWC_IP_2,
@@ -1856,7 +1877,7 @@ package rv_plic_pwc_reg_pkg;
   } rv_plic_pwc_id_e;
 
   // Register width information to check illegal writes
-  parameter logic [3:0] RV_PLIC_PWC_PERMIT [268] = '{
+  parameter logic [3:0] RV_PLIC_PWC_PERMIT [271] = '{
     4'b 0001, // index[  0] RV_PLIC_PWC_PRIO0
     4'b 0001, // index[  1] RV_PLIC_PWC_PRIO1
     4'b 0001, // index[  2] RV_PLIC_PWC_PRIO2
@@ -2105,26 +2126,29 @@ package rv_plic_pwc_reg_pkg;
     4'b 0001, // index[245] RV_PLIC_PWC_PRIO245
     4'b 0001, // index[246] RV_PLIC_PWC_PRIO246
     4'b 0001, // index[247] RV_PLIC_PWC_PRIO247
-    4'b 1111, // index[248] RV_PLIC_PWC_IP_0
-    4'b 1111, // index[249] RV_PLIC_PWC_IP_1
-    4'b 1111, // index[250] RV_PLIC_PWC_IP_2
-    4'b 1111, // index[251] RV_PLIC_PWC_IP_3
-    4'b 1111, // index[252] RV_PLIC_PWC_IP_4
-    4'b 1111, // index[253] RV_PLIC_PWC_IP_5
-    4'b 1111, // index[254] RV_PLIC_PWC_IP_6
-    4'b 0111, // index[255] RV_PLIC_PWC_IP_7
-    4'b 1111, // index[256] RV_PLIC_PWC_IE0_0
-    4'b 1111, // index[257] RV_PLIC_PWC_IE0_1
-    4'b 1111, // index[258] RV_PLIC_PWC_IE0_2
-    4'b 1111, // index[259] RV_PLIC_PWC_IE0_3
-    4'b 1111, // index[260] RV_PLIC_PWC_IE0_4
-    4'b 1111, // index[261] RV_PLIC_PWC_IE0_5
-    4'b 1111, // index[262] RV_PLIC_PWC_IE0_6
-    4'b 0111, // index[263] RV_PLIC_PWC_IE0_7
-    4'b 0001, // index[264] RV_PLIC_PWC_THRESHOLD0
-    4'b 0001, // index[265] RV_PLIC_PWC_CC0
-    4'b 0001, // index[266] RV_PLIC_PWC_MSIP0
-    4'b 0001  // index[267] RV_PLIC_PWC_ALERT_TEST
+    4'b 0001, // index[248] RV_PLIC_PWC_PRIO248
+    4'b 0001, // index[249] RV_PLIC_PWC_PRIO249
+    4'b 0001, // index[250] RV_PLIC_PWC_PRIO250
+    4'b 1111, // index[251] RV_PLIC_PWC_IP_0
+    4'b 1111, // index[252] RV_PLIC_PWC_IP_1
+    4'b 1111, // index[253] RV_PLIC_PWC_IP_2
+    4'b 1111, // index[254] RV_PLIC_PWC_IP_3
+    4'b 1111, // index[255] RV_PLIC_PWC_IP_4
+    4'b 1111, // index[256] RV_PLIC_PWC_IP_5
+    4'b 1111, // index[257] RV_PLIC_PWC_IP_6
+    4'b 1111, // index[258] RV_PLIC_PWC_IP_7
+    4'b 1111, // index[259] RV_PLIC_PWC_IE0_0
+    4'b 1111, // index[260] RV_PLIC_PWC_IE0_1
+    4'b 1111, // index[261] RV_PLIC_PWC_IE0_2
+    4'b 1111, // index[262] RV_PLIC_PWC_IE0_3
+    4'b 1111, // index[263] RV_PLIC_PWC_IE0_4
+    4'b 1111, // index[264] RV_PLIC_PWC_IE0_5
+    4'b 1111, // index[265] RV_PLIC_PWC_IE0_6
+    4'b 1111, // index[266] RV_PLIC_PWC_IE0_7
+    4'b 0001, // index[267] RV_PLIC_PWC_THRESHOLD0
+    4'b 0001, // index[268] RV_PLIC_PWC_CC0
+    4'b 0001, // index[269] RV_PLIC_PWC_MSIP0
+    4'b 0001  // index[270] RV_PLIC_PWC_ALERT_TEST
   };
 
 endpackage

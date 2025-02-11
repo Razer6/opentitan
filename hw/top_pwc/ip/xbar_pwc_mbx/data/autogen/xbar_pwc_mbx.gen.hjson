@@ -40,6 +40,7 @@
       mbx3.soc
       mbx4.soc
       mbx5.soc
+      mbx_pcie0.soc
       racl_ctrl
     ]
   }
@@ -71,7 +72,7 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1465000
+            soc_mbx: 0x1475000
           }
           size_byte: 0x20
         }
@@ -93,7 +94,7 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1465100
+            soc_mbx: 0x1475100
           }
           size_byte: 0x20
         }
@@ -115,7 +116,7 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1465200
+            soc_mbx: 0x1475200
           }
           size_byte: 0x20
         }
@@ -137,7 +138,7 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1465300
+            soc_mbx: 0x1475300
           }
           size_byte: 0x20
         }
@@ -159,7 +160,7 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1465400
+            soc_mbx: 0x1475400
           }
           size_byte: 0x20
         }
@@ -181,7 +182,29 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1465500
+            soc_mbx: 0x1475500
+          }
+          size_byte: 0x20
+        }
+      ]
+      xbar: false
+      stub: false
+      req_fifo_pass: true
+    }
+    {
+      name: mbx_pcie0.soc
+      type: device
+      addr_space: soc_mbx
+      clock: clk_mbx_i
+      reset: rst_mbx_ni
+      pipeline: false
+      inst_type: mbx
+      addr_range:
+      [
+        {
+          base_addrs:
+          {
+            soc_mbx: 0x1470100
           }
           size_byte: 0x20
         }
@@ -203,7 +226,7 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1463000
+            soc_mbx: 0x1473000
           }
           size_byte: 0x40
         }

@@ -424,7 +424,7 @@
       reset_connections: {rst_ni: "ext_rst_main"},
       base_addrs: {
         core: {hart: "0x22000000"},
-        soc:  {soc_mbx: "0x01465000"},
+        soc:  {soc_mbx: "0x01475000"},
       },
       outgoing_alert: "pwc"
       racl_mappings: {
@@ -438,7 +438,7 @@
       reset_connections: {rst_ni: "ext_rst_main"},
       base_addrs: {
         core: {hart: "0x22000100"},
-        soc:  {soc_mbx: "0x01465100"},
+        soc:  {soc_mbx: "0x01475100"},
       },
       outgoing_alert: "pwc"
       racl_mappings: {
@@ -452,7 +452,7 @@
       reset_connections: {rst_ni: "ext_rst_main"},
       base_addrs: {
         core: {hart: "0x22000200"},
-        soc:  {soc_mbx: "0x01465200"},
+        soc:  {soc_mbx: "0x01475200"},
       },
       outgoing_alert: "pwc"
       racl_mappings: {
@@ -466,7 +466,7 @@
       reset_connections: {rst_ni: "ext_rst_main"},
       base_addrs: {
         core: {hart: "0x22000300"},
-        soc:  {soc_mbx: "0x01465300"},
+        soc:  {soc_mbx: "0x01475300"},
       },
       outgoing_alert: "pwc"
       racl_mappings: {
@@ -480,7 +480,7 @@
       reset_connections: {rst_ni: "ext_rst_main"},
       base_addrs: {
         core: {hart: "0x22000400"},
-        soc:  {soc_mbx: "0x01465400"},
+        soc:  {soc_mbx: "0x01475400"},
       },
       outgoing_alert: "pwc"
       racl_mappings: {
@@ -494,11 +494,25 @@
       reset_connections: {rst_ni: "ext_rst_main"},
       base_addrs: {
         core: {hart: "0x22000500"},
-        soc:  {soc_mbx: "0x01465500"},
+        soc:  {soc_mbx: "0x01475500"},
       },
       outgoing_alert: "pwc"
       racl_mappings: {
         soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_duc_private_mapping.hjson'
+      }
+    },
+    { name: "mbx_pcie0",
+      type: "mbx",
+      clock_srcs: {clk_i: "ext_main"}
+      clock_group: "infra",
+      reset_connections: {rst_ni: "ext_rst_main"},
+      base_addrs: {
+        core: {hart: "0x22040000"},
+        soc:  {soc_mbx: "0x01470100"},
+      },
+      outgoing_alert: "pwc"
+      racl_mappings: {
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_all_rd_wr_mapping.hjson'
       }
     },
     { name: "racl_ctrl",
@@ -508,7 +522,7 @@
       clock_group: "infra",
       reset_connections: {rst_ni: "ext_rst_main"},
       base_addr: {
-        soc_mbx: "0x01463000",
+        soc_mbx: "0x01473000",
       },
       attr: "ipgen"
       outgoing_alert: "pwc"

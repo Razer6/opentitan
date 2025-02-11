@@ -406,6 +406,24 @@ extern "C" {
 #define TOP_PWC_MBX5_CORE_SIZE_BYTES 0x80u
 
 /**
+ * Peripheral base address for core device on mbx_pcie0 in top pwc.
+ *
+ * This should be used with #mmio_region_from_addr to access the memory-mapped
+ * registers associated with the peripheral (usually via a DIF).
+ */
+#define TOP_PWC_MBX_PCIE0_CORE_BASE_ADDR 0x22040000u
+
+/**
+ * Peripheral size for core device on mbx_pcie0 in top pwc.
+ *
+ * This is the size (in bytes) of the peripheral's reserved memory area. All
+ * memory-mapped registers associated with this peripheral should have an
+ * address between #TOP_PWC_MBX_PCIE0_CORE_BASE_ADDR and
+ * `TOP_PWC_MBX_PCIE0_CORE_BASE_ADDR + TOP_PWC_MBX_PCIE0_CORE_SIZE_BYTES`.
+ */
+#define TOP_PWC_MBX_PCIE0_CORE_SIZE_BYTES 0x80u
+
+/**
  * Peripheral base address for cfg device on rv_core_ibex in top pwc.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
@@ -484,7 +502,8 @@ typedef enum top_pwc_plic_peripheral {
   kTopPwcPlicPeripheralMbx3 = 9, /**< mbx3 */
   kTopPwcPlicPeripheralMbx4 = 10, /**< mbx4 */
   kTopPwcPlicPeripheralMbx5 = 11, /**< mbx5 */
-  kTopPwcPlicPeripheralLast = 11, /**< \internal Final PLIC peripheral */
+  kTopPwcPlicPeripheralMbxPcie0 = 12, /**< mbx_pcie0 */
+  kTopPwcPlicPeripheralLast = 12, /**< \internal Final PLIC peripheral */
 } top_pwc_plic_peripheral_t;
 
 /**
@@ -583,166 +602,169 @@ typedef enum top_pwc_plic_irq_id {
   kTopPwcPlicIrqIdMbx5MbxReady = 86, /**< mbx5_mbx_ready */
   kTopPwcPlicIrqIdMbx5MbxAbort = 87, /**< mbx5_mbx_abort */
   kTopPwcPlicIrqIdMbx5MbxError = 88, /**< mbx5_mbx_error */
-  kTopPwcPlicIrqIdPwcLteuSocHot = 89, /**< PWC_LTEU_SOC_HOT */
-  kTopPwcPlicIrqIdPwcLteuFwTrip = 90, /**< PWC_LTEU_FW_TRIP */
-  kTopPwcPlicIrqIdPwcLteuCatTrip = 91, /**< PWC_LTEU_CAT_TRIP */
-  kTopPwcPlicIrqIdLioGrpAIbexIrq = 92, /**< LIO_GRP_A_IBEX_IRQ */
-  kTopPwcPlicIrqIdLioGrpBIbexIrq = 93, /**< LIO_GRP_B_IBEX_IRQ */
-  kTopPwcPlicIrqIdLioGrpCIbexIrq = 94, /**< LIO_GRP_C_IBEX_IRQ */
-  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus0 = 95, /**< PWC_DVFS_SocDpaFsmstatus0 */
-  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus1 = 96, /**< PWC_DVFS_SocDpaFsmstatus1 */
-  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus2 = 97, /**< PWC_DVFS_SocDpaFsmstatus2 */
-  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus3 = 98, /**< PWC_DVFS_SocDpaFsmstatus3 */
-  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus4 = 99, /**< PWC_DVFS_SocDpaFsmstatus4 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs0 = 100, /**< PWC_DVFS_TargetCmdAVS0 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs1 = 101, /**< PWC_DVFS_TargetCmdAVS1 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs2 = 102, /**< PWC_DVFS_TargetCmdAVS2 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs3 = 103, /**< PWC_DVFS_TargetCmdAVS3 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs4 = 104, /**< PWC_DVFS_TargetCmdAVS4 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs5 = 105, /**< PWC_DVFS_TargetCmdAVS5 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs6 = 106, /**< PWC_DVFS_TargetCmdAVS6 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs7 = 107, /**< PWC_DVFS_TargetCmdAVS7 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs8 = 108, /**< PWC_DVFS_TargetCmdAVS8 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs9 = 109, /**< PWC_DVFS_TargetCmdAVS9 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs10 = 110, /**< PWC_DVFS_TargetCmdAVS10 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs11 = 111, /**< PWC_DVFS_TargetCmdAVS11 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs12 = 112, /**< PWC_DVFS_TargetCmdAVS12 */
-  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs13 = 113, /**< PWC_DVFS_TargetCmdAVS13 */
-  kTopPwcPlicIrqIdPwcAvsAvsError0 = 114, /**< PWC_AVS_AVS_ERROR_0 */
-  kTopPwcPlicIrqIdPwcAvsAvsError1 = 115, /**< PWC_AVS_AVS_ERROR_1 */
-  kTopPwcPlicIrqIdPwcAvsAvsError2 = 116, /**< PWC_AVS_AVS_ERROR_2 */
-  kTopPwcPlicIrqIdPwcAvsAvsError3 = 117, /**< PWC_AVS_AVS_ERROR_3 */
-  kTopPwcPlicIrqIdPwcAvsAvsError4 = 118, /**< PWC_AVS_AVS_ERROR_4 */
-  kTopPwcPlicIrqIdPwcAvsAvsError5 = 119, /**< PWC_AVS_AVS_ERROR_5 */
-  kTopPwcPlicIrqIdPwcAvsAvsError6 = 120, /**< PWC_AVS_AVS_ERROR_6 */
-  kTopPwcPlicIrqIdPwcAvsAvsError7 = 121, /**< PWC_AVS_AVS_ERROR_7 */
-  kTopPwcPlicIrqIdPwcAvsAvsError8 = 122, /**< PWC_AVS_AVS_ERROR_8 */
-  kTopPwcPlicIrqIdPwcAvsAvsError9 = 123, /**< PWC_AVS_AVS_ERROR_9 */
-  kTopPwcPlicIrqIdPwcAvsAvsError10 = 124, /**< PWC_AVS_AVS_ERROR_10 */
-  kTopPwcPlicIrqIdPwcAvsAvsError11 = 125, /**< PWC_AVS_AVS_ERROR_11 */
-  kTopPwcPlicIrqIdPwcAvsAvsError12 = 126, /**< PWC_AVS_AVS_ERROR_12 */
-  kTopPwcPlicIrqIdPwcAvsAvsError13 = 127, /**< PWC_AVS_AVS_ERROR_13 */
-  kTopPwcPlicIrqIdPwcAvsAvsError14 = 128, /**< PWC_AVS_AVS_ERROR_14 */
-  kTopPwcPlicIrqIdPwcAvsAvsError15 = 129, /**< PWC_AVS_AVS_ERROR_15 */
-  kTopPwcPlicIrqIdPwcAvsAvsError16 = 130, /**< PWC_AVS_AVS_ERROR_16 */
-  kTopPwcPlicIrqIdPwcAvsAvsError17 = 131, /**< PWC_AVS_AVS_ERROR_17 */
-  kTopPwcPlicIrqIdPwcAvsAvsError18 = 132, /**< PWC_AVS_AVS_ERROR_18 */
-  kTopPwcPlicIrqIdPwcAvsAvsError19 = 133, /**< PWC_AVS_AVS_ERROR_19 */
-  kTopPwcPlicIrqIdPwcAvsAvsError20 = 134, /**< PWC_AVS_AVS_ERROR_20 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw0 = 135, /**< PWC_AVS_AVS_RESPONSE_TO_FW_0 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw1 = 136, /**< PWC_AVS_AVS_RESPONSE_TO_FW_1 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw2 = 137, /**< PWC_AVS_AVS_RESPONSE_TO_FW_2 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw3 = 138, /**< PWC_AVS_AVS_RESPONSE_TO_FW_3 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw4 = 139, /**< PWC_AVS_AVS_RESPONSE_TO_FW_4 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw5 = 140, /**< PWC_AVS_AVS_RESPONSE_TO_FW_5 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw6 = 141, /**< PWC_AVS_AVS_RESPONSE_TO_FW_6 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw7 = 142, /**< PWC_AVS_AVS_RESPONSE_TO_FW_7 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw8 = 143, /**< PWC_AVS_AVS_RESPONSE_TO_FW_8 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw9 = 144, /**< PWC_AVS_AVS_RESPONSE_TO_FW_9 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw10 = 145, /**< PWC_AVS_AVS_RESPONSE_TO_FW_10 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw11 = 146, /**< PWC_AVS_AVS_RESPONSE_TO_FW_11 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw12 = 147, /**< PWC_AVS_AVS_RESPONSE_TO_FW_12 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw13 = 148, /**< PWC_AVS_AVS_RESPONSE_TO_FW_13 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw14 = 149, /**< PWC_AVS_AVS_RESPONSE_TO_FW_14 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw15 = 150, /**< PWC_AVS_AVS_RESPONSE_TO_FW_15 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw16 = 151, /**< PWC_AVS_AVS_RESPONSE_TO_FW_16 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw17 = 152, /**< PWC_AVS_AVS_RESPONSE_TO_FW_17 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw18 = 153, /**< PWC_AVS_AVS_RESPONSE_TO_FW_18 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw19 = 154, /**< PWC_AVS_AVS_RESPONSE_TO_FW_19 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw20 = 155, /**< PWC_AVS_AVS_RESPONSE_TO_FW_20 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw21 = 156, /**< PWC_AVS_AVS_RESPONSE_TO_FW_21 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw22 = 157, /**< PWC_AVS_AVS_RESPONSE_TO_FW_22 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw23 = 158, /**< PWC_AVS_AVS_RESPONSE_TO_FW_23 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw24 = 159, /**< PWC_AVS_AVS_RESPONSE_TO_FW_24 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw25 = 160, /**< PWC_AVS_AVS_RESPONSE_TO_FW_25 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw26 = 161, /**< PWC_AVS_AVS_RESPONSE_TO_FW_26 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw27 = 162, /**< PWC_AVS_AVS_RESPONSE_TO_FW_27 */
-  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw28 = 163, /**< PWC_AVS_AVS_RESPONSE_TO_FW_28 */
-  kTopPwcPlicIrqIdPwcBcastCStateEntry = 164, /**< PWC_BCAST_C_STATE_ENTRY */
-  kTopPwcPlicIrqIdPwcBcastCStateExit = 165, /**< PWC_BCAST_C_STATE_EXIT */
-  kTopPwcPlicIrqIdPwcBcastDpaIdleEntry = 166, /**< PWC_BCAST_DPA_IDLE_ENTRY */
-  kTopPwcPlicIrqIdPwcBcastDpaIdleExit = 167, /**< PWC_BCAST_DPA_IDLE_EXIT */
-  kTopPwcPlicIrqIdPwcCcs0PwrVirusLvlReq = 168, /**< PWC_CCS_0_PWR_VIRUS_LVL_REQ */
-  kTopPwcPlicIrqIdPwcCcs1PwrVirusLvlReq = 169, /**< PWC_CCS_1_PWR_VIRUS_LVL_REQ */
-  kTopPwcPlicIrqIdPwcCcs2PwrVirusLvlReq = 170, /**< PWC_CCS_2_PWR_VIRUS_LVL_REQ */
-  kTopPwcPlicIrqIdPwcCcs3PwrVirusLvlReq = 171, /**< PWC_CCS_3_PWR_VIRUS_LVL_REQ */
-  kTopPwcPlicIrqIdPwcCcs4PwrVirusLvlReq = 172, /**< PWC_CCS_4_PWR_VIRUS_LVL_REQ */
-  kTopPwcPlicIrqIdPwcCcs5PwrVirusLvlReq = 173, /**< PWC_CCS_5_PWR_VIRUS_LVL_REQ */
-  kTopPwcPlicIrqIdPwcCcs6PwrVirusLvlReq = 174, /**< PWC_CCS_6_PWR_VIRUS_LVL_REQ */
-  kTopPwcPlicIrqIdPwcCcs7PwrVirusLvlReq = 175, /**< PWC_CCS_7_PWR_VIRUS_LVL_REQ */
-  kTopPwcPlicIrqIdPwcCcs0DvfsFsm = 176, /**< PWC_CCS_0_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcCcs1DvfsFsm = 177, /**< PWC_CCS_1_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcCcs2DvfsFsm = 178, /**< PWC_CCS_2_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcCcs3DvfsFsm = 179, /**< PWC_CCS_3_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcCcs4DvfsFsm = 180, /**< PWC_CCS_4_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcCcs5DvfsFsm = 181, /**< PWC_CCS_5_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcCcs6DvfsFsm = 182, /**< PWC_CCS_6_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcCcs7DvfsFsm = 183, /**< PWC_CCS_7_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcHmsEastStatus = 184, /**< PWC_HMS_East_STATUS */
-  kTopPwcPlicIrqIdPwcHmsWestStatus = 185, /**< PWC_HMS_WEST_STATUS */
-  kTopPwcPlicIrqIdPwcPcs0AllPortsStatus = 186, /**< PWC_PCS_0_ALL_PORTS_STATUS */
-  kTopPwcPlicIrqIdPwcPcs0LinkBringup0 = 187, /**< PWC_PCS_0_LINK_BRINGUP_0 */
-  kTopPwcPlicIrqIdPwcPcs0LinkBringup1 = 188, /**< PWC_PCS_0_LINK_BRINGUP_1 */
-  kTopPwcPlicIrqIdPwcPcs0LinkBringup2 = 189, /**< PWC_PCS_0_LINK_BRINGUP_2 */
-  kTopPwcPlicIrqIdPwcPcs0LinkBringup3 = 190, /**< PWC_PCS_0_LINK_BRINGUP_3 */
-  kTopPwcPlicIrqIdPwcPcs0MsgCtrl = 191, /**< PWC_PCS_0_MSG_CTRL */
-  kTopPwcPlicIrqIdPwcPcs0PhyStatus = 192, /**< PWC_PCS_0_PHY_STATUS */
-  kTopPwcPlicIrqIdPwcPcs1AllPortsStatus = 193, /**< PWC_PCS_1_ALL_PORTS_STATUS */
-  kTopPwcPlicIrqIdPwcPcs1LinkBringup0 = 194, /**< PWC_PCS_1_LINK_BRINGUP_0 */
-  kTopPwcPlicIrqIdPwcPcs1LinkBringup1 = 195, /**< PWC_PCS_1_LINK_BRINGUP_1 */
-  kTopPwcPlicIrqIdPwcPcs1LinkBringup2 = 196, /**< PWC_PCS_1_LINK_BRINGUP_2 */
-  kTopPwcPlicIrqIdPwcPcs1LinkBringup3 = 197, /**< PWC_PCS_1_LINK_BRINGUP_3 */
-  kTopPwcPlicIrqIdPwcPcs1MsgCtrl = 198, /**< PWC_PCS_1_MSG_CTRL */
-  kTopPwcPlicIrqIdPwcPcs1PhyStatus = 199, /**< PWC_PCS_1_PHY_STATUS */
-  kTopPwcPlicIrqIdPwcPcs2AllPortsStatus = 200, /**< PWC_PCS_2_ALL_PORTS_STATUS */
-  kTopPwcPlicIrqIdPwcPcs2LinkBringup0 = 201, /**< PWC_PCS_2_LINK_BRINGUP_0 */
-  kTopPwcPlicIrqIdPwcPcs2LinkBringup1 = 202, /**< PWC_PCS_2_LINK_BRINGUP_1 */
-  kTopPwcPlicIrqIdPwcPcs2LinkBringup2 = 203, /**< PWC_PCS_2_LINK_BRINGUP_2 */
-  kTopPwcPlicIrqIdPwcPcs2LinkBringup3 = 204, /**< PWC_PCS_2_LINK_BRINGUP_3 */
-  kTopPwcPlicIrqIdPwcPcs2MsgCtrl = 205, /**< PWC_PCS_2_MSG_CTRL */
-  kTopPwcPlicIrqIdPwcPcs2PhyStatus = 206, /**< PWC_PCS_2_PHY_STATUS */
-  kTopPwcPlicIrqIdPwcPcs3AllPortsStatus = 207, /**< PWC_PCS_3_ALL_PORTS_STATUS */
-  kTopPwcPlicIrqIdPwcPcs3LinkBringup0 = 208, /**< PWC_PCS_3_LINK_BRINGUP_0 */
-  kTopPwcPlicIrqIdPwcPcs3LinkBringup1 = 209, /**< PWC_PCS_3_LINK_BRINGUP_1 */
-  kTopPwcPlicIrqIdPwcPcs3LinkBringup2 = 210, /**< PWC_PCS_3_LINK_BRINGUP_2 */
-  kTopPwcPlicIrqIdPwcPcs3LinkBringup3 = 211, /**< PWC_PCS_3_LINK_BRINGUP_3 */
-  kTopPwcPlicIrqIdPwcPcs3MsgCtrl = 212, /**< PWC_PCS_3_MSG_CTRL */
-  kTopPwcPlicIrqIdPwcPcs3PhyStatus = 213, /**< PWC_PCS_3_PHY_STATUS */
-  kTopPwcPlicIrqIdPwcPcs4AllPortsStatus = 214, /**< PWC_PCS_4_ALL_PORTS_STATUS */
-  kTopPwcPlicIrqIdPwcPcs4LinkBringup0 = 215, /**< PWC_PCS_4_LINK_BRINGUP_0 */
-  kTopPwcPlicIrqIdPwcPcs4LinkBringup1 = 216, /**< PWC_PCS_4_LINK_BRINGUP_1 */
-  kTopPwcPlicIrqIdPwcPcs4LinkBringup2 = 217, /**< PWC_PCS_4_LINK_BRINGUP_2 */
-  kTopPwcPlicIrqIdPwcPcs4LinkBringup3 = 218, /**< PWC_PCS_4_LINK_BRINGUP_3 */
-  kTopPwcPlicIrqIdPwcPcs4MsgCtrl = 219, /**< PWC_PCS_4_MSG_CTRL */
-  kTopPwcPlicIrqIdPwcPcs4PhyStatus = 220, /**< PWC_PCS_4_PHY_STATUS */
-  kTopPwcPlicIrqIdPwcPcs5AllPortsStatus = 221, /**< PWC_PCS_5_ALL_PORTS_STATUS */
-  kTopPwcPlicIrqIdPwcPcs5LinkBringup0 = 222, /**< PWC_PCS_5_LINK_BRINGUP_0 */
-  kTopPwcPlicIrqIdPwcPcs5LinkBringup1 = 223, /**< PWC_PCS_5_LINK_BRINGUP_1 */
-  kTopPwcPlicIrqIdPwcPcs5LinkBringup2 = 224, /**< PWC_PCS_5_LINK_BRINGUP_2 */
-  kTopPwcPlicIrqIdPwcPcs5LinkBringup3 = 225, /**< PWC_PCS_5_LINK_BRINGUP_3 */
-  kTopPwcPlicIrqIdPwcPcs5MsgCtrl = 226, /**< PWC_PCS_5_MSG_CTRL */
-  kTopPwcPlicIrqIdPwcPcs5PhyStatus = 227, /**< PWC_PCS_5_PHY_STATUS */
-  kTopPwcPlicIrqIdPwcPcs6AllPortsStatus = 228, /**< PWC_PCS_6_ALL_PORTS_STATUS */
-  kTopPwcPlicIrqIdPwcPcs6LinkBringup0 = 229, /**< PWC_PCS_6_LINK_BRINGUP_0 */
-  kTopPwcPlicIrqIdPwcPcs6LinkBringup1 = 230, /**< PWC_PCS_6_LINK_BRINGUP_1 */
-  kTopPwcPlicIrqIdPwcPcs6LinkBringup2 = 231, /**< PWC_PCS_6_LINK_BRINGUP_2 */
-  kTopPwcPlicIrqIdPwcPcs6LinkBringup3 = 232, /**< PWC_PCS_6_LINK_BRINGUP_3 */
-  kTopPwcPlicIrqIdPwcPcs6MsgCtrl = 233, /**< PWC_PCS_6_MSG_CTRL */
-  kTopPwcPlicIrqIdPwcPcs6PhyStatus = 234, /**< PWC_PCS_6_PHY_STATUS */
-  kTopPwcPlicIrqIdPwcPcs7AllPortsStatus = 235, /**< PWC_PCS_7_ALL_PORTS_STATUS */
-  kTopPwcPlicIrqIdPwcPcs7LinkBringup0 = 236, /**< PWC_PCS_7_LINK_BRINGUP_0 */
-  kTopPwcPlicIrqIdPwcPcs7LinkBringup1 = 237, /**< PWC_PCS_7_LINK_BRINGUP_1 */
-  kTopPwcPlicIrqIdPwcPcs7LinkBringup2 = 238, /**< PWC_PCS_7_LINK_BRINGUP_2 */
-  kTopPwcPlicIrqIdPwcPcs7LinkBringup3 = 239, /**< PWC_PCS_7_LINK_BRINGUP_3 */
-  kTopPwcPlicIrqIdPwcPcs7MsgCtrl = 240, /**< PWC_PCS_7_MSG_CTRL */
-  kTopPwcPlicIrqIdPwcPcs7PhyStatus = 241, /**< PWC_PCS_7_PHY_STATUS */
-  kTopPwcPlicIrqIdPwcHdrIpiFromPwc0 = 242, /**< PWC_HDR_IPI_FROM_PWC_0 */
-  kTopPwcPlicIrqIdPwcHdrIpiFromPwc1 = 243, /**< PWC_HDR_IPI_FROM_PWC_1 */
-  kTopPwcPlicIrqIdPwcHdrIpiFromPwc2 = 244, /**< PWC_HDR_IPI_FROM_PWC_2 */
-  kTopPwcPlicIrqIdPwcHdrIpiFromRot = 245, /**< PWC_HDR_IPI_FROM_ROT */
-  kTopPwcPlicIrqIdPwcHdrIpiFromMio = 246, /**< PWC_HDR_IPI_FROM_MIO */
-  kTopPwcPlicIrqIdPwcHdrIpiFromDuc = 247, /**< PWC_HDR_IPI_FROM_DUC */
-  kTopPwcPlicIrqIdLast = 247, /**< \internal The Last Valid Interrupt ID. */
+  kTopPwcPlicIrqIdMbxPcie0MbxReady = 89, /**< mbx_pcie0_mbx_ready */
+  kTopPwcPlicIrqIdMbxPcie0MbxAbort = 90, /**< mbx_pcie0_mbx_abort */
+  kTopPwcPlicIrqIdMbxPcie0MbxError = 91, /**< mbx_pcie0_mbx_error */
+  kTopPwcPlicIrqIdPwcLteuSocHot = 92, /**< PWC_LTEU_SOC_HOT */
+  kTopPwcPlicIrqIdPwcLteuFwTrip = 93, /**< PWC_LTEU_FW_TRIP */
+  kTopPwcPlicIrqIdPwcLteuCatTrip = 94, /**< PWC_LTEU_CAT_TRIP */
+  kTopPwcPlicIrqIdLioGrpAIbexIrq = 95, /**< LIO_GRP_A_IBEX_IRQ */
+  kTopPwcPlicIrqIdLioGrpBIbexIrq = 96, /**< LIO_GRP_B_IBEX_IRQ */
+  kTopPwcPlicIrqIdLioGrpCIbexIrq = 97, /**< LIO_GRP_C_IBEX_IRQ */
+  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus0 = 98, /**< PWC_DVFS_SocDpaFsmstatus0 */
+  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus1 = 99, /**< PWC_DVFS_SocDpaFsmstatus1 */
+  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus2 = 100, /**< PWC_DVFS_SocDpaFsmstatus2 */
+  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus3 = 101, /**< PWC_DVFS_SocDpaFsmstatus3 */
+  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus4 = 102, /**< PWC_DVFS_SocDpaFsmstatus4 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs0 = 103, /**< PWC_DVFS_TargetCmdAVS0 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs1 = 104, /**< PWC_DVFS_TargetCmdAVS1 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs2 = 105, /**< PWC_DVFS_TargetCmdAVS2 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs3 = 106, /**< PWC_DVFS_TargetCmdAVS3 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs4 = 107, /**< PWC_DVFS_TargetCmdAVS4 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs5 = 108, /**< PWC_DVFS_TargetCmdAVS5 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs6 = 109, /**< PWC_DVFS_TargetCmdAVS6 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs7 = 110, /**< PWC_DVFS_TargetCmdAVS7 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs8 = 111, /**< PWC_DVFS_TargetCmdAVS8 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs9 = 112, /**< PWC_DVFS_TargetCmdAVS9 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs10 = 113, /**< PWC_DVFS_TargetCmdAVS10 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs11 = 114, /**< PWC_DVFS_TargetCmdAVS11 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs12 = 115, /**< PWC_DVFS_TargetCmdAVS12 */
+  kTopPwcPlicIrqIdPwcDvfsTargetcmdavs13 = 116, /**< PWC_DVFS_TargetCmdAVS13 */
+  kTopPwcPlicIrqIdPwcAvsAvsError0 = 117, /**< PWC_AVS_AVS_ERROR_0 */
+  kTopPwcPlicIrqIdPwcAvsAvsError1 = 118, /**< PWC_AVS_AVS_ERROR_1 */
+  kTopPwcPlicIrqIdPwcAvsAvsError2 = 119, /**< PWC_AVS_AVS_ERROR_2 */
+  kTopPwcPlicIrqIdPwcAvsAvsError3 = 120, /**< PWC_AVS_AVS_ERROR_3 */
+  kTopPwcPlicIrqIdPwcAvsAvsError4 = 121, /**< PWC_AVS_AVS_ERROR_4 */
+  kTopPwcPlicIrqIdPwcAvsAvsError5 = 122, /**< PWC_AVS_AVS_ERROR_5 */
+  kTopPwcPlicIrqIdPwcAvsAvsError6 = 123, /**< PWC_AVS_AVS_ERROR_6 */
+  kTopPwcPlicIrqIdPwcAvsAvsError7 = 124, /**< PWC_AVS_AVS_ERROR_7 */
+  kTopPwcPlicIrqIdPwcAvsAvsError8 = 125, /**< PWC_AVS_AVS_ERROR_8 */
+  kTopPwcPlicIrqIdPwcAvsAvsError9 = 126, /**< PWC_AVS_AVS_ERROR_9 */
+  kTopPwcPlicIrqIdPwcAvsAvsError10 = 127, /**< PWC_AVS_AVS_ERROR_10 */
+  kTopPwcPlicIrqIdPwcAvsAvsError11 = 128, /**< PWC_AVS_AVS_ERROR_11 */
+  kTopPwcPlicIrqIdPwcAvsAvsError12 = 129, /**< PWC_AVS_AVS_ERROR_12 */
+  kTopPwcPlicIrqIdPwcAvsAvsError13 = 130, /**< PWC_AVS_AVS_ERROR_13 */
+  kTopPwcPlicIrqIdPwcAvsAvsError14 = 131, /**< PWC_AVS_AVS_ERROR_14 */
+  kTopPwcPlicIrqIdPwcAvsAvsError15 = 132, /**< PWC_AVS_AVS_ERROR_15 */
+  kTopPwcPlicIrqIdPwcAvsAvsError16 = 133, /**< PWC_AVS_AVS_ERROR_16 */
+  kTopPwcPlicIrqIdPwcAvsAvsError17 = 134, /**< PWC_AVS_AVS_ERROR_17 */
+  kTopPwcPlicIrqIdPwcAvsAvsError18 = 135, /**< PWC_AVS_AVS_ERROR_18 */
+  kTopPwcPlicIrqIdPwcAvsAvsError19 = 136, /**< PWC_AVS_AVS_ERROR_19 */
+  kTopPwcPlicIrqIdPwcAvsAvsError20 = 137, /**< PWC_AVS_AVS_ERROR_20 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw0 = 138, /**< PWC_AVS_AVS_RESPONSE_TO_FW_0 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw1 = 139, /**< PWC_AVS_AVS_RESPONSE_TO_FW_1 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw2 = 140, /**< PWC_AVS_AVS_RESPONSE_TO_FW_2 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw3 = 141, /**< PWC_AVS_AVS_RESPONSE_TO_FW_3 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw4 = 142, /**< PWC_AVS_AVS_RESPONSE_TO_FW_4 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw5 = 143, /**< PWC_AVS_AVS_RESPONSE_TO_FW_5 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw6 = 144, /**< PWC_AVS_AVS_RESPONSE_TO_FW_6 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw7 = 145, /**< PWC_AVS_AVS_RESPONSE_TO_FW_7 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw8 = 146, /**< PWC_AVS_AVS_RESPONSE_TO_FW_8 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw9 = 147, /**< PWC_AVS_AVS_RESPONSE_TO_FW_9 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw10 = 148, /**< PWC_AVS_AVS_RESPONSE_TO_FW_10 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw11 = 149, /**< PWC_AVS_AVS_RESPONSE_TO_FW_11 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw12 = 150, /**< PWC_AVS_AVS_RESPONSE_TO_FW_12 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw13 = 151, /**< PWC_AVS_AVS_RESPONSE_TO_FW_13 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw14 = 152, /**< PWC_AVS_AVS_RESPONSE_TO_FW_14 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw15 = 153, /**< PWC_AVS_AVS_RESPONSE_TO_FW_15 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw16 = 154, /**< PWC_AVS_AVS_RESPONSE_TO_FW_16 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw17 = 155, /**< PWC_AVS_AVS_RESPONSE_TO_FW_17 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw18 = 156, /**< PWC_AVS_AVS_RESPONSE_TO_FW_18 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw19 = 157, /**< PWC_AVS_AVS_RESPONSE_TO_FW_19 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw20 = 158, /**< PWC_AVS_AVS_RESPONSE_TO_FW_20 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw21 = 159, /**< PWC_AVS_AVS_RESPONSE_TO_FW_21 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw22 = 160, /**< PWC_AVS_AVS_RESPONSE_TO_FW_22 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw23 = 161, /**< PWC_AVS_AVS_RESPONSE_TO_FW_23 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw24 = 162, /**< PWC_AVS_AVS_RESPONSE_TO_FW_24 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw25 = 163, /**< PWC_AVS_AVS_RESPONSE_TO_FW_25 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw26 = 164, /**< PWC_AVS_AVS_RESPONSE_TO_FW_26 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw27 = 165, /**< PWC_AVS_AVS_RESPONSE_TO_FW_27 */
+  kTopPwcPlicIrqIdPwcAvsAvsResponseToFw28 = 166, /**< PWC_AVS_AVS_RESPONSE_TO_FW_28 */
+  kTopPwcPlicIrqIdPwcBcastCStateEntry = 167, /**< PWC_BCAST_C_STATE_ENTRY */
+  kTopPwcPlicIrqIdPwcBcastCStateExit = 168, /**< PWC_BCAST_C_STATE_EXIT */
+  kTopPwcPlicIrqIdPwcBcastDpaIdleEntry = 169, /**< PWC_BCAST_DPA_IDLE_ENTRY */
+  kTopPwcPlicIrqIdPwcBcastDpaIdleExit = 170, /**< PWC_BCAST_DPA_IDLE_EXIT */
+  kTopPwcPlicIrqIdPwcCcs0PwrVirusLvlReq = 171, /**< PWC_CCS_0_PWR_VIRUS_LVL_REQ */
+  kTopPwcPlicIrqIdPwcCcs1PwrVirusLvlReq = 172, /**< PWC_CCS_1_PWR_VIRUS_LVL_REQ */
+  kTopPwcPlicIrqIdPwcCcs2PwrVirusLvlReq = 173, /**< PWC_CCS_2_PWR_VIRUS_LVL_REQ */
+  kTopPwcPlicIrqIdPwcCcs3PwrVirusLvlReq = 174, /**< PWC_CCS_3_PWR_VIRUS_LVL_REQ */
+  kTopPwcPlicIrqIdPwcCcs4PwrVirusLvlReq = 175, /**< PWC_CCS_4_PWR_VIRUS_LVL_REQ */
+  kTopPwcPlicIrqIdPwcCcs5PwrVirusLvlReq = 176, /**< PWC_CCS_5_PWR_VIRUS_LVL_REQ */
+  kTopPwcPlicIrqIdPwcCcs6PwrVirusLvlReq = 177, /**< PWC_CCS_6_PWR_VIRUS_LVL_REQ */
+  kTopPwcPlicIrqIdPwcCcs7PwrVirusLvlReq = 178, /**< PWC_CCS_7_PWR_VIRUS_LVL_REQ */
+  kTopPwcPlicIrqIdPwcCcs0DvfsFsm = 179, /**< PWC_CCS_0_DVFS_FSM */
+  kTopPwcPlicIrqIdPwcCcs1DvfsFsm = 180, /**< PWC_CCS_1_DVFS_FSM */
+  kTopPwcPlicIrqIdPwcCcs2DvfsFsm = 181, /**< PWC_CCS_2_DVFS_FSM */
+  kTopPwcPlicIrqIdPwcCcs3DvfsFsm = 182, /**< PWC_CCS_3_DVFS_FSM */
+  kTopPwcPlicIrqIdPwcCcs4DvfsFsm = 183, /**< PWC_CCS_4_DVFS_FSM */
+  kTopPwcPlicIrqIdPwcCcs5DvfsFsm = 184, /**< PWC_CCS_5_DVFS_FSM */
+  kTopPwcPlicIrqIdPwcCcs6DvfsFsm = 185, /**< PWC_CCS_6_DVFS_FSM */
+  kTopPwcPlicIrqIdPwcCcs7DvfsFsm = 186, /**< PWC_CCS_7_DVFS_FSM */
+  kTopPwcPlicIrqIdPwcHmsEastStatus = 187, /**< PWC_HMS_East_STATUS */
+  kTopPwcPlicIrqIdPwcHmsWestStatus = 188, /**< PWC_HMS_WEST_STATUS */
+  kTopPwcPlicIrqIdPwcPcs0AllPortsStatus = 189, /**< PWC_PCS_0_ALL_PORTS_STATUS */
+  kTopPwcPlicIrqIdPwcPcs0LinkBringup0 = 190, /**< PWC_PCS_0_LINK_BRINGUP_0 */
+  kTopPwcPlicIrqIdPwcPcs0LinkBringup1 = 191, /**< PWC_PCS_0_LINK_BRINGUP_1 */
+  kTopPwcPlicIrqIdPwcPcs0LinkBringup2 = 192, /**< PWC_PCS_0_LINK_BRINGUP_2 */
+  kTopPwcPlicIrqIdPwcPcs0LinkBringup3 = 193, /**< PWC_PCS_0_LINK_BRINGUP_3 */
+  kTopPwcPlicIrqIdPwcPcs0MsgCtrl = 194, /**< PWC_PCS_0_MSG_CTRL */
+  kTopPwcPlicIrqIdPwcPcs0PhyStatus = 195, /**< PWC_PCS_0_PHY_STATUS */
+  kTopPwcPlicIrqIdPwcPcs1AllPortsStatus = 196, /**< PWC_PCS_1_ALL_PORTS_STATUS */
+  kTopPwcPlicIrqIdPwcPcs1LinkBringup0 = 197, /**< PWC_PCS_1_LINK_BRINGUP_0 */
+  kTopPwcPlicIrqIdPwcPcs1LinkBringup1 = 198, /**< PWC_PCS_1_LINK_BRINGUP_1 */
+  kTopPwcPlicIrqIdPwcPcs1LinkBringup2 = 199, /**< PWC_PCS_1_LINK_BRINGUP_2 */
+  kTopPwcPlicIrqIdPwcPcs1LinkBringup3 = 200, /**< PWC_PCS_1_LINK_BRINGUP_3 */
+  kTopPwcPlicIrqIdPwcPcs1MsgCtrl = 201, /**< PWC_PCS_1_MSG_CTRL */
+  kTopPwcPlicIrqIdPwcPcs1PhyStatus = 202, /**< PWC_PCS_1_PHY_STATUS */
+  kTopPwcPlicIrqIdPwcPcs2AllPortsStatus = 203, /**< PWC_PCS_2_ALL_PORTS_STATUS */
+  kTopPwcPlicIrqIdPwcPcs2LinkBringup0 = 204, /**< PWC_PCS_2_LINK_BRINGUP_0 */
+  kTopPwcPlicIrqIdPwcPcs2LinkBringup1 = 205, /**< PWC_PCS_2_LINK_BRINGUP_1 */
+  kTopPwcPlicIrqIdPwcPcs2LinkBringup2 = 206, /**< PWC_PCS_2_LINK_BRINGUP_2 */
+  kTopPwcPlicIrqIdPwcPcs2LinkBringup3 = 207, /**< PWC_PCS_2_LINK_BRINGUP_3 */
+  kTopPwcPlicIrqIdPwcPcs2MsgCtrl = 208, /**< PWC_PCS_2_MSG_CTRL */
+  kTopPwcPlicIrqIdPwcPcs2PhyStatus = 209, /**< PWC_PCS_2_PHY_STATUS */
+  kTopPwcPlicIrqIdPwcPcs3AllPortsStatus = 210, /**< PWC_PCS_3_ALL_PORTS_STATUS */
+  kTopPwcPlicIrqIdPwcPcs3LinkBringup0 = 211, /**< PWC_PCS_3_LINK_BRINGUP_0 */
+  kTopPwcPlicIrqIdPwcPcs3LinkBringup1 = 212, /**< PWC_PCS_3_LINK_BRINGUP_1 */
+  kTopPwcPlicIrqIdPwcPcs3LinkBringup2 = 213, /**< PWC_PCS_3_LINK_BRINGUP_2 */
+  kTopPwcPlicIrqIdPwcPcs3LinkBringup3 = 214, /**< PWC_PCS_3_LINK_BRINGUP_3 */
+  kTopPwcPlicIrqIdPwcPcs3MsgCtrl = 215, /**< PWC_PCS_3_MSG_CTRL */
+  kTopPwcPlicIrqIdPwcPcs3PhyStatus = 216, /**< PWC_PCS_3_PHY_STATUS */
+  kTopPwcPlicIrqIdPwcPcs4AllPortsStatus = 217, /**< PWC_PCS_4_ALL_PORTS_STATUS */
+  kTopPwcPlicIrqIdPwcPcs4LinkBringup0 = 218, /**< PWC_PCS_4_LINK_BRINGUP_0 */
+  kTopPwcPlicIrqIdPwcPcs4LinkBringup1 = 219, /**< PWC_PCS_4_LINK_BRINGUP_1 */
+  kTopPwcPlicIrqIdPwcPcs4LinkBringup2 = 220, /**< PWC_PCS_4_LINK_BRINGUP_2 */
+  kTopPwcPlicIrqIdPwcPcs4LinkBringup3 = 221, /**< PWC_PCS_4_LINK_BRINGUP_3 */
+  kTopPwcPlicIrqIdPwcPcs4MsgCtrl = 222, /**< PWC_PCS_4_MSG_CTRL */
+  kTopPwcPlicIrqIdPwcPcs4PhyStatus = 223, /**< PWC_PCS_4_PHY_STATUS */
+  kTopPwcPlicIrqIdPwcPcs5AllPortsStatus = 224, /**< PWC_PCS_5_ALL_PORTS_STATUS */
+  kTopPwcPlicIrqIdPwcPcs5LinkBringup0 = 225, /**< PWC_PCS_5_LINK_BRINGUP_0 */
+  kTopPwcPlicIrqIdPwcPcs5LinkBringup1 = 226, /**< PWC_PCS_5_LINK_BRINGUP_1 */
+  kTopPwcPlicIrqIdPwcPcs5LinkBringup2 = 227, /**< PWC_PCS_5_LINK_BRINGUP_2 */
+  kTopPwcPlicIrqIdPwcPcs5LinkBringup3 = 228, /**< PWC_PCS_5_LINK_BRINGUP_3 */
+  kTopPwcPlicIrqIdPwcPcs5MsgCtrl = 229, /**< PWC_PCS_5_MSG_CTRL */
+  kTopPwcPlicIrqIdPwcPcs5PhyStatus = 230, /**< PWC_PCS_5_PHY_STATUS */
+  kTopPwcPlicIrqIdPwcPcs6AllPortsStatus = 231, /**< PWC_PCS_6_ALL_PORTS_STATUS */
+  kTopPwcPlicIrqIdPwcPcs6LinkBringup0 = 232, /**< PWC_PCS_6_LINK_BRINGUP_0 */
+  kTopPwcPlicIrqIdPwcPcs6LinkBringup1 = 233, /**< PWC_PCS_6_LINK_BRINGUP_1 */
+  kTopPwcPlicIrqIdPwcPcs6LinkBringup2 = 234, /**< PWC_PCS_6_LINK_BRINGUP_2 */
+  kTopPwcPlicIrqIdPwcPcs6LinkBringup3 = 235, /**< PWC_PCS_6_LINK_BRINGUP_3 */
+  kTopPwcPlicIrqIdPwcPcs6MsgCtrl = 236, /**< PWC_PCS_6_MSG_CTRL */
+  kTopPwcPlicIrqIdPwcPcs6PhyStatus = 237, /**< PWC_PCS_6_PHY_STATUS */
+  kTopPwcPlicIrqIdPwcPcs7AllPortsStatus = 238, /**< PWC_PCS_7_ALL_PORTS_STATUS */
+  kTopPwcPlicIrqIdPwcPcs7LinkBringup0 = 239, /**< PWC_PCS_7_LINK_BRINGUP_0 */
+  kTopPwcPlicIrqIdPwcPcs7LinkBringup1 = 240, /**< PWC_PCS_7_LINK_BRINGUP_1 */
+  kTopPwcPlicIrqIdPwcPcs7LinkBringup2 = 241, /**< PWC_PCS_7_LINK_BRINGUP_2 */
+  kTopPwcPlicIrqIdPwcPcs7LinkBringup3 = 242, /**< PWC_PCS_7_LINK_BRINGUP_3 */
+  kTopPwcPlicIrqIdPwcPcs7MsgCtrl = 243, /**< PWC_PCS_7_MSG_CTRL */
+  kTopPwcPlicIrqIdPwcPcs7PhyStatus = 244, /**< PWC_PCS_7_PHY_STATUS */
+  kTopPwcPlicIrqIdPwcHdrIpiFromPwc0 = 245, /**< PWC_HDR_IPI_FROM_PWC_0 */
+  kTopPwcPlicIrqIdPwcHdrIpiFromPwc1 = 246, /**< PWC_HDR_IPI_FROM_PWC_1 */
+  kTopPwcPlicIrqIdPwcHdrIpiFromPwc2 = 247, /**< PWC_HDR_IPI_FROM_PWC_2 */
+  kTopPwcPlicIrqIdPwcHdrIpiFromRot = 248, /**< PWC_HDR_IPI_FROM_ROT */
+  kTopPwcPlicIrqIdPwcHdrIpiFromMio = 249, /**< PWC_HDR_IPI_FROM_MIO */
+  kTopPwcPlicIrqIdPwcHdrIpiFromDuc = 250, /**< PWC_HDR_IPI_FROM_DUC */
+  kTopPwcPlicIrqIdLast = 250, /**< \internal The Last Valid Interrupt ID. */
 } top_pwc_plic_irq_id_t;
 
 /**
@@ -752,7 +774,7 @@ typedef enum top_pwc_plic_irq_id {
  * `top_pwc_plic_peripheral_t`.
  */
 extern const top_pwc_plic_peripheral_t
-    top_pwc_plic_interrupt_for_peripheral[248];
+    top_pwc_plic_interrupt_for_peripheral[251];
 
 /**
  * PLIC Interrupt Target.

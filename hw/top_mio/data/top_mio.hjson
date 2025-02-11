@@ -486,6 +486,20 @@
         soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_duc_private_mapping.hjson'
       }
     },
+    { name: "mbx_pcie0",
+      type: "mbx",
+      clock_srcs: {clk_i: "ext_main"}
+      clock_group: "infra",
+      reset_connections: {rst_ni: "ext_rst_main"},
+      base_addrs: {
+        core: {hart: "0x22040000"},
+        soc:  {soc_mbx: "0x01480100"},
+      },
+      outgoing_alert: "mio"
+      racl_mappings: {
+        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_all_rd_wr_mapping.hjson'
+      }
+    },
     { name: "racl_ctrl",
       type: "racl_ctrl_mio",
       template_type: "racl_ctrl",

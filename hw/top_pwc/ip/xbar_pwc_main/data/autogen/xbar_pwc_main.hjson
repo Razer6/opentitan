@@ -72,6 +72,12 @@
       act:    "rsp"
       package: "tlul_pkg"
     }
+    { struct: "tl"
+      type:   "req_rsp"
+      name:   "tl_mbx_pcie0__sram"
+      act:    "rsp"
+      package: "tlul_pkg"
+    }
     // device
     { struct: "tl"
       type:   "req_rsp"
@@ -178,6 +184,12 @@
     { struct: "tl"
       type:   "req_rsp"
       name:   "tl_mbx5__core"
+      act:    "req"
+      package: "tlul_pkg"
+    }
+    { struct: "tl"
+      type:   "req_rsp"
+      name:   "tl_mbx_pcie0__core"
       act:    "req"
       package: "tlul_pkg"
     }

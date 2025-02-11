@@ -58,6 +58,9 @@ tl_device_t xbar_devices[$] = '{
     '{"mbx5__core", '{
         '{32'h22000500, 32'h2200057f}
     }},
+    '{"mbx_pcie0__core", '{
+        '{32'h22040000, 32'h2204007f}
+    }},
     '{"rv_timer", '{
         '{32'h30000000, 32'h300001ff}
     }},
@@ -87,6 +90,9 @@ tl_device_t xbar_devices[$] = '{
     }},
     '{"mbx5__soc", '{
         '{32'h01485500, 32'h0148551f}
+    }},
+    '{"mbx_pcie0__soc", '{
+        '{32'h01480100, 32'h0148011f}
     }},
     '{"racl_ctrl", '{
         '{32'h01463000, 32'h0146303f}
@@ -120,7 +126,8 @@ tl_host_t xbar_hosts[$] = '{
         "mbx2__core",
         "mbx3__core",
         "mbx4__core",
-        "mbx5__core"}}
+        "mbx5__core",
+        "mbx_pcie0__core"}}
     ,
     '{"rv_dm__sba", 2, '{
         "rv_dm__mem",
@@ -143,7 +150,8 @@ tl_host_t xbar_hosts[$] = '{
         "mbx2__core",
         "mbx3__core",
         "mbx4__core",
-        "mbx5__core"}}
+        "mbx5__core",
+        "mbx_pcie0__core"}}
     ,
     '{"dma__host", 3, '{
         "sram_ctrl_main__ram",
@@ -170,5 +178,8 @@ tl_host_t xbar_hosts[$] = '{
         "sram_ctrl_mbox__ram"}}
     ,
     '{"mbx5__sram", 9, '{
+        "sram_ctrl_mbox__ram"}}
+    ,
+    '{"mbx_pcie0__sram", 10, '{
         "sram_ctrl_mbox__ram"}}
 };

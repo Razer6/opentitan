@@ -65,6 +65,7 @@
       mbx3.core
       mbx4.core
       mbx5.core
+      mbx_pcie0.core
     ]
     rv_dm.sba:
     [
@@ -86,6 +87,7 @@
       mbx3.core
       mbx4.core
       mbx5.core
+      mbx_pcie0.core
     ]
     dma.host:
     [
@@ -115,6 +117,10 @@
       sram_ctrl_mbox.ram
     ]
     mbx5.sram:
+    [
+      sram_ctrl_mbox.ram
+    ]
+    mbx_pcie0.sram:
     [
       sram_ctrl_mbox.ram
     ]
@@ -633,6 +639,41 @@
     }
     {
       name: mbx5.sram
+      type: host
+      addr_space: hart
+      clock: clk_main_i
+      reset: rst_main_ni
+      pipeline: false
+      xbar: false
+      stub: false
+      inst_type: ""
+      req_fifo_pass: true
+      rsp_fifo_pass: true
+    }
+    {
+      name: mbx_pcie0.core
+      type: device
+      addr_space: hart
+      clock: clk_main_i
+      reset: rst_main_ni
+      pipeline: false
+      inst_type: mbx
+      addr_range:
+      [
+        {
+          base_addrs:
+          {
+            hart: 0x22040000
+          }
+          size_byte: 0x80
+        }
+      ]
+      xbar: false
+      stub: false
+      req_fifo_pass: true
+    }
+    {
+      name: mbx_pcie0.sram
       type: host
       addr_space: hart
       clock: clk_main_i

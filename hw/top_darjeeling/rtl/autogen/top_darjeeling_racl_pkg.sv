@@ -128,19 +128,19 @@ package top_darjeeling_racl_pkg;
    *   TLUL interface name: soc
    *   RACL group: Null
    *   Register to policy mapping:
-   *     SOC_CONTROL:           PWC_PRIVATE (Idx  7)
-   *     SOC_STATUS:            PWC_PRIVATE (Idx  7)
-   *     SOC_DOE_INTR_MSG_ADDR: PWC_PRIVATE (Idx  7)
-   *     SOC_DOE_INTR_MSG_DATA: PWC_PRIVATE (Idx  7)
+   *     SOC_CONTROL:           DUC_PRIVATE (Idx  9)
+   *     SOC_STATUS:            DUC_PRIVATE (Idx  9)
+   *     SOC_DOE_INTR_MSG_ADDR: DUC_PRIVATE (Idx  9)
+   *     SOC_DOE_INTR_MSG_DATA: DUC_PRIVATE (Idx  9)
    *   Window to policy mapping:
-   *     WDATA: PWC_PRIVATE (Idx  7)
-   *     RDATA: PWC_PRIVATE (Idx  7)
+   *     WDATA: DUC_PRIVATE (Idx  9)
+   *     RDATA: DUC_PRIVATE (Idx  9)
    */
   parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX5_SOC [4] = '{
-    7, 7, 7, 7
+    9, 9, 9, 9
   };
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX5_SOC_WIN_WDATA = 7;
-  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX5_SOC_WIN_RDATA = 7;
+  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX5_SOC_WIN_WDATA = 9;
+  parameter top_racl_pkg::racl_policy_sel_t RACL_POLICY_SEL_MBX5_SOC_WIN_RDATA = 9;
 
   /**
    * Policy selection vector for mbx6

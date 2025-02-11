@@ -14,7 +14,7 @@ package top_pwc_soc_mbx_pkg;
   /**
    * Peripheral base address for soc device on mbx0 in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_MBX_MBX0_SOC_BASE_ADDR = 32'h1465000;
+  parameter int unsigned TOP_PWC_SOC_MBX_MBX0_SOC_BASE_ADDR = 32'h1475000;
 
   /**
    * Peripheral size in bytes for soc device on mbx0 in top pwc.
@@ -24,7 +24,7 @@ package top_pwc_soc_mbx_pkg;
   /**
    * Peripheral base address for soc device on mbx1 in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_MBX_MBX1_SOC_BASE_ADDR = 32'h1465100;
+  parameter int unsigned TOP_PWC_SOC_MBX_MBX1_SOC_BASE_ADDR = 32'h1475100;
 
   /**
    * Peripheral size in bytes for soc device on mbx1 in top pwc.
@@ -34,7 +34,7 @@ package top_pwc_soc_mbx_pkg;
   /**
    * Peripheral base address for soc device on mbx2 in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_MBX_MBX2_SOC_BASE_ADDR = 32'h1465200;
+  parameter int unsigned TOP_PWC_SOC_MBX_MBX2_SOC_BASE_ADDR = 32'h1475200;
 
   /**
    * Peripheral size in bytes for soc device on mbx2 in top pwc.
@@ -44,7 +44,7 @@ package top_pwc_soc_mbx_pkg;
   /**
    * Peripheral base address for soc device on mbx3 in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_MBX_MBX3_SOC_BASE_ADDR = 32'h1465300;
+  parameter int unsigned TOP_PWC_SOC_MBX_MBX3_SOC_BASE_ADDR = 32'h1475300;
 
   /**
    * Peripheral size in bytes for soc device on mbx3 in top pwc.
@@ -54,7 +54,7 @@ package top_pwc_soc_mbx_pkg;
   /**
    * Peripheral base address for soc device on mbx4 in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_MBX_MBX4_SOC_BASE_ADDR = 32'h1465400;
+  parameter int unsigned TOP_PWC_SOC_MBX_MBX4_SOC_BASE_ADDR = 32'h1475400;
 
   /**
    * Peripheral size in bytes for soc device on mbx4 in top pwc.
@@ -64,7 +64,7 @@ package top_pwc_soc_mbx_pkg;
   /**
    * Peripheral base address for soc device on mbx5 in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_MBX_MBX5_SOC_BASE_ADDR = 32'h1465500;
+  parameter int unsigned TOP_PWC_SOC_MBX_MBX5_SOC_BASE_ADDR = 32'h1475500;
 
   /**
    * Peripheral size in bytes for soc device on mbx5 in top pwc.
@@ -72,9 +72,19 @@ package top_pwc_soc_mbx_pkg;
   parameter int unsigned TOP_PWC_SOC_MBX_MBX5_SOC_SIZE_BYTES = 32'h20;
 
   /**
+   * Peripheral base address for soc device on mbx_pcie0 in top pwc.
+   */
+  parameter int unsigned TOP_PWC_SOC_MBX_MBX_PCIE0_SOC_BASE_ADDR = 32'h1470100;
+
+  /**
+   * Peripheral size in bytes for soc device on mbx_pcie0 in top pwc.
+   */
+  parameter int unsigned TOP_PWC_SOC_MBX_MBX_PCIE0_SOC_SIZE_BYTES = 32'h20;
+
+  /**
    * Peripheral base address for racl_ctrl in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_MBX_RACL_CTRL_BASE_ADDR = 32'h1463000;
+  parameter int unsigned TOP_PWC_SOC_MBX_RACL_CTRL_BASE_ADDR = 32'h1473000;
 
   /**
    * Peripheral size in bytes for racl_ctrl in top pwc.
@@ -83,7 +93,7 @@ package top_pwc_soc_mbx_pkg;
 
   
   // Number of pwc outgoing alerts
-  parameter int unsigned NOutgoingAlertsPwc = 28;
+  parameter int unsigned NOutgoingAlertsPwc = 30;
 
   // Number of LPGs for outgoing alert group pwc
   parameter int unsigned NOutgoingLpgsPwc = 2;
@@ -106,8 +116,9 @@ package top_pwc_soc_mbx_pkg;
     TopPwcAlertPeripheralMbx3 = 13,
     TopPwcAlertPeripheralMbx4 = 14,
     TopPwcAlertPeripheralMbx5 = 15,
-    TopPwcAlertPeripheralRaclCtrl = 16,
-    TopPwcAlertPeripheralRvCoreIbex = 17,
+    TopPwcAlertPeripheralMbxPcie0 = 16,
+    TopPwcAlertPeripheralRaclCtrl = 17,
+    TopPwcAlertPeripheralRvCoreIbex = 18,
     TopPwcOutgoingAlertPwcPeripheralCount
   } outgoing_alert_pwc_peripheral_e;
 
@@ -135,17 +146,21 @@ package top_pwc_soc_mbx_pkg;
     TopPwcAlertIdMbx4RecovFault = 19,
     TopPwcAlertIdMbx5FatalFault = 20,
     TopPwcAlertIdMbx5RecovFault = 21,
-    TopPwcAlertIdRaclCtrlRecovCtrlUpdateErr = 22,
-    TopPwcAlertIdRaclCtrlFatalFault = 23,
-    TopPwcAlertIdRvCoreIbexFatalSwErr = 24,
-    TopPwcAlertIdRvCoreIbexRecovSwErr = 25,
-    TopPwcAlertIdRvCoreIbexFatalHwErr = 26,
-    TopPwcAlertIdRvCoreIbexRecovHwErr = 27,
+    TopPwcAlertIdMbxPcie0FatalFault = 22,
+    TopPwcAlertIdMbxPcie0RecovFault = 23,
+    TopPwcAlertIdRaclCtrlRecovCtrlUpdateErr = 24,
+    TopPwcAlertIdRaclCtrlFatalFault = 25,
+    TopPwcAlertIdRvCoreIbexFatalSwErr = 26,
+    TopPwcAlertIdRvCoreIbexRecovSwErr = 27,
+    TopPwcAlertIdRvCoreIbexFatalHwErr = 28,
+    TopPwcAlertIdRvCoreIbexRecovHwErr = 29,
     TopPwcOutgoingAlertPwcIdCount
   } outgoing_alert_pwc_id_e;
 
   // Enumeration of pwc outgoing alerts AsyncOn configuration
   parameter logic [NOutgoingAlertsPwc-1:0] AsyncOnOutgoingAlertPwc = {
+    1'b1,
+    1'b1,
     1'b1,
     1'b1,
     1'b1,

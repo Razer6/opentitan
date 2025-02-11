@@ -26,6 +26,7 @@ package tl_mio_main_pkg;
   localparam logic [31:0] ADDR_SPACE_MBX3__CORE           = 32'h 22000300;
   localparam logic [31:0] ADDR_SPACE_MBX4__CORE           = 32'h 22000400;
   localparam logic [31:0] ADDR_SPACE_MBX5__CORE           = 32'h 22000500;
+  localparam logic [31:0] ADDR_SPACE_MBX_PCIE0__CORE      = 32'h 22040000;
 
   localparam logic [31:0] ADDR_MASK_RV_DM__REGS          = 32'h 0000000f;
   localparam logic [31:0] ADDR_MASK_RV_DM__MEM           = 32'h 00000fff;
@@ -47,9 +48,10 @@ package tl_mio_main_pkg;
   localparam logic [31:0] ADDR_MASK_MBX3__CORE           = 32'h 0000007f;
   localparam logic [31:0] ADDR_MASK_MBX4__CORE           = 32'h 0000007f;
   localparam logic [31:0] ADDR_MASK_MBX5__CORE           = 32'h 0000007f;
+  localparam logic [31:0] ADDR_MASK_MBX_PCIE0__CORE      = 32'h 0000007f;
 
-  localparam int N_HOST   = 10;
-  localparam int N_DEVICE = 18;
+  localparam int N_HOST   = 11;
+  localparam int N_DEVICE = 19;
 
   typedef enum int {
     TlRvDmRegs = 0,
@@ -69,7 +71,8 @@ package tl_mio_main_pkg;
     TlMbx2Core = 14,
     TlMbx3Core = 15,
     TlMbx4Core = 16,
-    TlMbx5Core = 17
+    TlMbx5Core = 17,
+    TlMbxPcie0Core = 18
   } tl_device_e;
 
   typedef enum int {
@@ -82,7 +85,8 @@ package tl_mio_main_pkg;
     TlMbx2Sram = 6,
     TlMbx3Sram = 7,
     TlMbx4Sram = 8,
-    TlMbx5Sram = 9
+    TlMbx5Sram = 9,
+    TlMbxPcie0Sram = 10
   } tl_host_e;
 
 endpackage

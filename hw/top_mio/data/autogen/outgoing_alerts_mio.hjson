@@ -196,9 +196,27 @@
             lpg_idx: 1
         }
         {
+            name: mbx_pcie0_fatal_fault
+            module_name: mbx_pcie0
+            index: 21
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 1
+        }
+        {
+            name: mbx_pcie0_recov_fault
+            module_name: mbx_pcie0
+            index: 22
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 1
+        }
+        {
             name: racl_ctrl_recov_ctrl_update_err
             module_name: racl_ctrl
-            index: 21
+            index: 23
             type: alert
             async: 1
             width: 1
@@ -207,7 +225,7 @@
         {
             name: racl_ctrl_fatal_fault
             module_name: racl_ctrl
-            index: 22
+            index: 24
             type: alert
             async: 1
             width: 1
@@ -216,7 +234,7 @@
         {
             name: rv_core_ibex_fatal_sw_err
             module_name: rv_core_ibex
-            index: 23
+            index: 25
             type: alert
             async: 1
             width: 1
@@ -225,7 +243,7 @@
         {
             name: rv_core_ibex_recov_sw_err
             module_name: rv_core_ibex
-            index: 24
+            index: 26
             type: alert
             async: 1
             width: 1
@@ -234,7 +252,7 @@
         {
             name: rv_core_ibex_fatal_hw_err
             module_name: rv_core_ibex
-            index: 25
+            index: 27
             type: alert
             async: 1
             width: 1
@@ -243,7 +261,7 @@
         {
             name: rv_core_ibex_recov_hw_err
             module_name: rv_core_ibex
-            index: 26
+            index: 28
             type: alert
             async: 1
             width: 1
