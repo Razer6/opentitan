@@ -117,6 +117,7 @@ def _ipgen_render_prelude(template_name: str, topname: str,
                    if params else template_name)
     top_name = f"top_{topname}"
     instance_name = f"{top_name}_{module_name}"
+
     ip_template = IpTemplate.from_template_path(IP_TEMPLATES_PATH /
                                                 template_name)
     params.update({
