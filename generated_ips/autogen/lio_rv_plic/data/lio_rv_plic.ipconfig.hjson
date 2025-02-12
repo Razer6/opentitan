@@ -10,5 +10,6 @@
     src: 256
     target: 7
     prio: 3
+    use_flat_regs: true
   }
 }

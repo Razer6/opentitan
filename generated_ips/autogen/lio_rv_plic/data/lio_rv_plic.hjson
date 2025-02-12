@@ -2164,7 +2164,6 @@
         { bits: "1:0" }
       ],
     }
-    { skipto: "0x00001000" }
     { multireg: {
         name: "IP",
         desc: "Interrupt Pending",
@@ -2179,7 +2178,6 @@
                "excl:CsrNonInitTests:CsrExclCheck"],
       }
     },
-    { skipto: "0x2000" }
     { multireg: {
         name: "IE0",
         desc: "Interrupt Enable for Target 0",
@@ -2192,7 +2190,6 @@
         ],
       }
     }
-    { skipto: "0x2100" }
     { multireg: {
         name: "IE1",
         desc: "Interrupt Enable for Target 1",
@@ -2205,7 +2202,6 @@
         ],
       }
     }
-    { skipto: "0x2200" }
     { multireg: {
         name: "IE2",
         desc: "Interrupt Enable for Target 2",
@@ -2218,7 +2214,6 @@
         ],
       }
     }
-    { skipto: "0x2300" }
     { multireg: {
         name: "IE3",
         desc: "Interrupt Enable for Target 3",
@@ -2231,7 +2226,6 @@
         ],
       }
     }
-    { skipto: "0x2400" }
     { multireg: {
         name: "IE4",
         desc: "Interrupt Enable for Target 4",
@@ -2244,7 +2238,6 @@
         ],
       }
     }
-    { skipto: "0x2500" }
     { multireg: {
         name: "IE5",
         desc: "Interrupt Enable for Target 5",
@@ -2257,7 +2250,6 @@
         ],
       }
     }
-    { skipto: "0x2600" }
     { multireg: {
         name: "IE6",
         desc: "Interrupt Enable for Target 6",
@@ -2270,7 +2262,6 @@
         ],
       }
     }
-    { skipto: "0x200000" }
     { name: "THRESHOLD0",
       desc: "Threshold of priority for Target 0",
       swaccess: "rw",
@@ -2293,7 +2284,6 @@
       tags: [// CC register value is related to IP
              "excl:CsrNonInitTests:CsrExclCheck"],
     }
-    { skipto: "0x201000" }
     { name: "THRESHOLD1",
       desc: "Threshold of priority for Target 1",
       swaccess: "rw",
@@ -2316,7 +2306,6 @@
       tags: [// CC register value is related to IP
              "excl:CsrNonInitTests:CsrExclCheck"],
     }
-    { skipto: "0x202000" }
     { name: "THRESHOLD2",
       desc: "Threshold of priority for Target 2",
       swaccess: "rw",
@@ -2339,7 +2328,6 @@
       tags: [// CC register value is related to IP
              "excl:CsrNonInitTests:CsrExclCheck"],
     }
-    { skipto: "0x203000" }
     { name: "THRESHOLD3",
       desc: "Threshold of priority for Target 3",
       swaccess: "rw",
@@ -2362,7 +2350,6 @@
       tags: [// CC register value is related to IP
              "excl:CsrNonInitTests:CsrExclCheck"],
     }
-    { skipto: "0x204000" }
     { name: "THRESHOLD4",
       desc: "Threshold of priority for Target 4",
       swaccess: "rw",
@@ -2385,7 +2372,6 @@
       tags: [// CC register value is related to IP
              "excl:CsrNonInitTests:CsrExclCheck"],
     }
-    { skipto: "0x205000" }
     { name: "THRESHOLD5",
       desc: "Threshold of priority for Target 5",
       swaccess: "rw",
@@ -2408,7 +2394,6 @@
       tags: [// CC register value is related to IP
              "excl:CsrNonInitTests:CsrExclCheck"],
     }
-    { skipto: "0x206000" }
     { name: "THRESHOLD6",
       desc: "Threshold of priority for Target 6",
       swaccess: "rw",
@@ -2431,7 +2416,6 @@
       tags: [// CC register value is related to IP
              "excl:CsrNonInitTests:CsrExclCheck"],
     }
-  { skipto: "0x4000000" }
     { name: "MSIP0",
       desc: '''msip for Hart 0.
       Write 1 to here asserts software interrupt for Hart msip_o[0], write 0 to clear.''',
@@ -2509,7 +2493,6 @@
         }
       ],
     }
-  { skipto: "0x4004000" }
   { name: "ALERT_TEST",
       desc: '''Alert Test Register.''',
       swaccess: "wo",

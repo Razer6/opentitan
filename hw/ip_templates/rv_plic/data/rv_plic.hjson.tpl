@@ -163,7 +163,9 @@
       ],
     }
 % endfor
+% if not use_flat_regs:
     { skipto: "0x00001000" }
+% endif
     { multireg: {
         name: "IP",
         desc: "Interrupt Pending",
@@ -179,7 +181,9 @@
       }
     },
 % for i in range(target):
+% if not use_flat_regs:
     { skipto: "${"0x{:x}".format(0x00002000 + i * 0x100)}" }
+% endif
     { multireg: {
         name: "IE${i}",
         desc: "Interrupt Enable for Target ${i}",
@@ -194,7 +198,9 @@
     }
 % endfor
 % for i in range(target):
+% if not use_flat_regs:
     { skipto: "${"0x{:x}".format(0x00200000  + i * 0x1000)}" }
+% endif
     { name: "THRESHOLD${i}",
       desc: "Threshold of priority for Target ${i}",
       swaccess: "rw",
@@ -218,7 +224,9 @@
              "excl:CsrNonInitTests:CsrExclCheck"],
     }
 % endfor
+% if not use_flat_regs:
   { skipto: "0x4000000" }
+% endif
 % for i in range(target):
     { name: "MSIP${i}",
       desc: '''msip for Hart ${i}.
@@ -232,7 +240,9 @@
       ],
     }
 % endfor
+% if not use_flat_regs:
   { skipto: "0x4004000" }
+% endif
   { name: "ALERT_TEST",
       desc: '''Alert Test Register.''',
       swaccess: "wo",

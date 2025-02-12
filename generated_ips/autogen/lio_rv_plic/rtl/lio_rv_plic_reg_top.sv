@@ -21,7 +21,7 @@ module lio_rv_plic_reg_top (
 
   import lio_rv_plic_reg_pkg::* ;
 
-  localparam int AW = 27;
+  localparam int AW = 11;
   localparam int DW = 32;
   localparam int DBW = DW/8;                    // Byte Width
 

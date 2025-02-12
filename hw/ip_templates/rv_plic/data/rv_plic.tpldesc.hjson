@@ -39,5 +39,11 @@
       type: "bool"
       default: false
     }
+    {
+      name: "use_flat_regs"
+      desc: "Flat register address space without skips and holes"
+      type: "bool"
+      default: false
+    }
   ]
 }

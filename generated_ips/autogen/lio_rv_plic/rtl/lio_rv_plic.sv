@@ -56,7 +56,7 @@ module lio_rv_plic import lio_rv_plic_reg_pkg::*; #(
 
   logic [NumSrc-1:0] ip;
 
-  logic [NumSrc-1:0] ie [lio_rv_plic_reg_pkg::NumTarget];
+  logic [NumSrc-1:0] ie [NumTarget];
 
   logic [NumTarget-1:0] claim_re; // Target read indicator
   logic [SRCW-1:0]      claim_id [NumTarget];
