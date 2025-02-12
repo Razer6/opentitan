@@ -415,10 +415,6 @@
       {
         clk_i: clk_ext_io_div4_i
       }
-      domain:
-      [
-        "0"
-      ]
       memory: {}
       param_list:
       [
@@ -514,6 +510,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: rv_timer
@@ -536,10 +536,6 @@
       {
         clk_i: clk_ext_io_div4_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -566,6 +562,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: aon_timer_aon
@@ -1313,10 +1313,6 @@
         clk_i: clk_ext_main_i
         clk_lc_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       memory: {}
       param_list:
       [
@@ -1632,6 +1628,10 @@
           index: -1
         }
       ]
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: rv_plic_pwc
@@ -1660,10 +1660,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -1727,6 +1723,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: sram_ctrl_main
@@ -1785,10 +1785,6 @@
         clk_i: clk_ext_main_i
         clk_otp_i: clk_ext_io_div4_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_list:
       [
         {
@@ -2075,6 +2071,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: sram_ctrl_mbox
@@ -2133,10 +2133,6 @@
         clk_i: clk_ext_main_i
         clk_otp_i: clk_ext_io_div4_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_list:
       [
         {
@@ -2420,6 +2416,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: dma
@@ -2442,10 +2442,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       memory: {}
       param_list:
@@ -2590,6 +2586,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx0
@@ -2642,10 +2642,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -2760,6 +2756,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx1
@@ -2812,10 +2812,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -2930,6 +2926,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx2
@@ -2982,10 +2982,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -3100,6 +3096,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx3
@@ -3152,10 +3152,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -3270,6 +3266,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx4
@@ -3322,10 +3322,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -3440,6 +3436,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx5
@@ -3492,10 +3492,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -3610,6 +3606,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx_pcie0
@@ -3662,10 +3662,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -3780,6 +3776,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: racl_ctrl
@@ -3804,10 +3804,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       memory: {}
       param_list:
@@ -3930,6 +3926,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: rv_core_ibex
@@ -4010,10 +4010,6 @@
         clk_esc_i: clk_ext_io_div4_i
         clk_otp_i: clk_ext_io_div4_i
       }
-      domain:
-      [
-        "0"
-      ]
       memory: {}
       param_list:
       [
@@ -4643,6 +4639,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
   ]
   memory: []
@@ -5617,8 +5617,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: pwc_main_tl_rv_core_ibex__corei
@@ -5630,8 +5630,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: pwc_main_tl_rv_core_ibex__cored
@@ -5643,8 +5643,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: pwc_main_tl_rv_dm__sba
@@ -5656,8 +5656,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: pwc_main_tl_dma__host
@@ -5669,8 +5669,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: pwc_main_tl_mbx0__sram
@@ -5682,8 +5682,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: pwc_main_tl_mbx1__sram
@@ -5695,8 +5695,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: pwc_main_tl_mbx2__sram
@@ -5708,8 +5708,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: pwc_main_tl_mbx3__sram
@@ -5721,8 +5721,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: pwc_main_tl_mbx4__sram
@@ -5734,8 +5734,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: pwc_main_tl_mbx5__sram
@@ -5747,8 +5747,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: pwc_main_tl_mbx_pcie0__sram
@@ -5760,8 +5760,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: rv_dm_regs_tl_d
           index: -1
@@ -5772,8 +5772,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: rv_dm_mem_tl_d
           index: -1
@@ -5784,8 +5784,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: pwc_main_tl_pwc_peri
@@ -5797,8 +5797,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: pwc_soc_proxy_core_tl
           index: -1
@@ -5809,8 +5809,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: pwc_soc_proxy_ctn_tl
           index: -1
@@ -5821,8 +5821,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: rv_plic_pwc_tl
           index: -1
@@ -5833,8 +5833,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: rv_core_ibex_cfg_tl_d
           index: -1
@@ -5845,8 +5845,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: sram_ctrl_main_regs_tl
           index: -1
@@ -5857,8 +5857,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: sram_ctrl_main_ram_tl
           index: -1
@@ -5869,8 +5869,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: sram_ctrl_mbox_regs_tl
           index: -1
@@ -5881,8 +5881,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: sram_ctrl_mbox_ram_tl
           index: -1
@@ -5893,8 +5893,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: dma_tl_d
           index: -1
@@ -5905,8 +5905,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: mbx0_core_tl_d
           index: -1
@@ -5917,8 +5917,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: mbx1_core_tl_d
           index: -1
@@ -5929,8 +5929,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: mbx2_core_tl_d
           index: -1
@@ -5941,8 +5941,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: mbx3_core_tl_d
           index: -1
@@ -5953,8 +5953,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: mbx4_core_tl_d
           index: -1
@@ -5965,8 +5965,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: mbx5_core_tl_d
           index: -1
@@ -5977,8 +5977,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_main
+          width: 1
           default: ""
           top_signame: mbx_pcie0_core_tl_d
           index: -1
@@ -6155,8 +6155,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: pwc_peri
+          width: 1
           default: ""
           top_signame: pwc_main_tl_pwc_peri
           index: -1
@@ -6167,8 +6167,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_peri
+          width: 1
           default: ""
           top_signame: gpio_tl
           index: -1
@@ -6179,8 +6179,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_peri
+          width: 1
           default: ""
           top_signame: rv_timer_tl
           index: -1
@@ -6191,8 +6191,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_peri
+          width: 1
           default: ""
           top_signame: sram_ctrl_ret_aon_regs_tl
           index: -1
@@ -6203,8 +6203,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_peri
+          width: 1
           default: ""
           top_signame: sram_ctrl_ret_aon_ram_tl
           index: -1
@@ -6215,8 +6215,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_peri
+          width: 1
           default: ""
           top_signame: aon_timer_aon_tl
           index: -1
@@ -6467,8 +6467,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: pwc_mbx
+          width: 1
           default: ""
           external: true
           top_signame: mbx_tl
@@ -6481,8 +6481,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_mbx
+          width: 1
           default: ""
           top_signame: mbx0_soc_tl_d
           index: -1
@@ -6493,8 +6493,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_mbx
+          width: 1
           default: ""
           top_signame: mbx1_soc_tl_d
           index: -1
@@ -6505,8 +6505,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_mbx
+          width: 1
           default: ""
           top_signame: mbx2_soc_tl_d
           index: -1
@@ -6517,8 +6517,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_mbx
+          width: 1
           default: ""
           top_signame: mbx3_soc_tl_d
           index: -1
@@ -6529,8 +6529,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_mbx
+          width: 1
           default: ""
           top_signame: mbx4_soc_tl_d
           index: -1
@@ -6541,8 +6541,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_mbx
+          width: 1
           default: ""
           top_signame: mbx5_soc_tl_d
           index: -1
@@ -6553,8 +6553,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_mbx
+          width: 1
           default: ""
           top_signame: mbx_pcie0_soc_tl_d
           index: -1
@@ -6565,8 +6565,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: pwc_mbx
+          width: 1
           default: ""
           top_signame: racl_ctrl_tl
           index: -1
@@ -6597,3525 +6597,1121 @@
     pwc_external:
     [
       {
-        name: PWC_LTEU_SOC_HOT
+        name: SOC_HOT
         module_name: PWC_LTEU
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_LTEU_FW_TRIP
+        name: FW_TRIP
         module_name: PWC_LTEU
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_LTEU_CAT_TRIP
+        name: CAT_TRIP
         module_name: PWC_LTEU
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: LIO_GRP_A_IBEX_IRQ
+        name: IBEX_IRQ
         module_name: LIO_GRP_A
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: LIO_GRP_B_IBEX_IRQ
+        name: IBEX_IRQ
         module_name: LIO_GRP_B
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: LIO_GRP_C_IBEX_IRQ
+        name: IBEX_IRQ
         module_name: LIO_GRP_C
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_SocDpaFsmstatus0
+        name: SocDpaFsmstatus0
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_SocDpaFsmstatus1
+        name: SocDpaFsmstatus1
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_SocDpaFsmstatus2
+        name: SocDpaFsmstatus2
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_SocDpaFsmstatus3
+        name: SocDpaFsmstatus3
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_SocDpaFsmstatus4
+        name: SocDpaFsmstatus4
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS0
+        name: TargetCmdAVS0
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS1
+        name: TargetCmdAVS1
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS2
+        name: TargetCmdAVS2
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS3
+        name: TargetCmdAVS3
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS4
+        name: TargetCmdAVS4
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS5
+        name: TargetCmdAVS5
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS6
+        name: TargetCmdAVS6
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS7
+        name: TargetCmdAVS7
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS8
+        name: TargetCmdAVS8
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS9
+        name: TargetCmdAVS9
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS10
+        name: TargetCmdAVS10
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS11
+        name: TargetCmdAVS11
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS12
+        name: TargetCmdAVS12
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_DVFS_TargetCmdAVS13
+        name: TargetCmdAVS13
         module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_0
+        name: AVS_ERROR_0
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_1
+        name: AVS_ERROR_1
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_2
+        name: AVS_ERROR_2
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_3
+        name: AVS_ERROR_3
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_4
+        name: AVS_ERROR_4
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_5
+        name: AVS_ERROR_5
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_6
+        name: AVS_ERROR_6
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_7
+        name: AVS_ERROR_7
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_8
+        name: AVS_ERROR_8
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_9
+        name: AVS_ERROR_9
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_10
+        name: AVS_ERROR_10
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_11
+        name: AVS_ERROR_11
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_12
+        name: AVS_ERROR_12
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_13
+        name: AVS_ERROR_13
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_14
+        name: AVS_ERROR_14
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_15
+        name: AVS_ERROR_15
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_16
+        name: AVS_ERROR_16
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_17
+        name: AVS_ERROR_17
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_18
+        name: AVS_ERROR_18
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_19
+        name: AVS_ERROR_19
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_ERROR_20
+        name: AVS_ERROR_20
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_0
+        name: AVS_RESPONSE_TO_FW_0
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_1
+        name: AVS_RESPONSE_TO_FW_1
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_2
+        name: AVS_RESPONSE_TO_FW_2
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_3
+        name: AVS_RESPONSE_TO_FW_3
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_4
+        name: AVS_RESPONSE_TO_FW_4
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_5
+        name: AVS_RESPONSE_TO_FW_5
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_6
+        name: AVS_RESPONSE_TO_FW_6
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_7
+        name: AVS_RESPONSE_TO_FW_7
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_8
+        name: AVS_RESPONSE_TO_FW_8
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_9
+        name: AVS_RESPONSE_TO_FW_9
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_10
+        name: AVS_RESPONSE_TO_FW_10
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_11
+        name: AVS_RESPONSE_TO_FW_11
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_12
+        name: AVS_RESPONSE_TO_FW_12
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_13
+        name: AVS_RESPONSE_TO_FW_13
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_14
+        name: AVS_RESPONSE_TO_FW_14
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_15
+        name: AVS_RESPONSE_TO_FW_15
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_16
+        name: AVS_RESPONSE_TO_FW_16
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_17
+        name: AVS_RESPONSE_TO_FW_17
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_18
+        name: AVS_RESPONSE_TO_FW_18
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_19
+        name: AVS_RESPONSE_TO_FW_19
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_20
+        name: AVS_RESPONSE_TO_FW_20
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_21
+        name: AVS_RESPONSE_TO_FW_21
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_22
+        name: AVS_RESPONSE_TO_FW_22
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_23
+        name: AVS_RESPONSE_TO_FW_23
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_24
+        name: AVS_RESPONSE_TO_FW_24
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_25
+        name: AVS_RESPONSE_TO_FW_25
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_26
+        name: AVS_RESPONSE_TO_FW_26
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_27
+        name: AVS_RESPONSE_TO_FW_27
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_AVS_AVS_RESPONSE_TO_FW_28
+        name: AVS_RESPONSE_TO_FW_28
         module_name: PWC_AVS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_BCAST_C_STATE_ENTRY
+        name: C_STATE_ENTRY
         module_name: PWC_BCAST
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_BCAST_C_STATE_EXIT
+        name: C_STATE_EXIT
         module_name: PWC_BCAST
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_BCAST_DPA_IDLE_ENTRY
+        name: DPA_IDLE_ENTRY
         module_name: PWC_BCAST
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_BCAST_DPA_IDLE_EXIT
+        name: DPA_IDLE_EXIT
         module_name: PWC_BCAST
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_0_PWR_VIRUS_LVL_REQ
+        name: PWR_VIRUS_LVL_REQ
         module_name: PWC_CCS_0
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_1_PWR_VIRUS_LVL_REQ
+        name: PWR_VIRUS_LVL_REQ
         module_name: PWC_CCS_1
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_2_PWR_VIRUS_LVL_REQ
+        name: PWR_VIRUS_LVL_REQ
         module_name: PWC_CCS_2
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_3_PWR_VIRUS_LVL_REQ
+        name: PWR_VIRUS_LVL_REQ
         module_name: PWC_CCS_3
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_4_PWR_VIRUS_LVL_REQ
+        name: PWR_VIRUS_LVL_REQ
         module_name: PWC_CCS_4
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_5_PWR_VIRUS_LVL_REQ
+        name: PWR_VIRUS_LVL_REQ
         module_name: PWC_CCS_5
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_6_PWR_VIRUS_LVL_REQ
+        name: PWR_VIRUS_LVL_REQ
         module_name: PWC_CCS_6
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_7_PWR_VIRUS_LVL_REQ
+        name: PWR_VIRUS_LVL_REQ
         module_name: PWC_CCS_7
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_0_DVFS_FSM
+        name: DVFS_FSM
         module_name: PWC_CCS_0
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_1_DVFS_FSM
+        name: DVFS_FSM
         module_name: PWC_CCS_1
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_2_DVFS_FSM
+        name: DVFS_FSM
         module_name: PWC_CCS_2
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_3_DVFS_FSM
+        name: DVFS_FSM
         module_name: PWC_CCS_3
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_4_DVFS_FSM
+        name: DVFS_FSM
         module_name: PWC_CCS_4
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_5_DVFS_FSM
+        name: DVFS_FSM
         module_name: PWC_CCS_5
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_6_DVFS_FSM
+        name: DVFS_FSM
         module_name: PWC_CCS_6
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_CCS_7_DVFS_FSM
+        name: DVFS_FSM
         module_name: PWC_CCS_7
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_HMS_East_STATUS
+        name: East_STATUS
         module_name: PWC_HMS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_HMS_WEST_STATUS
+        name: WEST_STATUS
         module_name: PWC_HMS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_0_ALL_PORTS_STATUS
+        name: ALL_PORTS_STATUS
         module_name: PWC_PCS_0
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_0_LINK_BRINGUP_0
+        name: LINK_BRINGUP_0
         module_name: PWC_PCS_0
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_0_LINK_BRINGUP_1
+        name: LINK_BRINGUP_1
         module_name: PWC_PCS_0
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_0_LINK_BRINGUP_2
+        name: LINK_BRINGUP_2
         module_name: PWC_PCS_0
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_0_LINK_BRINGUP_3
+        name: LINK_BRINGUP_3
         module_name: PWC_PCS_0
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_0_MSG_CTRL
+        name: MSG_CTRL
         module_name: PWC_PCS_0
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_0_PHY_STATUS
+        name: PHY_STATUS
         module_name: PWC_PCS_0
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_1_ALL_PORTS_STATUS
+        name: ALL_PORTS_STATUS
         module_name: PWC_PCS_1
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_1_LINK_BRINGUP_0
+        name: LINK_BRINGUP_0
         module_name: PWC_PCS_1
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_1_LINK_BRINGUP_1
+        name: LINK_BRINGUP_1
         module_name: PWC_PCS_1
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_1_LINK_BRINGUP_2
+        name: LINK_BRINGUP_2
         module_name: PWC_PCS_1
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_1_LINK_BRINGUP_3
+        name: LINK_BRINGUP_3
         module_name: PWC_PCS_1
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_1_MSG_CTRL
+        name: MSG_CTRL
         module_name: PWC_PCS_1
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_1_PHY_STATUS
+        name: PHY_STATUS
         module_name: PWC_PCS_1
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_2_ALL_PORTS_STATUS
+        name: ALL_PORTS_STATUS
         module_name: PWC_PCS_2
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_2_LINK_BRINGUP_0
+        name: LINK_BRINGUP_0
         module_name: PWC_PCS_2
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_2_LINK_BRINGUP_1
+        name: LINK_BRINGUP_1
         module_name: PWC_PCS_2
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_2_LINK_BRINGUP_2
+        name: LINK_BRINGUP_2
         module_name: PWC_PCS_2
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_2_LINK_BRINGUP_3
+        name: LINK_BRINGUP_3
         module_name: PWC_PCS_2
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_2_MSG_CTRL
+        name: MSG_CTRL
         module_name: PWC_PCS_2
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_2_PHY_STATUS
+        name: PHY_STATUS
         module_name: PWC_PCS_2
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_3_ALL_PORTS_STATUS
+        name: ALL_PORTS_STATUS
         module_name: PWC_PCS_3
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_3_LINK_BRINGUP_0
+        name: LINK_BRINGUP_0
         module_name: PWC_PCS_3
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_3_LINK_BRINGUP_1
+        name: LINK_BRINGUP_1
         module_name: PWC_PCS_3
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_3_LINK_BRINGUP_2
+        name: LINK_BRINGUP_2
         module_name: PWC_PCS_3
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_3_LINK_BRINGUP_3
+        name: LINK_BRINGUP_3
         module_name: PWC_PCS_3
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_3_MSG_CTRL
+        name: MSG_CTRL
         module_name: PWC_PCS_3
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_3_PHY_STATUS
+        name: PHY_STATUS
         module_name: PWC_PCS_3
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_4_ALL_PORTS_STATUS
+        name: ALL_PORTS_STATUS
         module_name: PWC_PCS_4
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_4_LINK_BRINGUP_0
+        name: LINK_BRINGUP_0
         module_name: PWC_PCS_4
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_4_LINK_BRINGUP_1
+        name: LINK_BRINGUP_1
         module_name: PWC_PCS_4
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_4_LINK_BRINGUP_2
+        name: LINK_BRINGUP_2
         module_name: PWC_PCS_4
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_4_LINK_BRINGUP_3
+        name: LINK_BRINGUP_3
         module_name: PWC_PCS_4
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_4_MSG_CTRL
+        name: MSG_CTRL
         module_name: PWC_PCS_4
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_4_PHY_STATUS
+        name: PHY_STATUS
         module_name: PWC_PCS_4
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_5_ALL_PORTS_STATUS
+        name: ALL_PORTS_STATUS
         module_name: PWC_PCS_5
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_5_LINK_BRINGUP_0
+        name: LINK_BRINGUP_0
         module_name: PWC_PCS_5
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_5_LINK_BRINGUP_1
+        name: LINK_BRINGUP_1
         module_name: PWC_PCS_5
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_5_LINK_BRINGUP_2
+        name: LINK_BRINGUP_2
         module_name: PWC_PCS_5
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_5_LINK_BRINGUP_3
+        name: LINK_BRINGUP_3
         module_name: PWC_PCS_5
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_5_MSG_CTRL
+        name: MSG_CTRL
         module_name: PWC_PCS_5
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_5_PHY_STATUS
+        name: PHY_STATUS
         module_name: PWC_PCS_5
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_6_ALL_PORTS_STATUS
+        name: ALL_PORTS_STATUS
         module_name: PWC_PCS_6
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_6_LINK_BRINGUP_0
+        name: LINK_BRINGUP_0
         module_name: PWC_PCS_6
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_6_LINK_BRINGUP_1
+        name: LINK_BRINGUP_1
         module_name: PWC_PCS_6
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_6_LINK_BRINGUP_2
+        name: LINK_BRINGUP_2
         module_name: PWC_PCS_6
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_6_LINK_BRINGUP_3
+        name: LINK_BRINGUP_3
         module_name: PWC_PCS_6
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_6_MSG_CTRL
+        name: MSG_CTRL
         module_name: PWC_PCS_6
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_6_PHY_STATUS
+        name: PHY_STATUS
         module_name: PWC_PCS_6
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_7_ALL_PORTS_STATUS
+        name: ALL_PORTS_STATUS
         module_name: PWC_PCS_7
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_7_LINK_BRINGUP_0
+        name: LINK_BRINGUP_0
         module_name: PWC_PCS_7
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_7_LINK_BRINGUP_1
+        name: LINK_BRINGUP_1
         module_name: PWC_PCS_7
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_7_LINK_BRINGUP_2
+        name: LINK_BRINGUP_2
         module_name: PWC_PCS_7
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_7_LINK_BRINGUP_3
+        name: LINK_BRINGUP_3
         module_name: PWC_PCS_7
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_7_MSG_CTRL
+        name: MSG_CTRL
         module_name: PWC_PCS_7
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_PCS_7_PHY_STATUS
+        name: PHY_STATUS
         module_name: PWC_PCS_7
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_HDR_IPI_FROM_PWC_0
+        name: IPI_FROM_PWC_0
         module_name: PWC_HDR
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_HDR_IPI_FROM_PWC_1
+        name: IPI_FROM_PWC_1
         module_name: PWC_HDR
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_HDR_IPI_FROM_PWC_2
+        name: IPI_FROM_PWC_2
         module_name: PWC_HDR
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_HDR_IPI_FROM_ROT
+        name: IPI_FROM_ROT
         module_name: PWC_HDR
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_HDR_IPI_FROM_MIO
+        name: IPI_FROM_MIO
         module_name: PWC_HDR
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: PWC_HDR_IPI_FROM_DUC
+        name: IPI_FROM_DUC
         module_name: PWC_HDR
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
     ]
   }
   exported_clks: {}
-  wakeups:
-  [
-    {
-      name: wkup_req
-      width: "1"
-      module: aon_timer_aon
-    }
-  ]
-  reset_requests:
-  {
-    peripheral:
-    [
-      {
-        name: aon_timer_rst_req
-        width: "1"
-        module: aon_timer_aon
-        desc: watchdog reset requestt
-      }
-    ]
-    int:
-    [
-      {
-        name: MainPwr
-        desc: main power glitch reset request
-        module: pwrmgr_aon
-      }
-      {
-        name: Esc
-        desc: escalation reset request
-        module: alert_handler
-      }
-    ]
-    debug:
-    [
-      {
-        name: Ndm
-        desc: non-debug-module reset request
-        module: rv_dm
-      }
-    ]
-  }
-  interrupt_module:
-  [
-    gpio
-    rv_timer
-    aon_timer_aon
-    pwc_soc_proxy
-    dma
-    mbx0
-    mbx1
-    mbx2
-    mbx3
-    mbx4
-    mbx5
-    mbx_pcie0
-  ]
-  interrupt:
-  [
-    {
-      name: gpio_gpio
-      width: 32
-      type: interrupt
-      module_name: gpio
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: rv_timer_timer_expired_hart0_timer0
-      width: 1
-      type: interrupt
-      module_name: rv_timer
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: aon_timer_aon_wkup_timer_expired
-      width: 1
-      type: interrupt
-      module_name: aon_timer_aon
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: aon_timer_aon_wdog_timer_bark
-      width: 1
-      type: interrupt
-      module_name: aon_timer_aon
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: pwc_soc_proxy_external
-      width: 32
-      type: interrupt
-      module_name: pwc_soc_proxy
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: dma_dma_done
-      width: 1
-      type: interrupt
-      module_name: dma
-      intr_type: IntrType.Status
-      default_val: false
-      incoming: false
-    }
-    {
-      name: dma_dma_chunk_done
-      width: 1
-      type: interrupt
-      module_name: dma
-      intr_type: IntrType.Status
-      default_val: false
-      incoming: false
-    }
-    {
-      name: dma_dma_error
-      width: 1
-      type: interrupt
-      module_name: dma
-      intr_type: IntrType.Status
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx0_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx0
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx0_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx0
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx0_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx0
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx1_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx1
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx1_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx1
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx1_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx1
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx2_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx2
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx2_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx2
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx2_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx2
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx3_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx3
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx3_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx3
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx3_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx3
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx4_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx4
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx4_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx4
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx4_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx4
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx5_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx5
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx5_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx5
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx5_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx5
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx_pcie0_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx_pcie0
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx_pcie0_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx_pcie0
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx_pcie0_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx_pcie0
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: PWC_LTEU_SOC_HOT
-      module_name: PWC_LTEU
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_LTEU_FW_TRIP
-      module_name: PWC_LTEU
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_LTEU_CAT_TRIP
-      module_name: PWC_LTEU
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: LIO_GRP_A_IBEX_IRQ
-      module_name: LIO_GRP_A
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: LIO_GRP_B_IBEX_IRQ
-      module_name: LIO_GRP_B
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: LIO_GRP_C_IBEX_IRQ
-      module_name: LIO_GRP_C
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_SocDpaFsmstatus0
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_SocDpaFsmstatus1
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_SocDpaFsmstatus2
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_SocDpaFsmstatus3
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_SocDpaFsmstatus4
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS0
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS1
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS2
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS3
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS4
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS5
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS6
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS7
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS8
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS9
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS10
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS11
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS12
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_DVFS_TargetCmdAVS13
-      module_name: PWC_DVFS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_0
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_1
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_2
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_3
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_4
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_5
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_6
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_7
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_8
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_9
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_10
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_11
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_12
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_13
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_14
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_15
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_16
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_17
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_18
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_19
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_ERROR_20
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_0
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_1
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_2
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_3
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_4
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_5
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_6
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_7
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_8
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_9
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_10
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_11
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_12
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_13
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_14
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_15
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_16
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_17
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_18
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_19
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_20
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_21
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_22
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_23
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_24
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_25
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_26
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_27
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_AVS_AVS_RESPONSE_TO_FW_28
-      module_name: PWC_AVS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_BCAST_C_STATE_ENTRY
-      module_name: PWC_BCAST
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_BCAST_C_STATE_EXIT
-      module_name: PWC_BCAST
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_BCAST_DPA_IDLE_ENTRY
-      module_name: PWC_BCAST
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_BCAST_DPA_IDLE_EXIT
-      module_name: PWC_BCAST
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_0_PWR_VIRUS_LVL_REQ
-      module_name: PWC_CCS_0
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_1_PWR_VIRUS_LVL_REQ
-      module_name: PWC_CCS_1
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_2_PWR_VIRUS_LVL_REQ
-      module_name: PWC_CCS_2
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_3_PWR_VIRUS_LVL_REQ
-      module_name: PWC_CCS_3
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_4_PWR_VIRUS_LVL_REQ
-      module_name: PWC_CCS_4
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_5_PWR_VIRUS_LVL_REQ
-      module_name: PWC_CCS_5
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_6_PWR_VIRUS_LVL_REQ
-      module_name: PWC_CCS_6
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_7_PWR_VIRUS_LVL_REQ
-      module_name: PWC_CCS_7
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_0_DVFS_FSM
-      module_name: PWC_CCS_0
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_1_DVFS_FSM
-      module_name: PWC_CCS_1
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_2_DVFS_FSM
-      module_name: PWC_CCS_2
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_3_DVFS_FSM
-      module_name: PWC_CCS_3
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_4_DVFS_FSM
-      module_name: PWC_CCS_4
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_5_DVFS_FSM
-      module_name: PWC_CCS_5
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_6_DVFS_FSM
-      module_name: PWC_CCS_6
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_CCS_7_DVFS_FSM
-      module_name: PWC_CCS_7
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_HMS_East_STATUS
-      module_name: PWC_HMS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_HMS_WEST_STATUS
-      module_name: PWC_HMS
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_0_ALL_PORTS_STATUS
-      module_name: PWC_PCS_0
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_0_LINK_BRINGUP_0
-      module_name: PWC_PCS_0
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_0_LINK_BRINGUP_1
-      module_name: PWC_PCS_0
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_0_LINK_BRINGUP_2
-      module_name: PWC_PCS_0
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_0_LINK_BRINGUP_3
-      module_name: PWC_PCS_0
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_0_MSG_CTRL
-      module_name: PWC_PCS_0
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_0_PHY_STATUS
-      module_name: PWC_PCS_0
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_1_ALL_PORTS_STATUS
-      module_name: PWC_PCS_1
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_1_LINK_BRINGUP_0
-      module_name: PWC_PCS_1
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_1_LINK_BRINGUP_1
-      module_name: PWC_PCS_1
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_1_LINK_BRINGUP_2
-      module_name: PWC_PCS_1
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_1_LINK_BRINGUP_3
-      module_name: PWC_PCS_1
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_1_MSG_CTRL
-      module_name: PWC_PCS_1
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_1_PHY_STATUS
-      module_name: PWC_PCS_1
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_2_ALL_PORTS_STATUS
-      module_name: PWC_PCS_2
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_2_LINK_BRINGUP_0
-      module_name: PWC_PCS_2
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_2_LINK_BRINGUP_1
-      module_name: PWC_PCS_2
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_2_LINK_BRINGUP_2
-      module_name: PWC_PCS_2
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_2_LINK_BRINGUP_3
-      module_name: PWC_PCS_2
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_2_MSG_CTRL
-      module_name: PWC_PCS_2
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_2_PHY_STATUS
-      module_name: PWC_PCS_2
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_3_ALL_PORTS_STATUS
-      module_name: PWC_PCS_3
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_3_LINK_BRINGUP_0
-      module_name: PWC_PCS_3
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_3_LINK_BRINGUP_1
-      module_name: PWC_PCS_3
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_3_LINK_BRINGUP_2
-      module_name: PWC_PCS_3
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_3_LINK_BRINGUP_3
-      module_name: PWC_PCS_3
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_3_MSG_CTRL
-      module_name: PWC_PCS_3
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_3_PHY_STATUS
-      module_name: PWC_PCS_3
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_4_ALL_PORTS_STATUS
-      module_name: PWC_PCS_4
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_4_LINK_BRINGUP_0
-      module_name: PWC_PCS_4
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_4_LINK_BRINGUP_1
-      module_name: PWC_PCS_4
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_4_LINK_BRINGUP_2
-      module_name: PWC_PCS_4
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_4_LINK_BRINGUP_3
-      module_name: PWC_PCS_4
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_4_MSG_CTRL
-      module_name: PWC_PCS_4
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_4_PHY_STATUS
-      module_name: PWC_PCS_4
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_5_ALL_PORTS_STATUS
-      module_name: PWC_PCS_5
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_5_LINK_BRINGUP_0
-      module_name: PWC_PCS_5
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_5_LINK_BRINGUP_1
-      module_name: PWC_PCS_5
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_5_LINK_BRINGUP_2
-      module_name: PWC_PCS_5
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_5_LINK_BRINGUP_3
-      module_name: PWC_PCS_5
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_5_MSG_CTRL
-      module_name: PWC_PCS_5
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_5_PHY_STATUS
-      module_name: PWC_PCS_5
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_6_ALL_PORTS_STATUS
-      module_name: PWC_PCS_6
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_6_LINK_BRINGUP_0
-      module_name: PWC_PCS_6
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_6_LINK_BRINGUP_1
-      module_name: PWC_PCS_6
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_6_LINK_BRINGUP_2
-      module_name: PWC_PCS_6
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_6_LINK_BRINGUP_3
-      module_name: PWC_PCS_6
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_6_MSG_CTRL
-      module_name: PWC_PCS_6
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_6_PHY_STATUS
-      module_name: PWC_PCS_6
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_7_ALL_PORTS_STATUS
-      module_name: PWC_PCS_7
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_7_LINK_BRINGUP_0
-      module_name: PWC_PCS_7
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_7_LINK_BRINGUP_1
-      module_name: PWC_PCS_7
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_7_LINK_BRINGUP_2
-      module_name: PWC_PCS_7
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_7_LINK_BRINGUP_3
-      module_name: PWC_PCS_7
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_7_MSG_CTRL
-      module_name: PWC_PCS_7
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_PCS_7_PHY_STATUS
-      module_name: PWC_PCS_7
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_HDR_IPI_FROM_PWC_0
-      module_name: PWC_HDR
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_HDR_IPI_FROM_PWC_1
-      module_name: PWC_HDR
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_HDR_IPI_FROM_PWC_2
-      module_name: PWC_HDR
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_HDR_IPI_FROM_ROT
-      module_name: PWC_HDR
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_HDR_IPI_FROM_MIO
-      module_name: PWC_HDR
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: PWC_HDR_IPI_FROM_DUC
-      module_name: PWC_HDR
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-  ]
-  alert_module: []
-  outgoing_alert_module:
-  {
-    pwc:
-    [
-      gpio
-      rv_timer
-      aon_timer_aon
-      pwc_soc_proxy
-      sram_ctrl_ret_aon
-      rv_dm
-      rv_plic_pwc
-      sram_ctrl_main
-      sram_ctrl_mbox
-      dma
-      mbx0
-      mbx1
-      mbx2
-      mbx3
-      mbx4
-      mbx5
-      mbx_pcie0
-      racl_ctrl
-      rv_core_ibex
-    ]
-  }
-  alert: []
-  outgoing_alert:
-  {
-    pwc:
-    [
-      {
-        name: gpio_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: gpio
-        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
-        lpg_idx: 0
-      }
-      {
-        name: rv_timer_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_timer
-        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
-        lpg_idx: 0
-      }
-      {
-        name: aon_timer_aon_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: aon_timer_aon
-        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
-        lpg_idx: 0
-      }
-      {
-        name: pwc_soc_proxy_fatal_alert_intg
-        width: 1
-        type: alert
-        async: "1"
-        module_name: pwc_soc_proxy
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: sram_ctrl_ret_aon_fatal_error
-        width: 1
-        type: alert
-        async: "1"
-        module_name: sram_ctrl_ret_aon
-        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
-        lpg_idx: 0
-      }
-      {
-        name: rv_dm_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_dm
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: rv_plic_pwc_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_plic_pwc
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: sram_ctrl_main_fatal_error
-        width: 1
-        type: alert
-        async: "1"
-        module_name: sram_ctrl_main
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: sram_ctrl_mbox_fatal_error
-        width: 1
-        type: alert
-        async: "1"
-        module_name: sram_ctrl_mbox
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: dma_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: dma
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx0_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx0
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx0_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx0
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx1_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx1
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx1_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx1
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx2_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx2
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx2_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx2
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx3_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx3
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx3_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx3
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx4_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx4
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx4_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx4
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx5_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx5
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx5_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx5
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx_pcie0_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx_pcie0
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx_pcie0_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx_pcie0
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: racl_ctrl_recov_ctrl_update_err
-        width: 1
-        type: alert
-        async: "1"
-        module_name: racl_ctrl
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: racl_ctrl_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: racl_ctrl
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: rv_core_ibex_fatal_sw_err
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_core_ibex
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: rv_core_ibex_recov_sw_err
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_core_ibex
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: rv_core_ibex_fatal_hw_err
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_core_ibex
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: rv_core_ibex_recov_hw_err
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_core_ibex
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-    ]
-  }
-  exported_rsts: {}
-  alert_lpgs: []
-  outgoing_alert_lpgs:
-  {
-    pwc:
-    [
-      {
-        name: clk_ext_io_div4_i_ext_rst_io_div4_0
-        clock_group: null
-        clock_connection: clk_ext_io_div4_i
-        unmanaged_clock: true
-        unmanaged_reset: true
-        reset_connection:
-        {
-          name: ext_rst_io_div4
-          domain: "0"
-        }
-      }
-      {
-        name: clk_ext_main_i_ext_rst_main_0
-        clock_group: null
-        clock_connection: clk_ext_main_i
-        unmanaged_clock: true
-        unmanaged_reset: true
-        reset_connection:
-        {
-          name: ext_rst_main
-          domain: "0"
-        }
-      }
-    ]
-  }
   racl:
   {
     error_response: true
@@ -10444,6 +8040,2289 @@
     nr_policies: 10
     rot_private_policy_rd: 96
     rot_private_policy_wr: 96
+  }
+  wakeups:
+  [
+    {
+      name: wkup_req
+      width: "1"
+      module: aon_timer_aon
+    }
+  ]
+  reset_requests:
+  {
+    peripheral:
+    [
+      {
+        name: aon_timer_rst_req
+        width: "1"
+        module: aon_timer_aon
+        desc: watchdog reset requestt
+      }
+    ]
+  }
+  exported_rsts: {}
+  alert: []
+  outgoing_alert:
+  {
+    pwc:
+    [
+      {
+        name: gpio_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: gpio
+        desc: gpio fatal_fault alert
+        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
+        lpg_idx: 0
+      }
+      {
+        name: rv_timer_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_timer
+        desc: rv_timer fatal_fault alert
+        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
+        lpg_idx: 0
+      }
+      {
+        name: aon_timer_aon_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: aon_timer_aon
+        desc: aon_timer_aon fatal_fault alert
+        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
+        lpg_idx: 0
+      }
+      {
+        name: pwc_soc_proxy_fatal_alert_intg
+        width: 1
+        type: alert
+        async: "1"
+        module_name: pwc_soc_proxy
+        desc: pwc_soc_proxy fatal_alert_intg alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: sram_ctrl_ret_aon_fatal_error
+        width: 1
+        type: alert
+        async: "1"
+        module_name: sram_ctrl_ret_aon
+        desc: sram_ctrl_ret_aon fatal_error alert
+        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
+        lpg_idx: 0
+      }
+      {
+        name: rv_dm_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_dm
+        desc: rv_dm fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: rv_plic_pwc_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_plic_pwc
+        desc: rv_plic_pwc fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: sram_ctrl_main_fatal_error
+        width: 1
+        type: alert
+        async: "1"
+        module_name: sram_ctrl_main
+        desc: sram_ctrl_main fatal_error alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: sram_ctrl_mbox_fatal_error
+        width: 1
+        type: alert
+        async: "1"
+        module_name: sram_ctrl_mbox
+        desc: sram_ctrl_mbox fatal_error alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: dma_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: dma
+        desc: dma fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx0_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx0
+        desc: mbx0 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx0_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx0
+        desc: mbx0 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx1_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx1
+        desc: mbx1 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx1_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx1
+        desc: mbx1 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx2_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx2
+        desc: mbx2 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx2_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx2
+        desc: mbx2 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx3_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx3
+        desc: mbx3 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx3_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx3
+        desc: mbx3 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx4_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx4
+        desc: mbx4 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx4_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx4
+        desc: mbx4 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx5_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx5
+        desc: mbx5 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx5_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx5
+        desc: mbx5 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx_pcie0_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx_pcie0
+        desc: mbx_pcie0 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx_pcie0_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx_pcie0
+        desc: mbx_pcie0 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: racl_ctrl_recov_ctrl_update_err
+        width: 1
+        type: alert
+        async: "1"
+        module_name: racl_ctrl
+        desc: racl_ctrl recov_ctrl_update_err alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: racl_ctrl_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: racl_ctrl
+        desc: racl_ctrl fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_fatal_sw_err
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_core_ibex
+        desc: rv_core_ibex fatal_sw_err alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_recov_sw_err
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_core_ibex
+        desc: rv_core_ibex recov_sw_err alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_fatal_hw_err
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_core_ibex
+        desc: rv_core_ibex fatal_hw_err alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_recov_hw_err
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_core_ibex
+        desc: rv_core_ibex recov_hw_err alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+    ]
+  }
+  interrupt:
+  [
+    {
+      name: gpio_gpio
+      width: 32
+      type: interrupt
+      module_name: gpio
+      desc: gpio gpio interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: rv_timer_timer_expired_hart0_timer0
+      width: 1
+      type: interrupt
+      module_name: rv_timer
+      desc: rv_timer timer_expired_hart0_timer0 interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: aon_timer_aon_wkup_timer_expired
+      width: 1
+      type: interrupt
+      module_name: aon_timer_aon
+      desc: aon_timer_aon wkup_timer_expired interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: aon_timer_aon_wdog_timer_bark
+      width: 1
+      type: interrupt
+      module_name: aon_timer_aon
+      desc: aon_timer_aon wdog_timer_bark interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: pwc_soc_proxy_external
+      width: 32
+      type: interrupt
+      module_name: pwc_soc_proxy
+      desc: pwc_soc_proxy external interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: dma_dma_done
+      width: 1
+      type: interrupt
+      module_name: dma
+      desc: dma dma_done interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      incoming: false
+    }
+    {
+      name: dma_dma_chunk_done
+      width: 1
+      type: interrupt
+      module_name: dma
+      desc: dma dma_chunk_done interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      incoming: false
+    }
+    {
+      name: dma_dma_error
+      width: 1
+      type: interrupt
+      module_name: dma
+      desc: dma dma_error interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx0_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx0
+      desc: mbx0 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx0_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx0
+      desc: mbx0 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx0_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx0
+      desc: mbx0 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx1_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx1
+      desc: mbx1 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx1_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx1
+      desc: mbx1 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx1_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx1
+      desc: mbx1 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx2_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx2
+      desc: mbx2 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx2_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx2
+      desc: mbx2 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx2_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx2
+      desc: mbx2 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx3_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx3
+      desc: mbx3 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx3_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx3
+      desc: mbx3 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx3_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx3
+      desc: mbx3 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx4_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx4
+      desc: mbx4 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx4_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx4
+      desc: mbx4 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx4_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx4
+      desc: mbx4 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx5_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx5
+      desc: mbx5 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx5_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx5
+      desc: mbx5 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx5_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx5
+      desc: mbx5 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx_pcie0_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx_pcie0
+      desc: mbx_pcie0 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx_pcie0_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx_pcie0
+      desc: mbx_pcie0 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx_pcie0_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx_pcie0
+      desc: mbx_pcie0 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: PWC_LTEU_SOC_HOT
+      module_name: PWC_LTEU
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_LTEU SOC_HOT incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_LTEU_FW_TRIP
+      module_name: PWC_LTEU
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_LTEU FW_TRIP incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_LTEU_CAT_TRIP
+      module_name: PWC_LTEU
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_LTEU CAT_TRIP incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_IBEX_IRQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_A IBEX_IRQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_IBEX_IRQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_B IBEX_IRQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_IBEX_IRQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_C IBEX_IRQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_SocDpaFsmstatus0
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS SocDpaFsmstatus0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_SocDpaFsmstatus1
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS SocDpaFsmstatus1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_SocDpaFsmstatus2
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS SocDpaFsmstatus2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_SocDpaFsmstatus3
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS SocDpaFsmstatus3 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_SocDpaFsmstatus4
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS SocDpaFsmstatus4 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS0
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS1
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS2
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS3
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS3 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS4
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS4 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS5
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS5 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS6
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS6 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS7
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS7 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS8
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS8 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS9
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS9 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS10
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS10 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS11
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS11 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS12
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS12 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_DVFS_TargetCmdAVS13
+      module_name: PWC_DVFS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_DVFS TargetCmdAVS13 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_0
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_1
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_2
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_3
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_3 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_4
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_4 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_5
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_5 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_6
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_6 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_7
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_7 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_8
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_8 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_9
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_9 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_10
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_10 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_11
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_11 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_12
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_12 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_13
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_13 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_14
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_14 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_15
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_15 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_16
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_16 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_17
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_17 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_18
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_18 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_19
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_19 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_ERROR_20
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_ERROR_20 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_0
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_1
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_2
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_3
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_3 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_4
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_4 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_5
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_5 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_6
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_6 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_7
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_7 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_8
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_8 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_9
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_9 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_10
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_10 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_11
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_11 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_12
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_12 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_13
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_13 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_14
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_14 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_15
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_15 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_16
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_16 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_17
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_17 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_18
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_18 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_19
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_19 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_20
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_20 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_21
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_21 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_22
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_22 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_23
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_23 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_24
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_24 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_25
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_25 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_26
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_26 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_27
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_27 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_AVS_AVS_RESPONSE_TO_FW_28
+      module_name: PWC_AVS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_AVS AVS_RESPONSE_TO_FW_28 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_BCAST_C_STATE_ENTRY
+      module_name: PWC_BCAST
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_BCAST C_STATE_ENTRY incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_BCAST_C_STATE_EXIT
+      module_name: PWC_BCAST
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_BCAST C_STATE_EXIT incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_BCAST_DPA_IDLE_ENTRY
+      module_name: PWC_BCAST
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_BCAST DPA_IDLE_ENTRY incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_BCAST_DPA_IDLE_EXIT
+      module_name: PWC_BCAST
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_BCAST DPA_IDLE_EXIT incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_0_PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_0 PWR_VIRUS_LVL_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_1_PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_1 PWR_VIRUS_LVL_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_2_PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_2 PWR_VIRUS_LVL_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_3_PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_3 PWR_VIRUS_LVL_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_4_PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_4 PWR_VIRUS_LVL_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_5_PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_5 PWR_VIRUS_LVL_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_6_PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_6 PWR_VIRUS_LVL_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_7_PWR_VIRUS_LVL_REQ
+      module_name: PWC_CCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_7 PWR_VIRUS_LVL_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_0_DVFS_FSM
+      module_name: PWC_CCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_0 DVFS_FSM incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_1_DVFS_FSM
+      module_name: PWC_CCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_1 DVFS_FSM incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_2_DVFS_FSM
+      module_name: PWC_CCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_2 DVFS_FSM incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_3_DVFS_FSM
+      module_name: PWC_CCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_3 DVFS_FSM incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_4_DVFS_FSM
+      module_name: PWC_CCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_4 DVFS_FSM incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_5_DVFS_FSM
+      module_name: PWC_CCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_5 DVFS_FSM incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_6_DVFS_FSM
+      module_name: PWC_CCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_6 DVFS_FSM incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_7_DVFS_FSM
+      module_name: PWC_CCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_7 DVFS_FSM incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_HMS_East_STATUS
+      module_name: PWC_HMS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_HMS East_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_HMS_WEST_STATUS
+      module_name: PWC_HMS
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_HMS WEST_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_0_ALL_PORTS_STATUS
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_0 ALL_PORTS_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_0_LINK_BRINGUP_0
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_0 LINK_BRINGUP_0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_0_LINK_BRINGUP_1
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_0 LINK_BRINGUP_1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_0_LINK_BRINGUP_2
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_0 LINK_BRINGUP_2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_0_LINK_BRINGUP_3
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_0 LINK_BRINGUP_3 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_0_MSG_CTRL
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_0 MSG_CTRL incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_0_PHY_STATUS
+      module_name: PWC_PCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_0 PHY_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_1_ALL_PORTS_STATUS
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_1 ALL_PORTS_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_1_LINK_BRINGUP_0
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_1 LINK_BRINGUP_0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_1_LINK_BRINGUP_1
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_1 LINK_BRINGUP_1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_1_LINK_BRINGUP_2
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_1 LINK_BRINGUP_2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_1_LINK_BRINGUP_3
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_1 LINK_BRINGUP_3 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_1_MSG_CTRL
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_1 MSG_CTRL incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_1_PHY_STATUS
+      module_name: PWC_PCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_1 PHY_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_2_ALL_PORTS_STATUS
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_2 ALL_PORTS_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_2_LINK_BRINGUP_0
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_2 LINK_BRINGUP_0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_2_LINK_BRINGUP_1
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_2 LINK_BRINGUP_1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_2_LINK_BRINGUP_2
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_2 LINK_BRINGUP_2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_2_LINK_BRINGUP_3
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_2 LINK_BRINGUP_3 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_2_MSG_CTRL
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_2 MSG_CTRL incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_2_PHY_STATUS
+      module_name: PWC_PCS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_2 PHY_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_3_ALL_PORTS_STATUS
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_3 ALL_PORTS_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_3_LINK_BRINGUP_0
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_3 LINK_BRINGUP_0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_3_LINK_BRINGUP_1
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_3 LINK_BRINGUP_1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_3_LINK_BRINGUP_2
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_3 LINK_BRINGUP_2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_3_LINK_BRINGUP_3
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_3 LINK_BRINGUP_3 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_3_MSG_CTRL
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_3 MSG_CTRL incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_3_PHY_STATUS
+      module_name: PWC_PCS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_3 PHY_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_4_ALL_PORTS_STATUS
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_4 ALL_PORTS_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_4_LINK_BRINGUP_0
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_4 LINK_BRINGUP_0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_4_LINK_BRINGUP_1
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_4 LINK_BRINGUP_1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_4_LINK_BRINGUP_2
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_4 LINK_BRINGUP_2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_4_LINK_BRINGUP_3
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_4 LINK_BRINGUP_3 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_4_MSG_CTRL
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_4 MSG_CTRL incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_4_PHY_STATUS
+      module_name: PWC_PCS_4
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_4 PHY_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_5_ALL_PORTS_STATUS
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_5 ALL_PORTS_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_5_LINK_BRINGUP_0
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_5 LINK_BRINGUP_0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_5_LINK_BRINGUP_1
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_5 LINK_BRINGUP_1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_5_LINK_BRINGUP_2
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_5 LINK_BRINGUP_2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_5_LINK_BRINGUP_3
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_5 LINK_BRINGUP_3 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_5_MSG_CTRL
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_5 MSG_CTRL incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_5_PHY_STATUS
+      module_name: PWC_PCS_5
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_5 PHY_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_6_ALL_PORTS_STATUS
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_6 ALL_PORTS_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_6_LINK_BRINGUP_0
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_6 LINK_BRINGUP_0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_6_LINK_BRINGUP_1
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_6 LINK_BRINGUP_1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_6_LINK_BRINGUP_2
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_6 LINK_BRINGUP_2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_6_LINK_BRINGUP_3
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_6 LINK_BRINGUP_3 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_6_MSG_CTRL
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_6 MSG_CTRL incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_6_PHY_STATUS
+      module_name: PWC_PCS_6
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_6 PHY_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_7_ALL_PORTS_STATUS
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_7 ALL_PORTS_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_7_LINK_BRINGUP_0
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_7 LINK_BRINGUP_0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_7_LINK_BRINGUP_1
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_7 LINK_BRINGUP_1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_7_LINK_BRINGUP_2
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_7 LINK_BRINGUP_2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_7_LINK_BRINGUP_3
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_7 LINK_BRINGUP_3 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_7_MSG_CTRL
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_7 MSG_CTRL incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_PCS_7_PHY_STATUS
+      module_name: PWC_PCS_7
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_PCS_7 PHY_STATUS incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_HDR_IPI_FROM_PWC_0
+      module_name: PWC_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_HDR IPI_FROM_PWC_0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_HDR_IPI_FROM_PWC_1
+      module_name: PWC_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_HDR IPI_FROM_PWC_1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_HDR_IPI_FROM_PWC_2
+      module_name: PWC_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_HDR IPI_FROM_PWC_2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_HDR_IPI_FROM_ROT
+      module_name: PWC_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_HDR IPI_FROM_ROT incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_HDR_IPI_FROM_MIO
+      module_name: PWC_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_HDR IPI_FROM_MIO incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_HDR_IPI_FROM_DUC
+      module_name: PWC_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_HDR IPI_FROM_DUC incoming interrupt
+      incoming: true
+      width: 1
+    }
+  ]
+  alert_module: []
+  interrupt_module:
+  [
+    gpio
+    rv_timer
+    aon_timer_aon
+    pwc_soc_proxy
+    dma
+    mbx0
+    mbx1
+    mbx2
+    mbx3
+    mbx4
+    mbx5
+    mbx_pcie0
+  ]
+  outgoing_alert_module:
+  {
+    pwc:
+    [
+      gpio
+      rv_timer
+      aon_timer_aon
+      pwc_soc_proxy
+      sram_ctrl_ret_aon
+      rv_dm
+      rv_plic_pwc
+      sram_ctrl_main
+      sram_ctrl_mbox
+      dma
+      mbx0
+      mbx1
+      mbx2
+      mbx3
+      mbx4
+      mbx5
+      mbx_pcie0
+      racl_ctrl
+      rv_core_ibex
+    ]
+  }
+  alert_lpgs: []
+  outgoing_alert_lpgs:
+  {
+    pwc:
+    [
+      {
+        name: clk_ext_io_div4_i_ext_rst_io_div4_0
+        clock_group: null
+        clock_connection: clk_ext_io_div4_i
+        unmanaged_clock: true
+        unmanaged_reset: true
+        reset_connection:
+        {
+          name: ext_rst_io_div4
+          domain: "0"
+        }
+      }
+      {
+        name: clk_ext_main_i_ext_rst_main_0
+        clock_group: null
+        clock_connection: clk_ext_main_i
+        unmanaged_clock: true
+        unmanaged_reset: true
+        reset_connection:
+        {
+          name: ext_rst_main
+          domain: "0"
+        }
+      }
+    ]
   }
   inter_signal:
   {
@@ -12852,8 +12731,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: pwc_main_tl_rv_core_ibex__corei
@@ -12865,8 +12744,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: pwc_main_tl_rv_core_ibex__cored
@@ -12878,8 +12757,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: pwc_main_tl_rv_dm__sba
@@ -12891,8 +12770,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: pwc_main_tl_dma__host
@@ -12904,8 +12783,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: pwc_main_tl_mbx0__sram
@@ -12917,8 +12796,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: pwc_main_tl_mbx1__sram
@@ -12930,8 +12809,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: pwc_main_tl_mbx2__sram
@@ -12943,8 +12822,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: pwc_main_tl_mbx3__sram
@@ -12956,8 +12835,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: pwc_main_tl_mbx4__sram
@@ -12969,8 +12848,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: pwc_main_tl_mbx5__sram
@@ -12982,8 +12861,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: pwc_main_tl_mbx_pcie0__sram
@@ -12995,8 +12874,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: rv_dm_regs_tl_d
         index: -1
@@ -13007,8 +12886,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: rv_dm_mem_tl_d
         index: -1
@@ -13019,8 +12898,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: pwc_main_tl_pwc_peri
@@ -13032,8 +12911,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: pwc_soc_proxy_core_tl
         index: -1
@@ -13044,8 +12923,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: pwc_soc_proxy_ctn_tl
         index: -1
@@ -13056,8 +12935,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: rv_plic_pwc_tl
         index: -1
@@ -13068,8 +12947,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: rv_core_ibex_cfg_tl_d
         index: -1
@@ -13080,8 +12959,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: sram_ctrl_main_regs_tl
         index: -1
@@ -13092,8 +12971,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: sram_ctrl_main_ram_tl
         index: -1
@@ -13104,8 +12983,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: sram_ctrl_mbox_regs_tl
         index: -1
@@ -13116,8 +12995,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: sram_ctrl_mbox_ram_tl
         index: -1
@@ -13128,8 +13007,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: dma_tl_d
         index: -1
@@ -13140,8 +13019,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: mbx0_core_tl_d
         index: -1
@@ -13152,8 +13031,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: mbx1_core_tl_d
         index: -1
@@ -13164,8 +13043,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: mbx2_core_tl_d
         index: -1
@@ -13176,8 +13055,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: mbx3_core_tl_d
         index: -1
@@ -13188,8 +13067,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: mbx4_core_tl_d
         index: -1
@@ -13200,8 +13079,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: mbx5_core_tl_d
         index: -1
@@ -13212,8 +13091,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_main
+        width: 1
         default: ""
         top_signame: mbx_pcie0_core_tl_d
         index: -1
@@ -13224,8 +13103,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: pwc_peri
+        width: 1
         default: ""
         top_signame: pwc_main_tl_pwc_peri
         index: -1
@@ -13236,8 +13115,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_peri
+        width: 1
         default: ""
         top_signame: gpio_tl
         index: -1
@@ -13248,8 +13127,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_peri
+        width: 1
         default: ""
         top_signame: rv_timer_tl
         index: -1
@@ -13260,8 +13139,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_peri
+        width: 1
         default: ""
         top_signame: sram_ctrl_ret_aon_regs_tl
         index: -1
@@ -13272,8 +13151,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_peri
+        width: 1
         default: ""
         top_signame: sram_ctrl_ret_aon_ram_tl
         index: -1
@@ -13284,8 +13163,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_peri
+        width: 1
         default: ""
         top_signame: aon_timer_aon_tl
         index: -1
@@ -13296,8 +13175,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: pwc_mbx
+        width: 1
         default: ""
         external: true
         top_signame: mbx_tl
@@ -13310,8 +13189,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_mbx
+        width: 1
         default: ""
         top_signame: mbx0_soc_tl_d
         index: -1
@@ -13322,8 +13201,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_mbx
+        width: 1
         default: ""
         top_signame: mbx1_soc_tl_d
         index: -1
@@ -13334,8 +13213,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_mbx
+        width: 1
         default: ""
         top_signame: mbx2_soc_tl_d
         index: -1
@@ -13346,8 +13225,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_mbx
+        width: 1
         default: ""
         top_signame: mbx3_soc_tl_d
         index: -1
@@ -13358,8 +13237,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_mbx
+        width: 1
         default: ""
         top_signame: mbx4_soc_tl_d
         index: -1
@@ -13370,8 +13249,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_mbx
+        width: 1
         default: ""
         top_signame: mbx5_soc_tl_d
         index: -1
@@ -13382,8 +13261,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_mbx
+        width: 1
         default: ""
         top_signame: mbx_pcie0_soc_tl_d
         index: -1
@@ -13394,8 +13273,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: pwc_mbx
+        width: 1
         default: ""
         top_signame: racl_ctrl_tl
         index: -1

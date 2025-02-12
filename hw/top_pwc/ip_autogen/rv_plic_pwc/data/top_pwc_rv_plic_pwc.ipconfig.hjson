@@ -5,10 +5,10 @@
   instance_name: top_pwc_rv_plic_pwc
   param_values:
   {
+    module_instance_name: rv_plic_pwc
     src: 251
     target: 1
     prio: 3
-    module_instance_name: rv_plic_pwc
     topname: pwc
   }
 }

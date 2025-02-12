@@ -409,10 +409,6 @@
       {
         clk_i: clk_ext_io_div4_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -439,6 +435,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: aon_timer_aon
@@ -1186,10 +1186,6 @@
         clk_i: clk_ext_main_i
         clk_lc_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       memory: {}
       param_list:
       [
@@ -1505,6 +1501,10 @@
           index: -1
         }
       ]
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: rv_plic_mio
@@ -1533,10 +1533,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -1600,6 +1596,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: sram_ctrl_main
@@ -1658,10 +1658,6 @@
         clk_i: clk_ext_main_i
         clk_otp_i: clk_ext_io_div4_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_list:
       [
         {
@@ -1948,6 +1944,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: sram_ctrl_mbox
@@ -2006,10 +2006,6 @@
         clk_i: clk_ext_main_i
         clk_otp_i: clk_ext_io_div4_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_list:
       [
         {
@@ -2293,6 +2289,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: dma
@@ -2315,10 +2315,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       memory: {}
       param_list:
@@ -2463,6 +2459,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx0
@@ -2515,10 +2515,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -2633,6 +2629,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx1
@@ -2685,10 +2685,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -2803,6 +2799,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx2
@@ -2855,10 +2855,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -2973,6 +2969,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx3
@@ -3025,10 +3025,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -3143,6 +3139,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx4
@@ -3195,10 +3195,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -3313,6 +3309,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx5
@@ -3365,10 +3365,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -3483,6 +3479,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: mbx_pcie0
@@ -3535,10 +3535,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       param_list: []
       inter_signal_list:
@@ -3653,6 +3649,10 @@
         }
       ]
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: racl_ctrl
@@ -3677,10 +3677,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      domain:
-      [
-        "0"
-      ]
       param_decl: {}
       memory: {}
       param_list:
@@ -3803,6 +3799,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
     {
       name: rv_core_ibex
@@ -3883,10 +3883,6 @@
         clk_esc_i: clk_ext_io_div4_i
         clk_otp_i: clk_ext_io_div4_i
       }
-      domain:
-      [
-        "0"
-      ]
       memory: {}
       param_list:
       [
@@ -4516,6 +4512,10 @@
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
     }
   ]
   memory: []
@@ -5486,8 +5486,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: mio_main_tl_rv_core_ibex__corei
@@ -5499,8 +5499,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: mio_main_tl_rv_core_ibex__cored
@@ -5512,8 +5512,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: mio_main_tl_rv_dm__sba
@@ -5525,8 +5525,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: mio_main_tl_dma__host
@@ -5538,8 +5538,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: mio_main_tl_mbx0__sram
@@ -5551,8 +5551,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: mio_main_tl_mbx1__sram
@@ -5564,8 +5564,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: mio_main_tl_mbx2__sram
@@ -5577,8 +5577,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: mio_main_tl_mbx3__sram
@@ -5590,8 +5590,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: mio_main_tl_mbx4__sram
@@ -5603,8 +5603,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: mio_main_tl_mbx5__sram
@@ -5616,8 +5616,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: mio_main_tl_mbx_pcie0__sram
@@ -5629,8 +5629,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: rv_dm_regs_tl_d
           index: -1
@@ -5641,8 +5641,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: rv_dm_mem_tl_d
           index: -1
@@ -5653,8 +5653,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           end_idx: -1
           top_signame: mio_main_tl_mio_peri
@@ -5666,8 +5666,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: mio_soc_proxy_core_tl
           index: -1
@@ -5678,8 +5678,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: mio_soc_proxy_ctn_tl
           index: -1
@@ -5690,8 +5690,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: rv_plic_mio_tl
           index: -1
@@ -5702,8 +5702,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: rv_core_ibex_cfg_tl_d
           index: -1
@@ -5714,8 +5714,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: sram_ctrl_main_regs_tl
           index: -1
@@ -5726,8 +5726,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: sram_ctrl_main_ram_tl
           index: -1
@@ -5738,8 +5738,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: sram_ctrl_mbox_regs_tl
           index: -1
@@ -5750,8 +5750,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: sram_ctrl_mbox_ram_tl
           index: -1
@@ -5762,8 +5762,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: dma_tl_d
           index: -1
@@ -5774,8 +5774,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: mbx0_core_tl_d
           index: -1
@@ -5786,8 +5786,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: mbx1_core_tl_d
           index: -1
@@ -5798,8 +5798,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: mbx2_core_tl_d
           index: -1
@@ -5810,8 +5810,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: mbx3_core_tl_d
           index: -1
@@ -5822,8 +5822,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: mbx4_core_tl_d
           index: -1
@@ -5834,8 +5834,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: mbx5_core_tl_d
           index: -1
@@ -5846,8 +5846,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_main
+          width: 1
           default: ""
           top_signame: mbx_pcie0_core_tl_d
           index: -1
@@ -6002,8 +6002,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: mio_peri
+          width: 1
           default: ""
           top_signame: mio_main_tl_mio_peri
           index: -1
@@ -6014,8 +6014,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_peri
+          width: 1
           default: ""
           top_signame: rv_timer_tl
           index: -1
@@ -6026,8 +6026,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_peri
+          width: 1
           default: ""
           top_signame: sram_ctrl_ret_aon_regs_tl
           index: -1
@@ -6038,8 +6038,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_peri
+          width: 1
           default: ""
           top_signame: sram_ctrl_ret_aon_ram_tl
           index: -1
@@ -6050,8 +6050,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_peri
+          width: 1
           default: ""
           top_signame: aon_timer_aon_tl
           index: -1
@@ -6302,8 +6302,8 @@
           package: tlul_pkg
           type: req_rsp
           act: rsp
-          width: 1
           inst_name: mio_mbx
+          width: 1
           default: ""
           external: true
           top_signame: mbx_tl
@@ -6316,8 +6316,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_mbx
+          width: 1
           default: ""
           top_signame: mbx0_soc_tl_d
           index: -1
@@ -6328,8 +6328,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_mbx
+          width: 1
           default: ""
           top_signame: mbx1_soc_tl_d
           index: -1
@@ -6340,8 +6340,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_mbx
+          width: 1
           default: ""
           top_signame: mbx2_soc_tl_d
           index: -1
@@ -6352,8 +6352,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_mbx
+          width: 1
           default: ""
           top_signame: mbx3_soc_tl_d
           index: -1
@@ -6364,8 +6364,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_mbx
+          width: 1
           default: ""
           top_signame: mbx4_soc_tl_d
           index: -1
@@ -6376,8 +6376,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_mbx
+          width: 1
           default: ""
           top_signame: mbx5_soc_tl_d
           index: -1
@@ -6388,8 +6388,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_mbx
+          width: 1
           default: ""
           top_signame: mbx_pcie0_soc_tl_d
           index: -1
@@ -6400,8 +6400,8 @@
           package: tlul_pkg
           type: req_rsp
           act: req
-          width: 1
           inst_name: mio_mbx
+          width: 1
           default: ""
           top_signame: racl_ctrl_tl
           index: -1
@@ -6432,805 +6432,71 @@
     mio_external:
     [
       {
-        name: MIO_HDR_IPI_FROM_MIO_0
+        name: IPI_FROM_MIO_0
         module_name: MIO_HDR
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: MIO_HDR_IPI_FROM_MIO_1
+        name: IPI_FROM_MIO_1
         module_name: MIO_HDR
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: MIO_HDR_IPI_FROM_MIO_2
+        name: IPI_FROM_MIO_2
         module_name: MIO_HDR
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: MIO_HDR_IPI_FROM_PWC
+        name: IPI_FROM_PWC
         module_name: MIO_HDR
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: MIO_HDR_IPI_FROM_ROT
+        name: IPI_FROM_ROT
         module_name: MIO_HDR
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: MIO_HDR_IPI_FROM_PWC
+        name: IPI_FROM_PWC
         module_name: MIO_HDR
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: LIO_GRP_A_IBEX_IRQ
+        name: IBEX_IRQ
         module_name: LIO_GRP_A
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: LIO_GRP_B_IBEX_IRQ
+        name: IBEX_IRQ
         module_name: LIO_GRP_B
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
       {
-        name: LIO_GRP_C_IBEX_IRQ
+        name: IBEX_IRQ
         module_name: LIO_GRP_C
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
-        incoming: true
-        width: 1
       }
     ]
   }
   exported_clks: {}
-  wakeups:
-  [
-    {
-      name: wkup_req
-      width: "1"
-      module: aon_timer_aon
-    }
-  ]
-  reset_requests:
-  {
-    peripheral:
-    [
-      {
-        name: aon_timer_rst_req
-        width: "1"
-        module: aon_timer_aon
-        desc: watchdog reset requestt
-      }
-    ]
-    int:
-    [
-      {
-        name: MainPwr
-        desc: main power glitch reset request
-        module: pwrmgr_aon
-      }
-      {
-        name: Esc
-        desc: escalation reset request
-        module: alert_handler
-      }
-    ]
-    debug:
-    [
-      {
-        name: Ndm
-        desc: non-debug-module reset request
-        module: rv_dm
-      }
-    ]
-  }
-  interrupt_module:
-  [
-    rv_timer
-    aon_timer_aon
-    mio_soc_proxy
-    dma
-    mbx0
-    mbx1
-    mbx2
-    mbx3
-    mbx4
-    mbx5
-    mbx_pcie0
-  ]
-  interrupt:
-  [
-    {
-      name: rv_timer_timer_expired_hart0_timer0
-      width: 1
-      type: interrupt
-      module_name: rv_timer
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: aon_timer_aon_wkup_timer_expired
-      width: 1
-      type: interrupt
-      module_name: aon_timer_aon
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: aon_timer_aon_wdog_timer_bark
-      width: 1
-      type: interrupt
-      module_name: aon_timer_aon
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mio_soc_proxy_external
-      width: 32
-      type: interrupt
-      module_name: mio_soc_proxy
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: dma_dma_done
-      width: 1
-      type: interrupt
-      module_name: dma
-      intr_type: IntrType.Status
-      default_val: false
-      incoming: false
-    }
-    {
-      name: dma_dma_chunk_done
-      width: 1
-      type: interrupt
-      module_name: dma
-      intr_type: IntrType.Status
-      default_val: false
-      incoming: false
-    }
-    {
-      name: dma_dma_error
-      width: 1
-      type: interrupt
-      module_name: dma
-      intr_type: IntrType.Status
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx0_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx0
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx0_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx0
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx0_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx0
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx1_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx1
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx1_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx1
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx1_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx1
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx2_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx2
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx2_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx2
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx2_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx2
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx3_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx3
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx3_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx3
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx3_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx3
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx4_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx4
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx4_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx4
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx4_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx4
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx5_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx5
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx5_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx5
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx5_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx5
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx_pcie0_mbx_ready
-      width: 1
-      type: interrupt
-      module_name: mbx_pcie0
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx_pcie0_mbx_abort
-      width: 1
-      type: interrupt
-      module_name: mbx_pcie0
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: mbx_pcie0_mbx_error
-      width: 1
-      type: interrupt
-      module_name: mbx_pcie0
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: MIO_HDR_IPI_FROM_MIO_0
-      module_name: MIO_HDR
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: MIO_HDR_IPI_FROM_MIO_1
-      module_name: MIO_HDR
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: MIO_HDR_IPI_FROM_MIO_2
-      module_name: MIO_HDR
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: MIO_HDR_IPI_FROM_PWC
-      module_name: MIO_HDR
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: MIO_HDR_IPI_FROM_ROT
-      module_name: MIO_HDR
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: MIO_HDR_IPI_FROM_PWC
-      module_name: MIO_HDR
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: LIO_GRP_A_IBEX_IRQ
-      module_name: LIO_GRP_A
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: LIO_GRP_B_IBEX_IRQ
-      module_name: LIO_GRP_B
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-    {
-      name: LIO_GRP_C_IBEX_IRQ
-      module_name: LIO_GRP_C
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: true
-      width: 1
-    }
-  ]
-  alert_module: []
-  outgoing_alert_module:
-  {
-    mio:
-    [
-      rv_timer
-      aon_timer_aon
-      mio_soc_proxy
-      sram_ctrl_ret_aon
-      rv_dm
-      rv_plic_mio
-      sram_ctrl_main
-      sram_ctrl_mbox
-      dma
-      mbx0
-      mbx1
-      mbx2
-      mbx3
-      mbx4
-      mbx5
-      mbx_pcie0
-      racl_ctrl
-      rv_core_ibex
-    ]
-  }
-  alert: []
-  outgoing_alert:
-  {
-    mio:
-    [
-      {
-        name: rv_timer_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_timer
-        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
-        lpg_idx: 0
-      }
-      {
-        name: aon_timer_aon_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: aon_timer_aon
-        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
-        lpg_idx: 0
-      }
-      {
-        name: mio_soc_proxy_fatal_alert_intg
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mio_soc_proxy
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: sram_ctrl_ret_aon_fatal_error
-        width: 1
-        type: alert
-        async: "1"
-        module_name: sram_ctrl_ret_aon
-        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
-        lpg_idx: 0
-      }
-      {
-        name: rv_dm_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_dm
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: rv_plic_mio_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_plic_mio
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: sram_ctrl_main_fatal_error
-        width: 1
-        type: alert
-        async: "1"
-        module_name: sram_ctrl_main
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: sram_ctrl_mbox_fatal_error
-        width: 1
-        type: alert
-        async: "1"
-        module_name: sram_ctrl_mbox
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: dma_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: dma
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx0_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx0
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx0_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx0
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx1_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx1
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx1_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx1
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx2_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx2
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx2_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx2
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx3_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx3
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx3_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx3
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx4_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx4
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx4_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx4
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx5_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx5
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx5_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx5
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx_pcie0_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx_pcie0
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: mbx_pcie0_recov_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: mbx_pcie0
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: racl_ctrl_recov_ctrl_update_err
-        width: 1
-        type: alert
-        async: "1"
-        module_name: racl_ctrl
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: racl_ctrl_fatal_fault
-        width: 1
-        type: alert
-        async: "1"
-        module_name: racl_ctrl
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: rv_core_ibex_fatal_sw_err
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_core_ibex
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: rv_core_ibex_recov_sw_err
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_core_ibex
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: rv_core_ibex_fatal_hw_err
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_core_ibex
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
-        name: rv_core_ibex_recov_hw_err
-        width: 1
-        type: alert
-        async: "1"
-        module_name: rv_core_ibex
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-    ]
-  }
-  exported_rsts: {}
-  alert_lpgs: []
-  outgoing_alert_lpgs:
-  {
-    mio:
-    [
-      {
-        name: clk_ext_io_div4_i_ext_rst_io_div4_0
-        clock_group: null
-        clock_connection: clk_ext_io_div4_i
-        unmanaged_clock: true
-        unmanaged_reset: true
-        reset_connection:
-        {
-          name: ext_rst_io_div4
-          domain: "0"
-        }
-      }
-      {
-        name: clk_ext_main_i_ext_rst_main_0
-        clock_group: null
-        clock_connection: clk_ext_main_i
-        unmanaged_clock: true
-        unmanaged_reset: true
-        reset_connection:
-        {
-          name: ext_rst_main
-          domain: "0"
-        }
-      }
-    ]
-  }
   racl:
   {
     error_response: true
@@ -7559,6 +6825,767 @@
     nr_policies: 10
     rot_private_policy_rd: 96
     rot_private_policy_wr: 96
+  }
+  wakeups:
+  [
+    {
+      name: wkup_req
+      width: "1"
+      module: aon_timer_aon
+    }
+  ]
+  reset_requests:
+  {
+    peripheral:
+    [
+      {
+        name: aon_timer_rst_req
+        width: "1"
+        module: aon_timer_aon
+        desc: watchdog reset requestt
+      }
+    ]
+  }
+  exported_rsts: {}
+  alert: []
+  outgoing_alert:
+  {
+    mio:
+    [
+      {
+        name: rv_timer_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_timer
+        desc: rv_timer fatal_fault alert
+        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
+        lpg_idx: 0
+      }
+      {
+        name: aon_timer_aon_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: aon_timer_aon
+        desc: aon_timer_aon fatal_fault alert
+        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
+        lpg_idx: 0
+      }
+      {
+        name: mio_soc_proxy_fatal_alert_intg
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mio_soc_proxy
+        desc: mio_soc_proxy fatal_alert_intg alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: sram_ctrl_ret_aon_fatal_error
+        width: 1
+        type: alert
+        async: "1"
+        module_name: sram_ctrl_ret_aon
+        desc: sram_ctrl_ret_aon fatal_error alert
+        lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
+        lpg_idx: 0
+      }
+      {
+        name: rv_dm_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_dm
+        desc: rv_dm fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: rv_plic_mio_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_plic_mio
+        desc: rv_plic_mio fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: sram_ctrl_main_fatal_error
+        width: 1
+        type: alert
+        async: "1"
+        module_name: sram_ctrl_main
+        desc: sram_ctrl_main fatal_error alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: sram_ctrl_mbox_fatal_error
+        width: 1
+        type: alert
+        async: "1"
+        module_name: sram_ctrl_mbox
+        desc: sram_ctrl_mbox fatal_error alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: dma_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: dma
+        desc: dma fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx0_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx0
+        desc: mbx0 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx0_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx0
+        desc: mbx0 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx1_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx1
+        desc: mbx1 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx1_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx1
+        desc: mbx1 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx2_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx2
+        desc: mbx2 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx2_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx2
+        desc: mbx2 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx3_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx3
+        desc: mbx3 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx3_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx3
+        desc: mbx3 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx4_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx4
+        desc: mbx4 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx4_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx4
+        desc: mbx4 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx5_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx5
+        desc: mbx5 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx5_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx5
+        desc: mbx5 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx_pcie0_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx_pcie0
+        desc: mbx_pcie0 fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: mbx_pcie0_recov_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: mbx_pcie0
+        desc: mbx_pcie0 recov_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: racl_ctrl_recov_ctrl_update_err
+        width: 1
+        type: alert
+        async: "1"
+        module_name: racl_ctrl
+        desc: racl_ctrl recov_ctrl_update_err alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: racl_ctrl_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: racl_ctrl
+        desc: racl_ctrl fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_fatal_sw_err
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_core_ibex
+        desc: rv_core_ibex fatal_sw_err alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_recov_sw_err
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_core_ibex
+        desc: rv_core_ibex recov_sw_err alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_fatal_hw_err
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_core_ibex
+        desc: rv_core_ibex fatal_hw_err alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_recov_hw_err
+        width: 1
+        type: alert
+        async: "1"
+        module_name: rv_core_ibex
+        desc: rv_core_ibex recov_hw_err alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+    ]
+  }
+  interrupt:
+  [
+    {
+      name: rv_timer_timer_expired_hart0_timer0
+      width: 1
+      type: interrupt
+      module_name: rv_timer
+      desc: rv_timer timer_expired_hart0_timer0 interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: aon_timer_aon_wkup_timer_expired
+      width: 1
+      type: interrupt
+      module_name: aon_timer_aon
+      desc: aon_timer_aon wkup_timer_expired interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: aon_timer_aon_wdog_timer_bark
+      width: 1
+      type: interrupt
+      module_name: aon_timer_aon
+      desc: aon_timer_aon wdog_timer_bark interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mio_soc_proxy_external
+      width: 32
+      type: interrupt
+      module_name: mio_soc_proxy
+      desc: mio_soc_proxy external interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: dma_dma_done
+      width: 1
+      type: interrupt
+      module_name: dma
+      desc: dma dma_done interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      incoming: false
+    }
+    {
+      name: dma_dma_chunk_done
+      width: 1
+      type: interrupt
+      module_name: dma
+      desc: dma dma_chunk_done interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      incoming: false
+    }
+    {
+      name: dma_dma_error
+      width: 1
+      type: interrupt
+      module_name: dma
+      desc: dma dma_error interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx0_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx0
+      desc: mbx0 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx0_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx0
+      desc: mbx0 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx0_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx0
+      desc: mbx0 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx1_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx1
+      desc: mbx1 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx1_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx1
+      desc: mbx1 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx1_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx1
+      desc: mbx1 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx2_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx2
+      desc: mbx2 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx2_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx2
+      desc: mbx2 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx2_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx2
+      desc: mbx2 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx3_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx3
+      desc: mbx3 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx3_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx3
+      desc: mbx3 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx3_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx3
+      desc: mbx3 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx4_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx4
+      desc: mbx4 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx4_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx4
+      desc: mbx4 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx4_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx4
+      desc: mbx4 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx5_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx5
+      desc: mbx5 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx5_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx5
+      desc: mbx5 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx5_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx5
+      desc: mbx5 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx_pcie0_mbx_ready
+      width: 1
+      type: interrupt
+      module_name: mbx_pcie0
+      desc: mbx_pcie0 mbx_ready interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx_pcie0_mbx_abort
+      width: 1
+      type: interrupt
+      module_name: mbx_pcie0
+      desc: mbx_pcie0 mbx_abort interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: mbx_pcie0_mbx_error
+      width: 1
+      type: interrupt
+      module_name: mbx_pcie0
+      desc: mbx_pcie0 mbx_error interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
+      name: MIO_HDR_IPI_FROM_MIO_0
+      module_name: MIO_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: MIO_HDR IPI_FROM_MIO_0 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: MIO_HDR_IPI_FROM_MIO_1
+      module_name: MIO_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: MIO_HDR IPI_FROM_MIO_1 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: MIO_HDR_IPI_FROM_MIO_2
+      module_name: MIO_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: MIO_HDR IPI_FROM_MIO_2 incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: MIO_HDR_IPI_FROM_PWC
+      module_name: MIO_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: MIO_HDR IPI_FROM_PWC incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: MIO_HDR_IPI_FROM_ROT
+      module_name: MIO_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: MIO_HDR IPI_FROM_ROT incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: MIO_HDR_IPI_FROM_PWC
+      module_name: MIO_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: MIO_HDR IPI_FROM_PWC incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_IBEX_IRQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_A IBEX_IRQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_IBEX_IRQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_B IBEX_IRQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_IBEX_IRQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_C IBEX_IRQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+  ]
+  alert_module: []
+  interrupt_module:
+  [
+    rv_timer
+    aon_timer_aon
+    mio_soc_proxy
+    dma
+    mbx0
+    mbx1
+    mbx2
+    mbx3
+    mbx4
+    mbx5
+    mbx_pcie0
+  ]
+  outgoing_alert_module:
+  {
+    mio:
+    [
+      rv_timer
+      aon_timer_aon
+      mio_soc_proxy
+      sram_ctrl_ret_aon
+      rv_dm
+      rv_plic_mio
+      sram_ctrl_main
+      sram_ctrl_mbox
+      dma
+      mbx0
+      mbx1
+      mbx2
+      mbx3
+      mbx4
+      mbx5
+      mbx_pcie0
+      racl_ctrl
+      rv_core_ibex
+    ]
+  }
+  alert_lpgs: []
+  outgoing_alert_lpgs:
+  {
+    mio:
+    [
+      {
+        name: clk_ext_io_div4_i_ext_rst_io_div4_0
+        clock_group: null
+        clock_connection: clk_ext_io_div4_i
+        unmanaged_clock: true
+        unmanaged_reset: true
+        reset_connection:
+        {
+          name: ext_rst_io_div4
+          domain: "0"
+        }
+      }
+      {
+        name: clk_ext_main_i_ext_rst_main_0
+        clock_group: null
+        clock_connection: clk_ext_main_i
+        unmanaged_clock: true
+        unmanaged_reset: true
+        reset_connection:
+        {
+          name: ext_rst_main
+          domain: "0"
+        }
+      }
+    ]
   }
   inter_signal:
   {
@@ -9905,8 +9932,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: mio_main_tl_rv_core_ibex__corei
@@ -9918,8 +9945,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: mio_main_tl_rv_core_ibex__cored
@@ -9931,8 +9958,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: mio_main_tl_rv_dm__sba
@@ -9944,8 +9971,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: mio_main_tl_dma__host
@@ -9957,8 +9984,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: mio_main_tl_mbx0__sram
@@ -9970,8 +9997,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: mio_main_tl_mbx1__sram
@@ -9983,8 +10010,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: mio_main_tl_mbx2__sram
@@ -9996,8 +10023,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: mio_main_tl_mbx3__sram
@@ -10009,8 +10036,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: mio_main_tl_mbx4__sram
@@ -10022,8 +10049,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: mio_main_tl_mbx5__sram
@@ -10035,8 +10062,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: mio_main_tl_mbx_pcie0__sram
@@ -10048,8 +10075,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: rv_dm_regs_tl_d
         index: -1
@@ -10060,8 +10087,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: rv_dm_mem_tl_d
         index: -1
@@ -10072,8 +10099,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         end_idx: -1
         top_signame: mio_main_tl_mio_peri
@@ -10085,8 +10112,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: mio_soc_proxy_core_tl
         index: -1
@@ -10097,8 +10124,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: mio_soc_proxy_ctn_tl
         index: -1
@@ -10109,8 +10136,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: rv_plic_mio_tl
         index: -1
@@ -10121,8 +10148,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: rv_core_ibex_cfg_tl_d
         index: -1
@@ -10133,8 +10160,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: sram_ctrl_main_regs_tl
         index: -1
@@ -10145,8 +10172,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: sram_ctrl_main_ram_tl
         index: -1
@@ -10157,8 +10184,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: sram_ctrl_mbox_regs_tl
         index: -1
@@ -10169,8 +10196,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: sram_ctrl_mbox_ram_tl
         index: -1
@@ -10181,8 +10208,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: dma_tl_d
         index: -1
@@ -10193,8 +10220,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: mbx0_core_tl_d
         index: -1
@@ -10205,8 +10232,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: mbx1_core_tl_d
         index: -1
@@ -10217,8 +10244,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: mbx2_core_tl_d
         index: -1
@@ -10229,8 +10256,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: mbx3_core_tl_d
         index: -1
@@ -10241,8 +10268,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: mbx4_core_tl_d
         index: -1
@@ -10253,8 +10280,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: mbx5_core_tl_d
         index: -1
@@ -10265,8 +10292,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_main
+        width: 1
         default: ""
         top_signame: mbx_pcie0_core_tl_d
         index: -1
@@ -10277,8 +10304,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: mio_peri
+        width: 1
         default: ""
         top_signame: mio_main_tl_mio_peri
         index: -1
@@ -10289,8 +10316,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_peri
+        width: 1
         default: ""
         top_signame: rv_timer_tl
         index: -1
@@ -10301,8 +10328,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_peri
+        width: 1
         default: ""
         top_signame: sram_ctrl_ret_aon_regs_tl
         index: -1
@@ -10313,8 +10340,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_peri
+        width: 1
         default: ""
         top_signame: sram_ctrl_ret_aon_ram_tl
         index: -1
@@ -10325,8 +10352,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_peri
+        width: 1
         default: ""
         top_signame: aon_timer_aon_tl
         index: -1
@@ -10337,8 +10364,8 @@
         package: tlul_pkg
         type: req_rsp
         act: rsp
-        width: 1
         inst_name: mio_mbx
+        width: 1
         default: ""
         external: true
         top_signame: mbx_tl
@@ -10351,8 +10378,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_mbx
+        width: 1
         default: ""
         top_signame: mbx0_soc_tl_d
         index: -1
@@ -10363,8 +10390,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_mbx
+        width: 1
         default: ""
         top_signame: mbx1_soc_tl_d
         index: -1
@@ -10375,8 +10402,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_mbx
+        width: 1
         default: ""
         top_signame: mbx2_soc_tl_d
         index: -1
@@ -10387,8 +10414,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_mbx
+        width: 1
         default: ""
         top_signame: mbx3_soc_tl_d
         index: -1
@@ -10399,8 +10426,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_mbx
+        width: 1
         default: ""
         top_signame: mbx4_soc_tl_d
         index: -1
@@ -10411,8 +10438,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_mbx
+        width: 1
         default: ""
         top_signame: mbx5_soc_tl_d
         index: -1
@@ -10423,8 +10450,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_mbx
+        width: 1
         default: ""
         top_signame: mbx_pcie0_soc_tl_d
         index: -1
@@ -10435,8 +10462,8 @@
         package: tlul_pkg
         type: req_rsp
         act: req
-        width: 1
         inst_name: mio_mbx
+        width: 1
         default: ""
         top_signame: racl_ctrl_tl
         index: -1

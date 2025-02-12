@@ -16,9 +16,6 @@ package racl_ctrl_reg_pkg;
   // Number of registers for every interface
   parameter int NumRegs = 12;
 
-  // Number of registers for every interface
-  parameter int NumRegs = 5;
-
   ////////////////////////////
   // Typedefs for registers //
   ////////////////////////////

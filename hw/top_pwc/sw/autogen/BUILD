@@ -27,7 +27,10 @@ cc_library(
 
 ld_library(
     name = "top_pwc_memory",
-    defines = ["OPENTITAN_TOP_MEMORY_LD=top_pwc_memory.ld"],
+    defines = [
+        "OPENTITAN_TOP_MEMORY_LD=top_pwc_memory.ld",
+        "OPENTITAN_IS_PWC",
+    ],
     includes = ["top_pwc_memory.ld"],
     target_compatible_with = opentitan_require_top("pwc"),
 )

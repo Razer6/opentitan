@@ -27,7 +27,10 @@ cc_library(
 
 ld_library(
     name = "top_mio_memory",
-    defines = ["OPENTITAN_TOP_MEMORY_LD=top_mio_memory.ld"],
+    defines = [
+        "OPENTITAN_TOP_MEMORY_LD=top_mio_memory.ld",
+        "OPENTITAN_IS_MIO",
+    ],
     includes = ["top_mio_memory.ld"],
     target_compatible_with = opentitan_require_top("mio"),
 )

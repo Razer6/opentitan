@@ -5,10 +5,10 @@
   instance_name: top_mio_rv_plic_mio
   param_values:
   {
+    module_instance_name: rv_plic_mio
     src: 69
     target: 1
     prio: 3
-    module_instance_name: rv_plic_mio
     topname: mio
   }
 }

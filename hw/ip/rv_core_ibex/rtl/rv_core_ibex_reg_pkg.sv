@@ -18,9 +18,6 @@ package rv_core_ibex_reg_pkg;
   // Number of registers for every interface
   parameter int NumRegsCfg = 265;
 
-  // Number of registers for every interface
-  parameter int NumRegsCfg = 25;
-
   //////////////////////////////////////////////
   // Typedefs for registers for cfg interface //
   //////////////////////////////////////////////

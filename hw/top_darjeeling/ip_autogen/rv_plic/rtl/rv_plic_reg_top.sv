@@ -121,522 +121,522 @@ module rv_plic_reg_top (
   // Define SW related signals
   // Format: <reg>_<field>_{wd|we|qs}
   //        or <reg>_{wd|we|qs} if field == 1 or 0
-  logic prio0_we;
-  logic [1:0] prio0_qs;
-  logic [1:0] prio0_wd;
-  logic prio1_we;
-  logic [1:0] prio1_qs;
-  logic [1:0] prio1_wd;
-  logic prio2_we;
-  logic [1:0] prio2_qs;
-  logic [1:0] prio2_wd;
-  logic prio3_we;
-  logic [1:0] prio3_qs;
-  logic [1:0] prio3_wd;
-  logic prio4_we;
-  logic [1:0] prio4_qs;
-  logic [1:0] prio4_wd;
-  logic prio5_we;
-  logic [1:0] prio5_qs;
-  logic [1:0] prio5_wd;
-  logic prio6_we;
-  logic [1:0] prio6_qs;
-  logic [1:0] prio6_wd;
-  logic prio7_we;
-  logic [1:0] prio7_qs;
-  logic [1:0] prio7_wd;
-  logic prio8_we;
-  logic [1:0] prio8_qs;
-  logic [1:0] prio8_wd;
-  logic prio9_we;
-  logic [1:0] prio9_qs;
-  logic [1:0] prio9_wd;
-  logic prio10_we;
-  logic [1:0] prio10_qs;
-  logic [1:0] prio10_wd;
-  logic prio11_we;
-  logic [1:0] prio11_qs;
-  logic [1:0] prio11_wd;
-  logic prio12_we;
-  logic [1:0] prio12_qs;
-  logic [1:0] prio12_wd;
-  logic prio13_we;
-  logic [1:0] prio13_qs;
-  logic [1:0] prio13_wd;
-  logic prio14_we;
-  logic [1:0] prio14_qs;
-  logic [1:0] prio14_wd;
-  logic prio15_we;
-  logic [1:0] prio15_qs;
-  logic [1:0] prio15_wd;
-  logic prio16_we;
-  logic [1:0] prio16_qs;
-  logic [1:0] prio16_wd;
-  logic prio17_we;
-  logic [1:0] prio17_qs;
-  logic [1:0] prio17_wd;
-  logic prio18_we;
-  logic [1:0] prio18_qs;
-  logic [1:0] prio18_wd;
-  logic prio19_we;
-  logic [1:0] prio19_qs;
-  logic [1:0] prio19_wd;
-  logic prio20_we;
-  logic [1:0] prio20_qs;
-  logic [1:0] prio20_wd;
-  logic prio21_we;
-  logic [1:0] prio21_qs;
-  logic [1:0] prio21_wd;
-  logic prio22_we;
-  logic [1:0] prio22_qs;
-  logic [1:0] prio22_wd;
-  logic prio23_we;
-  logic [1:0] prio23_qs;
-  logic [1:0] prio23_wd;
-  logic prio24_we;
-  logic [1:0] prio24_qs;
-  logic [1:0] prio24_wd;
-  logic prio25_we;
-  logic [1:0] prio25_qs;
-  logic [1:0] prio25_wd;
-  logic prio26_we;
-  logic [1:0] prio26_qs;
-  logic [1:0] prio26_wd;
-  logic prio27_we;
-  logic [1:0] prio27_qs;
-  logic [1:0] prio27_wd;
-  logic prio28_we;
-  logic [1:0] prio28_qs;
-  logic [1:0] prio28_wd;
-  logic prio29_we;
-  logic [1:0] prio29_qs;
-  logic [1:0] prio29_wd;
-  logic prio30_we;
-  logic [1:0] prio30_qs;
-  logic [1:0] prio30_wd;
-  logic prio31_we;
-  logic [1:0] prio31_qs;
-  logic [1:0] prio31_wd;
-  logic prio32_we;
-  logic [1:0] prio32_qs;
-  logic [1:0] prio32_wd;
-  logic prio33_we;
-  logic [1:0] prio33_qs;
-  logic [1:0] prio33_wd;
-  logic prio34_we;
-  logic [1:0] prio34_qs;
-  logic [1:0] prio34_wd;
-  logic prio35_we;
-  logic [1:0] prio35_qs;
-  logic [1:0] prio35_wd;
-  logic prio36_we;
-  logic [1:0] prio36_qs;
-  logic [1:0] prio36_wd;
-  logic prio37_we;
-  logic [1:0] prio37_qs;
-  logic [1:0] prio37_wd;
-  logic prio38_we;
-  logic [1:0] prio38_qs;
-  logic [1:0] prio38_wd;
-  logic prio39_we;
-  logic [1:0] prio39_qs;
-  logic [1:0] prio39_wd;
-  logic prio40_we;
-  logic [1:0] prio40_qs;
-  logic [1:0] prio40_wd;
-  logic prio41_we;
-  logic [1:0] prio41_qs;
-  logic [1:0] prio41_wd;
-  logic prio42_we;
-  logic [1:0] prio42_qs;
-  logic [1:0] prio42_wd;
-  logic prio43_we;
-  logic [1:0] prio43_qs;
-  logic [1:0] prio43_wd;
-  logic prio44_we;
-  logic [1:0] prio44_qs;
-  logic [1:0] prio44_wd;
-  logic prio45_we;
-  logic [1:0] prio45_qs;
-  logic [1:0] prio45_wd;
-  logic prio46_we;
-  logic [1:0] prio46_qs;
-  logic [1:0] prio46_wd;
-  logic prio47_we;
-  logic [1:0] prio47_qs;
-  logic [1:0] prio47_wd;
-  logic prio48_we;
-  logic [1:0] prio48_qs;
-  logic [1:0] prio48_wd;
-  logic prio49_we;
-  logic [1:0] prio49_qs;
-  logic [1:0] prio49_wd;
-  logic prio50_we;
-  logic [1:0] prio50_qs;
-  logic [1:0] prio50_wd;
-  logic prio51_we;
-  logic [1:0] prio51_qs;
-  logic [1:0] prio51_wd;
-  logic prio52_we;
-  logic [1:0] prio52_qs;
-  logic [1:0] prio52_wd;
-  logic prio53_we;
-  logic [1:0] prio53_qs;
-  logic [1:0] prio53_wd;
-  logic prio54_we;
-  logic [1:0] prio54_qs;
-  logic [1:0] prio54_wd;
-  logic prio55_we;
-  logic [1:0] prio55_qs;
-  logic [1:0] prio55_wd;
-  logic prio56_we;
-  logic [1:0] prio56_qs;
-  logic [1:0] prio56_wd;
-  logic prio57_we;
-  logic [1:0] prio57_qs;
-  logic [1:0] prio57_wd;
-  logic prio58_we;
-  logic [1:0] prio58_qs;
-  logic [1:0] prio58_wd;
-  logic prio59_we;
-  logic [1:0] prio59_qs;
-  logic [1:0] prio59_wd;
-  logic prio60_we;
-  logic [1:0] prio60_qs;
-  logic [1:0] prio60_wd;
-  logic prio61_we;
-  logic [1:0] prio61_qs;
-  logic [1:0] prio61_wd;
-  logic prio62_we;
-  logic [1:0] prio62_qs;
-  logic [1:0] prio62_wd;
-  logic prio63_we;
-  logic [1:0] prio63_qs;
-  logic [1:0] prio63_wd;
-  logic prio64_we;
-  logic [1:0] prio64_qs;
-  logic [1:0] prio64_wd;
-  logic prio65_we;
-  logic [1:0] prio65_qs;
-  logic [1:0] prio65_wd;
-  logic prio66_we;
-  logic [1:0] prio66_qs;
-  logic [1:0] prio66_wd;
-  logic prio67_we;
-  logic [1:0] prio67_qs;
-  logic [1:0] prio67_wd;
-  logic prio68_we;
-  logic [1:0] prio68_qs;
-  logic [1:0] prio68_wd;
-  logic prio69_we;
-  logic [1:0] prio69_qs;
-  logic [1:0] prio69_wd;
-  logic prio70_we;
-  logic [1:0] prio70_qs;
-  logic [1:0] prio70_wd;
-  logic prio71_we;
-  logic [1:0] prio71_qs;
-  logic [1:0] prio71_wd;
-  logic prio72_we;
-  logic [1:0] prio72_qs;
-  logic [1:0] prio72_wd;
-  logic prio73_we;
-  logic [1:0] prio73_qs;
-  logic [1:0] prio73_wd;
-  logic prio74_we;
-  logic [1:0] prio74_qs;
-  logic [1:0] prio74_wd;
-  logic prio75_we;
-  logic [1:0] prio75_qs;
-  logic [1:0] prio75_wd;
-  logic prio76_we;
-  logic [1:0] prio76_qs;
-  logic [1:0] prio76_wd;
-  logic prio77_we;
-  logic [1:0] prio77_qs;
-  logic [1:0] prio77_wd;
-  logic prio78_we;
-  logic [1:0] prio78_qs;
-  logic [1:0] prio78_wd;
-  logic prio79_we;
-  logic [1:0] prio79_qs;
-  logic [1:0] prio79_wd;
-  logic prio80_we;
-  logic [1:0] prio80_qs;
-  logic [1:0] prio80_wd;
-  logic prio81_we;
-  logic [1:0] prio81_qs;
-  logic [1:0] prio81_wd;
-  logic prio82_we;
-  logic [1:0] prio82_qs;
-  logic [1:0] prio82_wd;
-  logic prio83_we;
-  logic [1:0] prio83_qs;
-  logic [1:0] prio83_wd;
-  logic prio84_we;
-  logic [1:0] prio84_qs;
-  logic [1:0] prio84_wd;
-  logic prio85_we;
-  logic [1:0] prio85_qs;
-  logic [1:0] prio85_wd;
-  logic prio86_we;
-  logic [1:0] prio86_qs;
-  logic [1:0] prio86_wd;
-  logic prio87_we;
-  logic [1:0] prio87_qs;
-  logic [1:0] prio87_wd;
-  logic prio88_we;
-  logic [1:0] prio88_qs;
-  logic [1:0] prio88_wd;
-  logic prio89_we;
-  logic [1:0] prio89_qs;
-  logic [1:0] prio89_wd;
-  logic prio90_we;
-  logic [1:0] prio90_qs;
-  logic [1:0] prio90_wd;
-  logic prio91_we;
-  logic [1:0] prio91_qs;
-  logic [1:0] prio91_wd;
-  logic prio92_we;
-  logic [1:0] prio92_qs;
-  logic [1:0] prio92_wd;
-  logic prio93_we;
-  logic [1:0] prio93_qs;
-  logic [1:0] prio93_wd;
-  logic prio94_we;
-  logic [1:0] prio94_qs;
-  logic [1:0] prio94_wd;
-  logic prio95_we;
-  logic [1:0] prio95_qs;
-  logic [1:0] prio95_wd;
-  logic prio96_we;
-  logic [1:0] prio96_qs;
-  logic [1:0] prio96_wd;
-  logic prio97_we;
-  logic [1:0] prio97_qs;
-  logic [1:0] prio97_wd;
-  logic prio98_we;
-  logic [1:0] prio98_qs;
-  logic [1:0] prio98_wd;
-  logic prio99_we;
-  logic [1:0] prio99_qs;
-  logic [1:0] prio99_wd;
-  logic prio100_we;
-  logic [1:0] prio100_qs;
-  logic [1:0] prio100_wd;
-  logic prio101_we;
-  logic [1:0] prio101_qs;
-  logic [1:0] prio101_wd;
-  logic prio102_we;
-  logic [1:0] prio102_qs;
-  logic [1:0] prio102_wd;
-  logic prio103_we;
-  logic [1:0] prio103_qs;
-  logic [1:0] prio103_wd;
-  logic prio104_we;
-  logic [1:0] prio104_qs;
-  logic [1:0] prio104_wd;
-  logic prio105_we;
-  logic [1:0] prio105_qs;
-  logic [1:0] prio105_wd;
-  logic prio106_we;
-  logic [1:0] prio106_qs;
-  logic [1:0] prio106_wd;
-  logic prio107_we;
-  logic [1:0] prio107_qs;
-  logic [1:0] prio107_wd;
-  logic prio108_we;
-  logic [1:0] prio108_qs;
-  logic [1:0] prio108_wd;
-  logic prio109_we;
-  logic [1:0] prio109_qs;
-  logic [1:0] prio109_wd;
-  logic prio110_we;
-  logic [1:0] prio110_qs;
-  logic [1:0] prio110_wd;
-  logic prio111_we;
-  logic [1:0] prio111_qs;
-  logic [1:0] prio111_wd;
-  logic prio112_we;
-  logic [1:0] prio112_qs;
-  logic [1:0] prio112_wd;
-  logic prio113_we;
-  logic [1:0] prio113_qs;
-  logic [1:0] prio113_wd;
-  logic prio114_we;
-  logic [1:0] prio114_qs;
-  logic [1:0] prio114_wd;
-  logic prio115_we;
-  logic [1:0] prio115_qs;
-  logic [1:0] prio115_wd;
-  logic prio116_we;
-  logic [1:0] prio116_qs;
-  logic [1:0] prio116_wd;
-  logic prio117_we;
-  logic [1:0] prio117_qs;
-  logic [1:0] prio117_wd;
-  logic prio118_we;
-  logic [1:0] prio118_qs;
-  logic [1:0] prio118_wd;
-  logic prio119_we;
-  logic [1:0] prio119_qs;
-  logic [1:0] prio119_wd;
-  logic prio120_we;
-  logic [1:0] prio120_qs;
-  logic [1:0] prio120_wd;
-  logic prio121_we;
-  logic [1:0] prio121_qs;
-  logic [1:0] prio121_wd;
-  logic prio122_we;
-  logic [1:0] prio122_qs;
-  logic [1:0] prio122_wd;
-  logic prio123_we;
-  logic [1:0] prio123_qs;
-  logic [1:0] prio123_wd;
-  logic prio124_we;
-  logic [1:0] prio124_qs;
-  logic [1:0] prio124_wd;
-  logic prio125_we;
-  logic [1:0] prio125_qs;
-  logic [1:0] prio125_wd;
-  logic prio126_we;
-  logic [1:0] prio126_qs;
-  logic [1:0] prio126_wd;
-  logic prio127_we;
-  logic [1:0] prio127_qs;
-  logic [1:0] prio127_wd;
-  logic prio128_we;
-  logic [1:0] prio128_qs;
-  logic [1:0] prio128_wd;
-  logic prio129_we;
-  logic [1:0] prio129_qs;
-  logic [1:0] prio129_wd;
-  logic prio130_we;
-  logic [1:0] prio130_qs;
-  logic [1:0] prio130_wd;
-  logic prio131_we;
-  logic [1:0] prio131_qs;
-  logic [1:0] prio131_wd;
-  logic prio132_we;
-  logic [1:0] prio132_qs;
-  logic [1:0] prio132_wd;
-  logic prio133_we;
-  logic [1:0] prio133_qs;
-  logic [1:0] prio133_wd;
-  logic prio134_we;
-  logic [1:0] prio134_qs;
-  logic [1:0] prio134_wd;
-  logic prio135_we;
-  logic [1:0] prio135_qs;
-  logic [1:0] prio135_wd;
-  logic prio136_we;
-  logic [1:0] prio136_qs;
-  logic [1:0] prio136_wd;
-  logic prio137_we;
-  logic [1:0] prio137_qs;
-  logic [1:0] prio137_wd;
-  logic prio138_we;
-  logic [1:0] prio138_qs;
-  logic [1:0] prio138_wd;
-  logic prio139_we;
-  logic [1:0] prio139_qs;
-  logic [1:0] prio139_wd;
-  logic prio140_we;
-  logic [1:0] prio140_qs;
-  logic [1:0] prio140_wd;
-  logic prio141_we;
-  logic [1:0] prio141_qs;
-  logic [1:0] prio141_wd;
-  logic prio142_we;
-  logic [1:0] prio142_qs;
-  logic [1:0] prio142_wd;
-  logic prio143_we;
-  logic [1:0] prio143_qs;
-  logic [1:0] prio143_wd;
-  logic prio144_we;
-  logic [1:0] prio144_qs;
-  logic [1:0] prio144_wd;
-  logic prio145_we;
-  logic [1:0] prio145_qs;
-  logic [1:0] prio145_wd;
-  logic prio146_we;
-  logic [1:0] prio146_qs;
-  logic [1:0] prio146_wd;
-  logic prio147_we;
-  logic [1:0] prio147_qs;
-  logic [1:0] prio147_wd;
-  logic prio148_we;
-  logic [1:0] prio148_qs;
-  logic [1:0] prio148_wd;
-  logic prio149_we;
-  logic [1:0] prio149_qs;
-  logic [1:0] prio149_wd;
-  logic prio150_we;
-  logic [1:0] prio150_qs;
-  logic [1:0] prio150_wd;
-  logic prio151_we;
-  logic [1:0] prio151_qs;
-  logic [1:0] prio151_wd;
-  logic prio152_we;
-  logic [1:0] prio152_qs;
-  logic [1:0] prio152_wd;
-  logic prio153_we;
-  logic [1:0] prio153_qs;
-  logic [1:0] prio153_wd;
-  logic prio154_we;
-  logic [1:0] prio154_qs;
-  logic [1:0] prio154_wd;
-  logic prio155_we;
-  logic [1:0] prio155_qs;
-  logic [1:0] prio155_wd;
-  logic prio156_we;
-  logic [1:0] prio156_qs;
-  logic [1:0] prio156_wd;
-  logic prio157_we;
-  logic [1:0] prio157_qs;
-  logic [1:0] prio157_wd;
-  logic prio158_we;
-  logic [1:0] prio158_qs;
-  logic [1:0] prio158_wd;
-  logic prio159_we;
-  logic [1:0] prio159_qs;
-  logic [1:0] prio159_wd;
-  logic prio160_we;
-  logic [1:0] prio160_qs;
-  logic [1:0] prio160_wd;
-  logic prio161_we;
-  logic [1:0] prio161_qs;
-  logic [1:0] prio161_wd;
-  logic prio162_we;
-  logic [1:0] prio162_qs;
-  logic [1:0] prio162_wd;
-  logic prio163_we;
-  logic [1:0] prio163_qs;
-  logic [1:0] prio163_wd;
-  logic prio164_we;
-  logic [1:0] prio164_qs;
-  logic [1:0] prio164_wd;
-  logic prio165_we;
-  logic [1:0] prio165_qs;
-  logic [1:0] prio165_wd;
-  logic prio166_we;
-  logic [1:0] prio166_qs;
-  logic [1:0] prio166_wd;
-  logic prio167_we;
-  logic [1:0] prio167_qs;
-  logic [1:0] prio167_wd;
-  logic prio168_we;
-  logic [1:0] prio168_qs;
-  logic [1:0] prio168_wd;
-  logic prio169_we;
-  logic [1:0] prio169_qs;
-  logic [1:0] prio169_wd;
-  logic prio170_we;
-  logic [1:0] prio170_qs;
-  logic [1:0] prio170_wd;
-  logic prio171_we;
-  logic [1:0] prio171_qs;
-  logic [1:0] prio171_wd;
+  logic prio_0_we;
+  logic [1:0] prio_0_qs;
+  logic [1:0] prio_0_wd;
+  logic prio_1_we;
+  logic [1:0] prio_1_qs;
+  logic [1:0] prio_1_wd;
+  logic prio_2_we;
+  logic [1:0] prio_2_qs;
+  logic [1:0] prio_2_wd;
+  logic prio_3_we;
+  logic [1:0] prio_3_qs;
+  logic [1:0] prio_3_wd;
+  logic prio_4_we;
+  logic [1:0] prio_4_qs;
+  logic [1:0] prio_4_wd;
+  logic prio_5_we;
+  logic [1:0] prio_5_qs;
+  logic [1:0] prio_5_wd;
+  logic prio_6_we;
+  logic [1:0] prio_6_qs;
+  logic [1:0] prio_6_wd;
+  logic prio_7_we;
+  logic [1:0] prio_7_qs;
+  logic [1:0] prio_7_wd;
+  logic prio_8_we;
+  logic [1:0] prio_8_qs;
+  logic [1:0] prio_8_wd;
+  logic prio_9_we;
+  logic [1:0] prio_9_qs;
+  logic [1:0] prio_9_wd;
+  logic prio_10_we;
+  logic [1:0] prio_10_qs;
+  logic [1:0] prio_10_wd;
+  logic prio_11_we;
+  logic [1:0] prio_11_qs;
+  logic [1:0] prio_11_wd;
+  logic prio_12_we;
+  logic [1:0] prio_12_qs;
+  logic [1:0] prio_12_wd;
+  logic prio_13_we;
+  logic [1:0] prio_13_qs;
+  logic [1:0] prio_13_wd;
+  logic prio_14_we;
+  logic [1:0] prio_14_qs;
+  logic [1:0] prio_14_wd;
+  logic prio_15_we;
+  logic [1:0] prio_15_qs;
+  logic [1:0] prio_15_wd;
+  logic prio_16_we;
+  logic [1:0] prio_16_qs;
+  logic [1:0] prio_16_wd;
+  logic prio_17_we;
+  logic [1:0] prio_17_qs;
+  logic [1:0] prio_17_wd;
+  logic prio_18_we;
+  logic [1:0] prio_18_qs;
+  logic [1:0] prio_18_wd;
+  logic prio_19_we;
+  logic [1:0] prio_19_qs;
+  logic [1:0] prio_19_wd;
+  logic prio_20_we;
+  logic [1:0] prio_20_qs;
+  logic [1:0] prio_20_wd;
+  logic prio_21_we;
+  logic [1:0] prio_21_qs;
+  logic [1:0] prio_21_wd;
+  logic prio_22_we;
+  logic [1:0] prio_22_qs;
+  logic [1:0] prio_22_wd;
+  logic prio_23_we;
+  logic [1:0] prio_23_qs;
+  logic [1:0] prio_23_wd;
+  logic prio_24_we;
+  logic [1:0] prio_24_qs;
+  logic [1:0] prio_24_wd;
+  logic prio_25_we;
+  logic [1:0] prio_25_qs;
+  logic [1:0] prio_25_wd;
+  logic prio_26_we;
+  logic [1:0] prio_26_qs;
+  logic [1:0] prio_26_wd;
+  logic prio_27_we;
+  logic [1:0] prio_27_qs;
+  logic [1:0] prio_27_wd;
+  logic prio_28_we;
+  logic [1:0] prio_28_qs;
+  logic [1:0] prio_28_wd;
+  logic prio_29_we;
+  logic [1:0] prio_29_qs;
+  logic [1:0] prio_29_wd;
+  logic prio_30_we;
+  logic [1:0] prio_30_qs;
+  logic [1:0] prio_30_wd;
+  logic prio_31_we;
+  logic [1:0] prio_31_qs;
+  logic [1:0] prio_31_wd;
+  logic prio_32_we;
+  logic [1:0] prio_32_qs;
+  logic [1:0] prio_32_wd;
+  logic prio_33_we;
+  logic [1:0] prio_33_qs;
+  logic [1:0] prio_33_wd;
+  logic prio_34_we;
+  logic [1:0] prio_34_qs;
+  logic [1:0] prio_34_wd;
+  logic prio_35_we;
+  logic [1:0] prio_35_qs;
+  logic [1:0] prio_35_wd;
+  logic prio_36_we;
+  logic [1:0] prio_36_qs;
+  logic [1:0] prio_36_wd;
+  logic prio_37_we;
+  logic [1:0] prio_37_qs;
+  logic [1:0] prio_37_wd;
+  logic prio_38_we;
+  logic [1:0] prio_38_qs;
+  logic [1:0] prio_38_wd;
+  logic prio_39_we;
+  logic [1:0] prio_39_qs;
+  logic [1:0] prio_39_wd;
+  logic prio_40_we;
+  logic [1:0] prio_40_qs;
+  logic [1:0] prio_40_wd;
+  logic prio_41_we;
+  logic [1:0] prio_41_qs;
+  logic [1:0] prio_41_wd;
+  logic prio_42_we;
+  logic [1:0] prio_42_qs;
+  logic [1:0] prio_42_wd;
+  logic prio_43_we;
+  logic [1:0] prio_43_qs;
+  logic [1:0] prio_43_wd;
+  logic prio_44_we;
+  logic [1:0] prio_44_qs;
+  logic [1:0] prio_44_wd;
+  logic prio_45_we;
+  logic [1:0] prio_45_qs;
+  logic [1:0] prio_45_wd;
+  logic prio_46_we;
+  logic [1:0] prio_46_qs;
+  logic [1:0] prio_46_wd;
+  logic prio_47_we;
+  logic [1:0] prio_47_qs;
+  logic [1:0] prio_47_wd;
+  logic prio_48_we;
+  logic [1:0] prio_48_qs;
+  logic [1:0] prio_48_wd;
+  logic prio_49_we;
+  logic [1:0] prio_49_qs;
+  logic [1:0] prio_49_wd;
+  logic prio_50_we;
+  logic [1:0] prio_50_qs;
+  logic [1:0] prio_50_wd;
+  logic prio_51_we;
+  logic [1:0] prio_51_qs;
+  logic [1:0] prio_51_wd;
+  logic prio_52_we;
+  logic [1:0] prio_52_qs;
+  logic [1:0] prio_52_wd;
+  logic prio_53_we;
+  logic [1:0] prio_53_qs;
+  logic [1:0] prio_53_wd;
+  logic prio_54_we;
+  logic [1:0] prio_54_qs;
+  logic [1:0] prio_54_wd;
+  logic prio_55_we;
+  logic [1:0] prio_55_qs;
+  logic [1:0] prio_55_wd;
+  logic prio_56_we;
+  logic [1:0] prio_56_qs;
+  logic [1:0] prio_56_wd;
+  logic prio_57_we;
+  logic [1:0] prio_57_qs;
+  logic [1:0] prio_57_wd;
+  logic prio_58_we;
+  logic [1:0] prio_58_qs;
+  logic [1:0] prio_58_wd;
+  logic prio_59_we;
+  logic [1:0] prio_59_qs;
+  logic [1:0] prio_59_wd;
+  logic prio_60_we;
+  logic [1:0] prio_60_qs;
+  logic [1:0] prio_60_wd;
+  logic prio_61_we;
+  logic [1:0] prio_61_qs;
+  logic [1:0] prio_61_wd;
+  logic prio_62_we;
+  logic [1:0] prio_62_qs;
+  logic [1:0] prio_62_wd;
+  logic prio_63_we;
+  logic [1:0] prio_63_qs;
+  logic [1:0] prio_63_wd;
+  logic prio_64_we;
+  logic [1:0] prio_64_qs;
+  logic [1:0] prio_64_wd;
+  logic prio_65_we;
+  logic [1:0] prio_65_qs;
+  logic [1:0] prio_65_wd;
+  logic prio_66_we;
+  logic [1:0] prio_66_qs;
+  logic [1:0] prio_66_wd;
+  logic prio_67_we;
+  logic [1:0] prio_67_qs;
+  logic [1:0] prio_67_wd;
+  logic prio_68_we;
+  logic [1:0] prio_68_qs;
+  logic [1:0] prio_68_wd;
+  logic prio_69_we;
+  logic [1:0] prio_69_qs;
+  logic [1:0] prio_69_wd;
+  logic prio_70_we;
+  logic [1:0] prio_70_qs;
+  logic [1:0] prio_70_wd;
+  logic prio_71_we;
+  logic [1:0] prio_71_qs;
+  logic [1:0] prio_71_wd;
+  logic prio_72_we;
+  logic [1:0] prio_72_qs;
+  logic [1:0] prio_72_wd;
+  logic prio_73_we;
+  logic [1:0] prio_73_qs;
+  logic [1:0] prio_73_wd;
+  logic prio_74_we;
+  logic [1:0] prio_74_qs;
+  logic [1:0] prio_74_wd;
+  logic prio_75_we;
+  logic [1:0] prio_75_qs;
+  logic [1:0] prio_75_wd;
+  logic prio_76_we;
+  logic [1:0] prio_76_qs;
+  logic [1:0] prio_76_wd;
+  logic prio_77_we;
+  logic [1:0] prio_77_qs;
+  logic [1:0] prio_77_wd;
+  logic prio_78_we;
+  logic [1:0] prio_78_qs;
+  logic [1:0] prio_78_wd;
+  logic prio_79_we;
+  logic [1:0] prio_79_qs;
+  logic [1:0] prio_79_wd;
+  logic prio_80_we;
+  logic [1:0] prio_80_qs;
+  logic [1:0] prio_80_wd;
+  logic prio_81_we;
+  logic [1:0] prio_81_qs;
+  logic [1:0] prio_81_wd;
+  logic prio_82_we;
+  logic [1:0] prio_82_qs;
+  logic [1:0] prio_82_wd;
+  logic prio_83_we;
+  logic [1:0] prio_83_qs;
+  logic [1:0] prio_83_wd;
+  logic prio_84_we;
+  logic [1:0] prio_84_qs;
+  logic [1:0] prio_84_wd;
+  logic prio_85_we;
+  logic [1:0] prio_85_qs;
+  logic [1:0] prio_85_wd;
+  logic prio_86_we;
+  logic [1:0] prio_86_qs;
+  logic [1:0] prio_86_wd;
+  logic prio_87_we;
+  logic [1:0] prio_87_qs;
+  logic [1:0] prio_87_wd;
+  logic prio_88_we;
+  logic [1:0] prio_88_qs;
+  logic [1:0] prio_88_wd;
+  logic prio_89_we;
+  logic [1:0] prio_89_qs;
+  logic [1:0] prio_89_wd;
+  logic prio_90_we;
+  logic [1:0] prio_90_qs;
+  logic [1:0] prio_90_wd;
+  logic prio_91_we;
+  logic [1:0] prio_91_qs;
+  logic [1:0] prio_91_wd;
+  logic prio_92_we;
+  logic [1:0] prio_92_qs;
+  logic [1:0] prio_92_wd;
+  logic prio_93_we;
+  logic [1:0] prio_93_qs;
+  logic [1:0] prio_93_wd;
+  logic prio_94_we;
+  logic [1:0] prio_94_qs;
+  logic [1:0] prio_94_wd;
+  logic prio_95_we;
+  logic [1:0] prio_95_qs;
+  logic [1:0] prio_95_wd;
+  logic prio_96_we;
+  logic [1:0] prio_96_qs;
+  logic [1:0] prio_96_wd;
+  logic prio_97_we;
+  logic [1:0] prio_97_qs;
+  logic [1:0] prio_97_wd;
+  logic prio_98_we;
+  logic [1:0] prio_98_qs;
+  logic [1:0] prio_98_wd;
+  logic prio_99_we;
+  logic [1:0] prio_99_qs;
+  logic [1:0] prio_99_wd;
+  logic prio_100_we;
+  logic [1:0] prio_100_qs;
+  logic [1:0] prio_100_wd;
+  logic prio_101_we;
+  logic [1:0] prio_101_qs;
+  logic [1:0] prio_101_wd;
+  logic prio_102_we;
+  logic [1:0] prio_102_qs;
+  logic [1:0] prio_102_wd;
+  logic prio_103_we;
+  logic [1:0] prio_103_qs;
+  logic [1:0] prio_103_wd;
+  logic prio_104_we;
+  logic [1:0] prio_104_qs;
+  logic [1:0] prio_104_wd;
+  logic prio_105_we;
+  logic [1:0] prio_105_qs;
+  logic [1:0] prio_105_wd;
+  logic prio_106_we;
+  logic [1:0] prio_106_qs;
+  logic [1:0] prio_106_wd;
+  logic prio_107_we;
+  logic [1:0] prio_107_qs;
+  logic [1:0] prio_107_wd;
+  logic prio_108_we;
+  logic [1:0] prio_108_qs;
+  logic [1:0] prio_108_wd;
+  logic prio_109_we;
+  logic [1:0] prio_109_qs;
+  logic [1:0] prio_109_wd;
+  logic prio_110_we;
+  logic [1:0] prio_110_qs;
+  logic [1:0] prio_110_wd;
+  logic prio_111_we;
+  logic [1:0] prio_111_qs;
+  logic [1:0] prio_111_wd;
+  logic prio_112_we;
+  logic [1:0] prio_112_qs;
+  logic [1:0] prio_112_wd;
+  logic prio_113_we;
+  logic [1:0] prio_113_qs;
+  logic [1:0] prio_113_wd;
+  logic prio_114_we;
+  logic [1:0] prio_114_qs;
+  logic [1:0] prio_114_wd;
+  logic prio_115_we;
+  logic [1:0] prio_115_qs;
+  logic [1:0] prio_115_wd;
+  logic prio_116_we;
+  logic [1:0] prio_116_qs;
+  logic [1:0] prio_116_wd;
+  logic prio_117_we;
+  logic [1:0] prio_117_qs;
+  logic [1:0] prio_117_wd;
+  logic prio_118_we;
+  logic [1:0] prio_118_qs;
+  logic [1:0] prio_118_wd;
+  logic prio_119_we;
+  logic [1:0] prio_119_qs;
+  logic [1:0] prio_119_wd;
+  logic prio_120_we;
+  logic [1:0] prio_120_qs;
+  logic [1:0] prio_120_wd;
+  logic prio_121_we;
+  logic [1:0] prio_121_qs;
+  logic [1:0] prio_121_wd;
+  logic prio_122_we;
+  logic [1:0] prio_122_qs;
+  logic [1:0] prio_122_wd;
+  logic prio_123_we;
+  logic [1:0] prio_123_qs;
+  logic [1:0] prio_123_wd;
+  logic prio_124_we;
+  logic [1:0] prio_124_qs;
+  logic [1:0] prio_124_wd;
+  logic prio_125_we;
+  logic [1:0] prio_125_qs;
+  logic [1:0] prio_125_wd;
+  logic prio_126_we;
+  logic [1:0] prio_126_qs;
+  logic [1:0] prio_126_wd;
+  logic prio_127_we;
+  logic [1:0] prio_127_qs;
+  logic [1:0] prio_127_wd;
+  logic prio_128_we;
+  logic [1:0] prio_128_qs;
+  logic [1:0] prio_128_wd;
+  logic prio_129_we;
+  logic [1:0] prio_129_qs;
+  logic [1:0] prio_129_wd;
+  logic prio_130_we;
+  logic [1:0] prio_130_qs;
+  logic [1:0] prio_130_wd;
+  logic prio_131_we;
+  logic [1:0] prio_131_qs;
+  logic [1:0] prio_131_wd;
+  logic prio_132_we;
+  logic [1:0] prio_132_qs;
+  logic [1:0] prio_132_wd;
+  logic prio_133_we;
+  logic [1:0] prio_133_qs;
+  logic [1:0] prio_133_wd;
+  logic prio_134_we;
+  logic [1:0] prio_134_qs;
+  logic [1:0] prio_134_wd;
+  logic prio_135_we;
+  logic [1:0] prio_135_qs;
+  logic [1:0] prio_135_wd;
+  logic prio_136_we;
+  logic [1:0] prio_136_qs;
+  logic [1:0] prio_136_wd;
+  logic prio_137_we;
+  logic [1:0] prio_137_qs;
+  logic [1:0] prio_137_wd;
+  logic prio_138_we;
+  logic [1:0] prio_138_qs;
+  logic [1:0] prio_138_wd;
+  logic prio_139_we;
+  logic [1:0] prio_139_qs;
+  logic [1:0] prio_139_wd;
+  logic prio_140_we;
+  logic [1:0] prio_140_qs;
+  logic [1:0] prio_140_wd;
+  logic prio_141_we;
+  logic [1:0] prio_141_qs;
+  logic [1:0] prio_141_wd;
+  logic prio_142_we;
+  logic [1:0] prio_142_qs;
+  logic [1:0] prio_142_wd;
+  logic prio_143_we;
+  logic [1:0] prio_143_qs;
+  logic [1:0] prio_143_wd;
+  logic prio_144_we;
+  logic [1:0] prio_144_qs;
+  logic [1:0] prio_144_wd;
+  logic prio_145_we;
+  logic [1:0] prio_145_qs;
+  logic [1:0] prio_145_wd;
+  logic prio_146_we;
+  logic [1:0] prio_146_qs;
+  logic [1:0] prio_146_wd;
+  logic prio_147_we;
+  logic [1:0] prio_147_qs;
+  logic [1:0] prio_147_wd;
+  logic prio_148_we;
+  logic [1:0] prio_148_qs;
+  logic [1:0] prio_148_wd;
+  logic prio_149_we;
+  logic [1:0] prio_149_qs;
+  logic [1:0] prio_149_wd;
+  logic prio_150_we;
+  logic [1:0] prio_150_qs;
+  logic [1:0] prio_150_wd;
+  logic prio_151_we;
+  logic [1:0] prio_151_qs;
+  logic [1:0] prio_151_wd;
+  logic prio_152_we;
+  logic [1:0] prio_152_qs;
+  logic [1:0] prio_152_wd;
+  logic prio_153_we;
+  logic [1:0] prio_153_qs;
+  logic [1:0] prio_153_wd;
+  logic prio_154_we;
+  logic [1:0] prio_154_qs;
+  logic [1:0] prio_154_wd;
+  logic prio_155_we;
+  logic [1:0] prio_155_qs;
+  logic [1:0] prio_155_wd;
+  logic prio_156_we;
+  logic [1:0] prio_156_qs;
+  logic [1:0] prio_156_wd;
+  logic prio_157_we;
+  logic [1:0] prio_157_qs;
+  logic [1:0] prio_157_wd;
+  logic prio_158_we;
+  logic [1:0] prio_158_qs;
+  logic [1:0] prio_158_wd;
+  logic prio_159_we;
+  logic [1:0] prio_159_qs;
+  logic [1:0] prio_159_wd;
+  logic prio_160_we;
+  logic [1:0] prio_160_qs;
+  logic [1:0] prio_160_wd;
+  logic prio_161_we;
+  logic [1:0] prio_161_qs;
+  logic [1:0] prio_161_wd;
+  logic prio_162_we;
+  logic [1:0] prio_162_qs;
+  logic [1:0] prio_162_wd;
+  logic prio_163_we;
+  logic [1:0] prio_163_qs;
+  logic [1:0] prio_163_wd;
+  logic prio_164_we;
+  logic [1:0] prio_164_qs;
+  logic [1:0] prio_164_wd;
+  logic prio_165_we;
+  logic [1:0] prio_165_qs;
+  logic [1:0] prio_165_wd;
+  logic prio_166_we;
+  logic [1:0] prio_166_qs;
+  logic [1:0] prio_166_wd;
+  logic prio_167_we;
+  logic [1:0] prio_167_qs;
+  logic [1:0] prio_167_wd;
+  logic prio_168_we;
+  logic [1:0] prio_168_qs;
+  logic [1:0] prio_168_wd;
+  logic prio_169_we;
+  logic [1:0] prio_169_qs;
+  logic [1:0] prio_169_wd;
+  logic prio_170_we;
+  logic [1:0] prio_170_qs;
+  logic [1:0] prio_170_wd;
+  logic prio_171_we;
+  logic [1:0] prio_171_qs;
+  logic [1:0] prio_171_wd;
   logic ip_0_p_0_qs;
   logic ip_0_p_1_qs;
   logic ip_0_p_2_qs;
@@ -5784,19 +5784,20 @@ module rv_plic_reg_top (
   );
 
 
-  // R[prio159]: V(False)
+  // Subregister 159 of Multireg prio
+  // R[prio_159]: V(False)
   prim_subreg #(
     .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (2'h0),
     .Mubi    (1'b0)
-  ) u_prio159 (
+  ) u_prio_159 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (prio159_we),
-    .wd     (prio159_wd),
+    .we     (prio_159_we),
+    .wd     (prio_159_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -5804,27 +5805,28 @@ module rv_plic_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.prio159.q),
+    .q      (reg2hw.prio[159].q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (prio159_qs)
+    .qs     (prio_159_qs)
   );
 
 
-  // R[prio160]: V(False)
+  // Subregister 160 of Multireg prio
+  // R[prio_160]: V(False)
   prim_subreg #(
     .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (2'h0),
     .Mubi    (1'b0)
-  ) u_prio160 (
+  ) u_prio_160 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (prio160_we),
-    .wd     (prio160_wd),
+    .we     (prio_160_we),
+    .wd     (prio_160_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -5832,27 +5834,28 @@ module rv_plic_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.prio160.q),
+    .q      (reg2hw.prio[160].q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (prio160_qs)
+    .qs     (prio_160_qs)
   );
 
 
-  // R[prio161]: V(False)
+  // Subregister 161 of Multireg prio
+  // R[prio_161]: V(False)
   prim_subreg #(
     .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (2'h0),
     .Mubi    (1'b0)
-  ) u_prio161 (
+  ) u_prio_161 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (prio161_we),
-    .wd     (prio161_wd),
+    .we     (prio_161_we),
+    .wd     (prio_161_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -5860,27 +5863,28 @@ module rv_plic_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.prio161.q),
+    .q      (reg2hw.prio[161].q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (prio161_qs)
+    .qs     (prio_161_qs)
   );
 
 
-  // R[prio162]: V(False)
+  // Subregister 162 of Multireg prio
+  // R[prio_162]: V(False)
   prim_subreg #(
     .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (2'h0),
     .Mubi    (1'b0)
-  ) u_prio162 (
+  ) u_prio_162 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (prio162_we),
-    .wd     (prio162_wd),
+    .we     (prio_162_we),
+    .wd     (prio_162_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -5888,27 +5892,28 @@ module rv_plic_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.prio162.q),
+    .q      (reg2hw.prio[162].q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (prio162_qs)
+    .qs     (prio_162_qs)
   );
 
 
-  // R[prio163]: V(False)
+  // Subregister 163 of Multireg prio
+  // R[prio_163]: V(False)
   prim_subreg #(
     .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (2'h0),
     .Mubi    (1'b0)
-  ) u_prio163 (
+  ) u_prio_163 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (prio163_we),
-    .wd     (prio163_wd),
+    .we     (prio_163_we),
+    .wd     (prio_163_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -5916,27 +5921,28 @@ module rv_plic_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.prio163.q),
+    .q      (reg2hw.prio[163].q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (prio163_qs)
+    .qs     (prio_163_qs)
   );
 
 
-  // R[prio164]: V(False)
+  // Subregister 164 of Multireg prio
+  // R[prio_164]: V(False)
   prim_subreg #(
     .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (2'h0),
     .Mubi    (1'b0)
-  ) u_prio164 (
+  ) u_prio_164 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (prio164_we),
-    .wd     (prio164_wd),
+    .we     (prio_164_we),
+    .wd     (prio_164_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -5944,27 +5950,28 @@ module rv_plic_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.prio164.q),
+    .q      (reg2hw.prio[164].q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (prio164_qs)
+    .qs     (prio_164_qs)
   );
 
 
-  // R[prio165]: V(False)
+  // Subregister 165 of Multireg prio
+  // R[prio_165]: V(False)
   prim_subreg #(
     .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (2'h0),
     .Mubi    (1'b0)
-  ) u_prio165 (
+  ) u_prio_165 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (prio165_we),
-    .wd     (prio165_wd),
+    .we     (prio_165_we),
+    .wd     (prio_165_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -5972,27 +5979,28 @@ module rv_plic_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.prio165.q),
+    .q      (reg2hw.prio[165].q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (prio165_qs)
+    .qs     (prio_165_qs)
   );
 
 
-  // R[prio166]: V(False)
+  // Subregister 166 of Multireg prio
+  // R[prio_166]: V(False)
   prim_subreg #(
     .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (2'h0),
     .Mubi    (1'b0)
-  ) u_prio166 (
+  ) u_prio_166 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (prio166_we),
-    .wd     (prio166_wd),
+    .we     (prio_166_we),
+    .wd     (prio_166_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -6000,27 +6008,28 @@ module rv_plic_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.prio166.q),
+    .q      (reg2hw.prio[166].q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (prio166_qs)
+    .qs     (prio_166_qs)
   );
 
 
-  // R[prio167]: V(False)
+  // Subregister 167 of Multireg prio
+  // R[prio_167]: V(False)
   prim_subreg #(
     .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (2'h0),
     .Mubi    (1'b0)
-  ) u_prio167 (
+  ) u_prio_167 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (prio167_we),
-    .wd     (prio167_wd),
+    .we     (prio_167_we),
+    .wd     (prio_167_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -6028,27 +6037,28 @@ module rv_plic_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.prio167.q),
+    .q      (reg2hw.prio[167].q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (prio167_qs)
+    .qs     (prio_167_qs)
   );
 
 
-  // R[prio168]: V(False)
+  // Subregister 168 of Multireg prio
+  // R[prio_168]: V(False)
   prim_subreg #(
     .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (2'h0),
     .Mubi    (1'b0)
-  ) u_prio168 (
+  ) u_prio_168 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (prio168_we),
-    .wd     (prio168_wd),
+    .we     (prio_168_we),
+    .wd     (prio_168_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -6056,27 +6066,28 @@ module rv_plic_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.prio168.q),
+    .q      (reg2hw.prio[168].q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (prio168_qs)
+    .qs     (prio_168_qs)
   );
 
 
-  // R[prio169]: V(False)
+  // Subregister 169 of Multireg prio
+  // R[prio_169]: V(False)
   prim_subreg #(
     .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (2'h0),
     .Mubi    (1'b0)
-  ) u_prio169 (
+  ) u_prio_169 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (prio169_we),
-    .wd     (prio169_wd),
+    .we     (prio_169_we),
+    .wd     (prio_169_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -6084,27 +6095,28 @@ module rv_plic_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.prio169.q),
+    .q      (reg2hw.prio[169].q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (prio169_qs)
+    .qs     (prio_169_qs)
   );
 
 
-  // R[prio170]: V(False)
+  // Subregister 170 of Multireg prio
+  // R[prio_170]: V(False)
   prim_subreg #(
     .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (2'h0),
     .Mubi    (1'b0)
-  ) u_prio170 (
+  ) u_prio_170 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (prio170_we),
-    .wd     (prio170_wd),
+    .we     (prio_170_we),
+    .wd     (prio_170_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -6112,27 +6124,28 @@ module rv_plic_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.prio170.q),
+    .q      (reg2hw.prio[170].q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (prio170_qs)
+    .qs     (prio_170_qs)
   );
 
 
-  // R[prio171]: V(False)
+  // Subregister 171 of Multireg prio
+  // R[prio_171]: V(False)
   prim_subreg #(
     .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (2'h0),
     .Mubi    (1'b0)
-  ) u_prio171 (
+  ) u_prio_171 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (prio171_we),
-    .wd     (prio171_wd),
+    .we     (prio_171_we),
+    .wd     (prio_171_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -6140,11 +6153,11 @@ module rv_plic_reg_top (
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.prio171.q),
+    .q      (reg2hw.prio[171].q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (prio171_qs)
+    .qs     (prio_171_qs)
   );
 
 
@@ -15572,178 +15585,178 @@ module rv_plic_reg_top (
   logic [187:0] addr_hit;
   always_comb begin
     addr_hit = '0;
-    addr_hit[  0] = (reg_addr == RV_PLIC_PRIO0_OFFSET);
-    addr_hit[  1] = (reg_addr == RV_PLIC_PRIO1_OFFSET);
-    addr_hit[  2] = (reg_addr == RV_PLIC_PRIO2_OFFSET);
-    addr_hit[  3] = (reg_addr == RV_PLIC_PRIO3_OFFSET);
-    addr_hit[  4] = (reg_addr == RV_PLIC_PRIO4_OFFSET);
-    addr_hit[  5] = (reg_addr == RV_PLIC_PRIO5_OFFSET);
-    addr_hit[  6] = (reg_addr == RV_PLIC_PRIO6_OFFSET);
-    addr_hit[  7] = (reg_addr == RV_PLIC_PRIO7_OFFSET);
-    addr_hit[  8] = (reg_addr == RV_PLIC_PRIO8_OFFSET);
-    addr_hit[  9] = (reg_addr == RV_PLIC_PRIO9_OFFSET);
-    addr_hit[ 10] = (reg_addr == RV_PLIC_PRIO10_OFFSET);
-    addr_hit[ 11] = (reg_addr == RV_PLIC_PRIO11_OFFSET);
-    addr_hit[ 12] = (reg_addr == RV_PLIC_PRIO12_OFFSET);
-    addr_hit[ 13] = (reg_addr == RV_PLIC_PRIO13_OFFSET);
-    addr_hit[ 14] = (reg_addr == RV_PLIC_PRIO14_OFFSET);
-    addr_hit[ 15] = (reg_addr == RV_PLIC_PRIO15_OFFSET);
-    addr_hit[ 16] = (reg_addr == RV_PLIC_PRIO16_OFFSET);
-    addr_hit[ 17] = (reg_addr == RV_PLIC_PRIO17_OFFSET);
-    addr_hit[ 18] = (reg_addr == RV_PLIC_PRIO18_OFFSET);
-    addr_hit[ 19] = (reg_addr == RV_PLIC_PRIO19_OFFSET);
-    addr_hit[ 20] = (reg_addr == RV_PLIC_PRIO20_OFFSET);
-    addr_hit[ 21] = (reg_addr == RV_PLIC_PRIO21_OFFSET);
-    addr_hit[ 22] = (reg_addr == RV_PLIC_PRIO22_OFFSET);
-    addr_hit[ 23] = (reg_addr == RV_PLIC_PRIO23_OFFSET);
-    addr_hit[ 24] = (reg_addr == RV_PLIC_PRIO24_OFFSET);
-    addr_hit[ 25] = (reg_addr == RV_PLIC_PRIO25_OFFSET);
-    addr_hit[ 26] = (reg_addr == RV_PLIC_PRIO26_OFFSET);
-    addr_hit[ 27] = (reg_addr == RV_PLIC_PRIO27_OFFSET);
-    addr_hit[ 28] = (reg_addr == RV_PLIC_PRIO28_OFFSET);
-    addr_hit[ 29] = (reg_addr == RV_PLIC_PRIO29_OFFSET);
-    addr_hit[ 30] = (reg_addr == RV_PLIC_PRIO30_OFFSET);
-    addr_hit[ 31] = (reg_addr == RV_PLIC_PRIO31_OFFSET);
-    addr_hit[ 32] = (reg_addr == RV_PLIC_PRIO32_OFFSET);
-    addr_hit[ 33] = (reg_addr == RV_PLIC_PRIO33_OFFSET);
-    addr_hit[ 34] = (reg_addr == RV_PLIC_PRIO34_OFFSET);
-    addr_hit[ 35] = (reg_addr == RV_PLIC_PRIO35_OFFSET);
-    addr_hit[ 36] = (reg_addr == RV_PLIC_PRIO36_OFFSET);
-    addr_hit[ 37] = (reg_addr == RV_PLIC_PRIO37_OFFSET);
-    addr_hit[ 38] = (reg_addr == RV_PLIC_PRIO38_OFFSET);
-    addr_hit[ 39] = (reg_addr == RV_PLIC_PRIO39_OFFSET);
-    addr_hit[ 40] = (reg_addr == RV_PLIC_PRIO40_OFFSET);
-    addr_hit[ 41] = (reg_addr == RV_PLIC_PRIO41_OFFSET);
-    addr_hit[ 42] = (reg_addr == RV_PLIC_PRIO42_OFFSET);
-    addr_hit[ 43] = (reg_addr == RV_PLIC_PRIO43_OFFSET);
-    addr_hit[ 44] = (reg_addr == RV_PLIC_PRIO44_OFFSET);
-    addr_hit[ 45] = (reg_addr == RV_PLIC_PRIO45_OFFSET);
-    addr_hit[ 46] = (reg_addr == RV_PLIC_PRIO46_OFFSET);
-    addr_hit[ 47] = (reg_addr == RV_PLIC_PRIO47_OFFSET);
-    addr_hit[ 48] = (reg_addr == RV_PLIC_PRIO48_OFFSET);
-    addr_hit[ 49] = (reg_addr == RV_PLIC_PRIO49_OFFSET);
-    addr_hit[ 50] = (reg_addr == RV_PLIC_PRIO50_OFFSET);
-    addr_hit[ 51] = (reg_addr == RV_PLIC_PRIO51_OFFSET);
-    addr_hit[ 52] = (reg_addr == RV_PLIC_PRIO52_OFFSET);
-    addr_hit[ 53] = (reg_addr == RV_PLIC_PRIO53_OFFSET);
-    addr_hit[ 54] = (reg_addr == RV_PLIC_PRIO54_OFFSET);
-    addr_hit[ 55] = (reg_addr == RV_PLIC_PRIO55_OFFSET);
-    addr_hit[ 56] = (reg_addr == RV_PLIC_PRIO56_OFFSET);
-    addr_hit[ 57] = (reg_addr == RV_PLIC_PRIO57_OFFSET);
-    addr_hit[ 58] = (reg_addr == RV_PLIC_PRIO58_OFFSET);
-    addr_hit[ 59] = (reg_addr == RV_PLIC_PRIO59_OFFSET);
-    addr_hit[ 60] = (reg_addr == RV_PLIC_PRIO60_OFFSET);
-    addr_hit[ 61] = (reg_addr == RV_PLIC_PRIO61_OFFSET);
-    addr_hit[ 62] = (reg_addr == RV_PLIC_PRIO62_OFFSET);
-    addr_hit[ 63] = (reg_addr == RV_PLIC_PRIO63_OFFSET);
-    addr_hit[ 64] = (reg_addr == RV_PLIC_PRIO64_OFFSET);
-    addr_hit[ 65] = (reg_addr == RV_PLIC_PRIO65_OFFSET);
-    addr_hit[ 66] = (reg_addr == RV_PLIC_PRIO66_OFFSET);
-    addr_hit[ 67] = (reg_addr == RV_PLIC_PRIO67_OFFSET);
-    addr_hit[ 68] = (reg_addr == RV_PLIC_PRIO68_OFFSET);
-    addr_hit[ 69] = (reg_addr == RV_PLIC_PRIO69_OFFSET);
-    addr_hit[ 70] = (reg_addr == RV_PLIC_PRIO70_OFFSET);
-    addr_hit[ 71] = (reg_addr == RV_PLIC_PRIO71_OFFSET);
-    addr_hit[ 72] = (reg_addr == RV_PLIC_PRIO72_OFFSET);
-    addr_hit[ 73] = (reg_addr == RV_PLIC_PRIO73_OFFSET);
-    addr_hit[ 74] = (reg_addr == RV_PLIC_PRIO74_OFFSET);
-    addr_hit[ 75] = (reg_addr == RV_PLIC_PRIO75_OFFSET);
-    addr_hit[ 76] = (reg_addr == RV_PLIC_PRIO76_OFFSET);
-    addr_hit[ 77] = (reg_addr == RV_PLIC_PRIO77_OFFSET);
-    addr_hit[ 78] = (reg_addr == RV_PLIC_PRIO78_OFFSET);
-    addr_hit[ 79] = (reg_addr == RV_PLIC_PRIO79_OFFSET);
-    addr_hit[ 80] = (reg_addr == RV_PLIC_PRIO80_OFFSET);
-    addr_hit[ 81] = (reg_addr == RV_PLIC_PRIO81_OFFSET);
-    addr_hit[ 82] = (reg_addr == RV_PLIC_PRIO82_OFFSET);
-    addr_hit[ 83] = (reg_addr == RV_PLIC_PRIO83_OFFSET);
-    addr_hit[ 84] = (reg_addr == RV_PLIC_PRIO84_OFFSET);
-    addr_hit[ 85] = (reg_addr == RV_PLIC_PRIO85_OFFSET);
-    addr_hit[ 86] = (reg_addr == RV_PLIC_PRIO86_OFFSET);
-    addr_hit[ 87] = (reg_addr == RV_PLIC_PRIO87_OFFSET);
-    addr_hit[ 88] = (reg_addr == RV_PLIC_PRIO88_OFFSET);
-    addr_hit[ 89] = (reg_addr == RV_PLIC_PRIO89_OFFSET);
-    addr_hit[ 90] = (reg_addr == RV_PLIC_PRIO90_OFFSET);
-    addr_hit[ 91] = (reg_addr == RV_PLIC_PRIO91_OFFSET);
-    addr_hit[ 92] = (reg_addr == RV_PLIC_PRIO92_OFFSET);
-    addr_hit[ 93] = (reg_addr == RV_PLIC_PRIO93_OFFSET);
-    addr_hit[ 94] = (reg_addr == RV_PLIC_PRIO94_OFFSET);
-    addr_hit[ 95] = (reg_addr == RV_PLIC_PRIO95_OFFSET);
-    addr_hit[ 96] = (reg_addr == RV_PLIC_PRIO96_OFFSET);
-    addr_hit[ 97] = (reg_addr == RV_PLIC_PRIO97_OFFSET);
-    addr_hit[ 98] = (reg_addr == RV_PLIC_PRIO98_OFFSET);
-    addr_hit[ 99] = (reg_addr == RV_PLIC_PRIO99_OFFSET);
-    addr_hit[100] = (reg_addr == RV_PLIC_PRIO100_OFFSET);
-    addr_hit[101] = (reg_addr == RV_PLIC_PRIO101_OFFSET);
-    addr_hit[102] = (reg_addr == RV_PLIC_PRIO102_OFFSET);
-    addr_hit[103] = (reg_addr == RV_PLIC_PRIO103_OFFSET);
-    addr_hit[104] = (reg_addr == RV_PLIC_PRIO104_OFFSET);
-    addr_hit[105] = (reg_addr == RV_PLIC_PRIO105_OFFSET);
-    addr_hit[106] = (reg_addr == RV_PLIC_PRIO106_OFFSET);
-    addr_hit[107] = (reg_addr == RV_PLIC_PRIO107_OFFSET);
-    addr_hit[108] = (reg_addr == RV_PLIC_PRIO108_OFFSET);
-    addr_hit[109] = (reg_addr == RV_PLIC_PRIO109_OFFSET);
-    addr_hit[110] = (reg_addr == RV_PLIC_PRIO110_OFFSET);
-    addr_hit[111] = (reg_addr == RV_PLIC_PRIO111_OFFSET);
-    addr_hit[112] = (reg_addr == RV_PLIC_PRIO112_OFFSET);
-    addr_hit[113] = (reg_addr == RV_PLIC_PRIO113_OFFSET);
-    addr_hit[114] = (reg_addr == RV_PLIC_PRIO114_OFFSET);
-    addr_hit[115] = (reg_addr == RV_PLIC_PRIO115_OFFSET);
-    addr_hit[116] = (reg_addr == RV_PLIC_PRIO116_OFFSET);
-    addr_hit[117] = (reg_addr == RV_PLIC_PRIO117_OFFSET);
-    addr_hit[118] = (reg_addr == RV_PLIC_PRIO118_OFFSET);
-    addr_hit[119] = (reg_addr == RV_PLIC_PRIO119_OFFSET);
-    addr_hit[120] = (reg_addr == RV_PLIC_PRIO120_OFFSET);
-    addr_hit[121] = (reg_addr == RV_PLIC_PRIO121_OFFSET);
-    addr_hit[122] = (reg_addr == RV_PLIC_PRIO122_OFFSET);
-    addr_hit[123] = (reg_addr == RV_PLIC_PRIO123_OFFSET);
-    addr_hit[124] = (reg_addr == RV_PLIC_PRIO124_OFFSET);
-    addr_hit[125] = (reg_addr == RV_PLIC_PRIO125_OFFSET);
-    addr_hit[126] = (reg_addr == RV_PLIC_PRIO126_OFFSET);
-    addr_hit[127] = (reg_addr == RV_PLIC_PRIO127_OFFSET);
-    addr_hit[128] = (reg_addr == RV_PLIC_PRIO128_OFFSET);
-    addr_hit[129] = (reg_addr == RV_PLIC_PRIO129_OFFSET);
-    addr_hit[130] = (reg_addr == RV_PLIC_PRIO130_OFFSET);
-    addr_hit[131] = (reg_addr == RV_PLIC_PRIO131_OFFSET);
-    addr_hit[132] = (reg_addr == RV_PLIC_PRIO132_OFFSET);
-    addr_hit[133] = (reg_addr == RV_PLIC_PRIO133_OFFSET);
-    addr_hit[134] = (reg_addr == RV_PLIC_PRIO134_OFFSET);
-    addr_hit[135] = (reg_addr == RV_PLIC_PRIO135_OFFSET);
-    addr_hit[136] = (reg_addr == RV_PLIC_PRIO136_OFFSET);
-    addr_hit[137] = (reg_addr == RV_PLIC_PRIO137_OFFSET);
-    addr_hit[138] = (reg_addr == RV_PLIC_PRIO138_OFFSET);
-    addr_hit[139] = (reg_addr == RV_PLIC_PRIO139_OFFSET);
-    addr_hit[140] = (reg_addr == RV_PLIC_PRIO140_OFFSET);
-    addr_hit[141] = (reg_addr == RV_PLIC_PRIO141_OFFSET);
-    addr_hit[142] = (reg_addr == RV_PLIC_PRIO142_OFFSET);
-    addr_hit[143] = (reg_addr == RV_PLIC_PRIO143_OFFSET);
-    addr_hit[144] = (reg_addr == RV_PLIC_PRIO144_OFFSET);
-    addr_hit[145] = (reg_addr == RV_PLIC_PRIO145_OFFSET);
-    addr_hit[146] = (reg_addr == RV_PLIC_PRIO146_OFFSET);
-    addr_hit[147] = (reg_addr == RV_PLIC_PRIO147_OFFSET);
-    addr_hit[148] = (reg_addr == RV_PLIC_PRIO148_OFFSET);
-    addr_hit[149] = (reg_addr == RV_PLIC_PRIO149_OFFSET);
-    addr_hit[150] = (reg_addr == RV_PLIC_PRIO150_OFFSET);
-    addr_hit[151] = (reg_addr == RV_PLIC_PRIO151_OFFSET);
-    addr_hit[152] = (reg_addr == RV_PLIC_PRIO152_OFFSET);
-    addr_hit[153] = (reg_addr == RV_PLIC_PRIO153_OFFSET);
-    addr_hit[154] = (reg_addr == RV_PLIC_PRIO154_OFFSET);
-    addr_hit[155] = (reg_addr == RV_PLIC_PRIO155_OFFSET);
-    addr_hit[156] = (reg_addr == RV_PLIC_PRIO156_OFFSET);
-    addr_hit[157] = (reg_addr == RV_PLIC_PRIO157_OFFSET);
-    addr_hit[158] = (reg_addr == RV_PLIC_PRIO158_OFFSET);
-    addr_hit[159] = (reg_addr == RV_PLIC_PRIO159_OFFSET);
-    addr_hit[160] = (reg_addr == RV_PLIC_PRIO160_OFFSET);
-    addr_hit[161] = (reg_addr == RV_PLIC_PRIO161_OFFSET);
-    addr_hit[162] = (reg_addr == RV_PLIC_PRIO162_OFFSET);
-    addr_hit[163] = (reg_addr == RV_PLIC_PRIO163_OFFSET);
-    addr_hit[164] = (reg_addr == RV_PLIC_PRIO164_OFFSET);
-    addr_hit[165] = (reg_addr == RV_PLIC_PRIO165_OFFSET);
-    addr_hit[166] = (reg_addr == RV_PLIC_PRIO166_OFFSET);
-    addr_hit[167] = (reg_addr == RV_PLIC_PRIO167_OFFSET);
-    addr_hit[168] = (reg_addr == RV_PLIC_PRIO168_OFFSET);
-    addr_hit[169] = (reg_addr == RV_PLIC_PRIO169_OFFSET);
-    addr_hit[170] = (reg_addr == RV_PLIC_PRIO170_OFFSET);
-    addr_hit[171] = (reg_addr == RV_PLIC_PRIO171_OFFSET);
+    addr_hit[  0] = (reg_addr == RV_PLIC_PRIO_0_OFFSET);
+    addr_hit[  1] = (reg_addr == RV_PLIC_PRIO_1_OFFSET);
+    addr_hit[  2] = (reg_addr == RV_PLIC_PRIO_2_OFFSET);
+    addr_hit[  3] = (reg_addr == RV_PLIC_PRIO_3_OFFSET);
+    addr_hit[  4] = (reg_addr == RV_PLIC_PRIO_4_OFFSET);
+    addr_hit[  5] = (reg_addr == RV_PLIC_PRIO_5_OFFSET);
+    addr_hit[  6] = (reg_addr == RV_PLIC_PRIO_6_OFFSET);
+    addr_hit[  7] = (reg_addr == RV_PLIC_PRIO_7_OFFSET);
+    addr_hit[  8] = (reg_addr == RV_PLIC_PRIO_8_OFFSET);
+    addr_hit[  9] = (reg_addr == RV_PLIC_PRIO_9_OFFSET);
+    addr_hit[ 10] = (reg_addr == RV_PLIC_PRIO_10_OFFSET);
+    addr_hit[ 11] = (reg_addr == RV_PLIC_PRIO_11_OFFSET);
+    addr_hit[ 12] = (reg_addr == RV_PLIC_PRIO_12_OFFSET);
+    addr_hit[ 13] = (reg_addr == RV_PLIC_PRIO_13_OFFSET);
+    addr_hit[ 14] = (reg_addr == RV_PLIC_PRIO_14_OFFSET);
+    addr_hit[ 15] = (reg_addr == RV_PLIC_PRIO_15_OFFSET);
+    addr_hit[ 16] = (reg_addr == RV_PLIC_PRIO_16_OFFSET);
+    addr_hit[ 17] = (reg_addr == RV_PLIC_PRIO_17_OFFSET);
+    addr_hit[ 18] = (reg_addr == RV_PLIC_PRIO_18_OFFSET);
+    addr_hit[ 19] = (reg_addr == RV_PLIC_PRIO_19_OFFSET);
+    addr_hit[ 20] = (reg_addr == RV_PLIC_PRIO_20_OFFSET);
+    addr_hit[ 21] = (reg_addr == RV_PLIC_PRIO_21_OFFSET);
+    addr_hit[ 22] = (reg_addr == RV_PLIC_PRIO_22_OFFSET);
+    addr_hit[ 23] = (reg_addr == RV_PLIC_PRIO_23_OFFSET);
+    addr_hit[ 24] = (reg_addr == RV_PLIC_PRIO_24_OFFSET);
+    addr_hit[ 25] = (reg_addr == RV_PLIC_PRIO_25_OFFSET);
+    addr_hit[ 26] = (reg_addr == RV_PLIC_PRIO_26_OFFSET);
+    addr_hit[ 27] = (reg_addr == RV_PLIC_PRIO_27_OFFSET);
+    addr_hit[ 28] = (reg_addr == RV_PLIC_PRIO_28_OFFSET);
+    addr_hit[ 29] = (reg_addr == RV_PLIC_PRIO_29_OFFSET);
+    addr_hit[ 30] = (reg_addr == RV_PLIC_PRIO_30_OFFSET);
+    addr_hit[ 31] = (reg_addr == RV_PLIC_PRIO_31_OFFSET);
+    addr_hit[ 32] = (reg_addr == RV_PLIC_PRIO_32_OFFSET);
+    addr_hit[ 33] = (reg_addr == RV_PLIC_PRIO_33_OFFSET);
+    addr_hit[ 34] = (reg_addr == RV_PLIC_PRIO_34_OFFSET);
+    addr_hit[ 35] = (reg_addr == RV_PLIC_PRIO_35_OFFSET);
+    addr_hit[ 36] = (reg_addr == RV_PLIC_PRIO_36_OFFSET);
+    addr_hit[ 37] = (reg_addr == RV_PLIC_PRIO_37_OFFSET);
+    addr_hit[ 38] = (reg_addr == RV_PLIC_PRIO_38_OFFSET);
+    addr_hit[ 39] = (reg_addr == RV_PLIC_PRIO_39_OFFSET);
+    addr_hit[ 40] = (reg_addr == RV_PLIC_PRIO_40_OFFSET);
+    addr_hit[ 41] = (reg_addr == RV_PLIC_PRIO_41_OFFSET);
+    addr_hit[ 42] = (reg_addr == RV_PLIC_PRIO_42_OFFSET);
+    addr_hit[ 43] = (reg_addr == RV_PLIC_PRIO_43_OFFSET);
+    addr_hit[ 44] = (reg_addr == RV_PLIC_PRIO_44_OFFSET);
+    addr_hit[ 45] = (reg_addr == RV_PLIC_PRIO_45_OFFSET);
+    addr_hit[ 46] = (reg_addr == RV_PLIC_PRIO_46_OFFSET);
+    addr_hit[ 47] = (reg_addr == RV_PLIC_PRIO_47_OFFSET);
+    addr_hit[ 48] = (reg_addr == RV_PLIC_PRIO_48_OFFSET);
+    addr_hit[ 49] = (reg_addr == RV_PLIC_PRIO_49_OFFSET);
+    addr_hit[ 50] = (reg_addr == RV_PLIC_PRIO_50_OFFSET);
+    addr_hit[ 51] = (reg_addr == RV_PLIC_PRIO_51_OFFSET);
+    addr_hit[ 52] = (reg_addr == RV_PLIC_PRIO_52_OFFSET);
+    addr_hit[ 53] = (reg_addr == RV_PLIC_PRIO_53_OFFSET);
+    addr_hit[ 54] = (reg_addr == RV_PLIC_PRIO_54_OFFSET);
+    addr_hit[ 55] = (reg_addr == RV_PLIC_PRIO_55_OFFSET);
+    addr_hit[ 56] = (reg_addr == RV_PLIC_PRIO_56_OFFSET);
+    addr_hit[ 57] = (reg_addr == RV_PLIC_PRIO_57_OFFSET);
+    addr_hit[ 58] = (reg_addr == RV_PLIC_PRIO_58_OFFSET);
+    addr_hit[ 59] = (reg_addr == RV_PLIC_PRIO_59_OFFSET);
+    addr_hit[ 60] = (reg_addr == RV_PLIC_PRIO_60_OFFSET);
+    addr_hit[ 61] = (reg_addr == RV_PLIC_PRIO_61_OFFSET);
+    addr_hit[ 62] = (reg_addr == RV_PLIC_PRIO_62_OFFSET);
+    addr_hit[ 63] = (reg_addr == RV_PLIC_PRIO_63_OFFSET);
+    addr_hit[ 64] = (reg_addr == RV_PLIC_PRIO_64_OFFSET);
+    addr_hit[ 65] = (reg_addr == RV_PLIC_PRIO_65_OFFSET);
+    addr_hit[ 66] = (reg_addr == RV_PLIC_PRIO_66_OFFSET);
+    addr_hit[ 67] = (reg_addr == RV_PLIC_PRIO_67_OFFSET);
+    addr_hit[ 68] = (reg_addr == RV_PLIC_PRIO_68_OFFSET);
+    addr_hit[ 69] = (reg_addr == RV_PLIC_PRIO_69_OFFSET);
+    addr_hit[ 70] = (reg_addr == RV_PLIC_PRIO_70_OFFSET);
+    addr_hit[ 71] = (reg_addr == RV_PLIC_PRIO_71_OFFSET);
+    addr_hit[ 72] = (reg_addr == RV_PLIC_PRIO_72_OFFSET);
+    addr_hit[ 73] = (reg_addr == RV_PLIC_PRIO_73_OFFSET);
+    addr_hit[ 74] = (reg_addr == RV_PLIC_PRIO_74_OFFSET);
+    addr_hit[ 75] = (reg_addr == RV_PLIC_PRIO_75_OFFSET);
+    addr_hit[ 76] = (reg_addr == RV_PLIC_PRIO_76_OFFSET);
+    addr_hit[ 77] = (reg_addr == RV_PLIC_PRIO_77_OFFSET);
+    addr_hit[ 78] = (reg_addr == RV_PLIC_PRIO_78_OFFSET);
+    addr_hit[ 79] = (reg_addr == RV_PLIC_PRIO_79_OFFSET);
+    addr_hit[ 80] = (reg_addr == RV_PLIC_PRIO_80_OFFSET);
+    addr_hit[ 81] = (reg_addr == RV_PLIC_PRIO_81_OFFSET);
+    addr_hit[ 82] = (reg_addr == RV_PLIC_PRIO_82_OFFSET);
+    addr_hit[ 83] = (reg_addr == RV_PLIC_PRIO_83_OFFSET);
+    addr_hit[ 84] = (reg_addr == RV_PLIC_PRIO_84_OFFSET);
+    addr_hit[ 85] = (reg_addr == RV_PLIC_PRIO_85_OFFSET);
+    addr_hit[ 86] = (reg_addr == RV_PLIC_PRIO_86_OFFSET);
+    addr_hit[ 87] = (reg_addr == RV_PLIC_PRIO_87_OFFSET);
+    addr_hit[ 88] = (reg_addr == RV_PLIC_PRIO_88_OFFSET);
+    addr_hit[ 89] = (reg_addr == RV_PLIC_PRIO_89_OFFSET);
+    addr_hit[ 90] = (reg_addr == RV_PLIC_PRIO_90_OFFSET);
+    addr_hit[ 91] = (reg_addr == RV_PLIC_PRIO_91_OFFSET);
+    addr_hit[ 92] = (reg_addr == RV_PLIC_PRIO_92_OFFSET);
+    addr_hit[ 93] = (reg_addr == RV_PLIC_PRIO_93_OFFSET);
+    addr_hit[ 94] = (reg_addr == RV_PLIC_PRIO_94_OFFSET);
+    addr_hit[ 95] = (reg_addr == RV_PLIC_PRIO_95_OFFSET);
+    addr_hit[ 96] = (reg_addr == RV_PLIC_PRIO_96_OFFSET);
+    addr_hit[ 97] = (reg_addr == RV_PLIC_PRIO_97_OFFSET);
+    addr_hit[ 98] = (reg_addr == RV_PLIC_PRIO_98_OFFSET);
+    addr_hit[ 99] = (reg_addr == RV_PLIC_PRIO_99_OFFSET);
+    addr_hit[100] = (reg_addr == RV_PLIC_PRIO_100_OFFSET);
+    addr_hit[101] = (reg_addr == RV_PLIC_PRIO_101_OFFSET);
+    addr_hit[102] = (reg_addr == RV_PLIC_PRIO_102_OFFSET);
+    addr_hit[103] = (reg_addr == RV_PLIC_PRIO_103_OFFSET);
+    addr_hit[104] = (reg_addr == RV_PLIC_PRIO_104_OFFSET);
+    addr_hit[105] = (reg_addr == RV_PLIC_PRIO_105_OFFSET);
+    addr_hit[106] = (reg_addr == RV_PLIC_PRIO_106_OFFSET);
+    addr_hit[107] = (reg_addr == RV_PLIC_PRIO_107_OFFSET);
+    addr_hit[108] = (reg_addr == RV_PLIC_PRIO_108_OFFSET);
+    addr_hit[109] = (reg_addr == RV_PLIC_PRIO_109_OFFSET);
+    addr_hit[110] = (reg_addr == RV_PLIC_PRIO_110_OFFSET);
+    addr_hit[111] = (reg_addr == RV_PLIC_PRIO_111_OFFSET);
+    addr_hit[112] = (reg_addr == RV_PLIC_PRIO_112_OFFSET);
+    addr_hit[113] = (reg_addr == RV_PLIC_PRIO_113_OFFSET);
+    addr_hit[114] = (reg_addr == RV_PLIC_PRIO_114_OFFSET);
+    addr_hit[115] = (reg_addr == RV_PLIC_PRIO_115_OFFSET);
+    addr_hit[116] = (reg_addr == RV_PLIC_PRIO_116_OFFSET);
+    addr_hit[117] = (reg_addr == RV_PLIC_PRIO_117_OFFSET);
+    addr_hit[118] = (reg_addr == RV_PLIC_PRIO_118_OFFSET);
+    addr_hit[119] = (reg_addr == RV_PLIC_PRIO_119_OFFSET);
+    addr_hit[120] = (reg_addr == RV_PLIC_PRIO_120_OFFSET);
+    addr_hit[121] = (reg_addr == RV_PLIC_PRIO_121_OFFSET);
+    addr_hit[122] = (reg_addr == RV_PLIC_PRIO_122_OFFSET);
+    addr_hit[123] = (reg_addr == RV_PLIC_PRIO_123_OFFSET);
+    addr_hit[124] = (reg_addr == RV_PLIC_PRIO_124_OFFSET);
+    addr_hit[125] = (reg_addr == RV_PLIC_PRIO_125_OFFSET);
+    addr_hit[126] = (reg_addr == RV_PLIC_PRIO_126_OFFSET);
+    addr_hit[127] = (reg_addr == RV_PLIC_PRIO_127_OFFSET);
+    addr_hit[128] = (reg_addr == RV_PLIC_PRIO_128_OFFSET);
+    addr_hit[129] = (reg_addr == RV_PLIC_PRIO_129_OFFSET);
+    addr_hit[130] = (reg_addr == RV_PLIC_PRIO_130_OFFSET);
+    addr_hit[131] = (reg_addr == RV_PLIC_PRIO_131_OFFSET);
+    addr_hit[132] = (reg_addr == RV_PLIC_PRIO_132_OFFSET);
+    addr_hit[133] = (reg_addr == RV_PLIC_PRIO_133_OFFSET);
+    addr_hit[134] = (reg_addr == RV_PLIC_PRIO_134_OFFSET);
+    addr_hit[135] = (reg_addr == RV_PLIC_PRIO_135_OFFSET);
+    addr_hit[136] = (reg_addr == RV_PLIC_PRIO_136_OFFSET);
+    addr_hit[137] = (reg_addr == RV_PLIC_PRIO_137_OFFSET);
+    addr_hit[138] = (reg_addr == RV_PLIC_PRIO_138_OFFSET);
+    addr_hit[139] = (reg_addr == RV_PLIC_PRIO_139_OFFSET);
+    addr_hit[140] = (reg_addr == RV_PLIC_PRIO_140_OFFSET);
+    addr_hit[141] = (reg_addr == RV_PLIC_PRIO_141_OFFSET);
+    addr_hit[142] = (reg_addr == RV_PLIC_PRIO_142_OFFSET);
+    addr_hit[143] = (reg_addr == RV_PLIC_PRIO_143_OFFSET);
+    addr_hit[144] = (reg_addr == RV_PLIC_PRIO_144_OFFSET);
+    addr_hit[145] = (reg_addr == RV_PLIC_PRIO_145_OFFSET);
+    addr_hit[146] = (reg_addr == RV_PLIC_PRIO_146_OFFSET);
+    addr_hit[147] = (reg_addr == RV_PLIC_PRIO_147_OFFSET);
+    addr_hit[148] = (reg_addr == RV_PLIC_PRIO_148_OFFSET);
+    addr_hit[149] = (reg_addr == RV_PLIC_PRIO_149_OFFSET);
+    addr_hit[150] = (reg_addr == RV_PLIC_PRIO_150_OFFSET);
+    addr_hit[151] = (reg_addr == RV_PLIC_PRIO_151_OFFSET);
+    addr_hit[152] = (reg_addr == RV_PLIC_PRIO_152_OFFSET);
+    addr_hit[153] = (reg_addr == RV_PLIC_PRIO_153_OFFSET);
+    addr_hit[154] = (reg_addr == RV_PLIC_PRIO_154_OFFSET);
+    addr_hit[155] = (reg_addr == RV_PLIC_PRIO_155_OFFSET);
+    addr_hit[156] = (reg_addr == RV_PLIC_PRIO_156_OFFSET);
+    addr_hit[157] = (reg_addr == RV_PLIC_PRIO_157_OFFSET);
+    addr_hit[158] = (reg_addr == RV_PLIC_PRIO_158_OFFSET);
+    addr_hit[159] = (reg_addr == RV_PLIC_PRIO_159_OFFSET);
+    addr_hit[160] = (reg_addr == RV_PLIC_PRIO_160_OFFSET);
+    addr_hit[161] = (reg_addr == RV_PLIC_PRIO_161_OFFSET);
+    addr_hit[162] = (reg_addr == RV_PLIC_PRIO_162_OFFSET);
+    addr_hit[163] = (reg_addr == RV_PLIC_PRIO_163_OFFSET);
+    addr_hit[164] = (reg_addr == RV_PLIC_PRIO_164_OFFSET);
+    addr_hit[165] = (reg_addr == RV_PLIC_PRIO_165_OFFSET);
+    addr_hit[166] = (reg_addr == RV_PLIC_PRIO_166_OFFSET);
+    addr_hit[167] = (reg_addr == RV_PLIC_PRIO_167_OFFSET);
+    addr_hit[168] = (reg_addr == RV_PLIC_PRIO_168_OFFSET);
+    addr_hit[169] = (reg_addr == RV_PLIC_PRIO_169_OFFSET);
+    addr_hit[170] = (reg_addr == RV_PLIC_PRIO_170_OFFSET);
+    addr_hit[171] = (reg_addr == RV_PLIC_PRIO_171_OFFSET);
     addr_hit[172] = (reg_addr == RV_PLIC_IP_0_OFFSET);
     addr_hit[173] = (reg_addr == RV_PLIC_IP_1_OFFSET);
     addr_hit[174] = (reg_addr == RV_PLIC_IP_2_OFFSET);
@@ -16434,46 +16447,46 @@ module rv_plic_reg_top (
   assign prio_157_wd = reg_wdata[1:0];
   assign prio_158_we = addr_hit[158] & reg_we & !reg_error;
 
-  assign prio158_wd = reg_wdata[1:0];
-  assign prio159_we = addr_hit[159] & reg_we & !reg_error;
+  assign prio_158_wd = reg_wdata[1:0];
+  assign prio_159_we = addr_hit[159] & reg_we & !reg_error;
 
-  assign prio159_wd = reg_wdata[1:0];
-  assign prio160_we = addr_hit[160] & reg_we & !reg_error;
+  assign prio_159_wd = reg_wdata[1:0];
+  assign prio_160_we = addr_hit[160] & reg_we & !reg_error;
 
-  assign prio160_wd = reg_wdata[1:0];
-  assign prio161_we = addr_hit[161] & reg_we & !reg_error;
+  assign prio_160_wd = reg_wdata[1:0];
+  assign prio_161_we = addr_hit[161] & reg_we & !reg_error;
 
-  assign prio161_wd = reg_wdata[1:0];
-  assign prio162_we = addr_hit[162] & reg_we & !reg_error;
+  assign prio_161_wd = reg_wdata[1:0];
+  assign prio_162_we = addr_hit[162] & reg_we & !reg_error;
 
-  assign prio162_wd = reg_wdata[1:0];
-  assign prio163_we = addr_hit[163] & reg_we & !reg_error;
+  assign prio_162_wd = reg_wdata[1:0];
+  assign prio_163_we = addr_hit[163] & reg_we & !reg_error;
 
-  assign prio163_wd = reg_wdata[1:0];
-  assign prio164_we = addr_hit[164] & reg_we & !reg_error;
+  assign prio_163_wd = reg_wdata[1:0];
+  assign prio_164_we = addr_hit[164] & reg_we & !reg_error;
 
-  assign prio164_wd = reg_wdata[1:0];
-  assign prio165_we = addr_hit[165] & reg_we & !reg_error;
+  assign prio_164_wd = reg_wdata[1:0];
+  assign prio_165_we = addr_hit[165] & reg_we & !reg_error;
 
-  assign prio165_wd = reg_wdata[1:0];
-  assign prio166_we = addr_hit[166] & reg_we & !reg_error;
+  assign prio_165_wd = reg_wdata[1:0];
+  assign prio_166_we = addr_hit[166] & reg_we & !reg_error;
 
-  assign prio166_wd = reg_wdata[1:0];
-  assign prio167_we = addr_hit[167] & reg_we & !reg_error;
+  assign prio_166_wd = reg_wdata[1:0];
+  assign prio_167_we = addr_hit[167] & reg_we & !reg_error;
 
-  assign prio167_wd = reg_wdata[1:0];
-  assign prio168_we = addr_hit[168] & reg_we & !reg_error;
+  assign prio_167_wd = reg_wdata[1:0];
+  assign prio_168_we = addr_hit[168] & reg_we & !reg_error;
 
-  assign prio168_wd = reg_wdata[1:0];
-  assign prio169_we = addr_hit[169] & reg_we & !reg_error;
+  assign prio_168_wd = reg_wdata[1:0];
+  assign prio_169_we = addr_hit[169] & reg_we & !reg_error;
 
-  assign prio169_wd = reg_wdata[1:0];
-  assign prio170_we = addr_hit[170] & reg_we & !reg_error;
+  assign prio_169_wd = reg_wdata[1:0];
+  assign prio_170_we = addr_hit[170] & reg_we & !reg_error;
 
-  assign prio170_wd = reg_wdata[1:0];
-  assign prio171_we = addr_hit[171] & reg_we & !reg_error;
+  assign prio_170_wd = reg_wdata[1:0];
+  assign prio_171_we = addr_hit[171] & reg_we & !reg_error;
 
-  assign prio171_wd = reg_wdata[1:0];
+  assign prio_171_wd = reg_wdata[1:0];
   assign ie0_0_we = addr_hit[178] & reg_we & !reg_error;
 
   assign ie0_0_e_0_wd = reg_wdata[0];
@@ -16841,178 +16854,178 @@ module rv_plic_reg_top (
   // Assign write-enables to checker logic vector.
   always_comb begin
     reg_we_check = '0;
-    reg_we_check[0] = prio0_we;
-    reg_we_check[1] = prio1_we;
-    reg_we_check[2] = prio2_we;
-    reg_we_check[3] = prio3_we;
-    reg_we_check[4] = prio4_we;
-    reg_we_check[5] = prio5_we;
-    reg_we_check[6] = prio6_we;
-    reg_we_check[7] = prio7_we;
-    reg_we_check[8] = prio8_we;
-    reg_we_check[9] = prio9_we;
-    reg_we_check[10] = prio10_we;
-    reg_we_check[11] = prio11_we;
-    reg_we_check[12] = prio12_we;
-    reg_we_check[13] = prio13_we;
-    reg_we_check[14] = prio14_we;
-    reg_we_check[15] = prio15_we;
-    reg_we_check[16] = prio16_we;
-    reg_we_check[17] = prio17_we;
-    reg_we_check[18] = prio18_we;
-    reg_we_check[19] = prio19_we;
-    reg_we_check[20] = prio20_we;
-    reg_we_check[21] = prio21_we;
-    reg_we_check[22] = prio22_we;
-    reg_we_check[23] = prio23_we;
-    reg_we_check[24] = prio24_we;
-    reg_we_check[25] = prio25_we;
-    reg_we_check[26] = prio26_we;
-    reg_we_check[27] = prio27_we;
-    reg_we_check[28] = prio28_we;
-    reg_we_check[29] = prio29_we;
-    reg_we_check[30] = prio30_we;
-    reg_we_check[31] = prio31_we;
-    reg_we_check[32] = prio32_we;
-    reg_we_check[33] = prio33_we;
-    reg_we_check[34] = prio34_we;
-    reg_we_check[35] = prio35_we;
-    reg_we_check[36] = prio36_we;
-    reg_we_check[37] = prio37_we;
-    reg_we_check[38] = prio38_we;
-    reg_we_check[39] = prio39_we;
-    reg_we_check[40] = prio40_we;
-    reg_we_check[41] = prio41_we;
-    reg_we_check[42] = prio42_we;
-    reg_we_check[43] = prio43_we;
-    reg_we_check[44] = prio44_we;
-    reg_we_check[45] = prio45_we;
-    reg_we_check[46] = prio46_we;
-    reg_we_check[47] = prio47_we;
-    reg_we_check[48] = prio48_we;
-    reg_we_check[49] = prio49_we;
-    reg_we_check[50] = prio50_we;
-    reg_we_check[51] = prio51_we;
-    reg_we_check[52] = prio52_we;
-    reg_we_check[53] = prio53_we;
-    reg_we_check[54] = prio54_we;
-    reg_we_check[55] = prio55_we;
-    reg_we_check[56] = prio56_we;
-    reg_we_check[57] = prio57_we;
-    reg_we_check[58] = prio58_we;
-    reg_we_check[59] = prio59_we;
-    reg_we_check[60] = prio60_we;
-    reg_we_check[61] = prio61_we;
-    reg_we_check[62] = prio62_we;
-    reg_we_check[63] = prio63_we;
-    reg_we_check[64] = prio64_we;
-    reg_we_check[65] = prio65_we;
-    reg_we_check[66] = prio66_we;
-    reg_we_check[67] = prio67_we;
-    reg_we_check[68] = prio68_we;
-    reg_we_check[69] = prio69_we;
-    reg_we_check[70] = prio70_we;
-    reg_we_check[71] = prio71_we;
-    reg_we_check[72] = prio72_we;
-    reg_we_check[73] = prio73_we;
-    reg_we_check[74] = prio74_we;
-    reg_we_check[75] = prio75_we;
-    reg_we_check[76] = prio76_we;
-    reg_we_check[77] = prio77_we;
-    reg_we_check[78] = prio78_we;
-    reg_we_check[79] = prio79_we;
-    reg_we_check[80] = prio80_we;
-    reg_we_check[81] = prio81_we;
-    reg_we_check[82] = prio82_we;
-    reg_we_check[83] = prio83_we;
-    reg_we_check[84] = prio84_we;
-    reg_we_check[85] = prio85_we;
-    reg_we_check[86] = prio86_we;
-    reg_we_check[87] = prio87_we;
-    reg_we_check[88] = prio88_we;
-    reg_we_check[89] = prio89_we;
-    reg_we_check[90] = prio90_we;
-    reg_we_check[91] = prio91_we;
-    reg_we_check[92] = prio92_we;
-    reg_we_check[93] = prio93_we;
-    reg_we_check[94] = prio94_we;
-    reg_we_check[95] = prio95_we;
-    reg_we_check[96] = prio96_we;
-    reg_we_check[97] = prio97_we;
-    reg_we_check[98] = prio98_we;
-    reg_we_check[99] = prio99_we;
-    reg_we_check[100] = prio100_we;
-    reg_we_check[101] = prio101_we;
-    reg_we_check[102] = prio102_we;
-    reg_we_check[103] = prio103_we;
-    reg_we_check[104] = prio104_we;
-    reg_we_check[105] = prio105_we;
-    reg_we_check[106] = prio106_we;
-    reg_we_check[107] = prio107_we;
-    reg_we_check[108] = prio108_we;
-    reg_we_check[109] = prio109_we;
-    reg_we_check[110] = prio110_we;
-    reg_we_check[111] = prio111_we;
-    reg_we_check[112] = prio112_we;
-    reg_we_check[113] = prio113_we;
-    reg_we_check[114] = prio114_we;
-    reg_we_check[115] = prio115_we;
-    reg_we_check[116] = prio116_we;
-    reg_we_check[117] = prio117_we;
-    reg_we_check[118] = prio118_we;
-    reg_we_check[119] = prio119_we;
-    reg_we_check[120] = prio120_we;
-    reg_we_check[121] = prio121_we;
-    reg_we_check[122] = prio122_we;
-    reg_we_check[123] = prio123_we;
-    reg_we_check[124] = prio124_we;
-    reg_we_check[125] = prio125_we;
-    reg_we_check[126] = prio126_we;
-    reg_we_check[127] = prio127_we;
-    reg_we_check[128] = prio128_we;
-    reg_we_check[129] = prio129_we;
-    reg_we_check[130] = prio130_we;
-    reg_we_check[131] = prio131_we;
-    reg_we_check[132] = prio132_we;
-    reg_we_check[133] = prio133_we;
-    reg_we_check[134] = prio134_we;
-    reg_we_check[135] = prio135_we;
-    reg_we_check[136] = prio136_we;
-    reg_we_check[137] = prio137_we;
-    reg_we_check[138] = prio138_we;
-    reg_we_check[139] = prio139_we;
-    reg_we_check[140] = prio140_we;
-    reg_we_check[141] = prio141_we;
-    reg_we_check[142] = prio142_we;
-    reg_we_check[143] = prio143_we;
-    reg_we_check[144] = prio144_we;
-    reg_we_check[145] = prio145_we;
-    reg_we_check[146] = prio146_we;
-    reg_we_check[147] = prio147_we;
-    reg_we_check[148] = prio148_we;
-    reg_we_check[149] = prio149_we;
-    reg_we_check[150] = prio150_we;
-    reg_we_check[151] = prio151_we;
-    reg_we_check[152] = prio152_we;
-    reg_we_check[153] = prio153_we;
-    reg_we_check[154] = prio154_we;
-    reg_we_check[155] = prio155_we;
-    reg_we_check[156] = prio156_we;
-    reg_we_check[157] = prio157_we;
-    reg_we_check[158] = prio158_we;
-    reg_we_check[159] = prio159_we;
-    reg_we_check[160] = prio160_we;
-    reg_we_check[161] = prio161_we;
-    reg_we_check[162] = prio162_we;
-    reg_we_check[163] = prio163_we;
-    reg_we_check[164] = prio164_we;
-    reg_we_check[165] = prio165_we;
-    reg_we_check[166] = prio166_we;
-    reg_we_check[167] = prio167_we;
-    reg_we_check[168] = prio168_we;
-    reg_we_check[169] = prio169_we;
-    reg_we_check[170] = prio170_we;
-    reg_we_check[171] = prio171_we;
+    reg_we_check[0] = prio_0_we;
+    reg_we_check[1] = prio_1_we;
+    reg_we_check[2] = prio_2_we;
+    reg_we_check[3] = prio_3_we;
+    reg_we_check[4] = prio_4_we;
+    reg_we_check[5] = prio_5_we;
+    reg_we_check[6] = prio_6_we;
+    reg_we_check[7] = prio_7_we;
+    reg_we_check[8] = prio_8_we;
+    reg_we_check[9] = prio_9_we;
+    reg_we_check[10] = prio_10_we;
+    reg_we_check[11] = prio_11_we;
+    reg_we_check[12] = prio_12_we;
+    reg_we_check[13] = prio_13_we;
+    reg_we_check[14] = prio_14_we;
+    reg_we_check[15] = prio_15_we;
+    reg_we_check[16] = prio_16_we;
+    reg_we_check[17] = prio_17_we;
+    reg_we_check[18] = prio_18_we;
+    reg_we_check[19] = prio_19_we;
+    reg_we_check[20] = prio_20_we;
+    reg_we_check[21] = prio_21_we;
+    reg_we_check[22] = prio_22_we;
+    reg_we_check[23] = prio_23_we;
+    reg_we_check[24] = prio_24_we;
+    reg_we_check[25] = prio_25_we;
+    reg_we_check[26] = prio_26_we;
+    reg_we_check[27] = prio_27_we;
+    reg_we_check[28] = prio_28_we;
+    reg_we_check[29] = prio_29_we;
+    reg_we_check[30] = prio_30_we;
+    reg_we_check[31] = prio_31_we;
+    reg_we_check[32] = prio_32_we;
+    reg_we_check[33] = prio_33_we;
+    reg_we_check[34] = prio_34_we;
+    reg_we_check[35] = prio_35_we;
+    reg_we_check[36] = prio_36_we;
+    reg_we_check[37] = prio_37_we;
+    reg_we_check[38] = prio_38_we;
+    reg_we_check[39] = prio_39_we;
+    reg_we_check[40] = prio_40_we;
+    reg_we_check[41] = prio_41_we;
+    reg_we_check[42] = prio_42_we;
+    reg_we_check[43] = prio_43_we;
+    reg_we_check[44] = prio_44_we;
+    reg_we_check[45] = prio_45_we;
+    reg_we_check[46] = prio_46_we;
+    reg_we_check[47] = prio_47_we;
+    reg_we_check[48] = prio_48_we;
+    reg_we_check[49] = prio_49_we;
+    reg_we_check[50] = prio_50_we;
+    reg_we_check[51] = prio_51_we;
+    reg_we_check[52] = prio_52_we;
+    reg_we_check[53] = prio_53_we;
+    reg_we_check[54] = prio_54_we;
+    reg_we_check[55] = prio_55_we;
+    reg_we_check[56] = prio_56_we;
+    reg_we_check[57] = prio_57_we;
+    reg_we_check[58] = prio_58_we;
+    reg_we_check[59] = prio_59_we;
+    reg_we_check[60] = prio_60_we;
+    reg_we_check[61] = prio_61_we;
+    reg_we_check[62] = prio_62_we;
+    reg_we_check[63] = prio_63_we;
+    reg_we_check[64] = prio_64_we;
+    reg_we_check[65] = prio_65_we;
+    reg_we_check[66] = prio_66_we;
+    reg_we_check[67] = prio_67_we;
+    reg_we_check[68] = prio_68_we;
+    reg_we_check[69] = prio_69_we;
+    reg_we_check[70] = prio_70_we;
+    reg_we_check[71] = prio_71_we;
+    reg_we_check[72] = prio_72_we;
+    reg_we_check[73] = prio_73_we;
+    reg_we_check[74] = prio_74_we;
+    reg_we_check[75] = prio_75_we;
+    reg_we_check[76] = prio_76_we;
+    reg_we_check[77] = prio_77_we;
+    reg_we_check[78] = prio_78_we;
+    reg_we_check[79] = prio_79_we;
+    reg_we_check[80] = prio_80_we;
+    reg_we_check[81] = prio_81_we;
+    reg_we_check[82] = prio_82_we;
+    reg_we_check[83] = prio_83_we;
+    reg_we_check[84] = prio_84_we;
+    reg_we_check[85] = prio_85_we;
+    reg_we_check[86] = prio_86_we;
+    reg_we_check[87] = prio_87_we;
+    reg_we_check[88] = prio_88_we;
+    reg_we_check[89] = prio_89_we;
+    reg_we_check[90] = prio_90_we;
+    reg_we_check[91] = prio_91_we;
+    reg_we_check[92] = prio_92_we;
+    reg_we_check[93] = prio_93_we;
+    reg_we_check[94] = prio_94_we;
+    reg_we_check[95] = prio_95_we;
+    reg_we_check[96] = prio_96_we;
+    reg_we_check[97] = prio_97_we;
+    reg_we_check[98] = prio_98_we;
+    reg_we_check[99] = prio_99_we;
+    reg_we_check[100] = prio_100_we;
+    reg_we_check[101] = prio_101_we;
+    reg_we_check[102] = prio_102_we;
+    reg_we_check[103] = prio_103_we;
+    reg_we_check[104] = prio_104_we;
+    reg_we_check[105] = prio_105_we;
+    reg_we_check[106] = prio_106_we;
+    reg_we_check[107] = prio_107_we;
+    reg_we_check[108] = prio_108_we;
+    reg_we_check[109] = prio_109_we;
+    reg_we_check[110] = prio_110_we;
+    reg_we_check[111] = prio_111_we;
+    reg_we_check[112] = prio_112_we;
+    reg_we_check[113] = prio_113_we;
+    reg_we_check[114] = prio_114_we;
+    reg_we_check[115] = prio_115_we;
+    reg_we_check[116] = prio_116_we;
+    reg_we_check[117] = prio_117_we;
+    reg_we_check[118] = prio_118_we;
+    reg_we_check[119] = prio_119_we;
+    reg_we_check[120] = prio_120_we;
+    reg_we_check[121] = prio_121_we;
+    reg_we_check[122] = prio_122_we;
+    reg_we_check[123] = prio_123_we;
+    reg_we_check[124] = prio_124_we;
+    reg_we_check[125] = prio_125_we;
+    reg_we_check[126] = prio_126_we;
+    reg_we_check[127] = prio_127_we;
+    reg_we_check[128] = prio_128_we;
+    reg_we_check[129] = prio_129_we;
+    reg_we_check[130] = prio_130_we;
+    reg_we_check[131] = prio_131_we;
+    reg_we_check[132] = prio_132_we;
+    reg_we_check[133] = prio_133_we;
+    reg_we_check[134] = prio_134_we;
+    reg_we_check[135] = prio_135_we;
+    reg_we_check[136] = prio_136_we;
+    reg_we_check[137] = prio_137_we;
+    reg_we_check[138] = prio_138_we;
+    reg_we_check[139] = prio_139_we;
+    reg_we_check[140] = prio_140_we;
+    reg_we_check[141] = prio_141_we;
+    reg_we_check[142] = prio_142_we;
+    reg_we_check[143] = prio_143_we;
+    reg_we_check[144] = prio_144_we;
+    reg_we_check[145] = prio_145_we;
+    reg_we_check[146] = prio_146_we;
+    reg_we_check[147] = prio_147_we;
+    reg_we_check[148] = prio_148_we;
+    reg_we_check[149] = prio_149_we;
+    reg_we_check[150] = prio_150_we;
+    reg_we_check[151] = prio_151_we;
+    reg_we_check[152] = prio_152_we;
+    reg_we_check[153] = prio_153_we;
+    reg_we_check[154] = prio_154_we;
+    reg_we_check[155] = prio_155_we;
+    reg_we_check[156] = prio_156_we;
+    reg_we_check[157] = prio_157_we;
+    reg_we_check[158] = prio_158_we;
+    reg_we_check[159] = prio_159_we;
+    reg_we_check[160] = prio_160_we;
+    reg_we_check[161] = prio_161_we;
+    reg_we_check[162] = prio_162_we;
+    reg_we_check[163] = prio_163_we;
+    reg_we_check[164] = prio_164_we;
+    reg_we_check[165] = prio_165_we;
+    reg_we_check[166] = prio_166_we;
+    reg_we_check[167] = prio_167_we;
+    reg_we_check[168] = prio_168_we;
+    reg_we_check[169] = prio_169_we;
+    reg_we_check[170] = prio_170_we;
+    reg_we_check[171] = prio_171_we;
     reg_we_check[172] = 1'b0;
     reg_we_check[173] = 1'b0;
     reg_we_check[174] = 1'b0;
@@ -17672,55 +17685,55 @@ module rv_plic_reg_top (
       end
 
       addr_hit[159]: begin
-        reg_rdata_next[1:0] = prio159_qs;
+        reg_rdata_next[1:0] = prio_159_qs;
       end
 
       addr_hit[160]: begin
-        reg_rdata_next[1:0] = prio160_qs;
+        reg_rdata_next[1:0] = prio_160_qs;
       end
 
       addr_hit[161]: begin
-        reg_rdata_next[1:0] = prio161_qs;
+        reg_rdata_next[1:0] = prio_161_qs;
       end
 
       addr_hit[162]: begin
-        reg_rdata_next[1:0] = prio162_qs;
+        reg_rdata_next[1:0] = prio_162_qs;
       end
 
       addr_hit[163]: begin
-        reg_rdata_next[1:0] = prio163_qs;
+        reg_rdata_next[1:0] = prio_163_qs;
       end
 
       addr_hit[164]: begin
-        reg_rdata_next[1:0] = prio164_qs;
+        reg_rdata_next[1:0] = prio_164_qs;
       end
 
       addr_hit[165]: begin
-        reg_rdata_next[1:0] = prio165_qs;
+        reg_rdata_next[1:0] = prio_165_qs;
       end
 
       addr_hit[166]: begin
-        reg_rdata_next[1:0] = prio166_qs;
+        reg_rdata_next[1:0] = prio_166_qs;
       end
 
       addr_hit[167]: begin
-        reg_rdata_next[1:0] = prio167_qs;
+        reg_rdata_next[1:0] = prio_167_qs;
       end
 
       addr_hit[168]: begin
-        reg_rdata_next[1:0] = prio168_qs;
+        reg_rdata_next[1:0] = prio_168_qs;
       end
 
       addr_hit[169]: begin
-        reg_rdata_next[1:0] = prio169_qs;
+        reg_rdata_next[1:0] = prio_169_qs;
       end
 
       addr_hit[170]: begin
-        reg_rdata_next[1:0] = prio170_qs;
+        reg_rdata_next[1:0] = prio_170_qs;
       end
 
       addr_hit[171]: begin
-        reg_rdata_next[1:0] = prio171_qs;
+        reg_rdata_next[1:0] = prio_171_qs;
       end
 
       addr_hit[172]: begin

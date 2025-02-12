@@ -18,8 +18,8 @@ MEMORY {
   ram_ret_aon(rwx) : ORIGIN = 0x30600000, LENGTH = 0x1000
   ram_main(rwx) : ORIGIN = 0x10000000, LENGTH = 0x10000
   ram_mbox(rwx) : ORIGIN = 0x11000000, LENGTH = 0x1000
-  rom_ext_virtual(rx) : ORIGIN = 0x90000000, LENGTH = None
-  owner_virtual(rx) : ORIGIN = 0xa0000000, LENGTH = None
+  rom_ext_virtual(rx) : ORIGIN = 0x90000000, LENGTH = 0x80000
+  owner_virtual(rx) : ORIGIN = 0xa0000000, LENGTH = 0x80000
 }
 
 /**

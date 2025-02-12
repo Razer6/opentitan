@@ -146,4 +146,67 @@
   ]
   clock: clk_peri_i
   type: xbar
+  inter_signal_list:
+  [
+    {
+      name: tl_mio_main
+      struct: tl
+      package: tlul_pkg
+      type: req_rsp
+      act: rsp
+      inst_name: mio_peri
+      width: 1
+      default: ""
+      top_signame: mio_main_tl_mio_peri
+      index: -1
+    }
+    {
+      name: tl_rv_timer
+      struct: tl
+      package: tlul_pkg
+      type: req_rsp
+      act: req
+      inst_name: mio_peri
+      width: 1
+      default: ""
+      top_signame: rv_timer_tl
+      index: -1
+    }
+    {
+      name: tl_sram_ctrl_ret_aon__regs
+      struct: tl
+      package: tlul_pkg
+      type: req_rsp
+      act: req
+      inst_name: mio_peri
+      width: 1
+      default: ""
+      top_signame: sram_ctrl_ret_aon_regs_tl
+      index: -1
+    }
+    {
+      name: tl_sram_ctrl_ret_aon__ram
+      struct: tl
+      package: tlul_pkg
+      type: req_rsp
+      act: req
+      inst_name: mio_peri
+      width: 1
+      default: ""
+      top_signame: sram_ctrl_ret_aon_ram_tl
+      index: -1
+    }
+    {
+      name: tl_aon_timer_aon
+      struct: tl
+      package: tlul_pkg
+      type: req_rsp
+      act: req
+      inst_name: mio_peri
+      width: 1
+      default: ""
+      top_signame: aon_timer_aon_tl
+      index: -1
+    }
+  ]
 }
