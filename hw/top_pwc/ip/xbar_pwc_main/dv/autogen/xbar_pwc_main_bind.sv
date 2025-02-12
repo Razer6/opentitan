@@ -92,23 +92,23 @@ module xbar_pwc_main_bind;
     .h2d    (tl_pwc_peri_o),
     .d2h    (tl_pwc_peri_i)
   );
-  bind xbar_pwc_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_soc_proxy__core (
+  bind xbar_pwc_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_pwc_soc_proxy__core (
     .clk_i  (clk_main_i),
     .rst_ni (rst_main_ni),
-    .h2d    (tl_soc_proxy__core_o),
-    .d2h    (tl_soc_proxy__core_i)
+    .h2d    (tl_pwc_soc_proxy__core_o),
+    .d2h    (tl_pwc_soc_proxy__core_i)
   );
-  bind xbar_pwc_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_soc_proxy__ctn (
+  bind xbar_pwc_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_pwc_soc_proxy__ctn (
     .clk_i  (clk_main_i),
     .rst_ni (rst_main_ni),
-    .h2d    (tl_soc_proxy__ctn_o),
-    .d2h    (tl_soc_proxy__ctn_i)
+    .h2d    (tl_pwc_soc_proxy__ctn_o),
+    .d2h    (tl_pwc_soc_proxy__ctn_i)
   );
-  bind xbar_pwc_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_rv_plic (
+  bind xbar_pwc_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_rv_plic_pwc (
     .clk_i  (clk_main_i),
     .rst_ni (rst_main_ni),
-    .h2d    (tl_rv_plic_o),
-    .d2h    (tl_rv_plic_i)
+    .h2d    (tl_rv_plic_pwc_o),
+    .d2h    (tl_rv_plic_pwc_i)
   );
   bind xbar_pwc_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_rv_core_ibex__cfg (
     .clk_i  (clk_main_i),

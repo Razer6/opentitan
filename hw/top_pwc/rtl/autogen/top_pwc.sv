@@ -19,7 +19,7 @@ module top_pwc #(
   parameter bit GpioGpioAsHwStrapsEn = 0,
   // parameters for rv_timer
   // parameters for aon_timer_aon
-  // parameters for soc_proxy
+  // parameters for pwc_soc_proxy
   // parameters for sram_ctrl_ret_aon
   parameter int SramCtrlRetAonInstSize = 4096,
   parameter int SramCtrlRetAonNumRamInst = 1,
@@ -32,7 +32,7 @@ module top_pwc #(
   parameter bit RvDmUseDmiInterface = 1,
   parameter bit SecRvDmVolatileRawUnlockEn = top_pkg::SecVolatileRawUnlockEn,
   parameter logic [tlul_pkg::RsvdWidth-1:0] RvDmTlulHostUserRsvdBits = '0,
-  // parameters for rv_plic
+  // parameters for rv_plic_pwc
   // parameters for sram_ctrl_main
   parameter int SramCtrlMainInstSize = 65536,
   parameter int SramCtrlMainNumRamInst = 1,
@@ -136,10 +136,10 @@ module top_pwc #(
   output logic [31:0]                               cio_gpio_gpio_en_d2p_o,
   // rv_timer
   // aon_timer_aon
-  // soc_proxy
+  // pwc_soc_proxy
   // sram_ctrl_ret_aon
   // rv_dm
-  // rv_plic
+  // rv_plic_pwc
   // sram_ctrl_main
   // sram_ctrl_mbox
   // dma
@@ -203,7 +203,7 @@ module top_pwc #(
   logic intr_rv_timer_timer_expired_hart0_timer0;
   logic intr_aon_timer_aon_wkup_timer_expired;
   logic intr_aon_timer_aon_wdog_timer_bark;
-  logic [31:0] intr_soc_proxy_external;
+  logic [31:0] intr_pwc_soc_proxy_external;
   logic intr_dma_dma_done;
   logic intr_dma_dma_chunk_done;
   logic intr_dma_dma_error;
@@ -232,11 +232,11 @@ module top_pwc #(
   // define inter-module signals
   logic       aon_timer_aon_nmi_wdog_timer_bark;
   dma_pkg::lsio_trigger_t       dma_lsio_trigger;
-  logic       rv_plic_msip;
-  logic       rv_plic_irq;
+  logic       rv_plic_pwc_msip;
+  logic       rv_plic_pwc_irq;
   logic       rv_dm_debug_req;
-  lc_ctrl_pkg::lc_tx_t       soc_proxy_lc_hw_debug_en;
-  lc_ctrl_pkg::lc_tx_t       soc_proxy_lc_escalate_en;
+  lc_ctrl_pkg::lc_tx_t       pwc_soc_proxy_lc_hw_debug_en;
+  lc_ctrl_pkg::lc_tx_t       pwc_soc_proxy_lc_escalate_en;
   prim_mubi_pkg::mubi8_t       sram_ctrl_main_otp_en_sram_ifetch;
   tlul_pkg::tl_h2d_t       pwc_main_tl_rv_core_ibex__corei_req;
   tlul_pkg::tl_d2h_t       pwc_main_tl_rv_core_ibex__corei_rsp;
@@ -250,12 +250,12 @@ module top_pwc #(
   tlul_pkg::tl_d2h_t       rv_dm_mem_tl_d_rsp;
   tlul_pkg::tl_h2d_t       pwc_main_tl_pwc_peri_req;
   tlul_pkg::tl_d2h_t       pwc_main_tl_pwc_peri_rsp;
-  tlul_pkg::tl_h2d_t       soc_proxy_core_tl_req;
-  tlul_pkg::tl_d2h_t       soc_proxy_core_tl_rsp;
-  tlul_pkg::tl_h2d_t       soc_proxy_ctn_tl_req;
-  tlul_pkg::tl_d2h_t       soc_proxy_ctn_tl_rsp;
-  tlul_pkg::tl_h2d_t       rv_plic_tl_req;
-  tlul_pkg::tl_d2h_t       rv_plic_tl_rsp;
+  tlul_pkg::tl_h2d_t       pwc_soc_proxy_core_tl_req;
+  tlul_pkg::tl_d2h_t       pwc_soc_proxy_core_tl_rsp;
+  tlul_pkg::tl_h2d_t       pwc_soc_proxy_ctn_tl_req;
+  tlul_pkg::tl_d2h_t       pwc_soc_proxy_ctn_tl_rsp;
+  tlul_pkg::tl_h2d_t       rv_plic_pwc_tl_req;
+  tlul_pkg::tl_d2h_t       rv_plic_pwc_tl_rsp;
   tlul_pkg::tl_h2d_t       rv_core_ibex_cfg_tl_d_req;
   tlul_pkg::tl_d2h_t       rv_core_ibex_cfg_tl_d_rsp;
   tlul_pkg::tl_h2d_t       sram_ctrl_main_regs_tl_req;
@@ -420,7 +420,7 @@ module top_pwc #(
       .nmi_wdog_timer_bark_o(aon_timer_aon_nmi_wdog_timer_bark),
       .wkup_req_o(),
       .aon_timer_rst_req_o(),
-      .lc_escalate_en_i(soc_proxy_lc_escalate_en),
+      .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
       .sleep_mode_i('0),
       .tl_i(aon_timer_aon_tl_req),
       .tl_o(aon_timer_aon_tl_rsp),
@@ -433,18 +433,18 @@ module top_pwc #(
   );
   pwc_soc_proxy #(
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[3:3])
-  ) u_soc_proxy (
+  ) u_pwc_soc_proxy (
 
       // Interrupt
-      .intr_external_o (intr_soc_proxy_external),
+      .intr_external_o (intr_pwc_soc_proxy_external),
       // External alert group "pwc" [3]: fatal_alert_intg
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[3:3] ),
       .alert_rx_i  ( outgoing_alert_pwc_rx_i[3:3] ),
 
       // Inter-module signals
-      .lc_escalate_en_o(soc_proxy_lc_escalate_en),
+      .lc_escalate_en_o(pwc_soc_proxy_lc_escalate_en),
       .lc_escalate_en_ext_i(lc_escalate_en_ext_i),
-      .lc_hw_debug_en_o(soc_proxy_lc_hw_debug_en),
+      .lc_hw_debug_en_o(pwc_soc_proxy_lc_hw_debug_en),
       .lc_hw_debug_en_ext_i(lc_hw_debug_en_ext_i),
       .ctn_tl_h2d_o(ctn_tl_h2d_o),
       .ctn_tl_d2h_i(ctn_tl_d2h_i),
@@ -452,10 +452,10 @@ module top_pwc #(
       .dma_lsio_trigger_o(dma_lsio_trigger),
       .soc_intr_async_i('0),
       .mubi8_true_o(sram_ctrl_main_otp_en_sram_ifetch),
-      .core_tl_i(soc_proxy_core_tl_req),
-      .core_tl_o(soc_proxy_core_tl_rsp),
-      .ctn_tl_i(soc_proxy_ctn_tl_req),
-      .ctn_tl_o(soc_proxy_ctn_tl_rsp),
+      .core_tl_i(pwc_soc_proxy_core_tl_req),
+      .core_tl_o(pwc_soc_proxy_core_tl_rsp),
+      .ctn_tl_i(pwc_soc_proxy_ctn_tl_req),
+      .ctn_tl_o(pwc_soc_proxy_ctn_tl_rsp),
 
       // Clock and reset connections
       .clk_i (clk_ext_main_i),
@@ -484,8 +484,8 @@ module top_pwc #(
       .sram_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
       .cfg_i(sram_ctrl_ret_aon_ram_1p_cfg_i),
       .cfg_rsp_o(sram_ctrl_ret_aon_ram_1p_cfg_rsp_o),
-      .lc_escalate_en_i(soc_proxy_lc_escalate_en),
-      .lc_hw_debug_en_i(soc_proxy_lc_hw_debug_en),
+      .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
+      .lc_hw_debug_en_i(pwc_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
@@ -518,7 +518,7 @@ module top_pwc #(
       .next_dm_addr_i(rv_dm_next_dm_addr_i),
       .jtag_i(jtag_pkg::JTAG_REQ_DEFAULT),
       .jtag_o(),
-      .lc_hw_debug_en_i(soc_proxy_lc_hw_debug_en),
+      .lc_hw_debug_en_i(pwc_soc_proxy_lc_hw_debug_en),
       .lc_dft_en_i(lc_ctrl_pkg::Off),
       .pinmux_hw_debug_en_i(lc_ctrl_pkg::Off),
       .otp_dis_rv_dm_late_debug_i(prim_mubi_pkg::MuBi8False),
@@ -526,7 +526,7 @@ module top_pwc #(
       .ndmreset_req_o(),
       .dmactive_o(),
       .debug_req_o(rv_dm_debug_req),
-      .lc_escalate_en_i(soc_proxy_lc_escalate_en),
+      .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
       .lc_check_byp_en_i(lc_check_byp_en_i),
       .strap_en_i(1'b0),
       .strap_en_override_i(1'b0),
@@ -549,17 +549,17 @@ module top_pwc #(
   );
   rv_plic_pwc #(
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[6:6])
-  ) u_rv_plic (
+  ) u_rv_plic_pwc (
       // External alert group "pwc" [6]: fatal_fault
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[6:6] ),
       .alert_rx_i  ( outgoing_alert_pwc_rx_i[6:6] ),
 
       // Inter-module signals
-      .irq_o(rv_plic_irq),
+      .irq_o(rv_plic_pwc_irq),
       .irq_id_o(),
-      .msip_o(rv_plic_msip),
-      .tl_i(rv_plic_tl_req),
-      .tl_o(rv_plic_tl_rsp),
+      .msip_o(rv_plic_pwc_msip),
+      .tl_i(rv_plic_pwc_tl_req),
+      .tl_o(rv_plic_pwc_tl_rsp),
       .intr_src_i (intr_vector),
 
       // Clock and reset connections
@@ -589,8 +589,8 @@ module top_pwc #(
       .sram_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
       .cfg_i(sram_ctrl_main_ram_1p_cfg_i),
       .cfg_rsp_o(sram_ctrl_main_ram_1p_cfg_rsp_o),
-      .lc_escalate_en_i(soc_proxy_lc_escalate_en),
-      .lc_hw_debug_en_i(soc_proxy_lc_hw_debug_en),
+      .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
+      .lc_hw_debug_en_i(pwc_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
@@ -631,8 +631,8 @@ module top_pwc #(
       .sram_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
       .cfg_i(sram_ctrl_mbox_ram_1p_cfg_i),
       .cfg_rsp_o(sram_ctrl_mbox_ram_1p_cfg_rsp_o),
-      .lc_escalate_en_i(soc_proxy_lc_escalate_en),
-      .lc_hw_debug_en_i(soc_proxy_lc_hw_debug_en),
+      .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
+      .lc_hw_debug_en_i(pwc_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
@@ -1010,9 +1010,9 @@ module top_pwc #(
       .ram_cfg_rsp_icache_data_o(),
       .hart_id_i(rv_core_ibex_hart_id),
       .boot_addr_i(rv_boot_addr_i),
-      .irq_software_i(rv_plic_msip),
+      .irq_software_i(rv_plic_pwc_msip),
       .irq_timer_i(rv_core_ibex_irq_timer),
-      .irq_external_i(rv_plic_irq),
+      .irq_external_i(rv_plic_pwc_irq),
       .esc_tx_i(rv_core_esc_tx_i),
       .esc_rx_o(rv_core_esc_rx_o),
       .debug_req_i(rv_dm_debug_req),
@@ -1072,7 +1072,7 @@ module top_pwc #(
       intr_dma_dma_error, // IDs [70 +: 1]
       intr_dma_dma_chunk_done, // IDs [69 +: 1]
       intr_dma_dma_done, // IDs [68 +: 1]
-      intr_soc_proxy_external, // IDs [36 +: 32]
+      intr_pwc_soc_proxy_external, // IDs [36 +: 32]
       intr_aon_timer_aon_wdog_timer_bark, // IDs [35 +: 1]
       intr_aon_timer_aon_wkup_timer_expired, // IDs [34 +: 1]
       intr_rv_timer_timer_expired_hart0_timer0, // IDs [33 +: 1]
@@ -1143,17 +1143,17 @@ module top_pwc #(
     .tl_pwc_peri_o(pwc_main_tl_pwc_peri_req),
     .tl_pwc_peri_i(pwc_main_tl_pwc_peri_rsp),
 
-    // port: tl_soc_proxy__core
-    .tl_soc_proxy__core_o(soc_proxy_core_tl_req),
-    .tl_soc_proxy__core_i(soc_proxy_core_tl_rsp),
+    // port: tl_pwc_soc_proxy__core
+    .tl_pwc_soc_proxy__core_o(pwc_soc_proxy_core_tl_req),
+    .tl_pwc_soc_proxy__core_i(pwc_soc_proxy_core_tl_rsp),
 
-    // port: tl_soc_proxy__ctn
-    .tl_soc_proxy__ctn_o(soc_proxy_ctn_tl_req),
-    .tl_soc_proxy__ctn_i(soc_proxy_ctn_tl_rsp),
+    // port: tl_pwc_soc_proxy__ctn
+    .tl_pwc_soc_proxy__ctn_o(pwc_soc_proxy_ctn_tl_req),
+    .tl_pwc_soc_proxy__ctn_i(pwc_soc_proxy_ctn_tl_rsp),
 
-    // port: tl_rv_plic
-    .tl_rv_plic_o(rv_plic_tl_req),
-    .tl_rv_plic_i(rv_plic_tl_rsp),
+    // port: tl_rv_plic_pwc
+    .tl_rv_plic_pwc_o(rv_plic_pwc_tl_req),
+    .tl_rv_plic_pwc_i(rv_plic_pwc_tl_rsp),
 
     // port: tl_rv_core_ibex__cfg
     .tl_rv_core_ibex__cfg_o(rv_core_ibex_cfg_tl_d_req),

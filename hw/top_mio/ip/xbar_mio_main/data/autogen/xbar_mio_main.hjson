@@ -99,19 +99,19 @@
     }
     { struct: "tl"
       type:   "req_rsp"
-      name:   "tl_soc_proxy__core"
+      name:   "tl_mio_soc_proxy__core"
       act:    "req"
       package: "tlul_pkg"
     }
     { struct: "tl"
       type:   "req_rsp"
-      name:   "tl_soc_proxy__ctn"
+      name:   "tl_mio_soc_proxy__ctn"
       act:    "req"
       package: "tlul_pkg"
     }
     { struct: "tl"
       type:   "req_rsp"
-      name:   "tl_rv_plic"
+      name:   "tl_rv_plic_mio"
       act:    "req"
       package: "tlul_pkg"
     }

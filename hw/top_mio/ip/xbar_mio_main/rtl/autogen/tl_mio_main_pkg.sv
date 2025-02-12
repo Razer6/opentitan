@@ -11,9 +11,9 @@ package tl_mio_main_pkg;
   localparam logic [0:0][31:0] ADDR_SPACE_MIO_PERI             = {
     32'h 30000000
   };
-  localparam logic [31:0] ADDR_SPACE_SOC_PROXY__CORE      = 32'h 22030000;
-  localparam logic [31:0] ADDR_SPACE_SOC_PROXY__CTN       = 32'h 40000000;
-  localparam logic [31:0] ADDR_SPACE_RV_PLIC              = 32'h 28000000;
+  localparam logic [31:0] ADDR_SPACE_MIO_SOC_PROXY__CORE  = 32'h 22030000;
+  localparam logic [31:0] ADDR_SPACE_MIO_SOC_PROXY__CTN   = 32'h 40000000;
+  localparam logic [31:0] ADDR_SPACE_RV_PLIC_MIO          = 32'h 28000000;
   localparam logic [31:0] ADDR_SPACE_RV_CORE_IBEX__CFG    = 32'h 211f0000;
   localparam logic [31:0] ADDR_SPACE_SRAM_CTRL_MAIN__REGS = 32'h 211c0000;
   localparam logic [31:0] ADDR_SPACE_SRAM_CTRL_MAIN__RAM  = 32'h 10000000;
@@ -33,9 +33,9 @@ package tl_mio_main_pkg;
   localparam logic [0:0][31:0] ADDR_MASK_MIO_PERI             = {
     32'h 007fffff
   };
-  localparam logic [31:0] ADDR_MASK_SOC_PROXY__CORE      = 32'h 0000000f;
-  localparam logic [31:0] ADDR_MASK_SOC_PROXY__CTN       = 32'h 3fffffff;
-  localparam logic [31:0] ADDR_MASK_RV_PLIC              = 32'h 07ffffff;
+  localparam logic [31:0] ADDR_MASK_MIO_SOC_PROXY__CORE  = 32'h 0000000f;
+  localparam logic [31:0] ADDR_MASK_MIO_SOC_PROXY__CTN   = 32'h 3fffffff;
+  localparam logic [31:0] ADDR_MASK_RV_PLIC_MIO          = 32'h 07ffffff;
   localparam logic [31:0] ADDR_MASK_RV_CORE_IBEX__CFG    = 32'h 000007ff;
   localparam logic [31:0] ADDR_MASK_SRAM_CTRL_MAIN__REGS = 32'h 0000003f;
   localparam logic [31:0] ADDR_MASK_SRAM_CTRL_MAIN__RAM  = 32'h 0000ffff;
@@ -57,9 +57,9 @@ package tl_mio_main_pkg;
     TlRvDmRegs = 0,
     TlRvDmMem = 1,
     TlMioPeri = 2,
-    TlSocProxyCore = 3,
-    TlSocProxyCtn = 4,
-    TlRvPlic = 5,
+    TlMioSocProxyCore = 3,
+    TlMioSocProxyCtn = 4,
+    TlRvPlicMio = 5,
     TlRvCoreIbexCfg = 6,
     TlSramCtrlMainRegs = 7,
     TlSramCtrlMainRam = 8,

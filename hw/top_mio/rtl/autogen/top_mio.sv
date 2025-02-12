@@ -16,7 +16,7 @@ module top_mio #(
   // Auto-inferred parameters
   // parameters for rv_timer
   // parameters for aon_timer_aon
-  // parameters for soc_proxy
+  // parameters for mio_soc_proxy
   // parameters for sram_ctrl_ret_aon
   parameter int SramCtrlRetAonInstSize = 4096,
   parameter int SramCtrlRetAonNumRamInst = 1,
@@ -29,7 +29,7 @@ module top_mio #(
   parameter bit RvDmUseDmiInterface = 1,
   parameter bit SecRvDmVolatileRawUnlockEn = top_pkg::SecVolatileRawUnlockEn,
   parameter logic [tlul_pkg::RsvdWidth-1:0] RvDmTlulHostUserRsvdBits = '0,
-  // parameters for rv_plic
+  // parameters for rv_plic_mio
   // parameters for sram_ctrl_main
   parameter int SramCtrlMainInstSize = 65536,
   parameter int SramCtrlMainNumRamInst = 1,
@@ -179,7 +179,7 @@ module top_mio #(
   logic intr_rv_timer_timer_expired_hart0_timer0;
   logic intr_aon_timer_aon_wkup_timer_expired;
   logic intr_aon_timer_aon_wdog_timer_bark;
-  logic [31:0] intr_soc_proxy_external;
+  logic [31:0] intr_mio_soc_proxy_external;
   logic intr_dma_dma_done;
   logic intr_dma_dma_chunk_done;
   logic intr_dma_dma_error;
@@ -208,11 +208,11 @@ module top_mio #(
   // define inter-module signals
   logic       aon_timer_aon_nmi_wdog_timer_bark;
   dma_pkg::lsio_trigger_t       dma_lsio_trigger;
-  logic       rv_plic_msip;
-  logic       rv_plic_irq;
+  logic       rv_plic_mio_msip;
+  logic       rv_plic_mio_irq;
   logic       rv_dm_debug_req;
-  lc_ctrl_pkg::lc_tx_t       soc_proxy_lc_hw_debug_en;
-  lc_ctrl_pkg::lc_tx_t       soc_proxy_lc_escalate_en;
+  lc_ctrl_pkg::lc_tx_t       mio_soc_proxy_lc_hw_debug_en;
+  lc_ctrl_pkg::lc_tx_t       mio_soc_proxy_lc_escalate_en;
   prim_mubi_pkg::mubi8_t       sram_ctrl_main_otp_en_sram_ifetch;
   tlul_pkg::tl_h2d_t       mio_main_tl_rv_core_ibex__corei_req;
   tlul_pkg::tl_d2h_t       mio_main_tl_rv_core_ibex__corei_rsp;
@@ -226,12 +226,12 @@ module top_mio #(
   tlul_pkg::tl_d2h_t       rv_dm_mem_tl_d_rsp;
   tlul_pkg::tl_h2d_t       mio_main_tl_mio_peri_req;
   tlul_pkg::tl_d2h_t       mio_main_tl_mio_peri_rsp;
-  tlul_pkg::tl_h2d_t       soc_proxy_core_tl_req;
-  tlul_pkg::tl_d2h_t       soc_proxy_core_tl_rsp;
-  tlul_pkg::tl_h2d_t       soc_proxy_ctn_tl_req;
-  tlul_pkg::tl_d2h_t       soc_proxy_ctn_tl_rsp;
-  tlul_pkg::tl_h2d_t       rv_plic_tl_req;
-  tlul_pkg::tl_d2h_t       rv_plic_tl_rsp;
+  tlul_pkg::tl_h2d_t       mio_soc_proxy_core_tl_req;
+  tlul_pkg::tl_d2h_t       mio_soc_proxy_core_tl_rsp;
+  tlul_pkg::tl_h2d_t       mio_soc_proxy_ctn_tl_req;
+  tlul_pkg::tl_d2h_t       mio_soc_proxy_ctn_tl_rsp;
+  tlul_pkg::tl_h2d_t       rv_plic_mio_tl_req;
+  tlul_pkg::tl_d2h_t       rv_plic_mio_tl_rsp;
   tlul_pkg::tl_h2d_t       rv_core_ibex_cfg_tl_d_req;
   tlul_pkg::tl_d2h_t       rv_core_ibex_cfg_tl_d_rsp;
   tlul_pkg::tl_h2d_t       sram_ctrl_main_regs_tl_req;
@@ -363,7 +363,7 @@ module top_mio #(
       .nmi_wdog_timer_bark_o(aon_timer_aon_nmi_wdog_timer_bark),
       .wkup_req_o(),
       .aon_timer_rst_req_o(),
-      .lc_escalate_en_i(soc_proxy_lc_escalate_en),
+      .lc_escalate_en_i(mio_soc_proxy_lc_escalate_en),
       .sleep_mode_i('0),
       .tl_i(aon_timer_aon_tl_req),
       .tl_o(aon_timer_aon_tl_rsp),
@@ -376,18 +376,18 @@ module top_mio #(
   );
   mio_soc_proxy #(
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[2:2])
-  ) u_soc_proxy (
+  ) u_mio_soc_proxy (
 
       // Interrupt
-      .intr_external_o (intr_soc_proxy_external),
+      .intr_external_o (intr_mio_soc_proxy_external),
       // External alert group "mio" [2]: fatal_alert_intg
       .alert_tx_o  ( outgoing_alert_mio_tx_o[2:2] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[2:2] ),
 
       // Inter-module signals
-      .lc_escalate_en_o(soc_proxy_lc_escalate_en),
+      .lc_escalate_en_o(mio_soc_proxy_lc_escalate_en),
       .lc_escalate_en_ext_i(lc_escalate_en_ext_i),
-      .lc_hw_debug_en_o(soc_proxy_lc_hw_debug_en),
+      .lc_hw_debug_en_o(mio_soc_proxy_lc_hw_debug_en),
       .lc_hw_debug_en_ext_i(lc_hw_debug_en_ext_i),
       .ctn_tl_h2d_o(ctn_tl_h2d_o),
       .ctn_tl_d2h_i(ctn_tl_d2h_i),
@@ -395,10 +395,10 @@ module top_mio #(
       .dma_lsio_trigger_o(dma_lsio_trigger),
       .soc_intr_async_i('0),
       .mubi8_true_o(sram_ctrl_main_otp_en_sram_ifetch),
-      .core_tl_i(soc_proxy_core_tl_req),
-      .core_tl_o(soc_proxy_core_tl_rsp),
-      .ctn_tl_i(soc_proxy_ctn_tl_req),
-      .ctn_tl_o(soc_proxy_ctn_tl_rsp),
+      .core_tl_i(mio_soc_proxy_core_tl_req),
+      .core_tl_o(mio_soc_proxy_core_tl_rsp),
+      .ctn_tl_i(mio_soc_proxy_ctn_tl_req),
+      .ctn_tl_o(mio_soc_proxy_ctn_tl_rsp),
 
       // Clock and reset connections
       .clk_i (clk_ext_main_i),
@@ -427,8 +427,8 @@ module top_mio #(
       .sram_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
       .cfg_i(sram_ctrl_ret_aon_ram_1p_cfg_i),
       .cfg_rsp_o(sram_ctrl_ret_aon_ram_1p_cfg_rsp_o),
-      .lc_escalate_en_i(soc_proxy_lc_escalate_en),
-      .lc_hw_debug_en_i(soc_proxy_lc_hw_debug_en),
+      .lc_escalate_en_i(mio_soc_proxy_lc_escalate_en),
+      .lc_hw_debug_en_i(mio_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
@@ -461,7 +461,7 @@ module top_mio #(
       .next_dm_addr_i(rv_dm_next_dm_addr_i),
       .jtag_i(jtag_pkg::JTAG_REQ_DEFAULT),
       .jtag_o(),
-      .lc_hw_debug_en_i(soc_proxy_lc_hw_debug_en),
+      .lc_hw_debug_en_i(mio_soc_proxy_lc_hw_debug_en),
       .lc_dft_en_i(lc_ctrl_pkg::Off),
       .pinmux_hw_debug_en_i(lc_ctrl_pkg::Off),
       .otp_dis_rv_dm_late_debug_i(prim_mubi_pkg::MuBi8False),
@@ -469,7 +469,7 @@ module top_mio #(
       .ndmreset_req_o(),
       .dmactive_o(),
       .debug_req_o(rv_dm_debug_req),
-      .lc_escalate_en_i(soc_proxy_lc_escalate_en),
+      .lc_escalate_en_i(mio_soc_proxy_lc_escalate_en),
       .lc_check_byp_en_i(lc_check_byp_en_i),
       .strap_en_i(1'b0),
       .strap_en_override_i(1'b0),
@@ -492,17 +492,17 @@ module top_mio #(
   );
   rv_plic_mio #(
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[5:5])
-  ) u_rv_plic (
+  ) u_rv_plic_mio (
       // External alert group "mio" [5]: fatal_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[5:5] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[5:5] ),
 
       // Inter-module signals
-      .irq_o(rv_plic_irq),
+      .irq_o(rv_plic_mio_irq),
       .irq_id_o(),
-      .msip_o(rv_plic_msip),
-      .tl_i(rv_plic_tl_req),
-      .tl_o(rv_plic_tl_rsp),
+      .msip_o(rv_plic_mio_msip),
+      .tl_i(rv_plic_mio_tl_req),
+      .tl_o(rv_plic_mio_tl_rsp),
       .intr_src_i (intr_vector),
 
       // Clock and reset connections
@@ -532,8 +532,8 @@ module top_mio #(
       .sram_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
       .cfg_i(sram_ctrl_main_ram_1p_cfg_i),
       .cfg_rsp_o(sram_ctrl_main_ram_1p_cfg_rsp_o),
-      .lc_escalate_en_i(soc_proxy_lc_escalate_en),
-      .lc_hw_debug_en_i(soc_proxy_lc_hw_debug_en),
+      .lc_escalate_en_i(mio_soc_proxy_lc_escalate_en),
+      .lc_hw_debug_en_i(mio_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
@@ -574,8 +574,8 @@ module top_mio #(
       .sram_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
       .cfg_i(sram_ctrl_mbox_ram_1p_cfg_i),
       .cfg_rsp_o(sram_ctrl_mbox_ram_1p_cfg_rsp_o),
-      .lc_escalate_en_i(soc_proxy_lc_escalate_en),
-      .lc_hw_debug_en_i(soc_proxy_lc_hw_debug_en),
+      .lc_escalate_en_i(mio_soc_proxy_lc_escalate_en),
+      .lc_hw_debug_en_i(mio_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
@@ -953,9 +953,9 @@ module top_mio #(
       .ram_cfg_rsp_icache_data_o(),
       .hart_id_i(rv_core_ibex_hart_id),
       .boot_addr_i(rv_boot_addr_i),
-      .irq_software_i(rv_plic_msip),
+      .irq_software_i(rv_plic_mio_msip),
       .irq_timer_i(rv_core_ibex_irq_timer),
-      .irq_external_i(rv_plic_irq),
+      .irq_external_i(rv_plic_mio_irq),
       .esc_tx_i(rv_core_esc_tx_i),
       .esc_rx_o(rv_core_esc_rx_o),
       .debug_req_i(rv_dm_debug_req),
@@ -1015,7 +1015,7 @@ module top_mio #(
       intr_dma_dma_error, // IDs [38 +: 1]
       intr_dma_dma_chunk_done, // IDs [37 +: 1]
       intr_dma_dma_done, // IDs [36 +: 1]
-      intr_soc_proxy_external, // IDs [4 +: 32]
+      intr_mio_soc_proxy_external, // IDs [4 +: 32]
       intr_aon_timer_aon_wdog_timer_bark, // IDs [3 +: 1]
       intr_aon_timer_aon_wkup_timer_expired, // IDs [2 +: 1]
       intr_rv_timer_timer_expired_hart0_timer0, // IDs [1 +: 1]
@@ -1085,17 +1085,17 @@ module top_mio #(
     .tl_mio_peri_o(mio_main_tl_mio_peri_req),
     .tl_mio_peri_i(mio_main_tl_mio_peri_rsp),
 
-    // port: tl_soc_proxy__core
-    .tl_soc_proxy__core_o(soc_proxy_core_tl_req),
-    .tl_soc_proxy__core_i(soc_proxy_core_tl_rsp),
+    // port: tl_mio_soc_proxy__core
+    .tl_mio_soc_proxy__core_o(mio_soc_proxy_core_tl_req),
+    .tl_mio_soc_proxy__core_i(mio_soc_proxy_core_tl_rsp),
 
-    // port: tl_soc_proxy__ctn
-    .tl_soc_proxy__ctn_o(soc_proxy_ctn_tl_req),
-    .tl_soc_proxy__ctn_i(soc_proxy_ctn_tl_rsp),
+    // port: tl_mio_soc_proxy__ctn
+    .tl_mio_soc_proxy__ctn_o(mio_soc_proxy_ctn_tl_req),
+    .tl_mio_soc_proxy__ctn_i(mio_soc_proxy_ctn_tl_rsp),
 
-    // port: tl_rv_plic
-    .tl_rv_plic_o(rv_plic_tl_req),
-    .tl_rv_plic_i(rv_plic_tl_rsp),
+    // port: tl_rv_plic_mio
+    .tl_rv_plic_mio_o(rv_plic_mio_tl_req),
+    .tl_rv_plic_mio_i(rv_plic_mio_tl_rsp),
 
     // port: tl_rv_core_ibex__cfg
     .tl_rv_core_ibex__cfg_o(rv_core_ibex_cfg_tl_d_req),

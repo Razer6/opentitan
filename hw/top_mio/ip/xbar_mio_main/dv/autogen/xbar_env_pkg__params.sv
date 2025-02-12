@@ -16,13 +16,13 @@ tl_device_t xbar_devices[$] = '{
     '{"mio_peri", '{
         '{32'h30000000, 32'h307fffff}
     }},
-    '{"soc_proxy__core", '{
+    '{"mio_soc_proxy__core", '{
         '{32'h22030000, 32'h2203000f}
     }},
-    '{"soc_proxy__ctn", '{
+    '{"mio_soc_proxy__ctn", '{
         '{32'h40000000, 32'h7fffffff}
     }},
-    '{"rv_plic", '{
+    '{"rv_plic_mio", '{
         '{32'h28000000, 32'h2fffffff}
     }},
     '{"rv_core_ibex__cfg", '{
@@ -70,20 +70,20 @@ tl_host_t xbar_hosts[$] = '{
     '{"rv_core_ibex__corei", 0, '{
         "rv_dm__mem",
         "sram_ctrl_main__ram",
-        "soc_proxy__ctn"}}
+        "mio_soc_proxy__ctn"}}
     ,
     '{"rv_core_ibex__cored", 1, '{
         "rv_dm__mem",
         "rv_dm__regs",
         "sram_ctrl_main__ram",
         "mio_peri",
-        "rv_plic",
+        "rv_plic_mio",
         "sram_ctrl_main__regs",
         "rv_core_ibex__cfg",
         "sram_ctrl_mbox__ram",
         "sram_ctrl_mbox__regs",
-        "soc_proxy__ctn",
-        "soc_proxy__core",
+        "mio_soc_proxy__ctn",
+        "mio_soc_proxy__core",
         "dma",
         "mbx0__core",
         "mbx1__core",
@@ -98,13 +98,13 @@ tl_host_t xbar_hosts[$] = '{
         "rv_dm__regs",
         "sram_ctrl_main__ram",
         "mio_peri",
-        "rv_plic",
+        "rv_plic_mio",
         "sram_ctrl_main__regs",
         "rv_core_ibex__cfg",
         "sram_ctrl_mbox__ram",
         "sram_ctrl_mbox__regs",
-        "soc_proxy__ctn",
-        "soc_proxy__core",
+        "mio_soc_proxy__ctn",
+        "mio_soc_proxy__core",
         "dma",
         "mbx0__core",
         "mbx1__core",
@@ -117,7 +117,7 @@ tl_host_t xbar_hosts[$] = '{
     '{"dma__host", 3, '{
         "sram_ctrl_main__ram",
         "sram_ctrl_mbox__ram",
-        "soc_proxy__ctn",
+        "mio_soc_proxy__ctn",
         "mio_peri"}}
     ,
     '{"mbx0__sram", 4, '{

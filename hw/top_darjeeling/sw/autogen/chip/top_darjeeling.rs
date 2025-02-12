@@ -1882,110 +1882,110 @@ pub enum AlertPeripheral {
     RaclCtrl = 41,
     /// rv_core_ibex
     RvCoreIbex = 42,
-    /// incoming_mio_racl_ctrl
-    IncomingMioRaclCtrl = 43,
-    /// incoming_mio_rv_plic
-    IncomingMioRvPlic = 44,
-    /// incoming_mio_sram_ctrl_mbox
-    IncomingMioSramCtrlMbox = 45,
-    /// incoming_mio_mbx3
-    IncomingMioMbx3 = 46,
-    /// incoming_mio_mbx_pcie0
-    IncomingMioMbxPcie0 = 47,
-    /// incoming_mio_mbx5
-    IncomingMioMbx5 = 48,
-    /// incoming_mio_mbx4
-    IncomingMioMbx4 = 49,
-    /// incoming_mio_mbx1
-    IncomingMioMbx1 = 50,
-    /// incoming_mio_rv_timer
-    IncomingMioRvTimer = 51,
     /// incoming_mio_aon_timer_aon
-    IncomingMioAonTimerAon = 52,
-    /// incoming_mio_rv_core_ibex
-    IncomingMioRvCoreIbex = 53,
-    /// incoming_mio_mbx0
-    IncomingMioMbx0 = 54,
-    /// incoming_mio_mbx2
-    IncomingMioMbx2 = 55,
-    /// incoming_mio_sram_ctrl_ret_aon
-    IncomingMioSramCtrlRetAon = 56,
-    /// incoming_mio_rv_dm
-    IncomingMioRvDm = 57,
+    IncomingMioAonTimerAon = 43,
     /// incoming_mio_sram_ctrl_main
-    IncomingMioSramCtrlMain = 58,
+    IncomingMioSramCtrlMain = 44,
     /// incoming_mio_dma
-    IncomingMioDma = 59,
-    /// incoming_mio_soc_proxy
-    IncomingMioSocProxy = 60,
-    /// incoming_pwc_sram_ctrl_main
-    IncomingPwcSramCtrlMain = 61,
-    /// incoming_pwc_mbx4
-    IncomingPwcMbx4 = 62,
-    /// incoming_pwc_soc_proxy
-    IncomingPwcSocProxy = 63,
-    /// incoming_pwc_mbx0
-    IncomingPwcMbx0 = 64,
-    /// incoming_pwc_rv_timer
-    IncomingPwcRvTimer = 65,
-    /// incoming_pwc_dma
-    IncomingPwcDma = 66,
-    /// incoming_pwc_sram_ctrl_ret_aon
-    IncomingPwcSramCtrlRetAon = 67,
-    /// incoming_pwc_rv_dm
-    IncomingPwcRvDm = 68,
-    /// incoming_pwc_mbx_pcie0
-    IncomingPwcMbxPcie0 = 69,
-    /// incoming_pwc_rv_core_ibex
-    IncomingPwcRvCoreIbex = 70,
-    /// incoming_pwc_sram_ctrl_mbox
-    IncomingPwcSramCtrlMbox = 71,
+    IncomingMioDma = 45,
+    /// incoming_mio_mio_soc_proxy
+    IncomingMioMioSocProxy = 46,
+    /// incoming_mio_mbx1
+    IncomingMioMbx1 = 47,
+    /// incoming_mio_mbx2
+    IncomingMioMbx2 = 48,
+    /// incoming_mio_sram_ctrl_mbox
+    IncomingMioSramCtrlMbox = 49,
+    /// incoming_mio_mbx0
+    IncomingMioMbx0 = 50,
+    /// incoming_mio_mbx5
+    IncomingMioMbx5 = 51,
+    /// incoming_mio_sram_ctrl_ret_aon
+    IncomingMioSramCtrlRetAon = 52,
+    /// incoming_mio_rv_plic_mio
+    IncomingMioRvPlicMio = 53,
+    /// incoming_mio_mbx_pcie0
+    IncomingMioMbxPcie0 = 54,
+    /// incoming_mio_mbx4
+    IncomingMioMbx4 = 55,
+    /// incoming_mio_racl_ctrl
+    IncomingMioRaclCtrl = 56,
+    /// incoming_mio_rv_core_ibex
+    IncomingMioRvCoreIbex = 57,
+    /// incoming_mio_rv_dm
+    IncomingMioRvDm = 58,
+    /// incoming_mio_rv_timer
+    IncomingMioRvTimer = 59,
+    /// incoming_mio_mbx3
+    IncomingMioMbx3 = 60,
     /// incoming_pwc_mbx1
-    IncomingPwcMbx1 = 72,
-    /// incoming_pwc_mbx2
-    IncomingPwcMbx2 = 73,
-    /// incoming_pwc_mbx5
-    IncomingPwcMbx5 = 74,
-    /// incoming_pwc_gpio
-    IncomingPwcGpio = 75,
-    /// incoming_pwc_mbx3
-    IncomingPwcMbx3 = 76,
-    /// incoming_pwc_racl_ctrl
-    IncomingPwcRaclCtrl = 77,
+    IncomingPwcMbx1 = 61,
     /// incoming_pwc_aon_timer_aon
-    IncomingPwcAonTimerAon = 78,
-    /// incoming_pwc_rv_plic
-    IncomingPwcRvPlic = 79,
+    IncomingPwcAonTimerAon = 62,
+    /// incoming_pwc_sram_ctrl_mbox
+    IncomingPwcSramCtrlMbox = 63,
+    /// incoming_pwc_mbx_pcie0
+    IncomingPwcMbxPcie0 = 64,
+    /// incoming_pwc_rv_plic_pwc
+    IncomingPwcRvPlicPwc = 65,
+    /// incoming_pwc_rv_dm
+    IncomingPwcRvDm = 66,
+    /// incoming_pwc_gpio
+    IncomingPwcGpio = 67,
+    /// incoming_pwc_pwc_soc_proxy
+    IncomingPwcPwcSocProxy = 68,
+    /// incoming_pwc_racl_ctrl
+    IncomingPwcRaclCtrl = 69,
+    /// incoming_pwc_sram_ctrl_main
+    IncomingPwcSramCtrlMain = 70,
+    /// incoming_pwc_mbx0
+    IncomingPwcMbx0 = 71,
+    /// incoming_pwc_rv_timer
+    IncomingPwcRvTimer = 72,
+    /// incoming_pwc_mbx5
+    IncomingPwcMbx5 = 73,
+    /// incoming_pwc_mbx2
+    IncomingPwcMbx2 = 74,
+    /// incoming_pwc_sram_ctrl_ret_aon
+    IncomingPwcSramCtrlRetAon = 75,
+    /// incoming_pwc_mbx4
+    IncomingPwcMbx4 = 76,
+    /// incoming_pwc_rv_core_ibex
+    IncomingPwcRvCoreIbex = 77,
+    /// incoming_pwc_dma
+    IncomingPwcDma = 78,
+    /// incoming_pwc_mbx3
+    IncomingPwcMbx3 = 79,
     /// incoming_mio_extra_alerts_scsmio
     IncomingMioExtraAlertsScsmio = 80,
     /// incoming_pwc_extra_alerts_scsmio
     IncomingPwcExtraAlertsScsmio = 81,
-    /// incoming_rot_extra_alerts_scsif_regs
-    IncomingRotExtraAlertsScsifRegs = 82,
-    /// incoming_rot_extra_alerts_rc_widget
-    IncomingRotExtraAlertsRcWidget = 83,
-    /// incoming_rot_extra_alerts_ssram
-    IncomingRotExtraAlertsSsram = 84,
-    /// incoming_rot_extra_alerts_ras_ctl
-    IncomingRotExtraAlertsRasCtl = 85,
-    /// incoming_rot_extra_alerts_rot_hdr
-    IncomingRotExtraAlertsRotHdr = 86,
-    /// incoming_rot_extra_alerts_rot_pcie_adapter
-    IncomingRotExtraAlertsRotPcieAdapter = 87,
-    /// incoming_rot_extra_alerts_scs_rai
-    IncomingRotExtraAlertsScsRai = 88,
-    /// incoming_rot_extra_alerts_lsio_group
-    IncomingRotExtraAlertsLsioGroup = 89,
     /// incoming_rot_extra_alerts_lio_group_p
-    IncomingRotExtraAlertsLioGroupP = 90,
-    /// incoming_rot_extra_alerts_ns_group
-    IncomingRotExtraAlertsNsGroup = 91,
-    /// incoming_rot_extra_alerts_ns_efuse
-    IncomingRotExtraAlertsNsEfuse = 92,
+    IncomingRotExtraAlertsLioGroupP = 82,
+    /// incoming_rot_extra_alerts_lsio_group
+    IncomingRotExtraAlertsLsioGroup = 83,
+    /// incoming_rot_extra_alerts_rot_pcie_adapter
+    IncomingRotExtraAlertsRotPcieAdapter = 84,
+    /// incoming_rot_extra_alerts_rot_hdr
+    IncomingRotExtraAlertsRotHdr = 85,
+    /// incoming_rot_extra_alerts_ssram
+    IncomingRotExtraAlertsSsram = 86,
     /// incoming_rot_extra_alerts_lio_group_v
-    IncomingRotExtraAlertsLioGroupV = 93,
+    IncomingRotExtraAlertsLioGroupV = 87,
+    /// incoming_rot_extra_alerts_ns_efuse
+    IncomingRotExtraAlertsNsEfuse = 88,
+    /// incoming_rot_extra_alerts_ns_group
+    IncomingRotExtraAlertsNsGroup = 89,
+    /// incoming_rot_extra_alerts_ras_ctl
+    IncomingRotExtraAlertsRasCtl = 90,
+    /// incoming_rot_extra_alerts_scs_rai
+    IncomingRotExtraAlertsScsRai = 91,
     /// incoming_rot_extra_alerts_ams_ip_wrapper
-    IncomingRotExtraAlertsAmsIpWrapper = 94,
+    IncomingRotExtraAlertsAmsIpWrapper = 92,
+    /// incoming_rot_extra_alerts_rc_widget
+    IncomingRotExtraAlertsRcWidget = 93,
+    /// incoming_rot_extra_alerts_scsif_regs
+    IncomingRotExtraAlertsScsifRegs = 94,
 }
 
 /// Alert Handler Alert Source.
@@ -2201,14 +2201,14 @@ pub enum AlertId {
     IncomingMioRvTimerFatalFault = 101,
     /// incoming_mio_aon_timer_aon_fatal_fault
     IncomingMioAonTimerAonFatalFault = 102,
-    /// incoming_mio_soc_proxy_fatal_alert_intg
-    IncomingMioSocProxyFatalAlertIntg = 103,
+    /// incoming_mio_mio_soc_proxy_fatal_alert_intg
+    IncomingMioMioSocProxyFatalAlertIntg = 103,
     /// incoming_mio_sram_ctrl_ret_aon_fatal_error
     IncomingMioSramCtrlRetAonFatalError = 104,
     /// incoming_mio_rv_dm_fatal_fault
     IncomingMioRvDmFatalFault = 105,
-    /// incoming_mio_rv_plic_fatal_fault
-    IncomingMioRvPlicFatalFault = 106,
+    /// incoming_mio_rv_plic_mio_fatal_fault
+    IncomingMioRvPlicMioFatalFault = 106,
     /// incoming_mio_sram_ctrl_main_fatal_error
     IncomingMioSramCtrlMainFatalError = 107,
     /// incoming_mio_sram_ctrl_mbox_fatal_error
@@ -2261,14 +2261,14 @@ pub enum AlertId {
     IncomingPwcRvTimerFatalFault = 131,
     /// incoming_pwc_aon_timer_aon_fatal_fault
     IncomingPwcAonTimerAonFatalFault = 132,
-    /// incoming_pwc_soc_proxy_fatal_alert_intg
-    IncomingPwcSocProxyFatalAlertIntg = 133,
+    /// incoming_pwc_pwc_soc_proxy_fatal_alert_intg
+    IncomingPwcPwcSocProxyFatalAlertIntg = 133,
     /// incoming_pwc_sram_ctrl_ret_aon_fatal_error
     IncomingPwcSramCtrlRetAonFatalError = 134,
     /// incoming_pwc_rv_dm_fatal_fault
     IncomingPwcRvDmFatalFault = 135,
-    /// incoming_pwc_rv_plic_fatal_fault
-    IncomingPwcRvPlicFatalFault = 136,
+    /// incoming_pwc_rv_plic_pwc_fatal_fault
+    IncomingPwcRvPlicPwcFatalFault = 136,
     /// incoming_pwc_sram_ctrl_main_fatal_error
     IncomingPwcSramCtrlMainFatalError = 137,
     /// incoming_pwc_sram_ctrl_mbox_fatal_error
@@ -2468,10 +2468,10 @@ impl TryFrom<u32> for AlertId {
             100 => Ok(Self::RvCoreIbexRecovHwErr),
             101 => Ok(Self::IncomingMioRvTimerFatalFault),
             102 => Ok(Self::IncomingMioAonTimerAonFatalFault),
-            103 => Ok(Self::IncomingMioSocProxyFatalAlertIntg),
+            103 => Ok(Self::IncomingMioMioSocProxyFatalAlertIntg),
             104 => Ok(Self::IncomingMioSramCtrlRetAonFatalError),
             105 => Ok(Self::IncomingMioRvDmFatalFault),
-            106 => Ok(Self::IncomingMioRvPlicFatalFault),
+            106 => Ok(Self::IncomingMioRvPlicMioFatalFault),
             107 => Ok(Self::IncomingMioSramCtrlMainFatalError),
             108 => Ok(Self::IncomingMioSramCtrlMboxFatalError),
             109 => Ok(Self::IncomingMioDmaFatalFault),
@@ -2498,10 +2498,10 @@ impl TryFrom<u32> for AlertId {
             130 => Ok(Self::IncomingPwcGpioFatalFault),
             131 => Ok(Self::IncomingPwcRvTimerFatalFault),
             132 => Ok(Self::IncomingPwcAonTimerAonFatalFault),
-            133 => Ok(Self::IncomingPwcSocProxyFatalAlertIntg),
+            133 => Ok(Self::IncomingPwcPwcSocProxyFatalAlertIntg),
             134 => Ok(Self::IncomingPwcSramCtrlRetAonFatalError),
             135 => Ok(Self::IncomingPwcRvDmFatalFault),
-            136 => Ok(Self::IncomingPwcRvPlicFatalFault),
+            136 => Ok(Self::IncomingPwcRvPlicPwcFatalFault),
             137 => Ok(Self::IncomingPwcSramCtrlMainFatalError),
             138 => Ok(Self::IncomingPwcSramCtrlMboxFatalError),
             139 => Ok(Self::IncomingPwcDmaFatalFault),
@@ -2763,14 +2763,14 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 182] = [
     AlertPeripheral::IncomingMioRvTimer,
     // IncomingMioAonTimerAonFatalFault -> AlertPeripheral::IncomingMioAonTimerAon
     AlertPeripheral::IncomingMioAonTimerAon,
-    // IncomingMioSocProxyFatalAlertIntg -> AlertPeripheral::IncomingMioSocProxy
-    AlertPeripheral::IncomingMioSocProxy,
+    // IncomingMioMioSocProxyFatalAlertIntg -> AlertPeripheral::IncomingMioMioSocProxy
+    AlertPeripheral::IncomingMioMioSocProxy,
     // IncomingMioSramCtrlRetAonFatalError -> AlertPeripheral::IncomingMioSramCtrlRetAon
     AlertPeripheral::IncomingMioSramCtrlRetAon,
     // IncomingMioRvDmFatalFault -> AlertPeripheral::IncomingMioRvDm
     AlertPeripheral::IncomingMioRvDm,
-    // IncomingMioRvPlicFatalFault -> AlertPeripheral::IncomingMioRvPlic
-    AlertPeripheral::IncomingMioRvPlic,
+    // IncomingMioRvPlicMioFatalFault -> AlertPeripheral::IncomingMioRvPlicMio
+    AlertPeripheral::IncomingMioRvPlicMio,
     // IncomingMioSramCtrlMainFatalError -> AlertPeripheral::IncomingMioSramCtrlMain
     AlertPeripheral::IncomingMioSramCtrlMain,
     // IncomingMioSramCtrlMboxFatalError -> AlertPeripheral::IncomingMioSramCtrlMbox
@@ -2823,14 +2823,14 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 182] = [
     AlertPeripheral::IncomingPwcRvTimer,
     // IncomingPwcAonTimerAonFatalFault -> AlertPeripheral::IncomingPwcAonTimerAon
     AlertPeripheral::IncomingPwcAonTimerAon,
-    // IncomingPwcSocProxyFatalAlertIntg -> AlertPeripheral::IncomingPwcSocProxy
-    AlertPeripheral::IncomingPwcSocProxy,
+    // IncomingPwcPwcSocProxyFatalAlertIntg -> AlertPeripheral::IncomingPwcPwcSocProxy
+    AlertPeripheral::IncomingPwcPwcSocProxy,
     // IncomingPwcSramCtrlRetAonFatalError -> AlertPeripheral::IncomingPwcSramCtrlRetAon
     AlertPeripheral::IncomingPwcSramCtrlRetAon,
     // IncomingPwcRvDmFatalFault -> AlertPeripheral::IncomingPwcRvDm
     AlertPeripheral::IncomingPwcRvDm,
-    // IncomingPwcRvPlicFatalFault -> AlertPeripheral::IncomingPwcRvPlic
-    AlertPeripheral::IncomingPwcRvPlic,
+    // IncomingPwcRvPlicPwcFatalFault -> AlertPeripheral::IncomingPwcRvPlicPwc
+    AlertPeripheral::IncomingPwcRvPlicPwc,
     // IncomingPwcSramCtrlMainFatalError -> AlertPeripheral::IncomingPwcSramCtrlMain
     AlertPeripheral::IncomingPwcSramCtrlMain,
     // IncomingPwcSramCtrlMboxFatalError -> AlertPeripheral::IncomingPwcSramCtrlMbox

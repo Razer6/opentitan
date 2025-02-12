@@ -13,13 +13,13 @@ tl_device_t xbar_devices[$] = '{
     '{"rv_dm__mem", '{
         '{32'h00040000, 32'h00040fff}
     }},
-    '{"soc_proxy__core", '{
+    '{"pwc_soc_proxy__core", '{
         '{32'h22030000, 32'h2203000f}
     }},
-    '{"soc_proxy__ctn", '{
+    '{"pwc_soc_proxy__ctn", '{
         '{32'h40000000, 32'h7fffffff}
     }},
-    '{"rv_plic", '{
+    '{"rv_plic_pwc", '{
         '{32'h28000000, 32'h2fffffff}
     }},
     '{"rv_core_ibex__cfg", '{
@@ -106,7 +106,7 @@ tl_host_t xbar_hosts[$] = '{
     '{"rv_core_ibex__corei", 0, '{
         "rv_dm__mem",
         "sram_ctrl_main__ram",
-        "soc_proxy__ctn"}}
+        "pwc_soc_proxy__ctn"}}
     ,
     '{"rv_core_ibex__cored", 1, '{
         "rv_dm__mem",
@@ -117,13 +117,13 @@ tl_host_t xbar_hosts[$] = '{
         "sram_ctrl_ret_aon__ram",
         "sram_ctrl_ret_aon__regs",
         "aon_timer_aon",
-        "rv_plic",
+        "rv_plic_pwc",
         "sram_ctrl_main__regs",
         "rv_core_ibex__cfg",
         "sram_ctrl_mbox__ram",
         "sram_ctrl_mbox__regs",
-        "soc_proxy__ctn",
-        "soc_proxy__core",
+        "pwc_soc_proxy__ctn",
+        "pwc_soc_proxy__core",
         "dma",
         "mbx0__core",
         "mbx1__core",
@@ -142,13 +142,13 @@ tl_host_t xbar_hosts[$] = '{
         "sram_ctrl_ret_aon__ram",
         "sram_ctrl_ret_aon__regs",
         "aon_timer_aon",
-        "rv_plic",
+        "rv_plic_pwc",
         "sram_ctrl_main__regs",
         "rv_core_ibex__cfg",
         "sram_ctrl_mbox__ram",
         "sram_ctrl_mbox__regs",
-        "soc_proxy__ctn",
-        "soc_proxy__core",
+        "pwc_soc_proxy__ctn",
+        "pwc_soc_proxy__core",
         "dma",
         "mbx0__core",
         "mbx1__core",
@@ -161,7 +161,7 @@ tl_host_t xbar_hosts[$] = '{
     '{"dma__host", 3, '{
         "sram_ctrl_main__ram",
         "sram_ctrl_mbox__ram",
-        "soc_proxy__ctn",
+        "pwc_soc_proxy__ctn",
         "gpio",
         "rv_timer",
         "sram_ctrl_ret_aon__ram",

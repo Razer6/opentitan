@@ -195,9 +195,9 @@
             "rv_timer",
             "rstmgr_aon",
             "aon_timer_aon",
-            "soc_proxy.core",
+            "mio_soc_proxy.core",
             "sram_ctrl_ret_aon",
-            "rv_plic",
+            "rv_plic_mio",
             "sram_ctrl_main.regs",
             "sram_ctrl_mbox.regs",
             "dma",
@@ -247,7 +247,7 @@
       },
       outgoing_alert: "mio"
     },
-    { name: "soc_proxy",
+    { name: "mio_soc_proxy",
       type: "mio_soc_proxy",
       clock_srcs: {clk_i: "ext_main"},
       reset_connections: {
@@ -323,7 +323,7 @@
       generate_dif: "False"
       outgoing_alert: "mio"
     },
-    { name: "rv_plic",
+    { name: "rv_plic_mio",
       type: "rv_plic_mio",
       template_type: "rv_plic",
       clock_srcs: {clk_i: "ext_main"},
@@ -588,26 +588,26 @@
       'aon_timer_aon.nmi_wdog_timer_bark' : ['rv_core_ibex.nmi_wdog']
 
       // DMA LSIO triggers
-      'dma.lsio_trigger'        : ['soc_proxy.dma_lsio_trigger'],
+      'dma.lsio_trigger'        : ['mio_soc_proxy.dma_lsio_trigger'],
 
     
       // rv_plic connections
-      'rv_plic.msip' : ['rv_core_ibex.irq_software'],
-      'rv_plic.irq'  : ['rv_core_ibex.irq_external'],
+      'rv_plic_mio.msip' : ['rv_core_ibex.irq_software'],
+      'rv_plic_mio.irq'  : ['rv_core_ibex.irq_external'],
 
       // rv_dm connections
       'rv_dm.debug_req': ['rv_core_ibex.debug_req'],
 
-      soc_proxy.lc_hw_debug_en' : ['rv_dm.lc_hw_debug_en',
-                                   'sram_ctrl_ret_aon.lc_hw_debug_en',
-                                   'sram_ctrl_mbox.lc_hw_debug_en',
-                                   'sram_ctrl_main.lc_hw_debug_en']
-      soc_proxy.lc_escalate_en' : ['rv_dm.lc_escalate_en',
-                                   'sram_ctrl_ret_aon.lc_escalate_en',
-                                   'sram_ctrl_mbox.lc_escalate_en',
-                                   'sram_ctrl_main.lc_escalate_en',
-                                   'aon_timer_aon.lc_escalate_en']
-      'sram_ctrl_main.otp_en_sram_ifetch' : ['soc_proxy.mubi8_true']
+      mio_soc_proxy.lc_hw_debug_en' : ['rv_dm.lc_hw_debug_en',
+                                       'sram_ctrl_ret_aon.lc_hw_debug_en',
+                                       'sram_ctrl_mbox.lc_hw_debug_en',
+                                       'sram_ctrl_main.lc_hw_debug_en']
+      mio_soc_proxy.lc_escalate_en' : ['rv_dm.lc_escalate_en',
+                                       'sram_ctrl_ret_aon.lc_escalate_en',
+                                       'sram_ctrl_mbox.lc_escalate_en',
+                                       'sram_ctrl_main.lc_escalate_en',
+                                       'aon_timer_aon.lc_escalate_en']
+      'sram_ctrl_main.otp_en_sram_ifetch' : ['mio_soc_proxy.mubi8_true']
     }
 
     // top is to connect to top net/struct.
@@ -630,16 +630,16 @@
         'rv_dm.next_dm_addr'                : 'rv_dm_next_dm_addr',
         'rv_dm.dbg_tl_d'                    : 'rv_dm_dbg',
         'rv_core_ibex.fpga_info'            : 'fpga_info'
-        'soc_proxy.ctn_tl_h2d'              : 'ctn_tl_h2d',
+        'mio_soc_proxy.ctn_tl_h2d'          : 'ctn_tl_h2d',
         'rv_core_ibex.boot_addr'            : 'rv_boot_addr'
         'rv_core_ibex.pwrmgr_cpu_en'        : 'rv_pwrmgr_cpu_en'
         'rv_core_ibex.lc_cpu_en'            : 'rv_cpu_en'
         'rv_core_ibex.esc_rx'               : 'rv_core_esc_rx'
         'rv_core_ibex.esc_tx'               : 'rv_core_esc_tx'
-        'soc_proxy.soc_lsio_trigger'        : 'soc_lsio_trigger',
-        'soc_proxy.ctn_tl_d2h'              : 'ctn_tl_d2h',
-        'soc_proxy.lc_hw_debug_en_ext'      : 'lc_hw_debug_en_ext',
-        'soc_proxy.lc_escalate_en_ext'      : 'lc_escalate_en_ext',
+        'mio_soc_proxy.soc_lsio_trigger'    : 'soc_lsio_trigger',
+        'mio_soc_proxy.ctn_tl_d2h'          : 'ctn_tl_d2h',
+        'mio_soc_proxy.lc_hw_debug_en_ext'  : 'lc_hw_debug_en_ext',
+        'mio_soc_proxy.lc_escalate_en_ext'  : 'lc_escalate_en_ext',
         'rv_dm.lc_check_byp_en'             : 'lc_check_byp_en',
         'sram_ctrl_ret_aon.cfg'             : 'sram_ctrl_ret_aon_ram_1p_cfg',
         'sram_ctrl_ret_aon.cfg_rsp'         : 'sram_ctrl_ret_aon_ram_1p_cfg_rsp',

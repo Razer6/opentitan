@@ -32,24 +32,24 @@ package top_mio_pkg;
   parameter int unsigned TOP_MIO_AON_TIMER_AON_SIZE_BYTES = 32'h40;
 
   /**
-   * Peripheral base address for core device on soc_proxy in top mio.
+   * Peripheral base address for core device on mio_soc_proxy in top mio.
    */
-  parameter int unsigned TOP_MIO_SOC_PROXY_CORE_BASE_ADDR = 32'h22030000;
+  parameter int unsigned TOP_MIO_MIO_SOC_PROXY_CORE_BASE_ADDR = 32'h22030000;
 
   /**
-   * Peripheral size in bytes for core device on soc_proxy in top mio.
+   * Peripheral size in bytes for core device on mio_soc_proxy in top mio.
    */
-  parameter int unsigned TOP_MIO_SOC_PROXY_CORE_SIZE_BYTES = 32'h10;
+  parameter int unsigned TOP_MIO_MIO_SOC_PROXY_CORE_SIZE_BYTES = 32'h10;
 
   /**
-   * Peripheral base address for ctn device on soc_proxy in top mio.
+   * Peripheral base address for ctn device on mio_soc_proxy in top mio.
    */
-  parameter int unsigned TOP_MIO_SOC_PROXY_CTN_BASE_ADDR = 32'h40000000;
+  parameter int unsigned TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR = 32'h40000000;
 
   /**
-   * Peripheral size in bytes for ctn device on soc_proxy in top mio.
+   * Peripheral size in bytes for ctn device on mio_soc_proxy in top mio.
    */
-  parameter int unsigned TOP_MIO_SOC_PROXY_CTN_SIZE_BYTES = 32'h40000000;
+  parameter int unsigned TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES = 32'h40000000;
 
   /**
    * Peripheral base address for regs device on sram_ctrl_ret_aon in top mio.
@@ -92,14 +92,14 @@ package top_mio_pkg;
   parameter int unsigned TOP_MIO_RV_DM_MEM_SIZE_BYTES = 32'h1000;
 
   /**
-   * Peripheral base address for rv_plic in top mio.
+   * Peripheral base address for rv_plic_mio in top mio.
    */
-  parameter int unsigned TOP_MIO_RV_PLIC_BASE_ADDR = 32'h28000000;
+  parameter int unsigned TOP_MIO_RV_PLIC_MIO_BASE_ADDR = 32'h28000000;
 
   /**
-   * Peripheral size in bytes for rv_plic in top mio.
+   * Peripheral size in bytes for rv_plic_mio in top mio.
    */
-  parameter int unsigned TOP_MIO_RV_PLIC_SIZE_BYTES = 32'h8000000;
+  parameter int unsigned TOP_MIO_RV_PLIC_MIO_SIZE_BYTES = 32'h8000000;
 
   /**
    * Peripheral base address for regs device on sram_ctrl_main in top mio.
@@ -292,10 +292,10 @@ package top_mio_pkg;
   typedef enum int unsigned {
     TopMioAlertPeripheralRvTimer = 0,
     TopMioAlertPeripheralAonTimerAon = 1,
-    TopMioAlertPeripheralSocProxy = 2,
+    TopMioAlertPeripheralMioSocProxy = 2,
     TopMioAlertPeripheralSramCtrlRetAon = 3,
     TopMioAlertPeripheralRvDm = 4,
-    TopMioAlertPeripheralRvPlic = 5,
+    TopMioAlertPeripheralRvPlicMio = 5,
     TopMioAlertPeripheralSramCtrlMain = 6,
     TopMioAlertPeripheralSramCtrlMbox = 7,
     TopMioAlertPeripheralDma = 8,
@@ -315,10 +315,10 @@ package top_mio_pkg;
   typedef enum int unsigned {
     TopMioAlertIdRvTimerFatalFault = 0,
     TopMioAlertIdAonTimerAonFatalFault = 1,
-    TopMioAlertIdSocProxyFatalAlertIntg = 2,
+    TopMioAlertIdMioSocProxyFatalAlertIntg = 2,
     TopMioAlertIdSramCtrlRetAonFatalError = 3,
     TopMioAlertIdRvDmFatalFault = 4,
-    TopMioAlertIdRvPlicFatalFault = 5,
+    TopMioAlertIdRvPlicMioFatalFault = 5,
     TopMioAlertIdSramCtrlMainFatalError = 6,
     TopMioAlertIdSramCtrlMboxFatalError = 7,
     TopMioAlertIdDmaFatalFault = 8,

@@ -41,9 +41,9 @@ tl_if mbx_pcie0__sram_tl_if(clk_ext_main, rst_n);
 
 tl_if rv_dm__regs_tl_if(clk_ext_main, rst_n);
 tl_if rv_dm__mem_tl_if(clk_ext_main, rst_n);
-tl_if soc_proxy__core_tl_if(clk_ext_main, rst_n);
-tl_if soc_proxy__ctn_tl_if(clk_ext_main, rst_n);
-tl_if rv_plic_tl_if(clk_ext_main, rst_n);
+tl_if mio_soc_proxy__core_tl_if(clk_ext_main, rst_n);
+tl_if mio_soc_proxy__ctn_tl_if(clk_ext_main, rst_n);
+tl_if rv_plic_mio_tl_if(clk_ext_main, rst_n);
 tl_if rv_core_ibex__cfg_tl_if(clk_ext_main, rst_n);
 tl_if sram_ctrl_main__regs_tl_if(clk_ext_main, rst_n);
 tl_if sram_ctrl_main__ram_tl_if(clk_ext_main, rst_n);
@@ -100,9 +100,9 @@ initial begin
     `DRIVE_CHIP_TL_HOST_IF(rv_dm__sba, rv_dm, sba_tl_h)
     `DRIVE_CHIP_TL_DEVICE_IF(rv_dm__regs, rv_dm, regs_tl_d)
     `DRIVE_CHIP_TL_DEVICE_IF(rv_dm__mem, rv_dm, mem_tl_d)
-    `DRIVE_CHIP_TL_DEVICE_IF(soc_proxy__core, soc_proxy, core_tl)
-    `DRIVE_CHIP_TL_DEVICE_IF(soc_proxy__ctn, soc_proxy, ctn_tl)
-    `DRIVE_CHIP_TL_DEVICE_IF(rv_plic, rv_plic, tl)
+    `DRIVE_CHIP_TL_DEVICE_IF(mio_soc_proxy__core, mio_soc_proxy, core_tl)
+    `DRIVE_CHIP_TL_DEVICE_IF(mio_soc_proxy__ctn, mio_soc_proxy, ctn_tl)
+    `DRIVE_CHIP_TL_DEVICE_IF(rv_plic_mio, rv_plic_mio, tl)
     `DRIVE_CHIP_TL_DEVICE_IF(rv_core_ibex__cfg, rv_core_ibex, cfg_tl_d)
     `DRIVE_CHIP_TL_DEVICE_IF(sram_ctrl_main__regs, sram_ctrl_main, regs_tl)
     `DRIVE_CHIP_TL_DEVICE_IF(sram_ctrl_main__ram, sram_ctrl_main, ram_tl)

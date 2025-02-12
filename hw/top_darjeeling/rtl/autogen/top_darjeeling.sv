@@ -2748,10 +2748,10 @@ module top_darjeeling #(
   // Alert mapping to the alert handler for alert group mio
   // [101]: rv_timer_fatal_fault
   // [102]: aon_timer_aon_fatal_fault
-  // [103]: soc_proxy_fatal_alert_intg
+  // [103]: mio_soc_proxy_fatal_alert_intg
   // [104]: sram_ctrl_ret_aon_fatal_error
   // [105]: rv_dm_fatal_fault
-  // [106]: rv_plic_fatal_fault
+  // [106]: rv_plic_mio_fatal_fault
   // [107]: sram_ctrl_main_fatal_error
   // [108]: sram_ctrl_mbox_fatal_error
   // [109]: dma_fatal_fault
@@ -2782,10 +2782,10 @@ module top_darjeeling #(
   // [130]: gpio_fatal_fault
   // [131]: rv_timer_fatal_fault
   // [132]: aon_timer_aon_fatal_fault
-  // [133]: soc_proxy_fatal_alert_intg
+  // [133]: pwc_soc_proxy_fatal_alert_intg
   // [134]: sram_ctrl_ret_aon_fatal_error
   // [135]: rv_dm_fatal_fault
-  // [136]: rv_plic_fatal_fault
+  // [136]: rv_plic_pwc_fatal_fault
   // [137]: sram_ctrl_main_fatal_error
   // [138]: sram_ctrl_mbox_fatal_error
   // [139]: dma_fatal_fault

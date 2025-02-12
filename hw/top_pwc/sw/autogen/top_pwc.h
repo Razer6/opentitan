@@ -82,40 +82,40 @@ extern "C" {
 #define TOP_PWC_AON_TIMER_AON_SIZE_BYTES 0x40u
 
 /**
- * Peripheral base address for core device on soc_proxy in top pwc.
+ * Peripheral base address for core device on pwc_soc_proxy in top pwc.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_PWC_SOC_PROXY_CORE_BASE_ADDR 0x22030000u
+#define TOP_PWC_PWC_SOC_PROXY_CORE_BASE_ADDR 0x22030000u
 
 /**
- * Peripheral size for core device on soc_proxy in top pwc.
+ * Peripheral size for core device on pwc_soc_proxy in top pwc.
  *
  * This is the size (in bytes) of the peripheral's reserved memory area. All
  * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_PWC_SOC_PROXY_CORE_BASE_ADDR and
- * `TOP_PWC_SOC_PROXY_CORE_BASE_ADDR + TOP_PWC_SOC_PROXY_CORE_SIZE_BYTES`.
+ * address between #TOP_PWC_PWC_SOC_PROXY_CORE_BASE_ADDR and
+ * `TOP_PWC_PWC_SOC_PROXY_CORE_BASE_ADDR + TOP_PWC_PWC_SOC_PROXY_CORE_SIZE_BYTES`.
  */
-#define TOP_PWC_SOC_PROXY_CORE_SIZE_BYTES 0x10u
+#define TOP_PWC_PWC_SOC_PROXY_CORE_SIZE_BYTES 0x10u
 
 /**
- * Peripheral base address for ctn device on soc_proxy in top pwc.
+ * Peripheral base address for ctn device on pwc_soc_proxy in top pwc.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_PWC_SOC_PROXY_CTN_BASE_ADDR 0x40000000u
+#define TOP_PWC_PWC_SOC_PROXY_CTN_BASE_ADDR 0x40000000u
 
 /**
- * Peripheral size for ctn device on soc_proxy in top pwc.
+ * Peripheral size for ctn device on pwc_soc_proxy in top pwc.
  *
  * This is the size (in bytes) of the peripheral's reserved memory area. All
  * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_PWC_SOC_PROXY_CTN_BASE_ADDR and
- * `TOP_PWC_SOC_PROXY_CTN_BASE_ADDR + TOP_PWC_SOC_PROXY_CTN_SIZE_BYTES`.
+ * address between #TOP_PWC_PWC_SOC_PROXY_CTN_BASE_ADDR and
+ * `TOP_PWC_PWC_SOC_PROXY_CTN_BASE_ADDR + TOP_PWC_PWC_SOC_PROXY_CTN_SIZE_BYTES`.
  */
-#define TOP_PWC_SOC_PROXY_CTN_SIZE_BYTES 0x40000000u
+#define TOP_PWC_PWC_SOC_PROXY_CTN_SIZE_BYTES 0x40000000u
 
 /**
  * Peripheral base address for regs device on sram_ctrl_ret_aon in top pwc.
@@ -190,22 +190,22 @@ extern "C" {
 #define TOP_PWC_RV_DM_MEM_SIZE_BYTES 0x1000u
 
 /**
- * Peripheral base address for rv_plic in top pwc.
+ * Peripheral base address for rv_plic_pwc in top pwc.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_PWC_RV_PLIC_BASE_ADDR 0x28000000u
+#define TOP_PWC_RV_PLIC_PWC_BASE_ADDR 0x28000000u
 
 /**
- * Peripheral size for rv_plic in top pwc.
+ * Peripheral size for rv_plic_pwc in top pwc.
  *
  * This is the size (in bytes) of the peripheral's reserved memory area. All
  * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_PWC_RV_PLIC_BASE_ADDR and
- * `TOP_PWC_RV_PLIC_BASE_ADDR + TOP_PWC_RV_PLIC_SIZE_BYTES`.
+ * address between #TOP_PWC_RV_PLIC_PWC_BASE_ADDR and
+ * `TOP_PWC_RV_PLIC_PWC_BASE_ADDR + TOP_PWC_RV_PLIC_PWC_SIZE_BYTES`.
  */
-#define TOP_PWC_RV_PLIC_SIZE_BYTES 0x8000000u
+#define TOP_PWC_RV_PLIC_PWC_SIZE_BYTES 0x8000000u
 
 /**
  * Peripheral base address for regs device on sram_ctrl_main in top pwc.
@@ -494,7 +494,7 @@ typedef enum top_pwc_plic_peripheral {
   kTopPwcPlicPeripheralGpio = 1, /**< gpio */
   kTopPwcPlicPeripheralRvTimer = 2, /**< rv_timer */
   kTopPwcPlicPeripheralAonTimerAon = 3, /**< aon_timer_aon */
-  kTopPwcPlicPeripheralSocProxy = 4, /**< soc_proxy */
+  kTopPwcPlicPeripheralPwcSocProxy = 4, /**< pwc_soc_proxy */
   kTopPwcPlicPeripheralDma = 5, /**< dma */
   kTopPwcPlicPeripheralMbx0 = 6, /**< mbx0 */
   kTopPwcPlicPeripheralMbx1 = 7, /**< mbx1 */
@@ -549,38 +549,38 @@ typedef enum top_pwc_plic_irq_id {
   kTopPwcPlicIrqIdRvTimerTimerExpiredHart0Timer0 = 33, /**< rv_timer_timer_expired_hart0_timer0 */
   kTopPwcPlicIrqIdAonTimerAonWkupTimerExpired = 34, /**< aon_timer_aon_wkup_timer_expired */
   kTopPwcPlicIrqIdAonTimerAonWdogTimerBark = 35, /**< aon_timer_aon_wdog_timer_bark */
-  kTopPwcPlicIrqIdSocProxyExternal0 = 36, /**< soc_proxy_external 0 */
-  kTopPwcPlicIrqIdSocProxyExternal1 = 37, /**< soc_proxy_external 1 */
-  kTopPwcPlicIrqIdSocProxyExternal2 = 38, /**< soc_proxy_external 2 */
-  kTopPwcPlicIrqIdSocProxyExternal3 = 39, /**< soc_proxy_external 3 */
-  kTopPwcPlicIrqIdSocProxyExternal4 = 40, /**< soc_proxy_external 4 */
-  kTopPwcPlicIrqIdSocProxyExternal5 = 41, /**< soc_proxy_external 5 */
-  kTopPwcPlicIrqIdSocProxyExternal6 = 42, /**< soc_proxy_external 6 */
-  kTopPwcPlicIrqIdSocProxyExternal7 = 43, /**< soc_proxy_external 7 */
-  kTopPwcPlicIrqIdSocProxyExternal8 = 44, /**< soc_proxy_external 8 */
-  kTopPwcPlicIrqIdSocProxyExternal9 = 45, /**< soc_proxy_external 9 */
-  kTopPwcPlicIrqIdSocProxyExternal10 = 46, /**< soc_proxy_external 10 */
-  kTopPwcPlicIrqIdSocProxyExternal11 = 47, /**< soc_proxy_external 11 */
-  kTopPwcPlicIrqIdSocProxyExternal12 = 48, /**< soc_proxy_external 12 */
-  kTopPwcPlicIrqIdSocProxyExternal13 = 49, /**< soc_proxy_external 13 */
-  kTopPwcPlicIrqIdSocProxyExternal14 = 50, /**< soc_proxy_external 14 */
-  kTopPwcPlicIrqIdSocProxyExternal15 = 51, /**< soc_proxy_external 15 */
-  kTopPwcPlicIrqIdSocProxyExternal16 = 52, /**< soc_proxy_external 16 */
-  kTopPwcPlicIrqIdSocProxyExternal17 = 53, /**< soc_proxy_external 17 */
-  kTopPwcPlicIrqIdSocProxyExternal18 = 54, /**< soc_proxy_external 18 */
-  kTopPwcPlicIrqIdSocProxyExternal19 = 55, /**< soc_proxy_external 19 */
-  kTopPwcPlicIrqIdSocProxyExternal20 = 56, /**< soc_proxy_external 20 */
-  kTopPwcPlicIrqIdSocProxyExternal21 = 57, /**< soc_proxy_external 21 */
-  kTopPwcPlicIrqIdSocProxyExternal22 = 58, /**< soc_proxy_external 22 */
-  kTopPwcPlicIrqIdSocProxyExternal23 = 59, /**< soc_proxy_external 23 */
-  kTopPwcPlicIrqIdSocProxyExternal24 = 60, /**< soc_proxy_external 24 */
-  kTopPwcPlicIrqIdSocProxyExternal25 = 61, /**< soc_proxy_external 25 */
-  kTopPwcPlicIrqIdSocProxyExternal26 = 62, /**< soc_proxy_external 26 */
-  kTopPwcPlicIrqIdSocProxyExternal27 = 63, /**< soc_proxy_external 27 */
-  kTopPwcPlicIrqIdSocProxyExternal28 = 64, /**< soc_proxy_external 28 */
-  kTopPwcPlicIrqIdSocProxyExternal29 = 65, /**< soc_proxy_external 29 */
-  kTopPwcPlicIrqIdSocProxyExternal30 = 66, /**< soc_proxy_external 30 */
-  kTopPwcPlicIrqIdSocProxyExternal31 = 67, /**< soc_proxy_external 31 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal0 = 36, /**< pwc_soc_proxy_external 0 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal1 = 37, /**< pwc_soc_proxy_external 1 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal2 = 38, /**< pwc_soc_proxy_external 2 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal3 = 39, /**< pwc_soc_proxy_external 3 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal4 = 40, /**< pwc_soc_proxy_external 4 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal5 = 41, /**< pwc_soc_proxy_external 5 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal6 = 42, /**< pwc_soc_proxy_external 6 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal7 = 43, /**< pwc_soc_proxy_external 7 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal8 = 44, /**< pwc_soc_proxy_external 8 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal9 = 45, /**< pwc_soc_proxy_external 9 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal10 = 46, /**< pwc_soc_proxy_external 10 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal11 = 47, /**< pwc_soc_proxy_external 11 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal12 = 48, /**< pwc_soc_proxy_external 12 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal13 = 49, /**< pwc_soc_proxy_external 13 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal14 = 50, /**< pwc_soc_proxy_external 14 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal15 = 51, /**< pwc_soc_proxy_external 15 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal16 = 52, /**< pwc_soc_proxy_external 16 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal17 = 53, /**< pwc_soc_proxy_external 17 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal18 = 54, /**< pwc_soc_proxy_external 18 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal19 = 55, /**< pwc_soc_proxy_external 19 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal20 = 56, /**< pwc_soc_proxy_external 20 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal21 = 57, /**< pwc_soc_proxy_external 21 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal22 = 58, /**< pwc_soc_proxy_external 22 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal23 = 59, /**< pwc_soc_proxy_external 23 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal24 = 60, /**< pwc_soc_proxy_external 24 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal25 = 61, /**< pwc_soc_proxy_external 25 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal26 = 62, /**< pwc_soc_proxy_external 26 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal27 = 63, /**< pwc_soc_proxy_external 27 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal28 = 64, /**< pwc_soc_proxy_external 28 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal29 = 65, /**< pwc_soc_proxy_external 29 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal30 = 66, /**< pwc_soc_proxy_external 30 */
+  kTopPwcPlicIrqIdPwcSocProxyExternal31 = 67, /**< pwc_soc_proxy_external 31 */
   kTopPwcPlicIrqIdDmaDmaDone = 68, /**< dma_dma_done */
   kTopPwcPlicIrqIdDmaDmaChunkDone = 69, /**< dma_dma_chunk_done */
   kTopPwcPlicIrqIdDmaDmaError = 70, /**< dma_dma_error */

@@ -64,40 +64,40 @@ extern "C" {
 #define TOP_MIO_AON_TIMER_AON_SIZE_BYTES 0x40u
 
 /**
- * Peripheral base address for core device on soc_proxy in top mio.
+ * Peripheral base address for core device on mio_soc_proxy in top mio.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_MIO_SOC_PROXY_CORE_BASE_ADDR 0x22030000u
+#define TOP_MIO_MIO_SOC_PROXY_CORE_BASE_ADDR 0x22030000u
 
 /**
- * Peripheral size for core device on soc_proxy in top mio.
+ * Peripheral size for core device on mio_soc_proxy in top mio.
  *
  * This is the size (in bytes) of the peripheral's reserved memory area. All
  * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_MIO_SOC_PROXY_CORE_BASE_ADDR and
- * `TOP_MIO_SOC_PROXY_CORE_BASE_ADDR + TOP_MIO_SOC_PROXY_CORE_SIZE_BYTES`.
+ * address between #TOP_MIO_MIO_SOC_PROXY_CORE_BASE_ADDR and
+ * `TOP_MIO_MIO_SOC_PROXY_CORE_BASE_ADDR + TOP_MIO_MIO_SOC_PROXY_CORE_SIZE_BYTES`.
  */
-#define TOP_MIO_SOC_PROXY_CORE_SIZE_BYTES 0x10u
+#define TOP_MIO_MIO_SOC_PROXY_CORE_SIZE_BYTES 0x10u
 
 /**
- * Peripheral base address for ctn device on soc_proxy in top mio.
+ * Peripheral base address for ctn device on mio_soc_proxy in top mio.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_MIO_SOC_PROXY_CTN_BASE_ADDR 0x40000000u
+#define TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR 0x40000000u
 
 /**
- * Peripheral size for ctn device on soc_proxy in top mio.
+ * Peripheral size for ctn device on mio_soc_proxy in top mio.
  *
  * This is the size (in bytes) of the peripheral's reserved memory area. All
  * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_MIO_SOC_PROXY_CTN_BASE_ADDR and
- * `TOP_MIO_SOC_PROXY_CTN_BASE_ADDR + TOP_MIO_SOC_PROXY_CTN_SIZE_BYTES`.
+ * address between #TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR and
+ * `TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR + TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES`.
  */
-#define TOP_MIO_SOC_PROXY_CTN_SIZE_BYTES 0x40000000u
+#define TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES 0x40000000u
 
 /**
  * Peripheral base address for regs device on sram_ctrl_ret_aon in top mio.
@@ -172,22 +172,22 @@ extern "C" {
 #define TOP_MIO_RV_DM_MEM_SIZE_BYTES 0x1000u
 
 /**
- * Peripheral base address for rv_plic in top mio.
+ * Peripheral base address for rv_plic_mio in top mio.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_MIO_RV_PLIC_BASE_ADDR 0x28000000u
+#define TOP_MIO_RV_PLIC_MIO_BASE_ADDR 0x28000000u
 
 /**
- * Peripheral size for rv_plic in top mio.
+ * Peripheral size for rv_plic_mio in top mio.
  *
  * This is the size (in bytes) of the peripheral's reserved memory area. All
  * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_MIO_RV_PLIC_BASE_ADDR and
- * `TOP_MIO_RV_PLIC_BASE_ADDR + TOP_MIO_RV_PLIC_SIZE_BYTES`.
+ * address between #TOP_MIO_RV_PLIC_MIO_BASE_ADDR and
+ * `TOP_MIO_RV_PLIC_MIO_BASE_ADDR + TOP_MIO_RV_PLIC_MIO_SIZE_BYTES`.
  */
-#define TOP_MIO_RV_PLIC_SIZE_BYTES 0x8000000u
+#define TOP_MIO_RV_PLIC_MIO_SIZE_BYTES 0x8000000u
 
 /**
  * Peripheral base address for regs device on sram_ctrl_main in top mio.
@@ -475,7 +475,7 @@ typedef enum top_mio_plic_peripheral {
   kTopMioPlicPeripheralUnknown = 0, /**< Unknown Peripheral */
   kTopMioPlicPeripheralRvTimer = 1, /**< rv_timer */
   kTopMioPlicPeripheralAonTimerAon = 2, /**< aon_timer_aon */
-  kTopMioPlicPeripheralSocProxy = 3, /**< soc_proxy */
+  kTopMioPlicPeripheralMioSocProxy = 3, /**< mio_soc_proxy */
   kTopMioPlicPeripheralDma = 4, /**< dma */
   kTopMioPlicPeripheralMbx0 = 5, /**< mbx0 */
   kTopMioPlicPeripheralMbx1 = 6, /**< mbx1 */
@@ -498,38 +498,38 @@ typedef enum top_mio_plic_irq_id {
   kTopMioPlicIrqIdRvTimerTimerExpiredHart0Timer0 = 1, /**< rv_timer_timer_expired_hart0_timer0 */
   kTopMioPlicIrqIdAonTimerAonWkupTimerExpired = 2, /**< aon_timer_aon_wkup_timer_expired */
   kTopMioPlicIrqIdAonTimerAonWdogTimerBark = 3, /**< aon_timer_aon_wdog_timer_bark */
-  kTopMioPlicIrqIdSocProxyExternal0 = 4, /**< soc_proxy_external 0 */
-  kTopMioPlicIrqIdSocProxyExternal1 = 5, /**< soc_proxy_external 1 */
-  kTopMioPlicIrqIdSocProxyExternal2 = 6, /**< soc_proxy_external 2 */
-  kTopMioPlicIrqIdSocProxyExternal3 = 7, /**< soc_proxy_external 3 */
-  kTopMioPlicIrqIdSocProxyExternal4 = 8, /**< soc_proxy_external 4 */
-  kTopMioPlicIrqIdSocProxyExternal5 = 9, /**< soc_proxy_external 5 */
-  kTopMioPlicIrqIdSocProxyExternal6 = 10, /**< soc_proxy_external 6 */
-  kTopMioPlicIrqIdSocProxyExternal7 = 11, /**< soc_proxy_external 7 */
-  kTopMioPlicIrqIdSocProxyExternal8 = 12, /**< soc_proxy_external 8 */
-  kTopMioPlicIrqIdSocProxyExternal9 = 13, /**< soc_proxy_external 9 */
-  kTopMioPlicIrqIdSocProxyExternal10 = 14, /**< soc_proxy_external 10 */
-  kTopMioPlicIrqIdSocProxyExternal11 = 15, /**< soc_proxy_external 11 */
-  kTopMioPlicIrqIdSocProxyExternal12 = 16, /**< soc_proxy_external 12 */
-  kTopMioPlicIrqIdSocProxyExternal13 = 17, /**< soc_proxy_external 13 */
-  kTopMioPlicIrqIdSocProxyExternal14 = 18, /**< soc_proxy_external 14 */
-  kTopMioPlicIrqIdSocProxyExternal15 = 19, /**< soc_proxy_external 15 */
-  kTopMioPlicIrqIdSocProxyExternal16 = 20, /**< soc_proxy_external 16 */
-  kTopMioPlicIrqIdSocProxyExternal17 = 21, /**< soc_proxy_external 17 */
-  kTopMioPlicIrqIdSocProxyExternal18 = 22, /**< soc_proxy_external 18 */
-  kTopMioPlicIrqIdSocProxyExternal19 = 23, /**< soc_proxy_external 19 */
-  kTopMioPlicIrqIdSocProxyExternal20 = 24, /**< soc_proxy_external 20 */
-  kTopMioPlicIrqIdSocProxyExternal21 = 25, /**< soc_proxy_external 21 */
-  kTopMioPlicIrqIdSocProxyExternal22 = 26, /**< soc_proxy_external 22 */
-  kTopMioPlicIrqIdSocProxyExternal23 = 27, /**< soc_proxy_external 23 */
-  kTopMioPlicIrqIdSocProxyExternal24 = 28, /**< soc_proxy_external 24 */
-  kTopMioPlicIrqIdSocProxyExternal25 = 29, /**< soc_proxy_external 25 */
-  kTopMioPlicIrqIdSocProxyExternal26 = 30, /**< soc_proxy_external 26 */
-  kTopMioPlicIrqIdSocProxyExternal27 = 31, /**< soc_proxy_external 27 */
-  kTopMioPlicIrqIdSocProxyExternal28 = 32, /**< soc_proxy_external 28 */
-  kTopMioPlicIrqIdSocProxyExternal29 = 33, /**< soc_proxy_external 29 */
-  kTopMioPlicIrqIdSocProxyExternal30 = 34, /**< soc_proxy_external 30 */
-  kTopMioPlicIrqIdSocProxyExternal31 = 35, /**< soc_proxy_external 31 */
+  kTopMioPlicIrqIdMioSocProxyExternal0 = 4, /**< mio_soc_proxy_external 0 */
+  kTopMioPlicIrqIdMioSocProxyExternal1 = 5, /**< mio_soc_proxy_external 1 */
+  kTopMioPlicIrqIdMioSocProxyExternal2 = 6, /**< mio_soc_proxy_external 2 */
+  kTopMioPlicIrqIdMioSocProxyExternal3 = 7, /**< mio_soc_proxy_external 3 */
+  kTopMioPlicIrqIdMioSocProxyExternal4 = 8, /**< mio_soc_proxy_external 4 */
+  kTopMioPlicIrqIdMioSocProxyExternal5 = 9, /**< mio_soc_proxy_external 5 */
+  kTopMioPlicIrqIdMioSocProxyExternal6 = 10, /**< mio_soc_proxy_external 6 */
+  kTopMioPlicIrqIdMioSocProxyExternal7 = 11, /**< mio_soc_proxy_external 7 */
+  kTopMioPlicIrqIdMioSocProxyExternal8 = 12, /**< mio_soc_proxy_external 8 */
+  kTopMioPlicIrqIdMioSocProxyExternal9 = 13, /**< mio_soc_proxy_external 9 */
+  kTopMioPlicIrqIdMioSocProxyExternal10 = 14, /**< mio_soc_proxy_external 10 */
+  kTopMioPlicIrqIdMioSocProxyExternal11 = 15, /**< mio_soc_proxy_external 11 */
+  kTopMioPlicIrqIdMioSocProxyExternal12 = 16, /**< mio_soc_proxy_external 12 */
+  kTopMioPlicIrqIdMioSocProxyExternal13 = 17, /**< mio_soc_proxy_external 13 */
+  kTopMioPlicIrqIdMioSocProxyExternal14 = 18, /**< mio_soc_proxy_external 14 */
+  kTopMioPlicIrqIdMioSocProxyExternal15 = 19, /**< mio_soc_proxy_external 15 */
+  kTopMioPlicIrqIdMioSocProxyExternal16 = 20, /**< mio_soc_proxy_external 16 */
+  kTopMioPlicIrqIdMioSocProxyExternal17 = 21, /**< mio_soc_proxy_external 17 */
+  kTopMioPlicIrqIdMioSocProxyExternal18 = 22, /**< mio_soc_proxy_external 18 */
+  kTopMioPlicIrqIdMioSocProxyExternal19 = 23, /**< mio_soc_proxy_external 19 */
+  kTopMioPlicIrqIdMioSocProxyExternal20 = 24, /**< mio_soc_proxy_external 20 */
+  kTopMioPlicIrqIdMioSocProxyExternal21 = 25, /**< mio_soc_proxy_external 21 */
+  kTopMioPlicIrqIdMioSocProxyExternal22 = 26, /**< mio_soc_proxy_external 22 */
+  kTopMioPlicIrqIdMioSocProxyExternal23 = 27, /**< mio_soc_proxy_external 23 */
+  kTopMioPlicIrqIdMioSocProxyExternal24 = 28, /**< mio_soc_proxy_external 24 */
+  kTopMioPlicIrqIdMioSocProxyExternal25 = 29, /**< mio_soc_proxy_external 25 */
+  kTopMioPlicIrqIdMioSocProxyExternal26 = 30, /**< mio_soc_proxy_external 26 */
+  kTopMioPlicIrqIdMioSocProxyExternal27 = 31, /**< mio_soc_proxy_external 27 */
+  kTopMioPlicIrqIdMioSocProxyExternal28 = 32, /**< mio_soc_proxy_external 28 */
+  kTopMioPlicIrqIdMioSocProxyExternal29 = 33, /**< mio_soc_proxy_external 29 */
+  kTopMioPlicIrqIdMioSocProxyExternal30 = 34, /**< mio_soc_proxy_external 30 */
+  kTopMioPlicIrqIdMioSocProxyExternal31 = 35, /**< mio_soc_proxy_external 31 */
   kTopMioPlicIrqIdDmaDmaDone = 36, /**< dma_dma_done */
   kTopMioPlicIrqIdDmaDmaChunkDone = 37, /**< dma_dma_chunk_done */
   kTopMioPlicIrqIdDmaDmaError = 38, /**< dma_dma_error */

@@ -61,33 +61,33 @@ pub const AON_TIMER_AON_BASE_ADDR: usize = 0x30470000;
 /// `AON_TIMER_AON_BASE_ADDR + AON_TIMER_AON_SIZE_BYTES`.
 pub const AON_TIMER_AON_SIZE_BYTES: usize = 0x40;
 
-/// Peripheral base address for core device on soc_proxy in top pwc.
+/// Peripheral base address for core device on pwc_soc_proxy in top pwc.
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const SOC_PROXY_CORE_BASE_ADDR: usize = 0x22030000;
+pub const PWC_SOC_PROXY_CORE_BASE_ADDR: usize = 0x22030000;
 
-/// Peripheral size for core device on soc_proxy in top pwc.
+/// Peripheral size for core device on pwc_soc_proxy in top pwc.
 ///
 /// This is the size (in bytes) of the peripheral's reserved memory area. All
 /// memory-mapped registers associated with this peripheral should have an
-/// address between #SOC_PROXY_CORE_BASE_ADDR and
-/// `SOC_PROXY_CORE_BASE_ADDR + SOC_PROXY_CORE_SIZE_BYTES`.
-pub const SOC_PROXY_CORE_SIZE_BYTES: usize = 0x10;
+/// address between #PWC_SOC_PROXY_CORE_BASE_ADDR and
+/// `PWC_SOC_PROXY_CORE_BASE_ADDR + PWC_SOC_PROXY_CORE_SIZE_BYTES`.
+pub const PWC_SOC_PROXY_CORE_SIZE_BYTES: usize = 0x10;
 
-/// Peripheral base address for ctn device on soc_proxy in top pwc.
+/// Peripheral base address for ctn device on pwc_soc_proxy in top pwc.
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const SOC_PROXY_CTN_BASE_ADDR: usize = 0x40000000;
+pub const PWC_SOC_PROXY_CTN_BASE_ADDR: usize = 0x40000000;
 
-/// Peripheral size for ctn device on soc_proxy in top pwc.
+/// Peripheral size for ctn device on pwc_soc_proxy in top pwc.
 ///
 /// This is the size (in bytes) of the peripheral's reserved memory area. All
 /// memory-mapped registers associated with this peripheral should have an
-/// address between #SOC_PROXY_CTN_BASE_ADDR and
-/// `SOC_PROXY_CTN_BASE_ADDR + SOC_PROXY_CTN_SIZE_BYTES`.
-pub const SOC_PROXY_CTN_SIZE_BYTES: usize = 0x40000000;
+/// address between #PWC_SOC_PROXY_CTN_BASE_ADDR and
+/// `PWC_SOC_PROXY_CTN_BASE_ADDR + PWC_SOC_PROXY_CTN_SIZE_BYTES`.
+pub const PWC_SOC_PROXY_CTN_SIZE_BYTES: usize = 0x40000000;
 
 /// Peripheral base address for regs device on sram_ctrl_ret_aon in top pwc.
 ///
@@ -145,19 +145,19 @@ pub const RV_DM_MEM_BASE_ADDR: usize = 0x40000;
 /// `RV_DM_MEM_BASE_ADDR + RV_DM_MEM_SIZE_BYTES`.
 pub const RV_DM_MEM_SIZE_BYTES: usize = 0x1000;
 
-/// Peripheral base address for rv_plic in top pwc.
+/// Peripheral base address for rv_plic_pwc in top pwc.
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const RV_PLIC_BASE_ADDR: usize = 0x28000000;
+pub const RV_PLIC_PWC_BASE_ADDR: usize = 0x28000000;
 
-/// Peripheral size for rv_plic in top pwc.
+/// Peripheral size for rv_plic_pwc in top pwc.
 ///
 /// This is the size (in bytes) of the peripheral's reserved memory area. All
 /// memory-mapped registers associated with this peripheral should have an
-/// address between #RV_PLIC_BASE_ADDR and
-/// `RV_PLIC_BASE_ADDR + RV_PLIC_SIZE_BYTES`.
-pub const RV_PLIC_SIZE_BYTES: usize = 0x8000000;
+/// address between #RV_PLIC_PWC_BASE_ADDR and
+/// `RV_PLIC_PWC_BASE_ADDR + RV_PLIC_PWC_SIZE_BYTES`.
+pub const RV_PLIC_PWC_SIZE_BYTES: usize = 0x8000000;
 
 /// Peripheral base address for regs device on sram_ctrl_main in top pwc.
 ///
@@ -380,8 +380,8 @@ pub enum PlicPeripheral {
     RvTimer = 2,
     /// aon_timer_aon
     AonTimerAon = 3,
-    /// soc_proxy
-    SocProxy = 4,
+    /// pwc_soc_proxy
+    PwcSocProxy = 4,
     /// dma
     Dma = 5,
     /// mbx0
@@ -408,7 +408,7 @@ impl TryFrom<u32> for PlicPeripheral {
             1 => Ok(Self::Gpio),
             2 => Ok(Self::RvTimer),
             3 => Ok(Self::AonTimerAon),
-            4 => Ok(Self::SocProxy),
+            4 => Ok(Self::PwcSocProxy),
             5 => Ok(Self::Dma),
             6 => Ok(Self::Mbx0),
             7 => Ok(Self::Mbx1),
@@ -501,70 +501,70 @@ pub enum PlicIrqId {
     AonTimerAonWkupTimerExpired = 34,
     /// aon_timer_aon_wdog_timer_bark
     AonTimerAonWdogTimerBark = 35,
-    /// soc_proxy_external 0
-    SocProxyExternal0 = 36,
-    /// soc_proxy_external 1
-    SocProxyExternal1 = 37,
-    /// soc_proxy_external 2
-    SocProxyExternal2 = 38,
-    /// soc_proxy_external 3
-    SocProxyExternal3 = 39,
-    /// soc_proxy_external 4
-    SocProxyExternal4 = 40,
-    /// soc_proxy_external 5
-    SocProxyExternal5 = 41,
-    /// soc_proxy_external 6
-    SocProxyExternal6 = 42,
-    /// soc_proxy_external 7
-    SocProxyExternal7 = 43,
-    /// soc_proxy_external 8
-    SocProxyExternal8 = 44,
-    /// soc_proxy_external 9
-    SocProxyExternal9 = 45,
-    /// soc_proxy_external 10
-    SocProxyExternal10 = 46,
-    /// soc_proxy_external 11
-    SocProxyExternal11 = 47,
-    /// soc_proxy_external 12
-    SocProxyExternal12 = 48,
-    /// soc_proxy_external 13
-    SocProxyExternal13 = 49,
-    /// soc_proxy_external 14
-    SocProxyExternal14 = 50,
-    /// soc_proxy_external 15
-    SocProxyExternal15 = 51,
-    /// soc_proxy_external 16
-    SocProxyExternal16 = 52,
-    /// soc_proxy_external 17
-    SocProxyExternal17 = 53,
-    /// soc_proxy_external 18
-    SocProxyExternal18 = 54,
-    /// soc_proxy_external 19
-    SocProxyExternal19 = 55,
-    /// soc_proxy_external 20
-    SocProxyExternal20 = 56,
-    /// soc_proxy_external 21
-    SocProxyExternal21 = 57,
-    /// soc_proxy_external 22
-    SocProxyExternal22 = 58,
-    /// soc_proxy_external 23
-    SocProxyExternal23 = 59,
-    /// soc_proxy_external 24
-    SocProxyExternal24 = 60,
-    /// soc_proxy_external 25
-    SocProxyExternal25 = 61,
-    /// soc_proxy_external 26
-    SocProxyExternal26 = 62,
-    /// soc_proxy_external 27
-    SocProxyExternal27 = 63,
-    /// soc_proxy_external 28
-    SocProxyExternal28 = 64,
-    /// soc_proxy_external 29
-    SocProxyExternal29 = 65,
-    /// soc_proxy_external 30
-    SocProxyExternal30 = 66,
-    /// soc_proxy_external 31
-    SocProxyExternal31 = 67,
+    /// pwc_soc_proxy_external 0
+    PwcSocProxyExternal0 = 36,
+    /// pwc_soc_proxy_external 1
+    PwcSocProxyExternal1 = 37,
+    /// pwc_soc_proxy_external 2
+    PwcSocProxyExternal2 = 38,
+    /// pwc_soc_proxy_external 3
+    PwcSocProxyExternal3 = 39,
+    /// pwc_soc_proxy_external 4
+    PwcSocProxyExternal4 = 40,
+    /// pwc_soc_proxy_external 5
+    PwcSocProxyExternal5 = 41,
+    /// pwc_soc_proxy_external 6
+    PwcSocProxyExternal6 = 42,
+    /// pwc_soc_proxy_external 7
+    PwcSocProxyExternal7 = 43,
+    /// pwc_soc_proxy_external 8
+    PwcSocProxyExternal8 = 44,
+    /// pwc_soc_proxy_external 9
+    PwcSocProxyExternal9 = 45,
+    /// pwc_soc_proxy_external 10
+    PwcSocProxyExternal10 = 46,
+    /// pwc_soc_proxy_external 11
+    PwcSocProxyExternal11 = 47,
+    /// pwc_soc_proxy_external 12
+    PwcSocProxyExternal12 = 48,
+    /// pwc_soc_proxy_external 13
+    PwcSocProxyExternal13 = 49,
+    /// pwc_soc_proxy_external 14
+    PwcSocProxyExternal14 = 50,
+    /// pwc_soc_proxy_external 15
+    PwcSocProxyExternal15 = 51,
+    /// pwc_soc_proxy_external 16
+    PwcSocProxyExternal16 = 52,
+    /// pwc_soc_proxy_external 17
+    PwcSocProxyExternal17 = 53,
+    /// pwc_soc_proxy_external 18
+    PwcSocProxyExternal18 = 54,
+    /// pwc_soc_proxy_external 19
+    PwcSocProxyExternal19 = 55,
+    /// pwc_soc_proxy_external 20
+    PwcSocProxyExternal20 = 56,
+    /// pwc_soc_proxy_external 21
+    PwcSocProxyExternal21 = 57,
+    /// pwc_soc_proxy_external 22
+    PwcSocProxyExternal22 = 58,
+    /// pwc_soc_proxy_external 23
+    PwcSocProxyExternal23 = 59,
+    /// pwc_soc_proxy_external 24
+    PwcSocProxyExternal24 = 60,
+    /// pwc_soc_proxy_external 25
+    PwcSocProxyExternal25 = 61,
+    /// pwc_soc_proxy_external 26
+    PwcSocProxyExternal26 = 62,
+    /// pwc_soc_proxy_external 27
+    PwcSocProxyExternal27 = 63,
+    /// pwc_soc_proxy_external 28
+    PwcSocProxyExternal28 = 64,
+    /// pwc_soc_proxy_external 29
+    PwcSocProxyExternal29 = 65,
+    /// pwc_soc_proxy_external 30
+    PwcSocProxyExternal30 = 66,
+    /// pwc_soc_proxy_external 31
+    PwcSocProxyExternal31 = 67,
     /// dma_dma_done
     DmaDmaDone = 68,
     /// dma_dma_chunk_done
@@ -973,38 +973,38 @@ impl TryFrom<u32> for PlicIrqId {
             33 => Ok(Self::RvTimerTimerExpiredHart0Timer0),
             34 => Ok(Self::AonTimerAonWkupTimerExpired),
             35 => Ok(Self::AonTimerAonWdogTimerBark),
-            36 => Ok(Self::SocProxyExternal0),
-            37 => Ok(Self::SocProxyExternal1),
-            38 => Ok(Self::SocProxyExternal2),
-            39 => Ok(Self::SocProxyExternal3),
-            40 => Ok(Self::SocProxyExternal4),
-            41 => Ok(Self::SocProxyExternal5),
-            42 => Ok(Self::SocProxyExternal6),
-            43 => Ok(Self::SocProxyExternal7),
-            44 => Ok(Self::SocProxyExternal8),
-            45 => Ok(Self::SocProxyExternal9),
-            46 => Ok(Self::SocProxyExternal10),
-            47 => Ok(Self::SocProxyExternal11),
-            48 => Ok(Self::SocProxyExternal12),
-            49 => Ok(Self::SocProxyExternal13),
-            50 => Ok(Self::SocProxyExternal14),
-            51 => Ok(Self::SocProxyExternal15),
-            52 => Ok(Self::SocProxyExternal16),
-            53 => Ok(Self::SocProxyExternal17),
-            54 => Ok(Self::SocProxyExternal18),
-            55 => Ok(Self::SocProxyExternal19),
-            56 => Ok(Self::SocProxyExternal20),
-            57 => Ok(Self::SocProxyExternal21),
-            58 => Ok(Self::SocProxyExternal22),
-            59 => Ok(Self::SocProxyExternal23),
-            60 => Ok(Self::SocProxyExternal24),
-            61 => Ok(Self::SocProxyExternal25),
-            62 => Ok(Self::SocProxyExternal26),
-            63 => Ok(Self::SocProxyExternal27),
-            64 => Ok(Self::SocProxyExternal28),
-            65 => Ok(Self::SocProxyExternal29),
-            66 => Ok(Self::SocProxyExternal30),
-            67 => Ok(Self::SocProxyExternal31),
+            36 => Ok(Self::PwcSocProxyExternal0),
+            37 => Ok(Self::PwcSocProxyExternal1),
+            38 => Ok(Self::PwcSocProxyExternal2),
+            39 => Ok(Self::PwcSocProxyExternal3),
+            40 => Ok(Self::PwcSocProxyExternal4),
+            41 => Ok(Self::PwcSocProxyExternal5),
+            42 => Ok(Self::PwcSocProxyExternal6),
+            43 => Ok(Self::PwcSocProxyExternal7),
+            44 => Ok(Self::PwcSocProxyExternal8),
+            45 => Ok(Self::PwcSocProxyExternal9),
+            46 => Ok(Self::PwcSocProxyExternal10),
+            47 => Ok(Self::PwcSocProxyExternal11),
+            48 => Ok(Self::PwcSocProxyExternal12),
+            49 => Ok(Self::PwcSocProxyExternal13),
+            50 => Ok(Self::PwcSocProxyExternal14),
+            51 => Ok(Self::PwcSocProxyExternal15),
+            52 => Ok(Self::PwcSocProxyExternal16),
+            53 => Ok(Self::PwcSocProxyExternal17),
+            54 => Ok(Self::PwcSocProxyExternal18),
+            55 => Ok(Self::PwcSocProxyExternal19),
+            56 => Ok(Self::PwcSocProxyExternal20),
+            57 => Ok(Self::PwcSocProxyExternal21),
+            58 => Ok(Self::PwcSocProxyExternal22),
+            59 => Ok(Self::PwcSocProxyExternal23),
+            60 => Ok(Self::PwcSocProxyExternal24),
+            61 => Ok(Self::PwcSocProxyExternal25),
+            62 => Ok(Self::PwcSocProxyExternal26),
+            63 => Ok(Self::PwcSocProxyExternal27),
+            64 => Ok(Self::PwcSocProxyExternal28),
+            65 => Ok(Self::PwcSocProxyExternal29),
+            66 => Ok(Self::PwcSocProxyExternal30),
+            67 => Ok(Self::PwcSocProxyExternal31),
             68 => Ok(Self::DmaDmaDone),
             69 => Ok(Self::DmaDmaChunkDone),
             70 => Ok(Self::DmaDmaError),
@@ -1281,70 +1281,70 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 251] = [
     PlicPeripheral::AonTimerAon,
     // AonTimerAonWdogTimerBark -> PlicPeripheral::AonTimerAon
     PlicPeripheral::AonTimerAon,
-    // SocProxyExternal0 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal1 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal2 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal3 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal4 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal5 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal6 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal7 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal8 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal9 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal10 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal11 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal12 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal13 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal14 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal15 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal16 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal17 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal18 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal19 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal20 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal21 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal22 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal23 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal24 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal25 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal26 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal27 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal28 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal29 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal30 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
-    // SocProxyExternal31 -> PlicPeripheral::SocProxy
-    PlicPeripheral::SocProxy,
+    // PwcSocProxyExternal0 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal1 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal2 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal3 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal4 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal5 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal6 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal7 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal8 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal9 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal10 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal11 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal12 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal13 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal14 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal15 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal16 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal17 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal18 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal19 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal20 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal21 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal22 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal23 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal24 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal25 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal26 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal27 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal28 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal29 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal30 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
+    // PwcSocProxyExternal31 -> PlicPeripheral::PwcSocProxy
+    PlicPeripheral::PwcSocProxy,
     // DmaDmaDone -> PlicPeripheral::Dma
     PlicPeripheral::Dma,
     // DmaDmaChunkDone -> PlicPeripheral::Dma

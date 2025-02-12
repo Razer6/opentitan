@@ -25,12 +25,12 @@
 // Include guard for assembler
 #ifdef __ASSEMBLER__
 /**
- * Memory base for soc_proxy_ctn in top mio.
+ * Memory base for mio_soc_proxy_ctn in top mio.
  */
 #define TOP_MIO_CTN_BASE_ADDR 0x40000000
 
 /**
- * Memory size for soc_proxy_ctn in top mio.
+ * Memory size for mio_soc_proxy_ctn in top mio.
  */
 #define TOP_MIO_CTN_SIZE_BYTES 0x40000000
 
@@ -101,39 +101,39 @@
  */
 #define TOP_MIO_AON_TIMER_AON_SIZE_BYTES 0x40
 /**
- * Peripheral base address for core device on soc_proxy in top mio.
+ * Peripheral base address for core device on mio_soc_proxy in top mio.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_MIO_SOC_PROXY_CORE_BASE_ADDR 0x22030000
+#define TOP_MIO_MIO_SOC_PROXY_CORE_BASE_ADDR 0x22030000
 
 /**
- * Peripheral size for core device on soc_proxy in top mio.
+ * Peripheral size for core device on mio_soc_proxy in top mio.
  *
  * This is the size (in bytes) of the peripheral's reserved memory area. All
  * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_MIO_SOC_PROXY_CORE_BASE_ADDR and
- * `TOP_MIO_SOC_PROXY_CORE_BASE_ADDR + TOP_MIO_SOC_PROXY_CORE_SIZE_BYTES`.
+ * address between #TOP_MIO_MIO_SOC_PROXY_CORE_BASE_ADDR and
+ * `TOP_MIO_MIO_SOC_PROXY_CORE_BASE_ADDR + TOP_MIO_MIO_SOC_PROXY_CORE_SIZE_BYTES`.
  */
-#define TOP_MIO_SOC_PROXY_CORE_SIZE_BYTES 0x10
+#define TOP_MIO_MIO_SOC_PROXY_CORE_SIZE_BYTES 0x10
 /**
- * Peripheral base address for ctn device on soc_proxy in top mio.
+ * Peripheral base address for ctn device on mio_soc_proxy in top mio.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_MIO_SOC_PROXY_CTN_BASE_ADDR 0x40000000
+#define TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR 0x40000000
 
 /**
- * Peripheral size for ctn device on soc_proxy in top mio.
+ * Peripheral size for ctn device on mio_soc_proxy in top mio.
  *
  * This is the size (in bytes) of the peripheral's reserved memory area. All
  * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_MIO_SOC_PROXY_CTN_BASE_ADDR and
- * `TOP_MIO_SOC_PROXY_CTN_BASE_ADDR + TOP_MIO_SOC_PROXY_CTN_SIZE_BYTES`.
+ * address between #TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR and
+ * `TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR + TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES`.
  */
-#define TOP_MIO_SOC_PROXY_CTN_SIZE_BYTES 0x40000000
+#define TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES 0x40000000
 /**
  * Peripheral base address for regs device on sram_ctrl_ret_aon in top mio.
  *
@@ -203,22 +203,22 @@
  */
 #define TOP_MIO_RV_DM_MEM_SIZE_BYTES 0x1000
 /**
- * Peripheral base address for rv_plic in top mio.
+ * Peripheral base address for rv_plic_mio in top mio.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_MIO_RV_PLIC_BASE_ADDR 0x28000000
+#define TOP_MIO_RV_PLIC_MIO_BASE_ADDR 0x28000000
 
 /**
- * Peripheral size for rv_plic in top mio.
+ * Peripheral size for rv_plic_mio in top mio.
  *
  * This is the size (in bytes) of the peripheral's reserved memory area. All
  * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_MIO_RV_PLIC_BASE_ADDR and
- * `TOP_MIO_RV_PLIC_BASE_ADDR + TOP_MIO_RV_PLIC_SIZE_BYTES`.
+ * address between #TOP_MIO_RV_PLIC_MIO_BASE_ADDR and
+ * `TOP_MIO_RV_PLIC_MIO_BASE_ADDR + TOP_MIO_RV_PLIC_MIO_SIZE_BYTES`.
  */
-#define TOP_MIO_RV_PLIC_SIZE_BYTES 0x8000000
+#define TOP_MIO_RV_PLIC_MIO_SIZE_BYTES 0x8000000
 /**
  * Peripheral base address for regs device on sram_ctrl_main in top mio.
  *

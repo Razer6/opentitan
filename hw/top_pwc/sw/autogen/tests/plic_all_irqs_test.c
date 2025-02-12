@@ -86,11 +86,11 @@ static dif_mbx_t mbx_pcie0;
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-static dif_rv_timer_t rv_timer;
+static dif_pwc_soc_proxy_t pwc_soc_proxy;
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
-static dif_pwc_soc_proxy_t soc_proxy;
+static dif_rv_timer_t rv_timer;
 #endif
 
 static dif_rv_plic_t plic;
@@ -133,13 +133,13 @@ static volatile dif_mbx_irq_t mbx_irq_serviced;
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-static volatile dif_rv_timer_irq_t rv_timer_irq_expected;
-static volatile dif_rv_timer_irq_t rv_timer_irq_serviced;
+static volatile dif_pwc_soc_proxy_irq_t pwc_soc_proxy_irq_expected;
+static volatile dif_pwc_soc_proxy_irq_t pwc_soc_proxy_irq_serviced;
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
-static volatile dif_pwc_soc_proxy_irq_t pwc_soc_proxy_irq_expected;
-static volatile dif_pwc_soc_proxy_irq_t pwc_soc_proxy_irq_serviced;
+static volatile dif_rv_timer_irq_t rv_timer_irq_expected;
+static volatile dif_rv_timer_irq_t rv_timer_irq_serviced;
 #endif
 
 /**
@@ -410,6 +410,29 @@ void ottf_external_isr(uint32_t *exc_info) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
+    case kTopPwcPlicPeripheralPwcSocProxy: {
+      dif_pwc_soc_proxy_irq_t irq =
+          (dif_pwc_soc_proxy_irq_t)(plic_irq_id -
+                                    (dif_rv_plic_irq_id_t)
+                                        kTopPwcPlicIrqIdPwcSocProxyExternal0);
+      CHECK(irq == pwc_soc_proxy_irq_expected,
+            "Incorrect pwc_soc_proxy IRQ triggered: exp = %d, obs = %d",
+            pwc_soc_proxy_irq_expected, irq);
+      pwc_soc_proxy_irq_serviced = irq;
+
+      dif_pwc_soc_proxy_irq_state_snapshot_t snapshot;
+      CHECK_DIF_OK(dif_pwc_soc_proxy_irq_get_state(&pwc_soc_proxy, &snapshot));
+      CHECK(snapshot == (dif_pwc_soc_proxy_irq_state_snapshot_t)(1 << irq),
+            "Only pwc_soc_proxy IRQ %d expected to fire. Actual interrupt "
+            "status = %x",
+            irq, snapshot);
+
+      CHECK_DIF_OK(dif_pwc_soc_proxy_irq_acknowledge(&pwc_soc_proxy, irq));
+      break;
+    }
+#endif
+
+#if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
     case kTopPwcPlicPeripheralRvTimer: {
       dif_rv_timer_irq_t irq =
           (dif_rv_timer_irq_t)(plic_irq_id -
@@ -428,29 +451,6 @@ void ottf_external_isr(uint32_t *exc_info) {
             irq, snapshot);
 
       CHECK_DIF_OK(dif_rv_timer_irq_acknowledge(&rv_timer, irq));
-      break;
-    }
-#endif
-
-#if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
-    case kTopPwcPlicPeripheralSocProxy: {
-      dif_pwc_soc_proxy_irq_t irq =
-          (dif_pwc_soc_proxy_irq_t)(plic_irq_id -
-                                    (dif_rv_plic_irq_id_t)
-                                        kTopPwcPlicIrqIdSocProxyExternal0);
-      CHECK(irq == pwc_soc_proxy_irq_expected,
-            "Incorrect soc_proxy IRQ triggered: exp = %d, obs = %d",
-            pwc_soc_proxy_irq_expected, irq);
-      pwc_soc_proxy_irq_serviced = irq;
-
-      dif_pwc_soc_proxy_irq_state_snapshot_t snapshot;
-      CHECK_DIF_OK(dif_pwc_soc_proxy_irq_get_state(&soc_proxy, &snapshot));
-      CHECK(snapshot == (dif_pwc_soc_proxy_irq_state_snapshot_t)(1 << irq),
-            "Only soc_proxy IRQ %d expected to fire. Actual interrupt "
-            "status = %x",
-            irq, snapshot);
-
-      CHECK_DIF_OK(dif_pwc_soc_proxy_irq_acknowledge(&soc_proxy, irq));
       break;
     }
 #endif
@@ -520,13 +520,13 @@ static void peripherals_init(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-  base_addr = mmio_region_from_addr(TOP_PWC_RV_TIMER_BASE_ADDR);
-  CHECK_DIF_OK(dif_rv_timer_init(base_addr, &rv_timer));
+  base_addr = mmio_region_from_addr(TOP_PWC_PWC_SOC_PROXY_CORE_BASE_ADDR);
+  CHECK_DIF_OK(dif_pwc_soc_proxy_init(base_addr, &pwc_soc_proxy));
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
-  base_addr = mmio_region_from_addr(TOP_PWC_SOC_PROXY_CORE_BASE_ADDR);
-  CHECK_DIF_OK(dif_pwc_soc_proxy_init(base_addr, &soc_proxy));
+  base_addr = mmio_region_from_addr(TOP_PWC_RV_TIMER_BASE_ADDR);
+  CHECK_DIF_OK(dif_rv_timer_init(base_addr, &rv_timer));
 #endif
 
   base_addr = mmio_region_from_addr(TOP_PWC_RV_PLIC_BASE_ADDR);
@@ -578,11 +578,11 @@ static void peripheral_irqs_clear(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-  CHECK_DIF_OK(dif_rv_timer_irq_acknowledge_all(&rv_timer, kHart));
+  CHECK_DIF_OK(dif_pwc_soc_proxy_irq_acknowledge_all(&pwc_soc_proxy));
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
-  CHECK_DIF_OK(dif_pwc_soc_proxy_irq_acknowledge_all(&soc_proxy));
+  CHECK_DIF_OK(dif_rv_timer_irq_acknowledge_all(&rv_timer, kHart));
 #endif
 }
 
@@ -606,13 +606,13 @@ static void peripheral_irqs_enable(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-  dif_rv_timer_irq_state_snapshot_t rv_timer_irqs =
-      (dif_rv_timer_irq_state_snapshot_t)0xffffffff;
+  dif_pwc_soc_proxy_irq_state_snapshot_t pwc_soc_proxy_irqs =
+      (dif_pwc_soc_proxy_irq_state_snapshot_t)0xffffffff;
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
-  dif_pwc_soc_proxy_irq_state_snapshot_t pwc_soc_proxy_irqs =
-      (dif_pwc_soc_proxy_irq_state_snapshot_t)0xffffffff;
+  dif_rv_timer_irq_state_snapshot_t rv_timer_irqs =
+      (dif_rv_timer_irq_state_snapshot_t)0xffffffff;
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 1 && 1 < TEST_MAX_IRQ_PERIPHERAL
@@ -652,11 +652,11 @@ static void peripheral_irqs_enable(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-  CHECK_DIF_OK(dif_rv_timer_irq_restore_all(&rv_timer, kHart, &rv_timer_irqs));
+  CHECK_DIF_OK(dif_pwc_soc_proxy_irq_restore_all(&pwc_soc_proxy, &pwc_soc_proxy_irqs));
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
-  CHECK_DIF_OK(dif_pwc_soc_proxy_irq_restore_all(&soc_proxy, &pwc_soc_proxy_irqs));
+  CHECK_DIF_OK(dif_rv_timer_irq_restore_all(&rv_timer, kHart, &rv_timer_irqs));
 #endif
 }
 
@@ -842,6 +842,21 @@ static void peripheral_irqs_trigger(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
+  peripheral_expected = kTopPwcPlicPeripheralPwcSocProxy;
+  for (dif_pwc_soc_proxy_irq_t irq = kDifPwcSocProxyIrqExternal0; irq <= kDifPwcSocProxyIrqExternal31;
+       ++irq) {
+    pwc_soc_proxy_irq_expected = irq;
+    LOG_INFO("Triggering pwc_soc_proxy IRQ %d.", irq);
+    CHECK_DIF_OK(dif_pwc_soc_proxy_irq_force(&pwc_soc_proxy, irq, true));
+
+    // This avoids a race where *irq_serviced is read before
+    // entering the ISR.
+    IBEX_SPIN_FOR(pwc_soc_proxy_irq_serviced == irq, 1);
+    LOG_INFO("IRQ %d from pwc_soc_proxy is serviced.", irq);
+  }
+#endif
+
+#if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
   peripheral_expected = kTopPwcPlicPeripheralRvTimer;
   for (dif_rv_timer_irq_t irq = kDifRvTimerIrqTimerExpiredHart0Timer0; irq <= kDifRvTimerIrqTimerExpiredHart0Timer0;
        ++irq) {
@@ -853,21 +868,6 @@ static void peripheral_irqs_trigger(void) {
     // entering the ISR.
     IBEX_SPIN_FOR(rv_timer_irq_serviced == irq, 1);
     LOG_INFO("IRQ %d from rv_timer is serviced.", irq);
-  }
-#endif
-
-#if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
-  peripheral_expected = kTopPwcPlicPeripheralSocProxy;
-  for (dif_pwc_soc_proxy_irq_t irq = kDifPwcSocProxyIrqExternal0; irq <= kDifPwcSocProxyIrqExternal31;
-       ++irq) {
-    pwc_soc_proxy_irq_expected = irq;
-    LOG_INFO("Triggering soc_proxy IRQ %d.", irq);
-    CHECK_DIF_OK(dif_pwc_soc_proxy_irq_force(&soc_proxy, irq, true));
-
-    // This avoids a race where *irq_serviced is read before
-    // entering the ISR.
-    IBEX_SPIN_FOR(pwc_soc_proxy_irq_serviced == irq, 1);
-    LOG_INFO("IRQ %d from soc_proxy is serviced.", irq);
   }
 #endif
 }

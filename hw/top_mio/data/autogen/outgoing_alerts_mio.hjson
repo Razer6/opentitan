@@ -25,8 +25,8 @@
             lpg_idx: 0
         }
         {
-            name: soc_proxy_fatal_alert_intg
-            module_name: soc_proxy
+            name: mio_soc_proxy_fatal_alert_intg
+            module_name: mio_soc_proxy
             index: 2
             type: alert
             async: 1
@@ -52,8 +52,8 @@
             lpg_idx: 1
         }
         {
-            name: rv_plic_fatal_fault
-            module_name: rv_plic
+            name: rv_plic_mio_fatal_fault
+            module_name: rv_plic_mio
             index: 5
             type: alert
             async: 1

@@ -42,24 +42,24 @@ package top_pwc_pkg;
   parameter int unsigned TOP_PWC_AON_TIMER_AON_SIZE_BYTES = 32'h40;
 
   /**
-   * Peripheral base address for core device on soc_proxy in top pwc.
+   * Peripheral base address for core device on pwc_soc_proxy in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_PROXY_CORE_BASE_ADDR = 32'h22030000;
+  parameter int unsigned TOP_PWC_PWC_SOC_PROXY_CORE_BASE_ADDR = 32'h22030000;
 
   /**
-   * Peripheral size in bytes for core device on soc_proxy in top pwc.
+   * Peripheral size in bytes for core device on pwc_soc_proxy in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_PROXY_CORE_SIZE_BYTES = 32'h10;
+  parameter int unsigned TOP_PWC_PWC_SOC_PROXY_CORE_SIZE_BYTES = 32'h10;
 
   /**
-   * Peripheral base address for ctn device on soc_proxy in top pwc.
+   * Peripheral base address for ctn device on pwc_soc_proxy in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_PROXY_CTN_BASE_ADDR = 32'h40000000;
+  parameter int unsigned TOP_PWC_PWC_SOC_PROXY_CTN_BASE_ADDR = 32'h40000000;
 
   /**
-   * Peripheral size in bytes for ctn device on soc_proxy in top pwc.
+   * Peripheral size in bytes for ctn device on pwc_soc_proxy in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_PROXY_CTN_SIZE_BYTES = 32'h40000000;
+  parameter int unsigned TOP_PWC_PWC_SOC_PROXY_CTN_SIZE_BYTES = 32'h40000000;
 
   /**
    * Peripheral base address for regs device on sram_ctrl_ret_aon in top pwc.
@@ -102,14 +102,14 @@ package top_pwc_pkg;
   parameter int unsigned TOP_PWC_RV_DM_MEM_SIZE_BYTES = 32'h1000;
 
   /**
-   * Peripheral base address for rv_plic in top pwc.
+   * Peripheral base address for rv_plic_pwc in top pwc.
    */
-  parameter int unsigned TOP_PWC_RV_PLIC_BASE_ADDR = 32'h28000000;
+  parameter int unsigned TOP_PWC_RV_PLIC_PWC_BASE_ADDR = 32'h28000000;
 
   /**
-   * Peripheral size in bytes for rv_plic in top pwc.
+   * Peripheral size in bytes for rv_plic_pwc in top pwc.
    */
-  parameter int unsigned TOP_PWC_RV_PLIC_SIZE_BYTES = 32'h8000000;
+  parameter int unsigned TOP_PWC_RV_PLIC_PWC_SIZE_BYTES = 32'h8000000;
 
   /**
    * Peripheral base address for regs device on sram_ctrl_main in top pwc.
@@ -303,10 +303,10 @@ package top_pwc_pkg;
     TopPwcAlertPeripheralGpio = 0,
     TopPwcAlertPeripheralRvTimer = 1,
     TopPwcAlertPeripheralAonTimerAon = 2,
-    TopPwcAlertPeripheralSocProxy = 3,
+    TopPwcAlertPeripheralPwcSocProxy = 3,
     TopPwcAlertPeripheralSramCtrlRetAon = 4,
     TopPwcAlertPeripheralRvDm = 5,
-    TopPwcAlertPeripheralRvPlic = 6,
+    TopPwcAlertPeripheralRvPlicPwc = 6,
     TopPwcAlertPeripheralSramCtrlMain = 7,
     TopPwcAlertPeripheralSramCtrlMbox = 8,
     TopPwcAlertPeripheralDma = 9,
@@ -327,10 +327,10 @@ package top_pwc_pkg;
     TopPwcAlertIdGpioFatalFault = 0,
     TopPwcAlertIdRvTimerFatalFault = 1,
     TopPwcAlertIdAonTimerAonFatalFault = 2,
-    TopPwcAlertIdSocProxyFatalAlertIntg = 3,
+    TopPwcAlertIdPwcSocProxyFatalAlertIntg = 3,
     TopPwcAlertIdSramCtrlRetAonFatalError = 4,
     TopPwcAlertIdRvDmFatalFault = 5,
-    TopPwcAlertIdRvPlicFatalFault = 6,
+    TopPwcAlertIdRvPlicPwcFatalFault = 6,
     TopPwcAlertIdSramCtrlMainFatalError = 7,
     TopPwcAlertIdSramCtrlMboxFatalError = 8,
     TopPwcAlertIdDmaFatalFault = 9,

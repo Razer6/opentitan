@@ -361,9 +361,9 @@
             rv_timer
             rstmgr_aon
             aon_timer_aon
-            soc_proxy.core
+            pwc_soc_proxy.core
             sram_ctrl_ret_aon
-            rv_plic
+            rv_plic_pwc
             sram_ctrl_main.regs
             sram_ctrl_mbox.regs
             dma
@@ -646,7 +646,7 @@
           width: 1
           default: lc_ctrl_pkg::Off
           inst_name: aon_timer_aon
-          top_signame: soc_proxy_lc_escalate_en
+          top_signame: pwc_soc_proxy_lc_escalate_en
           index: -1
         }
         {
@@ -682,7 +682,7 @@
       generate_dif: true
     }
     {
-      name: soc_proxy
+      name: pwc_soc_proxy
       type: pwc_soc_proxy
       clock_srcs:
       {
@@ -747,10 +747,10 @@
           act: req
           width: 1
           default: lc_ctrl_pkg::Off
-          inst_name: soc_proxy
+          inst_name: pwc_soc_proxy
           end_idx: -1
           top_type: broadcast
-          top_signame: soc_proxy_lc_escalate_en
+          top_signame: pwc_soc_proxy_lc_escalate_en
           index: -1
         }
         {
@@ -766,7 +766,7 @@
           act: rcv
           width: 1
           default: lc_ctrl_pkg::Off
-          inst_name: soc_proxy
+          inst_name: pwc_soc_proxy
           external: true
           top_signame: lc_escalate_en_ext
           conn_type: false
@@ -785,10 +785,10 @@
           act: req
           width: 1
           default: lc_ctrl_pkg::Off
-          inst_name: soc_proxy
+          inst_name: pwc_soc_proxy
           end_idx: -1
           top_type: broadcast
-          top_signame: soc_proxy_lc_hw_debug_en
+          top_signame: pwc_soc_proxy_lc_hw_debug_en
           index: -1
         }
         {
@@ -804,7 +804,7 @@
           act: rcv
           width: 1
           default: lc_ctrl_pkg::Off
-          inst_name: soc_proxy
+          inst_name: pwc_soc_proxy
           external: true
           top_signame: lc_hw_debug_en_ext
           conn_type: false
@@ -818,7 +818,7 @@
           type: uni
           act: req
           width: 1
-          inst_name: soc_proxy
+          inst_name: pwc_soc_proxy
           default: ""
           external: true
           top_signame: ctn_tl_h2d
@@ -833,7 +833,7 @@
           type: uni
           act: rcv
           width: 1
-          inst_name: soc_proxy
+          inst_name: pwc_soc_proxy
           default: ""
           external: true
           top_signame: ctn_tl_d2h
@@ -847,7 +847,7 @@
           type: uni
           act: rcv
           width: 8
-          inst_name: soc_proxy
+          inst_name: pwc_soc_proxy
           default: ""
           package: ""
           external: true
@@ -863,7 +863,7 @@
           type: uni
           act: req
           width: 1
-          inst_name: soc_proxy
+          inst_name: pwc_soc_proxy
           default: ""
           top_signame: dma_lsio_trigger
           index: -1
@@ -875,7 +875,7 @@
           type: uni
           act: rcv
           width: 32
-          inst_name: soc_proxy
+          inst_name: pwc_soc_proxy
           index: -1
         }
         {
@@ -886,7 +886,7 @@
           act: req
           width: 1
           default: prim_mubi_pkg::MuBi8False
-          inst_name: soc_proxy
+          inst_name: pwc_soc_proxy
           top_signame: sram_ctrl_main_otp_en_sram_ifetch
           index: -1
         }
@@ -897,10 +897,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: soc_proxy
+          inst_name: pwc_soc_proxy
           default: ""
           end_idx: -1
-          top_signame: soc_proxy_core_tl
+          top_signame: pwc_soc_proxy_core_tl
           index: -1
         }
         {
@@ -910,10 +910,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: soc_proxy
+          inst_name: pwc_soc_proxy
           default: ""
           end_idx: -1
-          top_signame: soc_proxy_ctn_tl
+          top_signame: pwc_soc_proxy_ctn_tl
           index: -1
         }
       ]
@@ -1152,7 +1152,7 @@
           width: 1
           default: lc_ctrl_pkg::Off
           inst_name: sram_ctrl_ret_aon
-          top_signame: soc_proxy_lc_escalate_en
+          top_signame: pwc_soc_proxy_lc_escalate_en
           index: -1
         }
         {
@@ -1164,7 +1164,7 @@
           width: 1
           default: lc_ctrl_pkg::Off
           inst_name: sram_ctrl_ret_aon
-          top_signame: soc_proxy_lc_hw_debug_en
+          top_signame: pwc_soc_proxy_lc_hw_debug_en
           index: -1
         }
         {
@@ -1409,7 +1409,7 @@
           width: 1
           default: lc_ctrl_pkg::Off
           inst_name: rv_dm
-          top_signame: soc_proxy_lc_hw_debug_en
+          top_signame: pwc_soc_proxy_lc_hw_debug_en
           index: -1
         }
         {
@@ -1525,7 +1525,7 @@
           width: 1
           default: lc_ctrl_pkg::Off
           inst_name: rv_dm
-          top_signame: soc_proxy_lc_escalate_en
+          top_signame: pwc_soc_proxy_lc_escalate_en
           index: -1
         }
         {
@@ -1633,7 +1633,7 @@
       ]
     }
     {
-      name: rv_plic
+      name: rv_plic_pwc
       type: rv_plic_pwc
       template_type: rv_plic
       clock_srcs:
@@ -1673,12 +1673,12 @@
           type: uni
           act: req
           width: 1
-          inst_name: rv_plic
+          inst_name: rv_plic_pwc
           default: ""
           package: ""
           end_idx: -1
           top_type: broadcast
-          top_signame: rv_plic_irq
+          top_signame: rv_plic_pwc_irq
           index: -1
         }
         {
@@ -1687,7 +1687,7 @@
           type: uni
           act: req
           width: 1
-          inst_name: rv_plic
+          inst_name: rv_plic_pwc
           index: -1
         }
         {
@@ -1696,12 +1696,12 @@
           type: uni
           act: req
           width: 1
-          inst_name: rv_plic
+          inst_name: rv_plic_pwc
           default: ""
           package: ""
           end_idx: -1
           top_type: broadcast
-          top_signame: rv_plic_msip
+          top_signame: rv_plic_pwc_msip
           index: -1
         }
         {
@@ -1711,10 +1711,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: rv_plic
+          inst_name: rv_plic_pwc
           default: ""
           end_idx: -1
-          top_signame: rv_plic_tl
+          top_signame: rv_plic_pwc_tl
           index: -1
         }
       ]
@@ -1960,7 +1960,7 @@
           width: 1
           default: lc_ctrl_pkg::Off
           inst_name: sram_ctrl_main
-          top_signame: soc_proxy_lc_escalate_en
+          top_signame: pwc_soc_proxy_lc_escalate_en
           index: -1
         }
         {
@@ -1972,7 +1972,7 @@
           width: 1
           default: lc_ctrl_pkg::Off
           inst_name: sram_ctrl_main
-          top_signame: soc_proxy_lc_hw_debug_en
+          top_signame: pwc_soc_proxy_lc_hw_debug_en
           index: -1
         }
         {
@@ -2307,7 +2307,7 @@
           width: 1
           default: lc_ctrl_pkg::Off
           inst_name: sram_ctrl_mbox
-          top_signame: soc_proxy_lc_escalate_en
+          top_signame: pwc_soc_proxy_lc_escalate_en
           index: -1
         }
         {
@@ -2319,7 +2319,7 @@
           width: 1
           default: lc_ctrl_pkg::Off
           inst_name: sram_ctrl_mbox
-          top_signame: soc_proxy_lc_hw_debug_en
+          top_signame: pwc_soc_proxy_lc_hw_debug_en
           index: -1
         }
         {
@@ -4433,7 +4433,7 @@
           inst_name: rv_core_ibex
           default: ""
           package: ""
-          top_signame: rv_plic_msip
+          top_signame: rv_plic_pwc_msip
           index: -1
         }
         {
@@ -4457,7 +4457,7 @@
           inst_name: rv_core_ibex
           default: ""
           package: ""
-          top_signame: rv_plic_irq
+          top_signame: rv_plic_pwc_irq
           index: -1
         }
         {
@@ -4657,13 +4657,13 @@
       ]
       dma.lsio_trigger:
       [
-        soc_proxy.dma_lsio_trigger
+        pwc_soc_proxy.dma_lsio_trigger
       ]
-      rv_plic.msip:
+      rv_plic_pwc.msip:
       [
         rv_core_ibex.irq_software
       ]
-      rv_plic.irq:
+      rv_plic_pwc.irq:
       [
         rv_core_ibex.irq_external
       ]
@@ -4671,14 +4671,14 @@
       [
         rv_core_ibex.debug_req
       ]
-      "soc_proxy.lc_hw_debug_en'":
+      "pwc_soc_proxy.lc_hw_debug_en'":
       [
         rv_dm.lc_hw_debug_en
         sram_ctrl_ret_aon.lc_hw_debug_en
         sram_ctrl_mbox.lc_hw_debug_en
         sram_ctrl_main.lc_hw_debug_en
       ]
-      "soc_proxy.lc_escalate_en'":
+      "pwc_soc_proxy.lc_escalate_en'":
       [
         rv_dm.lc_escalate_en
         sram_ctrl_ret_aon.lc_escalate_en
@@ -4688,7 +4688,7 @@
       ]
       sram_ctrl_main.otp_en_sram_ifetch:
       [
-        soc_proxy.mubi8_true
+        pwc_soc_proxy.mubi8_true
       ]
       pwc_main.tl_rv_core_ibex__corei:
       [
@@ -4714,17 +4714,17 @@
       [
         pwc_peri.tl_pwc_main
       ]
-      soc_proxy.core_tl:
+      pwc_soc_proxy.core_tl:
       [
-        pwc_main.tl_soc_proxy__core
+        pwc_main.tl_pwc_soc_proxy__core
       ]
-      soc_proxy.ctn_tl:
+      pwc_soc_proxy.ctn_tl:
       [
-        pwc_main.tl_soc_proxy__ctn
+        pwc_main.tl_pwc_soc_proxy__ctn
       ]
-      rv_plic.tl:
+      rv_plic_pwc.tl:
       [
-        pwc_main.tl_rv_plic
+        pwc_main.tl_rv_plic_pwc
       ]
       rv_core_ibex.cfg_tl_d:
       [
@@ -4897,16 +4897,16 @@
       rv_dm.next_dm_addr: rv_dm_next_dm_addr
       rv_dm.dbg_tl_d: rv_dm_dbg
       rv_core_ibex.fpga_info: fpga_info
-      soc_proxy.ctn_tl_h2d: ctn_tl_h2d
+      pwc_soc_proxy.ctn_tl_h2d: ctn_tl_h2d
       rv_core_ibex.boot_addr: rv_boot_addr
       rv_core_ibex.pwrmgr_cpu_en: rv_pwrmgr_cpu_en
       rv_core_ibex.lc_cpu_en: rv_cpu_en
       rv_core_ibex.esc_rx: rv_core_esc_rx
       rv_core_ibex.esc_tx: rv_core_esc_tx
-      soc_proxy.ctn_tl_d2h: ctn_tl_d2h
-      soc_proxy.lc_hw_debug_en_ext: lc_hw_debug_en_ext
-      soc_proxy.lc_escalate_en_ext: lc_escalate_en_ext
-      soc_proxy.soc_lsio_trigger: soc_lsio_trigger
+      pwc_soc_proxy.ctn_tl_d2h: ctn_tl_d2h
+      pwc_soc_proxy.lc_hw_debug_en_ext: lc_hw_debug_en_ext
+      pwc_soc_proxy.lc_escalate_en_ext: lc_escalate_en_ext
+      pwc_soc_proxy.soc_lsio_trigger: soc_lsio_trigger
       rv_dm.lc_check_byp_en: lc_check_byp_en
       sram_ctrl_ret_aon.cfg: sram_ctrl_ret_aon_ram_1p_cfg
       sram_ctrl_ret_aon.cfg_rsp: sram_ctrl_ret_aon_ram_1p_cfg_rsp
@@ -4957,7 +4957,7 @@
         [
           rv_dm.mem
           sram_ctrl_main.ram
-          soc_proxy.ctn
+          pwc_soc_proxy.ctn
         ]
         rv_core_ibex.cored:
         [
@@ -4965,13 +4965,13 @@
           rv_dm.regs
           sram_ctrl_main.ram
           pwc_peri
-          rv_plic
+          rv_plic_pwc
           sram_ctrl_main.regs
           rv_core_ibex.cfg
           sram_ctrl_mbox.ram
           sram_ctrl_mbox.regs
-          soc_proxy.ctn
-          soc_proxy.core
+          pwc_soc_proxy.ctn
+          pwc_soc_proxy.core
           dma
           mbx0.core
           mbx1.core
@@ -4987,13 +4987,13 @@
           rv_dm.regs
           sram_ctrl_main.ram
           pwc_peri
-          rv_plic
+          rv_plic_pwc
           sram_ctrl_main.regs
           rv_core_ibex.cfg
           sram_ctrl_mbox.ram
           sram_ctrl_mbox.regs
-          soc_proxy.ctn
-          soc_proxy.core
+          pwc_soc_proxy.ctn
+          pwc_soc_proxy.core
           dma
           mbx0.core
           mbx1.core
@@ -5007,7 +5007,7 @@
         [
           sram_ctrl_main.ram
           sram_ctrl_mbox.ram
-          soc_proxy.ctn
+          pwc_soc_proxy.ctn
           pwc_peri
         ]
         mbx0.sram:
@@ -5147,7 +5147,7 @@
           ]
         }
         {
-          name: soc_proxy.core
+          name: pwc_soc_proxy.core
           type: device
           clock: clk_main_i
           reset: rst_main_ni
@@ -5169,7 +5169,7 @@
           pipeline: true
         }
         {
-          name: soc_proxy.ctn
+          name: pwc_soc_proxy.ctn
           type: device
           clock: clk_main_i
           reset: rst_main_ni
@@ -5191,7 +5191,7 @@
           req_fifo_pass: true
         }
         {
-          name: rv_plic
+          name: rv_plic_pwc
           type: device
           clock: clk_main_i
           reset: rst_main_ni
@@ -5789,7 +5789,7 @@
           index: -1
         }
         {
-          name: tl_soc_proxy__core
+          name: tl_pwc_soc_proxy__core
           struct: tl
           package: tlul_pkg
           type: req_rsp
@@ -5797,11 +5797,11 @@
           width: 1
           inst_name: pwc_main
           default: ""
-          top_signame: soc_proxy_core_tl
+          top_signame: pwc_soc_proxy_core_tl
           index: -1
         }
         {
-          name: tl_soc_proxy__ctn
+          name: tl_pwc_soc_proxy__ctn
           struct: tl
           package: tlul_pkg
           type: req_rsp
@@ -5809,11 +5809,11 @@
           width: 1
           inst_name: pwc_main
           default: ""
-          top_signame: soc_proxy_ctn_tl
+          top_signame: pwc_soc_proxy_ctn_tl
           index: -1
         }
         {
-          name: tl_rv_plic
+          name: tl_rv_plic_pwc
           struct: tl
           package: tlul_pkg
           type: req_rsp
@@ -5821,7 +5821,7 @@
           width: 1
           inst_name: pwc_main
           default: ""
-          top_signame: rv_plic_tl
+          top_signame: rv_plic_pwc_tl
           index: -1
         }
         {
@@ -8073,7 +8073,7 @@
     gpio
     rv_timer
     aon_timer_aon
-    soc_proxy
+    pwc_soc_proxy
     dma
     mbx0
     mbx1
@@ -8122,10 +8122,10 @@
       incoming: false
     }
     {
-      name: soc_proxy_external
+      name: pwc_soc_proxy_external
       width: 32
       type: interrupt
-      module_name: soc_proxy
+      module_name: pwc_soc_proxy
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -9786,10 +9786,10 @@
       gpio
       rv_timer
       aon_timer_aon
-      soc_proxy
+      pwc_soc_proxy
       sram_ctrl_ret_aon
       rv_dm
-      rv_plic
+      rv_plic_pwc
       sram_ctrl_main
       sram_ctrl_mbox
       dma
@@ -9837,11 +9837,11 @@
         lpg_idx: 0
       }
       {
-        name: soc_proxy_fatal_alert_intg
+        name: pwc_soc_proxy_fatal_alert_intg
         width: 1
         type: alert
         async: "1"
-        module_name: soc_proxy
+        module_name: pwc_soc_proxy
         lpg_name: clk_ext_main_i_ext_rst_main_0
         lpg_idx: 1
       }
@@ -9864,11 +9864,11 @@
         lpg_idx: 1
       }
       {
-        name: rv_plic_fatal_fault
+        name: rv_plic_pwc_fatal_fault
         width: 1
         type: alert
         async: "1"
-        module_name: rv_plic
+        module_name: rv_plic_pwc
         lpg_name: clk_ext_main_i_ext_rst_main_0
         lpg_idx: 1
       }
@@ -10564,7 +10564,7 @@
         width: 1
         default: lc_ctrl_pkg::Off
         inst_name: aon_timer_aon
-        top_signame: soc_proxy_lc_escalate_en
+        top_signame: pwc_soc_proxy_lc_escalate_en
         index: -1
       }
       {
@@ -10602,10 +10602,10 @@
         act: req
         width: 1
         default: lc_ctrl_pkg::Off
-        inst_name: soc_proxy
+        inst_name: pwc_soc_proxy
         end_idx: -1
         top_type: broadcast
-        top_signame: soc_proxy_lc_escalate_en
+        top_signame: pwc_soc_proxy_lc_escalate_en
         index: -1
       }
       {
@@ -10621,7 +10621,7 @@
         act: rcv
         width: 1
         default: lc_ctrl_pkg::Off
-        inst_name: soc_proxy
+        inst_name: pwc_soc_proxy
         external: true
         top_signame: lc_escalate_en_ext
         conn_type: false
@@ -10640,10 +10640,10 @@
         act: req
         width: 1
         default: lc_ctrl_pkg::Off
-        inst_name: soc_proxy
+        inst_name: pwc_soc_proxy
         end_idx: -1
         top_type: broadcast
-        top_signame: soc_proxy_lc_hw_debug_en
+        top_signame: pwc_soc_proxy_lc_hw_debug_en
         index: -1
       }
       {
@@ -10659,7 +10659,7 @@
         act: rcv
         width: 1
         default: lc_ctrl_pkg::Off
-        inst_name: soc_proxy
+        inst_name: pwc_soc_proxy
         external: true
         top_signame: lc_hw_debug_en_ext
         conn_type: false
@@ -10673,7 +10673,7 @@
         type: uni
         act: req
         width: 1
-        inst_name: soc_proxy
+        inst_name: pwc_soc_proxy
         default: ""
         external: true
         top_signame: ctn_tl_h2d
@@ -10688,7 +10688,7 @@
         type: uni
         act: rcv
         width: 1
-        inst_name: soc_proxy
+        inst_name: pwc_soc_proxy
         default: ""
         external: true
         top_signame: ctn_tl_d2h
@@ -10702,7 +10702,7 @@
         type: uni
         act: rcv
         width: 8
-        inst_name: soc_proxy
+        inst_name: pwc_soc_proxy
         default: ""
         package: ""
         external: true
@@ -10718,7 +10718,7 @@
         type: uni
         act: req
         width: 1
-        inst_name: soc_proxy
+        inst_name: pwc_soc_proxy
         default: ""
         top_signame: dma_lsio_trigger
         index: -1
@@ -10730,7 +10730,7 @@
         type: uni
         act: rcv
         width: 32
-        inst_name: soc_proxy
+        inst_name: pwc_soc_proxy
         index: -1
       }
       {
@@ -10741,7 +10741,7 @@
         act: req
         width: 1
         default: prim_mubi_pkg::MuBi8False
-        inst_name: soc_proxy
+        inst_name: pwc_soc_proxy
         top_signame: sram_ctrl_main_otp_en_sram_ifetch
         index: -1
       }
@@ -10752,10 +10752,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: soc_proxy
+        inst_name: pwc_soc_proxy
         default: ""
         end_idx: -1
-        top_signame: soc_proxy_core_tl
+        top_signame: pwc_soc_proxy_core_tl
         index: -1
       }
       {
@@ -10765,10 +10765,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: soc_proxy
+        inst_name: pwc_soc_proxy
         default: ""
         end_idx: -1
-        top_signame: soc_proxy_ctn_tl
+        top_signame: pwc_soc_proxy_ctn_tl
         index: -1
       }
       {
@@ -10838,7 +10838,7 @@
         width: 1
         default: lc_ctrl_pkg::Off
         inst_name: sram_ctrl_ret_aon
-        top_signame: soc_proxy_lc_escalate_en
+        top_signame: pwc_soc_proxy_lc_escalate_en
         index: -1
       }
       {
@@ -10850,7 +10850,7 @@
         width: 1
         default: lc_ctrl_pkg::Off
         inst_name: sram_ctrl_ret_aon
-        top_signame: soc_proxy_lc_hw_debug_en
+        top_signame: pwc_soc_proxy_lc_hw_debug_en
         index: -1
       }
       {
@@ -10990,7 +10990,7 @@
         width: 1
         default: lc_ctrl_pkg::Off
         inst_name: rv_dm
-        top_signame: soc_proxy_lc_hw_debug_en
+        top_signame: pwc_soc_proxy_lc_hw_debug_en
         index: -1
       }
       {
@@ -11106,7 +11106,7 @@
         width: 1
         default: lc_ctrl_pkg::Off
         inst_name: rv_dm
-        top_signame: soc_proxy_lc_escalate_en
+        top_signame: pwc_soc_proxy_lc_escalate_en
         index: -1
       }
       {
@@ -11217,12 +11217,12 @@
         type: uni
         act: req
         width: 1
-        inst_name: rv_plic
+        inst_name: rv_plic_pwc
         default: ""
         package: ""
         end_idx: -1
         top_type: broadcast
-        top_signame: rv_plic_irq
+        top_signame: rv_plic_pwc_irq
         index: -1
       }
       {
@@ -11231,7 +11231,7 @@
         type: uni
         act: req
         width: 1
-        inst_name: rv_plic
+        inst_name: rv_plic_pwc
         index: -1
       }
       {
@@ -11240,12 +11240,12 @@
         type: uni
         act: req
         width: 1
-        inst_name: rv_plic
+        inst_name: rv_plic_pwc
         default: ""
         package: ""
         end_idx: -1
         top_type: broadcast
-        top_signame: rv_plic_msip
+        top_signame: rv_plic_pwc_msip
         index: -1
       }
       {
@@ -11255,10 +11255,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: rv_plic
+        inst_name: rv_plic_pwc
         default: ""
         end_idx: -1
-        top_signame: rv_plic_tl
+        top_signame: rv_plic_pwc_tl
         index: -1
       }
       {
@@ -11328,7 +11328,7 @@
         width: 1
         default: lc_ctrl_pkg::Off
         inst_name: sram_ctrl_main
-        top_signame: soc_proxy_lc_escalate_en
+        top_signame: pwc_soc_proxy_lc_escalate_en
         index: -1
       }
       {
@@ -11340,7 +11340,7 @@
         width: 1
         default: lc_ctrl_pkg::Off
         inst_name: sram_ctrl_main
-        top_signame: soc_proxy_lc_hw_debug_en
+        top_signame: pwc_soc_proxy_lc_hw_debug_en
         index: -1
       }
       {
@@ -11506,7 +11506,7 @@
         width: 1
         default: lc_ctrl_pkg::Off
         inst_name: sram_ctrl_mbox
-        top_signame: soc_proxy_lc_escalate_en
+        top_signame: pwc_soc_proxy_lc_escalate_en
         index: -1
       }
       {
@@ -11518,7 +11518,7 @@
         width: 1
         default: lc_ctrl_pkg::Off
         inst_name: sram_ctrl_mbox
-        top_signame: soc_proxy_lc_hw_debug_en
+        top_signame: pwc_soc_proxy_lc_hw_debug_en
         index: -1
       }
       {
@@ -12645,7 +12645,7 @@
         inst_name: rv_core_ibex
         default: ""
         package: ""
-        top_signame: rv_plic_msip
+        top_signame: rv_plic_pwc_msip
         index: -1
       }
       {
@@ -12669,7 +12669,7 @@
         inst_name: rv_core_ibex
         default: ""
         package: ""
-        top_signame: rv_plic_irq
+        top_signame: rv_plic_pwc_irq
         index: -1
       }
       {
@@ -13024,7 +13024,7 @@
         index: -1
       }
       {
-        name: tl_soc_proxy__core
+        name: tl_pwc_soc_proxy__core
         struct: tl
         package: tlul_pkg
         type: req_rsp
@@ -13032,11 +13032,11 @@
         width: 1
         inst_name: pwc_main
         default: ""
-        top_signame: soc_proxy_core_tl
+        top_signame: pwc_soc_proxy_core_tl
         index: -1
       }
       {
-        name: tl_soc_proxy__ctn
+        name: tl_pwc_soc_proxy__ctn
         struct: tl
         package: tlul_pkg
         type: req_rsp
@@ -13044,11 +13044,11 @@
         width: 1
         inst_name: pwc_main
         default: ""
-        top_signame: soc_proxy_ctn_tl
+        top_signame: pwc_soc_proxy_ctn_tl
         index: -1
       }
       {
-        name: tl_rv_plic
+        name: tl_rv_plic_pwc
         struct: tl
         package: tlul_pkg
         type: req_rsp
@@ -13056,7 +13056,7 @@
         width: 1
         inst_name: pwc_main
         default: ""
-        top_signame: rv_plic_tl
+        top_signame: rv_plic_pwc_tl
         index: -1
       }
       {
@@ -13846,7 +13846,7 @@
       {
         package: ""
         struct: logic
-        signame: rv_plic_msip
+        signame: rv_plic_pwc_msip
         width: 1
         type: uni
         end_idx: -1
@@ -13857,7 +13857,7 @@
       {
         package: ""
         struct: logic
-        signame: rv_plic_irq
+        signame: rv_plic_pwc_irq
         width: 1
         type: uni
         end_idx: -1
@@ -13879,7 +13879,7 @@
       {
         package: lc_ctrl_pkg
         struct: lc_tx
-        signame: soc_proxy_lc_hw_debug_en
+        signame: pwc_soc_proxy_lc_hw_debug_en
         width: 1
         type: uni
         end_idx: -1
@@ -13890,7 +13890,7 @@
       {
         package: lc_ctrl_pkg
         struct: lc_tx
-        signame: soc_proxy_lc_escalate_en
+        signame: pwc_soc_proxy_lc_escalate_en
         width: 1
         type: uni
         end_idx: -1
@@ -14044,7 +14044,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: soc_proxy_core_tl_req
+        signame: pwc_soc_proxy_core_tl_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -14055,7 +14055,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: soc_proxy_core_tl_rsp
+        signame: pwc_soc_proxy_core_tl_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -14066,7 +14066,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: soc_proxy_ctn_tl_req
+        signame: pwc_soc_proxy_ctn_tl_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -14077,7 +14077,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: soc_proxy_ctn_tl_rsp
+        signame: pwc_soc_proxy_ctn_tl_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -14088,7 +14088,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: rv_plic_tl_req
+        signame: rv_plic_pwc_tl_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -14099,7 +14099,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: rv_plic_tl_rsp
+        signame: rv_plic_pwc_tl_rsp
         width: 1
         type: req_rsp
         end_idx: -1

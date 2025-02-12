@@ -13,7 +13,7 @@
 //     -> sm1_32
 //       -> sram_ctrl_main.ram
 //     -> sm1_33
-//       -> soc_proxy.ctn
+//       -> pwc_soc_proxy.ctn
 // rv_core_ibex.cored
 //   -> s1n_34
 //     -> sm1_31
@@ -26,7 +26,7 @@
 //       -> asf_36
 //         -> pwc_peri
 //     -> sm1_38
-//       -> rv_plic
+//       -> rv_plic_pwc
 //     -> sm1_39
 //       -> sram_ctrl_main.regs
 //     -> sm1_40
@@ -36,9 +36,9 @@
 //     -> sm1_42
 //       -> sram_ctrl_mbox.regs
 //     -> sm1_33
-//       -> soc_proxy.ctn
+//       -> pwc_soc_proxy.ctn
 //     -> sm1_43
-//       -> soc_proxy.core
+//       -> pwc_soc_proxy.core
 //     -> sm1_44
 //       -> dma
 //     -> sm1_45
@@ -67,7 +67,7 @@
 //       -> asf_36
 //         -> pwc_peri
 //     -> sm1_38
-//       -> rv_plic
+//       -> rv_plic_pwc
 //     -> sm1_39
 //       -> sram_ctrl_main.regs
 //     -> sm1_40
@@ -77,9 +77,9 @@
 //     -> sm1_42
 //       -> sram_ctrl_mbox.regs
 //     -> sm1_33
-//       -> soc_proxy.ctn
+//       -> pwc_soc_proxy.ctn
 //     -> sm1_43
-//       -> soc_proxy.core
+//       -> pwc_soc_proxy.core
 //     -> sm1_44
 //       -> dma
 //     -> sm1_45
@@ -103,7 +103,7 @@
 //     -> sm1_41
 //       -> sram_ctrl_mbox.ram
 //     -> sm1_33
-//       -> soc_proxy.ctn
+//       -> pwc_soc_proxy.ctn
 //     -> sm1_37
 //       -> asf_36
 //         -> pwc_peri
@@ -166,12 +166,12 @@ module xbar_pwc_main (
   input  tlul_pkg::tl_d2h_t tl_rv_dm__mem_i,
   output tlul_pkg::tl_h2d_t tl_pwc_peri_o,
   input  tlul_pkg::tl_d2h_t tl_pwc_peri_i,
-  output tlul_pkg::tl_h2d_t tl_soc_proxy__core_o,
-  input  tlul_pkg::tl_d2h_t tl_soc_proxy__core_i,
-  output tlul_pkg::tl_h2d_t tl_soc_proxy__ctn_o,
-  input  tlul_pkg::tl_d2h_t tl_soc_proxy__ctn_i,
-  output tlul_pkg::tl_h2d_t tl_rv_plic_o,
-  input  tlul_pkg::tl_d2h_t tl_rv_plic_i,
+  output tlul_pkg::tl_h2d_t tl_pwc_soc_proxy__core_o,
+  input  tlul_pkg::tl_d2h_t tl_pwc_soc_proxy__core_i,
+  output tlul_pkg::tl_h2d_t tl_pwc_soc_proxy__ctn_o,
+  input  tlul_pkg::tl_d2h_t tl_pwc_soc_proxy__ctn_i,
+  output tlul_pkg::tl_h2d_t tl_rv_plic_pwc_o,
+  input  tlul_pkg::tl_d2h_t tl_rv_plic_pwc_i,
   output tlul_pkg::tl_h2d_t tl_rv_core_ibex__cfg_o,
   input  tlul_pkg::tl_d2h_t tl_rv_core_ibex__cfg_i,
   output tlul_pkg::tl_h2d_t tl_sram_ctrl_main__regs_o,
@@ -555,8 +555,8 @@ module xbar_pwc_main (
   assign tl_sram_ctrl_main__ram_o = tl_sm1_32_ds_h2d;
   assign tl_sm1_32_ds_d2h = tl_sram_ctrl_main__ram_i;
 
-  assign tl_soc_proxy__ctn_o = tl_sm1_33_ds_h2d;
-  assign tl_sm1_33_ds_d2h = tl_soc_proxy__ctn_i;
+  assign tl_pwc_soc_proxy__ctn_o = tl_sm1_33_ds_h2d;
+  assign tl_sm1_33_ds_d2h = tl_pwc_soc_proxy__ctn_i;
 
   assign tl_s1n_34_us_h2d = tl_rv_core_ibex__cored_i;
   assign tl_rv_core_ibex__cored_o = tl_s1n_34_us_d2h;
@@ -570,8 +570,8 @@ module xbar_pwc_main (
   assign tl_asf_36_us_h2d = tl_sm1_37_ds_h2d;
   assign tl_sm1_37_ds_d2h = tl_asf_36_us_d2h;
 
-  assign tl_rv_plic_o = tl_sm1_38_ds_h2d;
-  assign tl_sm1_38_ds_d2h = tl_rv_plic_i;
+  assign tl_rv_plic_pwc_o = tl_sm1_38_ds_h2d;
+  assign tl_sm1_38_ds_d2h = tl_rv_plic_pwc_i;
 
   assign tl_sram_ctrl_main__regs_o = tl_sm1_39_ds_h2d;
   assign tl_sm1_39_ds_d2h = tl_sram_ctrl_main__regs_i;
@@ -585,8 +585,8 @@ module xbar_pwc_main (
   assign tl_sram_ctrl_mbox__regs_o = tl_sm1_42_ds_h2d;
   assign tl_sm1_42_ds_d2h = tl_sram_ctrl_mbox__regs_i;
 
-  assign tl_soc_proxy__core_o = tl_sm1_43_ds_h2d;
-  assign tl_sm1_43_ds_d2h = tl_soc_proxy__core_i;
+  assign tl_pwc_soc_proxy__core_o = tl_sm1_43_ds_h2d;
+  assign tl_sm1_43_ds_d2h = tl_pwc_soc_proxy__core_i;
 
   assign tl_dma_o = tl_sm1_44_ds_h2d;
   assign tl_sm1_44_ds_d2h = tl_dma_i;
@@ -630,7 +630,7 @@ module xbar_pwc_main (
       dev_sel_s1n_30 = 2'd1;
 
     end else if ((tl_s1n_30_us_h2d.a_address &
-                  ~(ADDR_MASK_SOC_PROXY__CTN)) == ADDR_SPACE_SOC_PROXY__CTN) begin
+                  ~(ADDR_MASK_PWC_SOC_PROXY__CTN)) == ADDR_SPACE_PWC_SOC_PROXY__CTN) begin
       dev_sel_s1n_30 = 2'd2;
 end
   end
@@ -655,7 +655,7 @@ end
       dev_sel_s1n_34 = 5'd3;
 
     end else if ((tl_s1n_34_us_h2d.a_address &
-                  ~(ADDR_MASK_RV_PLIC)) == ADDR_SPACE_RV_PLIC) begin
+                  ~(ADDR_MASK_RV_PLIC_PWC)) == ADDR_SPACE_RV_PLIC_PWC) begin
       dev_sel_s1n_34 = 5'd4;
 
     end else if ((tl_s1n_34_us_h2d.a_address &
@@ -675,11 +675,11 @@ end
       dev_sel_s1n_34 = 5'd8;
 
     end else if ((tl_s1n_34_us_h2d.a_address &
-                  ~(ADDR_MASK_SOC_PROXY__CTN)) == ADDR_SPACE_SOC_PROXY__CTN) begin
+                  ~(ADDR_MASK_PWC_SOC_PROXY__CTN)) == ADDR_SPACE_PWC_SOC_PROXY__CTN) begin
       dev_sel_s1n_34 = 5'd9;
 
     end else if ((tl_s1n_34_us_h2d.a_address &
-                  ~(ADDR_MASK_SOC_PROXY__CORE)) == ADDR_SPACE_SOC_PROXY__CORE) begin
+                  ~(ADDR_MASK_PWC_SOC_PROXY__CORE)) == ADDR_SPACE_PWC_SOC_PROXY__CORE) begin
       dev_sel_s1n_34 = 5'd10;
 
     end else if ((tl_s1n_34_us_h2d.a_address &
@@ -736,7 +736,7 @@ end
       dev_sel_s1n_52 = 5'd3;
 
     end else if ((tl_s1n_52_us_h2d.a_address &
-                  ~(ADDR_MASK_RV_PLIC)) == ADDR_SPACE_RV_PLIC) begin
+                  ~(ADDR_MASK_RV_PLIC_PWC)) == ADDR_SPACE_RV_PLIC_PWC) begin
       dev_sel_s1n_52 = 5'd4;
 
     end else if ((tl_s1n_52_us_h2d.a_address &
@@ -756,11 +756,11 @@ end
       dev_sel_s1n_52 = 5'd8;
 
     end else if ((tl_s1n_52_us_h2d.a_address &
-                  ~(ADDR_MASK_SOC_PROXY__CTN)) == ADDR_SPACE_SOC_PROXY__CTN) begin
+                  ~(ADDR_MASK_PWC_SOC_PROXY__CTN)) == ADDR_SPACE_PWC_SOC_PROXY__CTN) begin
       dev_sel_s1n_52 = 5'd9;
 
     end else if ((tl_s1n_52_us_h2d.a_address &
-                  ~(ADDR_MASK_SOC_PROXY__CORE)) == ADDR_SPACE_SOC_PROXY__CORE) begin
+                  ~(ADDR_MASK_PWC_SOC_PROXY__CORE)) == ADDR_SPACE_PWC_SOC_PROXY__CORE) begin
       dev_sel_s1n_52 = 5'd10;
 
     end else if ((tl_s1n_52_us_h2d.a_address &
@@ -809,7 +809,7 @@ end
       dev_sel_s1n_53 = 3'd1;
 
     end else if ((tl_s1n_53_us_h2d.a_address &
-                  ~(ADDR_MASK_SOC_PROXY__CTN)) == ADDR_SPACE_SOC_PROXY__CTN) begin
+                  ~(ADDR_MASK_PWC_SOC_PROXY__CTN)) == ADDR_SPACE_PWC_SOC_PROXY__CTN) begin
       dev_sel_s1n_53 = 3'd2;
 
     end else if ((tl_s1n_53_us_h2d.a_address &
