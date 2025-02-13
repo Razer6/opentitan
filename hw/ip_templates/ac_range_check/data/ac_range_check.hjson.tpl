@@ -235,7 +235,7 @@ import math
             resval: true
             mubi: true
             name: "regwen"
-            desc: "Clearing this register, locks the confgiguration registers of that range until the next reset."
+            desc: "Clearing this register locks the configuration registers of that range until the next reset."
           }
         ]
       }
@@ -333,9 +333,9 @@ import math
     { multireg: {
         name: "RANGE_RACL_POLICY_SHADOWED"
         desc: '''
-              The RACL policy register exists and allows the system to further restrict the access to specific source roles.
-              The default value for both the read and write permission bitmap is set to a value to allow the access from all roles.
-              This register is protected against fault attacks by using a shadow register implementation. 
+              The RACL policy register allows the system to further restrict the access to specific source roles.
+              The default value for both the read and write permission bitmaps is to deny access for all roles.
+              This register is protected against fault attacks by using a shadow register implementation.
               '''
         count: "NumRanges"
         cname: "RACL"
