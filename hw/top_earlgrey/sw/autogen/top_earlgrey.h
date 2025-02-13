@@ -1272,7 +1272,7 @@ typedef enum top_earlgrey_plic_target {
  * alert.
  */
 typedef enum top_earlgrey_alert_peripheral {
-  kTopEarlgreyAlertPeripheralIncoming = 0, /**< Incoming Peripheral */
+  kTopEarlgreyAlertPeripheralExternal = 0, /**< External Peripheral */
   kTopEarlgreyAlertPeripheralUart0 = 1, /**< uart0 */
   kTopEarlgreyAlertPeripheralUart1 = 2, /**< uart1 */
   kTopEarlgreyAlertPeripheralUart2 = 3, /**< uart2 */

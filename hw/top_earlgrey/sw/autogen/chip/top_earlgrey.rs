@@ -1857,8 +1857,8 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 186] = [
 #[derive(Copy, Clone, PartialEq, Eq)]
 #[repr(u32)]
 pub enum AlertPeripheral {
-    /// Incoming Peripheral
-    Incoming = 0,
+    /// External Peripheral
+    External = 0,
     /// uart0
     Uart0 = 1,
     /// uart1

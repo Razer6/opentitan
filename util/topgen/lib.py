@@ -1180,14 +1180,14 @@ class TopGen:
             self._top_name, Name(["alert", "for", "peripheral"]),
             sources.short_name if isinstance(sources, RustEnum) else sources.name)
 
-        incoming_source = sources.add_constant(Name(["incoming"]),
-                                               docstring="Incoming Peripheral")
+        external_source = sources.add_constant(Name(["external"]),
+                                               docstring="External Peripheral")
 
         # When we generate the `alerts` enum, the only info we have about the
         # source is the module name. We'll use `source_name_map` to map a short
         # module name to the full name object used for the enum constant.
         source_name_map = {
-            'incoming': incoming_source
+            'external': external_source
         }
 
         for name in self.top["alert_module"]:
@@ -1211,7 +1211,7 @@ class TopGen:
                         alert_module = f'{name_prefix}_{alert_module}'
 
                     alert_id = alerts.add_constant(name, docstring=name.as_snake_case())
-                    source_name_key = 'incoming' if name_prefix else alert_module
+                    source_name_key = 'external' if name_prefix else alert_module
                     source_name = source_name_map[source_name_key]
                     alert_mapping.add_entry(alert_id, source_name)
                     self.device_alerts[alert_module].append(name.as_snake_case() + str(i))
@@ -1222,7 +1222,7 @@ class TopGen:
                     alert_module = f'{name_prefix}_{alert_module}'
 
                 alert_id = alerts.add_constant(name, docstring=name.as_snake_case())
-                source_name_key = 'incoming' if name_prefix else alert_module
+                source_name_key = 'external' if name_prefix else alert_module
                 source_name = source_name_map[source_name_key]
                 alert_mapping.add_entry(alert_id, source_name)
                 self.device_alerts[alert_module].append(name.as_snake_case())

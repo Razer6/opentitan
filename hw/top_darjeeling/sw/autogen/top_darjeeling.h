@@ -1279,7 +1279,7 @@ typedef enum top_darjeeling_plic_target {
  * alert.
  */
 typedef enum top_darjeeling_alert_peripheral {
-  kTopDarjeelingAlertPeripheralIncoming = 0, /**< Incoming Peripheral */
+  kTopDarjeelingAlertPeripheralExternal = 0, /**< External Peripheral */
   kTopDarjeelingAlertPeripheralUart0 = 1, /**< uart0 */
   kTopDarjeelingAlertPeripheralGpio = 2, /**< gpio */
   kTopDarjeelingAlertPeripheralSpiDevice = 3, /**< spi_device */

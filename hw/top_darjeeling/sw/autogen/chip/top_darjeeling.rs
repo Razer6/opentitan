@@ -1804,8 +1804,8 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 173] = [
 #[derive(Copy, Clone, PartialEq, Eq)]
 #[repr(u32)]
 pub enum AlertPeripheral {
-    /// Incoming Peripheral
-    Incoming = 0,
+    /// External Peripheral
+    External = 0,
     /// uart0
     Uart0 = 1,
     /// gpio
@@ -2683,172 +2683,172 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 186] = [
     AlertPeripheral::RvCoreIbex,
     // RvCoreIbexRecovHwErr -> AlertPeripheral::RvCoreIbex
     AlertPeripheral::RvCoreIbex,
-    // IncomingMioRvTimerFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioAonTimerAonFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioSramCtrlRetAonFatalError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioRvDmFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioRvPlicMioFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioSramCtrlMainFatalError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioSramCtrlMboxFatalError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioDmaFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbx0FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbx0RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbx1FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbx1RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbx2FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbx2RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbx3FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbx3RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbx4FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbx4RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbx5FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbx5RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbxPcie0FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioMbxPcie0RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioRaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioRaclCtrlFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioAcRangeCheckRecovCtrlUpdateErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioAcRangeCheckFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioRvCoreIbexFatalSwErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioRvCoreIbexRecovSwErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioRvCoreIbexFatalHwErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioRvCoreIbexRecovHwErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcGpioFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcRvTimerFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcAonTimerAonFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcSramCtrlRetAonFatalError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcRvDmFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcRvPlicPwcFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcSramCtrlMainFatalError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcSramCtrlMboxFatalError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcDmaFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbx0FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbx0RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbx1FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbx1RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbx2FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbx2RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbx3FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbx3RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbx4FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbx4RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbx5FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbx5RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbxPcie0FatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcMbxPcie0RecovFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcRaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcRaclCtrlFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcAcRangeCheckRecovCtrlUpdateErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcAcRangeCheckFatalFault -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcRvCoreIbexFatalSwErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcRvCoreIbexRecovSwErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcRvCoreIbexFatalHwErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcRvCoreIbexRecovHwErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingMioExtraAlertsIntegError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingPwcExtraAlertsIntegError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsAmsIpWrapperIntegError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsAmsIpWrapperCsrngRecov -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsSsramLoIntegErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsSsramHiIntegErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsLsioGroupEscErr0 -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsLsioGroupEscErr1 -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsLsioGroupEscErr2 -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsLsioGroupEscErr3 -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsNsGroupIntegError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsLioGroupVIntegError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsLioGroupPIntegError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsNsEfuseIntegError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsNsEfusePrimOtpFatalErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsNsEfusePrimOtpRecovErr -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsRcWidgetIntegError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsRotHdrIntegError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsRotPcieAdapterIntegError -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsRasCtlResetAlert -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsScsifRegsAlertTrigger -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
-    // IncomingRotExtraAlertsScsRaiAlertTrigger -> AlertPeripheral::Incoming
-    AlertPeripheral::Incoming,
+    // IncomingMioRvTimerFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioAonTimerAonFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioSramCtrlRetAonFatalError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioRvDmFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioRvPlicMioFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioSramCtrlMainFatalError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioSramCtrlMboxFatalError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioDmaFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbx0FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbx0RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbx1FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbx1RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbx2FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbx2RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbx3FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbx3RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbx4FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbx4RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbx5FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbx5RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbxPcie0FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioMbxPcie0RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioRaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioRaclCtrlFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioAcRangeCheckRecovCtrlUpdateErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioAcRangeCheckFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioRvCoreIbexFatalSwErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioRvCoreIbexRecovSwErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioRvCoreIbexFatalHwErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioRvCoreIbexRecovHwErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcGpioFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcRvTimerFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcAonTimerAonFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcSramCtrlRetAonFatalError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcRvDmFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcRvPlicPwcFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcSramCtrlMainFatalError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcSramCtrlMboxFatalError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcDmaFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbx0FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbx0RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbx1FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbx1RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbx2FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbx2RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbx3FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbx3RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbx4FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbx4RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbx5FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbx5RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbxPcie0FatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcMbxPcie0RecovFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcRaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcRaclCtrlFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcAcRangeCheckRecovCtrlUpdateErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcAcRangeCheckFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcRvCoreIbexFatalSwErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcRvCoreIbexRecovSwErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcRvCoreIbexFatalHwErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcRvCoreIbexRecovHwErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioExtraAlertsIntegError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcExtraAlertsIntegError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsAmsIpWrapperIntegError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsAmsIpWrapperCsrngRecov -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsSsramLoIntegErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsSsramHiIntegErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsLsioGroupEscErr0 -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsLsioGroupEscErr1 -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsLsioGroupEscErr2 -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsLsioGroupEscErr3 -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsNsGroupIntegError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsLioGroupVIntegError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsLioGroupPIntegError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsNsEfuseIntegError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsNsEfusePrimOtpFatalErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsNsEfusePrimOtpRecovErr -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsRcWidgetIntegError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsRotHdrIntegError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsRotPcieAdapterIntegError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsRasCtlResetAlert -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsScsifRegsAlertTrigger -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingRotExtraAlertsScsRaiAlertTrigger -> AlertPeripheral::External
+    AlertPeripheral::External,
 ];
 
 // PERIPH_INSEL ranges from 0 to NUM_MIO_PADS + 2 -1}
