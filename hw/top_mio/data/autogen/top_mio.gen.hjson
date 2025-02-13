@@ -2509,6 +2509,7 @@
             WDATA: 8
             RDATA: 8
           }
+          range_mapping: []
         }
       }
       clock_connections:
@@ -2679,6 +2680,7 @@
             WDATA: 8
             RDATA: 8
           }
+          range_mapping: []
         }
       }
       clock_connections:
@@ -2849,6 +2851,7 @@
             WDATA: 8
             RDATA: 8
           }
+          range_mapping: []
         }
       }
       clock_connections:
@@ -3019,6 +3022,7 @@
             WDATA: 6
             RDATA: 6
           }
+          range_mapping: []
         }
       }
       clock_connections:
@@ -3189,6 +3193,7 @@
             WDATA: 7
             RDATA: 7
           }
+          range_mapping: []
         }
       }
       clock_connections:
@@ -3359,6 +3364,7 @@
             WDATA: 9
             RDATA: 9
           }
+          range_mapping: []
         }
       }
       clock_connections:
@@ -3529,6 +3535,7 @@
             WDATA: 0
             RDATA: 0
           }
+          range_mapping: []
         }
       }
       clock_connections:
