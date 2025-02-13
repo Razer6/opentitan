@@ -967,7 +967,7 @@
       reset_connections: {rst_ni: "lc"},
       base_addrs: {
         core: {hart: "0x22000600"},
-        soc:  {soc_mbx: "0x01465600"},
+        soc:  {soc_mbx: "0x01496000"},
       },
       racl_mappings: {
         soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_rcode_private_mapping.hjson'

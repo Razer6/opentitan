@@ -8764,7 +8764,7 @@
         }
         soc:
         {
-          soc_mbx: 0x01465600
+          soc_mbx: 0x01496000
         }
       }
       racl_mappings:
@@ -13977,7 +13977,7 @@
             {
               base_addrs:
               {
-                soc_mbx: 0x1465600
+                soc_mbx: 0x1496000
               }
               size_byte: 0x20
             }
