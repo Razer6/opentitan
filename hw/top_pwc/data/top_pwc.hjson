@@ -297,7 +297,8 @@
       domain: ["0"],
       param_decl: {
         InstrExec: "0",
-        InstSize: 4096
+        InstSize: 4096,
+        FlopRamOutput: 1
       }
       base_addrs: {
         regs: {hart: "0x30500000"},
@@ -362,7 +363,8 @@
       // later be permanently disabled using the EN_SRAM_IFETCH switch in OTP.
       param_decl: {
         InstrExec: "1",
-        InstSize: 65536
+        InstSize: 65536,
+        FlopRamOutput: 1
       }
       base_addrs: {
         regs: {hart: "0x211c0000"},
@@ -389,7 +391,8 @@
       reset_connections: {rst_ni: "ext_rst_main", rst_otp_ni: "ext_rst_io_div4"},
       param_decl: {
         InstrExec: "0",
-        InstSize: 4096
+        InstSize: 4096,
+        FlopRamOutput: 1
       }
       base_addrs: {
         regs: {hart: "0x211d0000"},
