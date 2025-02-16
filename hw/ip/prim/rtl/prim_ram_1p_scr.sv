@@ -261,6 +261,7 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   localparam int DataNonceWidth = 64 - AddrWidth;
   logic [NumParScr*64-1:0] keystream;
   logic [NumParScr-1:0][DataNonceWidth-1:0] data_scr_nonce;
+  logic keystream_valid;
   for (genvar k = 0; k < NumParScr; k++) begin : gen_par_scr
     assign data_scr_nonce[k] = nonce_i[k * DataNonceWidth +: DataNonceWidth];
 
@@ -284,7 +285,7 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
       .dec_i   ( 1'b0 ),
       // Output keystream to be XOR'ed
       .data_o  ( keystream[k * 64 +: 64] ),
-      .valid_o ( )
+      .valid_o ( keystream_valid )
     );
 
     // Unread unused bits from keystream
@@ -296,8 +297,26 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   end
 
   // Replicate keystream if needed
-  logic [Width-1:0] keystream_repl;
+  logic [Width-1:0] keystream_repl, keystream_repl_q;
   assign keystream_repl = Width'({NumParKeystr{keystream}});
+
+  // Delay the keystream when data comes in delayed due to a flopped output
+  if (FlopRamOutput) begin
+    prim_flop_en #(
+      .Width(Width),
+      .ResetValue(0)
+    ) u_delay_keystream (
+      .clk_i,
+      .rst_ni,
+      .en_i(keystream_valid),
+      .d_i(keystream_repl),
+      .q_o(keystream_repl_q)
+    );
+  end else begin
+    logic unused_signals;
+    assign unused_signals = keystream_valid;
+    assign keystream_repl_q = keystream_repl;
+  end
 
   /////////////////////
   // Data Scrambling //
@@ -354,7 +373,7 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
 
     // Apply Keystream, replicate it if needed
     assign rdata[k*DiffWidth +: LocalWidth] = rdata_xor ^
-                                              keystream_repl[k*DiffWidth +: LocalWidth];
+                                              keystream_repl_q[k*DiffWidth +: LocalWidth];
   end
 
   ////////////////////////////////////////////////
