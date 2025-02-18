@@ -1271,61 +1271,61 @@ module racl_ctrl_pwc_reg_top
   assign error_log_we = racl_addr_hit_write[1] & reg_we & !reg_error;
 
   assign error_log_valid_wd = reg_wdata[0];
-  assign policy_all_rd_wr_shadowed_re = racl_addr_hit_write[2] & reg_re & !reg_error;
+  assign policy_all_rd_wr_shadowed_re = racl_addr_hit_read[2] & reg_re & !reg_error;
   assign policy_all_rd_wr_shadowed_we = racl_addr_hit_write[2] & reg_we & !reg_error;
 
   assign policy_all_rd_wr_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_all_rd_wr_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign policy_hw_rot_pwc_wr_all_rd_shadowed_re = racl_addr_hit_write[3] & reg_re & !reg_error;
+  assign policy_hw_rot_pwc_wr_all_rd_shadowed_re = racl_addr_hit_read[3] & reg_re & !reg_error;
   assign policy_hw_rot_pwc_wr_all_rd_shadowed_we = racl_addr_hit_write[3] & reg_we & !reg_error;
 
   assign policy_hw_rot_pwc_wr_all_rd_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_hw_rot_pwc_wr_all_rd_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign policy_pre_boot_m_shadowed_re = racl_addr_hit_write[4] & reg_re & !reg_error;
+  assign policy_pre_boot_m_shadowed_re = racl_addr_hit_read[4] & reg_re & !reg_error;
   assign policy_pre_boot_m_shadowed_we = racl_addr_hit_write[4] & reg_we & !reg_error;
 
   assign policy_pre_boot_m_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_pre_boot_m_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign policy_post_boot_m_shadowed_re = racl_addr_hit_write[5] & reg_re & !reg_error;
+  assign policy_post_boot_m_shadowed_re = racl_addr_hit_read[5] & reg_re & !reg_error;
   assign policy_post_boot_m_shadowed_we = racl_addr_hit_write[5] & reg_we & !reg_error;
 
   assign policy_post_boot_m_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_post_boot_m_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign policy_tee_limited_shadowed_re = racl_addr_hit_write[6] & reg_re & !reg_error;
+  assign policy_tee_limited_shadowed_re = racl_addr_hit_read[6] & reg_re & !reg_error;
   assign policy_tee_limited_shadowed_we = racl_addr_hit_write[6] & reg_we & !reg_error;
 
   assign policy_tee_limited_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_tee_limited_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign policy_rcode_private_shadowed_re = racl_addr_hit_write[7] & reg_re & !reg_error;
+  assign policy_rcode_private_shadowed_re = racl_addr_hit_read[7] & reg_re & !reg_error;
   assign policy_rcode_private_shadowed_we = racl_addr_hit_write[7] & reg_we & !reg_error;
 
   assign policy_rcode_private_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_rcode_private_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign policy_rot_private_shadowed_re = racl_addr_hit_write[8] & reg_re & !reg_error;
+  assign policy_rot_private_shadowed_re = racl_addr_hit_read[8] & reg_re & !reg_error;
   assign policy_rot_private_shadowed_we = racl_addr_hit_write[8] & reg_we & !reg_error;
 
   assign policy_rot_private_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_rot_private_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign policy_pwc_private_shadowed_re = racl_addr_hit_write[9] & reg_re & !reg_error;
+  assign policy_pwc_private_shadowed_re = racl_addr_hit_read[9] & reg_re & !reg_error;
   assign policy_pwc_private_shadowed_we = racl_addr_hit_write[9] & reg_we & !reg_error;
 
   assign policy_pwc_private_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_pwc_private_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign policy_mio_private_shadowed_re = racl_addr_hit_write[10] & reg_re & !reg_error;
+  assign policy_mio_private_shadowed_re = racl_addr_hit_read[10] & reg_re & !reg_error;
   assign policy_mio_private_shadowed_we = racl_addr_hit_write[10] & reg_we & !reg_error;
 
   assign policy_mio_private_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_mio_private_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign policy_duc_private_shadowed_re = racl_addr_hit_write[11] & reg_re & !reg_error;
+  assign policy_duc_private_shadowed_re = racl_addr_hit_read[11] & reg_re & !reg_error;
   assign policy_duc_private_shadowed_we = racl_addr_hit_write[11] & reg_we & !reg_error;
 
   assign policy_duc_private_shadowed_read_perm_wd = reg_wdata[15:0];
