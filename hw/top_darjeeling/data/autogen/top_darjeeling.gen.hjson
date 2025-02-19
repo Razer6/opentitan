@@ -4254,15 +4254,6 @@
           name_top: SramCtrlRetAonNumPrinceRoundsHalf
         }
         {
-          name: UseOTIntegErr
-          desc: When set to 0, use Rivos error logging
-          type: bit
-          default: "1"
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlRetAonUseOTIntegErr
-        }
-        {
           name: FlopRamOutput
           desc: Add a flop stage on the RAM macro output
           type: bit
@@ -4270,6 +4261,15 @@
           local: "false"
           expose: "true"
           name_top: SramCtrlRetAonFlopRamOutput
+        }
+        {
+          name: EccCorrection
+          desc: Enable single-bit error correction and error logging
+          type: bit
+          default: "0"
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlRetAonEccCorrection
         }
       ]
       inter_signal_list:
@@ -4395,28 +4395,23 @@
           index: -1
         }
         {
-          name: sram_error_record_uncor_err
-          desc: SRAM Error injection reporting
+          name: sram_rerror
+          desc:
+            '''
+            SRAM read error log.
+            Bit 0: Correctable error
+            Bit 1: Uncorrectable error
+            '''
           struct: logic
           type: uni
           act: req
-          width: 1
+          width: 2
           inst_name: sram_ctrl_ret_aon
           index: -1
         }
         {
-          name: sram_error_record_corr_err
-          desc: SRAM Error injection reporting
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: sram_ctrl_ret_aon
-          index: -1
-        }
-        {
-          name: sram_error_record_err_addr
-          desc: SRAM Error injection reporting
+          name: sram_rerror_addr
+          desc: SRAM read error address.
           struct: logic [top_pkg::TL_AW-1:0]
           type: uni
           act: req
@@ -6582,15 +6577,6 @@
           name_top: SramCtrlMainNumPrinceRoundsHalf
         }
         {
-          name: UseOTIntegErr
-          desc: When set to 0, use Rivos error logging
-          type: bit
-          default: "1"
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlMainUseOTIntegErr
-        }
-        {
           name: FlopRamOutput
           desc: Add a flop stage on the RAM macro output
           type: bit
@@ -6598,6 +6584,15 @@
           local: "false"
           expose: "true"
           name_top: SramCtrlMainFlopRamOutput
+        }
+        {
+          name: EccCorrection
+          desc: Enable single-bit error correction and error logging
+          type: bit
+          default: "0"
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlMainEccCorrection
         }
       ]
       inter_signal_list:
@@ -6725,28 +6720,23 @@
           index: -1
         }
         {
-          name: sram_error_record_uncor_err
-          desc: SRAM Error injection reporting
+          name: sram_rerror
+          desc:
+            '''
+            SRAM read error log.
+            Bit 0: Correctable error
+            Bit 1: Uncorrectable error
+            '''
           struct: logic
           type: uni
           act: req
-          width: 1
+          width: 2
           inst_name: sram_ctrl_main
           index: -1
         }
         {
-          name: sram_error_record_corr_err
-          desc: SRAM Error injection reporting
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: sram_ctrl_main
-          index: -1
-        }
-        {
-          name: sram_error_record_err_addr
-          desc: SRAM Error injection reporting
+          name: sram_rerror_addr
+          desc: SRAM read error address.
           struct: logic [top_pkg::TL_AW-1:0]
           type: uni
           act: req
@@ -6929,15 +6919,6 @@
           name_top: SramCtrlMboxNumPrinceRoundsHalf
         }
         {
-          name: UseOTIntegErr
-          desc: When set to 0, use Rivos error logging
-          type: bit
-          default: "1"
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlMboxUseOTIntegErr
-        }
-        {
           name: FlopRamOutput
           desc: Add a flop stage on the RAM macro output
           type: bit
@@ -6945,6 +6926,15 @@
           local: "false"
           expose: "true"
           name_top: SramCtrlMboxFlopRamOutput
+        }
+        {
+          name: EccCorrection
+          desc: Enable single-bit error correction and error logging
+          type: bit
+          default: "0"
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlMboxEccCorrection
         }
       ]
       inter_signal_list:
@@ -7070,28 +7060,23 @@
           index: -1
         }
         {
-          name: sram_error_record_uncor_err
-          desc: SRAM Error injection reporting
+          name: sram_rerror
+          desc:
+            '''
+            SRAM read error log.
+            Bit 0: Correctable error
+            Bit 1: Uncorrectable error
+            '''
           struct: logic
           type: uni
           act: req
-          width: 1
+          width: 2
           inst_name: sram_ctrl_mbox
           index: -1
         }
         {
-          name: sram_error_record_corr_err
-          desc: SRAM Error injection reporting
-          struct: logic
-          type: uni
-          act: req
-          width: 1
-          inst_name: sram_ctrl_mbox
-          index: -1
-        }
-        {
-          name: sram_error_record_err_addr
-          desc: SRAM Error injection reporting
+          name: sram_rerror_addr
+          desc: SRAM read error address.
           struct: logic [top_pkg::TL_AW-1:0]
           type: uni
           act: req
@@ -23344,28 +23329,23 @@
         index: -1
       }
       {
-        name: sram_error_record_uncor_err
-        desc: SRAM Error injection reporting
+        name: sram_rerror
+        desc:
+          '''
+          SRAM read error log.
+          Bit 0: Correctable error
+          Bit 1: Uncorrectable error
+          '''
         struct: logic
         type: uni
         act: req
-        width: 1
+        width: 2
         inst_name: sram_ctrl_ret_aon
         index: -1
       }
       {
-        name: sram_error_record_corr_err
-        desc: SRAM Error injection reporting
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: sram_ctrl_ret_aon
-        index: -1
-      }
-      {
-        name: sram_error_record_err_addr
-        desc: SRAM Error injection reporting
+        name: sram_rerror_addr
+        desc: SRAM read error address.
         struct: logic [top_pkg::TL_AW-1:0]
         type: uni
         act: req
@@ -24523,28 +24503,23 @@
         index: -1
       }
       {
-        name: sram_error_record_uncor_err
-        desc: SRAM Error injection reporting
+        name: sram_rerror
+        desc:
+          '''
+          SRAM read error log.
+          Bit 0: Correctable error
+          Bit 1: Uncorrectable error
+          '''
         struct: logic
         type: uni
         act: req
-        width: 1
+        width: 2
         inst_name: sram_ctrl_main
         index: -1
       }
       {
-        name: sram_error_record_corr_err
-        desc: SRAM Error injection reporting
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: sram_ctrl_main
-        index: -1
-      }
-      {
-        name: sram_error_record_err_addr
-        desc: SRAM Error injection reporting
+        name: sram_rerror_addr
+        desc: SRAM read error address.
         struct: logic [top_pkg::TL_AW-1:0]
         type: uni
         act: req
@@ -24699,28 +24674,23 @@
         index: -1
       }
       {
-        name: sram_error_record_uncor_err
-        desc: SRAM Error injection reporting
+        name: sram_rerror
+        desc:
+          '''
+          SRAM read error log.
+          Bit 0: Correctable error
+          Bit 1: Uncorrectable error
+          '''
         struct: logic
         type: uni
         act: req
-        width: 1
+        width: 2
         inst_name: sram_ctrl_mbox
         index: -1
       }
       {
-        name: sram_error_record_corr_err
-        desc: SRAM Error injection reporting
-        struct: logic
-        type: uni
-        act: req
-        width: 1
-        inst_name: sram_ctrl_mbox
-        index: -1
-      }
-      {
-        name: sram_error_record_err_addr
-        desc: SRAM Error injection reporting
+        name: sram_rerror_addr
+        desc: SRAM read error address.
         struct: logic [top_pkg::TL_AW-1:0]
         type: uni
         act: req

@@ -107,15 +107,15 @@
       expose:    "true",
       default:   "3"
     },
-    { name:      "UseOTIntegErr",
-      desc:      "When set to 0, use Rivos error logging",
+    { name:      "FlopRamOutput",
+      desc:      "Add a flop stage on the RAM macro output",
       type:      "bit",
       local:     "false",
       expose:    "true",
-      default:   "1"
+      default:   "0"
     },
-    { name:      "FlopRamOutput",
-      desc:      "Add a flop stage on the RAM macro output",
+    { name:      "EccCorrection",
+      desc:      "Enable single-bit error correction and error logging",
       type:      "bit",
       local:     "false",
       expose:    "true",
@@ -237,30 +237,24 @@
         RACL error log information of this module.
       '''
     },
-    // Rivos custom signals
     { struct:  "logic",
+      width:   "2"
       type:    "uni",
-      name:    "sram_error_record_uncor_err",
+      name:    "sram_rerror",
       act:     "req",
       desc:    '''
-               SRAM Error injection reporting
-               ''',
-    },
-    { struct:  "logic",
-      type:    "uni",
-      name:    "sram_error_record_corr_err",
-      act:     "req",
-      desc:    '''
-               SRAM Error injection reporting
-               ''',
+               SRAM read error log.
+               Bit 0: Correctable error
+               Bit 1: Uncorrectable error
+               '''
     },
     { struct:  "logic [top_pkg::TL_AW-1:0]",
       type:    "uni",
-      name:    "sram_error_record_err_addr",
+      name:    "sram_rerror_addr",
       act:     "req",
       desc:    '''
-               SRAM Error injection reporting
-               ''',
+               SRAM read error address.
+               '''
     }
   ]
 

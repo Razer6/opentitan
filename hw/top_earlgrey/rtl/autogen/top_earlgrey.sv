@@ -64,8 +64,8 @@ module top_earlgrey #(
   parameter int SramCtrlRetAonNumRamInst = 1,
   parameter bit SramCtrlRetAonInstrExec = 0,
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
-  parameter bit SramCtrlRetAonUseOTIntegErr = 1,
   parameter bit SramCtrlRetAonFlopRamOutput = 0,
+  parameter bit SramCtrlRetAonEccCorrection = 0,
   // parameters for flash_ctrl
   parameter bit SecFlashCtrlScrambleEn = 1,
   parameter int FlashCtrlProgFifoDepth = 4,
@@ -112,8 +112,8 @@ module top_earlgrey #(
   parameter int SramCtrlMainNumRamInst = 1,
   parameter bit SramCtrlMainInstrExec = 1,
   parameter int SramCtrlMainNumPrinceRoundsHalf = 2,
-  parameter bit SramCtrlMainUseOTIntegErr = 1,
   parameter bit SramCtrlMainFlopRamOutput = 0,
+  parameter bit SramCtrlMainEccCorrection = 0,
   // parameters for rom_ctrl
   parameter RomCtrlBootRomInitFile = "",
   parameter bit SecRomCtrlDisableScrambling = 1'b0,
@@ -2166,8 +2166,8 @@ module top_earlgrey #(
     .NumRamInst(SramCtrlRetAonNumRamInst),
     .InstrExec(SramCtrlRetAonInstrExec),
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
-    .UseOTIntegErr(SramCtrlRetAonUseOTIntegErr),
-    .FlopRamOutput(SramCtrlRetAonFlopRamOutput)
+    .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
+    .EccCorrection(SramCtrlRetAonEccCorrection)
   ) u_sram_ctrl_ret_aon (
       // [34]: fatal_error
       .alert_tx_o  ( alert_tx[34:34] ),
@@ -2183,9 +2183,8 @@ module top_earlgrey #(
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .sram_error_record_uncor_err_o(),
-      .sram_error_record_corr_err_o(),
-      .sram_error_record_err_addr_o(),
+      .sram_rerror_o(),
+      .sram_rerror_addr_o(),
       .regs_tl_i(sram_ctrl_ret_aon_regs_tl_req),
       .regs_tl_o(sram_ctrl_ret_aon_regs_tl_rsp),
       .ram_tl_i(sram_ctrl_ret_aon_ram_tl_req),
@@ -2658,8 +2657,8 @@ module top_earlgrey #(
     .NumRamInst(SramCtrlMainNumRamInst),
     .InstrExec(SramCtrlMainInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
-    .UseOTIntegErr(SramCtrlMainUseOTIntegErr),
-    .FlopRamOutput(SramCtrlMainFlopRamOutput)
+    .FlopRamOutput(SramCtrlMainFlopRamOutput),
+    .EccCorrection(SramCtrlMainEccCorrection)
   ) u_sram_ctrl_main (
       // [59]: fatal_error
       .alert_tx_o  ( alert_tx[59:59] ),
@@ -2675,9 +2674,8 @@ module top_earlgrey #(
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .sram_error_record_uncor_err_o(),
-      .sram_error_record_corr_err_o(),
-      .sram_error_record_err_addr_o(),
+      .sram_rerror_o(),
+      .sram_rerror_addr_o(),
       .regs_tl_i(sram_ctrl_main_regs_tl_req),
       .regs_tl_o(sram_ctrl_main_regs_tl_rsp),
       .ram_tl_i(sram_ctrl_main_ram_tl_req),
