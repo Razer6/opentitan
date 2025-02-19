@@ -504,8 +504,8 @@ module top_pwc #(
     .InstrExec(SramCtrlRetAonInstrExec),
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
-    .EccCorrection(SramCtrlRetAonEccCorrection),
     .Outstanding(SramCtrlRetAonOutstanding),
+    .EccCorrection(SramCtrlRetAonEccCorrection),
     .RaclPolicySelRangesRamNum(SramCtrlRetAonRaclPolicySelRangesRamNum)
   ) u_sram_ctrl_ret_aon (
       // External alert group "pwc" [3]: fatal_error
@@ -525,6 +525,7 @@ module top_pwc #(
       .racl_policy_sel_ranges_ram_i({SramCtrlRetAonRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .sram_rerror_addr_o(),
+      .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_ret_aon_regs_tl_req),
       .regs_tl_o(sram_ctrl_ret_aon_regs_tl_rsp),
       .ram_tl_i(sram_ctrl_ret_aon_ram_tl_req),
@@ -611,8 +612,8 @@ module top_pwc #(
     .InstrExec(SramCtrlMainInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
-    .EccCorrection(SramCtrlMainEccCorrection),
     .Outstanding(SramCtrlMainOutstanding),
+    .EccCorrection(SramCtrlMainEccCorrection),
     .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum)
   ) u_sram_ctrl_main (
       // External alert group "pwc" [6]: fatal_error
@@ -632,6 +633,7 @@ module top_pwc #(
       .racl_policy_sel_ranges_ram_i({SramCtrlMainRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .sram_rerror_addr_o(),
+      .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_main_regs_tl_req),
       .regs_tl_o(sram_ctrl_main_regs_tl_rsp),
       .ram_tl_i(sram_ctrl_main_ram_tl_req),
@@ -655,8 +657,8 @@ module top_pwc #(
     .InstrExec(SramCtrlMboxInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMboxNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
-    .EccCorrection(SramCtrlMboxEccCorrection),
     .Outstanding(SramCtrlMboxOutstanding),
+    .EccCorrection(SramCtrlMboxEccCorrection),
     .RaclPolicySelRangesRamNum(SramCtrlMboxRaclPolicySelRangesRamNum)
   ) u_sram_ctrl_mbox (
       // External alert group "pwc" [7]: fatal_error
@@ -676,6 +678,7 @@ module top_pwc #(
       .racl_policy_sel_ranges_ram_i({SramCtrlMboxRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .sram_rerror_addr_o(),
+      .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_mbox_regs_tl_req),
       .regs_tl_o(sram_ctrl_mbox_regs_tl_rsp),
       .ram_tl_i(sram_ctrl_mbox_ram_tl_req),

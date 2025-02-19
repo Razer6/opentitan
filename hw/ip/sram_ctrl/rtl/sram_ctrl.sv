@@ -26,22 +26,21 @@ module sram_ctrl
   parameter int NumPrinceRoundsHalf                        = 3,
   // Number of outstanding TLUL transfers
   parameter int Outstanding                                = 2,
-  // RACL configuration of this IP including the policy selection for the configuration registers
-  // and the SRAM memory window
-  parameter bit                         EnableRacl         = 1'b0,  // reg_top racl
-  parameter bit                         EnableSramRacl     = 1'b0,  // sram range racl
-  parameter bit                         RaclErrorRsp       = EnableRacl,
-  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVecRegs[NumRegsRegs] = '{NumRegsRegs{0}},
-  parameter int unsigned                RaclPolicySelRangesRamNum = 1,
-  // Enable single  error correction and error logging
-  parameter bit                         EccCorrection      = 0,
   // Add a flop stage on the RAM macro output
   parameter bit FlopRamOutput                              = 0,
+  // Enable single-bit error correction and error logging
+  parameter bit                         EccCorrection      = 0,
+  // RACL configuration
+  parameter bit                         EnableRacl       = 1'b0,
+  parameter bit                         EnableSramRacl   = 1'b0,
+  parameter bit                         RaclErrorRsp     = EnableRacl,
+  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVecRegs[NumRegsRegs] = '{NumRegsRegs{0}},
+  parameter int unsigned                RaclPolicySelRangesRamNum = 1,
   // Random netlist constants
-  parameter  otp_ctrl_pkg::sram_key_t   RndCnstSramKey     = RndCnstSramKeyDefault,
-  parameter  otp_ctrl_pkg::sram_nonce_t RndCnstSramNonce   = RndCnstSramNonceDefault,
-  parameter  lfsr_seed_t                RndCnstLfsrSeed    = RndCnstLfsrSeedDefault,
-  parameter  lfsr_perm_t                RndCnstLfsrPerm    = RndCnstLfsrPermDefault
+  parameter  otp_ctrl_pkg::sram_key_t   RndCnstSramKey   = RndCnstSramKeyDefault,
+  parameter  otp_ctrl_pkg::sram_nonce_t RndCnstSramNonce = RndCnstSramNonceDefault,
+  parameter  lfsr_seed_t                RndCnstLfsrSeed  = RndCnstLfsrSeedDefault,
+  parameter  lfsr_perm_t                RndCnstLfsrPerm  = RndCnstLfsrPermDefault
 ) (
   // SRAM Clock
   input  logic                                               clk_i,
@@ -78,8 +77,7 @@ module sram_ctrl
   input   prim_ram_1p_pkg::ram_1p_cfg_t     [NumRamInst-1:0] cfg_i,
   output  prim_ram_1p_pkg::ram_1p_cfg_rsp_t [NumRamInst-1:0] cfg_rsp_o,
   // Error record
-  output logic [1:0]                                         sram_rerror_o,
-  output logic [top_pkg::TL_AW-1:0]                          sram_rerror_addr_o
+  output sram_ctrl_pkg::sram_error_t                         sram_rerror_o
 );
 
   import lc_ctrl_pkg::lc_tx_t;
@@ -600,29 +598,29 @@ module sram_ctrl
       .data_o(ecc_enc_data)
     );
 
-    logic [1:0] ecc_error_q;
-    prim_flop_en #(
-      .Width(2)
-    ) u_flop_error (
+    logic uncorrectable_error_q;
+    prim_flop #(
+      .Width(1)
+    ) u_flop_uncorr_error (
       .clk_i,
       .rst_ni,
-      .en_i(sram_rvalid_scr),
-      .d_i(ecc_error),
-      .q_o(ecc_error_q)
+      .d_i(ecc_error[1]),
+      .q_o(uncorrectable_error_q)
     );
-
-    // Pulse out error when reading faulty data
-    assign sram_rerror_o = {2{sram_rvalid_scr}} & (ecc_error & ~ecc_error_q);
 
     // Correctable errors are corrected.
     // Uncorrectable errors are passed through to the requester.
     assign sram_rerror[0] = 1'b0;
-    assign sram_rerror[1] = ecc_error_q[1];
+    assign sram_rerror[1] = uncorrectable_error_q;
+
+    // Error log if any error happened
+    assign sram_rerror_o.valid   = sram_rvalid_scr & |ecc_error;
+    assign ecc_error.correctable = sram_rvalid_scr & ~ecc_error[1];
 
     // Translate word address to byte address and fill remaining bits with 0
     always_comb begin
-      sram_rerror_addr_o               = '0;
-      sram_rerror_addr_o[2+:AddrWidth] = sram_rerror_addr_scr;
+      sram_rerror_o.address               = '0;
+      sram_rerror_o.address[2+:AddrWidth] = sram_rerror_addr_scr;
     end
 
     prim_flop #(
@@ -634,12 +632,11 @@ module sram_ctrl
       .q_o(sram_rvalid)
     );
 
-    prim_flop_en #(
+    prim_flop #(
       .Width(DataWidth)
     ) u_flop_enc_data (
       .clk_i,
       .rst_ni,
-      .en_i(sram_rvalid_scr),
       .d_i(ecc_enc_data),
       .q_o(sram_rdata)
     );
@@ -651,9 +648,8 @@ module sram_ctrl
     assign sram_rdata  = sram_rdata_scr;
     assign sram_rerror = sram_rerror_scr;
     assign sram_rvalid = sram_rvalid_scr;
-    // No error information in when in end-2-end mode
-    assign sram_rerror_o      = '0;
-    assign sram_rerror_addr_o = '0;
+    // ECC errors are not detected (and thus not reported either) in this configuration.
+    assign sram_rerror_o = '0;
 
     // Error address not used here
     logic unused_rerror_addr;
@@ -724,7 +720,6 @@ module sram_ctrl
   `ASSERT_KNOWN(SramOtpKeyKnown_A, sram_otp_key_o)
   `ASSERT_KNOWN(RaclErrorValidKnown_A, racl_error_o.valid)
   `ASSERT_KNOWN(SramRerrorKnown_A, sram_rerror_o)
-  `ASSERT_KNOWN(SramRerrorAddrKnown_A, sram_rerror_addr_o)
 
   // Alert assertions for redundant counters.
   `ASSERT_PRIM_COUNT_ERROR_TRIGGER_ALERT(CntCheck_A,

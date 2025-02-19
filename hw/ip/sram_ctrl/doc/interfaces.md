@@ -40,6 +40,7 @@ Referring to the [Comportable guideline for peripheral device functionality](htt
 | racl_policy_sel_ranges_ram | top_racl_pkg::racl_range_t      | uni     | rcv   | RaclPolicySelRangesRamNum | Incoming array of RACL policy ranges.                                                                                                |
 | sram_rerror                | logic                           | uni     | req   | 2                         | SRAM read error log. Bit 0: Correctable error Bit 1: Uncorrectable error                                                             |
 | sram_rerror_addr           | logic [top_pkg::TL_AW-1:0]      | uni     | req   | 1                         | SRAM read error address.                                                                                                             |
+| sram_rerror                | sram_ctrl_pkg::sram_error_t     | uni     | req   | 1                         | SRAM read error indicating correctable and uncorrectable ECC errors.                                                                 |
 | regs_tl                    | tlul_pkg::tl                    | req_rsp | rsp   | 1                         |                                                                                                                                      |
 | ram_tl                     | tlul_pkg::tl                    | req_rsp | rsp   | 1                         |                                                                                                                                      |
 

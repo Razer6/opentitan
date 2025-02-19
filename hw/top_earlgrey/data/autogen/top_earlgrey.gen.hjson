@@ -5778,15 +5778,6 @@
           name_top: SramCtrlRetAonFlopRamOutput
         }
         {
-          name: EccCorrection
-          desc: Enable single-bit error correction and error logging
-          type: bit
-          default: "0"
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlRetAonEccCorrection
-        }
-        {
           name: Outstanding
           desc: Number of outstanding TLUL transactions
           type: int
@@ -5794,6 +5785,15 @@
           local: "true"
           expose: "true"
           name_top: SramCtrlRetAonOutstanding
+        }
+        {
+          name: EccCorrection
+          desc: Enable single-bit error correction and error logging
+          type: bit
+          default: "0"
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlRetAonEccCorrection
         }
         {
           name: RaclPolicySelRangesRamNum
@@ -5964,6 +5964,17 @@
           name: sram_rerror_addr
           desc: SRAM read error address.
           struct: logic [top_pkg::TL_AW-1:0]
+          type: uni
+          act: req
+          width: 1
+          inst_name: sram_ctrl_ret_aon
+          index: -1
+        }
+        {
+          name: sram_rerror
+          desc: SRAM read error indicating correctable and uncorrectable ECC errors.
+          struct: sram_error_t
+          package: sram_ctrl_pkg
           type: uni
           act: req
           width: 1
@@ -8792,15 +8803,6 @@
           name_top: SramCtrlMainFlopRamOutput
         }
         {
-          name: EccCorrection
-          desc: Enable single-bit error correction and error logging
-          type: bit
-          default: "0"
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlMainEccCorrection
-        }
-        {
           name: Outstanding
           desc: Number of outstanding TLUL transactions
           type: int
@@ -8808,6 +8810,15 @@
           local: "true"
           expose: "true"
           name_top: SramCtrlMainOutstanding
+        }
+        {
+          name: EccCorrection
+          desc: Enable single-bit error correction and error logging
+          type: bit
+          default: "0"
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlMainEccCorrection
         }
         {
           name: RaclPolicySelRangesRamNum
@@ -8980,6 +8991,17 @@
           name: sram_rerror_addr
           desc: SRAM read error address.
           struct: logic [top_pkg::TL_AW-1:0]
+          type: uni
+          act: req
+          width: 1
+          inst_name: sram_ctrl_main
+          index: -1
+        }
+        {
+          name: sram_rerror
+          desc: SRAM read error indicating correctable and uncorrectable ECC errors.
+          struct: sram_error_t
+          package: sram_ctrl_pkg
           type: uni
           act: req
           width: 1
@@ -21682,6 +21704,17 @@
         index: -1
       }
       {
+        name: sram_rerror
+        desc: SRAM read error indicating correctable and uncorrectable ECC errors.
+        struct: sram_error_t
+        package: sram_ctrl_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: sram_ctrl_ret_aon
+        index: -1
+      }
+      {
         name: regs_tl
         struct: tl
         package: tlul_pkg
@@ -23259,6 +23292,17 @@
         name: sram_rerror_addr
         desc: SRAM read error address.
         struct: logic [top_pkg::TL_AW-1:0]
+        type: uni
+        act: req
+        width: 1
+        inst_name: sram_ctrl_main
+        index: -1
+      }
+      {
+        name: sram_rerror
+        desc: SRAM read error indicating correctable and uncorrectable ECC errors.
+        struct: sram_error_t
+        package: sram_ctrl_pkg
         type: uni
         act: req
         width: 1

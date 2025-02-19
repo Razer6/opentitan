@@ -114,19 +114,19 @@
       expose:    "true",
       default:   "0"
     },
-    { name:      "EccCorrection",
-      desc:      "Enable single-bit error correction and error logging",
-      type:      "bit",
-      local:     "false",
-      expose:    "true",
-      default:   "0"
-    },
     { name:      "Outstanding",
       desc:      "Number of outstanding TLUL transactions",
       type:      "int",
       local:     "true",
       expose:    "true",
       default:   "2"
+    }
+    { name:      "EccCorrection",
+      desc:      "Enable single-bit error correction and error logging",
+      type:      "bit",
+      local:     "false",
+      expose:    "true",
+      default:   "0"
     },
     { name:      "RaclPolicySelRangesRamNum",
       desc:      "Number of Racl Policy Selection Ranges for the Ram interface",
@@ -280,6 +280,16 @@
                SRAM read error address.
                '''
     }
+    { struct:  "sram_error_t",
+      package: "sram_ctrl_pkg",
+      width:   "1"
+      type:    "uni",
+      name:    "sram_rerror",
+      act:     "req",
+      desc:    '''
+               SRAM read error indicating correctable and uncorrectable ECC errors.
+               '''
+    },
   ]
 
   /////////////////////
