@@ -24,1027 +24,7 @@ package lio_rv_plic_reg_pkg;
 
   typedef struct packed {
     logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio0_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio1_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio2_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio3_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio4_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio5_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio6_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio7_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio8_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio9_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio10_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio11_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio12_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio13_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio14_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio15_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio16_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio17_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio18_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio19_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio20_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio21_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio22_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio23_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio24_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio25_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio26_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio27_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio28_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio29_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio30_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio31_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio32_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio33_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio34_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio35_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio36_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio37_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio38_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio39_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio40_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio41_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio42_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio43_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio44_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio45_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio46_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio47_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio48_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio49_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio50_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio51_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio52_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio53_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio54_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio55_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio56_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio57_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio58_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio59_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio60_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio61_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio62_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio63_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio64_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio65_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio66_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio67_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio68_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio69_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio70_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio71_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio72_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio73_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio74_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio75_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio76_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio77_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio78_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio79_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio80_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio81_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio82_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio83_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio84_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio85_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio86_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio87_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio88_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio89_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio90_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio91_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio92_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio93_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio94_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio95_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio96_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio97_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio98_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio99_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio100_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio101_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio102_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio103_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio104_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio105_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio106_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio107_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio108_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio109_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio110_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio111_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio112_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio113_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio114_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio115_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio116_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio117_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio118_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio119_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio120_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio121_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio122_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio123_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio124_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio125_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio126_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio127_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio128_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio129_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio130_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio131_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio132_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio133_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio134_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio135_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio136_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio137_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio138_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio139_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio140_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio141_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio142_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio143_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio144_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio145_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio146_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio147_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio148_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio149_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio150_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio151_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio152_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio153_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio154_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio155_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio156_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio157_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio158_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio159_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio160_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio161_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio162_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio163_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio164_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio165_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio166_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio167_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio168_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio169_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio170_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio171_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio172_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio173_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio174_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio175_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio176_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio177_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio178_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio179_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio180_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio181_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio182_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio183_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio184_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio185_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio186_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio187_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio188_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio189_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio190_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio191_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio192_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio193_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio194_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio195_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio196_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio197_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio198_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio199_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio200_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio201_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio202_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio203_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio204_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio205_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio206_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio207_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio208_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio209_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio210_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio211_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio212_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio213_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio214_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio215_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio216_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio217_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio218_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio219_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio220_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio221_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio222_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio223_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio224_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio225_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio226_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio227_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio228_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio229_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio230_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio231_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio232_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio233_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio234_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio235_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio236_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio237_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio238_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio239_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio240_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio241_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio242_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio243_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio244_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio245_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio246_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio247_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio248_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio249_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio250_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio251_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio252_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio253_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio254_reg_t;
-
-  typedef struct packed {
-    logic [1:0]  q;
-  } lio_rv_plic_reg2hw_prio255_reg_t;
+  } lio_rv_plic_reg2hw_prio_mreg_t;
 
   typedef struct packed {
     logic        q;
@@ -1212,262 +192,7 @@ package lio_rv_plic_reg_pkg;
 
   // Register -> HW type
   typedef struct packed {
-    lio_rv_plic_reg2hw_prio0_reg_t prio0; // [2396:2395]
-    lio_rv_plic_reg2hw_prio1_reg_t prio1; // [2394:2393]
-    lio_rv_plic_reg2hw_prio2_reg_t prio2; // [2392:2391]
-    lio_rv_plic_reg2hw_prio3_reg_t prio3; // [2390:2389]
-    lio_rv_plic_reg2hw_prio4_reg_t prio4; // [2388:2387]
-    lio_rv_plic_reg2hw_prio5_reg_t prio5; // [2386:2385]
-    lio_rv_plic_reg2hw_prio6_reg_t prio6; // [2384:2383]
-    lio_rv_plic_reg2hw_prio7_reg_t prio7; // [2382:2381]
-    lio_rv_plic_reg2hw_prio8_reg_t prio8; // [2380:2379]
-    lio_rv_plic_reg2hw_prio9_reg_t prio9; // [2378:2377]
-    lio_rv_plic_reg2hw_prio10_reg_t prio10; // [2376:2375]
-    lio_rv_plic_reg2hw_prio11_reg_t prio11; // [2374:2373]
-    lio_rv_plic_reg2hw_prio12_reg_t prio12; // [2372:2371]
-    lio_rv_plic_reg2hw_prio13_reg_t prio13; // [2370:2369]
-    lio_rv_plic_reg2hw_prio14_reg_t prio14; // [2368:2367]
-    lio_rv_plic_reg2hw_prio15_reg_t prio15; // [2366:2365]
-    lio_rv_plic_reg2hw_prio16_reg_t prio16; // [2364:2363]
-    lio_rv_plic_reg2hw_prio17_reg_t prio17; // [2362:2361]
-    lio_rv_plic_reg2hw_prio18_reg_t prio18; // [2360:2359]
-    lio_rv_plic_reg2hw_prio19_reg_t prio19; // [2358:2357]
-    lio_rv_plic_reg2hw_prio20_reg_t prio20; // [2356:2355]
-    lio_rv_plic_reg2hw_prio21_reg_t prio21; // [2354:2353]
-    lio_rv_plic_reg2hw_prio22_reg_t prio22; // [2352:2351]
-    lio_rv_plic_reg2hw_prio23_reg_t prio23; // [2350:2349]
-    lio_rv_plic_reg2hw_prio24_reg_t prio24; // [2348:2347]
-    lio_rv_plic_reg2hw_prio25_reg_t prio25; // [2346:2345]
-    lio_rv_plic_reg2hw_prio26_reg_t prio26; // [2344:2343]
-    lio_rv_plic_reg2hw_prio27_reg_t prio27; // [2342:2341]
-    lio_rv_plic_reg2hw_prio28_reg_t prio28; // [2340:2339]
-    lio_rv_plic_reg2hw_prio29_reg_t prio29; // [2338:2337]
-    lio_rv_plic_reg2hw_prio30_reg_t prio30; // [2336:2335]
-    lio_rv_plic_reg2hw_prio31_reg_t prio31; // [2334:2333]
-    lio_rv_plic_reg2hw_prio32_reg_t prio32; // [2332:2331]
-    lio_rv_plic_reg2hw_prio33_reg_t prio33; // [2330:2329]
-    lio_rv_plic_reg2hw_prio34_reg_t prio34; // [2328:2327]
-    lio_rv_plic_reg2hw_prio35_reg_t prio35; // [2326:2325]
-    lio_rv_plic_reg2hw_prio36_reg_t prio36; // [2324:2323]
-    lio_rv_plic_reg2hw_prio37_reg_t prio37; // [2322:2321]
-    lio_rv_plic_reg2hw_prio38_reg_t prio38; // [2320:2319]
-    lio_rv_plic_reg2hw_prio39_reg_t prio39; // [2318:2317]
-    lio_rv_plic_reg2hw_prio40_reg_t prio40; // [2316:2315]
-    lio_rv_plic_reg2hw_prio41_reg_t prio41; // [2314:2313]
-    lio_rv_plic_reg2hw_prio42_reg_t prio42; // [2312:2311]
-    lio_rv_plic_reg2hw_prio43_reg_t prio43; // [2310:2309]
-    lio_rv_plic_reg2hw_prio44_reg_t prio44; // [2308:2307]
-    lio_rv_plic_reg2hw_prio45_reg_t prio45; // [2306:2305]
-    lio_rv_plic_reg2hw_prio46_reg_t prio46; // [2304:2303]
-    lio_rv_plic_reg2hw_prio47_reg_t prio47; // [2302:2301]
-    lio_rv_plic_reg2hw_prio48_reg_t prio48; // [2300:2299]
-    lio_rv_plic_reg2hw_prio49_reg_t prio49; // [2298:2297]
-    lio_rv_plic_reg2hw_prio50_reg_t prio50; // [2296:2295]
-    lio_rv_plic_reg2hw_prio51_reg_t prio51; // [2294:2293]
-    lio_rv_plic_reg2hw_prio52_reg_t prio52; // [2292:2291]
-    lio_rv_plic_reg2hw_prio53_reg_t prio53; // [2290:2289]
-    lio_rv_plic_reg2hw_prio54_reg_t prio54; // [2288:2287]
-    lio_rv_plic_reg2hw_prio55_reg_t prio55; // [2286:2285]
-    lio_rv_plic_reg2hw_prio56_reg_t prio56; // [2284:2283]
-    lio_rv_plic_reg2hw_prio57_reg_t prio57; // [2282:2281]
-    lio_rv_plic_reg2hw_prio58_reg_t prio58; // [2280:2279]
-    lio_rv_plic_reg2hw_prio59_reg_t prio59; // [2278:2277]
-    lio_rv_plic_reg2hw_prio60_reg_t prio60; // [2276:2275]
-    lio_rv_plic_reg2hw_prio61_reg_t prio61; // [2274:2273]
-    lio_rv_plic_reg2hw_prio62_reg_t prio62; // [2272:2271]
-    lio_rv_plic_reg2hw_prio63_reg_t prio63; // [2270:2269]
-    lio_rv_plic_reg2hw_prio64_reg_t prio64; // [2268:2267]
-    lio_rv_plic_reg2hw_prio65_reg_t prio65; // [2266:2265]
-    lio_rv_plic_reg2hw_prio66_reg_t prio66; // [2264:2263]
-    lio_rv_plic_reg2hw_prio67_reg_t prio67; // [2262:2261]
-    lio_rv_plic_reg2hw_prio68_reg_t prio68; // [2260:2259]
-    lio_rv_plic_reg2hw_prio69_reg_t prio69; // [2258:2257]
-    lio_rv_plic_reg2hw_prio70_reg_t prio70; // [2256:2255]
-    lio_rv_plic_reg2hw_prio71_reg_t prio71; // [2254:2253]
-    lio_rv_plic_reg2hw_prio72_reg_t prio72; // [2252:2251]
-    lio_rv_plic_reg2hw_prio73_reg_t prio73; // [2250:2249]
-    lio_rv_plic_reg2hw_prio74_reg_t prio74; // [2248:2247]
-    lio_rv_plic_reg2hw_prio75_reg_t prio75; // [2246:2245]
-    lio_rv_plic_reg2hw_prio76_reg_t prio76; // [2244:2243]
-    lio_rv_plic_reg2hw_prio77_reg_t prio77; // [2242:2241]
-    lio_rv_plic_reg2hw_prio78_reg_t prio78; // [2240:2239]
-    lio_rv_plic_reg2hw_prio79_reg_t prio79; // [2238:2237]
-    lio_rv_plic_reg2hw_prio80_reg_t prio80; // [2236:2235]
-    lio_rv_plic_reg2hw_prio81_reg_t prio81; // [2234:2233]
-    lio_rv_plic_reg2hw_prio82_reg_t prio82; // [2232:2231]
-    lio_rv_plic_reg2hw_prio83_reg_t prio83; // [2230:2229]
-    lio_rv_plic_reg2hw_prio84_reg_t prio84; // [2228:2227]
-    lio_rv_plic_reg2hw_prio85_reg_t prio85; // [2226:2225]
-    lio_rv_plic_reg2hw_prio86_reg_t prio86; // [2224:2223]
-    lio_rv_plic_reg2hw_prio87_reg_t prio87; // [2222:2221]
-    lio_rv_plic_reg2hw_prio88_reg_t prio88; // [2220:2219]
-    lio_rv_plic_reg2hw_prio89_reg_t prio89; // [2218:2217]
-    lio_rv_plic_reg2hw_prio90_reg_t prio90; // [2216:2215]
-    lio_rv_plic_reg2hw_prio91_reg_t prio91; // [2214:2213]
-    lio_rv_plic_reg2hw_prio92_reg_t prio92; // [2212:2211]
-    lio_rv_plic_reg2hw_prio93_reg_t prio93; // [2210:2209]
-    lio_rv_plic_reg2hw_prio94_reg_t prio94; // [2208:2207]
-    lio_rv_plic_reg2hw_prio95_reg_t prio95; // [2206:2205]
-    lio_rv_plic_reg2hw_prio96_reg_t prio96; // [2204:2203]
-    lio_rv_plic_reg2hw_prio97_reg_t prio97; // [2202:2201]
-    lio_rv_plic_reg2hw_prio98_reg_t prio98; // [2200:2199]
-    lio_rv_plic_reg2hw_prio99_reg_t prio99; // [2198:2197]
-    lio_rv_plic_reg2hw_prio100_reg_t prio100; // [2196:2195]
-    lio_rv_plic_reg2hw_prio101_reg_t prio101; // [2194:2193]
-    lio_rv_plic_reg2hw_prio102_reg_t prio102; // [2192:2191]
-    lio_rv_plic_reg2hw_prio103_reg_t prio103; // [2190:2189]
-    lio_rv_plic_reg2hw_prio104_reg_t prio104; // [2188:2187]
-    lio_rv_plic_reg2hw_prio105_reg_t prio105; // [2186:2185]
-    lio_rv_plic_reg2hw_prio106_reg_t prio106; // [2184:2183]
-    lio_rv_plic_reg2hw_prio107_reg_t prio107; // [2182:2181]
-    lio_rv_plic_reg2hw_prio108_reg_t prio108; // [2180:2179]
-    lio_rv_plic_reg2hw_prio109_reg_t prio109; // [2178:2177]
-    lio_rv_plic_reg2hw_prio110_reg_t prio110; // [2176:2175]
-    lio_rv_plic_reg2hw_prio111_reg_t prio111; // [2174:2173]
-    lio_rv_plic_reg2hw_prio112_reg_t prio112; // [2172:2171]
-    lio_rv_plic_reg2hw_prio113_reg_t prio113; // [2170:2169]
-    lio_rv_plic_reg2hw_prio114_reg_t prio114; // [2168:2167]
-    lio_rv_plic_reg2hw_prio115_reg_t prio115; // [2166:2165]
-    lio_rv_plic_reg2hw_prio116_reg_t prio116; // [2164:2163]
-    lio_rv_plic_reg2hw_prio117_reg_t prio117; // [2162:2161]
-    lio_rv_plic_reg2hw_prio118_reg_t prio118; // [2160:2159]
-    lio_rv_plic_reg2hw_prio119_reg_t prio119; // [2158:2157]
-    lio_rv_plic_reg2hw_prio120_reg_t prio120; // [2156:2155]
-    lio_rv_plic_reg2hw_prio121_reg_t prio121; // [2154:2153]
-    lio_rv_plic_reg2hw_prio122_reg_t prio122; // [2152:2151]
-    lio_rv_plic_reg2hw_prio123_reg_t prio123; // [2150:2149]
-    lio_rv_plic_reg2hw_prio124_reg_t prio124; // [2148:2147]
-    lio_rv_plic_reg2hw_prio125_reg_t prio125; // [2146:2145]
-    lio_rv_plic_reg2hw_prio126_reg_t prio126; // [2144:2143]
-    lio_rv_plic_reg2hw_prio127_reg_t prio127; // [2142:2141]
-    lio_rv_plic_reg2hw_prio128_reg_t prio128; // [2140:2139]
-    lio_rv_plic_reg2hw_prio129_reg_t prio129; // [2138:2137]
-    lio_rv_plic_reg2hw_prio130_reg_t prio130; // [2136:2135]
-    lio_rv_plic_reg2hw_prio131_reg_t prio131; // [2134:2133]
-    lio_rv_plic_reg2hw_prio132_reg_t prio132; // [2132:2131]
-    lio_rv_plic_reg2hw_prio133_reg_t prio133; // [2130:2129]
-    lio_rv_plic_reg2hw_prio134_reg_t prio134; // [2128:2127]
-    lio_rv_plic_reg2hw_prio135_reg_t prio135; // [2126:2125]
-    lio_rv_plic_reg2hw_prio136_reg_t prio136; // [2124:2123]
-    lio_rv_plic_reg2hw_prio137_reg_t prio137; // [2122:2121]
-    lio_rv_plic_reg2hw_prio138_reg_t prio138; // [2120:2119]
-    lio_rv_plic_reg2hw_prio139_reg_t prio139; // [2118:2117]
-    lio_rv_plic_reg2hw_prio140_reg_t prio140; // [2116:2115]
-    lio_rv_plic_reg2hw_prio141_reg_t prio141; // [2114:2113]
-    lio_rv_plic_reg2hw_prio142_reg_t prio142; // [2112:2111]
-    lio_rv_plic_reg2hw_prio143_reg_t prio143; // [2110:2109]
-    lio_rv_plic_reg2hw_prio144_reg_t prio144; // [2108:2107]
-    lio_rv_plic_reg2hw_prio145_reg_t prio145; // [2106:2105]
-    lio_rv_plic_reg2hw_prio146_reg_t prio146; // [2104:2103]
-    lio_rv_plic_reg2hw_prio147_reg_t prio147; // [2102:2101]
-    lio_rv_plic_reg2hw_prio148_reg_t prio148; // [2100:2099]
-    lio_rv_plic_reg2hw_prio149_reg_t prio149; // [2098:2097]
-    lio_rv_plic_reg2hw_prio150_reg_t prio150; // [2096:2095]
-    lio_rv_plic_reg2hw_prio151_reg_t prio151; // [2094:2093]
-    lio_rv_plic_reg2hw_prio152_reg_t prio152; // [2092:2091]
-    lio_rv_plic_reg2hw_prio153_reg_t prio153; // [2090:2089]
-    lio_rv_plic_reg2hw_prio154_reg_t prio154; // [2088:2087]
-    lio_rv_plic_reg2hw_prio155_reg_t prio155; // [2086:2085]
-    lio_rv_plic_reg2hw_prio156_reg_t prio156; // [2084:2083]
-    lio_rv_plic_reg2hw_prio157_reg_t prio157; // [2082:2081]
-    lio_rv_plic_reg2hw_prio158_reg_t prio158; // [2080:2079]
-    lio_rv_plic_reg2hw_prio159_reg_t prio159; // [2078:2077]
-    lio_rv_plic_reg2hw_prio160_reg_t prio160; // [2076:2075]
-    lio_rv_plic_reg2hw_prio161_reg_t prio161; // [2074:2073]
-    lio_rv_plic_reg2hw_prio162_reg_t prio162; // [2072:2071]
-    lio_rv_plic_reg2hw_prio163_reg_t prio163; // [2070:2069]
-    lio_rv_plic_reg2hw_prio164_reg_t prio164; // [2068:2067]
-    lio_rv_plic_reg2hw_prio165_reg_t prio165; // [2066:2065]
-    lio_rv_plic_reg2hw_prio166_reg_t prio166; // [2064:2063]
-    lio_rv_plic_reg2hw_prio167_reg_t prio167; // [2062:2061]
-    lio_rv_plic_reg2hw_prio168_reg_t prio168; // [2060:2059]
-    lio_rv_plic_reg2hw_prio169_reg_t prio169; // [2058:2057]
-    lio_rv_plic_reg2hw_prio170_reg_t prio170; // [2056:2055]
-    lio_rv_plic_reg2hw_prio171_reg_t prio171; // [2054:2053]
-    lio_rv_plic_reg2hw_prio172_reg_t prio172; // [2052:2051]
-    lio_rv_plic_reg2hw_prio173_reg_t prio173; // [2050:2049]
-    lio_rv_plic_reg2hw_prio174_reg_t prio174; // [2048:2047]
-    lio_rv_plic_reg2hw_prio175_reg_t prio175; // [2046:2045]
-    lio_rv_plic_reg2hw_prio176_reg_t prio176; // [2044:2043]
-    lio_rv_plic_reg2hw_prio177_reg_t prio177; // [2042:2041]
-    lio_rv_plic_reg2hw_prio178_reg_t prio178; // [2040:2039]
-    lio_rv_plic_reg2hw_prio179_reg_t prio179; // [2038:2037]
-    lio_rv_plic_reg2hw_prio180_reg_t prio180; // [2036:2035]
-    lio_rv_plic_reg2hw_prio181_reg_t prio181; // [2034:2033]
-    lio_rv_plic_reg2hw_prio182_reg_t prio182; // [2032:2031]
-    lio_rv_plic_reg2hw_prio183_reg_t prio183; // [2030:2029]
-    lio_rv_plic_reg2hw_prio184_reg_t prio184; // [2028:2027]
-    lio_rv_plic_reg2hw_prio185_reg_t prio185; // [2026:2025]
-    lio_rv_plic_reg2hw_prio186_reg_t prio186; // [2024:2023]
-    lio_rv_plic_reg2hw_prio187_reg_t prio187; // [2022:2021]
-    lio_rv_plic_reg2hw_prio188_reg_t prio188; // [2020:2019]
-    lio_rv_plic_reg2hw_prio189_reg_t prio189; // [2018:2017]
-    lio_rv_plic_reg2hw_prio190_reg_t prio190; // [2016:2015]
-    lio_rv_plic_reg2hw_prio191_reg_t prio191; // [2014:2013]
-    lio_rv_plic_reg2hw_prio192_reg_t prio192; // [2012:2011]
-    lio_rv_plic_reg2hw_prio193_reg_t prio193; // [2010:2009]
-    lio_rv_plic_reg2hw_prio194_reg_t prio194; // [2008:2007]
-    lio_rv_plic_reg2hw_prio195_reg_t prio195; // [2006:2005]
-    lio_rv_plic_reg2hw_prio196_reg_t prio196; // [2004:2003]
-    lio_rv_plic_reg2hw_prio197_reg_t prio197; // [2002:2001]
-    lio_rv_plic_reg2hw_prio198_reg_t prio198; // [2000:1999]
-    lio_rv_plic_reg2hw_prio199_reg_t prio199; // [1998:1997]
-    lio_rv_plic_reg2hw_prio200_reg_t prio200; // [1996:1995]
-    lio_rv_plic_reg2hw_prio201_reg_t prio201; // [1994:1993]
-    lio_rv_plic_reg2hw_prio202_reg_t prio202; // [1992:1991]
-    lio_rv_plic_reg2hw_prio203_reg_t prio203; // [1990:1989]
-    lio_rv_plic_reg2hw_prio204_reg_t prio204; // [1988:1987]
-    lio_rv_plic_reg2hw_prio205_reg_t prio205; // [1986:1985]
-    lio_rv_plic_reg2hw_prio206_reg_t prio206; // [1984:1983]
-    lio_rv_plic_reg2hw_prio207_reg_t prio207; // [1982:1981]
-    lio_rv_plic_reg2hw_prio208_reg_t prio208; // [1980:1979]
-    lio_rv_plic_reg2hw_prio209_reg_t prio209; // [1978:1977]
-    lio_rv_plic_reg2hw_prio210_reg_t prio210; // [1976:1975]
-    lio_rv_plic_reg2hw_prio211_reg_t prio211; // [1974:1973]
-    lio_rv_plic_reg2hw_prio212_reg_t prio212; // [1972:1971]
-    lio_rv_plic_reg2hw_prio213_reg_t prio213; // [1970:1969]
-    lio_rv_plic_reg2hw_prio214_reg_t prio214; // [1968:1967]
-    lio_rv_plic_reg2hw_prio215_reg_t prio215; // [1966:1965]
-    lio_rv_plic_reg2hw_prio216_reg_t prio216; // [1964:1963]
-    lio_rv_plic_reg2hw_prio217_reg_t prio217; // [1962:1961]
-    lio_rv_plic_reg2hw_prio218_reg_t prio218; // [1960:1959]
-    lio_rv_plic_reg2hw_prio219_reg_t prio219; // [1958:1957]
-    lio_rv_plic_reg2hw_prio220_reg_t prio220; // [1956:1955]
-    lio_rv_plic_reg2hw_prio221_reg_t prio221; // [1954:1953]
-    lio_rv_plic_reg2hw_prio222_reg_t prio222; // [1952:1951]
-    lio_rv_plic_reg2hw_prio223_reg_t prio223; // [1950:1949]
-    lio_rv_plic_reg2hw_prio224_reg_t prio224; // [1948:1947]
-    lio_rv_plic_reg2hw_prio225_reg_t prio225; // [1946:1945]
-    lio_rv_plic_reg2hw_prio226_reg_t prio226; // [1944:1943]
-    lio_rv_plic_reg2hw_prio227_reg_t prio227; // [1942:1941]
-    lio_rv_plic_reg2hw_prio228_reg_t prio228; // [1940:1939]
-    lio_rv_plic_reg2hw_prio229_reg_t prio229; // [1938:1937]
-    lio_rv_plic_reg2hw_prio230_reg_t prio230; // [1936:1935]
-    lio_rv_plic_reg2hw_prio231_reg_t prio231; // [1934:1933]
-    lio_rv_plic_reg2hw_prio232_reg_t prio232; // [1932:1931]
-    lio_rv_plic_reg2hw_prio233_reg_t prio233; // [1930:1929]
-    lio_rv_plic_reg2hw_prio234_reg_t prio234; // [1928:1927]
-    lio_rv_plic_reg2hw_prio235_reg_t prio235; // [1926:1925]
-    lio_rv_plic_reg2hw_prio236_reg_t prio236; // [1924:1923]
-    lio_rv_plic_reg2hw_prio237_reg_t prio237; // [1922:1921]
-    lio_rv_plic_reg2hw_prio238_reg_t prio238; // [1920:1919]
-    lio_rv_plic_reg2hw_prio239_reg_t prio239; // [1918:1917]
-    lio_rv_plic_reg2hw_prio240_reg_t prio240; // [1916:1915]
-    lio_rv_plic_reg2hw_prio241_reg_t prio241; // [1914:1913]
-    lio_rv_plic_reg2hw_prio242_reg_t prio242; // [1912:1911]
-    lio_rv_plic_reg2hw_prio243_reg_t prio243; // [1910:1909]
-    lio_rv_plic_reg2hw_prio244_reg_t prio244; // [1908:1907]
-    lio_rv_plic_reg2hw_prio245_reg_t prio245; // [1906:1905]
-    lio_rv_plic_reg2hw_prio246_reg_t prio246; // [1904:1903]
-    lio_rv_plic_reg2hw_prio247_reg_t prio247; // [1902:1901]
-    lio_rv_plic_reg2hw_prio248_reg_t prio248; // [1900:1899]
-    lio_rv_plic_reg2hw_prio249_reg_t prio249; // [1898:1897]
-    lio_rv_plic_reg2hw_prio250_reg_t prio250; // [1896:1895]
-    lio_rv_plic_reg2hw_prio251_reg_t prio251; // [1894:1893]
-    lio_rv_plic_reg2hw_prio252_reg_t prio252; // [1892:1891]
-    lio_rv_plic_reg2hw_prio253_reg_t prio253; // [1890:1889]
-    lio_rv_plic_reg2hw_prio254_reg_t prio254; // [1888:1887]
-    lio_rv_plic_reg2hw_prio255_reg_t prio255; // [1886:1885]
+    lio_rv_plic_reg2hw_prio_mreg_t [255:0] prio; // [2396:1885]
     lio_rv_plic_reg2hw_ie0_mreg_t [255:0] ie0; // [1884:1629]
     lio_rv_plic_reg2hw_ie1_mreg_t [255:0] ie1; // [1628:1373]
     lio_rv_plic_reg2hw_ie2_mreg_t [255:0] ie2; // [1372:1117]
@@ -1512,262 +237,262 @@ package lio_rv_plic_reg_pkg;
   } lio_rv_plic_hw2reg_t;
 
   // Register offsets
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO0_OFFSET = 11'h 0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO1_OFFSET = 11'h 4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO2_OFFSET = 11'h 8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO3_OFFSET = 11'h c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO4_OFFSET = 11'h 10;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO5_OFFSET = 11'h 14;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO6_OFFSET = 11'h 18;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO7_OFFSET = 11'h 1c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO8_OFFSET = 11'h 20;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO9_OFFSET = 11'h 24;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO10_OFFSET = 11'h 28;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO11_OFFSET = 11'h 2c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO12_OFFSET = 11'h 30;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO13_OFFSET = 11'h 34;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO14_OFFSET = 11'h 38;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO15_OFFSET = 11'h 3c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO16_OFFSET = 11'h 40;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO17_OFFSET = 11'h 44;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO18_OFFSET = 11'h 48;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO19_OFFSET = 11'h 4c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO20_OFFSET = 11'h 50;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO21_OFFSET = 11'h 54;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO22_OFFSET = 11'h 58;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO23_OFFSET = 11'h 5c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO24_OFFSET = 11'h 60;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO25_OFFSET = 11'h 64;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO26_OFFSET = 11'h 68;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO27_OFFSET = 11'h 6c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO28_OFFSET = 11'h 70;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO29_OFFSET = 11'h 74;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO30_OFFSET = 11'h 78;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO31_OFFSET = 11'h 7c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO32_OFFSET = 11'h 80;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO33_OFFSET = 11'h 84;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO34_OFFSET = 11'h 88;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO35_OFFSET = 11'h 8c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO36_OFFSET = 11'h 90;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO37_OFFSET = 11'h 94;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO38_OFFSET = 11'h 98;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO39_OFFSET = 11'h 9c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO40_OFFSET = 11'h a0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO41_OFFSET = 11'h a4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO42_OFFSET = 11'h a8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO43_OFFSET = 11'h ac;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO44_OFFSET = 11'h b0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO45_OFFSET = 11'h b4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO46_OFFSET = 11'h b8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO47_OFFSET = 11'h bc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO48_OFFSET = 11'h c0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO49_OFFSET = 11'h c4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO50_OFFSET = 11'h c8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO51_OFFSET = 11'h cc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO52_OFFSET = 11'h d0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO53_OFFSET = 11'h d4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO54_OFFSET = 11'h d8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO55_OFFSET = 11'h dc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO56_OFFSET = 11'h e0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO57_OFFSET = 11'h e4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO58_OFFSET = 11'h e8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO59_OFFSET = 11'h ec;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO60_OFFSET = 11'h f0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO61_OFFSET = 11'h f4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO62_OFFSET = 11'h f8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO63_OFFSET = 11'h fc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO64_OFFSET = 11'h 100;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO65_OFFSET = 11'h 104;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO66_OFFSET = 11'h 108;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO67_OFFSET = 11'h 10c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO68_OFFSET = 11'h 110;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO69_OFFSET = 11'h 114;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO70_OFFSET = 11'h 118;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO71_OFFSET = 11'h 11c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO72_OFFSET = 11'h 120;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO73_OFFSET = 11'h 124;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO74_OFFSET = 11'h 128;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO75_OFFSET = 11'h 12c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO76_OFFSET = 11'h 130;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO77_OFFSET = 11'h 134;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO78_OFFSET = 11'h 138;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO79_OFFSET = 11'h 13c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO80_OFFSET = 11'h 140;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO81_OFFSET = 11'h 144;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO82_OFFSET = 11'h 148;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO83_OFFSET = 11'h 14c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO84_OFFSET = 11'h 150;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO85_OFFSET = 11'h 154;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO86_OFFSET = 11'h 158;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO87_OFFSET = 11'h 15c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO88_OFFSET = 11'h 160;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO89_OFFSET = 11'h 164;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO90_OFFSET = 11'h 168;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO91_OFFSET = 11'h 16c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO92_OFFSET = 11'h 170;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO93_OFFSET = 11'h 174;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO94_OFFSET = 11'h 178;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO95_OFFSET = 11'h 17c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO96_OFFSET = 11'h 180;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO97_OFFSET = 11'h 184;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO98_OFFSET = 11'h 188;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO99_OFFSET = 11'h 18c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO100_OFFSET = 11'h 190;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO101_OFFSET = 11'h 194;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO102_OFFSET = 11'h 198;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO103_OFFSET = 11'h 19c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO104_OFFSET = 11'h 1a0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO105_OFFSET = 11'h 1a4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO106_OFFSET = 11'h 1a8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO107_OFFSET = 11'h 1ac;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO108_OFFSET = 11'h 1b0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO109_OFFSET = 11'h 1b4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO110_OFFSET = 11'h 1b8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO111_OFFSET = 11'h 1bc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO112_OFFSET = 11'h 1c0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO113_OFFSET = 11'h 1c4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO114_OFFSET = 11'h 1c8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO115_OFFSET = 11'h 1cc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO116_OFFSET = 11'h 1d0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO117_OFFSET = 11'h 1d4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO118_OFFSET = 11'h 1d8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO119_OFFSET = 11'h 1dc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO120_OFFSET = 11'h 1e0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO121_OFFSET = 11'h 1e4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO122_OFFSET = 11'h 1e8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO123_OFFSET = 11'h 1ec;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO124_OFFSET = 11'h 1f0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO125_OFFSET = 11'h 1f4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO126_OFFSET = 11'h 1f8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO127_OFFSET = 11'h 1fc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO128_OFFSET = 11'h 200;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO129_OFFSET = 11'h 204;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO130_OFFSET = 11'h 208;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO131_OFFSET = 11'h 20c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO132_OFFSET = 11'h 210;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO133_OFFSET = 11'h 214;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO134_OFFSET = 11'h 218;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO135_OFFSET = 11'h 21c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO136_OFFSET = 11'h 220;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO137_OFFSET = 11'h 224;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO138_OFFSET = 11'h 228;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO139_OFFSET = 11'h 22c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO140_OFFSET = 11'h 230;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO141_OFFSET = 11'h 234;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO142_OFFSET = 11'h 238;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO143_OFFSET = 11'h 23c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO144_OFFSET = 11'h 240;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO145_OFFSET = 11'h 244;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO146_OFFSET = 11'h 248;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO147_OFFSET = 11'h 24c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO148_OFFSET = 11'h 250;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO149_OFFSET = 11'h 254;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO150_OFFSET = 11'h 258;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO151_OFFSET = 11'h 25c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO152_OFFSET = 11'h 260;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO153_OFFSET = 11'h 264;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO154_OFFSET = 11'h 268;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO155_OFFSET = 11'h 26c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO156_OFFSET = 11'h 270;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO157_OFFSET = 11'h 274;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO158_OFFSET = 11'h 278;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO159_OFFSET = 11'h 27c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO160_OFFSET = 11'h 280;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO161_OFFSET = 11'h 284;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO162_OFFSET = 11'h 288;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO163_OFFSET = 11'h 28c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO164_OFFSET = 11'h 290;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO165_OFFSET = 11'h 294;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO166_OFFSET = 11'h 298;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO167_OFFSET = 11'h 29c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO168_OFFSET = 11'h 2a0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO169_OFFSET = 11'h 2a4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO170_OFFSET = 11'h 2a8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO171_OFFSET = 11'h 2ac;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO172_OFFSET = 11'h 2b0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO173_OFFSET = 11'h 2b4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO174_OFFSET = 11'h 2b8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO175_OFFSET = 11'h 2bc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO176_OFFSET = 11'h 2c0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO177_OFFSET = 11'h 2c4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO178_OFFSET = 11'h 2c8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO179_OFFSET = 11'h 2cc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO180_OFFSET = 11'h 2d0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO181_OFFSET = 11'h 2d4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO182_OFFSET = 11'h 2d8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO183_OFFSET = 11'h 2dc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO184_OFFSET = 11'h 2e0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO185_OFFSET = 11'h 2e4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO186_OFFSET = 11'h 2e8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO187_OFFSET = 11'h 2ec;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO188_OFFSET = 11'h 2f0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO189_OFFSET = 11'h 2f4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO190_OFFSET = 11'h 2f8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO191_OFFSET = 11'h 2fc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO192_OFFSET = 11'h 300;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO193_OFFSET = 11'h 304;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO194_OFFSET = 11'h 308;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO195_OFFSET = 11'h 30c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO196_OFFSET = 11'h 310;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO197_OFFSET = 11'h 314;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO198_OFFSET = 11'h 318;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO199_OFFSET = 11'h 31c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO200_OFFSET = 11'h 320;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO201_OFFSET = 11'h 324;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO202_OFFSET = 11'h 328;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO203_OFFSET = 11'h 32c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO204_OFFSET = 11'h 330;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO205_OFFSET = 11'h 334;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO206_OFFSET = 11'h 338;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO207_OFFSET = 11'h 33c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO208_OFFSET = 11'h 340;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO209_OFFSET = 11'h 344;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO210_OFFSET = 11'h 348;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO211_OFFSET = 11'h 34c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO212_OFFSET = 11'h 350;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO213_OFFSET = 11'h 354;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO214_OFFSET = 11'h 358;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO215_OFFSET = 11'h 35c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO216_OFFSET = 11'h 360;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO217_OFFSET = 11'h 364;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO218_OFFSET = 11'h 368;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO219_OFFSET = 11'h 36c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO220_OFFSET = 11'h 370;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO221_OFFSET = 11'h 374;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO222_OFFSET = 11'h 378;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO223_OFFSET = 11'h 37c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO224_OFFSET = 11'h 380;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO225_OFFSET = 11'h 384;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO226_OFFSET = 11'h 388;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO227_OFFSET = 11'h 38c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO228_OFFSET = 11'h 390;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO229_OFFSET = 11'h 394;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO230_OFFSET = 11'h 398;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO231_OFFSET = 11'h 39c;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO232_OFFSET = 11'h 3a0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO233_OFFSET = 11'h 3a4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO234_OFFSET = 11'h 3a8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO235_OFFSET = 11'h 3ac;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO236_OFFSET = 11'h 3b0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO237_OFFSET = 11'h 3b4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO238_OFFSET = 11'h 3b8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO239_OFFSET = 11'h 3bc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO240_OFFSET = 11'h 3c0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO241_OFFSET = 11'h 3c4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO242_OFFSET = 11'h 3c8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO243_OFFSET = 11'h 3cc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO244_OFFSET = 11'h 3d0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO245_OFFSET = 11'h 3d4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO246_OFFSET = 11'h 3d8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO247_OFFSET = 11'h 3dc;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO248_OFFSET = 11'h 3e0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO249_OFFSET = 11'h 3e4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO250_OFFSET = 11'h 3e8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO251_OFFSET = 11'h 3ec;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO252_OFFSET = 11'h 3f0;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO253_OFFSET = 11'h 3f4;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO254_OFFSET = 11'h 3f8;
-  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO255_OFFSET = 11'h 3fc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_0_OFFSET = 11'h 0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_1_OFFSET = 11'h 4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_2_OFFSET = 11'h 8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_3_OFFSET = 11'h c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_4_OFFSET = 11'h 10;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_5_OFFSET = 11'h 14;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_6_OFFSET = 11'h 18;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_7_OFFSET = 11'h 1c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_8_OFFSET = 11'h 20;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_9_OFFSET = 11'h 24;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_10_OFFSET = 11'h 28;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_11_OFFSET = 11'h 2c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_12_OFFSET = 11'h 30;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_13_OFFSET = 11'h 34;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_14_OFFSET = 11'h 38;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_15_OFFSET = 11'h 3c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_16_OFFSET = 11'h 40;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_17_OFFSET = 11'h 44;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_18_OFFSET = 11'h 48;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_19_OFFSET = 11'h 4c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_20_OFFSET = 11'h 50;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_21_OFFSET = 11'h 54;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_22_OFFSET = 11'h 58;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_23_OFFSET = 11'h 5c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_24_OFFSET = 11'h 60;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_25_OFFSET = 11'h 64;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_26_OFFSET = 11'h 68;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_27_OFFSET = 11'h 6c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_28_OFFSET = 11'h 70;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_29_OFFSET = 11'h 74;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_30_OFFSET = 11'h 78;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_31_OFFSET = 11'h 7c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_32_OFFSET = 11'h 80;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_33_OFFSET = 11'h 84;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_34_OFFSET = 11'h 88;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_35_OFFSET = 11'h 8c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_36_OFFSET = 11'h 90;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_37_OFFSET = 11'h 94;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_38_OFFSET = 11'h 98;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_39_OFFSET = 11'h 9c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_40_OFFSET = 11'h a0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_41_OFFSET = 11'h a4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_42_OFFSET = 11'h a8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_43_OFFSET = 11'h ac;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_44_OFFSET = 11'h b0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_45_OFFSET = 11'h b4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_46_OFFSET = 11'h b8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_47_OFFSET = 11'h bc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_48_OFFSET = 11'h c0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_49_OFFSET = 11'h c4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_50_OFFSET = 11'h c8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_51_OFFSET = 11'h cc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_52_OFFSET = 11'h d0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_53_OFFSET = 11'h d4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_54_OFFSET = 11'h d8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_55_OFFSET = 11'h dc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_56_OFFSET = 11'h e0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_57_OFFSET = 11'h e4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_58_OFFSET = 11'h e8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_59_OFFSET = 11'h ec;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_60_OFFSET = 11'h f0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_61_OFFSET = 11'h f4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_62_OFFSET = 11'h f8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_63_OFFSET = 11'h fc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_64_OFFSET = 11'h 100;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_65_OFFSET = 11'h 104;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_66_OFFSET = 11'h 108;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_67_OFFSET = 11'h 10c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_68_OFFSET = 11'h 110;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_69_OFFSET = 11'h 114;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_70_OFFSET = 11'h 118;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_71_OFFSET = 11'h 11c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_72_OFFSET = 11'h 120;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_73_OFFSET = 11'h 124;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_74_OFFSET = 11'h 128;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_75_OFFSET = 11'h 12c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_76_OFFSET = 11'h 130;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_77_OFFSET = 11'h 134;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_78_OFFSET = 11'h 138;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_79_OFFSET = 11'h 13c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_80_OFFSET = 11'h 140;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_81_OFFSET = 11'h 144;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_82_OFFSET = 11'h 148;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_83_OFFSET = 11'h 14c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_84_OFFSET = 11'h 150;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_85_OFFSET = 11'h 154;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_86_OFFSET = 11'h 158;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_87_OFFSET = 11'h 15c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_88_OFFSET = 11'h 160;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_89_OFFSET = 11'h 164;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_90_OFFSET = 11'h 168;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_91_OFFSET = 11'h 16c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_92_OFFSET = 11'h 170;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_93_OFFSET = 11'h 174;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_94_OFFSET = 11'h 178;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_95_OFFSET = 11'h 17c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_96_OFFSET = 11'h 180;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_97_OFFSET = 11'h 184;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_98_OFFSET = 11'h 188;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_99_OFFSET = 11'h 18c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_100_OFFSET = 11'h 190;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_101_OFFSET = 11'h 194;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_102_OFFSET = 11'h 198;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_103_OFFSET = 11'h 19c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_104_OFFSET = 11'h 1a0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_105_OFFSET = 11'h 1a4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_106_OFFSET = 11'h 1a8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_107_OFFSET = 11'h 1ac;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_108_OFFSET = 11'h 1b0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_109_OFFSET = 11'h 1b4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_110_OFFSET = 11'h 1b8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_111_OFFSET = 11'h 1bc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_112_OFFSET = 11'h 1c0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_113_OFFSET = 11'h 1c4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_114_OFFSET = 11'h 1c8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_115_OFFSET = 11'h 1cc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_116_OFFSET = 11'h 1d0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_117_OFFSET = 11'h 1d4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_118_OFFSET = 11'h 1d8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_119_OFFSET = 11'h 1dc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_120_OFFSET = 11'h 1e0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_121_OFFSET = 11'h 1e4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_122_OFFSET = 11'h 1e8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_123_OFFSET = 11'h 1ec;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_124_OFFSET = 11'h 1f0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_125_OFFSET = 11'h 1f4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_126_OFFSET = 11'h 1f8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_127_OFFSET = 11'h 1fc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_128_OFFSET = 11'h 200;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_129_OFFSET = 11'h 204;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_130_OFFSET = 11'h 208;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_131_OFFSET = 11'h 20c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_132_OFFSET = 11'h 210;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_133_OFFSET = 11'h 214;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_134_OFFSET = 11'h 218;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_135_OFFSET = 11'h 21c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_136_OFFSET = 11'h 220;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_137_OFFSET = 11'h 224;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_138_OFFSET = 11'h 228;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_139_OFFSET = 11'h 22c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_140_OFFSET = 11'h 230;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_141_OFFSET = 11'h 234;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_142_OFFSET = 11'h 238;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_143_OFFSET = 11'h 23c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_144_OFFSET = 11'h 240;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_145_OFFSET = 11'h 244;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_146_OFFSET = 11'h 248;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_147_OFFSET = 11'h 24c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_148_OFFSET = 11'h 250;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_149_OFFSET = 11'h 254;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_150_OFFSET = 11'h 258;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_151_OFFSET = 11'h 25c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_152_OFFSET = 11'h 260;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_153_OFFSET = 11'h 264;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_154_OFFSET = 11'h 268;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_155_OFFSET = 11'h 26c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_156_OFFSET = 11'h 270;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_157_OFFSET = 11'h 274;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_158_OFFSET = 11'h 278;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_159_OFFSET = 11'h 27c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_160_OFFSET = 11'h 280;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_161_OFFSET = 11'h 284;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_162_OFFSET = 11'h 288;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_163_OFFSET = 11'h 28c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_164_OFFSET = 11'h 290;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_165_OFFSET = 11'h 294;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_166_OFFSET = 11'h 298;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_167_OFFSET = 11'h 29c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_168_OFFSET = 11'h 2a0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_169_OFFSET = 11'h 2a4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_170_OFFSET = 11'h 2a8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_171_OFFSET = 11'h 2ac;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_172_OFFSET = 11'h 2b0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_173_OFFSET = 11'h 2b4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_174_OFFSET = 11'h 2b8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_175_OFFSET = 11'h 2bc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_176_OFFSET = 11'h 2c0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_177_OFFSET = 11'h 2c4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_178_OFFSET = 11'h 2c8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_179_OFFSET = 11'h 2cc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_180_OFFSET = 11'h 2d0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_181_OFFSET = 11'h 2d4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_182_OFFSET = 11'h 2d8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_183_OFFSET = 11'h 2dc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_184_OFFSET = 11'h 2e0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_185_OFFSET = 11'h 2e4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_186_OFFSET = 11'h 2e8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_187_OFFSET = 11'h 2ec;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_188_OFFSET = 11'h 2f0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_189_OFFSET = 11'h 2f4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_190_OFFSET = 11'h 2f8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_191_OFFSET = 11'h 2fc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_192_OFFSET = 11'h 300;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_193_OFFSET = 11'h 304;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_194_OFFSET = 11'h 308;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_195_OFFSET = 11'h 30c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_196_OFFSET = 11'h 310;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_197_OFFSET = 11'h 314;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_198_OFFSET = 11'h 318;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_199_OFFSET = 11'h 31c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_200_OFFSET = 11'h 320;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_201_OFFSET = 11'h 324;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_202_OFFSET = 11'h 328;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_203_OFFSET = 11'h 32c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_204_OFFSET = 11'h 330;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_205_OFFSET = 11'h 334;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_206_OFFSET = 11'h 338;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_207_OFFSET = 11'h 33c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_208_OFFSET = 11'h 340;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_209_OFFSET = 11'h 344;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_210_OFFSET = 11'h 348;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_211_OFFSET = 11'h 34c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_212_OFFSET = 11'h 350;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_213_OFFSET = 11'h 354;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_214_OFFSET = 11'h 358;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_215_OFFSET = 11'h 35c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_216_OFFSET = 11'h 360;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_217_OFFSET = 11'h 364;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_218_OFFSET = 11'h 368;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_219_OFFSET = 11'h 36c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_220_OFFSET = 11'h 370;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_221_OFFSET = 11'h 374;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_222_OFFSET = 11'h 378;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_223_OFFSET = 11'h 37c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_224_OFFSET = 11'h 380;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_225_OFFSET = 11'h 384;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_226_OFFSET = 11'h 388;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_227_OFFSET = 11'h 38c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_228_OFFSET = 11'h 390;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_229_OFFSET = 11'h 394;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_230_OFFSET = 11'h 398;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_231_OFFSET = 11'h 39c;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_232_OFFSET = 11'h 3a0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_233_OFFSET = 11'h 3a4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_234_OFFSET = 11'h 3a8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_235_OFFSET = 11'h 3ac;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_236_OFFSET = 11'h 3b0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_237_OFFSET = 11'h 3b4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_238_OFFSET = 11'h 3b8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_239_OFFSET = 11'h 3bc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_240_OFFSET = 11'h 3c0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_241_OFFSET = 11'h 3c4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_242_OFFSET = 11'h 3c8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_243_OFFSET = 11'h 3cc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_244_OFFSET = 11'h 3d0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_245_OFFSET = 11'h 3d4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_246_OFFSET = 11'h 3d8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_247_OFFSET = 11'h 3dc;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_248_OFFSET = 11'h 3e0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_249_OFFSET = 11'h 3e4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_250_OFFSET = 11'h 3e8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_251_OFFSET = 11'h 3ec;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_252_OFFSET = 11'h 3f0;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_253_OFFSET = 11'h 3f4;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_254_OFFSET = 11'h 3f8;
+  parameter logic [BlockAw-1:0] LIO_RV_PLIC_PRIO_255_OFFSET = 11'h 3fc;
   parameter logic [BlockAw-1:0] LIO_RV_PLIC_IP_0_OFFSET = 11'h 400;
   parameter logic [BlockAw-1:0] LIO_RV_PLIC_IP_1_OFFSET = 11'h 404;
   parameter logic [BlockAw-1:0] LIO_RV_PLIC_IP_2_OFFSET = 11'h 408;
@@ -1867,262 +592,262 @@ package lio_rv_plic_reg_pkg;
 
   // Register index
   typedef enum int {
-    LIO_RV_PLIC_PRIO0,
-    LIO_RV_PLIC_PRIO1,
-    LIO_RV_PLIC_PRIO2,
-    LIO_RV_PLIC_PRIO3,
-    LIO_RV_PLIC_PRIO4,
-    LIO_RV_PLIC_PRIO5,
-    LIO_RV_PLIC_PRIO6,
-    LIO_RV_PLIC_PRIO7,
-    LIO_RV_PLIC_PRIO8,
-    LIO_RV_PLIC_PRIO9,
-    LIO_RV_PLIC_PRIO10,
-    LIO_RV_PLIC_PRIO11,
-    LIO_RV_PLIC_PRIO12,
-    LIO_RV_PLIC_PRIO13,
-    LIO_RV_PLIC_PRIO14,
-    LIO_RV_PLIC_PRIO15,
-    LIO_RV_PLIC_PRIO16,
-    LIO_RV_PLIC_PRIO17,
-    LIO_RV_PLIC_PRIO18,
-    LIO_RV_PLIC_PRIO19,
-    LIO_RV_PLIC_PRIO20,
-    LIO_RV_PLIC_PRIO21,
-    LIO_RV_PLIC_PRIO22,
-    LIO_RV_PLIC_PRIO23,
-    LIO_RV_PLIC_PRIO24,
-    LIO_RV_PLIC_PRIO25,
-    LIO_RV_PLIC_PRIO26,
-    LIO_RV_PLIC_PRIO27,
-    LIO_RV_PLIC_PRIO28,
-    LIO_RV_PLIC_PRIO29,
-    LIO_RV_PLIC_PRIO30,
-    LIO_RV_PLIC_PRIO31,
-    LIO_RV_PLIC_PRIO32,
-    LIO_RV_PLIC_PRIO33,
-    LIO_RV_PLIC_PRIO34,
-    LIO_RV_PLIC_PRIO35,
-    LIO_RV_PLIC_PRIO36,
-    LIO_RV_PLIC_PRIO37,
-    LIO_RV_PLIC_PRIO38,
-    LIO_RV_PLIC_PRIO39,
-    LIO_RV_PLIC_PRIO40,
-    LIO_RV_PLIC_PRIO41,
-    LIO_RV_PLIC_PRIO42,
-    LIO_RV_PLIC_PRIO43,
-    LIO_RV_PLIC_PRIO44,
-    LIO_RV_PLIC_PRIO45,
-    LIO_RV_PLIC_PRIO46,
-    LIO_RV_PLIC_PRIO47,
-    LIO_RV_PLIC_PRIO48,
-    LIO_RV_PLIC_PRIO49,
-    LIO_RV_PLIC_PRIO50,
-    LIO_RV_PLIC_PRIO51,
-    LIO_RV_PLIC_PRIO52,
-    LIO_RV_PLIC_PRIO53,
-    LIO_RV_PLIC_PRIO54,
-    LIO_RV_PLIC_PRIO55,
-    LIO_RV_PLIC_PRIO56,
-    LIO_RV_PLIC_PRIO57,
-    LIO_RV_PLIC_PRIO58,
-    LIO_RV_PLIC_PRIO59,
-    LIO_RV_PLIC_PRIO60,
-    LIO_RV_PLIC_PRIO61,
-    LIO_RV_PLIC_PRIO62,
-    LIO_RV_PLIC_PRIO63,
-    LIO_RV_PLIC_PRIO64,
-    LIO_RV_PLIC_PRIO65,
-    LIO_RV_PLIC_PRIO66,
-    LIO_RV_PLIC_PRIO67,
-    LIO_RV_PLIC_PRIO68,
-    LIO_RV_PLIC_PRIO69,
-    LIO_RV_PLIC_PRIO70,
-    LIO_RV_PLIC_PRIO71,
-    LIO_RV_PLIC_PRIO72,
-    LIO_RV_PLIC_PRIO73,
-    LIO_RV_PLIC_PRIO74,
-    LIO_RV_PLIC_PRIO75,
-    LIO_RV_PLIC_PRIO76,
-    LIO_RV_PLIC_PRIO77,
-    LIO_RV_PLIC_PRIO78,
-    LIO_RV_PLIC_PRIO79,
-    LIO_RV_PLIC_PRIO80,
-    LIO_RV_PLIC_PRIO81,
-    LIO_RV_PLIC_PRIO82,
-    LIO_RV_PLIC_PRIO83,
-    LIO_RV_PLIC_PRIO84,
-    LIO_RV_PLIC_PRIO85,
-    LIO_RV_PLIC_PRIO86,
-    LIO_RV_PLIC_PRIO87,
-    LIO_RV_PLIC_PRIO88,
-    LIO_RV_PLIC_PRIO89,
-    LIO_RV_PLIC_PRIO90,
-    LIO_RV_PLIC_PRIO91,
-    LIO_RV_PLIC_PRIO92,
-    LIO_RV_PLIC_PRIO93,
-    LIO_RV_PLIC_PRIO94,
-    LIO_RV_PLIC_PRIO95,
-    LIO_RV_PLIC_PRIO96,
-    LIO_RV_PLIC_PRIO97,
-    LIO_RV_PLIC_PRIO98,
-    LIO_RV_PLIC_PRIO99,
-    LIO_RV_PLIC_PRIO100,
-    LIO_RV_PLIC_PRIO101,
-    LIO_RV_PLIC_PRIO102,
-    LIO_RV_PLIC_PRIO103,
-    LIO_RV_PLIC_PRIO104,
-    LIO_RV_PLIC_PRIO105,
-    LIO_RV_PLIC_PRIO106,
-    LIO_RV_PLIC_PRIO107,
-    LIO_RV_PLIC_PRIO108,
-    LIO_RV_PLIC_PRIO109,
-    LIO_RV_PLIC_PRIO110,
-    LIO_RV_PLIC_PRIO111,
-    LIO_RV_PLIC_PRIO112,
-    LIO_RV_PLIC_PRIO113,
-    LIO_RV_PLIC_PRIO114,
-    LIO_RV_PLIC_PRIO115,
-    LIO_RV_PLIC_PRIO116,
-    LIO_RV_PLIC_PRIO117,
-    LIO_RV_PLIC_PRIO118,
-    LIO_RV_PLIC_PRIO119,
-    LIO_RV_PLIC_PRIO120,
-    LIO_RV_PLIC_PRIO121,
-    LIO_RV_PLIC_PRIO122,
-    LIO_RV_PLIC_PRIO123,
-    LIO_RV_PLIC_PRIO124,
-    LIO_RV_PLIC_PRIO125,
-    LIO_RV_PLIC_PRIO126,
-    LIO_RV_PLIC_PRIO127,
-    LIO_RV_PLIC_PRIO128,
-    LIO_RV_PLIC_PRIO129,
-    LIO_RV_PLIC_PRIO130,
-    LIO_RV_PLIC_PRIO131,
-    LIO_RV_PLIC_PRIO132,
-    LIO_RV_PLIC_PRIO133,
-    LIO_RV_PLIC_PRIO134,
-    LIO_RV_PLIC_PRIO135,
-    LIO_RV_PLIC_PRIO136,
-    LIO_RV_PLIC_PRIO137,
-    LIO_RV_PLIC_PRIO138,
-    LIO_RV_PLIC_PRIO139,
-    LIO_RV_PLIC_PRIO140,
-    LIO_RV_PLIC_PRIO141,
-    LIO_RV_PLIC_PRIO142,
-    LIO_RV_PLIC_PRIO143,
-    LIO_RV_PLIC_PRIO144,
-    LIO_RV_PLIC_PRIO145,
-    LIO_RV_PLIC_PRIO146,
-    LIO_RV_PLIC_PRIO147,
-    LIO_RV_PLIC_PRIO148,
-    LIO_RV_PLIC_PRIO149,
-    LIO_RV_PLIC_PRIO150,
-    LIO_RV_PLIC_PRIO151,
-    LIO_RV_PLIC_PRIO152,
-    LIO_RV_PLIC_PRIO153,
-    LIO_RV_PLIC_PRIO154,
-    LIO_RV_PLIC_PRIO155,
-    LIO_RV_PLIC_PRIO156,
-    LIO_RV_PLIC_PRIO157,
-    LIO_RV_PLIC_PRIO158,
-    LIO_RV_PLIC_PRIO159,
-    LIO_RV_PLIC_PRIO160,
-    LIO_RV_PLIC_PRIO161,
-    LIO_RV_PLIC_PRIO162,
-    LIO_RV_PLIC_PRIO163,
-    LIO_RV_PLIC_PRIO164,
-    LIO_RV_PLIC_PRIO165,
-    LIO_RV_PLIC_PRIO166,
-    LIO_RV_PLIC_PRIO167,
-    LIO_RV_PLIC_PRIO168,
-    LIO_RV_PLIC_PRIO169,
-    LIO_RV_PLIC_PRIO170,
-    LIO_RV_PLIC_PRIO171,
-    LIO_RV_PLIC_PRIO172,
-    LIO_RV_PLIC_PRIO173,
-    LIO_RV_PLIC_PRIO174,
-    LIO_RV_PLIC_PRIO175,
-    LIO_RV_PLIC_PRIO176,
-    LIO_RV_PLIC_PRIO177,
-    LIO_RV_PLIC_PRIO178,
-    LIO_RV_PLIC_PRIO179,
-    LIO_RV_PLIC_PRIO180,
-    LIO_RV_PLIC_PRIO181,
-    LIO_RV_PLIC_PRIO182,
-    LIO_RV_PLIC_PRIO183,
-    LIO_RV_PLIC_PRIO184,
-    LIO_RV_PLIC_PRIO185,
-    LIO_RV_PLIC_PRIO186,
-    LIO_RV_PLIC_PRIO187,
-    LIO_RV_PLIC_PRIO188,
-    LIO_RV_PLIC_PRIO189,
-    LIO_RV_PLIC_PRIO190,
-    LIO_RV_PLIC_PRIO191,
-    LIO_RV_PLIC_PRIO192,
-    LIO_RV_PLIC_PRIO193,
-    LIO_RV_PLIC_PRIO194,
-    LIO_RV_PLIC_PRIO195,
-    LIO_RV_PLIC_PRIO196,
-    LIO_RV_PLIC_PRIO197,
-    LIO_RV_PLIC_PRIO198,
-    LIO_RV_PLIC_PRIO199,
-    LIO_RV_PLIC_PRIO200,
-    LIO_RV_PLIC_PRIO201,
-    LIO_RV_PLIC_PRIO202,
-    LIO_RV_PLIC_PRIO203,
-    LIO_RV_PLIC_PRIO204,
-    LIO_RV_PLIC_PRIO205,
-    LIO_RV_PLIC_PRIO206,
-    LIO_RV_PLIC_PRIO207,
-    LIO_RV_PLIC_PRIO208,
-    LIO_RV_PLIC_PRIO209,
-    LIO_RV_PLIC_PRIO210,
-    LIO_RV_PLIC_PRIO211,
-    LIO_RV_PLIC_PRIO212,
-    LIO_RV_PLIC_PRIO213,
-    LIO_RV_PLIC_PRIO214,
-    LIO_RV_PLIC_PRIO215,
-    LIO_RV_PLIC_PRIO216,
-    LIO_RV_PLIC_PRIO217,
-    LIO_RV_PLIC_PRIO218,
-    LIO_RV_PLIC_PRIO219,
-    LIO_RV_PLIC_PRIO220,
-    LIO_RV_PLIC_PRIO221,
-    LIO_RV_PLIC_PRIO222,
-    LIO_RV_PLIC_PRIO223,
-    LIO_RV_PLIC_PRIO224,
-    LIO_RV_PLIC_PRIO225,
-    LIO_RV_PLIC_PRIO226,
-    LIO_RV_PLIC_PRIO227,
-    LIO_RV_PLIC_PRIO228,
-    LIO_RV_PLIC_PRIO229,
-    LIO_RV_PLIC_PRIO230,
-    LIO_RV_PLIC_PRIO231,
-    LIO_RV_PLIC_PRIO232,
-    LIO_RV_PLIC_PRIO233,
-    LIO_RV_PLIC_PRIO234,
-    LIO_RV_PLIC_PRIO235,
-    LIO_RV_PLIC_PRIO236,
-    LIO_RV_PLIC_PRIO237,
-    LIO_RV_PLIC_PRIO238,
-    LIO_RV_PLIC_PRIO239,
-    LIO_RV_PLIC_PRIO240,
-    LIO_RV_PLIC_PRIO241,
-    LIO_RV_PLIC_PRIO242,
-    LIO_RV_PLIC_PRIO243,
-    LIO_RV_PLIC_PRIO244,
-    LIO_RV_PLIC_PRIO245,
-    LIO_RV_PLIC_PRIO246,
-    LIO_RV_PLIC_PRIO247,
-    LIO_RV_PLIC_PRIO248,
-    LIO_RV_PLIC_PRIO249,
-    LIO_RV_PLIC_PRIO250,
-    LIO_RV_PLIC_PRIO251,
-    LIO_RV_PLIC_PRIO252,
-    LIO_RV_PLIC_PRIO253,
-    LIO_RV_PLIC_PRIO254,
-    LIO_RV_PLIC_PRIO255,
+    LIO_RV_PLIC_PRIO_0,
+    LIO_RV_PLIC_PRIO_1,
+    LIO_RV_PLIC_PRIO_2,
+    LIO_RV_PLIC_PRIO_3,
+    LIO_RV_PLIC_PRIO_4,
+    LIO_RV_PLIC_PRIO_5,
+    LIO_RV_PLIC_PRIO_6,
+    LIO_RV_PLIC_PRIO_7,
+    LIO_RV_PLIC_PRIO_8,
+    LIO_RV_PLIC_PRIO_9,
+    LIO_RV_PLIC_PRIO_10,
+    LIO_RV_PLIC_PRIO_11,
+    LIO_RV_PLIC_PRIO_12,
+    LIO_RV_PLIC_PRIO_13,
+    LIO_RV_PLIC_PRIO_14,
+    LIO_RV_PLIC_PRIO_15,
+    LIO_RV_PLIC_PRIO_16,
+    LIO_RV_PLIC_PRIO_17,
+    LIO_RV_PLIC_PRIO_18,
+    LIO_RV_PLIC_PRIO_19,
+    LIO_RV_PLIC_PRIO_20,
+    LIO_RV_PLIC_PRIO_21,
+    LIO_RV_PLIC_PRIO_22,
+    LIO_RV_PLIC_PRIO_23,
+    LIO_RV_PLIC_PRIO_24,
+    LIO_RV_PLIC_PRIO_25,
+    LIO_RV_PLIC_PRIO_26,
+    LIO_RV_PLIC_PRIO_27,
+    LIO_RV_PLIC_PRIO_28,
+    LIO_RV_PLIC_PRIO_29,
+    LIO_RV_PLIC_PRIO_30,
+    LIO_RV_PLIC_PRIO_31,
+    LIO_RV_PLIC_PRIO_32,
+    LIO_RV_PLIC_PRIO_33,
+    LIO_RV_PLIC_PRIO_34,
+    LIO_RV_PLIC_PRIO_35,
+    LIO_RV_PLIC_PRIO_36,
+    LIO_RV_PLIC_PRIO_37,
+    LIO_RV_PLIC_PRIO_38,
+    LIO_RV_PLIC_PRIO_39,
+    LIO_RV_PLIC_PRIO_40,
+    LIO_RV_PLIC_PRIO_41,
+    LIO_RV_PLIC_PRIO_42,
+    LIO_RV_PLIC_PRIO_43,
+    LIO_RV_PLIC_PRIO_44,
+    LIO_RV_PLIC_PRIO_45,
+    LIO_RV_PLIC_PRIO_46,
+    LIO_RV_PLIC_PRIO_47,
+    LIO_RV_PLIC_PRIO_48,
+    LIO_RV_PLIC_PRIO_49,
+    LIO_RV_PLIC_PRIO_50,
+    LIO_RV_PLIC_PRIO_51,
+    LIO_RV_PLIC_PRIO_52,
+    LIO_RV_PLIC_PRIO_53,
+    LIO_RV_PLIC_PRIO_54,
+    LIO_RV_PLIC_PRIO_55,
+    LIO_RV_PLIC_PRIO_56,
+    LIO_RV_PLIC_PRIO_57,
+    LIO_RV_PLIC_PRIO_58,
+    LIO_RV_PLIC_PRIO_59,
+    LIO_RV_PLIC_PRIO_60,
+    LIO_RV_PLIC_PRIO_61,
+    LIO_RV_PLIC_PRIO_62,
+    LIO_RV_PLIC_PRIO_63,
+    LIO_RV_PLIC_PRIO_64,
+    LIO_RV_PLIC_PRIO_65,
+    LIO_RV_PLIC_PRIO_66,
+    LIO_RV_PLIC_PRIO_67,
+    LIO_RV_PLIC_PRIO_68,
+    LIO_RV_PLIC_PRIO_69,
+    LIO_RV_PLIC_PRIO_70,
+    LIO_RV_PLIC_PRIO_71,
+    LIO_RV_PLIC_PRIO_72,
+    LIO_RV_PLIC_PRIO_73,
+    LIO_RV_PLIC_PRIO_74,
+    LIO_RV_PLIC_PRIO_75,
+    LIO_RV_PLIC_PRIO_76,
+    LIO_RV_PLIC_PRIO_77,
+    LIO_RV_PLIC_PRIO_78,
+    LIO_RV_PLIC_PRIO_79,
+    LIO_RV_PLIC_PRIO_80,
+    LIO_RV_PLIC_PRIO_81,
+    LIO_RV_PLIC_PRIO_82,
+    LIO_RV_PLIC_PRIO_83,
+    LIO_RV_PLIC_PRIO_84,
+    LIO_RV_PLIC_PRIO_85,
+    LIO_RV_PLIC_PRIO_86,
+    LIO_RV_PLIC_PRIO_87,
+    LIO_RV_PLIC_PRIO_88,
+    LIO_RV_PLIC_PRIO_89,
+    LIO_RV_PLIC_PRIO_90,
+    LIO_RV_PLIC_PRIO_91,
+    LIO_RV_PLIC_PRIO_92,
+    LIO_RV_PLIC_PRIO_93,
+    LIO_RV_PLIC_PRIO_94,
+    LIO_RV_PLIC_PRIO_95,
+    LIO_RV_PLIC_PRIO_96,
+    LIO_RV_PLIC_PRIO_97,
+    LIO_RV_PLIC_PRIO_98,
+    LIO_RV_PLIC_PRIO_99,
+    LIO_RV_PLIC_PRIO_100,
+    LIO_RV_PLIC_PRIO_101,
+    LIO_RV_PLIC_PRIO_102,
+    LIO_RV_PLIC_PRIO_103,
+    LIO_RV_PLIC_PRIO_104,
+    LIO_RV_PLIC_PRIO_105,
+    LIO_RV_PLIC_PRIO_106,
+    LIO_RV_PLIC_PRIO_107,
+    LIO_RV_PLIC_PRIO_108,
+    LIO_RV_PLIC_PRIO_109,
+    LIO_RV_PLIC_PRIO_110,
+    LIO_RV_PLIC_PRIO_111,
+    LIO_RV_PLIC_PRIO_112,
+    LIO_RV_PLIC_PRIO_113,
+    LIO_RV_PLIC_PRIO_114,
+    LIO_RV_PLIC_PRIO_115,
+    LIO_RV_PLIC_PRIO_116,
+    LIO_RV_PLIC_PRIO_117,
+    LIO_RV_PLIC_PRIO_118,
+    LIO_RV_PLIC_PRIO_119,
+    LIO_RV_PLIC_PRIO_120,
+    LIO_RV_PLIC_PRIO_121,
+    LIO_RV_PLIC_PRIO_122,
+    LIO_RV_PLIC_PRIO_123,
+    LIO_RV_PLIC_PRIO_124,
+    LIO_RV_PLIC_PRIO_125,
+    LIO_RV_PLIC_PRIO_126,
+    LIO_RV_PLIC_PRIO_127,
+    LIO_RV_PLIC_PRIO_128,
+    LIO_RV_PLIC_PRIO_129,
+    LIO_RV_PLIC_PRIO_130,
+    LIO_RV_PLIC_PRIO_131,
+    LIO_RV_PLIC_PRIO_132,
+    LIO_RV_PLIC_PRIO_133,
+    LIO_RV_PLIC_PRIO_134,
+    LIO_RV_PLIC_PRIO_135,
+    LIO_RV_PLIC_PRIO_136,
+    LIO_RV_PLIC_PRIO_137,
+    LIO_RV_PLIC_PRIO_138,
+    LIO_RV_PLIC_PRIO_139,
+    LIO_RV_PLIC_PRIO_140,
+    LIO_RV_PLIC_PRIO_141,
+    LIO_RV_PLIC_PRIO_142,
+    LIO_RV_PLIC_PRIO_143,
+    LIO_RV_PLIC_PRIO_144,
+    LIO_RV_PLIC_PRIO_145,
+    LIO_RV_PLIC_PRIO_146,
+    LIO_RV_PLIC_PRIO_147,
+    LIO_RV_PLIC_PRIO_148,
+    LIO_RV_PLIC_PRIO_149,
+    LIO_RV_PLIC_PRIO_150,
+    LIO_RV_PLIC_PRIO_151,
+    LIO_RV_PLIC_PRIO_152,
+    LIO_RV_PLIC_PRIO_153,
+    LIO_RV_PLIC_PRIO_154,
+    LIO_RV_PLIC_PRIO_155,
+    LIO_RV_PLIC_PRIO_156,
+    LIO_RV_PLIC_PRIO_157,
+    LIO_RV_PLIC_PRIO_158,
+    LIO_RV_PLIC_PRIO_159,
+    LIO_RV_PLIC_PRIO_160,
+    LIO_RV_PLIC_PRIO_161,
+    LIO_RV_PLIC_PRIO_162,
+    LIO_RV_PLIC_PRIO_163,
+    LIO_RV_PLIC_PRIO_164,
+    LIO_RV_PLIC_PRIO_165,
+    LIO_RV_PLIC_PRIO_166,
+    LIO_RV_PLIC_PRIO_167,
+    LIO_RV_PLIC_PRIO_168,
+    LIO_RV_PLIC_PRIO_169,
+    LIO_RV_PLIC_PRIO_170,
+    LIO_RV_PLIC_PRIO_171,
+    LIO_RV_PLIC_PRIO_172,
+    LIO_RV_PLIC_PRIO_173,
+    LIO_RV_PLIC_PRIO_174,
+    LIO_RV_PLIC_PRIO_175,
+    LIO_RV_PLIC_PRIO_176,
+    LIO_RV_PLIC_PRIO_177,
+    LIO_RV_PLIC_PRIO_178,
+    LIO_RV_PLIC_PRIO_179,
+    LIO_RV_PLIC_PRIO_180,
+    LIO_RV_PLIC_PRIO_181,
+    LIO_RV_PLIC_PRIO_182,
+    LIO_RV_PLIC_PRIO_183,
+    LIO_RV_PLIC_PRIO_184,
+    LIO_RV_PLIC_PRIO_185,
+    LIO_RV_PLIC_PRIO_186,
+    LIO_RV_PLIC_PRIO_187,
+    LIO_RV_PLIC_PRIO_188,
+    LIO_RV_PLIC_PRIO_189,
+    LIO_RV_PLIC_PRIO_190,
+    LIO_RV_PLIC_PRIO_191,
+    LIO_RV_PLIC_PRIO_192,
+    LIO_RV_PLIC_PRIO_193,
+    LIO_RV_PLIC_PRIO_194,
+    LIO_RV_PLIC_PRIO_195,
+    LIO_RV_PLIC_PRIO_196,
+    LIO_RV_PLIC_PRIO_197,
+    LIO_RV_PLIC_PRIO_198,
+    LIO_RV_PLIC_PRIO_199,
+    LIO_RV_PLIC_PRIO_200,
+    LIO_RV_PLIC_PRIO_201,
+    LIO_RV_PLIC_PRIO_202,
+    LIO_RV_PLIC_PRIO_203,
+    LIO_RV_PLIC_PRIO_204,
+    LIO_RV_PLIC_PRIO_205,
+    LIO_RV_PLIC_PRIO_206,
+    LIO_RV_PLIC_PRIO_207,
+    LIO_RV_PLIC_PRIO_208,
+    LIO_RV_PLIC_PRIO_209,
+    LIO_RV_PLIC_PRIO_210,
+    LIO_RV_PLIC_PRIO_211,
+    LIO_RV_PLIC_PRIO_212,
+    LIO_RV_PLIC_PRIO_213,
+    LIO_RV_PLIC_PRIO_214,
+    LIO_RV_PLIC_PRIO_215,
+    LIO_RV_PLIC_PRIO_216,
+    LIO_RV_PLIC_PRIO_217,
+    LIO_RV_PLIC_PRIO_218,
+    LIO_RV_PLIC_PRIO_219,
+    LIO_RV_PLIC_PRIO_220,
+    LIO_RV_PLIC_PRIO_221,
+    LIO_RV_PLIC_PRIO_222,
+    LIO_RV_PLIC_PRIO_223,
+    LIO_RV_PLIC_PRIO_224,
+    LIO_RV_PLIC_PRIO_225,
+    LIO_RV_PLIC_PRIO_226,
+    LIO_RV_PLIC_PRIO_227,
+    LIO_RV_PLIC_PRIO_228,
+    LIO_RV_PLIC_PRIO_229,
+    LIO_RV_PLIC_PRIO_230,
+    LIO_RV_PLIC_PRIO_231,
+    LIO_RV_PLIC_PRIO_232,
+    LIO_RV_PLIC_PRIO_233,
+    LIO_RV_PLIC_PRIO_234,
+    LIO_RV_PLIC_PRIO_235,
+    LIO_RV_PLIC_PRIO_236,
+    LIO_RV_PLIC_PRIO_237,
+    LIO_RV_PLIC_PRIO_238,
+    LIO_RV_PLIC_PRIO_239,
+    LIO_RV_PLIC_PRIO_240,
+    LIO_RV_PLIC_PRIO_241,
+    LIO_RV_PLIC_PRIO_242,
+    LIO_RV_PLIC_PRIO_243,
+    LIO_RV_PLIC_PRIO_244,
+    LIO_RV_PLIC_PRIO_245,
+    LIO_RV_PLIC_PRIO_246,
+    LIO_RV_PLIC_PRIO_247,
+    LIO_RV_PLIC_PRIO_248,
+    LIO_RV_PLIC_PRIO_249,
+    LIO_RV_PLIC_PRIO_250,
+    LIO_RV_PLIC_PRIO_251,
+    LIO_RV_PLIC_PRIO_252,
+    LIO_RV_PLIC_PRIO_253,
+    LIO_RV_PLIC_PRIO_254,
+    LIO_RV_PLIC_PRIO_255,
     LIO_RV_PLIC_IP_0,
     LIO_RV_PLIC_IP_1,
     LIO_RV_PLIC_IP_2,
@@ -2213,262 +938,262 @@ package lio_rv_plic_reg_pkg;
 
   // Register width information to check illegal writes
   parameter logic [3:0] LIO_RV_PLIC_PERMIT [342] = '{
-    4'b 0001, // index[  0] LIO_RV_PLIC_PRIO0
-    4'b 0001, // index[  1] LIO_RV_PLIC_PRIO1
-    4'b 0001, // index[  2] LIO_RV_PLIC_PRIO2
-    4'b 0001, // index[  3] LIO_RV_PLIC_PRIO3
-    4'b 0001, // index[  4] LIO_RV_PLIC_PRIO4
-    4'b 0001, // index[  5] LIO_RV_PLIC_PRIO5
-    4'b 0001, // index[  6] LIO_RV_PLIC_PRIO6
-    4'b 0001, // index[  7] LIO_RV_PLIC_PRIO7
-    4'b 0001, // index[  8] LIO_RV_PLIC_PRIO8
-    4'b 0001, // index[  9] LIO_RV_PLIC_PRIO9
-    4'b 0001, // index[ 10] LIO_RV_PLIC_PRIO10
-    4'b 0001, // index[ 11] LIO_RV_PLIC_PRIO11
-    4'b 0001, // index[ 12] LIO_RV_PLIC_PRIO12
-    4'b 0001, // index[ 13] LIO_RV_PLIC_PRIO13
-    4'b 0001, // index[ 14] LIO_RV_PLIC_PRIO14
-    4'b 0001, // index[ 15] LIO_RV_PLIC_PRIO15
-    4'b 0001, // index[ 16] LIO_RV_PLIC_PRIO16
-    4'b 0001, // index[ 17] LIO_RV_PLIC_PRIO17
-    4'b 0001, // index[ 18] LIO_RV_PLIC_PRIO18
-    4'b 0001, // index[ 19] LIO_RV_PLIC_PRIO19
-    4'b 0001, // index[ 20] LIO_RV_PLIC_PRIO20
-    4'b 0001, // index[ 21] LIO_RV_PLIC_PRIO21
-    4'b 0001, // index[ 22] LIO_RV_PLIC_PRIO22
-    4'b 0001, // index[ 23] LIO_RV_PLIC_PRIO23
-    4'b 0001, // index[ 24] LIO_RV_PLIC_PRIO24
-    4'b 0001, // index[ 25] LIO_RV_PLIC_PRIO25
-    4'b 0001, // index[ 26] LIO_RV_PLIC_PRIO26
-    4'b 0001, // index[ 27] LIO_RV_PLIC_PRIO27
-    4'b 0001, // index[ 28] LIO_RV_PLIC_PRIO28
-    4'b 0001, // index[ 29] LIO_RV_PLIC_PRIO29
-    4'b 0001, // index[ 30] LIO_RV_PLIC_PRIO30
-    4'b 0001, // index[ 31] LIO_RV_PLIC_PRIO31
-    4'b 0001, // index[ 32] LIO_RV_PLIC_PRIO32
-    4'b 0001, // index[ 33] LIO_RV_PLIC_PRIO33
-    4'b 0001, // index[ 34] LIO_RV_PLIC_PRIO34
-    4'b 0001, // index[ 35] LIO_RV_PLIC_PRIO35
-    4'b 0001, // index[ 36] LIO_RV_PLIC_PRIO36
-    4'b 0001, // index[ 37] LIO_RV_PLIC_PRIO37
-    4'b 0001, // index[ 38] LIO_RV_PLIC_PRIO38
-    4'b 0001, // index[ 39] LIO_RV_PLIC_PRIO39
-    4'b 0001, // index[ 40] LIO_RV_PLIC_PRIO40
-    4'b 0001, // index[ 41] LIO_RV_PLIC_PRIO41
-    4'b 0001, // index[ 42] LIO_RV_PLIC_PRIO42
-    4'b 0001, // index[ 43] LIO_RV_PLIC_PRIO43
-    4'b 0001, // index[ 44] LIO_RV_PLIC_PRIO44
-    4'b 0001, // index[ 45] LIO_RV_PLIC_PRIO45
-    4'b 0001, // index[ 46] LIO_RV_PLIC_PRIO46
-    4'b 0001, // index[ 47] LIO_RV_PLIC_PRIO47
-    4'b 0001, // index[ 48] LIO_RV_PLIC_PRIO48
-    4'b 0001, // index[ 49] LIO_RV_PLIC_PRIO49
-    4'b 0001, // index[ 50] LIO_RV_PLIC_PRIO50
-    4'b 0001, // index[ 51] LIO_RV_PLIC_PRIO51
-    4'b 0001, // index[ 52] LIO_RV_PLIC_PRIO52
-    4'b 0001, // index[ 53] LIO_RV_PLIC_PRIO53
-    4'b 0001, // index[ 54] LIO_RV_PLIC_PRIO54
-    4'b 0001, // index[ 55] LIO_RV_PLIC_PRIO55
-    4'b 0001, // index[ 56] LIO_RV_PLIC_PRIO56
-    4'b 0001, // index[ 57] LIO_RV_PLIC_PRIO57
-    4'b 0001, // index[ 58] LIO_RV_PLIC_PRIO58
-    4'b 0001, // index[ 59] LIO_RV_PLIC_PRIO59
-    4'b 0001, // index[ 60] LIO_RV_PLIC_PRIO60
-    4'b 0001, // index[ 61] LIO_RV_PLIC_PRIO61
-    4'b 0001, // index[ 62] LIO_RV_PLIC_PRIO62
-    4'b 0001, // index[ 63] LIO_RV_PLIC_PRIO63
-    4'b 0001, // index[ 64] LIO_RV_PLIC_PRIO64
-    4'b 0001, // index[ 65] LIO_RV_PLIC_PRIO65
-    4'b 0001, // index[ 66] LIO_RV_PLIC_PRIO66
-    4'b 0001, // index[ 67] LIO_RV_PLIC_PRIO67
-    4'b 0001, // index[ 68] LIO_RV_PLIC_PRIO68
-    4'b 0001, // index[ 69] LIO_RV_PLIC_PRIO69
-    4'b 0001, // index[ 70] LIO_RV_PLIC_PRIO70
-    4'b 0001, // index[ 71] LIO_RV_PLIC_PRIO71
-    4'b 0001, // index[ 72] LIO_RV_PLIC_PRIO72
-    4'b 0001, // index[ 73] LIO_RV_PLIC_PRIO73
-    4'b 0001, // index[ 74] LIO_RV_PLIC_PRIO74
-    4'b 0001, // index[ 75] LIO_RV_PLIC_PRIO75
-    4'b 0001, // index[ 76] LIO_RV_PLIC_PRIO76
-    4'b 0001, // index[ 77] LIO_RV_PLIC_PRIO77
-    4'b 0001, // index[ 78] LIO_RV_PLIC_PRIO78
-    4'b 0001, // index[ 79] LIO_RV_PLIC_PRIO79
-    4'b 0001, // index[ 80] LIO_RV_PLIC_PRIO80
-    4'b 0001, // index[ 81] LIO_RV_PLIC_PRIO81
-    4'b 0001, // index[ 82] LIO_RV_PLIC_PRIO82
-    4'b 0001, // index[ 83] LIO_RV_PLIC_PRIO83
-    4'b 0001, // index[ 84] LIO_RV_PLIC_PRIO84
-    4'b 0001, // index[ 85] LIO_RV_PLIC_PRIO85
-    4'b 0001, // index[ 86] LIO_RV_PLIC_PRIO86
-    4'b 0001, // index[ 87] LIO_RV_PLIC_PRIO87
-    4'b 0001, // index[ 88] LIO_RV_PLIC_PRIO88
-    4'b 0001, // index[ 89] LIO_RV_PLIC_PRIO89
-    4'b 0001, // index[ 90] LIO_RV_PLIC_PRIO90
-    4'b 0001, // index[ 91] LIO_RV_PLIC_PRIO91
-    4'b 0001, // index[ 92] LIO_RV_PLIC_PRIO92
-    4'b 0001, // index[ 93] LIO_RV_PLIC_PRIO93
-    4'b 0001, // index[ 94] LIO_RV_PLIC_PRIO94
-    4'b 0001, // index[ 95] LIO_RV_PLIC_PRIO95
-    4'b 0001, // index[ 96] LIO_RV_PLIC_PRIO96
-    4'b 0001, // index[ 97] LIO_RV_PLIC_PRIO97
-    4'b 0001, // index[ 98] LIO_RV_PLIC_PRIO98
-    4'b 0001, // index[ 99] LIO_RV_PLIC_PRIO99
-    4'b 0001, // index[100] LIO_RV_PLIC_PRIO100
-    4'b 0001, // index[101] LIO_RV_PLIC_PRIO101
-    4'b 0001, // index[102] LIO_RV_PLIC_PRIO102
-    4'b 0001, // index[103] LIO_RV_PLIC_PRIO103
-    4'b 0001, // index[104] LIO_RV_PLIC_PRIO104
-    4'b 0001, // index[105] LIO_RV_PLIC_PRIO105
-    4'b 0001, // index[106] LIO_RV_PLIC_PRIO106
-    4'b 0001, // index[107] LIO_RV_PLIC_PRIO107
-    4'b 0001, // index[108] LIO_RV_PLIC_PRIO108
-    4'b 0001, // index[109] LIO_RV_PLIC_PRIO109
-    4'b 0001, // index[110] LIO_RV_PLIC_PRIO110
-    4'b 0001, // index[111] LIO_RV_PLIC_PRIO111
-    4'b 0001, // index[112] LIO_RV_PLIC_PRIO112
-    4'b 0001, // index[113] LIO_RV_PLIC_PRIO113
-    4'b 0001, // index[114] LIO_RV_PLIC_PRIO114
-    4'b 0001, // index[115] LIO_RV_PLIC_PRIO115
-    4'b 0001, // index[116] LIO_RV_PLIC_PRIO116
-    4'b 0001, // index[117] LIO_RV_PLIC_PRIO117
-    4'b 0001, // index[118] LIO_RV_PLIC_PRIO118
-    4'b 0001, // index[119] LIO_RV_PLIC_PRIO119
-    4'b 0001, // index[120] LIO_RV_PLIC_PRIO120
-    4'b 0001, // index[121] LIO_RV_PLIC_PRIO121
-    4'b 0001, // index[122] LIO_RV_PLIC_PRIO122
-    4'b 0001, // index[123] LIO_RV_PLIC_PRIO123
-    4'b 0001, // index[124] LIO_RV_PLIC_PRIO124
-    4'b 0001, // index[125] LIO_RV_PLIC_PRIO125
-    4'b 0001, // index[126] LIO_RV_PLIC_PRIO126
-    4'b 0001, // index[127] LIO_RV_PLIC_PRIO127
-    4'b 0001, // index[128] LIO_RV_PLIC_PRIO128
-    4'b 0001, // index[129] LIO_RV_PLIC_PRIO129
-    4'b 0001, // index[130] LIO_RV_PLIC_PRIO130
-    4'b 0001, // index[131] LIO_RV_PLIC_PRIO131
-    4'b 0001, // index[132] LIO_RV_PLIC_PRIO132
-    4'b 0001, // index[133] LIO_RV_PLIC_PRIO133
-    4'b 0001, // index[134] LIO_RV_PLIC_PRIO134
-    4'b 0001, // index[135] LIO_RV_PLIC_PRIO135
-    4'b 0001, // index[136] LIO_RV_PLIC_PRIO136
-    4'b 0001, // index[137] LIO_RV_PLIC_PRIO137
-    4'b 0001, // index[138] LIO_RV_PLIC_PRIO138
-    4'b 0001, // index[139] LIO_RV_PLIC_PRIO139
-    4'b 0001, // index[140] LIO_RV_PLIC_PRIO140
-    4'b 0001, // index[141] LIO_RV_PLIC_PRIO141
-    4'b 0001, // index[142] LIO_RV_PLIC_PRIO142
-    4'b 0001, // index[143] LIO_RV_PLIC_PRIO143
-    4'b 0001, // index[144] LIO_RV_PLIC_PRIO144
-    4'b 0001, // index[145] LIO_RV_PLIC_PRIO145
-    4'b 0001, // index[146] LIO_RV_PLIC_PRIO146
-    4'b 0001, // index[147] LIO_RV_PLIC_PRIO147
-    4'b 0001, // index[148] LIO_RV_PLIC_PRIO148
-    4'b 0001, // index[149] LIO_RV_PLIC_PRIO149
-    4'b 0001, // index[150] LIO_RV_PLIC_PRIO150
-    4'b 0001, // index[151] LIO_RV_PLIC_PRIO151
-    4'b 0001, // index[152] LIO_RV_PLIC_PRIO152
-    4'b 0001, // index[153] LIO_RV_PLIC_PRIO153
-    4'b 0001, // index[154] LIO_RV_PLIC_PRIO154
-    4'b 0001, // index[155] LIO_RV_PLIC_PRIO155
-    4'b 0001, // index[156] LIO_RV_PLIC_PRIO156
-    4'b 0001, // index[157] LIO_RV_PLIC_PRIO157
-    4'b 0001, // index[158] LIO_RV_PLIC_PRIO158
-    4'b 0001, // index[159] LIO_RV_PLIC_PRIO159
-    4'b 0001, // index[160] LIO_RV_PLIC_PRIO160
-    4'b 0001, // index[161] LIO_RV_PLIC_PRIO161
-    4'b 0001, // index[162] LIO_RV_PLIC_PRIO162
-    4'b 0001, // index[163] LIO_RV_PLIC_PRIO163
-    4'b 0001, // index[164] LIO_RV_PLIC_PRIO164
-    4'b 0001, // index[165] LIO_RV_PLIC_PRIO165
-    4'b 0001, // index[166] LIO_RV_PLIC_PRIO166
-    4'b 0001, // index[167] LIO_RV_PLIC_PRIO167
-    4'b 0001, // index[168] LIO_RV_PLIC_PRIO168
-    4'b 0001, // index[169] LIO_RV_PLIC_PRIO169
-    4'b 0001, // index[170] LIO_RV_PLIC_PRIO170
-    4'b 0001, // index[171] LIO_RV_PLIC_PRIO171
-    4'b 0001, // index[172] LIO_RV_PLIC_PRIO172
-    4'b 0001, // index[173] LIO_RV_PLIC_PRIO173
-    4'b 0001, // index[174] LIO_RV_PLIC_PRIO174
-    4'b 0001, // index[175] LIO_RV_PLIC_PRIO175
-    4'b 0001, // index[176] LIO_RV_PLIC_PRIO176
-    4'b 0001, // index[177] LIO_RV_PLIC_PRIO177
-    4'b 0001, // index[178] LIO_RV_PLIC_PRIO178
-    4'b 0001, // index[179] LIO_RV_PLIC_PRIO179
-    4'b 0001, // index[180] LIO_RV_PLIC_PRIO180
-    4'b 0001, // index[181] LIO_RV_PLIC_PRIO181
-    4'b 0001, // index[182] LIO_RV_PLIC_PRIO182
-    4'b 0001, // index[183] LIO_RV_PLIC_PRIO183
-    4'b 0001, // index[184] LIO_RV_PLIC_PRIO184
-    4'b 0001, // index[185] LIO_RV_PLIC_PRIO185
-    4'b 0001, // index[186] LIO_RV_PLIC_PRIO186
-    4'b 0001, // index[187] LIO_RV_PLIC_PRIO187
-    4'b 0001, // index[188] LIO_RV_PLIC_PRIO188
-    4'b 0001, // index[189] LIO_RV_PLIC_PRIO189
-    4'b 0001, // index[190] LIO_RV_PLIC_PRIO190
-    4'b 0001, // index[191] LIO_RV_PLIC_PRIO191
-    4'b 0001, // index[192] LIO_RV_PLIC_PRIO192
-    4'b 0001, // index[193] LIO_RV_PLIC_PRIO193
-    4'b 0001, // index[194] LIO_RV_PLIC_PRIO194
-    4'b 0001, // index[195] LIO_RV_PLIC_PRIO195
-    4'b 0001, // index[196] LIO_RV_PLIC_PRIO196
-    4'b 0001, // index[197] LIO_RV_PLIC_PRIO197
-    4'b 0001, // index[198] LIO_RV_PLIC_PRIO198
-    4'b 0001, // index[199] LIO_RV_PLIC_PRIO199
-    4'b 0001, // index[200] LIO_RV_PLIC_PRIO200
-    4'b 0001, // index[201] LIO_RV_PLIC_PRIO201
-    4'b 0001, // index[202] LIO_RV_PLIC_PRIO202
-    4'b 0001, // index[203] LIO_RV_PLIC_PRIO203
-    4'b 0001, // index[204] LIO_RV_PLIC_PRIO204
-    4'b 0001, // index[205] LIO_RV_PLIC_PRIO205
-    4'b 0001, // index[206] LIO_RV_PLIC_PRIO206
-    4'b 0001, // index[207] LIO_RV_PLIC_PRIO207
-    4'b 0001, // index[208] LIO_RV_PLIC_PRIO208
-    4'b 0001, // index[209] LIO_RV_PLIC_PRIO209
-    4'b 0001, // index[210] LIO_RV_PLIC_PRIO210
-    4'b 0001, // index[211] LIO_RV_PLIC_PRIO211
-    4'b 0001, // index[212] LIO_RV_PLIC_PRIO212
-    4'b 0001, // index[213] LIO_RV_PLIC_PRIO213
-    4'b 0001, // index[214] LIO_RV_PLIC_PRIO214
-    4'b 0001, // index[215] LIO_RV_PLIC_PRIO215
-    4'b 0001, // index[216] LIO_RV_PLIC_PRIO216
-    4'b 0001, // index[217] LIO_RV_PLIC_PRIO217
-    4'b 0001, // index[218] LIO_RV_PLIC_PRIO218
-    4'b 0001, // index[219] LIO_RV_PLIC_PRIO219
-    4'b 0001, // index[220] LIO_RV_PLIC_PRIO220
-    4'b 0001, // index[221] LIO_RV_PLIC_PRIO221
-    4'b 0001, // index[222] LIO_RV_PLIC_PRIO222
-    4'b 0001, // index[223] LIO_RV_PLIC_PRIO223
-    4'b 0001, // index[224] LIO_RV_PLIC_PRIO224
-    4'b 0001, // index[225] LIO_RV_PLIC_PRIO225
-    4'b 0001, // index[226] LIO_RV_PLIC_PRIO226
-    4'b 0001, // index[227] LIO_RV_PLIC_PRIO227
-    4'b 0001, // index[228] LIO_RV_PLIC_PRIO228
-    4'b 0001, // index[229] LIO_RV_PLIC_PRIO229
-    4'b 0001, // index[230] LIO_RV_PLIC_PRIO230
-    4'b 0001, // index[231] LIO_RV_PLIC_PRIO231
-    4'b 0001, // index[232] LIO_RV_PLIC_PRIO232
-    4'b 0001, // index[233] LIO_RV_PLIC_PRIO233
-    4'b 0001, // index[234] LIO_RV_PLIC_PRIO234
-    4'b 0001, // index[235] LIO_RV_PLIC_PRIO235
-    4'b 0001, // index[236] LIO_RV_PLIC_PRIO236
-    4'b 0001, // index[237] LIO_RV_PLIC_PRIO237
-    4'b 0001, // index[238] LIO_RV_PLIC_PRIO238
-    4'b 0001, // index[239] LIO_RV_PLIC_PRIO239
-    4'b 0001, // index[240] LIO_RV_PLIC_PRIO240
-    4'b 0001, // index[241] LIO_RV_PLIC_PRIO241
-    4'b 0001, // index[242] LIO_RV_PLIC_PRIO242
-    4'b 0001, // index[243] LIO_RV_PLIC_PRIO243
-    4'b 0001, // index[244] LIO_RV_PLIC_PRIO244
-    4'b 0001, // index[245] LIO_RV_PLIC_PRIO245
-    4'b 0001, // index[246] LIO_RV_PLIC_PRIO246
-    4'b 0001, // index[247] LIO_RV_PLIC_PRIO247
-    4'b 0001, // index[248] LIO_RV_PLIC_PRIO248
-    4'b 0001, // index[249] LIO_RV_PLIC_PRIO249
-    4'b 0001, // index[250] LIO_RV_PLIC_PRIO250
-    4'b 0001, // index[251] LIO_RV_PLIC_PRIO251
-    4'b 0001, // index[252] LIO_RV_PLIC_PRIO252
-    4'b 0001, // index[253] LIO_RV_PLIC_PRIO253
-    4'b 0001, // index[254] LIO_RV_PLIC_PRIO254
-    4'b 0001, // index[255] LIO_RV_PLIC_PRIO255
+    4'b 0001, // index[  0] LIO_RV_PLIC_PRIO_0
+    4'b 0001, // index[  1] LIO_RV_PLIC_PRIO_1
+    4'b 0001, // index[  2] LIO_RV_PLIC_PRIO_2
+    4'b 0001, // index[  3] LIO_RV_PLIC_PRIO_3
+    4'b 0001, // index[  4] LIO_RV_PLIC_PRIO_4
+    4'b 0001, // index[  5] LIO_RV_PLIC_PRIO_5
+    4'b 0001, // index[  6] LIO_RV_PLIC_PRIO_6
+    4'b 0001, // index[  7] LIO_RV_PLIC_PRIO_7
+    4'b 0001, // index[  8] LIO_RV_PLIC_PRIO_8
+    4'b 0001, // index[  9] LIO_RV_PLIC_PRIO_9
+    4'b 0001, // index[ 10] LIO_RV_PLIC_PRIO_10
+    4'b 0001, // index[ 11] LIO_RV_PLIC_PRIO_11
+    4'b 0001, // index[ 12] LIO_RV_PLIC_PRIO_12
+    4'b 0001, // index[ 13] LIO_RV_PLIC_PRIO_13
+    4'b 0001, // index[ 14] LIO_RV_PLIC_PRIO_14
+    4'b 0001, // index[ 15] LIO_RV_PLIC_PRIO_15
+    4'b 0001, // index[ 16] LIO_RV_PLIC_PRIO_16
+    4'b 0001, // index[ 17] LIO_RV_PLIC_PRIO_17
+    4'b 0001, // index[ 18] LIO_RV_PLIC_PRIO_18
+    4'b 0001, // index[ 19] LIO_RV_PLIC_PRIO_19
+    4'b 0001, // index[ 20] LIO_RV_PLIC_PRIO_20
+    4'b 0001, // index[ 21] LIO_RV_PLIC_PRIO_21
+    4'b 0001, // index[ 22] LIO_RV_PLIC_PRIO_22
+    4'b 0001, // index[ 23] LIO_RV_PLIC_PRIO_23
+    4'b 0001, // index[ 24] LIO_RV_PLIC_PRIO_24
+    4'b 0001, // index[ 25] LIO_RV_PLIC_PRIO_25
+    4'b 0001, // index[ 26] LIO_RV_PLIC_PRIO_26
+    4'b 0001, // index[ 27] LIO_RV_PLIC_PRIO_27
+    4'b 0001, // index[ 28] LIO_RV_PLIC_PRIO_28
+    4'b 0001, // index[ 29] LIO_RV_PLIC_PRIO_29
+    4'b 0001, // index[ 30] LIO_RV_PLIC_PRIO_30
+    4'b 0001, // index[ 31] LIO_RV_PLIC_PRIO_31
+    4'b 0001, // index[ 32] LIO_RV_PLIC_PRIO_32
+    4'b 0001, // index[ 33] LIO_RV_PLIC_PRIO_33
+    4'b 0001, // index[ 34] LIO_RV_PLIC_PRIO_34
+    4'b 0001, // index[ 35] LIO_RV_PLIC_PRIO_35
+    4'b 0001, // index[ 36] LIO_RV_PLIC_PRIO_36
+    4'b 0001, // index[ 37] LIO_RV_PLIC_PRIO_37
+    4'b 0001, // index[ 38] LIO_RV_PLIC_PRIO_38
+    4'b 0001, // index[ 39] LIO_RV_PLIC_PRIO_39
+    4'b 0001, // index[ 40] LIO_RV_PLIC_PRIO_40
+    4'b 0001, // index[ 41] LIO_RV_PLIC_PRIO_41
+    4'b 0001, // index[ 42] LIO_RV_PLIC_PRIO_42
+    4'b 0001, // index[ 43] LIO_RV_PLIC_PRIO_43
+    4'b 0001, // index[ 44] LIO_RV_PLIC_PRIO_44
+    4'b 0001, // index[ 45] LIO_RV_PLIC_PRIO_45
+    4'b 0001, // index[ 46] LIO_RV_PLIC_PRIO_46
+    4'b 0001, // index[ 47] LIO_RV_PLIC_PRIO_47
+    4'b 0001, // index[ 48] LIO_RV_PLIC_PRIO_48
+    4'b 0001, // index[ 49] LIO_RV_PLIC_PRIO_49
+    4'b 0001, // index[ 50] LIO_RV_PLIC_PRIO_50
+    4'b 0001, // index[ 51] LIO_RV_PLIC_PRIO_51
+    4'b 0001, // index[ 52] LIO_RV_PLIC_PRIO_52
+    4'b 0001, // index[ 53] LIO_RV_PLIC_PRIO_53
+    4'b 0001, // index[ 54] LIO_RV_PLIC_PRIO_54
+    4'b 0001, // index[ 55] LIO_RV_PLIC_PRIO_55
+    4'b 0001, // index[ 56] LIO_RV_PLIC_PRIO_56
+    4'b 0001, // index[ 57] LIO_RV_PLIC_PRIO_57
+    4'b 0001, // index[ 58] LIO_RV_PLIC_PRIO_58
+    4'b 0001, // index[ 59] LIO_RV_PLIC_PRIO_59
+    4'b 0001, // index[ 60] LIO_RV_PLIC_PRIO_60
+    4'b 0001, // index[ 61] LIO_RV_PLIC_PRIO_61
+    4'b 0001, // index[ 62] LIO_RV_PLIC_PRIO_62
+    4'b 0001, // index[ 63] LIO_RV_PLIC_PRIO_63
+    4'b 0001, // index[ 64] LIO_RV_PLIC_PRIO_64
+    4'b 0001, // index[ 65] LIO_RV_PLIC_PRIO_65
+    4'b 0001, // index[ 66] LIO_RV_PLIC_PRIO_66
+    4'b 0001, // index[ 67] LIO_RV_PLIC_PRIO_67
+    4'b 0001, // index[ 68] LIO_RV_PLIC_PRIO_68
+    4'b 0001, // index[ 69] LIO_RV_PLIC_PRIO_69
+    4'b 0001, // index[ 70] LIO_RV_PLIC_PRIO_70
+    4'b 0001, // index[ 71] LIO_RV_PLIC_PRIO_71
+    4'b 0001, // index[ 72] LIO_RV_PLIC_PRIO_72
+    4'b 0001, // index[ 73] LIO_RV_PLIC_PRIO_73
+    4'b 0001, // index[ 74] LIO_RV_PLIC_PRIO_74
+    4'b 0001, // index[ 75] LIO_RV_PLIC_PRIO_75
+    4'b 0001, // index[ 76] LIO_RV_PLIC_PRIO_76
+    4'b 0001, // index[ 77] LIO_RV_PLIC_PRIO_77
+    4'b 0001, // index[ 78] LIO_RV_PLIC_PRIO_78
+    4'b 0001, // index[ 79] LIO_RV_PLIC_PRIO_79
+    4'b 0001, // index[ 80] LIO_RV_PLIC_PRIO_80
+    4'b 0001, // index[ 81] LIO_RV_PLIC_PRIO_81
+    4'b 0001, // index[ 82] LIO_RV_PLIC_PRIO_82
+    4'b 0001, // index[ 83] LIO_RV_PLIC_PRIO_83
+    4'b 0001, // index[ 84] LIO_RV_PLIC_PRIO_84
+    4'b 0001, // index[ 85] LIO_RV_PLIC_PRIO_85
+    4'b 0001, // index[ 86] LIO_RV_PLIC_PRIO_86
+    4'b 0001, // index[ 87] LIO_RV_PLIC_PRIO_87
+    4'b 0001, // index[ 88] LIO_RV_PLIC_PRIO_88
+    4'b 0001, // index[ 89] LIO_RV_PLIC_PRIO_89
+    4'b 0001, // index[ 90] LIO_RV_PLIC_PRIO_90
+    4'b 0001, // index[ 91] LIO_RV_PLIC_PRIO_91
+    4'b 0001, // index[ 92] LIO_RV_PLIC_PRIO_92
+    4'b 0001, // index[ 93] LIO_RV_PLIC_PRIO_93
+    4'b 0001, // index[ 94] LIO_RV_PLIC_PRIO_94
+    4'b 0001, // index[ 95] LIO_RV_PLIC_PRIO_95
+    4'b 0001, // index[ 96] LIO_RV_PLIC_PRIO_96
+    4'b 0001, // index[ 97] LIO_RV_PLIC_PRIO_97
+    4'b 0001, // index[ 98] LIO_RV_PLIC_PRIO_98
+    4'b 0001, // index[ 99] LIO_RV_PLIC_PRIO_99
+    4'b 0001, // index[100] LIO_RV_PLIC_PRIO_100
+    4'b 0001, // index[101] LIO_RV_PLIC_PRIO_101
+    4'b 0001, // index[102] LIO_RV_PLIC_PRIO_102
+    4'b 0001, // index[103] LIO_RV_PLIC_PRIO_103
+    4'b 0001, // index[104] LIO_RV_PLIC_PRIO_104
+    4'b 0001, // index[105] LIO_RV_PLIC_PRIO_105
+    4'b 0001, // index[106] LIO_RV_PLIC_PRIO_106
+    4'b 0001, // index[107] LIO_RV_PLIC_PRIO_107
+    4'b 0001, // index[108] LIO_RV_PLIC_PRIO_108
+    4'b 0001, // index[109] LIO_RV_PLIC_PRIO_109
+    4'b 0001, // index[110] LIO_RV_PLIC_PRIO_110
+    4'b 0001, // index[111] LIO_RV_PLIC_PRIO_111
+    4'b 0001, // index[112] LIO_RV_PLIC_PRIO_112
+    4'b 0001, // index[113] LIO_RV_PLIC_PRIO_113
+    4'b 0001, // index[114] LIO_RV_PLIC_PRIO_114
+    4'b 0001, // index[115] LIO_RV_PLIC_PRIO_115
+    4'b 0001, // index[116] LIO_RV_PLIC_PRIO_116
+    4'b 0001, // index[117] LIO_RV_PLIC_PRIO_117
+    4'b 0001, // index[118] LIO_RV_PLIC_PRIO_118
+    4'b 0001, // index[119] LIO_RV_PLIC_PRIO_119
+    4'b 0001, // index[120] LIO_RV_PLIC_PRIO_120
+    4'b 0001, // index[121] LIO_RV_PLIC_PRIO_121
+    4'b 0001, // index[122] LIO_RV_PLIC_PRIO_122
+    4'b 0001, // index[123] LIO_RV_PLIC_PRIO_123
+    4'b 0001, // index[124] LIO_RV_PLIC_PRIO_124
+    4'b 0001, // index[125] LIO_RV_PLIC_PRIO_125
+    4'b 0001, // index[126] LIO_RV_PLIC_PRIO_126
+    4'b 0001, // index[127] LIO_RV_PLIC_PRIO_127
+    4'b 0001, // index[128] LIO_RV_PLIC_PRIO_128
+    4'b 0001, // index[129] LIO_RV_PLIC_PRIO_129
+    4'b 0001, // index[130] LIO_RV_PLIC_PRIO_130
+    4'b 0001, // index[131] LIO_RV_PLIC_PRIO_131
+    4'b 0001, // index[132] LIO_RV_PLIC_PRIO_132
+    4'b 0001, // index[133] LIO_RV_PLIC_PRIO_133
+    4'b 0001, // index[134] LIO_RV_PLIC_PRIO_134
+    4'b 0001, // index[135] LIO_RV_PLIC_PRIO_135
+    4'b 0001, // index[136] LIO_RV_PLIC_PRIO_136
+    4'b 0001, // index[137] LIO_RV_PLIC_PRIO_137
+    4'b 0001, // index[138] LIO_RV_PLIC_PRIO_138
+    4'b 0001, // index[139] LIO_RV_PLIC_PRIO_139
+    4'b 0001, // index[140] LIO_RV_PLIC_PRIO_140
+    4'b 0001, // index[141] LIO_RV_PLIC_PRIO_141
+    4'b 0001, // index[142] LIO_RV_PLIC_PRIO_142
+    4'b 0001, // index[143] LIO_RV_PLIC_PRIO_143
+    4'b 0001, // index[144] LIO_RV_PLIC_PRIO_144
+    4'b 0001, // index[145] LIO_RV_PLIC_PRIO_145
+    4'b 0001, // index[146] LIO_RV_PLIC_PRIO_146
+    4'b 0001, // index[147] LIO_RV_PLIC_PRIO_147
+    4'b 0001, // index[148] LIO_RV_PLIC_PRIO_148
+    4'b 0001, // index[149] LIO_RV_PLIC_PRIO_149
+    4'b 0001, // index[150] LIO_RV_PLIC_PRIO_150
+    4'b 0001, // index[151] LIO_RV_PLIC_PRIO_151
+    4'b 0001, // index[152] LIO_RV_PLIC_PRIO_152
+    4'b 0001, // index[153] LIO_RV_PLIC_PRIO_153
+    4'b 0001, // index[154] LIO_RV_PLIC_PRIO_154
+    4'b 0001, // index[155] LIO_RV_PLIC_PRIO_155
+    4'b 0001, // index[156] LIO_RV_PLIC_PRIO_156
+    4'b 0001, // index[157] LIO_RV_PLIC_PRIO_157
+    4'b 0001, // index[158] LIO_RV_PLIC_PRIO_158
+    4'b 0001, // index[159] LIO_RV_PLIC_PRIO_159
+    4'b 0001, // index[160] LIO_RV_PLIC_PRIO_160
+    4'b 0001, // index[161] LIO_RV_PLIC_PRIO_161
+    4'b 0001, // index[162] LIO_RV_PLIC_PRIO_162
+    4'b 0001, // index[163] LIO_RV_PLIC_PRIO_163
+    4'b 0001, // index[164] LIO_RV_PLIC_PRIO_164
+    4'b 0001, // index[165] LIO_RV_PLIC_PRIO_165
+    4'b 0001, // index[166] LIO_RV_PLIC_PRIO_166
+    4'b 0001, // index[167] LIO_RV_PLIC_PRIO_167
+    4'b 0001, // index[168] LIO_RV_PLIC_PRIO_168
+    4'b 0001, // index[169] LIO_RV_PLIC_PRIO_169
+    4'b 0001, // index[170] LIO_RV_PLIC_PRIO_170
+    4'b 0001, // index[171] LIO_RV_PLIC_PRIO_171
+    4'b 0001, // index[172] LIO_RV_PLIC_PRIO_172
+    4'b 0001, // index[173] LIO_RV_PLIC_PRIO_173
+    4'b 0001, // index[174] LIO_RV_PLIC_PRIO_174
+    4'b 0001, // index[175] LIO_RV_PLIC_PRIO_175
+    4'b 0001, // index[176] LIO_RV_PLIC_PRIO_176
+    4'b 0001, // index[177] LIO_RV_PLIC_PRIO_177
+    4'b 0001, // index[178] LIO_RV_PLIC_PRIO_178
+    4'b 0001, // index[179] LIO_RV_PLIC_PRIO_179
+    4'b 0001, // index[180] LIO_RV_PLIC_PRIO_180
+    4'b 0001, // index[181] LIO_RV_PLIC_PRIO_181
+    4'b 0001, // index[182] LIO_RV_PLIC_PRIO_182
+    4'b 0001, // index[183] LIO_RV_PLIC_PRIO_183
+    4'b 0001, // index[184] LIO_RV_PLIC_PRIO_184
+    4'b 0001, // index[185] LIO_RV_PLIC_PRIO_185
+    4'b 0001, // index[186] LIO_RV_PLIC_PRIO_186
+    4'b 0001, // index[187] LIO_RV_PLIC_PRIO_187
+    4'b 0001, // index[188] LIO_RV_PLIC_PRIO_188
+    4'b 0001, // index[189] LIO_RV_PLIC_PRIO_189
+    4'b 0001, // index[190] LIO_RV_PLIC_PRIO_190
+    4'b 0001, // index[191] LIO_RV_PLIC_PRIO_191
+    4'b 0001, // index[192] LIO_RV_PLIC_PRIO_192
+    4'b 0001, // index[193] LIO_RV_PLIC_PRIO_193
+    4'b 0001, // index[194] LIO_RV_PLIC_PRIO_194
+    4'b 0001, // index[195] LIO_RV_PLIC_PRIO_195
+    4'b 0001, // index[196] LIO_RV_PLIC_PRIO_196
+    4'b 0001, // index[197] LIO_RV_PLIC_PRIO_197
+    4'b 0001, // index[198] LIO_RV_PLIC_PRIO_198
+    4'b 0001, // index[199] LIO_RV_PLIC_PRIO_199
+    4'b 0001, // index[200] LIO_RV_PLIC_PRIO_200
+    4'b 0001, // index[201] LIO_RV_PLIC_PRIO_201
+    4'b 0001, // index[202] LIO_RV_PLIC_PRIO_202
+    4'b 0001, // index[203] LIO_RV_PLIC_PRIO_203
+    4'b 0001, // index[204] LIO_RV_PLIC_PRIO_204
+    4'b 0001, // index[205] LIO_RV_PLIC_PRIO_205
+    4'b 0001, // index[206] LIO_RV_PLIC_PRIO_206
+    4'b 0001, // index[207] LIO_RV_PLIC_PRIO_207
+    4'b 0001, // index[208] LIO_RV_PLIC_PRIO_208
+    4'b 0001, // index[209] LIO_RV_PLIC_PRIO_209
+    4'b 0001, // index[210] LIO_RV_PLIC_PRIO_210
+    4'b 0001, // index[211] LIO_RV_PLIC_PRIO_211
+    4'b 0001, // index[212] LIO_RV_PLIC_PRIO_212
+    4'b 0001, // index[213] LIO_RV_PLIC_PRIO_213
+    4'b 0001, // index[214] LIO_RV_PLIC_PRIO_214
+    4'b 0001, // index[215] LIO_RV_PLIC_PRIO_215
+    4'b 0001, // index[216] LIO_RV_PLIC_PRIO_216
+    4'b 0001, // index[217] LIO_RV_PLIC_PRIO_217
+    4'b 0001, // index[218] LIO_RV_PLIC_PRIO_218
+    4'b 0001, // index[219] LIO_RV_PLIC_PRIO_219
+    4'b 0001, // index[220] LIO_RV_PLIC_PRIO_220
+    4'b 0001, // index[221] LIO_RV_PLIC_PRIO_221
+    4'b 0001, // index[222] LIO_RV_PLIC_PRIO_222
+    4'b 0001, // index[223] LIO_RV_PLIC_PRIO_223
+    4'b 0001, // index[224] LIO_RV_PLIC_PRIO_224
+    4'b 0001, // index[225] LIO_RV_PLIC_PRIO_225
+    4'b 0001, // index[226] LIO_RV_PLIC_PRIO_226
+    4'b 0001, // index[227] LIO_RV_PLIC_PRIO_227
+    4'b 0001, // index[228] LIO_RV_PLIC_PRIO_228
+    4'b 0001, // index[229] LIO_RV_PLIC_PRIO_229
+    4'b 0001, // index[230] LIO_RV_PLIC_PRIO_230
+    4'b 0001, // index[231] LIO_RV_PLIC_PRIO_231
+    4'b 0001, // index[232] LIO_RV_PLIC_PRIO_232
+    4'b 0001, // index[233] LIO_RV_PLIC_PRIO_233
+    4'b 0001, // index[234] LIO_RV_PLIC_PRIO_234
+    4'b 0001, // index[235] LIO_RV_PLIC_PRIO_235
+    4'b 0001, // index[236] LIO_RV_PLIC_PRIO_236
+    4'b 0001, // index[237] LIO_RV_PLIC_PRIO_237
+    4'b 0001, // index[238] LIO_RV_PLIC_PRIO_238
+    4'b 0001, // index[239] LIO_RV_PLIC_PRIO_239
+    4'b 0001, // index[240] LIO_RV_PLIC_PRIO_240
+    4'b 0001, // index[241] LIO_RV_PLIC_PRIO_241
+    4'b 0001, // index[242] LIO_RV_PLIC_PRIO_242
+    4'b 0001, // index[243] LIO_RV_PLIC_PRIO_243
+    4'b 0001, // index[244] LIO_RV_PLIC_PRIO_244
+    4'b 0001, // index[245] LIO_RV_PLIC_PRIO_245
+    4'b 0001, // index[246] LIO_RV_PLIC_PRIO_246
+    4'b 0001, // index[247] LIO_RV_PLIC_PRIO_247
+    4'b 0001, // index[248] LIO_RV_PLIC_PRIO_248
+    4'b 0001, // index[249] LIO_RV_PLIC_PRIO_249
+    4'b 0001, // index[250] LIO_RV_PLIC_PRIO_250
+    4'b 0001, // index[251] LIO_RV_PLIC_PRIO_251
+    4'b 0001, // index[252] LIO_RV_PLIC_PRIO_252
+    4'b 0001, // index[253] LIO_RV_PLIC_PRIO_253
+    4'b 0001, // index[254] LIO_RV_PLIC_PRIO_254
+    4'b 0001, // index[255] LIO_RV_PLIC_PRIO_255
     4'b 1111, // index[256] LIO_RV_PLIC_IP_0
     4'b 1111, // index[257] LIO_RV_PLIC_IP_1
     4'b 1111, // index[258] LIO_RV_PLIC_IP_2
