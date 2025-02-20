@@ -7698,7 +7698,7 @@ opentitan_test(
     srcs = ["dma_inline_hashing.c"],
     exec_env = DARJEELING_TEST_ENVS,
     deps = [
-        "//hw/top_darjeeling/sw/autogen:top_darjeeling",
+        "//hw/top:dt",
         "//sw/device/lib/base:macros",
         "//sw/device/lib/base:mmio",
         "//sw/device/lib/dif:dma",
