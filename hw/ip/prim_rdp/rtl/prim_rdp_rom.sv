@@ -24,70 +24,54 @@ module prim_rdp_rom import prim_rom_pkg::*; #(
 
   if(Width > 32) begin : gen_ecc_rom
     if (Depth == 32'h2000)  begin : gen_32k_rom
-        rvscs_ot_32k_ecc_rom #(
-            .WIDTH       (Width),
-            .DEPTH       (Depth)
-        ) u_rom (
+        rvscs_ot_32k_ecc_rom u_rom (
             .clk            (clk_i),
             .reset_         (rst_ni),
             .cEn            (rst_ni),
             .addr           (addr_i),
             .rdData         (rdata_o),
             // Software controller ports
-            .RM             (cfg_i.test_cfg.rm),
-            .RME            (cfg_i.test_cfg.rme),
             .LS             (cfg_i.test_cfg.ls),
-            .TEST1          (cfg_i.test_cfg.test1)
+            .ram_controls   (12'd4),
+            .ram_dft_signals('0)
         );
       end else begin : gen_64k_rom
-        rvscs_ot_64k_ecc_rom #(
-            .WIDTH       (Width),
-            .DEPTH       (Depth)
-        ) u_rom (
+        rvscs_ot_64k_ecc_rom u_rom (
             .clk            (clk_i),
             .reset_         (rst_ni),
             .cEn            (rst_ni),
             .addr           (addr_i),
             .rdData         (rdata_o),
             // Software controller ports
-            .RM             (cfg_i.test_cfg.rm),
-            .RME            (cfg_i.test_cfg.rme),
             .LS             (cfg_i.test_cfg.ls),
-            .TEST1          (cfg_i.test_cfg.test1)
+            .ram_controls   (12'd4),
+            .ram_dft_signals('0)
         );
       end
   end else begin : gen_no_ecc_rom
     if (Depth == 32'h2000)  begin : gen_32k_rom
-      rvscs_ot_32k_rom #(
-          .WIDTH       (Width),
-          .DEPTH       (Depth)
-      ) u_rom (
+      rvscs_ot_32k_rom u_rom (
           .clk            (clk_i),
           .reset_         (rst_ni),
           .cEn            (rst_ni),
           .addr           (addr_i),
           .rdData         (rdata_o),
           // Software controller ports
-          .RM             (cfg_i.test_cfg.rm),
-          .RME            (cfg_i.test_cfg.rme),
           .LS             (cfg_i.test_cfg.ls),
-          .TEST1          (cfg_i.test_cfg.test1)
+          .ram_controls   (12'd4),
+          .ram_dft_signals('0)
       );
     end else begin : gen_64k_rom
-      rvscs_ot_64k_rom #(
-          .WIDTH       (Width),
-          .DEPTH       (Depth)
-      ) u_rom (
+      rvscs_ot_64k_rom u_rom (
           .clk            (clk_i),
           .reset_         (rst_ni),
           .cEn            (rst_ni),
           .addr           (addr_i),
           .rdData         (rdata_o),
           // Software controller ports
-          .RM             (cfg_i.test_cfg.rm),
-          .RME            (cfg_i.test_cfg.rme),
           .LS             (cfg_i.test_cfg.ls),
-          .TEST1          (cfg_i.test_cfg.test1)
+          .ram_controls   (12'd4),
+          .ram_dft_signals('0)
       );
     end
   end

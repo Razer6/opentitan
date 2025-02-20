@@ -47,15 +47,50 @@ module prim_rdp_ram_1r1w import prim_ram_2p_pkg::*; #(
 
   logic err_inj_done_int;
 
+  prim_misc_dft_pkg::copy_ram_control_dp_t   ram_controls;
+  prim_misc_dft_pkg::copy_ram_dft_signals_t  ram_dft_signals;
+  prim_misc_dft_pkg::copy_ram_error_inject_t ram_error_inject;
+
   RDP_AFFR #(
-    .WIDTH(1) 
+    .WIDTH(1)
   ) err_inj_done_aff (
     .clk(clk_a_i),
     .rst_l(rst_a_ni),
-    .en(1'b1), 
+    .en(1'b1),
     .d(err_inj_done_int),
     .q(cfg_rsp_o.err_inj_done)
   );
+
+  always_comb begin
+    ram_controls     = '0;
+    ram_dft_signals  = '0;
+    ram_error_inject = '0;
+
+    // TODO (neal) clean up ram_controls.consistency_check2;
+    // TODO (neal) clean up ram_controls.disable_ls;
+    // TODO (neal) clean up ram_controls.disable_clock_gating;
+    // TODO (neal) clean up ram_controls.ra;
+    // TODO (neal) clean up ram_controls.wpulse;
+    // TODO (neal) clean up ram_controls.wa;
+    // TODO (neal) clean up ram_controls.testrwm;
+    ram_controls.test1b   = cfg_i.sram_test_cfg.test1b;
+    ram_controls.test1a   = cfg_i.sram_test_cfg.test1a;
+    ram_controls.rmeb     = cfg_i.sram_test_cfg.rmeb;
+    ram_controls.rmea     = cfg_i.sram_test_cfg.rmea;
+    ram_controls.test_rnm = cfg_i.sram_test_cfg.test_rnm;
+    ram_controls.rmb      = cfg_i.sram_test_cfg.rmb;
+    // TODO (neal) clean up ram_controls.consistency_check1;
+    ram_controls.rma      = cfg_i.sram_test_cfg.rma;
+
+    // TODO (neal) clean up ram_dft_signals.tston       = ;
+    // TODO (neal) clean up ram_dft_signals.bist_mode   = ;
+    ram_dft_signals.DFD_StopWE  = cfg_i.sram_test_cfg.DFD_StopWE;
+
+    ram_error_inject.err_inj_loc   = cfg_i.sram_err_inj.err_inj_loc;
+    ram_error_inject.err_inj_count = cfg_i.sram_err_inj.err_inj_count;
+    ram_error_inject.err_inj_type  = cfg_i.sram_err_inj.err_inj_type;
+    ram_error_inject.err_inj_en    = cfg_i.sram_err_inj.err_inj_en;
+  end
 
   if(Depth==128) begin : gen_spi2sys_mem
     rvscs_spi2sys_sram u_spi2sys_sram
@@ -74,26 +109,19 @@ module prim_rdp_ram_1r1w import prim_ram_2p_pkg::*; #(
       .wrData         (a_wdata_i),
       .bitWriteEnable (a_wmask_i),
 
-      .tie__sram_loc (cfg_i.sram_err_inj.tie__sram_loc),
-      .err_inj_en    (cfg_i.sram_err_inj.err_inj_en),
-      .err_inj_type  (cfg_i.sram_err_inj.err_inj_type),
-      .err_inj_count (cfg_i.sram_err_inj.err_inj_count),
-      .err_inj_loc   (cfg_i.sram_err_inj.err_inj_loc),
-      .err_inj_done  (err_inj_done_int),
+      .LS               (cfg_i.sram_test_cfg.ls),
+
+      .ram_error_inject (ram_error_inject),
+      .tie__sram_loc    (cfg_i.sram_err_inj.tie__sram_loc),
+      .err_inj_done     (err_inj_done_int),
 
       .DFT_TME       (cfg_rsp_o.sram_dft.DFT_TME),
       .DFT_TRE       (cfg_rsp_o.sram_dft.DFT_TRE),
       .DFT_RDATA     (cfg_rsp_o.sram_dft.DFT_RDATA),
-    
-      .RMA        (cfg_i.sram_test_cfg.rma),        // Have SW control for this pin from a register.
-      .RMB        (cfg_i.sram_test_cfg.rmb),        // Have SW control for this pin from a register.
-      .RMEA       (cfg_i.sram_test_cfg.rmea),       // Have SW control for this pin from a register.
-      .RMEB       (cfg_i.sram_test_cfg.rmeb),       // Have SW control for this pin from a register.
-      .LS         (cfg_i.sram_test_cfg.ls),         // Light sleep.
-      .TEST_RNM   (cfg_i.sram_test_cfg.test_rnm),   // Have SW control for this pin from a register.
-      .TEST1A     (cfg_i.sram_test_cfg.test1a),     // Have SW control for this pin from a register.
-      .TEST1B     (cfg_i.sram_test_cfg.test1b),     // Have SW control for this pin from a register.
-      .DFD_StopWE (cfg_i.sram_test_cfg.DFD_StopWE)  // Have SW control for this pin from a register.
+
+      .ram_controls    (ram_controls),
+      .ram_dft_signals (ram_dft_signals)
+
     );
   end else if(Depth==1024) begin : gen_sys2spi_mem
     rvscs_sys2spi_sram u_sys2spi_sram
@@ -112,26 +140,18 @@ module prim_rdp_ram_1r1w import prim_ram_2p_pkg::*; #(
       .wrData         (a_wdata_i),
       .bitWriteEnable (a_wmask_i),
 
-      .tie__sram_loc (cfg_i.sram_err_inj.tie__sram_loc),
-      .err_inj_en    (cfg_i.sram_err_inj.err_inj_en),
-      .err_inj_type  (cfg_i.sram_err_inj.err_inj_type),
-      .err_inj_count (cfg_i.sram_err_inj.err_inj_count),
-      .err_inj_loc   (cfg_i.sram_err_inj.err_inj_loc),
-      .err_inj_done  (err_inj_done_int),
-    
+      .LS               (cfg_i.sram_test_cfg.ls),
+
+      .ram_error_inject (ram_error_inject),
+      .tie__sram_loc    (cfg_i.sram_err_inj.tie__sram_loc),
+      .err_inj_done     (err_inj_done_int),
+
       .DFT_TME       (cfg_rsp_o.sram_dft.DFT_TME),
       .DFT_TRE       (cfg_rsp_o.sram_dft.DFT_TRE),
       .DFT_RDATA     (cfg_rsp_o.sram_dft.DFT_RDATA),
-    
-      .RMA        (cfg_i.sram_test_cfg.rma),        // Have SW control for this pin from a register.
-      .RMB        (cfg_i.sram_test_cfg.rmb),        // Have SW control for this pin from a register.
-      .RMEA       (cfg_i.sram_test_cfg.rmea),       // Have SW control for this pin from a register.
-      .RMEB       (cfg_i.sram_test_cfg.rmeb),       // Have SW control for this pin from a register.
-      .LS         (cfg_i.sram_test_cfg.ls),         // Light sleep.
-      .TEST_RNM   (cfg_i.sram_test_cfg.test_rnm),   // Have SW control for this pin from a register.
-      .TEST1A     (cfg_i.sram_test_cfg.test1a),     // Have SW control for this pin from a register.
-      .TEST1B     (cfg_i.sram_test_cfg.test1b),     // Have SW control for this pin from a register.
-      .DFD_StopWE (cfg_i.sram_test_cfg.DFD_StopWE)  // Have SW control for this pin from a register.
+
+      .ram_controls    (ram_controls),
+      .ram_dft_signals (ram_dft_signals)
     );
   end else begin : gen_ot_default
     prim_generic_ram_1r1w #(

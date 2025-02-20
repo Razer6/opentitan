@@ -1,15 +1,18 @@
-// Copyright lowRISC contributors (OpenTitan project).
+// Copyright lowRISC contributors.
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
-
+//############################################################################
+// *Name: prim_misc_dft_pkg
+// *Module Description: misc DFT Package
+//############################################################################
 `ifdef __MISC_DFT_PKG_SV
 `else
 `define __MISC_DFT_PKG_SV
 
 package prim_misc_dft_pkg;
 
-    // sram test cfg
-    typedef struct packed {
+  // sram test cfg
+  typedef struct packed {
     logic [2:0] wa;
     logic [2:0] wpulse;
     logic [3:0] rm;
@@ -18,12 +21,11 @@ package prim_misc_dft_pkg;
     logic       test_rnm;
     logic       test1;
     logic       testrwm;
-    // this doesn't fit the struct logically, but easiest to not change OT interfaces
-    logic       DFD_StopWE;
-    } sram_test_cfg_t;
+    logic       DFD_StopWE;  // this doesn't fit the struct logically, but easiest to not change OT interfaces
+  } sram_test_cfg_t;
 
-    // spi sram test cfg
-    typedef struct packed {
+  // spi sram test cfg
+  typedef struct packed {
     logic [3:0] rmb;
     logic [3:0] rma;
     logic       rmeb;
@@ -32,52 +34,49 @@ package prim_misc_dft_pkg;
     logic       test_rnm;
     logic       test1b;
     logic       test1a;
-    // this doesn't fit the struct logically, but easiest to not change OT interfaces
-    logic       DFD_StopWE;
-    // this doesn't fit the struct logically, but easiest to not change OT interfaces
-    logic       tstrst;
-    // this doesn't fit the struct logically, but easiest to not change OT interfaces
-    logic       tstrstsel;
-    } spi_sram_test_cfg_t;
+    logic       DFD_StopWE;  // this doesn't fit the struct logically, but easiest to not change OT interfaces
+    logic       tstrst;      // this doesn't fit the struct logically, but easiest to not change OT interfaces
+    logic       tstrstsel;   // this doesn't fit the struct logically, but easiest to not change OT interfaces
+  } spi_sram_test_cfg_t;
 
-    // sram error injection inputs
-    typedef struct packed {
+  // sram error injection inputs
+  typedef struct packed {
     logic [7:0] tie__sram_loc;
     logic       err_inj_en;
     logic [1:0] err_inj_type;
     logic [1:0] err_inj_count;
     logic [7:0] err_inj_loc;
-    } sram_err_inj_in_t;
+  } sram_err_inj_in_t;
 
-    // sram dft
-    typedef struct packed {
+  // sram dft
+  typedef struct packed {
     logic [0:0]  DFT_TME;
     logic [0:0]  DFT_TRE;
     logic [38:0] DFT_RDATA;
-    } sram_dft_t;
+  } sram_dft_t;
 
-    typedef struct packed {
+  typedef struct packed {
     logic [0:0]  DFT_TME;
     logic [0:0]  DFT_TRE;
     logic [31:0] DFT_RDATA;
-    } i3c_sram_dft_t;
+  } i3c_sram_dft_t;
 
-    typedef struct packed {
+  typedef struct packed {
     logic [0:0]  DFT_TME;
     logic [0:0]  DFT_TRE;
     logic [35:0] DFT_RDATA;
-    } spi_sram_dft_t;
+  } spi_sram_dft_t;
 
-    // rom test cfg
-    typedef struct packed {
+  // rom test cfg
+  typedef struct packed {
     logic [3:0] rm;
     logic       rme;
     logic       ls;
     logic       test1;
-    } rom_test_cfg_t;
+  } rom_test_cfg_t;
 
-    // sms server cfg
-    typedef struct packed {
+  // sms server cfg
+  typedef struct packed {
     logic [4:0] smart_assert_cycles;
     logic [4:0] result_strobe_cycles;
     logic       vl_srv_par_algo_mode_srv;
@@ -85,6 +84,41 @@ package prim_misc_dft_pkg;
     logic       vl_srv_sfp_dft_mode;
     logic [4:0] vl_srv_read_strobe;
     logic [9:0] spare;
-    } sms_server_cfg_t;
+  } sms_server_cfg_t;
+
+    // TODO (neal) need to fix this
+    typedef struct packed { // Total width: 26
+      logic consistency_check2; // lsb: 25
+      logic disable_ls; // lsb: 24
+      logic disable_clock_gating; // lsb: 23
+      logic [1:0] ra; // lsb: 21
+      logic [2:0] wpulse; // lsb: 18
+      logic [2:0] wa; // lsb: 15
+      logic testrwm; // lsb: 14
+      logic test1b; // lsb: 13
+      logic test1a; // lsb: 12
+      logic rmeb; // lsb: 11
+      logic rmea; // lsb: 10
+      logic test_rnm; // lsb: 9
+      logic [3:0] rmb; // lsb: 5
+      logic consistency_check1; // lsb: 4
+      logic [3:0] rma; // lsb: 0
+    } copy_ram_control_dp_t;
+
+    // TODO (neal) need to fix this
+    typedef struct packed { // Total width: 3
+      logic tston; // lsb: 2
+      logic bist_mode; // lsb: 1
+      logic DFD_StopWE; // lsb: 0
+    } copy_ram_dft_signals_t;
+
+    // TODO (neal) need to fix this
+    typedef struct packed { // Total width: 13
+      logic [7:0] err_inj_loc; // lsb: 5
+      logic [1:0] err_inj_count; // lsb: 3
+      logic [1:0] err_inj_type; // lsb: 1
+      logic err_inj_en; // lsb: 0
+    } copy_ram_error_inject_t;
+
 endpackage  // of prim_misc_dft_pkg
 `endif  // of __MISC_DFT_PKG_SV
