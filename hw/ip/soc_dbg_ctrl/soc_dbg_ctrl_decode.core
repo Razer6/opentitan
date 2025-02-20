@@ -10,6 +10,8 @@ filesets:
       - lowrisc:ip:soc_dbg_ctrl_pkg
       - lowrisc:prim:flop_en
       - lowrisc:prim:edge_detector
+      - lowrisc:prim_rdp:flop_en
+      - lowrisc:prim_rdp:flop_2sync
     files:
       - rtl/soc_dbg_ctrl_decode.sv
     file_type: systemVerilogSource
@@ -42,6 +44,11 @@ parameters:
   SYNTHESIS:
     datatype: bool
     paramtype: vlogdefine
+  PRIM_DEFAULT_IMPL:
+    datatype: str
+    paramtype: vlogdefine
+    description: Use the RDP primitive library
+    default: prim_pkg::ImplRdp
 
 targets:
   default: &default_target
@@ -51,6 +58,8 @@ targets:
       - tool_veriblelint ? (files_veriblelint_waiver)
       - files_rtl
     toplevel: soc_dbg_ctrl_decode
+    parameters:
+      - PRIM_DEFAULT_IMPL
 
   lint:
     <<: *default_target
