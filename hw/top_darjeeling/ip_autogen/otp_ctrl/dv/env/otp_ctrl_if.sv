@@ -212,15 +212,15 @@ interface otp_ctrl_if(input clk_i, input rst_ni);
             u_part_unbuf.`ECC_REG_PATH.data_i[0] = 1;
       force_sw_parts_ecc_reg[PlatOwnerAuthSlot2Idx] = 1;
     end
-    if (fail_idx[PlatOwnerAuthSlot3Idx]) begin
-      force tb.dut.gen_partitions[PlatOwnerAuthSlot3Idx].gen_unbuffered.
-            u_part_unbuf.`ECC_REG_PATH.data_i[0] = 1;
-      force_sw_parts_ecc_reg[PlatOwnerAuthSlot3Idx] = 1;
-    end
     if (fail_idx[RomPatchIdx]) begin
       force tb.dut.gen_partitions[RomPatchIdx].gen_unbuffered.
             u_part_unbuf.`ECC_REG_PATH.data_i[0] = 1;
       force_sw_parts_ecc_reg[RomPatchIdx] = 1;
+    end
+    if (fail_idx[SocFusesIdx]) begin
+      force tb.dut.gen_partitions[SocFusesIdx].gen_unbuffered.
+            u_part_unbuf.`ECC_REG_PATH.data_i[0] = 1;
+      force_sw_parts_ecc_reg[SocFusesIdx] = 1;
     end
   endtask
 
@@ -281,15 +281,15 @@ interface otp_ctrl_if(input clk_i, input rst_ni);
               u_part_unbuf.`ECC_REG_PATH.data_i[0];
       force_sw_parts_ecc_reg[PlatOwnerAuthSlot2Idx] = 0;
     end
-    if (force_sw_parts_ecc_reg[PlatOwnerAuthSlot3Idx]) begin
-      release tb.dut.gen_partitions[PlatOwnerAuthSlot3Idx].gen_unbuffered.
-              u_part_unbuf.`ECC_REG_PATH.data_i[0];
-      force_sw_parts_ecc_reg[PlatOwnerAuthSlot3Idx] = 0;
-    end
     if (force_sw_parts_ecc_reg[RomPatchIdx]) begin
       release tb.dut.gen_partitions[RomPatchIdx].gen_unbuffered.
               u_part_unbuf.`ECC_REG_PATH.data_i[0];
       force_sw_parts_ecc_reg[RomPatchIdx] = 0;
+    end
+    if (force_sw_parts_ecc_reg[SocFusesIdx]) begin
+      release tb.dut.gen_partitions[SocFusesIdx].gen_unbuffered.
+              u_part_unbuf.`ECC_REG_PATH.data_i[0];
+      force_sw_parts_ecc_reg[SocFusesIdx] = 0;
     end
   endtask
 
@@ -356,9 +356,9 @@ interface otp_ctrl_if(input clk_i, input rst_ni);
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(PlatOwnerAuthSlot0Idx)
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(PlatOwnerAuthSlot1Idx)
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(PlatOwnerAuthSlot2Idx)
-    `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(PlatOwnerAuthSlot3Idx)
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(ExtNvmIdx)
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(RomPatchIdx)
+    `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(SocFusesIdx)
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(HwCfg0Idx)
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(HwCfg1Idx)
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(Secret0Idx)

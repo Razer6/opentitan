@@ -137,7 +137,7 @@
     { name: "OtpByteAddrWidth",
       desc: "Width of the OTP byte address.",
       type: "int",
-      default: "14",
+      default: "15",
       local: "true"
     },
     { name: "NumErrorEntries",
@@ -161,7 +161,7 @@
     { name: "NumSwCfgWindowWords",
       desc: "Size of the TL-UL window in 32bit words. Note that the effective partition size is smaller than that.",
       type: "int",
-      default: "4096",
+      default: "8192",
       local: "true"
     }
 
@@ -1360,58 +1360,10 @@
       default: "8",
       local: "true"
     },
-    { name: "PlatOwnerAuthSlot3Offset",
-      desc: "Offset of the PLAT_OWNER_AUTH_SLOT3 partition",
-      type: "int",
-      default: "4784",
-      local: "true"
-    },
-    { name: "PlatOwnerAuthSlot3Size",
-      desc: "Size of the PLAT_OWNER_AUTH_SLOT3 partition",
-      type: "int",
-      default: "328",
-      local: "true"
-    },
-    { name: "PlatOwnerAuthSlot3KeymanifestKeyOffset",
-      desc: "Offset of PLAT_OWNER_AUTH_SLOT3_KEYMANIFEST_KEY",
-      type: "int",
-      default: "4784",
-      local: "true"
-    },
-    { name: "PlatOwnerAuthSlot3KeymanifestKeySize",
-      desc: "Size of PLAT_OWNER_AUTH_SLOT3_KEYMANIFEST_KEY",
-      type: "int",
-      default: "160",
-      local: "true"
-    },
-    { name: "PlatOwnerAuthSlot3Unlock4xferKeyOffset",
-      desc: "Offset of PLAT_OWNER_AUTH_SLOT3_UNLOCK4XFER_KEY",
-      type: "int",
-      default: "4944",
-      local: "true"
-    },
-    { name: "PlatOwnerAuthSlot3Unlock4xferKeySize",
-      desc: "Size of PLAT_OWNER_AUTH_SLOT3_UNLOCK4XFER_KEY",
-      type: "int",
-      default: "160",
-      local: "true"
-    },
-    { name: "PlatOwnerAuthSlot3DigestOffset",
-      desc: "Offset of PLAT_OWNER_AUTH_SLOT3_DIGEST",
-      type: "int",
-      default: "5104",
-      local: "true"
-    },
-    { name: "PlatOwnerAuthSlot3DigestSize",
-      desc: "Size of PLAT_OWNER_AUTH_SLOT3_DIGEST",
-      type: "int",
-      default: "8",
-      local: "true"
-    },
     { name: "ExtNvmOffset",
       desc: "Offset of the EXT_NVM partition",
       type: "int",
-      default: "5112",
+      default: "4784",
       local: "true"
     },
     { name: "ExtNvmSize",
@@ -1423,7 +1375,7 @@
     { name: "ExtNvmAntireplayFreshnessCntOffset",
       desc: "Offset of EXT_NVM_ANTIREPLAY_FRESHNESS_CNT",
       type: "int",
-      default: "5112",
+      default: "4784",
       local: "true"
     },
     { name: "ExtNvmAntireplayFreshnessCntSize",
@@ -1435,19 +1387,19 @@
     { name: "RomPatchOffset",
       desc: "Offset of the ROM_PATCH partition",
       type: "int",
-      default: "6136",
+      default: "5808",
       local: "true"
     },
     { name: "RomPatchSize",
       desc: "Size of the ROM_PATCH partition",
       type: "int",
-      default: "9784",
+      default: "10104",
       local: "true"
     },
     { name: "RomPatchDataOffset",
       desc: "Offset of ROM_PATCH_DATA",
       type: "int",
-      default: "6136",
+      default: "5808",
       local: "true"
     },
     { name: "RomPatchDataSize",
@@ -1459,7 +1411,7 @@
     { name: "RomPatchDigestOffset",
       desc: "Offset of ROM_PATCH_DIGEST",
       type: "int",
-      default: "15912",
+      default: "15904",
       local: "true"
     },
     { name: "RomPatchDigestSize",
@@ -1468,10 +1420,46 @@
       default: "8",
       local: "true"
     },
+    { name: "SocFusesOffset",
+      desc: "Offset of the SOC_FUSES partition",
+      type: "int",
+      default: "15912",
+      local: "true"
+    },
+    { name: "SocFusesSize",
+      desc: "Size of the SOC_FUSES partition",
+      type: "int",
+      default: "4104",
+      local: "true"
+    },
+    { name: "SocFusesDataOffset",
+      desc: "Offset of SOC_FUSES_DATA",
+      type: "int",
+      default: "15912",
+      local: "true"
+    },
+    { name: "SocFusesDataSize",
+      desc: "Size of SOC_FUSES_DATA",
+      type: "int",
+      default: "4096",
+      local: "true"
+    },
+    { name: "SocFusesDigestOffset",
+      desc: "Offset of SOC_FUSES_DIGEST",
+      type: "int",
+      default: "20008",
+      local: "true"
+    },
+    { name: "SocFusesDigestSize",
+      desc: "Size of SOC_FUSES_DIGEST",
+      type: "int",
+      default: "8",
+      local: "true"
+    },
     { name: "HwCfg0Offset",
       desc: "Offset of the HW_CFG0 partition",
       type: "int",
-      default: "15920",
+      default: "20016",
       local: "true"
     },
     { name: "HwCfg0Size",
@@ -1483,7 +1471,7 @@
     { name: "DeviceIdOffset",
       desc: "Offset of DEVICE_ID",
       type: "int",
-      default: "15920",
+      default: "20016",
       local: "true"
     },
     { name: "DeviceIdSize",
@@ -1495,7 +1483,7 @@
     { name: "ManufStateOffset",
       desc: "Offset of MANUF_STATE",
       type: "int",
-      default: "15952",
+      default: "20048",
       local: "true"
     },
     { name: "ManufStateSize",
@@ -1507,7 +1495,7 @@
     { name: "HwCfg0DigestOffset",
       desc: "Offset of HW_CFG0_DIGEST",
       type: "int",
-      default: "15984",
+      default: "20080",
       local: "true"
     },
     { name: "HwCfg0DigestSize",
@@ -1519,7 +1507,7 @@
     { name: "HwCfg1Offset",
       desc: "Offset of the HW_CFG1 partition",
       type: "int",
-      default: "15992",
+      default: "20088",
       local: "true"
     },
     { name: "HwCfg1Size",
@@ -1531,7 +1519,7 @@
     { name: "SocDbgStateOffset",
       desc: "Offset of SOC_DBG_STATE",
       type: "int",
-      default: "15992",
+      default: "20088",
       local: "true"
     },
     { name: "SocDbgStateSize",
@@ -1543,7 +1531,7 @@
     { name: "EnSramIfetchOffset",
       desc: "Offset of EN_SRAM_IFETCH",
       type: "int",
-      default: "15996",
+      default: "20092",
       local: "true"
     },
     { name: "EnSramIfetchSize",
@@ -1555,7 +1543,7 @@
     { name: "HwCfg1DigestOffset",
       desc: "Offset of HW_CFG1_DIGEST",
       type: "int",
-      default: "16000",
+      default: "20096",
       local: "true"
     },
     { name: "HwCfg1DigestSize",
@@ -1567,7 +1555,7 @@
     { name: "Secret0Offset",
       desc: "Offset of the SECRET0 partition",
       type: "int",
-      default: "16008",
+      default: "20104",
       local: "true"
     },
     { name: "Secret0Size",
@@ -1579,7 +1567,7 @@
     { name: "TestUnlockTokenOffset",
       desc: "Offset of TEST_UNLOCK_TOKEN",
       type: "int",
-      default: "16008",
+      default: "20104",
       local: "true"
     },
     { name: "TestUnlockTokenSize",
@@ -1591,7 +1579,7 @@
     { name: "TestExitTokenOffset",
       desc: "Offset of TEST_EXIT_TOKEN",
       type: "int",
-      default: "16024",
+      default: "20120",
       local: "true"
     },
     { name: "TestExitTokenSize",
@@ -1603,7 +1591,7 @@
     { name: "Secret0DigestOffset",
       desc: "Offset of SECRET0_DIGEST",
       type: "int",
-      default: "16040",
+      default: "20136",
       local: "true"
     },
     { name: "Secret0DigestSize",
@@ -1615,7 +1603,7 @@
     { name: "Secret1Offset",
       desc: "Offset of the SECRET1 partition",
       type: "int",
-      default: "16048",
+      default: "20144",
       local: "true"
     },
     { name: "Secret1Size",
@@ -1627,7 +1615,7 @@
     { name: "FlashAddrKeySeedOffset",
       desc: "Offset of FLASH_ADDR_KEY_SEED",
       type: "int",
-      default: "16048",
+      default: "20144",
       local: "true"
     },
     { name: "FlashAddrKeySeedSize",
@@ -1639,7 +1627,7 @@
     { name: "FlashDataKeySeedOffset",
       desc: "Offset of FLASH_DATA_KEY_SEED",
       type: "int",
-      default: "16080",
+      default: "20176",
       local: "true"
     },
     { name: "FlashDataKeySeedSize",
@@ -1651,7 +1639,7 @@
     { name: "SramDataKeySeedOffset",
       desc: "Offset of SRAM_DATA_KEY_SEED",
       type: "int",
-      default: "16112",
+      default: "20208",
       local: "true"
     },
     { name: "SramDataKeySeedSize",
@@ -1663,7 +1651,7 @@
     { name: "Secret1DigestOffset",
       desc: "Offset of SECRET1_DIGEST",
       type: "int",
-      default: "16128",
+      default: "20224",
       local: "true"
     },
     { name: "Secret1DigestSize",
@@ -1675,7 +1663,7 @@
     { name: "Secret2Offset",
       desc: "Offset of the SECRET2 partition",
       type: "int",
-      default: "16136",
+      default: "20232",
       local: "true"
     },
     { name: "Secret2Size",
@@ -1687,7 +1675,7 @@
     { name: "RmaTokenOffset",
       desc: "Offset of RMA_TOKEN",
       type: "int",
-      default: "16136",
+      default: "20232",
       local: "true"
     },
     { name: "RmaTokenSize",
@@ -1699,7 +1687,7 @@
     { name: "CreatorRootKeyShare0Offset",
       desc: "Offset of CREATOR_ROOT_KEY_SHARE0",
       type: "int",
-      default: "16152",
+      default: "20248",
       local: "true"
     },
     { name: "CreatorRootKeyShare0Size",
@@ -1711,7 +1699,7 @@
     { name: "CreatorRootKeyShare1Offset",
       desc: "Offset of CREATOR_ROOT_KEY_SHARE1",
       type: "int",
-      default: "16184",
+      default: "20280",
       local: "true"
     },
     { name: "CreatorRootKeyShare1Size",
@@ -1723,7 +1711,7 @@
     { name: "CreatorSeedOffset",
       desc: "Offset of CREATOR_SEED",
       type: "int",
-      default: "16216",
+      default: "20312",
       local: "true"
     },
     { name: "CreatorSeedSize",
@@ -1735,7 +1723,7 @@
     { name: "Secret2DigestOffset",
       desc: "Offset of SECRET2_DIGEST",
       type: "int",
-      default: "16248",
+      default: "20344",
       local: "true"
     },
     { name: "Secret2DigestSize",
@@ -1747,7 +1735,7 @@
     { name: "Secret3Offset",
       desc: "Offset of the SECRET3 partition",
       type: "int",
-      default: "16256",
+      default: "20352",
       local: "true"
     },
     { name: "Secret3Size",
@@ -1759,7 +1747,7 @@
     { name: "OwnerSeedOffset",
       desc: "Offset of OWNER_SEED",
       type: "int",
-      default: "16256",
+      default: "20352",
       local: "true"
     },
     { name: "OwnerSeedSize",
@@ -1771,7 +1759,7 @@
     { name: "Secret3DigestOffset",
       desc: "Offset of SECRET3_DIGEST",
       type: "int",
-      default: "16288",
+      default: "20384",
       local: "true"
     },
     { name: "Secret3DigestSize",
@@ -1783,7 +1771,7 @@
     { name: "LifeCycleOffset",
       desc: "Offset of the LIFE_CYCLE partition",
       type: "int",
-      default: "16296",
+      default: "20392",
       local: "true"
     },
     { name: "LifeCycleSize",
@@ -1795,7 +1783,7 @@
     { name: "LcTransitionCntOffset",
       desc: "Offset of LC_TRANSITION_CNT",
       type: "int",
-      default: "16296",
+      default: "20392",
       local: "true"
     },
     { name: "LcTransitionCntSize",
@@ -1807,7 +1795,7 @@
     { name: "LcStateOffset",
       desc: "Offset of LC_STATE",
       type: "int",
-      default: "16344",
+      default: "20440",
       local: "true"
     },
     { name: "LcStateSize",
@@ -2396,21 +2384,21 @@
                   '''
           }
           { bits: "12"
-            name: "PLAT_OWNER_AUTH_SLOT3_ERROR"
-            desc: '''
-                  Set to 1 if an error occurred in this partition.
-                  If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
-                  '''
-          }
-          { bits: "13"
             name: "EXT_NVM_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
-          { bits: "14"
+          { bits: "13"
             name: "ROM_PATCH_ERROR"
+            desc: '''
+                  Set to 1 if an error occurred in this partition.
+                  If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
+                  '''
+          }
+          { bits: "14"
+            name: "SOC_FUSES_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
@@ -3135,27 +3123,6 @@
           },
         ]
       },
-      { name: "PLAT_OWNER_AUTH_SLOT3_READ_LOCK",
-        desc: '''
-              Runtime read lock for the PLAT_OWNER_AUTH_SLOT3 partition.
-              ''',
-        swaccess: "rw0c",
-        hwaccess: "hro",
-        regwen:   "DIRECT_ACCESS_REGWEN",
-        tags:     [ // The value of this register can affect the read access of the this
-                    // partition's memory window. Excluding this register from writing can ensure
-                    // memories have read and write access.
-                    "excl:CsrNonInitTests:CsrExclWrite"],
-        fields: [
-          { bits:   "0",
-            desc: '''
-            When cleared to 0, read access to the PLAT_OWNER_AUTH_SLOT3 partition is locked.
-            Write 0 to clear this bit.
-            '''
-            resval: 1,
-          },
-        ]
-      },
       { name: "EXT_NVM_READ_LOCK",
         desc: '''
               Runtime read lock for the EXT_NVM partition.
@@ -3192,6 +3159,27 @@
           { bits:   "0",
             desc: '''
             When cleared to 0, read access to the ROM_PATCH partition is locked.
+            Write 0 to clear this bit.
+            '''
+            resval: 1,
+          },
+        ]
+      },
+      { name: "SOC_FUSES_READ_LOCK",
+        desc: '''
+              Runtime read lock for the SOC_FUSES partition.
+              ''',
+        swaccess: "rw0c",
+        hwaccess: "hro",
+        regwen:   "DIRECT_ACCESS_REGWEN",
+        tags:     [ // The value of this register can affect the read access of the this
+                    // partition's memory window. Excluding this register from writing can ensure
+                    // memories have read and write access.
+                    "excl:CsrNonInitTests:CsrExclWrite"],
+        fields: [
+          { bits:   "0",
+            desc: '''
+            When cleared to 0, read access to the SOC_FUSES partition is locked.
             Write 0 to clear this bit.
             '''
             resval: 1,
@@ -3456,12 +3444,12 @@
         }
       },
       { multireg: {
-          name:     "PLAT_OWNER_AUTH_SLOT3_DIGEST",
+          name:     "ROM_PATCH_DIGEST",
           desc:     '''
-                    Integrity digest for the PLAT_OWNER_AUTH_SLOT3 partition.
+                    Integrity digest for the ROM_PATCH partition.
                     The integrity digest is 0 by default. Software must write this
                     digest value via the direct access interface in order to lock the partition.
-                    After a reset, write access to the PLAT_OWNER_AUTH_SLOT3 partition is locked and
+                    After a reset, write access to the ROM_PATCH partition is locked and
                     the digest becomes visible in this CSR.
                     ''',
           count:     "NumDigestWords",
@@ -3479,12 +3467,12 @@
         }
       },
       { multireg: {
-          name:     "ROM_PATCH_DIGEST",
+          name:     "SOC_FUSES_DIGEST",
           desc:     '''
-                    Integrity digest for the ROM_PATCH partition.
+                    Integrity digest for the SOC_FUSES partition.
                     The integrity digest is 0 by default. Software must write this
                     digest value via the direct access interface in order to lock the partition.
-                    After a reset, write access to the ROM_PATCH partition is locked and
+                    After a reset, write access to the SOC_FUSES partition is locked and
                     the digest becomes visible in this CSR.
                     ''',
           count:     "NumDigestWords",
@@ -3631,7 +3619,7 @@
       ////////////////////////////////
       // Software Config Partitions //
       ////////////////////////////////
-      { skipto: "0x4000" }
+      { skipto: "0x8000" }
 
       { window: {
           name: "SW_CFG_WINDOW"

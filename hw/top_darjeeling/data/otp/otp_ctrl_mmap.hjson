@@ -20,7 +20,7 @@
 
     otp: {
         width: "2", // bytes
-        depth: "8192"
+        depth: "10240"
     }
 
     // Definition of scrambling and digest constants and keys.
@@ -754,43 +754,6 @@
             '''
         }
         {
-            name:       "PLAT_OWNER_AUTH_SLOT3",
-            variant:    "Unbuffered",
-            absorb:     false,
-            secret:     false,
-            sw_digest:  true,
-            hw_digest:  false,
-            write_lock: "Digest",
-            read_lock:  "CSR",
-            key_sel:    "NoKey",
-            integrity:  true,
-            bkout_type: false,
-            items: [
-                {
-                    name: "PLAT_OWNER_AUTH_SLOT3_KEYMANIFEST_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    KM is used to provisioning additional keys in (external) flash
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    It is expected to be provisioned at Chip Probe stage when LC = TEST
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
-                    '''
-                }
-                {
-                    name: "PLAT_OWNER_AUTH_SLOT3_UNLOCK4XFER_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    Used to authenticate the Unlock Ownership payload. Key Type: ECC NIST-P384 Curve.
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    Can be made part bound i.e. unique per part key cert
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
-                    '''
-                }
-            ],
-            desc: '''Software managed platform owner slot 3 partition.
-            '''
-        }
-        {
             name:       "EXT_NVM",
             variant:    "Unbuffered",
             absorb:     false,
@@ -844,6 +807,29 @@
                 }
             ],
             desc: '''ROM Patch Code section. May contain multiple signed ROM2 patches.
+            '''
+        }
+        {
+            name:       "SOC_FUSES",
+            variant:    "Unbuffered",
+            absorb:     false,
+            secret:     false,
+            sw_digest:  true,
+            hw_digest:  false,
+            write_lock: "Digest",
+            read_lock:  "CSR",
+            key_sel:    "NoKey",
+            integrity:  true,
+            bkout_type: false,
+            items: [
+                {
+                   name:        "SOC_FUSES_DATA",
+                   size:        "4096",
+                   desc: ''' SoC fuses data, previously know as non-secure fuses (ns_efuse).
+                   '''
+                }
+            ],
+            desc: ''' SoC fuses partition. This contains old ns_efuse data.
             '''
         }
         {

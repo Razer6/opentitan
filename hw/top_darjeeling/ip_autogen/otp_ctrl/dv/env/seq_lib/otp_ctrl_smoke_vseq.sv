@@ -52,12 +52,12 @@ class otp_ctrl_smoke_vseq extends otp_ctrl_base_vseq;
         dai_addr inside `PART_CONTENT_RANGE(PlatOwnerAuthSlot1Idx);
     if (part_idx == PlatOwnerAuthSlot2Idx)
         dai_addr inside `PART_CONTENT_RANGE(PlatOwnerAuthSlot2Idx);
-    if (part_idx == PlatOwnerAuthSlot3Idx)
-        dai_addr inside `PART_CONTENT_RANGE(PlatOwnerAuthSlot3Idx);
     if (part_idx == ExtNvmIdx)
         dai_addr inside `PART_CONTENT_RANGE(ExtNvmIdx);
     if (part_idx == RomPatchIdx)
         dai_addr inside `PART_CONTENT_RANGE(RomPatchIdx);
+    if (part_idx == SocFusesIdx)
+        dai_addr inside `PART_CONTENT_RANGE(SocFusesIdx);
     if (part_idx == HwCfg0Idx)
         dai_addr inside `PART_CONTENT_RANGE(HwCfg0Idx);
     if (part_idx == HwCfg1Idx)

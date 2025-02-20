@@ -79,10 +79,10 @@ class otp_ctrl_csr_rd_after_alert_cg_wrap;
         ral.plat_owner_auth_slot1_digest[1].get_offset(),
         ral.plat_owner_auth_slot2_digest[0].get_offset(),
         ral.plat_owner_auth_slot2_digest[1].get_offset(),
-        ral.plat_owner_auth_slot3_digest[0].get_offset(),
-        ral.plat_owner_auth_slot3_digest[1].get_offset(),
         ral.rom_patch_digest[0].get_offset(),
-        ral.rom_patch_digest[1].get_offset()
+        ral.rom_patch_digest[1].get_offset(),
+        ral.soc_fuses_digest[0].get_offset(),
+        ral.soc_fuses_digest[1].get_offset()
       };
       bins hw_digests          = {
         ral.hw_cfg0_digest[0].get_offset(),
@@ -202,9 +202,9 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
     plat_owner_auth_slot0_lock: coverpoint parts_locked[9];
     plat_owner_auth_slot1_lock: coverpoint parts_locked[10];
     plat_owner_auth_slot2_lock: coverpoint parts_locked[11];
-    plat_owner_auth_slot3_lock: coverpoint parts_locked[12];
-    ext_nvm_lock: coverpoint parts_locked[13];
-    rom_patch_lock: coverpoint parts_locked[14];
+    ext_nvm_lock: coverpoint parts_locked[12];
+    rom_patch_lock: coverpoint parts_locked[13];
+    soc_fuses_lock: coverpoint parts_locked[14];
     hw_cfg0_lock: coverpoint parts_locked[15];
     hw_cfg1_lock: coverpoint parts_locked[16];
     secret0_lock: coverpoint parts_locked[17];
@@ -285,9 +285,9 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
       bins plat_owner_auth_slot0 = {PlatOwnerAuthSlot0Idx};
       bins plat_owner_auth_slot1 = {PlatOwnerAuthSlot1Idx};
       bins plat_owner_auth_slot2 = {PlatOwnerAuthSlot2Idx};
-      bins plat_owner_auth_slot3 = {PlatOwnerAuthSlot3Idx};
       bins ext_nvm = {ExtNvmIdx};
       bins rom_patch = {RomPatchIdx};
+      bins soc_fuses = {SocFusesIdx};
       bins hw_cfg0 = {HwCfg0Idx};
       bins hw_cfg1 = {HwCfg1Idx};
       bins secret0 = {Secret0Idx};
@@ -427,13 +427,13 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
       OtpPlatOwnerAuthSlot2ErrIdx: begin
         unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
       end
-      OtpPlatOwnerAuthSlot3ErrIdx: begin
-        unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
-      end
       OtpExtNvmErrIdx: begin
         unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
       end
       OtpRomPatchErrIdx: begin
+        unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
+      end
+      OtpSocFusesErrIdx: begin
         unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
       end
       OtpHwCfg0ErrIdx: begin

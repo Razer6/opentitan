@@ -11,10 +11,10 @@
       otp:
       {
         width: 2
-        depth: 8192
-        size: 16384
-        addr_width: 13
-        byte_addr_width: 14
+        depth: 10240
+        size: 20480
+        addr_width: 14
+        byte_addr_width: 15
       }
       scrambling:
       {
@@ -1403,73 +1403,6 @@
           offset: 4456
         }
         {
-          name: PLAT_OWNER_AUTH_SLOT3
-          variant: Unbuffered
-          absorb: false
-          secret: false
-          sw_digest: true
-          hw_digest: false
-          write_lock: Digest
-          read_lock: CSR
-          key_sel: NoKey
-          integrity: true
-          bkout_type: false
-          items:
-          [
-            {
-              name: PLAT_OWNER_AUTH_SLOT3_KEYMANIFEST_KEY
-              size: 160
-              desc:
-                '''
-                Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                KM is used to provisioning additional keys in (external) flash
-                160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                It is expected to be provisioned at Chip Probe stage when LC = TEST
-                i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
-                '''
-              isdigest: false
-              ismubi: false
-              iskeymgr_creator: false
-              iskeymgr_owner: false
-              inv_default: 0
-              offset: 4784
-            }
-            {
-              name: PLAT_OWNER_AUTH_SLOT3_UNLOCK4XFER_KEY
-              size: 160
-              desc:
-                '''
-                Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                Used to authenticate the Unlock Ownership payload. Key Type: ECC NIST-P384 Curve.
-                160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                Can be made part bound i.e. unique per part key cert
-                i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
-                '''
-              isdigest: false
-              ismubi: false
-              iskeymgr_creator: false
-              iskeymgr_owner: false
-              inv_default: 0
-              offset: 4944
-            }
-            {
-              name: PLAT_OWNER_AUTH_SLOT3_DIGEST
-              size: 8
-              offset: 5104
-              ismubi: false
-              isdigest: true
-              inv_default: 5138760742690312726
-              iskeymgr_creator: false
-              iskeymgr_owner: false
-            }
-          ]
-          desc: Software managed platform owner slot 3 partition.
-          iskeymgr_creator: false
-          iskeymgr_owner: false
-          size: 328
-          offset: 4784
-        }
-        {
           name: EXT_NVM
           variant: Unbuffered
           absorb: false
@@ -1499,14 +1432,14 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 5112
+              offset: 4784
             }
           ]
           desc: Anti-replay protection Strike Counters partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 1024
-          offset: 5112
+          offset: 4784
         }
         {
           name: ROM_PATCH
@@ -1538,15 +1471,15 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 6136
+              offset: 5808
             }
             {
               name: ROM_PATCH_DIGEST
               size: 8
-              offset: 15912
+              offset: 15904
               ismubi: false
               isdigest: true
-              inv_default: 5553021194950512605
+              inv_default: 5138760742690312726
               iskeymgr_creator: false
               iskeymgr_owner: false
             }
@@ -1554,8 +1487,50 @@
           desc: ROM Patch Code section. May contain multiple signed ROM2 patches.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          size: 9784
-          offset: 6136
+          size: 10104
+          offset: 5808
+        }
+        {
+          name: SOC_FUSES
+          variant: Unbuffered
+          absorb: false
+          secret: false
+          sw_digest: true
+          hw_digest: false
+          write_lock: Digest
+          read_lock: CSR
+          key_sel: NoKey
+          integrity: true
+          bkout_type: false
+          items:
+          [
+            {
+              name: SOC_FUSES_DATA
+              size: 4096
+              desc: SoC fuses data, previously know as non-secure fuses (ns_efuse).
+              isdigest: false
+              ismubi: false
+              iskeymgr_creator: false
+              iskeymgr_owner: false
+              inv_default: 0
+              offset: 15912
+            }
+            {
+              name: SOC_FUSES_DIGEST
+              size: 8
+              offset: 20008
+              ismubi: false
+              isdigest: true
+              inv_default: 5553021194950512605
+              iskeymgr_creator: false
+              iskeymgr_owner: false
+            }
+          ]
+          desc: SoC fuses partition. This contains old ns_efuse data.
+          iskeymgr_creator: false
+          iskeymgr_owner: false
+          size: 4104
+          offset: 15912
         }
         {
           name: HW_CFG0
@@ -1578,7 +1553,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 15920
+              offset: 20016
             }
             {
               name: MANUF_STATE
@@ -1588,12 +1563,12 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 15952
+              offset: 20048
             }
             {
               name: HW_CFG0_DIGEST
               size: 8
-              offset: 15984
+              offset: 20080
               ismubi: false
               isdigest: true
               inv_default: 13231792541330219804
@@ -1612,7 +1587,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 72
-          offset: 15920
+          offset: 20016
         }
         {
           name: HW_CFG1
@@ -1647,7 +1622,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 15992
+              offset: 20088
             }
             {
               name: EN_SRAM_IFETCH
@@ -1657,12 +1632,12 @@
               isdigest: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 15996
+              offset: 20092
             }
             {
               name: HW_CFG1_DIGEST
               size: 8
-              offset: 16000
+              offset: 20096
               ismubi: false
               isdigest: true
               inv_default: 13264097316726039890
@@ -1691,7 +1666,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 16
-          offset: 15992
+          offset: 20088
         }
         {
           name: SECRET0
@@ -1714,7 +1689,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 16008
+              offset: 20104
             }
             {
               name: TEST_EXIT_TOKEN
@@ -1724,12 +1699,12 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 16024
+              offset: 20120
             }
             {
               name: SECRET0_DIGEST
               size: 8
-              offset: 16040
+              offset: 20136
               ismubi: false
               isdigest: true
               inv_default: 364196237501841799
@@ -1746,7 +1721,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 40
-          offset: 16008
+          offset: 20104
         }
         {
           name: SECRET1
@@ -1769,7 +1744,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 16048
+              offset: 20144
             }
             {
               name: FLASH_DATA_KEY_SEED
@@ -1779,7 +1754,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 16080
+              offset: 20176
             }
             {
               name: SRAM_DATA_KEY_SEED
@@ -1789,12 +1764,12 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 16112
+              offset: 20208
             }
             {
               name: SECRET1_DIGEST
               size: 8
-              offset: 16128
+              offset: 20224
               ismubi: false
               isdigest: true
               inv_default: 8239982531674452350
@@ -1811,7 +1786,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 88
-          offset: 16048
+          offset: 20144
         }
         {
           name: SECRET2
@@ -1834,7 +1809,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 16136
+              offset: 20232
             }
             {
               name: CREATOR_ROOT_KEY_SHARE0
@@ -1844,7 +1819,7 @@
               isdigest: false
               ismubi: false
               iskeymgr_owner: false
-              offset: 16152
+              offset: 20248
             }
             {
               name: CREATOR_ROOT_KEY_SHARE1
@@ -1854,7 +1829,7 @@
               isdigest: false
               ismubi: false
               iskeymgr_owner: false
-              offset: 16184
+              offset: 20280
             }
             {
               name: CREATOR_SEED
@@ -1864,12 +1839,12 @@
               isdigest: false
               ismubi: false
               iskeymgr_owner: false
-              offset: 16216
+              offset: 20312
             }
             {
               name: SECRET2_DIGEST
               size: 8
-              offset: 16248
+              offset: 20344
               ismubi: false
               isdigest: true
               inv_default: 4468065780390625656
@@ -1886,7 +1861,7 @@
           iskeymgr_creator: true
           iskeymgr_owner: false
           size: 120
-          offset: 16136
+          offset: 20232
         }
         {
           name: SECRET3
@@ -1909,12 +1884,12 @@
               isdigest: false
               ismubi: false
               iskeymgr_creator: false
-              offset: 16256
+              offset: 20352
             }
             {
               name: SECRET3_DIGEST
               size: 8
-              offset: 16288
+              offset: 20384
               ismubi: false
               isdigest: true
               inv_default: 15941764794715087011
@@ -1931,7 +1906,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: true
           size: 40
-          offset: 16256
+          offset: 20352
         }
         {
           name: LIFE_CYCLE
@@ -1954,7 +1929,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 16296
+              offset: 20392
             }
             {
               name: LC_STATE
@@ -1964,7 +1939,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 16344
+              offset: 20440
             }
           ]
           desc:
@@ -1983,7 +1958,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 88
-          offset: 16296
+          offset: 20392
         }
       ]
     }

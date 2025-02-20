@@ -26,7 +26,7 @@ module otp_ctrl_core_reg_top (
 
   import otp_ctrl_reg_pkg::* ;
 
-  localparam int AW = 15;
+  localparam int AW = 16;
   localparam int DW = 32;
   localparam int DBW = DW/8;                    // Byte Width
 
@@ -128,7 +128,7 @@ module otp_ctrl_core_reg_top (
   // Create steering logic
   always_comb begin
     reg_steer =
-        tl_i.a_address[AW-1:0] inside {[16384:32767]} ? 1'd0 :
+        tl_i.a_address[AW-1:0] inside {[32768:65535]} ? 1'd0 :
         // Default set to register
         1'd1;
 
@@ -202,9 +202,9 @@ module otp_ctrl_core_reg_top (
   logic status_plat_owner_auth_slot0_error_qs;
   logic status_plat_owner_auth_slot1_error_qs;
   logic status_plat_owner_auth_slot2_error_qs;
-  logic status_plat_owner_auth_slot3_error_qs;
   logic status_ext_nvm_error_qs;
   logic status_rom_patch_error_qs;
+  logic status_soc_fuses_error_qs;
   logic status_hw_cfg0_error_qs;
   logic status_hw_cfg1_error_qs;
   logic status_secret0_error_qs;
@@ -278,8 +278,8 @@ module otp_ctrl_core_reg_top (
   logic direct_access_cmd_wr_wd;
   logic direct_access_cmd_digest_wd;
   logic direct_access_address_we;
-  logic [13:0] direct_access_address_qs;
-  logic [13:0] direct_access_address_wd;
+  logic [14:0] direct_access_address_qs;
+  logic [14:0] direct_access_address_wd;
   logic direct_access_wdata_0_we;
   logic [31:0] direct_access_wdata_0_qs;
   logic [31:0] direct_access_wdata_0_wd;
@@ -344,15 +344,15 @@ module otp_ctrl_core_reg_top (
   logic plat_owner_auth_slot2_read_lock_we;
   logic plat_owner_auth_slot2_read_lock_qs;
   logic plat_owner_auth_slot2_read_lock_wd;
-  logic plat_owner_auth_slot3_read_lock_we;
-  logic plat_owner_auth_slot3_read_lock_qs;
-  logic plat_owner_auth_slot3_read_lock_wd;
   logic ext_nvm_read_lock_we;
   logic ext_nvm_read_lock_qs;
   logic ext_nvm_read_lock_wd;
   logic rom_patch_read_lock_we;
   logic rom_patch_read_lock_qs;
   logic rom_patch_read_lock_wd;
+  logic soc_fuses_read_lock_we;
+  logic soc_fuses_read_lock_qs;
+  logic soc_fuses_read_lock_wd;
   logic vendor_test_digest_0_re;
   logic [31:0] vendor_test_digest_0_qs;
   logic vendor_test_digest_1_re;
@@ -397,14 +397,14 @@ module otp_ctrl_core_reg_top (
   logic [31:0] plat_owner_auth_slot2_digest_0_qs;
   logic plat_owner_auth_slot2_digest_1_re;
   logic [31:0] plat_owner_auth_slot2_digest_1_qs;
-  logic plat_owner_auth_slot3_digest_0_re;
-  logic [31:0] plat_owner_auth_slot3_digest_0_qs;
-  logic plat_owner_auth_slot3_digest_1_re;
-  logic [31:0] plat_owner_auth_slot3_digest_1_qs;
   logic rom_patch_digest_0_re;
   logic [31:0] rom_patch_digest_0_qs;
   logic rom_patch_digest_1_re;
   logic [31:0] rom_patch_digest_1_qs;
+  logic soc_fuses_digest_0_re;
+  logic [31:0] soc_fuses_digest_0_qs;
+  logic soc_fuses_digest_1_re;
+  logic [31:0] soc_fuses_digest_1_qs;
   logic hw_cfg0_digest_0_re;
   logic [31:0] hw_cfg0_digest_0_qs;
   logic hw_cfg0_digest_1_re;
@@ -846,22 +846,7 @@ module otp_ctrl_core_reg_top (
     .qs     (status_plat_owner_auth_slot2_error_qs)
   );
 
-  //   F[plat_owner_auth_slot3_error]: 12:12
-  prim_subreg_ext #(
-    .DW    (1)
-  ) u_status_plat_owner_auth_slot3_error (
-    .re     (status_re),
-    .we     (1'b0),
-    .wd     ('0),
-    .d      (hw2reg.status.plat_owner_auth_slot3_error.d),
-    .qre    (),
-    .qe     (),
-    .q      (),
-    .ds     (),
-    .qs     (status_plat_owner_auth_slot3_error_qs)
-  );
-
-  //   F[ext_nvm_error]: 13:13
+  //   F[ext_nvm_error]: 12:12
   prim_subreg_ext #(
     .DW    (1)
   ) u_status_ext_nvm_error (
@@ -876,7 +861,7 @@ module otp_ctrl_core_reg_top (
     .qs     (status_ext_nvm_error_qs)
   );
 
-  //   F[rom_patch_error]: 14:14
+  //   F[rom_patch_error]: 13:13
   prim_subreg_ext #(
     .DW    (1)
   ) u_status_rom_patch_error (
@@ -889,6 +874,21 @@ module otp_ctrl_core_reg_top (
     .q      (),
     .ds     (),
     .qs     (status_rom_patch_error_qs)
+  );
+
+  //   F[soc_fuses_error]: 14:14
+  prim_subreg_ext #(
+    .DW    (1)
+  ) u_status_soc_fuses_error (
+    .re     (status_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.status.soc_fuses_error.d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .ds     (),
+    .qs     (status_soc_fuses_error_qs)
   );
 
   //   F[hw_cfg0_error]: 15:15
@@ -1621,9 +1621,9 @@ module otp_ctrl_core_reg_top (
   logic direct_access_address_gated_we;
   assign direct_access_address_gated_we = direct_access_address_we & direct_access_regwen_qs;
   prim_subreg #(
-    .DW      (14),
+    .DW      (15),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (14'h0),
+    .RESVAL  (15'h0),
     .Mubi    (1'b0)
   ) u_direct_access_address (
     .clk_i   (clk_i),
@@ -2315,38 +2315,6 @@ module otp_ctrl_core_reg_top (
   );
 
 
-  // R[plat_owner_auth_slot3_read_lock]: V(False)
-  // Create REGWEN-gated WE signal
-  logic plat_owner_auth_slot3_read_lock_gated_we;
-  assign plat_owner_auth_slot3_read_lock_gated_we =
-    plat_owner_auth_slot3_read_lock_we & direct_access_regwen_qs;
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessW0C),
-    .RESVAL  (1'h1),
-    .Mubi    (1'b0)
-  ) u_plat_owner_auth_slot3_read_lock (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (plat_owner_auth_slot3_read_lock_gated_we),
-    .wd     (plat_owner_auth_slot3_read_lock_wd),
-
-    // from internal hardware
-    .de     (1'b0),
-    .d      ('0),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.plat_owner_auth_slot3_read_lock.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (plat_owner_auth_slot3_read_lock_qs)
-  );
-
-
   // R[ext_nvm_read_lock]: V(False)
   // Create REGWEN-gated WE signal
   logic ext_nvm_read_lock_gated_we;
@@ -2406,6 +2374,37 @@ module otp_ctrl_core_reg_top (
 
     // to register interface (read)
     .qs     (rom_patch_read_lock_qs)
+  );
+
+
+  // R[soc_fuses_read_lock]: V(False)
+  // Create REGWEN-gated WE signal
+  logic soc_fuses_read_lock_gated_we;
+  assign soc_fuses_read_lock_gated_we = soc_fuses_read_lock_we & direct_access_regwen_qs;
+  prim_subreg #(
+    .DW      (1),
+    .SwAccess(prim_subreg_pkg::SwAccessW0C),
+    .RESVAL  (1'h1),
+    .Mubi    (1'b0)
+  ) u_soc_fuses_read_lock (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (soc_fuses_read_lock_gated_we),
+    .wd     (soc_fuses_read_lock_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.soc_fuses_read_lock.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (soc_fuses_read_lock_qs)
   );
 
 
@@ -2783,40 +2782,6 @@ module otp_ctrl_core_reg_top (
   );
 
 
-  // Subregister 0 of Multireg plat_owner_auth_slot3_digest
-  // R[plat_owner_auth_slot3_digest_0]: V(True)
-  prim_subreg_ext #(
-    .DW    (32)
-  ) u_plat_owner_auth_slot3_digest_0 (
-    .re     (plat_owner_auth_slot3_digest_0_re),
-    .we     (1'b0),
-    .wd     ('0),
-    .d      (hw2reg.plat_owner_auth_slot3_digest[0].d),
-    .qre    (),
-    .qe     (),
-    .q      (),
-    .ds     (),
-    .qs     (plat_owner_auth_slot3_digest_0_qs)
-  );
-
-
-  // Subregister 1 of Multireg plat_owner_auth_slot3_digest
-  // R[plat_owner_auth_slot3_digest_1]: V(True)
-  prim_subreg_ext #(
-    .DW    (32)
-  ) u_plat_owner_auth_slot3_digest_1 (
-    .re     (plat_owner_auth_slot3_digest_1_re),
-    .we     (1'b0),
-    .wd     ('0),
-    .d      (hw2reg.plat_owner_auth_slot3_digest[1].d),
-    .qre    (),
-    .qe     (),
-    .q      (),
-    .ds     (),
-    .qs     (plat_owner_auth_slot3_digest_1_qs)
-  );
-
-
   // Subregister 0 of Multireg rom_patch_digest
   // R[rom_patch_digest_0]: V(True)
   prim_subreg_ext #(
@@ -2848,6 +2813,40 @@ module otp_ctrl_core_reg_top (
     .q      (),
     .ds     (),
     .qs     (rom_patch_digest_1_qs)
+  );
+
+
+  // Subregister 0 of Multireg soc_fuses_digest
+  // R[soc_fuses_digest_0]: V(True)
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_soc_fuses_digest_0 (
+    .re     (soc_fuses_digest_0_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.soc_fuses_digest[0].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .ds     (),
+    .qs     (soc_fuses_digest_0_qs)
+  );
+
+
+  // Subregister 1 of Multireg soc_fuses_digest
+  // R[soc_fuses_digest_1]: V(True)
+  prim_subreg_ext #(
+    .DW    (32)
+  ) u_soc_fuses_digest_1 (
+    .re     (soc_fuses_digest_1_re),
+    .we     (1'b0),
+    .wd     ('0),
+    .d      (hw2reg.soc_fuses_digest[1].d),
+    .qre    (),
+    .qe     (),
+    .q      (),
+    .ds     (),
+    .qs     (soc_fuses_digest_1_qs)
   );
 
 
@@ -3113,9 +3112,9 @@ module otp_ctrl_core_reg_top (
     addr_hit[51] = (reg_addr == OTP_CTRL_PLAT_OWNER_AUTH_SLOT0_READ_LOCK_OFFSET);
     addr_hit[52] = (reg_addr == OTP_CTRL_PLAT_OWNER_AUTH_SLOT1_READ_LOCK_OFFSET);
     addr_hit[53] = (reg_addr == OTP_CTRL_PLAT_OWNER_AUTH_SLOT2_READ_LOCK_OFFSET);
-    addr_hit[54] = (reg_addr == OTP_CTRL_PLAT_OWNER_AUTH_SLOT3_READ_LOCK_OFFSET);
-    addr_hit[55] = (reg_addr == OTP_CTRL_EXT_NVM_READ_LOCK_OFFSET);
-    addr_hit[56] = (reg_addr == OTP_CTRL_ROM_PATCH_READ_LOCK_OFFSET);
+    addr_hit[54] = (reg_addr == OTP_CTRL_EXT_NVM_READ_LOCK_OFFSET);
+    addr_hit[55] = (reg_addr == OTP_CTRL_ROM_PATCH_READ_LOCK_OFFSET);
+    addr_hit[56] = (reg_addr == OTP_CTRL_SOC_FUSES_READ_LOCK_OFFSET);
     addr_hit[57] = (reg_addr == OTP_CTRL_VENDOR_TEST_DIGEST_0_OFFSET);
     addr_hit[58] = (reg_addr == OTP_CTRL_VENDOR_TEST_DIGEST_1_OFFSET);
     addr_hit[59] = (reg_addr == OTP_CTRL_CREATOR_SW_CFG_DIGEST_0_OFFSET);
@@ -3138,10 +3137,10 @@ module otp_ctrl_core_reg_top (
     addr_hit[76] = (reg_addr == OTP_CTRL_PLAT_OWNER_AUTH_SLOT1_DIGEST_1_OFFSET);
     addr_hit[77] = (reg_addr == OTP_CTRL_PLAT_OWNER_AUTH_SLOT2_DIGEST_0_OFFSET);
     addr_hit[78] = (reg_addr == OTP_CTRL_PLAT_OWNER_AUTH_SLOT2_DIGEST_1_OFFSET);
-    addr_hit[79] = (reg_addr == OTP_CTRL_PLAT_OWNER_AUTH_SLOT3_DIGEST_0_OFFSET);
-    addr_hit[80] = (reg_addr == OTP_CTRL_PLAT_OWNER_AUTH_SLOT3_DIGEST_1_OFFSET);
-    addr_hit[81] = (reg_addr == OTP_CTRL_ROM_PATCH_DIGEST_0_OFFSET);
-    addr_hit[82] = (reg_addr == OTP_CTRL_ROM_PATCH_DIGEST_1_OFFSET);
+    addr_hit[79] = (reg_addr == OTP_CTRL_ROM_PATCH_DIGEST_0_OFFSET);
+    addr_hit[80] = (reg_addr == OTP_CTRL_ROM_PATCH_DIGEST_1_OFFSET);
+    addr_hit[81] = (reg_addr == OTP_CTRL_SOC_FUSES_DIGEST_0_OFFSET);
+    addr_hit[82] = (reg_addr == OTP_CTRL_SOC_FUSES_DIGEST_1_OFFSET);
     addr_hit[83] = (reg_addr == OTP_CTRL_HW_CFG0_DIGEST_0_OFFSET);
     addr_hit[84] = (reg_addr == OTP_CTRL_HW_CFG0_DIGEST_1_OFFSET);
     addr_hit[85] = (reg_addr == OTP_CTRL_HW_CFG1_DIGEST_0_OFFSET);
@@ -3323,7 +3322,7 @@ module otp_ctrl_core_reg_top (
   assign direct_access_cmd_digest_wd = reg_wdata[2];
   assign direct_access_address_we = addr_hit[31] & reg_we & !reg_error;
 
-  assign direct_access_address_wd = reg_wdata[13:0];
+  assign direct_access_address_wd = reg_wdata[14:0];
   assign direct_access_wdata_0_we = addr_hit[32] & reg_we & !reg_error;
 
   assign direct_access_wdata_0_wd = reg_wdata[31:0];
@@ -3388,15 +3387,15 @@ module otp_ctrl_core_reg_top (
   assign plat_owner_auth_slot2_read_lock_we = addr_hit[53] & reg_we & !reg_error;
 
   assign plat_owner_auth_slot2_read_lock_wd = reg_wdata[0];
-  assign plat_owner_auth_slot3_read_lock_we = addr_hit[54] & reg_we & !reg_error;
-
-  assign plat_owner_auth_slot3_read_lock_wd = reg_wdata[0];
-  assign ext_nvm_read_lock_we = addr_hit[55] & reg_we & !reg_error;
+  assign ext_nvm_read_lock_we = addr_hit[54] & reg_we & !reg_error;
 
   assign ext_nvm_read_lock_wd = reg_wdata[0];
-  assign rom_patch_read_lock_we = addr_hit[56] & reg_we & !reg_error;
+  assign rom_patch_read_lock_we = addr_hit[55] & reg_we & !reg_error;
 
   assign rom_patch_read_lock_wd = reg_wdata[0];
+  assign soc_fuses_read_lock_we = addr_hit[56] & reg_we & !reg_error;
+
+  assign soc_fuses_read_lock_wd = reg_wdata[0];
   assign vendor_test_digest_0_re = addr_hit[57] & reg_re & !reg_error;
   assign vendor_test_digest_1_re = addr_hit[58] & reg_re & !reg_error;
   assign creator_sw_cfg_digest_0_re = addr_hit[59] & reg_re & !reg_error;
@@ -3419,10 +3418,10 @@ module otp_ctrl_core_reg_top (
   assign plat_owner_auth_slot1_digest_1_re = addr_hit[76] & reg_re & !reg_error;
   assign plat_owner_auth_slot2_digest_0_re = addr_hit[77] & reg_re & !reg_error;
   assign plat_owner_auth_slot2_digest_1_re = addr_hit[78] & reg_re & !reg_error;
-  assign plat_owner_auth_slot3_digest_0_re = addr_hit[79] & reg_re & !reg_error;
-  assign plat_owner_auth_slot3_digest_1_re = addr_hit[80] & reg_re & !reg_error;
-  assign rom_patch_digest_0_re = addr_hit[81] & reg_re & !reg_error;
-  assign rom_patch_digest_1_re = addr_hit[82] & reg_re & !reg_error;
+  assign rom_patch_digest_0_re = addr_hit[79] & reg_re & !reg_error;
+  assign rom_patch_digest_1_re = addr_hit[80] & reg_re & !reg_error;
+  assign soc_fuses_digest_0_re = addr_hit[81] & reg_re & !reg_error;
+  assign soc_fuses_digest_1_re = addr_hit[82] & reg_re & !reg_error;
   assign hw_cfg0_digest_0_re = addr_hit[83] & reg_re & !reg_error;
   assign hw_cfg0_digest_1_re = addr_hit[84] & reg_re & !reg_error;
   assign hw_cfg1_digest_0_re = addr_hit[85] & reg_re & !reg_error;
@@ -3493,9 +3492,9 @@ module otp_ctrl_core_reg_top (
     reg_we_check[51] = plat_owner_auth_slot0_read_lock_gated_we;
     reg_we_check[52] = plat_owner_auth_slot1_read_lock_gated_we;
     reg_we_check[53] = plat_owner_auth_slot2_read_lock_gated_we;
-    reg_we_check[54] = plat_owner_auth_slot3_read_lock_gated_we;
-    reg_we_check[55] = ext_nvm_read_lock_gated_we;
-    reg_we_check[56] = rom_patch_read_lock_gated_we;
+    reg_we_check[54] = ext_nvm_read_lock_gated_we;
+    reg_we_check[55] = rom_patch_read_lock_gated_we;
+    reg_we_check[56] = soc_fuses_read_lock_gated_we;
     reg_we_check[57] = 1'b0;
     reg_we_check[58] = 1'b0;
     reg_we_check[59] = 1'b0;
@@ -3576,9 +3575,9 @@ module otp_ctrl_core_reg_top (
         reg_rdata_next[9] = status_plat_owner_auth_slot0_error_qs;
         reg_rdata_next[10] = status_plat_owner_auth_slot1_error_qs;
         reg_rdata_next[11] = status_plat_owner_auth_slot2_error_qs;
-        reg_rdata_next[12] = status_plat_owner_auth_slot3_error_qs;
-        reg_rdata_next[13] = status_ext_nvm_error_qs;
-        reg_rdata_next[14] = status_rom_patch_error_qs;
+        reg_rdata_next[12] = status_ext_nvm_error_qs;
+        reg_rdata_next[13] = status_rom_patch_error_qs;
+        reg_rdata_next[14] = status_soc_fuses_error_qs;
         reg_rdata_next[15] = status_hw_cfg0_error_qs;
         reg_rdata_next[16] = status_hw_cfg1_error_qs;
         reg_rdata_next[17] = status_secret0_error_qs;
@@ -3704,7 +3703,7 @@ module otp_ctrl_core_reg_top (
       end
 
       addr_hit[31]: begin
-        reg_rdata_next[13:0] = direct_access_address_qs;
+        reg_rdata_next[14:0] = direct_access_address_qs;
       end
 
       addr_hit[32]: begin
@@ -3797,15 +3796,15 @@ module otp_ctrl_core_reg_top (
       end
 
       addr_hit[54]: begin
-        reg_rdata_next[0] = plat_owner_auth_slot3_read_lock_qs;
-      end
-
-      addr_hit[55]: begin
         reg_rdata_next[0] = ext_nvm_read_lock_qs;
       end
 
-      addr_hit[56]: begin
+      addr_hit[55]: begin
         reg_rdata_next[0] = rom_patch_read_lock_qs;
+      end
+
+      addr_hit[56]: begin
+        reg_rdata_next[0] = soc_fuses_read_lock_qs;
       end
 
       addr_hit[57]: begin
@@ -3897,19 +3896,19 @@ module otp_ctrl_core_reg_top (
       end
 
       addr_hit[79]: begin
-        reg_rdata_next[31:0] = plat_owner_auth_slot3_digest_0_qs;
-      end
-
-      addr_hit[80]: begin
-        reg_rdata_next[31:0] = plat_owner_auth_slot3_digest_1_qs;
-      end
-
-      addr_hit[81]: begin
         reg_rdata_next[31:0] = rom_patch_digest_0_qs;
       end
 
-      addr_hit[82]: begin
+      addr_hit[80]: begin
         reg_rdata_next[31:0] = rom_patch_digest_1_qs;
+      end
+
+      addr_hit[81]: begin
+        reg_rdata_next[31:0] = soc_fuses_digest_0_qs;
+      end
+
+      addr_hit[82]: begin
+        reg_rdata_next[31:0] = soc_fuses_digest_1_qs;
       end
 
       addr_hit[83]: begin

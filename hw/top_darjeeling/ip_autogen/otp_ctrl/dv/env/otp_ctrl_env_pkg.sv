@@ -39,7 +39,7 @@ package otp_ctrl_env_pkg;
   parameter uint NUM_EDN                 = 1;
 
   parameter uint DIGEST_SIZE             = 8;
-  parameter uint SW_WINDOW_BASE_ADDR     = 'h4000;
+  parameter uint SW_WINDOW_BASE_ADDR     = 'h8000;
   parameter uint SW_WINDOW_SIZE          = NumSwCfgWindowWords * 4;
 
   parameter uint TL_SIZE = (TL_DW / 8);
@@ -83,9 +83,9 @@ package otp_ctrl_env_pkg;
     PlatOwnerAuthSlot0Offset,
     PlatOwnerAuthSlot1Offset,
     PlatOwnerAuthSlot2Offset,
-    PlatOwnerAuthSlot3Offset,
     ExtNvmOffset,
     RomPatchOffset,
+    SocFusesOffset,
     HwCfg0Offset,
     HwCfg1Offset,
     Secret0Offset,
@@ -108,9 +108,9 @@ package otp_ctrl_env_pkg;
     PlatOwnerAuthSlot0DigestOffset >> 2,
     PlatOwnerAuthSlot1DigestOffset >> 2,
     PlatOwnerAuthSlot2DigestOffset >> 2,
-    PlatOwnerAuthSlot3DigestOffset >> 2,
     -1, // This partition does not have a digest.
     RomPatchDigestOffset >> 2,
+    SocFusesDigestOffset >> 2,
     HwCfg0DigestOffset >> 2,
     HwCfg1DigestOffset >> 2,
     Secret0DigestOffset >> 2,
@@ -139,9 +139,9 @@ package otp_ctrl_env_pkg;
     OtpPlatOwnerAuthSlot0ErrIdx,
     OtpPlatOwnerAuthSlot1ErrIdx,
     OtpPlatOwnerAuthSlot2ErrIdx,
-    OtpPlatOwnerAuthSlot3ErrIdx,
     OtpExtNvmErrIdx,
     OtpRomPatchErrIdx,
+    OtpSocFusesErrIdx,
     OtpHwCfg0ErrIdx,
     OtpHwCfg1ErrIdx,
     OtpSecret0ErrIdx,

@@ -12,7 +12,7 @@ package prim_otp_cfg_pkg;
   parameter  int FUSE_NUM_MBIST_ARRAYS             = 1;   // (neal) default is 1 for otp; but only mbist to nsefuse
   parameter  int FUSE_RF_DATA_WIDTH                = 8;
   // tsmc fuse macro wrapper parameters
-  parameter  int FUSE_NUM_ARRAYS                   = 16;   // (neal) default is the value we want for otp_ctrl
+  parameter  int FUSE_NUM_ARRAYS                   = 20;  // (neal) default is the value we want for otp_ctrl
   parameter  int FUSE_ADDR_WIDTH                   = 13;
   parameter  int FUSE_TEST_ADDR_WIDTH              = 2;
   parameter  int FUSE_DATA_WIDTH                   = 32;

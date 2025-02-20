@@ -755,12 +755,12 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
             sw_read_lock = `gmv(ral.plat_owner_auth_slot1_read_lock) == 0;
           end else if (part_idx == PlatOwnerAuthSlot2Idx) begin
             sw_read_lock = `gmv(ral.plat_owner_auth_slot2_read_lock) == 0;
-          end else if (part_idx == PlatOwnerAuthSlot3Idx) begin
-            sw_read_lock = `gmv(ral.plat_owner_auth_slot3_read_lock) == 0;
           end else if (part_idx == ExtNvmIdx) begin
             sw_read_lock = `gmv(ral.ext_nvm_read_lock) == 0;
           end else if (part_idx == RomPatchIdx) begin
             sw_read_lock = `gmv(ral.rom_patch_read_lock) == 0;
+          end else if (part_idx == SocFusesIdx) begin
+            sw_read_lock = `gmv(ral.soc_fuses_read_lock) == 0;
           end
 
           // LC partition cannot be access via DAI
@@ -1236,8 +1236,8 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
       "plat_owner_auth_slot0_digest_0", "plat_owner_auth_slot0_digest_1",
       "plat_owner_auth_slot1_digest_0", "plat_owner_auth_slot1_digest_1",
       "plat_owner_auth_slot2_digest_0", "plat_owner_auth_slot2_digest_1",
-      "plat_owner_auth_slot3_digest_0", "plat_owner_auth_slot3_digest_1",
       "rom_patch_digest_0", "rom_patch_digest_1",
+      "soc_fuses_digest_0", "soc_fuses_digest_1",
       "hw_cfg0_digest_0", "hw_cfg0_digest_1",
       "hw_cfg1_digest_0", "hw_cfg1_digest_1",
       "secret0_digest_0", "secret0_digest_1",
@@ -1258,9 +1258,9 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
       "plat_owner_auth_slot0_read_lock",
       "plat_owner_auth_slot1_read_lock",
       "plat_owner_auth_slot2_read_lock",
-      "plat_owner_auth_slot3_read_lock",
       "ext_nvm_read_lock",
       "rom_patch_read_lock",
+      "soc_fuses_read_lock",
       "direct_access_wdata_0",
       "direct_access_wdata_1",
       "direct_access_address",
@@ -1493,18 +1493,18 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
           .value(otp_a[PART_OTP_DIGEST_ADDRS[PlatOwnerAuthSlot2Idx] + 1]),
           .kind(UVM_PREDICT_DIRECT)));
 
-    void'(ral.plat_owner_auth_slot3_digest[0].predict(
-          .value(otp_a[PART_OTP_DIGEST_ADDRS[PlatOwnerAuthSlot3Idx]]),
-          .kind(UVM_PREDICT_DIRECT)));
-    void'(ral.plat_owner_auth_slot3_digest[1].predict(
-          .value(otp_a[PART_OTP_DIGEST_ADDRS[PlatOwnerAuthSlot3Idx] + 1]),
-          .kind(UVM_PREDICT_DIRECT)));
-
     void'(ral.rom_patch_digest[0].predict(
           .value(otp_a[PART_OTP_DIGEST_ADDRS[RomPatchIdx]]),
           .kind(UVM_PREDICT_DIRECT)));
     void'(ral.rom_patch_digest[1].predict(
           .value(otp_a[PART_OTP_DIGEST_ADDRS[RomPatchIdx] + 1]),
+          .kind(UVM_PREDICT_DIRECT)));
+
+    void'(ral.soc_fuses_digest[0].predict(
+          .value(otp_a[PART_OTP_DIGEST_ADDRS[SocFusesIdx]]),
+          .kind(UVM_PREDICT_DIRECT)));
+    void'(ral.soc_fuses_digest[1].predict(
+          .value(otp_a[PART_OTP_DIGEST_ADDRS[SocFusesIdx] + 1]),
           .kind(UVM_PREDICT_DIRECT)));
 
     void'(ral.hw_cfg0_digest[0].predict(
@@ -1774,13 +1774,13 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
         digest = {`gmv(ral.plat_owner_auth_slot2_digest[1]),
                   `gmv(ral.plat_owner_auth_slot2_digest[0])};
       end
-      PlatOwnerAuthSlot3Idx: begin
-        digest = {`gmv(ral.plat_owner_auth_slot3_digest[1]),
-                  `gmv(ral.plat_owner_auth_slot3_digest[0])};
-      end
       RomPatchIdx: begin
         digest = {`gmv(ral.rom_patch_digest[1]),
                   `gmv(ral.rom_patch_digest[0])};
+      end
+      SocFusesIdx: begin
+        digest = {`gmv(ral.soc_fuses_digest[1]),
+                  `gmv(ral.soc_fuses_digest[0])};
       end
       HwCfg0Idx: begin
         digest = {`gmv(ral.hw_cfg0_digest[1]),
@@ -2017,21 +2017,6 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
           return 0;
         end
       end
-      if (`gmv(ral.plat_owner_auth_slot3_read_lock) == 0 ||
-          cfg.otp_ctrl_vif.under_error_states()) begin
-        if (addr inside {
-            [cfg.ral_models[ral_name].mem_ranges[0].start_addr + PlatOwnerAuthSlot3Offset :
-             cfg.ral_models[ral_name].mem_ranges[0].start_addr + PlatOwnerAuthSlot3Offset +
-             PlatOwnerAuthSlot3Size - 1]}) begin
-          predict_err(OtpPlatOwnerAuthSlot3ErrIdx, OtpAccessError);
-          custom_err = 1;
-          if (cfg.en_cov) begin
-            cov.unbuf_access_lock_cg_wrap[PlatOwnerAuthSlot3Idx].sample(.read_lock(1),
-                .write_lock(get_digest_reg_val(PlatOwnerAuthSlot3Idx) != 0), .is_write(0));
-          end
-          return 0;
-        end
-      end
       if (`gmv(ral.ext_nvm_read_lock) == 0 ||
           cfg.otp_ctrl_vif.under_error_states()) begin
         if (addr inside {
@@ -2060,6 +2045,21 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
           if (cfg.en_cov) begin
             cov.unbuf_access_lock_cg_wrap[RomPatchIdx].sample(.read_lock(1),
                 .write_lock(get_digest_reg_val(RomPatchIdx) != 0), .is_write(0));
+          end
+          return 0;
+        end
+      end
+      if (`gmv(ral.soc_fuses_read_lock) == 0 ||
+          cfg.otp_ctrl_vif.under_error_states()) begin
+        if (addr inside {
+            [cfg.ral_models[ral_name].mem_ranges[0].start_addr + SocFusesOffset :
+             cfg.ral_models[ral_name].mem_ranges[0].start_addr + SocFusesOffset +
+             SocFusesSize - 1]}) begin
+          predict_err(OtpSocFusesErrIdx, OtpAccessError);
+          custom_err = 1;
+          if (cfg.en_cov) begin
+            cov.unbuf_access_lock_cg_wrap[SocFusesIdx].sample(.read_lock(1),
+                .write_lock(get_digest_reg_val(SocFusesIdx) != 0), .is_write(0));
           end
           return 0;
         end

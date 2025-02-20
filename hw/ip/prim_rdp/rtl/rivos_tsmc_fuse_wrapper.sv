@@ -1490,7 +1490,12 @@ RDP_FIFOR_ASYNC
             next_fuse_data_out[0] = fuse_data[fuse_array_sel][0];  
           end
           else begin
-            next_fuse_data_out[0] = fuse_ecc_data[fuse_ecc_array_sel][0];
+            if (FUSE_NUM_ECC_ARRAYS>1) begin 
+              next_fuse_data_out[0] = fuse_ecc_data[fuse_ecc_array_sel][0];
+            end
+            else begin
+              next_fuse_data_out[0] = fuse_ecc_data[0][0];
+            end
           end
         end
         else begin                                    // 2nd test column selected
@@ -1498,7 +1503,12 @@ RDP_FIFOR_ASYNC
             next_fuse_data_out[0] = fuse_data[fuse_array_sel][31];  
           end
           else begin
-            next_fuse_data_out[0] = fuse_ecc_data[fuse_ecc_array_sel][31];
+            if (FUSE_NUM_ECC_ARRAYS>1) begin 
+              next_fuse_data_out[0] = fuse_ecc_data[fuse_ecc_array_sel][31];
+            end
+            else begin
+              next_fuse_data_out[0] = fuse_ecc_data[0][31];
+            end
           end
         end
       end

@@ -294,13 +294,13 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
       `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
       dai_wr(PlatOwnerAuthSlot2DigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
     end
-    if (wr_digest[PlatOwnerAuthSlot3Idx]) begin
-      `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
-      dai_wr(PlatOwnerAuthSlot3DigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
-    end
     if (wr_digest[RomPatchIdx]) begin
       `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
       dai_wr(RomPatchDigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
+    end
+    if (wr_digest[SocFusesIdx]) begin
+      `DV_CHECK_STD_RANDOMIZE_FATAL(wdata);
+      dai_wr(SocFusesDigestOffset, wdata[TL_DW-1:0], wdata[TL_DW*2-1:TL_DW]);
     end
   endtask
 
@@ -317,9 +317,9 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     if (do_rd_lock[PlatOwnerAuthSlot0Idx]) csr_wr(ral.plat_owner_auth_slot0_read_lock, 0);
     if (do_rd_lock[PlatOwnerAuthSlot1Idx]) csr_wr(ral.plat_owner_auth_slot1_read_lock, 0);
     if (do_rd_lock[PlatOwnerAuthSlot2Idx]) csr_wr(ral.plat_owner_auth_slot2_read_lock, 0);
-    if (do_rd_lock[PlatOwnerAuthSlot3Idx]) csr_wr(ral.plat_owner_auth_slot3_read_lock, 0);
     if (do_rd_lock[ExtNvmIdx]) csr_wr(ral.ext_nvm_read_lock, 0);
     if (do_rd_lock[RomPatchIdx]) csr_wr(ral.rom_patch_read_lock, 0);
+    if (do_rd_lock[SocFusesIdx]) csr_wr(ral.soc_fuses_read_lock, 0);
   endtask
 
   // The digest CSR values are verified in otp_ctrl_scoreboard
@@ -347,10 +347,10 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     csr_rd(.ptr(ral.plat_owner_auth_slot1_digest[1]), .value(val));
     csr_rd(.ptr(ral.plat_owner_auth_slot2_digest[0]), .value(val));
     csr_rd(.ptr(ral.plat_owner_auth_slot2_digest[1]), .value(val));
-    csr_rd(.ptr(ral.plat_owner_auth_slot3_digest[0]), .value(val));
-    csr_rd(.ptr(ral.plat_owner_auth_slot3_digest[1]), .value(val));
     csr_rd(.ptr(ral.rom_patch_digest[0]), .value(val));
     csr_rd(.ptr(ral.rom_patch_digest[1]), .value(val));
+    csr_rd(.ptr(ral.soc_fuses_digest[0]), .value(val));
+    csr_rd(.ptr(ral.soc_fuses_digest[1]), .value(val));
     csr_rd(.ptr(ral.hw_cfg0_digest[0]), .value(val));
     csr_rd(.ptr(ral.hw_cfg0_digest[1]), .value(val));
     csr_rd(.ptr(ral.hw_cfg1_digest[0]), .value(val));
@@ -429,15 +429,15 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
           !$urandom_range(0, 4)) begin
         forced_mubi_part_access[PlatOwnerAuthSlot2Idx].write_lock = 1;
       end
-      if ((`gmv(ral.plat_owner_auth_slot3_digest[0]) ||
-           `gmv(ral.plat_owner_auth_slot3_digest[1])) &&
-          !$urandom_range(0, 4)) begin
-        forced_mubi_part_access[PlatOwnerAuthSlot3Idx].write_lock = 1;
-      end
       if ((`gmv(ral.rom_patch_digest[0]) ||
            `gmv(ral.rom_patch_digest[1])) &&
           !$urandom_range(0, 4)) begin
         forced_mubi_part_access[RomPatchIdx].write_lock = 1;
+      end
+      if ((`gmv(ral.soc_fuses_digest[0]) ||
+           `gmv(ral.soc_fuses_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[SocFusesIdx].write_lock = 1;
       end
       if ((`gmv(ral.hw_cfg0_digest[0]) ||
            `gmv(ral.hw_cfg0_digest[1])) &&
@@ -507,14 +507,14 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
       if ((`gmv(ral.plat_owner_auth_slot2_read_lock) == 0) && !$urandom_range(0, 4)) begin
         forced_mubi_part_access[PlatOwnerAuthSlot2Idx].read_lock = 1;
       end
-      if ((`gmv(ral.plat_owner_auth_slot3_read_lock) == 0) && !$urandom_range(0, 4)) begin
-        forced_mubi_part_access[PlatOwnerAuthSlot3Idx].read_lock = 1;
-      end
       if ((`gmv(ral.ext_nvm_read_lock) == 0) && !$urandom_range(0, 4)) begin
         forced_mubi_part_access[ExtNvmIdx].read_lock = 1;
       end
       if ((`gmv(ral.rom_patch_read_lock) == 0) && !$urandom_range(0, 4)) begin
         forced_mubi_part_access[RomPatchIdx].read_lock = 1;
+      end
+      if ((`gmv(ral.soc_fuses_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[SocFusesIdx].read_lock = 1;
       end
 
 
