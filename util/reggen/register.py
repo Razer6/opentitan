@@ -98,7 +98,16 @@ OPTIONAL_FIELDS = {
     'writes_ignore_errors': [
         'b',
         "This register may update on a TL write that causes an error response."
-    ]
+    ],
+    # FIXME: Temporary Rivos fix to allow Rivos generated HJSONs to be parsed with upstream tooling
+    'rvs_reset': [
+        's',
+        "Additional reset."
+    ],
+    'rvs_racl': [
+        's',
+        "Old RACL."
+    ],
 }
 
 
