@@ -5,7 +5,6 @@
 r"""Top Module Generator
 """
 import argparse
-import filecmp
 import logging as log
 import shutil
 import sys
@@ -952,13 +951,6 @@ def amend_reset_connections(topcfg: Dict[str, object]):
         _amend_block_reset_connections(xbar, default_power_domain)
 
 
-def _dump_cfg(path: Path, cfg: Dict[str, object]):
-    text = hjson.dumps(cfg, for_json=True, default=vars) + '\n'
-    text_length = len(text)
-    log.info(f'will dump {path} with {text_length} bytes')
-    path.write_text(text)
-
-
 def create_generic_ip_blocks(topcfg: Dict[str, object],
                              alias_cfgs: Dict[str,
                                               Dict[str,
@@ -1537,21 +1529,22 @@ def main():
 
     topname = topcfg["name"]
     cfg_copy = deepcopy(topcfg)
+    cfg_last_dump = None
     for pass_idx in range(maximum_passes):
         log.info("Generation pass {}".format(pass_idx + 1))
         # Use the same seed for each pass to have stable random constants.
         secure_prng.reseed(topcfg["rnd_cnst_seed"])
         completecfg, name_to_block, name_to_hjson = _process_top(
             cfg_copy, args, cfg_path, out_path_gen, alias_cfgs)
-        dump_path = Path(f"/tmp/top{topname}cfg_{pass_idx}.hjson")
-        _dump_cfg(dump_path, completecfg)
-        if pass_idx > 0 and filecmp.cmp(
-                f"/tmp/top{topname}cfg_{pass_idx}.hjson",
-                "/tmp/top{}cfg_{}.hjson".format(topname, pass_idx),
-                shallow=False):
+        # Delete config path before dumping, not needed
+        del completecfg["cfg_path"]
+        cfg_dump = hjson.dumps(completecfg, for_json=True, default=vars)
+        if pass_idx > 0 and cfg_dump == cfg_last_dump:
             log.info("process_top converged after {} passes".format(pass_idx +
                                                                     1))
             break
+        else:
+            cfg_last_dump = cfg_dump
         cfg_copy = completecfg
     else:
         log.error("Too many process_top passes without convergence")
