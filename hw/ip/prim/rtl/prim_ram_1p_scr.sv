@@ -301,7 +301,7 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   assign keystream_repl = Width'({NumParKeystr{keystream}});
 
   // Delay the keystream when data comes in delayed due to a flopped output
-  if (FlopRamOutput) begin
+  if (FlopRamOutput) begin : gen_flop_keystream
     prim_flop_en #(
       .Width(Width),
       .ResetValue(0)
@@ -312,7 +312,7 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
       .d_i(keystream_repl),
       .q_o(keystream_repl_q)
     );
-  end else begin
+  end else begin : gen_no_flop_keystream
     logic unused_signals;
     assign unused_signals = keystream_valid;
     assign keystream_repl_q = keystream_repl;
