@@ -1,4 +1,4 @@
-// Copyright lowRISC contributors (OpenTitan project).
+// Copyright lowRISC contributors.
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
 //
@@ -108,7 +108,7 @@
             name:       "CREATOR_SW_CFG",
             variant:    "Unbuffered",
             absorb:     false,
-            size:       "320", // in bytes
+            size:       "336", // in bytes
             secret:     false,
             sw_digest:  true,
             hw_digest:  false,
@@ -119,8 +119,164 @@
             bkout_type: false, // Do not generate a breakout type for this partition.
             items: [
                 {
+                    name: "CREATOR_SW_CFG_DIO_ATTR",
+                    size: "76",
+                    desc: '''Pinmux DIO Pads Configuration
+                          There are 73 DIO pads, and because we want to align
+                          those 73 bytes on a 32-bit word without affecting the
+                          rest of the partition, we added some padding with 3
+                          extra bytes at the end.
+                          This alignment requirement comes from OTP which only
+                          accepts 32-bit accesses.
+
+                          Each byte is described as follows:
+                          0: pull-up enable
+                          1: pull-down enable
+                          2: schmitt trigger enable
+                          3: reserved
+                          4-6: drive strength
+                          7: override enable
+
+                          List of bytes
+                          0: SpiHost0Sd0
+                          1: SpiHost0Sd1
+                          2: SpiHost0Sd2
+                          3: SpiHost0Sd3
+                          4: SpiDeviceSd0
+                          5: SpiDeviceSd1
+                          6: SpiDeviceSd2
+                          7: SpiDeviceSd3
+                          8: I2c0Scl
+                          9: I2c0Sda
+                          10: GpioGpio0
+                          11: GpioGpio1
+                          12: GpioGpio2
+                          13: GpioGpio3
+                          14: GpioGpio4
+                          15: GpioGpio5
+                          16: GpioGpio6
+                          17: GpioGpio7
+                          18: GpioGpio8
+                          19: GpioGpio9
+                          20: GpioGpio10
+                          21: GpioGpio11
+                          22: GpioGpio12
+                          23: GpioGpio13
+                          24: GpioGpio14
+                          25: GpioGpio15
+                          26: GpioGpio16
+                          27: GpioGpio17
+                          28: GpioGpio18
+                          29: GpioGpio19
+                          30: GpioGpio20
+                          31: GpioGpio21
+                          32: GpioGpio22
+                          33: GpioGpio23
+                          34: GpioGpio24
+                          35: GpioGpio25
+                          36: GpioGpio26
+                          37: GpioGpio27
+                          38: GpioGpio28
+                          39: GpioGpio29
+                          40: GpioGpio30
+                          41: GpioGpio31
+                          42: SpiDeviceSck
+                          43: SpiDeviceCsb
+                          44: SpiDeviceTpmCsb
+                          45: Uart0Rx
+                          46: SocProxySocGpi0
+                          47: SocProxySocGpi1
+                          48: SocProxySocGpi2
+                          49: SocProxySocGpi3
+                          50: SocProxySocGpi4
+                          51: SocProxySocGpi5
+                          52: SocProxySocGpi6
+                          53: SocProxySocGpi7
+                          54: SocProxySocGpi8
+                          55: SocProxySocGpi9
+                          56: SocProxySocGpi10
+                          57: SocProxySocGpi11
+                          58: SpiHost0Sck
+                          59: SpiHost0Csb
+                          60: Uart0Tx
+                          61: SocProxySocGpo0
+                          62: SocProxySocGpo1
+                          63: SocProxySocGpo2
+                          64: SocProxySocGpo3
+                          65: SocProxySocGpo4
+                          66: SocProxySocGpo5
+                          67: SocProxySocGpo6
+                          68: SocProxySocGpo7
+                          69: SocProxySocGpo8
+                          70: SocProxySocGpo9
+                          71: SocProxySocGpo10
+                          72: SocProxySocGpo11
+                          
+                          The last 3 bytes are only for padding.
+                    '''
+                }
+                {
                     name: "CREATOR_SW_CFG_AST_CFG",
-                    size: "124"
+                    size: "20"
+                }
+                {
+                    name: "CREATOR_SW_CFG_AST_SPARES",
+                    size: "14"
+                }
+                {  
+                    name: "CREATOR_SW_CFG_AST_AVGSFUSECTL"
+                    size: "4"
+                    desc: ''' Voltage Glitch Monitor Circuit Trim
+                          configuration written to the following regsiters by boot ROM:
+                          https://gitlab.ba.rivosinc.com/rv/si/int/rvsys/-/blob/rivos/main/rvscs/rtl/ip/ams_ip_wrapper/data/ams_ip_wrapper.hjson?ref_type=heads#L285
+                    '''
+                }
+                {  
+                    name: "CREATOR_SW_CFG_AST_AVGSHDRCFG"
+                    size: "3"
+                    desc: '''More Voltage Glitch Monitor Circuit Settings
+                          written to the following regsiters by boot ROM:
+                          https://gitlab.ba.rivosinc.com/rv/si/int/rvsys/-/blob/rivos/main/rvscs/rtl/ip/ams_ip_wrapper/data/ams_ip_wrapper.hjson?ref_type=heads#L334
+                    '''
+                }
+                {  
+                    name: "CREATOR_SW_CFG_AST_RINGOSC_TRIM_CTL"
+                    size: "1"
+                    desc: '''Clock Ring oscillator Circuit Settings
+                          written to the following regsiters by boot ROM:
+                          https://gitlab.ba.rivosinc.com/rv/si/int/rvsys/-/blob/rivos/main/rvscs/rtl/ip/ams_ip_wrapper/data/ams_ip_wrapper.hjson?ref_type=heads#L62
+                    '''
+                }
+                {  
+                    name: "CREATOR_SW_CFG_AST_RINGOSC_FREQ_COUNT_CTL"
+                    size: "2"
+                    desc: '''Clock Ring oscillator Circuit Settings
+                          (control the frequency counter for RO vs REFCLK
+                           i.e. setting the sampling window
+                          1 enable bit, 11 limit bits)
+                          written to the following regsiters by boot ROM:
+                          https://gitlab.ba.rivosinc.com/rv/si/int/rvsys/-/blob/rivos/main/rvscs/rtl/ip/ams_ip_wrapper/data/ams_ip_wrapper.hjson?ref_type=heads#L134
+                    '''
+                }
+                {  
+                    name: "CREATOR_SW_CFG_AST_RINGOSC_FREQ_TH_SLOW"
+                    size: "2"
+                    desc: '''Clock Ring oscillator Circuit Settings
+                          (Frequency Threshold SLOW --> The refclk 
+                           lower limit count within the sampling window)
+                          written to the following regsiters by boot ROM:
+                          https://gitlab.ba.rivosinc.com/rv/si/int/rvsys/-/blob/rivos/main/rvscs/rtl/ip/ams_ip_wrapper/data/ams_ip_wrapper.hjson?ref_type=heads#L86
+                    '''
+                }
+                {  
+                    name: "CREATOR_SW_CFG_AST_RINGOSC_FREQ_TH_FAST"
+                    size: "2"
+                    desc: '''Clock Ring oscillator Circuit Settings
+                          (Frequency Threshold Fast --> The refclk 
+                           upper limit count within the sampling window)
+                          written to the following regsiters by boot ROM:
+                          https://gitlab.ba.rivosinc.com/rv/si/int/rvsys/-/blob/rivos/main/rvscs/rtl/ip/ams_ip_wrapper/data/ams_ip_wrapper.hjson?ref_type=heads#L110
+                    '''
                 }
                 {
                     name: "CREATOR_SW_CFG_AST_INIT_EN",
@@ -129,6 +285,97 @@
                 {
                     name: "CREATOR_SW_CFG_OVERRIDES",
                     size: "32"
+                }
+                {
+                    name: "CREATOR_SW_CFG_ROM_PERMISSIVE_SECURITY",
+                    size: "4",
+                    desc: '''Silicon Creator chicken bits for the ROM.
+                          Chicken bits allow Silicon Creators to enable or
+                          disable specific features or functionalities as a
+                          precaution or a workaround.
+                          This 32-bit word is free to use by vendors to define
+                          their own chicken bits, and managed them from vendor
+                          specific hooks.
+
+                          The Rivos-defined chicken bits for GA0 are described
+                          below:
+                          0: Enable secure boot. Secure boot is enabled iff
+                             this bit is set. OTBN is not loaded with any code
+                             when this bit is not set.
+                          1: Signature generation. Asset signatures are
+                             generated iff this bit and the secure boot ones
+                             are set.
+                          2: Signature verification. Asset signatures are
+                             verified iff this bit, the signature generation and
+                             the secure boot bits are set.
+                          3: External assets verification. Assets from external
+                             flash are verified iff this bit, both the secure
+                             signature verification and validation, and the secure
+                             boot bits are all set.
+                          4: Shared SRAM memory repair. The SCS shared SRAM memory
+                             is repaired iff this bit is not set.
+                          5: D2D East SRAM memory repair. The D2D East SRAM memory
+                             is repaired iff this bit is not set.
+                          6: SPI flash memory reset. The SPI flash memory RESET pin
+                             is toggled at the end of the second ROM preamble iff
+                             this bit is not set.
+                          7-31: reserved
+                    '''
+                }
+                {
+                    name: "CREATOR_SW_CFG_BOOTSTRAP_FW_OWNERS_MASK",
+                    size: "4",
+                    desc: '''Bootstrap firmware owners' mask
+                          Allowed and required lists of owners associated with
+                          the signature of the bootstrap firmware bundle.
+
+                          Contains two masks, one for the allowed owners, which
+                          means the list of owners that can sign the bundle, and
+                          another one for the required owners, which means the
+                          list of owners that must sign the bundle.
+                          
+                          This is distributed over a 32-bit word described as
+                          follows:
+                          0-3: Allowed list of owners
+                          4-7: Required list of owners
+                          8-31: reserved
+
+                          Each bit of each 4-bit field (allowed or required) is
+                          associated with a distinct owner, shifted according to
+                          its value.
+                          Given the key owner `Silicon Creator` is represented
+                          by 0, the owners' mask that represents this owner for
+                          both allowed and required lists would be 0b00010001
+                          (17 in decimal).
+                    '''
+                }
+                {
+                    name: "CREATOR_SW_CFG_ROM_EXT_OWNERS_MASK",
+                    size: "4",
+                    desc: '''ROM extension owners' mask
+                          Allowed and required lists of owners associated with
+                          the signature of the ROM extension partition/bundle.
+
+                          Contains two masks, one for the allowed owners, which
+                          means the list of owners that can sign the bundle, and
+                          another one for the required owners, which means the
+                          list of owners that must sign the bundle.
+                          
+                          This is distributed over a 32-bit word described as
+                          follows:
+                          0-3: Allowed list of owners
+                          4-7: Required list of owners
+                          8-31: reserved
+
+                          Each bit of each 4-bit field (allowed or required) is
+                          associated with a distinct owner, shifted according to
+                          its value.
+                          Given the key owner `Silicon Creator` is represented
+                          by 0 and the key owner `Platform Owner` is represented
+                          by 3, the owners' mask that represents both of these
+                          owners for both allowed and required lists would be
+                          0b10011001 (153 in decimal).
+                    '''
                 }
                 {
                     name: "CREATOR_SW_CFG_ROM_EXT_SKU",
@@ -427,6 +674,7 @@
             name:       "ROT_CREATOR_AUTH",
             variant:    "Unbuffered",
             absorb:     false,
+            size:       "1424", // TODO: remove this forced size after GA0
             secret:     false,
             sw_digest:  true,
             hw_digest:  false,
@@ -437,67 +685,109 @@
             bkout_type: false,
             items: [
                 {
+                    name: "ROT_CREATOR_AUTH_NON_RAW_MFW_CODESIGN_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "ROT_CREATOR_AUTH_NON_RAW_MFW_CODESIGN_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "ROT_CREATOR_AUTH_NON_RAW_MFW_CODESIGN_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the manufacturing provisioning Software container
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    It is expected to be provisioned at Chip Probe stage when LC = TEST
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify manufacturing and debug firmware images.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Final Test (FT) stage when LC = TEST_UNLOCKED.
+                    Together with the ROM2_PATCH_SIGVERIFY_KEY and KEYMANIFEST_KEY keys, and their
+                    associated device ID and metadata (stored in resp. KEY_DEVICE_ID and KEY_METADATA),
+                    this key is signed with a Silicon Creator endorsed ECDSA P-256 key in order to protect
+                    it from supply-chain and manufacturing attacks.
                     '''
                 }
                 {
-                    name: "ROT_CREATOR_AUTH_OWNERSHIP_STATE",
+                    name: "ROT_CREATOR_AUTH_ROM2_PATCH_SIGVERIFY_KEY_TYPE",
                     size: "4"
-                    desc: ''' Creator Ownership transfer state management
-                    UNLOCKED - ownership of ROT not yet claimed
-                    LOCKED   - ownership claimed and
-                    RELEASED - Release ownership (assets have been cleared, ready to xfer)
-                    '''
+                }
+                {
+                    name: "ROT_CREATOR_AUTH_ROM2_PATCH_SIGVERIFY_KEY_ROLE",
+                    size: "4"
                 }
                 {
                     name: "ROT_CREATOR_AUTH_ROM2_PATCH_SIGVERIFY_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROM2 OTP based patch
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    It is expected to be provisioned at Chip Probe stage when LC = TEST
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
-                            OTP based key (instead of ROM) facilitates easy key rotation
+                    size: "64"
+                    desc: ''' Public Key used to verify the ROM2 OTP based patch.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Final Test (FT) stage when LC = TEST_UNLOCKED.
+                    Together with the NON_RAW_MFW_CODESIGN_KEY and KEYMANIFEST_KEY keys, and their
+                    associated device ID and metadata (stored in resp. KEY_DEVICE_ID and KEY_METADATA),
+                    this key is signed with a Silicon Creator endorsed ECDSA P-256 key in order to protect
+                    it from supply-chain and manufacturing attacks.
                     '''
+                }
+                {
+                    name: "ROT_CREATOR_AUTH_KEYMANIFEST_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "ROT_CREATOR_AUTH_KEYMANIFEST_KEY_ROLE",
+                    size: "4"
                 }
                 {
                     name: "ROT_CREATOR_AUTH_KEYMANIFEST_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT CREATOR KEY MANIFEST.
-                    KM is used to provisioning additional keys in (external) flash
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    It is expected to be provisioned at Chip Probe stage when LC = TEST
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the RoT Creator (a.k.a. Silicon Creator) Key Manifest.
+                    Key Type: ECC NIST-P256 Curve.
+                    Together with the ROM2_PATCH_SIGVERIFY_KEY and NON_RAW_MFW_CODESIGN_KEY keys, and their
+                    associated device ID and metadata (stored in resp. KEY_DEVICE_ID and KEY_METADATA),
+                    this key is signed with a Silicon Creator endorsed ECDSA P-256 key in order to protect
+                    it from supply-chain and manufacturing attacks.
                     '''
                 }
                 {
-                    name: "ROT_CREATOR_AUTH_UNLOCK4XFER_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT CREATOR KEY MANIFEST.
-                    Used to authenticate the Unlock Ownership payload. Key Type: ECC NIST-P384 Curve.
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    Can be made part bound i.e. unique per part key cert
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    name: "ROT_CREATOR_AUTH_KEY_DEVICE_ID",
+                    size: "32"
+                }
+                {
+                    name: "ROT_CREATOR_AUTH_KEY_METADATA",
+                    size: "16"
+                }
+                {
+                    name: "ROT_CREATOR_AUTH_KEY_SIGNATURE",
+                    size: "64"
+                    desc: ''' ECDSA P-256 signature of the NON_RAW_MFW_CODESIGN_KEY,
+                    ROM2_PATCH_SIGVERIFY_KEY, KEYMANIFEST_KEY, KEY_DEVICE_ID and KEY_METADATA fields in
+                    this partition.
+                    As those three keys are expected to be provisioned at Final Test (FT) stage when
+                    LC = TEST_UNLOCKED, this signatures aims at protecting them from supply-chain and
+                    manufacturing attacks.
+                    ROM images must include the corresponding signing key in order to verify all three
+                    signatures.
                     '''
                 }
                 {
                     name: "ROT_CREATOR_AUTH_IDENTITY_CERT",
                     size: "768"
-                    desc: ''' ROT Device Identity Certificate endorsed by Silicon Creator stable off device PKI
+                    desc: ''' RoT Device Identity Certificate endorsed by the Silicon Creator stable PKI (off device).
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
+                    '''
+                }
+                {
+                    name: "ROT_CREATOR_AUTH_IDENTITY_CERT_CMAC",
+                    size: "16"
+                    desc: ''' A Cipher-based MAC for the RoT Device Identity Certificate.
                     '''
                 }
             ],
-            desc: '''Software managed creator partition.
+            desc: '''Software managed RoT Creator partition.
             '''
         }
         {
             name:       "ROT_OWNER_AUTH_SLOT0",
             variant:    "Unbuffered",
             absorb:     false,
+            size:       "328", // TODO: remove this forced size after GA0
             secret:     false,
             sw_digest:  true,
             hw_digest:  false,
@@ -508,33 +798,50 @@
             bkout_type: false,
             items: [
                 {
+                    name: "ROT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "ROT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "ROT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    KM is used to provisioning additional keys in (external) flash
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    It is expected to be provisioned at Chip Probe stage when LC = TEST
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the RoT Owner (a.k.a. Silicon Owner) Key Manifest.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
                 {
+                    name: "ROT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "ROT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "ROT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    Used to authenticate the Unlock Ownership payload. Key Type: ECC NIST-P384 Curve.
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    Can be made part bound i.e. unique per part key cert
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the RoT Owner Unlock Ownership firmware image.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
             ],
-            desc: '''Software managed owner slot 0 partition.
+            desc: '''Software managed RoT Owner slot 0 partition.
             '''
         }
         {
             name:       "ROT_OWNER_AUTH_SLOT1",
             variant:    "Unbuffered",
             absorb:     false,
+            size:       "328", // TODO: remove this forced size after GA0
             secret:     false,
             sw_digest:  true,
             hw_digest:  false,
@@ -545,33 +852,50 @@
             bkout_type: false,
             items: [
                 {
+                    name: "ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    KM is used to provisioning additional keys in (external) flash
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    It is expected to be provisioned at Chip Probe stage when LC = TEST
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the RoT Owner (a.k.a. Silicon Owner) Key Manifest.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
                 {
+                    name: "ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    Used to authenticate the Unlock Ownership payload. Key Type: ECC NIST-P384 Curve.
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    Can be made part bound i.e. unique per part key cert
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the RoT Owner Unlock Ownership firmware image.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
             ],
-            desc: '''Software managed owner slot 1 partition.
+            desc: '''Software managed RoT Owner slot 1 partition.
             '''
         }
         {
             name:       "PLAT_INTEG_AUTH_SLOT0",
             variant:    "Unbuffered",
             absorb:     false,
+            size:       "328", // TODO: remove this forced size after GA0
             secret:     false,
             sw_digest:  true,
             hw_digest:  false,
@@ -582,33 +906,50 @@
             bkout_type: false,
             items: [
                 {
+                    name: "PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    KM is used to provisioning additional keys in (external) flash
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    It is expected to be provisioned at Chip Probe stage when LC = TEST
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the Platform Integrator Key Manifest.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
                 {
+                    name: "PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    Used to authenticate the Unlock Ownership payload. Key Type: ECC NIST-P384 Curve.
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    Can be made part bound i.e. unique per part key cert
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the Platform Integrator Unlock Ownership firmware image.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
             ],
-            desc: '''Software managed platform integrator slot 0 partition.
+            desc: '''Software managed Platform Integrator slot 0 partition.
             '''
         }
         {
             name:       "PLAT_INTEG_AUTH_SLOT1",
             variant:    "Unbuffered",
             absorb:     false,
+            size:       "328", // TODO: remove this forced size after GA0
             secret:     false,
             sw_digest:  true,
             hw_digest:  false,
@@ -619,33 +960,50 @@
             bkout_type: false,
             items: [
                 {
+                    name: "PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    KM is used to provisioning additional keys in (external) flash
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    It is expected to be provisioned at Chip Probe stage when LC = TEST
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the Platform Integrator Key Manifest.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
                 {
+                    name: "PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    Used to authenticate the Unlock Ownership payload. Key Type: ECC NIST-P384 Curve.
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    Can be made part bound i.e. unique per part key cert
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the Platform Integrator Unlock Ownership firmware image
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
             ],
-            desc: '''Software managed platform integrator slot 1 partition.
+            desc: '''Software managed Platform Integrator slot 1 partition.
             '''
         }
         {
             name:       "PLAT_OWNER_AUTH_SLOT0",
             variant:    "Unbuffered",
             absorb:     false,
+            size:       "328", // TODO: remove this forced size after GA0
             secret:     false,
             sw_digest:  true,
             hw_digest:  false,
@@ -656,33 +1014,50 @@
             bkout_type: false,
             items: [
                 {
+                    name: "PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    KM is used to provisioning additional keys in (external) flash
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    It is expected to be provisioned at Chip Probe stage when LC = TEST
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the Platform Owner Key Manifest.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
                 {
+                    name: "PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    Used to authenticate the Unlock Ownership payload. Key Type: ECC NIST-P384 Curve.
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    Can be made part bound i.e. unique per part key cert
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the Platform Owner Unlock Ownership firmware image.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
             ],
-            desc: '''Software managed platform owner slot 0 partition.
+            desc: '''Software managed Platform Owner slot 0 partition.
             '''
         }
         {
             name:       "PLAT_OWNER_AUTH_SLOT1",
             variant:    "Unbuffered",
             absorb:     false,
+            size:       "328", // TODO: remove this forced size after GA0
             secret:     false,
             sw_digest:  true,
             hw_digest:  false,
@@ -693,33 +1068,50 @@
             bkout_type: false,
             items: [
                 {
+                    name: "PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    KM is used to provisioning additional keys in (external) flash
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    It is expected to be provisioned at Chip Probe stage when LC = TEST
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the Platform Owner Key Manifest.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
                 {
+                    name: "PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    Used to authenticate the Unlock Ownership payload. Key Type: ECC NIST-P384 Curve.
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    Can be made part bound i.e. unique per part key cert
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the Platform Owner Unlock Ownership firmware image.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
             ],
-            desc: '''Software managed platform owner slot 1 partition.
+            desc: '''Software managed Platform Owner slot 1 partition.
             '''
         }
         {
             name:       "PLAT_OWNER_AUTH_SLOT2",
             variant:    "Unbuffered",
             absorb:     false,
+            size:       "328", // TODO: remove this forced size after GA0
             secret:     false,
             sw_digest:  true,
             hw_digest:  false,
@@ -730,27 +1122,43 @@
             bkout_type: false,
             items: [
                 {
+                    name: "PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    KM is used to provisioning additional keys in (external) flash
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    It is expected to be provisioned at Chip Probe stage when LC = TEST
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the Platform Owner Key Manifest.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
                 {
+                    name: "PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY_ROLE",
+                    size: "4"
+                }
+                {
                     name: "PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY",
-                    size: "160"
-                    desc: ''' Pub Key used to verify the ROT OWNER KEY MANIFEST.
-                    Used to authenticate the Unlock Ownership payload. Key Type: ECC NIST-P384 Curve.
-                    160B = Custom Cert --> {PubKey:48, Signature:48, Device ID:32, metadata:16}
-                    Can be made part bound i.e. unique per part key cert
-                    i.e. provisioning protected under proper lifecycle logistics / secure supplychain management
+                    size: "64"
+                    desc: ''' Public Key used to verify the Platform Owner Unlock Ownership firmware image.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Factory Testing (FT) stage when LC = DEV or PROD.
+                    Provisioning happens through a secured channel between the DUT and the HSM, i.e. the key
+                    is protected against supply-chain and manufacturing attacks.
                     '''
                 }
             ],
-            desc: '''Software managed platform owner slot 2 partition.
+            desc: '''Software managed Platform Owner slot 2 partition.
             '''
         }
         {
@@ -832,6 +1240,7 @@
             desc: ''' SoC fuses partition. This contains old ns_efuse data.
             '''
         }
+
         {
             name:       "HW_CFG0",
             variant:    "Buffered",
