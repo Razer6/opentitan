@@ -343,6 +343,14 @@ module top_pwc #(
   assign rv_core_ibex_irq_timer = intr_rv_timer_timer_expired_hart0_timer0;
   assign rv_core_ibex_hart_id = '0;
 
+  logic [31:0]  cio_gpio_gpio_p2d;
+  logic [31:0] cio_gpio_gpio_d2p;
+  logic [31:0] cio_gpio_gpio_en_d2p;
+
+  assign cio_gpio_gpio_p2d = cio_gpio_gpio_p2d_i;
+  assign cio_gpio_gpio_d2p_o = cio_gpio_gpio_d2p;
+  assign cio_gpio_gpio_en_d2p_o = cio_gpio_gpio_en_d2p;
+
 
 
   // Outgoing LPGs for alert group pwc
@@ -363,11 +371,11 @@ module top_pwc #(
   ) u_gpio (
 
       // Input
-      .cio_gpio_i    (cio_gpio_gpio_p2d_i),
+      .cio_gpio_i    (cio_gpio_gpio_p2d),
 
       // Output
-      .cio_gpio_o    (cio_gpio_gpio_d2p_o),
-      .cio_gpio_en_o (cio_gpio_gpio_en_d2p_o),
+      .cio_gpio_o    (cio_gpio_gpio_d2p),
+      .cio_gpio_en_o (cio_gpio_gpio_en_d2p),
 
       // Interrupt
       .intr_gpio_o (intr_gpio_gpio),

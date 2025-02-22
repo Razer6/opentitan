@@ -298,6 +298,14 @@ module top_${top["name"]} #(
   assign rv_core_ibex_irq_timer = intr_rv_timer_timer_expired_hart0_timer0;
   assign rv_core_ibex_hart_id = '0;
 
+  logic [31:0]  cio_gpio_gpio_p2d;
+  logic [31:0] cio_gpio_gpio_d2p;
+  logic [31:0] cio_gpio_gpio_en_d2p;
+
+  assign cio_gpio_gpio_p2d = cio_gpio_gpio_p2d_i;
+  assign cio_gpio_gpio_d2p_o = cio_gpio_gpio_d2p;
+  assign cio_gpio_gpio_en_d2p_o = cio_gpio_gpio_en_d2p;
+
 <%
 # get all known typed clocks and add them to a dict
 # this is used to generate the tie-off assignments further below
@@ -434,15 +442,15 @@ slice = f"{lo+w-1}:{lo}"
 
       // Input
       % endif
-      .${lib.ljust("cio_"+p_in.name+"_i",max_sigwidth+9)} (cio_${m["name"]}_${p_in.name}_p2d_i),
+      .${lib.ljust("cio_"+p_in.name+"_i",max_sigwidth+9)} (cio_${m["name"]}_${p_in.name}_p2d),
     % endfor
     % for p_out in outputs + inouts:
       % if loop.first:
 
       // Output
       % endif
-      .${lib.ljust("cio_"+p_out.name+"_o",   max_sigwidth+9)} (cio_${m["name"]}_${p_out.name}_d2p_o),
-      .${lib.ljust("cio_"+p_out.name+"_en_o",max_sigwidth+9)} (cio_${m["name"]}_${p_out.name}_en_d2p_o),
+      .${lib.ljust("cio_"+p_out.name+"_o",   max_sigwidth+9)} (cio_${m["name"]}_${p_out.name}_d2p),
+      .${lib.ljust("cio_"+p_out.name+"_en_o",max_sigwidth+9)} (cio_${m["name"]}_${p_out.name}_en_d2p),
     % endfor
     % for intr in block.interrupts:
       % if loop.first:
