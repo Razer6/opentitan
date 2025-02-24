@@ -89,7 +89,7 @@ package top_mio_soc_mbx_pkg;
   /**
    * Peripheral size in bytes for racl_ctrl in top mio.
    */
-  parameter int unsigned TOP_MIO_SOC_MBX_RACL_CTRL_SIZE_BYTES = 32'h40;
+  parameter int unsigned TOP_MIO_SOC_MBX_RACL_CTRL_SIZE_BYTES = 32'h100;
 
   /**
    * Peripheral base address for ac_range_check in top mio.
@@ -155,8 +155,8 @@ package top_mio_soc_mbx_pkg;
     TopMioAlertIdMbx5RecovFault = 19,
     TopMioAlertIdMbxPcie0FatalFault = 20,
     TopMioAlertIdMbxPcie0RecovFault = 21,
-    TopMioAlertIdRaclCtrlRecovCtrlUpdateErr = 22,
-    TopMioAlertIdRaclCtrlFatalFault = 23,
+    TopMioAlertIdRaclCtrlFatalFault = 22,
+    TopMioAlertIdRaclCtrlRecovCtrlUpdateErr = 23,
     TopMioAlertIdAcRangeCheckRecovCtrlUpdateErr = 24,
     TopMioAlertIdAcRangeCheckFatalFault = 25,
     TopMioAlertIdRvCoreIbexFatalSwErr = 26,

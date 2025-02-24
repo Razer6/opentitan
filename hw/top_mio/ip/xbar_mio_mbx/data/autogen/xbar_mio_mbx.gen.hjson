@@ -229,7 +229,7 @@
           {
             soc_mbx: 0x1483000
           }
-          size_byte: 0x40
+          size_byte: 0x100
         }
       ]
       xbar: false

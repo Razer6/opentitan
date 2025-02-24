@@ -10,7 +10,7 @@ package racl_ctrl_reg_pkg;
   parameter int NumAlerts = 2;
 
   // Address widths within the block
-  parameter int BlockAw = 6;
+  parameter int BlockAw = 8;
 
   // Number of registers for every interface
   parameter int NumRegs = 12;
@@ -18,24 +18,6 @@ package racl_ctrl_reg_pkg;
   ////////////////////////////
   // Typedefs for registers //
   ////////////////////////////
-
-  typedef struct packed {
-    struct packed {
-      logic        q;
-      logic        qe;
-    } fatal_fault;
-    struct packed {
-      logic        q;
-      logic        qe;
-    } recov_ctrl_update_err;
-  } racl_ctrl_reg2hw_alert_test_reg_t;
-
-  typedef struct packed {
-    struct packed {
-      logic        q;
-      logic        qe;
-    } valid;
-  } racl_ctrl_reg2hw_error_log_reg_t;
 
   typedef struct packed {
     struct packed {
@@ -129,6 +111,24 @@ package racl_ctrl_reg_pkg;
 
   typedef struct packed {
     struct packed {
+      logic        q;
+      logic        qe;
+    } recov_ctrl_update_err;
+    struct packed {
+      logic        q;
+      logic        qe;
+    } fatal_fault;
+  } racl_ctrl_reg2hw_alert_test_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+      logic        qe;
+    } valid;
+  } racl_ctrl_reg2hw_error_log_reg_t;
+
+  typedef struct packed {
+    struct packed {
       logic        d;
       logic        de;
     } valid;
@@ -152,28 +152,28 @@ package racl_ctrl_reg_pkg;
 
   // Register -> HW type
   typedef struct packed {
-    racl_ctrl_reg2hw_alert_test_reg_t alert_test; // [325:322]
-    racl_ctrl_reg2hw_error_log_reg_t error_log; // [321:320]
     racl_ctrl_reg2hw_policy_all_rd_wr_policy_shadowed_reg_t
-        policy_all_rd_wr_policy_shadowed; // [319:288]
+        policy_all_rd_wr_policy_shadowed; // [325:294]
     racl_ctrl_reg2hw_policy_hw_rot_pwc_wr_all_rd_policy_shadowed_reg_t
-        policy_hw_rot_pwc_wr_all_rd_policy_shadowed; // [287:256]
+        policy_hw_rot_pwc_wr_all_rd_policy_shadowed; // [293:262]
     racl_ctrl_reg2hw_policy_pre_boot_m_policy_shadowed_reg_t
-        policy_pre_boot_m_policy_shadowed; // [255:224]
+        policy_pre_boot_m_policy_shadowed; // [261:230]
     racl_ctrl_reg2hw_policy_post_boot_m_policy_shadowed_reg_t
-        policy_post_boot_m_policy_shadowed; // [223:192]
+        policy_post_boot_m_policy_shadowed; // [229:198]
     racl_ctrl_reg2hw_policy_tee_limited_policy_shadowed_reg_t
-        policy_tee_limited_policy_shadowed; // [191:160]
+        policy_tee_limited_policy_shadowed; // [197:166]
     racl_ctrl_reg2hw_policy_rcode_private_policy_shadowed_reg_t
-        policy_rcode_private_policy_shadowed; // [159:128]
+        policy_rcode_private_policy_shadowed; // [165:134]
     racl_ctrl_reg2hw_policy_rot_private_policy_shadowed_reg_t
-        policy_rot_private_policy_shadowed; // [127:96]
+        policy_rot_private_policy_shadowed; // [133:102]
     racl_ctrl_reg2hw_policy_pwc_private_policy_shadowed_reg_t
-        policy_pwc_private_policy_shadowed; // [95:64]
+        policy_pwc_private_policy_shadowed; // [101:70]
     racl_ctrl_reg2hw_policy_mio_private_policy_shadowed_reg_t
-        policy_mio_private_policy_shadowed; // [63:32]
+        policy_mio_private_policy_shadowed; // [69:38]
     racl_ctrl_reg2hw_policy_duc_private_policy_shadowed_reg_t
-        policy_duc_private_policy_shadowed; // [31:0]
+        policy_duc_private_policy_shadowed; // [37:6]
+    racl_ctrl_reg2hw_alert_test_reg_t alert_test; // [5:2]
+    racl_ctrl_reg2hw_error_log_reg_t error_log; // [1:0]
   } racl_ctrl_reg2hw_t;
 
   // HW -> register type
@@ -182,28 +182,24 @@ package racl_ctrl_reg_pkg;
   } racl_ctrl_hw2reg_t;
 
   // Register offsets
-  parameter logic [BlockAw-1:0] RACL_CTRL_ALERT_TEST_OFFSET = 6'h 0;
-  parameter logic [BlockAw-1:0] RACL_CTRL_ERROR_LOG_OFFSET = 6'h 4;
-  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_ALL_RD_WR_POLICY_SHADOWED_OFFSET = 6'h 8;
-  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED_OFFSET = 6'h c;
-  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_PRE_BOOT_M_POLICY_SHADOWED_OFFSET = 6'h 10;
-  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_POST_BOOT_M_POLICY_SHADOWED_OFFSET = 6'h 14;
-  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_TEE_LIMITED_POLICY_SHADOWED_OFFSET = 6'h 18;
-  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_RCODE_PRIVATE_POLICY_SHADOWED_OFFSET = 6'h 1c;
-  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_ROT_PRIVATE_POLICY_SHADOWED_OFFSET = 6'h 20;
-  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_PWC_PRIVATE_POLICY_SHADOWED_OFFSET = 6'h 24;
-  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_MIO_PRIVATE_POLICY_SHADOWED_OFFSET = 6'h 28;
-  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_DUC_PRIVATE_POLICY_SHADOWED_OFFSET = 6'h 2c;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_ALL_RD_WR_POLICY_SHADOWED_OFFSET = 8'h 0;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED_OFFSET = 8'h 8;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_PRE_BOOT_M_POLICY_SHADOWED_OFFSET = 8'h 10;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_POST_BOOT_M_POLICY_SHADOWED_OFFSET = 8'h 18;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_TEE_LIMITED_POLICY_SHADOWED_OFFSET = 8'h 20;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_RCODE_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 28;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_ROT_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 30;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_PWC_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 38;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_MIO_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 40;
+  parameter logic [BlockAw-1:0] RACL_CTRL_POLICY_DUC_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 48;
+  parameter logic [BlockAw-1:0] RACL_CTRL_ALERT_TEST_OFFSET = 8'h f4;
+  parameter logic [BlockAw-1:0] RACL_CTRL_ERROR_LOG_OFFSET = 8'h f8;
 
   // Reset values for hwext registers and their fields
   parameter logic [1:0] RACL_CTRL_ALERT_TEST_RESVAL = 2'h 0;
-  parameter logic [0:0] RACL_CTRL_ALERT_TEST_RECOV_CTRL_UPDATE_ERR_RESVAL = 1'h 0;
-  parameter logic [0:0] RACL_CTRL_ALERT_TEST_FATAL_FAULT_RESVAL = 1'h 0;
 
   // Register index
   typedef enum int {
-    RACL_CTRL_ALERT_TEST,
-    RACL_CTRL_ERROR_LOG,
     RACL_CTRL_POLICY_ALL_RD_WR_POLICY_SHADOWED,
     RACL_CTRL_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED,
     RACL_CTRL_POLICY_PRE_BOOT_M_POLICY_SHADOWED,
@@ -213,23 +209,25 @@ package racl_ctrl_reg_pkg;
     RACL_CTRL_POLICY_ROT_PRIVATE_POLICY_SHADOWED,
     RACL_CTRL_POLICY_PWC_PRIVATE_POLICY_SHADOWED,
     RACL_CTRL_POLICY_MIO_PRIVATE_POLICY_SHADOWED,
-    RACL_CTRL_POLICY_DUC_PRIVATE_POLICY_SHADOWED
+    RACL_CTRL_POLICY_DUC_PRIVATE_POLICY_SHADOWED,
+    RACL_CTRL_ALERT_TEST,
+    RACL_CTRL_ERROR_LOG
   } racl_ctrl_id_e;
 
   // Register width information to check illegal writes
   parameter logic [3:0] RACL_CTRL_PERMIT [12] = '{
-    4'b 0001, // index[ 0] RACL_CTRL_ALERT_TEST
-    4'b 0011, // index[ 1] RACL_CTRL_ERROR_LOG
-    4'b 1111, // index[ 2] RACL_CTRL_POLICY_ALL_RD_WR_POLICY_SHADOWED
-    4'b 1111, // index[ 3] RACL_CTRL_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED
-    4'b 1111, // index[ 4] RACL_CTRL_POLICY_PRE_BOOT_M_POLICY_SHADOWED
-    4'b 1111, // index[ 5] RACL_CTRL_POLICY_POST_BOOT_M_POLICY_SHADOWED
-    4'b 1111, // index[ 6] RACL_CTRL_POLICY_TEE_LIMITED_POLICY_SHADOWED
-    4'b 1111, // index[ 7] RACL_CTRL_POLICY_RCODE_PRIVATE_POLICY_SHADOWED
-    4'b 1111, // index[ 8] RACL_CTRL_POLICY_ROT_PRIVATE_POLICY_SHADOWED
-    4'b 1111, // index[ 9] RACL_CTRL_POLICY_PWC_PRIVATE_POLICY_SHADOWED
-    4'b 1111, // index[10] RACL_CTRL_POLICY_MIO_PRIVATE_POLICY_SHADOWED
-    4'b 1111  // index[11] RACL_CTRL_POLICY_DUC_PRIVATE_POLICY_SHADOWED
+    4'b 1111, // index[ 0] RACL_CTRL_POLICY_ALL_RD_WR_POLICY_SHADOWED
+    4'b 1111, // index[ 1] RACL_CTRL_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED
+    4'b 1111, // index[ 2] RACL_CTRL_POLICY_PRE_BOOT_M_POLICY_SHADOWED
+    4'b 1111, // index[ 3] RACL_CTRL_POLICY_POST_BOOT_M_POLICY_SHADOWED
+    4'b 1111, // index[ 4] RACL_CTRL_POLICY_TEE_LIMITED_POLICY_SHADOWED
+    4'b 1111, // index[ 5] RACL_CTRL_POLICY_RCODE_PRIVATE_POLICY_SHADOWED
+    4'b 1111, // index[ 6] RACL_CTRL_POLICY_ROT_PRIVATE_POLICY_SHADOWED
+    4'b 1111, // index[ 7] RACL_CTRL_POLICY_PWC_PRIVATE_POLICY_SHADOWED
+    4'b 1111, // index[ 8] RACL_CTRL_POLICY_MIO_PRIVATE_POLICY_SHADOWED
+    4'b 1111, // index[ 9] RACL_CTRL_POLICY_DUC_PRIVATE_POLICY_SHADOWED
+    4'b 0001, // index[10] RACL_CTRL_ALERT_TEST
+    4'b 0011  // index[11] RACL_CTRL_ERROR_LOG
   };
 
 endpackage

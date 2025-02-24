@@ -2662,8 +2662,8 @@ module top_darjeeling #(
     .NumSubscribingIps(RaclCtrlNumSubscribingIps),
     .NumExternalSubscribingIps(RaclCtrlNumExternalSubscribingIps)
   ) u_racl_ctrl (
-      // [95]: recov_ctrl_update_err
-      // [96]: fatal_fault
+      // [95]: fatal_fault
+      // [96]: recov_ctrl_update_err
       .alert_tx_o  ( alert_tx[96:95] ),
       .alert_rx_i  ( alert_rx[96:95] ),
 
@@ -2821,8 +2821,8 @@ module top_darjeeling #(
   // [122]: mbx5_recov_fault
   // [123]: mbx_pcie0_fatal_fault
   // [124]: mbx_pcie0_recov_fault
-  // [125]: racl_ctrl_recov_ctrl_update_err
-  // [126]: racl_ctrl_fatal_fault
+  // [125]: racl_ctrl_fatal_fault
+  // [126]: racl_ctrl_recov_ctrl_update_err
   // [127]: ac_range_check_recov_ctrl_update_err
   // [128]: ac_range_check_fatal_fault
   // [129]: rv_core_ibex_fatal_sw_err
@@ -2856,8 +2856,8 @@ module top_darjeeling #(
   // [153]: mbx5_recov_fault
   // [154]: mbx_pcie0_fatal_fault
   // [155]: mbx_pcie0_recov_fault
-  // [156]: racl_ctrl_recov_ctrl_update_err
-  // [157]: racl_ctrl_fatal_fault
+  // [156]: racl_ctrl_fatal_fault
+  // [157]: racl_ctrl_recov_ctrl_update_err
   // [158]: ac_range_check_recov_ctrl_update_err
   // [159]: ac_range_check_fatal_fault
   // [160]: rv_core_ibex_fatal_sw_err

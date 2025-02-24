@@ -161,7 +161,7 @@
  * address between #TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR and
  * `TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR + TOP_MIO_SOC_MBX_RACL_CTRL_SIZE_BYTES`.
  */
-#define TOP_MIO_SOC_MBX_RACL_CTRL_SIZE_BYTES 0x40
+#define TOP_MIO_SOC_MBX_RACL_CTRL_SIZE_BYTES 0x100
 /**
  * Peripheral base address for ac_range_check in top mio.
  *

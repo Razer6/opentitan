@@ -888,8 +888,8 @@ module top_mio #(
     .NumSubscribingIps(RaclCtrlNumSubscribingIps),
     .NumExternalSubscribingIps(RaclCtrlNumExternalSubscribingIps)
   ) u_racl_ctrl (
-      // External alert group "mio" [22]: recov_ctrl_update_err
-      // External alert group "mio" [23]: fatal_fault
+      // External alert group "mio" [22]: fatal_fault
+      // External alert group "mio" [23]: recov_ctrl_update_err
       .alert_tx_o  ( outgoing_alert_mio_tx_o[23:22] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[23:22] ),
 

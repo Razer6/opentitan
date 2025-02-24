@@ -958,8 +958,8 @@ module top_pwc #(
     .NumSubscribingIps(RaclCtrlNumSubscribingIps),
     .NumExternalSubscribingIps(RaclCtrlNumExternalSubscribingIps)
   ) u_racl_ctrl (
-      // External alert group "pwc" [23]: recov_ctrl_update_err
-      // External alert group "pwc" [24]: fatal_fault
+      // External alert group "pwc" [23]: fatal_fault
+      // External alert group "pwc" [24]: recov_ctrl_update_err
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[24:23] ),
       .alert_rx_i  ( outgoing_alert_pwc_rx_i[24:23] ),
 

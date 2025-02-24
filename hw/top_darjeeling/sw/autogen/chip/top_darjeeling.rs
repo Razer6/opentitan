@@ -2093,10 +2093,10 @@ pub enum AlertId {
     SocDbgCtrlFatalFault = 93,
     /// soc_dbg_ctrl_recov_ctrl_update_err
     SocDbgCtrlRecovCtrlUpdateErr = 94,
-    /// racl_ctrl_recov_ctrl_update_err
-    RaclCtrlRecovCtrlUpdateErr = 95,
     /// racl_ctrl_fatal_fault
-    RaclCtrlFatalFault = 96,
+    RaclCtrlFatalFault = 95,
+    /// racl_ctrl_recov_ctrl_update_err
+    RaclCtrlRecovCtrlUpdateErr = 96,
     /// ac_range_check_recov_ctrl_update_err
     AcRangeCheckRecovCtrlUpdateErr = 97,
     /// ac_range_check_fatal_fault
@@ -2153,10 +2153,10 @@ pub enum AlertId {
     IncomingMioMbxPcie0FatalFault = 123,
     /// incoming_mio_mbx_pcie0_recov_fault
     IncomingMioMbxPcie0RecovFault = 124,
-    /// incoming_mio_racl_ctrl_recov_ctrl_update_err
-    IncomingMioRaclCtrlRecovCtrlUpdateErr = 125,
     /// incoming_mio_racl_ctrl_fatal_fault
-    IncomingMioRaclCtrlFatalFault = 126,
+    IncomingMioRaclCtrlFatalFault = 125,
+    /// incoming_mio_racl_ctrl_recov_ctrl_update_err
+    IncomingMioRaclCtrlRecovCtrlUpdateErr = 126,
     /// incoming_mio_ac_range_check_recov_ctrl_update_err
     IncomingMioAcRangeCheckRecovCtrlUpdateErr = 127,
     /// incoming_mio_ac_range_check_fatal_fault
@@ -2215,10 +2215,10 @@ pub enum AlertId {
     IncomingPwcMbxPcie0FatalFault = 154,
     /// incoming_pwc_mbx_pcie0_recov_fault
     IncomingPwcMbxPcie0RecovFault = 155,
-    /// incoming_pwc_racl_ctrl_recov_ctrl_update_err
-    IncomingPwcRaclCtrlRecovCtrlUpdateErr = 156,
     /// incoming_pwc_racl_ctrl_fatal_fault
-    IncomingPwcRaclCtrlFatalFault = 157,
+    IncomingPwcRaclCtrlFatalFault = 156,
+    /// incoming_pwc_racl_ctrl_recov_ctrl_update_err
+    IncomingPwcRaclCtrlRecovCtrlUpdateErr = 157,
     /// incoming_pwc_ac_range_check_recov_ctrl_update_err
     IncomingPwcAcRangeCheckRecovCtrlUpdateErr = 158,
     /// incoming_pwc_ac_range_check_fatal_fault
@@ -2376,8 +2376,8 @@ impl TryFrom<u32> for AlertId {
             92 => Ok(Self::MbxPcie1RecovFault),
             93 => Ok(Self::SocDbgCtrlFatalFault),
             94 => Ok(Self::SocDbgCtrlRecovCtrlUpdateErr),
-            95 => Ok(Self::RaclCtrlRecovCtrlUpdateErr),
-            96 => Ok(Self::RaclCtrlFatalFault),
+            95 => Ok(Self::RaclCtrlFatalFault),
+            96 => Ok(Self::RaclCtrlRecovCtrlUpdateErr),
             97 => Ok(Self::AcRangeCheckRecovCtrlUpdateErr),
             98 => Ok(Self::AcRangeCheckFatalFault),
             99 => Ok(Self::RvCoreIbexFatalSwErr),
@@ -2406,8 +2406,8 @@ impl TryFrom<u32> for AlertId {
             122 => Ok(Self::IncomingMioMbx5RecovFault),
             123 => Ok(Self::IncomingMioMbxPcie0FatalFault),
             124 => Ok(Self::IncomingMioMbxPcie0RecovFault),
-            125 => Ok(Self::IncomingMioRaclCtrlRecovCtrlUpdateErr),
-            126 => Ok(Self::IncomingMioRaclCtrlFatalFault),
+            125 => Ok(Self::IncomingMioRaclCtrlFatalFault),
+            126 => Ok(Self::IncomingMioRaclCtrlRecovCtrlUpdateErr),
             127 => Ok(Self::IncomingMioAcRangeCheckRecovCtrlUpdateErr),
             128 => Ok(Self::IncomingMioAcRangeCheckFatalFault),
             129 => Ok(Self::IncomingMioRvCoreIbexFatalSwErr),
@@ -2437,8 +2437,8 @@ impl TryFrom<u32> for AlertId {
             153 => Ok(Self::IncomingPwcMbx5RecovFault),
             154 => Ok(Self::IncomingPwcMbxPcie0FatalFault),
             155 => Ok(Self::IncomingPwcMbxPcie0RecovFault),
-            156 => Ok(Self::IncomingPwcRaclCtrlRecovCtrlUpdateErr),
-            157 => Ok(Self::IncomingPwcRaclCtrlFatalFault),
+            156 => Ok(Self::IncomingPwcRaclCtrlFatalFault),
+            157 => Ok(Self::IncomingPwcRaclCtrlRecovCtrlUpdateErr),
             158 => Ok(Self::IncomingPwcAcRangeCheckRecovCtrlUpdateErr),
             159 => Ok(Self::IncomingPwcAcRangeCheckFatalFault),
             160 => Ok(Self::IncomingPwcRvCoreIbexFatalSwErr),
@@ -2667,9 +2667,9 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 186] = [
     AlertPeripheral::SocDbgCtrl,
     // SocDbgCtrlRecovCtrlUpdateErr -> AlertPeripheral::SocDbgCtrl
     AlertPeripheral::SocDbgCtrl,
-    // RaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::RaclCtrl
-    AlertPeripheral::RaclCtrl,
     // RaclCtrlFatalFault -> AlertPeripheral::RaclCtrl
+    AlertPeripheral::RaclCtrl,
+    // RaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::RaclCtrl
     AlertPeripheral::RaclCtrl,
     // AcRangeCheckRecovCtrlUpdateErr -> AlertPeripheral::AcRangeCheck
     AlertPeripheral::AcRangeCheck,
@@ -2727,9 +2727,9 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 186] = [
     AlertPeripheral::External,
     // IncomingMioMbxPcie0RecovFault -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingMioRaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::External
-    AlertPeripheral::External,
     // IncomingMioRaclCtrlFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingMioRaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::External
     AlertPeripheral::External,
     // IncomingMioAcRangeCheckRecovCtrlUpdateErr -> AlertPeripheral::External
     AlertPeripheral::External,
@@ -2789,9 +2789,9 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 186] = [
     AlertPeripheral::External,
     // IncomingPwcMbxPcie0RecovFault -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingPwcRaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::External
-    AlertPeripheral::External,
     // IncomingPwcRaclCtrlFatalFault -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingPwcRaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::External
     AlertPeripheral::External,
     // IncomingPwcAcRangeCheckRecovCtrlUpdateErr -> AlertPeripheral::External
     AlertPeripheral::External,

@@ -89,7 +89,7 @@ package top_pwc_soc_mbx_pkg;
   /**
    * Peripheral size in bytes for racl_ctrl in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_MBX_RACL_CTRL_SIZE_BYTES = 32'h40;
+  parameter int unsigned TOP_PWC_SOC_MBX_RACL_CTRL_SIZE_BYTES = 32'h100;
 
   /**
    * Peripheral base address for ac_range_check in top pwc.
@@ -157,8 +157,8 @@ package top_pwc_soc_mbx_pkg;
     TopPwcAlertIdMbx5RecovFault = 20,
     TopPwcAlertIdMbxPcie0FatalFault = 21,
     TopPwcAlertIdMbxPcie0RecovFault = 22,
-    TopPwcAlertIdRaclCtrlRecovCtrlUpdateErr = 23,
-    TopPwcAlertIdRaclCtrlFatalFault = 24,
+    TopPwcAlertIdRaclCtrlFatalFault = 23,
+    TopPwcAlertIdRaclCtrlRecovCtrlUpdateErr = 24,
     TopPwcAlertIdAcRangeCheckRecovCtrlUpdateErr = 25,
     TopPwcAlertIdAcRangeCheckFatalFault = 26,
     TopPwcAlertIdRvCoreIbexFatalSwErr = 27,

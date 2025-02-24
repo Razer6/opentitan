@@ -205,7 +205,7 @@
             lpg_idx: 1
         }
         {
-            name: racl_ctrl_recov_ctrl_update_err
+            name: racl_ctrl_fatal_fault
             module_name: racl_ctrl
             index: 22
             type: alert
@@ -214,7 +214,7 @@
             lpg_idx: 1
         }
         {
-            name: racl_ctrl_fatal_fault
+            name: racl_ctrl_recov_ctrl_update_err
             module_name: racl_ctrl
             index: 23
             type: alert
