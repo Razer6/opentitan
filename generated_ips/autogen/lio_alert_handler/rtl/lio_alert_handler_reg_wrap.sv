@@ -4,7 +4,13 @@
 //
 // Breakout / remapping wrapper for register file.
 
-module lio_alert_handler_reg_wrap import lio_alert_handler_pkg::*; (
+module lio_alert_handler_reg_wrap 
+  import lio_alert_handler_pkg::*; 
+#(
+  parameter bit          EnableRacl = 1'b0,
+  parameter bit          RaclErrorRsp = 'b1,
+  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[146] = '{146{0}}
+) (
   input                                   clk_i,
   input                                   rst_ni,
   input                                   rst_shadowed_ni,
@@ -20,6 +26,9 @@ module lio_alert_handler_reg_wrap import lio_alert_handler_pkg::*; (
   input  hw2reg_wrap_t         hw2reg_wrap,
   // reg2hw
   output reg2hw_wrap_t         reg2hw_wrap,
+  // RACL interface
+  input  top_racl_pkg::racl_policy_vec_t racl_policies_i,
+  output top_racl_pkg::racl_error_log_t  racl_error_o,
   // bus integrity alert
   output logic                 fatal_integ_alert_o
 );
@@ -33,7 +42,11 @@ module lio_alert_handler_reg_wrap import lio_alert_handler_pkg::*; (
   lio_alert_handler_reg_pkg::lio_alert_handler_reg2hw_t reg2hw;
   lio_alert_handler_reg_pkg::lio_alert_handler_hw2reg_t hw2reg;
 
-  lio_alert_handler_reg_top u_reg (
+  lio_alert_handler_reg_top #(
+    .EnableRacl(EnableRacl),
+    .RaclErrorRsp(RaclErrorRsp),
+    .RaclPolicySelVec(RaclPolicySelVec)
+  ) u_reg (
     .clk_i,
     .rst_ni,
     .rst_shadowed_ni,
@@ -41,6 +54,8 @@ module lio_alert_handler_reg_wrap import lio_alert_handler_pkg::*; (
     .tl_o,
     .reg2hw,
     .hw2reg,
+    .racl_policies_i,
+    .racl_error_o,
     .shadowed_storage_err_o(reg2hw_wrap.shadowed_err_storage),
     .shadowed_update_err_o(reg2hw_wrap.shadowed_err_update),
     .intg_err_o(fatal_integ_alert_o)

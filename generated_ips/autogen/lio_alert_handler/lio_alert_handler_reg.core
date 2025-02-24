@@ -12,6 +12,7 @@ filesets:
       - lowrisc:ip:tlul
       - lowrisc:prim:subreg
       - lowrisc:opentitan:lio_alert_handler_pkg
+      - lowrisc:systems:top_racl_pkg
     files:
       - rtl/lio_alert_handler_reg_top.sv
     file_type: systemVerilogSource

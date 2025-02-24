@@ -11,6 +11,10 @@ module lio_alert_handler
   import prim_alert_pkg::*;
   import prim_esc_pkg::*;
 #(
+  parameter bit          EnableRacl                                   = 1'b0,
+  parameter bit          RaclErrorRsp                                 = EnableRacl,
+  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[lio_alert_handler_reg_pkg::NumRegs] =
+    '{lio_alert_handler_reg_pkg::NumRegs{0}},
   // Compile time random constants, to be overriden by topgen.
   parameter lfsr_seed_t RndCnstLfsrSeed = RndCnstLfsrSeedDefault,
   parameter lfsr_perm_t RndCnstLfsrPerm = RndCnstLfsrPermDefault
@@ -41,6 +45,9 @@ module lio_alert_handler
   // SEC_CM: ALERT.INTERSIG.DIFF
   input  prim_alert_pkg::alert_tx_t [NAlerts-1:0] alert_tx_i,
   output prim_alert_pkg::alert_rx_t [NAlerts-1:0] alert_rx_o,
+  // RACL interface
+  input  top_racl_pkg::racl_policy_vec_t          racl_policies_i,
+  output top_racl_pkg::racl_error_log_t           racl_error_o,
   // Escalation outputs
   // SEC_CM: ESC.INTERSIG.DIFF
   input  prim_esc_pkg::esc_rx_t [N_ESC_SEV-1:0]   esc_rx_i,
@@ -67,7 +74,11 @@ module lio_alert_handler
   // SEC_CM: ALERT.CONFIG.REGWEN
   // SEC_CM: ALERT_LOC.CONFIG.REGWEN
   // SEC_CM: CLASS.CONFIG.REGWEN
-  lio_alert_handler_reg_wrap u_reg_wrap (
+  lio_alert_handler_reg_wrap #(
+    .EnableRacl(EnableRacl),
+    .RaclErrorRsp(RaclErrorRsp),
+    .RaclPolicySelVec(RaclPolicySelVec)
+  ) u_reg_wrap (
     .clk_i,
     .rst_ni,
     .rst_shadowed_ni,
@@ -78,6 +89,8 @@ module lio_alert_handler
     .crashdump_o,
     .hw2reg_wrap,
     .reg2hw_wrap,
+    .racl_policies_i,
+    .racl_error_o,
     // SEC_CM: BUS.INTEGRITY
     .fatal_integ_alert_o(loc_alert_trig[4])
   );
@@ -312,6 +325,7 @@ module lio_alert_handler
   // check whether all outputs have a good known state after reset
   `ASSERT_KNOWN(TlDValidKnownO_A,  tl_o.d_valid)
   `ASSERT_KNOWN(TlAReadyKnownO_A,  tl_o.a_ready)
+  `ASSERT_KNOWN(RaclErrorValidKnown_A, racl_error_o.valid)
   `ASSERT_KNOWN(IrqAKnownO_A,      intr_classa_o)
   `ASSERT_KNOWN(IrqBKnownO_A,      intr_classb_o)
   `ASSERT_KNOWN(IrqCKnownO_A,      intr_classc_o)
@@ -332,3 +346,8 @@ module lio_alert_handler
   `ASSERT_PRIM_REG_WE_ONEHOT_ERROR_TRIGGER_ERR(RegWeOnehotCheck_A,
       u_reg_wrap.u_reg, loc_alert_trig[4])
 endmodule
+// Local Variables:
+// fill-column:1
+// verilog-auto-arg-sort:t
+// verilog-typedef-regexp: "_[etu]$"
+// End:

@@ -11,6 +11,7 @@ filesets:
       - lowrisc:opentitan:lio_rv_plic_component:0.1
       - lowrisc:ip:tlul
       - lowrisc:prim:subreg
+      - lowrisc:systems:top_racl_pkg
     files:
       - rtl/lio_rv_plic_reg_pkg.sv
       - rtl/lio_rv_plic_reg_top.sv
