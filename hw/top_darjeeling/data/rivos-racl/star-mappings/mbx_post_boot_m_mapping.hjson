@@ -5,10 +5,10 @@
 {
   Null: {
     registers: {
-      "*": "POST_BOOT_M"
+      "*": "post_boot_m_policy"
     }
     windows: {
-      "*": "POST_BOOT_M"
+      "*": "post_boot_m_policy"
     }
   }
 }

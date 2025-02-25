@@ -153,9 +153,9 @@
         }
       ]
     }
-    { name: "POLICY_ALL_RD_WR_SHADOWED"
+    { name: "POLICY_ALL_RD_WR_POLICY_SHADOWED"
       desc: '''
-            Read and write policy for ALL_RD_WR
+            Read and write policy for all_rd_wr_policy
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -167,21 +167,21 @@
           name: "write_perm"
           resval: 16383
           desc: '''
-                Write permission for policy ALL_RD_WR
+                Write permission for policy all_rd_wr_policy
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
           resval: 16383
           desc: '''
-                Read permission for policy ALL_RD_WR
+                Read permission for policy all_rd_wr_policy
                 '''
         }
       ]
     }
-    { name: "POLICY_HW_ROT_PWC_WR_ALL_RD_SHADOWED"
+    { name: "POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED"
       desc: '''
-            Read and write policy for HW_ROT_PWC_WR_ALL_RD
+            Read and write policy for hw_rot_pwc_wr_all_rd_policy
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -193,21 +193,21 @@
           name: "write_perm"
           resval: 864
           desc: '''
-                Write permission for policy HW_ROT_PWC_WR_ALL_RD
+                Write permission for policy hw_rot_pwc_wr_all_rd_policy
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
           resval: 16383
           desc: '''
-                Read permission for policy HW_ROT_PWC_WR_ALL_RD
+                Read permission for policy hw_rot_pwc_wr_all_rd_policy
                 '''
         }
       ]
     }
-    { name: "POLICY_PRE_BOOT_M_SHADOWED"
+    { name: "POLICY_PRE_BOOT_M_POLICY_SHADOWED"
       desc: '''
-            Read and write policy for PRE_BOOT_M
+            Read and write policy for pre_boot_m_policy
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -219,21 +219,21 @@
           name: "write_perm"
           resval: 890
           desc: '''
-                Write permission for policy PRE_BOOT_M
+                Write permission for policy pre_boot_m_policy
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
           resval: 1023
           desc: '''
-                Read permission for policy PRE_BOOT_M
+                Read permission for policy pre_boot_m_policy
                 '''
         }
       ]
     }
-    { name: "POLICY_POST_BOOT_M_SHADOWED"
+    { name: "POLICY_POST_BOOT_M_POLICY_SHADOWED"
       desc: '''
-            Read and write policy for POST_BOOT_M
+            Read and write policy for post_boot_m_policy
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -245,21 +245,21 @@
           name: "write_perm"
           resval: 890
           desc: '''
-                Write permission for policy POST_BOOT_M
+                Write permission for policy post_boot_m_policy
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
           resval: 1023
           desc: '''
-                Read permission for policy POST_BOOT_M
+                Read permission for policy post_boot_m_policy
                 '''
         }
       ]
     }
-    { name: "POLICY_TEE_LIMITED_SHADOWED"
+    { name: "POLICY_TEE_LIMITED_POLICY_SHADOWED"
       desc: '''
-            Read and write policy for TEE_LIMITED
+            Read and write policy for tee_limited_policy
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -271,21 +271,21 @@
           name: "write_perm"
           resval: 2940
           desc: '''
-                Write permission for policy TEE_LIMITED
+                Write permission for policy tee_limited_policy
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
           resval: 2940
           desc: '''
-                Read permission for policy TEE_LIMITED
+                Read permission for policy tee_limited_policy
                 '''
         }
       ]
     }
-    { name: "POLICY_RCODE_PRIVATE_SHADOWED"
+    { name: "POLICY_RCODE_PRIVATE_POLICY_SHADOWED"
       desc: '''
-            Read and write policy for RCODE_PRIVATE
+            Read and write policy for rcode_private_policy
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -297,21 +297,21 @@
           name: "write_perm"
           resval: 872
           desc: '''
-                Write permission for policy RCODE_PRIVATE
+                Write permission for policy rcode_private_policy
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
           resval: 872
           desc: '''
-                Read permission for policy RCODE_PRIVATE
+                Read permission for policy rcode_private_policy
                 '''
         }
       ]
     }
-    { name: "POLICY_ROT_PRIVATE_SHADOWED"
+    { name: "POLICY_ROT_PRIVATE_POLICY_SHADOWED"
       desc: '''
-            Read and write policy for ROT_PRIVATE
+            Read and write policy for rot_private_policy
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -323,21 +323,21 @@
           name: "write_perm"
           resval: 96
           desc: '''
-                Write permission for policy ROT_PRIVATE
+                Write permission for policy rot_private_policy
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
           resval: 96
           desc: '''
-                Read permission for policy ROT_PRIVATE
+                Read permission for policy rot_private_policy
                 '''
         }
       ]
     }
-    { name: "POLICY_PWC_PRIVATE_SHADOWED"
+    { name: "POLICY_PWC_PRIVATE_POLICY_SHADOWED"
       desc: '''
-            Read and write policy for PWC_PRIVATE
+            Read and write policy for pwc_private_policy
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -349,21 +349,21 @@
           name: "write_perm"
           resval: 864
           desc: '''
-                Write permission for policy PWC_PRIVATE
+                Write permission for policy pwc_private_policy
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
           resval: 864
           desc: '''
-                Read permission for policy PWC_PRIVATE
+                Read permission for policy pwc_private_policy
                 '''
         }
       ]
     }
-    { name: "POLICY_MIO_PRIVATE_SHADOWED"
+    { name: "POLICY_MIO_PRIVATE_POLICY_SHADOWED"
       desc: '''
-            Read and write policy for MIO_PRIVATE
+            Read and write policy for mio_private_policy
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -375,21 +375,21 @@
           name: "write_perm"
           resval: 992
           desc: '''
-                Write permission for policy MIO_PRIVATE
+                Write permission for policy mio_private_policy
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
           resval: 992
           desc: '''
-                Read permission for policy MIO_PRIVATE
+                Read permission for policy mio_private_policy
                 '''
         }
       ]
     }
-    { name: "POLICY_DUC_PRIVATE_SHADOWED"
+    { name: "POLICY_DUC_PRIVATE_POLICY_SHADOWED"
       desc: '''
-            Read and write policy for DUC_PRIVATE
+            Read and write policy for duc_private_policy
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -401,14 +401,14 @@
           name: "write_perm"
           resval: 13152
           desc: '''
-                Write permission for policy DUC_PRIVATE
+                Write permission for policy duc_private_policy
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
           resval: 13152
           desc: '''
-                Read permission for policy DUC_PRIVATE
+                Read permission for policy duc_private_policy
                 '''
         }
       ]

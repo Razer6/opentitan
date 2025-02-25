@@ -17,16 +17,16 @@ package top_darjeeling_racl_pkg;
   /**
    * RACL groups:
    *   Null
-   *     ALL_RD_WR            (Idx  0)
-   *     HW_ROT_PWC_WR_ALL_RD (Idx  1)
-   *     PRE_BOOT_M           (Idx  2)
-   *     POST_BOOT_M          (Idx  3)
-   *     TEE_LIMITED          (Idx  4)
-   *     RCODE_PRIVATE        (Idx  5)
-   *     ROT_PRIVATE          (Idx  6)
-   *     PWC_PRIVATE          (Idx  7)
-   *     MIO_PRIVATE          (Idx  8)
-   *     DUC_PRIVATE          (Idx  9)
+   *     all_rd_wr_policy            (Idx  0)
+   *     hw_rot_pwc_wr_all_rd_policy (Idx  1)
+   *     pre_boot_m_policy           (Idx  2)
+   *     post_boot_m_policy          (Idx  3)
+   *     tee_limited_policy          (Idx  4)
+   *     rcode_private_policy        (Idx  5)
+   *     rot_private_policy          (Idx  6)
+   *     pwc_private_policy          (Idx  7)
+   *     mio_private_policy          (Idx  8)
+   *     duc_private_policy          (Idx  9)
    */
 
   /**
@@ -34,13 +34,13 @@ package top_darjeeling_racl_pkg;
    *   TLUL interface name: soc
    *   RACL group: Null
    *   Register to policy mapping:
-   *     SOC_CONTROL:           ROT_PRIVATE (Idx  6)
-   *     SOC_STATUS:            ROT_PRIVATE (Idx  6)
-   *     SOC_DOE_INTR_MSG_ADDR: ROT_PRIVATE (Idx  6)
-   *     SOC_DOE_INTR_MSG_DATA: ROT_PRIVATE (Idx  6)
+   *     SOC_CONTROL:           rot_private_policy (Idx  6)
+   *     SOC_STATUS:            rot_private_policy (Idx  6)
+   *     SOC_DOE_INTR_MSG_ADDR: rot_private_policy (Idx  6)
+   *     SOC_DOE_INTR_MSG_DATA: rot_private_policy (Idx  6)
    *   Window to policy mapping:
-   *     WDATA: ROT_PRIVATE (Idx  6)
-   *     RDATA: ROT_PRIVATE (Idx  6)
+   *     WDATA: rot_private_policy (Idx  6)
+   *     RDATA: rot_private_policy (Idx  6)
    */
   parameter racl_policy_sel_t RACL_POLICY_SEL_MBX0_SOC [4] = '{
     6, 6, 6, 6
@@ -53,13 +53,13 @@ package top_darjeeling_racl_pkg;
    *   TLUL interface name: soc
    *   RACL group: Null
    *   Register to policy mapping:
-   *     SOC_CONTROL:           ROT_PRIVATE (Idx  6)
-   *     SOC_STATUS:            ROT_PRIVATE (Idx  6)
-   *     SOC_DOE_INTR_MSG_ADDR: ROT_PRIVATE (Idx  6)
-   *     SOC_DOE_INTR_MSG_DATA: ROT_PRIVATE (Idx  6)
+   *     SOC_CONTROL:           rot_private_policy (Idx  6)
+   *     SOC_STATUS:            rot_private_policy (Idx  6)
+   *     SOC_DOE_INTR_MSG_ADDR: rot_private_policy (Idx  6)
+   *     SOC_DOE_INTR_MSG_DATA: rot_private_policy (Idx  6)
    *   Window to policy mapping:
-   *     WDATA: ROT_PRIVATE (Idx  6)
-   *     RDATA: ROT_PRIVATE (Idx  6)
+   *     WDATA: rot_private_policy (Idx  6)
+   *     RDATA: rot_private_policy (Idx  6)
    */
   parameter racl_policy_sel_t RACL_POLICY_SEL_MBX1_SOC [4] = '{
     6, 6, 6, 6
@@ -72,13 +72,13 @@ package top_darjeeling_racl_pkg;
    *   TLUL interface name: soc
    *   RACL group: Null
    *   Register to policy mapping:
-   *     SOC_CONTROL:           ROT_PRIVATE (Idx  6)
-   *     SOC_STATUS:            ROT_PRIVATE (Idx  6)
-   *     SOC_DOE_INTR_MSG_ADDR: ROT_PRIVATE (Idx  6)
-   *     SOC_DOE_INTR_MSG_DATA: ROT_PRIVATE (Idx  6)
+   *     SOC_CONTROL:           rot_private_policy (Idx  6)
+   *     SOC_STATUS:            rot_private_policy (Idx  6)
+   *     SOC_DOE_INTR_MSG_ADDR: rot_private_policy (Idx  6)
+   *     SOC_DOE_INTR_MSG_DATA: rot_private_policy (Idx  6)
    *   Window to policy mapping:
-   *     WDATA: ROT_PRIVATE (Idx  6)
-   *     RDATA: ROT_PRIVATE (Idx  6)
+   *     WDATA: rot_private_policy (Idx  6)
+   *     RDATA: rot_private_policy (Idx  6)
    */
   parameter racl_policy_sel_t RACL_POLICY_SEL_MBX2_SOC [4] = '{
     6, 6, 6, 6
@@ -91,13 +91,13 @@ package top_darjeeling_racl_pkg;
    *   TLUL interface name: soc
    *   RACL group: Null
    *   Register to policy mapping:
-   *     SOC_CONTROL:           PWC_PRIVATE (Idx  7)
-   *     SOC_STATUS:            PWC_PRIVATE (Idx  7)
-   *     SOC_DOE_INTR_MSG_ADDR: PWC_PRIVATE (Idx  7)
-   *     SOC_DOE_INTR_MSG_DATA: PWC_PRIVATE (Idx  7)
+   *     SOC_CONTROL:           pwc_private_policy (Idx  7)
+   *     SOC_STATUS:            pwc_private_policy (Idx  7)
+   *     SOC_DOE_INTR_MSG_ADDR: pwc_private_policy (Idx  7)
+   *     SOC_DOE_INTR_MSG_DATA: pwc_private_policy (Idx  7)
    *   Window to policy mapping:
-   *     WDATA: PWC_PRIVATE (Idx  7)
-   *     RDATA: PWC_PRIVATE (Idx  7)
+   *     WDATA: pwc_private_policy (Idx  7)
+   *     RDATA: pwc_private_policy (Idx  7)
    */
   parameter racl_policy_sel_t RACL_POLICY_SEL_MBX3_SOC [4] = '{
     7, 7, 7, 7
@@ -110,13 +110,13 @@ package top_darjeeling_racl_pkg;
    *   TLUL interface name: soc
    *   RACL group: Null
    *   Register to policy mapping:
-   *     SOC_CONTROL:           MIO_PRIVATE (Idx  8)
-   *     SOC_STATUS:            MIO_PRIVATE (Idx  8)
-   *     SOC_DOE_INTR_MSG_ADDR: MIO_PRIVATE (Idx  8)
-   *     SOC_DOE_INTR_MSG_DATA: MIO_PRIVATE (Idx  8)
+   *     SOC_CONTROL:           mio_private_policy (Idx  8)
+   *     SOC_STATUS:            mio_private_policy (Idx  8)
+   *     SOC_DOE_INTR_MSG_ADDR: mio_private_policy (Idx  8)
+   *     SOC_DOE_INTR_MSG_DATA: mio_private_policy (Idx  8)
    *   Window to policy mapping:
-   *     WDATA: MIO_PRIVATE (Idx  8)
-   *     RDATA: MIO_PRIVATE (Idx  8)
+   *     WDATA: mio_private_policy (Idx  8)
+   *     RDATA: mio_private_policy (Idx  8)
    */
   parameter racl_policy_sel_t RACL_POLICY_SEL_MBX4_SOC [4] = '{
     8, 8, 8, 8
@@ -129,13 +129,13 @@ package top_darjeeling_racl_pkg;
    *   TLUL interface name: soc
    *   RACL group: Null
    *   Register to policy mapping:
-   *     SOC_CONTROL:           DUC_PRIVATE (Idx  9)
-   *     SOC_STATUS:            DUC_PRIVATE (Idx  9)
-   *     SOC_DOE_INTR_MSG_ADDR: DUC_PRIVATE (Idx  9)
-   *     SOC_DOE_INTR_MSG_DATA: DUC_PRIVATE (Idx  9)
+   *     SOC_CONTROL:           duc_private_policy (Idx  9)
+   *     SOC_STATUS:            duc_private_policy (Idx  9)
+   *     SOC_DOE_INTR_MSG_ADDR: duc_private_policy (Idx  9)
+   *     SOC_DOE_INTR_MSG_DATA: duc_private_policy (Idx  9)
    *   Window to policy mapping:
-   *     WDATA: DUC_PRIVATE (Idx  9)
-   *     RDATA: DUC_PRIVATE (Idx  9)
+   *     WDATA: duc_private_policy (Idx  9)
+   *     RDATA: duc_private_policy (Idx  9)
    */
   parameter racl_policy_sel_t RACL_POLICY_SEL_MBX5_SOC [4] = '{
     9, 9, 9, 9
@@ -148,13 +148,13 @@ package top_darjeeling_racl_pkg;
    *   TLUL interface name: soc
    *   RACL group: Null
    *   Register to policy mapping:
-   *     SOC_CONTROL:           RCODE_PRIVATE (Idx  5)
-   *     SOC_STATUS:            RCODE_PRIVATE (Idx  5)
-   *     SOC_DOE_INTR_MSG_ADDR: RCODE_PRIVATE (Idx  5)
-   *     SOC_DOE_INTR_MSG_DATA: RCODE_PRIVATE (Idx  5)
+   *     SOC_CONTROL:           rcode_private_policy (Idx  5)
+   *     SOC_STATUS:            rcode_private_policy (Idx  5)
+   *     SOC_DOE_INTR_MSG_ADDR: rcode_private_policy (Idx  5)
+   *     SOC_DOE_INTR_MSG_DATA: rcode_private_policy (Idx  5)
    *   Window to policy mapping:
-   *     WDATA: RCODE_PRIVATE (Idx  5)
-   *     RDATA: RCODE_PRIVATE (Idx  5)
+   *     WDATA: rcode_private_policy (Idx  5)
+   *     RDATA: rcode_private_policy (Idx  5)
    */
   parameter racl_policy_sel_t RACL_POLICY_SEL_MBX6_SOC [4] = '{
     5, 5, 5, 5
@@ -167,13 +167,13 @@ package top_darjeeling_racl_pkg;
    *   TLUL interface name: soc
    *   RACL group: Null
    *   Register to policy mapping:
-   *     SOC_CONTROL:           ALL_RD_WR (Idx  0)
-   *     SOC_STATUS:            ALL_RD_WR (Idx  0)
-   *     SOC_DOE_INTR_MSG_ADDR: ALL_RD_WR (Idx  0)
-   *     SOC_DOE_INTR_MSG_DATA: ALL_RD_WR (Idx  0)
+   *     SOC_CONTROL:           all_rd_wr_policy (Idx  0)
+   *     SOC_STATUS:            all_rd_wr_policy (Idx  0)
+   *     SOC_DOE_INTR_MSG_ADDR: all_rd_wr_policy (Idx  0)
+   *     SOC_DOE_INTR_MSG_DATA: all_rd_wr_policy (Idx  0)
    *   Window to policy mapping:
-   *     WDATA: ALL_RD_WR (Idx  0)
-   *     RDATA: ALL_RD_WR (Idx  0)
+   *     WDATA: all_rd_wr_policy (Idx  0)
+   *     RDATA: all_rd_wr_policy (Idx  0)
    */
   parameter racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE0_SOC [4] = '{
     0, 0, 0, 0
@@ -186,13 +186,13 @@ package top_darjeeling_racl_pkg;
    *   TLUL interface name: soc
    *   RACL group: Null
    *   Register to policy mapping:
-   *     SOC_CONTROL:           POST_BOOT_M (Idx  3)
-   *     SOC_STATUS:            POST_BOOT_M (Idx  3)
-   *     SOC_DOE_INTR_MSG_ADDR: POST_BOOT_M (Idx  3)
-   *     SOC_DOE_INTR_MSG_DATA: POST_BOOT_M (Idx  3)
+   *     SOC_CONTROL:           post_boot_m_policy (Idx  3)
+   *     SOC_STATUS:            post_boot_m_policy (Idx  3)
+   *     SOC_DOE_INTR_MSG_ADDR: post_boot_m_policy (Idx  3)
+   *     SOC_DOE_INTR_MSG_DATA: post_boot_m_policy (Idx  3)
    *   Window to policy mapping:
-   *     WDATA: POST_BOOT_M (Idx  3)
-   *     RDATA: POST_BOOT_M (Idx  3)
+   *     WDATA: post_boot_m_policy (Idx  3)
+   *     RDATA: post_boot_m_policy (Idx  3)
    */
   parameter racl_policy_sel_t RACL_POLICY_SEL_MBX_PCIE1_SOC [4] = '{
     3, 3, 3, 3

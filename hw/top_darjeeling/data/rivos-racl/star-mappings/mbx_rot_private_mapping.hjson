@@ -5,10 +5,10 @@
 {
   Null: {
     registers: {
-      "*": "ROT_PRIVATE"
+      "*": "rot_private_policy"
     }
     windows: {
-      "*": "ROT_PRIVATE"
+      "*": "rot_private_policy"
     }
   }
 }

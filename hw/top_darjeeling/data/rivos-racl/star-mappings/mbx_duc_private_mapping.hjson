@@ -5,10 +5,10 @@
 {
   Null: {
     registers: {
-      "*": "DUC_PRIVATE"
+      "*": "duc_private_policy"
     }
     windows: {
-      "*": "DUC_PRIVATE"
+      "*": "duc_private_policy"
     }
   }
 }

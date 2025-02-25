@@ -441,7 +441,11 @@
       [
         {
           name: strap_en
-          desc: This signal is pulsed high by the power manager after reset in order to sample the HW straps.
+          desc:
+            '''
+            The strap enable signal tells gpio to take a snapshot of the input pins.
+            The behaviour of this signal after that event will have no effect.
+            '''
           struct: logic
           type: uni
           act: rcv
@@ -7721,7 +7725,7 @@
   exported_clks: {}
   racl:
   {
-    error_response: true
+    error_response: false
     ctn_uid_bit_lsb: 0
     ctn_uid_bit_msb: 4
     role_bit_lsb: 5
@@ -7790,7 +7794,7 @@
       Null:
       [
         {
-          name: ALL_RD_WR
+          name: all_rd_wr_policy
           allowed_wr:
           [
             NOT_TEE
@@ -7829,7 +7833,7 @@
           wr_default: 16383
         }
         {
-          name: HW_ROT_PWC_WR_ALL_RD
+          name: hw_rot_pwc_wr_all_rd_policy
           allowed_wr:
           [
             CAT3_DEBUG
@@ -7858,7 +7862,7 @@
           wr_default: 864
         }
         {
-          name: PRE_BOOT_M
+          name: pre_boot_m_policy
           allowed_wr:
           [
             M_MODE
@@ -7886,7 +7890,7 @@
           wr_default: 890
         }
         {
-          name: POST_BOOT_M
+          name: post_boot_m_policy
           allowed_wr:
           [
             M_MODE
@@ -7914,7 +7918,7 @@
           wr_default: 890
         }
         {
-          name: TEE_LIMITED
+          name: tee_limited_policy
           allowed_wr:
           [
             TEE_MODE
@@ -7941,7 +7945,7 @@
           wr_default: 2940
         }
         {
-          name: RCODE_PRIVATE
+          name: rcode_private_policy
           allowed_wr:
           [
             R_CODE
@@ -7962,7 +7966,7 @@
           wr_default: 872
         }
         {
-          name: ROT_PRIVATE
+          name: rot_private_policy
           rot_private: true
           allowed_wr:
           [
@@ -7978,7 +7982,7 @@
           wr_default: 96
         }
         {
-          name: PWC_PRIVATE
+          name: pwc_private_policy
           allowed_wr:
           [
             CAT3_DEBUG
@@ -7997,7 +8001,7 @@
           wr_default: 864
         }
         {
-          name: MIO_PRIVATE
+          name: mio_private_policy
           allowed_wr:
           [
             CAT3_DEBUG
@@ -8018,7 +8022,7 @@
           wr_default: 992
         }
         {
-          name: DUC_PRIVATE
+          name: duc_private_policy
           allowed_wr:
           [
             CAT3_DEBUG
@@ -10337,7 +10341,11 @@
     [
       {
         name: strap_en
-        desc: This signal is pulsed high by the power manager after reset in order to sample the HW straps.
+        desc:
+          '''
+          The strap enable signal tells gpio to take a snapshot of the input pins.
+          The behaviour of this signal after that event will have no effect.
+          '''
         struct: logic
         type: uni
         act: rcv

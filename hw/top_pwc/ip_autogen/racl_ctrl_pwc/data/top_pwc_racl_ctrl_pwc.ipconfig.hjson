@@ -13,7 +13,7 @@
     policies:
     [
       {
-        name: ALL_RD_WR
+        name: all_rd_wr_policy
         allowed_wr:
         [
           NOT_TEE
@@ -52,7 +52,7 @@
         wr_default: 16383
       }
       {
-        name: HW_ROT_PWC_WR_ALL_RD
+        name: hw_rot_pwc_wr_all_rd_policy
         allowed_wr:
         [
           CAT3_DEBUG
@@ -81,7 +81,7 @@
         wr_default: 864
       }
       {
-        name: PRE_BOOT_M
+        name: pre_boot_m_policy
         allowed_wr:
         [
           M_MODE
@@ -109,7 +109,7 @@
         wr_default: 890
       }
       {
-        name: POST_BOOT_M
+        name: post_boot_m_policy
         allowed_wr:
         [
           M_MODE
@@ -137,7 +137,7 @@
         wr_default: 890
       }
       {
-        name: TEE_LIMITED
+        name: tee_limited_policy
         allowed_wr:
         [
           TEE_MODE
@@ -164,7 +164,7 @@
         wr_default: 2940
       }
       {
-        name: RCODE_PRIVATE
+        name: rcode_private_policy
         allowed_wr:
         [
           R_CODE
@@ -185,7 +185,7 @@
         wr_default: 872
       }
       {
-        name: ROT_PRIVATE
+        name: rot_private_policy
         rot_private: true
         allowed_wr:
         [
@@ -201,7 +201,7 @@
         wr_default: 96
       }
       {
-        name: PWC_PRIVATE
+        name: pwc_private_policy
         allowed_wr:
         [
           CAT3_DEBUG
@@ -220,7 +220,7 @@
         wr_default: 864
       }
       {
-        name: MIO_PRIVATE
+        name: mio_private_policy
         allowed_wr:
         [
           CAT3_DEBUG
@@ -241,7 +241,7 @@
         wr_default: 992
       }
       {
-        name: DUC_PRIVATE
+        name: duc_private_policy
         allowed_wr:
         [
           CAT3_DEBUG

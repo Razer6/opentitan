@@ -5,10 +5,10 @@
 {
   Null: {
     registers: {
-      "*": "ALL_RD_WR"
+      "*": "all_rd_wr_policy"
     }
     windows: {
-      "*": "ALL_RD_WR"
+      "*": "all_rd_wr_policy"
     }
   }
 }

@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 {
-  error_response: true
+  error_response: false
   ctn_uid_bit_lsb: 0
   ctn_uid_bit_msb: 4
   role_bit_lsb: 5
@@ -27,44 +27,44 @@
   policies: {
     Null: [
       // Standard policies allowing all roles to access a register
-      { name: "ALL_RD_WR"
+      { name: "all_rd_wr_policy"
         allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
         allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
       }
-      { name: "HW_ROT_PWC_WR_ALL_RD"
+      { name: "hw_rot_pwc_wr_all_rd_policy"
         allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
         allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
       }
-      { name: "PRE_BOOT_M"
+      { name: "pre_boot_m_policy"
         allowed_wr: [ "M_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
         allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
       }
-      { name: "POST_BOOT_M"
+      { name: "post_boot_m_policy"
         allowed_wr: [ "M_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
         allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
       }
-      { name: "TEE_LIMITED"
+      { name: "tee_limited_policy"
         allowed_wr: [ "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "PWC", "INT_SOC", "TEE_IO_AGENT" ]
         allowed_rd: [ "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "PWC", "INT_SOC", "TEE_IO_AGENT" ]
       }
-      { name: "RCODE_PRIVATE"
+      { name: "rcode_private_policy"
         allowed_wr: [ "R_CODE", "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
         allowed_rd: [ "R_CODE", "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
       }
-      { name: "ROT_PRIVATE"
+      { name: "rot_private_policy"
         rot_private: true
         allowed_wr: [ "CAT3_DEBUG", "ROT" ]
         allowed_rd: [ "CAT3_DEBUG", "ROT" ]
       }
-      { name: "PWC_PRIVATE"
+      { name: "pwc_private_policy"
         allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
         allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
       }
-      { name: "MIO_PRIVATE"
+      { name: "mio_private_policy"
         allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
         allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
       }
-      { name: "DUC_PRIVATE"
+      { name: "duc_private_policy"
         allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC", "DUC_UC", "MIMT_R_MODE" ]
         allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC", "DUC_UC", "MIMT_R_MODE" ]
       }

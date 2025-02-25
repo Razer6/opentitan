@@ -92,60 +92,60 @@ module racl_ctrl_pwc import racl_ctrl_pwc_reg_pkg::*; #(
   // Policy broadcasting
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
-  racl_policy_t policy_all_rd_wr;
-  racl_policy_t policy_hw_rot_pwc_wr_all_rd;
-  racl_policy_t policy_pre_boot_m;
-  racl_policy_t policy_post_boot_m;
-  racl_policy_t policy_tee_limited;
-  racl_policy_t policy_rcode_private;
-  racl_policy_t policy_rot_private;
-  racl_policy_t policy_pwc_private;
-  racl_policy_t policy_mio_private;
-  racl_policy_t policy_duc_private;
+  racl_policy_t policy_all_rd_wr_policy;
+  racl_policy_t policy_hw_rot_pwc_wr_all_rd_policy;
+  racl_policy_t policy_pre_boot_m_policy;
+  racl_policy_t policy_post_boot_m_policy;
+  racl_policy_t policy_tee_limited_policy;
+  racl_policy_t policy_rcode_private_policy;
+  racl_policy_t policy_rot_private_policy;
+  racl_policy_t policy_pwc_private_policy;
+  racl_policy_t policy_mio_private_policy;
+  racl_policy_t policy_duc_private_policy;
 
   // Assign register policy values to policy structs
-  assign policy_all_rd_wr.read_perm = reg2hw.policy_all_rd_wr_shadowed.read_perm.q;
-  assign policy_all_rd_wr.write_perm = reg2hw.policy_all_rd_wr_shadowed.write_perm.q;
+  assign policy_all_rd_wr_policy.read_perm = reg2hw.policy_all_rd_wr_policy_shadowed.read_perm.q;
+  assign policy_all_rd_wr_policy.write_perm = reg2hw.policy_all_rd_wr_policy_shadowed.write_perm.q;
 
-  assign policy_hw_rot_pwc_wr_all_rd.read_perm = reg2hw.policy_hw_rot_pwc_wr_all_rd_shadowed.read_perm.q;
-  assign policy_hw_rot_pwc_wr_all_rd.write_perm = reg2hw.policy_hw_rot_pwc_wr_all_rd_shadowed.write_perm.q;
+  assign policy_hw_rot_pwc_wr_all_rd_policy.read_perm = reg2hw.policy_hw_rot_pwc_wr_all_rd_policy_shadowed.read_perm.q;
+  assign policy_hw_rot_pwc_wr_all_rd_policy.write_perm = reg2hw.policy_hw_rot_pwc_wr_all_rd_policy_shadowed.write_perm.q;
 
-  assign policy_pre_boot_m.read_perm = reg2hw.policy_pre_boot_m_shadowed.read_perm.q;
-  assign policy_pre_boot_m.write_perm = reg2hw.policy_pre_boot_m_shadowed.write_perm.q;
+  assign policy_pre_boot_m_policy.read_perm = reg2hw.policy_pre_boot_m_policy_shadowed.read_perm.q;
+  assign policy_pre_boot_m_policy.write_perm = reg2hw.policy_pre_boot_m_policy_shadowed.write_perm.q;
 
-  assign policy_post_boot_m.read_perm = reg2hw.policy_post_boot_m_shadowed.read_perm.q;
-  assign policy_post_boot_m.write_perm = reg2hw.policy_post_boot_m_shadowed.write_perm.q;
+  assign policy_post_boot_m_policy.read_perm = reg2hw.policy_post_boot_m_policy_shadowed.read_perm.q;
+  assign policy_post_boot_m_policy.write_perm = reg2hw.policy_post_boot_m_policy_shadowed.write_perm.q;
 
-  assign policy_tee_limited.read_perm = reg2hw.policy_tee_limited_shadowed.read_perm.q;
-  assign policy_tee_limited.write_perm = reg2hw.policy_tee_limited_shadowed.write_perm.q;
+  assign policy_tee_limited_policy.read_perm = reg2hw.policy_tee_limited_policy_shadowed.read_perm.q;
+  assign policy_tee_limited_policy.write_perm = reg2hw.policy_tee_limited_policy_shadowed.write_perm.q;
 
-  assign policy_rcode_private.read_perm = reg2hw.policy_rcode_private_shadowed.read_perm.q;
-  assign policy_rcode_private.write_perm = reg2hw.policy_rcode_private_shadowed.write_perm.q;
+  assign policy_rcode_private_policy.read_perm = reg2hw.policy_rcode_private_policy_shadowed.read_perm.q;
+  assign policy_rcode_private_policy.write_perm = reg2hw.policy_rcode_private_policy_shadowed.write_perm.q;
 
-  assign policy_rot_private.read_perm = reg2hw.policy_rot_private_shadowed.read_perm.q;
-  assign policy_rot_private.write_perm = reg2hw.policy_rot_private_shadowed.write_perm.q;
+  assign policy_rot_private_policy.read_perm = reg2hw.policy_rot_private_policy_shadowed.read_perm.q;
+  assign policy_rot_private_policy.write_perm = reg2hw.policy_rot_private_policy_shadowed.write_perm.q;
 
-  assign policy_pwc_private.read_perm = reg2hw.policy_pwc_private_shadowed.read_perm.q;
-  assign policy_pwc_private.write_perm = reg2hw.policy_pwc_private_shadowed.write_perm.q;
+  assign policy_pwc_private_policy.read_perm = reg2hw.policy_pwc_private_policy_shadowed.read_perm.q;
+  assign policy_pwc_private_policy.write_perm = reg2hw.policy_pwc_private_policy_shadowed.write_perm.q;
 
-  assign policy_mio_private.read_perm = reg2hw.policy_mio_private_shadowed.read_perm.q;
-  assign policy_mio_private.write_perm = reg2hw.policy_mio_private_shadowed.write_perm.q;
+  assign policy_mio_private_policy.read_perm = reg2hw.policy_mio_private_policy_shadowed.read_perm.q;
+  assign policy_mio_private_policy.write_perm = reg2hw.policy_mio_private_policy_shadowed.write_perm.q;
 
-  assign policy_duc_private.read_perm = reg2hw.policy_duc_private_shadowed.read_perm.q;
-  assign policy_duc_private.write_perm = reg2hw.policy_duc_private_shadowed.write_perm.q;
+  assign policy_duc_private_policy.read_perm = reg2hw.policy_duc_private_policy_shadowed.read_perm.q;
+  assign policy_duc_private_policy.write_perm = reg2hw.policy_duc_private_policy_shadowed.write_perm.q;
 
   // Broadcast all policies via policy vector
   assign racl_policies_o = {
-    policy_duc_private,
-    policy_mio_private,
-    policy_pwc_private,
-    policy_rot_private,
-    policy_rcode_private,
-    policy_tee_limited,
-    policy_post_boot_m,
-    policy_pre_boot_m,
-    policy_hw_rot_pwc_wr_all_rd,
-    policy_all_rd_wr
+    policy_duc_private_policy,
+    policy_mio_private_policy,
+    policy_pwc_private_policy,
+    policy_rot_private_policy,
+    policy_rcode_private_policy,
+    policy_tee_limited_policy,
+    policy_post_boot_m_policy,
+    policy_pre_boot_m_policy,
+    policy_hw_rot_pwc_wr_all_rd_policy,
+    policy_all_rd_wr_policy
   };
 
   //////////////////////////////////////////////////////////////////////////////////////////////////

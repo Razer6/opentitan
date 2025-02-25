@@ -5,10 +5,10 @@
 {
   Null: {
     registers: {
-      "*": "PWC_PRIVATE"
+      "*": "pwc_private_policy"
     }
     windows: {
-      "*": "PWC_PRIVATE"
+      "*": "pwc_private_policy"
     }
   }
 }

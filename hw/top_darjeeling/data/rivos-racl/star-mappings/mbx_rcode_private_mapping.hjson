@@ -5,10 +5,10 @@
 {
   Null: {
     registers: {
-      "*": "RCODE_PRIVATE"
+      "*": "rcode_private_policy"
     }
     windows: {
-      "*": "RCODE_PRIVATE"
+      "*": "rcode_private_policy"
     }
   }
 }
