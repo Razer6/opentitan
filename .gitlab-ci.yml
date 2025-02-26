@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2023 - 2025 Rivos Inc.
+#
+# SPDX-License-Identifier: LicenseRef-Rivos-Internal-Only
+
+include:
+  # https://gitlab.ba.rivosinc.com/rv/group_gitlab_config/raw/rivos/main/ci_includes/pre-commit-lint.yml
+  - project: "rv/group_gitlab_config"
+    ref: rivos/main
+    file: "/ci_includes/pre-commit-lint.yml"
+
+stages:
+  - prebuild
+  - check
+
+# Only run CI on merge requests events happening on a protected branch
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_REF_PROTECTED == "true"
+
+check_change_id:
+  tags: [shell]
+  stage: check
+  script:
+    - ./ci/scripts/check-change-id.sh
+

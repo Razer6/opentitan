@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2025 Rivos Inc.
+#
+# SPDX-License-Identifier: LicenseRef-Rivos-Internal-Only
+
+default_install_hook_types: [commit-msg, pre-commit]
+default_stages: [pre-commit]
+
+repos:
+  - repo: https://gitlab.ba.rivosinc.com/pub/it/rivos-pre-commit-hooks
+    rev: v0.1.0-20240930T220423Z-442ab76f
+    hooks:
+      - id: change-id
+
+  # pull mirror from: https://github.com/pre-commit/pre-commit-hooks
+  - repo: https://gitlab.ba.rivosinc.com/pub/it/pre-commit-hooks.git
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-merge-conflict
+        args: [--assume-in-merge]
+        exclude: ^doc/contributing/github_notes.md
+      - id: trailing-whitespace
+        files: ^(sw/|hw/dv/)
+        exclude: ^sw/vendor/
