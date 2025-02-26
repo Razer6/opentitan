@@ -16,7 +16,7 @@
   datawidth: "32",
 
   // Enable RACL on PWC based on the following configuration
-  racl_config: 'top_darjeeling/data/rivos-racl/racl.hjson'
+  racl_config: '../../top_darjeeling/data/rivos-racl/racl.hjson'
 
   // Power information for the design
   power: {
@@ -432,7 +432,7 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_pwc_private_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_pwc_private_mapping.hjson'
       }
     },
     { name: "mbx1",
@@ -446,7 +446,7 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_pwc_private_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_pwc_private_mapping.hjson'
       }
     },
     { name: "mbx2",
@@ -460,7 +460,7 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_pwc_private_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_pwc_private_mapping.hjson'
       }
     },
     { name: "mbx3",
@@ -474,7 +474,7 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
       }
     },
     { name: "mbx4",
@@ -488,7 +488,7 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_mio_private_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_mio_private_mapping.hjson'
       }
     },
     { name: "mbx5",
@@ -502,7 +502,7 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_duc_private_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_duc_private_mapping.hjson'
       }
     },
     { name: "mbx_pcie0",
@@ -516,7 +516,7 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        soc: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_all_rd_wr_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_all_rd_wr_mapping.hjson'
       }
     },
     { name: "racl_ctrl",
@@ -545,7 +545,7 @@
       }
       attr: "ipgen",
       outgoing_alert: "pwc"
-      racl_mapping: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
+      racl_mapping: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
     },
     { name: "rv_core_ibex",
       type: "rv_core_ibex",
