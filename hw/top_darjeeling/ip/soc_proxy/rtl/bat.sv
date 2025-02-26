@@ -19,13 +19,40 @@ module bat (
   logic ctn_request;
   assign ctn_request = tl_in_h2d_i.a_valid & (tl_in_h2d_i.a_address[31:30] == 2'b01);
 
+  // Need to subtract my socket and chip ID's before sending to SCX
+  // so that transaction targeting our own SCS instance will stay on our SCX
+  // before sending the transaction to CTN, the scsctnif module will add 
+  // my socket and chip ID's back
+  logic[1:0] post_bat_sid, post_bat_cid;
+  assign post_bat_sid = tl_in_h2d_i.a_address[29:28] - integrator_id_i[3:2]; // Socket ID
+  assign post_bat_cid = tl_in_h2d_i.a_address[27:26] - integrator_id_i[1:0]; // Chiplet ID
+
+  logic broadcast_pwc;
+  assign broadcast_pwc = (tl_in_h2d_i.a_address[25:21] == 5'd31) & 
+                         (tl_in_h2d_i.a_address[20:16] == 5'd9);
+
+  // up-lift PWC.bcastAddr by 32K, assume there are less than 32K bcast registers
+  logic [3:0] post_bat_page_id;
+  assign post_bat_page_id = broadcast_pwc ? (tl_in_h2d_i.a_address[15:12] + 4'd8) : 
+                                             tl_in_h2d_i.a_address[15:12];
+
   logic [top_pkg::TL_AW-1:0] bat_address;
-  logic [1:0] addr_msbs;
-  assign addr_msbs = tl_in_h2d_i.a_address[31:30];
 
   // If there is a valid CTN request, perform the BAT (downlift to 0-1GB),
   // else use the original address
-  assign bat_address = {ctn_request ? 2'b0 : addr_msbs, tl_in_h2d_i.a_address[29:0]};
+  assign bat_address = ctn_request ?    // CTN: [1G,2G), indicates wether addr[29:28],
+    {                                   // [27:26] need to be recovered
+      2'b0,                             // Need to zero out [31:30] to shift ibex 1G-2G down to 
+                                        // system 0-1G
+      post_bat_sid,                     // offset'ed SID, to-be-recovered
+      post_bat_cid,                     // offset'ed CID, to-be-recovered
+      tl_in_h2d_i.a_address[25:21],     // SSID is NOT altered, SSID for SCS is looped back by SCX, 
+                                        // otherwise routed to SCS's CTR
+      tl_in_h2d_i.a_address[20:16],     // UID is not altered
+      post_bat_page_id,                 // PageID is altered/recovered if {SSID = 31, UID = 9 = PWC}
+      tl_in_h2d_i.a_address[11:0]
+    }
+    : tl_in_h2d_i.a_address;
 
   // Assemble the new TLUL request with the BAT'ed address
   tlul_pkg::tl_h2d_t tl_out_h2d_pre;
