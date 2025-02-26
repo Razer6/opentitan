@@ -8,13 +8,13 @@
 // List of Xbar device memory map
 tl_device_t xbar_devices[$] = '{
     '{"rv_dm__dbg", '{
-        '{32'h00000000, 32'h000001ff}
+        '{32'h00002000, 32'h000021ff}
     }},
     '{"mbx_jtag__soc", '{
-        '{32'h00001000, 32'h0000101f}
+        '{32'h00002200, 32'h0000221f}
     }},
     '{"lc_ctrl__dmi", '{
-        '{32'h00020000, 32'h00020fff}
+        '{32'h00003000, 32'h00003fff}
     }},
     '{"soc_dbg_ctrl__jtag", '{
         '{32'h00002300, 32'h0000231f}
