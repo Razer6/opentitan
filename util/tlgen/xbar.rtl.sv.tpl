@@ -294,3 +294,8 @@ ${"end" if loop.last else ""}
 % endfor
 
 endmodule
+// Local Variables:
+// fill-column:1
+// verilog-auto-arg-sort:t
+// verilog-typedef-regexp: "_[etu]$"
+// End:
