@@ -116,5 +116,19 @@ package top_racl_pkg;
   parameter racl_role_t RACL_ROLE_DUC_UC       = 4'hc;
   parameter racl_role_t RACL_ROLE_MIMT_R_MODE  = 4'hd;
 
+  /**
+   * RACL Policy Selectors for group Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_ALL_RD_WR_POLICY = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_HW_ROT_PWC_WR_ALL_RD_POLICY = 1;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_PRE_BOOT_M_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_POST_BOOT_M_POLICY = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_TEE_LIMITED_POLICY = 4;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_RCODE_PRIVATE_POLICY = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_ROT_PRIVATE_POLICY = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_PWC_PRIVATE_POLICY = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_PRIVATE_POLICY = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_DUC_PRIVATE_POLICY = 9;
+
 
 endpackage

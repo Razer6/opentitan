@@ -694,9 +694,9 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(1'b0),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_MBX0_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_MBX0_SOC_WIN_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_MBX0_SOC_WIN_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX0_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX0_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX0_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[11:10])
   ) u_mbx0 (
 
@@ -730,9 +730,9 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(1'b0),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_MBX1_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_MBX1_SOC_WIN_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_MBX1_SOC_WIN_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX1_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX1_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX1_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[13:12])
   ) u_mbx1 (
 
@@ -766,9 +766,9 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(1'b0),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_MBX2_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_MBX2_SOC_WIN_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_MBX2_SOC_WIN_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX2_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX2_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX2_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[15:14])
   ) u_mbx2 (
 
@@ -802,9 +802,9 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(1'b0),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_MBX3_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_MBX3_SOC_WIN_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_MBX3_SOC_WIN_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX3_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX3_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX3_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[17:16])
   ) u_mbx3 (
 
@@ -838,9 +838,9 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(1'b0),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_MBX4_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_MBX4_SOC_WIN_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_MBX4_SOC_WIN_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX4_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX4_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX4_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[19:18])
   ) u_mbx4 (
 
@@ -874,9 +874,9 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(1'b0),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_MBX5_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_MBX5_SOC_WIN_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_MBX5_SOC_WIN_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX5_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX5_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX5_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[21:20])
   ) u_mbx5 (
 
@@ -910,9 +910,9 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(1'b0),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_MBX_PCIE0_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_MBX_PCIE0_SOC_WIN_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_MBX_PCIE0_SOC_WIN_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX_PCIE0_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[23:22])
   ) u_mbx_pcie0 (
 
