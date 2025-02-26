@@ -7901,11 +7901,11 @@ module lio_alert_handler_reg_top
   assign ping_timer_regwen_we = racl_addr_hit_write[3] & reg_we & !reg_error;
 
   assign ping_timer_regwen_wd = reg_wdata[0];
-  assign ping_timeout_cyc_shadowed_re = racl_addr_hit_write[4] & reg_re & !reg_error;
+  assign ping_timeout_cyc_shadowed_re = racl_addr_hit_read[4] & reg_re & !reg_error;
   assign ping_timeout_cyc_shadowed_we = racl_addr_hit_write[4] & reg_we & !reg_error;
 
   assign ping_timeout_cyc_shadowed_wd = reg_wdata[15:0];
-  assign ping_timer_en_shadowed_re = racl_addr_hit_write[5] & reg_re & !reg_error;
+  assign ping_timer_en_shadowed_re = racl_addr_hit_read[5] & reg_re & !reg_error;
   assign ping_timer_en_shadowed_we = racl_addr_hit_write[5] & reg_we & !reg_error;
 
   assign ping_timer_en_shadowed_wd = reg_wdata[0];
@@ -7951,115 +7951,115 @@ module lio_alert_handler_reg_top
   assign alert_regwen_13_we = racl_addr_hit_write[19] & reg_we & !reg_error;
 
   assign alert_regwen_13_wd = reg_wdata[0];
-  assign alert_en_shadowed_0_re = racl_addr_hit_write[20] & reg_re & !reg_error;
+  assign alert_en_shadowed_0_re = racl_addr_hit_read[20] & reg_re & !reg_error;
   assign alert_en_shadowed_0_we = racl_addr_hit_write[20] & reg_we & !reg_error;
 
   assign alert_en_shadowed_0_wd = reg_wdata[0];
-  assign alert_en_shadowed_1_re = racl_addr_hit_write[21] & reg_re & !reg_error;
+  assign alert_en_shadowed_1_re = racl_addr_hit_read[21] & reg_re & !reg_error;
   assign alert_en_shadowed_1_we = racl_addr_hit_write[21] & reg_we & !reg_error;
 
   assign alert_en_shadowed_1_wd = reg_wdata[0];
-  assign alert_en_shadowed_2_re = racl_addr_hit_write[22] & reg_re & !reg_error;
+  assign alert_en_shadowed_2_re = racl_addr_hit_read[22] & reg_re & !reg_error;
   assign alert_en_shadowed_2_we = racl_addr_hit_write[22] & reg_we & !reg_error;
 
   assign alert_en_shadowed_2_wd = reg_wdata[0];
-  assign alert_en_shadowed_3_re = racl_addr_hit_write[23] & reg_re & !reg_error;
+  assign alert_en_shadowed_3_re = racl_addr_hit_read[23] & reg_re & !reg_error;
   assign alert_en_shadowed_3_we = racl_addr_hit_write[23] & reg_we & !reg_error;
 
   assign alert_en_shadowed_3_wd = reg_wdata[0];
-  assign alert_en_shadowed_4_re = racl_addr_hit_write[24] & reg_re & !reg_error;
+  assign alert_en_shadowed_4_re = racl_addr_hit_read[24] & reg_re & !reg_error;
   assign alert_en_shadowed_4_we = racl_addr_hit_write[24] & reg_we & !reg_error;
 
   assign alert_en_shadowed_4_wd = reg_wdata[0];
-  assign alert_en_shadowed_5_re = racl_addr_hit_write[25] & reg_re & !reg_error;
+  assign alert_en_shadowed_5_re = racl_addr_hit_read[25] & reg_re & !reg_error;
   assign alert_en_shadowed_5_we = racl_addr_hit_write[25] & reg_we & !reg_error;
 
   assign alert_en_shadowed_5_wd = reg_wdata[0];
-  assign alert_en_shadowed_6_re = racl_addr_hit_write[26] & reg_re & !reg_error;
+  assign alert_en_shadowed_6_re = racl_addr_hit_read[26] & reg_re & !reg_error;
   assign alert_en_shadowed_6_we = racl_addr_hit_write[26] & reg_we & !reg_error;
 
   assign alert_en_shadowed_6_wd = reg_wdata[0];
-  assign alert_en_shadowed_7_re = racl_addr_hit_write[27] & reg_re & !reg_error;
+  assign alert_en_shadowed_7_re = racl_addr_hit_read[27] & reg_re & !reg_error;
   assign alert_en_shadowed_7_we = racl_addr_hit_write[27] & reg_we & !reg_error;
 
   assign alert_en_shadowed_7_wd = reg_wdata[0];
-  assign alert_en_shadowed_8_re = racl_addr_hit_write[28] & reg_re & !reg_error;
+  assign alert_en_shadowed_8_re = racl_addr_hit_read[28] & reg_re & !reg_error;
   assign alert_en_shadowed_8_we = racl_addr_hit_write[28] & reg_we & !reg_error;
 
   assign alert_en_shadowed_8_wd = reg_wdata[0];
-  assign alert_en_shadowed_9_re = racl_addr_hit_write[29] & reg_re & !reg_error;
+  assign alert_en_shadowed_9_re = racl_addr_hit_read[29] & reg_re & !reg_error;
   assign alert_en_shadowed_9_we = racl_addr_hit_write[29] & reg_we & !reg_error;
 
   assign alert_en_shadowed_9_wd = reg_wdata[0];
-  assign alert_en_shadowed_10_re = racl_addr_hit_write[30] & reg_re & !reg_error;
+  assign alert_en_shadowed_10_re = racl_addr_hit_read[30] & reg_re & !reg_error;
   assign alert_en_shadowed_10_we = racl_addr_hit_write[30] & reg_we & !reg_error;
 
   assign alert_en_shadowed_10_wd = reg_wdata[0];
-  assign alert_en_shadowed_11_re = racl_addr_hit_write[31] & reg_re & !reg_error;
+  assign alert_en_shadowed_11_re = racl_addr_hit_read[31] & reg_re & !reg_error;
   assign alert_en_shadowed_11_we = racl_addr_hit_write[31] & reg_we & !reg_error;
 
   assign alert_en_shadowed_11_wd = reg_wdata[0];
-  assign alert_en_shadowed_12_re = racl_addr_hit_write[32] & reg_re & !reg_error;
+  assign alert_en_shadowed_12_re = racl_addr_hit_read[32] & reg_re & !reg_error;
   assign alert_en_shadowed_12_we = racl_addr_hit_write[32] & reg_we & !reg_error;
 
   assign alert_en_shadowed_12_wd = reg_wdata[0];
-  assign alert_en_shadowed_13_re = racl_addr_hit_write[33] & reg_re & !reg_error;
+  assign alert_en_shadowed_13_re = racl_addr_hit_read[33] & reg_re & !reg_error;
   assign alert_en_shadowed_13_we = racl_addr_hit_write[33] & reg_we & !reg_error;
 
   assign alert_en_shadowed_13_wd = reg_wdata[0];
-  assign alert_class_shadowed_0_re = racl_addr_hit_write[34] & reg_re & !reg_error;
+  assign alert_class_shadowed_0_re = racl_addr_hit_read[34] & reg_re & !reg_error;
   assign alert_class_shadowed_0_we = racl_addr_hit_write[34] & reg_we & !reg_error;
 
   assign alert_class_shadowed_0_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_1_re = racl_addr_hit_write[35] & reg_re & !reg_error;
+  assign alert_class_shadowed_1_re = racl_addr_hit_read[35] & reg_re & !reg_error;
   assign alert_class_shadowed_1_we = racl_addr_hit_write[35] & reg_we & !reg_error;
 
   assign alert_class_shadowed_1_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_2_re = racl_addr_hit_write[36] & reg_re & !reg_error;
+  assign alert_class_shadowed_2_re = racl_addr_hit_read[36] & reg_re & !reg_error;
   assign alert_class_shadowed_2_we = racl_addr_hit_write[36] & reg_we & !reg_error;
 
   assign alert_class_shadowed_2_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_3_re = racl_addr_hit_write[37] & reg_re & !reg_error;
+  assign alert_class_shadowed_3_re = racl_addr_hit_read[37] & reg_re & !reg_error;
   assign alert_class_shadowed_3_we = racl_addr_hit_write[37] & reg_we & !reg_error;
 
   assign alert_class_shadowed_3_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_4_re = racl_addr_hit_write[38] & reg_re & !reg_error;
+  assign alert_class_shadowed_4_re = racl_addr_hit_read[38] & reg_re & !reg_error;
   assign alert_class_shadowed_4_we = racl_addr_hit_write[38] & reg_we & !reg_error;
 
   assign alert_class_shadowed_4_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_5_re = racl_addr_hit_write[39] & reg_re & !reg_error;
+  assign alert_class_shadowed_5_re = racl_addr_hit_read[39] & reg_re & !reg_error;
   assign alert_class_shadowed_5_we = racl_addr_hit_write[39] & reg_we & !reg_error;
 
   assign alert_class_shadowed_5_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_6_re = racl_addr_hit_write[40] & reg_re & !reg_error;
+  assign alert_class_shadowed_6_re = racl_addr_hit_read[40] & reg_re & !reg_error;
   assign alert_class_shadowed_6_we = racl_addr_hit_write[40] & reg_we & !reg_error;
 
   assign alert_class_shadowed_6_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_7_re = racl_addr_hit_write[41] & reg_re & !reg_error;
+  assign alert_class_shadowed_7_re = racl_addr_hit_read[41] & reg_re & !reg_error;
   assign alert_class_shadowed_7_we = racl_addr_hit_write[41] & reg_we & !reg_error;
 
   assign alert_class_shadowed_7_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_8_re = racl_addr_hit_write[42] & reg_re & !reg_error;
+  assign alert_class_shadowed_8_re = racl_addr_hit_read[42] & reg_re & !reg_error;
   assign alert_class_shadowed_8_we = racl_addr_hit_write[42] & reg_we & !reg_error;
 
   assign alert_class_shadowed_8_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_9_re = racl_addr_hit_write[43] & reg_re & !reg_error;
+  assign alert_class_shadowed_9_re = racl_addr_hit_read[43] & reg_re & !reg_error;
   assign alert_class_shadowed_9_we = racl_addr_hit_write[43] & reg_we & !reg_error;
 
   assign alert_class_shadowed_9_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_10_re = racl_addr_hit_write[44] & reg_re & !reg_error;
+  assign alert_class_shadowed_10_re = racl_addr_hit_read[44] & reg_re & !reg_error;
   assign alert_class_shadowed_10_we = racl_addr_hit_write[44] & reg_we & !reg_error;
 
   assign alert_class_shadowed_10_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_11_re = racl_addr_hit_write[45] & reg_re & !reg_error;
+  assign alert_class_shadowed_11_re = racl_addr_hit_read[45] & reg_re & !reg_error;
   assign alert_class_shadowed_11_we = racl_addr_hit_write[45] & reg_we & !reg_error;
 
   assign alert_class_shadowed_11_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_12_re = racl_addr_hit_write[46] & reg_re & !reg_error;
+  assign alert_class_shadowed_12_re = racl_addr_hit_read[46] & reg_re & !reg_error;
   assign alert_class_shadowed_12_we = racl_addr_hit_write[46] & reg_we & !reg_error;
 
   assign alert_class_shadowed_12_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_13_re = racl_addr_hit_write[47] & reg_re & !reg_error;
+  assign alert_class_shadowed_13_re = racl_addr_hit_read[47] & reg_re & !reg_error;
   assign alert_class_shadowed_13_we = racl_addr_hit_write[47] & reg_we & !reg_error;
 
   assign alert_class_shadowed_13_wd = reg_wdata[1:0];
@@ -8126,59 +8126,59 @@ module lio_alert_handler_reg_top
   assign loc_alert_regwen_6_we = racl_addr_hit_write[68] & reg_we & !reg_error;
 
   assign loc_alert_regwen_6_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_0_re = racl_addr_hit_write[69] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_0_re = racl_addr_hit_read[69] & reg_re & !reg_error;
   assign loc_alert_en_shadowed_0_we = racl_addr_hit_write[69] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_0_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_1_re = racl_addr_hit_write[70] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_1_re = racl_addr_hit_read[70] & reg_re & !reg_error;
   assign loc_alert_en_shadowed_1_we = racl_addr_hit_write[70] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_1_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_2_re = racl_addr_hit_write[71] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_2_re = racl_addr_hit_read[71] & reg_re & !reg_error;
   assign loc_alert_en_shadowed_2_we = racl_addr_hit_write[71] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_2_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_3_re = racl_addr_hit_write[72] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_3_re = racl_addr_hit_read[72] & reg_re & !reg_error;
   assign loc_alert_en_shadowed_3_we = racl_addr_hit_write[72] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_3_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_4_re = racl_addr_hit_write[73] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_4_re = racl_addr_hit_read[73] & reg_re & !reg_error;
   assign loc_alert_en_shadowed_4_we = racl_addr_hit_write[73] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_4_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_5_re = racl_addr_hit_write[74] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_5_re = racl_addr_hit_read[74] & reg_re & !reg_error;
   assign loc_alert_en_shadowed_5_we = racl_addr_hit_write[74] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_5_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_6_re = racl_addr_hit_write[75] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_6_re = racl_addr_hit_read[75] & reg_re & !reg_error;
   assign loc_alert_en_shadowed_6_we = racl_addr_hit_write[75] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_6_wd = reg_wdata[0];
-  assign loc_alert_class_shadowed_0_re = racl_addr_hit_write[76] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_0_re = racl_addr_hit_read[76] & reg_re & !reg_error;
   assign loc_alert_class_shadowed_0_we = racl_addr_hit_write[76] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_0_wd = reg_wdata[1:0];
-  assign loc_alert_class_shadowed_1_re = racl_addr_hit_write[77] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_1_re = racl_addr_hit_read[77] & reg_re & !reg_error;
   assign loc_alert_class_shadowed_1_we = racl_addr_hit_write[77] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_1_wd = reg_wdata[1:0];
-  assign loc_alert_class_shadowed_2_re = racl_addr_hit_write[78] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_2_re = racl_addr_hit_read[78] & reg_re & !reg_error;
   assign loc_alert_class_shadowed_2_we = racl_addr_hit_write[78] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_2_wd = reg_wdata[1:0];
-  assign loc_alert_class_shadowed_3_re = racl_addr_hit_write[79] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_3_re = racl_addr_hit_read[79] & reg_re & !reg_error;
   assign loc_alert_class_shadowed_3_we = racl_addr_hit_write[79] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_3_wd = reg_wdata[1:0];
-  assign loc_alert_class_shadowed_4_re = racl_addr_hit_write[80] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_4_re = racl_addr_hit_read[80] & reg_re & !reg_error;
   assign loc_alert_class_shadowed_4_we = racl_addr_hit_write[80] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_4_wd = reg_wdata[1:0];
-  assign loc_alert_class_shadowed_5_re = racl_addr_hit_write[81] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_5_re = racl_addr_hit_read[81] & reg_re & !reg_error;
   assign loc_alert_class_shadowed_5_we = racl_addr_hit_write[81] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_5_wd = reg_wdata[1:0];
-  assign loc_alert_class_shadowed_6_re = racl_addr_hit_write[82] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_6_re = racl_addr_hit_read[82] & reg_re & !reg_error;
   assign loc_alert_class_shadowed_6_we = racl_addr_hit_write[82] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_6_wd = reg_wdata[1:0];
@@ -8206,7 +8206,7 @@ module lio_alert_handler_reg_top
   assign classa_regwen_we = racl_addr_hit_write[90] & reg_we & !reg_error;
 
   assign classa_regwen_wd = reg_wdata[0];
-  assign classa_ctrl_shadowed_re = racl_addr_hit_write[91] & reg_re & !reg_error;
+  assign classa_ctrl_shadowed_re = racl_addr_hit_read[91] & reg_re & !reg_error;
   assign classa_ctrl_shadowed_we = racl_addr_hit_write[91] & reg_we & !reg_error;
 
   assign classa_ctrl_shadowed_en_wd = reg_wdata[0];
@@ -8231,45 +8231,45 @@ module lio_alert_handler_reg_top
   assign classa_clr_regwen_we = racl_addr_hit_write[92] & reg_we & !reg_error;
 
   assign classa_clr_regwen_wd = reg_wdata[0];
-  assign classa_clr_shadowed_re = racl_addr_hit_write[93] & reg_re & !reg_error;
+  assign classa_clr_shadowed_re = racl_addr_hit_read[93] & reg_re & !reg_error;
   assign classa_clr_shadowed_we = racl_addr_hit_write[93] & reg_we & !reg_error;
 
   assign classa_clr_shadowed_wd = reg_wdata[0];
-  assign classa_accum_cnt_re = racl_addr_hit_write[94] & reg_re & !reg_error;
-  assign classa_accum_thresh_shadowed_re = racl_addr_hit_write[95] & reg_re & !reg_error;
+  assign classa_accum_cnt_re = racl_addr_hit_read[94] & reg_re & !reg_error;
+  assign classa_accum_thresh_shadowed_re = racl_addr_hit_read[95] & reg_re & !reg_error;
   assign classa_accum_thresh_shadowed_we = racl_addr_hit_write[95] & reg_we & !reg_error;
 
   assign classa_accum_thresh_shadowed_wd = reg_wdata[15:0];
-  assign classa_timeout_cyc_shadowed_re = racl_addr_hit_write[96] & reg_re & !reg_error;
+  assign classa_timeout_cyc_shadowed_re = racl_addr_hit_read[96] & reg_re & !reg_error;
   assign classa_timeout_cyc_shadowed_we = racl_addr_hit_write[96] & reg_we & !reg_error;
 
   assign classa_timeout_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classa_crashdump_trigger_shadowed_re = racl_addr_hit_write[97] & reg_re & !reg_error;
+  assign classa_crashdump_trigger_shadowed_re = racl_addr_hit_read[97] & reg_re & !reg_error;
   assign classa_crashdump_trigger_shadowed_we = racl_addr_hit_write[97] & reg_we & !reg_error;
 
   assign classa_crashdump_trigger_shadowed_wd = reg_wdata[1:0];
-  assign classa_phase0_cyc_shadowed_re = racl_addr_hit_write[98] & reg_re & !reg_error;
+  assign classa_phase0_cyc_shadowed_re = racl_addr_hit_read[98] & reg_re & !reg_error;
   assign classa_phase0_cyc_shadowed_we = racl_addr_hit_write[98] & reg_we & !reg_error;
 
   assign classa_phase0_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classa_phase1_cyc_shadowed_re = racl_addr_hit_write[99] & reg_re & !reg_error;
+  assign classa_phase1_cyc_shadowed_re = racl_addr_hit_read[99] & reg_re & !reg_error;
   assign classa_phase1_cyc_shadowed_we = racl_addr_hit_write[99] & reg_we & !reg_error;
 
   assign classa_phase1_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classa_phase2_cyc_shadowed_re = racl_addr_hit_write[100] & reg_re & !reg_error;
+  assign classa_phase2_cyc_shadowed_re = racl_addr_hit_read[100] & reg_re & !reg_error;
   assign classa_phase2_cyc_shadowed_we = racl_addr_hit_write[100] & reg_we & !reg_error;
 
   assign classa_phase2_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classa_phase3_cyc_shadowed_re = racl_addr_hit_write[101] & reg_re & !reg_error;
+  assign classa_phase3_cyc_shadowed_re = racl_addr_hit_read[101] & reg_re & !reg_error;
   assign classa_phase3_cyc_shadowed_we = racl_addr_hit_write[101] & reg_we & !reg_error;
 
   assign classa_phase3_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classa_esc_cnt_re = racl_addr_hit_write[102] & reg_re & !reg_error;
-  assign classa_state_re = racl_addr_hit_write[103] & reg_re & !reg_error;
+  assign classa_esc_cnt_re = racl_addr_hit_read[102] & reg_re & !reg_error;
+  assign classa_state_re = racl_addr_hit_read[103] & reg_re & !reg_error;
   assign classb_regwen_we = racl_addr_hit_write[104] & reg_we & !reg_error;
 
   assign classb_regwen_wd = reg_wdata[0];
-  assign classb_ctrl_shadowed_re = racl_addr_hit_write[105] & reg_re & !reg_error;
+  assign classb_ctrl_shadowed_re = racl_addr_hit_read[105] & reg_re & !reg_error;
   assign classb_ctrl_shadowed_we = racl_addr_hit_write[105] & reg_we & !reg_error;
 
   assign classb_ctrl_shadowed_en_wd = reg_wdata[0];
@@ -8294,45 +8294,45 @@ module lio_alert_handler_reg_top
   assign classb_clr_regwen_we = racl_addr_hit_write[106] & reg_we & !reg_error;
 
   assign classb_clr_regwen_wd = reg_wdata[0];
-  assign classb_clr_shadowed_re = racl_addr_hit_write[107] & reg_re & !reg_error;
+  assign classb_clr_shadowed_re = racl_addr_hit_read[107] & reg_re & !reg_error;
   assign classb_clr_shadowed_we = racl_addr_hit_write[107] & reg_we & !reg_error;
 
   assign classb_clr_shadowed_wd = reg_wdata[0];
-  assign classb_accum_cnt_re = racl_addr_hit_write[108] & reg_re & !reg_error;
-  assign classb_accum_thresh_shadowed_re = racl_addr_hit_write[109] & reg_re & !reg_error;
+  assign classb_accum_cnt_re = racl_addr_hit_read[108] & reg_re & !reg_error;
+  assign classb_accum_thresh_shadowed_re = racl_addr_hit_read[109] & reg_re & !reg_error;
   assign classb_accum_thresh_shadowed_we = racl_addr_hit_write[109] & reg_we & !reg_error;
 
   assign classb_accum_thresh_shadowed_wd = reg_wdata[15:0];
-  assign classb_timeout_cyc_shadowed_re = racl_addr_hit_write[110] & reg_re & !reg_error;
+  assign classb_timeout_cyc_shadowed_re = racl_addr_hit_read[110] & reg_re & !reg_error;
   assign classb_timeout_cyc_shadowed_we = racl_addr_hit_write[110] & reg_we & !reg_error;
 
   assign classb_timeout_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classb_crashdump_trigger_shadowed_re = racl_addr_hit_write[111] & reg_re & !reg_error;
+  assign classb_crashdump_trigger_shadowed_re = racl_addr_hit_read[111] & reg_re & !reg_error;
   assign classb_crashdump_trigger_shadowed_we = racl_addr_hit_write[111] & reg_we & !reg_error;
 
   assign classb_crashdump_trigger_shadowed_wd = reg_wdata[1:0];
-  assign classb_phase0_cyc_shadowed_re = racl_addr_hit_write[112] & reg_re & !reg_error;
+  assign classb_phase0_cyc_shadowed_re = racl_addr_hit_read[112] & reg_re & !reg_error;
   assign classb_phase0_cyc_shadowed_we = racl_addr_hit_write[112] & reg_we & !reg_error;
 
   assign classb_phase0_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classb_phase1_cyc_shadowed_re = racl_addr_hit_write[113] & reg_re & !reg_error;
+  assign classb_phase1_cyc_shadowed_re = racl_addr_hit_read[113] & reg_re & !reg_error;
   assign classb_phase1_cyc_shadowed_we = racl_addr_hit_write[113] & reg_we & !reg_error;
 
   assign classb_phase1_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classb_phase2_cyc_shadowed_re = racl_addr_hit_write[114] & reg_re & !reg_error;
+  assign classb_phase2_cyc_shadowed_re = racl_addr_hit_read[114] & reg_re & !reg_error;
   assign classb_phase2_cyc_shadowed_we = racl_addr_hit_write[114] & reg_we & !reg_error;
 
   assign classb_phase2_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classb_phase3_cyc_shadowed_re = racl_addr_hit_write[115] & reg_re & !reg_error;
+  assign classb_phase3_cyc_shadowed_re = racl_addr_hit_read[115] & reg_re & !reg_error;
   assign classb_phase3_cyc_shadowed_we = racl_addr_hit_write[115] & reg_we & !reg_error;
 
   assign classb_phase3_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classb_esc_cnt_re = racl_addr_hit_write[116] & reg_re & !reg_error;
-  assign classb_state_re = racl_addr_hit_write[117] & reg_re & !reg_error;
+  assign classb_esc_cnt_re = racl_addr_hit_read[116] & reg_re & !reg_error;
+  assign classb_state_re = racl_addr_hit_read[117] & reg_re & !reg_error;
   assign classc_regwen_we = racl_addr_hit_write[118] & reg_we & !reg_error;
 
   assign classc_regwen_wd = reg_wdata[0];
-  assign classc_ctrl_shadowed_re = racl_addr_hit_write[119] & reg_re & !reg_error;
+  assign classc_ctrl_shadowed_re = racl_addr_hit_read[119] & reg_re & !reg_error;
   assign classc_ctrl_shadowed_we = racl_addr_hit_write[119] & reg_we & !reg_error;
 
   assign classc_ctrl_shadowed_en_wd = reg_wdata[0];
@@ -8357,45 +8357,45 @@ module lio_alert_handler_reg_top
   assign classc_clr_regwen_we = racl_addr_hit_write[120] & reg_we & !reg_error;
 
   assign classc_clr_regwen_wd = reg_wdata[0];
-  assign classc_clr_shadowed_re = racl_addr_hit_write[121] & reg_re & !reg_error;
+  assign classc_clr_shadowed_re = racl_addr_hit_read[121] & reg_re & !reg_error;
   assign classc_clr_shadowed_we = racl_addr_hit_write[121] & reg_we & !reg_error;
 
   assign classc_clr_shadowed_wd = reg_wdata[0];
-  assign classc_accum_cnt_re = racl_addr_hit_write[122] & reg_re & !reg_error;
-  assign classc_accum_thresh_shadowed_re = racl_addr_hit_write[123] & reg_re & !reg_error;
+  assign classc_accum_cnt_re = racl_addr_hit_read[122] & reg_re & !reg_error;
+  assign classc_accum_thresh_shadowed_re = racl_addr_hit_read[123] & reg_re & !reg_error;
   assign classc_accum_thresh_shadowed_we = racl_addr_hit_write[123] & reg_we & !reg_error;
 
   assign classc_accum_thresh_shadowed_wd = reg_wdata[15:0];
-  assign classc_timeout_cyc_shadowed_re = racl_addr_hit_write[124] & reg_re & !reg_error;
+  assign classc_timeout_cyc_shadowed_re = racl_addr_hit_read[124] & reg_re & !reg_error;
   assign classc_timeout_cyc_shadowed_we = racl_addr_hit_write[124] & reg_we & !reg_error;
 
   assign classc_timeout_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classc_crashdump_trigger_shadowed_re = racl_addr_hit_write[125] & reg_re & !reg_error;
+  assign classc_crashdump_trigger_shadowed_re = racl_addr_hit_read[125] & reg_re & !reg_error;
   assign classc_crashdump_trigger_shadowed_we = racl_addr_hit_write[125] & reg_we & !reg_error;
 
   assign classc_crashdump_trigger_shadowed_wd = reg_wdata[1:0];
-  assign classc_phase0_cyc_shadowed_re = racl_addr_hit_write[126] & reg_re & !reg_error;
+  assign classc_phase0_cyc_shadowed_re = racl_addr_hit_read[126] & reg_re & !reg_error;
   assign classc_phase0_cyc_shadowed_we = racl_addr_hit_write[126] & reg_we & !reg_error;
 
   assign classc_phase0_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classc_phase1_cyc_shadowed_re = racl_addr_hit_write[127] & reg_re & !reg_error;
+  assign classc_phase1_cyc_shadowed_re = racl_addr_hit_read[127] & reg_re & !reg_error;
   assign classc_phase1_cyc_shadowed_we = racl_addr_hit_write[127] & reg_we & !reg_error;
 
   assign classc_phase1_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classc_phase2_cyc_shadowed_re = racl_addr_hit_write[128] & reg_re & !reg_error;
+  assign classc_phase2_cyc_shadowed_re = racl_addr_hit_read[128] & reg_re & !reg_error;
   assign classc_phase2_cyc_shadowed_we = racl_addr_hit_write[128] & reg_we & !reg_error;
 
   assign classc_phase2_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classc_phase3_cyc_shadowed_re = racl_addr_hit_write[129] & reg_re & !reg_error;
+  assign classc_phase3_cyc_shadowed_re = racl_addr_hit_read[129] & reg_re & !reg_error;
   assign classc_phase3_cyc_shadowed_we = racl_addr_hit_write[129] & reg_we & !reg_error;
 
   assign classc_phase3_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classc_esc_cnt_re = racl_addr_hit_write[130] & reg_re & !reg_error;
-  assign classc_state_re = racl_addr_hit_write[131] & reg_re & !reg_error;
+  assign classc_esc_cnt_re = racl_addr_hit_read[130] & reg_re & !reg_error;
+  assign classc_state_re = racl_addr_hit_read[131] & reg_re & !reg_error;
   assign classd_regwen_we = racl_addr_hit_write[132] & reg_we & !reg_error;
 
   assign classd_regwen_wd = reg_wdata[0];
-  assign classd_ctrl_shadowed_re = racl_addr_hit_write[133] & reg_re & !reg_error;
+  assign classd_ctrl_shadowed_re = racl_addr_hit_read[133] & reg_re & !reg_error;
   assign classd_ctrl_shadowed_we = racl_addr_hit_write[133] & reg_we & !reg_error;
 
   assign classd_ctrl_shadowed_en_wd = reg_wdata[0];
@@ -8420,41 +8420,41 @@ module lio_alert_handler_reg_top
   assign classd_clr_regwen_we = racl_addr_hit_write[134] & reg_we & !reg_error;
 
   assign classd_clr_regwen_wd = reg_wdata[0];
-  assign classd_clr_shadowed_re = racl_addr_hit_write[135] & reg_re & !reg_error;
+  assign classd_clr_shadowed_re = racl_addr_hit_read[135] & reg_re & !reg_error;
   assign classd_clr_shadowed_we = racl_addr_hit_write[135] & reg_we & !reg_error;
 
   assign classd_clr_shadowed_wd = reg_wdata[0];
-  assign classd_accum_cnt_re = racl_addr_hit_write[136] & reg_re & !reg_error;
-  assign classd_accum_thresh_shadowed_re = racl_addr_hit_write[137] & reg_re & !reg_error;
+  assign classd_accum_cnt_re = racl_addr_hit_read[136] & reg_re & !reg_error;
+  assign classd_accum_thresh_shadowed_re = racl_addr_hit_read[137] & reg_re & !reg_error;
   assign classd_accum_thresh_shadowed_we = racl_addr_hit_write[137] & reg_we & !reg_error;
 
   assign classd_accum_thresh_shadowed_wd = reg_wdata[15:0];
-  assign classd_timeout_cyc_shadowed_re = racl_addr_hit_write[138] & reg_re & !reg_error;
+  assign classd_timeout_cyc_shadowed_re = racl_addr_hit_read[138] & reg_re & !reg_error;
   assign classd_timeout_cyc_shadowed_we = racl_addr_hit_write[138] & reg_we & !reg_error;
 
   assign classd_timeout_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classd_crashdump_trigger_shadowed_re = racl_addr_hit_write[139] & reg_re & !reg_error;
+  assign classd_crashdump_trigger_shadowed_re = racl_addr_hit_read[139] & reg_re & !reg_error;
   assign classd_crashdump_trigger_shadowed_we = racl_addr_hit_write[139] & reg_we & !reg_error;
 
   assign classd_crashdump_trigger_shadowed_wd = reg_wdata[1:0];
-  assign classd_phase0_cyc_shadowed_re = racl_addr_hit_write[140] & reg_re & !reg_error;
+  assign classd_phase0_cyc_shadowed_re = racl_addr_hit_read[140] & reg_re & !reg_error;
   assign classd_phase0_cyc_shadowed_we = racl_addr_hit_write[140] & reg_we & !reg_error;
 
   assign classd_phase0_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classd_phase1_cyc_shadowed_re = racl_addr_hit_write[141] & reg_re & !reg_error;
+  assign classd_phase1_cyc_shadowed_re = racl_addr_hit_read[141] & reg_re & !reg_error;
   assign classd_phase1_cyc_shadowed_we = racl_addr_hit_write[141] & reg_we & !reg_error;
 
   assign classd_phase1_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classd_phase2_cyc_shadowed_re = racl_addr_hit_write[142] & reg_re & !reg_error;
+  assign classd_phase2_cyc_shadowed_re = racl_addr_hit_read[142] & reg_re & !reg_error;
   assign classd_phase2_cyc_shadowed_we = racl_addr_hit_write[142] & reg_we & !reg_error;
 
   assign classd_phase2_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classd_phase3_cyc_shadowed_re = racl_addr_hit_write[143] & reg_re & !reg_error;
+  assign classd_phase3_cyc_shadowed_re = racl_addr_hit_read[143] & reg_re & !reg_error;
   assign classd_phase3_cyc_shadowed_we = racl_addr_hit_write[143] & reg_we & !reg_error;
 
   assign classd_phase3_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classd_esc_cnt_re = racl_addr_hit_write[144] & reg_re & !reg_error;
-  assign classd_state_re = racl_addr_hit_write[145] & reg_re & !reg_error;
+  assign classd_esc_cnt_re = racl_addr_hit_read[144] & reg_re & !reg_error;
+  assign classd_state_re = racl_addr_hit_read[145] & reg_re & !reg_error;
 
   // Assign write-enables to checker logic vector.
   always_comb begin

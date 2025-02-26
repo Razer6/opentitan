@@ -73494,49 +73494,49 @@ module lio_rv_plic_reg_top
   assign threshold0_we = racl_addr_hit_write[320] & reg_we & !reg_error;
 
   assign threshold0_wd = reg_wdata[1:0];
-  assign cc0_re = racl_addr_hit_write[321] & reg_re & !reg_error;
+  assign cc0_re = racl_addr_hit_read[321] & reg_re & !reg_error;
   assign cc0_we = racl_addr_hit_write[321] & reg_we & !reg_error;
 
   assign cc0_wd = reg_wdata[7:0];
   assign threshold1_we = racl_addr_hit_write[322] & reg_we & !reg_error;
 
   assign threshold1_wd = reg_wdata[1:0];
-  assign cc1_re = racl_addr_hit_write[323] & reg_re & !reg_error;
+  assign cc1_re = racl_addr_hit_read[323] & reg_re & !reg_error;
   assign cc1_we = racl_addr_hit_write[323] & reg_we & !reg_error;
 
   assign cc1_wd = reg_wdata[7:0];
   assign threshold2_we = racl_addr_hit_write[324] & reg_we & !reg_error;
 
   assign threshold2_wd = reg_wdata[1:0];
-  assign cc2_re = racl_addr_hit_write[325] & reg_re & !reg_error;
+  assign cc2_re = racl_addr_hit_read[325] & reg_re & !reg_error;
   assign cc2_we = racl_addr_hit_write[325] & reg_we & !reg_error;
 
   assign cc2_wd = reg_wdata[7:0];
   assign threshold3_we = racl_addr_hit_write[326] & reg_we & !reg_error;
 
   assign threshold3_wd = reg_wdata[1:0];
-  assign cc3_re = racl_addr_hit_write[327] & reg_re & !reg_error;
+  assign cc3_re = racl_addr_hit_read[327] & reg_re & !reg_error;
   assign cc3_we = racl_addr_hit_write[327] & reg_we & !reg_error;
 
   assign cc3_wd = reg_wdata[7:0];
   assign threshold4_we = racl_addr_hit_write[328] & reg_we & !reg_error;
 
   assign threshold4_wd = reg_wdata[1:0];
-  assign cc4_re = racl_addr_hit_write[329] & reg_re & !reg_error;
+  assign cc4_re = racl_addr_hit_read[329] & reg_re & !reg_error;
   assign cc4_we = racl_addr_hit_write[329] & reg_we & !reg_error;
 
   assign cc4_wd = reg_wdata[7:0];
   assign threshold5_we = racl_addr_hit_write[330] & reg_we & !reg_error;
 
   assign threshold5_wd = reg_wdata[1:0];
-  assign cc5_re = racl_addr_hit_write[331] & reg_re & !reg_error;
+  assign cc5_re = racl_addr_hit_read[331] & reg_re & !reg_error;
   assign cc5_we = racl_addr_hit_write[331] & reg_we & !reg_error;
 
   assign cc5_wd = reg_wdata[7:0];
   assign threshold6_we = racl_addr_hit_write[332] & reg_we & !reg_error;
 
   assign threshold6_wd = reg_wdata[1:0];
-  assign cc6_re = racl_addr_hit_write[333] & reg_re & !reg_error;
+  assign cc6_re = racl_addr_hit_read[333] & reg_re & !reg_error;
   assign cc6_we = racl_addr_hit_write[333] & reg_we & !reg_error;
 
   assign cc6_wd = reg_wdata[7:0];
