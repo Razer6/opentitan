@@ -632,7 +632,7 @@ module top_mio #(
   );
   mbx #(
     .EnableRacl(1'b1),
-    .RaclErrorRsp(1'b0),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX0_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX0_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX0_SOC_RDATA),
@@ -668,7 +668,7 @@ module top_mio #(
   );
   mbx #(
     .EnableRacl(1'b1),
-    .RaclErrorRsp(1'b0),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX1_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX1_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX1_SOC_RDATA),
@@ -704,7 +704,7 @@ module top_mio #(
   );
   mbx #(
     .EnableRacl(1'b1),
-    .RaclErrorRsp(1'b0),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX2_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX2_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX2_SOC_RDATA),
@@ -740,7 +740,7 @@ module top_mio #(
   );
   mbx #(
     .EnableRacl(1'b1),
-    .RaclErrorRsp(1'b0),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX3_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX3_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX3_SOC_RDATA),
@@ -776,7 +776,7 @@ module top_mio #(
   );
   mbx #(
     .EnableRacl(1'b1),
-    .RaclErrorRsp(1'b0),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX4_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX4_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX4_SOC_RDATA),
@@ -812,7 +812,7 @@ module top_mio #(
   );
   mbx #(
     .EnableRacl(1'b1),
-    .RaclErrorRsp(1'b0),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX5_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX5_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX5_SOC_RDATA),
@@ -848,7 +848,7 @@ module top_mio #(
   );
   mbx #(
     .EnableRacl(1'b1),
-    .RaclErrorRsp(1'b0),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX_PCIE0_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_RDATA),
@@ -907,7 +907,7 @@ module top_mio #(
   );
   ac_range_check_mio #(
     .EnableRacl(1'b1),
-    .RaclErrorRsp(1'b0),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
     .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[25:24])
   ) u_ac_range_check (
