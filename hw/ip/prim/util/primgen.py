@@ -63,6 +63,7 @@ def _techlibs(prim_cores):
     for name, info in prim_cores.items():
         vlnv = _split_vlnv(name)
         techlibs.add(_library_to_techlib_name(vlnv['library']))
+    techlibs.discard("abstract")
     return techlibs
 
 
