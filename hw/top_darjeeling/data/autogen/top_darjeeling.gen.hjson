@@ -9942,7 +9942,7 @@
       {
         null:
         {
-          soc_mbx: 0x01463000
+          soc_mbx: 0x01461f00
         }
       }
       generate_dif: true
@@ -14580,7 +14580,7 @@
             {
               base_addrs:
               {
-                soc_mbx: 0x1463000
+                soc_mbx: 0x1461f00
               }
               size_byte: 0x40
             }
