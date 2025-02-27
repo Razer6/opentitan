@@ -8,3 +8,5 @@ waive -rules {HIER_NET_NOT_READ} -location {${module_instance_name}_reg_top.sv} 
       -comment "Internal register is accepted to not be read. Tracked in #25663."
 
 waive -rules {LINE_LENGTH} -location {${module_instance_name}_reg_pkg.sv} -comment "Auto generated lines may be too long"
+
+waive -rules {LINE_LENGTH} -location {${module_instance_name}.sv} -comment "Auto generated lines may be too long"

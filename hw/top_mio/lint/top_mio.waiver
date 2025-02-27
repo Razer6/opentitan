@@ -20,3 +20,24 @@ waive -rules INPUT_NOT_READ -location {top_mio.sv} -regexp {Input port 'rst_en_e
 
 waive -rules {CONST_FF} -location {prim_ram_1p_adv.sv} -regexp {Flip-flop 'rerror_q' is driven by constant zeros in module 'prim_ram_1p_adv'} \
       -comment "This particular instance is ok since we do not use the wmask when ECC is disabled."
+
+waive -rules {LINE_LENGTH} -location {top_mio.sv} -regexp {Line length of [0-9]+ exceeds 100 character limit} \
+      -comment "top_mio is auto-generated and adhering to the line length limit is not always feasible for auto-generated code"
+
+# FIXME: Rivos waivers to make lint clean for smoke
+# FIXME, remove that later
+waive -rules {NOT_READ} -location {tlul_socket_m1.sv} \
+      -msg {Signal 'OT_dfifo_rspready_merged' is not read from in module 'tlul_socket_m1'} \
+      -comment "Custom Rivos timing fix"
+
+waive -rules {NOT_READ} -location {tlul_socket_m1.sv} \
+      -msg {Signal 'TIMING_dfifo_rspready_merged' is not read from in module 'tlul_socket_m1'} \
+      -comment "Custom Rivos timing fix"
+
+ waive -rules {PARAM_NOT_USED} -location {prim_generic_ram_1p.sv} \
+      -msg {Parameter 'MemInitFile' not used in module 'prim_generic_ram_1p'} \
+      -comment "MemInitFile is not used in synthesis for Rivos"
+
+waive -rules {LINE_LENGTH} -location {prim_misc_dft_pkg.sv} \
+      -regexp {Line length of } \
+      -comment "Waive Rivos line length"

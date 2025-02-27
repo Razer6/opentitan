@@ -8,3 +8,5 @@ waive -rules {HIER_NET_NOT_READ} -location {racl_ctrl_reg_top.sv} -regexp {error
       -comment "Internal register is accepted to not be read. Tracked in #25663."
 
 waive -rules {LINE_LENGTH} -location {racl_ctrl_reg_pkg.sv} -comment "Auto generated lines may be too long"
+
+waive -rules {LINE_LENGTH} -location {racl_ctrl.sv} -comment "Auto generated lines may be too long"

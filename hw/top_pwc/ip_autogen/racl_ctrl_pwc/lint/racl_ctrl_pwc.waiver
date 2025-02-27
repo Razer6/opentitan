@@ -8,3 +8,5 @@ waive -rules {HIER_NET_NOT_READ} -location {racl_ctrl_pwc_reg_top.sv} -regexp {e
       -comment "Internal register is accepted to not be read. Tracked in #25663."
 
 waive -rules {LINE_LENGTH} -location {racl_ctrl_pwc_reg_pkg.sv} -comment "Auto generated lines may be too long"
+
+waive -rules {LINE_LENGTH} -location {racl_ctrl_pwc.sv} -comment "Auto generated lines may be too long"
