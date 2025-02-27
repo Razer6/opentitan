@@ -19,9 +19,88 @@ workflow:
     - if: $CI_COMMIT_TAG
     - if: $CI_COMMIT_REF_PROTECTED == "true"
 
+variables:
+  GIT_CLEAN_FLAGS: -ffdx -e .cache/ -e 11e283c7cfdf742e8a30d55ba62ebe28/
+  OT_DESTRUCTIVE: 1
+
+#
+# Authentication helper for git accesses.
+#
+# It transforms the SSH repository URLs (working in the developers environment)
+# into HTTPS ones authenticated by the CI Job token.
+#
+# Use environment variables to store the Git config to avoid storing the
+# config in the CI runner's home (where it might leak to other runs), or in
+# the repository itself (where the OpenTitan scripts would detect it as a
+# dirty file and remove it).
+#
+.git-auth-fixup: &git-auth-fixup
+  before_script:
+    - export GIT_CONFIG_COUNT=2
+    - export GIT_CONFIG_KEY_0=url."https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.ba.rivosinc.com/".insteadOf
+    - export GIT_CONFIG_VALUE_0='git@gitlab.ba.rivosinc.com:'
+    - export GIT_CONFIG_KEY_1=url."https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.ba.rivosinc.com/".insteadOf
+    - export GIT_CONFIG_VALUE_1="ssh://git@gitlab.ba.rivosinc.com"
+
+.clone-rvsys: &clone-rvsys
+  - mkdir hw/foundry
+  - git clone --depth 1 --branch rivos/main https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.ba.rivosinc.com/rv/si/int/rvsys.git hw/foundry/rvsys
+
+.setup-ot-env: &setup-ot-env
+  - set +e
+  - module purge
+  - module load rivos/init opentitan/1.0.1 rust
+
 check_change_id:
   tags: [shell]
   stage: check
   script:
     - ./ci/scripts/check-change-id.sh
 
+check_generated:
+  tags: [shell]
+  stage: check
+  extends: .git-auth-fixup
+  script:
+    - *setup-ot-env
+    - *clone-rvsys
+    - ./ci/scripts/check-generated.sh
+  rules:
+    - changes:
+      - hw/**/*
+      when: always
+
+.lint-rtl:
+  tags: [centos7-hw-shell]
+  stage: check
+  extends: .git-auth-fixup
+  script:
+    - *setup-ot-env
+    - *clone-rvsys
+    - module load ascentlint
+    - fusesoc --cores-root . run --flag fileset_top --flag fileset_opentitan_lint --target lint --tool ascentlint --flag local_exe  lowrisc:systems:${TEST_TARGET}
+  rules:
+    - changes:
+      - hw/**/*
+      when: always
+  artifacts:
+    when: on_failure
+    paths:
+      - build/lowrisc_systems_${TEST_TARGET}_0.1/lint-ascentlint/*.log
+      - build/lowrisc_systems_${TEST_TARGET}_0.1/lint-ascentlint/*.rpt
+    expire_in: 1 week
+
+lint_rot:
+  extends: .lint-rtl
+  variables:
+    TEST_TARGET: top_darjeeling
+
+lint_mio:
+  extends: .lint-rtl
+  variables:
+    TEST_TARGET: top_mio
+
+lint_pwc:
+  extends: .lint-rtl
+  variables:
+    TEST_TARGET: top_pwc
