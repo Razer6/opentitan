@@ -1325,8 +1325,11 @@
       'soc_proxy.dma_tl_h2d' : ['dma.ctn_tl_h2d']
       'soc_proxy.dma_tl_d2h' : ['dma.ctn_tl_d2h']
 
-      'soc_proxy.ctn_tl_h2d' : ['ac_range_check.ctn_tl_h2d']
-      'soc_proxy.ctn_tl_d2h' : ['ac_range_check.ctn_tl_d2h']
+      'soc_proxy.muxed_tl_h2d' : ['ac_range_check.ctn_tl_h2d']
+      'soc_proxy.muxed_tl_d2h' : ['ac_range_check.ctn_tl_d2h']
+
+      'ac_range_check.ctn_filtered_tl_h2d' : ['soc_proxy.ac_range_tl_h2d'],
+      'ac_range_check.ctn_filtered_tl_d2h' : ['soc_proxy.ac_range_tl_d2h'],
     }
 
     // top is to connect to top net/struct.
@@ -1467,14 +1470,14 @@
         'soc_proxy.soc_gpi_async'              : 'soc_gpi_async',
         'soc_proxy.soc_gpo_async'              : 'soc_gpo_async',
         'soc_proxy.integrator_id'              : 'integrator_id',
+        'soc_proxy.ctn_tl_h2d'                 : 'ctn_tl_h2d',
+        'soc_proxy.ctn_tl_d2h'                 : 'ctn_tl_d2h',
         'spi_device.sck_monitor'               : 'sck_monitor',
         'soc_dbg_ctrl.soc_dbg_policy_bus'      : 'soc_dbg_policy_bus',
         'soc_dbg_ctrl.halt_cpu_boot'           : 'debug_halt_cpu_boot',
         'racl_ctrl.racl_policies'              : 'racl_policies',
         'racl_ctrl.racl_error_external'        : 'racl_error',
         'ac_range_check.range_check_overwrite' : 'ac_range_check_overwrite',
-        'ac_range_check.ctn_filtered_tl_h2d'   : 'ctn_tl_h2d',
-        'ac_range_check.ctn_filtered_tl_d2h'   : 'ctn_tl_d2h',
         // Additional Rivos DFT signals
         'spi_device.tston'                     : 'tston',
     },

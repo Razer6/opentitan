@@ -3902,6 +3902,92 @@
           index: -1
         }
         {
+          name: muxed_tl_h2d
+          desc: Muxed TL-UL host port to go into AC ranges (request part), synchronous
+          struct: tl_h2d
+          package: tlul_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: soc_proxy
+          default: ""
+          end_idx: -1
+          top_type: broadcast
+          top_signame: soc_proxy_muxed_tl_h2d
+          index: -1
+        }
+        {
+          name: muxed_tl_d2h
+          desc: Muxed TL-UL host port to go into AC ranges (response part), synchronous
+          struct: tl_d2h
+          package: tlul_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: soc_proxy
+          default: ""
+          end_idx: -1
+          top_type: broadcast
+          top_signame: soc_proxy_muxed_tl_d2h
+          index: -1
+        }
+        {
+          name: ac_range_tl_h2d
+          desc: TL-UL host port from the AC range, through BAT, to CTN (request part), synchronous
+          struct: tl_h2d
+          package: tlul_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: soc_proxy
+          default: ""
+          top_signame: ac_range_check_ctn_filtered_tl_h2d
+          index: -1
+        }
+        {
+          name: ac_range_tl_d2h
+          desc: TL-UL host port from the AC range, through BAT, to CTN(response part), synchronous
+          struct: tl_d2h
+          package: tlul_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: soc_proxy
+          default: ""
+          top_signame: ac_range_check_ctn_filtered_tl_d2h
+          index: -1
+        }
+        {
+          name: ctn_tl_h2d
+          desc: TL-UL host port for egress into CTN (request part), synchronous
+          struct: tl_h2d
+          package: tlul_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: soc_proxy
+          default: ""
+          external: true
+          top_signame: ctn_tl_h2d
+          conn_type: false
+          index: -1
+        }
+        {
+          name: ctn_tl_d2h
+          desc: TL-UL host port for egress into CTN (response part), synchronous
+          struct: tl_d2h
+          package: tlul_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: soc_proxy
+          default: ""
+          external: true
+          top_signame: ctn_tl_d2h
+          conn_type: false
+          index: -1
+        }
+        {
           name: wkup_internal_req
           struct: logic
           type: uni
@@ -3936,36 +4022,6 @@
           package: ""
           top_signame: pwrmgr_aon_rstreqs
           index: 1
-        }
-        {
-          name: ctn_tl_h2d
-          desc: TL-UL host port for egress into CTN (request part), synchronous
-          struct: tl_h2d
-          package: tlul_pkg
-          type: uni
-          act: req
-          width: 1
-          inst_name: soc_proxy
-          default: ""
-          end_idx: -1
-          top_type: broadcast
-          top_signame: soc_proxy_ctn_tl_h2d
-          index: -1
-        }
-        {
-          name: ctn_tl_d2h
-          desc: TL-UL host port for egress into CTN (response part), synchronous
-          struct: tl_d2h
-          package: tlul_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: soc_proxy
-          default: ""
-          end_idx: -1
-          top_type: broadcast
-          top_signame: soc_proxy_ctn_tl_d2h
-          index: -1
         }
         {
           name: i2c_lsio_trigger
@@ -9950,7 +10006,7 @@
           width: 1
           inst_name: ac_range_check
           default: ""
-          top_signame: soc_proxy_ctn_tl_h2d
+          top_signame: soc_proxy_muxed_tl_h2d
           index: -1
         }
         {
@@ -9963,7 +10019,7 @@
           width: 1
           inst_name: ac_range_check
           default: ""
-          top_signame: soc_proxy_ctn_tl_d2h
+          top_signame: soc_proxy_muxed_tl_d2h
           index: -1
         }
         {
@@ -9976,9 +10032,9 @@
           width: 1
           inst_name: ac_range_check
           default: ""
-          external: true
-          top_signame: ctn_tl_h2d
-          conn_type: false
+          end_idx: -1
+          top_type: broadcast
+          top_signame: ac_range_check_ctn_filtered_tl_h2d
           index: -1
         }
         {
@@ -9991,9 +10047,9 @@
           width: 1
           inst_name: ac_range_check
           default: ""
-          external: true
-          top_signame: ctn_tl_d2h
-          conn_type: false
+          end_idx: -1
+          top_type: broadcast
+          top_signame: ac_range_check_ctn_filtered_tl_d2h
           index: -1
         }
         {
@@ -11140,13 +11196,21 @@
       [
         dma.ctn_tl_d2h
       ]
-      soc_proxy.ctn_tl_h2d:
+      soc_proxy.muxed_tl_h2d:
       [
         ac_range_check.ctn_tl_h2d
       ]
-      soc_proxy.ctn_tl_d2h:
+      soc_proxy.muxed_tl_d2h:
       [
         ac_range_check.ctn_tl_d2h
+      ]
+      ac_range_check.ctn_filtered_tl_h2d:
+      [
+        soc_proxy.ac_range_tl_h2d
+      ]
+      ac_range_check.ctn_filtered_tl_d2h:
+      [
+        soc_proxy.ac_range_tl_d2h
       ]
       pwrmgr_aon.wakeups:
       [
@@ -11628,14 +11692,14 @@
       soc_proxy.soc_gpi_async: soc_gpi_async
       soc_proxy.soc_gpo_async: soc_gpo_async
       soc_proxy.integrator_id: integrator_id
+      soc_proxy.ctn_tl_h2d: ctn_tl_h2d
+      soc_proxy.ctn_tl_d2h: ctn_tl_d2h
       spi_device.sck_monitor: sck_monitor
       soc_dbg_ctrl.soc_dbg_policy_bus: soc_dbg_policy_bus
       soc_dbg_ctrl.halt_cpu_boot: debug_halt_cpu_boot
       racl_ctrl.racl_policies: racl_policies
       racl_ctrl.racl_error_external: racl_error
       ac_range_check.range_check_overwrite: ac_range_check_overwrite
-      ac_range_check.ctn_filtered_tl_h2d: ctn_tl_h2d
-      ac_range_check.ctn_filtered_tl_d2h: ctn_tl_d2h
       spi_device.tston: tston
     }
   }
@@ -23320,6 +23384,92 @@
         index: -1
       }
       {
+        name: muxed_tl_h2d
+        desc: Muxed TL-UL host port to go into AC ranges (request part), synchronous
+        struct: tl_h2d
+        package: tlul_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: soc_proxy
+        default: ""
+        end_idx: -1
+        top_type: broadcast
+        top_signame: soc_proxy_muxed_tl_h2d
+        index: -1
+      }
+      {
+        name: muxed_tl_d2h
+        desc: Muxed TL-UL host port to go into AC ranges (response part), synchronous
+        struct: tl_d2h
+        package: tlul_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: soc_proxy
+        default: ""
+        end_idx: -1
+        top_type: broadcast
+        top_signame: soc_proxy_muxed_tl_d2h
+        index: -1
+      }
+      {
+        name: ac_range_tl_h2d
+        desc: TL-UL host port from the AC range, through BAT, to CTN (request part), synchronous
+        struct: tl_h2d
+        package: tlul_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: soc_proxy
+        default: ""
+        top_signame: ac_range_check_ctn_filtered_tl_h2d
+        index: -1
+      }
+      {
+        name: ac_range_tl_d2h
+        desc: TL-UL host port from the AC range, through BAT, to CTN(response part), synchronous
+        struct: tl_d2h
+        package: tlul_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: soc_proxy
+        default: ""
+        top_signame: ac_range_check_ctn_filtered_tl_d2h
+        index: -1
+      }
+      {
+        name: ctn_tl_h2d
+        desc: TL-UL host port for egress into CTN (request part), synchronous
+        struct: tl_h2d
+        package: tlul_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: soc_proxy
+        default: ""
+        external: true
+        top_signame: ctn_tl_h2d
+        conn_type: false
+        index: -1
+      }
+      {
+        name: ctn_tl_d2h
+        desc: TL-UL host port for egress into CTN (response part), synchronous
+        struct: tl_d2h
+        package: tlul_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: soc_proxy
+        default: ""
+        external: true
+        top_signame: ctn_tl_d2h
+        conn_type: false
+        index: -1
+      }
+      {
         name: wkup_internal_req
         struct: logic
         type: uni
@@ -23354,36 +23504,6 @@
         package: ""
         top_signame: pwrmgr_aon_rstreqs
         index: 1
-      }
-      {
-        name: ctn_tl_h2d
-        desc: TL-UL host port for egress into CTN (request part), synchronous
-        struct: tl_h2d
-        package: tlul_pkg
-        type: uni
-        act: req
-        width: 1
-        inst_name: soc_proxy
-        default: ""
-        end_idx: -1
-        top_type: broadcast
-        top_signame: soc_proxy_ctn_tl_h2d
-        index: -1
-      }
-      {
-        name: ctn_tl_d2h
-        desc: TL-UL host port for egress into CTN (response part), synchronous
-        struct: tl_d2h
-        package: tlul_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: soc_proxy
-        default: ""
-        end_idx: -1
-        top_type: broadcast
-        top_signame: soc_proxy_ctn_tl_d2h
-        index: -1
       }
       {
         name: i2c_lsio_trigger
@@ -26832,7 +26952,7 @@
         width: 1
         inst_name: ac_range_check
         default: ""
-        top_signame: soc_proxy_ctn_tl_h2d
+        top_signame: soc_proxy_muxed_tl_h2d
         index: -1
       }
       {
@@ -26845,7 +26965,7 @@
         width: 1
         inst_name: ac_range_check
         default: ""
-        top_signame: soc_proxy_ctn_tl_d2h
+        top_signame: soc_proxy_muxed_tl_d2h
         index: -1
       }
       {
@@ -26858,9 +26978,9 @@
         width: 1
         inst_name: ac_range_check
         default: ""
-        external: true
-        top_signame: ctn_tl_h2d
-        conn_type: false
+        end_idx: -1
+        top_type: broadcast
+        top_signame: ac_range_check_ctn_filtered_tl_h2d
         index: -1
       }
       {
@@ -26873,9 +26993,9 @@
         width: 1
         inst_name: ac_range_check
         default: ""
-        external: true
-        top_signame: ctn_tl_d2h
-        conn_type: false
+        end_idx: -1
+        top_type: broadcast
+        top_signame: ac_range_check_ctn_filtered_tl_d2h
         index: -1
       }
       {
@@ -29740,6 +29860,30 @@
         netname: integrator_id
       }
       {
+        package: tlul_pkg
+        struct: tl_h2d
+        signame: ctn_tl_h2d_o
+        width: 1
+        type: uni
+        default: ""
+        direction: out
+        conn_type: false
+        index: -1
+        netname: ctn_tl_h2d
+      }
+      {
+        package: tlul_pkg
+        struct: tl_d2h
+        signame: ctn_tl_d2h_i
+        width: 1
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: ctn_tl_d2h
+      }
+      {
         package: ""
         struct: logic
         signame: sck_monitor_o
@@ -29820,30 +29964,6 @@
         conn_type: false
         index: -1
         netname: ac_range_check_overwrite
-      }
-      {
-        package: tlul_pkg
-        struct: tl_h2d
-        signame: ctn_tl_h2d_o
-        width: 1
-        type: uni
-        default: ""
-        direction: out
-        conn_type: false
-        index: -1
-        netname: ctn_tl_h2d
-      }
-      {
-        package: tlul_pkg
-        struct: tl_d2h
-        signame: ctn_tl_d2h_i
-        width: 1
-        type: uni
-        default: ""
-        direction: in
-        conn_type: false
-        index: -1
-        netname: ctn_tl_d2h
       }
       {
         package: prim_mubi_pkg
@@ -30686,7 +30806,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: soc_proxy_ctn_tl_h2d
+        signame: soc_proxy_muxed_tl_h2d
         width: 1
         type: uni
         end_idx: -1
@@ -30697,7 +30817,29 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: soc_proxy_ctn_tl_d2h
+        signame: soc_proxy_muxed_tl_d2h
+        width: 1
+        type: uni
+        end_idx: -1
+        act: rcv
+        suffix: ""
+        default: tlul_pkg::TL_D2H_DEFAULT
+      }
+      {
+        package: tlul_pkg
+        struct: tl_h2d
+        signame: ac_range_check_ctn_filtered_tl_h2d
+        width: 1
+        type: uni
+        end_idx: -1
+        act: req
+        suffix: ""
+        default: tlul_pkg::TL_H2D_DEFAULT
+      }
+      {
+        package: tlul_pkg
+        struct: tl_d2h
+        signame: ac_range_check_ctn_filtered_tl_d2h
         width: 1
         type: uni
         end_idx: -1

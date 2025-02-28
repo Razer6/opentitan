@@ -17,11 +17,31 @@ module soc_proxy
   input  logic clk_aon_i,
   input  logic rst_por_ni,
 
+  // Device interface
   input  tlul_pkg::tl_h2d_t core_tl_i,
   output tlul_pkg::tl_d2h_t core_tl_o,
 
+  // Egress port to CTN from fabric, to be muxed
   input  tlul_pkg::tl_h2d_t ctn_tl_i,
   output tlul_pkg::tl_d2h_t ctn_tl_o,
+
+  // Incomig TL ports to get muxed
+  input  tlul_pkg::tl_h2d_t dma_tl_h2d_i,
+  output tlul_pkg::tl_d2h_t dma_tl_d2h_o,
+  input  tlul_pkg::tl_h2d_t misc_tl_h2d_i,
+  output tlul_pkg::tl_d2h_t misc_tl_d2h_o,
+
+  // Muxed TLUL port going to AC-Ranges
+  output tlul_pkg::tl_h2d_t muxed_tl_h2d_o,
+  input tlul_pkg::tl_d2h_t  muxed_tl_d2h_i,
+
+  // AC-Range checked incoming port, to be BAT'ed
+  input  tlul_pkg::tl_h2d_t ac_range_tl_h2d_i,
+  output tlul_pkg::tl_d2h_t ac_range_tl_d2h_o,
+
+  // Final egress port to CTN
+  output tlul_pkg::tl_h2d_t ctn_tl_h2d_o,
+  input  tlul_pkg::tl_d2h_t ctn_tl_d2h_i,
 
   input  prim_alert_pkg::alert_rx_t [NumAlerts-1:0] alert_rx_i,
   output prim_alert_pkg::alert_tx_t [NumAlerts-1:0] alert_tx_o,
@@ -45,15 +65,6 @@ module soc_proxy
   input  logic       uart_lsio_trigger_i,
   input  logic [7:0] soc_lsio_trigger_i,
   output dma_pkg::lsio_trigger_t dma_lsio_trigger_o,
-
-  // Incomig TL ports get muxed
-  input  tlul_pkg::tl_h2d_t dma_tl_h2d_i,
-  output tlul_pkg::tl_d2h_t dma_tl_d2h_o,
-  input  tlul_pkg::tl_h2d_t misc_tl_h2d_i,
-  output tlul_pkg::tl_d2h_t misc_tl_d2h_o,
-
-  output tlul_pkg::tl_h2d_t ctn_tl_h2d_o,
-  input  tlul_pkg::tl_d2h_t ctn_tl_d2h_i,
 
   input  soc_alert_req_t [NumFatalExternalAlerts-1:0] soc_fatal_alert_i,
   output soc_alert_rsp_t [NumFatalExternalAlerts-1:0] soc_fatal_alert_o,
@@ -99,18 +110,18 @@ module soc_proxy
     .DReqDepth ( 4'd4                  ),
     .DRspDepth ( 4'd4                  )
   ) u_ctn_egress_mux (
-    .clk_i  ( clk_i             ),
-    .rst_ni ( rst_ni            ),
-    .tl_h_i ( host_tl_h2d       ),
-    .tl_h_o ( host_tl_d2h       ),
-    .tl_d_o ( muxed_host_tl_h2d ),
-    .tl_d_i ( muxed_host_tl_d2h )
+    .clk_i  ( clk_i          ),
+    .rst_ni ( rst_ni         ),
+    .tl_h_i ( host_tl_h2d    ),
+    .tl_h_o ( host_tl_d2h    ),
+    .tl_d_o ( muxed_tl_h2d_o ),
+    .tl_d_i ( muxed_tl_d2h_i )
   );
 
   // Perform the base address translation before exiting to the AC Ranges
   bat u_bat (
-    .tl_in_h2d_i     ( muxed_host_tl_h2d ),
-    .tl_in_d2h_o     ( muxed_host_tl_d2h ),
+    .tl_in_h2d_i     ( ac_range_tl_h2d_i ),
+    .tl_in_d2h_o     ( ac_range_tl_d2h_o ),
     .integrator_id_i ( integrator_id_i   ),
     .tl_out_h2d_o    ( ctn_tl_h2d_o      ),
     .tl_out_d2h_i    ( ctn_tl_d2h_i      )

@@ -284,14 +284,14 @@ module top_darjeeling #(
   output logic [15:0] soc_gpi_async_o,
   input  logic [15:0] soc_gpo_async_i,
   input  logic [3:0] integrator_id_i,
+  output tlul_pkg::tl_h2d_t       ctn_tl_h2d_o,
+  input  tlul_pkg::tl_d2h_t       ctn_tl_d2h_i,
   output logic       sck_monitor_o,
   output soc_dbg_ctrl_pkg::soc_dbg_policy_t       soc_dbg_policy_bus_o,
   input  logic       debug_halt_cpu_boot_i,
   output top_racl_pkg::racl_policy_vec_t       racl_policies_o,
   input  top_racl_pkg::racl_error_log_t [RaclCtrlNumExternalSubscribingIps-1:0] racl_error_i,
   input  prim_mubi_pkg::mubi8_t       ac_range_check_overwrite_i,
-  output tlul_pkg::tl_h2d_t       ctn_tl_h2d_o,
-  input  tlul_pkg::tl_d2h_t       ctn_tl_d2h_i,
   input  prim_mubi_pkg::mubi4_t       tston_i,
 
   // Incoming interrupt of group rot_external
@@ -623,8 +623,10 @@ module top_darjeeling #(
   prim_mubi_pkg::mubi4_t       rstmgr_aon_sw_rst_req;
   tlul_pkg::tl_h2d_t       soc_proxy_dma_tl_h2d;
   tlul_pkg::tl_d2h_t       soc_proxy_dma_tl_d2h;
-  tlul_pkg::tl_h2d_t       soc_proxy_ctn_tl_h2d;
-  tlul_pkg::tl_d2h_t       soc_proxy_ctn_tl_d2h;
+  tlul_pkg::tl_h2d_t       soc_proxy_muxed_tl_h2d;
+  tlul_pkg::tl_d2h_t       soc_proxy_muxed_tl_d2h;
+  tlul_pkg::tl_h2d_t       ac_range_check_ctn_filtered_tl_h2d;
+  tlul_pkg::tl_d2h_t       ac_range_check_ctn_filtered_tl_d2h;
   logic [3:0] pwrmgr_aon_wakeups;
   logic [1:0] pwrmgr_aon_rstreqs;
   tlul_pkg::tl_h2d_t       main_tl_rv_core_ibex__corei_req;
@@ -1690,11 +1692,15 @@ module top_darjeeling #(
       .dma_tl_d2h_o(soc_proxy_dma_tl_d2h),
       .misc_tl_h2d_i(ctn_misc_tl_h2d_i),
       .misc_tl_d2h_o(ctn_misc_tl_d2h_o),
+      .muxed_tl_h2d_o(soc_proxy_muxed_tl_h2d),
+      .muxed_tl_d2h_i(soc_proxy_muxed_tl_d2h),
+      .ac_range_tl_h2d_i(ac_range_check_ctn_filtered_tl_h2d),
+      .ac_range_tl_d2h_o(ac_range_check_ctn_filtered_tl_d2h),
+      .ctn_tl_h2d_o(ctn_tl_h2d_o),
+      .ctn_tl_d2h_i(ctn_tl_d2h_i),
       .wkup_internal_req_o(pwrmgr_aon_wakeups[2]),
       .wkup_external_req_o(pwrmgr_aon_wakeups[3]),
       .rst_req_external_o(pwrmgr_aon_rstreqs[1]),
-      .ctn_tl_h2d_o(soc_proxy_ctn_tl_h2d),
-      .ctn_tl_d2h_i(soc_proxy_ctn_tl_d2h),
       .i2c_lsio_trigger_i(i2c0_lsio_trigger),
       .spi_host_lsio_trigger_i(spi_host0_lsio_trigger),
       .uart_lsio_trigger_i(uart0_lsio_trigger),
@@ -2682,10 +2688,10 @@ module top_darjeeling #(
 
       // Inter-module signals
       .range_check_overwrite_i(ac_range_check_overwrite_i),
-      .ctn_tl_h2d_i(soc_proxy_ctn_tl_h2d),
-      .ctn_tl_d2h_o(soc_proxy_ctn_tl_d2h),
-      .ctn_filtered_tl_h2d_o(ctn_tl_h2d_o),
-      .ctn_filtered_tl_d2h_i(ctn_tl_d2h_i),
+      .ctn_tl_h2d_i(soc_proxy_muxed_tl_h2d),
+      .ctn_tl_d2h_o(soc_proxy_muxed_tl_d2h),
+      .ctn_filtered_tl_h2d_o(ac_range_check_ctn_filtered_tl_h2d),
+      .ctn_filtered_tl_d2h_i(ac_range_check_ctn_filtered_tl_d2h),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
       .tl_i(ac_range_check_tl_req),
