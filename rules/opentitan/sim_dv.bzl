@@ -55,7 +55,7 @@ def _transform(ctx, exec_env, name, elf, binary, signed_bin, disassembly, mapfil
             rom_scramble_tool = ctx.executable.rom_scramble_tool,
         )
 
-        # We may want to run unscrambled ROM in DV environment, for faster
+        # We may want to run non-scrambled ROM in DV environment, for faster
         # run times.
         rom32 = convert_to_vmem(
             ctx,
