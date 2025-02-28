@@ -84,12 +84,22 @@ package top_mio_soc_mbx_pkg;
   /**
    * Peripheral base address for racl_ctrl in top mio.
    */
-  parameter int unsigned TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR = 32'h1463000;
+  parameter int unsigned TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR = 32'h1483000;
 
   /**
    * Peripheral size in bytes for racl_ctrl in top mio.
    */
   parameter int unsigned TOP_MIO_SOC_MBX_RACL_CTRL_SIZE_BYTES = 32'h40;
+
+  /**
+   * Peripheral base address for ac_range_check in top mio.
+   */
+  parameter int unsigned TOP_MIO_SOC_MBX_AC_RANGE_CHECK_BASE_ADDR = 32'h1484000;
+
+  /**
+   * Peripheral size in bytes for ac_range_check in top mio.
+   */
+  parameter int unsigned TOP_MIO_SOC_MBX_AC_RANGE_CHECK_SIZE_BYTES = 32'h400;
 
   
   // Number of mio outgoing alerts

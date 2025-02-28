@@ -158,7 +158,7 @@ extern "C" {
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR 0x1463000u
+#define TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR 0x1483000u
 
 /**
  * Peripheral size for racl_ctrl in top mio.
@@ -169,6 +169,24 @@ extern "C" {
  * `TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR + TOP_MIO_SOC_MBX_RACL_CTRL_SIZE_BYTES`.
  */
 #define TOP_MIO_SOC_MBX_RACL_CTRL_SIZE_BYTES 0x40u
+
+/**
+ * Peripheral base address for ac_range_check in top mio.
+ *
+ * This should be used with #mmio_region_from_addr to access the memory-mapped
+ * registers associated with the peripheral (usually via a DIF).
+ */
+#define TOP_MIO_SOC_MBX_AC_RANGE_CHECK_BASE_ADDR 0x1484000u
+
+/**
+ * Peripheral size for ac_range_check in top mio.
+ *
+ * This is the size (in bytes) of the peripheral's reserved memory area. All
+ * memory-mapped registers associated with this peripheral should have an
+ * address between #TOP_MIO_SOC_MBX_AC_RANGE_CHECK_BASE_ADDR and
+ * `TOP_MIO_SOC_MBX_AC_RANGE_CHECK_BASE_ADDR + TOP_MIO_SOC_MBX_AC_RANGE_CHECK_SIZE_BYTES`.
+ */
+#define TOP_MIO_SOC_MBX_AC_RANGE_CHECK_SIZE_BYTES 0x400u
 
 
 

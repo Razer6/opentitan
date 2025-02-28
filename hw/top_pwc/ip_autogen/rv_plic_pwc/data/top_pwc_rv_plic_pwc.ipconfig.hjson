@@ -6,7 +6,7 @@
   param_values:
   {
     module_instance_name: rv_plic_pwc
-    src: 251
+    src: 252
     target: 1
     prio: 3
     topname: pwc

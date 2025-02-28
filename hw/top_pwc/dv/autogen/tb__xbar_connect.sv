@@ -70,6 +70,7 @@ tl_if mbx4__soc_tl_if(clk_ext_main, rst_n);
 tl_if mbx5__soc_tl_if(clk_ext_main, rst_n);
 tl_if mbx_pcie0__soc_tl_if(clk_ext_main, rst_n);
 tl_if racl_ctrl_tl_if(clk_ext_main, rst_n);
+tl_if ac_range_check_tl_if(clk_ext_main, rst_n);
 
 initial begin
   wait (xbar_mode !== 1'bx);
@@ -138,6 +139,7 @@ initial begin
     `DRIVE_CHIP_TL_DEVICE_IF(mbx5__soc, mbx5, soc_tl_d)
     `DRIVE_CHIP_TL_DEVICE_IF(mbx_pcie0__soc, mbx_pcie0, soc_tl_d)
     `DRIVE_CHIP_TL_DEVICE_IF(racl_ctrl, racl_ctrl, tl)
+    `DRIVE_CHIP_TL_DEVICE_IF(ac_range_check, ac_range_check, tl)
 `endif
 
     // And this can consume time, so they go at the end of this block.

@@ -130,3 +130,17 @@ pub const RACL_CTRL_BASE_ADDR: usize = 0x1473000;
 /// address between #RACL_CTRL_BASE_ADDR and
 /// `RACL_CTRL_BASE_ADDR + RACL_CTRL_SIZE_BYTES`.
 pub const RACL_CTRL_SIZE_BYTES: usize = 0x40;
+
+/// Peripheral base address for ac_range_check in top pwc.
+///
+/// This should be used with #mmio_region_from_addr to access the memory-mapped
+/// registers associated with the peripheral (usually via a DIF).
+pub const AC_RANGE_CHECK_BASE_ADDR: usize = 0x1474000;
+
+/// Peripheral size for ac_range_check in top pwc.
+///
+/// This is the size (in bytes) of the peripheral's reserved memory area. All
+/// memory-mapped registers associated with this peripheral should have an
+/// address between #AC_RANGE_CHECK_BASE_ADDR and
+/// `AC_RANGE_CHECK_BASE_ADDR + AC_RANGE_CHECK_SIZE_BYTES`.
+pub const AC_RANGE_CHECK_SIZE_BYTES: usize = 0x400;

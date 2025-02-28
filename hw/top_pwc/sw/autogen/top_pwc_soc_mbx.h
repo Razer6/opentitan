@@ -170,6 +170,24 @@ extern "C" {
  */
 #define TOP_PWC_SOC_MBX_RACL_CTRL_SIZE_BYTES 0x40u
 
+/**
+ * Peripheral base address for ac_range_check in top pwc.
+ *
+ * This should be used with #mmio_region_from_addr to access the memory-mapped
+ * registers associated with the peripheral (usually via a DIF).
+ */
+#define TOP_PWC_SOC_MBX_AC_RANGE_CHECK_BASE_ADDR 0x1474000u
+
+/**
+ * Peripheral size for ac_range_check in top pwc.
+ *
+ * This is the size (in bytes) of the peripheral's reserved memory area. All
+ * memory-mapped registers associated with this peripheral should have an
+ * address between #TOP_PWC_SOC_MBX_AC_RANGE_CHECK_BASE_ADDR and
+ * `TOP_PWC_SOC_MBX_AC_RANGE_CHECK_BASE_ADDR + TOP_PWC_SOC_MBX_AC_RANGE_CHECK_SIZE_BYTES`.
+ */
+#define TOP_PWC_SOC_MBX_AC_RANGE_CHECK_SIZE_BYTES 0x400u
+
 
 
 // Header Extern Guard

@@ -684,6 +684,114 @@
           index: -1
         }
         {
+          name: dma_tl_h2d
+          desc: TL-UL host port for the DMA to egress into CTN (request part), synchronous
+          struct: tl_h2d
+          package: tlul_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: mio_soc_proxy
+          default: ""
+          end_idx: -1
+          top_type: broadcast
+          top_signame: mio_soc_proxy_dma_tl_h2d
+          index: -1
+        }
+        {
+          name: dma_tl_d2h
+          desc: TL-UL host port for the DMA to egress into CTN (response part), synchronous
+          struct: tl_d2h
+          package: tlul_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: mio_soc_proxy
+          default: ""
+          end_idx: -1
+          top_type: broadcast
+          top_signame: mio_soc_proxy_dma_tl_d2h
+          index: -1
+        }
+        {
+          name: misc_tl_h2d
+          desc: TL-UL host port for the MISC to egress into CTN (request part), synchronous
+          struct: tl_h2d
+          package: tlul_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: mio_soc_proxy
+          index: -1
+        }
+        {
+          name: misc_tl_d2h
+          desc: TL-UL host port for the MISC to egress into CTN (response part), synchronous
+          struct: tl_d2h
+          package: tlul_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: mio_soc_proxy
+          index: -1
+        }
+        {
+          name: muxed_tl_h2d
+          desc: Muxed TL-UL host port to go into AC ranges (request part), synchronous
+          struct: tl_h2d
+          package: tlul_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: mio_soc_proxy
+          default: ""
+          end_idx: -1
+          top_type: broadcast
+          top_signame: mio_soc_proxy_muxed_tl_h2d
+          index: -1
+        }
+        {
+          name: muxed_tl_d2h
+          desc: Muxed TL-UL host port to go into AC ranges (response part), synchronous
+          struct: tl_d2h
+          package: tlul_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: mio_soc_proxy
+          default: ""
+          end_idx: -1
+          top_type: broadcast
+          top_signame: mio_soc_proxy_muxed_tl_d2h
+          index: -1
+        }
+        {
+          name: ac_range_tl_h2d
+          desc: TL-UL host port from the AC range, through BAT, to CTN (request part), synchronous
+          struct: tl_h2d
+          package: tlul_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: mio_soc_proxy
+          default: ""
+          top_signame: ac_range_check_ctn_filtered_tl_h2d
+          index: -1
+        }
+        {
+          name: ac_range_tl_d2h
+          desc: TL-UL host port from the AC range, through BAT, to CTN(response part), synchronous
+          struct: tl_d2h
+          package: tlul_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: mio_soc_proxy
+          default: ""
+          top_signame: ac_range_check_ctn_filtered_tl_d2h
+          index: -1
+        }
+        {
           name: ctn_tl_h2d
           desc: TL-UL host port for egress into CTN (request part), synchronous
           struct: tl_h2d
@@ -2393,9 +2501,7 @@
           width: 1
           inst_name: dma
           default: ""
-          external: true
-          top_signame: dma_ctn_tl_h2d
-          conn_type: false
+          top_signame: mio_soc_proxy_dma_tl_h2d
           index: -1
         }
         {
@@ -2408,9 +2514,7 @@
           width: 1
           inst_name: dma
           default: ""
-          external: true
-          top_signame: dma_ctn_tl_d2h
-          conn_type: false
+          top_signame: mio_soc_proxy_dma_tl_d2h
           index: -1
         }
         {
@@ -3680,7 +3784,7 @@
           name: NumSubscribingIps
           desc: Number of subscribing RACL IPs
           type: int
-          default: 7
+          default: 8
           local: "true"
           expose: "true"
           name_top: RaclCtrlNumSubscribingIps
@@ -3731,7 +3835,7 @@
             desc: Number of subscribing RACL IPs
             param_type: int
             unpacked_dimensions: null
-            default: 7
+            default: 8
             local: true
             expose: true
             name_top: RaclCtrlNumSubscribingIps
@@ -3790,10 +3894,344 @@
       {
         null:
         {
-          soc_mbx: 0x01463000
+          soc_mbx: 0x01483000
         }
       }
       generate_dif: true
+      domain:
+      [
+        "0"
+      ]
+    }
+    {
+      name: ac_range_check
+      type: ac_range_check_mio
+      template_type: ac_range_check
+      clock_srcs:
+      {
+        clk_i: ext_main
+      }
+      clock_group: secure
+      reset_connections:
+      {
+        rst_ni:
+        {
+          name: ext_rst_main
+          domain: "0"
+        }
+      }
+      ipgen_param:
+      {
+        num_ranges: 32
+      }
+      attr: ipgen
+      clock_connections:
+      {
+        clk_i: clk_ext_main_i
+      }
+      param_decl: {}
+      param_list: []
+      inter_signal_list:
+      [
+        {
+          name: range_check_overwrite
+          desc: Overwrites all ranges and let all requests pass through.
+          struct: mubi8
+          package: prim_mubi_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: ac_range_check
+          index: -1
+        }
+        {
+          name: ctn_tl_h2d
+          desc: TL-UL input port (request part), synchronous
+          struct: tl_h2d
+          package: tlul_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: ac_range_check
+          default: ""
+          top_signame: mio_soc_proxy_muxed_tl_h2d
+          index: -1
+        }
+        {
+          name: ctn_tl_d2h
+          desc: TL-UL input port (response part), synchronous
+          struct: tl_d2h
+          package: tlul_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: ac_range_check
+          default: ""
+          top_signame: mio_soc_proxy_muxed_tl_d2h
+          index: -1
+        }
+        {
+          name: ctn_filtered_tl_h2d
+          desc: Filtered TL-UL output port (request part), synchronous
+          struct: tl_h2d
+          package: tlul_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: ac_range_check
+          default: ""
+          end_idx: -1
+          top_type: broadcast
+          top_signame: ac_range_check_ctn_filtered_tl_h2d
+          index: -1
+        }
+        {
+          name: ctn_filtered_tl_d2h
+          desc: Filtered TL-UL output port (response part), synchronous
+          struct: tl_d2h
+          package: tlul_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: ac_range_check
+          default: ""
+          end_idx: -1
+          top_type: broadcast
+          top_signame: ac_range_check_ctn_filtered_tl_d2h
+          index: -1
+        }
+        {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: ac_range_check
+          default: ""
+          top_signame: racl_ctrl_racl_policies
+          index: -1
+        }
+        {
+          name: racl_error
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: ac_range_check
+          default: ""
+          top_signame: racl_ctrl_racl_error
+          index: 7
+        }
+        {
+          name: tl
+          struct: tl
+          package: tlul_pkg
+          type: req_rsp
+          act: rsp
+          width: 1
+          inst_name: ac_range_check
+          default: ""
+          end_idx: -1
+          top_signame: ac_range_check_tl
+          index: -1
+        }
+      ]
+      base_addrs:
+      {
+        null:
+        {
+          soc_mbx: 0x01484000
+        }
+      }
+      generate_dif: true
+      racl_mappings:
+      {
+        null:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            INTR_STATE: 6
+            INTR_ENABLE: 6
+            INTR_TEST: 6
+            ALERT_TEST: 6
+            ALERT_STATUS: 6
+            LOG_CONFIG: 6
+            LOG_STATUS: 6
+            LOG_ADDRESS: 6
+            RANGE_REGWEN_0: 6
+            RANGE_REGWEN_1: 6
+            RANGE_REGWEN_2: 6
+            RANGE_REGWEN_3: 6
+            RANGE_REGWEN_4: 6
+            RANGE_REGWEN_5: 6
+            RANGE_REGWEN_6: 6
+            RANGE_REGWEN_7: 6
+            RANGE_REGWEN_8: 6
+            RANGE_REGWEN_9: 6
+            RANGE_REGWEN_10: 6
+            RANGE_REGWEN_11: 6
+            RANGE_REGWEN_12: 6
+            RANGE_REGWEN_13: 6
+            RANGE_REGWEN_14: 6
+            RANGE_REGWEN_15: 6
+            RANGE_REGWEN_16: 6
+            RANGE_REGWEN_17: 6
+            RANGE_REGWEN_18: 6
+            RANGE_REGWEN_19: 6
+            RANGE_REGWEN_20: 6
+            RANGE_REGWEN_21: 6
+            RANGE_REGWEN_22: 6
+            RANGE_REGWEN_23: 6
+            RANGE_REGWEN_24: 6
+            RANGE_REGWEN_25: 6
+            RANGE_REGWEN_26: 6
+            RANGE_REGWEN_27: 6
+            RANGE_REGWEN_28: 6
+            RANGE_REGWEN_29: 6
+            RANGE_REGWEN_30: 6
+            RANGE_REGWEN_31: 6
+            RANGE_BASE_0: 6
+            RANGE_BASE_1: 6
+            RANGE_BASE_2: 6
+            RANGE_BASE_3: 6
+            RANGE_BASE_4: 6
+            RANGE_BASE_5: 6
+            RANGE_BASE_6: 6
+            RANGE_BASE_7: 6
+            RANGE_BASE_8: 6
+            RANGE_BASE_9: 6
+            RANGE_BASE_10: 6
+            RANGE_BASE_11: 6
+            RANGE_BASE_12: 6
+            RANGE_BASE_13: 6
+            RANGE_BASE_14: 6
+            RANGE_BASE_15: 6
+            RANGE_BASE_16: 6
+            RANGE_BASE_17: 6
+            RANGE_BASE_18: 6
+            RANGE_BASE_19: 6
+            RANGE_BASE_20: 6
+            RANGE_BASE_21: 6
+            RANGE_BASE_22: 6
+            RANGE_BASE_23: 6
+            RANGE_BASE_24: 6
+            RANGE_BASE_25: 6
+            RANGE_BASE_26: 6
+            RANGE_BASE_27: 6
+            RANGE_BASE_28: 6
+            RANGE_BASE_29: 6
+            RANGE_BASE_30: 6
+            RANGE_BASE_31: 6
+            RANGE_LIMIT_0: 6
+            RANGE_LIMIT_1: 6
+            RANGE_LIMIT_2: 6
+            RANGE_LIMIT_3: 6
+            RANGE_LIMIT_4: 6
+            RANGE_LIMIT_5: 6
+            RANGE_LIMIT_6: 6
+            RANGE_LIMIT_7: 6
+            RANGE_LIMIT_8: 6
+            RANGE_LIMIT_9: 6
+            RANGE_LIMIT_10: 6
+            RANGE_LIMIT_11: 6
+            RANGE_LIMIT_12: 6
+            RANGE_LIMIT_13: 6
+            RANGE_LIMIT_14: 6
+            RANGE_LIMIT_15: 6
+            RANGE_LIMIT_16: 6
+            RANGE_LIMIT_17: 6
+            RANGE_LIMIT_18: 6
+            RANGE_LIMIT_19: 6
+            RANGE_LIMIT_20: 6
+            RANGE_LIMIT_21: 6
+            RANGE_LIMIT_22: 6
+            RANGE_LIMIT_23: 6
+            RANGE_LIMIT_24: 6
+            RANGE_LIMIT_25: 6
+            RANGE_LIMIT_26: 6
+            RANGE_LIMIT_27: 6
+            RANGE_LIMIT_28: 6
+            RANGE_LIMIT_29: 6
+            RANGE_LIMIT_30: 6
+            RANGE_LIMIT_31: 6
+            RANGE_PERM_0: 6
+            RANGE_PERM_1: 6
+            RANGE_PERM_2: 6
+            RANGE_PERM_3: 6
+            RANGE_PERM_4: 6
+            RANGE_PERM_5: 6
+            RANGE_PERM_6: 6
+            RANGE_PERM_7: 6
+            RANGE_PERM_8: 6
+            RANGE_PERM_9: 6
+            RANGE_PERM_10: 6
+            RANGE_PERM_11: 6
+            RANGE_PERM_12: 6
+            RANGE_PERM_13: 6
+            RANGE_PERM_14: 6
+            RANGE_PERM_15: 6
+            RANGE_PERM_16: 6
+            RANGE_PERM_17: 6
+            RANGE_PERM_18: 6
+            RANGE_PERM_19: 6
+            RANGE_PERM_20: 6
+            RANGE_PERM_21: 6
+            RANGE_PERM_22: 6
+            RANGE_PERM_23: 6
+            RANGE_PERM_24: 6
+            RANGE_PERM_25: 6
+            RANGE_PERM_26: 6
+            RANGE_PERM_27: 6
+            RANGE_PERM_28: 6
+            RANGE_PERM_29: 6
+            RANGE_PERM_30: 6
+            RANGE_PERM_31: 6
+            RANGE_RACL_POLICY_SHADOWED_0: 6
+            RANGE_RACL_POLICY_SHADOWED_1: 6
+            RANGE_RACL_POLICY_SHADOWED_2: 6
+            RANGE_RACL_POLICY_SHADOWED_3: 6
+            RANGE_RACL_POLICY_SHADOWED_4: 6
+            RANGE_RACL_POLICY_SHADOWED_5: 6
+            RANGE_RACL_POLICY_SHADOWED_6: 6
+            RANGE_RACL_POLICY_SHADOWED_7: 6
+            RANGE_RACL_POLICY_SHADOWED_8: 6
+            RANGE_RACL_POLICY_SHADOWED_9: 6
+            RANGE_RACL_POLICY_SHADOWED_10: 6
+            RANGE_RACL_POLICY_SHADOWED_11: 6
+            RANGE_RACL_POLICY_SHADOWED_12: 6
+            RANGE_RACL_POLICY_SHADOWED_13: 6
+            RANGE_RACL_POLICY_SHADOWED_14: 6
+            RANGE_RACL_POLICY_SHADOWED_15: 6
+            RANGE_RACL_POLICY_SHADOWED_16: 6
+            RANGE_RACL_POLICY_SHADOWED_17: 6
+            RANGE_RACL_POLICY_SHADOWED_18: 6
+            RANGE_RACL_POLICY_SHADOWED_19: 6
+            RANGE_RACL_POLICY_SHADOWED_20: 6
+            RANGE_RACL_POLICY_SHADOWED_21: 6
+            RANGE_RACL_POLICY_SHADOWED_22: 6
+            RANGE_RACL_POLICY_SHADOWED_23: 6
+            RANGE_RACL_POLICY_SHADOWED_24: 6
+            RANGE_RACL_POLICY_SHADOWED_25: 6
+            RANGE_RACL_POLICY_SHADOWED_26: 6
+            RANGE_RACL_POLICY_SHADOWED_27: 6
+            RANGE_RACL_POLICY_SHADOWED_28: 6
+            RANGE_RACL_POLICY_SHADOWED_29: 6
+            RANGE_RACL_POLICY_SHADOWED_30: 6
+            RANGE_RACL_POLICY_SHADOWED_31: 6
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
+      }
       domain:
       [
         "0"
@@ -4561,6 +4999,30 @@
       [
         mio_soc_proxy.mubi8_true
       ]
+      mio_soc_proxy.dma_tl_h2d:
+      [
+        dma.ctn_tl_h2d
+      ]
+      mio_soc_proxy.dma_tl_d2h:
+      [
+        dma.ctn_tl_d2h
+      ]
+      mio_soc_proxy.muxed_tl_h2d:
+      [
+        ac_range_check.ctn_tl_h2d
+      ]
+      mio_soc_proxy.muxed_tl_d2h:
+      [
+        ac_range_check.ctn_tl_d2h
+      ]
+      ac_range_check.ctn_filtered_tl_h2d:
+      [
+        mio_soc_proxy.ac_range_tl_h2d
+      ]
+      ac_range_check.ctn_filtered_tl_d2h:
+      [
+        mio_soc_proxy.ac_range_tl_d2h
+      ]
       mio_main.tl_rv_core_ibex__corei:
       [
         rv_core_ibex.corei_tl_h
@@ -4729,6 +5191,10 @@
       [
         mio_mbx.tl_racl_ctrl
       ]
+      ac_range_check.tl:
+      [
+        mio_mbx.tl_ac_range_check
+      ]
       racl_ctrl.racl_policies:
       [
         mbx0.racl_policies
@@ -4738,6 +5204,7 @@
         mbx4.racl_policies
         mbx5.racl_policies
         mbx_pcie0.racl_policies
+        ac_range_check.racl_policies
       ]
       racl_ctrl.racl_error:
       [
@@ -4748,6 +5215,7 @@
         mbx4.racl_error
         mbx5.racl_error
         mbx_pcie0.racl_error
+        ac_range_check.racl_error
       ]
     }
     top:
@@ -4758,22 +5226,20 @@
     external:
     {
       dma.sys: dma_sys
-      dma.ctn_tl_h2d: dma_ctn_tl_h2d
-      dma.ctn_tl_d2h: dma_ctn_tl_d2h
       mio_mbx.tl_mio_mbx: mbx_tl
       rv_dm.next_dm_addr: rv_dm_next_dm_addr
       rv_dm.dbg_tl_d: rv_dm_dbg
       rv_core_ibex.fpga_info: fpga_info
-      mio_soc_proxy.ctn_tl_h2d: ctn_tl_h2d
       rv_core_ibex.boot_addr: rv_boot_addr
       rv_core_ibex.pwrmgr_cpu_en: rv_pwrmgr_cpu_en
       rv_core_ibex.lc_cpu_en: rv_cpu_en
       rv_core_ibex.esc_rx: rv_core_esc_rx
       rv_core_ibex.esc_tx: rv_core_esc_tx
       mio_soc_proxy.soc_lsio_trigger: soc_lsio_trigger
-      mio_soc_proxy.ctn_tl_d2h: ctn_tl_d2h
       mio_soc_proxy.lc_hw_debug_en_ext: lc_hw_debug_en_ext
       mio_soc_proxy.lc_escalate_en_ext: lc_escalate_en_ext
+      mio_soc_proxy.ctn_tl_h2d: ctn_tl_h2d
+      mio_soc_proxy.ctn_tl_d2h: ctn_tl_d2h
       rv_dm.lc_check_byp_en: lc_check_byp_en
       sram_ctrl_ret_aon.cfg: sram_ctrl_ret_aon_ram_1p_cfg
       sram_ctrl_ret_aon.cfg_rsp: sram_ctrl_ret_aon_ram_1p_cfg_rsp
@@ -6089,6 +6555,7 @@
           mbx5.soc
           mbx_pcie0.soc
           racl_ctrl
+          ac_range_check
         ]
       }
       nodes:
@@ -6273,9 +6740,31 @@
             {
               base_addrs:
               {
-                soc_mbx: 0x1463000
+                soc_mbx: 0x1483000
               }
               size_byte: 0x40
+            }
+          ]
+          xbar: false
+          stub: false
+          req_fifo_pass: true
+        }
+        {
+          name: ac_range_check
+          type: device
+          addr_space: soc_mbx
+          clock: clk_mbx_i
+          reset: rst_mbx_ni
+          pipeline: false
+          inst_type: ac_range_check_mio
+          addr_range:
+          [
+            {
+              base_addrs:
+              {
+                soc_mbx: 0x1484000
+              }
+              size_byte: 0x400
             }
           ]
           xbar: false
@@ -6399,6 +6888,18 @@
           width: 1
           default: ""
           top_signame: racl_ctrl_tl
+          index: -1
+        }
+        {
+          name: tl_ac_range_check
+          struct: tl
+          package: tlul_pkg
+          type: req_rsp
+          act: req
+          inst_name: mio_mbx
+          width: 1
+          default: ""
+          top_signame: ac_range_check_tl
           index: -1
         }
       ]
@@ -6842,7 +7343,29 @@
     ]
   }
   exported_rsts: {}
-  alert: []
+  alert:
+  [
+    {
+      name: ac_range_check_recov_ctrl_update_err
+      width: 1
+      type: alert
+      async: "1"
+      module_name: ac_range_check
+      desc: ac_range_check recov_ctrl_update_err alert
+      lpg_name: clk_ext_main_i_ext_rst_main_0
+      lpg_idx: 0
+    }
+    {
+      name: ac_range_check_fatal_fault
+      width: 1
+      type: alert
+      async: "1"
+      module_name: ac_range_check
+      desc: ac_range_check fatal_fault alert
+      lpg_name: clk_ext_main_i_ext_rst_main_0
+      lpg_idx: 0
+    }
+  ]
   outgoing_alert:
   {
     mio:
@@ -7422,6 +7945,16 @@
       incoming: false
     }
     {
+      name: ac_range_check_deny_cnt_reached
+      width: 1
+      type: interrupt
+      module_name: ac_range_check
+      desc: ac_range_check deny_cnt_reached interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      incoming: false
+    }
+    {
       name: MIO_HDR_IPI_FROM_MIO_0
       module_name: MIO_HDR
       type: interrupt
@@ -7512,7 +8045,10 @@
       width: 1
     }
   ]
-  alert_module: []
+  alert_module:
+  [
+    ac_range_check
+  ]
   interrupt_module:
   [
     rv_timer
@@ -7526,6 +8062,7 @@
     mbx4
     mbx5
     mbx_pcie0
+    ac_range_check
   ]
   outgoing_alert_module:
   {
@@ -7551,7 +8088,21 @@
       rv_core_ibex
     ]
   }
-  alert_lpgs: []
+  alert_lpgs:
+  [
+    {
+      name: clk_ext_main_i_ext_rst_main_0
+      clock_group: null
+      clock_connection: clk_ext_main_i
+      unmanaged_clock: true
+      unmanaged_reset: true
+      reset_connection:
+      {
+        name: ext_rst_main
+        domain: "0"
+      }
+    }
+  ]
   outgoing_alert_lpgs:
   {
     mio:
@@ -7741,6 +8292,114 @@
         external: true
         top_signame: lc_hw_debug_en_ext
         conn_type: false
+        index: -1
+      }
+      {
+        name: dma_tl_h2d
+        desc: TL-UL host port for the DMA to egress into CTN (request part), synchronous
+        struct: tl_h2d
+        package: tlul_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: mio_soc_proxy
+        default: ""
+        end_idx: -1
+        top_type: broadcast
+        top_signame: mio_soc_proxy_dma_tl_h2d
+        index: -1
+      }
+      {
+        name: dma_tl_d2h
+        desc: TL-UL host port for the DMA to egress into CTN (response part), synchronous
+        struct: tl_d2h
+        package: tlul_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: mio_soc_proxy
+        default: ""
+        end_idx: -1
+        top_type: broadcast
+        top_signame: mio_soc_proxy_dma_tl_d2h
+        index: -1
+      }
+      {
+        name: misc_tl_h2d
+        desc: TL-UL host port for the MISC to egress into CTN (request part), synchronous
+        struct: tl_h2d
+        package: tlul_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: mio_soc_proxy
+        index: -1
+      }
+      {
+        name: misc_tl_d2h
+        desc: TL-UL host port for the MISC to egress into CTN (response part), synchronous
+        struct: tl_d2h
+        package: tlul_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: mio_soc_proxy
+        index: -1
+      }
+      {
+        name: muxed_tl_h2d
+        desc: Muxed TL-UL host port to go into AC ranges (request part), synchronous
+        struct: tl_h2d
+        package: tlul_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: mio_soc_proxy
+        default: ""
+        end_idx: -1
+        top_type: broadcast
+        top_signame: mio_soc_proxy_muxed_tl_h2d
+        index: -1
+      }
+      {
+        name: muxed_tl_d2h
+        desc: Muxed TL-UL host port to go into AC ranges (response part), synchronous
+        struct: tl_d2h
+        package: tlul_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: mio_soc_proxy
+        default: ""
+        end_idx: -1
+        top_type: broadcast
+        top_signame: mio_soc_proxy_muxed_tl_d2h
+        index: -1
+      }
+      {
+        name: ac_range_tl_h2d
+        desc: TL-UL host port from the AC range, through BAT, to CTN (request part), synchronous
+        struct: tl_h2d
+        package: tlul_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: mio_soc_proxy
+        default: ""
+        top_signame: ac_range_check_ctn_filtered_tl_h2d
+        index: -1
+      }
+      {
+        name: ac_range_tl_d2h
+        desc: TL-UL host port from the AC range, through BAT, to CTN(response part), synchronous
+        struct: tl_d2h
+        package: tlul_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: mio_soc_proxy
+        default: ""
+        top_signame: ac_range_check_ctn_filtered_tl_d2h
         index: -1
       }
       {
@@ -8715,9 +9374,7 @@
         width: 1
         inst_name: dma
         default: ""
-        external: true
-        top_signame: dma_ctn_tl_h2d
-        conn_type: false
+        top_signame: mio_soc_proxy_dma_tl_h2d
         index: -1
       }
       {
@@ -8730,9 +9387,7 @@
         width: 1
         inst_name: dma
         default: ""
-        external: true
-        top_signame: dma_ctn_tl_d2h
-        conn_type: false
+        top_signame: mio_soc_proxy_dma_tl_d2h
         index: -1
       }
       {
@@ -9550,7 +10205,7 @@
           desc: Number of subscribing RACL IPs
           param_type: int
           unpacked_dimensions: null
-          default: 7
+          default: 8
           local: true
           expose: true
           name_top: RaclCtrlNumSubscribingIps
@@ -9602,6 +10257,116 @@
         default: ""
         end_idx: -1
         top_signame: racl_ctrl_tl
+        index: -1
+      }
+      {
+        name: range_check_overwrite
+        desc: Overwrites all ranges and let all requests pass through.
+        struct: mubi8
+        package: prim_mubi_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: ac_range_check
+        index: -1
+      }
+      {
+        name: ctn_tl_h2d
+        desc: TL-UL input port (request part), synchronous
+        struct: tl_h2d
+        package: tlul_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: ac_range_check
+        default: ""
+        top_signame: mio_soc_proxy_muxed_tl_h2d
+        index: -1
+      }
+      {
+        name: ctn_tl_d2h
+        desc: TL-UL input port (response part), synchronous
+        struct: tl_d2h
+        package: tlul_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: ac_range_check
+        default: ""
+        top_signame: mio_soc_proxy_muxed_tl_d2h
+        index: -1
+      }
+      {
+        name: ctn_filtered_tl_h2d
+        desc: Filtered TL-UL output port (request part), synchronous
+        struct: tl_h2d
+        package: tlul_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: ac_range_check
+        default: ""
+        end_idx: -1
+        top_type: broadcast
+        top_signame: ac_range_check_ctn_filtered_tl_h2d
+        index: -1
+      }
+      {
+        name: ctn_filtered_tl_d2h
+        desc: Filtered TL-UL output port (response part), synchronous
+        struct: tl_d2h
+        package: tlul_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: ac_range_check
+        default: ""
+        end_idx: -1
+        top_type: broadcast
+        top_signame: ac_range_check_ctn_filtered_tl_d2h
+        index: -1
+      }
+      {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: ac_range_check
+        default: ""
+        top_signame: racl_ctrl_racl_policies
+        index: -1
+      }
+      {
+        name: racl_error
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: ac_range_check
+        default: ""
+        top_signame: racl_ctrl_racl_error
+        index: 7
+      }
+      {
+        name: tl
+        struct: tl
+        package: tlul_pkg
+        type: req_rsp
+        act: rsp
+        width: 1
+        inst_name: ac_range_check
+        default: ""
+        end_idx: -1
+        top_signame: ac_range_check_tl
         index: -1
       }
       {
@@ -10448,6 +11213,18 @@
         top_signame: racl_ctrl_tl
         index: -1
       }
+      {
+        name: tl_ac_range_check
+        struct: tl
+        package: tlul_pkg
+        type: req_rsp
+        act: req
+        inst_name: mio_mbx
+        width: 1
+        default: ""
+        top_signame: ac_range_check_tl
+        index: -1
+      }
     ]
     external:
     [
@@ -10474,30 +11251,6 @@
         conn_type: false
         index: -1
         netname: dma_sys_rsp
-      }
-      {
-        package: tlul_pkg
-        struct: tl_h2d
-        signame: dma_ctn_tl_h2d_o
-        width: 1
-        type: uni
-        default: ""
-        direction: out
-        conn_type: false
-        index: -1
-        netname: dma_ctn_tl_h2d
-      }
-      {
-        package: tlul_pkg
-        struct: tl_d2h
-        signame: dma_ctn_tl_d2h_i
-        width: 1
-        type: uni
-        default: ""
-        direction: in
-        conn_type: false
-        index: -1
-        netname: dma_ctn_tl_d2h
       }
       {
         package: tlul_pkg
@@ -10572,18 +11325,6 @@
         netname: fpga_info
       }
       {
-        package: tlul_pkg
-        struct: tl_h2d
-        signame: ctn_tl_h2d_o
-        width: 1
-        type: uni
-        default: ""
-        direction: out
-        conn_type: false
-        index: -1
-        netname: ctn_tl_h2d
-      }
-      {
         package: ""
         struct: logic
         signame: rv_boot_addr_i
@@ -10656,18 +11397,6 @@
         netname: soc_lsio_trigger
       }
       {
-        package: tlul_pkg
-        struct: tl_d2h
-        signame: ctn_tl_d2h_i
-        width: 1
-        type: uni
-        default: ""
-        direction: in
-        conn_type: false
-        index: -1
-        netname: ctn_tl_d2h
-      }
-      {
         package: lc_ctrl_pkg
         struct: lc_tx
         signame: lc_hw_debug_en_ext_i
@@ -10690,6 +11419,30 @@
         conn_type: false
         index: -1
         netname: lc_escalate_en_ext
+      }
+      {
+        package: tlul_pkg
+        struct: tl_h2d
+        signame: ctn_tl_h2d_o
+        width: 1
+        type: uni
+        default: ""
+        direction: out
+        conn_type: false
+        index: -1
+        netname: ctn_tl_h2d
+      }
+      {
+        package: tlul_pkg
+        struct: tl_d2h
+        signame: ctn_tl_d2h_i
+        width: 1
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: ctn_tl_d2h
       }
       {
         package: lc_ctrl_pkg
@@ -10959,6 +11712,72 @@
         act: rcv
         suffix: ""
         default: prim_mubi_pkg::MuBi8False
+      }
+      {
+        package: tlul_pkg
+        struct: tl_h2d
+        signame: mio_soc_proxy_dma_tl_h2d
+        width: 1
+        type: uni
+        end_idx: -1
+        act: rcv
+        suffix: ""
+        default: tlul_pkg::TL_H2D_DEFAULT
+      }
+      {
+        package: tlul_pkg
+        struct: tl_d2h
+        signame: mio_soc_proxy_dma_tl_d2h
+        width: 1
+        type: uni
+        end_idx: -1
+        act: req
+        suffix: ""
+        default: tlul_pkg::TL_D2H_DEFAULT
+      }
+      {
+        package: tlul_pkg
+        struct: tl_h2d
+        signame: mio_soc_proxy_muxed_tl_h2d
+        width: 1
+        type: uni
+        end_idx: -1
+        act: req
+        suffix: ""
+        default: tlul_pkg::TL_H2D_DEFAULT
+      }
+      {
+        package: tlul_pkg
+        struct: tl_d2h
+        signame: mio_soc_proxy_muxed_tl_d2h
+        width: 1
+        type: uni
+        end_idx: -1
+        act: rcv
+        suffix: ""
+        default: tlul_pkg::TL_D2H_DEFAULT
+      }
+      {
+        package: tlul_pkg
+        struct: tl_h2d
+        signame: ac_range_check_ctn_filtered_tl_h2d
+        width: 1
+        type: uni
+        end_idx: -1
+        act: req
+        suffix: ""
+        default: tlul_pkg::TL_H2D_DEFAULT
+      }
+      {
+        package: tlul_pkg
+        struct: tl_d2h
+        signame: ac_range_check_ctn_filtered_tl_d2h
+        width: 1
+        type: uni
+        end_idx: -1
+        act: rcv
+        suffix: ""
+        default: tlul_pkg::TL_D2H_DEFAULT
       }
       {
         package: tlul_pkg
@@ -11885,6 +12704,28 @@
         default: ""
       }
       {
+        package: tlul_pkg
+        struct: tl_h2d
+        signame: ac_range_check_tl_req
+        width: 1
+        type: req_rsp
+        end_idx: -1
+        act: rsp
+        suffix: req
+        default: tlul_pkg::TL_H2D_DEFAULT
+      }
+      {
+        package: tlul_pkg
+        struct: tl_d2h
+        signame: ac_range_check_tl_rsp
+        width: 1
+        type: req_rsp
+        end_idx: -1
+        act: rsp
+        suffix: rsp
+        default: ""
+      }
+      {
         package: top_racl_pkg
         struct: racl_policy_vec
         signame: racl_ctrl_racl_policies
@@ -11905,7 +12746,7 @@
           desc: Number of subscribing RACL IPs
           param_type: int
           unpacked_dimensions: null
-          default: 7
+          default: 8
           local: true
           expose: true
           name_top: RaclCtrlNumSubscribingIps

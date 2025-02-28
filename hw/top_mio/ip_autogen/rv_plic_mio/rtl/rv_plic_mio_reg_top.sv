@@ -52,9 +52,9 @@ module rv_plic_mio_reg_top (
 
   // also check for spurious write enables
   logic reg_we_err;
-  logic [78:0] reg_we_check;
+  logic [79:0] reg_we_check;
   prim_reg_we_check #(
-    .OneHotWidth(79)
+    .OneHotWidth(80)
   ) u_prim_reg_we_check (
     .clk_i(clk_i),
     .rst_ni(rst_ni),
@@ -328,6 +328,9 @@ module rv_plic_mio_reg_top (
   logic prio_68_we;
   logic [1:0] prio_68_qs;
   logic [1:0] prio_68_wd;
+  logic prio_69_we;
+  logic [1:0] prio_69_qs;
+  logic [1:0] prio_69_wd;
   logic ip_0_p_0_qs;
   logic ip_0_p_1_qs;
   logic ip_0_p_2_qs;
@@ -397,6 +400,7 @@ module rv_plic_mio_reg_top (
   logic ip_2_p_66_qs;
   logic ip_2_p_67_qs;
   logic ip_2_p_68_qs;
+  logic ip_2_p_69_qs;
   logic ie0_0_we;
   logic ie0_0_e_0_qs;
   logic ie0_0_e_0_wd;
@@ -538,6 +542,8 @@ module rv_plic_mio_reg_top (
   logic ie0_2_e_67_wd;
   logic ie0_2_e_68_qs;
   logic ie0_2_e_68_wd;
+  logic ie0_2_e_69_qs;
+  logic ie0_2_e_69_wd;
   logic threshold0_we;
   logic [1:0] threshold0_qs;
   logic [1:0] threshold0_wd;
@@ -2553,6 +2559,35 @@ module rv_plic_mio_reg_top (
   );
 
 
+  // Subregister 69 of Multireg prio
+  // R[prio_69]: V(False)
+  prim_subreg #(
+    .DW      (2),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (2'h0),
+    .Mubi    (1'b0)
+  ) u_prio_69 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (prio_69_we),
+    .wd     (prio_69_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.prio[69].q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (prio_69_qs)
+  );
+
+
   // Subregister 0 of Multireg ip
   // R[ip_0]: V(False)
   //   F[p_0]: 0:0
@@ -4422,6 +4457,33 @@ module rv_plic_mio_reg_top (
 
     // to register interface (read)
     .qs     (ip_2_p_68_qs)
+  );
+
+  //   F[p_69]: 5:5
+  prim_subreg #(
+    .DW      (1),
+    .SwAccess(prim_subreg_pkg::SwAccessRO),
+    .RESVAL  (1'h0),
+    .Mubi    (1'b0)
+  ) u_ip_2_p_69 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (1'b0),
+    .wd     ('0),
+
+    // from internal hardware
+    .de     (hw2reg.ip[69].de),
+    .d      (hw2reg.ip[69].d),
+
+    // to internal hardware
+    .qe     (),
+    .q      (),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (ip_2_p_69_qs)
   );
 
 
@@ -6296,6 +6358,33 @@ module rv_plic_mio_reg_top (
     .qs     (ie0_2_e_68_qs)
   );
 
+  //   F[e_69]: 5:5
+  prim_subreg #(
+    .DW      (1),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (1'h0),
+    .Mubi    (1'b0)
+  ) u_ie0_2_e_69 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (ie0_2_we),
+    .wd     (ie0_2_e_69_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.ie0[69].q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (ie0_2_e_69_qs)
+  );
+
 
   // R[threshold0]: V(False)
   prim_subreg #(
@@ -6394,7 +6483,7 @@ module rv_plic_mio_reg_top (
 
 
 
-  logic [78:0] addr_hit;
+  logic [79:0] addr_hit;
   always_comb begin
     addr_hit = '0;
     addr_hit[ 0] = (reg_addr == RV_PLIC_MIO_PRIO_0_OFFSET);
@@ -6466,16 +6555,17 @@ module rv_plic_mio_reg_top (
     addr_hit[66] = (reg_addr == RV_PLIC_MIO_PRIO_66_OFFSET);
     addr_hit[67] = (reg_addr == RV_PLIC_MIO_PRIO_67_OFFSET);
     addr_hit[68] = (reg_addr == RV_PLIC_MIO_PRIO_68_OFFSET);
-    addr_hit[69] = (reg_addr == RV_PLIC_MIO_IP_0_OFFSET);
-    addr_hit[70] = (reg_addr == RV_PLIC_MIO_IP_1_OFFSET);
-    addr_hit[71] = (reg_addr == RV_PLIC_MIO_IP_2_OFFSET);
-    addr_hit[72] = (reg_addr == RV_PLIC_MIO_IE0_0_OFFSET);
-    addr_hit[73] = (reg_addr == RV_PLIC_MIO_IE0_1_OFFSET);
-    addr_hit[74] = (reg_addr == RV_PLIC_MIO_IE0_2_OFFSET);
-    addr_hit[75] = (reg_addr == RV_PLIC_MIO_THRESHOLD0_OFFSET);
-    addr_hit[76] = (reg_addr == RV_PLIC_MIO_CC0_OFFSET);
-    addr_hit[77] = (reg_addr == RV_PLIC_MIO_MSIP0_OFFSET);
-    addr_hit[78] = (reg_addr == RV_PLIC_MIO_ALERT_TEST_OFFSET);
+    addr_hit[69] = (reg_addr == RV_PLIC_MIO_PRIO_69_OFFSET);
+    addr_hit[70] = (reg_addr == RV_PLIC_MIO_IP_0_OFFSET);
+    addr_hit[71] = (reg_addr == RV_PLIC_MIO_IP_1_OFFSET);
+    addr_hit[72] = (reg_addr == RV_PLIC_MIO_IP_2_OFFSET);
+    addr_hit[73] = (reg_addr == RV_PLIC_MIO_IE0_0_OFFSET);
+    addr_hit[74] = (reg_addr == RV_PLIC_MIO_IE0_1_OFFSET);
+    addr_hit[75] = (reg_addr == RV_PLIC_MIO_IE0_2_OFFSET);
+    addr_hit[76] = (reg_addr == RV_PLIC_MIO_THRESHOLD0_OFFSET);
+    addr_hit[77] = (reg_addr == RV_PLIC_MIO_CC0_OFFSET);
+    addr_hit[78] = (reg_addr == RV_PLIC_MIO_MSIP0_OFFSET);
+    addr_hit[79] = (reg_addr == RV_PLIC_MIO_ALERT_TEST_OFFSET);
   end
 
   assign addrmiss = (reg_re || reg_we) ? ~|addr_hit : 1'b0 ;
@@ -6561,7 +6651,8 @@ module rv_plic_mio_reg_top (
                (addr_hit[75] & (|(RV_PLIC_MIO_PERMIT[75] & ~reg_be))) |
                (addr_hit[76] & (|(RV_PLIC_MIO_PERMIT[76] & ~reg_be))) |
                (addr_hit[77] & (|(RV_PLIC_MIO_PERMIT[77] & ~reg_be))) |
-               (addr_hit[78] & (|(RV_PLIC_MIO_PERMIT[78] & ~reg_be)))));
+               (addr_hit[78] & (|(RV_PLIC_MIO_PERMIT[78] & ~reg_be))) |
+               (addr_hit[79] & (|(RV_PLIC_MIO_PERMIT[79] & ~reg_be)))));
   end
 
   // Generate write-enables
@@ -6772,7 +6863,10 @@ module rv_plic_mio_reg_top (
   assign prio_68_we = addr_hit[68] & reg_we & !reg_error;
 
   assign prio_68_wd = reg_wdata[1:0];
-  assign ie0_0_we = addr_hit[72] & reg_we & !reg_error;
+  assign prio_69_we = addr_hit[69] & reg_we & !reg_error;
+
+  assign prio_69_wd = reg_wdata[1:0];
+  assign ie0_0_we = addr_hit[73] & reg_we & !reg_error;
 
   assign ie0_0_e_0_wd = reg_wdata[0];
 
@@ -6837,7 +6931,7 @@ module rv_plic_mio_reg_top (
   assign ie0_0_e_30_wd = reg_wdata[30];
 
   assign ie0_0_e_31_wd = reg_wdata[31];
-  assign ie0_1_we = addr_hit[73] & reg_we & !reg_error;
+  assign ie0_1_we = addr_hit[74] & reg_we & !reg_error;
 
   assign ie0_1_e_32_wd = reg_wdata[0];
 
@@ -6902,7 +6996,7 @@ module rv_plic_mio_reg_top (
   assign ie0_1_e_62_wd = reg_wdata[30];
 
   assign ie0_1_e_63_wd = reg_wdata[31];
-  assign ie0_2_we = addr_hit[74] & reg_we & !reg_error;
+  assign ie0_2_we = addr_hit[75] & reg_we & !reg_error;
 
   assign ie0_2_e_64_wd = reg_wdata[0];
 
@@ -6913,17 +7007,19 @@ module rv_plic_mio_reg_top (
   assign ie0_2_e_67_wd = reg_wdata[3];
 
   assign ie0_2_e_68_wd = reg_wdata[4];
-  assign threshold0_we = addr_hit[75] & reg_we & !reg_error;
+
+  assign ie0_2_e_69_wd = reg_wdata[5];
+  assign threshold0_we = addr_hit[76] & reg_we & !reg_error;
 
   assign threshold0_wd = reg_wdata[1:0];
-  assign cc0_re = addr_hit[76] & reg_re & !reg_error;
-  assign cc0_we = addr_hit[76] & reg_we & !reg_error;
+  assign cc0_re = addr_hit[77] & reg_re & !reg_error;
+  assign cc0_we = addr_hit[77] & reg_we & !reg_error;
 
   assign cc0_wd = reg_wdata[6:0];
-  assign msip0_we = addr_hit[77] & reg_we & !reg_error;
+  assign msip0_we = addr_hit[78] & reg_we & !reg_error;
 
   assign msip0_wd = reg_wdata[0];
-  assign alert_test_we = addr_hit[78] & reg_we & !reg_error;
+  assign alert_test_we = addr_hit[79] & reg_we & !reg_error;
 
   assign alert_test_wd = reg_wdata[0];
 
@@ -6999,16 +7095,17 @@ module rv_plic_mio_reg_top (
     reg_we_check[66] = prio_66_we;
     reg_we_check[67] = prio_67_we;
     reg_we_check[68] = prio_68_we;
-    reg_we_check[69] = 1'b0;
+    reg_we_check[69] = prio_69_we;
     reg_we_check[70] = 1'b0;
     reg_we_check[71] = 1'b0;
-    reg_we_check[72] = ie0_0_we;
-    reg_we_check[73] = ie0_1_we;
-    reg_we_check[74] = ie0_2_we;
-    reg_we_check[75] = threshold0_we;
-    reg_we_check[76] = cc0_we;
-    reg_we_check[77] = msip0_we;
-    reg_we_check[78] = alert_test_we;
+    reg_we_check[72] = 1'b0;
+    reg_we_check[73] = ie0_0_we;
+    reg_we_check[74] = ie0_1_we;
+    reg_we_check[75] = ie0_2_we;
+    reg_we_check[76] = threshold0_we;
+    reg_we_check[77] = cc0_we;
+    reg_we_check[78] = msip0_we;
+    reg_we_check[79] = alert_test_we;
   end
 
   // Read data return
@@ -7292,6 +7389,10 @@ module rv_plic_mio_reg_top (
       end
 
       addr_hit[69]: begin
+        reg_rdata_next[1:0] = prio_69_qs;
+      end
+
+      addr_hit[70]: begin
         reg_rdata_next[0] = ip_0_p_0_qs;
         reg_rdata_next[1] = ip_0_p_1_qs;
         reg_rdata_next[2] = ip_0_p_2_qs;
@@ -7326,7 +7427,7 @@ module rv_plic_mio_reg_top (
         reg_rdata_next[31] = ip_0_p_31_qs;
       end
 
-      addr_hit[70]: begin
+      addr_hit[71]: begin
         reg_rdata_next[0] = ip_1_p_32_qs;
         reg_rdata_next[1] = ip_1_p_33_qs;
         reg_rdata_next[2] = ip_1_p_34_qs;
@@ -7361,15 +7462,16 @@ module rv_plic_mio_reg_top (
         reg_rdata_next[31] = ip_1_p_63_qs;
       end
 
-      addr_hit[71]: begin
+      addr_hit[72]: begin
         reg_rdata_next[0] = ip_2_p_64_qs;
         reg_rdata_next[1] = ip_2_p_65_qs;
         reg_rdata_next[2] = ip_2_p_66_qs;
         reg_rdata_next[3] = ip_2_p_67_qs;
         reg_rdata_next[4] = ip_2_p_68_qs;
+        reg_rdata_next[5] = ip_2_p_69_qs;
       end
 
-      addr_hit[72]: begin
+      addr_hit[73]: begin
         reg_rdata_next[0] = ie0_0_e_0_qs;
         reg_rdata_next[1] = ie0_0_e_1_qs;
         reg_rdata_next[2] = ie0_0_e_2_qs;
@@ -7404,7 +7506,7 @@ module rv_plic_mio_reg_top (
         reg_rdata_next[31] = ie0_0_e_31_qs;
       end
 
-      addr_hit[73]: begin
+      addr_hit[74]: begin
         reg_rdata_next[0] = ie0_1_e_32_qs;
         reg_rdata_next[1] = ie0_1_e_33_qs;
         reg_rdata_next[2] = ie0_1_e_34_qs;
@@ -7439,27 +7541,28 @@ module rv_plic_mio_reg_top (
         reg_rdata_next[31] = ie0_1_e_63_qs;
       end
 
-      addr_hit[74]: begin
+      addr_hit[75]: begin
         reg_rdata_next[0] = ie0_2_e_64_qs;
         reg_rdata_next[1] = ie0_2_e_65_qs;
         reg_rdata_next[2] = ie0_2_e_66_qs;
         reg_rdata_next[3] = ie0_2_e_67_qs;
         reg_rdata_next[4] = ie0_2_e_68_qs;
-      end
-
-      addr_hit[75]: begin
-        reg_rdata_next[1:0] = threshold0_qs;
+        reg_rdata_next[5] = ie0_2_e_69_qs;
       end
 
       addr_hit[76]: begin
-        reg_rdata_next[6:0] = cc0_qs;
+        reg_rdata_next[1:0] = threshold0_qs;
       end
 
       addr_hit[77]: begin
-        reg_rdata_next[0] = msip0_qs;
+        reg_rdata_next[6:0] = cc0_qs;
       end
 
       addr_hit[78]: begin
+        reg_rdata_next[0] = msip0_qs;
+      end
+
+      addr_hit[79]: begin
         reg_rdata_next[0] = '0;
       end
 

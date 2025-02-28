@@ -16,7 +16,7 @@
  * `top_mio_plic_peripheral_t`.
  */
 const top_mio_plic_peripheral_t
-    top_mio_plic_interrupt_for_peripheral[68] = {
+    top_mio_plic_interrupt_for_peripheral[69] = {
   [kTopMioPlicIrqIdNone] = kTopMioPlicPeripheralUnknown,
   [kTopMioPlicIrqIdRvTimerTimerExpiredHart0Timer0] = kTopMioPlicPeripheralRvTimer,
   [kTopMioPlicIrqIdAonTimerAonWkupTimerExpired] = kTopMioPlicPeripheralAonTimerAon,
@@ -77,6 +77,7 @@ const top_mio_plic_peripheral_t
   [kTopMioPlicIrqIdMbxPcie0MbxReady] = kTopMioPlicPeripheralMbxPcie0,
   [kTopMioPlicIrqIdMbxPcie0MbxAbort] = kTopMioPlicPeripheralMbxPcie0,
   [kTopMioPlicIrqIdMbxPcie0MbxError] = kTopMioPlicPeripheralMbxPcie0,
+  [kTopMioPlicIrqIdAcRangeCheckDenyCntReached] = kTopMioPlicPeripheralAcRangeCheck,
   [kTopMioPlicIrqIdMioHdrIpiFromMio0] = kTopMioPlicPeripheralUnknown,
   [kTopMioPlicIrqIdMioHdrIpiFromMio1] = kTopMioPlicPeripheralUnknown,
   [kTopMioPlicIrqIdMioHdrIpiFromMio2] = kTopMioPlicPeripheralUnknown,

@@ -398,6 +398,8 @@ pub enum PlicPeripheral {
     Mbx5 = 11,
     /// mbx_pcie0
     MbxPcie0 = 12,
+    /// ac_range_check
+    AcRangeCheck = 13,
 }
 
 impl TryFrom<u32> for PlicPeripheral {
@@ -417,6 +419,7 @@ impl TryFrom<u32> for PlicPeripheral {
             10 => Ok(Self::Mbx4),
             11 => Ok(Self::Mbx5),
             12 => Ok(Self::MbxPcie0),
+            13 => Ok(Self::AcRangeCheck),
             _ => Err(val),
         }
     }
@@ -613,324 +616,326 @@ pub enum PlicIrqId {
     MbxPcie0MbxAbort = 90,
     /// mbx_pcie0_mbx_error
     MbxPcie0MbxError = 91,
+    /// ac_range_check_deny_cnt_reached
+    AcRangeCheckDenyCntReached = 92,
     /// PWC_LTEU_SOC_HOT
-    PwcLteuSocHot = 92,
+    PwcLteuSocHot = 93,
     /// PWC_LTEU_FW_TRIP
-    PwcLteuFwTrip = 93,
+    PwcLteuFwTrip = 94,
     /// PWC_LTEU_CAT_TRIP
-    PwcLteuCatTrip = 94,
+    PwcLteuCatTrip = 95,
     /// LIO_GRP_A_IBEX_IRQ
-    LioGrpAIbexIrq = 95,
+    LioGrpAIbexIrq = 96,
     /// LIO_GRP_B_IBEX_IRQ
-    LioGrpBIbexIrq = 96,
+    LioGrpBIbexIrq = 97,
     /// LIO_GRP_C_IBEX_IRQ
-    LioGrpCIbexIrq = 97,
+    LioGrpCIbexIrq = 98,
     /// PWC_DVFS_SocDpaFsmstatus0
-    PwcDvfsSocdpafsmstatus0 = 98,
+    PwcDvfsSocdpafsmstatus0 = 99,
     /// PWC_DVFS_SocDpaFsmstatus1
-    PwcDvfsSocdpafsmstatus1 = 99,
+    PwcDvfsSocdpafsmstatus1 = 100,
     /// PWC_DVFS_SocDpaFsmstatus2
-    PwcDvfsSocdpafsmstatus2 = 100,
+    PwcDvfsSocdpafsmstatus2 = 101,
     /// PWC_DVFS_SocDpaFsmstatus3
-    PwcDvfsSocdpafsmstatus3 = 101,
+    PwcDvfsSocdpafsmstatus3 = 102,
     /// PWC_DVFS_SocDpaFsmstatus4
-    PwcDvfsSocdpafsmstatus4 = 102,
+    PwcDvfsSocdpafsmstatus4 = 103,
     /// PWC_DVFS_TargetCmdAVS0
-    PwcDvfsTargetcmdavs0 = 103,
+    PwcDvfsTargetcmdavs0 = 104,
     /// PWC_DVFS_TargetCmdAVS1
-    PwcDvfsTargetcmdavs1 = 104,
+    PwcDvfsTargetcmdavs1 = 105,
     /// PWC_DVFS_TargetCmdAVS2
-    PwcDvfsTargetcmdavs2 = 105,
+    PwcDvfsTargetcmdavs2 = 106,
     /// PWC_DVFS_TargetCmdAVS3
-    PwcDvfsTargetcmdavs3 = 106,
+    PwcDvfsTargetcmdavs3 = 107,
     /// PWC_DVFS_TargetCmdAVS4
-    PwcDvfsTargetcmdavs4 = 107,
+    PwcDvfsTargetcmdavs4 = 108,
     /// PWC_DVFS_TargetCmdAVS5
-    PwcDvfsTargetcmdavs5 = 108,
+    PwcDvfsTargetcmdavs5 = 109,
     /// PWC_DVFS_TargetCmdAVS6
-    PwcDvfsTargetcmdavs6 = 109,
+    PwcDvfsTargetcmdavs6 = 110,
     /// PWC_DVFS_TargetCmdAVS7
-    PwcDvfsTargetcmdavs7 = 110,
+    PwcDvfsTargetcmdavs7 = 111,
     /// PWC_DVFS_TargetCmdAVS8
-    PwcDvfsTargetcmdavs8 = 111,
+    PwcDvfsTargetcmdavs8 = 112,
     /// PWC_DVFS_TargetCmdAVS9
-    PwcDvfsTargetcmdavs9 = 112,
+    PwcDvfsTargetcmdavs9 = 113,
     /// PWC_DVFS_TargetCmdAVS10
-    PwcDvfsTargetcmdavs10 = 113,
+    PwcDvfsTargetcmdavs10 = 114,
     /// PWC_DVFS_TargetCmdAVS11
-    PwcDvfsTargetcmdavs11 = 114,
+    PwcDvfsTargetcmdavs11 = 115,
     /// PWC_DVFS_TargetCmdAVS12
-    PwcDvfsTargetcmdavs12 = 115,
+    PwcDvfsTargetcmdavs12 = 116,
     /// PWC_DVFS_TargetCmdAVS13
-    PwcDvfsTargetcmdavs13 = 116,
+    PwcDvfsTargetcmdavs13 = 117,
     /// PWC_AVS_AVS_ERROR_0
-    PwcAvsAvsError0 = 117,
+    PwcAvsAvsError0 = 118,
     /// PWC_AVS_AVS_ERROR_1
-    PwcAvsAvsError1 = 118,
+    PwcAvsAvsError1 = 119,
     /// PWC_AVS_AVS_ERROR_2
-    PwcAvsAvsError2 = 119,
+    PwcAvsAvsError2 = 120,
     /// PWC_AVS_AVS_ERROR_3
-    PwcAvsAvsError3 = 120,
+    PwcAvsAvsError3 = 121,
     /// PWC_AVS_AVS_ERROR_4
-    PwcAvsAvsError4 = 121,
+    PwcAvsAvsError4 = 122,
     /// PWC_AVS_AVS_ERROR_5
-    PwcAvsAvsError5 = 122,
+    PwcAvsAvsError5 = 123,
     /// PWC_AVS_AVS_ERROR_6
-    PwcAvsAvsError6 = 123,
+    PwcAvsAvsError6 = 124,
     /// PWC_AVS_AVS_ERROR_7
-    PwcAvsAvsError7 = 124,
+    PwcAvsAvsError7 = 125,
     /// PWC_AVS_AVS_ERROR_8
-    PwcAvsAvsError8 = 125,
+    PwcAvsAvsError8 = 126,
     /// PWC_AVS_AVS_ERROR_9
-    PwcAvsAvsError9 = 126,
+    PwcAvsAvsError9 = 127,
     /// PWC_AVS_AVS_ERROR_10
-    PwcAvsAvsError10 = 127,
+    PwcAvsAvsError10 = 128,
     /// PWC_AVS_AVS_ERROR_11
-    PwcAvsAvsError11 = 128,
+    PwcAvsAvsError11 = 129,
     /// PWC_AVS_AVS_ERROR_12
-    PwcAvsAvsError12 = 129,
+    PwcAvsAvsError12 = 130,
     /// PWC_AVS_AVS_ERROR_13
-    PwcAvsAvsError13 = 130,
+    PwcAvsAvsError13 = 131,
     /// PWC_AVS_AVS_ERROR_14
-    PwcAvsAvsError14 = 131,
+    PwcAvsAvsError14 = 132,
     /// PWC_AVS_AVS_ERROR_15
-    PwcAvsAvsError15 = 132,
+    PwcAvsAvsError15 = 133,
     /// PWC_AVS_AVS_ERROR_16
-    PwcAvsAvsError16 = 133,
+    PwcAvsAvsError16 = 134,
     /// PWC_AVS_AVS_ERROR_17
-    PwcAvsAvsError17 = 134,
+    PwcAvsAvsError17 = 135,
     /// PWC_AVS_AVS_ERROR_18
-    PwcAvsAvsError18 = 135,
+    PwcAvsAvsError18 = 136,
     /// PWC_AVS_AVS_ERROR_19
-    PwcAvsAvsError19 = 136,
+    PwcAvsAvsError19 = 137,
     /// PWC_AVS_AVS_ERROR_20
-    PwcAvsAvsError20 = 137,
+    PwcAvsAvsError20 = 138,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_0
-    PwcAvsAvsResponseToFw0 = 138,
+    PwcAvsAvsResponseToFw0 = 139,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_1
-    PwcAvsAvsResponseToFw1 = 139,
+    PwcAvsAvsResponseToFw1 = 140,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_2
-    PwcAvsAvsResponseToFw2 = 140,
+    PwcAvsAvsResponseToFw2 = 141,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_3
-    PwcAvsAvsResponseToFw3 = 141,
+    PwcAvsAvsResponseToFw3 = 142,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_4
-    PwcAvsAvsResponseToFw4 = 142,
+    PwcAvsAvsResponseToFw4 = 143,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_5
-    PwcAvsAvsResponseToFw5 = 143,
+    PwcAvsAvsResponseToFw5 = 144,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_6
-    PwcAvsAvsResponseToFw6 = 144,
+    PwcAvsAvsResponseToFw6 = 145,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_7
-    PwcAvsAvsResponseToFw7 = 145,
+    PwcAvsAvsResponseToFw7 = 146,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_8
-    PwcAvsAvsResponseToFw8 = 146,
+    PwcAvsAvsResponseToFw8 = 147,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_9
-    PwcAvsAvsResponseToFw9 = 147,
+    PwcAvsAvsResponseToFw9 = 148,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_10
-    PwcAvsAvsResponseToFw10 = 148,
+    PwcAvsAvsResponseToFw10 = 149,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_11
-    PwcAvsAvsResponseToFw11 = 149,
+    PwcAvsAvsResponseToFw11 = 150,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_12
-    PwcAvsAvsResponseToFw12 = 150,
+    PwcAvsAvsResponseToFw12 = 151,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_13
-    PwcAvsAvsResponseToFw13 = 151,
+    PwcAvsAvsResponseToFw13 = 152,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_14
-    PwcAvsAvsResponseToFw14 = 152,
+    PwcAvsAvsResponseToFw14 = 153,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_15
-    PwcAvsAvsResponseToFw15 = 153,
+    PwcAvsAvsResponseToFw15 = 154,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_16
-    PwcAvsAvsResponseToFw16 = 154,
+    PwcAvsAvsResponseToFw16 = 155,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_17
-    PwcAvsAvsResponseToFw17 = 155,
+    PwcAvsAvsResponseToFw17 = 156,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_18
-    PwcAvsAvsResponseToFw18 = 156,
+    PwcAvsAvsResponseToFw18 = 157,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_19
-    PwcAvsAvsResponseToFw19 = 157,
+    PwcAvsAvsResponseToFw19 = 158,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_20
-    PwcAvsAvsResponseToFw20 = 158,
+    PwcAvsAvsResponseToFw20 = 159,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_21
-    PwcAvsAvsResponseToFw21 = 159,
+    PwcAvsAvsResponseToFw21 = 160,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_22
-    PwcAvsAvsResponseToFw22 = 160,
+    PwcAvsAvsResponseToFw22 = 161,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_23
-    PwcAvsAvsResponseToFw23 = 161,
+    PwcAvsAvsResponseToFw23 = 162,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_24
-    PwcAvsAvsResponseToFw24 = 162,
+    PwcAvsAvsResponseToFw24 = 163,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_25
-    PwcAvsAvsResponseToFw25 = 163,
+    PwcAvsAvsResponseToFw25 = 164,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_26
-    PwcAvsAvsResponseToFw26 = 164,
+    PwcAvsAvsResponseToFw26 = 165,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_27
-    PwcAvsAvsResponseToFw27 = 165,
+    PwcAvsAvsResponseToFw27 = 166,
     /// PWC_AVS_AVS_RESPONSE_TO_FW_28
-    PwcAvsAvsResponseToFw28 = 166,
+    PwcAvsAvsResponseToFw28 = 167,
     /// PWC_BCAST_C_STATE_ENTRY
-    PwcBcastCStateEntry = 167,
+    PwcBcastCStateEntry = 168,
     /// PWC_BCAST_C_STATE_EXIT
-    PwcBcastCStateExit = 168,
+    PwcBcastCStateExit = 169,
     /// PWC_BCAST_DPA_IDLE_ENTRY
-    PwcBcastDpaIdleEntry = 169,
+    PwcBcastDpaIdleEntry = 170,
     /// PWC_BCAST_DPA_IDLE_EXIT
-    PwcBcastDpaIdleExit = 170,
+    PwcBcastDpaIdleExit = 171,
     /// PWC_CCS_0_PWR_VIRUS_LVL_REQ
-    PwcCcs0PwrVirusLvlReq = 171,
+    PwcCcs0PwrVirusLvlReq = 172,
     /// PWC_CCS_1_PWR_VIRUS_LVL_REQ
-    PwcCcs1PwrVirusLvlReq = 172,
+    PwcCcs1PwrVirusLvlReq = 173,
     /// PWC_CCS_2_PWR_VIRUS_LVL_REQ
-    PwcCcs2PwrVirusLvlReq = 173,
+    PwcCcs2PwrVirusLvlReq = 174,
     /// PWC_CCS_3_PWR_VIRUS_LVL_REQ
-    PwcCcs3PwrVirusLvlReq = 174,
+    PwcCcs3PwrVirusLvlReq = 175,
     /// PWC_CCS_4_PWR_VIRUS_LVL_REQ
-    PwcCcs4PwrVirusLvlReq = 175,
+    PwcCcs4PwrVirusLvlReq = 176,
     /// PWC_CCS_5_PWR_VIRUS_LVL_REQ
-    PwcCcs5PwrVirusLvlReq = 176,
+    PwcCcs5PwrVirusLvlReq = 177,
     /// PWC_CCS_6_PWR_VIRUS_LVL_REQ
-    PwcCcs6PwrVirusLvlReq = 177,
+    PwcCcs6PwrVirusLvlReq = 178,
     /// PWC_CCS_7_PWR_VIRUS_LVL_REQ
-    PwcCcs7PwrVirusLvlReq = 178,
+    PwcCcs7PwrVirusLvlReq = 179,
     /// PWC_CCS_0_DVFS_FSM
-    PwcCcs0DvfsFsm = 179,
+    PwcCcs0DvfsFsm = 180,
     /// PWC_CCS_1_DVFS_FSM
-    PwcCcs1DvfsFsm = 180,
+    PwcCcs1DvfsFsm = 181,
     /// PWC_CCS_2_DVFS_FSM
-    PwcCcs2DvfsFsm = 181,
+    PwcCcs2DvfsFsm = 182,
     /// PWC_CCS_3_DVFS_FSM
-    PwcCcs3DvfsFsm = 182,
+    PwcCcs3DvfsFsm = 183,
     /// PWC_CCS_4_DVFS_FSM
-    PwcCcs4DvfsFsm = 183,
+    PwcCcs4DvfsFsm = 184,
     /// PWC_CCS_5_DVFS_FSM
-    PwcCcs5DvfsFsm = 184,
+    PwcCcs5DvfsFsm = 185,
     /// PWC_CCS_6_DVFS_FSM
-    PwcCcs6DvfsFsm = 185,
+    PwcCcs6DvfsFsm = 186,
     /// PWC_CCS_7_DVFS_FSM
-    PwcCcs7DvfsFsm = 186,
+    PwcCcs7DvfsFsm = 187,
     /// PWC_HMS_East_STATUS
-    PwcHmsEastStatus = 187,
+    PwcHmsEastStatus = 188,
     /// PWC_HMS_WEST_STATUS
-    PwcHmsWestStatus = 188,
+    PwcHmsWestStatus = 189,
     /// PWC_PCS_0_ALL_PORTS_STATUS
-    PwcPcs0AllPortsStatus = 189,
+    PwcPcs0AllPortsStatus = 190,
     /// PWC_PCS_0_LINK_BRINGUP_0
-    PwcPcs0LinkBringup0 = 190,
+    PwcPcs0LinkBringup0 = 191,
     /// PWC_PCS_0_LINK_BRINGUP_1
-    PwcPcs0LinkBringup1 = 191,
+    PwcPcs0LinkBringup1 = 192,
     /// PWC_PCS_0_LINK_BRINGUP_2
-    PwcPcs0LinkBringup2 = 192,
+    PwcPcs0LinkBringup2 = 193,
     /// PWC_PCS_0_LINK_BRINGUP_3
-    PwcPcs0LinkBringup3 = 193,
+    PwcPcs0LinkBringup3 = 194,
     /// PWC_PCS_0_MSG_CTRL
-    PwcPcs0MsgCtrl = 194,
+    PwcPcs0MsgCtrl = 195,
     /// PWC_PCS_0_PHY_STATUS
-    PwcPcs0PhyStatus = 195,
+    PwcPcs0PhyStatus = 196,
     /// PWC_PCS_1_ALL_PORTS_STATUS
-    PwcPcs1AllPortsStatus = 196,
+    PwcPcs1AllPortsStatus = 197,
     /// PWC_PCS_1_LINK_BRINGUP_0
-    PwcPcs1LinkBringup0 = 197,
+    PwcPcs1LinkBringup0 = 198,
     /// PWC_PCS_1_LINK_BRINGUP_1
-    PwcPcs1LinkBringup1 = 198,
+    PwcPcs1LinkBringup1 = 199,
     /// PWC_PCS_1_LINK_BRINGUP_2
-    PwcPcs1LinkBringup2 = 199,
+    PwcPcs1LinkBringup2 = 200,
     /// PWC_PCS_1_LINK_BRINGUP_3
-    PwcPcs1LinkBringup3 = 200,
+    PwcPcs1LinkBringup3 = 201,
     /// PWC_PCS_1_MSG_CTRL
-    PwcPcs1MsgCtrl = 201,
+    PwcPcs1MsgCtrl = 202,
     /// PWC_PCS_1_PHY_STATUS
-    PwcPcs1PhyStatus = 202,
+    PwcPcs1PhyStatus = 203,
     /// PWC_PCS_2_ALL_PORTS_STATUS
-    PwcPcs2AllPortsStatus = 203,
+    PwcPcs2AllPortsStatus = 204,
     /// PWC_PCS_2_LINK_BRINGUP_0
-    PwcPcs2LinkBringup0 = 204,
+    PwcPcs2LinkBringup0 = 205,
     /// PWC_PCS_2_LINK_BRINGUP_1
-    PwcPcs2LinkBringup1 = 205,
+    PwcPcs2LinkBringup1 = 206,
     /// PWC_PCS_2_LINK_BRINGUP_2
-    PwcPcs2LinkBringup2 = 206,
+    PwcPcs2LinkBringup2 = 207,
     /// PWC_PCS_2_LINK_BRINGUP_3
-    PwcPcs2LinkBringup3 = 207,
+    PwcPcs2LinkBringup3 = 208,
     /// PWC_PCS_2_MSG_CTRL
-    PwcPcs2MsgCtrl = 208,
+    PwcPcs2MsgCtrl = 209,
     /// PWC_PCS_2_PHY_STATUS
-    PwcPcs2PhyStatus = 209,
+    PwcPcs2PhyStatus = 210,
     /// PWC_PCS_3_ALL_PORTS_STATUS
-    PwcPcs3AllPortsStatus = 210,
+    PwcPcs3AllPortsStatus = 211,
     /// PWC_PCS_3_LINK_BRINGUP_0
-    PwcPcs3LinkBringup0 = 211,
+    PwcPcs3LinkBringup0 = 212,
     /// PWC_PCS_3_LINK_BRINGUP_1
-    PwcPcs3LinkBringup1 = 212,
+    PwcPcs3LinkBringup1 = 213,
     /// PWC_PCS_3_LINK_BRINGUP_2
-    PwcPcs3LinkBringup2 = 213,
+    PwcPcs3LinkBringup2 = 214,
     /// PWC_PCS_3_LINK_BRINGUP_3
-    PwcPcs3LinkBringup3 = 214,
+    PwcPcs3LinkBringup3 = 215,
     /// PWC_PCS_3_MSG_CTRL
-    PwcPcs3MsgCtrl = 215,
+    PwcPcs3MsgCtrl = 216,
     /// PWC_PCS_3_PHY_STATUS
-    PwcPcs3PhyStatus = 216,
+    PwcPcs3PhyStatus = 217,
     /// PWC_PCS_4_ALL_PORTS_STATUS
-    PwcPcs4AllPortsStatus = 217,
+    PwcPcs4AllPortsStatus = 218,
     /// PWC_PCS_4_LINK_BRINGUP_0
-    PwcPcs4LinkBringup0 = 218,
+    PwcPcs4LinkBringup0 = 219,
     /// PWC_PCS_4_LINK_BRINGUP_1
-    PwcPcs4LinkBringup1 = 219,
+    PwcPcs4LinkBringup1 = 220,
     /// PWC_PCS_4_LINK_BRINGUP_2
-    PwcPcs4LinkBringup2 = 220,
+    PwcPcs4LinkBringup2 = 221,
     /// PWC_PCS_4_LINK_BRINGUP_3
-    PwcPcs4LinkBringup3 = 221,
+    PwcPcs4LinkBringup3 = 222,
     /// PWC_PCS_4_MSG_CTRL
-    PwcPcs4MsgCtrl = 222,
+    PwcPcs4MsgCtrl = 223,
     /// PWC_PCS_4_PHY_STATUS
-    PwcPcs4PhyStatus = 223,
+    PwcPcs4PhyStatus = 224,
     /// PWC_PCS_5_ALL_PORTS_STATUS
-    PwcPcs5AllPortsStatus = 224,
+    PwcPcs5AllPortsStatus = 225,
     /// PWC_PCS_5_LINK_BRINGUP_0
-    PwcPcs5LinkBringup0 = 225,
+    PwcPcs5LinkBringup0 = 226,
     /// PWC_PCS_5_LINK_BRINGUP_1
-    PwcPcs5LinkBringup1 = 226,
+    PwcPcs5LinkBringup1 = 227,
     /// PWC_PCS_5_LINK_BRINGUP_2
-    PwcPcs5LinkBringup2 = 227,
+    PwcPcs5LinkBringup2 = 228,
     /// PWC_PCS_5_LINK_BRINGUP_3
-    PwcPcs5LinkBringup3 = 228,
+    PwcPcs5LinkBringup3 = 229,
     /// PWC_PCS_5_MSG_CTRL
-    PwcPcs5MsgCtrl = 229,
+    PwcPcs5MsgCtrl = 230,
     /// PWC_PCS_5_PHY_STATUS
-    PwcPcs5PhyStatus = 230,
+    PwcPcs5PhyStatus = 231,
     /// PWC_PCS_6_ALL_PORTS_STATUS
-    PwcPcs6AllPortsStatus = 231,
+    PwcPcs6AllPortsStatus = 232,
     /// PWC_PCS_6_LINK_BRINGUP_0
-    PwcPcs6LinkBringup0 = 232,
+    PwcPcs6LinkBringup0 = 233,
     /// PWC_PCS_6_LINK_BRINGUP_1
-    PwcPcs6LinkBringup1 = 233,
+    PwcPcs6LinkBringup1 = 234,
     /// PWC_PCS_6_LINK_BRINGUP_2
-    PwcPcs6LinkBringup2 = 234,
+    PwcPcs6LinkBringup2 = 235,
     /// PWC_PCS_6_LINK_BRINGUP_3
-    PwcPcs6LinkBringup3 = 235,
+    PwcPcs6LinkBringup3 = 236,
     /// PWC_PCS_6_MSG_CTRL
-    PwcPcs6MsgCtrl = 236,
+    PwcPcs6MsgCtrl = 237,
     /// PWC_PCS_6_PHY_STATUS
-    PwcPcs6PhyStatus = 237,
+    PwcPcs6PhyStatus = 238,
     /// PWC_PCS_7_ALL_PORTS_STATUS
-    PwcPcs7AllPortsStatus = 238,
+    PwcPcs7AllPortsStatus = 239,
     /// PWC_PCS_7_LINK_BRINGUP_0
-    PwcPcs7LinkBringup0 = 239,
+    PwcPcs7LinkBringup0 = 240,
     /// PWC_PCS_7_LINK_BRINGUP_1
-    PwcPcs7LinkBringup1 = 240,
+    PwcPcs7LinkBringup1 = 241,
     /// PWC_PCS_7_LINK_BRINGUP_2
-    PwcPcs7LinkBringup2 = 241,
+    PwcPcs7LinkBringup2 = 242,
     /// PWC_PCS_7_LINK_BRINGUP_3
-    PwcPcs7LinkBringup3 = 242,
+    PwcPcs7LinkBringup3 = 243,
     /// PWC_PCS_7_MSG_CTRL
-    PwcPcs7MsgCtrl = 243,
+    PwcPcs7MsgCtrl = 244,
     /// PWC_PCS_7_PHY_STATUS
-    PwcPcs7PhyStatus = 244,
+    PwcPcs7PhyStatus = 245,
     /// PWC_HDR_IPI_FROM_PWC_0
-    PwcHdrIpiFromPwc0 = 245,
+    PwcHdrIpiFromPwc0 = 246,
     /// PWC_HDR_IPI_FROM_PWC_1
-    PwcHdrIpiFromPwc1 = 246,
+    PwcHdrIpiFromPwc1 = 247,
     /// PWC_HDR_IPI_FROM_PWC_2
-    PwcHdrIpiFromPwc2 = 247,
+    PwcHdrIpiFromPwc2 = 248,
     /// PWC_HDR_IPI_FROM_ROT
-    PwcHdrIpiFromRot = 248,
+    PwcHdrIpiFromRot = 249,
     /// PWC_HDR_IPI_FROM_MIO
-    PwcHdrIpiFromMio = 249,
+    PwcHdrIpiFromMio = 250,
     /// PWC_HDR_IPI_FROM_DUC
-    PwcHdrIpiFromDuc = 250,
+    PwcHdrIpiFromDuc = 251,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -1029,165 +1034,166 @@ impl TryFrom<u32> for PlicIrqId {
             89 => Ok(Self::MbxPcie0MbxReady),
             90 => Ok(Self::MbxPcie0MbxAbort),
             91 => Ok(Self::MbxPcie0MbxError),
-            92 => Ok(Self::PwcLteuSocHot),
-            93 => Ok(Self::PwcLteuFwTrip),
-            94 => Ok(Self::PwcLteuCatTrip),
-            95 => Ok(Self::LioGrpAIbexIrq),
-            96 => Ok(Self::LioGrpBIbexIrq),
-            97 => Ok(Self::LioGrpCIbexIrq),
-            98 => Ok(Self::PwcDvfsSocdpafsmstatus0),
-            99 => Ok(Self::PwcDvfsSocdpafsmstatus1),
-            100 => Ok(Self::PwcDvfsSocdpafsmstatus2),
-            101 => Ok(Self::PwcDvfsSocdpafsmstatus3),
-            102 => Ok(Self::PwcDvfsSocdpafsmstatus4),
-            103 => Ok(Self::PwcDvfsTargetcmdavs0),
-            104 => Ok(Self::PwcDvfsTargetcmdavs1),
-            105 => Ok(Self::PwcDvfsTargetcmdavs2),
-            106 => Ok(Self::PwcDvfsTargetcmdavs3),
-            107 => Ok(Self::PwcDvfsTargetcmdavs4),
-            108 => Ok(Self::PwcDvfsTargetcmdavs5),
-            109 => Ok(Self::PwcDvfsTargetcmdavs6),
-            110 => Ok(Self::PwcDvfsTargetcmdavs7),
-            111 => Ok(Self::PwcDvfsTargetcmdavs8),
-            112 => Ok(Self::PwcDvfsTargetcmdavs9),
-            113 => Ok(Self::PwcDvfsTargetcmdavs10),
-            114 => Ok(Self::PwcDvfsTargetcmdavs11),
-            115 => Ok(Self::PwcDvfsTargetcmdavs12),
-            116 => Ok(Self::PwcDvfsTargetcmdavs13),
-            117 => Ok(Self::PwcAvsAvsError0),
-            118 => Ok(Self::PwcAvsAvsError1),
-            119 => Ok(Self::PwcAvsAvsError2),
-            120 => Ok(Self::PwcAvsAvsError3),
-            121 => Ok(Self::PwcAvsAvsError4),
-            122 => Ok(Self::PwcAvsAvsError5),
-            123 => Ok(Self::PwcAvsAvsError6),
-            124 => Ok(Self::PwcAvsAvsError7),
-            125 => Ok(Self::PwcAvsAvsError8),
-            126 => Ok(Self::PwcAvsAvsError9),
-            127 => Ok(Self::PwcAvsAvsError10),
-            128 => Ok(Self::PwcAvsAvsError11),
-            129 => Ok(Self::PwcAvsAvsError12),
-            130 => Ok(Self::PwcAvsAvsError13),
-            131 => Ok(Self::PwcAvsAvsError14),
-            132 => Ok(Self::PwcAvsAvsError15),
-            133 => Ok(Self::PwcAvsAvsError16),
-            134 => Ok(Self::PwcAvsAvsError17),
-            135 => Ok(Self::PwcAvsAvsError18),
-            136 => Ok(Self::PwcAvsAvsError19),
-            137 => Ok(Self::PwcAvsAvsError20),
-            138 => Ok(Self::PwcAvsAvsResponseToFw0),
-            139 => Ok(Self::PwcAvsAvsResponseToFw1),
-            140 => Ok(Self::PwcAvsAvsResponseToFw2),
-            141 => Ok(Self::PwcAvsAvsResponseToFw3),
-            142 => Ok(Self::PwcAvsAvsResponseToFw4),
-            143 => Ok(Self::PwcAvsAvsResponseToFw5),
-            144 => Ok(Self::PwcAvsAvsResponseToFw6),
-            145 => Ok(Self::PwcAvsAvsResponseToFw7),
-            146 => Ok(Self::PwcAvsAvsResponseToFw8),
-            147 => Ok(Self::PwcAvsAvsResponseToFw9),
-            148 => Ok(Self::PwcAvsAvsResponseToFw10),
-            149 => Ok(Self::PwcAvsAvsResponseToFw11),
-            150 => Ok(Self::PwcAvsAvsResponseToFw12),
-            151 => Ok(Self::PwcAvsAvsResponseToFw13),
-            152 => Ok(Self::PwcAvsAvsResponseToFw14),
-            153 => Ok(Self::PwcAvsAvsResponseToFw15),
-            154 => Ok(Self::PwcAvsAvsResponseToFw16),
-            155 => Ok(Self::PwcAvsAvsResponseToFw17),
-            156 => Ok(Self::PwcAvsAvsResponseToFw18),
-            157 => Ok(Self::PwcAvsAvsResponseToFw19),
-            158 => Ok(Self::PwcAvsAvsResponseToFw20),
-            159 => Ok(Self::PwcAvsAvsResponseToFw21),
-            160 => Ok(Self::PwcAvsAvsResponseToFw22),
-            161 => Ok(Self::PwcAvsAvsResponseToFw23),
-            162 => Ok(Self::PwcAvsAvsResponseToFw24),
-            163 => Ok(Self::PwcAvsAvsResponseToFw25),
-            164 => Ok(Self::PwcAvsAvsResponseToFw26),
-            165 => Ok(Self::PwcAvsAvsResponseToFw27),
-            166 => Ok(Self::PwcAvsAvsResponseToFw28),
-            167 => Ok(Self::PwcBcastCStateEntry),
-            168 => Ok(Self::PwcBcastCStateExit),
-            169 => Ok(Self::PwcBcastDpaIdleEntry),
-            170 => Ok(Self::PwcBcastDpaIdleExit),
-            171 => Ok(Self::PwcCcs0PwrVirusLvlReq),
-            172 => Ok(Self::PwcCcs1PwrVirusLvlReq),
-            173 => Ok(Self::PwcCcs2PwrVirusLvlReq),
-            174 => Ok(Self::PwcCcs3PwrVirusLvlReq),
-            175 => Ok(Self::PwcCcs4PwrVirusLvlReq),
-            176 => Ok(Self::PwcCcs5PwrVirusLvlReq),
-            177 => Ok(Self::PwcCcs6PwrVirusLvlReq),
-            178 => Ok(Self::PwcCcs7PwrVirusLvlReq),
-            179 => Ok(Self::PwcCcs0DvfsFsm),
-            180 => Ok(Self::PwcCcs1DvfsFsm),
-            181 => Ok(Self::PwcCcs2DvfsFsm),
-            182 => Ok(Self::PwcCcs3DvfsFsm),
-            183 => Ok(Self::PwcCcs4DvfsFsm),
-            184 => Ok(Self::PwcCcs5DvfsFsm),
-            185 => Ok(Self::PwcCcs6DvfsFsm),
-            186 => Ok(Self::PwcCcs7DvfsFsm),
-            187 => Ok(Self::PwcHmsEastStatus),
-            188 => Ok(Self::PwcHmsWestStatus),
-            189 => Ok(Self::PwcPcs0AllPortsStatus),
-            190 => Ok(Self::PwcPcs0LinkBringup0),
-            191 => Ok(Self::PwcPcs0LinkBringup1),
-            192 => Ok(Self::PwcPcs0LinkBringup2),
-            193 => Ok(Self::PwcPcs0LinkBringup3),
-            194 => Ok(Self::PwcPcs0MsgCtrl),
-            195 => Ok(Self::PwcPcs0PhyStatus),
-            196 => Ok(Self::PwcPcs1AllPortsStatus),
-            197 => Ok(Self::PwcPcs1LinkBringup0),
-            198 => Ok(Self::PwcPcs1LinkBringup1),
-            199 => Ok(Self::PwcPcs1LinkBringup2),
-            200 => Ok(Self::PwcPcs1LinkBringup3),
-            201 => Ok(Self::PwcPcs1MsgCtrl),
-            202 => Ok(Self::PwcPcs1PhyStatus),
-            203 => Ok(Self::PwcPcs2AllPortsStatus),
-            204 => Ok(Self::PwcPcs2LinkBringup0),
-            205 => Ok(Self::PwcPcs2LinkBringup1),
-            206 => Ok(Self::PwcPcs2LinkBringup2),
-            207 => Ok(Self::PwcPcs2LinkBringup3),
-            208 => Ok(Self::PwcPcs2MsgCtrl),
-            209 => Ok(Self::PwcPcs2PhyStatus),
-            210 => Ok(Self::PwcPcs3AllPortsStatus),
-            211 => Ok(Self::PwcPcs3LinkBringup0),
-            212 => Ok(Self::PwcPcs3LinkBringup1),
-            213 => Ok(Self::PwcPcs3LinkBringup2),
-            214 => Ok(Self::PwcPcs3LinkBringup3),
-            215 => Ok(Self::PwcPcs3MsgCtrl),
-            216 => Ok(Self::PwcPcs3PhyStatus),
-            217 => Ok(Self::PwcPcs4AllPortsStatus),
-            218 => Ok(Self::PwcPcs4LinkBringup0),
-            219 => Ok(Self::PwcPcs4LinkBringup1),
-            220 => Ok(Self::PwcPcs4LinkBringup2),
-            221 => Ok(Self::PwcPcs4LinkBringup3),
-            222 => Ok(Self::PwcPcs4MsgCtrl),
-            223 => Ok(Self::PwcPcs4PhyStatus),
-            224 => Ok(Self::PwcPcs5AllPortsStatus),
-            225 => Ok(Self::PwcPcs5LinkBringup0),
-            226 => Ok(Self::PwcPcs5LinkBringup1),
-            227 => Ok(Self::PwcPcs5LinkBringup2),
-            228 => Ok(Self::PwcPcs5LinkBringup3),
-            229 => Ok(Self::PwcPcs5MsgCtrl),
-            230 => Ok(Self::PwcPcs5PhyStatus),
-            231 => Ok(Self::PwcPcs6AllPortsStatus),
-            232 => Ok(Self::PwcPcs6LinkBringup0),
-            233 => Ok(Self::PwcPcs6LinkBringup1),
-            234 => Ok(Self::PwcPcs6LinkBringup2),
-            235 => Ok(Self::PwcPcs6LinkBringup3),
-            236 => Ok(Self::PwcPcs6MsgCtrl),
-            237 => Ok(Self::PwcPcs6PhyStatus),
-            238 => Ok(Self::PwcPcs7AllPortsStatus),
-            239 => Ok(Self::PwcPcs7LinkBringup0),
-            240 => Ok(Self::PwcPcs7LinkBringup1),
-            241 => Ok(Self::PwcPcs7LinkBringup2),
-            242 => Ok(Self::PwcPcs7LinkBringup3),
-            243 => Ok(Self::PwcPcs7MsgCtrl),
-            244 => Ok(Self::PwcPcs7PhyStatus),
-            245 => Ok(Self::PwcHdrIpiFromPwc0),
-            246 => Ok(Self::PwcHdrIpiFromPwc1),
-            247 => Ok(Self::PwcHdrIpiFromPwc2),
-            248 => Ok(Self::PwcHdrIpiFromRot),
-            249 => Ok(Self::PwcHdrIpiFromMio),
-            250 => Ok(Self::PwcHdrIpiFromDuc),
+            92 => Ok(Self::AcRangeCheckDenyCntReached),
+            93 => Ok(Self::PwcLteuSocHot),
+            94 => Ok(Self::PwcLteuFwTrip),
+            95 => Ok(Self::PwcLteuCatTrip),
+            96 => Ok(Self::LioGrpAIbexIrq),
+            97 => Ok(Self::LioGrpBIbexIrq),
+            98 => Ok(Self::LioGrpCIbexIrq),
+            99 => Ok(Self::PwcDvfsSocdpafsmstatus0),
+            100 => Ok(Self::PwcDvfsSocdpafsmstatus1),
+            101 => Ok(Self::PwcDvfsSocdpafsmstatus2),
+            102 => Ok(Self::PwcDvfsSocdpafsmstatus3),
+            103 => Ok(Self::PwcDvfsSocdpafsmstatus4),
+            104 => Ok(Self::PwcDvfsTargetcmdavs0),
+            105 => Ok(Self::PwcDvfsTargetcmdavs1),
+            106 => Ok(Self::PwcDvfsTargetcmdavs2),
+            107 => Ok(Self::PwcDvfsTargetcmdavs3),
+            108 => Ok(Self::PwcDvfsTargetcmdavs4),
+            109 => Ok(Self::PwcDvfsTargetcmdavs5),
+            110 => Ok(Self::PwcDvfsTargetcmdavs6),
+            111 => Ok(Self::PwcDvfsTargetcmdavs7),
+            112 => Ok(Self::PwcDvfsTargetcmdavs8),
+            113 => Ok(Self::PwcDvfsTargetcmdavs9),
+            114 => Ok(Self::PwcDvfsTargetcmdavs10),
+            115 => Ok(Self::PwcDvfsTargetcmdavs11),
+            116 => Ok(Self::PwcDvfsTargetcmdavs12),
+            117 => Ok(Self::PwcDvfsTargetcmdavs13),
+            118 => Ok(Self::PwcAvsAvsError0),
+            119 => Ok(Self::PwcAvsAvsError1),
+            120 => Ok(Self::PwcAvsAvsError2),
+            121 => Ok(Self::PwcAvsAvsError3),
+            122 => Ok(Self::PwcAvsAvsError4),
+            123 => Ok(Self::PwcAvsAvsError5),
+            124 => Ok(Self::PwcAvsAvsError6),
+            125 => Ok(Self::PwcAvsAvsError7),
+            126 => Ok(Self::PwcAvsAvsError8),
+            127 => Ok(Self::PwcAvsAvsError9),
+            128 => Ok(Self::PwcAvsAvsError10),
+            129 => Ok(Self::PwcAvsAvsError11),
+            130 => Ok(Self::PwcAvsAvsError12),
+            131 => Ok(Self::PwcAvsAvsError13),
+            132 => Ok(Self::PwcAvsAvsError14),
+            133 => Ok(Self::PwcAvsAvsError15),
+            134 => Ok(Self::PwcAvsAvsError16),
+            135 => Ok(Self::PwcAvsAvsError17),
+            136 => Ok(Self::PwcAvsAvsError18),
+            137 => Ok(Self::PwcAvsAvsError19),
+            138 => Ok(Self::PwcAvsAvsError20),
+            139 => Ok(Self::PwcAvsAvsResponseToFw0),
+            140 => Ok(Self::PwcAvsAvsResponseToFw1),
+            141 => Ok(Self::PwcAvsAvsResponseToFw2),
+            142 => Ok(Self::PwcAvsAvsResponseToFw3),
+            143 => Ok(Self::PwcAvsAvsResponseToFw4),
+            144 => Ok(Self::PwcAvsAvsResponseToFw5),
+            145 => Ok(Self::PwcAvsAvsResponseToFw6),
+            146 => Ok(Self::PwcAvsAvsResponseToFw7),
+            147 => Ok(Self::PwcAvsAvsResponseToFw8),
+            148 => Ok(Self::PwcAvsAvsResponseToFw9),
+            149 => Ok(Self::PwcAvsAvsResponseToFw10),
+            150 => Ok(Self::PwcAvsAvsResponseToFw11),
+            151 => Ok(Self::PwcAvsAvsResponseToFw12),
+            152 => Ok(Self::PwcAvsAvsResponseToFw13),
+            153 => Ok(Self::PwcAvsAvsResponseToFw14),
+            154 => Ok(Self::PwcAvsAvsResponseToFw15),
+            155 => Ok(Self::PwcAvsAvsResponseToFw16),
+            156 => Ok(Self::PwcAvsAvsResponseToFw17),
+            157 => Ok(Self::PwcAvsAvsResponseToFw18),
+            158 => Ok(Self::PwcAvsAvsResponseToFw19),
+            159 => Ok(Self::PwcAvsAvsResponseToFw20),
+            160 => Ok(Self::PwcAvsAvsResponseToFw21),
+            161 => Ok(Self::PwcAvsAvsResponseToFw22),
+            162 => Ok(Self::PwcAvsAvsResponseToFw23),
+            163 => Ok(Self::PwcAvsAvsResponseToFw24),
+            164 => Ok(Self::PwcAvsAvsResponseToFw25),
+            165 => Ok(Self::PwcAvsAvsResponseToFw26),
+            166 => Ok(Self::PwcAvsAvsResponseToFw27),
+            167 => Ok(Self::PwcAvsAvsResponseToFw28),
+            168 => Ok(Self::PwcBcastCStateEntry),
+            169 => Ok(Self::PwcBcastCStateExit),
+            170 => Ok(Self::PwcBcastDpaIdleEntry),
+            171 => Ok(Self::PwcBcastDpaIdleExit),
+            172 => Ok(Self::PwcCcs0PwrVirusLvlReq),
+            173 => Ok(Self::PwcCcs1PwrVirusLvlReq),
+            174 => Ok(Self::PwcCcs2PwrVirusLvlReq),
+            175 => Ok(Self::PwcCcs3PwrVirusLvlReq),
+            176 => Ok(Self::PwcCcs4PwrVirusLvlReq),
+            177 => Ok(Self::PwcCcs5PwrVirusLvlReq),
+            178 => Ok(Self::PwcCcs6PwrVirusLvlReq),
+            179 => Ok(Self::PwcCcs7PwrVirusLvlReq),
+            180 => Ok(Self::PwcCcs0DvfsFsm),
+            181 => Ok(Self::PwcCcs1DvfsFsm),
+            182 => Ok(Self::PwcCcs2DvfsFsm),
+            183 => Ok(Self::PwcCcs3DvfsFsm),
+            184 => Ok(Self::PwcCcs4DvfsFsm),
+            185 => Ok(Self::PwcCcs5DvfsFsm),
+            186 => Ok(Self::PwcCcs6DvfsFsm),
+            187 => Ok(Self::PwcCcs7DvfsFsm),
+            188 => Ok(Self::PwcHmsEastStatus),
+            189 => Ok(Self::PwcHmsWestStatus),
+            190 => Ok(Self::PwcPcs0AllPortsStatus),
+            191 => Ok(Self::PwcPcs0LinkBringup0),
+            192 => Ok(Self::PwcPcs0LinkBringup1),
+            193 => Ok(Self::PwcPcs0LinkBringup2),
+            194 => Ok(Self::PwcPcs0LinkBringup3),
+            195 => Ok(Self::PwcPcs0MsgCtrl),
+            196 => Ok(Self::PwcPcs0PhyStatus),
+            197 => Ok(Self::PwcPcs1AllPortsStatus),
+            198 => Ok(Self::PwcPcs1LinkBringup0),
+            199 => Ok(Self::PwcPcs1LinkBringup1),
+            200 => Ok(Self::PwcPcs1LinkBringup2),
+            201 => Ok(Self::PwcPcs1LinkBringup3),
+            202 => Ok(Self::PwcPcs1MsgCtrl),
+            203 => Ok(Self::PwcPcs1PhyStatus),
+            204 => Ok(Self::PwcPcs2AllPortsStatus),
+            205 => Ok(Self::PwcPcs2LinkBringup0),
+            206 => Ok(Self::PwcPcs2LinkBringup1),
+            207 => Ok(Self::PwcPcs2LinkBringup2),
+            208 => Ok(Self::PwcPcs2LinkBringup3),
+            209 => Ok(Self::PwcPcs2MsgCtrl),
+            210 => Ok(Self::PwcPcs2PhyStatus),
+            211 => Ok(Self::PwcPcs3AllPortsStatus),
+            212 => Ok(Self::PwcPcs3LinkBringup0),
+            213 => Ok(Self::PwcPcs3LinkBringup1),
+            214 => Ok(Self::PwcPcs3LinkBringup2),
+            215 => Ok(Self::PwcPcs3LinkBringup3),
+            216 => Ok(Self::PwcPcs3MsgCtrl),
+            217 => Ok(Self::PwcPcs3PhyStatus),
+            218 => Ok(Self::PwcPcs4AllPortsStatus),
+            219 => Ok(Self::PwcPcs4LinkBringup0),
+            220 => Ok(Self::PwcPcs4LinkBringup1),
+            221 => Ok(Self::PwcPcs4LinkBringup2),
+            222 => Ok(Self::PwcPcs4LinkBringup3),
+            223 => Ok(Self::PwcPcs4MsgCtrl),
+            224 => Ok(Self::PwcPcs4PhyStatus),
+            225 => Ok(Self::PwcPcs5AllPortsStatus),
+            226 => Ok(Self::PwcPcs5LinkBringup0),
+            227 => Ok(Self::PwcPcs5LinkBringup1),
+            228 => Ok(Self::PwcPcs5LinkBringup2),
+            229 => Ok(Self::PwcPcs5LinkBringup3),
+            230 => Ok(Self::PwcPcs5MsgCtrl),
+            231 => Ok(Self::PwcPcs5PhyStatus),
+            232 => Ok(Self::PwcPcs6AllPortsStatus),
+            233 => Ok(Self::PwcPcs6LinkBringup0),
+            234 => Ok(Self::PwcPcs6LinkBringup1),
+            235 => Ok(Self::PwcPcs6LinkBringup2),
+            236 => Ok(Self::PwcPcs6LinkBringup3),
+            237 => Ok(Self::PwcPcs6MsgCtrl),
+            238 => Ok(Self::PwcPcs6PhyStatus),
+            239 => Ok(Self::PwcPcs7AllPortsStatus),
+            240 => Ok(Self::PwcPcs7LinkBringup0),
+            241 => Ok(Self::PwcPcs7LinkBringup1),
+            242 => Ok(Self::PwcPcs7LinkBringup2),
+            243 => Ok(Self::PwcPcs7LinkBringup3),
+            244 => Ok(Self::PwcPcs7MsgCtrl),
+            245 => Ok(Self::PwcPcs7PhyStatus),
+            246 => Ok(Self::PwcHdrIpiFromPwc0),
+            247 => Ok(Self::PwcHdrIpiFromPwc1),
+            248 => Ok(Self::PwcHdrIpiFromPwc2),
+            249 => Ok(Self::PwcHdrIpiFromRot),
+            250 => Ok(Self::PwcHdrIpiFromMio),
+            251 => Ok(Self::PwcHdrIpiFromDuc),
             _ => Err(val),
         }
     }
@@ -1208,7 +1214,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 251] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 252] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // GpioGpio0 -> PlicPeripheral::Gpio
@@ -1393,6 +1399,8 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 251] = [
     PlicPeripheral::MbxPcie0,
     // MbxPcie0MbxError -> PlicPeripheral::MbxPcie0
     PlicPeripheral::MbxPcie0,
+    // AcRangeCheckDenyCntReached -> PlicPeripheral::AcRangeCheck
+    PlicPeripheral::AcRangeCheck,
     // PwcLteuSocHot -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // PwcLteuFwTrip -> PlicPeripheral::Unknown

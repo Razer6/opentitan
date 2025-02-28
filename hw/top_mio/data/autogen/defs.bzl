@@ -8,6 +8,7 @@
 # -o hw/top_mio
 
 load("//rules/opentitan:hw.bzl", "opentitan_top")
+load("//hw/top_mio/ip_autogen/ac_range_check_mio:defs.bzl", "AC_RANGE_CHECK_MIO")
 load("//hw/ip/aon_timer:defs.bzl", "AON_TIMER")
 load("//hw/ip/dma:defs.bzl", "DMA")
 load("//hw/ip/mbx:defs.bzl", "MBX")
@@ -25,6 +26,7 @@ MIO = opentitan_top(
     top_lib = "//hw/top_mio/sw/autogen:top_mio",
     top_ld = "//hw/top_mio/sw/autogen:top_mio_memory",
     ips = [
+        AC_RANGE_CHECK_MIO,
         AON_TIMER,
         DMA,
         MBX,

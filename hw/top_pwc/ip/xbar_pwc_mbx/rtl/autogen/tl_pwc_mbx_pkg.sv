@@ -14,6 +14,7 @@ package tl_pwc_mbx_pkg;
   localparam logic [31:0] ADDR_SPACE_MBX5__SOC      = 32'h 01475500;
   localparam logic [31:0] ADDR_SPACE_MBX_PCIE0__SOC = 32'h 01470100;
   localparam logic [31:0] ADDR_SPACE_RACL_CTRL      = 32'h 01473000;
+  localparam logic [31:0] ADDR_SPACE_AC_RANGE_CHECK = 32'h 01474000;
 
   localparam logic [31:0] ADDR_MASK_MBX0__SOC      = 32'h 0000001f;
   localparam logic [31:0] ADDR_MASK_MBX1__SOC      = 32'h 0000001f;
@@ -23,9 +24,10 @@ package tl_pwc_mbx_pkg;
   localparam logic [31:0] ADDR_MASK_MBX5__SOC      = 32'h 0000001f;
   localparam logic [31:0] ADDR_MASK_MBX_PCIE0__SOC = 32'h 0000001f;
   localparam logic [31:0] ADDR_MASK_RACL_CTRL      = 32'h 0000003f;
+  localparam logic [31:0] ADDR_MASK_AC_RANGE_CHECK = 32'h 000003ff;
 
   localparam int N_HOST   = 1;
-  localparam int N_DEVICE = 8;
+  localparam int N_DEVICE = 9;
 
   typedef enum int {
     TlMbx0Soc = 0,
@@ -35,7 +37,8 @@ package tl_pwc_mbx_pkg;
     TlMbx4Soc = 4,
     TlMbx5Soc = 5,
     TlMbxPcie0Soc = 6,
-    TlRaclCtrl = 7
+    TlRaclCtrl = 7,
+    TlAcRangeCheck = 8
   } tl_device_e;
 
   typedef enum int {

@@ -59,6 +59,7 @@ module top_mio #(
   // parameters for mbx_pcie0
   // parameters for racl_ctrl
   parameter int RaclCtrlNumExternalSubscribingIps = 1,
+  // parameters for ac_range_check
   // parameters for rv_core_ibex
   parameter bit RvCoreIbexPMPEnable = 1,
   parameter int unsigned RvCoreIbexPMPGranularity = 0,
@@ -96,24 +97,22 @@ module top_mio #(
   // Inter-module Signal External type
   output dma_pkg::sys_req_t       dma_sys_req_o,
   input  dma_pkg::sys_rsp_t       dma_sys_rsp_i,
-  output tlul_pkg::tl_h2d_t       dma_ctn_tl_h2d_o,
-  input  tlul_pkg::tl_d2h_t       dma_ctn_tl_d2h_i,
   input  tlul_pkg::tl_h2d_t       mbx_tl_req_i,
   output tlul_pkg::tl_d2h_t       mbx_tl_rsp_o,
   input  rv_dm_pkg::next_dm_addr_t       rv_dm_next_dm_addr_i,
   input  tlul_pkg::tl_h2d_t       rv_dm_dbg_req_i,
   output tlul_pkg::tl_d2h_t       rv_dm_dbg_rsp_o,
   input  logic [31:0] fpga_info_i,
-  output tlul_pkg::tl_h2d_t       ctn_tl_h2d_o,
   input  logic [31:0] rv_boot_addr_i,
   input  lc_ctrl_pkg::lc_tx_t       rv_pwrmgr_cpu_en_i,
   input  lc_ctrl_pkg::lc_tx_t       rv_cpu_en_i,
   output prim_esc_pkg::esc_rx_t       rv_core_esc_rx_o,
   input  prim_esc_pkg::esc_tx_t       rv_core_esc_tx_i,
   input  logic [7:0] soc_lsio_trigger_i,
-  input  tlul_pkg::tl_d2h_t       ctn_tl_d2h_i,
   input  lc_ctrl_pkg::lc_tx_t       lc_hw_debug_en_ext_i,
   input  lc_ctrl_pkg::lc_tx_t       lc_escalate_en_ext_i,
+  output tlul_pkg::tl_h2d_t       ctn_tl_h2d_o,
+  input  tlul_pkg::tl_d2h_t       ctn_tl_d2h_i,
   input  lc_ctrl_pkg::lc_tx_t       lc_check_byp_en_i,
   input  prim_ram_1p_pkg::ram_1p_cfg_t [SramCtrlRetAonNumRamInst-1:0] sram_ctrl_ret_aon_ram_1p_cfg_i,
   output prim_ram_1p_pkg::ram_1p_cfg_rsp_t [SramCtrlRetAonNumRamInst-1:0] sram_ctrl_ret_aon_ram_1p_cfg_rsp_o,
@@ -166,7 +165,7 @@ module top_mio #(
 
   // Local Parameters
   // local parameters for racl_ctrl
-  localparam int RaclCtrlNumSubscribingIps = 7;
+  localparam int RaclCtrlNumSubscribingIps = 8;
   // local parameters for rv_core_ibex
   localparam int unsigned RvCoreIbexNEscalationSeverities = 4;
   localparam int unsigned RvCoreIbexWidthPingCounter = 16;
@@ -174,7 +173,7 @@ module top_mio #(
   // Signals
 
 
-  logic [68:0]  intr_vector;
+  logic [69:0]  intr_vector;
   // Interrupt source list
   logic intr_rv_timer_timer_expired_hart0_timer0;
   logic intr_aon_timer_aon_wkup_timer_expired;
@@ -204,6 +203,7 @@ module top_mio #(
   logic intr_mbx_pcie0_mbx_ready;
   logic intr_mbx_pcie0_mbx_abort;
   logic intr_mbx_pcie0_mbx_error;
+  logic intr_ac_range_check_deny_cnt_reached;
 
   // define inter-module signals
   logic       aon_timer_aon_nmi_wdog_timer_bark;
@@ -214,6 +214,12 @@ module top_mio #(
   lc_ctrl_pkg::lc_tx_t       mio_soc_proxy_lc_hw_debug_en;
   lc_ctrl_pkg::lc_tx_t       mio_soc_proxy_lc_escalate_en;
   prim_mubi_pkg::mubi8_t       sram_ctrl_main_otp_en_sram_ifetch;
+  tlul_pkg::tl_h2d_t       mio_soc_proxy_dma_tl_h2d;
+  tlul_pkg::tl_d2h_t       mio_soc_proxy_dma_tl_d2h;
+  tlul_pkg::tl_h2d_t       mio_soc_proxy_muxed_tl_h2d;
+  tlul_pkg::tl_d2h_t       mio_soc_proxy_muxed_tl_d2h;
+  tlul_pkg::tl_h2d_t       ac_range_check_ctn_filtered_tl_h2d;
+  tlul_pkg::tl_d2h_t       ac_range_check_ctn_filtered_tl_d2h;
   tlul_pkg::tl_h2d_t       mio_main_tl_rv_core_ibex__corei_req;
   tlul_pkg::tl_d2h_t       mio_main_tl_rv_core_ibex__corei_rsp;
   tlul_pkg::tl_h2d_t       mio_main_tl_rv_core_ibex__cored_req;
@@ -298,6 +304,8 @@ module top_mio #(
   tlul_pkg::tl_d2h_t       mbx_pcie0_soc_tl_d_rsp;
   tlul_pkg::tl_h2d_t       racl_ctrl_tl_req;
   tlul_pkg::tl_d2h_t       racl_ctrl_tl_rsp;
+  tlul_pkg::tl_h2d_t       ac_range_check_tl_req;
+  tlul_pkg::tl_d2h_t       ac_range_check_tl_rsp;
   top_racl_pkg::racl_policy_vec_t       racl_ctrl_racl_policies;
   top_racl_pkg::racl_error_log_t [RaclCtrlNumSubscribingIps-1:0] racl_ctrl_racl_error;
   logic       rv_core_ibex_irq_timer;
@@ -318,6 +326,9 @@ module top_mio #(
   assign rv_core_ibex_hart_id = '0;
 
 
+  // clk_ext_main_i_ext_rst_main_0
+  assign lpg_cg_en[0] = cg_en_ext_main_i;
+  assign lpg_rst_en[0] = rst_en_ext_rst_main_i;
 
   // Outgoing LPGs for alert group mio
   // clk_ext_io_div4_i_ext_rst_io_div4_0
@@ -389,6 +400,14 @@ module top_mio #(
       .lc_escalate_en_ext_i(lc_escalate_en_ext_i),
       .lc_hw_debug_en_o(mio_soc_proxy_lc_hw_debug_en),
       .lc_hw_debug_en_ext_i(lc_hw_debug_en_ext_i),
+      .dma_tl_h2d_i(mio_soc_proxy_dma_tl_h2d),
+      .dma_tl_d2h_o(mio_soc_proxy_dma_tl_d2h),
+      .misc_tl_h2d_i(tlul_pkg::TL_H2D_DEFAULT),
+      .misc_tl_d2h_o(),
+      .muxed_tl_h2d_o(mio_soc_proxy_muxed_tl_h2d),
+      .muxed_tl_d2h_i(mio_soc_proxy_muxed_tl_d2h),
+      .ac_range_tl_h2d_i(ac_range_check_ctn_filtered_tl_h2d),
+      .ac_range_tl_d2h_o(ac_range_check_ctn_filtered_tl_d2h),
       .ctn_tl_h2d_o(ctn_tl_h2d_o),
       .ctn_tl_d2h_i(ctn_tl_d2h_i),
       .soc_lsio_trigger_i(soc_lsio_trigger_i),
@@ -611,8 +630,8 @@ module top_mio #(
       .lsio_trigger_i(dma_lsio_trigger),
       .sys_o(dma_sys_req_o),
       .sys_i(dma_sys_rsp_i),
-      .ctn_tl_h2d_o(dma_ctn_tl_h2d_o),
-      .ctn_tl_d2h_i(dma_ctn_tl_d2h_i),
+      .ctn_tl_h2d_o(mio_soc_proxy_dma_tl_h2d),
+      .ctn_tl_d2h_i(mio_soc_proxy_dma_tl_d2h),
       .host_tl_h_o(mio_main_tl_dma__host_req),
       .host_tl_h_i(mio_main_tl_dma__host_rsp),
       .tl_d_i(dma_tl_d_req),
@@ -898,6 +917,36 @@ module top_mio #(
       .rst_shadowed_ni (rst_ext_rst_main_i),
       .rst_ni (rst_ext_rst_main_i)
   );
+  ac_range_check_mio #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(1'b0),
+    .RaclPolicySelVec(RACL_POLICY_SEL_AC_RANGE_CHECK),
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[1:0])
+  ) u_ac_range_check (
+
+      // Interrupt
+      .intr_deny_cnt_reached_o (intr_ac_range_check_deny_cnt_reached),
+      // [0]: recov_ctrl_update_err
+      // [1]: fatal_fault
+      .alert_tx_o  ( alert_tx[1:0] ),
+      .alert_rx_i  ( alert_rx[1:0] ),
+
+      // Inter-module signals
+      .range_check_overwrite_i(prim_mubi_pkg::MUBI8_DEFAULT),
+      .ctn_tl_h2d_i(mio_soc_proxy_muxed_tl_h2d),
+      .ctn_tl_d2h_o(mio_soc_proxy_muxed_tl_d2h),
+      .ctn_filtered_tl_h2d_o(ac_range_check_ctn_filtered_tl_h2d),
+      .ctn_filtered_tl_d2h_i(ac_range_check_ctn_filtered_tl_d2h),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[7]),
+      .tl_i(ac_range_check_tl_req),
+      .tl_o(ac_range_check_tl_rsp),
+
+      // Clock and reset connections
+      .clk_i (clk_ext_main_i),
+      .rst_shadowed_ni (rst_ext_rst_main_i),
+      .rst_ni (rst_ext_rst_main_i)
+  );
   rv_core_ibex #(
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[28:25]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
@@ -987,7 +1036,8 @@ module top_mio #(
   );
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_mio_external_i, // IDs [60 +: 9]
+      incoming_interrupt_mio_external_i, // IDs [61 +: 9]
+      intr_ac_range_check_deny_cnt_reached, // IDs [60 +: 1]
       intr_mbx_pcie0_mbx_error, // IDs [59 +: 1]
       intr_mbx_pcie0_mbx_abort, // IDs [58 +: 1]
       intr_mbx_pcie0_mbx_ready, // IDs [57 +: 1]
@@ -1215,6 +1265,10 @@ module top_mio #(
     // port: tl_racl_ctrl
     .tl_racl_ctrl_o(racl_ctrl_tl_req),
     .tl_racl_ctrl_i(racl_ctrl_tl_rsp),
+
+    // port: tl_ac_range_check
+    .tl_ac_range_check_o(ac_range_check_tl_req),
+    .tl_ac_range_check_i(ac_range_check_tl_rsp),
 
 
     .scanmode_i

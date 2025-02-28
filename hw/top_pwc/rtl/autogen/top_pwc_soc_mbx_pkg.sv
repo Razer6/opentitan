@@ -91,6 +91,16 @@ package top_pwc_soc_mbx_pkg;
    */
   parameter int unsigned TOP_PWC_SOC_MBX_RACL_CTRL_SIZE_BYTES = 32'h40;
 
+  /**
+   * Peripheral base address for ac_range_check in top pwc.
+   */
+  parameter int unsigned TOP_PWC_SOC_MBX_AC_RANGE_CHECK_BASE_ADDR = 32'h1474000;
+
+  /**
+   * Peripheral size in bytes for ac_range_check in top pwc.
+   */
+  parameter int unsigned TOP_PWC_SOC_MBX_AC_RANGE_CHECK_SIZE_BYTES = 32'h400;
+
   
   // Number of pwc outgoing alerts
   parameter int unsigned NOutgoingAlertsPwc = 30;

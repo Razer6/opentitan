@@ -8,6 +8,7 @@
 # -o hw/top_pwc
 
 load("//rules/opentitan:hw.bzl", "opentitan_top")
+load("//hw/top_pwc/ip_autogen/ac_range_check_pwc:defs.bzl", "AC_RANGE_CHECK_PWC")
 load("//hw/ip/aon_timer:defs.bzl", "AON_TIMER")
 load("//hw/ip/dma:defs.bzl", "DMA")
 load("//hw/ip/gpio:defs.bzl", "GPIO")
@@ -26,6 +27,7 @@ PWC = opentitan_top(
     top_lib = "//hw/top_pwc/sw/autogen:top_pwc",
     top_ld = "//hw/top_pwc/sw/autogen:top_pwc_memory",
     ips = [
+        AC_RANGE_CHECK_PWC,
         AON_TIMER,
         DMA,
         GPIO,
