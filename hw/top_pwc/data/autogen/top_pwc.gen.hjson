@@ -989,16 +989,6 @@
           index: -1
         }
         {
-          name: soc_intr_async
-          desc: Interrupt request from SoC, asynchronous, level-encoded
-          struct: logic
-          type: uni
-          act: rcv
-          width: 32
-          inst_name: pwc_soc_proxy
-          index: -1
-        }
-        {
           name: integrator_id
           desc: Integrator ID signal used in BAT
           struct: logic
@@ -5661,7 +5651,7 @@
               {
                 hart: 0x22030000
               }
-              size_byte: 0x10
+              size_byte: 0x2
             }
           ]
           xbar: false
@@ -8630,16 +8620,6 @@
         lpg_idx: 0
       }
       {
-        name: pwc_soc_proxy_fatal_alert_intg
-        width: 1
-        type: alert
-        async: "1"
-        module_name: pwc_soc_proxy
-        desc: pwc_soc_proxy fatal_alert_intg alert
-        lpg_name: clk_ext_main_i_ext_rst_main_0
-        lpg_idx: 1
-      }
-      {
         name: sram_ctrl_ret_aon_fatal_error
         width: 1
         type: alert
@@ -8959,16 +8939,6 @@
       type: interrupt
       module_name: aon_timer_aon
       desc: aon_timer_aon wdog_timer_bark interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: pwc_soc_proxy_external
-      width: 32
-      type: interrupt
-      module_name: pwc_soc_proxy
-      desc: pwc_soc_proxy external interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -10820,7 +10790,6 @@
     gpio
     rv_timer
     aon_timer_aon
-    pwc_soc_proxy
     dma
     mbx0
     mbx1
@@ -10838,7 +10807,6 @@
       gpio
       rv_timer
       aon_timer_aon
-      pwc_soc_proxy
       sram_ctrl_ret_aon
       rv_dm
       rv_plic_pwc
@@ -11287,16 +11255,6 @@
         inst_name: pwc_soc_proxy
         default: ""
         top_signame: dma_lsio_trigger
-        index: -1
-      }
-      {
-        name: soc_intr_async
-        desc: Interrupt request from SoC, asynchronous, level-encoded
-        struct: logic
-        type: uni
-        act: rcv
-        width: 32
-        inst_name: pwc_soc_proxy
         index: -1
       }
       {

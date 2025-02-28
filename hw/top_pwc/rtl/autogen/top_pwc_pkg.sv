@@ -49,7 +49,7 @@ package top_pwc_pkg;
   /**
    * Peripheral size in bytes for core device on pwc_soc_proxy in top pwc.
    */
-  parameter int unsigned TOP_PWC_PWC_SOC_PROXY_CORE_SIZE_BYTES = 32'h10;
+  parameter int unsigned TOP_PWC_PWC_SOC_PROXY_CORE_SIZE_BYTES = 32'h2;
 
   /**
    * Peripheral base address for ctn device on pwc_soc_proxy in top pwc.
@@ -293,7 +293,7 @@ package top_pwc_pkg;
 
   
   // Number of pwc outgoing alerts
-  parameter int unsigned NOutgoingAlertsPwc = 32;
+  parameter int unsigned NOutgoingAlertsPwc = 31;
 
   // Number of LPGs for outgoing alert group pwc
   parameter int unsigned NOutgoingLpgsPwc = 2;
@@ -303,23 +303,22 @@ package top_pwc_pkg;
     TopPwcAlertPeripheralGpio = 0,
     TopPwcAlertPeripheralRvTimer = 1,
     TopPwcAlertPeripheralAonTimerAon = 2,
-    TopPwcAlertPeripheralPwcSocProxy = 3,
-    TopPwcAlertPeripheralSramCtrlRetAon = 4,
-    TopPwcAlertPeripheralRvDm = 5,
-    TopPwcAlertPeripheralRvPlicPwc = 6,
-    TopPwcAlertPeripheralSramCtrlMain = 7,
-    TopPwcAlertPeripheralSramCtrlMbox = 8,
-    TopPwcAlertPeripheralDma = 9,
-    TopPwcAlertPeripheralMbx0 = 10,
-    TopPwcAlertPeripheralMbx1 = 11,
-    TopPwcAlertPeripheralMbx2 = 12,
-    TopPwcAlertPeripheralMbx3 = 13,
-    TopPwcAlertPeripheralMbx4 = 14,
-    TopPwcAlertPeripheralMbx5 = 15,
-    TopPwcAlertPeripheralMbxPcie0 = 16,
-    TopPwcAlertPeripheralRaclCtrl = 17,
-    TopPwcAlertPeripheralAcRangeCheck = 18,
-    TopPwcAlertPeripheralRvCoreIbex = 19,
+    TopPwcAlertPeripheralSramCtrlRetAon = 3,
+    TopPwcAlertPeripheralRvDm = 4,
+    TopPwcAlertPeripheralRvPlicPwc = 5,
+    TopPwcAlertPeripheralSramCtrlMain = 6,
+    TopPwcAlertPeripheralSramCtrlMbox = 7,
+    TopPwcAlertPeripheralDma = 8,
+    TopPwcAlertPeripheralMbx0 = 9,
+    TopPwcAlertPeripheralMbx1 = 10,
+    TopPwcAlertPeripheralMbx2 = 11,
+    TopPwcAlertPeripheralMbx3 = 12,
+    TopPwcAlertPeripheralMbx4 = 13,
+    TopPwcAlertPeripheralMbx5 = 14,
+    TopPwcAlertPeripheralMbxPcie0 = 15,
+    TopPwcAlertPeripheralRaclCtrl = 16,
+    TopPwcAlertPeripheralAcRangeCheck = 17,
+    TopPwcAlertPeripheralRvCoreIbex = 18,
     TopPwcOutgoingAlertPwcPeripheralCount
   } outgoing_alert_pwc_peripheral_e;
 
@@ -328,41 +327,39 @@ package top_pwc_pkg;
     TopPwcAlertIdGpioFatalFault = 0,
     TopPwcAlertIdRvTimerFatalFault = 1,
     TopPwcAlertIdAonTimerAonFatalFault = 2,
-    TopPwcAlertIdPwcSocProxyFatalAlertIntg = 3,
-    TopPwcAlertIdSramCtrlRetAonFatalError = 4,
-    TopPwcAlertIdRvDmFatalFault = 5,
-    TopPwcAlertIdRvPlicPwcFatalFault = 6,
-    TopPwcAlertIdSramCtrlMainFatalError = 7,
-    TopPwcAlertIdSramCtrlMboxFatalError = 8,
-    TopPwcAlertIdDmaFatalFault = 9,
-    TopPwcAlertIdMbx0FatalFault = 10,
-    TopPwcAlertIdMbx0RecovFault = 11,
-    TopPwcAlertIdMbx1FatalFault = 12,
-    TopPwcAlertIdMbx1RecovFault = 13,
-    TopPwcAlertIdMbx2FatalFault = 14,
-    TopPwcAlertIdMbx2RecovFault = 15,
-    TopPwcAlertIdMbx3FatalFault = 16,
-    TopPwcAlertIdMbx3RecovFault = 17,
-    TopPwcAlertIdMbx4FatalFault = 18,
-    TopPwcAlertIdMbx4RecovFault = 19,
-    TopPwcAlertIdMbx5FatalFault = 20,
-    TopPwcAlertIdMbx5RecovFault = 21,
-    TopPwcAlertIdMbxPcie0FatalFault = 22,
-    TopPwcAlertIdMbxPcie0RecovFault = 23,
-    TopPwcAlertIdRaclCtrlRecovCtrlUpdateErr = 24,
-    TopPwcAlertIdRaclCtrlFatalFault = 25,
-    TopPwcAlertIdAcRangeCheckRecovCtrlUpdateErr = 26,
-    TopPwcAlertIdAcRangeCheckFatalFault = 27,
-    TopPwcAlertIdRvCoreIbexFatalSwErr = 28,
-    TopPwcAlertIdRvCoreIbexRecovSwErr = 29,
-    TopPwcAlertIdRvCoreIbexFatalHwErr = 30,
-    TopPwcAlertIdRvCoreIbexRecovHwErr = 31,
+    TopPwcAlertIdSramCtrlRetAonFatalError = 3,
+    TopPwcAlertIdRvDmFatalFault = 4,
+    TopPwcAlertIdRvPlicPwcFatalFault = 5,
+    TopPwcAlertIdSramCtrlMainFatalError = 6,
+    TopPwcAlertIdSramCtrlMboxFatalError = 7,
+    TopPwcAlertIdDmaFatalFault = 8,
+    TopPwcAlertIdMbx0FatalFault = 9,
+    TopPwcAlertIdMbx0RecovFault = 10,
+    TopPwcAlertIdMbx1FatalFault = 11,
+    TopPwcAlertIdMbx1RecovFault = 12,
+    TopPwcAlertIdMbx2FatalFault = 13,
+    TopPwcAlertIdMbx2RecovFault = 14,
+    TopPwcAlertIdMbx3FatalFault = 15,
+    TopPwcAlertIdMbx3RecovFault = 16,
+    TopPwcAlertIdMbx4FatalFault = 17,
+    TopPwcAlertIdMbx4RecovFault = 18,
+    TopPwcAlertIdMbx5FatalFault = 19,
+    TopPwcAlertIdMbx5RecovFault = 20,
+    TopPwcAlertIdMbxPcie0FatalFault = 21,
+    TopPwcAlertIdMbxPcie0RecovFault = 22,
+    TopPwcAlertIdRaclCtrlRecovCtrlUpdateErr = 23,
+    TopPwcAlertIdRaclCtrlFatalFault = 24,
+    TopPwcAlertIdAcRangeCheckRecovCtrlUpdateErr = 25,
+    TopPwcAlertIdAcRangeCheckFatalFault = 26,
+    TopPwcAlertIdRvCoreIbexFatalSwErr = 27,
+    TopPwcAlertIdRvCoreIbexRecovSwErr = 28,
+    TopPwcAlertIdRvCoreIbexFatalHwErr = 29,
+    TopPwcAlertIdRvCoreIbexRecovHwErr = 30,
     TopPwcOutgoingAlertPwcIdCount
   } outgoing_alert_pwc_id_e;
 
   // Enumeration of pwc outgoing alerts AsyncOn configuration
   parameter logic [NOutgoingAlertsPwc-1:0] AsyncOnOutgoingAlertPwc = {
-    1'b1,
     1'b1,
     1'b1,
     1'b1,

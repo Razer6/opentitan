@@ -318,43 +318,11 @@ module rv_plic_pwc import rv_plic_pwc_reg_pkg::*; #(
   assign prio[217] = reg2hw.prio[217].q;
   assign prio[218] = reg2hw.prio[218].q;
   assign prio[219] = reg2hw.prio[219].q;
-  assign prio[220] = reg2hw.prio[220].q;
-  assign prio[221] = reg2hw.prio[221].q;
-  assign prio[222] = reg2hw.prio[222].q;
-  assign prio[223] = reg2hw.prio[223].q;
-  assign prio[224] = reg2hw.prio[224].q;
-  assign prio[225] = reg2hw.prio[225].q;
-  assign prio[226] = reg2hw.prio[226].q;
-  assign prio[227] = reg2hw.prio[227].q;
-  assign prio[228] = reg2hw.prio[228].q;
-  assign prio[229] = reg2hw.prio[229].q;
-  assign prio[230] = reg2hw.prio[230].q;
-  assign prio[231] = reg2hw.prio[231].q;
-  assign prio[232] = reg2hw.prio[232].q;
-  assign prio[233] = reg2hw.prio[233].q;
-  assign prio[234] = reg2hw.prio[234].q;
-  assign prio[235] = reg2hw.prio[235].q;
-  assign prio[236] = reg2hw.prio[236].q;
-  assign prio[237] = reg2hw.prio[237].q;
-  assign prio[238] = reg2hw.prio[238].q;
-  assign prio[239] = reg2hw.prio[239].q;
-  assign prio[240] = reg2hw.prio[240].q;
-  assign prio[241] = reg2hw.prio[241].q;
-  assign prio[242] = reg2hw.prio[242].q;
-  assign prio[243] = reg2hw.prio[243].q;
-  assign prio[244] = reg2hw.prio[244].q;
-  assign prio[245] = reg2hw.prio[245].q;
-  assign prio[246] = reg2hw.prio[246].q;
-  assign prio[247] = reg2hw.prio[247].q;
-  assign prio[248] = reg2hw.prio[248].q;
-  assign prio[249] = reg2hw.prio[249].q;
-  assign prio[250] = reg2hw.prio[250].q;
-  assign prio[251] = reg2hw.prio[251].q;
 
   //////////////////////
   // Interrupt Enable //
   //////////////////////
-  for (genvar s = 0; s < 252; s++) begin : gen_ie0
+  for (genvar s = 0; s < 220; s++) begin : gen_ie0
     assign ie[0][s] = reg2hw.ie0[s].q;
   end
 
@@ -380,7 +348,7 @@ module rv_plic_pwc import rv_plic_pwc_reg_pkg::*; #(
   ////////
   // IP //
   ////////
-  for (genvar s = 0; s < 252; s++) begin : gen_ip
+  for (genvar s = 0; s < 220; s++) begin : gen_ip
     assign hw2reg.ip[s].de = 1'b1; // Always write
     assign hw2reg.ip[s].d  = ip[s];
   end

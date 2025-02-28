@@ -175,12 +175,11 @@ module top_mio #(
   // Signals
 
 
-  logic [69:0]  intr_vector;
+  logic [37:0]  intr_vector;
   // Interrupt source list
   logic intr_rv_timer_timer_expired_hart0_timer0;
   logic intr_aon_timer_aon_wkup_timer_expired;
   logic intr_aon_timer_aon_wdog_timer_bark;
-  logic [31:0] intr_mio_soc_proxy_external;
   logic intr_dma_dma_done;
   logic intr_dma_dma_chunk_done;
   logic intr_dma_dma_error;
@@ -384,15 +383,7 @@ module top_mio #(
       .rst_ni (rst_ext_rst_io_div4_i),
       .rst_aon_ni (rst_ext_rst_aon_i)
   );
-  mio_soc_proxy #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[2:2])
-  ) u_mio_soc_proxy (
-
-      // Interrupt
-      .intr_external_o (intr_mio_soc_proxy_external),
-      // External alert group "mio" [2]: fatal_alert_intg
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[2:2] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[2:2] ),
+  mio_soc_proxy u_mio_soc_proxy (
 
       // Inter-module signals
       .lc_escalate_en_o(mio_soc_proxy_lc_escalate_en),
@@ -409,7 +400,6 @@ module top_mio #(
       .ctn_tl_d2h_i(ctn_tl_d2h_i),
       .soc_lsio_trigger_i(soc_lsio_trigger_i),
       .dma_lsio_trigger_o(dma_lsio_trigger),
-      .soc_intr_async_i('0),
       .integrator_id_i(integrator_id_i),
       .mubi8_true_o(sram_ctrl_main_otp_en_sram_ifetch),
       .core_tl_i(mio_soc_proxy_core_tl_req),
@@ -422,7 +412,7 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   sram_ctrl #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[3:3]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[2:2]),
     .RndCnstSramKey(RndCnstSramCtrlRetAonSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlRetAonSramNonce),
     .RndCnstLfsrSeed(RndCnstSramCtrlRetAonLfsrSeed),
@@ -435,9 +425,9 @@ module top_mio #(
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .EccCorrection(SramCtrlRetAonEccCorrection)
   ) u_sram_ctrl_ret_aon (
-      // External alert group "mio" [3]: fatal_error
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[3:3] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[3:3] ),
+      // External alert group "mio" [2]: fatal_error
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[2:2] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[2:2] ),
 
       // Inter-module signals
       .sram_otp_key_o(),
@@ -463,15 +453,15 @@ module top_mio #(
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
   rv_dm #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[4:4]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[3:3]),
     .IdcodeValue(RvDmIdcodeValue),
     .UseDmiInterface(RvDmUseDmiInterface),
     .SecVolatileRawUnlockEn(SecRvDmVolatileRawUnlockEn),
     .TlulHostUserRsvdBits(RvDmTlulHostUserRsvdBits)
   ) u_rv_dm (
-      // External alert group "mio" [4]: fatal_fault
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[4:4] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[4:4] ),
+      // External alert group "mio" [3]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[3:3] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[3:3] ),
 
       // Inter-module signals
       .next_dm_addr_i(rv_dm_next_dm_addr_i),
@@ -507,11 +497,11 @@ module top_mio #(
       .rst_lc_ni (rst_ext_rst_main_i)
   );
   rv_plic_mio #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[5:5])
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[4:4])
   ) u_rv_plic_mio (
-      // External alert group "mio" [5]: fatal_fault
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[5:5] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[5:5] ),
+      // External alert group "mio" [4]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[4:4] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[4:4] ),
 
       // Inter-module signals
       .irq_o(rv_plic_mio_irq),
@@ -526,7 +516,7 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   sram_ctrl #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[6:6]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[5:5]),
     .RndCnstSramKey(RndCnstSramCtrlMainSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlMainSramNonce),
     .RndCnstLfsrSeed(RndCnstSramCtrlMainLfsrSeed),
@@ -539,9 +529,9 @@ module top_mio #(
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .EccCorrection(SramCtrlMainEccCorrection)
   ) u_sram_ctrl_main (
-      // External alert group "mio" [6]: fatal_error
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[6:6] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[6:6] ),
+      // External alert group "mio" [5]: fatal_error
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[5:5] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[5:5] ),
 
       // Inter-module signals
       .sram_otp_key_o(),
@@ -567,7 +557,7 @@ module top_mio #(
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
   sram_ctrl #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[7:7]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[6:6]),
     .RndCnstSramKey(RndCnstSramCtrlMboxSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlMboxSramNonce),
     .RndCnstLfsrSeed(RndCnstSramCtrlMboxLfsrSeed),
@@ -580,9 +570,9 @@ module top_mio #(
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
     .EccCorrection(SramCtrlMboxEccCorrection)
   ) u_sram_ctrl_mbox (
-      // External alert group "mio" [7]: fatal_error
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[7:7] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[7:7] ),
+      // External alert group "mio" [6]: fatal_error
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[6:6] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[6:6] ),
 
       // Inter-module signals
       .sram_otp_key_o(),
@@ -608,7 +598,7 @@ module top_mio #(
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
   dma #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[8:8]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[7:7]),
     .EnableDataIntgGen(DmaEnableDataIntgGen),
     .EnableRspDataIntgCheck(DmaEnableRspDataIntgCheck),
     .TlUserRsvd(DmaTlUserRsvd),
@@ -620,9 +610,9 @@ module top_mio #(
       .intr_dma_done_o       (intr_dma_dma_done),
       .intr_dma_chunk_done_o (intr_dma_dma_chunk_done),
       .intr_dma_error_o      (intr_dma_dma_error),
-      // External alert group "mio" [8]: fatal_fault
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[8:8] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[8:8] ),
+      // External alert group "mio" [7]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[7:7] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[7:7] ),
 
       // Inter-module signals
       .lsio_trigger_i(dma_lsio_trigger),
@@ -646,17 +636,17 @@ module top_mio #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX0_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX0_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX0_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[10:9])
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[9:8])
   ) u_mbx0 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx0_mbx_ready),
       .intr_mbx_abort_o (intr_mbx0_mbx_abort),
       .intr_mbx_error_o (intr_mbx0_mbx_error),
-      // External alert group "mio" [9]: fatal_fault
-      // External alert group "mio" [10]: recov_fault
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[10:9] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[10:9] ),
+      // External alert group "mio" [8]: fatal_fault
+      // External alert group "mio" [9]: recov_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[9:8] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[9:8] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -682,17 +672,17 @@ module top_mio #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX1_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX1_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX1_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[12:11])
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[11:10])
   ) u_mbx1 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx1_mbx_ready),
       .intr_mbx_abort_o (intr_mbx1_mbx_abort),
       .intr_mbx_error_o (intr_mbx1_mbx_error),
-      // External alert group "mio" [11]: fatal_fault
-      // External alert group "mio" [12]: recov_fault
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[12:11] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[12:11] ),
+      // External alert group "mio" [10]: fatal_fault
+      // External alert group "mio" [11]: recov_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[11:10] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[11:10] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -718,17 +708,17 @@ module top_mio #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX2_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX2_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX2_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[14:13])
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[13:12])
   ) u_mbx2 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx2_mbx_ready),
       .intr_mbx_abort_o (intr_mbx2_mbx_abort),
       .intr_mbx_error_o (intr_mbx2_mbx_error),
-      // External alert group "mio" [13]: fatal_fault
-      // External alert group "mio" [14]: recov_fault
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[14:13] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[14:13] ),
+      // External alert group "mio" [12]: fatal_fault
+      // External alert group "mio" [13]: recov_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[13:12] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[13:12] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -754,17 +744,17 @@ module top_mio #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX3_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX3_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX3_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[16:15])
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[15:14])
   ) u_mbx3 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx3_mbx_ready),
       .intr_mbx_abort_o (intr_mbx3_mbx_abort),
       .intr_mbx_error_o (intr_mbx3_mbx_error),
-      // External alert group "mio" [15]: fatal_fault
-      // External alert group "mio" [16]: recov_fault
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[16:15] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[16:15] ),
+      // External alert group "mio" [14]: fatal_fault
+      // External alert group "mio" [15]: recov_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[15:14] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[15:14] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -790,17 +780,17 @@ module top_mio #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX4_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX4_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX4_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[18:17])
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[17:16])
   ) u_mbx4 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx4_mbx_ready),
       .intr_mbx_abort_o (intr_mbx4_mbx_abort),
       .intr_mbx_error_o (intr_mbx4_mbx_error),
-      // External alert group "mio" [17]: fatal_fault
-      // External alert group "mio" [18]: recov_fault
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[18:17] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[18:17] ),
+      // External alert group "mio" [16]: fatal_fault
+      // External alert group "mio" [17]: recov_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[17:16] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[17:16] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -826,17 +816,17 @@ module top_mio #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX5_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX5_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX5_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[20:19])
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[19:18])
   ) u_mbx5 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx5_mbx_ready),
       .intr_mbx_abort_o (intr_mbx5_mbx_abort),
       .intr_mbx_error_o (intr_mbx5_mbx_error),
-      // External alert group "mio" [19]: fatal_fault
-      // External alert group "mio" [20]: recov_fault
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[20:19] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[20:19] ),
+      // External alert group "mio" [18]: fatal_fault
+      // External alert group "mio" [19]: recov_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[19:18] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[19:18] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -862,17 +852,17 @@ module top_mio #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX_PCIE0_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[22:21])
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[21:20])
   ) u_mbx_pcie0 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx_pcie0_mbx_ready),
       .intr_mbx_abort_o (intr_mbx_pcie0_mbx_abort),
       .intr_mbx_error_o (intr_mbx_pcie0_mbx_error),
-      // External alert group "mio" [21]: fatal_fault
-      // External alert group "mio" [22]: recov_fault
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[22:21] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[22:21] ),
+      // External alert group "mio" [20]: fatal_fault
+      // External alert group "mio" [21]: recov_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[21:20] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[21:20] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -894,14 +884,14 @@ module top_mio #(
   );
   racl_ctrl_mio #(
     .RaclErrorRsp(1'b0),
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[24:23]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[23:22]),
     .NumSubscribingIps(RaclCtrlNumSubscribingIps),
     .NumExternalSubscribingIps(RaclCtrlNumExternalSubscribingIps)
   ) u_racl_ctrl (
-      // External alert group "mio" [23]: recov_ctrl_update_err
-      // External alert group "mio" [24]: fatal_fault
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[24:23] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[24:23] ),
+      // External alert group "mio" [22]: recov_ctrl_update_err
+      // External alert group "mio" [23]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[23:22] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[23:22] ),
 
       // Inter-module signals
       .racl_policies_o(racl_ctrl_racl_policies),
@@ -919,15 +909,15 @@ module top_mio #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(1'b0),
     .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK),
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[26:25])
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[25:24])
   ) u_ac_range_check (
 
       // Interrupt
       .intr_deny_cnt_reached_o (intr_ac_range_check_deny_cnt_reached),
-      // External alert group "mio" [25]: recov_ctrl_update_err
-      // External alert group "mio" [26]: fatal_fault
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[26:25] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[26:25] ),
+      // External alert group "mio" [24]: recov_ctrl_update_err
+      // External alert group "mio" [25]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[25:24] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[25:24] ),
 
       // Inter-module signals
       .range_check_overwrite_i(ac_range_check_overwrite_i),
@@ -946,7 +936,7 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   rv_core_ibex #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[30:27]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[29:26]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexLfsrPerm),
     .RndCnstIbexKeyDefault(RndCnstRvCoreIbexIbexKeyDefault),
@@ -982,12 +972,12 @@ module top_mio #(
     .PipeLine(RvCoreIbexPipeLine),
     .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
   ) u_rv_core_ibex (
-      // External alert group "mio" [27]: fatal_sw_err
-      // External alert group "mio" [28]: recov_sw_err
-      // External alert group "mio" [29]: fatal_hw_err
-      // External alert group "mio" [30]: recov_hw_err
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[30:27] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[30:27] ),
+      // External alert group "mio" [26]: fatal_sw_err
+      // External alert group "mio" [27]: recov_sw_err
+      // External alert group "mio" [28]: fatal_hw_err
+      // External alert group "mio" [29]: recov_hw_err
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[29:26] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[29:26] ),
 
       // Inter-module signals
       .rst_cpu_n_o(),
@@ -1034,33 +1024,32 @@ module top_mio #(
   );
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_mio_external_i, // IDs [61 +: 9]
-      intr_ac_range_check_deny_cnt_reached, // IDs [60 +: 1]
-      intr_mbx_pcie0_mbx_error, // IDs [59 +: 1]
-      intr_mbx_pcie0_mbx_abort, // IDs [58 +: 1]
-      intr_mbx_pcie0_mbx_ready, // IDs [57 +: 1]
-      intr_mbx5_mbx_error, // IDs [56 +: 1]
-      intr_mbx5_mbx_abort, // IDs [55 +: 1]
-      intr_mbx5_mbx_ready, // IDs [54 +: 1]
-      intr_mbx4_mbx_error, // IDs [53 +: 1]
-      intr_mbx4_mbx_abort, // IDs [52 +: 1]
-      intr_mbx4_mbx_ready, // IDs [51 +: 1]
-      intr_mbx3_mbx_error, // IDs [50 +: 1]
-      intr_mbx3_mbx_abort, // IDs [49 +: 1]
-      intr_mbx3_mbx_ready, // IDs [48 +: 1]
-      intr_mbx2_mbx_error, // IDs [47 +: 1]
-      intr_mbx2_mbx_abort, // IDs [46 +: 1]
-      intr_mbx2_mbx_ready, // IDs [45 +: 1]
-      intr_mbx1_mbx_error, // IDs [44 +: 1]
-      intr_mbx1_mbx_abort, // IDs [43 +: 1]
-      intr_mbx1_mbx_ready, // IDs [42 +: 1]
-      intr_mbx0_mbx_error, // IDs [41 +: 1]
-      intr_mbx0_mbx_abort, // IDs [40 +: 1]
-      intr_mbx0_mbx_ready, // IDs [39 +: 1]
-      intr_dma_dma_error, // IDs [38 +: 1]
-      intr_dma_dma_chunk_done, // IDs [37 +: 1]
-      intr_dma_dma_done, // IDs [36 +: 1]
-      intr_mio_soc_proxy_external, // IDs [4 +: 32]
+      incoming_interrupt_mio_external_i, // IDs [29 +: 9]
+      intr_ac_range_check_deny_cnt_reached, // IDs [28 +: 1]
+      intr_mbx_pcie0_mbx_error, // IDs [27 +: 1]
+      intr_mbx_pcie0_mbx_abort, // IDs [26 +: 1]
+      intr_mbx_pcie0_mbx_ready, // IDs [25 +: 1]
+      intr_mbx5_mbx_error, // IDs [24 +: 1]
+      intr_mbx5_mbx_abort, // IDs [23 +: 1]
+      intr_mbx5_mbx_ready, // IDs [22 +: 1]
+      intr_mbx4_mbx_error, // IDs [21 +: 1]
+      intr_mbx4_mbx_abort, // IDs [20 +: 1]
+      intr_mbx4_mbx_ready, // IDs [19 +: 1]
+      intr_mbx3_mbx_error, // IDs [18 +: 1]
+      intr_mbx3_mbx_abort, // IDs [17 +: 1]
+      intr_mbx3_mbx_ready, // IDs [16 +: 1]
+      intr_mbx2_mbx_error, // IDs [15 +: 1]
+      intr_mbx2_mbx_abort, // IDs [14 +: 1]
+      intr_mbx2_mbx_ready, // IDs [13 +: 1]
+      intr_mbx1_mbx_error, // IDs [12 +: 1]
+      intr_mbx1_mbx_abort, // IDs [11 +: 1]
+      intr_mbx1_mbx_ready, // IDs [10 +: 1]
+      intr_mbx0_mbx_error, // IDs [9 +: 1]
+      intr_mbx0_mbx_abort, // IDs [8 +: 1]
+      intr_mbx0_mbx_ready, // IDs [7 +: 1]
+      intr_dma_dma_error, // IDs [6 +: 1]
+      intr_dma_dma_chunk_done, // IDs [5 +: 1]
+      intr_dma_dma_done, // IDs [4 +: 1]
       intr_aon_timer_aon_wdog_timer_bark, // IDs [3 +: 1]
       intr_aon_timer_aon_wkup_timer_expired, // IDs [2 +: 1]
       intr_rv_timer_timer_expired_hart0_timer0, // IDs [1 +: 1]

@@ -22,7 +22,7 @@
 #endif
 
 #ifndef TEST_MAX_IRQ_PERIPHERAL
-#define TEST_MAX_IRQ_PERIPHERAL 6
+#define TEST_MAX_IRQ_PERIPHERAL 5
 #endif
 
 #include "sw/device/lib/arch/boot_stage.h"
@@ -32,7 +32,6 @@
 #include "sw/device/lib/dif/dif_aon_timer.h"
 #include "sw/device/lib/dif/dif_dma.h"
 #include "sw/device/lib/dif/dif_mbx.h"
-#include "sw/device/lib/dif/dif_mio_soc_proxy.h"
 #include "sw/device/lib/dif/dif_rv_plic.h"
 #include "sw/device/lib/dif/dif_rv_timer.h"
 #include "sw/device/lib/runtime/ibex.h"
@@ -86,10 +85,6 @@ static dif_mbx_t mbx_pcie0;
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-static dif_mio_soc_proxy_t mio_soc_proxy;
-#endif
-
-#if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
 static dif_rv_timer_t rv_timer;
 #endif
 
@@ -133,11 +128,6 @@ static volatile dif_mbx_irq_t mbx_irq_serviced;
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-static volatile dif_mio_soc_proxy_irq_t mio_soc_proxy_irq_expected;
-static volatile dif_mio_soc_proxy_irq_t mio_soc_proxy_irq_serviced;
-#endif
-
-#if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
 static volatile dif_rv_timer_irq_t rv_timer_irq_expected;
 static volatile dif_rv_timer_irq_t rv_timer_irq_serviced;
 #endif
@@ -410,29 +400,6 @@ void ottf_external_isr(uint32_t *exc_info) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-    case kTopMioPlicPeripheralMioSocProxy: {
-      dif_mio_soc_proxy_irq_t irq =
-          (dif_mio_soc_proxy_irq_t)(plic_irq_id -
-                                    (dif_rv_plic_irq_id_t)
-                                        kTopMioPlicIrqIdMioSocProxyExternal0);
-      CHECK(irq == mio_soc_proxy_irq_expected,
-            "Incorrect mio_soc_proxy IRQ triggered: exp = %d, obs = %d",
-            mio_soc_proxy_irq_expected, irq);
-      mio_soc_proxy_irq_serviced = irq;
-
-      dif_mio_soc_proxy_irq_state_snapshot_t snapshot;
-      CHECK_DIF_OK(dif_mio_soc_proxy_irq_get_state(&mio_soc_proxy, &snapshot));
-      CHECK(snapshot == (dif_mio_soc_proxy_irq_state_snapshot_t)(1 << irq),
-            "Only mio_soc_proxy IRQ %d expected to fire. Actual interrupt "
-            "status = %x",
-            irq, snapshot);
-
-      CHECK_DIF_OK(dif_mio_soc_proxy_irq_acknowledge(&mio_soc_proxy, irq));
-      break;
-    }
-#endif
-
-#if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
     case kTopMioPlicPeripheralRvTimer: {
       dif_rv_timer_irq_t irq =
           (dif_rv_timer_irq_t)(plic_irq_id -
@@ -520,11 +487,6 @@ static void peripherals_init(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-  base_addr = mmio_region_from_addr(TOP_MIO_MIO_SOC_PROXY_CORE_BASE_ADDR);
-  CHECK_DIF_OK(dif_mio_soc_proxy_init(base_addr, &mio_soc_proxy));
-#endif
-
-#if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
   base_addr = mmio_region_from_addr(TOP_MIO_RV_TIMER_BASE_ADDR);
   CHECK_DIF_OK(dif_rv_timer_init(base_addr, &rv_timer));
 #endif
@@ -578,10 +540,6 @@ static void peripheral_irqs_clear(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-  CHECK_DIF_OK(dif_mio_soc_proxy_irq_acknowledge_all(&mio_soc_proxy));
-#endif
-
-#if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
   CHECK_DIF_OK(dif_rv_timer_irq_acknowledge_all(&rv_timer, kHart));
 #endif
 }
@@ -606,11 +564,6 @@ static void peripheral_irqs_enable(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-  dif_mio_soc_proxy_irq_state_snapshot_t mio_soc_proxy_irqs =
-      (dif_mio_soc_proxy_irq_state_snapshot_t)0xffffffff;
-#endif
-
-#if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
   dif_rv_timer_irq_state_snapshot_t rv_timer_irqs =
       (dif_rv_timer_irq_state_snapshot_t)0xffffffff;
 #endif
@@ -652,10 +605,6 @@ static void peripheral_irqs_enable(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-  CHECK_DIF_OK(dif_mio_soc_proxy_irq_restore_all(&mio_soc_proxy, &mio_soc_proxy_irqs));
-#endif
-
-#if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
   CHECK_DIF_OK(dif_rv_timer_irq_restore_all(&rv_timer, kHart, &rv_timer_irqs));
 #endif
 }
@@ -842,21 +791,6 @@ static void peripheral_irqs_trigger(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
-  peripheral_expected = kTopMioPlicPeripheralMioSocProxy;
-  for (dif_mio_soc_proxy_irq_t irq = kDifMioSocProxyIrqExternal0; irq <= kDifMioSocProxyIrqExternal31;
-       ++irq) {
-    mio_soc_proxy_irq_expected = irq;
-    LOG_INFO("Triggering mio_soc_proxy IRQ %d.", irq);
-    CHECK_DIF_OK(dif_mio_soc_proxy_irq_force(&mio_soc_proxy, irq, true));
-
-    // This avoids a race where *irq_serviced is read before
-    // entering the ISR.
-    IBEX_SPIN_FOR(mio_soc_proxy_irq_serviced == irq, 1);
-    LOG_INFO("IRQ %d from mio_soc_proxy is serviced.", irq);
-  }
-#endif
-
-#if TEST_MIN_IRQ_PERIPHERAL <= 5 && 5 < TEST_MAX_IRQ_PERIPHERAL
   peripheral_expected = kTopMioPlicPeripheralRvTimer;
   for (dif_rv_timer_irq_t irq = kDifRvTimerIrqTimerExpiredHart0Timer0; irq <= kDifRvTimerIrqTimerExpiredHart0Timer0;
        ++irq) {

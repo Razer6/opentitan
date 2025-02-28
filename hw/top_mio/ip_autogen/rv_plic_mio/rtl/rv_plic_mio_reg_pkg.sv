@@ -7,7 +7,7 @@
 package rv_plic_mio_reg_pkg;
 
   // Param list
-  parameter int NumSrc = 70;
+  parameter int NumSrc = 38;
   parameter int NumTarget = 1;
   parameter int PrioWidth = 2;
   parameter int NumAlerts = 1;
@@ -16,7 +16,7 @@ package rv_plic_mio_reg_pkg;
   parameter int BlockAw = 27;
 
   // Number of registers for every interface
-  parameter int NumRegs = 80;
+  parameter int NumRegs = 46;
 
   ////////////////////////////
   // Typedefs for registers //
@@ -35,7 +35,7 @@ package rv_plic_mio_reg_pkg;
   } rv_plic_mio_reg2hw_threshold0_reg_t;
 
   typedef struct packed {
-    logic [6:0]  q;
+    logic [5:0]  q;
     logic        qe;
     logic        re;
   } rv_plic_mio_reg2hw_cc0_reg_t;
@@ -55,23 +55,23 @@ package rv_plic_mio_reg_pkg;
   } rv_plic_mio_hw2reg_ip_mreg_t;
 
   typedef struct packed {
-    logic [6:0]  d;
+    logic [5:0]  d;
   } rv_plic_mio_hw2reg_cc0_reg_t;
 
   // Register -> HW type
   typedef struct packed {
-    rv_plic_mio_reg2hw_prio_mreg_t [69:0] prio; // [223:84]
-    rv_plic_mio_reg2hw_ie0_mreg_t [69:0] ie0; // [83:14]
-    rv_plic_mio_reg2hw_threshold0_reg_t threshold0; // [13:12]
-    rv_plic_mio_reg2hw_cc0_reg_t cc0; // [11:3]
+    rv_plic_mio_reg2hw_prio_mreg_t [37:0] prio; // [126:51]
+    rv_plic_mio_reg2hw_ie0_mreg_t [37:0] ie0; // [50:13]
+    rv_plic_mio_reg2hw_threshold0_reg_t threshold0; // [12:11]
+    rv_plic_mio_reg2hw_cc0_reg_t cc0; // [10:3]
     rv_plic_mio_reg2hw_msip0_reg_t msip0; // [2:2]
     rv_plic_mio_reg2hw_alert_test_reg_t alert_test; // [1:0]
   } rv_plic_mio_reg2hw_t;
 
   // HW -> register type
   typedef struct packed {
-    rv_plic_mio_hw2reg_ip_mreg_t [69:0] ip; // [146:7]
-    rv_plic_mio_hw2reg_cc0_reg_t cc0; // [6:0]
+    rv_plic_mio_hw2reg_ip_mreg_t [37:0] ip; // [81:6]
+    rv_plic_mio_hw2reg_cc0_reg_t cc0; // [5:0]
   } rv_plic_mio_hw2reg_t;
 
   // Register offsets
@@ -113,51 +113,17 @@ package rv_plic_mio_reg_pkg;
   parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_35_OFFSET = 27'h 8c;
   parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_36_OFFSET = 27'h 90;
   parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_37_OFFSET = 27'h 94;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_38_OFFSET = 27'h 98;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_39_OFFSET = 27'h 9c;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_40_OFFSET = 27'h a0;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_41_OFFSET = 27'h a4;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_42_OFFSET = 27'h a8;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_43_OFFSET = 27'h ac;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_44_OFFSET = 27'h b0;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_45_OFFSET = 27'h b4;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_46_OFFSET = 27'h b8;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_47_OFFSET = 27'h bc;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_48_OFFSET = 27'h c0;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_49_OFFSET = 27'h c4;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_50_OFFSET = 27'h c8;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_51_OFFSET = 27'h cc;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_52_OFFSET = 27'h d0;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_53_OFFSET = 27'h d4;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_54_OFFSET = 27'h d8;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_55_OFFSET = 27'h dc;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_56_OFFSET = 27'h e0;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_57_OFFSET = 27'h e4;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_58_OFFSET = 27'h e8;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_59_OFFSET = 27'h ec;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_60_OFFSET = 27'h f0;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_61_OFFSET = 27'h f4;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_62_OFFSET = 27'h f8;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_63_OFFSET = 27'h fc;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_64_OFFSET = 27'h 100;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_65_OFFSET = 27'h 104;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_66_OFFSET = 27'h 108;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_67_OFFSET = 27'h 10c;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_68_OFFSET = 27'h 110;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_PRIO_69_OFFSET = 27'h 114;
   parameter logic [BlockAw-1:0] RV_PLIC_MIO_IP_0_OFFSET = 27'h 1000;
   parameter logic [BlockAw-1:0] RV_PLIC_MIO_IP_1_OFFSET = 27'h 1004;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_IP_2_OFFSET = 27'h 1008;
   parameter logic [BlockAw-1:0] RV_PLIC_MIO_IE0_0_OFFSET = 27'h 2000;
   parameter logic [BlockAw-1:0] RV_PLIC_MIO_IE0_1_OFFSET = 27'h 2004;
-  parameter logic [BlockAw-1:0] RV_PLIC_MIO_IE0_2_OFFSET = 27'h 2008;
   parameter logic [BlockAw-1:0] RV_PLIC_MIO_THRESHOLD0_OFFSET = 27'h 200000;
   parameter logic [BlockAw-1:0] RV_PLIC_MIO_CC0_OFFSET = 27'h 200004;
   parameter logic [BlockAw-1:0] RV_PLIC_MIO_MSIP0_OFFSET = 27'h 4000000;
   parameter logic [BlockAw-1:0] RV_PLIC_MIO_ALERT_TEST_OFFSET = 27'h 4004000;
 
   // Reset values for hwext registers and their fields
-  parameter logic [6:0] RV_PLIC_MIO_CC0_RESVAL = 7'h 0;
+  parameter logic [5:0] RV_PLIC_MIO_CC0_RESVAL = 6'h 0;
   parameter logic [0:0] RV_PLIC_MIO_ALERT_TEST_RESVAL = 1'h 0;
 
   // Register index
@@ -200,44 +166,10 @@ package rv_plic_mio_reg_pkg;
     RV_PLIC_MIO_PRIO_35,
     RV_PLIC_MIO_PRIO_36,
     RV_PLIC_MIO_PRIO_37,
-    RV_PLIC_MIO_PRIO_38,
-    RV_PLIC_MIO_PRIO_39,
-    RV_PLIC_MIO_PRIO_40,
-    RV_PLIC_MIO_PRIO_41,
-    RV_PLIC_MIO_PRIO_42,
-    RV_PLIC_MIO_PRIO_43,
-    RV_PLIC_MIO_PRIO_44,
-    RV_PLIC_MIO_PRIO_45,
-    RV_PLIC_MIO_PRIO_46,
-    RV_PLIC_MIO_PRIO_47,
-    RV_PLIC_MIO_PRIO_48,
-    RV_PLIC_MIO_PRIO_49,
-    RV_PLIC_MIO_PRIO_50,
-    RV_PLIC_MIO_PRIO_51,
-    RV_PLIC_MIO_PRIO_52,
-    RV_PLIC_MIO_PRIO_53,
-    RV_PLIC_MIO_PRIO_54,
-    RV_PLIC_MIO_PRIO_55,
-    RV_PLIC_MIO_PRIO_56,
-    RV_PLIC_MIO_PRIO_57,
-    RV_PLIC_MIO_PRIO_58,
-    RV_PLIC_MIO_PRIO_59,
-    RV_PLIC_MIO_PRIO_60,
-    RV_PLIC_MIO_PRIO_61,
-    RV_PLIC_MIO_PRIO_62,
-    RV_PLIC_MIO_PRIO_63,
-    RV_PLIC_MIO_PRIO_64,
-    RV_PLIC_MIO_PRIO_65,
-    RV_PLIC_MIO_PRIO_66,
-    RV_PLIC_MIO_PRIO_67,
-    RV_PLIC_MIO_PRIO_68,
-    RV_PLIC_MIO_PRIO_69,
     RV_PLIC_MIO_IP_0,
     RV_PLIC_MIO_IP_1,
-    RV_PLIC_MIO_IP_2,
     RV_PLIC_MIO_IE0_0,
     RV_PLIC_MIO_IE0_1,
-    RV_PLIC_MIO_IE0_2,
     RV_PLIC_MIO_THRESHOLD0,
     RV_PLIC_MIO_CC0,
     RV_PLIC_MIO_MSIP0,
@@ -245,7 +177,7 @@ package rv_plic_mio_reg_pkg;
   } rv_plic_mio_id_e;
 
   // Register width information to check illegal writes
-  parameter logic [3:0] RV_PLIC_MIO_PERMIT [80] = '{
+  parameter logic [3:0] RV_PLIC_MIO_PERMIT [46] = '{
     4'b 0001, // index[ 0] RV_PLIC_MIO_PRIO_0
     4'b 0001, // index[ 1] RV_PLIC_MIO_PRIO_1
     4'b 0001, // index[ 2] RV_PLIC_MIO_PRIO_2
@@ -284,48 +216,14 @@ package rv_plic_mio_reg_pkg;
     4'b 0001, // index[35] RV_PLIC_MIO_PRIO_35
     4'b 0001, // index[36] RV_PLIC_MIO_PRIO_36
     4'b 0001, // index[37] RV_PLIC_MIO_PRIO_37
-    4'b 0001, // index[38] RV_PLIC_MIO_PRIO_38
-    4'b 0001, // index[39] RV_PLIC_MIO_PRIO_39
-    4'b 0001, // index[40] RV_PLIC_MIO_PRIO_40
-    4'b 0001, // index[41] RV_PLIC_MIO_PRIO_41
-    4'b 0001, // index[42] RV_PLIC_MIO_PRIO_42
-    4'b 0001, // index[43] RV_PLIC_MIO_PRIO_43
-    4'b 0001, // index[44] RV_PLIC_MIO_PRIO_44
-    4'b 0001, // index[45] RV_PLIC_MIO_PRIO_45
-    4'b 0001, // index[46] RV_PLIC_MIO_PRIO_46
-    4'b 0001, // index[47] RV_PLIC_MIO_PRIO_47
-    4'b 0001, // index[48] RV_PLIC_MIO_PRIO_48
-    4'b 0001, // index[49] RV_PLIC_MIO_PRIO_49
-    4'b 0001, // index[50] RV_PLIC_MIO_PRIO_50
-    4'b 0001, // index[51] RV_PLIC_MIO_PRIO_51
-    4'b 0001, // index[52] RV_PLIC_MIO_PRIO_52
-    4'b 0001, // index[53] RV_PLIC_MIO_PRIO_53
-    4'b 0001, // index[54] RV_PLIC_MIO_PRIO_54
-    4'b 0001, // index[55] RV_PLIC_MIO_PRIO_55
-    4'b 0001, // index[56] RV_PLIC_MIO_PRIO_56
-    4'b 0001, // index[57] RV_PLIC_MIO_PRIO_57
-    4'b 0001, // index[58] RV_PLIC_MIO_PRIO_58
-    4'b 0001, // index[59] RV_PLIC_MIO_PRIO_59
-    4'b 0001, // index[60] RV_PLIC_MIO_PRIO_60
-    4'b 0001, // index[61] RV_PLIC_MIO_PRIO_61
-    4'b 0001, // index[62] RV_PLIC_MIO_PRIO_62
-    4'b 0001, // index[63] RV_PLIC_MIO_PRIO_63
-    4'b 0001, // index[64] RV_PLIC_MIO_PRIO_64
-    4'b 0001, // index[65] RV_PLIC_MIO_PRIO_65
-    4'b 0001, // index[66] RV_PLIC_MIO_PRIO_66
-    4'b 0001, // index[67] RV_PLIC_MIO_PRIO_67
-    4'b 0001, // index[68] RV_PLIC_MIO_PRIO_68
-    4'b 0001, // index[69] RV_PLIC_MIO_PRIO_69
-    4'b 1111, // index[70] RV_PLIC_MIO_IP_0
-    4'b 1111, // index[71] RV_PLIC_MIO_IP_1
-    4'b 0001, // index[72] RV_PLIC_MIO_IP_2
-    4'b 1111, // index[73] RV_PLIC_MIO_IE0_0
-    4'b 1111, // index[74] RV_PLIC_MIO_IE0_1
-    4'b 0001, // index[75] RV_PLIC_MIO_IE0_2
-    4'b 0001, // index[76] RV_PLIC_MIO_THRESHOLD0
-    4'b 0001, // index[77] RV_PLIC_MIO_CC0
-    4'b 0001, // index[78] RV_PLIC_MIO_MSIP0
-    4'b 0001  // index[79] RV_PLIC_MIO_ALERT_TEST
+    4'b 1111, // index[38] RV_PLIC_MIO_IP_0
+    4'b 0001, // index[39] RV_PLIC_MIO_IP_1
+    4'b 1111, // index[40] RV_PLIC_MIO_IE0_0
+    4'b 0001, // index[41] RV_PLIC_MIO_IE0_1
+    4'b 0001, // index[42] RV_PLIC_MIO_THRESHOLD0
+    4'b 0001, // index[43] RV_PLIC_MIO_CC0
+    4'b 0001, // index[44] RV_PLIC_MIO_MSIP0
+    4'b 0001  // index[45] RV_PLIC_MIO_ALERT_TEST
   };
 
 endpackage

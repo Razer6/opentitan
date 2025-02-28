@@ -116,7 +116,7 @@
  * address between #TOP_MIO_MIO_SOC_PROXY_CORE_BASE_ADDR and
  * `TOP_MIO_MIO_SOC_PROXY_CORE_BASE_ADDR + TOP_MIO_MIO_SOC_PROXY_CORE_SIZE_BYTES`.
  */
-#define TOP_MIO_MIO_SOC_PROXY_CORE_SIZE_BYTES 0x10
+#define TOP_MIO_MIO_SOC_PROXY_CORE_SIZE_BYTES 0x2
 /**
  * Peripheral base address for ctn device on mio_soc_proxy in top mio.
  *

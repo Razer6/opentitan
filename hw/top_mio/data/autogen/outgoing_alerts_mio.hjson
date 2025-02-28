@@ -25,18 +25,9 @@
             lpg_idx: 0
         }
         {
-            name: mio_soc_proxy_fatal_alert_intg
-            module_name: mio_soc_proxy
-            index: 2
-            type: alert
-            async: 1
-            width: 1
-            lpg_idx: 1
-        }
-        {
             name: sram_ctrl_ret_aon_fatal_error
             module_name: sram_ctrl_ret_aon
-            index: 3
+            index: 2
             type: alert
             async: 1
             width: 1
@@ -45,7 +36,7 @@
         {
             name: rv_dm_fatal_fault
             module_name: rv_dm
-            index: 4
+            index: 3
             type: alert
             async: 1
             width: 1
@@ -54,7 +45,7 @@
         {
             name: rv_plic_mio_fatal_fault
             module_name: rv_plic_mio
-            index: 5
+            index: 4
             type: alert
             async: 1
             width: 1
@@ -63,7 +54,7 @@
         {
             name: sram_ctrl_main_fatal_error
             module_name: sram_ctrl_main
-            index: 6
+            index: 5
             type: alert
             async: 1
             width: 1
@@ -72,7 +63,7 @@
         {
             name: sram_ctrl_mbox_fatal_error
             module_name: sram_ctrl_mbox
-            index: 7
+            index: 6
             type: alert
             async: 1
             width: 1
@@ -81,7 +72,7 @@
         {
             name: dma_fatal_fault
             module_name: dma
-            index: 8
+            index: 7
             type: alert
             async: 1
             width: 1
@@ -90,7 +81,7 @@
         {
             name: mbx0_fatal_fault
             module_name: mbx0
-            index: 9
+            index: 8
             type: alert
             async: 1
             width: 1
@@ -99,7 +90,7 @@
         {
             name: mbx0_recov_fault
             module_name: mbx0
-            index: 10
+            index: 9
             type: alert
             async: 1
             width: 1
@@ -108,7 +99,7 @@
         {
             name: mbx1_fatal_fault
             module_name: mbx1
-            index: 11
+            index: 10
             type: alert
             async: 1
             width: 1
@@ -117,7 +108,7 @@
         {
             name: mbx1_recov_fault
             module_name: mbx1
-            index: 12
+            index: 11
             type: alert
             async: 1
             width: 1
@@ -126,7 +117,7 @@
         {
             name: mbx2_fatal_fault
             module_name: mbx2
-            index: 13
+            index: 12
             type: alert
             async: 1
             width: 1
@@ -135,7 +126,7 @@
         {
             name: mbx2_recov_fault
             module_name: mbx2
-            index: 14
+            index: 13
             type: alert
             async: 1
             width: 1
@@ -144,7 +135,7 @@
         {
             name: mbx3_fatal_fault
             module_name: mbx3
-            index: 15
+            index: 14
             type: alert
             async: 1
             width: 1
@@ -153,7 +144,7 @@
         {
             name: mbx3_recov_fault
             module_name: mbx3
-            index: 16
+            index: 15
             type: alert
             async: 1
             width: 1
@@ -162,7 +153,7 @@
         {
             name: mbx4_fatal_fault
             module_name: mbx4
-            index: 17
+            index: 16
             type: alert
             async: 1
             width: 1
@@ -171,7 +162,7 @@
         {
             name: mbx4_recov_fault
             module_name: mbx4
-            index: 18
+            index: 17
             type: alert
             async: 1
             width: 1
@@ -180,7 +171,7 @@
         {
             name: mbx5_fatal_fault
             module_name: mbx5
-            index: 19
+            index: 18
             type: alert
             async: 1
             width: 1
@@ -189,7 +180,7 @@
         {
             name: mbx5_recov_fault
             module_name: mbx5
-            index: 20
+            index: 19
             type: alert
             async: 1
             width: 1
@@ -198,7 +189,7 @@
         {
             name: mbx_pcie0_fatal_fault
             module_name: mbx_pcie0
-            index: 21
+            index: 20
             type: alert
             async: 1
             width: 1
@@ -207,7 +198,7 @@
         {
             name: mbx_pcie0_recov_fault
             module_name: mbx_pcie0
-            index: 22
+            index: 21
             type: alert
             async: 1
             width: 1
@@ -216,7 +207,7 @@
         {
             name: racl_ctrl_recov_ctrl_update_err
             module_name: racl_ctrl
-            index: 23
+            index: 22
             type: alert
             async: 1
             width: 1
@@ -225,7 +216,7 @@
         {
             name: racl_ctrl_fatal_fault
             module_name: racl_ctrl
-            index: 24
+            index: 23
             type: alert
             async: 1
             width: 1
@@ -234,7 +225,7 @@
         {
             name: ac_range_check_recov_ctrl_update_err
             module_name: ac_range_check
-            index: 25
+            index: 24
             type: alert
             async: 1
             width: 1
@@ -243,7 +234,7 @@
         {
             name: ac_range_check_fatal_fault
             module_name: ac_range_check
-            index: 26
+            index: 25
             type: alert
             async: 1
             width: 1
@@ -252,7 +243,7 @@
         {
             name: rv_core_ibex_fatal_sw_err
             module_name: rv_core_ibex
-            index: 27
+            index: 26
             type: alert
             async: 1
             width: 1
@@ -261,7 +252,7 @@
         {
             name: rv_core_ibex_recov_sw_err
             module_name: rv_core_ibex
-            index: 28
+            index: 27
             type: alert
             async: 1
             width: 1
@@ -270,7 +261,7 @@
         {
             name: rv_core_ibex_fatal_hw_err
             module_name: rv_core_ibex
-            index: 29
+            index: 28
             type: alert
             async: 1
             width: 1
@@ -279,7 +270,7 @@
         {
             name: rv_core_ibex_recov_hw_err
             module_name: rv_core_ibex
-            index: 30
+            index: 29
             type: alert
             async: 1
             width: 1

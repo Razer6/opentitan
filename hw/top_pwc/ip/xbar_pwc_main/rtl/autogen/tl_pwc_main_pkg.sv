@@ -33,7 +33,7 @@ package tl_pwc_main_pkg;
   localparam logic [0:0][31:0] ADDR_MASK_PWC_PERI             = {
     32'h 007fffff
   };
-  localparam logic [31:0] ADDR_MASK_PWC_SOC_PROXY__CORE  = 32'h 0000000f;
+  localparam logic [31:0] ADDR_MASK_PWC_SOC_PROXY__CORE  = 32'h 00000001;
   localparam logic [31:0] ADDR_MASK_PWC_SOC_PROXY__CTN   = 32'h 3fffffff;
   localparam logic [31:0] ADDR_MASK_RV_PLIC_PWC          = 32'h 07ffffff;
   localparam logic [31:0] ADDR_MASK_RV_CORE_IBEX__CFG    = 32'h 000007ff;

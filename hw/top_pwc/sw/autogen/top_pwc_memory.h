@@ -133,7 +133,7 @@
  * address between #TOP_PWC_PWC_SOC_PROXY_CORE_BASE_ADDR and
  * `TOP_PWC_PWC_SOC_PROXY_CORE_BASE_ADDR + TOP_PWC_PWC_SOC_PROXY_CORE_SIZE_BYTES`.
  */
-#define TOP_PWC_PWC_SOC_PROXY_CORE_SIZE_BYTES 0x10
+#define TOP_PWC_PWC_SOC_PROXY_CORE_SIZE_BYTES 0x2
 /**
  * Peripheral base address for ctn device on pwc_soc_proxy in top pwc.
  *

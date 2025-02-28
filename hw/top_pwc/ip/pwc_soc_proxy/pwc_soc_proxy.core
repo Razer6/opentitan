@@ -12,8 +12,6 @@ filesets:
       - lowrisc:ip:tlul
       - lowrisc:systems:bat
     files:
-      - rtl/pwc_soc_proxy_reg_pkg.sv
-      - rtl/pwc_soc_proxy_core_reg_top.sv
       - rtl/pwc_soc_proxy.sv
     file_type: systemVerilogSource
 

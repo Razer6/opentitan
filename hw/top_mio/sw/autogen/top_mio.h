@@ -79,7 +79,7 @@ extern "C" {
  * address between #TOP_MIO_MIO_SOC_PROXY_CORE_BASE_ADDR and
  * `TOP_MIO_MIO_SOC_PROXY_CORE_BASE_ADDR + TOP_MIO_MIO_SOC_PROXY_CORE_SIZE_BYTES`.
  */
-#define TOP_MIO_MIO_SOC_PROXY_CORE_SIZE_BYTES 0x10u
+#define TOP_MIO_MIO_SOC_PROXY_CORE_SIZE_BYTES 0x2u
 
 /**
  * Peripheral base address for ctn device on mio_soc_proxy in top mio.
@@ -475,17 +475,16 @@ typedef enum top_mio_plic_peripheral {
   kTopMioPlicPeripheralUnknown = 0, /**< Unknown Peripheral */
   kTopMioPlicPeripheralRvTimer = 1, /**< rv_timer */
   kTopMioPlicPeripheralAonTimerAon = 2, /**< aon_timer_aon */
-  kTopMioPlicPeripheralMioSocProxy = 3, /**< mio_soc_proxy */
-  kTopMioPlicPeripheralDma = 4, /**< dma */
-  kTopMioPlicPeripheralMbx0 = 5, /**< mbx0 */
-  kTopMioPlicPeripheralMbx1 = 6, /**< mbx1 */
-  kTopMioPlicPeripheralMbx2 = 7, /**< mbx2 */
-  kTopMioPlicPeripheralMbx3 = 8, /**< mbx3 */
-  kTopMioPlicPeripheralMbx4 = 9, /**< mbx4 */
-  kTopMioPlicPeripheralMbx5 = 10, /**< mbx5 */
-  kTopMioPlicPeripheralMbxPcie0 = 11, /**< mbx_pcie0 */
-  kTopMioPlicPeripheralAcRangeCheck = 12, /**< ac_range_check */
-  kTopMioPlicPeripheralLast = 12, /**< \internal Final PLIC peripheral */
+  kTopMioPlicPeripheralDma = 3, /**< dma */
+  kTopMioPlicPeripheralMbx0 = 4, /**< mbx0 */
+  kTopMioPlicPeripheralMbx1 = 5, /**< mbx1 */
+  kTopMioPlicPeripheralMbx2 = 6, /**< mbx2 */
+  kTopMioPlicPeripheralMbx3 = 7, /**< mbx3 */
+  kTopMioPlicPeripheralMbx4 = 8, /**< mbx4 */
+  kTopMioPlicPeripheralMbx5 = 9, /**< mbx5 */
+  kTopMioPlicPeripheralMbxPcie0 = 10, /**< mbx_pcie0 */
+  kTopMioPlicPeripheralAcRangeCheck = 11, /**< ac_range_check */
+  kTopMioPlicPeripheralLast = 11, /**< \internal Final PLIC peripheral */
 } top_mio_plic_peripheral_t;
 
 /**
@@ -499,73 +498,41 @@ typedef enum top_mio_plic_irq_id {
   kTopMioPlicIrqIdRvTimerTimerExpiredHart0Timer0 = 1, /**< rv_timer_timer_expired_hart0_timer0 */
   kTopMioPlicIrqIdAonTimerAonWkupTimerExpired = 2, /**< aon_timer_aon_wkup_timer_expired */
   kTopMioPlicIrqIdAonTimerAonWdogTimerBark = 3, /**< aon_timer_aon_wdog_timer_bark */
-  kTopMioPlicIrqIdMioSocProxyExternal0 = 4, /**< mio_soc_proxy_external 0 */
-  kTopMioPlicIrqIdMioSocProxyExternal1 = 5, /**< mio_soc_proxy_external 1 */
-  kTopMioPlicIrqIdMioSocProxyExternal2 = 6, /**< mio_soc_proxy_external 2 */
-  kTopMioPlicIrqIdMioSocProxyExternal3 = 7, /**< mio_soc_proxy_external 3 */
-  kTopMioPlicIrqIdMioSocProxyExternal4 = 8, /**< mio_soc_proxy_external 4 */
-  kTopMioPlicIrqIdMioSocProxyExternal5 = 9, /**< mio_soc_proxy_external 5 */
-  kTopMioPlicIrqIdMioSocProxyExternal6 = 10, /**< mio_soc_proxy_external 6 */
-  kTopMioPlicIrqIdMioSocProxyExternal7 = 11, /**< mio_soc_proxy_external 7 */
-  kTopMioPlicIrqIdMioSocProxyExternal8 = 12, /**< mio_soc_proxy_external 8 */
-  kTopMioPlicIrqIdMioSocProxyExternal9 = 13, /**< mio_soc_proxy_external 9 */
-  kTopMioPlicIrqIdMioSocProxyExternal10 = 14, /**< mio_soc_proxy_external 10 */
-  kTopMioPlicIrqIdMioSocProxyExternal11 = 15, /**< mio_soc_proxy_external 11 */
-  kTopMioPlicIrqIdMioSocProxyExternal12 = 16, /**< mio_soc_proxy_external 12 */
-  kTopMioPlicIrqIdMioSocProxyExternal13 = 17, /**< mio_soc_proxy_external 13 */
-  kTopMioPlicIrqIdMioSocProxyExternal14 = 18, /**< mio_soc_proxy_external 14 */
-  kTopMioPlicIrqIdMioSocProxyExternal15 = 19, /**< mio_soc_proxy_external 15 */
-  kTopMioPlicIrqIdMioSocProxyExternal16 = 20, /**< mio_soc_proxy_external 16 */
-  kTopMioPlicIrqIdMioSocProxyExternal17 = 21, /**< mio_soc_proxy_external 17 */
-  kTopMioPlicIrqIdMioSocProxyExternal18 = 22, /**< mio_soc_proxy_external 18 */
-  kTopMioPlicIrqIdMioSocProxyExternal19 = 23, /**< mio_soc_proxy_external 19 */
-  kTopMioPlicIrqIdMioSocProxyExternal20 = 24, /**< mio_soc_proxy_external 20 */
-  kTopMioPlicIrqIdMioSocProxyExternal21 = 25, /**< mio_soc_proxy_external 21 */
-  kTopMioPlicIrqIdMioSocProxyExternal22 = 26, /**< mio_soc_proxy_external 22 */
-  kTopMioPlicIrqIdMioSocProxyExternal23 = 27, /**< mio_soc_proxy_external 23 */
-  kTopMioPlicIrqIdMioSocProxyExternal24 = 28, /**< mio_soc_proxy_external 24 */
-  kTopMioPlicIrqIdMioSocProxyExternal25 = 29, /**< mio_soc_proxy_external 25 */
-  kTopMioPlicIrqIdMioSocProxyExternal26 = 30, /**< mio_soc_proxy_external 26 */
-  kTopMioPlicIrqIdMioSocProxyExternal27 = 31, /**< mio_soc_proxy_external 27 */
-  kTopMioPlicIrqIdMioSocProxyExternal28 = 32, /**< mio_soc_proxy_external 28 */
-  kTopMioPlicIrqIdMioSocProxyExternal29 = 33, /**< mio_soc_proxy_external 29 */
-  kTopMioPlicIrqIdMioSocProxyExternal30 = 34, /**< mio_soc_proxy_external 30 */
-  kTopMioPlicIrqIdMioSocProxyExternal31 = 35, /**< mio_soc_proxy_external 31 */
-  kTopMioPlicIrqIdDmaDmaDone = 36, /**< dma_dma_done */
-  kTopMioPlicIrqIdDmaDmaChunkDone = 37, /**< dma_dma_chunk_done */
-  kTopMioPlicIrqIdDmaDmaError = 38, /**< dma_dma_error */
-  kTopMioPlicIrqIdMbx0MbxReady = 39, /**< mbx0_mbx_ready */
-  kTopMioPlicIrqIdMbx0MbxAbort = 40, /**< mbx0_mbx_abort */
-  kTopMioPlicIrqIdMbx0MbxError = 41, /**< mbx0_mbx_error */
-  kTopMioPlicIrqIdMbx1MbxReady = 42, /**< mbx1_mbx_ready */
-  kTopMioPlicIrqIdMbx1MbxAbort = 43, /**< mbx1_mbx_abort */
-  kTopMioPlicIrqIdMbx1MbxError = 44, /**< mbx1_mbx_error */
-  kTopMioPlicIrqIdMbx2MbxReady = 45, /**< mbx2_mbx_ready */
-  kTopMioPlicIrqIdMbx2MbxAbort = 46, /**< mbx2_mbx_abort */
-  kTopMioPlicIrqIdMbx2MbxError = 47, /**< mbx2_mbx_error */
-  kTopMioPlicIrqIdMbx3MbxReady = 48, /**< mbx3_mbx_ready */
-  kTopMioPlicIrqIdMbx3MbxAbort = 49, /**< mbx3_mbx_abort */
-  kTopMioPlicIrqIdMbx3MbxError = 50, /**< mbx3_mbx_error */
-  kTopMioPlicIrqIdMbx4MbxReady = 51, /**< mbx4_mbx_ready */
-  kTopMioPlicIrqIdMbx4MbxAbort = 52, /**< mbx4_mbx_abort */
-  kTopMioPlicIrqIdMbx4MbxError = 53, /**< mbx4_mbx_error */
-  kTopMioPlicIrqIdMbx5MbxReady = 54, /**< mbx5_mbx_ready */
-  kTopMioPlicIrqIdMbx5MbxAbort = 55, /**< mbx5_mbx_abort */
-  kTopMioPlicIrqIdMbx5MbxError = 56, /**< mbx5_mbx_error */
-  kTopMioPlicIrqIdMbxPcie0MbxReady = 57, /**< mbx_pcie0_mbx_ready */
-  kTopMioPlicIrqIdMbxPcie0MbxAbort = 58, /**< mbx_pcie0_mbx_abort */
-  kTopMioPlicIrqIdMbxPcie0MbxError = 59, /**< mbx_pcie0_mbx_error */
-  kTopMioPlicIrqIdAcRangeCheckDenyCntReached = 60, /**< ac_range_check_deny_cnt_reached */
-  kTopMioPlicIrqIdMioHdrIpiFromMio0 = 61, /**< MIO_HDR_IPI_FROM_MIO_0 */
-  kTopMioPlicIrqIdMioHdrIpiFromMio1 = 62, /**< MIO_HDR_IPI_FROM_MIO_1 */
-  kTopMioPlicIrqIdMioHdrIpiFromMio2 = 63, /**< MIO_HDR_IPI_FROM_MIO_2 */
-  kTopMioPlicIrqIdMioHdrIpiFromPwc = 64, /**< MIO_HDR_IPI_FROM_PWC */
-  kTopMioPlicIrqIdMioHdrIpiFromRot = 65, /**< MIO_HDR_IPI_FROM_ROT */
-  kTopMioPlicIrqIdMioHdrIpiFromPwc = 66, /**< MIO_HDR_IPI_FROM_PWC */
-  kTopMioPlicIrqIdLioGrpAIbexIrq = 67, /**< LIO_GRP_A_IBEX_IRQ */
-  kTopMioPlicIrqIdLioGrpBIbexIrq = 68, /**< LIO_GRP_B_IBEX_IRQ */
-  kTopMioPlicIrqIdLioGrpCIbexIrq = 69, /**< LIO_GRP_C_IBEX_IRQ */
-  kTopMioPlicIrqIdLast = 69, /**< \internal The Last Valid Interrupt ID. */
+  kTopMioPlicIrqIdDmaDmaDone = 4, /**< dma_dma_done */
+  kTopMioPlicIrqIdDmaDmaChunkDone = 5, /**< dma_dma_chunk_done */
+  kTopMioPlicIrqIdDmaDmaError = 6, /**< dma_dma_error */
+  kTopMioPlicIrqIdMbx0MbxReady = 7, /**< mbx0_mbx_ready */
+  kTopMioPlicIrqIdMbx0MbxAbort = 8, /**< mbx0_mbx_abort */
+  kTopMioPlicIrqIdMbx0MbxError = 9, /**< mbx0_mbx_error */
+  kTopMioPlicIrqIdMbx1MbxReady = 10, /**< mbx1_mbx_ready */
+  kTopMioPlicIrqIdMbx1MbxAbort = 11, /**< mbx1_mbx_abort */
+  kTopMioPlicIrqIdMbx1MbxError = 12, /**< mbx1_mbx_error */
+  kTopMioPlicIrqIdMbx2MbxReady = 13, /**< mbx2_mbx_ready */
+  kTopMioPlicIrqIdMbx2MbxAbort = 14, /**< mbx2_mbx_abort */
+  kTopMioPlicIrqIdMbx2MbxError = 15, /**< mbx2_mbx_error */
+  kTopMioPlicIrqIdMbx3MbxReady = 16, /**< mbx3_mbx_ready */
+  kTopMioPlicIrqIdMbx3MbxAbort = 17, /**< mbx3_mbx_abort */
+  kTopMioPlicIrqIdMbx3MbxError = 18, /**< mbx3_mbx_error */
+  kTopMioPlicIrqIdMbx4MbxReady = 19, /**< mbx4_mbx_ready */
+  kTopMioPlicIrqIdMbx4MbxAbort = 20, /**< mbx4_mbx_abort */
+  kTopMioPlicIrqIdMbx4MbxError = 21, /**< mbx4_mbx_error */
+  kTopMioPlicIrqIdMbx5MbxReady = 22, /**< mbx5_mbx_ready */
+  kTopMioPlicIrqIdMbx5MbxAbort = 23, /**< mbx5_mbx_abort */
+  kTopMioPlicIrqIdMbx5MbxError = 24, /**< mbx5_mbx_error */
+  kTopMioPlicIrqIdMbxPcie0MbxReady = 25, /**< mbx_pcie0_mbx_ready */
+  kTopMioPlicIrqIdMbxPcie0MbxAbort = 26, /**< mbx_pcie0_mbx_abort */
+  kTopMioPlicIrqIdMbxPcie0MbxError = 27, /**< mbx_pcie0_mbx_error */
+  kTopMioPlicIrqIdAcRangeCheckDenyCntReached = 28, /**< ac_range_check_deny_cnt_reached */
+  kTopMioPlicIrqIdMioHdrIpiFromMio0 = 29, /**< MIO_HDR_IPI_FROM_MIO_0 */
+  kTopMioPlicIrqIdMioHdrIpiFromMio1 = 30, /**< MIO_HDR_IPI_FROM_MIO_1 */
+  kTopMioPlicIrqIdMioHdrIpiFromMio2 = 31, /**< MIO_HDR_IPI_FROM_MIO_2 */
+  kTopMioPlicIrqIdMioHdrIpiFromPwc = 32, /**< MIO_HDR_IPI_FROM_PWC */
+  kTopMioPlicIrqIdMioHdrIpiFromRot = 33, /**< MIO_HDR_IPI_FROM_ROT */
+  kTopMioPlicIrqIdMioHdrIpiFromPwc = 34, /**< MIO_HDR_IPI_FROM_PWC */
+  kTopMioPlicIrqIdLioGrpAIbexIrq = 35, /**< LIO_GRP_A_IBEX_IRQ */
+  kTopMioPlicIrqIdLioGrpBIbexIrq = 36, /**< LIO_GRP_B_IBEX_IRQ */
+  kTopMioPlicIrqIdLioGrpCIbexIrq = 37, /**< LIO_GRP_C_IBEX_IRQ */
+  kTopMioPlicIrqIdLast = 37, /**< \internal The Last Valid Interrupt ID. */
 } top_mio_plic_irq_id_t;
 
 /**
@@ -575,7 +542,7 @@ typedef enum top_mio_plic_irq_id {
  * `top_mio_plic_peripheral_t`.
  */
 extern const top_mio_plic_peripheral_t
-    top_mio_plic_interrupt_for_peripheral[69];
+    top_mio_plic_interrupt_for_peripheral[37];
 
 /**
  * PLIC Interrupt Target.

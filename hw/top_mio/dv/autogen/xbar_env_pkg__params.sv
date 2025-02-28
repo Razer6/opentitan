@@ -14,7 +14,7 @@ tl_device_t xbar_devices[$] = '{
         '{32'h00040000, 32'h00040fff}
     }},
     '{"mio_soc_proxy__core", '{
-        '{32'h22030000, 32'h2203000f}
+        '{32'h22030000, 32'h22030001}
     }},
     '{"mio_soc_proxy__ctn", '{
         '{32'h40000000, 32'h7fffffff}

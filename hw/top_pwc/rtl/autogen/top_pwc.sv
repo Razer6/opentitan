@@ -201,13 +201,12 @@ module top_pwc #(
   localparam int unsigned RvCoreIbexNEscalationSeverities = 4;
   localparam int unsigned RvCoreIbexWidthPingCounter = 16;
 
-  logic [251:0]  intr_vector;
+  logic [219:0]  intr_vector;
   // Interrupt source list
   logic [31:0] intr_gpio_gpio;
   logic intr_rv_timer_timer_expired_hart0_timer0;
   logic intr_aon_timer_aon_wkup_timer_expired;
   logic intr_aon_timer_aon_wdog_timer_bark;
-  logic [31:0] intr_pwc_soc_proxy_external;
   logic intr_dma_dma_done;
   logic intr_dma_dma_chunk_done;
   logic intr_dma_dma_error;
@@ -452,15 +451,7 @@ module top_pwc #(
       .rst_ni (rst_ext_rst_io_div4_i),
       .rst_aon_ni (rst_ext_rst_aon_i)
   );
-  pwc_soc_proxy #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[3:3])
-  ) u_pwc_soc_proxy (
-
-      // Interrupt
-      .intr_external_o (intr_pwc_soc_proxy_external),
-      // External alert group "pwc" [3]: fatal_alert_intg
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[3:3] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[3:3] ),
+  pwc_soc_proxy u_pwc_soc_proxy (
 
       // Inter-module signals
       .lc_escalate_en_o(pwc_soc_proxy_lc_escalate_en),
@@ -479,7 +470,6 @@ module top_pwc #(
       .ctn_tl_d2h_i(ctn_tl_d2h_i),
       .soc_lsio_trigger_i(soc_lsio_trigger_i),
       .dma_lsio_trigger_o(dma_lsio_trigger),
-      .soc_intr_async_i('0),
       .integrator_id_i(integrator_id_i),
       .mubi8_true_o(sram_ctrl_main_otp_en_sram_ifetch),
       .core_tl_i(pwc_soc_proxy_core_tl_req),
@@ -492,7 +482,7 @@ module top_pwc #(
       .rst_ni (rst_ext_rst_main_i)
   );
   sram_ctrl #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[4:4]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[3:3]),
     .RndCnstSramKey(RndCnstSramCtrlRetAonSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlRetAonSramNonce),
     .RndCnstLfsrSeed(RndCnstSramCtrlRetAonLfsrSeed),
@@ -505,9 +495,9 @@ module top_pwc #(
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .EccCorrection(SramCtrlRetAonEccCorrection)
   ) u_sram_ctrl_ret_aon (
-      // External alert group "pwc" [4]: fatal_error
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[4:4] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[4:4] ),
+      // External alert group "pwc" [3]: fatal_error
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[3:3] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[3:3] ),
 
       // Inter-module signals
       .sram_otp_key_o(),
@@ -533,15 +523,15 @@ module top_pwc #(
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
   rv_dm #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[5:5]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[4:4]),
     .IdcodeValue(RvDmIdcodeValue),
     .UseDmiInterface(RvDmUseDmiInterface),
     .SecVolatileRawUnlockEn(SecRvDmVolatileRawUnlockEn),
     .TlulHostUserRsvdBits(RvDmTlulHostUserRsvdBits)
   ) u_rv_dm (
-      // External alert group "pwc" [5]: fatal_fault
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[5:5] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[5:5] ),
+      // External alert group "pwc" [4]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[4:4] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[4:4] ),
 
       // Inter-module signals
       .next_dm_addr_i(rv_dm_next_dm_addr_i),
@@ -577,11 +567,11 @@ module top_pwc #(
       .rst_lc_ni (rst_ext_rst_main_i)
   );
   rv_plic_pwc #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[6:6])
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[5:5])
   ) u_rv_plic_pwc (
-      // External alert group "pwc" [6]: fatal_fault
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[6:6] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[6:6] ),
+      // External alert group "pwc" [5]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[5:5] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[5:5] ),
 
       // Inter-module signals
       .irq_o(rv_plic_pwc_irq),
@@ -596,7 +586,7 @@ module top_pwc #(
       .rst_ni (rst_ext_rst_main_i)
   );
   sram_ctrl #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[7:7]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[6:6]),
     .RndCnstSramKey(RndCnstSramCtrlMainSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlMainSramNonce),
     .RndCnstLfsrSeed(RndCnstSramCtrlMainLfsrSeed),
@@ -609,9 +599,9 @@ module top_pwc #(
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .EccCorrection(SramCtrlMainEccCorrection)
   ) u_sram_ctrl_main (
-      // External alert group "pwc" [7]: fatal_error
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[7:7] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[7:7] ),
+      // External alert group "pwc" [6]: fatal_error
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[6:6] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[6:6] ),
 
       // Inter-module signals
       .sram_otp_key_o(),
@@ -637,7 +627,7 @@ module top_pwc #(
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
   sram_ctrl #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[8:8]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[7:7]),
     .RndCnstSramKey(RndCnstSramCtrlMboxSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlMboxSramNonce),
     .RndCnstLfsrSeed(RndCnstSramCtrlMboxLfsrSeed),
@@ -650,9 +640,9 @@ module top_pwc #(
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
     .EccCorrection(SramCtrlMboxEccCorrection)
   ) u_sram_ctrl_mbox (
-      // External alert group "pwc" [8]: fatal_error
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[8:8] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[8:8] ),
+      // External alert group "pwc" [7]: fatal_error
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[7:7] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[7:7] ),
 
       // Inter-module signals
       .sram_otp_key_o(),
@@ -678,7 +668,7 @@ module top_pwc #(
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
   dma #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[9:9]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[8:8]),
     .EnableDataIntgGen(DmaEnableDataIntgGen),
     .EnableRspDataIntgCheck(DmaEnableRspDataIntgCheck),
     .TlUserRsvd(DmaTlUserRsvd),
@@ -690,9 +680,9 @@ module top_pwc #(
       .intr_dma_done_o       (intr_dma_dma_done),
       .intr_dma_chunk_done_o (intr_dma_dma_chunk_done),
       .intr_dma_error_o      (intr_dma_dma_error),
-      // External alert group "pwc" [9]: fatal_fault
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[9:9] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[9:9] ),
+      // External alert group "pwc" [8]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[8:8] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[8:8] ),
 
       // Inter-module signals
       .lsio_trigger_i(dma_lsio_trigger),
@@ -716,17 +706,17 @@ module top_pwc #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX0_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX0_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX0_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[11:10])
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[10:9])
   ) u_mbx0 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx0_mbx_ready),
       .intr_mbx_abort_o (intr_mbx0_mbx_abort),
       .intr_mbx_error_o (intr_mbx0_mbx_error),
-      // External alert group "pwc" [10]: fatal_fault
-      // External alert group "pwc" [11]: recov_fault
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[11:10] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[11:10] ),
+      // External alert group "pwc" [9]: fatal_fault
+      // External alert group "pwc" [10]: recov_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[10:9] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[10:9] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -752,17 +742,17 @@ module top_pwc #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX1_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX1_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX1_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[13:12])
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[12:11])
   ) u_mbx1 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx1_mbx_ready),
       .intr_mbx_abort_o (intr_mbx1_mbx_abort),
       .intr_mbx_error_o (intr_mbx1_mbx_error),
-      // External alert group "pwc" [12]: fatal_fault
-      // External alert group "pwc" [13]: recov_fault
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[13:12] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[13:12] ),
+      // External alert group "pwc" [11]: fatal_fault
+      // External alert group "pwc" [12]: recov_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[12:11] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[12:11] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -788,17 +778,17 @@ module top_pwc #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX2_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX2_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX2_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[15:14])
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[14:13])
   ) u_mbx2 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx2_mbx_ready),
       .intr_mbx_abort_o (intr_mbx2_mbx_abort),
       .intr_mbx_error_o (intr_mbx2_mbx_error),
-      // External alert group "pwc" [14]: fatal_fault
-      // External alert group "pwc" [15]: recov_fault
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[15:14] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[15:14] ),
+      // External alert group "pwc" [13]: fatal_fault
+      // External alert group "pwc" [14]: recov_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[14:13] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[14:13] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -824,17 +814,17 @@ module top_pwc #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX3_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX3_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX3_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[17:16])
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[16:15])
   ) u_mbx3 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx3_mbx_ready),
       .intr_mbx_abort_o (intr_mbx3_mbx_abort),
       .intr_mbx_error_o (intr_mbx3_mbx_error),
-      // External alert group "pwc" [16]: fatal_fault
-      // External alert group "pwc" [17]: recov_fault
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[17:16] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[17:16] ),
+      // External alert group "pwc" [15]: fatal_fault
+      // External alert group "pwc" [16]: recov_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[16:15] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[16:15] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -860,17 +850,17 @@ module top_pwc #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX4_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX4_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX4_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[19:18])
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[18:17])
   ) u_mbx4 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx4_mbx_ready),
       .intr_mbx_abort_o (intr_mbx4_mbx_abort),
       .intr_mbx_error_o (intr_mbx4_mbx_error),
-      // External alert group "pwc" [18]: fatal_fault
-      // External alert group "pwc" [19]: recov_fault
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[19:18] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[19:18] ),
+      // External alert group "pwc" [17]: fatal_fault
+      // External alert group "pwc" [18]: recov_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[18:17] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[18:17] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -896,17 +886,17 @@ module top_pwc #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX5_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX5_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX5_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[21:20])
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[20:19])
   ) u_mbx5 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx5_mbx_ready),
       .intr_mbx_abort_o (intr_mbx5_mbx_abort),
       .intr_mbx_error_o (intr_mbx5_mbx_error),
-      // External alert group "pwc" [20]: fatal_fault
-      // External alert group "pwc" [21]: recov_fault
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[21:20] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[21:20] ),
+      // External alert group "pwc" [19]: fatal_fault
+      // External alert group "pwc" [20]: recov_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[20:19] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[20:19] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -932,17 +922,17 @@ module top_pwc #(
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX_PCIE0_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_RDATA),
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[23:22])
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[22:21])
   ) u_mbx_pcie0 (
 
       // Interrupt
       .intr_mbx_ready_o (intr_mbx_pcie0_mbx_ready),
       .intr_mbx_abort_o (intr_mbx_pcie0_mbx_abort),
       .intr_mbx_error_o (intr_mbx_pcie0_mbx_error),
-      // External alert group "pwc" [22]: fatal_fault
-      // External alert group "pwc" [23]: recov_fault
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[23:22] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[23:22] ),
+      // External alert group "pwc" [21]: fatal_fault
+      // External alert group "pwc" [22]: recov_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[22:21] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[22:21] ),
 
       // Inter-module signals
       .doe_intr_support_o(),
@@ -964,14 +954,14 @@ module top_pwc #(
   );
   racl_ctrl_pwc #(
     .RaclErrorRsp(1'b0),
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[25:24]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[24:23]),
     .NumSubscribingIps(RaclCtrlNumSubscribingIps),
     .NumExternalSubscribingIps(RaclCtrlNumExternalSubscribingIps)
   ) u_racl_ctrl (
-      // External alert group "pwc" [24]: recov_ctrl_update_err
-      // External alert group "pwc" [25]: fatal_fault
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[25:24] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[25:24] ),
+      // External alert group "pwc" [23]: recov_ctrl_update_err
+      // External alert group "pwc" [24]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[24:23] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[24:23] ),
 
       // Inter-module signals
       .racl_policies_o(racl_ctrl_racl_policies),
@@ -989,15 +979,15 @@ module top_pwc #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(1'b0),
     .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK),
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[27:26])
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[26:25])
   ) u_ac_range_check (
 
       // Interrupt
       .intr_deny_cnt_reached_o (intr_ac_range_check_deny_cnt_reached),
-      // External alert group "pwc" [26]: recov_ctrl_update_err
-      // External alert group "pwc" [27]: fatal_fault
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[27:26] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[27:26] ),
+      // External alert group "pwc" [25]: recov_ctrl_update_err
+      // External alert group "pwc" [26]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[26:25] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[26:25] ),
 
       // Inter-module signals
       .range_check_overwrite_i(ac_range_check_overwrite_i),
@@ -1016,7 +1006,7 @@ module top_pwc #(
       .rst_ni (rst_ext_rst_main_i)
   );
   rv_core_ibex #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[31:28]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[30:27]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexLfsrPerm),
     .RndCnstIbexKeyDefault(RndCnstRvCoreIbexIbexKeyDefault),
@@ -1052,12 +1042,12 @@ module top_pwc #(
     .PipeLine(RvCoreIbexPipeLine),
     .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
   ) u_rv_core_ibex (
-      // External alert group "pwc" [28]: fatal_sw_err
-      // External alert group "pwc" [29]: recov_sw_err
-      // External alert group "pwc" [30]: fatal_hw_err
-      // External alert group "pwc" [31]: recov_hw_err
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[31:28] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[31:28] ),
+      // External alert group "pwc" [27]: fatal_sw_err
+      // External alert group "pwc" [28]: recov_sw_err
+      // External alert group "pwc" [29]: fatal_hw_err
+      // External alert group "pwc" [30]: recov_hw_err
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[30:27] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[30:27] ),
 
       // Inter-module signals
       .rst_cpu_n_o(),
@@ -1104,33 +1094,32 @@ module top_pwc #(
   );
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_pwc_external_i, // IDs [93 +: 159]
-      intr_ac_range_check_deny_cnt_reached, // IDs [92 +: 1]
-      intr_mbx_pcie0_mbx_error, // IDs [91 +: 1]
-      intr_mbx_pcie0_mbx_abort, // IDs [90 +: 1]
-      intr_mbx_pcie0_mbx_ready, // IDs [89 +: 1]
-      intr_mbx5_mbx_error, // IDs [88 +: 1]
-      intr_mbx5_mbx_abort, // IDs [87 +: 1]
-      intr_mbx5_mbx_ready, // IDs [86 +: 1]
-      intr_mbx4_mbx_error, // IDs [85 +: 1]
-      intr_mbx4_mbx_abort, // IDs [84 +: 1]
-      intr_mbx4_mbx_ready, // IDs [83 +: 1]
-      intr_mbx3_mbx_error, // IDs [82 +: 1]
-      intr_mbx3_mbx_abort, // IDs [81 +: 1]
-      intr_mbx3_mbx_ready, // IDs [80 +: 1]
-      intr_mbx2_mbx_error, // IDs [79 +: 1]
-      intr_mbx2_mbx_abort, // IDs [78 +: 1]
-      intr_mbx2_mbx_ready, // IDs [77 +: 1]
-      intr_mbx1_mbx_error, // IDs [76 +: 1]
-      intr_mbx1_mbx_abort, // IDs [75 +: 1]
-      intr_mbx1_mbx_ready, // IDs [74 +: 1]
-      intr_mbx0_mbx_error, // IDs [73 +: 1]
-      intr_mbx0_mbx_abort, // IDs [72 +: 1]
-      intr_mbx0_mbx_ready, // IDs [71 +: 1]
-      intr_dma_dma_error, // IDs [70 +: 1]
-      intr_dma_dma_chunk_done, // IDs [69 +: 1]
-      intr_dma_dma_done, // IDs [68 +: 1]
-      intr_pwc_soc_proxy_external, // IDs [36 +: 32]
+      incoming_interrupt_pwc_external_i, // IDs [61 +: 159]
+      intr_ac_range_check_deny_cnt_reached, // IDs [60 +: 1]
+      intr_mbx_pcie0_mbx_error, // IDs [59 +: 1]
+      intr_mbx_pcie0_mbx_abort, // IDs [58 +: 1]
+      intr_mbx_pcie0_mbx_ready, // IDs [57 +: 1]
+      intr_mbx5_mbx_error, // IDs [56 +: 1]
+      intr_mbx5_mbx_abort, // IDs [55 +: 1]
+      intr_mbx5_mbx_ready, // IDs [54 +: 1]
+      intr_mbx4_mbx_error, // IDs [53 +: 1]
+      intr_mbx4_mbx_abort, // IDs [52 +: 1]
+      intr_mbx4_mbx_ready, // IDs [51 +: 1]
+      intr_mbx3_mbx_error, // IDs [50 +: 1]
+      intr_mbx3_mbx_abort, // IDs [49 +: 1]
+      intr_mbx3_mbx_ready, // IDs [48 +: 1]
+      intr_mbx2_mbx_error, // IDs [47 +: 1]
+      intr_mbx2_mbx_abort, // IDs [46 +: 1]
+      intr_mbx2_mbx_ready, // IDs [45 +: 1]
+      intr_mbx1_mbx_error, // IDs [44 +: 1]
+      intr_mbx1_mbx_abort, // IDs [43 +: 1]
+      intr_mbx1_mbx_ready, // IDs [42 +: 1]
+      intr_mbx0_mbx_error, // IDs [41 +: 1]
+      intr_mbx0_mbx_abort, // IDs [40 +: 1]
+      intr_mbx0_mbx_ready, // IDs [39 +: 1]
+      intr_dma_dma_error, // IDs [38 +: 1]
+      intr_dma_dma_chunk_done, // IDs [37 +: 1]
+      intr_dma_dma_done, // IDs [36 +: 1]
       intr_aon_timer_aon_wdog_timer_bark, // IDs [35 +: 1]
       intr_aon_timer_aon_wkup_timer_expired, // IDs [34 +: 1]
       intr_rv_timer_timer_expired_hart0_timer0, // IDs [33 +: 1]

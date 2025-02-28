@@ -44,7 +44,7 @@
     { name: "NumSrc",
       desc: "Number of interrupt sources",
       type: "int",
-      default: "70",
+      default: "38",
       local: "true"
     },
     { name: "NumTarget",
@@ -175,7 +175,7 @@
       hwqe: "true",
       hwre: "true",
       fields: [
-        { bits: "6:0" }
+        { bits: "5:0" }
       ],
       tags: [// CC register value is related to IP
              "excl:CsrNonInitTests:CsrExclCheck"],

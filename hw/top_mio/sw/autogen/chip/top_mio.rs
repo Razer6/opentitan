@@ -59,7 +59,7 @@ pub const MIO_SOC_PROXY_CORE_BASE_ADDR: usize = 0x22030000;
 /// memory-mapped registers associated with this peripheral should have an
 /// address between #MIO_SOC_PROXY_CORE_BASE_ADDR and
 /// `MIO_SOC_PROXY_CORE_BASE_ADDR + MIO_SOC_PROXY_CORE_SIZE_BYTES`.
-pub const MIO_SOC_PROXY_CORE_SIZE_BYTES: usize = 0x10;
+pub const MIO_SOC_PROXY_CORE_SIZE_BYTES: usize = 0x2;
 
 /// Peripheral base address for ctn device on mio_soc_proxy in top mio.
 ///
@@ -364,26 +364,24 @@ pub enum PlicPeripheral {
     RvTimer = 1,
     /// aon_timer_aon
     AonTimerAon = 2,
-    /// mio_soc_proxy
-    MioSocProxy = 3,
     /// dma
-    Dma = 4,
+    Dma = 3,
     /// mbx0
-    Mbx0 = 5,
+    Mbx0 = 4,
     /// mbx1
-    Mbx1 = 6,
+    Mbx1 = 5,
     /// mbx2
-    Mbx2 = 7,
+    Mbx2 = 6,
     /// mbx3
-    Mbx3 = 8,
+    Mbx3 = 7,
     /// mbx4
-    Mbx4 = 9,
+    Mbx4 = 8,
     /// mbx5
-    Mbx5 = 10,
+    Mbx5 = 9,
     /// mbx_pcie0
-    MbxPcie0 = 11,
+    MbxPcie0 = 10,
     /// ac_range_check
-    AcRangeCheck = 12,
+    AcRangeCheck = 11,
 }
 
 impl TryFrom<u32> for PlicPeripheral {
@@ -393,16 +391,15 @@ impl TryFrom<u32> for PlicPeripheral {
             0 => Ok(Self::Unknown),
             1 => Ok(Self::RvTimer),
             2 => Ok(Self::AonTimerAon),
-            3 => Ok(Self::MioSocProxy),
-            4 => Ok(Self::Dma),
-            5 => Ok(Self::Mbx0),
-            6 => Ok(Self::Mbx1),
-            7 => Ok(Self::Mbx2),
-            8 => Ok(Self::Mbx3),
-            9 => Ok(Self::Mbx4),
-            10 => Ok(Self::Mbx5),
-            11 => Ok(Self::MbxPcie0),
-            12 => Ok(Self::AcRangeCheck),
+            3 => Ok(Self::Dma),
+            4 => Ok(Self::Mbx0),
+            5 => Ok(Self::Mbx1),
+            6 => Ok(Self::Mbx2),
+            7 => Ok(Self::Mbx3),
+            8 => Ok(Self::Mbx4),
+            9 => Ok(Self::Mbx5),
+            10 => Ok(Self::MbxPcie0),
+            11 => Ok(Self::AcRangeCheck),
             _ => Err(val),
         }
     }
@@ -423,138 +420,74 @@ pub enum PlicIrqId {
     AonTimerAonWkupTimerExpired = 2,
     /// aon_timer_aon_wdog_timer_bark
     AonTimerAonWdogTimerBark = 3,
-    /// mio_soc_proxy_external 0
-    MioSocProxyExternal0 = 4,
-    /// mio_soc_proxy_external 1
-    MioSocProxyExternal1 = 5,
-    /// mio_soc_proxy_external 2
-    MioSocProxyExternal2 = 6,
-    /// mio_soc_proxy_external 3
-    MioSocProxyExternal3 = 7,
-    /// mio_soc_proxy_external 4
-    MioSocProxyExternal4 = 8,
-    /// mio_soc_proxy_external 5
-    MioSocProxyExternal5 = 9,
-    /// mio_soc_proxy_external 6
-    MioSocProxyExternal6 = 10,
-    /// mio_soc_proxy_external 7
-    MioSocProxyExternal7 = 11,
-    /// mio_soc_proxy_external 8
-    MioSocProxyExternal8 = 12,
-    /// mio_soc_proxy_external 9
-    MioSocProxyExternal9 = 13,
-    /// mio_soc_proxy_external 10
-    MioSocProxyExternal10 = 14,
-    /// mio_soc_proxy_external 11
-    MioSocProxyExternal11 = 15,
-    /// mio_soc_proxy_external 12
-    MioSocProxyExternal12 = 16,
-    /// mio_soc_proxy_external 13
-    MioSocProxyExternal13 = 17,
-    /// mio_soc_proxy_external 14
-    MioSocProxyExternal14 = 18,
-    /// mio_soc_proxy_external 15
-    MioSocProxyExternal15 = 19,
-    /// mio_soc_proxy_external 16
-    MioSocProxyExternal16 = 20,
-    /// mio_soc_proxy_external 17
-    MioSocProxyExternal17 = 21,
-    /// mio_soc_proxy_external 18
-    MioSocProxyExternal18 = 22,
-    /// mio_soc_proxy_external 19
-    MioSocProxyExternal19 = 23,
-    /// mio_soc_proxy_external 20
-    MioSocProxyExternal20 = 24,
-    /// mio_soc_proxy_external 21
-    MioSocProxyExternal21 = 25,
-    /// mio_soc_proxy_external 22
-    MioSocProxyExternal22 = 26,
-    /// mio_soc_proxy_external 23
-    MioSocProxyExternal23 = 27,
-    /// mio_soc_proxy_external 24
-    MioSocProxyExternal24 = 28,
-    /// mio_soc_proxy_external 25
-    MioSocProxyExternal25 = 29,
-    /// mio_soc_proxy_external 26
-    MioSocProxyExternal26 = 30,
-    /// mio_soc_proxy_external 27
-    MioSocProxyExternal27 = 31,
-    /// mio_soc_proxy_external 28
-    MioSocProxyExternal28 = 32,
-    /// mio_soc_proxy_external 29
-    MioSocProxyExternal29 = 33,
-    /// mio_soc_proxy_external 30
-    MioSocProxyExternal30 = 34,
-    /// mio_soc_proxy_external 31
-    MioSocProxyExternal31 = 35,
     /// dma_dma_done
-    DmaDmaDone = 36,
+    DmaDmaDone = 4,
     /// dma_dma_chunk_done
-    DmaDmaChunkDone = 37,
+    DmaDmaChunkDone = 5,
     /// dma_dma_error
-    DmaDmaError = 38,
+    DmaDmaError = 6,
     /// mbx0_mbx_ready
-    Mbx0MbxReady = 39,
+    Mbx0MbxReady = 7,
     /// mbx0_mbx_abort
-    Mbx0MbxAbort = 40,
+    Mbx0MbxAbort = 8,
     /// mbx0_mbx_error
-    Mbx0MbxError = 41,
+    Mbx0MbxError = 9,
     /// mbx1_mbx_ready
-    Mbx1MbxReady = 42,
+    Mbx1MbxReady = 10,
     /// mbx1_mbx_abort
-    Mbx1MbxAbort = 43,
+    Mbx1MbxAbort = 11,
     /// mbx1_mbx_error
-    Mbx1MbxError = 44,
+    Mbx1MbxError = 12,
     /// mbx2_mbx_ready
-    Mbx2MbxReady = 45,
+    Mbx2MbxReady = 13,
     /// mbx2_mbx_abort
-    Mbx2MbxAbort = 46,
+    Mbx2MbxAbort = 14,
     /// mbx2_mbx_error
-    Mbx2MbxError = 47,
+    Mbx2MbxError = 15,
     /// mbx3_mbx_ready
-    Mbx3MbxReady = 48,
+    Mbx3MbxReady = 16,
     /// mbx3_mbx_abort
-    Mbx3MbxAbort = 49,
+    Mbx3MbxAbort = 17,
     /// mbx3_mbx_error
-    Mbx3MbxError = 50,
+    Mbx3MbxError = 18,
     /// mbx4_mbx_ready
-    Mbx4MbxReady = 51,
+    Mbx4MbxReady = 19,
     /// mbx4_mbx_abort
-    Mbx4MbxAbort = 52,
+    Mbx4MbxAbort = 20,
     /// mbx4_mbx_error
-    Mbx4MbxError = 53,
+    Mbx4MbxError = 21,
     /// mbx5_mbx_ready
-    Mbx5MbxReady = 54,
+    Mbx5MbxReady = 22,
     /// mbx5_mbx_abort
-    Mbx5MbxAbort = 55,
+    Mbx5MbxAbort = 23,
     /// mbx5_mbx_error
-    Mbx5MbxError = 56,
+    Mbx5MbxError = 24,
     /// mbx_pcie0_mbx_ready
-    MbxPcie0MbxReady = 57,
+    MbxPcie0MbxReady = 25,
     /// mbx_pcie0_mbx_abort
-    MbxPcie0MbxAbort = 58,
+    MbxPcie0MbxAbort = 26,
     /// mbx_pcie0_mbx_error
-    MbxPcie0MbxError = 59,
+    MbxPcie0MbxError = 27,
     /// ac_range_check_deny_cnt_reached
-    AcRangeCheckDenyCntReached = 60,
+    AcRangeCheckDenyCntReached = 28,
     /// MIO_HDR_IPI_FROM_MIO_0
-    MioHdrIpiFromMio0 = 61,
+    MioHdrIpiFromMio0 = 29,
     /// MIO_HDR_IPI_FROM_MIO_1
-    MioHdrIpiFromMio1 = 62,
+    MioHdrIpiFromMio1 = 30,
     /// MIO_HDR_IPI_FROM_MIO_2
-    MioHdrIpiFromMio2 = 63,
+    MioHdrIpiFromMio2 = 31,
     /// MIO_HDR_IPI_FROM_PWC
-    MioHdrIpiFromPwc = 64,
+    MioHdrIpiFromPwc = 32,
     /// MIO_HDR_IPI_FROM_ROT
-    MioHdrIpiFromRot = 65,
+    MioHdrIpiFromRot = 33,
     /// MIO_HDR_IPI_FROM_PWC
-    MioHdrIpiFromPwc = 66,
+    MioHdrIpiFromPwc = 34,
     /// LIO_GRP_A_IBEX_IRQ
-    LioGrpAIbexIrq = 67,
+    LioGrpAIbexIrq = 35,
     /// LIO_GRP_B_IBEX_IRQ
-    LioGrpBIbexIrq = 68,
+    LioGrpBIbexIrq = 36,
     /// LIO_GRP_C_IBEX_IRQ
-    LioGrpCIbexIrq = 69,
+    LioGrpCIbexIrq = 37,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -565,72 +498,40 @@ impl TryFrom<u32> for PlicIrqId {
             1 => Ok(Self::RvTimerTimerExpiredHart0Timer0),
             2 => Ok(Self::AonTimerAonWkupTimerExpired),
             3 => Ok(Self::AonTimerAonWdogTimerBark),
-            4 => Ok(Self::MioSocProxyExternal0),
-            5 => Ok(Self::MioSocProxyExternal1),
-            6 => Ok(Self::MioSocProxyExternal2),
-            7 => Ok(Self::MioSocProxyExternal3),
-            8 => Ok(Self::MioSocProxyExternal4),
-            9 => Ok(Self::MioSocProxyExternal5),
-            10 => Ok(Self::MioSocProxyExternal6),
-            11 => Ok(Self::MioSocProxyExternal7),
-            12 => Ok(Self::MioSocProxyExternal8),
-            13 => Ok(Self::MioSocProxyExternal9),
-            14 => Ok(Self::MioSocProxyExternal10),
-            15 => Ok(Self::MioSocProxyExternal11),
-            16 => Ok(Self::MioSocProxyExternal12),
-            17 => Ok(Self::MioSocProxyExternal13),
-            18 => Ok(Self::MioSocProxyExternal14),
-            19 => Ok(Self::MioSocProxyExternal15),
-            20 => Ok(Self::MioSocProxyExternal16),
-            21 => Ok(Self::MioSocProxyExternal17),
-            22 => Ok(Self::MioSocProxyExternal18),
-            23 => Ok(Self::MioSocProxyExternal19),
-            24 => Ok(Self::MioSocProxyExternal20),
-            25 => Ok(Self::MioSocProxyExternal21),
-            26 => Ok(Self::MioSocProxyExternal22),
-            27 => Ok(Self::MioSocProxyExternal23),
-            28 => Ok(Self::MioSocProxyExternal24),
-            29 => Ok(Self::MioSocProxyExternal25),
-            30 => Ok(Self::MioSocProxyExternal26),
-            31 => Ok(Self::MioSocProxyExternal27),
-            32 => Ok(Self::MioSocProxyExternal28),
-            33 => Ok(Self::MioSocProxyExternal29),
-            34 => Ok(Self::MioSocProxyExternal30),
-            35 => Ok(Self::MioSocProxyExternal31),
-            36 => Ok(Self::DmaDmaDone),
-            37 => Ok(Self::DmaDmaChunkDone),
-            38 => Ok(Self::DmaDmaError),
-            39 => Ok(Self::Mbx0MbxReady),
-            40 => Ok(Self::Mbx0MbxAbort),
-            41 => Ok(Self::Mbx0MbxError),
-            42 => Ok(Self::Mbx1MbxReady),
-            43 => Ok(Self::Mbx1MbxAbort),
-            44 => Ok(Self::Mbx1MbxError),
-            45 => Ok(Self::Mbx2MbxReady),
-            46 => Ok(Self::Mbx2MbxAbort),
-            47 => Ok(Self::Mbx2MbxError),
-            48 => Ok(Self::Mbx3MbxReady),
-            49 => Ok(Self::Mbx3MbxAbort),
-            50 => Ok(Self::Mbx3MbxError),
-            51 => Ok(Self::Mbx4MbxReady),
-            52 => Ok(Self::Mbx4MbxAbort),
-            53 => Ok(Self::Mbx4MbxError),
-            54 => Ok(Self::Mbx5MbxReady),
-            55 => Ok(Self::Mbx5MbxAbort),
-            56 => Ok(Self::Mbx5MbxError),
-            57 => Ok(Self::MbxPcie0MbxReady),
-            58 => Ok(Self::MbxPcie0MbxAbort),
-            59 => Ok(Self::MbxPcie0MbxError),
-            60 => Ok(Self::AcRangeCheckDenyCntReached),
-            61 => Ok(Self::MioHdrIpiFromMio0),
-            62 => Ok(Self::MioHdrIpiFromMio1),
-            63 => Ok(Self::MioHdrIpiFromMio2),
-            64 => Ok(Self::MioHdrIpiFromPwc),
-            65 => Ok(Self::MioHdrIpiFromRot),
-            66 => Ok(Self::MioHdrIpiFromPwc),
-            67 => Ok(Self::LioGrpAIbexIrq),
-            68 => Ok(Self::LioGrpBIbexIrq),
-            69 => Ok(Self::LioGrpCIbexIrq),
+            4 => Ok(Self::DmaDmaDone),
+            5 => Ok(Self::DmaDmaChunkDone),
+            6 => Ok(Self::DmaDmaError),
+            7 => Ok(Self::Mbx0MbxReady),
+            8 => Ok(Self::Mbx0MbxAbort),
+            9 => Ok(Self::Mbx0MbxError),
+            10 => Ok(Self::Mbx1MbxReady),
+            11 => Ok(Self::Mbx1MbxAbort),
+            12 => Ok(Self::Mbx1MbxError),
+            13 => Ok(Self::Mbx2MbxReady),
+            14 => Ok(Self::Mbx2MbxAbort),
+            15 => Ok(Self::Mbx2MbxError),
+            16 => Ok(Self::Mbx3MbxReady),
+            17 => Ok(Self::Mbx3MbxAbort),
+            18 => Ok(Self::Mbx3MbxError),
+            19 => Ok(Self::Mbx4MbxReady),
+            20 => Ok(Self::Mbx4MbxAbort),
+            21 => Ok(Self::Mbx4MbxError),
+            22 => Ok(Self::Mbx5MbxReady),
+            23 => Ok(Self::Mbx5MbxAbort),
+            24 => Ok(Self::Mbx5MbxError),
+            25 => Ok(Self::MbxPcie0MbxReady),
+            26 => Ok(Self::MbxPcie0MbxAbort),
+            27 => Ok(Self::MbxPcie0MbxError),
+            28 => Ok(Self::AcRangeCheckDenyCntReached),
+            29 => Ok(Self::MioHdrIpiFromMio0),
+            30 => Ok(Self::MioHdrIpiFromMio1),
+            31 => Ok(Self::MioHdrIpiFromMio2),
+            32 => Ok(Self::MioHdrIpiFromPwc),
+            33 => Ok(Self::MioHdrIpiFromRot),
+            34 => Ok(Self::MioHdrIpiFromPwc),
+            35 => Ok(Self::LioGrpAIbexIrq),
+            36 => Ok(Self::LioGrpBIbexIrq),
+            37 => Ok(Self::LioGrpCIbexIrq),
             _ => Err(val),
         }
     }
@@ -651,7 +552,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 69] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 37] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // RvTimerTimerExpiredHart0Timer0 -> PlicPeripheral::RvTimer
@@ -660,70 +561,6 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 69] = [
     PlicPeripheral::AonTimerAon,
     // AonTimerAonWdogTimerBark -> PlicPeripheral::AonTimerAon
     PlicPeripheral::AonTimerAon,
-    // MioSocProxyExternal0 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal1 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal2 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal3 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal4 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal5 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal6 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal7 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal8 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal9 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal10 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal11 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal12 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal13 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal14 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal15 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal16 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal17 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal18 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal19 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal20 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal21 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal22 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal23 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal24 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal25 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal26 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal27 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal28 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal29 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal30 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
-    // MioSocProxyExternal31 -> PlicPeripheral::MioSocProxy
-    PlicPeripheral::MioSocProxy,
     // DmaDmaDone -> PlicPeripheral::Dma
     PlicPeripheral::Dma,
     // DmaDmaChunkDone -> PlicPeripheral::Dma
