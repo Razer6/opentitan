@@ -95,9 +95,6 @@ module soc_proxy
   assign host_tl_h2d [2] = misc_tl_h2d_i;
   assign misc_tl_d2h_o   = host_tl_d2h[2];
 
-  tlul_pkg::tl_h2d_t muxed_host_tl_h2d;
-  tlul_pkg::tl_d2h_t muxed_host_tl_d2h;
-
   // Add a MUX with a pipeline stage to shorten path through AC ranges
   tlul_socket_m1 #(
     .M         ( TLUL_HOST_CNT         ),
@@ -118,7 +115,7 @@ module soc_proxy
     .tl_d_i ( muxed_tl_d2h_i )
   );
 
-  // Perform the base address translation before exiting to the AC Ranges
+  // Perform the base address translation of the incoming AC-Range-checked port before leaving
   bat u_bat (
     .tl_in_h2d_i     ( ac_range_tl_h2d_i ),
     .tl_in_d2h_o     ( ac_range_tl_d2h_o ),

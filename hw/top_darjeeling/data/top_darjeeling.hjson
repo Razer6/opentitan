@@ -1065,7 +1065,7 @@
         num_ranges: 32
       }
       attr: "ipgen",
-        soc: 'top_darjeeling/data/rivos-racl/star-mappings/reg_all_rd_wr_mapping.hjson'
+      racl_mapping: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
     },
     { name: "rv_core_ibex",
       type: "rv_core_ibex",
