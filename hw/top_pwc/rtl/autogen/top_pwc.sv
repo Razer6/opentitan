@@ -986,7 +986,7 @@ module top_pwc #(
   ac_range_check_pwc #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(1'b0),
-    .RaclPolicySelVec(RACL_POLICY_SEL_AC_RANGE_CHECK),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[1:0])
   ) u_ac_range_check (
 

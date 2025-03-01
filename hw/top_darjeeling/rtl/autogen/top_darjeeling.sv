@@ -2678,7 +2678,7 @@ module top_darjeeling #(
   ac_range_check #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(1'b0),
-    .RaclPolicySelVec(RACL_POLICY_SEL_AC_RANGE_CHECK),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[98:97])
   ) u_ac_range_check (
 
