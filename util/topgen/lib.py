@@ -408,7 +408,7 @@ def get_ip_hjson_path(ip_name_snake: str, topcfg: Dict[str, object], repotop: Pa
     """
     Return the location of an IP's hjson file for a given top.
     """
-    m = find_module(topcfg["module"], ip_name_snake)
+    m = find_module(topcfg["module"], ip_name_snake, False)
     if is_ipgen(m):
         data_dir = repotop / "hw/top_{}/ip_autogen/{}/data".format(
             topcfg["name"], ip_name_snake)
