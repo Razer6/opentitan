@@ -531,6 +531,7 @@
         num_ranges: 32
       }
       attr: "ipgen",
+      outgoing_alert: "mio"
       racl_mapping: 'top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
     },
     { name: "rv_core_ibex",
@@ -669,6 +670,7 @@
         'mio_soc_proxy.lc_escalate_en_ext'  : 'lc_escalate_en_ext',
         'mio_soc_proxy.ctn_tl_h2d'          : 'ctn_tl_h2d',
         'mio_soc_proxy.ctn_tl_d2h'          : 'ctn_tl_d2h',
+        'mio_soc_proxy.integrator_id'       : 'integrator_id',
         'rv_dm.lc_check_byp_en'             : 'lc_check_byp_en',
         'sram_ctrl_ret_aon.cfg'             : 'sram_ctrl_ret_aon_ram_1p_cfg',
         'sram_ctrl_ret_aon.cfg_rsp'         : 'sram_ctrl_ret_aon_ram_1p_cfg_rsp',
@@ -678,6 +680,7 @@
         'sram_ctrl_mbox.cfg_rsp'            : 'sram_ctrl_mbox_ram_1p_cfg_rsp',
         'racl_ctrl.racl_policies'           : 'racl_policies',
         'racl_ctrl.racl_error_external'     : 'racl_error',
+        'ac_range_check.range_check_overwrite' : 'ac_range_check_overwrite',
     },
   },
 

@@ -113,6 +113,7 @@ module top_mio #(
   input  lc_ctrl_pkg::lc_tx_t       lc_escalate_en_ext_i,
   output tlul_pkg::tl_h2d_t       ctn_tl_h2d_o,
   input  tlul_pkg::tl_d2h_t       ctn_tl_d2h_i,
+  input  logic [3:0] integrator_id_i,
   input  lc_ctrl_pkg::lc_tx_t       lc_check_byp_en_i,
   input  prim_ram_1p_pkg::ram_1p_cfg_t [SramCtrlRetAonNumRamInst-1:0] sram_ctrl_ret_aon_ram_1p_cfg_i,
   output prim_ram_1p_pkg::ram_1p_cfg_rsp_t [SramCtrlRetAonNumRamInst-1:0] sram_ctrl_ret_aon_ram_1p_cfg_rsp_o,
@@ -122,6 +123,7 @@ module top_mio #(
   output prim_ram_1p_pkg::ram_1p_cfg_rsp_t [SramCtrlMboxNumRamInst-1:0] sram_ctrl_mbox_ram_1p_cfg_rsp_o,
   output top_racl_pkg::racl_policy_vec_t       racl_policies_o,
   input  top_racl_pkg::racl_error_log_t [RaclCtrlNumExternalSubscribingIps-1:0] racl_error_i,
+  input  prim_mubi_pkg::mubi8_t       ac_range_check_overwrite_i,
 
   // Incoming interrupt of group mio_external
   input logic [8:0] incoming_interrupt_mio_external_i,
@@ -326,9 +328,6 @@ module top_mio #(
   assign rv_core_ibex_hart_id = '0;
 
 
-  // clk_ext_main_i_ext_rst_main_0
-  assign lpg_cg_en[0] = cg_en_ext_main_i;
-  assign lpg_rst_en[0] = rst_en_ext_rst_main_i;
 
   // Outgoing LPGs for alert group mio
   // clk_ext_io_div4_i_ext_rst_io_div4_0
@@ -402,8 +401,6 @@ module top_mio #(
       .lc_hw_debug_en_ext_i(lc_hw_debug_en_ext_i),
       .dma_tl_h2d_i(mio_soc_proxy_dma_tl_h2d),
       .dma_tl_d2h_o(mio_soc_proxy_dma_tl_d2h),
-      .misc_tl_h2d_i(tlul_pkg::TL_H2D_DEFAULT),
-      .misc_tl_d2h_o(),
       .muxed_tl_h2d_o(mio_soc_proxy_muxed_tl_h2d),
       .muxed_tl_d2h_i(mio_soc_proxy_muxed_tl_d2h),
       .ac_range_tl_h2d_i(ac_range_check_ctn_filtered_tl_h2d),
@@ -413,6 +410,7 @@ module top_mio #(
       .soc_lsio_trigger_i(soc_lsio_trigger_i),
       .dma_lsio_trigger_o(dma_lsio_trigger),
       .soc_intr_async_i('0),
+      .integrator_id_i(integrator_id_i),
       .mubi8_true_o(sram_ctrl_main_otp_en_sram_ifetch),
       .core_tl_i(mio_soc_proxy_core_tl_req),
       .core_tl_o(mio_soc_proxy_core_tl_rsp),
@@ -921,18 +919,18 @@ module top_mio #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(1'b0),
     .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK),
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[1:0])
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[26:25])
   ) u_ac_range_check (
 
       // Interrupt
       .intr_deny_cnt_reached_o (intr_ac_range_check_deny_cnt_reached),
-      // [0]: recov_ctrl_update_err
-      // [1]: fatal_fault
-      .alert_tx_o  ( alert_tx[1:0] ),
-      .alert_rx_i  ( alert_rx[1:0] ),
+      // External alert group "mio" [25]: recov_ctrl_update_err
+      // External alert group "mio" [26]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[26:25] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[26:25] ),
 
       // Inter-module signals
-      .range_check_overwrite_i(prim_mubi_pkg::MUBI8_DEFAULT),
+      .range_check_overwrite_i(ac_range_check_overwrite_i),
       .ctn_tl_h2d_i(mio_soc_proxy_muxed_tl_h2d),
       .ctn_tl_d2h_o(mio_soc_proxy_muxed_tl_d2h),
       .ctn_filtered_tl_h2d_o(ac_range_check_ctn_filtered_tl_h2d),
@@ -948,7 +946,7 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   rv_core_ibex #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[28:25]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[30:27]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexLfsrPerm),
     .RndCnstIbexKeyDefault(RndCnstRvCoreIbexIbexKeyDefault),
@@ -984,12 +982,12 @@ module top_mio #(
     .PipeLine(RvCoreIbexPipeLine),
     .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
   ) u_rv_core_ibex (
-      // External alert group "mio" [25]: fatal_sw_err
-      // External alert group "mio" [26]: recov_sw_err
-      // External alert group "mio" [27]: fatal_hw_err
-      // External alert group "mio" [28]: recov_hw_err
-      .alert_tx_o  ( outgoing_alert_mio_tx_o[28:25] ),
-      .alert_rx_i  ( outgoing_alert_mio_rx_i[28:25] ),
+      // External alert group "mio" [27]: fatal_sw_err
+      // External alert group "mio" [28]: recov_sw_err
+      // External alert group "mio" [29]: fatal_hw_err
+      // External alert group "mio" [30]: recov_hw_err
+      .alert_tx_o  ( outgoing_alert_mio_tx_o[30:27] ),
+      .alert_rx_i  ( outgoing_alert_mio_rx_i[30:27] ),
 
       // Inter-module signals
       .rst_cpu_n_o(),

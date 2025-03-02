@@ -853,6 +853,10 @@
           act: rcv
           width: 1
           inst_name: pwc_soc_proxy
+          default: ""
+          external: true
+          top_signame: ctn_misc_tl_h2d
+          conn_type: false
           index: -1
         }
         {
@@ -864,6 +868,10 @@
           act: req
           width: 1
           inst_name: pwc_soc_proxy
+          default: ""
+          external: true
+          top_signame: ctn_misc_tl_d2h
+          conn_type: false
           index: -1
         }
         {
@@ -988,6 +996,21 @@
           act: rcv
           width: 32
           inst_name: pwc_soc_proxy
+          index: -1
+        }
+        {
+          name: integrator_id
+          desc: Integrator ID signal used in BAT
+          struct: logic
+          type: uni
+          act: rcv
+          width: 4
+          inst_name: pwc_soc_proxy
+          default: ""
+          package: ""
+          external: true
+          top_signame: integrator_id
+          conn_type: false
           index: -1
         }
         {
@@ -4056,6 +4079,7 @@
         num_ranges: 32
       }
       attr: ipgen
+      outgoing_alert: pwc
       clock_connections:
       {
         clk_i: clk_ext_main_i
@@ -4073,6 +4097,10 @@
           act: rcv
           width: 1
           inst_name: ac_range_check
+          default: ""
+          external: true
+          top_signame: ac_range_check_overwrite
+          conn_type: false
           index: -1
         }
         {
@@ -5373,8 +5401,11 @@
       pwc_soc_proxy.lc_hw_debug_en_ext: lc_hw_debug_en_ext
       pwc_soc_proxy.lc_escalate_en_ext: lc_escalate_en_ext
       pwc_soc_proxy.soc_lsio_trigger: soc_lsio_trigger
+      pwc_soc_proxy.misc_tl_h2d: ctn_misc_tl_h2d
+      pwc_soc_proxy.misc_tl_d2h: ctn_misc_tl_d2h
       pwc_soc_proxy.ctn_tl_h2d: ctn_tl_h2d
       pwc_soc_proxy.ctn_tl_d2h: ctn_tl_d2h
+      pwc_soc_proxy.integrator_id: integrator_id
       rv_dm.lc_check_byp_en: lc_check_byp_en
       sram_ctrl_ret_aon.cfg: sram_ctrl_ret_aon_ram_1p_cfg
       sram_ctrl_ret_aon.cfg_rsp: sram_ctrl_ret_aon_ram_1p_cfg_rsp
@@ -5384,6 +5415,7 @@
       sram_ctrl_mbox.cfg_rsp: sram_ctrl_mbox_ram_1p_cfg_rsp
       racl_ctrl.racl_policies: racl_policies
       racl_ctrl.racl_error_external: racl_error
+      ac_range_check.range_check_overwrite: ac_range_check_overwrite
     }
   }
   xbar:
@@ -8562,29 +8594,7 @@
     ]
   }
   exported_rsts: {}
-  alert:
-  [
-    {
-      name: ac_range_check_recov_ctrl_update_err
-      width: 1
-      type: alert
-      async: "1"
-      module_name: ac_range_check
-      desc: ac_range_check recov_ctrl_update_err alert
-      lpg_name: clk_ext_main_i_ext_rst_main_0
-      lpg_idx: 0
-    }
-    {
-      name: ac_range_check_fatal_fault
-      width: 1
-      type: alert
-      async: "1"
-      module_name: ac_range_check
-      desc: ac_range_check fatal_fault alert
-      lpg_name: clk_ext_main_i_ext_rst_main_0
-      lpg_idx: 0
-    }
-  ]
+  alert: []
   outgoing_alert:
   {
     pwc:
@@ -8846,6 +8856,26 @@
         async: "1"
         module_name: racl_ctrl
         desc: racl_ctrl fatal_fault alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: ac_range_check_recov_ctrl_update_err
+        width: 1
+        type: alert
+        async: "1"
+        module_name: ac_range_check
+        desc: ac_range_check recov_ctrl_update_err alert
+        lpg_name: clk_ext_main_i_ext_rst_main_0
+        lpg_idx: 1
+      }
+      {
+        name: ac_range_check_fatal_fault
+        width: 1
+        type: alert
+        async: "1"
+        module_name: ac_range_check
+        desc: ac_range_check fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
         lpg_idx: 1
       }
@@ -10784,10 +10814,7 @@
       width: 1
     }
   ]
-  alert_module:
-  [
-    ac_range_check
-  ]
+  alert_module: []
   interrupt_module:
   [
     gpio
@@ -10826,24 +10853,11 @@
       mbx5
       mbx_pcie0
       racl_ctrl
+      ac_range_check
       rv_core_ibex
     ]
   }
-  alert_lpgs:
-  [
-    {
-      name: clk_ext_main_i_ext_rst_main_0
-      clock_group: null
-      clock_connection: clk_ext_main_i
-      unmanaged_clock: true
-      unmanaged_reset: true
-      reset_connection:
-      {
-        name: ext_rst_main
-        domain: "0"
-      }
-    }
-  ]
+  alert_lpgs: []
   outgoing_alert_lpgs:
   {
     pwc:
@@ -11140,6 +11154,10 @@
         act: rcv
         width: 1
         inst_name: pwc_soc_proxy
+        default: ""
+        external: true
+        top_signame: ctn_misc_tl_h2d
+        conn_type: false
         index: -1
       }
       {
@@ -11151,6 +11169,10 @@
         act: req
         width: 1
         inst_name: pwc_soc_proxy
+        default: ""
+        external: true
+        top_signame: ctn_misc_tl_d2h
+        conn_type: false
         index: -1
       }
       {
@@ -11275,6 +11297,21 @@
         act: rcv
         width: 32
         inst_name: pwc_soc_proxy
+        index: -1
+      }
+      {
+        name: integrator_id
+        desc: Integrator ID signal used in BAT
+        struct: logic
+        type: uni
+        act: rcv
+        width: 4
+        inst_name: pwc_soc_proxy
+        default: ""
+        package: ""
+        external: true
+        top_signame: integrator_id
+        conn_type: false
         index: -1
       }
       {
@@ -13075,6 +13112,10 @@
         act: rcv
         width: 1
         inst_name: ac_range_check
+        default: ""
+        external: true
+        top_signame: ac_range_check_overwrite
+        conn_type: false
         index: -1
       }
       {
@@ -14242,6 +14283,30 @@
       {
         package: tlul_pkg
         struct: tl_h2d
+        signame: ctn_misc_tl_h2d_i
+        width: 1
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: ctn_misc_tl_h2d
+      }
+      {
+        package: tlul_pkg
+        struct: tl_d2h
+        signame: ctn_misc_tl_d2h_o
+        width: 1
+        type: uni
+        default: ""
+        direction: out
+        conn_type: false
+        index: -1
+        netname: ctn_misc_tl_d2h
+      }
+      {
+        package: tlul_pkg
+        struct: tl_h2d
         signame: ctn_tl_h2d_o
         width: 1
         type: uni
@@ -14262,6 +14327,18 @@
         conn_type: false
         index: -1
         netname: ctn_tl_d2h
+      }
+      {
+        package: ""
+        struct: logic
+        signame: integrator_id_i
+        width: 4
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: integrator_id
       }
       {
         package: lc_ctrl_pkg
@@ -14440,6 +14517,18 @@
         conn_type: false
         index: -1
         netname: racl_error
+      }
+      {
+        package: prim_mubi_pkg
+        struct: mubi8
+        signame: ac_range_check_overwrite_i
+        width: 1
+        type: uni
+        default: ""
+        direction: in
+        conn_type: false
+        index: -1
+        netname: ac_range_check_overwrite
       }
     ]
     definitions:

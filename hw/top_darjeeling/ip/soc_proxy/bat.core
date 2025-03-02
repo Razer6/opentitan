@@ -2,19 +2,16 @@ CAPI=2:
 # Copyright lowRISC contributors (OpenTitan project).
 # Licensed under the Apache License, Version 2.0, see LICENSE for details.
 # SPDX-License-Identifier: Apache-2.0
-name: "lowrisc:systems:top_pwc_soc_proxy:0.1"
-description: "SoC Proxy"
+name: "lowrisc:systems:bat:0.1"
+description: "Base address translation"
 
 filesets:
   files_rtl:
     depend:
       - lowrisc:prim:assert
       - lowrisc:ip:tlul
-      - lowrisc:systems:bat
     files:
-      - rtl/pwc_soc_proxy_reg_pkg.sv
-      - rtl/pwc_soc_proxy_core_reg_top.sv
-      - rtl/pwc_soc_proxy.sv
+      - rtl/bat.sv
     file_type: systemVerilogSource
 
   files_verilator_waiver:
@@ -22,6 +19,7 @@ filesets:
       # common waivers
       - lowrisc:lint:common
       - lowrisc:lint:comportable
+    file_type: vlt
 
   files_ascentlint_waiver:
     depend:
@@ -29,7 +27,7 @@ filesets:
       - lowrisc:lint:common
       - lowrisc:lint:comportable
     files:
-      - lint/pwc_soc_proxy.waiver
+      - lint/soc_proxy.waiver
     file_type: waiver
 
 parameters:
@@ -44,7 +42,7 @@ targets:
       - tool_verilator  ? (files_verilator_waiver)
       - tool_ascentlint ? (files_ascentlint_waiver)
       - files_rtl
-    toplevel: pwc_soc_proxy
+    toplevel: bat
 
   lint:
     <<: *default_target

@@ -283,7 +283,7 @@ package top_mio_pkg;
 
   
   // Number of mio outgoing alerts
-  parameter int unsigned NOutgoingAlertsMio = 29;
+  parameter int unsigned NOutgoingAlertsMio = 31;
 
   // Number of LPGs for outgoing alert group mio
   parameter int unsigned NOutgoingLpgsMio = 2;
@@ -307,7 +307,8 @@ package top_mio_pkg;
     TopMioAlertPeripheralMbx5 = 14,
     TopMioAlertPeripheralMbxPcie0 = 15,
     TopMioAlertPeripheralRaclCtrl = 16,
-    TopMioAlertPeripheralRvCoreIbex = 17,
+    TopMioAlertPeripheralAcRangeCheck = 17,
+    TopMioAlertPeripheralRvCoreIbex = 18,
     TopMioOutgoingAlertMioPeripheralCount
   } outgoing_alert_mio_peripheral_e;
 
@@ -338,15 +339,19 @@ package top_mio_pkg;
     TopMioAlertIdMbxPcie0RecovFault = 22,
     TopMioAlertIdRaclCtrlRecovCtrlUpdateErr = 23,
     TopMioAlertIdRaclCtrlFatalFault = 24,
-    TopMioAlertIdRvCoreIbexFatalSwErr = 25,
-    TopMioAlertIdRvCoreIbexRecovSwErr = 26,
-    TopMioAlertIdRvCoreIbexFatalHwErr = 27,
-    TopMioAlertIdRvCoreIbexRecovHwErr = 28,
+    TopMioAlertIdAcRangeCheckRecovCtrlUpdateErr = 25,
+    TopMioAlertIdAcRangeCheckFatalFault = 26,
+    TopMioAlertIdRvCoreIbexFatalSwErr = 27,
+    TopMioAlertIdRvCoreIbexRecovSwErr = 28,
+    TopMioAlertIdRvCoreIbexFatalHwErr = 29,
+    TopMioAlertIdRvCoreIbexRecovHwErr = 30,
     TopMioOutgoingAlertMioIdCount
   } outgoing_alert_mio_id_e;
 
   // Enumeration of mio outgoing alerts AsyncOn configuration
   parameter logic [NOutgoingAlertsMio-1:0] AsyncOnOutgoingAlertMio = {
+    1'b1,
+    1'b1,
     1'b1,
     1'b1,
     1'b1,

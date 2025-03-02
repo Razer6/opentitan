@@ -114,8 +114,11 @@ module top_pwc #(
   input  lc_ctrl_pkg::lc_tx_t       lc_hw_debug_en_ext_i,
   input  lc_ctrl_pkg::lc_tx_t       lc_escalate_en_ext_i,
   input  logic [7:0] soc_lsio_trigger_i,
+  input  tlul_pkg::tl_h2d_t       ctn_misc_tl_h2d_i,
+  output tlul_pkg::tl_d2h_t       ctn_misc_tl_d2h_o,
   output tlul_pkg::tl_h2d_t       ctn_tl_h2d_o,
   input  tlul_pkg::tl_d2h_t       ctn_tl_d2h_i,
+  input  logic [3:0] integrator_id_i,
   input  lc_ctrl_pkg::lc_tx_t       lc_check_byp_en_i,
   input  prim_ram_1p_pkg::ram_1p_cfg_t [SramCtrlRetAonNumRamInst-1:0] sram_ctrl_ret_aon_ram_1p_cfg_i,
   output prim_ram_1p_pkg::ram_1p_cfg_rsp_t [SramCtrlRetAonNumRamInst-1:0] sram_ctrl_ret_aon_ram_1p_cfg_rsp_o,
@@ -125,6 +128,7 @@ module top_pwc #(
   output prim_ram_1p_pkg::ram_1p_cfg_rsp_t [SramCtrlMboxNumRamInst-1:0] sram_ctrl_mbox_ram_1p_cfg_rsp_o,
   output top_racl_pkg::racl_policy_vec_t       racl_policies_o,
   input  top_racl_pkg::racl_error_log_t [RaclCtrlNumExternalSubscribingIps-1:0] racl_error_i,
+  input  prim_mubi_pkg::mubi8_t       ac_range_check_overwrite_i,
 
   // Incoming interrupt of group pwc_external
   input logic [158:0] incoming_interrupt_pwc_external_i,
@@ -361,9 +365,6 @@ module top_pwc #(
   assign cio_gpio_gpio_en_d2p_o = cio_gpio_gpio_en_d2p;
 
 
-  // clk_ext_main_i_ext_rst_main_0
-  assign lpg_cg_en[0] = cg_en_ext_main_i;
-  assign lpg_rst_en[0] = rst_en_ext_rst_main_i;
 
   // Outgoing LPGs for alert group pwc
   // clk_ext_io_div4_i_ext_rst_io_div4_0
@@ -468,8 +469,8 @@ module top_pwc #(
       .lc_hw_debug_en_ext_i(lc_hw_debug_en_ext_i),
       .dma_tl_h2d_i(pwc_soc_proxy_dma_tl_h2d),
       .dma_tl_d2h_o(pwc_soc_proxy_dma_tl_d2h),
-      .misc_tl_h2d_i(tlul_pkg::TL_H2D_DEFAULT),
-      .misc_tl_d2h_o(),
+      .misc_tl_h2d_i(ctn_misc_tl_h2d_i),
+      .misc_tl_d2h_o(ctn_misc_tl_d2h_o),
       .muxed_tl_h2d_o(pwc_soc_proxy_muxed_tl_h2d),
       .muxed_tl_d2h_i(pwc_soc_proxy_muxed_tl_d2h),
       .ac_range_tl_h2d_i(ac_range_check_ctn_filtered_tl_h2d),
@@ -479,6 +480,7 @@ module top_pwc #(
       .soc_lsio_trigger_i(soc_lsio_trigger_i),
       .dma_lsio_trigger_o(dma_lsio_trigger),
       .soc_intr_async_i('0),
+      .integrator_id_i(integrator_id_i),
       .mubi8_true_o(sram_ctrl_main_otp_en_sram_ifetch),
       .core_tl_i(pwc_soc_proxy_core_tl_req),
       .core_tl_o(pwc_soc_proxy_core_tl_rsp),
@@ -987,18 +989,18 @@ module top_pwc #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(1'b0),
     .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK),
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[1:0])
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[27:26])
   ) u_ac_range_check (
 
       // Interrupt
       .intr_deny_cnt_reached_o (intr_ac_range_check_deny_cnt_reached),
-      // [0]: recov_ctrl_update_err
-      // [1]: fatal_fault
-      .alert_tx_o  ( alert_tx[1:0] ),
-      .alert_rx_i  ( alert_rx[1:0] ),
+      // External alert group "pwc" [26]: recov_ctrl_update_err
+      // External alert group "pwc" [27]: fatal_fault
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[27:26] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[27:26] ),
 
       // Inter-module signals
-      .range_check_overwrite_i(prim_mubi_pkg::MUBI8_DEFAULT),
+      .range_check_overwrite_i(ac_range_check_overwrite_i),
       .ctn_tl_h2d_i(pwc_soc_proxy_muxed_tl_h2d),
       .ctn_tl_d2h_o(pwc_soc_proxy_muxed_tl_d2h),
       .ctn_filtered_tl_h2d_o(ac_range_check_ctn_filtered_tl_h2d),
@@ -1014,7 +1016,7 @@ module top_pwc #(
       .rst_ni (rst_ext_rst_main_i)
   );
   rv_core_ibex #(
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[29:26]),
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[31:28]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexLfsrPerm),
     .RndCnstIbexKeyDefault(RndCnstRvCoreIbexIbexKeyDefault),
@@ -1050,12 +1052,12 @@ module top_pwc #(
     .PipeLine(RvCoreIbexPipeLine),
     .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
   ) u_rv_core_ibex (
-      // External alert group "pwc" [26]: fatal_sw_err
-      // External alert group "pwc" [27]: recov_sw_err
-      // External alert group "pwc" [28]: fatal_hw_err
-      // External alert group "pwc" [29]: recov_hw_err
-      .alert_tx_o  ( outgoing_alert_pwc_tx_o[29:26] ),
-      .alert_rx_i  ( outgoing_alert_pwc_rx_i[29:26] ),
+      // External alert group "pwc" [28]: fatal_sw_err
+      // External alert group "pwc" [29]: recov_sw_err
+      // External alert group "pwc" [30]: fatal_hw_err
+      // External alert group "pwc" [31]: recov_hw_err
+      .alert_tx_o  ( outgoing_alert_pwc_tx_o[31:28] ),
+      .alert_rx_i  ( outgoing_alert_pwc_rx_i[31:28] ),
 
       // Inter-module signals
       .rst_cpu_n_o(),

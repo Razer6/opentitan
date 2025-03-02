@@ -48,6 +48,9 @@ module pwc_soc_proxy
   input  logic [7:0] soc_lsio_trigger_i,
   output dma_pkg::lsio_trigger_t dma_lsio_trigger_o,
 
+  // Integrator bits used for custom BAT
+  input logic [3:0] integrator_id_i,
+
   input  logic [NumExternalIrqs-1:0] soc_intr_async_i,
 
   input  lc_ctrl_pkg::lc_tx_t       lc_hw_debug_en_ext_i,

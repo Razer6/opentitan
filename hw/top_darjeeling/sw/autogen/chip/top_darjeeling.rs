@@ -2159,118 +2159,126 @@ pub enum AlertId {
     IncomingMioRaclCtrlRecovCtrlUpdateErr = 126,
     /// incoming_mio_racl_ctrl_fatal_fault
     IncomingMioRaclCtrlFatalFault = 127,
+    /// incoming_mio_ac_range_check_recov_ctrl_update_err
+    IncomingMioAcRangeCheckRecovCtrlUpdateErr = 128,
+    /// incoming_mio_ac_range_check_fatal_fault
+    IncomingMioAcRangeCheckFatalFault = 129,
     /// incoming_mio_rv_core_ibex_fatal_sw_err
-    IncomingMioRvCoreIbexFatalSwErr = 128,
+    IncomingMioRvCoreIbexFatalSwErr = 130,
     /// incoming_mio_rv_core_ibex_recov_sw_err
-    IncomingMioRvCoreIbexRecovSwErr = 129,
+    IncomingMioRvCoreIbexRecovSwErr = 131,
     /// incoming_mio_rv_core_ibex_fatal_hw_err
-    IncomingMioRvCoreIbexFatalHwErr = 130,
+    IncomingMioRvCoreIbexFatalHwErr = 132,
     /// incoming_mio_rv_core_ibex_recov_hw_err
-    IncomingMioRvCoreIbexRecovHwErr = 131,
+    IncomingMioRvCoreIbexRecovHwErr = 133,
     /// incoming_pwc_gpio_fatal_fault
-    IncomingPwcGpioFatalFault = 132,
+    IncomingPwcGpioFatalFault = 134,
     /// incoming_pwc_rv_timer_fatal_fault
-    IncomingPwcRvTimerFatalFault = 133,
+    IncomingPwcRvTimerFatalFault = 135,
     /// incoming_pwc_aon_timer_aon_fatal_fault
-    IncomingPwcAonTimerAonFatalFault = 134,
+    IncomingPwcAonTimerAonFatalFault = 136,
     /// incoming_pwc_pwc_soc_proxy_fatal_alert_intg
-    IncomingPwcPwcSocProxyFatalAlertIntg = 135,
+    IncomingPwcPwcSocProxyFatalAlertIntg = 137,
     /// incoming_pwc_sram_ctrl_ret_aon_fatal_error
-    IncomingPwcSramCtrlRetAonFatalError = 136,
+    IncomingPwcSramCtrlRetAonFatalError = 138,
     /// incoming_pwc_rv_dm_fatal_fault
-    IncomingPwcRvDmFatalFault = 137,
+    IncomingPwcRvDmFatalFault = 139,
     /// incoming_pwc_rv_plic_pwc_fatal_fault
-    IncomingPwcRvPlicPwcFatalFault = 138,
+    IncomingPwcRvPlicPwcFatalFault = 140,
     /// incoming_pwc_sram_ctrl_main_fatal_error
-    IncomingPwcSramCtrlMainFatalError = 139,
+    IncomingPwcSramCtrlMainFatalError = 141,
     /// incoming_pwc_sram_ctrl_mbox_fatal_error
-    IncomingPwcSramCtrlMboxFatalError = 140,
+    IncomingPwcSramCtrlMboxFatalError = 142,
     /// incoming_pwc_dma_fatal_fault
-    IncomingPwcDmaFatalFault = 141,
+    IncomingPwcDmaFatalFault = 143,
     /// incoming_pwc_mbx0_fatal_fault
-    IncomingPwcMbx0FatalFault = 142,
+    IncomingPwcMbx0FatalFault = 144,
     /// incoming_pwc_mbx0_recov_fault
-    IncomingPwcMbx0RecovFault = 143,
+    IncomingPwcMbx0RecovFault = 145,
     /// incoming_pwc_mbx1_fatal_fault
-    IncomingPwcMbx1FatalFault = 144,
+    IncomingPwcMbx1FatalFault = 146,
     /// incoming_pwc_mbx1_recov_fault
-    IncomingPwcMbx1RecovFault = 145,
+    IncomingPwcMbx1RecovFault = 147,
     /// incoming_pwc_mbx2_fatal_fault
-    IncomingPwcMbx2FatalFault = 146,
+    IncomingPwcMbx2FatalFault = 148,
     /// incoming_pwc_mbx2_recov_fault
-    IncomingPwcMbx2RecovFault = 147,
+    IncomingPwcMbx2RecovFault = 149,
     /// incoming_pwc_mbx3_fatal_fault
-    IncomingPwcMbx3FatalFault = 148,
+    IncomingPwcMbx3FatalFault = 150,
     /// incoming_pwc_mbx3_recov_fault
-    IncomingPwcMbx3RecovFault = 149,
+    IncomingPwcMbx3RecovFault = 151,
     /// incoming_pwc_mbx4_fatal_fault
-    IncomingPwcMbx4FatalFault = 150,
+    IncomingPwcMbx4FatalFault = 152,
     /// incoming_pwc_mbx4_recov_fault
-    IncomingPwcMbx4RecovFault = 151,
+    IncomingPwcMbx4RecovFault = 153,
     /// incoming_pwc_mbx5_fatal_fault
-    IncomingPwcMbx5FatalFault = 152,
+    IncomingPwcMbx5FatalFault = 154,
     /// incoming_pwc_mbx5_recov_fault
-    IncomingPwcMbx5RecovFault = 153,
+    IncomingPwcMbx5RecovFault = 155,
     /// incoming_pwc_mbx_pcie0_fatal_fault
-    IncomingPwcMbxPcie0FatalFault = 154,
+    IncomingPwcMbxPcie0FatalFault = 156,
     /// incoming_pwc_mbx_pcie0_recov_fault
-    IncomingPwcMbxPcie0RecovFault = 155,
+    IncomingPwcMbxPcie0RecovFault = 157,
     /// incoming_pwc_racl_ctrl_recov_ctrl_update_err
-    IncomingPwcRaclCtrlRecovCtrlUpdateErr = 156,
+    IncomingPwcRaclCtrlRecovCtrlUpdateErr = 158,
     /// incoming_pwc_racl_ctrl_fatal_fault
-    IncomingPwcRaclCtrlFatalFault = 157,
+    IncomingPwcRaclCtrlFatalFault = 159,
+    /// incoming_pwc_ac_range_check_recov_ctrl_update_err
+    IncomingPwcAcRangeCheckRecovCtrlUpdateErr = 160,
+    /// incoming_pwc_ac_range_check_fatal_fault
+    IncomingPwcAcRangeCheckFatalFault = 161,
     /// incoming_pwc_rv_core_ibex_fatal_sw_err
-    IncomingPwcRvCoreIbexFatalSwErr = 158,
+    IncomingPwcRvCoreIbexFatalSwErr = 162,
     /// incoming_pwc_rv_core_ibex_recov_sw_err
-    IncomingPwcRvCoreIbexRecovSwErr = 159,
+    IncomingPwcRvCoreIbexRecovSwErr = 163,
     /// incoming_pwc_rv_core_ibex_fatal_hw_err
-    IncomingPwcRvCoreIbexFatalHwErr = 160,
+    IncomingPwcRvCoreIbexFatalHwErr = 164,
     /// incoming_pwc_rv_core_ibex_recov_hw_err
-    IncomingPwcRvCoreIbexRecovHwErr = 161,
+    IncomingPwcRvCoreIbexRecovHwErr = 165,
     /// incoming_mio_extra_alerts_integ_error
-    IncomingMioExtraAlertsIntegError = 162,
+    IncomingMioExtraAlertsIntegError = 166,
     /// incoming_pwc_extra_alerts_integ_error
-    IncomingPwcExtraAlertsIntegError = 163,
+    IncomingPwcExtraAlertsIntegError = 167,
     /// incoming_rot_extra_alerts_ams_ip_wrapper_integ_error
-    IncomingRotExtraAlertsAmsIpWrapperIntegError = 164,
+    IncomingRotExtraAlertsAmsIpWrapperIntegError = 168,
     /// incoming_rot_extra_alerts_ams_ip_wrapper_csrng_recov
-    IncomingRotExtraAlertsAmsIpWrapperCsrngRecov = 165,
+    IncomingRotExtraAlertsAmsIpWrapperCsrngRecov = 169,
     /// incoming_rot_extra_alerts_ssram_lo_integ_err
-    IncomingRotExtraAlertsSsramLoIntegErr = 166,
+    IncomingRotExtraAlertsSsramLoIntegErr = 170,
     /// incoming_rot_extra_alerts_ssram_hi_integ_err
-    IncomingRotExtraAlertsSsramHiIntegErr = 167,
+    IncomingRotExtraAlertsSsramHiIntegErr = 171,
     /// incoming_rot_extra_alerts_lsio_group_esc_err_0
-    IncomingRotExtraAlertsLsioGroupEscErr0 = 168,
+    IncomingRotExtraAlertsLsioGroupEscErr0 = 172,
     /// incoming_rot_extra_alerts_lsio_group_esc_err_1
-    IncomingRotExtraAlertsLsioGroupEscErr1 = 169,
+    IncomingRotExtraAlertsLsioGroupEscErr1 = 173,
     /// incoming_rot_extra_alerts_lsio_group_esc_err_2
-    IncomingRotExtraAlertsLsioGroupEscErr2 = 170,
+    IncomingRotExtraAlertsLsioGroupEscErr2 = 174,
     /// incoming_rot_extra_alerts_lsio_group_esc_err_3
-    IncomingRotExtraAlertsLsioGroupEscErr3 = 171,
+    IncomingRotExtraAlertsLsioGroupEscErr3 = 175,
     /// incoming_rot_extra_alerts_ns_group_integ_error
-    IncomingRotExtraAlertsNsGroupIntegError = 172,
+    IncomingRotExtraAlertsNsGroupIntegError = 176,
     /// incoming_rot_extra_alerts_lio_group_v_integ_error
-    IncomingRotExtraAlertsLioGroupVIntegError = 173,
+    IncomingRotExtraAlertsLioGroupVIntegError = 177,
     /// incoming_rot_extra_alerts_lio_group_p_integ_error
-    IncomingRotExtraAlertsLioGroupPIntegError = 174,
+    IncomingRotExtraAlertsLioGroupPIntegError = 178,
     /// incoming_rot_extra_alerts_ns_efuse_integ_error
-    IncomingRotExtraAlertsNsEfuseIntegError = 175,
+    IncomingRotExtraAlertsNsEfuseIntegError = 179,
     /// incoming_rot_extra_alerts_ns_efuse_prim_otp_fatal_err
-    IncomingRotExtraAlertsNsEfusePrimOtpFatalErr = 176,
+    IncomingRotExtraAlertsNsEfusePrimOtpFatalErr = 180,
     /// incoming_rot_extra_alerts_ns_efuse_prim_otp_recov_err
-    IncomingRotExtraAlertsNsEfusePrimOtpRecovErr = 177,
+    IncomingRotExtraAlertsNsEfusePrimOtpRecovErr = 181,
     /// incoming_rot_extra_alerts_rc_widget_integ_error
-    IncomingRotExtraAlertsRcWidgetIntegError = 178,
+    IncomingRotExtraAlertsRcWidgetIntegError = 182,
     /// incoming_rot_extra_alerts_rot_hdr_integ_error
-    IncomingRotExtraAlertsRotHdrIntegError = 179,
+    IncomingRotExtraAlertsRotHdrIntegError = 183,
     /// incoming_rot_extra_alerts_rot_pcie_adapter_integ_error
-    IncomingRotExtraAlertsRotPcieAdapterIntegError = 180,
+    IncomingRotExtraAlertsRotPcieAdapterIntegError = 184,
     /// incoming_rot_extra_alerts_ras_ctl_reset_alert
-    IncomingRotExtraAlertsRasCtlResetAlert = 181,
+    IncomingRotExtraAlertsRasCtlResetAlert = 185,
     /// incoming_rot_extra_alerts_scsif_regs_alert_trigger
-    IncomingRotExtraAlertsScsifRegsAlertTrigger = 182,
+    IncomingRotExtraAlertsScsifRegsAlertTrigger = 186,
     /// incoming_rot_extra_alerts_scs_rai_alert_trigger
-    IncomingRotExtraAlertsScsRaiAlertTrigger = 183,
+    IncomingRotExtraAlertsScsRaiAlertTrigger = 187,
 }
 
 impl TryFrom<u32> for AlertId {
@@ -2405,62 +2413,66 @@ impl TryFrom<u32> for AlertId {
             125 => Ok(Self::IncomingMioMbxPcie0RecovFault),
             126 => Ok(Self::IncomingMioRaclCtrlRecovCtrlUpdateErr),
             127 => Ok(Self::IncomingMioRaclCtrlFatalFault),
-            128 => Ok(Self::IncomingMioRvCoreIbexFatalSwErr),
-            129 => Ok(Self::IncomingMioRvCoreIbexRecovSwErr),
-            130 => Ok(Self::IncomingMioRvCoreIbexFatalHwErr),
-            131 => Ok(Self::IncomingMioRvCoreIbexRecovHwErr),
-            132 => Ok(Self::IncomingPwcGpioFatalFault),
-            133 => Ok(Self::IncomingPwcRvTimerFatalFault),
-            134 => Ok(Self::IncomingPwcAonTimerAonFatalFault),
-            135 => Ok(Self::IncomingPwcPwcSocProxyFatalAlertIntg),
-            136 => Ok(Self::IncomingPwcSramCtrlRetAonFatalError),
-            137 => Ok(Self::IncomingPwcRvDmFatalFault),
-            138 => Ok(Self::IncomingPwcRvPlicPwcFatalFault),
-            139 => Ok(Self::IncomingPwcSramCtrlMainFatalError),
-            140 => Ok(Self::IncomingPwcSramCtrlMboxFatalError),
-            141 => Ok(Self::IncomingPwcDmaFatalFault),
-            142 => Ok(Self::IncomingPwcMbx0FatalFault),
-            143 => Ok(Self::IncomingPwcMbx0RecovFault),
-            144 => Ok(Self::IncomingPwcMbx1FatalFault),
-            145 => Ok(Self::IncomingPwcMbx1RecovFault),
-            146 => Ok(Self::IncomingPwcMbx2FatalFault),
-            147 => Ok(Self::IncomingPwcMbx2RecovFault),
-            148 => Ok(Self::IncomingPwcMbx3FatalFault),
-            149 => Ok(Self::IncomingPwcMbx3RecovFault),
-            150 => Ok(Self::IncomingPwcMbx4FatalFault),
-            151 => Ok(Self::IncomingPwcMbx4RecovFault),
-            152 => Ok(Self::IncomingPwcMbx5FatalFault),
-            153 => Ok(Self::IncomingPwcMbx5RecovFault),
-            154 => Ok(Self::IncomingPwcMbxPcie0FatalFault),
-            155 => Ok(Self::IncomingPwcMbxPcie0RecovFault),
-            156 => Ok(Self::IncomingPwcRaclCtrlRecovCtrlUpdateErr),
-            157 => Ok(Self::IncomingPwcRaclCtrlFatalFault),
-            158 => Ok(Self::IncomingPwcRvCoreIbexFatalSwErr),
-            159 => Ok(Self::IncomingPwcRvCoreIbexRecovSwErr),
-            160 => Ok(Self::IncomingPwcRvCoreIbexFatalHwErr),
-            161 => Ok(Self::IncomingPwcRvCoreIbexRecovHwErr),
-            162 => Ok(Self::IncomingMioExtraAlertsIntegError),
-            163 => Ok(Self::IncomingPwcExtraAlertsIntegError),
-            164 => Ok(Self::IncomingRotExtraAlertsAmsIpWrapperIntegError),
-            165 => Ok(Self::IncomingRotExtraAlertsAmsIpWrapperCsrngRecov),
-            166 => Ok(Self::IncomingRotExtraAlertsSsramLoIntegErr),
-            167 => Ok(Self::IncomingRotExtraAlertsSsramHiIntegErr),
-            168 => Ok(Self::IncomingRotExtraAlertsLsioGroupEscErr0),
-            169 => Ok(Self::IncomingRotExtraAlertsLsioGroupEscErr1),
-            170 => Ok(Self::IncomingRotExtraAlertsLsioGroupEscErr2),
-            171 => Ok(Self::IncomingRotExtraAlertsLsioGroupEscErr3),
-            172 => Ok(Self::IncomingRotExtraAlertsNsGroupIntegError),
-            173 => Ok(Self::IncomingRotExtraAlertsLioGroupVIntegError),
-            174 => Ok(Self::IncomingRotExtraAlertsLioGroupPIntegError),
-            175 => Ok(Self::IncomingRotExtraAlertsNsEfuseIntegError),
-            176 => Ok(Self::IncomingRotExtraAlertsNsEfusePrimOtpFatalErr),
-            177 => Ok(Self::IncomingRotExtraAlertsNsEfusePrimOtpRecovErr),
-            178 => Ok(Self::IncomingRotExtraAlertsRcWidgetIntegError),
-            179 => Ok(Self::IncomingRotExtraAlertsRotHdrIntegError),
-            180 => Ok(Self::IncomingRotExtraAlertsRotPcieAdapterIntegError),
-            181 => Ok(Self::IncomingRotExtraAlertsRasCtlResetAlert),
-            182 => Ok(Self::IncomingRotExtraAlertsScsifRegsAlertTrigger),
-            183 => Ok(Self::IncomingRotExtraAlertsScsRaiAlertTrigger),
+            128 => Ok(Self::IncomingMioAcRangeCheckRecovCtrlUpdateErr),
+            129 => Ok(Self::IncomingMioAcRangeCheckFatalFault),
+            130 => Ok(Self::IncomingMioRvCoreIbexFatalSwErr),
+            131 => Ok(Self::IncomingMioRvCoreIbexRecovSwErr),
+            132 => Ok(Self::IncomingMioRvCoreIbexFatalHwErr),
+            133 => Ok(Self::IncomingMioRvCoreIbexRecovHwErr),
+            134 => Ok(Self::IncomingPwcGpioFatalFault),
+            135 => Ok(Self::IncomingPwcRvTimerFatalFault),
+            136 => Ok(Self::IncomingPwcAonTimerAonFatalFault),
+            137 => Ok(Self::IncomingPwcPwcSocProxyFatalAlertIntg),
+            138 => Ok(Self::IncomingPwcSramCtrlRetAonFatalError),
+            139 => Ok(Self::IncomingPwcRvDmFatalFault),
+            140 => Ok(Self::IncomingPwcRvPlicPwcFatalFault),
+            141 => Ok(Self::IncomingPwcSramCtrlMainFatalError),
+            142 => Ok(Self::IncomingPwcSramCtrlMboxFatalError),
+            143 => Ok(Self::IncomingPwcDmaFatalFault),
+            144 => Ok(Self::IncomingPwcMbx0FatalFault),
+            145 => Ok(Self::IncomingPwcMbx0RecovFault),
+            146 => Ok(Self::IncomingPwcMbx1FatalFault),
+            147 => Ok(Self::IncomingPwcMbx1RecovFault),
+            148 => Ok(Self::IncomingPwcMbx2FatalFault),
+            149 => Ok(Self::IncomingPwcMbx2RecovFault),
+            150 => Ok(Self::IncomingPwcMbx3FatalFault),
+            151 => Ok(Self::IncomingPwcMbx3RecovFault),
+            152 => Ok(Self::IncomingPwcMbx4FatalFault),
+            153 => Ok(Self::IncomingPwcMbx4RecovFault),
+            154 => Ok(Self::IncomingPwcMbx5FatalFault),
+            155 => Ok(Self::IncomingPwcMbx5RecovFault),
+            156 => Ok(Self::IncomingPwcMbxPcie0FatalFault),
+            157 => Ok(Self::IncomingPwcMbxPcie0RecovFault),
+            158 => Ok(Self::IncomingPwcRaclCtrlRecovCtrlUpdateErr),
+            159 => Ok(Self::IncomingPwcRaclCtrlFatalFault),
+            160 => Ok(Self::IncomingPwcAcRangeCheckRecovCtrlUpdateErr),
+            161 => Ok(Self::IncomingPwcAcRangeCheckFatalFault),
+            162 => Ok(Self::IncomingPwcRvCoreIbexFatalSwErr),
+            163 => Ok(Self::IncomingPwcRvCoreIbexRecovSwErr),
+            164 => Ok(Self::IncomingPwcRvCoreIbexFatalHwErr),
+            165 => Ok(Self::IncomingPwcRvCoreIbexRecovHwErr),
+            166 => Ok(Self::IncomingMioExtraAlertsIntegError),
+            167 => Ok(Self::IncomingPwcExtraAlertsIntegError),
+            168 => Ok(Self::IncomingRotExtraAlertsAmsIpWrapperIntegError),
+            169 => Ok(Self::IncomingRotExtraAlertsAmsIpWrapperCsrngRecov),
+            170 => Ok(Self::IncomingRotExtraAlertsSsramLoIntegErr),
+            171 => Ok(Self::IncomingRotExtraAlertsSsramHiIntegErr),
+            172 => Ok(Self::IncomingRotExtraAlertsLsioGroupEscErr0),
+            173 => Ok(Self::IncomingRotExtraAlertsLsioGroupEscErr1),
+            174 => Ok(Self::IncomingRotExtraAlertsLsioGroupEscErr2),
+            175 => Ok(Self::IncomingRotExtraAlertsLsioGroupEscErr3),
+            176 => Ok(Self::IncomingRotExtraAlertsNsGroupIntegError),
+            177 => Ok(Self::IncomingRotExtraAlertsLioGroupVIntegError),
+            178 => Ok(Self::IncomingRotExtraAlertsLioGroupPIntegError),
+            179 => Ok(Self::IncomingRotExtraAlertsNsEfuseIntegError),
+            180 => Ok(Self::IncomingRotExtraAlertsNsEfusePrimOtpFatalErr),
+            181 => Ok(Self::IncomingRotExtraAlertsNsEfusePrimOtpRecovErr),
+            182 => Ok(Self::IncomingRotExtraAlertsRcWidgetIntegError),
+            183 => Ok(Self::IncomingRotExtraAlertsRotHdrIntegError),
+            184 => Ok(Self::IncomingRotExtraAlertsRotPcieAdapterIntegError),
+            185 => Ok(Self::IncomingRotExtraAlertsRasCtlResetAlert),
+            186 => Ok(Self::IncomingRotExtraAlertsScsifRegsAlertTrigger),
+            187 => Ok(Self::IncomingRotExtraAlertsScsRaiAlertTrigger),
             _ => Err(val),
         }
     }
@@ -2470,7 +2482,7 @@ impl TryFrom<u32> for AlertId {
 ///
 /// This array is a mapping from `AlertId` to
 /// `AlertPeripheral`.
-pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 184] = [
+pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 188] = [
     // Uart0FatalFault -> AlertPeripheral::Uart0
     AlertPeripheral::Uart0,
     // GpioFatalFault -> AlertPeripheral::Gpio
@@ -2727,6 +2739,10 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 184] = [
     AlertPeripheral::Incoming,
     // IncomingMioRaclCtrlFatalFault -> AlertPeripheral::Incoming
     AlertPeripheral::Incoming,
+    // IncomingMioAcRangeCheckRecovCtrlUpdateErr -> AlertPeripheral::Incoming
+    AlertPeripheral::Incoming,
+    // IncomingMioAcRangeCheckFatalFault -> AlertPeripheral::Incoming
+    AlertPeripheral::Incoming,
     // IncomingMioRvCoreIbexFatalSwErr -> AlertPeripheral::Incoming
     AlertPeripheral::Incoming,
     // IncomingMioRvCoreIbexRecovSwErr -> AlertPeripheral::Incoming
@@ -2786,6 +2802,10 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 184] = [
     // IncomingPwcRaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::Incoming
     AlertPeripheral::Incoming,
     // IncomingPwcRaclCtrlFatalFault -> AlertPeripheral::Incoming
+    AlertPeripheral::Incoming,
+    // IncomingPwcAcRangeCheckRecovCtrlUpdateErr -> AlertPeripheral::Incoming
+    AlertPeripheral::Incoming,
+    // IncomingPwcAcRangeCheckFatalFault -> AlertPeripheral::Incoming
     AlertPeripheral::Incoming,
     // IncomingPwcRvCoreIbexFatalSwErr -> AlertPeripheral::Incoming
     AlertPeripheral::Incoming,

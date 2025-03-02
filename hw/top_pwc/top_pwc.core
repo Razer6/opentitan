@@ -24,6 +24,7 @@ filesets:
       - lowrisc:ip:lc_ctrl_pkg
       - lowrisc:ip:dma
       - lowrisc:ip:mbx
+      - lowrisc:opentitan:top_pwc_ac_range_check_pwc
       - lowrisc:top_pwc:xbar_pwc_main
       - lowrisc:top_pwc:xbar_pwc_mbx
       - lowrisc:top_pwc:xbar_pwc_peri

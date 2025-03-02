@@ -10,6 +10,7 @@ filesets:
     depend:
       - lowrisc:prim:assert
       - lowrisc:ip:tlul
+      - lowrisc:systems:bat
     files:
       - rtl/mio_soc_proxy_reg_pkg.sv
       - rtl/mio_soc_proxy_core_reg_top.sv

@@ -115,20 +115,6 @@
     { struct:  "tl_h2d"
       package: "tlul_pkg"
       type:    "uni"
-      name:    "misc_tl_h2d"
-      act:     "rcv"
-      desc:    "TL-UL host port for the MISC to egress into CTN (request part), synchronous"
-    }
-    { struct:  "tl_d2h"
-      package: "tlul_pkg"
-      type:    "uni"
-      name:    "misc_tl_d2h"
-      act:     "req"
-      desc:    "TL-UL host port for the MISC to egress into CTN (response part), synchronous"
-    }
-    { struct:  "tl_h2d"
-      package: "tlul_pkg"
-      type:    "uni"
       name:    "muxed_tl_h2d"
       act:     "req"
       desc:    "Muxed TL-UL host port to go into AC ranges (request part), synchronous"
@@ -189,6 +175,13 @@
       width:   32 // keep equal to `NumExternalIrqs`
       desc:    "Interrupt request from SoC, asynchronous, level-encoded"
     },
+    { struct:  "logic"
+      width:   4
+      type:    "uni"
+      name:    "integrator_id"
+      act:     "rcv"
+      desc:    "Integrator ID signal used in BAT"
+    }
     { struct:  "mubi8",
       type:    "uni",
       name:    "mubi8_true",

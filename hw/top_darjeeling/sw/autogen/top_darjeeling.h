@@ -1462,63 +1462,67 @@ typedef enum top_darjeeling_alert_id {
   kTopDarjeelingAlertIdIncomingMioMbxPcie0RecovFault = 125, /**< incoming_mio_mbx_pcie0_recov_fault */
   kTopDarjeelingAlertIdIncomingMioRaclCtrlRecovCtrlUpdateErr = 126, /**< incoming_mio_racl_ctrl_recov_ctrl_update_err */
   kTopDarjeelingAlertIdIncomingMioRaclCtrlFatalFault = 127, /**< incoming_mio_racl_ctrl_fatal_fault */
-  kTopDarjeelingAlertIdIncomingMioRvCoreIbexFatalSwErr = 128, /**< incoming_mio_rv_core_ibex_fatal_sw_err */
-  kTopDarjeelingAlertIdIncomingMioRvCoreIbexRecovSwErr = 129, /**< incoming_mio_rv_core_ibex_recov_sw_err */
-  kTopDarjeelingAlertIdIncomingMioRvCoreIbexFatalHwErr = 130, /**< incoming_mio_rv_core_ibex_fatal_hw_err */
-  kTopDarjeelingAlertIdIncomingMioRvCoreIbexRecovHwErr = 131, /**< incoming_mio_rv_core_ibex_recov_hw_err */
-  kTopDarjeelingAlertIdIncomingPwcGpioFatalFault = 132, /**< incoming_pwc_gpio_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcRvTimerFatalFault = 133, /**< incoming_pwc_rv_timer_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcAonTimerAonFatalFault = 134, /**< incoming_pwc_aon_timer_aon_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcPwcSocProxyFatalAlertIntg = 135, /**< incoming_pwc_pwc_soc_proxy_fatal_alert_intg */
-  kTopDarjeelingAlertIdIncomingPwcSramCtrlRetAonFatalError = 136, /**< incoming_pwc_sram_ctrl_ret_aon_fatal_error */
-  kTopDarjeelingAlertIdIncomingPwcRvDmFatalFault = 137, /**< incoming_pwc_rv_dm_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcRvPlicPwcFatalFault = 138, /**< incoming_pwc_rv_plic_pwc_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcSramCtrlMainFatalError = 139, /**< incoming_pwc_sram_ctrl_main_fatal_error */
-  kTopDarjeelingAlertIdIncomingPwcSramCtrlMboxFatalError = 140, /**< incoming_pwc_sram_ctrl_mbox_fatal_error */
-  kTopDarjeelingAlertIdIncomingPwcDmaFatalFault = 141, /**< incoming_pwc_dma_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbx0FatalFault = 142, /**< incoming_pwc_mbx0_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbx0RecovFault = 143, /**< incoming_pwc_mbx0_recov_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbx1FatalFault = 144, /**< incoming_pwc_mbx1_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbx1RecovFault = 145, /**< incoming_pwc_mbx1_recov_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbx2FatalFault = 146, /**< incoming_pwc_mbx2_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbx2RecovFault = 147, /**< incoming_pwc_mbx2_recov_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbx3FatalFault = 148, /**< incoming_pwc_mbx3_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbx3RecovFault = 149, /**< incoming_pwc_mbx3_recov_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbx4FatalFault = 150, /**< incoming_pwc_mbx4_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbx4RecovFault = 151, /**< incoming_pwc_mbx4_recov_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbx5FatalFault = 152, /**< incoming_pwc_mbx5_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbx5RecovFault = 153, /**< incoming_pwc_mbx5_recov_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbxPcie0FatalFault = 154, /**< incoming_pwc_mbx_pcie0_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcMbxPcie0RecovFault = 155, /**< incoming_pwc_mbx_pcie0_recov_fault */
-  kTopDarjeelingAlertIdIncomingPwcRaclCtrlRecovCtrlUpdateErr = 156, /**< incoming_pwc_racl_ctrl_recov_ctrl_update_err */
-  kTopDarjeelingAlertIdIncomingPwcRaclCtrlFatalFault = 157, /**< incoming_pwc_racl_ctrl_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcRvCoreIbexFatalSwErr = 158, /**< incoming_pwc_rv_core_ibex_fatal_sw_err */
-  kTopDarjeelingAlertIdIncomingPwcRvCoreIbexRecovSwErr = 159, /**< incoming_pwc_rv_core_ibex_recov_sw_err */
-  kTopDarjeelingAlertIdIncomingPwcRvCoreIbexFatalHwErr = 160, /**< incoming_pwc_rv_core_ibex_fatal_hw_err */
-  kTopDarjeelingAlertIdIncomingPwcRvCoreIbexRecovHwErr = 161, /**< incoming_pwc_rv_core_ibex_recov_hw_err */
-  kTopDarjeelingAlertIdIncomingMioExtraAlertsIntegError = 162, /**< incoming_mio_extra_alerts_integ_error */
-  kTopDarjeelingAlertIdIncomingPwcExtraAlertsIntegError = 163, /**< incoming_pwc_extra_alerts_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsAmsIpWrapperIntegError = 164, /**< incoming_rot_extra_alerts_ams_ip_wrapper_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsAmsIpWrapperCsrngRecov = 165, /**< incoming_rot_extra_alerts_ams_ip_wrapper_csrng_recov */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsSsramLoIntegErr = 166, /**< incoming_rot_extra_alerts_ssram_lo_integ_err */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsSsramHiIntegErr = 167, /**< incoming_rot_extra_alerts_ssram_hi_integ_err */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr0 = 168, /**< incoming_rot_extra_alerts_lsio_group_esc_err_0 */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr1 = 169, /**< incoming_rot_extra_alerts_lsio_group_esc_err_1 */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr2 = 170, /**< incoming_rot_extra_alerts_lsio_group_esc_err_2 */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr3 = 171, /**< incoming_rot_extra_alerts_lsio_group_esc_err_3 */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsNsGroupIntegError = 172, /**< incoming_rot_extra_alerts_ns_group_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLioGroupVIntegError = 173, /**< incoming_rot_extra_alerts_lio_group_v_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLioGroupPIntegError = 174, /**< incoming_rot_extra_alerts_lio_group_p_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsNsEfuseIntegError = 175, /**< incoming_rot_extra_alerts_ns_efuse_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsNsEfusePrimOtpFatalErr = 176, /**< incoming_rot_extra_alerts_ns_efuse_prim_otp_fatal_err */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsNsEfusePrimOtpRecovErr = 177, /**< incoming_rot_extra_alerts_ns_efuse_prim_otp_recov_err */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsRcWidgetIntegError = 178, /**< incoming_rot_extra_alerts_rc_widget_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsRotHdrIntegError = 179, /**< incoming_rot_extra_alerts_rot_hdr_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsRotPcieAdapterIntegError = 180, /**< incoming_rot_extra_alerts_rot_pcie_adapter_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsRasCtlResetAlert = 181, /**< incoming_rot_extra_alerts_ras_ctl_reset_alert */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsScsifRegsAlertTrigger = 182, /**< incoming_rot_extra_alerts_scsif_regs_alert_trigger */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsScsRaiAlertTrigger = 183, /**< incoming_rot_extra_alerts_scs_rai_alert_trigger */
-  kTopDarjeelingAlertIdLast = 183, /**< \internal The Last Valid Alert ID. */
+  kTopDarjeelingAlertIdIncomingMioAcRangeCheckRecovCtrlUpdateErr = 128, /**< incoming_mio_ac_range_check_recov_ctrl_update_err */
+  kTopDarjeelingAlertIdIncomingMioAcRangeCheckFatalFault = 129, /**< incoming_mio_ac_range_check_fatal_fault */
+  kTopDarjeelingAlertIdIncomingMioRvCoreIbexFatalSwErr = 130, /**< incoming_mio_rv_core_ibex_fatal_sw_err */
+  kTopDarjeelingAlertIdIncomingMioRvCoreIbexRecovSwErr = 131, /**< incoming_mio_rv_core_ibex_recov_sw_err */
+  kTopDarjeelingAlertIdIncomingMioRvCoreIbexFatalHwErr = 132, /**< incoming_mio_rv_core_ibex_fatal_hw_err */
+  kTopDarjeelingAlertIdIncomingMioRvCoreIbexRecovHwErr = 133, /**< incoming_mio_rv_core_ibex_recov_hw_err */
+  kTopDarjeelingAlertIdIncomingPwcGpioFatalFault = 134, /**< incoming_pwc_gpio_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcRvTimerFatalFault = 135, /**< incoming_pwc_rv_timer_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcAonTimerAonFatalFault = 136, /**< incoming_pwc_aon_timer_aon_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcPwcSocProxyFatalAlertIntg = 137, /**< incoming_pwc_pwc_soc_proxy_fatal_alert_intg */
+  kTopDarjeelingAlertIdIncomingPwcSramCtrlRetAonFatalError = 138, /**< incoming_pwc_sram_ctrl_ret_aon_fatal_error */
+  kTopDarjeelingAlertIdIncomingPwcRvDmFatalFault = 139, /**< incoming_pwc_rv_dm_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcRvPlicPwcFatalFault = 140, /**< incoming_pwc_rv_plic_pwc_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcSramCtrlMainFatalError = 141, /**< incoming_pwc_sram_ctrl_main_fatal_error */
+  kTopDarjeelingAlertIdIncomingPwcSramCtrlMboxFatalError = 142, /**< incoming_pwc_sram_ctrl_mbox_fatal_error */
+  kTopDarjeelingAlertIdIncomingPwcDmaFatalFault = 143, /**< incoming_pwc_dma_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbx0FatalFault = 144, /**< incoming_pwc_mbx0_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbx0RecovFault = 145, /**< incoming_pwc_mbx0_recov_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbx1FatalFault = 146, /**< incoming_pwc_mbx1_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbx1RecovFault = 147, /**< incoming_pwc_mbx1_recov_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbx2FatalFault = 148, /**< incoming_pwc_mbx2_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbx2RecovFault = 149, /**< incoming_pwc_mbx2_recov_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbx3FatalFault = 150, /**< incoming_pwc_mbx3_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbx3RecovFault = 151, /**< incoming_pwc_mbx3_recov_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbx4FatalFault = 152, /**< incoming_pwc_mbx4_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbx4RecovFault = 153, /**< incoming_pwc_mbx4_recov_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbx5FatalFault = 154, /**< incoming_pwc_mbx5_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbx5RecovFault = 155, /**< incoming_pwc_mbx5_recov_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbxPcie0FatalFault = 156, /**< incoming_pwc_mbx_pcie0_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcMbxPcie0RecovFault = 157, /**< incoming_pwc_mbx_pcie0_recov_fault */
+  kTopDarjeelingAlertIdIncomingPwcRaclCtrlRecovCtrlUpdateErr = 158, /**< incoming_pwc_racl_ctrl_recov_ctrl_update_err */
+  kTopDarjeelingAlertIdIncomingPwcRaclCtrlFatalFault = 159, /**< incoming_pwc_racl_ctrl_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcAcRangeCheckRecovCtrlUpdateErr = 160, /**< incoming_pwc_ac_range_check_recov_ctrl_update_err */
+  kTopDarjeelingAlertIdIncomingPwcAcRangeCheckFatalFault = 161, /**< incoming_pwc_ac_range_check_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcRvCoreIbexFatalSwErr = 162, /**< incoming_pwc_rv_core_ibex_fatal_sw_err */
+  kTopDarjeelingAlertIdIncomingPwcRvCoreIbexRecovSwErr = 163, /**< incoming_pwc_rv_core_ibex_recov_sw_err */
+  kTopDarjeelingAlertIdIncomingPwcRvCoreIbexFatalHwErr = 164, /**< incoming_pwc_rv_core_ibex_fatal_hw_err */
+  kTopDarjeelingAlertIdIncomingPwcRvCoreIbexRecovHwErr = 165, /**< incoming_pwc_rv_core_ibex_recov_hw_err */
+  kTopDarjeelingAlertIdIncomingMioExtraAlertsIntegError = 166, /**< incoming_mio_extra_alerts_integ_error */
+  kTopDarjeelingAlertIdIncomingPwcExtraAlertsIntegError = 167, /**< incoming_pwc_extra_alerts_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsAmsIpWrapperIntegError = 168, /**< incoming_rot_extra_alerts_ams_ip_wrapper_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsAmsIpWrapperCsrngRecov = 169, /**< incoming_rot_extra_alerts_ams_ip_wrapper_csrng_recov */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsSsramLoIntegErr = 170, /**< incoming_rot_extra_alerts_ssram_lo_integ_err */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsSsramHiIntegErr = 171, /**< incoming_rot_extra_alerts_ssram_hi_integ_err */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr0 = 172, /**< incoming_rot_extra_alerts_lsio_group_esc_err_0 */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr1 = 173, /**< incoming_rot_extra_alerts_lsio_group_esc_err_1 */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr2 = 174, /**< incoming_rot_extra_alerts_lsio_group_esc_err_2 */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr3 = 175, /**< incoming_rot_extra_alerts_lsio_group_esc_err_3 */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsNsGroupIntegError = 176, /**< incoming_rot_extra_alerts_ns_group_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsLioGroupVIntegError = 177, /**< incoming_rot_extra_alerts_lio_group_v_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsLioGroupPIntegError = 178, /**< incoming_rot_extra_alerts_lio_group_p_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsNsEfuseIntegError = 179, /**< incoming_rot_extra_alerts_ns_efuse_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsNsEfusePrimOtpFatalErr = 180, /**< incoming_rot_extra_alerts_ns_efuse_prim_otp_fatal_err */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsNsEfusePrimOtpRecovErr = 181, /**< incoming_rot_extra_alerts_ns_efuse_prim_otp_recov_err */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsRcWidgetIntegError = 182, /**< incoming_rot_extra_alerts_rc_widget_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsRotHdrIntegError = 183, /**< incoming_rot_extra_alerts_rot_hdr_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsRotPcieAdapterIntegError = 184, /**< incoming_rot_extra_alerts_rot_pcie_adapter_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsRasCtlResetAlert = 185, /**< incoming_rot_extra_alerts_ras_ctl_reset_alert */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsScsifRegsAlertTrigger = 186, /**< incoming_rot_extra_alerts_scsif_regs_alert_trigger */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsScsRaiAlertTrigger = 187, /**< incoming_rot_extra_alerts_scs_rai_alert_trigger */
+  kTopDarjeelingAlertIdLast = 187, /**< \internal The Last Valid Alert ID. */
 } top_darjeeling_alert_id_t;
 
 /**
@@ -1528,7 +1532,7 @@ typedef enum top_darjeeling_alert_id {
  * `top_darjeeling_alert_peripheral_t`.
  */
 extern const top_darjeeling_alert_peripheral_t
-    top_darjeeling_alert_for_peripheral[184];
+    top_darjeeling_alert_for_peripheral[188];
 
 #define PINMUX_MIO_PERIPH_INSEL_IDX_OFFSET 2
 

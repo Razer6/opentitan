@@ -16,7 +16,7 @@
  * `top_darjeeling_alert_peripheral_t`.
  */
 const top_darjeeling_alert_peripheral_t
-    top_darjeeling_alert_for_peripheral[184] = {
+    top_darjeeling_alert_for_peripheral[188] = {
   [kTopDarjeelingAlertIdUart0FatalFault] = kTopDarjeelingAlertPeripheralUart0,
   [kTopDarjeelingAlertIdGpioFatalFault] = kTopDarjeelingAlertPeripheralGpio,
   [kTopDarjeelingAlertIdSpiDeviceFatalFault] = kTopDarjeelingAlertPeripheralSpiDevice,
@@ -145,6 +145,8 @@ const top_darjeeling_alert_peripheral_t
   [kTopDarjeelingAlertIdIncomingMioMbxPcie0RecovFault] = kTopDarjeelingAlertPeripheralIncoming,
   [kTopDarjeelingAlertIdIncomingMioRaclCtrlRecovCtrlUpdateErr] = kTopDarjeelingAlertPeripheralIncoming,
   [kTopDarjeelingAlertIdIncomingMioRaclCtrlFatalFault] = kTopDarjeelingAlertPeripheralIncoming,
+  [kTopDarjeelingAlertIdIncomingMioAcRangeCheckRecovCtrlUpdateErr] = kTopDarjeelingAlertPeripheralIncoming,
+  [kTopDarjeelingAlertIdIncomingMioAcRangeCheckFatalFault] = kTopDarjeelingAlertPeripheralIncoming,
   [kTopDarjeelingAlertIdIncomingMioRvCoreIbexFatalSwErr] = kTopDarjeelingAlertPeripheralIncoming,
   [kTopDarjeelingAlertIdIncomingMioRvCoreIbexRecovSwErr] = kTopDarjeelingAlertPeripheralIncoming,
   [kTopDarjeelingAlertIdIncomingMioRvCoreIbexFatalHwErr] = kTopDarjeelingAlertPeripheralIncoming,
@@ -175,6 +177,8 @@ const top_darjeeling_alert_peripheral_t
   [kTopDarjeelingAlertIdIncomingPwcMbxPcie0RecovFault] = kTopDarjeelingAlertPeripheralIncoming,
   [kTopDarjeelingAlertIdIncomingPwcRaclCtrlRecovCtrlUpdateErr] = kTopDarjeelingAlertPeripheralIncoming,
   [kTopDarjeelingAlertIdIncomingPwcRaclCtrlFatalFault] = kTopDarjeelingAlertPeripheralIncoming,
+  [kTopDarjeelingAlertIdIncomingPwcAcRangeCheckRecovCtrlUpdateErr] = kTopDarjeelingAlertPeripheralIncoming,
+  [kTopDarjeelingAlertIdIncomingPwcAcRangeCheckFatalFault] = kTopDarjeelingAlertPeripheralIncoming,
   [kTopDarjeelingAlertIdIncomingPwcRvCoreIbexFatalSwErr] = kTopDarjeelingAlertPeripheralIncoming,
   [kTopDarjeelingAlertIdIncomingPwcRvCoreIbexRecovSwErr] = kTopDarjeelingAlertPeripheralIncoming,
   [kTopDarjeelingAlertIdIncomingPwcRvCoreIbexFatalHwErr] = kTopDarjeelingAlertPeripheralIncoming,

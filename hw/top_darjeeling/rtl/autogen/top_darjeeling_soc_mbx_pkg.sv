@@ -123,13 +123,13 @@ package top_darjeeling_soc_mbx_pkg;
 
 
   // Number of mio incoming alerts
-  parameter int unsigned NIncomingAlertsMio = 29;
+  parameter int unsigned NIncomingAlertsMio = 31;
 
   // Number of LPGs for incoming alert group mio
   parameter int unsigned NIncomingLpgsMio = 2;
 
   // Number of pwc incoming alerts
-  parameter int unsigned NIncomingAlertsPwc = 30;
+  parameter int unsigned NIncomingAlertsPwc = 32;
 
   // Number of LPGs for incoming alert group pwc
   parameter int unsigned NIncomingLpgsPwc = 2;

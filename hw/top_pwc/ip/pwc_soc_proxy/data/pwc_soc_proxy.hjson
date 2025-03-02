@@ -189,6 +189,13 @@
       width:   32 // keep equal to `NumExternalIrqs`
       desc:    "Interrupt request from SoC, asynchronous, level-encoded"
     }
+    { struct:  "logic"
+      width:   4
+      type:    "uni"
+      name:    "integrator_id"
+      act:     "rcv"
+      desc:    "Integrator ID signal used in BAT"
+    }
     { struct:  "mubi8",
       type:    "uni",
       name:    "mubi8_true",

@@ -17815,8 +17815,8 @@
         lpg_idx: 1
       }
       {
-        name: rv_core_ibex_fatal_sw_err
-        module_name: rv_core_ibex
+        name: ac_range_check_recov_ctrl_update_err
+        module_name: ac_range_check
         index: 25
         type: alert
         async: 1
@@ -17824,8 +17824,8 @@
         lpg_idx: 1
       }
       {
-        name: rv_core_ibex_recov_sw_err
-        module_name: rv_core_ibex
+        name: ac_range_check_fatal_fault
+        module_name: ac_range_check
         index: 26
         type: alert
         async: 1
@@ -17833,7 +17833,7 @@
         lpg_idx: 1
       }
       {
-        name: rv_core_ibex_fatal_hw_err
+        name: rv_core_ibex_fatal_sw_err
         module_name: rv_core_ibex
         index: 27
         type: alert
@@ -17842,9 +17842,27 @@
         lpg_idx: 1
       }
       {
-        name: rv_core_ibex_recov_hw_err
+        name: rv_core_ibex_recov_sw_err
         module_name: rv_core_ibex
         index: 28
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_fatal_hw_err
+        module_name: rv_core_ibex
+        index: 29
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_recov_hw_err
+        module_name: rv_core_ibex
+        index: 30
         type: alert
         async: 1
         width: 1
@@ -18088,8 +18106,8 @@
         lpg_idx: 1
       }
       {
-        name: rv_core_ibex_fatal_sw_err
-        module_name: rv_core_ibex
+        name: ac_range_check_recov_ctrl_update_err
+        module_name: ac_range_check
         index: 26
         type: alert
         async: 1
@@ -18097,8 +18115,8 @@
         lpg_idx: 1
       }
       {
-        name: rv_core_ibex_recov_sw_err
-        module_name: rv_core_ibex
+        name: ac_range_check_fatal_fault
+        module_name: ac_range_check
         index: 27
         type: alert
         async: 1
@@ -18106,7 +18124,7 @@
         lpg_idx: 1
       }
       {
-        name: rv_core_ibex_fatal_hw_err
+        name: rv_core_ibex_fatal_sw_err
         module_name: rv_core_ibex
         index: 28
         type: alert
@@ -18115,9 +18133,27 @@
         lpg_idx: 1
       }
       {
-        name: rv_core_ibex_recov_hw_err
+        name: rv_core_ibex_recov_sw_err
         module_name: rv_core_ibex
         index: 29
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_fatal_hw_err
+        module_name: rv_core_ibex
+        index: 30
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 1
+      }
+      {
+        name: rv_core_ibex_recov_hw_err
+        module_name: rv_core_ibex
+        index: 31
         type: alert
         async: 1
         width: 1

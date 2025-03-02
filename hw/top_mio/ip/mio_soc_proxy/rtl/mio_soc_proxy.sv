@@ -25,8 +25,6 @@ module mio_soc_proxy
   // Incomig TL ports to get muxed
   input  tlul_pkg::tl_h2d_t dma_tl_h2d_i,
   output tlul_pkg::tl_d2h_t dma_tl_d2h_o,
-  input  tlul_pkg::tl_h2d_t misc_tl_h2d_i,
-  output tlul_pkg::tl_d2h_t misc_tl_d2h_o,
 
   // Muxed TLUL port going to AC-Ranges
   output tlul_pkg::tl_h2d_t muxed_tl_h2d_o,
@@ -48,6 +46,9 @@ module mio_soc_proxy
   input  logic [7:0] soc_lsio_trigger_i,
   output dma_pkg::lsio_trigger_t dma_lsio_trigger_o,
 
+  // Integrator bits used for custom BAT
+  input logic [3:0] integrator_id_i,
+
   input  logic [NumExternalIrqs-1:0] soc_intr_async_i,
 
   input  lc_ctrl_pkg::lc_tx_t       lc_hw_debug_en_ext_i,
@@ -57,7 +58,7 @@ module mio_soc_proxy
   output  lc_ctrl_pkg::lc_tx_t lc_escalate_en_o,
   output  prim_mubi_pkg::mubi8_t mubi8_true_o
 );
-  localparam int unsigned TLUL_HOST_CNT = 3;
+  localparam int unsigned TLUL_HOST_CNT = 2;
 
   // TLUL egress port muxing. First stage all incoming TLUL ports and them mux them
   tlul_pkg::tl_h2d_t host_tl_h2d[TLUL_HOST_CNT];
@@ -68,9 +69,6 @@ module mio_soc_proxy
 
   assign host_tl_h2d [1] = dma_tl_h2d_i;
   assign dma_tl_d2h_o    = host_tl_d2h[1];
-
-  assign host_tl_h2d [2] = misc_tl_h2d_i;
-  assign misc_tl_d2h_o   = host_tl_d2h[2];
 
   // Add a MUX with a pipeline stage to shorten path through AC ranges
   tlul_socket_m1 #(

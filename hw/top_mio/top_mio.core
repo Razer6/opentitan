@@ -24,6 +24,7 @@ filesets:
       - lowrisc:ip:lc_ctrl_pkg
       - lowrisc:ip:dma
       - lowrisc:ip:mbx
+      - lowrisc:opentitan:top_mio_ac_range_check_mio
       - lowrisc:top_mio:xbar_mio_main
       - lowrisc:top_mio:xbar_mio_mbx
       - lowrisc:top_mio:xbar_mio_peri
