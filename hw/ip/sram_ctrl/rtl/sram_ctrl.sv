@@ -489,7 +489,8 @@ module sram_ctrl
 
   // SEC_CM: RAM_TL_LC_GATE.FSM.SPARSE
   tlul_lc_gate #(
-    .NumGatesPerDirection(2)
+    .NumGatesPerDirection(2),
+    .Outstanding(Outstanding)
   ) u_tlul_lc_gate (
     .clk_i,
     .rst_ni,
