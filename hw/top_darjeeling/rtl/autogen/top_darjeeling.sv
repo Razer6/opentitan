@@ -358,6 +358,12 @@ module top_darjeeling #(
   localparam int LcCtrlNumRmaAckSigs = 1;
   // local parameters for spi_host0
   localparam int SpiHost0NumCS = 1;
+  // local parameters for sram_ctrl_ret_aon
+  localparam int SramCtrlRetAonOutstanding = 2;
+  // local parameters for sram_ctrl_main
+  localparam int SramCtrlMainOutstanding = 2;
+  // local parameters for sram_ctrl_mbox
+  localparam int SramCtrlMboxOutstanding = 2;
   // local parameters for racl_ctrl
   localparam int RaclCtrlNumSubscribingIps = 10;
   // local parameters for rv_core_ibex
@@ -1749,7 +1755,8 @@ module top_darjeeling #(
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .EccCorrection(SramCtrlRetAonEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlRetAonRaclPolicySelRangesRamNum)
+    .RaclPolicySelRangesRamNum(SramCtrlRetAonRaclPolicySelRangesRamNum),
+    .Outstanding(SramCtrlRetAonOutstanding)
   ) u_sram_ctrl_ret_aon (
       // [50]: fatal_error
       .alert_tx_o  ( alert_tx[50:50] ),
@@ -2125,7 +2132,8 @@ module top_darjeeling #(
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .EccCorrection(SramCtrlMainEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum)
+    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum),
+    .Outstanding(SramCtrlMainOutstanding)
   ) u_sram_ctrl_main (
       // [68]: fatal_error
       .alert_tx_o  ( alert_tx[68:68] ),
@@ -2168,7 +2176,8 @@ module top_darjeeling #(
     .NumPrinceRoundsHalf(SramCtrlMboxNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
     .EccCorrection(SramCtrlMboxEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlMboxRaclPolicySelRangesRamNum)
+    .RaclPolicySelRangesRamNum(SramCtrlMboxRaclPolicySelRangesRamNum),
+    .Outstanding(SramCtrlMboxOutstanding)
   ) u_sram_ctrl_mbox (
       // [69]: fatal_error
       .alert_tx_o  ( alert_tx[69:69] ),

@@ -24,6 +24,8 @@ module sram_ctrl
   // PRINCE has 5 half rounds in its original form, which corresponds to 2*5 + 1 effective rounds.
   // Setting this to 3 lowers this to approximately 7 effective rounds.
   parameter int NumPrinceRoundsHalf                        = 3,
+  // Number of outstanding TLUL transfers
+  parameter int Outstanding                                = 2,
   // RACL configuration of this IP including the policy selection for the configuration registers
   // and the SRAM memory window
   parameter bit                         EnableRacl         = 1'b0,  // reg_top racl
