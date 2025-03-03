@@ -39,7 +39,8 @@ module prim_lc_sync #(
   if (AsyncOn) begin : gen_flops
     prim_flop_2sync #(
       .Width(lc_ctrl_pkg::TxWidth),
-      .ResetValue(lc_ctrl_pkg::TxWidth'(LcResetValue))
+      .ResetValue(lc_ctrl_pkg::TxWidth'(LcResetValue)),
+      .EnablePrimCdcRand(0)
     ) u_prim_flop_2sync (
       .clk_i,
       .rst_ni,
