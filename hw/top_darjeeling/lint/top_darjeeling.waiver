@@ -111,3 +111,7 @@ waive -rules {LINE_LENGTH} -location {prim_otp_cfg_pkg.sv} \
 waive -rules {LINE_LENGTH} -location {racl_ctrl.sv} \
       -regexp {Line length of } \
       -comment "Waive line length violations in generated code. "
+
+waive -rules {LINE_LENGTH} -location {top_darjeeling_racl_pkg.sv} \
+      -regexp {Line length of } \
+      -comment "Waive line length violations in generated code. "
