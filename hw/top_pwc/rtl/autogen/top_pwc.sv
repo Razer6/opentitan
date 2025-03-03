@@ -26,7 +26,7 @@ module top_pwc #(
   parameter bit SramCtrlRetAonInstrExec = 0,
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlRetAonFlopRamOutput = 1,
-  parameter bit SramCtrlRetAonEccCorrection = 0,
+  parameter bit SramCtrlRetAonEccCorrection = 1,
   // parameters for rv_dm
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
   parameter bit RvDmUseDmiInterface = 1,
@@ -39,14 +39,14 @@ module top_pwc #(
   parameter bit SramCtrlMainInstrExec = 1,
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMainFlopRamOutput = 1,
-  parameter bit SramCtrlMainEccCorrection = 0,
+  parameter bit SramCtrlMainEccCorrection = 1,
   // parameters for sram_ctrl_mbox
   parameter int SramCtrlMboxInstSize = 4096,
   parameter int SramCtrlMboxNumRamInst = 1,
   parameter bit SramCtrlMboxInstrExec = 0,
   parameter int SramCtrlMboxNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMboxFlopRamOutput = 1,
-  parameter bit SramCtrlMboxEccCorrection = 0,
+  parameter bit SramCtrlMboxEccCorrection = 1,
   // parameters for dma
   parameter bit DmaEnableDataIntgGen = 1'b1,
   parameter bit DmaEnableRspDataIntgCheck = 1'b1,

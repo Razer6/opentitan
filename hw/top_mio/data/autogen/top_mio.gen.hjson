@@ -823,6 +823,7 @@
         InstrExec: "0"
         InstSize: 4096
         FlopRamOutput: 1
+        EccCorrection: 1
       }
       base_addrs:
       {
@@ -951,7 +952,7 @@
           name: EccCorrection
           desc: Enable single-bit error correction and error logging
           type: bit
-          default: "0"
+          default: 1
           local: "false"
           expose: "true"
           name_top: SramCtrlRetAonEccCorrection
@@ -1623,6 +1624,7 @@
         InstrExec: "1"
         InstSize: 65536
         FlopRamOutput: 1
+        EccCorrection: 1
       }
       base_addrs:
       {
@@ -1751,7 +1753,7 @@
           name: EccCorrection
           desc: Enable single-bit error correction and error logging
           type: bit
-          default: "0"
+          default: 1
           local: "false"
           expose: "true"
           name_top: SramCtrlMainEccCorrection
@@ -1966,6 +1968,7 @@
         InstrExec: "0"
         InstSize: 4096
         FlopRamOutput: 1
+        EccCorrection: 1
       }
       base_addrs:
       {
@@ -2094,7 +2097,7 @@
           name: EccCorrection
           desc: Enable single-bit error correction and error logging
           type: bit
-          default: "0"
+          default: 1
           local: "false"
           expose: "true"
           name_top: SramCtrlMboxEccCorrection
