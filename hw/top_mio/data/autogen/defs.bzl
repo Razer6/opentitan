@@ -39,3 +39,6 @@ MIO = opentitan_top(
         SRAM_CTRL,
     ],
 )
+
+MIO_ALERTS = [
+]

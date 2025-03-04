@@ -41,3 +41,6 @@ PWC = opentitan_top(
         SRAM_CTRL,
     ],
 )
+
+PWC_ALERTS = [
+]
