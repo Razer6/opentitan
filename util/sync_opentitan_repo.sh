@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 REMOTE_REPO="${1:-OT}"  # Default to "OT" if no argument is provided
 
@@ -11,6 +12,17 @@ LAST_SYNC_FILE="$SCRIPT_DIR/../$LAST_SYNC_FILENAME"
 
 echo "OT Sync: Script directory: $SCRIPT_DIR"
 echo "OT Sync: LAST_SYNC file: $LAST_SYNC_FILE"
+
+cd "${SCRIPT_DIR}/.." || exit 1
+
+if ! git config "remote.${REMOTE_REPO}.url" > /dev/null; then
+  echo "OT Sync: Remote '$REMOTE_REPO' not found"
+  echo "Please run the following command:"
+  echo ""
+  echo "git remote add $REMOTE_REPO https://github.com/lowRISC/opentitan.git && git remote set-url --push $REMOTE_REPO no_push"
+  echo ""
+  exit 1
+fi
 
 # Read the last synced SHA from the LAST_SYNC file
 LAST_SYNC=$(cat "$LAST_SYNC_FILE")
