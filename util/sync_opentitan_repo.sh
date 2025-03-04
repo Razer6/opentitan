@@ -1,7 +1,25 @@
 #!/bin/bash
 set -euo pipefail
 
-REMOTE_REPO="${1:-OT}"  # Default to "OT" if no argument is provided
+REMOTE_REPO="OT"
+CONTINUE_MODE=false
+
+# Parse command-line arguments
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --remote)
+      REMOTE_REPO="$2"
+      shift 2
+      ;;
+    --continue)
+      CONTINUE_MODE=true
+      shift
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
 
 # Get the absolute path to the script's directory
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -40,14 +58,28 @@ echo "OT Sync: Latest remote SHA: $LATEST_REMOTE_SHA"
 if [[ "$LAST_SYNC" != "$LATEST_REMOTE_SHA" ]]; then
     echo "OT Sync: New commits detected. Cherry-picking..."
 
-    # Cherry-pick commits between the last sync and the latest remote commit, skipping empty commits
-    git cherry-pick --empty drop $LAST_SYNC..$REMOTE_REPO/master
+    if $CONTINUE_MODE; then
+        echo "OT Sync: Continuing cherry-pick..."
+        git cherry-pick --continue
+        if [ $? -ne 0 ]; then
+            echo "OT Sync: Cherry-pick failed."
+            echo "OT Sync: Resolve conflict manually."
+            echo "OT Sync: Continue with ./sync_opentitan_repo.sh --continue"
+            exit 1
+        fi
+        echo "OT Sync: Cherry-pick finished after continue mode."
+    else
+      # Cherry-pick commits between the last sync and the latest remote commit, skipping empty commits
+      git cherry-pick --empty drop $LAST_SYNC..$REMOTE_REPO/master
 
-    if [ $? -ne 0 ]; then
-        echo "OT Sync: Cherry-pick failed. Exiting script."
-        exit 1
+      if [ $? -ne 0 ]; then
+          echo "OT Sync: Cherry-pick failed."
+          echo "OT Sync: Resolve conflict manually."
+          echo "OT Sync: Continue with ./sync_opentitan_repo.sh --continue"
+          exit 1
+      fi
+      echo "OT Sync: Cherry-picked commits"
     fi
-    echo "OT Sync: Cherry-picked commits"
 
     # Update the LAST_SYNC file with the latest remote SHA
     echo "$LATEST_REMOTE_SHA" > "$LAST_SYNC_FILE"
