@@ -729,7 +729,7 @@ def _get_racl_params(topcfg: Dict[str, object]) -> Dict[str, object]:
         policies = list(topcfg["racl"]["policies"].values())[0]
     else:
         # More than one policy, we need to find the matching set of policies
-        racl_group = racl_ctrl["racl_group"]
+        racl_group = racl_ctrl.get("racl_group", "Null")
         policies = topcfg["racl"]["policies"][racl_group]
 
     num_subscribing_ips = defaultdict(int)
