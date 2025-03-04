@@ -69,5 +69,269 @@
         allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC", "DUC_UC", "MIMT_R_MODE" ]
       }
     ]
+    lioGrpA: [
+      { name: "all_rd_wr_policy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "rot_private_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "hw_rot_pwc_wr_all_rd_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "pwc_private_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "mio_private_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "pwmPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "gpioPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "uartPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "i2c0Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "i2c1Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "i2c2Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "i3c0Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "i3c1Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "i3c2Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "spihstPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "spidevPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+    ]
+    lioGrpB: [
+      { name: "all_rd_wr_policy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "rot_private_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "pwc_private_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "hw_rot_pwc_wr_all_rd_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "mio_private_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "pwmPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "gpioPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "uartPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "i2c0Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "i2c1Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "i2c2Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "i3c0Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "i3c1Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "i3c2Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "spihstPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "spidevPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+    ]
+    lioGrpC: [
+      { name: "all_rd_wr_policy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "rot_private_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "mio_private_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "pwc_private_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "hw_rot_pwc_wr_all_rd_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "pwmPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "gpioPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "uartPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "i2c0Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "i2c1Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "i2c2Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "i3c0Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "i3c1Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "i3c2Policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "spihstPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "spidevPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+    ]
+    lioGrpD: [
+      { name: "all_rd_wr_policy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "rot_private_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "hw_rot_pwc_wr_all_rd_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "pwc_private_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "mio_private_policy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "pwmPolicy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "gpioPolicy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "uartPolicy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "i2c0Policy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "i2c1Policy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "i2c2Policy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "i3c0Policy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "i3c1Policy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "i3c2Policy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "spihstPolicy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "spidevPolicy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+    ]
   }
 }
