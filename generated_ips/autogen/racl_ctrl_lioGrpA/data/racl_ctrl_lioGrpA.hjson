@@ -1,0 +1,573 @@
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+
+# RACL Control register template
+#
+{
+  name:               "racl_ctrl_lioGrpA",
+  human_name:         "RACL Control",
+  one_line_desc:      "Implements the RACL policy registers to distribute to subscribing IPs.",
+  one_paragraph_desc: '''
+  Implements the RACL policy registers to distribute to subscribing IPs.
+  '''
+  // Unique comportable IP identifier defined under KNOWN_CIP_IDS in the regtool.
+  cip_id:             "43",
+  design_spec:        "../doc",
+  dv_doc:             "../doc/dv",
+  hw_checklist:       "../doc/checklist",
+  sw_checklist:       "/sw/device/lib/dif/dif_racl_ctrl",
+  revisions: [
+    {
+      version:            "1.0.0",
+      life_stage:         "L1",
+      design_stage:       "D0",
+      verification_stage: "V0",
+      dif_stage:          "S0",
+    }
+  ]
+  clocking: [
+    {clock: "clk_i", reset: "rst_ni"},
+  ]
+  bus_interfaces: [
+    { protocol: "tlul", direction: "device", static_racl_support: true }
+  ],
+  alert_list: [
+    { name: "recov_ctrl_update_err",
+      desc: "This recoverable alert is triggered upon detecting an update error in the shadowed Control Register."
+    }
+    { name: "fatal_fault"
+      desc: "This fatal alert is triggered when a fatal TL-UL bus integrity fault is detected."
+    }
+  ],
+  countermeasures: [
+    { name: "BUS.INTEGRITY",
+      desc: "End-to-end bus integrity scheme."
+    }
+    { name: "RACL_POLICY.CONFIG.SHADOW",
+      desc: "RACL policy registers are shadowed."
+    }
+  ]
+  regwidth: "32",
+  param_list: [
+    { name: "NumPolicies",
+      desc: "Number of policies",
+      type: "int",
+      default: "16",
+      local: "true"
+    },
+    { name: "NumSubscribingIps",
+      desc: "Number of subscribing RACL IPs",
+      type: "int",
+      default: "1",
+      expose: "true"
+      local: "true"
+    },
+    { name: "NumExternalSubscribingIps",
+      desc: "Number of external subscribing RACL IPs",
+      type: "int",
+      default: "1",
+      expose: "true"
+      local: "false"
+    },
+  ],
+  inter_signal_list: [
+    { struct:  "racl_policy_vec",
+      type:    "uni",
+      name:    "racl_policies",
+      act:     "req",
+      package: "top_racl_pkg",
+      desc:    '''
+        Policy vector distributed to the subscribing RACL IPs.
+      '''
+    }
+    { struct:  "racl_error_log",
+      type:    "uni",
+      name:    "racl_error",
+      act:     "rcv",
+      width:   "NumSubscribingIps"
+      package: "top_racl_pkg",
+      desc:    '''
+        Error log information from all IPs.
+        Only one IP can raise an error at a time.
+      '''
+    }
+    { struct:  "racl_error_log",
+      type:    "uni",
+      name:    "racl_error_external",
+      act:     "rcv",
+      width:   "NumExternalSubscribingIps"
+      package: "top_racl_pkg",
+      desc:    '''
+        Error log information from all external IPs.
+        Only one IP can raise an error at a time.
+      '''
+    }
+  ],
+
+  registers: [
+    { name: "ERROR_LOG"
+      desc: "Error logging registers"
+      swaccess: "ro"
+      hwaccess: "hwo"
+      hwqe: "true"
+      fields: [
+        { bits: "0"
+          name: "valid"
+          resval: 0x0
+          swaccess: "rw1c"
+          hwaccess: "hrw"
+          desc: '''
+                Indicates a RACL error and the log register contains valid data.
+                Writing a one clears the error log register.
+                '''
+        }
+        { bits: "1"
+          name: "overflow"
+          resval: 0x0
+          desc: '''
+                Indicates a RACL error overflow when a RACL error occurred while the log register was set.
+                '''
+        }
+        { bits: "2"
+          name: "read_access"
+          resval: 0x0
+          desc: '''
+                0: Write transfer was denied.
+                1: Read transfer was denied.
+                '''
+        }
+        { bits: "6:3"
+          name: "role"
+          resval: 0x0
+          desc: '''
+                RACL role causing the error.
+                '''
+        }
+        { bits: "11:7"
+          name: "ctn_uid"
+          resval: 0x0
+          desc: '''
+                CTN UID causing the error.
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_ALL_RD_WR_POLICY_SHADOWED"
+      desc: '''
+            Read and write policy for all_rd_wr_policy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 16383
+          desc: '''
+                Write permission for policy all_rd_wr_policy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 16383
+          desc: '''
+                Read permission for policy all_rd_wr_policy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_ROT_PRIVATE_POLICY_SHADOWED"
+      desc: '''
+            Read and write policy for rot_private_policy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 96
+          desc: '''
+                Write permission for policy rot_private_policy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 96
+          desc: '''
+                Read permission for policy rot_private_policy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED"
+      desc: '''
+            Read and write policy for hw_rot_pwc_wr_all_rd_policy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 864
+          desc: '''
+                Write permission for policy hw_rot_pwc_wr_all_rd_policy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 16383
+          desc: '''
+                Read permission for policy hw_rot_pwc_wr_all_rd_policy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_PWC_PRIVATE_POLICY_SHADOWED"
+      desc: '''
+            Read and write policy for pwc_private_policy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 864
+          desc: '''
+                Write permission for policy pwc_private_policy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 864
+          desc: '''
+                Read permission for policy pwc_private_policy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_MIO_PRIVATE_POLICY_SHADOWED"
+      desc: '''
+            Read and write policy for mio_private_policy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 992
+          desc: '''
+                Write permission for policy mio_private_policy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 992
+          desc: '''
+                Read permission for policy mio_private_policy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_PWMPOLICY_SHADOWED"
+      desc: '''
+            Read and write policy for pwmPolicy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 96
+          desc: '''
+                Write permission for policy pwmPolicy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 96
+          desc: '''
+                Read permission for policy pwmPolicy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_GPIOPOLICY_SHADOWED"
+      desc: '''
+            Read and write policy for gpioPolicy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 96
+          desc: '''
+                Write permission for policy gpioPolicy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 96
+          desc: '''
+                Read permission for policy gpioPolicy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_UARTPOLICY_SHADOWED"
+      desc: '''
+            Read and write policy for uartPolicy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 96
+          desc: '''
+                Write permission for policy uartPolicy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 96
+          desc: '''
+                Read permission for policy uartPolicy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_I2C0POLICY_SHADOWED"
+      desc: '''
+            Read and write policy for i2c0Policy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 96
+          desc: '''
+                Write permission for policy i2c0Policy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 96
+          desc: '''
+                Read permission for policy i2c0Policy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_I2C1POLICY_SHADOWED"
+      desc: '''
+            Read and write policy for i2c1Policy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 96
+          desc: '''
+                Write permission for policy i2c1Policy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 96
+          desc: '''
+                Read permission for policy i2c1Policy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_I2C2POLICY_SHADOWED"
+      desc: '''
+            Read and write policy for i2c2Policy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 96
+          desc: '''
+                Write permission for policy i2c2Policy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 96
+          desc: '''
+                Read permission for policy i2c2Policy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_I3C0POLICY_SHADOWED"
+      desc: '''
+            Read and write policy for i3c0Policy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 96
+          desc: '''
+                Write permission for policy i3c0Policy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 96
+          desc: '''
+                Read permission for policy i3c0Policy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_I3C1POLICY_SHADOWED"
+      desc: '''
+            Read and write policy for i3c1Policy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 96
+          desc: '''
+                Write permission for policy i3c1Policy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 96
+          desc: '''
+                Read permission for policy i3c1Policy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_I3C2POLICY_SHADOWED"
+      desc: '''
+            Read and write policy for i3c2Policy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 96
+          desc: '''
+                Write permission for policy i3c2Policy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 96
+          desc: '''
+                Read permission for policy i3c2Policy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_SPIHSTPOLICY_SHADOWED"
+      desc: '''
+            Read and write policy for spihstPolicy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 96
+          desc: '''
+                Write permission for policy spihstPolicy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 96
+          desc: '''
+                Read permission for policy spihstPolicy
+                '''
+        }
+      ]
+    }
+    { name: "POLICY_SPIDEVPOLICY_SHADOWED"
+      desc: '''
+            Read and write policy for spidevPolicy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 96
+          desc: '''
+                Write permission for policy spidevPolicy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 96
+          desc: '''
+                Read permission for policy spidevPolicy
+                '''
+        }
+      ]
+    }
+  ]
+}
