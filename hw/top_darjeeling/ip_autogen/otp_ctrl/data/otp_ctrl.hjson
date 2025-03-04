@@ -793,7 +793,7 @@
     { name: "OwnerSwCfgSize",
       desc: "Size of the OWNER_SW_CFG partition",
       type: "int",
-      default: "632",
+      default: "648",
       local: "true"
     },
     { name: "OwnerSwCfgRomErrorReportingOffset",
@@ -853,13 +853,13 @@
     { name: "OwnerSwCfgRomAlertClassificationSize",
       desc: "Size of OWNER_SW_CFG_ROM_ALERT_CLASSIFICATION",
       type: "int",
-      default: "400",
+      default: "412",
       local: "true"
     },
     { name: "OwnerSwCfgRomLocalAlertClassificationOffset",
       desc: "Offset of OWNER_SW_CFG_ROM_LOCAL_ALERT_CLASSIFICATION",
       type: "int",
-      default: "816",
+      default: "828",
       local: "true"
     },
     { name: "OwnerSwCfgRomLocalAlertClassificationSize",
@@ -871,7 +871,7 @@
     { name: "OwnerSwCfgRomAlertAccumThreshOffset",
       desc: "Offset of OWNER_SW_CFG_ROM_ALERT_ACCUM_THRESH",
       type: "int",
-      default: "880",
+      default: "892",
       local: "true"
     },
     { name: "OwnerSwCfgRomAlertAccumThreshSize",
@@ -883,7 +883,7 @@
     { name: "OwnerSwCfgRomAlertTimeoutCyclesOffset",
       desc: "Offset of OWNER_SW_CFG_ROM_ALERT_TIMEOUT_CYCLES",
       type: "int",
-      default: "896",
+      default: "908",
       local: "true"
     },
     { name: "OwnerSwCfgRomAlertTimeoutCyclesSize",
@@ -895,7 +895,7 @@
     { name: "OwnerSwCfgRomAlertPhaseCyclesOffset",
       desc: "Offset of OWNER_SW_CFG_ROM_ALERT_PHASE_CYCLES",
       type: "int",
-      default: "912",
+      default: "924",
       local: "true"
     },
     { name: "OwnerSwCfgRomAlertPhaseCyclesSize",
@@ -907,7 +907,7 @@
     { name: "OwnerSwCfgRomAlertDigestProdOffset",
       desc: "Offset of OWNER_SW_CFG_ROM_ALERT_DIGEST_PROD",
       type: "int",
-      default: "976",
+      default: "988",
       local: "true"
     },
     { name: "OwnerSwCfgRomAlertDigestProdSize",
@@ -919,7 +919,7 @@
     { name: "OwnerSwCfgRomAlertDigestProdEndOffset",
       desc: "Offset of OWNER_SW_CFG_ROM_ALERT_DIGEST_PROD_END",
       type: "int",
-      default: "980",
+      default: "992",
       local: "true"
     },
     { name: "OwnerSwCfgRomAlertDigestProdEndSize",
@@ -931,7 +931,7 @@
     { name: "OwnerSwCfgRomAlertDigestDevOffset",
       desc: "Offset of OWNER_SW_CFG_ROM_ALERT_DIGEST_DEV",
       type: "int",
-      default: "984",
+      default: "996",
       local: "true"
     },
     { name: "OwnerSwCfgRomAlertDigestDevSize",
@@ -943,7 +943,7 @@
     { name: "OwnerSwCfgRomAlertDigestRmaOffset",
       desc: "Offset of OWNER_SW_CFG_ROM_ALERT_DIGEST_RMA",
       type: "int",
-      default: "988",
+      default: "1000",
       local: "true"
     },
     { name: "OwnerSwCfgRomAlertDigestRmaSize",
@@ -955,7 +955,7 @@
     { name: "OwnerSwCfgRomWatchdogBiteThresholdCyclesOffset",
       desc: "Offset of OWNER_SW_CFG_ROM_WATCHDOG_BITE_THRESHOLD_CYCLES",
       type: "int",
-      default: "992",
+      default: "1004",
       local: "true"
     },
     { name: "OwnerSwCfgRomWatchdogBiteThresholdCyclesSize",
@@ -967,7 +967,7 @@
     { name: "OwnerSwCfgRomKeymgrRomExtMeasEnOffset",
       desc: "Offset of OWNER_SW_CFG_ROM_KEYMGR_ROM_EXT_MEAS_EN",
       type: "int",
-      default: "996",
+      default: "1008",
       local: "true"
     },
     { name: "OwnerSwCfgRomKeymgrRomExtMeasEnSize",
@@ -979,7 +979,7 @@
     { name: "OwnerSwCfgManufStateOffset",
       desc: "Offset of OWNER_SW_CFG_MANUF_STATE",
       type: "int",
-      default: "1000",
+      default: "1012",
       local: "true"
     },
     { name: "OwnerSwCfgManufStateSize",
@@ -991,7 +991,7 @@
     { name: "OwnerSwCfgRomRstmgrInfoEnOffset",
       desc: "Offset of OWNER_SW_CFG_ROM_RSTMGR_INFO_EN",
       type: "int",
-      default: "1004",
+      default: "1016",
       local: "true"
     },
     { name: "OwnerSwCfgRomRstmgrInfoEnSize",
@@ -1003,7 +1003,7 @@
     { name: "OwnerSwCfgDigestOffset",
       desc: "Offset of OWNER_SW_CFG_DIGEST",
       type: "int",
-      default: "1024",
+      default: "1040",
       local: "true"
     },
     { name: "OwnerSwCfgDigestSize",
@@ -1015,7 +1015,7 @@
     { name: "OwnershipSlotStateOffset",
       desc: "Offset of the OWNERSHIP_SLOT_STATE partition",
       type: "int",
-      default: "1032",
+      default: "1048",
       local: "true"
     },
     { name: "OwnershipSlotStateSize",
@@ -1027,7 +1027,7 @@
     { name: "OwnershipSlotStateRotOwnerAuthOffset",
       desc: "Offset of OWNERSHIP_SLOT_STATE_ROT_OWNER_AUTH",
       type: "int",
-      default: "1032",
+      default: "1048",
       local: "true"
     },
     { name: "OwnershipSlotStateRotOwnerAuthSize",
@@ -1039,7 +1039,7 @@
     { name: "OwnershipSlotStatePlatIntegAuthOffset",
       desc: "Offset of OWNERSHIP_SLOT_STATE_PLAT_INTEG_AUTH",
       type: "int",
-      default: "1048",
+      default: "1064",
       local: "true"
     },
     { name: "OwnershipSlotStatePlatIntegAuthSize",
@@ -1051,7 +1051,7 @@
     { name: "OwnershipSlotStatePlatOwnerAuthOffset",
       desc: "Offset of OWNERSHIP_SLOT_STATE_PLAT_OWNER_AUTH",
       type: "int",
-      default: "1064",
+      default: "1080",
       local: "true"
     },
     { name: "OwnershipSlotStatePlatOwnerAuthSize",
@@ -1063,7 +1063,7 @@
     { name: "RotCreatorAuthOffset",
       desc: "Offset of the ROT_CREATOR_AUTH partition",
       type: "int",
-      default: "1080",
+      default: "1096",
       local: "true"
     },
     { name: "RotCreatorAuthSize",
@@ -1075,7 +1075,7 @@
     { name: "RotCreatorAuthNonRawMfwCodesignKeyTypeOffset",
       desc: "Offset of ROT_CREATOR_AUTH_NON_RAW_MFW_CODESIGN_KEY_TYPE",
       type: "int",
-      default: "1080",
+      default: "1096",
       local: "true"
     },
     { name: "RotCreatorAuthNonRawMfwCodesignKeyTypeSize",
@@ -1087,7 +1087,7 @@
     { name: "RotCreatorAuthNonRawMfwCodesignKeyRoleOffset",
       desc: "Offset of ROT_CREATOR_AUTH_NON_RAW_MFW_CODESIGN_KEY_ROLE",
       type: "int",
-      default: "1084",
+      default: "1100",
       local: "true"
     },
     { name: "RotCreatorAuthNonRawMfwCodesignKeyRoleSize",
@@ -1099,7 +1099,7 @@
     { name: "RotCreatorAuthNonRawMfwCodesignKeyOffset",
       desc: "Offset of ROT_CREATOR_AUTH_NON_RAW_MFW_CODESIGN_KEY",
       type: "int",
-      default: "1088",
+      default: "1104",
       local: "true"
     },
     { name: "RotCreatorAuthNonRawMfwCodesignKeySize",
@@ -1111,7 +1111,7 @@
     { name: "RotCreatorAuthRom2PatchSigverifyKeyTypeOffset",
       desc: "Offset of ROT_CREATOR_AUTH_ROM2_PATCH_SIGVERIFY_KEY_TYPE",
       type: "int",
-      default: "1152",
+      default: "1168",
       local: "true"
     },
     { name: "RotCreatorAuthRom2PatchSigverifyKeyTypeSize",
@@ -1123,7 +1123,7 @@
     { name: "RotCreatorAuthRom2PatchSigverifyKeyRoleOffset",
       desc: "Offset of ROT_CREATOR_AUTH_ROM2_PATCH_SIGVERIFY_KEY_ROLE",
       type: "int",
-      default: "1156",
+      default: "1172",
       local: "true"
     },
     { name: "RotCreatorAuthRom2PatchSigverifyKeyRoleSize",
@@ -1135,7 +1135,7 @@
     { name: "RotCreatorAuthRom2PatchSigverifyKeyOffset",
       desc: "Offset of ROT_CREATOR_AUTH_ROM2_PATCH_SIGVERIFY_KEY",
       type: "int",
-      default: "1160",
+      default: "1176",
       local: "true"
     },
     { name: "RotCreatorAuthRom2PatchSigverifyKeySize",
@@ -1147,7 +1147,7 @@
     { name: "RotCreatorAuthKeymanifestKeyTypeOffset",
       desc: "Offset of ROT_CREATOR_AUTH_KEYMANIFEST_KEY_TYPE",
       type: "int",
-      default: "1224",
+      default: "1240",
       local: "true"
     },
     { name: "RotCreatorAuthKeymanifestKeyTypeSize",
@@ -1159,7 +1159,7 @@
     { name: "RotCreatorAuthKeymanifestKeyRoleOffset",
       desc: "Offset of ROT_CREATOR_AUTH_KEYMANIFEST_KEY_ROLE",
       type: "int",
-      default: "1228",
+      default: "1244",
       local: "true"
     },
     { name: "RotCreatorAuthKeymanifestKeyRoleSize",
@@ -1171,7 +1171,7 @@
     { name: "RotCreatorAuthKeymanifestKeyOffset",
       desc: "Offset of ROT_CREATOR_AUTH_KEYMANIFEST_KEY",
       type: "int",
-      default: "1232",
+      default: "1248",
       local: "true"
     },
     { name: "RotCreatorAuthKeymanifestKeySize",
@@ -1183,7 +1183,7 @@
     { name: "RotCreatorAuthKeyDeviceIdOffset",
       desc: "Offset of ROT_CREATOR_AUTH_KEY_DEVICE_ID",
       type: "int",
-      default: "1296",
+      default: "1312",
       local: "true"
     },
     { name: "RotCreatorAuthKeyDeviceIdSize",
@@ -1195,7 +1195,7 @@
     { name: "RotCreatorAuthKeyMetadataOffset",
       desc: "Offset of ROT_CREATOR_AUTH_KEY_METADATA",
       type: "int",
-      default: "1328",
+      default: "1344",
       local: "true"
     },
     { name: "RotCreatorAuthKeyMetadataSize",
@@ -1207,7 +1207,7 @@
     { name: "RotCreatorAuthKeySignatureOffset",
       desc: "Offset of ROT_CREATOR_AUTH_KEY_SIGNATURE",
       type: "int",
-      default: "1344",
+      default: "1360",
       local: "true"
     },
     { name: "RotCreatorAuthKeySignatureSize",
@@ -1219,7 +1219,7 @@
     { name: "RotCreatorAuthIdentityCertOffset",
       desc: "Offset of ROT_CREATOR_AUTH_IDENTITY_CERT",
       type: "int",
-      default: "1408",
+      default: "1424",
       local: "true"
     },
     { name: "RotCreatorAuthIdentityCertSize",
@@ -1231,7 +1231,7 @@
     { name: "RotCreatorAuthIdentityCertCmacOffset",
       desc: "Offset of ROT_CREATOR_AUTH_IDENTITY_CERT_CMAC",
       type: "int",
-      default: "2176",
+      default: "2192",
       local: "true"
     },
     { name: "RotCreatorAuthIdentityCertCmacSize",
@@ -1243,7 +1243,7 @@
     { name: "RotCreatorAuthDigestOffset",
       desc: "Offset of ROT_CREATOR_AUTH_DIGEST",
       type: "int",
-      default: "2496",
+      default: "2512",
       local: "true"
     },
     { name: "RotCreatorAuthDigestSize",
@@ -1255,7 +1255,7 @@
     { name: "RotOwnerAuthSlot0Offset",
       desc: "Offset of the ROT_OWNER_AUTH_SLOT0 partition",
       type: "int",
-      default: "2504",
+      default: "2520",
       local: "true"
     },
     { name: "RotOwnerAuthSlot0Size",
@@ -1267,7 +1267,7 @@
     { name: "RotOwnerAuthSlot0KeymanifestKeyTypeOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE",
       type: "int",
-      default: "2504",
+      default: "2520",
       local: "true"
     },
     { name: "RotOwnerAuthSlot0KeymanifestKeyTypeSize",
@@ -1279,7 +1279,7 @@
     { name: "RotOwnerAuthSlot0KeymanifestKeyRoleOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE",
       type: "int",
-      default: "2508",
+      default: "2524",
       local: "true"
     },
     { name: "RotOwnerAuthSlot0KeymanifestKeyRoleSize",
@@ -1291,7 +1291,7 @@
     { name: "RotOwnerAuthSlot0KeymanifestKeyOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY",
       type: "int",
-      default: "2512",
+      default: "2528",
       local: "true"
     },
     { name: "RotOwnerAuthSlot0KeymanifestKeySize",
@@ -1303,7 +1303,7 @@
     { name: "RotOwnerAuthSlot0Unlock4xferKeyTypeOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE",
       type: "int",
-      default: "2576",
+      default: "2592",
       local: "true"
     },
     { name: "RotOwnerAuthSlot0Unlock4xferKeyTypeSize",
@@ -1315,7 +1315,7 @@
     { name: "RotOwnerAuthSlot0Unlock4xferKeyRoleOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE",
       type: "int",
-      default: "2580",
+      default: "2596",
       local: "true"
     },
     { name: "RotOwnerAuthSlot0Unlock4xferKeyRoleSize",
@@ -1327,7 +1327,7 @@
     { name: "RotOwnerAuthSlot0Unlock4xferKeyOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY",
       type: "int",
-      default: "2584",
+      default: "2600",
       local: "true"
     },
     { name: "RotOwnerAuthSlot0Unlock4xferKeySize",
@@ -1339,7 +1339,7 @@
     { name: "RotOwnerAuthSlot0DigestOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT0_DIGEST",
       type: "int",
-      default: "2824",
+      default: "2840",
       local: "true"
     },
     { name: "RotOwnerAuthSlot0DigestSize",
@@ -1351,7 +1351,7 @@
     { name: "RotOwnerAuthSlot1Offset",
       desc: "Offset of the ROT_OWNER_AUTH_SLOT1 partition",
       type: "int",
-      default: "2832",
+      default: "2848",
       local: "true"
     },
     { name: "RotOwnerAuthSlot1Size",
@@ -1363,7 +1363,7 @@
     { name: "RotOwnerAuthSlot1KeymanifestKeyTypeOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE",
       type: "int",
-      default: "2832",
+      default: "2848",
       local: "true"
     },
     { name: "RotOwnerAuthSlot1KeymanifestKeyTypeSize",
@@ -1375,7 +1375,7 @@
     { name: "RotOwnerAuthSlot1KeymanifestKeyRoleOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE",
       type: "int",
-      default: "2836",
+      default: "2852",
       local: "true"
     },
     { name: "RotOwnerAuthSlot1KeymanifestKeyRoleSize",
@@ -1387,7 +1387,7 @@
     { name: "RotOwnerAuthSlot1KeymanifestKeyOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY",
       type: "int",
-      default: "2840",
+      default: "2856",
       local: "true"
     },
     { name: "RotOwnerAuthSlot1KeymanifestKeySize",
@@ -1399,7 +1399,7 @@
     { name: "RotOwnerAuthSlot1Unlock4xferKeyTypeOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE",
       type: "int",
-      default: "2904",
+      default: "2920",
       local: "true"
     },
     { name: "RotOwnerAuthSlot1Unlock4xferKeyTypeSize",
@@ -1411,7 +1411,7 @@
     { name: "RotOwnerAuthSlot1Unlock4xferKeyRoleOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE",
       type: "int",
-      default: "2908",
+      default: "2924",
       local: "true"
     },
     { name: "RotOwnerAuthSlot1Unlock4xferKeyRoleSize",
@@ -1423,7 +1423,7 @@
     { name: "RotOwnerAuthSlot1Unlock4xferKeyOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY",
       type: "int",
-      default: "2912",
+      default: "2928",
       local: "true"
     },
     { name: "RotOwnerAuthSlot1Unlock4xferKeySize",
@@ -1435,7 +1435,7 @@
     { name: "RotOwnerAuthSlot1DigestOffset",
       desc: "Offset of ROT_OWNER_AUTH_SLOT1_DIGEST",
       type: "int",
-      default: "3152",
+      default: "3168",
       local: "true"
     },
     { name: "RotOwnerAuthSlot1DigestSize",
@@ -1447,7 +1447,7 @@
     { name: "PlatIntegAuthSlot0Offset",
       desc: "Offset of the PLAT_INTEG_AUTH_SLOT0 partition",
       type: "int",
-      default: "3160",
+      default: "3176",
       local: "true"
     },
     { name: "PlatIntegAuthSlot0Size",
@@ -1459,7 +1459,7 @@
     { name: "PlatIntegAuthSlot0KeymanifestKeyTypeOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE",
       type: "int",
-      default: "3160",
+      default: "3176",
       local: "true"
     },
     { name: "PlatIntegAuthSlot0KeymanifestKeyTypeSize",
@@ -1471,7 +1471,7 @@
     { name: "PlatIntegAuthSlot0KeymanifestKeyRoleOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE",
       type: "int",
-      default: "3164",
+      default: "3180",
       local: "true"
     },
     { name: "PlatIntegAuthSlot0KeymanifestKeyRoleSize",
@@ -1483,7 +1483,7 @@
     { name: "PlatIntegAuthSlot0KeymanifestKeyOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY",
       type: "int",
-      default: "3168",
+      default: "3184",
       local: "true"
     },
     { name: "PlatIntegAuthSlot0KeymanifestKeySize",
@@ -1495,7 +1495,7 @@
     { name: "PlatIntegAuthSlot0Unlock4xferKeyTypeOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE",
       type: "int",
-      default: "3232",
+      default: "3248",
       local: "true"
     },
     { name: "PlatIntegAuthSlot0Unlock4xferKeyTypeSize",
@@ -1507,7 +1507,7 @@
     { name: "PlatIntegAuthSlot0Unlock4xferKeyRoleOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE",
       type: "int",
-      default: "3236",
+      default: "3252",
       local: "true"
     },
     { name: "PlatIntegAuthSlot0Unlock4xferKeyRoleSize",
@@ -1519,7 +1519,7 @@
     { name: "PlatIntegAuthSlot0Unlock4xferKeyOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY",
       type: "int",
-      default: "3240",
+      default: "3256",
       local: "true"
     },
     { name: "PlatIntegAuthSlot0Unlock4xferKeySize",
@@ -1531,7 +1531,7 @@
     { name: "PlatIntegAuthSlot0DigestOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT0_DIGEST",
       type: "int",
-      default: "3480",
+      default: "3496",
       local: "true"
     },
     { name: "PlatIntegAuthSlot0DigestSize",
@@ -1543,7 +1543,7 @@
     { name: "PlatIntegAuthSlot1Offset",
       desc: "Offset of the PLAT_INTEG_AUTH_SLOT1 partition",
       type: "int",
-      default: "3488",
+      default: "3504",
       local: "true"
     },
     { name: "PlatIntegAuthSlot1Size",
@@ -1555,7 +1555,7 @@
     { name: "PlatIntegAuthSlot1KeymanifestKeyTypeOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE",
       type: "int",
-      default: "3488",
+      default: "3504",
       local: "true"
     },
     { name: "PlatIntegAuthSlot1KeymanifestKeyTypeSize",
@@ -1567,7 +1567,7 @@
     { name: "PlatIntegAuthSlot1KeymanifestKeyRoleOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE",
       type: "int",
-      default: "3492",
+      default: "3508",
       local: "true"
     },
     { name: "PlatIntegAuthSlot1KeymanifestKeyRoleSize",
@@ -1579,7 +1579,7 @@
     { name: "PlatIntegAuthSlot1KeymanifestKeyOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY",
       type: "int",
-      default: "3496",
+      default: "3512",
       local: "true"
     },
     { name: "PlatIntegAuthSlot1KeymanifestKeySize",
@@ -1591,7 +1591,7 @@
     { name: "PlatIntegAuthSlot1Unlock4xferKeyTypeOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE",
       type: "int",
-      default: "3560",
+      default: "3576",
       local: "true"
     },
     { name: "PlatIntegAuthSlot1Unlock4xferKeyTypeSize",
@@ -1603,7 +1603,7 @@
     { name: "PlatIntegAuthSlot1Unlock4xferKeyRoleOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE",
       type: "int",
-      default: "3564",
+      default: "3580",
       local: "true"
     },
     { name: "PlatIntegAuthSlot1Unlock4xferKeyRoleSize",
@@ -1615,7 +1615,7 @@
     { name: "PlatIntegAuthSlot1Unlock4xferKeyOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY",
       type: "int",
-      default: "3568",
+      default: "3584",
       local: "true"
     },
     { name: "PlatIntegAuthSlot1Unlock4xferKeySize",
@@ -1627,7 +1627,7 @@
     { name: "PlatIntegAuthSlot1DigestOffset",
       desc: "Offset of PLAT_INTEG_AUTH_SLOT1_DIGEST",
       type: "int",
-      default: "3808",
+      default: "3824",
       local: "true"
     },
     { name: "PlatIntegAuthSlot1DigestSize",
@@ -1639,7 +1639,7 @@
     { name: "PlatOwnerAuthSlot0Offset",
       desc: "Offset of the PLAT_OWNER_AUTH_SLOT0 partition",
       type: "int",
-      default: "3816",
+      default: "3832",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot0Size",
@@ -1651,7 +1651,7 @@
     { name: "PlatOwnerAuthSlot0KeymanifestKeyTypeOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE",
       type: "int",
-      default: "3816",
+      default: "3832",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot0KeymanifestKeyTypeSize",
@@ -1663,7 +1663,7 @@
     { name: "PlatOwnerAuthSlot0KeymanifestKeyRoleOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE",
       type: "int",
-      default: "3820",
+      default: "3836",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot0KeymanifestKeyRoleSize",
@@ -1675,7 +1675,7 @@
     { name: "PlatOwnerAuthSlot0KeymanifestKeyOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY",
       type: "int",
-      default: "3824",
+      default: "3840",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot0KeymanifestKeySize",
@@ -1687,7 +1687,7 @@
     { name: "PlatOwnerAuthSlot0Unlock4xferKeyTypeOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE",
       type: "int",
-      default: "3888",
+      default: "3904",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot0Unlock4xferKeyTypeSize",
@@ -1699,7 +1699,7 @@
     { name: "PlatOwnerAuthSlot0Unlock4xferKeyRoleOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE",
       type: "int",
-      default: "3892",
+      default: "3908",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot0Unlock4xferKeyRoleSize",
@@ -1711,7 +1711,7 @@
     { name: "PlatOwnerAuthSlot0Unlock4xferKeyOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY",
       type: "int",
-      default: "3896",
+      default: "3912",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot0Unlock4xferKeySize",
@@ -1723,7 +1723,7 @@
     { name: "PlatOwnerAuthSlot0DigestOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT0_DIGEST",
       type: "int",
-      default: "4136",
+      default: "4152",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot0DigestSize",
@@ -1735,7 +1735,7 @@
     { name: "PlatOwnerAuthSlot1Offset",
       desc: "Offset of the PLAT_OWNER_AUTH_SLOT1 partition",
       type: "int",
-      default: "4144",
+      default: "4160",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot1Size",
@@ -1747,7 +1747,7 @@
     { name: "PlatOwnerAuthSlot1KeymanifestKeyTypeOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE",
       type: "int",
-      default: "4144",
+      default: "4160",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot1KeymanifestKeyTypeSize",
@@ -1759,7 +1759,7 @@
     { name: "PlatOwnerAuthSlot1KeymanifestKeyRoleOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE",
       type: "int",
-      default: "4148",
+      default: "4164",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot1KeymanifestKeyRoleSize",
@@ -1771,7 +1771,7 @@
     { name: "PlatOwnerAuthSlot1KeymanifestKeyOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY",
       type: "int",
-      default: "4152",
+      default: "4168",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot1KeymanifestKeySize",
@@ -1783,7 +1783,7 @@
     { name: "PlatOwnerAuthSlot1Unlock4xferKeyTypeOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE",
       type: "int",
-      default: "4216",
+      default: "4232",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot1Unlock4xferKeyTypeSize",
@@ -1795,7 +1795,7 @@
     { name: "PlatOwnerAuthSlot1Unlock4xferKeyRoleOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE",
       type: "int",
-      default: "4220",
+      default: "4236",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot1Unlock4xferKeyRoleSize",
@@ -1807,7 +1807,7 @@
     { name: "PlatOwnerAuthSlot1Unlock4xferKeyOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY",
       type: "int",
-      default: "4224",
+      default: "4240",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot1Unlock4xferKeySize",
@@ -1819,7 +1819,7 @@
     { name: "PlatOwnerAuthSlot1DigestOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT1_DIGEST",
       type: "int",
-      default: "4464",
+      default: "4480",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot1DigestSize",
@@ -1831,7 +1831,7 @@
     { name: "PlatOwnerAuthSlot2Offset",
       desc: "Offset of the PLAT_OWNER_AUTH_SLOT2 partition",
       type: "int",
-      default: "4472",
+      default: "4488",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot2Size",
@@ -1843,7 +1843,7 @@
     { name: "PlatOwnerAuthSlot2KeymanifestKeyTypeOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY_TYPE",
       type: "int",
-      default: "4472",
+      default: "4488",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot2KeymanifestKeyTypeSize",
@@ -1855,7 +1855,7 @@
     { name: "PlatOwnerAuthSlot2KeymanifestKeyRoleOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY_ROLE",
       type: "int",
-      default: "4476",
+      default: "4492",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot2KeymanifestKeyRoleSize",
@@ -1867,7 +1867,7 @@
     { name: "PlatOwnerAuthSlot2KeymanifestKeyOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY",
       type: "int",
-      default: "4480",
+      default: "4496",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot2KeymanifestKeySize",
@@ -1879,7 +1879,7 @@
     { name: "PlatOwnerAuthSlot2Unlock4xferKeyTypeOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY_TYPE",
       type: "int",
-      default: "4544",
+      default: "4560",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot2Unlock4xferKeyTypeSize",
@@ -1891,7 +1891,7 @@
     { name: "PlatOwnerAuthSlot2Unlock4xferKeyRoleOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY_ROLE",
       type: "int",
-      default: "4548",
+      default: "4564",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot2Unlock4xferKeyRoleSize",
@@ -1903,7 +1903,7 @@
     { name: "PlatOwnerAuthSlot2Unlock4xferKeyOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY",
       type: "int",
-      default: "4552",
+      default: "4568",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot2Unlock4xferKeySize",
@@ -1915,7 +1915,7 @@
     { name: "PlatOwnerAuthSlot2DigestOffset",
       desc: "Offset of PLAT_OWNER_AUTH_SLOT2_DIGEST",
       type: "int",
-      default: "4792",
+      default: "4808",
       local: "true"
     },
     { name: "PlatOwnerAuthSlot2DigestSize",
@@ -1927,7 +1927,7 @@
     { name: "ExtNvmOffset",
       desc: "Offset of the EXT_NVM partition",
       type: "int",
-      default: "4800",
+      default: "4816",
       local: "true"
     },
     { name: "ExtNvmSize",
@@ -1939,7 +1939,7 @@
     { name: "ExtNvmAntireplayFreshnessCntOffset",
       desc: "Offset of EXT_NVM_ANTIREPLAY_FRESHNESS_CNT",
       type: "int",
-      default: "4800",
+      default: "4816",
       local: "true"
     },
     { name: "ExtNvmAntireplayFreshnessCntSize",
@@ -1951,19 +1951,19 @@
     { name: "RomPatchOffset",
       desc: "Offset of the ROM_PATCH partition",
       type: "int",
-      default: "5824",
+      default: "5840",
       local: "true"
     },
     { name: "RomPatchSize",
       desc: "Size of the ROM_PATCH partition",
       type: "int",
-      default: "10088",
+      default: "10072",
       local: "true"
     },
     { name: "RomPatchDataOffset",
       desc: "Offset of ROM_PATCH_DATA",
       type: "int",
-      default: "5824",
+      default: "5840",
       local: "true"
     },
     { name: "RomPatchDataSize",

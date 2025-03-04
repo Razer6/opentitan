@@ -828,7 +828,7 @@
           name: OWNER_SW_CFG
           variant: Unbuffered
           absorb: false
-          size: 632
+          size: 648
           secret: false
           sw_digest: true
           hw_digest: false
@@ -881,7 +881,7 @@
             }
             {
               name: OWNER_SW_CFG_ROM_ALERT_CLASSIFICATION
-              size: 400
+              size: 412
               isdigest: false
               ismubi: false
               iskeymgr_creator: false
@@ -897,7 +897,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 816
+              offset: 828
             }
             {
               name: OWNER_SW_CFG_ROM_ALERT_ACCUM_THRESH
@@ -907,7 +907,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 880
+              offset: 892
             }
             {
               name: OWNER_SW_CFG_ROM_ALERT_TIMEOUT_CYCLES
@@ -917,7 +917,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 896
+              offset: 908
             }
             {
               name: OWNER_SW_CFG_ROM_ALERT_PHASE_CYCLES
@@ -927,7 +927,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 912
+              offset: 924
             }
             {
               name: OWNER_SW_CFG_ROM_ALERT_DIGEST_PROD
@@ -937,7 +937,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 976
+              offset: 988
             }
             {
               name: OWNER_SW_CFG_ROM_ALERT_DIGEST_PROD_END
@@ -947,7 +947,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 980
+              offset: 992
             }
             {
               name: OWNER_SW_CFG_ROM_ALERT_DIGEST_DEV
@@ -957,7 +957,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 984
+              offset: 996
             }
             {
               name: OWNER_SW_CFG_ROM_ALERT_DIGEST_RMA
@@ -967,7 +967,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 988
+              offset: 1000
             }
             {
               name: OWNER_SW_CFG_ROM_WATCHDOG_BITE_THRESHOLD_CYCLES
@@ -977,7 +977,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 992
+              offset: 1004
             }
             {
               name: OWNER_SW_CFG_ROM_KEYMGR_ROM_EXT_MEAS_EN
@@ -987,7 +987,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 996
+              offset: 1008
             }
             {
               name: OWNER_SW_CFG_MANUF_STATE
@@ -997,7 +997,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1000
+              offset: 1012
             }
             {
               name: OWNER_SW_CFG_ROM_RSTMGR_INFO_EN
@@ -1007,12 +1007,12 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1004
+              offset: 1016
             }
             {
               name: OWNER_SW_CFG_DIGEST
               size: 8
-              offset: 1024
+              offset: 1040
               ismubi: false
               isdigest: true
               inv_default: 503838644190341903
@@ -1062,7 +1062,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1032
+              offset: 1048
             }
             {
               name: OWNERSHIP_SLOT_STATE_PLAT_INTEG_AUTH
@@ -1081,7 +1081,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1048
+              offset: 1064
             }
             {
               name: OWNERSHIP_SLOT_STATE_PLAT_OWNER_AUTH
@@ -1104,7 +1104,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1064
+              offset: 1080
             }
           ]
           desc:
@@ -1134,7 +1134,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 48
-          offset: 1032
+          offset: 1048
         }
         {
           name: ROT_CREATOR_AUTH
@@ -1159,7 +1159,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1080
+              offset: 1096
             }
             {
               name: ROT_CREATOR_AUTH_NON_RAW_MFW_CODESIGN_KEY_ROLE
@@ -1169,7 +1169,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1084
+              offset: 1100
             }
             {
               name: ROT_CREATOR_AUTH_NON_RAW_MFW_CODESIGN_KEY
@@ -1189,7 +1189,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1088
+              offset: 1104
             }
             {
               name: ROT_CREATOR_AUTH_ROM2_PATCH_SIGVERIFY_KEY_TYPE
@@ -1199,7 +1199,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1152
+              offset: 1168
             }
             {
               name: ROT_CREATOR_AUTH_ROM2_PATCH_SIGVERIFY_KEY_ROLE
@@ -1209,7 +1209,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1156
+              offset: 1172
             }
             {
               name: ROT_CREATOR_AUTH_ROM2_PATCH_SIGVERIFY_KEY
@@ -1229,7 +1229,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1160
+              offset: 1176
             }
             {
               name: ROT_CREATOR_AUTH_KEYMANIFEST_KEY_TYPE
@@ -1239,7 +1239,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1224
+              offset: 1240
             }
             {
               name: ROT_CREATOR_AUTH_KEYMANIFEST_KEY_ROLE
@@ -1249,7 +1249,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1228
+              offset: 1244
             }
             {
               name: ROT_CREATOR_AUTH_KEYMANIFEST_KEY
@@ -1268,7 +1268,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1232
+              offset: 1248
             }
             {
               name: ROT_CREATOR_AUTH_KEY_DEVICE_ID
@@ -1278,7 +1278,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1296
+              offset: 1312
             }
             {
               name: ROT_CREATOR_AUTH_KEY_METADATA
@@ -1288,7 +1288,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1328
+              offset: 1344
             }
             {
               name: ROT_CREATOR_AUTH_KEY_SIGNATURE
@@ -1309,7 +1309,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1344
+              offset: 1360
             }
             {
               name: ROT_CREATOR_AUTH_IDENTITY_CERT
@@ -1326,7 +1326,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 1408
+              offset: 1424
             }
             {
               name: ROT_CREATOR_AUTH_IDENTITY_CERT_CMAC
@@ -1337,12 +1337,12 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 2176
+              offset: 2192
             }
             {
               name: ROT_CREATOR_AUTH_DIGEST
               size: 8
-              offset: 2496
+              offset: 2512
               ismubi: false
               isdigest: true
               inv_default: 4720744928697992353
@@ -1353,7 +1353,7 @@
           desc: Software managed RoT Creator partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          offset: 1080
+          offset: 1096
         }
         {
           name: ROT_OWNER_AUTH_SLOT0
@@ -1378,7 +1378,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 2504
+              offset: 2520
             }
             {
               name: ROT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE
@@ -1388,7 +1388,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 2508
+              offset: 2524
             }
             {
               name: ROT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY
@@ -1406,7 +1406,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 2512
+              offset: 2528
             }
             {
               name: ROT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE
@@ -1416,7 +1416,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 2576
+              offset: 2592
             }
             {
               name: ROT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE
@@ -1426,7 +1426,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 2580
+              offset: 2596
             }
             {
               name: ROT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY
@@ -1444,12 +1444,12 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 2584
+              offset: 2600
             }
             {
               name: ROT_OWNER_AUTH_SLOT0_DIGEST
               size: 8
-              offset: 2824
+              offset: 2840
               ismubi: false
               isdigest: true
               inv_default: 4321159426593998838
@@ -1460,7 +1460,7 @@
           desc: Software managed RoT Owner slot 0 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          offset: 2504
+          offset: 2520
         }
         {
           name: ROT_OWNER_AUTH_SLOT1
@@ -1485,7 +1485,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 2832
+              offset: 2848
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE
@@ -1495,7 +1495,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 2836
+              offset: 2852
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY
@@ -1513,7 +1513,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 2840
+              offset: 2856
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE
@@ -1523,7 +1523,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 2904
+              offset: 2920
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE
@@ -1533,7 +1533,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 2908
+              offset: 2924
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY
@@ -1551,12 +1551,12 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 2912
+              offset: 2928
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_DIGEST
               size: 8
-              offset: 3152
+              offset: 3168
               ismubi: false
               isdigest: true
               inv_default: 3300532900599057395
@@ -1567,7 +1567,7 @@
           desc: Software managed RoT Owner slot 1 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          offset: 2832
+          offset: 2848
         }
         {
           name: PLAT_INTEG_AUTH_SLOT0
@@ -1592,7 +1592,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3160
+              offset: 3176
             }
             {
               name: PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE
@@ -1602,7 +1602,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3164
+              offset: 3180
             }
             {
               name: PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY
@@ -1620,7 +1620,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3168
+              offset: 3184
             }
             {
               name: PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE
@@ -1630,7 +1630,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3232
+              offset: 3248
             }
             {
               name: PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE
@@ -1640,7 +1640,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3236
+              offset: 3252
             }
             {
               name: PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY
@@ -1658,12 +1658,12 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3240
+              offset: 3256
             }
             {
               name: PLAT_INTEG_AUTH_SLOT0_DIGEST
               size: 8
-              offset: 3480
+              offset: 3496
               ismubi: false
               isdigest: true
               inv_default: 6970134785508705831
@@ -1674,7 +1674,7 @@
           desc: Software managed Platform Integrator slot 0 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          offset: 3160
+          offset: 3176
         }
         {
           name: PLAT_INTEG_AUTH_SLOT1
@@ -1699,7 +1699,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3488
+              offset: 3504
             }
             {
               name: PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE
@@ -1709,7 +1709,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3492
+              offset: 3508
             }
             {
               name: PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY
@@ -1727,7 +1727,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3496
+              offset: 3512
             }
             {
               name: PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE
@@ -1737,7 +1737,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3560
+              offset: 3576
             }
             {
               name: PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE
@@ -1747,7 +1747,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3564
+              offset: 3580
             }
             {
               name: PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY
@@ -1765,12 +1765,12 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3568
+              offset: 3584
             }
             {
               name: PLAT_INTEG_AUTH_SLOT1_DIGEST
               size: 8
-              offset: 3808
+              offset: 3824
               ismubi: false
               isdigest: true
               inv_default: 13321159437274557062
@@ -1781,7 +1781,7 @@
           desc: Software managed Platform Integrator slot 1 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          offset: 3488
+          offset: 3504
         }
         {
           name: PLAT_OWNER_AUTH_SLOT0
@@ -1806,7 +1806,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3816
+              offset: 3832
             }
             {
               name: PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE
@@ -1816,7 +1816,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3820
+              offset: 3836
             }
             {
               name: PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY
@@ -1834,7 +1834,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3824
+              offset: 3840
             }
             {
               name: PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE
@@ -1844,7 +1844,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3888
+              offset: 3904
             }
             {
               name: PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE
@@ -1854,7 +1854,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3892
+              offset: 3908
             }
             {
               name: PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY
@@ -1872,12 +1872,12 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 3896
+              offset: 3912
             }
             {
               name: PLAT_OWNER_AUTH_SLOT0_DIGEST
               size: 8
-              offset: 4136
+              offset: 4152
               ismubi: false
               isdigest: true
               inv_default: 13771798441966885772
@@ -1888,7 +1888,7 @@
           desc: Software managed Platform Owner slot 0 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          offset: 3816
+          offset: 3832
         }
         {
           name: PLAT_OWNER_AUTH_SLOT1
@@ -1913,7 +1913,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 4144
+              offset: 4160
             }
             {
               name: PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE
@@ -1923,7 +1923,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 4148
+              offset: 4164
             }
             {
               name: PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY
@@ -1941,7 +1941,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 4152
+              offset: 4168
             }
             {
               name: PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE
@@ -1951,7 +1951,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 4216
+              offset: 4232
             }
             {
               name: PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE
@@ -1961,7 +1961,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 4220
+              offset: 4236
             }
             {
               name: PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY
@@ -1979,12 +1979,12 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 4224
+              offset: 4240
             }
             {
               name: PLAT_OWNER_AUTH_SLOT1_DIGEST
               size: 8
-              offset: 4464
+              offset: 4480
               ismubi: false
               isdigest: true
               inv_default: 7227229721152720746
@@ -1995,7 +1995,7 @@
           desc: Software managed Platform Owner slot 1 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          offset: 4144
+          offset: 4160
         }
         {
           name: PLAT_OWNER_AUTH_SLOT2
@@ -2020,7 +2020,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 4472
+              offset: 4488
             }
             {
               name: PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY_ROLE
@@ -2030,7 +2030,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 4476
+              offset: 4492
             }
             {
               name: PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY
@@ -2048,7 +2048,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 4480
+              offset: 4496
             }
             {
               name: PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY_TYPE
@@ -2058,7 +2058,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 4544
+              offset: 4560
             }
             {
               name: PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY_ROLE
@@ -2068,7 +2068,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 4548
+              offset: 4564
             }
             {
               name: PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY
@@ -2086,12 +2086,12 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 4552
+              offset: 4568
             }
             {
               name: PLAT_OWNER_AUTH_SLOT2_DIGEST
               size: 8
-              offset: 4792
+              offset: 4808
               ismubi: false
               isdigest: true
               inv_default: 388365934790665074
@@ -2102,7 +2102,7 @@
           desc: Software managed Platform Owner slot 2 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          offset: 4472
+          offset: 4488
         }
         {
           name: EXT_NVM
@@ -2134,14 +2134,14 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 4800
+              offset: 4816
             }
           ]
           desc: Anti-replay protection Strike Counters partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 1024
-          offset: 4800
+          offset: 4816
         }
         {
           name: ROM_PATCH
@@ -2173,7 +2173,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 5824
+              offset: 5840
             }
             {
               name: ROM_PATCH_DIGEST
@@ -2189,8 +2189,8 @@
           desc: ROM Patch Code section. May contain multiple signed ROM2 patches.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          size: 10088
-          offset: 5824
+          size: 10072
+          offset: 5840
         }
         {
           name: SOC_FUSES
