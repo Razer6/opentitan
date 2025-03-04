@@ -13,7 +13,7 @@
 
 package top_racl_pkg;
   // Number of RACL policies used
-  parameter int unsigned NrRaclPolicies = 10;
+  parameter int unsigned NrRaclPolicies = 16;
 
   // RACL Policy selector bits
   parameter int unsigned RaclPolicySelLen = prim_util_pkg::vbits(NrRaclPolicies);
@@ -129,6 +129,82 @@ package top_racl_pkg;
   parameter racl_policy_sel_t RACL_POLICY_SEL_PWC_PRIVATE_POLICY = 7;
   parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_PRIVATE_POLICY = 8;
   parameter racl_policy_sel_t RACL_POLICY_SEL_DUC_PRIVATE_POLICY = 9;
+  /**
+   * RACL Policy Selectors for group lioGrpA
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_ALL_RD_WR_POLICY = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_ROT_PRIVATE_POLICY = 1;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_HW_ROT_PWC_WR_ALL_RD_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_PWC_PRIVATE_POLICY = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_MIO_PRIVATE_POLICY = 4;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_PWMPOLICY = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_GPIOPOLICY = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_UARTPOLICY = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_I2C0POLICY = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_I2C1POLICY = 9;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_I2C2POLICY = 10;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_I3C0POLICY = 11;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_I3C1POLICY = 12;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_I3C2POLICY = 13;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_SPIHSTPOLICY = 14;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_SPIDEVPOLICY = 15;
+  /**
+   * RACL Policy Selectors for group lioGrpB
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_ALL_RD_WR_POLICY = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_ROT_PRIVATE_POLICY = 1;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_PWC_PRIVATE_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_HW_ROT_PWC_WR_ALL_RD_POLICY = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_MIO_PRIVATE_POLICY = 4;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_PWMPOLICY = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_GPIOPOLICY = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_UARTPOLICY = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_I2C0POLICY = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_I2C1POLICY = 9;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_I2C2POLICY = 10;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_I3C0POLICY = 11;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_I3C1POLICY = 12;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_I3C2POLICY = 13;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_SPIHSTPOLICY = 14;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_SPIDEVPOLICY = 15;
+  /**
+   * RACL Policy Selectors for group lioGrpC
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_ALL_RD_WR_POLICY = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_ROT_PRIVATE_POLICY = 1;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_MIO_PRIVATE_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_PWC_PRIVATE_POLICY = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_HW_ROT_PWC_WR_ALL_RD_POLICY = 4;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_PWMPOLICY = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_GPIOPOLICY = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_UARTPOLICY = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_I2C0POLICY = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_I2C1POLICY = 9;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_I2C2POLICY = 10;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_I3C0POLICY = 11;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_I3C1POLICY = 12;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_I3C2POLICY = 13;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_SPIHSTPOLICY = 14;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_SPIDEVPOLICY = 15;
+  /**
+   * RACL Policy Selectors for group lioGrpD
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_ALL_RD_WR_POLICY = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_ROT_PRIVATE_POLICY = 1;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_HW_ROT_PWC_WR_ALL_RD_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_PWC_PRIVATE_POLICY = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_MIO_PRIVATE_POLICY = 4;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_PWMPOLICY = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_GPIOPOLICY = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_UARTPOLICY = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_I2C0POLICY = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_I2C1POLICY = 9;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_I2C2POLICY = 10;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_I3C0POLICY = 11;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_I3C1POLICY = 12;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_I3C2POLICY = 13;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_SPIHSTPOLICY = 14;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_SPIDEVPOLICY = 15;
 
 
 endpackage

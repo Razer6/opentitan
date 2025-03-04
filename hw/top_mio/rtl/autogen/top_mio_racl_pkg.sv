@@ -27,6 +27,74 @@ package top_mio_racl_pkg;
    *      7: pwc_private_policy
    *      8: mio_private_policy
    *      9: duc_private_policy
+   *   lioGrpA
+   *      0: all_rd_wr_policy
+   *      1: rot_private_policy
+   *      2: hw_rot_pwc_wr_all_rd_policy
+   *      3: pwc_private_policy
+   *      4: mio_private_policy
+   *      5: pwmPolicy
+   *      6: gpioPolicy
+   *      7: uartPolicy
+   *      8: i2c0Policy
+   *      9: i2c1Policy
+   *     10: i2c2Policy
+   *     11: i3c0Policy
+   *     12: i3c1Policy
+   *     13: i3c2Policy
+   *     14: spihstPolicy
+   *     15: spidevPolicy
+   *   lioGrpB
+   *      0: all_rd_wr_policy
+   *      1: rot_private_policy
+   *      2: pwc_private_policy
+   *      3: hw_rot_pwc_wr_all_rd_policy
+   *      4: mio_private_policy
+   *      5: pwmPolicy
+   *      6: gpioPolicy
+   *      7: uartPolicy
+   *      8: i2c0Policy
+   *      9: i2c1Policy
+   *     10: i2c2Policy
+   *     11: i3c0Policy
+   *     12: i3c1Policy
+   *     13: i3c2Policy
+   *     14: spihstPolicy
+   *     15: spidevPolicy
+   *   lioGrpC
+   *      0: all_rd_wr_policy
+   *      1: rot_private_policy
+   *      2: mio_private_policy
+   *      3: pwc_private_policy
+   *      4: hw_rot_pwc_wr_all_rd_policy
+   *      5: pwmPolicy
+   *      6: gpioPolicy
+   *      7: uartPolicy
+   *      8: i2c0Policy
+   *      9: i2c1Policy
+   *     10: i2c2Policy
+   *     11: i3c0Policy
+   *     12: i3c1Policy
+   *     13: i3c2Policy
+   *     14: spihstPolicy
+   *     15: spidevPolicy
+   *   lioGrpD
+   *      0: all_rd_wr_policy
+   *      1: rot_private_policy
+   *      2: hw_rot_pwc_wr_all_rd_policy
+   *      3: pwc_private_policy
+   *      4: mio_private_policy
+   *      5: pwmPolicy
+   *      6: gpioPolicy
+   *      7: uartPolicy
+   *      8: i2c0Policy
+   *      9: i2c1Policy
+   *     10: i2c2Policy
+   *     11: i3c0Policy
+   *     12: i3c1Policy
+   *     13: i3c2Policy
+   *     14: spihstPolicy
+   *     15: spidevPolicy
    */
 
   /**

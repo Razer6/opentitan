@@ -19,6 +19,94 @@
 | duc_private_policy          |       9 |               |
 
 
+### RACL group: lioGrpA
+
+| Policy Name                 |   Index | Description   |
+|:----------------------------|--------:|:--------------|
+| all_rd_wr_policy            |       0 |               |
+| rot_private_policy          |       1 |               |
+| hw_rot_pwc_wr_all_rd_policy |       2 |               |
+| pwc_private_policy          |       3 |               |
+| mio_private_policy          |       4 |               |
+| pwmPolicy                   |       5 |               |
+| gpioPolicy                  |       6 |               |
+| uartPolicy                  |       7 |               |
+| i2c0Policy                  |       8 |               |
+| i2c1Policy                  |       9 |               |
+| i2c2Policy                  |      10 |               |
+| i3c0Policy                  |      11 |               |
+| i3c1Policy                  |      12 |               |
+| i3c2Policy                  |      13 |               |
+| spihstPolicy                |      14 |               |
+| spidevPolicy                |      15 |               |
+
+
+### RACL group: lioGrpB
+
+| Policy Name                 |   Index | Description   |
+|:----------------------------|--------:|:--------------|
+| all_rd_wr_policy            |       0 |               |
+| rot_private_policy          |       1 |               |
+| pwc_private_policy          |       2 |               |
+| hw_rot_pwc_wr_all_rd_policy |       3 |               |
+| mio_private_policy          |       4 |               |
+| pwmPolicy                   |       5 |               |
+| gpioPolicy                  |       6 |               |
+| uartPolicy                  |       7 |               |
+| i2c0Policy                  |       8 |               |
+| i2c1Policy                  |       9 |               |
+| i2c2Policy                  |      10 |               |
+| i3c0Policy                  |      11 |               |
+| i3c1Policy                  |      12 |               |
+| i3c2Policy                  |      13 |               |
+| spihstPolicy                |      14 |               |
+| spidevPolicy                |      15 |               |
+
+
+### RACL group: lioGrpC
+
+| Policy Name                 |   Index | Description   |
+|:----------------------------|--------:|:--------------|
+| all_rd_wr_policy            |       0 |               |
+| rot_private_policy          |       1 |               |
+| mio_private_policy          |       2 |               |
+| pwc_private_policy          |       3 |               |
+| hw_rot_pwc_wr_all_rd_policy |       4 |               |
+| pwmPolicy                   |       5 |               |
+| gpioPolicy                  |       6 |               |
+| uartPolicy                  |       7 |               |
+| i2c0Policy                  |       8 |               |
+| i2c1Policy                  |       9 |               |
+| i2c2Policy                  |      10 |               |
+| i3c0Policy                  |      11 |               |
+| i3c1Policy                  |      12 |               |
+| i3c2Policy                  |      13 |               |
+| spihstPolicy                |      14 |               |
+| spidevPolicy                |      15 |               |
+
+
+### RACL group: lioGrpD
+
+| Policy Name                 |   Index | Description   |
+|:----------------------------|--------:|:--------------|
+| all_rd_wr_policy            |       0 |               |
+| rot_private_policy          |       1 |               |
+| hw_rot_pwc_wr_all_rd_policy |       2 |               |
+| pwc_private_policy          |       3 |               |
+| mio_private_policy          |       4 |               |
+| pwmPolicy                   |       5 |               |
+| gpioPolicy                  |       6 |               |
+| uartPolicy                  |       7 |               |
+| i2c0Policy                  |       8 |               |
+| i2c1Policy                  |       9 |               |
+| i2c2Policy                  |      10 |               |
+| i3c0Policy                  |      11 |               |
+| i3c1Policy                  |      12 |               |
+| i3c2Policy                  |      13 |               |
+| spihstPolicy                |      14 |               |
+| spidevPolicy                |      15 |               |
+
+
 ## RACL configuration
 
 ### RACL configuration for `mbx0` and interface `soc`
