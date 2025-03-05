@@ -6,9 +6,7 @@
 
 `include "prim_assert.sv"
 
-module pwc_soc_proxy
-  import pwc_soc_proxy_reg_pkg::*;
-(
+module pwc_soc_proxy (
   input  logic clk_i,
   input  logic rst_ni,
 
@@ -37,9 +35,6 @@ module pwc_soc_proxy
   // Final egress port to CTN
   output tlul_pkg::tl_h2d_t ctn_tl_h2d_o,
   input  tlul_pkg::tl_d2h_t ctn_tl_d2h_i,
-
-  input  prim_alert_pkg::alert_rx_t [NumAlerts-1:0] alert_rx_i,
-  output prim_alert_pkg::alert_tx_t [NumAlerts-1:0] alert_tx_o,
 
   input  logic [7:0] soc_lsio_trigger_i,
   output dma_pkg::lsio_trigger_t dma_lsio_trigger_o,
