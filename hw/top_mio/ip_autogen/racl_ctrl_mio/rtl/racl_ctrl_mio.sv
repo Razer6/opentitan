@@ -134,14 +134,16 @@ module racl_ctrl_mio import racl_ctrl_mio_reg_pkg::*; #(
   assign policy_duc_private_policy.read_perm = reg2hw.policy_duc_private_policy_shadowed.read_perm.q;
   assign policy_duc_private_policy.write_perm = reg2hw.policy_duc_private_policy_shadowed.write_perm.q;
 
+  localparam racl_policy_t UnusedPolicy = '0;
+
   // Broadcast all policies via policy vector
   assign racl_policies_o = {
-    '0,
-    '0,
-    '0,
-    '0,
-    '0,
-    '0,
+    UnusedPolicy,
+    UnusedPolicy,
+    UnusedPolicy,
+    UnusedPolicy,
+    UnusedPolicy,
+    UnusedPolicy,
     policy_duc_private_policy,
     policy_mio_private_policy,
     policy_pwc_private_policy,
