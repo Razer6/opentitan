@@ -8,9 +8,7 @@
 
 module mio_soc_proxy
   import mio_soc_proxy_reg_pkg::*;
-#(
-  parameter logic [NumAlerts-1:0] AlertAsyncOn = {NumAlerts{1'b1}}
-) (
+(
   input  logic clk_i,
   input  logic rst_ni,
 
