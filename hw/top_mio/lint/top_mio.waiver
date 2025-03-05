@@ -41,3 +41,7 @@ waive -rules {NOT_READ} -location {tlul_socket_m1.sv} \
 waive -rules {LINE_LENGTH} -location {prim_misc_dft_pkg.sv} \
       -regexp {Line length of } \
       -comment "Waive Rivos line length"
+
+waive -rules {LINE_LENGTH} -location {top_mio_racl_pkg.sv} \
+      -regexp {Line length of } \
+      -comment "Waive line length violations in generated code. "
