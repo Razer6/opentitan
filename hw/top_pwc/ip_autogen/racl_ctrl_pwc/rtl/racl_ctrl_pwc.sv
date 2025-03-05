@@ -136,6 +136,12 @@ module racl_ctrl_pwc import racl_ctrl_pwc_reg_pkg::*; #(
 
   // Broadcast all policies via policy vector
   assign racl_policies_o = {
+    '0,
+    '0,
+    '0,
+    '0,
+    '0,
+    '0,
     policy_duc_private_policy,
     policy_mio_private_policy,
     policy_pwc_private_policy,

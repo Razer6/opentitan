@@ -8,7 +8,7 @@
     module_instance_name: racl_ctrl_pwc
     nr_role_bits: 4
     nr_ctn_uid_bits: 5
-    nr_policies: 10
+    nr_policies: 16
     nr_subscribing_ips: 8
     policies:
     [

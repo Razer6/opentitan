@@ -7,7 +7,6 @@
 package racl_ctrl_pwc_reg_pkg;
 
   // Param list
-  parameter int NumPolicies = 10;
   parameter int NumAlerts = 2;
 
   // Address widths within the block

@@ -54,12 +54,6 @@
   ]
   regwidth: "32",
   param_list: [
-    { name: "NumPolicies",
-      desc: "Number of policies",
-      type: "int",
-      default: "${nr_policies}",
-      local: "true"
-    },
     { name: "NumSubscribingIps",
       desc: "Number of subscribing RACL IPs",
       type: "int",

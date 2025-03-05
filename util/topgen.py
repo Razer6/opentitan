@@ -743,7 +743,7 @@ def _get_racl_params(topcfg: Dict[str, object]) -> Dict[str, object]:
         "module_instance_name": racl_ctrl["type"],
         "nr_role_bits": topcfg["racl"]["nr_role_bits"],
         "nr_ctn_uid_bits": topcfg["racl"]["nr_ctn_uid_bits"],
-        "nr_policies": len(policies),
+        "nr_policies": max(len(policies) for policies in topcfg["racl"]["policies"].values()),
         'nr_subscribing_ips': num_subscribing_ips[racl_group],
         "policies": policies
     }
