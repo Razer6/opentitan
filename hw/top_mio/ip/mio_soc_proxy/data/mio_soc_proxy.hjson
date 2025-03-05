@@ -27,7 +27,6 @@
   ]
 
   bus_interfaces: [
-    { protocol: "tlul", direction: "device", name: "core" }
     { protocol: "tlul", direction: "device", name: "ctn" }
   ]
 
@@ -165,9 +164,6 @@
   regwidth: "32"
 
   registers: {
-    core: [
-      // no CSRs defined yet
-    ]
     ctn: [
       // no CSRs defined here
     ]

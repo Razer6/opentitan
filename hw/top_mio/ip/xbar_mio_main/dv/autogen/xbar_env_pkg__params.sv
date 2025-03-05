@@ -16,9 +16,6 @@ tl_device_t xbar_devices[$] = '{
     '{"mio_peri", '{
         '{32'h30000000, 32'h307fffff}
     }},
-    '{"mio_soc_proxy__core", '{
-        '{32'h22030000, 32'h22030001}
-    }},
     '{"mio_soc_proxy__ctn", '{
         '{32'h40000000, 32'h7fffffff}
     }},
@@ -83,7 +80,6 @@ tl_host_t xbar_hosts[$] = '{
         "sram_ctrl_mbox__ram",
         "sram_ctrl_mbox__regs",
         "mio_soc_proxy__ctn",
-        "mio_soc_proxy__core",
         "dma",
         "mbx0__core",
         "mbx1__core",
@@ -104,7 +100,6 @@ tl_host_t xbar_hosts[$] = '{
         "sram_ctrl_mbox__ram",
         "sram_ctrl_mbox__regs",
         "mio_soc_proxy__ctn",
-        "mio_soc_proxy__core",
         "dma",
         "mbx0__core",
         "mbx1__core",

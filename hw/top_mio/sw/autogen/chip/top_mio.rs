@@ -47,20 +47,6 @@ pub const AON_TIMER_AON_BASE_ADDR: usize = 0x30470000;
 /// `AON_TIMER_AON_BASE_ADDR + AON_TIMER_AON_SIZE_BYTES`.
 pub const AON_TIMER_AON_SIZE_BYTES: usize = 0x40;
 
-/// Peripheral base address for core device on mio_soc_proxy in top mio.
-///
-/// This should be used with #mmio_region_from_addr to access the memory-mapped
-/// registers associated with the peripheral (usually via a DIF).
-pub const MIO_SOC_PROXY_CORE_BASE_ADDR: usize = 0x22030000;
-
-/// Peripheral size for core device on mio_soc_proxy in top mio.
-///
-/// This is the size (in bytes) of the peripheral's reserved memory area. All
-/// memory-mapped registers associated with this peripheral should have an
-/// address between #MIO_SOC_PROXY_CORE_BASE_ADDR and
-/// `MIO_SOC_PROXY_CORE_BASE_ADDR + MIO_SOC_PROXY_CORE_SIZE_BYTES`.
-pub const MIO_SOC_PROXY_CORE_SIZE_BYTES: usize = 0x2;
-
 /// Peripheral base address for ctn device on mio_soc_proxy in top mio.
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped

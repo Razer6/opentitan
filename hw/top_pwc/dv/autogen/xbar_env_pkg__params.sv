@@ -13,9 +13,6 @@ tl_device_t xbar_devices[$] = '{
     '{"rv_dm__mem", '{
         '{32'h00040000, 32'h00040fff}
     }},
-    '{"pwc_soc_proxy__core", '{
-        '{32'h22030000, 32'h22030001}
-    }},
     '{"pwc_soc_proxy__ctn", '{
         '{32'h40000000, 32'h7fffffff}
     }},
@@ -126,7 +123,6 @@ tl_host_t xbar_hosts[$] = '{
         "sram_ctrl_mbox__ram",
         "sram_ctrl_mbox__regs",
         "pwc_soc_proxy__ctn",
-        "pwc_soc_proxy__core",
         "dma",
         "mbx0__core",
         "mbx1__core",
@@ -151,7 +147,6 @@ tl_host_t xbar_hosts[$] = '{
         "sram_ctrl_mbox__ram",
         "sram_ctrl_mbox__regs",
         "pwc_soc_proxy__ctn",
-        "pwc_soc_proxy__core",
         "dma",
         "mbx0__core",
         "mbx1__core",

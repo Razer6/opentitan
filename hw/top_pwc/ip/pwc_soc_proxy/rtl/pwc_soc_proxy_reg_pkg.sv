@@ -7,11 +7,9 @@
 package pwc_soc_proxy_reg_pkg;
 
   // Address widths within the block
-  parameter int CoreAw = 1;
   parameter int CtnAw = 1;
 
   // Number of registers for every interface
-  parameter int NumRegsCore = 0;
   parameter int NumRegsCtn = 0;
 
 endpackage

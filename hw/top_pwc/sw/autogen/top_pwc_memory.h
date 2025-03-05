@@ -118,23 +118,6 @@
  */
 #define TOP_PWC_AON_TIMER_AON_SIZE_BYTES 0x40
 /**
- * Peripheral base address for core device on pwc_soc_proxy in top pwc.
- *
- * This should be used with #mmio_region_from_addr to access the memory-mapped
- * registers associated with the peripheral (usually via a DIF).
- */
-#define TOP_PWC_PWC_SOC_PROXY_CORE_BASE_ADDR 0x22030000
-
-/**
- * Peripheral size for core device on pwc_soc_proxy in top pwc.
- *
- * This is the size (in bytes) of the peripheral's reserved memory area. All
- * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_PWC_PWC_SOC_PROXY_CORE_BASE_ADDR and
- * `TOP_PWC_PWC_SOC_PROXY_CORE_BASE_ADDR + TOP_PWC_PWC_SOC_PROXY_CORE_SIZE_BYTES`.
- */
-#define TOP_PWC_PWC_SOC_PROXY_CORE_SIZE_BYTES 0x2
-/**
  * Peripheral base address for ctn device on pwc_soc_proxy in top pwc.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped

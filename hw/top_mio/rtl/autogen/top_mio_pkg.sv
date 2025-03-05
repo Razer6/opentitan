@@ -32,16 +32,6 @@ package top_mio_pkg;
   parameter int unsigned TOP_MIO_AON_TIMER_AON_SIZE_BYTES = 32'h40;
 
   /**
-   * Peripheral base address for core device on mio_soc_proxy in top mio.
-   */
-  parameter int unsigned TOP_MIO_MIO_SOC_PROXY_CORE_BASE_ADDR = 32'h22030000;
-
-  /**
-   * Peripheral size in bytes for core device on mio_soc_proxy in top mio.
-   */
-  parameter int unsigned TOP_MIO_MIO_SOC_PROXY_CORE_SIZE_BYTES = 32'h2;
-
-  /**
    * Peripheral base address for ctn device on mio_soc_proxy in top mio.
    */
   parameter int unsigned TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR = 32'h40000000;

@@ -10,10 +10,6 @@ module mio_soc_proxy (
   input  logic clk_i,
   input  logic rst_ni,
 
-  // Device interface
-  input  tlul_pkg::tl_h2d_t core_tl_i,
-  output tlul_pkg::tl_d2h_t core_tl_o,
-
   // Egress port to CTN from fabric, to be muxed
   input  tlul_pkg::tl_h2d_t ctn_tl_i,
   output tlul_pkg::tl_d2h_t ctn_tl_o,

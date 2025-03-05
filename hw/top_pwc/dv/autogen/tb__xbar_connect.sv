@@ -41,7 +41,6 @@ tl_if mbx_pcie0__sram_tl_if(clk_ext_main, rst_n);
 
 tl_if rv_dm__regs_tl_if(clk_ext_main, rst_n);
 tl_if rv_dm__mem_tl_if(clk_ext_main, rst_n);
-tl_if pwc_soc_proxy__core_tl_if(clk_ext_main, rst_n);
 tl_if pwc_soc_proxy__ctn_tl_if(clk_ext_main, rst_n);
 tl_if rv_plic_pwc_tl_if(clk_ext_main, rst_n);
 tl_if rv_core_ibex__cfg_tl_if(clk_ext_main, rst_n);
@@ -102,7 +101,6 @@ initial begin
     `DRIVE_CHIP_TL_HOST_IF(rv_dm__sba, rv_dm, sba_tl_h)
     `DRIVE_CHIP_TL_DEVICE_IF(rv_dm__regs, rv_dm, regs_tl_d)
     `DRIVE_CHIP_TL_DEVICE_IF(rv_dm__mem, rv_dm, mem_tl_d)
-    `DRIVE_CHIP_TL_DEVICE_IF(pwc_soc_proxy__core, pwc_soc_proxy, core_tl)
     `DRIVE_CHIP_TL_DEVICE_IF(pwc_soc_proxy__ctn, pwc_soc_proxy, ctn_tl)
     `DRIVE_CHIP_TL_DEVICE_IF(rv_plic_pwc, rv_plic_pwc, tl)
     `DRIVE_CHIP_TL_DEVICE_IF(rv_core_ibex__cfg, rv_core_ibex, cfg_tl_d)

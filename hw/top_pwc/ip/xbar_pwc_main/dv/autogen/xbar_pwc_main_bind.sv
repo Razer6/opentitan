@@ -92,12 +92,6 @@ module xbar_pwc_main_bind;
     .h2d    (tl_pwc_peri_o),
     .d2h    (tl_pwc_peri_i)
   );
-  bind xbar_pwc_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_pwc_soc_proxy__core (
-    .clk_i  (clk_main_i),
-    .rst_ni (rst_main_ni),
-    .h2d    (tl_pwc_soc_proxy__core_o),
-    .d2h    (tl_pwc_soc_proxy__core_i)
-  );
   bind xbar_pwc_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_pwc_soc_proxy__ctn (
     .clk_i  (clk_main_i),
     .rst_ni (rst_main_ni),

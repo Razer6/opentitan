@@ -11,7 +11,6 @@ package tl_mio_main_pkg;
   localparam logic [0:0][31:0] ADDR_SPACE_MIO_PERI             = {
     32'h 30000000
   };
-  localparam logic [31:0] ADDR_SPACE_MIO_SOC_PROXY__CORE  = 32'h 22030000;
   localparam logic [31:0] ADDR_SPACE_MIO_SOC_PROXY__CTN   = 32'h 40000000;
   localparam logic [31:0] ADDR_SPACE_RV_PLIC_MIO          = 32'h 28000000;
   localparam logic [31:0] ADDR_SPACE_RV_CORE_IBEX__CFG    = 32'h 211f0000;
@@ -33,7 +32,6 @@ package tl_mio_main_pkg;
   localparam logic [0:0][31:0] ADDR_MASK_MIO_PERI             = {
     32'h 007fffff
   };
-  localparam logic [31:0] ADDR_MASK_MIO_SOC_PROXY__CORE  = 32'h 00000001;
   localparam logic [31:0] ADDR_MASK_MIO_SOC_PROXY__CTN   = 32'h 3fffffff;
   localparam logic [31:0] ADDR_MASK_RV_PLIC_MIO          = 32'h 07ffffff;
   localparam logic [31:0] ADDR_MASK_RV_CORE_IBEX__CFG    = 32'h 000007ff;
@@ -51,28 +49,27 @@ package tl_mio_main_pkg;
   localparam logic [31:0] ADDR_MASK_MBX_PCIE0__CORE      = 32'h 0000007f;
 
   localparam int N_HOST   = 11;
-  localparam int N_DEVICE = 19;
+  localparam int N_DEVICE = 18;
 
   typedef enum int {
     TlRvDmRegs = 0,
     TlRvDmMem = 1,
     TlMioPeri = 2,
-    TlMioSocProxyCore = 3,
-    TlMioSocProxyCtn = 4,
-    TlRvPlicMio = 5,
-    TlRvCoreIbexCfg = 6,
-    TlSramCtrlMainRegs = 7,
-    TlSramCtrlMainRam = 8,
-    TlSramCtrlMboxRegs = 9,
-    TlSramCtrlMboxRam = 10,
-    TlDma = 11,
-    TlMbx0Core = 12,
-    TlMbx1Core = 13,
-    TlMbx2Core = 14,
-    TlMbx3Core = 15,
-    TlMbx4Core = 16,
-    TlMbx5Core = 17,
-    TlMbxPcie0Core = 18
+    TlMioSocProxyCtn = 3,
+    TlRvPlicMio = 4,
+    TlRvCoreIbexCfg = 5,
+    TlSramCtrlMainRegs = 6,
+    TlSramCtrlMainRam = 7,
+    TlSramCtrlMboxRegs = 8,
+    TlSramCtrlMboxRam = 9,
+    TlDma = 10,
+    TlMbx0Core = 11,
+    TlMbx1Core = 12,
+    TlMbx2Core = 13,
+    TlMbx3Core = 14,
+    TlMbx4Core = 15,
+    TlMbx5Core = 16,
+    TlMbxPcie0Core = 17
   } tl_device_e;
 
   typedef enum int {

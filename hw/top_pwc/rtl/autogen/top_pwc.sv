@@ -260,8 +260,6 @@ module top_pwc #(
   tlul_pkg::tl_d2h_t       rv_dm_mem_tl_d_rsp;
   tlul_pkg::tl_h2d_t       pwc_main_tl_pwc_peri_req;
   tlul_pkg::tl_d2h_t       pwc_main_tl_pwc_peri_rsp;
-  tlul_pkg::tl_h2d_t       pwc_soc_proxy_core_tl_req;
-  tlul_pkg::tl_d2h_t       pwc_soc_proxy_core_tl_rsp;
   tlul_pkg::tl_h2d_t       pwc_soc_proxy_ctn_tl_req;
   tlul_pkg::tl_d2h_t       pwc_soc_proxy_ctn_tl_rsp;
   tlul_pkg::tl_h2d_t       rv_plic_pwc_tl_req;
@@ -472,8 +470,6 @@ module top_pwc #(
       .dma_lsio_trigger_o(dma_lsio_trigger),
       .integrator_id_i(integrator_id_i),
       .mubi8_true_o(sram_ctrl_main_otp_en_sram_ifetch),
-      .core_tl_i(pwc_soc_proxy_core_tl_req),
-      .core_tl_o(pwc_soc_proxy_core_tl_rsp),
       .ctn_tl_i(pwc_soc_proxy_ctn_tl_req),
       .ctn_tl_o(pwc_soc_proxy_ctn_tl_rsp),
 
@@ -1189,10 +1185,6 @@ module top_pwc #(
     // port: tl_pwc_peri
     .tl_pwc_peri_o(pwc_main_tl_pwc_peri_req),
     .tl_pwc_peri_i(pwc_main_tl_pwc_peri_rsp),
-
-    // port: tl_pwc_soc_proxy__core
-    .tl_pwc_soc_proxy__core_o(pwc_soc_proxy_core_tl_req),
-    .tl_pwc_soc_proxy__core_i(pwc_soc_proxy_core_tl_rsp),
 
     // port: tl_pwc_soc_proxy__ctn
     .tl_pwc_soc_proxy__ctn_o(pwc_soc_proxy_ctn_tl_req),

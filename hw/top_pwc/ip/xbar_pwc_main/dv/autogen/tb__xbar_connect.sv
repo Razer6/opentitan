@@ -33,7 +33,6 @@ initial force dut.rst_fixed_ni = rst_n;
 `CONNECT_TL_DEVICE_IF(rv_dm__regs, dut, clk_main_i, rst_n)
 `CONNECT_TL_DEVICE_IF(rv_dm__mem, dut, clk_main_i, rst_n)
 `CONNECT_TL_DEVICE_IF(pwc_peri, dut, clk_fixed_i, rst_n)
-`CONNECT_TL_DEVICE_IF(pwc_soc_proxy__core, dut, clk_main_i, rst_n)
 `CONNECT_TL_DEVICE_IF(pwc_soc_proxy__ctn, dut, clk_main_i, rst_n)
 `CONNECT_TL_DEVICE_IF(rv_plic_pwc, dut, clk_main_i, rst_n)
 `CONNECT_TL_DEVICE_IF(rv_core_ibex__cfg, dut, clk_main_i, rst_n)

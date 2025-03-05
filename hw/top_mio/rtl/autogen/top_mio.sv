@@ -233,8 +233,6 @@ module top_mio #(
   tlul_pkg::tl_d2h_t       rv_dm_mem_tl_d_rsp;
   tlul_pkg::tl_h2d_t       mio_main_tl_mio_peri_req;
   tlul_pkg::tl_d2h_t       mio_main_tl_mio_peri_rsp;
-  tlul_pkg::tl_h2d_t       mio_soc_proxy_core_tl_req;
-  tlul_pkg::tl_d2h_t       mio_soc_proxy_core_tl_rsp;
   tlul_pkg::tl_h2d_t       mio_soc_proxy_ctn_tl_req;
   tlul_pkg::tl_d2h_t       mio_soc_proxy_ctn_tl_rsp;
   tlul_pkg::tl_h2d_t       rv_plic_mio_tl_req;
@@ -402,8 +400,6 @@ module top_mio #(
       .dma_lsio_trigger_o(dma_lsio_trigger),
       .integrator_id_i(integrator_id_i),
       .mubi8_true_o(sram_ctrl_main_otp_en_sram_ifetch),
-      .core_tl_i(mio_soc_proxy_core_tl_req),
-      .core_tl_o(mio_soc_proxy_core_tl_rsp),
       .ctn_tl_i(mio_soc_proxy_ctn_tl_req),
       .ctn_tl_o(mio_soc_proxy_ctn_tl_rsp),
 
@@ -1118,10 +1114,6 @@ module top_mio #(
     // port: tl_mio_peri
     .tl_mio_peri_o(mio_main_tl_mio_peri_req),
     .tl_mio_peri_i(mio_main_tl_mio_peri_rsp),
-
-    // port: tl_mio_soc_proxy__core
-    .tl_mio_soc_proxy__core_o(mio_soc_proxy_core_tl_req),
-    .tl_mio_soc_proxy__core_i(mio_soc_proxy_core_tl_rsp),
 
     // port: tl_mio_soc_proxy__ctn
     .tl_mio_soc_proxy__ctn_o(mio_soc_proxy_ctn_tl_req),
