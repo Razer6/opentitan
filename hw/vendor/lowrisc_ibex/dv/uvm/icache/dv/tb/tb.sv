@@ -159,7 +159,7 @@ module tb #(
       .raddr_o          (),
       .rerror_o         (),
       .cfg_i            ('0),
-      .wr_collision_o   (),
+      // .wr_collision_o   (), TODO: remove upstream (patch for now?)
       .write_pending_o  (),
       .alert_o          ()
     );
@@ -194,7 +194,7 @@ module tb #(
       .raddr_o          (),
       .rerror_o         (),
       .cfg_i            ('0),
-      .wr_collision_o   (),
+      // .wr_collision_o   (), TODO: remove upstream (patch for now?)
       .write_pending_o  (),
       .alert_o          ()
     );

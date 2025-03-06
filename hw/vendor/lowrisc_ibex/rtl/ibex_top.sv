@@ -580,7 +580,7 @@ module ibex_top import ibex_pkg::*; #(
 
         // SEC_CM: ICACHE.MEM.SCRAMBLE
         // Tag RAM instantiation
-        prim_ram_1p_scr #(
+        prim_ram_1p_scr_1cyc #(
           .Width              (TagSizeECC),
           .Depth              (IC_NUM_LINES),
           .DataBitsPerMask    (TagSizeECC),
@@ -591,13 +591,11 @@ module ibex_top import ibex_pkg::*; #(
           .clk_i,
           .rst_ni,
 
-          .key_valid_i      (scramble_key_valid_q),
           .key_i            (scramble_key_q),
           .nonce_i          (scramble_nonce_q),
 
           .req_i            (ic_tag_req[way]),
 
-          .gnt_o            (),
           .write_i          (ic_tag_write),
           .addr_i           (ic_tag_addr),
           .wdata_i          (ic_tag_wdata),
@@ -605,19 +603,18 @@ module ibex_top import ibex_pkg::*; #(
           .intg_error_i     (1'b0),
 
           .rdata_o          (ic_tag_rdata[way]),
-          .rvalid_o         (),
           .raddr_o          (),
           .rerror_o         (),
           .cfg_i            (ram_cfg_icache_tag_i),
           .cfg_rsp_o        (ram_cfg_rsp_icache_tag_o[way]),
-          .wr_collision_o   (),
+          // .wr_collision_o   (), TODO: remove upstream (patch for now?)
           .write_pending_o  (),
 
           .alert_o          (icache_tag_alert[way])
         );
 
         // Data RAM instantiation
-        prim_ram_1p_scr #(
+        prim_ram_1p_scr_1cyc #(
           .Width              (LineSizeECC),
           .Depth              (IC_NUM_LINES),
           .DataBitsPerMask    (LineSizeECC),
@@ -629,13 +626,11 @@ module ibex_top import ibex_pkg::*; #(
           .clk_i,
           .rst_ni,
 
-          .key_valid_i      (scramble_key_valid_q),
           .key_i            (scramble_key_q),
           .nonce_i          (scramble_nonce_q),
 
           .req_i            (ic_data_req[way]),
 
-          .gnt_o            (),
           .write_i          (ic_data_write),
           .addr_i           (ic_data_addr),
           .wdata_i          (ic_data_wdata),
@@ -643,12 +638,11 @@ module ibex_top import ibex_pkg::*; #(
           .intg_error_i     (1'b0),
 
           .rdata_o          (ic_data_rdata[way]),
-          .rvalid_o         (),
           .raddr_o          (),
           .rerror_o         (),
           .cfg_i            (ram_cfg_icache_data_i),
           .cfg_rsp_o        (ram_cfg_rsp_icache_data_o[way]),
-          .wr_collision_o   (),
+          // .wr_collision_o   (), TODO: remove upstream (patch for now?)
           .write_pending_o  (),
 
           .alert_o          (icache_data_alert[way])
