@@ -338,7 +338,7 @@ dif_result_t dif_pinmux_output_select(const dif_pinmux_t *pinmux,
  *
  * @param pinmux A Pin Multiplexer handle.
  * @param pad A pad.
- * @param pin A peripheral I/O.
+ * @param periph_io A peripheral I/O.
  * @return The result of the operation.
  */
 OT_WARN_UNUSED_RESULT
@@ -353,7 +353,7 @@ dif_result_t dif_pinmux_mio_select_input(const dif_pinmux_t *pinmux,
  *
  * @param pinmux A Pin Multiplexer handle.
  * @param pad A pad.
- * @param pin A peripheral I/O.
+ * @param periph_io A peripheral I/O.
  * @return The result of the operation.
  */
 OT_WARN_UNUSED_RESULT
