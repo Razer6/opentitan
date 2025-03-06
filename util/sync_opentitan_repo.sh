@@ -60,7 +60,7 @@ if [[ "$LAST_SYNC" != "$LATEST_REMOTE_SHA" ]]; then
 
     if $CONTINUE_MODE; then
         echo "OT Sync: Continuing cherry-pick..."
-        git cherry-pick --continue
+        git cherry-pick --allow-empty --continue
         if [ $? -ne 0 ]; then
             echo "OT Sync: Cherry-pick failed."
             echo "OT Sync: Resolve conflict manually."
@@ -70,7 +70,7 @@ if [[ "$LAST_SYNC" != "$LATEST_REMOTE_SHA" ]]; then
         echo "OT Sync: Cherry-pick finished after continue mode."
     else
       # Cherry-pick commits between the last sync and the latest remote commit, skipping empty commits
-      git cherry-pick --empty drop $LAST_SYNC..$REMOTE_REPO/master
+      git cherry-pick --allow-empty $LAST_SYNC..$REMOTE_REPO/master
 
       if [ $? -ne 0 ]; then
           echo "OT Sync: Cherry-pick failed."
