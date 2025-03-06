@@ -43,7 +43,12 @@ module prim_rdp_otp
 
   // Type definitions of the config in response ports
   parameter type CfgType_t        = prim_otp_cfg_pkg::otp_cfg_t,
-  parameter type CfgRspType_t     = prim_otp_cfg_pkg::otp_cfg_rsp_t
+  parameter type CfgRspType_t     = prim_otp_cfg_pkg::otp_cfg_rsp_t,
+  // RACL definitions
+  parameter bit  EnableRacl       = 1'b0,
+  parameter bit  RaclErrorRsp     = 1'b1,
+  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[otp_ctrl_reg_pkg::NumRegsPrim] =
+    '{otp_ctrl_reg_pkg::NumRegsPrim{0}}
 ) (
   input                                  clk_i,
   input                                  rst_ni,
@@ -81,6 +86,9 @@ module prim_rdp_otp
   output logic                            valid_o,
   output logic [IfWidth-1:0]              rdata_o,
   output err_e                            err_o,
+  // RACL interface
+  input  top_racl_pkg::racl_policy_vec_t  racl_policies_i,
+  output top_racl_pkg::racl_error_log_t   racl_error_o,
   // DFT config and response port
   input  CfgType_t                        cfg_i,
   output CfgRspType_t                     cfg_rsp_o
@@ -162,14 +170,20 @@ module prim_rdp_otp
 
   otp_ctrl_reg_pkg::otp_ctrl_prim_reg2hw_t reg2hw;
   otp_ctrl_reg_pkg::otp_ctrl_prim_hw2reg_t hw2reg;
-  otp_ctrl_prim_reg_top u_reg_top (
+  otp_ctrl_prim_reg_top #(
+    .EnableRacl       ( EnableRacl       ),
+    .RaclErrorRsp     ( RaclErrorRsp     ),
+    .RaclPolicySelVec ( RaclPolicySelVec )
+  ) u_reg_top (
     .clk_i,
     .rst_ni,
     .tl_i      (test_tl_i ),
     .tl_o      (test_tl_o ),
     .reg2hw    (reg2hw    ),
     .hw2reg    (hw2reg    ),
-    .intg_err_o(intg_err  )
+    .intg_err_o(intg_err  ),
+    .racl_policies_i,
+    .racl_error_o
   );
 
   logic unused_reg_sig;

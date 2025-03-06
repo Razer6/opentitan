@@ -852,6 +852,9 @@ end
     .valid_o          ( otp_rvalid           ),
     .rdata_o          ( part_otp_rdata       ),
     .err_o            ( part_otp_err         ),
+    // RACL is not used in otp_ctrl
+    .racl_policies_i  ('0),
+    .racl_error_o     (),
     .cfg_i,
     .cfg_rsp_o
   );

@@ -6,7 +6,13 @@
 
 `include "prim_assert.sv"
 
-module otp_ctrl_prim_reg_top (
+module otp_ctrl_prim_reg_top
+  # (
+    parameter bit          EnableRacl           = 1'b0,
+    parameter bit          RaclErrorRsp         = 1'b1,
+    parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[otp_ctrl_reg_pkg::NumRegsPrim] =
+      '{otp_ctrl_reg_pkg::NumRegsPrim{0}}
+  ) (
   input clk_i,
   input rst_ni,
   input  tlul_pkg::tl_h2d_t tl_i,
@@ -14,6 +20,10 @@ module otp_ctrl_prim_reg_top (
   // To HW
   output otp_ctrl_reg_pkg::otp_ctrl_prim_reg2hw_t reg2hw, // Write
   input  otp_ctrl_reg_pkg::otp_ctrl_prim_hw2reg_t hw2reg, // Read
+
+  // RACL interface
+  input  top_racl_pkg::racl_policy_vec_t racl_policies_i,
+  output top_racl_pkg::racl_error_log_t  racl_error_o,
 
   // Integrity check errors
   output logic intg_err_o
@@ -110,7 +120,8 @@ module otp_ctrl_prim_reg_top (
     .be_o    (reg_be),
     .busy_i  (reg_busy),
     .rdata_i (reg_rdata),
-    .error_i (reg_error)
+    // Translate RACL error to TLUL error if enabled
+    .error_i (reg_error | (RaclErrorRsp & racl_error_o.valid))
   );
 
   // cdc oversampling signals
@@ -2034,8 +2045,32 @@ module otp_ctrl_prim_reg_top (
 
 
   logic [19:0] addr_hit;
+  top_racl_pkg::racl_role_vec_t racl_role_vec;
+  top_racl_pkg::racl_role_t racl_role;
+
+  logic [19:0] racl_addr_hit_read;
+  logic [19:0] racl_addr_hit_write;
+
+  if (EnableRacl) begin : gen_racl_role_logic
+    // Retrieve RACL role from user bits and one-hot encode that for the comparison bitmap
+    assign racl_role = top_racl_pkg::tlul_extract_racl_role_bits(tl_i.a_user.rsvd);
+
+    prim_onehot_enc #(
+      .OneHotWidth( $bits(top_racl_pkg::racl_role_vec_t) )
+    ) u_racl_role_encode (
+      .in_i ( racl_role     ),
+      .en_i ( 1'b1          ),
+      .out_o( racl_role_vec )
+    );
+  end else begin : gen_no_racl_role_logic
+    assign racl_role     = '0;
+    assign racl_role_vec = '0;
+  end
+
   always_comb begin
     addr_hit = '0;
+    racl_addr_hit_read  = '0;
+    racl_addr_hit_write = '0;
     addr_hit[ 0] = (reg_addr == OTP_CTRL_MACRO_CONTROL_OFFSET);
     addr_hit[ 1] = (reg_addr == OTP_CTRL_READ_ECC_INFO_OFFSET);
     addr_hit[ 2] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_RD_CFG_0_OFFSET);
@@ -2056,37 +2091,65 @@ module otp_ctrl_prim_reg_top (
     addr_hit[17] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_WR_CFG_6_OFFSET);
     addr_hit[18] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_WR_CFG_7_OFFSET);
     addr_hit[19] = (reg_addr == OTP_CTRL_FUSE_WRAPPER_WR_CFG_8_OFFSET);
+
+    if (EnableRacl) begin : gen_racl_hit
+      for (int unsigned slice_idx = 0; slice_idx < 20; slice_idx++) begin
+        racl_addr_hit_read[slice_idx] =
+            addr_hit[slice_idx] & (|(racl_policies_i[RaclPolicySelVec[slice_idx]].read_perm
+                                      & racl_role_vec));
+        racl_addr_hit_write[slice_idx] =
+            addr_hit[slice_idx] & (|(racl_policies_i[RaclPolicySelVec[slice_idx]].write_perm
+                                      & racl_role_vec));
+      end
+    end else begin : gen_no_racl
+      racl_addr_hit_read  = addr_hit;
+      racl_addr_hit_write = addr_hit;
+    end
   end
 
   assign addrmiss = (reg_re || reg_we) ? ~|addr_hit : 1'b0 ;
+  // A valid address hit, access, but failed the RACL check
+  assign racl_error_o.valid = |addr_hit & ((reg_re & ~|racl_addr_hit_read) |
+                                           (reg_we & ~|racl_addr_hit_write));
+  assign racl_error_o.request_address = top_pkg::TL_AW'(reg_addr);
+  assign racl_error_o.racl_role       = racl_role;
+  assign racl_error_o.overflow        = 1'b0;
+
+  if (EnableRacl) begin : gen_racl_log
+    assign racl_error_o.ctn_uid     = top_racl_pkg::tlul_extract_ctn_uid_bits(tl_i.a_user.rsvd);
+    assign racl_error_o.read_access = tl_i.a_opcode == tlul_pkg::Get;
+  end else begin : gen_no_racl_log
+    assign racl_error_o.ctn_uid     = '0;
+    assign racl_error_o.read_access = 1'b0;
+  end
 
   // Check sub-word write is permitted
   always_comb begin
     wr_err = (reg_we &
-              ((addr_hit[ 0] & (|(OTP_CTRL_PRIM_PERMIT[ 0] & ~reg_be))) |
-               (addr_hit[ 1] & (|(OTP_CTRL_PRIM_PERMIT[ 1] & ~reg_be))) |
-               (addr_hit[ 2] & (|(OTP_CTRL_PRIM_PERMIT[ 2] & ~reg_be))) |
-               (addr_hit[ 3] & (|(OTP_CTRL_PRIM_PERMIT[ 3] & ~reg_be))) |
-               (addr_hit[ 4] & (|(OTP_CTRL_PRIM_PERMIT[ 4] & ~reg_be))) |
-               (addr_hit[ 5] & (|(OTP_CTRL_PRIM_PERMIT[ 5] & ~reg_be))) |
-               (addr_hit[ 6] & (|(OTP_CTRL_PRIM_PERMIT[ 6] & ~reg_be))) |
-               (addr_hit[ 7] & (|(OTP_CTRL_PRIM_PERMIT[ 7] & ~reg_be))) |
-               (addr_hit[ 8] & (|(OTP_CTRL_PRIM_PERMIT[ 8] & ~reg_be))) |
-               (addr_hit[ 9] & (|(OTP_CTRL_PRIM_PERMIT[ 9] & ~reg_be))) |
-               (addr_hit[10] & (|(OTP_CTRL_PRIM_PERMIT[10] & ~reg_be))) |
-               (addr_hit[11] & (|(OTP_CTRL_PRIM_PERMIT[11] & ~reg_be))) |
-               (addr_hit[12] & (|(OTP_CTRL_PRIM_PERMIT[12] & ~reg_be))) |
-               (addr_hit[13] & (|(OTP_CTRL_PRIM_PERMIT[13] & ~reg_be))) |
-               (addr_hit[14] & (|(OTP_CTRL_PRIM_PERMIT[14] & ~reg_be))) |
-               (addr_hit[15] & (|(OTP_CTRL_PRIM_PERMIT[15] & ~reg_be))) |
-               (addr_hit[16] & (|(OTP_CTRL_PRIM_PERMIT[16] & ~reg_be))) |
-               (addr_hit[17] & (|(OTP_CTRL_PRIM_PERMIT[17] & ~reg_be))) |
-               (addr_hit[18] & (|(OTP_CTRL_PRIM_PERMIT[18] & ~reg_be))) |
-               (addr_hit[19] & (|(OTP_CTRL_PRIM_PERMIT[19] & ~reg_be)))));
+              ((racl_addr_hit_write[ 0] & (|(OTP_CTRL_PRIM_PERMIT[ 0] & ~reg_be))) |
+               (racl_addr_hit_write[ 1] & (|(OTP_CTRL_PRIM_PERMIT[ 1] & ~reg_be))) |
+               (racl_addr_hit_write[ 2] & (|(OTP_CTRL_PRIM_PERMIT[ 2] & ~reg_be))) |
+               (racl_addr_hit_write[ 3] & (|(OTP_CTRL_PRIM_PERMIT[ 3] & ~reg_be))) |
+               (racl_addr_hit_write[ 4] & (|(OTP_CTRL_PRIM_PERMIT[ 4] & ~reg_be))) |
+               (racl_addr_hit_write[ 5] & (|(OTP_CTRL_PRIM_PERMIT[ 5] & ~reg_be))) |
+               (racl_addr_hit_write[ 6] & (|(OTP_CTRL_PRIM_PERMIT[ 6] & ~reg_be))) |
+               (racl_addr_hit_write[ 7] & (|(OTP_CTRL_PRIM_PERMIT[ 7] & ~reg_be))) |
+               (racl_addr_hit_write[ 8] & (|(OTP_CTRL_PRIM_PERMIT[ 8] & ~reg_be))) |
+               (racl_addr_hit_write[ 9] & (|(OTP_CTRL_PRIM_PERMIT[ 9] & ~reg_be))) |
+               (racl_addr_hit_write[10] & (|(OTP_CTRL_PRIM_PERMIT[10] & ~reg_be))) |
+               (racl_addr_hit_write[11] & (|(OTP_CTRL_PRIM_PERMIT[11] & ~reg_be))) |
+               (racl_addr_hit_write[12] & (|(OTP_CTRL_PRIM_PERMIT[12] & ~reg_be))) |
+               (racl_addr_hit_write[13] & (|(OTP_CTRL_PRIM_PERMIT[13] & ~reg_be))) |
+               (racl_addr_hit_write[14] & (|(OTP_CTRL_PRIM_PERMIT[14] & ~reg_be))) |
+               (racl_addr_hit_write[15] & (|(OTP_CTRL_PRIM_PERMIT[15] & ~reg_be))) |
+               (racl_addr_hit_write[16] & (|(OTP_CTRL_PRIM_PERMIT[16] & ~reg_be))) |
+               (racl_addr_hit_write[17] & (|(OTP_CTRL_PRIM_PERMIT[17] & ~reg_be))) |
+               (racl_addr_hit_write[18] & (|(OTP_CTRL_PRIM_PERMIT[18] & ~reg_be))) |
+               (racl_addr_hit_write[19] & (|(OTP_CTRL_PRIM_PERMIT[19] & ~reg_be)))));
   end
 
   // Generate write-enables
-  assign macro_control_we = addr_hit[0] & reg_we & !reg_error;
+  assign macro_control_we = racl_addr_hit_write[0] & reg_we & !reg_error;
 
   assign macro_control_macro_mode_wd = reg_wdata[1:0];
 
@@ -2103,42 +2166,42 @@ module otp_ctrl_prim_reg_top (
   assign macro_control_field3_wd = reg_wdata[13:8];
 
   assign macro_control_field4_wd = reg_wdata[26:16];
-  assign fuse_wrapper_rd_cfg_0_we = addr_hit[2] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_0_we = racl_addr_hit_write[2] & reg_we & !reg_error;
 
   assign fuse_wrapper_rd_cfg_0_tsur_pd_ps_cycles_wd = reg_wdata[11:0];
 
   assign fuse_wrapper_rd_cfg_0_tsur_ps_cycles_wd = reg_wdata[21:12];
 
   assign fuse_wrapper_rd_cfg_0_tsur_ps_cs_cycles_wd = reg_wdata[30:22];
-  assign fuse_wrapper_rd_cfg_1_we = addr_hit[3] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_1_we = racl_addr_hit_write[3] & reg_we & !reg_error;
 
   assign fuse_wrapper_rd_cfg_1_tsup_ps_cs_cycles_wd = reg_wdata[8:0];
 
   assign fuse_wrapper_rd_cfg_1_tsup_ps_cycles_wd = reg_wdata[18:9];
 
   assign fuse_wrapper_rd_cfg_1_tsq_cycles_wd = reg_wdata[28:19];
-  assign fuse_wrapper_rd_cfg_2_we = addr_hit[4] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_2_we = racl_addr_hit_write[4] & reg_we & !reg_error;
 
   assign fuse_wrapper_rd_cfg_2_tsq_m_cycles_wd = reg_wdata[10:0];
 
   assign fuse_wrapper_rd_cfg_2_tpgm_cycles_wd = reg_wdata[24:11];
 
   assign fuse_wrapper_rd_cfg_2_tsur_ld_cycles_wd = reg_wdata[31:25];
-  assign fuse_wrapper_rd_cfg_3_we = addr_hit[5] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_3_we = racl_addr_hit_write[5] & reg_we & !reg_error;
 
   assign fuse_wrapper_rd_cfg_3_thr_ps_cycles_wd = reg_wdata[9:0];
 
   assign fuse_wrapper_rd_cfg_3_thp_ps_cycles_wd = reg_wdata[19:10];
 
   assign fuse_wrapper_rd_cfg_3_thp_cs_cycles_wd = reg_wdata[28:20];
-  assign fuse_wrapper_rd_cfg_4_we = addr_hit[6] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_4_we = racl_addr_hit_write[6] & reg_we & !reg_error;
 
   assign fuse_wrapper_rd_cfg_4_thr_cs_cycles_wd = reg_wdata[8:0];
 
   assign fuse_wrapper_rd_cfg_4_thp_ps_cs_cycles_wd = reg_wdata[17:9];
 
   assign fuse_wrapper_rd_cfg_4_thr_ps_cs_cycles_wd = reg_wdata[26:18];
-  assign fuse_wrapper_rd_cfg_5_we = addr_hit[7] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_5_we = racl_addr_hit_write[7] & reg_we & !reg_error;
 
   assign fuse_wrapper_rd_cfg_5_tsur_a_cycles_wd = reg_wdata[7:0];
 
@@ -2147,59 +2210,59 @@ module otp_ctrl_prim_reg_top (
   assign fuse_wrapper_rd_cfg_5_thp_a_cycles_wd = reg_wdata[23:16];
 
   assign fuse_wrapper_rd_cfg_5_tsup_ld_cycles_wd = reg_wdata[31:24];
-  assign fuse_wrapper_rd_cfg_6_we = addr_hit[8] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_6_we = racl_addr_hit_write[8] & reg_we & !reg_error;
 
   assign fuse_wrapper_rd_cfg_6_trd_cycles_wd = reg_wdata[9:0];
 
   assign fuse_wrapper_rd_cfg_6_trd_m_cycles_wd = reg_wdata[20:10];
 
   assign fuse_wrapper_rd_cfg_6_thr_a_cycles_wd = reg_wdata[28:21];
-  assign fuse_wrapper_rd_cfg_7_we = addr_hit[9] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_7_we = racl_addr_hit_write[9] & reg_we & !reg_error;
 
   assign fuse_wrapper_rd_cfg_7_thp_pd_ps_cycles_wd = reg_wdata[7:0];
 
   assign fuse_wrapper_rd_cfg_7_data_capture_cycles_wd = reg_wdata[15:8];
 
   assign fuse_wrapper_rd_cfg_7_addr_capture_cycles_wd = reg_wdata[23:16];
-  assign fuse_wrapper_rd_cfg_8_we = addr_hit[10] & reg_we & !reg_error;
+  assign fuse_wrapper_rd_cfg_8_we = racl_addr_hit_write[10] & reg_we & !reg_error;
 
   assign fuse_wrapper_rd_cfg_8_wd = reg_wdata[17:0];
-  assign fuse_wrapper_wr_cfg_0_we = addr_hit[11] & reg_we & !reg_error;
+  assign fuse_wrapper_wr_cfg_0_we = racl_addr_hit_write[11] & reg_we & !reg_error;
 
   assign fuse_wrapper_wr_cfg_0_tsur_pd_ps_cycles_wd = reg_wdata[11:0];
 
   assign fuse_wrapper_wr_cfg_0_tsur_ps_cycles_wd = reg_wdata[21:12];
 
   assign fuse_wrapper_wr_cfg_0_tsur_ps_cs_cycles_wd = reg_wdata[30:22];
-  assign fuse_wrapper_wr_cfg_1_we = addr_hit[12] & reg_we & !reg_error;
+  assign fuse_wrapper_wr_cfg_1_we = racl_addr_hit_write[12] & reg_we & !reg_error;
 
   assign fuse_wrapper_wr_cfg_1_tsup_ps_cs_cycles_wd = reg_wdata[8:0];
 
   assign fuse_wrapper_wr_cfg_1_tsup_ps_cycles_wd = reg_wdata[18:9];
 
   assign fuse_wrapper_wr_cfg_1_tsq_cycles_wd = reg_wdata[28:19];
-  assign fuse_wrapper_wr_cfg_2_we = addr_hit[13] & reg_we & !reg_error;
+  assign fuse_wrapper_wr_cfg_2_we = racl_addr_hit_write[13] & reg_we & !reg_error;
 
   assign fuse_wrapper_wr_cfg_2_tsq_m_cycles_wd = reg_wdata[10:0];
 
   assign fuse_wrapper_wr_cfg_2_tpgm_cycles_wd = reg_wdata[24:11];
 
   assign fuse_wrapper_wr_cfg_2_tsur_ld_cycles_wd = reg_wdata[31:25];
-  assign fuse_wrapper_wr_cfg_3_we = addr_hit[14] & reg_we & !reg_error;
+  assign fuse_wrapper_wr_cfg_3_we = racl_addr_hit_write[14] & reg_we & !reg_error;
 
   assign fuse_wrapper_wr_cfg_3_thr_ps_cycles_wd = reg_wdata[9:0];
 
   assign fuse_wrapper_wr_cfg_3_thp_ps_cycles_wd = reg_wdata[19:10];
 
   assign fuse_wrapper_wr_cfg_3_thp_cs_cycles_wd = reg_wdata[28:20];
-  assign fuse_wrapper_wr_cfg_4_we = addr_hit[15] & reg_we & !reg_error;
+  assign fuse_wrapper_wr_cfg_4_we = racl_addr_hit_write[15] & reg_we & !reg_error;
 
   assign fuse_wrapper_wr_cfg_4_thr_cs_cycles_wd = reg_wdata[8:0];
 
   assign fuse_wrapper_wr_cfg_4_thp_ps_cs_cycles_wd = reg_wdata[17:9];
 
   assign fuse_wrapper_wr_cfg_4_thr_ps_cs_cycles_wd = reg_wdata[26:18];
-  assign fuse_wrapper_wr_cfg_5_we = addr_hit[16] & reg_we & !reg_error;
+  assign fuse_wrapper_wr_cfg_5_we = racl_addr_hit_write[16] & reg_we & !reg_error;
 
   assign fuse_wrapper_wr_cfg_5_tsur_a_cycles_wd = reg_wdata[7:0];
 
@@ -2208,21 +2271,21 @@ module otp_ctrl_prim_reg_top (
   assign fuse_wrapper_wr_cfg_5_thp_a_cycles_wd = reg_wdata[23:16];
 
   assign fuse_wrapper_wr_cfg_5_tsup_ld_cycles_wd = reg_wdata[31:24];
-  assign fuse_wrapper_wr_cfg_6_we = addr_hit[17] & reg_we & !reg_error;
+  assign fuse_wrapper_wr_cfg_6_we = racl_addr_hit_write[17] & reg_we & !reg_error;
 
   assign fuse_wrapper_wr_cfg_6_trd_cycles_wd = reg_wdata[9:0];
 
   assign fuse_wrapper_wr_cfg_6_trd_m_cycles_wd = reg_wdata[20:10];
 
   assign fuse_wrapper_wr_cfg_6_thr_a_cycles_wd = reg_wdata[28:21];
-  assign fuse_wrapper_wr_cfg_7_we = addr_hit[18] & reg_we & !reg_error;
+  assign fuse_wrapper_wr_cfg_7_we = racl_addr_hit_write[18] & reg_we & !reg_error;
 
   assign fuse_wrapper_wr_cfg_7_thp_pd_ps_cycles_wd = reg_wdata[7:0];
 
   assign fuse_wrapper_wr_cfg_7_data_capture_cycles_wd = reg_wdata[15:8];
 
   assign fuse_wrapper_wr_cfg_7_addr_capture_cycles_wd = reg_wdata[23:16];
-  assign fuse_wrapper_wr_cfg_8_we = addr_hit[19] & reg_we & !reg_error;
+  assign fuse_wrapper_wr_cfg_8_we = racl_addr_hit_write[19] & reg_we & !reg_error;
 
   assign fuse_wrapper_wr_cfg_8_wd = reg_wdata[17:0];
 
@@ -2255,7 +2318,7 @@ module otp_ctrl_prim_reg_top (
   always_comb begin
     reg_rdata_next = '0;
     unique case (1'b1)
-      addr_hit[0]: begin
+      racl_addr_hit_read[0]: begin
         reg_rdata_next[1:0] = macro_control_macro_mode_qs;
         reg_rdata_next[2] = macro_control_ecc_sel_qs;
         reg_rdata_next[4:3] = macro_control_test_row_col_sel_qs;
@@ -2266,116 +2329,116 @@ module otp_ctrl_prim_reg_top (
         reg_rdata_next[26:16] = macro_control_field4_qs;
       end
 
-      addr_hit[1]: begin
+      racl_addr_hit_read[1]: begin
         reg_rdata_next[7:0] = read_ecc_info_ecc_info_0_qs;
         reg_rdata_next[15:8] = read_ecc_info_ecc_info_1_qs;
         reg_rdata_next[23:16] = read_ecc_info_ecc_info_2_qs;
         reg_rdata_next[31:24] = read_ecc_info_ecc_info_3_qs;
       end
 
-      addr_hit[2]: begin
+      racl_addr_hit_read[2]: begin
         reg_rdata_next[11:0] = fuse_wrapper_rd_cfg_0_tsur_pd_ps_cycles_qs;
         reg_rdata_next[21:12] = fuse_wrapper_rd_cfg_0_tsur_ps_cycles_qs;
         reg_rdata_next[30:22] = fuse_wrapper_rd_cfg_0_tsur_ps_cs_cycles_qs;
       end
 
-      addr_hit[3]: begin
+      racl_addr_hit_read[3]: begin
         reg_rdata_next[8:0] = fuse_wrapper_rd_cfg_1_tsup_ps_cs_cycles_qs;
         reg_rdata_next[18:9] = fuse_wrapper_rd_cfg_1_tsup_ps_cycles_qs;
         reg_rdata_next[28:19] = fuse_wrapper_rd_cfg_1_tsq_cycles_qs;
       end
 
-      addr_hit[4]: begin
+      racl_addr_hit_read[4]: begin
         reg_rdata_next[10:0] = fuse_wrapper_rd_cfg_2_tsq_m_cycles_qs;
         reg_rdata_next[24:11] = fuse_wrapper_rd_cfg_2_tpgm_cycles_qs;
         reg_rdata_next[31:25] = fuse_wrapper_rd_cfg_2_tsur_ld_cycles_qs;
       end
 
-      addr_hit[5]: begin
+      racl_addr_hit_read[5]: begin
         reg_rdata_next[9:0] = fuse_wrapper_rd_cfg_3_thr_ps_cycles_qs;
         reg_rdata_next[19:10] = fuse_wrapper_rd_cfg_3_thp_ps_cycles_qs;
         reg_rdata_next[28:20] = fuse_wrapper_rd_cfg_3_thp_cs_cycles_qs;
       end
 
-      addr_hit[6]: begin
+      racl_addr_hit_read[6]: begin
         reg_rdata_next[8:0] = fuse_wrapper_rd_cfg_4_thr_cs_cycles_qs;
         reg_rdata_next[17:9] = fuse_wrapper_rd_cfg_4_thp_ps_cs_cycles_qs;
         reg_rdata_next[26:18] = fuse_wrapper_rd_cfg_4_thr_ps_cs_cycles_qs;
       end
 
-      addr_hit[7]: begin
+      racl_addr_hit_read[7]: begin
         reg_rdata_next[7:0] = fuse_wrapper_rd_cfg_5_tsur_a_cycles_qs;
         reg_rdata_next[15:8] = fuse_wrapper_rd_cfg_5_tsup_a_cycles_qs;
         reg_rdata_next[23:16] = fuse_wrapper_rd_cfg_5_thp_a_cycles_qs;
         reg_rdata_next[31:24] = fuse_wrapper_rd_cfg_5_tsup_ld_cycles_qs;
       end
 
-      addr_hit[8]: begin
+      racl_addr_hit_read[8]: begin
         reg_rdata_next[9:0] = fuse_wrapper_rd_cfg_6_trd_cycles_qs;
         reg_rdata_next[20:10] = fuse_wrapper_rd_cfg_6_trd_m_cycles_qs;
         reg_rdata_next[28:21] = fuse_wrapper_rd_cfg_6_thr_a_cycles_qs;
       end
 
-      addr_hit[9]: begin
+      racl_addr_hit_read[9]: begin
         reg_rdata_next[7:0] = fuse_wrapper_rd_cfg_7_thp_pd_ps_cycles_qs;
         reg_rdata_next[15:8] = fuse_wrapper_rd_cfg_7_data_capture_cycles_qs;
         reg_rdata_next[23:16] = fuse_wrapper_rd_cfg_7_addr_capture_cycles_qs;
       end
 
-      addr_hit[10]: begin
+      racl_addr_hit_read[10]: begin
         reg_rdata_next[17:0] = fuse_wrapper_rd_cfg_8_qs;
       end
 
-      addr_hit[11]: begin
+      racl_addr_hit_read[11]: begin
         reg_rdata_next[11:0] = fuse_wrapper_wr_cfg_0_tsur_pd_ps_cycles_qs;
         reg_rdata_next[21:12] = fuse_wrapper_wr_cfg_0_tsur_ps_cycles_qs;
         reg_rdata_next[30:22] = fuse_wrapper_wr_cfg_0_tsur_ps_cs_cycles_qs;
       end
 
-      addr_hit[12]: begin
+      racl_addr_hit_read[12]: begin
         reg_rdata_next[8:0] = fuse_wrapper_wr_cfg_1_tsup_ps_cs_cycles_qs;
         reg_rdata_next[18:9] = fuse_wrapper_wr_cfg_1_tsup_ps_cycles_qs;
         reg_rdata_next[28:19] = fuse_wrapper_wr_cfg_1_tsq_cycles_qs;
       end
 
-      addr_hit[13]: begin
+      racl_addr_hit_read[13]: begin
         reg_rdata_next[10:0] = fuse_wrapper_wr_cfg_2_tsq_m_cycles_qs;
         reg_rdata_next[24:11] = fuse_wrapper_wr_cfg_2_tpgm_cycles_qs;
         reg_rdata_next[31:25] = fuse_wrapper_wr_cfg_2_tsur_ld_cycles_qs;
       end
 
-      addr_hit[14]: begin
+      racl_addr_hit_read[14]: begin
         reg_rdata_next[9:0] = fuse_wrapper_wr_cfg_3_thr_ps_cycles_qs;
         reg_rdata_next[19:10] = fuse_wrapper_wr_cfg_3_thp_ps_cycles_qs;
         reg_rdata_next[28:20] = fuse_wrapper_wr_cfg_3_thp_cs_cycles_qs;
       end
 
-      addr_hit[15]: begin
+      racl_addr_hit_read[15]: begin
         reg_rdata_next[8:0] = fuse_wrapper_wr_cfg_4_thr_cs_cycles_qs;
         reg_rdata_next[17:9] = fuse_wrapper_wr_cfg_4_thp_ps_cs_cycles_qs;
         reg_rdata_next[26:18] = fuse_wrapper_wr_cfg_4_thr_ps_cs_cycles_qs;
       end
 
-      addr_hit[16]: begin
+      racl_addr_hit_read[16]: begin
         reg_rdata_next[7:0] = fuse_wrapper_wr_cfg_5_tsur_a_cycles_qs;
         reg_rdata_next[15:8] = fuse_wrapper_wr_cfg_5_tsup_a_cycles_qs;
         reg_rdata_next[23:16] = fuse_wrapper_wr_cfg_5_thp_a_cycles_qs;
         reg_rdata_next[31:24] = fuse_wrapper_wr_cfg_5_tsup_ld_cycles_qs;
       end
 
-      addr_hit[17]: begin
+      racl_addr_hit_read[17]: begin
         reg_rdata_next[9:0] = fuse_wrapper_wr_cfg_6_trd_cycles_qs;
         reg_rdata_next[20:10] = fuse_wrapper_wr_cfg_6_trd_m_cycles_qs;
         reg_rdata_next[28:21] = fuse_wrapper_wr_cfg_6_thr_a_cycles_qs;
       end
 
-      addr_hit[18]: begin
+      racl_addr_hit_read[18]: begin
         reg_rdata_next[7:0] = fuse_wrapper_wr_cfg_7_thp_pd_ps_cycles_qs;
         reg_rdata_next[15:8] = fuse_wrapper_wr_cfg_7_data_capture_cycles_qs;
         reg_rdata_next[23:16] = fuse_wrapper_wr_cfg_7_addr_capture_cycles_qs;
       end
 
-      addr_hit[19]: begin
+      racl_addr_hit_read[19]: begin
         reg_rdata_next[17:0] = fuse_wrapper_wr_cfg_8_qs;
       end
 
@@ -2400,6 +2463,8 @@ module otp_ctrl_prim_reg_top (
   logic unused_be;
   assign unused_wdata = ^reg_wdata;
   assign unused_be = ^reg_be;
+  logic unused_policy_sel;
+  assign unused_policy_sel = ^racl_policies_i;
 
   // Assertions for Register Interface
   `ASSERT_PULSE(wePulse, reg_we, clk_i, !rst_ni)
