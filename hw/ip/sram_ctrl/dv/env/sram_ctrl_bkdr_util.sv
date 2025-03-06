@@ -142,7 +142,7 @@ class sram_ctrl_bkdr_util extends mem_bkdr_util;
                               int                                extra_addr_bits,
                               bit   [38:0]                       flip_bits = 0);
     logic [bus_params_pkg::BUS_AW-1:0] scr_addr = get_sram_encrypt_addr(addr, nonce,
-                                                                        extra_addr_bits);                                                              
+                                                                        extra_addr_bits);
     _sram_encrypt_write39(addr, scr_addr, data, key, nonce, extra_addr_bits, flip_bits);
   endfunction : sram_encrypt_write32_integ
 
@@ -157,7 +157,7 @@ class sram_ctrl_bkdr_util extends mem_bkdr_util;
                                             int                          extra_addr_bits,
                                             bit [38:0]                   flip_bits);
     logic [38:0] scrambled_data = get_sram_encrypt32_intg_data(addr, data, key, nonce,
-                                                               extra_addr_bits, flip_bits);                                                        
+                                                               extra_addr_bits, flip_bits);
     write39integ(scr_addr, scrambled_data);
   endfunction : _sram_encrypt_write39
 
