@@ -158,6 +158,8 @@ module racl_ctrl_lioGrpC import racl_ctrl_lioGrpC_reg_pkg::*; #(
   assign policy_spidevpolicy.read_perm = reg2hw.policy_spidevpolicy_shadowed.read_perm.q;
   assign policy_spidevpolicy.write_perm = reg2hw.policy_spidevpolicy_shadowed.write_perm.q;
 
+  localparam racl_policy_t UnusedPolicy = '0;
+
   // Broadcast all policies via policy vector
   assign racl_policies_o = {
     policy_spidevpolicy,

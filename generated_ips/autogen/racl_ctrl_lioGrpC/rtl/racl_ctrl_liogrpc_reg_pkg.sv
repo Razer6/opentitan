@@ -7,7 +7,6 @@
 package racl_ctrl_liogrpc_reg_pkg;
 
   // Param list
-  parameter int NumPolicies = 16;
   parameter int NumAlerts = 2;
 
   // Address widths within the block
