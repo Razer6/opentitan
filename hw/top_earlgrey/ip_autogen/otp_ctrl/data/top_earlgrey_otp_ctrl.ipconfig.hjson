@@ -1987,5 +1987,10 @@
     }
     use_rivos_config: false
     topname: earlgrey
+    uniquified_modules:
+    {
+      alert_handler: alert_handler
+      rv_plic: rv_plic
+    }
   }
 }

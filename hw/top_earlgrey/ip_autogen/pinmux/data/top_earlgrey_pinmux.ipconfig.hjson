@@ -19,5 +19,10 @@
     scan_role_pkg_vlnv: lowrisc:systems:top_earlgrey_scan_role_pkg
     use_rivos_config: false
     topname: earlgrey
+    uniquified_modules:
+    {
+      alert_handler: alert_handler
+      rv_plic: rv_plic
+    }
   }
 }
