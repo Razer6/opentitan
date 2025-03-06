@@ -29,7 +29,6 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   parameter  int Width               = 32, // Needs to be byte aligned if byte parity is enabled.
   parameter  int DataBitsPerMask     = 8, // Needs to be set to 8 in case of byte parity.
   parameter  bit EnableParity        = 1, // Enable byte parity.
-  parameter  bit EnableOutputPipeline = 0, // Adds support for an additional cycle on read responses
 
   // Scrambling parameters. Note that this needs to be low-latency, hence we have to keep the
   // amount of cipher rounds low. PRINCE has 5 half rounds in its original form, which corresponds
@@ -61,8 +60,6 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   localparam int DataKeyWidth        = 128,
   // Each 64 bit scrambling primitive requires a 64bit IV
   localparam int NonceWidth          = 64 * NumParScr,
-  // Select between compiled RAM and OT generic
-  parameter bit UseCompiledRam       = 0,
   // Compute RAM tiling
   localparam int NumRamInst          = prim_util_pkg::ceil_div(Depth, InstDepth)
 ) (
@@ -101,7 +98,9 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
 );
 
   import prim_mubi_pkg::mubi4_t;
+  import prim_mubi_pkg::mubi4_and_hi;
   import prim_mubi_pkg::mubi4_bool_to_mubi;
+  import prim_mubi_pkg::mubi4_or_hi;
   import prim_mubi_pkg::mubi4_test_invalid;
   import prim_mubi_pkg::mubi4_test_true_loose;
   import prim_mubi_pkg::mubi4_test_false_loose;
@@ -170,6 +169,9 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   logic macro_req;
   assign macro_req = mubi4_test_true_loose(read_en) | macro_write;
 
+  // Assert that macro read and write requests are mutually exclusive.
+  `ASSERT(MacroReadWriteMutualExcl_A, !macro_write || !mubi4_test_true_loose(read_en))
+
   // Write currently processed inside this module. Although we are sending an immediate d_valid
   // back to the host, the write could take longer due to the scrambling.
   assign write_pending_o = macro_write | mubi4_test_true_loose(write_en_buf_d);
@@ -218,7 +220,6 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   localparam int DataNonceWidth = 64 - AddrWidth;
   logic [NumParScr*64-1:0] keystream;
   logic [NumParScr-1:0][DataNonceWidth-1:0] data_scr_nonce;
-  logic keystream_valid;
   for (genvar k = 0; k < NumParScr; k++) begin : gen_par_scr
     assign data_scr_nonce[k] = nonce_i[k * DataNonceWidth +: DataNonceWidth];
 
@@ -242,7 +243,7 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
       .dec_i   ( 1'b0 ),
       // Output keystream to be XOR'ed
       .data_o  ( keystream[k * 64 +: 64] ),
-      .valid_o ( keystream_valid )
+      .valid_o ( )
     );
 
     // Unread unused bits from keystream
@@ -254,27 +255,8 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   end
 
   // Replicate keystream if needed
-  logic [Width-1:0] keystream_repl, keystream_q_repl;
+  logic [Width-1:0] keystream_repl;
   assign keystream_repl = Width'({NumParKeystr{keystream}});
-
-  // Delay the keystream when data comes in delayed due to a flopped output
-  if (EnableOutputPipeline) begin : gen_flop_keystream
-    prim_flop_en #(
-      .Width(Width),
-      .ResetValue(0)
-    ) u_delay_keystream (
-      .clk_i,
-      .rst_ni,
-      .en_i(keystream_valid),
-      .d_i(keystream_repl),
-      .q_o(keystream_q_repl)
-    );
-  end else begin : gen_no_flop_keystream
-    logic unused_signals;
-    assign unused_signals = keystream_valid;
-    assign keystream_q_repl = keystream_repl;
-  end
-
 
   /////////////////////
   // Data Scrambling //
@@ -332,7 +314,7 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
 
     // Apply Keystream, replicate it if needed
     assign rdata[k*DiffWidth +: LocalWidth] = rdata_xor ^
-                                              keystream_q_repl[k*DiffWidth +: LocalWidth];
+                                              keystream_repl[k*DiffWidth +: LocalWidth];
   end
 
   ///////////////
@@ -364,24 +346,8 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
     .q_o({rvalid_q})
   );
 
-  if (EnableOutputPipeline) begin : gen_oup_pipeline_rvalid
-    mubi4_t rvalid_qq;
-    prim_flop #(
-      .Width (MuBi4Width),
-      .ResetValue (MuBi4Width'(MuBi4False))
-    ) u_rvalid_flop2 (
-      .clk_i,
-      .rst_ni,
-      .d_i(MuBi4Width'(rvalid_q)),
-      .q_o({rvalid_qq})
-    );
-
-    assign rvalid_o = mubi4_test_true_loose(rvalid_qq);
-  end else begin : gen_no_oup_pipeline_rvalid
-    assign rvalid_o = mubi4_test_true_loose(rvalid_q);
-  end
-
   assign rdata_o = rdata;
+  assign rvalid_o = mubi4_test_true_loose(rvalid_q);
 
   assign read_en_b = mubi4_test_true_loose(read_en_buf);
   assign write_en_b = mubi4_test_true_loose(write_en_buf_d);
@@ -418,23 +384,21 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
     .EnableECC(1'b0),
     .EnableParity(EnableParity),
     .EnableInputPipeline(1'b0),
-    .UseCompiledRam(UseCompiledRam),
-    .EnableOutputPipeline(EnableOutputPipeline)
+    .EnableOutputPipeline(1'b0)
   ) u_prim_ram_1p_adv (
     .clk_i,
     .rst_ni,
-    .req_i         ( macro_req   ),
-    .write_i       ( macro_write ),
-    .addr_i        ( addr_mux    ),
-    .wdata_i       ( wdata_scr   ),
-    .wmask_i       ( wmask_q     ),
-    .rdata_o       ( rdata_scr   ),
-    .rvalid_o      (             ),
-    .rvalid_mubi_o (             ),
+    .req_i    ( macro_req   ),
+    .write_i  ( macro_write ),
+    .addr_i   ( addr_mux    ),
+    .wdata_i  ( wdata_scr   ),
+    .wmask_i  ( wmask_q     ),
+    .rdata_o  ( rdata_scr   ),
+    .rvalid_o ( ),
     .rerror_o,
     .cfg_i,
     .cfg_rsp_o,
-    .alert_o       ( ram_alert   )
+    .alert_o  ( ram_alert   )
   );
 
   `include "prim_util_get_scramble_params.svh"
