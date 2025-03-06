@@ -298,6 +298,9 @@ module top_${top["name"]} #(
   assign rv_core_ibex_irq_timer = intr_rv_timer_timer_expired_hart0_timer0;
   assign rv_core_ibex_hart_id = '0;
 
+  // Unconditionally disable the late debug feature and enable early debug
+  assign rv_dm_otp_dis_rv_dm_late_debug = prim_mubi_pkg::MuBi8True;
+
   logic [31:0]  cio_gpio_gpio_p2d;
   logic [31:0] cio_gpio_gpio_d2p;
   logic [31:0] cio_gpio_gpio_en_d2p;

@@ -309,6 +309,7 @@ module top_mio #(
   top_racl_pkg::racl_error_log_t [RaclCtrlNumSubscribingIps-1:0] racl_ctrl_racl_error;
   logic       rv_core_ibex_irq_timer;
   logic [31:0] rv_core_ibex_hart_id;
+  prim_mubi_pkg::mubi8_t       rv_dm_otp_dis_rv_dm_late_debug;
 
   // define mixed connection to port
   assign racl_policies_o = racl_ctrl_racl_policies;
@@ -323,6 +324,9 @@ module top_mio #(
   // TODO: This should be further automated in the future.
   assign rv_core_ibex_irq_timer = intr_rv_timer_timer_expired_hart0_timer0;
   assign rv_core_ibex_hart_id = '0;
+
+  // Unconditionally disable the late debug feature and enable early debug
+  assign rv_dm_otp_dis_rv_dm_late_debug = prim_mubi_pkg::MuBi8True;
 
 
 
@@ -466,7 +470,7 @@ module top_mio #(
       .lc_hw_debug_en_i(mio_soc_proxy_lc_hw_debug_en),
       .lc_dft_en_i(lc_ctrl_pkg::Off),
       .pinmux_hw_debug_en_i(lc_ctrl_pkg::Off),
-      .otp_dis_rv_dm_late_debug_i(prim_mubi_pkg::MuBi8False),
+      .otp_dis_rv_dm_late_debug_i(rv_dm_otp_dis_rv_dm_late_debug),
       .unavailable_i(1'b0),
       .ndmreset_req_o(),
       .dmactive_o(),

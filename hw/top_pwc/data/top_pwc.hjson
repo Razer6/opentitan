@@ -665,6 +665,8 @@
         // hardwired connections
         'rv_core_ibex.hart_id',
 
+        // Unconditionally disable the late debug feature and enable early debug
+        'rv_dm.otp_dis_rv_dm_late_debug'
     ],
 
     // ext is to create port in the top.

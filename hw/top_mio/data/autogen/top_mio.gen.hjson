@@ -1394,6 +1394,7 @@
           width: 1
           default: prim_mubi_pkg::MuBi8False
           inst_name: rv_dm
+          top_signame: rv_dm_otp_dis_rv_dm_late_debug
           index: -1
         }
         {
@@ -5188,6 +5189,7 @@
     [
       rv_core_ibex.irq_timer
       rv_core_ibex.hart_id
+      rv_dm.otp_dis_rv_dm_late_debug
     ]
     external:
     {
@@ -10168,6 +10170,7 @@
         width: 1
         default: prim_mubi_pkg::MuBi8False
         inst_name: rv_dm
+        top_signame: rv_dm_otp_dis_rv_dm_late_debug
         index: -1
       }
       {
@@ -14168,6 +14171,15 @@
         type: uni
         end_idx: -1
         default: ""
+      }
+      {
+        package: prim_mubi_pkg
+        struct: mubi8
+        signame: rv_dm_otp_dis_rv_dm_late_debug
+        width: 1
+        type: uni
+        end_idx: -1
+        default: prim_mubi_pkg::MuBi8False
       }
     ]
   }
