@@ -677,6 +677,8 @@ module rv_core_ibex
     .spare_rsp_i (1'b0),
     .spare_rsp_o ());
 
+// Rivos: Only add the tracer when not in a synthesis run
+`ifndef SYNTHESIS
 `ifdef RVFI
   logic [31:0] tracer_hart_id = hart_id_i;
   ibex_tracer ibex_tracer_i (
@@ -709,6 +711,7 @@ module rv_core_ibex
     .rvfi_mem_rdata,
     .rvfi_mem_wdata
   );
+`endif
 `endif
 
   //////////////////////////////////
