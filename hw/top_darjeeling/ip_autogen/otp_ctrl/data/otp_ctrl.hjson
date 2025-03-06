@@ -2095,7 +2095,7 @@
     { name: "EnCsrngSwAppReadOffset",
       desc: "Offset of EN_CSRNG_SW_APP_READ",
       type: "int",
-      default: "15996",
+      default: "20092",
       local: "true"
     },
     { name: "EnCsrngSwAppReadSize",
@@ -2107,7 +2107,7 @@
     { name: "EnSramIfetchOffset",
       desc: "Offset of EN_SRAM_IFETCH",
       type: "int",
-      default: "20092",
+      default: "20093",
       local: "true"
     },
     { name: "EnSramIfetchSize",

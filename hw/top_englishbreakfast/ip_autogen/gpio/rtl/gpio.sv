@@ -15,7 +15,7 @@ module gpio
   // This parameter instantiates 2-stage synchronizers on all GPIO inputs.
   parameter bit                             GpioAsyncOn               = 1,
   parameter bit                             EnableRacl                = 1'b0,
-  parameter bit                             RaclErrorRsp              = 1'b1,
+  parameter bit                             RaclErrorRsp              = EnableRacl,
   parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[NumRegs] = '{NumRegs{0}}
 ) (
   input clk_i,
@@ -243,3 +243,9 @@ module gpio
   `ASSERT_PRIM_REG_WE_ONEHOT_ERROR_TRIGGER_ALERT(RegWeOnehotCheck_A, u_reg, alert_tx_o[0])
 
 endmodule
+// Local Variables:
+// fill-column:1
+// verilog-auto-arg-sort:t
+// verilog-typedef-regexp: "_[teu]$"
+// verilog-library-directories:(".")
+// End:

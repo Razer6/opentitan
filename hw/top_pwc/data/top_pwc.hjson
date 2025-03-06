@@ -230,6 +230,7 @@
   module: [
     { name: "gpio",
       type: "gpio",
+      template_type: "gpio",
       clock_srcs: {clk_i: "ext_io_div4"},
       clock_group: "peri",
       reset_connections: {rst_ni: "ext_rst_io_div4"},
@@ -239,7 +240,8 @@
       param_decl: {
         GpioAsHwStrapsEn: "0",
         GpioAsyncOn: "1"
-      }
+      },
+      attr: "ipgen",
       outgoing_alert: "pwc"
     },
     { name: "rv_timer",

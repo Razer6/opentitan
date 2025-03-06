@@ -10,32 +10,14 @@ package racl_ctrl_liogrpc_reg_pkg;
   parameter int NumAlerts = 2;
 
   // Address widths within the block
-  parameter int BlockAw = 7;
+  parameter int BlockAw = 8;
 
   // Number of registers for every interface
-  parameter int NumRegs = 18;
+  parameter int NumRegs = 19;
 
   ////////////////////////////
   // Typedefs for registers //
   ////////////////////////////
-
-  typedef struct packed {
-    struct packed {
-      logic        q;
-      logic        qe;
-    } fatal_fault;
-    struct packed {
-      logic        q;
-      logic        qe;
-    } recov_ctrl_update_err;
-  } racl_ctrl_liogrpc_reg2hw_alert_test_reg_t;
-
-  typedef struct packed {
-    struct packed {
-      logic        q;
-      logic        qe;
-    } valid;
-  } racl_ctrl_liogrpc_reg2hw_error_log_reg_t;
 
   typedef struct packed {
     struct packed {
@@ -183,6 +165,24 @@ package racl_ctrl_liogrpc_reg_pkg;
 
   typedef struct packed {
     struct packed {
+      logic        q;
+      logic        qe;
+    } recov_ctrl_update_err;
+    struct packed {
+      logic        q;
+      logic        qe;
+    } fatal_fault;
+  } racl_ctrl_liogrpc_reg2hw_alert_test_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic        q;
+      logic        qe;
+    } valid;
+  } racl_ctrl_liogrpc_reg2hw_error_log_reg_t;
+
+  typedef struct packed {
+    struct packed {
       logic        d;
       logic        de;
     } valid;
@@ -204,76 +204,80 @@ package racl_ctrl_liogrpc_reg_pkg;
     } ctn_uid;
   } racl_ctrl_liogrpc_hw2reg_error_log_reg_t;
 
+  typedef struct packed {
+    logic [31:0] d;
+    logic        de;
+  } racl_ctrl_liogrpc_hw2reg_error_log_address_reg_t;
+
   // Register -> HW type
   typedef struct packed {
-    racl_ctrl_liogrpc_reg2hw_alert_test_reg_t alert_test; // [517:514]
-    racl_ctrl_liogrpc_reg2hw_error_log_reg_t error_log; // [513:512]
     racl_ctrl_liogrpc_reg2hw_policy_all_rd_wr_policy_shadowed_reg_t
-        policy_all_rd_wr_policy_shadowed; // [511:480]
+        policy_all_rd_wr_policy_shadowed; // [517:486]
     racl_ctrl_liogrpc_reg2hw_policy_rot_private_policy_shadowed_reg_t
-        policy_rot_private_policy_shadowed; // [479:448]
+        policy_rot_private_policy_shadowed; // [485:454]
     racl_ctrl_liogrpc_reg2hw_policy_mio_private_policy_shadowed_reg_t
-        policy_mio_private_policy_shadowed; // [447:416]
+        policy_mio_private_policy_shadowed; // [453:422]
     racl_ctrl_liogrpc_reg2hw_policy_pwc_private_policy_shadowed_reg_t
-        policy_pwc_private_policy_shadowed; // [415:384]
+        policy_pwc_private_policy_shadowed; // [421:390]
     racl_ctrl_liogrpc_reg2hw_policy_hw_rot_pwc_wr_all_rd_policy_shadowed_reg_t
-        policy_hw_rot_pwc_wr_all_rd_policy_shadowed; // [383:352]
-    racl_ctrl_liogrpc_reg2hw_policy_pwmpolicy_shadowed_reg_t policy_pwmpolicy_shadowed; // [351:320]
+        policy_hw_rot_pwc_wr_all_rd_policy_shadowed; // [389:358]
+    racl_ctrl_liogrpc_reg2hw_policy_pwmpolicy_shadowed_reg_t policy_pwmpolicy_shadowed; // [357:326]
     racl_ctrl_liogrpc_reg2hw_policy_gpiopolicy_shadowed_reg_t
-        policy_gpiopolicy_shadowed; // [319:288]
+        policy_gpiopolicy_shadowed; // [325:294]
     racl_ctrl_liogrpc_reg2hw_policy_uartpolicy_shadowed_reg_t
-        policy_uartpolicy_shadowed; // [287:256]
+        policy_uartpolicy_shadowed; // [293:262]
     racl_ctrl_liogrpc_reg2hw_policy_i2c0policy_shadowed_reg_t
-        policy_i2c0policy_shadowed; // [255:224]
+        policy_i2c0policy_shadowed; // [261:230]
     racl_ctrl_liogrpc_reg2hw_policy_i2c1policy_shadowed_reg_t
-        policy_i2c1policy_shadowed; // [223:192]
+        policy_i2c1policy_shadowed; // [229:198]
     racl_ctrl_liogrpc_reg2hw_policy_i2c2policy_shadowed_reg_t
-        policy_i2c2policy_shadowed; // [191:160]
+        policy_i2c2policy_shadowed; // [197:166]
     racl_ctrl_liogrpc_reg2hw_policy_i3c0policy_shadowed_reg_t
-        policy_i3c0policy_shadowed; // [159:128]
+        policy_i3c0policy_shadowed; // [165:134]
     racl_ctrl_liogrpc_reg2hw_policy_i3c1policy_shadowed_reg_t
-        policy_i3c1policy_shadowed; // [127:96]
-    racl_ctrl_liogrpc_reg2hw_policy_i3c2policy_shadowed_reg_t policy_i3c2policy_shadowed; // [95:64]
+        policy_i3c1policy_shadowed; // [133:102]
+    racl_ctrl_liogrpc_reg2hw_policy_i3c2policy_shadowed_reg_t
+        policy_i3c2policy_shadowed; // [101:70]
     racl_ctrl_liogrpc_reg2hw_policy_spihstpolicy_shadowed_reg_t
-        policy_spihstpolicy_shadowed; // [63:32]
+        policy_spihstpolicy_shadowed; // [69:38]
     racl_ctrl_liogrpc_reg2hw_policy_spidevpolicy_shadowed_reg_t
-        policy_spidevpolicy_shadowed; // [31:0]
+        policy_spidevpolicy_shadowed; // [37:6]
+    racl_ctrl_liogrpc_reg2hw_alert_test_reg_t alert_test; // [5:2]
+    racl_ctrl_liogrpc_reg2hw_error_log_reg_t error_log; // [1:0]
   } racl_ctrl_liogrpc_reg2hw_t;
 
   // HW -> register type
   typedef struct packed {
-    racl_ctrl_liogrpc_hw2reg_error_log_reg_t error_log; // [16:0]
+    racl_ctrl_liogrpc_hw2reg_error_log_reg_t error_log; // [49:33]
+    racl_ctrl_liogrpc_hw2reg_error_log_address_reg_t error_log_address; // [32:0]
   } racl_ctrl_liogrpc_hw2reg_t;
 
   // Register offsets
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_ALERT_TEST_OFFSET = 7'h 0;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_ERROR_LOG_OFFSET = 7'h 4;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_ALL_RD_WR_POLICY_SHADOWED_OFFSET = 7'h 8;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_ROT_PRIVATE_POLICY_SHADOWED_OFFSET = 7'h c;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_MIO_PRIVATE_POLICY_SHADOWED_OFFSET = 7'h 10;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_PWC_PRIVATE_POLICY_SHADOWED_OFFSET = 7'h 14;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED_OFFSET = 7'h 18;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_PWMPOLICY_SHADOWED_OFFSET = 7'h 1c;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_GPIOPOLICY_SHADOWED_OFFSET = 7'h 20;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_UARTPOLICY_SHADOWED_OFFSET = 7'h 24;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_I2C0POLICY_SHADOWED_OFFSET = 7'h 28;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_I2C1POLICY_SHADOWED_OFFSET = 7'h 2c;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_I2C2POLICY_SHADOWED_OFFSET = 7'h 30;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_I3C0POLICY_SHADOWED_OFFSET = 7'h 34;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_I3C1POLICY_SHADOWED_OFFSET = 7'h 38;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_I3C2POLICY_SHADOWED_OFFSET = 7'h 3c;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_SPIHSTPOLICY_SHADOWED_OFFSET = 7'h 40;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_SPIDEVPOLICY_SHADOWED_OFFSET = 7'h 44;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_ALL_RD_WR_POLICY_SHADOWED_OFFSET = 8'h 0;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_ROT_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 8;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_MIO_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 10;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_PWC_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 18;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED_OFFSET = 8'h 20;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_PWMPOLICY_SHADOWED_OFFSET = 8'h 28;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_GPIOPOLICY_SHADOWED_OFFSET = 8'h 30;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_UARTPOLICY_SHADOWED_OFFSET = 8'h 38;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_I2C0POLICY_SHADOWED_OFFSET = 8'h 40;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_I2C1POLICY_SHADOWED_OFFSET = 8'h 48;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_I2C2POLICY_SHADOWED_OFFSET = 8'h 50;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_I3C0POLICY_SHADOWED_OFFSET = 8'h 58;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_I3C1POLICY_SHADOWED_OFFSET = 8'h 60;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_I3C2POLICY_SHADOWED_OFFSET = 8'h 68;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_SPIHSTPOLICY_SHADOWED_OFFSET = 8'h 70;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_POLICY_SPIDEVPOLICY_SHADOWED_OFFSET = 8'h 78;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_ALERT_TEST_OFFSET = 8'h f4;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_ERROR_LOG_OFFSET = 8'h f8;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPC_ERROR_LOG_ADDRESS_OFFSET = 8'h fc;
 
   // Reset values for hwext registers and their fields
   parameter logic [1:0] RACL_CTRL_LIOGRPC_ALERT_TEST_RESVAL = 2'h 0;
-  parameter logic [0:0] RACL_CTRL_LIOGRPC_ALERT_TEST_RECOV_CTRL_UPDATE_ERR_RESVAL = 1'h 0;
-  parameter logic [0:0] RACL_CTRL_LIOGRPC_ALERT_TEST_FATAL_FAULT_RESVAL = 1'h 0;
 
   // Register index
   typedef enum int {
-    RACL_CTRL_LIOGRPC_ALERT_TEST,
-    RACL_CTRL_LIOGRPC_ERROR_LOG,
     RACL_CTRL_LIOGRPC_POLICY_ALL_RD_WR_POLICY_SHADOWED,
     RACL_CTRL_LIOGRPC_POLICY_ROT_PRIVATE_POLICY_SHADOWED,
     RACL_CTRL_LIOGRPC_POLICY_MIO_PRIVATE_POLICY_SHADOWED,
@@ -289,29 +293,33 @@ package racl_ctrl_liogrpc_reg_pkg;
     RACL_CTRL_LIOGRPC_POLICY_I3C1POLICY_SHADOWED,
     RACL_CTRL_LIOGRPC_POLICY_I3C2POLICY_SHADOWED,
     RACL_CTRL_LIOGRPC_POLICY_SPIHSTPOLICY_SHADOWED,
-    RACL_CTRL_LIOGRPC_POLICY_SPIDEVPOLICY_SHADOWED
+    RACL_CTRL_LIOGRPC_POLICY_SPIDEVPOLICY_SHADOWED,
+    RACL_CTRL_LIOGRPC_ALERT_TEST,
+    RACL_CTRL_LIOGRPC_ERROR_LOG,
+    RACL_CTRL_LIOGRPC_ERROR_LOG_ADDRESS
   } racl_ctrl_liogrpc_id_e;
 
   // Register width information to check illegal writes
-  parameter logic [3:0] RACL_CTRL_LIOGRPC_PERMIT [18] = '{
-    4'b 0001, // index[ 0] RACL_CTRL_LIOGRPC_ALERT_TEST
-    4'b 0011, // index[ 1] RACL_CTRL_LIOGRPC_ERROR_LOG
-    4'b 1111, // index[ 2] RACL_CTRL_LIOGRPC_POLICY_ALL_RD_WR_POLICY_SHADOWED
-    4'b 1111, // index[ 3] RACL_CTRL_LIOGRPC_POLICY_ROT_PRIVATE_POLICY_SHADOWED
-    4'b 1111, // index[ 4] RACL_CTRL_LIOGRPC_POLICY_MIO_PRIVATE_POLICY_SHADOWED
-    4'b 1111, // index[ 5] RACL_CTRL_LIOGRPC_POLICY_PWC_PRIVATE_POLICY_SHADOWED
-    4'b 1111, // index[ 6] RACL_CTRL_LIOGRPC_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED
-    4'b 1111, // index[ 7] RACL_CTRL_LIOGRPC_POLICY_PWMPOLICY_SHADOWED
-    4'b 1111, // index[ 8] RACL_CTRL_LIOGRPC_POLICY_GPIOPOLICY_SHADOWED
-    4'b 1111, // index[ 9] RACL_CTRL_LIOGRPC_POLICY_UARTPOLICY_SHADOWED
-    4'b 1111, // index[10] RACL_CTRL_LIOGRPC_POLICY_I2C0POLICY_SHADOWED
-    4'b 1111, // index[11] RACL_CTRL_LIOGRPC_POLICY_I2C1POLICY_SHADOWED
-    4'b 1111, // index[12] RACL_CTRL_LIOGRPC_POLICY_I2C2POLICY_SHADOWED
-    4'b 1111, // index[13] RACL_CTRL_LIOGRPC_POLICY_I3C0POLICY_SHADOWED
-    4'b 1111, // index[14] RACL_CTRL_LIOGRPC_POLICY_I3C1POLICY_SHADOWED
-    4'b 1111, // index[15] RACL_CTRL_LIOGRPC_POLICY_I3C2POLICY_SHADOWED
-    4'b 1111, // index[16] RACL_CTRL_LIOGRPC_POLICY_SPIHSTPOLICY_SHADOWED
-    4'b 1111  // index[17] RACL_CTRL_LIOGRPC_POLICY_SPIDEVPOLICY_SHADOWED
+  parameter logic [3:0] RACL_CTRL_LIOGRPC_PERMIT [19] = '{
+    4'b 1111, // index[ 0] RACL_CTRL_LIOGRPC_POLICY_ALL_RD_WR_POLICY_SHADOWED
+    4'b 1111, // index[ 1] RACL_CTRL_LIOGRPC_POLICY_ROT_PRIVATE_POLICY_SHADOWED
+    4'b 1111, // index[ 2] RACL_CTRL_LIOGRPC_POLICY_MIO_PRIVATE_POLICY_SHADOWED
+    4'b 1111, // index[ 3] RACL_CTRL_LIOGRPC_POLICY_PWC_PRIVATE_POLICY_SHADOWED
+    4'b 1111, // index[ 4] RACL_CTRL_LIOGRPC_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED
+    4'b 1111, // index[ 5] RACL_CTRL_LIOGRPC_POLICY_PWMPOLICY_SHADOWED
+    4'b 1111, // index[ 6] RACL_CTRL_LIOGRPC_POLICY_GPIOPOLICY_SHADOWED
+    4'b 1111, // index[ 7] RACL_CTRL_LIOGRPC_POLICY_UARTPOLICY_SHADOWED
+    4'b 1111, // index[ 8] RACL_CTRL_LIOGRPC_POLICY_I2C0POLICY_SHADOWED
+    4'b 1111, // index[ 9] RACL_CTRL_LIOGRPC_POLICY_I2C1POLICY_SHADOWED
+    4'b 1111, // index[10] RACL_CTRL_LIOGRPC_POLICY_I2C2POLICY_SHADOWED
+    4'b 1111, // index[11] RACL_CTRL_LIOGRPC_POLICY_I3C0POLICY_SHADOWED
+    4'b 1111, // index[12] RACL_CTRL_LIOGRPC_POLICY_I3C1POLICY_SHADOWED
+    4'b 1111, // index[13] RACL_CTRL_LIOGRPC_POLICY_I3C2POLICY_SHADOWED
+    4'b 1111, // index[14] RACL_CTRL_LIOGRPC_POLICY_SPIHSTPOLICY_SHADOWED
+    4'b 1111, // index[15] RACL_CTRL_LIOGRPC_POLICY_SPIDEVPOLICY_SHADOWED
+    4'b 0001, // index[16] RACL_CTRL_LIOGRPC_ALERT_TEST
+    4'b 0011, // index[17] RACL_CTRL_LIOGRPC_ERROR_LOG
+    4'b 1111  // index[18] RACL_CTRL_LIOGRPC_ERROR_LOG_ADDRESS
   };
 
 endpackage

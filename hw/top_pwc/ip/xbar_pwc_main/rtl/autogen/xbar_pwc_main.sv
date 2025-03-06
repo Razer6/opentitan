@@ -104,26 +104,33 @@
 //       -> asf_35
 //         -> pwc_peri
 // mbx0.sram
-//   -> sm1_40
-//     -> sram_ctrl_mbox.ram
+//   -> s1n_52
+//     -> sm1_40
+//       -> sram_ctrl_mbox.ram
 // mbx1.sram
-//   -> sm1_40
-//     -> sram_ctrl_mbox.ram
+//   -> s1n_53
+//     -> sm1_40
+//       -> sram_ctrl_mbox.ram
 // mbx2.sram
-//   -> sm1_40
-//     -> sram_ctrl_mbox.ram
+//   -> s1n_54
+//     -> sm1_40
+//       -> sram_ctrl_mbox.ram
 // mbx3.sram
-//   -> sm1_40
-//     -> sram_ctrl_mbox.ram
+//   -> s1n_55
+//     -> sm1_40
+//       -> sram_ctrl_mbox.ram
 // mbx4.sram
-//   -> sm1_40
-//     -> sram_ctrl_mbox.ram
+//   -> s1n_56
+//     -> sm1_40
+//       -> sram_ctrl_mbox.ram
 // mbx5.sram
-//   -> sm1_40
-//     -> sram_ctrl_mbox.ram
+//   -> s1n_57
+//     -> sm1_40
+//       -> sram_ctrl_mbox.ram
 // mbx_pcie0.sram
-//   -> sm1_40
-//     -> sram_ctrl_mbox.ram
+//   -> s1n_58
+//     -> sm1_40
+//       -> sram_ctrl_mbox.ram
 
 module xbar_pwc_main (
   input clk_main_i,
@@ -375,6 +382,76 @@ module xbar_pwc_main (
   // Create steering signal
   logic [2:0] dev_sel_s1n_51;
 
+  tl_h2d_t tl_s1n_52_us_h2d ;
+  tl_d2h_t tl_s1n_52_us_d2h ;
+
+
+  tl_h2d_t tl_s1n_52_ds_h2d [1];
+  tl_d2h_t tl_s1n_52_ds_d2h [1];
+
+  // Create steering signal
+  logic [0:0] dev_sel_s1n_52;
+
+  tl_h2d_t tl_s1n_53_us_h2d ;
+  tl_d2h_t tl_s1n_53_us_d2h ;
+
+
+  tl_h2d_t tl_s1n_53_ds_h2d [1];
+  tl_d2h_t tl_s1n_53_ds_d2h [1];
+
+  // Create steering signal
+  logic [0:0] dev_sel_s1n_53;
+
+  tl_h2d_t tl_s1n_54_us_h2d ;
+  tl_d2h_t tl_s1n_54_us_d2h ;
+
+
+  tl_h2d_t tl_s1n_54_ds_h2d [1];
+  tl_d2h_t tl_s1n_54_ds_d2h [1];
+
+  // Create steering signal
+  logic [0:0] dev_sel_s1n_54;
+
+  tl_h2d_t tl_s1n_55_us_h2d ;
+  tl_d2h_t tl_s1n_55_us_d2h ;
+
+
+  tl_h2d_t tl_s1n_55_ds_h2d [1];
+  tl_d2h_t tl_s1n_55_ds_d2h [1];
+
+  // Create steering signal
+  logic [0:0] dev_sel_s1n_55;
+
+  tl_h2d_t tl_s1n_56_us_h2d ;
+  tl_d2h_t tl_s1n_56_us_d2h ;
+
+
+  tl_h2d_t tl_s1n_56_ds_h2d [1];
+  tl_d2h_t tl_s1n_56_ds_d2h [1];
+
+  // Create steering signal
+  logic [0:0] dev_sel_s1n_56;
+
+  tl_h2d_t tl_s1n_57_us_h2d ;
+  tl_d2h_t tl_s1n_57_us_d2h ;
+
+
+  tl_h2d_t tl_s1n_57_ds_h2d [1];
+  tl_d2h_t tl_s1n_57_ds_d2h [1];
+
+  // Create steering signal
+  logic [0:0] dev_sel_s1n_57;
+
+  tl_h2d_t tl_s1n_58_us_h2d ;
+  tl_d2h_t tl_s1n_58_us_d2h ;
+
+
+  tl_h2d_t tl_s1n_58_ds_h2d [1];
+  tl_d2h_t tl_s1n_58_ds_d2h [1];
+
+  // Create steering signal
+  logic [0:0] dev_sel_s1n_58;
+
 
 
   assign tl_sm1_30_us_h2d[0] = tl_s1n_29_ds_h2d[0];
@@ -506,26 +583,26 @@ module xbar_pwc_main (
   assign tl_sm1_36_us_h2d[2] = tl_s1n_51_ds_h2d[3];
   assign tl_s1n_51_ds_d2h[3] = tl_sm1_36_us_d2h[2];
 
-  assign tl_sm1_40_us_h2d[3] = tl_mbx0__sram_i;
-  assign tl_mbx0__sram_o = tl_sm1_40_us_d2h[3];
+  assign tl_sm1_40_us_h2d[3] = tl_s1n_52_ds_h2d[0];
+  assign tl_s1n_52_ds_d2h[0] = tl_sm1_40_us_d2h[3];
 
-  assign tl_sm1_40_us_h2d[4] = tl_mbx1__sram_i;
-  assign tl_mbx1__sram_o = tl_sm1_40_us_d2h[4];
+  assign tl_sm1_40_us_h2d[4] = tl_s1n_53_ds_h2d[0];
+  assign tl_s1n_53_ds_d2h[0] = tl_sm1_40_us_d2h[4];
 
-  assign tl_sm1_40_us_h2d[5] = tl_mbx2__sram_i;
-  assign tl_mbx2__sram_o = tl_sm1_40_us_d2h[5];
+  assign tl_sm1_40_us_h2d[5] = tl_s1n_54_ds_h2d[0];
+  assign tl_s1n_54_ds_d2h[0] = tl_sm1_40_us_d2h[5];
 
-  assign tl_sm1_40_us_h2d[6] = tl_mbx3__sram_i;
-  assign tl_mbx3__sram_o = tl_sm1_40_us_d2h[6];
+  assign tl_sm1_40_us_h2d[6] = tl_s1n_55_ds_h2d[0];
+  assign tl_s1n_55_ds_d2h[0] = tl_sm1_40_us_d2h[6];
 
-  assign tl_sm1_40_us_h2d[7] = tl_mbx4__sram_i;
-  assign tl_mbx4__sram_o = tl_sm1_40_us_d2h[7];
+  assign tl_sm1_40_us_h2d[7] = tl_s1n_56_ds_h2d[0];
+  assign tl_s1n_56_ds_d2h[0] = tl_sm1_40_us_d2h[7];
 
-  assign tl_sm1_40_us_h2d[8] = tl_mbx5__sram_i;
-  assign tl_mbx5__sram_o = tl_sm1_40_us_d2h[8];
+  assign tl_sm1_40_us_h2d[8] = tl_s1n_57_ds_h2d[0];
+  assign tl_s1n_57_ds_d2h[0] = tl_sm1_40_us_d2h[8];
 
-  assign tl_sm1_40_us_h2d[9] = tl_mbx_pcie0__sram_i;
-  assign tl_mbx_pcie0__sram_o = tl_sm1_40_us_d2h[9];
+  assign tl_sm1_40_us_h2d[9] = tl_s1n_58_ds_h2d[0];
+  assign tl_s1n_58_ds_d2h[0] = tl_sm1_40_us_d2h[9];
 
   assign tl_s1n_29_us_h2d = tl_rv_core_ibex__corei_i;
   assign tl_rv_core_ibex__corei_o = tl_s1n_29_us_d2h;
@@ -595,6 +672,27 @@ module xbar_pwc_main (
 
   assign tl_s1n_51_us_h2d = tl_dma__host_i;
   assign tl_dma__host_o = tl_s1n_51_us_d2h;
+
+  assign tl_s1n_52_us_h2d = tl_mbx0__sram_i;
+  assign tl_mbx0__sram_o = tl_s1n_52_us_d2h;
+
+  assign tl_s1n_53_us_h2d = tl_mbx1__sram_i;
+  assign tl_mbx1__sram_o = tl_s1n_53_us_d2h;
+
+  assign tl_s1n_54_us_h2d = tl_mbx2__sram_i;
+  assign tl_mbx2__sram_o = tl_s1n_54_us_d2h;
+
+  assign tl_s1n_55_us_h2d = tl_mbx3__sram_i;
+  assign tl_mbx3__sram_o = tl_s1n_55_us_d2h;
+
+  assign tl_s1n_56_us_h2d = tl_mbx4__sram_i;
+  assign tl_mbx4__sram_o = tl_s1n_56_us_d2h;
+
+  assign tl_s1n_57_us_h2d = tl_mbx5__sram_i;
+  assign tl_mbx5__sram_o = tl_s1n_57_us_d2h;
+
+  assign tl_s1n_58_us_h2d = tl_mbx_pcie0__sram_i;
+  assign tl_mbx_pcie0__sram_o = tl_s1n_58_us_d2h;
 
   always_comb begin
     // default steering to generate error response if address is not within the range
@@ -785,6 +883,69 @@ end
     end else if ((tl_s1n_51_us_h2d.a_address &
                   ~(ADDR_MASK_PWC_PERI)) == ADDR_SPACE_PWC_PERI) begin
       dev_sel_s1n_51 = 3'd3;
+end
+  end
+
+  always_comb begin
+    // default steering to generate error response if address is not within the range
+    dev_sel_s1n_52 = 1'd1;
+    if ((tl_s1n_52_us_h2d.a_address &
+         ~(ADDR_MASK_SRAM_CTRL_MBOX__RAM)) == ADDR_SPACE_SRAM_CTRL_MBOX__RAM) begin
+      dev_sel_s1n_52 = 1'd0;
+end
+  end
+
+  always_comb begin
+    // default steering to generate error response if address is not within the range
+    dev_sel_s1n_53 = 1'd1;
+    if ((tl_s1n_53_us_h2d.a_address &
+         ~(ADDR_MASK_SRAM_CTRL_MBOX__RAM)) == ADDR_SPACE_SRAM_CTRL_MBOX__RAM) begin
+      dev_sel_s1n_53 = 1'd0;
+end
+  end
+
+  always_comb begin
+    // default steering to generate error response if address is not within the range
+    dev_sel_s1n_54 = 1'd1;
+    if ((tl_s1n_54_us_h2d.a_address &
+         ~(ADDR_MASK_SRAM_CTRL_MBOX__RAM)) == ADDR_SPACE_SRAM_CTRL_MBOX__RAM) begin
+      dev_sel_s1n_54 = 1'd0;
+end
+  end
+
+  always_comb begin
+    // default steering to generate error response if address is not within the range
+    dev_sel_s1n_55 = 1'd1;
+    if ((tl_s1n_55_us_h2d.a_address &
+         ~(ADDR_MASK_SRAM_CTRL_MBOX__RAM)) == ADDR_SPACE_SRAM_CTRL_MBOX__RAM) begin
+      dev_sel_s1n_55 = 1'd0;
+end
+  end
+
+  always_comb begin
+    // default steering to generate error response if address is not within the range
+    dev_sel_s1n_56 = 1'd1;
+    if ((tl_s1n_56_us_h2d.a_address &
+         ~(ADDR_MASK_SRAM_CTRL_MBOX__RAM)) == ADDR_SPACE_SRAM_CTRL_MBOX__RAM) begin
+      dev_sel_s1n_56 = 1'd0;
+end
+  end
+
+  always_comb begin
+    // default steering to generate error response if address is not within the range
+    dev_sel_s1n_57 = 1'd1;
+    if ((tl_s1n_57_us_h2d.a_address &
+         ~(ADDR_MASK_SRAM_CTRL_MBOX__RAM)) == ADDR_SPACE_SRAM_CTRL_MBOX__RAM) begin
+      dev_sel_s1n_57 = 1'd0;
+end
+  end
+
+  always_comb begin
+    // default steering to generate error response if address is not within the range
+    dev_sel_s1n_58 = 1'd1;
+    if ((tl_s1n_58_us_h2d.a_address &
+         ~(ADDR_MASK_SRAM_CTRL_MBOX__RAM)) == ADDR_SPACE_SRAM_CTRL_MBOX__RAM) begin
+      dev_sel_s1n_58 = 1'd0;
 end
   end
 
@@ -1113,6 +1274,111 @@ end
     .tl_d_o       (tl_s1n_51_ds_h2d),
     .tl_d_i       (tl_s1n_51_ds_d2h),
     .dev_select_i (dev_sel_s1n_51)
+  );
+  tlul_socket_1n #(
+    .HReqDepth (4'h0),
+    .HRspDepth (4'h0),
+    .DReqDepth (4'h0),
+    .DRspDepth (4'h0),
+    .N         (1)
+  ) u_s1n_52 (
+    .clk_i        (clk_main_i),
+    .rst_ni       (rst_main_ni),
+    .tl_h_i       (tl_s1n_52_us_h2d),
+    .tl_h_o       (tl_s1n_52_us_d2h),
+    .tl_d_o       (tl_s1n_52_ds_h2d),
+    .tl_d_i       (tl_s1n_52_ds_d2h),
+    .dev_select_i (dev_sel_s1n_52)
+  );
+  tlul_socket_1n #(
+    .HReqDepth (4'h0),
+    .HRspDepth (4'h0),
+    .DReqDepth (4'h0),
+    .DRspDepth (4'h0),
+    .N         (1)
+  ) u_s1n_53 (
+    .clk_i        (clk_main_i),
+    .rst_ni       (rst_main_ni),
+    .tl_h_i       (tl_s1n_53_us_h2d),
+    .tl_h_o       (tl_s1n_53_us_d2h),
+    .tl_d_o       (tl_s1n_53_ds_h2d),
+    .tl_d_i       (tl_s1n_53_ds_d2h),
+    .dev_select_i (dev_sel_s1n_53)
+  );
+  tlul_socket_1n #(
+    .HReqDepth (4'h0),
+    .HRspDepth (4'h0),
+    .DReqDepth (4'h0),
+    .DRspDepth (4'h0),
+    .N         (1)
+  ) u_s1n_54 (
+    .clk_i        (clk_main_i),
+    .rst_ni       (rst_main_ni),
+    .tl_h_i       (tl_s1n_54_us_h2d),
+    .tl_h_o       (tl_s1n_54_us_d2h),
+    .tl_d_o       (tl_s1n_54_ds_h2d),
+    .tl_d_i       (tl_s1n_54_ds_d2h),
+    .dev_select_i (dev_sel_s1n_54)
+  );
+  tlul_socket_1n #(
+    .HReqDepth (4'h0),
+    .HRspDepth (4'h0),
+    .DReqDepth (4'h0),
+    .DRspDepth (4'h0),
+    .N         (1)
+  ) u_s1n_55 (
+    .clk_i        (clk_main_i),
+    .rst_ni       (rst_main_ni),
+    .tl_h_i       (tl_s1n_55_us_h2d),
+    .tl_h_o       (tl_s1n_55_us_d2h),
+    .tl_d_o       (tl_s1n_55_ds_h2d),
+    .tl_d_i       (tl_s1n_55_ds_d2h),
+    .dev_select_i (dev_sel_s1n_55)
+  );
+  tlul_socket_1n #(
+    .HReqDepth (4'h0),
+    .HRspDepth (4'h0),
+    .DReqDepth (4'h0),
+    .DRspDepth (4'h0),
+    .N         (1)
+  ) u_s1n_56 (
+    .clk_i        (clk_main_i),
+    .rst_ni       (rst_main_ni),
+    .tl_h_i       (tl_s1n_56_us_h2d),
+    .tl_h_o       (tl_s1n_56_us_d2h),
+    .tl_d_o       (tl_s1n_56_ds_h2d),
+    .tl_d_i       (tl_s1n_56_ds_d2h),
+    .dev_select_i (dev_sel_s1n_56)
+  );
+  tlul_socket_1n #(
+    .HReqDepth (4'h0),
+    .HRspDepth (4'h0),
+    .DReqDepth (4'h0),
+    .DRspDepth (4'h0),
+    .N         (1)
+  ) u_s1n_57 (
+    .clk_i        (clk_main_i),
+    .rst_ni       (rst_main_ni),
+    .tl_h_i       (tl_s1n_57_us_h2d),
+    .tl_h_o       (tl_s1n_57_us_d2h),
+    .tl_d_o       (tl_s1n_57_ds_h2d),
+    .tl_d_i       (tl_s1n_57_ds_d2h),
+    .dev_select_i (dev_sel_s1n_57)
+  );
+  tlul_socket_1n #(
+    .HReqDepth (4'h0),
+    .HRspDepth (4'h0),
+    .DReqDepth (4'h0),
+    .DRspDepth (4'h0),
+    .N         (1)
+  ) u_s1n_58 (
+    .clk_i        (clk_main_i),
+    .rst_ni       (rst_main_ni),
+    .tl_h_i       (tl_s1n_58_us_h2d),
+    .tl_h_o       (tl_s1n_58_us_d2h),
+    .tl_d_o       (tl_s1n_58_ds_h2d),
+    .tl_d_i       (tl_s1n_58_ds_d2h),
+    .dev_select_i (dev_sel_s1n_58)
   );
 
 endmodule

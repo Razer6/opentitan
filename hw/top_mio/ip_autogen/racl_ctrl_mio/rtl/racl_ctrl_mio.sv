@@ -197,7 +197,7 @@ module racl_ctrl_mio import racl_ctrl_mio_reg_pkg::*; #(
   logic first_error;
   assign first_error = ~reg2hw.error_log.valid.q & racl_error_arb.valid;
 
-  // Writing 1 to the error valid bit clears the log again
+  // Writing 1 to the error valid bit clears the log and log address again
   logic clear_log;
   assign clear_log = reg2hw.error_log.valid.q & reg2hw.error_log.valid.qe;
 
@@ -219,6 +219,9 @@ module racl_ctrl_mio import racl_ctrl_mio_reg_pkg::*; #(
 
   assign hw2reg.error_log.ctn_uid.d  = clear_log ? '0 : racl_error_arb.ctn_uid;
   assign hw2reg.error_log.ctn_uid.de = first_error | clear_log;
+
+  assign hw2reg.error_log_address.d  = clear_log ? '0 : racl_error_arb.request_address;
+  assign hw2reg.error_log_address.de = first_error | clear_log;
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
   // Assertions

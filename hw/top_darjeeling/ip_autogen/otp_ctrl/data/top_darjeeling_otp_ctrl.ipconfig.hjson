@@ -2341,7 +2341,7 @@
               isdigest: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 15996
+              offset: 20092
             }
             {
               name: EN_SRAM_IFETCH
@@ -2351,7 +2351,7 @@
               isdigest: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 20092
+              offset: 20093
             }
             {
               name: HW_CFG1_DIGEST

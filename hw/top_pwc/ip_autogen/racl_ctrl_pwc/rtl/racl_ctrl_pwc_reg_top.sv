@@ -63,9 +63,9 @@ module racl_ctrl_pwc_reg_top
 
   // also check for spurious write enables
   logic reg_we_err;
-  logic [11:0] reg_we_check;
+  logic [12:0] reg_we_check;
   prim_reg_we_check #(
-    .OneHotWidth(12)
+    .OneHotWidth(13)
   ) u_prim_reg_we_check (
     .clk_i(clk_i),
     .rst_ni(rst_ni),
@@ -243,6 +243,7 @@ module racl_ctrl_pwc_reg_top
   logic error_log_read_access_qs;
   logic [3:0] error_log_role_qs;
   logic [4:0] error_log_ctn_uid_qs;
+  logic [31:0] error_log_address_qs;
 
   // Register instances
   // R[policy_all_rd_wr_policy_shadowed]: V(False)
@@ -1171,13 +1172,45 @@ module racl_ctrl_pwc_reg_top
   );
 
 
+  // R[error_log_address]: V(False)
+  logic error_log_address_qe;
+  logic [0:0] error_log_address_flds_we;
+  // In case all fields are read-only the aggregated register QE will be zero as well.
+  assign error_log_address_qe = &error_log_address_flds_we;
+  prim_subreg #(
+    .DW      (32),
+    .SwAccess(prim_subreg_pkg::SwAccessRO),
+    .RESVAL  (32'h0),
+    .Mubi    (1'b0)
+  ) u_error_log_address (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
 
-  logic [11:0] addr_hit;
+    // from register interface
+    .we     (1'b0),
+    .wd     ('0),
+
+    // from internal hardware
+    .de     (hw2reg.error_log_address.de),
+    .d      (hw2reg.error_log_address.d),
+
+    // to internal hardware
+    .qe     (error_log_address_flds_we[0]),
+    .q      (),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (error_log_address_qs)
+  );
+
+
+
+  logic [12:0] addr_hit;
   top_racl_pkg::racl_role_vec_t racl_role_vec;
   top_racl_pkg::racl_role_t racl_role;
 
-  logic [11:0] racl_addr_hit_read;
-  logic [11:0] racl_addr_hit_write;
+  logic [12:0] racl_addr_hit_read;
+  logic [12:0] racl_addr_hit_write;
 
   if (EnableRacl) begin : gen_racl_role_logic
     // Retrieve RACL role from user bits and one-hot encode that for the comparison bitmap
@@ -1215,9 +1248,10 @@ module racl_ctrl_pwc_reg_top
     addr_hit[ 9] = (reg_addr == RACL_CTRL_PWC_POLICY_DUC_PRIVATE_POLICY_SHADOWED_OFFSET);
     addr_hit[10] = (reg_addr == RACL_CTRL_PWC_ALERT_TEST_OFFSET);
     addr_hit[11] = (reg_addr == RACL_CTRL_PWC_ERROR_LOG_OFFSET);
+    addr_hit[12] = (reg_addr == RACL_CTRL_PWC_ERROR_LOG_ADDRESS_OFFSET);
 
     if (EnableRacl) begin : gen_racl_hit
-      for (int unsigned slice_idx = 0; slice_idx < 12; slice_idx++) begin
+      for (int unsigned slice_idx = 0; slice_idx < 13; slice_idx++) begin
         // Static RACL protection with ROT_PRIVATE policy
         racl_addr_hit_read[slice_idx] =
           addr_hit[slice_idx] & (|(top_racl_pkg::RACL_POLICY_ROT_PRIVATE_RD & racl_role_vec));
@@ -1234,8 +1268,9 @@ module racl_ctrl_pwc_reg_top
   // A valid address hit, access, but failed the RACL check
   assign racl_error_o.valid = |addr_hit & ((reg_re & ~|racl_addr_hit_read) |
                                            (reg_we & ~|racl_addr_hit_write));
-  assign racl_error_o.racl_role = racl_role;
-  assign racl_error_o.overflow  = 1'b0;
+  assign racl_error_o.request_address = top_pkg::TL_AW'(reg_addr);
+  assign racl_error_o.racl_role       = racl_role;
+  assign racl_error_o.overflow        = 1'b0;
 
   if (EnableRacl) begin : gen_racl_log
     assign racl_error_o.ctn_uid     = top_racl_pkg::tlul_extract_ctn_uid_bits(tl_i.a_user.rsvd);
@@ -1259,7 +1294,8 @@ module racl_ctrl_pwc_reg_top
                (racl_addr_hit_write[ 8] & (|(RACL_CTRL_PWC_PERMIT[ 8] & ~reg_be))) |
                (racl_addr_hit_write[ 9] & (|(RACL_CTRL_PWC_PERMIT[ 9] & ~reg_be))) |
                (racl_addr_hit_write[10] & (|(RACL_CTRL_PWC_PERMIT[10] & ~reg_be))) |
-               (racl_addr_hit_write[11] & (|(RACL_CTRL_PWC_PERMIT[11] & ~reg_be)))));
+               (racl_addr_hit_write[11] & (|(RACL_CTRL_PWC_PERMIT[11] & ~reg_be))) |
+               (racl_addr_hit_write[12] & (|(RACL_CTRL_PWC_PERMIT[12] & ~reg_be)))));
   end
 
   // Generate write-enables
@@ -1347,6 +1383,7 @@ module racl_ctrl_pwc_reg_top
     reg_we_check[9] = policy_duc_private_policy_shadowed_we;
     reg_we_check[10] = alert_test_we;
     reg_we_check[11] = error_log_we;
+    reg_we_check[12] = 1'b0;
   end
 
   // Read data return
@@ -1414,6 +1451,10 @@ module racl_ctrl_pwc_reg_top
         reg_rdata_next[2] = error_log_read_access_qs;
         reg_rdata_next[6:3] = error_log_role_qs;
         reg_rdata_next[11:7] = error_log_ctn_uid_qs;
+      end
+
+      racl_addr_hit_read[12]: begin
+        reg_rdata_next[31:0] = error_log_address_qs;
       end
 
       default: begin
