@@ -304,7 +304,7 @@
         GpioAsHwStrapsEn: "1",
         GpioAsyncOn: "1"
       },
-      ipgen_param: {
+      ipgen_params: {
         num_inp_period_counters: 8
       }
       attr: "ipgen"
@@ -342,7 +342,7 @@
     { name: "otp_ctrl",
       type: "otp_ctrl",
       template_type: "otp_ctrl",
-      ipgen_param: {
+      ipgen_params: {
         use_rivos_config: true
       }
       clock_srcs: {clk_i: "io", clk_edn_i: "main"},
@@ -549,6 +549,9 @@
         hart: "0x30460000",
       },
       attr: "ipgen",
+      ipgen_params: {
+        use_rivos_config: true
+      }
     },
     { name: "aon_timer_aon",
       type: "aon_timer",
@@ -1085,7 +1088,7 @@
         soc_mbx: "0x01461f00",
       },
       attr: "ipgen",
-      ipgen_param: {
+      ipgen_params: {
         racl_group: "rot"
       },
     },
@@ -1101,7 +1104,7 @@
       param_decl: {
         RangeCheckErrorRsp: 0
       }
-      ipgen_param: {
+      ipgen_params: {
         num_ranges: 32
       }
       attr: "ipgen",
@@ -1111,9 +1114,9 @@
       type: "rv_core_ibex",
       template_type: "rv_core_ibex",
       attr: "ipgen",
-      ipgen_param: {
-        NumRegions: 32,
-        SimWindowAddress: 0x440
+      ipgen_params: {
+        num_regions: 32,
+        sim_window_address: 0x440
       }
       param_decl: {PMPEnable: "1",
                    PMPGranularity: "0",

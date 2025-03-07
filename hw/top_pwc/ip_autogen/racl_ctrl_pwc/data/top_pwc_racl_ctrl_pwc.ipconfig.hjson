@@ -5,12 +5,12 @@
   instance_name: top_pwc_racl_ctrl_pwc
   param_values:
   {
+    racl_group: pwc
     module_instance_name: racl_ctrl_pwc
     nr_role_bits: 4
     nr_ctn_uid_bits: 5
     nr_policies: 18
     nr_subscribing_ips: 18
-    racl_group: pwc
     policies:
     [
       {

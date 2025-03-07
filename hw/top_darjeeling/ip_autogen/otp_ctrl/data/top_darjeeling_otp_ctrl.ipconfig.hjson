@@ -5,6 +5,7 @@
   instance_name: top_darjeeling_otp_ctrl
   param_values:
   {
+    use_rivos_config: true
     otp_mmap:
     {
       seed: 36021179872380457113239299468132194022238108125576166239904535336103582949069
@@ -2463,7 +2464,6 @@
       ]
     }
     enable_flash_key: false
-    use_rivos_config: true
     topname: darjeeling
     uniquified_modules: {}
     module_instance_name: otp_ctrl

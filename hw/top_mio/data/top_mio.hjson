@@ -341,7 +341,7 @@
     { name: "rv_plic_mio",
       type: "rv_plic_mio",
       template_type: "rv_plic",
-      ipgen_param: {
+      ipgen_params: {
         racl_support: true
       }
       clock_srcs: {clk_i: "ext_main"},
@@ -555,7 +555,7 @@
         soc_mbx: "0x01481f00",
       },
       attr: "ipgen",
-      ipgen_param: {
+      ipgen_params: {
         racl_group: "mio"
       },
       outgoing_alert: "mio"
@@ -573,7 +573,7 @@
       param_decl: {
         RangeCheckErrorRsp: 0
       }
-      ipgen_param: {
+      ipgen_params: {
         num_ranges: 32
       }
       attr: "ipgen",
@@ -585,9 +585,9 @@
       type: "rv_core_ibex_mio",
       template_type: "rv_core_ibex",
       attr: "ipgen",
-      ipgen_param: {
-        NumRegions: 2,
-        SimWindowAddress: 0x440
+      ipgen_params: {
+        num_regions: 2,
+        sim_window_address: 0x440
         racl_support: true
       }
       param_decl: {PMPEnable: "1",

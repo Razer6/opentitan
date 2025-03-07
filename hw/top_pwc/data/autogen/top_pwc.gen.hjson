@@ -2000,7 +2000,7 @@
       name: rv_plic_pwc
       type: rv_plic_pwc
       template_type: rv_plic
-      ipgen_param:
+      ipgen_params:
       {
         racl_support: true
       }
@@ -4849,7 +4849,7 @@
         }
       }
       attr: ipgen
-      ipgen_param:
+      ipgen_params:
       {
         racl_group: pwc
       }
@@ -5007,7 +5007,7 @@
       {
         RangeCheckErrorRsp: 0
       }
-      ipgen_param:
+      ipgen_params:
       {
         num_ranges: 32
       }
@@ -5351,10 +5351,10 @@
       type: rv_core_ibex_pwc
       template_type: rv_core_ibex
       attr: ipgen
-      ipgen_param:
+      ipgen_params:
       {
-        NumRegions: 2
-        SimWindowAddress: 0x440
+        num_regions: 2
+        sim_window_address: 0x440
         racl_support: true
       }
       param_decl:

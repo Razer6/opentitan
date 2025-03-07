@@ -1986,9 +1986,9 @@
       ]
     }
     enable_flash_key: true
-    use_rivos_config: false
     topname: earlgrey
     uniquified_modules: {}
     module_instance_name: otp_ctrl
+    use_rivos_config: false
   }
 }

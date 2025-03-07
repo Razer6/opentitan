@@ -5,12 +5,12 @@
   instance_name: top_earlgrey_rv_core_ibex
   param_values:
   {
-    racl_support: false
     num_regions: 2
     module_instance_name: rv_core_ibex
     topname: earlgrey
     uniquified_modules: {}
     sim_window_address: 128
+    racl_support: false
   }
   dtgen:
   {

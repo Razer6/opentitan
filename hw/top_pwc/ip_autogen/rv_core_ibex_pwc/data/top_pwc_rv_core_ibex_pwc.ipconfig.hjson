@@ -5,10 +5,10 @@
   instance_name: top_pwc_rv_core_ibex_pwc
   param_values:
   {
-    racl_support: true
     num_regions: 2
-    module_instance_name: rv_core_ibex_pwc
     sim_window_address: 1088
+    racl_support: true
+    module_instance_name: rv_core_ibex_pwc
     topname: pwc
     uniquified_modules:
     {

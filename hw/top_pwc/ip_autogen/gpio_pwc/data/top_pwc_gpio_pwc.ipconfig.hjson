@@ -5,7 +5,6 @@
   instance_name: top_pwc_gpio_pwc
   param_values:
   {
-    num_inp_period_counters: 0
     module_instance_name: gpio_pwc
     topname: pwc
     uniquified_modules:
@@ -16,6 +15,7 @@
       ac_range_check: ac_range_check_pwc
       rv_plic: rv_plic_pwc
     }
+    num_inp_period_counters: 0
   }
   dtgen:
   {
