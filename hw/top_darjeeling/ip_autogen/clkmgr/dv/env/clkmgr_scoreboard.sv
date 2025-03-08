@@ -190,12 +190,6 @@ class clkmgr_scoreboard extends cip_base_scoreboard #(
       forever
         @cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr if (cfg.en_cov) begin
           cov.recov_err_cg.sample(
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[10],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[9],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[8],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[7],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[6],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[5],
               cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[4],
               cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[3],
               cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[2],

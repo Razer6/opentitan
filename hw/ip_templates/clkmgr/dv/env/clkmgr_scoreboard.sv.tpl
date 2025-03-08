@@ -209,17 +209,10 @@ ${spc}cfg.clkmgr_vif.scanmode_i == MuBi4True);
       forever
         @cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr if (cfg.en_cov) begin
           cov.recov_err_cg.sample(
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[10],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[9],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[8],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[7],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[6],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[5],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[4],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[3],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[2],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[1],
-              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[0]);
+% for i in list(reversed(range(1 + 2 * len(rg_srcs)))):
+<% sep = ');' if loop.last else ',' %>\
+              cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr[${i}]${sep}
+% endfor
           `uvm_info(`gfn, $sformatf(
                     "Recoverable errors sampled: 0x%x", cfg.clkmgr_csrs_vif.csrs_cb.recov_err_csr),
                     UVM_MEDIUM)

@@ -76,7 +76,7 @@ package clkmgr_env_pkg;
     TransOtbn
   } trans_e;
   typedef struct packed {
-    logic otbn_main;
+    logic otbn;
     logic kmac;
     logic hmac;
     logic aes;

@@ -5,7 +5,8 @@
   from topgen.lib import Name
   rg_srcs = list(sorted({sig['src_name'] for sig
                          in typed_clocks['rg_clks'].values()}))
-
+  hint_targets = [sig['endpoint_ip']
+                  for sig in typed_clocks['hint_clks'].values()]
   def to_camel_case(s: str):
     return Name.from_snake_case(s).as_camel_case()
 %>\
@@ -82,19 +83,19 @@ interface clkmgr_if (
   clk_hints_t clk_hints_csr;
   always_comb
     clk_hints_csr = '{
-    otbn_main: `CLKMGR_HIER.reg2hw.clk_hints.clk_main_otbn_hint.q,
-    kmac: `CLKMGR_HIER.reg2hw.clk_hints.clk_main_kmac_hint.q,
-    hmac: `CLKMGR_HIER.reg2hw.clk_hints.clk_main_hmac_hint.q,
-    aes: `CLKMGR_HIER.reg2hw.clk_hints.clk_main_aes_hint.q
+% for target in list(reversed(hint_targets)):
+<% sep = '' if loop.last else ',' %>\
+    ${target}: `CLKMGR_HIER.reg2hw.clk_hints.clk_main_${target}_hint.q${sep}
+% endfor
   };
 
   clk_hints_t clk_hints_status_csr;
   always_comb
     clk_hints_status_csr = '{
-                             otbn_main: `CLKMGR_HIER.u_reg.clk_hints_status_clk_main_otbn_val_qs,
-                             kmac: `CLKMGR_HIER.u_reg.clk_hints_status_clk_main_kmac_val_qs,
-                             hmac: `CLKMGR_HIER.u_reg.clk_hints_status_clk_main_hmac_val_qs,
-                             aes: `CLKMGR_HIER.u_reg.clk_hints_status_clk_main_aes_val_qs
+% for target in list(reversed(hint_targets)):
+<% sep = '' if loop.last else ',' %>\
+                             ${target}: `CLKMGR_HIER.u_reg.clk_hints_status_clk_main_${target}_val_qs${sep}
+% endfor
                              };
 
   prim_mubi_pkg::mubi4_t extclk_ctrl_csr_sel;
@@ -193,7 +194,6 @@ ${spc}fast: `CLKMGR_HIER.u_${src}_meas.u_meas.fast_o};
     update_lc_clk_byp_req(lc_clk_byp_req);
     update_lc_debug_en(lc_debug_en);
     update_scanmode(scanmode);
-    update_all_clk_byp_ack(prim_mubi_pkg::MuBi4False);
   endtask
 
   // Pipeline signals that go through synchronizers with the target clock domain's clock.

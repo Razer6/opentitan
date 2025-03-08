@@ -70,7 +70,7 @@ interface clkmgr_if (
   clk_hints_t clk_hints_csr;
   always_comb
     clk_hints_csr = '{
-    otbn_main: `CLKMGR_HIER.reg2hw.clk_hints.clk_main_otbn_hint.q,
+    otbn: `CLKMGR_HIER.reg2hw.clk_hints.clk_main_otbn_hint.q,
     kmac: `CLKMGR_HIER.reg2hw.clk_hints.clk_main_kmac_hint.q,
     hmac: `CLKMGR_HIER.reg2hw.clk_hints.clk_main_hmac_hint.q,
     aes: `CLKMGR_HIER.reg2hw.clk_hints.clk_main_aes_hint.q
@@ -79,7 +79,7 @@ interface clkmgr_if (
   clk_hints_t clk_hints_status_csr;
   always_comb
     clk_hints_status_csr = '{
-                             otbn_main: `CLKMGR_HIER.u_reg.clk_hints_status_clk_main_otbn_val_qs,
+                             otbn: `CLKMGR_HIER.u_reg.clk_hints_status_clk_main_otbn_val_qs,
                              kmac: `CLKMGR_HIER.u_reg.clk_hints_status_clk_main_kmac_val_qs,
                              hmac: `CLKMGR_HIER.u_reg.clk_hints_status_clk_main_hmac_val_qs,
                              aes: `CLKMGR_HIER.u_reg.clk_hints_status_clk_main_aes_val_qs
@@ -190,7 +190,6 @@ interface clkmgr_if (
     update_lc_clk_byp_req(lc_clk_byp_req);
     update_lc_debug_en(lc_debug_en);
     update_scanmode(scanmode);
-    update_all_clk_byp_ack(prim_mubi_pkg::MuBi4False);
   endtask
 
   // Pipeline signals that go through synchronizers with the target clock domain's clock.

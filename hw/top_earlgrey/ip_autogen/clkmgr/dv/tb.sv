@@ -13,37 +13,43 @@ module tb;
   `include "uvm_macros.svh"
   `include "dv_macros.svh"
 
-  wire clk, rst_n, rst_shadowed_n;
-  wire clk_main, rst_main_n;
-  wire clk_io, rst_io_n;
-  wire clk_usb, rst_usb_n;
-  wire clk_aon, rst_aon_n;
-
   // clock interfaces
+  wire clk, rst_n, rst_shadowed_n;
   clk_rst_if clk_rst_if (
     .clk  (clk),
     .rst_n(rst_n)
   );
+
+  wire clk_aon, rst_aon_n;
   clk_rst_if aon_clk_rst_if (
     .clk  (clk_aon),
     .rst_n(rst_aon_n)
   );
+
+  wire clk_io, rst_io_n;
   clk_rst_if io_clk_rst_if (
     .clk  (clk_io),
     .rst_n(rst_io_n)
   );
+
+  wire clk_main, rst_main_n;
   clk_rst_if main_clk_rst_if (
     .clk  (clk_main),
     .rst_n(rst_main_n)
   );
+
+  wire clk_usb, rst_usb_n;
   clk_rst_if usb_clk_rst_if (
     .clk  (clk_usb),
     .rst_n(rst_usb_n)
   );
+
+  wire rst_io_div2_n;
   clk_rst_if io_div2_clk_rst_if (
     .clk  (),
     .rst_n(rst_io_div2_n)
   );
+  wire rst_io_div4_n;
   clk_rst_if io_div4_clk_rst_if (
     .clk  (),
     .rst_n(rst_io_div4_n)
@@ -124,10 +130,10 @@ module tb;
     // Clocks must be set to active at time 0. The rest of the clock configuration happens
     // in clkmgr_base_vseq.sv.
     clk_rst_if.set_active();
-    main_clk_rst_if.set_active();
-    io_clk_rst_if.set_active();
-    usb_clk_rst_if.set_active();
     aon_clk_rst_if.set_active();
+    io_clk_rst_if.set_active();
+    main_clk_rst_if.set_active();
+    usb_clk_rst_if.set_active();
     io_div2_clk_rst_if.set_active();
     io_div4_clk_rst_if.set_active();
     root_main_clk_rst_if.set_active();
@@ -145,14 +151,14 @@ module tb;
     .rst_ni(rst_n),
     .rst_shadowed_ni(rst_shadowed_n),
 
-    .clk_main_i (clk_main),
-    .rst_main_ni(rst_main_n),
-    .clk_io_i (clk_io),
-    .rst_io_ni(rst_io_n),
-    .clk_usb_i (clk_usb),
-    .rst_usb_ni(rst_usb_n),
     .clk_aon_i (clk_aon),
     .rst_aon_ni(rst_aon_n),
+    .clk_io_i (clk_io),
+    .rst_io_ni(rst_io_n),
+    .clk_main_i (clk_main),
+    .rst_main_ni(rst_main_n),
+    .clk_usb_i (clk_usb),
+    .rst_usb_ni(rst_usb_n),
     .rst_io_div2_ni(rst_io_div2_n),
     .rst_io_div4_ni(rst_io_div4_n),
     // ICEBOX(#17934): differentiate the root resets as mentioned for rst_io_ni above.

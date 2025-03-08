@@ -7,6 +7,7 @@
                          in typed_clocks['rg_clks'].values()}))
   clk_freqs = {v['name']: v['freq'] for v in src_clks.values()}
   clk_freqs.update({v['name']: v['freq'] for v in derived_clks.values()})
+  hint_targets = [sig['endpoint_ip'] for sig in typed_clocks['hint_clks'].values()]
 
   def to_camel_case(s: str):
     return Name.from_snake_case(s).as_camel_case()
@@ -76,16 +77,15 @@ package clkmgr_env_pkg;
   } clk_enables_t;
 
   typedef enum int {
-    TransAes,
-    TransHmac,
-    TransKmac,
-    TransOtbn
+% for target in hint_targets:
+<% sep = "" if loop.last else "," %>\
+    Trans${target.capitalize()}${sep}
+% endfor
   } trans_e;
   typedef struct packed {
-    logic otbn_main;
-    logic kmac;
-    logic hmac;
-    logic aes;
+% for target in reversed(hint_targets):
+    logic ${target};
+% endfor
   } clk_hints_t;
 
   typedef struct {

@@ -4,6 +4,7 @@
 //
 <%
 all_src_names = sorted(s['name'] for s in src_clks.values())
+all_derived_names = sorted(s['name'] for s in derived_clks.values())
 rg_srcs = list(sorted({sig['src_name'] for sig
                        in typed_clocks['rg_clks'].values()}))
 %>\
@@ -18,26 +19,26 @@ module tb;
   `include "uvm_macros.svh"
   `include "dv_macros.svh"
 
-  wire clk, rst_n, rst_shadowed_n;
-% for src in src_clks.values():
-  wire clk_${src['name']}, rst_${src['name']}_n;
-% endfor
-
   // clock interfaces
+  wire clk, rst_n, rst_shadowed_n;
   clk_rst_if clk_rst_if (
     .clk  (clk),
     .rst_n(rst_n)
   );
+
 % for src_name in all_src_names:
+  wire clk_${src_name}, rst_${src_name}_n;
   clk_rst_if ${src_name}_clk_rst_if (
     .clk  (clk_${src_name}),
     .rst_n(rst_${src_name}_n)
   );
+
 % endfor
-% for src in derived_clks.values():
-  clk_rst_if ${src['name']}_clk_rst_if (
+% for src_name in all_derived_names:
+  wire rst_${src_name}_n;
+  clk_rst_if ${src_name}_clk_rst_if (
     .clk  (),
-    .rst_n(rst_${src['name']}_n)
+    .rst_n(rst_${src_name}_n)
   );
 % endfor
 % for clk_family in parent_child_clks.values():
@@ -57,9 +58,9 @@ module tb;
   clkmgr_if clkmgr_if (
     .clk(clk),
     .rst_n(rst_n),
-% for src in sorted(src_clks.values(), key=lambda s: s['name']): 
+% for src_name in all_src_names:
 <% sep = "" if loop.last else "," %>\
-    .rst_${src['name']}_n(rst_${src['name']}_ni)${sep}
+    .rst_${src_name}_n(rst_${src_name}_ni)${sep}
 % endfor
   );
 
@@ -100,11 +101,11 @@ module tb;
     // Clocks must be set to active at time 0. The rest of the clock configuration happens
     // in clkmgr_base_vseq.sv.
     clk_rst_if.set_active();
-% for src in src_clks.values():
-    ${src['name']}_clk_rst_if.set_active();
+% for src_name in all_src_names:
+    ${src_name}_clk_rst_if.set_active();
 % endfor
-% for src in derived_clks.values():
-    ${src['name']}_clk_rst_if.set_active();
+% for src_name in all_derived_names:
+    ${src_name}_clk_rst_if.set_active();
 % endfor
 % for clk_family in parent_child_clks.values():
   % for src in clk_family:
@@ -121,11 +122,11 @@ module tb;
     .rst_ni(rst_n),
     .rst_shadowed_ni(rst_shadowed_n),
 
-% for src in src_clks.values():
-    .clk_${src['name']}_i (clk_${src['name']}),
-    .rst_${src['name']}_ni(rst_${src['name']}_n),
+% for src_name in all_src_names:
+    .clk_${src_name}_i (clk_${src_name}),
+    .rst_${src_name}_ni(rst_${src_name}_n),
 % endfor
-% for src_name in derived_clks.keys():
+% for src_name in all_derived_names:
     .rst_${src_name}_ni(rst_${src_name}_n),
 % endfor
     // ICEBOX(#17934): differentiate the root resets as mentioned for rst_io_ni above.
@@ -169,15 +170,15 @@ module tb;
   initial begin
     // Register interfaces with uvm.
     uvm_config_db#(virtual clk_rst_if)::set(null, "*.env", "clk_rst_vif", clk_rst_if);
-% for src_name in sorted(all_src_names):
+% for src_name in all_src_names:
     uvm_config_db#(virtual clk_rst_if)::set(null, "*.env", "${src_name}_clk_rst_vif", ${src_name}_clk_rst_if);
 % endfor
-% for src in derived_clks.values():
-    % if len(src) > len("main"):
-    uvm_config_db#(virtual clk_rst_if)::set(null, "*.env", "${src['name']}_clk_rst_vif",
-                                            ${src['name']}_clk_rst_if);
+% for src_name in all_derived_names:
+    % if len(src_name) > len("main"):
+    uvm_config_db#(virtual clk_rst_if)::set(null, "*.env", "${src_name}_clk_rst_vif",
+                                            ${src_name}_clk_rst_if);
     % else:
-    uvm_config_db#(virtual clk_rst_if)::set(null, "*.env", "${src['name']}_clk_rst_vif", ${src['name']}_clk_rst_if);
+    uvm_config_db#(virtual clk_rst_if)::set(null, "*.env", "${src_name}_clk_rst_vif", ${src_name}_clk_rst_if);
     % endif
 % endfor
 % for clk_family in parent_child_clks.values():

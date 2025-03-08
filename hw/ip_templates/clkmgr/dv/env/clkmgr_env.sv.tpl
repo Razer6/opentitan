@@ -31,7 +31,7 @@ class clkmgr_env extends cip_base_env #(
     if (!uvm_config_db#(virtual clk_rst_if)::get(
             this, "", "${src['name']}_clk_rst_vif", cfg.${src['name']}_clk_rst_vif
         )) begin
-      `uvm_fatal(`gfn, "failed to get $(src['name']}_clk_rst_vif from uvm_config_db")
+      `uvm_fatal(`gfn, "failed to get ${src['name']}_clk_rst_vif from uvm_config_db")
     end
 % endfor
 % for clk_family in parent_child_clks.values():

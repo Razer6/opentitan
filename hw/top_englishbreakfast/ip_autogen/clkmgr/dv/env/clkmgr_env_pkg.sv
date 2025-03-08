@@ -70,15 +70,9 @@ package clkmgr_env_pkg;
   } clk_enables_t;
 
   typedef enum int {
-    TransAes,
-    TransHmac,
-    TransKmac,
-    TransOtbn
+    TransAes
   } trans_e;
   typedef struct packed {
-    logic otbn_main;
-    logic kmac;
-    logic hmac;
     logic aes;
   } clk_hints_t;
 
