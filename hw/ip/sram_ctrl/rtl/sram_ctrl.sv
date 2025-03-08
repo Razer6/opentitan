@@ -26,7 +26,8 @@ module sram_ctrl
   parameter int NumPrinceRoundsHalf                        = 3,
   // RACL configuration of this IP including the policy selection for the configuration registers
   // and the SRAM memory window
-  parameter bit                         EnableRacl         = 1'b0,
+  parameter bit                         EnableRacl         = 1'b0,  // reg_top racl
+  parameter bit                         EnableSramRacl     = 1'b0,  // sram range racl
   parameter bit                         RaclErrorRsp       = EnableRacl,
   parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVecRegs[NumRegsRegs] = '{NumRegsRegs{0}},
   parameter int unsigned                RaclPolicySelRangesRamNum = 1,
@@ -537,7 +538,7 @@ module sram_ctrl
     .EnableDataIntgPt(1), // SEC_CM: MEM.INTEGRITY
     .SecFifoPtr      (1), // SEC_CM: TLUL_FIFO.CTR.REDUN
     .EnableReadback  (1), // SEC_CM: MEM.READBACK
-    .EnableRacl(EnableRacl),
+    .EnableRacl(EnableSramRacl),
     .RaclErrorRsp(RaclErrorRsp),
     .RaclPolicySelNumRanges(RaclPolicySelRangesRamNum),
     .RaclPolicySelRanges(RaclPolicySelRangesRam)
