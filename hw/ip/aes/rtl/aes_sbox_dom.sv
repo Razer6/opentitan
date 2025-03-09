@@ -40,6 +40,9 @@
 
 `include "prim_assert.sv"
 
+`ifndef __AES_SBOX_DOM__
+`define __AES_SBOX_DOM__
+
 // Packed struct for pseudo-random data (PRD) input. Stages 1, 3 and 4 require 8 bits each. Stage 2
 // requires just 4 bits.
 typedef struct packed {
@@ -56,6 +59,8 @@ typedef struct packed {
   logic [7:0] prd_2;
   logic [7:0] prd_3;
 } aes_sbox_dom_prd_out_t;
+
+`endif
 
 // DOM-indep GF(2^N) multiplier, first-order masked.
 // Computes (a_q ^ b_q) = (a_x ^ b_x) * (a_y ^ b_y), i.e. q = x * y using first-order
