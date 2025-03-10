@@ -18,7 +18,7 @@ repos:
       - id: check-added-large-files
       - id: check-merge-conflict
         args: [--assume-in-merge]
-        exclude: ^doc/contributing/github_notes.md
+        exclude: ^(doc/contributing/github_notes.md|hw/vendor/lowrisc_ibex/doc/03_reference/history.rst)
       - id: trailing-whitespace
         files: ^(sw/|hw/dv/)
         exclude: ^sw/vendor/
