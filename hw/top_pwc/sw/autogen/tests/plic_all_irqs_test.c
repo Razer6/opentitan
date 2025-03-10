@@ -31,7 +31,7 @@
 #include "sw/device/lib/dif/dif_ac_range_check_pwc.h"
 #include "sw/device/lib/dif/dif_aon_timer.h"
 #include "sw/device/lib/dif/dif_dma.h"
-#include "sw/device/lib/dif/dif_gpio.h"
+#include "sw/device/lib/dif/dif_gpio_pwc.h"
 #include "sw/device/lib/dif/dif_mbx.h"
 #include "sw/device/lib/dif/dif_rv_plic.h"
 #include "sw/device/lib/dif/dif_rv_timer.h"
@@ -58,7 +58,7 @@ static dif_dma_t dma;
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
-static dif_gpio_t gpio;
+static dif_gpio_pwc_t gpio;
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
@@ -128,8 +128,8 @@ static volatile dif_dma_irq_t dma_irq_serviced;
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
-static volatile dif_gpio_irq_t gpio_irq_expected;
-static volatile dif_gpio_irq_t gpio_irq_serviced;
+static volatile dif_gpio_pwc_irq_t gpio_pwc_irq_expected;
+static volatile dif_gpio_pwc_irq_t gpio_pwc_irq_serviced;
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
@@ -250,23 +250,23 @@ void ottf_external_isr(uint32_t *exc_info) {
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
     case kTopPwcPlicPeripheralGpio: {
-      dif_gpio_irq_t irq =
-          (dif_gpio_irq_t)(plic_irq_id -
-                           (dif_rv_plic_irq_id_t)
-                               kTopPwcPlicIrqIdGpioGpio0);
-      CHECK(irq == gpio_irq_expected,
+      dif_gpio_pwc_irq_t irq =
+          (dif_gpio_pwc_irq_t)(plic_irq_id -
+                               (dif_rv_plic_irq_id_t)
+                                   kTopPwcPlicIrqIdGpioGpio0);
+      CHECK(irq == gpio_pwc_irq_expected,
             "Incorrect gpio IRQ triggered: exp = %d, obs = %d",
-            gpio_irq_expected, irq);
-      gpio_irq_serviced = irq;
+            gpio_pwc_irq_expected, irq);
+      gpio_pwc_irq_serviced = irq;
 
-      dif_gpio_irq_state_snapshot_t snapshot;
-      CHECK_DIF_OK(dif_gpio_irq_get_state(&gpio, &snapshot));
-      CHECK(snapshot == (dif_gpio_irq_state_snapshot_t)(1 << irq),
+      dif_gpio_pwc_irq_state_snapshot_t snapshot;
+      CHECK_DIF_OK(dif_gpio_pwc_irq_get_state(&gpio, &snapshot));
+      CHECK(snapshot == (dif_gpio_pwc_irq_state_snapshot_t)(1 << irq),
             "Only gpio IRQ %d expected to fire. Actual interrupt "
             "status = %x",
             irq, snapshot);
 
-      CHECK_DIF_OK(dif_gpio_irq_acknowledge(&gpio, irq));
+      CHECK_DIF_OK(dif_gpio_pwc_irq_acknowledge(&gpio, irq));
       break;
     }
 #endif
@@ -486,7 +486,7 @@ static void peripherals_init(void) {
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
   base_addr = mmio_region_from_addr(TOP_PWC_GPIO_BASE_ADDR);
-  CHECK_DIF_OK(dif_gpio_init(base_addr, &gpio));
+  CHECK_DIF_OK(dif_gpio_pwc_init(base_addr, &gpio));
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
@@ -550,7 +550,7 @@ static void peripheral_irqs_clear(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
-  CHECK_DIF_OK(dif_gpio_irq_acknowledge_all(&gpio));
+  CHECK_DIF_OK(dif_gpio_pwc_irq_acknowledge_all(&gpio));
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
@@ -601,8 +601,8 @@ static void peripheral_irqs_enable(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
-  dif_gpio_irq_state_snapshot_t gpio_irqs =
-      (dif_gpio_irq_state_snapshot_t)0xffffffff;
+  dif_gpio_pwc_irq_state_snapshot_t gpio_pwc_irqs =
+      (dif_gpio_pwc_irq_state_snapshot_t)0xffffffff;
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
@@ -624,7 +624,7 @@ static void peripheral_irqs_enable(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
-  CHECK_DIF_OK(dif_gpio_irq_restore_all(&gpio, &gpio_irqs));
+  CHECK_DIF_OK(dif_gpio_pwc_irq_restore_all(&gpio, &gpio_pwc_irqs));
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 4 && 4 < TEST_MAX_IRQ_PERIPHERAL
@@ -738,15 +738,15 @@ static void peripheral_irqs_trigger(void) {
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
   peripheral_expected = kTopPwcPlicPeripheralGpio;
-  for (dif_gpio_irq_t irq = kDifGpioIrqGpio0; irq <= kDifGpioIrqGpio31;
+  for (dif_gpio_pwc_irq_t irq = kDifGpioPwcIrqGpio0; irq <= kDifGpioPwcIrqGpio31;
        ++irq) {
-    gpio_irq_expected = irq;
+    gpio_pwc_irq_expected = irq;
     LOG_INFO("Triggering gpio IRQ %d.", irq);
-    CHECK_DIF_OK(dif_gpio_irq_force(&gpio, irq, true));
+    CHECK_DIF_OK(dif_gpio_pwc_irq_force(&gpio, irq, true));
 
     // This avoids a race where *irq_serviced is read before
     // entering the ISR.
-    IBEX_SPIN_FOR(gpio_irq_serviced == irq, 1);
+    IBEX_SPIN_FOR(gpio_pwc_irq_serviced == irq, 1);
     LOG_INFO("IRQ %d from gpio is serviced.", irq);
   }
 #endif

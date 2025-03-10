@@ -11,7 +11,7 @@ load("//rules/opentitan:hw.bzl", "opentitan_top")
 load("//hw/top_pwc/ip_autogen/ac_range_check_pwc:defs.bzl", "AC_RANGE_CHECK_PWC")
 load("//hw/ip/aon_timer:defs.bzl", "AON_TIMER")
 load("//hw/ip/dma:defs.bzl", "DMA")
-load("//hw/top_pwc/ip_autogen/gpio:defs.bzl", "GPIO")
+load("//hw/top_pwc/ip_autogen/gpio_pwc:defs.bzl", "GPIO_PWC")
 load("//hw/ip/mbx:defs.bzl", "MBX")
 load("//hw/top_pwc/ip/pwc_soc_proxy:defs.bzl", "PWC_SOC_PROXY")
 load("//hw/top_pwc/ip_autogen/racl_ctrl_pwc:defs.bzl", "RACL_CTRL_PWC")
@@ -30,7 +30,7 @@ PWC = opentitan_top(
         AC_RANGE_CHECK_PWC,
         AON_TIMER,
         DMA,
-        GPIO,
+        GPIO_PWC,
         MBX,
         PWC_SOC_PROXY,
         RACL_CTRL_PWC,

@@ -62,7 +62,7 @@
       clock: clk_peri_i
       reset: rst_peri_ni
       pipeline: false
-      inst_type: gpio
+      inst_type: gpio_pwc
       addr_range:
       [
         {

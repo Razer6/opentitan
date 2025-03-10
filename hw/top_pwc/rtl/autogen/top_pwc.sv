@@ -378,7 +378,7 @@ module top_pwc #(
   // Peripheral Instantiation
 
 
-  gpio #(
+  gpio_pwc #(
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[0:0]),
     .GpioAsyncOn(GpioGpioAsyncOn),
     .GpioAsHwStrapsEn(GpioGpioAsHwStrapsEn)

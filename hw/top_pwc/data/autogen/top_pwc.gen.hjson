@@ -390,7 +390,7 @@
   [
     {
       name: gpio
-      type: gpio
+      type: gpio_pwc
       template_type: gpio
       clock_srcs:
       {
@@ -459,7 +459,7 @@
           name: sampled_straps
           desc: This vector contains the sampled strap values.
           struct: gpio_straps
-          package: gpio_pkg
+          package: gpio_pwc_pkg
           type: uni
           act: req
           width: 1
@@ -6474,7 +6474,7 @@
           clock: clk_peri_i
           reset: rst_peri_ni
           pipeline: false
-          inst_type: gpio
+          inst_type: gpio_pwc
           addr_range:
           [
             {
@@ -12363,7 +12363,7 @@
         name: sampled_straps
         desc: This vector contains the sampled strap values.
         struct: gpio_straps
-        package: gpio_pkg
+        package: gpio_pwc_pkg
         type: uni
         act: req
         width: 1
