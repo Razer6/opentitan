@@ -3695,7 +3695,7 @@ string: 
 addr: 20005ad4
 string: [X
 addr: 20005ad7
-string: 
+string:
 addr: 20005adc
 string: X
 addr: 20005adf
@@ -3705,7 +3705,7 @@ string: 
 addr: 20005ae8
 string: �X
 addr: 20005aeb
-string: 
+string:
 addr: 20005af0
 string: X
 addr: 20005af3
@@ -3715,7 +3715,7 @@ string: 
 addr: 20005afc
 string: �X
 addr: 20005aff
-string: 
+string:
 addr: 20005b04
 string: X
 addr: 20005b07
@@ -3775,7 +3775,7 @@ string: 
 addr: 20005b74
 string: �Y
 addr: 20005b77
-string: 
+string:
 addr: 20005b7c
 string: X
 addr: 20005b7f
@@ -3799,7 +3799,7 @@ string: `
 addr: 20005bb0
 string: �Y
 addr: 20005bb3
-string: 
+string:
 addr: 20005bb8
 string: X
 addr: 20005bbb
@@ -3837,7 +3837,7 @@ string: �b
 addr: 20005c7b
 string: `f
 addr: 20005c7f
-string: 
+string:
 addr: 20005c84
 string: 7
 addr: 20005c88
@@ -4101,7 +4101,7 @@ string: :
 addr: 200067c4
 string: �f
 addr: 200067c7
-string: 
+string:
 addr: 200067cc
 string: `f
 addr: 200067cf
@@ -4129,7 +4129,7 @@ string: �
 addr: 20006800
 string: xg
 addr: 20006803
-string: 
+string:
 addr: 20006808
 string: `f
 addr: 2000680b
@@ -4139,7 +4139,7 @@ string: 
 addr: 20006814
 string: �g
 addr: 20006817
-string: 
+string:
 addr: 2000681c
 string: `f
 addr: 2000681f
@@ -4147,7 +4147,7 @@ string: g
 addr: 20006828
 string: �g
 addr: 2000682b
-string: 
+string:
 addr: 20006830
 string: `f
 addr: 20006833
@@ -4171,11 +4171,11 @@ string: 
 addr: 20006900
 string: �h
 addr: 20006903
-string: 
+string:
 addr: 20006908
 string: @h
 addr: 2000690b
-string: 
+string:
 addr: 20006910
 string: 
 addr: 20006914
@@ -4511,7 +4511,7 @@ string: �t
 addr: 20007613
 string: �t
 addr: 20007617
-string: 
+string:
 addr: 20007619
 string: u
 addr: 2000761b
@@ -4569,7 +4569,7 @@ string: pu
 addr: 20007683
 string: pu
 addr: 20007687
-string: 
+string:
 addr: 2000768c
 string: 
 addr: 20007690
@@ -4591,11 +4591,11 @@ string: 
 addr: 20007778
 string: �v
 addr: 2000777b
-string: 
+string:
 addr: 20007784
 string: �v
 addr: 20007787
-string: 
+string:
 addr: 2000778c
 string: 
 addr: 20007790
@@ -4809,53 +4809,53 @@ string: 
 addr: 20007930
 string: 
 addr: 20007934
-string: 
+string:
 addr: 20007938
-string: 
+string:
 addr: 2000793c
-string: 
+string:
 addr: 20007940
-string: 
+string:
 addr: 20007944
-string: 
+string:
 addr: 20007948
-string: 
+string:
 addr: 2000794c
-string: 
+string:
 addr: 20007950
-string: 
+string:
 addr: 20007954
-string: 
+string:
 addr: 20007958
-string: 
+string:
 addr: 2000795c
-string: 
+string:
 addr: 20007960
-string: 
+string:
 addr: 20007964
-string: 
+string:
 addr: 20007968
-string: 
+string:
 addr: 2000796c
-string: 
+string:
 addr: 20007970
-string: 
+string:
 addr: 20007974
-string: 
+string:
 addr: 20007978
-string: 
+string:
 addr: 2000797c
-string: 
+string:
 addr: 20007980
-string: 
+string:
 addr: 20007984
-string: 
+string:
 addr: 20007988
-string: 
+string:
 addr: 2000798c
-string: 
+string:
 addr: 20007990
-string: 
+string:
 addr: 20007994
 string: 
 addr: 20007998
@@ -4949,21 +4949,21 @@ string: 
 addr: 20007a48
 string: 
 addr: 20007a4c
-string: 
+string:
 addr: 20007a50
-string: 
+string:
 addr: 20007a54
-string: 
+string:
 addr: 20007a58
-string: 
+string:
 addr: 20007a5c
-string: 
+string:
 addr: 20007a60
-string: 
+string:
 addr: 20007a64
-string: 
+string:
 addr: 20007a68
-string: 
+string:
 addr: 20007a6c
 string: sw/device/lib/testing/test_framework/status.c
 addr: 20007a9a
@@ -4973,11 +4973,11 @@ string: FAIL!
 addr: 20007aac
 string: lz
 addr: 20007aaf
-string: 
+string:
 addr: 20007ab8
 string: �z
 addr: 20007abb
-string: 
+string:
 addr: 20007ac0
 string: lz
 addr: 20007ac3
@@ -4987,7 +4987,7 @@ string: �z
 addr: 20007acf
 string: %s%05d %s:%d]
 addr: 20007adf
-string: 
+string:
 addr: 20007ae2
 string: I
 addr: 20007ae4
@@ -5077,7 +5077,7 @@ string: %08x:
 addr: 20007b8a
 string: %!s
 addr: 20007b8e
-string: 
+string:
 addr: 20007b91
 string: %
 addr: 20007b93
