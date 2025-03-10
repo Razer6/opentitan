@@ -14,8 +14,8 @@ filesets:
       - lowrisc:prim:racl_error_arb
       - lowrisc:systems:top_racl_pkg
     files:
-      - rtl/racl_ctrl_lioGrpA_reg_pkg.sv
-      - rtl/racl_ctrl_lioGrpA_reg_top.sv
+      - rtl/racl_ctrl_liogrpa_reg_pkg.sv
+      - rtl/racl_ctrl_liogrpa_reg_top.sv
       - rtl/racl_ctrl_lioGrpA.sv
     file_type: systemVerilogSource
 

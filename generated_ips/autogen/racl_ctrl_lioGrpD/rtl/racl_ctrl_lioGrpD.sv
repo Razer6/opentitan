@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
 
-module racl_ctrl_lioGrpD import racl_ctrl_lioGrpD_reg_pkg::*; #(
+module racl_ctrl_lioGrpD import racl_ctrl_liogrpd_reg_pkg::*; #(
   parameter logic [NumAlerts-1:0] AlertAsyncOn              = {NumAlerts{1'b1}},
   parameter int unsigned          NumSubscribingIps         = 1,
   parameter int unsigned          NumExternalSubscribingIps = 1,
@@ -26,8 +26,8 @@ module racl_ctrl_lioGrpD import racl_ctrl_lioGrpD_reg_pkg::*; #(
 );
   import top_racl_pkg::*;
 
-  racl_ctrl_lioGrpD_reg2hw_t reg2hw;
-  racl_ctrl_lioGrpD_hw2reg_t hw2reg;
+  racl_ctrl_liogrpd_reg2hw_t reg2hw;
+  racl_ctrl_liogrpd_hw2reg_t hw2reg;
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
   // Register Interface
@@ -38,7 +38,7 @@ module racl_ctrl_lioGrpD import racl_ctrl_lioGrpD_reg_pkg::*; #(
 
   // SEC_CM: BUS.INTEGRITY
   // SEC_CM: RACL_POLICY.CONFIG.SHADOW
-  racl_ctrl_lioGrpD_reg_top #(
+  racl_ctrl_liogrpd_reg_top #(
     .EnableRacl   ( 1'b1         ),
     .RaclErrorRsp ( RaclErrorRsp )
   ) u_racl_ctrl_reg (

@@ -14,8 +14,8 @@ filesets:
       - lowrisc:prim:racl_error_arb
       - lowrisc:systems:top_racl_pkg
     files:
-      - rtl/${module_instance_name}_reg_pkg.sv
-      - rtl/${module_instance_name}_reg_top.sv
+      - rtl/${module_instance_name.lower()}_reg_pkg.sv
+      - rtl/${module_instance_name.lower()}_reg_top.sv
       - rtl/${module_instance_name}.sv
     file_type: systemVerilogSource
 

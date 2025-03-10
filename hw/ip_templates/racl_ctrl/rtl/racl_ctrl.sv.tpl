@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
 
-module ${module_instance_name} import ${module_instance_name}_reg_pkg::*; #(
+module ${module_instance_name} import ${module_instance_name.lower()}_reg_pkg::*; #(
   parameter logic [NumAlerts-1:0] AlertAsyncOn              = {NumAlerts{1'b1}},
   parameter int unsigned          NumSubscribingIps         = 1,
   parameter int unsigned          NumExternalSubscribingIps = 1,
@@ -28,8 +28,8 @@ module ${module_instance_name} import ${module_instance_name}_reg_pkg::*; #(
 );
   import top_racl_pkg::*;
 
-  ${module_instance_name}_reg2hw_t reg2hw;
-  ${module_instance_name}_hw2reg_t hw2reg;
+  ${module_instance_name.lower()}_reg2hw_t reg2hw;
+  ${module_instance_name.lower()}_hw2reg_t hw2reg;
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
   // Register Interface
@@ -44,7 +44,7 @@ module ${module_instance_name} import ${module_instance_name}_reg_pkg::*; #(
 % if enable_shadow_reg:
   // SEC_CM: RACL_POLICY.CONFIG.SHADOW
 % endif
-  ${module_instance_name}_reg_top #(
+  ${module_instance_name.lower()}_reg_top #(
     .EnableRacl   ( 1'b1         ),
     .RaclErrorRsp ( RaclErrorRsp )
   ) u_racl_ctrl_reg (
