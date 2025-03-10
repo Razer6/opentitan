@@ -71,7 +71,7 @@
       type:      "device",
       clock:     "clk_main_i",
       reset:     "rst_main_ni",
-      pipefile:  false,
+      pipeline:  false,
     },
     { name:      "rv_plic_pwc",
       type:      "device",

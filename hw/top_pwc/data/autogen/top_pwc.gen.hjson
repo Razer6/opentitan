@@ -5621,7 +5621,7 @@
           type: device
           clock: clk_main_i
           reset: rst_main_ni
-          pipefile: false
+          pipeline: false
           inst_type: pwc_soc_proxy
           addr_range:
           [
@@ -5635,7 +5635,6 @@
           ]
           xbar: false
           stub: false
-          pipeline: true
           req_fifo_pass: true
         }
         {
