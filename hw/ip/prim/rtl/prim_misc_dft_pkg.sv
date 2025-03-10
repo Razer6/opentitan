@@ -13,30 +13,37 @@ package prim_misc_dft_pkg;
 
   // sram test cfg
   typedef struct packed {
-    logic [2:0] wa;
-    logic [2:0] wpulse;
-    logic [3:0] rm;
-    logic       rme;
-    logic       ls;
-    logic       test_rnm;
-    logic       test1;
-    logic       testrwm;
-    logic       DFD_StopWE;  // this doesn't fit the struct logically, but easiest to not change OT interfaces
+    logic consistency_check2; // lsb: 19
+    logic disable_ls; // lsb: 18
+    logic disable_clock_gating; // lsb: 17
+    logic [1:0] ra; // lsb: 15
+    logic [2:0] wpulse; // lsb: 12
+    logic [2:0] wa; // lsb: 9
+    logic testrwm; // lsb: 8
+    logic test1; // lsb: 7
+    logic rme; // lsb: 6
+    logic test_rnm; // lsb: 5
+    logic consistency_check1; // lsb: 4
+    logic [3:0] rm; // lsb: 0
   } sram_test_cfg_t;
 
   // spi sram test cfg
   typedef struct packed {
-    logic [3:0] rmb;
-    logic [3:0] rma;
-    logic       rmeb;
-    logic       rmea;
-    logic       ls;
-    logic       test_rnm;
-    logic       test1b;
-    logic       test1a;
-    logic       DFD_StopWE;  // this doesn't fit the struct logically, but easiest to not change OT interfaces
-    logic       tstrst;      // this doesn't fit the struct logically, but easiest to not change OT interfaces
-    logic       tstrstsel;   // this doesn't fit the struct logically, but easiest to not change OT interfaces
+    logic consistency_check2; // lsb: 25
+    logic disable_ls; // lsb: 24
+    logic disable_clock_gating; // lsb: 23
+    logic [1:0] ra; // lsb: 21
+    logic [2:0] wpulse; // lsb: 18
+    logic [2:0] wa; // lsb: 15
+    logic testrwm; // lsb: 14
+    logic test1b; // lsb: 13
+    logic test1a; // lsb: 12
+    logic rmeb; // lsb: 11
+    logic rmea; // lsb: 10
+    logic test_rnm; // lsb: 9
+    logic [3:0] rmb; // lsb: 5
+    logic consistency_check1; // lsb: 4
+    logic [3:0] rma; // lsb: 0
   } spi_sram_test_cfg_t;
 
   // sram error injection inputs
@@ -47,6 +54,13 @@ package prim_misc_dft_pkg;
     logic [1:0] err_inj_count;
     logic [7:0] err_inj_loc;
   } sram_err_inj_in_t;
+
+  // sram dft in
+  typedef struct packed {
+    logic tston; // lsb: 2
+    logic bist_mode; // lsb: 1
+    logic DFD_StopWE; // lsb: 0
+  } sram_dft_in_t;
 
   // sram dft
   typedef struct packed {
