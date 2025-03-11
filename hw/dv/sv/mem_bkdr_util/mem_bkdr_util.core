@@ -14,18 +14,10 @@ filesets:
       - lowrisc:dv:crypto_dpi_present:0.1
       - lowrisc:prim:cipher_pkg:0.1
       - lowrisc:prim:secded:0.1
-      - lowrisc:ip:otp_ctrl_pkg:1.0
       - lowrisc:dv:digestpp_dpi
       - lowrisc:ip:kmac_pkg
-      # Rivos HACK: Remove
-      - lowrisc:dv:lc_ctrl_dv_utils
-      - lowrisc:opentitan:top_darjeeling_otp_ctrl_top_specific_pkg:1.0
     files:
-      - rivos_otp_scrambler_pkg.sv
-      - rivos_mem_bkdr_util_otp_base.sv: {is_include_file: true}
-      - sram_scrambler_pkg.sv
       - mem_bkdr_util_pkg.sv
-      - mem_bkdr_util_row_adapter.sv: {is_include_file: true}
       - mem_bkdr_util.sv: {is_include_file: true}
     file_type: systemVerilogSource
 
