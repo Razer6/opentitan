@@ -13,7 +13,6 @@ filesets:
       - lowrisc:opentitan:top_darjeeling_pwrmgr_pkg
       - lowrisc:ip:uart:0.1
       - lowrisc:ip:rv_core_ibex
-      - lowrisc:ibex:ibex_tracer
       - lowrisc:ip:rv_dm
       - lowrisc:ip:rv_timer
       - lowrisc:ip:tlul
@@ -98,6 +97,11 @@ filesets:
       - lint/top_darjeeling.vbl
     file_type: veribleLintWaiver
 
+  # Rivos setting: Add ibex tracer only to sim
+  files_ibex_tracer:
+    depend:
+      - lowrisc:ibex:ibex_tracer
+    file_type: systemVerilogSource
 
 parameters:
   SYNTHESIS:
@@ -128,6 +132,7 @@ targets:
       - RDV_NO_SYSCTL=true
     filesets:
       - files_rtl_generic
+      - files_ibex_tracer
     toplevel: top_darjeeling
 
   lint:
