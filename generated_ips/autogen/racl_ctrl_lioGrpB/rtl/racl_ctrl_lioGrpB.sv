@@ -94,8 +94,8 @@ module racl_ctrl_lioGrpB import racl_ctrl_liogrpb_reg_pkg::*; #(
 
   racl_policy_t policy_all_rd_wr_policy;
   racl_policy_t policy_rot_private_policy;
-  racl_policy_t policy_pwc_private_policy;
   racl_policy_t policy_hw_rot_pwc_wr_all_rd_policy;
+  racl_policy_t policy_pwc_private_policy;
   racl_policy_t policy_mio_private_policy;
   racl_policy_t policy_pwmpolicy;
   racl_policy_t policy_gpiopolicy;
@@ -116,11 +116,11 @@ module racl_ctrl_lioGrpB import racl_ctrl_liogrpb_reg_pkg::*; #(
   assign policy_rot_private_policy.read_perm = reg2hw.policy_rot_private_policy_shadowed.read_perm.q;
   assign policy_rot_private_policy.write_perm = reg2hw.policy_rot_private_policy_shadowed.write_perm.q;
 
-  assign policy_pwc_private_policy.read_perm = reg2hw.policy_pwc_private_policy_shadowed.read_perm.q;
-  assign policy_pwc_private_policy.write_perm = reg2hw.policy_pwc_private_policy_shadowed.write_perm.q;
-
   assign policy_hw_rot_pwc_wr_all_rd_policy.read_perm = reg2hw.policy_hw_rot_pwc_wr_all_rd_policy_shadowed.read_perm.q;
   assign policy_hw_rot_pwc_wr_all_rd_policy.write_perm = reg2hw.policy_hw_rot_pwc_wr_all_rd_policy_shadowed.write_perm.q;
+
+  assign policy_pwc_private_policy.read_perm = reg2hw.policy_pwc_private_policy_shadowed.read_perm.q;
+  assign policy_pwc_private_policy.write_perm = reg2hw.policy_pwc_private_policy_shadowed.write_perm.q;
 
   assign policy_mio_private_policy.read_perm = reg2hw.policy_mio_private_policy_shadowed.read_perm.q;
   assign policy_mio_private_policy.write_perm = reg2hw.policy_mio_private_policy_shadowed.write_perm.q;
@@ -174,8 +174,8 @@ module racl_ctrl_lioGrpB import racl_ctrl_liogrpb_reg_pkg::*; #(
     policy_gpiopolicy,
     policy_pwmpolicy,
     policy_mio_private_policy,
-    policy_hw_rot_pwc_wr_all_rd_policy,
     policy_pwc_private_policy,
+    policy_hw_rot_pwc_wr_all_rd_policy,
     policy_rot_private_policy,
     policy_all_rd_wr_policy
   };

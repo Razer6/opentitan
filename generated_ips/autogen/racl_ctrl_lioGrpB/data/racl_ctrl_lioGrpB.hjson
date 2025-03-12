@@ -157,33 +157,6 @@
       ]
     }
     { reserved: "1" }
-    { name: "POLICY_PWC_PRIVATE_POLICY_SHADOWED"
-      desc: '''
-            Read and write policy for pwc_private_policy
-            '''
-      swaccess: "rw"
-      hwaccess: "hro"
-      shadowed: "true"
-      update_err_alert: "recov_ctrl_update_err"
-      storage_err_alert: "fatal_fault"
-      fields: [
-        { bits: "31:16"
-          name: "write_perm"
-          resval: 864
-          desc: '''
-                Write permission for policy pwc_private_policy
-                '''
-        }
-        { bits: "15:0"
-          name: "read_perm"
-          resval: 864
-          desc: '''
-                Read permission for policy pwc_private_policy
-                '''
-        }
-      ]
-    }
-    { reserved: "1" }
     { name: "POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED"
       desc: '''
             Read and write policy for hw_rot_pwc_wr_all_rd_policy
@@ -206,6 +179,33 @@
           resval: 16383
           desc: '''
                 Read permission for policy hw_rot_pwc_wr_all_rd_policy
+                '''
+        }
+      ]
+    }
+    { reserved: "1" }
+    { name: "POLICY_PWC_PRIVATE_POLICY_SHADOWED"
+      desc: '''
+            Read and write policy for pwc_private_policy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 864
+          desc: '''
+                Write permission for policy pwc_private_policy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 864
+          desc: '''
+                Read permission for policy pwc_private_policy
                 '''
         }
       ]

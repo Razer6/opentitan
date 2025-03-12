@@ -44,7 +44,7 @@ package racl_ctrl_liogrpb_reg_pkg;
     struct packed {
       logic [15:0] q;
     } read_perm;
-  } racl_ctrl_liogrpb_reg2hw_policy_pwc_private_policy_shadowed_reg_t;
+  } racl_ctrl_liogrpb_reg2hw_policy_hw_rot_pwc_wr_all_rd_policy_shadowed_reg_t;
 
   typedef struct packed {
     struct packed {
@@ -53,7 +53,7 @@ package racl_ctrl_liogrpb_reg_pkg;
     struct packed {
       logic [15:0] q;
     } read_perm;
-  } racl_ctrl_liogrpb_reg2hw_policy_hw_rot_pwc_wr_all_rd_policy_shadowed_reg_t;
+  } racl_ctrl_liogrpb_reg2hw_policy_pwc_private_policy_shadowed_reg_t;
 
   typedef struct packed {
     struct packed {
@@ -215,10 +215,10 @@ package racl_ctrl_liogrpb_reg_pkg;
         policy_all_rd_wr_policy_shadowed; // [517:486]
     racl_ctrl_liogrpb_reg2hw_policy_rot_private_policy_shadowed_reg_t
         policy_rot_private_policy_shadowed; // [485:454]
-    racl_ctrl_liogrpb_reg2hw_policy_pwc_private_policy_shadowed_reg_t
-        policy_pwc_private_policy_shadowed; // [453:422]
     racl_ctrl_liogrpb_reg2hw_policy_hw_rot_pwc_wr_all_rd_policy_shadowed_reg_t
-        policy_hw_rot_pwc_wr_all_rd_policy_shadowed; // [421:390]
+        policy_hw_rot_pwc_wr_all_rd_policy_shadowed; // [453:422]
+    racl_ctrl_liogrpb_reg2hw_policy_pwc_private_policy_shadowed_reg_t
+        policy_pwc_private_policy_shadowed; // [421:390]
     racl_ctrl_liogrpb_reg2hw_policy_mio_private_policy_shadowed_reg_t
         policy_mio_private_policy_shadowed; // [389:358]
     racl_ctrl_liogrpb_reg2hw_policy_pwmpolicy_shadowed_reg_t policy_pwmpolicy_shadowed; // [357:326]
@@ -255,8 +255,8 @@ package racl_ctrl_liogrpb_reg_pkg;
   // Register offsets
   parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPB_POLICY_ALL_RD_WR_POLICY_SHADOWED_OFFSET = 8'h 0;
   parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPB_POLICY_ROT_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 8;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPB_POLICY_PWC_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 10;
-  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPB_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED_OFFSET = 8'h 18;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPB_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED_OFFSET = 8'h 10;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPB_POLICY_PWC_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 18;
   parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPB_POLICY_MIO_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 20;
   parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPB_POLICY_PWMPOLICY_SHADOWED_OFFSET = 8'h 28;
   parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPB_POLICY_GPIOPOLICY_SHADOWED_OFFSET = 8'h 30;
@@ -280,8 +280,8 @@ package racl_ctrl_liogrpb_reg_pkg;
   typedef enum int {
     RACL_CTRL_LIOGRPB_POLICY_ALL_RD_WR_POLICY_SHADOWED,
     RACL_CTRL_LIOGRPB_POLICY_ROT_PRIVATE_POLICY_SHADOWED,
-    RACL_CTRL_LIOGRPB_POLICY_PWC_PRIVATE_POLICY_SHADOWED,
     RACL_CTRL_LIOGRPB_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED,
+    RACL_CTRL_LIOGRPB_POLICY_PWC_PRIVATE_POLICY_SHADOWED,
     RACL_CTRL_LIOGRPB_POLICY_MIO_PRIVATE_POLICY_SHADOWED,
     RACL_CTRL_LIOGRPB_POLICY_PWMPOLICY_SHADOWED,
     RACL_CTRL_LIOGRPB_POLICY_GPIOPOLICY_SHADOWED,
@@ -303,8 +303,8 @@ package racl_ctrl_liogrpb_reg_pkg;
   parameter logic [3:0] RACL_CTRL_LIOGRPB_PERMIT [19] = '{
     4'b 1111, // index[ 0] RACL_CTRL_LIOGRPB_POLICY_ALL_RD_WR_POLICY_SHADOWED
     4'b 1111, // index[ 1] RACL_CTRL_LIOGRPB_POLICY_ROT_PRIVATE_POLICY_SHADOWED
-    4'b 1111, // index[ 2] RACL_CTRL_LIOGRPB_POLICY_PWC_PRIVATE_POLICY_SHADOWED
-    4'b 1111, // index[ 3] RACL_CTRL_LIOGRPB_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED
+    4'b 1111, // index[ 2] RACL_CTRL_LIOGRPB_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED
+    4'b 1111, // index[ 3] RACL_CTRL_LIOGRPB_POLICY_PWC_PRIVATE_POLICY_SHADOWED
     4'b 1111, // index[ 4] RACL_CTRL_LIOGRPB_POLICY_MIO_PRIVATE_POLICY_SHADOWED
     4'b 1111, // index[ 5] RACL_CTRL_LIOGRPB_POLICY_PWMPOLICY_SHADOWED
     4'b 1111, // index[ 6] RACL_CTRL_LIOGRPB_POLICY_GPIOPOLICY_SHADOWED

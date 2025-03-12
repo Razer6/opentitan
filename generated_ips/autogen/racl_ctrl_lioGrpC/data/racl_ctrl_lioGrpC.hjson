@@ -157,9 +157,9 @@
       ]
     }
     { reserved: "1" }
-    { name: "POLICY_MIO_PRIVATE_POLICY_SHADOWED"
+    { name: "POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED"
       desc: '''
-            Read and write policy for mio_private_policy
+            Read and write policy for hw_rot_pwc_wr_all_rd_policy
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -169,16 +169,16 @@
       fields: [
         { bits: "31:16"
           name: "write_perm"
-          resval: 992
+          resval: 864
           desc: '''
-                Write permission for policy mio_private_policy
+                Write permission for policy hw_rot_pwc_wr_all_rd_policy
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
-          resval: 992
+          resval: 16383
           desc: '''
-                Read permission for policy mio_private_policy
+                Read permission for policy hw_rot_pwc_wr_all_rd_policy
                 '''
         }
       ]
@@ -211,9 +211,9 @@
       ]
     }
     { reserved: "1" }
-    { name: "POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED"
+    { name: "POLICY_MIO_PRIVATE_POLICY_SHADOWED"
       desc: '''
-            Read and write policy for hw_rot_pwc_wr_all_rd_policy
+            Read and write policy for mio_private_policy
             '''
       swaccess: "rw"
       hwaccess: "hro"
@@ -223,16 +223,16 @@
       fields: [
         { bits: "31:16"
           name: "write_perm"
-          resval: 864
+          resval: 992
           desc: '''
-                Write permission for policy hw_rot_pwc_wr_all_rd_policy
+                Write permission for policy mio_private_policy
                 '''
         }
         { bits: "15:0"
           name: "read_perm"
-          resval: 16383
+          resval: 992
           desc: '''
-                Read permission for policy hw_rot_pwc_wr_all_rd_policy
+                Read permission for policy mio_private_policy
                 '''
         }
       ]

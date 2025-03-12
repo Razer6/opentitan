@@ -19133,25 +19133,6 @@
           wr_default: 96
         }
         {
-          name: pwc_private_policy
-          allowed_wr:
-          [
-            CAT3_DEBUG
-            ROT
-            PWC
-            INT_SOC
-          ]
-          allowed_rd:
-          [
-            CAT3_DEBUG
-            ROT
-            PWC
-            INT_SOC
-          ]
-          rd_default: 864
-          wr_default: 864
-        }
-        {
           name: hw_rot_pwc_wr_all_rd_policy
           allowed_wr:
           [
@@ -19178,6 +19159,25 @@
             MIMT_R_MODE
           ]
           rd_default: 16383
+          wr_default: 864
+        }
+        {
+          name: pwc_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          rd_default: 864
           wr_default: 864
         }
         {
@@ -19468,46 +19468,6 @@
           wr_default: 96
         }
         {
-          name: mio_private_policy
-          allowed_wr:
-          [
-            CAT3_DEBUG
-            ROT
-            MIO
-            PWC
-            INT_SOC
-          ]
-          allowed_rd:
-          [
-            CAT3_DEBUG
-            ROT
-            MIO
-            PWC
-            INT_SOC
-          ]
-          rd_default: 992
-          wr_default: 992
-        }
-        {
-          name: pwc_private_policy
-          allowed_wr:
-          [
-            CAT3_DEBUG
-            ROT
-            PWC
-            INT_SOC
-          ]
-          allowed_rd:
-          [
-            CAT3_DEBUG
-            ROT
-            PWC
-            INT_SOC
-          ]
-          rd_default: 864
-          wr_default: 864
-        }
-        {
           name: hw_rot_pwc_wr_all_rd_policy
           allowed_wr:
           [
@@ -19535,6 +19495,46 @@
           ]
           rd_default: 16383
           wr_default: 864
+        }
+        {
+          name: pwc_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          rd_default: 864
+          wr_default: 864
+        }
+        {
+          name: mio_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          rd_default: 992
+          wr_default: 992
         }
         {
           name: pwmPolicy

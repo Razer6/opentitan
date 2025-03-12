@@ -157,8 +157,8 @@ package top_racl_pkg;
    */
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_ALL_RD_WR_POLICY = 0;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_ROT_PRIVATE_POLICY = 1;
-  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_PWC_PRIVATE_POLICY = 2;
-  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_HW_ROT_PWC_WR_ALL_RD_POLICY = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_HW_ROT_PWC_WR_ALL_RD_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_PWC_PRIVATE_POLICY = 3;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_MIO_PRIVATE_POLICY = 4;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_PWMPOLICY = 5;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_GPIOPOLICY = 6;
@@ -176,9 +176,9 @@ package top_racl_pkg;
    */
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_ALL_RD_WR_POLICY = 0;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_ROT_PRIVATE_POLICY = 1;
-  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_MIO_PRIVATE_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_HW_ROT_PWC_WR_ALL_RD_POLICY = 2;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_PWC_PRIVATE_POLICY = 3;
-  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_HW_ROT_PWC_WR_ALL_RD_POLICY = 4;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_MIO_PRIVATE_POLICY = 4;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_PWMPOLICY = 5;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_GPIOPOLICY = 6;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_UARTPOLICY = 7;

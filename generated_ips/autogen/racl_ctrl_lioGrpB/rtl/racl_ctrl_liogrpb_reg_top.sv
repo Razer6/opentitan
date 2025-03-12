@@ -153,16 +153,6 @@ module racl_ctrl_liogrpb_reg_top
   logic [15:0] policy_rot_private_policy_shadowed_write_perm_wd;
   logic policy_rot_private_policy_shadowed_write_perm_storage_err;
   logic policy_rot_private_policy_shadowed_write_perm_update_err;
-  logic policy_pwc_private_policy_shadowed_re;
-  logic policy_pwc_private_policy_shadowed_we;
-  logic [15:0] policy_pwc_private_policy_shadowed_read_perm_qs;
-  logic [15:0] policy_pwc_private_policy_shadowed_read_perm_wd;
-  logic policy_pwc_private_policy_shadowed_read_perm_storage_err;
-  logic policy_pwc_private_policy_shadowed_read_perm_update_err;
-  logic [15:0] policy_pwc_private_policy_shadowed_write_perm_qs;
-  logic [15:0] policy_pwc_private_policy_shadowed_write_perm_wd;
-  logic policy_pwc_private_policy_shadowed_write_perm_storage_err;
-  logic policy_pwc_private_policy_shadowed_write_perm_update_err;
   logic policy_hw_rot_pwc_wr_all_rd_policy_shadowed_re;
   logic policy_hw_rot_pwc_wr_all_rd_policy_shadowed_we;
   logic [15:0] policy_hw_rot_pwc_wr_all_rd_policy_shadowed_read_perm_qs;
@@ -173,6 +163,16 @@ module racl_ctrl_liogrpb_reg_top
   logic [15:0] policy_hw_rot_pwc_wr_all_rd_policy_shadowed_write_perm_wd;
   logic policy_hw_rot_pwc_wr_all_rd_policy_shadowed_write_perm_storage_err;
   logic policy_hw_rot_pwc_wr_all_rd_policy_shadowed_write_perm_update_err;
+  logic policy_pwc_private_policy_shadowed_re;
+  logic policy_pwc_private_policy_shadowed_we;
+  logic [15:0] policy_pwc_private_policy_shadowed_read_perm_qs;
+  logic [15:0] policy_pwc_private_policy_shadowed_read_perm_wd;
+  logic policy_pwc_private_policy_shadowed_read_perm_storage_err;
+  logic policy_pwc_private_policy_shadowed_read_perm_update_err;
+  logic [15:0] policy_pwc_private_policy_shadowed_write_perm_qs;
+  logic [15:0] policy_pwc_private_policy_shadowed_write_perm_wd;
+  logic policy_pwc_private_policy_shadowed_write_perm_storage_err;
+  logic policy_pwc_private_policy_shadowed_write_perm_update_err;
   logic policy_mio_private_policy_shadowed_re;
   logic policy_mio_private_policy_shadowed_we;
   logic [15:0] policy_mio_private_policy_shadowed_read_perm_qs;
@@ -454,80 +454,6 @@ module racl_ctrl_liogrpb_reg_top
   );
 
 
-  // R[policy_pwc_private_policy_shadowed]: V(False)
-  //   F[read_perm]: 15:0
-  prim_subreg_shadow #(
-    .DW      (16),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (16'h360),
-    .Mubi    (1'b0)
-  ) u_policy_pwc_private_policy_shadowed_read_perm (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-    .rst_shadowed_ni (rst_shadowed_ni),
-
-    // from register interface
-    .re     (policy_pwc_private_policy_shadowed_re),
-    .we     (policy_pwc_private_policy_shadowed_we),
-    .wd     (policy_pwc_private_policy_shadowed_read_perm_wd),
-
-    // from internal hardware
-    .de     (1'b0),
-    .d      ('0),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.policy_pwc_private_policy_shadowed.read_perm.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (policy_pwc_private_policy_shadowed_read_perm_qs),
-
-    // Shadow register phase. Relevant for hwext only.
-    .phase  (),
-
-    // Shadow register error conditions
-    .err_update  (policy_pwc_private_policy_shadowed_read_perm_update_err),
-    .err_storage (policy_pwc_private_policy_shadowed_read_perm_storage_err)
-  );
-
-  //   F[write_perm]: 31:16
-  prim_subreg_shadow #(
-    .DW      (16),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (16'h360),
-    .Mubi    (1'b0)
-  ) u_policy_pwc_private_policy_shadowed_write_perm (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-    .rst_shadowed_ni (rst_shadowed_ni),
-
-    // from register interface
-    .re     (policy_pwc_private_policy_shadowed_re),
-    .we     (policy_pwc_private_policy_shadowed_we),
-    .wd     (policy_pwc_private_policy_shadowed_write_perm_wd),
-
-    // from internal hardware
-    .de     (1'b0),
-    .d      ('0),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.policy_pwc_private_policy_shadowed.write_perm.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (policy_pwc_private_policy_shadowed_write_perm_qs),
-
-    // Shadow register phase. Relevant for hwext only.
-    .phase  (),
-
-    // Shadow register error conditions
-    .err_update  (policy_pwc_private_policy_shadowed_write_perm_update_err),
-    .err_storage (policy_pwc_private_policy_shadowed_write_perm_storage_err)
-  );
-
-
   // R[policy_hw_rot_pwc_wr_all_rd_policy_shadowed]: V(False)
   //   F[read_perm]: 15:0
   prim_subreg_shadow #(
@@ -599,6 +525,80 @@ module racl_ctrl_liogrpb_reg_top
     // Shadow register error conditions
     .err_update  (policy_hw_rot_pwc_wr_all_rd_policy_shadowed_write_perm_update_err),
     .err_storage (policy_hw_rot_pwc_wr_all_rd_policy_shadowed_write_perm_storage_err)
+  );
+
+
+  // R[policy_pwc_private_policy_shadowed]: V(False)
+  //   F[read_perm]: 15:0
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h360),
+    .Mubi    (1'b0)
+  ) u_policy_pwc_private_policy_shadowed_read_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_pwc_private_policy_shadowed_re),
+    .we     (policy_pwc_private_policy_shadowed_we),
+    .wd     (policy_pwc_private_policy_shadowed_read_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_pwc_private_policy_shadowed.read_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_pwc_private_policy_shadowed_read_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_pwc_private_policy_shadowed_read_perm_update_err),
+    .err_storage (policy_pwc_private_policy_shadowed_read_perm_storage_err)
+  );
+
+  //   F[write_perm]: 31:16
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h360),
+    .Mubi    (1'b0)
+  ) u_policy_pwc_private_policy_shadowed_write_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_pwc_private_policy_shadowed_re),
+    .we     (policy_pwc_private_policy_shadowed_we),
+    .wd     (policy_pwc_private_policy_shadowed_write_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_pwc_private_policy_shadowed.write_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_pwc_private_policy_shadowed_write_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_pwc_private_policy_shadowed_write_perm_update_err),
+    .err_storage (policy_pwc_private_policy_shadowed_write_perm_storage_err)
   );
 
 
@@ -1742,8 +1742,8 @@ module racl_ctrl_liogrpb_reg_top
     racl_addr_hit_write = '0;
     addr_hit[ 0] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_ALL_RD_WR_POLICY_SHADOWED_OFFSET);
     addr_hit[ 1] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_ROT_PRIVATE_POLICY_SHADOWED_OFFSET);
-    addr_hit[ 2] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_PWC_PRIVATE_POLICY_SHADOWED_OFFSET);
-    addr_hit[ 3] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED_OFFSET);
+    addr_hit[ 2] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED_OFFSET);
+    addr_hit[ 3] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_PWC_PRIVATE_POLICY_SHADOWED_OFFSET);
     addr_hit[ 4] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_MIO_PRIVATE_POLICY_SHADOWED_OFFSET);
     addr_hit[ 5] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_PWMPOLICY_SHADOWED_OFFSET);
     addr_hit[ 6] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_GPIOPOLICY_SHADOWED_OFFSET);
@@ -1827,18 +1827,18 @@ module racl_ctrl_liogrpb_reg_top
   assign policy_rot_private_policy_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_rot_private_policy_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign policy_pwc_private_policy_shadowed_re = racl_addr_hit_read[2] & reg_re & !reg_error;
-  assign policy_pwc_private_policy_shadowed_we = racl_addr_hit_write[2] & reg_we & !reg_error;
-
-  assign policy_pwc_private_policy_shadowed_read_perm_wd = reg_wdata[15:0];
-
-  assign policy_pwc_private_policy_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign policy_hw_rot_pwc_wr_all_rd_policy_shadowed_re = racl_addr_hit_read[3] & reg_re & !reg_error;
-  assign policy_hw_rot_pwc_wr_all_rd_policy_shadowed_we = racl_addr_hit_write[3] & reg_we & !reg_error;
+  assign policy_hw_rot_pwc_wr_all_rd_policy_shadowed_re = racl_addr_hit_read[2] & reg_re & !reg_error;
+  assign policy_hw_rot_pwc_wr_all_rd_policy_shadowed_we = racl_addr_hit_write[2] & reg_we & !reg_error;
 
   assign policy_hw_rot_pwc_wr_all_rd_policy_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_hw_rot_pwc_wr_all_rd_policy_shadowed_write_perm_wd = reg_wdata[31:16];
+  assign policy_pwc_private_policy_shadowed_re = racl_addr_hit_read[3] & reg_re & !reg_error;
+  assign policy_pwc_private_policy_shadowed_we = racl_addr_hit_write[3] & reg_we & !reg_error;
+
+  assign policy_pwc_private_policy_shadowed_read_perm_wd = reg_wdata[15:0];
+
+  assign policy_pwc_private_policy_shadowed_write_perm_wd = reg_wdata[31:16];
   assign policy_mio_private_policy_shadowed_re = racl_addr_hit_read[4] & reg_re & !reg_error;
   assign policy_mio_private_policy_shadowed_we = racl_addr_hit_write[4] & reg_we & !reg_error;
 
@@ -1925,8 +1925,8 @@ module racl_ctrl_liogrpb_reg_top
     reg_we_check = '0;
     reg_we_check[0] = policy_all_rd_wr_policy_shadowed_we;
     reg_we_check[1] = policy_rot_private_policy_shadowed_we;
-    reg_we_check[2] = policy_pwc_private_policy_shadowed_we;
-    reg_we_check[3] = policy_hw_rot_pwc_wr_all_rd_policy_shadowed_we;
+    reg_we_check[2] = policy_hw_rot_pwc_wr_all_rd_policy_shadowed_we;
+    reg_we_check[3] = policy_pwc_private_policy_shadowed_we;
     reg_we_check[4] = policy_mio_private_policy_shadowed_we;
     reg_we_check[5] = policy_pwmpolicy_shadowed_we;
     reg_we_check[6] = policy_gpiopolicy_shadowed_we;
@@ -1959,13 +1959,13 @@ module racl_ctrl_liogrpb_reg_top
       end
 
       racl_addr_hit_read[2]: begin
-        reg_rdata_next[15:0] = policy_pwc_private_policy_shadowed_read_perm_qs;
-        reg_rdata_next[31:16] = policy_pwc_private_policy_shadowed_write_perm_qs;
+        reg_rdata_next[15:0] = policy_hw_rot_pwc_wr_all_rd_policy_shadowed_read_perm_qs;
+        reg_rdata_next[31:16] = policy_hw_rot_pwc_wr_all_rd_policy_shadowed_write_perm_qs;
       end
 
       racl_addr_hit_read[3]: begin
-        reg_rdata_next[15:0] = policy_hw_rot_pwc_wr_all_rd_policy_shadowed_read_perm_qs;
-        reg_rdata_next[31:16] = policy_hw_rot_pwc_wr_all_rd_policy_shadowed_write_perm_qs;
+        reg_rdata_next[15:0] = policy_pwc_private_policy_shadowed_read_perm_qs;
+        reg_rdata_next[31:16] = policy_pwc_private_policy_shadowed_write_perm_qs;
       end
 
       racl_addr_hit_read[4]: begin
@@ -2080,10 +2080,10 @@ module racl_ctrl_liogrpb_reg_top
     policy_all_rd_wr_policy_shadowed_write_perm_storage_err,
     policy_rot_private_policy_shadowed_read_perm_storage_err,
     policy_rot_private_policy_shadowed_write_perm_storage_err,
-    policy_pwc_private_policy_shadowed_read_perm_storage_err,
-    policy_pwc_private_policy_shadowed_write_perm_storage_err,
     policy_hw_rot_pwc_wr_all_rd_policy_shadowed_read_perm_storage_err,
     policy_hw_rot_pwc_wr_all_rd_policy_shadowed_write_perm_storage_err,
+    policy_pwc_private_policy_shadowed_read_perm_storage_err,
+    policy_pwc_private_policy_shadowed_write_perm_storage_err,
     policy_mio_private_policy_shadowed_read_perm_storage_err,
     policy_mio_private_policy_shadowed_write_perm_storage_err,
     policy_pwmpolicy_shadowed_read_perm_storage_err,
@@ -2114,10 +2114,10 @@ module racl_ctrl_liogrpb_reg_top
     policy_all_rd_wr_policy_shadowed_write_perm_update_err,
     policy_rot_private_policy_shadowed_read_perm_update_err,
     policy_rot_private_policy_shadowed_write_perm_update_err,
-    policy_pwc_private_policy_shadowed_read_perm_update_err,
-    policy_pwc_private_policy_shadowed_write_perm_update_err,
     policy_hw_rot_pwc_wr_all_rd_policy_shadowed_read_perm_update_err,
     policy_hw_rot_pwc_wr_all_rd_policy_shadowed_write_perm_update_err,
+    policy_pwc_private_policy_shadowed_read_perm_update_err,
+    policy_pwc_private_policy_shadowed_write_perm_update_err,
     policy_mio_private_policy_shadowed_read_perm_update_err,
     policy_mio_private_policy_shadowed_write_perm_update_err,
     policy_pwmpolicy_shadowed_read_perm_update_err,

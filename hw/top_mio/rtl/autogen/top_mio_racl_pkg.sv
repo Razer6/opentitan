@@ -47,8 +47,8 @@ package top_mio_racl_pkg;
    *   lioGrpB
    *      0: all_rd_wr_policy
    *      1: rot_private_policy
-   *      2: pwc_private_policy
-   *      3: hw_rot_pwc_wr_all_rd_policy
+   *      2: hw_rot_pwc_wr_all_rd_policy
+   *      3: pwc_private_policy
    *      4: mio_private_policy
    *      5: pwmPolicy
    *      6: gpioPolicy
@@ -64,9 +64,9 @@ package top_mio_racl_pkg;
    *   lioGrpC
    *      0: all_rd_wr_policy
    *      1: rot_private_policy
-   *      2: mio_private_policy
+   *      2: hw_rot_pwc_wr_all_rd_policy
    *      3: pwc_private_policy
-   *      4: hw_rot_pwc_wr_all_rd_policy
+   *      4: mio_private_policy
    *      5: pwmPolicy
    *      6: gpioPolicy
    *      7: uartPolicy

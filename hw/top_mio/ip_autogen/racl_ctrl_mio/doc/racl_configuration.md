@@ -47,8 +47,8 @@
 |:----------------------------|--------:|:--------------|
 | all_rd_wr_policy            |       0 |               |
 | rot_private_policy          |       1 |               |
-| pwc_private_policy          |       2 |               |
-| hw_rot_pwc_wr_all_rd_policy |       3 |               |
+| hw_rot_pwc_wr_all_rd_policy |       2 |               |
+| pwc_private_policy          |       3 |               |
 | mio_private_policy          |       4 |               |
 | pwmPolicy                   |       5 |               |
 | gpioPolicy                  |       6 |               |
@@ -69,9 +69,9 @@
 |:----------------------------|--------:|:--------------|
 | all_rd_wr_policy            |       0 |               |
 | rot_private_policy          |       1 |               |
-| mio_private_policy          |       2 |               |
+| hw_rot_pwc_wr_all_rd_policy |       2 |               |
 | pwc_private_policy          |       3 |               |
-| hw_rot_pwc_wr_all_rd_policy |       4 |               |
+| mio_private_policy          |       4 |               |
 | pwmPolicy                   |       5 |               |
 | gpioPolicy                  |       6 |               |
 | uartPolicy                  |       7 |               |
