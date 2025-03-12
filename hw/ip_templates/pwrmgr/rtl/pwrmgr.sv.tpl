@@ -465,7 +465,7 @@ module pwrmgr
     .usb_clk_en_lp_i(reg2hw.control.usb_clk_en_lp.q),
     .usb_clk_en_active_i(reg2hw.control.usb_clk_en_active.q),
   % else:
-  <% ral_clk = 'core' if clk == 'main' else clk %>\
+<% ral_clk = 'core' if clk == 'main' else clk %>\
     .${clk}_clk_en_i(reg2hw.control.${ral_clk}_clk_en.q),
   % endif
 % endfor
