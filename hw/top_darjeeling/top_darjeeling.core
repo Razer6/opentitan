@@ -86,6 +86,7 @@ filesets:
       - lowrisc:lint:comportable
     files:
       - lint/top_darjeeling.waiver
+      - lint/rivos_top.waiver
     file_type: waiver
 
   files_veriblelint_waiver:
