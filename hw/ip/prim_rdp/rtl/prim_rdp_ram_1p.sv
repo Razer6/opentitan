@@ -45,10 +45,8 @@ module prim_rdp_ram_1p
       .addr_i          (addr_i),
       .wdata_i         (wdata_i),
       .wmask_i         (wmask_i),
-      .sram_test_cfg   (cfg_i.sram_test_cfg),
-      .sram_err_inj_in (cfg_i.sram_err_inj),
-      .err_inj_done    (cfg_rsp_o.err_inj_done),
-      .sram_dft        (cfg_rsp_o.sram_dft),
+      .cfg_i           (cfg_i),
+      .cfg_rsp_o       (cfg_rsp_o),
       .rdata_o         (rdata_o)
     );
   end else begin : gen_generic_sram

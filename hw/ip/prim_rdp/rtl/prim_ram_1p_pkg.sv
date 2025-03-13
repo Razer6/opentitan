@@ -8,6 +8,8 @@ package prim_ram_1p_pkg;
   typedef struct packed {
     prim_misc_dft_pkg::sram_test_cfg_t   sram_test_cfg;
     prim_misc_dft_pkg::sram_err_inj_in_t sram_err_inj;
+    prim_misc_dft_pkg::sram_dft_in_t     sram_dft_in;
+    logic                                ls;
   } ram_1p_cfg_t;
 
   typedef struct packed {

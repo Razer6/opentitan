@@ -62,29 +62,25 @@ module prim_rdp_ram_1r1w import prim_ram_2p_pkg::*; #(
   );
 
   always_comb begin
-    ram_controls     = '0;
-    ram_dft_signals  = '0;
-    ram_error_inject = '0;
+    ram_controls.consistency_check2   = cfg_i.sram_test_cfg.consistency_check2;
+    ram_controls.disable_ls           = cfg_i.sram_test_cfg.disable_ls;
+    ram_controls.disable_clock_gating = cfg_i.sram_test_cfg.disable_clock_gating;
+    ram_controls.ra                   = cfg_i.sram_test_cfg.ra;
+    ram_controls.wpulse               = cfg_i.sram_test_cfg.wpulse;
+    ram_controls.wa                   = cfg_i.sram_test_cfg.wa;
+    ram_controls.testrwm              = cfg_i.sram_test_cfg.testrwm;
+    ram_controls.test1b               = cfg_i.sram_test_cfg.test1b;
+    ram_controls.test1a               = cfg_i.sram_test_cfg.test1a;
+    ram_controls.rmeb                 = cfg_i.sram_test_cfg.rmeb;
+    ram_controls.rmea                 = cfg_i.sram_test_cfg.rmea;
+    ram_controls.test_rnm             = cfg_i.sram_test_cfg.test_rnm;
+    ram_controls.rmb                  = cfg_i.sram_test_cfg.rmb;
+    ram_controls.consistency_check1   = cfg_i.sram_test_cfg.consistency_check1;
+    ram_controls.rma                  = cfg_i.sram_test_cfg.rma;
 
-    // TODO (neal) clean up ram_controls.consistency_check2;
-    // TODO (neal) clean up ram_controls.disable_ls;
-    // TODO (neal) clean up ram_controls.disable_clock_gating;
-    // TODO (neal) clean up ram_controls.ra;
-    // TODO (neal) clean up ram_controls.wpulse;
-    // TODO (neal) clean up ram_controls.wa;
-    // TODO (neal) clean up ram_controls.testrwm;
-    ram_controls.test1b   = cfg_i.sram_test_cfg.test1b;
-    ram_controls.test1a   = cfg_i.sram_test_cfg.test1a;
-    ram_controls.rmeb     = cfg_i.sram_test_cfg.rmeb;
-    ram_controls.rmea     = cfg_i.sram_test_cfg.rmea;
-    ram_controls.test_rnm = cfg_i.sram_test_cfg.test_rnm;
-    ram_controls.rmb      = cfg_i.sram_test_cfg.rmb;
-    // TODO (neal) clean up ram_controls.consistency_check1;
-    ram_controls.rma      = cfg_i.sram_test_cfg.rma;
-
-    // TODO (neal) clean up ram_dft_signals.tston       = ;
-    // TODO (neal) clean up ram_dft_signals.bist_mode   = ;
-    ram_dft_signals.DFD_StopWE  = cfg_i.sram_test_cfg.DFD_StopWE;
+    ram_dft_signals.tston       = cfg_i.sram_dft_in.tston;
+    ram_dft_signals.bist_mode   = cfg_i.sram_dft_in.bist_mode;
+    ram_dft_signals.DFD_StopWE  = cfg_i.sram_dft_in.DFD_StopWE;
 
     ram_error_inject.err_inj_loc   = cfg_i.sram_err_inj.err_inj_loc;
     ram_error_inject.err_inj_count = cfg_i.sram_err_inj.err_inj_count;
@@ -109,7 +105,7 @@ module prim_rdp_ram_1r1w import prim_ram_2p_pkg::*; #(
       .wrData         (a_wdata_i),
       .bitWriteEnable (a_wmask_i),
 
-      .LS               (cfg_i.sram_test_cfg.ls),
+      .LS               (cfg_i.ls),
 
       .ram_error_inject (ram_error_inject),
       .tie__sram_loc    (cfg_i.sram_err_inj.tie__sram_loc),
@@ -140,7 +136,7 @@ module prim_rdp_ram_1r1w import prim_ram_2p_pkg::*; #(
       .wrData         (a_wdata_i),
       .bitWriteEnable (a_wmask_i),
 
-      .LS               (cfg_i.sram_test_cfg.ls),
+      .LS               (cfg_i.ls),
 
       .ram_error_inject (ram_error_inject),
       .tie__sram_loc    (cfg_i.sram_err_inj.tie__sram_loc),
