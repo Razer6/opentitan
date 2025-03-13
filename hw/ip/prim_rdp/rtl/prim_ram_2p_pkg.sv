@@ -8,8 +8,6 @@ package prim_ram_2p_pkg;
   typedef struct packed {
     prim_misc_dft_pkg::spi_sram_test_cfg_t sram_test_cfg;
     prim_misc_dft_pkg::sram_err_inj_in_t   sram_err_inj;
-    prim_misc_dft_pkg::sram_dft_in_t       sram_dft_in;
-    logic                                  ls;
   } ram_2p_cfg_t;
 
   parameter ram_2p_cfg_t RAM_2P_CFG_DEFAULT = '0;
