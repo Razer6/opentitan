@@ -2,19 +2,19 @@ CAPI=2:
 # Copyright lowRISC contributors (OpenTitan project).
 # Licensed under the Apache License, Version 2.0, see LICENSE for details.
 # SPDX-License-Identifier: Apache-2.0
-name: lowrisc:opentitan:top_pwc_ac_range_check_pwc_sim:0.1
+name: lowrisc:pwc_dv:ac_range_check_pwc_pwc_sim:0.1
 description: "AC_RANGE_CHECK DV sim target"
 filesets:
   files_rtl:
     depend:
       - lowrisc:ip:tlul
-      - lowrisc:opentitan:top_pwc_ac_range_check_pwc:0.1
+      - lowrisc:pwc_ip:ac_range_check_pwc_pwc:0.1
     file_type: systemVerilogSource
 
   files_dv:
     depend:
-      - lowrisc:opentitan:top_pwc_ac_range_check_pwc_test
-      - lowrisc:opentitan:top_pwc_ac_range_check_pwc_sva
+      - lowrisc:pwc_dv:ac_range_check_pwc_pwc_test
+      - lowrisc:pwc_dv:ac_range_check_pwc_pwc_sva
     files:
       - tb/tb.sv
     file_type: systemVerilogSource

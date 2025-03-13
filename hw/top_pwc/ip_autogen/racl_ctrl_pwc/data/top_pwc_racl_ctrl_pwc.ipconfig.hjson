@@ -265,5 +265,11 @@
       }
     ]
     topname: pwc
+    uniquified_modules:
+    {
+      racl_ctrl: racl_ctrl_pwc
+      ac_range_check: ac_range_check_pwc
+      rv_plic: rv_plic_pwc
+    }
   }
 }

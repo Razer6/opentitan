@@ -444,6 +444,8 @@ module top_pwc #(
       .aon_timer_rst_req_o(),
       .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
       .sleep_mode_i('0),
+      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
+      .racl_error_o(),
       .tl_i(aon_timer_aon_tl_req),
       .tl_o(aon_timer_aon_tl_rsp),
 

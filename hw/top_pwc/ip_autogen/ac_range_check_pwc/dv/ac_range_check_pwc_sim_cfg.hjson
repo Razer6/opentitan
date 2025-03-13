@@ -15,7 +15,7 @@
   tool: xcelium
 
   // Fusesoc core file used for building the file list.
-  fusesoc_core: lowrisc:opentitan:top_pwc_ac_range_check_pwc_sim:0.1
+  fusesoc_core: lowrisc:pwc_dv:ac_range_check_pwc_pwc_sim:0.1
 
   // Testplan hjson file.
   testplan: "{self_dir}/../data/ac_range_check_pwc_testplan.hjson"
