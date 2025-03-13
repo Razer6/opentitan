@@ -65,6 +65,7 @@ def _transform(ctx, exec_env, name, elf, binary, signed_bin, disassembly, mapfil
         )
         default = rom
         vmem = rom
+        vmem32 = None
     elif ctx.attr.kind == "ram":
         default = elf
         rom = None
@@ -77,6 +78,7 @@ def _transform(ctx, exec_env, name, elf, binary, signed_bin, disassembly, mapfil
             src = signed_bin if signed_bin else binary,
             word_size = 32,
         )
+        vmem32 = None
     elif ctx.attr.kind == "flash":
         # First convert to VMEM, then scramble according to flash
         # scrambling settings.
@@ -88,6 +90,12 @@ def _transform(ctx, exec_env, name, elf, binary, signed_bin, disassembly, mapfil
             name = name,
             src = signed_bin if signed_bin else binary,
             word_size = 64,
+        )
+        vmem32 = convert_to_vmem(
+            ctx,
+            name = name,
+            src = signed_bin if signed_bin else binary,
+            word_size = 32,
         )
         vmem = scramble_flash(
             ctx,
@@ -124,6 +132,7 @@ def _transform(ctx, exec_env, name, elf, binary, signed_bin, disassembly, mapfil
         "logs": logs,
         "mapfile": mapfile,
         "vmem": vmem,
+        "vmem32": vmem32,
         "hashfile": hashfile,
     }
 
