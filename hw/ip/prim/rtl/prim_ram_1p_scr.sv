@@ -65,7 +65,7 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   // Select between compiled RAM and OT generic
   parameter bit UseCompiledRam       = 0,
   // Compute RAM tiling
-  localparam int NumRamInst          = int'($ceil(Depth / real'(InstDepth)))
+  localparam int NumRamInst          = prim_util_pkg::ceil_div(Depth, InstDepth)
 ) (
   input                                    clk_i,
   input                                    rst_ni,
