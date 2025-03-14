@@ -23,12 +23,12 @@ filesets:
       - lowrisc:ip:lc_ctrl_pkg
       - lowrisc:ip:dma
       - lowrisc:ip:mbx
-      - lowrisc:opentitan:top_mio_ac_range_check_mio
       - lowrisc:top_mio:xbar_mio_main
       - lowrisc:top_mio:xbar_mio_mbx
       - lowrisc:top_mio:xbar_mio_peri
-      - lowrisc:opentitan:top_mio_racl_ctrl_mio
-      - lowrisc:opentitan:top_mio_rv_plic_mio
+      - lowrisc:mio:ac_range_check_mio
+      - lowrisc:mio:racl_ctrl_mio
+      - lowrisc:mio:rv_plic_mio
       - lowrisc:ip:aon_timer
       - lowrisc:systems:top_mio_soc_proxy
       - lowrisc:tlul:headers
