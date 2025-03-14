@@ -21,6 +21,11 @@ def main():
                         '-g',
                         required=True,
                         help='RACL group.')
+    
+    parser.add_argument('--top-name',
+                        '-t',
+                        required=True,
+                        help='Top name.')
 
     parser.add_argument('--instance-name',
                         '-n',
@@ -44,6 +49,7 @@ def main():
         raise SystemExit(f'RACL group {args.racl_group} not defined in RACL config')
 
     params = {
+        "topname":              args.top_name,
         "module_instance_name": args.instance_name,
         "nr_role_bits":         racl_config["nr_role_bits"],
         "nr_ctn_uid_bits":      racl_config["nr_ctn_uid_bits"],

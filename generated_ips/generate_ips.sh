@@ -24,7 +24,7 @@ rm autogen/lio_alert_handler/README.md
 
 for RACLGROUP in lioGrpA lioGrpB lioGrpC lioGrpD ; do
   rm -rf autogen/racl_ctrl_${RACLGROUP}/
-  ./generate_racl_ctrl.py --racl-config ../hw/top_darjeeling/data/rivos-racl/racl.hjson --racl-group ${RACLGROUP} --instance-name racl_ctrl_${RACLGROUP} --output data/racl_ctrl_${RACLGROUP}_cfg.hjson
+  ./generate_racl_ctrl.py --racl-config ../hw/top_darjeeling/data/rivos-racl/racl.hjson --racl-group ${RACLGROUP} --top-name lio --instance-name racl_ctrl_${RACLGROUP} --output data/racl_ctrl_${RACLGROUP}_cfg.hjson
   ../util/ipgen.py generate -C ../hw/ip_templates/racl_ctrl -c data/racl_ctrl_${RACLGROUP}_cfg.hjson -o autogen/racl_ctrl_${RACLGROUP}
   rm -rf autogen/racl_ctrl_${RACLGROUP}/doc
   rm -rf autogen/racl_ctrl_${RACLGROUP}/fpv
