@@ -2,7 +2,7 @@ CAPI=2:
 # Copyright lowRISC contributors (OpenTitan project).
 # Licensed under the Apache License, Version 2.0, see LICENSE for details.
 # SPDX-License-Identifier: Apache-2.0
-name: lowrisc:opentitan:racl_ctrl_lioGrpD:0.1
+name: lowrisc:lio_ip:racl_ctrl_lioGrpD:0.1
 description: "RACL Control permission IP"
 
 filesets:

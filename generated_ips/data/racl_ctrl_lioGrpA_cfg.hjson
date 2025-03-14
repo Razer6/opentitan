@@ -2,6 +2,7 @@
   instance_name: racl_ctrl_lioGrpA
   param_values:
   {
+    topname: lio
     module_instance_name: racl_ctrl_lioGrpA
     nr_role_bits: 4
     nr_ctn_uid_bits: 5

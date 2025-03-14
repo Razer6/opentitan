@@ -15,7 +15,7 @@
   tool: vcs
 
   // Fusesoc core file used for building the file list.
-  fusesoc_core: lowrisc:opentitan:lio_alert_handler_sim:0.1
+  fusesoc_core: lowrisc:lio_dv:lio_alert_handler_sim:0.1
 
   // Testplan hjson file.
   testplan: "{self_dir}/../data/lio_alert_handler_testplan.hjson"
