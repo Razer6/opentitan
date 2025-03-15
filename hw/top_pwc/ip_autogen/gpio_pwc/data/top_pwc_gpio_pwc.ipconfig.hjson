@@ -10,6 +10,7 @@
     topname: pwc
     uniquified_modules:
     {
+      gpio: gpio_pwc
       racl_ctrl: racl_ctrl_pwc
       ac_range_check: ac_range_check_pwc
       rv_plic: rv_plic_pwc

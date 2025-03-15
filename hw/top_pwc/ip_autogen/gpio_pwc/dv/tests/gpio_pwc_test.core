@@ -2,12 +2,12 @@ CAPI=2:
 # Copyright lowRISC contributors (OpenTitan project).
 # Licensed under the Apache License, Version 2.0, see LICENSE for details.
 # SPDX-License-Identifier: Apache-2.0
-name: lowrisc:pwc_dv:gpio_pwc_test:0.1
+name: lowrisc:pwc_dv:gpio_pwc_pwc_test:0.1
 description: "GPIO DV UVM test"
 filesets:
   files_dv:
     depend:
-      - lowrisc:pwc_dv:gpio_pwc_env:0.1
+      - lowrisc:pwc_dv:gpio_pwc_pwc_env:0.1
     files:
       - gpio_pwc_test_pkg.sv
       - gpio_pwc_base_test.sv: {is_include_file: true}
