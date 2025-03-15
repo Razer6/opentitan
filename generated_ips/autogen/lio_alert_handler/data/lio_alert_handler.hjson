@@ -44,7 +44,7 @@
     { name: "NAlerts",
       desc: "Number of alert channels.",
       type: "int",
-      default: "14",
+      default: "16",
       local: "true"
     },
     { name: "NLpg",
