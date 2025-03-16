@@ -673,6 +673,8 @@
         'mio_soc_proxy.ctn_tl_d2h'          : 'ctn_tl_d2h',
         'mio_soc_proxy.integrator_id'       : 'integrator_id',
         'rv_dm.lc_check_byp_en'             : 'lc_check_byp_en',
+        'rv_dm.strap_en       '             : 'rv_dm_strap_en',
+        'rv_dm.strap_en_override'           : 'rv_dm_strap_en_override',
         'sram_ctrl_ret_aon.cfg'             : 'sram_ctrl_ret_aon_ram_1p_cfg',
         'sram_ctrl_ret_aon.cfg_rsp'         : 'sram_ctrl_ret_aon_ram_1p_cfg_rsp',
         'sram_ctrl_main.cfg'                : 'sram_ctrl_main_ram_1p_cfg',
