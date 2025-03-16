@@ -66,9 +66,9 @@ module lio_alert_handler_reg_top
 
   // also check for spurious write enables
   logic reg_we_err;
-  logic [153:0] reg_we_check;
+  logic [157:0] reg_we_check;
   prim_reg_we_check #(
-    .OneHotWidth(154)
+    .OneHotWidth(158)
   ) u_prim_reg_we_check (
     .clk_i(clk_i),
     .rst_ni(rst_ni),
@@ -222,6 +222,9 @@ module lio_alert_handler_reg_top
   logic alert_regwen_15_we;
   logic alert_regwen_15_qs;
   logic alert_regwen_15_wd;
+  logic alert_regwen_16_we;
+  logic alert_regwen_16_qs;
+  logic alert_regwen_16_wd;
   logic alert_en_shadowed_0_re;
   logic alert_en_shadowed_0_we;
   logic alert_en_shadowed_0_qs;
@@ -318,6 +321,12 @@ module lio_alert_handler_reg_top
   logic alert_en_shadowed_15_wd;
   logic alert_en_shadowed_15_storage_err;
   logic alert_en_shadowed_15_update_err;
+  logic alert_en_shadowed_16_re;
+  logic alert_en_shadowed_16_we;
+  logic alert_en_shadowed_16_qs;
+  logic alert_en_shadowed_16_wd;
+  logic alert_en_shadowed_16_storage_err;
+  logic alert_en_shadowed_16_update_err;
   logic alert_class_shadowed_0_re;
   logic alert_class_shadowed_0_we;
   logic [1:0] alert_class_shadowed_0_qs;
@@ -414,6 +423,12 @@ module lio_alert_handler_reg_top
   logic [1:0] alert_class_shadowed_15_wd;
   logic alert_class_shadowed_15_storage_err;
   logic alert_class_shadowed_15_update_err;
+  logic alert_class_shadowed_16_re;
+  logic alert_class_shadowed_16_we;
+  logic [1:0] alert_class_shadowed_16_qs;
+  logic [1:0] alert_class_shadowed_16_wd;
+  logic alert_class_shadowed_16_storage_err;
+  logic alert_class_shadowed_16_update_err;
   logic alert_cause_0_we;
   logic alert_cause_0_qs;
   logic alert_cause_0_wd;
@@ -462,6 +477,9 @@ module lio_alert_handler_reg_top
   logic alert_cause_15_we;
   logic alert_cause_15_qs;
   logic alert_cause_15_wd;
+  logic alert_cause_16_we;
+  logic alert_cause_16_qs;
+  logic alert_cause_16_wd;
   logic loc_alert_regwen_0_we;
   logic loc_alert_regwen_0_qs;
   logic loc_alert_regwen_0_wd;
@@ -1859,6 +1877,35 @@ module lio_alert_handler_reg_top
   );
 
 
+  // Subregister 16 of Multireg alert_regwen
+  // R[alert_regwen_16]: V(False)
+  prim_subreg #(
+    .DW      (1),
+    .SwAccess(prim_subreg_pkg::SwAccessW0C),
+    .RESVAL  (1'h1),
+    .Mubi    (1'b0)
+  ) u_alert_regwen_16 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (alert_regwen_16_we),
+    .wd     (alert_regwen_16_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.alert_regwen[16].q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (alert_regwen_16_qs)
+  );
+
+
   // Subregister 0 of Multireg alert_en_shadowed
   // R[alert_en_shadowed_0]: V(False)
   // Create REGWEN-gated WE signal
@@ -2512,6 +2559,47 @@ module lio_alert_handler_reg_top
     // Shadow register error conditions
     .err_update  (alert_en_shadowed_15_update_err),
     .err_storage (alert_en_shadowed_15_storage_err)
+  );
+
+
+  // Subregister 16 of Multireg alert_en_shadowed
+  // R[alert_en_shadowed_16]: V(False)
+  // Create REGWEN-gated WE signal
+  logic alert_en_shadowed_16_gated_we;
+  assign alert_en_shadowed_16_gated_we = alert_en_shadowed_16_we & alert_regwen_16_qs;
+  prim_subreg_shadow #(
+    .DW      (1),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (1'h0),
+    .Mubi    (1'b0)
+  ) u_alert_en_shadowed_16 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (alert_en_shadowed_16_re),
+    .we     (alert_en_shadowed_16_gated_we),
+    .wd     (alert_en_shadowed_16_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.alert_en_shadowed[16].q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (alert_en_shadowed_16_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (alert_en_shadowed_16_update_err),
+    .err_storage (alert_en_shadowed_16_storage_err)
   );
 
 
@@ -3171,6 +3259,47 @@ module lio_alert_handler_reg_top
   );
 
 
+  // Subregister 16 of Multireg alert_class_shadowed
+  // R[alert_class_shadowed_16]: V(False)
+  // Create REGWEN-gated WE signal
+  logic alert_class_shadowed_16_gated_we;
+  assign alert_class_shadowed_16_gated_we = alert_class_shadowed_16_we & alert_regwen_16_qs;
+  prim_subreg_shadow #(
+    .DW      (2),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (2'h0),
+    .Mubi    (1'b0)
+  ) u_alert_class_shadowed_16 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (alert_class_shadowed_16_re),
+    .we     (alert_class_shadowed_16_gated_we),
+    .wd     (alert_class_shadowed_16_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.alert_class_shadowed[16].q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (alert_class_shadowed_16_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (alert_class_shadowed_16_update_err),
+    .err_storage (alert_class_shadowed_16_storage_err)
+  );
+
+
   // Subregister 0 of Multireg alert_cause
   // R[alert_cause_0]: V(False)
   prim_subreg #(
@@ -3632,6 +3761,35 @@ module lio_alert_handler_reg_top
 
     // to register interface (read)
     .qs     (alert_cause_15_qs)
+  );
+
+
+  // Subregister 16 of Multireg alert_cause
+  // R[alert_cause_16]: V(False)
+  prim_subreg #(
+    .DW      (1),
+    .SwAccess(prim_subreg_pkg::SwAccessW1C),
+    .RESVAL  (1'h0),
+    .Mubi    (1'b0)
+  ) u_alert_cause_16 (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (alert_cause_16_we),
+    .wd     (alert_cause_16_wd),
+
+    // from internal hardware
+    .de     (hw2reg.alert_cause[16].de),
+    .d      (hw2reg.alert_cause[16].d),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.alert_cause[16].q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (alert_cause_16_qs)
   );
 
 
@@ -7831,12 +7989,12 @@ module lio_alert_handler_reg_top
 
 
 
-  logic [153:0] addr_hit;
+  logic [157:0] addr_hit;
   top_racl_pkg::racl_role_vec_t racl_role_vec;
   top_racl_pkg::racl_role_t racl_role;
 
-  logic [153:0] racl_addr_hit_read;
-  logic [153:0] racl_addr_hit_write;
+  logic [157:0] racl_addr_hit_read;
+  logic [157:0] racl_addr_hit_write;
 
   if (EnableRacl) begin : gen_racl_role_logic
     // Retrieve RACL role from user bits and one-hot encode that for the comparison bitmap
@@ -7880,141 +8038,145 @@ module lio_alert_handler_reg_top
     addr_hit[ 19] = (reg_addr == LIO_ALERT_HANDLER_ALERT_REGWEN_13_OFFSET);
     addr_hit[ 20] = (reg_addr == LIO_ALERT_HANDLER_ALERT_REGWEN_14_OFFSET);
     addr_hit[ 21] = (reg_addr == LIO_ALERT_HANDLER_ALERT_REGWEN_15_OFFSET);
-    addr_hit[ 22] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_0_OFFSET);
-    addr_hit[ 23] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_1_OFFSET);
-    addr_hit[ 24] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_2_OFFSET);
-    addr_hit[ 25] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_3_OFFSET);
-    addr_hit[ 26] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_4_OFFSET);
-    addr_hit[ 27] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_5_OFFSET);
-    addr_hit[ 28] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_6_OFFSET);
-    addr_hit[ 29] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_7_OFFSET);
-    addr_hit[ 30] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_8_OFFSET);
-    addr_hit[ 31] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_9_OFFSET);
-    addr_hit[ 32] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_10_OFFSET);
-    addr_hit[ 33] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_11_OFFSET);
-    addr_hit[ 34] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_12_OFFSET);
-    addr_hit[ 35] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_13_OFFSET);
-    addr_hit[ 36] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_14_OFFSET);
-    addr_hit[ 37] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_15_OFFSET);
-    addr_hit[ 38] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_0_OFFSET);
-    addr_hit[ 39] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_1_OFFSET);
-    addr_hit[ 40] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_2_OFFSET);
-    addr_hit[ 41] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_3_OFFSET);
-    addr_hit[ 42] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_4_OFFSET);
-    addr_hit[ 43] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_5_OFFSET);
-    addr_hit[ 44] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_6_OFFSET);
-    addr_hit[ 45] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_7_OFFSET);
-    addr_hit[ 46] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_8_OFFSET);
-    addr_hit[ 47] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_9_OFFSET);
-    addr_hit[ 48] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_10_OFFSET);
-    addr_hit[ 49] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_11_OFFSET);
-    addr_hit[ 50] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_12_OFFSET);
-    addr_hit[ 51] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_13_OFFSET);
-    addr_hit[ 52] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_14_OFFSET);
-    addr_hit[ 53] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_15_OFFSET);
-    addr_hit[ 54] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_0_OFFSET);
-    addr_hit[ 55] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_1_OFFSET);
-    addr_hit[ 56] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_2_OFFSET);
-    addr_hit[ 57] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_3_OFFSET);
-    addr_hit[ 58] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_4_OFFSET);
-    addr_hit[ 59] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_5_OFFSET);
-    addr_hit[ 60] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_6_OFFSET);
-    addr_hit[ 61] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_7_OFFSET);
-    addr_hit[ 62] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_8_OFFSET);
-    addr_hit[ 63] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_9_OFFSET);
-    addr_hit[ 64] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_10_OFFSET);
-    addr_hit[ 65] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_11_OFFSET);
-    addr_hit[ 66] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_12_OFFSET);
-    addr_hit[ 67] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_13_OFFSET);
-    addr_hit[ 68] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_14_OFFSET);
-    addr_hit[ 69] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_15_OFFSET);
-    addr_hit[ 70] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_0_OFFSET);
-    addr_hit[ 71] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_1_OFFSET);
-    addr_hit[ 72] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_2_OFFSET);
-    addr_hit[ 73] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_3_OFFSET);
-    addr_hit[ 74] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_4_OFFSET);
-    addr_hit[ 75] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_5_OFFSET);
-    addr_hit[ 76] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_6_OFFSET);
-    addr_hit[ 77] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_0_OFFSET);
-    addr_hit[ 78] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_1_OFFSET);
-    addr_hit[ 79] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_2_OFFSET);
-    addr_hit[ 80] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_3_OFFSET);
-    addr_hit[ 81] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_4_OFFSET);
-    addr_hit[ 82] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_5_OFFSET);
-    addr_hit[ 83] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_6_OFFSET);
-    addr_hit[ 84] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_0_OFFSET);
-    addr_hit[ 85] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_1_OFFSET);
-    addr_hit[ 86] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_2_OFFSET);
-    addr_hit[ 87] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_3_OFFSET);
-    addr_hit[ 88] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_4_OFFSET);
-    addr_hit[ 89] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_5_OFFSET);
-    addr_hit[ 90] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_6_OFFSET);
-    addr_hit[ 91] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_0_OFFSET);
-    addr_hit[ 92] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_1_OFFSET);
-    addr_hit[ 93] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_2_OFFSET);
-    addr_hit[ 94] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_3_OFFSET);
-    addr_hit[ 95] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_4_OFFSET);
-    addr_hit[ 96] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_5_OFFSET);
-    addr_hit[ 97] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_6_OFFSET);
-    addr_hit[ 98] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_REGWEN_OFFSET);
-    addr_hit[ 99] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_CTRL_SHADOWED_OFFSET);
-    addr_hit[100] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_CLR_REGWEN_OFFSET);
-    addr_hit[101] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_CLR_SHADOWED_OFFSET);
-    addr_hit[102] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_ACCUM_CNT_OFFSET);
-    addr_hit[103] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_ACCUM_THRESH_SHADOWED_OFFSET);
-    addr_hit[104] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_TIMEOUT_CYC_SHADOWED_OFFSET);
-    addr_hit[105] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_CRASHDUMP_TRIGGER_SHADOWED_OFFSET);
-    addr_hit[106] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_PHASE0_CYC_SHADOWED_OFFSET);
-    addr_hit[107] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_PHASE1_CYC_SHADOWED_OFFSET);
-    addr_hit[108] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_PHASE2_CYC_SHADOWED_OFFSET);
-    addr_hit[109] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_PHASE3_CYC_SHADOWED_OFFSET);
-    addr_hit[110] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_ESC_CNT_OFFSET);
-    addr_hit[111] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_STATE_OFFSET);
-    addr_hit[112] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_REGWEN_OFFSET);
-    addr_hit[113] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_CTRL_SHADOWED_OFFSET);
-    addr_hit[114] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_CLR_REGWEN_OFFSET);
-    addr_hit[115] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_CLR_SHADOWED_OFFSET);
-    addr_hit[116] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_ACCUM_CNT_OFFSET);
-    addr_hit[117] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_ACCUM_THRESH_SHADOWED_OFFSET);
-    addr_hit[118] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_TIMEOUT_CYC_SHADOWED_OFFSET);
-    addr_hit[119] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_CRASHDUMP_TRIGGER_SHADOWED_OFFSET);
-    addr_hit[120] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_PHASE0_CYC_SHADOWED_OFFSET);
-    addr_hit[121] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_PHASE1_CYC_SHADOWED_OFFSET);
-    addr_hit[122] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_PHASE2_CYC_SHADOWED_OFFSET);
-    addr_hit[123] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_PHASE3_CYC_SHADOWED_OFFSET);
-    addr_hit[124] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_ESC_CNT_OFFSET);
-    addr_hit[125] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_STATE_OFFSET);
-    addr_hit[126] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_REGWEN_OFFSET);
-    addr_hit[127] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_CTRL_SHADOWED_OFFSET);
-    addr_hit[128] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_CLR_REGWEN_OFFSET);
-    addr_hit[129] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_CLR_SHADOWED_OFFSET);
-    addr_hit[130] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_ACCUM_CNT_OFFSET);
-    addr_hit[131] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_ACCUM_THRESH_SHADOWED_OFFSET);
-    addr_hit[132] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_TIMEOUT_CYC_SHADOWED_OFFSET);
-    addr_hit[133] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_CRASHDUMP_TRIGGER_SHADOWED_OFFSET);
-    addr_hit[134] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_PHASE0_CYC_SHADOWED_OFFSET);
-    addr_hit[135] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_PHASE1_CYC_SHADOWED_OFFSET);
-    addr_hit[136] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_PHASE2_CYC_SHADOWED_OFFSET);
-    addr_hit[137] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_PHASE3_CYC_SHADOWED_OFFSET);
-    addr_hit[138] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_ESC_CNT_OFFSET);
-    addr_hit[139] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_STATE_OFFSET);
-    addr_hit[140] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_REGWEN_OFFSET);
-    addr_hit[141] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_CTRL_SHADOWED_OFFSET);
-    addr_hit[142] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_CLR_REGWEN_OFFSET);
-    addr_hit[143] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_CLR_SHADOWED_OFFSET);
-    addr_hit[144] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_ACCUM_CNT_OFFSET);
-    addr_hit[145] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_ACCUM_THRESH_SHADOWED_OFFSET);
-    addr_hit[146] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_TIMEOUT_CYC_SHADOWED_OFFSET);
-    addr_hit[147] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_CRASHDUMP_TRIGGER_SHADOWED_OFFSET);
-    addr_hit[148] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_PHASE0_CYC_SHADOWED_OFFSET);
-    addr_hit[149] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_PHASE1_CYC_SHADOWED_OFFSET);
-    addr_hit[150] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_PHASE2_CYC_SHADOWED_OFFSET);
-    addr_hit[151] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_PHASE3_CYC_SHADOWED_OFFSET);
-    addr_hit[152] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_ESC_CNT_OFFSET);
-    addr_hit[153] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_STATE_OFFSET);
+    addr_hit[ 22] = (reg_addr == LIO_ALERT_HANDLER_ALERT_REGWEN_16_OFFSET);
+    addr_hit[ 23] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_0_OFFSET);
+    addr_hit[ 24] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_1_OFFSET);
+    addr_hit[ 25] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_2_OFFSET);
+    addr_hit[ 26] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_3_OFFSET);
+    addr_hit[ 27] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_4_OFFSET);
+    addr_hit[ 28] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_5_OFFSET);
+    addr_hit[ 29] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_6_OFFSET);
+    addr_hit[ 30] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_7_OFFSET);
+    addr_hit[ 31] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_8_OFFSET);
+    addr_hit[ 32] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_9_OFFSET);
+    addr_hit[ 33] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_10_OFFSET);
+    addr_hit[ 34] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_11_OFFSET);
+    addr_hit[ 35] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_12_OFFSET);
+    addr_hit[ 36] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_13_OFFSET);
+    addr_hit[ 37] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_14_OFFSET);
+    addr_hit[ 38] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_15_OFFSET);
+    addr_hit[ 39] = (reg_addr == LIO_ALERT_HANDLER_ALERT_EN_SHADOWED_16_OFFSET);
+    addr_hit[ 40] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_0_OFFSET);
+    addr_hit[ 41] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_1_OFFSET);
+    addr_hit[ 42] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_2_OFFSET);
+    addr_hit[ 43] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_3_OFFSET);
+    addr_hit[ 44] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_4_OFFSET);
+    addr_hit[ 45] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_5_OFFSET);
+    addr_hit[ 46] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_6_OFFSET);
+    addr_hit[ 47] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_7_OFFSET);
+    addr_hit[ 48] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_8_OFFSET);
+    addr_hit[ 49] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_9_OFFSET);
+    addr_hit[ 50] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_10_OFFSET);
+    addr_hit[ 51] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_11_OFFSET);
+    addr_hit[ 52] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_12_OFFSET);
+    addr_hit[ 53] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_13_OFFSET);
+    addr_hit[ 54] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_14_OFFSET);
+    addr_hit[ 55] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_15_OFFSET);
+    addr_hit[ 56] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CLASS_SHADOWED_16_OFFSET);
+    addr_hit[ 57] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_0_OFFSET);
+    addr_hit[ 58] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_1_OFFSET);
+    addr_hit[ 59] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_2_OFFSET);
+    addr_hit[ 60] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_3_OFFSET);
+    addr_hit[ 61] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_4_OFFSET);
+    addr_hit[ 62] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_5_OFFSET);
+    addr_hit[ 63] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_6_OFFSET);
+    addr_hit[ 64] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_7_OFFSET);
+    addr_hit[ 65] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_8_OFFSET);
+    addr_hit[ 66] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_9_OFFSET);
+    addr_hit[ 67] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_10_OFFSET);
+    addr_hit[ 68] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_11_OFFSET);
+    addr_hit[ 69] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_12_OFFSET);
+    addr_hit[ 70] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_13_OFFSET);
+    addr_hit[ 71] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_14_OFFSET);
+    addr_hit[ 72] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_15_OFFSET);
+    addr_hit[ 73] = (reg_addr == LIO_ALERT_HANDLER_ALERT_CAUSE_16_OFFSET);
+    addr_hit[ 74] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_0_OFFSET);
+    addr_hit[ 75] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_1_OFFSET);
+    addr_hit[ 76] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_2_OFFSET);
+    addr_hit[ 77] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_3_OFFSET);
+    addr_hit[ 78] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_4_OFFSET);
+    addr_hit[ 79] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_5_OFFSET);
+    addr_hit[ 80] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_REGWEN_6_OFFSET);
+    addr_hit[ 81] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_0_OFFSET);
+    addr_hit[ 82] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_1_OFFSET);
+    addr_hit[ 83] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_2_OFFSET);
+    addr_hit[ 84] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_3_OFFSET);
+    addr_hit[ 85] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_4_OFFSET);
+    addr_hit[ 86] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_5_OFFSET);
+    addr_hit[ 87] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_EN_SHADOWED_6_OFFSET);
+    addr_hit[ 88] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_0_OFFSET);
+    addr_hit[ 89] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_1_OFFSET);
+    addr_hit[ 90] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_2_OFFSET);
+    addr_hit[ 91] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_3_OFFSET);
+    addr_hit[ 92] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_4_OFFSET);
+    addr_hit[ 93] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_5_OFFSET);
+    addr_hit[ 94] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CLASS_SHADOWED_6_OFFSET);
+    addr_hit[ 95] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_0_OFFSET);
+    addr_hit[ 96] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_1_OFFSET);
+    addr_hit[ 97] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_2_OFFSET);
+    addr_hit[ 98] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_3_OFFSET);
+    addr_hit[ 99] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_4_OFFSET);
+    addr_hit[100] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_5_OFFSET);
+    addr_hit[101] = (reg_addr == LIO_ALERT_HANDLER_LOC_ALERT_CAUSE_6_OFFSET);
+    addr_hit[102] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_REGWEN_OFFSET);
+    addr_hit[103] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_CTRL_SHADOWED_OFFSET);
+    addr_hit[104] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_CLR_REGWEN_OFFSET);
+    addr_hit[105] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_CLR_SHADOWED_OFFSET);
+    addr_hit[106] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_ACCUM_CNT_OFFSET);
+    addr_hit[107] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_ACCUM_THRESH_SHADOWED_OFFSET);
+    addr_hit[108] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_TIMEOUT_CYC_SHADOWED_OFFSET);
+    addr_hit[109] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_CRASHDUMP_TRIGGER_SHADOWED_OFFSET);
+    addr_hit[110] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_PHASE0_CYC_SHADOWED_OFFSET);
+    addr_hit[111] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_PHASE1_CYC_SHADOWED_OFFSET);
+    addr_hit[112] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_PHASE2_CYC_SHADOWED_OFFSET);
+    addr_hit[113] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_PHASE3_CYC_SHADOWED_OFFSET);
+    addr_hit[114] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_ESC_CNT_OFFSET);
+    addr_hit[115] = (reg_addr == LIO_ALERT_HANDLER_CLASSA_STATE_OFFSET);
+    addr_hit[116] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_REGWEN_OFFSET);
+    addr_hit[117] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_CTRL_SHADOWED_OFFSET);
+    addr_hit[118] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_CLR_REGWEN_OFFSET);
+    addr_hit[119] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_CLR_SHADOWED_OFFSET);
+    addr_hit[120] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_ACCUM_CNT_OFFSET);
+    addr_hit[121] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_ACCUM_THRESH_SHADOWED_OFFSET);
+    addr_hit[122] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_TIMEOUT_CYC_SHADOWED_OFFSET);
+    addr_hit[123] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_CRASHDUMP_TRIGGER_SHADOWED_OFFSET);
+    addr_hit[124] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_PHASE0_CYC_SHADOWED_OFFSET);
+    addr_hit[125] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_PHASE1_CYC_SHADOWED_OFFSET);
+    addr_hit[126] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_PHASE2_CYC_SHADOWED_OFFSET);
+    addr_hit[127] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_PHASE3_CYC_SHADOWED_OFFSET);
+    addr_hit[128] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_ESC_CNT_OFFSET);
+    addr_hit[129] = (reg_addr == LIO_ALERT_HANDLER_CLASSB_STATE_OFFSET);
+    addr_hit[130] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_REGWEN_OFFSET);
+    addr_hit[131] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_CTRL_SHADOWED_OFFSET);
+    addr_hit[132] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_CLR_REGWEN_OFFSET);
+    addr_hit[133] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_CLR_SHADOWED_OFFSET);
+    addr_hit[134] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_ACCUM_CNT_OFFSET);
+    addr_hit[135] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_ACCUM_THRESH_SHADOWED_OFFSET);
+    addr_hit[136] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_TIMEOUT_CYC_SHADOWED_OFFSET);
+    addr_hit[137] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_CRASHDUMP_TRIGGER_SHADOWED_OFFSET);
+    addr_hit[138] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_PHASE0_CYC_SHADOWED_OFFSET);
+    addr_hit[139] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_PHASE1_CYC_SHADOWED_OFFSET);
+    addr_hit[140] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_PHASE2_CYC_SHADOWED_OFFSET);
+    addr_hit[141] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_PHASE3_CYC_SHADOWED_OFFSET);
+    addr_hit[142] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_ESC_CNT_OFFSET);
+    addr_hit[143] = (reg_addr == LIO_ALERT_HANDLER_CLASSC_STATE_OFFSET);
+    addr_hit[144] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_REGWEN_OFFSET);
+    addr_hit[145] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_CTRL_SHADOWED_OFFSET);
+    addr_hit[146] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_CLR_REGWEN_OFFSET);
+    addr_hit[147] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_CLR_SHADOWED_OFFSET);
+    addr_hit[148] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_ACCUM_CNT_OFFSET);
+    addr_hit[149] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_ACCUM_THRESH_SHADOWED_OFFSET);
+    addr_hit[150] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_TIMEOUT_CYC_SHADOWED_OFFSET);
+    addr_hit[151] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_CRASHDUMP_TRIGGER_SHADOWED_OFFSET);
+    addr_hit[152] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_PHASE0_CYC_SHADOWED_OFFSET);
+    addr_hit[153] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_PHASE1_CYC_SHADOWED_OFFSET);
+    addr_hit[154] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_PHASE2_CYC_SHADOWED_OFFSET);
+    addr_hit[155] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_PHASE3_CYC_SHADOWED_OFFSET);
+    addr_hit[156] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_ESC_CNT_OFFSET);
+    addr_hit[157] = (reg_addr == LIO_ALERT_HANDLER_CLASSD_STATE_OFFSET);
 
     if (EnableRacl) begin : gen_racl_hit
-      for (int unsigned slice_idx = 0; slice_idx < 154; slice_idx++) begin
+      for (int unsigned slice_idx = 0; slice_idx < 158; slice_idx++) begin
         racl_addr_hit_read[slice_idx] =
             addr_hit[slice_idx] & (|(racl_policies_i[RaclPolicySelVec[slice_idx]].read_perm
                                       & racl_role_vec));
@@ -8200,7 +8362,11 @@ module lio_alert_handler_reg_top
                (racl_addr_hit_write[150] & (|(LIO_ALERT_HANDLER_PERMIT[150] & ~reg_be))) |
                (racl_addr_hit_write[151] & (|(LIO_ALERT_HANDLER_PERMIT[151] & ~reg_be))) |
                (racl_addr_hit_write[152] & (|(LIO_ALERT_HANDLER_PERMIT[152] & ~reg_be))) |
-               (racl_addr_hit_write[153] & (|(LIO_ALERT_HANDLER_PERMIT[153] & ~reg_be)))));
+               (racl_addr_hit_write[153] & (|(LIO_ALERT_HANDLER_PERMIT[153] & ~reg_be))) |
+               (racl_addr_hit_write[154] & (|(LIO_ALERT_HANDLER_PERMIT[154] & ~reg_be))) |
+               (racl_addr_hit_write[155] & (|(LIO_ALERT_HANDLER_PERMIT[155] & ~reg_be))) |
+               (racl_addr_hit_write[156] & (|(LIO_ALERT_HANDLER_PERMIT[156] & ~reg_be))) |
+               (racl_addr_hit_write[157] & (|(LIO_ALERT_HANDLER_PERMIT[157] & ~reg_be)))));
   end
 
   // Generate write-enables
@@ -8290,285 +8456,299 @@ module lio_alert_handler_reg_top
   assign alert_regwen_15_we = racl_addr_hit_write[21] & reg_we & !reg_error;
 
   assign alert_regwen_15_wd = reg_wdata[0];
-  assign alert_en_shadowed_0_re = racl_addr_hit_read[22] & reg_re & !reg_error;
-  assign alert_en_shadowed_0_we = racl_addr_hit_write[22] & reg_we & !reg_error;
+  assign alert_regwen_16_we = racl_addr_hit_write[22] & reg_we & !reg_error;
+
+  assign alert_regwen_16_wd = reg_wdata[0];
+  assign alert_en_shadowed_0_re = racl_addr_hit_read[23] & reg_re & !reg_error;
+  assign alert_en_shadowed_0_we = racl_addr_hit_write[23] & reg_we & !reg_error;
 
   assign alert_en_shadowed_0_wd = reg_wdata[0];
-  assign alert_en_shadowed_1_re = racl_addr_hit_read[23] & reg_re & !reg_error;
-  assign alert_en_shadowed_1_we = racl_addr_hit_write[23] & reg_we & !reg_error;
+  assign alert_en_shadowed_1_re = racl_addr_hit_read[24] & reg_re & !reg_error;
+  assign alert_en_shadowed_1_we = racl_addr_hit_write[24] & reg_we & !reg_error;
 
   assign alert_en_shadowed_1_wd = reg_wdata[0];
-  assign alert_en_shadowed_2_re = racl_addr_hit_read[24] & reg_re & !reg_error;
-  assign alert_en_shadowed_2_we = racl_addr_hit_write[24] & reg_we & !reg_error;
+  assign alert_en_shadowed_2_re = racl_addr_hit_read[25] & reg_re & !reg_error;
+  assign alert_en_shadowed_2_we = racl_addr_hit_write[25] & reg_we & !reg_error;
 
   assign alert_en_shadowed_2_wd = reg_wdata[0];
-  assign alert_en_shadowed_3_re = racl_addr_hit_read[25] & reg_re & !reg_error;
-  assign alert_en_shadowed_3_we = racl_addr_hit_write[25] & reg_we & !reg_error;
+  assign alert_en_shadowed_3_re = racl_addr_hit_read[26] & reg_re & !reg_error;
+  assign alert_en_shadowed_3_we = racl_addr_hit_write[26] & reg_we & !reg_error;
 
   assign alert_en_shadowed_3_wd = reg_wdata[0];
-  assign alert_en_shadowed_4_re = racl_addr_hit_read[26] & reg_re & !reg_error;
-  assign alert_en_shadowed_4_we = racl_addr_hit_write[26] & reg_we & !reg_error;
+  assign alert_en_shadowed_4_re = racl_addr_hit_read[27] & reg_re & !reg_error;
+  assign alert_en_shadowed_4_we = racl_addr_hit_write[27] & reg_we & !reg_error;
 
   assign alert_en_shadowed_4_wd = reg_wdata[0];
-  assign alert_en_shadowed_5_re = racl_addr_hit_read[27] & reg_re & !reg_error;
-  assign alert_en_shadowed_5_we = racl_addr_hit_write[27] & reg_we & !reg_error;
+  assign alert_en_shadowed_5_re = racl_addr_hit_read[28] & reg_re & !reg_error;
+  assign alert_en_shadowed_5_we = racl_addr_hit_write[28] & reg_we & !reg_error;
 
   assign alert_en_shadowed_5_wd = reg_wdata[0];
-  assign alert_en_shadowed_6_re = racl_addr_hit_read[28] & reg_re & !reg_error;
-  assign alert_en_shadowed_6_we = racl_addr_hit_write[28] & reg_we & !reg_error;
+  assign alert_en_shadowed_6_re = racl_addr_hit_read[29] & reg_re & !reg_error;
+  assign alert_en_shadowed_6_we = racl_addr_hit_write[29] & reg_we & !reg_error;
 
   assign alert_en_shadowed_6_wd = reg_wdata[0];
-  assign alert_en_shadowed_7_re = racl_addr_hit_read[29] & reg_re & !reg_error;
-  assign alert_en_shadowed_7_we = racl_addr_hit_write[29] & reg_we & !reg_error;
+  assign alert_en_shadowed_7_re = racl_addr_hit_read[30] & reg_re & !reg_error;
+  assign alert_en_shadowed_7_we = racl_addr_hit_write[30] & reg_we & !reg_error;
 
   assign alert_en_shadowed_7_wd = reg_wdata[0];
-  assign alert_en_shadowed_8_re = racl_addr_hit_read[30] & reg_re & !reg_error;
-  assign alert_en_shadowed_8_we = racl_addr_hit_write[30] & reg_we & !reg_error;
+  assign alert_en_shadowed_8_re = racl_addr_hit_read[31] & reg_re & !reg_error;
+  assign alert_en_shadowed_8_we = racl_addr_hit_write[31] & reg_we & !reg_error;
 
   assign alert_en_shadowed_8_wd = reg_wdata[0];
-  assign alert_en_shadowed_9_re = racl_addr_hit_read[31] & reg_re & !reg_error;
-  assign alert_en_shadowed_9_we = racl_addr_hit_write[31] & reg_we & !reg_error;
+  assign alert_en_shadowed_9_re = racl_addr_hit_read[32] & reg_re & !reg_error;
+  assign alert_en_shadowed_9_we = racl_addr_hit_write[32] & reg_we & !reg_error;
 
   assign alert_en_shadowed_9_wd = reg_wdata[0];
-  assign alert_en_shadowed_10_re = racl_addr_hit_read[32] & reg_re & !reg_error;
-  assign alert_en_shadowed_10_we = racl_addr_hit_write[32] & reg_we & !reg_error;
+  assign alert_en_shadowed_10_re = racl_addr_hit_read[33] & reg_re & !reg_error;
+  assign alert_en_shadowed_10_we = racl_addr_hit_write[33] & reg_we & !reg_error;
 
   assign alert_en_shadowed_10_wd = reg_wdata[0];
-  assign alert_en_shadowed_11_re = racl_addr_hit_read[33] & reg_re & !reg_error;
-  assign alert_en_shadowed_11_we = racl_addr_hit_write[33] & reg_we & !reg_error;
+  assign alert_en_shadowed_11_re = racl_addr_hit_read[34] & reg_re & !reg_error;
+  assign alert_en_shadowed_11_we = racl_addr_hit_write[34] & reg_we & !reg_error;
 
   assign alert_en_shadowed_11_wd = reg_wdata[0];
-  assign alert_en_shadowed_12_re = racl_addr_hit_read[34] & reg_re & !reg_error;
-  assign alert_en_shadowed_12_we = racl_addr_hit_write[34] & reg_we & !reg_error;
+  assign alert_en_shadowed_12_re = racl_addr_hit_read[35] & reg_re & !reg_error;
+  assign alert_en_shadowed_12_we = racl_addr_hit_write[35] & reg_we & !reg_error;
 
   assign alert_en_shadowed_12_wd = reg_wdata[0];
-  assign alert_en_shadowed_13_re = racl_addr_hit_read[35] & reg_re & !reg_error;
-  assign alert_en_shadowed_13_we = racl_addr_hit_write[35] & reg_we & !reg_error;
+  assign alert_en_shadowed_13_re = racl_addr_hit_read[36] & reg_re & !reg_error;
+  assign alert_en_shadowed_13_we = racl_addr_hit_write[36] & reg_we & !reg_error;
 
   assign alert_en_shadowed_13_wd = reg_wdata[0];
-  assign alert_en_shadowed_14_re = racl_addr_hit_read[36] & reg_re & !reg_error;
-  assign alert_en_shadowed_14_we = racl_addr_hit_write[36] & reg_we & !reg_error;
+  assign alert_en_shadowed_14_re = racl_addr_hit_read[37] & reg_re & !reg_error;
+  assign alert_en_shadowed_14_we = racl_addr_hit_write[37] & reg_we & !reg_error;
 
   assign alert_en_shadowed_14_wd = reg_wdata[0];
-  assign alert_en_shadowed_15_re = racl_addr_hit_read[37] & reg_re & !reg_error;
-  assign alert_en_shadowed_15_we = racl_addr_hit_write[37] & reg_we & !reg_error;
+  assign alert_en_shadowed_15_re = racl_addr_hit_read[38] & reg_re & !reg_error;
+  assign alert_en_shadowed_15_we = racl_addr_hit_write[38] & reg_we & !reg_error;
 
   assign alert_en_shadowed_15_wd = reg_wdata[0];
-  assign alert_class_shadowed_0_re = racl_addr_hit_read[38] & reg_re & !reg_error;
-  assign alert_class_shadowed_0_we = racl_addr_hit_write[38] & reg_we & !reg_error;
+  assign alert_en_shadowed_16_re = racl_addr_hit_read[39] & reg_re & !reg_error;
+  assign alert_en_shadowed_16_we = racl_addr_hit_write[39] & reg_we & !reg_error;
+
+  assign alert_en_shadowed_16_wd = reg_wdata[0];
+  assign alert_class_shadowed_0_re = racl_addr_hit_read[40] & reg_re & !reg_error;
+  assign alert_class_shadowed_0_we = racl_addr_hit_write[40] & reg_we & !reg_error;
 
   assign alert_class_shadowed_0_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_1_re = racl_addr_hit_read[39] & reg_re & !reg_error;
-  assign alert_class_shadowed_1_we = racl_addr_hit_write[39] & reg_we & !reg_error;
+  assign alert_class_shadowed_1_re = racl_addr_hit_read[41] & reg_re & !reg_error;
+  assign alert_class_shadowed_1_we = racl_addr_hit_write[41] & reg_we & !reg_error;
 
   assign alert_class_shadowed_1_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_2_re = racl_addr_hit_read[40] & reg_re & !reg_error;
-  assign alert_class_shadowed_2_we = racl_addr_hit_write[40] & reg_we & !reg_error;
+  assign alert_class_shadowed_2_re = racl_addr_hit_read[42] & reg_re & !reg_error;
+  assign alert_class_shadowed_2_we = racl_addr_hit_write[42] & reg_we & !reg_error;
 
   assign alert_class_shadowed_2_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_3_re = racl_addr_hit_read[41] & reg_re & !reg_error;
-  assign alert_class_shadowed_3_we = racl_addr_hit_write[41] & reg_we & !reg_error;
+  assign alert_class_shadowed_3_re = racl_addr_hit_read[43] & reg_re & !reg_error;
+  assign alert_class_shadowed_3_we = racl_addr_hit_write[43] & reg_we & !reg_error;
 
   assign alert_class_shadowed_3_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_4_re = racl_addr_hit_read[42] & reg_re & !reg_error;
-  assign alert_class_shadowed_4_we = racl_addr_hit_write[42] & reg_we & !reg_error;
+  assign alert_class_shadowed_4_re = racl_addr_hit_read[44] & reg_re & !reg_error;
+  assign alert_class_shadowed_4_we = racl_addr_hit_write[44] & reg_we & !reg_error;
 
   assign alert_class_shadowed_4_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_5_re = racl_addr_hit_read[43] & reg_re & !reg_error;
-  assign alert_class_shadowed_5_we = racl_addr_hit_write[43] & reg_we & !reg_error;
+  assign alert_class_shadowed_5_re = racl_addr_hit_read[45] & reg_re & !reg_error;
+  assign alert_class_shadowed_5_we = racl_addr_hit_write[45] & reg_we & !reg_error;
 
   assign alert_class_shadowed_5_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_6_re = racl_addr_hit_read[44] & reg_re & !reg_error;
-  assign alert_class_shadowed_6_we = racl_addr_hit_write[44] & reg_we & !reg_error;
+  assign alert_class_shadowed_6_re = racl_addr_hit_read[46] & reg_re & !reg_error;
+  assign alert_class_shadowed_6_we = racl_addr_hit_write[46] & reg_we & !reg_error;
 
   assign alert_class_shadowed_6_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_7_re = racl_addr_hit_read[45] & reg_re & !reg_error;
-  assign alert_class_shadowed_7_we = racl_addr_hit_write[45] & reg_we & !reg_error;
+  assign alert_class_shadowed_7_re = racl_addr_hit_read[47] & reg_re & !reg_error;
+  assign alert_class_shadowed_7_we = racl_addr_hit_write[47] & reg_we & !reg_error;
 
   assign alert_class_shadowed_7_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_8_re = racl_addr_hit_read[46] & reg_re & !reg_error;
-  assign alert_class_shadowed_8_we = racl_addr_hit_write[46] & reg_we & !reg_error;
+  assign alert_class_shadowed_8_re = racl_addr_hit_read[48] & reg_re & !reg_error;
+  assign alert_class_shadowed_8_we = racl_addr_hit_write[48] & reg_we & !reg_error;
 
   assign alert_class_shadowed_8_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_9_re = racl_addr_hit_read[47] & reg_re & !reg_error;
-  assign alert_class_shadowed_9_we = racl_addr_hit_write[47] & reg_we & !reg_error;
+  assign alert_class_shadowed_9_re = racl_addr_hit_read[49] & reg_re & !reg_error;
+  assign alert_class_shadowed_9_we = racl_addr_hit_write[49] & reg_we & !reg_error;
 
   assign alert_class_shadowed_9_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_10_re = racl_addr_hit_read[48] & reg_re & !reg_error;
-  assign alert_class_shadowed_10_we = racl_addr_hit_write[48] & reg_we & !reg_error;
+  assign alert_class_shadowed_10_re = racl_addr_hit_read[50] & reg_re & !reg_error;
+  assign alert_class_shadowed_10_we = racl_addr_hit_write[50] & reg_we & !reg_error;
 
   assign alert_class_shadowed_10_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_11_re = racl_addr_hit_read[49] & reg_re & !reg_error;
-  assign alert_class_shadowed_11_we = racl_addr_hit_write[49] & reg_we & !reg_error;
+  assign alert_class_shadowed_11_re = racl_addr_hit_read[51] & reg_re & !reg_error;
+  assign alert_class_shadowed_11_we = racl_addr_hit_write[51] & reg_we & !reg_error;
 
   assign alert_class_shadowed_11_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_12_re = racl_addr_hit_read[50] & reg_re & !reg_error;
-  assign alert_class_shadowed_12_we = racl_addr_hit_write[50] & reg_we & !reg_error;
+  assign alert_class_shadowed_12_re = racl_addr_hit_read[52] & reg_re & !reg_error;
+  assign alert_class_shadowed_12_we = racl_addr_hit_write[52] & reg_we & !reg_error;
 
   assign alert_class_shadowed_12_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_13_re = racl_addr_hit_read[51] & reg_re & !reg_error;
-  assign alert_class_shadowed_13_we = racl_addr_hit_write[51] & reg_we & !reg_error;
+  assign alert_class_shadowed_13_re = racl_addr_hit_read[53] & reg_re & !reg_error;
+  assign alert_class_shadowed_13_we = racl_addr_hit_write[53] & reg_we & !reg_error;
 
   assign alert_class_shadowed_13_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_14_re = racl_addr_hit_read[52] & reg_re & !reg_error;
-  assign alert_class_shadowed_14_we = racl_addr_hit_write[52] & reg_we & !reg_error;
+  assign alert_class_shadowed_14_re = racl_addr_hit_read[54] & reg_re & !reg_error;
+  assign alert_class_shadowed_14_we = racl_addr_hit_write[54] & reg_we & !reg_error;
 
   assign alert_class_shadowed_14_wd = reg_wdata[1:0];
-  assign alert_class_shadowed_15_re = racl_addr_hit_read[53] & reg_re & !reg_error;
-  assign alert_class_shadowed_15_we = racl_addr_hit_write[53] & reg_we & !reg_error;
+  assign alert_class_shadowed_15_re = racl_addr_hit_read[55] & reg_re & !reg_error;
+  assign alert_class_shadowed_15_we = racl_addr_hit_write[55] & reg_we & !reg_error;
 
   assign alert_class_shadowed_15_wd = reg_wdata[1:0];
-  assign alert_cause_0_we = racl_addr_hit_write[54] & reg_we & !reg_error;
+  assign alert_class_shadowed_16_re = racl_addr_hit_read[56] & reg_re & !reg_error;
+  assign alert_class_shadowed_16_we = racl_addr_hit_write[56] & reg_we & !reg_error;
+
+  assign alert_class_shadowed_16_wd = reg_wdata[1:0];
+  assign alert_cause_0_we = racl_addr_hit_write[57] & reg_we & !reg_error;
 
   assign alert_cause_0_wd = reg_wdata[0];
-  assign alert_cause_1_we = racl_addr_hit_write[55] & reg_we & !reg_error;
+  assign alert_cause_1_we = racl_addr_hit_write[58] & reg_we & !reg_error;
 
   assign alert_cause_1_wd = reg_wdata[0];
-  assign alert_cause_2_we = racl_addr_hit_write[56] & reg_we & !reg_error;
+  assign alert_cause_2_we = racl_addr_hit_write[59] & reg_we & !reg_error;
 
   assign alert_cause_2_wd = reg_wdata[0];
-  assign alert_cause_3_we = racl_addr_hit_write[57] & reg_we & !reg_error;
+  assign alert_cause_3_we = racl_addr_hit_write[60] & reg_we & !reg_error;
 
   assign alert_cause_3_wd = reg_wdata[0];
-  assign alert_cause_4_we = racl_addr_hit_write[58] & reg_we & !reg_error;
+  assign alert_cause_4_we = racl_addr_hit_write[61] & reg_we & !reg_error;
 
   assign alert_cause_4_wd = reg_wdata[0];
-  assign alert_cause_5_we = racl_addr_hit_write[59] & reg_we & !reg_error;
+  assign alert_cause_5_we = racl_addr_hit_write[62] & reg_we & !reg_error;
 
   assign alert_cause_5_wd = reg_wdata[0];
-  assign alert_cause_6_we = racl_addr_hit_write[60] & reg_we & !reg_error;
+  assign alert_cause_6_we = racl_addr_hit_write[63] & reg_we & !reg_error;
 
   assign alert_cause_6_wd = reg_wdata[0];
-  assign alert_cause_7_we = racl_addr_hit_write[61] & reg_we & !reg_error;
+  assign alert_cause_7_we = racl_addr_hit_write[64] & reg_we & !reg_error;
 
   assign alert_cause_7_wd = reg_wdata[0];
-  assign alert_cause_8_we = racl_addr_hit_write[62] & reg_we & !reg_error;
+  assign alert_cause_8_we = racl_addr_hit_write[65] & reg_we & !reg_error;
 
   assign alert_cause_8_wd = reg_wdata[0];
-  assign alert_cause_9_we = racl_addr_hit_write[63] & reg_we & !reg_error;
+  assign alert_cause_9_we = racl_addr_hit_write[66] & reg_we & !reg_error;
 
   assign alert_cause_9_wd = reg_wdata[0];
-  assign alert_cause_10_we = racl_addr_hit_write[64] & reg_we & !reg_error;
+  assign alert_cause_10_we = racl_addr_hit_write[67] & reg_we & !reg_error;
 
   assign alert_cause_10_wd = reg_wdata[0];
-  assign alert_cause_11_we = racl_addr_hit_write[65] & reg_we & !reg_error;
+  assign alert_cause_11_we = racl_addr_hit_write[68] & reg_we & !reg_error;
 
   assign alert_cause_11_wd = reg_wdata[0];
-  assign alert_cause_12_we = racl_addr_hit_write[66] & reg_we & !reg_error;
+  assign alert_cause_12_we = racl_addr_hit_write[69] & reg_we & !reg_error;
 
   assign alert_cause_12_wd = reg_wdata[0];
-  assign alert_cause_13_we = racl_addr_hit_write[67] & reg_we & !reg_error;
+  assign alert_cause_13_we = racl_addr_hit_write[70] & reg_we & !reg_error;
 
   assign alert_cause_13_wd = reg_wdata[0];
-  assign alert_cause_14_we = racl_addr_hit_write[68] & reg_we & !reg_error;
+  assign alert_cause_14_we = racl_addr_hit_write[71] & reg_we & !reg_error;
 
   assign alert_cause_14_wd = reg_wdata[0];
-  assign alert_cause_15_we = racl_addr_hit_write[69] & reg_we & !reg_error;
+  assign alert_cause_15_we = racl_addr_hit_write[72] & reg_we & !reg_error;
 
   assign alert_cause_15_wd = reg_wdata[0];
-  assign loc_alert_regwen_0_we = racl_addr_hit_write[70] & reg_we & !reg_error;
+  assign alert_cause_16_we = racl_addr_hit_write[73] & reg_we & !reg_error;
+
+  assign alert_cause_16_wd = reg_wdata[0];
+  assign loc_alert_regwen_0_we = racl_addr_hit_write[74] & reg_we & !reg_error;
 
   assign loc_alert_regwen_0_wd = reg_wdata[0];
-  assign loc_alert_regwen_1_we = racl_addr_hit_write[71] & reg_we & !reg_error;
+  assign loc_alert_regwen_1_we = racl_addr_hit_write[75] & reg_we & !reg_error;
 
   assign loc_alert_regwen_1_wd = reg_wdata[0];
-  assign loc_alert_regwen_2_we = racl_addr_hit_write[72] & reg_we & !reg_error;
+  assign loc_alert_regwen_2_we = racl_addr_hit_write[76] & reg_we & !reg_error;
 
   assign loc_alert_regwen_2_wd = reg_wdata[0];
-  assign loc_alert_regwen_3_we = racl_addr_hit_write[73] & reg_we & !reg_error;
+  assign loc_alert_regwen_3_we = racl_addr_hit_write[77] & reg_we & !reg_error;
 
   assign loc_alert_regwen_3_wd = reg_wdata[0];
-  assign loc_alert_regwen_4_we = racl_addr_hit_write[74] & reg_we & !reg_error;
+  assign loc_alert_regwen_4_we = racl_addr_hit_write[78] & reg_we & !reg_error;
 
   assign loc_alert_regwen_4_wd = reg_wdata[0];
-  assign loc_alert_regwen_5_we = racl_addr_hit_write[75] & reg_we & !reg_error;
+  assign loc_alert_regwen_5_we = racl_addr_hit_write[79] & reg_we & !reg_error;
 
   assign loc_alert_regwen_5_wd = reg_wdata[0];
-  assign loc_alert_regwen_6_we = racl_addr_hit_write[76] & reg_we & !reg_error;
+  assign loc_alert_regwen_6_we = racl_addr_hit_write[80] & reg_we & !reg_error;
 
   assign loc_alert_regwen_6_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_0_re = racl_addr_hit_read[77] & reg_re & !reg_error;
-  assign loc_alert_en_shadowed_0_we = racl_addr_hit_write[77] & reg_we & !reg_error;
+  assign loc_alert_en_shadowed_0_re = racl_addr_hit_read[81] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_0_we = racl_addr_hit_write[81] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_0_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_1_re = racl_addr_hit_read[78] & reg_re & !reg_error;
-  assign loc_alert_en_shadowed_1_we = racl_addr_hit_write[78] & reg_we & !reg_error;
+  assign loc_alert_en_shadowed_1_re = racl_addr_hit_read[82] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_1_we = racl_addr_hit_write[82] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_1_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_2_re = racl_addr_hit_read[79] & reg_re & !reg_error;
-  assign loc_alert_en_shadowed_2_we = racl_addr_hit_write[79] & reg_we & !reg_error;
+  assign loc_alert_en_shadowed_2_re = racl_addr_hit_read[83] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_2_we = racl_addr_hit_write[83] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_2_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_3_re = racl_addr_hit_read[80] & reg_re & !reg_error;
-  assign loc_alert_en_shadowed_3_we = racl_addr_hit_write[80] & reg_we & !reg_error;
+  assign loc_alert_en_shadowed_3_re = racl_addr_hit_read[84] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_3_we = racl_addr_hit_write[84] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_3_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_4_re = racl_addr_hit_read[81] & reg_re & !reg_error;
-  assign loc_alert_en_shadowed_4_we = racl_addr_hit_write[81] & reg_we & !reg_error;
+  assign loc_alert_en_shadowed_4_re = racl_addr_hit_read[85] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_4_we = racl_addr_hit_write[85] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_4_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_5_re = racl_addr_hit_read[82] & reg_re & !reg_error;
-  assign loc_alert_en_shadowed_5_we = racl_addr_hit_write[82] & reg_we & !reg_error;
+  assign loc_alert_en_shadowed_5_re = racl_addr_hit_read[86] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_5_we = racl_addr_hit_write[86] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_5_wd = reg_wdata[0];
-  assign loc_alert_en_shadowed_6_re = racl_addr_hit_read[83] & reg_re & !reg_error;
-  assign loc_alert_en_shadowed_6_we = racl_addr_hit_write[83] & reg_we & !reg_error;
+  assign loc_alert_en_shadowed_6_re = racl_addr_hit_read[87] & reg_re & !reg_error;
+  assign loc_alert_en_shadowed_6_we = racl_addr_hit_write[87] & reg_we & !reg_error;
 
   assign loc_alert_en_shadowed_6_wd = reg_wdata[0];
-  assign loc_alert_class_shadowed_0_re = racl_addr_hit_read[84] & reg_re & !reg_error;
-  assign loc_alert_class_shadowed_0_we = racl_addr_hit_write[84] & reg_we & !reg_error;
+  assign loc_alert_class_shadowed_0_re = racl_addr_hit_read[88] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_0_we = racl_addr_hit_write[88] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_0_wd = reg_wdata[1:0];
-  assign loc_alert_class_shadowed_1_re = racl_addr_hit_read[85] & reg_re & !reg_error;
-  assign loc_alert_class_shadowed_1_we = racl_addr_hit_write[85] & reg_we & !reg_error;
+  assign loc_alert_class_shadowed_1_re = racl_addr_hit_read[89] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_1_we = racl_addr_hit_write[89] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_1_wd = reg_wdata[1:0];
-  assign loc_alert_class_shadowed_2_re = racl_addr_hit_read[86] & reg_re & !reg_error;
-  assign loc_alert_class_shadowed_2_we = racl_addr_hit_write[86] & reg_we & !reg_error;
+  assign loc_alert_class_shadowed_2_re = racl_addr_hit_read[90] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_2_we = racl_addr_hit_write[90] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_2_wd = reg_wdata[1:0];
-  assign loc_alert_class_shadowed_3_re = racl_addr_hit_read[87] & reg_re & !reg_error;
-  assign loc_alert_class_shadowed_3_we = racl_addr_hit_write[87] & reg_we & !reg_error;
+  assign loc_alert_class_shadowed_3_re = racl_addr_hit_read[91] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_3_we = racl_addr_hit_write[91] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_3_wd = reg_wdata[1:0];
-  assign loc_alert_class_shadowed_4_re = racl_addr_hit_read[88] & reg_re & !reg_error;
-  assign loc_alert_class_shadowed_4_we = racl_addr_hit_write[88] & reg_we & !reg_error;
+  assign loc_alert_class_shadowed_4_re = racl_addr_hit_read[92] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_4_we = racl_addr_hit_write[92] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_4_wd = reg_wdata[1:0];
-  assign loc_alert_class_shadowed_5_re = racl_addr_hit_read[89] & reg_re & !reg_error;
-  assign loc_alert_class_shadowed_5_we = racl_addr_hit_write[89] & reg_we & !reg_error;
+  assign loc_alert_class_shadowed_5_re = racl_addr_hit_read[93] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_5_we = racl_addr_hit_write[93] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_5_wd = reg_wdata[1:0];
-  assign loc_alert_class_shadowed_6_re = racl_addr_hit_read[90] & reg_re & !reg_error;
-  assign loc_alert_class_shadowed_6_we = racl_addr_hit_write[90] & reg_we & !reg_error;
+  assign loc_alert_class_shadowed_6_re = racl_addr_hit_read[94] & reg_re & !reg_error;
+  assign loc_alert_class_shadowed_6_we = racl_addr_hit_write[94] & reg_we & !reg_error;
 
   assign loc_alert_class_shadowed_6_wd = reg_wdata[1:0];
-  assign loc_alert_cause_0_we = racl_addr_hit_write[91] & reg_we & !reg_error;
+  assign loc_alert_cause_0_we = racl_addr_hit_write[95] & reg_we & !reg_error;
 
   assign loc_alert_cause_0_wd = reg_wdata[0];
-  assign loc_alert_cause_1_we = racl_addr_hit_write[92] & reg_we & !reg_error;
+  assign loc_alert_cause_1_we = racl_addr_hit_write[96] & reg_we & !reg_error;
 
   assign loc_alert_cause_1_wd = reg_wdata[0];
-  assign loc_alert_cause_2_we = racl_addr_hit_write[93] & reg_we & !reg_error;
+  assign loc_alert_cause_2_we = racl_addr_hit_write[97] & reg_we & !reg_error;
 
   assign loc_alert_cause_2_wd = reg_wdata[0];
-  assign loc_alert_cause_3_we = racl_addr_hit_write[94] & reg_we & !reg_error;
+  assign loc_alert_cause_3_we = racl_addr_hit_write[98] & reg_we & !reg_error;
 
   assign loc_alert_cause_3_wd = reg_wdata[0];
-  assign loc_alert_cause_4_we = racl_addr_hit_write[95] & reg_we & !reg_error;
+  assign loc_alert_cause_4_we = racl_addr_hit_write[99] & reg_we & !reg_error;
 
   assign loc_alert_cause_4_wd = reg_wdata[0];
-  assign loc_alert_cause_5_we = racl_addr_hit_write[96] & reg_we & !reg_error;
+  assign loc_alert_cause_5_we = racl_addr_hit_write[100] & reg_we & !reg_error;
 
   assign loc_alert_cause_5_wd = reg_wdata[0];
-  assign loc_alert_cause_6_we = racl_addr_hit_write[97] & reg_we & !reg_error;
+  assign loc_alert_cause_6_we = racl_addr_hit_write[101] & reg_we & !reg_error;
 
   assign loc_alert_cause_6_wd = reg_wdata[0];
-  assign classa_regwen_we = racl_addr_hit_write[98] & reg_we & !reg_error;
+  assign classa_regwen_we = racl_addr_hit_write[102] & reg_we & !reg_error;
 
   assign classa_regwen_wd = reg_wdata[0];
-  assign classa_ctrl_shadowed_re = racl_addr_hit_read[99] & reg_re & !reg_error;
-  assign classa_ctrl_shadowed_we = racl_addr_hit_write[99] & reg_we & !reg_error;
+  assign classa_ctrl_shadowed_re = racl_addr_hit_read[103] & reg_re & !reg_error;
+  assign classa_ctrl_shadowed_we = racl_addr_hit_write[103] & reg_we & !reg_error;
 
   assign classa_ctrl_shadowed_en_wd = reg_wdata[0];
 
@@ -8589,49 +8769,49 @@ module lio_alert_handler_reg_top
   assign classa_ctrl_shadowed_map_e2_wd = reg_wdata[11:10];
 
   assign classa_ctrl_shadowed_map_e3_wd = reg_wdata[13:12];
-  assign classa_clr_regwen_we = racl_addr_hit_write[100] & reg_we & !reg_error;
+  assign classa_clr_regwen_we = racl_addr_hit_write[104] & reg_we & !reg_error;
 
   assign classa_clr_regwen_wd = reg_wdata[0];
-  assign classa_clr_shadowed_re = racl_addr_hit_read[101] & reg_re & !reg_error;
-  assign classa_clr_shadowed_we = racl_addr_hit_write[101] & reg_we & !reg_error;
+  assign classa_clr_shadowed_re = racl_addr_hit_read[105] & reg_re & !reg_error;
+  assign classa_clr_shadowed_we = racl_addr_hit_write[105] & reg_we & !reg_error;
 
   assign classa_clr_shadowed_wd = reg_wdata[0];
-  assign classa_accum_cnt_re = racl_addr_hit_read[102] & reg_re & !reg_error;
-  assign classa_accum_thresh_shadowed_re = racl_addr_hit_read[103] & reg_re & !reg_error;
-  assign classa_accum_thresh_shadowed_we = racl_addr_hit_write[103] & reg_we & !reg_error;
+  assign classa_accum_cnt_re = racl_addr_hit_read[106] & reg_re & !reg_error;
+  assign classa_accum_thresh_shadowed_re = racl_addr_hit_read[107] & reg_re & !reg_error;
+  assign classa_accum_thresh_shadowed_we = racl_addr_hit_write[107] & reg_we & !reg_error;
 
   assign classa_accum_thresh_shadowed_wd = reg_wdata[15:0];
-  assign classa_timeout_cyc_shadowed_re = racl_addr_hit_read[104] & reg_re & !reg_error;
-  assign classa_timeout_cyc_shadowed_we = racl_addr_hit_write[104] & reg_we & !reg_error;
+  assign classa_timeout_cyc_shadowed_re = racl_addr_hit_read[108] & reg_re & !reg_error;
+  assign classa_timeout_cyc_shadowed_we = racl_addr_hit_write[108] & reg_we & !reg_error;
 
   assign classa_timeout_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classa_crashdump_trigger_shadowed_re = racl_addr_hit_read[105] & reg_re & !reg_error;
-  assign classa_crashdump_trigger_shadowed_we = racl_addr_hit_write[105] & reg_we & !reg_error;
+  assign classa_crashdump_trigger_shadowed_re = racl_addr_hit_read[109] & reg_re & !reg_error;
+  assign classa_crashdump_trigger_shadowed_we = racl_addr_hit_write[109] & reg_we & !reg_error;
 
   assign classa_crashdump_trigger_shadowed_wd = reg_wdata[1:0];
-  assign classa_phase0_cyc_shadowed_re = racl_addr_hit_read[106] & reg_re & !reg_error;
-  assign classa_phase0_cyc_shadowed_we = racl_addr_hit_write[106] & reg_we & !reg_error;
+  assign classa_phase0_cyc_shadowed_re = racl_addr_hit_read[110] & reg_re & !reg_error;
+  assign classa_phase0_cyc_shadowed_we = racl_addr_hit_write[110] & reg_we & !reg_error;
 
   assign classa_phase0_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classa_phase1_cyc_shadowed_re = racl_addr_hit_read[107] & reg_re & !reg_error;
-  assign classa_phase1_cyc_shadowed_we = racl_addr_hit_write[107] & reg_we & !reg_error;
+  assign classa_phase1_cyc_shadowed_re = racl_addr_hit_read[111] & reg_re & !reg_error;
+  assign classa_phase1_cyc_shadowed_we = racl_addr_hit_write[111] & reg_we & !reg_error;
 
   assign classa_phase1_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classa_phase2_cyc_shadowed_re = racl_addr_hit_read[108] & reg_re & !reg_error;
-  assign classa_phase2_cyc_shadowed_we = racl_addr_hit_write[108] & reg_we & !reg_error;
+  assign classa_phase2_cyc_shadowed_re = racl_addr_hit_read[112] & reg_re & !reg_error;
+  assign classa_phase2_cyc_shadowed_we = racl_addr_hit_write[112] & reg_we & !reg_error;
 
   assign classa_phase2_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classa_phase3_cyc_shadowed_re = racl_addr_hit_read[109] & reg_re & !reg_error;
-  assign classa_phase3_cyc_shadowed_we = racl_addr_hit_write[109] & reg_we & !reg_error;
+  assign classa_phase3_cyc_shadowed_re = racl_addr_hit_read[113] & reg_re & !reg_error;
+  assign classa_phase3_cyc_shadowed_we = racl_addr_hit_write[113] & reg_we & !reg_error;
 
   assign classa_phase3_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classa_esc_cnt_re = racl_addr_hit_read[110] & reg_re & !reg_error;
-  assign classa_state_re = racl_addr_hit_read[111] & reg_re & !reg_error;
-  assign classb_regwen_we = racl_addr_hit_write[112] & reg_we & !reg_error;
+  assign classa_esc_cnt_re = racl_addr_hit_read[114] & reg_re & !reg_error;
+  assign classa_state_re = racl_addr_hit_read[115] & reg_re & !reg_error;
+  assign classb_regwen_we = racl_addr_hit_write[116] & reg_we & !reg_error;
 
   assign classb_regwen_wd = reg_wdata[0];
-  assign classb_ctrl_shadowed_re = racl_addr_hit_read[113] & reg_re & !reg_error;
-  assign classb_ctrl_shadowed_we = racl_addr_hit_write[113] & reg_we & !reg_error;
+  assign classb_ctrl_shadowed_re = racl_addr_hit_read[117] & reg_re & !reg_error;
+  assign classb_ctrl_shadowed_we = racl_addr_hit_write[117] & reg_we & !reg_error;
 
   assign classb_ctrl_shadowed_en_wd = reg_wdata[0];
 
@@ -8652,49 +8832,49 @@ module lio_alert_handler_reg_top
   assign classb_ctrl_shadowed_map_e2_wd = reg_wdata[11:10];
 
   assign classb_ctrl_shadowed_map_e3_wd = reg_wdata[13:12];
-  assign classb_clr_regwen_we = racl_addr_hit_write[114] & reg_we & !reg_error;
+  assign classb_clr_regwen_we = racl_addr_hit_write[118] & reg_we & !reg_error;
 
   assign classb_clr_regwen_wd = reg_wdata[0];
-  assign classb_clr_shadowed_re = racl_addr_hit_read[115] & reg_re & !reg_error;
-  assign classb_clr_shadowed_we = racl_addr_hit_write[115] & reg_we & !reg_error;
+  assign classb_clr_shadowed_re = racl_addr_hit_read[119] & reg_re & !reg_error;
+  assign classb_clr_shadowed_we = racl_addr_hit_write[119] & reg_we & !reg_error;
 
   assign classb_clr_shadowed_wd = reg_wdata[0];
-  assign classb_accum_cnt_re = racl_addr_hit_read[116] & reg_re & !reg_error;
-  assign classb_accum_thresh_shadowed_re = racl_addr_hit_read[117] & reg_re & !reg_error;
-  assign classb_accum_thresh_shadowed_we = racl_addr_hit_write[117] & reg_we & !reg_error;
+  assign classb_accum_cnt_re = racl_addr_hit_read[120] & reg_re & !reg_error;
+  assign classb_accum_thresh_shadowed_re = racl_addr_hit_read[121] & reg_re & !reg_error;
+  assign classb_accum_thresh_shadowed_we = racl_addr_hit_write[121] & reg_we & !reg_error;
 
   assign classb_accum_thresh_shadowed_wd = reg_wdata[15:0];
-  assign classb_timeout_cyc_shadowed_re = racl_addr_hit_read[118] & reg_re & !reg_error;
-  assign classb_timeout_cyc_shadowed_we = racl_addr_hit_write[118] & reg_we & !reg_error;
+  assign classb_timeout_cyc_shadowed_re = racl_addr_hit_read[122] & reg_re & !reg_error;
+  assign classb_timeout_cyc_shadowed_we = racl_addr_hit_write[122] & reg_we & !reg_error;
 
   assign classb_timeout_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classb_crashdump_trigger_shadowed_re = racl_addr_hit_read[119] & reg_re & !reg_error;
-  assign classb_crashdump_trigger_shadowed_we = racl_addr_hit_write[119] & reg_we & !reg_error;
+  assign classb_crashdump_trigger_shadowed_re = racl_addr_hit_read[123] & reg_re & !reg_error;
+  assign classb_crashdump_trigger_shadowed_we = racl_addr_hit_write[123] & reg_we & !reg_error;
 
   assign classb_crashdump_trigger_shadowed_wd = reg_wdata[1:0];
-  assign classb_phase0_cyc_shadowed_re = racl_addr_hit_read[120] & reg_re & !reg_error;
-  assign classb_phase0_cyc_shadowed_we = racl_addr_hit_write[120] & reg_we & !reg_error;
+  assign classb_phase0_cyc_shadowed_re = racl_addr_hit_read[124] & reg_re & !reg_error;
+  assign classb_phase0_cyc_shadowed_we = racl_addr_hit_write[124] & reg_we & !reg_error;
 
   assign classb_phase0_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classb_phase1_cyc_shadowed_re = racl_addr_hit_read[121] & reg_re & !reg_error;
-  assign classb_phase1_cyc_shadowed_we = racl_addr_hit_write[121] & reg_we & !reg_error;
+  assign classb_phase1_cyc_shadowed_re = racl_addr_hit_read[125] & reg_re & !reg_error;
+  assign classb_phase1_cyc_shadowed_we = racl_addr_hit_write[125] & reg_we & !reg_error;
 
   assign classb_phase1_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classb_phase2_cyc_shadowed_re = racl_addr_hit_read[122] & reg_re & !reg_error;
-  assign classb_phase2_cyc_shadowed_we = racl_addr_hit_write[122] & reg_we & !reg_error;
+  assign classb_phase2_cyc_shadowed_re = racl_addr_hit_read[126] & reg_re & !reg_error;
+  assign classb_phase2_cyc_shadowed_we = racl_addr_hit_write[126] & reg_we & !reg_error;
 
   assign classb_phase2_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classb_phase3_cyc_shadowed_re = racl_addr_hit_read[123] & reg_re & !reg_error;
-  assign classb_phase3_cyc_shadowed_we = racl_addr_hit_write[123] & reg_we & !reg_error;
+  assign classb_phase3_cyc_shadowed_re = racl_addr_hit_read[127] & reg_re & !reg_error;
+  assign classb_phase3_cyc_shadowed_we = racl_addr_hit_write[127] & reg_we & !reg_error;
 
   assign classb_phase3_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classb_esc_cnt_re = racl_addr_hit_read[124] & reg_re & !reg_error;
-  assign classb_state_re = racl_addr_hit_read[125] & reg_re & !reg_error;
-  assign classc_regwen_we = racl_addr_hit_write[126] & reg_we & !reg_error;
+  assign classb_esc_cnt_re = racl_addr_hit_read[128] & reg_re & !reg_error;
+  assign classb_state_re = racl_addr_hit_read[129] & reg_re & !reg_error;
+  assign classc_regwen_we = racl_addr_hit_write[130] & reg_we & !reg_error;
 
   assign classc_regwen_wd = reg_wdata[0];
-  assign classc_ctrl_shadowed_re = racl_addr_hit_read[127] & reg_re & !reg_error;
-  assign classc_ctrl_shadowed_we = racl_addr_hit_write[127] & reg_we & !reg_error;
+  assign classc_ctrl_shadowed_re = racl_addr_hit_read[131] & reg_re & !reg_error;
+  assign classc_ctrl_shadowed_we = racl_addr_hit_write[131] & reg_we & !reg_error;
 
   assign classc_ctrl_shadowed_en_wd = reg_wdata[0];
 
@@ -8715,49 +8895,49 @@ module lio_alert_handler_reg_top
   assign classc_ctrl_shadowed_map_e2_wd = reg_wdata[11:10];
 
   assign classc_ctrl_shadowed_map_e3_wd = reg_wdata[13:12];
-  assign classc_clr_regwen_we = racl_addr_hit_write[128] & reg_we & !reg_error;
+  assign classc_clr_regwen_we = racl_addr_hit_write[132] & reg_we & !reg_error;
 
   assign classc_clr_regwen_wd = reg_wdata[0];
-  assign classc_clr_shadowed_re = racl_addr_hit_read[129] & reg_re & !reg_error;
-  assign classc_clr_shadowed_we = racl_addr_hit_write[129] & reg_we & !reg_error;
+  assign classc_clr_shadowed_re = racl_addr_hit_read[133] & reg_re & !reg_error;
+  assign classc_clr_shadowed_we = racl_addr_hit_write[133] & reg_we & !reg_error;
 
   assign classc_clr_shadowed_wd = reg_wdata[0];
-  assign classc_accum_cnt_re = racl_addr_hit_read[130] & reg_re & !reg_error;
-  assign classc_accum_thresh_shadowed_re = racl_addr_hit_read[131] & reg_re & !reg_error;
-  assign classc_accum_thresh_shadowed_we = racl_addr_hit_write[131] & reg_we & !reg_error;
+  assign classc_accum_cnt_re = racl_addr_hit_read[134] & reg_re & !reg_error;
+  assign classc_accum_thresh_shadowed_re = racl_addr_hit_read[135] & reg_re & !reg_error;
+  assign classc_accum_thresh_shadowed_we = racl_addr_hit_write[135] & reg_we & !reg_error;
 
   assign classc_accum_thresh_shadowed_wd = reg_wdata[15:0];
-  assign classc_timeout_cyc_shadowed_re = racl_addr_hit_read[132] & reg_re & !reg_error;
-  assign classc_timeout_cyc_shadowed_we = racl_addr_hit_write[132] & reg_we & !reg_error;
+  assign classc_timeout_cyc_shadowed_re = racl_addr_hit_read[136] & reg_re & !reg_error;
+  assign classc_timeout_cyc_shadowed_we = racl_addr_hit_write[136] & reg_we & !reg_error;
 
   assign classc_timeout_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classc_crashdump_trigger_shadowed_re = racl_addr_hit_read[133] & reg_re & !reg_error;
-  assign classc_crashdump_trigger_shadowed_we = racl_addr_hit_write[133] & reg_we & !reg_error;
+  assign classc_crashdump_trigger_shadowed_re = racl_addr_hit_read[137] & reg_re & !reg_error;
+  assign classc_crashdump_trigger_shadowed_we = racl_addr_hit_write[137] & reg_we & !reg_error;
 
   assign classc_crashdump_trigger_shadowed_wd = reg_wdata[1:0];
-  assign classc_phase0_cyc_shadowed_re = racl_addr_hit_read[134] & reg_re & !reg_error;
-  assign classc_phase0_cyc_shadowed_we = racl_addr_hit_write[134] & reg_we & !reg_error;
+  assign classc_phase0_cyc_shadowed_re = racl_addr_hit_read[138] & reg_re & !reg_error;
+  assign classc_phase0_cyc_shadowed_we = racl_addr_hit_write[138] & reg_we & !reg_error;
 
   assign classc_phase0_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classc_phase1_cyc_shadowed_re = racl_addr_hit_read[135] & reg_re & !reg_error;
-  assign classc_phase1_cyc_shadowed_we = racl_addr_hit_write[135] & reg_we & !reg_error;
+  assign classc_phase1_cyc_shadowed_re = racl_addr_hit_read[139] & reg_re & !reg_error;
+  assign classc_phase1_cyc_shadowed_we = racl_addr_hit_write[139] & reg_we & !reg_error;
 
   assign classc_phase1_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classc_phase2_cyc_shadowed_re = racl_addr_hit_read[136] & reg_re & !reg_error;
-  assign classc_phase2_cyc_shadowed_we = racl_addr_hit_write[136] & reg_we & !reg_error;
+  assign classc_phase2_cyc_shadowed_re = racl_addr_hit_read[140] & reg_re & !reg_error;
+  assign classc_phase2_cyc_shadowed_we = racl_addr_hit_write[140] & reg_we & !reg_error;
 
   assign classc_phase2_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classc_phase3_cyc_shadowed_re = racl_addr_hit_read[137] & reg_re & !reg_error;
-  assign classc_phase3_cyc_shadowed_we = racl_addr_hit_write[137] & reg_we & !reg_error;
+  assign classc_phase3_cyc_shadowed_re = racl_addr_hit_read[141] & reg_re & !reg_error;
+  assign classc_phase3_cyc_shadowed_we = racl_addr_hit_write[141] & reg_we & !reg_error;
 
   assign classc_phase3_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classc_esc_cnt_re = racl_addr_hit_read[138] & reg_re & !reg_error;
-  assign classc_state_re = racl_addr_hit_read[139] & reg_re & !reg_error;
-  assign classd_regwen_we = racl_addr_hit_write[140] & reg_we & !reg_error;
+  assign classc_esc_cnt_re = racl_addr_hit_read[142] & reg_re & !reg_error;
+  assign classc_state_re = racl_addr_hit_read[143] & reg_re & !reg_error;
+  assign classd_regwen_we = racl_addr_hit_write[144] & reg_we & !reg_error;
 
   assign classd_regwen_wd = reg_wdata[0];
-  assign classd_ctrl_shadowed_re = racl_addr_hit_read[141] & reg_re & !reg_error;
-  assign classd_ctrl_shadowed_we = racl_addr_hit_write[141] & reg_we & !reg_error;
+  assign classd_ctrl_shadowed_re = racl_addr_hit_read[145] & reg_re & !reg_error;
+  assign classd_ctrl_shadowed_we = racl_addr_hit_write[145] & reg_we & !reg_error;
 
   assign classd_ctrl_shadowed_en_wd = reg_wdata[0];
 
@@ -8778,44 +8958,44 @@ module lio_alert_handler_reg_top
   assign classd_ctrl_shadowed_map_e2_wd = reg_wdata[11:10];
 
   assign classd_ctrl_shadowed_map_e3_wd = reg_wdata[13:12];
-  assign classd_clr_regwen_we = racl_addr_hit_write[142] & reg_we & !reg_error;
+  assign classd_clr_regwen_we = racl_addr_hit_write[146] & reg_we & !reg_error;
 
   assign classd_clr_regwen_wd = reg_wdata[0];
-  assign classd_clr_shadowed_re = racl_addr_hit_read[143] & reg_re & !reg_error;
-  assign classd_clr_shadowed_we = racl_addr_hit_write[143] & reg_we & !reg_error;
+  assign classd_clr_shadowed_re = racl_addr_hit_read[147] & reg_re & !reg_error;
+  assign classd_clr_shadowed_we = racl_addr_hit_write[147] & reg_we & !reg_error;
 
   assign classd_clr_shadowed_wd = reg_wdata[0];
-  assign classd_accum_cnt_re = racl_addr_hit_read[144] & reg_re & !reg_error;
-  assign classd_accum_thresh_shadowed_re = racl_addr_hit_read[145] & reg_re & !reg_error;
-  assign classd_accum_thresh_shadowed_we = racl_addr_hit_write[145] & reg_we & !reg_error;
+  assign classd_accum_cnt_re = racl_addr_hit_read[148] & reg_re & !reg_error;
+  assign classd_accum_thresh_shadowed_re = racl_addr_hit_read[149] & reg_re & !reg_error;
+  assign classd_accum_thresh_shadowed_we = racl_addr_hit_write[149] & reg_we & !reg_error;
 
   assign classd_accum_thresh_shadowed_wd = reg_wdata[15:0];
-  assign classd_timeout_cyc_shadowed_re = racl_addr_hit_read[146] & reg_re & !reg_error;
-  assign classd_timeout_cyc_shadowed_we = racl_addr_hit_write[146] & reg_we & !reg_error;
+  assign classd_timeout_cyc_shadowed_re = racl_addr_hit_read[150] & reg_re & !reg_error;
+  assign classd_timeout_cyc_shadowed_we = racl_addr_hit_write[150] & reg_we & !reg_error;
 
   assign classd_timeout_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classd_crashdump_trigger_shadowed_re = racl_addr_hit_read[147] & reg_re & !reg_error;
-  assign classd_crashdump_trigger_shadowed_we = racl_addr_hit_write[147] & reg_we & !reg_error;
+  assign classd_crashdump_trigger_shadowed_re = racl_addr_hit_read[151] & reg_re & !reg_error;
+  assign classd_crashdump_trigger_shadowed_we = racl_addr_hit_write[151] & reg_we & !reg_error;
 
   assign classd_crashdump_trigger_shadowed_wd = reg_wdata[1:0];
-  assign classd_phase0_cyc_shadowed_re = racl_addr_hit_read[148] & reg_re & !reg_error;
-  assign classd_phase0_cyc_shadowed_we = racl_addr_hit_write[148] & reg_we & !reg_error;
+  assign classd_phase0_cyc_shadowed_re = racl_addr_hit_read[152] & reg_re & !reg_error;
+  assign classd_phase0_cyc_shadowed_we = racl_addr_hit_write[152] & reg_we & !reg_error;
 
   assign classd_phase0_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classd_phase1_cyc_shadowed_re = racl_addr_hit_read[149] & reg_re & !reg_error;
-  assign classd_phase1_cyc_shadowed_we = racl_addr_hit_write[149] & reg_we & !reg_error;
+  assign classd_phase1_cyc_shadowed_re = racl_addr_hit_read[153] & reg_re & !reg_error;
+  assign classd_phase1_cyc_shadowed_we = racl_addr_hit_write[153] & reg_we & !reg_error;
 
   assign classd_phase1_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classd_phase2_cyc_shadowed_re = racl_addr_hit_read[150] & reg_re & !reg_error;
-  assign classd_phase2_cyc_shadowed_we = racl_addr_hit_write[150] & reg_we & !reg_error;
+  assign classd_phase2_cyc_shadowed_re = racl_addr_hit_read[154] & reg_re & !reg_error;
+  assign classd_phase2_cyc_shadowed_we = racl_addr_hit_write[154] & reg_we & !reg_error;
 
   assign classd_phase2_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classd_phase3_cyc_shadowed_re = racl_addr_hit_read[151] & reg_re & !reg_error;
-  assign classd_phase3_cyc_shadowed_we = racl_addr_hit_write[151] & reg_we & !reg_error;
+  assign classd_phase3_cyc_shadowed_re = racl_addr_hit_read[155] & reg_re & !reg_error;
+  assign classd_phase3_cyc_shadowed_we = racl_addr_hit_write[155] & reg_we & !reg_error;
 
   assign classd_phase3_cyc_shadowed_wd = reg_wdata[31:0];
-  assign classd_esc_cnt_re = racl_addr_hit_read[152] & reg_re & !reg_error;
-  assign classd_state_re = racl_addr_hit_read[153] & reg_re & !reg_error;
+  assign classd_esc_cnt_re = racl_addr_hit_read[156] & reg_re & !reg_error;
+  assign classd_state_re = racl_addr_hit_read[157] & reg_re & !reg_error;
 
   // Assign write-enables to checker logic vector.
   always_comb begin
@@ -8842,138 +9022,142 @@ module lio_alert_handler_reg_top
     reg_we_check[19] = alert_regwen_13_we;
     reg_we_check[20] = alert_regwen_14_we;
     reg_we_check[21] = alert_regwen_15_we;
-    reg_we_check[22] = alert_en_shadowed_0_gated_we;
-    reg_we_check[23] = alert_en_shadowed_1_gated_we;
-    reg_we_check[24] = alert_en_shadowed_2_gated_we;
-    reg_we_check[25] = alert_en_shadowed_3_gated_we;
-    reg_we_check[26] = alert_en_shadowed_4_gated_we;
-    reg_we_check[27] = alert_en_shadowed_5_gated_we;
-    reg_we_check[28] = alert_en_shadowed_6_gated_we;
-    reg_we_check[29] = alert_en_shadowed_7_gated_we;
-    reg_we_check[30] = alert_en_shadowed_8_gated_we;
-    reg_we_check[31] = alert_en_shadowed_9_gated_we;
-    reg_we_check[32] = alert_en_shadowed_10_gated_we;
-    reg_we_check[33] = alert_en_shadowed_11_gated_we;
-    reg_we_check[34] = alert_en_shadowed_12_gated_we;
-    reg_we_check[35] = alert_en_shadowed_13_gated_we;
-    reg_we_check[36] = alert_en_shadowed_14_gated_we;
-    reg_we_check[37] = alert_en_shadowed_15_gated_we;
-    reg_we_check[38] = alert_class_shadowed_0_gated_we;
-    reg_we_check[39] = alert_class_shadowed_1_gated_we;
-    reg_we_check[40] = alert_class_shadowed_2_gated_we;
-    reg_we_check[41] = alert_class_shadowed_3_gated_we;
-    reg_we_check[42] = alert_class_shadowed_4_gated_we;
-    reg_we_check[43] = alert_class_shadowed_5_gated_we;
-    reg_we_check[44] = alert_class_shadowed_6_gated_we;
-    reg_we_check[45] = alert_class_shadowed_7_gated_we;
-    reg_we_check[46] = alert_class_shadowed_8_gated_we;
-    reg_we_check[47] = alert_class_shadowed_9_gated_we;
-    reg_we_check[48] = alert_class_shadowed_10_gated_we;
-    reg_we_check[49] = alert_class_shadowed_11_gated_we;
-    reg_we_check[50] = alert_class_shadowed_12_gated_we;
-    reg_we_check[51] = alert_class_shadowed_13_gated_we;
-    reg_we_check[52] = alert_class_shadowed_14_gated_we;
-    reg_we_check[53] = alert_class_shadowed_15_gated_we;
-    reg_we_check[54] = alert_cause_0_we;
-    reg_we_check[55] = alert_cause_1_we;
-    reg_we_check[56] = alert_cause_2_we;
-    reg_we_check[57] = alert_cause_3_we;
-    reg_we_check[58] = alert_cause_4_we;
-    reg_we_check[59] = alert_cause_5_we;
-    reg_we_check[60] = alert_cause_6_we;
-    reg_we_check[61] = alert_cause_7_we;
-    reg_we_check[62] = alert_cause_8_we;
-    reg_we_check[63] = alert_cause_9_we;
-    reg_we_check[64] = alert_cause_10_we;
-    reg_we_check[65] = alert_cause_11_we;
-    reg_we_check[66] = alert_cause_12_we;
-    reg_we_check[67] = alert_cause_13_we;
-    reg_we_check[68] = alert_cause_14_we;
-    reg_we_check[69] = alert_cause_15_we;
-    reg_we_check[70] = loc_alert_regwen_0_we;
-    reg_we_check[71] = loc_alert_regwen_1_we;
-    reg_we_check[72] = loc_alert_regwen_2_we;
-    reg_we_check[73] = loc_alert_regwen_3_we;
-    reg_we_check[74] = loc_alert_regwen_4_we;
-    reg_we_check[75] = loc_alert_regwen_5_we;
-    reg_we_check[76] = loc_alert_regwen_6_we;
-    reg_we_check[77] = loc_alert_en_shadowed_0_gated_we;
-    reg_we_check[78] = loc_alert_en_shadowed_1_gated_we;
-    reg_we_check[79] = loc_alert_en_shadowed_2_gated_we;
-    reg_we_check[80] = loc_alert_en_shadowed_3_gated_we;
-    reg_we_check[81] = loc_alert_en_shadowed_4_gated_we;
-    reg_we_check[82] = loc_alert_en_shadowed_5_gated_we;
-    reg_we_check[83] = loc_alert_en_shadowed_6_gated_we;
-    reg_we_check[84] = loc_alert_class_shadowed_0_gated_we;
-    reg_we_check[85] = loc_alert_class_shadowed_1_gated_we;
-    reg_we_check[86] = loc_alert_class_shadowed_2_gated_we;
-    reg_we_check[87] = loc_alert_class_shadowed_3_gated_we;
-    reg_we_check[88] = loc_alert_class_shadowed_4_gated_we;
-    reg_we_check[89] = loc_alert_class_shadowed_5_gated_we;
-    reg_we_check[90] = loc_alert_class_shadowed_6_gated_we;
-    reg_we_check[91] = loc_alert_cause_0_we;
-    reg_we_check[92] = loc_alert_cause_1_we;
-    reg_we_check[93] = loc_alert_cause_2_we;
-    reg_we_check[94] = loc_alert_cause_3_we;
-    reg_we_check[95] = loc_alert_cause_4_we;
-    reg_we_check[96] = loc_alert_cause_5_we;
-    reg_we_check[97] = loc_alert_cause_6_we;
-    reg_we_check[98] = classa_regwen_we;
-    reg_we_check[99] = classa_ctrl_shadowed_gated_we;
-    reg_we_check[100] = classa_clr_regwen_we;
-    reg_we_check[101] = classa_clr_shadowed_gated_we;
-    reg_we_check[102] = 1'b0;
-    reg_we_check[103] = classa_accum_thresh_shadowed_gated_we;
-    reg_we_check[104] = classa_timeout_cyc_shadowed_gated_we;
-    reg_we_check[105] = classa_crashdump_trigger_shadowed_gated_we;
-    reg_we_check[106] = classa_phase0_cyc_shadowed_gated_we;
-    reg_we_check[107] = classa_phase1_cyc_shadowed_gated_we;
-    reg_we_check[108] = classa_phase2_cyc_shadowed_gated_we;
-    reg_we_check[109] = classa_phase3_cyc_shadowed_gated_we;
-    reg_we_check[110] = 1'b0;
-    reg_we_check[111] = 1'b0;
-    reg_we_check[112] = classb_regwen_we;
-    reg_we_check[113] = classb_ctrl_shadowed_gated_we;
-    reg_we_check[114] = classb_clr_regwen_we;
-    reg_we_check[115] = classb_clr_shadowed_gated_we;
-    reg_we_check[116] = 1'b0;
-    reg_we_check[117] = classb_accum_thresh_shadowed_gated_we;
-    reg_we_check[118] = classb_timeout_cyc_shadowed_gated_we;
-    reg_we_check[119] = classb_crashdump_trigger_shadowed_gated_we;
-    reg_we_check[120] = classb_phase0_cyc_shadowed_gated_we;
-    reg_we_check[121] = classb_phase1_cyc_shadowed_gated_we;
-    reg_we_check[122] = classb_phase2_cyc_shadowed_gated_we;
-    reg_we_check[123] = classb_phase3_cyc_shadowed_gated_we;
-    reg_we_check[124] = 1'b0;
-    reg_we_check[125] = 1'b0;
-    reg_we_check[126] = classc_regwen_we;
-    reg_we_check[127] = classc_ctrl_shadowed_gated_we;
-    reg_we_check[128] = classc_clr_regwen_we;
-    reg_we_check[129] = classc_clr_shadowed_gated_we;
-    reg_we_check[130] = 1'b0;
-    reg_we_check[131] = classc_accum_thresh_shadowed_gated_we;
-    reg_we_check[132] = classc_timeout_cyc_shadowed_gated_we;
-    reg_we_check[133] = classc_crashdump_trigger_shadowed_gated_we;
-    reg_we_check[134] = classc_phase0_cyc_shadowed_gated_we;
-    reg_we_check[135] = classc_phase1_cyc_shadowed_gated_we;
-    reg_we_check[136] = classc_phase2_cyc_shadowed_gated_we;
-    reg_we_check[137] = classc_phase3_cyc_shadowed_gated_we;
-    reg_we_check[138] = 1'b0;
-    reg_we_check[139] = 1'b0;
-    reg_we_check[140] = classd_regwen_we;
-    reg_we_check[141] = classd_ctrl_shadowed_gated_we;
-    reg_we_check[142] = classd_clr_regwen_we;
-    reg_we_check[143] = classd_clr_shadowed_gated_we;
-    reg_we_check[144] = 1'b0;
-    reg_we_check[145] = classd_accum_thresh_shadowed_gated_we;
-    reg_we_check[146] = classd_timeout_cyc_shadowed_gated_we;
-    reg_we_check[147] = classd_crashdump_trigger_shadowed_gated_we;
-    reg_we_check[148] = classd_phase0_cyc_shadowed_gated_we;
-    reg_we_check[149] = classd_phase1_cyc_shadowed_gated_we;
-    reg_we_check[150] = classd_phase2_cyc_shadowed_gated_we;
-    reg_we_check[151] = classd_phase3_cyc_shadowed_gated_we;
-    reg_we_check[152] = 1'b0;
-    reg_we_check[153] = 1'b0;
+    reg_we_check[22] = alert_regwen_16_we;
+    reg_we_check[23] = alert_en_shadowed_0_gated_we;
+    reg_we_check[24] = alert_en_shadowed_1_gated_we;
+    reg_we_check[25] = alert_en_shadowed_2_gated_we;
+    reg_we_check[26] = alert_en_shadowed_3_gated_we;
+    reg_we_check[27] = alert_en_shadowed_4_gated_we;
+    reg_we_check[28] = alert_en_shadowed_5_gated_we;
+    reg_we_check[29] = alert_en_shadowed_6_gated_we;
+    reg_we_check[30] = alert_en_shadowed_7_gated_we;
+    reg_we_check[31] = alert_en_shadowed_8_gated_we;
+    reg_we_check[32] = alert_en_shadowed_9_gated_we;
+    reg_we_check[33] = alert_en_shadowed_10_gated_we;
+    reg_we_check[34] = alert_en_shadowed_11_gated_we;
+    reg_we_check[35] = alert_en_shadowed_12_gated_we;
+    reg_we_check[36] = alert_en_shadowed_13_gated_we;
+    reg_we_check[37] = alert_en_shadowed_14_gated_we;
+    reg_we_check[38] = alert_en_shadowed_15_gated_we;
+    reg_we_check[39] = alert_en_shadowed_16_gated_we;
+    reg_we_check[40] = alert_class_shadowed_0_gated_we;
+    reg_we_check[41] = alert_class_shadowed_1_gated_we;
+    reg_we_check[42] = alert_class_shadowed_2_gated_we;
+    reg_we_check[43] = alert_class_shadowed_3_gated_we;
+    reg_we_check[44] = alert_class_shadowed_4_gated_we;
+    reg_we_check[45] = alert_class_shadowed_5_gated_we;
+    reg_we_check[46] = alert_class_shadowed_6_gated_we;
+    reg_we_check[47] = alert_class_shadowed_7_gated_we;
+    reg_we_check[48] = alert_class_shadowed_8_gated_we;
+    reg_we_check[49] = alert_class_shadowed_9_gated_we;
+    reg_we_check[50] = alert_class_shadowed_10_gated_we;
+    reg_we_check[51] = alert_class_shadowed_11_gated_we;
+    reg_we_check[52] = alert_class_shadowed_12_gated_we;
+    reg_we_check[53] = alert_class_shadowed_13_gated_we;
+    reg_we_check[54] = alert_class_shadowed_14_gated_we;
+    reg_we_check[55] = alert_class_shadowed_15_gated_we;
+    reg_we_check[56] = alert_class_shadowed_16_gated_we;
+    reg_we_check[57] = alert_cause_0_we;
+    reg_we_check[58] = alert_cause_1_we;
+    reg_we_check[59] = alert_cause_2_we;
+    reg_we_check[60] = alert_cause_3_we;
+    reg_we_check[61] = alert_cause_4_we;
+    reg_we_check[62] = alert_cause_5_we;
+    reg_we_check[63] = alert_cause_6_we;
+    reg_we_check[64] = alert_cause_7_we;
+    reg_we_check[65] = alert_cause_8_we;
+    reg_we_check[66] = alert_cause_9_we;
+    reg_we_check[67] = alert_cause_10_we;
+    reg_we_check[68] = alert_cause_11_we;
+    reg_we_check[69] = alert_cause_12_we;
+    reg_we_check[70] = alert_cause_13_we;
+    reg_we_check[71] = alert_cause_14_we;
+    reg_we_check[72] = alert_cause_15_we;
+    reg_we_check[73] = alert_cause_16_we;
+    reg_we_check[74] = loc_alert_regwen_0_we;
+    reg_we_check[75] = loc_alert_regwen_1_we;
+    reg_we_check[76] = loc_alert_regwen_2_we;
+    reg_we_check[77] = loc_alert_regwen_3_we;
+    reg_we_check[78] = loc_alert_regwen_4_we;
+    reg_we_check[79] = loc_alert_regwen_5_we;
+    reg_we_check[80] = loc_alert_regwen_6_we;
+    reg_we_check[81] = loc_alert_en_shadowed_0_gated_we;
+    reg_we_check[82] = loc_alert_en_shadowed_1_gated_we;
+    reg_we_check[83] = loc_alert_en_shadowed_2_gated_we;
+    reg_we_check[84] = loc_alert_en_shadowed_3_gated_we;
+    reg_we_check[85] = loc_alert_en_shadowed_4_gated_we;
+    reg_we_check[86] = loc_alert_en_shadowed_5_gated_we;
+    reg_we_check[87] = loc_alert_en_shadowed_6_gated_we;
+    reg_we_check[88] = loc_alert_class_shadowed_0_gated_we;
+    reg_we_check[89] = loc_alert_class_shadowed_1_gated_we;
+    reg_we_check[90] = loc_alert_class_shadowed_2_gated_we;
+    reg_we_check[91] = loc_alert_class_shadowed_3_gated_we;
+    reg_we_check[92] = loc_alert_class_shadowed_4_gated_we;
+    reg_we_check[93] = loc_alert_class_shadowed_5_gated_we;
+    reg_we_check[94] = loc_alert_class_shadowed_6_gated_we;
+    reg_we_check[95] = loc_alert_cause_0_we;
+    reg_we_check[96] = loc_alert_cause_1_we;
+    reg_we_check[97] = loc_alert_cause_2_we;
+    reg_we_check[98] = loc_alert_cause_3_we;
+    reg_we_check[99] = loc_alert_cause_4_we;
+    reg_we_check[100] = loc_alert_cause_5_we;
+    reg_we_check[101] = loc_alert_cause_6_we;
+    reg_we_check[102] = classa_regwen_we;
+    reg_we_check[103] = classa_ctrl_shadowed_gated_we;
+    reg_we_check[104] = classa_clr_regwen_we;
+    reg_we_check[105] = classa_clr_shadowed_gated_we;
+    reg_we_check[106] = 1'b0;
+    reg_we_check[107] = classa_accum_thresh_shadowed_gated_we;
+    reg_we_check[108] = classa_timeout_cyc_shadowed_gated_we;
+    reg_we_check[109] = classa_crashdump_trigger_shadowed_gated_we;
+    reg_we_check[110] = classa_phase0_cyc_shadowed_gated_we;
+    reg_we_check[111] = classa_phase1_cyc_shadowed_gated_we;
+    reg_we_check[112] = classa_phase2_cyc_shadowed_gated_we;
+    reg_we_check[113] = classa_phase3_cyc_shadowed_gated_we;
+    reg_we_check[114] = 1'b0;
+    reg_we_check[115] = 1'b0;
+    reg_we_check[116] = classb_regwen_we;
+    reg_we_check[117] = classb_ctrl_shadowed_gated_we;
+    reg_we_check[118] = classb_clr_regwen_we;
+    reg_we_check[119] = classb_clr_shadowed_gated_we;
+    reg_we_check[120] = 1'b0;
+    reg_we_check[121] = classb_accum_thresh_shadowed_gated_we;
+    reg_we_check[122] = classb_timeout_cyc_shadowed_gated_we;
+    reg_we_check[123] = classb_crashdump_trigger_shadowed_gated_we;
+    reg_we_check[124] = classb_phase0_cyc_shadowed_gated_we;
+    reg_we_check[125] = classb_phase1_cyc_shadowed_gated_we;
+    reg_we_check[126] = classb_phase2_cyc_shadowed_gated_we;
+    reg_we_check[127] = classb_phase3_cyc_shadowed_gated_we;
+    reg_we_check[128] = 1'b0;
+    reg_we_check[129] = 1'b0;
+    reg_we_check[130] = classc_regwen_we;
+    reg_we_check[131] = classc_ctrl_shadowed_gated_we;
+    reg_we_check[132] = classc_clr_regwen_we;
+    reg_we_check[133] = classc_clr_shadowed_gated_we;
+    reg_we_check[134] = 1'b0;
+    reg_we_check[135] = classc_accum_thresh_shadowed_gated_we;
+    reg_we_check[136] = classc_timeout_cyc_shadowed_gated_we;
+    reg_we_check[137] = classc_crashdump_trigger_shadowed_gated_we;
+    reg_we_check[138] = classc_phase0_cyc_shadowed_gated_we;
+    reg_we_check[139] = classc_phase1_cyc_shadowed_gated_we;
+    reg_we_check[140] = classc_phase2_cyc_shadowed_gated_we;
+    reg_we_check[141] = classc_phase3_cyc_shadowed_gated_we;
+    reg_we_check[142] = 1'b0;
+    reg_we_check[143] = 1'b0;
+    reg_we_check[144] = classd_regwen_we;
+    reg_we_check[145] = classd_ctrl_shadowed_gated_we;
+    reg_we_check[146] = classd_clr_regwen_we;
+    reg_we_check[147] = classd_clr_shadowed_gated_we;
+    reg_we_check[148] = 1'b0;
+    reg_we_check[149] = classd_accum_thresh_shadowed_gated_we;
+    reg_we_check[150] = classd_timeout_cyc_shadowed_gated_we;
+    reg_we_check[151] = classd_crashdump_trigger_shadowed_gated_we;
+    reg_we_check[152] = classd_phase0_cyc_shadowed_gated_we;
+    reg_we_check[153] = classd_phase1_cyc_shadowed_gated_we;
+    reg_we_check[154] = classd_phase2_cyc_shadowed_gated_we;
+    reg_we_check[155] = classd_phase3_cyc_shadowed_gated_we;
+    reg_we_check[156] = 1'b0;
+    reg_we_check[157] = 1'b0;
   end
 
   // Read data return
@@ -9078,314 +9262,330 @@ module lio_alert_handler_reg_top
       end
 
       racl_addr_hit_read[22]: begin
-        reg_rdata_next[0] = alert_en_shadowed_0_qs;
+        reg_rdata_next[0] = alert_regwen_16_qs;
       end
 
       racl_addr_hit_read[23]: begin
-        reg_rdata_next[0] = alert_en_shadowed_1_qs;
+        reg_rdata_next[0] = alert_en_shadowed_0_qs;
       end
 
       racl_addr_hit_read[24]: begin
-        reg_rdata_next[0] = alert_en_shadowed_2_qs;
+        reg_rdata_next[0] = alert_en_shadowed_1_qs;
       end
 
       racl_addr_hit_read[25]: begin
-        reg_rdata_next[0] = alert_en_shadowed_3_qs;
+        reg_rdata_next[0] = alert_en_shadowed_2_qs;
       end
 
       racl_addr_hit_read[26]: begin
-        reg_rdata_next[0] = alert_en_shadowed_4_qs;
+        reg_rdata_next[0] = alert_en_shadowed_3_qs;
       end
 
       racl_addr_hit_read[27]: begin
-        reg_rdata_next[0] = alert_en_shadowed_5_qs;
+        reg_rdata_next[0] = alert_en_shadowed_4_qs;
       end
 
       racl_addr_hit_read[28]: begin
-        reg_rdata_next[0] = alert_en_shadowed_6_qs;
+        reg_rdata_next[0] = alert_en_shadowed_5_qs;
       end
 
       racl_addr_hit_read[29]: begin
-        reg_rdata_next[0] = alert_en_shadowed_7_qs;
+        reg_rdata_next[0] = alert_en_shadowed_6_qs;
       end
 
       racl_addr_hit_read[30]: begin
-        reg_rdata_next[0] = alert_en_shadowed_8_qs;
+        reg_rdata_next[0] = alert_en_shadowed_7_qs;
       end
 
       racl_addr_hit_read[31]: begin
-        reg_rdata_next[0] = alert_en_shadowed_9_qs;
+        reg_rdata_next[0] = alert_en_shadowed_8_qs;
       end
 
       racl_addr_hit_read[32]: begin
-        reg_rdata_next[0] = alert_en_shadowed_10_qs;
+        reg_rdata_next[0] = alert_en_shadowed_9_qs;
       end
 
       racl_addr_hit_read[33]: begin
-        reg_rdata_next[0] = alert_en_shadowed_11_qs;
+        reg_rdata_next[0] = alert_en_shadowed_10_qs;
       end
 
       racl_addr_hit_read[34]: begin
-        reg_rdata_next[0] = alert_en_shadowed_12_qs;
+        reg_rdata_next[0] = alert_en_shadowed_11_qs;
       end
 
       racl_addr_hit_read[35]: begin
-        reg_rdata_next[0] = alert_en_shadowed_13_qs;
+        reg_rdata_next[0] = alert_en_shadowed_12_qs;
       end
 
       racl_addr_hit_read[36]: begin
-        reg_rdata_next[0] = alert_en_shadowed_14_qs;
+        reg_rdata_next[0] = alert_en_shadowed_13_qs;
       end
 
       racl_addr_hit_read[37]: begin
-        reg_rdata_next[0] = alert_en_shadowed_15_qs;
+        reg_rdata_next[0] = alert_en_shadowed_14_qs;
       end
 
       racl_addr_hit_read[38]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_0_qs;
+        reg_rdata_next[0] = alert_en_shadowed_15_qs;
       end
 
       racl_addr_hit_read[39]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_1_qs;
+        reg_rdata_next[0] = alert_en_shadowed_16_qs;
       end
 
       racl_addr_hit_read[40]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_2_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_0_qs;
       end
 
       racl_addr_hit_read[41]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_3_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_1_qs;
       end
 
       racl_addr_hit_read[42]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_4_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_2_qs;
       end
 
       racl_addr_hit_read[43]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_5_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_3_qs;
       end
 
       racl_addr_hit_read[44]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_6_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_4_qs;
       end
 
       racl_addr_hit_read[45]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_7_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_5_qs;
       end
 
       racl_addr_hit_read[46]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_8_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_6_qs;
       end
 
       racl_addr_hit_read[47]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_9_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_7_qs;
       end
 
       racl_addr_hit_read[48]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_10_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_8_qs;
       end
 
       racl_addr_hit_read[49]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_11_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_9_qs;
       end
 
       racl_addr_hit_read[50]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_12_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_10_qs;
       end
 
       racl_addr_hit_read[51]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_13_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_11_qs;
       end
 
       racl_addr_hit_read[52]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_14_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_12_qs;
       end
 
       racl_addr_hit_read[53]: begin
-        reg_rdata_next[1:0] = alert_class_shadowed_15_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_13_qs;
       end
 
       racl_addr_hit_read[54]: begin
-        reg_rdata_next[0] = alert_cause_0_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_14_qs;
       end
 
       racl_addr_hit_read[55]: begin
-        reg_rdata_next[0] = alert_cause_1_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_15_qs;
       end
 
       racl_addr_hit_read[56]: begin
-        reg_rdata_next[0] = alert_cause_2_qs;
+        reg_rdata_next[1:0] = alert_class_shadowed_16_qs;
       end
 
       racl_addr_hit_read[57]: begin
-        reg_rdata_next[0] = alert_cause_3_qs;
+        reg_rdata_next[0] = alert_cause_0_qs;
       end
 
       racl_addr_hit_read[58]: begin
-        reg_rdata_next[0] = alert_cause_4_qs;
+        reg_rdata_next[0] = alert_cause_1_qs;
       end
 
       racl_addr_hit_read[59]: begin
-        reg_rdata_next[0] = alert_cause_5_qs;
+        reg_rdata_next[0] = alert_cause_2_qs;
       end
 
       racl_addr_hit_read[60]: begin
-        reg_rdata_next[0] = alert_cause_6_qs;
+        reg_rdata_next[0] = alert_cause_3_qs;
       end
 
       racl_addr_hit_read[61]: begin
-        reg_rdata_next[0] = alert_cause_7_qs;
+        reg_rdata_next[0] = alert_cause_4_qs;
       end
 
       racl_addr_hit_read[62]: begin
-        reg_rdata_next[0] = alert_cause_8_qs;
+        reg_rdata_next[0] = alert_cause_5_qs;
       end
 
       racl_addr_hit_read[63]: begin
-        reg_rdata_next[0] = alert_cause_9_qs;
+        reg_rdata_next[0] = alert_cause_6_qs;
       end
 
       racl_addr_hit_read[64]: begin
-        reg_rdata_next[0] = alert_cause_10_qs;
+        reg_rdata_next[0] = alert_cause_7_qs;
       end
 
       racl_addr_hit_read[65]: begin
-        reg_rdata_next[0] = alert_cause_11_qs;
+        reg_rdata_next[0] = alert_cause_8_qs;
       end
 
       racl_addr_hit_read[66]: begin
-        reg_rdata_next[0] = alert_cause_12_qs;
+        reg_rdata_next[0] = alert_cause_9_qs;
       end
 
       racl_addr_hit_read[67]: begin
-        reg_rdata_next[0] = alert_cause_13_qs;
+        reg_rdata_next[0] = alert_cause_10_qs;
       end
 
       racl_addr_hit_read[68]: begin
-        reg_rdata_next[0] = alert_cause_14_qs;
+        reg_rdata_next[0] = alert_cause_11_qs;
       end
 
       racl_addr_hit_read[69]: begin
-        reg_rdata_next[0] = alert_cause_15_qs;
+        reg_rdata_next[0] = alert_cause_12_qs;
       end
 
       racl_addr_hit_read[70]: begin
-        reg_rdata_next[0] = loc_alert_regwen_0_qs;
+        reg_rdata_next[0] = alert_cause_13_qs;
       end
 
       racl_addr_hit_read[71]: begin
-        reg_rdata_next[0] = loc_alert_regwen_1_qs;
+        reg_rdata_next[0] = alert_cause_14_qs;
       end
 
       racl_addr_hit_read[72]: begin
-        reg_rdata_next[0] = loc_alert_regwen_2_qs;
+        reg_rdata_next[0] = alert_cause_15_qs;
       end
 
       racl_addr_hit_read[73]: begin
-        reg_rdata_next[0] = loc_alert_regwen_3_qs;
+        reg_rdata_next[0] = alert_cause_16_qs;
       end
 
       racl_addr_hit_read[74]: begin
-        reg_rdata_next[0] = loc_alert_regwen_4_qs;
+        reg_rdata_next[0] = loc_alert_regwen_0_qs;
       end
 
       racl_addr_hit_read[75]: begin
-        reg_rdata_next[0] = loc_alert_regwen_5_qs;
+        reg_rdata_next[0] = loc_alert_regwen_1_qs;
       end
 
       racl_addr_hit_read[76]: begin
-        reg_rdata_next[0] = loc_alert_regwen_6_qs;
+        reg_rdata_next[0] = loc_alert_regwen_2_qs;
       end
 
       racl_addr_hit_read[77]: begin
-        reg_rdata_next[0] = loc_alert_en_shadowed_0_qs;
+        reg_rdata_next[0] = loc_alert_regwen_3_qs;
       end
 
       racl_addr_hit_read[78]: begin
-        reg_rdata_next[0] = loc_alert_en_shadowed_1_qs;
+        reg_rdata_next[0] = loc_alert_regwen_4_qs;
       end
 
       racl_addr_hit_read[79]: begin
-        reg_rdata_next[0] = loc_alert_en_shadowed_2_qs;
+        reg_rdata_next[0] = loc_alert_regwen_5_qs;
       end
 
       racl_addr_hit_read[80]: begin
-        reg_rdata_next[0] = loc_alert_en_shadowed_3_qs;
+        reg_rdata_next[0] = loc_alert_regwen_6_qs;
       end
 
       racl_addr_hit_read[81]: begin
-        reg_rdata_next[0] = loc_alert_en_shadowed_4_qs;
+        reg_rdata_next[0] = loc_alert_en_shadowed_0_qs;
       end
 
       racl_addr_hit_read[82]: begin
-        reg_rdata_next[0] = loc_alert_en_shadowed_5_qs;
+        reg_rdata_next[0] = loc_alert_en_shadowed_1_qs;
       end
 
       racl_addr_hit_read[83]: begin
-        reg_rdata_next[0] = loc_alert_en_shadowed_6_qs;
+        reg_rdata_next[0] = loc_alert_en_shadowed_2_qs;
       end
 
       racl_addr_hit_read[84]: begin
-        reg_rdata_next[1:0] = loc_alert_class_shadowed_0_qs;
+        reg_rdata_next[0] = loc_alert_en_shadowed_3_qs;
       end
 
       racl_addr_hit_read[85]: begin
-        reg_rdata_next[1:0] = loc_alert_class_shadowed_1_qs;
+        reg_rdata_next[0] = loc_alert_en_shadowed_4_qs;
       end
 
       racl_addr_hit_read[86]: begin
-        reg_rdata_next[1:0] = loc_alert_class_shadowed_2_qs;
+        reg_rdata_next[0] = loc_alert_en_shadowed_5_qs;
       end
 
       racl_addr_hit_read[87]: begin
-        reg_rdata_next[1:0] = loc_alert_class_shadowed_3_qs;
+        reg_rdata_next[0] = loc_alert_en_shadowed_6_qs;
       end
 
       racl_addr_hit_read[88]: begin
-        reg_rdata_next[1:0] = loc_alert_class_shadowed_4_qs;
+        reg_rdata_next[1:0] = loc_alert_class_shadowed_0_qs;
       end
 
       racl_addr_hit_read[89]: begin
-        reg_rdata_next[1:0] = loc_alert_class_shadowed_5_qs;
+        reg_rdata_next[1:0] = loc_alert_class_shadowed_1_qs;
       end
 
       racl_addr_hit_read[90]: begin
-        reg_rdata_next[1:0] = loc_alert_class_shadowed_6_qs;
+        reg_rdata_next[1:0] = loc_alert_class_shadowed_2_qs;
       end
 
       racl_addr_hit_read[91]: begin
-        reg_rdata_next[0] = loc_alert_cause_0_qs;
+        reg_rdata_next[1:0] = loc_alert_class_shadowed_3_qs;
       end
 
       racl_addr_hit_read[92]: begin
-        reg_rdata_next[0] = loc_alert_cause_1_qs;
+        reg_rdata_next[1:0] = loc_alert_class_shadowed_4_qs;
       end
 
       racl_addr_hit_read[93]: begin
-        reg_rdata_next[0] = loc_alert_cause_2_qs;
+        reg_rdata_next[1:0] = loc_alert_class_shadowed_5_qs;
       end
 
       racl_addr_hit_read[94]: begin
-        reg_rdata_next[0] = loc_alert_cause_3_qs;
+        reg_rdata_next[1:0] = loc_alert_class_shadowed_6_qs;
       end
 
       racl_addr_hit_read[95]: begin
-        reg_rdata_next[0] = loc_alert_cause_4_qs;
+        reg_rdata_next[0] = loc_alert_cause_0_qs;
       end
 
       racl_addr_hit_read[96]: begin
-        reg_rdata_next[0] = loc_alert_cause_5_qs;
+        reg_rdata_next[0] = loc_alert_cause_1_qs;
       end
 
       racl_addr_hit_read[97]: begin
-        reg_rdata_next[0] = loc_alert_cause_6_qs;
+        reg_rdata_next[0] = loc_alert_cause_2_qs;
       end
 
       racl_addr_hit_read[98]: begin
-        reg_rdata_next[0] = classa_regwen_qs;
+        reg_rdata_next[0] = loc_alert_cause_3_qs;
       end
 
       racl_addr_hit_read[99]: begin
+        reg_rdata_next[0] = loc_alert_cause_4_qs;
+      end
+
+      racl_addr_hit_read[100]: begin
+        reg_rdata_next[0] = loc_alert_cause_5_qs;
+      end
+
+      racl_addr_hit_read[101]: begin
+        reg_rdata_next[0] = loc_alert_cause_6_qs;
+      end
+
+      racl_addr_hit_read[102]: begin
+        reg_rdata_next[0] = classa_regwen_qs;
+      end
+
+      racl_addr_hit_read[103]: begin
         reg_rdata_next[0] = classa_ctrl_shadowed_en_qs;
         reg_rdata_next[1] = classa_ctrl_shadowed_lock_qs;
         reg_rdata_next[2] = classa_ctrl_shadowed_en_e0_qs;
@@ -9398,59 +9598,59 @@ module lio_alert_handler_reg_top
         reg_rdata_next[13:12] = classa_ctrl_shadowed_map_e3_qs;
       end
 
-      racl_addr_hit_read[100]: begin
+      racl_addr_hit_read[104]: begin
         reg_rdata_next[0] = classa_clr_regwen_qs;
       end
 
-      racl_addr_hit_read[101]: begin
+      racl_addr_hit_read[105]: begin
         reg_rdata_next[0] = classa_clr_shadowed_qs;
       end
 
-      racl_addr_hit_read[102]: begin
+      racl_addr_hit_read[106]: begin
         reg_rdata_next[15:0] = classa_accum_cnt_qs;
       end
 
-      racl_addr_hit_read[103]: begin
+      racl_addr_hit_read[107]: begin
         reg_rdata_next[15:0] = classa_accum_thresh_shadowed_qs;
       end
 
-      racl_addr_hit_read[104]: begin
+      racl_addr_hit_read[108]: begin
         reg_rdata_next[31:0] = classa_timeout_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[105]: begin
+      racl_addr_hit_read[109]: begin
         reg_rdata_next[1:0] = classa_crashdump_trigger_shadowed_qs;
       end
 
-      racl_addr_hit_read[106]: begin
+      racl_addr_hit_read[110]: begin
         reg_rdata_next[31:0] = classa_phase0_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[107]: begin
+      racl_addr_hit_read[111]: begin
         reg_rdata_next[31:0] = classa_phase1_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[108]: begin
+      racl_addr_hit_read[112]: begin
         reg_rdata_next[31:0] = classa_phase2_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[109]: begin
+      racl_addr_hit_read[113]: begin
         reg_rdata_next[31:0] = classa_phase3_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[110]: begin
+      racl_addr_hit_read[114]: begin
         reg_rdata_next[31:0] = classa_esc_cnt_qs;
       end
 
-      racl_addr_hit_read[111]: begin
+      racl_addr_hit_read[115]: begin
         reg_rdata_next[2:0] = classa_state_qs;
       end
 
-      racl_addr_hit_read[112]: begin
+      racl_addr_hit_read[116]: begin
         reg_rdata_next[0] = classb_regwen_qs;
       end
 
-      racl_addr_hit_read[113]: begin
+      racl_addr_hit_read[117]: begin
         reg_rdata_next[0] = classb_ctrl_shadowed_en_qs;
         reg_rdata_next[1] = classb_ctrl_shadowed_lock_qs;
         reg_rdata_next[2] = classb_ctrl_shadowed_en_e0_qs;
@@ -9463,59 +9663,59 @@ module lio_alert_handler_reg_top
         reg_rdata_next[13:12] = classb_ctrl_shadowed_map_e3_qs;
       end
 
-      racl_addr_hit_read[114]: begin
+      racl_addr_hit_read[118]: begin
         reg_rdata_next[0] = classb_clr_regwen_qs;
       end
 
-      racl_addr_hit_read[115]: begin
+      racl_addr_hit_read[119]: begin
         reg_rdata_next[0] = classb_clr_shadowed_qs;
       end
 
-      racl_addr_hit_read[116]: begin
+      racl_addr_hit_read[120]: begin
         reg_rdata_next[15:0] = classb_accum_cnt_qs;
       end
 
-      racl_addr_hit_read[117]: begin
+      racl_addr_hit_read[121]: begin
         reg_rdata_next[15:0] = classb_accum_thresh_shadowed_qs;
       end
 
-      racl_addr_hit_read[118]: begin
+      racl_addr_hit_read[122]: begin
         reg_rdata_next[31:0] = classb_timeout_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[119]: begin
+      racl_addr_hit_read[123]: begin
         reg_rdata_next[1:0] = classb_crashdump_trigger_shadowed_qs;
       end
 
-      racl_addr_hit_read[120]: begin
+      racl_addr_hit_read[124]: begin
         reg_rdata_next[31:0] = classb_phase0_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[121]: begin
+      racl_addr_hit_read[125]: begin
         reg_rdata_next[31:0] = classb_phase1_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[122]: begin
+      racl_addr_hit_read[126]: begin
         reg_rdata_next[31:0] = classb_phase2_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[123]: begin
+      racl_addr_hit_read[127]: begin
         reg_rdata_next[31:0] = classb_phase3_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[124]: begin
+      racl_addr_hit_read[128]: begin
         reg_rdata_next[31:0] = classb_esc_cnt_qs;
       end
 
-      racl_addr_hit_read[125]: begin
+      racl_addr_hit_read[129]: begin
         reg_rdata_next[2:0] = classb_state_qs;
       end
 
-      racl_addr_hit_read[126]: begin
+      racl_addr_hit_read[130]: begin
         reg_rdata_next[0] = classc_regwen_qs;
       end
 
-      racl_addr_hit_read[127]: begin
+      racl_addr_hit_read[131]: begin
         reg_rdata_next[0] = classc_ctrl_shadowed_en_qs;
         reg_rdata_next[1] = classc_ctrl_shadowed_lock_qs;
         reg_rdata_next[2] = classc_ctrl_shadowed_en_e0_qs;
@@ -9528,59 +9728,59 @@ module lio_alert_handler_reg_top
         reg_rdata_next[13:12] = classc_ctrl_shadowed_map_e3_qs;
       end
 
-      racl_addr_hit_read[128]: begin
+      racl_addr_hit_read[132]: begin
         reg_rdata_next[0] = classc_clr_regwen_qs;
       end
 
-      racl_addr_hit_read[129]: begin
+      racl_addr_hit_read[133]: begin
         reg_rdata_next[0] = classc_clr_shadowed_qs;
       end
 
-      racl_addr_hit_read[130]: begin
+      racl_addr_hit_read[134]: begin
         reg_rdata_next[15:0] = classc_accum_cnt_qs;
       end
 
-      racl_addr_hit_read[131]: begin
+      racl_addr_hit_read[135]: begin
         reg_rdata_next[15:0] = classc_accum_thresh_shadowed_qs;
       end
 
-      racl_addr_hit_read[132]: begin
+      racl_addr_hit_read[136]: begin
         reg_rdata_next[31:0] = classc_timeout_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[133]: begin
+      racl_addr_hit_read[137]: begin
         reg_rdata_next[1:0] = classc_crashdump_trigger_shadowed_qs;
       end
 
-      racl_addr_hit_read[134]: begin
+      racl_addr_hit_read[138]: begin
         reg_rdata_next[31:0] = classc_phase0_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[135]: begin
+      racl_addr_hit_read[139]: begin
         reg_rdata_next[31:0] = classc_phase1_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[136]: begin
+      racl_addr_hit_read[140]: begin
         reg_rdata_next[31:0] = classc_phase2_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[137]: begin
+      racl_addr_hit_read[141]: begin
         reg_rdata_next[31:0] = classc_phase3_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[138]: begin
+      racl_addr_hit_read[142]: begin
         reg_rdata_next[31:0] = classc_esc_cnt_qs;
       end
 
-      racl_addr_hit_read[139]: begin
+      racl_addr_hit_read[143]: begin
         reg_rdata_next[2:0] = classc_state_qs;
       end
 
-      racl_addr_hit_read[140]: begin
+      racl_addr_hit_read[144]: begin
         reg_rdata_next[0] = classd_regwen_qs;
       end
 
-      racl_addr_hit_read[141]: begin
+      racl_addr_hit_read[145]: begin
         reg_rdata_next[0] = classd_ctrl_shadowed_en_qs;
         reg_rdata_next[1] = classd_ctrl_shadowed_lock_qs;
         reg_rdata_next[2] = classd_ctrl_shadowed_en_e0_qs;
@@ -9593,51 +9793,51 @@ module lio_alert_handler_reg_top
         reg_rdata_next[13:12] = classd_ctrl_shadowed_map_e3_qs;
       end
 
-      racl_addr_hit_read[142]: begin
+      racl_addr_hit_read[146]: begin
         reg_rdata_next[0] = classd_clr_regwen_qs;
       end
 
-      racl_addr_hit_read[143]: begin
+      racl_addr_hit_read[147]: begin
         reg_rdata_next[0] = classd_clr_shadowed_qs;
       end
 
-      racl_addr_hit_read[144]: begin
+      racl_addr_hit_read[148]: begin
         reg_rdata_next[15:0] = classd_accum_cnt_qs;
       end
 
-      racl_addr_hit_read[145]: begin
+      racl_addr_hit_read[149]: begin
         reg_rdata_next[15:0] = classd_accum_thresh_shadowed_qs;
       end
 
-      racl_addr_hit_read[146]: begin
+      racl_addr_hit_read[150]: begin
         reg_rdata_next[31:0] = classd_timeout_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[147]: begin
+      racl_addr_hit_read[151]: begin
         reg_rdata_next[1:0] = classd_crashdump_trigger_shadowed_qs;
       end
 
-      racl_addr_hit_read[148]: begin
+      racl_addr_hit_read[152]: begin
         reg_rdata_next[31:0] = classd_phase0_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[149]: begin
+      racl_addr_hit_read[153]: begin
         reg_rdata_next[31:0] = classd_phase1_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[150]: begin
+      racl_addr_hit_read[154]: begin
         reg_rdata_next[31:0] = classd_phase2_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[151]: begin
+      racl_addr_hit_read[155]: begin
         reg_rdata_next[31:0] = classd_phase3_cyc_shadowed_qs;
       end
 
-      racl_addr_hit_read[152]: begin
+      racl_addr_hit_read[156]: begin
         reg_rdata_next[31:0] = classd_esc_cnt_qs;
       end
 
-      racl_addr_hit_read[153]: begin
+      racl_addr_hit_read[157]: begin
         reg_rdata_next[2:0] = classd_state_qs;
       end
 
@@ -9690,6 +9890,7 @@ module lio_alert_handler_reg_top
     alert_en_shadowed_13_storage_err,
     alert_en_shadowed_14_storage_err,
     alert_en_shadowed_15_storage_err,
+    alert_en_shadowed_16_storage_err,
     alert_class_shadowed_0_storage_err,
     alert_class_shadowed_1_storage_err,
     alert_class_shadowed_2_storage_err,
@@ -9706,6 +9907,7 @@ module lio_alert_handler_reg_top
     alert_class_shadowed_13_storage_err,
     alert_class_shadowed_14_storage_err,
     alert_class_shadowed_15_storage_err,
+    alert_class_shadowed_16_storage_err,
     loc_alert_en_shadowed_0_storage_err,
     loc_alert_en_shadowed_1_storage_err,
     loc_alert_en_shadowed_2_storage_err,
@@ -9812,6 +10014,7 @@ module lio_alert_handler_reg_top
     alert_en_shadowed_13_update_err,
     alert_en_shadowed_14_update_err,
     alert_en_shadowed_15_update_err,
+    alert_en_shadowed_16_update_err,
     alert_class_shadowed_0_update_err,
     alert_class_shadowed_1_update_err,
     alert_class_shadowed_2_update_err,
@@ -9828,6 +10031,7 @@ module lio_alert_handler_reg_top
     alert_class_shadowed_13_update_err,
     alert_class_shadowed_14_update_err,
     alert_class_shadowed_15_update_err,
+    alert_class_shadowed_16_update_err,
     loc_alert_en_shadowed_0_update_err,
     loc_alert_en_shadowed_1_update_err,
     loc_alert_en_shadowed_2_update_err,

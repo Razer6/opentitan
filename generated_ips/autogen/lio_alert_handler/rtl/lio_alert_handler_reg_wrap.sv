@@ -9,7 +9,7 @@ module lio_alert_handler_reg_wrap
 #(
   parameter bit          EnableRacl = 1'b0,
   parameter bit          RaclErrorRsp = 'b1,
-  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[154] = '{154{0}}
+  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[158] = '{158{0}}
 ) (
   input                                   clk_i,
   input                                   rst_ni,

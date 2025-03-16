@@ -8,7 +8,7 @@
     topname: lio
     module_instance_name: lio_alert_handler
     racl_support: true
-    n_alerts: 16
+    n_alerts: 17
     esc_cnt_dw: 32
     accu_cnt_dw: 16
     async_on:
