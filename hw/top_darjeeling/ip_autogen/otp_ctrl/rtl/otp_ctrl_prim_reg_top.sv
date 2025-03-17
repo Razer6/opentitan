@@ -145,10 +145,7 @@ module otp_ctrl_prim_reg_top
   logic macro_control_ecc_disable_wd;
   logic macro_control_redundancy_autoinit_disable_qs;
   logic macro_control_redundancy_autoinit_disable_wd;
-  logic [5:0] macro_control_field3_qs;
-  logic [5:0] macro_control_field3_wd;
-  logic [10:0] macro_control_field4_qs;
-  logic [10:0] macro_control_field4_wd;
+  logic macro_control_reset_allowed_qs;
   logic [7:0] read_ecc_info_ecc_info_0_qs;
   logic [7:0] read_ecc_info_ecc_info_1_qs;
   logic [7:0] read_ecc_info_ecc_info_2_qs;
@@ -440,58 +437,31 @@ module otp_ctrl_prim_reg_top
     .qs     (macro_control_redundancy_autoinit_disable_qs)
   );
 
-  //   F[field3]: 13:8
+  //   F[reset_allowed]: 8:8
   prim_subreg #(
-    .DW      (6),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (6'h0),
+    .DW      (1),
+    .SwAccess(prim_subreg_pkg::SwAccessRO),
+    .RESVAL  (1'h0),
     .Mubi    (1'b0)
-  ) u_macro_control_field3 (
+  ) u_macro_control_reset_allowed (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (macro_control_we),
-    .wd     (macro_control_field3_wd),
+    .we     (1'b0),
+    .wd     ('0),
 
     // from internal hardware
-    .de     (1'b0),
-    .d      ('0),
+    .de     (hw2reg.macro_control.reset_allowed.de),
+    .d      (hw2reg.macro_control.reset_allowed.d),
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.macro_control.field3.q),
+    .q      (),
     .ds     (),
 
     // to register interface (read)
-    .qs     (macro_control_field3_qs)
-  );
-
-  //   F[field4]: 26:16
-  prim_subreg #(
-    .DW      (11),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (11'h0),
-    .Mubi    (1'b0)
-  ) u_macro_control_field4 (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (macro_control_we),
-    .wd     (macro_control_field4_wd),
-
-    // from internal hardware
-    .de     (1'b0),
-    .d      ('0),
-
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.macro_control.field4.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (macro_control_field4_qs)
+    .qs     (macro_control_reset_allowed_qs)
   );
 
 
@@ -2162,10 +2132,6 @@ module otp_ctrl_prim_reg_top
   assign macro_control_ecc_disable_wd = reg_wdata[6];
 
   assign macro_control_redundancy_autoinit_disable_wd = reg_wdata[7];
-
-  assign macro_control_field3_wd = reg_wdata[13:8];
-
-  assign macro_control_field4_wd = reg_wdata[26:16];
   assign fuse_wrapper_rd_cfg_0_we = racl_addr_hit_write[2] & reg_we & !reg_error;
 
   assign fuse_wrapper_rd_cfg_0_tsur_pd_ps_cycles_wd = reg_wdata[11:0];
@@ -2325,8 +2291,7 @@ module otp_ctrl_prim_reg_top
         reg_rdata_next[5] = macro_control_read_margin_qs;
         reg_rdata_next[6] = macro_control_ecc_disable_qs;
         reg_rdata_next[7] = macro_control_redundancy_autoinit_disable_qs;
-        reg_rdata_next[13:8] = macro_control_field3_qs;
-        reg_rdata_next[26:16] = macro_control_field4_qs;
+        reg_rdata_next[8] = macro_control_reset_allowed_qs;
       end
 
       racl_addr_hit_read[1]: begin

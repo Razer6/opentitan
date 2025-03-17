@@ -1338,12 +1338,6 @@ package otp_ctrl_reg_pkg;
 
   typedef struct packed {
     struct packed {
-      logic [10:0] q;
-    } field4;
-    struct packed {
-      logic [5:0]  q;
-    } field3;
-    struct packed {
       logic        q;
     } redundancy_autoinit_disable;
     struct packed {
@@ -1586,6 +1580,13 @@ package otp_ctrl_reg_pkg;
 
   typedef struct packed {
     struct packed {
+      logic        d;
+      logic        de;
+    } reset_allowed;
+  } otp_ctrl_hw2reg_macro_control_reg_t;
+
+  typedef struct packed {
+    struct packed {
       logic [7:0]  d;
       logic        de;
     } ecc_info_0;
@@ -1605,7 +1606,7 @@ package otp_ctrl_reg_pkg;
 
   // Register -> HW type for prim interface
   typedef struct packed {
-    otp_ctrl_reg2hw_macro_control_reg_t macro_control; // [558:534]
+    otp_ctrl_reg2hw_macro_control_reg_t macro_control; // [541:534]
     otp_ctrl_reg2hw_read_ecc_info_reg_t read_ecc_info; // [533:502]
     otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_0_reg_t fuse_wrapper_rd_cfg_0; // [501:471]
     otp_ctrl_reg2hw_fuse_wrapper_rd_cfg_1_reg_t fuse_wrapper_rd_cfg_1; // [470:442]
@@ -1629,6 +1630,7 @@ package otp_ctrl_reg_pkg;
 
   // HW -> register type for prim interface
   typedef struct packed {
+    otp_ctrl_hw2reg_macro_control_reg_t macro_control; // [37:36]
     otp_ctrl_hw2reg_read_ecc_info_reg_t read_ecc_info; // [35:0]
   } otp_ctrl_prim_hw2reg_t;
 
@@ -1680,7 +1682,7 @@ package otp_ctrl_reg_pkg;
 
   // Register width information to check illegal writes for prim interface
   parameter logic [3:0] OTP_CTRL_PRIM_PERMIT [20] = '{
-    4'b 1111, // index[ 0] OTP_CTRL_MACRO_CONTROL
+    4'b 0011, // index[ 0] OTP_CTRL_MACRO_CONTROL
     4'b 1111, // index[ 1] OTP_CTRL_READ_ECC_INFO
     4'b 1111, // index[ 2] OTP_CTRL_FUSE_WRAPPER_RD_CFG_0
     4'b 1111, // index[ 3] OTP_CTRL_FUSE_WRAPPER_RD_CFG_1

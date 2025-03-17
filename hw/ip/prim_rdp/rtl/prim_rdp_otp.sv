@@ -516,6 +516,9 @@ module prim_rdp_otp
     end
   end
 
+  assign hw2reg.macro_control.reset_allowed.de = 1'b1;
+  assign hw2reg.macro_control.reset_allowed.d  = cfg_rsp_o.reset_allowed;
+
   assign hw2reg.read_ecc_info.ecc_info_0.de = ecc_valid_q;
   assign hw2reg.read_ecc_info.ecc_info_0.d  = rdata_ecc_reshaped[0];
   

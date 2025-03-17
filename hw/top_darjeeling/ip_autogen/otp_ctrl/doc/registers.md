@@ -1363,20 +1363,18 @@ will block until OTP readout has completed.
 fuse macro mode control
 - Offset: `0x0`
 - Reset default: `0x0`
-- Reset mask: `0x7ff3fff`
+- Reset mask: `0x1ff`
 
 ### Fields
 
 ```wavejson
-{"reg": [{"name": "macro_mode", "bits": 2, "attr": ["rw"], "rotate": -90}, {"name": "ecc_sel", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "test_row_col_sel", "bits": 2, "attr": ["rw"], "rotate": -90}, {"name": "read_margin", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "ecc_disable", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "redundancy_autoinit_disable", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "field3", "bits": 6, "attr": ["rw"], "rotate": 0}, {"bits": 2}, {"name": "field4", "bits": 11, "attr": ["rw"], "rotate": 0}, {"bits": 5}], "config": {"lanes": 1, "fontsize": 10, "vspace": 290}}
+{"reg": [{"name": "macro_mode", "bits": 2, "attr": ["rw"], "rotate": -90}, {"name": "ecc_sel", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "test_row_col_sel", "bits": 2, "attr": ["rw"], "rotate": -90}, {"name": "read_margin", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "ecc_disable", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "redundancy_autoinit_disable", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "reset_allowed", "bits": 1, "attr": ["ro"], "rotate": -90}, {"bits": 23}], "config": {"lanes": 1, "fontsize": 10, "vspace": 290}}
 ```
 
 |  Bits  |  Type  |  Reset  | Name                        | Description                                                                                                                           |
 |:------:|:------:|:-------:|:----------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|
-| 31:27  |        |         |                             | Reserved                                                                                                                              |
-| 26:16  |   rw   |   0x0   | field4                      |                                                                                                                                       |
-| 15:14  |        |         |                             | Reserved                                                                                                                              |
-|  13:8  |   rw   |   0x0   | field3                      |                                                                                                                                       |
+|  31:9  |        |         |                             | Reserved                                                                                                                              |
+|   8    |   ro   |   0x0   | reset_allowed               | Indicates a SW reset is allowed. For simulation only.                                                                                 |
 |   7    |   rw   |   0x0   | redundancy_autoinit_disable | this bit disables automatic tsmc redundancy flop initialization                                                                       |
 |   6    |   rw   |   0x0   | ecc_disable                 | this bit disables ecc fuse writing and read checking                                                                                  |
 |   5    |   rw   |   0x0   | read_margin                 | Setting this bit enables fuse reads in high margin mode                                                                               |

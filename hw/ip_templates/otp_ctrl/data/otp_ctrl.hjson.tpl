@@ -1293,15 +1293,11 @@ otp_size_as_uint32 = otp_size_as_bytes // 4
             desc: "this bit disables automatic tsmc redundancy flop initialization"
             resval: "0x0",
           }
-          { bits: "13:8",
-            name: "field3",
-            desc: ""
-            resval: "0x0",
-          }
-          { bits: "26:16",
-            name: "field4",
-            desc: ""
-            resval: "0x0",
+          { bits: "8"
+            swaccess: "ro",
+            hwaccess: "hwo",
+            name: "reset_allowed"
+            desc: "Indicates a SW reset is allowed. For simulation only."
           }
         ]
       },
