@@ -52,6 +52,7 @@ module top_darjeeling #(
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlRetAonFlopRamOutput = 1,
   parameter bit SramCtrlRetAonEccCorrection = 0,
+  parameter int SramCtrlRetAonRaclPolicySelRangesRamNum = 1,
   // parameters for rv_dm
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
   parameter bit RvDmUseDmiInterface = 1,
@@ -94,6 +95,7 @@ module top_darjeeling #(
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMainFlopRamOutput = 1,
   parameter bit SramCtrlMainEccCorrection = 0,
+  parameter int SramCtrlMainRaclPolicySelRangesRamNum = 1,
   // parameters for sram_ctrl_mbox
   parameter int SramCtrlMboxInstSize = 4096,
   parameter int SramCtrlMboxNumRamInst = 1,
@@ -101,6 +103,7 @@ module top_darjeeling #(
   parameter int SramCtrlMboxNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMboxFlopRamOutput = 1,
   parameter bit SramCtrlMboxEccCorrection = 0,
+  parameter int SramCtrlMboxRaclPolicySelRangesRamNum = 1,
   // parameters for rom_ctrl0
   parameter RomCtrl0BootRomInitFile = "",
   parameter bit SecRomCtrl0DisableScrambling = 1'b0,
@@ -1745,7 +1748,8 @@ module top_darjeeling #(
     .InstrExec(SramCtrlRetAonInstrExec),
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
-    .EccCorrection(SramCtrlRetAonEccCorrection)
+    .EccCorrection(SramCtrlRetAonEccCorrection),
+    .RaclPolicySelRangesRamNum(SramCtrlRetAonRaclPolicySelRangesRamNum)
   ) u_sram_ctrl_ret_aon (
       // [50]: fatal_error
       .alert_tx_o  ( alert_tx[50:50] ),
@@ -1761,6 +1765,7 @@ module top_darjeeling #(
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
+      .racl_policy_sel_ranges_ram_i({SramCtrlRetAonRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .sram_rerror_addr_o(),
       .regs_tl_i(sram_ctrl_ret_aon_regs_tl_req),
@@ -2119,7 +2124,8 @@ module top_darjeeling #(
     .InstrExec(SramCtrlMainInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
-    .EccCorrection(SramCtrlMainEccCorrection)
+    .EccCorrection(SramCtrlMainEccCorrection),
+    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum)
   ) u_sram_ctrl_main (
       // [68]: fatal_error
       .alert_tx_o  ( alert_tx[68:68] ),
@@ -2135,6 +2141,7 @@ module top_darjeeling #(
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
+      .racl_policy_sel_ranges_ram_i({SramCtrlMainRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .sram_rerror_addr_o(),
       .regs_tl_i(sram_ctrl_main_regs_tl_req),
@@ -2160,7 +2167,8 @@ module top_darjeeling #(
     .InstrExec(SramCtrlMboxInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMboxNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
-    .EccCorrection(SramCtrlMboxEccCorrection)
+    .EccCorrection(SramCtrlMboxEccCorrection),
+    .RaclPolicySelRangesRamNum(SramCtrlMboxRaclPolicySelRangesRamNum)
   ) u_sram_ctrl_mbox (
       // [69]: fatal_error
       .alert_tx_o  ( alert_tx[69:69] ),
@@ -2176,6 +2184,7 @@ module top_darjeeling #(
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
+      .racl_policy_sel_ranges_ram_i({SramCtrlMboxRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .sram_rerror_addr_o(),
       .regs_tl_i(sram_ctrl_mbox_regs_tl_req),
