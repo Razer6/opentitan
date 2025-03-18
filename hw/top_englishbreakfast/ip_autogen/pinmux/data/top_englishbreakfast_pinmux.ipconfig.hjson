@@ -19,10 +19,6 @@
     scan_role_pkg_vlnv: lowrisc:systems:top_englishbreakfast_scan_role_pkg
     use_rivos_config: false
     topname: englishbreakfast
-    uniquified_modules:
-    {
-      gpio: gpio
-      rv_plic: rv_plic
-    }
+    uniquified_modules: {}
   }
 }

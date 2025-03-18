@@ -2683,13 +2683,6 @@
     }
     use_rivos_config: true
     topname: darjeeling
-    uniquified_modules:
-    {
-      gpio: gpio
-      racl_ctrl: racl_ctrl
-      ac_range_check: ac_range_check
-      alert_handler: alert_handler
-      rv_plic: rv_plic
-    }
+    uniquified_modules: {}
   }
 }
