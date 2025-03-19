@@ -34,6 +34,7 @@ filesets:
       - lowrisc:prim:all
       - lowrisc:prim:mubi
       - lowrisc:systems:top_mio_pkg
+      - "!synth_run? (lowrisc:ibex:ibex_tracer)"
     files:
       - rtl/autogen/top_mio_rnd_cnst_pkg.sv
       - rtl/autogen/top_mio_racl_pkg.sv
@@ -68,12 +69,6 @@ filesets:
       - lint/top_mio.vbw
     file_type: veribleLintWaiver
 
-  # Rivos setting: Add ibex tracer only to sim
-  files_ibex_tracer:
-    depend:
-      - lowrisc:ibex:ibex_tracer
-    file_type: systemVerilogSource
-
 parameters:
   SYNTHESIS:
     datatype: bool
@@ -92,7 +87,6 @@ targets:
     default_tool: icarus
     filesets:
       - files_rtl_generic
-      - files_ibex_tracer
     toplevel: top_mio
 
   lint:

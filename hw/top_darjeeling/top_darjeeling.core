@@ -63,6 +63,7 @@ filesets:
       - lowrisc:systems:top_darjeeling_pkg
       - "fileset_partner  ? (partner:systems:top_darjeeling_ast_pkg)"
       - "!fileset_partner ? (lowrisc:systems:top_darjeeling_ast_pkg)"
+      - "!synth_run? (lowrisc:ibex:ibex_tracer)"
     files:
       - rtl/autogen/top_darjeeling_rnd_cnst_pkg.sv
       - rtl/autogen/top_darjeeling_racl_pkg.sv
@@ -97,12 +98,6 @@ filesets:
       - lint/top_darjeeling.vbl
     file_type: veribleLintWaiver
 
-  # Rivos setting: Add ibex tracer only to sim
-  files_ibex_tracer:
-    depend:
-      - lowrisc:ibex:ibex_tracer
-    file_type: systemVerilogSource
-
 parameters:
   SYNTHESIS:
     datatype: bool
@@ -132,7 +127,6 @@ targets:
       - RDV_NO_SYSCTL=true
     filesets:
       - files_rtl_generic
-      - files_ibex_tracer
     toplevel: top_darjeeling
 
   lint:

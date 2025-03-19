@@ -35,6 +35,7 @@ filesets:
       - lowrisc:prim:all
       - lowrisc:prim:mubi
       - lowrisc:systems:top_pwc_pkg
+      - "!synth_run? (lowrisc:ibex:ibex_tracer)"
     files:
       - rtl/autogen/top_pwc_rnd_cnst_pkg.sv
       - rtl/autogen/top_pwc_racl_pkg.sv
@@ -69,12 +70,6 @@ filesets:
       - lint/top_pwc.vbw
     file_type: veribleLintWaiver
 
-  # Rivos setting: Add ibex tracer only to sim
-  files_ibex_tracer:
-    depend:
-      - lowrisc:ibex:ibex_tracer
-    file_type: systemVerilogSource
-
 parameters:
   SYNTHESIS:
     datatype: bool
@@ -93,7 +88,6 @@ targets:
     default_tool: icarus
     filesets:
       - files_rtl_generic
-      - files_ibex_tracer
     toplevel: top_pwc
 
   lint:
