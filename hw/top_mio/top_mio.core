@@ -10,7 +10,6 @@ filesets:
       # Place the autogen packages first to avoid conflicts
       - lowrisc:ip:uart:0.1
       - lowrisc:ip:rv_core_ibex
-      - lowrisc:ibex:ibex_tracer
       - lowrisc:ip:rv_dm
       - lowrisc:ip:rv_timer
       - lowrisc:ip:tlul
