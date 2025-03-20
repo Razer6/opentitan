@@ -323,7 +323,7 @@
     },
     "//third_party/scs_tests:extensions.bzl%rtl_store_deps": {
       "general": {
-        "bzlTransitiveDigest": "vGY5m71gsgPTEsAcrRSthqd5o6XCiIIvXQLSynKJzso=",
+        "bzlTransitiveDigest": "eWAWO3lexgmwcCe3+WLk8RCW+Km7J4TdBKydXFf6xUo=",
         "usagesDigest": "xwOzMuyrkfmZ3JFEDGuswR8j7Va0bQwlpVsQBboW/V8=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -332,10 +332,10 @@
           "riplang-tool": {
             "repoRuleId": "@@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
             "attributes": {
-              "url": "https://gitlab.ba.rivosinc.com/api/v4/projects/234/packages/generic/rivos-sdk-riplang/0.22.18-20250304T125020.gbcddfc8/riplang-centos.tar.xz",
-              "sha256": "09082d04d15f7bf409a8de2f70447ab40aa45ca695a203a63eb5682e7f19e9d6",
+              "url": "https://gitlab.ba.rivosinc.com/api/v4/projects/234/packages/generic/rivos-sdk-riplang/0.22.20-20250311T101149.g7feb030/riplang-centos.tar.xz",
+              "sha256": "5956d02e2ddf299dca2f2cbc2bd835bbcebbdb4018588dada46708e1b953f142",
               "build_file": "@@+_repo_rules3+rtl_store//fwlib/riplang:BUILD.riplang",
-              "strip_prefix": "release/sw/sdk/modules/centos.7/x86_64/riplang/20250304T125020.gbcddfc8"
+              "strip_prefix": "release/sw/sdk/modules/centos.7/x86_64/riplang/20250311T101149.g7feb030"
             }
           },
           "bazel_skylib_150": {
