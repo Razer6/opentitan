@@ -1084,7 +1084,7 @@
       {
         InstrExec: "0"
         InstSize: 4096
-        FlopRamOutput: 1
+        FlopRamOutput: 0
         EccCorrection: 1
       }
       base_addrs:
@@ -1205,7 +1205,7 @@
           name: FlopRamOutput
           desc: Add a flop stage on the RAM macro output
           type: bit
-          default: 1
+          default: 0
           local: "false"
           expose: "true"
           name_top: SramCtrlRetAonFlopRamOutput
@@ -1924,7 +1924,7 @@
       {
         InstrExec: "1"
         InstSize: 65536
-        FlopRamOutput: 1
+        FlopRamOutput: 0
         EccCorrection: 1
       }
       base_addrs:
@@ -2045,7 +2045,7 @@
           name: FlopRamOutput
           desc: Add a flop stage on the RAM macro output
           type: bit
-          default: 1
+          default: 0
           local: "false"
           expose: "true"
           name_top: SramCtrlMainFlopRamOutput
@@ -2298,7 +2298,7 @@
       {
         InstrExec: "0"
         InstSize: 4096
-        FlopRamOutput: 1
+        FlopRamOutput: 0
         EccCorrection: 1
       }
       base_addrs:
@@ -2419,7 +2419,7 @@
           name: FlopRamOutput
           desc: Add a flop stage on the RAM macro output
           type: bit
-          default: 1
+          default: 0
           local: "false"
           expose: "true"
           name_top: SramCtrlMboxFlopRamOutput
