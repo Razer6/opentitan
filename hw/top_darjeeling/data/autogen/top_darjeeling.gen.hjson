@@ -4359,6 +4359,15 @@
           expose: "true"
           name_top: SramCtrlRetAonEccCorrection
         }
+        {
+          name: FlopRamOutput
+          desc: Add a flop stage after the RAM macro output.
+          type: bit
+          default: "0"
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlRetAonFlopRamOutput
+        }
       ]
       inter_signal_list:
       [
@@ -6705,6 +6714,15 @@
           expose: "true"
           name_top: SramCtrlMainEccCorrection
         }
+        {
+          name: FlopRamOutput
+          desc: Add a flop stage after the RAM macro output.
+          type: bit
+          default: "0"
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlMainFlopRamOutput
+        }
       ]
       inter_signal_list:
       [
@@ -7042,6 +7060,15 @@
           local: "false"
           expose: "true"
           name_top: SramCtrlMboxEccCorrection
+        }
+        {
+          name: FlopRamOutput
+          desc: Add a flop stage after the RAM macro output.
+          type: bit
+          default: "0"
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlMboxFlopRamOutput
         }
       ]
       inter_signal_list:
