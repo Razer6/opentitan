@@ -672,6 +672,11 @@ module ibex_top import ibex_pkg::*; #(
             end
           end
 
+          // Ensure that requests to the I$ data and tag RAMs are only made when the scrambling key
+          // is valid.
+          `ASSERT(ScrambleKeyValidOnDataReq_A, ic_data_req[way] |-> scramble_key_valid_q)
+          `ASSERT(ScrambleKeyValidOnTagReq_A, ic_tag_req[way] |-> scramble_key_valid_q)
+
           // Ensure that when a scramble key is received, it is correctly applied to the icache
           // scrambled memory primitives.  The upper bound in the cycle ranges below is not exact,
           // but it should not take more than 10 cycles.

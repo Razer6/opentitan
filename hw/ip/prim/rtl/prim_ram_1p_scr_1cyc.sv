@@ -5,7 +5,7 @@
 // Minimal variant of prim_ram_1p_scr that is always ready for requests and always responds in the
 // next cycle.
 
-// Please see prim_ram_1p_scr for details on the parameters and ports.
+// Please see prim_ram_1p_scr for further information on the parameters and ports.
 module prim_ram_1p_scr_1cyc import prim_ram_1p_pkg::*; #(
   parameter  int Depth               = 16*1024,
   parameter  int InstDepth           = Depth,
@@ -27,15 +27,23 @@ module prim_ram_1p_scr_1cyc import prim_ram_1p_pkg::*; #(
   input  logic                             clk_i,
   input  logic                             rst_ni,
 
+  // Scrambling key and nonce. Since this module cannot stall requests, it treats the incoming key
+  // as valid for every request. Users of this module are advised to have an assertion that key and
+  // nonce provided on this interface are valid whenever `req_i` is high.
   input  logic [DataKeyWidth-1:0]          key_i,
   input  logic [NonceWidth-1:0]            nonce_i,
 
+  // Requests to the memory. The input signals below are considered valid if and only if `req_i` is
+  // high. Every clock cycle in which `req_i` is high represents a separate request.
   input  logic                             req_i,
   input  logic                             write_i,
   input  logic [AddrWidth-1:0]             addr_i,
   input  logic [Width-1:0]                 wdata_i,
   input  logic [Width-1:0]                 wmask_i,
   input  logic                             intg_error_i,
+
+  // Responses from the memory. The output signals below are valid if and only if `req_i` was high
+  // in the previous clock cycle.
   output logic [Width-1:0]                 rdata_o,
   output logic [1:0]                       rerror_o,
   output logic [31:0]                      raddr_o,
@@ -43,6 +51,7 @@ module prim_ram_1p_scr_1cyc import prim_ram_1p_pkg::*; #(
   input  ram_1p_cfg_t     [NumRamInst-1:0] cfg_i,
   output ram_1p_cfg_rsp_t [NumRamInst-1:0] cfg_rsp_o,
 
+  output logic                             wr_collision_o,
   output logic                             write_pending_o,
 
   output logic                             alert_o
@@ -149,7 +158,7 @@ module prim_ram_1p_scr_1cyc import prim_ram_1p_pkg::*; #(
 
   // When a read is followed after a write with the same address, we return the data from the
   // holding register.
-  // assign wr_collision_o = mubi4_test_true_loose(addr_collision_q);
+  assign wr_collision_o = mubi4_test_true_loose(addr_collision_q);
 
   ////////////////////////
   // Address Scrambling //
@@ -450,7 +459,6 @@ module prim_ram_1p_scr_1cyc import prim_ram_1p_pkg::*; #(
     .wmask_i  ( wmask_q     ),
     .rdata_o  ( rdata_scr   ),
     .rvalid_o ( ),
-    .rvalid_mubi_o  ( ),
     .rerror_o,
     .cfg_i,
     .cfg_rsp_o,
