@@ -209,7 +209,6 @@ module rivos_tsmc_fuse_wrapper
   logic [(FUSE_NUM_ARRAYS-1):0][(FUSE_ADDR_WIDTH-1):0] final_fuse_address;
   logic [(FUSE_ADDR_WIDTH-1):0] func_fuse_ecc_address, fuse_ecc_address, next_fuse_ecc_address;
   logic [(FUSE_NUM_ECC_ARRAYS-1):0][(FUSE_ADDR_WIDTH-1):0] final_fuse_ecc_address;
-  logic [7:0] g_func_fuse_ecc_address_7_0;
   logic fuse_address_en;
   logic fuse_tcrs, fuse_tcrs_set, fuse_tcrs_clr, next_fuse_tcrs, final_fuse_tcrs;
   logic [(FUSE_TEST_ADDR_WIDTH-1):0] func_fuse_test_address, fuse_test_address, next_fuse_test_address;
@@ -565,14 +564,16 @@ RDP_FIFOR_ASYNC
   RDP_AFFR aff_fuse_init_needed (.clk(clk_efuse_i), .rst_l(rst_efuse_n), .en(new_init_needed||clear_init_needed), .d(next_init_needed), .q(init_needed));
 
   generate
-    if (FUSE_NUM_ECC_ARRAYS > 1) begin : gen_num_ecc_array_greater_1
+    if (FUSE_NUM_ARRAYS > 1) begin : gen_num_array_greater_1
       assign g_func_fuse_array_sel       = cur_cmd.addr[FUSE_MACRO_INST_ADDR_WIDTH+:FUSE_ARRAY_SEL_WIDTH];
-      assign g_func_fuse_ecc_array_sel   = cur_cmd.addr[(FUSE_MACRO_INST_ADDR_WIDTH+1)+:FUSE_ECC_ARRAY_SEL_WIDTH];
-      assign g_func_fuse_ecc_address_7_0 = cur_cmd.addr[9:2];
-    end else begin : gen_num_ecc_array_is_1
+    end else begin : gen_num_array_is_1
       assign g_func_fuse_array_sel       = '0;
+    end
+
+    if (FUSE_NUM_ECC_ARRAYS > 1) begin : gen_num_ecc_array_greater_1
+      assign g_func_fuse_ecc_array_sel   = cur_cmd.addr[(FUSE_MACRO_INST_ADDR_WIDTH+1)+:FUSE_ECC_ARRAY_SEL_WIDTH];
+    end else begin : gen_num_ecc_array_is_1
       assign g_func_fuse_ecc_array_sel   = '0;
-      assign g_func_fuse_ecc_address_7_0 = {1'b0, cur_cmd.addr[8:2]};  // one one array doesn't use addr bits past 8
     end
   endgenerate
 
@@ -746,7 +747,7 @@ RDP_FIFOR_ASYNC
           FUSE_MODE_ARRAY: begin 
             func_fuse_address[7:0]       = cur_cmd.addr[8:1];
             func_fuse_address[12]        = cur_cmd.addr[0];
-            func_fuse_ecc_address[7:0]   = g_func_fuse_ecc_address_7_0;
+            func_fuse_ecc_address[7:0]   = cur_cmd.addr[9:2];
             func_fuse_ecc_address[12:11] = cur_cmd.addr[1:0];
           end
           FUSE_MODE_REDUNDANCY: begin 
@@ -979,7 +980,7 @@ RDP_FIFOR_ASYNC
             func_fuse_address[7:0]  = cur_cmd.addr[8:1];
             func_fuse_address[11:8] = fuse_write_bit_count;
             func_fuse_address[12]   = cur_cmd.addr[0];
-            func_fuse_ecc_address[7:0]    = g_func_fuse_ecc_address_7_0;
+            func_fuse_ecc_address[7:0]    = cur_cmd.addr[9:2];
             func_fuse_ecc_address[12:11]  = cur_cmd.addr[1:0];
             func_fuse_ecc_address[10:8]   = fuse_write_bit_count[2:0]; // only 6 bits of ECC info, so using [2:0]
           end
