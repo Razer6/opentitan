@@ -1058,15 +1058,6 @@
           name_top: SramCtrlRetAonEccCorrection
         }
         {
-          name: RaclPolicySelRangesRamNum
-          desc: Number of Racl Policy Selection Ranges for the Ram interface
-          type: int
-          default: 1
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlRetAonRaclPolicySelRangesRamNum
-        }
-        {
           name: Outstanding
           desc: Number of outstanding TLUL transactions
           type: int
@@ -1074,6 +1065,15 @@
           local: "true"
           expose: "true"
           name_top: SramCtrlRetAonOutstanding
+        }
+        {
+          name: RaclPolicySelRangesRamNum
+          desc: Number of Racl Policy Selection Ranges for the Ram interface
+          type: int
+          default: 1
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlRetAonRaclPolicySelRangesRamNum
         }
       ]
       inter_signal_list:
@@ -1908,15 +1908,6 @@
           name_top: SramCtrlMainEccCorrection
         }
         {
-          name: RaclPolicySelRangesRamNum
-          desc: Number of Racl Policy Selection Ranges for the Ram interface
-          type: int
-          default: 1
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlMainRaclPolicySelRangesRamNum
-        }
-        {
           name: Outstanding
           desc: Number of outstanding TLUL transactions
           type: int
@@ -1924,6 +1915,15 @@
           local: "true"
           expose: "true"
           name_top: SramCtrlMainOutstanding
+        }
+        {
+          name: RaclPolicySelRangesRamNum
+          desc: Number of Racl Policy Selection Ranges for the Ram interface
+          type: int
+          default: 1
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlMainRaclPolicySelRangesRamNum
         }
       ]
       inter_signal_list:
@@ -2292,15 +2292,6 @@
           name_top: SramCtrlMboxEccCorrection
         }
         {
-          name: RaclPolicySelRangesRamNum
-          desc: Number of Racl Policy Selection Ranges for the Ram interface
-          type: int
-          default: 1
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlMboxRaclPolicySelRangesRamNum
-        }
-        {
           name: Outstanding
           desc: Number of outstanding TLUL transactions
           type: int
@@ -2308,6 +2299,15 @@
           local: "true"
           expose: "true"
           name_top: SramCtrlMboxOutstanding
+        }
+        {
+          name: RaclPolicySelRangesRamNum
+          desc: Number of Racl Policy Selection Ranges for the Ram interface
+          type: int
+          default: 1
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlMboxRaclPolicySelRangesRamNum
         }
       ]
       inter_signal_list:

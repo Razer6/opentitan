@@ -1199,8 +1199,8 @@ module top_englishbreakfast #(
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .EccCorrection(SramCtrlMainEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum),
-    .Outstanding(SramCtrlMainOutstanding)
+    .Outstanding(SramCtrlMainOutstanding),
+    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum)
   ) u_sram_ctrl_main (
       // [22]: fatal_error
       .alert_tx_o  ( alert_tx[22:22] ),

@@ -45,12 +45,12 @@ package top_racl_pkg;
     racl_role_vec_t read_perm;     // Read permission (lower bits)
   } racl_policy_t;
 
-  // Range definition for RACL protected SRAM adapter
+  // RACL range used to protect a range of addresses with a RACL policy (e.g., for sram).
   typedef struct packed {
-    logic [top_pkg::TL_AW-1:0] base;
-    logic [top_pkg::TL_AW-1:0] limit; // inclusive
-    racl_policy_sel_t          policy_sel;
-    logic                      enable;
+    logic [top_pkg::TL_AW-1:0] base;       // Start address of range
+    logic [top_pkg::TL_AW-1:0] limit;      // End address of range (inclusive)
+    racl_policy_sel_t          policy_sel; // Policy selector
+    logic                      enable;     // 0: Range is disabled, 1: Range is enabled
   } racl_range_t;
 
   // RACL policy vector for distributing RACL policies from the RACL widget to the subscribing IP

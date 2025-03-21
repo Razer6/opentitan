@@ -90,7 +90,7 @@ module spi_device
     '{
       base:  {top_pkg::TL_AW{1'b0}},
       limit: {top_pkg::TL_AW{1'b1}},
-      policy_sel: top_racl_pkg::racl_policy_sel_t'(RaclPolicySelWinEgressbuffer),
+      policy_sel: RaclPolicySelWinEgressbuffer,
       enable: 1'b1
     }
   };
@@ -98,7 +98,7 @@ module spi_device
     '{
       base:  {top_pkg::TL_AW{1'b0}},
       limit: {top_pkg::TL_AW{1'b1}},
-      policy_sel: top_racl_pkg::racl_policy_sel_t'(RaclPolicySelWinIngressbuffer),
+      policy_sel: RaclPolicySelWinIngressbuffer,
       enable: 1'b1
     }
   };

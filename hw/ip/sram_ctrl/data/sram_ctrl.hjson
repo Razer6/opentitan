@@ -121,19 +121,19 @@
       expose:    "true",
       default:   "0"
     },
-    { name:      "RaclPolicySelRangesRamNum",
-      desc:      "Number of Racl Policy Selection Ranges for the Ram interface",
-      type:      "int",
-      local:     "false",
-      expose:    "true",
-      default:   "1"
-    }
     { name:      "Outstanding",
       desc:      "Number of outstanding TLUL transactions",
       type:      "int",
       local:     "true",
       expose:    "true",
       default:   "2"
+    },
+    { name:      "RaclPolicySelRangesRamNum",
+      desc:      "Number of Racl Policy Selection Ranges for the Ram interface",
+      type:      "int",
+      local:     "false",
+      expose:    "true",
+      default:   "1"
     },
   ]
 

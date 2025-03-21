@@ -231,14 +231,14 @@ def parse_racl_mapping(
             base = int(range['base'], 0)
             size = int(range['size'], 0)
             if size <= 0 or base < 0:
-                raise ValueError
+                raise ValueError("Base must not be negative and size must be > 0.")
             limit = base + size - 1
-        except ValueError:
-            raise SystemExit(f'Invalid RACL range mapping ({range}) in {mapping_path}')
+        except ValueError as error:
+            raise SystemExit(f'Invalid RACL range mapping ({range}) in {mapping_path}: {error}')
 
         # ensure disjunct ranges:
         for range_mapping in parsed_range_mapping:
-            other_base  = range_mapping['base']
+            other_base = range_mapping['base']
             other_limit = range_mapping['limit']
             if max(base, other_base) <= min(limit, other_limit):
                 raise SystemExit(f'Overlapping RACL range ({range}) in {mapping_path}')

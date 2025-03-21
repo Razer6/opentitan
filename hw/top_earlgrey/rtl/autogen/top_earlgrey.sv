@@ -2176,8 +2176,8 @@ module top_earlgrey #(
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .EccCorrection(SramCtrlRetAonEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlRetAonRaclPolicySelRangesRamNum),
-    .Outstanding(SramCtrlRetAonOutstanding)
+    .Outstanding(SramCtrlRetAonOutstanding),
+    .RaclPolicySelRangesRamNum(SramCtrlRetAonRaclPolicySelRangesRamNum)
   ) u_sram_ctrl_ret_aon (
       // [34]: fatal_error
       .alert_tx_o  ( alert_tx[34:34] ),
@@ -2670,8 +2670,8 @@ module top_earlgrey #(
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .EccCorrection(SramCtrlMainEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum),
-    .Outstanding(SramCtrlMainOutstanding)
+    .Outstanding(SramCtrlMainOutstanding),
+    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum)
   ) u_sram_ctrl_main (
       // [59]: fatal_error
       .alert_tx_o  ( alert_tx[59:59] ),

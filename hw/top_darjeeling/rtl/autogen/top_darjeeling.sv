@@ -1755,8 +1755,8 @@ module top_darjeeling #(
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .EccCorrection(SramCtrlRetAonEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlRetAonRaclPolicySelRangesRamNum),
-    .Outstanding(SramCtrlRetAonOutstanding)
+    .Outstanding(SramCtrlRetAonOutstanding),
+    .RaclPolicySelRangesRamNum(SramCtrlRetAonRaclPolicySelRangesRamNum)
   ) u_sram_ctrl_ret_aon (
       // [50]: fatal_error
       .alert_tx_o  ( alert_tx[50:50] ),
@@ -2132,8 +2132,8 @@ module top_darjeeling #(
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .EccCorrection(SramCtrlMainEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum),
-    .Outstanding(SramCtrlMainOutstanding)
+    .Outstanding(SramCtrlMainOutstanding),
+    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum)
   ) u_sram_ctrl_main (
       // [68]: fatal_error
       .alert_tx_o  ( alert_tx[68:68] ),
@@ -2176,8 +2176,8 @@ module top_darjeeling #(
     .NumPrinceRoundsHalf(SramCtrlMboxNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
     .EccCorrection(SramCtrlMboxEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlMboxRaclPolicySelRangesRamNum),
-    .Outstanding(SramCtrlMboxOutstanding)
+    .Outstanding(SramCtrlMboxOutstanding),
+    .RaclPolicySelRangesRamNum(SramCtrlMboxRaclPolicySelRangesRamNum)
   ) u_sram_ctrl_mbox (
       // [69]: fatal_error
       .alert_tx_o  ( alert_tx[69:69] ),
