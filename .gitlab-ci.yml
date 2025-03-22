@@ -76,6 +76,8 @@ check_generated:
   stage: check
   extends: .git-auth-fixup
   script:
+    # Try to remove any exsiting fusesoc version before loading the module
+    - pip uninstall -y fusesoc
     - *setup-ot-env
     - *clone-rvsys
     - module load ascentlint
