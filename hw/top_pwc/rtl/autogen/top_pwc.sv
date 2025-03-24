@@ -209,9 +209,6 @@ module top_pwc #(
   localparam int SramCtrlMboxOutstanding = 6;
   // local parameters for racl_ctrl
   localparam int RaclCtrlNumSubscribingIps = 8;
-  // local parameters for rv_core_ibex_pwc
-  localparam int unsigned RvCoreIbexPwcNEscalationSeverities = 4;
-  localparam int unsigned RvCoreIbexPwcWidthPingCounter = 16;
 
   logic [219:0]  intr_vector;
   // Interrupt source list
@@ -1034,8 +1031,8 @@ module top_pwc #(
     .RndCnstLfsrPerm(RndCnstRvCoreIbexPwcLfsrPerm),
     .RndCnstIbexKeyDefault(RndCnstRvCoreIbexPwcIbexKeyDefault),
     .RndCnstIbexNonceDefault(RndCnstRvCoreIbexPwcIbexNonceDefault),
-    .NEscalationSeverities(RvCoreIbexPwcNEscalationSeverities),
-    .WidthPingCounter(RvCoreIbexPwcWidthPingCounter),
+    .NEscalationSeverities(4),
+    .WidthPingCounter(16),
     .PMPEnable(RvCoreIbexPwcPMPEnable),
     .PMPGranularity(RvCoreIbexPwcPMPGranularity),
     .PMPNumRegions(RvCoreIbexPwcPMPNumRegions),

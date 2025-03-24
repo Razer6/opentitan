@@ -180,9 +180,6 @@ module top_mio #(
   localparam int SramCtrlMboxOutstanding = 6;
   // local parameters for racl_ctrl
   localparam int RaclCtrlNumSubscribingIps = 8;
-  // local parameters for rv_core_ibex_mio
-  localparam int unsigned RvCoreIbexMioNEscalationSeverities = 4;
-  localparam int unsigned RvCoreIbexMioWidthPingCounter = 16;
 
   // Signals
 
@@ -964,8 +961,8 @@ module top_mio #(
     .RndCnstLfsrPerm(RndCnstRvCoreIbexMioLfsrPerm),
     .RndCnstIbexKeyDefault(RndCnstRvCoreIbexMioIbexKeyDefault),
     .RndCnstIbexNonceDefault(RndCnstRvCoreIbexMioIbexNonceDefault),
-    .NEscalationSeverities(RvCoreIbexMioNEscalationSeverities),
-    .WidthPingCounter(RvCoreIbexMioWidthPingCounter),
+    .NEscalationSeverities(4),
+    .WidthPingCounter(16),
     .PMPEnable(RvCoreIbexMioPMPEnable),
     .PMPGranularity(RvCoreIbexMioPMPGranularity),
     .PMPNumRegions(RvCoreIbexMioPMPNumRegions),

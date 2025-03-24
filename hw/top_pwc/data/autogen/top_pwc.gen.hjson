@@ -4659,8 +4659,8 @@
           desc: Number of escalation severities
           type: int unsigned
           default: "4"
-          local: "true"
-          expose: "true"
+          local: "false"
+          expose: "false"
           name_top: RvCoreIbexPwcNEscalationSeverities
         }
         {
@@ -4668,8 +4668,8 @@
           desc: Width of the ping counter
           type: int unsigned
           default: "16"
-          local: "true"
-          expose: "true"
+          local: "false"
+          expose: "false"
           name_top: RvCoreIbexPwcWidthPingCounter
         }
         {
