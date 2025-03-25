@@ -2,18 +2,18 @@ CAPI=2:
 # Copyright lowRISC contributors (OpenTitan project).
 # Licensed under the Apache License, Version 2.0, see LICENSE for details.
 # SPDX-License-Identifier: Apache-2.0
-name: lowrisc:pwc_dv:gpio_pwc_pwc_sim:0.1
+name: lowrisc:pwc_dv:gpio_pwc_sim:0.1
 description: "GPIO_PWC DV sim target"
 filesets:
   files_rtl:
     depend:
-      - lowrisc:pwc_ip:gpio_pwc_pwc:0.1
+      - lowrisc:pwc_ip:gpio_pwc:0.1
 
   files_dv:
     depend:
-      - lowrisc:pwc_dv:gpio_pwc_pwc_test
-      - lowrisc:pwc_dv:gpio_pwc_pwc_sva
-      - lowrisc:pwc_dv:gpio_pwc_pwc_if
+      - lowrisc:pwc_dv:gpio_pwc_test
+      - lowrisc:pwc_dv:gpio_pwc_sva
+      - lowrisc:pwc_dv:gpio_pwc_if
     files:
       - tb/tb.sv
     file_type: systemVerilogSource

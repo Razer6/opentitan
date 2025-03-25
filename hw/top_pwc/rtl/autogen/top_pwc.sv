@@ -200,6 +200,12 @@ module top_pwc #(
   import top_pwc_racl_pkg::*;
 
   // Local Parameters
+  // local parameters for sram_ctrl_ret_aon
+  localparam int SramCtrlRetAonOutstanding = 2;
+  // local parameters for sram_ctrl_main
+  localparam int SramCtrlMainOutstanding = 2;
+  // local parameters for sram_ctrl_mbox
+  localparam int SramCtrlMboxOutstanding = 2;
   // local parameters for racl_ctrl
   localparam int RaclCtrlNumSubscribingIps = 8;
   // local parameters for rv_core_ibex
@@ -501,7 +507,8 @@ module top_pwc #(
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .EccCorrection(SramCtrlRetAonEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlRetAonRaclPolicySelRangesRamNum)
+    .RaclPolicySelRangesRamNum(SramCtrlRetAonRaclPolicySelRangesRamNum),
+    .Outstanding(SramCtrlRetAonOutstanding)
   ) u_sram_ctrl_ret_aon (
       // External alert group "pwc" [3]: fatal_error
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[3:3] ),
@@ -607,7 +614,8 @@ module top_pwc #(
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .EccCorrection(SramCtrlMainEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum)
+    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum),
+    .Outstanding(SramCtrlMainOutstanding)
   ) u_sram_ctrl_main (
       // External alert group "pwc" [6]: fatal_error
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[6:6] ),
@@ -650,7 +658,8 @@ module top_pwc #(
     .NumPrinceRoundsHalf(SramCtrlMboxNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
     .EccCorrection(SramCtrlMboxEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlMboxRaclPolicySelRangesRamNum)
+    .RaclPolicySelRangesRamNum(SramCtrlMboxRaclPolicySelRangesRamNum),
+    .Outstanding(SramCtrlMboxOutstanding)
   ) u_sram_ctrl_mbox (
       // External alert group "pwc" [7]: fatal_error
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[7:7] ),

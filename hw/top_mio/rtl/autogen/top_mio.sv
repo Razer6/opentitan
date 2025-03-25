@@ -171,6 +171,12 @@ module top_mio #(
   import top_mio_racl_pkg::*;
 
   // Local Parameters
+  // local parameters for sram_ctrl_ret_aon
+  localparam int SramCtrlRetAonOutstanding = 2;
+  // local parameters for sram_ctrl_main
+  localparam int SramCtrlMainOutstanding = 2;
+  // local parameters for sram_ctrl_mbox
+  localparam int SramCtrlMboxOutstanding = 2;
   // local parameters for racl_ctrl
   localparam int RaclCtrlNumSubscribingIps = 8;
   // local parameters for rv_core_ibex
@@ -431,7 +437,8 @@ module top_mio #(
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .EccCorrection(SramCtrlRetAonEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlRetAonRaclPolicySelRangesRamNum)
+    .RaclPolicySelRangesRamNum(SramCtrlRetAonRaclPolicySelRangesRamNum),
+    .Outstanding(SramCtrlRetAonOutstanding)
   ) u_sram_ctrl_ret_aon (
       // External alert group "mio" [2]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[2:2] ),
@@ -537,7 +544,8 @@ module top_mio #(
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .EccCorrection(SramCtrlMainEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum)
+    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum),
+    .Outstanding(SramCtrlMainOutstanding)
   ) u_sram_ctrl_main (
       // External alert group "mio" [5]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[5:5] ),
@@ -580,7 +588,8 @@ module top_mio #(
     .NumPrinceRoundsHalf(SramCtrlMboxNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
     .EccCorrection(SramCtrlMboxEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlMboxRaclPolicySelRangesRamNum)
+    .RaclPolicySelRangesRamNum(SramCtrlMboxRaclPolicySelRangesRamNum),
+    .Outstanding(SramCtrlMboxOutstanding)
   ) u_sram_ctrl_mbox (
       // External alert group "mio" [6]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[6:6] ),
