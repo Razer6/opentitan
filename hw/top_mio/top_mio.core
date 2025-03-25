@@ -25,9 +25,9 @@ filesets:
       - lowrisc:top_mio:xbar_mio_main
       - lowrisc:top_mio:xbar_mio_mbx
       - lowrisc:top_mio:xbar_mio_peri
-      - lowrisc:mio_ip:ac_range_check_mio_mio
-      - lowrisc:mio_ip:racl_ctrl_mio_mio
-      - lowrisc:mio_ip:rv_plic_mio_mio
+      - lowrisc:mio_ip:ac_range_check_mio
+      - lowrisc:mio_ip:racl_ctrl_mio
+      - lowrisc:mio_ip:rv_plic_mio
       - lowrisc:ip:aon_timer
       - lowrisc:systems:top_mio_soc_proxy
       - lowrisc:tlul:headers
