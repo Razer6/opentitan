@@ -957,7 +957,7 @@ module top_mio #(
       .rst_shadowed_ni (rst_ext_rst_main_i),
       .rst_ni (rst_ext_rst_main_i)
   );
-  rv_core_ibex #(
+  rv_core_ibex_mio #(
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[29:26]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexLfsrPerm),

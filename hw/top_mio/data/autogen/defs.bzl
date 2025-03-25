@@ -14,7 +14,7 @@ load("//hw/ip/dma:defs.bzl", "DMA")
 load("//hw/ip/mbx:defs.bzl", "MBX")
 load("//hw/top_mio/ip/mio_soc_proxy:defs.bzl", "MIO_SOC_PROXY")
 load("//hw/top_mio/ip_autogen/racl_ctrl_mio:defs.bzl", "RACL_CTRL_MIO")
-load("//hw/ip/rv_core_ibex:defs.bzl", "RV_CORE_IBEX")
+load("//hw/top_mio/ip_autogen/rv_core_ibex_mio:defs.bzl", "RV_CORE_IBEX_MIO")
 load("//hw/ip/rv_dm:defs.bzl", "RV_DM")
 load("//hw/top_mio/ip_autogen/rv_plic_mio:defs.bzl", "RV_PLIC_MIO")
 load("//hw/ip/rv_timer:defs.bzl", "RV_TIMER")
@@ -32,7 +32,7 @@ MIO = opentitan_top(
         MBX,
         MIO_SOC_PROXY,
         RACL_CTRL_MIO,
-        RV_CORE_IBEX,
+        RV_CORE_IBEX_MIO,
         RV_DM,
         RV_PLIC_MIO,
         RV_TIMER,

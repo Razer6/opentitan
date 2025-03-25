@@ -1,0 +1,20 @@
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+{
+  instance_name: top_pwc_rv_core_ibex_pwc
+  param_values:
+  {
+    num_regions: 2
+    module_instance_name: rv_core_ibex_pwc
+    topname: pwc
+    uniquified_modules:
+    {
+      gpio: gpio_pwc
+      racl_ctrl: racl_ctrl_pwc
+      ac_range_check: ac_range_check_pwc
+      rv_core_ibex: rv_core_ibex_pwc
+      rv_plic: rv_plic_pwc
+    }
+  }
+}

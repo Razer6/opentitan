@@ -4527,7 +4527,13 @@
     }
     {
       name: rv_core_ibex
-      type: rv_core_ibex
+      type: rv_core_ibex_pwc
+      template_type: rv_core_ibex
+      attr: ipgen
+      ipgen_param:
+      {
+        NumRegions: 2
+      }
       param_decl:
       {
         PMPEnable: "1"
@@ -5822,7 +5828,7 @@
           reset: rst_main_ni
           req_fifo_pass: false
           rsp_fifo_pass: false
-          inst_type: rv_core_ibex
+          inst_type: rv_core_ibex_pwc
           addr_range:
           [
             {
@@ -5830,7 +5836,7 @@
               {
                 hart: 0x211f0000
               }
-              size_byte: 0x800
+              size_byte: 0x100
             }
           ]
           xbar: false

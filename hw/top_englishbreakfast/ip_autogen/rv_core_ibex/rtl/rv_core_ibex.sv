@@ -48,7 +48,7 @@ module rv_core_ibex
       ibex_pkg::RndCnstIbexNonceDefault,
   parameter int unsigned                    NEscalationSeverities = 4,
   parameter int unsigned                    WidthPingCounter      = 16,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] TlulHostUserRsvdBits   = 0
+  parameter logic [tlul_pkg::RsvdWidth-1:0] TlulHostUserRsvdBits  = 0
 ) (
   // Clock and Reset
   input  logic        clk_i,
@@ -677,12 +677,15 @@ module rv_core_ibex
     .spare_rsp_i (1'b0),
     .spare_rsp_o ());
 
+// Rivos: Only add the tracer when not in a synthesis run
+`ifndef SYNTHESIS
 `ifdef RVFI
+  logic [31:0] tracer_hart_id = hart_id_i;
   ibex_tracer ibex_tracer_i (
     .clk_i,
     .rst_ni,
 
-    .hart_id_i,
+    .hart_id_i(tracer_hart_id),
 
     .rvfi_valid,
     .rvfi_order,
@@ -708,6 +711,7 @@ module rv_core_ibex
     .rvfi_mem_rdata,
     .rvfi_mem_wdata
   );
+`endif
 `endif
 
   //////////////////////////////////

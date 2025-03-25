@@ -15,7 +15,7 @@ load("//hw/top_pwc/ip_autogen/gpio_pwc:defs.bzl", "GPIO_PWC")
 load("//hw/ip/mbx:defs.bzl", "MBX")
 load("//hw/top_pwc/ip/pwc_soc_proxy:defs.bzl", "PWC_SOC_PROXY")
 load("//hw/top_pwc/ip_autogen/racl_ctrl_pwc:defs.bzl", "RACL_CTRL_PWC")
-load("//hw/ip/rv_core_ibex:defs.bzl", "RV_CORE_IBEX")
+load("//hw/top_pwc/ip_autogen/rv_core_ibex_pwc:defs.bzl", "RV_CORE_IBEX_PWC")
 load("//hw/ip/rv_dm:defs.bzl", "RV_DM")
 load("//hw/top_pwc/ip_autogen/rv_plic_pwc:defs.bzl", "RV_PLIC_PWC")
 load("//hw/ip/rv_timer:defs.bzl", "RV_TIMER")
@@ -34,7 +34,7 @@ PWC = opentitan_top(
         MBX,
         PWC_SOC_PROXY,
         RACL_CTRL_PWC,
-        RV_CORE_IBEX,
+        RV_CORE_IBEX_PWC,
         RV_DM,
         RV_PLIC_PWC,
         RV_TIMER,

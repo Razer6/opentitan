@@ -1027,7 +1027,7 @@ module top_pwc #(
       .rst_shadowed_ni (rst_ext_rst_main_i),
       .rst_ni (rst_ext_rst_main_i)
   );
-  rv_core_ibex #(
+  rv_core_ibex_pwc #(
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[30:27]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexLfsrPerm),

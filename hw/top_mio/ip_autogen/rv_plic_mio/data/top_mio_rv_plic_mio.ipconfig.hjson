@@ -14,6 +14,7 @@
     {
       racl_ctrl: racl_ctrl_mio
       ac_range_check: ac_range_check_mio
+      rv_core_ibex: rv_core_ibex_mio
       rv_plic: rv_plic_mio
     }
   }
