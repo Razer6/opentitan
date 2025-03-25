@@ -359,11 +359,11 @@ module top_darjeeling #(
   // local parameters for spi_host0
   localparam int SpiHost0NumCS = 1;
   // local parameters for sram_ctrl_ret_aon
-  localparam int SramCtrlRetAonOutstanding = 2;
+  localparam int SramCtrlRetAonOutstanding = 6;
   // local parameters for sram_ctrl_main
-  localparam int SramCtrlMainOutstanding = 2;
+  localparam int SramCtrlMainOutstanding = 6;
   // local parameters for sram_ctrl_mbox
-  localparam int SramCtrlMboxOutstanding = 2;
+  localparam int SramCtrlMboxOutstanding = 6;
   // local parameters for racl_ctrl
   localparam int RaclCtrlNumSubscribingIps = 10;
   // local parameters for rv_core_ibex

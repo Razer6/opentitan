@@ -201,11 +201,11 @@ module top_pwc #(
 
   // Local Parameters
   // local parameters for sram_ctrl_ret_aon
-  localparam int SramCtrlRetAonOutstanding = 2;
+  localparam int SramCtrlRetAonOutstanding = 6;
   // local parameters for sram_ctrl_main
-  localparam int SramCtrlMainOutstanding = 2;
+  localparam int SramCtrlMainOutstanding = 6;
   // local parameters for sram_ctrl_mbox
-  localparam int SramCtrlMboxOutstanding = 2;
+  localparam int SramCtrlMboxOutstanding = 6;
   // local parameters for racl_ctrl
   localparam int RaclCtrlNumSubscribingIps = 8;
   // local parameters for rv_core_ibex

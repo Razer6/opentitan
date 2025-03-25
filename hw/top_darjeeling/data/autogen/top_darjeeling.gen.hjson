@@ -4302,6 +4302,7 @@
         InstrExec: "0"
         InstSize: 4096
         FlopRamOutput: 0
+        Outstanding: 6
       }
       base_addrs:
       {
@@ -4447,7 +4448,7 @@
           name: Outstanding
           desc: Number of outstanding TLUL transactions
           type: int
-          default: "2"
+          default: 6
           local: "true"
           expose: "true"
           name_top: SramCtrlRetAonOutstanding
@@ -6665,6 +6666,7 @@
         InstrExec: "1"
         InstSize: 65536
         FlopRamOutput: 0
+        Outstanding: 6
       }
       base_addrs:
       {
@@ -6810,7 +6812,7 @@
           name: Outstanding
           desc: Number of outstanding TLUL transactions
           type: int
-          default: "2"
+          default: 6
           local: "true"
           expose: "true"
           name_top: SramCtrlMainOutstanding
@@ -7046,6 +7048,7 @@
         InstrExec: "0"
         InstSize: 4096
         FlopRamOutput: 0
+        Outstanding: 6
       }
       base_addrs:
       {
@@ -7191,7 +7194,7 @@
           name: Outstanding
           desc: Number of outstanding TLUL transactions
           type: int
-          default: "2"
+          default: 6
           local: "true"
           expose: "true"
           name_top: SramCtrlMboxOutstanding
