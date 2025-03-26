@@ -6,7 +6,7 @@
   param_values:
   {
     module_instance_name: rv_plic
-    src: 173
+    src: 174
     target: 1
     prio: 3
     topname: darjeeling

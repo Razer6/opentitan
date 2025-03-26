@@ -9005,7 +9005,7 @@
         name: aon_timer_rst_req
         width: "1"
         module: aon_timer_aon
-        desc: watchdog reset requestt
+        desc: watchdog reset request
       }
     ]
   }
@@ -9590,6 +9590,16 @@
       incoming: false
     }
     {
+      name: racl_ctrl_racl_error
+      width: 1
+      type: interrupt
+      module_name: racl_ctrl
+      desc: racl_ctrl racl_error interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      incoming: false
+    }
+    {
       name: ac_range_check_deny_cnt_reached
       width: 1
       type: interrupt
@@ -9703,6 +9713,7 @@
     mbx4
     mbx5
     mbx_pcie0
+    racl_ctrl
     ac_range_check
   ]
   outgoing_alert_module:

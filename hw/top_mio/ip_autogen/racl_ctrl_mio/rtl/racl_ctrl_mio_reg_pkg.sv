@@ -13,7 +13,7 @@ package racl_ctrl_mio_reg_pkg;
   parameter int BlockAw = 8;
 
   // Number of registers for every interface
-  parameter int NumRegs = 13;
+  parameter int NumRegs = 16;
 
   ////////////////////////////
   // Typedefs for registers //
@@ -110,6 +110,19 @@ package racl_ctrl_mio_reg_pkg;
   } racl_ctrl_mio_reg2hw_policy_duc_private_policy_shadowed_reg_t;
 
   typedef struct packed {
+    logic        q;
+  } racl_ctrl_mio_reg2hw_intr_state_reg_t;
+
+  typedef struct packed {
+    logic        q;
+  } racl_ctrl_mio_reg2hw_intr_enable_reg_t;
+
+  typedef struct packed {
+    logic        q;
+    logic        qe;
+  } racl_ctrl_mio_reg2hw_intr_test_reg_t;
+
+  typedef struct packed {
     struct packed {
       logic        q;
       logic        qe;
@@ -126,6 +139,11 @@ package racl_ctrl_mio_reg_pkg;
       logic        qe;
     } valid;
   } racl_ctrl_mio_reg2hw_error_log_reg_t;
+
+  typedef struct packed {
+    logic        d;
+    logic        de;
+  } racl_ctrl_mio_hw2reg_intr_state_reg_t;
 
   typedef struct packed {
     struct packed {
@@ -158,31 +176,35 @@ package racl_ctrl_mio_reg_pkg;
   // Register -> HW type
   typedef struct packed {
     racl_ctrl_mio_reg2hw_policy_all_rd_wr_policy_shadowed_reg_t
-        policy_all_rd_wr_policy_shadowed; // [325:294]
+        policy_all_rd_wr_policy_shadowed; // [329:298]
     racl_ctrl_mio_reg2hw_policy_hw_rot_pwc_wr_all_rd_policy_shadowed_reg_t
-        policy_hw_rot_pwc_wr_all_rd_policy_shadowed; // [293:262]
+        policy_hw_rot_pwc_wr_all_rd_policy_shadowed; // [297:266]
     racl_ctrl_mio_reg2hw_policy_pre_boot_m_policy_shadowed_reg_t
-        policy_pre_boot_m_policy_shadowed; // [261:230]
+        policy_pre_boot_m_policy_shadowed; // [265:234]
     racl_ctrl_mio_reg2hw_policy_post_boot_m_policy_shadowed_reg_t
-        policy_post_boot_m_policy_shadowed; // [229:198]
+        policy_post_boot_m_policy_shadowed; // [233:202]
     racl_ctrl_mio_reg2hw_policy_tee_limited_policy_shadowed_reg_t
-        policy_tee_limited_policy_shadowed; // [197:166]
+        policy_tee_limited_policy_shadowed; // [201:170]
     racl_ctrl_mio_reg2hw_policy_rcode_private_policy_shadowed_reg_t
-        policy_rcode_private_policy_shadowed; // [165:134]
+        policy_rcode_private_policy_shadowed; // [169:138]
     racl_ctrl_mio_reg2hw_policy_rot_private_policy_shadowed_reg_t
-        policy_rot_private_policy_shadowed; // [133:102]
+        policy_rot_private_policy_shadowed; // [137:106]
     racl_ctrl_mio_reg2hw_policy_pwc_private_policy_shadowed_reg_t
-        policy_pwc_private_policy_shadowed; // [101:70]
+        policy_pwc_private_policy_shadowed; // [105:74]
     racl_ctrl_mio_reg2hw_policy_mio_private_policy_shadowed_reg_t
-        policy_mio_private_policy_shadowed; // [69:38]
+        policy_mio_private_policy_shadowed; // [73:42]
     racl_ctrl_mio_reg2hw_policy_duc_private_policy_shadowed_reg_t
-        policy_duc_private_policy_shadowed; // [37:6]
+        policy_duc_private_policy_shadowed; // [41:10]
+    racl_ctrl_mio_reg2hw_intr_state_reg_t intr_state; // [9:9]
+    racl_ctrl_mio_reg2hw_intr_enable_reg_t intr_enable; // [8:8]
+    racl_ctrl_mio_reg2hw_intr_test_reg_t intr_test; // [7:6]
     racl_ctrl_mio_reg2hw_alert_test_reg_t alert_test; // [5:2]
     racl_ctrl_mio_reg2hw_error_log_reg_t error_log; // [1:0]
   } racl_ctrl_mio_reg2hw_t;
 
   // HW -> register type
   typedef struct packed {
+    racl_ctrl_mio_hw2reg_intr_state_reg_t intr_state; // [51:50]
     racl_ctrl_mio_hw2reg_error_log_reg_t error_log; // [49:33]
     racl_ctrl_mio_hw2reg_error_log_address_reg_t error_log_address; // [32:0]
   } racl_ctrl_mio_hw2reg_t;
@@ -198,11 +220,15 @@ package racl_ctrl_mio_reg_pkg;
   parameter logic [BlockAw-1:0] RACL_CTRL_MIO_POLICY_PWC_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 38;
   parameter logic [BlockAw-1:0] RACL_CTRL_MIO_POLICY_MIO_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 40;
   parameter logic [BlockAw-1:0] RACL_CTRL_MIO_POLICY_DUC_PRIVATE_POLICY_SHADOWED_OFFSET = 8'h 48;
+  parameter logic [BlockAw-1:0] RACL_CTRL_MIO_INTR_STATE_OFFSET = 8'h e8;
+  parameter logic [BlockAw-1:0] RACL_CTRL_MIO_INTR_ENABLE_OFFSET = 8'h ec;
+  parameter logic [BlockAw-1:0] RACL_CTRL_MIO_INTR_TEST_OFFSET = 8'h f0;
   parameter logic [BlockAw-1:0] RACL_CTRL_MIO_ALERT_TEST_OFFSET = 8'h f4;
   parameter logic [BlockAw-1:0] RACL_CTRL_MIO_ERROR_LOG_OFFSET = 8'h f8;
   parameter logic [BlockAw-1:0] RACL_CTRL_MIO_ERROR_LOG_ADDRESS_OFFSET = 8'h fc;
 
   // Reset values for hwext registers and their fields
+  parameter logic [0:0] RACL_CTRL_MIO_INTR_TEST_RESVAL = 1'h 0;
   parameter logic [1:0] RACL_CTRL_MIO_ALERT_TEST_RESVAL = 2'h 0;
 
   // Register index
@@ -217,13 +243,16 @@ package racl_ctrl_mio_reg_pkg;
     RACL_CTRL_MIO_POLICY_PWC_PRIVATE_POLICY_SHADOWED,
     RACL_CTRL_MIO_POLICY_MIO_PRIVATE_POLICY_SHADOWED,
     RACL_CTRL_MIO_POLICY_DUC_PRIVATE_POLICY_SHADOWED,
+    RACL_CTRL_MIO_INTR_STATE,
+    RACL_CTRL_MIO_INTR_ENABLE,
+    RACL_CTRL_MIO_INTR_TEST,
     RACL_CTRL_MIO_ALERT_TEST,
     RACL_CTRL_MIO_ERROR_LOG,
     RACL_CTRL_MIO_ERROR_LOG_ADDRESS
   } racl_ctrl_mio_id_e;
 
   // Register width information to check illegal writes
-  parameter logic [3:0] RACL_CTRL_MIO_PERMIT [13] = '{
+  parameter logic [3:0] RACL_CTRL_MIO_PERMIT [16] = '{
     4'b 1111, // index[ 0] RACL_CTRL_MIO_POLICY_ALL_RD_WR_POLICY_SHADOWED
     4'b 1111, // index[ 1] RACL_CTRL_MIO_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED
     4'b 1111, // index[ 2] RACL_CTRL_MIO_POLICY_PRE_BOOT_M_POLICY_SHADOWED
@@ -234,9 +263,12 @@ package racl_ctrl_mio_reg_pkg;
     4'b 1111, // index[ 7] RACL_CTRL_MIO_POLICY_PWC_PRIVATE_POLICY_SHADOWED
     4'b 1111, // index[ 8] RACL_CTRL_MIO_POLICY_MIO_PRIVATE_POLICY_SHADOWED
     4'b 1111, // index[ 9] RACL_CTRL_MIO_POLICY_DUC_PRIVATE_POLICY_SHADOWED
-    4'b 0001, // index[10] RACL_CTRL_MIO_ALERT_TEST
-    4'b 0011, // index[11] RACL_CTRL_MIO_ERROR_LOG
-    4'b 1111  // index[12] RACL_CTRL_MIO_ERROR_LOG_ADDRESS
+    4'b 0001, // index[10] RACL_CTRL_MIO_INTR_STATE
+    4'b 0001, // index[11] RACL_CTRL_MIO_INTR_ENABLE
+    4'b 0001, // index[12] RACL_CTRL_MIO_INTR_TEST
+    4'b 0001, // index[13] RACL_CTRL_MIO_ALERT_TEST
+    4'b 0011, // index[14] RACL_CTRL_MIO_ERROR_LOG
+    4'b 1111  // index[15] RACL_CTRL_MIO_ERROR_LOG_ADDRESS
   };
 
 endpackage

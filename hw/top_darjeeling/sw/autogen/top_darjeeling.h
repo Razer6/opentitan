@@ -1065,8 +1065,9 @@ typedef enum top_darjeeling_plic_peripheral {
   kTopDarjeelingPlicPeripheralMbxJtag = 27, /**< mbx_jtag */
   kTopDarjeelingPlicPeripheralMbxPcie0 = 28, /**< mbx_pcie0 */
   kTopDarjeelingPlicPeripheralMbxPcie1 = 29, /**< mbx_pcie1 */
-  kTopDarjeelingPlicPeripheralAcRangeCheck = 30, /**< ac_range_check */
-  kTopDarjeelingPlicPeripheralLast = 30, /**< \internal Final PLIC peripheral */
+  kTopDarjeelingPlicPeripheralRaclCtrl = 30, /**< racl_ctrl */
+  kTopDarjeelingPlicPeripheralAcRangeCheck = 31, /**< ac_range_check */
+  kTopDarjeelingPlicPeripheralLast = 31, /**< \internal Final PLIC peripheral */
 } top_darjeeling_plic_peripheral_t;
 
 /**
@@ -1234,22 +1235,23 @@ typedef enum top_darjeeling_plic_irq_id {
   kTopDarjeelingPlicIrqIdMbxPcie1MbxReady = 155, /**< mbx_pcie1_mbx_ready */
   kTopDarjeelingPlicIrqIdMbxPcie1MbxAbort = 156, /**< mbx_pcie1_mbx_abort */
   kTopDarjeelingPlicIrqIdMbxPcie1MbxError = 157, /**< mbx_pcie1_mbx_error */
-  kTopDarjeelingPlicIrqIdAcRangeCheckDenyCntReached = 158, /**< ac_range_check_deny_cnt_reached */
-  kTopDarjeelingPlicIrqIdRotHdrIpiFromDuc = 159, /**< ROT_HDR_IPI_FROM_DUC */
-  kTopDarjeelingPlicIrqIdRotHdrIpiFromMio = 160, /**< ROT_HDR_IPI_FROM_MIO */
-  kTopDarjeelingPlicIrqIdRotHdrIpiFromPwc = 161, /**< ROT_HDR_IPI_FROM_PWC */
-  kTopDarjeelingPlicIrqIdRotHdrIpiFromRot2 = 162, /**< ROT_HDR_IPI_FROM_ROT_2 */
-  kTopDarjeelingPlicIrqIdRotHdrIpiFromRot1 = 163, /**< ROT_HDR_IPI_FROM_ROT_1 */
-  kTopDarjeelingPlicIrqIdRotHdrIpiFromRot0 = 164, /**< ROT_HDR_IPI_FROM_ROT_0 */
-  kTopDarjeelingPlicIrqIdLioGrpCIbexIrq = 165, /**< LIO_GRP_C_IBEX_IRQ */
-  kTopDarjeelingPlicIrqIdLioGrpBIbexIrq = 166, /**< LIO_GRP_B_IBEX_IRQ */
-  kTopDarjeelingPlicIrqIdLioGrpAIbexIrq = 167, /**< LIO_GRP_A_IBEX_IRQ */
-  kTopDarjeelingPlicIrqIdRasCtrlErrorIrq = 168, /**< RAS_CTRL_ERROR_IRQ */
-  kTopDarjeelingPlicIrqIdRasCtrlIbexIrq = 169, /**< RAS_CTRL_IBEX_IRQ */
-  kTopDarjeelingPlicIrqIdAmsRefClkSlow = 170, /**< AMS_REF_CLK_SLOW */
-  kTopDarjeelingPlicIrqIdAmsRefClkFast = 171, /**< AMS_REF_CLK_FAST */
-  kTopDarjeelingPlicIrqIdAmsAvgsGlitch = 172, /**< AMS_AVGS_GLITCH */
-  kTopDarjeelingPlicIrqIdLast = 172, /**< \internal The Last Valid Interrupt ID. */
+  kTopDarjeelingPlicIrqIdRaclCtrlRaclError = 158, /**< racl_ctrl_racl_error */
+  kTopDarjeelingPlicIrqIdAcRangeCheckDenyCntReached = 159, /**< ac_range_check_deny_cnt_reached */
+  kTopDarjeelingPlicIrqIdRotHdrIpiFromDuc = 160, /**< ROT_HDR_IPI_FROM_DUC */
+  kTopDarjeelingPlicIrqIdRotHdrIpiFromMio = 161, /**< ROT_HDR_IPI_FROM_MIO */
+  kTopDarjeelingPlicIrqIdRotHdrIpiFromPwc = 162, /**< ROT_HDR_IPI_FROM_PWC */
+  kTopDarjeelingPlicIrqIdRotHdrIpiFromRot2 = 163, /**< ROT_HDR_IPI_FROM_ROT_2 */
+  kTopDarjeelingPlicIrqIdRotHdrIpiFromRot1 = 164, /**< ROT_HDR_IPI_FROM_ROT_1 */
+  kTopDarjeelingPlicIrqIdRotHdrIpiFromRot0 = 165, /**< ROT_HDR_IPI_FROM_ROT_0 */
+  kTopDarjeelingPlicIrqIdLioGrpCIbexIrq = 166, /**< LIO_GRP_C_IBEX_IRQ */
+  kTopDarjeelingPlicIrqIdLioGrpBIbexIrq = 167, /**< LIO_GRP_B_IBEX_IRQ */
+  kTopDarjeelingPlicIrqIdLioGrpAIbexIrq = 168, /**< LIO_GRP_A_IBEX_IRQ */
+  kTopDarjeelingPlicIrqIdRasCtrlErrorIrq = 169, /**< RAS_CTRL_ERROR_IRQ */
+  kTopDarjeelingPlicIrqIdRasCtrlIbexIrq = 170, /**< RAS_CTRL_IBEX_IRQ */
+  kTopDarjeelingPlicIrqIdAmsRefClkSlow = 171, /**< AMS_REF_CLK_SLOW */
+  kTopDarjeelingPlicIrqIdAmsRefClkFast = 172, /**< AMS_REF_CLK_FAST */
+  kTopDarjeelingPlicIrqIdAmsAvgsGlitch = 173, /**< AMS_AVGS_GLITCH */
+  kTopDarjeelingPlicIrqIdLast = 173, /**< \internal The Last Valid Interrupt ID. */
 } top_darjeeling_plic_irq_id_t;
 
 /**
@@ -1259,7 +1261,7 @@ typedef enum top_darjeeling_plic_irq_id {
  * `top_darjeeling_plic_peripheral_t`.
  */
 extern const top_darjeeling_plic_peripheral_t
-    top_darjeeling_plic_interrupt_for_peripheral[173];
+    top_darjeeling_plic_interrupt_for_peripheral[174];
 
 /**
  * PLIC Interrupt Target.

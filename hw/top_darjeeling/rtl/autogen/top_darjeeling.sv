@@ -452,7 +452,7 @@ module top_darjeeling #(
   // rv_core_ibex
 
 
-  logic [172:0]  intr_vector;
+  logic [173:0]  intr_vector;
   // Interrupt source list
   logic intr_uart0_tx_watermark;
   logic intr_uart0_rx_watermark;
@@ -549,6 +549,7 @@ module top_darjeeling #(
   logic intr_mbx_pcie1_mbx_ready;
   logic intr_mbx_pcie1_mbx_abort;
   logic intr_mbx_pcie1_mbx_error;
+  logic intr_racl_ctrl_racl_error;
   logic intr_ac_range_check_deny_cnt_reached;
 
   // Alert list
@@ -2633,6 +2634,9 @@ module top_darjeeling #(
     .NumSubscribingIps(RaclCtrlNumSubscribingIps),
     .NumExternalSubscribingIps(RaclCtrlNumExternalSubscribingIps)
   ) u_racl_ctrl (
+
+      // Interrupt
+      .intr_racl_error_o (intr_racl_ctrl_racl_error),
       // [95]: fatal_fault
       // [96]: recov_ctrl_update_err
       .alert_tx_o  ( alert_tx[96:95] ),
@@ -2880,8 +2884,9 @@ module top_darjeeling #(
 
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_rot_external_i, // IDs [159 +: 14]
-      intr_ac_range_check_deny_cnt_reached, // IDs [158 +: 1]
+      incoming_interrupt_rot_external_i, // IDs [160 +: 14]
+      intr_ac_range_check_deny_cnt_reached, // IDs [159 +: 1]
+      intr_racl_ctrl_racl_error, // IDs [158 +: 1]
       intr_mbx_pcie1_mbx_error, // IDs [157 +: 1]
       intr_mbx_pcie1_mbx_abort, // IDs [156 +: 1]
       intr_mbx_pcie1_mbx_ready, // IDs [155 +: 1]

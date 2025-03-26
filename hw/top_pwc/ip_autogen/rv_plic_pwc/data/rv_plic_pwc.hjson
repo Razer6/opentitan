@@ -44,7 +44,7 @@
     { name: "NumSrc",
       desc: "Number of interrupt sources",
       type: "int",
-      default: "220",
+      default: "221",
       local: "true"
     },
     { name: "NumTarget",

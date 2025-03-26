@@ -184,7 +184,7 @@ module top_mio #(
   // Signals
 
 
-  logic [37:0]  intr_vector;
+  logic [38:0]  intr_vector;
   // Interrupt source list
   logic intr_rv_timer_timer_expired_hart0_timer0;
   logic intr_aon_timer_aon_wkup_timer_expired;
@@ -213,6 +213,7 @@ module top_mio #(
   logic intr_mbx_pcie0_mbx_ready;
   logic intr_mbx_pcie0_mbx_abort;
   logic intr_mbx_pcie0_mbx_error;
+  logic intr_racl_ctrl_racl_error;
   logic intr_ac_range_check_deny_cnt_reached;
 
   // define inter-module signals
@@ -911,6 +912,9 @@ module top_mio #(
     .NumSubscribingIps(RaclCtrlNumSubscribingIps),
     .NumExternalSubscribingIps(RaclCtrlNumExternalSubscribingIps)
   ) u_racl_ctrl (
+
+      // Interrupt
+      .intr_racl_error_o (intr_racl_ctrl_racl_error),
       // External alert group "mio" [22]: fatal_fault
       // External alert group "mio" [23]: recov_ctrl_update_err
       .alert_tx_o  ( outgoing_alert_mio_tx_o[23:22] ),
@@ -1047,8 +1051,9 @@ module top_mio #(
   );
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_mio_external_i, // IDs [29 +: 9]
-      intr_ac_range_check_deny_cnt_reached, // IDs [28 +: 1]
+      incoming_interrupt_mio_external_i, // IDs [30 +: 9]
+      intr_ac_range_check_deny_cnt_reached, // IDs [29 +: 1]
+      intr_racl_ctrl_racl_error, // IDs [28 +: 1]
       intr_mbx_pcie0_mbx_error, // IDs [27 +: 1]
       intr_mbx_pcie0_mbx_abort, // IDs [26 +: 1]
       intr_mbx_pcie0_mbx_ready, // IDs [25 +: 1]

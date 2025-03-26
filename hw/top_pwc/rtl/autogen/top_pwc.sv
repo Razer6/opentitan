@@ -210,7 +210,7 @@ module top_pwc #(
   // local parameters for racl_ctrl
   localparam int RaclCtrlNumSubscribingIps = 8;
 
-  logic [219:0]  intr_vector;
+  logic [220:0]  intr_vector;
   // Interrupt source list
   logic [31:0] intr_gpio_gpio;
   logic intr_rv_timer_timer_expired_hart0_timer0;
@@ -240,6 +240,7 @@ module top_pwc #(
   logic intr_mbx_pcie0_mbx_ready;
   logic intr_mbx_pcie0_mbx_abort;
   logic intr_mbx_pcie0_mbx_error;
+  logic intr_racl_ctrl_racl_error;
   logic intr_ac_range_check_deny_cnt_reached;
 
   // define inter-module signals
@@ -981,6 +982,9 @@ module top_pwc #(
     .NumSubscribingIps(RaclCtrlNumSubscribingIps),
     .NumExternalSubscribingIps(RaclCtrlNumExternalSubscribingIps)
   ) u_racl_ctrl (
+
+      // Interrupt
+      .intr_racl_error_o (intr_racl_ctrl_racl_error),
       // External alert group "pwc" [23]: fatal_fault
       // External alert group "pwc" [24]: recov_ctrl_update_err
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[24:23] ),
@@ -1117,8 +1121,9 @@ module top_pwc #(
   );
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_pwc_external_i, // IDs [61 +: 159]
-      intr_ac_range_check_deny_cnt_reached, // IDs [60 +: 1]
+      incoming_interrupt_pwc_external_i, // IDs [62 +: 159]
+      intr_ac_range_check_deny_cnt_reached, // IDs [61 +: 1]
+      intr_racl_ctrl_racl_error, // IDs [60 +: 1]
       intr_mbx_pcie0_mbx_error, // IDs [59 +: 1]
       intr_mbx_pcie0_mbx_abort, // IDs [58 +: 1]
       intr_mbx_pcie0_mbx_ready, // IDs [57 +: 1]
