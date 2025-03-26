@@ -21,7 +21,7 @@ filesets:
       - "!fileset_partner ? (lowrisc:systems:ast_pkg)"
       - lowrisc:prim:otp_pkg
       - lowrisc:prim_rdp:otp_cfg_pkg
-      - lowrisc:ip:otp_ctrl_prim_reg_top
+      - lowrisc:virtual_ip:otp_ctrl_prim_reg_top
     files:
       - rtl/prim_rdp_otp.sv
       - rtl/rivos_tsmc_fuse_wrapper.sv
