@@ -36,25 +36,11 @@ otp_json(
                 # Enable use of entropy for countermeasures. See the definition
                 # of `hardened_bool_t` in sw/device/lib/base/hardened.h.
                 "CREATOR_SW_CFG_RNG_EN": otp_hex(CONST.HARDENED_TRUE),
-                # ROM execution is enabled if this item is set to a non-zero
-                # value.
-                "CREATOR_SW_CFG_ROM_EXEC_EN": otp_hex(0xffffffff),
                 # Value to write to the cpuctrl CSR in `rom_init()`.
                 # See:
                 # https://ibex-core.readthedocs.io/en/latest/03_reference/cs_registers.html#cpu-control-register-cpuctrl
                 "CREATOR_SW_CFG_CPUCTRL": otp_hex(0x1),
                 "CREATOR_SW_CFG_JITTER_EN": otp_hex(CONST.MUBI4_FALSE),
-                # Value of the min_security_version_rom_ext field of the
-                # default boot data.
-                "CREATOR_SW_CFG_MIN_SEC_VER_ROM_EXT": otp_hex(0x0),
-                # Value of the min_security_version_bl0 field of the default
-                # boot data.
-                "CREATOR_SW_CFG_MIN_SEC_VER_BL0": otp_hex(0x0),
-                # Enable the default boot data in PROD and PROD_END life cycle
-                # states. See the definition of `hardened_bool_t` in
-                # sw/device/lib/base/hardened.h.
-                "CREATOR_SW_CFG_DEFAULT_BOOT_DATA_IN_PROD_EN": otp_hex(CONST.HARDENED_TRUE),
-                # Enable AST initialization.
                 "CREATOR_SW_CFG_AST_INIT_EN": otp_hex(CONST.MUBI4_TRUE),
                 # TODO: This enables a busyloop in the ROM to give time to
                 # trigger an RMA lifecycle transition via JTAG.  The current
@@ -63,36 +49,6 @@ otp_json(
                 # real chip.
                 "CREATOR_SW_CFG_RMA_SPIN_EN": otp_hex(CONST.HARDENED_TRUE),
                 "CREATOR_SW_CFG_RMA_SPIN_CYCLES": "10",
-                # Entropy source health check default values. This needs to be
-                # populated when `CREATOR_SW_CFG_RNG_EN` is set to true.
-                "CREATOR_SW_CFG_RNG_REPCNT_THRESHOLDS": otp_hex(0xffffffff),
-                "CREATOR_SW_CFG_RNG_REPCNTS_THRESHOLDS": otp_hex(0xffffffff),
-                "CREATOR_SW_CFG_RNG_ADAPTP_HI_THRESHOLDS": otp_hex(0xffffffff),
-                "CREATOR_SW_CFG_RNG_ADAPTP_LO_THRESHOLDS": otp_hex(0x0),
-                "CREATOR_SW_CFG_RNG_BUCKET_THRESHOLDS": otp_hex(0xffffffff),
-                "CREATOR_SW_CFG_RNG_MARKOV_HI_THRESHOLDS": otp_hex(0xffffffff),
-                "CREATOR_SW_CFG_RNG_MARKOV_LO_THRESHOLDS": otp_hex(0x0),
-                "CREATOR_SW_CFG_RNG_EXTHT_HI_THRESHOLDS": otp_hex(0xffffffff),
-                "CREATOR_SW_CFG_RNG_EXTHT_LO_THRESHOLDS": otp_hex(0x0),
-                "CREATOR_SW_CFG_RNG_ALERT_THRESHOLD": otp_hex(0xfffd0002),
-                "CREATOR_SW_CFG_RNG_HEALTH_CONFIG_DIGEST": otp_hex(0x8264cf75),
-            },
-        ),
-    ],
-)
-
-# CREATOR_SW_CFG configuration for TEST_UNLOCKED lifecycle device states.
-# Configures OTP values required to enable ROM execution. All other values are
-# configured with the `otp_json_creator_sw_cfg` rule.
-otp_json(
-    name = "otp_json_creator_sw_cfg_test_unlocked",
-    partitions = [
-        otp_partition(
-            name = "CREATOR_SW_CFG",
-            items = {
-                # ROM execution is enabled if this item is set to a non-zero
-                # value.
-                "CREATOR_SW_CFG_ROM_EXEC_EN": otp_hex(0xffffffff),
             },
         ),
     ],
@@ -109,7 +65,7 @@ otp_json(
                 "OWNER_SW_CFG_ROM_BOOTSTRAP_DIS": otp_hex(CONST.HARDENED_FALSE),
                 # Set to 0x739 to use the ROM_EXT hash measurement as the key
                 # manager attestation binding value.
-                "OWNER_SW_CFG_ROM_KEYMGR_ROM_EXT_MEAS_EN": otp_hex(0x0),
+                "OWNER_SW_CFG_ROM_KEYMGR_OTP_MEAS_EN": otp_hex(0x0),
                 # Report errors without any redaction.
                 "OWNER_SW_CFG_ROM_ERROR_REPORTING": otp_hex(CONST.SHUTDOWN.REDACT.NONE),
                 # Set the enables to kAlertEnableNone.
@@ -416,7 +372,7 @@ otp_image(
         src = ":otp_json_test_unlocked{}".format(i),
         overlays = [
             ":otp_json_secret0",
-            ":otp_json_creator_sw_cfg_test_unlocked",
+            ":otp_json_creator_sw_cfg",
         ],
     )
     for i in range(0, 8)
@@ -428,7 +384,7 @@ otp_image(
         src = ":otp_json_test_locked{}".format(i),
         overlays = [
             ":otp_json_secret0",
-            ":otp_json_creator_sw_cfg_test_unlocked",
+            ":otp_json_creator_sw_cfg",
         ],
     )
     for i in range(0, 7)

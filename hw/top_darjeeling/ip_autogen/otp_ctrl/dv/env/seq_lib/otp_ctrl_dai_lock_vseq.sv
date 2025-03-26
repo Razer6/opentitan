@@ -38,8 +38,8 @@ class otp_ctrl_dai_lock_vseq extends otp_ctrl_smoke_vseq;
     if (part_idx == OwnershipSlotStateIdx) {
       dai_addr inside `PART_ADDR_RANGE(OwnershipSlotStateIdx);
     }
-    if (part_idx == RotCreatorAuthIdx) {
-      dai_addr inside `PART_ADDR_RANGE(RotCreatorAuthIdx);
+    if (part_idx == RotCreatorIdentityIdx) {
+      dai_addr inside `PART_ADDR_RANGE(RotCreatorIdentityIdx);
     }
     if (part_idx == RotOwnerAuthSlot0Idx) {
       dai_addr inside `PART_ADDR_RANGE(RotOwnerAuthSlot0Idx);
@@ -62,20 +62,29 @@ class otp_ctrl_dai_lock_vseq extends otp_ctrl_smoke_vseq;
     if (part_idx == PlatOwnerAuthSlot2Idx) {
       dai_addr inside `PART_ADDR_RANGE(PlatOwnerAuthSlot2Idx);
     }
+    if (part_idx == PlatOwnerAuthSlot3Idx) {
+      dai_addr inside `PART_ADDR_RANGE(PlatOwnerAuthSlot3Idx);
+    }
     if (part_idx == ExtNvmIdx) {
       dai_addr inside `PART_ADDR_RANGE(ExtNvmIdx);
     }
     if (part_idx == RomPatchIdx) {
       dai_addr inside `PART_ADDR_RANGE(RomPatchIdx);
     }
-    if (part_idx == SocFusesIdx) {
-      dai_addr inside `PART_ADDR_RANGE(SocFusesIdx);
+    if (part_idx == SocFusesCpIdx) {
+      dai_addr inside `PART_ADDR_RANGE(SocFusesCpIdx);
+    }
+    if (part_idx == SocFusesFtIdx) {
+      dai_addr inside `PART_ADDR_RANGE(SocFusesFtIdx);
     }
     if (part_idx == HwCfg0Idx) {
       dai_addr inside `PART_ADDR_RANGE(HwCfg0Idx);
     }
     if (part_idx == HwCfg1Idx) {
       dai_addr inside `PART_ADDR_RANGE(HwCfg1Idx);
+    }
+    if (part_idx == HwCfg2Idx) {
+      dai_addr inside `PART_ADDR_RANGE(HwCfg2Idx);
     }
     if (part_idx == Secret0Idx) {
       dai_addr inside `PART_ADDR_RANGE(Secret0Idx);
@@ -105,7 +114,7 @@ class otp_ctrl_dai_lock_vseq extends otp_ctrl_smoke_vseq;
         VendorTestDigestOffset,
         CreatorSwCfgDigestOffset,
         OwnerSwCfgDigestOffset,
-        RotCreatorAuthDigestOffset,
+        RotCreatorIdentityDigestOffset,
         RotOwnerAuthSlot0DigestOffset,
         RotOwnerAuthSlot1DigestOffset,
         PlatIntegAuthSlot0DigestOffset,
@@ -113,10 +122,13 @@ class otp_ctrl_dai_lock_vseq extends otp_ctrl_smoke_vseq;
         PlatOwnerAuthSlot0DigestOffset,
         PlatOwnerAuthSlot1DigestOffset,
         PlatOwnerAuthSlot2DigestOffset,
+        PlatOwnerAuthSlot3DigestOffset,
         RomPatchDigestOffset,
-        SocFusesDigestOffset,
+        SocFusesCpDigestOffset,
+        SocFusesFtDigestOffset,
         HwCfg0DigestOffset,
         HwCfg1DigestOffset,
+        HwCfg2DigestOffset,
         Secret0DigestOffset,
         Secret1DigestOffset,
         Secret2DigestOffset,
