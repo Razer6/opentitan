@@ -222,14 +222,14 @@ package top_pwc_pkg;
   parameter int unsigned TOP_PWC_MBX_PCIE0_CORE_SIZE_BYTES = 32'h80;
 
   /**
-   * Peripheral base address for cfg device on rv_core_ibex in top pwc.
+   * Peripheral base address for cfg device on rv_core_ibex_pwc in top pwc.
    */
-  parameter int unsigned TOP_PWC_RV_CORE_IBEX_CFG_BASE_ADDR = 32'h211F0000;
+  parameter int unsigned TOP_PWC_RV_CORE_IBEX_PWC_CFG_BASE_ADDR = 32'h211F0000;
 
   /**
-   * Peripheral size in bytes for cfg device on rv_core_ibex in top pwc.
+   * Peripheral size in bytes for cfg device on rv_core_ibex_pwc in top pwc.
    */
-  parameter int unsigned TOP_PWC_RV_CORE_IBEX_CFG_SIZE_BYTES = 32'h100;
+  parameter int unsigned TOP_PWC_RV_CORE_IBEX_PWC_CFG_SIZE_BYTES = 32'h100;
 
   /**
    * Memory base address for ctn in top pwc.
@@ -308,7 +308,7 @@ package top_pwc_pkg;
     TopPwcAlertPeripheralMbxPcie0 = 15,
     TopPwcAlertPeripheralRaclCtrl = 16,
     TopPwcAlertPeripheralAcRangeCheck = 17,
-    TopPwcAlertPeripheralRvCoreIbex = 18,
+    TopPwcAlertPeripheralRvCoreIbexPwc = 18,
     TopPwcOutgoingAlertPwcPeripheralCount
   } outgoing_alert_pwc_peripheral_e;
 
@@ -341,10 +341,10 @@ package top_pwc_pkg;
     TopPwcAlertIdRaclCtrlRecovCtrlUpdateErr = 24,
     TopPwcAlertIdAcRangeCheckRecovCtrlUpdateErr = 25,
     TopPwcAlertIdAcRangeCheckFatalFault = 26,
-    TopPwcAlertIdRvCoreIbexFatalSwErr = 27,
-    TopPwcAlertIdRvCoreIbexRecovSwErr = 28,
-    TopPwcAlertIdRvCoreIbexFatalHwErr = 29,
-    TopPwcAlertIdRvCoreIbexRecovHwErr = 30,
+    TopPwcAlertIdRvCoreIbexPwcFatalSwErr = 27,
+    TopPwcAlertIdRvCoreIbexPwcRecovSwErr = 28,
+    TopPwcAlertIdRvCoreIbexPwcFatalHwErr = 29,
+    TopPwcAlertIdRvCoreIbexPwcRecovHwErr = 30,
     TopPwcOutgoingAlertPwcIdCount
   } outgoing_alert_pwc_id_e;
 

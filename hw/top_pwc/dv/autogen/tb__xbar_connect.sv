@@ -27,8 +27,8 @@
                                         ``tl_name``_tl_if);
 
 
-tl_if rv_core_ibex__corei_tl_if(clk_ext_main, rst_n);
-tl_if rv_core_ibex__cored_tl_if(clk_ext_main, rst_n);
+tl_if rv_core_ibex_pwc__corei_tl_if(clk_ext_main, rst_n);
+tl_if rv_core_ibex_pwc__cored_tl_if(clk_ext_main, rst_n);
 tl_if rv_dm__sba_tl_if(clk_ext_main, rst_n);
 tl_if dma__host_tl_if(clk_ext_main, rst_n);
 tl_if mbx0__sram_tl_if(clk_ext_main, rst_n);
@@ -43,7 +43,7 @@ tl_if rv_dm__regs_tl_if(clk_ext_main, rst_n);
 tl_if rv_dm__mem_tl_if(clk_ext_main, rst_n);
 tl_if pwc_soc_proxy__ctn_tl_if(clk_ext_main, rst_n);
 tl_if rv_plic_pwc_tl_if(clk_ext_main, rst_n);
-tl_if rv_core_ibex__cfg_tl_if(clk_ext_main, rst_n);
+tl_if rv_core_ibex_pwc__cfg_tl_if(clk_ext_main, rst_n);
 tl_if sram_ctrl_main__regs_tl_if(clk_ext_main, rst_n);
 tl_if sram_ctrl_main__ram_tl_if(clk_ext_main, rst_n);
 tl_if sram_ctrl_mbox__regs_tl_if(clk_ext_main, rst_n);
@@ -96,14 +96,14 @@ initial begin
     force tb.dut.top_pwc.u_xbar_pwc_mbx.rst_mbx_ni = rst_n;
 
 `ifndef GATE_LEVEL
-    `DRIVE_CHIP_TL_HOST_IF(rv_core_ibex__corei, rv_core_ibex, corei_tl_h)
-    `DRIVE_CHIP_TL_HOST_IF(rv_core_ibex__cored, rv_core_ibex, cored_tl_h)
+    `DRIVE_CHIP_TL_HOST_IF(rv_core_ibex_pwc__corei, rv_core_ibex_pwc, corei_tl_h)
+    `DRIVE_CHIP_TL_HOST_IF(rv_core_ibex_pwc__cored, rv_core_ibex_pwc, cored_tl_h)
     `DRIVE_CHIP_TL_HOST_IF(rv_dm__sba, rv_dm, sba_tl_h)
     `DRIVE_CHIP_TL_DEVICE_IF(rv_dm__regs, rv_dm, regs_tl_d)
     `DRIVE_CHIP_TL_DEVICE_IF(rv_dm__mem, rv_dm, mem_tl_d)
     `DRIVE_CHIP_TL_DEVICE_IF(pwc_soc_proxy__ctn, pwc_soc_proxy, ctn_tl)
     `DRIVE_CHIP_TL_DEVICE_IF(rv_plic_pwc, rv_plic_pwc, tl)
-    `DRIVE_CHIP_TL_DEVICE_IF(rv_core_ibex__cfg, rv_core_ibex, cfg_tl_d)
+    `DRIVE_CHIP_TL_DEVICE_IF(rv_core_ibex_pwc__cfg, rv_core_ibex_pwc, cfg_tl_d)
     `DRIVE_CHIP_TL_DEVICE_IF(sram_ctrl_main__regs, sram_ctrl_main, regs_tl)
     `DRIVE_CHIP_TL_DEVICE_IF(sram_ctrl_main__ram, sram_ctrl_main, ram_tl)
     `DRIVE_CHIP_TL_DEVICE_IF(sram_ctrl_mbox__regs, sram_ctrl_mbox, regs_tl)

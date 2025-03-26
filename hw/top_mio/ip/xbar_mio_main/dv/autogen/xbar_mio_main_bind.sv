@@ -6,17 +6,17 @@
 module xbar_mio_main_bind;
 `ifndef GATE_LEVEL
   // Host interfaces
-  bind xbar_mio_main tlul_assert #(.EndpointType("Device")) tlul_assert_host_rv_core_ibex__corei (
+  bind xbar_mio_main tlul_assert #(.EndpointType("Device")) tlul_assert_host_rv_core_ibex_mio__corei (
     .clk_i  (clk_main_i),
     .rst_ni (rst_main_ni),
-    .h2d    (tl_rv_core_ibex__corei_i),
-    .d2h    (tl_rv_core_ibex__corei_o)
+    .h2d    (tl_rv_core_ibex_mio__corei_i),
+    .d2h    (tl_rv_core_ibex_mio__corei_o)
   );
-  bind xbar_mio_main tlul_assert #(.EndpointType("Device")) tlul_assert_host_rv_core_ibex__cored (
+  bind xbar_mio_main tlul_assert #(.EndpointType("Device")) tlul_assert_host_rv_core_ibex_mio__cored (
     .clk_i  (clk_main_i),
     .rst_ni (rst_main_ni),
-    .h2d    (tl_rv_core_ibex__cored_i),
-    .d2h    (tl_rv_core_ibex__cored_o)
+    .h2d    (tl_rv_core_ibex_mio__cored_i),
+    .d2h    (tl_rv_core_ibex_mio__cored_o)
   );
   bind xbar_mio_main tlul_assert #(.EndpointType("Device")) tlul_assert_host_rv_dm__sba (
     .clk_i  (clk_main_i),
@@ -104,11 +104,11 @@ module xbar_mio_main_bind;
     .h2d    (tl_rv_plic_mio_o),
     .d2h    (tl_rv_plic_mio_i)
   );
-  bind xbar_mio_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_rv_core_ibex__cfg (
+  bind xbar_mio_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_rv_core_ibex_mio__cfg (
     .clk_i  (clk_main_i),
     .rst_ni (rst_main_ni),
-    .h2d    (tl_rv_core_ibex__cfg_o),
-    .d2h    (tl_rv_core_ibex__cfg_i)
+    .h2d    (tl_rv_core_ibex_mio__cfg_o),
+    .d2h    (tl_rv_core_ibex_mio__cfg_i)
   );
   bind xbar_mio_main tlul_assert #(.EndpointType("Host")) tlul_assert_device_sram_ctrl_main__regs (
     .clk_i  (clk_main_i),

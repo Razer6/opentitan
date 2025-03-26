@@ -128,7 +128,7 @@ package top_pwc_soc_mbx_pkg;
     TopPwcAlertPeripheralMbxPcie0 = 15,
     TopPwcAlertPeripheralRaclCtrl = 16,
     TopPwcAlertPeripheralAcRangeCheck = 17,
-    TopPwcAlertPeripheralRvCoreIbex = 18,
+    TopPwcAlertPeripheralRvCoreIbexPwc = 18,
     TopPwcOutgoingAlertPwcPeripheralCount
   } outgoing_alert_pwc_peripheral_e;
 
@@ -161,10 +161,10 @@ package top_pwc_soc_mbx_pkg;
     TopPwcAlertIdRaclCtrlRecovCtrlUpdateErr = 24,
     TopPwcAlertIdAcRangeCheckRecovCtrlUpdateErr = 25,
     TopPwcAlertIdAcRangeCheckFatalFault = 26,
-    TopPwcAlertIdRvCoreIbexFatalSwErr = 27,
-    TopPwcAlertIdRvCoreIbexRecovSwErr = 28,
-    TopPwcAlertIdRvCoreIbexFatalHwErr = 29,
-    TopPwcAlertIdRvCoreIbexRecovHwErr = 30,
+    TopPwcAlertIdRvCoreIbexPwcFatalSwErr = 27,
+    TopPwcAlertIdRvCoreIbexPwcRecovSwErr = 28,
+    TopPwcAlertIdRvCoreIbexPwcFatalHwErr = 29,
+    TopPwcAlertIdRvCoreIbexPwcRecovHwErr = 30,
     TopPwcOutgoingAlertPwcIdCount
   } outgoing_alert_pwc_id_e;
 

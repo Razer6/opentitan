@@ -388,22 +388,22 @@ extern "C" {
 #define TOP_MIO_MBX_PCIE0_CORE_SIZE_BYTES 0x80u
 
 /**
- * Peripheral base address for cfg device on rv_core_ibex in top mio.
+ * Peripheral base address for cfg device on rv_core_ibex_mio in top mio.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_MIO_RV_CORE_IBEX_CFG_BASE_ADDR 0x211F0000u
+#define TOP_MIO_RV_CORE_IBEX_MIO_CFG_BASE_ADDR 0x211F0000u
 
 /**
- * Peripheral size for cfg device on rv_core_ibex in top mio.
+ * Peripheral size for cfg device on rv_core_ibex_mio in top mio.
  *
  * This is the size (in bytes) of the peripheral's reserved memory area. All
  * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_MIO_RV_CORE_IBEX_CFG_BASE_ADDR and
- * `TOP_MIO_RV_CORE_IBEX_CFG_BASE_ADDR + TOP_MIO_RV_CORE_IBEX_CFG_SIZE_BYTES`.
+ * address between #TOP_MIO_RV_CORE_IBEX_MIO_CFG_BASE_ADDR and
+ * `TOP_MIO_RV_CORE_IBEX_MIO_CFG_BASE_ADDR + TOP_MIO_RV_CORE_IBEX_MIO_CFG_SIZE_BYTES`.
  */
-#define TOP_MIO_RV_CORE_IBEX_CFG_SIZE_BYTES 0x100u
+#define TOP_MIO_RV_CORE_IBEX_MIO_CFG_SIZE_BYTES 0x100u
 
 
 /**

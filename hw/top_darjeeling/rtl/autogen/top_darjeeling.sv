@@ -2845,10 +2845,10 @@ module top_darjeeling #(
   // [126]: racl_ctrl_recov_ctrl_update_err
   // [127]: ac_range_check_recov_ctrl_update_err
   // [128]: ac_range_check_fatal_fault
-  // [129]: rv_core_ibex_fatal_sw_err
-  // [130]: rv_core_ibex_recov_sw_err
-  // [131]: rv_core_ibex_fatal_hw_err
-  // [132]: rv_core_ibex_recov_hw_err
+  // [129]: rv_core_ibex_mio_fatal_sw_err
+  // [130]: rv_core_ibex_mio_recov_sw_err
+  // [131]: rv_core_ibex_mio_fatal_hw_err
+  // [132]: rv_core_ibex_mio_recov_hw_err
   assign alert_tx[132:103] = incoming_alert_mio_tx_i;
   assign incoming_alert_mio_rx_o = alert_rx[132:103];
 
@@ -2880,10 +2880,10 @@ module top_darjeeling #(
   // [157]: racl_ctrl_recov_ctrl_update_err
   // [158]: ac_range_check_recov_ctrl_update_err
   // [159]: ac_range_check_fatal_fault
-  // [160]: rv_core_ibex_fatal_sw_err
-  // [161]: rv_core_ibex_recov_sw_err
-  // [162]: rv_core_ibex_fatal_hw_err
-  // [163]: rv_core_ibex_recov_hw_err
+  // [160]: rv_core_ibex_pwc_fatal_sw_err
+  // [161]: rv_core_ibex_pwc_recov_sw_err
+  // [162]: rv_core_ibex_pwc_fatal_hw_err
+  // [163]: rv_core_ibex_pwc_recov_hw_err
   assign alert_tx[163:133] = incoming_alert_pwc_tx_i;
   assign incoming_alert_pwc_rx_o = alert_rx[163:133];
 

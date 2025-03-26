@@ -406,22 +406,22 @@ extern "C" {
 #define TOP_PWC_MBX_PCIE0_CORE_SIZE_BYTES 0x80u
 
 /**
- * Peripheral base address for cfg device on rv_core_ibex in top pwc.
+ * Peripheral base address for cfg device on rv_core_ibex_pwc in top pwc.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_PWC_RV_CORE_IBEX_CFG_BASE_ADDR 0x211F0000u
+#define TOP_PWC_RV_CORE_IBEX_PWC_CFG_BASE_ADDR 0x211F0000u
 
 /**
- * Peripheral size for cfg device on rv_core_ibex in top pwc.
+ * Peripheral size for cfg device on rv_core_ibex_pwc in top pwc.
  *
  * This is the size (in bytes) of the peripheral's reserved memory area. All
  * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_PWC_RV_CORE_IBEX_CFG_BASE_ADDR and
- * `TOP_PWC_RV_CORE_IBEX_CFG_BASE_ADDR + TOP_PWC_RV_CORE_IBEX_CFG_SIZE_BYTES`.
+ * address between #TOP_PWC_RV_CORE_IBEX_PWC_CFG_BASE_ADDR and
+ * `TOP_PWC_RV_CORE_IBEX_PWC_CFG_BASE_ADDR + TOP_PWC_RV_CORE_IBEX_PWC_CFG_SIZE_BYTES`.
  */
-#define TOP_PWC_RV_CORE_IBEX_CFG_SIZE_BYTES 0x100u
+#define TOP_PWC_RV_CORE_IBEX_PWC_CFG_SIZE_BYTES 0x100u
 
 
 /**

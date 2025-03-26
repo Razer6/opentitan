@@ -6,47 +6,47 @@
 
 package tl_pwc_main_pkg;
 
-  localparam logic [31:0] ADDR_SPACE_RV_DM__REGS          = 32'h 21200000;
-  localparam logic [31:0] ADDR_SPACE_RV_DM__MEM           = 32'h 00040000;
-  localparam logic [0:0][31:0] ADDR_SPACE_PWC_PERI             = {
+  localparam logic [31:0] ADDR_SPACE_RV_DM__REGS           = 32'h 21200000;
+  localparam logic [31:0] ADDR_SPACE_RV_DM__MEM            = 32'h 00040000;
+  localparam logic [0:0][31:0] ADDR_SPACE_PWC_PERI              = {
     32'h 30000000
   };
-  localparam logic [31:0] ADDR_SPACE_PWC_SOC_PROXY__CTN   = 32'h 40000000;
-  localparam logic [31:0] ADDR_SPACE_RV_PLIC_PWC          = 32'h 28000000;
-  localparam logic [31:0] ADDR_SPACE_RV_CORE_IBEX__CFG    = 32'h 211f0000;
-  localparam logic [31:0] ADDR_SPACE_SRAM_CTRL_MAIN__REGS = 32'h 211c0000;
-  localparam logic [31:0] ADDR_SPACE_SRAM_CTRL_MAIN__RAM  = 32'h 10000000;
-  localparam logic [31:0] ADDR_SPACE_SRAM_CTRL_MBOX__REGS = 32'h 211d0000;
-  localparam logic [31:0] ADDR_SPACE_SRAM_CTRL_MBOX__RAM  = 32'h 11000000;
-  localparam logic [31:0] ADDR_SPACE_DMA                  = 32'h 22010000;
-  localparam logic [31:0] ADDR_SPACE_MBX0__CORE           = 32'h 22000000;
-  localparam logic [31:0] ADDR_SPACE_MBX1__CORE           = 32'h 22000100;
-  localparam logic [31:0] ADDR_SPACE_MBX2__CORE           = 32'h 22000200;
-  localparam logic [31:0] ADDR_SPACE_MBX3__CORE           = 32'h 22000300;
-  localparam logic [31:0] ADDR_SPACE_MBX4__CORE           = 32'h 22000400;
-  localparam logic [31:0] ADDR_SPACE_MBX5__CORE           = 32'h 22000500;
-  localparam logic [31:0] ADDR_SPACE_MBX_PCIE0__CORE      = 32'h 22040000;
+  localparam logic [31:0] ADDR_SPACE_PWC_SOC_PROXY__CTN    = 32'h 40000000;
+  localparam logic [31:0] ADDR_SPACE_RV_PLIC_PWC           = 32'h 28000000;
+  localparam logic [31:0] ADDR_SPACE_RV_CORE_IBEX_PWC__CFG = 32'h 211f0000;
+  localparam logic [31:0] ADDR_SPACE_SRAM_CTRL_MAIN__REGS  = 32'h 211c0000;
+  localparam logic [31:0] ADDR_SPACE_SRAM_CTRL_MAIN__RAM   = 32'h 10000000;
+  localparam logic [31:0] ADDR_SPACE_SRAM_CTRL_MBOX__REGS  = 32'h 211d0000;
+  localparam logic [31:0] ADDR_SPACE_SRAM_CTRL_MBOX__RAM   = 32'h 11000000;
+  localparam logic [31:0] ADDR_SPACE_DMA                   = 32'h 22010000;
+  localparam logic [31:0] ADDR_SPACE_MBX0__CORE            = 32'h 22000000;
+  localparam logic [31:0] ADDR_SPACE_MBX1__CORE            = 32'h 22000100;
+  localparam logic [31:0] ADDR_SPACE_MBX2__CORE            = 32'h 22000200;
+  localparam logic [31:0] ADDR_SPACE_MBX3__CORE            = 32'h 22000300;
+  localparam logic [31:0] ADDR_SPACE_MBX4__CORE            = 32'h 22000400;
+  localparam logic [31:0] ADDR_SPACE_MBX5__CORE            = 32'h 22000500;
+  localparam logic [31:0] ADDR_SPACE_MBX_PCIE0__CORE       = 32'h 22040000;
 
-  localparam logic [31:0] ADDR_MASK_RV_DM__REGS          = 32'h 0000000f;
-  localparam logic [31:0] ADDR_MASK_RV_DM__MEM           = 32'h 00000fff;
-  localparam logic [0:0][31:0] ADDR_MASK_PWC_PERI             = {
+  localparam logic [31:0] ADDR_MASK_RV_DM__REGS           = 32'h 0000000f;
+  localparam logic [31:0] ADDR_MASK_RV_DM__MEM            = 32'h 00000fff;
+  localparam logic [0:0][31:0] ADDR_MASK_PWC_PERI              = {
     32'h 007fffff
   };
-  localparam logic [31:0] ADDR_MASK_PWC_SOC_PROXY__CTN   = 32'h 3fffffff;
-  localparam logic [31:0] ADDR_MASK_RV_PLIC_PWC          = 32'h 07ffffff;
-  localparam logic [31:0] ADDR_MASK_RV_CORE_IBEX__CFG    = 32'h 000000ff;
-  localparam logic [31:0] ADDR_MASK_SRAM_CTRL_MAIN__REGS = 32'h 0000003f;
-  localparam logic [31:0] ADDR_MASK_SRAM_CTRL_MAIN__RAM  = 32'h 0000ffff;
-  localparam logic [31:0] ADDR_MASK_SRAM_CTRL_MBOX__REGS = 32'h 0000003f;
-  localparam logic [31:0] ADDR_MASK_SRAM_CTRL_MBOX__RAM  = 32'h 00000fff;
-  localparam logic [31:0] ADDR_MASK_DMA                  = 32'h 000001ff;
-  localparam logic [31:0] ADDR_MASK_MBX0__CORE           = 32'h 0000007f;
-  localparam logic [31:0] ADDR_MASK_MBX1__CORE           = 32'h 0000007f;
-  localparam logic [31:0] ADDR_MASK_MBX2__CORE           = 32'h 0000007f;
-  localparam logic [31:0] ADDR_MASK_MBX3__CORE           = 32'h 0000007f;
-  localparam logic [31:0] ADDR_MASK_MBX4__CORE           = 32'h 0000007f;
-  localparam logic [31:0] ADDR_MASK_MBX5__CORE           = 32'h 0000007f;
-  localparam logic [31:0] ADDR_MASK_MBX_PCIE0__CORE      = 32'h 0000007f;
+  localparam logic [31:0] ADDR_MASK_PWC_SOC_PROXY__CTN    = 32'h 3fffffff;
+  localparam logic [31:0] ADDR_MASK_RV_PLIC_PWC           = 32'h 07ffffff;
+  localparam logic [31:0] ADDR_MASK_RV_CORE_IBEX_PWC__CFG = 32'h 000000ff;
+  localparam logic [31:0] ADDR_MASK_SRAM_CTRL_MAIN__REGS  = 32'h 0000003f;
+  localparam logic [31:0] ADDR_MASK_SRAM_CTRL_MAIN__RAM   = 32'h 0000ffff;
+  localparam logic [31:0] ADDR_MASK_SRAM_CTRL_MBOX__REGS  = 32'h 0000003f;
+  localparam logic [31:0] ADDR_MASK_SRAM_CTRL_MBOX__RAM   = 32'h 00000fff;
+  localparam logic [31:0] ADDR_MASK_DMA                   = 32'h 000001ff;
+  localparam logic [31:0] ADDR_MASK_MBX0__CORE            = 32'h 0000007f;
+  localparam logic [31:0] ADDR_MASK_MBX1__CORE            = 32'h 0000007f;
+  localparam logic [31:0] ADDR_MASK_MBX2__CORE            = 32'h 0000007f;
+  localparam logic [31:0] ADDR_MASK_MBX3__CORE            = 32'h 0000007f;
+  localparam logic [31:0] ADDR_MASK_MBX4__CORE            = 32'h 0000007f;
+  localparam logic [31:0] ADDR_MASK_MBX5__CORE            = 32'h 0000007f;
+  localparam logic [31:0] ADDR_MASK_MBX_PCIE0__CORE       = 32'h 0000007f;
 
   localparam int N_HOST   = 11;
   localparam int N_DEVICE = 18;
@@ -57,7 +57,7 @@ package tl_pwc_main_pkg;
     TlPwcPeri = 2,
     TlPwcSocProxyCtn = 3,
     TlRvPlicPwc = 4,
-    TlRvCoreIbexCfg = 5,
+    TlRvCoreIbexPwcCfg = 5,
     TlSramCtrlMainRegs = 6,
     TlSramCtrlMainRam = 7,
     TlSramCtrlMboxRegs = 8,
@@ -73,8 +73,8 @@ package tl_pwc_main_pkg;
   } tl_device_e;
 
   typedef enum int {
-    TlRvCoreIbexCorei = 0,
-    TlRvCoreIbexCored = 1,
+    TlRvCoreIbexPwcCorei = 0,
+    TlRvCoreIbexPwcCored = 1,
     TlRvDmSba = 2,
     TlDmaHost = 3,
     TlMbx0Sram = 4,

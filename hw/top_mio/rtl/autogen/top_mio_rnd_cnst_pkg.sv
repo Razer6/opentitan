@@ -83,25 +83,25 @@ package top_mio_rnd_cnst_pkg;
   };
 
   ////////////////////////////////////////////
-  // rv_core_ibex
+  // rv_core_ibex_mio
   ////////////////////////////////////////////
   // Default seed of the PRNG used for random instructions.
-  parameter ibex_pkg::lfsr_seed_t RndCnstRvCoreIbexLfsrSeed = {
+  parameter ibex_pkg::lfsr_seed_t RndCnstRvCoreIbexMioLfsrSeed = {
     32'h93709238
   };
 
   // Permutation applied to the LFSR of the PRNG used for random instructions.
-  parameter ibex_pkg::lfsr_perm_t RndCnstRvCoreIbexLfsrPerm = {
+  parameter ibex_pkg::lfsr_perm_t RndCnstRvCoreIbexMioLfsrPerm = {
     160'h92B5C754_3B4429D2_1807FBFC_9165788B_27768EC5
   };
 
   // Default icache scrambling key
-  parameter logic [ibex_pkg::SCRAMBLE_KEY_W-1:0] RndCnstRvCoreIbexIbexKeyDefault = {
+  parameter logic [ibex_pkg::SCRAMBLE_KEY_W-1:0] RndCnstRvCoreIbexMioIbexKeyDefault = {
     128'h7669266C_FD1F508A_C4E1C5F6_668AFD03
   };
 
   // Default icache scrambling nonce
-  parameter logic [ibex_pkg::SCRAMBLE_NONCE_W-1:0] RndCnstRvCoreIbexIbexNonceDefault = {
+  parameter logic [ibex_pkg::SCRAMBLE_NONCE_W-1:0] RndCnstRvCoreIbexMioIbexNonceDefault = {
     64'h4DC05DF9_EC203B9E
   };
 

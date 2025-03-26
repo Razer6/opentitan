@@ -6,7 +6,7 @@
 // all reset signals should be generated from one reset signal to not make any deadlock
 //
 // Interconnect
-// rv_core_ibex.corei
+// rv_core_ibex_mio.corei
 //   -> s1n_29
 //     -> sm1_30
 //       -> rv_dm.mem
@@ -14,7 +14,7 @@
 //       -> sram_ctrl_main.ram
 //     -> sm1_32
 //       -> mio_soc_proxy.ctn
-// rv_core_ibex.cored
+// rv_core_ibex_mio.cored
 //   -> s1n_33
 //     -> sm1_30
 //       -> rv_dm.mem
@@ -30,7 +30,7 @@
 //     -> sm1_38
 //       -> sram_ctrl_main.regs
 //     -> sm1_39
-//       -> rv_core_ibex.cfg
+//       -> rv_core_ibex_mio.cfg
 //     -> sm1_40
 //       -> sram_ctrl_mbox.ram
 //     -> sm1_41
@@ -69,7 +69,7 @@
 //     -> sm1_38
 //       -> sram_ctrl_main.regs
 //     -> sm1_39
-//       -> rv_core_ibex.cfg
+//       -> rv_core_ibex_mio.cfg
 //     -> sm1_40
 //       -> sram_ctrl_mbox.ram
 //     -> sm1_41
@@ -139,10 +139,10 @@ module xbar_mio_main (
   input rst_fixed_ni,
 
   // Host interfaces
-  input  tlul_pkg::tl_h2d_t tl_rv_core_ibex__corei_i,
-  output tlul_pkg::tl_d2h_t tl_rv_core_ibex__corei_o,
-  input  tlul_pkg::tl_h2d_t tl_rv_core_ibex__cored_i,
-  output tlul_pkg::tl_d2h_t tl_rv_core_ibex__cored_o,
+  input  tlul_pkg::tl_h2d_t tl_rv_core_ibex_mio__corei_i,
+  output tlul_pkg::tl_d2h_t tl_rv_core_ibex_mio__corei_o,
+  input  tlul_pkg::tl_h2d_t tl_rv_core_ibex_mio__cored_i,
+  output tlul_pkg::tl_d2h_t tl_rv_core_ibex_mio__cored_o,
   input  tlul_pkg::tl_h2d_t tl_rv_dm__sba_i,
   output tlul_pkg::tl_d2h_t tl_rv_dm__sba_o,
   input  tlul_pkg::tl_h2d_t tl_dma__host_i,
@@ -173,8 +173,8 @@ module xbar_mio_main (
   input  tlul_pkg::tl_d2h_t tl_mio_soc_proxy__ctn_i,
   output tlul_pkg::tl_h2d_t tl_rv_plic_mio_o,
   input  tlul_pkg::tl_d2h_t tl_rv_plic_mio_i,
-  output tlul_pkg::tl_h2d_t tl_rv_core_ibex__cfg_o,
-  input  tlul_pkg::tl_d2h_t tl_rv_core_ibex__cfg_i,
+  output tlul_pkg::tl_h2d_t tl_rv_core_ibex_mio__cfg_o,
+  input  tlul_pkg::tl_d2h_t tl_rv_core_ibex_mio__cfg_i,
   output tlul_pkg::tl_h2d_t tl_sram_ctrl_main__regs_o,
   input  tlul_pkg::tl_d2h_t tl_sram_ctrl_main__regs_i,
   output tlul_pkg::tl_h2d_t tl_sram_ctrl_main__ram_o,
@@ -604,8 +604,8 @@ module xbar_mio_main (
   assign tl_sm1_40_us_h2d[9] = tl_s1n_58_ds_h2d[0];
   assign tl_s1n_58_ds_d2h[0] = tl_sm1_40_us_d2h[9];
 
-  assign tl_s1n_29_us_h2d = tl_rv_core_ibex__corei_i;
-  assign tl_rv_core_ibex__corei_o = tl_s1n_29_us_d2h;
+  assign tl_s1n_29_us_h2d = tl_rv_core_ibex_mio__corei_i;
+  assign tl_rv_core_ibex_mio__corei_o = tl_s1n_29_us_d2h;
 
   assign tl_rv_dm__mem_o = tl_sm1_30_ds_h2d;
   assign tl_sm1_30_ds_d2h = tl_rv_dm__mem_i;
@@ -616,8 +616,8 @@ module xbar_mio_main (
   assign tl_mio_soc_proxy__ctn_o = tl_sm1_32_ds_h2d;
   assign tl_sm1_32_ds_d2h = tl_mio_soc_proxy__ctn_i;
 
-  assign tl_s1n_33_us_h2d = tl_rv_core_ibex__cored_i;
-  assign tl_rv_core_ibex__cored_o = tl_s1n_33_us_d2h;
+  assign tl_s1n_33_us_h2d = tl_rv_core_ibex_mio__cored_i;
+  assign tl_rv_core_ibex_mio__cored_o = tl_s1n_33_us_d2h;
 
   assign tl_rv_dm__regs_o = tl_sm1_34_ds_h2d;
   assign tl_sm1_34_ds_d2h = tl_rv_dm__regs_i;
@@ -634,8 +634,8 @@ module xbar_mio_main (
   assign tl_sram_ctrl_main__regs_o = tl_sm1_38_ds_h2d;
   assign tl_sm1_38_ds_d2h = tl_sram_ctrl_main__regs_i;
 
-  assign tl_rv_core_ibex__cfg_o = tl_sm1_39_ds_h2d;
-  assign tl_sm1_39_ds_d2h = tl_rv_core_ibex__cfg_i;
+  assign tl_rv_core_ibex_mio__cfg_o = tl_sm1_39_ds_h2d;
+  assign tl_sm1_39_ds_d2h = tl_rv_core_ibex_mio__cfg_i;
 
   assign tl_sram_ctrl_mbox__ram_o = tl_sm1_40_ds_h2d;
   assign tl_sm1_40_ds_d2h = tl_sram_ctrl_mbox__ram_i;
@@ -739,7 +739,7 @@ end
       dev_sel_s1n_33 = 5'd5;
 
     end else if ((tl_s1n_33_us_h2d.a_address &
-                  ~(ADDR_MASK_RV_CORE_IBEX__CFG)) == ADDR_SPACE_RV_CORE_IBEX__CFG) begin
+                  ~(ADDR_MASK_RV_CORE_IBEX_MIO__CFG)) == ADDR_SPACE_RV_CORE_IBEX_MIO__CFG) begin
       dev_sel_s1n_33 = 5'd6;
 
     end else if ((tl_s1n_33_us_h2d.a_address &
@@ -816,7 +816,7 @@ end
       dev_sel_s1n_50 = 5'd5;
 
     end else if ((tl_s1n_50_us_h2d.a_address &
-                  ~(ADDR_MASK_RV_CORE_IBEX__CFG)) == ADDR_SPACE_RV_CORE_IBEX__CFG) begin
+                  ~(ADDR_MASK_RV_CORE_IBEX_MIO__CFG)) == ADDR_SPACE_RV_CORE_IBEX_MIO__CFG) begin
       dev_sel_s1n_50 = 5'd6;
 
     end else if ((tl_s1n_50_us_h2d.a_address &

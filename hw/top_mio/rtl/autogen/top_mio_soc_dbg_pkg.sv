@@ -47,7 +47,7 @@ package top_mio_soc_dbg_pkg;
     TopMioAlertPeripheralMbxPcie0 = 14,
     TopMioAlertPeripheralRaclCtrl = 15,
     TopMioAlertPeripheralAcRangeCheck = 16,
-    TopMioAlertPeripheralRvCoreIbex = 17,
+    TopMioAlertPeripheralRvCoreIbexMio = 17,
     TopMioOutgoingAlertMioPeripheralCount
   } outgoing_alert_mio_peripheral_e;
 
@@ -79,10 +79,10 @@ package top_mio_soc_dbg_pkg;
     TopMioAlertIdRaclCtrlRecovCtrlUpdateErr = 23,
     TopMioAlertIdAcRangeCheckRecovCtrlUpdateErr = 24,
     TopMioAlertIdAcRangeCheckFatalFault = 25,
-    TopMioAlertIdRvCoreIbexFatalSwErr = 26,
-    TopMioAlertIdRvCoreIbexRecovSwErr = 27,
-    TopMioAlertIdRvCoreIbexFatalHwErr = 28,
-    TopMioAlertIdRvCoreIbexRecovHwErr = 29,
+    TopMioAlertIdRvCoreIbexMioFatalSwErr = 26,
+    TopMioAlertIdRvCoreIbexMioRecovSwErr = 27,
+    TopMioAlertIdRvCoreIbexMioFatalHwErr = 28,
+    TopMioAlertIdRvCoreIbexMioRecovHwErr = 29,
     TopMioOutgoingAlertMioIdCount
   } outgoing_alert_mio_id_e;
 

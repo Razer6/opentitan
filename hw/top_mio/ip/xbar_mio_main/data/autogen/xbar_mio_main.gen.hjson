@@ -39,13 +39,13 @@
   ]
   connections:
   {
-    rv_core_ibex.corei:
+    rv_core_ibex_mio.corei:
     [
       rv_dm.mem
       sram_ctrl_main.ram
       mio_soc_proxy.ctn
     ]
-    rv_core_ibex.cored:
+    rv_core_ibex_mio.cored:
     [
       rv_dm.mem
       rv_dm.regs
@@ -53,7 +53,7 @@
       mio_peri
       rv_plic_mio
       sram_ctrl_main.regs
-      rv_core_ibex.cfg
+      rv_core_ibex_mio.cfg
       sram_ctrl_mbox.ram
       sram_ctrl_mbox.regs
       mio_soc_proxy.ctn
@@ -74,7 +74,7 @@
       mio_peri
       rv_plic_mio
       sram_ctrl_main.regs
-      rv_core_ibex.cfg
+      rv_core_ibex_mio.cfg
       sram_ctrl_mbox.ram
       sram_ctrl_mbox.regs
       mio_soc_proxy.ctn
@@ -126,7 +126,7 @@
   nodes:
   [
     {
-      name: rv_core_ibex.corei
+      name: rv_core_ibex_mio.corei
       type: host
       addr_space: hart
       clock: clk_main_i
@@ -139,7 +139,7 @@
       rsp_fifo_pass: true
     }
     {
-      name: rv_core_ibex.cored
+      name: rv_core_ibex_mio.cored
       type: host
       addr_space: hart
       clock: clk_main_i
@@ -274,7 +274,7 @@
       pipeline: true
     }
     {
-      name: rv_core_ibex.cfg
+      name: rv_core_ibex_mio.cfg
       type: device
       clock: clk_main_i
       reset: rst_main_ni
@@ -670,7 +670,7 @@
   inter_signal_list:
   [
     {
-      name: tl_rv_core_ibex__corei
+      name: tl_rv_core_ibex_mio__corei
       struct: tl
       package: tlul_pkg
       type: req_rsp
@@ -679,11 +679,11 @@
       width: 1
       default: ""
       end_idx: -1
-      top_signame: mio_main_tl_rv_core_ibex__corei
+      top_signame: mio_main_tl_rv_core_ibex_mio__corei
       index: -1
     }
     {
-      name: tl_rv_core_ibex__cored
+      name: tl_rv_core_ibex_mio__cored
       struct: tl
       package: tlul_pkg
       type: req_rsp
@@ -692,7 +692,7 @@
       width: 1
       default: ""
       end_idx: -1
-      top_signame: mio_main_tl_rv_core_ibex__cored
+      top_signame: mio_main_tl_rv_core_ibex_mio__cored
       index: -1
     }
     {
@@ -874,7 +874,7 @@
       index: -1
     }
     {
-      name: tl_rv_core_ibex__cfg
+      name: tl_rv_core_ibex_mio__cfg
       struct: tl
       package: tlul_pkg
       type: req_rsp
@@ -882,7 +882,7 @@
       inst_name: mio_main
       width: 1
       default: ""
-      top_signame: rv_core_ibex_cfg_tl_d
+      top_signame: rv_core_ibex_mio_cfg_tl_d
       index: -1
     }
     {

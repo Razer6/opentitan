@@ -212,14 +212,14 @@ package top_mio_pkg;
   parameter int unsigned TOP_MIO_MBX_PCIE0_CORE_SIZE_BYTES = 32'h80;
 
   /**
-   * Peripheral base address for cfg device on rv_core_ibex in top mio.
+   * Peripheral base address for cfg device on rv_core_ibex_mio in top mio.
    */
-  parameter int unsigned TOP_MIO_RV_CORE_IBEX_CFG_BASE_ADDR = 32'h211F0000;
+  parameter int unsigned TOP_MIO_RV_CORE_IBEX_MIO_CFG_BASE_ADDR = 32'h211F0000;
 
   /**
-   * Peripheral size in bytes for cfg device on rv_core_ibex in top mio.
+   * Peripheral size in bytes for cfg device on rv_core_ibex_mio in top mio.
    */
-  parameter int unsigned TOP_MIO_RV_CORE_IBEX_CFG_SIZE_BYTES = 32'h100;
+  parameter int unsigned TOP_MIO_RV_CORE_IBEX_MIO_CFG_SIZE_BYTES = 32'h100;
 
   /**
    * Memory base address for ctn in top mio.
@@ -297,7 +297,7 @@ package top_mio_pkg;
     TopMioAlertPeripheralMbxPcie0 = 14,
     TopMioAlertPeripheralRaclCtrl = 15,
     TopMioAlertPeripheralAcRangeCheck = 16,
-    TopMioAlertPeripheralRvCoreIbex = 17,
+    TopMioAlertPeripheralRvCoreIbexMio = 17,
     TopMioOutgoingAlertMioPeripheralCount
   } outgoing_alert_mio_peripheral_e;
 
@@ -329,10 +329,10 @@ package top_mio_pkg;
     TopMioAlertIdRaclCtrlRecovCtrlUpdateErr = 23,
     TopMioAlertIdAcRangeCheckRecovCtrlUpdateErr = 24,
     TopMioAlertIdAcRangeCheckFatalFault = 25,
-    TopMioAlertIdRvCoreIbexFatalSwErr = 26,
-    TopMioAlertIdRvCoreIbexRecovSwErr = 27,
-    TopMioAlertIdRvCoreIbexFatalHwErr = 28,
-    TopMioAlertIdRvCoreIbexRecovHwErr = 29,
+    TopMioAlertIdRvCoreIbexMioFatalSwErr = 26,
+    TopMioAlertIdRvCoreIbexMioRecovSwErr = 27,
+    TopMioAlertIdRvCoreIbexMioFatalHwErr = 28,
+    TopMioAlertIdRvCoreIbexMioRecovHwErr = 29,
     TopMioOutgoingAlertMioIdCount
   } outgoing_alert_mio_id_e;
 

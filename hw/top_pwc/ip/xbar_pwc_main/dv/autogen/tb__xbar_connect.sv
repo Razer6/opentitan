@@ -17,8 +17,8 @@ initial force dut.rst_main_ni = rst_n;
 initial force dut.rst_fixed_ni = rst_n;
 
 // Host TileLink interface connections
-`CONNECT_TL_HOST_IF(rv_core_ibex__corei, dut, clk_main_i, rst_n)
-`CONNECT_TL_HOST_IF(rv_core_ibex__cored, dut, clk_main_i, rst_n)
+`CONNECT_TL_HOST_IF(rv_core_ibex_pwc__corei, dut, clk_main_i, rst_n)
+`CONNECT_TL_HOST_IF(rv_core_ibex_pwc__cored, dut, clk_main_i, rst_n)
 `CONNECT_TL_HOST_IF(rv_dm__sba, dut, clk_main_i, rst_n)
 `CONNECT_TL_HOST_IF(dma__host, dut, clk_main_i, rst_n)
 `CONNECT_TL_HOST_IF(mbx0__sram, dut, clk_main_i, rst_n)
@@ -35,7 +35,7 @@ initial force dut.rst_fixed_ni = rst_n;
 `CONNECT_TL_DEVICE_IF(pwc_peri, dut, clk_fixed_i, rst_n)
 `CONNECT_TL_DEVICE_IF(pwc_soc_proxy__ctn, dut, clk_main_i, rst_n)
 `CONNECT_TL_DEVICE_IF(rv_plic_pwc, dut, clk_main_i, rst_n)
-`CONNECT_TL_DEVICE_IF(rv_core_ibex__cfg, dut, clk_main_i, rst_n)
+`CONNECT_TL_DEVICE_IF(rv_core_ibex_pwc__cfg, dut, clk_main_i, rst_n)
 `CONNECT_TL_DEVICE_IF(sram_ctrl_main__regs, dut, clk_main_i, rst_n)
 `CONNECT_TL_DEVICE_IF(sram_ctrl_main__ram, dut, clk_main_i, rst_n)
 `CONNECT_TL_DEVICE_IF(sram_ctrl_mbox__regs, dut, clk_main_i, rst_n)

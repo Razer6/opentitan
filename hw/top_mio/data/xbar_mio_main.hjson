@@ -24,14 +24,14 @@
   // so use pipeline false where permissible by timing. If not, find a combination
   // that works.
   nodes: [
-    { name:  "rv_core_ibex.corei",
+    { name:  "rv_core_ibex_mio.corei",
       type:  "host",
       addr_space: "hart",
       clock: "clk_main_i",
       reset: "rst_main_ni",
       pipeline: false
     },
-    { name:  "rv_core_ibex.cored",
+    { name:  "rv_core_ibex_mio.cored",
       type:  "host",
       addr_space: "hart",
       clock: "clk_main_i",
@@ -81,7 +81,7 @@
       req_fifo_pass: false,
       rsp_fifo_pass: false,
     },
-    { name:      "rv_core_ibex.cfg",
+    { name:      "rv_core_ibex_mio.cfg",
       type:      "device",
       clock:     "clk_main_i"
       reset:     "rst_main_ni"
@@ -227,24 +227,24 @@
     },
   ],
   connections: {
-    // TODO: remove rv_core_ibex.corei - sram_ctrl_main.ram connection
-    rv_core_ibex.corei:  [
+    // TODO: remove rv_core_ibex_mio.corei - sram_ctrl_main.ram connection
+    rv_core_ibex_mio.corei:  [
       "rv_dm.mem", "sram_ctrl_main.ram", "mio_soc_proxy.ctn"],
-    rv_core_ibex.cored:  [
+    rv_core_ibex_mio.cored:  [
       "rv_dm.mem", "rv_dm.regs", "sram_ctrl_main.ram", "mio_peri",
       "rv_plic_mio", "sram_ctrl_main.regs",
-      "rv_core_ibex.cfg", "sram_ctrl_mbox.ram", "sram_ctrl_mbox.regs",
+      "rv_core_ibex_mio.cfg", "sram_ctrl_mbox.ram", "sram_ctrl_mbox.regs",
       "mio_soc_proxy.ctn", "dma", "mbx0.core", "mbx1.core",
       "mbx2.core", "mbx3.core", "mbx4.core", "mbx5.core", "mbx_pcie0.core"
     ],
     rv_dm.sba: [
       "rv_dm.mem", "rv_dm.regs", "sram_ctrl_main.ram", "mio_peri",
       "rv_plic_mio", "sram_ctrl_main.regs",
-      "rv_core_ibex.cfg", "sram_ctrl_mbox.ram", "sram_ctrl_mbox.regs",
+      "rv_core_ibex_mio.cfg", "sram_ctrl_mbox.ram", "sram_ctrl_mbox.regs",
       "mio_soc_proxy.ctn", "dma", "mbx0.core", "mbx1.core",
       "mbx2.core", "mbx3.core", "mbx4.core", "mbx5.core", "mbx_pcie0.core"
     ],
-    // This is the same set of devices that rv_core_ibex.cored is connected to,
+    // This is the same set of devices that rv_core_ibex_mio.cored is connected to,
     // but without ROM0/1 and RV_DM.
     dma.host: [
       "sram_ctrl_main.ram", "sram_ctrl_mbox.ram",

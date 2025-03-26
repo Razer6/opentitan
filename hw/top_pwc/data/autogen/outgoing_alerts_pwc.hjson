@@ -250,8 +250,8 @@
             lpg_idx: 1
         }
         {
-            name: rv_core_ibex_fatal_sw_err
-            module_name: rv_core_ibex
+            name: rv_core_ibex_pwc_fatal_sw_err
+            module_name: rv_core_ibex_pwc
             index: 27
             type: alert
             async: 1
@@ -259,8 +259,8 @@
             lpg_idx: 1
         }
         {
-            name: rv_core_ibex_recov_sw_err
-            module_name: rv_core_ibex
+            name: rv_core_ibex_pwc_recov_sw_err
+            module_name: rv_core_ibex_pwc
             index: 28
             type: alert
             async: 1
@@ -268,8 +268,8 @@
             lpg_idx: 1
         }
         {
-            name: rv_core_ibex_fatal_hw_err
-            module_name: rv_core_ibex
+            name: rv_core_ibex_pwc_fatal_hw_err
+            module_name: rv_core_ibex_pwc
             index: 29
             type: alert
             async: 1
@@ -277,8 +277,8 @@
             lpg_idx: 1
         }
         {
-            name: rv_core_ibex_recov_hw_err
-            module_name: rv_core_ibex
+            name: rv_core_ibex_pwc_recov_hw_err
+            module_name: rv_core_ibex_pwc
             index: 30
             type: alert
             async: 1

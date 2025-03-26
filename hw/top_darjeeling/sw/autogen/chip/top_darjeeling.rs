@@ -2161,14 +2161,14 @@ pub enum AlertId {
     IncomingMioAcRangeCheckRecovCtrlUpdateErr = 127,
     /// incoming_mio_ac_range_check_fatal_fault
     IncomingMioAcRangeCheckFatalFault = 128,
-    /// incoming_mio_rv_core_ibex_fatal_sw_err
-    IncomingMioRvCoreIbexFatalSwErr = 129,
-    /// incoming_mio_rv_core_ibex_recov_sw_err
-    IncomingMioRvCoreIbexRecovSwErr = 130,
-    /// incoming_mio_rv_core_ibex_fatal_hw_err
-    IncomingMioRvCoreIbexFatalHwErr = 131,
-    /// incoming_mio_rv_core_ibex_recov_hw_err
-    IncomingMioRvCoreIbexRecovHwErr = 132,
+    /// incoming_mio_rv_core_ibex_mio_fatal_sw_err
+    IncomingMioRvCoreIbexMioFatalSwErr = 129,
+    /// incoming_mio_rv_core_ibex_mio_recov_sw_err
+    IncomingMioRvCoreIbexMioRecovSwErr = 130,
+    /// incoming_mio_rv_core_ibex_mio_fatal_hw_err
+    IncomingMioRvCoreIbexMioFatalHwErr = 131,
+    /// incoming_mio_rv_core_ibex_mio_recov_hw_err
+    IncomingMioRvCoreIbexMioRecovHwErr = 132,
     /// incoming_pwc_gpio_fatal_fault
     IncomingPwcGpioFatalFault = 133,
     /// incoming_pwc_rv_timer_fatal_fault
@@ -2223,14 +2223,14 @@ pub enum AlertId {
     IncomingPwcAcRangeCheckRecovCtrlUpdateErr = 158,
     /// incoming_pwc_ac_range_check_fatal_fault
     IncomingPwcAcRangeCheckFatalFault = 159,
-    /// incoming_pwc_rv_core_ibex_fatal_sw_err
-    IncomingPwcRvCoreIbexFatalSwErr = 160,
-    /// incoming_pwc_rv_core_ibex_recov_sw_err
-    IncomingPwcRvCoreIbexRecovSwErr = 161,
-    /// incoming_pwc_rv_core_ibex_fatal_hw_err
-    IncomingPwcRvCoreIbexFatalHwErr = 162,
-    /// incoming_pwc_rv_core_ibex_recov_hw_err
-    IncomingPwcRvCoreIbexRecovHwErr = 163,
+    /// incoming_pwc_rv_core_ibex_pwc_fatal_sw_err
+    IncomingPwcRvCoreIbexPwcFatalSwErr = 160,
+    /// incoming_pwc_rv_core_ibex_pwc_recov_sw_err
+    IncomingPwcRvCoreIbexPwcRecovSwErr = 161,
+    /// incoming_pwc_rv_core_ibex_pwc_fatal_hw_err
+    IncomingPwcRvCoreIbexPwcFatalHwErr = 162,
+    /// incoming_pwc_rv_core_ibex_pwc_recov_hw_err
+    IncomingPwcRvCoreIbexPwcRecovHwErr = 163,
     /// incoming_mio_extra_alerts_integ_error
     IncomingMioExtraAlertsIntegError = 164,
     /// incoming_pwc_extra_alerts_integ_error
@@ -2410,10 +2410,10 @@ impl TryFrom<u32> for AlertId {
             126 => Ok(Self::IncomingMioRaclCtrlRecovCtrlUpdateErr),
             127 => Ok(Self::IncomingMioAcRangeCheckRecovCtrlUpdateErr),
             128 => Ok(Self::IncomingMioAcRangeCheckFatalFault),
-            129 => Ok(Self::IncomingMioRvCoreIbexFatalSwErr),
-            130 => Ok(Self::IncomingMioRvCoreIbexRecovSwErr),
-            131 => Ok(Self::IncomingMioRvCoreIbexFatalHwErr),
-            132 => Ok(Self::IncomingMioRvCoreIbexRecovHwErr),
+            129 => Ok(Self::IncomingMioRvCoreIbexMioFatalSwErr),
+            130 => Ok(Self::IncomingMioRvCoreIbexMioRecovSwErr),
+            131 => Ok(Self::IncomingMioRvCoreIbexMioFatalHwErr),
+            132 => Ok(Self::IncomingMioRvCoreIbexMioRecovHwErr),
             133 => Ok(Self::IncomingPwcGpioFatalFault),
             134 => Ok(Self::IncomingPwcRvTimerFatalFault),
             135 => Ok(Self::IncomingPwcAonTimerAonFatalFault),
@@ -2441,10 +2441,10 @@ impl TryFrom<u32> for AlertId {
             157 => Ok(Self::IncomingPwcRaclCtrlRecovCtrlUpdateErr),
             158 => Ok(Self::IncomingPwcAcRangeCheckRecovCtrlUpdateErr),
             159 => Ok(Self::IncomingPwcAcRangeCheckFatalFault),
-            160 => Ok(Self::IncomingPwcRvCoreIbexFatalSwErr),
-            161 => Ok(Self::IncomingPwcRvCoreIbexRecovSwErr),
-            162 => Ok(Self::IncomingPwcRvCoreIbexFatalHwErr),
-            163 => Ok(Self::IncomingPwcRvCoreIbexRecovHwErr),
+            160 => Ok(Self::IncomingPwcRvCoreIbexPwcFatalSwErr),
+            161 => Ok(Self::IncomingPwcRvCoreIbexPwcRecovSwErr),
+            162 => Ok(Self::IncomingPwcRvCoreIbexPwcFatalHwErr),
+            163 => Ok(Self::IncomingPwcRvCoreIbexPwcRecovHwErr),
             164 => Ok(Self::IncomingMioExtraAlertsIntegError),
             165 => Ok(Self::IncomingPwcExtraAlertsIntegError),
             166 => Ok(Self::IncomingRotExtraAlertsAmsIpWrapperIntegError),
@@ -2735,13 +2735,13 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 186] = [
     AlertPeripheral::External,
     // IncomingMioAcRangeCheckFatalFault -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingMioRvCoreIbexFatalSwErr -> AlertPeripheral::External
+    // IncomingMioRvCoreIbexMioFatalSwErr -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingMioRvCoreIbexRecovSwErr -> AlertPeripheral::External
+    // IncomingMioRvCoreIbexMioRecovSwErr -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingMioRvCoreIbexFatalHwErr -> AlertPeripheral::External
+    // IncomingMioRvCoreIbexMioFatalHwErr -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingMioRvCoreIbexRecovHwErr -> AlertPeripheral::External
+    // IncomingMioRvCoreIbexMioRecovHwErr -> AlertPeripheral::External
     AlertPeripheral::External,
     // IncomingPwcGpioFatalFault -> AlertPeripheral::External
     AlertPeripheral::External,
@@ -2797,13 +2797,13 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 186] = [
     AlertPeripheral::External,
     // IncomingPwcAcRangeCheckFatalFault -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingPwcRvCoreIbexFatalSwErr -> AlertPeripheral::External
+    // IncomingPwcRvCoreIbexPwcFatalSwErr -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingPwcRvCoreIbexRecovSwErr -> AlertPeripheral::External
+    // IncomingPwcRvCoreIbexPwcRecovSwErr -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingPwcRvCoreIbexFatalHwErr -> AlertPeripheral::External
+    // IncomingPwcRvCoreIbexPwcFatalHwErr -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingPwcRvCoreIbexRecovHwErr -> AlertPeripheral::External
+    // IncomingPwcRvCoreIbexPwcRecovHwErr -> AlertPeripheral::External
     AlertPeripheral::External,
     // IncomingMioExtraAlertsIntegError -> AlertPeripheral::External
     AlertPeripheral::External,

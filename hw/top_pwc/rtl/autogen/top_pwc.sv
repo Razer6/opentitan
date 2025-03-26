@@ -66,37 +66,38 @@ module top_pwc #(
   // parameters for racl_ctrl
   parameter int RaclCtrlNumExternalSubscribingIps = 1,
   // parameters for ac_range_check
-  // parameters for rv_core_ibex
-  parameter bit RvCoreIbexPMPEnable = 1,
-  parameter int unsigned RvCoreIbexPMPGranularity = 0,
-  parameter int unsigned RvCoreIbexPMPNumRegions = 16,
-  parameter int unsigned RvCoreIbexMHPMCounterNum = 10,
-  parameter int unsigned RvCoreIbexMHPMCounterWidth = 32,
-  parameter ibex_pkg::pmp_cfg_t RvCoreIbexPMPRstCfg[16] = ibex_pmp_reset_pkg::PwcPmpCfgRst,
-  parameter logic [33:0] RvCoreIbexPMPRstAddr[16] = ibex_pmp_reset_pkg::PwcPmpAddrRst,
-  parameter ibex_pkg::pmp_mseccfg_t RvCoreIbexPMPRstMsecCfg = ibex_pmp_reset_pkg::PwcPmpMseccfgRst,
-  parameter bit RvCoreIbexRV32E = 0,
-  parameter ibex_pkg::rv32m_e RvCoreIbexRV32M = ibex_pkg::RV32MSingleCycle,
-  parameter ibex_pkg::rv32b_e RvCoreIbexRV32B = ibex_pkg::RV32BOTEarlGrey,
-  parameter ibex_pkg::regfile_e RvCoreIbexRegFile = ibex_pkg::RegFileFF,
-  parameter bit RvCoreIbexBranchTargetALU = 1,
-  parameter bit RvCoreIbexWritebackStage = 1,
-  parameter bit RvCoreIbexICache = 1,
-  parameter bit RvCoreIbexICacheECC = 1,
-  parameter bit RvCoreIbexICacheScramble = 1,
-  parameter int unsigned RvCoreIbexICacheNWays = 2,
-  parameter bit RvCoreIbexBranchPredictor = 0,
-  parameter bit RvCoreIbexDbgTriggerEn = 1,
-  parameter int RvCoreIbexDbgHwBreakNum = 4,
-  parameter bit RvCoreIbexSecureIbex = 1,
-  parameter int unsigned RvCoreIbexDmBaseAddr = tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM,
-  parameter int unsigned RvCoreIbexDmAddrMask = tl_pwc_main_pkg::ADDR_MASK_RV_DM__MEM,
-  parameter int unsigned RvCoreIbexDmHaltAddr =
+  // parameters for rv_core_ibex_pwc
+  parameter bit RvCoreIbexPwcPMPEnable = 1,
+  parameter int unsigned RvCoreIbexPwcPMPGranularity = 0,
+  parameter int unsigned RvCoreIbexPwcPMPNumRegions = 16,
+  parameter int unsigned RvCoreIbexPwcMHPMCounterNum = 10,
+  parameter int unsigned RvCoreIbexPwcMHPMCounterWidth = 32,
+  parameter ibex_pkg::pmp_cfg_t RvCoreIbexPwcPMPRstCfg[16] = ibex_pmp_reset_pkg::PwcPmpCfgRst,
+  parameter logic [33:0] RvCoreIbexPwcPMPRstAddr[16] = ibex_pmp_reset_pkg::PwcPmpAddrRst,
+  parameter ibex_pkg::pmp_mseccfg_t RvCoreIbexPwcPMPRstMsecCfg =
+      ibex_pmp_reset_pkg::PwcPmpMseccfgRst,
+  parameter bit RvCoreIbexPwcRV32E = 0,
+  parameter ibex_pkg::rv32m_e RvCoreIbexPwcRV32M = ibex_pkg::RV32MSingleCycle,
+  parameter ibex_pkg::rv32b_e RvCoreIbexPwcRV32B = ibex_pkg::RV32BOTEarlGrey,
+  parameter ibex_pkg::regfile_e RvCoreIbexPwcRegFile = ibex_pkg::RegFileFF,
+  parameter bit RvCoreIbexPwcBranchTargetALU = 1,
+  parameter bit RvCoreIbexPwcWritebackStage = 1,
+  parameter bit RvCoreIbexPwcICache = 1,
+  parameter bit RvCoreIbexPwcICacheECC = 1,
+  parameter bit RvCoreIbexPwcICacheScramble = 1,
+  parameter int unsigned RvCoreIbexPwcICacheNWays = 2,
+  parameter bit RvCoreIbexPwcBranchPredictor = 0,
+  parameter bit RvCoreIbexPwcDbgTriggerEn = 1,
+  parameter int RvCoreIbexPwcDbgHwBreakNum = 4,
+  parameter bit RvCoreIbexPwcSecureIbex = 1,
+  parameter int unsigned RvCoreIbexPwcDmBaseAddr = tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM,
+  parameter int unsigned RvCoreIbexPwcDmAddrMask = tl_pwc_main_pkg::ADDR_MASK_RV_DM__MEM,
+  parameter int unsigned RvCoreIbexPwcDmHaltAddr =
       tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0],
-  parameter int unsigned RvCoreIbexDmExceptionAddr =
+  parameter int unsigned RvCoreIbexPwcDmExceptionAddr =
       tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0],
-  parameter bit RvCoreIbexPipeLine = 0,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexTlulHostUserRsvdBits = '0
+  parameter bit RvCoreIbexPwcPipeLine = 0,
+  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexPwcTlulHostUserRsvdBits = '0
 ) (
 
 
@@ -160,7 +161,7 @@ module top_pwc #(
   // mbx_pcie0
   // racl_ctrl
   // ac_range_check
-  // rv_core_ibex
+  // rv_core_ibex_pwc
 
   // All externally supplied clocks
 
@@ -208,9 +209,9 @@ module top_pwc #(
   localparam int SramCtrlMboxOutstanding = 6;
   // local parameters for racl_ctrl
   localparam int RaclCtrlNumSubscribingIps = 8;
-  // local parameters for rv_core_ibex
-  localparam int unsigned RvCoreIbexNEscalationSeverities = 4;
-  localparam int unsigned RvCoreIbexWidthPingCounter = 16;
+  // local parameters for rv_core_ibex_pwc
+  localparam int unsigned RvCoreIbexPwcNEscalationSeverities = 4;
+  localparam int unsigned RvCoreIbexPwcWidthPingCounter = 16;
 
   logic [219:0]  intr_vector;
   // Interrupt source list
@@ -259,10 +260,10 @@ module top_pwc #(
   tlul_pkg::tl_d2h_t       pwc_soc_proxy_muxed_tl_d2h;
   tlul_pkg::tl_h2d_t       ac_range_check_ctn_filtered_tl_h2d;
   tlul_pkg::tl_d2h_t       ac_range_check_ctn_filtered_tl_d2h;
-  tlul_pkg::tl_h2d_t       pwc_main_tl_rv_core_ibex__corei_req;
-  tlul_pkg::tl_d2h_t       pwc_main_tl_rv_core_ibex__corei_rsp;
-  tlul_pkg::tl_h2d_t       pwc_main_tl_rv_core_ibex__cored_req;
-  tlul_pkg::tl_d2h_t       pwc_main_tl_rv_core_ibex__cored_rsp;
+  tlul_pkg::tl_h2d_t       pwc_main_tl_rv_core_ibex_pwc__corei_req;
+  tlul_pkg::tl_d2h_t       pwc_main_tl_rv_core_ibex_pwc__corei_rsp;
+  tlul_pkg::tl_h2d_t       pwc_main_tl_rv_core_ibex_pwc__cored_req;
+  tlul_pkg::tl_d2h_t       pwc_main_tl_rv_core_ibex_pwc__cored_rsp;
   tlul_pkg::tl_h2d_t       pwc_main_tl_rv_dm__sba_req;
   tlul_pkg::tl_d2h_t       pwc_main_tl_rv_dm__sba_rsp;
   tlul_pkg::tl_h2d_t       rv_dm_regs_tl_d_req;
@@ -275,8 +276,8 @@ module top_pwc #(
   tlul_pkg::tl_d2h_t       pwc_soc_proxy_ctn_tl_rsp;
   tlul_pkg::tl_h2d_t       rv_plic_pwc_tl_req;
   tlul_pkg::tl_d2h_t       rv_plic_pwc_tl_rsp;
-  tlul_pkg::tl_h2d_t       rv_core_ibex_cfg_tl_d_req;
-  tlul_pkg::tl_d2h_t       rv_core_ibex_cfg_tl_d_rsp;
+  tlul_pkg::tl_h2d_t       rv_core_ibex_pwc_cfg_tl_d_req;
+  tlul_pkg::tl_d2h_t       rv_core_ibex_pwc_cfg_tl_d_rsp;
   tlul_pkg::tl_h2d_t       sram_ctrl_main_regs_tl_req;
   tlul_pkg::tl_d2h_t       sram_ctrl_main_regs_tl_rsp;
   tlul_pkg::tl_h2d_t       sram_ctrl_main_ram_tl_req;
@@ -347,8 +348,8 @@ module top_pwc #(
   tlul_pkg::tl_d2h_t       ac_range_check_tl_rsp;
   top_racl_pkg::racl_policy_vec_t       racl_ctrl_racl_policies;
   top_racl_pkg::racl_error_log_t [RaclCtrlNumSubscribingIps-1:0] racl_ctrl_racl_error;
-  logic       rv_core_ibex_irq_timer;
-  logic [31:0] rv_core_ibex_hart_id;
+  logic       rv_core_ibex_pwc_irq_timer;
+  logic [31:0] rv_core_ibex_pwc_hart_id;
   prim_mubi_pkg::mubi8_t       rv_dm_otp_dis_rv_dm_late_debug;
 
   // define mixed connection to port
@@ -362,8 +363,8 @@ module top_pwc #(
 
   // ibex specific assignments
   // TODO: This should be further automated in the future.
-  assign rv_core_ibex_irq_timer = intr_rv_timer_timer_expired_hart0_timer0;
-  assign rv_core_ibex_hart_id = '0;
+  assign rv_core_ibex_pwc_irq_timer = intr_rv_timer_timer_expired_hart0_timer0;
+  assign rv_core_ibex_pwc_hart_id = '0;
 
   // Unconditionally disable the late debug feature and enable early debug
   assign rv_dm_otp_dis_rv_dm_late_debug = prim_mubi_pkg::MuBi8True;
@@ -1029,41 +1030,41 @@ module top_pwc #(
   );
   rv_core_ibex_pwc #(
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[30:27]),
-    .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
-    .RndCnstLfsrPerm(RndCnstRvCoreIbexLfsrPerm),
-    .RndCnstIbexKeyDefault(RndCnstRvCoreIbexIbexKeyDefault),
-    .RndCnstIbexNonceDefault(RndCnstRvCoreIbexIbexNonceDefault),
-    .NEscalationSeverities(RvCoreIbexNEscalationSeverities),
-    .WidthPingCounter(RvCoreIbexWidthPingCounter),
-    .PMPEnable(RvCoreIbexPMPEnable),
-    .PMPGranularity(RvCoreIbexPMPGranularity),
-    .PMPNumRegions(RvCoreIbexPMPNumRegions),
-    .MHPMCounterNum(RvCoreIbexMHPMCounterNum),
-    .MHPMCounterWidth(RvCoreIbexMHPMCounterWidth),
-    .PMPRstCfg(RvCoreIbexPMPRstCfg),
-    .PMPRstAddr(RvCoreIbexPMPRstAddr),
-    .PMPRstMsecCfg(RvCoreIbexPMPRstMsecCfg),
-    .RV32E(RvCoreIbexRV32E),
-    .RV32M(RvCoreIbexRV32M),
-    .RV32B(RvCoreIbexRV32B),
-    .RegFile(RvCoreIbexRegFile),
-    .BranchTargetALU(RvCoreIbexBranchTargetALU),
-    .WritebackStage(RvCoreIbexWritebackStage),
-    .ICache(RvCoreIbexICache),
-    .ICacheECC(RvCoreIbexICacheECC),
-    .ICacheScramble(RvCoreIbexICacheScramble),
-    .ICacheNWays(RvCoreIbexICacheNWays),
-    .BranchPredictor(RvCoreIbexBranchPredictor),
-    .DbgTriggerEn(RvCoreIbexDbgTriggerEn),
-    .DbgHwBreakNum(RvCoreIbexDbgHwBreakNum),
-    .SecureIbex(RvCoreIbexSecureIbex),
-    .DmBaseAddr(RvCoreIbexDmBaseAddr),
-    .DmAddrMask(RvCoreIbexDmAddrMask),
-    .DmHaltAddr(RvCoreIbexDmHaltAddr),
-    .DmExceptionAddr(RvCoreIbexDmExceptionAddr),
-    .PipeLine(RvCoreIbexPipeLine),
-    .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
-  ) u_rv_core_ibex (
+    .RndCnstLfsrSeed(RndCnstRvCoreIbexPwcLfsrSeed),
+    .RndCnstLfsrPerm(RndCnstRvCoreIbexPwcLfsrPerm),
+    .RndCnstIbexKeyDefault(RndCnstRvCoreIbexPwcIbexKeyDefault),
+    .RndCnstIbexNonceDefault(RndCnstRvCoreIbexPwcIbexNonceDefault),
+    .NEscalationSeverities(RvCoreIbexPwcNEscalationSeverities),
+    .WidthPingCounter(RvCoreIbexPwcWidthPingCounter),
+    .PMPEnable(RvCoreIbexPwcPMPEnable),
+    .PMPGranularity(RvCoreIbexPwcPMPGranularity),
+    .PMPNumRegions(RvCoreIbexPwcPMPNumRegions),
+    .MHPMCounterNum(RvCoreIbexPwcMHPMCounterNum),
+    .MHPMCounterWidth(RvCoreIbexPwcMHPMCounterWidth),
+    .PMPRstCfg(RvCoreIbexPwcPMPRstCfg),
+    .PMPRstAddr(RvCoreIbexPwcPMPRstAddr),
+    .PMPRstMsecCfg(RvCoreIbexPwcPMPRstMsecCfg),
+    .RV32E(RvCoreIbexPwcRV32E),
+    .RV32M(RvCoreIbexPwcRV32M),
+    .RV32B(RvCoreIbexPwcRV32B),
+    .RegFile(RvCoreIbexPwcRegFile),
+    .BranchTargetALU(RvCoreIbexPwcBranchTargetALU),
+    .WritebackStage(RvCoreIbexPwcWritebackStage),
+    .ICache(RvCoreIbexPwcICache),
+    .ICacheECC(RvCoreIbexPwcICacheECC),
+    .ICacheScramble(RvCoreIbexPwcICacheScramble),
+    .ICacheNWays(RvCoreIbexPwcICacheNWays),
+    .BranchPredictor(RvCoreIbexPwcBranchPredictor),
+    .DbgTriggerEn(RvCoreIbexPwcDbgTriggerEn),
+    .DbgHwBreakNum(RvCoreIbexPwcDbgHwBreakNum),
+    .SecureIbex(RvCoreIbexPwcSecureIbex),
+    .DmBaseAddr(RvCoreIbexPwcDmBaseAddr),
+    .DmAddrMask(RvCoreIbexPwcDmAddrMask),
+    .DmHaltAddr(RvCoreIbexPwcDmHaltAddr),
+    .DmExceptionAddr(RvCoreIbexPwcDmExceptionAddr),
+    .PipeLine(RvCoreIbexPwcPipeLine),
+    .TlulHostUserRsvdBits(RvCoreIbexPwcTlulHostUserRsvdBits)
+  ) u_rv_core_ibex_pwc (
       // External alert group "pwc" [27]: fatal_sw_err
       // External alert group "pwc" [28]: recov_sw_err
       // External alert group "pwc" [29]: fatal_hw_err
@@ -1077,10 +1078,10 @@ module top_pwc #(
       .ram_cfg_rsp_icache_tag_o(),
       .ram_cfg_icache_data_i(prim_ram_1p_pkg::RAM_1P_CFG_DEFAULT),
       .ram_cfg_rsp_icache_data_o(),
-      .hart_id_i(rv_core_ibex_hart_id),
+      .hart_id_i(rv_core_ibex_pwc_hart_id),
       .boot_addr_i(rv_boot_addr_i),
       .irq_software_i(rv_plic_pwc_msip),
-      .irq_timer_i(rv_core_ibex_irq_timer),
+      .irq_timer_i(rv_core_ibex_pwc_irq_timer),
       .irq_external_i(rv_plic_pwc_irq),
       .esc_tx_i(rv_core_esc_tx_i),
       .esc_rx_o(rv_core_esc_rx_o),
@@ -1095,12 +1096,12 @@ module top_pwc #(
       .icache_otp_key_o(),
       .icache_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
       .fpga_info_i(fpga_info_i),
-      .corei_tl_h_o(pwc_main_tl_rv_core_ibex__corei_req),
-      .corei_tl_h_i(pwc_main_tl_rv_core_ibex__corei_rsp),
-      .cored_tl_h_o(pwc_main_tl_rv_core_ibex__cored_req),
-      .cored_tl_h_i(pwc_main_tl_rv_core_ibex__cored_rsp),
-      .cfg_tl_d_i(rv_core_ibex_cfg_tl_d_req),
-      .cfg_tl_d_o(rv_core_ibex_cfg_tl_d_rsp),
+      .corei_tl_h_o(pwc_main_tl_rv_core_ibex_pwc__corei_req),
+      .corei_tl_h_i(pwc_main_tl_rv_core_ibex_pwc__corei_rsp),
+      .cored_tl_h_o(pwc_main_tl_rv_core_ibex_pwc__cored_req),
+      .cored_tl_h_i(pwc_main_tl_rv_core_ibex_pwc__cored_rsp),
+      .cfg_tl_d_i(rv_core_ibex_pwc_cfg_tl_d_req),
+      .cfg_tl_d_o(rv_core_ibex_pwc_cfg_tl_d_rsp),
       .scanmode_i,
       .scan_rst_ni,
 
@@ -1156,13 +1157,13 @@ module top_pwc #(
     .rst_main_ni (rst_ext_rst_main_i),
     .rst_fixed_ni (rst_ext_rst_io_div4_i),
 
-    // port: tl_rv_core_ibex__corei
-    .tl_rv_core_ibex__corei_i(pwc_main_tl_rv_core_ibex__corei_req),
-    .tl_rv_core_ibex__corei_o(pwc_main_tl_rv_core_ibex__corei_rsp),
+    // port: tl_rv_core_ibex_pwc__corei
+    .tl_rv_core_ibex_pwc__corei_i(pwc_main_tl_rv_core_ibex_pwc__corei_req),
+    .tl_rv_core_ibex_pwc__corei_o(pwc_main_tl_rv_core_ibex_pwc__corei_rsp),
 
-    // port: tl_rv_core_ibex__cored
-    .tl_rv_core_ibex__cored_i(pwc_main_tl_rv_core_ibex__cored_req),
-    .tl_rv_core_ibex__cored_o(pwc_main_tl_rv_core_ibex__cored_rsp),
+    // port: tl_rv_core_ibex_pwc__cored
+    .tl_rv_core_ibex_pwc__cored_i(pwc_main_tl_rv_core_ibex_pwc__cored_req),
+    .tl_rv_core_ibex_pwc__cored_o(pwc_main_tl_rv_core_ibex_pwc__cored_rsp),
 
     // port: tl_rv_dm__sba
     .tl_rv_dm__sba_i(pwc_main_tl_rv_dm__sba_req),
@@ -1220,9 +1221,9 @@ module top_pwc #(
     .tl_rv_plic_pwc_o(rv_plic_pwc_tl_req),
     .tl_rv_plic_pwc_i(rv_plic_pwc_tl_rsp),
 
-    // port: tl_rv_core_ibex__cfg
-    .tl_rv_core_ibex__cfg_o(rv_core_ibex_cfg_tl_d_req),
-    .tl_rv_core_ibex__cfg_i(rv_core_ibex_cfg_tl_d_rsp),
+    // port: tl_rv_core_ibex_pwc__cfg
+    .tl_rv_core_ibex_pwc__cfg_o(rv_core_ibex_pwc_cfg_tl_d_req),
+    .tl_rv_core_ibex_pwc__cfg_i(rv_core_ibex_pwc_cfg_tl_d_rsp),
 
     // port: tl_sram_ctrl_main__regs
     .tl_sram_ctrl_main__regs_o(sram_ctrl_main_regs_tl_req),

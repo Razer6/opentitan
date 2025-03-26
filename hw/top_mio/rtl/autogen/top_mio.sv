@@ -63,37 +63,38 @@ module top_mio #(
   // parameters for racl_ctrl
   parameter int RaclCtrlNumExternalSubscribingIps = 1,
   // parameters for ac_range_check
-  // parameters for rv_core_ibex
-  parameter bit RvCoreIbexPMPEnable = 1,
-  parameter int unsigned RvCoreIbexPMPGranularity = 0,
-  parameter int unsigned RvCoreIbexPMPNumRegions = 16,
-  parameter int unsigned RvCoreIbexMHPMCounterNum = 10,
-  parameter int unsigned RvCoreIbexMHPMCounterWidth = 32,
-  parameter ibex_pkg::pmp_cfg_t RvCoreIbexPMPRstCfg[16] = ibex_pmp_reset_pkg::MioPmpCfgRst,
-  parameter logic [33:0] RvCoreIbexPMPRstAddr[16] = ibex_pmp_reset_pkg::MioPmpAddrRst,
-  parameter ibex_pkg::pmp_mseccfg_t RvCoreIbexPMPRstMsecCfg = ibex_pmp_reset_pkg::MioPmpMseccfgRst,
-  parameter bit RvCoreIbexRV32E = 0,
-  parameter ibex_pkg::rv32m_e RvCoreIbexRV32M = ibex_pkg::RV32MSingleCycle,
-  parameter ibex_pkg::rv32b_e RvCoreIbexRV32B = ibex_pkg::RV32BOTEarlGrey,
-  parameter ibex_pkg::regfile_e RvCoreIbexRegFile = ibex_pkg::RegFileFF,
-  parameter bit RvCoreIbexBranchTargetALU = 1,
-  parameter bit RvCoreIbexWritebackStage = 1,
-  parameter bit RvCoreIbexICache = 1,
-  parameter bit RvCoreIbexICacheECC = 1,
-  parameter bit RvCoreIbexICacheScramble = 1,
-  parameter int unsigned RvCoreIbexICacheNWays = 2,
-  parameter bit RvCoreIbexBranchPredictor = 0,
-  parameter bit RvCoreIbexDbgTriggerEn = 1,
-  parameter int RvCoreIbexDbgHwBreakNum = 4,
-  parameter bit RvCoreIbexSecureIbex = 1,
-  parameter int unsigned RvCoreIbexDmBaseAddr = tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM,
-  parameter int unsigned RvCoreIbexDmAddrMask = tl_mio_main_pkg::ADDR_MASK_RV_DM__MEM,
-  parameter int unsigned RvCoreIbexDmHaltAddr =
+  // parameters for rv_core_ibex_mio
+  parameter bit RvCoreIbexMioPMPEnable = 1,
+  parameter int unsigned RvCoreIbexMioPMPGranularity = 0,
+  parameter int unsigned RvCoreIbexMioPMPNumRegions = 16,
+  parameter int unsigned RvCoreIbexMioMHPMCounterNum = 10,
+  parameter int unsigned RvCoreIbexMioMHPMCounterWidth = 32,
+  parameter ibex_pkg::pmp_cfg_t RvCoreIbexMioPMPRstCfg[16] = ibex_pmp_reset_pkg::MioPmpCfgRst,
+  parameter logic [33:0] RvCoreIbexMioPMPRstAddr[16] = ibex_pmp_reset_pkg::MioPmpAddrRst,
+  parameter ibex_pkg::pmp_mseccfg_t RvCoreIbexMioPMPRstMsecCfg =
+      ibex_pmp_reset_pkg::MioPmpMseccfgRst,
+  parameter bit RvCoreIbexMioRV32E = 0,
+  parameter ibex_pkg::rv32m_e RvCoreIbexMioRV32M = ibex_pkg::RV32MSingleCycle,
+  parameter ibex_pkg::rv32b_e RvCoreIbexMioRV32B = ibex_pkg::RV32BOTEarlGrey,
+  parameter ibex_pkg::regfile_e RvCoreIbexMioRegFile = ibex_pkg::RegFileFF,
+  parameter bit RvCoreIbexMioBranchTargetALU = 1,
+  parameter bit RvCoreIbexMioWritebackStage = 1,
+  parameter bit RvCoreIbexMioICache = 1,
+  parameter bit RvCoreIbexMioICacheECC = 1,
+  parameter bit RvCoreIbexMioICacheScramble = 1,
+  parameter int unsigned RvCoreIbexMioICacheNWays = 2,
+  parameter bit RvCoreIbexMioBranchPredictor = 0,
+  parameter bit RvCoreIbexMioDbgTriggerEn = 1,
+  parameter int RvCoreIbexMioDbgHwBreakNum = 4,
+  parameter bit RvCoreIbexMioSecureIbex = 1,
+  parameter int unsigned RvCoreIbexMioDmBaseAddr = tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM,
+  parameter int unsigned RvCoreIbexMioDmAddrMask = tl_mio_main_pkg::ADDR_MASK_RV_DM__MEM,
+  parameter int unsigned RvCoreIbexMioDmHaltAddr =
       tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0],
-  parameter int unsigned RvCoreIbexDmExceptionAddr =
+  parameter int unsigned RvCoreIbexMioDmExceptionAddr =
       tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0],
-  parameter bit RvCoreIbexPipeLine = 0,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexTlulHostUserRsvdBits = '0
+  parameter bit RvCoreIbexMioPipeLine = 0,
+  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexMioTlulHostUserRsvdBits = '0
 ) (
 
 
@@ -179,9 +180,9 @@ module top_mio #(
   localparam int SramCtrlMboxOutstanding = 6;
   // local parameters for racl_ctrl
   localparam int RaclCtrlNumSubscribingIps = 8;
-  // local parameters for rv_core_ibex
-  localparam int unsigned RvCoreIbexNEscalationSeverities = 4;
-  localparam int unsigned RvCoreIbexWidthPingCounter = 16;
+  // local parameters for rv_core_ibex_mio
+  localparam int unsigned RvCoreIbexMioNEscalationSeverities = 4;
+  localparam int unsigned RvCoreIbexMioWidthPingCounter = 16;
 
   // Signals
 
@@ -232,10 +233,10 @@ module top_mio #(
   tlul_pkg::tl_d2h_t       mio_soc_proxy_muxed_tl_d2h;
   tlul_pkg::tl_h2d_t       ac_range_check_ctn_filtered_tl_h2d;
   tlul_pkg::tl_d2h_t       ac_range_check_ctn_filtered_tl_d2h;
-  tlul_pkg::tl_h2d_t       mio_main_tl_rv_core_ibex__corei_req;
-  tlul_pkg::tl_d2h_t       mio_main_tl_rv_core_ibex__corei_rsp;
-  tlul_pkg::tl_h2d_t       mio_main_tl_rv_core_ibex__cored_req;
-  tlul_pkg::tl_d2h_t       mio_main_tl_rv_core_ibex__cored_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_rv_core_ibex_mio__corei_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_rv_core_ibex_mio__corei_rsp;
+  tlul_pkg::tl_h2d_t       mio_main_tl_rv_core_ibex_mio__cored_req;
+  tlul_pkg::tl_d2h_t       mio_main_tl_rv_core_ibex_mio__cored_rsp;
   tlul_pkg::tl_h2d_t       mio_main_tl_rv_dm__sba_req;
   tlul_pkg::tl_d2h_t       mio_main_tl_rv_dm__sba_rsp;
   tlul_pkg::tl_h2d_t       rv_dm_regs_tl_d_req;
@@ -248,8 +249,8 @@ module top_mio #(
   tlul_pkg::tl_d2h_t       mio_soc_proxy_ctn_tl_rsp;
   tlul_pkg::tl_h2d_t       rv_plic_mio_tl_req;
   tlul_pkg::tl_d2h_t       rv_plic_mio_tl_rsp;
-  tlul_pkg::tl_h2d_t       rv_core_ibex_cfg_tl_d_req;
-  tlul_pkg::tl_d2h_t       rv_core_ibex_cfg_tl_d_rsp;
+  tlul_pkg::tl_h2d_t       rv_core_ibex_mio_cfg_tl_d_req;
+  tlul_pkg::tl_d2h_t       rv_core_ibex_mio_cfg_tl_d_rsp;
   tlul_pkg::tl_h2d_t       sram_ctrl_main_regs_tl_req;
   tlul_pkg::tl_d2h_t       sram_ctrl_main_regs_tl_rsp;
   tlul_pkg::tl_h2d_t       sram_ctrl_main_ram_tl_req;
@@ -318,8 +319,8 @@ module top_mio #(
   tlul_pkg::tl_d2h_t       ac_range_check_tl_rsp;
   top_racl_pkg::racl_policy_vec_t       racl_ctrl_racl_policies;
   top_racl_pkg::racl_error_log_t [RaclCtrlNumSubscribingIps-1:0] racl_ctrl_racl_error;
-  logic       rv_core_ibex_irq_timer;
-  logic [31:0] rv_core_ibex_hart_id;
+  logic       rv_core_ibex_mio_irq_timer;
+  logic [31:0] rv_core_ibex_mio_hart_id;
   prim_mubi_pkg::mubi8_t       rv_dm_otp_dis_rv_dm_late_debug;
 
   // define mixed connection to port
@@ -333,8 +334,8 @@ module top_mio #(
 
   // ibex specific assignments
   // TODO: This should be further automated in the future.
-  assign rv_core_ibex_irq_timer = intr_rv_timer_timer_expired_hart0_timer0;
-  assign rv_core_ibex_hart_id = '0;
+  assign rv_core_ibex_mio_irq_timer = intr_rv_timer_timer_expired_hart0_timer0;
+  assign rv_core_ibex_mio_hart_id = '0;
 
   // Unconditionally disable the late debug feature and enable early debug
   assign rv_dm_otp_dis_rv_dm_late_debug = prim_mubi_pkg::MuBi8True;
@@ -959,41 +960,41 @@ module top_mio #(
   );
   rv_core_ibex_mio #(
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[29:26]),
-    .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
-    .RndCnstLfsrPerm(RndCnstRvCoreIbexLfsrPerm),
-    .RndCnstIbexKeyDefault(RndCnstRvCoreIbexIbexKeyDefault),
-    .RndCnstIbexNonceDefault(RndCnstRvCoreIbexIbexNonceDefault),
-    .NEscalationSeverities(RvCoreIbexNEscalationSeverities),
-    .WidthPingCounter(RvCoreIbexWidthPingCounter),
-    .PMPEnable(RvCoreIbexPMPEnable),
-    .PMPGranularity(RvCoreIbexPMPGranularity),
-    .PMPNumRegions(RvCoreIbexPMPNumRegions),
-    .MHPMCounterNum(RvCoreIbexMHPMCounterNum),
-    .MHPMCounterWidth(RvCoreIbexMHPMCounterWidth),
-    .PMPRstCfg(RvCoreIbexPMPRstCfg),
-    .PMPRstAddr(RvCoreIbexPMPRstAddr),
-    .PMPRstMsecCfg(RvCoreIbexPMPRstMsecCfg),
-    .RV32E(RvCoreIbexRV32E),
-    .RV32M(RvCoreIbexRV32M),
-    .RV32B(RvCoreIbexRV32B),
-    .RegFile(RvCoreIbexRegFile),
-    .BranchTargetALU(RvCoreIbexBranchTargetALU),
-    .WritebackStage(RvCoreIbexWritebackStage),
-    .ICache(RvCoreIbexICache),
-    .ICacheECC(RvCoreIbexICacheECC),
-    .ICacheScramble(RvCoreIbexICacheScramble),
-    .ICacheNWays(RvCoreIbexICacheNWays),
-    .BranchPredictor(RvCoreIbexBranchPredictor),
-    .DbgTriggerEn(RvCoreIbexDbgTriggerEn),
-    .DbgHwBreakNum(RvCoreIbexDbgHwBreakNum),
-    .SecureIbex(RvCoreIbexSecureIbex),
-    .DmBaseAddr(RvCoreIbexDmBaseAddr),
-    .DmAddrMask(RvCoreIbexDmAddrMask),
-    .DmHaltAddr(RvCoreIbexDmHaltAddr),
-    .DmExceptionAddr(RvCoreIbexDmExceptionAddr),
-    .PipeLine(RvCoreIbexPipeLine),
-    .TlulHostUserRsvdBits(RvCoreIbexTlulHostUserRsvdBits)
-  ) u_rv_core_ibex (
+    .RndCnstLfsrSeed(RndCnstRvCoreIbexMioLfsrSeed),
+    .RndCnstLfsrPerm(RndCnstRvCoreIbexMioLfsrPerm),
+    .RndCnstIbexKeyDefault(RndCnstRvCoreIbexMioIbexKeyDefault),
+    .RndCnstIbexNonceDefault(RndCnstRvCoreIbexMioIbexNonceDefault),
+    .NEscalationSeverities(RvCoreIbexMioNEscalationSeverities),
+    .WidthPingCounter(RvCoreIbexMioWidthPingCounter),
+    .PMPEnable(RvCoreIbexMioPMPEnable),
+    .PMPGranularity(RvCoreIbexMioPMPGranularity),
+    .PMPNumRegions(RvCoreIbexMioPMPNumRegions),
+    .MHPMCounterNum(RvCoreIbexMioMHPMCounterNum),
+    .MHPMCounterWidth(RvCoreIbexMioMHPMCounterWidth),
+    .PMPRstCfg(RvCoreIbexMioPMPRstCfg),
+    .PMPRstAddr(RvCoreIbexMioPMPRstAddr),
+    .PMPRstMsecCfg(RvCoreIbexMioPMPRstMsecCfg),
+    .RV32E(RvCoreIbexMioRV32E),
+    .RV32M(RvCoreIbexMioRV32M),
+    .RV32B(RvCoreIbexMioRV32B),
+    .RegFile(RvCoreIbexMioRegFile),
+    .BranchTargetALU(RvCoreIbexMioBranchTargetALU),
+    .WritebackStage(RvCoreIbexMioWritebackStage),
+    .ICache(RvCoreIbexMioICache),
+    .ICacheECC(RvCoreIbexMioICacheECC),
+    .ICacheScramble(RvCoreIbexMioICacheScramble),
+    .ICacheNWays(RvCoreIbexMioICacheNWays),
+    .BranchPredictor(RvCoreIbexMioBranchPredictor),
+    .DbgTriggerEn(RvCoreIbexMioDbgTriggerEn),
+    .DbgHwBreakNum(RvCoreIbexMioDbgHwBreakNum),
+    .SecureIbex(RvCoreIbexMioSecureIbex),
+    .DmBaseAddr(RvCoreIbexMioDmBaseAddr),
+    .DmAddrMask(RvCoreIbexMioDmAddrMask),
+    .DmHaltAddr(RvCoreIbexMioDmHaltAddr),
+    .DmExceptionAddr(RvCoreIbexMioDmExceptionAddr),
+    .PipeLine(RvCoreIbexMioPipeLine),
+    .TlulHostUserRsvdBits(RvCoreIbexMioTlulHostUserRsvdBits)
+  ) u_rv_core_ibex_mio (
       // External alert group "mio" [26]: fatal_sw_err
       // External alert group "mio" [27]: recov_sw_err
       // External alert group "mio" [28]: fatal_hw_err
@@ -1007,10 +1008,10 @@ module top_mio #(
       .ram_cfg_rsp_icache_tag_o(),
       .ram_cfg_icache_data_i(prim_ram_1p_pkg::RAM_1P_CFG_DEFAULT),
       .ram_cfg_rsp_icache_data_o(),
-      .hart_id_i(rv_core_ibex_hart_id),
+      .hart_id_i(rv_core_ibex_mio_hart_id),
       .boot_addr_i(rv_boot_addr_i),
       .irq_software_i(rv_plic_mio_msip),
-      .irq_timer_i(rv_core_ibex_irq_timer),
+      .irq_timer_i(rv_core_ibex_mio_irq_timer),
       .irq_external_i(rv_plic_mio_irq),
       .esc_tx_i(rv_core_esc_tx_i),
       .esc_rx_o(rv_core_esc_rx_o),
@@ -1025,12 +1026,12 @@ module top_mio #(
       .icache_otp_key_o(),
       .icache_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
       .fpga_info_i(fpga_info_i),
-      .corei_tl_h_o(mio_main_tl_rv_core_ibex__corei_req),
-      .corei_tl_h_i(mio_main_tl_rv_core_ibex__corei_rsp),
-      .cored_tl_h_o(mio_main_tl_rv_core_ibex__cored_req),
-      .cored_tl_h_i(mio_main_tl_rv_core_ibex__cored_rsp),
-      .cfg_tl_d_i(rv_core_ibex_cfg_tl_d_req),
-      .cfg_tl_d_o(rv_core_ibex_cfg_tl_d_rsp),
+      .corei_tl_h_o(mio_main_tl_rv_core_ibex_mio__corei_req),
+      .corei_tl_h_i(mio_main_tl_rv_core_ibex_mio__corei_rsp),
+      .cored_tl_h_o(mio_main_tl_rv_core_ibex_mio__cored_req),
+      .cored_tl_h_i(mio_main_tl_rv_core_ibex_mio__cored_rsp),
+      .cfg_tl_d_i(rv_core_ibex_mio_cfg_tl_d_req),
+      .cfg_tl_d_o(rv_core_ibex_mio_cfg_tl_d_rsp),
       .scanmode_i,
       .scan_rst_ni,
 
@@ -1085,13 +1086,13 @@ module top_mio #(
     .rst_main_ni (rst_ext_rst_main_i),
     .rst_fixed_ni (rst_ext_rst_io_div4_i),
 
-    // port: tl_rv_core_ibex__corei
-    .tl_rv_core_ibex__corei_i(mio_main_tl_rv_core_ibex__corei_req),
-    .tl_rv_core_ibex__corei_o(mio_main_tl_rv_core_ibex__corei_rsp),
+    // port: tl_rv_core_ibex_mio__corei
+    .tl_rv_core_ibex_mio__corei_i(mio_main_tl_rv_core_ibex_mio__corei_req),
+    .tl_rv_core_ibex_mio__corei_o(mio_main_tl_rv_core_ibex_mio__corei_rsp),
 
-    // port: tl_rv_core_ibex__cored
-    .tl_rv_core_ibex__cored_i(mio_main_tl_rv_core_ibex__cored_req),
-    .tl_rv_core_ibex__cored_o(mio_main_tl_rv_core_ibex__cored_rsp),
+    // port: tl_rv_core_ibex_mio__cored
+    .tl_rv_core_ibex_mio__cored_i(mio_main_tl_rv_core_ibex_mio__cored_req),
+    .tl_rv_core_ibex_mio__cored_o(mio_main_tl_rv_core_ibex_mio__cored_rsp),
 
     // port: tl_rv_dm__sba
     .tl_rv_dm__sba_i(mio_main_tl_rv_dm__sba_req),
@@ -1149,9 +1150,9 @@ module top_mio #(
     .tl_rv_plic_mio_o(rv_plic_mio_tl_req),
     .tl_rv_plic_mio_i(rv_plic_mio_tl_rsp),
 
-    // port: tl_rv_core_ibex__cfg
-    .tl_rv_core_ibex__cfg_o(rv_core_ibex_cfg_tl_d_req),
-    .tl_rv_core_ibex__cfg_i(rv_core_ibex_cfg_tl_d_rsp),
+    // port: tl_rv_core_ibex_mio__cfg
+    .tl_rv_core_ibex_mio__cfg_o(rv_core_ibex_mio_cfg_tl_d_req),
+    .tl_rv_core_ibex_mio__cfg_i(rv_core_ibex_mio_cfg_tl_d_rsp),
 
     // port: tl_sram_ctrl_main__regs
     .tl_sram_ctrl_main__regs_o(sram_ctrl_main_regs_tl_req),

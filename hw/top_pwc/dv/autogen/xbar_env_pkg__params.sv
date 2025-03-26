@@ -19,7 +19,7 @@ tl_device_t xbar_devices[$] = '{
     '{"rv_plic_pwc", '{
         '{32'h28000000, 32'h2fffffff}
     }},
-    '{"rv_core_ibex__cfg", '{
+    '{"rv_core_ibex_pwc__cfg", '{
         '{32'h211f0000, 32'h211f00ff}
     }},
     '{"sram_ctrl_main__regs", '{
@@ -103,12 +103,12 @@ tl_device_t xbar_devices[$] = '{
 
   // List of Xbar hosts
 tl_host_t xbar_hosts[$] = '{
-    '{"rv_core_ibex__corei", 0, '{
+    '{"rv_core_ibex_pwc__corei", 0, '{
         "rv_dm__mem",
         "sram_ctrl_main__ram",
         "pwc_soc_proxy__ctn"}}
     ,
-    '{"rv_core_ibex__cored", 1, '{
+    '{"rv_core_ibex_pwc__cored", 1, '{
         "rv_dm__mem",
         "rv_dm__regs",
         "sram_ctrl_main__ram",
@@ -119,7 +119,7 @@ tl_host_t xbar_hosts[$] = '{
         "aon_timer_aon",
         "rv_plic_pwc",
         "sram_ctrl_main__regs",
-        "rv_core_ibex__cfg",
+        "rv_core_ibex_pwc__cfg",
         "sram_ctrl_mbox__ram",
         "sram_ctrl_mbox__regs",
         "pwc_soc_proxy__ctn",
@@ -143,7 +143,7 @@ tl_host_t xbar_hosts[$] = '{
         "aon_timer_aon",
         "rv_plic_pwc",
         "sram_ctrl_main__regs",
-        "rv_core_ibex__cfg",
+        "rv_core_ibex_pwc__cfg",
         "sram_ctrl_mbox__ram",
         "sram_ctrl_mbox__regs",
         "pwc_soc_proxy__ctn",
