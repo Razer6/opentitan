@@ -54,11 +54,11 @@ waive -rules CONST_OUTPUT         -location {${module_instance_name}.sv} -regexp
       -comment "not all bus constructs are used"
 waive -rules SIGNED_RANGE         -location {ibex_controller.sv} -msg {Part select of signed signal 'i[3:0]' encountered} ${"\\"}
       -comment "switching the loop variable i to unsigned would require loop restructuring to not change interrupt priorities, making the code less readable"
-waive -rules SIGNED_RANGE         -location {ibex_cs_registers.sv} -regexp {Part select of signed signal 'i${"\\"}[11:0${"\\"}]' encountered} ${"\\"}
+waive -rules SIGNED_RANGE         -location {ibex_cs_registers.sv} -regexp {Part select of signed signal 'i\[11:0\]' encountered} ${"\\"}
       -comment "'i' is the loop variable of a genvar loop running from 0 to 'PMPNumRegions' which is an unsigned integer number. There is no issue with the part select."
-waive -rules SIGNED_RANGE         -location {ibex_cs_registers.sv} -regexp {Part select of signed signal 'i${"\\"}[DbgHwNumLen ${"\\"}- 1:0${"\\"}]' encountered} ${"\\"}
+waive -rules SIGNED_RANGE         -location {ibex_cs_registers.sv} -regexp {Part select of signed signal 'i\[DbgHwNumLen ${"\\"}- 1:0\]' encountered} ${"\\"}
       -comment "'i' is the loop variable of a genvar loop running from 0 to 'DbgHwBreakNum' which is an unsigned integer number. There is no issue with the part select."
-waive -rules SIGNED_RANGE         -location {ibex_icache.sv} -regexp {Part select of signed signal 'b${"\\"}[IC_LINE_BEATS_W ${"\\"}- 1:0${"\\"}]' encountered} ${"\\"}
+waive -rules SIGNED_RANGE         -location {ibex_icache.sv} -regexp {Part select of signed signal 'b\[IC_LINE_BEATS_W ${"\\"}- 1:0\]' encountered} ${"\\"}
       -comment "'b' is the loop variable of a genvar loop running from 0 to 'IC_LINE_BEATS' which is an unsigned integer number. There is no issue with the part select."
 waive -rules CONST_OUTPUT         -location {ibex_controller.sv} -regexp {Output 'exc_cause_o.5.' is driven by constant} ${"\\"}
       -comment "easier to write with enum, not all causes used yet"
@@ -120,15 +120,15 @@ waive -rules RESET_DRIVER         -location {ibex_lockstep.sv} -regexp {'(rst_sh
       -comment "A synchronous counter is needed to release the shadow core reset with a delay of LockstepOffset clock cycles"
 waive -rules RESET_DRIVER         -location {ibex_lockstep.sv} -regexp {'(rst_shadow_set_q|rst_shadow_n)' driven in module 'ibex_lockstep'}
       -comment "A synchronous counter is needed to release the shadow core reset with a delay of LockstepOffset clock cycles"
-waive -rules RESET_DRIVER         -location {ibex_lockstep.sv} -regexp {'rst_shadow_set_q${"\\"}[0${"\\"}]' is driven by instance 'u_prim_rst_shadow_set_flop' of module 'prim_flop', and used as an asynchronous reset 'rst_ni' at}
+waive -rules RESET_DRIVER         -location {ibex_lockstep.sv} -regexp {'rst_shadow_set_q\[0\]' is driven by instance 'u_prim_rst_shadow_set_flop' of module 'prim_flop', and used as an asynchronous reset 'rst_ni' at}
       -comment "A synchronous counter is needed to release the shadow core reset with a delay of LockstepOffset clock cycles"
-waive -rules RESET_DRIVER         -location {ibex_lockstep.sv} -regexp {'q_o${"\\"}[0${"\\"}]' is driven in module '(prim_flop|prim_generic_flop)'}
+waive -rules RESET_DRIVER         -location {ibex_lockstep.sv} -regexp {'q_o\[0\]' is driven in module '(prim_flop|prim_generic_flop)'}
       -comment "A synchronous counter is needed to release the shadow core reset with a delay of LockstepOffset clock cycles"
 waive -rules RESET_MUX            -location {ibex_lockstep.sv} -regexp {Asynchronous reset 'rst_shadow_n' is driven by a multiplexer here}
       -comment "The test enable input used to control the bypass can be considered static"
 waive -rules RESET_USE            -location {ibex_lockstep.sv} -regexp {'rst_shadow_set_q' is used for some other purpose, and as asynchronous reset 'rst_ni' at}
       -comment "A synchronous counter is needed to release the shadow core reset with a delay of LockstepOffset clock cycles and start the comparison logic one clock cycle later"
-waive -rules RESET_USE            -location {ibex_lockstep.sv} -regexp {'enable_cmp_d${"\\"}[0${"\\"}]' is connected to 'prim_flop' port 'd_i${"\\"}[0${"\\"}]', and used as an asynchronous reset or set 'rst_ni' at}
+waive -rules RESET_USE            -location {ibex_lockstep.sv} -regexp {'enable_cmp_d\[0\]' is connected to 'prim_flop' port 'd_i\[0\]', and used as an asynchronous reset or set 'rst_ni' at}
       -comment "enable_cmp_d[0] is assigned to rst_shadow_set_q[0] which is drive by a synchronous counter which is needed to release the shadow core reset with a delay of LockstepOffset clock cycles"
 waive -rules {CLOCK_USE RESET_USE} -location {ibex_register_file_ff.sv} ${"\\"}
       -regexp {'(clk_i|rst_ni)' is connected to '(prim_onehot_mux)' port} ${"\\"}
