@@ -814,10 +814,15 @@ def _get_rv_core_ibex_params(topcfg: Dict[str, object]) -> Dict[str, object]:
     module = lib.find_module(topcfg["module"], "rv_core_ibex")
     uniquified_modules.add_module(module["template_type"], module["type"])
 
-    return {
+    params = {
         "num_regions": module['ipgen_param']['NumRegions'],
         'module_instance_name': module['type']
     }
+
+    sim_window_address = module['ipgen_param'].get('SimWindowAddress')
+    if sim_window_address:
+        params["sim_window_address"] = sim_window_address
+    return params
 
 
 def generate_rv_core_ibex(topcfg: Dict[str, object], module: Dict[str, object],

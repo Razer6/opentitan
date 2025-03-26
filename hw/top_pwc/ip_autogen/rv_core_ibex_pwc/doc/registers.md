@@ -32,7 +32,7 @@ A number of memory-mapped registers are available to control Ibex-related functi
 | rv_core_ibex_pwc.[`RND_DATA`](#rnd_data)                       | 0x58     |        4 | Random data from EDN                                 |
 | rv_core_ibex_pwc.[`RND_STATUS`](#rnd_status)                   | 0x5c     |        4 | Status of random data in !!RND_DATA                  |
 | rv_core_ibex_pwc.[`FPGA_INFO`](#fpga_info)                     | 0x60     |        4 | FPGA build timestamp info.                           |
-| rv_core_ibex_pwc.[`DV_SIM_WINDOW`](#dv_sim_window)             | 0x80     |       32 | Exposed tlul window for DV only purposes.            |
+| rv_core_ibex_pwc.[`DV_SIM_WINDOW`](#dv_sim_window)             | 0x440    |       32 | Exposed tlul window for DV only purposes.            |
 
 ## ALERT_TEST
 Alert Test Register
@@ -439,7 +439,7 @@ This register only contains valid data for fpga, for all other variants it is si
 ## DV_SIM_WINDOW
 Exposed tlul window for DV only purposes.
 
-- Word Aligned Offset Range: `0x80`to`0x9c`
+- Word Aligned Offset Range: `0x440`to`0x45c`
 - Size (words): `8`
 - Access: `rw`
 - Byte writes are  supported.

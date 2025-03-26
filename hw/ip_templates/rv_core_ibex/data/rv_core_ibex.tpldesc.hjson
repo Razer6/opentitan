@@ -27,5 +27,11 @@
       type: "string"
       default: "rv_core_ibex"
     }
+    {
+      name: "sim_window_address"
+      desc: "Location of simulation window"
+      type: "int"
+      default: "0x80"
+    }
   ]
 }

@@ -26,7 +26,7 @@ module rv_core_ibex_pwc_cfg_reg_top (
 
   import rv_core_ibex_pwc_reg_pkg::* ;
 
-  localparam int AW = 8;
+  localparam int AW = 11;
   localparam int DW = 32;
   localparam int DBW = DW/8;                    // Byte Width
 
@@ -128,7 +128,7 @@ module rv_core_ibex_pwc_cfg_reg_top (
   // Create steering logic
   always_comb begin
     reg_steer =
-        tl_i.a_address[AW-1:0] inside {[128:159]} ? 1'd0 :
+        tl_i.a_address[AW-1:0] inside {[1088:1119]} ? 1'd0 :
         // Default set to register
         1'd1;
 

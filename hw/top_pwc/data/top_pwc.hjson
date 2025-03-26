@@ -558,6 +558,7 @@
       attr: "ipgen",
       ipgen_param: {
         NumRegions: 2
+        SimWindowAddress: 0x440
       }
       param_decl: {PMPEnable: "1",
                    PMPGranularity: "0",

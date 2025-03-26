@@ -10449,6 +10449,7 @@
       ipgen_param:
       {
         NumRegions: 32
+        SimWindowAddress: 0x440
       }
       param_decl:
       {

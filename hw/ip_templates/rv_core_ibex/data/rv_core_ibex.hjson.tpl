@@ -1041,7 +1041,7 @@
           },
         ]
       },
-
+      { skipto: "${hex(sim_window_address)}" }
       // dv simulation window
       { window: {
           name: "DV_SIM_WINDOW",

@@ -13,7 +13,7 @@ package rv_core_ibex_mio_reg_pkg;
   parameter int NumAlerts = 4;
 
   // Address widths within the block
-  parameter int CfgAw = 8;
+  parameter int CfgAw = 11;
 
   // Number of registers for every interface
   parameter int NumRegsCfg = 25;
@@ -175,31 +175,31 @@ package rv_core_ibex_mio_reg_pkg;
   } rv_core_ibex_mio_cfg_hw2reg_t;
 
   // Register offsets for cfg interface
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_ALERT_TEST_OFFSET = 8'h 0;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_SW_RECOV_ERR_OFFSET = 8'h 4;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_SW_FATAL_ERR_OFFSET = 8'h 8;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_REGWEN_0_OFFSET = 8'h c;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_REGWEN_1_OFFSET = 8'h 10;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_ADDR_EN_0_OFFSET = 8'h 14;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_ADDR_EN_1_OFFSET = 8'h 18;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_ADDR_MATCHING_0_OFFSET = 8'h 1c;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_ADDR_MATCHING_1_OFFSET = 8'h 20;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_REMAP_ADDR_0_OFFSET = 8'h 24;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_REMAP_ADDR_1_OFFSET = 8'h 28;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_REGWEN_0_OFFSET = 8'h 2c;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_REGWEN_1_OFFSET = 8'h 30;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_ADDR_EN_0_OFFSET = 8'h 34;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_ADDR_EN_1_OFFSET = 8'h 38;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_ADDR_MATCHING_0_OFFSET = 8'h 3c;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_ADDR_MATCHING_1_OFFSET = 8'h 40;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_REMAP_ADDR_0_OFFSET = 8'h 44;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_REMAP_ADDR_1_OFFSET = 8'h 48;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_NMI_ENABLE_OFFSET = 8'h 4c;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_NMI_STATE_OFFSET = 8'h 50;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_ERR_STATUS_OFFSET = 8'h 54;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_RND_DATA_OFFSET = 8'h 58;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_RND_STATUS_OFFSET = 8'h 5c;
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_FPGA_INFO_OFFSET = 8'h 60;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_ALERT_TEST_OFFSET = 11'h 0;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_SW_RECOV_ERR_OFFSET = 11'h 4;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_SW_FATAL_ERR_OFFSET = 11'h 8;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_REGWEN_0_OFFSET = 11'h c;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_REGWEN_1_OFFSET = 11'h 10;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_ADDR_EN_0_OFFSET = 11'h 14;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_ADDR_EN_1_OFFSET = 11'h 18;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_ADDR_MATCHING_0_OFFSET = 11'h 1c;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_ADDR_MATCHING_1_OFFSET = 11'h 20;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_REMAP_ADDR_0_OFFSET = 11'h 24;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_IBUS_REMAP_ADDR_1_OFFSET = 11'h 28;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_REGWEN_0_OFFSET = 11'h 2c;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_REGWEN_1_OFFSET = 11'h 30;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_ADDR_EN_0_OFFSET = 11'h 34;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_ADDR_EN_1_OFFSET = 11'h 38;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_ADDR_MATCHING_0_OFFSET = 11'h 3c;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_ADDR_MATCHING_1_OFFSET = 11'h 40;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_REMAP_ADDR_0_OFFSET = 11'h 44;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DBUS_REMAP_ADDR_1_OFFSET = 11'h 48;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_NMI_ENABLE_OFFSET = 11'h 4c;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_NMI_STATE_OFFSET = 11'h 50;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_ERR_STATUS_OFFSET = 11'h 54;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_RND_DATA_OFFSET = 11'h 58;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_RND_STATUS_OFFSET = 11'h 5c;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_FPGA_INFO_OFFSET = 11'h 60;
 
   // Reset values for hwext registers and their fields for cfg interface
   parameter logic [3:0] RV_CORE_IBEX_MIO_ALERT_TEST_RESVAL = 4'h 0;
@@ -216,7 +216,7 @@ package rv_core_ibex_mio_reg_pkg;
   parameter logic [31:0] RV_CORE_IBEX_MIO_FPGA_INFO_VAL_RESVAL = 32'h 0;
 
   // Window parameters for cfg interface
-  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DV_SIM_WINDOW_OFFSET = 8'h 80;
+  parameter logic [CfgAw-1:0] RV_CORE_IBEX_MIO_DV_SIM_WINDOW_OFFSET = 11'h 440;
   parameter int unsigned      RV_CORE_IBEX_MIO_DV_SIM_WINDOW_SIZE   = 'h 20;
   parameter int unsigned      RV_CORE_IBEX_MIO_DV_SIM_WINDOW_IDX    = 0;
 
