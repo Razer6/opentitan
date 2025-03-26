@@ -18,13 +18,13 @@ waive -rules INPUT_NOT_READ       -location {ibex_register_file_fpga.sv} -regexp
       -comment "testability signal used in some versions of register file"
 waive -rules INPUT_NOT_READ       -location {ibex_top.sv} -regexp {Input port 'clock_en_i' is not read from} \
       -comment "clock enable signal used in behavioral code"
-waive -rules HIER_NET_NOT_READ    -location {rv_core_ibex.sv} -regexp {Net 'instr_addr_o.1.0.' is not read from} \
+waive -rules HIER_NET_NOT_READ    -location {rv_core_ibex_mio.sv} -regexp {Net 'instr_addr_o.1.0.' is not read from} \
       -comment "Bottom bits not needed, cleaner to keep them as inputs"
-waive -rules NOT_READ             -location {rv_core_ibex.sv} -regexp {Signal 'instr_addr_o.1.0.' is not read from} \
+waive -rules NOT_READ             -location {rv_core_ibex_mio.sv} -regexp {Signal 'instr_addr_o.1.0.' is not read from} \
       -comment "Bottom bits not needed, cleaner to keep them as inputs"
-waive -rules HIER_NET_NOT_READ    -location {rv_core_ibex.sv} -regexp {Net 'data_addr_o.1.0.' is not read from} \
+waive -rules HIER_NET_NOT_READ    -location {rv_core_ibex_mio.sv} -regexp {Net 'data_addr_o.1.0.' is not read from} \
       -comment "Bottom bits not needed, cleaner to keep them as inputs"
-waive -rules NOT_READ             -location {rv_core_ibex.sv} -regexp {Signal 'data_addr_o.1.0.' is not read from} \
+waive -rules NOT_READ             -location {rv_core_ibex_mio.sv} -regexp {Signal 'data_addr_o.1.0.' is not read from} \
       -comment "Bottom bits not needed, cleaner to keep them as inputs"
 waive -rules HIER_NET_NOT_READ    -location {ibex_ex_block.sv} -regexp {Net 'alu_adder_result_ext.0.' .* is not read from} \
       -comment "Bottom bit is round, not needed"
@@ -38,9 +38,9 @@ waive -rules HIER_NET_NOT_READ    -location {ibex_ex_block.sv} -regexp {[nN]et '
       -comment "LSB is not needed here, shifting off before using"
 waive -rules INPUT_NOT_READ       -location {ibex_multdiv_fast.sv} -regexp {Input port 'alu_adder_ext_i.0.' is not read from} \
       -comment "LSB is not needed here, shifting off before using"
-waive -rules HIER_NET_NOT_READ    -location {rv_core_ibex.sv} -regexp {Net 'tl_._fifo2ibex.d_(error|opcode|param|sink|size|source|user).*' is not read} \
+waive -rules HIER_NET_NOT_READ    -location {rv_core_ibex_mio.sv} -regexp {Net 'tl_._fifo2ibex.d_(error|opcode|param|sink|size|source|user).*' is not read} \
       -comment "Not all bits of instruction response needed"
-waive -rules NOT_READ             -location {rv_core_ibex.sv} -regexp {Signal 'tl_._fifo2ibex.d_(error|opcode|param|sink|size|source|user).*' is not read} \
+waive -rules NOT_READ             -location {rv_core_ibex_mio.sv} -regexp {Signal 'tl_._fifo2ibex.d_(error|opcode|param|sink|size|source|user).*' is not read} \
       -comment "Not all bits of instruction response needed"
 waive -rules NOT_READ             -location {ibex_if_stage.sv} -regexp {Signal 'fetch_addr_n.0.' is not read from} \
       -comment "cleaner to write all bits even if not all are used"
@@ -50,7 +50,7 @@ waive -rules NOT_READ             -location {ibex_multdiv_fast.sv} -regexp {Sign
       -comment "cleaner to write all bits even if not all are used"
 waive -rules MULTIPLY             -location {ibex_multdiv_fast.sv} -regexp {Multiply operation.*encountered} \
       -comment "got to pay the price for the multiplier"
-waive -rules CONST_OUTPUT         -location {rv_core_ibex.sv} -regexp {Output 'tl_(i|d)_o..*' is driven by constant} \
+waive -rules CONST_OUTPUT         -location {rv_core_ibex_mio.sv} -regexp {Output 'tl_(i|d)_o..*' is driven by constant} \
       -comment "not all bus constructs are used"
 waive -rules SIGNED_RANGE         -location {ibex_controller.sv} -msg {Part select of signed signal 'i[3:0]' encountered} \
       -comment "switching the loop variable i to unsigned would require loop restructuring to not change interrupt priorities, making the code less readable"
@@ -82,7 +82,7 @@ waive -rules NOT_READ             -location {ibex_alu.sv} -regexp {Signal 'shift
       -comment "As mentioned in the RTL, MSB of shift_right_result_ext can be safely ignored"
 waive -rules NOT_READ             -location {ibex_id_stage.sv} -regexp {Signal 'operand_b_fw_id' is not read from in module 'ibex_id_stage'} \
       -comment "This signal is actually used (not via a port but through hierarchical path) in ibex_top.sv"
-waive -rules INTEGER              -location {ibex_register_file_ff.sv rv_core_ibex.sv} -msg {'i' of type int used as a non-constant value} \
+waive -rules INTEGER              -location {ibex_register_file_ff.sv rv_core_ibex_mio.sv} -msg {'i' of type int used as a non-constant value} \
       -comment "This assigns int i (signed) to a multibit logic variable (unsigned), which is fine"
 waive -rules ONE_BIT_MEM_WIDTH             -location {ibex_core.sv} -regexp {Memory 'pmp_req_err' has word width which is single bit wide} \
       -comment "For consistency with related signals, we use an unpacked array for this signal."
@@ -96,7 +96,7 @@ waive -rules IFDEF_CODE -location {ibex_core.sv} -regexp {Assignment to 'unused_
       -comment "Declaration of signal and assignment to it are in same `else block"
 waive -rules IFDEF_CODE -location {ibex_core.sv} -regexp {Assignment to 'unused_instr_done_wb' contained within `else block} \
       -comment "Declaration of signal and assignment to it are in same `else block"
-waive -rules IFDEF_CODE -location {rv_core_ibex.sv} -regexp {Assignment to 'tl_win_d2h' contained within `else block} \
+waive -rules IFDEF_CODE -location {rv_core_ibex_mio.sv} -regexp {Assignment to 'tl_win_d2h' contained within `else block} \
       -comment "DV environment will drive things when `else block isn't used so assignment only occurs in `else block"
 waive -rules IFDEF_CODE -location {ibex_multdiv_fast.sv} -regexp {Assignment to 'unused_sva_mul_fsm_idle' contained within `else block at ibex_multdiv_fast.sv} \
       -comment "Declaration of signal and assignment to it are in same `else block"

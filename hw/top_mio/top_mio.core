@@ -27,7 +27,7 @@ filesets:
       - lowrisc:mio_ip:ac_range_check_mio
       - lowrisc:mio_ip:racl_ctrl_mio
       - lowrisc:mio_ip:rv_plic_mio
-      - lowrisc:pwc_ip:rv_core_ibex_mio
+      - lowrisc:mio_ip:rv_core_ibex_mio
       - lowrisc:ip:aon_timer
       - lowrisc:systems:top_mio_soc_proxy
       - lowrisc:tlul:headers
