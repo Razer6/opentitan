@@ -139,6 +139,8 @@ targets:
         mode: lint-only
         verilator_options:
           - "-Wall"
+      ascentlint:
+        slurm_options: ["--mem 8G"]
 
   syn:
     <<: *default_target
