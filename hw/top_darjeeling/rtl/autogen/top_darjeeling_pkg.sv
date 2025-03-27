@@ -627,10 +627,16 @@ package top_darjeeling_pkg;
   parameter int unsigned NIncomingLpgsPwc_extra_alerts = 1;
 
   // Number of rot_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsRot_extra_alerts = 20;
+  parameter int unsigned NIncomingAlertsRot_extra_alerts = 14;
 
   // Number of LPGs for incoming alert group rot_extra_alerts
   parameter int unsigned NIncomingLpgsRot_extra_alerts = 1;
+
+  // Number of other_extra_alerts incoming alerts
+  parameter int unsigned NIncomingAlertsOther_extra_alerts = 9;
+
+  // Number of LPGs for incoming alert group other_extra_alerts
+  parameter int unsigned NIncomingLpgsOther_extra_alerts = 1;
 
   // Enumeration of alert modules
   typedef enum int unsigned {

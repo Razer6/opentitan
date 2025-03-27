@@ -44,13 +44,13 @@
     { name: "NAlerts",
       desc: "Number of alert channels.",
       type: "int",
-      default: "186",
+      default: "189",
       local: "true"
     },
     { name: "NLpg",
       desc: "Number of LPGs.",
       type: "int",
-      default: "25",
+      default: "26",
       local: "true"
     },
     { name: "NLpgWidth",
@@ -66,12 +66,15 @@
       type: "logic [NAlerts-1:0][NLpgWidth-1:0]",
       default: '''
                {
-                 5'd24,
-                 5'd24,
-                 5'd24,
-                 5'd24,
-                 5'd24,
-                 5'd24,
+                 5'd25,
+                 5'd25,
+                 5'd25,
+                 5'd25,
+                 5'd25,
+                 5'd25,
+                 5'd25,
+                 5'd25,
+                 5'd25,
                  5'd24,
                  5'd24,
                  5'd24,
@@ -276,6 +279,9 @@
       type: "logic [NAlerts-1:0]",
       default: '''
                {
+                 1'b1,
+                 1'b1,
+                 1'b1,
                  1'b1,
                  1'b1,
                  1'b1,

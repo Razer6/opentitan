@@ -394,6 +394,7 @@
         'mio_extra_alerts.hjson'
         'pwc_extra_alerts.hjson'
         'rot_extra_alerts.hjson'
+        'other_extra_alerts.hjson'
       ]
     },
     { name: "spi_host0",

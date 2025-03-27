@@ -16,7 +16,7 @@
  * `top_darjeeling_alert_peripheral_t`.
  */
 const top_darjeeling_alert_peripheral_t
-    top_darjeeling_alert_for_peripheral[186] = {
+    top_darjeeling_alert_for_peripheral[189] = {
   [kTopDarjeelingAlertIdUart0FatalFault] = kTopDarjeelingAlertPeripheralUart0,
   [kTopDarjeelingAlertIdGpioFatalFault] = kTopDarjeelingAlertPeripheralGpio,
   [kTopDarjeelingAlertIdSpiDeviceFatalFault] = kTopDarjeelingAlertPeripheralSpiDevice,
@@ -185,8 +185,6 @@ const top_darjeeling_alert_peripheral_t
   [kTopDarjeelingAlertIdIncomingPwcExtraAlertsIntegError] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAlertsAmsIpWrapperIntegError] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAlertsAmsIpWrapperCsrngRecov] = kTopDarjeelingAlertPeripheralExternal,
-  [kTopDarjeelingAlertIdIncomingRotExtraAlertsSsramLoIntegErr] = kTopDarjeelingAlertPeripheralExternal,
-  [kTopDarjeelingAlertIdIncomingRotExtraAlertsSsramHiIntegErr] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr0] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr1] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr2] = kTopDarjeelingAlertPeripheralExternal,
@@ -194,15 +192,20 @@ const top_darjeeling_alert_peripheral_t
   [kTopDarjeelingAlertIdIncomingRotExtraAlertsNsGroupIntegError] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAlertsLioGroupVIntegError] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAlertsLioGroupPIntegError] = kTopDarjeelingAlertPeripheralExternal,
-  [kTopDarjeelingAlertIdIncomingRotExtraAlertsNsEfuseIntegError] = kTopDarjeelingAlertPeripheralExternal,
-  [kTopDarjeelingAlertIdIncomingRotExtraAlertsNsEfusePrimOtpFatalErr] = kTopDarjeelingAlertPeripheralExternal,
-  [kTopDarjeelingAlertIdIncomingRotExtraAlertsNsEfusePrimOtpRecovErr] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAlertsRcWidgetIntegError] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAlertsRotHdrIntegError] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAlertsRotPcieAdapterIntegError] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAlertsRasCtlResetAlert] = kTopDarjeelingAlertPeripheralExternal,
-  [kTopDarjeelingAlertIdIncomingRotExtraAlertsScsifRegsAlertTrigger] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAlertsScsRaiAlertTrigger] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingOtherExtraAlertsSsramLoIntegErr] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingOtherExtraAlertsSsramHiIntegErr] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingOtherExtraAlertsScsifRegsErr] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingOtherExtraAlertsFatalFault] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingOtherExtraAlertsRecovCtrlUpdateErr] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingOtherExtraAlertsBusIntegErr] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingOtherExtraAlertsPrimFatalErr] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingOtherExtraAlertsPrimRecovErr] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingOtherExtraAlertsApbAdapterIntegErr] = kTopDarjeelingAlertPeripheralExternal,
 };
 
 /**

@@ -1,0 +1,98 @@
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+
+{
+    other_extra_alerts: [
+        // IDX 0
+        {
+            name: ssram_lo_integ_err
+            module_name: ssram
+            index: 0
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 1
+        {
+            name: ssram_hi_integ_err
+            module_name: ssram
+            index: 1
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 2
+        {
+            name: scsif_regs_err
+            module_name: scsif_regs
+            index: 2
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 3
+        {
+            name: fatal_fault
+            module_name: nsgrp_racl_ctrl
+            index: 3
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 4
+        {
+            name: recov_ctrl_update_err
+            module_name: nsgrp_racl_ctrl
+            index: 4
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 5
+        {
+            name: bus_integ_err
+            module_name: nsefuse
+            index: 5
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 6
+        {
+            name: prim_fatal_err
+            module_name: nsefuse
+            index: 6
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 7
+        {
+            name: prim_recov_err
+            module_name: nsefuse
+            index: 7
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 8
+        {
+            name: apb_adapter_integ_err
+            module_name: nsefuse
+            index: 8
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+    ]
+}

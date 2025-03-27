@@ -335,6 +335,12 @@ module top_darjeeling #(
   output prim_alert_pkg::alert_rx_t [top_darjeeling_pkg::NIncomingAlertsRot_extra_alerts-1:0] incoming_alert_rot_extra_alerts_rx_o,
   input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsRot_extra_alerts-1:0]   incoming_lpg_cg_en_rot_extra_alerts_i,
   input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsRot_extra_alerts-1:0]   incoming_lpg_rst_en_rot_extra_alerts_i,
+  
+  // Incoming alerts for group other_extra_alerts
+  input  prim_alert_pkg::alert_tx_t [top_darjeeling_pkg::NIncomingAlertsOther_extra_alerts-1:0] incoming_alert_other_extra_alerts_tx_i,
+  output prim_alert_pkg::alert_rx_t [top_darjeeling_pkg::NIncomingAlertsOther_extra_alerts-1:0] incoming_alert_other_extra_alerts_rx_o,
+  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsOther_extra_alerts-1:0]   incoming_lpg_cg_en_other_extra_alerts_i,
+  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsOther_extra_alerts-1:0]   incoming_lpg_rst_en_other_extra_alerts_i,
 
   // All clocks forwarded to ast
   output clkmgr_pkg::clkmgr_out_t clks_ast_o,
@@ -963,6 +969,8 @@ module top_darjeeling #(
   assign lpg_rst_en[23] = incoming_lpg_rst_en_pwc_extra_alerts_i[0];
   assign lpg_cg_en[24] = incoming_lpg_cg_en_rot_extra_alerts_i[0];
   assign lpg_rst_en[24] = incoming_lpg_rst_en_rot_extra_alerts_i[0];
+  assign lpg_cg_en[25] = incoming_lpg_cg_en_other_extra_alerts_i[0];
+  assign lpg_rst_en[25] = incoming_lpg_rst_en_other_extra_alerts_i[0];
 
 
 // tie-off unused connections
@@ -2900,26 +2908,33 @@ module top_darjeeling #(
   // Alert mapping to the alert handler for alert group rot_extra_alerts
   // [166]: ams_ip_wrapper_integ_error
   // [167]: ams_ip_wrapper_csrng_recov
-  // [168]: ssram_lo_integ_err
-  // [169]: ssram_hi_integ_err
-  // [170]: lsio_group_esc_err_0
-  // [171]: lsio_group_esc_err_1
-  // [172]: lsio_group_esc_err_2
-  // [173]: lsio_group_esc_err_3
-  // [174]: ns_group_integ_error
-  // [175]: lio_group_v_integ_error
-  // [176]: lio_group_p_integ_error
-  // [177]: ns_efuse_integ_error
-  // [178]: ns_efuse_prim_otp_fatal_err
-  // [179]: ns_efuse_prim_otp_recov_err
-  // [180]: rc_widget_integ_error
-  // [181]: rot_hdr_integ_error
-  // [182]: rot_pcie_adapter_integ_error
-  // [183]: ras_ctl_reset_alert
-  // [184]: scsif_regs_alert_trigger
-  // [185]: scs_rai_alert_trigger
-  assign alert_tx[185:166] = incoming_alert_rot_extra_alerts_tx_i;
-  assign incoming_alert_rot_extra_alerts_rx_o = alert_rx[185:166];
+  // [168]: lsio_group_esc_err_0
+  // [169]: lsio_group_esc_err_1
+  // [170]: lsio_group_esc_err_2
+  // [171]: lsio_group_esc_err_3
+  // [172]: ns_group_integ_error
+  // [173]: lio_group_v_integ_error
+  // [174]: lio_group_p_integ_error
+  // [175]: rc_widget_integ_error
+  // [176]: rot_hdr_integ_error
+  // [177]: rot_pcie_adapter_integ_error
+  // [178]: ras_ctl_reset_alert
+  // [179]: scs_rai_alert_trigger
+  assign alert_tx[179:166] = incoming_alert_rot_extra_alerts_tx_i;
+  assign incoming_alert_rot_extra_alerts_rx_o = alert_rx[179:166];
+
+  // Alert mapping to the alert handler for alert group other_extra_alerts
+  // [180]: ssram_lo_integ_err
+  // [181]: ssram_hi_integ_err
+  // [182]: scsif_regs_err
+  // [183]: fatal_fault
+  // [184]: recov_ctrl_update_err
+  // [185]: bus_integ_err
+  // [186]: prim_fatal_err
+  // [187]: prim_recov_err
+  // [188]: apb_adapter_integ_err
+  assign alert_tx[188:180] = incoming_alert_other_extra_alerts_tx_i;
+  assign incoming_alert_other_extra_alerts_rx_o = alert_rx[188:180];
 
   // interrupt assignments
   assign intr_vector = {

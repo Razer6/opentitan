@@ -1502,25 +1502,28 @@ typedef enum top_darjeeling_alert_id {
   kTopDarjeelingAlertIdIncomingPwcExtraAlertsIntegError = 165, /**< incoming_pwc_extra_alerts_integ_error */
   kTopDarjeelingAlertIdIncomingRotExtraAlertsAmsIpWrapperIntegError = 166, /**< incoming_rot_extra_alerts_ams_ip_wrapper_integ_error */
   kTopDarjeelingAlertIdIncomingRotExtraAlertsAmsIpWrapperCsrngRecov = 167, /**< incoming_rot_extra_alerts_ams_ip_wrapper_csrng_recov */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsSsramLoIntegErr = 168, /**< incoming_rot_extra_alerts_ssram_lo_integ_err */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsSsramHiIntegErr = 169, /**< incoming_rot_extra_alerts_ssram_hi_integ_err */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr0 = 170, /**< incoming_rot_extra_alerts_lsio_group_esc_err_0 */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr1 = 171, /**< incoming_rot_extra_alerts_lsio_group_esc_err_1 */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr2 = 172, /**< incoming_rot_extra_alerts_lsio_group_esc_err_2 */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr3 = 173, /**< incoming_rot_extra_alerts_lsio_group_esc_err_3 */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsNsGroupIntegError = 174, /**< incoming_rot_extra_alerts_ns_group_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLioGroupVIntegError = 175, /**< incoming_rot_extra_alerts_lio_group_v_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLioGroupPIntegError = 176, /**< incoming_rot_extra_alerts_lio_group_p_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsNsEfuseIntegError = 177, /**< incoming_rot_extra_alerts_ns_efuse_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsNsEfusePrimOtpFatalErr = 178, /**< incoming_rot_extra_alerts_ns_efuse_prim_otp_fatal_err */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsNsEfusePrimOtpRecovErr = 179, /**< incoming_rot_extra_alerts_ns_efuse_prim_otp_recov_err */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsRcWidgetIntegError = 180, /**< incoming_rot_extra_alerts_rc_widget_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsRotHdrIntegError = 181, /**< incoming_rot_extra_alerts_rot_hdr_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsRotPcieAdapterIntegError = 182, /**< incoming_rot_extra_alerts_rot_pcie_adapter_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsRasCtlResetAlert = 183, /**< incoming_rot_extra_alerts_ras_ctl_reset_alert */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsScsifRegsAlertTrigger = 184, /**< incoming_rot_extra_alerts_scsif_regs_alert_trigger */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsScsRaiAlertTrigger = 185, /**< incoming_rot_extra_alerts_scs_rai_alert_trigger */
-  kTopDarjeelingAlertIdLast = 185, /**< \internal The Last Valid Alert ID. */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr0 = 168, /**< incoming_rot_extra_alerts_lsio_group_esc_err_0 */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr1 = 169, /**< incoming_rot_extra_alerts_lsio_group_esc_err_1 */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr2 = 170, /**< incoming_rot_extra_alerts_lsio_group_esc_err_2 */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr3 = 171, /**< incoming_rot_extra_alerts_lsio_group_esc_err_3 */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsNsGroupIntegError = 172, /**< incoming_rot_extra_alerts_ns_group_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsLioGroupVIntegError = 173, /**< incoming_rot_extra_alerts_lio_group_v_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsLioGroupPIntegError = 174, /**< incoming_rot_extra_alerts_lio_group_p_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsRcWidgetIntegError = 175, /**< incoming_rot_extra_alerts_rc_widget_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsRotHdrIntegError = 176, /**< incoming_rot_extra_alerts_rot_hdr_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsRotPcieAdapterIntegError = 177, /**< incoming_rot_extra_alerts_rot_pcie_adapter_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsRasCtlResetAlert = 178, /**< incoming_rot_extra_alerts_ras_ctl_reset_alert */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsScsRaiAlertTrigger = 179, /**< incoming_rot_extra_alerts_scs_rai_alert_trigger */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsSsramLoIntegErr = 180, /**< incoming_other_extra_alerts_ssram_lo_integ_err */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsSsramHiIntegErr = 181, /**< incoming_other_extra_alerts_ssram_hi_integ_err */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsScsifRegsErr = 182, /**< incoming_other_extra_alerts_scsif_regs_err */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsFatalFault = 183, /**< incoming_other_extra_alerts_fatal_fault */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsRecovCtrlUpdateErr = 184, /**< incoming_other_extra_alerts_recov_ctrl_update_err */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsBusIntegErr = 185, /**< incoming_other_extra_alerts_bus_integ_err */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsPrimFatalErr = 186, /**< incoming_other_extra_alerts_prim_fatal_err */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsPrimRecovErr = 187, /**< incoming_other_extra_alerts_prim_recov_err */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsApbAdapterIntegErr = 188, /**< incoming_other_extra_alerts_apb_adapter_integ_err */
+  kTopDarjeelingAlertIdLast = 188, /**< \internal The Last Valid Alert ID. */
 } top_darjeeling_alert_id_t;
 
 /**
@@ -1530,7 +1533,7 @@ typedef enum top_darjeeling_alert_id {
  * `top_darjeeling_alert_peripheral_t`.
  */
 extern const top_darjeeling_alert_peripheral_t
-    top_darjeeling_alert_for_peripheral[186];
+    top_darjeeling_alert_for_peripheral[189];
 
 #define PINMUX_MIO_PERIPH_INSEL_IDX_OFFSET 2
 
