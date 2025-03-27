@@ -45,7 +45,7 @@
       {
         name: io
         aon: no
-        freq: "1000000000"
+        freq: "250000000"
         ref: false
       }
       {
@@ -55,25 +55,7 @@
         ref: true
       }
     ]
-    derived_srcs:
-    [
-      {
-        name: io_div2
-        aon: no
-        freq: "500000000"
-        ref: false
-        div: "2"
-        src: io
-      }
-      {
-        name: io_div4
-        aon: no
-        freq: "250000000"
-        ref: false
-        div: "4"
-        src: io
-      }
-    ]
+    derived_srcs: []
     groups:
     [
       {
@@ -95,11 +77,9 @@
         unique: no
         clocks:
         {
-          clk_io_div4_powerup: io_div4
+          clk_io_powerup: io
           clk_aon_powerup: aon
           clk_main_powerup: main
-          clk_io_powerup: io
-          clk_io_div2_powerup: io_div2
         }
       }
       {
@@ -122,7 +102,7 @@
         unique: no
         clocks:
         {
-          clk_io_div4_infra: io_div4
+          clk_io_infra: io
           clk_main_infra: main
           clk_aon_infra: aon
         }
@@ -134,7 +114,7 @@
         unique: no
         clocks:
         {
-          clk_io_div4_secure: io_div4
+          clk_io_secure: io
           clk_main_secure: main
         }
       }
@@ -145,8 +125,7 @@
         unique: no
         clocks:
         {
-          clk_io_div4_peri: io_div4
-          clk_io_div2_peri: io_div2
+          clk_io_peri: io
           clk_aon_peri: aon
         }
       }
@@ -157,7 +136,7 @@
         unique: no
         clocks:
         {
-          clk_io_div4_timers: io_div4
+          clk_io_timers: io
           clk_aon_timers: aon
         }
       }
@@ -195,7 +174,7 @@
         shadowed: false
         sw: false
         path: ""
-        clock: io_div4
+        clock: io
       }
       {
         name: sys_src
@@ -205,7 +184,7 @@
         shadowed: false
         sw: false
         path: ""
-        clock: io_div4
+        clock: io
       }
       {
         name: por
@@ -234,34 +213,6 @@
         path: rstmgr_aon_resets.rst_por_io_n
         parent: por_aon
         clock: io
-      }
-      {
-        name: por_io_div2
-        gen: true
-        type: top
-        domains:
-        [
-          Aon
-        ]
-        shadowed: false
-        sw: false
-        path: rstmgr_aon_resets.rst_por_io_div2_n
-        parent: por_aon
-        clock: io_div2
-      }
-      {
-        name: por_io_div4
-        gen: true
-        type: top
-        domains:
-        [
-          Aon
-        ]
-        shadowed: false
-        sw: false
-        path: rstmgr_aon_resets.rst_por_io_div4_n
-        parent: por_aon
-        clock: io_div4
       }
       {
         name: lc
@@ -298,42 +249,14 @@
         type: top
         domains:
         [
-          Aon
-        ]
-        shadowed: false
-        sw: false
-        path: rstmgr_aon_resets.rst_lc_io_n
-        parent: lc_src
-        clock: io
-      }
-      {
-        name: lc_io_div2
-        gen: true
-        type: top
-        domains:
-        [
-          Aon
-        ]
-        shadowed: false
-        sw: false
-        path: rstmgr_aon_resets.rst_lc_io_div2_n
-        parent: lc_src
-        clock: io_div2
-      }
-      {
-        name: lc_io_div4
-        gen: true
-        type: top
-        domains:
-        [
           "0"
           Aon
         ]
         shadowed: true
         sw: false
-        path: rstmgr_aon_resets.rst_lc_io_div4_n
+        path: rstmgr_aon_resets.rst_lc_io_n
         parent: lc_src
-        clock: io_div4
+        clock: io
       }
       {
         name: sys
@@ -350,7 +273,7 @@
         clock: main
       }
       {
-        name: sys_io_div4
+        name: sys_io
         gen: true
         type: top
         domains:
@@ -359,9 +282,9 @@
         ]
         shadowed: false
         sw: false
-        path: rstmgr_aon_resets.rst_sys_io_div4_n
+        path: rstmgr_aon_resets.rst_sys_io_n
         parent: sys_src
-        clock: io_div4
+        clock: io
       }
       {
         name: spi_device
@@ -375,7 +298,7 @@
         sw: true
         path: rstmgr_aon_resets.rst_spi_device_n
         parent: lc_src
-        clock: io_div4
+        clock: io
       }
       {
         name: spi_host0
@@ -389,7 +312,7 @@
         sw: true
         path: rstmgr_aon_resets.rst_spi_host0_n
         parent: lc_src
-        clock: io_div4
+        clock: io
       }
       {
         name: i2c0
@@ -403,7 +326,7 @@
         sw: true
         path: rstmgr_aon_resets.rst_i2c0_n
         parent: lc_src
-        clock: io_div4
+        clock: io
       }
     ]
   }
@@ -526,20 +449,20 @@
       type: uart
       clock_srcs:
       {
-        clk_i: io_div4
+        clk_i: io
       }
       clock_group: peri
       reset_connections:
       {
         rst_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
       }
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_peri
+        clk_i: clkmgr_aon_clocks.clk_io_peri
       }
       param_decl: {}
       param_list: []
@@ -623,14 +546,14 @@
       template_type: gpio
       clock_srcs:
       {
-        clk_i: io_div4
+        clk_i: io
       }
       clock_group: peri
       reset_connections:
       {
         rst_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
       }
@@ -646,7 +569,7 @@
       attr: ipgen
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_peri
+        clk_i: clkmgr_aon_clocks.clk_io_peri
       }
       memory: {}
       param_list:
@@ -759,8 +682,8 @@
       type: spi_device
       clock_srcs:
       {
-        clk_i: io_div4
-        scan_clk_i: io_div2
+        clk_i: io
+        scan_clk_i: io
       }
       clock_group: peri
       reset_connections:
@@ -777,8 +700,8 @@
       }
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_peri
-        scan_clk_i: clkmgr_aon_clocks.clk_io_div2_peri
+        clk_i: clkmgr_aon_clocks.clk_io_peri
+        scan_clk_i: clkmgr_aon_clocks.clk_io_peri
       }
       memory: {}
       param_list:
@@ -950,7 +873,7 @@
       type: i2c
       clock_srcs:
       {
-        clk_i: io_div4
+        clk_i: io
       }
       clock_group: peri
       reset_connections:
@@ -963,7 +886,7 @@
       }
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_peri
+        clk_i: clkmgr_aon_clocks.clk_io_peri
       }
       param_decl: {}
       memory: {}
@@ -1090,20 +1013,20 @@
       type: rv_timer
       clock_srcs:
       {
-        clk_i: io_div4
+        clk_i: io
       }
       clock_group: timers
       reset_connections:
       {
         rst_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
       }
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_timers
+        clk_i: clkmgr_aon_clocks.clk_io_timers
       }
       param_decl: {}
       param_list: []
@@ -1142,7 +1065,7 @@
       template_type: otp_ctrl
       clock_srcs:
       {
-        clk_i: io_div4
+        clk_i: io
         clk_edn_i: main
       }
       clock_group: secure
@@ -1150,7 +1073,7 @@
       {
         rst_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
         rst_edn_ni:
@@ -1173,7 +1096,7 @@
       attr: ipgen
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_secure
+        clk_i: clkmgr_aon_clocks.clk_io_secure
         clk_edn_i: clkmgr_aon_clocks.clk_main_secure
       }
       param_decl: {}
@@ -1602,7 +1525,7 @@
       type: lc_ctrl
       clock_srcs:
       {
-        clk_i: io_div4
+        clk_i: io
         clk_kmac_i: main
       }
       clock_group: secure
@@ -1610,7 +1533,7 @@
       {
         rst_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
         rst_kmac_ni:
@@ -1641,7 +1564,7 @@
       }
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_secure
+        clk_i: clkmgr_aon_clocks.clk_io_secure
         clk_kmac_i: clkmgr_aon_clocks.clk_main_secure
       }
       memory: {}
@@ -2007,9 +1930,7 @@
           width: 1
           default: lc_ctrl_pkg::Off
           inst_name: lc_ctrl
-          end_idx: -1
-          top_type: broadcast
-          top_signame: lc_ctrl_lc_clk_byp_req
+          top_signame: lc_ctrl_lc_clk_byp_ack
           index: -1
         }
         {
@@ -2250,7 +2171,7 @@
       template_type: alert_handler
       clock_srcs:
       {
-        clk_i: io_div4
+        clk_i: io
         clk_edn_i: main
       }
       clock_group: secure
@@ -2258,7 +2179,7 @@
       {
         rst_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
         rst_edn_ni:
@@ -2279,7 +2200,7 @@
       ]
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_secure
+        clk_i: clkmgr_aon_clocks.clk_io_secure
         clk_edn_i: clkmgr_aon_clocks.clk_main_secure
       }
       param_decl: {}
@@ -2395,7 +2316,7 @@
       type: spi_host
       clock_srcs:
       {
-        clk_i: io_div4
+        clk_i: io
       }
       clock_group: peri
       reset_connections:
@@ -2408,7 +2329,7 @@
       }
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_peri
+        clk_i: clkmgr_aon_clocks.clk_io_peri
       }
       param_decl: {}
       memory: {}
@@ -2517,12 +2438,12 @@
       clock_group: powerup
       clock_srcs:
       {
-        clk_i: io_div4
+        clk_i: io
         clk_slow_i: aon
-        clk_lc_i: io_div4
+        clk_lc_i: io
         clk_esc_i:
         {
-          clock: io_div4
+          clock: io
           group: secure
         }
       }
@@ -2530,7 +2451,7 @@
       {
         rst_ni:
         {
-          name: por_io_div4
+          name: por_io
           domain: Aon
         }
         rst_main_ni:
@@ -2540,12 +2461,12 @@
         }
         rst_lc_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: Aon
         }
         rst_esc_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: Aon
         }
         rst_slow_ni:
@@ -2562,10 +2483,10 @@
       attr: ipgen
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_powerup
+        clk_i: clkmgr_aon_clocks.clk_io_powerup
         clk_slow_i: clkmgr_aon_clocks.clk_aon_powerup
-        clk_lc_i: clkmgr_aon_clocks.clk_io_div4_powerup
-        clk_esc_i: clkmgr_aon_clocks.clk_io_div4_secure
+        clk_lc_i: clkmgr_aon_clocks.clk_io_powerup
+        clk_esc_i: clkmgr_aon_clocks.clk_io_secure
       }
       param_decl: {}
       memory: {}
@@ -2883,27 +2804,25 @@
       {
         clk_i:
         {
-          clock: io_div4
+          clock: io
           group: powerup
         }
-        clk_por_i: io_div4
+        clk_por_i: io
         clk_aon_i: aon
         clk_main_i: main
         clk_io_i: io
-        clk_io_div2_i: io_div2
-        clk_io_div4_i: io_div4
       }
       clock_group: powerup
       reset_connections:
       {
         rst_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: Aon
         }
         rst_por_ni:
         {
-          name: por_io_div4
+          name: por_io
           domain: Aon
         }
       }
@@ -2915,13 +2834,11 @@
       attr: ipgen
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_powerup
-        clk_por_i: clkmgr_aon_clocks.clk_io_div4_powerup
+        clk_i: clkmgr_aon_clocks.clk_io_powerup
+        clk_por_i: clkmgr_aon_clocks.clk_io_powerup
         clk_aon_i: clkmgr_aon_clocks.clk_aon_powerup
         clk_main_i: clkmgr_aon_clocks.clk_main_powerup
         clk_io_i: clkmgr_aon_clocks.clk_io_powerup
-        clk_io_div2_i: clkmgr_aon_clocks.clk_io_div2_powerup
-        clk_io_div4_i: clkmgr_aon_clocks.clk_io_div4_powerup
       }
       param_decl: {}
       memory: {}
@@ -3084,7 +3001,7 @@
       template_type: clkmgr
       clock_srcs:
       {
-        clk_i: io_div4
+        clk_i: io
         clk_main_i:
         {
           group: ast
@@ -3106,7 +3023,7 @@
       {
         rst_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: Aon
         }
         rst_aon_ni:
@@ -3119,16 +3036,6 @@
           name: lc_io
           domain: Aon
         }
-        rst_io_div2_ni:
-        {
-          name: lc_io_div2
-          domain: Aon
-        }
-        rst_io_div4_ni:
-        {
-          name: lc_io_div4
-          domain: Aon
-        }
         rst_main_ni:
         {
           name: lc
@@ -3136,22 +3043,12 @@
         }
         rst_root_ni:
         {
-          name: por_io_div4
+          name: por_io
           domain: Aon
         }
         rst_root_io_ni:
         {
           name: por_io
-          domain: Aon
-        }
-        rst_root_io_div2_ni:
-        {
-          name: por_io_div2
-          domain: Aon
-        }
-        rst_root_io_div4_ni:
-        {
-          name: por_io_div4
           domain: Aon
         }
         rst_root_main_ni:
@@ -3167,7 +3064,7 @@
       attr: ipgen
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_powerup
+        clk_i: clkmgr_aon_clocks.clk_io_powerup
         clk_main_i: clk_main_i
         clk_io_i: clk_io_i
         clk_aon_i: clk_aon_i
@@ -3198,126 +3095,6 @@
           inst_name: clkmgr_aon
           default: ""
           top_signame: clkmgr_aon_cg_en
-          index: -1
-        }
-        {
-          name: lc_hw_debug_en
-          struct: lc_tx
-          package: lc_ctrl_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: clkmgr_aon
-          default: ""
-          top_signame: lc_ctrl_lc_hw_debug_en
-          index: -1
-        }
-        {
-          name: io_clk_byp_req
-          struct: mubi4
-          package: prim_mubi_pkg
-          type: uni
-          act: req
-          width: 1
-          inst_name: clkmgr_aon
-          default: ""
-          external: true
-          top_signame: io_clk_byp_req
-          conn_type: false
-          index: -1
-        }
-        {
-          name: io_clk_byp_ack
-          struct: mubi4
-          package: prim_mubi_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: clkmgr_aon
-          default: ""
-          external: true
-          top_signame: io_clk_byp_ack
-          conn_type: false
-          index: -1
-        }
-        {
-          name: all_clk_byp_req
-          struct: mubi4
-          package: prim_mubi_pkg
-          type: uni
-          act: req
-          width: 1
-          inst_name: clkmgr_aon
-          default: ""
-          external: true
-          top_signame: all_clk_byp_req
-          conn_type: false
-          index: -1
-        }
-        {
-          name: all_clk_byp_ack
-          struct: mubi4
-          package: prim_mubi_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: clkmgr_aon
-          default: ""
-          external: true
-          top_signame: all_clk_byp_ack
-          conn_type: false
-          index: -1
-        }
-        {
-          name: hi_speed_sel
-          struct: mubi4
-          package: prim_mubi_pkg
-          type: uni
-          act: req
-          width: 1
-          inst_name: clkmgr_aon
-          default: ""
-          external: true
-          top_signame: hi_speed_sel
-          conn_type: false
-          index: -1
-        }
-        {
-          name: div_step_down_req
-          struct: mubi4
-          package: prim_mubi_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: clkmgr_aon
-          default: ""
-          external: true
-          top_signame: div_step_down_req
-          conn_type: false
-          index: -1
-        }
-        {
-          name: lc_clk_byp_req
-          struct: lc_tx
-          package: lc_ctrl_pkg
-          type: uni
-          act: rcv
-          width: 1
-          inst_name: clkmgr_aon
-          default: ""
-          top_signame: lc_ctrl_lc_clk_byp_req
-          index: -1
-        }
-        {
-          name: lc_clk_byp_ack
-          struct: lc_tx
-          package: lc_ctrl_pkg
-          type: uni
-          act: req
-          width: 1
-          inst_name: clkmgr_aon
-          default: ""
-          top_signame: lc_ctrl_lc_clk_byp_ack
           index: -1
         }
         {
@@ -3404,7 +3181,7 @@
       template_type: pinmux
       clock_srcs:
       {
-        clk_i: io_div4
+        clk_i: io
         clk_aon_i: aon
       }
       clock_group: powerup
@@ -3412,7 +3189,7 @@
       {
         rst_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: Aon
         }
         rst_aon_ni:
@@ -3422,7 +3199,7 @@
         }
         rst_sys_ni:
         {
-          name: sys_io_div4
+          name: sys_io
           domain: Aon
         }
       }
@@ -3433,7 +3210,7 @@
       attr: ipgen
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_powerup
+        clk_i: clkmgr_aon_clocks.clk_io_powerup
         clk_aon_i: clkmgr_aon_clocks.clk_aon_powerup
       }
       param_decl: {}
@@ -3506,7 +3283,7 @@
       type: aon_timer
       clock_srcs:
       {
-        clk_i: io_div4
+        clk_i: io
         clk_aon_i: aon
       }
       clock_group: timers
@@ -3514,7 +3291,7 @@
       {
         rst_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: Aon
         }
         rst_aon_ni:
@@ -3529,7 +3306,7 @@
       ]
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_timers
+        clk_i: clkmgr_aon_clocks.clk_io_timers
         clk_aon_i: clkmgr_aon_clocks.clk_aon_timers
       }
       param_decl: {}
@@ -3654,7 +3431,7 @@
       {
         clk_ast_tlul_i:
         {
-          clock: io_div4
+          clock: io
           group: infra
         }
         clk_ast_adc_i:
@@ -3664,7 +3441,7 @@
         }
         clk_ast_alert_i:
         {
-          clock: io_div4
+          clock: io
           group: secure
         }
         clk_ast_es_i:
@@ -3683,7 +3460,7 @@
       {
         rst_ast_tlul_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
         rst_ast_adc_ni:
@@ -3693,7 +3470,7 @@
         }
         rst_ast_alert_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
         rst_ast_es_ni:
@@ -3715,9 +3492,9 @@
       attr: reggen_only
       clock_connections:
       {
-        clk_ast_tlul_i: clkmgr_aon_clocks.clk_io_div4_infra
+        clk_ast_tlul_i: clkmgr_aon_clocks.clk_io_infra
         clk_ast_adc_i: clkmgr_aon_clocks.clk_aon_peri
-        clk_ast_alert_i: clkmgr_aon_clocks.clk_io_div4_secure
+        clk_ast_alert_i: clkmgr_aon_clocks.clk_io_secure
         clk_ast_es_i: clkmgr_aon_clocks.clk_main_secure
         clk_ast_rng_i: clkmgr_aon_clocks.clk_main_secure
       }
@@ -3763,7 +3540,7 @@
         }
         rst_por_ni:
         {
-          name: por_io_div4
+          name: por_io
           domain: Aon
         }
       }
@@ -4208,20 +3985,20 @@
       type: sram_ctrl
       clock_srcs:
       {
-        clk_i: io_div4
-        clk_otp_i: io_div4
+        clk_i: io
+        clk_otp_i: io
       }
       clock_group: infra
       reset_connections:
       {
         rst_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: Aon
         }
         rst_otp_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: Aon
         }
       }
@@ -4261,8 +4038,8 @@
       }
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_infra
-        clk_otp_i: clkmgr_aon_clocks.clk_io_div4_infra
+        clk_i: clkmgr_aon_clocks.clk_io_infra
+        clk_otp_i: clkmgr_aon_clocks.clk_io_infra
       }
       param_list:
       [
@@ -5647,7 +5424,7 @@
         }
         clk_otp_i:
         {
-          clock: io_div4
+          clock: io
           group: secure
         }
       }
@@ -5666,7 +5443,7 @@
         }
         rst_otp_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
       }
@@ -5674,7 +5451,7 @@
       {
         clk_i: clkmgr_aon_clocks.clk_main_otbn
         clk_edn_i: clkmgr_aon_clocks.clk_main_secure
-        clk_otp_i: clkmgr_aon_clocks.clk_io_div4_secure
+        clk_otp_i: clkmgr_aon_clocks.clk_io_secure
       }
       param_decl: {}
       memory: {}
@@ -6577,7 +6354,7 @@
       clock_srcs:
       {
         clk_i: main
-        clk_otp_i: io_div4
+        clk_otp_i: io
       }
       clock_group: infra
       reset_connections:
@@ -6589,7 +6366,7 @@
         }
         rst_otp_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
       }
@@ -6626,7 +6403,7 @@
       clock_connections:
       {
         clk_i: clkmgr_aon_clocks.clk_main_infra
-        clk_otp_i: clkmgr_aon_clocks.clk_io_div4_infra
+        clk_otp_i: clkmgr_aon_clocks.clk_io_infra
       }
       param_list:
       [
@@ -6959,7 +6736,7 @@
       clock_srcs:
       {
         clk_i: main
-        clk_otp_i: io_div4
+        clk_otp_i: io
       }
       clock_group: infra
       reset_connections:
@@ -6971,7 +6748,7 @@
         }
         rst_otp_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
       }
@@ -7008,7 +6785,7 @@
       clock_connections:
       {
         clk_i: clkmgr_aon_clocks.clk_main_infra
-        clk_otp_i: clkmgr_aon_clocks.clk_io_div4_infra
+        clk_otp_i: clkmgr_aon_clocks.clk_io_infra
       }
       param_list:
       [
@@ -9711,14 +9488,14 @@
       type: soc_dbg_ctrl
       clock_srcs:
       {
-        clk_i: io_div4
+        clk_i: io
       }
       clock_group: secure
       reset_connections:
       {
         rst_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
       }
@@ -9735,7 +9512,7 @@
       }
       clock_connections:
       {
-        clk_i: clkmgr_aon_clocks.clk_io_div4_secure
+        clk_i: clkmgr_aon_clocks.clk_io_secure
       }
       param_decl: {}
       param_list: []
@@ -10420,12 +10197,12 @@
         clk_edn_i: main
         clk_esc_i:
         {
-          clock: io_div4
+          clock: io
           group: secure
         }
         clk_otp_i:
         {
-          clock: io_div4
+          clock: io
           group: secure
         }
       }
@@ -10444,12 +10221,12 @@
         }
         rst_esc_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
         rst_otp_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
       }
@@ -10457,8 +10234,8 @@
       {
         clk_i: clkmgr_aon_clocks.clk_main_infra
         clk_edn_i: clkmgr_aon_clocks.clk_main_infra
-        clk_esc_i: clkmgr_aon_clocks.clk_io_div4_secure
-        clk_otp_i: clkmgr_aon_clocks.clk_io_div4_secure
+        clk_esc_i: clkmgr_aon_clocks.clk_io_secure
+        clk_otp_i: clkmgr_aon_clocks.clk_io_secure
       }
       memory: {}
       param_list:
@@ -11382,7 +11159,6 @@
         ast.lc_hw_debug_en
         csrng.lc_hw_debug_en
         rv_dm.lc_hw_debug_en
-        clkmgr_aon.lc_hw_debug_en
         pwrmgr_aon.lc_hw_debug_en
         soc_dbg_ctrl.lc_hw_debug_en
       ]
@@ -11411,13 +11187,9 @@
         otp_ctrl.lc_check_byp_en
         rv_dm.lc_check_byp_en
       ]
-      lc_ctrl.lc_clk_byp_req:
-      [
-        clkmgr_aon.lc_clk_byp_req
-      ]
       lc_ctrl.lc_clk_byp_ack:
       [
-        clkmgr_aon.lc_clk_byp_ack
+        lc_ctrl.lc_clk_byp_req
       ]
       lc_ctrl.lc_creator_seed_sw_rw_en:
       [
@@ -11897,12 +11669,6 @@
       spi_device.ram_cfg_spi2sys: spi_device_ram_2p_cfg_spi2sys
       pwrmgr_aon.boot_status: pwrmgr_boot_status
       clkmgr_aon.jitter_en: clk_main_jitter_en
-      clkmgr_aon.io_clk_byp_req: io_clk_byp_req
-      clkmgr_aon.io_clk_byp_ack: io_clk_byp_ack
-      clkmgr_aon.all_clk_byp_req: all_clk_byp_req
-      clkmgr_aon.all_clk_byp_ack: all_clk_byp_ack
-      clkmgr_aon.hi_speed_sel: hi_speed_sel
-      clkmgr_aon.div_step_down_req: div_step_down_req
       clkmgr_aon.calib_rdy: calib_rdy
       csrng.entropy_src_hw_if: entropy_src_hw_if
       dma.sys: dma_sys
@@ -11988,7 +11754,7 @@
       clock_srcs:
       {
         clk_main_i: main
-        clk_fixed_i: io_div4
+        clk_fixed_i: io
       }
       clock_group: infra
       reset: rst_main_ni
@@ -12001,14 +11767,14 @@
         }
         rst_fixed_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
       }
       clock_connections:
       {
         clk_main_i: clkmgr_aon_clocks.clk_main_infra
-        clk_fixed_i: clkmgr_aon_clocks.clk_io_div4_infra
+        clk_fixed_i: clkmgr_aon_clocks.clk_io_infra
       }
       domain:
       [
@@ -13685,7 +13451,7 @@
       name: peri
       clock_srcs:
       {
-        clk_peri_i: io_div4
+        clk_peri_i: io
       }
       clock_group: infra
       reset: rst_peri_ni
@@ -13693,13 +13459,13 @@
       {
         rst_peri_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
       }
       clock_connections:
       {
-        clk_peri_i: clkmgr_aon_clocks.clk_io_div4_infra
+        clk_peri_i: clkmgr_aon_clocks.clk_io_infra
       }
       domain:
       [
@@ -14857,7 +14623,7 @@
       clock_srcs:
       {
         clk_dbg_i: main
-        clk_peri_i: io_div4
+        clk_peri_i: io
       }
       clock_group: infra
       reset: rst_dbg_ni
@@ -14870,14 +14636,14 @@
         }
         rst_peri_ni:
         {
-          name: lc_io_div4
+          name: lc_io
           domain: "0"
         }
       }
       clock_connections:
       {
         clk_dbg_i: clkmgr_aon_clocks.clk_main_infra
-        clk_peri_i: clkmgr_aon_clocks.clk_io_div4_infra
+        clk_peri_i: clkmgr_aon_clocks.clk_io_infra
       }
       domain:
       [
@@ -20463,7 +20229,7 @@
       async: "1"
       module_name: uart0
       desc: uart0 fatal_fault alert
-      lpg_name: peri_lc_io_div4_0
+      lpg_name: peri_lc_io_0
       lpg_idx: 0
     }
     {
@@ -20473,7 +20239,7 @@
       async: "1"
       module_name: gpio
       desc: gpio fatal_fault alert
-      lpg_name: peri_lc_io_div4_0
+      lpg_name: peri_lc_io_0
       lpg_idx: 0
     }
     {
@@ -20503,7 +20269,7 @@
       async: "1"
       module_name: rv_timer
       desc: rv_timer fatal_fault alert
-      lpg_name: timers_lc_io_div4_0
+      lpg_name: timers_lc_io_0
       lpg_idx: 3
     }
     {
@@ -20513,7 +20279,7 @@
       async: "1"
       module_name: otp_ctrl
       desc: otp_ctrl fatal_macro_error alert
-      lpg_name: secure_lc_io_div4_0
+      lpg_name: secure_lc_io_0
       lpg_idx: 4
     }
     {
@@ -20523,7 +20289,7 @@
       async: "1"
       module_name: otp_ctrl
       desc: otp_ctrl fatal_check_error alert
-      lpg_name: secure_lc_io_div4_0
+      lpg_name: secure_lc_io_0
       lpg_idx: 4
     }
     {
@@ -20533,7 +20299,7 @@
       async: "1"
       module_name: otp_ctrl
       desc: otp_ctrl fatal_bus_integ_error alert
-      lpg_name: secure_lc_io_div4_0
+      lpg_name: secure_lc_io_0
       lpg_idx: 4
     }
     {
@@ -20543,7 +20309,7 @@
       async: "1"
       module_name: otp_ctrl
       desc: otp_ctrl fatal_prim_otp_alert alert
-      lpg_name: secure_lc_io_div4_0
+      lpg_name: secure_lc_io_0
       lpg_idx: 4
     }
     {
@@ -20553,7 +20319,7 @@
       async: "1"
       module_name: otp_ctrl
       desc: otp_ctrl recov_prim_otp_alert alert
-      lpg_name: secure_lc_io_div4_0
+      lpg_name: secure_lc_io_0
       lpg_idx: 4
     }
     {
@@ -20563,7 +20329,7 @@
       async: "1"
       module_name: lc_ctrl
       desc: lc_ctrl fatal_prog_error alert
-      lpg_name: secure_lc_io_div4_0
+      lpg_name: secure_lc_io_0
       lpg_idx: 4
     }
     {
@@ -20573,7 +20339,7 @@
       async: "1"
       module_name: lc_ctrl
       desc: lc_ctrl fatal_state_error alert
-      lpg_name: secure_lc_io_div4_0
+      lpg_name: secure_lc_io_0
       lpg_idx: 4
     }
     {
@@ -20583,7 +20349,7 @@
       async: "1"
       module_name: lc_ctrl
       desc: lc_ctrl fatal_bus_integ_error alert
-      lpg_name: secure_lc_io_div4_0
+      lpg_name: secure_lc_io_0
       lpg_idx: 4
     }
     {
@@ -20603,7 +20369,7 @@
       async: "1"
       module_name: pwrmgr_aon
       desc: pwrmgr_aon fatal_fault alert
-      lpg_name: powerup_por_io_div4_Aon
+      lpg_name: powerup_por_io_Aon
       lpg_idx: 6
     }
     {
@@ -20613,7 +20379,7 @@
       async: "1"
       module_name: rstmgr_aon
       desc: rstmgr_aon fatal_fault alert
-      lpg_name: powerup_lc_io_div4_Aon
+      lpg_name: powerup_lc_io_Aon
       lpg_idx: 7
     }
     {
@@ -20623,7 +20389,7 @@
       async: "1"
       module_name: rstmgr_aon
       desc: rstmgr_aon fatal_cnsty_fault alert
-      lpg_name: powerup_lc_io_div4_Aon
+      lpg_name: powerup_lc_io_Aon
       lpg_idx: 7
     }
     {
@@ -20633,7 +20399,7 @@
       async: "1"
       module_name: clkmgr_aon
       desc: clkmgr_aon recov_fault alert
-      lpg_name: powerup_lc_io_div4_Aon
+      lpg_name: powerup_lc_io_Aon
       lpg_idx: 7
     }
     {
@@ -20643,7 +20409,7 @@
       async: "1"
       module_name: clkmgr_aon
       desc: clkmgr_aon fatal_fault alert
-      lpg_name: powerup_lc_io_div4_Aon
+      lpg_name: powerup_lc_io_Aon
       lpg_idx: 7
     }
     {
@@ -20653,7 +20419,7 @@
       async: "1"
       module_name: pinmux_aon
       desc: pinmux_aon fatal_fault alert
-      lpg_name: powerup_lc_io_div4_Aon
+      lpg_name: powerup_lc_io_Aon
       lpg_idx: 7
     }
     {
@@ -20663,7 +20429,7 @@
       async: "1"
       module_name: aon_timer_aon
       desc: aon_timer_aon fatal_fault alert
-      lpg_name: timers_lc_io_div4_Aon
+      lpg_name: timers_lc_io_Aon
       lpg_idx: 8
     }
     {
@@ -20963,7 +20729,7 @@
       async: "1"
       module_name: sram_ctrl_ret_aon
       desc: sram_ctrl_ret_aon fatal_error alert
-      lpg_name: infra_lc_io_div4_Aon
+      lpg_name: infra_lc_io_Aon
       lpg_idx: 11
     }
     {
@@ -21393,7 +21159,7 @@
       async: "1"
       module_name: soc_dbg_ctrl
       desc: soc_dbg_ctrl fatal_fault alert
-      lpg_name: secure_lc_io_div4_0
+      lpg_name: secure_lc_io_0
       lpg_idx: 4
     }
     {
@@ -21403,7 +21169,7 @@
       async: "1"
       module_name: soc_dbg_ctrl
       desc: soc_dbg_ctrl recov_ctrl_update_err alert
-      lpg_name: secure_lc_io_div4_0
+      lpg_name: secure_lc_io_0
       lpg_idx: 4
     }
     {
@@ -22675,7 +22441,7 @@
   alert_lpgs:
   [
     {
-      name: peri_lc_io_div4_0
+      name: peri_lc_io_0
       clock_group:
       {
         name: peri
@@ -22684,17 +22450,16 @@
         unique: no
         clocks:
         {
-          clk_io_div4_peri: io_div4
-          clk_io_div2_peri: io_div2
+          clk_io_peri: io
           clk_aon_peri: aon
         }
       }
-      clock_connection: clkmgr_aon_clocks.clk_io_div4_peri
+      clock_connection: clkmgr_aon_clocks.clk_io_peri
       unmanaged_clock: false
       unmanaged_reset: false
       reset_connection:
       {
-        name: lc_io_div4
+        name: lc_io
         domain: "0"
       }
     }
@@ -22708,12 +22473,11 @@
         unique: no
         clocks:
         {
-          clk_io_div4_peri: io_div4
-          clk_io_div2_peri: io_div2
+          clk_io_peri: io
           clk_aon_peri: aon
         }
       }
-      clock_connection: clkmgr_aon_clocks.clk_io_div4_peri
+      clock_connection: clkmgr_aon_clocks.clk_io_peri
       unmanaged_clock: false
       unmanaged_reset: false
       reset_connection:
@@ -22732,12 +22496,11 @@
         unique: no
         clocks:
         {
-          clk_io_div4_peri: io_div4
-          clk_io_div2_peri: io_div2
+          clk_io_peri: io
           clk_aon_peri: aon
         }
       }
-      clock_connection: clkmgr_aon_clocks.clk_io_div4_peri
+      clock_connection: clkmgr_aon_clocks.clk_io_peri
       unmanaged_clock: false
       unmanaged_reset: false
       reset_connection:
@@ -22747,7 +22510,7 @@
       }
     }
     {
-      name: timers_lc_io_div4_0
+      name: timers_lc_io_0
       clock_group:
       {
         name: timers
@@ -22756,21 +22519,21 @@
         unique: no
         clocks:
         {
-          clk_io_div4_timers: io_div4
+          clk_io_timers: io
           clk_aon_timers: aon
         }
       }
-      clock_connection: clkmgr_aon_clocks.clk_io_div4_timers
+      clock_connection: clkmgr_aon_clocks.clk_io_timers
       unmanaged_clock: false
       unmanaged_reset: false
       reset_connection:
       {
-        name: lc_io_div4
+        name: lc_io
         domain: "0"
       }
     }
     {
-      name: secure_lc_io_div4_0
+      name: secure_lc_io_0
       clock_group:
       {
         name: secure
@@ -22779,16 +22542,16 @@
         unique: no
         clocks:
         {
-          clk_io_div4_secure: io_div4
+          clk_io_secure: io
           clk_main_secure: main
         }
       }
-      clock_connection: clkmgr_aon_clocks.clk_io_div4_secure
+      clock_connection: clkmgr_aon_clocks.clk_io_secure
       unmanaged_clock: false
       unmanaged_reset: false
       reset_connection:
       {
-        name: lc_io_div4
+        name: lc_io
         domain: "0"
       }
     }
@@ -22802,12 +22565,11 @@
         unique: no
         clocks:
         {
-          clk_io_div4_peri: io_div4
-          clk_io_div2_peri: io_div2
+          clk_io_peri: io
           clk_aon_peri: aon
         }
       }
-      clock_connection: clkmgr_aon_clocks.clk_io_div4_peri
+      clock_connection: clkmgr_aon_clocks.clk_io_peri
       unmanaged_clock: false
       unmanaged_reset: false
       reset_connection:
@@ -22817,7 +22579,7 @@
       }
     }
     {
-      name: powerup_por_io_div4_Aon
+      name: powerup_por_io_Aon
       clock_group:
       {
         name: powerup
@@ -22826,24 +22588,22 @@
         unique: no
         clocks:
         {
-          clk_io_div4_powerup: io_div4
+          clk_io_powerup: io
           clk_aon_powerup: aon
           clk_main_powerup: main
-          clk_io_powerup: io
-          clk_io_div2_powerup: io_div2
         }
       }
-      clock_connection: clkmgr_aon_clocks.clk_io_div4_powerup
+      clock_connection: clkmgr_aon_clocks.clk_io_powerup
       unmanaged_clock: false
       unmanaged_reset: false
       reset_connection:
       {
-        name: por_io_div4
+        name: por_io
         domain: Aon
       }
     }
     {
-      name: powerup_lc_io_div4_Aon
+      name: powerup_lc_io_Aon
       clock_group:
       {
         name: powerup
@@ -22852,24 +22612,22 @@
         unique: no
         clocks:
         {
-          clk_io_div4_powerup: io_div4
+          clk_io_powerup: io
           clk_aon_powerup: aon
           clk_main_powerup: main
-          clk_io_powerup: io
-          clk_io_div2_powerup: io_div2
         }
       }
-      clock_connection: clkmgr_aon_clocks.clk_io_div4_powerup
+      clock_connection: clkmgr_aon_clocks.clk_io_powerup
       unmanaged_clock: false
       unmanaged_reset: false
       reset_connection:
       {
-        name: lc_io_div4
+        name: lc_io
         domain: Aon
       }
     }
     {
-      name: timers_lc_io_div4_Aon
+      name: timers_lc_io_Aon
       clock_group:
       {
         name: timers
@@ -22878,21 +22636,21 @@
         unique: no
         clocks:
         {
-          clk_io_div4_timers: io_div4
+          clk_io_timers: io
           clk_aon_timers: aon
         }
       }
-      clock_connection: clkmgr_aon_clocks.clk_io_div4_timers
+      clock_connection: clkmgr_aon_clocks.clk_io_timers
       unmanaged_clock: false
       unmanaged_reset: false
       reset_connection:
       {
-        name: lc_io_div4
+        name: lc_io
         domain: Aon
       }
     }
     {
-      name: infra_lc_io_div4_0
+      name: infra_lc_io_0
       clock_group:
       {
         name: infra
@@ -22901,17 +22659,17 @@
         unique: no
         clocks:
         {
-          clk_io_div4_infra: io_div4
+          clk_io_infra: io
           clk_main_infra: main
           clk_aon_infra: aon
         }
       }
-      clock_connection: clkmgr_aon_clocks.clk_io_div4_infra
+      clock_connection: clkmgr_aon_clocks.clk_io_infra
       unmanaged_clock: false
       unmanaged_reset: false
       reset_connection:
       {
-        name: lc_io_div4
+        name: lc_io
         domain: "0"
       }
     }
@@ -22925,7 +22683,7 @@
         unique: no
         clocks:
         {
-          clk_io_div4_infra: io_div4
+          clk_io_infra: io
           clk_main_infra: main
           clk_aon_infra: aon
         }
@@ -22940,7 +22698,7 @@
       }
     }
     {
-      name: infra_lc_io_div4_Aon
+      name: infra_lc_io_Aon
       clock_group:
       {
         name: infra
@@ -22949,17 +22707,17 @@
         unique: no
         clocks:
         {
-          clk_io_div4_infra: io_div4
+          clk_io_infra: io
           clk_main_infra: main
           clk_aon_infra: aon
         }
       }
-      clock_connection: clkmgr_aon_clocks.clk_io_div4_infra
+      clock_connection: clkmgr_aon_clocks.clk_io_infra
       unmanaged_clock: false
       unmanaged_reset: false
       reset_connection:
       {
-        name: lc_io_div4
+        name: lc_io
         domain: Aon
       }
     }
@@ -22973,7 +22731,7 @@
         unique: no
         clocks:
         {
-          clk_io_div4_infra: io_div4
+          clk_io_infra: io
           clk_main_infra: main
           clk_aon_infra: aon
         }
@@ -22997,7 +22755,7 @@
         unique: no
         clocks:
         {
-          clk_io_div4_secure: io_div4
+          clk_io_secure: io
           clk_main_secure: main
         }
       }
@@ -24069,9 +23827,7 @@
         width: 1
         default: lc_ctrl_pkg::Off
         inst_name: lc_ctrl
-        end_idx: -1
-        top_type: broadcast
-        top_signame: lc_ctrl_lc_clk_byp_req
+        top_signame: lc_ctrl_lc_clk_byp_ack
         index: -1
       }
       {
@@ -24847,126 +24603,6 @@
         inst_name: clkmgr_aon
         default: ""
         top_signame: clkmgr_aon_cg_en
-        index: -1
-      }
-      {
-        name: lc_hw_debug_en
-        struct: lc_tx
-        package: lc_ctrl_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: clkmgr_aon
-        default: ""
-        top_signame: lc_ctrl_lc_hw_debug_en
-        index: -1
-      }
-      {
-        name: io_clk_byp_req
-        struct: mubi4
-        package: prim_mubi_pkg
-        type: uni
-        act: req
-        width: 1
-        inst_name: clkmgr_aon
-        default: ""
-        external: true
-        top_signame: io_clk_byp_req
-        conn_type: false
-        index: -1
-      }
-      {
-        name: io_clk_byp_ack
-        struct: mubi4
-        package: prim_mubi_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: clkmgr_aon
-        default: ""
-        external: true
-        top_signame: io_clk_byp_ack
-        conn_type: false
-        index: -1
-      }
-      {
-        name: all_clk_byp_req
-        struct: mubi4
-        package: prim_mubi_pkg
-        type: uni
-        act: req
-        width: 1
-        inst_name: clkmgr_aon
-        default: ""
-        external: true
-        top_signame: all_clk_byp_req
-        conn_type: false
-        index: -1
-      }
-      {
-        name: all_clk_byp_ack
-        struct: mubi4
-        package: prim_mubi_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: clkmgr_aon
-        default: ""
-        external: true
-        top_signame: all_clk_byp_ack
-        conn_type: false
-        index: -1
-      }
-      {
-        name: hi_speed_sel
-        struct: mubi4
-        package: prim_mubi_pkg
-        type: uni
-        act: req
-        width: 1
-        inst_name: clkmgr_aon
-        default: ""
-        external: true
-        top_signame: hi_speed_sel
-        conn_type: false
-        index: -1
-      }
-      {
-        name: div_step_down_req
-        struct: mubi4
-        package: prim_mubi_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: clkmgr_aon
-        default: ""
-        external: true
-        top_signame: div_step_down_req
-        conn_type: false
-        index: -1
-      }
-      {
-        name: lc_clk_byp_req
-        struct: lc_tx
-        package: lc_ctrl_pkg
-        type: uni
-        act: rcv
-        width: 1
-        inst_name: clkmgr_aon
-        default: ""
-        top_signame: lc_ctrl_lc_clk_byp_req
-        index: -1
-      }
-      {
-        name: lc_clk_byp_ack
-        struct: lc_tx
-        package: lc_ctrl_pkg
-        type: uni
-        act: req
-        width: 1
-        inst_name: clkmgr_aon
-        default: ""
-        top_signame: lc_ctrl_lc_clk_byp_ack
         index: -1
       }
       {
@@ -30822,78 +30458,6 @@
       {
         package: prim_mubi_pkg
         struct: mubi4
-        signame: io_clk_byp_req_o
-        width: 1
-        type: uni
-        default: ""
-        direction: out
-        conn_type: false
-        index: -1
-        netname: io_clk_byp_req
-      }
-      {
-        package: prim_mubi_pkg
-        struct: mubi4
-        signame: io_clk_byp_ack_i
-        width: 1
-        type: uni
-        default: ""
-        direction: in
-        conn_type: false
-        index: -1
-        netname: io_clk_byp_ack
-      }
-      {
-        package: prim_mubi_pkg
-        struct: mubi4
-        signame: all_clk_byp_req_o
-        width: 1
-        type: uni
-        default: ""
-        direction: out
-        conn_type: false
-        index: -1
-        netname: all_clk_byp_req
-      }
-      {
-        package: prim_mubi_pkg
-        struct: mubi4
-        signame: all_clk_byp_ack_i
-        width: 1
-        type: uni
-        default: ""
-        direction: in
-        conn_type: false
-        index: -1
-        netname: all_clk_byp_ack
-      }
-      {
-        package: prim_mubi_pkg
-        struct: mubi4
-        signame: hi_speed_sel_o
-        width: 1
-        type: uni
-        default: ""
-        direction: out
-        conn_type: false
-        index: -1
-        netname: hi_speed_sel
-      }
-      {
-        package: prim_mubi_pkg
-        struct: mubi4
-        signame: div_step_down_req_i
-        width: 1
-        type: uni
-        default: ""
-        direction: in
-        conn_type: false
-        index: -1
-        netname: div_step_down_req
-      }
-      {
-        package: prim_mubi_pkg
-        struct: mubi4
         signame: calib_rdy_i
         width: 1
         type: uni
@@ -32552,17 +32116,6 @@
         package: lc_ctrl_pkg
         struct: lc_tx
         signame: lc_ctrl_lc_check_byp_en
-        width: 1
-        type: uni
-        end_idx: -1
-        act: req
-        suffix: ""
-        default: lc_ctrl_pkg::Off
-      }
-      {
-        package: lc_ctrl_pkg
-        struct: lc_tx
-        signame: lc_ctrl_lc_clk_byp_req
         width: 1
         type: uni
         end_idx: -1
