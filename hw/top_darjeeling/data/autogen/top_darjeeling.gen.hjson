@@ -1787,7 +1787,7 @@
         {
           name: pwr_lc
           struct: pwr_lc
-          package: pwrmgr_pkg
+          package: lc_ctrl_pkg
           type: req_rsp
           act: rsp
           width: 1
@@ -2631,7 +2631,7 @@
         {
           name: pwr_lc
           struct: pwr_lc
-          package: pwrmgr_pkg
+          package: lc_ctrl_pkg
           type: req_rsp
           act: req
           width: 1
@@ -23743,7 +23743,7 @@
       {
         name: pwr_lc
         struct: pwr_lc
-        package: pwrmgr_pkg
+        package: lc_ctrl_pkg
         type: req_rsp
         act: rsp
         width: 1
@@ -24343,7 +24343,7 @@
       {
         name: pwr_lc
         struct: pwr_lc
-        package: pwrmgr_pkg
+        package: lc_ctrl_pkg
         type: req_rsp
         act: req
         width: 1
@@ -31754,7 +31754,7 @@
         default: pwrmgr_pkg::PWR_OTP_RSP_DEFAULT
       }
       {
-        package: pwrmgr_pkg
+        package: lc_ctrl_pkg
         struct: pwr_lc_req
         signame: pwrmgr_aon_pwr_lc_req
         width: 1
@@ -31765,7 +31765,7 @@
         default: ""
       }
       {
-        package: pwrmgr_pkg
+        package: lc_ctrl_pkg
         struct: pwr_lc_rsp
         signame: pwrmgr_aon_pwr_lc_rsp
         width: 1
@@ -31773,7 +31773,7 @@
         end_idx: -1
         act: req
         suffix: rsp
-        default: pwrmgr_pkg::PWR_LC_RSP_DEFAULT
+        default: lc_ctrl_pkg::PWR_LC_RSP_DEFAULT
       }
       {
         package: ""
