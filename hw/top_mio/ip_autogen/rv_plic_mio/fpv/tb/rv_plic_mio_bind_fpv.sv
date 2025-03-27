@@ -25,7 +25,8 @@ module rv_plic_mio_bind_fpv;
     .claim,
     .complete,
     .prio,
-    .threshold
+    .threshold,
+    .fatal_alert_i (alerts[0])
   );
 
   bind rv_plic_mio tlul_assert #(
