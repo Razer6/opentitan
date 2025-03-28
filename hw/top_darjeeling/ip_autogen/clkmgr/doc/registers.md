@@ -6,7 +6,6 @@
 | Name                                                         | Offset   |   Length | Description                                                                |
 |:-------------------------------------------------------------|:---------|---------:|:---------------------------------------------------------------------------|
 | clkmgr.[`ALERT_TEST`](#alert_test)                           | 0x0      |        4 | Alert Test Register                                                        |
-| clkmgr.[`EXTCLK_CTRL_REGWEN`](#extclk_ctrl_regwen)           | 0x4      |        4 | External clock control write enable                                        |
 | clkmgr.[`JITTER_REGWEN`](#jitter_regwen)                     | 0x10     |        4 | Jitter write enable                                                        |
 | clkmgr.[`JITTER_ENABLE`](#jitter_enable)                     | 0x14     |        4 | Enable jittery clock                                                       |
 | clkmgr.[`CLK_ENABLES`](#clk_enables)                         | 0x18     |        4 | Clock enable for software gateable clocks.                                 |
@@ -37,23 +36,6 @@ Alert Test Register
 |  31:2  |        |         |             | Reserved                                         |
 |   1    |   wo   |   0x0   | fatal_fault | Write 1 to trigger one alert event of this kind. |
 |   0    |   wo   |   0x0   | recov_fault | Write 1 to trigger one alert event of this kind. |
-
-## EXTCLK_CTRL_REGWEN
-External clock control write enable
-- Offset: `0x4`
-- Reset default: `0x1`
-- Reset mask: `0x1`
-
-### Fields
-
-```wavejson
-{"reg": [{"name": "EN", "bits": 1, "attr": ["rw0c"], "rotate": -90}, {"bits": 31}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
-```
-
-|  Bits  |  Type  |  Reset  | Name   | Description                                                                                                                     |
-|:------:|:------:|:-------:|:-------|:--------------------------------------------------------------------------------------------------------------------------------|
-|  31:1  |        |         |        | Reserved                                                                                                                        |
-|   0    |  rw0c  |   0x1   | EN     | When 1, the value of [`EXTCLK_CTRL`](#extclk_ctrl) can be set.  When 0, writes to [`EXTCLK_CTRL`](#extclk_ctrl) have no effect. |
 
 ## JITTER_REGWEN
 Jitter write enable

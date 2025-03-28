@@ -306,6 +306,7 @@ rg_srcs = get_rg_srcs(typed_clocks)
   ]
 
   registers: [
+  % if len(derived_clks) > 0:
     { name: "EXTCLK_CTRL_REGWEN",
       desc: "External clock control write enable",
       swaccess: "rw0c",
@@ -322,7 +323,6 @@ rg_srcs = get_rg_srcs(typed_clocks)
       ]
     },
 
-  % if len(derived_clks) > 0:
     { name: "EXTCLK_CTRL",
       desc: '''
         Select external clock
@@ -403,8 +403,8 @@ rg_srcs = get_rg_srcs(typed_clocks)
       ]
     },
     % else:
-    // Skip one register for SW compatibility on the register layout if no derived clocks are in use
-    { reserved: "2" }
+    // Skip 3 registers for SW compatibility on the register layout if no derived clocks are in use
+    { reserved: "3" }
     % endif
 
     { name: "JITTER_REGWEN",

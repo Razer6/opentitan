@@ -210,24 +210,8 @@
   ]
 
   registers: [
-    { name: "EXTCLK_CTRL_REGWEN",
-      desc: "External clock control write enable",
-      swaccess: "rw0c",
-      hwaccess: "none",
-      fields: [
-        { bits: "0",
-          name: "EN",
-          resval: "1"
-          desc: '''
-            When 1, the value of !!EXTCLK_CTRL can be set.  When 0, writes to !!EXTCLK_CTRL have no
-            effect.
-          '''
-        },
-      ]
-    },
-
-    // Skip one register for SW compatibility on the register layout if no derived clocks are in use
-    { reserved: "2" }
+    // Skip 3 registers for SW compatibility on the register layout if no derived clocks are in use
+    { reserved: "3" }
 
     { name: "JITTER_REGWEN",
       desc: "Jitter write enable",

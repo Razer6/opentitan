@@ -16,7 +16,7 @@ package clkmgr_reg_pkg;
   parameter int BlockAw = 6;
 
   // Number of registers for every interface
-  parameter int NumRegs = 14;
+  parameter int NumRegs = 13;
 
   ////////////////////////////
   // Typedefs for registers //
@@ -196,7 +196,6 @@ package clkmgr_reg_pkg;
 
   // Register offsets
   parameter logic [BlockAw-1:0] CLKMGR_ALERT_TEST_OFFSET = 6'h 0;
-  parameter logic [BlockAw-1:0] CLKMGR_EXTCLK_CTRL_REGWEN_OFFSET = 6'h 4;
   parameter logic [BlockAw-1:0] CLKMGR_JITTER_REGWEN_OFFSET = 6'h 10;
   parameter logic [BlockAw-1:0] CLKMGR_JITTER_ENABLE_OFFSET = 6'h 14;
   parameter logic [BlockAw-1:0] CLKMGR_CLK_ENABLES_OFFSET = 6'h 18;
@@ -218,7 +217,6 @@ package clkmgr_reg_pkg;
   // Register index
   typedef enum int {
     CLKMGR_ALERT_TEST,
-    CLKMGR_EXTCLK_CTRL_REGWEN,
     CLKMGR_JITTER_REGWEN,
     CLKMGR_JITTER_ENABLE,
     CLKMGR_CLK_ENABLES,
@@ -234,21 +232,20 @@ package clkmgr_reg_pkg;
   } clkmgr_id_e;
 
   // Register width information to check illegal writes
-  parameter logic [3:0] CLKMGR_PERMIT [14] = '{
+  parameter logic [3:0] CLKMGR_PERMIT [13] = '{
     4'b 0001, // index[ 0] CLKMGR_ALERT_TEST
-    4'b 0001, // index[ 1] CLKMGR_EXTCLK_CTRL_REGWEN
-    4'b 0001, // index[ 2] CLKMGR_JITTER_REGWEN
-    4'b 0001, // index[ 3] CLKMGR_JITTER_ENABLE
-    4'b 0001, // index[ 4] CLKMGR_CLK_ENABLES
-    4'b 0001, // index[ 5] CLKMGR_CLK_HINTS
-    4'b 0001, // index[ 6] CLKMGR_CLK_HINTS_STATUS
-    4'b 0001, // index[ 7] CLKMGR_MEASURE_CTRL_REGWEN
-    4'b 0001, // index[ 8] CLKMGR_IO_MEAS_CTRL_EN
-    4'b 0111, // index[ 9] CLKMGR_IO_MEAS_CTRL_SHADOWED
-    4'b 0001, // index[10] CLKMGR_MAIN_MEAS_CTRL_EN
-    4'b 0111, // index[11] CLKMGR_MAIN_MEAS_CTRL_SHADOWED
-    4'b 0001, // index[12] CLKMGR_RECOV_ERR_CODE
-    4'b 0001  // index[13] CLKMGR_FATAL_ERR_CODE
+    4'b 0001, // index[ 1] CLKMGR_JITTER_REGWEN
+    4'b 0001, // index[ 2] CLKMGR_JITTER_ENABLE
+    4'b 0001, // index[ 3] CLKMGR_CLK_ENABLES
+    4'b 0001, // index[ 4] CLKMGR_CLK_HINTS
+    4'b 0001, // index[ 5] CLKMGR_CLK_HINTS_STATUS
+    4'b 0001, // index[ 6] CLKMGR_MEASURE_CTRL_REGWEN
+    4'b 0001, // index[ 7] CLKMGR_IO_MEAS_CTRL_EN
+    4'b 0111, // index[ 8] CLKMGR_IO_MEAS_CTRL_SHADOWED
+    4'b 0001, // index[ 9] CLKMGR_MAIN_MEAS_CTRL_EN
+    4'b 0111, // index[10] CLKMGR_MAIN_MEAS_CTRL_SHADOWED
+    4'b 0001, // index[11] CLKMGR_RECOV_ERR_CODE
+    4'b 0001  // index[12] CLKMGR_FATAL_ERR_CODE
   };
 
 endpackage

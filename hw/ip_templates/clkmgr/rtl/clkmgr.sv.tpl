@@ -88,6 +88,10 @@ rg_srcs = get_rg_srcs(typed_clocks)
   input mubi4_t all_clk_byp_ack_i,
   output mubi4_t hi_speed_sel_o,
 
+  // external indication for whether dividers should be stepped down
+  // SEC_CM: DIV.INTERSIG.MUBI
+  input mubi4_t div_step_down_req_i,
+
 % endif
   // clock calibration has been done.
   // If this is signal is 0, assume clock frequencies to be
@@ -97,12 +101,6 @@ rg_srcs = get_rg_srcs(typed_clocks)
   // jittery enable to ast
   output mubi4_t jitter_en_o,
 
-% if len(derived_clks) > 0:
-  // external indication for whether dividers should be stepped down
-  // SEC_CM: DIV.INTERSIG.MUBI
-  input mubi4_t div_step_down_req_i,
-
-% endif
   // clock gated indications going to alert handlers
   output clkmgr_cg_en_t cg_en_o,
 
@@ -296,15 +294,6 @@ rg_srcs = get_rg_srcs(typed_clocks)
     // divider step down controls
     .step_down_acks_i(step_down_acks)
   );
-  % else:
-  // No bypass as there are no derived clocks
-
-  // Read inputs and tie-off outputs
-  logic unused_bypass = ^{lc_clk_byp_req_i, all_clk_byp_ack_i, io_clk_byp_ack_i};
-
-  assign all_clk_byp_req_o               = prim_mubi_pkg::MuBi4False;
-  assign io_clk_byp_req_o                = prim_mubi_pkg::MuBi4False;
-  assign all_clkhi_speed_sel_o_byp_req_o = prim_mubi_pkg::MuBi4False;
   % endif
 
   ////////////////////////////////////////////////////
