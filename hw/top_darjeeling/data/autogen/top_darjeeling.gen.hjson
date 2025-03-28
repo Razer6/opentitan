@@ -18385,18 +18385,9 @@
         lpg_idx: 0
       }
       {
-        name: ns_group_integ_error
-        module_name: ns_group
-        index: 6
-        type: alert
-        async: 1
-        width: 1
-        lpg_idx: 0
-      }
-      {
         name: lio_group_v_integ_error
         module_name: lio_group_v
-        index: 7
+        index: 6
         type: alert
         async: 1
         width: 1
@@ -18405,7 +18396,7 @@
       {
         name: lio_group_p_integ_error
         module_name: lio_group_p
-        index: 8
+        index: 7
         type: alert
         async: 1
         width: 1
@@ -18414,7 +18405,7 @@
       {
         name: rc_widget_integ_error
         module_name: rc_widget
-        index: 12
+        index: 8
         type: alert
         async: 1
         width: 1

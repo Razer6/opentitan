@@ -2247,40 +2247,38 @@ pub enum AlertId {
     IncomingRotExtraAlertsLsioGroupEscErr2 = 170,
     /// incoming_rot_extra_alerts_lsio_group_esc_err_3
     IncomingRotExtraAlertsLsioGroupEscErr3 = 171,
-    /// incoming_rot_extra_alerts_ns_group_integ_error
-    IncomingRotExtraAlertsNsGroupIntegError = 172,
     /// incoming_rot_extra_alerts_lio_group_v_integ_error
-    IncomingRotExtraAlertsLioGroupVIntegError = 173,
+    IncomingRotExtraAlertsLioGroupVIntegError = 172,
     /// incoming_rot_extra_alerts_lio_group_p_integ_error
-    IncomingRotExtraAlertsLioGroupPIntegError = 174,
+    IncomingRotExtraAlertsLioGroupPIntegError = 173,
     /// incoming_rot_extra_alerts_rc_widget_integ_error
-    IncomingRotExtraAlertsRcWidgetIntegError = 175,
+    IncomingRotExtraAlertsRcWidgetIntegError = 174,
     /// incoming_rot_extra_alerts_rot_hdr_integ_error
-    IncomingRotExtraAlertsRotHdrIntegError = 176,
+    IncomingRotExtraAlertsRotHdrIntegError = 175,
     /// incoming_rot_extra_alerts_rot_pcie_adapter_integ_error
-    IncomingRotExtraAlertsRotPcieAdapterIntegError = 177,
+    IncomingRotExtraAlertsRotPcieAdapterIntegError = 176,
     /// incoming_rot_extra_alerts_ras_ctl_reset_alert
-    IncomingRotExtraAlertsRasCtlResetAlert = 178,
+    IncomingRotExtraAlertsRasCtlResetAlert = 177,
     /// incoming_rot_extra_alerts_scs_rai_alert_trigger
-    IncomingRotExtraAlertsScsRaiAlertTrigger = 179,
+    IncomingRotExtraAlertsScsRaiAlertTrigger = 178,
     /// incoming_other_extra_alerts_ssram_lo_integ_err
-    IncomingOtherExtraAlertsSsramLoIntegErr = 180,
+    IncomingOtherExtraAlertsSsramLoIntegErr = 179,
     /// incoming_other_extra_alerts_ssram_hi_integ_err
-    IncomingOtherExtraAlertsSsramHiIntegErr = 181,
+    IncomingOtherExtraAlertsSsramHiIntegErr = 180,
     /// incoming_other_extra_alerts_scsif_regs_err
-    IncomingOtherExtraAlertsScsifRegsErr = 182,
+    IncomingOtherExtraAlertsScsifRegsErr = 181,
     /// incoming_other_extra_alerts_fatal_fault
-    IncomingOtherExtraAlertsFatalFault = 183,
+    IncomingOtherExtraAlertsFatalFault = 182,
     /// incoming_other_extra_alerts_recov_ctrl_update_err
-    IncomingOtherExtraAlertsRecovCtrlUpdateErr = 184,
+    IncomingOtherExtraAlertsRecovCtrlUpdateErr = 183,
     /// incoming_other_extra_alerts_bus_integ_err
-    IncomingOtherExtraAlertsBusIntegErr = 185,
+    IncomingOtherExtraAlertsBusIntegErr = 184,
     /// incoming_other_extra_alerts_prim_fatal_err
-    IncomingOtherExtraAlertsPrimFatalErr = 186,
+    IncomingOtherExtraAlertsPrimFatalErr = 185,
     /// incoming_other_extra_alerts_prim_recov_err
-    IncomingOtherExtraAlertsPrimRecovErr = 187,
+    IncomingOtherExtraAlertsPrimRecovErr = 186,
     /// incoming_other_extra_alerts_apb_adapter_integ_err
-    IncomingOtherExtraAlertsApbAdapterIntegErr = 188,
+    IncomingOtherExtraAlertsApbAdapterIntegErr = 187,
 }
 
 impl TryFrom<u32> for AlertId {
@@ -2459,23 +2457,22 @@ impl TryFrom<u32> for AlertId {
             169 => Ok(Self::IncomingRotExtraAlertsLsioGroupEscErr1),
             170 => Ok(Self::IncomingRotExtraAlertsLsioGroupEscErr2),
             171 => Ok(Self::IncomingRotExtraAlertsLsioGroupEscErr3),
-            172 => Ok(Self::IncomingRotExtraAlertsNsGroupIntegError),
-            173 => Ok(Self::IncomingRotExtraAlertsLioGroupVIntegError),
-            174 => Ok(Self::IncomingRotExtraAlertsLioGroupPIntegError),
-            175 => Ok(Self::IncomingRotExtraAlertsRcWidgetIntegError),
-            176 => Ok(Self::IncomingRotExtraAlertsRotHdrIntegError),
-            177 => Ok(Self::IncomingRotExtraAlertsRotPcieAdapterIntegError),
-            178 => Ok(Self::IncomingRotExtraAlertsRasCtlResetAlert),
-            179 => Ok(Self::IncomingRotExtraAlertsScsRaiAlertTrigger),
-            180 => Ok(Self::IncomingOtherExtraAlertsSsramLoIntegErr),
-            181 => Ok(Self::IncomingOtherExtraAlertsSsramHiIntegErr),
-            182 => Ok(Self::IncomingOtherExtraAlertsScsifRegsErr),
-            183 => Ok(Self::IncomingOtherExtraAlertsFatalFault),
-            184 => Ok(Self::IncomingOtherExtraAlertsRecovCtrlUpdateErr),
-            185 => Ok(Self::IncomingOtherExtraAlertsBusIntegErr),
-            186 => Ok(Self::IncomingOtherExtraAlertsPrimFatalErr),
-            187 => Ok(Self::IncomingOtherExtraAlertsPrimRecovErr),
-            188 => Ok(Self::IncomingOtherExtraAlertsApbAdapterIntegErr),
+            172 => Ok(Self::IncomingRotExtraAlertsLioGroupVIntegError),
+            173 => Ok(Self::IncomingRotExtraAlertsLioGroupPIntegError),
+            174 => Ok(Self::IncomingRotExtraAlertsRcWidgetIntegError),
+            175 => Ok(Self::IncomingRotExtraAlertsRotHdrIntegError),
+            176 => Ok(Self::IncomingRotExtraAlertsRotPcieAdapterIntegError),
+            177 => Ok(Self::IncomingRotExtraAlertsRasCtlResetAlert),
+            178 => Ok(Self::IncomingRotExtraAlertsScsRaiAlertTrigger),
+            179 => Ok(Self::IncomingOtherExtraAlertsSsramLoIntegErr),
+            180 => Ok(Self::IncomingOtherExtraAlertsSsramHiIntegErr),
+            181 => Ok(Self::IncomingOtherExtraAlertsScsifRegsErr),
+            182 => Ok(Self::IncomingOtherExtraAlertsFatalFault),
+            183 => Ok(Self::IncomingOtherExtraAlertsRecovCtrlUpdateErr),
+            184 => Ok(Self::IncomingOtherExtraAlertsBusIntegErr),
+            185 => Ok(Self::IncomingOtherExtraAlertsPrimFatalErr),
+            186 => Ok(Self::IncomingOtherExtraAlertsPrimRecovErr),
+            187 => Ok(Self::IncomingOtherExtraAlertsApbAdapterIntegErr),
             _ => Err(val),
         }
     }
@@ -2485,7 +2482,7 @@ impl TryFrom<u32> for AlertId {
 ///
 /// This array is a mapping from `AlertId` to
 /// `AlertPeripheral`.
-pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 189] = [
+pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 188] = [
     // Uart0FatalFault -> AlertPeripheral::Uart0
     AlertPeripheral::Uart0,
     // GpioFatalFault -> AlertPeripheral::Gpio
@@ -2829,8 +2826,6 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 189] = [
     // IncomingRotExtraAlertsLsioGroupEscErr2 -> AlertPeripheral::External
     AlertPeripheral::External,
     // IncomingRotExtraAlertsLsioGroupEscErr3 -> AlertPeripheral::External
-    AlertPeripheral::External,
-    // IncomingRotExtraAlertsNsGroupIntegError -> AlertPeripheral::External
     AlertPeripheral::External,
     // IncomingRotExtraAlertsLioGroupVIntegError -> AlertPeripheral::External
     AlertPeripheral::External,

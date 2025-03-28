@@ -627,7 +627,7 @@ package top_darjeeling_pkg;
   parameter int unsigned NIncomingLpgsPwc_extra_alerts = 1;
 
   // Number of rot_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsRot_extra_alerts = 14;
+  parameter int unsigned NIncomingAlertsRot_extra_alerts = 13;
 
   // Number of LPGs for incoming alert group rot_extra_alerts
   parameter int unsigned NIncomingLpgsRot_extra_alerts = 1;
