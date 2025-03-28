@@ -368,7 +368,6 @@
     ]
     rst_ni: lc_io
     export_rsts: {}
-    alert_handler_vlnv: lowrisc:darjeeling_ip:alert_handler_pkg
     with_alert_handler: true
     topname: darjeeling
     uniquified_modules: {}
