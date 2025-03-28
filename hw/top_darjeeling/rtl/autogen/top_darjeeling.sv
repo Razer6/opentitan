@@ -50,7 +50,7 @@ module top_darjeeling #(
   parameter int SramCtrlRetAonNumRamInst = 1,
   parameter bit SramCtrlRetAonInstrExec = 0,
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
-  parameter bit SramCtrlRetAonFlopRamOutput = 0,
+  parameter bit SramCtrlRetAonFlopRamOutput = 1,
   parameter bit SramCtrlRetAonEccCorrection = 0,
   parameter int SramCtrlRetAonRaclPolicySelRangesRamNum = 1,
   // parameters for rv_dm
@@ -93,7 +93,7 @@ module top_darjeeling #(
   parameter int SramCtrlMainNumRamInst = 1,
   parameter bit SramCtrlMainInstrExec = 1,
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
-  parameter bit SramCtrlMainFlopRamOutput = 0,
+  parameter bit SramCtrlMainFlopRamOutput = 1,
   parameter bit SramCtrlMainEccCorrection = 0,
   parameter int SramCtrlMainRaclPolicySelRangesRamNum = 1,
   // parameters for sram_ctrl_mbox
@@ -101,7 +101,7 @@ module top_darjeeling #(
   parameter int SramCtrlMboxNumRamInst = 1,
   parameter bit SramCtrlMboxInstrExec = 0,
   parameter int SramCtrlMboxNumPrinceRoundsHalf = 3,
-  parameter bit SramCtrlMboxFlopRamOutput = 0,
+  parameter bit SramCtrlMboxFlopRamOutput = 1,
   parameter bit SramCtrlMboxEccCorrection = 0,
   parameter int SramCtrlMboxRaclPolicySelRangesRamNum = 1,
   // parameters for rom_ctrl0

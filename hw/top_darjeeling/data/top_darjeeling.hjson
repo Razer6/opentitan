@@ -632,7 +632,7 @@
       param_decl: {
         InstrExec: "0",
         InstSize: 4096,
-        FlopRamOutput: 0,
+        FlopRamOutput: 1,
         Outstanding: 6
       }
       base_addrs: {
@@ -791,7 +791,7 @@
       param_decl: {
         InstrExec: "1",
         InstSize: 65536,
-        FlopRamOutput: 0,
+        FlopRamOutput: 1,
         Outstanding: 6
       }
       base_addrs: {
@@ -819,7 +819,7 @@
       param_decl: {
         InstrExec: "0",
         InstSize: 4096,
-        FlopRamOutput: 0,
+        FlopRamOutput: 1,
         Outstanding: 6
       }
       base_addrs: {

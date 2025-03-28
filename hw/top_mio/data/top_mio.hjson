@@ -281,7 +281,7 @@
       param_decl: {
         InstrExec: "0",
         InstSize: 4096,
-        FlopRamOutput: 0,
+        FlopRamOutput: 1,
         EccCorrection: 1,
         Outstanding: 6
       }
@@ -349,7 +349,7 @@
       param_decl: {
         InstrExec: "1",
         InstSize: 65536,
-        FlopRamOutput: 0,
+        FlopRamOutput: 1,
         EccCorrection: 1,
         Outstanding: 6
       }
@@ -379,7 +379,7 @@
       param_decl: {
         InstrExec: "0",
         InstSize: 4096,
-        FlopRamOutput: 0,
+        FlopRamOutput: 1,
         EccCorrection: 1,
         Outstanding: 6
       }
