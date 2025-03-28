@@ -1315,7 +1315,6 @@ module racl_ctrl_reg_top
   end
 
   always_comb begin
-    addr_hit = '0;
     racl_addr_hit_read  = '0;
     racl_addr_hit_write = '0;
     addr_hit[ 0] = (reg_addr == RACL_CTRL_POLICY_ALL_RD_WR_POLICY_SHADOWED_OFFSET);
@@ -1464,7 +1463,6 @@ module racl_ctrl_reg_top
 
   // Assign write-enables to checker logic vector.
   always_comb begin
-    reg_we_check = '0;
     reg_we_check[0] = policy_all_rd_wr_policy_shadowed_we;
     reg_we_check[1] = policy_hw_rot_pwc_wr_all_rd_policy_shadowed_we;
     reg_we_check[2] = policy_pre_boot_m_policy_shadowed_we;

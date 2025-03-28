@@ -23216,7 +23216,6 @@ module scs_ac_range_check_reg_top
   end
 
   always_comb begin
-    addr_hit = '0;
     racl_addr_hit_read  = '0;
     racl_addr_hit_write = '0;
     addr_hit[  0] = (reg_addr == SCS_AC_RANGE_CHECK_INTR_STATE_OFFSET);
@@ -25604,7 +25603,6 @@ module scs_ac_range_check_reg_top
 
   // Assign write-enables to checker logic vector.
   always_comb begin
-    reg_we_check = '0;
     reg_we_check[0] = intr_state_we;
     reg_we_check[1] = intr_enable_we;
     reg_we_check[2] = intr_test_we;

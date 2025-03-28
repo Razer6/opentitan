@@ -2038,7 +2038,6 @@ module otp_ctrl_prim_reg_top
   end
 
   always_comb begin
-    addr_hit = '0;
     racl_addr_hit_read  = '0;
     racl_addr_hit_write = '0;
     addr_hit[ 0] = (reg_addr == OTP_CTRL_MACRO_CONTROL_OFFSET);
@@ -2257,7 +2256,6 @@ module otp_ctrl_prim_reg_top
 
   // Assign write-enables to checker logic vector.
   always_comb begin
-    reg_we_check = '0;
     reg_we_check[0] = macro_control_we;
     reg_we_check[1] = 1'b0;
     reg_we_check[2] = fuse_wrapper_rd_cfg_0_we;

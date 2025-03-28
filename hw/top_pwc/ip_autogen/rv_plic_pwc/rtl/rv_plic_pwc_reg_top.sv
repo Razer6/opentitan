@@ -22751,7 +22751,6 @@ module rv_plic_pwc_reg_top
   end
 
   always_comb begin
-    addr_hit = '0;
     racl_addr_hit_read  = '0;
     racl_addr_hit_write = '0;
     addr_hit[  0] = (reg_addr == RV_PLIC_PWC_PRIO_0_OFFSET);
@@ -24620,7 +24619,6 @@ module rv_plic_pwc_reg_top
 
   // Assign write-enables to checker logic vector.
   always_comb begin
-    reg_we_check = '0;
     reg_we_check[0] = prio_0_we;
     reg_we_check[1] = prio_1_we;
     reg_we_check[2] = prio_2_we;

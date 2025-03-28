@@ -1310,7 +1310,6 @@ module clkmgr_reg_top (
 
   logic [13:0] addr_hit;
   always_comb begin
-    addr_hit = '0;
     addr_hit[ 0] = (reg_addr == CLKMGR_ALERT_TEST_OFFSET);
     addr_hit[ 1] = (reg_addr == CLKMGR_EXTCLK_CTRL_REGWEN_OFFSET);
     addr_hit[ 2] = (reg_addr == CLKMGR_JITTER_REGWEN_OFFSET);
@@ -1404,7 +1403,6 @@ module clkmgr_reg_top (
 
   // Assign write-enables to checker logic vector.
   always_comb begin
-    reg_we_check = '0;
     reg_we_check[0] = alert_test_we;
     reg_we_check[1] = extclk_ctrl_regwen_we;
     reg_we_check[2] = jitter_regwen_we;
