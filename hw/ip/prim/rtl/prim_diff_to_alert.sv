@@ -57,7 +57,7 @@ module prim_diff_to_alert #(
   ) u_prim_alert_sender (
     .clk_i,
     .rst_ni,
-    .alert_test_i  ( 1'b1      ),
+    .alert_test_i  ( 1'b0      ),
     .alert_req_i   ( alert_req ),
     .alert_ack_o   (),
     .alert_state_o (),
