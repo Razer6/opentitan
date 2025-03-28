@@ -16,6 +16,7 @@ repos:
     rev: v4.6.0
     hooks:
       - id: check-added-large-files
+        exclude: generated_ips/autogen/.*/rtl
       - id: check-merge-conflict
         args: [--assume-in-merge]
         exclude: ^(doc/contributing/github_notes.md|hw/vendor/lowrisc_ibex/doc/03_reference/history.rst)

@@ -12,7 +12,7 @@ rm -rf autogen/lio_rv_plic/
   -c data/lio_rv_plic_cfg.hjson -o autogen/lio_rv_plic
 rm -rf autogen/lio_rv_plic/doc
 rm -rf autogen/lio_rv_plic/fpv
-rm autogen/lio_rv_plic/README.md
+rm -f  autogen/lio_rv_plic/README.md
 
 rm -rf autogen/lio_alert_handler/
 ../util/ipgen.py generate \
@@ -20,7 +20,15 @@ rm -rf autogen/lio_alert_handler/
   -c data/lio_alert_handler_cfg.hjson -o autogen/lio_alert_handler
 rm -rf autogen/lio_alert_handler/doc
 rm -rf autogen/lio_alert_handler/fpv
-rm autogen/lio_alert_handler/README.md
+rm -f  autogen/lio_alert_handler/README.md
+
+rm -rf autogen/scs_ac_range_check/
+../util/ipgen.py generate \
+  -C ../hw/ip_templates/ac_range_check/ \
+  -c data/scs_ac_range_check_cfg.hjson -o autogen/scs_ac_range_check
+rm -rf autogen/scs_ac_range_check/doc
+rm -rf autogen/scs_ac_range_check/fpv
+rm -f  autogen/scs_ac_range_check/README.md
 
 for RACLGROUP in lioGrpA lioGrpB lioGrpC lioGrpD ; do
   rm -rf autogen/racl_ctrl_${RACLGROUP}/
@@ -28,5 +36,5 @@ for RACLGROUP in lioGrpA lioGrpB lioGrpC lioGrpD ; do
   ../util/ipgen.py generate -C ../hw/ip_templates/racl_ctrl -c data/racl_ctrl_${RACLGROUP}_cfg.hjson -o autogen/racl_ctrl_${RACLGROUP}
   rm -rf autogen/racl_ctrl_${RACLGROUP}/doc
   rm -rf autogen/racl_ctrl_${RACLGROUP}/fpv
-  rm -f autogen/racl_ctrl_${RACLGROUP}/README.md
+  rm -f  autogen/racl_ctrl_${RACLGROUP}/README.md
 done

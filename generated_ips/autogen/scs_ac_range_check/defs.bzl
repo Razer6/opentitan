@@ -1,0 +1,9 @@
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+load("//rules/opentitan:hw.bzl", "opentitan_ip")
+
+SCS_AC_RANGE_CHECK = opentitan_ip(
+    name = "scs_ac_range_check",
+    hjson = "//hw/top_lio/ip_autogen/scs_ac_range_check:data/scs_ac_range_check.hjson",
+)
