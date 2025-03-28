@@ -10,6 +10,8 @@ waive -rules VAR_INDEX_RANGE -location {rom_ctrl_compare.sv} \
       -comment "Waive in Rivos environment, which uses a differnt default rule set"
 waive -rules VAR_INDEX_RANGE -location {keccak_2share.sv} \
       -comment "Waive in Rivos environment, which uses a differnt default rule set"
+waive -rules PARAM_NOT_USED -location {prim_generic_ram_1p.sv} \
+      -comment "parameter only used in prim_rdp implementation"
 
 waive -rules SAME_NAME_TYPE -location {keccak_2share.sv} -regexp {'L' is used as a (parameter|reg) here, and as a (reg|parameter) at} \
       -comment {This is acceptable, since these are used in different hierarchies.}

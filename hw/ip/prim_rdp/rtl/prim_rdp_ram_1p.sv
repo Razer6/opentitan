@@ -17,6 +17,7 @@ module prim_rdp_ram_1p
 
   // Select between compiled RAM and OT generic
   parameter bit UseCompiledRam   = 0,
+  parameter int NumRamInst       = 1,
 
   localparam int Aw              = $clog2(Depth)  // derived parameter
 ) (
@@ -36,6 +37,7 @@ module prim_rdp_ram_1p
     rvscs_ot_sram_wrap #(
       .WIDTH(Width),
       .DEPTH(Depth),
+      .NUM_RAM_INST(NumRamInst),
       .USE_COMPILED_RAM(UseCompiledRam)
     ) u_ram (
       .clk_i           (clk_i),

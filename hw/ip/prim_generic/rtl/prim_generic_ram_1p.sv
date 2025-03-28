@@ -14,6 +14,7 @@ module prim_generic_ram_1p import prim_ram_1p_pkg::*; #(
 
   // Select between compiled RAM and OT generic
   parameter bit UseCompiledRam   = 0,
+  parameter int NumRamInst       = 1,
 
   localparam int Aw              = $clog2(Depth)  // derived parameter
 ) (
