@@ -67,7 +67,6 @@ module top_earlgrey #(
   parameter int SramCtrlRetAonNumRamInst = 1,
   parameter bit SramCtrlRetAonInstrExec = 0,
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
-  parameter bit SramCtrlRetAonFlopRamOutput = 0,
   parameter bit SramCtrlRetAonEccCorrection = 0,
   parameter bit SramCtrlRetAonFlopRamOutput = 0,
   // parameters for flash_ctrl
@@ -116,7 +115,6 @@ module top_earlgrey #(
   parameter int SramCtrlMainNumRamInst = 1,
   parameter bit SramCtrlMainInstrExec = 1,
   parameter int SramCtrlMainNumPrinceRoundsHalf = 2,
-  parameter bit SramCtrlMainFlopRamOutput = 0,
   parameter bit SramCtrlMainEccCorrection = 0,
   parameter bit SramCtrlMainFlopRamOutput = 0,
   // parameters for rom_ctrl
@@ -2205,7 +2203,6 @@ module top_earlgrey #(
     .NumRamInst(SramCtrlRetAonNumRamInst),
     .InstrExec(SramCtrlRetAonInstrExec),
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
-    .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .Outstanding(SramCtrlRetAonOutstanding),
     .EccCorrection(SramCtrlRetAonEccCorrection),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput)
@@ -2700,7 +2697,6 @@ module top_earlgrey #(
     .NumRamInst(SramCtrlMainNumRamInst),
     .InstrExec(SramCtrlMainInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
-    .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .Outstanding(SramCtrlMainOutstanding),
     .EccCorrection(SramCtrlMainEccCorrection),
     .FlopRamOutput(SramCtrlMainFlopRamOutput)

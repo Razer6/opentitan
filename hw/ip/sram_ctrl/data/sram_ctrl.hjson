@@ -107,13 +107,6 @@
       expose:    "true",
       default:   "3"
     },
-    { name:      "FlopRamOutput",
-      desc:      "Add a flop stage on the RAM macro output",
-      type:      "bit",
-      local:     "false",
-      expose:    "true",
-      default:   "0"
-    },
     { name:      "Outstanding",
       desc:      "Number of outstanding TLUL transactions",
       type:      "int",

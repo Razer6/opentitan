@@ -51,7 +51,6 @@ module top_englishbreakfast #(
   parameter int SramCtrlMainNumRamInst = 1,
   parameter bit SramCtrlMainInstrExec = 1,
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
-  parameter bit SramCtrlMainFlopRamOutput = 0,
   parameter bit SramCtrlMainEccCorrection = 0,
   parameter bit SramCtrlMainFlopRamOutput = 0,
   // parameters for rom_ctrl
@@ -1198,7 +1197,6 @@ module top_englishbreakfast #(
     .NumRamInst(SramCtrlMainNumRamInst),
     .InstrExec(SramCtrlMainInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
-    .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .Outstanding(SramCtrlMainOutstanding),
     .EccCorrection(SramCtrlMainEccCorrection),
     .FlopRamOutput(SramCtrlMainFlopRamOutput)

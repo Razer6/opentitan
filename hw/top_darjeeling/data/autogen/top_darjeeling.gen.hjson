@@ -4333,15 +4333,6 @@
           name_top: SramCtrlRetAonNumPrinceRoundsHalf
         }
         {
-          name: FlopRamOutput
-          desc: Add a flop stage on the RAM macro output
-          type: bit
-          default: 1
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlRetAonFlopRamOutput
-        }
-        {
           name: Outstanding
           desc: Number of outstanding TLUL transactions
           type: int
@@ -4363,7 +4354,7 @@
           name: FlopRamOutput
           desc: Add a flop stage after the RAM macro output.
           type: bit
-          default: "0"
+          default: 1
           local: "false"
           expose: "true"
           name_top: SramCtrlRetAonFlopRamOutput
@@ -6688,15 +6679,6 @@
           name_top: SramCtrlMainNumPrinceRoundsHalf
         }
         {
-          name: FlopRamOutput
-          desc: Add a flop stage on the RAM macro output
-          type: bit
-          default: 1
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlMainFlopRamOutput
-        }
-        {
           name: Outstanding
           desc: Number of outstanding TLUL transactions
           type: int
@@ -6718,7 +6700,7 @@
           name: FlopRamOutput
           desc: Add a flop stage after the RAM macro output.
           type: bit
-          default: "0"
+          default: 1
           local: "false"
           expose: "true"
           name_top: SramCtrlMainFlopRamOutput
@@ -7035,15 +7017,6 @@
           name_top: SramCtrlMboxNumPrinceRoundsHalf
         }
         {
-          name: FlopRamOutput
-          desc: Add a flop stage on the RAM macro output
-          type: bit
-          default: 1
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlMboxFlopRamOutput
-        }
-        {
           name: Outstanding
           desc: Number of outstanding TLUL transactions
           type: int
@@ -7065,7 +7038,7 @@
           name: FlopRamOutput
           desc: Add a flop stage after the RAM macro output.
           type: bit
-          default: "0"
+          default: 1
           local: "false"
           expose: "true"
           name_top: SramCtrlMboxFlopRamOutput

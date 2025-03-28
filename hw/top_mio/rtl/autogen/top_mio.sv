@@ -22,8 +22,8 @@ module top_mio #(
   parameter int SramCtrlRetAonNumRamInst = 1,
   parameter bit SramCtrlRetAonInstrExec = 0,
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
-  parameter bit SramCtrlRetAonFlopRamOutput = 1,
   parameter bit SramCtrlRetAonEccCorrection = 1,
+  parameter bit SramCtrlRetAonFlopRamOutput = 1,
   // parameters for rv_dm
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
   parameter bit RvDmUseDmiInterface = 1,
@@ -35,15 +35,15 @@ module top_mio #(
   parameter int SramCtrlMainNumRamInst = 1,
   parameter bit SramCtrlMainInstrExec = 1,
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
-  parameter bit SramCtrlMainFlopRamOutput = 1,
   parameter bit SramCtrlMainEccCorrection = 1,
+  parameter bit SramCtrlMainFlopRamOutput = 1,
   // parameters for sram_ctrl_mbox
   parameter int SramCtrlMboxInstSize = 4096,
   parameter int SramCtrlMboxNumRamInst = 1,
   parameter bit SramCtrlMboxInstrExec = 0,
   parameter int SramCtrlMboxNumPrinceRoundsHalf = 3,
-  parameter bit SramCtrlMboxFlopRamOutput = 1,
   parameter bit SramCtrlMboxEccCorrection = 1,
+  parameter bit SramCtrlMboxFlopRamOutput = 1,
   // parameters for dma
   parameter bit DmaEnableDataIntgGen = 1'b1,
   parameter bit DmaEnableRspDataIntgCheck = 1'b1,
@@ -446,9 +446,9 @@ module top_mio #(
     .NumRamInst(SramCtrlRetAonNumRamInst),
     .InstrExec(SramCtrlRetAonInstrExec),
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
-    .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .Outstanding(SramCtrlRetAonOutstanding),
-    .EccCorrection(SramCtrlRetAonEccCorrection)
+    .EccCorrection(SramCtrlRetAonEccCorrection),
+    .FlopRamOutput(SramCtrlRetAonFlopRamOutput)
   ) u_sram_ctrl_ret_aon (
       // External alert group "mio" [2]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[2:2] ),
@@ -564,9 +564,9 @@ module top_mio #(
     .NumRamInst(SramCtrlMainNumRamInst),
     .InstrExec(SramCtrlMainInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
-    .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .Outstanding(SramCtrlMainOutstanding),
-    .EccCorrection(SramCtrlMainEccCorrection)
+    .EccCorrection(SramCtrlMainEccCorrection),
+    .FlopRamOutput(SramCtrlMainFlopRamOutput)
   ) u_sram_ctrl_main (
       // External alert group "mio" [5]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[5:5] ),
@@ -609,9 +609,9 @@ module top_mio #(
     .NumRamInst(SramCtrlMboxNumRamInst),
     .InstrExec(SramCtrlMboxInstrExec),
     .NumPrinceRoundsHalf(SramCtrlMboxNumPrinceRoundsHalf),
-    .FlopRamOutput(SramCtrlMboxFlopRamOutput),
     .Outstanding(SramCtrlMboxOutstanding),
-    .EccCorrection(SramCtrlMboxEccCorrection)
+    .EccCorrection(SramCtrlMboxEccCorrection),
+    .FlopRamOutput(SramCtrlMboxFlopRamOutput)
   ) u_sram_ctrl_mbox (
       // External alert group "mio" [6]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[6:6] ),

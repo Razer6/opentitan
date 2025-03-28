@@ -5939,15 +5939,6 @@
           name_top: SramCtrlRetAonNumPrinceRoundsHalf
         }
         {
-          name: FlopRamOutput
-          desc: Add a flop stage on the RAM macro output
-          type: bit
-          default: "0"
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlRetAonFlopRamOutput
-        }
-        {
           name: Outstanding
           desc: Number of outstanding TLUL transactions
           type: int
@@ -8942,15 +8933,6 @@
           local: "false"
           expose: "true"
           name_top: SramCtrlMainNumPrinceRoundsHalf
-        }
-        {
-          name: FlopRamOutput
-          desc: Add a flop stage on the RAM macro output
-          type: bit
-          default: "0"
-          local: "false"
-          expose: "true"
-          name_top: SramCtrlMainFlopRamOutput
         }
         {
           name: Outstanding
