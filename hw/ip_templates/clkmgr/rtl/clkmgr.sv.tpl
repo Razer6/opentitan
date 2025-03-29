@@ -586,9 +586,11 @@ rg_srcs = list(sorted({sig['src_name'] for sig
   `ASSERT_KNOWN(TlAReadyKnownO_A, tl_o.a_ready)
   `ASSERT_KNOWN(AlertsKnownO_A,   alert_tx_o)
   `ASSERT_KNOWN(PwrMgrKnownO_A, pwr_o)
+% if len(derived_clks) > 0:
   `ASSERT_KNOWN(AllClkBypReqKnownO_A, all_clk_byp_req_o)
   `ASSERT_KNOWN(IoClkBypReqKnownO_A, io_clk_byp_req_o)
   `ASSERT_KNOWN(LcCtrlClkBypAckKnownO_A, lc_clk_byp_ack_o)
+% endif
   `ASSERT_KNOWN(JitterEnableKnownO_A, jitter_en_o)
 % for intf in exported_clks:
   `ASSERT_KNOWN(ExportClocksKownO_A, clocks_${intf}_o)
