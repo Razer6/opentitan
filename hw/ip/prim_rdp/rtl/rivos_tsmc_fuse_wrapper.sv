@@ -343,26 +343,27 @@ module rivos_tsmc_fuse_wrapper
   end
 
 // incoming commands go through clock crossing
-RDP_FIFOR_ASYNC
+RDP_ASYNC_FIFO
   #(
-    .VDD_RD  ("VDD_AON"),         ///< Identify Read Clock Voltage
-    .VDD_WR  ("VDD_AON"),         ///< Identify Write Clock Voltage
-    .CLK_RD  ("CLK_EFUSE"),       ///< Identify Read Clock Domain
-    .CLK_WR  ("CLK_SCS"),         ///< Identify Write Clock Domain
-    .ISO_RD  (0),                 ///< 1 => Read Domain less on and requires Iso
-    .ISO_WR  (0),                 ///< 1 => Write Domain less on and requires Iso
+    .NONSCAN_RD (1),
+    .DEBUGEN_RD (0),
     .ENTRIES (8),
-    .WIDTH   ($bits(fuse_cmd_s))
+    .DATA_WIDTH ($bits(fuse_cmd_s))
   )
   incoming_cmd_fifo 
   (
     // global
-   .clk_wr(clk_i),
-   .clk_rd(clk_efuse_i),
-   .rst_wr_l(rst_ni),
-   .rst_rd_l(rst_efuse_n),
+   .wrClk(clk_i),
+   .rdClk(clk_efuse_i),
+   .wrRst_l(rst_ni),
+   .rdRst_l(rst_efuse_n),
 
-   .isoCtrl(1'b0),  // (neal) no needed same power domain
+   .rdRxRdy(),
+   .rdFifoDbgBus(),
+   .rdFifoDbgClkDis(1'b0),
+   .wrTxRdy(),
+   .wrFifoDbgBus(),
+   .wrFifoDbgClkDis(1'b1),
    .tston_rd(1'b0),
    .tston_wr(1'b0),
    .wrActive(1'b1),
@@ -1612,26 +1613,27 @@ RDP_FIFOR_ASYNC
                           // ecc errors are detected in next level of hierarchy
 
 // outgoing commands go through clock crossing
-RDP_FIFOR_ASYNC
+RDP_ASYNC_FIFO
   #(
-    .VDD_RD  ("VDD_AON"),         ///< Identify Read Clock Voltage
-    .VDD_WR  ("VDD_AON"),         ///< Identify Write Clock Voltage
-    .CLK_RD  ("CLK_SCS"),         ///< Identify Read Clock Domain
-    .CLK_WR  ("CLK_EFUSE"),       ///< Identify Write Clock Domain
-    .ISO_RD  (0),                 ///< 1 => Read Domain less on and requires Iso
-    .ISO_WR  (0),                 ///< 1 => Write Domain less on and requires Iso
+    .NONSCAN_WR (1),
+    .DEBUGEN_WR (0),
     .ENTRIES (8),
-    .WIDTH   (Width+EccWidth)
+    .DATA_WIDTH (Width+EccWidth)
   )
   outgoing_response_fifo 
   (
     // global
-   .clk_wr(clk_efuse_i),
-   .clk_rd(clk_i),
-   .rst_wr_l(rst_efuse_n),
-   .rst_rd_l(rst_ni),
+   .wrClk(clk_efuse_i),
+   .rdClk(clk_i),
+   .wrRst_l(rst_efuse_n),
+   .rdRst_l(rst_ni),
 
-   .isoCtrl(1'b0),  // (neal) no needed same power domain
+   .rdRxRdy(),
+   .rdFifoDbgBus(),
+   .rdFifoDbgClkDis(1'b1),
+   .wrTxRdy(),
+   .wrFifoDbgBus(),
+   .wrFifoDbgClkDis(1'b0),
    .tston_rd(1'b0),
    .tston_wr(1'b0),
    .wrActive(1'b1),
