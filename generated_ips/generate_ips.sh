@@ -22,6 +22,14 @@ rm -rf autogen/lio_alert_handler/doc
 rm -rf autogen/lio_alert_handler/fpv
 rm -f  autogen/lio_alert_handler/README.md
 
+rm -rf autogen/lio_pwm/
+../util/ipgen.py generate \
+  -C ../hw/ip_templates/pwm/ \
+  -c data/lio_pwm_cfg.hjson -o autogen/lio_pwm
+rm -rf autogen/lio_pwm/doc
+rm -rf autogen/lio_pwm/fpv
+rm -f  autogen/lio_pwm/README.md
+
 rm -rf autogen/scs_ac_range_check/
 ../util/ipgen.py generate \
   -C ../hw/ip_templates/ac_range_check/ \
