@@ -15,6 +15,8 @@ module lio_alert_handler
   parameter bit          RaclErrorRsp                                 = EnableRacl,
   parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[lio_alert_handler_reg_pkg::NumRegs] = 
     '{lio_alert_handler_reg_pkg::NumRegs{0}},
+  parameter int EscNumSeverities = 4,
+  parameter int EscPingCountWidth = 16,
   // Compile time random constants, to be overriden by topgen.
   parameter lfsr_seed_t RndCnstLfsrSeed = RndCnstLfsrSeedDefault,
   parameter lfsr_perm_t RndCnstLfsrPerm = RndCnstLfsrPermDefault
@@ -317,6 +319,9 @@ module lio_alert_handler
   end
 
   assign loc_alert_trig[3] = |esc_integfail;
+
+  logic unused_params;
+  assign unused_params = ^{EscNumSeverities, EscPingCountWidth};
 
   ////////////////
   // Assertions //
