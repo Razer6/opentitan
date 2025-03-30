@@ -47,6 +47,17 @@ OPTIONAL_FIELDS.update({
 })
 
 
+class EmptyMultiRegException(Exception):
+    '''A MultiRegister was requested without a positive count.'''
+    def __init__(self, name: str, count: int):
+        self.name = name
+        self.count = count
+
+    def __str__(self) -> str:
+        return (f"Multireg {self.name} has a count of {self.count}, "
+                "which isn't positive.")
+
+
 class MultiRegister(RegBase):
     """One or more copies of an underlying register.
 
@@ -235,10 +246,6 @@ class MultiRegister(RegBase):
         if compact and regwen_multi:
             raise ValueError(f'Multireg {name} sets the compact flag '
                              'but has regwen_multi set.')
-
-        # The checks above should have checked that we cannot "turn on" being
-        # compact with the config file. Make sure of this explictly.
-        assert default_compact or not compact
 
         # Generate the registers that this multireg expands into. Here, a
         # "creg" is a "compacted register", which might contain multiple actual
