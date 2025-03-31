@@ -4172,7 +4172,24 @@
         clk_i: clk_ext_main_i
       }
       param_decl: {}
-      param_list: []
+      memory: {}
+      param_list:
+      [
+        {
+          name: RangeCheckErrorRsp
+          desc:
+            '''
+            Error behavior on blocked requests:
+            1: A denied request returns a TLUL error (.d_error = 1 on the response)
+            0: Writes are dropped and reads return all-zero, without a TLUL error
+            '''
+          type: bit
+          default: "1"
+          local: "false"
+          expose: "true"
+          name_top: AcRangeCheckRangeCheckErrorRsp
+        }
+      ]
       inter_signal_list:
       [
         {

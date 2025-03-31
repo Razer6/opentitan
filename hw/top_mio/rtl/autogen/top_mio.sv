@@ -63,6 +63,7 @@ module top_mio #(
   // parameters for racl_ctrl
   parameter int RaclCtrlNumExternalSubscribingIps = 1,
   // parameters for ac_range_check
+  parameter bit AcRangeCheckRangeCheckErrorRsp = 1,
   // parameters for rv_core_ibex_mio
   parameter bit RvCoreIbexMioPMPEnable = 1,
   parameter int unsigned RvCoreIbexMioPMPGranularity = 0,
@@ -930,7 +931,8 @@ module top_mio #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
     .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK),
-    .AlertAsyncOn(AsyncOnOutgoingAlertMio[25:24])
+    .AlertAsyncOn(AsyncOnOutgoingAlertMio[25:24]),
+    .RangeCheckErrorRsp(AcRangeCheckRangeCheckErrorRsp)
   ) u_ac_range_check (
 
       // Interrupt

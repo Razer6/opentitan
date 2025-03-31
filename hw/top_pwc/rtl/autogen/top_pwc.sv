@@ -66,6 +66,7 @@ module top_pwc #(
   // parameters for racl_ctrl
   parameter int RaclCtrlNumExternalSubscribingIps = 1,
   // parameters for ac_range_check
+  parameter bit AcRangeCheckRangeCheckErrorRsp = 1,
   // parameters for rv_core_ibex_pwc
   parameter bit RvCoreIbexPwcPMPEnable = 1,
   parameter int unsigned RvCoreIbexPwcPMPGranularity = 0,
@@ -1000,7 +1001,8 @@ module top_pwc #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
     .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK),
-    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[26:25])
+    .AlertAsyncOn(AsyncOnOutgoingAlertPwc[26:25]),
+    .RangeCheckErrorRsp(AcRangeCheckRangeCheckErrorRsp)
   ) u_ac_range_check (
 
       // Interrupt
