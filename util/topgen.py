@@ -718,9 +718,13 @@ def _get_otp_ctrl_params(top: ConfigT,
                          seed: int = None) -> ParamsT:
     """Returns the parameters extracted from the otp_mmap.hjson file."""
     otp_mmap_path = out_path / "data" / "otp" / "otp_ctrl_mmap.hjson"
+    module = lib.find_module(top['module'], 'otp_ctrl')
     return {
         "otp_mmap": OtpMemMap.from_mmap_path(otp_mmap_path, seed).config,
-        "use_rivos_config": top["name"] == "darjeeling"
+        # TODO(#26553): Remove the following code once topgen automatically
+        # incorporates template parameters.
+        "enable_flash_key": module.get("ipgen_param", {}).get("enable_flash_key", True),
+        "use_rivos_config": module.get("ipgen_param", {}).get("use_rivos_config", False),
     }
 
 

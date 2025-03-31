@@ -363,6 +363,8 @@ module top_mio #(
       .alert_rx_i  ( outgoing_alert_mio_rx_i[0:0] ),
 
       // Inter-module signals
+      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
+      .racl_error_o(),
       .tl_i(rv_timer_tl_req),
       .tl_o(rv_timer_tl_rsp),
 

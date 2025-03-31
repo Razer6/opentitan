@@ -33,5 +33,11 @@
       type: "bool"
       default: "false"
     }
+    {
+      name: "enable_flash_key"
+      desc: "Enable the flash key interface."
+      type: "bool"
+      default: "true"
+    }
   ]
 }

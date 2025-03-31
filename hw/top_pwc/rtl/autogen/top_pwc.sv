@@ -431,6 +431,8 @@ module top_pwc #(
       .alert_rx_i  ( outgoing_alert_pwc_rx_i[1:1] ),
 
       // Inter-module signals
+      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
+      .racl_error_o(),
       .tl_i(rv_timer_tl_req),
       .tl_o(rv_timer_tl_rsp),
 
