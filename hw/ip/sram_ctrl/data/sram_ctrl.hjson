@@ -261,25 +261,6 @@
         Incoming array of RACL policy ranges.
       '''
     },
-    { struct:  "logic",
-      width:   "2"
-      type:    "uni",
-      name:    "sram_rerror",
-      act:     "req",
-      desc:    '''
-               SRAM read error log.
-               Bit 0: Correctable error
-               Bit 1: Uncorrectable error
-               '''
-    },
-    { struct:  "logic [top_pkg::TL_AW-1:0]",
-      type:    "uni",
-      name:    "sram_rerror_addr",
-      act:     "req",
-      desc:    '''
-               SRAM read error address.
-               '''
-    }
     { struct:  "sram_error_t",
       package: "sram_ctrl_pkg",
       width:   "1"
