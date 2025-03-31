@@ -1383,31 +1383,6 @@
         }
         {
           name: sram_rerror
-          desc:
-            '''
-            SRAM read error log.
-            Bit 0: Correctable error
-            Bit 1: Uncorrectable error
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 2
-          inst_name: sram_ctrl_ret_aon
-          index: -1
-        }
-        {
-          name: sram_rerror_addr
-          desc: SRAM read error address.
-          struct: logic [top_pkg::TL_AW-1:0]
-          type: uni
-          act: req
-          width: 1
-          inst_name: sram_ctrl_ret_aon
-          index: -1
-        }
-        {
-          name: sram_rerror
           desc: SRAM read error indicating correctable and uncorrectable ECC errors.
           struct: sram_error_t
           package: sram_ctrl_pkg
@@ -2247,31 +2222,6 @@
         }
         {
           name: sram_rerror
-          desc:
-            '''
-            SRAM read error log.
-            Bit 0: Correctable error
-            Bit 1: Uncorrectable error
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 2
-          inst_name: sram_ctrl_main
-          index: -1
-        }
-        {
-          name: sram_rerror_addr
-          desc: SRAM read error address.
-          struct: logic [top_pkg::TL_AW-1:0]
-          type: uni
-          act: req
-          width: 1
-          inst_name: sram_ctrl_main
-          index: -1
-        }
-        {
-          name: sram_rerror
           desc: SRAM read error indicating correctable and uncorrectable ECC errors.
           struct: sram_error_t
           package: sram_ctrl_pkg
@@ -2634,31 +2584,6 @@
             expose: true
             name_top: SramCtrlMboxRaclPolicySelRangesRamNum
           }
-          inst_name: sram_ctrl_mbox
-          index: -1
-        }
-        {
-          name: sram_rerror
-          desc:
-            '''
-            SRAM read error log.
-            Bit 0: Correctable error
-            Bit 1: Uncorrectable error
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 2
-          inst_name: sram_ctrl_mbox
-          index: -1
-        }
-        {
-          name: sram_rerror_addr
-          desc: SRAM read error address.
-          struct: logic [top_pkg::TL_AW-1:0]
-          type: uni
-          act: req
-          width: 1
           inst_name: sram_ctrl_mbox
           index: -1
         }
@@ -13155,31 +13080,6 @@
       }
       {
         name: sram_rerror
-        desc:
-          '''
-          SRAM read error log.
-          Bit 0: Correctable error
-          Bit 1: Uncorrectable error
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 2
-        inst_name: sram_ctrl_ret_aon
-        index: -1
-      }
-      {
-        name: sram_rerror_addr
-        desc: SRAM read error address.
-        struct: logic [top_pkg::TL_AW-1:0]
-        type: uni
-        act: req
-        width: 1
-        inst_name: sram_ctrl_ret_aon
-        index: -1
-      }
-      {
-        name: sram_rerror
         desc: SRAM read error indicating correctable and uncorrectable ECC errors.
         struct: sram_error_t
         package: sram_ctrl_pkg
@@ -13684,31 +13584,6 @@
       }
       {
         name: sram_rerror
-        desc:
-          '''
-          SRAM read error log.
-          Bit 0: Correctable error
-          Bit 1: Uncorrectable error
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 2
-        inst_name: sram_ctrl_main
-        index: -1
-      }
-      {
-        name: sram_rerror_addr
-        desc: SRAM read error address.
-        struct: logic [top_pkg::TL_AW-1:0]
-        type: uni
-        act: req
-        width: 1
-        inst_name: sram_ctrl_main
-        index: -1
-      }
-      {
-        name: sram_rerror
         desc: SRAM read error indicating correctable and uncorrectable ECC errors.
         struct: sram_error_t
         package: sram_ctrl_pkg
@@ -13881,31 +13756,6 @@
           expose: true
           name_top: SramCtrlMboxRaclPolicySelRangesRamNum
         }
-        inst_name: sram_ctrl_mbox
-        index: -1
-      }
-      {
-        name: sram_rerror
-        desc:
-          '''
-          SRAM read error log.
-          Bit 0: Correctable error
-          Bit 1: Uncorrectable error
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 2
-        inst_name: sram_ctrl_mbox
-        index: -1
-      }
-      {
-        name: sram_rerror_addr
-        desc: SRAM read error address.
-        struct: logic [top_pkg::TL_AW-1:0]
-        type: uni
-        act: req
-        width: 1
         inst_name: sram_ctrl_mbox
         index: -1
       }

@@ -5949,31 +5949,6 @@
         }
         {
           name: sram_rerror
-          desc:
-            '''
-            SRAM read error log.
-            Bit 0: Correctable error
-            Bit 1: Uncorrectable error
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 2
-          inst_name: sram_ctrl_ret_aon
-          index: -1
-        }
-        {
-          name: sram_rerror_addr
-          desc: SRAM read error address.
-          struct: logic [top_pkg::TL_AW-1:0]
-          type: uni
-          act: req
-          width: 1
-          inst_name: sram_ctrl_ret_aon
-          index: -1
-        }
-        {
-          name: sram_rerror
           desc: SRAM read error indicating correctable and uncorrectable ECC errors.
           struct: sram_error_t
           package: sram_ctrl_pkg
@@ -8971,31 +8946,6 @@
             expose: true
             name_top: SramCtrlMainRaclPolicySelRangesRamNum
           }
-          inst_name: sram_ctrl_main
-          index: -1
-        }
-        {
-          name: sram_rerror
-          desc:
-            '''
-            SRAM read error log.
-            Bit 0: Correctable error
-            Bit 1: Uncorrectable error
-            '''
-          struct: logic
-          type: uni
-          act: req
-          width: 2
-          inst_name: sram_ctrl_main
-          index: -1
-        }
-        {
-          name: sram_rerror_addr
-          desc: SRAM read error address.
-          struct: logic [top_pkg::TL_AW-1:0]
-          type: uni
-          act: req
-          width: 1
           inst_name: sram_ctrl_main
           index: -1
         }
@@ -14788,7 +14738,7 @@
       }
       {
         name: pwm_aon_pwm
-        width: 8
+        width: 6
         type: output
         idx: 0
         pad: ""
@@ -14799,7 +14749,7 @@
       }
       {
         name: pwm_aon_pwm
-        width: 8
+        width: 6
         type: output
         idx: 1
         pad: ""
@@ -14810,7 +14760,7 @@
       }
       {
         name: pwm_aon_pwm
-        width: 8
+        width: 6
         type: output
         idx: 2
         pad: ""
@@ -14821,7 +14771,7 @@
       }
       {
         name: pwm_aon_pwm
-        width: 8
+        width: 6
         type: output
         idx: 3
         pad: ""
@@ -14832,7 +14782,7 @@
       }
       {
         name: pwm_aon_pwm
-        width: 8
+        width: 6
         type: output
         idx: 4
         pad: ""
@@ -14843,7 +14793,7 @@
       }
       {
         name: pwm_aon_pwm
-        width: 8
+        width: 6
         type: output
         idx: 5
         pad: ""
@@ -14851,28 +14801,6 @@
         connection: muxed
         desc: ""
         glob_idx: 67
-      }
-      {
-        name: pwm_aon_pwm
-        width: 8
-        type: output
-        idx: 6
-        pad: ""
-        attr: ""
-        connection: muxed
-        desc: ""
-        glob_idx: 68
-      }
-      {
-        name: pwm_aon_pwm
-        width: 8
-        type: output
-        idx: 7
-        pad: ""
-        attr: ""
-        connection: muxed
-        desc: ""
-        glob_idx: 69
       }
       {
         name: otp_ctrl_test
@@ -14883,7 +14811,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 70
+        glob_idx: 68
       }
       {
         name: sysrst_ctrl_aon_bat_disable
@@ -14894,7 +14822,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 71
+        glob_idx: 69
       }
       {
         name: sysrst_ctrl_aon_key0_out
@@ -14905,7 +14833,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 72
+        glob_idx: 70
       }
       {
         name: sysrst_ctrl_aon_key1_out
@@ -14916,7 +14844,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 73
+        glob_idx: 71
       }
       {
         name: sysrst_ctrl_aon_key2_out
@@ -14927,7 +14855,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 74
+        glob_idx: 72
       }
       {
         name: sysrst_ctrl_aon_pwrb_out
@@ -14938,7 +14866,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 75
+        glob_idx: 73
       }
       {
         name: sysrst_ctrl_aon_z3_wakeup
@@ -14949,7 +14877,7 @@
         attr: ""
         connection: muxed
         desc: ""
-        glob_idx: 76
+        glob_idx: 74
       }
     ]
     io_counts:
@@ -14965,7 +14893,7 @@
       {
         inouts: 42
         inputs: 15
-        outputs: 35
+        outputs: 33
         pads: 47
       }
     }
@@ -21682,31 +21610,6 @@
       }
       {
         name: sram_rerror
-        desc:
-          '''
-          SRAM read error log.
-          Bit 0: Correctable error
-          Bit 1: Uncorrectable error
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 2
-        inst_name: sram_ctrl_ret_aon
-        index: -1
-      }
-      {
-        name: sram_rerror_addr
-        desc: SRAM read error address.
-        struct: logic [top_pkg::TL_AW-1:0]
-        type: uni
-        act: req
-        width: 1
-        inst_name: sram_ctrl_ret_aon
-        index: -1
-      }
-      {
-        name: sram_rerror
         desc: SRAM read error indicating correctable and uncorrectable ECC errors.
         struct: sram_error_t
         package: sram_ctrl_pkg
@@ -23272,31 +23175,6 @@
           expose: true
           name_top: SramCtrlMainRaclPolicySelRangesRamNum
         }
-        inst_name: sram_ctrl_main
-        index: -1
-      }
-      {
-        name: sram_rerror
-        desc:
-          '''
-          SRAM read error log.
-          Bit 0: Correctable error
-          Bit 1: Uncorrectable error
-          '''
-        struct: logic
-        type: uni
-        act: req
-        width: 2
-        inst_name: sram_ctrl_main
-        index: -1
-      }
-      {
-        name: sram_rerror_addr
-        desc: SRAM read error address.
-        struct: logic [top_pkg::TL_AW-1:0]
-        type: uni
-        act: req
-        width: 1
         inst_name: sram_ctrl_main
         index: -1
       }

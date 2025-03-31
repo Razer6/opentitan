@@ -264,8 +264,8 @@ module top_earlgrey #(
 
   // Signals
   logic [56:0] mio_p2d;
-  logic [76:0] mio_d2p;
-  logic [76:0] mio_en_d2p;
+  logic [74:0] mio_d2p;
+  logic [74:0] mio_en_d2p;
   logic [15:0] dio_p2d;
   logic [15:0] dio_d2p;
   logic [15:0] dio_en_d2p;
@@ -386,8 +386,8 @@ module top_earlgrey #(
   logic        cio_sysrst_ctrl_aon_flash_wp_l_en_d2p;
   // adc_ctrl_aon
   // pwm_aon
-  logic [7:0]  cio_pwm_aon_pwm_d2p;
-  logic [7:0]  cio_pwm_aon_pwm_en_d2p;
+  logic [5:0]  cio_pwm_aon_pwm_d2p;
+  logic [5:0]  cio_pwm_aon_pwm_en_d2p;
   // pinmux_aon
   // aon_timer_aon
   // sensor_ctrl_aon
@@ -2198,8 +2198,6 @@ module top_earlgrey #(
       .racl_error_o(),
       .racl_policy_sel_ranges_ram_i({SramCtrlRetAonRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
-      .sram_rerror_addr_o(),
-      .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_ret_aon_regs_tl_req),
       .regs_tl_o(sram_ctrl_ret_aon_regs_tl_rsp),
       .ram_tl_i(sram_ctrl_ret_aon_ram_tl_req),
@@ -2692,8 +2690,6 @@ module top_earlgrey #(
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
       .racl_policy_sel_ranges_ram_i({SramCtrlMainRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
-      .sram_rerror_o(),
-      .sram_rerror_addr_o(),
       .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_main_regs_tl_req),
       .regs_tl_o(sram_ctrl_main_regs_tl_rsp),
@@ -3354,8 +3350,6 @@ module top_earlgrey #(
   assign mio_d2p[MioOutPwmAonPwm3] = cio_pwm_aon_pwm_d2p[3];
   assign mio_d2p[MioOutPwmAonPwm4] = cio_pwm_aon_pwm_d2p[4];
   assign mio_d2p[MioOutPwmAonPwm5] = cio_pwm_aon_pwm_d2p[5];
-  assign mio_d2p[MioOutPwmAonPwm6] = cio_pwm_aon_pwm_d2p[6];
-  assign mio_d2p[MioOutPwmAonPwm7] = cio_pwm_aon_pwm_d2p[7];
   assign mio_d2p[MioOutOtpCtrlTest0] = cio_otp_ctrl_test_d2p[0];
   assign mio_d2p[MioOutSysrstCtrlAonBatDisable] = cio_sysrst_ctrl_aon_bat_disable_d2p;
   assign mio_d2p[MioOutSysrstCtrlAonKey0Out] = cio_sysrst_ctrl_aon_key0_out_d2p;
@@ -3433,8 +3427,6 @@ module top_earlgrey #(
   assign mio_en_d2p[MioOutPwmAonPwm3] = cio_pwm_aon_pwm_en_d2p[3];
   assign mio_en_d2p[MioOutPwmAonPwm4] = cio_pwm_aon_pwm_en_d2p[4];
   assign mio_en_d2p[MioOutPwmAonPwm5] = cio_pwm_aon_pwm_en_d2p[5];
-  assign mio_en_d2p[MioOutPwmAonPwm6] = cio_pwm_aon_pwm_en_d2p[6];
-  assign mio_en_d2p[MioOutPwmAonPwm7] = cio_pwm_aon_pwm_en_d2p[7];
   assign mio_en_d2p[MioOutOtpCtrlTest0] = cio_otp_ctrl_test_en_d2p[0];
   assign mio_en_d2p[MioOutSysrstCtrlAonBatDisable] = cio_sysrst_ctrl_aon_bat_disable_en_d2p;
   assign mio_en_d2p[MioOutSysrstCtrlAonKey0Out] = cio_sysrst_ctrl_aon_key0_out_en_d2p;
