@@ -12,7 +12,7 @@ module ${module_instance_name}_core #(
   input                           clk_core_i,
   input                           rst_core_ni,
 
-  input pwm_reg_pkg::pwm_reg2hw_t reg2hw,
+  input ${module_instance_name}_reg_pkg::${module_instance_name}_reg2hw_t reg2hw,
 
   output logic [NOutputs-1:0]     pwm_o
 );

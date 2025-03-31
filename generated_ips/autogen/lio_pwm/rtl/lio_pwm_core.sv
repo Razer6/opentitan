@@ -12,7 +12,7 @@ module lio_pwm_core #(
   input                           clk_core_i,
   input                           rst_core_ni,
 
-  input pwm_reg_pkg::pwm_reg2hw_t reg2hw,
+  input lio_pwm_reg_pkg::lio_pwm_reg2hw_t reg2hw,
 
   output logic [NOutputs-1:0]     pwm_o
 );

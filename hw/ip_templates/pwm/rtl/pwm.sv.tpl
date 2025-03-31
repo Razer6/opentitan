@@ -34,7 +34,7 @@ module ${module_instance_name}
   output logic [NOutputs-1:0] cio_pwm_en_o
 );
 
-  ${module_instance_name}_reg_pkg::pwm_reg2hw_t reg2hw;
+  ${module_instance_name}_reg_pkg::${module_instance_name}_reg2hw_t reg2hw;
   logic [NumAlerts-1:0] alert_test, alerts;
 
   ${module_instance_name}_reg_top #(

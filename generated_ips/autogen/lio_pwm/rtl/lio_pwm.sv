@@ -34,7 +34,7 @@ module lio_pwm
   output logic [NOutputs-1:0] cio_pwm_en_o
 );
 
-  lio_pwm_reg_pkg::pwm_reg2hw_t reg2hw;
+  lio_pwm_reg_pkg::lio_pwm_reg2hw_t reg2hw;
   logic [NumAlerts-1:0] alert_test, alerts;
 
   lio_pwm_reg_top #(
