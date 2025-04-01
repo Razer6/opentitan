@@ -112,5 +112,69 @@
       intr_type: IntrType.Event
       default_val: false
     }
+    // IDX 14
+    {
+      name: RACL_ERROR
+      module_name: SCSIFREGS
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 15
+    {
+      name: RACL_ERROR
+      module_name: NSGRP
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 16
+    {
+      name: RACL_ERROR
+      module_name: LIO_GRP_V
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 17
+    {
+      name: RACL_ERROR
+      module_name: LIO_GRP_P
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 18
+    {
+      name: RACL_ERROR
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 19
+    {
+      name: RACL_ERROR
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 20
+    {
+      name: RACL_ERROR
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 21
+    {
+      name: RACL_ERROR
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
   ]
 }

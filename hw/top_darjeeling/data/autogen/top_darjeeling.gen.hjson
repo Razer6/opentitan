@@ -18329,6 +18329,62 @@
         intr_type: IntrType.Event
         default_val: false
       }
+      {
+        name: RACL_ERROR
+        module_name: SCSIFREGS
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: RACL_ERROR
+        module_name: NSGRP
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: RACL_ERROR
+        module_name: LIO_GRP_V
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: RACL_ERROR
+        module_name: LIO_GRP_P
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: RACL_ERROR
+        module_name: LIO_GRP_D
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: RACL_ERROR
+        module_name: LIO_GRP_C
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: RACL_ERROR
+        module_name: LIO_GRP_B
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: RACL_ERROR
+        module_name: LIO_GRP_A
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
     ]
   }
   exported_clks: {}
@@ -22367,6 +22423,86 @@
       intr_type: IntrType.Event
       default_val: false
       desc: AMS AVGS_GLITCH incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: SCSIFREGS_RACL_ERROR
+      module_name: SCSIFREGS
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: SCSIFREGS RACL_ERROR incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: NSGRP_RACL_ERROR
+      module_name: NSGRP
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: NSGRP RACL_ERROR incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_V_RACL_ERROR
+      module_name: LIO_GRP_V
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_V RACL_ERROR incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_P_RACL_ERROR
+      module_name: LIO_GRP_P
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_P RACL_ERROR incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_D_RACL_ERROR
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_D RACL_ERROR incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_RACL_ERROR
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_C RACL_ERROR incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_RACL_ERROR
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_B RACL_ERROR incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_RACL_ERROR
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_A RACL_ERROR incoming interrupt
       incoming: true
       width: 1
     }

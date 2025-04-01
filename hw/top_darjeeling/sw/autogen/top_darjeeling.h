@@ -1251,7 +1251,15 @@ typedef enum top_darjeeling_plic_irq_id {
   kTopDarjeelingPlicIrqIdAmsRefClkSlow = 171, /**< AMS_REF_CLK_SLOW */
   kTopDarjeelingPlicIrqIdAmsRefClkFast = 172, /**< AMS_REF_CLK_FAST */
   kTopDarjeelingPlicIrqIdAmsAvgsGlitch = 173, /**< AMS_AVGS_GLITCH */
-  kTopDarjeelingPlicIrqIdLast = 173, /**< \internal The Last Valid Interrupt ID. */
+  kTopDarjeelingPlicIrqIdScsifregsRaclError = 174, /**< SCSIFREGS_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdNsgrpRaclError = 175, /**< NSGRP_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLioGrpVRaclError = 176, /**< LIO_GRP_V_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLioGrpPRaclError = 177, /**< LIO_GRP_P_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLioGrpDRaclError = 178, /**< LIO_GRP_D_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLioGrpCRaclError = 179, /**< LIO_GRP_C_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLioGrpBRaclError = 180, /**< LIO_GRP_B_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLioGrpARaclError = 181, /**< LIO_GRP_A_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLast = 181, /**< \internal The Last Valid Interrupt ID. */
 } top_darjeeling_plic_irq_id_t;
 
 /**
@@ -1261,7 +1269,7 @@ typedef enum top_darjeeling_plic_irq_id {
  * `top_darjeeling_plic_peripheral_t`.
  */
 extern const top_darjeeling_plic_peripheral_t
-    top_darjeeling_plic_interrupt_for_peripheral[174];
+    top_darjeeling_plic_interrupt_for_peripheral[182];
 
 /**
  * PLIC Interrupt Target.

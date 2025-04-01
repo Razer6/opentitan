@@ -1254,6 +1254,22 @@ pub enum PlicIrqId {
     AmsRefClkFast = 172,
     /// AMS_AVGS_GLITCH
     AmsAvgsGlitch = 173,
+    /// SCSIFREGS_RACL_ERROR
+    ScsifregsRaclError = 174,
+    /// NSGRP_RACL_ERROR
+    NsgrpRaclError = 175,
+    /// LIO_GRP_V_RACL_ERROR
+    LioGrpVRaclError = 176,
+    /// LIO_GRP_P_RACL_ERROR
+    LioGrpPRaclError = 177,
+    /// LIO_GRP_D_RACL_ERROR
+    LioGrpDRaclError = 178,
+    /// LIO_GRP_C_RACL_ERROR
+    LioGrpCRaclError = 179,
+    /// LIO_GRP_B_RACL_ERROR
+    LioGrpBRaclError = 180,
+    /// LIO_GRP_A_RACL_ERROR
+    LioGrpARaclError = 181,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -1434,6 +1450,14 @@ impl TryFrom<u32> for PlicIrqId {
             171 => Ok(Self::AmsRefClkSlow),
             172 => Ok(Self::AmsRefClkFast),
             173 => Ok(Self::AmsAvgsGlitch),
+            174 => Ok(Self::ScsifregsRaclError),
+            175 => Ok(Self::NsgrpRaclError),
+            176 => Ok(Self::LioGrpVRaclError),
+            177 => Ok(Self::LioGrpPRaclError),
+            178 => Ok(Self::LioGrpDRaclError),
+            179 => Ok(Self::LioGrpCRaclError),
+            180 => Ok(Self::LioGrpBRaclError),
+            181 => Ok(Self::LioGrpARaclError),
             _ => Err(val),
         }
     }
@@ -1454,7 +1478,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 174] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 182] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // Uart0TxWatermark -> PlicPeripheral::Uart0
@@ -1802,6 +1826,22 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 174] = [
     // AmsRefClkFast -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // AmsAvgsGlitch -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // ScsifregsRaclError -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // NsgrpRaclError -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpVRaclError -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpPRaclError -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpDRaclError -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpCRaclError -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpBRaclError -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpARaclError -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
 ];
 
