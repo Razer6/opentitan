@@ -8697,6 +8697,7 @@
       incoming: false
     }
   ]
+  outgoing_interrupt: {}
   alert_module:
   [
     uart0
@@ -8719,6 +8720,7 @@
     rv_core_ibex
   ]
   outgoing_alert_module: {}
+  outgoing_interrupt_module: {}
   alert_lpgs:
   [
     {

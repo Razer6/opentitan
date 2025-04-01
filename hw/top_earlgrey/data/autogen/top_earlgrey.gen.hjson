@@ -17567,6 +17567,7 @@
       incoming: false
     }
   ]
+  outgoing_interrupt: {}
   alert_module:
   [
     uart0
@@ -17645,6 +17646,7 @@
     edn1
   ]
   outgoing_alert_module: {}
+  outgoing_interrupt_module: {}
   alert_lpgs:
   [
     {
