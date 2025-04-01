@@ -156,7 +156,7 @@ module ac_range_check_mio
 
     // Request hits an enabled range and comparison logic
     assign addr_hit[i] = prim_mubi_pkg::mubi4_test_true_loose(
-                           prim_mubi_pkg::mubi4_t'(reg2hw.range_perm[i].enable.q)) & tor_hit;
+                           prim_mubi_pkg::mubi4_t'(reg2hw.range_attr[i].enable.q)) & tor_hit;
 
     // Perform RACL checks - check if the incoming role matches with the configured policy
     assign racl_read_hit [i] = |(racl_role_vec & reg2hw.range_racl_policy_shadowed[i].read_perm.q);
@@ -165,13 +165,13 @@ module ac_range_check_mio
     // Decode the multi-bit access fields for convenient access
     logic perm_read_access, perm_write_access, perm_execute_access;
     assign perm_read_access = prim_mubi_pkg::mubi4_test_true_strict(
-                                prim_mubi_pkg::mubi4_t'(reg2hw.range_perm[i].read_access.q)) &
+                                prim_mubi_pkg::mubi4_t'(reg2hw.range_attr[i].read_access.q)) &
                                 racl_read_hit[i];
     assign perm_write_access = prim_mubi_pkg::mubi4_test_true_strict(
-                                 prim_mubi_pkg::mubi4_t'(reg2hw.range_perm[i].write_access.q)) &
+                                 prim_mubi_pkg::mubi4_t'(reg2hw.range_attr[i].write_access.q)) &
                                  racl_write_hit[i];
     assign perm_execute_access = prim_mubi_pkg::mubi4_test_true_strict(
-                                   prim_mubi_pkg::mubi4_t'(reg2hw.range_perm[i].execute_access.q)) &
+                                   prim_mubi_pkg::mubi4_t'(reg2hw.range_attr[i].execute_access.q)) &
                                    racl_read_hit[i];
 
     // A range grants a request if the request address hits and the type of the access (R/W/X) is
@@ -190,7 +190,7 @@ module ac_range_check_mio
 
     // TODO(#25456) Use log_enable_mask to mask logging
     assign log_enable_mask[NumRanges - 1 - i] = prim_mubi_pkg::mubi4_test_true_strict(
-      prim_mubi_pkg::mubi4_t'(reg2hw.range_perm[i].log_denied_access.q));
+      prim_mubi_pkg::mubi4_t'(reg2hw.range_attr[i].log_denied_access.q));
   end
 
   // The overall grant and deny mask is simply the OR combination of the access-type-specific masks.
@@ -380,15 +380,15 @@ module ac_range_check_mio
   `ASSERT_KNOWN(AlertsKnown_A, alert_tx_o)
   `ASSERT_KNOWN(DenyCntIrqKnown_A, intr_deny_cnt_reached_o)
 
-  `ASSERT_KNOWN(TlDValidKnownO_A, tl_o.d_valid)
-  `ASSERT_KNOWN(TlAReadyKnownO_A, tl_o.a_ready)
+  `ASSERT_KNOWN_IF(TlODKnown_A, tl_o, tl_o.d_valid)
+  `ASSERT_KNOWN(TlOAReadyKnown_A, tl_o.a_ready)
 
-  `ASSERT_KNOWN(TlCtnDValidKnownO_A, ctn_tl_d2h_o.d_valid)
-  `ASSERT_KNOWN(TlCtnAReadyKnownO_A, ctn_tl_d2h_o.a_ready)
-  `ASSERT_KNOWN(TlCtnFilteredAValidKnownO_A, ctn_filtered_tl_h2d_o.a_valid)
-  `ASSERT_KNOWN(TlCtnFilteredDReadyKnownO_A, ctn_filtered_tl_h2d_o.d_ready)
+  `ASSERT_KNOWN_IF(TlCtnODKnown_A, ctn_tl_d2h_o, ctn_tl_d2h_o.d_valid)
+  `ASSERT_KNOWN(TlCtnOAReadyKnown_A, ctn_tl_d2h_o.a_ready)
+  `ASSERT_KNOWN_IF(TlCtnFilteredOAKnown_A, ctn_filtered_tl_h2d_o, ctn_filtered_tl_h2d_o.a_valid)
+  `ASSERT_KNOWN(TlCtnFilteredODReadyKnown_A, ctn_filtered_tl_h2d_o.d_ready)
 
-  `ASSERT_KNOWN(RaclErrorValidKnown_A, racl_error_o.valid)
+  `ASSERT_KNOWN_IF(RaclErrorOKnown_A, racl_error_o, racl_error_o.valid)
 
   // Alert assertions for reg_we onehot check
   `ASSERT_PRIM_REG_WE_ONEHOT_ERROR_TRIGGER_ALERT(RegWeOnehotCheck_A, u_ac_range_check_reg,
