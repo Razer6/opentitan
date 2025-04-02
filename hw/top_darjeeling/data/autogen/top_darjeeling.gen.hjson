@@ -374,6 +374,10 @@
   {
     default_plic: rv_plic
   }
+  alerts:
+  {
+    default_handler: alert_handler
+  }
   addr_spaces:
   [
     {
@@ -23367,6 +23371,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: uart0
       desc: uart0 fatal_fault alert
       lpg_name: peri_lc_io_0
@@ -23377,6 +23382,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: gpio
       desc: gpio fatal_fault alert
       lpg_name: peri_lc_io_0
@@ -23387,6 +23393,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: spi_device
       desc: spi_device fatal_fault alert
       lpg_name: peri_spi_device_0
@@ -23397,6 +23404,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: i2c0
       desc: i2c0 fatal_fault alert
       lpg_name: peri_i2c0_0
@@ -23407,6 +23415,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: rv_timer
       desc: rv_timer fatal_fault alert
       lpg_name: timers_lc_io_0
@@ -23417,6 +23426,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: otp_ctrl
       desc: otp_ctrl fatal_macro_error alert
       lpg_name: secure_lc_io_0
@@ -23427,6 +23437,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: otp_ctrl
       desc: otp_ctrl fatal_check_error alert
       lpg_name: secure_lc_io_0
@@ -23437,6 +23448,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: otp_ctrl
       desc: otp_ctrl fatal_bus_integ_error alert
       lpg_name: secure_lc_io_0
@@ -23447,6 +23459,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: otp_ctrl
       desc: otp_ctrl fatal_prim_otp_alert alert
       lpg_name: secure_lc_io_0
@@ -23457,6 +23470,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: otp_ctrl
       desc: otp_ctrl recov_prim_otp_alert alert
       lpg_name: secure_lc_io_0
@@ -23467,6 +23481,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: lc_ctrl
       desc: lc_ctrl fatal_prog_error alert
       lpg_name: secure_lc_io_0
@@ -23477,6 +23492,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: lc_ctrl
       desc: lc_ctrl fatal_state_error alert
       lpg_name: secure_lc_io_0
@@ -23487,6 +23503,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: lc_ctrl
       desc: lc_ctrl fatal_bus_integ_error alert
       lpg_name: secure_lc_io_0
@@ -23497,6 +23514,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: spi_host0
       desc: spi_host0 fatal_fault alert
       lpg_name: peri_spi_host0_0
@@ -23507,6 +23525,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: pwrmgr_aon
       desc: pwrmgr_aon fatal_fault alert
       lpg_name: powerup_por_io_Aon
@@ -23517,6 +23536,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: rstmgr_aon
       desc: rstmgr_aon fatal_fault alert
       lpg_name: powerup_lc_io_Aon
@@ -23527,6 +23547,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: rstmgr_aon
       desc: rstmgr_aon fatal_cnsty_fault alert
       lpg_name: powerup_lc_io_Aon
@@ -23537,6 +23558,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: clkmgr_aon
       desc: clkmgr_aon recov_fault alert
       lpg_name: powerup_lc_io_Aon
@@ -23547,6 +23569,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: clkmgr_aon
       desc: clkmgr_aon fatal_fault alert
       lpg_name: powerup_lc_io_Aon
@@ -23557,6 +23580,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: pinmux_aon
       desc: pinmux_aon fatal_fault alert
       lpg_name: powerup_lc_io_Aon
@@ -23567,6 +23591,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: aon_timer_aon
       desc: aon_timer_aon fatal_fault alert
       lpg_name: timers_lc_io_Aon
@@ -23577,6 +23602,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: sram_ctrl_ret_aon
       desc: sram_ctrl_ret_aon fatal_error alert
       lpg_name: infra_lc_io_Aon
@@ -23587,6 +23613,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: rv_dm
       desc: rv_dm fatal_fault alert
       lpg_name: infra_sys_0
@@ -23597,6 +23624,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: rv_plic
       desc: rv_plic fatal_fault alert
       lpg_name: secure_lc_0
@@ -23607,6 +23635,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: aes
       desc: aes recov_ctrl_update_err alert
       lpg_name: aes_trans_lc_0
@@ -23617,6 +23646,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: aes
       desc: aes fatal_fault alert
       lpg_name: aes_trans_lc_0
@@ -23627,6 +23657,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: hmac
       desc: hmac fatal_fault alert
       lpg_name: hmac_trans_lc_0
@@ -23637,6 +23668,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: kmac
       desc: kmac recov_operation_err alert
       lpg_name: kmac_trans_lc_0
@@ -23647,6 +23679,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: kmac
       desc: kmac fatal_fault_err alert
       lpg_name: kmac_trans_lc_0
@@ -23657,6 +23690,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: otbn
       desc: otbn fatal alert
       lpg_name: otbn_trans_lc_0
@@ -23667,6 +23701,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: otbn
       desc: otbn recov alert
       lpg_name: otbn_trans_lc_0
@@ -23677,6 +23712,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: keymgr_dpe
       desc: keymgr_dpe recov_operation_err alert
       lpg_name: secure_lc_0
@@ -23687,6 +23723,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: keymgr_dpe
       desc: keymgr_dpe fatal_fault_err alert
       lpg_name: secure_lc_0
@@ -23697,6 +23734,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: csrng
       desc: csrng recov_alert alert
       lpg_name: secure_lc_0
@@ -23707,6 +23745,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: csrng
       desc: csrng fatal_alert alert
       lpg_name: secure_lc_0
@@ -23717,6 +23756,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: entropy_src
       desc: entropy_src recov_alert alert
       lpg_name: secure_lc_0
@@ -23727,6 +23767,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: entropy_src
       desc: entropy_src fatal_alert alert
       lpg_name: secure_lc_0
@@ -23737,6 +23778,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: edn0
       desc: edn0 recov_alert alert
       lpg_name: secure_lc_0
@@ -23747,6 +23789,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: edn0
       desc: edn0 fatal_alert alert
       lpg_name: secure_lc_0
@@ -23757,6 +23800,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: edn1
       desc: edn1 recov_alert alert
       lpg_name: secure_lc_0
@@ -23767,6 +23811,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: edn1
       desc: edn1 fatal_alert alert
       lpg_name: secure_lc_0
@@ -23777,6 +23822,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: sram_ctrl_main
       desc: sram_ctrl_main fatal_error alert
       lpg_name: infra_lc_0
@@ -23787,6 +23833,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: sram_ctrl_mbox
       desc: sram_ctrl_mbox fatal_error alert
       lpg_name: infra_lc_0
@@ -23797,6 +23844,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: rom_ctrl0
       desc: rom_ctrl0 fatal alert
       lpg_name: infra_lc_0
@@ -23807,6 +23855,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: rom_ctrl1
       desc: rom_ctrl1 fatal alert
       lpg_name: infra_lc_0
@@ -23817,6 +23866,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: dma
       desc: dma fatal_fault alert
       lpg_name: infra_lc_0
@@ -23827,6 +23877,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx0
       desc: mbx0 fatal_fault alert
       lpg_name: infra_lc_0
@@ -23837,6 +23888,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx0
       desc: mbx0 recov_fault alert
       lpg_name: infra_lc_0
@@ -23847,6 +23899,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx1
       desc: mbx1 fatal_fault alert
       lpg_name: infra_lc_0
@@ -23857,6 +23910,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx1
       desc: mbx1 recov_fault alert
       lpg_name: infra_lc_0
@@ -23867,6 +23921,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx2
       desc: mbx2 fatal_fault alert
       lpg_name: infra_lc_0
@@ -23877,6 +23932,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx2
       desc: mbx2 recov_fault alert
       lpg_name: infra_lc_0
@@ -23887,6 +23943,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx3
       desc: mbx3 fatal_fault alert
       lpg_name: infra_lc_0
@@ -23897,6 +23954,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx3
       desc: mbx3 recov_fault alert
       lpg_name: infra_lc_0
@@ -23907,6 +23965,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx4
       desc: mbx4 fatal_fault alert
       lpg_name: infra_lc_0
@@ -23917,6 +23976,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx4
       desc: mbx4 recov_fault alert
       lpg_name: infra_lc_0
@@ -23927,6 +23987,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx5
       desc: mbx5 fatal_fault alert
       lpg_name: infra_lc_0
@@ -23937,6 +23998,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx5
       desc: mbx5 recov_fault alert
       lpg_name: infra_lc_0
@@ -23947,6 +24009,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx6
       desc: mbx6 fatal_fault alert
       lpg_name: infra_lc_0
@@ -23957,6 +24020,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx6
       desc: mbx6 recov_fault alert
       lpg_name: infra_lc_0
@@ -23967,6 +24031,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx_jtag
       desc: mbx_jtag fatal_fault alert
       lpg_name: infra_lc_0
@@ -23977,6 +24042,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx_jtag
       desc: mbx_jtag recov_fault alert
       lpg_name: infra_lc_0
@@ -23987,6 +24053,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx_pcie0
       desc: mbx_pcie0 fatal_fault alert
       lpg_name: infra_lc_0
@@ -23997,6 +24064,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx_pcie0
       desc: mbx_pcie0 recov_fault alert
       lpg_name: infra_lc_0
@@ -24007,6 +24075,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx_pcie1
       desc: mbx_pcie1 fatal_fault alert
       lpg_name: infra_lc_0
@@ -24017,6 +24086,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: mbx_pcie1
       desc: mbx_pcie1 recov_fault alert
       lpg_name: infra_lc_0
@@ -24027,6 +24097,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: soc_dbg_ctrl
       desc: soc_dbg_ctrl fatal_fault alert
       lpg_name: secure_lc_io_0
@@ -24037,6 +24108,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: soc_dbg_ctrl
       desc: soc_dbg_ctrl recov_ctrl_update_err alert
       lpg_name: secure_lc_io_0
@@ -24047,6 +24119,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: racl_ctrl
       desc: racl_ctrl fatal_fault alert
       lpg_name: infra_lc_0
@@ -24057,6 +24130,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: racl_ctrl
       desc: racl_ctrl recov_ctrl_update_err alert
       lpg_name: infra_lc_0
@@ -24067,6 +24141,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: ac_range_check
       desc: ac_range_check recov_ctrl_update_err alert
       lpg_name: secure_lc_0
@@ -24077,6 +24152,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: ac_range_check
       desc: ac_range_check fatal_fault alert
       lpg_name: secure_lc_0
@@ -24087,6 +24163,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: rv_core_ibex
       desc: rv_core_ibex fatal_sw_err alert
       lpg_name: infra_lc_0
@@ -24097,6 +24174,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: rv_core_ibex
       desc: rv_core_ibex recov_sw_err alert
       lpg_name: infra_lc_0
@@ -24107,6 +24185,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: rv_core_ibex
       desc: rv_core_ibex fatal_hw_err alert
       lpg_name: infra_lc_0
@@ -24117,6 +24196,7 @@
       width: 1
       type: alert
       async: "1"
+      handler: alert_handler
       module_name: rv_core_ibex
       desc: rv_core_ibex recov_hw_err alert
       lpg_name: infra_lc_0
@@ -25915,6 +25995,656 @@
     ac_range_check
     rv_core_ibex
   ]
+  alert_connections:
+  {
+    module_uart0:
+    {
+      tx_expr: alert_tx[0:0]
+      rx_expr: alert_rx[0:0]
+      async_expr: alert_handler_reg_pkg::AsyncOn[0:0]
+      comments:
+      [
+        alert_handler[0]: fatal_fault
+      ]
+    }
+    module_gpio:
+    {
+      tx_expr: alert_tx[1:1]
+      rx_expr: alert_rx[1:1]
+      async_expr: alert_handler_reg_pkg::AsyncOn[1:1]
+      comments:
+      [
+        alert_handler[1]: fatal_fault
+      ]
+    }
+    module_spi_device:
+    {
+      tx_expr: alert_tx[2:2]
+      rx_expr: alert_rx[2:2]
+      async_expr: alert_handler_reg_pkg::AsyncOn[2:2]
+      comments:
+      [
+        alert_handler[2]: fatal_fault
+      ]
+    }
+    module_i2c0:
+    {
+      tx_expr: alert_tx[3:3]
+      rx_expr: alert_rx[3:3]
+      async_expr: alert_handler_reg_pkg::AsyncOn[3:3]
+      comments:
+      [
+        alert_handler[3]: fatal_fault
+      ]
+    }
+    module_rv_timer:
+    {
+      tx_expr: alert_tx[4:4]
+      rx_expr: alert_rx[4:4]
+      async_expr: alert_handler_reg_pkg::AsyncOn[4:4]
+      comments:
+      [
+        alert_handler[4]: fatal_fault
+      ]
+    }
+    module_otp_ctrl:
+    {
+      tx_expr: alert_tx[9:5]
+      rx_expr: alert_rx[9:5]
+      async_expr: alert_handler_reg_pkg::AsyncOn[9:5]
+      comments:
+      [
+        alert_handler[5]: fatal_macro_error
+        alert_handler[6]: fatal_check_error
+        alert_handler[7]: fatal_bus_integ_error
+        alert_handler[8]: fatal_prim_otp_alert
+        alert_handler[9]: recov_prim_otp_alert
+      ]
+    }
+    module_lc_ctrl:
+    {
+      tx_expr: alert_tx[12:10]
+      rx_expr: alert_rx[12:10]
+      async_expr: alert_handler_reg_pkg::AsyncOn[12:10]
+      comments:
+      [
+        alert_handler[10]: fatal_prog_error
+        alert_handler[11]: fatal_state_error
+        alert_handler[12]: fatal_bus_integ_error
+      ]
+    }
+    module_spi_host0:
+    {
+      tx_expr: alert_tx[13:13]
+      rx_expr: alert_rx[13:13]
+      async_expr: alert_handler_reg_pkg::AsyncOn[13:13]
+      comments:
+      [
+        alert_handler[13]: fatal_fault
+      ]
+    }
+    module_pwrmgr_aon:
+    {
+      tx_expr: alert_tx[14:14]
+      rx_expr: alert_rx[14:14]
+      async_expr: alert_handler_reg_pkg::AsyncOn[14:14]
+      comments:
+      [
+        alert_handler[14]: fatal_fault
+      ]
+    }
+    module_rstmgr_aon:
+    {
+      tx_expr: alert_tx[16:15]
+      rx_expr: alert_rx[16:15]
+      async_expr: alert_handler_reg_pkg::AsyncOn[16:15]
+      comments:
+      [
+        alert_handler[15]: fatal_fault
+        alert_handler[16]: fatal_cnsty_fault
+      ]
+    }
+    module_clkmgr_aon:
+    {
+      tx_expr: alert_tx[18:17]
+      rx_expr: alert_rx[18:17]
+      async_expr: alert_handler_reg_pkg::AsyncOn[18:17]
+      comments:
+      [
+        alert_handler[17]: recov_fault
+        alert_handler[18]: fatal_fault
+      ]
+    }
+    module_pinmux_aon:
+    {
+      tx_expr: alert_tx[19:19]
+      rx_expr: alert_rx[19:19]
+      async_expr: alert_handler_reg_pkg::AsyncOn[19:19]
+      comments:
+      [
+        alert_handler[19]: fatal_fault
+      ]
+    }
+    module_aon_timer_aon:
+    {
+      tx_expr: alert_tx[20:20]
+      rx_expr: alert_rx[20:20]
+      async_expr: alert_handler_reg_pkg::AsyncOn[20:20]
+      comments:
+      [
+        alert_handler[20]: fatal_fault
+      ]
+    }
+    module_sram_ctrl_ret_aon:
+    {
+      tx_expr: alert_tx[21:21]
+      rx_expr: alert_rx[21:21]
+      async_expr: alert_handler_reg_pkg::AsyncOn[21:21]
+      comments:
+      [
+        alert_handler[21]: fatal_error
+      ]
+    }
+    module_rv_dm:
+    {
+      tx_expr: alert_tx[22:22]
+      rx_expr: alert_rx[22:22]
+      async_expr: alert_handler_reg_pkg::AsyncOn[22:22]
+      comments:
+      [
+        alert_handler[22]: fatal_fault
+      ]
+    }
+    module_rv_plic:
+    {
+      tx_expr: alert_tx[23:23]
+      rx_expr: alert_rx[23:23]
+      async_expr: alert_handler_reg_pkg::AsyncOn[23:23]
+      comments:
+      [
+        alert_handler[23]: fatal_fault
+      ]
+    }
+    module_aes:
+    {
+      tx_expr: alert_tx[25:24]
+      rx_expr: alert_rx[25:24]
+      async_expr: alert_handler_reg_pkg::AsyncOn[25:24]
+      comments:
+      [
+        alert_handler[24]: recov_ctrl_update_err
+        alert_handler[25]: fatal_fault
+      ]
+    }
+    module_hmac:
+    {
+      tx_expr: alert_tx[26:26]
+      rx_expr: alert_rx[26:26]
+      async_expr: alert_handler_reg_pkg::AsyncOn[26:26]
+      comments:
+      [
+        alert_handler[26]: fatal_fault
+      ]
+    }
+    module_kmac:
+    {
+      tx_expr: alert_tx[28:27]
+      rx_expr: alert_rx[28:27]
+      async_expr: alert_handler_reg_pkg::AsyncOn[28:27]
+      comments:
+      [
+        alert_handler[27]: recov_operation_err
+        alert_handler[28]: fatal_fault_err
+      ]
+    }
+    module_otbn:
+    {
+      tx_expr: alert_tx[30:29]
+      rx_expr: alert_rx[30:29]
+      async_expr: alert_handler_reg_pkg::AsyncOn[30:29]
+      comments:
+      [
+        alert_handler[29]: fatal
+        alert_handler[30]: recov
+      ]
+    }
+    module_keymgr_dpe:
+    {
+      tx_expr: alert_tx[32:31]
+      rx_expr: alert_rx[32:31]
+      async_expr: alert_handler_reg_pkg::AsyncOn[32:31]
+      comments:
+      [
+        alert_handler[31]: recov_operation_err
+        alert_handler[32]: fatal_fault_err
+      ]
+    }
+    module_csrng:
+    {
+      tx_expr: alert_tx[34:33]
+      rx_expr: alert_rx[34:33]
+      async_expr: alert_handler_reg_pkg::AsyncOn[34:33]
+      comments:
+      [
+        alert_handler[33]: recov_alert
+        alert_handler[34]: fatal_alert
+      ]
+    }
+    module_entropy_src:
+    {
+      tx_expr: alert_tx[36:35]
+      rx_expr: alert_rx[36:35]
+      async_expr: alert_handler_reg_pkg::AsyncOn[36:35]
+      comments:
+      [
+        alert_handler[35]: recov_alert
+        alert_handler[36]: fatal_alert
+      ]
+    }
+    module_edn0:
+    {
+      tx_expr: alert_tx[38:37]
+      rx_expr: alert_rx[38:37]
+      async_expr: alert_handler_reg_pkg::AsyncOn[38:37]
+      comments:
+      [
+        alert_handler[37]: recov_alert
+        alert_handler[38]: fatal_alert
+      ]
+    }
+    module_edn1:
+    {
+      tx_expr: alert_tx[40:39]
+      rx_expr: alert_rx[40:39]
+      async_expr: alert_handler_reg_pkg::AsyncOn[40:39]
+      comments:
+      [
+        alert_handler[39]: recov_alert
+        alert_handler[40]: fatal_alert
+      ]
+    }
+    module_sram_ctrl_main:
+    {
+      tx_expr: alert_tx[41:41]
+      rx_expr: alert_rx[41:41]
+      async_expr: alert_handler_reg_pkg::AsyncOn[41:41]
+      comments:
+      [
+        alert_handler[41]: fatal_error
+      ]
+    }
+    module_sram_ctrl_mbox:
+    {
+      tx_expr: alert_tx[42:42]
+      rx_expr: alert_rx[42:42]
+      async_expr: alert_handler_reg_pkg::AsyncOn[42:42]
+      comments:
+      [
+        alert_handler[42]: fatal_error
+      ]
+    }
+    module_rom_ctrl0:
+    {
+      tx_expr: alert_tx[43:43]
+      rx_expr: alert_rx[43:43]
+      async_expr: alert_handler_reg_pkg::AsyncOn[43:43]
+      comments:
+      [
+        alert_handler[43]: fatal
+      ]
+    }
+    module_rom_ctrl1:
+    {
+      tx_expr: alert_tx[44:44]
+      rx_expr: alert_rx[44:44]
+      async_expr: alert_handler_reg_pkg::AsyncOn[44:44]
+      comments:
+      [
+        alert_handler[44]: fatal
+      ]
+    }
+    module_dma:
+    {
+      tx_expr: alert_tx[45:45]
+      rx_expr: alert_rx[45:45]
+      async_expr: alert_handler_reg_pkg::AsyncOn[45:45]
+      comments:
+      [
+        alert_handler[45]: fatal_fault
+      ]
+    }
+    module_mbx0:
+    {
+      tx_expr: alert_tx[47:46]
+      rx_expr: alert_rx[47:46]
+      async_expr: alert_handler_reg_pkg::AsyncOn[47:46]
+      comments:
+      [
+        alert_handler[46]: fatal_fault
+        alert_handler[47]: recov_fault
+      ]
+    }
+    module_mbx1:
+    {
+      tx_expr: alert_tx[49:48]
+      rx_expr: alert_rx[49:48]
+      async_expr: alert_handler_reg_pkg::AsyncOn[49:48]
+      comments:
+      [
+        alert_handler[48]: fatal_fault
+        alert_handler[49]: recov_fault
+      ]
+    }
+    module_mbx2:
+    {
+      tx_expr: alert_tx[51:50]
+      rx_expr: alert_rx[51:50]
+      async_expr: alert_handler_reg_pkg::AsyncOn[51:50]
+      comments:
+      [
+        alert_handler[50]: fatal_fault
+        alert_handler[51]: recov_fault
+      ]
+    }
+    module_mbx3:
+    {
+      tx_expr: alert_tx[53:52]
+      rx_expr: alert_rx[53:52]
+      async_expr: alert_handler_reg_pkg::AsyncOn[53:52]
+      comments:
+      [
+        alert_handler[52]: fatal_fault
+        alert_handler[53]: recov_fault
+      ]
+    }
+    module_mbx4:
+    {
+      tx_expr: alert_tx[55:54]
+      rx_expr: alert_rx[55:54]
+      async_expr: alert_handler_reg_pkg::AsyncOn[55:54]
+      comments:
+      [
+        alert_handler[54]: fatal_fault
+        alert_handler[55]: recov_fault
+      ]
+    }
+    module_mbx5:
+    {
+      tx_expr: alert_tx[57:56]
+      rx_expr: alert_rx[57:56]
+      async_expr: alert_handler_reg_pkg::AsyncOn[57:56]
+      comments:
+      [
+        alert_handler[56]: fatal_fault
+        alert_handler[57]: recov_fault
+      ]
+    }
+    module_mbx6:
+    {
+      tx_expr: alert_tx[59:58]
+      rx_expr: alert_rx[59:58]
+      async_expr: alert_handler_reg_pkg::AsyncOn[59:58]
+      comments:
+      [
+        alert_handler[58]: fatal_fault
+        alert_handler[59]: recov_fault
+      ]
+    }
+    module_mbx_jtag:
+    {
+      tx_expr: alert_tx[61:60]
+      rx_expr: alert_rx[61:60]
+      async_expr: alert_handler_reg_pkg::AsyncOn[61:60]
+      comments:
+      [
+        alert_handler[60]: fatal_fault
+        alert_handler[61]: recov_fault
+      ]
+    }
+    module_mbx_pcie0:
+    {
+      tx_expr: alert_tx[63:62]
+      rx_expr: alert_rx[63:62]
+      async_expr: alert_handler_reg_pkg::AsyncOn[63:62]
+      comments:
+      [
+        alert_handler[62]: fatal_fault
+        alert_handler[63]: recov_fault
+      ]
+    }
+    module_mbx_pcie1:
+    {
+      tx_expr: alert_tx[65:64]
+      rx_expr: alert_rx[65:64]
+      async_expr: alert_handler_reg_pkg::AsyncOn[65:64]
+      comments:
+      [
+        alert_handler[64]: fatal_fault
+        alert_handler[65]: recov_fault
+      ]
+    }
+    module_soc_dbg_ctrl:
+    {
+      tx_expr: alert_tx[67:66]
+      rx_expr: alert_rx[67:66]
+      async_expr: alert_handler_reg_pkg::AsyncOn[67:66]
+      comments:
+      [
+        alert_handler[66]: fatal_fault
+        alert_handler[67]: recov_ctrl_update_err
+      ]
+    }
+    module_racl_ctrl:
+    {
+      tx_expr: alert_tx[69:68]
+      rx_expr: alert_rx[69:68]
+      async_expr: alert_handler_reg_pkg::AsyncOn[69:68]
+      comments:
+      [
+        alert_handler[68]: fatal_fault
+        alert_handler[69]: recov_ctrl_update_err
+      ]
+    }
+    module_ac_range_check:
+    {
+      tx_expr: alert_tx[71:70]
+      rx_expr: alert_rx[71:70]
+      async_expr: alert_handler_reg_pkg::AsyncOn[71:70]
+      comments:
+      [
+        alert_handler[70]: recov_ctrl_update_err
+        alert_handler[71]: fatal_fault
+      ]
+    }
+    module_rv_core_ibex:
+    {
+      tx_expr: alert_tx[75:72]
+      rx_expr: alert_rx[75:72]
+      async_expr: alert_handler_reg_pkg::AsyncOn[75:72]
+      comments:
+      [
+        alert_handler[72]: fatal_sw_err
+        alert_handler[73]: recov_sw_err
+        alert_handler[74]: fatal_hw_err
+        alert_handler[75]: recov_hw_err
+      ]
+    }
+    incoming_mio:
+    {
+      tx_expr: alert_tx[105:76]
+      rx_expr: alert_rx[105:76]
+      async_expr: null
+      comments:
+      [
+        alert_handler[76]: rv_timer_fatal_fault
+        alert_handler[77]: aon_timer_aon_fatal_fault
+        alert_handler[78]: sram_ctrl_ret_aon_fatal_error
+        alert_handler[79]: rv_dm_fatal_fault
+        alert_handler[80]: rv_plic_mio_fatal_fault
+        alert_handler[81]: sram_ctrl_main_fatal_error
+        alert_handler[82]: sram_ctrl_mbox_fatal_error
+        alert_handler[83]: dma_fatal_fault
+        alert_handler[84]: mbx0_fatal_fault
+        alert_handler[85]: mbx0_recov_fault
+        alert_handler[86]: mbx1_fatal_fault
+        alert_handler[87]: mbx1_recov_fault
+        alert_handler[88]: mbx2_fatal_fault
+        alert_handler[89]: mbx2_recov_fault
+        alert_handler[90]: mbx3_fatal_fault
+        alert_handler[91]: mbx3_recov_fault
+        alert_handler[92]: mbx4_fatal_fault
+        alert_handler[93]: mbx4_recov_fault
+        alert_handler[94]: mbx5_fatal_fault
+        alert_handler[95]: mbx5_recov_fault
+        alert_handler[96]: mbx_pcie0_fatal_fault
+        alert_handler[97]: mbx_pcie0_recov_fault
+        alert_handler[98]: racl_ctrl_mio_fatal_fault
+        alert_handler[99]: racl_ctrl_mio_recov_ctrl_update_err
+        alert_handler[100]: ac_range_check_mio_recov_ctrl_update_err
+        alert_handler[101]: ac_range_check_mio_fatal_fault
+        alert_handler[102]: rv_core_ibex_mio_fatal_sw_err
+        alert_handler[103]: rv_core_ibex_mio_recov_sw_err
+        alert_handler[104]: rv_core_ibex_mio_fatal_hw_err
+        alert_handler[105]: rv_core_ibex_mio_recov_hw_err
+      ]
+    }
+    incoming_pwc:
+    {
+      tx_expr: alert_tx[136:106]
+      rx_expr: alert_rx[136:106]
+      async_expr: null
+      comments:
+      [
+        alert_handler[106]: gpio_fatal_fault
+        alert_handler[107]: rv_timer_fatal_fault
+        alert_handler[108]: aon_timer_aon_fatal_fault
+        alert_handler[109]: sram_ctrl_ret_aon_fatal_error
+        alert_handler[110]: rv_dm_fatal_fault
+        alert_handler[111]: rv_plic_pwc_fatal_fault
+        alert_handler[112]: sram_ctrl_main_fatal_error
+        alert_handler[113]: sram_ctrl_mbox_fatal_error
+        alert_handler[114]: dma_fatal_fault
+        alert_handler[115]: mbx0_fatal_fault
+        alert_handler[116]: mbx0_recov_fault
+        alert_handler[117]: mbx1_fatal_fault
+        alert_handler[118]: mbx1_recov_fault
+        alert_handler[119]: mbx2_fatal_fault
+        alert_handler[120]: mbx2_recov_fault
+        alert_handler[121]: mbx3_fatal_fault
+        alert_handler[122]: mbx3_recov_fault
+        alert_handler[123]: mbx4_fatal_fault
+        alert_handler[124]: mbx4_recov_fault
+        alert_handler[125]: mbx5_fatal_fault
+        alert_handler[126]: mbx5_recov_fault
+        alert_handler[127]: mbx_pcie0_fatal_fault
+        alert_handler[128]: mbx_pcie0_recov_fault
+        alert_handler[129]: racl_ctrl_pwc_fatal_fault
+        alert_handler[130]: racl_ctrl_pwc_recov_ctrl_update_err
+        alert_handler[131]: ac_range_check_pwc_recov_ctrl_update_err
+        alert_handler[132]: ac_range_check_pwc_fatal_fault
+        alert_handler[133]: rv_core_ibex_pwc_fatal_sw_err
+        alert_handler[134]: rv_core_ibex_pwc_recov_sw_err
+        alert_handler[135]: rv_core_ibex_pwc_fatal_hw_err
+        alert_handler[136]: rv_core_ibex_pwc_recov_hw_err
+      ]
+    }
+    incoming_mio_extra:
+    {
+      tx_expr: alert_tx[139:137]
+      rx_expr: alert_rx[139:137]
+      async_expr: null
+      comments:
+      [
+        alert_handler[137]: hdr_integ_error
+        alert_handler[138]: mio_tlul_pcie_integ_error
+        alert_handler[139]: mio_rst_req
+      ]
+    }
+    incoming_pwc_extra:
+    {
+      tx_expr: alert_tx[145:140]
+      rx_expr: alert_rx[145:140]
+      async_expr: null
+      comments:
+      [
+        alert_handler[140]: hdr_integ_error
+        alert_handler[141]: dvfs_hdr_integ_error
+        alert_handler[142]: lteu_hdr_integ_error
+        alert_handler[143]: pwc_bcast_hdr_integ_error
+        alert_handler[144]: pwc_tlul_pcie_integ_error
+        alert_handler[145]: pwc_rst_req
+      ]
+    }
+    incoming_rot_extra:
+    {
+      tx_expr: alert_tx[171:146]
+      rx_expr: alert_rx[171:146]
+      async_expr: null
+      comments:
+      [
+        alert_handler[146]: ams_ip_wrapper_integ_error
+        alert_handler[147]: ams_ip_wrapper_csrng_recov
+        alert_handler[148]: rc_widget_integ_error
+        alert_handler[149]: rot_hdr_integ_error
+        alert_handler[150]: rot_pcie_adapter_integ_error
+        alert_handler[151]: ras_ctl_reset_alert
+        alert_handler[152]: lsio_group_a_esc_err_0
+        alert_handler[153]: lsio_group_a_esc_err_1
+        alert_handler[154]: lsio_group_a_esc_err_2
+        alert_handler[155]: lsio_group_a_esc_err_3
+        alert_handler[156]: lsio_group_b_esc_err_0
+        alert_handler[157]: lsio_group_b_esc_err_1
+        alert_handler[158]: lsio_group_b_esc_err_2
+        alert_handler[159]: lsio_group_b_esc_err_3
+        alert_handler[160]: lsio_group_c_esc_err_0
+        alert_handler[161]: lsio_group_c_esc_err_1
+        alert_handler[162]: lsio_group_c_esc_err_2
+        alert_handler[163]: lsio_group_c_esc_err_3
+        alert_handler[164]: lsio_group_d_esc_err_0
+        alert_handler[165]: lsio_group_d_esc_err_1
+        alert_handler[166]: lsio_group_d_esc_err_2
+        alert_handler[167]: lsio_group_d_esc_err_3
+        alert_handler[168]: lsio_group_a_timer_rst_req
+        alert_handler[169]: lsio_group_b_timer_rst_req
+        alert_handler[170]: lsio_group_c_timer_rst_req
+        alert_handler[171]: lsio_group_d_timer_rst_req
+      ]
+    }
+    incoming_other_extra:
+    {
+      tx_expr: alert_tx[196:172]
+      rx_expr: alert_rx[196:172]
+      async_expr: null
+      comments:
+      [
+        alert_handler[172]: ssram_lo_integ_err
+        alert_handler[173]: ssram_hi_integ_err
+        alert_handler[174]: scsifregs_racl_ctrl_fatal_fault
+        alert_handler[175]: scsifregs_racl_ctrl_recov_ctrl_update_err
+        alert_handler[176]: scsifregs_err
+        alert_handler[177]: scsctnif0_ctn_ac_range_recov_err
+        alert_handler[178]: scsctnif0_ctn_ac_range_fatal_err
+        alert_handler[179]: scsctnif0_bcast_ac_range_recov_err
+        alert_handler[180]: scsctnif0_bcast_ac_range_fatal_err
+        alert_handler[181]: scsctnif1_ctn_ac_range_recov_err
+        alert_handler[182]: scsctnif1_ctn_ac_range_fatal_err
+        alert_handler[183]: nsgrp_racl_ctrl_fatal_fault
+        alert_handler[184]: nsgrp_racl_ctrl_recov_ctrl_update_err
+        alert_handler[185]: nsefuse_bus_integ_err
+        alert_handler[186]: nsefuse_prim_fatal_err
+        alert_handler[187]: nsefuse_prim_recov_err
+        alert_handler[188]: nsefuse_apb_adapter_integ_err
+        alert_handler[189]: lio_group_v_racl_ctrl_fatal_fault
+        alert_handler[190]: lio_group_v_racl_ctrl_recov_ctrl_update_err
+        alert_handler[191]: lio_group_v_hdr_integ_error
+        alert_handler[192]: lio_group_v_hdr_avs_error
+        alert_handler[193]: lio_group_p_racl_ctrl_fatal_fault
+        alert_handler[194]: lio_group_p_racl_ctrl_recov_ctrl_update_err
+        alert_handler[195]: lio_group_p_integ_error
+        alert_handler[196]: scsrai_integ_error
+      ]
+    }
+  }
   interrupt_module:
   [
     uart0

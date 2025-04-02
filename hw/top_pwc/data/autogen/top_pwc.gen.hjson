@@ -13392,6 +13392,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: gpio
         desc: gpio fatal_fault alert
         lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
@@ -13402,6 +13403,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_timer
         desc: rv_timer fatal_fault alert
         lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
@@ -13412,6 +13414,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: aon_timer_aon
         desc: aon_timer_aon fatal_fault alert
         lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
@@ -13422,6 +13425,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: sram_ctrl_ret_aon
         desc: sram_ctrl_ret_aon fatal_error alert
         lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
@@ -13432,6 +13436,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_dm
         desc: rv_dm fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13442,6 +13447,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_plic_pwc
         desc: rv_plic_pwc fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13452,6 +13458,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: sram_ctrl_main
         desc: sram_ctrl_main fatal_error alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13462,6 +13469,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: sram_ctrl_mbox
         desc: sram_ctrl_mbox fatal_error alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13472,6 +13480,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: dma
         desc: dma fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13482,6 +13491,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx0
         desc: mbx0 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13492,6 +13502,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx0
         desc: mbx0 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13502,6 +13513,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx1
         desc: mbx1 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13512,6 +13524,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx1
         desc: mbx1 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13522,6 +13535,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx2
         desc: mbx2 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13532,6 +13546,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx2
         desc: mbx2 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13542,6 +13557,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx3
         desc: mbx3 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13552,6 +13568,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx3
         desc: mbx3 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13562,6 +13579,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx4
         desc: mbx4 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13572,6 +13590,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx4
         desc: mbx4 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13582,6 +13601,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx5
         desc: mbx5 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13592,6 +13612,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx5
         desc: mbx5 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13602,6 +13623,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx_pcie0
         desc: mbx_pcie0 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13612,6 +13634,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx_pcie0
         desc: mbx_pcie0 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13622,6 +13645,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: racl_ctrl_pwc
         desc: racl_ctrl_pwc fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13632,6 +13656,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: racl_ctrl_pwc
         desc: racl_ctrl_pwc recov_ctrl_update_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13642,6 +13667,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: ac_range_check_pwc
         desc: ac_range_check_pwc recov_ctrl_update_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13652,6 +13678,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: ac_range_check_pwc
         desc: ac_range_check_pwc fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13662,6 +13689,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_core_ibex_pwc
         desc: rv_core_ibex_pwc fatal_sw_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13672,6 +13700,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_core_ibex_pwc
         desc: rv_core_ibex_pwc recov_sw_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13682,6 +13711,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_core_ibex_pwc
         desc: rv_core_ibex_pwc fatal_hw_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -13692,6 +13722,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_core_ibex_pwc
         desc: rv_core_ibex_pwc recov_hw_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -16373,6 +16404,211 @@
     ]
   }
   alert_module: []
+  alert_connections:
+  {
+    module_gpio:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[0:0]
+      rx_expr: outgoing_alert_pwc_rx_i[0:0]
+      async_expr: AsyncOnOutgoingAlertPwc[0:0]
+      comments:
+      [
+        External alert group "pwc" [0]: fatal_fault
+      ]
+    }
+    module_rv_timer:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[1:1]
+      rx_expr: outgoing_alert_pwc_rx_i[1:1]
+      async_expr: AsyncOnOutgoingAlertPwc[1:1]
+      comments:
+      [
+        External alert group "pwc" [1]: fatal_fault
+      ]
+    }
+    module_aon_timer_aon:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[2:2]
+      rx_expr: outgoing_alert_pwc_rx_i[2:2]
+      async_expr: AsyncOnOutgoingAlertPwc[2:2]
+      comments:
+      [
+        External alert group "pwc" [2]: fatal_fault
+      ]
+    }
+    module_sram_ctrl_ret_aon:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[3:3]
+      rx_expr: outgoing_alert_pwc_rx_i[3:3]
+      async_expr: AsyncOnOutgoingAlertPwc[3:3]
+      comments:
+      [
+        External alert group "pwc" [3]: fatal_error
+      ]
+    }
+    module_rv_dm:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[4:4]
+      rx_expr: outgoing_alert_pwc_rx_i[4:4]
+      async_expr: AsyncOnOutgoingAlertPwc[4:4]
+      comments:
+      [
+        External alert group "pwc" [4]: fatal_fault
+      ]
+    }
+    module_rv_plic_pwc:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[5:5]
+      rx_expr: outgoing_alert_pwc_rx_i[5:5]
+      async_expr: AsyncOnOutgoingAlertPwc[5:5]
+      comments:
+      [
+        External alert group "pwc" [5]: fatal_fault
+      ]
+    }
+    module_sram_ctrl_main:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[6:6]
+      rx_expr: outgoing_alert_pwc_rx_i[6:6]
+      async_expr: AsyncOnOutgoingAlertPwc[6:6]
+      comments:
+      [
+        External alert group "pwc" [6]: fatal_error
+      ]
+    }
+    module_sram_ctrl_mbox:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[7:7]
+      rx_expr: outgoing_alert_pwc_rx_i[7:7]
+      async_expr: AsyncOnOutgoingAlertPwc[7:7]
+      comments:
+      [
+        External alert group "pwc" [7]: fatal_error
+      ]
+    }
+    module_dma:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[8:8]
+      rx_expr: outgoing_alert_pwc_rx_i[8:8]
+      async_expr: AsyncOnOutgoingAlertPwc[8:8]
+      comments:
+      [
+        External alert group "pwc" [8]: fatal_fault
+      ]
+    }
+    module_mbx0:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[10:9]
+      rx_expr: outgoing_alert_pwc_rx_i[10:9]
+      async_expr: AsyncOnOutgoingAlertPwc[10:9]
+      comments:
+      [
+        External alert group "pwc" [9]: fatal_fault
+        External alert group "pwc" [10]: recov_fault
+      ]
+    }
+    module_mbx1:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[12:11]
+      rx_expr: outgoing_alert_pwc_rx_i[12:11]
+      async_expr: AsyncOnOutgoingAlertPwc[12:11]
+      comments:
+      [
+        External alert group "pwc" [11]: fatal_fault
+        External alert group "pwc" [12]: recov_fault
+      ]
+    }
+    module_mbx2:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[14:13]
+      rx_expr: outgoing_alert_pwc_rx_i[14:13]
+      async_expr: AsyncOnOutgoingAlertPwc[14:13]
+      comments:
+      [
+        External alert group "pwc" [13]: fatal_fault
+        External alert group "pwc" [14]: recov_fault
+      ]
+    }
+    module_mbx3:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[16:15]
+      rx_expr: outgoing_alert_pwc_rx_i[16:15]
+      async_expr: AsyncOnOutgoingAlertPwc[16:15]
+      comments:
+      [
+        External alert group "pwc" [15]: fatal_fault
+        External alert group "pwc" [16]: recov_fault
+      ]
+    }
+    module_mbx4:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[18:17]
+      rx_expr: outgoing_alert_pwc_rx_i[18:17]
+      async_expr: AsyncOnOutgoingAlertPwc[18:17]
+      comments:
+      [
+        External alert group "pwc" [17]: fatal_fault
+        External alert group "pwc" [18]: recov_fault
+      ]
+    }
+    module_mbx5:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[20:19]
+      rx_expr: outgoing_alert_pwc_rx_i[20:19]
+      async_expr: AsyncOnOutgoingAlertPwc[20:19]
+      comments:
+      [
+        External alert group "pwc" [19]: fatal_fault
+        External alert group "pwc" [20]: recov_fault
+      ]
+    }
+    module_mbx_pcie0:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[22:21]
+      rx_expr: outgoing_alert_pwc_rx_i[22:21]
+      async_expr: AsyncOnOutgoingAlertPwc[22:21]
+      comments:
+      [
+        External alert group "pwc" [21]: fatal_fault
+        External alert group "pwc" [22]: recov_fault
+      ]
+    }
+    module_racl_ctrl_pwc:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[24:23]
+      rx_expr: outgoing_alert_pwc_rx_i[24:23]
+      async_expr: AsyncOnOutgoingAlertPwc[24:23]
+      comments:
+      [
+        External alert group "pwc" [23]: fatal_fault
+        External alert group "pwc" [24]: recov_ctrl_update_err
+      ]
+    }
+    module_ac_range_check_pwc:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[26:25]
+      rx_expr: outgoing_alert_pwc_rx_i[26:25]
+      async_expr: AsyncOnOutgoingAlertPwc[26:25]
+      comments:
+      [
+        External alert group "pwc" [25]: recov_ctrl_update_err
+        External alert group "pwc" [26]: fatal_fault
+      ]
+    }
+    module_rv_core_ibex_pwc:
+    {
+      tx_expr: outgoing_alert_pwc_tx_o[30:27]
+      rx_expr: outgoing_alert_pwc_rx_i[30:27]
+      async_expr: AsyncOnOutgoingAlertPwc[30:27]
+      comments:
+      [
+        External alert group "pwc" [27]: fatal_sw_err
+        External alert group "pwc" [28]: recov_sw_err
+        External alert group "pwc" [29]: fatal_hw_err
+        External alert group "pwc" [30]: recov_hw_err
+      ]
+    }
+  }
   interrupt_module:
   [
     gpio

@@ -11645,6 +11645,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_timer
         desc: rv_timer fatal_fault alert
         lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
@@ -11655,6 +11656,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: aon_timer_aon
         desc: aon_timer_aon fatal_fault alert
         lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
@@ -11665,6 +11667,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: sram_ctrl_ret_aon
         desc: sram_ctrl_ret_aon fatal_error alert
         lpg_name: clk_ext_io_div4_i_ext_rst_io_div4_0
@@ -11675,6 +11678,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_dm
         desc: rv_dm fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11685,6 +11689,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_plic_mio
         desc: rv_plic_mio fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11695,6 +11700,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: sram_ctrl_main
         desc: sram_ctrl_main fatal_error alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11705,6 +11711,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: sram_ctrl_mbox
         desc: sram_ctrl_mbox fatal_error alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11715,6 +11722,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: dma
         desc: dma fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11725,6 +11733,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx0
         desc: mbx0 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11735,6 +11744,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx0
         desc: mbx0 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11745,6 +11755,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx1
         desc: mbx1 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11755,6 +11766,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx1
         desc: mbx1 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11765,6 +11777,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx2
         desc: mbx2 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11775,6 +11788,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx2
         desc: mbx2 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11785,6 +11799,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx3
         desc: mbx3 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11795,6 +11810,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx3
         desc: mbx3 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11805,6 +11821,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx4
         desc: mbx4 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11815,6 +11832,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx4
         desc: mbx4 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11825,6 +11843,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx5
         desc: mbx5 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11835,6 +11854,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx5
         desc: mbx5 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11845,6 +11865,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx_pcie0
         desc: mbx_pcie0 fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11855,6 +11876,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: mbx_pcie0
         desc: mbx_pcie0 recov_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11865,6 +11887,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: racl_ctrl_mio
         desc: racl_ctrl_mio fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11875,6 +11898,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: racl_ctrl_mio
         desc: racl_ctrl_mio recov_ctrl_update_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11885,6 +11909,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: ac_range_check_mio
         desc: ac_range_check_mio recov_ctrl_update_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11895,6 +11920,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: ac_range_check_mio
         desc: ac_range_check_mio fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11905,6 +11931,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_core_ibex_mio
         desc: rv_core_ibex_mio fatal_sw_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11915,6 +11942,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_core_ibex_mio
         desc: rv_core_ibex_mio recov_sw_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11925,6 +11953,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_core_ibex_mio
         desc: rv_core_ibex_mio fatal_hw_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -11935,6 +11964,7 @@
         width: 1
         type: alert
         async: "1"
+        handler: null
         module_name: rv_core_ibex_mio
         desc: rv_core_ibex_mio recov_hw_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
@@ -12408,6 +12438,201 @@
     ]
   }
   alert_module: []
+  alert_connections:
+  {
+    module_rv_timer:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[0:0]
+      rx_expr: outgoing_alert_mio_rx_i[0:0]
+      async_expr: AsyncOnOutgoingAlertMio[0:0]
+      comments:
+      [
+        External alert group "mio" [0]: fatal_fault
+      ]
+    }
+    module_aon_timer_aon:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[1:1]
+      rx_expr: outgoing_alert_mio_rx_i[1:1]
+      async_expr: AsyncOnOutgoingAlertMio[1:1]
+      comments:
+      [
+        External alert group "mio" [1]: fatal_fault
+      ]
+    }
+    module_sram_ctrl_ret_aon:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[2:2]
+      rx_expr: outgoing_alert_mio_rx_i[2:2]
+      async_expr: AsyncOnOutgoingAlertMio[2:2]
+      comments:
+      [
+        External alert group "mio" [2]: fatal_error
+      ]
+    }
+    module_rv_dm:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[3:3]
+      rx_expr: outgoing_alert_mio_rx_i[3:3]
+      async_expr: AsyncOnOutgoingAlertMio[3:3]
+      comments:
+      [
+        External alert group "mio" [3]: fatal_fault
+      ]
+    }
+    module_rv_plic_mio:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[4:4]
+      rx_expr: outgoing_alert_mio_rx_i[4:4]
+      async_expr: AsyncOnOutgoingAlertMio[4:4]
+      comments:
+      [
+        External alert group "mio" [4]: fatal_fault
+      ]
+    }
+    module_sram_ctrl_main:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[5:5]
+      rx_expr: outgoing_alert_mio_rx_i[5:5]
+      async_expr: AsyncOnOutgoingAlertMio[5:5]
+      comments:
+      [
+        External alert group "mio" [5]: fatal_error
+      ]
+    }
+    module_sram_ctrl_mbox:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[6:6]
+      rx_expr: outgoing_alert_mio_rx_i[6:6]
+      async_expr: AsyncOnOutgoingAlertMio[6:6]
+      comments:
+      [
+        External alert group "mio" [6]: fatal_error
+      ]
+    }
+    module_dma:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[7:7]
+      rx_expr: outgoing_alert_mio_rx_i[7:7]
+      async_expr: AsyncOnOutgoingAlertMio[7:7]
+      comments:
+      [
+        External alert group "mio" [7]: fatal_fault
+      ]
+    }
+    module_mbx0:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[9:8]
+      rx_expr: outgoing_alert_mio_rx_i[9:8]
+      async_expr: AsyncOnOutgoingAlertMio[9:8]
+      comments:
+      [
+        External alert group "mio" [8]: fatal_fault
+        External alert group "mio" [9]: recov_fault
+      ]
+    }
+    module_mbx1:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[11:10]
+      rx_expr: outgoing_alert_mio_rx_i[11:10]
+      async_expr: AsyncOnOutgoingAlertMio[11:10]
+      comments:
+      [
+        External alert group "mio" [10]: fatal_fault
+        External alert group "mio" [11]: recov_fault
+      ]
+    }
+    module_mbx2:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[13:12]
+      rx_expr: outgoing_alert_mio_rx_i[13:12]
+      async_expr: AsyncOnOutgoingAlertMio[13:12]
+      comments:
+      [
+        External alert group "mio" [12]: fatal_fault
+        External alert group "mio" [13]: recov_fault
+      ]
+    }
+    module_mbx3:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[15:14]
+      rx_expr: outgoing_alert_mio_rx_i[15:14]
+      async_expr: AsyncOnOutgoingAlertMio[15:14]
+      comments:
+      [
+        External alert group "mio" [14]: fatal_fault
+        External alert group "mio" [15]: recov_fault
+      ]
+    }
+    module_mbx4:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[17:16]
+      rx_expr: outgoing_alert_mio_rx_i[17:16]
+      async_expr: AsyncOnOutgoingAlertMio[17:16]
+      comments:
+      [
+        External alert group "mio" [16]: fatal_fault
+        External alert group "mio" [17]: recov_fault
+      ]
+    }
+    module_mbx5:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[19:18]
+      rx_expr: outgoing_alert_mio_rx_i[19:18]
+      async_expr: AsyncOnOutgoingAlertMio[19:18]
+      comments:
+      [
+        External alert group "mio" [18]: fatal_fault
+        External alert group "mio" [19]: recov_fault
+      ]
+    }
+    module_mbx_pcie0:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[21:20]
+      rx_expr: outgoing_alert_mio_rx_i[21:20]
+      async_expr: AsyncOnOutgoingAlertMio[21:20]
+      comments:
+      [
+        External alert group "mio" [20]: fatal_fault
+        External alert group "mio" [21]: recov_fault
+      ]
+    }
+    module_racl_ctrl_mio:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[23:22]
+      rx_expr: outgoing_alert_mio_rx_i[23:22]
+      async_expr: AsyncOnOutgoingAlertMio[23:22]
+      comments:
+      [
+        External alert group "mio" [22]: fatal_fault
+        External alert group "mio" [23]: recov_ctrl_update_err
+      ]
+    }
+    module_ac_range_check_mio:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[25:24]
+      rx_expr: outgoing_alert_mio_rx_i[25:24]
+      async_expr: AsyncOnOutgoingAlertMio[25:24]
+      comments:
+      [
+        External alert group "mio" [24]: recov_ctrl_update_err
+        External alert group "mio" [25]: fatal_fault
+      ]
+    }
+    module_rv_core_ibex_mio:
+    {
+      tx_expr: outgoing_alert_mio_tx_o[29:26]
+      rx_expr: outgoing_alert_mio_rx_i[29:26]
+      async_expr: AsyncOnOutgoingAlertMio[29:26]
+      comments:
+      [
+        External alert group "mio" [26]: fatal_sw_err
+        External alert group "mio" [27]: recov_sw_err
+        External alert group "mio" [28]: fatal_hw_err
+        External alert group "mio" [29]: recov_hw_err
+      ]
+    }
+  }
   interrupt_module:
   [
     rv_timer
