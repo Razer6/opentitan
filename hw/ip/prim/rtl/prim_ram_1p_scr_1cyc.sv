@@ -22,7 +22,7 @@ module prim_ram_1p_scr_1cyc import prim_ram_1p_pkg::*; #(
   localparam int NumParKeystr        = (ReplicateKeyStream) ? (Width + 63) / 64 : 1,
   localparam int DataKeyWidth        = 128,
   localparam int NonceWidth          = 64 * NumParScr,
-  localparam int NumRamInst          = int'($ceil(Depth / real'(InstDepth)))
+  localparam int NumRamInst          = prim_util_pkg::ceil_div(Depth, InstDepth)
 ) (
   input  logic                             clk_i,
   input  logic                             rst_ni,
