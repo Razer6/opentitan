@@ -395,3 +395,8 @@ module ac_range_check_mio
                                          alert_tx_o[1])
 
 endmodule
+// Local Variables:
+// fill-column:1
+// verilog-auto-arg-sort:t
+// verilog-typedef-regexp: "_[etu]$"
+// End:
