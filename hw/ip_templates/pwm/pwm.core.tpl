@@ -10,7 +10,7 @@ filesets:
       - lowrisc:prim:assert
       - lowrisc:ip:tlul
       - lowrisc:prim:all
-      - ${instance_vlnv("lowrisc:constants:top_racl_pkg")}
+      - lowrisc:virtual_constants:top_racl_pkg
     files:
       - rtl/${module_instance_name}_reg_pkg.sv
       - rtl/${module_instance_name}_reg_top.sv

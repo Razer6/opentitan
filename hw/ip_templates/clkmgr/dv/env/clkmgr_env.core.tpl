@@ -11,7 +11,7 @@ filesets:
       - lowrisc:dv:cip_lib
       - ${instance_vlnv("lowrisc:ip:pwrmgr_pkg")}
       - ${instance_vlnv("lowrisc:ip:clkmgr_pkg")}
-      - ${instance_vlnv("lowrisc:constants:top_pkg")}
+      - lowrisc:virtual_constants:top_pkg"
     files:
       - clkmgr_csrs_if.sv
       - clkmgr_env_pkg.sv

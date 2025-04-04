@@ -13,7 +13,7 @@ filesets:
       - lowrisc:prim:subreg
       - ${instance_vlnv(f"lowrisc:ip:{module_instance_name}_pkg")}
     % if racl_support:
-      - ${instance_vlnv("lowrisc:constants:top_racl_pkg")}
+      - lowrisc:virtual_constants:top_racl_pkg
     % endif
     files:
       - rtl/${module_instance_name}_reg_top.sv

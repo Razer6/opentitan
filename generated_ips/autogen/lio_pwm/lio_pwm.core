@@ -10,7 +10,7 @@ filesets:
       - lowrisc:prim:assert
       - lowrisc:ip:tlul
       - lowrisc:prim:all
-      - lowrisc:darjeeling_constants:top_racl_pkg
+      - lowrisc:virtual_constants:top_racl_pkg
     files:
       - rtl/lio_pwm_reg_pkg.sv
       - rtl/lio_pwm_reg_top.sv

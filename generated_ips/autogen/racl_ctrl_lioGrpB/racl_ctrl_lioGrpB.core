@@ -12,7 +12,7 @@ filesets:
       - lowrisc:prim:mubi
       - lowrisc:prim:all
       - lowrisc:prim:racl_error_arb
-      - lowrisc:darjeeling_constants:top_racl_pkg
+      - lowrisc:virtual_constants:top_racl_pkg
     files:
       - rtl/racl_ctrl_liogrpb_reg_pkg.sv
       - rtl/racl_ctrl_liogrpb_reg_top.sv
