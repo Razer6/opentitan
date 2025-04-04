@@ -140,7 +140,7 @@ We are using our in-house developed [regression tool](../../../../../util/dvsim/
 Please take a look at the link for detailed information on the usage, capabilities, features and known issues.
 Here's how to run a smoke test:
 ```console
-$ $REPO_TOP/util/dvsim/dvsim.py $REPO_TOP/hw/top_lio/ip_autogen/lio_pwm/dv/lio_pwm_sim_cfg.hjson -i pwm_smoke
+$ $REPO_TOP/util/dvsim/dvsim.py $REPO_TOP/hw/top_darjeeling/ip_autogen/lio_pwm/dv/lio_pwm_sim_cfg.hjson -i pwm_smoke
 ```
 
 ## Testplan

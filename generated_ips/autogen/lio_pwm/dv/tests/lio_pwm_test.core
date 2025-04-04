@@ -2,12 +2,12 @@ CAPI=2:
 # Copyright lowRISC contributors (OpenTitan project).
 # Licensed under the Apache License, Version 2.0, see LICENSE for details.
 # SPDX-License-Identifier: Apache-2.0
-name: lowrisc:lio_dv:lio_pwm_test:0.1
+name: lowrisc:darjeeling_dv:lio_pwm_test:0.1
 description: "LIO_PWM DV UVM test"
 filesets:
   files_dv:
     depend:
-      - lowrisc:lio_dv:lio_pwm_env
+      - lowrisc:darjeeling_dv:lio_pwm_env
     files:
       - pwm_test_pkg.sv
       - pwm_base_test.sv: {is_include_file: true}

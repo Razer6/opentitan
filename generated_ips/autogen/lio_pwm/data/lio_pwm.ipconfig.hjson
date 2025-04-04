@@ -5,7 +5,7 @@
   instance_name: lio_pwm
   param_values:
   {
-    topname: lio
+    topname: darjeeling
     module_instance_name: lio_pwm
     nr_output_channels: 8
   }

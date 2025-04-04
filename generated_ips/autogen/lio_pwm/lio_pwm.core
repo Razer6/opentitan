@@ -2,7 +2,7 @@ CAPI=2:
 # Copyright lowRISC contributors (OpenTitan project).
 # Licensed under the Apache License, Version 2.0, see LICENSE for details.
 # SPDX-License-Identifier: Apache-2.0
-name: lowrisc:lio_ip:lio_pwm:0.1
+name: lowrisc:darjeeling_ip:lio_pwm:0.1
 description: "pwm"
 filesets:
   files_rtl:
@@ -10,7 +10,7 @@ filesets:
       - lowrisc:prim:assert
       - lowrisc:ip:tlul
       - lowrisc:prim:all
-      - lowrisc:systems:top_racl_pkg
+      - lowrisc:darjeeling_constants:top_racl_pkg
     files:
       - rtl/lio_pwm_reg_pkg.sv
       - rtl/lio_pwm_reg_top.sv

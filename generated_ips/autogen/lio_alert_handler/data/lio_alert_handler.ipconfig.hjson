@@ -5,7 +5,7 @@
   instance_name: lio_alert_handler
   param_values:
   {
-    topname: lio
+    topname: darjeeling
     module_instance_name: lio_alert_handler
     racl_support: true
     n_alerts: 17

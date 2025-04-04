@@ -747,710 +747,710 @@ module scs_ac_range_check_reg_top
   logic range_limit_63_we;
   logic [29:0] range_limit_63_qs;
   logic [29:0] range_limit_63_wd;
-  logic range_perm_0_we;
-  logic [3:0] range_perm_0_enable_0_qs;
-  logic [3:0] range_perm_0_enable_0_wd;
-  logic [3:0] range_perm_0_read_access_0_qs;
-  logic [3:0] range_perm_0_read_access_0_wd;
-  logic [3:0] range_perm_0_write_access_0_qs;
-  logic [3:0] range_perm_0_write_access_0_wd;
-  logic [3:0] range_perm_0_execute_access_0_qs;
-  logic [3:0] range_perm_0_execute_access_0_wd;
-  logic [3:0] range_perm_0_log_denied_access_0_qs;
-  logic [3:0] range_perm_0_log_denied_access_0_wd;
-  logic range_perm_1_we;
-  logic [3:0] range_perm_1_enable_1_qs;
-  logic [3:0] range_perm_1_enable_1_wd;
-  logic [3:0] range_perm_1_read_access_1_qs;
-  logic [3:0] range_perm_1_read_access_1_wd;
-  logic [3:0] range_perm_1_write_access_1_qs;
-  logic [3:0] range_perm_1_write_access_1_wd;
-  logic [3:0] range_perm_1_execute_access_1_qs;
-  logic [3:0] range_perm_1_execute_access_1_wd;
-  logic [3:0] range_perm_1_log_denied_access_1_qs;
-  logic [3:0] range_perm_1_log_denied_access_1_wd;
-  logic range_perm_2_we;
-  logic [3:0] range_perm_2_enable_2_qs;
-  logic [3:0] range_perm_2_enable_2_wd;
-  logic [3:0] range_perm_2_read_access_2_qs;
-  logic [3:0] range_perm_2_read_access_2_wd;
-  logic [3:0] range_perm_2_write_access_2_qs;
-  logic [3:0] range_perm_2_write_access_2_wd;
-  logic [3:0] range_perm_2_execute_access_2_qs;
-  logic [3:0] range_perm_2_execute_access_2_wd;
-  logic [3:0] range_perm_2_log_denied_access_2_qs;
-  logic [3:0] range_perm_2_log_denied_access_2_wd;
-  logic range_perm_3_we;
-  logic [3:0] range_perm_3_enable_3_qs;
-  logic [3:0] range_perm_3_enable_3_wd;
-  logic [3:0] range_perm_3_read_access_3_qs;
-  logic [3:0] range_perm_3_read_access_3_wd;
-  logic [3:0] range_perm_3_write_access_3_qs;
-  logic [3:0] range_perm_3_write_access_3_wd;
-  logic [3:0] range_perm_3_execute_access_3_qs;
-  logic [3:0] range_perm_3_execute_access_3_wd;
-  logic [3:0] range_perm_3_log_denied_access_3_qs;
-  logic [3:0] range_perm_3_log_denied_access_3_wd;
-  logic range_perm_4_we;
-  logic [3:0] range_perm_4_enable_4_qs;
-  logic [3:0] range_perm_4_enable_4_wd;
-  logic [3:0] range_perm_4_read_access_4_qs;
-  logic [3:0] range_perm_4_read_access_4_wd;
-  logic [3:0] range_perm_4_write_access_4_qs;
-  logic [3:0] range_perm_4_write_access_4_wd;
-  logic [3:0] range_perm_4_execute_access_4_qs;
-  logic [3:0] range_perm_4_execute_access_4_wd;
-  logic [3:0] range_perm_4_log_denied_access_4_qs;
-  logic [3:0] range_perm_4_log_denied_access_4_wd;
-  logic range_perm_5_we;
-  logic [3:0] range_perm_5_enable_5_qs;
-  logic [3:0] range_perm_5_enable_5_wd;
-  logic [3:0] range_perm_5_read_access_5_qs;
-  logic [3:0] range_perm_5_read_access_5_wd;
-  logic [3:0] range_perm_5_write_access_5_qs;
-  logic [3:0] range_perm_5_write_access_5_wd;
-  logic [3:0] range_perm_5_execute_access_5_qs;
-  logic [3:0] range_perm_5_execute_access_5_wd;
-  logic [3:0] range_perm_5_log_denied_access_5_qs;
-  logic [3:0] range_perm_5_log_denied_access_5_wd;
-  logic range_perm_6_we;
-  logic [3:0] range_perm_6_enable_6_qs;
-  logic [3:0] range_perm_6_enable_6_wd;
-  logic [3:0] range_perm_6_read_access_6_qs;
-  logic [3:0] range_perm_6_read_access_6_wd;
-  logic [3:0] range_perm_6_write_access_6_qs;
-  logic [3:0] range_perm_6_write_access_6_wd;
-  logic [3:0] range_perm_6_execute_access_6_qs;
-  logic [3:0] range_perm_6_execute_access_6_wd;
-  logic [3:0] range_perm_6_log_denied_access_6_qs;
-  logic [3:0] range_perm_6_log_denied_access_6_wd;
-  logic range_perm_7_we;
-  logic [3:0] range_perm_7_enable_7_qs;
-  logic [3:0] range_perm_7_enable_7_wd;
-  logic [3:0] range_perm_7_read_access_7_qs;
-  logic [3:0] range_perm_7_read_access_7_wd;
-  logic [3:0] range_perm_7_write_access_7_qs;
-  logic [3:0] range_perm_7_write_access_7_wd;
-  logic [3:0] range_perm_7_execute_access_7_qs;
-  logic [3:0] range_perm_7_execute_access_7_wd;
-  logic [3:0] range_perm_7_log_denied_access_7_qs;
-  logic [3:0] range_perm_7_log_denied_access_7_wd;
-  logic range_perm_8_we;
-  logic [3:0] range_perm_8_enable_8_qs;
-  logic [3:0] range_perm_8_enable_8_wd;
-  logic [3:0] range_perm_8_read_access_8_qs;
-  logic [3:0] range_perm_8_read_access_8_wd;
-  logic [3:0] range_perm_8_write_access_8_qs;
-  logic [3:0] range_perm_8_write_access_8_wd;
-  logic [3:0] range_perm_8_execute_access_8_qs;
-  logic [3:0] range_perm_8_execute_access_8_wd;
-  logic [3:0] range_perm_8_log_denied_access_8_qs;
-  logic [3:0] range_perm_8_log_denied_access_8_wd;
-  logic range_perm_9_we;
-  logic [3:0] range_perm_9_enable_9_qs;
-  logic [3:0] range_perm_9_enable_9_wd;
-  logic [3:0] range_perm_9_read_access_9_qs;
-  logic [3:0] range_perm_9_read_access_9_wd;
-  logic [3:0] range_perm_9_write_access_9_qs;
-  logic [3:0] range_perm_9_write_access_9_wd;
-  logic [3:0] range_perm_9_execute_access_9_qs;
-  logic [3:0] range_perm_9_execute_access_9_wd;
-  logic [3:0] range_perm_9_log_denied_access_9_qs;
-  logic [3:0] range_perm_9_log_denied_access_9_wd;
-  logic range_perm_10_we;
-  logic [3:0] range_perm_10_enable_10_qs;
-  logic [3:0] range_perm_10_enable_10_wd;
-  logic [3:0] range_perm_10_read_access_10_qs;
-  logic [3:0] range_perm_10_read_access_10_wd;
-  logic [3:0] range_perm_10_write_access_10_qs;
-  logic [3:0] range_perm_10_write_access_10_wd;
-  logic [3:0] range_perm_10_execute_access_10_qs;
-  logic [3:0] range_perm_10_execute_access_10_wd;
-  logic [3:0] range_perm_10_log_denied_access_10_qs;
-  logic [3:0] range_perm_10_log_denied_access_10_wd;
-  logic range_perm_11_we;
-  logic [3:0] range_perm_11_enable_11_qs;
-  logic [3:0] range_perm_11_enable_11_wd;
-  logic [3:0] range_perm_11_read_access_11_qs;
-  logic [3:0] range_perm_11_read_access_11_wd;
-  logic [3:0] range_perm_11_write_access_11_qs;
-  logic [3:0] range_perm_11_write_access_11_wd;
-  logic [3:0] range_perm_11_execute_access_11_qs;
-  logic [3:0] range_perm_11_execute_access_11_wd;
-  logic [3:0] range_perm_11_log_denied_access_11_qs;
-  logic [3:0] range_perm_11_log_denied_access_11_wd;
-  logic range_perm_12_we;
-  logic [3:0] range_perm_12_enable_12_qs;
-  logic [3:0] range_perm_12_enable_12_wd;
-  logic [3:0] range_perm_12_read_access_12_qs;
-  logic [3:0] range_perm_12_read_access_12_wd;
-  logic [3:0] range_perm_12_write_access_12_qs;
-  logic [3:0] range_perm_12_write_access_12_wd;
-  logic [3:0] range_perm_12_execute_access_12_qs;
-  logic [3:0] range_perm_12_execute_access_12_wd;
-  logic [3:0] range_perm_12_log_denied_access_12_qs;
-  logic [3:0] range_perm_12_log_denied_access_12_wd;
-  logic range_perm_13_we;
-  logic [3:0] range_perm_13_enable_13_qs;
-  logic [3:0] range_perm_13_enable_13_wd;
-  logic [3:0] range_perm_13_read_access_13_qs;
-  logic [3:0] range_perm_13_read_access_13_wd;
-  logic [3:0] range_perm_13_write_access_13_qs;
-  logic [3:0] range_perm_13_write_access_13_wd;
-  logic [3:0] range_perm_13_execute_access_13_qs;
-  logic [3:0] range_perm_13_execute_access_13_wd;
-  logic [3:0] range_perm_13_log_denied_access_13_qs;
-  logic [3:0] range_perm_13_log_denied_access_13_wd;
-  logic range_perm_14_we;
-  logic [3:0] range_perm_14_enable_14_qs;
-  logic [3:0] range_perm_14_enable_14_wd;
-  logic [3:0] range_perm_14_read_access_14_qs;
-  logic [3:0] range_perm_14_read_access_14_wd;
-  logic [3:0] range_perm_14_write_access_14_qs;
-  logic [3:0] range_perm_14_write_access_14_wd;
-  logic [3:0] range_perm_14_execute_access_14_qs;
-  logic [3:0] range_perm_14_execute_access_14_wd;
-  logic [3:0] range_perm_14_log_denied_access_14_qs;
-  logic [3:0] range_perm_14_log_denied_access_14_wd;
-  logic range_perm_15_we;
-  logic [3:0] range_perm_15_enable_15_qs;
-  logic [3:0] range_perm_15_enable_15_wd;
-  logic [3:0] range_perm_15_read_access_15_qs;
-  logic [3:0] range_perm_15_read_access_15_wd;
-  logic [3:0] range_perm_15_write_access_15_qs;
-  logic [3:0] range_perm_15_write_access_15_wd;
-  logic [3:0] range_perm_15_execute_access_15_qs;
-  logic [3:0] range_perm_15_execute_access_15_wd;
-  logic [3:0] range_perm_15_log_denied_access_15_qs;
-  logic [3:0] range_perm_15_log_denied_access_15_wd;
-  logic range_perm_16_we;
-  logic [3:0] range_perm_16_enable_16_qs;
-  logic [3:0] range_perm_16_enable_16_wd;
-  logic [3:0] range_perm_16_read_access_16_qs;
-  logic [3:0] range_perm_16_read_access_16_wd;
-  logic [3:0] range_perm_16_write_access_16_qs;
-  logic [3:0] range_perm_16_write_access_16_wd;
-  logic [3:0] range_perm_16_execute_access_16_qs;
-  logic [3:0] range_perm_16_execute_access_16_wd;
-  logic [3:0] range_perm_16_log_denied_access_16_qs;
-  logic [3:0] range_perm_16_log_denied_access_16_wd;
-  logic range_perm_17_we;
-  logic [3:0] range_perm_17_enable_17_qs;
-  logic [3:0] range_perm_17_enable_17_wd;
-  logic [3:0] range_perm_17_read_access_17_qs;
-  logic [3:0] range_perm_17_read_access_17_wd;
-  logic [3:0] range_perm_17_write_access_17_qs;
-  logic [3:0] range_perm_17_write_access_17_wd;
-  logic [3:0] range_perm_17_execute_access_17_qs;
-  logic [3:0] range_perm_17_execute_access_17_wd;
-  logic [3:0] range_perm_17_log_denied_access_17_qs;
-  logic [3:0] range_perm_17_log_denied_access_17_wd;
-  logic range_perm_18_we;
-  logic [3:0] range_perm_18_enable_18_qs;
-  logic [3:0] range_perm_18_enable_18_wd;
-  logic [3:0] range_perm_18_read_access_18_qs;
-  logic [3:0] range_perm_18_read_access_18_wd;
-  logic [3:0] range_perm_18_write_access_18_qs;
-  logic [3:0] range_perm_18_write_access_18_wd;
-  logic [3:0] range_perm_18_execute_access_18_qs;
-  logic [3:0] range_perm_18_execute_access_18_wd;
-  logic [3:0] range_perm_18_log_denied_access_18_qs;
-  logic [3:0] range_perm_18_log_denied_access_18_wd;
-  logic range_perm_19_we;
-  logic [3:0] range_perm_19_enable_19_qs;
-  logic [3:0] range_perm_19_enable_19_wd;
-  logic [3:0] range_perm_19_read_access_19_qs;
-  logic [3:0] range_perm_19_read_access_19_wd;
-  logic [3:0] range_perm_19_write_access_19_qs;
-  logic [3:0] range_perm_19_write_access_19_wd;
-  logic [3:0] range_perm_19_execute_access_19_qs;
-  logic [3:0] range_perm_19_execute_access_19_wd;
-  logic [3:0] range_perm_19_log_denied_access_19_qs;
-  logic [3:0] range_perm_19_log_denied_access_19_wd;
-  logic range_perm_20_we;
-  logic [3:0] range_perm_20_enable_20_qs;
-  logic [3:0] range_perm_20_enable_20_wd;
-  logic [3:0] range_perm_20_read_access_20_qs;
-  logic [3:0] range_perm_20_read_access_20_wd;
-  logic [3:0] range_perm_20_write_access_20_qs;
-  logic [3:0] range_perm_20_write_access_20_wd;
-  logic [3:0] range_perm_20_execute_access_20_qs;
-  logic [3:0] range_perm_20_execute_access_20_wd;
-  logic [3:0] range_perm_20_log_denied_access_20_qs;
-  logic [3:0] range_perm_20_log_denied_access_20_wd;
-  logic range_perm_21_we;
-  logic [3:0] range_perm_21_enable_21_qs;
-  logic [3:0] range_perm_21_enable_21_wd;
-  logic [3:0] range_perm_21_read_access_21_qs;
-  logic [3:0] range_perm_21_read_access_21_wd;
-  logic [3:0] range_perm_21_write_access_21_qs;
-  logic [3:0] range_perm_21_write_access_21_wd;
-  logic [3:0] range_perm_21_execute_access_21_qs;
-  logic [3:0] range_perm_21_execute_access_21_wd;
-  logic [3:0] range_perm_21_log_denied_access_21_qs;
-  logic [3:0] range_perm_21_log_denied_access_21_wd;
-  logic range_perm_22_we;
-  logic [3:0] range_perm_22_enable_22_qs;
-  logic [3:0] range_perm_22_enable_22_wd;
-  logic [3:0] range_perm_22_read_access_22_qs;
-  logic [3:0] range_perm_22_read_access_22_wd;
-  logic [3:0] range_perm_22_write_access_22_qs;
-  logic [3:0] range_perm_22_write_access_22_wd;
-  logic [3:0] range_perm_22_execute_access_22_qs;
-  logic [3:0] range_perm_22_execute_access_22_wd;
-  logic [3:0] range_perm_22_log_denied_access_22_qs;
-  logic [3:0] range_perm_22_log_denied_access_22_wd;
-  logic range_perm_23_we;
-  logic [3:0] range_perm_23_enable_23_qs;
-  logic [3:0] range_perm_23_enable_23_wd;
-  logic [3:0] range_perm_23_read_access_23_qs;
-  logic [3:0] range_perm_23_read_access_23_wd;
-  logic [3:0] range_perm_23_write_access_23_qs;
-  logic [3:0] range_perm_23_write_access_23_wd;
-  logic [3:0] range_perm_23_execute_access_23_qs;
-  logic [3:0] range_perm_23_execute_access_23_wd;
-  logic [3:0] range_perm_23_log_denied_access_23_qs;
-  logic [3:0] range_perm_23_log_denied_access_23_wd;
-  logic range_perm_24_we;
-  logic [3:0] range_perm_24_enable_24_qs;
-  logic [3:0] range_perm_24_enable_24_wd;
-  logic [3:0] range_perm_24_read_access_24_qs;
-  logic [3:0] range_perm_24_read_access_24_wd;
-  logic [3:0] range_perm_24_write_access_24_qs;
-  logic [3:0] range_perm_24_write_access_24_wd;
-  logic [3:0] range_perm_24_execute_access_24_qs;
-  logic [3:0] range_perm_24_execute_access_24_wd;
-  logic [3:0] range_perm_24_log_denied_access_24_qs;
-  logic [3:0] range_perm_24_log_denied_access_24_wd;
-  logic range_perm_25_we;
-  logic [3:0] range_perm_25_enable_25_qs;
-  logic [3:0] range_perm_25_enable_25_wd;
-  logic [3:0] range_perm_25_read_access_25_qs;
-  logic [3:0] range_perm_25_read_access_25_wd;
-  logic [3:0] range_perm_25_write_access_25_qs;
-  logic [3:0] range_perm_25_write_access_25_wd;
-  logic [3:0] range_perm_25_execute_access_25_qs;
-  logic [3:0] range_perm_25_execute_access_25_wd;
-  logic [3:0] range_perm_25_log_denied_access_25_qs;
-  logic [3:0] range_perm_25_log_denied_access_25_wd;
-  logic range_perm_26_we;
-  logic [3:0] range_perm_26_enable_26_qs;
-  logic [3:0] range_perm_26_enable_26_wd;
-  logic [3:0] range_perm_26_read_access_26_qs;
-  logic [3:0] range_perm_26_read_access_26_wd;
-  logic [3:0] range_perm_26_write_access_26_qs;
-  logic [3:0] range_perm_26_write_access_26_wd;
-  logic [3:0] range_perm_26_execute_access_26_qs;
-  logic [3:0] range_perm_26_execute_access_26_wd;
-  logic [3:0] range_perm_26_log_denied_access_26_qs;
-  logic [3:0] range_perm_26_log_denied_access_26_wd;
-  logic range_perm_27_we;
-  logic [3:0] range_perm_27_enable_27_qs;
-  logic [3:0] range_perm_27_enable_27_wd;
-  logic [3:0] range_perm_27_read_access_27_qs;
-  logic [3:0] range_perm_27_read_access_27_wd;
-  logic [3:0] range_perm_27_write_access_27_qs;
-  logic [3:0] range_perm_27_write_access_27_wd;
-  logic [3:0] range_perm_27_execute_access_27_qs;
-  logic [3:0] range_perm_27_execute_access_27_wd;
-  logic [3:0] range_perm_27_log_denied_access_27_qs;
-  logic [3:0] range_perm_27_log_denied_access_27_wd;
-  logic range_perm_28_we;
-  logic [3:0] range_perm_28_enable_28_qs;
-  logic [3:0] range_perm_28_enable_28_wd;
-  logic [3:0] range_perm_28_read_access_28_qs;
-  logic [3:0] range_perm_28_read_access_28_wd;
-  logic [3:0] range_perm_28_write_access_28_qs;
-  logic [3:0] range_perm_28_write_access_28_wd;
-  logic [3:0] range_perm_28_execute_access_28_qs;
-  logic [3:0] range_perm_28_execute_access_28_wd;
-  logic [3:0] range_perm_28_log_denied_access_28_qs;
-  logic [3:0] range_perm_28_log_denied_access_28_wd;
-  logic range_perm_29_we;
-  logic [3:0] range_perm_29_enable_29_qs;
-  logic [3:0] range_perm_29_enable_29_wd;
-  logic [3:0] range_perm_29_read_access_29_qs;
-  logic [3:0] range_perm_29_read_access_29_wd;
-  logic [3:0] range_perm_29_write_access_29_qs;
-  logic [3:0] range_perm_29_write_access_29_wd;
-  logic [3:0] range_perm_29_execute_access_29_qs;
-  logic [3:0] range_perm_29_execute_access_29_wd;
-  logic [3:0] range_perm_29_log_denied_access_29_qs;
-  logic [3:0] range_perm_29_log_denied_access_29_wd;
-  logic range_perm_30_we;
-  logic [3:0] range_perm_30_enable_30_qs;
-  logic [3:0] range_perm_30_enable_30_wd;
-  logic [3:0] range_perm_30_read_access_30_qs;
-  logic [3:0] range_perm_30_read_access_30_wd;
-  logic [3:0] range_perm_30_write_access_30_qs;
-  logic [3:0] range_perm_30_write_access_30_wd;
-  logic [3:0] range_perm_30_execute_access_30_qs;
-  logic [3:0] range_perm_30_execute_access_30_wd;
-  logic [3:0] range_perm_30_log_denied_access_30_qs;
-  logic [3:0] range_perm_30_log_denied_access_30_wd;
-  logic range_perm_31_we;
-  logic [3:0] range_perm_31_enable_31_qs;
-  logic [3:0] range_perm_31_enable_31_wd;
-  logic [3:0] range_perm_31_read_access_31_qs;
-  logic [3:0] range_perm_31_read_access_31_wd;
-  logic [3:0] range_perm_31_write_access_31_qs;
-  logic [3:0] range_perm_31_write_access_31_wd;
-  logic [3:0] range_perm_31_execute_access_31_qs;
-  logic [3:0] range_perm_31_execute_access_31_wd;
-  logic [3:0] range_perm_31_log_denied_access_31_qs;
-  logic [3:0] range_perm_31_log_denied_access_31_wd;
-  logic range_perm_32_we;
-  logic [3:0] range_perm_32_enable_32_qs;
-  logic [3:0] range_perm_32_enable_32_wd;
-  logic [3:0] range_perm_32_read_access_32_qs;
-  logic [3:0] range_perm_32_read_access_32_wd;
-  logic [3:0] range_perm_32_write_access_32_qs;
-  logic [3:0] range_perm_32_write_access_32_wd;
-  logic [3:0] range_perm_32_execute_access_32_qs;
-  logic [3:0] range_perm_32_execute_access_32_wd;
-  logic [3:0] range_perm_32_log_denied_access_32_qs;
-  logic [3:0] range_perm_32_log_denied_access_32_wd;
-  logic range_perm_33_we;
-  logic [3:0] range_perm_33_enable_33_qs;
-  logic [3:0] range_perm_33_enable_33_wd;
-  logic [3:0] range_perm_33_read_access_33_qs;
-  logic [3:0] range_perm_33_read_access_33_wd;
-  logic [3:0] range_perm_33_write_access_33_qs;
-  logic [3:0] range_perm_33_write_access_33_wd;
-  logic [3:0] range_perm_33_execute_access_33_qs;
-  logic [3:0] range_perm_33_execute_access_33_wd;
-  logic [3:0] range_perm_33_log_denied_access_33_qs;
-  logic [3:0] range_perm_33_log_denied_access_33_wd;
-  logic range_perm_34_we;
-  logic [3:0] range_perm_34_enable_34_qs;
-  logic [3:0] range_perm_34_enable_34_wd;
-  logic [3:0] range_perm_34_read_access_34_qs;
-  logic [3:0] range_perm_34_read_access_34_wd;
-  logic [3:0] range_perm_34_write_access_34_qs;
-  logic [3:0] range_perm_34_write_access_34_wd;
-  logic [3:0] range_perm_34_execute_access_34_qs;
-  logic [3:0] range_perm_34_execute_access_34_wd;
-  logic [3:0] range_perm_34_log_denied_access_34_qs;
-  logic [3:0] range_perm_34_log_denied_access_34_wd;
-  logic range_perm_35_we;
-  logic [3:0] range_perm_35_enable_35_qs;
-  logic [3:0] range_perm_35_enable_35_wd;
-  logic [3:0] range_perm_35_read_access_35_qs;
-  logic [3:0] range_perm_35_read_access_35_wd;
-  logic [3:0] range_perm_35_write_access_35_qs;
-  logic [3:0] range_perm_35_write_access_35_wd;
-  logic [3:0] range_perm_35_execute_access_35_qs;
-  logic [3:0] range_perm_35_execute_access_35_wd;
-  logic [3:0] range_perm_35_log_denied_access_35_qs;
-  logic [3:0] range_perm_35_log_denied_access_35_wd;
-  logic range_perm_36_we;
-  logic [3:0] range_perm_36_enable_36_qs;
-  logic [3:0] range_perm_36_enable_36_wd;
-  logic [3:0] range_perm_36_read_access_36_qs;
-  logic [3:0] range_perm_36_read_access_36_wd;
-  logic [3:0] range_perm_36_write_access_36_qs;
-  logic [3:0] range_perm_36_write_access_36_wd;
-  logic [3:0] range_perm_36_execute_access_36_qs;
-  logic [3:0] range_perm_36_execute_access_36_wd;
-  logic [3:0] range_perm_36_log_denied_access_36_qs;
-  logic [3:0] range_perm_36_log_denied_access_36_wd;
-  logic range_perm_37_we;
-  logic [3:0] range_perm_37_enable_37_qs;
-  logic [3:0] range_perm_37_enable_37_wd;
-  logic [3:0] range_perm_37_read_access_37_qs;
-  logic [3:0] range_perm_37_read_access_37_wd;
-  logic [3:0] range_perm_37_write_access_37_qs;
-  logic [3:0] range_perm_37_write_access_37_wd;
-  logic [3:0] range_perm_37_execute_access_37_qs;
-  logic [3:0] range_perm_37_execute_access_37_wd;
-  logic [3:0] range_perm_37_log_denied_access_37_qs;
-  logic [3:0] range_perm_37_log_denied_access_37_wd;
-  logic range_perm_38_we;
-  logic [3:0] range_perm_38_enable_38_qs;
-  logic [3:0] range_perm_38_enable_38_wd;
-  logic [3:0] range_perm_38_read_access_38_qs;
-  logic [3:0] range_perm_38_read_access_38_wd;
-  logic [3:0] range_perm_38_write_access_38_qs;
-  logic [3:0] range_perm_38_write_access_38_wd;
-  logic [3:0] range_perm_38_execute_access_38_qs;
-  logic [3:0] range_perm_38_execute_access_38_wd;
-  logic [3:0] range_perm_38_log_denied_access_38_qs;
-  logic [3:0] range_perm_38_log_denied_access_38_wd;
-  logic range_perm_39_we;
-  logic [3:0] range_perm_39_enable_39_qs;
-  logic [3:0] range_perm_39_enable_39_wd;
-  logic [3:0] range_perm_39_read_access_39_qs;
-  logic [3:0] range_perm_39_read_access_39_wd;
-  logic [3:0] range_perm_39_write_access_39_qs;
-  logic [3:0] range_perm_39_write_access_39_wd;
-  logic [3:0] range_perm_39_execute_access_39_qs;
-  logic [3:0] range_perm_39_execute_access_39_wd;
-  logic [3:0] range_perm_39_log_denied_access_39_qs;
-  logic [3:0] range_perm_39_log_denied_access_39_wd;
-  logic range_perm_40_we;
-  logic [3:0] range_perm_40_enable_40_qs;
-  logic [3:0] range_perm_40_enable_40_wd;
-  logic [3:0] range_perm_40_read_access_40_qs;
-  logic [3:0] range_perm_40_read_access_40_wd;
-  logic [3:0] range_perm_40_write_access_40_qs;
-  logic [3:0] range_perm_40_write_access_40_wd;
-  logic [3:0] range_perm_40_execute_access_40_qs;
-  logic [3:0] range_perm_40_execute_access_40_wd;
-  logic [3:0] range_perm_40_log_denied_access_40_qs;
-  logic [3:0] range_perm_40_log_denied_access_40_wd;
-  logic range_perm_41_we;
-  logic [3:0] range_perm_41_enable_41_qs;
-  logic [3:0] range_perm_41_enable_41_wd;
-  logic [3:0] range_perm_41_read_access_41_qs;
-  logic [3:0] range_perm_41_read_access_41_wd;
-  logic [3:0] range_perm_41_write_access_41_qs;
-  logic [3:0] range_perm_41_write_access_41_wd;
-  logic [3:0] range_perm_41_execute_access_41_qs;
-  logic [3:0] range_perm_41_execute_access_41_wd;
-  logic [3:0] range_perm_41_log_denied_access_41_qs;
-  logic [3:0] range_perm_41_log_denied_access_41_wd;
-  logic range_perm_42_we;
-  logic [3:0] range_perm_42_enable_42_qs;
-  logic [3:0] range_perm_42_enable_42_wd;
-  logic [3:0] range_perm_42_read_access_42_qs;
-  logic [3:0] range_perm_42_read_access_42_wd;
-  logic [3:0] range_perm_42_write_access_42_qs;
-  logic [3:0] range_perm_42_write_access_42_wd;
-  logic [3:0] range_perm_42_execute_access_42_qs;
-  logic [3:0] range_perm_42_execute_access_42_wd;
-  logic [3:0] range_perm_42_log_denied_access_42_qs;
-  logic [3:0] range_perm_42_log_denied_access_42_wd;
-  logic range_perm_43_we;
-  logic [3:0] range_perm_43_enable_43_qs;
-  logic [3:0] range_perm_43_enable_43_wd;
-  logic [3:0] range_perm_43_read_access_43_qs;
-  logic [3:0] range_perm_43_read_access_43_wd;
-  logic [3:0] range_perm_43_write_access_43_qs;
-  logic [3:0] range_perm_43_write_access_43_wd;
-  logic [3:0] range_perm_43_execute_access_43_qs;
-  logic [3:0] range_perm_43_execute_access_43_wd;
-  logic [3:0] range_perm_43_log_denied_access_43_qs;
-  logic [3:0] range_perm_43_log_denied_access_43_wd;
-  logic range_perm_44_we;
-  logic [3:0] range_perm_44_enable_44_qs;
-  logic [3:0] range_perm_44_enable_44_wd;
-  logic [3:0] range_perm_44_read_access_44_qs;
-  logic [3:0] range_perm_44_read_access_44_wd;
-  logic [3:0] range_perm_44_write_access_44_qs;
-  logic [3:0] range_perm_44_write_access_44_wd;
-  logic [3:0] range_perm_44_execute_access_44_qs;
-  logic [3:0] range_perm_44_execute_access_44_wd;
-  logic [3:0] range_perm_44_log_denied_access_44_qs;
-  logic [3:0] range_perm_44_log_denied_access_44_wd;
-  logic range_perm_45_we;
-  logic [3:0] range_perm_45_enable_45_qs;
-  logic [3:0] range_perm_45_enable_45_wd;
-  logic [3:0] range_perm_45_read_access_45_qs;
-  logic [3:0] range_perm_45_read_access_45_wd;
-  logic [3:0] range_perm_45_write_access_45_qs;
-  logic [3:0] range_perm_45_write_access_45_wd;
-  logic [3:0] range_perm_45_execute_access_45_qs;
-  logic [3:0] range_perm_45_execute_access_45_wd;
-  logic [3:0] range_perm_45_log_denied_access_45_qs;
-  logic [3:0] range_perm_45_log_denied_access_45_wd;
-  logic range_perm_46_we;
-  logic [3:0] range_perm_46_enable_46_qs;
-  logic [3:0] range_perm_46_enable_46_wd;
-  logic [3:0] range_perm_46_read_access_46_qs;
-  logic [3:0] range_perm_46_read_access_46_wd;
-  logic [3:0] range_perm_46_write_access_46_qs;
-  logic [3:0] range_perm_46_write_access_46_wd;
-  logic [3:0] range_perm_46_execute_access_46_qs;
-  logic [3:0] range_perm_46_execute_access_46_wd;
-  logic [3:0] range_perm_46_log_denied_access_46_qs;
-  logic [3:0] range_perm_46_log_denied_access_46_wd;
-  logic range_perm_47_we;
-  logic [3:0] range_perm_47_enable_47_qs;
-  logic [3:0] range_perm_47_enable_47_wd;
-  logic [3:0] range_perm_47_read_access_47_qs;
-  logic [3:0] range_perm_47_read_access_47_wd;
-  logic [3:0] range_perm_47_write_access_47_qs;
-  logic [3:0] range_perm_47_write_access_47_wd;
-  logic [3:0] range_perm_47_execute_access_47_qs;
-  logic [3:0] range_perm_47_execute_access_47_wd;
-  logic [3:0] range_perm_47_log_denied_access_47_qs;
-  logic [3:0] range_perm_47_log_denied_access_47_wd;
-  logic range_perm_48_we;
-  logic [3:0] range_perm_48_enable_48_qs;
-  logic [3:0] range_perm_48_enable_48_wd;
-  logic [3:0] range_perm_48_read_access_48_qs;
-  logic [3:0] range_perm_48_read_access_48_wd;
-  logic [3:0] range_perm_48_write_access_48_qs;
-  logic [3:0] range_perm_48_write_access_48_wd;
-  logic [3:0] range_perm_48_execute_access_48_qs;
-  logic [3:0] range_perm_48_execute_access_48_wd;
-  logic [3:0] range_perm_48_log_denied_access_48_qs;
-  logic [3:0] range_perm_48_log_denied_access_48_wd;
-  logic range_perm_49_we;
-  logic [3:0] range_perm_49_enable_49_qs;
-  logic [3:0] range_perm_49_enable_49_wd;
-  logic [3:0] range_perm_49_read_access_49_qs;
-  logic [3:0] range_perm_49_read_access_49_wd;
-  logic [3:0] range_perm_49_write_access_49_qs;
-  logic [3:0] range_perm_49_write_access_49_wd;
-  logic [3:0] range_perm_49_execute_access_49_qs;
-  logic [3:0] range_perm_49_execute_access_49_wd;
-  logic [3:0] range_perm_49_log_denied_access_49_qs;
-  logic [3:0] range_perm_49_log_denied_access_49_wd;
-  logic range_perm_50_we;
-  logic [3:0] range_perm_50_enable_50_qs;
-  logic [3:0] range_perm_50_enable_50_wd;
-  logic [3:0] range_perm_50_read_access_50_qs;
-  logic [3:0] range_perm_50_read_access_50_wd;
-  logic [3:0] range_perm_50_write_access_50_qs;
-  logic [3:0] range_perm_50_write_access_50_wd;
-  logic [3:0] range_perm_50_execute_access_50_qs;
-  logic [3:0] range_perm_50_execute_access_50_wd;
-  logic [3:0] range_perm_50_log_denied_access_50_qs;
-  logic [3:0] range_perm_50_log_denied_access_50_wd;
-  logic range_perm_51_we;
-  logic [3:0] range_perm_51_enable_51_qs;
-  logic [3:0] range_perm_51_enable_51_wd;
-  logic [3:0] range_perm_51_read_access_51_qs;
-  logic [3:0] range_perm_51_read_access_51_wd;
-  logic [3:0] range_perm_51_write_access_51_qs;
-  logic [3:0] range_perm_51_write_access_51_wd;
-  logic [3:0] range_perm_51_execute_access_51_qs;
-  logic [3:0] range_perm_51_execute_access_51_wd;
-  logic [3:0] range_perm_51_log_denied_access_51_qs;
-  logic [3:0] range_perm_51_log_denied_access_51_wd;
-  logic range_perm_52_we;
-  logic [3:0] range_perm_52_enable_52_qs;
-  logic [3:0] range_perm_52_enable_52_wd;
-  logic [3:0] range_perm_52_read_access_52_qs;
-  logic [3:0] range_perm_52_read_access_52_wd;
-  logic [3:0] range_perm_52_write_access_52_qs;
-  logic [3:0] range_perm_52_write_access_52_wd;
-  logic [3:0] range_perm_52_execute_access_52_qs;
-  logic [3:0] range_perm_52_execute_access_52_wd;
-  logic [3:0] range_perm_52_log_denied_access_52_qs;
-  logic [3:0] range_perm_52_log_denied_access_52_wd;
-  logic range_perm_53_we;
-  logic [3:0] range_perm_53_enable_53_qs;
-  logic [3:0] range_perm_53_enable_53_wd;
-  logic [3:0] range_perm_53_read_access_53_qs;
-  logic [3:0] range_perm_53_read_access_53_wd;
-  logic [3:0] range_perm_53_write_access_53_qs;
-  logic [3:0] range_perm_53_write_access_53_wd;
-  logic [3:0] range_perm_53_execute_access_53_qs;
-  logic [3:0] range_perm_53_execute_access_53_wd;
-  logic [3:0] range_perm_53_log_denied_access_53_qs;
-  logic [3:0] range_perm_53_log_denied_access_53_wd;
-  logic range_perm_54_we;
-  logic [3:0] range_perm_54_enable_54_qs;
-  logic [3:0] range_perm_54_enable_54_wd;
-  logic [3:0] range_perm_54_read_access_54_qs;
-  logic [3:0] range_perm_54_read_access_54_wd;
-  logic [3:0] range_perm_54_write_access_54_qs;
-  logic [3:0] range_perm_54_write_access_54_wd;
-  logic [3:0] range_perm_54_execute_access_54_qs;
-  logic [3:0] range_perm_54_execute_access_54_wd;
-  logic [3:0] range_perm_54_log_denied_access_54_qs;
-  logic [3:0] range_perm_54_log_denied_access_54_wd;
-  logic range_perm_55_we;
-  logic [3:0] range_perm_55_enable_55_qs;
-  logic [3:0] range_perm_55_enable_55_wd;
-  logic [3:0] range_perm_55_read_access_55_qs;
-  logic [3:0] range_perm_55_read_access_55_wd;
-  logic [3:0] range_perm_55_write_access_55_qs;
-  logic [3:0] range_perm_55_write_access_55_wd;
-  logic [3:0] range_perm_55_execute_access_55_qs;
-  logic [3:0] range_perm_55_execute_access_55_wd;
-  logic [3:0] range_perm_55_log_denied_access_55_qs;
-  logic [3:0] range_perm_55_log_denied_access_55_wd;
-  logic range_perm_56_we;
-  logic [3:0] range_perm_56_enable_56_qs;
-  logic [3:0] range_perm_56_enable_56_wd;
-  logic [3:0] range_perm_56_read_access_56_qs;
-  logic [3:0] range_perm_56_read_access_56_wd;
-  logic [3:0] range_perm_56_write_access_56_qs;
-  logic [3:0] range_perm_56_write_access_56_wd;
-  logic [3:0] range_perm_56_execute_access_56_qs;
-  logic [3:0] range_perm_56_execute_access_56_wd;
-  logic [3:0] range_perm_56_log_denied_access_56_qs;
-  logic [3:0] range_perm_56_log_denied_access_56_wd;
-  logic range_perm_57_we;
-  logic [3:0] range_perm_57_enable_57_qs;
-  logic [3:0] range_perm_57_enable_57_wd;
-  logic [3:0] range_perm_57_read_access_57_qs;
-  logic [3:0] range_perm_57_read_access_57_wd;
-  logic [3:0] range_perm_57_write_access_57_qs;
-  logic [3:0] range_perm_57_write_access_57_wd;
-  logic [3:0] range_perm_57_execute_access_57_qs;
-  logic [3:0] range_perm_57_execute_access_57_wd;
-  logic [3:0] range_perm_57_log_denied_access_57_qs;
-  logic [3:0] range_perm_57_log_denied_access_57_wd;
-  logic range_perm_58_we;
-  logic [3:0] range_perm_58_enable_58_qs;
-  logic [3:0] range_perm_58_enable_58_wd;
-  logic [3:0] range_perm_58_read_access_58_qs;
-  logic [3:0] range_perm_58_read_access_58_wd;
-  logic [3:0] range_perm_58_write_access_58_qs;
-  logic [3:0] range_perm_58_write_access_58_wd;
-  logic [3:0] range_perm_58_execute_access_58_qs;
-  logic [3:0] range_perm_58_execute_access_58_wd;
-  logic [3:0] range_perm_58_log_denied_access_58_qs;
-  logic [3:0] range_perm_58_log_denied_access_58_wd;
-  logic range_perm_59_we;
-  logic [3:0] range_perm_59_enable_59_qs;
-  logic [3:0] range_perm_59_enable_59_wd;
-  logic [3:0] range_perm_59_read_access_59_qs;
-  logic [3:0] range_perm_59_read_access_59_wd;
-  logic [3:0] range_perm_59_write_access_59_qs;
-  logic [3:0] range_perm_59_write_access_59_wd;
-  logic [3:0] range_perm_59_execute_access_59_qs;
-  logic [3:0] range_perm_59_execute_access_59_wd;
-  logic [3:0] range_perm_59_log_denied_access_59_qs;
-  logic [3:0] range_perm_59_log_denied_access_59_wd;
-  logic range_perm_60_we;
-  logic [3:0] range_perm_60_enable_60_qs;
-  logic [3:0] range_perm_60_enable_60_wd;
-  logic [3:0] range_perm_60_read_access_60_qs;
-  logic [3:0] range_perm_60_read_access_60_wd;
-  logic [3:0] range_perm_60_write_access_60_qs;
-  logic [3:0] range_perm_60_write_access_60_wd;
-  logic [3:0] range_perm_60_execute_access_60_qs;
-  logic [3:0] range_perm_60_execute_access_60_wd;
-  logic [3:0] range_perm_60_log_denied_access_60_qs;
-  logic [3:0] range_perm_60_log_denied_access_60_wd;
-  logic range_perm_61_we;
-  logic [3:0] range_perm_61_enable_61_qs;
-  logic [3:0] range_perm_61_enable_61_wd;
-  logic [3:0] range_perm_61_read_access_61_qs;
-  logic [3:0] range_perm_61_read_access_61_wd;
-  logic [3:0] range_perm_61_write_access_61_qs;
-  logic [3:0] range_perm_61_write_access_61_wd;
-  logic [3:0] range_perm_61_execute_access_61_qs;
-  logic [3:0] range_perm_61_execute_access_61_wd;
-  logic [3:0] range_perm_61_log_denied_access_61_qs;
-  logic [3:0] range_perm_61_log_denied_access_61_wd;
-  logic range_perm_62_we;
-  logic [3:0] range_perm_62_enable_62_qs;
-  logic [3:0] range_perm_62_enable_62_wd;
-  logic [3:0] range_perm_62_read_access_62_qs;
-  logic [3:0] range_perm_62_read_access_62_wd;
-  logic [3:0] range_perm_62_write_access_62_qs;
-  logic [3:0] range_perm_62_write_access_62_wd;
-  logic [3:0] range_perm_62_execute_access_62_qs;
-  logic [3:0] range_perm_62_execute_access_62_wd;
-  logic [3:0] range_perm_62_log_denied_access_62_qs;
-  logic [3:0] range_perm_62_log_denied_access_62_wd;
-  logic range_perm_63_we;
-  logic [3:0] range_perm_63_enable_63_qs;
-  logic [3:0] range_perm_63_enable_63_wd;
-  logic [3:0] range_perm_63_read_access_63_qs;
-  logic [3:0] range_perm_63_read_access_63_wd;
-  logic [3:0] range_perm_63_write_access_63_qs;
-  logic [3:0] range_perm_63_write_access_63_wd;
-  logic [3:0] range_perm_63_execute_access_63_qs;
-  logic [3:0] range_perm_63_execute_access_63_wd;
-  logic [3:0] range_perm_63_log_denied_access_63_qs;
-  logic [3:0] range_perm_63_log_denied_access_63_wd;
+  logic range_attr_0_we;
+  logic [3:0] range_attr_0_enable_0_qs;
+  logic [3:0] range_attr_0_enable_0_wd;
+  logic [3:0] range_attr_0_read_access_0_qs;
+  logic [3:0] range_attr_0_read_access_0_wd;
+  logic [3:0] range_attr_0_write_access_0_qs;
+  logic [3:0] range_attr_0_write_access_0_wd;
+  logic [3:0] range_attr_0_execute_access_0_qs;
+  logic [3:0] range_attr_0_execute_access_0_wd;
+  logic [3:0] range_attr_0_log_denied_access_0_qs;
+  logic [3:0] range_attr_0_log_denied_access_0_wd;
+  logic range_attr_1_we;
+  logic [3:0] range_attr_1_enable_1_qs;
+  logic [3:0] range_attr_1_enable_1_wd;
+  logic [3:0] range_attr_1_read_access_1_qs;
+  logic [3:0] range_attr_1_read_access_1_wd;
+  logic [3:0] range_attr_1_write_access_1_qs;
+  logic [3:0] range_attr_1_write_access_1_wd;
+  logic [3:0] range_attr_1_execute_access_1_qs;
+  logic [3:0] range_attr_1_execute_access_1_wd;
+  logic [3:0] range_attr_1_log_denied_access_1_qs;
+  logic [3:0] range_attr_1_log_denied_access_1_wd;
+  logic range_attr_2_we;
+  logic [3:0] range_attr_2_enable_2_qs;
+  logic [3:0] range_attr_2_enable_2_wd;
+  logic [3:0] range_attr_2_read_access_2_qs;
+  logic [3:0] range_attr_2_read_access_2_wd;
+  logic [3:0] range_attr_2_write_access_2_qs;
+  logic [3:0] range_attr_2_write_access_2_wd;
+  logic [3:0] range_attr_2_execute_access_2_qs;
+  logic [3:0] range_attr_2_execute_access_2_wd;
+  logic [3:0] range_attr_2_log_denied_access_2_qs;
+  logic [3:0] range_attr_2_log_denied_access_2_wd;
+  logic range_attr_3_we;
+  logic [3:0] range_attr_3_enable_3_qs;
+  logic [3:0] range_attr_3_enable_3_wd;
+  logic [3:0] range_attr_3_read_access_3_qs;
+  logic [3:0] range_attr_3_read_access_3_wd;
+  logic [3:0] range_attr_3_write_access_3_qs;
+  logic [3:0] range_attr_3_write_access_3_wd;
+  logic [3:0] range_attr_3_execute_access_3_qs;
+  logic [3:0] range_attr_3_execute_access_3_wd;
+  logic [3:0] range_attr_3_log_denied_access_3_qs;
+  logic [3:0] range_attr_3_log_denied_access_3_wd;
+  logic range_attr_4_we;
+  logic [3:0] range_attr_4_enable_4_qs;
+  logic [3:0] range_attr_4_enable_4_wd;
+  logic [3:0] range_attr_4_read_access_4_qs;
+  logic [3:0] range_attr_4_read_access_4_wd;
+  logic [3:0] range_attr_4_write_access_4_qs;
+  logic [3:0] range_attr_4_write_access_4_wd;
+  logic [3:0] range_attr_4_execute_access_4_qs;
+  logic [3:0] range_attr_4_execute_access_4_wd;
+  logic [3:0] range_attr_4_log_denied_access_4_qs;
+  logic [3:0] range_attr_4_log_denied_access_4_wd;
+  logic range_attr_5_we;
+  logic [3:0] range_attr_5_enable_5_qs;
+  logic [3:0] range_attr_5_enable_5_wd;
+  logic [3:0] range_attr_5_read_access_5_qs;
+  logic [3:0] range_attr_5_read_access_5_wd;
+  logic [3:0] range_attr_5_write_access_5_qs;
+  logic [3:0] range_attr_5_write_access_5_wd;
+  logic [3:0] range_attr_5_execute_access_5_qs;
+  logic [3:0] range_attr_5_execute_access_5_wd;
+  logic [3:0] range_attr_5_log_denied_access_5_qs;
+  logic [3:0] range_attr_5_log_denied_access_5_wd;
+  logic range_attr_6_we;
+  logic [3:0] range_attr_6_enable_6_qs;
+  logic [3:0] range_attr_6_enable_6_wd;
+  logic [3:0] range_attr_6_read_access_6_qs;
+  logic [3:0] range_attr_6_read_access_6_wd;
+  logic [3:0] range_attr_6_write_access_6_qs;
+  logic [3:0] range_attr_6_write_access_6_wd;
+  logic [3:0] range_attr_6_execute_access_6_qs;
+  logic [3:0] range_attr_6_execute_access_6_wd;
+  logic [3:0] range_attr_6_log_denied_access_6_qs;
+  logic [3:0] range_attr_6_log_denied_access_6_wd;
+  logic range_attr_7_we;
+  logic [3:0] range_attr_7_enable_7_qs;
+  logic [3:0] range_attr_7_enable_7_wd;
+  logic [3:0] range_attr_7_read_access_7_qs;
+  logic [3:0] range_attr_7_read_access_7_wd;
+  logic [3:0] range_attr_7_write_access_7_qs;
+  logic [3:0] range_attr_7_write_access_7_wd;
+  logic [3:0] range_attr_7_execute_access_7_qs;
+  logic [3:0] range_attr_7_execute_access_7_wd;
+  logic [3:0] range_attr_7_log_denied_access_7_qs;
+  logic [3:0] range_attr_7_log_denied_access_7_wd;
+  logic range_attr_8_we;
+  logic [3:0] range_attr_8_enable_8_qs;
+  logic [3:0] range_attr_8_enable_8_wd;
+  logic [3:0] range_attr_8_read_access_8_qs;
+  logic [3:0] range_attr_8_read_access_8_wd;
+  logic [3:0] range_attr_8_write_access_8_qs;
+  logic [3:0] range_attr_8_write_access_8_wd;
+  logic [3:0] range_attr_8_execute_access_8_qs;
+  logic [3:0] range_attr_8_execute_access_8_wd;
+  logic [3:0] range_attr_8_log_denied_access_8_qs;
+  logic [3:0] range_attr_8_log_denied_access_8_wd;
+  logic range_attr_9_we;
+  logic [3:0] range_attr_9_enable_9_qs;
+  logic [3:0] range_attr_9_enable_9_wd;
+  logic [3:0] range_attr_9_read_access_9_qs;
+  logic [3:0] range_attr_9_read_access_9_wd;
+  logic [3:0] range_attr_9_write_access_9_qs;
+  logic [3:0] range_attr_9_write_access_9_wd;
+  logic [3:0] range_attr_9_execute_access_9_qs;
+  logic [3:0] range_attr_9_execute_access_9_wd;
+  logic [3:0] range_attr_9_log_denied_access_9_qs;
+  logic [3:0] range_attr_9_log_denied_access_9_wd;
+  logic range_attr_10_we;
+  logic [3:0] range_attr_10_enable_10_qs;
+  logic [3:0] range_attr_10_enable_10_wd;
+  logic [3:0] range_attr_10_read_access_10_qs;
+  logic [3:0] range_attr_10_read_access_10_wd;
+  logic [3:0] range_attr_10_write_access_10_qs;
+  logic [3:0] range_attr_10_write_access_10_wd;
+  logic [3:0] range_attr_10_execute_access_10_qs;
+  logic [3:0] range_attr_10_execute_access_10_wd;
+  logic [3:0] range_attr_10_log_denied_access_10_qs;
+  logic [3:0] range_attr_10_log_denied_access_10_wd;
+  logic range_attr_11_we;
+  logic [3:0] range_attr_11_enable_11_qs;
+  logic [3:0] range_attr_11_enable_11_wd;
+  logic [3:0] range_attr_11_read_access_11_qs;
+  logic [3:0] range_attr_11_read_access_11_wd;
+  logic [3:0] range_attr_11_write_access_11_qs;
+  logic [3:0] range_attr_11_write_access_11_wd;
+  logic [3:0] range_attr_11_execute_access_11_qs;
+  logic [3:0] range_attr_11_execute_access_11_wd;
+  logic [3:0] range_attr_11_log_denied_access_11_qs;
+  logic [3:0] range_attr_11_log_denied_access_11_wd;
+  logic range_attr_12_we;
+  logic [3:0] range_attr_12_enable_12_qs;
+  logic [3:0] range_attr_12_enable_12_wd;
+  logic [3:0] range_attr_12_read_access_12_qs;
+  logic [3:0] range_attr_12_read_access_12_wd;
+  logic [3:0] range_attr_12_write_access_12_qs;
+  logic [3:0] range_attr_12_write_access_12_wd;
+  logic [3:0] range_attr_12_execute_access_12_qs;
+  logic [3:0] range_attr_12_execute_access_12_wd;
+  logic [3:0] range_attr_12_log_denied_access_12_qs;
+  logic [3:0] range_attr_12_log_denied_access_12_wd;
+  logic range_attr_13_we;
+  logic [3:0] range_attr_13_enable_13_qs;
+  logic [3:0] range_attr_13_enable_13_wd;
+  logic [3:0] range_attr_13_read_access_13_qs;
+  logic [3:0] range_attr_13_read_access_13_wd;
+  logic [3:0] range_attr_13_write_access_13_qs;
+  logic [3:0] range_attr_13_write_access_13_wd;
+  logic [3:0] range_attr_13_execute_access_13_qs;
+  logic [3:0] range_attr_13_execute_access_13_wd;
+  logic [3:0] range_attr_13_log_denied_access_13_qs;
+  logic [3:0] range_attr_13_log_denied_access_13_wd;
+  logic range_attr_14_we;
+  logic [3:0] range_attr_14_enable_14_qs;
+  logic [3:0] range_attr_14_enable_14_wd;
+  logic [3:0] range_attr_14_read_access_14_qs;
+  logic [3:0] range_attr_14_read_access_14_wd;
+  logic [3:0] range_attr_14_write_access_14_qs;
+  logic [3:0] range_attr_14_write_access_14_wd;
+  logic [3:0] range_attr_14_execute_access_14_qs;
+  logic [3:0] range_attr_14_execute_access_14_wd;
+  logic [3:0] range_attr_14_log_denied_access_14_qs;
+  logic [3:0] range_attr_14_log_denied_access_14_wd;
+  logic range_attr_15_we;
+  logic [3:0] range_attr_15_enable_15_qs;
+  logic [3:0] range_attr_15_enable_15_wd;
+  logic [3:0] range_attr_15_read_access_15_qs;
+  logic [3:0] range_attr_15_read_access_15_wd;
+  logic [3:0] range_attr_15_write_access_15_qs;
+  logic [3:0] range_attr_15_write_access_15_wd;
+  logic [3:0] range_attr_15_execute_access_15_qs;
+  logic [3:0] range_attr_15_execute_access_15_wd;
+  logic [3:0] range_attr_15_log_denied_access_15_qs;
+  logic [3:0] range_attr_15_log_denied_access_15_wd;
+  logic range_attr_16_we;
+  logic [3:0] range_attr_16_enable_16_qs;
+  logic [3:0] range_attr_16_enable_16_wd;
+  logic [3:0] range_attr_16_read_access_16_qs;
+  logic [3:0] range_attr_16_read_access_16_wd;
+  logic [3:0] range_attr_16_write_access_16_qs;
+  logic [3:0] range_attr_16_write_access_16_wd;
+  logic [3:0] range_attr_16_execute_access_16_qs;
+  logic [3:0] range_attr_16_execute_access_16_wd;
+  logic [3:0] range_attr_16_log_denied_access_16_qs;
+  logic [3:0] range_attr_16_log_denied_access_16_wd;
+  logic range_attr_17_we;
+  logic [3:0] range_attr_17_enable_17_qs;
+  logic [3:0] range_attr_17_enable_17_wd;
+  logic [3:0] range_attr_17_read_access_17_qs;
+  logic [3:0] range_attr_17_read_access_17_wd;
+  logic [3:0] range_attr_17_write_access_17_qs;
+  logic [3:0] range_attr_17_write_access_17_wd;
+  logic [3:0] range_attr_17_execute_access_17_qs;
+  logic [3:0] range_attr_17_execute_access_17_wd;
+  logic [3:0] range_attr_17_log_denied_access_17_qs;
+  logic [3:0] range_attr_17_log_denied_access_17_wd;
+  logic range_attr_18_we;
+  logic [3:0] range_attr_18_enable_18_qs;
+  logic [3:0] range_attr_18_enable_18_wd;
+  logic [3:0] range_attr_18_read_access_18_qs;
+  logic [3:0] range_attr_18_read_access_18_wd;
+  logic [3:0] range_attr_18_write_access_18_qs;
+  logic [3:0] range_attr_18_write_access_18_wd;
+  logic [3:0] range_attr_18_execute_access_18_qs;
+  logic [3:0] range_attr_18_execute_access_18_wd;
+  logic [3:0] range_attr_18_log_denied_access_18_qs;
+  logic [3:0] range_attr_18_log_denied_access_18_wd;
+  logic range_attr_19_we;
+  logic [3:0] range_attr_19_enable_19_qs;
+  logic [3:0] range_attr_19_enable_19_wd;
+  logic [3:0] range_attr_19_read_access_19_qs;
+  logic [3:0] range_attr_19_read_access_19_wd;
+  logic [3:0] range_attr_19_write_access_19_qs;
+  logic [3:0] range_attr_19_write_access_19_wd;
+  logic [3:0] range_attr_19_execute_access_19_qs;
+  logic [3:0] range_attr_19_execute_access_19_wd;
+  logic [3:0] range_attr_19_log_denied_access_19_qs;
+  logic [3:0] range_attr_19_log_denied_access_19_wd;
+  logic range_attr_20_we;
+  logic [3:0] range_attr_20_enable_20_qs;
+  logic [3:0] range_attr_20_enable_20_wd;
+  logic [3:0] range_attr_20_read_access_20_qs;
+  logic [3:0] range_attr_20_read_access_20_wd;
+  logic [3:0] range_attr_20_write_access_20_qs;
+  logic [3:0] range_attr_20_write_access_20_wd;
+  logic [3:0] range_attr_20_execute_access_20_qs;
+  logic [3:0] range_attr_20_execute_access_20_wd;
+  logic [3:0] range_attr_20_log_denied_access_20_qs;
+  logic [3:0] range_attr_20_log_denied_access_20_wd;
+  logic range_attr_21_we;
+  logic [3:0] range_attr_21_enable_21_qs;
+  logic [3:0] range_attr_21_enable_21_wd;
+  logic [3:0] range_attr_21_read_access_21_qs;
+  logic [3:0] range_attr_21_read_access_21_wd;
+  logic [3:0] range_attr_21_write_access_21_qs;
+  logic [3:0] range_attr_21_write_access_21_wd;
+  logic [3:0] range_attr_21_execute_access_21_qs;
+  logic [3:0] range_attr_21_execute_access_21_wd;
+  logic [3:0] range_attr_21_log_denied_access_21_qs;
+  logic [3:0] range_attr_21_log_denied_access_21_wd;
+  logic range_attr_22_we;
+  logic [3:0] range_attr_22_enable_22_qs;
+  logic [3:0] range_attr_22_enable_22_wd;
+  logic [3:0] range_attr_22_read_access_22_qs;
+  logic [3:0] range_attr_22_read_access_22_wd;
+  logic [3:0] range_attr_22_write_access_22_qs;
+  logic [3:0] range_attr_22_write_access_22_wd;
+  logic [3:0] range_attr_22_execute_access_22_qs;
+  logic [3:0] range_attr_22_execute_access_22_wd;
+  logic [3:0] range_attr_22_log_denied_access_22_qs;
+  logic [3:0] range_attr_22_log_denied_access_22_wd;
+  logic range_attr_23_we;
+  logic [3:0] range_attr_23_enable_23_qs;
+  logic [3:0] range_attr_23_enable_23_wd;
+  logic [3:0] range_attr_23_read_access_23_qs;
+  logic [3:0] range_attr_23_read_access_23_wd;
+  logic [3:0] range_attr_23_write_access_23_qs;
+  logic [3:0] range_attr_23_write_access_23_wd;
+  logic [3:0] range_attr_23_execute_access_23_qs;
+  logic [3:0] range_attr_23_execute_access_23_wd;
+  logic [3:0] range_attr_23_log_denied_access_23_qs;
+  logic [3:0] range_attr_23_log_denied_access_23_wd;
+  logic range_attr_24_we;
+  logic [3:0] range_attr_24_enable_24_qs;
+  logic [3:0] range_attr_24_enable_24_wd;
+  logic [3:0] range_attr_24_read_access_24_qs;
+  logic [3:0] range_attr_24_read_access_24_wd;
+  logic [3:0] range_attr_24_write_access_24_qs;
+  logic [3:0] range_attr_24_write_access_24_wd;
+  logic [3:0] range_attr_24_execute_access_24_qs;
+  logic [3:0] range_attr_24_execute_access_24_wd;
+  logic [3:0] range_attr_24_log_denied_access_24_qs;
+  logic [3:0] range_attr_24_log_denied_access_24_wd;
+  logic range_attr_25_we;
+  logic [3:0] range_attr_25_enable_25_qs;
+  logic [3:0] range_attr_25_enable_25_wd;
+  logic [3:0] range_attr_25_read_access_25_qs;
+  logic [3:0] range_attr_25_read_access_25_wd;
+  logic [3:0] range_attr_25_write_access_25_qs;
+  logic [3:0] range_attr_25_write_access_25_wd;
+  logic [3:0] range_attr_25_execute_access_25_qs;
+  logic [3:0] range_attr_25_execute_access_25_wd;
+  logic [3:0] range_attr_25_log_denied_access_25_qs;
+  logic [3:0] range_attr_25_log_denied_access_25_wd;
+  logic range_attr_26_we;
+  logic [3:0] range_attr_26_enable_26_qs;
+  logic [3:0] range_attr_26_enable_26_wd;
+  logic [3:0] range_attr_26_read_access_26_qs;
+  logic [3:0] range_attr_26_read_access_26_wd;
+  logic [3:0] range_attr_26_write_access_26_qs;
+  logic [3:0] range_attr_26_write_access_26_wd;
+  logic [3:0] range_attr_26_execute_access_26_qs;
+  logic [3:0] range_attr_26_execute_access_26_wd;
+  logic [3:0] range_attr_26_log_denied_access_26_qs;
+  logic [3:0] range_attr_26_log_denied_access_26_wd;
+  logic range_attr_27_we;
+  logic [3:0] range_attr_27_enable_27_qs;
+  logic [3:0] range_attr_27_enable_27_wd;
+  logic [3:0] range_attr_27_read_access_27_qs;
+  logic [3:0] range_attr_27_read_access_27_wd;
+  logic [3:0] range_attr_27_write_access_27_qs;
+  logic [3:0] range_attr_27_write_access_27_wd;
+  logic [3:0] range_attr_27_execute_access_27_qs;
+  logic [3:0] range_attr_27_execute_access_27_wd;
+  logic [3:0] range_attr_27_log_denied_access_27_qs;
+  logic [3:0] range_attr_27_log_denied_access_27_wd;
+  logic range_attr_28_we;
+  logic [3:0] range_attr_28_enable_28_qs;
+  logic [3:0] range_attr_28_enable_28_wd;
+  logic [3:0] range_attr_28_read_access_28_qs;
+  logic [3:0] range_attr_28_read_access_28_wd;
+  logic [3:0] range_attr_28_write_access_28_qs;
+  logic [3:0] range_attr_28_write_access_28_wd;
+  logic [3:0] range_attr_28_execute_access_28_qs;
+  logic [3:0] range_attr_28_execute_access_28_wd;
+  logic [3:0] range_attr_28_log_denied_access_28_qs;
+  logic [3:0] range_attr_28_log_denied_access_28_wd;
+  logic range_attr_29_we;
+  logic [3:0] range_attr_29_enable_29_qs;
+  logic [3:0] range_attr_29_enable_29_wd;
+  logic [3:0] range_attr_29_read_access_29_qs;
+  logic [3:0] range_attr_29_read_access_29_wd;
+  logic [3:0] range_attr_29_write_access_29_qs;
+  logic [3:0] range_attr_29_write_access_29_wd;
+  logic [3:0] range_attr_29_execute_access_29_qs;
+  logic [3:0] range_attr_29_execute_access_29_wd;
+  logic [3:0] range_attr_29_log_denied_access_29_qs;
+  logic [3:0] range_attr_29_log_denied_access_29_wd;
+  logic range_attr_30_we;
+  logic [3:0] range_attr_30_enable_30_qs;
+  logic [3:0] range_attr_30_enable_30_wd;
+  logic [3:0] range_attr_30_read_access_30_qs;
+  logic [3:0] range_attr_30_read_access_30_wd;
+  logic [3:0] range_attr_30_write_access_30_qs;
+  logic [3:0] range_attr_30_write_access_30_wd;
+  logic [3:0] range_attr_30_execute_access_30_qs;
+  logic [3:0] range_attr_30_execute_access_30_wd;
+  logic [3:0] range_attr_30_log_denied_access_30_qs;
+  logic [3:0] range_attr_30_log_denied_access_30_wd;
+  logic range_attr_31_we;
+  logic [3:0] range_attr_31_enable_31_qs;
+  logic [3:0] range_attr_31_enable_31_wd;
+  logic [3:0] range_attr_31_read_access_31_qs;
+  logic [3:0] range_attr_31_read_access_31_wd;
+  logic [3:0] range_attr_31_write_access_31_qs;
+  logic [3:0] range_attr_31_write_access_31_wd;
+  logic [3:0] range_attr_31_execute_access_31_qs;
+  logic [3:0] range_attr_31_execute_access_31_wd;
+  logic [3:0] range_attr_31_log_denied_access_31_qs;
+  logic [3:0] range_attr_31_log_denied_access_31_wd;
+  logic range_attr_32_we;
+  logic [3:0] range_attr_32_enable_32_qs;
+  logic [3:0] range_attr_32_enable_32_wd;
+  logic [3:0] range_attr_32_read_access_32_qs;
+  logic [3:0] range_attr_32_read_access_32_wd;
+  logic [3:0] range_attr_32_write_access_32_qs;
+  logic [3:0] range_attr_32_write_access_32_wd;
+  logic [3:0] range_attr_32_execute_access_32_qs;
+  logic [3:0] range_attr_32_execute_access_32_wd;
+  logic [3:0] range_attr_32_log_denied_access_32_qs;
+  logic [3:0] range_attr_32_log_denied_access_32_wd;
+  logic range_attr_33_we;
+  logic [3:0] range_attr_33_enable_33_qs;
+  logic [3:0] range_attr_33_enable_33_wd;
+  logic [3:0] range_attr_33_read_access_33_qs;
+  logic [3:0] range_attr_33_read_access_33_wd;
+  logic [3:0] range_attr_33_write_access_33_qs;
+  logic [3:0] range_attr_33_write_access_33_wd;
+  logic [3:0] range_attr_33_execute_access_33_qs;
+  logic [3:0] range_attr_33_execute_access_33_wd;
+  logic [3:0] range_attr_33_log_denied_access_33_qs;
+  logic [3:0] range_attr_33_log_denied_access_33_wd;
+  logic range_attr_34_we;
+  logic [3:0] range_attr_34_enable_34_qs;
+  logic [3:0] range_attr_34_enable_34_wd;
+  logic [3:0] range_attr_34_read_access_34_qs;
+  logic [3:0] range_attr_34_read_access_34_wd;
+  logic [3:0] range_attr_34_write_access_34_qs;
+  logic [3:0] range_attr_34_write_access_34_wd;
+  logic [3:0] range_attr_34_execute_access_34_qs;
+  logic [3:0] range_attr_34_execute_access_34_wd;
+  logic [3:0] range_attr_34_log_denied_access_34_qs;
+  logic [3:0] range_attr_34_log_denied_access_34_wd;
+  logic range_attr_35_we;
+  logic [3:0] range_attr_35_enable_35_qs;
+  logic [3:0] range_attr_35_enable_35_wd;
+  logic [3:0] range_attr_35_read_access_35_qs;
+  logic [3:0] range_attr_35_read_access_35_wd;
+  logic [3:0] range_attr_35_write_access_35_qs;
+  logic [3:0] range_attr_35_write_access_35_wd;
+  logic [3:0] range_attr_35_execute_access_35_qs;
+  logic [3:0] range_attr_35_execute_access_35_wd;
+  logic [3:0] range_attr_35_log_denied_access_35_qs;
+  logic [3:0] range_attr_35_log_denied_access_35_wd;
+  logic range_attr_36_we;
+  logic [3:0] range_attr_36_enable_36_qs;
+  logic [3:0] range_attr_36_enable_36_wd;
+  logic [3:0] range_attr_36_read_access_36_qs;
+  logic [3:0] range_attr_36_read_access_36_wd;
+  logic [3:0] range_attr_36_write_access_36_qs;
+  logic [3:0] range_attr_36_write_access_36_wd;
+  logic [3:0] range_attr_36_execute_access_36_qs;
+  logic [3:0] range_attr_36_execute_access_36_wd;
+  logic [3:0] range_attr_36_log_denied_access_36_qs;
+  logic [3:0] range_attr_36_log_denied_access_36_wd;
+  logic range_attr_37_we;
+  logic [3:0] range_attr_37_enable_37_qs;
+  logic [3:0] range_attr_37_enable_37_wd;
+  logic [3:0] range_attr_37_read_access_37_qs;
+  logic [3:0] range_attr_37_read_access_37_wd;
+  logic [3:0] range_attr_37_write_access_37_qs;
+  logic [3:0] range_attr_37_write_access_37_wd;
+  logic [3:0] range_attr_37_execute_access_37_qs;
+  logic [3:0] range_attr_37_execute_access_37_wd;
+  logic [3:0] range_attr_37_log_denied_access_37_qs;
+  logic [3:0] range_attr_37_log_denied_access_37_wd;
+  logic range_attr_38_we;
+  logic [3:0] range_attr_38_enable_38_qs;
+  logic [3:0] range_attr_38_enable_38_wd;
+  logic [3:0] range_attr_38_read_access_38_qs;
+  logic [3:0] range_attr_38_read_access_38_wd;
+  logic [3:0] range_attr_38_write_access_38_qs;
+  logic [3:0] range_attr_38_write_access_38_wd;
+  logic [3:0] range_attr_38_execute_access_38_qs;
+  logic [3:0] range_attr_38_execute_access_38_wd;
+  logic [3:0] range_attr_38_log_denied_access_38_qs;
+  logic [3:0] range_attr_38_log_denied_access_38_wd;
+  logic range_attr_39_we;
+  logic [3:0] range_attr_39_enable_39_qs;
+  logic [3:0] range_attr_39_enable_39_wd;
+  logic [3:0] range_attr_39_read_access_39_qs;
+  logic [3:0] range_attr_39_read_access_39_wd;
+  logic [3:0] range_attr_39_write_access_39_qs;
+  logic [3:0] range_attr_39_write_access_39_wd;
+  logic [3:0] range_attr_39_execute_access_39_qs;
+  logic [3:0] range_attr_39_execute_access_39_wd;
+  logic [3:0] range_attr_39_log_denied_access_39_qs;
+  logic [3:0] range_attr_39_log_denied_access_39_wd;
+  logic range_attr_40_we;
+  logic [3:0] range_attr_40_enable_40_qs;
+  logic [3:0] range_attr_40_enable_40_wd;
+  logic [3:0] range_attr_40_read_access_40_qs;
+  logic [3:0] range_attr_40_read_access_40_wd;
+  logic [3:0] range_attr_40_write_access_40_qs;
+  logic [3:0] range_attr_40_write_access_40_wd;
+  logic [3:0] range_attr_40_execute_access_40_qs;
+  logic [3:0] range_attr_40_execute_access_40_wd;
+  logic [3:0] range_attr_40_log_denied_access_40_qs;
+  logic [3:0] range_attr_40_log_denied_access_40_wd;
+  logic range_attr_41_we;
+  logic [3:0] range_attr_41_enable_41_qs;
+  logic [3:0] range_attr_41_enable_41_wd;
+  logic [3:0] range_attr_41_read_access_41_qs;
+  logic [3:0] range_attr_41_read_access_41_wd;
+  logic [3:0] range_attr_41_write_access_41_qs;
+  logic [3:0] range_attr_41_write_access_41_wd;
+  logic [3:0] range_attr_41_execute_access_41_qs;
+  logic [3:0] range_attr_41_execute_access_41_wd;
+  logic [3:0] range_attr_41_log_denied_access_41_qs;
+  logic [3:0] range_attr_41_log_denied_access_41_wd;
+  logic range_attr_42_we;
+  logic [3:0] range_attr_42_enable_42_qs;
+  logic [3:0] range_attr_42_enable_42_wd;
+  logic [3:0] range_attr_42_read_access_42_qs;
+  logic [3:0] range_attr_42_read_access_42_wd;
+  logic [3:0] range_attr_42_write_access_42_qs;
+  logic [3:0] range_attr_42_write_access_42_wd;
+  logic [3:0] range_attr_42_execute_access_42_qs;
+  logic [3:0] range_attr_42_execute_access_42_wd;
+  logic [3:0] range_attr_42_log_denied_access_42_qs;
+  logic [3:0] range_attr_42_log_denied_access_42_wd;
+  logic range_attr_43_we;
+  logic [3:0] range_attr_43_enable_43_qs;
+  logic [3:0] range_attr_43_enable_43_wd;
+  logic [3:0] range_attr_43_read_access_43_qs;
+  logic [3:0] range_attr_43_read_access_43_wd;
+  logic [3:0] range_attr_43_write_access_43_qs;
+  logic [3:0] range_attr_43_write_access_43_wd;
+  logic [3:0] range_attr_43_execute_access_43_qs;
+  logic [3:0] range_attr_43_execute_access_43_wd;
+  logic [3:0] range_attr_43_log_denied_access_43_qs;
+  logic [3:0] range_attr_43_log_denied_access_43_wd;
+  logic range_attr_44_we;
+  logic [3:0] range_attr_44_enable_44_qs;
+  logic [3:0] range_attr_44_enable_44_wd;
+  logic [3:0] range_attr_44_read_access_44_qs;
+  logic [3:0] range_attr_44_read_access_44_wd;
+  logic [3:0] range_attr_44_write_access_44_qs;
+  logic [3:0] range_attr_44_write_access_44_wd;
+  logic [3:0] range_attr_44_execute_access_44_qs;
+  logic [3:0] range_attr_44_execute_access_44_wd;
+  logic [3:0] range_attr_44_log_denied_access_44_qs;
+  logic [3:0] range_attr_44_log_denied_access_44_wd;
+  logic range_attr_45_we;
+  logic [3:0] range_attr_45_enable_45_qs;
+  logic [3:0] range_attr_45_enable_45_wd;
+  logic [3:0] range_attr_45_read_access_45_qs;
+  logic [3:0] range_attr_45_read_access_45_wd;
+  logic [3:0] range_attr_45_write_access_45_qs;
+  logic [3:0] range_attr_45_write_access_45_wd;
+  logic [3:0] range_attr_45_execute_access_45_qs;
+  logic [3:0] range_attr_45_execute_access_45_wd;
+  logic [3:0] range_attr_45_log_denied_access_45_qs;
+  logic [3:0] range_attr_45_log_denied_access_45_wd;
+  logic range_attr_46_we;
+  logic [3:0] range_attr_46_enable_46_qs;
+  logic [3:0] range_attr_46_enable_46_wd;
+  logic [3:0] range_attr_46_read_access_46_qs;
+  logic [3:0] range_attr_46_read_access_46_wd;
+  logic [3:0] range_attr_46_write_access_46_qs;
+  logic [3:0] range_attr_46_write_access_46_wd;
+  logic [3:0] range_attr_46_execute_access_46_qs;
+  logic [3:0] range_attr_46_execute_access_46_wd;
+  logic [3:0] range_attr_46_log_denied_access_46_qs;
+  logic [3:0] range_attr_46_log_denied_access_46_wd;
+  logic range_attr_47_we;
+  logic [3:0] range_attr_47_enable_47_qs;
+  logic [3:0] range_attr_47_enable_47_wd;
+  logic [3:0] range_attr_47_read_access_47_qs;
+  logic [3:0] range_attr_47_read_access_47_wd;
+  logic [3:0] range_attr_47_write_access_47_qs;
+  logic [3:0] range_attr_47_write_access_47_wd;
+  logic [3:0] range_attr_47_execute_access_47_qs;
+  logic [3:0] range_attr_47_execute_access_47_wd;
+  logic [3:0] range_attr_47_log_denied_access_47_qs;
+  logic [3:0] range_attr_47_log_denied_access_47_wd;
+  logic range_attr_48_we;
+  logic [3:0] range_attr_48_enable_48_qs;
+  logic [3:0] range_attr_48_enable_48_wd;
+  logic [3:0] range_attr_48_read_access_48_qs;
+  logic [3:0] range_attr_48_read_access_48_wd;
+  logic [3:0] range_attr_48_write_access_48_qs;
+  logic [3:0] range_attr_48_write_access_48_wd;
+  logic [3:0] range_attr_48_execute_access_48_qs;
+  logic [3:0] range_attr_48_execute_access_48_wd;
+  logic [3:0] range_attr_48_log_denied_access_48_qs;
+  logic [3:0] range_attr_48_log_denied_access_48_wd;
+  logic range_attr_49_we;
+  logic [3:0] range_attr_49_enable_49_qs;
+  logic [3:0] range_attr_49_enable_49_wd;
+  logic [3:0] range_attr_49_read_access_49_qs;
+  logic [3:0] range_attr_49_read_access_49_wd;
+  logic [3:0] range_attr_49_write_access_49_qs;
+  logic [3:0] range_attr_49_write_access_49_wd;
+  logic [3:0] range_attr_49_execute_access_49_qs;
+  logic [3:0] range_attr_49_execute_access_49_wd;
+  logic [3:0] range_attr_49_log_denied_access_49_qs;
+  logic [3:0] range_attr_49_log_denied_access_49_wd;
+  logic range_attr_50_we;
+  logic [3:0] range_attr_50_enable_50_qs;
+  logic [3:0] range_attr_50_enable_50_wd;
+  logic [3:0] range_attr_50_read_access_50_qs;
+  logic [3:0] range_attr_50_read_access_50_wd;
+  logic [3:0] range_attr_50_write_access_50_qs;
+  logic [3:0] range_attr_50_write_access_50_wd;
+  logic [3:0] range_attr_50_execute_access_50_qs;
+  logic [3:0] range_attr_50_execute_access_50_wd;
+  logic [3:0] range_attr_50_log_denied_access_50_qs;
+  logic [3:0] range_attr_50_log_denied_access_50_wd;
+  logic range_attr_51_we;
+  logic [3:0] range_attr_51_enable_51_qs;
+  logic [3:0] range_attr_51_enable_51_wd;
+  logic [3:0] range_attr_51_read_access_51_qs;
+  logic [3:0] range_attr_51_read_access_51_wd;
+  logic [3:0] range_attr_51_write_access_51_qs;
+  logic [3:0] range_attr_51_write_access_51_wd;
+  logic [3:0] range_attr_51_execute_access_51_qs;
+  logic [3:0] range_attr_51_execute_access_51_wd;
+  logic [3:0] range_attr_51_log_denied_access_51_qs;
+  logic [3:0] range_attr_51_log_denied_access_51_wd;
+  logic range_attr_52_we;
+  logic [3:0] range_attr_52_enable_52_qs;
+  logic [3:0] range_attr_52_enable_52_wd;
+  logic [3:0] range_attr_52_read_access_52_qs;
+  logic [3:0] range_attr_52_read_access_52_wd;
+  logic [3:0] range_attr_52_write_access_52_qs;
+  logic [3:0] range_attr_52_write_access_52_wd;
+  logic [3:0] range_attr_52_execute_access_52_qs;
+  logic [3:0] range_attr_52_execute_access_52_wd;
+  logic [3:0] range_attr_52_log_denied_access_52_qs;
+  logic [3:0] range_attr_52_log_denied_access_52_wd;
+  logic range_attr_53_we;
+  logic [3:0] range_attr_53_enable_53_qs;
+  logic [3:0] range_attr_53_enable_53_wd;
+  logic [3:0] range_attr_53_read_access_53_qs;
+  logic [3:0] range_attr_53_read_access_53_wd;
+  logic [3:0] range_attr_53_write_access_53_qs;
+  logic [3:0] range_attr_53_write_access_53_wd;
+  logic [3:0] range_attr_53_execute_access_53_qs;
+  logic [3:0] range_attr_53_execute_access_53_wd;
+  logic [3:0] range_attr_53_log_denied_access_53_qs;
+  logic [3:0] range_attr_53_log_denied_access_53_wd;
+  logic range_attr_54_we;
+  logic [3:0] range_attr_54_enable_54_qs;
+  logic [3:0] range_attr_54_enable_54_wd;
+  logic [3:0] range_attr_54_read_access_54_qs;
+  logic [3:0] range_attr_54_read_access_54_wd;
+  logic [3:0] range_attr_54_write_access_54_qs;
+  logic [3:0] range_attr_54_write_access_54_wd;
+  logic [3:0] range_attr_54_execute_access_54_qs;
+  logic [3:0] range_attr_54_execute_access_54_wd;
+  logic [3:0] range_attr_54_log_denied_access_54_qs;
+  logic [3:0] range_attr_54_log_denied_access_54_wd;
+  logic range_attr_55_we;
+  logic [3:0] range_attr_55_enable_55_qs;
+  logic [3:0] range_attr_55_enable_55_wd;
+  logic [3:0] range_attr_55_read_access_55_qs;
+  logic [3:0] range_attr_55_read_access_55_wd;
+  logic [3:0] range_attr_55_write_access_55_qs;
+  logic [3:0] range_attr_55_write_access_55_wd;
+  logic [3:0] range_attr_55_execute_access_55_qs;
+  logic [3:0] range_attr_55_execute_access_55_wd;
+  logic [3:0] range_attr_55_log_denied_access_55_qs;
+  logic [3:0] range_attr_55_log_denied_access_55_wd;
+  logic range_attr_56_we;
+  logic [3:0] range_attr_56_enable_56_qs;
+  logic [3:0] range_attr_56_enable_56_wd;
+  logic [3:0] range_attr_56_read_access_56_qs;
+  logic [3:0] range_attr_56_read_access_56_wd;
+  logic [3:0] range_attr_56_write_access_56_qs;
+  logic [3:0] range_attr_56_write_access_56_wd;
+  logic [3:0] range_attr_56_execute_access_56_qs;
+  logic [3:0] range_attr_56_execute_access_56_wd;
+  logic [3:0] range_attr_56_log_denied_access_56_qs;
+  logic [3:0] range_attr_56_log_denied_access_56_wd;
+  logic range_attr_57_we;
+  logic [3:0] range_attr_57_enable_57_qs;
+  logic [3:0] range_attr_57_enable_57_wd;
+  logic [3:0] range_attr_57_read_access_57_qs;
+  logic [3:0] range_attr_57_read_access_57_wd;
+  logic [3:0] range_attr_57_write_access_57_qs;
+  logic [3:0] range_attr_57_write_access_57_wd;
+  logic [3:0] range_attr_57_execute_access_57_qs;
+  logic [3:0] range_attr_57_execute_access_57_wd;
+  logic [3:0] range_attr_57_log_denied_access_57_qs;
+  logic [3:0] range_attr_57_log_denied_access_57_wd;
+  logic range_attr_58_we;
+  logic [3:0] range_attr_58_enable_58_qs;
+  logic [3:0] range_attr_58_enable_58_wd;
+  logic [3:0] range_attr_58_read_access_58_qs;
+  logic [3:0] range_attr_58_read_access_58_wd;
+  logic [3:0] range_attr_58_write_access_58_qs;
+  logic [3:0] range_attr_58_write_access_58_wd;
+  logic [3:0] range_attr_58_execute_access_58_qs;
+  logic [3:0] range_attr_58_execute_access_58_wd;
+  logic [3:0] range_attr_58_log_denied_access_58_qs;
+  logic [3:0] range_attr_58_log_denied_access_58_wd;
+  logic range_attr_59_we;
+  logic [3:0] range_attr_59_enable_59_qs;
+  logic [3:0] range_attr_59_enable_59_wd;
+  logic [3:0] range_attr_59_read_access_59_qs;
+  logic [3:0] range_attr_59_read_access_59_wd;
+  logic [3:0] range_attr_59_write_access_59_qs;
+  logic [3:0] range_attr_59_write_access_59_wd;
+  logic [3:0] range_attr_59_execute_access_59_qs;
+  logic [3:0] range_attr_59_execute_access_59_wd;
+  logic [3:0] range_attr_59_log_denied_access_59_qs;
+  logic [3:0] range_attr_59_log_denied_access_59_wd;
+  logic range_attr_60_we;
+  logic [3:0] range_attr_60_enable_60_qs;
+  logic [3:0] range_attr_60_enable_60_wd;
+  logic [3:0] range_attr_60_read_access_60_qs;
+  logic [3:0] range_attr_60_read_access_60_wd;
+  logic [3:0] range_attr_60_write_access_60_qs;
+  logic [3:0] range_attr_60_write_access_60_wd;
+  logic [3:0] range_attr_60_execute_access_60_qs;
+  logic [3:0] range_attr_60_execute_access_60_wd;
+  logic [3:0] range_attr_60_log_denied_access_60_qs;
+  logic [3:0] range_attr_60_log_denied_access_60_wd;
+  logic range_attr_61_we;
+  logic [3:0] range_attr_61_enable_61_qs;
+  logic [3:0] range_attr_61_enable_61_wd;
+  logic [3:0] range_attr_61_read_access_61_qs;
+  logic [3:0] range_attr_61_read_access_61_wd;
+  logic [3:0] range_attr_61_write_access_61_qs;
+  logic [3:0] range_attr_61_write_access_61_wd;
+  logic [3:0] range_attr_61_execute_access_61_qs;
+  logic [3:0] range_attr_61_execute_access_61_wd;
+  logic [3:0] range_attr_61_log_denied_access_61_qs;
+  logic [3:0] range_attr_61_log_denied_access_61_wd;
+  logic range_attr_62_we;
+  logic [3:0] range_attr_62_enable_62_qs;
+  logic [3:0] range_attr_62_enable_62_wd;
+  logic [3:0] range_attr_62_read_access_62_qs;
+  logic [3:0] range_attr_62_read_access_62_wd;
+  logic [3:0] range_attr_62_write_access_62_qs;
+  logic [3:0] range_attr_62_write_access_62_wd;
+  logic [3:0] range_attr_62_execute_access_62_qs;
+  logic [3:0] range_attr_62_execute_access_62_wd;
+  logic [3:0] range_attr_62_log_denied_access_62_qs;
+  logic [3:0] range_attr_62_log_denied_access_62_wd;
+  logic range_attr_63_we;
+  logic [3:0] range_attr_63_enable_63_qs;
+  logic [3:0] range_attr_63_enable_63_wd;
+  logic [3:0] range_attr_63_read_access_63_qs;
+  logic [3:0] range_attr_63_read_access_63_wd;
+  logic [3:0] range_attr_63_write_access_63_qs;
+  logic [3:0] range_attr_63_write_access_63_wd;
+  logic [3:0] range_attr_63_execute_access_63_qs;
+  logic [3:0] range_attr_63_execute_access_63_wd;
+  logic [3:0] range_attr_63_log_denied_access_63_qs;
+  logic [3:0] range_attr_63_log_denied_access_63_wd;
   logic range_racl_policy_shadowed_0_re;
   logic range_racl_policy_shadowed_0_we;
   logic [15:0] range_racl_policy_shadowed_0_read_perm_0_qs;
@@ -8919,12 +8919,12 @@ module scs_ac_range_check_reg_top
   );
 
 
-  // Subregister 0 of Multireg range_perm
-  // R[range_perm_0]: V(False)
+  // Subregister 0 of Multireg range_attr
+  // R[range_attr_0]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_0_gated_we;
-  assign range_perm_0_gated_we =
-    range_perm_0_we &
+  logic range_attr_0_gated_we;
+  assign range_attr_0_gated_we =
+    range_attr_0_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_0_qs));
   //   F[enable_0]: 3:0
   prim_subreg #(
@@ -8932,13 +8932,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_0_enable_0 (
+  ) u_range_attr_0_enable_0 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_0_gated_we),
-    .wd     (range_perm_0_enable_0_wd),
+    .we     (range_attr_0_gated_we),
+    .wd     (range_attr_0_enable_0_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -8946,11 +8946,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[0].enable.q),
+    .q      (reg2hw.range_attr[0].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_0_enable_0_qs)
+    .qs     (range_attr_0_enable_0_qs)
   );
 
   //   F[read_access_0]: 7:4
@@ -8959,13 +8959,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_0_read_access_0 (
+  ) u_range_attr_0_read_access_0 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_0_gated_we),
-    .wd     (range_perm_0_read_access_0_wd),
+    .we     (range_attr_0_gated_we),
+    .wd     (range_attr_0_read_access_0_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -8973,11 +8973,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[0].read_access.q),
+    .q      (reg2hw.range_attr[0].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_0_read_access_0_qs)
+    .qs     (range_attr_0_read_access_0_qs)
   );
 
   //   F[write_access_0]: 11:8
@@ -8986,13 +8986,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_0_write_access_0 (
+  ) u_range_attr_0_write_access_0 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_0_gated_we),
-    .wd     (range_perm_0_write_access_0_wd),
+    .we     (range_attr_0_gated_we),
+    .wd     (range_attr_0_write_access_0_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9000,11 +9000,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[0].write_access.q),
+    .q      (reg2hw.range_attr[0].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_0_write_access_0_qs)
+    .qs     (range_attr_0_write_access_0_qs)
   );
 
   //   F[execute_access_0]: 15:12
@@ -9013,13 +9013,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_0_execute_access_0 (
+  ) u_range_attr_0_execute_access_0 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_0_gated_we),
-    .wd     (range_perm_0_execute_access_0_wd),
+    .we     (range_attr_0_gated_we),
+    .wd     (range_attr_0_execute_access_0_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9027,11 +9027,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[0].execute_access.q),
+    .q      (reg2hw.range_attr[0].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_0_execute_access_0_qs)
+    .qs     (range_attr_0_execute_access_0_qs)
   );
 
   //   F[log_denied_access_0]: 19:16
@@ -9040,13 +9040,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_0_log_denied_access_0 (
+  ) u_range_attr_0_log_denied_access_0 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_0_gated_we),
-    .wd     (range_perm_0_log_denied_access_0_wd),
+    .we     (range_attr_0_gated_we),
+    .wd     (range_attr_0_log_denied_access_0_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9054,20 +9054,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[0].log_denied_access.q),
+    .q      (reg2hw.range_attr[0].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_0_log_denied_access_0_qs)
+    .qs     (range_attr_0_log_denied_access_0_qs)
   );
 
 
-  // Subregister 1 of Multireg range_perm
-  // R[range_perm_1]: V(False)
+  // Subregister 1 of Multireg range_attr
+  // R[range_attr_1]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_1_gated_we;
-  assign range_perm_1_gated_we =
-    range_perm_1_we &
+  logic range_attr_1_gated_we;
+  assign range_attr_1_gated_we =
+    range_attr_1_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_1_qs));
   //   F[enable_1]: 3:0
   prim_subreg #(
@@ -9075,13 +9075,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_1_enable_1 (
+  ) u_range_attr_1_enable_1 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_1_gated_we),
-    .wd     (range_perm_1_enable_1_wd),
+    .we     (range_attr_1_gated_we),
+    .wd     (range_attr_1_enable_1_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9089,11 +9089,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[1].enable.q),
+    .q      (reg2hw.range_attr[1].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_1_enable_1_qs)
+    .qs     (range_attr_1_enable_1_qs)
   );
 
   //   F[read_access_1]: 7:4
@@ -9102,13 +9102,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_1_read_access_1 (
+  ) u_range_attr_1_read_access_1 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_1_gated_we),
-    .wd     (range_perm_1_read_access_1_wd),
+    .we     (range_attr_1_gated_we),
+    .wd     (range_attr_1_read_access_1_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9116,11 +9116,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[1].read_access.q),
+    .q      (reg2hw.range_attr[1].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_1_read_access_1_qs)
+    .qs     (range_attr_1_read_access_1_qs)
   );
 
   //   F[write_access_1]: 11:8
@@ -9129,13 +9129,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_1_write_access_1 (
+  ) u_range_attr_1_write_access_1 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_1_gated_we),
-    .wd     (range_perm_1_write_access_1_wd),
+    .we     (range_attr_1_gated_we),
+    .wd     (range_attr_1_write_access_1_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9143,11 +9143,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[1].write_access.q),
+    .q      (reg2hw.range_attr[1].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_1_write_access_1_qs)
+    .qs     (range_attr_1_write_access_1_qs)
   );
 
   //   F[execute_access_1]: 15:12
@@ -9156,13 +9156,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_1_execute_access_1 (
+  ) u_range_attr_1_execute_access_1 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_1_gated_we),
-    .wd     (range_perm_1_execute_access_1_wd),
+    .we     (range_attr_1_gated_we),
+    .wd     (range_attr_1_execute_access_1_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9170,11 +9170,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[1].execute_access.q),
+    .q      (reg2hw.range_attr[1].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_1_execute_access_1_qs)
+    .qs     (range_attr_1_execute_access_1_qs)
   );
 
   //   F[log_denied_access_1]: 19:16
@@ -9183,13 +9183,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_1_log_denied_access_1 (
+  ) u_range_attr_1_log_denied_access_1 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_1_gated_we),
-    .wd     (range_perm_1_log_denied_access_1_wd),
+    .we     (range_attr_1_gated_we),
+    .wd     (range_attr_1_log_denied_access_1_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9197,20 +9197,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[1].log_denied_access.q),
+    .q      (reg2hw.range_attr[1].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_1_log_denied_access_1_qs)
+    .qs     (range_attr_1_log_denied_access_1_qs)
   );
 
 
-  // Subregister 2 of Multireg range_perm
-  // R[range_perm_2]: V(False)
+  // Subregister 2 of Multireg range_attr
+  // R[range_attr_2]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_2_gated_we;
-  assign range_perm_2_gated_we =
-    range_perm_2_we &
+  logic range_attr_2_gated_we;
+  assign range_attr_2_gated_we =
+    range_attr_2_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_2_qs));
   //   F[enable_2]: 3:0
   prim_subreg #(
@@ -9218,13 +9218,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_2_enable_2 (
+  ) u_range_attr_2_enable_2 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_2_gated_we),
-    .wd     (range_perm_2_enable_2_wd),
+    .we     (range_attr_2_gated_we),
+    .wd     (range_attr_2_enable_2_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9232,11 +9232,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[2].enable.q),
+    .q      (reg2hw.range_attr[2].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_2_enable_2_qs)
+    .qs     (range_attr_2_enable_2_qs)
   );
 
   //   F[read_access_2]: 7:4
@@ -9245,13 +9245,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_2_read_access_2 (
+  ) u_range_attr_2_read_access_2 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_2_gated_we),
-    .wd     (range_perm_2_read_access_2_wd),
+    .we     (range_attr_2_gated_we),
+    .wd     (range_attr_2_read_access_2_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9259,11 +9259,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[2].read_access.q),
+    .q      (reg2hw.range_attr[2].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_2_read_access_2_qs)
+    .qs     (range_attr_2_read_access_2_qs)
   );
 
   //   F[write_access_2]: 11:8
@@ -9272,13 +9272,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_2_write_access_2 (
+  ) u_range_attr_2_write_access_2 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_2_gated_we),
-    .wd     (range_perm_2_write_access_2_wd),
+    .we     (range_attr_2_gated_we),
+    .wd     (range_attr_2_write_access_2_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9286,11 +9286,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[2].write_access.q),
+    .q      (reg2hw.range_attr[2].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_2_write_access_2_qs)
+    .qs     (range_attr_2_write_access_2_qs)
   );
 
   //   F[execute_access_2]: 15:12
@@ -9299,13 +9299,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_2_execute_access_2 (
+  ) u_range_attr_2_execute_access_2 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_2_gated_we),
-    .wd     (range_perm_2_execute_access_2_wd),
+    .we     (range_attr_2_gated_we),
+    .wd     (range_attr_2_execute_access_2_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9313,11 +9313,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[2].execute_access.q),
+    .q      (reg2hw.range_attr[2].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_2_execute_access_2_qs)
+    .qs     (range_attr_2_execute_access_2_qs)
   );
 
   //   F[log_denied_access_2]: 19:16
@@ -9326,13 +9326,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_2_log_denied_access_2 (
+  ) u_range_attr_2_log_denied_access_2 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_2_gated_we),
-    .wd     (range_perm_2_log_denied_access_2_wd),
+    .we     (range_attr_2_gated_we),
+    .wd     (range_attr_2_log_denied_access_2_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9340,20 +9340,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[2].log_denied_access.q),
+    .q      (reg2hw.range_attr[2].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_2_log_denied_access_2_qs)
+    .qs     (range_attr_2_log_denied_access_2_qs)
   );
 
 
-  // Subregister 3 of Multireg range_perm
-  // R[range_perm_3]: V(False)
+  // Subregister 3 of Multireg range_attr
+  // R[range_attr_3]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_3_gated_we;
-  assign range_perm_3_gated_we =
-    range_perm_3_we &
+  logic range_attr_3_gated_we;
+  assign range_attr_3_gated_we =
+    range_attr_3_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_3_qs));
   //   F[enable_3]: 3:0
   prim_subreg #(
@@ -9361,13 +9361,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_3_enable_3 (
+  ) u_range_attr_3_enable_3 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_3_gated_we),
-    .wd     (range_perm_3_enable_3_wd),
+    .we     (range_attr_3_gated_we),
+    .wd     (range_attr_3_enable_3_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9375,11 +9375,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[3].enable.q),
+    .q      (reg2hw.range_attr[3].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_3_enable_3_qs)
+    .qs     (range_attr_3_enable_3_qs)
   );
 
   //   F[read_access_3]: 7:4
@@ -9388,13 +9388,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_3_read_access_3 (
+  ) u_range_attr_3_read_access_3 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_3_gated_we),
-    .wd     (range_perm_3_read_access_3_wd),
+    .we     (range_attr_3_gated_we),
+    .wd     (range_attr_3_read_access_3_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9402,11 +9402,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[3].read_access.q),
+    .q      (reg2hw.range_attr[3].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_3_read_access_3_qs)
+    .qs     (range_attr_3_read_access_3_qs)
   );
 
   //   F[write_access_3]: 11:8
@@ -9415,13 +9415,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_3_write_access_3 (
+  ) u_range_attr_3_write_access_3 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_3_gated_we),
-    .wd     (range_perm_3_write_access_3_wd),
+    .we     (range_attr_3_gated_we),
+    .wd     (range_attr_3_write_access_3_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9429,11 +9429,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[3].write_access.q),
+    .q      (reg2hw.range_attr[3].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_3_write_access_3_qs)
+    .qs     (range_attr_3_write_access_3_qs)
   );
 
   //   F[execute_access_3]: 15:12
@@ -9442,13 +9442,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_3_execute_access_3 (
+  ) u_range_attr_3_execute_access_3 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_3_gated_we),
-    .wd     (range_perm_3_execute_access_3_wd),
+    .we     (range_attr_3_gated_we),
+    .wd     (range_attr_3_execute_access_3_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9456,11 +9456,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[3].execute_access.q),
+    .q      (reg2hw.range_attr[3].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_3_execute_access_3_qs)
+    .qs     (range_attr_3_execute_access_3_qs)
   );
 
   //   F[log_denied_access_3]: 19:16
@@ -9469,13 +9469,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_3_log_denied_access_3 (
+  ) u_range_attr_3_log_denied_access_3 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_3_gated_we),
-    .wd     (range_perm_3_log_denied_access_3_wd),
+    .we     (range_attr_3_gated_we),
+    .wd     (range_attr_3_log_denied_access_3_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9483,20 +9483,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[3].log_denied_access.q),
+    .q      (reg2hw.range_attr[3].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_3_log_denied_access_3_qs)
+    .qs     (range_attr_3_log_denied_access_3_qs)
   );
 
 
-  // Subregister 4 of Multireg range_perm
-  // R[range_perm_4]: V(False)
+  // Subregister 4 of Multireg range_attr
+  // R[range_attr_4]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_4_gated_we;
-  assign range_perm_4_gated_we =
-    range_perm_4_we &
+  logic range_attr_4_gated_we;
+  assign range_attr_4_gated_we =
+    range_attr_4_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_4_qs));
   //   F[enable_4]: 3:0
   prim_subreg #(
@@ -9504,13 +9504,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_4_enable_4 (
+  ) u_range_attr_4_enable_4 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_4_gated_we),
-    .wd     (range_perm_4_enable_4_wd),
+    .we     (range_attr_4_gated_we),
+    .wd     (range_attr_4_enable_4_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9518,11 +9518,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[4].enable.q),
+    .q      (reg2hw.range_attr[4].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_4_enable_4_qs)
+    .qs     (range_attr_4_enable_4_qs)
   );
 
   //   F[read_access_4]: 7:4
@@ -9531,13 +9531,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_4_read_access_4 (
+  ) u_range_attr_4_read_access_4 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_4_gated_we),
-    .wd     (range_perm_4_read_access_4_wd),
+    .we     (range_attr_4_gated_we),
+    .wd     (range_attr_4_read_access_4_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9545,11 +9545,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[4].read_access.q),
+    .q      (reg2hw.range_attr[4].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_4_read_access_4_qs)
+    .qs     (range_attr_4_read_access_4_qs)
   );
 
   //   F[write_access_4]: 11:8
@@ -9558,13 +9558,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_4_write_access_4 (
+  ) u_range_attr_4_write_access_4 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_4_gated_we),
-    .wd     (range_perm_4_write_access_4_wd),
+    .we     (range_attr_4_gated_we),
+    .wd     (range_attr_4_write_access_4_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9572,11 +9572,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[4].write_access.q),
+    .q      (reg2hw.range_attr[4].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_4_write_access_4_qs)
+    .qs     (range_attr_4_write_access_4_qs)
   );
 
   //   F[execute_access_4]: 15:12
@@ -9585,13 +9585,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_4_execute_access_4 (
+  ) u_range_attr_4_execute_access_4 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_4_gated_we),
-    .wd     (range_perm_4_execute_access_4_wd),
+    .we     (range_attr_4_gated_we),
+    .wd     (range_attr_4_execute_access_4_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9599,11 +9599,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[4].execute_access.q),
+    .q      (reg2hw.range_attr[4].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_4_execute_access_4_qs)
+    .qs     (range_attr_4_execute_access_4_qs)
   );
 
   //   F[log_denied_access_4]: 19:16
@@ -9612,13 +9612,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_4_log_denied_access_4 (
+  ) u_range_attr_4_log_denied_access_4 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_4_gated_we),
-    .wd     (range_perm_4_log_denied_access_4_wd),
+    .we     (range_attr_4_gated_we),
+    .wd     (range_attr_4_log_denied_access_4_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9626,20 +9626,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[4].log_denied_access.q),
+    .q      (reg2hw.range_attr[4].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_4_log_denied_access_4_qs)
+    .qs     (range_attr_4_log_denied_access_4_qs)
   );
 
 
-  // Subregister 5 of Multireg range_perm
-  // R[range_perm_5]: V(False)
+  // Subregister 5 of Multireg range_attr
+  // R[range_attr_5]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_5_gated_we;
-  assign range_perm_5_gated_we =
-    range_perm_5_we &
+  logic range_attr_5_gated_we;
+  assign range_attr_5_gated_we =
+    range_attr_5_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_5_qs));
   //   F[enable_5]: 3:0
   prim_subreg #(
@@ -9647,13 +9647,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_5_enable_5 (
+  ) u_range_attr_5_enable_5 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_5_gated_we),
-    .wd     (range_perm_5_enable_5_wd),
+    .we     (range_attr_5_gated_we),
+    .wd     (range_attr_5_enable_5_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9661,11 +9661,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[5].enable.q),
+    .q      (reg2hw.range_attr[5].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_5_enable_5_qs)
+    .qs     (range_attr_5_enable_5_qs)
   );
 
   //   F[read_access_5]: 7:4
@@ -9674,13 +9674,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_5_read_access_5 (
+  ) u_range_attr_5_read_access_5 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_5_gated_we),
-    .wd     (range_perm_5_read_access_5_wd),
+    .we     (range_attr_5_gated_we),
+    .wd     (range_attr_5_read_access_5_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9688,11 +9688,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[5].read_access.q),
+    .q      (reg2hw.range_attr[5].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_5_read_access_5_qs)
+    .qs     (range_attr_5_read_access_5_qs)
   );
 
   //   F[write_access_5]: 11:8
@@ -9701,13 +9701,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_5_write_access_5 (
+  ) u_range_attr_5_write_access_5 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_5_gated_we),
-    .wd     (range_perm_5_write_access_5_wd),
+    .we     (range_attr_5_gated_we),
+    .wd     (range_attr_5_write_access_5_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9715,11 +9715,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[5].write_access.q),
+    .q      (reg2hw.range_attr[5].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_5_write_access_5_qs)
+    .qs     (range_attr_5_write_access_5_qs)
   );
 
   //   F[execute_access_5]: 15:12
@@ -9728,13 +9728,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_5_execute_access_5 (
+  ) u_range_attr_5_execute_access_5 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_5_gated_we),
-    .wd     (range_perm_5_execute_access_5_wd),
+    .we     (range_attr_5_gated_we),
+    .wd     (range_attr_5_execute_access_5_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9742,11 +9742,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[5].execute_access.q),
+    .q      (reg2hw.range_attr[5].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_5_execute_access_5_qs)
+    .qs     (range_attr_5_execute_access_5_qs)
   );
 
   //   F[log_denied_access_5]: 19:16
@@ -9755,13 +9755,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_5_log_denied_access_5 (
+  ) u_range_attr_5_log_denied_access_5 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_5_gated_we),
-    .wd     (range_perm_5_log_denied_access_5_wd),
+    .we     (range_attr_5_gated_we),
+    .wd     (range_attr_5_log_denied_access_5_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9769,20 +9769,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[5].log_denied_access.q),
+    .q      (reg2hw.range_attr[5].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_5_log_denied_access_5_qs)
+    .qs     (range_attr_5_log_denied_access_5_qs)
   );
 
 
-  // Subregister 6 of Multireg range_perm
-  // R[range_perm_6]: V(False)
+  // Subregister 6 of Multireg range_attr
+  // R[range_attr_6]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_6_gated_we;
-  assign range_perm_6_gated_we =
-    range_perm_6_we &
+  logic range_attr_6_gated_we;
+  assign range_attr_6_gated_we =
+    range_attr_6_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_6_qs));
   //   F[enable_6]: 3:0
   prim_subreg #(
@@ -9790,13 +9790,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_6_enable_6 (
+  ) u_range_attr_6_enable_6 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_6_gated_we),
-    .wd     (range_perm_6_enable_6_wd),
+    .we     (range_attr_6_gated_we),
+    .wd     (range_attr_6_enable_6_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9804,11 +9804,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[6].enable.q),
+    .q      (reg2hw.range_attr[6].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_6_enable_6_qs)
+    .qs     (range_attr_6_enable_6_qs)
   );
 
   //   F[read_access_6]: 7:4
@@ -9817,13 +9817,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_6_read_access_6 (
+  ) u_range_attr_6_read_access_6 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_6_gated_we),
-    .wd     (range_perm_6_read_access_6_wd),
+    .we     (range_attr_6_gated_we),
+    .wd     (range_attr_6_read_access_6_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9831,11 +9831,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[6].read_access.q),
+    .q      (reg2hw.range_attr[6].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_6_read_access_6_qs)
+    .qs     (range_attr_6_read_access_6_qs)
   );
 
   //   F[write_access_6]: 11:8
@@ -9844,13 +9844,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_6_write_access_6 (
+  ) u_range_attr_6_write_access_6 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_6_gated_we),
-    .wd     (range_perm_6_write_access_6_wd),
+    .we     (range_attr_6_gated_we),
+    .wd     (range_attr_6_write_access_6_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9858,11 +9858,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[6].write_access.q),
+    .q      (reg2hw.range_attr[6].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_6_write_access_6_qs)
+    .qs     (range_attr_6_write_access_6_qs)
   );
 
   //   F[execute_access_6]: 15:12
@@ -9871,13 +9871,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_6_execute_access_6 (
+  ) u_range_attr_6_execute_access_6 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_6_gated_we),
-    .wd     (range_perm_6_execute_access_6_wd),
+    .we     (range_attr_6_gated_we),
+    .wd     (range_attr_6_execute_access_6_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9885,11 +9885,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[6].execute_access.q),
+    .q      (reg2hw.range_attr[6].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_6_execute_access_6_qs)
+    .qs     (range_attr_6_execute_access_6_qs)
   );
 
   //   F[log_denied_access_6]: 19:16
@@ -9898,13 +9898,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_6_log_denied_access_6 (
+  ) u_range_attr_6_log_denied_access_6 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_6_gated_we),
-    .wd     (range_perm_6_log_denied_access_6_wd),
+    .we     (range_attr_6_gated_we),
+    .wd     (range_attr_6_log_denied_access_6_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9912,20 +9912,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[6].log_denied_access.q),
+    .q      (reg2hw.range_attr[6].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_6_log_denied_access_6_qs)
+    .qs     (range_attr_6_log_denied_access_6_qs)
   );
 
 
-  // Subregister 7 of Multireg range_perm
-  // R[range_perm_7]: V(False)
+  // Subregister 7 of Multireg range_attr
+  // R[range_attr_7]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_7_gated_we;
-  assign range_perm_7_gated_we =
-    range_perm_7_we &
+  logic range_attr_7_gated_we;
+  assign range_attr_7_gated_we =
+    range_attr_7_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_7_qs));
   //   F[enable_7]: 3:0
   prim_subreg #(
@@ -9933,13 +9933,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_7_enable_7 (
+  ) u_range_attr_7_enable_7 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_7_gated_we),
-    .wd     (range_perm_7_enable_7_wd),
+    .we     (range_attr_7_gated_we),
+    .wd     (range_attr_7_enable_7_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9947,11 +9947,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[7].enable.q),
+    .q      (reg2hw.range_attr[7].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_7_enable_7_qs)
+    .qs     (range_attr_7_enable_7_qs)
   );
 
   //   F[read_access_7]: 7:4
@@ -9960,13 +9960,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_7_read_access_7 (
+  ) u_range_attr_7_read_access_7 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_7_gated_we),
-    .wd     (range_perm_7_read_access_7_wd),
+    .we     (range_attr_7_gated_we),
+    .wd     (range_attr_7_read_access_7_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -9974,11 +9974,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[7].read_access.q),
+    .q      (reg2hw.range_attr[7].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_7_read_access_7_qs)
+    .qs     (range_attr_7_read_access_7_qs)
   );
 
   //   F[write_access_7]: 11:8
@@ -9987,13 +9987,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_7_write_access_7 (
+  ) u_range_attr_7_write_access_7 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_7_gated_we),
-    .wd     (range_perm_7_write_access_7_wd),
+    .we     (range_attr_7_gated_we),
+    .wd     (range_attr_7_write_access_7_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10001,11 +10001,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[7].write_access.q),
+    .q      (reg2hw.range_attr[7].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_7_write_access_7_qs)
+    .qs     (range_attr_7_write_access_7_qs)
   );
 
   //   F[execute_access_7]: 15:12
@@ -10014,13 +10014,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_7_execute_access_7 (
+  ) u_range_attr_7_execute_access_7 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_7_gated_we),
-    .wd     (range_perm_7_execute_access_7_wd),
+    .we     (range_attr_7_gated_we),
+    .wd     (range_attr_7_execute_access_7_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10028,11 +10028,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[7].execute_access.q),
+    .q      (reg2hw.range_attr[7].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_7_execute_access_7_qs)
+    .qs     (range_attr_7_execute_access_7_qs)
   );
 
   //   F[log_denied_access_7]: 19:16
@@ -10041,13 +10041,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_7_log_denied_access_7 (
+  ) u_range_attr_7_log_denied_access_7 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_7_gated_we),
-    .wd     (range_perm_7_log_denied_access_7_wd),
+    .we     (range_attr_7_gated_we),
+    .wd     (range_attr_7_log_denied_access_7_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10055,20 +10055,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[7].log_denied_access.q),
+    .q      (reg2hw.range_attr[7].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_7_log_denied_access_7_qs)
+    .qs     (range_attr_7_log_denied_access_7_qs)
   );
 
 
-  // Subregister 8 of Multireg range_perm
-  // R[range_perm_8]: V(False)
+  // Subregister 8 of Multireg range_attr
+  // R[range_attr_8]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_8_gated_we;
-  assign range_perm_8_gated_we =
-    range_perm_8_we &
+  logic range_attr_8_gated_we;
+  assign range_attr_8_gated_we =
+    range_attr_8_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_8_qs));
   //   F[enable_8]: 3:0
   prim_subreg #(
@@ -10076,13 +10076,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_8_enable_8 (
+  ) u_range_attr_8_enable_8 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_8_gated_we),
-    .wd     (range_perm_8_enable_8_wd),
+    .we     (range_attr_8_gated_we),
+    .wd     (range_attr_8_enable_8_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10090,11 +10090,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[8].enable.q),
+    .q      (reg2hw.range_attr[8].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_8_enable_8_qs)
+    .qs     (range_attr_8_enable_8_qs)
   );
 
   //   F[read_access_8]: 7:4
@@ -10103,13 +10103,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_8_read_access_8 (
+  ) u_range_attr_8_read_access_8 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_8_gated_we),
-    .wd     (range_perm_8_read_access_8_wd),
+    .we     (range_attr_8_gated_we),
+    .wd     (range_attr_8_read_access_8_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10117,11 +10117,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[8].read_access.q),
+    .q      (reg2hw.range_attr[8].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_8_read_access_8_qs)
+    .qs     (range_attr_8_read_access_8_qs)
   );
 
   //   F[write_access_8]: 11:8
@@ -10130,13 +10130,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_8_write_access_8 (
+  ) u_range_attr_8_write_access_8 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_8_gated_we),
-    .wd     (range_perm_8_write_access_8_wd),
+    .we     (range_attr_8_gated_we),
+    .wd     (range_attr_8_write_access_8_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10144,11 +10144,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[8].write_access.q),
+    .q      (reg2hw.range_attr[8].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_8_write_access_8_qs)
+    .qs     (range_attr_8_write_access_8_qs)
   );
 
   //   F[execute_access_8]: 15:12
@@ -10157,13 +10157,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_8_execute_access_8 (
+  ) u_range_attr_8_execute_access_8 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_8_gated_we),
-    .wd     (range_perm_8_execute_access_8_wd),
+    .we     (range_attr_8_gated_we),
+    .wd     (range_attr_8_execute_access_8_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10171,11 +10171,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[8].execute_access.q),
+    .q      (reg2hw.range_attr[8].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_8_execute_access_8_qs)
+    .qs     (range_attr_8_execute_access_8_qs)
   );
 
   //   F[log_denied_access_8]: 19:16
@@ -10184,13 +10184,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_8_log_denied_access_8 (
+  ) u_range_attr_8_log_denied_access_8 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_8_gated_we),
-    .wd     (range_perm_8_log_denied_access_8_wd),
+    .we     (range_attr_8_gated_we),
+    .wd     (range_attr_8_log_denied_access_8_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10198,20 +10198,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[8].log_denied_access.q),
+    .q      (reg2hw.range_attr[8].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_8_log_denied_access_8_qs)
+    .qs     (range_attr_8_log_denied_access_8_qs)
   );
 
 
-  // Subregister 9 of Multireg range_perm
-  // R[range_perm_9]: V(False)
+  // Subregister 9 of Multireg range_attr
+  // R[range_attr_9]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_9_gated_we;
-  assign range_perm_9_gated_we =
-    range_perm_9_we &
+  logic range_attr_9_gated_we;
+  assign range_attr_9_gated_we =
+    range_attr_9_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_9_qs));
   //   F[enable_9]: 3:0
   prim_subreg #(
@@ -10219,13 +10219,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_9_enable_9 (
+  ) u_range_attr_9_enable_9 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_9_gated_we),
-    .wd     (range_perm_9_enable_9_wd),
+    .we     (range_attr_9_gated_we),
+    .wd     (range_attr_9_enable_9_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10233,11 +10233,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[9].enable.q),
+    .q      (reg2hw.range_attr[9].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_9_enable_9_qs)
+    .qs     (range_attr_9_enable_9_qs)
   );
 
   //   F[read_access_9]: 7:4
@@ -10246,13 +10246,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_9_read_access_9 (
+  ) u_range_attr_9_read_access_9 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_9_gated_we),
-    .wd     (range_perm_9_read_access_9_wd),
+    .we     (range_attr_9_gated_we),
+    .wd     (range_attr_9_read_access_9_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10260,11 +10260,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[9].read_access.q),
+    .q      (reg2hw.range_attr[9].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_9_read_access_9_qs)
+    .qs     (range_attr_9_read_access_9_qs)
   );
 
   //   F[write_access_9]: 11:8
@@ -10273,13 +10273,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_9_write_access_9 (
+  ) u_range_attr_9_write_access_9 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_9_gated_we),
-    .wd     (range_perm_9_write_access_9_wd),
+    .we     (range_attr_9_gated_we),
+    .wd     (range_attr_9_write_access_9_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10287,11 +10287,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[9].write_access.q),
+    .q      (reg2hw.range_attr[9].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_9_write_access_9_qs)
+    .qs     (range_attr_9_write_access_9_qs)
   );
 
   //   F[execute_access_9]: 15:12
@@ -10300,13 +10300,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_9_execute_access_9 (
+  ) u_range_attr_9_execute_access_9 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_9_gated_we),
-    .wd     (range_perm_9_execute_access_9_wd),
+    .we     (range_attr_9_gated_we),
+    .wd     (range_attr_9_execute_access_9_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10314,11 +10314,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[9].execute_access.q),
+    .q      (reg2hw.range_attr[9].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_9_execute_access_9_qs)
+    .qs     (range_attr_9_execute_access_9_qs)
   );
 
   //   F[log_denied_access_9]: 19:16
@@ -10327,13 +10327,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_9_log_denied_access_9 (
+  ) u_range_attr_9_log_denied_access_9 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_9_gated_we),
-    .wd     (range_perm_9_log_denied_access_9_wd),
+    .we     (range_attr_9_gated_we),
+    .wd     (range_attr_9_log_denied_access_9_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10341,20 +10341,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[9].log_denied_access.q),
+    .q      (reg2hw.range_attr[9].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_9_log_denied_access_9_qs)
+    .qs     (range_attr_9_log_denied_access_9_qs)
   );
 
 
-  // Subregister 10 of Multireg range_perm
-  // R[range_perm_10]: V(False)
+  // Subregister 10 of Multireg range_attr
+  // R[range_attr_10]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_10_gated_we;
-  assign range_perm_10_gated_we =
-    range_perm_10_we &
+  logic range_attr_10_gated_we;
+  assign range_attr_10_gated_we =
+    range_attr_10_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_10_qs));
   //   F[enable_10]: 3:0
   prim_subreg #(
@@ -10362,13 +10362,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_10_enable_10 (
+  ) u_range_attr_10_enable_10 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_10_gated_we),
-    .wd     (range_perm_10_enable_10_wd),
+    .we     (range_attr_10_gated_we),
+    .wd     (range_attr_10_enable_10_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10376,11 +10376,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[10].enable.q),
+    .q      (reg2hw.range_attr[10].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_10_enable_10_qs)
+    .qs     (range_attr_10_enable_10_qs)
   );
 
   //   F[read_access_10]: 7:4
@@ -10389,13 +10389,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_10_read_access_10 (
+  ) u_range_attr_10_read_access_10 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_10_gated_we),
-    .wd     (range_perm_10_read_access_10_wd),
+    .we     (range_attr_10_gated_we),
+    .wd     (range_attr_10_read_access_10_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10403,11 +10403,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[10].read_access.q),
+    .q      (reg2hw.range_attr[10].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_10_read_access_10_qs)
+    .qs     (range_attr_10_read_access_10_qs)
   );
 
   //   F[write_access_10]: 11:8
@@ -10416,13 +10416,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_10_write_access_10 (
+  ) u_range_attr_10_write_access_10 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_10_gated_we),
-    .wd     (range_perm_10_write_access_10_wd),
+    .we     (range_attr_10_gated_we),
+    .wd     (range_attr_10_write_access_10_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10430,11 +10430,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[10].write_access.q),
+    .q      (reg2hw.range_attr[10].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_10_write_access_10_qs)
+    .qs     (range_attr_10_write_access_10_qs)
   );
 
   //   F[execute_access_10]: 15:12
@@ -10443,13 +10443,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_10_execute_access_10 (
+  ) u_range_attr_10_execute_access_10 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_10_gated_we),
-    .wd     (range_perm_10_execute_access_10_wd),
+    .we     (range_attr_10_gated_we),
+    .wd     (range_attr_10_execute_access_10_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10457,11 +10457,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[10].execute_access.q),
+    .q      (reg2hw.range_attr[10].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_10_execute_access_10_qs)
+    .qs     (range_attr_10_execute_access_10_qs)
   );
 
   //   F[log_denied_access_10]: 19:16
@@ -10470,13 +10470,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_10_log_denied_access_10 (
+  ) u_range_attr_10_log_denied_access_10 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_10_gated_we),
-    .wd     (range_perm_10_log_denied_access_10_wd),
+    .we     (range_attr_10_gated_we),
+    .wd     (range_attr_10_log_denied_access_10_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10484,20 +10484,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[10].log_denied_access.q),
+    .q      (reg2hw.range_attr[10].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_10_log_denied_access_10_qs)
+    .qs     (range_attr_10_log_denied_access_10_qs)
   );
 
 
-  // Subregister 11 of Multireg range_perm
-  // R[range_perm_11]: V(False)
+  // Subregister 11 of Multireg range_attr
+  // R[range_attr_11]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_11_gated_we;
-  assign range_perm_11_gated_we =
-    range_perm_11_we &
+  logic range_attr_11_gated_we;
+  assign range_attr_11_gated_we =
+    range_attr_11_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_11_qs));
   //   F[enable_11]: 3:0
   prim_subreg #(
@@ -10505,13 +10505,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_11_enable_11 (
+  ) u_range_attr_11_enable_11 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_11_gated_we),
-    .wd     (range_perm_11_enable_11_wd),
+    .we     (range_attr_11_gated_we),
+    .wd     (range_attr_11_enable_11_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10519,11 +10519,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[11].enable.q),
+    .q      (reg2hw.range_attr[11].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_11_enable_11_qs)
+    .qs     (range_attr_11_enable_11_qs)
   );
 
   //   F[read_access_11]: 7:4
@@ -10532,13 +10532,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_11_read_access_11 (
+  ) u_range_attr_11_read_access_11 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_11_gated_we),
-    .wd     (range_perm_11_read_access_11_wd),
+    .we     (range_attr_11_gated_we),
+    .wd     (range_attr_11_read_access_11_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10546,11 +10546,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[11].read_access.q),
+    .q      (reg2hw.range_attr[11].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_11_read_access_11_qs)
+    .qs     (range_attr_11_read_access_11_qs)
   );
 
   //   F[write_access_11]: 11:8
@@ -10559,13 +10559,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_11_write_access_11 (
+  ) u_range_attr_11_write_access_11 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_11_gated_we),
-    .wd     (range_perm_11_write_access_11_wd),
+    .we     (range_attr_11_gated_we),
+    .wd     (range_attr_11_write_access_11_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10573,11 +10573,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[11].write_access.q),
+    .q      (reg2hw.range_attr[11].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_11_write_access_11_qs)
+    .qs     (range_attr_11_write_access_11_qs)
   );
 
   //   F[execute_access_11]: 15:12
@@ -10586,13 +10586,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_11_execute_access_11 (
+  ) u_range_attr_11_execute_access_11 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_11_gated_we),
-    .wd     (range_perm_11_execute_access_11_wd),
+    .we     (range_attr_11_gated_we),
+    .wd     (range_attr_11_execute_access_11_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10600,11 +10600,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[11].execute_access.q),
+    .q      (reg2hw.range_attr[11].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_11_execute_access_11_qs)
+    .qs     (range_attr_11_execute_access_11_qs)
   );
 
   //   F[log_denied_access_11]: 19:16
@@ -10613,13 +10613,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_11_log_denied_access_11 (
+  ) u_range_attr_11_log_denied_access_11 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_11_gated_we),
-    .wd     (range_perm_11_log_denied_access_11_wd),
+    .we     (range_attr_11_gated_we),
+    .wd     (range_attr_11_log_denied_access_11_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10627,20 +10627,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[11].log_denied_access.q),
+    .q      (reg2hw.range_attr[11].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_11_log_denied_access_11_qs)
+    .qs     (range_attr_11_log_denied_access_11_qs)
   );
 
 
-  // Subregister 12 of Multireg range_perm
-  // R[range_perm_12]: V(False)
+  // Subregister 12 of Multireg range_attr
+  // R[range_attr_12]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_12_gated_we;
-  assign range_perm_12_gated_we =
-    range_perm_12_we &
+  logic range_attr_12_gated_we;
+  assign range_attr_12_gated_we =
+    range_attr_12_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_12_qs));
   //   F[enable_12]: 3:0
   prim_subreg #(
@@ -10648,13 +10648,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_12_enable_12 (
+  ) u_range_attr_12_enable_12 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_12_gated_we),
-    .wd     (range_perm_12_enable_12_wd),
+    .we     (range_attr_12_gated_we),
+    .wd     (range_attr_12_enable_12_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10662,11 +10662,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[12].enable.q),
+    .q      (reg2hw.range_attr[12].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_12_enable_12_qs)
+    .qs     (range_attr_12_enable_12_qs)
   );
 
   //   F[read_access_12]: 7:4
@@ -10675,13 +10675,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_12_read_access_12 (
+  ) u_range_attr_12_read_access_12 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_12_gated_we),
-    .wd     (range_perm_12_read_access_12_wd),
+    .we     (range_attr_12_gated_we),
+    .wd     (range_attr_12_read_access_12_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10689,11 +10689,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[12].read_access.q),
+    .q      (reg2hw.range_attr[12].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_12_read_access_12_qs)
+    .qs     (range_attr_12_read_access_12_qs)
   );
 
   //   F[write_access_12]: 11:8
@@ -10702,13 +10702,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_12_write_access_12 (
+  ) u_range_attr_12_write_access_12 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_12_gated_we),
-    .wd     (range_perm_12_write_access_12_wd),
+    .we     (range_attr_12_gated_we),
+    .wd     (range_attr_12_write_access_12_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10716,11 +10716,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[12].write_access.q),
+    .q      (reg2hw.range_attr[12].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_12_write_access_12_qs)
+    .qs     (range_attr_12_write_access_12_qs)
   );
 
   //   F[execute_access_12]: 15:12
@@ -10729,13 +10729,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_12_execute_access_12 (
+  ) u_range_attr_12_execute_access_12 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_12_gated_we),
-    .wd     (range_perm_12_execute_access_12_wd),
+    .we     (range_attr_12_gated_we),
+    .wd     (range_attr_12_execute_access_12_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10743,11 +10743,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[12].execute_access.q),
+    .q      (reg2hw.range_attr[12].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_12_execute_access_12_qs)
+    .qs     (range_attr_12_execute_access_12_qs)
   );
 
   //   F[log_denied_access_12]: 19:16
@@ -10756,13 +10756,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_12_log_denied_access_12 (
+  ) u_range_attr_12_log_denied_access_12 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_12_gated_we),
-    .wd     (range_perm_12_log_denied_access_12_wd),
+    .we     (range_attr_12_gated_we),
+    .wd     (range_attr_12_log_denied_access_12_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10770,20 +10770,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[12].log_denied_access.q),
+    .q      (reg2hw.range_attr[12].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_12_log_denied_access_12_qs)
+    .qs     (range_attr_12_log_denied_access_12_qs)
   );
 
 
-  // Subregister 13 of Multireg range_perm
-  // R[range_perm_13]: V(False)
+  // Subregister 13 of Multireg range_attr
+  // R[range_attr_13]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_13_gated_we;
-  assign range_perm_13_gated_we =
-    range_perm_13_we &
+  logic range_attr_13_gated_we;
+  assign range_attr_13_gated_we =
+    range_attr_13_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_13_qs));
   //   F[enable_13]: 3:0
   prim_subreg #(
@@ -10791,13 +10791,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_13_enable_13 (
+  ) u_range_attr_13_enable_13 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_13_gated_we),
-    .wd     (range_perm_13_enable_13_wd),
+    .we     (range_attr_13_gated_we),
+    .wd     (range_attr_13_enable_13_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10805,11 +10805,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[13].enable.q),
+    .q      (reg2hw.range_attr[13].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_13_enable_13_qs)
+    .qs     (range_attr_13_enable_13_qs)
   );
 
   //   F[read_access_13]: 7:4
@@ -10818,13 +10818,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_13_read_access_13 (
+  ) u_range_attr_13_read_access_13 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_13_gated_we),
-    .wd     (range_perm_13_read_access_13_wd),
+    .we     (range_attr_13_gated_we),
+    .wd     (range_attr_13_read_access_13_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10832,11 +10832,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[13].read_access.q),
+    .q      (reg2hw.range_attr[13].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_13_read_access_13_qs)
+    .qs     (range_attr_13_read_access_13_qs)
   );
 
   //   F[write_access_13]: 11:8
@@ -10845,13 +10845,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_13_write_access_13 (
+  ) u_range_attr_13_write_access_13 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_13_gated_we),
-    .wd     (range_perm_13_write_access_13_wd),
+    .we     (range_attr_13_gated_we),
+    .wd     (range_attr_13_write_access_13_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10859,11 +10859,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[13].write_access.q),
+    .q      (reg2hw.range_attr[13].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_13_write_access_13_qs)
+    .qs     (range_attr_13_write_access_13_qs)
   );
 
   //   F[execute_access_13]: 15:12
@@ -10872,13 +10872,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_13_execute_access_13 (
+  ) u_range_attr_13_execute_access_13 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_13_gated_we),
-    .wd     (range_perm_13_execute_access_13_wd),
+    .we     (range_attr_13_gated_we),
+    .wd     (range_attr_13_execute_access_13_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10886,11 +10886,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[13].execute_access.q),
+    .q      (reg2hw.range_attr[13].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_13_execute_access_13_qs)
+    .qs     (range_attr_13_execute_access_13_qs)
   );
 
   //   F[log_denied_access_13]: 19:16
@@ -10899,13 +10899,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_13_log_denied_access_13 (
+  ) u_range_attr_13_log_denied_access_13 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_13_gated_we),
-    .wd     (range_perm_13_log_denied_access_13_wd),
+    .we     (range_attr_13_gated_we),
+    .wd     (range_attr_13_log_denied_access_13_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10913,20 +10913,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[13].log_denied_access.q),
+    .q      (reg2hw.range_attr[13].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_13_log_denied_access_13_qs)
+    .qs     (range_attr_13_log_denied_access_13_qs)
   );
 
 
-  // Subregister 14 of Multireg range_perm
-  // R[range_perm_14]: V(False)
+  // Subregister 14 of Multireg range_attr
+  // R[range_attr_14]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_14_gated_we;
-  assign range_perm_14_gated_we =
-    range_perm_14_we &
+  logic range_attr_14_gated_we;
+  assign range_attr_14_gated_we =
+    range_attr_14_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_14_qs));
   //   F[enable_14]: 3:0
   prim_subreg #(
@@ -10934,13 +10934,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_14_enable_14 (
+  ) u_range_attr_14_enable_14 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_14_gated_we),
-    .wd     (range_perm_14_enable_14_wd),
+    .we     (range_attr_14_gated_we),
+    .wd     (range_attr_14_enable_14_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10948,11 +10948,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[14].enable.q),
+    .q      (reg2hw.range_attr[14].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_14_enable_14_qs)
+    .qs     (range_attr_14_enable_14_qs)
   );
 
   //   F[read_access_14]: 7:4
@@ -10961,13 +10961,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_14_read_access_14 (
+  ) u_range_attr_14_read_access_14 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_14_gated_we),
-    .wd     (range_perm_14_read_access_14_wd),
+    .we     (range_attr_14_gated_we),
+    .wd     (range_attr_14_read_access_14_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -10975,11 +10975,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[14].read_access.q),
+    .q      (reg2hw.range_attr[14].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_14_read_access_14_qs)
+    .qs     (range_attr_14_read_access_14_qs)
   );
 
   //   F[write_access_14]: 11:8
@@ -10988,13 +10988,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_14_write_access_14 (
+  ) u_range_attr_14_write_access_14 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_14_gated_we),
-    .wd     (range_perm_14_write_access_14_wd),
+    .we     (range_attr_14_gated_we),
+    .wd     (range_attr_14_write_access_14_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11002,11 +11002,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[14].write_access.q),
+    .q      (reg2hw.range_attr[14].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_14_write_access_14_qs)
+    .qs     (range_attr_14_write_access_14_qs)
   );
 
   //   F[execute_access_14]: 15:12
@@ -11015,13 +11015,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_14_execute_access_14 (
+  ) u_range_attr_14_execute_access_14 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_14_gated_we),
-    .wd     (range_perm_14_execute_access_14_wd),
+    .we     (range_attr_14_gated_we),
+    .wd     (range_attr_14_execute_access_14_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11029,11 +11029,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[14].execute_access.q),
+    .q      (reg2hw.range_attr[14].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_14_execute_access_14_qs)
+    .qs     (range_attr_14_execute_access_14_qs)
   );
 
   //   F[log_denied_access_14]: 19:16
@@ -11042,13 +11042,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_14_log_denied_access_14 (
+  ) u_range_attr_14_log_denied_access_14 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_14_gated_we),
-    .wd     (range_perm_14_log_denied_access_14_wd),
+    .we     (range_attr_14_gated_we),
+    .wd     (range_attr_14_log_denied_access_14_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11056,20 +11056,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[14].log_denied_access.q),
+    .q      (reg2hw.range_attr[14].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_14_log_denied_access_14_qs)
+    .qs     (range_attr_14_log_denied_access_14_qs)
   );
 
 
-  // Subregister 15 of Multireg range_perm
-  // R[range_perm_15]: V(False)
+  // Subregister 15 of Multireg range_attr
+  // R[range_attr_15]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_15_gated_we;
-  assign range_perm_15_gated_we =
-    range_perm_15_we &
+  logic range_attr_15_gated_we;
+  assign range_attr_15_gated_we =
+    range_attr_15_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_15_qs));
   //   F[enable_15]: 3:0
   prim_subreg #(
@@ -11077,13 +11077,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_15_enable_15 (
+  ) u_range_attr_15_enable_15 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_15_gated_we),
-    .wd     (range_perm_15_enable_15_wd),
+    .we     (range_attr_15_gated_we),
+    .wd     (range_attr_15_enable_15_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11091,11 +11091,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[15].enable.q),
+    .q      (reg2hw.range_attr[15].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_15_enable_15_qs)
+    .qs     (range_attr_15_enable_15_qs)
   );
 
   //   F[read_access_15]: 7:4
@@ -11104,13 +11104,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_15_read_access_15 (
+  ) u_range_attr_15_read_access_15 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_15_gated_we),
-    .wd     (range_perm_15_read_access_15_wd),
+    .we     (range_attr_15_gated_we),
+    .wd     (range_attr_15_read_access_15_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11118,11 +11118,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[15].read_access.q),
+    .q      (reg2hw.range_attr[15].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_15_read_access_15_qs)
+    .qs     (range_attr_15_read_access_15_qs)
   );
 
   //   F[write_access_15]: 11:8
@@ -11131,13 +11131,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_15_write_access_15 (
+  ) u_range_attr_15_write_access_15 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_15_gated_we),
-    .wd     (range_perm_15_write_access_15_wd),
+    .we     (range_attr_15_gated_we),
+    .wd     (range_attr_15_write_access_15_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11145,11 +11145,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[15].write_access.q),
+    .q      (reg2hw.range_attr[15].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_15_write_access_15_qs)
+    .qs     (range_attr_15_write_access_15_qs)
   );
 
   //   F[execute_access_15]: 15:12
@@ -11158,13 +11158,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_15_execute_access_15 (
+  ) u_range_attr_15_execute_access_15 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_15_gated_we),
-    .wd     (range_perm_15_execute_access_15_wd),
+    .we     (range_attr_15_gated_we),
+    .wd     (range_attr_15_execute_access_15_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11172,11 +11172,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[15].execute_access.q),
+    .q      (reg2hw.range_attr[15].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_15_execute_access_15_qs)
+    .qs     (range_attr_15_execute_access_15_qs)
   );
 
   //   F[log_denied_access_15]: 19:16
@@ -11185,13 +11185,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_15_log_denied_access_15 (
+  ) u_range_attr_15_log_denied_access_15 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_15_gated_we),
-    .wd     (range_perm_15_log_denied_access_15_wd),
+    .we     (range_attr_15_gated_we),
+    .wd     (range_attr_15_log_denied_access_15_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11199,20 +11199,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[15].log_denied_access.q),
+    .q      (reg2hw.range_attr[15].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_15_log_denied_access_15_qs)
+    .qs     (range_attr_15_log_denied_access_15_qs)
   );
 
 
-  // Subregister 16 of Multireg range_perm
-  // R[range_perm_16]: V(False)
+  // Subregister 16 of Multireg range_attr
+  // R[range_attr_16]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_16_gated_we;
-  assign range_perm_16_gated_we =
-    range_perm_16_we &
+  logic range_attr_16_gated_we;
+  assign range_attr_16_gated_we =
+    range_attr_16_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_16_qs));
   //   F[enable_16]: 3:0
   prim_subreg #(
@@ -11220,13 +11220,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_16_enable_16 (
+  ) u_range_attr_16_enable_16 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_16_gated_we),
-    .wd     (range_perm_16_enable_16_wd),
+    .we     (range_attr_16_gated_we),
+    .wd     (range_attr_16_enable_16_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11234,11 +11234,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[16].enable.q),
+    .q      (reg2hw.range_attr[16].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_16_enable_16_qs)
+    .qs     (range_attr_16_enable_16_qs)
   );
 
   //   F[read_access_16]: 7:4
@@ -11247,13 +11247,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_16_read_access_16 (
+  ) u_range_attr_16_read_access_16 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_16_gated_we),
-    .wd     (range_perm_16_read_access_16_wd),
+    .we     (range_attr_16_gated_we),
+    .wd     (range_attr_16_read_access_16_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11261,11 +11261,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[16].read_access.q),
+    .q      (reg2hw.range_attr[16].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_16_read_access_16_qs)
+    .qs     (range_attr_16_read_access_16_qs)
   );
 
   //   F[write_access_16]: 11:8
@@ -11274,13 +11274,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_16_write_access_16 (
+  ) u_range_attr_16_write_access_16 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_16_gated_we),
-    .wd     (range_perm_16_write_access_16_wd),
+    .we     (range_attr_16_gated_we),
+    .wd     (range_attr_16_write_access_16_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11288,11 +11288,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[16].write_access.q),
+    .q      (reg2hw.range_attr[16].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_16_write_access_16_qs)
+    .qs     (range_attr_16_write_access_16_qs)
   );
 
   //   F[execute_access_16]: 15:12
@@ -11301,13 +11301,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_16_execute_access_16 (
+  ) u_range_attr_16_execute_access_16 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_16_gated_we),
-    .wd     (range_perm_16_execute_access_16_wd),
+    .we     (range_attr_16_gated_we),
+    .wd     (range_attr_16_execute_access_16_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11315,11 +11315,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[16].execute_access.q),
+    .q      (reg2hw.range_attr[16].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_16_execute_access_16_qs)
+    .qs     (range_attr_16_execute_access_16_qs)
   );
 
   //   F[log_denied_access_16]: 19:16
@@ -11328,13 +11328,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_16_log_denied_access_16 (
+  ) u_range_attr_16_log_denied_access_16 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_16_gated_we),
-    .wd     (range_perm_16_log_denied_access_16_wd),
+    .we     (range_attr_16_gated_we),
+    .wd     (range_attr_16_log_denied_access_16_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11342,20 +11342,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[16].log_denied_access.q),
+    .q      (reg2hw.range_attr[16].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_16_log_denied_access_16_qs)
+    .qs     (range_attr_16_log_denied_access_16_qs)
   );
 
 
-  // Subregister 17 of Multireg range_perm
-  // R[range_perm_17]: V(False)
+  // Subregister 17 of Multireg range_attr
+  // R[range_attr_17]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_17_gated_we;
-  assign range_perm_17_gated_we =
-    range_perm_17_we &
+  logic range_attr_17_gated_we;
+  assign range_attr_17_gated_we =
+    range_attr_17_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_17_qs));
   //   F[enable_17]: 3:0
   prim_subreg #(
@@ -11363,13 +11363,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_17_enable_17 (
+  ) u_range_attr_17_enable_17 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_17_gated_we),
-    .wd     (range_perm_17_enable_17_wd),
+    .we     (range_attr_17_gated_we),
+    .wd     (range_attr_17_enable_17_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11377,11 +11377,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[17].enable.q),
+    .q      (reg2hw.range_attr[17].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_17_enable_17_qs)
+    .qs     (range_attr_17_enable_17_qs)
   );
 
   //   F[read_access_17]: 7:4
@@ -11390,13 +11390,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_17_read_access_17 (
+  ) u_range_attr_17_read_access_17 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_17_gated_we),
-    .wd     (range_perm_17_read_access_17_wd),
+    .we     (range_attr_17_gated_we),
+    .wd     (range_attr_17_read_access_17_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11404,11 +11404,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[17].read_access.q),
+    .q      (reg2hw.range_attr[17].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_17_read_access_17_qs)
+    .qs     (range_attr_17_read_access_17_qs)
   );
 
   //   F[write_access_17]: 11:8
@@ -11417,13 +11417,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_17_write_access_17 (
+  ) u_range_attr_17_write_access_17 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_17_gated_we),
-    .wd     (range_perm_17_write_access_17_wd),
+    .we     (range_attr_17_gated_we),
+    .wd     (range_attr_17_write_access_17_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11431,11 +11431,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[17].write_access.q),
+    .q      (reg2hw.range_attr[17].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_17_write_access_17_qs)
+    .qs     (range_attr_17_write_access_17_qs)
   );
 
   //   F[execute_access_17]: 15:12
@@ -11444,13 +11444,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_17_execute_access_17 (
+  ) u_range_attr_17_execute_access_17 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_17_gated_we),
-    .wd     (range_perm_17_execute_access_17_wd),
+    .we     (range_attr_17_gated_we),
+    .wd     (range_attr_17_execute_access_17_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11458,11 +11458,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[17].execute_access.q),
+    .q      (reg2hw.range_attr[17].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_17_execute_access_17_qs)
+    .qs     (range_attr_17_execute_access_17_qs)
   );
 
   //   F[log_denied_access_17]: 19:16
@@ -11471,13 +11471,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_17_log_denied_access_17 (
+  ) u_range_attr_17_log_denied_access_17 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_17_gated_we),
-    .wd     (range_perm_17_log_denied_access_17_wd),
+    .we     (range_attr_17_gated_we),
+    .wd     (range_attr_17_log_denied_access_17_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11485,20 +11485,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[17].log_denied_access.q),
+    .q      (reg2hw.range_attr[17].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_17_log_denied_access_17_qs)
+    .qs     (range_attr_17_log_denied_access_17_qs)
   );
 
 
-  // Subregister 18 of Multireg range_perm
-  // R[range_perm_18]: V(False)
+  // Subregister 18 of Multireg range_attr
+  // R[range_attr_18]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_18_gated_we;
-  assign range_perm_18_gated_we =
-    range_perm_18_we &
+  logic range_attr_18_gated_we;
+  assign range_attr_18_gated_we =
+    range_attr_18_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_18_qs));
   //   F[enable_18]: 3:0
   prim_subreg #(
@@ -11506,13 +11506,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_18_enable_18 (
+  ) u_range_attr_18_enable_18 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_18_gated_we),
-    .wd     (range_perm_18_enable_18_wd),
+    .we     (range_attr_18_gated_we),
+    .wd     (range_attr_18_enable_18_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11520,11 +11520,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[18].enable.q),
+    .q      (reg2hw.range_attr[18].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_18_enable_18_qs)
+    .qs     (range_attr_18_enable_18_qs)
   );
 
   //   F[read_access_18]: 7:4
@@ -11533,13 +11533,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_18_read_access_18 (
+  ) u_range_attr_18_read_access_18 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_18_gated_we),
-    .wd     (range_perm_18_read_access_18_wd),
+    .we     (range_attr_18_gated_we),
+    .wd     (range_attr_18_read_access_18_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11547,11 +11547,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[18].read_access.q),
+    .q      (reg2hw.range_attr[18].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_18_read_access_18_qs)
+    .qs     (range_attr_18_read_access_18_qs)
   );
 
   //   F[write_access_18]: 11:8
@@ -11560,13 +11560,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_18_write_access_18 (
+  ) u_range_attr_18_write_access_18 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_18_gated_we),
-    .wd     (range_perm_18_write_access_18_wd),
+    .we     (range_attr_18_gated_we),
+    .wd     (range_attr_18_write_access_18_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11574,11 +11574,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[18].write_access.q),
+    .q      (reg2hw.range_attr[18].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_18_write_access_18_qs)
+    .qs     (range_attr_18_write_access_18_qs)
   );
 
   //   F[execute_access_18]: 15:12
@@ -11587,13 +11587,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_18_execute_access_18 (
+  ) u_range_attr_18_execute_access_18 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_18_gated_we),
-    .wd     (range_perm_18_execute_access_18_wd),
+    .we     (range_attr_18_gated_we),
+    .wd     (range_attr_18_execute_access_18_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11601,11 +11601,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[18].execute_access.q),
+    .q      (reg2hw.range_attr[18].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_18_execute_access_18_qs)
+    .qs     (range_attr_18_execute_access_18_qs)
   );
 
   //   F[log_denied_access_18]: 19:16
@@ -11614,13 +11614,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_18_log_denied_access_18 (
+  ) u_range_attr_18_log_denied_access_18 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_18_gated_we),
-    .wd     (range_perm_18_log_denied_access_18_wd),
+    .we     (range_attr_18_gated_we),
+    .wd     (range_attr_18_log_denied_access_18_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11628,20 +11628,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[18].log_denied_access.q),
+    .q      (reg2hw.range_attr[18].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_18_log_denied_access_18_qs)
+    .qs     (range_attr_18_log_denied_access_18_qs)
   );
 
 
-  // Subregister 19 of Multireg range_perm
-  // R[range_perm_19]: V(False)
+  // Subregister 19 of Multireg range_attr
+  // R[range_attr_19]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_19_gated_we;
-  assign range_perm_19_gated_we =
-    range_perm_19_we &
+  logic range_attr_19_gated_we;
+  assign range_attr_19_gated_we =
+    range_attr_19_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_19_qs));
   //   F[enable_19]: 3:0
   prim_subreg #(
@@ -11649,13 +11649,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_19_enable_19 (
+  ) u_range_attr_19_enable_19 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_19_gated_we),
-    .wd     (range_perm_19_enable_19_wd),
+    .we     (range_attr_19_gated_we),
+    .wd     (range_attr_19_enable_19_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11663,11 +11663,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[19].enable.q),
+    .q      (reg2hw.range_attr[19].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_19_enable_19_qs)
+    .qs     (range_attr_19_enable_19_qs)
   );
 
   //   F[read_access_19]: 7:4
@@ -11676,13 +11676,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_19_read_access_19 (
+  ) u_range_attr_19_read_access_19 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_19_gated_we),
-    .wd     (range_perm_19_read_access_19_wd),
+    .we     (range_attr_19_gated_we),
+    .wd     (range_attr_19_read_access_19_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11690,11 +11690,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[19].read_access.q),
+    .q      (reg2hw.range_attr[19].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_19_read_access_19_qs)
+    .qs     (range_attr_19_read_access_19_qs)
   );
 
   //   F[write_access_19]: 11:8
@@ -11703,13 +11703,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_19_write_access_19 (
+  ) u_range_attr_19_write_access_19 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_19_gated_we),
-    .wd     (range_perm_19_write_access_19_wd),
+    .we     (range_attr_19_gated_we),
+    .wd     (range_attr_19_write_access_19_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11717,11 +11717,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[19].write_access.q),
+    .q      (reg2hw.range_attr[19].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_19_write_access_19_qs)
+    .qs     (range_attr_19_write_access_19_qs)
   );
 
   //   F[execute_access_19]: 15:12
@@ -11730,13 +11730,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_19_execute_access_19 (
+  ) u_range_attr_19_execute_access_19 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_19_gated_we),
-    .wd     (range_perm_19_execute_access_19_wd),
+    .we     (range_attr_19_gated_we),
+    .wd     (range_attr_19_execute_access_19_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11744,11 +11744,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[19].execute_access.q),
+    .q      (reg2hw.range_attr[19].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_19_execute_access_19_qs)
+    .qs     (range_attr_19_execute_access_19_qs)
   );
 
   //   F[log_denied_access_19]: 19:16
@@ -11757,13 +11757,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_19_log_denied_access_19 (
+  ) u_range_attr_19_log_denied_access_19 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_19_gated_we),
-    .wd     (range_perm_19_log_denied_access_19_wd),
+    .we     (range_attr_19_gated_we),
+    .wd     (range_attr_19_log_denied_access_19_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11771,20 +11771,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[19].log_denied_access.q),
+    .q      (reg2hw.range_attr[19].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_19_log_denied_access_19_qs)
+    .qs     (range_attr_19_log_denied_access_19_qs)
   );
 
 
-  // Subregister 20 of Multireg range_perm
-  // R[range_perm_20]: V(False)
+  // Subregister 20 of Multireg range_attr
+  // R[range_attr_20]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_20_gated_we;
-  assign range_perm_20_gated_we =
-    range_perm_20_we &
+  logic range_attr_20_gated_we;
+  assign range_attr_20_gated_we =
+    range_attr_20_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_20_qs));
   //   F[enable_20]: 3:0
   prim_subreg #(
@@ -11792,13 +11792,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_20_enable_20 (
+  ) u_range_attr_20_enable_20 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_20_gated_we),
-    .wd     (range_perm_20_enable_20_wd),
+    .we     (range_attr_20_gated_we),
+    .wd     (range_attr_20_enable_20_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11806,11 +11806,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[20].enable.q),
+    .q      (reg2hw.range_attr[20].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_20_enable_20_qs)
+    .qs     (range_attr_20_enable_20_qs)
   );
 
   //   F[read_access_20]: 7:4
@@ -11819,13 +11819,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_20_read_access_20 (
+  ) u_range_attr_20_read_access_20 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_20_gated_we),
-    .wd     (range_perm_20_read_access_20_wd),
+    .we     (range_attr_20_gated_we),
+    .wd     (range_attr_20_read_access_20_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11833,11 +11833,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[20].read_access.q),
+    .q      (reg2hw.range_attr[20].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_20_read_access_20_qs)
+    .qs     (range_attr_20_read_access_20_qs)
   );
 
   //   F[write_access_20]: 11:8
@@ -11846,13 +11846,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_20_write_access_20 (
+  ) u_range_attr_20_write_access_20 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_20_gated_we),
-    .wd     (range_perm_20_write_access_20_wd),
+    .we     (range_attr_20_gated_we),
+    .wd     (range_attr_20_write_access_20_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11860,11 +11860,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[20].write_access.q),
+    .q      (reg2hw.range_attr[20].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_20_write_access_20_qs)
+    .qs     (range_attr_20_write_access_20_qs)
   );
 
   //   F[execute_access_20]: 15:12
@@ -11873,13 +11873,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_20_execute_access_20 (
+  ) u_range_attr_20_execute_access_20 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_20_gated_we),
-    .wd     (range_perm_20_execute_access_20_wd),
+    .we     (range_attr_20_gated_we),
+    .wd     (range_attr_20_execute_access_20_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11887,11 +11887,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[20].execute_access.q),
+    .q      (reg2hw.range_attr[20].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_20_execute_access_20_qs)
+    .qs     (range_attr_20_execute_access_20_qs)
   );
 
   //   F[log_denied_access_20]: 19:16
@@ -11900,13 +11900,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_20_log_denied_access_20 (
+  ) u_range_attr_20_log_denied_access_20 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_20_gated_we),
-    .wd     (range_perm_20_log_denied_access_20_wd),
+    .we     (range_attr_20_gated_we),
+    .wd     (range_attr_20_log_denied_access_20_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11914,20 +11914,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[20].log_denied_access.q),
+    .q      (reg2hw.range_attr[20].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_20_log_denied_access_20_qs)
+    .qs     (range_attr_20_log_denied_access_20_qs)
   );
 
 
-  // Subregister 21 of Multireg range_perm
-  // R[range_perm_21]: V(False)
+  // Subregister 21 of Multireg range_attr
+  // R[range_attr_21]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_21_gated_we;
-  assign range_perm_21_gated_we =
-    range_perm_21_we &
+  logic range_attr_21_gated_we;
+  assign range_attr_21_gated_we =
+    range_attr_21_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_21_qs));
   //   F[enable_21]: 3:0
   prim_subreg #(
@@ -11935,13 +11935,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_21_enable_21 (
+  ) u_range_attr_21_enable_21 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_21_gated_we),
-    .wd     (range_perm_21_enable_21_wd),
+    .we     (range_attr_21_gated_we),
+    .wd     (range_attr_21_enable_21_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11949,11 +11949,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[21].enable.q),
+    .q      (reg2hw.range_attr[21].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_21_enable_21_qs)
+    .qs     (range_attr_21_enable_21_qs)
   );
 
   //   F[read_access_21]: 7:4
@@ -11962,13 +11962,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_21_read_access_21 (
+  ) u_range_attr_21_read_access_21 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_21_gated_we),
-    .wd     (range_perm_21_read_access_21_wd),
+    .we     (range_attr_21_gated_we),
+    .wd     (range_attr_21_read_access_21_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -11976,11 +11976,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[21].read_access.q),
+    .q      (reg2hw.range_attr[21].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_21_read_access_21_qs)
+    .qs     (range_attr_21_read_access_21_qs)
   );
 
   //   F[write_access_21]: 11:8
@@ -11989,13 +11989,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_21_write_access_21 (
+  ) u_range_attr_21_write_access_21 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_21_gated_we),
-    .wd     (range_perm_21_write_access_21_wd),
+    .we     (range_attr_21_gated_we),
+    .wd     (range_attr_21_write_access_21_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12003,11 +12003,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[21].write_access.q),
+    .q      (reg2hw.range_attr[21].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_21_write_access_21_qs)
+    .qs     (range_attr_21_write_access_21_qs)
   );
 
   //   F[execute_access_21]: 15:12
@@ -12016,13 +12016,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_21_execute_access_21 (
+  ) u_range_attr_21_execute_access_21 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_21_gated_we),
-    .wd     (range_perm_21_execute_access_21_wd),
+    .we     (range_attr_21_gated_we),
+    .wd     (range_attr_21_execute_access_21_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12030,11 +12030,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[21].execute_access.q),
+    .q      (reg2hw.range_attr[21].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_21_execute_access_21_qs)
+    .qs     (range_attr_21_execute_access_21_qs)
   );
 
   //   F[log_denied_access_21]: 19:16
@@ -12043,13 +12043,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_21_log_denied_access_21 (
+  ) u_range_attr_21_log_denied_access_21 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_21_gated_we),
-    .wd     (range_perm_21_log_denied_access_21_wd),
+    .we     (range_attr_21_gated_we),
+    .wd     (range_attr_21_log_denied_access_21_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12057,20 +12057,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[21].log_denied_access.q),
+    .q      (reg2hw.range_attr[21].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_21_log_denied_access_21_qs)
+    .qs     (range_attr_21_log_denied_access_21_qs)
   );
 
 
-  // Subregister 22 of Multireg range_perm
-  // R[range_perm_22]: V(False)
+  // Subregister 22 of Multireg range_attr
+  // R[range_attr_22]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_22_gated_we;
-  assign range_perm_22_gated_we =
-    range_perm_22_we &
+  logic range_attr_22_gated_we;
+  assign range_attr_22_gated_we =
+    range_attr_22_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_22_qs));
   //   F[enable_22]: 3:0
   prim_subreg #(
@@ -12078,13 +12078,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_22_enable_22 (
+  ) u_range_attr_22_enable_22 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_22_gated_we),
-    .wd     (range_perm_22_enable_22_wd),
+    .we     (range_attr_22_gated_we),
+    .wd     (range_attr_22_enable_22_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12092,11 +12092,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[22].enable.q),
+    .q      (reg2hw.range_attr[22].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_22_enable_22_qs)
+    .qs     (range_attr_22_enable_22_qs)
   );
 
   //   F[read_access_22]: 7:4
@@ -12105,13 +12105,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_22_read_access_22 (
+  ) u_range_attr_22_read_access_22 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_22_gated_we),
-    .wd     (range_perm_22_read_access_22_wd),
+    .we     (range_attr_22_gated_we),
+    .wd     (range_attr_22_read_access_22_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12119,11 +12119,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[22].read_access.q),
+    .q      (reg2hw.range_attr[22].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_22_read_access_22_qs)
+    .qs     (range_attr_22_read_access_22_qs)
   );
 
   //   F[write_access_22]: 11:8
@@ -12132,13 +12132,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_22_write_access_22 (
+  ) u_range_attr_22_write_access_22 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_22_gated_we),
-    .wd     (range_perm_22_write_access_22_wd),
+    .we     (range_attr_22_gated_we),
+    .wd     (range_attr_22_write_access_22_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12146,11 +12146,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[22].write_access.q),
+    .q      (reg2hw.range_attr[22].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_22_write_access_22_qs)
+    .qs     (range_attr_22_write_access_22_qs)
   );
 
   //   F[execute_access_22]: 15:12
@@ -12159,13 +12159,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_22_execute_access_22 (
+  ) u_range_attr_22_execute_access_22 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_22_gated_we),
-    .wd     (range_perm_22_execute_access_22_wd),
+    .we     (range_attr_22_gated_we),
+    .wd     (range_attr_22_execute_access_22_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12173,11 +12173,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[22].execute_access.q),
+    .q      (reg2hw.range_attr[22].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_22_execute_access_22_qs)
+    .qs     (range_attr_22_execute_access_22_qs)
   );
 
   //   F[log_denied_access_22]: 19:16
@@ -12186,13 +12186,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_22_log_denied_access_22 (
+  ) u_range_attr_22_log_denied_access_22 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_22_gated_we),
-    .wd     (range_perm_22_log_denied_access_22_wd),
+    .we     (range_attr_22_gated_we),
+    .wd     (range_attr_22_log_denied_access_22_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12200,20 +12200,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[22].log_denied_access.q),
+    .q      (reg2hw.range_attr[22].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_22_log_denied_access_22_qs)
+    .qs     (range_attr_22_log_denied_access_22_qs)
   );
 
 
-  // Subregister 23 of Multireg range_perm
-  // R[range_perm_23]: V(False)
+  // Subregister 23 of Multireg range_attr
+  // R[range_attr_23]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_23_gated_we;
-  assign range_perm_23_gated_we =
-    range_perm_23_we &
+  logic range_attr_23_gated_we;
+  assign range_attr_23_gated_we =
+    range_attr_23_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_23_qs));
   //   F[enable_23]: 3:0
   prim_subreg #(
@@ -12221,13 +12221,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_23_enable_23 (
+  ) u_range_attr_23_enable_23 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_23_gated_we),
-    .wd     (range_perm_23_enable_23_wd),
+    .we     (range_attr_23_gated_we),
+    .wd     (range_attr_23_enable_23_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12235,11 +12235,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[23].enable.q),
+    .q      (reg2hw.range_attr[23].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_23_enable_23_qs)
+    .qs     (range_attr_23_enable_23_qs)
   );
 
   //   F[read_access_23]: 7:4
@@ -12248,13 +12248,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_23_read_access_23 (
+  ) u_range_attr_23_read_access_23 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_23_gated_we),
-    .wd     (range_perm_23_read_access_23_wd),
+    .we     (range_attr_23_gated_we),
+    .wd     (range_attr_23_read_access_23_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12262,11 +12262,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[23].read_access.q),
+    .q      (reg2hw.range_attr[23].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_23_read_access_23_qs)
+    .qs     (range_attr_23_read_access_23_qs)
   );
 
   //   F[write_access_23]: 11:8
@@ -12275,13 +12275,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_23_write_access_23 (
+  ) u_range_attr_23_write_access_23 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_23_gated_we),
-    .wd     (range_perm_23_write_access_23_wd),
+    .we     (range_attr_23_gated_we),
+    .wd     (range_attr_23_write_access_23_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12289,11 +12289,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[23].write_access.q),
+    .q      (reg2hw.range_attr[23].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_23_write_access_23_qs)
+    .qs     (range_attr_23_write_access_23_qs)
   );
 
   //   F[execute_access_23]: 15:12
@@ -12302,13 +12302,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_23_execute_access_23 (
+  ) u_range_attr_23_execute_access_23 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_23_gated_we),
-    .wd     (range_perm_23_execute_access_23_wd),
+    .we     (range_attr_23_gated_we),
+    .wd     (range_attr_23_execute_access_23_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12316,11 +12316,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[23].execute_access.q),
+    .q      (reg2hw.range_attr[23].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_23_execute_access_23_qs)
+    .qs     (range_attr_23_execute_access_23_qs)
   );
 
   //   F[log_denied_access_23]: 19:16
@@ -12329,13 +12329,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_23_log_denied_access_23 (
+  ) u_range_attr_23_log_denied_access_23 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_23_gated_we),
-    .wd     (range_perm_23_log_denied_access_23_wd),
+    .we     (range_attr_23_gated_we),
+    .wd     (range_attr_23_log_denied_access_23_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12343,20 +12343,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[23].log_denied_access.q),
+    .q      (reg2hw.range_attr[23].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_23_log_denied_access_23_qs)
+    .qs     (range_attr_23_log_denied_access_23_qs)
   );
 
 
-  // Subregister 24 of Multireg range_perm
-  // R[range_perm_24]: V(False)
+  // Subregister 24 of Multireg range_attr
+  // R[range_attr_24]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_24_gated_we;
-  assign range_perm_24_gated_we =
-    range_perm_24_we &
+  logic range_attr_24_gated_we;
+  assign range_attr_24_gated_we =
+    range_attr_24_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_24_qs));
   //   F[enable_24]: 3:0
   prim_subreg #(
@@ -12364,13 +12364,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_24_enable_24 (
+  ) u_range_attr_24_enable_24 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_24_gated_we),
-    .wd     (range_perm_24_enable_24_wd),
+    .we     (range_attr_24_gated_we),
+    .wd     (range_attr_24_enable_24_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12378,11 +12378,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[24].enable.q),
+    .q      (reg2hw.range_attr[24].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_24_enable_24_qs)
+    .qs     (range_attr_24_enable_24_qs)
   );
 
   //   F[read_access_24]: 7:4
@@ -12391,13 +12391,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_24_read_access_24 (
+  ) u_range_attr_24_read_access_24 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_24_gated_we),
-    .wd     (range_perm_24_read_access_24_wd),
+    .we     (range_attr_24_gated_we),
+    .wd     (range_attr_24_read_access_24_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12405,11 +12405,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[24].read_access.q),
+    .q      (reg2hw.range_attr[24].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_24_read_access_24_qs)
+    .qs     (range_attr_24_read_access_24_qs)
   );
 
   //   F[write_access_24]: 11:8
@@ -12418,13 +12418,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_24_write_access_24 (
+  ) u_range_attr_24_write_access_24 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_24_gated_we),
-    .wd     (range_perm_24_write_access_24_wd),
+    .we     (range_attr_24_gated_we),
+    .wd     (range_attr_24_write_access_24_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12432,11 +12432,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[24].write_access.q),
+    .q      (reg2hw.range_attr[24].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_24_write_access_24_qs)
+    .qs     (range_attr_24_write_access_24_qs)
   );
 
   //   F[execute_access_24]: 15:12
@@ -12445,13 +12445,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_24_execute_access_24 (
+  ) u_range_attr_24_execute_access_24 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_24_gated_we),
-    .wd     (range_perm_24_execute_access_24_wd),
+    .we     (range_attr_24_gated_we),
+    .wd     (range_attr_24_execute_access_24_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12459,11 +12459,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[24].execute_access.q),
+    .q      (reg2hw.range_attr[24].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_24_execute_access_24_qs)
+    .qs     (range_attr_24_execute_access_24_qs)
   );
 
   //   F[log_denied_access_24]: 19:16
@@ -12472,13 +12472,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_24_log_denied_access_24 (
+  ) u_range_attr_24_log_denied_access_24 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_24_gated_we),
-    .wd     (range_perm_24_log_denied_access_24_wd),
+    .we     (range_attr_24_gated_we),
+    .wd     (range_attr_24_log_denied_access_24_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12486,20 +12486,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[24].log_denied_access.q),
+    .q      (reg2hw.range_attr[24].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_24_log_denied_access_24_qs)
+    .qs     (range_attr_24_log_denied_access_24_qs)
   );
 
 
-  // Subregister 25 of Multireg range_perm
-  // R[range_perm_25]: V(False)
+  // Subregister 25 of Multireg range_attr
+  // R[range_attr_25]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_25_gated_we;
-  assign range_perm_25_gated_we =
-    range_perm_25_we &
+  logic range_attr_25_gated_we;
+  assign range_attr_25_gated_we =
+    range_attr_25_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_25_qs));
   //   F[enable_25]: 3:0
   prim_subreg #(
@@ -12507,13 +12507,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_25_enable_25 (
+  ) u_range_attr_25_enable_25 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_25_gated_we),
-    .wd     (range_perm_25_enable_25_wd),
+    .we     (range_attr_25_gated_we),
+    .wd     (range_attr_25_enable_25_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12521,11 +12521,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[25].enable.q),
+    .q      (reg2hw.range_attr[25].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_25_enable_25_qs)
+    .qs     (range_attr_25_enable_25_qs)
   );
 
   //   F[read_access_25]: 7:4
@@ -12534,13 +12534,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_25_read_access_25 (
+  ) u_range_attr_25_read_access_25 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_25_gated_we),
-    .wd     (range_perm_25_read_access_25_wd),
+    .we     (range_attr_25_gated_we),
+    .wd     (range_attr_25_read_access_25_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12548,11 +12548,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[25].read_access.q),
+    .q      (reg2hw.range_attr[25].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_25_read_access_25_qs)
+    .qs     (range_attr_25_read_access_25_qs)
   );
 
   //   F[write_access_25]: 11:8
@@ -12561,13 +12561,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_25_write_access_25 (
+  ) u_range_attr_25_write_access_25 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_25_gated_we),
-    .wd     (range_perm_25_write_access_25_wd),
+    .we     (range_attr_25_gated_we),
+    .wd     (range_attr_25_write_access_25_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12575,11 +12575,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[25].write_access.q),
+    .q      (reg2hw.range_attr[25].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_25_write_access_25_qs)
+    .qs     (range_attr_25_write_access_25_qs)
   );
 
   //   F[execute_access_25]: 15:12
@@ -12588,13 +12588,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_25_execute_access_25 (
+  ) u_range_attr_25_execute_access_25 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_25_gated_we),
-    .wd     (range_perm_25_execute_access_25_wd),
+    .we     (range_attr_25_gated_we),
+    .wd     (range_attr_25_execute_access_25_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12602,11 +12602,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[25].execute_access.q),
+    .q      (reg2hw.range_attr[25].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_25_execute_access_25_qs)
+    .qs     (range_attr_25_execute_access_25_qs)
   );
 
   //   F[log_denied_access_25]: 19:16
@@ -12615,13 +12615,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_25_log_denied_access_25 (
+  ) u_range_attr_25_log_denied_access_25 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_25_gated_we),
-    .wd     (range_perm_25_log_denied_access_25_wd),
+    .we     (range_attr_25_gated_we),
+    .wd     (range_attr_25_log_denied_access_25_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12629,20 +12629,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[25].log_denied_access.q),
+    .q      (reg2hw.range_attr[25].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_25_log_denied_access_25_qs)
+    .qs     (range_attr_25_log_denied_access_25_qs)
   );
 
 
-  // Subregister 26 of Multireg range_perm
-  // R[range_perm_26]: V(False)
+  // Subregister 26 of Multireg range_attr
+  // R[range_attr_26]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_26_gated_we;
-  assign range_perm_26_gated_we =
-    range_perm_26_we &
+  logic range_attr_26_gated_we;
+  assign range_attr_26_gated_we =
+    range_attr_26_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_26_qs));
   //   F[enable_26]: 3:0
   prim_subreg #(
@@ -12650,13 +12650,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_26_enable_26 (
+  ) u_range_attr_26_enable_26 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_26_gated_we),
-    .wd     (range_perm_26_enable_26_wd),
+    .we     (range_attr_26_gated_we),
+    .wd     (range_attr_26_enable_26_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12664,11 +12664,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[26].enable.q),
+    .q      (reg2hw.range_attr[26].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_26_enable_26_qs)
+    .qs     (range_attr_26_enable_26_qs)
   );
 
   //   F[read_access_26]: 7:4
@@ -12677,13 +12677,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_26_read_access_26 (
+  ) u_range_attr_26_read_access_26 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_26_gated_we),
-    .wd     (range_perm_26_read_access_26_wd),
+    .we     (range_attr_26_gated_we),
+    .wd     (range_attr_26_read_access_26_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12691,11 +12691,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[26].read_access.q),
+    .q      (reg2hw.range_attr[26].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_26_read_access_26_qs)
+    .qs     (range_attr_26_read_access_26_qs)
   );
 
   //   F[write_access_26]: 11:8
@@ -12704,13 +12704,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_26_write_access_26 (
+  ) u_range_attr_26_write_access_26 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_26_gated_we),
-    .wd     (range_perm_26_write_access_26_wd),
+    .we     (range_attr_26_gated_we),
+    .wd     (range_attr_26_write_access_26_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12718,11 +12718,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[26].write_access.q),
+    .q      (reg2hw.range_attr[26].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_26_write_access_26_qs)
+    .qs     (range_attr_26_write_access_26_qs)
   );
 
   //   F[execute_access_26]: 15:12
@@ -12731,13 +12731,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_26_execute_access_26 (
+  ) u_range_attr_26_execute_access_26 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_26_gated_we),
-    .wd     (range_perm_26_execute_access_26_wd),
+    .we     (range_attr_26_gated_we),
+    .wd     (range_attr_26_execute_access_26_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12745,11 +12745,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[26].execute_access.q),
+    .q      (reg2hw.range_attr[26].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_26_execute_access_26_qs)
+    .qs     (range_attr_26_execute_access_26_qs)
   );
 
   //   F[log_denied_access_26]: 19:16
@@ -12758,13 +12758,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_26_log_denied_access_26 (
+  ) u_range_attr_26_log_denied_access_26 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_26_gated_we),
-    .wd     (range_perm_26_log_denied_access_26_wd),
+    .we     (range_attr_26_gated_we),
+    .wd     (range_attr_26_log_denied_access_26_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12772,20 +12772,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[26].log_denied_access.q),
+    .q      (reg2hw.range_attr[26].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_26_log_denied_access_26_qs)
+    .qs     (range_attr_26_log_denied_access_26_qs)
   );
 
 
-  // Subregister 27 of Multireg range_perm
-  // R[range_perm_27]: V(False)
+  // Subregister 27 of Multireg range_attr
+  // R[range_attr_27]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_27_gated_we;
-  assign range_perm_27_gated_we =
-    range_perm_27_we &
+  logic range_attr_27_gated_we;
+  assign range_attr_27_gated_we =
+    range_attr_27_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_27_qs));
   //   F[enable_27]: 3:0
   prim_subreg #(
@@ -12793,13 +12793,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_27_enable_27 (
+  ) u_range_attr_27_enable_27 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_27_gated_we),
-    .wd     (range_perm_27_enable_27_wd),
+    .we     (range_attr_27_gated_we),
+    .wd     (range_attr_27_enable_27_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12807,11 +12807,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[27].enable.q),
+    .q      (reg2hw.range_attr[27].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_27_enable_27_qs)
+    .qs     (range_attr_27_enable_27_qs)
   );
 
   //   F[read_access_27]: 7:4
@@ -12820,13 +12820,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_27_read_access_27 (
+  ) u_range_attr_27_read_access_27 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_27_gated_we),
-    .wd     (range_perm_27_read_access_27_wd),
+    .we     (range_attr_27_gated_we),
+    .wd     (range_attr_27_read_access_27_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12834,11 +12834,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[27].read_access.q),
+    .q      (reg2hw.range_attr[27].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_27_read_access_27_qs)
+    .qs     (range_attr_27_read_access_27_qs)
   );
 
   //   F[write_access_27]: 11:8
@@ -12847,13 +12847,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_27_write_access_27 (
+  ) u_range_attr_27_write_access_27 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_27_gated_we),
-    .wd     (range_perm_27_write_access_27_wd),
+    .we     (range_attr_27_gated_we),
+    .wd     (range_attr_27_write_access_27_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12861,11 +12861,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[27].write_access.q),
+    .q      (reg2hw.range_attr[27].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_27_write_access_27_qs)
+    .qs     (range_attr_27_write_access_27_qs)
   );
 
   //   F[execute_access_27]: 15:12
@@ -12874,13 +12874,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_27_execute_access_27 (
+  ) u_range_attr_27_execute_access_27 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_27_gated_we),
-    .wd     (range_perm_27_execute_access_27_wd),
+    .we     (range_attr_27_gated_we),
+    .wd     (range_attr_27_execute_access_27_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12888,11 +12888,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[27].execute_access.q),
+    .q      (reg2hw.range_attr[27].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_27_execute_access_27_qs)
+    .qs     (range_attr_27_execute_access_27_qs)
   );
 
   //   F[log_denied_access_27]: 19:16
@@ -12901,13 +12901,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_27_log_denied_access_27 (
+  ) u_range_attr_27_log_denied_access_27 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_27_gated_we),
-    .wd     (range_perm_27_log_denied_access_27_wd),
+    .we     (range_attr_27_gated_we),
+    .wd     (range_attr_27_log_denied_access_27_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12915,20 +12915,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[27].log_denied_access.q),
+    .q      (reg2hw.range_attr[27].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_27_log_denied_access_27_qs)
+    .qs     (range_attr_27_log_denied_access_27_qs)
   );
 
 
-  // Subregister 28 of Multireg range_perm
-  // R[range_perm_28]: V(False)
+  // Subregister 28 of Multireg range_attr
+  // R[range_attr_28]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_28_gated_we;
-  assign range_perm_28_gated_we =
-    range_perm_28_we &
+  logic range_attr_28_gated_we;
+  assign range_attr_28_gated_we =
+    range_attr_28_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_28_qs));
   //   F[enable_28]: 3:0
   prim_subreg #(
@@ -12936,13 +12936,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_28_enable_28 (
+  ) u_range_attr_28_enable_28 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_28_gated_we),
-    .wd     (range_perm_28_enable_28_wd),
+    .we     (range_attr_28_gated_we),
+    .wd     (range_attr_28_enable_28_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12950,11 +12950,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[28].enable.q),
+    .q      (reg2hw.range_attr[28].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_28_enable_28_qs)
+    .qs     (range_attr_28_enable_28_qs)
   );
 
   //   F[read_access_28]: 7:4
@@ -12963,13 +12963,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_28_read_access_28 (
+  ) u_range_attr_28_read_access_28 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_28_gated_we),
-    .wd     (range_perm_28_read_access_28_wd),
+    .we     (range_attr_28_gated_we),
+    .wd     (range_attr_28_read_access_28_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -12977,11 +12977,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[28].read_access.q),
+    .q      (reg2hw.range_attr[28].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_28_read_access_28_qs)
+    .qs     (range_attr_28_read_access_28_qs)
   );
 
   //   F[write_access_28]: 11:8
@@ -12990,13 +12990,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_28_write_access_28 (
+  ) u_range_attr_28_write_access_28 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_28_gated_we),
-    .wd     (range_perm_28_write_access_28_wd),
+    .we     (range_attr_28_gated_we),
+    .wd     (range_attr_28_write_access_28_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13004,11 +13004,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[28].write_access.q),
+    .q      (reg2hw.range_attr[28].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_28_write_access_28_qs)
+    .qs     (range_attr_28_write_access_28_qs)
   );
 
   //   F[execute_access_28]: 15:12
@@ -13017,13 +13017,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_28_execute_access_28 (
+  ) u_range_attr_28_execute_access_28 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_28_gated_we),
-    .wd     (range_perm_28_execute_access_28_wd),
+    .we     (range_attr_28_gated_we),
+    .wd     (range_attr_28_execute_access_28_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13031,11 +13031,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[28].execute_access.q),
+    .q      (reg2hw.range_attr[28].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_28_execute_access_28_qs)
+    .qs     (range_attr_28_execute_access_28_qs)
   );
 
   //   F[log_denied_access_28]: 19:16
@@ -13044,13 +13044,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_28_log_denied_access_28 (
+  ) u_range_attr_28_log_denied_access_28 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_28_gated_we),
-    .wd     (range_perm_28_log_denied_access_28_wd),
+    .we     (range_attr_28_gated_we),
+    .wd     (range_attr_28_log_denied_access_28_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13058,20 +13058,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[28].log_denied_access.q),
+    .q      (reg2hw.range_attr[28].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_28_log_denied_access_28_qs)
+    .qs     (range_attr_28_log_denied_access_28_qs)
   );
 
 
-  // Subregister 29 of Multireg range_perm
-  // R[range_perm_29]: V(False)
+  // Subregister 29 of Multireg range_attr
+  // R[range_attr_29]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_29_gated_we;
-  assign range_perm_29_gated_we =
-    range_perm_29_we &
+  logic range_attr_29_gated_we;
+  assign range_attr_29_gated_we =
+    range_attr_29_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_29_qs));
   //   F[enable_29]: 3:0
   prim_subreg #(
@@ -13079,13 +13079,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_29_enable_29 (
+  ) u_range_attr_29_enable_29 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_29_gated_we),
-    .wd     (range_perm_29_enable_29_wd),
+    .we     (range_attr_29_gated_we),
+    .wd     (range_attr_29_enable_29_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13093,11 +13093,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[29].enable.q),
+    .q      (reg2hw.range_attr[29].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_29_enable_29_qs)
+    .qs     (range_attr_29_enable_29_qs)
   );
 
   //   F[read_access_29]: 7:4
@@ -13106,13 +13106,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_29_read_access_29 (
+  ) u_range_attr_29_read_access_29 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_29_gated_we),
-    .wd     (range_perm_29_read_access_29_wd),
+    .we     (range_attr_29_gated_we),
+    .wd     (range_attr_29_read_access_29_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13120,11 +13120,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[29].read_access.q),
+    .q      (reg2hw.range_attr[29].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_29_read_access_29_qs)
+    .qs     (range_attr_29_read_access_29_qs)
   );
 
   //   F[write_access_29]: 11:8
@@ -13133,13 +13133,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_29_write_access_29 (
+  ) u_range_attr_29_write_access_29 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_29_gated_we),
-    .wd     (range_perm_29_write_access_29_wd),
+    .we     (range_attr_29_gated_we),
+    .wd     (range_attr_29_write_access_29_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13147,11 +13147,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[29].write_access.q),
+    .q      (reg2hw.range_attr[29].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_29_write_access_29_qs)
+    .qs     (range_attr_29_write_access_29_qs)
   );
 
   //   F[execute_access_29]: 15:12
@@ -13160,13 +13160,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_29_execute_access_29 (
+  ) u_range_attr_29_execute_access_29 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_29_gated_we),
-    .wd     (range_perm_29_execute_access_29_wd),
+    .we     (range_attr_29_gated_we),
+    .wd     (range_attr_29_execute_access_29_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13174,11 +13174,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[29].execute_access.q),
+    .q      (reg2hw.range_attr[29].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_29_execute_access_29_qs)
+    .qs     (range_attr_29_execute_access_29_qs)
   );
 
   //   F[log_denied_access_29]: 19:16
@@ -13187,13 +13187,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_29_log_denied_access_29 (
+  ) u_range_attr_29_log_denied_access_29 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_29_gated_we),
-    .wd     (range_perm_29_log_denied_access_29_wd),
+    .we     (range_attr_29_gated_we),
+    .wd     (range_attr_29_log_denied_access_29_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13201,20 +13201,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[29].log_denied_access.q),
+    .q      (reg2hw.range_attr[29].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_29_log_denied_access_29_qs)
+    .qs     (range_attr_29_log_denied_access_29_qs)
   );
 
 
-  // Subregister 30 of Multireg range_perm
-  // R[range_perm_30]: V(False)
+  // Subregister 30 of Multireg range_attr
+  // R[range_attr_30]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_30_gated_we;
-  assign range_perm_30_gated_we =
-    range_perm_30_we &
+  logic range_attr_30_gated_we;
+  assign range_attr_30_gated_we =
+    range_attr_30_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_30_qs));
   //   F[enable_30]: 3:0
   prim_subreg #(
@@ -13222,13 +13222,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_30_enable_30 (
+  ) u_range_attr_30_enable_30 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_30_gated_we),
-    .wd     (range_perm_30_enable_30_wd),
+    .we     (range_attr_30_gated_we),
+    .wd     (range_attr_30_enable_30_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13236,11 +13236,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[30].enable.q),
+    .q      (reg2hw.range_attr[30].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_30_enable_30_qs)
+    .qs     (range_attr_30_enable_30_qs)
   );
 
   //   F[read_access_30]: 7:4
@@ -13249,13 +13249,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_30_read_access_30 (
+  ) u_range_attr_30_read_access_30 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_30_gated_we),
-    .wd     (range_perm_30_read_access_30_wd),
+    .we     (range_attr_30_gated_we),
+    .wd     (range_attr_30_read_access_30_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13263,11 +13263,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[30].read_access.q),
+    .q      (reg2hw.range_attr[30].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_30_read_access_30_qs)
+    .qs     (range_attr_30_read_access_30_qs)
   );
 
   //   F[write_access_30]: 11:8
@@ -13276,13 +13276,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_30_write_access_30 (
+  ) u_range_attr_30_write_access_30 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_30_gated_we),
-    .wd     (range_perm_30_write_access_30_wd),
+    .we     (range_attr_30_gated_we),
+    .wd     (range_attr_30_write_access_30_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13290,11 +13290,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[30].write_access.q),
+    .q      (reg2hw.range_attr[30].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_30_write_access_30_qs)
+    .qs     (range_attr_30_write_access_30_qs)
   );
 
   //   F[execute_access_30]: 15:12
@@ -13303,13 +13303,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_30_execute_access_30 (
+  ) u_range_attr_30_execute_access_30 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_30_gated_we),
-    .wd     (range_perm_30_execute_access_30_wd),
+    .we     (range_attr_30_gated_we),
+    .wd     (range_attr_30_execute_access_30_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13317,11 +13317,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[30].execute_access.q),
+    .q      (reg2hw.range_attr[30].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_30_execute_access_30_qs)
+    .qs     (range_attr_30_execute_access_30_qs)
   );
 
   //   F[log_denied_access_30]: 19:16
@@ -13330,13 +13330,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_30_log_denied_access_30 (
+  ) u_range_attr_30_log_denied_access_30 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_30_gated_we),
-    .wd     (range_perm_30_log_denied_access_30_wd),
+    .we     (range_attr_30_gated_we),
+    .wd     (range_attr_30_log_denied_access_30_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13344,20 +13344,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[30].log_denied_access.q),
+    .q      (reg2hw.range_attr[30].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_30_log_denied_access_30_qs)
+    .qs     (range_attr_30_log_denied_access_30_qs)
   );
 
 
-  // Subregister 31 of Multireg range_perm
-  // R[range_perm_31]: V(False)
+  // Subregister 31 of Multireg range_attr
+  // R[range_attr_31]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_31_gated_we;
-  assign range_perm_31_gated_we =
-    range_perm_31_we &
+  logic range_attr_31_gated_we;
+  assign range_attr_31_gated_we =
+    range_attr_31_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_31_qs));
   //   F[enable_31]: 3:0
   prim_subreg #(
@@ -13365,13 +13365,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_31_enable_31 (
+  ) u_range_attr_31_enable_31 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_31_gated_we),
-    .wd     (range_perm_31_enable_31_wd),
+    .we     (range_attr_31_gated_we),
+    .wd     (range_attr_31_enable_31_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13379,11 +13379,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[31].enable.q),
+    .q      (reg2hw.range_attr[31].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_31_enable_31_qs)
+    .qs     (range_attr_31_enable_31_qs)
   );
 
   //   F[read_access_31]: 7:4
@@ -13392,13 +13392,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_31_read_access_31 (
+  ) u_range_attr_31_read_access_31 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_31_gated_we),
-    .wd     (range_perm_31_read_access_31_wd),
+    .we     (range_attr_31_gated_we),
+    .wd     (range_attr_31_read_access_31_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13406,11 +13406,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[31].read_access.q),
+    .q      (reg2hw.range_attr[31].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_31_read_access_31_qs)
+    .qs     (range_attr_31_read_access_31_qs)
   );
 
   //   F[write_access_31]: 11:8
@@ -13419,13 +13419,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_31_write_access_31 (
+  ) u_range_attr_31_write_access_31 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_31_gated_we),
-    .wd     (range_perm_31_write_access_31_wd),
+    .we     (range_attr_31_gated_we),
+    .wd     (range_attr_31_write_access_31_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13433,11 +13433,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[31].write_access.q),
+    .q      (reg2hw.range_attr[31].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_31_write_access_31_qs)
+    .qs     (range_attr_31_write_access_31_qs)
   );
 
   //   F[execute_access_31]: 15:12
@@ -13446,13 +13446,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_31_execute_access_31 (
+  ) u_range_attr_31_execute_access_31 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_31_gated_we),
-    .wd     (range_perm_31_execute_access_31_wd),
+    .we     (range_attr_31_gated_we),
+    .wd     (range_attr_31_execute_access_31_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13460,11 +13460,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[31].execute_access.q),
+    .q      (reg2hw.range_attr[31].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_31_execute_access_31_qs)
+    .qs     (range_attr_31_execute_access_31_qs)
   );
 
   //   F[log_denied_access_31]: 19:16
@@ -13473,13 +13473,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_31_log_denied_access_31 (
+  ) u_range_attr_31_log_denied_access_31 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_31_gated_we),
-    .wd     (range_perm_31_log_denied_access_31_wd),
+    .we     (range_attr_31_gated_we),
+    .wd     (range_attr_31_log_denied_access_31_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13487,20 +13487,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[31].log_denied_access.q),
+    .q      (reg2hw.range_attr[31].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_31_log_denied_access_31_qs)
+    .qs     (range_attr_31_log_denied_access_31_qs)
   );
 
 
-  // Subregister 32 of Multireg range_perm
-  // R[range_perm_32]: V(False)
+  // Subregister 32 of Multireg range_attr
+  // R[range_attr_32]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_32_gated_we;
-  assign range_perm_32_gated_we =
-    range_perm_32_we &
+  logic range_attr_32_gated_we;
+  assign range_attr_32_gated_we =
+    range_attr_32_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_32_qs));
   //   F[enable_32]: 3:0
   prim_subreg #(
@@ -13508,13 +13508,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_32_enable_32 (
+  ) u_range_attr_32_enable_32 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_32_gated_we),
-    .wd     (range_perm_32_enable_32_wd),
+    .we     (range_attr_32_gated_we),
+    .wd     (range_attr_32_enable_32_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13522,11 +13522,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[32].enable.q),
+    .q      (reg2hw.range_attr[32].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_32_enable_32_qs)
+    .qs     (range_attr_32_enable_32_qs)
   );
 
   //   F[read_access_32]: 7:4
@@ -13535,13 +13535,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_32_read_access_32 (
+  ) u_range_attr_32_read_access_32 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_32_gated_we),
-    .wd     (range_perm_32_read_access_32_wd),
+    .we     (range_attr_32_gated_we),
+    .wd     (range_attr_32_read_access_32_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13549,11 +13549,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[32].read_access.q),
+    .q      (reg2hw.range_attr[32].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_32_read_access_32_qs)
+    .qs     (range_attr_32_read_access_32_qs)
   );
 
   //   F[write_access_32]: 11:8
@@ -13562,13 +13562,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_32_write_access_32 (
+  ) u_range_attr_32_write_access_32 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_32_gated_we),
-    .wd     (range_perm_32_write_access_32_wd),
+    .we     (range_attr_32_gated_we),
+    .wd     (range_attr_32_write_access_32_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13576,11 +13576,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[32].write_access.q),
+    .q      (reg2hw.range_attr[32].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_32_write_access_32_qs)
+    .qs     (range_attr_32_write_access_32_qs)
   );
 
   //   F[execute_access_32]: 15:12
@@ -13589,13 +13589,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_32_execute_access_32 (
+  ) u_range_attr_32_execute_access_32 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_32_gated_we),
-    .wd     (range_perm_32_execute_access_32_wd),
+    .we     (range_attr_32_gated_we),
+    .wd     (range_attr_32_execute_access_32_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13603,11 +13603,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[32].execute_access.q),
+    .q      (reg2hw.range_attr[32].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_32_execute_access_32_qs)
+    .qs     (range_attr_32_execute_access_32_qs)
   );
 
   //   F[log_denied_access_32]: 19:16
@@ -13616,13 +13616,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_32_log_denied_access_32 (
+  ) u_range_attr_32_log_denied_access_32 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_32_gated_we),
-    .wd     (range_perm_32_log_denied_access_32_wd),
+    .we     (range_attr_32_gated_we),
+    .wd     (range_attr_32_log_denied_access_32_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13630,20 +13630,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[32].log_denied_access.q),
+    .q      (reg2hw.range_attr[32].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_32_log_denied_access_32_qs)
+    .qs     (range_attr_32_log_denied_access_32_qs)
   );
 
 
-  // Subregister 33 of Multireg range_perm
-  // R[range_perm_33]: V(False)
+  // Subregister 33 of Multireg range_attr
+  // R[range_attr_33]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_33_gated_we;
-  assign range_perm_33_gated_we =
-    range_perm_33_we &
+  logic range_attr_33_gated_we;
+  assign range_attr_33_gated_we =
+    range_attr_33_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_33_qs));
   //   F[enable_33]: 3:0
   prim_subreg #(
@@ -13651,13 +13651,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_33_enable_33 (
+  ) u_range_attr_33_enable_33 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_33_gated_we),
-    .wd     (range_perm_33_enable_33_wd),
+    .we     (range_attr_33_gated_we),
+    .wd     (range_attr_33_enable_33_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13665,11 +13665,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[33].enable.q),
+    .q      (reg2hw.range_attr[33].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_33_enable_33_qs)
+    .qs     (range_attr_33_enable_33_qs)
   );
 
   //   F[read_access_33]: 7:4
@@ -13678,13 +13678,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_33_read_access_33 (
+  ) u_range_attr_33_read_access_33 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_33_gated_we),
-    .wd     (range_perm_33_read_access_33_wd),
+    .we     (range_attr_33_gated_we),
+    .wd     (range_attr_33_read_access_33_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13692,11 +13692,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[33].read_access.q),
+    .q      (reg2hw.range_attr[33].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_33_read_access_33_qs)
+    .qs     (range_attr_33_read_access_33_qs)
   );
 
   //   F[write_access_33]: 11:8
@@ -13705,13 +13705,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_33_write_access_33 (
+  ) u_range_attr_33_write_access_33 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_33_gated_we),
-    .wd     (range_perm_33_write_access_33_wd),
+    .we     (range_attr_33_gated_we),
+    .wd     (range_attr_33_write_access_33_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13719,11 +13719,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[33].write_access.q),
+    .q      (reg2hw.range_attr[33].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_33_write_access_33_qs)
+    .qs     (range_attr_33_write_access_33_qs)
   );
 
   //   F[execute_access_33]: 15:12
@@ -13732,13 +13732,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_33_execute_access_33 (
+  ) u_range_attr_33_execute_access_33 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_33_gated_we),
-    .wd     (range_perm_33_execute_access_33_wd),
+    .we     (range_attr_33_gated_we),
+    .wd     (range_attr_33_execute_access_33_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13746,11 +13746,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[33].execute_access.q),
+    .q      (reg2hw.range_attr[33].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_33_execute_access_33_qs)
+    .qs     (range_attr_33_execute_access_33_qs)
   );
 
   //   F[log_denied_access_33]: 19:16
@@ -13759,13 +13759,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_33_log_denied_access_33 (
+  ) u_range_attr_33_log_denied_access_33 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_33_gated_we),
-    .wd     (range_perm_33_log_denied_access_33_wd),
+    .we     (range_attr_33_gated_we),
+    .wd     (range_attr_33_log_denied_access_33_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13773,20 +13773,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[33].log_denied_access.q),
+    .q      (reg2hw.range_attr[33].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_33_log_denied_access_33_qs)
+    .qs     (range_attr_33_log_denied_access_33_qs)
   );
 
 
-  // Subregister 34 of Multireg range_perm
-  // R[range_perm_34]: V(False)
+  // Subregister 34 of Multireg range_attr
+  // R[range_attr_34]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_34_gated_we;
-  assign range_perm_34_gated_we =
-    range_perm_34_we &
+  logic range_attr_34_gated_we;
+  assign range_attr_34_gated_we =
+    range_attr_34_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_34_qs));
   //   F[enable_34]: 3:0
   prim_subreg #(
@@ -13794,13 +13794,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_34_enable_34 (
+  ) u_range_attr_34_enable_34 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_34_gated_we),
-    .wd     (range_perm_34_enable_34_wd),
+    .we     (range_attr_34_gated_we),
+    .wd     (range_attr_34_enable_34_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13808,11 +13808,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[34].enable.q),
+    .q      (reg2hw.range_attr[34].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_34_enable_34_qs)
+    .qs     (range_attr_34_enable_34_qs)
   );
 
   //   F[read_access_34]: 7:4
@@ -13821,13 +13821,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_34_read_access_34 (
+  ) u_range_attr_34_read_access_34 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_34_gated_we),
-    .wd     (range_perm_34_read_access_34_wd),
+    .we     (range_attr_34_gated_we),
+    .wd     (range_attr_34_read_access_34_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13835,11 +13835,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[34].read_access.q),
+    .q      (reg2hw.range_attr[34].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_34_read_access_34_qs)
+    .qs     (range_attr_34_read_access_34_qs)
   );
 
   //   F[write_access_34]: 11:8
@@ -13848,13 +13848,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_34_write_access_34 (
+  ) u_range_attr_34_write_access_34 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_34_gated_we),
-    .wd     (range_perm_34_write_access_34_wd),
+    .we     (range_attr_34_gated_we),
+    .wd     (range_attr_34_write_access_34_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13862,11 +13862,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[34].write_access.q),
+    .q      (reg2hw.range_attr[34].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_34_write_access_34_qs)
+    .qs     (range_attr_34_write_access_34_qs)
   );
 
   //   F[execute_access_34]: 15:12
@@ -13875,13 +13875,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_34_execute_access_34 (
+  ) u_range_attr_34_execute_access_34 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_34_gated_we),
-    .wd     (range_perm_34_execute_access_34_wd),
+    .we     (range_attr_34_gated_we),
+    .wd     (range_attr_34_execute_access_34_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13889,11 +13889,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[34].execute_access.q),
+    .q      (reg2hw.range_attr[34].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_34_execute_access_34_qs)
+    .qs     (range_attr_34_execute_access_34_qs)
   );
 
   //   F[log_denied_access_34]: 19:16
@@ -13902,13 +13902,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_34_log_denied_access_34 (
+  ) u_range_attr_34_log_denied_access_34 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_34_gated_we),
-    .wd     (range_perm_34_log_denied_access_34_wd),
+    .we     (range_attr_34_gated_we),
+    .wd     (range_attr_34_log_denied_access_34_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13916,20 +13916,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[34].log_denied_access.q),
+    .q      (reg2hw.range_attr[34].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_34_log_denied_access_34_qs)
+    .qs     (range_attr_34_log_denied_access_34_qs)
   );
 
 
-  // Subregister 35 of Multireg range_perm
-  // R[range_perm_35]: V(False)
+  // Subregister 35 of Multireg range_attr
+  // R[range_attr_35]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_35_gated_we;
-  assign range_perm_35_gated_we =
-    range_perm_35_we &
+  logic range_attr_35_gated_we;
+  assign range_attr_35_gated_we =
+    range_attr_35_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_35_qs));
   //   F[enable_35]: 3:0
   prim_subreg #(
@@ -13937,13 +13937,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_35_enable_35 (
+  ) u_range_attr_35_enable_35 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_35_gated_we),
-    .wd     (range_perm_35_enable_35_wd),
+    .we     (range_attr_35_gated_we),
+    .wd     (range_attr_35_enable_35_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13951,11 +13951,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[35].enable.q),
+    .q      (reg2hw.range_attr[35].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_35_enable_35_qs)
+    .qs     (range_attr_35_enable_35_qs)
   );
 
   //   F[read_access_35]: 7:4
@@ -13964,13 +13964,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_35_read_access_35 (
+  ) u_range_attr_35_read_access_35 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_35_gated_we),
-    .wd     (range_perm_35_read_access_35_wd),
+    .we     (range_attr_35_gated_we),
+    .wd     (range_attr_35_read_access_35_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -13978,11 +13978,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[35].read_access.q),
+    .q      (reg2hw.range_attr[35].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_35_read_access_35_qs)
+    .qs     (range_attr_35_read_access_35_qs)
   );
 
   //   F[write_access_35]: 11:8
@@ -13991,13 +13991,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_35_write_access_35 (
+  ) u_range_attr_35_write_access_35 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_35_gated_we),
-    .wd     (range_perm_35_write_access_35_wd),
+    .we     (range_attr_35_gated_we),
+    .wd     (range_attr_35_write_access_35_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14005,11 +14005,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[35].write_access.q),
+    .q      (reg2hw.range_attr[35].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_35_write_access_35_qs)
+    .qs     (range_attr_35_write_access_35_qs)
   );
 
   //   F[execute_access_35]: 15:12
@@ -14018,13 +14018,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_35_execute_access_35 (
+  ) u_range_attr_35_execute_access_35 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_35_gated_we),
-    .wd     (range_perm_35_execute_access_35_wd),
+    .we     (range_attr_35_gated_we),
+    .wd     (range_attr_35_execute_access_35_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14032,11 +14032,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[35].execute_access.q),
+    .q      (reg2hw.range_attr[35].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_35_execute_access_35_qs)
+    .qs     (range_attr_35_execute_access_35_qs)
   );
 
   //   F[log_denied_access_35]: 19:16
@@ -14045,13 +14045,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_35_log_denied_access_35 (
+  ) u_range_attr_35_log_denied_access_35 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_35_gated_we),
-    .wd     (range_perm_35_log_denied_access_35_wd),
+    .we     (range_attr_35_gated_we),
+    .wd     (range_attr_35_log_denied_access_35_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14059,20 +14059,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[35].log_denied_access.q),
+    .q      (reg2hw.range_attr[35].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_35_log_denied_access_35_qs)
+    .qs     (range_attr_35_log_denied_access_35_qs)
   );
 
 
-  // Subregister 36 of Multireg range_perm
-  // R[range_perm_36]: V(False)
+  // Subregister 36 of Multireg range_attr
+  // R[range_attr_36]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_36_gated_we;
-  assign range_perm_36_gated_we =
-    range_perm_36_we &
+  logic range_attr_36_gated_we;
+  assign range_attr_36_gated_we =
+    range_attr_36_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_36_qs));
   //   F[enable_36]: 3:0
   prim_subreg #(
@@ -14080,13 +14080,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_36_enable_36 (
+  ) u_range_attr_36_enable_36 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_36_gated_we),
-    .wd     (range_perm_36_enable_36_wd),
+    .we     (range_attr_36_gated_we),
+    .wd     (range_attr_36_enable_36_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14094,11 +14094,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[36].enable.q),
+    .q      (reg2hw.range_attr[36].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_36_enable_36_qs)
+    .qs     (range_attr_36_enable_36_qs)
   );
 
   //   F[read_access_36]: 7:4
@@ -14107,13 +14107,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_36_read_access_36 (
+  ) u_range_attr_36_read_access_36 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_36_gated_we),
-    .wd     (range_perm_36_read_access_36_wd),
+    .we     (range_attr_36_gated_we),
+    .wd     (range_attr_36_read_access_36_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14121,11 +14121,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[36].read_access.q),
+    .q      (reg2hw.range_attr[36].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_36_read_access_36_qs)
+    .qs     (range_attr_36_read_access_36_qs)
   );
 
   //   F[write_access_36]: 11:8
@@ -14134,13 +14134,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_36_write_access_36 (
+  ) u_range_attr_36_write_access_36 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_36_gated_we),
-    .wd     (range_perm_36_write_access_36_wd),
+    .we     (range_attr_36_gated_we),
+    .wd     (range_attr_36_write_access_36_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14148,11 +14148,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[36].write_access.q),
+    .q      (reg2hw.range_attr[36].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_36_write_access_36_qs)
+    .qs     (range_attr_36_write_access_36_qs)
   );
 
   //   F[execute_access_36]: 15:12
@@ -14161,13 +14161,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_36_execute_access_36 (
+  ) u_range_attr_36_execute_access_36 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_36_gated_we),
-    .wd     (range_perm_36_execute_access_36_wd),
+    .we     (range_attr_36_gated_we),
+    .wd     (range_attr_36_execute_access_36_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14175,11 +14175,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[36].execute_access.q),
+    .q      (reg2hw.range_attr[36].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_36_execute_access_36_qs)
+    .qs     (range_attr_36_execute_access_36_qs)
   );
 
   //   F[log_denied_access_36]: 19:16
@@ -14188,13 +14188,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_36_log_denied_access_36 (
+  ) u_range_attr_36_log_denied_access_36 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_36_gated_we),
-    .wd     (range_perm_36_log_denied_access_36_wd),
+    .we     (range_attr_36_gated_we),
+    .wd     (range_attr_36_log_denied_access_36_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14202,20 +14202,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[36].log_denied_access.q),
+    .q      (reg2hw.range_attr[36].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_36_log_denied_access_36_qs)
+    .qs     (range_attr_36_log_denied_access_36_qs)
   );
 
 
-  // Subregister 37 of Multireg range_perm
-  // R[range_perm_37]: V(False)
+  // Subregister 37 of Multireg range_attr
+  // R[range_attr_37]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_37_gated_we;
-  assign range_perm_37_gated_we =
-    range_perm_37_we &
+  logic range_attr_37_gated_we;
+  assign range_attr_37_gated_we =
+    range_attr_37_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_37_qs));
   //   F[enable_37]: 3:0
   prim_subreg #(
@@ -14223,13 +14223,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_37_enable_37 (
+  ) u_range_attr_37_enable_37 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_37_gated_we),
-    .wd     (range_perm_37_enable_37_wd),
+    .we     (range_attr_37_gated_we),
+    .wd     (range_attr_37_enable_37_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14237,11 +14237,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[37].enable.q),
+    .q      (reg2hw.range_attr[37].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_37_enable_37_qs)
+    .qs     (range_attr_37_enable_37_qs)
   );
 
   //   F[read_access_37]: 7:4
@@ -14250,13 +14250,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_37_read_access_37 (
+  ) u_range_attr_37_read_access_37 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_37_gated_we),
-    .wd     (range_perm_37_read_access_37_wd),
+    .we     (range_attr_37_gated_we),
+    .wd     (range_attr_37_read_access_37_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14264,11 +14264,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[37].read_access.q),
+    .q      (reg2hw.range_attr[37].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_37_read_access_37_qs)
+    .qs     (range_attr_37_read_access_37_qs)
   );
 
   //   F[write_access_37]: 11:8
@@ -14277,13 +14277,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_37_write_access_37 (
+  ) u_range_attr_37_write_access_37 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_37_gated_we),
-    .wd     (range_perm_37_write_access_37_wd),
+    .we     (range_attr_37_gated_we),
+    .wd     (range_attr_37_write_access_37_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14291,11 +14291,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[37].write_access.q),
+    .q      (reg2hw.range_attr[37].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_37_write_access_37_qs)
+    .qs     (range_attr_37_write_access_37_qs)
   );
 
   //   F[execute_access_37]: 15:12
@@ -14304,13 +14304,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_37_execute_access_37 (
+  ) u_range_attr_37_execute_access_37 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_37_gated_we),
-    .wd     (range_perm_37_execute_access_37_wd),
+    .we     (range_attr_37_gated_we),
+    .wd     (range_attr_37_execute_access_37_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14318,11 +14318,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[37].execute_access.q),
+    .q      (reg2hw.range_attr[37].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_37_execute_access_37_qs)
+    .qs     (range_attr_37_execute_access_37_qs)
   );
 
   //   F[log_denied_access_37]: 19:16
@@ -14331,13 +14331,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_37_log_denied_access_37 (
+  ) u_range_attr_37_log_denied_access_37 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_37_gated_we),
-    .wd     (range_perm_37_log_denied_access_37_wd),
+    .we     (range_attr_37_gated_we),
+    .wd     (range_attr_37_log_denied_access_37_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14345,20 +14345,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[37].log_denied_access.q),
+    .q      (reg2hw.range_attr[37].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_37_log_denied_access_37_qs)
+    .qs     (range_attr_37_log_denied_access_37_qs)
   );
 
 
-  // Subregister 38 of Multireg range_perm
-  // R[range_perm_38]: V(False)
+  // Subregister 38 of Multireg range_attr
+  // R[range_attr_38]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_38_gated_we;
-  assign range_perm_38_gated_we =
-    range_perm_38_we &
+  logic range_attr_38_gated_we;
+  assign range_attr_38_gated_we =
+    range_attr_38_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_38_qs));
   //   F[enable_38]: 3:0
   prim_subreg #(
@@ -14366,13 +14366,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_38_enable_38 (
+  ) u_range_attr_38_enable_38 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_38_gated_we),
-    .wd     (range_perm_38_enable_38_wd),
+    .we     (range_attr_38_gated_we),
+    .wd     (range_attr_38_enable_38_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14380,11 +14380,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[38].enable.q),
+    .q      (reg2hw.range_attr[38].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_38_enable_38_qs)
+    .qs     (range_attr_38_enable_38_qs)
   );
 
   //   F[read_access_38]: 7:4
@@ -14393,13 +14393,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_38_read_access_38 (
+  ) u_range_attr_38_read_access_38 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_38_gated_we),
-    .wd     (range_perm_38_read_access_38_wd),
+    .we     (range_attr_38_gated_we),
+    .wd     (range_attr_38_read_access_38_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14407,11 +14407,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[38].read_access.q),
+    .q      (reg2hw.range_attr[38].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_38_read_access_38_qs)
+    .qs     (range_attr_38_read_access_38_qs)
   );
 
   //   F[write_access_38]: 11:8
@@ -14420,13 +14420,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_38_write_access_38 (
+  ) u_range_attr_38_write_access_38 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_38_gated_we),
-    .wd     (range_perm_38_write_access_38_wd),
+    .we     (range_attr_38_gated_we),
+    .wd     (range_attr_38_write_access_38_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14434,11 +14434,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[38].write_access.q),
+    .q      (reg2hw.range_attr[38].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_38_write_access_38_qs)
+    .qs     (range_attr_38_write_access_38_qs)
   );
 
   //   F[execute_access_38]: 15:12
@@ -14447,13 +14447,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_38_execute_access_38 (
+  ) u_range_attr_38_execute_access_38 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_38_gated_we),
-    .wd     (range_perm_38_execute_access_38_wd),
+    .we     (range_attr_38_gated_we),
+    .wd     (range_attr_38_execute_access_38_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14461,11 +14461,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[38].execute_access.q),
+    .q      (reg2hw.range_attr[38].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_38_execute_access_38_qs)
+    .qs     (range_attr_38_execute_access_38_qs)
   );
 
   //   F[log_denied_access_38]: 19:16
@@ -14474,13 +14474,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_38_log_denied_access_38 (
+  ) u_range_attr_38_log_denied_access_38 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_38_gated_we),
-    .wd     (range_perm_38_log_denied_access_38_wd),
+    .we     (range_attr_38_gated_we),
+    .wd     (range_attr_38_log_denied_access_38_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14488,20 +14488,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[38].log_denied_access.q),
+    .q      (reg2hw.range_attr[38].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_38_log_denied_access_38_qs)
+    .qs     (range_attr_38_log_denied_access_38_qs)
   );
 
 
-  // Subregister 39 of Multireg range_perm
-  // R[range_perm_39]: V(False)
+  // Subregister 39 of Multireg range_attr
+  // R[range_attr_39]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_39_gated_we;
-  assign range_perm_39_gated_we =
-    range_perm_39_we &
+  logic range_attr_39_gated_we;
+  assign range_attr_39_gated_we =
+    range_attr_39_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_39_qs));
   //   F[enable_39]: 3:0
   prim_subreg #(
@@ -14509,13 +14509,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_39_enable_39 (
+  ) u_range_attr_39_enable_39 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_39_gated_we),
-    .wd     (range_perm_39_enable_39_wd),
+    .we     (range_attr_39_gated_we),
+    .wd     (range_attr_39_enable_39_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14523,11 +14523,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[39].enable.q),
+    .q      (reg2hw.range_attr[39].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_39_enable_39_qs)
+    .qs     (range_attr_39_enable_39_qs)
   );
 
   //   F[read_access_39]: 7:4
@@ -14536,13 +14536,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_39_read_access_39 (
+  ) u_range_attr_39_read_access_39 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_39_gated_we),
-    .wd     (range_perm_39_read_access_39_wd),
+    .we     (range_attr_39_gated_we),
+    .wd     (range_attr_39_read_access_39_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14550,11 +14550,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[39].read_access.q),
+    .q      (reg2hw.range_attr[39].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_39_read_access_39_qs)
+    .qs     (range_attr_39_read_access_39_qs)
   );
 
   //   F[write_access_39]: 11:8
@@ -14563,13 +14563,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_39_write_access_39 (
+  ) u_range_attr_39_write_access_39 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_39_gated_we),
-    .wd     (range_perm_39_write_access_39_wd),
+    .we     (range_attr_39_gated_we),
+    .wd     (range_attr_39_write_access_39_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14577,11 +14577,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[39].write_access.q),
+    .q      (reg2hw.range_attr[39].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_39_write_access_39_qs)
+    .qs     (range_attr_39_write_access_39_qs)
   );
 
   //   F[execute_access_39]: 15:12
@@ -14590,13 +14590,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_39_execute_access_39 (
+  ) u_range_attr_39_execute_access_39 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_39_gated_we),
-    .wd     (range_perm_39_execute_access_39_wd),
+    .we     (range_attr_39_gated_we),
+    .wd     (range_attr_39_execute_access_39_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14604,11 +14604,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[39].execute_access.q),
+    .q      (reg2hw.range_attr[39].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_39_execute_access_39_qs)
+    .qs     (range_attr_39_execute_access_39_qs)
   );
 
   //   F[log_denied_access_39]: 19:16
@@ -14617,13 +14617,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_39_log_denied_access_39 (
+  ) u_range_attr_39_log_denied_access_39 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_39_gated_we),
-    .wd     (range_perm_39_log_denied_access_39_wd),
+    .we     (range_attr_39_gated_we),
+    .wd     (range_attr_39_log_denied_access_39_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14631,20 +14631,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[39].log_denied_access.q),
+    .q      (reg2hw.range_attr[39].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_39_log_denied_access_39_qs)
+    .qs     (range_attr_39_log_denied_access_39_qs)
   );
 
 
-  // Subregister 40 of Multireg range_perm
-  // R[range_perm_40]: V(False)
+  // Subregister 40 of Multireg range_attr
+  // R[range_attr_40]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_40_gated_we;
-  assign range_perm_40_gated_we =
-    range_perm_40_we &
+  logic range_attr_40_gated_we;
+  assign range_attr_40_gated_we =
+    range_attr_40_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_40_qs));
   //   F[enable_40]: 3:0
   prim_subreg #(
@@ -14652,13 +14652,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_40_enable_40 (
+  ) u_range_attr_40_enable_40 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_40_gated_we),
-    .wd     (range_perm_40_enable_40_wd),
+    .we     (range_attr_40_gated_we),
+    .wd     (range_attr_40_enable_40_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14666,11 +14666,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[40].enable.q),
+    .q      (reg2hw.range_attr[40].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_40_enable_40_qs)
+    .qs     (range_attr_40_enable_40_qs)
   );
 
   //   F[read_access_40]: 7:4
@@ -14679,13 +14679,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_40_read_access_40 (
+  ) u_range_attr_40_read_access_40 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_40_gated_we),
-    .wd     (range_perm_40_read_access_40_wd),
+    .we     (range_attr_40_gated_we),
+    .wd     (range_attr_40_read_access_40_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14693,11 +14693,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[40].read_access.q),
+    .q      (reg2hw.range_attr[40].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_40_read_access_40_qs)
+    .qs     (range_attr_40_read_access_40_qs)
   );
 
   //   F[write_access_40]: 11:8
@@ -14706,13 +14706,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_40_write_access_40 (
+  ) u_range_attr_40_write_access_40 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_40_gated_we),
-    .wd     (range_perm_40_write_access_40_wd),
+    .we     (range_attr_40_gated_we),
+    .wd     (range_attr_40_write_access_40_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14720,11 +14720,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[40].write_access.q),
+    .q      (reg2hw.range_attr[40].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_40_write_access_40_qs)
+    .qs     (range_attr_40_write_access_40_qs)
   );
 
   //   F[execute_access_40]: 15:12
@@ -14733,13 +14733,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_40_execute_access_40 (
+  ) u_range_attr_40_execute_access_40 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_40_gated_we),
-    .wd     (range_perm_40_execute_access_40_wd),
+    .we     (range_attr_40_gated_we),
+    .wd     (range_attr_40_execute_access_40_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14747,11 +14747,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[40].execute_access.q),
+    .q      (reg2hw.range_attr[40].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_40_execute_access_40_qs)
+    .qs     (range_attr_40_execute_access_40_qs)
   );
 
   //   F[log_denied_access_40]: 19:16
@@ -14760,13 +14760,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_40_log_denied_access_40 (
+  ) u_range_attr_40_log_denied_access_40 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_40_gated_we),
-    .wd     (range_perm_40_log_denied_access_40_wd),
+    .we     (range_attr_40_gated_we),
+    .wd     (range_attr_40_log_denied_access_40_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14774,20 +14774,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[40].log_denied_access.q),
+    .q      (reg2hw.range_attr[40].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_40_log_denied_access_40_qs)
+    .qs     (range_attr_40_log_denied_access_40_qs)
   );
 
 
-  // Subregister 41 of Multireg range_perm
-  // R[range_perm_41]: V(False)
+  // Subregister 41 of Multireg range_attr
+  // R[range_attr_41]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_41_gated_we;
-  assign range_perm_41_gated_we =
-    range_perm_41_we &
+  logic range_attr_41_gated_we;
+  assign range_attr_41_gated_we =
+    range_attr_41_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_41_qs));
   //   F[enable_41]: 3:0
   prim_subreg #(
@@ -14795,13 +14795,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_41_enable_41 (
+  ) u_range_attr_41_enable_41 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_41_gated_we),
-    .wd     (range_perm_41_enable_41_wd),
+    .we     (range_attr_41_gated_we),
+    .wd     (range_attr_41_enable_41_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14809,11 +14809,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[41].enable.q),
+    .q      (reg2hw.range_attr[41].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_41_enable_41_qs)
+    .qs     (range_attr_41_enable_41_qs)
   );
 
   //   F[read_access_41]: 7:4
@@ -14822,13 +14822,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_41_read_access_41 (
+  ) u_range_attr_41_read_access_41 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_41_gated_we),
-    .wd     (range_perm_41_read_access_41_wd),
+    .we     (range_attr_41_gated_we),
+    .wd     (range_attr_41_read_access_41_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14836,11 +14836,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[41].read_access.q),
+    .q      (reg2hw.range_attr[41].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_41_read_access_41_qs)
+    .qs     (range_attr_41_read_access_41_qs)
   );
 
   //   F[write_access_41]: 11:8
@@ -14849,13 +14849,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_41_write_access_41 (
+  ) u_range_attr_41_write_access_41 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_41_gated_we),
-    .wd     (range_perm_41_write_access_41_wd),
+    .we     (range_attr_41_gated_we),
+    .wd     (range_attr_41_write_access_41_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14863,11 +14863,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[41].write_access.q),
+    .q      (reg2hw.range_attr[41].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_41_write_access_41_qs)
+    .qs     (range_attr_41_write_access_41_qs)
   );
 
   //   F[execute_access_41]: 15:12
@@ -14876,13 +14876,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_41_execute_access_41 (
+  ) u_range_attr_41_execute_access_41 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_41_gated_we),
-    .wd     (range_perm_41_execute_access_41_wd),
+    .we     (range_attr_41_gated_we),
+    .wd     (range_attr_41_execute_access_41_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14890,11 +14890,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[41].execute_access.q),
+    .q      (reg2hw.range_attr[41].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_41_execute_access_41_qs)
+    .qs     (range_attr_41_execute_access_41_qs)
   );
 
   //   F[log_denied_access_41]: 19:16
@@ -14903,13 +14903,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_41_log_denied_access_41 (
+  ) u_range_attr_41_log_denied_access_41 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_41_gated_we),
-    .wd     (range_perm_41_log_denied_access_41_wd),
+    .we     (range_attr_41_gated_we),
+    .wd     (range_attr_41_log_denied_access_41_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14917,20 +14917,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[41].log_denied_access.q),
+    .q      (reg2hw.range_attr[41].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_41_log_denied_access_41_qs)
+    .qs     (range_attr_41_log_denied_access_41_qs)
   );
 
 
-  // Subregister 42 of Multireg range_perm
-  // R[range_perm_42]: V(False)
+  // Subregister 42 of Multireg range_attr
+  // R[range_attr_42]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_42_gated_we;
-  assign range_perm_42_gated_we =
-    range_perm_42_we &
+  logic range_attr_42_gated_we;
+  assign range_attr_42_gated_we =
+    range_attr_42_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_42_qs));
   //   F[enable_42]: 3:0
   prim_subreg #(
@@ -14938,13 +14938,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_42_enable_42 (
+  ) u_range_attr_42_enable_42 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_42_gated_we),
-    .wd     (range_perm_42_enable_42_wd),
+    .we     (range_attr_42_gated_we),
+    .wd     (range_attr_42_enable_42_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14952,11 +14952,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[42].enable.q),
+    .q      (reg2hw.range_attr[42].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_42_enable_42_qs)
+    .qs     (range_attr_42_enable_42_qs)
   );
 
   //   F[read_access_42]: 7:4
@@ -14965,13 +14965,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_42_read_access_42 (
+  ) u_range_attr_42_read_access_42 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_42_gated_we),
-    .wd     (range_perm_42_read_access_42_wd),
+    .we     (range_attr_42_gated_we),
+    .wd     (range_attr_42_read_access_42_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -14979,11 +14979,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[42].read_access.q),
+    .q      (reg2hw.range_attr[42].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_42_read_access_42_qs)
+    .qs     (range_attr_42_read_access_42_qs)
   );
 
   //   F[write_access_42]: 11:8
@@ -14992,13 +14992,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_42_write_access_42 (
+  ) u_range_attr_42_write_access_42 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_42_gated_we),
-    .wd     (range_perm_42_write_access_42_wd),
+    .we     (range_attr_42_gated_we),
+    .wd     (range_attr_42_write_access_42_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15006,11 +15006,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[42].write_access.q),
+    .q      (reg2hw.range_attr[42].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_42_write_access_42_qs)
+    .qs     (range_attr_42_write_access_42_qs)
   );
 
   //   F[execute_access_42]: 15:12
@@ -15019,13 +15019,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_42_execute_access_42 (
+  ) u_range_attr_42_execute_access_42 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_42_gated_we),
-    .wd     (range_perm_42_execute_access_42_wd),
+    .we     (range_attr_42_gated_we),
+    .wd     (range_attr_42_execute_access_42_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15033,11 +15033,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[42].execute_access.q),
+    .q      (reg2hw.range_attr[42].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_42_execute_access_42_qs)
+    .qs     (range_attr_42_execute_access_42_qs)
   );
 
   //   F[log_denied_access_42]: 19:16
@@ -15046,13 +15046,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_42_log_denied_access_42 (
+  ) u_range_attr_42_log_denied_access_42 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_42_gated_we),
-    .wd     (range_perm_42_log_denied_access_42_wd),
+    .we     (range_attr_42_gated_we),
+    .wd     (range_attr_42_log_denied_access_42_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15060,20 +15060,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[42].log_denied_access.q),
+    .q      (reg2hw.range_attr[42].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_42_log_denied_access_42_qs)
+    .qs     (range_attr_42_log_denied_access_42_qs)
   );
 
 
-  // Subregister 43 of Multireg range_perm
-  // R[range_perm_43]: V(False)
+  // Subregister 43 of Multireg range_attr
+  // R[range_attr_43]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_43_gated_we;
-  assign range_perm_43_gated_we =
-    range_perm_43_we &
+  logic range_attr_43_gated_we;
+  assign range_attr_43_gated_we =
+    range_attr_43_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_43_qs));
   //   F[enable_43]: 3:0
   prim_subreg #(
@@ -15081,13 +15081,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_43_enable_43 (
+  ) u_range_attr_43_enable_43 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_43_gated_we),
-    .wd     (range_perm_43_enable_43_wd),
+    .we     (range_attr_43_gated_we),
+    .wd     (range_attr_43_enable_43_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15095,11 +15095,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[43].enable.q),
+    .q      (reg2hw.range_attr[43].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_43_enable_43_qs)
+    .qs     (range_attr_43_enable_43_qs)
   );
 
   //   F[read_access_43]: 7:4
@@ -15108,13 +15108,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_43_read_access_43 (
+  ) u_range_attr_43_read_access_43 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_43_gated_we),
-    .wd     (range_perm_43_read_access_43_wd),
+    .we     (range_attr_43_gated_we),
+    .wd     (range_attr_43_read_access_43_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15122,11 +15122,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[43].read_access.q),
+    .q      (reg2hw.range_attr[43].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_43_read_access_43_qs)
+    .qs     (range_attr_43_read_access_43_qs)
   );
 
   //   F[write_access_43]: 11:8
@@ -15135,13 +15135,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_43_write_access_43 (
+  ) u_range_attr_43_write_access_43 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_43_gated_we),
-    .wd     (range_perm_43_write_access_43_wd),
+    .we     (range_attr_43_gated_we),
+    .wd     (range_attr_43_write_access_43_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15149,11 +15149,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[43].write_access.q),
+    .q      (reg2hw.range_attr[43].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_43_write_access_43_qs)
+    .qs     (range_attr_43_write_access_43_qs)
   );
 
   //   F[execute_access_43]: 15:12
@@ -15162,13 +15162,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_43_execute_access_43 (
+  ) u_range_attr_43_execute_access_43 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_43_gated_we),
-    .wd     (range_perm_43_execute_access_43_wd),
+    .we     (range_attr_43_gated_we),
+    .wd     (range_attr_43_execute_access_43_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15176,11 +15176,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[43].execute_access.q),
+    .q      (reg2hw.range_attr[43].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_43_execute_access_43_qs)
+    .qs     (range_attr_43_execute_access_43_qs)
   );
 
   //   F[log_denied_access_43]: 19:16
@@ -15189,13 +15189,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_43_log_denied_access_43 (
+  ) u_range_attr_43_log_denied_access_43 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_43_gated_we),
-    .wd     (range_perm_43_log_denied_access_43_wd),
+    .we     (range_attr_43_gated_we),
+    .wd     (range_attr_43_log_denied_access_43_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15203,20 +15203,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[43].log_denied_access.q),
+    .q      (reg2hw.range_attr[43].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_43_log_denied_access_43_qs)
+    .qs     (range_attr_43_log_denied_access_43_qs)
   );
 
 
-  // Subregister 44 of Multireg range_perm
-  // R[range_perm_44]: V(False)
+  // Subregister 44 of Multireg range_attr
+  // R[range_attr_44]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_44_gated_we;
-  assign range_perm_44_gated_we =
-    range_perm_44_we &
+  logic range_attr_44_gated_we;
+  assign range_attr_44_gated_we =
+    range_attr_44_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_44_qs));
   //   F[enable_44]: 3:0
   prim_subreg #(
@@ -15224,13 +15224,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_44_enable_44 (
+  ) u_range_attr_44_enable_44 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_44_gated_we),
-    .wd     (range_perm_44_enable_44_wd),
+    .we     (range_attr_44_gated_we),
+    .wd     (range_attr_44_enable_44_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15238,11 +15238,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[44].enable.q),
+    .q      (reg2hw.range_attr[44].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_44_enable_44_qs)
+    .qs     (range_attr_44_enable_44_qs)
   );
 
   //   F[read_access_44]: 7:4
@@ -15251,13 +15251,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_44_read_access_44 (
+  ) u_range_attr_44_read_access_44 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_44_gated_we),
-    .wd     (range_perm_44_read_access_44_wd),
+    .we     (range_attr_44_gated_we),
+    .wd     (range_attr_44_read_access_44_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15265,11 +15265,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[44].read_access.q),
+    .q      (reg2hw.range_attr[44].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_44_read_access_44_qs)
+    .qs     (range_attr_44_read_access_44_qs)
   );
 
   //   F[write_access_44]: 11:8
@@ -15278,13 +15278,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_44_write_access_44 (
+  ) u_range_attr_44_write_access_44 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_44_gated_we),
-    .wd     (range_perm_44_write_access_44_wd),
+    .we     (range_attr_44_gated_we),
+    .wd     (range_attr_44_write_access_44_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15292,11 +15292,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[44].write_access.q),
+    .q      (reg2hw.range_attr[44].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_44_write_access_44_qs)
+    .qs     (range_attr_44_write_access_44_qs)
   );
 
   //   F[execute_access_44]: 15:12
@@ -15305,13 +15305,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_44_execute_access_44 (
+  ) u_range_attr_44_execute_access_44 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_44_gated_we),
-    .wd     (range_perm_44_execute_access_44_wd),
+    .we     (range_attr_44_gated_we),
+    .wd     (range_attr_44_execute_access_44_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15319,11 +15319,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[44].execute_access.q),
+    .q      (reg2hw.range_attr[44].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_44_execute_access_44_qs)
+    .qs     (range_attr_44_execute_access_44_qs)
   );
 
   //   F[log_denied_access_44]: 19:16
@@ -15332,13 +15332,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_44_log_denied_access_44 (
+  ) u_range_attr_44_log_denied_access_44 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_44_gated_we),
-    .wd     (range_perm_44_log_denied_access_44_wd),
+    .we     (range_attr_44_gated_we),
+    .wd     (range_attr_44_log_denied_access_44_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15346,20 +15346,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[44].log_denied_access.q),
+    .q      (reg2hw.range_attr[44].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_44_log_denied_access_44_qs)
+    .qs     (range_attr_44_log_denied_access_44_qs)
   );
 
 
-  // Subregister 45 of Multireg range_perm
-  // R[range_perm_45]: V(False)
+  // Subregister 45 of Multireg range_attr
+  // R[range_attr_45]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_45_gated_we;
-  assign range_perm_45_gated_we =
-    range_perm_45_we &
+  logic range_attr_45_gated_we;
+  assign range_attr_45_gated_we =
+    range_attr_45_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_45_qs));
   //   F[enable_45]: 3:0
   prim_subreg #(
@@ -15367,13 +15367,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_45_enable_45 (
+  ) u_range_attr_45_enable_45 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_45_gated_we),
-    .wd     (range_perm_45_enable_45_wd),
+    .we     (range_attr_45_gated_we),
+    .wd     (range_attr_45_enable_45_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15381,11 +15381,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[45].enable.q),
+    .q      (reg2hw.range_attr[45].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_45_enable_45_qs)
+    .qs     (range_attr_45_enable_45_qs)
   );
 
   //   F[read_access_45]: 7:4
@@ -15394,13 +15394,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_45_read_access_45 (
+  ) u_range_attr_45_read_access_45 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_45_gated_we),
-    .wd     (range_perm_45_read_access_45_wd),
+    .we     (range_attr_45_gated_we),
+    .wd     (range_attr_45_read_access_45_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15408,11 +15408,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[45].read_access.q),
+    .q      (reg2hw.range_attr[45].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_45_read_access_45_qs)
+    .qs     (range_attr_45_read_access_45_qs)
   );
 
   //   F[write_access_45]: 11:8
@@ -15421,13 +15421,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_45_write_access_45 (
+  ) u_range_attr_45_write_access_45 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_45_gated_we),
-    .wd     (range_perm_45_write_access_45_wd),
+    .we     (range_attr_45_gated_we),
+    .wd     (range_attr_45_write_access_45_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15435,11 +15435,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[45].write_access.q),
+    .q      (reg2hw.range_attr[45].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_45_write_access_45_qs)
+    .qs     (range_attr_45_write_access_45_qs)
   );
 
   //   F[execute_access_45]: 15:12
@@ -15448,13 +15448,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_45_execute_access_45 (
+  ) u_range_attr_45_execute_access_45 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_45_gated_we),
-    .wd     (range_perm_45_execute_access_45_wd),
+    .we     (range_attr_45_gated_we),
+    .wd     (range_attr_45_execute_access_45_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15462,11 +15462,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[45].execute_access.q),
+    .q      (reg2hw.range_attr[45].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_45_execute_access_45_qs)
+    .qs     (range_attr_45_execute_access_45_qs)
   );
 
   //   F[log_denied_access_45]: 19:16
@@ -15475,13 +15475,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_45_log_denied_access_45 (
+  ) u_range_attr_45_log_denied_access_45 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_45_gated_we),
-    .wd     (range_perm_45_log_denied_access_45_wd),
+    .we     (range_attr_45_gated_we),
+    .wd     (range_attr_45_log_denied_access_45_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15489,20 +15489,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[45].log_denied_access.q),
+    .q      (reg2hw.range_attr[45].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_45_log_denied_access_45_qs)
+    .qs     (range_attr_45_log_denied_access_45_qs)
   );
 
 
-  // Subregister 46 of Multireg range_perm
-  // R[range_perm_46]: V(False)
+  // Subregister 46 of Multireg range_attr
+  // R[range_attr_46]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_46_gated_we;
-  assign range_perm_46_gated_we =
-    range_perm_46_we &
+  logic range_attr_46_gated_we;
+  assign range_attr_46_gated_we =
+    range_attr_46_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_46_qs));
   //   F[enable_46]: 3:0
   prim_subreg #(
@@ -15510,13 +15510,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_46_enable_46 (
+  ) u_range_attr_46_enable_46 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_46_gated_we),
-    .wd     (range_perm_46_enable_46_wd),
+    .we     (range_attr_46_gated_we),
+    .wd     (range_attr_46_enable_46_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15524,11 +15524,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[46].enable.q),
+    .q      (reg2hw.range_attr[46].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_46_enable_46_qs)
+    .qs     (range_attr_46_enable_46_qs)
   );
 
   //   F[read_access_46]: 7:4
@@ -15537,13 +15537,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_46_read_access_46 (
+  ) u_range_attr_46_read_access_46 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_46_gated_we),
-    .wd     (range_perm_46_read_access_46_wd),
+    .we     (range_attr_46_gated_we),
+    .wd     (range_attr_46_read_access_46_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15551,11 +15551,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[46].read_access.q),
+    .q      (reg2hw.range_attr[46].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_46_read_access_46_qs)
+    .qs     (range_attr_46_read_access_46_qs)
   );
 
   //   F[write_access_46]: 11:8
@@ -15564,13 +15564,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_46_write_access_46 (
+  ) u_range_attr_46_write_access_46 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_46_gated_we),
-    .wd     (range_perm_46_write_access_46_wd),
+    .we     (range_attr_46_gated_we),
+    .wd     (range_attr_46_write_access_46_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15578,11 +15578,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[46].write_access.q),
+    .q      (reg2hw.range_attr[46].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_46_write_access_46_qs)
+    .qs     (range_attr_46_write_access_46_qs)
   );
 
   //   F[execute_access_46]: 15:12
@@ -15591,13 +15591,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_46_execute_access_46 (
+  ) u_range_attr_46_execute_access_46 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_46_gated_we),
-    .wd     (range_perm_46_execute_access_46_wd),
+    .we     (range_attr_46_gated_we),
+    .wd     (range_attr_46_execute_access_46_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15605,11 +15605,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[46].execute_access.q),
+    .q      (reg2hw.range_attr[46].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_46_execute_access_46_qs)
+    .qs     (range_attr_46_execute_access_46_qs)
   );
 
   //   F[log_denied_access_46]: 19:16
@@ -15618,13 +15618,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_46_log_denied_access_46 (
+  ) u_range_attr_46_log_denied_access_46 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_46_gated_we),
-    .wd     (range_perm_46_log_denied_access_46_wd),
+    .we     (range_attr_46_gated_we),
+    .wd     (range_attr_46_log_denied_access_46_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15632,20 +15632,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[46].log_denied_access.q),
+    .q      (reg2hw.range_attr[46].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_46_log_denied_access_46_qs)
+    .qs     (range_attr_46_log_denied_access_46_qs)
   );
 
 
-  // Subregister 47 of Multireg range_perm
-  // R[range_perm_47]: V(False)
+  // Subregister 47 of Multireg range_attr
+  // R[range_attr_47]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_47_gated_we;
-  assign range_perm_47_gated_we =
-    range_perm_47_we &
+  logic range_attr_47_gated_we;
+  assign range_attr_47_gated_we =
+    range_attr_47_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_47_qs));
   //   F[enable_47]: 3:0
   prim_subreg #(
@@ -15653,13 +15653,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_47_enable_47 (
+  ) u_range_attr_47_enable_47 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_47_gated_we),
-    .wd     (range_perm_47_enable_47_wd),
+    .we     (range_attr_47_gated_we),
+    .wd     (range_attr_47_enable_47_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15667,11 +15667,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[47].enable.q),
+    .q      (reg2hw.range_attr[47].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_47_enable_47_qs)
+    .qs     (range_attr_47_enable_47_qs)
   );
 
   //   F[read_access_47]: 7:4
@@ -15680,13 +15680,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_47_read_access_47 (
+  ) u_range_attr_47_read_access_47 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_47_gated_we),
-    .wd     (range_perm_47_read_access_47_wd),
+    .we     (range_attr_47_gated_we),
+    .wd     (range_attr_47_read_access_47_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15694,11 +15694,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[47].read_access.q),
+    .q      (reg2hw.range_attr[47].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_47_read_access_47_qs)
+    .qs     (range_attr_47_read_access_47_qs)
   );
 
   //   F[write_access_47]: 11:8
@@ -15707,13 +15707,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_47_write_access_47 (
+  ) u_range_attr_47_write_access_47 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_47_gated_we),
-    .wd     (range_perm_47_write_access_47_wd),
+    .we     (range_attr_47_gated_we),
+    .wd     (range_attr_47_write_access_47_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15721,11 +15721,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[47].write_access.q),
+    .q      (reg2hw.range_attr[47].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_47_write_access_47_qs)
+    .qs     (range_attr_47_write_access_47_qs)
   );
 
   //   F[execute_access_47]: 15:12
@@ -15734,13 +15734,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_47_execute_access_47 (
+  ) u_range_attr_47_execute_access_47 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_47_gated_we),
-    .wd     (range_perm_47_execute_access_47_wd),
+    .we     (range_attr_47_gated_we),
+    .wd     (range_attr_47_execute_access_47_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15748,11 +15748,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[47].execute_access.q),
+    .q      (reg2hw.range_attr[47].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_47_execute_access_47_qs)
+    .qs     (range_attr_47_execute_access_47_qs)
   );
 
   //   F[log_denied_access_47]: 19:16
@@ -15761,13 +15761,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_47_log_denied_access_47 (
+  ) u_range_attr_47_log_denied_access_47 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_47_gated_we),
-    .wd     (range_perm_47_log_denied_access_47_wd),
+    .we     (range_attr_47_gated_we),
+    .wd     (range_attr_47_log_denied_access_47_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15775,20 +15775,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[47].log_denied_access.q),
+    .q      (reg2hw.range_attr[47].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_47_log_denied_access_47_qs)
+    .qs     (range_attr_47_log_denied_access_47_qs)
   );
 
 
-  // Subregister 48 of Multireg range_perm
-  // R[range_perm_48]: V(False)
+  // Subregister 48 of Multireg range_attr
+  // R[range_attr_48]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_48_gated_we;
-  assign range_perm_48_gated_we =
-    range_perm_48_we &
+  logic range_attr_48_gated_we;
+  assign range_attr_48_gated_we =
+    range_attr_48_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_48_qs));
   //   F[enable_48]: 3:0
   prim_subreg #(
@@ -15796,13 +15796,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_48_enable_48 (
+  ) u_range_attr_48_enable_48 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_48_gated_we),
-    .wd     (range_perm_48_enable_48_wd),
+    .we     (range_attr_48_gated_we),
+    .wd     (range_attr_48_enable_48_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15810,11 +15810,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[48].enable.q),
+    .q      (reg2hw.range_attr[48].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_48_enable_48_qs)
+    .qs     (range_attr_48_enable_48_qs)
   );
 
   //   F[read_access_48]: 7:4
@@ -15823,13 +15823,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_48_read_access_48 (
+  ) u_range_attr_48_read_access_48 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_48_gated_we),
-    .wd     (range_perm_48_read_access_48_wd),
+    .we     (range_attr_48_gated_we),
+    .wd     (range_attr_48_read_access_48_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15837,11 +15837,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[48].read_access.q),
+    .q      (reg2hw.range_attr[48].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_48_read_access_48_qs)
+    .qs     (range_attr_48_read_access_48_qs)
   );
 
   //   F[write_access_48]: 11:8
@@ -15850,13 +15850,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_48_write_access_48 (
+  ) u_range_attr_48_write_access_48 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_48_gated_we),
-    .wd     (range_perm_48_write_access_48_wd),
+    .we     (range_attr_48_gated_we),
+    .wd     (range_attr_48_write_access_48_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15864,11 +15864,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[48].write_access.q),
+    .q      (reg2hw.range_attr[48].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_48_write_access_48_qs)
+    .qs     (range_attr_48_write_access_48_qs)
   );
 
   //   F[execute_access_48]: 15:12
@@ -15877,13 +15877,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_48_execute_access_48 (
+  ) u_range_attr_48_execute_access_48 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_48_gated_we),
-    .wd     (range_perm_48_execute_access_48_wd),
+    .we     (range_attr_48_gated_we),
+    .wd     (range_attr_48_execute_access_48_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15891,11 +15891,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[48].execute_access.q),
+    .q      (reg2hw.range_attr[48].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_48_execute_access_48_qs)
+    .qs     (range_attr_48_execute_access_48_qs)
   );
 
   //   F[log_denied_access_48]: 19:16
@@ -15904,13 +15904,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_48_log_denied_access_48 (
+  ) u_range_attr_48_log_denied_access_48 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_48_gated_we),
-    .wd     (range_perm_48_log_denied_access_48_wd),
+    .we     (range_attr_48_gated_we),
+    .wd     (range_attr_48_log_denied_access_48_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15918,20 +15918,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[48].log_denied_access.q),
+    .q      (reg2hw.range_attr[48].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_48_log_denied_access_48_qs)
+    .qs     (range_attr_48_log_denied_access_48_qs)
   );
 
 
-  // Subregister 49 of Multireg range_perm
-  // R[range_perm_49]: V(False)
+  // Subregister 49 of Multireg range_attr
+  // R[range_attr_49]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_49_gated_we;
-  assign range_perm_49_gated_we =
-    range_perm_49_we &
+  logic range_attr_49_gated_we;
+  assign range_attr_49_gated_we =
+    range_attr_49_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_49_qs));
   //   F[enable_49]: 3:0
   prim_subreg #(
@@ -15939,13 +15939,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_49_enable_49 (
+  ) u_range_attr_49_enable_49 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_49_gated_we),
-    .wd     (range_perm_49_enable_49_wd),
+    .we     (range_attr_49_gated_we),
+    .wd     (range_attr_49_enable_49_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15953,11 +15953,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[49].enable.q),
+    .q      (reg2hw.range_attr[49].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_49_enable_49_qs)
+    .qs     (range_attr_49_enable_49_qs)
   );
 
   //   F[read_access_49]: 7:4
@@ -15966,13 +15966,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_49_read_access_49 (
+  ) u_range_attr_49_read_access_49 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_49_gated_we),
-    .wd     (range_perm_49_read_access_49_wd),
+    .we     (range_attr_49_gated_we),
+    .wd     (range_attr_49_read_access_49_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -15980,11 +15980,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[49].read_access.q),
+    .q      (reg2hw.range_attr[49].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_49_read_access_49_qs)
+    .qs     (range_attr_49_read_access_49_qs)
   );
 
   //   F[write_access_49]: 11:8
@@ -15993,13 +15993,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_49_write_access_49 (
+  ) u_range_attr_49_write_access_49 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_49_gated_we),
-    .wd     (range_perm_49_write_access_49_wd),
+    .we     (range_attr_49_gated_we),
+    .wd     (range_attr_49_write_access_49_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16007,11 +16007,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[49].write_access.q),
+    .q      (reg2hw.range_attr[49].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_49_write_access_49_qs)
+    .qs     (range_attr_49_write_access_49_qs)
   );
 
   //   F[execute_access_49]: 15:12
@@ -16020,13 +16020,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_49_execute_access_49 (
+  ) u_range_attr_49_execute_access_49 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_49_gated_we),
-    .wd     (range_perm_49_execute_access_49_wd),
+    .we     (range_attr_49_gated_we),
+    .wd     (range_attr_49_execute_access_49_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16034,11 +16034,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[49].execute_access.q),
+    .q      (reg2hw.range_attr[49].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_49_execute_access_49_qs)
+    .qs     (range_attr_49_execute_access_49_qs)
   );
 
   //   F[log_denied_access_49]: 19:16
@@ -16047,13 +16047,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_49_log_denied_access_49 (
+  ) u_range_attr_49_log_denied_access_49 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_49_gated_we),
-    .wd     (range_perm_49_log_denied_access_49_wd),
+    .we     (range_attr_49_gated_we),
+    .wd     (range_attr_49_log_denied_access_49_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16061,20 +16061,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[49].log_denied_access.q),
+    .q      (reg2hw.range_attr[49].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_49_log_denied_access_49_qs)
+    .qs     (range_attr_49_log_denied_access_49_qs)
   );
 
 
-  // Subregister 50 of Multireg range_perm
-  // R[range_perm_50]: V(False)
+  // Subregister 50 of Multireg range_attr
+  // R[range_attr_50]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_50_gated_we;
-  assign range_perm_50_gated_we =
-    range_perm_50_we &
+  logic range_attr_50_gated_we;
+  assign range_attr_50_gated_we =
+    range_attr_50_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_50_qs));
   //   F[enable_50]: 3:0
   prim_subreg #(
@@ -16082,13 +16082,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_50_enable_50 (
+  ) u_range_attr_50_enable_50 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_50_gated_we),
-    .wd     (range_perm_50_enable_50_wd),
+    .we     (range_attr_50_gated_we),
+    .wd     (range_attr_50_enable_50_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16096,11 +16096,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[50].enable.q),
+    .q      (reg2hw.range_attr[50].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_50_enable_50_qs)
+    .qs     (range_attr_50_enable_50_qs)
   );
 
   //   F[read_access_50]: 7:4
@@ -16109,13 +16109,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_50_read_access_50 (
+  ) u_range_attr_50_read_access_50 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_50_gated_we),
-    .wd     (range_perm_50_read_access_50_wd),
+    .we     (range_attr_50_gated_we),
+    .wd     (range_attr_50_read_access_50_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16123,11 +16123,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[50].read_access.q),
+    .q      (reg2hw.range_attr[50].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_50_read_access_50_qs)
+    .qs     (range_attr_50_read_access_50_qs)
   );
 
   //   F[write_access_50]: 11:8
@@ -16136,13 +16136,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_50_write_access_50 (
+  ) u_range_attr_50_write_access_50 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_50_gated_we),
-    .wd     (range_perm_50_write_access_50_wd),
+    .we     (range_attr_50_gated_we),
+    .wd     (range_attr_50_write_access_50_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16150,11 +16150,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[50].write_access.q),
+    .q      (reg2hw.range_attr[50].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_50_write_access_50_qs)
+    .qs     (range_attr_50_write_access_50_qs)
   );
 
   //   F[execute_access_50]: 15:12
@@ -16163,13 +16163,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_50_execute_access_50 (
+  ) u_range_attr_50_execute_access_50 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_50_gated_we),
-    .wd     (range_perm_50_execute_access_50_wd),
+    .we     (range_attr_50_gated_we),
+    .wd     (range_attr_50_execute_access_50_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16177,11 +16177,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[50].execute_access.q),
+    .q      (reg2hw.range_attr[50].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_50_execute_access_50_qs)
+    .qs     (range_attr_50_execute_access_50_qs)
   );
 
   //   F[log_denied_access_50]: 19:16
@@ -16190,13 +16190,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_50_log_denied_access_50 (
+  ) u_range_attr_50_log_denied_access_50 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_50_gated_we),
-    .wd     (range_perm_50_log_denied_access_50_wd),
+    .we     (range_attr_50_gated_we),
+    .wd     (range_attr_50_log_denied_access_50_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16204,20 +16204,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[50].log_denied_access.q),
+    .q      (reg2hw.range_attr[50].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_50_log_denied_access_50_qs)
+    .qs     (range_attr_50_log_denied_access_50_qs)
   );
 
 
-  // Subregister 51 of Multireg range_perm
-  // R[range_perm_51]: V(False)
+  // Subregister 51 of Multireg range_attr
+  // R[range_attr_51]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_51_gated_we;
-  assign range_perm_51_gated_we =
-    range_perm_51_we &
+  logic range_attr_51_gated_we;
+  assign range_attr_51_gated_we =
+    range_attr_51_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_51_qs));
   //   F[enable_51]: 3:0
   prim_subreg #(
@@ -16225,13 +16225,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_51_enable_51 (
+  ) u_range_attr_51_enable_51 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_51_gated_we),
-    .wd     (range_perm_51_enable_51_wd),
+    .we     (range_attr_51_gated_we),
+    .wd     (range_attr_51_enable_51_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16239,11 +16239,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[51].enable.q),
+    .q      (reg2hw.range_attr[51].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_51_enable_51_qs)
+    .qs     (range_attr_51_enable_51_qs)
   );
 
   //   F[read_access_51]: 7:4
@@ -16252,13 +16252,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_51_read_access_51 (
+  ) u_range_attr_51_read_access_51 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_51_gated_we),
-    .wd     (range_perm_51_read_access_51_wd),
+    .we     (range_attr_51_gated_we),
+    .wd     (range_attr_51_read_access_51_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16266,11 +16266,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[51].read_access.q),
+    .q      (reg2hw.range_attr[51].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_51_read_access_51_qs)
+    .qs     (range_attr_51_read_access_51_qs)
   );
 
   //   F[write_access_51]: 11:8
@@ -16279,13 +16279,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_51_write_access_51 (
+  ) u_range_attr_51_write_access_51 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_51_gated_we),
-    .wd     (range_perm_51_write_access_51_wd),
+    .we     (range_attr_51_gated_we),
+    .wd     (range_attr_51_write_access_51_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16293,11 +16293,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[51].write_access.q),
+    .q      (reg2hw.range_attr[51].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_51_write_access_51_qs)
+    .qs     (range_attr_51_write_access_51_qs)
   );
 
   //   F[execute_access_51]: 15:12
@@ -16306,13 +16306,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_51_execute_access_51 (
+  ) u_range_attr_51_execute_access_51 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_51_gated_we),
-    .wd     (range_perm_51_execute_access_51_wd),
+    .we     (range_attr_51_gated_we),
+    .wd     (range_attr_51_execute_access_51_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16320,11 +16320,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[51].execute_access.q),
+    .q      (reg2hw.range_attr[51].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_51_execute_access_51_qs)
+    .qs     (range_attr_51_execute_access_51_qs)
   );
 
   //   F[log_denied_access_51]: 19:16
@@ -16333,13 +16333,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_51_log_denied_access_51 (
+  ) u_range_attr_51_log_denied_access_51 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_51_gated_we),
-    .wd     (range_perm_51_log_denied_access_51_wd),
+    .we     (range_attr_51_gated_we),
+    .wd     (range_attr_51_log_denied_access_51_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16347,20 +16347,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[51].log_denied_access.q),
+    .q      (reg2hw.range_attr[51].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_51_log_denied_access_51_qs)
+    .qs     (range_attr_51_log_denied_access_51_qs)
   );
 
 
-  // Subregister 52 of Multireg range_perm
-  // R[range_perm_52]: V(False)
+  // Subregister 52 of Multireg range_attr
+  // R[range_attr_52]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_52_gated_we;
-  assign range_perm_52_gated_we =
-    range_perm_52_we &
+  logic range_attr_52_gated_we;
+  assign range_attr_52_gated_we =
+    range_attr_52_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_52_qs));
   //   F[enable_52]: 3:0
   prim_subreg #(
@@ -16368,13 +16368,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_52_enable_52 (
+  ) u_range_attr_52_enable_52 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_52_gated_we),
-    .wd     (range_perm_52_enable_52_wd),
+    .we     (range_attr_52_gated_we),
+    .wd     (range_attr_52_enable_52_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16382,11 +16382,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[52].enable.q),
+    .q      (reg2hw.range_attr[52].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_52_enable_52_qs)
+    .qs     (range_attr_52_enable_52_qs)
   );
 
   //   F[read_access_52]: 7:4
@@ -16395,13 +16395,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_52_read_access_52 (
+  ) u_range_attr_52_read_access_52 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_52_gated_we),
-    .wd     (range_perm_52_read_access_52_wd),
+    .we     (range_attr_52_gated_we),
+    .wd     (range_attr_52_read_access_52_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16409,11 +16409,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[52].read_access.q),
+    .q      (reg2hw.range_attr[52].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_52_read_access_52_qs)
+    .qs     (range_attr_52_read_access_52_qs)
   );
 
   //   F[write_access_52]: 11:8
@@ -16422,13 +16422,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_52_write_access_52 (
+  ) u_range_attr_52_write_access_52 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_52_gated_we),
-    .wd     (range_perm_52_write_access_52_wd),
+    .we     (range_attr_52_gated_we),
+    .wd     (range_attr_52_write_access_52_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16436,11 +16436,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[52].write_access.q),
+    .q      (reg2hw.range_attr[52].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_52_write_access_52_qs)
+    .qs     (range_attr_52_write_access_52_qs)
   );
 
   //   F[execute_access_52]: 15:12
@@ -16449,13 +16449,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_52_execute_access_52 (
+  ) u_range_attr_52_execute_access_52 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_52_gated_we),
-    .wd     (range_perm_52_execute_access_52_wd),
+    .we     (range_attr_52_gated_we),
+    .wd     (range_attr_52_execute_access_52_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16463,11 +16463,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[52].execute_access.q),
+    .q      (reg2hw.range_attr[52].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_52_execute_access_52_qs)
+    .qs     (range_attr_52_execute_access_52_qs)
   );
 
   //   F[log_denied_access_52]: 19:16
@@ -16476,13 +16476,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_52_log_denied_access_52 (
+  ) u_range_attr_52_log_denied_access_52 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_52_gated_we),
-    .wd     (range_perm_52_log_denied_access_52_wd),
+    .we     (range_attr_52_gated_we),
+    .wd     (range_attr_52_log_denied_access_52_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16490,20 +16490,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[52].log_denied_access.q),
+    .q      (reg2hw.range_attr[52].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_52_log_denied_access_52_qs)
+    .qs     (range_attr_52_log_denied_access_52_qs)
   );
 
 
-  // Subregister 53 of Multireg range_perm
-  // R[range_perm_53]: V(False)
+  // Subregister 53 of Multireg range_attr
+  // R[range_attr_53]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_53_gated_we;
-  assign range_perm_53_gated_we =
-    range_perm_53_we &
+  logic range_attr_53_gated_we;
+  assign range_attr_53_gated_we =
+    range_attr_53_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_53_qs));
   //   F[enable_53]: 3:0
   prim_subreg #(
@@ -16511,13 +16511,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_53_enable_53 (
+  ) u_range_attr_53_enable_53 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_53_gated_we),
-    .wd     (range_perm_53_enable_53_wd),
+    .we     (range_attr_53_gated_we),
+    .wd     (range_attr_53_enable_53_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16525,11 +16525,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[53].enable.q),
+    .q      (reg2hw.range_attr[53].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_53_enable_53_qs)
+    .qs     (range_attr_53_enable_53_qs)
   );
 
   //   F[read_access_53]: 7:4
@@ -16538,13 +16538,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_53_read_access_53 (
+  ) u_range_attr_53_read_access_53 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_53_gated_we),
-    .wd     (range_perm_53_read_access_53_wd),
+    .we     (range_attr_53_gated_we),
+    .wd     (range_attr_53_read_access_53_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16552,11 +16552,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[53].read_access.q),
+    .q      (reg2hw.range_attr[53].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_53_read_access_53_qs)
+    .qs     (range_attr_53_read_access_53_qs)
   );
 
   //   F[write_access_53]: 11:8
@@ -16565,13 +16565,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_53_write_access_53 (
+  ) u_range_attr_53_write_access_53 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_53_gated_we),
-    .wd     (range_perm_53_write_access_53_wd),
+    .we     (range_attr_53_gated_we),
+    .wd     (range_attr_53_write_access_53_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16579,11 +16579,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[53].write_access.q),
+    .q      (reg2hw.range_attr[53].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_53_write_access_53_qs)
+    .qs     (range_attr_53_write_access_53_qs)
   );
 
   //   F[execute_access_53]: 15:12
@@ -16592,13 +16592,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_53_execute_access_53 (
+  ) u_range_attr_53_execute_access_53 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_53_gated_we),
-    .wd     (range_perm_53_execute_access_53_wd),
+    .we     (range_attr_53_gated_we),
+    .wd     (range_attr_53_execute_access_53_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16606,11 +16606,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[53].execute_access.q),
+    .q      (reg2hw.range_attr[53].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_53_execute_access_53_qs)
+    .qs     (range_attr_53_execute_access_53_qs)
   );
 
   //   F[log_denied_access_53]: 19:16
@@ -16619,13 +16619,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_53_log_denied_access_53 (
+  ) u_range_attr_53_log_denied_access_53 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_53_gated_we),
-    .wd     (range_perm_53_log_denied_access_53_wd),
+    .we     (range_attr_53_gated_we),
+    .wd     (range_attr_53_log_denied_access_53_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16633,20 +16633,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[53].log_denied_access.q),
+    .q      (reg2hw.range_attr[53].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_53_log_denied_access_53_qs)
+    .qs     (range_attr_53_log_denied_access_53_qs)
   );
 
 
-  // Subregister 54 of Multireg range_perm
-  // R[range_perm_54]: V(False)
+  // Subregister 54 of Multireg range_attr
+  // R[range_attr_54]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_54_gated_we;
-  assign range_perm_54_gated_we =
-    range_perm_54_we &
+  logic range_attr_54_gated_we;
+  assign range_attr_54_gated_we =
+    range_attr_54_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_54_qs));
   //   F[enable_54]: 3:0
   prim_subreg #(
@@ -16654,13 +16654,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_54_enable_54 (
+  ) u_range_attr_54_enable_54 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_54_gated_we),
-    .wd     (range_perm_54_enable_54_wd),
+    .we     (range_attr_54_gated_we),
+    .wd     (range_attr_54_enable_54_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16668,11 +16668,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[54].enable.q),
+    .q      (reg2hw.range_attr[54].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_54_enable_54_qs)
+    .qs     (range_attr_54_enable_54_qs)
   );
 
   //   F[read_access_54]: 7:4
@@ -16681,13 +16681,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_54_read_access_54 (
+  ) u_range_attr_54_read_access_54 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_54_gated_we),
-    .wd     (range_perm_54_read_access_54_wd),
+    .we     (range_attr_54_gated_we),
+    .wd     (range_attr_54_read_access_54_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16695,11 +16695,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[54].read_access.q),
+    .q      (reg2hw.range_attr[54].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_54_read_access_54_qs)
+    .qs     (range_attr_54_read_access_54_qs)
   );
 
   //   F[write_access_54]: 11:8
@@ -16708,13 +16708,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_54_write_access_54 (
+  ) u_range_attr_54_write_access_54 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_54_gated_we),
-    .wd     (range_perm_54_write_access_54_wd),
+    .we     (range_attr_54_gated_we),
+    .wd     (range_attr_54_write_access_54_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16722,11 +16722,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[54].write_access.q),
+    .q      (reg2hw.range_attr[54].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_54_write_access_54_qs)
+    .qs     (range_attr_54_write_access_54_qs)
   );
 
   //   F[execute_access_54]: 15:12
@@ -16735,13 +16735,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_54_execute_access_54 (
+  ) u_range_attr_54_execute_access_54 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_54_gated_we),
-    .wd     (range_perm_54_execute_access_54_wd),
+    .we     (range_attr_54_gated_we),
+    .wd     (range_attr_54_execute_access_54_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16749,11 +16749,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[54].execute_access.q),
+    .q      (reg2hw.range_attr[54].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_54_execute_access_54_qs)
+    .qs     (range_attr_54_execute_access_54_qs)
   );
 
   //   F[log_denied_access_54]: 19:16
@@ -16762,13 +16762,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_54_log_denied_access_54 (
+  ) u_range_attr_54_log_denied_access_54 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_54_gated_we),
-    .wd     (range_perm_54_log_denied_access_54_wd),
+    .we     (range_attr_54_gated_we),
+    .wd     (range_attr_54_log_denied_access_54_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16776,20 +16776,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[54].log_denied_access.q),
+    .q      (reg2hw.range_attr[54].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_54_log_denied_access_54_qs)
+    .qs     (range_attr_54_log_denied_access_54_qs)
   );
 
 
-  // Subregister 55 of Multireg range_perm
-  // R[range_perm_55]: V(False)
+  // Subregister 55 of Multireg range_attr
+  // R[range_attr_55]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_55_gated_we;
-  assign range_perm_55_gated_we =
-    range_perm_55_we &
+  logic range_attr_55_gated_we;
+  assign range_attr_55_gated_we =
+    range_attr_55_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_55_qs));
   //   F[enable_55]: 3:0
   prim_subreg #(
@@ -16797,13 +16797,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_55_enable_55 (
+  ) u_range_attr_55_enable_55 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_55_gated_we),
-    .wd     (range_perm_55_enable_55_wd),
+    .we     (range_attr_55_gated_we),
+    .wd     (range_attr_55_enable_55_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16811,11 +16811,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[55].enable.q),
+    .q      (reg2hw.range_attr[55].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_55_enable_55_qs)
+    .qs     (range_attr_55_enable_55_qs)
   );
 
   //   F[read_access_55]: 7:4
@@ -16824,13 +16824,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_55_read_access_55 (
+  ) u_range_attr_55_read_access_55 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_55_gated_we),
-    .wd     (range_perm_55_read_access_55_wd),
+    .we     (range_attr_55_gated_we),
+    .wd     (range_attr_55_read_access_55_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16838,11 +16838,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[55].read_access.q),
+    .q      (reg2hw.range_attr[55].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_55_read_access_55_qs)
+    .qs     (range_attr_55_read_access_55_qs)
   );
 
   //   F[write_access_55]: 11:8
@@ -16851,13 +16851,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_55_write_access_55 (
+  ) u_range_attr_55_write_access_55 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_55_gated_we),
-    .wd     (range_perm_55_write_access_55_wd),
+    .we     (range_attr_55_gated_we),
+    .wd     (range_attr_55_write_access_55_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16865,11 +16865,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[55].write_access.q),
+    .q      (reg2hw.range_attr[55].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_55_write_access_55_qs)
+    .qs     (range_attr_55_write_access_55_qs)
   );
 
   //   F[execute_access_55]: 15:12
@@ -16878,13 +16878,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_55_execute_access_55 (
+  ) u_range_attr_55_execute_access_55 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_55_gated_we),
-    .wd     (range_perm_55_execute_access_55_wd),
+    .we     (range_attr_55_gated_we),
+    .wd     (range_attr_55_execute_access_55_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16892,11 +16892,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[55].execute_access.q),
+    .q      (reg2hw.range_attr[55].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_55_execute_access_55_qs)
+    .qs     (range_attr_55_execute_access_55_qs)
   );
 
   //   F[log_denied_access_55]: 19:16
@@ -16905,13 +16905,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_55_log_denied_access_55 (
+  ) u_range_attr_55_log_denied_access_55 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_55_gated_we),
-    .wd     (range_perm_55_log_denied_access_55_wd),
+    .we     (range_attr_55_gated_we),
+    .wd     (range_attr_55_log_denied_access_55_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16919,20 +16919,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[55].log_denied_access.q),
+    .q      (reg2hw.range_attr[55].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_55_log_denied_access_55_qs)
+    .qs     (range_attr_55_log_denied_access_55_qs)
   );
 
 
-  // Subregister 56 of Multireg range_perm
-  // R[range_perm_56]: V(False)
+  // Subregister 56 of Multireg range_attr
+  // R[range_attr_56]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_56_gated_we;
-  assign range_perm_56_gated_we =
-    range_perm_56_we &
+  logic range_attr_56_gated_we;
+  assign range_attr_56_gated_we =
+    range_attr_56_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_56_qs));
   //   F[enable_56]: 3:0
   prim_subreg #(
@@ -16940,13 +16940,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_56_enable_56 (
+  ) u_range_attr_56_enable_56 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_56_gated_we),
-    .wd     (range_perm_56_enable_56_wd),
+    .we     (range_attr_56_gated_we),
+    .wd     (range_attr_56_enable_56_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16954,11 +16954,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[56].enable.q),
+    .q      (reg2hw.range_attr[56].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_56_enable_56_qs)
+    .qs     (range_attr_56_enable_56_qs)
   );
 
   //   F[read_access_56]: 7:4
@@ -16967,13 +16967,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_56_read_access_56 (
+  ) u_range_attr_56_read_access_56 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_56_gated_we),
-    .wd     (range_perm_56_read_access_56_wd),
+    .we     (range_attr_56_gated_we),
+    .wd     (range_attr_56_read_access_56_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -16981,11 +16981,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[56].read_access.q),
+    .q      (reg2hw.range_attr[56].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_56_read_access_56_qs)
+    .qs     (range_attr_56_read_access_56_qs)
   );
 
   //   F[write_access_56]: 11:8
@@ -16994,13 +16994,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_56_write_access_56 (
+  ) u_range_attr_56_write_access_56 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_56_gated_we),
-    .wd     (range_perm_56_write_access_56_wd),
+    .we     (range_attr_56_gated_we),
+    .wd     (range_attr_56_write_access_56_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17008,11 +17008,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[56].write_access.q),
+    .q      (reg2hw.range_attr[56].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_56_write_access_56_qs)
+    .qs     (range_attr_56_write_access_56_qs)
   );
 
   //   F[execute_access_56]: 15:12
@@ -17021,13 +17021,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_56_execute_access_56 (
+  ) u_range_attr_56_execute_access_56 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_56_gated_we),
-    .wd     (range_perm_56_execute_access_56_wd),
+    .we     (range_attr_56_gated_we),
+    .wd     (range_attr_56_execute_access_56_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17035,11 +17035,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[56].execute_access.q),
+    .q      (reg2hw.range_attr[56].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_56_execute_access_56_qs)
+    .qs     (range_attr_56_execute_access_56_qs)
   );
 
   //   F[log_denied_access_56]: 19:16
@@ -17048,13 +17048,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_56_log_denied_access_56 (
+  ) u_range_attr_56_log_denied_access_56 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_56_gated_we),
-    .wd     (range_perm_56_log_denied_access_56_wd),
+    .we     (range_attr_56_gated_we),
+    .wd     (range_attr_56_log_denied_access_56_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17062,20 +17062,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[56].log_denied_access.q),
+    .q      (reg2hw.range_attr[56].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_56_log_denied_access_56_qs)
+    .qs     (range_attr_56_log_denied_access_56_qs)
   );
 
 
-  // Subregister 57 of Multireg range_perm
-  // R[range_perm_57]: V(False)
+  // Subregister 57 of Multireg range_attr
+  // R[range_attr_57]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_57_gated_we;
-  assign range_perm_57_gated_we =
-    range_perm_57_we &
+  logic range_attr_57_gated_we;
+  assign range_attr_57_gated_we =
+    range_attr_57_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_57_qs));
   //   F[enable_57]: 3:0
   prim_subreg #(
@@ -17083,13 +17083,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_57_enable_57 (
+  ) u_range_attr_57_enable_57 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_57_gated_we),
-    .wd     (range_perm_57_enable_57_wd),
+    .we     (range_attr_57_gated_we),
+    .wd     (range_attr_57_enable_57_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17097,11 +17097,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[57].enable.q),
+    .q      (reg2hw.range_attr[57].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_57_enable_57_qs)
+    .qs     (range_attr_57_enable_57_qs)
   );
 
   //   F[read_access_57]: 7:4
@@ -17110,13 +17110,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_57_read_access_57 (
+  ) u_range_attr_57_read_access_57 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_57_gated_we),
-    .wd     (range_perm_57_read_access_57_wd),
+    .we     (range_attr_57_gated_we),
+    .wd     (range_attr_57_read_access_57_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17124,11 +17124,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[57].read_access.q),
+    .q      (reg2hw.range_attr[57].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_57_read_access_57_qs)
+    .qs     (range_attr_57_read_access_57_qs)
   );
 
   //   F[write_access_57]: 11:8
@@ -17137,13 +17137,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_57_write_access_57 (
+  ) u_range_attr_57_write_access_57 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_57_gated_we),
-    .wd     (range_perm_57_write_access_57_wd),
+    .we     (range_attr_57_gated_we),
+    .wd     (range_attr_57_write_access_57_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17151,11 +17151,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[57].write_access.q),
+    .q      (reg2hw.range_attr[57].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_57_write_access_57_qs)
+    .qs     (range_attr_57_write_access_57_qs)
   );
 
   //   F[execute_access_57]: 15:12
@@ -17164,13 +17164,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_57_execute_access_57 (
+  ) u_range_attr_57_execute_access_57 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_57_gated_we),
-    .wd     (range_perm_57_execute_access_57_wd),
+    .we     (range_attr_57_gated_we),
+    .wd     (range_attr_57_execute_access_57_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17178,11 +17178,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[57].execute_access.q),
+    .q      (reg2hw.range_attr[57].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_57_execute_access_57_qs)
+    .qs     (range_attr_57_execute_access_57_qs)
   );
 
   //   F[log_denied_access_57]: 19:16
@@ -17191,13 +17191,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_57_log_denied_access_57 (
+  ) u_range_attr_57_log_denied_access_57 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_57_gated_we),
-    .wd     (range_perm_57_log_denied_access_57_wd),
+    .we     (range_attr_57_gated_we),
+    .wd     (range_attr_57_log_denied_access_57_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17205,20 +17205,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[57].log_denied_access.q),
+    .q      (reg2hw.range_attr[57].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_57_log_denied_access_57_qs)
+    .qs     (range_attr_57_log_denied_access_57_qs)
   );
 
 
-  // Subregister 58 of Multireg range_perm
-  // R[range_perm_58]: V(False)
+  // Subregister 58 of Multireg range_attr
+  // R[range_attr_58]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_58_gated_we;
-  assign range_perm_58_gated_we =
-    range_perm_58_we &
+  logic range_attr_58_gated_we;
+  assign range_attr_58_gated_we =
+    range_attr_58_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_58_qs));
   //   F[enable_58]: 3:0
   prim_subreg #(
@@ -17226,13 +17226,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_58_enable_58 (
+  ) u_range_attr_58_enable_58 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_58_gated_we),
-    .wd     (range_perm_58_enable_58_wd),
+    .we     (range_attr_58_gated_we),
+    .wd     (range_attr_58_enable_58_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17240,11 +17240,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[58].enable.q),
+    .q      (reg2hw.range_attr[58].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_58_enable_58_qs)
+    .qs     (range_attr_58_enable_58_qs)
   );
 
   //   F[read_access_58]: 7:4
@@ -17253,13 +17253,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_58_read_access_58 (
+  ) u_range_attr_58_read_access_58 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_58_gated_we),
-    .wd     (range_perm_58_read_access_58_wd),
+    .we     (range_attr_58_gated_we),
+    .wd     (range_attr_58_read_access_58_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17267,11 +17267,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[58].read_access.q),
+    .q      (reg2hw.range_attr[58].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_58_read_access_58_qs)
+    .qs     (range_attr_58_read_access_58_qs)
   );
 
   //   F[write_access_58]: 11:8
@@ -17280,13 +17280,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_58_write_access_58 (
+  ) u_range_attr_58_write_access_58 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_58_gated_we),
-    .wd     (range_perm_58_write_access_58_wd),
+    .we     (range_attr_58_gated_we),
+    .wd     (range_attr_58_write_access_58_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17294,11 +17294,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[58].write_access.q),
+    .q      (reg2hw.range_attr[58].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_58_write_access_58_qs)
+    .qs     (range_attr_58_write_access_58_qs)
   );
 
   //   F[execute_access_58]: 15:12
@@ -17307,13 +17307,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_58_execute_access_58 (
+  ) u_range_attr_58_execute_access_58 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_58_gated_we),
-    .wd     (range_perm_58_execute_access_58_wd),
+    .we     (range_attr_58_gated_we),
+    .wd     (range_attr_58_execute_access_58_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17321,11 +17321,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[58].execute_access.q),
+    .q      (reg2hw.range_attr[58].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_58_execute_access_58_qs)
+    .qs     (range_attr_58_execute_access_58_qs)
   );
 
   //   F[log_denied_access_58]: 19:16
@@ -17334,13 +17334,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_58_log_denied_access_58 (
+  ) u_range_attr_58_log_denied_access_58 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_58_gated_we),
-    .wd     (range_perm_58_log_denied_access_58_wd),
+    .we     (range_attr_58_gated_we),
+    .wd     (range_attr_58_log_denied_access_58_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17348,20 +17348,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[58].log_denied_access.q),
+    .q      (reg2hw.range_attr[58].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_58_log_denied_access_58_qs)
+    .qs     (range_attr_58_log_denied_access_58_qs)
   );
 
 
-  // Subregister 59 of Multireg range_perm
-  // R[range_perm_59]: V(False)
+  // Subregister 59 of Multireg range_attr
+  // R[range_attr_59]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_59_gated_we;
-  assign range_perm_59_gated_we =
-    range_perm_59_we &
+  logic range_attr_59_gated_we;
+  assign range_attr_59_gated_we =
+    range_attr_59_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_59_qs));
   //   F[enable_59]: 3:0
   prim_subreg #(
@@ -17369,13 +17369,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_59_enable_59 (
+  ) u_range_attr_59_enable_59 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_59_gated_we),
-    .wd     (range_perm_59_enable_59_wd),
+    .we     (range_attr_59_gated_we),
+    .wd     (range_attr_59_enable_59_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17383,11 +17383,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[59].enable.q),
+    .q      (reg2hw.range_attr[59].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_59_enable_59_qs)
+    .qs     (range_attr_59_enable_59_qs)
   );
 
   //   F[read_access_59]: 7:4
@@ -17396,13 +17396,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_59_read_access_59 (
+  ) u_range_attr_59_read_access_59 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_59_gated_we),
-    .wd     (range_perm_59_read_access_59_wd),
+    .we     (range_attr_59_gated_we),
+    .wd     (range_attr_59_read_access_59_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17410,11 +17410,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[59].read_access.q),
+    .q      (reg2hw.range_attr[59].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_59_read_access_59_qs)
+    .qs     (range_attr_59_read_access_59_qs)
   );
 
   //   F[write_access_59]: 11:8
@@ -17423,13 +17423,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_59_write_access_59 (
+  ) u_range_attr_59_write_access_59 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_59_gated_we),
-    .wd     (range_perm_59_write_access_59_wd),
+    .we     (range_attr_59_gated_we),
+    .wd     (range_attr_59_write_access_59_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17437,11 +17437,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[59].write_access.q),
+    .q      (reg2hw.range_attr[59].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_59_write_access_59_qs)
+    .qs     (range_attr_59_write_access_59_qs)
   );
 
   //   F[execute_access_59]: 15:12
@@ -17450,13 +17450,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_59_execute_access_59 (
+  ) u_range_attr_59_execute_access_59 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_59_gated_we),
-    .wd     (range_perm_59_execute_access_59_wd),
+    .we     (range_attr_59_gated_we),
+    .wd     (range_attr_59_execute_access_59_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17464,11 +17464,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[59].execute_access.q),
+    .q      (reg2hw.range_attr[59].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_59_execute_access_59_qs)
+    .qs     (range_attr_59_execute_access_59_qs)
   );
 
   //   F[log_denied_access_59]: 19:16
@@ -17477,13 +17477,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_59_log_denied_access_59 (
+  ) u_range_attr_59_log_denied_access_59 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_59_gated_we),
-    .wd     (range_perm_59_log_denied_access_59_wd),
+    .we     (range_attr_59_gated_we),
+    .wd     (range_attr_59_log_denied_access_59_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17491,20 +17491,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[59].log_denied_access.q),
+    .q      (reg2hw.range_attr[59].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_59_log_denied_access_59_qs)
+    .qs     (range_attr_59_log_denied_access_59_qs)
   );
 
 
-  // Subregister 60 of Multireg range_perm
-  // R[range_perm_60]: V(False)
+  // Subregister 60 of Multireg range_attr
+  // R[range_attr_60]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_60_gated_we;
-  assign range_perm_60_gated_we =
-    range_perm_60_we &
+  logic range_attr_60_gated_we;
+  assign range_attr_60_gated_we =
+    range_attr_60_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_60_qs));
   //   F[enable_60]: 3:0
   prim_subreg #(
@@ -17512,13 +17512,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_60_enable_60 (
+  ) u_range_attr_60_enable_60 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_60_gated_we),
-    .wd     (range_perm_60_enable_60_wd),
+    .we     (range_attr_60_gated_we),
+    .wd     (range_attr_60_enable_60_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17526,11 +17526,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[60].enable.q),
+    .q      (reg2hw.range_attr[60].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_60_enable_60_qs)
+    .qs     (range_attr_60_enable_60_qs)
   );
 
   //   F[read_access_60]: 7:4
@@ -17539,13 +17539,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_60_read_access_60 (
+  ) u_range_attr_60_read_access_60 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_60_gated_we),
-    .wd     (range_perm_60_read_access_60_wd),
+    .we     (range_attr_60_gated_we),
+    .wd     (range_attr_60_read_access_60_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17553,11 +17553,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[60].read_access.q),
+    .q      (reg2hw.range_attr[60].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_60_read_access_60_qs)
+    .qs     (range_attr_60_read_access_60_qs)
   );
 
   //   F[write_access_60]: 11:8
@@ -17566,13 +17566,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_60_write_access_60 (
+  ) u_range_attr_60_write_access_60 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_60_gated_we),
-    .wd     (range_perm_60_write_access_60_wd),
+    .we     (range_attr_60_gated_we),
+    .wd     (range_attr_60_write_access_60_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17580,11 +17580,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[60].write_access.q),
+    .q      (reg2hw.range_attr[60].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_60_write_access_60_qs)
+    .qs     (range_attr_60_write_access_60_qs)
   );
 
   //   F[execute_access_60]: 15:12
@@ -17593,13 +17593,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_60_execute_access_60 (
+  ) u_range_attr_60_execute_access_60 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_60_gated_we),
-    .wd     (range_perm_60_execute_access_60_wd),
+    .we     (range_attr_60_gated_we),
+    .wd     (range_attr_60_execute_access_60_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17607,11 +17607,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[60].execute_access.q),
+    .q      (reg2hw.range_attr[60].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_60_execute_access_60_qs)
+    .qs     (range_attr_60_execute_access_60_qs)
   );
 
   //   F[log_denied_access_60]: 19:16
@@ -17620,13 +17620,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_60_log_denied_access_60 (
+  ) u_range_attr_60_log_denied_access_60 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_60_gated_we),
-    .wd     (range_perm_60_log_denied_access_60_wd),
+    .we     (range_attr_60_gated_we),
+    .wd     (range_attr_60_log_denied_access_60_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17634,20 +17634,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[60].log_denied_access.q),
+    .q      (reg2hw.range_attr[60].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_60_log_denied_access_60_qs)
+    .qs     (range_attr_60_log_denied_access_60_qs)
   );
 
 
-  // Subregister 61 of Multireg range_perm
-  // R[range_perm_61]: V(False)
+  // Subregister 61 of Multireg range_attr
+  // R[range_attr_61]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_61_gated_we;
-  assign range_perm_61_gated_we =
-    range_perm_61_we &
+  logic range_attr_61_gated_we;
+  assign range_attr_61_gated_we =
+    range_attr_61_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_61_qs));
   //   F[enable_61]: 3:0
   prim_subreg #(
@@ -17655,13 +17655,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_61_enable_61 (
+  ) u_range_attr_61_enable_61 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_61_gated_we),
-    .wd     (range_perm_61_enable_61_wd),
+    .we     (range_attr_61_gated_we),
+    .wd     (range_attr_61_enable_61_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17669,11 +17669,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[61].enable.q),
+    .q      (reg2hw.range_attr[61].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_61_enable_61_qs)
+    .qs     (range_attr_61_enable_61_qs)
   );
 
   //   F[read_access_61]: 7:4
@@ -17682,13 +17682,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_61_read_access_61 (
+  ) u_range_attr_61_read_access_61 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_61_gated_we),
-    .wd     (range_perm_61_read_access_61_wd),
+    .we     (range_attr_61_gated_we),
+    .wd     (range_attr_61_read_access_61_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17696,11 +17696,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[61].read_access.q),
+    .q      (reg2hw.range_attr[61].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_61_read_access_61_qs)
+    .qs     (range_attr_61_read_access_61_qs)
   );
 
   //   F[write_access_61]: 11:8
@@ -17709,13 +17709,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_61_write_access_61 (
+  ) u_range_attr_61_write_access_61 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_61_gated_we),
-    .wd     (range_perm_61_write_access_61_wd),
+    .we     (range_attr_61_gated_we),
+    .wd     (range_attr_61_write_access_61_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17723,11 +17723,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[61].write_access.q),
+    .q      (reg2hw.range_attr[61].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_61_write_access_61_qs)
+    .qs     (range_attr_61_write_access_61_qs)
   );
 
   //   F[execute_access_61]: 15:12
@@ -17736,13 +17736,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_61_execute_access_61 (
+  ) u_range_attr_61_execute_access_61 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_61_gated_we),
-    .wd     (range_perm_61_execute_access_61_wd),
+    .we     (range_attr_61_gated_we),
+    .wd     (range_attr_61_execute_access_61_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17750,11 +17750,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[61].execute_access.q),
+    .q      (reg2hw.range_attr[61].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_61_execute_access_61_qs)
+    .qs     (range_attr_61_execute_access_61_qs)
   );
 
   //   F[log_denied_access_61]: 19:16
@@ -17763,13 +17763,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_61_log_denied_access_61 (
+  ) u_range_attr_61_log_denied_access_61 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_61_gated_we),
-    .wd     (range_perm_61_log_denied_access_61_wd),
+    .we     (range_attr_61_gated_we),
+    .wd     (range_attr_61_log_denied_access_61_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17777,20 +17777,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[61].log_denied_access.q),
+    .q      (reg2hw.range_attr[61].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_61_log_denied_access_61_qs)
+    .qs     (range_attr_61_log_denied_access_61_qs)
   );
 
 
-  // Subregister 62 of Multireg range_perm
-  // R[range_perm_62]: V(False)
+  // Subregister 62 of Multireg range_attr
+  // R[range_attr_62]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_62_gated_we;
-  assign range_perm_62_gated_we =
-    range_perm_62_we &
+  logic range_attr_62_gated_we;
+  assign range_attr_62_gated_we =
+    range_attr_62_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_62_qs));
   //   F[enable_62]: 3:0
   prim_subreg #(
@@ -17798,13 +17798,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_62_enable_62 (
+  ) u_range_attr_62_enable_62 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_62_gated_we),
-    .wd     (range_perm_62_enable_62_wd),
+    .we     (range_attr_62_gated_we),
+    .wd     (range_attr_62_enable_62_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17812,11 +17812,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[62].enable.q),
+    .q      (reg2hw.range_attr[62].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_62_enable_62_qs)
+    .qs     (range_attr_62_enable_62_qs)
   );
 
   //   F[read_access_62]: 7:4
@@ -17825,13 +17825,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_62_read_access_62 (
+  ) u_range_attr_62_read_access_62 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_62_gated_we),
-    .wd     (range_perm_62_read_access_62_wd),
+    .we     (range_attr_62_gated_we),
+    .wd     (range_attr_62_read_access_62_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17839,11 +17839,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[62].read_access.q),
+    .q      (reg2hw.range_attr[62].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_62_read_access_62_qs)
+    .qs     (range_attr_62_read_access_62_qs)
   );
 
   //   F[write_access_62]: 11:8
@@ -17852,13 +17852,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_62_write_access_62 (
+  ) u_range_attr_62_write_access_62 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_62_gated_we),
-    .wd     (range_perm_62_write_access_62_wd),
+    .we     (range_attr_62_gated_we),
+    .wd     (range_attr_62_write_access_62_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17866,11 +17866,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[62].write_access.q),
+    .q      (reg2hw.range_attr[62].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_62_write_access_62_qs)
+    .qs     (range_attr_62_write_access_62_qs)
   );
 
   //   F[execute_access_62]: 15:12
@@ -17879,13 +17879,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_62_execute_access_62 (
+  ) u_range_attr_62_execute_access_62 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_62_gated_we),
-    .wd     (range_perm_62_execute_access_62_wd),
+    .we     (range_attr_62_gated_we),
+    .wd     (range_attr_62_execute_access_62_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17893,11 +17893,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[62].execute_access.q),
+    .q      (reg2hw.range_attr[62].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_62_execute_access_62_qs)
+    .qs     (range_attr_62_execute_access_62_qs)
   );
 
   //   F[log_denied_access_62]: 19:16
@@ -17906,13 +17906,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_62_log_denied_access_62 (
+  ) u_range_attr_62_log_denied_access_62 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_62_gated_we),
-    .wd     (range_perm_62_log_denied_access_62_wd),
+    .we     (range_attr_62_gated_we),
+    .wd     (range_attr_62_log_denied_access_62_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17920,20 +17920,20 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[62].log_denied_access.q),
+    .q      (reg2hw.range_attr[62].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_62_log_denied_access_62_qs)
+    .qs     (range_attr_62_log_denied_access_62_qs)
   );
 
 
-  // Subregister 63 of Multireg range_perm
-  // R[range_perm_63]: V(False)
+  // Subregister 63 of Multireg range_attr
+  // R[range_attr_63]: V(False)
   // Create REGWEN-gated WE signal
-  logic range_perm_63_gated_we;
-  assign range_perm_63_gated_we =
-    range_perm_63_we &
+  logic range_attr_63_gated_we;
+  assign range_attr_63_gated_we =
+    range_attr_63_we &
           prim_mubi_pkg::mubi4_test_true_strict(prim_mubi_pkg::mubi4_t'(range_regwen_63_qs));
   //   F[enable_63]: 3:0
   prim_subreg #(
@@ -17941,13 +17941,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_63_enable_63 (
+  ) u_range_attr_63_enable_63 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_63_gated_we),
-    .wd     (range_perm_63_enable_63_wd),
+    .we     (range_attr_63_gated_we),
+    .wd     (range_attr_63_enable_63_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17955,11 +17955,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[63].enable.q),
+    .q      (reg2hw.range_attr[63].enable.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_63_enable_63_qs)
+    .qs     (range_attr_63_enable_63_qs)
   );
 
   //   F[read_access_63]: 7:4
@@ -17968,13 +17968,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_63_read_access_63 (
+  ) u_range_attr_63_read_access_63 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_63_gated_we),
-    .wd     (range_perm_63_read_access_63_wd),
+    .we     (range_attr_63_gated_we),
+    .wd     (range_attr_63_read_access_63_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -17982,11 +17982,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[63].read_access.q),
+    .q      (reg2hw.range_attr[63].read_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_63_read_access_63_qs)
+    .qs     (range_attr_63_read_access_63_qs)
   );
 
   //   F[write_access_63]: 11:8
@@ -17995,13 +17995,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_63_write_access_63 (
+  ) u_range_attr_63_write_access_63 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_63_gated_we),
-    .wd     (range_perm_63_write_access_63_wd),
+    .we     (range_attr_63_gated_we),
+    .wd     (range_attr_63_write_access_63_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -18009,11 +18009,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[63].write_access.q),
+    .q      (reg2hw.range_attr[63].write_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_63_write_access_63_qs)
+    .qs     (range_attr_63_write_access_63_qs)
   );
 
   //   F[execute_access_63]: 15:12
@@ -18022,13 +18022,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h9),
     .Mubi    (1'b1)
-  ) u_range_perm_63_execute_access_63 (
+  ) u_range_attr_63_execute_access_63 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_63_gated_we),
-    .wd     (range_perm_63_execute_access_63_wd),
+    .we     (range_attr_63_gated_we),
+    .wd     (range_attr_63_execute_access_63_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -18036,11 +18036,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[63].execute_access.q),
+    .q      (reg2hw.range_attr[63].execute_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_63_execute_access_63_qs)
+    .qs     (range_attr_63_execute_access_63_qs)
   );
 
   //   F[log_denied_access_63]: 19:16
@@ -18049,13 +18049,13 @@ module scs_ac_range_check_reg_top
     .SwAccess(prim_subreg_pkg::SwAccessRW),
     .RESVAL  (4'h6),
     .Mubi    (1'b1)
-  ) u_range_perm_63_log_denied_access_63 (
+  ) u_range_attr_63_log_denied_access_63 (
     .clk_i   (clk_i),
     .rst_ni  (rst_ni),
 
     // from register interface
-    .we     (range_perm_63_gated_we),
-    .wd     (range_perm_63_log_denied_access_63_wd),
+    .we     (range_attr_63_gated_we),
+    .wd     (range_attr_63_log_denied_access_63_wd),
 
     // from internal hardware
     .de     (1'b0),
@@ -18063,11 +18063,11 @@ module scs_ac_range_check_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.range_perm[63].log_denied_access.q),
+    .q      (reg2hw.range_attr[63].log_denied_access.q),
     .ds     (),
 
     // to register interface (read)
-    .qs     (range_perm_63_log_denied_access_63_qs)
+    .qs     (range_attr_63_log_denied_access_63_qs)
   );
 
 
@@ -23419,70 +23419,70 @@ module scs_ac_range_check_reg_top
     addr_hit[197] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_LIMIT_61_OFFSET);
     addr_hit[198] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_LIMIT_62_OFFSET);
     addr_hit[199] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_LIMIT_63_OFFSET);
-    addr_hit[200] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_0_OFFSET);
-    addr_hit[201] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_1_OFFSET);
-    addr_hit[202] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_2_OFFSET);
-    addr_hit[203] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_3_OFFSET);
-    addr_hit[204] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_4_OFFSET);
-    addr_hit[205] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_5_OFFSET);
-    addr_hit[206] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_6_OFFSET);
-    addr_hit[207] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_7_OFFSET);
-    addr_hit[208] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_8_OFFSET);
-    addr_hit[209] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_9_OFFSET);
-    addr_hit[210] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_10_OFFSET);
-    addr_hit[211] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_11_OFFSET);
-    addr_hit[212] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_12_OFFSET);
-    addr_hit[213] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_13_OFFSET);
-    addr_hit[214] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_14_OFFSET);
-    addr_hit[215] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_15_OFFSET);
-    addr_hit[216] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_16_OFFSET);
-    addr_hit[217] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_17_OFFSET);
-    addr_hit[218] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_18_OFFSET);
-    addr_hit[219] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_19_OFFSET);
-    addr_hit[220] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_20_OFFSET);
-    addr_hit[221] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_21_OFFSET);
-    addr_hit[222] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_22_OFFSET);
-    addr_hit[223] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_23_OFFSET);
-    addr_hit[224] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_24_OFFSET);
-    addr_hit[225] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_25_OFFSET);
-    addr_hit[226] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_26_OFFSET);
-    addr_hit[227] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_27_OFFSET);
-    addr_hit[228] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_28_OFFSET);
-    addr_hit[229] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_29_OFFSET);
-    addr_hit[230] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_30_OFFSET);
-    addr_hit[231] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_31_OFFSET);
-    addr_hit[232] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_32_OFFSET);
-    addr_hit[233] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_33_OFFSET);
-    addr_hit[234] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_34_OFFSET);
-    addr_hit[235] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_35_OFFSET);
-    addr_hit[236] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_36_OFFSET);
-    addr_hit[237] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_37_OFFSET);
-    addr_hit[238] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_38_OFFSET);
-    addr_hit[239] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_39_OFFSET);
-    addr_hit[240] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_40_OFFSET);
-    addr_hit[241] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_41_OFFSET);
-    addr_hit[242] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_42_OFFSET);
-    addr_hit[243] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_43_OFFSET);
-    addr_hit[244] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_44_OFFSET);
-    addr_hit[245] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_45_OFFSET);
-    addr_hit[246] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_46_OFFSET);
-    addr_hit[247] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_47_OFFSET);
-    addr_hit[248] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_48_OFFSET);
-    addr_hit[249] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_49_OFFSET);
-    addr_hit[250] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_50_OFFSET);
-    addr_hit[251] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_51_OFFSET);
-    addr_hit[252] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_52_OFFSET);
-    addr_hit[253] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_53_OFFSET);
-    addr_hit[254] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_54_OFFSET);
-    addr_hit[255] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_55_OFFSET);
-    addr_hit[256] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_56_OFFSET);
-    addr_hit[257] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_57_OFFSET);
-    addr_hit[258] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_58_OFFSET);
-    addr_hit[259] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_59_OFFSET);
-    addr_hit[260] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_60_OFFSET);
-    addr_hit[261] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_61_OFFSET);
-    addr_hit[262] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_62_OFFSET);
-    addr_hit[263] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_PERM_63_OFFSET);
+    addr_hit[200] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_0_OFFSET);
+    addr_hit[201] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_1_OFFSET);
+    addr_hit[202] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_2_OFFSET);
+    addr_hit[203] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_3_OFFSET);
+    addr_hit[204] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_4_OFFSET);
+    addr_hit[205] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_5_OFFSET);
+    addr_hit[206] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_6_OFFSET);
+    addr_hit[207] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_7_OFFSET);
+    addr_hit[208] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_8_OFFSET);
+    addr_hit[209] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_9_OFFSET);
+    addr_hit[210] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_10_OFFSET);
+    addr_hit[211] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_11_OFFSET);
+    addr_hit[212] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_12_OFFSET);
+    addr_hit[213] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_13_OFFSET);
+    addr_hit[214] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_14_OFFSET);
+    addr_hit[215] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_15_OFFSET);
+    addr_hit[216] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_16_OFFSET);
+    addr_hit[217] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_17_OFFSET);
+    addr_hit[218] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_18_OFFSET);
+    addr_hit[219] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_19_OFFSET);
+    addr_hit[220] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_20_OFFSET);
+    addr_hit[221] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_21_OFFSET);
+    addr_hit[222] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_22_OFFSET);
+    addr_hit[223] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_23_OFFSET);
+    addr_hit[224] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_24_OFFSET);
+    addr_hit[225] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_25_OFFSET);
+    addr_hit[226] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_26_OFFSET);
+    addr_hit[227] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_27_OFFSET);
+    addr_hit[228] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_28_OFFSET);
+    addr_hit[229] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_29_OFFSET);
+    addr_hit[230] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_30_OFFSET);
+    addr_hit[231] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_31_OFFSET);
+    addr_hit[232] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_32_OFFSET);
+    addr_hit[233] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_33_OFFSET);
+    addr_hit[234] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_34_OFFSET);
+    addr_hit[235] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_35_OFFSET);
+    addr_hit[236] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_36_OFFSET);
+    addr_hit[237] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_37_OFFSET);
+    addr_hit[238] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_38_OFFSET);
+    addr_hit[239] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_39_OFFSET);
+    addr_hit[240] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_40_OFFSET);
+    addr_hit[241] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_41_OFFSET);
+    addr_hit[242] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_42_OFFSET);
+    addr_hit[243] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_43_OFFSET);
+    addr_hit[244] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_44_OFFSET);
+    addr_hit[245] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_45_OFFSET);
+    addr_hit[246] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_46_OFFSET);
+    addr_hit[247] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_47_OFFSET);
+    addr_hit[248] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_48_OFFSET);
+    addr_hit[249] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_49_OFFSET);
+    addr_hit[250] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_50_OFFSET);
+    addr_hit[251] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_51_OFFSET);
+    addr_hit[252] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_52_OFFSET);
+    addr_hit[253] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_53_OFFSET);
+    addr_hit[254] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_54_OFFSET);
+    addr_hit[255] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_55_OFFSET);
+    addr_hit[256] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_56_OFFSET);
+    addr_hit[257] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_57_OFFSET);
+    addr_hit[258] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_58_OFFSET);
+    addr_hit[259] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_59_OFFSET);
+    addr_hit[260] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_60_OFFSET);
+    addr_hit[261] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_61_OFFSET);
+    addr_hit[262] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_62_OFFSET);
+    addr_hit[263] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_ATTR_63_OFFSET);
     addr_hit[264] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_RACL_POLICY_SHADOWED_0_OFFSET);
     addr_hit[265] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_RACL_POLICY_SHADOWED_1_OFFSET);
     addr_hit[266] = (reg_addr == SCS_AC_RANGE_CHECK_RANGE_RACL_POLICY_SHADOWED_2_OFFSET);
@@ -24513,710 +24513,710 @@ module scs_ac_range_check_reg_top
   assign range_limit_63_we = racl_addr_hit_write[199] & reg_we & !reg_error;
 
   assign range_limit_63_wd = reg_wdata[31:2];
-  assign range_perm_0_we = racl_addr_hit_write[200] & reg_we & !reg_error;
+  assign range_attr_0_we = racl_addr_hit_write[200] & reg_we & !reg_error;
 
-  assign range_perm_0_enable_0_wd = reg_wdata[3:0];
+  assign range_attr_0_enable_0_wd = reg_wdata[3:0];
 
-  assign range_perm_0_read_access_0_wd = reg_wdata[7:4];
+  assign range_attr_0_read_access_0_wd = reg_wdata[7:4];
 
-  assign range_perm_0_write_access_0_wd = reg_wdata[11:8];
+  assign range_attr_0_write_access_0_wd = reg_wdata[11:8];
 
-  assign range_perm_0_execute_access_0_wd = reg_wdata[15:12];
+  assign range_attr_0_execute_access_0_wd = reg_wdata[15:12];
 
-  assign range_perm_0_log_denied_access_0_wd = reg_wdata[19:16];
-  assign range_perm_1_we = racl_addr_hit_write[201] & reg_we & !reg_error;
+  assign range_attr_0_log_denied_access_0_wd = reg_wdata[19:16];
+  assign range_attr_1_we = racl_addr_hit_write[201] & reg_we & !reg_error;
 
-  assign range_perm_1_enable_1_wd = reg_wdata[3:0];
+  assign range_attr_1_enable_1_wd = reg_wdata[3:0];
 
-  assign range_perm_1_read_access_1_wd = reg_wdata[7:4];
+  assign range_attr_1_read_access_1_wd = reg_wdata[7:4];
 
-  assign range_perm_1_write_access_1_wd = reg_wdata[11:8];
+  assign range_attr_1_write_access_1_wd = reg_wdata[11:8];
 
-  assign range_perm_1_execute_access_1_wd = reg_wdata[15:12];
+  assign range_attr_1_execute_access_1_wd = reg_wdata[15:12];
 
-  assign range_perm_1_log_denied_access_1_wd = reg_wdata[19:16];
-  assign range_perm_2_we = racl_addr_hit_write[202] & reg_we & !reg_error;
+  assign range_attr_1_log_denied_access_1_wd = reg_wdata[19:16];
+  assign range_attr_2_we = racl_addr_hit_write[202] & reg_we & !reg_error;
 
-  assign range_perm_2_enable_2_wd = reg_wdata[3:0];
+  assign range_attr_2_enable_2_wd = reg_wdata[3:0];
 
-  assign range_perm_2_read_access_2_wd = reg_wdata[7:4];
+  assign range_attr_2_read_access_2_wd = reg_wdata[7:4];
 
-  assign range_perm_2_write_access_2_wd = reg_wdata[11:8];
+  assign range_attr_2_write_access_2_wd = reg_wdata[11:8];
 
-  assign range_perm_2_execute_access_2_wd = reg_wdata[15:12];
+  assign range_attr_2_execute_access_2_wd = reg_wdata[15:12];
 
-  assign range_perm_2_log_denied_access_2_wd = reg_wdata[19:16];
-  assign range_perm_3_we = racl_addr_hit_write[203] & reg_we & !reg_error;
+  assign range_attr_2_log_denied_access_2_wd = reg_wdata[19:16];
+  assign range_attr_3_we = racl_addr_hit_write[203] & reg_we & !reg_error;
 
-  assign range_perm_3_enable_3_wd = reg_wdata[3:0];
+  assign range_attr_3_enable_3_wd = reg_wdata[3:0];
 
-  assign range_perm_3_read_access_3_wd = reg_wdata[7:4];
+  assign range_attr_3_read_access_3_wd = reg_wdata[7:4];
 
-  assign range_perm_3_write_access_3_wd = reg_wdata[11:8];
+  assign range_attr_3_write_access_3_wd = reg_wdata[11:8];
 
-  assign range_perm_3_execute_access_3_wd = reg_wdata[15:12];
+  assign range_attr_3_execute_access_3_wd = reg_wdata[15:12];
 
-  assign range_perm_3_log_denied_access_3_wd = reg_wdata[19:16];
-  assign range_perm_4_we = racl_addr_hit_write[204] & reg_we & !reg_error;
+  assign range_attr_3_log_denied_access_3_wd = reg_wdata[19:16];
+  assign range_attr_4_we = racl_addr_hit_write[204] & reg_we & !reg_error;
 
-  assign range_perm_4_enable_4_wd = reg_wdata[3:0];
+  assign range_attr_4_enable_4_wd = reg_wdata[3:0];
 
-  assign range_perm_4_read_access_4_wd = reg_wdata[7:4];
+  assign range_attr_4_read_access_4_wd = reg_wdata[7:4];
 
-  assign range_perm_4_write_access_4_wd = reg_wdata[11:8];
+  assign range_attr_4_write_access_4_wd = reg_wdata[11:8];
 
-  assign range_perm_4_execute_access_4_wd = reg_wdata[15:12];
+  assign range_attr_4_execute_access_4_wd = reg_wdata[15:12];
 
-  assign range_perm_4_log_denied_access_4_wd = reg_wdata[19:16];
-  assign range_perm_5_we = racl_addr_hit_write[205] & reg_we & !reg_error;
+  assign range_attr_4_log_denied_access_4_wd = reg_wdata[19:16];
+  assign range_attr_5_we = racl_addr_hit_write[205] & reg_we & !reg_error;
 
-  assign range_perm_5_enable_5_wd = reg_wdata[3:0];
+  assign range_attr_5_enable_5_wd = reg_wdata[3:0];
 
-  assign range_perm_5_read_access_5_wd = reg_wdata[7:4];
+  assign range_attr_5_read_access_5_wd = reg_wdata[7:4];
 
-  assign range_perm_5_write_access_5_wd = reg_wdata[11:8];
+  assign range_attr_5_write_access_5_wd = reg_wdata[11:8];
 
-  assign range_perm_5_execute_access_5_wd = reg_wdata[15:12];
+  assign range_attr_5_execute_access_5_wd = reg_wdata[15:12];
 
-  assign range_perm_5_log_denied_access_5_wd = reg_wdata[19:16];
-  assign range_perm_6_we = racl_addr_hit_write[206] & reg_we & !reg_error;
+  assign range_attr_5_log_denied_access_5_wd = reg_wdata[19:16];
+  assign range_attr_6_we = racl_addr_hit_write[206] & reg_we & !reg_error;
 
-  assign range_perm_6_enable_6_wd = reg_wdata[3:0];
+  assign range_attr_6_enable_6_wd = reg_wdata[3:0];
 
-  assign range_perm_6_read_access_6_wd = reg_wdata[7:4];
+  assign range_attr_6_read_access_6_wd = reg_wdata[7:4];
 
-  assign range_perm_6_write_access_6_wd = reg_wdata[11:8];
+  assign range_attr_6_write_access_6_wd = reg_wdata[11:8];
 
-  assign range_perm_6_execute_access_6_wd = reg_wdata[15:12];
+  assign range_attr_6_execute_access_6_wd = reg_wdata[15:12];
 
-  assign range_perm_6_log_denied_access_6_wd = reg_wdata[19:16];
-  assign range_perm_7_we = racl_addr_hit_write[207] & reg_we & !reg_error;
+  assign range_attr_6_log_denied_access_6_wd = reg_wdata[19:16];
+  assign range_attr_7_we = racl_addr_hit_write[207] & reg_we & !reg_error;
 
-  assign range_perm_7_enable_7_wd = reg_wdata[3:0];
+  assign range_attr_7_enable_7_wd = reg_wdata[3:0];
 
-  assign range_perm_7_read_access_7_wd = reg_wdata[7:4];
+  assign range_attr_7_read_access_7_wd = reg_wdata[7:4];
 
-  assign range_perm_7_write_access_7_wd = reg_wdata[11:8];
+  assign range_attr_7_write_access_7_wd = reg_wdata[11:8];
 
-  assign range_perm_7_execute_access_7_wd = reg_wdata[15:12];
+  assign range_attr_7_execute_access_7_wd = reg_wdata[15:12];
 
-  assign range_perm_7_log_denied_access_7_wd = reg_wdata[19:16];
-  assign range_perm_8_we = racl_addr_hit_write[208] & reg_we & !reg_error;
+  assign range_attr_7_log_denied_access_7_wd = reg_wdata[19:16];
+  assign range_attr_8_we = racl_addr_hit_write[208] & reg_we & !reg_error;
 
-  assign range_perm_8_enable_8_wd = reg_wdata[3:0];
+  assign range_attr_8_enable_8_wd = reg_wdata[3:0];
 
-  assign range_perm_8_read_access_8_wd = reg_wdata[7:4];
+  assign range_attr_8_read_access_8_wd = reg_wdata[7:4];
 
-  assign range_perm_8_write_access_8_wd = reg_wdata[11:8];
+  assign range_attr_8_write_access_8_wd = reg_wdata[11:8];
 
-  assign range_perm_8_execute_access_8_wd = reg_wdata[15:12];
+  assign range_attr_8_execute_access_8_wd = reg_wdata[15:12];
 
-  assign range_perm_8_log_denied_access_8_wd = reg_wdata[19:16];
-  assign range_perm_9_we = racl_addr_hit_write[209] & reg_we & !reg_error;
+  assign range_attr_8_log_denied_access_8_wd = reg_wdata[19:16];
+  assign range_attr_9_we = racl_addr_hit_write[209] & reg_we & !reg_error;
 
-  assign range_perm_9_enable_9_wd = reg_wdata[3:0];
+  assign range_attr_9_enable_9_wd = reg_wdata[3:0];
 
-  assign range_perm_9_read_access_9_wd = reg_wdata[7:4];
+  assign range_attr_9_read_access_9_wd = reg_wdata[7:4];
 
-  assign range_perm_9_write_access_9_wd = reg_wdata[11:8];
+  assign range_attr_9_write_access_9_wd = reg_wdata[11:8];
 
-  assign range_perm_9_execute_access_9_wd = reg_wdata[15:12];
+  assign range_attr_9_execute_access_9_wd = reg_wdata[15:12];
 
-  assign range_perm_9_log_denied_access_9_wd = reg_wdata[19:16];
-  assign range_perm_10_we = racl_addr_hit_write[210] & reg_we & !reg_error;
+  assign range_attr_9_log_denied_access_9_wd = reg_wdata[19:16];
+  assign range_attr_10_we = racl_addr_hit_write[210] & reg_we & !reg_error;
 
-  assign range_perm_10_enable_10_wd = reg_wdata[3:0];
+  assign range_attr_10_enable_10_wd = reg_wdata[3:0];
 
-  assign range_perm_10_read_access_10_wd = reg_wdata[7:4];
+  assign range_attr_10_read_access_10_wd = reg_wdata[7:4];
 
-  assign range_perm_10_write_access_10_wd = reg_wdata[11:8];
+  assign range_attr_10_write_access_10_wd = reg_wdata[11:8];
 
-  assign range_perm_10_execute_access_10_wd = reg_wdata[15:12];
+  assign range_attr_10_execute_access_10_wd = reg_wdata[15:12];
 
-  assign range_perm_10_log_denied_access_10_wd = reg_wdata[19:16];
-  assign range_perm_11_we = racl_addr_hit_write[211] & reg_we & !reg_error;
+  assign range_attr_10_log_denied_access_10_wd = reg_wdata[19:16];
+  assign range_attr_11_we = racl_addr_hit_write[211] & reg_we & !reg_error;
 
-  assign range_perm_11_enable_11_wd = reg_wdata[3:0];
+  assign range_attr_11_enable_11_wd = reg_wdata[3:0];
 
-  assign range_perm_11_read_access_11_wd = reg_wdata[7:4];
+  assign range_attr_11_read_access_11_wd = reg_wdata[7:4];
 
-  assign range_perm_11_write_access_11_wd = reg_wdata[11:8];
+  assign range_attr_11_write_access_11_wd = reg_wdata[11:8];
 
-  assign range_perm_11_execute_access_11_wd = reg_wdata[15:12];
+  assign range_attr_11_execute_access_11_wd = reg_wdata[15:12];
 
-  assign range_perm_11_log_denied_access_11_wd = reg_wdata[19:16];
-  assign range_perm_12_we = racl_addr_hit_write[212] & reg_we & !reg_error;
+  assign range_attr_11_log_denied_access_11_wd = reg_wdata[19:16];
+  assign range_attr_12_we = racl_addr_hit_write[212] & reg_we & !reg_error;
 
-  assign range_perm_12_enable_12_wd = reg_wdata[3:0];
+  assign range_attr_12_enable_12_wd = reg_wdata[3:0];
 
-  assign range_perm_12_read_access_12_wd = reg_wdata[7:4];
+  assign range_attr_12_read_access_12_wd = reg_wdata[7:4];
 
-  assign range_perm_12_write_access_12_wd = reg_wdata[11:8];
+  assign range_attr_12_write_access_12_wd = reg_wdata[11:8];
 
-  assign range_perm_12_execute_access_12_wd = reg_wdata[15:12];
+  assign range_attr_12_execute_access_12_wd = reg_wdata[15:12];
 
-  assign range_perm_12_log_denied_access_12_wd = reg_wdata[19:16];
-  assign range_perm_13_we = racl_addr_hit_write[213] & reg_we & !reg_error;
+  assign range_attr_12_log_denied_access_12_wd = reg_wdata[19:16];
+  assign range_attr_13_we = racl_addr_hit_write[213] & reg_we & !reg_error;
 
-  assign range_perm_13_enable_13_wd = reg_wdata[3:0];
+  assign range_attr_13_enable_13_wd = reg_wdata[3:0];
 
-  assign range_perm_13_read_access_13_wd = reg_wdata[7:4];
+  assign range_attr_13_read_access_13_wd = reg_wdata[7:4];
 
-  assign range_perm_13_write_access_13_wd = reg_wdata[11:8];
+  assign range_attr_13_write_access_13_wd = reg_wdata[11:8];
 
-  assign range_perm_13_execute_access_13_wd = reg_wdata[15:12];
+  assign range_attr_13_execute_access_13_wd = reg_wdata[15:12];
 
-  assign range_perm_13_log_denied_access_13_wd = reg_wdata[19:16];
-  assign range_perm_14_we = racl_addr_hit_write[214] & reg_we & !reg_error;
+  assign range_attr_13_log_denied_access_13_wd = reg_wdata[19:16];
+  assign range_attr_14_we = racl_addr_hit_write[214] & reg_we & !reg_error;
 
-  assign range_perm_14_enable_14_wd = reg_wdata[3:0];
+  assign range_attr_14_enable_14_wd = reg_wdata[3:0];
 
-  assign range_perm_14_read_access_14_wd = reg_wdata[7:4];
+  assign range_attr_14_read_access_14_wd = reg_wdata[7:4];
 
-  assign range_perm_14_write_access_14_wd = reg_wdata[11:8];
+  assign range_attr_14_write_access_14_wd = reg_wdata[11:8];
 
-  assign range_perm_14_execute_access_14_wd = reg_wdata[15:12];
+  assign range_attr_14_execute_access_14_wd = reg_wdata[15:12];
 
-  assign range_perm_14_log_denied_access_14_wd = reg_wdata[19:16];
-  assign range_perm_15_we = racl_addr_hit_write[215] & reg_we & !reg_error;
+  assign range_attr_14_log_denied_access_14_wd = reg_wdata[19:16];
+  assign range_attr_15_we = racl_addr_hit_write[215] & reg_we & !reg_error;
 
-  assign range_perm_15_enable_15_wd = reg_wdata[3:0];
+  assign range_attr_15_enable_15_wd = reg_wdata[3:0];
 
-  assign range_perm_15_read_access_15_wd = reg_wdata[7:4];
+  assign range_attr_15_read_access_15_wd = reg_wdata[7:4];
 
-  assign range_perm_15_write_access_15_wd = reg_wdata[11:8];
+  assign range_attr_15_write_access_15_wd = reg_wdata[11:8];
 
-  assign range_perm_15_execute_access_15_wd = reg_wdata[15:12];
+  assign range_attr_15_execute_access_15_wd = reg_wdata[15:12];
 
-  assign range_perm_15_log_denied_access_15_wd = reg_wdata[19:16];
-  assign range_perm_16_we = racl_addr_hit_write[216] & reg_we & !reg_error;
+  assign range_attr_15_log_denied_access_15_wd = reg_wdata[19:16];
+  assign range_attr_16_we = racl_addr_hit_write[216] & reg_we & !reg_error;
 
-  assign range_perm_16_enable_16_wd = reg_wdata[3:0];
+  assign range_attr_16_enable_16_wd = reg_wdata[3:0];
 
-  assign range_perm_16_read_access_16_wd = reg_wdata[7:4];
+  assign range_attr_16_read_access_16_wd = reg_wdata[7:4];
 
-  assign range_perm_16_write_access_16_wd = reg_wdata[11:8];
+  assign range_attr_16_write_access_16_wd = reg_wdata[11:8];
 
-  assign range_perm_16_execute_access_16_wd = reg_wdata[15:12];
+  assign range_attr_16_execute_access_16_wd = reg_wdata[15:12];
 
-  assign range_perm_16_log_denied_access_16_wd = reg_wdata[19:16];
-  assign range_perm_17_we = racl_addr_hit_write[217] & reg_we & !reg_error;
+  assign range_attr_16_log_denied_access_16_wd = reg_wdata[19:16];
+  assign range_attr_17_we = racl_addr_hit_write[217] & reg_we & !reg_error;
 
-  assign range_perm_17_enable_17_wd = reg_wdata[3:0];
+  assign range_attr_17_enable_17_wd = reg_wdata[3:0];
 
-  assign range_perm_17_read_access_17_wd = reg_wdata[7:4];
+  assign range_attr_17_read_access_17_wd = reg_wdata[7:4];
 
-  assign range_perm_17_write_access_17_wd = reg_wdata[11:8];
+  assign range_attr_17_write_access_17_wd = reg_wdata[11:8];
 
-  assign range_perm_17_execute_access_17_wd = reg_wdata[15:12];
+  assign range_attr_17_execute_access_17_wd = reg_wdata[15:12];
 
-  assign range_perm_17_log_denied_access_17_wd = reg_wdata[19:16];
-  assign range_perm_18_we = racl_addr_hit_write[218] & reg_we & !reg_error;
+  assign range_attr_17_log_denied_access_17_wd = reg_wdata[19:16];
+  assign range_attr_18_we = racl_addr_hit_write[218] & reg_we & !reg_error;
 
-  assign range_perm_18_enable_18_wd = reg_wdata[3:0];
+  assign range_attr_18_enable_18_wd = reg_wdata[3:0];
 
-  assign range_perm_18_read_access_18_wd = reg_wdata[7:4];
+  assign range_attr_18_read_access_18_wd = reg_wdata[7:4];
 
-  assign range_perm_18_write_access_18_wd = reg_wdata[11:8];
+  assign range_attr_18_write_access_18_wd = reg_wdata[11:8];
 
-  assign range_perm_18_execute_access_18_wd = reg_wdata[15:12];
+  assign range_attr_18_execute_access_18_wd = reg_wdata[15:12];
 
-  assign range_perm_18_log_denied_access_18_wd = reg_wdata[19:16];
-  assign range_perm_19_we = racl_addr_hit_write[219] & reg_we & !reg_error;
+  assign range_attr_18_log_denied_access_18_wd = reg_wdata[19:16];
+  assign range_attr_19_we = racl_addr_hit_write[219] & reg_we & !reg_error;
 
-  assign range_perm_19_enable_19_wd = reg_wdata[3:0];
+  assign range_attr_19_enable_19_wd = reg_wdata[3:0];
 
-  assign range_perm_19_read_access_19_wd = reg_wdata[7:4];
+  assign range_attr_19_read_access_19_wd = reg_wdata[7:4];
 
-  assign range_perm_19_write_access_19_wd = reg_wdata[11:8];
+  assign range_attr_19_write_access_19_wd = reg_wdata[11:8];
 
-  assign range_perm_19_execute_access_19_wd = reg_wdata[15:12];
+  assign range_attr_19_execute_access_19_wd = reg_wdata[15:12];
 
-  assign range_perm_19_log_denied_access_19_wd = reg_wdata[19:16];
-  assign range_perm_20_we = racl_addr_hit_write[220] & reg_we & !reg_error;
+  assign range_attr_19_log_denied_access_19_wd = reg_wdata[19:16];
+  assign range_attr_20_we = racl_addr_hit_write[220] & reg_we & !reg_error;
 
-  assign range_perm_20_enable_20_wd = reg_wdata[3:0];
+  assign range_attr_20_enable_20_wd = reg_wdata[3:0];
 
-  assign range_perm_20_read_access_20_wd = reg_wdata[7:4];
+  assign range_attr_20_read_access_20_wd = reg_wdata[7:4];
 
-  assign range_perm_20_write_access_20_wd = reg_wdata[11:8];
+  assign range_attr_20_write_access_20_wd = reg_wdata[11:8];
 
-  assign range_perm_20_execute_access_20_wd = reg_wdata[15:12];
+  assign range_attr_20_execute_access_20_wd = reg_wdata[15:12];
 
-  assign range_perm_20_log_denied_access_20_wd = reg_wdata[19:16];
-  assign range_perm_21_we = racl_addr_hit_write[221] & reg_we & !reg_error;
+  assign range_attr_20_log_denied_access_20_wd = reg_wdata[19:16];
+  assign range_attr_21_we = racl_addr_hit_write[221] & reg_we & !reg_error;
 
-  assign range_perm_21_enable_21_wd = reg_wdata[3:0];
+  assign range_attr_21_enable_21_wd = reg_wdata[3:0];
 
-  assign range_perm_21_read_access_21_wd = reg_wdata[7:4];
+  assign range_attr_21_read_access_21_wd = reg_wdata[7:4];
 
-  assign range_perm_21_write_access_21_wd = reg_wdata[11:8];
+  assign range_attr_21_write_access_21_wd = reg_wdata[11:8];
 
-  assign range_perm_21_execute_access_21_wd = reg_wdata[15:12];
+  assign range_attr_21_execute_access_21_wd = reg_wdata[15:12];
 
-  assign range_perm_21_log_denied_access_21_wd = reg_wdata[19:16];
-  assign range_perm_22_we = racl_addr_hit_write[222] & reg_we & !reg_error;
+  assign range_attr_21_log_denied_access_21_wd = reg_wdata[19:16];
+  assign range_attr_22_we = racl_addr_hit_write[222] & reg_we & !reg_error;
 
-  assign range_perm_22_enable_22_wd = reg_wdata[3:0];
+  assign range_attr_22_enable_22_wd = reg_wdata[3:0];
 
-  assign range_perm_22_read_access_22_wd = reg_wdata[7:4];
+  assign range_attr_22_read_access_22_wd = reg_wdata[7:4];
 
-  assign range_perm_22_write_access_22_wd = reg_wdata[11:8];
+  assign range_attr_22_write_access_22_wd = reg_wdata[11:8];
 
-  assign range_perm_22_execute_access_22_wd = reg_wdata[15:12];
+  assign range_attr_22_execute_access_22_wd = reg_wdata[15:12];
 
-  assign range_perm_22_log_denied_access_22_wd = reg_wdata[19:16];
-  assign range_perm_23_we = racl_addr_hit_write[223] & reg_we & !reg_error;
+  assign range_attr_22_log_denied_access_22_wd = reg_wdata[19:16];
+  assign range_attr_23_we = racl_addr_hit_write[223] & reg_we & !reg_error;
 
-  assign range_perm_23_enable_23_wd = reg_wdata[3:0];
+  assign range_attr_23_enable_23_wd = reg_wdata[3:0];
 
-  assign range_perm_23_read_access_23_wd = reg_wdata[7:4];
+  assign range_attr_23_read_access_23_wd = reg_wdata[7:4];
 
-  assign range_perm_23_write_access_23_wd = reg_wdata[11:8];
+  assign range_attr_23_write_access_23_wd = reg_wdata[11:8];
 
-  assign range_perm_23_execute_access_23_wd = reg_wdata[15:12];
+  assign range_attr_23_execute_access_23_wd = reg_wdata[15:12];
 
-  assign range_perm_23_log_denied_access_23_wd = reg_wdata[19:16];
-  assign range_perm_24_we = racl_addr_hit_write[224] & reg_we & !reg_error;
+  assign range_attr_23_log_denied_access_23_wd = reg_wdata[19:16];
+  assign range_attr_24_we = racl_addr_hit_write[224] & reg_we & !reg_error;
 
-  assign range_perm_24_enable_24_wd = reg_wdata[3:0];
+  assign range_attr_24_enable_24_wd = reg_wdata[3:0];
 
-  assign range_perm_24_read_access_24_wd = reg_wdata[7:4];
+  assign range_attr_24_read_access_24_wd = reg_wdata[7:4];
 
-  assign range_perm_24_write_access_24_wd = reg_wdata[11:8];
+  assign range_attr_24_write_access_24_wd = reg_wdata[11:8];
 
-  assign range_perm_24_execute_access_24_wd = reg_wdata[15:12];
+  assign range_attr_24_execute_access_24_wd = reg_wdata[15:12];
 
-  assign range_perm_24_log_denied_access_24_wd = reg_wdata[19:16];
-  assign range_perm_25_we = racl_addr_hit_write[225] & reg_we & !reg_error;
+  assign range_attr_24_log_denied_access_24_wd = reg_wdata[19:16];
+  assign range_attr_25_we = racl_addr_hit_write[225] & reg_we & !reg_error;
 
-  assign range_perm_25_enable_25_wd = reg_wdata[3:0];
+  assign range_attr_25_enable_25_wd = reg_wdata[3:0];
 
-  assign range_perm_25_read_access_25_wd = reg_wdata[7:4];
+  assign range_attr_25_read_access_25_wd = reg_wdata[7:4];
 
-  assign range_perm_25_write_access_25_wd = reg_wdata[11:8];
+  assign range_attr_25_write_access_25_wd = reg_wdata[11:8];
 
-  assign range_perm_25_execute_access_25_wd = reg_wdata[15:12];
+  assign range_attr_25_execute_access_25_wd = reg_wdata[15:12];
 
-  assign range_perm_25_log_denied_access_25_wd = reg_wdata[19:16];
-  assign range_perm_26_we = racl_addr_hit_write[226] & reg_we & !reg_error;
+  assign range_attr_25_log_denied_access_25_wd = reg_wdata[19:16];
+  assign range_attr_26_we = racl_addr_hit_write[226] & reg_we & !reg_error;
 
-  assign range_perm_26_enable_26_wd = reg_wdata[3:0];
+  assign range_attr_26_enable_26_wd = reg_wdata[3:0];
 
-  assign range_perm_26_read_access_26_wd = reg_wdata[7:4];
+  assign range_attr_26_read_access_26_wd = reg_wdata[7:4];
 
-  assign range_perm_26_write_access_26_wd = reg_wdata[11:8];
+  assign range_attr_26_write_access_26_wd = reg_wdata[11:8];
 
-  assign range_perm_26_execute_access_26_wd = reg_wdata[15:12];
+  assign range_attr_26_execute_access_26_wd = reg_wdata[15:12];
 
-  assign range_perm_26_log_denied_access_26_wd = reg_wdata[19:16];
-  assign range_perm_27_we = racl_addr_hit_write[227] & reg_we & !reg_error;
+  assign range_attr_26_log_denied_access_26_wd = reg_wdata[19:16];
+  assign range_attr_27_we = racl_addr_hit_write[227] & reg_we & !reg_error;
 
-  assign range_perm_27_enable_27_wd = reg_wdata[3:0];
+  assign range_attr_27_enable_27_wd = reg_wdata[3:0];
 
-  assign range_perm_27_read_access_27_wd = reg_wdata[7:4];
+  assign range_attr_27_read_access_27_wd = reg_wdata[7:4];
 
-  assign range_perm_27_write_access_27_wd = reg_wdata[11:8];
+  assign range_attr_27_write_access_27_wd = reg_wdata[11:8];
 
-  assign range_perm_27_execute_access_27_wd = reg_wdata[15:12];
+  assign range_attr_27_execute_access_27_wd = reg_wdata[15:12];
 
-  assign range_perm_27_log_denied_access_27_wd = reg_wdata[19:16];
-  assign range_perm_28_we = racl_addr_hit_write[228] & reg_we & !reg_error;
+  assign range_attr_27_log_denied_access_27_wd = reg_wdata[19:16];
+  assign range_attr_28_we = racl_addr_hit_write[228] & reg_we & !reg_error;
 
-  assign range_perm_28_enable_28_wd = reg_wdata[3:0];
+  assign range_attr_28_enable_28_wd = reg_wdata[3:0];
 
-  assign range_perm_28_read_access_28_wd = reg_wdata[7:4];
+  assign range_attr_28_read_access_28_wd = reg_wdata[7:4];
 
-  assign range_perm_28_write_access_28_wd = reg_wdata[11:8];
+  assign range_attr_28_write_access_28_wd = reg_wdata[11:8];
 
-  assign range_perm_28_execute_access_28_wd = reg_wdata[15:12];
+  assign range_attr_28_execute_access_28_wd = reg_wdata[15:12];
 
-  assign range_perm_28_log_denied_access_28_wd = reg_wdata[19:16];
-  assign range_perm_29_we = racl_addr_hit_write[229] & reg_we & !reg_error;
+  assign range_attr_28_log_denied_access_28_wd = reg_wdata[19:16];
+  assign range_attr_29_we = racl_addr_hit_write[229] & reg_we & !reg_error;
 
-  assign range_perm_29_enable_29_wd = reg_wdata[3:0];
+  assign range_attr_29_enable_29_wd = reg_wdata[3:0];
 
-  assign range_perm_29_read_access_29_wd = reg_wdata[7:4];
+  assign range_attr_29_read_access_29_wd = reg_wdata[7:4];
 
-  assign range_perm_29_write_access_29_wd = reg_wdata[11:8];
+  assign range_attr_29_write_access_29_wd = reg_wdata[11:8];
 
-  assign range_perm_29_execute_access_29_wd = reg_wdata[15:12];
+  assign range_attr_29_execute_access_29_wd = reg_wdata[15:12];
 
-  assign range_perm_29_log_denied_access_29_wd = reg_wdata[19:16];
-  assign range_perm_30_we = racl_addr_hit_write[230] & reg_we & !reg_error;
+  assign range_attr_29_log_denied_access_29_wd = reg_wdata[19:16];
+  assign range_attr_30_we = racl_addr_hit_write[230] & reg_we & !reg_error;
 
-  assign range_perm_30_enable_30_wd = reg_wdata[3:0];
+  assign range_attr_30_enable_30_wd = reg_wdata[3:0];
 
-  assign range_perm_30_read_access_30_wd = reg_wdata[7:4];
+  assign range_attr_30_read_access_30_wd = reg_wdata[7:4];
 
-  assign range_perm_30_write_access_30_wd = reg_wdata[11:8];
+  assign range_attr_30_write_access_30_wd = reg_wdata[11:8];
 
-  assign range_perm_30_execute_access_30_wd = reg_wdata[15:12];
+  assign range_attr_30_execute_access_30_wd = reg_wdata[15:12];
 
-  assign range_perm_30_log_denied_access_30_wd = reg_wdata[19:16];
-  assign range_perm_31_we = racl_addr_hit_write[231] & reg_we & !reg_error;
+  assign range_attr_30_log_denied_access_30_wd = reg_wdata[19:16];
+  assign range_attr_31_we = racl_addr_hit_write[231] & reg_we & !reg_error;
 
-  assign range_perm_31_enable_31_wd = reg_wdata[3:0];
+  assign range_attr_31_enable_31_wd = reg_wdata[3:0];
 
-  assign range_perm_31_read_access_31_wd = reg_wdata[7:4];
+  assign range_attr_31_read_access_31_wd = reg_wdata[7:4];
 
-  assign range_perm_31_write_access_31_wd = reg_wdata[11:8];
+  assign range_attr_31_write_access_31_wd = reg_wdata[11:8];
 
-  assign range_perm_31_execute_access_31_wd = reg_wdata[15:12];
+  assign range_attr_31_execute_access_31_wd = reg_wdata[15:12];
 
-  assign range_perm_31_log_denied_access_31_wd = reg_wdata[19:16];
-  assign range_perm_32_we = racl_addr_hit_write[232] & reg_we & !reg_error;
+  assign range_attr_31_log_denied_access_31_wd = reg_wdata[19:16];
+  assign range_attr_32_we = racl_addr_hit_write[232] & reg_we & !reg_error;
 
-  assign range_perm_32_enable_32_wd = reg_wdata[3:0];
+  assign range_attr_32_enable_32_wd = reg_wdata[3:0];
 
-  assign range_perm_32_read_access_32_wd = reg_wdata[7:4];
+  assign range_attr_32_read_access_32_wd = reg_wdata[7:4];
 
-  assign range_perm_32_write_access_32_wd = reg_wdata[11:8];
+  assign range_attr_32_write_access_32_wd = reg_wdata[11:8];
 
-  assign range_perm_32_execute_access_32_wd = reg_wdata[15:12];
+  assign range_attr_32_execute_access_32_wd = reg_wdata[15:12];
 
-  assign range_perm_32_log_denied_access_32_wd = reg_wdata[19:16];
-  assign range_perm_33_we = racl_addr_hit_write[233] & reg_we & !reg_error;
+  assign range_attr_32_log_denied_access_32_wd = reg_wdata[19:16];
+  assign range_attr_33_we = racl_addr_hit_write[233] & reg_we & !reg_error;
 
-  assign range_perm_33_enable_33_wd = reg_wdata[3:0];
+  assign range_attr_33_enable_33_wd = reg_wdata[3:0];
 
-  assign range_perm_33_read_access_33_wd = reg_wdata[7:4];
+  assign range_attr_33_read_access_33_wd = reg_wdata[7:4];
 
-  assign range_perm_33_write_access_33_wd = reg_wdata[11:8];
+  assign range_attr_33_write_access_33_wd = reg_wdata[11:8];
 
-  assign range_perm_33_execute_access_33_wd = reg_wdata[15:12];
+  assign range_attr_33_execute_access_33_wd = reg_wdata[15:12];
 
-  assign range_perm_33_log_denied_access_33_wd = reg_wdata[19:16];
-  assign range_perm_34_we = racl_addr_hit_write[234] & reg_we & !reg_error;
+  assign range_attr_33_log_denied_access_33_wd = reg_wdata[19:16];
+  assign range_attr_34_we = racl_addr_hit_write[234] & reg_we & !reg_error;
 
-  assign range_perm_34_enable_34_wd = reg_wdata[3:0];
+  assign range_attr_34_enable_34_wd = reg_wdata[3:0];
 
-  assign range_perm_34_read_access_34_wd = reg_wdata[7:4];
+  assign range_attr_34_read_access_34_wd = reg_wdata[7:4];
 
-  assign range_perm_34_write_access_34_wd = reg_wdata[11:8];
+  assign range_attr_34_write_access_34_wd = reg_wdata[11:8];
 
-  assign range_perm_34_execute_access_34_wd = reg_wdata[15:12];
+  assign range_attr_34_execute_access_34_wd = reg_wdata[15:12];
 
-  assign range_perm_34_log_denied_access_34_wd = reg_wdata[19:16];
-  assign range_perm_35_we = racl_addr_hit_write[235] & reg_we & !reg_error;
+  assign range_attr_34_log_denied_access_34_wd = reg_wdata[19:16];
+  assign range_attr_35_we = racl_addr_hit_write[235] & reg_we & !reg_error;
 
-  assign range_perm_35_enable_35_wd = reg_wdata[3:0];
+  assign range_attr_35_enable_35_wd = reg_wdata[3:0];
 
-  assign range_perm_35_read_access_35_wd = reg_wdata[7:4];
+  assign range_attr_35_read_access_35_wd = reg_wdata[7:4];
 
-  assign range_perm_35_write_access_35_wd = reg_wdata[11:8];
+  assign range_attr_35_write_access_35_wd = reg_wdata[11:8];
 
-  assign range_perm_35_execute_access_35_wd = reg_wdata[15:12];
+  assign range_attr_35_execute_access_35_wd = reg_wdata[15:12];
 
-  assign range_perm_35_log_denied_access_35_wd = reg_wdata[19:16];
-  assign range_perm_36_we = racl_addr_hit_write[236] & reg_we & !reg_error;
+  assign range_attr_35_log_denied_access_35_wd = reg_wdata[19:16];
+  assign range_attr_36_we = racl_addr_hit_write[236] & reg_we & !reg_error;
 
-  assign range_perm_36_enable_36_wd = reg_wdata[3:0];
+  assign range_attr_36_enable_36_wd = reg_wdata[3:0];
 
-  assign range_perm_36_read_access_36_wd = reg_wdata[7:4];
+  assign range_attr_36_read_access_36_wd = reg_wdata[7:4];
 
-  assign range_perm_36_write_access_36_wd = reg_wdata[11:8];
+  assign range_attr_36_write_access_36_wd = reg_wdata[11:8];
 
-  assign range_perm_36_execute_access_36_wd = reg_wdata[15:12];
+  assign range_attr_36_execute_access_36_wd = reg_wdata[15:12];
 
-  assign range_perm_36_log_denied_access_36_wd = reg_wdata[19:16];
-  assign range_perm_37_we = racl_addr_hit_write[237] & reg_we & !reg_error;
+  assign range_attr_36_log_denied_access_36_wd = reg_wdata[19:16];
+  assign range_attr_37_we = racl_addr_hit_write[237] & reg_we & !reg_error;
 
-  assign range_perm_37_enable_37_wd = reg_wdata[3:0];
+  assign range_attr_37_enable_37_wd = reg_wdata[3:0];
 
-  assign range_perm_37_read_access_37_wd = reg_wdata[7:4];
+  assign range_attr_37_read_access_37_wd = reg_wdata[7:4];
 
-  assign range_perm_37_write_access_37_wd = reg_wdata[11:8];
+  assign range_attr_37_write_access_37_wd = reg_wdata[11:8];
 
-  assign range_perm_37_execute_access_37_wd = reg_wdata[15:12];
+  assign range_attr_37_execute_access_37_wd = reg_wdata[15:12];
 
-  assign range_perm_37_log_denied_access_37_wd = reg_wdata[19:16];
-  assign range_perm_38_we = racl_addr_hit_write[238] & reg_we & !reg_error;
+  assign range_attr_37_log_denied_access_37_wd = reg_wdata[19:16];
+  assign range_attr_38_we = racl_addr_hit_write[238] & reg_we & !reg_error;
 
-  assign range_perm_38_enable_38_wd = reg_wdata[3:0];
+  assign range_attr_38_enable_38_wd = reg_wdata[3:0];
 
-  assign range_perm_38_read_access_38_wd = reg_wdata[7:4];
+  assign range_attr_38_read_access_38_wd = reg_wdata[7:4];
 
-  assign range_perm_38_write_access_38_wd = reg_wdata[11:8];
+  assign range_attr_38_write_access_38_wd = reg_wdata[11:8];
 
-  assign range_perm_38_execute_access_38_wd = reg_wdata[15:12];
+  assign range_attr_38_execute_access_38_wd = reg_wdata[15:12];
 
-  assign range_perm_38_log_denied_access_38_wd = reg_wdata[19:16];
-  assign range_perm_39_we = racl_addr_hit_write[239] & reg_we & !reg_error;
+  assign range_attr_38_log_denied_access_38_wd = reg_wdata[19:16];
+  assign range_attr_39_we = racl_addr_hit_write[239] & reg_we & !reg_error;
 
-  assign range_perm_39_enable_39_wd = reg_wdata[3:0];
+  assign range_attr_39_enable_39_wd = reg_wdata[3:0];
 
-  assign range_perm_39_read_access_39_wd = reg_wdata[7:4];
+  assign range_attr_39_read_access_39_wd = reg_wdata[7:4];
 
-  assign range_perm_39_write_access_39_wd = reg_wdata[11:8];
+  assign range_attr_39_write_access_39_wd = reg_wdata[11:8];
 
-  assign range_perm_39_execute_access_39_wd = reg_wdata[15:12];
+  assign range_attr_39_execute_access_39_wd = reg_wdata[15:12];
 
-  assign range_perm_39_log_denied_access_39_wd = reg_wdata[19:16];
-  assign range_perm_40_we = racl_addr_hit_write[240] & reg_we & !reg_error;
+  assign range_attr_39_log_denied_access_39_wd = reg_wdata[19:16];
+  assign range_attr_40_we = racl_addr_hit_write[240] & reg_we & !reg_error;
 
-  assign range_perm_40_enable_40_wd = reg_wdata[3:0];
+  assign range_attr_40_enable_40_wd = reg_wdata[3:0];
 
-  assign range_perm_40_read_access_40_wd = reg_wdata[7:4];
+  assign range_attr_40_read_access_40_wd = reg_wdata[7:4];
 
-  assign range_perm_40_write_access_40_wd = reg_wdata[11:8];
+  assign range_attr_40_write_access_40_wd = reg_wdata[11:8];
 
-  assign range_perm_40_execute_access_40_wd = reg_wdata[15:12];
+  assign range_attr_40_execute_access_40_wd = reg_wdata[15:12];
 
-  assign range_perm_40_log_denied_access_40_wd = reg_wdata[19:16];
-  assign range_perm_41_we = racl_addr_hit_write[241] & reg_we & !reg_error;
+  assign range_attr_40_log_denied_access_40_wd = reg_wdata[19:16];
+  assign range_attr_41_we = racl_addr_hit_write[241] & reg_we & !reg_error;
 
-  assign range_perm_41_enable_41_wd = reg_wdata[3:0];
+  assign range_attr_41_enable_41_wd = reg_wdata[3:0];
 
-  assign range_perm_41_read_access_41_wd = reg_wdata[7:4];
+  assign range_attr_41_read_access_41_wd = reg_wdata[7:4];
 
-  assign range_perm_41_write_access_41_wd = reg_wdata[11:8];
+  assign range_attr_41_write_access_41_wd = reg_wdata[11:8];
 
-  assign range_perm_41_execute_access_41_wd = reg_wdata[15:12];
+  assign range_attr_41_execute_access_41_wd = reg_wdata[15:12];
 
-  assign range_perm_41_log_denied_access_41_wd = reg_wdata[19:16];
-  assign range_perm_42_we = racl_addr_hit_write[242] & reg_we & !reg_error;
+  assign range_attr_41_log_denied_access_41_wd = reg_wdata[19:16];
+  assign range_attr_42_we = racl_addr_hit_write[242] & reg_we & !reg_error;
 
-  assign range_perm_42_enable_42_wd = reg_wdata[3:0];
+  assign range_attr_42_enable_42_wd = reg_wdata[3:0];
 
-  assign range_perm_42_read_access_42_wd = reg_wdata[7:4];
+  assign range_attr_42_read_access_42_wd = reg_wdata[7:4];
 
-  assign range_perm_42_write_access_42_wd = reg_wdata[11:8];
+  assign range_attr_42_write_access_42_wd = reg_wdata[11:8];
 
-  assign range_perm_42_execute_access_42_wd = reg_wdata[15:12];
+  assign range_attr_42_execute_access_42_wd = reg_wdata[15:12];
 
-  assign range_perm_42_log_denied_access_42_wd = reg_wdata[19:16];
-  assign range_perm_43_we = racl_addr_hit_write[243] & reg_we & !reg_error;
+  assign range_attr_42_log_denied_access_42_wd = reg_wdata[19:16];
+  assign range_attr_43_we = racl_addr_hit_write[243] & reg_we & !reg_error;
 
-  assign range_perm_43_enable_43_wd = reg_wdata[3:0];
+  assign range_attr_43_enable_43_wd = reg_wdata[3:0];
 
-  assign range_perm_43_read_access_43_wd = reg_wdata[7:4];
+  assign range_attr_43_read_access_43_wd = reg_wdata[7:4];
 
-  assign range_perm_43_write_access_43_wd = reg_wdata[11:8];
+  assign range_attr_43_write_access_43_wd = reg_wdata[11:8];
 
-  assign range_perm_43_execute_access_43_wd = reg_wdata[15:12];
+  assign range_attr_43_execute_access_43_wd = reg_wdata[15:12];
 
-  assign range_perm_43_log_denied_access_43_wd = reg_wdata[19:16];
-  assign range_perm_44_we = racl_addr_hit_write[244] & reg_we & !reg_error;
+  assign range_attr_43_log_denied_access_43_wd = reg_wdata[19:16];
+  assign range_attr_44_we = racl_addr_hit_write[244] & reg_we & !reg_error;
 
-  assign range_perm_44_enable_44_wd = reg_wdata[3:0];
+  assign range_attr_44_enable_44_wd = reg_wdata[3:0];
 
-  assign range_perm_44_read_access_44_wd = reg_wdata[7:4];
+  assign range_attr_44_read_access_44_wd = reg_wdata[7:4];
 
-  assign range_perm_44_write_access_44_wd = reg_wdata[11:8];
+  assign range_attr_44_write_access_44_wd = reg_wdata[11:8];
 
-  assign range_perm_44_execute_access_44_wd = reg_wdata[15:12];
+  assign range_attr_44_execute_access_44_wd = reg_wdata[15:12];
 
-  assign range_perm_44_log_denied_access_44_wd = reg_wdata[19:16];
-  assign range_perm_45_we = racl_addr_hit_write[245] & reg_we & !reg_error;
+  assign range_attr_44_log_denied_access_44_wd = reg_wdata[19:16];
+  assign range_attr_45_we = racl_addr_hit_write[245] & reg_we & !reg_error;
 
-  assign range_perm_45_enable_45_wd = reg_wdata[3:0];
+  assign range_attr_45_enable_45_wd = reg_wdata[3:0];
 
-  assign range_perm_45_read_access_45_wd = reg_wdata[7:4];
+  assign range_attr_45_read_access_45_wd = reg_wdata[7:4];
 
-  assign range_perm_45_write_access_45_wd = reg_wdata[11:8];
+  assign range_attr_45_write_access_45_wd = reg_wdata[11:8];
 
-  assign range_perm_45_execute_access_45_wd = reg_wdata[15:12];
+  assign range_attr_45_execute_access_45_wd = reg_wdata[15:12];
 
-  assign range_perm_45_log_denied_access_45_wd = reg_wdata[19:16];
-  assign range_perm_46_we = racl_addr_hit_write[246] & reg_we & !reg_error;
+  assign range_attr_45_log_denied_access_45_wd = reg_wdata[19:16];
+  assign range_attr_46_we = racl_addr_hit_write[246] & reg_we & !reg_error;
 
-  assign range_perm_46_enable_46_wd = reg_wdata[3:0];
+  assign range_attr_46_enable_46_wd = reg_wdata[3:0];
 
-  assign range_perm_46_read_access_46_wd = reg_wdata[7:4];
+  assign range_attr_46_read_access_46_wd = reg_wdata[7:4];
 
-  assign range_perm_46_write_access_46_wd = reg_wdata[11:8];
+  assign range_attr_46_write_access_46_wd = reg_wdata[11:8];
 
-  assign range_perm_46_execute_access_46_wd = reg_wdata[15:12];
+  assign range_attr_46_execute_access_46_wd = reg_wdata[15:12];
 
-  assign range_perm_46_log_denied_access_46_wd = reg_wdata[19:16];
-  assign range_perm_47_we = racl_addr_hit_write[247] & reg_we & !reg_error;
+  assign range_attr_46_log_denied_access_46_wd = reg_wdata[19:16];
+  assign range_attr_47_we = racl_addr_hit_write[247] & reg_we & !reg_error;
 
-  assign range_perm_47_enable_47_wd = reg_wdata[3:0];
+  assign range_attr_47_enable_47_wd = reg_wdata[3:0];
 
-  assign range_perm_47_read_access_47_wd = reg_wdata[7:4];
+  assign range_attr_47_read_access_47_wd = reg_wdata[7:4];
 
-  assign range_perm_47_write_access_47_wd = reg_wdata[11:8];
+  assign range_attr_47_write_access_47_wd = reg_wdata[11:8];
 
-  assign range_perm_47_execute_access_47_wd = reg_wdata[15:12];
+  assign range_attr_47_execute_access_47_wd = reg_wdata[15:12];
 
-  assign range_perm_47_log_denied_access_47_wd = reg_wdata[19:16];
-  assign range_perm_48_we = racl_addr_hit_write[248] & reg_we & !reg_error;
+  assign range_attr_47_log_denied_access_47_wd = reg_wdata[19:16];
+  assign range_attr_48_we = racl_addr_hit_write[248] & reg_we & !reg_error;
 
-  assign range_perm_48_enable_48_wd = reg_wdata[3:0];
+  assign range_attr_48_enable_48_wd = reg_wdata[3:0];
 
-  assign range_perm_48_read_access_48_wd = reg_wdata[7:4];
+  assign range_attr_48_read_access_48_wd = reg_wdata[7:4];
 
-  assign range_perm_48_write_access_48_wd = reg_wdata[11:8];
+  assign range_attr_48_write_access_48_wd = reg_wdata[11:8];
 
-  assign range_perm_48_execute_access_48_wd = reg_wdata[15:12];
+  assign range_attr_48_execute_access_48_wd = reg_wdata[15:12];
 
-  assign range_perm_48_log_denied_access_48_wd = reg_wdata[19:16];
-  assign range_perm_49_we = racl_addr_hit_write[249] & reg_we & !reg_error;
+  assign range_attr_48_log_denied_access_48_wd = reg_wdata[19:16];
+  assign range_attr_49_we = racl_addr_hit_write[249] & reg_we & !reg_error;
 
-  assign range_perm_49_enable_49_wd = reg_wdata[3:0];
+  assign range_attr_49_enable_49_wd = reg_wdata[3:0];
 
-  assign range_perm_49_read_access_49_wd = reg_wdata[7:4];
+  assign range_attr_49_read_access_49_wd = reg_wdata[7:4];
 
-  assign range_perm_49_write_access_49_wd = reg_wdata[11:8];
+  assign range_attr_49_write_access_49_wd = reg_wdata[11:8];
 
-  assign range_perm_49_execute_access_49_wd = reg_wdata[15:12];
+  assign range_attr_49_execute_access_49_wd = reg_wdata[15:12];
 
-  assign range_perm_49_log_denied_access_49_wd = reg_wdata[19:16];
-  assign range_perm_50_we = racl_addr_hit_write[250] & reg_we & !reg_error;
+  assign range_attr_49_log_denied_access_49_wd = reg_wdata[19:16];
+  assign range_attr_50_we = racl_addr_hit_write[250] & reg_we & !reg_error;
 
-  assign range_perm_50_enable_50_wd = reg_wdata[3:0];
+  assign range_attr_50_enable_50_wd = reg_wdata[3:0];
 
-  assign range_perm_50_read_access_50_wd = reg_wdata[7:4];
+  assign range_attr_50_read_access_50_wd = reg_wdata[7:4];
 
-  assign range_perm_50_write_access_50_wd = reg_wdata[11:8];
+  assign range_attr_50_write_access_50_wd = reg_wdata[11:8];
 
-  assign range_perm_50_execute_access_50_wd = reg_wdata[15:12];
+  assign range_attr_50_execute_access_50_wd = reg_wdata[15:12];
 
-  assign range_perm_50_log_denied_access_50_wd = reg_wdata[19:16];
-  assign range_perm_51_we = racl_addr_hit_write[251] & reg_we & !reg_error;
+  assign range_attr_50_log_denied_access_50_wd = reg_wdata[19:16];
+  assign range_attr_51_we = racl_addr_hit_write[251] & reg_we & !reg_error;
 
-  assign range_perm_51_enable_51_wd = reg_wdata[3:0];
+  assign range_attr_51_enable_51_wd = reg_wdata[3:0];
 
-  assign range_perm_51_read_access_51_wd = reg_wdata[7:4];
+  assign range_attr_51_read_access_51_wd = reg_wdata[7:4];
 
-  assign range_perm_51_write_access_51_wd = reg_wdata[11:8];
+  assign range_attr_51_write_access_51_wd = reg_wdata[11:8];
 
-  assign range_perm_51_execute_access_51_wd = reg_wdata[15:12];
+  assign range_attr_51_execute_access_51_wd = reg_wdata[15:12];
 
-  assign range_perm_51_log_denied_access_51_wd = reg_wdata[19:16];
-  assign range_perm_52_we = racl_addr_hit_write[252] & reg_we & !reg_error;
+  assign range_attr_51_log_denied_access_51_wd = reg_wdata[19:16];
+  assign range_attr_52_we = racl_addr_hit_write[252] & reg_we & !reg_error;
 
-  assign range_perm_52_enable_52_wd = reg_wdata[3:0];
+  assign range_attr_52_enable_52_wd = reg_wdata[3:0];
 
-  assign range_perm_52_read_access_52_wd = reg_wdata[7:4];
+  assign range_attr_52_read_access_52_wd = reg_wdata[7:4];
 
-  assign range_perm_52_write_access_52_wd = reg_wdata[11:8];
+  assign range_attr_52_write_access_52_wd = reg_wdata[11:8];
 
-  assign range_perm_52_execute_access_52_wd = reg_wdata[15:12];
+  assign range_attr_52_execute_access_52_wd = reg_wdata[15:12];
 
-  assign range_perm_52_log_denied_access_52_wd = reg_wdata[19:16];
-  assign range_perm_53_we = racl_addr_hit_write[253] & reg_we & !reg_error;
+  assign range_attr_52_log_denied_access_52_wd = reg_wdata[19:16];
+  assign range_attr_53_we = racl_addr_hit_write[253] & reg_we & !reg_error;
 
-  assign range_perm_53_enable_53_wd = reg_wdata[3:0];
+  assign range_attr_53_enable_53_wd = reg_wdata[3:0];
 
-  assign range_perm_53_read_access_53_wd = reg_wdata[7:4];
+  assign range_attr_53_read_access_53_wd = reg_wdata[7:4];
 
-  assign range_perm_53_write_access_53_wd = reg_wdata[11:8];
+  assign range_attr_53_write_access_53_wd = reg_wdata[11:8];
 
-  assign range_perm_53_execute_access_53_wd = reg_wdata[15:12];
+  assign range_attr_53_execute_access_53_wd = reg_wdata[15:12];
 
-  assign range_perm_53_log_denied_access_53_wd = reg_wdata[19:16];
-  assign range_perm_54_we = racl_addr_hit_write[254] & reg_we & !reg_error;
+  assign range_attr_53_log_denied_access_53_wd = reg_wdata[19:16];
+  assign range_attr_54_we = racl_addr_hit_write[254] & reg_we & !reg_error;
 
-  assign range_perm_54_enable_54_wd = reg_wdata[3:0];
+  assign range_attr_54_enable_54_wd = reg_wdata[3:0];
 
-  assign range_perm_54_read_access_54_wd = reg_wdata[7:4];
+  assign range_attr_54_read_access_54_wd = reg_wdata[7:4];
 
-  assign range_perm_54_write_access_54_wd = reg_wdata[11:8];
+  assign range_attr_54_write_access_54_wd = reg_wdata[11:8];
 
-  assign range_perm_54_execute_access_54_wd = reg_wdata[15:12];
+  assign range_attr_54_execute_access_54_wd = reg_wdata[15:12];
 
-  assign range_perm_54_log_denied_access_54_wd = reg_wdata[19:16];
-  assign range_perm_55_we = racl_addr_hit_write[255] & reg_we & !reg_error;
+  assign range_attr_54_log_denied_access_54_wd = reg_wdata[19:16];
+  assign range_attr_55_we = racl_addr_hit_write[255] & reg_we & !reg_error;
 
-  assign range_perm_55_enable_55_wd = reg_wdata[3:0];
+  assign range_attr_55_enable_55_wd = reg_wdata[3:0];
 
-  assign range_perm_55_read_access_55_wd = reg_wdata[7:4];
+  assign range_attr_55_read_access_55_wd = reg_wdata[7:4];
 
-  assign range_perm_55_write_access_55_wd = reg_wdata[11:8];
+  assign range_attr_55_write_access_55_wd = reg_wdata[11:8];
 
-  assign range_perm_55_execute_access_55_wd = reg_wdata[15:12];
+  assign range_attr_55_execute_access_55_wd = reg_wdata[15:12];
 
-  assign range_perm_55_log_denied_access_55_wd = reg_wdata[19:16];
-  assign range_perm_56_we = racl_addr_hit_write[256] & reg_we & !reg_error;
+  assign range_attr_55_log_denied_access_55_wd = reg_wdata[19:16];
+  assign range_attr_56_we = racl_addr_hit_write[256] & reg_we & !reg_error;
 
-  assign range_perm_56_enable_56_wd = reg_wdata[3:0];
+  assign range_attr_56_enable_56_wd = reg_wdata[3:0];
 
-  assign range_perm_56_read_access_56_wd = reg_wdata[7:4];
+  assign range_attr_56_read_access_56_wd = reg_wdata[7:4];
 
-  assign range_perm_56_write_access_56_wd = reg_wdata[11:8];
+  assign range_attr_56_write_access_56_wd = reg_wdata[11:8];
 
-  assign range_perm_56_execute_access_56_wd = reg_wdata[15:12];
+  assign range_attr_56_execute_access_56_wd = reg_wdata[15:12];
 
-  assign range_perm_56_log_denied_access_56_wd = reg_wdata[19:16];
-  assign range_perm_57_we = racl_addr_hit_write[257] & reg_we & !reg_error;
+  assign range_attr_56_log_denied_access_56_wd = reg_wdata[19:16];
+  assign range_attr_57_we = racl_addr_hit_write[257] & reg_we & !reg_error;
 
-  assign range_perm_57_enable_57_wd = reg_wdata[3:0];
+  assign range_attr_57_enable_57_wd = reg_wdata[3:0];
 
-  assign range_perm_57_read_access_57_wd = reg_wdata[7:4];
+  assign range_attr_57_read_access_57_wd = reg_wdata[7:4];
 
-  assign range_perm_57_write_access_57_wd = reg_wdata[11:8];
+  assign range_attr_57_write_access_57_wd = reg_wdata[11:8];
 
-  assign range_perm_57_execute_access_57_wd = reg_wdata[15:12];
+  assign range_attr_57_execute_access_57_wd = reg_wdata[15:12];
 
-  assign range_perm_57_log_denied_access_57_wd = reg_wdata[19:16];
-  assign range_perm_58_we = racl_addr_hit_write[258] & reg_we & !reg_error;
+  assign range_attr_57_log_denied_access_57_wd = reg_wdata[19:16];
+  assign range_attr_58_we = racl_addr_hit_write[258] & reg_we & !reg_error;
 
-  assign range_perm_58_enable_58_wd = reg_wdata[3:0];
+  assign range_attr_58_enable_58_wd = reg_wdata[3:0];
 
-  assign range_perm_58_read_access_58_wd = reg_wdata[7:4];
+  assign range_attr_58_read_access_58_wd = reg_wdata[7:4];
 
-  assign range_perm_58_write_access_58_wd = reg_wdata[11:8];
+  assign range_attr_58_write_access_58_wd = reg_wdata[11:8];
 
-  assign range_perm_58_execute_access_58_wd = reg_wdata[15:12];
+  assign range_attr_58_execute_access_58_wd = reg_wdata[15:12];
 
-  assign range_perm_58_log_denied_access_58_wd = reg_wdata[19:16];
-  assign range_perm_59_we = racl_addr_hit_write[259] & reg_we & !reg_error;
+  assign range_attr_58_log_denied_access_58_wd = reg_wdata[19:16];
+  assign range_attr_59_we = racl_addr_hit_write[259] & reg_we & !reg_error;
 
-  assign range_perm_59_enable_59_wd = reg_wdata[3:0];
+  assign range_attr_59_enable_59_wd = reg_wdata[3:0];
 
-  assign range_perm_59_read_access_59_wd = reg_wdata[7:4];
+  assign range_attr_59_read_access_59_wd = reg_wdata[7:4];
 
-  assign range_perm_59_write_access_59_wd = reg_wdata[11:8];
+  assign range_attr_59_write_access_59_wd = reg_wdata[11:8];
 
-  assign range_perm_59_execute_access_59_wd = reg_wdata[15:12];
+  assign range_attr_59_execute_access_59_wd = reg_wdata[15:12];
 
-  assign range_perm_59_log_denied_access_59_wd = reg_wdata[19:16];
-  assign range_perm_60_we = racl_addr_hit_write[260] & reg_we & !reg_error;
+  assign range_attr_59_log_denied_access_59_wd = reg_wdata[19:16];
+  assign range_attr_60_we = racl_addr_hit_write[260] & reg_we & !reg_error;
 
-  assign range_perm_60_enable_60_wd = reg_wdata[3:0];
+  assign range_attr_60_enable_60_wd = reg_wdata[3:0];
 
-  assign range_perm_60_read_access_60_wd = reg_wdata[7:4];
+  assign range_attr_60_read_access_60_wd = reg_wdata[7:4];
 
-  assign range_perm_60_write_access_60_wd = reg_wdata[11:8];
+  assign range_attr_60_write_access_60_wd = reg_wdata[11:8];
 
-  assign range_perm_60_execute_access_60_wd = reg_wdata[15:12];
+  assign range_attr_60_execute_access_60_wd = reg_wdata[15:12];
 
-  assign range_perm_60_log_denied_access_60_wd = reg_wdata[19:16];
-  assign range_perm_61_we = racl_addr_hit_write[261] & reg_we & !reg_error;
+  assign range_attr_60_log_denied_access_60_wd = reg_wdata[19:16];
+  assign range_attr_61_we = racl_addr_hit_write[261] & reg_we & !reg_error;
 
-  assign range_perm_61_enable_61_wd = reg_wdata[3:0];
+  assign range_attr_61_enable_61_wd = reg_wdata[3:0];
 
-  assign range_perm_61_read_access_61_wd = reg_wdata[7:4];
+  assign range_attr_61_read_access_61_wd = reg_wdata[7:4];
 
-  assign range_perm_61_write_access_61_wd = reg_wdata[11:8];
+  assign range_attr_61_write_access_61_wd = reg_wdata[11:8];
 
-  assign range_perm_61_execute_access_61_wd = reg_wdata[15:12];
+  assign range_attr_61_execute_access_61_wd = reg_wdata[15:12];
 
-  assign range_perm_61_log_denied_access_61_wd = reg_wdata[19:16];
-  assign range_perm_62_we = racl_addr_hit_write[262] & reg_we & !reg_error;
+  assign range_attr_61_log_denied_access_61_wd = reg_wdata[19:16];
+  assign range_attr_62_we = racl_addr_hit_write[262] & reg_we & !reg_error;
 
-  assign range_perm_62_enable_62_wd = reg_wdata[3:0];
+  assign range_attr_62_enable_62_wd = reg_wdata[3:0];
 
-  assign range_perm_62_read_access_62_wd = reg_wdata[7:4];
+  assign range_attr_62_read_access_62_wd = reg_wdata[7:4];
 
-  assign range_perm_62_write_access_62_wd = reg_wdata[11:8];
+  assign range_attr_62_write_access_62_wd = reg_wdata[11:8];
 
-  assign range_perm_62_execute_access_62_wd = reg_wdata[15:12];
+  assign range_attr_62_execute_access_62_wd = reg_wdata[15:12];
 
-  assign range_perm_62_log_denied_access_62_wd = reg_wdata[19:16];
-  assign range_perm_63_we = racl_addr_hit_write[263] & reg_we & !reg_error;
+  assign range_attr_62_log_denied_access_62_wd = reg_wdata[19:16];
+  assign range_attr_63_we = racl_addr_hit_write[263] & reg_we & !reg_error;
 
-  assign range_perm_63_enable_63_wd = reg_wdata[3:0];
+  assign range_attr_63_enable_63_wd = reg_wdata[3:0];
 
-  assign range_perm_63_read_access_63_wd = reg_wdata[7:4];
+  assign range_attr_63_read_access_63_wd = reg_wdata[7:4];
 
-  assign range_perm_63_write_access_63_wd = reg_wdata[11:8];
+  assign range_attr_63_write_access_63_wd = reg_wdata[11:8];
 
-  assign range_perm_63_execute_access_63_wd = reg_wdata[15:12];
+  assign range_attr_63_execute_access_63_wd = reg_wdata[15:12];
 
-  assign range_perm_63_log_denied_access_63_wd = reg_wdata[19:16];
+  assign range_attr_63_log_denied_access_63_wd = reg_wdata[19:16];
   assign range_racl_policy_shadowed_0_re = racl_addr_hit_read[264] & reg_re & !reg_error;
   assign range_racl_policy_shadowed_0_we = racl_addr_hit_write[264] & reg_we & !reg_error;
 
@@ -25805,70 +25805,70 @@ module scs_ac_range_check_reg_top
     reg_we_check[197] = range_limit_61_gated_we;
     reg_we_check[198] = range_limit_62_gated_we;
     reg_we_check[199] = range_limit_63_gated_we;
-    reg_we_check[200] = range_perm_0_gated_we;
-    reg_we_check[201] = range_perm_1_gated_we;
-    reg_we_check[202] = range_perm_2_gated_we;
-    reg_we_check[203] = range_perm_3_gated_we;
-    reg_we_check[204] = range_perm_4_gated_we;
-    reg_we_check[205] = range_perm_5_gated_we;
-    reg_we_check[206] = range_perm_6_gated_we;
-    reg_we_check[207] = range_perm_7_gated_we;
-    reg_we_check[208] = range_perm_8_gated_we;
-    reg_we_check[209] = range_perm_9_gated_we;
-    reg_we_check[210] = range_perm_10_gated_we;
-    reg_we_check[211] = range_perm_11_gated_we;
-    reg_we_check[212] = range_perm_12_gated_we;
-    reg_we_check[213] = range_perm_13_gated_we;
-    reg_we_check[214] = range_perm_14_gated_we;
-    reg_we_check[215] = range_perm_15_gated_we;
-    reg_we_check[216] = range_perm_16_gated_we;
-    reg_we_check[217] = range_perm_17_gated_we;
-    reg_we_check[218] = range_perm_18_gated_we;
-    reg_we_check[219] = range_perm_19_gated_we;
-    reg_we_check[220] = range_perm_20_gated_we;
-    reg_we_check[221] = range_perm_21_gated_we;
-    reg_we_check[222] = range_perm_22_gated_we;
-    reg_we_check[223] = range_perm_23_gated_we;
-    reg_we_check[224] = range_perm_24_gated_we;
-    reg_we_check[225] = range_perm_25_gated_we;
-    reg_we_check[226] = range_perm_26_gated_we;
-    reg_we_check[227] = range_perm_27_gated_we;
-    reg_we_check[228] = range_perm_28_gated_we;
-    reg_we_check[229] = range_perm_29_gated_we;
-    reg_we_check[230] = range_perm_30_gated_we;
-    reg_we_check[231] = range_perm_31_gated_we;
-    reg_we_check[232] = range_perm_32_gated_we;
-    reg_we_check[233] = range_perm_33_gated_we;
-    reg_we_check[234] = range_perm_34_gated_we;
-    reg_we_check[235] = range_perm_35_gated_we;
-    reg_we_check[236] = range_perm_36_gated_we;
-    reg_we_check[237] = range_perm_37_gated_we;
-    reg_we_check[238] = range_perm_38_gated_we;
-    reg_we_check[239] = range_perm_39_gated_we;
-    reg_we_check[240] = range_perm_40_gated_we;
-    reg_we_check[241] = range_perm_41_gated_we;
-    reg_we_check[242] = range_perm_42_gated_we;
-    reg_we_check[243] = range_perm_43_gated_we;
-    reg_we_check[244] = range_perm_44_gated_we;
-    reg_we_check[245] = range_perm_45_gated_we;
-    reg_we_check[246] = range_perm_46_gated_we;
-    reg_we_check[247] = range_perm_47_gated_we;
-    reg_we_check[248] = range_perm_48_gated_we;
-    reg_we_check[249] = range_perm_49_gated_we;
-    reg_we_check[250] = range_perm_50_gated_we;
-    reg_we_check[251] = range_perm_51_gated_we;
-    reg_we_check[252] = range_perm_52_gated_we;
-    reg_we_check[253] = range_perm_53_gated_we;
-    reg_we_check[254] = range_perm_54_gated_we;
-    reg_we_check[255] = range_perm_55_gated_we;
-    reg_we_check[256] = range_perm_56_gated_we;
-    reg_we_check[257] = range_perm_57_gated_we;
-    reg_we_check[258] = range_perm_58_gated_we;
-    reg_we_check[259] = range_perm_59_gated_we;
-    reg_we_check[260] = range_perm_60_gated_we;
-    reg_we_check[261] = range_perm_61_gated_we;
-    reg_we_check[262] = range_perm_62_gated_we;
-    reg_we_check[263] = range_perm_63_gated_we;
+    reg_we_check[200] = range_attr_0_gated_we;
+    reg_we_check[201] = range_attr_1_gated_we;
+    reg_we_check[202] = range_attr_2_gated_we;
+    reg_we_check[203] = range_attr_3_gated_we;
+    reg_we_check[204] = range_attr_4_gated_we;
+    reg_we_check[205] = range_attr_5_gated_we;
+    reg_we_check[206] = range_attr_6_gated_we;
+    reg_we_check[207] = range_attr_7_gated_we;
+    reg_we_check[208] = range_attr_8_gated_we;
+    reg_we_check[209] = range_attr_9_gated_we;
+    reg_we_check[210] = range_attr_10_gated_we;
+    reg_we_check[211] = range_attr_11_gated_we;
+    reg_we_check[212] = range_attr_12_gated_we;
+    reg_we_check[213] = range_attr_13_gated_we;
+    reg_we_check[214] = range_attr_14_gated_we;
+    reg_we_check[215] = range_attr_15_gated_we;
+    reg_we_check[216] = range_attr_16_gated_we;
+    reg_we_check[217] = range_attr_17_gated_we;
+    reg_we_check[218] = range_attr_18_gated_we;
+    reg_we_check[219] = range_attr_19_gated_we;
+    reg_we_check[220] = range_attr_20_gated_we;
+    reg_we_check[221] = range_attr_21_gated_we;
+    reg_we_check[222] = range_attr_22_gated_we;
+    reg_we_check[223] = range_attr_23_gated_we;
+    reg_we_check[224] = range_attr_24_gated_we;
+    reg_we_check[225] = range_attr_25_gated_we;
+    reg_we_check[226] = range_attr_26_gated_we;
+    reg_we_check[227] = range_attr_27_gated_we;
+    reg_we_check[228] = range_attr_28_gated_we;
+    reg_we_check[229] = range_attr_29_gated_we;
+    reg_we_check[230] = range_attr_30_gated_we;
+    reg_we_check[231] = range_attr_31_gated_we;
+    reg_we_check[232] = range_attr_32_gated_we;
+    reg_we_check[233] = range_attr_33_gated_we;
+    reg_we_check[234] = range_attr_34_gated_we;
+    reg_we_check[235] = range_attr_35_gated_we;
+    reg_we_check[236] = range_attr_36_gated_we;
+    reg_we_check[237] = range_attr_37_gated_we;
+    reg_we_check[238] = range_attr_38_gated_we;
+    reg_we_check[239] = range_attr_39_gated_we;
+    reg_we_check[240] = range_attr_40_gated_we;
+    reg_we_check[241] = range_attr_41_gated_we;
+    reg_we_check[242] = range_attr_42_gated_we;
+    reg_we_check[243] = range_attr_43_gated_we;
+    reg_we_check[244] = range_attr_44_gated_we;
+    reg_we_check[245] = range_attr_45_gated_we;
+    reg_we_check[246] = range_attr_46_gated_we;
+    reg_we_check[247] = range_attr_47_gated_we;
+    reg_we_check[248] = range_attr_48_gated_we;
+    reg_we_check[249] = range_attr_49_gated_we;
+    reg_we_check[250] = range_attr_50_gated_we;
+    reg_we_check[251] = range_attr_51_gated_we;
+    reg_we_check[252] = range_attr_52_gated_we;
+    reg_we_check[253] = range_attr_53_gated_we;
+    reg_we_check[254] = range_attr_54_gated_we;
+    reg_we_check[255] = range_attr_55_gated_we;
+    reg_we_check[256] = range_attr_56_gated_we;
+    reg_we_check[257] = range_attr_57_gated_we;
+    reg_we_check[258] = range_attr_58_gated_we;
+    reg_we_check[259] = range_attr_59_gated_we;
+    reg_we_check[260] = range_attr_60_gated_we;
+    reg_we_check[261] = range_attr_61_gated_we;
+    reg_we_check[262] = range_attr_62_gated_we;
+    reg_we_check[263] = range_attr_63_gated_we;
     reg_we_check[264] = range_racl_policy_shadowed_0_gated_we;
     reg_we_check[265] = range_racl_policy_shadowed_1_gated_we;
     reg_we_check[266] = range_racl_policy_shadowed_2_gated_we;
@@ -26755,515 +26755,515 @@ module scs_ac_range_check_reg_top
       end
 
       racl_addr_hit_read[200]: begin
-        reg_rdata_next[3:0] = range_perm_0_enable_0_qs;
-        reg_rdata_next[7:4] = range_perm_0_read_access_0_qs;
-        reg_rdata_next[11:8] = range_perm_0_write_access_0_qs;
-        reg_rdata_next[15:12] = range_perm_0_execute_access_0_qs;
-        reg_rdata_next[19:16] = range_perm_0_log_denied_access_0_qs;
+        reg_rdata_next[3:0] = range_attr_0_enable_0_qs;
+        reg_rdata_next[7:4] = range_attr_0_read_access_0_qs;
+        reg_rdata_next[11:8] = range_attr_0_write_access_0_qs;
+        reg_rdata_next[15:12] = range_attr_0_execute_access_0_qs;
+        reg_rdata_next[19:16] = range_attr_0_log_denied_access_0_qs;
       end
 
       racl_addr_hit_read[201]: begin
-        reg_rdata_next[3:0] = range_perm_1_enable_1_qs;
-        reg_rdata_next[7:4] = range_perm_1_read_access_1_qs;
-        reg_rdata_next[11:8] = range_perm_1_write_access_1_qs;
-        reg_rdata_next[15:12] = range_perm_1_execute_access_1_qs;
-        reg_rdata_next[19:16] = range_perm_1_log_denied_access_1_qs;
+        reg_rdata_next[3:0] = range_attr_1_enable_1_qs;
+        reg_rdata_next[7:4] = range_attr_1_read_access_1_qs;
+        reg_rdata_next[11:8] = range_attr_1_write_access_1_qs;
+        reg_rdata_next[15:12] = range_attr_1_execute_access_1_qs;
+        reg_rdata_next[19:16] = range_attr_1_log_denied_access_1_qs;
       end
 
       racl_addr_hit_read[202]: begin
-        reg_rdata_next[3:0] = range_perm_2_enable_2_qs;
-        reg_rdata_next[7:4] = range_perm_2_read_access_2_qs;
-        reg_rdata_next[11:8] = range_perm_2_write_access_2_qs;
-        reg_rdata_next[15:12] = range_perm_2_execute_access_2_qs;
-        reg_rdata_next[19:16] = range_perm_2_log_denied_access_2_qs;
+        reg_rdata_next[3:0] = range_attr_2_enable_2_qs;
+        reg_rdata_next[7:4] = range_attr_2_read_access_2_qs;
+        reg_rdata_next[11:8] = range_attr_2_write_access_2_qs;
+        reg_rdata_next[15:12] = range_attr_2_execute_access_2_qs;
+        reg_rdata_next[19:16] = range_attr_2_log_denied_access_2_qs;
       end
 
       racl_addr_hit_read[203]: begin
-        reg_rdata_next[3:0] = range_perm_3_enable_3_qs;
-        reg_rdata_next[7:4] = range_perm_3_read_access_3_qs;
-        reg_rdata_next[11:8] = range_perm_3_write_access_3_qs;
-        reg_rdata_next[15:12] = range_perm_3_execute_access_3_qs;
-        reg_rdata_next[19:16] = range_perm_3_log_denied_access_3_qs;
+        reg_rdata_next[3:0] = range_attr_3_enable_3_qs;
+        reg_rdata_next[7:4] = range_attr_3_read_access_3_qs;
+        reg_rdata_next[11:8] = range_attr_3_write_access_3_qs;
+        reg_rdata_next[15:12] = range_attr_3_execute_access_3_qs;
+        reg_rdata_next[19:16] = range_attr_3_log_denied_access_3_qs;
       end
 
       racl_addr_hit_read[204]: begin
-        reg_rdata_next[3:0] = range_perm_4_enable_4_qs;
-        reg_rdata_next[7:4] = range_perm_4_read_access_4_qs;
-        reg_rdata_next[11:8] = range_perm_4_write_access_4_qs;
-        reg_rdata_next[15:12] = range_perm_4_execute_access_4_qs;
-        reg_rdata_next[19:16] = range_perm_4_log_denied_access_4_qs;
+        reg_rdata_next[3:0] = range_attr_4_enable_4_qs;
+        reg_rdata_next[7:4] = range_attr_4_read_access_4_qs;
+        reg_rdata_next[11:8] = range_attr_4_write_access_4_qs;
+        reg_rdata_next[15:12] = range_attr_4_execute_access_4_qs;
+        reg_rdata_next[19:16] = range_attr_4_log_denied_access_4_qs;
       end
 
       racl_addr_hit_read[205]: begin
-        reg_rdata_next[3:0] = range_perm_5_enable_5_qs;
-        reg_rdata_next[7:4] = range_perm_5_read_access_5_qs;
-        reg_rdata_next[11:8] = range_perm_5_write_access_5_qs;
-        reg_rdata_next[15:12] = range_perm_5_execute_access_5_qs;
-        reg_rdata_next[19:16] = range_perm_5_log_denied_access_5_qs;
+        reg_rdata_next[3:0] = range_attr_5_enable_5_qs;
+        reg_rdata_next[7:4] = range_attr_5_read_access_5_qs;
+        reg_rdata_next[11:8] = range_attr_5_write_access_5_qs;
+        reg_rdata_next[15:12] = range_attr_5_execute_access_5_qs;
+        reg_rdata_next[19:16] = range_attr_5_log_denied_access_5_qs;
       end
 
       racl_addr_hit_read[206]: begin
-        reg_rdata_next[3:0] = range_perm_6_enable_6_qs;
-        reg_rdata_next[7:4] = range_perm_6_read_access_6_qs;
-        reg_rdata_next[11:8] = range_perm_6_write_access_6_qs;
-        reg_rdata_next[15:12] = range_perm_6_execute_access_6_qs;
-        reg_rdata_next[19:16] = range_perm_6_log_denied_access_6_qs;
+        reg_rdata_next[3:0] = range_attr_6_enable_6_qs;
+        reg_rdata_next[7:4] = range_attr_6_read_access_6_qs;
+        reg_rdata_next[11:8] = range_attr_6_write_access_6_qs;
+        reg_rdata_next[15:12] = range_attr_6_execute_access_6_qs;
+        reg_rdata_next[19:16] = range_attr_6_log_denied_access_6_qs;
       end
 
       racl_addr_hit_read[207]: begin
-        reg_rdata_next[3:0] = range_perm_7_enable_7_qs;
-        reg_rdata_next[7:4] = range_perm_7_read_access_7_qs;
-        reg_rdata_next[11:8] = range_perm_7_write_access_7_qs;
-        reg_rdata_next[15:12] = range_perm_7_execute_access_7_qs;
-        reg_rdata_next[19:16] = range_perm_7_log_denied_access_7_qs;
+        reg_rdata_next[3:0] = range_attr_7_enable_7_qs;
+        reg_rdata_next[7:4] = range_attr_7_read_access_7_qs;
+        reg_rdata_next[11:8] = range_attr_7_write_access_7_qs;
+        reg_rdata_next[15:12] = range_attr_7_execute_access_7_qs;
+        reg_rdata_next[19:16] = range_attr_7_log_denied_access_7_qs;
       end
 
       racl_addr_hit_read[208]: begin
-        reg_rdata_next[3:0] = range_perm_8_enable_8_qs;
-        reg_rdata_next[7:4] = range_perm_8_read_access_8_qs;
-        reg_rdata_next[11:8] = range_perm_8_write_access_8_qs;
-        reg_rdata_next[15:12] = range_perm_8_execute_access_8_qs;
-        reg_rdata_next[19:16] = range_perm_8_log_denied_access_8_qs;
+        reg_rdata_next[3:0] = range_attr_8_enable_8_qs;
+        reg_rdata_next[7:4] = range_attr_8_read_access_8_qs;
+        reg_rdata_next[11:8] = range_attr_8_write_access_8_qs;
+        reg_rdata_next[15:12] = range_attr_8_execute_access_8_qs;
+        reg_rdata_next[19:16] = range_attr_8_log_denied_access_8_qs;
       end
 
       racl_addr_hit_read[209]: begin
-        reg_rdata_next[3:0] = range_perm_9_enable_9_qs;
-        reg_rdata_next[7:4] = range_perm_9_read_access_9_qs;
-        reg_rdata_next[11:8] = range_perm_9_write_access_9_qs;
-        reg_rdata_next[15:12] = range_perm_9_execute_access_9_qs;
-        reg_rdata_next[19:16] = range_perm_9_log_denied_access_9_qs;
+        reg_rdata_next[3:0] = range_attr_9_enable_9_qs;
+        reg_rdata_next[7:4] = range_attr_9_read_access_9_qs;
+        reg_rdata_next[11:8] = range_attr_9_write_access_9_qs;
+        reg_rdata_next[15:12] = range_attr_9_execute_access_9_qs;
+        reg_rdata_next[19:16] = range_attr_9_log_denied_access_9_qs;
       end
 
       racl_addr_hit_read[210]: begin
-        reg_rdata_next[3:0] = range_perm_10_enable_10_qs;
-        reg_rdata_next[7:4] = range_perm_10_read_access_10_qs;
-        reg_rdata_next[11:8] = range_perm_10_write_access_10_qs;
-        reg_rdata_next[15:12] = range_perm_10_execute_access_10_qs;
-        reg_rdata_next[19:16] = range_perm_10_log_denied_access_10_qs;
+        reg_rdata_next[3:0] = range_attr_10_enable_10_qs;
+        reg_rdata_next[7:4] = range_attr_10_read_access_10_qs;
+        reg_rdata_next[11:8] = range_attr_10_write_access_10_qs;
+        reg_rdata_next[15:12] = range_attr_10_execute_access_10_qs;
+        reg_rdata_next[19:16] = range_attr_10_log_denied_access_10_qs;
       end
 
       racl_addr_hit_read[211]: begin
-        reg_rdata_next[3:0] = range_perm_11_enable_11_qs;
-        reg_rdata_next[7:4] = range_perm_11_read_access_11_qs;
-        reg_rdata_next[11:8] = range_perm_11_write_access_11_qs;
-        reg_rdata_next[15:12] = range_perm_11_execute_access_11_qs;
-        reg_rdata_next[19:16] = range_perm_11_log_denied_access_11_qs;
+        reg_rdata_next[3:0] = range_attr_11_enable_11_qs;
+        reg_rdata_next[7:4] = range_attr_11_read_access_11_qs;
+        reg_rdata_next[11:8] = range_attr_11_write_access_11_qs;
+        reg_rdata_next[15:12] = range_attr_11_execute_access_11_qs;
+        reg_rdata_next[19:16] = range_attr_11_log_denied_access_11_qs;
       end
 
       racl_addr_hit_read[212]: begin
-        reg_rdata_next[3:0] = range_perm_12_enable_12_qs;
-        reg_rdata_next[7:4] = range_perm_12_read_access_12_qs;
-        reg_rdata_next[11:8] = range_perm_12_write_access_12_qs;
-        reg_rdata_next[15:12] = range_perm_12_execute_access_12_qs;
-        reg_rdata_next[19:16] = range_perm_12_log_denied_access_12_qs;
+        reg_rdata_next[3:0] = range_attr_12_enable_12_qs;
+        reg_rdata_next[7:4] = range_attr_12_read_access_12_qs;
+        reg_rdata_next[11:8] = range_attr_12_write_access_12_qs;
+        reg_rdata_next[15:12] = range_attr_12_execute_access_12_qs;
+        reg_rdata_next[19:16] = range_attr_12_log_denied_access_12_qs;
       end
 
       racl_addr_hit_read[213]: begin
-        reg_rdata_next[3:0] = range_perm_13_enable_13_qs;
-        reg_rdata_next[7:4] = range_perm_13_read_access_13_qs;
-        reg_rdata_next[11:8] = range_perm_13_write_access_13_qs;
-        reg_rdata_next[15:12] = range_perm_13_execute_access_13_qs;
-        reg_rdata_next[19:16] = range_perm_13_log_denied_access_13_qs;
+        reg_rdata_next[3:0] = range_attr_13_enable_13_qs;
+        reg_rdata_next[7:4] = range_attr_13_read_access_13_qs;
+        reg_rdata_next[11:8] = range_attr_13_write_access_13_qs;
+        reg_rdata_next[15:12] = range_attr_13_execute_access_13_qs;
+        reg_rdata_next[19:16] = range_attr_13_log_denied_access_13_qs;
       end
 
       racl_addr_hit_read[214]: begin
-        reg_rdata_next[3:0] = range_perm_14_enable_14_qs;
-        reg_rdata_next[7:4] = range_perm_14_read_access_14_qs;
-        reg_rdata_next[11:8] = range_perm_14_write_access_14_qs;
-        reg_rdata_next[15:12] = range_perm_14_execute_access_14_qs;
-        reg_rdata_next[19:16] = range_perm_14_log_denied_access_14_qs;
+        reg_rdata_next[3:0] = range_attr_14_enable_14_qs;
+        reg_rdata_next[7:4] = range_attr_14_read_access_14_qs;
+        reg_rdata_next[11:8] = range_attr_14_write_access_14_qs;
+        reg_rdata_next[15:12] = range_attr_14_execute_access_14_qs;
+        reg_rdata_next[19:16] = range_attr_14_log_denied_access_14_qs;
       end
 
       racl_addr_hit_read[215]: begin
-        reg_rdata_next[3:0] = range_perm_15_enable_15_qs;
-        reg_rdata_next[7:4] = range_perm_15_read_access_15_qs;
-        reg_rdata_next[11:8] = range_perm_15_write_access_15_qs;
-        reg_rdata_next[15:12] = range_perm_15_execute_access_15_qs;
-        reg_rdata_next[19:16] = range_perm_15_log_denied_access_15_qs;
+        reg_rdata_next[3:0] = range_attr_15_enable_15_qs;
+        reg_rdata_next[7:4] = range_attr_15_read_access_15_qs;
+        reg_rdata_next[11:8] = range_attr_15_write_access_15_qs;
+        reg_rdata_next[15:12] = range_attr_15_execute_access_15_qs;
+        reg_rdata_next[19:16] = range_attr_15_log_denied_access_15_qs;
       end
 
       racl_addr_hit_read[216]: begin
-        reg_rdata_next[3:0] = range_perm_16_enable_16_qs;
-        reg_rdata_next[7:4] = range_perm_16_read_access_16_qs;
-        reg_rdata_next[11:8] = range_perm_16_write_access_16_qs;
-        reg_rdata_next[15:12] = range_perm_16_execute_access_16_qs;
-        reg_rdata_next[19:16] = range_perm_16_log_denied_access_16_qs;
+        reg_rdata_next[3:0] = range_attr_16_enable_16_qs;
+        reg_rdata_next[7:4] = range_attr_16_read_access_16_qs;
+        reg_rdata_next[11:8] = range_attr_16_write_access_16_qs;
+        reg_rdata_next[15:12] = range_attr_16_execute_access_16_qs;
+        reg_rdata_next[19:16] = range_attr_16_log_denied_access_16_qs;
       end
 
       racl_addr_hit_read[217]: begin
-        reg_rdata_next[3:0] = range_perm_17_enable_17_qs;
-        reg_rdata_next[7:4] = range_perm_17_read_access_17_qs;
-        reg_rdata_next[11:8] = range_perm_17_write_access_17_qs;
-        reg_rdata_next[15:12] = range_perm_17_execute_access_17_qs;
-        reg_rdata_next[19:16] = range_perm_17_log_denied_access_17_qs;
+        reg_rdata_next[3:0] = range_attr_17_enable_17_qs;
+        reg_rdata_next[7:4] = range_attr_17_read_access_17_qs;
+        reg_rdata_next[11:8] = range_attr_17_write_access_17_qs;
+        reg_rdata_next[15:12] = range_attr_17_execute_access_17_qs;
+        reg_rdata_next[19:16] = range_attr_17_log_denied_access_17_qs;
       end
 
       racl_addr_hit_read[218]: begin
-        reg_rdata_next[3:0] = range_perm_18_enable_18_qs;
-        reg_rdata_next[7:4] = range_perm_18_read_access_18_qs;
-        reg_rdata_next[11:8] = range_perm_18_write_access_18_qs;
-        reg_rdata_next[15:12] = range_perm_18_execute_access_18_qs;
-        reg_rdata_next[19:16] = range_perm_18_log_denied_access_18_qs;
+        reg_rdata_next[3:0] = range_attr_18_enable_18_qs;
+        reg_rdata_next[7:4] = range_attr_18_read_access_18_qs;
+        reg_rdata_next[11:8] = range_attr_18_write_access_18_qs;
+        reg_rdata_next[15:12] = range_attr_18_execute_access_18_qs;
+        reg_rdata_next[19:16] = range_attr_18_log_denied_access_18_qs;
       end
 
       racl_addr_hit_read[219]: begin
-        reg_rdata_next[3:0] = range_perm_19_enable_19_qs;
-        reg_rdata_next[7:4] = range_perm_19_read_access_19_qs;
-        reg_rdata_next[11:8] = range_perm_19_write_access_19_qs;
-        reg_rdata_next[15:12] = range_perm_19_execute_access_19_qs;
-        reg_rdata_next[19:16] = range_perm_19_log_denied_access_19_qs;
+        reg_rdata_next[3:0] = range_attr_19_enable_19_qs;
+        reg_rdata_next[7:4] = range_attr_19_read_access_19_qs;
+        reg_rdata_next[11:8] = range_attr_19_write_access_19_qs;
+        reg_rdata_next[15:12] = range_attr_19_execute_access_19_qs;
+        reg_rdata_next[19:16] = range_attr_19_log_denied_access_19_qs;
       end
 
       racl_addr_hit_read[220]: begin
-        reg_rdata_next[3:0] = range_perm_20_enable_20_qs;
-        reg_rdata_next[7:4] = range_perm_20_read_access_20_qs;
-        reg_rdata_next[11:8] = range_perm_20_write_access_20_qs;
-        reg_rdata_next[15:12] = range_perm_20_execute_access_20_qs;
-        reg_rdata_next[19:16] = range_perm_20_log_denied_access_20_qs;
+        reg_rdata_next[3:0] = range_attr_20_enable_20_qs;
+        reg_rdata_next[7:4] = range_attr_20_read_access_20_qs;
+        reg_rdata_next[11:8] = range_attr_20_write_access_20_qs;
+        reg_rdata_next[15:12] = range_attr_20_execute_access_20_qs;
+        reg_rdata_next[19:16] = range_attr_20_log_denied_access_20_qs;
       end
 
       racl_addr_hit_read[221]: begin
-        reg_rdata_next[3:0] = range_perm_21_enable_21_qs;
-        reg_rdata_next[7:4] = range_perm_21_read_access_21_qs;
-        reg_rdata_next[11:8] = range_perm_21_write_access_21_qs;
-        reg_rdata_next[15:12] = range_perm_21_execute_access_21_qs;
-        reg_rdata_next[19:16] = range_perm_21_log_denied_access_21_qs;
+        reg_rdata_next[3:0] = range_attr_21_enable_21_qs;
+        reg_rdata_next[7:4] = range_attr_21_read_access_21_qs;
+        reg_rdata_next[11:8] = range_attr_21_write_access_21_qs;
+        reg_rdata_next[15:12] = range_attr_21_execute_access_21_qs;
+        reg_rdata_next[19:16] = range_attr_21_log_denied_access_21_qs;
       end
 
       racl_addr_hit_read[222]: begin
-        reg_rdata_next[3:0] = range_perm_22_enable_22_qs;
-        reg_rdata_next[7:4] = range_perm_22_read_access_22_qs;
-        reg_rdata_next[11:8] = range_perm_22_write_access_22_qs;
-        reg_rdata_next[15:12] = range_perm_22_execute_access_22_qs;
-        reg_rdata_next[19:16] = range_perm_22_log_denied_access_22_qs;
+        reg_rdata_next[3:0] = range_attr_22_enable_22_qs;
+        reg_rdata_next[7:4] = range_attr_22_read_access_22_qs;
+        reg_rdata_next[11:8] = range_attr_22_write_access_22_qs;
+        reg_rdata_next[15:12] = range_attr_22_execute_access_22_qs;
+        reg_rdata_next[19:16] = range_attr_22_log_denied_access_22_qs;
       end
 
       racl_addr_hit_read[223]: begin
-        reg_rdata_next[3:0] = range_perm_23_enable_23_qs;
-        reg_rdata_next[7:4] = range_perm_23_read_access_23_qs;
-        reg_rdata_next[11:8] = range_perm_23_write_access_23_qs;
-        reg_rdata_next[15:12] = range_perm_23_execute_access_23_qs;
-        reg_rdata_next[19:16] = range_perm_23_log_denied_access_23_qs;
+        reg_rdata_next[3:0] = range_attr_23_enable_23_qs;
+        reg_rdata_next[7:4] = range_attr_23_read_access_23_qs;
+        reg_rdata_next[11:8] = range_attr_23_write_access_23_qs;
+        reg_rdata_next[15:12] = range_attr_23_execute_access_23_qs;
+        reg_rdata_next[19:16] = range_attr_23_log_denied_access_23_qs;
       end
 
       racl_addr_hit_read[224]: begin
-        reg_rdata_next[3:0] = range_perm_24_enable_24_qs;
-        reg_rdata_next[7:4] = range_perm_24_read_access_24_qs;
-        reg_rdata_next[11:8] = range_perm_24_write_access_24_qs;
-        reg_rdata_next[15:12] = range_perm_24_execute_access_24_qs;
-        reg_rdata_next[19:16] = range_perm_24_log_denied_access_24_qs;
+        reg_rdata_next[3:0] = range_attr_24_enable_24_qs;
+        reg_rdata_next[7:4] = range_attr_24_read_access_24_qs;
+        reg_rdata_next[11:8] = range_attr_24_write_access_24_qs;
+        reg_rdata_next[15:12] = range_attr_24_execute_access_24_qs;
+        reg_rdata_next[19:16] = range_attr_24_log_denied_access_24_qs;
       end
 
       racl_addr_hit_read[225]: begin
-        reg_rdata_next[3:0] = range_perm_25_enable_25_qs;
-        reg_rdata_next[7:4] = range_perm_25_read_access_25_qs;
-        reg_rdata_next[11:8] = range_perm_25_write_access_25_qs;
-        reg_rdata_next[15:12] = range_perm_25_execute_access_25_qs;
-        reg_rdata_next[19:16] = range_perm_25_log_denied_access_25_qs;
+        reg_rdata_next[3:0] = range_attr_25_enable_25_qs;
+        reg_rdata_next[7:4] = range_attr_25_read_access_25_qs;
+        reg_rdata_next[11:8] = range_attr_25_write_access_25_qs;
+        reg_rdata_next[15:12] = range_attr_25_execute_access_25_qs;
+        reg_rdata_next[19:16] = range_attr_25_log_denied_access_25_qs;
       end
 
       racl_addr_hit_read[226]: begin
-        reg_rdata_next[3:0] = range_perm_26_enable_26_qs;
-        reg_rdata_next[7:4] = range_perm_26_read_access_26_qs;
-        reg_rdata_next[11:8] = range_perm_26_write_access_26_qs;
-        reg_rdata_next[15:12] = range_perm_26_execute_access_26_qs;
-        reg_rdata_next[19:16] = range_perm_26_log_denied_access_26_qs;
+        reg_rdata_next[3:0] = range_attr_26_enable_26_qs;
+        reg_rdata_next[7:4] = range_attr_26_read_access_26_qs;
+        reg_rdata_next[11:8] = range_attr_26_write_access_26_qs;
+        reg_rdata_next[15:12] = range_attr_26_execute_access_26_qs;
+        reg_rdata_next[19:16] = range_attr_26_log_denied_access_26_qs;
       end
 
       racl_addr_hit_read[227]: begin
-        reg_rdata_next[3:0] = range_perm_27_enable_27_qs;
-        reg_rdata_next[7:4] = range_perm_27_read_access_27_qs;
-        reg_rdata_next[11:8] = range_perm_27_write_access_27_qs;
-        reg_rdata_next[15:12] = range_perm_27_execute_access_27_qs;
-        reg_rdata_next[19:16] = range_perm_27_log_denied_access_27_qs;
+        reg_rdata_next[3:0] = range_attr_27_enable_27_qs;
+        reg_rdata_next[7:4] = range_attr_27_read_access_27_qs;
+        reg_rdata_next[11:8] = range_attr_27_write_access_27_qs;
+        reg_rdata_next[15:12] = range_attr_27_execute_access_27_qs;
+        reg_rdata_next[19:16] = range_attr_27_log_denied_access_27_qs;
       end
 
       racl_addr_hit_read[228]: begin
-        reg_rdata_next[3:0] = range_perm_28_enable_28_qs;
-        reg_rdata_next[7:4] = range_perm_28_read_access_28_qs;
-        reg_rdata_next[11:8] = range_perm_28_write_access_28_qs;
-        reg_rdata_next[15:12] = range_perm_28_execute_access_28_qs;
-        reg_rdata_next[19:16] = range_perm_28_log_denied_access_28_qs;
+        reg_rdata_next[3:0] = range_attr_28_enable_28_qs;
+        reg_rdata_next[7:4] = range_attr_28_read_access_28_qs;
+        reg_rdata_next[11:8] = range_attr_28_write_access_28_qs;
+        reg_rdata_next[15:12] = range_attr_28_execute_access_28_qs;
+        reg_rdata_next[19:16] = range_attr_28_log_denied_access_28_qs;
       end
 
       racl_addr_hit_read[229]: begin
-        reg_rdata_next[3:0] = range_perm_29_enable_29_qs;
-        reg_rdata_next[7:4] = range_perm_29_read_access_29_qs;
-        reg_rdata_next[11:8] = range_perm_29_write_access_29_qs;
-        reg_rdata_next[15:12] = range_perm_29_execute_access_29_qs;
-        reg_rdata_next[19:16] = range_perm_29_log_denied_access_29_qs;
+        reg_rdata_next[3:0] = range_attr_29_enable_29_qs;
+        reg_rdata_next[7:4] = range_attr_29_read_access_29_qs;
+        reg_rdata_next[11:8] = range_attr_29_write_access_29_qs;
+        reg_rdata_next[15:12] = range_attr_29_execute_access_29_qs;
+        reg_rdata_next[19:16] = range_attr_29_log_denied_access_29_qs;
       end
 
       racl_addr_hit_read[230]: begin
-        reg_rdata_next[3:0] = range_perm_30_enable_30_qs;
-        reg_rdata_next[7:4] = range_perm_30_read_access_30_qs;
-        reg_rdata_next[11:8] = range_perm_30_write_access_30_qs;
-        reg_rdata_next[15:12] = range_perm_30_execute_access_30_qs;
-        reg_rdata_next[19:16] = range_perm_30_log_denied_access_30_qs;
+        reg_rdata_next[3:0] = range_attr_30_enable_30_qs;
+        reg_rdata_next[7:4] = range_attr_30_read_access_30_qs;
+        reg_rdata_next[11:8] = range_attr_30_write_access_30_qs;
+        reg_rdata_next[15:12] = range_attr_30_execute_access_30_qs;
+        reg_rdata_next[19:16] = range_attr_30_log_denied_access_30_qs;
       end
 
       racl_addr_hit_read[231]: begin
-        reg_rdata_next[3:0] = range_perm_31_enable_31_qs;
-        reg_rdata_next[7:4] = range_perm_31_read_access_31_qs;
-        reg_rdata_next[11:8] = range_perm_31_write_access_31_qs;
-        reg_rdata_next[15:12] = range_perm_31_execute_access_31_qs;
-        reg_rdata_next[19:16] = range_perm_31_log_denied_access_31_qs;
+        reg_rdata_next[3:0] = range_attr_31_enable_31_qs;
+        reg_rdata_next[7:4] = range_attr_31_read_access_31_qs;
+        reg_rdata_next[11:8] = range_attr_31_write_access_31_qs;
+        reg_rdata_next[15:12] = range_attr_31_execute_access_31_qs;
+        reg_rdata_next[19:16] = range_attr_31_log_denied_access_31_qs;
       end
 
       racl_addr_hit_read[232]: begin
-        reg_rdata_next[3:0] = range_perm_32_enable_32_qs;
-        reg_rdata_next[7:4] = range_perm_32_read_access_32_qs;
-        reg_rdata_next[11:8] = range_perm_32_write_access_32_qs;
-        reg_rdata_next[15:12] = range_perm_32_execute_access_32_qs;
-        reg_rdata_next[19:16] = range_perm_32_log_denied_access_32_qs;
+        reg_rdata_next[3:0] = range_attr_32_enable_32_qs;
+        reg_rdata_next[7:4] = range_attr_32_read_access_32_qs;
+        reg_rdata_next[11:8] = range_attr_32_write_access_32_qs;
+        reg_rdata_next[15:12] = range_attr_32_execute_access_32_qs;
+        reg_rdata_next[19:16] = range_attr_32_log_denied_access_32_qs;
       end
 
       racl_addr_hit_read[233]: begin
-        reg_rdata_next[3:0] = range_perm_33_enable_33_qs;
-        reg_rdata_next[7:4] = range_perm_33_read_access_33_qs;
-        reg_rdata_next[11:8] = range_perm_33_write_access_33_qs;
-        reg_rdata_next[15:12] = range_perm_33_execute_access_33_qs;
-        reg_rdata_next[19:16] = range_perm_33_log_denied_access_33_qs;
+        reg_rdata_next[3:0] = range_attr_33_enable_33_qs;
+        reg_rdata_next[7:4] = range_attr_33_read_access_33_qs;
+        reg_rdata_next[11:8] = range_attr_33_write_access_33_qs;
+        reg_rdata_next[15:12] = range_attr_33_execute_access_33_qs;
+        reg_rdata_next[19:16] = range_attr_33_log_denied_access_33_qs;
       end
 
       racl_addr_hit_read[234]: begin
-        reg_rdata_next[3:0] = range_perm_34_enable_34_qs;
-        reg_rdata_next[7:4] = range_perm_34_read_access_34_qs;
-        reg_rdata_next[11:8] = range_perm_34_write_access_34_qs;
-        reg_rdata_next[15:12] = range_perm_34_execute_access_34_qs;
-        reg_rdata_next[19:16] = range_perm_34_log_denied_access_34_qs;
+        reg_rdata_next[3:0] = range_attr_34_enable_34_qs;
+        reg_rdata_next[7:4] = range_attr_34_read_access_34_qs;
+        reg_rdata_next[11:8] = range_attr_34_write_access_34_qs;
+        reg_rdata_next[15:12] = range_attr_34_execute_access_34_qs;
+        reg_rdata_next[19:16] = range_attr_34_log_denied_access_34_qs;
       end
 
       racl_addr_hit_read[235]: begin
-        reg_rdata_next[3:0] = range_perm_35_enable_35_qs;
-        reg_rdata_next[7:4] = range_perm_35_read_access_35_qs;
-        reg_rdata_next[11:8] = range_perm_35_write_access_35_qs;
-        reg_rdata_next[15:12] = range_perm_35_execute_access_35_qs;
-        reg_rdata_next[19:16] = range_perm_35_log_denied_access_35_qs;
+        reg_rdata_next[3:0] = range_attr_35_enable_35_qs;
+        reg_rdata_next[7:4] = range_attr_35_read_access_35_qs;
+        reg_rdata_next[11:8] = range_attr_35_write_access_35_qs;
+        reg_rdata_next[15:12] = range_attr_35_execute_access_35_qs;
+        reg_rdata_next[19:16] = range_attr_35_log_denied_access_35_qs;
       end
 
       racl_addr_hit_read[236]: begin
-        reg_rdata_next[3:0] = range_perm_36_enable_36_qs;
-        reg_rdata_next[7:4] = range_perm_36_read_access_36_qs;
-        reg_rdata_next[11:8] = range_perm_36_write_access_36_qs;
-        reg_rdata_next[15:12] = range_perm_36_execute_access_36_qs;
-        reg_rdata_next[19:16] = range_perm_36_log_denied_access_36_qs;
+        reg_rdata_next[3:0] = range_attr_36_enable_36_qs;
+        reg_rdata_next[7:4] = range_attr_36_read_access_36_qs;
+        reg_rdata_next[11:8] = range_attr_36_write_access_36_qs;
+        reg_rdata_next[15:12] = range_attr_36_execute_access_36_qs;
+        reg_rdata_next[19:16] = range_attr_36_log_denied_access_36_qs;
       end
 
       racl_addr_hit_read[237]: begin
-        reg_rdata_next[3:0] = range_perm_37_enable_37_qs;
-        reg_rdata_next[7:4] = range_perm_37_read_access_37_qs;
-        reg_rdata_next[11:8] = range_perm_37_write_access_37_qs;
-        reg_rdata_next[15:12] = range_perm_37_execute_access_37_qs;
-        reg_rdata_next[19:16] = range_perm_37_log_denied_access_37_qs;
+        reg_rdata_next[3:0] = range_attr_37_enable_37_qs;
+        reg_rdata_next[7:4] = range_attr_37_read_access_37_qs;
+        reg_rdata_next[11:8] = range_attr_37_write_access_37_qs;
+        reg_rdata_next[15:12] = range_attr_37_execute_access_37_qs;
+        reg_rdata_next[19:16] = range_attr_37_log_denied_access_37_qs;
       end
 
       racl_addr_hit_read[238]: begin
-        reg_rdata_next[3:0] = range_perm_38_enable_38_qs;
-        reg_rdata_next[7:4] = range_perm_38_read_access_38_qs;
-        reg_rdata_next[11:8] = range_perm_38_write_access_38_qs;
-        reg_rdata_next[15:12] = range_perm_38_execute_access_38_qs;
-        reg_rdata_next[19:16] = range_perm_38_log_denied_access_38_qs;
+        reg_rdata_next[3:0] = range_attr_38_enable_38_qs;
+        reg_rdata_next[7:4] = range_attr_38_read_access_38_qs;
+        reg_rdata_next[11:8] = range_attr_38_write_access_38_qs;
+        reg_rdata_next[15:12] = range_attr_38_execute_access_38_qs;
+        reg_rdata_next[19:16] = range_attr_38_log_denied_access_38_qs;
       end
 
       racl_addr_hit_read[239]: begin
-        reg_rdata_next[3:0] = range_perm_39_enable_39_qs;
-        reg_rdata_next[7:4] = range_perm_39_read_access_39_qs;
-        reg_rdata_next[11:8] = range_perm_39_write_access_39_qs;
-        reg_rdata_next[15:12] = range_perm_39_execute_access_39_qs;
-        reg_rdata_next[19:16] = range_perm_39_log_denied_access_39_qs;
+        reg_rdata_next[3:0] = range_attr_39_enable_39_qs;
+        reg_rdata_next[7:4] = range_attr_39_read_access_39_qs;
+        reg_rdata_next[11:8] = range_attr_39_write_access_39_qs;
+        reg_rdata_next[15:12] = range_attr_39_execute_access_39_qs;
+        reg_rdata_next[19:16] = range_attr_39_log_denied_access_39_qs;
       end
 
       racl_addr_hit_read[240]: begin
-        reg_rdata_next[3:0] = range_perm_40_enable_40_qs;
-        reg_rdata_next[7:4] = range_perm_40_read_access_40_qs;
-        reg_rdata_next[11:8] = range_perm_40_write_access_40_qs;
-        reg_rdata_next[15:12] = range_perm_40_execute_access_40_qs;
-        reg_rdata_next[19:16] = range_perm_40_log_denied_access_40_qs;
+        reg_rdata_next[3:0] = range_attr_40_enable_40_qs;
+        reg_rdata_next[7:4] = range_attr_40_read_access_40_qs;
+        reg_rdata_next[11:8] = range_attr_40_write_access_40_qs;
+        reg_rdata_next[15:12] = range_attr_40_execute_access_40_qs;
+        reg_rdata_next[19:16] = range_attr_40_log_denied_access_40_qs;
       end
 
       racl_addr_hit_read[241]: begin
-        reg_rdata_next[3:0] = range_perm_41_enable_41_qs;
-        reg_rdata_next[7:4] = range_perm_41_read_access_41_qs;
-        reg_rdata_next[11:8] = range_perm_41_write_access_41_qs;
-        reg_rdata_next[15:12] = range_perm_41_execute_access_41_qs;
-        reg_rdata_next[19:16] = range_perm_41_log_denied_access_41_qs;
+        reg_rdata_next[3:0] = range_attr_41_enable_41_qs;
+        reg_rdata_next[7:4] = range_attr_41_read_access_41_qs;
+        reg_rdata_next[11:8] = range_attr_41_write_access_41_qs;
+        reg_rdata_next[15:12] = range_attr_41_execute_access_41_qs;
+        reg_rdata_next[19:16] = range_attr_41_log_denied_access_41_qs;
       end
 
       racl_addr_hit_read[242]: begin
-        reg_rdata_next[3:0] = range_perm_42_enable_42_qs;
-        reg_rdata_next[7:4] = range_perm_42_read_access_42_qs;
-        reg_rdata_next[11:8] = range_perm_42_write_access_42_qs;
-        reg_rdata_next[15:12] = range_perm_42_execute_access_42_qs;
-        reg_rdata_next[19:16] = range_perm_42_log_denied_access_42_qs;
+        reg_rdata_next[3:0] = range_attr_42_enable_42_qs;
+        reg_rdata_next[7:4] = range_attr_42_read_access_42_qs;
+        reg_rdata_next[11:8] = range_attr_42_write_access_42_qs;
+        reg_rdata_next[15:12] = range_attr_42_execute_access_42_qs;
+        reg_rdata_next[19:16] = range_attr_42_log_denied_access_42_qs;
       end
 
       racl_addr_hit_read[243]: begin
-        reg_rdata_next[3:0] = range_perm_43_enable_43_qs;
-        reg_rdata_next[7:4] = range_perm_43_read_access_43_qs;
-        reg_rdata_next[11:8] = range_perm_43_write_access_43_qs;
-        reg_rdata_next[15:12] = range_perm_43_execute_access_43_qs;
-        reg_rdata_next[19:16] = range_perm_43_log_denied_access_43_qs;
+        reg_rdata_next[3:0] = range_attr_43_enable_43_qs;
+        reg_rdata_next[7:4] = range_attr_43_read_access_43_qs;
+        reg_rdata_next[11:8] = range_attr_43_write_access_43_qs;
+        reg_rdata_next[15:12] = range_attr_43_execute_access_43_qs;
+        reg_rdata_next[19:16] = range_attr_43_log_denied_access_43_qs;
       end
 
       racl_addr_hit_read[244]: begin
-        reg_rdata_next[3:0] = range_perm_44_enable_44_qs;
-        reg_rdata_next[7:4] = range_perm_44_read_access_44_qs;
-        reg_rdata_next[11:8] = range_perm_44_write_access_44_qs;
-        reg_rdata_next[15:12] = range_perm_44_execute_access_44_qs;
-        reg_rdata_next[19:16] = range_perm_44_log_denied_access_44_qs;
+        reg_rdata_next[3:0] = range_attr_44_enable_44_qs;
+        reg_rdata_next[7:4] = range_attr_44_read_access_44_qs;
+        reg_rdata_next[11:8] = range_attr_44_write_access_44_qs;
+        reg_rdata_next[15:12] = range_attr_44_execute_access_44_qs;
+        reg_rdata_next[19:16] = range_attr_44_log_denied_access_44_qs;
       end
 
       racl_addr_hit_read[245]: begin
-        reg_rdata_next[3:0] = range_perm_45_enable_45_qs;
-        reg_rdata_next[7:4] = range_perm_45_read_access_45_qs;
-        reg_rdata_next[11:8] = range_perm_45_write_access_45_qs;
-        reg_rdata_next[15:12] = range_perm_45_execute_access_45_qs;
-        reg_rdata_next[19:16] = range_perm_45_log_denied_access_45_qs;
+        reg_rdata_next[3:0] = range_attr_45_enable_45_qs;
+        reg_rdata_next[7:4] = range_attr_45_read_access_45_qs;
+        reg_rdata_next[11:8] = range_attr_45_write_access_45_qs;
+        reg_rdata_next[15:12] = range_attr_45_execute_access_45_qs;
+        reg_rdata_next[19:16] = range_attr_45_log_denied_access_45_qs;
       end
 
       racl_addr_hit_read[246]: begin
-        reg_rdata_next[3:0] = range_perm_46_enable_46_qs;
-        reg_rdata_next[7:4] = range_perm_46_read_access_46_qs;
-        reg_rdata_next[11:8] = range_perm_46_write_access_46_qs;
-        reg_rdata_next[15:12] = range_perm_46_execute_access_46_qs;
-        reg_rdata_next[19:16] = range_perm_46_log_denied_access_46_qs;
+        reg_rdata_next[3:0] = range_attr_46_enable_46_qs;
+        reg_rdata_next[7:4] = range_attr_46_read_access_46_qs;
+        reg_rdata_next[11:8] = range_attr_46_write_access_46_qs;
+        reg_rdata_next[15:12] = range_attr_46_execute_access_46_qs;
+        reg_rdata_next[19:16] = range_attr_46_log_denied_access_46_qs;
       end
 
       racl_addr_hit_read[247]: begin
-        reg_rdata_next[3:0] = range_perm_47_enable_47_qs;
-        reg_rdata_next[7:4] = range_perm_47_read_access_47_qs;
-        reg_rdata_next[11:8] = range_perm_47_write_access_47_qs;
-        reg_rdata_next[15:12] = range_perm_47_execute_access_47_qs;
-        reg_rdata_next[19:16] = range_perm_47_log_denied_access_47_qs;
+        reg_rdata_next[3:0] = range_attr_47_enable_47_qs;
+        reg_rdata_next[7:4] = range_attr_47_read_access_47_qs;
+        reg_rdata_next[11:8] = range_attr_47_write_access_47_qs;
+        reg_rdata_next[15:12] = range_attr_47_execute_access_47_qs;
+        reg_rdata_next[19:16] = range_attr_47_log_denied_access_47_qs;
       end
 
       racl_addr_hit_read[248]: begin
-        reg_rdata_next[3:0] = range_perm_48_enable_48_qs;
-        reg_rdata_next[7:4] = range_perm_48_read_access_48_qs;
-        reg_rdata_next[11:8] = range_perm_48_write_access_48_qs;
-        reg_rdata_next[15:12] = range_perm_48_execute_access_48_qs;
-        reg_rdata_next[19:16] = range_perm_48_log_denied_access_48_qs;
+        reg_rdata_next[3:0] = range_attr_48_enable_48_qs;
+        reg_rdata_next[7:4] = range_attr_48_read_access_48_qs;
+        reg_rdata_next[11:8] = range_attr_48_write_access_48_qs;
+        reg_rdata_next[15:12] = range_attr_48_execute_access_48_qs;
+        reg_rdata_next[19:16] = range_attr_48_log_denied_access_48_qs;
       end
 
       racl_addr_hit_read[249]: begin
-        reg_rdata_next[3:0] = range_perm_49_enable_49_qs;
-        reg_rdata_next[7:4] = range_perm_49_read_access_49_qs;
-        reg_rdata_next[11:8] = range_perm_49_write_access_49_qs;
-        reg_rdata_next[15:12] = range_perm_49_execute_access_49_qs;
-        reg_rdata_next[19:16] = range_perm_49_log_denied_access_49_qs;
+        reg_rdata_next[3:0] = range_attr_49_enable_49_qs;
+        reg_rdata_next[7:4] = range_attr_49_read_access_49_qs;
+        reg_rdata_next[11:8] = range_attr_49_write_access_49_qs;
+        reg_rdata_next[15:12] = range_attr_49_execute_access_49_qs;
+        reg_rdata_next[19:16] = range_attr_49_log_denied_access_49_qs;
       end
 
       racl_addr_hit_read[250]: begin
-        reg_rdata_next[3:0] = range_perm_50_enable_50_qs;
-        reg_rdata_next[7:4] = range_perm_50_read_access_50_qs;
-        reg_rdata_next[11:8] = range_perm_50_write_access_50_qs;
-        reg_rdata_next[15:12] = range_perm_50_execute_access_50_qs;
-        reg_rdata_next[19:16] = range_perm_50_log_denied_access_50_qs;
+        reg_rdata_next[3:0] = range_attr_50_enable_50_qs;
+        reg_rdata_next[7:4] = range_attr_50_read_access_50_qs;
+        reg_rdata_next[11:8] = range_attr_50_write_access_50_qs;
+        reg_rdata_next[15:12] = range_attr_50_execute_access_50_qs;
+        reg_rdata_next[19:16] = range_attr_50_log_denied_access_50_qs;
       end
 
       racl_addr_hit_read[251]: begin
-        reg_rdata_next[3:0] = range_perm_51_enable_51_qs;
-        reg_rdata_next[7:4] = range_perm_51_read_access_51_qs;
-        reg_rdata_next[11:8] = range_perm_51_write_access_51_qs;
-        reg_rdata_next[15:12] = range_perm_51_execute_access_51_qs;
-        reg_rdata_next[19:16] = range_perm_51_log_denied_access_51_qs;
+        reg_rdata_next[3:0] = range_attr_51_enable_51_qs;
+        reg_rdata_next[7:4] = range_attr_51_read_access_51_qs;
+        reg_rdata_next[11:8] = range_attr_51_write_access_51_qs;
+        reg_rdata_next[15:12] = range_attr_51_execute_access_51_qs;
+        reg_rdata_next[19:16] = range_attr_51_log_denied_access_51_qs;
       end
 
       racl_addr_hit_read[252]: begin
-        reg_rdata_next[3:0] = range_perm_52_enable_52_qs;
-        reg_rdata_next[7:4] = range_perm_52_read_access_52_qs;
-        reg_rdata_next[11:8] = range_perm_52_write_access_52_qs;
-        reg_rdata_next[15:12] = range_perm_52_execute_access_52_qs;
-        reg_rdata_next[19:16] = range_perm_52_log_denied_access_52_qs;
+        reg_rdata_next[3:0] = range_attr_52_enable_52_qs;
+        reg_rdata_next[7:4] = range_attr_52_read_access_52_qs;
+        reg_rdata_next[11:8] = range_attr_52_write_access_52_qs;
+        reg_rdata_next[15:12] = range_attr_52_execute_access_52_qs;
+        reg_rdata_next[19:16] = range_attr_52_log_denied_access_52_qs;
       end
 
       racl_addr_hit_read[253]: begin
-        reg_rdata_next[3:0] = range_perm_53_enable_53_qs;
-        reg_rdata_next[7:4] = range_perm_53_read_access_53_qs;
-        reg_rdata_next[11:8] = range_perm_53_write_access_53_qs;
-        reg_rdata_next[15:12] = range_perm_53_execute_access_53_qs;
-        reg_rdata_next[19:16] = range_perm_53_log_denied_access_53_qs;
+        reg_rdata_next[3:0] = range_attr_53_enable_53_qs;
+        reg_rdata_next[7:4] = range_attr_53_read_access_53_qs;
+        reg_rdata_next[11:8] = range_attr_53_write_access_53_qs;
+        reg_rdata_next[15:12] = range_attr_53_execute_access_53_qs;
+        reg_rdata_next[19:16] = range_attr_53_log_denied_access_53_qs;
       end
 
       racl_addr_hit_read[254]: begin
-        reg_rdata_next[3:0] = range_perm_54_enable_54_qs;
-        reg_rdata_next[7:4] = range_perm_54_read_access_54_qs;
-        reg_rdata_next[11:8] = range_perm_54_write_access_54_qs;
-        reg_rdata_next[15:12] = range_perm_54_execute_access_54_qs;
-        reg_rdata_next[19:16] = range_perm_54_log_denied_access_54_qs;
+        reg_rdata_next[3:0] = range_attr_54_enable_54_qs;
+        reg_rdata_next[7:4] = range_attr_54_read_access_54_qs;
+        reg_rdata_next[11:8] = range_attr_54_write_access_54_qs;
+        reg_rdata_next[15:12] = range_attr_54_execute_access_54_qs;
+        reg_rdata_next[19:16] = range_attr_54_log_denied_access_54_qs;
       end
 
       racl_addr_hit_read[255]: begin
-        reg_rdata_next[3:0] = range_perm_55_enable_55_qs;
-        reg_rdata_next[7:4] = range_perm_55_read_access_55_qs;
-        reg_rdata_next[11:8] = range_perm_55_write_access_55_qs;
-        reg_rdata_next[15:12] = range_perm_55_execute_access_55_qs;
-        reg_rdata_next[19:16] = range_perm_55_log_denied_access_55_qs;
+        reg_rdata_next[3:0] = range_attr_55_enable_55_qs;
+        reg_rdata_next[7:4] = range_attr_55_read_access_55_qs;
+        reg_rdata_next[11:8] = range_attr_55_write_access_55_qs;
+        reg_rdata_next[15:12] = range_attr_55_execute_access_55_qs;
+        reg_rdata_next[19:16] = range_attr_55_log_denied_access_55_qs;
       end
 
       racl_addr_hit_read[256]: begin
-        reg_rdata_next[3:0] = range_perm_56_enable_56_qs;
-        reg_rdata_next[7:4] = range_perm_56_read_access_56_qs;
-        reg_rdata_next[11:8] = range_perm_56_write_access_56_qs;
-        reg_rdata_next[15:12] = range_perm_56_execute_access_56_qs;
-        reg_rdata_next[19:16] = range_perm_56_log_denied_access_56_qs;
+        reg_rdata_next[3:0] = range_attr_56_enable_56_qs;
+        reg_rdata_next[7:4] = range_attr_56_read_access_56_qs;
+        reg_rdata_next[11:8] = range_attr_56_write_access_56_qs;
+        reg_rdata_next[15:12] = range_attr_56_execute_access_56_qs;
+        reg_rdata_next[19:16] = range_attr_56_log_denied_access_56_qs;
       end
 
       racl_addr_hit_read[257]: begin
-        reg_rdata_next[3:0] = range_perm_57_enable_57_qs;
-        reg_rdata_next[7:4] = range_perm_57_read_access_57_qs;
-        reg_rdata_next[11:8] = range_perm_57_write_access_57_qs;
-        reg_rdata_next[15:12] = range_perm_57_execute_access_57_qs;
-        reg_rdata_next[19:16] = range_perm_57_log_denied_access_57_qs;
+        reg_rdata_next[3:0] = range_attr_57_enable_57_qs;
+        reg_rdata_next[7:4] = range_attr_57_read_access_57_qs;
+        reg_rdata_next[11:8] = range_attr_57_write_access_57_qs;
+        reg_rdata_next[15:12] = range_attr_57_execute_access_57_qs;
+        reg_rdata_next[19:16] = range_attr_57_log_denied_access_57_qs;
       end
 
       racl_addr_hit_read[258]: begin
-        reg_rdata_next[3:0] = range_perm_58_enable_58_qs;
-        reg_rdata_next[7:4] = range_perm_58_read_access_58_qs;
-        reg_rdata_next[11:8] = range_perm_58_write_access_58_qs;
-        reg_rdata_next[15:12] = range_perm_58_execute_access_58_qs;
-        reg_rdata_next[19:16] = range_perm_58_log_denied_access_58_qs;
+        reg_rdata_next[3:0] = range_attr_58_enable_58_qs;
+        reg_rdata_next[7:4] = range_attr_58_read_access_58_qs;
+        reg_rdata_next[11:8] = range_attr_58_write_access_58_qs;
+        reg_rdata_next[15:12] = range_attr_58_execute_access_58_qs;
+        reg_rdata_next[19:16] = range_attr_58_log_denied_access_58_qs;
       end
 
       racl_addr_hit_read[259]: begin
-        reg_rdata_next[3:0] = range_perm_59_enable_59_qs;
-        reg_rdata_next[7:4] = range_perm_59_read_access_59_qs;
-        reg_rdata_next[11:8] = range_perm_59_write_access_59_qs;
-        reg_rdata_next[15:12] = range_perm_59_execute_access_59_qs;
-        reg_rdata_next[19:16] = range_perm_59_log_denied_access_59_qs;
+        reg_rdata_next[3:0] = range_attr_59_enable_59_qs;
+        reg_rdata_next[7:4] = range_attr_59_read_access_59_qs;
+        reg_rdata_next[11:8] = range_attr_59_write_access_59_qs;
+        reg_rdata_next[15:12] = range_attr_59_execute_access_59_qs;
+        reg_rdata_next[19:16] = range_attr_59_log_denied_access_59_qs;
       end
 
       racl_addr_hit_read[260]: begin
-        reg_rdata_next[3:0] = range_perm_60_enable_60_qs;
-        reg_rdata_next[7:4] = range_perm_60_read_access_60_qs;
-        reg_rdata_next[11:8] = range_perm_60_write_access_60_qs;
-        reg_rdata_next[15:12] = range_perm_60_execute_access_60_qs;
-        reg_rdata_next[19:16] = range_perm_60_log_denied_access_60_qs;
+        reg_rdata_next[3:0] = range_attr_60_enable_60_qs;
+        reg_rdata_next[7:4] = range_attr_60_read_access_60_qs;
+        reg_rdata_next[11:8] = range_attr_60_write_access_60_qs;
+        reg_rdata_next[15:12] = range_attr_60_execute_access_60_qs;
+        reg_rdata_next[19:16] = range_attr_60_log_denied_access_60_qs;
       end
 
       racl_addr_hit_read[261]: begin
-        reg_rdata_next[3:0] = range_perm_61_enable_61_qs;
-        reg_rdata_next[7:4] = range_perm_61_read_access_61_qs;
-        reg_rdata_next[11:8] = range_perm_61_write_access_61_qs;
-        reg_rdata_next[15:12] = range_perm_61_execute_access_61_qs;
-        reg_rdata_next[19:16] = range_perm_61_log_denied_access_61_qs;
+        reg_rdata_next[3:0] = range_attr_61_enable_61_qs;
+        reg_rdata_next[7:4] = range_attr_61_read_access_61_qs;
+        reg_rdata_next[11:8] = range_attr_61_write_access_61_qs;
+        reg_rdata_next[15:12] = range_attr_61_execute_access_61_qs;
+        reg_rdata_next[19:16] = range_attr_61_log_denied_access_61_qs;
       end
 
       racl_addr_hit_read[262]: begin
-        reg_rdata_next[3:0] = range_perm_62_enable_62_qs;
-        reg_rdata_next[7:4] = range_perm_62_read_access_62_qs;
-        reg_rdata_next[11:8] = range_perm_62_write_access_62_qs;
-        reg_rdata_next[15:12] = range_perm_62_execute_access_62_qs;
-        reg_rdata_next[19:16] = range_perm_62_log_denied_access_62_qs;
+        reg_rdata_next[3:0] = range_attr_62_enable_62_qs;
+        reg_rdata_next[7:4] = range_attr_62_read_access_62_qs;
+        reg_rdata_next[11:8] = range_attr_62_write_access_62_qs;
+        reg_rdata_next[15:12] = range_attr_62_execute_access_62_qs;
+        reg_rdata_next[19:16] = range_attr_62_log_denied_access_62_qs;
       end
 
       racl_addr_hit_read[263]: begin
-        reg_rdata_next[3:0] = range_perm_63_enable_63_qs;
-        reg_rdata_next[7:4] = range_perm_63_read_access_63_qs;
-        reg_rdata_next[11:8] = range_perm_63_write_access_63_qs;
-        reg_rdata_next[15:12] = range_perm_63_execute_access_63_qs;
-        reg_rdata_next[19:16] = range_perm_63_log_denied_access_63_qs;
+        reg_rdata_next[3:0] = range_attr_63_enable_63_qs;
+        reg_rdata_next[7:4] = range_attr_63_read_access_63_qs;
+        reg_rdata_next[11:8] = range_attr_63_write_access_63_qs;
+        reg_rdata_next[15:12] = range_attr_63_execute_access_63_qs;
+        reg_rdata_next[19:16] = range_attr_63_log_denied_access_63_qs;
       end
 
       racl_addr_hit_read[264]: begin
