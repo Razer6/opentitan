@@ -14,8 +14,8 @@ filesets:
       - lowrisc:ip:tlul
       - lowrisc:prim:ram_1p_scr
       - lowrisc:ip:sram_ctrl
-      - lowrisc:constants:top_pkg
       # Use only a single package shared between Darjeeling, MIO, PWC
+      - lowrisc:darjeeling_constants:top_pkg
       - lowrisc:constants:top_darjeeling_jtag_id_pkg
       - lowrisc:constants:top_darjeeling_ibex_pmp_reset_pkg
       - lowrisc:ip:lc_ctrl_pkg
