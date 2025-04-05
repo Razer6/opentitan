@@ -2855,19 +2855,19 @@ module top_darjeeling #(
   // [169]: lsio_group_esc_err_1
   // [170]: lsio_group_esc_err_2
   // [171]: lsio_group_esc_err_3
-  // [172]: lio_group_v_integ_error
-  // [173]: lio_group_p_integ_error
-  // [174]: rc_widget_integ_error
-  // [175]: rot_hdr_integ_error
-  // [176]: rot_pcie_adapter_integ_error
-  // [177]: ras_ctl_reset_alert
-  // [178]: scs_rai_alert_trigger
-  assign alert_tx[178:166] = incoming_alert_rot_extra_alerts_tx_i;
-  assign incoming_alert_rot_extra_alerts_rx_o = alert_rx[178:166];
+  // [172]: rc_widget_integ_error
+  // [173]: rot_hdr_integ_error
+  // [174]: rot_pcie_adapter_integ_error
+  // [175]: ras_ctl_reset_alert
+  // [176]: scs_rai_alert_trigger
+  assign alert_tx[176:166] = incoming_alert_rot_extra_alerts_tx_i;
+  assign incoming_alert_rot_extra_alerts_rx_o = alert_rx[176:166];
 
   // Alert mapping to the alert handler for alert group other_extra_alerts
-  // [179]: ssram_lo_integ_err
-  // [180]: ssram_hi_integ_err
+  // [177]: ssram_lo_integ_err
+  // [178]: ssram_hi_integ_err
+  // [179]: fatal_fault
+  // [180]: recov_ctrl_update_err
   // [181]: scsif_regs_err
   // [182]: fatal_fault
   // [183]: recov_ctrl_update_err
@@ -2875,8 +2875,14 @@ module top_darjeeling #(
   // [185]: prim_fatal_err
   // [186]: prim_recov_err
   // [187]: apb_adapter_integ_err
-  assign alert_tx[187:179] = incoming_alert_other_extra_alerts_tx_i;
-  assign incoming_alert_other_extra_alerts_rx_o = alert_rx[187:179];
+  // [188]: fatal_fault
+  // [189]: recov_ctrl_update_err
+  // [190]: lio_group_v_integ_error
+  // [191]: fatal_fault
+  // [192]: recov_ctrl_update_err
+  // [193]: lio_group_p_integ_error
+  assign alert_tx[193:177] = incoming_alert_other_extra_alerts_tx_i;
+  assign incoming_alert_other_extra_alerts_rx_o = alert_rx[193:177];
 
   // interrupt assignments
   assign intr_vector = {

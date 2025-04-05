@@ -6,11 +6,17 @@
   param_values:
   {
     module_instance_name: alert_handler
-    n_alerts: 188
+    n_alerts: 194
     esc_cnt_dw: 32
     accu_cnt_dw: 16
     async_on:
     [
+      1'b1
+      1'b1
+      1'b1
+      1'b1
+      1'b1
+      1'b1
       1'b1
       1'b1
       1'b1
@@ -383,8 +389,14 @@
       5'd24
       5'd24
       5'd24
-      5'd24
-      5'd24
+      5'd25
+      5'd25
+      5'd25
+      5'd25
+      5'd25
+      5'd25
+      5'd25
+      5'd25
       5'd25
       5'd25
       5'd25

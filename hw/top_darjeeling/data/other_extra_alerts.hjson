@@ -26,8 +26,8 @@
         }
         // IDX 2
         {
-            name: scsif_regs_err
-            module_name: scsif_regs
+            name: fatal_fault
+            module_name: scsif_regs_racl_ctrl
             index: 2
             type: alert
             async: 1
@@ -36,8 +36,18 @@
         }
         // IDX 3
         {
-            name: fatal_fault
-            module_name: nsgrp_racl_ctrl
+            name: recov_ctrl_update_err
+            module_name: scsif_regs_racl_ctrl
+            index: 3
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 3
+        {
+            name: scsif_regs_err
+            module_name: scsif_regs
             index: 3
             type: alert
             async: 1
@@ -46,7 +56,7 @@
         }
         // IDX 4
         {
-            name: recov_ctrl_update_err
+            name: fatal_fault
             module_name: nsgrp_racl_ctrl
             index: 4
             type: alert
@@ -56,8 +66,8 @@
         }
         // IDX 5
         {
-            name: bus_integ_err
-            module_name: nsefuse
+            name: recov_ctrl_update_err
+            module_name: nsgrp_racl_ctrl
             index: 5
             type: alert
             async: 1
@@ -66,7 +76,7 @@
         }
         // IDX 6
         {
-            name: prim_fatal_err
+            name: bus_integ_err
             module_name: nsefuse
             index: 6
             type: alert
@@ -76,7 +86,7 @@
         }
         // IDX 7
         {
-            name: prim_recov_err
+            name: prim_fatal_err
             module_name: nsefuse
             index: 7
             type: alert
@@ -86,9 +96,79 @@
         }
         // IDX 8
         {
-            name: apb_adapter_integ_err
+            name: prim_recov_err
             module_name: nsefuse
             index: 8
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 9
+        {
+            name: apb_adapter_integ_err
+            module_name: nsefuse
+            index: 9
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 10
+        {
+            name: fatal_fault
+            module_name: lio_group_v_racl_ctrl
+            index: 10
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 11
+        {
+            name: recov_ctrl_update_err
+            module_name: lio_group_v_racl_ctrl
+            index: 11
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 12
+        {
+            name: lio_group_v_integ_error
+            module_name: lio_group_v
+            index: 12
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 13
+        {
+            name: fatal_fault
+            module_name: lio_group_p_racl_ctrl
+            index: 13
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 14
+        {
+            name: recov_ctrl_update_err
+            module_name: lio_group_p_racl_ctrl
+            index: 14
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 15
+        {
+            name: lio_group_p_integ_error
+            module_name: lio_group_p
+            index: 15
             type: alert
             async: 1
             width: 1

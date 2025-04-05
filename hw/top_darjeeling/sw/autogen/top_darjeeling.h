@@ -1516,15 +1516,15 @@ typedef enum top_darjeeling_alert_id {
   kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr1 = 169, /**< incoming_rot_extra_alerts_lsio_group_esc_err_1 */
   kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr2 = 170, /**< incoming_rot_extra_alerts_lsio_group_esc_err_2 */
   kTopDarjeelingAlertIdIncomingRotExtraAlertsLsioGroupEscErr3 = 171, /**< incoming_rot_extra_alerts_lsio_group_esc_err_3 */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLioGroupVIntegError = 172, /**< incoming_rot_extra_alerts_lio_group_v_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsLioGroupPIntegError = 173, /**< incoming_rot_extra_alerts_lio_group_p_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsRcWidgetIntegError = 174, /**< incoming_rot_extra_alerts_rc_widget_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsRotHdrIntegError = 175, /**< incoming_rot_extra_alerts_rot_hdr_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsRotPcieAdapterIntegError = 176, /**< incoming_rot_extra_alerts_rot_pcie_adapter_integ_error */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsRasCtlResetAlert = 177, /**< incoming_rot_extra_alerts_ras_ctl_reset_alert */
-  kTopDarjeelingAlertIdIncomingRotExtraAlertsScsRaiAlertTrigger = 178, /**< incoming_rot_extra_alerts_scs_rai_alert_trigger */
-  kTopDarjeelingAlertIdIncomingOtherExtraAlertsSsramLoIntegErr = 179, /**< incoming_other_extra_alerts_ssram_lo_integ_err */
-  kTopDarjeelingAlertIdIncomingOtherExtraAlertsSsramHiIntegErr = 180, /**< incoming_other_extra_alerts_ssram_hi_integ_err */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsRcWidgetIntegError = 172, /**< incoming_rot_extra_alerts_rc_widget_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsRotHdrIntegError = 173, /**< incoming_rot_extra_alerts_rot_hdr_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsRotPcieAdapterIntegError = 174, /**< incoming_rot_extra_alerts_rot_pcie_adapter_integ_error */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsRasCtlResetAlert = 175, /**< incoming_rot_extra_alerts_ras_ctl_reset_alert */
+  kTopDarjeelingAlertIdIncomingRotExtraAlertsScsRaiAlertTrigger = 176, /**< incoming_rot_extra_alerts_scs_rai_alert_trigger */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsSsramLoIntegErr = 177, /**< incoming_other_extra_alerts_ssram_lo_integ_err */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsSsramHiIntegErr = 178, /**< incoming_other_extra_alerts_ssram_hi_integ_err */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsFatalFault = 179, /**< incoming_other_extra_alerts_fatal_fault */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsRecovCtrlUpdateErr = 180, /**< incoming_other_extra_alerts_recov_ctrl_update_err */
   kTopDarjeelingAlertIdIncomingOtherExtraAlertsScsifRegsErr = 181, /**< incoming_other_extra_alerts_scsif_regs_err */
   kTopDarjeelingAlertIdIncomingOtherExtraAlertsFatalFault = 182, /**< incoming_other_extra_alerts_fatal_fault */
   kTopDarjeelingAlertIdIncomingOtherExtraAlertsRecovCtrlUpdateErr = 183, /**< incoming_other_extra_alerts_recov_ctrl_update_err */
@@ -1532,7 +1532,13 @@ typedef enum top_darjeeling_alert_id {
   kTopDarjeelingAlertIdIncomingOtherExtraAlertsPrimFatalErr = 185, /**< incoming_other_extra_alerts_prim_fatal_err */
   kTopDarjeelingAlertIdIncomingOtherExtraAlertsPrimRecovErr = 186, /**< incoming_other_extra_alerts_prim_recov_err */
   kTopDarjeelingAlertIdIncomingOtherExtraAlertsApbAdapterIntegErr = 187, /**< incoming_other_extra_alerts_apb_adapter_integ_err */
-  kTopDarjeelingAlertIdLast = 187, /**< \internal The Last Valid Alert ID. */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsFatalFault = 188, /**< incoming_other_extra_alerts_fatal_fault */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsRecovCtrlUpdateErr = 189, /**< incoming_other_extra_alerts_recov_ctrl_update_err */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsLioGroupVIntegError = 190, /**< incoming_other_extra_alerts_lio_group_v_integ_error */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsFatalFault = 191, /**< incoming_other_extra_alerts_fatal_fault */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsRecovCtrlUpdateErr = 192, /**< incoming_other_extra_alerts_recov_ctrl_update_err */
+  kTopDarjeelingAlertIdIncomingOtherExtraAlertsLioGroupPIntegError = 193, /**< incoming_other_extra_alerts_lio_group_p_integ_error */
+  kTopDarjeelingAlertIdLast = 193, /**< \internal The Last Valid Alert ID. */
 } top_darjeeling_alert_id_t;
 
 /**
