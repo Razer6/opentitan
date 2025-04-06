@@ -8314,6 +8314,174 @@
         intr_type: IntrType.Event
         default_val: false
       }
+      {
+        name: IPI_FROM_LIOGRPA_I3C0_PERIPH_RST_REQ
+        module_name: LIO_GRP_A
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPA_I3C0_CHIP_RST_REQ
+        module_name: LIO_GRP_A
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPA_I3C1_PERIPH_RST_REQ
+        module_name: LIO_GRP_A
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPA_I3C1_CHIP_RST_REQ
+        module_name: LIO_GRP_A
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPA_I3C2_PERIPH_RST_REQ
+        module_name: LIO_GRP_A
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPA_I3C2_CHIP_RST_REQ
+        module_name: LIO_GRP_A
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPB_I3C0_PERIPH_RST_REQ
+        module_name: LIO_GRP_B
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPB_I3C0_CHIP_RST_REQ
+        module_name: LIO_GRP_B
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPB_I3C1_PERIPH_RST_REQ
+        module_name: LIO_GRP_B
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPB_I3C1_CHIP_RST_REQ
+        module_name: LIO_GRP_B
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPB_I3C2_PERIPH_RST_REQ
+        module_name: LIO_GRP_B
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPB_I3C2_CHIP_RST_REQ
+        module_name: LIO_GRP_B
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPC_I3C0_PERIPH_RST_REQ
+        module_name: LIO_GRP_C
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPC_I3C0_CHIP_RST_REQ
+        module_name: LIO_GRP_C
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPC_I3C1_PERIPH_RST_REQ
+        module_name: LIO_GRP_C
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPC_I3C1_CHIP_RST_REQ
+        module_name: LIO_GRP_C
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPC_I3C2_PERIPH_RST_REQ
+        module_name: LIO_GRP_C
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPC_I3C2_CHIP_RST_REQ
+        module_name: LIO_GRP_C
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPD_I3C0_PERIPH_RST_REQ
+        module_name: LIO_GRP_D
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPD_I3C0_CHIP_RST_REQ
+        module_name: LIO_GRP_D
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPD_I3C1_PERIPH_RST_REQ
+        module_name: LIO_GRP_D
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPD_I3C1_CHIP_RST_REQ
+        module_name: LIO_GRP_D
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPD_I3C2_PERIPH_RST_REQ
+        module_name: LIO_GRP_D
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: IPI_FROM_LIOGRPD_I3C2_CHIP_RST_REQ
+        module_name: LIO_GRP_D
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
     ]
   }
   exported_clks: {}
@@ -12411,6 +12579,246 @@
       intr_type: IntrType.Event
       default_val: false
       desc: PWC_HDR IPI_FROM_DUC incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_IPI_FROM_LIOGRPA_I3C0_PERIPH_RST_REQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_A IPI_FROM_LIOGRPA_I3C0_PERIPH_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_IPI_FROM_LIOGRPA_I3C0_CHIP_RST_REQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_A IPI_FROM_LIOGRPA_I3C0_CHIP_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_IPI_FROM_LIOGRPA_I3C1_PERIPH_RST_REQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_A IPI_FROM_LIOGRPA_I3C1_PERIPH_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_IPI_FROM_LIOGRPA_I3C1_CHIP_RST_REQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_A IPI_FROM_LIOGRPA_I3C1_CHIP_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_IPI_FROM_LIOGRPA_I3C2_PERIPH_RST_REQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_A IPI_FROM_LIOGRPA_I3C2_PERIPH_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_IPI_FROM_LIOGRPA_I3C2_CHIP_RST_REQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_A IPI_FROM_LIOGRPA_I3C2_CHIP_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_IPI_FROM_LIOGRPB_I3C0_PERIPH_RST_REQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_B IPI_FROM_LIOGRPB_I3C0_PERIPH_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_IPI_FROM_LIOGRPB_I3C0_CHIP_RST_REQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_B IPI_FROM_LIOGRPB_I3C0_CHIP_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_IPI_FROM_LIOGRPB_I3C1_PERIPH_RST_REQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_B IPI_FROM_LIOGRPB_I3C1_PERIPH_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_IPI_FROM_LIOGRPB_I3C1_CHIP_RST_REQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_B IPI_FROM_LIOGRPB_I3C1_CHIP_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_IPI_FROM_LIOGRPB_I3C2_PERIPH_RST_REQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_B IPI_FROM_LIOGRPB_I3C2_PERIPH_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_IPI_FROM_LIOGRPB_I3C2_CHIP_RST_REQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_B IPI_FROM_LIOGRPB_I3C2_CHIP_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_IPI_FROM_LIOGRPC_I3C0_PERIPH_RST_REQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_C IPI_FROM_LIOGRPC_I3C0_PERIPH_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_IPI_FROM_LIOGRPC_I3C0_CHIP_RST_REQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_C IPI_FROM_LIOGRPC_I3C0_CHIP_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_IPI_FROM_LIOGRPC_I3C1_PERIPH_RST_REQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_C IPI_FROM_LIOGRPC_I3C1_PERIPH_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_IPI_FROM_LIOGRPC_I3C1_CHIP_RST_REQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_C IPI_FROM_LIOGRPC_I3C1_CHIP_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_IPI_FROM_LIOGRPC_I3C2_PERIPH_RST_REQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_C IPI_FROM_LIOGRPC_I3C2_PERIPH_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_IPI_FROM_LIOGRPC_I3C2_CHIP_RST_REQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_C IPI_FROM_LIOGRPC_I3C2_CHIP_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_D_IPI_FROM_LIOGRPD_I3C0_PERIPH_RST_REQ
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_D IPI_FROM_LIOGRPD_I3C0_PERIPH_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_D_IPI_FROM_LIOGRPD_I3C0_CHIP_RST_REQ
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_D IPI_FROM_LIOGRPD_I3C0_CHIP_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_D_IPI_FROM_LIOGRPD_I3C1_PERIPH_RST_REQ
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_D IPI_FROM_LIOGRPD_I3C1_PERIPH_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_D_IPI_FROM_LIOGRPD_I3C1_CHIP_RST_REQ
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_D IPI_FROM_LIOGRPD_I3C1_CHIP_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_D_IPI_FROM_LIOGRPD_I3C2_PERIPH_RST_REQ
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_D IPI_FROM_LIOGRPD_I3C2_PERIPH_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_D_IPI_FROM_LIOGRPD_I3C2_CHIP_RST_REQ
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: LIO_GRP_D IPI_FROM_LIOGRPD_I3C2_CHIP_RST_REQ incoming interrupt
       incoming: true
       width: 1
     }

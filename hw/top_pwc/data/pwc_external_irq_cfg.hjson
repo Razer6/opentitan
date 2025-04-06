@@ -1275,5 +1275,197 @@
       intr_type: IntrType.Event
       default_val: false
     }
+    // IDX 159
+    {
+      name: IPI_FROM_LIOGRPA_I3C0_PERIPH_RST_REQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 160
+    {
+      name: IPI_FROM_LIOGRPA_I3C0_CHIP_RST_REQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 161
+    {
+      name: IPI_FROM_LIOGRPA_I3C1_PERIPH_RST_REQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 162
+    {
+      name: IPI_FROM_LIOGRPA_I3C1_CHIP_RST_REQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 163
+    {
+      name: IPI_FROM_LIOGRPA_I3C2_PERIPH_RST_REQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 164
+    {
+      name: IPI_FROM_LIOGRPA_I3C2_CHIP_RST_REQ
+      module_name: LIO_GRP_A
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 165
+    {
+      name: IPI_FROM_LIOGRPB_I3C0_PERIPH_RST_REQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 166
+    {
+      name: IPI_FROM_LIOGRPB_I3C0_CHIP_RST_REQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 167
+    {
+      name: IPI_FROM_LIOGRPB_I3C1_PERIPH_RST_REQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 168
+    {
+      name: IPI_FROM_LIOGRPB_I3C1_CHIP_RST_REQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 169
+    {
+      name: IPI_FROM_LIOGRPB_I3C2_PERIPH_RST_REQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 170
+    {
+      name: IPI_FROM_LIOGRPB_I3C2_CHIP_RST_REQ
+      module_name: LIO_GRP_B
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 171
+    {
+      name: IPI_FROM_LIOGRPC_I3C0_PERIPH_RST_REQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 172
+    {
+      name: IPI_FROM_LIOGRPC_I3C0_CHIP_RST_REQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 173
+    {
+      name: IPI_FROM_LIOGRPC_I3C1_PERIPH_RST_REQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 174
+    {
+      name: IPI_FROM_LIOGRPC_I3C1_CHIP_RST_REQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 175
+    {
+      name: IPI_FROM_LIOGRPC_I3C2_PERIPH_RST_REQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 176
+    {
+      name: IPI_FROM_LIOGRPC_I3C2_CHIP_RST_REQ
+      module_name: LIO_GRP_C
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 177
+    {
+      name: IPI_FROM_LIOGRPD_I3C0_PERIPH_RST_REQ
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 178
+    {
+      name: IPI_FROM_LIOGRPD_I3C0_CHIP_RST_REQ
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 179
+    {
+      name: IPI_FROM_LIOGRPD_I3C1_PERIPH_RST_REQ
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 180
+    {
+      name: IPI_FROM_LIOGRPD_I3C1_CHIP_RST_REQ
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 181
+    {
+      name: IPI_FROM_LIOGRPD_I3C2_PERIPH_RST_REQ
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 182
+    {
+      name: IPI_FROM_LIOGRPD_I3C2_CHIP_RST_REQ
+      module_name: LIO_GRP_D
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
   ]
 }

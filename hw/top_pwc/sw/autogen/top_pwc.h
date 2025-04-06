@@ -717,7 +717,31 @@ typedef enum top_pwc_plic_irq_id {
   kTopPwcPlicIrqIdPwcHdrIpiFromRot = 218, /**< PWC_HDR_IPI_FROM_ROT */
   kTopPwcPlicIrqIdPwcHdrIpiFromMio = 219, /**< PWC_HDR_IPI_FROM_MIO */
   kTopPwcPlicIrqIdPwcHdrIpiFromDuc = 220, /**< PWC_HDR_IPI_FROM_DUC */
-  kTopPwcPlicIrqIdLast = 220, /**< \internal The Last Valid Interrupt ID. */
+  kTopPwcPlicIrqIdLioGrpAIpiFromLiogrpaI3c0PeriphRstReq = 221, /**< LIO_GRP_A_IPI_FROM_LIOGRPA_I3C0_PERIPH_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpAIpiFromLiogrpaI3c0ChipRstReq = 222, /**< LIO_GRP_A_IPI_FROM_LIOGRPA_I3C0_CHIP_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpAIpiFromLiogrpaI3c1PeriphRstReq = 223, /**< LIO_GRP_A_IPI_FROM_LIOGRPA_I3C1_PERIPH_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpAIpiFromLiogrpaI3c1ChipRstReq = 224, /**< LIO_GRP_A_IPI_FROM_LIOGRPA_I3C1_CHIP_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpAIpiFromLiogrpaI3c2PeriphRstReq = 225, /**< LIO_GRP_A_IPI_FROM_LIOGRPA_I3C2_PERIPH_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpAIpiFromLiogrpaI3c2ChipRstReq = 226, /**< LIO_GRP_A_IPI_FROM_LIOGRPA_I3C2_CHIP_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpBIpiFromLiogrpbI3c0PeriphRstReq = 227, /**< LIO_GRP_B_IPI_FROM_LIOGRPB_I3C0_PERIPH_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpBIpiFromLiogrpbI3c0ChipRstReq = 228, /**< LIO_GRP_B_IPI_FROM_LIOGRPB_I3C0_CHIP_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpBIpiFromLiogrpbI3c1PeriphRstReq = 229, /**< LIO_GRP_B_IPI_FROM_LIOGRPB_I3C1_PERIPH_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpBIpiFromLiogrpbI3c1ChipRstReq = 230, /**< LIO_GRP_B_IPI_FROM_LIOGRPB_I3C1_CHIP_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpBIpiFromLiogrpbI3c2PeriphRstReq = 231, /**< LIO_GRP_B_IPI_FROM_LIOGRPB_I3C2_PERIPH_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpBIpiFromLiogrpbI3c2ChipRstReq = 232, /**< LIO_GRP_B_IPI_FROM_LIOGRPB_I3C2_CHIP_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpCIpiFromLiogrpcI3c0PeriphRstReq = 233, /**< LIO_GRP_C_IPI_FROM_LIOGRPC_I3C0_PERIPH_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpCIpiFromLiogrpcI3c0ChipRstReq = 234, /**< LIO_GRP_C_IPI_FROM_LIOGRPC_I3C0_CHIP_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpCIpiFromLiogrpcI3c1PeriphRstReq = 235, /**< LIO_GRP_C_IPI_FROM_LIOGRPC_I3C1_PERIPH_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpCIpiFromLiogrpcI3c1ChipRstReq = 236, /**< LIO_GRP_C_IPI_FROM_LIOGRPC_I3C1_CHIP_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpCIpiFromLiogrpcI3c2PeriphRstReq = 237, /**< LIO_GRP_C_IPI_FROM_LIOGRPC_I3C2_PERIPH_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpCIpiFromLiogrpcI3c2ChipRstReq = 238, /**< LIO_GRP_C_IPI_FROM_LIOGRPC_I3C2_CHIP_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c0PeriphRstReq = 239, /**< LIO_GRP_D_IPI_FROM_LIOGRPD_I3C0_PERIPH_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c0ChipRstReq = 240, /**< LIO_GRP_D_IPI_FROM_LIOGRPD_I3C0_CHIP_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c1PeriphRstReq = 241, /**< LIO_GRP_D_IPI_FROM_LIOGRPD_I3C1_PERIPH_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c1ChipRstReq = 242, /**< LIO_GRP_D_IPI_FROM_LIOGRPD_I3C1_CHIP_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c2PeriphRstReq = 243, /**< LIO_GRP_D_IPI_FROM_LIOGRPD_I3C2_PERIPH_RST_REQ */
+  kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c2ChipRstReq = 244, /**< LIO_GRP_D_IPI_FROM_LIOGRPD_I3C2_CHIP_RST_REQ */
+  kTopPwcPlicIrqIdLast = 244, /**< \internal The Last Valid Interrupt ID. */
 } top_pwc_plic_irq_id_t;
 
 /**
@@ -727,7 +751,7 @@ typedef enum top_pwc_plic_irq_id {
  * `top_pwc_plic_peripheral_t`.
  */
 extern const top_pwc_plic_peripheral_t
-    top_pwc_plic_interrupt_for_peripheral[221];
+    top_pwc_plic_interrupt_for_peripheral[245];
 
 /**
  * PLIC Interrupt Target.

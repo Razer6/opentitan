@@ -16,7 +16,7 @@
  * `top_pwc_plic_peripheral_t`.
  */
 const top_pwc_plic_peripheral_t
-    top_pwc_plic_interrupt_for_peripheral[221] = {
+    top_pwc_plic_interrupt_for_peripheral[245] = {
   [kTopPwcPlicIrqIdNone] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdGpioGpio0] = kTopPwcPlicPeripheralGpio,
   [kTopPwcPlicIrqIdGpioGpio1] = kTopPwcPlicPeripheralGpio,
@@ -238,4 +238,28 @@ const top_pwc_plic_peripheral_t
   [kTopPwcPlicIrqIdPwcHdrIpiFromRot] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcHdrIpiFromMio] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcHdrIpiFromDuc] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpAIpiFromLiogrpaI3c0PeriphRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpAIpiFromLiogrpaI3c0ChipRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpAIpiFromLiogrpaI3c1PeriphRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpAIpiFromLiogrpaI3c1ChipRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpAIpiFromLiogrpaI3c2PeriphRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpAIpiFromLiogrpaI3c2ChipRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpBIpiFromLiogrpbI3c0PeriphRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpBIpiFromLiogrpbI3c0ChipRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpBIpiFromLiogrpbI3c1PeriphRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpBIpiFromLiogrpbI3c1ChipRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpBIpiFromLiogrpbI3c2PeriphRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpBIpiFromLiogrpbI3c2ChipRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpCIpiFromLiogrpcI3c0PeriphRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpCIpiFromLiogrpcI3c0ChipRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpCIpiFromLiogrpcI3c1PeriphRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpCIpiFromLiogrpcI3c1ChipRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpCIpiFromLiogrpcI3c2PeriphRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpCIpiFromLiogrpcI3c2ChipRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c0PeriphRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c0ChipRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c1PeriphRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c1ChipRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c2PeriphRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c2ChipRstReq] = kTopPwcPlicPeripheralUnknown,
 };

@@ -860,6 +860,54 @@ pub enum PlicIrqId {
     PwcHdrIpiFromMio = 219,
     /// PWC_HDR_IPI_FROM_DUC
     PwcHdrIpiFromDuc = 220,
+    /// LIO_GRP_A_IPI_FROM_LIOGRPA_I3C0_PERIPH_RST_REQ
+    LioGrpAIpiFromLiogrpaI3c0PeriphRstReq = 221,
+    /// LIO_GRP_A_IPI_FROM_LIOGRPA_I3C0_CHIP_RST_REQ
+    LioGrpAIpiFromLiogrpaI3c0ChipRstReq = 222,
+    /// LIO_GRP_A_IPI_FROM_LIOGRPA_I3C1_PERIPH_RST_REQ
+    LioGrpAIpiFromLiogrpaI3c1PeriphRstReq = 223,
+    /// LIO_GRP_A_IPI_FROM_LIOGRPA_I3C1_CHIP_RST_REQ
+    LioGrpAIpiFromLiogrpaI3c1ChipRstReq = 224,
+    /// LIO_GRP_A_IPI_FROM_LIOGRPA_I3C2_PERIPH_RST_REQ
+    LioGrpAIpiFromLiogrpaI3c2PeriphRstReq = 225,
+    /// LIO_GRP_A_IPI_FROM_LIOGRPA_I3C2_CHIP_RST_REQ
+    LioGrpAIpiFromLiogrpaI3c2ChipRstReq = 226,
+    /// LIO_GRP_B_IPI_FROM_LIOGRPB_I3C0_PERIPH_RST_REQ
+    LioGrpBIpiFromLiogrpbI3c0PeriphRstReq = 227,
+    /// LIO_GRP_B_IPI_FROM_LIOGRPB_I3C0_CHIP_RST_REQ
+    LioGrpBIpiFromLiogrpbI3c0ChipRstReq = 228,
+    /// LIO_GRP_B_IPI_FROM_LIOGRPB_I3C1_PERIPH_RST_REQ
+    LioGrpBIpiFromLiogrpbI3c1PeriphRstReq = 229,
+    /// LIO_GRP_B_IPI_FROM_LIOGRPB_I3C1_CHIP_RST_REQ
+    LioGrpBIpiFromLiogrpbI3c1ChipRstReq = 230,
+    /// LIO_GRP_B_IPI_FROM_LIOGRPB_I3C2_PERIPH_RST_REQ
+    LioGrpBIpiFromLiogrpbI3c2PeriphRstReq = 231,
+    /// LIO_GRP_B_IPI_FROM_LIOGRPB_I3C2_CHIP_RST_REQ
+    LioGrpBIpiFromLiogrpbI3c2ChipRstReq = 232,
+    /// LIO_GRP_C_IPI_FROM_LIOGRPC_I3C0_PERIPH_RST_REQ
+    LioGrpCIpiFromLiogrpcI3c0PeriphRstReq = 233,
+    /// LIO_GRP_C_IPI_FROM_LIOGRPC_I3C0_CHIP_RST_REQ
+    LioGrpCIpiFromLiogrpcI3c0ChipRstReq = 234,
+    /// LIO_GRP_C_IPI_FROM_LIOGRPC_I3C1_PERIPH_RST_REQ
+    LioGrpCIpiFromLiogrpcI3c1PeriphRstReq = 235,
+    /// LIO_GRP_C_IPI_FROM_LIOGRPC_I3C1_CHIP_RST_REQ
+    LioGrpCIpiFromLiogrpcI3c1ChipRstReq = 236,
+    /// LIO_GRP_C_IPI_FROM_LIOGRPC_I3C2_PERIPH_RST_REQ
+    LioGrpCIpiFromLiogrpcI3c2PeriphRstReq = 237,
+    /// LIO_GRP_C_IPI_FROM_LIOGRPC_I3C2_CHIP_RST_REQ
+    LioGrpCIpiFromLiogrpcI3c2ChipRstReq = 238,
+    /// LIO_GRP_D_IPI_FROM_LIOGRPD_I3C0_PERIPH_RST_REQ
+    LioGrpDIpiFromLiogrpdI3c0PeriphRstReq = 239,
+    /// LIO_GRP_D_IPI_FROM_LIOGRPD_I3C0_CHIP_RST_REQ
+    LioGrpDIpiFromLiogrpdI3c0ChipRstReq = 240,
+    /// LIO_GRP_D_IPI_FROM_LIOGRPD_I3C1_PERIPH_RST_REQ
+    LioGrpDIpiFromLiogrpdI3c1PeriphRstReq = 241,
+    /// LIO_GRP_D_IPI_FROM_LIOGRPD_I3C1_CHIP_RST_REQ
+    LioGrpDIpiFromLiogrpdI3c1ChipRstReq = 242,
+    /// LIO_GRP_D_IPI_FROM_LIOGRPD_I3C2_PERIPH_RST_REQ
+    LioGrpDIpiFromLiogrpdI3c2PeriphRstReq = 243,
+    /// LIO_GRP_D_IPI_FROM_LIOGRPD_I3C2_CHIP_RST_REQ
+    LioGrpDIpiFromLiogrpdI3c2ChipRstReq = 244,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -1087,6 +1135,30 @@ impl TryFrom<u32> for PlicIrqId {
             218 => Ok(Self::PwcHdrIpiFromRot),
             219 => Ok(Self::PwcHdrIpiFromMio),
             220 => Ok(Self::PwcHdrIpiFromDuc),
+            221 => Ok(Self::LioGrpAIpiFromLiogrpaI3c0PeriphRstReq),
+            222 => Ok(Self::LioGrpAIpiFromLiogrpaI3c0ChipRstReq),
+            223 => Ok(Self::LioGrpAIpiFromLiogrpaI3c1PeriphRstReq),
+            224 => Ok(Self::LioGrpAIpiFromLiogrpaI3c1ChipRstReq),
+            225 => Ok(Self::LioGrpAIpiFromLiogrpaI3c2PeriphRstReq),
+            226 => Ok(Self::LioGrpAIpiFromLiogrpaI3c2ChipRstReq),
+            227 => Ok(Self::LioGrpBIpiFromLiogrpbI3c0PeriphRstReq),
+            228 => Ok(Self::LioGrpBIpiFromLiogrpbI3c0ChipRstReq),
+            229 => Ok(Self::LioGrpBIpiFromLiogrpbI3c1PeriphRstReq),
+            230 => Ok(Self::LioGrpBIpiFromLiogrpbI3c1ChipRstReq),
+            231 => Ok(Self::LioGrpBIpiFromLiogrpbI3c2PeriphRstReq),
+            232 => Ok(Self::LioGrpBIpiFromLiogrpbI3c2ChipRstReq),
+            233 => Ok(Self::LioGrpCIpiFromLiogrpcI3c0PeriphRstReq),
+            234 => Ok(Self::LioGrpCIpiFromLiogrpcI3c0ChipRstReq),
+            235 => Ok(Self::LioGrpCIpiFromLiogrpcI3c1PeriphRstReq),
+            236 => Ok(Self::LioGrpCIpiFromLiogrpcI3c1ChipRstReq),
+            237 => Ok(Self::LioGrpCIpiFromLiogrpcI3c2PeriphRstReq),
+            238 => Ok(Self::LioGrpCIpiFromLiogrpcI3c2ChipRstReq),
+            239 => Ok(Self::LioGrpDIpiFromLiogrpdI3c0PeriphRstReq),
+            240 => Ok(Self::LioGrpDIpiFromLiogrpdI3c0ChipRstReq),
+            241 => Ok(Self::LioGrpDIpiFromLiogrpdI3c1PeriphRstReq),
+            242 => Ok(Self::LioGrpDIpiFromLiogrpdI3c1ChipRstReq),
+            243 => Ok(Self::LioGrpDIpiFromLiogrpdI3c2PeriphRstReq),
+            244 => Ok(Self::LioGrpDIpiFromLiogrpdI3c2ChipRstReq),
             _ => Err(val),
         }
     }
@@ -1107,7 +1179,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 221] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 245] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // GpioGpio0 -> PlicPeripheral::Gpio
@@ -1549,6 +1621,54 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 221] = [
     // PwcHdrIpiFromMio -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // PwcHdrIpiFromDuc -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpAIpiFromLiogrpaI3c0PeriphRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpAIpiFromLiogrpaI3c0ChipRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpAIpiFromLiogrpaI3c1PeriphRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpAIpiFromLiogrpaI3c1ChipRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpAIpiFromLiogrpaI3c2PeriphRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpAIpiFromLiogrpaI3c2ChipRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpBIpiFromLiogrpbI3c0PeriphRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpBIpiFromLiogrpbI3c0ChipRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpBIpiFromLiogrpbI3c1PeriphRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpBIpiFromLiogrpbI3c1ChipRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpBIpiFromLiogrpbI3c2PeriphRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpBIpiFromLiogrpbI3c2ChipRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpCIpiFromLiogrpcI3c0PeriphRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpCIpiFromLiogrpcI3c0ChipRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpCIpiFromLiogrpcI3c1PeriphRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpCIpiFromLiogrpcI3c1ChipRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpCIpiFromLiogrpcI3c2PeriphRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpCIpiFromLiogrpcI3c2ChipRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpDIpiFromLiogrpdI3c0PeriphRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpDIpiFromLiogrpdI3c0ChipRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpDIpiFromLiogrpdI3c1PeriphRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpDIpiFromLiogrpdI3c1ChipRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpDIpiFromLiogrpdI3c2PeriphRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpDIpiFromLiogrpdI3c2ChipRstReq -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
 ];
 
