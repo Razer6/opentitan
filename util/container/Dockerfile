@@ -137,15 +137,6 @@ ENV LANGUAGE en_US:en
 COPY util/container/start.sh /start.sh
 COPY util/container/sudoconf /etc/sudoers.d/dev
 
-# Add the development user (UID/GID to be replaced).
-RUN groupadd dev \
-    && useradd --create-home -g dev dev \
-    && usermod -p '*' dev \
-    && passwd -u dev
-
-# All subsequent steps are performed as user.
-USER dev:dev
-
 # Install Python plus packages.
 #
 # Explicitly updating pip and setuptools is required to have these tools
@@ -153,14 +144,12 @@ USER dev:dev
 # specify that an older version of a package must be used for a certain
 # Python version. If that information is not read, pip installs the latest
 # version, which then fails to run.
-ENV PATH "/home/dev/.local/bin:${PATH}"
-COPY --chown=dev:dev python-requirements.txt /tmp/python-requirements.txt
+ENV PATH "/root/.local/bin:${PATH}"
+COPY python-requirements.txt /tmp/python-requirements.txt
 RUN python3 -m pip install --user -U pip "setuptools<66.0.0" \
     && python3 -m pip install --user -r /tmp/python-requirements.txt \
         --no-warn-script-location \
     && rm -f /tmp/python-requirements.txt
-
-USER root:root
 
 # Install bazel using bazelisk.
 RUN BAZELISK_PATH="/usr/local/bin/bazelisk"; \
@@ -169,6 +158,6 @@ RUN BAZELISK_PATH="/usr/local/bin/bazelisk"; \
     chmod +x ${BAZELISK_PATH} && \
     ln -s ${BAZELISK_PATH} /usr/local/bin/bazel
 
-RUN runuser dev -c "bazel > /dev/null"
+RUN bazel > /dev/null
 
-ENTRYPOINT [ "/start.sh" ]
+ENTRYPOINT [ "/bin/bash" ]
