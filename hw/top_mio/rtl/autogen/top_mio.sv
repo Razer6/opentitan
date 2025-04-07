@@ -24,7 +24,6 @@ module top_mio #(
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlRetAonFlopRamOutput = 1,
   parameter bit SramCtrlRetAonEccCorrection = 1,
-  parameter int SramCtrlRetAonRaclPolicySelRangesRamNum = 1,
   // parameters for rv_dm
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
   parameter bit RvDmUseDmiInterface = 1,
@@ -38,7 +37,6 @@ module top_mio #(
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMainFlopRamOutput = 1,
   parameter bit SramCtrlMainEccCorrection = 1,
-  parameter int SramCtrlMainRaclPolicySelRangesRamNum = 1,
   // parameters for sram_ctrl_mbox
   parameter int SramCtrlMboxInstSize = 4096,
   parameter int SramCtrlMboxNumRamInst = 1,
@@ -46,7 +44,6 @@ module top_mio #(
   parameter int SramCtrlMboxNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMboxFlopRamOutput = 1,
   parameter bit SramCtrlMboxEccCorrection = 1,
-  parameter int SramCtrlMboxRaclPolicySelRangesRamNum = 1,
   // parameters for dma
   parameter bit DmaEnableDataIntgGen = 1'b1,
   parameter bit DmaEnableRspDataIntgCheck = 1'b1,
@@ -365,7 +362,7 @@ module top_mio #(
       // External alert group "mio" [0]: fatal_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[0:0] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[0:0] ),
-
+  
       // Inter-module signals
       .racl_policies_i(racl_ctrl_racl_policies),
       .racl_error_o(racl_ctrl_racl_error[0]),
@@ -389,7 +386,7 @@ module top_mio #(
       // External alert group "mio" [1]: fatal_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[1:1] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[1:1] ),
-
+  
       // Inter-module signals
       .nmi_wdog_timer_bark_o(aon_timer_aon_nmi_wdog_timer_bark),
       .wkup_req_o(),
@@ -408,7 +405,7 @@ module top_mio #(
       .rst_aon_ni (rst_ext_rst_aon_i)
   );
   mio_soc_proxy u_mio_soc_proxy (
-
+  
       // Inter-module signals
       .lc_escalate_en_o(mio_soc_proxy_lc_escalate_en),
       .lc_escalate_en_ext_i(lc_escalate_en_ext_i),
@@ -449,12 +446,12 @@ module top_mio #(
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .Outstanding(SramCtrlRetAonOutstanding),
-    .EccCorrection(SramCtrlRetAonEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlRetAonRaclPolicySelRangesRamNum)
+    .EccCorrection(SramCtrlRetAonEccCorrection)
   ) u_sram_ctrl_ret_aon (
       // External alert group "mio" [2]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[2:2] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[2:2] ),
+        .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
 
       // Inter-module signals
       .sram_otp_key_o(),
@@ -466,7 +463,6 @@ module top_mio #(
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
       .racl_policies_i(racl_ctrl_racl_policies),
       .racl_error_o(racl_ctrl_racl_error[2]),
-      .racl_policy_sel_ranges_ram_i({SramCtrlRetAonRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_ret_aon_regs_tl_req),
       .regs_tl_o(sram_ctrl_ret_aon_regs_tl_rsp),
@@ -492,7 +488,7 @@ module top_mio #(
       // External alert group "mio" [3]: fatal_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[3:3] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[3:3] ),
-
+  
       // Inter-module signals
       .next_dm_addr_i(rv_dm_next_dm_addr_i),
       .jtag_i(jtag_pkg::JTAG_REQ_DEFAULT),
@@ -537,7 +533,7 @@ module top_mio #(
       // External alert group "mio" [4]: fatal_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[4:4] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[4:4] ),
-
+  
       // Inter-module signals
       .irq_o(rv_plic_mio_irq),
       .irq_id_o(),
@@ -568,12 +564,12 @@ module top_mio #(
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .Outstanding(SramCtrlMainOutstanding),
-    .EccCorrection(SramCtrlMainEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlMainRaclPolicySelRangesRamNum)
+    .EccCorrection(SramCtrlMainEccCorrection)
   ) u_sram_ctrl_main (
       // External alert group "mio" [5]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[5:5] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[5:5] ),
+        .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
 
       // Inter-module signals
       .sram_otp_key_o(),
@@ -585,7 +581,6 @@ module top_mio #(
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
       .racl_policies_i(racl_ctrl_racl_policies),
       .racl_error_o(racl_ctrl_racl_error[5]),
-      .racl_policy_sel_ranges_ram_i({SramCtrlMainRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_main_regs_tl_req),
       .regs_tl_o(sram_ctrl_main_regs_tl_rsp),
@@ -614,12 +609,12 @@ module top_mio #(
     .NumPrinceRoundsHalf(SramCtrlMboxNumPrinceRoundsHalf),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
     .Outstanding(SramCtrlMboxOutstanding),
-    .EccCorrection(SramCtrlMboxEccCorrection),
-    .RaclPolicySelRangesRamNum(SramCtrlMboxRaclPolicySelRangesRamNum)
+    .EccCorrection(SramCtrlMboxEccCorrection)
   ) u_sram_ctrl_mbox (
       // External alert group "mio" [6]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[6:6] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[6:6] ),
+        .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
 
       // Inter-module signals
       .sram_otp_key_o(),
@@ -631,7 +626,6 @@ module top_mio #(
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
       .racl_policies_i(racl_ctrl_racl_policies),
       .racl_error_o(racl_ctrl_racl_error[6]),
-      .racl_policy_sel_ranges_ram_i({SramCtrlMboxRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_mbox_regs_tl_req),
       .regs_tl_o(sram_ctrl_mbox_regs_tl_rsp),
@@ -663,7 +657,7 @@ module top_mio #(
       // External alert group "mio" [7]: fatal_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[7:7] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[7:7] ),
-
+  
       // Inter-module signals
       .lsio_trigger_i(dma_lsio_trigger),
       .sys_o(dma_sys_req_o),
@@ -700,7 +694,7 @@ module top_mio #(
       // External alert group "mio" [9]: recov_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[9:8] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[9:8] ),
-
+  
       // Inter-module signals
       .doe_intr_support_o(),
       .doe_intr_en_o(),
@@ -737,7 +731,7 @@ module top_mio #(
       // External alert group "mio" [11]: recov_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[11:10] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[11:10] ),
-
+  
       // Inter-module signals
       .doe_intr_support_o(),
       .doe_intr_en_o(),
@@ -774,7 +768,7 @@ module top_mio #(
       // External alert group "mio" [13]: recov_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[13:12] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[13:12] ),
-
+  
       // Inter-module signals
       .doe_intr_support_o(),
       .doe_intr_en_o(),
@@ -811,7 +805,7 @@ module top_mio #(
       // External alert group "mio" [15]: recov_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[15:14] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[15:14] ),
-
+  
       // Inter-module signals
       .doe_intr_support_o(),
       .doe_intr_en_o(),
@@ -848,7 +842,7 @@ module top_mio #(
       // External alert group "mio" [17]: recov_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[17:16] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[17:16] ),
-
+  
       // Inter-module signals
       .doe_intr_support_o(),
       .doe_intr_en_o(),
@@ -885,7 +879,7 @@ module top_mio #(
       // External alert group "mio" [19]: recov_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[19:18] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[19:18] ),
-
+  
       // Inter-module signals
       .doe_intr_support_o(),
       .doe_intr_en_o(),
@@ -922,7 +916,7 @@ module top_mio #(
       // External alert group "mio" [21]: recov_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[21:20] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[21:20] ),
-
+  
       // Inter-module signals
       .doe_intr_support_o(),
       .doe_intr_en_o(),
@@ -955,7 +949,7 @@ module top_mio #(
       // External alert group "mio" [23]: recov_ctrl_update_err
       .alert_tx_o  ( outgoing_alert_mio_tx_o[23:22] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[23:22] ),
-
+  
       // Inter-module signals
       .racl_policies_o(racl_ctrl_racl_policies),
       .racl_error_i(racl_ctrl_racl_error),
@@ -982,7 +976,7 @@ module top_mio #(
       // External alert group "mio" [25]: fatal_fault
       .alert_tx_o  ( outgoing_alert_mio_tx_o[25:24] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[25:24] ),
-
+  
       // Inter-module signals
       .range_check_overwrite_i(ac_range_check_overwrite_i),
       .ctn_tl_h2d_i(mio_soc_proxy_muxed_tl_h2d),
@@ -1046,7 +1040,7 @@ module top_mio #(
       // External alert group "mio" [29]: recov_hw_err
       .alert_tx_o  ( outgoing_alert_mio_tx_o[29:26] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[29:26] ),
-
+  
       // Inter-module signals
       .rst_cpu_n_o(),
       .ram_cfg_icache_tag_i(prim_ram_1p_pkg::RAM_1P_CFG_DEFAULT),
