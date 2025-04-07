@@ -42,8 +42,8 @@
     }
     // IDX 5
     {
-      name: IPI_FROM_PWC
-      module_name: MIO_HDR
+      name: IBEX_IRQ
+      module_name: LIO_GRP_A
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
@@ -51,20 +51,12 @@
     // IDX 6
     {
       name: IBEX_IRQ
-      module_name: LIO_GRP_A
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-    }
-    // IDX 7
-    {
-      name: IBEX_IRQ
       module_name: LIO_GRP_B
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
     }
-    // IDX 8
+    // IDX 7
     {
       name: IBEX_IRQ
       module_name: LIO_GRP_C
