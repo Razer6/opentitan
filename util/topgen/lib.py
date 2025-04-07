@@ -1277,6 +1277,10 @@ class TopGen:
                         name = Name.from_snake_case(name_prefix) + name
                         alert_module = f'{name_prefix}_{alert_module}'
 
+                    # Uniquify the alert name
+                    if alert['module_name'] not in alert['name']:
+                        name = name + Name.from_snake_case(alert['module_name'])
+
                     alert_id = alerts.add_constant(
                         name, docstring=name.as_snake_case())
                     source_name_key = ('external'
@@ -1290,6 +1294,10 @@ class TopGen:
                 if name_prefix:
                     name = Name.from_snake_case(name_prefix) + name
                     alert_module = f'{name_prefix}_{alert_module}'
+
+                # Uniquify the alert name
+                if alert['module_name'] not in alert['name']:
+                    name = name + Name.from_snake_case(alert['module_name'])
 
                 alert_id = alerts.add_constant(name,
                                                docstring=name.as_snake_case())
