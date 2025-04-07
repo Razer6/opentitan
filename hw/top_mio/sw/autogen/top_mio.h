@@ -512,11 +512,10 @@ typedef enum top_mio_plic_irq_id {
   kTopMioPlicIrqIdMioHdrIpiFromMio2 = 32, /**< MIO_HDR_IPI_FROM_MIO_2 */
   kTopMioPlicIrqIdMioHdrIpiFromPwc = 33, /**< MIO_HDR_IPI_FROM_PWC */
   kTopMioPlicIrqIdMioHdrIpiFromRot = 34, /**< MIO_HDR_IPI_FROM_ROT */
-  kTopMioPlicIrqIdMioHdrIpiFromPwc = 35, /**< MIO_HDR_IPI_FROM_PWC */
-  kTopMioPlicIrqIdLioGrpAIbexIrq = 36, /**< LIO_GRP_A_IBEX_IRQ */
-  kTopMioPlicIrqIdLioGrpBIbexIrq = 37, /**< LIO_GRP_B_IBEX_IRQ */
-  kTopMioPlicIrqIdLioGrpCIbexIrq = 38, /**< LIO_GRP_C_IBEX_IRQ */
-  kTopMioPlicIrqIdLast = 38, /**< \internal The Last Valid Interrupt ID. */
+  kTopMioPlicIrqIdLioGrpAIbexIrq = 35, /**< LIO_GRP_A_IBEX_IRQ */
+  kTopMioPlicIrqIdLioGrpBIbexIrq = 36, /**< LIO_GRP_B_IBEX_IRQ */
+  kTopMioPlicIrqIdLioGrpCIbexIrq = 37, /**< LIO_GRP_C_IBEX_IRQ */
+  kTopMioPlicIrqIdLast = 37, /**< \internal The Last Valid Interrupt ID. */
 } top_mio_plic_irq_id_t;
 
 /**

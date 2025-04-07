@@ -471,14 +471,12 @@ pub enum PlicIrqId {
     MioHdrIpiFromPwc = 33,
     /// MIO_HDR_IPI_FROM_ROT
     MioHdrIpiFromRot = 34,
-    /// MIO_HDR_IPI_FROM_PWC
-    MioHdrIpiFromPwc = 35,
     /// LIO_GRP_A_IBEX_IRQ
-    LioGrpAIbexIrq = 36,
+    LioGrpAIbexIrq = 35,
     /// LIO_GRP_B_IBEX_IRQ
-    LioGrpBIbexIrq = 37,
+    LioGrpBIbexIrq = 36,
     /// LIO_GRP_C_IBEX_IRQ
-    LioGrpCIbexIrq = 38,
+    LioGrpCIbexIrq = 37,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -520,10 +518,9 @@ impl TryFrom<u32> for PlicIrqId {
             32 => Ok(Self::MioHdrIpiFromMio2),
             33 => Ok(Self::MioHdrIpiFromPwc),
             34 => Ok(Self::MioHdrIpiFromRot),
-            35 => Ok(Self::MioHdrIpiFromPwc),
-            36 => Ok(Self::LioGrpAIbexIrq),
-            37 => Ok(Self::LioGrpBIbexIrq),
-            38 => Ok(Self::LioGrpCIbexIrq),
+            35 => Ok(Self::LioGrpAIbexIrq),
+            36 => Ok(Self::LioGrpBIbexIrq),
+            37 => Ok(Self::LioGrpCIbexIrq),
             _ => Err(val),
         }
     }

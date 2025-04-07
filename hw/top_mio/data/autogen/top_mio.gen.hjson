@@ -7034,13 +7034,6 @@
         default_val: false
       }
       {
-        name: IPI_FROM_PWC
-        module_name: MIO_HDR
-        type: interrupt
-        intr_type: IntrType.Event
-        default_val: false
-      }
-      {
         name: IBEX_IRQ
         module_name: LIO_GRP_A
         type: interrupt
@@ -9598,16 +9591,6 @@
       intr_type: IntrType.Event
       default_val: false
       desc: MIO_HDR IPI_FROM_ROT incoming interrupt
-      incoming: true
-      width: 1
-    }
-    {
-      name: MIO_HDR_IPI_FROM_PWC
-      module_name: MIO_HDR
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      desc: MIO_HDR IPI_FROM_PWC incoming interrupt
       incoming: true
       width: 1
     }

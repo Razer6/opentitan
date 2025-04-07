@@ -133,7 +133,7 @@ module top_mio #(
   input  prim_mubi_pkg::mubi8_t       ac_range_check_overwrite_i,
 
   // Incoming interrupt of group mio_external
-  input logic [8:0] incoming_interrupt_mio_external_i,
+  input logic [7:0] incoming_interrupt_mio_external_i,
 
   // All externally supplied clocks
 
@@ -185,7 +185,7 @@ module top_mio #(
   // Signals
 
 
-  logic [38:0]  intr_vector;
+  logic [37:0]  intr_vector;
   // Interrupt source list
   logic intr_rv_timer_timer_expired_hart0_timer0;
   logic intr_aon_timer_aon_wkup_timer_expired;
@@ -1047,7 +1047,7 @@ module top_mio #(
   );
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_mio_external_i, // IDs [30 +: 9]
+      incoming_interrupt_mio_external_i, // IDs [30 +: 8]
       intr_ac_range_check_deny_cnt_reached, // IDs [29 +: 1]
       intr_racl_ctrl_racl_error, // IDs [28 +: 1]
       intr_mbx_pcie0_mbx_error, // IDs [27 +: 1]
