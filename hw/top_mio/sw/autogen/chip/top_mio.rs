@@ -467,16 +467,18 @@ pub enum PlicIrqId {
     MioHdrIpiFromMio1 = 31,
     /// MIO_HDR_IPI_FROM_MIO_2
     MioHdrIpiFromMio2 = 32,
-    /// MIO_HDR_IPI_FROM_PWC
-    MioHdrIpiFromPwc = 33,
     /// MIO_HDR_IPI_FROM_ROT
-    MioHdrIpiFromRot = 34,
+    MioHdrIpiFromRot = 33,
+    /// MIO_HDR_IPI_FROM_PWC
+    MioHdrIpiFromPwc = 34,
+    /// MIO_HDR_IPI_FROM_DUC
+    MioHdrIpiFromDuc = 35,
     /// LIO_GRP_A_IBEX_IRQ
-    LioGrpAIbexIrq = 35,
+    LioGrpAIbexIrq = 36,
     /// LIO_GRP_B_IBEX_IRQ
-    LioGrpBIbexIrq = 36,
+    LioGrpBIbexIrq = 37,
     /// LIO_GRP_C_IBEX_IRQ
-    LioGrpCIbexIrq = 37,
+    LioGrpCIbexIrq = 38,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -516,11 +518,12 @@ impl TryFrom<u32> for PlicIrqId {
             30 => Ok(Self::MioHdrIpiFromMio0),
             31 => Ok(Self::MioHdrIpiFromMio1),
             32 => Ok(Self::MioHdrIpiFromMio2),
-            33 => Ok(Self::MioHdrIpiFromPwc),
-            34 => Ok(Self::MioHdrIpiFromRot),
-            35 => Ok(Self::LioGrpAIbexIrq),
-            36 => Ok(Self::LioGrpBIbexIrq),
-            37 => Ok(Self::LioGrpCIbexIrq),
+            33 => Ok(Self::MioHdrIpiFromRot),
+            34 => Ok(Self::MioHdrIpiFromPwc),
+            35 => Ok(Self::MioHdrIpiFromDuc),
+            36 => Ok(Self::LioGrpAIbexIrq),
+            37 => Ok(Self::LioGrpBIbexIrq),
+            38 => Ok(Self::LioGrpCIbexIrq),
             _ => Err(val),
         }
     }
@@ -541,7 +544,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 38] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 39] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // RvTimerTimerExpiredHart0Timer0 -> PlicPeripheral::RvTimer
@@ -608,9 +611,11 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 38] = [
     PlicPeripheral::Unknown,
     // MioHdrIpiFromMio2 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
+    // MioHdrIpiFromRot -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
     // MioHdrIpiFromPwc -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
-    // MioHdrIpiFromRot -> PlicPeripheral::Unknown
+    // MioHdrIpiFromDuc -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // LioGrpAIbexIrq -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,

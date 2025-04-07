@@ -510,12 +510,13 @@ typedef enum top_mio_plic_irq_id {
   kTopMioPlicIrqIdMioHdrIpiFromMio0 = 30, /**< MIO_HDR_IPI_FROM_MIO_0 */
   kTopMioPlicIrqIdMioHdrIpiFromMio1 = 31, /**< MIO_HDR_IPI_FROM_MIO_1 */
   kTopMioPlicIrqIdMioHdrIpiFromMio2 = 32, /**< MIO_HDR_IPI_FROM_MIO_2 */
-  kTopMioPlicIrqIdMioHdrIpiFromPwc = 33, /**< MIO_HDR_IPI_FROM_PWC */
-  kTopMioPlicIrqIdMioHdrIpiFromRot = 34, /**< MIO_HDR_IPI_FROM_ROT */
-  kTopMioPlicIrqIdLioGrpAIbexIrq = 35, /**< LIO_GRP_A_IBEX_IRQ */
-  kTopMioPlicIrqIdLioGrpBIbexIrq = 36, /**< LIO_GRP_B_IBEX_IRQ */
-  kTopMioPlicIrqIdLioGrpCIbexIrq = 37, /**< LIO_GRP_C_IBEX_IRQ */
-  kTopMioPlicIrqIdLast = 37, /**< \internal The Last Valid Interrupt ID. */
+  kTopMioPlicIrqIdMioHdrIpiFromRot = 33, /**< MIO_HDR_IPI_FROM_ROT */
+  kTopMioPlicIrqIdMioHdrIpiFromPwc = 34, /**< MIO_HDR_IPI_FROM_PWC */
+  kTopMioPlicIrqIdMioHdrIpiFromDuc = 35, /**< MIO_HDR_IPI_FROM_DUC */
+  kTopMioPlicIrqIdLioGrpAIbexIrq = 36, /**< LIO_GRP_A_IBEX_IRQ */
+  kTopMioPlicIrqIdLioGrpBIbexIrq = 37, /**< LIO_GRP_B_IBEX_IRQ */
+  kTopMioPlicIrqIdLioGrpCIbexIrq = 38, /**< LIO_GRP_C_IBEX_IRQ */
+  kTopMioPlicIrqIdLast = 38, /**< \internal The Last Valid Interrupt ID. */
 } top_mio_plic_irq_id_t;
 
 /**
@@ -525,7 +526,7 @@ typedef enum top_mio_plic_irq_id {
  * `top_mio_plic_peripheral_t`.
  */
 extern const top_mio_plic_peripheral_t
-    top_mio_plic_interrupt_for_peripheral[38];
+    top_mio_plic_interrupt_for_peripheral[39];
 
 /**
  * PLIC Interrupt Target.

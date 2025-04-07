@@ -7020,6 +7020,13 @@
         default_val: false
       }
       {
+        name: IPI_FROM_ROT
+        module_name: MIO_HDR
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
         name: IPI_FROM_PWC
         module_name: MIO_HDR
         type: interrupt
@@ -7027,7 +7034,7 @@
         default_val: false
       }
       {
-        name: IPI_FROM_ROT
+        name: IPI_FROM_DUC
         module_name: MIO_HDR
         type: interrupt
         intr_type: IntrType.Event
@@ -9575,6 +9582,16 @@
       width: 1
     }
     {
+      name: MIO_HDR_IPI_FROM_ROT
+      module_name: MIO_HDR
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: MIO_HDR IPI_FROM_ROT incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
       name: MIO_HDR_IPI_FROM_PWC
       module_name: MIO_HDR
       type: interrupt
@@ -9585,12 +9602,12 @@
       width: 1
     }
     {
-      name: MIO_HDR_IPI_FROM_ROT
+      name: MIO_HDR_IPI_FROM_DUC
       module_name: MIO_HDR
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: MIO_HDR IPI_FROM_ROT incoming interrupt
+      desc: MIO_HDR IPI_FROM_DUC incoming interrupt
       incoming: true
       width: 1
     }
