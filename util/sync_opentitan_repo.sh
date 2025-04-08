@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -u
 
 REMOTE_REPO="OT"
 CONTINUE_MODE=false
@@ -58,9 +58,9 @@ echo "OT Sync: Latest remote SHA: $LATEST_REMOTE_SHA"
 if [[ "$LAST_SYNC" != "$LATEST_REMOTE_SHA" ]]; then
     echo "OT Sync: New commits detected. Cherry-picking..."
 
-    if $CONTINUE_MODE; then
+    if $CONTINUE_MODE || git rev-parse --verify CHERRY_PICK_HEAD > /dev/null ; then
         echo "OT Sync: Continuing cherry-pick..."
-        git cherry-pick --allow-empty --continue
+        git cherry-pick --allow-empty --continue --no-edit
         if [ $? -ne 0 ]; then
             echo "OT Sync: Cherry-pick failed."
             echo "OT Sync: Resolve conflict manually."
@@ -88,6 +88,13 @@ if [[ "$LAST_SYNC" != "$LATEST_REMOTE_SHA" ]]; then
     # Create a new commit to update the LAST_SYNC file with a descriptive message
     git commit -s -m "[ot-sync] Update $LAST_SYNC_FILENAME: Synced to $LATEST_REMOTE_SHA" --only "$LAST_SYNC_FILE"
     echo "OT Sync: Created commit to update $LAST_SYNC_FILENAME"
+
+    # Adding Change-Ids to all cherry-picked commits
+    COMMIT_OF_SECOND_TO_LAST_SYNC=$(git log --grep='\[ot-sync\] Update' --pretty=format:"%h" | head -n2 | tail -n1)
+    FIRST_COMMIT_WITH_MISSING_CHANGE_ID=$(git log $COMMIT_OF_SECOND_TO_LAST_SYNC.. --invert-grep --grep='Change-Id: ' --pretty=format:"%h" | tail -n1)
+    echo -n "$FIRST_COMMIT_WITH_MISSING_CHANGE_ID"
+    git rebase -i --exec "git commit --amend --no-edit" $FIRST_COMMIT_WITH_MISSING_CHANGE_ID~
+
 else
     echo "No new commits to cherry-pick."
 fi
