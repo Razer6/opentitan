@@ -48,7 +48,7 @@ module rv_core_ibex
       ibex_pkg::RndCnstIbexNonceDefault,
   parameter int unsigned                    NEscalationSeverities = 4,
   parameter int unsigned                    WidthPingCounter      = 16,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] TlulHostUserRsvdBits  = 0
+  parameter logic [tlul_pkg::RsvdWidth-1:0] TlulHostUserRsvdBits   = 0
 ) (
   // Clock and Reset
   input  logic        clk_i,

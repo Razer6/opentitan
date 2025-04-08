@@ -5,6 +5,7 @@
   instance_name: top_mio_rv_core_ibex_mio
   param_values:
   {
+    racl_support: false
     num_regions: 2
     module_instance_name: rv_core_ibex_mio
     sim_window_address: 1088

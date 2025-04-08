@@ -9642,6 +9642,7 @@
       width: 1
     }
   ]
+  outgoing_interrupt: {}
   alert_module: []
   interrupt_module:
   [
@@ -9682,6 +9683,7 @@
       rv_core_ibex_mio
     ]
   }
+  outgoing_interrupt_module: {}
   alert_lpgs: []
   outgoing_alert_lpgs:
   {
