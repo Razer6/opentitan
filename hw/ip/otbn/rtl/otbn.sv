@@ -338,6 +338,7 @@ module otbn
     .Depth          (ImemSizeWords),
     .InstDepth      (ImemSizeWords),
     .DataBitsPerMask(39),
+    .UseCompiledRam (1),
     .EnableParity   (0)
   ) u_imem (
     .clk_i,
