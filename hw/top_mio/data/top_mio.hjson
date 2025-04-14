@@ -235,6 +235,7 @@
         hart: "0x30000000",
       },
       outgoing_alert: "mio"
+      racl_mapping:  '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
     },
     { name: "aon_timer_aon",
       type: "aon_timer",
@@ -245,6 +246,7 @@
         hart: "0x30470000",
       },
       outgoing_alert: "mio"
+      racl_mapping:  '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
     },
     { name: "mio_soc_proxy",
       type: "mio_soc_proxy",
@@ -302,6 +304,9 @@
         }
       }
       outgoing_alert: "mio"
+      racl_mappings: {
+        regs: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      }
     },
     { name: "rv_dm",
       type: "rv_dm",
@@ -323,10 +328,16 @@
       },
       generate_dif: "False"
       outgoing_alert: "mio"
+      racl_mappings:  {
+        regs: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      }
     },
     { name: "rv_plic_mio",
       type: "rv_plic_mio",
       template_type: "rv_plic",
+      ipgen_param: {
+        racl_support: true
+      }
       clock_srcs: {clk_i: "ext_main"},
       clock_group: "secure",
       reset_connections: {rst_ni: "ext_rst_main"},
@@ -338,6 +349,7 @@
       incoming_interrupt: [
         "mio_external_irq_cfg.hjson"
       ]
+      racl_mapping:  '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
     },
     { name: "sram_ctrl_main",
       type: "sram_ctrl",
@@ -370,6 +382,9 @@
         }
       }
       outgoing_alert: "mio"
+      racl_mappings: {
+        regs: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      }
     },
     { name: "sram_ctrl_mbox",
       type: "sram_ctrl",
@@ -400,6 +415,9 @@
         }
       }
       outgoing_alert: "mio"
+      racl_mappings: {
+        regs: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      }
     },
     { name: "dma",
       type: "dma",
@@ -408,6 +426,7 @@
       reset_connections: {rst_ni: "ext_rst_main"},
       base_addr: {hart: "0x22010000"},
       outgoing_alert: "mio"
+      racl_mapping:  '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
     },
     { name: "mbx0",
       type: "mbx",
@@ -420,6 +439,7 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
+        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
         soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_mio_private_mapping.hjson'
       }
     },
@@ -434,6 +454,7 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
+        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
         soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_mio_private_mapping.hjson'
       }
     },
@@ -448,6 +469,7 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
+        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
         soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_mio_private_mapping.hjson'
       }
     },
@@ -462,6 +484,7 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
+        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
         soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
       }
     },
@@ -476,6 +499,7 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
+        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
         soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_pwc_private_mapping.hjson'
       }
     },
@@ -490,6 +514,7 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
+        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
         soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_duc_private_mapping.hjson'
       }
     },
@@ -504,6 +529,7 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
+        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
         soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_all_rd_wr_mapping.hjson'
       }
     },
@@ -542,6 +568,7 @@
       ipgen_param: {
         NumRegions: 2,
         SimWindowAddress: 0x440
+        racl_support: true
       }
       param_decl: {PMPEnable: "1",
                    PMPGranularity: "0",
@@ -591,6 +618,9 @@
         hart: "0x211f0000",
       },
       outgoing_alert: "mio"
+      racl_mappings: {
+        cfg: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      }
     },
   ]
 
