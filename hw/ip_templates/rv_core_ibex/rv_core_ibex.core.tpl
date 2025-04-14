@@ -21,7 +21,7 @@ filesets:
       - lowrisc:tlul:adapter_host
       - lowrisc:ip:rv_core_ibex_pkg
     % if racl_support:
-      - ${instance_vlnv("lowrisc:constants:top_racl_pkg")}
+      - lowrisc:virtual_constants:top_racl_pkg
     % endif
 
     files:
