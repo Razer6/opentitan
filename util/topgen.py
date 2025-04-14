@@ -405,6 +405,7 @@ def _get_rv_plic_params(top: ConfigT) -> ParamsT:
     num_cores = int(top["num_cores"], 0) if "num_cores" in top else 1
     uniquified_modules.add_module(module["template_type"], module["type"])
     return {
+        "racl_support": module.get("ipgen_param", {}).get("racl_support", False),
         "module_instance_name": module["type"],
         "src": num_srcs,
         "target": num_cores,
@@ -1184,11 +1185,6 @@ def create_ipgen_blocks(topcfg: ConfigT, alias_cfgs: Dict[str, ConfigT],
     if "pwm" in ipgen_instances:
         instance = ipgen_instances["pwm"][0]
         insert_ip_attrs(instance, _get_pwm_params(topcfg))
-    if "racl_config" in topcfg:
-        amend_racl(topcfg, name_to_block, allow_missing_blocks=True)
-        assert "racl_ctrl" in ipgen_instances
-        instance = ipgen_instances["racl_ctrl"][0]
-        insert_ip_attrs(instance, _get_racl_params(topcfg))
     if "clkmgr" in ipgen_instances:
         instance = ipgen_instances["clkmgr"][0]
         insert_ip_attrs(instance, _get_clkmgr_params(topcfg))
@@ -1198,13 +1194,18 @@ def create_ipgen_blocks(topcfg: ConfigT, alias_cfgs: Dict[str, ConfigT],
     if "otp_ctrl" in ipgen_instances:
         instance = ipgen_instances["otp_ctrl"][0]
         insert_ip_attrs(instance, _get_otp_ctrl_params(topcfg, cfg_path))
-    if "ac_range_check" in ipgen_instances:
-        instance = ipgen_instances["ac_range_check"][0]
-        insert_ip_attrs(instance, _get_ac_range_check_params(topcfg))
 
     if "rv_core_ibex" in ipgen_instances:
         instance = ipgen_instances["rv_core_ibex"][0]
         insert_ip_attrs(instance, _get_rv_core_ibex_params(topcfg))
+    if "racl_config" in topcfg:
+        amend_racl(topcfg, name_to_block, allow_missing_blocks=True)
+        assert "racl_ctrl" in ipgen_instances
+        instance = ipgen_instances["racl_ctrl"][0]
+        insert_ip_attrs(instance, _get_racl_params(topcfg))
+    if "ac_range_check" in ipgen_instances:
+        instance = ipgen_instances["ac_range_check"][0]
+        insert_ip_attrs(instance, _get_ac_range_check_params(topcfg))
 
     # Pinmux depends on flash_ctrl and otp_ctrl
     if "pinmux" in ipgen_instances:

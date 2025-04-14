@@ -288,8 +288,9 @@ def gen_md(block: IpBlock,
         if_name = 'null'
 
     assert block.reg_blocks
+    # FIXME: Properly deal with named interfaces and if there more than 1
     if len(block.reg_blocks) == 1:
-        assert not if_name or if_name == '' or if_name == 'null'
+        assert not if_name or if_name == '' or if_name == 'null' or if_name == 'cfg'
         rb = next(iter(block.reg_blocks.values()))
     else:
         rb = block.reg_blocks[if_name]
