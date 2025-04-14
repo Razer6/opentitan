@@ -201,4 +201,8 @@ package top_mio_soc_mbx_pkg;
   };
 
 
+  // Number of mio outgoing interrupts
+  parameter int unsigned NOutgoingInterruptsMio = 1;
+
+
 endpackage

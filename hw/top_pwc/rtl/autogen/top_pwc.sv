@@ -139,6 +139,8 @@ module top_pwc #(
 
   // Incoming interrupt of group pwc_external
   input logic [190:0] incoming_interrupt_pwc_external_i,
+  // Outgoing interrupt of group pwc
+  output logic [top_pwc_pkg::NOutgoingInterruptsPwc-1:0] outgoing_interrupt_pwc_o,
 
   // gpio
   input logic [31:0]                               cio_gpio_gpio_p2d_i,
@@ -211,7 +213,7 @@ module top_pwc #(
   // local parameters for racl_ctrl
   localparam int RaclCtrlNumSubscribingIps = 18;
 
-  logic [252:0]  intr_vector;
+  logic [251:0]  intr_vector;
   // Interrupt source list
   logic [31:0] intr_gpio_gpio;
   logic intr_rv_timer_timer_expired_hart0_timer0;
@@ -241,7 +243,6 @@ module top_pwc #(
   logic intr_mbx_pcie0_mbx_ready;
   logic intr_mbx_pcie0_mbx_abort;
   logic intr_mbx_pcie0_mbx_error;
-  logic intr_racl_ctrl_racl_error;
   logic intr_ac_range_check_deny_cnt_reached;
 
   // define inter-module signals
@@ -1021,7 +1022,8 @@ module top_pwc #(
   ) u_racl_ctrl (
 
       // Interrupt
-      .intr_racl_error_o (intr_racl_ctrl_racl_error),
+      // External interrupt group "pwc" [0:0]: racl_error
+      .intr_racl_error_o (outgoing_interrupt_pwc_o[0:0]),
       // External alert group "pwc" [23]: fatal_fault
       // External alert group "pwc" [24]: recov_ctrl_update_err
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[24:23] ),
@@ -1165,9 +1167,8 @@ module top_pwc #(
   );
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_pwc_external_i, // IDs [62 +: 191]
-      intr_ac_range_check_deny_cnt_reached, // IDs [61 +: 1]
-      intr_racl_ctrl_racl_error, // IDs [60 +: 1]
+      incoming_interrupt_pwc_external_i, // IDs [61 +: 191]
+      intr_ac_range_check_deny_cnt_reached, // IDs [60 +: 1]
       intr_mbx_pcie0_mbx_error, // IDs [59 +: 1]
       intr_mbx_pcie0_mbx_abort, // IDs [58 +: 1]
       intr_mbx_pcie0_mbx_ready, // IDs [57 +: 1]

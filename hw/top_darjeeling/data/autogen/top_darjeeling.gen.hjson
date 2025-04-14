@@ -18581,6 +18581,20 @@
         intr_type: IntrType.Status
         default_val: false
       }
+      {
+        name: RACL_ERROR
+        module_name: PWC
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: RACL_ERROR
+        module_name: MIO
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
     ]
   }
   exported_clks: {}
@@ -22699,6 +22713,26 @@
       intr_type: IntrType.Status
       default_val: false
       desc: LIO_GRP_A RACL_ERROR incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_RACL_ERROR
+      module_name: PWC
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: PWC RACL_ERROR incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: MIO_RACL_ERROR
+      module_name: MIO
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: MIO RACL_ERROR incoming interrupt
       incoming: true
       width: 1
     }

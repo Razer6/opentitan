@@ -1259,7 +1259,9 @@ typedef enum top_darjeeling_plic_irq_id {
   kTopDarjeelingPlicIrqIdLioGrpCRaclError = 179, /**< LIO_GRP_C_RACL_ERROR */
   kTopDarjeelingPlicIrqIdLioGrpBRaclError = 180, /**< LIO_GRP_B_RACL_ERROR */
   kTopDarjeelingPlicIrqIdLioGrpARaclError = 181, /**< LIO_GRP_A_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdLast = 181, /**< \internal The Last Valid Interrupt ID. */
+  kTopDarjeelingPlicIrqIdPwcRaclError = 182, /**< PWC_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdMioRaclError = 183, /**< MIO_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLast = 183, /**< \internal The Last Valid Interrupt ID. */
 } top_darjeeling_plic_irq_id_t;
 
 /**
@@ -1269,7 +1271,7 @@ typedef enum top_darjeeling_plic_irq_id {
  * `top_darjeeling_plic_peripheral_t`.
  */
 extern const top_darjeeling_plic_peripheral_t
-    top_darjeeling_plic_interrupt_for_peripheral[182];
+    top_darjeeling_plic_interrupt_for_peripheral[184];
 
 /**
  * PLIC Interrupt Target.

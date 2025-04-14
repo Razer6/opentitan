@@ -1270,6 +1270,10 @@ pub enum PlicIrqId {
     LioGrpBRaclError = 180,
     /// LIO_GRP_A_RACL_ERROR
     LioGrpARaclError = 181,
+    /// PWC_RACL_ERROR
+    PwcRaclError = 182,
+    /// MIO_RACL_ERROR
+    MioRaclError = 183,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -1458,6 +1462,8 @@ impl TryFrom<u32> for PlicIrqId {
             179 => Ok(Self::LioGrpCRaclError),
             180 => Ok(Self::LioGrpBRaclError),
             181 => Ok(Self::LioGrpARaclError),
+            182 => Ok(Self::PwcRaclError),
+            183 => Ok(Self::MioRaclError),
             _ => Err(val),
         }
     }
@@ -1478,7 +1484,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 182] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 184] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // Uart0TxWatermark -> PlicPeripheral::Uart0
@@ -1842,6 +1848,10 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 182] = [
     // LioGrpBRaclError -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // LioGrpARaclError -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // PwcRaclError -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // MioRaclError -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
 ];
 

@@ -371,4 +371,8 @@ package top_mio_pkg;
   };
 
 
+  // Number of mio outgoing interrupts
+  parameter int unsigned NOutgoingInterruptsMio = 1;
+
+
 endpackage

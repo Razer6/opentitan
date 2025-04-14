@@ -2368,7 +2368,6 @@
             PRIO_249: 0
             PRIO_250: 0
             PRIO_251: 0
-            PRIO_252: 0
             IP_0: 0
             IP_1: 0
             IP_2: 0
@@ -4855,6 +4854,7 @@
       }
       attr: ipgen
       outgoing_alert: pwc
+      outgoing_interrupt: pwc
       clock_connections:
       {
         clk_i: clk_ext_main_i
@@ -11962,16 +11962,6 @@
       incoming: false
     }
     {
-      name: racl_ctrl_racl_error
-      width: 1
-      type: interrupt
-      module_name: racl_ctrl
-      desc: racl_ctrl racl_error interrupt
-      intr_type: IntrType.Status
-      default_val: false
-      incoming: false
-    }
-    {
       name: ac_range_check_deny_cnt_reached
       width: 1
       type: interrupt
@@ -13892,7 +13882,22 @@
       width: 1
     }
   ]
-  outgoing_interrupt: {}
+  outgoing_interrupt:
+  {
+    pwc:
+    [
+      {
+        name: racl_ctrl_racl_error
+        width: 1
+        type: interrupt
+        module_name: racl_ctrl
+        desc: racl_ctrl racl_error interrupt
+        intr_type: IntrType.Status
+        default_val: false
+        incoming: false
+      }
+    ]
+  }
   alert_module: []
   interrupt_module:
   [
@@ -13907,7 +13912,6 @@
     mbx4
     mbx5
     mbx_pcie0
-    racl_ctrl
     ac_range_check
   ]
   outgoing_alert_module:
@@ -13935,7 +13939,13 @@
       rv_core_ibex_pwc
     ]
   }
-  outgoing_interrupt_module: {}
+  outgoing_interrupt_module:
+  {
+    pwc:
+    [
+      racl_ctrl
+    ]
+  }
   alert_lpgs: []
   outgoing_alert_lpgs:
   {

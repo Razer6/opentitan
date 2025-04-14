@@ -57,7 +57,6 @@ NR_IRQ_PERIPH_TESTS = 1
             "//sw/device/lib/dif/autogen:dma",
             "//sw/device/lib/dif/autogen:gpio_pwc",
             "//sw/device/lib/dif/autogen:mbx",
-            "//sw/device/lib/dif/autogen:racl_ctrl_pwc",
             "//sw/device/lib/dif/autogen:rv_plic",
             "//sw/device/lib/dif/autogen:rv_timer",
             "//sw/device/lib/runtime:irq",

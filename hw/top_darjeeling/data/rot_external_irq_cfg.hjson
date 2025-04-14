@@ -184,7 +184,7 @@
       intr_type: IntrType.Status
       default_val: false
     }
-    // IDX 22
+    // IDX 23
     {
       name: RACL_ERROR
       module_name: MIO

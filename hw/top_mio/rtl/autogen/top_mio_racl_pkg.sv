@@ -170,7 +170,7 @@ package top_mio_racl_pkg;
    *   TLUL interface name: None
    *   RACL group: Null
    */
-  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_RV_PLIC_MIO [47] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_RV_PLIC_MIO [46] = '{
     RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  0 PRIO_0     : Policy Idx  0
     RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  1 PRIO_1     : Policy Idx  0
     RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  2 PRIO_2     : Policy Idx  0
@@ -209,15 +209,14 @@ package top_mio_racl_pkg;
     RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 35 PRIO_35    : Policy Idx  0
     RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 36 PRIO_36    : Policy Idx  0
     RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 37 PRIO_37    : Policy Idx  0
-    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 38 PRIO_38    : Policy Idx  0
-    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 39 IP_0       : Policy Idx  0
-    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 40 IP_1       : Policy Idx  0
-    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 41 IE0_0      : Policy Idx  0
-    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 42 IE0_1      : Policy Idx  0
-    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 43 THRESHOLD0 : Policy Idx  0
-    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 44 CC0        : Policy Idx  0
-    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 45 MSIP0      : Policy Idx  0
-    RACL_POLICY_SEL_ROT_PRIVATE_POLICY           // 46 ALERT_TEST : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 38 IP_0       : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 39 IP_1       : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 40 IE0_0      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 41 IE0_1      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 42 THRESHOLD0 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 43 CC0        : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 44 MSIP0      : Policy Idx  0
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY           // 45 ALERT_TEST : Policy Idx  6
   };
 
   /**

@@ -366,10 +366,8 @@ pub enum PlicPeripheral {
     Mbx5 = 9,
     /// mbx_pcie0
     MbxPcie0 = 10,
-    /// racl_ctrl
-    RaclCtrl = 11,
     /// ac_range_check
-    AcRangeCheck = 12,
+    AcRangeCheck = 11,
 }
 
 impl TryFrom<u32> for PlicPeripheral {
@@ -387,8 +385,7 @@ impl TryFrom<u32> for PlicPeripheral {
             8 => Ok(Self::Mbx4),
             9 => Ok(Self::Mbx5),
             10 => Ok(Self::MbxPcie0),
-            11 => Ok(Self::RaclCtrl),
-            12 => Ok(Self::AcRangeCheck),
+            11 => Ok(Self::AcRangeCheck),
             _ => Err(val),
         }
     }
@@ -457,28 +454,26 @@ pub enum PlicIrqId {
     MbxPcie0MbxAbort = 26,
     /// mbx_pcie0_mbx_error
     MbxPcie0MbxError = 27,
-    /// racl_ctrl_racl_error
-    RaclCtrlRaclError = 28,
     /// ac_range_check_deny_cnt_reached
-    AcRangeCheckDenyCntReached = 29,
+    AcRangeCheckDenyCntReached = 28,
     /// MIO_HDR_IPI_FROM_MIO_0
-    MioHdrIpiFromMio0 = 30,
+    MioHdrIpiFromMio0 = 29,
     /// MIO_HDR_IPI_FROM_MIO_1
-    MioHdrIpiFromMio1 = 31,
+    MioHdrIpiFromMio1 = 30,
     /// MIO_HDR_IPI_FROM_MIO_2
-    MioHdrIpiFromMio2 = 32,
+    MioHdrIpiFromMio2 = 31,
     /// MIO_HDR_IPI_FROM_ROT
-    MioHdrIpiFromRot = 33,
+    MioHdrIpiFromRot = 32,
     /// MIO_HDR_IPI_FROM_PWC
-    MioHdrIpiFromPwc = 34,
+    MioHdrIpiFromPwc = 33,
     /// MIO_HDR_IPI_FROM_DUC
-    MioHdrIpiFromDuc = 35,
+    MioHdrIpiFromDuc = 34,
     /// LIO_GRP_A_IBEX_IRQ
-    LioGrpAIbexIrq = 36,
+    LioGrpAIbexIrq = 35,
     /// LIO_GRP_B_IBEX_IRQ
-    LioGrpBIbexIrq = 37,
+    LioGrpBIbexIrq = 36,
     /// LIO_GRP_C_IBEX_IRQ
-    LioGrpCIbexIrq = 38,
+    LioGrpCIbexIrq = 37,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -513,17 +508,16 @@ impl TryFrom<u32> for PlicIrqId {
             25 => Ok(Self::MbxPcie0MbxReady),
             26 => Ok(Self::MbxPcie0MbxAbort),
             27 => Ok(Self::MbxPcie0MbxError),
-            28 => Ok(Self::RaclCtrlRaclError),
-            29 => Ok(Self::AcRangeCheckDenyCntReached),
-            30 => Ok(Self::MioHdrIpiFromMio0),
-            31 => Ok(Self::MioHdrIpiFromMio1),
-            32 => Ok(Self::MioHdrIpiFromMio2),
-            33 => Ok(Self::MioHdrIpiFromRot),
-            34 => Ok(Self::MioHdrIpiFromPwc),
-            35 => Ok(Self::MioHdrIpiFromDuc),
-            36 => Ok(Self::LioGrpAIbexIrq),
-            37 => Ok(Self::LioGrpBIbexIrq),
-            38 => Ok(Self::LioGrpCIbexIrq),
+            28 => Ok(Self::AcRangeCheckDenyCntReached),
+            29 => Ok(Self::MioHdrIpiFromMio0),
+            30 => Ok(Self::MioHdrIpiFromMio1),
+            31 => Ok(Self::MioHdrIpiFromMio2),
+            32 => Ok(Self::MioHdrIpiFromRot),
+            33 => Ok(Self::MioHdrIpiFromPwc),
+            34 => Ok(Self::MioHdrIpiFromDuc),
+            35 => Ok(Self::LioGrpAIbexIrq),
+            36 => Ok(Self::LioGrpBIbexIrq),
+            37 => Ok(Self::LioGrpCIbexIrq),
             _ => Err(val),
         }
     }
@@ -544,7 +538,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 39] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 38] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // RvTimerTimerExpiredHart0Timer0 -> PlicPeripheral::RvTimer
@@ -601,8 +595,6 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 39] = [
     PlicPeripheral::MbxPcie0,
     // MbxPcie0MbxError -> PlicPeripheral::MbxPcie0
     PlicPeripheral::MbxPcie0,
-    // RaclCtrlRaclError -> PlicPeripheral::RaclCtrl
-    PlicPeripheral::RaclCtrl,
     // AcRangeCheckDenyCntReached -> PlicPeripheral::AcRangeCheck
     PlicPeripheral::AcRangeCheck,
     // MioHdrIpiFromMio0 -> PlicPeripheral::Unknown

@@ -124,4 +124,8 @@ package top_pwc_soc_dbg_pkg;
   };
 
 
+  // Number of pwc outgoing interrupts
+  parameter int unsigned NOutgoingInterruptsPwc = 1;
+
+
 endpackage

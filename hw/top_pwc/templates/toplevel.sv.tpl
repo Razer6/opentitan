@@ -191,18 +191,17 @@ module top_${top["name"]} #(
   logic [${interrupt_num-1}:0]  intr_vector;
   // Interrupt source list
 % for m in top["module"]:
-<%
-  block = name_to_block[m['type']]
-%>\
     % if not lib.is_inst(m):
 <% continue %>
     % endif
-    % for intr in block.interrupts:
-        % if intr.bits.width() != 1:
-  logic [${intr.bits.width()-1}:0] intr_${m["name"]}_${intr.name};
+    % for intr in top["interrupt"]:
+      % if intr["module_name"] == m["name"]:
+        % if intr["width"] != 1:
+  logic [${intr["width"]-1}:0] intr_${intr["name"]};
         % else:
-  logic intr_${m["name"]}_${intr.name};
+  logic intr_${intr["name"]};
         % endif
+      % endif
     % endfor
 % endfor
 
