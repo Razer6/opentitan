@@ -562,6 +562,7 @@
       },
       attr: "ipgen"
       outgoing_alert: "pwc"
+      outgoing_interrupt: "pwc"
     },
     { name: "ac_range_check",
       type: "ac_range_check_pwc",

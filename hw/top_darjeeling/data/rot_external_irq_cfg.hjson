@@ -176,5 +176,21 @@
       intr_type: IntrType.Status
       default_val: false
     }
+    // IDX 22
+    {
+      name: RACL_ERROR
+      module_name: PWC
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 22
+    {
+      name: RACL_ERROR
+      module_name: MIO
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
   ]
 }

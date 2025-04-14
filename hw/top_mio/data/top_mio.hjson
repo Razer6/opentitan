@@ -544,6 +544,7 @@
       },
       attr: "ipgen"
       outgoing_alert: "mio"
+      outgoing_interrupt: "mio"
     },
     { name: "ac_range_check",
       type: "ac_range_check_mio",
