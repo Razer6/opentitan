@@ -480,6 +480,8 @@
           act: rcv
           width: 1
           inst_name: gpio
+          default: ""
+          top_signame: racl_ctrl_racl_policies
           index: -1
         }
         {
@@ -491,7 +493,9 @@
           act: req
           width: 1
           inst_name: gpio
-          index: -1
+          default: ""
+          top_signame: racl_ctrl_racl_error
+          index: 0
         }
         {
           name: tl
@@ -515,6 +519,36 @@
         }
       }
       generate_dif: true
+      racl_mappings:
+      {
+        null:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            INTR_STATE: 0
+            INTR_ENABLE: 0
+            INTR_TEST: 0
+            ALERT_TEST: 6
+            DATA_IN: 0
+            DIRECT_OUT: 0
+            MASKED_OUT_LOWER: 0
+            MASKED_OUT_UPPER: 0
+            DIRECT_OE: 0
+            MASKED_OE_LOWER: 0
+            MASKED_OE_UPPER: 0
+            INTR_CTRL_EN_RISING: 0
+            INTR_CTRL_EN_FALLING: 0
+            INTR_CTRL_EN_LVLHIGH: 0
+            INTR_CTRL_EN_LVLLOW: 0
+            CTRL_EN_INPUT_FILTER: 0
+            HW_STRAPS_DATA_IN_VALID: 0
+            HW_STRAPS_DATA_IN: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
+      }
       domain:
       [
         "0"
@@ -558,6 +592,8 @@
           act: rcv
           width: 1
           inst_name: rv_timer
+          default: ""
+          top_signame: racl_ctrl_racl_policies
           index: -1
         }
         {
@@ -569,7 +605,9 @@
           act: req
           width: 1
           inst_name: rv_timer
-          index: -1
+          default: ""
+          top_signame: racl_ctrl_racl_error
+          index: 1
         }
         {
           name: tl
@@ -593,6 +631,28 @@
         }
       }
       generate_dif: true
+      racl_mappings:
+      {
+        null:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            ALERT_TEST: 6
+            CTRL: 0
+            INTR_ENABLE0: 0
+            INTR_STATE0: 0
+            INTR_TEST0: 0
+            CFG0: 0
+            TIMER_V_LOWER0: 0
+            TIMER_V_UPPER0: 0
+            COMPARE_LOWER0_0: 0
+            COMPARE_UPPER0_0: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
+      }
       domain:
       [
         "0"
@@ -702,6 +762,8 @@
           act: rcv
           width: 1
           inst_name: aon_timer_aon
+          default: ""
+          top_signame: racl_ctrl_racl_policies
           index: -1
         }
         {
@@ -713,7 +775,9 @@
           act: req
           width: 1
           inst_name: aon_timer_aon
-          index: -1
+          default: ""
+          top_signame: racl_ctrl_racl_error
+          index: 2
         }
         {
           name: tl
@@ -737,6 +801,32 @@
         }
       }
       generate_dif: true
+      racl_mappings:
+      {
+        null:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            ALERT_TEST: 6
+            WKUP_CTRL: 0
+            WKUP_THOLD_HI: 0
+            WKUP_THOLD_LO: 0
+            WKUP_COUNT_HI: 0
+            WKUP_COUNT_LO: 0
+            WDOG_REGWEN: 0
+            WDOG_CTRL: 0
+            WDOG_BARK_THOLD: 0
+            WDOG_BITE_THOLD: 0
+            WDOG_COUNT: 0
+            INTR_STATE: 0
+            INTR_TEST: 0
+            WKUP_CAUSE: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
+      }
     }
     {
       name: pwc_soc_proxy
@@ -1138,6 +1228,27 @@
         }
       }
       outgoing_alert: pwc
+      racl_mappings:
+      {
+        regs:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            ALERT_TEST: 6
+            STATUS: 0
+            EXEC_REGWEN: 0
+            EXEC: 0
+            CTRL_REGWEN: 0
+            CTRL: 0
+            SCR_KEY_ROTATED: 0
+            READBACK_REGWEN: 0
+            READBACK: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
+      }
       clock_connections:
       {
         clk_i: clk_ext_io_div4_i
@@ -1373,6 +1484,8 @@
           act: rcv
           width: 1
           inst_name: sram_ctrl_ret_aon
+          default: ""
+          top_signame: racl_ctrl_racl_policies
           index: -1
         }
         {
@@ -1384,7 +1497,9 @@
           act: req
           width: 1
           inst_name: sram_ctrl_ret_aon
-          index: -1
+          default: ""
+          top_signame: racl_ctrl_racl_error
+          index: 3
         }
         {
           name: racl_policy_sel_ranges_ram
@@ -1490,6 +1605,21 @@
       }
       generate_dif: false
       outgoing_alert: pwc
+      racl_mappings:
+      {
+        regs:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            ALERT_TEST: 6
+            LATE_DEBUG_ENABLE_REGWEN: 0
+            LATE_DEBUG_ENABLE: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
+      }
       clock_group: secure
       clock_connections:
       {
@@ -1780,6 +1910,8 @@
           act: rcv
           width: 1
           inst_name: rv_dm
+          default: ""
+          top_signame: racl_ctrl_racl_policies
           index: -1
         }
         {
@@ -1791,7 +1923,9 @@
           act: req
           width: 1
           inst_name: rv_dm
-          index: -1
+          default: ""
+          top_signame: racl_ctrl_racl_error
+          index: 4
         }
         {
           name: sba_tl_h
@@ -1855,6 +1989,10 @@
       name: rv_plic_pwc
       type: rv_plic_pwc
       template_type: rv_plic
+      ipgen_param:
+      {
+        racl_support: true
+      }
       clock_srcs:
       {
         clk_i: ext_main
@@ -1920,6 +2058,36 @@
           index: -1
         }
         {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: rv_plic_pwc
+          default: ""
+          top_signame: racl_ctrl_racl_policies
+          index: -1
+        }
+        {
+          name: racl_error
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: rv_plic_pwc
+          default: ""
+          top_signame: racl_ctrl_racl_error
+          index: 5
+        }
+        {
           name: tl
           struct: tl
           package: tlul_pkg
@@ -1941,6 +2109,283 @@
         }
       }
       generate_dif: true
+      racl_mappings:
+      {
+        null:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            PRIO_0: 0
+            PRIO_1: 0
+            PRIO_2: 0
+            PRIO_3: 0
+            PRIO_4: 0
+            PRIO_5: 0
+            PRIO_6: 0
+            PRIO_7: 0
+            PRIO_8: 0
+            PRIO_9: 0
+            PRIO_10: 0
+            PRIO_11: 0
+            PRIO_12: 0
+            PRIO_13: 0
+            PRIO_14: 0
+            PRIO_15: 0
+            PRIO_16: 0
+            PRIO_17: 0
+            PRIO_18: 0
+            PRIO_19: 0
+            PRIO_20: 0
+            PRIO_21: 0
+            PRIO_22: 0
+            PRIO_23: 0
+            PRIO_24: 0
+            PRIO_25: 0
+            PRIO_26: 0
+            PRIO_27: 0
+            PRIO_28: 0
+            PRIO_29: 0
+            PRIO_30: 0
+            PRIO_31: 0
+            PRIO_32: 0
+            PRIO_33: 0
+            PRIO_34: 0
+            PRIO_35: 0
+            PRIO_36: 0
+            PRIO_37: 0
+            PRIO_38: 0
+            PRIO_39: 0
+            PRIO_40: 0
+            PRIO_41: 0
+            PRIO_42: 0
+            PRIO_43: 0
+            PRIO_44: 0
+            PRIO_45: 0
+            PRIO_46: 0
+            PRIO_47: 0
+            PRIO_48: 0
+            PRIO_49: 0
+            PRIO_50: 0
+            PRIO_51: 0
+            PRIO_52: 0
+            PRIO_53: 0
+            PRIO_54: 0
+            PRIO_55: 0
+            PRIO_56: 0
+            PRIO_57: 0
+            PRIO_58: 0
+            PRIO_59: 0
+            PRIO_60: 0
+            PRIO_61: 0
+            PRIO_62: 0
+            PRIO_63: 0
+            PRIO_64: 0
+            PRIO_65: 0
+            PRIO_66: 0
+            PRIO_67: 0
+            PRIO_68: 0
+            PRIO_69: 0
+            PRIO_70: 0
+            PRIO_71: 0
+            PRIO_72: 0
+            PRIO_73: 0
+            PRIO_74: 0
+            PRIO_75: 0
+            PRIO_76: 0
+            PRIO_77: 0
+            PRIO_78: 0
+            PRIO_79: 0
+            PRIO_80: 0
+            PRIO_81: 0
+            PRIO_82: 0
+            PRIO_83: 0
+            PRIO_84: 0
+            PRIO_85: 0
+            PRIO_86: 0
+            PRIO_87: 0
+            PRIO_88: 0
+            PRIO_89: 0
+            PRIO_90: 0
+            PRIO_91: 0
+            PRIO_92: 0
+            PRIO_93: 0
+            PRIO_94: 0
+            PRIO_95: 0
+            PRIO_96: 0
+            PRIO_97: 0
+            PRIO_98: 0
+            PRIO_99: 0
+            PRIO_100: 0
+            PRIO_101: 0
+            PRIO_102: 0
+            PRIO_103: 0
+            PRIO_104: 0
+            PRIO_105: 0
+            PRIO_106: 0
+            PRIO_107: 0
+            PRIO_108: 0
+            PRIO_109: 0
+            PRIO_110: 0
+            PRIO_111: 0
+            PRIO_112: 0
+            PRIO_113: 0
+            PRIO_114: 0
+            PRIO_115: 0
+            PRIO_116: 0
+            PRIO_117: 0
+            PRIO_118: 0
+            PRIO_119: 0
+            PRIO_120: 0
+            PRIO_121: 0
+            PRIO_122: 0
+            PRIO_123: 0
+            PRIO_124: 0
+            PRIO_125: 0
+            PRIO_126: 0
+            PRIO_127: 0
+            PRIO_128: 0
+            PRIO_129: 0
+            PRIO_130: 0
+            PRIO_131: 0
+            PRIO_132: 0
+            PRIO_133: 0
+            PRIO_134: 0
+            PRIO_135: 0
+            PRIO_136: 0
+            PRIO_137: 0
+            PRIO_138: 0
+            PRIO_139: 0
+            PRIO_140: 0
+            PRIO_141: 0
+            PRIO_142: 0
+            PRIO_143: 0
+            PRIO_144: 0
+            PRIO_145: 0
+            PRIO_146: 0
+            PRIO_147: 0
+            PRIO_148: 0
+            PRIO_149: 0
+            PRIO_150: 0
+            PRIO_151: 0
+            PRIO_152: 0
+            PRIO_153: 0
+            PRIO_154: 0
+            PRIO_155: 0
+            PRIO_156: 0
+            PRIO_157: 0
+            PRIO_158: 0
+            PRIO_159: 0
+            PRIO_160: 0
+            PRIO_161: 0
+            PRIO_162: 0
+            PRIO_163: 0
+            PRIO_164: 0
+            PRIO_165: 0
+            PRIO_166: 0
+            PRIO_167: 0
+            PRIO_168: 0
+            PRIO_169: 0
+            PRIO_170: 0
+            PRIO_171: 0
+            PRIO_172: 0
+            PRIO_173: 0
+            PRIO_174: 0
+            PRIO_175: 0
+            PRIO_176: 0
+            PRIO_177: 0
+            PRIO_178: 0
+            PRIO_179: 0
+            PRIO_180: 0
+            PRIO_181: 0
+            PRIO_182: 0
+            PRIO_183: 0
+            PRIO_184: 0
+            PRIO_185: 0
+            PRIO_186: 0
+            PRIO_187: 0
+            PRIO_188: 0
+            PRIO_189: 0
+            PRIO_190: 0
+            PRIO_191: 0
+            PRIO_192: 0
+            PRIO_193: 0
+            PRIO_194: 0
+            PRIO_195: 0
+            PRIO_196: 0
+            PRIO_197: 0
+            PRIO_198: 0
+            PRIO_199: 0
+            PRIO_200: 0
+            PRIO_201: 0
+            PRIO_202: 0
+            PRIO_203: 0
+            PRIO_204: 0
+            PRIO_205: 0
+            PRIO_206: 0
+            PRIO_207: 0
+            PRIO_208: 0
+            PRIO_209: 0
+            PRIO_210: 0
+            PRIO_211: 0
+            PRIO_212: 0
+            PRIO_213: 0
+            PRIO_214: 0
+            PRIO_215: 0
+            PRIO_216: 0
+            PRIO_217: 0
+            PRIO_218: 0
+            PRIO_219: 0
+            PRIO_220: 0
+            PRIO_221: 0
+            PRIO_222: 0
+            PRIO_223: 0
+            PRIO_224: 0
+            PRIO_225: 0
+            PRIO_226: 0
+            PRIO_227: 0
+            PRIO_228: 0
+            PRIO_229: 0
+            PRIO_230: 0
+            PRIO_231: 0
+            PRIO_232: 0
+            PRIO_233: 0
+            PRIO_234: 0
+            PRIO_235: 0
+            PRIO_236: 0
+            PRIO_237: 0
+            PRIO_238: 0
+            PRIO_239: 0
+            PRIO_240: 0
+            PRIO_241: 0
+            PRIO_242: 0
+            PRIO_243: 0
+            PRIO_244: 0
+            IP_0: 0
+            IP_1: 0
+            IP_2: 0
+            IP_3: 0
+            IP_4: 0
+            IP_5: 0
+            IP_6: 0
+            IP_7: 0
+            IE0_0: 0
+            IE0_1: 0
+            IE0_2: 0
+            IE0_3: 0
+            IE0_4: 0
+            IE0_5: 0
+            IE0_6: 0
+            IE0_7: 0
+            THRESHOLD0: 0
+            CC0: 0
+            MSIP0: 0
+            ALERT_TEST: 6
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
+      }
       domain:
       [
         "0"
@@ -2000,6 +2445,27 @@
         }
       }
       outgoing_alert: pwc
+      racl_mappings:
+      {
+        regs:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            ALERT_TEST: 6
+            STATUS: 0
+            EXEC_REGWEN: 0
+            EXEC: 0
+            CTRL_REGWEN: 0
+            CTRL: 0
+            SCR_KEY_ROTATED: 0
+            READBACK_REGWEN: 0
+            READBACK: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
+      }
       clock_connections:
       {
         clk_i: clk_ext_main_i
@@ -2238,6 +2704,8 @@
           act: rcv
           width: 1
           inst_name: sram_ctrl_main
+          default: ""
+          top_signame: racl_ctrl_racl_policies
           index: -1
         }
         {
@@ -2249,7 +2717,9 @@
           act: req
           width: 1
           inst_name: sram_ctrl_main
-          index: -1
+          default: ""
+          top_signame: racl_ctrl_racl_error
+          index: 6
         }
         {
           name: racl_policy_sel_ranges_ram
@@ -2370,6 +2840,27 @@
         }
       }
       outgoing_alert: pwc
+      racl_mappings:
+      {
+        regs:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            ALERT_TEST: 6
+            STATUS: 0
+            EXEC_REGWEN: 0
+            EXEC: 0
+            CTRL_REGWEN: 0
+            CTRL: 0
+            SCR_KEY_ROTATED: 0
+            READBACK_REGWEN: 0
+            READBACK: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
+      }
       clock_connections:
       {
         clk_i: clk_ext_main_i
@@ -2605,6 +3096,8 @@
           act: rcv
           width: 1
           inst_name: sram_ctrl_mbox
+          default: ""
+          top_signame: racl_ctrl_racl_policies
           index: -1
         }
         {
@@ -2616,7 +3109,9 @@
           act: req
           width: 1
           inst_name: sram_ctrl_mbox
-          index: -1
+          default: ""
+          top_signame: racl_ctrl_racl_error
+          index: 7
         }
         {
           name: racl_policy_sel_ranges_ram
@@ -2823,6 +3318,8 @@
           act: rcv
           width: 1
           inst_name: dma
+          default: ""
+          top_signame: racl_ctrl_racl_policies
           index: -1
         }
         {
@@ -2834,7 +3331,9 @@
           act: req
           width: 1
           inst_name: dma
-          index: -1
+          default: ""
+          top_signame: racl_ctrl_racl_error
+          index: 8
         }
         {
           name: host_tl_h
@@ -2870,6 +3369,81 @@
         }
       }
       generate_dif: true
+      racl_mappings:
+      {
+        null:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            INTR_STATE: 0
+            INTR_ENABLE: 0
+            INTR_TEST: 0
+            ALERT_TEST: 6
+            SRC_ADDR_LO: 0
+            SRC_ADDR_HI: 0
+            DST_ADDR_LO: 0
+            DST_ADDR_HI: 0
+            ADDR_SPACE_ID: 0
+            ENABLED_MEMORY_RANGE_BASE: 0
+            ENABLED_MEMORY_RANGE_LIMIT: 0
+            RANGE_VALID: 0
+            RANGE_REGWEN: 0
+            CFG_REGWEN: 0
+            TOTAL_DATA_SIZE: 0
+            CHUNK_DATA_SIZE: 0
+            TRANSFER_WIDTH: 0
+            CONTROL: 0
+            SRC_CONFIG: 0
+            DST_CONFIG: 0
+            STATUS: 0
+            ERROR_CODE: 0
+            SHA2_DIGEST_0: 0
+            SHA2_DIGEST_1: 0
+            SHA2_DIGEST_2: 0
+            SHA2_DIGEST_3: 0
+            SHA2_DIGEST_4: 0
+            SHA2_DIGEST_5: 0
+            SHA2_DIGEST_6: 0
+            SHA2_DIGEST_7: 0
+            SHA2_DIGEST_8: 0
+            SHA2_DIGEST_9: 0
+            SHA2_DIGEST_10: 0
+            SHA2_DIGEST_11: 0
+            SHA2_DIGEST_12: 0
+            SHA2_DIGEST_13: 0
+            SHA2_DIGEST_14: 0
+            SHA2_DIGEST_15: 0
+            HANDSHAKE_INTR_ENABLE: 0
+            CLEAR_INTR_SRC: 0
+            CLEAR_INTR_BUS: 0
+            INTR_SRC_ADDR_0: 0
+            INTR_SRC_ADDR_1: 0
+            INTR_SRC_ADDR_2: 0
+            INTR_SRC_ADDR_3: 0
+            INTR_SRC_ADDR_4: 0
+            INTR_SRC_ADDR_5: 0
+            INTR_SRC_ADDR_6: 0
+            INTR_SRC_ADDR_7: 0
+            INTR_SRC_ADDR_8: 0
+            INTR_SRC_ADDR_9: 0
+            INTR_SRC_ADDR_10: 0
+            INTR_SRC_WR_VAL_0: 0
+            INTR_SRC_WR_VAL_1: 0
+            INTR_SRC_WR_VAL_2: 0
+            INTR_SRC_WR_VAL_3: 0
+            INTR_SRC_WR_VAL_4: 0
+            INTR_SRC_WR_VAL_5: 0
+            INTR_SRC_WR_VAL_6: 0
+            INTR_SRC_WR_VAL_7: 0
+            INTR_SRC_WR_VAL_8: 0
+            INTR_SRC_WR_VAL_9: 0
+            INTR_SRC_WR_VAL_10: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
+      }
       domain:
       [
         "0"
@@ -2905,6 +3479,32 @@
       outgoing_alert: pwc
       racl_mappings:
       {
+        core:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            INTR_STATE: 0
+            INTR_ENABLE: 0
+            INTR_TEST: 0
+            ALERT_TEST: 6
+            CONTROL: 0
+            STATUS: 0
+            ADDRESS_RANGE_REGWEN: 0
+            ADDRESS_RANGE_VALID: 0
+            INBOUND_BASE_ADDRESS: 0
+            INBOUND_LIMIT_ADDRESS: 0
+            INBOUND_WRITE_PTR: 0
+            OUTBOUND_BASE_ADDRESS: 0
+            OUTBOUND_LIMIT_ADDRESS: 0
+            OUTBOUND_READ_PTR: 0
+            OUTBOUND_OBJECT_SIZE: 0
+            DOE_INTR_MSG_ADDR: 0
+            DOE_INTR_MSG_DATA: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
         soc:
         {
           racl_group: Null
@@ -2999,7 +3599,7 @@
           inst_name: mbx0
           default: ""
           top_signame: racl_ctrl_racl_error
-          index: 0
+          index: 9
         }
         {
           name: sram_tl_h
@@ -3076,6 +3676,32 @@
       outgoing_alert: pwc
       racl_mappings:
       {
+        core:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            INTR_STATE: 0
+            INTR_ENABLE: 0
+            INTR_TEST: 0
+            ALERT_TEST: 6
+            CONTROL: 0
+            STATUS: 0
+            ADDRESS_RANGE_REGWEN: 0
+            ADDRESS_RANGE_VALID: 0
+            INBOUND_BASE_ADDRESS: 0
+            INBOUND_LIMIT_ADDRESS: 0
+            INBOUND_WRITE_PTR: 0
+            OUTBOUND_BASE_ADDRESS: 0
+            OUTBOUND_LIMIT_ADDRESS: 0
+            OUTBOUND_READ_PTR: 0
+            OUTBOUND_OBJECT_SIZE: 0
+            DOE_INTR_MSG_ADDR: 0
+            DOE_INTR_MSG_DATA: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
         soc:
         {
           racl_group: Null
@@ -3170,7 +3796,7 @@
           inst_name: mbx1
           default: ""
           top_signame: racl_ctrl_racl_error
-          index: 1
+          index: 10
         }
         {
           name: sram_tl_h
@@ -3247,6 +3873,32 @@
       outgoing_alert: pwc
       racl_mappings:
       {
+        core:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            INTR_STATE: 0
+            INTR_ENABLE: 0
+            INTR_TEST: 0
+            ALERT_TEST: 6
+            CONTROL: 0
+            STATUS: 0
+            ADDRESS_RANGE_REGWEN: 0
+            ADDRESS_RANGE_VALID: 0
+            INBOUND_BASE_ADDRESS: 0
+            INBOUND_LIMIT_ADDRESS: 0
+            INBOUND_WRITE_PTR: 0
+            OUTBOUND_BASE_ADDRESS: 0
+            OUTBOUND_LIMIT_ADDRESS: 0
+            OUTBOUND_READ_PTR: 0
+            OUTBOUND_OBJECT_SIZE: 0
+            DOE_INTR_MSG_ADDR: 0
+            DOE_INTR_MSG_DATA: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
         soc:
         {
           racl_group: Null
@@ -3341,7 +3993,7 @@
           inst_name: mbx2
           default: ""
           top_signame: racl_ctrl_racl_error
-          index: 2
+          index: 11
         }
         {
           name: sram_tl_h
@@ -3418,6 +4070,32 @@
       outgoing_alert: pwc
       racl_mappings:
       {
+        core:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            INTR_STATE: 0
+            INTR_ENABLE: 0
+            INTR_TEST: 0
+            ALERT_TEST: 6
+            CONTROL: 0
+            STATUS: 0
+            ADDRESS_RANGE_REGWEN: 0
+            ADDRESS_RANGE_VALID: 0
+            INBOUND_BASE_ADDRESS: 0
+            INBOUND_LIMIT_ADDRESS: 0
+            INBOUND_WRITE_PTR: 0
+            OUTBOUND_BASE_ADDRESS: 0
+            OUTBOUND_LIMIT_ADDRESS: 0
+            OUTBOUND_READ_PTR: 0
+            OUTBOUND_OBJECT_SIZE: 0
+            DOE_INTR_MSG_ADDR: 0
+            DOE_INTR_MSG_DATA: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
         soc:
         {
           racl_group: Null
@@ -3512,7 +4190,7 @@
           inst_name: mbx3
           default: ""
           top_signame: racl_ctrl_racl_error
-          index: 3
+          index: 12
         }
         {
           name: sram_tl_h
@@ -3589,6 +4267,32 @@
       outgoing_alert: pwc
       racl_mappings:
       {
+        core:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            INTR_STATE: 0
+            INTR_ENABLE: 0
+            INTR_TEST: 0
+            ALERT_TEST: 6
+            CONTROL: 0
+            STATUS: 0
+            ADDRESS_RANGE_REGWEN: 0
+            ADDRESS_RANGE_VALID: 0
+            INBOUND_BASE_ADDRESS: 0
+            INBOUND_LIMIT_ADDRESS: 0
+            INBOUND_WRITE_PTR: 0
+            OUTBOUND_BASE_ADDRESS: 0
+            OUTBOUND_LIMIT_ADDRESS: 0
+            OUTBOUND_READ_PTR: 0
+            OUTBOUND_OBJECT_SIZE: 0
+            DOE_INTR_MSG_ADDR: 0
+            DOE_INTR_MSG_DATA: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
         soc:
         {
           racl_group: Null
@@ -3683,7 +4387,7 @@
           inst_name: mbx4
           default: ""
           top_signame: racl_ctrl_racl_error
-          index: 4
+          index: 13
         }
         {
           name: sram_tl_h
@@ -3760,6 +4464,32 @@
       outgoing_alert: pwc
       racl_mappings:
       {
+        core:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            INTR_STATE: 0
+            INTR_ENABLE: 0
+            INTR_TEST: 0
+            ALERT_TEST: 6
+            CONTROL: 0
+            STATUS: 0
+            ADDRESS_RANGE_REGWEN: 0
+            ADDRESS_RANGE_VALID: 0
+            INBOUND_BASE_ADDRESS: 0
+            INBOUND_LIMIT_ADDRESS: 0
+            INBOUND_WRITE_PTR: 0
+            OUTBOUND_BASE_ADDRESS: 0
+            OUTBOUND_LIMIT_ADDRESS: 0
+            OUTBOUND_READ_PTR: 0
+            OUTBOUND_OBJECT_SIZE: 0
+            DOE_INTR_MSG_ADDR: 0
+            DOE_INTR_MSG_DATA: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
         soc:
         {
           racl_group: Null
@@ -3854,7 +4584,7 @@
           inst_name: mbx5
           default: ""
           top_signame: racl_ctrl_racl_error
-          index: 5
+          index: 14
         }
         {
           name: sram_tl_h
@@ -3931,6 +4661,32 @@
       outgoing_alert: pwc
       racl_mappings:
       {
+        core:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            INTR_STATE: 0
+            INTR_ENABLE: 0
+            INTR_TEST: 0
+            ALERT_TEST: 6
+            CONTROL: 0
+            STATUS: 0
+            ADDRESS_RANGE_REGWEN: 0
+            ADDRESS_RANGE_VALID: 0
+            INBOUND_BASE_ADDRESS: 0
+            INBOUND_LIMIT_ADDRESS: 0
+            INBOUND_WRITE_PTR: 0
+            OUTBOUND_BASE_ADDRESS: 0
+            OUTBOUND_LIMIT_ADDRESS: 0
+            OUTBOUND_READ_PTR: 0
+            OUTBOUND_OBJECT_SIZE: 0
+            DOE_INTR_MSG_ADDR: 0
+            DOE_INTR_MSG_DATA: 0
+          }
+          window_mapping: {}
+          range_mapping: []
+        }
         soc:
         {
           racl_group: Null
@@ -4025,7 +4781,7 @@
           inst_name: mbx_pcie0
           default: ""
           top_signame: racl_ctrl_racl_error
-          index: 6
+          index: 15
         }
         {
           name: sram_tl_h
@@ -4103,7 +4859,7 @@
           name: NumSubscribingIps
           desc: Number of subscribing RACL IPs
           type: int
-          default: 8
+          default: 18
           local: "true"
           expose: "true"
           name_top: RaclCtrlNumSubscribingIps
@@ -4154,7 +4910,7 @@
             desc: Number of subscribing RACL IPs
             param_type: int
             unpacked_dimensions: null
-            default: 8
+            default: 18
             local: true
             expose: true
             name_top: RaclCtrlNumSubscribingIps
@@ -4369,7 +5125,7 @@
           inst_name: ac_range_check
           default: ""
           top_signame: racl_ctrl_racl_error
-          index: 7
+          index: 16
         }
         {
           name: tl
@@ -4587,6 +5343,7 @@
       {
         NumRegions: 2
         SimWindowAddress: 0x440
+        racl_support: true
       }
       param_decl:
       {
@@ -4657,6 +5414,46 @@
         }
       }
       outgoing_alert: pwc
+      racl_mappings:
+      {
+        cfg:
+        {
+          racl_group: Null
+          register_mapping:
+          {
+            ALERT_TEST: 6
+            SW_RECOV_ERR: 0
+            SW_FATAL_ERR: 0
+            IBUS_REGWEN_0: 0
+            IBUS_REGWEN_1: 0
+            IBUS_ADDR_EN_0: 0
+            IBUS_ADDR_EN_1: 0
+            IBUS_ADDR_MATCHING_0: 0
+            IBUS_ADDR_MATCHING_1: 0
+            IBUS_REMAP_ADDR_0: 0
+            IBUS_REMAP_ADDR_1: 0
+            DBUS_REGWEN_0: 0
+            DBUS_REGWEN_1: 0
+            DBUS_ADDR_EN_0: 0
+            DBUS_ADDR_EN_1: 0
+            DBUS_ADDR_MATCHING_0: 0
+            DBUS_ADDR_MATCHING_1: 0
+            DBUS_REMAP_ADDR_0: 0
+            DBUS_REMAP_ADDR_1: 0
+            NMI_ENABLE: 0
+            NMI_STATE: 0
+            ERR_STATUS: 0
+            RND_DATA: 0
+            RND_STATUS: 0
+            FPGA_INFO: 0
+          }
+          window_mapping:
+          {
+            DV_SIM_WINDOW: 0
+          }
+          range_mapping: []
+        }
+      }
       clock_connections:
       {
         clk_i: clk_ext_main_i
@@ -5248,6 +6045,36 @@
           index: -1
         }
         {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: rv_core_ibex_pwc
+          default: ""
+          top_signame: racl_ctrl_racl_policies
+          index: -1
+        }
+        {
+          name: racl_error
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: rv_core_ibex_pwc
+          default: ""
+          top_signame: racl_ctrl_racl_error
+          index: 17
+        }
+        {
           name: corei_tl_h
           struct: tl
           package: tlul_pkg
@@ -5545,6 +6372,15 @@
       ]
       racl_ctrl.racl_policies:
       [
+        gpio.racl_policies
+        rv_timer.racl_policies
+        aon_timer_aon.racl_policies
+        sram_ctrl_ret_aon.racl_policies
+        rv_dm.racl_policies
+        rv_plic_pwc.racl_policies
+        sram_ctrl_main.racl_policies
+        sram_ctrl_mbox.racl_policies
+        dma.racl_policies
         mbx0.racl_policies
         mbx1.racl_policies
         mbx2.racl_policies
@@ -5553,9 +6389,19 @@
         mbx5.racl_policies
         mbx_pcie0.racl_policies
         ac_range_check.racl_policies
+        rv_core_ibex_pwc.racl_policies
       ]
       racl_ctrl.racl_error:
       [
+        gpio.racl_error
+        rv_timer.racl_error
+        aon_timer_aon.racl_error
+        sram_ctrl_ret_aon.racl_error
+        rv_dm.racl_error
+        rv_plic_pwc.racl_error
+        sram_ctrl_main.racl_error
+        sram_ctrl_mbox.racl_error
+        dma.racl_error
         mbx0.racl_error
         mbx1.racl_error
         mbx2.racl_error
@@ -5564,6 +6410,7 @@
         mbx5.racl_error
         mbx_pcie0.racl_error
         ac_range_check.racl_error
+        rv_core_ibex_pwc.racl_error
       ]
     }
     top:
@@ -13020,6 +13867,8 @@
         act: rcv
         width: 1
         inst_name: gpio
+        default: ""
+        top_signame: racl_ctrl_racl_policies
         index: -1
       }
       {
@@ -13031,7 +13880,9 @@
         act: req
         width: 1
         inst_name: gpio
-        index: -1
+        default: ""
+        top_signame: racl_ctrl_racl_error
+        index: 0
       }
       {
         name: tl
@@ -13059,6 +13910,8 @@
         act: rcv
         width: 1
         inst_name: rv_timer
+        default: ""
+        top_signame: racl_ctrl_racl_policies
         index: -1
       }
       {
@@ -13070,7 +13923,9 @@
         act: req
         width: 1
         inst_name: rv_timer
-        index: -1
+        default: ""
+        top_signame: racl_ctrl_racl_error
+        index: 1
       }
       {
         name: tl
@@ -13153,6 +14008,8 @@
         act: rcv
         width: 1
         inst_name: aon_timer_aon
+        default: ""
+        top_signame: racl_ctrl_racl_policies
         index: -1
       }
       {
@@ -13164,7 +14021,9 @@
         act: req
         width: 1
         inst_name: aon_timer_aon
-        index: -1
+        default: ""
+        top_signame: racl_ctrl_racl_error
+        index: 2
       }
       {
         name: tl
@@ -13575,6 +14434,8 @@
         act: rcv
         width: 1
         inst_name: sram_ctrl_ret_aon
+        default: ""
+        top_signame: racl_ctrl_racl_policies
         index: -1
       }
       {
@@ -13586,7 +14447,9 @@
         act: req
         width: 1
         inst_name: sram_ctrl_ret_aon
-        index: -1
+        default: ""
+        top_signame: racl_ctrl_racl_error
+        index: 3
       }
       {
         name: racl_policy_sel_ranges_ram
@@ -13881,6 +14744,8 @@
         act: rcv
         width: 1
         inst_name: rv_dm
+        default: ""
+        top_signame: racl_ctrl_racl_policies
         index: -1
       }
       {
@@ -13892,7 +14757,9 @@
         act: req
         width: 1
         inst_name: rv_dm
-        index: -1
+        default: ""
+        top_signame: racl_ctrl_racl_error
+        index: 4
       }
       {
         name: sba_tl_h
@@ -13982,6 +14849,36 @@
         top_type: broadcast
         top_signame: rv_plic_pwc_msip
         index: -1
+      }
+      {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: rv_plic_pwc
+        default: ""
+        top_signame: racl_ctrl_racl_policies
+        index: -1
+      }
+      {
+        name: racl_error
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: rv_plic_pwc
+        default: ""
+        top_signame: racl_ctrl_racl_error
+        index: 5
       }
       {
         name: tl
@@ -14105,6 +15002,8 @@
         act: rcv
         width: 1
         inst_name: sram_ctrl_main
+        default: ""
+        top_signame: racl_ctrl_racl_policies
         index: -1
       }
       {
@@ -14116,7 +15015,9 @@
         act: req
         width: 1
         inst_name: sram_ctrl_main
-        index: -1
+        default: ""
+        top_signame: racl_ctrl_racl_error
+        index: 6
       }
       {
         name: racl_policy_sel_ranges_ram
@@ -14282,6 +15183,8 @@
         act: rcv
         width: 1
         inst_name: sram_ctrl_mbox
+        default: ""
+        top_signame: racl_ctrl_racl_policies
         index: -1
       }
       {
@@ -14293,7 +15196,9 @@
         act: req
         width: 1
         inst_name: sram_ctrl_mbox
-        index: -1
+        default: ""
+        top_signame: racl_ctrl_racl_error
+        index: 7
       }
       {
         name: racl_policy_sel_ranges_ram
@@ -14420,6 +15325,8 @@
         act: rcv
         width: 1
         inst_name: dma
+        default: ""
+        top_signame: racl_ctrl_racl_policies
         index: -1
       }
       {
@@ -14431,7 +15338,9 @@
         act: req
         width: 1
         inst_name: dma
-        index: -1
+        default: ""
+        top_signame: racl_ctrl_racl_error
+        index: 8
       }
       {
         name: host_tl_h
@@ -14526,7 +15435,7 @@
         inst_name: mbx0
         default: ""
         top_signame: racl_ctrl_racl_error
-        index: 0
+        index: 9
       }
       {
         name: sram_tl_h
@@ -14634,7 +15543,7 @@
         inst_name: mbx1
         default: ""
         top_signame: racl_ctrl_racl_error
-        index: 1
+        index: 10
       }
       {
         name: sram_tl_h
@@ -14742,7 +15651,7 @@
         inst_name: mbx2
         default: ""
         top_signame: racl_ctrl_racl_error
-        index: 2
+        index: 11
       }
       {
         name: sram_tl_h
@@ -14850,7 +15759,7 @@
         inst_name: mbx3
         default: ""
         top_signame: racl_ctrl_racl_error
-        index: 3
+        index: 12
       }
       {
         name: sram_tl_h
@@ -14958,7 +15867,7 @@
         inst_name: mbx4
         default: ""
         top_signame: racl_ctrl_racl_error
-        index: 4
+        index: 13
       }
       {
         name: sram_tl_h
@@ -15066,7 +15975,7 @@
         inst_name: mbx5
         default: ""
         top_signame: racl_ctrl_racl_error
-        index: 5
+        index: 14
       }
       {
         name: sram_tl_h
@@ -15174,7 +16083,7 @@
         inst_name: mbx_pcie0
         default: ""
         top_signame: racl_ctrl_racl_error
-        index: 6
+        index: 15
       }
       {
         name: sram_tl_h
@@ -15248,7 +16157,7 @@
           desc: Number of subscribing RACL IPs
           param_type: int
           unpacked_dimensions: null
-          default: 8
+          default: 18
           local: true
           expose: true
           name_top: RaclCtrlNumSubscribingIps
@@ -15401,7 +16310,7 @@
         inst_name: ac_range_check
         default: ""
         top_signame: racl_ctrl_racl_error
-        index: 7
+        index: 16
       }
       {
         name: tl
@@ -15680,6 +16589,36 @@
         top_signame: fpga_info
         conn_type: false
         index: -1
+      }
+      {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: rv_core_ibex_pwc
+        default: ""
+        top_signame: racl_ctrl_racl_policies
+        index: -1
+      }
+      {
+        name: racl_error
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: rv_core_ibex_pwc
+        default: ""
+        top_signame: racl_ctrl_racl_error
+        index: 17
       }
       {
         name: corei_tl_h
@@ -17865,7 +18804,7 @@
           desc: Number of subscribing RACL IPs
           param_type: int
           unpacked_dimensions: null
-          default: 8
+          default: 18
           local: true
           expose: true
           name_top: RaclCtrlNumSubscribingIps

@@ -109,6 +109,277 @@
 
 ## RACL configuration
 
+### RACL configuration for `rv_timer` and interface `null`
+
+- IP: rv_timer
+- Instance base address: 0x30000000
+- RACL group: Null
+
+
+| Name                        | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:----------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| rv_timer.`ALERT_TEST`       | 0x0      | 0x30000000 | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| rv_timer.`CTRL`             | 0x4      | 0x30000004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_timer.`INTR_ENABLE0`     | 0x100    | 0x30000100 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_timer.`INTR_STATE0`      | 0x104    | 0x30000104 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_timer.`INTR_TEST0`       | 0x108    | 0x30000108 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_timer.`CFG0`             | 0x10c    | 0x3000010c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_timer.`TIMER_V_LOWER0`   | 0x110    | 0x30000110 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_timer.`TIMER_V_UPPER0`   | 0x114    | 0x30000114 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_timer.`COMPARE_LOWER0_0` | 0x118    | 0x30000118 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_timer.`COMPARE_UPPER0_0` | 0x11c    | 0x3000011c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+
+### RACL configuration for `aon_timer_aon` and interface `null`
+
+- IP: aon_timer
+- Instance base address: 0x30470000
+- RACL group: Null
+
+
+| Name                            | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:--------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| aon_timer_aon.`ALERT_TEST`      | 0x0      | 0x30470000 | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| aon_timer_aon.`WKUP_CTRL`       | 0x4      | 0x30470004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| aon_timer_aon.`WKUP_THOLD_HI`   | 0x8      | 0x30470008 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| aon_timer_aon.`WKUP_THOLD_LO`   | 0xc      | 0x3047000c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| aon_timer_aon.`WKUP_COUNT_HI`   | 0x10     | 0x30470010 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| aon_timer_aon.`WKUP_COUNT_LO`   | 0x14     | 0x30470014 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| aon_timer_aon.`WDOG_REGWEN`     | 0x18     | 0x30470018 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| aon_timer_aon.`WDOG_CTRL`       | 0x1c     | 0x3047001c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| aon_timer_aon.`WDOG_BARK_THOLD` | 0x20     | 0x30470020 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| aon_timer_aon.`WDOG_BITE_THOLD` | 0x24     | 0x30470024 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| aon_timer_aon.`WDOG_COUNT`      | 0x28     | 0x30470028 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| aon_timer_aon.`INTR_STATE`      | 0x2c     | 0x3047002c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| aon_timer_aon.`INTR_TEST`       | 0x30     | 0x30470030 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| aon_timer_aon.`WKUP_CAUSE`      | 0x34     | 0x30470034 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+
+### RACL configuration for `sram_ctrl_ret_aon` and interface `regs`
+
+- IP: sram_ctrl
+- Instance base address: 0x30500000
+- RACL group: Null
+
+
+| Name                                     | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:-----------------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| sram_ctrl_ret_aon.regs.`ALERT_TEST`      | 0x0      | 0x30500000 | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| sram_ctrl_ret_aon.regs.`STATUS`          | 0x4      | 0x30500004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_ret_aon.regs.`EXEC_REGWEN`     | 0x8      | 0x30500008 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_ret_aon.regs.`EXEC`            | 0xc      | 0x3050000c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_ret_aon.regs.`CTRL_REGWEN`     | 0x10     | 0x30500010 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_ret_aon.regs.`CTRL`            | 0x14     | 0x30500014 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_ret_aon.regs.`SCR_KEY_ROTATED` | 0x18     | 0x30500018 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_ret_aon.regs.`READBACK_REGWEN` | 0x1c     | 0x3050001c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_ret_aon.regs.`READBACK`        | 0x20     | 0x30500020 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+
+### RACL configuration for `rv_dm` and interface `regs`
+
+- IP: rv_dm
+- Instance base address: 0x21200000
+- RACL group: Null
+
+
+| Name                                  | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:--------------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| rv_dm.regs.`ALERT_TEST`               | 0x0      | 0x21200000 | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| rv_dm.regs.`LATE_DEBUG_ENABLE_REGWEN` | 0x4      | 0x21200004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_dm.regs.`LATE_DEBUG_ENABLE`        | 0x8      | 0x21200008 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+
+### RACL configuration for `rv_plic_mio` and interface `null`
+
+- IP: rv_plic_mio
+- Instance base address: 0x28000000
+- RACL group: Null
+
+
+| Name                     | Offset    | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:-------------------------|:----------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| rv_plic_mio.`PRIO_0`     | 0x0       | 0x28000000 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_1`     | 0x4       | 0x28000004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_2`     | 0x8       | 0x28000008 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_3`     | 0xc       | 0x2800000c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_4`     | 0x10      | 0x28000010 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_5`     | 0x14      | 0x28000014 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_6`     | 0x18      | 0x28000018 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_7`     | 0x1c      | 0x2800001c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_8`     | 0x20      | 0x28000020 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_9`     | 0x24      | 0x28000024 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_10`    | 0x28      | 0x28000028 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_11`    | 0x2c      | 0x2800002c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_12`    | 0x30      | 0x28000030 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_13`    | 0x34      | 0x28000034 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_14`    | 0x38      | 0x28000038 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_15`    | 0x3c      | 0x2800003c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_16`    | 0x40      | 0x28000040 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_17`    | 0x44      | 0x28000044 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_18`    | 0x48      | 0x28000048 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_19`    | 0x4c      | 0x2800004c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_20`    | 0x50      | 0x28000050 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_21`    | 0x54      | 0x28000054 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_22`    | 0x58      | 0x28000058 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_23`    | 0x5c      | 0x2800005c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_24`    | 0x60      | 0x28000060 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_25`    | 0x64      | 0x28000064 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_26`    | 0x68      | 0x28000068 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_27`    | 0x6c      | 0x2800006c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_28`    | 0x70      | 0x28000070 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_29`    | 0x74      | 0x28000074 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_30`    | 0x78      | 0x28000078 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_31`    | 0x7c      | 0x2800007c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_32`    | 0x80      | 0x28000080 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_33`    | 0x84      | 0x28000084 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_34`    | 0x88      | 0x28000088 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_35`    | 0x8c      | 0x2800008c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_36`    | 0x90      | 0x28000090 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_37`    | 0x94      | 0x28000094 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`PRIO_38`    | 0x98      | 0x28000098 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`IP_0`       | 0x1000    | 0x28001000 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`IP_1`       | 0x1004    | 0x28001004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`IE0_0`      | 0x2000    | 0x28002000 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`IE0_1`      | 0x2004    | 0x28002004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`THRESHOLD0` | 0x200000  | 0x28200000 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`CC0`        | 0x200004  | 0x28200004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`MSIP0`      | 0x4000000 | 0x2c000000 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_plic_mio.`ALERT_TEST` | 0x4004000 | 0x2c004000 | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+
+### RACL configuration for `sram_ctrl_main` and interface `regs`
+
+- IP: sram_ctrl
+- Instance base address: 0x211c0000
+- RACL group: Null
+
+
+| Name                                  | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:--------------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| sram_ctrl_main.regs.`ALERT_TEST`      | 0x0      | 0x211c0000 | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| sram_ctrl_main.regs.`STATUS`          | 0x4      | 0x211c0004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_main.regs.`EXEC_REGWEN`     | 0x8      | 0x211c0008 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_main.regs.`EXEC`            | 0xc      | 0x211c000c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_main.regs.`CTRL_REGWEN`     | 0x10     | 0x211c0010 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_main.regs.`CTRL`            | 0x14     | 0x211c0014 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_main.regs.`SCR_KEY_ROTATED` | 0x18     | 0x211c0018 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_main.regs.`READBACK_REGWEN` | 0x1c     | 0x211c001c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_main.regs.`READBACK`        | 0x20     | 0x211c0020 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+
+### RACL configuration for `sram_ctrl_mbox` and interface `regs`
+
+- IP: sram_ctrl
+- Instance base address: 0x211d0000
+- RACL group: Null
+
+
+| Name                                  | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:--------------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| sram_ctrl_mbox.regs.`ALERT_TEST`      | 0x0      | 0x211d0000 | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| sram_ctrl_mbox.regs.`STATUS`          | 0x4      | 0x211d0004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_mbox.regs.`EXEC_REGWEN`     | 0x8      | 0x211d0008 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_mbox.regs.`EXEC`            | 0xc      | 0x211d000c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_mbox.regs.`CTRL_REGWEN`     | 0x10     | 0x211d0010 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_mbox.regs.`CTRL`            | 0x14     | 0x211d0014 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_mbox.regs.`SCR_KEY_ROTATED` | 0x18     | 0x211d0018 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_mbox.regs.`READBACK_REGWEN` | 0x1c     | 0x211d001c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| sram_ctrl_mbox.regs.`READBACK`        | 0x20     | 0x211d0020 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+
+### RACL configuration for `dma` and interface `null`
+
+- IP: dma
+- Instance base address: 0x22010000
+- RACL group: Null
+
+
+| Name                             | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:---------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| dma.`INTR_STATE`                 | 0x0      | 0x22010000 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_ENABLE`                | 0x4      | 0x22010004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_TEST`                  | 0x8      | 0x22010008 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`ALERT_TEST`                 | 0xc      | 0x2201000c | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| dma.`SRC_ADDR_LO`                | 0x10     | 0x22010010 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SRC_ADDR_HI`                | 0x14     | 0x22010014 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`DST_ADDR_LO`                | 0x18     | 0x22010018 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`DST_ADDR_HI`                | 0x1c     | 0x2201001c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`ADDR_SPACE_ID`              | 0x20     | 0x22010020 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`ENABLED_MEMORY_RANGE_BASE`  | 0x24     | 0x22010024 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`ENABLED_MEMORY_RANGE_LIMIT` | 0x28     | 0x22010028 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`RANGE_VALID`                | 0x2c     | 0x2201002c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`RANGE_REGWEN`               | 0x30     | 0x22010030 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`CFG_REGWEN`                 | 0x34     | 0x22010034 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`TOTAL_DATA_SIZE`            | 0x38     | 0x22010038 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`CHUNK_DATA_SIZE`            | 0x3c     | 0x2201003c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`TRANSFER_WIDTH`             | 0x40     | 0x22010040 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`CONTROL`                    | 0x44     | 0x22010044 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SRC_CONFIG`                 | 0x48     | 0x22010048 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`DST_CONFIG`                 | 0x4c     | 0x2201004c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`STATUS`                     | 0x50     | 0x22010050 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`ERROR_CODE`                 | 0x54     | 0x22010054 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_0`              | 0x58     | 0x22010058 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_1`              | 0x5c     | 0x2201005c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_2`              | 0x60     | 0x22010060 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_3`              | 0x64     | 0x22010064 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_4`              | 0x68     | 0x22010068 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_5`              | 0x6c     | 0x2201006c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_6`              | 0x70     | 0x22010070 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_7`              | 0x74     | 0x22010074 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_8`              | 0x78     | 0x22010078 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_9`              | 0x7c     | 0x2201007c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_10`             | 0x80     | 0x22010080 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_11`             | 0x84     | 0x22010084 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_12`             | 0x88     | 0x22010088 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_13`             | 0x8c     | 0x2201008c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_14`             | 0x90     | 0x22010090 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`SHA2_DIGEST_15`             | 0x94     | 0x22010094 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`HANDSHAKE_INTR_ENABLE`      | 0x98     | 0x22010098 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`CLEAR_INTR_SRC`             | 0x9c     | 0x2201009c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`CLEAR_INTR_BUS`             | 0xa0     | 0x220100a0 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_ADDR_0`            | 0xa4     | 0x220100a4 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_ADDR_1`            | 0xa8     | 0x220100a8 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_ADDR_2`            | 0xac     | 0x220100ac | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_ADDR_3`            | 0xb0     | 0x220100b0 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_ADDR_4`            | 0xb4     | 0x220100b4 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_ADDR_5`            | 0xb8     | 0x220100b8 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_ADDR_6`            | 0xbc     | 0x220100bc | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_ADDR_7`            | 0xc0     | 0x220100c0 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_ADDR_8`            | 0xc4     | 0x220100c4 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_ADDR_9`            | 0xc8     | 0x220100c8 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_ADDR_10`           | 0xcc     | 0x220100cc | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_WR_VAL_0`          | 0x124    | 0x22010124 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_WR_VAL_1`          | 0x128    | 0x22010128 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_WR_VAL_2`          | 0x12c    | 0x2201012c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_WR_VAL_3`          | 0x130    | 0x22010130 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_WR_VAL_4`          | 0x134    | 0x22010134 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_WR_VAL_5`          | 0x138    | 0x22010138 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_WR_VAL_6`          | 0x13c    | 0x2201013c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_WR_VAL_7`          | 0x140    | 0x22010140 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_WR_VAL_8`          | 0x144    | 0x22010144 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_WR_VAL_9`          | 0x148    | 0x22010148 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| dma.`INTR_SRC_WR_VAL_10`         | 0x14c    | 0x2201014c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+
+### RACL configuration for `mbx0` and interface `core`
+
+- IP: mbx
+- Instance base address: 0x22000000
+- RACL group: Null
+
+
+| Name                               | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:-----------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| mbx0.core.`INTR_STATE`             | 0x0      | 0x22000000 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`INTR_ENABLE`            | 0x4      | 0x22000004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`INTR_TEST`              | 0x8      | 0x22000008 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`ALERT_TEST`             | 0xc      | 0x2200000c | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| mbx0.core.`CONTROL`                | 0x10     | 0x22000010 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`STATUS`                 | 0x14     | 0x22000014 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`ADDRESS_RANGE_REGWEN`   | 0x18     | 0x22000018 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`ADDRESS_RANGE_VALID`    | 0x1c     | 0x2200001c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`INBOUND_BASE_ADDRESS`   | 0x20     | 0x22000020 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`INBOUND_LIMIT_ADDRESS`  | 0x24     | 0x22000024 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`INBOUND_WRITE_PTR`      | 0x28     | 0x22000028 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`OUTBOUND_BASE_ADDRESS`  | 0x2c     | 0x2200002c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`OUTBOUND_LIMIT_ADDRESS` | 0x30     | 0x22000030 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`OUTBOUND_READ_PTR`      | 0x34     | 0x22000034 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`OUTBOUND_OBJECT_SIZE`   | 0x38     | 0x22000038 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`DOE_INTR_MSG_ADDR`      | 0x3c     | 0x2200003c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx0.core.`DOE_INTR_MSG_DATA`      | 0x40     | 0x22000040 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+
 ### RACL configuration for `mbx0` and interface `soc`
 
 - IP: mbx
@@ -124,6 +395,33 @@
 | mbx0.soc.`RDATA`                 | 0x14     | 0x1485014 | 0x4     | 8 (mio_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | R / W | R / W | R / W     | - / -      | - / -          | - / -    | - / -         |
 | mbx0.soc.`SOC_DOE_INTR_MSG_ADDR` | 0x18     | 0x1485018 | 0x4     | 8 (mio_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | R / W | R / W | R / W     | - / -      | - / -          | - / -    | - / -         |
 | mbx0.soc.`SOC_DOE_INTR_MSG_DATA` | 0x1c     | 0x148501c | 0x4     | 8 (mio_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | R / W | R / W | R / W     | - / -      | - / -          | - / -    | - / -         |
+
+### RACL configuration for `mbx1` and interface `core`
+
+- IP: mbx
+- Instance base address: 0x22000100
+- RACL group: Null
+
+
+| Name                               | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:-----------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| mbx1.core.`INTR_STATE`             | 0x0      | 0x22000100 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`INTR_ENABLE`            | 0x4      | 0x22000104 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`INTR_TEST`              | 0x8      | 0x22000108 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`ALERT_TEST`             | 0xc      | 0x2200010c | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| mbx1.core.`CONTROL`                | 0x10     | 0x22000110 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`STATUS`                 | 0x14     | 0x22000114 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`ADDRESS_RANGE_REGWEN`   | 0x18     | 0x22000118 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`ADDRESS_RANGE_VALID`    | 0x1c     | 0x2200011c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`INBOUND_BASE_ADDRESS`   | 0x20     | 0x22000120 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`INBOUND_LIMIT_ADDRESS`  | 0x24     | 0x22000124 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`INBOUND_WRITE_PTR`      | 0x28     | 0x22000128 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`OUTBOUND_BASE_ADDRESS`  | 0x2c     | 0x2200012c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`OUTBOUND_LIMIT_ADDRESS` | 0x30     | 0x22000130 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`OUTBOUND_READ_PTR`      | 0x34     | 0x22000134 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`OUTBOUND_OBJECT_SIZE`   | 0x38     | 0x22000138 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`DOE_INTR_MSG_ADDR`      | 0x3c     | 0x2200013c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx1.core.`DOE_INTR_MSG_DATA`      | 0x40     | 0x22000140 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
 
 ### RACL configuration for `mbx1` and interface `soc`
 
@@ -141,6 +439,33 @@
 | mbx1.soc.`SOC_DOE_INTR_MSG_ADDR` | 0x18     | 0x1485118 | 0x4     | 8 (mio_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | R / W | R / W | R / W     | - / -      | - / -          | - / -    | - / -         |
 | mbx1.soc.`SOC_DOE_INTR_MSG_DATA` | 0x1c     | 0x148511c | 0x4     | 8 (mio_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | R / W | R / W | R / W     | - / -      | - / -          | - / -    | - / -         |
 
+### RACL configuration for `mbx2` and interface `core`
+
+- IP: mbx
+- Instance base address: 0x22000200
+- RACL group: Null
+
+
+| Name                               | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:-----------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| mbx2.core.`INTR_STATE`             | 0x0      | 0x22000200 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`INTR_ENABLE`            | 0x4      | 0x22000204 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`INTR_TEST`              | 0x8      | 0x22000208 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`ALERT_TEST`             | 0xc      | 0x2200020c | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| mbx2.core.`CONTROL`                | 0x10     | 0x22000210 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`STATUS`                 | 0x14     | 0x22000214 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`ADDRESS_RANGE_REGWEN`   | 0x18     | 0x22000218 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`ADDRESS_RANGE_VALID`    | 0x1c     | 0x2200021c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`INBOUND_BASE_ADDRESS`   | 0x20     | 0x22000220 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`INBOUND_LIMIT_ADDRESS`  | 0x24     | 0x22000224 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`INBOUND_WRITE_PTR`      | 0x28     | 0x22000228 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`OUTBOUND_BASE_ADDRESS`  | 0x2c     | 0x2200022c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`OUTBOUND_LIMIT_ADDRESS` | 0x30     | 0x22000230 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`OUTBOUND_READ_PTR`      | 0x34     | 0x22000234 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`OUTBOUND_OBJECT_SIZE`   | 0x38     | 0x22000238 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`DOE_INTR_MSG_ADDR`      | 0x3c     | 0x2200023c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx2.core.`DOE_INTR_MSG_DATA`      | 0x40     | 0x22000240 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+
 ### RACL configuration for `mbx2` and interface `soc`
 
 - IP: mbx
@@ -156,6 +481,33 @@
 | mbx2.soc.`RDATA`                 | 0x14     | 0x1485214 | 0x4     | 8 (mio_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | R / W | R / W | R / W     | - / -      | - / -          | - / -    | - / -         |
 | mbx2.soc.`SOC_DOE_INTR_MSG_ADDR` | 0x18     | 0x1485218 | 0x4     | 8 (mio_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | R / W | R / W | R / W     | - / -      | - / -          | - / -    | - / -         |
 | mbx2.soc.`SOC_DOE_INTR_MSG_DATA` | 0x1c     | 0x148521c | 0x4     | 8 (mio_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | R / W | R / W | R / W     | - / -      | - / -          | - / -    | - / -         |
+
+### RACL configuration for `mbx3` and interface `core`
+
+- IP: mbx
+- Instance base address: 0x22000300
+- RACL group: Null
+
+
+| Name                               | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:-----------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| mbx3.core.`INTR_STATE`             | 0x0      | 0x22000300 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`INTR_ENABLE`            | 0x4      | 0x22000304 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`INTR_TEST`              | 0x8      | 0x22000308 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`ALERT_TEST`             | 0xc      | 0x2200030c | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| mbx3.core.`CONTROL`                | 0x10     | 0x22000310 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`STATUS`                 | 0x14     | 0x22000314 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`ADDRESS_RANGE_REGWEN`   | 0x18     | 0x22000318 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`ADDRESS_RANGE_VALID`    | 0x1c     | 0x2200031c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`INBOUND_BASE_ADDRESS`   | 0x20     | 0x22000320 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`INBOUND_LIMIT_ADDRESS`  | 0x24     | 0x22000324 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`INBOUND_WRITE_PTR`      | 0x28     | 0x22000328 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`OUTBOUND_BASE_ADDRESS`  | 0x2c     | 0x2200032c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`OUTBOUND_LIMIT_ADDRESS` | 0x30     | 0x22000330 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`OUTBOUND_READ_PTR`      | 0x34     | 0x22000334 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`OUTBOUND_OBJECT_SIZE`   | 0x38     | 0x22000338 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`DOE_INTR_MSG_ADDR`      | 0x3c     | 0x2200033c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx3.core.`DOE_INTR_MSG_DATA`      | 0x40     | 0x22000340 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
 
 ### RACL configuration for `mbx3` and interface `soc`
 
@@ -173,6 +525,33 @@
 | mbx3.soc.`SOC_DOE_INTR_MSG_ADDR` | 0x18     | 0x1485318 | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
 | mbx3.soc.`SOC_DOE_INTR_MSG_DATA` | 0x1c     | 0x148531c | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
 
+### RACL configuration for `mbx4` and interface `core`
+
+- IP: mbx
+- Instance base address: 0x22000400
+- RACL group: Null
+
+
+| Name                               | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:-----------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| mbx4.core.`INTR_STATE`             | 0x0      | 0x22000400 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`INTR_ENABLE`            | 0x4      | 0x22000404 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`INTR_TEST`              | 0x8      | 0x22000408 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`ALERT_TEST`             | 0xc      | 0x2200040c | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| mbx4.core.`CONTROL`                | 0x10     | 0x22000410 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`STATUS`                 | 0x14     | 0x22000414 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`ADDRESS_RANGE_REGWEN`   | 0x18     | 0x22000418 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`ADDRESS_RANGE_VALID`    | 0x1c     | 0x2200041c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`INBOUND_BASE_ADDRESS`   | 0x20     | 0x22000420 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`INBOUND_LIMIT_ADDRESS`  | 0x24     | 0x22000424 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`INBOUND_WRITE_PTR`      | 0x28     | 0x22000428 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`OUTBOUND_BASE_ADDRESS`  | 0x2c     | 0x2200042c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`OUTBOUND_LIMIT_ADDRESS` | 0x30     | 0x22000430 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`OUTBOUND_READ_PTR`      | 0x34     | 0x22000434 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`OUTBOUND_OBJECT_SIZE`   | 0x38     | 0x22000438 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`DOE_INTR_MSG_ADDR`      | 0x3c     | 0x2200043c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx4.core.`DOE_INTR_MSG_DATA`      | 0x40     | 0x22000440 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+
 ### RACL configuration for `mbx4` and interface `soc`
 
 - IP: mbx
@@ -189,6 +568,33 @@
 | mbx4.soc.`SOC_DOE_INTR_MSG_ADDR` | 0x18     | 0x1485418 | 0x4     | 7 (pwc_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | R / W | R / W     | - / -      | - / -          | - / -    | - / -         |
 | mbx4.soc.`SOC_DOE_INTR_MSG_DATA` | 0x1c     | 0x148541c | 0x4     | 7 (pwc_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | R / W | R / W     | - / -      | - / -          | - / -    | - / -         |
 
+### RACL configuration for `mbx5` and interface `core`
+
+- IP: mbx
+- Instance base address: 0x22000500
+- RACL group: Null
+
+
+| Name                               | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:-----------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| mbx5.core.`INTR_STATE`             | 0x0      | 0x22000500 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`INTR_ENABLE`            | 0x4      | 0x22000504 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`INTR_TEST`              | 0x8      | 0x22000508 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`ALERT_TEST`             | 0xc      | 0x2200050c | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| mbx5.core.`CONTROL`                | 0x10     | 0x22000510 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`STATUS`                 | 0x14     | 0x22000514 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`ADDRESS_RANGE_REGWEN`   | 0x18     | 0x22000518 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`ADDRESS_RANGE_VALID`    | 0x1c     | 0x2200051c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`INBOUND_BASE_ADDRESS`   | 0x20     | 0x22000520 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`INBOUND_LIMIT_ADDRESS`  | 0x24     | 0x22000524 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`INBOUND_WRITE_PTR`      | 0x28     | 0x22000528 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`OUTBOUND_BASE_ADDRESS`  | 0x2c     | 0x2200052c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`OUTBOUND_LIMIT_ADDRESS` | 0x30     | 0x22000530 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`OUTBOUND_READ_PTR`      | 0x34     | 0x22000534 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`OUTBOUND_OBJECT_SIZE`   | 0x38     | 0x22000538 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`DOE_INTR_MSG_ADDR`      | 0x3c     | 0x2200053c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx5.core.`DOE_INTR_MSG_DATA`      | 0x40     | 0x22000540 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+
 ### RACL configuration for `mbx5` and interface `soc`
 
 - IP: mbx
@@ -204,6 +610,33 @@
 | mbx5.soc.`RDATA`                 | 0x14     | 0x1485514 | 0x4     | 9 (duc_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | R / W | R / W     | - / -      | - / -          | R / W    | R / W         |
 | mbx5.soc.`SOC_DOE_INTR_MSG_ADDR` | 0x18     | 0x1485518 | 0x4     | 9 (duc_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | R / W | R / W     | - / -      | - / -          | R / W    | R / W         |
 | mbx5.soc.`SOC_DOE_INTR_MSG_DATA` | 0x1c     | 0x148551c | 0x4     | 9 (duc_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | R / W | R / W     | - / -      | - / -          | R / W    | R / W         |
+
+### RACL configuration for `mbx_pcie0` and interface `core`
+
+- IP: mbx
+- Instance base address: 0x22040000
+- RACL group: Null
+
+
+| Name                                    | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:----------------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| mbx_pcie0.core.`INTR_STATE`             | 0x0      | 0x22040000 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`INTR_ENABLE`            | 0x4      | 0x22040004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`INTR_TEST`              | 0x8      | 0x22040008 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`ALERT_TEST`             | 0xc      | 0x2204000c | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| mbx_pcie0.core.`CONTROL`                | 0x10     | 0x22040010 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`STATUS`                 | 0x14     | 0x22040014 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`ADDRESS_RANGE_REGWEN`   | 0x18     | 0x22040018 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`ADDRESS_RANGE_VALID`    | 0x1c     | 0x2204001c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`INBOUND_BASE_ADDRESS`   | 0x20     | 0x22040020 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`INBOUND_LIMIT_ADDRESS`  | 0x24     | 0x22040024 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`INBOUND_WRITE_PTR`      | 0x28     | 0x22040028 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`OUTBOUND_BASE_ADDRESS`  | 0x2c     | 0x2204002c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`OUTBOUND_LIMIT_ADDRESS` | 0x30     | 0x22040030 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`OUTBOUND_READ_PTR`      | 0x34     | 0x22040034 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`OUTBOUND_OBJECT_SIZE`   | 0x38     | 0x22040038 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`DOE_INTR_MSG_ADDR`      | 0x3c     | 0x2204003c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| mbx_pcie0.core.`DOE_INTR_MSG_DATA`      | 0x40     | 0x22040040 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
 
 ### RACL configuration for `mbx_pcie0` and interface `soc`
 
@@ -398,6 +831,42 @@
 | ac_range_check.`RANGE_RACL_POLICY_SHADOWED_29` | 0x294    | 0x1484294 | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
 | ac_range_check.`RANGE_RACL_POLICY_SHADOWED_30` | 0x298    | 0x1484298 | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
 | ac_range_check.`RANGE_RACL_POLICY_SHADOWED_31` | 0x29c    | 0x148429c | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+
+### RACL configuration for `rv_core_ibex_mio` and interface `cfg`
+
+- IP: rv_core_ibex_mio
+- Instance base address: 0x211f0000
+- RACL group: Null
+
+
+| Name                                        | Offset   | Address    | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
+|:--------------------------------------------|:---------|:-----------|:--------|:-----------------------|:----------|:---------|:-----------|:---------|:-------------|:-------------|:------|:------|:------|:----------|:-----------|:---------------|:---------|:--------------|
+| rv_core_ibex_mio.cfg.`ALERT_TEST`           | 0x0      | 0x211f0000 | 0x4     | 6 (rot_private_policy) | - / -     | - / -    | - / -      | - / -    | - / -        | R / W        | R / W | - / - | - / - | - / -     | - / -      | - / -          | - / -    | - / -         |
+| rv_core_ibex_mio.cfg.`SW_RECOV_ERR`         | 0x4      | 0x211f0004 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`SW_FATAL_ERR`         | 0x8      | 0x211f0008 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`IBUS_REGWEN_0`        | 0xc      | 0x211f000c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`IBUS_REGWEN_1`        | 0x10     | 0x211f0010 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`IBUS_ADDR_EN_0`       | 0x14     | 0x211f0014 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`IBUS_ADDR_EN_1`       | 0x18     | 0x211f0018 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`IBUS_ADDR_MATCHING_0` | 0x1c     | 0x211f001c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`IBUS_ADDR_MATCHING_1` | 0x20     | 0x211f0020 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`IBUS_REMAP_ADDR_0`    | 0x24     | 0x211f0024 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`IBUS_REMAP_ADDR_1`    | 0x28     | 0x211f0028 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`DBUS_REGWEN_0`        | 0x2c     | 0x211f002c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`DBUS_REGWEN_1`        | 0x30     | 0x211f0030 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`DBUS_ADDR_EN_0`       | 0x34     | 0x211f0034 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`DBUS_ADDR_EN_1`       | 0x38     | 0x211f0038 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`DBUS_ADDR_MATCHING_0` | 0x3c     | 0x211f003c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`DBUS_ADDR_MATCHING_1` | 0x40     | 0x211f0040 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`DBUS_REMAP_ADDR_0`    | 0x44     | 0x211f0044 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`DBUS_REMAP_ADDR_1`    | 0x48     | 0x211f0048 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`NMI_ENABLE`           | 0x4c     | 0x211f004c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`NMI_STATE`            | 0x50     | 0x211f0050 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`ERR_STATUS`           | 0x54     | 0x211f0054 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`RND_DATA`             | 0x58     | 0x211f0058 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`RND_STATUS`           | 0x5c     | 0x211f005c | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`FPGA_INFO`            | 0x60     | 0x211f0060 | 0x4     | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
+| rv_core_ibex_mio.cfg.`DV_SIM_WINDOW`        | 0x440    | 0x211f0440 | 0x20    | 0 (all_rd_wr_policy)   | R / W     | R / W    | R / W      | R / W    | R / W        | R / W        | R / W | R / W | R / W | R / W     | R / W      | R / W          | R / W    | R / W         |
 
 
 <!-- END CMDGEN -->

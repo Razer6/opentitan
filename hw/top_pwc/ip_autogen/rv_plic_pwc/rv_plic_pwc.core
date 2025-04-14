@@ -11,6 +11,7 @@ filesets:
       - lowrisc:pwc_ip:rv_plic_pwc_component:0.1
       - lowrisc:ip:tlul
       - lowrisc:prim:subreg
+      - lowrisc:virtual_constants:top_racl_pkg
     files:
       - rtl/rv_plic_pwc_reg_pkg.sv
       - rtl/rv_plic_pwc_reg_top.sv

@@ -48,6 +48,10 @@ module rv_core_ibex_pwc
       ibex_pkg::RndCnstIbexNonceDefault,
   parameter int unsigned                    NEscalationSeverities = 4,
   parameter int unsigned                    WidthPingCounter      = 16,
+  parameter bit                             EnableRacl             = 1'b0,
+  parameter bit                             RaclErrorRsp           = EnableRacl,
+  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[rv_core_ibex_pwc_reg_pkg::NumRegs] = 
+    '{rv_core_ibex_pwc_reg_pkg::NumRegs{0}},
   parameter logic [tlul_pkg::RsvdWidth-1:0] TlulHostUserRsvdBits   = 0
 ) (
   // Clock and Reset
@@ -121,6 +125,10 @@ module rv_core_ibex_pwc
 
   // fpga build info
   input [31:0] fpga_info_i,
+
+  // RACL interface
+  input  top_racl_pkg::racl_policy_vec_t racl_policies_i,
+  output top_racl_pkg::racl_error_log_t  racl_error_o,
 
   // interrupts and alerts
   input  prim_alert_pkg::alert_rx_t [NumAlerts-1:0] alert_rx_i,
@@ -721,13 +729,19 @@ module rv_core_ibex_pwc
   logic intg_err;
   tlul_pkg::tl_h2d_t tl_win_h2d;
   tlul_pkg::tl_d2h_t tl_win_d2h;
-  rv_core_ibex_pwc_cfg_reg_top u_reg_cfg (
+  rv_core_ibex_pwc_cfg_reg_top #(
+    .EnableRacl(EnableRacl),
+    .RaclErrorRsp(RaclErrorRsp),
+    .RaclPolicySelVec(RaclPolicySelVec)
+  ) u_reg_wrap (
     .clk_i,
     .rst_ni,
     .tl_i(cfg_tl_d_i),
     .tl_o(cfg_tl_d_o),
     .reg2hw,
     .hw2reg,
+    .racl_policies_i,
+    .racl_error_o,
     .intg_err_o (intg_err),
     .tl_win_o(tl_win_h2d),
     .tl_win_i(tl_win_d2h)
@@ -933,6 +947,7 @@ module rv_core_ibex_pwc
   );
 
   `ASSERT_INIT(ICacheNWaysCorrect_A, ICacheNWays == ibex_pkg::IC_NUM_WAYS)
+  `ASSERT_KNOWN_IF(RaclErrorOKnown_A, racl_error_o, racl_error_o.valid)
 
   // Assertions for CPU enable
   // Allow 2 or 3 cycles for input to enable due to synchronizers

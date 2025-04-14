@@ -5,16 +5,16 @@
   instance_name: top_mio_rv_core_ibex_mio
   param_values:
   {
-    racl_support: false
+    racl_support: true
     num_regions: 2
     module_instance_name: rv_core_ibex_mio
     sim_window_address: 1088
     topname: mio
     uniquified_modules:
     {
+      rv_core_ibex: rv_core_ibex_mio
       racl_ctrl: racl_ctrl_mio
       ac_range_check: ac_range_check_mio
-      rv_core_ibex: rv_core_ibex_mio
       rv_plic: rv_plic_mio
     }
   }

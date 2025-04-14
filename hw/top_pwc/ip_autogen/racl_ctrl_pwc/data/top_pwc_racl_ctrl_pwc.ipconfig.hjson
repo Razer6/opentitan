@@ -9,7 +9,7 @@
     nr_role_bits: 4
     nr_ctn_uid_bits: 5
     nr_policies: 16
-    nr_subscribing_ips: 8
+    nr_subscribing_ips: 18
     policies:
     [
       {
@@ -268,9 +268,9 @@
     uniquified_modules:
     {
       gpio: gpio_pwc
+      rv_core_ibex: rv_core_ibex_pwc
       racl_ctrl: racl_ctrl_pwc
       ac_range_check: ac_range_check_pwc
-      rv_core_ibex: rv_core_ibex_pwc
       rv_plic: rv_plic_pwc
     }
   }

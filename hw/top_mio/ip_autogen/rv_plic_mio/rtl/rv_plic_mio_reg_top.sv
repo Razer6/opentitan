@@ -6,7 +6,13 @@
 
 `include "prim_assert.sv"
 
-module rv_plic_mio_reg_top (
+module rv_plic_mio_reg_top
+  # (
+    parameter bit          EnableRacl           = 1'b0,
+    parameter bit          RaclErrorRsp         = 1'b1,
+    parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[rv_plic_mio_reg_pkg::NumRegs] =
+      '{rv_plic_mio_reg_pkg::NumRegs{0}}
+  ) (
   input clk_i,
   input rst_ni,
   input  tlul_pkg::tl_h2d_t tl_i,
@@ -14,6 +20,10 @@ module rv_plic_mio_reg_top (
   // To HW
   output rv_plic_mio_reg_pkg::rv_plic_mio_reg2hw_t reg2hw, // Write
   input  rv_plic_mio_reg_pkg::rv_plic_mio_hw2reg_t hw2reg, // Read
+
+  // RACL interface
+  input  top_racl_pkg::racl_policy_vec_t racl_policies_i,
+  output top_racl_pkg::racl_error_log_t  racl_error_o,
 
   // Integrity check errors
   output logic intg_err_o
@@ -110,7 +120,8 @@ module rv_plic_mio_reg_top (
     .be_o    (reg_be),
     .busy_i  (reg_busy),
     .rdata_i (reg_rdata),
-    .error_i (reg_error)
+    // Translate RACL error to TLUL error if enabled
+    .error_i (reg_error | (RaclErrorRsp & racl_error_o.valid))
   );
 
   // cdc oversampling signals
@@ -3718,8 +3729,32 @@ module rv_plic_mio_reg_top (
 
 
   logic [46:0] addr_hit;
+  top_racl_pkg::racl_role_vec_t racl_role_vec;
+  top_racl_pkg::racl_role_t racl_role;
+
+  logic [46:0] racl_addr_hit_read;
+  logic [46:0] racl_addr_hit_write;
+
+  if (EnableRacl) begin : gen_racl_role_logic
+    // Retrieve RACL role from user bits and one-hot encode that for the comparison bitmap
+    assign racl_role = top_racl_pkg::tlul_extract_racl_role_bits(tl_i.a_user.rsvd);
+
+    prim_onehot_enc #(
+      .OneHotWidth( $bits(top_racl_pkg::racl_role_vec_t) )
+    ) u_racl_role_encode (
+      .in_i ( racl_role     ),
+      .en_i ( 1'b1          ),
+      .out_o( racl_role_vec )
+    );
+  end else begin : gen_no_racl_role_logic
+    assign racl_role     = '0;
+    assign racl_role_vec = '0;
+  end
+
   always_comb begin
     addr_hit = '0;
+    racl_addr_hit_read  = '0;
+    racl_addr_hit_write = '0;
     addr_hit[ 0] = (reg_addr == RV_PLIC_MIO_PRIO_0_OFFSET);
     addr_hit[ 1] = (reg_addr == RV_PLIC_MIO_PRIO_1_OFFSET);
     addr_hit[ 2] = (reg_addr == RV_PLIC_MIO_PRIO_2_OFFSET);
@@ -3767,181 +3802,209 @@ module rv_plic_mio_reg_top (
     addr_hit[44] = (reg_addr == RV_PLIC_MIO_CC0_OFFSET);
     addr_hit[45] = (reg_addr == RV_PLIC_MIO_MSIP0_OFFSET);
     addr_hit[46] = (reg_addr == RV_PLIC_MIO_ALERT_TEST_OFFSET);
+
+    if (EnableRacl) begin : gen_racl_hit
+      for (int unsigned slice_idx = 0; slice_idx < 47; slice_idx++) begin
+        racl_addr_hit_read[slice_idx] =
+            addr_hit[slice_idx] & (|(racl_policies_i[RaclPolicySelVec[slice_idx]].read_perm
+                                      & racl_role_vec));
+        racl_addr_hit_write[slice_idx] =
+            addr_hit[slice_idx] & (|(racl_policies_i[RaclPolicySelVec[slice_idx]].write_perm
+                                      & racl_role_vec));
+      end
+    end else begin : gen_no_racl
+      racl_addr_hit_read  = addr_hit;
+      racl_addr_hit_write = addr_hit;
+    end
   end
 
   assign addrmiss = (reg_re || reg_we) ? ~|addr_hit : 1'b0 ;
+  // A valid address hit, access, but failed the RACL check
+  assign racl_error_o.valid = |addr_hit & ((reg_re & ~|racl_addr_hit_read) |
+                                           (reg_we & ~|racl_addr_hit_write));
+  assign racl_error_o.request_address = top_pkg::TL_AW'(reg_addr);
+  assign racl_error_o.racl_role       = racl_role;
+  assign racl_error_o.overflow        = 1'b0;
+
+  if (EnableRacl) begin : gen_racl_log
+    assign racl_error_o.ctn_uid     = top_racl_pkg::tlul_extract_ctn_uid_bits(tl_i.a_user.rsvd);
+    assign racl_error_o.read_access = tl_i.a_opcode == tlul_pkg::Get;
+  end else begin : gen_no_racl_log
+    assign racl_error_o.ctn_uid     = '0;
+    assign racl_error_o.read_access = 1'b0;
+  end
 
   // Check sub-word write is permitted
   always_comb begin
     wr_err = (reg_we &
-              ((addr_hit[ 0] & (|(RV_PLIC_MIO_PERMIT[ 0] & ~reg_be))) |
-               (addr_hit[ 1] & (|(RV_PLIC_MIO_PERMIT[ 1] & ~reg_be))) |
-               (addr_hit[ 2] & (|(RV_PLIC_MIO_PERMIT[ 2] & ~reg_be))) |
-               (addr_hit[ 3] & (|(RV_PLIC_MIO_PERMIT[ 3] & ~reg_be))) |
-               (addr_hit[ 4] & (|(RV_PLIC_MIO_PERMIT[ 4] & ~reg_be))) |
-               (addr_hit[ 5] & (|(RV_PLIC_MIO_PERMIT[ 5] & ~reg_be))) |
-               (addr_hit[ 6] & (|(RV_PLIC_MIO_PERMIT[ 6] & ~reg_be))) |
-               (addr_hit[ 7] & (|(RV_PLIC_MIO_PERMIT[ 7] & ~reg_be))) |
-               (addr_hit[ 8] & (|(RV_PLIC_MIO_PERMIT[ 8] & ~reg_be))) |
-               (addr_hit[ 9] & (|(RV_PLIC_MIO_PERMIT[ 9] & ~reg_be))) |
-               (addr_hit[10] & (|(RV_PLIC_MIO_PERMIT[10] & ~reg_be))) |
-               (addr_hit[11] & (|(RV_PLIC_MIO_PERMIT[11] & ~reg_be))) |
-               (addr_hit[12] & (|(RV_PLIC_MIO_PERMIT[12] & ~reg_be))) |
-               (addr_hit[13] & (|(RV_PLIC_MIO_PERMIT[13] & ~reg_be))) |
-               (addr_hit[14] & (|(RV_PLIC_MIO_PERMIT[14] & ~reg_be))) |
-               (addr_hit[15] & (|(RV_PLIC_MIO_PERMIT[15] & ~reg_be))) |
-               (addr_hit[16] & (|(RV_PLIC_MIO_PERMIT[16] & ~reg_be))) |
-               (addr_hit[17] & (|(RV_PLIC_MIO_PERMIT[17] & ~reg_be))) |
-               (addr_hit[18] & (|(RV_PLIC_MIO_PERMIT[18] & ~reg_be))) |
-               (addr_hit[19] & (|(RV_PLIC_MIO_PERMIT[19] & ~reg_be))) |
-               (addr_hit[20] & (|(RV_PLIC_MIO_PERMIT[20] & ~reg_be))) |
-               (addr_hit[21] & (|(RV_PLIC_MIO_PERMIT[21] & ~reg_be))) |
-               (addr_hit[22] & (|(RV_PLIC_MIO_PERMIT[22] & ~reg_be))) |
-               (addr_hit[23] & (|(RV_PLIC_MIO_PERMIT[23] & ~reg_be))) |
-               (addr_hit[24] & (|(RV_PLIC_MIO_PERMIT[24] & ~reg_be))) |
-               (addr_hit[25] & (|(RV_PLIC_MIO_PERMIT[25] & ~reg_be))) |
-               (addr_hit[26] & (|(RV_PLIC_MIO_PERMIT[26] & ~reg_be))) |
-               (addr_hit[27] & (|(RV_PLIC_MIO_PERMIT[27] & ~reg_be))) |
-               (addr_hit[28] & (|(RV_PLIC_MIO_PERMIT[28] & ~reg_be))) |
-               (addr_hit[29] & (|(RV_PLIC_MIO_PERMIT[29] & ~reg_be))) |
-               (addr_hit[30] & (|(RV_PLIC_MIO_PERMIT[30] & ~reg_be))) |
-               (addr_hit[31] & (|(RV_PLIC_MIO_PERMIT[31] & ~reg_be))) |
-               (addr_hit[32] & (|(RV_PLIC_MIO_PERMIT[32] & ~reg_be))) |
-               (addr_hit[33] & (|(RV_PLIC_MIO_PERMIT[33] & ~reg_be))) |
-               (addr_hit[34] & (|(RV_PLIC_MIO_PERMIT[34] & ~reg_be))) |
-               (addr_hit[35] & (|(RV_PLIC_MIO_PERMIT[35] & ~reg_be))) |
-               (addr_hit[36] & (|(RV_PLIC_MIO_PERMIT[36] & ~reg_be))) |
-               (addr_hit[37] & (|(RV_PLIC_MIO_PERMIT[37] & ~reg_be))) |
-               (addr_hit[38] & (|(RV_PLIC_MIO_PERMIT[38] & ~reg_be))) |
-               (addr_hit[39] & (|(RV_PLIC_MIO_PERMIT[39] & ~reg_be))) |
-               (addr_hit[40] & (|(RV_PLIC_MIO_PERMIT[40] & ~reg_be))) |
-               (addr_hit[41] & (|(RV_PLIC_MIO_PERMIT[41] & ~reg_be))) |
-               (addr_hit[42] & (|(RV_PLIC_MIO_PERMIT[42] & ~reg_be))) |
-               (addr_hit[43] & (|(RV_PLIC_MIO_PERMIT[43] & ~reg_be))) |
-               (addr_hit[44] & (|(RV_PLIC_MIO_PERMIT[44] & ~reg_be))) |
-               (addr_hit[45] & (|(RV_PLIC_MIO_PERMIT[45] & ~reg_be))) |
-               (addr_hit[46] & (|(RV_PLIC_MIO_PERMIT[46] & ~reg_be)))));
+              ((racl_addr_hit_write[ 0] & (|(RV_PLIC_MIO_PERMIT[ 0] & ~reg_be))) |
+               (racl_addr_hit_write[ 1] & (|(RV_PLIC_MIO_PERMIT[ 1] & ~reg_be))) |
+               (racl_addr_hit_write[ 2] & (|(RV_PLIC_MIO_PERMIT[ 2] & ~reg_be))) |
+               (racl_addr_hit_write[ 3] & (|(RV_PLIC_MIO_PERMIT[ 3] & ~reg_be))) |
+               (racl_addr_hit_write[ 4] & (|(RV_PLIC_MIO_PERMIT[ 4] & ~reg_be))) |
+               (racl_addr_hit_write[ 5] & (|(RV_PLIC_MIO_PERMIT[ 5] & ~reg_be))) |
+               (racl_addr_hit_write[ 6] & (|(RV_PLIC_MIO_PERMIT[ 6] & ~reg_be))) |
+               (racl_addr_hit_write[ 7] & (|(RV_PLIC_MIO_PERMIT[ 7] & ~reg_be))) |
+               (racl_addr_hit_write[ 8] & (|(RV_PLIC_MIO_PERMIT[ 8] & ~reg_be))) |
+               (racl_addr_hit_write[ 9] & (|(RV_PLIC_MIO_PERMIT[ 9] & ~reg_be))) |
+               (racl_addr_hit_write[10] & (|(RV_PLIC_MIO_PERMIT[10] & ~reg_be))) |
+               (racl_addr_hit_write[11] & (|(RV_PLIC_MIO_PERMIT[11] & ~reg_be))) |
+               (racl_addr_hit_write[12] & (|(RV_PLIC_MIO_PERMIT[12] & ~reg_be))) |
+               (racl_addr_hit_write[13] & (|(RV_PLIC_MIO_PERMIT[13] & ~reg_be))) |
+               (racl_addr_hit_write[14] & (|(RV_PLIC_MIO_PERMIT[14] & ~reg_be))) |
+               (racl_addr_hit_write[15] & (|(RV_PLIC_MIO_PERMIT[15] & ~reg_be))) |
+               (racl_addr_hit_write[16] & (|(RV_PLIC_MIO_PERMIT[16] & ~reg_be))) |
+               (racl_addr_hit_write[17] & (|(RV_PLIC_MIO_PERMIT[17] & ~reg_be))) |
+               (racl_addr_hit_write[18] & (|(RV_PLIC_MIO_PERMIT[18] & ~reg_be))) |
+               (racl_addr_hit_write[19] & (|(RV_PLIC_MIO_PERMIT[19] & ~reg_be))) |
+               (racl_addr_hit_write[20] & (|(RV_PLIC_MIO_PERMIT[20] & ~reg_be))) |
+               (racl_addr_hit_write[21] & (|(RV_PLIC_MIO_PERMIT[21] & ~reg_be))) |
+               (racl_addr_hit_write[22] & (|(RV_PLIC_MIO_PERMIT[22] & ~reg_be))) |
+               (racl_addr_hit_write[23] & (|(RV_PLIC_MIO_PERMIT[23] & ~reg_be))) |
+               (racl_addr_hit_write[24] & (|(RV_PLIC_MIO_PERMIT[24] & ~reg_be))) |
+               (racl_addr_hit_write[25] & (|(RV_PLIC_MIO_PERMIT[25] & ~reg_be))) |
+               (racl_addr_hit_write[26] & (|(RV_PLIC_MIO_PERMIT[26] & ~reg_be))) |
+               (racl_addr_hit_write[27] & (|(RV_PLIC_MIO_PERMIT[27] & ~reg_be))) |
+               (racl_addr_hit_write[28] & (|(RV_PLIC_MIO_PERMIT[28] & ~reg_be))) |
+               (racl_addr_hit_write[29] & (|(RV_PLIC_MIO_PERMIT[29] & ~reg_be))) |
+               (racl_addr_hit_write[30] & (|(RV_PLIC_MIO_PERMIT[30] & ~reg_be))) |
+               (racl_addr_hit_write[31] & (|(RV_PLIC_MIO_PERMIT[31] & ~reg_be))) |
+               (racl_addr_hit_write[32] & (|(RV_PLIC_MIO_PERMIT[32] & ~reg_be))) |
+               (racl_addr_hit_write[33] & (|(RV_PLIC_MIO_PERMIT[33] & ~reg_be))) |
+               (racl_addr_hit_write[34] & (|(RV_PLIC_MIO_PERMIT[34] & ~reg_be))) |
+               (racl_addr_hit_write[35] & (|(RV_PLIC_MIO_PERMIT[35] & ~reg_be))) |
+               (racl_addr_hit_write[36] & (|(RV_PLIC_MIO_PERMIT[36] & ~reg_be))) |
+               (racl_addr_hit_write[37] & (|(RV_PLIC_MIO_PERMIT[37] & ~reg_be))) |
+               (racl_addr_hit_write[38] & (|(RV_PLIC_MIO_PERMIT[38] & ~reg_be))) |
+               (racl_addr_hit_write[39] & (|(RV_PLIC_MIO_PERMIT[39] & ~reg_be))) |
+               (racl_addr_hit_write[40] & (|(RV_PLIC_MIO_PERMIT[40] & ~reg_be))) |
+               (racl_addr_hit_write[41] & (|(RV_PLIC_MIO_PERMIT[41] & ~reg_be))) |
+               (racl_addr_hit_write[42] & (|(RV_PLIC_MIO_PERMIT[42] & ~reg_be))) |
+               (racl_addr_hit_write[43] & (|(RV_PLIC_MIO_PERMIT[43] & ~reg_be))) |
+               (racl_addr_hit_write[44] & (|(RV_PLIC_MIO_PERMIT[44] & ~reg_be))) |
+               (racl_addr_hit_write[45] & (|(RV_PLIC_MIO_PERMIT[45] & ~reg_be))) |
+               (racl_addr_hit_write[46] & (|(RV_PLIC_MIO_PERMIT[46] & ~reg_be)))));
   end
 
   // Generate write-enables
-  assign prio_0_we = addr_hit[0] & reg_we & !reg_error;
+  assign prio_0_we = racl_addr_hit_write[0] & reg_we & !reg_error;
 
   assign prio_0_wd = reg_wdata[1:0];
-  assign prio_1_we = addr_hit[1] & reg_we & !reg_error;
+  assign prio_1_we = racl_addr_hit_write[1] & reg_we & !reg_error;
 
   assign prio_1_wd = reg_wdata[1:0];
-  assign prio_2_we = addr_hit[2] & reg_we & !reg_error;
+  assign prio_2_we = racl_addr_hit_write[2] & reg_we & !reg_error;
 
   assign prio_2_wd = reg_wdata[1:0];
-  assign prio_3_we = addr_hit[3] & reg_we & !reg_error;
+  assign prio_3_we = racl_addr_hit_write[3] & reg_we & !reg_error;
 
   assign prio_3_wd = reg_wdata[1:0];
-  assign prio_4_we = addr_hit[4] & reg_we & !reg_error;
+  assign prio_4_we = racl_addr_hit_write[4] & reg_we & !reg_error;
 
   assign prio_4_wd = reg_wdata[1:0];
-  assign prio_5_we = addr_hit[5] & reg_we & !reg_error;
+  assign prio_5_we = racl_addr_hit_write[5] & reg_we & !reg_error;
 
   assign prio_5_wd = reg_wdata[1:0];
-  assign prio_6_we = addr_hit[6] & reg_we & !reg_error;
+  assign prio_6_we = racl_addr_hit_write[6] & reg_we & !reg_error;
 
   assign prio_6_wd = reg_wdata[1:0];
-  assign prio_7_we = addr_hit[7] & reg_we & !reg_error;
+  assign prio_7_we = racl_addr_hit_write[7] & reg_we & !reg_error;
 
   assign prio_7_wd = reg_wdata[1:0];
-  assign prio_8_we = addr_hit[8] & reg_we & !reg_error;
+  assign prio_8_we = racl_addr_hit_write[8] & reg_we & !reg_error;
 
   assign prio_8_wd = reg_wdata[1:0];
-  assign prio_9_we = addr_hit[9] & reg_we & !reg_error;
+  assign prio_9_we = racl_addr_hit_write[9] & reg_we & !reg_error;
 
   assign prio_9_wd = reg_wdata[1:0];
-  assign prio_10_we = addr_hit[10] & reg_we & !reg_error;
+  assign prio_10_we = racl_addr_hit_write[10] & reg_we & !reg_error;
 
   assign prio_10_wd = reg_wdata[1:0];
-  assign prio_11_we = addr_hit[11] & reg_we & !reg_error;
+  assign prio_11_we = racl_addr_hit_write[11] & reg_we & !reg_error;
 
   assign prio_11_wd = reg_wdata[1:0];
-  assign prio_12_we = addr_hit[12] & reg_we & !reg_error;
+  assign prio_12_we = racl_addr_hit_write[12] & reg_we & !reg_error;
 
   assign prio_12_wd = reg_wdata[1:0];
-  assign prio_13_we = addr_hit[13] & reg_we & !reg_error;
+  assign prio_13_we = racl_addr_hit_write[13] & reg_we & !reg_error;
 
   assign prio_13_wd = reg_wdata[1:0];
-  assign prio_14_we = addr_hit[14] & reg_we & !reg_error;
+  assign prio_14_we = racl_addr_hit_write[14] & reg_we & !reg_error;
 
   assign prio_14_wd = reg_wdata[1:0];
-  assign prio_15_we = addr_hit[15] & reg_we & !reg_error;
+  assign prio_15_we = racl_addr_hit_write[15] & reg_we & !reg_error;
 
   assign prio_15_wd = reg_wdata[1:0];
-  assign prio_16_we = addr_hit[16] & reg_we & !reg_error;
+  assign prio_16_we = racl_addr_hit_write[16] & reg_we & !reg_error;
 
   assign prio_16_wd = reg_wdata[1:0];
-  assign prio_17_we = addr_hit[17] & reg_we & !reg_error;
+  assign prio_17_we = racl_addr_hit_write[17] & reg_we & !reg_error;
 
   assign prio_17_wd = reg_wdata[1:0];
-  assign prio_18_we = addr_hit[18] & reg_we & !reg_error;
+  assign prio_18_we = racl_addr_hit_write[18] & reg_we & !reg_error;
 
   assign prio_18_wd = reg_wdata[1:0];
-  assign prio_19_we = addr_hit[19] & reg_we & !reg_error;
+  assign prio_19_we = racl_addr_hit_write[19] & reg_we & !reg_error;
 
   assign prio_19_wd = reg_wdata[1:0];
-  assign prio_20_we = addr_hit[20] & reg_we & !reg_error;
+  assign prio_20_we = racl_addr_hit_write[20] & reg_we & !reg_error;
 
   assign prio_20_wd = reg_wdata[1:0];
-  assign prio_21_we = addr_hit[21] & reg_we & !reg_error;
+  assign prio_21_we = racl_addr_hit_write[21] & reg_we & !reg_error;
 
   assign prio_21_wd = reg_wdata[1:0];
-  assign prio_22_we = addr_hit[22] & reg_we & !reg_error;
+  assign prio_22_we = racl_addr_hit_write[22] & reg_we & !reg_error;
 
   assign prio_22_wd = reg_wdata[1:0];
-  assign prio_23_we = addr_hit[23] & reg_we & !reg_error;
+  assign prio_23_we = racl_addr_hit_write[23] & reg_we & !reg_error;
 
   assign prio_23_wd = reg_wdata[1:0];
-  assign prio_24_we = addr_hit[24] & reg_we & !reg_error;
+  assign prio_24_we = racl_addr_hit_write[24] & reg_we & !reg_error;
 
   assign prio_24_wd = reg_wdata[1:0];
-  assign prio_25_we = addr_hit[25] & reg_we & !reg_error;
+  assign prio_25_we = racl_addr_hit_write[25] & reg_we & !reg_error;
 
   assign prio_25_wd = reg_wdata[1:0];
-  assign prio_26_we = addr_hit[26] & reg_we & !reg_error;
+  assign prio_26_we = racl_addr_hit_write[26] & reg_we & !reg_error;
 
   assign prio_26_wd = reg_wdata[1:0];
-  assign prio_27_we = addr_hit[27] & reg_we & !reg_error;
+  assign prio_27_we = racl_addr_hit_write[27] & reg_we & !reg_error;
 
   assign prio_27_wd = reg_wdata[1:0];
-  assign prio_28_we = addr_hit[28] & reg_we & !reg_error;
+  assign prio_28_we = racl_addr_hit_write[28] & reg_we & !reg_error;
 
   assign prio_28_wd = reg_wdata[1:0];
-  assign prio_29_we = addr_hit[29] & reg_we & !reg_error;
+  assign prio_29_we = racl_addr_hit_write[29] & reg_we & !reg_error;
 
   assign prio_29_wd = reg_wdata[1:0];
-  assign prio_30_we = addr_hit[30] & reg_we & !reg_error;
+  assign prio_30_we = racl_addr_hit_write[30] & reg_we & !reg_error;
 
   assign prio_30_wd = reg_wdata[1:0];
-  assign prio_31_we = addr_hit[31] & reg_we & !reg_error;
+  assign prio_31_we = racl_addr_hit_write[31] & reg_we & !reg_error;
 
   assign prio_31_wd = reg_wdata[1:0];
-  assign prio_32_we = addr_hit[32] & reg_we & !reg_error;
+  assign prio_32_we = racl_addr_hit_write[32] & reg_we & !reg_error;
 
   assign prio_32_wd = reg_wdata[1:0];
-  assign prio_33_we = addr_hit[33] & reg_we & !reg_error;
+  assign prio_33_we = racl_addr_hit_write[33] & reg_we & !reg_error;
 
   assign prio_33_wd = reg_wdata[1:0];
-  assign prio_34_we = addr_hit[34] & reg_we & !reg_error;
+  assign prio_34_we = racl_addr_hit_write[34] & reg_we & !reg_error;
 
   assign prio_34_wd = reg_wdata[1:0];
-  assign prio_35_we = addr_hit[35] & reg_we & !reg_error;
+  assign prio_35_we = racl_addr_hit_write[35] & reg_we & !reg_error;
 
   assign prio_35_wd = reg_wdata[1:0];
-  assign prio_36_we = addr_hit[36] & reg_we & !reg_error;
+  assign prio_36_we = racl_addr_hit_write[36] & reg_we & !reg_error;
 
   assign prio_36_wd = reg_wdata[1:0];
-  assign prio_37_we = addr_hit[37] & reg_we & !reg_error;
+  assign prio_37_we = racl_addr_hit_write[37] & reg_we & !reg_error;
 
   assign prio_37_wd = reg_wdata[1:0];
-  assign prio_38_we = addr_hit[38] & reg_we & !reg_error;
+  assign prio_38_we = racl_addr_hit_write[38] & reg_we & !reg_error;
 
   assign prio_38_wd = reg_wdata[1:0];
-  assign ie0_0_we = addr_hit[41] & reg_we & !reg_error;
+  assign ie0_0_we = racl_addr_hit_write[41] & reg_we & !reg_error;
 
   assign ie0_0_e_0_wd = reg_wdata[0];
 
@@ -4006,7 +4069,7 @@ module rv_plic_mio_reg_top (
   assign ie0_0_e_30_wd = reg_wdata[30];
 
   assign ie0_0_e_31_wd = reg_wdata[31];
-  assign ie0_1_we = addr_hit[42] & reg_we & !reg_error;
+  assign ie0_1_we = racl_addr_hit_write[42] & reg_we & !reg_error;
 
   assign ie0_1_e_32_wd = reg_wdata[0];
 
@@ -4021,17 +4084,17 @@ module rv_plic_mio_reg_top (
   assign ie0_1_e_37_wd = reg_wdata[5];
 
   assign ie0_1_e_38_wd = reg_wdata[6];
-  assign threshold0_we = addr_hit[43] & reg_we & !reg_error;
+  assign threshold0_we = racl_addr_hit_write[43] & reg_we & !reg_error;
 
   assign threshold0_wd = reg_wdata[1:0];
-  assign cc0_re = addr_hit[44] & reg_re & !reg_error;
-  assign cc0_we = addr_hit[44] & reg_we & !reg_error;
+  assign cc0_re = racl_addr_hit_read[44] & reg_re & !reg_error;
+  assign cc0_we = racl_addr_hit_write[44] & reg_we & !reg_error;
 
   assign cc0_wd = reg_wdata[5:0];
-  assign msip0_we = addr_hit[45] & reg_we & !reg_error;
+  assign msip0_we = racl_addr_hit_write[45] & reg_we & !reg_error;
 
   assign msip0_wd = reg_wdata[0];
-  assign alert_test_we = addr_hit[46] & reg_we & !reg_error;
+  assign alert_test_we = racl_addr_hit_write[46] & reg_we & !reg_error;
 
   assign alert_test_wd = reg_wdata[0];
 
@@ -4091,163 +4154,163 @@ module rv_plic_mio_reg_top (
   always_comb begin
     reg_rdata_next = '0;
     unique case (1'b1)
-      addr_hit[0]: begin
+      racl_addr_hit_read[0]: begin
         reg_rdata_next[1:0] = prio_0_qs;
       end
 
-      addr_hit[1]: begin
+      racl_addr_hit_read[1]: begin
         reg_rdata_next[1:0] = prio_1_qs;
       end
 
-      addr_hit[2]: begin
+      racl_addr_hit_read[2]: begin
         reg_rdata_next[1:0] = prio_2_qs;
       end
 
-      addr_hit[3]: begin
+      racl_addr_hit_read[3]: begin
         reg_rdata_next[1:0] = prio_3_qs;
       end
 
-      addr_hit[4]: begin
+      racl_addr_hit_read[4]: begin
         reg_rdata_next[1:0] = prio_4_qs;
       end
 
-      addr_hit[5]: begin
+      racl_addr_hit_read[5]: begin
         reg_rdata_next[1:0] = prio_5_qs;
       end
 
-      addr_hit[6]: begin
+      racl_addr_hit_read[6]: begin
         reg_rdata_next[1:0] = prio_6_qs;
       end
 
-      addr_hit[7]: begin
+      racl_addr_hit_read[7]: begin
         reg_rdata_next[1:0] = prio_7_qs;
       end
 
-      addr_hit[8]: begin
+      racl_addr_hit_read[8]: begin
         reg_rdata_next[1:0] = prio_8_qs;
       end
 
-      addr_hit[9]: begin
+      racl_addr_hit_read[9]: begin
         reg_rdata_next[1:0] = prio_9_qs;
       end
 
-      addr_hit[10]: begin
+      racl_addr_hit_read[10]: begin
         reg_rdata_next[1:0] = prio_10_qs;
       end
 
-      addr_hit[11]: begin
+      racl_addr_hit_read[11]: begin
         reg_rdata_next[1:0] = prio_11_qs;
       end
 
-      addr_hit[12]: begin
+      racl_addr_hit_read[12]: begin
         reg_rdata_next[1:0] = prio_12_qs;
       end
 
-      addr_hit[13]: begin
+      racl_addr_hit_read[13]: begin
         reg_rdata_next[1:0] = prio_13_qs;
       end
 
-      addr_hit[14]: begin
+      racl_addr_hit_read[14]: begin
         reg_rdata_next[1:0] = prio_14_qs;
       end
 
-      addr_hit[15]: begin
+      racl_addr_hit_read[15]: begin
         reg_rdata_next[1:0] = prio_15_qs;
       end
 
-      addr_hit[16]: begin
+      racl_addr_hit_read[16]: begin
         reg_rdata_next[1:0] = prio_16_qs;
       end
 
-      addr_hit[17]: begin
+      racl_addr_hit_read[17]: begin
         reg_rdata_next[1:0] = prio_17_qs;
       end
 
-      addr_hit[18]: begin
+      racl_addr_hit_read[18]: begin
         reg_rdata_next[1:0] = prio_18_qs;
       end
 
-      addr_hit[19]: begin
+      racl_addr_hit_read[19]: begin
         reg_rdata_next[1:0] = prio_19_qs;
       end
 
-      addr_hit[20]: begin
+      racl_addr_hit_read[20]: begin
         reg_rdata_next[1:0] = prio_20_qs;
       end
 
-      addr_hit[21]: begin
+      racl_addr_hit_read[21]: begin
         reg_rdata_next[1:0] = prio_21_qs;
       end
 
-      addr_hit[22]: begin
+      racl_addr_hit_read[22]: begin
         reg_rdata_next[1:0] = prio_22_qs;
       end
 
-      addr_hit[23]: begin
+      racl_addr_hit_read[23]: begin
         reg_rdata_next[1:0] = prio_23_qs;
       end
 
-      addr_hit[24]: begin
+      racl_addr_hit_read[24]: begin
         reg_rdata_next[1:0] = prio_24_qs;
       end
 
-      addr_hit[25]: begin
+      racl_addr_hit_read[25]: begin
         reg_rdata_next[1:0] = prio_25_qs;
       end
 
-      addr_hit[26]: begin
+      racl_addr_hit_read[26]: begin
         reg_rdata_next[1:0] = prio_26_qs;
       end
 
-      addr_hit[27]: begin
+      racl_addr_hit_read[27]: begin
         reg_rdata_next[1:0] = prio_27_qs;
       end
 
-      addr_hit[28]: begin
+      racl_addr_hit_read[28]: begin
         reg_rdata_next[1:0] = prio_28_qs;
       end
 
-      addr_hit[29]: begin
+      racl_addr_hit_read[29]: begin
         reg_rdata_next[1:0] = prio_29_qs;
       end
 
-      addr_hit[30]: begin
+      racl_addr_hit_read[30]: begin
         reg_rdata_next[1:0] = prio_30_qs;
       end
 
-      addr_hit[31]: begin
+      racl_addr_hit_read[31]: begin
         reg_rdata_next[1:0] = prio_31_qs;
       end
 
-      addr_hit[32]: begin
+      racl_addr_hit_read[32]: begin
         reg_rdata_next[1:0] = prio_32_qs;
       end
 
-      addr_hit[33]: begin
+      racl_addr_hit_read[33]: begin
         reg_rdata_next[1:0] = prio_33_qs;
       end
 
-      addr_hit[34]: begin
+      racl_addr_hit_read[34]: begin
         reg_rdata_next[1:0] = prio_34_qs;
       end
 
-      addr_hit[35]: begin
+      racl_addr_hit_read[35]: begin
         reg_rdata_next[1:0] = prio_35_qs;
       end
 
-      addr_hit[36]: begin
+      racl_addr_hit_read[36]: begin
         reg_rdata_next[1:0] = prio_36_qs;
       end
 
-      addr_hit[37]: begin
+      racl_addr_hit_read[37]: begin
         reg_rdata_next[1:0] = prio_37_qs;
       end
 
-      addr_hit[38]: begin
+      racl_addr_hit_read[38]: begin
         reg_rdata_next[1:0] = prio_38_qs;
       end
 
-      addr_hit[39]: begin
+      racl_addr_hit_read[39]: begin
         reg_rdata_next[0] = ip_0_p_0_qs;
         reg_rdata_next[1] = ip_0_p_1_qs;
         reg_rdata_next[2] = ip_0_p_2_qs;
@@ -4282,7 +4345,7 @@ module rv_plic_mio_reg_top (
         reg_rdata_next[31] = ip_0_p_31_qs;
       end
 
-      addr_hit[40]: begin
+      racl_addr_hit_read[40]: begin
         reg_rdata_next[0] = ip_1_p_32_qs;
         reg_rdata_next[1] = ip_1_p_33_qs;
         reg_rdata_next[2] = ip_1_p_34_qs;
@@ -4292,7 +4355,7 @@ module rv_plic_mio_reg_top (
         reg_rdata_next[6] = ip_1_p_38_qs;
       end
 
-      addr_hit[41]: begin
+      racl_addr_hit_read[41]: begin
         reg_rdata_next[0] = ie0_0_e_0_qs;
         reg_rdata_next[1] = ie0_0_e_1_qs;
         reg_rdata_next[2] = ie0_0_e_2_qs;
@@ -4327,7 +4390,7 @@ module rv_plic_mio_reg_top (
         reg_rdata_next[31] = ie0_0_e_31_qs;
       end
 
-      addr_hit[42]: begin
+      racl_addr_hit_read[42]: begin
         reg_rdata_next[0] = ie0_1_e_32_qs;
         reg_rdata_next[1] = ie0_1_e_33_qs;
         reg_rdata_next[2] = ie0_1_e_34_qs;
@@ -4337,19 +4400,19 @@ module rv_plic_mio_reg_top (
         reg_rdata_next[6] = ie0_1_e_38_qs;
       end
 
-      addr_hit[43]: begin
+      racl_addr_hit_read[43]: begin
         reg_rdata_next[1:0] = threshold0_qs;
       end
 
-      addr_hit[44]: begin
+      racl_addr_hit_read[44]: begin
         reg_rdata_next[5:0] = cc0_qs;
       end
 
-      addr_hit[45]: begin
+      racl_addr_hit_read[45]: begin
         reg_rdata_next[0] = msip0_qs;
       end
 
-      addr_hit[46]: begin
+      racl_addr_hit_read[46]: begin
         reg_rdata_next[0] = '0;
       end
 
@@ -4374,6 +4437,8 @@ module rv_plic_mio_reg_top (
   logic unused_be;
   assign unused_wdata = ^reg_wdata;
   assign unused_be = ^reg_be;
+  logic unused_policy_sel;
+  assign unused_policy_sel = ^racl_policies_i;
 
   // Assertions for Register Interface
   `ASSERT_PULSE(wePulse, reg_we, clk_i, !rst_ni)

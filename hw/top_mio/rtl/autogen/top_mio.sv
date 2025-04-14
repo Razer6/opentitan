@@ -180,7 +180,7 @@ module top_mio #(
   // local parameters for sram_ctrl_mbox
   localparam int SramCtrlMboxOutstanding = 6;
   // local parameters for racl_ctrl
-  localparam int RaclCtrlNumSubscribingIps = 8;
+  localparam int RaclCtrlNumSubscribingIps = 17;
 
   // Signals
 
@@ -353,6 +353,9 @@ module top_mio #(
 
 
   rv_timer #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_RV_TIMER),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[0:0])
   ) u_rv_timer (
 
@@ -363,8 +366,8 @@ module top_mio #(
       .alert_rx_i  ( outgoing_alert_mio_rx_i[0:0] ),
 
       // Inter-module signals
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[0]),
       .tl_i(rv_timer_tl_req),
       .tl_o(rv_timer_tl_rsp),
 
@@ -373,6 +376,9 @@ module top_mio #(
       .rst_ni (rst_ext_rst_io_div4_i)
   );
   aon_timer #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AON_TIMER_AON),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[1:1])
   ) u_aon_timer_aon (
 
@@ -389,8 +395,8 @@ module top_mio #(
       .aon_timer_rst_req_o(),
       .lc_escalate_en_i(mio_soc_proxy_lc_escalate_en),
       .sleep_mode_i('0),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[1]),
       .tl_i(aon_timer_aon_tl_req),
       .tl_o(aon_timer_aon_tl_rsp),
 
@@ -427,6 +433,9 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   sram_ctrl #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_SRAM_CTRL_RET_AON_REGS),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[2:2]),
     .RndCnstSramKey(RndCnstSramCtrlRetAonSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlRetAonSramNonce),
@@ -454,8 +463,8 @@ module top_mio #(
       .lc_escalate_en_i(mio_soc_proxy_lc_escalate_en),
       .lc_hw_debug_en_i(mio_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[2]),
       .racl_policy_sel_ranges_ram_i({SramCtrlRetAonRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_ret_aon_regs_tl_req),
@@ -470,6 +479,9 @@ module top_mio #(
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
   rv_dm #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_RV_DM_REGS),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[3:3]),
     .IdcodeValue(RvDmIdcodeValue),
     .UseDmiInterface(RvDmUseDmiInterface),
@@ -496,8 +508,8 @@ module top_mio #(
       .lc_check_byp_en_i(lc_check_byp_en_i),
       .strap_en_i(rv_dm_strap_en_i),
       .strap_en_override_i(rv_dm_strap_en_override_i),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[3]),
       .sba_tl_h_o(mio_main_tl_rv_dm__sba_req),
       .sba_tl_h_i(mio_main_tl_rv_dm__sba_rsp),
       .regs_tl_d_i(rv_dm_regs_tl_d_req),
@@ -516,6 +528,9 @@ module top_mio #(
       .rst_lc_ni (rst_ext_rst_main_i)
   );
   rv_plic_mio #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_RV_PLIC_MIO),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[4:4])
   ) u_rv_plic_mio (
       // External alert group "mio" [4]: fatal_fault
@@ -526,6 +541,8 @@ module top_mio #(
       .irq_o(rv_plic_mio_irq),
       .irq_id_o(),
       .msip_o(rv_plic_mio_msip),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[4]),
       .tl_i(rv_plic_mio_tl_req),
       .tl_o(rv_plic_mio_tl_rsp),
       .intr_src_i (intr_vector),
@@ -535,6 +552,9 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   sram_ctrl #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_SRAM_CTRL_MAIN_REGS),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[5:5]),
     .RndCnstSramKey(RndCnstSramCtrlMainSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlMainSramNonce),
@@ -562,8 +582,8 @@ module top_mio #(
       .lc_escalate_en_i(mio_soc_proxy_lc_escalate_en),
       .lc_hw_debug_en_i(mio_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[5]),
       .racl_policy_sel_ranges_ram_i({SramCtrlMainRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_main_regs_tl_req),
@@ -578,6 +598,9 @@ module top_mio #(
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
   sram_ctrl #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_SRAM_CTRL_MBOX_REGS),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[6:6]),
     .RndCnstSramKey(RndCnstSramCtrlMboxSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlMboxSramNonce),
@@ -605,8 +628,8 @@ module top_mio #(
       .lc_escalate_en_i(mio_soc_proxy_lc_escalate_en),
       .lc_hw_debug_en_i(mio_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[6]),
       .racl_policy_sel_ranges_ram_i({SramCtrlMboxRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_mbox_regs_tl_req),
@@ -621,6 +644,9 @@ module top_mio #(
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
   dma #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_DMA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[7:7]),
     .EnableDataIntgGen(DmaEnableDataIntgGen),
     .EnableRspDataIntgCheck(DmaEnableRspDataIntgCheck),
@@ -643,8 +669,8 @@ module top_mio #(
       .sys_i(dma_sys_rsp_i),
       .ctn_tl_h2d_o(mio_soc_proxy_dma_tl_h2d),
       .ctn_tl_d2h_i(mio_soc_proxy_dma_tl_d2h),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[7]),
       .host_tl_h_o(mio_main_tl_dma__host_req),
       .host_tl_h_i(mio_main_tl_dma__host_rsp),
       .tl_d_i(dma_tl_d_req),
@@ -658,6 +684,7 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX0_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX0_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX0_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX0_SOC_RDATA),
@@ -679,7 +706,7 @@ module top_mio #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[0]),
+      .racl_error_o(racl_ctrl_racl_error[8]),
       .sram_tl_h_o(mio_main_tl_mbx0__sram_req),
       .sram_tl_h_i(mio_main_tl_mbx0__sram_rsp),
       .core_tl_d_i(mbx0_core_tl_d_req),
@@ -694,6 +721,7 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX1_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX1_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX1_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX1_SOC_RDATA),
@@ -715,7 +743,7 @@ module top_mio #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[1]),
+      .racl_error_o(racl_ctrl_racl_error[9]),
       .sram_tl_h_o(mio_main_tl_mbx1__sram_req),
       .sram_tl_h_i(mio_main_tl_mbx1__sram_rsp),
       .core_tl_d_i(mbx1_core_tl_d_req),
@@ -730,6 +758,7 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX2_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX2_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX2_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX2_SOC_RDATA),
@@ -751,7 +780,7 @@ module top_mio #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[2]),
+      .racl_error_o(racl_ctrl_racl_error[10]),
       .sram_tl_h_o(mio_main_tl_mbx2__sram_req),
       .sram_tl_h_i(mio_main_tl_mbx2__sram_rsp),
       .core_tl_d_i(mbx2_core_tl_d_req),
@@ -766,6 +795,7 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX3_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX3_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX3_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX3_SOC_RDATA),
@@ -787,7 +817,7 @@ module top_mio #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[3]),
+      .racl_error_o(racl_ctrl_racl_error[11]),
       .sram_tl_h_o(mio_main_tl_mbx3__sram_req),
       .sram_tl_h_i(mio_main_tl_mbx3__sram_rsp),
       .core_tl_d_i(mbx3_core_tl_d_req),
@@ -802,6 +832,7 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX4_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX4_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX4_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX4_SOC_RDATA),
@@ -823,7 +854,7 @@ module top_mio #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[4]),
+      .racl_error_o(racl_ctrl_racl_error[12]),
       .sram_tl_h_o(mio_main_tl_mbx4__sram_req),
       .sram_tl_h_i(mio_main_tl_mbx4__sram_rsp),
       .core_tl_d_i(mbx4_core_tl_d_req),
@@ -838,6 +869,7 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX5_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX5_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX5_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX5_SOC_RDATA),
@@ -859,7 +891,7 @@ module top_mio #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[5]),
+      .racl_error_o(racl_ctrl_racl_error[13]),
       .sram_tl_h_o(mio_main_tl_mbx5__sram_req),
       .sram_tl_h_i(mio_main_tl_mbx5__sram_rsp),
       .core_tl_d_i(mbx5_core_tl_d_req),
@@ -874,6 +906,7 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX_PCIE0_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX_PCIE0_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_RDATA),
@@ -895,7 +928,7 @@ module top_mio #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[6]),
+      .racl_error_o(racl_ctrl_racl_error[14]),
       .sram_tl_h_o(mio_main_tl_mbx_pcie0__sram_req),
       .sram_tl_h_i(mio_main_tl_mbx_pcie0__sram_rsp),
       .core_tl_d_i(mbx_pcie0_core_tl_d_req),
@@ -955,7 +988,7 @@ module top_mio #(
       .ctn_filtered_tl_h2d_o(ac_range_check_ctn_filtered_tl_h2d),
       .ctn_filtered_tl_d2h_i(ac_range_check_ctn_filtered_tl_d2h),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[7]),
+      .racl_error_o(racl_ctrl_racl_error[15]),
       .tl_i(ac_range_check_tl_req),
       .tl_o(ac_range_check_tl_rsp),
 
@@ -965,6 +998,10 @@ module top_mio #(
       .rst_ni (rst_ext_rst_main_i)
   );
   rv_core_ibex_mio #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCfg(RACL_POLICY_SEL_VEC_RV_CORE_IBEX_MIO_CFG),
+    .RaclPolicySelWinCfgDvsimwindow(RACL_POLICY_SEL_WIN_RV_CORE_IBEX_MIO_CFG_DV_SIM_WINDOW),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[29:26]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexMioLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexMioLfsrPerm),
@@ -1032,6 +1069,8 @@ module top_mio #(
       .icache_otp_key_o(),
       .icache_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
       .fpga_info_i(fpga_info_i),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[16]),
       .corei_tl_h_o(mio_main_tl_rv_core_ibex_mio__corei_req),
       .corei_tl_h_i(mio_main_tl_rv_core_ibex_mio__corei_rsp),
       .cored_tl_h_o(mio_main_tl_rv_core_ibex_mio__cored_req),

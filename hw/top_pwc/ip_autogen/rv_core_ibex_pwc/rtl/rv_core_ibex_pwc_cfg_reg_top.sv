@@ -6,7 +6,13 @@
 
 `include "prim_assert.sv"
 
-module rv_core_ibex_pwc_cfg_reg_top (
+module rv_core_ibex_pwc_cfg_reg_top
+  # (
+    parameter bit          EnableRacl           = 1'b0,
+    parameter bit          RaclErrorRsp         = 1'b1,
+    parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[rv_core_ibex_pwc_reg_pkg::NumRegsCfg] =
+      '{rv_core_ibex_pwc_reg_pkg::NumRegsCfg{0}}
+  ) (
   input clk_i,
   input rst_ni,
   input  tlul_pkg::tl_h2d_t tl_i,
@@ -19,6 +25,10 @@ module rv_core_ibex_pwc_cfg_reg_top (
   // To HW
   output rv_core_ibex_pwc_reg_pkg::rv_core_ibex_pwc_cfg_reg2hw_t reg2hw, // Write
   input  rv_core_ibex_pwc_reg_pkg::rv_core_ibex_pwc_cfg_hw2reg_t hw2reg, // Read
+
+  // RACL interface
+  input  top_racl_pkg::racl_policy_vec_t racl_policies_i,
+  output top_racl_pkg::racl_error_log_t  racl_error_o,
 
   // Integrity check errors
   output logic intg_err_o
@@ -159,7 +169,8 @@ module rv_core_ibex_pwc_cfg_reg_top (
     .be_o    (reg_be),
     .busy_i  (reg_busy),
     .rdata_i (reg_rdata),
-    .error_i (reg_error)
+    // Translate RACL error to TLUL error if enabled
+    .error_i (reg_error | (RaclErrorRsp & racl_error_o.valid))
   );
 
   // cdc oversampling signals
@@ -1170,8 +1181,32 @@ module rv_core_ibex_pwc_cfg_reg_top (
 
 
   logic [24:0] addr_hit;
+  top_racl_pkg::racl_role_vec_t racl_role_vec;
+  top_racl_pkg::racl_role_t racl_role;
+
+  logic [24:0] racl_addr_hit_read;
+  logic [24:0] racl_addr_hit_write;
+
+  if (EnableRacl) begin : gen_racl_role_logic
+    // Retrieve RACL role from user bits and one-hot encode that for the comparison bitmap
+    assign racl_role = top_racl_pkg::tlul_extract_racl_role_bits(tl_i.a_user.rsvd);
+
+    prim_onehot_enc #(
+      .OneHotWidth( $bits(top_racl_pkg::racl_role_vec_t) )
+    ) u_racl_role_encode (
+      .in_i ( racl_role     ),
+      .en_i ( 1'b1          ),
+      .out_o( racl_role_vec )
+    );
+  end else begin : gen_no_racl_role_logic
+    assign racl_role     = '0;
+    assign racl_role_vec = '0;
+  end
+
   always_comb begin
     addr_hit = '0;
+    racl_addr_hit_read  = '0;
+    racl_addr_hit_write = '0;
     addr_hit[ 0] = (reg_addr == RV_CORE_IBEX_PWC_ALERT_TEST_OFFSET);
     addr_hit[ 1] = (reg_addr == RV_CORE_IBEX_PWC_SW_RECOV_ERR_OFFSET);
     addr_hit[ 2] = (reg_addr == RV_CORE_IBEX_PWC_SW_FATAL_ERR_OFFSET);
@@ -1197,42 +1232,70 @@ module rv_core_ibex_pwc_cfg_reg_top (
     addr_hit[22] = (reg_addr == RV_CORE_IBEX_PWC_RND_DATA_OFFSET);
     addr_hit[23] = (reg_addr == RV_CORE_IBEX_PWC_RND_STATUS_OFFSET);
     addr_hit[24] = (reg_addr == RV_CORE_IBEX_PWC_FPGA_INFO_OFFSET);
+
+    if (EnableRacl) begin : gen_racl_hit
+      for (int unsigned slice_idx = 0; slice_idx < 25; slice_idx++) begin
+        racl_addr_hit_read[slice_idx] =
+            addr_hit[slice_idx] & (|(racl_policies_i[RaclPolicySelVec[slice_idx]].read_perm
+                                      & racl_role_vec));
+        racl_addr_hit_write[slice_idx] =
+            addr_hit[slice_idx] & (|(racl_policies_i[RaclPolicySelVec[slice_idx]].write_perm
+                                      & racl_role_vec));
+      end
+    end else begin : gen_no_racl
+      racl_addr_hit_read  = addr_hit;
+      racl_addr_hit_write = addr_hit;
+    end
   end
 
   assign addrmiss = (reg_re || reg_we) ? ~|addr_hit : 1'b0 ;
+  // A valid address hit, access, but failed the RACL check
+  assign racl_error_o.valid = |addr_hit & ((reg_re & ~|racl_addr_hit_read) |
+                                           (reg_we & ~|racl_addr_hit_write));
+  assign racl_error_o.request_address = top_pkg::TL_AW'(reg_addr);
+  assign racl_error_o.racl_role       = racl_role;
+  assign racl_error_o.overflow        = 1'b0;
+
+  if (EnableRacl) begin : gen_racl_log
+    assign racl_error_o.ctn_uid     = top_racl_pkg::tlul_extract_ctn_uid_bits(tl_i.a_user.rsvd);
+    assign racl_error_o.read_access = tl_i.a_opcode == tlul_pkg::Get;
+  end else begin : gen_no_racl_log
+    assign racl_error_o.ctn_uid     = '0;
+    assign racl_error_o.read_access = 1'b0;
+  end
 
   // Check sub-word write is permitted
   always_comb begin
     wr_err = (reg_we &
-              ((addr_hit[ 0] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 0] & ~reg_be))) |
-               (addr_hit[ 1] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 1] & ~reg_be))) |
-               (addr_hit[ 2] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 2] & ~reg_be))) |
-               (addr_hit[ 3] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 3] & ~reg_be))) |
-               (addr_hit[ 4] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 4] & ~reg_be))) |
-               (addr_hit[ 5] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 5] & ~reg_be))) |
-               (addr_hit[ 6] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 6] & ~reg_be))) |
-               (addr_hit[ 7] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 7] & ~reg_be))) |
-               (addr_hit[ 8] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 8] & ~reg_be))) |
-               (addr_hit[ 9] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 9] & ~reg_be))) |
-               (addr_hit[10] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[10] & ~reg_be))) |
-               (addr_hit[11] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[11] & ~reg_be))) |
-               (addr_hit[12] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[12] & ~reg_be))) |
-               (addr_hit[13] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[13] & ~reg_be))) |
-               (addr_hit[14] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[14] & ~reg_be))) |
-               (addr_hit[15] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[15] & ~reg_be))) |
-               (addr_hit[16] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[16] & ~reg_be))) |
-               (addr_hit[17] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[17] & ~reg_be))) |
-               (addr_hit[18] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[18] & ~reg_be))) |
-               (addr_hit[19] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[19] & ~reg_be))) |
-               (addr_hit[20] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[20] & ~reg_be))) |
-               (addr_hit[21] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[21] & ~reg_be))) |
-               (addr_hit[22] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[22] & ~reg_be))) |
-               (addr_hit[23] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[23] & ~reg_be))) |
-               (addr_hit[24] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[24] & ~reg_be)))));
+              ((racl_addr_hit_write[ 0] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 0] & ~reg_be))) |
+               (racl_addr_hit_write[ 1] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 1] & ~reg_be))) |
+               (racl_addr_hit_write[ 2] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 2] & ~reg_be))) |
+               (racl_addr_hit_write[ 3] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 3] & ~reg_be))) |
+               (racl_addr_hit_write[ 4] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 4] & ~reg_be))) |
+               (racl_addr_hit_write[ 5] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 5] & ~reg_be))) |
+               (racl_addr_hit_write[ 6] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 6] & ~reg_be))) |
+               (racl_addr_hit_write[ 7] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 7] & ~reg_be))) |
+               (racl_addr_hit_write[ 8] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 8] & ~reg_be))) |
+               (racl_addr_hit_write[ 9] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[ 9] & ~reg_be))) |
+               (racl_addr_hit_write[10] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[10] & ~reg_be))) |
+               (racl_addr_hit_write[11] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[11] & ~reg_be))) |
+               (racl_addr_hit_write[12] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[12] & ~reg_be))) |
+               (racl_addr_hit_write[13] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[13] & ~reg_be))) |
+               (racl_addr_hit_write[14] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[14] & ~reg_be))) |
+               (racl_addr_hit_write[15] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[15] & ~reg_be))) |
+               (racl_addr_hit_write[16] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[16] & ~reg_be))) |
+               (racl_addr_hit_write[17] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[17] & ~reg_be))) |
+               (racl_addr_hit_write[18] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[18] & ~reg_be))) |
+               (racl_addr_hit_write[19] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[19] & ~reg_be))) |
+               (racl_addr_hit_write[20] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[20] & ~reg_be))) |
+               (racl_addr_hit_write[21] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[21] & ~reg_be))) |
+               (racl_addr_hit_write[22] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[22] & ~reg_be))) |
+               (racl_addr_hit_write[23] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[23] & ~reg_be))) |
+               (racl_addr_hit_write[24] & (|(RV_CORE_IBEX_PWC_CFG_PERMIT[24] & ~reg_be)))));
   end
 
   // Generate write-enables
-  assign alert_test_we = addr_hit[0] & reg_we & !reg_error;
+  assign alert_test_we = racl_addr_hit_write[0] & reg_we & !reg_error;
 
   assign alert_test_fatal_sw_err_wd = reg_wdata[0];
 
@@ -1241,71 +1304,71 @@ module rv_core_ibex_pwc_cfg_reg_top (
   assign alert_test_fatal_hw_err_wd = reg_wdata[2];
 
   assign alert_test_recov_hw_err_wd = reg_wdata[3];
-  assign sw_recov_err_we = addr_hit[1] & reg_we & !reg_error;
+  assign sw_recov_err_we = racl_addr_hit_write[1] & reg_we & !reg_error;
 
   assign sw_recov_err_wd = reg_wdata[3:0];
-  assign sw_fatal_err_we = addr_hit[2] & reg_we & !reg_error;
+  assign sw_fatal_err_we = racl_addr_hit_write[2] & reg_we & !reg_error;
 
   assign sw_fatal_err_wd = reg_wdata[3:0];
-  assign ibus_regwen_0_we = addr_hit[3] & reg_we & !reg_error;
+  assign ibus_regwen_0_we = racl_addr_hit_write[3] & reg_we & !reg_error;
 
   assign ibus_regwen_0_wd = reg_wdata[0];
-  assign ibus_regwen_1_we = addr_hit[4] & reg_we & !reg_error;
+  assign ibus_regwen_1_we = racl_addr_hit_write[4] & reg_we & !reg_error;
 
   assign ibus_regwen_1_wd = reg_wdata[0];
-  assign ibus_addr_en_0_we = addr_hit[5] & reg_we & !reg_error;
+  assign ibus_addr_en_0_we = racl_addr_hit_write[5] & reg_we & !reg_error;
 
   assign ibus_addr_en_0_wd = reg_wdata[0];
-  assign ibus_addr_en_1_we = addr_hit[6] & reg_we & !reg_error;
+  assign ibus_addr_en_1_we = racl_addr_hit_write[6] & reg_we & !reg_error;
 
   assign ibus_addr_en_1_wd = reg_wdata[0];
-  assign ibus_addr_matching_0_we = addr_hit[7] & reg_we & !reg_error;
+  assign ibus_addr_matching_0_we = racl_addr_hit_write[7] & reg_we & !reg_error;
 
   assign ibus_addr_matching_0_wd = reg_wdata[31:0];
-  assign ibus_addr_matching_1_we = addr_hit[8] & reg_we & !reg_error;
+  assign ibus_addr_matching_1_we = racl_addr_hit_write[8] & reg_we & !reg_error;
 
   assign ibus_addr_matching_1_wd = reg_wdata[31:0];
-  assign ibus_remap_addr_0_we = addr_hit[9] & reg_we & !reg_error;
+  assign ibus_remap_addr_0_we = racl_addr_hit_write[9] & reg_we & !reg_error;
 
   assign ibus_remap_addr_0_wd = reg_wdata[31:0];
-  assign ibus_remap_addr_1_we = addr_hit[10] & reg_we & !reg_error;
+  assign ibus_remap_addr_1_we = racl_addr_hit_write[10] & reg_we & !reg_error;
 
   assign ibus_remap_addr_1_wd = reg_wdata[31:0];
-  assign dbus_regwen_0_we = addr_hit[11] & reg_we & !reg_error;
+  assign dbus_regwen_0_we = racl_addr_hit_write[11] & reg_we & !reg_error;
 
   assign dbus_regwen_0_wd = reg_wdata[0];
-  assign dbus_regwen_1_we = addr_hit[12] & reg_we & !reg_error;
+  assign dbus_regwen_1_we = racl_addr_hit_write[12] & reg_we & !reg_error;
 
   assign dbus_regwen_1_wd = reg_wdata[0];
-  assign dbus_addr_en_0_we = addr_hit[13] & reg_we & !reg_error;
+  assign dbus_addr_en_0_we = racl_addr_hit_write[13] & reg_we & !reg_error;
 
   assign dbus_addr_en_0_wd = reg_wdata[0];
-  assign dbus_addr_en_1_we = addr_hit[14] & reg_we & !reg_error;
+  assign dbus_addr_en_1_we = racl_addr_hit_write[14] & reg_we & !reg_error;
 
   assign dbus_addr_en_1_wd = reg_wdata[0];
-  assign dbus_addr_matching_0_we = addr_hit[15] & reg_we & !reg_error;
+  assign dbus_addr_matching_0_we = racl_addr_hit_write[15] & reg_we & !reg_error;
 
   assign dbus_addr_matching_0_wd = reg_wdata[31:0];
-  assign dbus_addr_matching_1_we = addr_hit[16] & reg_we & !reg_error;
+  assign dbus_addr_matching_1_we = racl_addr_hit_write[16] & reg_we & !reg_error;
 
   assign dbus_addr_matching_1_wd = reg_wdata[31:0];
-  assign dbus_remap_addr_0_we = addr_hit[17] & reg_we & !reg_error;
+  assign dbus_remap_addr_0_we = racl_addr_hit_write[17] & reg_we & !reg_error;
 
   assign dbus_remap_addr_0_wd = reg_wdata[31:0];
-  assign dbus_remap_addr_1_we = addr_hit[18] & reg_we & !reg_error;
+  assign dbus_remap_addr_1_we = racl_addr_hit_write[18] & reg_we & !reg_error;
 
   assign dbus_remap_addr_1_wd = reg_wdata[31:0];
-  assign nmi_enable_we = addr_hit[19] & reg_we & !reg_error;
+  assign nmi_enable_we = racl_addr_hit_write[19] & reg_we & !reg_error;
 
   assign nmi_enable_alert_en_wd = reg_wdata[0];
 
   assign nmi_enable_wdog_en_wd = reg_wdata[1];
-  assign nmi_state_we = addr_hit[20] & reg_we & !reg_error;
+  assign nmi_state_we = racl_addr_hit_write[20] & reg_we & !reg_error;
 
   assign nmi_state_alert_wd = reg_wdata[0];
 
   assign nmi_state_wdog_wd = reg_wdata[1];
-  assign err_status_we = addr_hit[21] & reg_we & !reg_error;
+  assign err_status_we = racl_addr_hit_write[21] & reg_we & !reg_error;
 
   assign err_status_reg_intg_err_wd = reg_wdata[0];
 
@@ -1314,9 +1377,9 @@ module rv_core_ibex_pwc_cfg_reg_top (
   assign err_status_fatal_core_err_wd = reg_wdata[9];
 
   assign err_status_recov_core_err_wd = reg_wdata[10];
-  assign rnd_data_re = addr_hit[22] & reg_re & !reg_error;
-  assign rnd_status_re = addr_hit[23] & reg_re & !reg_error;
-  assign fpga_info_re = addr_hit[24] & reg_re & !reg_error;
+  assign rnd_data_re = racl_addr_hit_read[22] & reg_re & !reg_error;
+  assign rnd_status_re = racl_addr_hit_read[23] & reg_re & !reg_error;
+  assign fpga_info_re = racl_addr_hit_read[24] & reg_re & !reg_error;
 
   // Assign write-enables to checker logic vector.
   always_comb begin
@@ -1352,112 +1415,112 @@ module rv_core_ibex_pwc_cfg_reg_top (
   always_comb begin
     reg_rdata_next = '0;
     unique case (1'b1)
-      addr_hit[0]: begin
+      racl_addr_hit_read[0]: begin
         reg_rdata_next[0] = '0;
         reg_rdata_next[1] = '0;
         reg_rdata_next[2] = '0;
         reg_rdata_next[3] = '0;
       end
 
-      addr_hit[1]: begin
+      racl_addr_hit_read[1]: begin
         reg_rdata_next[3:0] = sw_recov_err_qs;
       end
 
-      addr_hit[2]: begin
+      racl_addr_hit_read[2]: begin
         reg_rdata_next[3:0] = sw_fatal_err_qs;
       end
 
-      addr_hit[3]: begin
+      racl_addr_hit_read[3]: begin
         reg_rdata_next[0] = ibus_regwen_0_qs;
       end
 
-      addr_hit[4]: begin
+      racl_addr_hit_read[4]: begin
         reg_rdata_next[0] = ibus_regwen_1_qs;
       end
 
-      addr_hit[5]: begin
+      racl_addr_hit_read[5]: begin
         reg_rdata_next[0] = ibus_addr_en_0_qs;
       end
 
-      addr_hit[6]: begin
+      racl_addr_hit_read[6]: begin
         reg_rdata_next[0] = ibus_addr_en_1_qs;
       end
 
-      addr_hit[7]: begin
+      racl_addr_hit_read[7]: begin
         reg_rdata_next[31:0] = ibus_addr_matching_0_qs;
       end
 
-      addr_hit[8]: begin
+      racl_addr_hit_read[8]: begin
         reg_rdata_next[31:0] = ibus_addr_matching_1_qs;
       end
 
-      addr_hit[9]: begin
+      racl_addr_hit_read[9]: begin
         reg_rdata_next[31:0] = ibus_remap_addr_0_qs;
       end
 
-      addr_hit[10]: begin
+      racl_addr_hit_read[10]: begin
         reg_rdata_next[31:0] = ibus_remap_addr_1_qs;
       end
 
-      addr_hit[11]: begin
+      racl_addr_hit_read[11]: begin
         reg_rdata_next[0] = dbus_regwen_0_qs;
       end
 
-      addr_hit[12]: begin
+      racl_addr_hit_read[12]: begin
         reg_rdata_next[0] = dbus_regwen_1_qs;
       end
 
-      addr_hit[13]: begin
+      racl_addr_hit_read[13]: begin
         reg_rdata_next[0] = dbus_addr_en_0_qs;
       end
 
-      addr_hit[14]: begin
+      racl_addr_hit_read[14]: begin
         reg_rdata_next[0] = dbus_addr_en_1_qs;
       end
 
-      addr_hit[15]: begin
+      racl_addr_hit_read[15]: begin
         reg_rdata_next[31:0] = dbus_addr_matching_0_qs;
       end
 
-      addr_hit[16]: begin
+      racl_addr_hit_read[16]: begin
         reg_rdata_next[31:0] = dbus_addr_matching_1_qs;
       end
 
-      addr_hit[17]: begin
+      racl_addr_hit_read[17]: begin
         reg_rdata_next[31:0] = dbus_remap_addr_0_qs;
       end
 
-      addr_hit[18]: begin
+      racl_addr_hit_read[18]: begin
         reg_rdata_next[31:0] = dbus_remap_addr_1_qs;
       end
 
-      addr_hit[19]: begin
+      racl_addr_hit_read[19]: begin
         reg_rdata_next[0] = nmi_enable_alert_en_qs;
         reg_rdata_next[1] = nmi_enable_wdog_en_qs;
       end
 
-      addr_hit[20]: begin
+      racl_addr_hit_read[20]: begin
         reg_rdata_next[0] = nmi_state_alert_qs;
         reg_rdata_next[1] = nmi_state_wdog_qs;
       end
 
-      addr_hit[21]: begin
+      racl_addr_hit_read[21]: begin
         reg_rdata_next[0] = err_status_reg_intg_err_qs;
         reg_rdata_next[8] = err_status_fatal_intg_err_qs;
         reg_rdata_next[9] = err_status_fatal_core_err_qs;
         reg_rdata_next[10] = err_status_recov_core_err_qs;
       end
 
-      addr_hit[22]: begin
+      racl_addr_hit_read[22]: begin
         reg_rdata_next[31:0] = rnd_data_qs;
       end
 
-      addr_hit[23]: begin
+      racl_addr_hit_read[23]: begin
         reg_rdata_next[0] = rnd_status_rnd_data_valid_qs;
         reg_rdata_next[1] = rnd_status_rnd_data_fips_qs;
       end
 
-      addr_hit[24]: begin
+      racl_addr_hit_read[24]: begin
         reg_rdata_next[31:0] = fpga_info_qs;
       end
 
@@ -1482,6 +1545,8 @@ module rv_core_ibex_pwc_cfg_reg_top (
   logic unused_be;
   assign unused_wdata = ^reg_wdata;
   assign unused_be = ^reg_be;
+  logic unused_policy_sel;
+  assign unused_policy_sel = ^racl_policies_i;
 
   // Assertions for Register Interface
   `ASSERT_PULSE(wePulse, reg_we, clk_i, !rst_ni)

@@ -209,7 +209,7 @@ module top_pwc #(
   // local parameters for sram_ctrl_mbox
   localparam int SramCtrlMboxOutstanding = 6;
   // local parameters for racl_ctrl
-  localparam int RaclCtrlNumSubscribingIps = 8;
+  localparam int RaclCtrlNumSubscribingIps = 18;
 
   logic [244:0]  intr_vector;
   // Interrupt source list
@@ -390,6 +390,9 @@ module top_pwc #(
 
 
   gpio_pwc #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_GPIO),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[0:0]),
     .GpioAsyncOn(GpioGpioAsyncOn),
     .GpioAsHwStrapsEn(GpioGpioAsHwStrapsEn)
@@ -411,8 +414,8 @@ module top_pwc #(
       // Inter-module signals
       .strap_en_i(1'b0),
       .sampled_straps_o(),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[0]),
       .tl_i(gpio_tl_req),
       .tl_o(gpio_tl_rsp),
 
@@ -421,6 +424,9 @@ module top_pwc #(
       .rst_ni (rst_ext_rst_io_div4_i)
   );
   rv_timer #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_RV_TIMER),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[1:1])
   ) u_rv_timer (
 
@@ -431,8 +437,8 @@ module top_pwc #(
       .alert_rx_i  ( outgoing_alert_pwc_rx_i[1:1] ),
 
       // Inter-module signals
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[1]),
       .tl_i(rv_timer_tl_req),
       .tl_o(rv_timer_tl_rsp),
 
@@ -441,6 +447,9 @@ module top_pwc #(
       .rst_ni (rst_ext_rst_io_div4_i)
   );
   aon_timer #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AON_TIMER_AON),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[2:2])
   ) u_aon_timer_aon (
 
@@ -457,8 +466,8 @@ module top_pwc #(
       .aon_timer_rst_req_o(),
       .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
       .sleep_mode_i('0),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[2]),
       .tl_i(aon_timer_aon_tl_req),
       .tl_o(aon_timer_aon_tl_rsp),
 
@@ -497,6 +506,9 @@ module top_pwc #(
       .rst_ni (rst_ext_rst_main_i)
   );
   sram_ctrl #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_SRAM_CTRL_RET_AON_REGS),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[3:3]),
     .RndCnstSramKey(RndCnstSramCtrlRetAonSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlRetAonSramNonce),
@@ -524,8 +536,8 @@ module top_pwc #(
       .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
       .lc_hw_debug_en_i(pwc_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[3]),
       .racl_policy_sel_ranges_ram_i({SramCtrlRetAonRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_ret_aon_regs_tl_req),
@@ -540,6 +552,9 @@ module top_pwc #(
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
   rv_dm #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_RV_DM_REGS),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[4:4]),
     .IdcodeValue(RvDmIdcodeValue),
     .UseDmiInterface(RvDmUseDmiInterface),
@@ -566,8 +581,8 @@ module top_pwc #(
       .lc_check_byp_en_i(lc_check_byp_en_i),
       .strap_en_i(rv_dm_strap_en_i),
       .strap_en_override_i(rv_dm_strap_en_override_i),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[4]),
       .sba_tl_h_o(pwc_main_tl_rv_dm__sba_req),
       .sba_tl_h_i(pwc_main_tl_rv_dm__sba_rsp),
       .regs_tl_d_i(rv_dm_regs_tl_d_req),
@@ -586,6 +601,9 @@ module top_pwc #(
       .rst_lc_ni (rst_ext_rst_main_i)
   );
   rv_plic_pwc #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_RV_PLIC_PWC),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[5:5])
   ) u_rv_plic_pwc (
       // External alert group "pwc" [5]: fatal_fault
@@ -596,6 +614,8 @@ module top_pwc #(
       .irq_o(rv_plic_pwc_irq),
       .irq_id_o(),
       .msip_o(rv_plic_pwc_msip),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[5]),
       .tl_i(rv_plic_pwc_tl_req),
       .tl_o(rv_plic_pwc_tl_rsp),
       .intr_src_i (intr_vector),
@@ -605,6 +625,9 @@ module top_pwc #(
       .rst_ni (rst_ext_rst_main_i)
   );
   sram_ctrl #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_SRAM_CTRL_MAIN_REGS),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[6:6]),
     .RndCnstSramKey(RndCnstSramCtrlMainSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlMainSramNonce),
@@ -632,8 +655,8 @@ module top_pwc #(
       .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
       .lc_hw_debug_en_i(pwc_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[6]),
       .racl_policy_sel_ranges_ram_i({SramCtrlMainRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_main_regs_tl_req),
@@ -648,6 +671,9 @@ module top_pwc #(
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
   sram_ctrl #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_SRAM_CTRL_MBOX_REGS),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[7:7]),
     .RndCnstSramKey(RndCnstSramCtrlMboxSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlMboxSramNonce),
@@ -675,8 +701,8 @@ module top_pwc #(
       .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
       .lc_hw_debug_en_i(pwc_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[7]),
       .racl_policy_sel_ranges_ram_i({SramCtrlMboxRaclPolicySelRangesRamNum{top_racl_pkg::RACL_RANGE_T_DEFAULT}}),
       .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_mbox_regs_tl_req),
@@ -691,6 +717,9 @@ module top_pwc #(
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
   dma #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_DMA),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[8:8]),
     .EnableDataIntgGen(DmaEnableDataIntgGen),
     .EnableRspDataIntgCheck(DmaEnableRspDataIntgCheck),
@@ -713,8 +742,8 @@ module top_pwc #(
       .sys_i(dma_sys_rsp_i),
       .ctn_tl_h2d_o(pwc_soc_proxy_dma_tl_h2d),
       .ctn_tl_d2h_i(pwc_soc_proxy_dma_tl_d2h),
-      .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
-      .racl_error_o(),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[8]),
       .host_tl_h_o(pwc_main_tl_dma__host_req),
       .host_tl_h_i(pwc_main_tl_dma__host_rsp),
       .tl_d_i(dma_tl_d_req),
@@ -728,6 +757,7 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX0_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX0_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX0_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX0_SOC_RDATA),
@@ -749,7 +779,7 @@ module top_pwc #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[0]),
+      .racl_error_o(racl_ctrl_racl_error[9]),
       .sram_tl_h_o(pwc_main_tl_mbx0__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx0__sram_rsp),
       .core_tl_d_i(mbx0_core_tl_d_req),
@@ -764,6 +794,7 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX1_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX1_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX1_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX1_SOC_RDATA),
@@ -785,7 +816,7 @@ module top_pwc #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[1]),
+      .racl_error_o(racl_ctrl_racl_error[10]),
       .sram_tl_h_o(pwc_main_tl_mbx1__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx1__sram_rsp),
       .core_tl_d_i(mbx1_core_tl_d_req),
@@ -800,6 +831,7 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX2_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX2_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX2_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX2_SOC_RDATA),
@@ -821,7 +853,7 @@ module top_pwc #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[2]),
+      .racl_error_o(racl_ctrl_racl_error[11]),
       .sram_tl_h_o(pwc_main_tl_mbx2__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx2__sram_rsp),
       .core_tl_d_i(mbx2_core_tl_d_req),
@@ -836,6 +868,7 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX3_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX3_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX3_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX3_SOC_RDATA),
@@ -857,7 +890,7 @@ module top_pwc #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[3]),
+      .racl_error_o(racl_ctrl_racl_error[12]),
       .sram_tl_h_o(pwc_main_tl_mbx3__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx3__sram_rsp),
       .core_tl_d_i(mbx3_core_tl_d_req),
@@ -872,6 +905,7 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX4_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX4_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX4_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX4_SOC_RDATA),
@@ -893,7 +927,7 @@ module top_pwc #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[4]),
+      .racl_error_o(racl_ctrl_racl_error[13]),
       .sram_tl_h_o(pwc_main_tl_mbx4__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx4__sram_rsp),
       .core_tl_d_i(mbx4_core_tl_d_req),
@@ -908,6 +942,7 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX5_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX5_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX5_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX5_SOC_RDATA),
@@ -929,7 +964,7 @@ module top_pwc #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[5]),
+      .racl_error_o(racl_ctrl_racl_error[14]),
       .sram_tl_h_o(pwc_main_tl_mbx5__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx5__sram_rsp),
       .core_tl_d_i(mbx5_core_tl_d_req),
@@ -944,6 +979,7 @@ module top_pwc #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX_PCIE0_CORE),
     .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX_PCIE0_SOC),
     .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_WDATA),
     .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_RDATA),
@@ -965,7 +1001,7 @@ module top_pwc #(
       .doe_intr_o(),
       .doe_async_msg_support_o(),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[6]),
+      .racl_error_o(racl_ctrl_racl_error[15]),
       .sram_tl_h_o(pwc_main_tl_mbx_pcie0__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx_pcie0__sram_rsp),
       .core_tl_d_i(mbx_pcie0_core_tl_d_req),
@@ -1025,7 +1061,7 @@ module top_pwc #(
       .ctn_filtered_tl_h2d_o(ac_range_check_ctn_filtered_tl_h2d),
       .ctn_filtered_tl_d2h_i(ac_range_check_ctn_filtered_tl_d2h),
       .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[7]),
+      .racl_error_o(racl_ctrl_racl_error[16]),
       .tl_i(ac_range_check_tl_req),
       .tl_o(ac_range_check_tl_rsp),
 
@@ -1035,6 +1071,10 @@ module top_pwc #(
       .rst_ni (rst_ext_rst_main_i)
   );
   rv_core_ibex_pwc #(
+    .EnableRacl(1'b1),
+    .RaclErrorRsp(top_racl_pkg::ErrorRsp),
+    .RaclPolicySelVecCfg(RACL_POLICY_SEL_VEC_RV_CORE_IBEX_PWC_CFG),
+    .RaclPolicySelWinCfgDvsimwindow(RACL_POLICY_SEL_WIN_RV_CORE_IBEX_PWC_CFG_DV_SIM_WINDOW),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[30:27]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexPwcLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexPwcLfsrPerm),
@@ -1102,6 +1142,8 @@ module top_pwc #(
       .icache_otp_key_o(),
       .icache_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
       .fpga_info_i(fpga_info_i),
+      .racl_policies_i(racl_ctrl_racl_policies),
+      .racl_error_o(racl_ctrl_racl_error[17]),
       .corei_tl_h_o(pwc_main_tl_rv_core_ibex_pwc__corei_req),
       .corei_tl_h_i(pwc_main_tl_rv_core_ibex_pwc__corei_rsp),
       .cored_tl_h_o(pwc_main_tl_rv_core_ibex_pwc__cored_req),

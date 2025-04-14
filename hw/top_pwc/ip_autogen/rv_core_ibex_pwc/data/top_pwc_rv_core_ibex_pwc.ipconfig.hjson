@@ -5,7 +5,7 @@
   instance_name: top_pwc_rv_core_ibex_pwc
   param_values:
   {
-    racl_support: false
+    racl_support: true
     num_regions: 2
     module_instance_name: rv_core_ibex_pwc
     sim_window_address: 1088
@@ -13,9 +13,9 @@
     uniquified_modules:
     {
       gpio: gpio_pwc
+      rv_core_ibex: rv_core_ibex_pwc
       racl_ctrl: racl_ctrl_pwc
       ac_range_check: ac_range_check_pwc
-      rv_core_ibex: rv_core_ibex_pwc
       rv_plic: rv_plic_pwc
     }
   }

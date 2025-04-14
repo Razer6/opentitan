@@ -9,7 +9,7 @@
     nr_role_bits: 4
     nr_ctn_uid_bits: 5
     nr_policies: 16
-    nr_subscribing_ips: 8
+    nr_subscribing_ips: 17
     policies:
     [
       {
@@ -267,9 +267,9 @@
     topname: mio
     uniquified_modules:
     {
+      rv_core_ibex: rv_core_ibex_mio
       racl_ctrl: racl_ctrl_mio
       ac_range_check: ac_range_check_mio
-      rv_core_ibex: rv_core_ibex_mio
       rv_plic: rv_plic_mio
     }
   }

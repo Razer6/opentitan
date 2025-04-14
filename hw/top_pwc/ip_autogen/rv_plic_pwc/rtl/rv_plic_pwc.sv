@@ -24,6 +24,9 @@ module rv_plic_pwc import rv_plic_pwc_reg_pkg::*; #(
   // fully implemented yet (this would require instantiating pulse syncs
   // and routing the source clocks / resets to the PLIC).
   parameter logic [NumSrc-1:0]    LevelEdgeTrig = '0, // 0: level, 1: edge
+  parameter bit                             EnableRacl                = 1'b0,
+  parameter bit                             RaclErrorRsp              = EnableRacl,
+  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[NumRegs] = '{NumRegs{0}},
   // derived parameter
   localparam int SRCW    = $clog2(NumSrc)
 ) (
@@ -33,6 +36,10 @@ module rv_plic_pwc import rv_plic_pwc_reg_pkg::*; #(
   // Bus Interface (device)
   input  tlul_pkg::tl_h2d_t tl_i,
   output tlul_pkg::tl_d2h_t tl_o,
+
+  // RACL interface
+  input  top_racl_pkg::racl_policy_vec_t  racl_policies_i,
+  output top_racl_pkg::racl_error_log_t   racl_error_o,
 
   // Interrupt Sources
   input  [NumSrc-1:0] intr_src_i,
@@ -463,7 +470,11 @@ module rv_plic_pwc import rv_plic_pwc_reg_pkg::*; #(
   ////////////////////////
   //  Limitation of register tool prevents the module from having flexibility to parameters
   //  So, signals are manually tied at the top.
-  rv_plic_pwc_reg_top u_reg (
+  rv_plic_pwc_reg_top #(
+    .EnableRacl(EnableRacl),
+    .RaclErrorRsp(RaclErrorRsp),
+    .RaclPolicySelVec(RaclPolicySelVec)
+  ) u_reg (
     .clk_i,
     .rst_ni,
 
@@ -473,6 +484,10 @@ module rv_plic_pwc import rv_plic_pwc_reg_pkg::*; #(
     .reg2hw,
     .hw2reg,
 
+    // RACL interface
+    .racl_policies_i,
+    .racl_error_o,
+
     // SEC_CM: BUS.INTEGRITY
     .intg_err_o(alerts[0])
   );
@@ -480,6 +495,7 @@ module rv_plic_pwc import rv_plic_pwc_reg_pkg::*; #(
   // Assertions
   `ASSERT_KNOWN(TlDValidKnownO_A, tl_o.d_valid)
   `ASSERT_KNOWN(TlAReadyKnownO_A, tl_o.a_ready)
+  `ASSERT_KNOWN(RaclErrorValidKnown_A, racl_error_o.valid)
   `ASSERT_KNOWN(IrqKnownO_A, irq_o)
   `ASSERT_KNOWN(MsipKnownO_A, msip_o)
   for (genvar k = 0; k < NumTarget; k++) begin : gen_irq_id_known

@@ -98,6 +98,259 @@ package top_mio_racl_pkg;
    */
 
   /**
+   * Policy selection vector for rv_timer
+   *   TLUL interface name: None
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_RV_TIMER [10] = '{
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          //  0 ALERT_TEST       : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  1 CTRL             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  2 INTR_ENABLE0     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  3 INTR_STATE0      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  4 INTR_TEST0       : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  5 CFG0             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  6 TIMER_V_LOWER0   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  7 TIMER_V_UPPER0   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  8 COMPARE_LOWER0_0 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             //  9 COMPARE_UPPER0_0 : Policy Idx  0
+  };
+
+  /**
+   * Policy selection vector for aon_timer_aon
+   *   TLUL interface name: None
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_AON_TIMER_AON [14] = '{
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          //  0 ALERT_TEST      : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  1 WKUP_CTRL       : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  2 WKUP_THOLD_HI   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  3 WKUP_THOLD_LO   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  4 WKUP_COUNT_HI   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  5 WKUP_COUNT_LO   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  6 WDOG_REGWEN     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  7 WDOG_CTRL       : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  8 WDOG_BARK_THOLD : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  9 WDOG_BITE_THOLD : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 10 WDOG_COUNT      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 11 INTR_STATE      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 12 INTR_TEST       : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 13 WKUP_CAUSE      : Policy Idx  0
+  };
+
+  /**
+   * Policy selection vector for sram_ctrl_ret_aon
+   *   TLUL interface name: regs
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_SRAM_CTRL_RET_AON_REGS [9] = '{
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          // 0 ALERT_TEST      : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 1 STATUS          : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 2 EXEC_REGWEN     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 3 EXEC            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 4 CTRL_REGWEN     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 5 CTRL            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 6 SCR_KEY_ROTATED : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 7 READBACK_REGWEN : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 8 READBACK        : Policy Idx  0
+  };
+
+  /**
+   * Policy selection vector for rv_dm
+   *   TLUL interface name: regs
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_RV_DM_REGS [3] = '{
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          // 0 ALERT_TEST               : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 1 LATE_DEBUG_ENABLE_REGWEN : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 2 LATE_DEBUG_ENABLE        : Policy Idx  0
+  };
+
+  /**
+   * Policy selection vector for rv_plic_mio
+   *   TLUL interface name: None
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_RV_PLIC_MIO [47] = '{
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  0 PRIO_0     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  1 PRIO_1     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  2 PRIO_2     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  3 PRIO_3     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  4 PRIO_4     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  5 PRIO_5     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  6 PRIO_6     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  7 PRIO_7     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  8 PRIO_8     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  9 PRIO_9     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 10 PRIO_10    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 11 PRIO_11    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 12 PRIO_12    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 13 PRIO_13    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 14 PRIO_14    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 15 PRIO_15    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 16 PRIO_16    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 17 PRIO_17    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 18 PRIO_18    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 19 PRIO_19    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 20 PRIO_20    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 21 PRIO_21    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 22 PRIO_22    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 23 PRIO_23    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 24 PRIO_24    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 25 PRIO_25    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 26 PRIO_26    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 27 PRIO_27    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 28 PRIO_28    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 29 PRIO_29    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 30 PRIO_30    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 31 PRIO_31    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 32 PRIO_32    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 33 PRIO_33    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 34 PRIO_34    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 35 PRIO_35    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 36 PRIO_36    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 37 PRIO_37    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 38 PRIO_38    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 39 IP_0       : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 40 IP_1       : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 41 IE0_0      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 42 IE0_1      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 43 THRESHOLD0 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 44 CC0        : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 45 MSIP0      : Policy Idx  0
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY           // 46 ALERT_TEST : Policy Idx  6
+  };
+
+  /**
+   * Policy selection vector for sram_ctrl_main
+   *   TLUL interface name: regs
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_SRAM_CTRL_MAIN_REGS [9] = '{
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          // 0 ALERT_TEST      : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 1 STATUS          : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 2 EXEC_REGWEN     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 3 EXEC            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 4 CTRL_REGWEN     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 5 CTRL            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 6 SCR_KEY_ROTATED : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 7 READBACK_REGWEN : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 8 READBACK        : Policy Idx  0
+  };
+
+  /**
+   * Policy selection vector for sram_ctrl_mbox
+   *   TLUL interface name: regs
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_SRAM_CTRL_MBOX_REGS [9] = '{
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          // 0 ALERT_TEST      : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 1 STATUS          : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 2 EXEC_REGWEN     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 3 EXEC            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 4 CTRL_REGWEN     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 5 CTRL            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 6 SCR_KEY_ROTATED : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 7 READBACK_REGWEN : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 8 READBACK        : Policy Idx  0
+  };
+
+  /**
+   * Policy selection vector for dma
+   *   TLUL interface name: None
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_DMA [63] = '{
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  0 INTR_STATE                 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  1 INTR_ENABLE                : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  2 INTR_TEST                  : Policy Idx  0
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          //  3 ALERT_TEST                 : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  4 SRC_ADDR_LO                : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  5 SRC_ADDR_HI                : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  6 DST_ADDR_LO                : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  7 DST_ADDR_HI                : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  8 ADDR_SPACE_ID              : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  9 ENABLED_MEMORY_RANGE_BASE  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 10 ENABLED_MEMORY_RANGE_LIMIT : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 11 RANGE_VALID                : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 12 RANGE_REGWEN               : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 13 CFG_REGWEN                 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 14 TOTAL_DATA_SIZE            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 15 CHUNK_DATA_SIZE            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 16 TRANSFER_WIDTH             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 17 CONTROL                    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 18 SRC_CONFIG                 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 19 DST_CONFIG                 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 20 STATUS                     : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 21 ERROR_CODE                 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 22 SHA2_DIGEST_0              : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 23 SHA2_DIGEST_1              : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 24 SHA2_DIGEST_2              : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 25 SHA2_DIGEST_3              : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 26 SHA2_DIGEST_4              : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 27 SHA2_DIGEST_5              : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 28 SHA2_DIGEST_6              : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 29 SHA2_DIGEST_7              : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 30 SHA2_DIGEST_8              : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 31 SHA2_DIGEST_9              : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 32 SHA2_DIGEST_10             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 33 SHA2_DIGEST_11             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 34 SHA2_DIGEST_12             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 35 SHA2_DIGEST_13             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 36 SHA2_DIGEST_14             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 37 SHA2_DIGEST_15             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 38 HANDSHAKE_INTR_ENABLE      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 39 CLEAR_INTR_SRC             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 40 CLEAR_INTR_BUS             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 41 INTR_SRC_ADDR_0            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 42 INTR_SRC_ADDR_1            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 43 INTR_SRC_ADDR_2            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 44 INTR_SRC_ADDR_3            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 45 INTR_SRC_ADDR_4            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 46 INTR_SRC_ADDR_5            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 47 INTR_SRC_ADDR_6            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 48 INTR_SRC_ADDR_7            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 49 INTR_SRC_ADDR_8            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 50 INTR_SRC_ADDR_9            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 51 INTR_SRC_ADDR_10           : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 52 INTR_SRC_WR_VAL_0          : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 53 INTR_SRC_WR_VAL_1          : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 54 INTR_SRC_WR_VAL_2          : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 55 INTR_SRC_WR_VAL_3          : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 56 INTR_SRC_WR_VAL_4          : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 57 INTR_SRC_WR_VAL_5          : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 58 INTR_SRC_WR_VAL_6          : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 59 INTR_SRC_WR_VAL_7          : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 60 INTR_SRC_WR_VAL_8          : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 61 INTR_SRC_WR_VAL_9          : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 62 INTR_SRC_WR_VAL_10         : Policy Idx  0
+  };
+
+  /**
+   * Policy selection vector for mbx0
+   *   TLUL interface name: core
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_MBX0_CORE [17] = '{
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  0 INTR_STATE             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  1 INTR_ENABLE            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  2 INTR_TEST              : Policy Idx  0
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          //  3 ALERT_TEST             : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  4 CONTROL                : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  5 STATUS                 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  6 ADDRESS_RANGE_REGWEN   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  7 ADDRESS_RANGE_VALID    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  8 INBOUND_BASE_ADDRESS   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  9 INBOUND_LIMIT_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 10 INBOUND_WRITE_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 11 OUTBOUND_BASE_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 12 OUTBOUND_LIMIT_ADDRESS : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 13 OUTBOUND_READ_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 14 OUTBOUND_OBJECT_SIZE   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 15 DOE_INTR_MSG_ADDR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 16 DOE_INTR_MSG_DATA      : Policy Idx  0
+  };
+
+  /**
    * Policy selection vector for mbx0
    *   TLUL interface name: soc
    *   RACL group: Null
@@ -112,6 +365,31 @@ package top_mio_racl_pkg;
     RACL_POLICY_SEL_MIO_PRIVATE_POLICY;          // Policy Idx  8
   parameter racl_policy_sel_t RACL_POLICY_SEL_WIN_MBX0_SOC_RDATA =
     RACL_POLICY_SEL_MIO_PRIVATE_POLICY;          // Policy Idx  8
+
+  /**
+   * Policy selection vector for mbx1
+   *   TLUL interface name: core
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_MBX1_CORE [17] = '{
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  0 INTR_STATE             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  1 INTR_ENABLE            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  2 INTR_TEST              : Policy Idx  0
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          //  3 ALERT_TEST             : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  4 CONTROL                : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  5 STATUS                 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  6 ADDRESS_RANGE_REGWEN   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  7 ADDRESS_RANGE_VALID    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  8 INBOUND_BASE_ADDRESS   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  9 INBOUND_LIMIT_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 10 INBOUND_WRITE_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 11 OUTBOUND_BASE_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 12 OUTBOUND_LIMIT_ADDRESS : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 13 OUTBOUND_READ_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 14 OUTBOUND_OBJECT_SIZE   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 15 DOE_INTR_MSG_ADDR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 16 DOE_INTR_MSG_DATA      : Policy Idx  0
+  };
 
   /**
    * Policy selection vector for mbx1
@@ -131,6 +409,31 @@ package top_mio_racl_pkg;
 
   /**
    * Policy selection vector for mbx2
+   *   TLUL interface name: core
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_MBX2_CORE [17] = '{
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  0 INTR_STATE             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  1 INTR_ENABLE            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  2 INTR_TEST              : Policy Idx  0
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          //  3 ALERT_TEST             : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  4 CONTROL                : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  5 STATUS                 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  6 ADDRESS_RANGE_REGWEN   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  7 ADDRESS_RANGE_VALID    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  8 INBOUND_BASE_ADDRESS   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  9 INBOUND_LIMIT_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 10 INBOUND_WRITE_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 11 OUTBOUND_BASE_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 12 OUTBOUND_LIMIT_ADDRESS : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 13 OUTBOUND_READ_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 14 OUTBOUND_OBJECT_SIZE   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 15 DOE_INTR_MSG_ADDR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 16 DOE_INTR_MSG_DATA      : Policy Idx  0
+  };
+
+  /**
+   * Policy selection vector for mbx2
    *   TLUL interface name: soc
    *   RACL group: Null
    */
@@ -144,6 +447,31 @@ package top_mio_racl_pkg;
     RACL_POLICY_SEL_MIO_PRIVATE_POLICY;          // Policy Idx  8
   parameter racl_policy_sel_t RACL_POLICY_SEL_WIN_MBX2_SOC_RDATA =
     RACL_POLICY_SEL_MIO_PRIVATE_POLICY;          // Policy Idx  8
+
+  /**
+   * Policy selection vector for mbx3
+   *   TLUL interface name: core
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_MBX3_CORE [17] = '{
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  0 INTR_STATE             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  1 INTR_ENABLE            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  2 INTR_TEST              : Policy Idx  0
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          //  3 ALERT_TEST             : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  4 CONTROL                : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  5 STATUS                 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  6 ADDRESS_RANGE_REGWEN   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  7 ADDRESS_RANGE_VALID    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  8 INBOUND_BASE_ADDRESS   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  9 INBOUND_LIMIT_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 10 INBOUND_WRITE_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 11 OUTBOUND_BASE_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 12 OUTBOUND_LIMIT_ADDRESS : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 13 OUTBOUND_READ_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 14 OUTBOUND_OBJECT_SIZE   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 15 DOE_INTR_MSG_ADDR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 16 DOE_INTR_MSG_DATA      : Policy Idx  0
+  };
 
   /**
    * Policy selection vector for mbx3
@@ -163,6 +491,31 @@ package top_mio_racl_pkg;
 
   /**
    * Policy selection vector for mbx4
+   *   TLUL interface name: core
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_MBX4_CORE [17] = '{
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  0 INTR_STATE             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  1 INTR_ENABLE            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  2 INTR_TEST              : Policy Idx  0
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          //  3 ALERT_TEST             : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  4 CONTROL                : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  5 STATUS                 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  6 ADDRESS_RANGE_REGWEN   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  7 ADDRESS_RANGE_VALID    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  8 INBOUND_BASE_ADDRESS   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  9 INBOUND_LIMIT_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 10 INBOUND_WRITE_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 11 OUTBOUND_BASE_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 12 OUTBOUND_LIMIT_ADDRESS : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 13 OUTBOUND_READ_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 14 OUTBOUND_OBJECT_SIZE   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 15 DOE_INTR_MSG_ADDR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 16 DOE_INTR_MSG_DATA      : Policy Idx  0
+  };
+
+  /**
+   * Policy selection vector for mbx4
    *   TLUL interface name: soc
    *   RACL group: Null
    */
@@ -179,6 +532,31 @@ package top_mio_racl_pkg;
 
   /**
    * Policy selection vector for mbx5
+   *   TLUL interface name: core
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_MBX5_CORE [17] = '{
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  0 INTR_STATE             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  1 INTR_ENABLE            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  2 INTR_TEST              : Policy Idx  0
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          //  3 ALERT_TEST             : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  4 CONTROL                : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  5 STATUS                 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  6 ADDRESS_RANGE_REGWEN   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  7 ADDRESS_RANGE_VALID    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  8 INBOUND_BASE_ADDRESS   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  9 INBOUND_LIMIT_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 10 INBOUND_WRITE_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 11 OUTBOUND_BASE_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 12 OUTBOUND_LIMIT_ADDRESS : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 13 OUTBOUND_READ_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 14 OUTBOUND_OBJECT_SIZE   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 15 DOE_INTR_MSG_ADDR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 16 DOE_INTR_MSG_DATA      : Policy Idx  0
+  };
+
+  /**
+   * Policy selection vector for mbx5
    *   TLUL interface name: soc
    *   RACL group: Null
    */
@@ -192,6 +570,31 @@ package top_mio_racl_pkg;
     RACL_POLICY_SEL_DUC_PRIVATE_POLICY;          // Policy Idx  9
   parameter racl_policy_sel_t RACL_POLICY_SEL_WIN_MBX5_SOC_RDATA =
     RACL_POLICY_SEL_DUC_PRIVATE_POLICY;          // Policy Idx  9
+
+  /**
+   * Policy selection vector for mbx_pcie0
+   *   TLUL interface name: core
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_MBX_PCIE0_CORE [17] = '{
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  0 INTR_STATE             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  1 INTR_ENABLE            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  2 INTR_TEST              : Policy Idx  0
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          //  3 ALERT_TEST             : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  4 CONTROL                : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  5 STATUS                 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  6 ADDRESS_RANGE_REGWEN   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  7 ADDRESS_RANGE_VALID    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  8 INBOUND_BASE_ADDRESS   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  9 INBOUND_LIMIT_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 10 INBOUND_WRITE_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 11 OUTBOUND_BASE_ADDRESS  : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 12 OUTBOUND_LIMIT_ADDRESS : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 13 OUTBOUND_READ_PTR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 14 OUTBOUND_OBJECT_SIZE   : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 15 DOE_INTR_MSG_ADDR      : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 16 DOE_INTR_MSG_DATA      : Policy Idx  0
+  };
 
   /**
    * Policy selection vector for mbx_pcie0
@@ -384,5 +787,40 @@ package top_mio_racl_pkg;
     RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          // 166 RANGE_RACL_POLICY_SHADOWED_30 : Policy Idx  6
     RACL_POLICY_SEL_ROT_PRIVATE_POLICY           // 167 RANGE_RACL_POLICY_SHADOWED_31 : Policy Idx  6
   };
+
+  /**
+   * Policy selection vector for rv_core_ibex_mio
+   *   TLUL interface name: cfg
+   *   RACL group: Null
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_RV_CORE_IBEX_MIO_CFG [25] = '{
+    RACL_POLICY_SEL_ROT_PRIVATE_POLICY,          //  0 ALERT_TEST           : Policy Idx  6
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  1 SW_RECOV_ERR         : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  2 SW_FATAL_ERR         : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  3 IBUS_REGWEN_0        : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  4 IBUS_REGWEN_1        : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  5 IBUS_ADDR_EN_0       : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  6 IBUS_ADDR_EN_1       : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  7 IBUS_ADDR_MATCHING_0 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  8 IBUS_ADDR_MATCHING_1 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            //  9 IBUS_REMAP_ADDR_0    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 10 IBUS_REMAP_ADDR_1    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 11 DBUS_REGWEN_0        : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 12 DBUS_REGWEN_1        : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 13 DBUS_ADDR_EN_0       : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 14 DBUS_ADDR_EN_1       : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 15 DBUS_ADDR_MATCHING_0 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 16 DBUS_ADDR_MATCHING_1 : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 17 DBUS_REMAP_ADDR_0    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 18 DBUS_REMAP_ADDR_1    : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 19 NMI_ENABLE           : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 20 NMI_STATE            : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 21 ERR_STATUS           : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 22 RND_DATA             : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY,            // 23 RND_STATUS           : Policy Idx  0
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY             // 24 FPGA_INFO            : Policy Idx  0
+  };
+  parameter racl_policy_sel_t RACL_POLICY_SEL_WIN_RV_CORE_IBEX_MIO_CFG_DV_SIM_WINDOW =
+    RACL_POLICY_SEL_ALL_RD_WR_POLICY;            // Policy Idx  0
 
 endpackage

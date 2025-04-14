@@ -5,6 +5,7 @@
   instance_name: top_darjeeling_rv_plic
   param_values:
   {
+    racl_support: false
     module_instance_name: rv_plic
     src: 182
     target: 1
