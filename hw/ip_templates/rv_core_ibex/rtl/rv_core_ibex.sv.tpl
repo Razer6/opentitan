@@ -49,12 +49,10 @@ module ${module_instance_name}
   parameter int unsigned                    NEscalationSeverities = 4,
   parameter int unsigned                    WidthPingCounter      = 16,
 % if racl_support:
-  parameter bit                             EnableRacl                     = 1'b0,
-  parameter bit                             RaclErrorRsp                   = EnableRacl,
-  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelWinCfgDvsimwindow = 0,
-  parameter top_racl_pkg::racl_policy_sel_t
-    RaclPolicySelVecCfg[${module_instance_name}_reg_pkg::NumRegsCfg] =
-      '{${module_instance_name}_reg_pkg::NumRegsCfg{0}},
+  parameter bit                             EnableRacl             = 1'b0,
+  parameter bit                             RaclErrorRsp           = EnableRacl,
+  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[${module_instance_name}_reg_pkg::NumRegsCfg] = 
+    '{${module_instance_name}_reg_pkg::NumRegsCfg{0}},
 % endif
   parameter logic [tlul_pkg::RsvdWidth-1:0] TlulHostUserRsvdBits   = 0
 ) (
