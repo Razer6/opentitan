@@ -49,8 +49,9 @@ module ${module_instance_name}
   parameter int unsigned                    NEscalationSeverities = 4,
   parameter int unsigned                    WidthPingCounter      = 16,
 % if racl_support:
-  parameter bit                             EnableRacl             = 1'b0,
-  parameter bit                             RaclErrorRsp           = EnableRacl,
+  parameter bit                             EnableRacl                     = 1'b0,
+  parameter bit                             RaclErrorRsp                   = EnableRacl,
+  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelWinCfgDvsimwindow = 0,
   parameter top_racl_pkg::racl_policy_sel_t
     RaclPolicySelVecCfg[${module_instance_name}_reg_pkg::NumRegsCfg] =
       '{${module_instance_name}_reg_pkg::NumRegsCfg{0}},
@@ -906,6 +907,10 @@ module ${module_instance_name}
   logic unused_reg2hw;
   assign unused_reg2hw = |reg2hw.rnd_data.q;
 
+% if racl_support:
+  logic unused_param;
+  assign unused_param = ^RaclPolicySelWinCfgDvsimwindow;
+% endif
 
   // fpga build info hook-up
   assign hw2reg.fpga_info.d = fpga_info_i;
