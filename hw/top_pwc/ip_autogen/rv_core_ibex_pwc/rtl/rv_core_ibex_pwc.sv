@@ -50,8 +50,9 @@ module rv_core_ibex_pwc
   parameter int unsigned                    WidthPingCounter      = 16,
   parameter bit                             EnableRacl             = 1'b0,
   parameter bit                             RaclErrorRsp           = EnableRacl,
-  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[rv_core_ibex_pwc_reg_pkg::NumRegsCfg] = 
-    '{rv_core_ibex_pwc_reg_pkg::NumRegsCfg{0}},
+  parameter top_racl_pkg::racl_policy_sel_t
+    RaclPolicySelVecCfg[rv_core_ibex_pwc_reg_pkg::NumRegsCfg] =
+      '{rv_core_ibex_pwc_reg_pkg::NumRegsCfg{0}},
   parameter logic [tlul_pkg::RsvdWidth-1:0] TlulHostUserRsvdBits   = 0
 ) (
   // Clock and Reset
@@ -732,7 +733,7 @@ module rv_core_ibex_pwc
   rv_core_ibex_pwc_cfg_reg_top #(
     .EnableRacl(EnableRacl),
     .RaclErrorRsp(RaclErrorRsp),
-    .RaclPolicySelVec(RaclPolicySelVec)
+    .RaclPolicySelVec(RaclPolicySelVecCfg)
   ) u_reg_wrap (
     .clk_i,
     .rst_ni,
