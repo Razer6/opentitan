@@ -735,7 +735,7 @@ module rv_core_ibex_pwc
     .EnableRacl(EnableRacl),
     .RaclErrorRsp(RaclErrorRsp),
     .RaclPolicySelVec(RaclPolicySelVecCfg)
-  ) u_reg_wrap (
+  ) u_reg_cfg (
     .clk_i,
     .rst_ni,
     .tl_i(cfg_tl_d_i),
