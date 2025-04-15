@@ -5,7 +5,7 @@
 // Overall flash wrapper
 //
 
-module prim_generic_flash #(
+module prim_flash #(
   parameter int NumBanks       = 2,  // number of banks
   parameter int InfosPerBank   = 1,  // info pages per bank
   parameter int InfoTypes      = 1,  // different info types
@@ -145,4 +145,4 @@ module prim_generic_flash #(
   `ASSERT_PRIM_REG_WE_ONEHOT_ERROR_TRIGGER_ALERT(PrimRegWeOnehotCheck_A,
       u_reg_top, flash_ctrl.alert_tx_o[3])
 
-endmodule // prim_generic_flash
+endmodule // prim_flash

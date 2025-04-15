@@ -204,8 +204,9 @@ cython==3.0.12 \
     --hash=sha256:fe030d4a00afb2844f5f70896b7f2a1a0d7da09bf3aa3d884cbe5f73fff5d310 \
     --hash=sha256:feb86122a823937cc06e4c029d80ff69f082ebb0b959ab52a5af6cdd271c5dc3 \
     --hash=sha256:ff5c0b6a65b08117d0534941d404833d516dac422eee88c6b4fd55feb409a5ed
-edalize @ https://github.com/lowRISC/edalize/archive/refs/tags/v0.4.0.zip \
-    --hash=sha256:da816ef1040d8063d4aa7377ef1fea33f0bffeca1f79a68b7a8930ef9d90c7c8
+edalize==0.6.1 \
+    --hash=sha256:2773339a404310b3b076ac8bcc68cadec8c937eba5a76c0a9b941064cd5ff9d7 \
+    --hash=sha256:6617b6b817d0445a7eaa003f2e7906f910b4ee659f9330ec6faeee633238536b
 enlighten==1.14.1 \
     --hash=sha256:5fbd0c959ca1644034c41bb0ace5db19c9852cf9d721b6103f5f130663c57be8 \
     --hash=sha256:85c35412a9a4f3886b3337d41f813441fab9a30d9f5b5f0c015bd078a4411473
@@ -218,8 +219,9 @@ fastjsonschema==2.21.1 \
 flake8==7.2.0 \
     --hash=sha256:93b92ba5bdb60754a6da14fa3b93a9361fd00a59632ada61fd7b130436c40343 \
     --hash=sha256:fa558ae3f6f7dbf2b4f22663e5343b6b6023620461f8d4ff2019ef4b5ee70426
-fusesoc @ https://github.com/lowRISC/fusesoc/archive/refs/tags/ot-0.5.dev0.zip \
-    --hash=sha256:6d1d9b202748d160bc6da70ea8cf7a700ca80e1e7e4a78cbc1ec039bde595c65
+fusesoc==2.4.3 \
+    --hash=sha256:9ab4a82a5b7d4decbeb8f76049673a1b0806732ab8f807fee285bbc0452b3dc3 \
+    --hash=sha256:fc25b06cb52f516cd00c6d04c9f638205e46f3e35e840fc3f8ec00bb3a6405d5
 gitdb==4.0.12 \
     --hash=sha256:5ef71f855d191a3326fcfbc0d5da835f26b13fbcba60c32c21091c349ffdb571 \
     --hash=sha256:67073e15955400952c6565cc3e707c554a4eea2e428946f7a4c162fab9bd9bcf

@@ -4,7 +4,7 @@
 
 `include "prim_assert.sv"
 
-module prim_generic_clock_mux2 #(
+module prim_clock_mux2 #(
   parameter bit NoFpgaBufG = 1'b0 // this parameter serves no function in the generic model
 ) (
   input        clk0_i,
@@ -28,4 +28,4 @@ module prim_generic_clock_mux2 #(
   `ASSERT(selKnown1, ##1 !$isunknown(sel_i), clk1_i, 0)
 `endif
 
-endmodule : prim_generic_clock_mux2
+endmodule : prim_clock_mux2

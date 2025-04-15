@@ -24,6 +24,7 @@ filesets:
       # common waivers
       - lowrisc:lint:common
       - lowrisc:lint:comportable
+    file_type: waiver
 
   files_veriblelint_waiver:
     depend:

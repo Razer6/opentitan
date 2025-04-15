@@ -4,7 +4,7 @@
 
 `include "prim_assert.sv"
 
-module prim_generic_flop #(
+module prim_flop #(
   parameter int               Width      = 1,
   // Depth of the flop, used for pipelining. Values >= 1 lead to the corresponding number of flop
   // stages, connected in series. Values < 1 lead `q_o` to be directly connected to `d_i`.
