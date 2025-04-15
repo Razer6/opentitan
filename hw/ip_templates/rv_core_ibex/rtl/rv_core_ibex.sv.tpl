@@ -737,7 +737,7 @@ module ${module_instance_name}
   ${module_instance_name}_cfg_reg_top #(
     .EnableRacl(EnableRacl),
     .RaclErrorRsp(RaclErrorRsp),
-    .RaclPolicySelVec(RaclPolicySelVecCfg)
+    .RaclPolicySelVec(RaclPolicySelVec)
   ) u_reg_cfg (
 % else:
   ${module_instance_name}_cfg_reg_top u_reg_cfg (
