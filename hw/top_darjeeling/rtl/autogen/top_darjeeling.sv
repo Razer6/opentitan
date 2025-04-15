@@ -2873,20 +2873,26 @@ module top_darjeeling #(
   // [179]: fatal_fault
   // [180]: recov_ctrl_update_err
   // [181]: scsif_regs_err
-  // [182]: fatal_fault
-  // [183]: recov_ctrl_update_err
-  // [184]: bus_integ_err
-  // [185]: prim_fatal_err
-  // [186]: prim_recov_err
-  // [187]: apb_adapter_integ_err
+  // [182]: scsctnif0_ctn_ac_range_recov_err
+  // [183]: scsctnif0_ctn_ac_range_fatal_err
+  // [184]: scsctnif0_bcast_ac_range_recov_err
+  // [185]: scsctnif0_bcast_ac_range_fatal_err
+  // [186]: scsctnif1_ctn_ac_range_recov_err
+  // [187]: scsctnif1_ctn_ac_range_fatal_err
   // [188]: fatal_fault
   // [189]: recov_ctrl_update_err
-  // [190]: lio_group_v_integ_error
-  // [191]: fatal_fault
-  // [192]: recov_ctrl_update_err
-  // [193]: lio_group_p_integ_error
-  assign alert_tx[193:177] = incoming_alert_other_extra_alerts_tx_i;
-  assign incoming_alert_other_extra_alerts_rx_o = alert_rx[193:177];
+  // [190]: bus_integ_err
+  // [191]: prim_fatal_err
+  // [192]: prim_recov_err
+  // [193]: apb_adapter_integ_err
+  // [194]: fatal_fault
+  // [195]: recov_ctrl_update_err
+  // [196]: lio_group_v_integ_error
+  // [197]: fatal_fault
+  // [198]: recov_ctrl_update_err
+  // [199]: lio_group_p_integ_error
+  assign alert_tx[199:177] = incoming_alert_other_extra_alerts_tx_i;
+  assign incoming_alert_other_extra_alerts_rx_o = alert_rx[199:177];
 
   // interrupt assignments
   assign intr_vector = {

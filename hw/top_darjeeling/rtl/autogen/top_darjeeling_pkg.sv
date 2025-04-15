@@ -633,7 +633,7 @@ package top_darjeeling_pkg;
   parameter int unsigned NIncomingLpgsRot_extra_alerts = 1;
 
   // Number of other_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsOther_extra_alerts = 17;
+  parameter int unsigned NIncomingAlertsOther_extra_alerts = 23;
 
   // Number of LPGs for incoming alert group other_extra_alerts
   parameter int unsigned NIncomingLpgsOther_extra_alerts = 1;
