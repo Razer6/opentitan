@@ -6,3 +6,17 @@
 
 waive -rules {SAME_NAME_TYPE} -location {prim_mubi*.sv} -regexp {'ResetValue' is used as an enumeration value here, and as a parameter at prim.*} \
       -comment "Parameter name reuse"
+
+# Rivos waivers to comply with interal lint setup
+waive -rules {ANSI_PORT_DIR_REQ} -location {prim_mubi_pkg.sv} \
+      -regexp {ANSI port 'a' is declared without an explicit direction} \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}
+waive -rules {ANSI_PORT_DIR_REQ} -location {prim_mubi_pkg.sv} \
+      -regexp {ANSI port 'b' is declared without an explicit direction} \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}
+waive -rules {ANSI_PORT_DIR_REQ} -location {prim_mubi_pkg.sv} \
+      -regexp {ANSI port 'act' is declared without an explicit direction} \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}
+waive -rules {ANSI_PORT_DIR_REQ} -location {prim_mubi_pkg.sv} \
+      -regexp {ANSI port 'val' is declared without an explicit direction} \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}

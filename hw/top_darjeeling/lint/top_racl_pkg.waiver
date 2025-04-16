@@ -1,0 +1,16 @@
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+#
+# waiver file for top_racl_pkg
+
+# Rivos waivers to comply with interal lint setup
+waive -rules {ANSI_PORT_DIR_REQ} -location {top_racl_pkg.sv} \
+      -regexp {ANSI port 'rsvd' is declared without an explicit direction}      \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}
+waive -rules {ANSI_PORT_DIR_REQ} -location {top_racl_pkg.sv} \
+      -regexp {ANSI port 'racl_role' is declared without an explicit direction}      \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}
+waive -rules {ANSI_PORT_DIR_REQ} -location {top_racl_pkg.sv} \
+      -regexp {ANSI port 'ctn_uid' is declared without an explicit direction}      \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}

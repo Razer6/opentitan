@@ -16,7 +16,17 @@ filesets:
       - rtl/autogen/top_racl_pkg.sv
     file_type: systemVerilogSource
 
+  files_ascentlint_waiver:
+    depend:
+      # common waivers
+      - lowrisc:lint:common
+      - lowrisc:lint:comportable
+    files:
+      - lint/top_racl_pkg.waiver
+    file_type: waiver
+
 targets:
   default: &default_target
     filesets:
+      - tool_ascentlint  ? (files_ascentlint_waiver)
       - files_rtl

@@ -15,3 +15,15 @@ waive -rules {HIER_NET_NOT_READ} -regexp {Connected net 'tl_i.a_(address|param|u
 # TL-UL fifo
 waive -rules {HIER_BRANCH_NOT_READ} -location {tlul_fifo_sync.sv} -regexp {Connected net '(clk_i|rst_ni)' at prim_fifo_sync.sv:.* is not read from in module 'prim_fifo_sync'} \
       -comment "In passthrough mode, clk and reset are not read form within this module"
+
+# TLUL PKG
+# Rivos waivers to comply with interal lint setup
+waive -rules {ANSI_PORT_DIR_REQ} -location {tlul_pkg.sv} \
+      -regexp {ANSI port 'tl' is declared without an explicit direction}      \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}
+waive -rules {ANSI_PORT_DIR_REQ} -location {tlul_pkg.sv} \
+      -regexp {ANSI port 'data' is declared without an explicit direction}      \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}
+waive -rules {ANSI_PORT_DIR_REQ} -location {tlul_pkg.sv} \
+      -regexp {ANSI port 'user' is declared without an explicit direction}      \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}

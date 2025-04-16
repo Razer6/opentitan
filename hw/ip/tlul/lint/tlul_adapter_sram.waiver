@@ -29,3 +29,8 @@ waive -rules HIER_BRANCH_NOT_READ -location {tlul_sram_byte.sv} -regexp {Net '(c
       -comment "If EnableIntg=0, the module is just passed through"
 waive -rules INPUT_NOT_READ -location {tlul_sram_byte.sv} -regexp {Input port '(clk_i|rst_ni)' is not read from} \
       -comment "If EnableIntg=0, the module is just passed through"
+
+# Rivos waivers to comply with interal lint setup
+waive -rules {GENERATE_TYPEDEF} -location {tlul_sram_byte.sv}    \
+      -regexp {Typedef of 'tl_txn_data_t' is within a generate statement}      \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}

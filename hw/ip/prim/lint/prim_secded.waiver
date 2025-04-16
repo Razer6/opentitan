@@ -8,3 +8,8 @@ waive -rules {SAME_NAME_TYPE} -location {*} -regexp {'prim_secded_.*' is used as
       -comment "The secded functions and primitives may have the same name."
 waive -rules {SAME_NAME_TYPE} -location {*} -regexp {'prim_secded_.*' is used as a function here, and as a module at prim_secded_.*} \
       -comment "The secded functions and primitives may have the same name."
+
+# Rivos waivers to comply with interal lint setup
+waive -rules {ANSI_PORT_DIR_REQ} -location {prim_secded_pkg.sv} \
+      -regexp {ANSI port 'data_i' is declared without an explicit direction}      \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}

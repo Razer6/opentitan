@@ -9,3 +9,8 @@ waive -rules {DIVIDE} -location {prim_util_pkg.sv} -msg {Divide operation '(divi
 
 waive -rules {MODULUS} -location {prim_util_pkg.sv} -msg {Modulus operation '(dividend % divisor)' encountered} \
       -comment "Modulus allowed to compute static values."
+
+# Rivos waivers to comply with interal lint setup
+waive -rules {ANSI_PORT_DIR_REQ} -location {prim_util_pkg.sv} \
+      -regexp {ANSI port 'value' is declared without an explicit direction}      \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}

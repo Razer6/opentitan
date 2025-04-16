@@ -14,3 +14,11 @@ waive -rules {LINE_LENGTH} -location {prim_assert.sv prim_assert_sec_cm.svh}  \
       -comment "Some macros cannot be line-wrapped, as some tools do not support that."
 waive -rules {LINE_LENGTH} -location {prim_flop_macros.sv} -msg {Line length of} \
       -comment "Some macros cannot be line-wrapped, as some tools do not support that."
+
+# Rivos waivers to comply with interal lint setup
+waive -rules {SAME_NAME_TYPE} -location {prim_assert_dummy_macros.svh}    \
+      -regexp {'ASSUME' is used as a macro here, and as a parameter}      \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}
+waive -rules {SAME_NAME_TYPE} -location {prim_assert_standard_macros.svh} \
+      -regexp {'ASSUME' is used as a macro here, and as a parameter}      \
+      -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}
