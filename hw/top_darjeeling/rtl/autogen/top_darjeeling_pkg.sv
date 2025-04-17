@@ -72,14 +72,14 @@ package top_darjeeling_pkg;
   parameter int unsigned TOP_DARJEELING_OTP_CTRL_CORE_SIZE_BYTES = 32'h10000;
 
   /**
-   * Peripheral base address for prim device on otp_ctrl in top darjeeling.
+   * Peripheral base address for otp_macro in top darjeeling.
    */
-  parameter int unsigned TOP_DARJEELING_OTP_CTRL_PRIM_BASE_ADDR = 32'h30140000;
+  parameter int unsigned TOP_DARJEELING_OTP_MACRO_BASE_ADDR = 32'h30140000;
 
   /**
-   * Peripheral size in bytes for prim device on otp_ctrl in top darjeeling.
+   * Peripheral size in bytes for otp_macro in top darjeeling.
    */
-  parameter int unsigned TOP_DARJEELING_OTP_CTRL_PRIM_SIZE_BYTES = 32'h80;
+  parameter int unsigned TOP_DARJEELING_OTP_MACRO_SIZE_BYTES = 32'h20;
 
   /**
    * Peripheral base address for regs device on lc_ctrl in top darjeeling.
@@ -1215,7 +1215,7 @@ package top_darjeeling_pkg;
     MioOutSocProxySocGpo13 = 1,
     MioOutSocProxySocGpo14 = 2,
     MioOutSocProxySocGpo15 = 3,
-    MioOutOtpCtrlTest0 = 4,
+    MioOutOtpMacroTest0 = 4,
     MioOutCount = 5
   } mio_out_e;
 
@@ -1435,6 +1435,7 @@ package top_darjeeling_pkg;
     PeripheralMbxPcie1,
     PeripheralOtbn,
     PeripheralOtpCtrl,
+    PeripheralOtpMacro,
     PeripheralPinmuxAon,
     PeripheralPwrmgrAon,
     PeripheralRomCtrl0,
