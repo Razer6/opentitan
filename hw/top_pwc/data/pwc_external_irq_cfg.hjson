@@ -1467,5 +1467,69 @@
       intr_type: IntrType.Event
       default_val: false
     }
+    // IDX 183
+    {
+      name: ERS_REQ_INTERRUPT
+      module_name: PWC_ERS0_REQ0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 184
+    {
+      name: ERS_REQ_INTERRUPT
+      module_name: PWC_ERS0_REQ1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 185
+    {
+      name: ERS_REQ_INTERRUPT
+      module_name: PWC_ERS1_REQ0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 186
+    {
+      name: ERS_REQ_INTERRUPT
+      module_name: PWC_ERS1_REQ1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 187
+    {
+      name: CSTATE_ENTRY
+      module_name: PWC_CCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 188
+    {
+      name: CSTATE_EXIT
+      module_name: PWC_CCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 189
+    {
+      name: CSTATE_ENTRY
+      module_name: PWC_CCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 190
+    {
+      name: CSTATE_EXIT
+      module_name: PWC_CCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
   ]
 }

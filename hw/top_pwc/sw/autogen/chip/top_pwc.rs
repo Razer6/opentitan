@@ -908,6 +908,22 @@ pub enum PlicIrqId {
     LioGrpDIpiFromLiogrpdI3c2PeriphRstReq = 243,
     /// LIO_GRP_D_IPI_FROM_LIOGRPD_I3C2_CHIP_RST_REQ
     LioGrpDIpiFromLiogrpdI3c2ChipRstReq = 244,
+    /// PWC_ERS0_REQ0_ERS_REQ_INTERRUPT
+    PwcErs0Req0ErsReqInterrupt = 245,
+    /// PWC_ERS0_REQ1_ERS_REQ_INTERRUPT
+    PwcErs0Req1ErsReqInterrupt = 246,
+    /// PWC_ERS1_REQ0_ERS_REQ_INTERRUPT
+    PwcErs1Req0ErsReqInterrupt = 247,
+    /// PWC_ERS1_REQ1_ERS_REQ_INTERRUPT
+    PwcErs1Req1ErsReqInterrupt = 248,
+    /// PWC_CCS_0_CSTATE_ENTRY
+    PwcCcs0CstateEntry = 249,
+    /// PWC_CCS_0_CSTATE_EXIT
+    PwcCcs0CstateExit = 250,
+    /// PWC_CCS_1_CSTATE_ENTRY
+    PwcCcs1CstateEntry = 251,
+    /// PWC_CCS_1_CSTATE_EXIT
+    PwcCcs1CstateExit = 252,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -1159,6 +1175,14 @@ impl TryFrom<u32> for PlicIrqId {
             242 => Ok(Self::LioGrpDIpiFromLiogrpdI3c1ChipRstReq),
             243 => Ok(Self::LioGrpDIpiFromLiogrpdI3c2PeriphRstReq),
             244 => Ok(Self::LioGrpDIpiFromLiogrpdI3c2ChipRstReq),
+            245 => Ok(Self::PwcErs0Req0ErsReqInterrupt),
+            246 => Ok(Self::PwcErs0Req1ErsReqInterrupt),
+            247 => Ok(Self::PwcErs1Req0ErsReqInterrupt),
+            248 => Ok(Self::PwcErs1Req1ErsReqInterrupt),
+            249 => Ok(Self::PwcCcs0CstateEntry),
+            250 => Ok(Self::PwcCcs0CstateExit),
+            251 => Ok(Self::PwcCcs1CstateEntry),
+            252 => Ok(Self::PwcCcs1CstateExit),
             _ => Err(val),
         }
     }
@@ -1179,7 +1203,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 245] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 253] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // GpioGpio0 -> PlicPeripheral::Gpio
@@ -1669,6 +1693,22 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 245] = [
     // LioGrpDIpiFromLiogrpdI3c2PeriphRstReq -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // LioGrpDIpiFromLiogrpdI3c2ChipRstReq -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // PwcErs0Req0ErsReqInterrupt -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // PwcErs0Req1ErsReqInterrupt -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // PwcErs1Req0ErsReqInterrupt -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // PwcErs1Req1ErsReqInterrupt -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // PwcCcs0CstateEntry -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // PwcCcs0CstateExit -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // PwcCcs1CstateEntry -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // PwcCcs1CstateExit -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
 ];
 

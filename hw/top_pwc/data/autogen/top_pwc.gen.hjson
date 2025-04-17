@@ -2361,6 +2361,14 @@
             PRIO_242: 0
             PRIO_243: 0
             PRIO_244: 0
+            PRIO_245: 0
+            PRIO_246: 0
+            PRIO_247: 0
+            PRIO_248: 0
+            PRIO_249: 0
+            PRIO_250: 0
+            PRIO_251: 0
+            PRIO_252: 0
             IP_0: 0
             IP_1: 0
             IP_2: 0
@@ -9407,6 +9415,62 @@
         intr_type: IntrType.Event
         default_val: false
       }
+      {
+        name: ERS_REQ_INTERRUPT
+        module_name: PWC_ERS0_REQ0
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: ERS_REQ_INTERRUPT
+        module_name: PWC_ERS0_REQ1
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: ERS_REQ_INTERRUPT
+        module_name: PWC_ERS1_REQ0
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: ERS_REQ_INTERRUPT
+        module_name: PWC_ERS1_REQ1
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: CSTATE_ENTRY
+        module_name: PWC_CCS_0
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: CSTATE_EXIT
+        module_name: PWC_CCS_0
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: CSTATE_ENTRY
+        module_name: PWC_CCS_1
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: CSTATE_EXIT
+        module_name: PWC_CCS_1
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
     ]
   }
   exported_clks: {}
@@ -13744,6 +13808,86 @@
       intr_type: IntrType.Event
       default_val: false
       desc: LIO_GRP_D IPI_FROM_LIOGRPD_I3C2_CHIP_RST_REQ incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_ERS0_REQ0_ERS_REQ_INTERRUPT
+      module_name: PWC_ERS0_REQ0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_ERS0_REQ0 ERS_REQ_INTERRUPT incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_ERS0_REQ1_ERS_REQ_INTERRUPT
+      module_name: PWC_ERS0_REQ1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_ERS0_REQ1 ERS_REQ_INTERRUPT incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_ERS1_REQ0_ERS_REQ_INTERRUPT
+      module_name: PWC_ERS1_REQ0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_ERS1_REQ0 ERS_REQ_INTERRUPT incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_ERS1_REQ1_ERS_REQ_INTERRUPT
+      module_name: PWC_ERS1_REQ1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_ERS1_REQ1 ERS_REQ_INTERRUPT incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_0_CSTATE_ENTRY
+      module_name: PWC_CCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_0 CSTATE_ENTRY incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_0_CSTATE_EXIT
+      module_name: PWC_CCS_0
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_0 CSTATE_EXIT incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_1_CSTATE_ENTRY
+      module_name: PWC_CCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_1 CSTATE_ENTRY incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_CCS_1_CSTATE_EXIT
+      module_name: PWC_CCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_CCS_1 CSTATE_EXIT incoming interrupt
       incoming: true
       width: 1
     }

@@ -741,7 +741,15 @@ typedef enum top_pwc_plic_irq_id {
   kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c1ChipRstReq = 242, /**< LIO_GRP_D_IPI_FROM_LIOGRPD_I3C1_CHIP_RST_REQ */
   kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c2PeriphRstReq = 243, /**< LIO_GRP_D_IPI_FROM_LIOGRPD_I3C2_PERIPH_RST_REQ */
   kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c2ChipRstReq = 244, /**< LIO_GRP_D_IPI_FROM_LIOGRPD_I3C2_CHIP_RST_REQ */
-  kTopPwcPlicIrqIdLast = 244, /**< \internal The Last Valid Interrupt ID. */
+  kTopPwcPlicIrqIdPwcErs0Req0ErsReqInterrupt = 245, /**< PWC_ERS0_REQ0_ERS_REQ_INTERRUPT */
+  kTopPwcPlicIrqIdPwcErs0Req1ErsReqInterrupt = 246, /**< PWC_ERS0_REQ1_ERS_REQ_INTERRUPT */
+  kTopPwcPlicIrqIdPwcErs1Req0ErsReqInterrupt = 247, /**< PWC_ERS1_REQ0_ERS_REQ_INTERRUPT */
+  kTopPwcPlicIrqIdPwcErs1Req1ErsReqInterrupt = 248, /**< PWC_ERS1_REQ1_ERS_REQ_INTERRUPT */
+  kTopPwcPlicIrqIdPwcCcs0CstateEntry = 249, /**< PWC_CCS_0_CSTATE_ENTRY */
+  kTopPwcPlicIrqIdPwcCcs0CstateExit = 250, /**< PWC_CCS_0_CSTATE_EXIT */
+  kTopPwcPlicIrqIdPwcCcs1CstateEntry = 251, /**< PWC_CCS_1_CSTATE_ENTRY */
+  kTopPwcPlicIrqIdPwcCcs1CstateExit = 252, /**< PWC_CCS_1_CSTATE_EXIT */
+  kTopPwcPlicIrqIdLast = 252, /**< \internal The Last Valid Interrupt ID. */
 } top_pwc_plic_irq_id_t;
 
 /**
@@ -751,7 +759,7 @@ typedef enum top_pwc_plic_irq_id {
  * `top_pwc_plic_peripheral_t`.
  */
 extern const top_pwc_plic_peripheral_t
-    top_pwc_plic_interrupt_for_peripheral[245];
+    top_pwc_plic_interrupt_for_peripheral[253];
 
 /**
  * PLIC Interrupt Target.

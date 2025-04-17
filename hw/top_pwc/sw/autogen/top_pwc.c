@@ -16,7 +16,7 @@
  * `top_pwc_plic_peripheral_t`.
  */
 const top_pwc_plic_peripheral_t
-    top_pwc_plic_interrupt_for_peripheral[245] = {
+    top_pwc_plic_interrupt_for_peripheral[253] = {
   [kTopPwcPlicIrqIdNone] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdGpioGpio0] = kTopPwcPlicPeripheralGpio,
   [kTopPwcPlicIrqIdGpioGpio1] = kTopPwcPlicPeripheralGpio,
@@ -262,4 +262,12 @@ const top_pwc_plic_peripheral_t
   [kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c1ChipRstReq] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c2PeriphRstReq] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdLioGrpDIpiFromLiogrpdI3c2ChipRstReq] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcErs0Req0ErsReqInterrupt] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcErs0Req1ErsReqInterrupt] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcErs1Req0ErsReqInterrupt] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcErs1Req1ErsReqInterrupt] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcCcs0CstateEntry] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcCcs0CstateExit] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcCcs1CstateEntry] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcCcs1CstateExit] = kTopPwcPlicPeripheralUnknown,
 };

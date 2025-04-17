@@ -138,7 +138,7 @@ module top_pwc #(
   input  prim_mubi_pkg::mubi8_t       ac_range_check_overwrite_i,
 
   // Incoming interrupt of group pwc_external
-  input logic [182:0] incoming_interrupt_pwc_external_i,
+  input logic [190:0] incoming_interrupt_pwc_external_i,
 
   // gpio
   input logic [31:0]                               cio_gpio_gpio_p2d_i,
@@ -211,7 +211,7 @@ module top_pwc #(
   // local parameters for racl_ctrl
   localparam int RaclCtrlNumSubscribingIps = 18;
 
-  logic [244:0]  intr_vector;
+  logic [252:0]  intr_vector;
   // Interrupt source list
   logic [31:0] intr_gpio_gpio;
   logic intr_rv_timer_timer_expired_hart0_timer0;
@@ -1165,7 +1165,7 @@ module top_pwc #(
   );
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_pwc_external_i, // IDs [62 +: 183]
+      incoming_interrupt_pwc_external_i, // IDs [62 +: 191]
       intr_ac_range_check_deny_cnt_reached, // IDs [61 +: 1]
       intr_racl_ctrl_racl_error, // IDs [60 +: 1]
       intr_mbx_pcie0_mbx_error, // IDs [59 +: 1]
