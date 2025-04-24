@@ -549,16 +549,16 @@ pub enum PlicIrqId {
     LioGrpBIbexIrq = 65,
     /// LIO_GRP_C_IBEX_IRQ
     LioGrpCIbexIrq = 66,
-    /// PWC_DVFS_SocDpaFsmstatus0
-    PwcDvfsSocdpafsmstatus0 = 67,
-    /// PWC_DVFS_SocDpaFsmstatus1
-    PwcDvfsSocdpafsmstatus1 = 68,
-    /// PWC_DVFS_SocDpaFsmstatus2
-    PwcDvfsSocdpafsmstatus2 = 69,
-    /// PWC_DVFS_SocDpaFsmstatus3
-    PwcDvfsSocdpafsmstatus3 = 70,
-    /// PWC_DVFS_SocDpaFsmstatus4
-    PwcDvfsSocdpafsmstatus4 = 71,
+    /// DUC0_ducPvlReq0
+    Duc0Ducpvlreq0 = 67,
+    /// DUC1_ducPvlReq1
+    Duc1Ducpvlreq1 = 68,
+    /// DUC0_ducIvdrReq0
+    Duc0Ducivdrreq0 = 69,
+    /// DUC1_ducIvdrReq1
+    Duc1Ducivdrreq1 = 70,
+    /// PWC_spareEcoIrq0
+    PwcSpareecoirq0 = 71,
     /// PWC_DVFS_TargetCmdAVS0
     PwcDvfsTargetcmdavs0 = 72,
     /// PWC_DVFS_TargetCmdAVS1
@@ -715,18 +715,18 @@ pub enum PlicIrqId {
     PwcCcs0DvfsFsm = 148,
     /// PWC_CCS_1_DVFS_FSM
     PwcCcs1DvfsFsm = 149,
-    /// PWC_CCS_2_DVFS_FSM
-    PwcCcs2DvfsFsm = 150,
-    /// PWC_CCS_3_DVFS_FSM
-    PwcCcs3DvfsFsm = 151,
-    /// PWC_CCS_4_DVFS_FSM
-    PwcCcs4DvfsFsm = 152,
-    /// PWC_CCS_5_DVFS_FSM
-    PwcCcs5DvfsFsm = 153,
-    /// PWC_CCS_6_DVFS_FSM
-    PwcCcs6DvfsFsm = 154,
-    /// PWC_CCS_7_DVFS_FSM
-    PwcCcs7DvfsFsm = 155,
+    /// PWC_DVFS_SocDpaFsmstatus0
+    PwcDvfsSocdpafsmstatus0 = 150,
+    /// PWC_DVFS_SocDpaFsmstatus1
+    PwcDvfsSocdpafsmstatus1 = 151,
+    /// PWC_DVFS_SocDpaFsmstatus2
+    PwcDvfsSocdpafsmstatus2 = 152,
+    /// PWC_DVFS_SocDpaFsmstatus3
+    PwcDvfsSocdpafsmstatus3 = 153,
+    /// PWC_DVFS_SocDpaFsmstatus4
+    PwcDvfsSocdpafsmstatus4 = 154,
+    /// PWC_DVFS_SocDpaFsmstatus5
+    PwcDvfsSocdpafsmstatus5 = 155,
     /// PWC_HMS_East_STATUS
     PwcHmsEastStatus = 156,
     /// PWC_HMS_WEST_STATUS
@@ -919,6 +919,8 @@ pub enum PlicIrqId {
     PwcCcs1CstateEntry = 250,
     /// PWC_CCS_1_CSTATE_EXIT
     PwcCcs1CstateExit = 251,
+    /// PWC_spareEcoIrq1
+    PwcSpareecoirq1 = 252,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -992,11 +994,11 @@ impl TryFrom<u32> for PlicIrqId {
             64 => Ok(Self::LioGrpAIbexIrq),
             65 => Ok(Self::LioGrpBIbexIrq),
             66 => Ok(Self::LioGrpCIbexIrq),
-            67 => Ok(Self::PwcDvfsSocdpafsmstatus0),
-            68 => Ok(Self::PwcDvfsSocdpafsmstatus1),
-            69 => Ok(Self::PwcDvfsSocdpafsmstatus2),
-            70 => Ok(Self::PwcDvfsSocdpafsmstatus3),
-            71 => Ok(Self::PwcDvfsSocdpafsmstatus4),
+            67 => Ok(Self::Duc0Ducpvlreq0),
+            68 => Ok(Self::Duc1Ducpvlreq1),
+            69 => Ok(Self::Duc0Ducivdrreq0),
+            70 => Ok(Self::Duc1Ducivdrreq1),
+            71 => Ok(Self::PwcSpareecoirq0),
             72 => Ok(Self::PwcDvfsTargetcmdavs0),
             73 => Ok(Self::PwcDvfsTargetcmdavs1),
             74 => Ok(Self::PwcDvfsTargetcmdavs2),
@@ -1075,12 +1077,12 @@ impl TryFrom<u32> for PlicIrqId {
             147 => Ok(Self::PwcCcs7PwrVirusLvlReq),
             148 => Ok(Self::PwcCcs0DvfsFsm),
             149 => Ok(Self::PwcCcs1DvfsFsm),
-            150 => Ok(Self::PwcCcs2DvfsFsm),
-            151 => Ok(Self::PwcCcs3DvfsFsm),
-            152 => Ok(Self::PwcCcs4DvfsFsm),
-            153 => Ok(Self::PwcCcs5DvfsFsm),
-            154 => Ok(Self::PwcCcs6DvfsFsm),
-            155 => Ok(Self::PwcCcs7DvfsFsm),
+            150 => Ok(Self::PwcDvfsSocdpafsmstatus0),
+            151 => Ok(Self::PwcDvfsSocdpafsmstatus1),
+            152 => Ok(Self::PwcDvfsSocdpafsmstatus2),
+            153 => Ok(Self::PwcDvfsSocdpafsmstatus3),
+            154 => Ok(Self::PwcDvfsSocdpafsmstatus4),
+            155 => Ok(Self::PwcDvfsSocdpafsmstatus5),
             156 => Ok(Self::PwcHmsEastStatus),
             157 => Ok(Self::PwcHmsWestStatus),
             158 => Ok(Self::PwcPcs0AllPortsStatus),
@@ -1177,6 +1179,7 @@ impl TryFrom<u32> for PlicIrqId {
             249 => Ok(Self::PwcCcs0CstateExit),
             250 => Ok(Self::PwcCcs1CstateEntry),
             251 => Ok(Self::PwcCcs1CstateExit),
+            252 => Ok(Self::PwcSpareecoirq1),
             _ => Err(val),
         }
     }
@@ -1197,7 +1200,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 252] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 253] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // GpioGpio0 -> PlicPeripheral::Gpio
@@ -1332,15 +1335,15 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 252] = [
     PlicPeripheral::Unknown,
     // LioGrpCIbexIrq -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
-    // PwcDvfsSocdpafsmstatus0 -> PlicPeripheral::Unknown
+    // Duc0Ducpvlreq0 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
-    // PwcDvfsSocdpafsmstatus1 -> PlicPeripheral::Unknown
+    // Duc1Ducpvlreq1 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
-    // PwcDvfsSocdpafsmstatus2 -> PlicPeripheral::Unknown
+    // Duc0Ducivdrreq0 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
-    // PwcDvfsSocdpafsmstatus3 -> PlicPeripheral::Unknown
+    // Duc1Ducivdrreq1 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
-    // PwcDvfsSocdpafsmstatus4 -> PlicPeripheral::Unknown
+    // PwcSpareecoirq0 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // PwcDvfsTargetcmdavs0 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
@@ -1498,17 +1501,17 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 252] = [
     PlicPeripheral::Unknown,
     // PwcCcs1DvfsFsm -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
-    // PwcCcs2DvfsFsm -> PlicPeripheral::Unknown
+    // PwcDvfsSocdpafsmstatus0 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
-    // PwcCcs3DvfsFsm -> PlicPeripheral::Unknown
+    // PwcDvfsSocdpafsmstatus1 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
-    // PwcCcs4DvfsFsm -> PlicPeripheral::Unknown
+    // PwcDvfsSocdpafsmstatus2 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
-    // PwcCcs5DvfsFsm -> PlicPeripheral::Unknown
+    // PwcDvfsSocdpafsmstatus3 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
-    // PwcCcs6DvfsFsm -> PlicPeripheral::Unknown
+    // PwcDvfsSocdpafsmstatus4 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
-    // PwcCcs7DvfsFsm -> PlicPeripheral::Unknown
+    // PwcDvfsSocdpafsmstatus5 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // PwcHmsEastStatus -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
@@ -1701,6 +1704,8 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 252] = [
     // PwcCcs1CstateEntry -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // PwcCcs1CstateExit -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // PwcSpareecoirq1 -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
 ];
 

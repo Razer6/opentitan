@@ -16,7 +16,7 @@
  * `top_pwc_plic_peripheral_t`.
  */
 const top_pwc_plic_peripheral_t
-    top_pwc_plic_interrupt_for_peripheral[252] = {
+    top_pwc_plic_interrupt_for_peripheral[253] = {
   [kTopPwcPlicIrqIdNone] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdGpioGpio0] = kTopPwcPlicPeripheralGpio,
   [kTopPwcPlicIrqIdGpioGpio1] = kTopPwcPlicPeripheralGpio,
@@ -84,11 +84,11 @@ const top_pwc_plic_peripheral_t
   [kTopPwcPlicIrqIdLioGrpAIbexIrq] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdLioGrpBIbexIrq] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdLioGrpCIbexIrq] = kTopPwcPlicPeripheralUnknown,
-  [kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus0] = kTopPwcPlicPeripheralUnknown,
-  [kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus1] = kTopPwcPlicPeripheralUnknown,
-  [kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus2] = kTopPwcPlicPeripheralUnknown,
-  [kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus3] = kTopPwcPlicPeripheralUnknown,
-  [kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus4] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdDuc0Ducpvlreq0] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdDuc1Ducpvlreq1] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdDuc0Ducivdrreq0] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdDuc1Ducivdrreq1] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcSpareecoirq0] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcDvfsTargetcmdavs0] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcDvfsTargetcmdavs1] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcDvfsTargetcmdavs2] = kTopPwcPlicPeripheralUnknown,
@@ -167,12 +167,12 @@ const top_pwc_plic_peripheral_t
   [kTopPwcPlicIrqIdPwcCcs7PwrVirusLvlReq] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcCcs0DvfsFsm] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcCcs1DvfsFsm] = kTopPwcPlicPeripheralUnknown,
-  [kTopPwcPlicIrqIdPwcCcs2DvfsFsm] = kTopPwcPlicPeripheralUnknown,
-  [kTopPwcPlicIrqIdPwcCcs3DvfsFsm] = kTopPwcPlicPeripheralUnknown,
-  [kTopPwcPlicIrqIdPwcCcs4DvfsFsm] = kTopPwcPlicPeripheralUnknown,
-  [kTopPwcPlicIrqIdPwcCcs5DvfsFsm] = kTopPwcPlicPeripheralUnknown,
-  [kTopPwcPlicIrqIdPwcCcs6DvfsFsm] = kTopPwcPlicPeripheralUnknown,
-  [kTopPwcPlicIrqIdPwcCcs7DvfsFsm] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus0] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus1] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus2] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus3] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus4] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus5] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcHmsEastStatus] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcHmsWestStatus] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcPcs0AllPortsStatus] = kTopPwcPlicPeripheralUnknown,
@@ -269,4 +269,5 @@ const top_pwc_plic_peripheral_t
   [kTopPwcPlicIrqIdPwcCcs0CstateExit] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcCcs1CstateEntry] = kTopPwcPlicPeripheralUnknown,
   [kTopPwcPlicIrqIdPwcCcs1CstateExit] = kTopPwcPlicPeripheralUnknown,
+  [kTopPwcPlicIrqIdPwcSpareecoirq1] = kTopPwcPlicPeripheralUnknown,
 };

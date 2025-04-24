@@ -50,40 +50,40 @@
     }
     // IDX 6
     {
-      name: SocDpaFsmstatus0
-      module_name: PWC_DVFS
+      name: ducPvlReq0
+      module_name: DUC0
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
     }
     // IDX 7
     {
-      name: SocDpaFsmstatus1
-      module_name: PWC_DVFS
+      name: ducPvlReq1
+      module_name: DUC1
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
     }
     // IDX 8
     {
-      name: SocDpaFsmstatus2
-      module_name: PWC_DVFS
+      name: ducIvdrReq0
+      module_name: DUC0
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
     }
     // IDX 9
     {
-      name: SocDpaFsmstatus3
-      module_name: PWC_DVFS
+      name: ducIvdrReq1
+      module_name: DUC1
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
     }
     // IDX 10
     {
-      name: SocDpaFsmstatus4
-      module_name: PWC_DVFS
+      name: spareEcoIrq0
+      module_name: PWC
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
@@ -717,52 +717,100 @@
     }
     // IDX 89
     {
-      name: DVFS_FSM
-      module_name: PWC_CCS_2
+      name: SocDpaFsmstatus0
+      module_name: PWC_DVFS
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
     }
     // IDX 90
     {
-      name: DVFS_FSM
-      module_name: PWC_CCS_3
+      name: SocDpaFsmstatus1
+      module_name: PWC_DVFS
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
     }
     // IDX 91
     {
-      name: DVFS_FSM
-      module_name: PWC_CCS_4
+      name: SocDpaFsmstatus2
+      module_name: PWC_DVFS
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
     }
     // IDX 92
     {
-      name: DVFS_FSM
-      module_name: PWC_CCS_5
+      name: SocDpaFsmstatus3
+      module_name: PWC_DVFS
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
     }
     // IDX 93
     {
-      name: DVFS_FSM
-      module_name: PWC_CCS_6
+      name: SocDpaFsmstatus4
+      module_name: PWC_DVFS
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
     }
     // IDX 94
     {
-      name: DVFS_FSM
-      module_name: PWC_CCS_7
+      name: SocDpaFsmstatus5
+      module_name: PWC_DVFS
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
     }
+    // IDX 89
+    //{
+    //  name: DVFS_FSM
+    //  module_name: PWC_CCS_2
+    //  type: interrupt
+    //  intr_type: IntrType.Event
+    //  default_val: false
+    //}
+    // IDX 90
+    //{
+    //  name: DVFS_FSM
+    //  module_name: PWC_CCS_3
+    //  type: interrupt
+    //  intr_type: IntrType.Event
+    //  default_val: false
+    //}
+    // IDX 91
+    //{
+    //  name: DVFS_FSM
+    //  module_name: PWC_CCS_4
+    //  type: interrupt
+    //  intr_type: IntrType.Event
+    //  default_val: false
+    //}
+    // IDX 92
+    //{
+    //  name: DVFS_FSM
+    //  module_name: PWC_CCS_5
+    //  type: interrupt
+    //  intr_type: IntrType.Event
+    //  default_val: false
+    //}
+    // IDX 93
+    //{
+    //  name: DVFS_FSM
+    //  module_name: PWC_CCS_6
+    //  type: interrupt
+    //  intr_type: IntrType.Event
+    //  default_val: false
+    //}
+    // IDX 94
+    //{
+    //  name: DVFS_FSM
+    //  module_name: PWC_CCS_7
+    //  type: interrupt
+    //  intr_type: IntrType.Event
+    //  default_val: false
+    //}
     // IDX 95
     {
       name: East_STATUS
@@ -1527,6 +1575,14 @@
     {
       name: CSTATE_EXIT
       module_name: PWC_CCS_1
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+    }
+    // IDX 191
+    {
+      name: spareEcoIrq1
+      module_name: PWC
       type: interrupt
       intr_type: IntrType.Event
       default_val: false

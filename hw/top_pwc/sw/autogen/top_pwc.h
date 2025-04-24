@@ -562,11 +562,11 @@ typedef enum top_pwc_plic_irq_id {
   kTopPwcPlicIrqIdLioGrpAIbexIrq = 64, /**< LIO_GRP_A_IBEX_IRQ */
   kTopPwcPlicIrqIdLioGrpBIbexIrq = 65, /**< LIO_GRP_B_IBEX_IRQ */
   kTopPwcPlicIrqIdLioGrpCIbexIrq = 66, /**< LIO_GRP_C_IBEX_IRQ */
-  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus0 = 67, /**< PWC_DVFS_SocDpaFsmstatus0 */
-  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus1 = 68, /**< PWC_DVFS_SocDpaFsmstatus1 */
-  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus2 = 69, /**< PWC_DVFS_SocDpaFsmstatus2 */
-  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus3 = 70, /**< PWC_DVFS_SocDpaFsmstatus3 */
-  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus4 = 71, /**< PWC_DVFS_SocDpaFsmstatus4 */
+  kTopPwcPlicIrqIdDuc0Ducpvlreq0 = 67, /**< DUC0_ducPvlReq0 */
+  kTopPwcPlicIrqIdDuc1Ducpvlreq1 = 68, /**< DUC1_ducPvlReq1 */
+  kTopPwcPlicIrqIdDuc0Ducivdrreq0 = 69, /**< DUC0_ducIvdrReq0 */
+  kTopPwcPlicIrqIdDuc1Ducivdrreq1 = 70, /**< DUC1_ducIvdrReq1 */
+  kTopPwcPlicIrqIdPwcSpareecoirq0 = 71, /**< PWC_spareEcoIrq0 */
   kTopPwcPlicIrqIdPwcDvfsTargetcmdavs0 = 72, /**< PWC_DVFS_TargetCmdAVS0 */
   kTopPwcPlicIrqIdPwcDvfsTargetcmdavs1 = 73, /**< PWC_DVFS_TargetCmdAVS1 */
   kTopPwcPlicIrqIdPwcDvfsTargetcmdavs2 = 74, /**< PWC_DVFS_TargetCmdAVS2 */
@@ -645,12 +645,12 @@ typedef enum top_pwc_plic_irq_id {
   kTopPwcPlicIrqIdPwcCcs7PwrVirusLvlReq = 147, /**< PWC_CCS_7_PWR_VIRUS_LVL_REQ */
   kTopPwcPlicIrqIdPwcCcs0DvfsFsm = 148, /**< PWC_CCS_0_DVFS_FSM */
   kTopPwcPlicIrqIdPwcCcs1DvfsFsm = 149, /**< PWC_CCS_1_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcCcs2DvfsFsm = 150, /**< PWC_CCS_2_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcCcs3DvfsFsm = 151, /**< PWC_CCS_3_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcCcs4DvfsFsm = 152, /**< PWC_CCS_4_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcCcs5DvfsFsm = 153, /**< PWC_CCS_5_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcCcs6DvfsFsm = 154, /**< PWC_CCS_6_DVFS_FSM */
-  kTopPwcPlicIrqIdPwcCcs7DvfsFsm = 155, /**< PWC_CCS_7_DVFS_FSM */
+  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus0 = 150, /**< PWC_DVFS_SocDpaFsmstatus0 */
+  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus1 = 151, /**< PWC_DVFS_SocDpaFsmstatus1 */
+  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus2 = 152, /**< PWC_DVFS_SocDpaFsmstatus2 */
+  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus3 = 153, /**< PWC_DVFS_SocDpaFsmstatus3 */
+  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus4 = 154, /**< PWC_DVFS_SocDpaFsmstatus4 */
+  kTopPwcPlicIrqIdPwcDvfsSocdpafsmstatus5 = 155, /**< PWC_DVFS_SocDpaFsmstatus5 */
   kTopPwcPlicIrqIdPwcHmsEastStatus = 156, /**< PWC_HMS_East_STATUS */
   kTopPwcPlicIrqIdPwcHmsWestStatus = 157, /**< PWC_HMS_WEST_STATUS */
   kTopPwcPlicIrqIdPwcPcs0AllPortsStatus = 158, /**< PWC_PCS_0_ALL_PORTS_STATUS */
@@ -747,7 +747,8 @@ typedef enum top_pwc_plic_irq_id {
   kTopPwcPlicIrqIdPwcCcs0CstateExit = 249, /**< PWC_CCS_0_CSTATE_EXIT */
   kTopPwcPlicIrqIdPwcCcs1CstateEntry = 250, /**< PWC_CCS_1_CSTATE_ENTRY */
   kTopPwcPlicIrqIdPwcCcs1CstateExit = 251, /**< PWC_CCS_1_CSTATE_EXIT */
-  kTopPwcPlicIrqIdLast = 251, /**< \internal The Last Valid Interrupt ID. */
+  kTopPwcPlicIrqIdPwcSpareecoirq1 = 252, /**< PWC_spareEcoIrq1 */
+  kTopPwcPlicIrqIdLast = 252, /**< \internal The Last Valid Interrupt ID. */
 } top_pwc_plic_irq_id_t;
 
 /**
@@ -757,7 +758,7 @@ typedef enum top_pwc_plic_irq_id {
  * `top_pwc_plic_peripheral_t`.
  */
 extern const top_pwc_plic_peripheral_t
-    top_pwc_plic_interrupt_for_peripheral[252];
+    top_pwc_plic_interrupt_for_peripheral[253];
 
 /**
  * PLIC Interrupt Target.

@@ -2368,6 +2368,7 @@
             PRIO_249: 0
             PRIO_250: 0
             PRIO_251: 0
+            PRIO_252: 0
             IP_0: 0
             IP_1: 0
             IP_2: 0
@@ -8177,36 +8178,36 @@
         default_val: false
       }
       {
-        name: SocDpaFsmstatus0
-        module_name: PWC_DVFS
+        name: ducPvlReq0
+        module_name: DUC0
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
       }
       {
-        name: SocDpaFsmstatus1
-        module_name: PWC_DVFS
+        name: ducPvlReq1
+        module_name: DUC1
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
       }
       {
-        name: SocDpaFsmstatus2
-        module_name: PWC_DVFS
+        name: ducIvdrReq0
+        module_name: DUC0
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
       }
       {
-        name: SocDpaFsmstatus3
-        module_name: PWC_DVFS
+        name: ducIvdrReq1
+        module_name: DUC1
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
       }
       {
-        name: SocDpaFsmstatus4
-        module_name: PWC_DVFS
+        name: spareEcoIrq0
+        module_name: PWC
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
@@ -8758,43 +8759,43 @@
         default_val: false
       }
       {
-        name: DVFS_FSM
-        module_name: PWC_CCS_2
+        name: SocDpaFsmstatus0
+        module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
       }
       {
-        name: DVFS_FSM
-        module_name: PWC_CCS_3
+        name: SocDpaFsmstatus1
+        module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
       }
       {
-        name: DVFS_FSM
-        module_name: PWC_CCS_4
+        name: SocDpaFsmstatus2
+        module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
       }
       {
-        name: DVFS_FSM
-        module_name: PWC_CCS_5
+        name: SocDpaFsmstatus3
+        module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
       }
       {
-        name: DVFS_FSM
-        module_name: PWC_CCS_6
+        name: SocDpaFsmstatus4
+        module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
       }
       {
-        name: DVFS_FSM
-        module_name: PWC_CCS_7
+        name: SocDpaFsmstatus5
+        module_name: PWC_DVFS
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
@@ -9467,6 +9468,13 @@
       {
         name: CSTATE_EXIT
         module_name: PWC_CCS_1
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: spareEcoIrq1
+        module_name: PWC
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
@@ -12032,52 +12040,52 @@
       width: 1
     }
     {
-      name: PWC_DVFS_SocDpaFsmstatus0
-      module_name: PWC_DVFS
+      name: DUC0_ducPvlReq0
+      module_name: DUC0
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: PWC_DVFS SocDpaFsmstatus0 incoming interrupt
+      desc: DUC0 ducPvlReq0 incoming interrupt
       incoming: true
       width: 1
     }
     {
-      name: PWC_DVFS_SocDpaFsmstatus1
-      module_name: PWC_DVFS
+      name: DUC1_ducPvlReq1
+      module_name: DUC1
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: PWC_DVFS SocDpaFsmstatus1 incoming interrupt
+      desc: DUC1 ducPvlReq1 incoming interrupt
       incoming: true
       width: 1
     }
     {
-      name: PWC_DVFS_SocDpaFsmstatus2
-      module_name: PWC_DVFS
+      name: DUC0_ducIvdrReq0
+      module_name: DUC0
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: PWC_DVFS SocDpaFsmstatus2 incoming interrupt
+      desc: DUC0 ducIvdrReq0 incoming interrupt
       incoming: true
       width: 1
     }
     {
-      name: PWC_DVFS_SocDpaFsmstatus3
-      module_name: PWC_DVFS
+      name: DUC1_ducIvdrReq1
+      module_name: DUC1
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: PWC_DVFS SocDpaFsmstatus3 incoming interrupt
+      desc: DUC1 ducIvdrReq1 incoming interrupt
       incoming: true
       width: 1
     }
     {
-      name: PWC_DVFS_SocDpaFsmstatus4
-      module_name: PWC_DVFS
+      name: PWC_spareEcoIrq0
+      module_name: PWC
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: PWC_DVFS SocDpaFsmstatus4 incoming interrupt
+      desc: PWC spareEcoIrq0 incoming interrupt
       incoming: true
       width: 1
     }
@@ -12862,62 +12870,62 @@
       width: 1
     }
     {
-      name: PWC_CCS_2_DVFS_FSM
-      module_name: PWC_CCS_2
+      name: PWC_DVFS_SocDpaFsmstatus0
+      module_name: PWC_DVFS
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: PWC_CCS_2 DVFS_FSM incoming interrupt
+      desc: PWC_DVFS SocDpaFsmstatus0 incoming interrupt
       incoming: true
       width: 1
     }
     {
-      name: PWC_CCS_3_DVFS_FSM
-      module_name: PWC_CCS_3
+      name: PWC_DVFS_SocDpaFsmstatus1
+      module_name: PWC_DVFS
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: PWC_CCS_3 DVFS_FSM incoming interrupt
+      desc: PWC_DVFS SocDpaFsmstatus1 incoming interrupt
       incoming: true
       width: 1
     }
     {
-      name: PWC_CCS_4_DVFS_FSM
-      module_name: PWC_CCS_4
+      name: PWC_DVFS_SocDpaFsmstatus2
+      module_name: PWC_DVFS
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: PWC_CCS_4 DVFS_FSM incoming interrupt
+      desc: PWC_DVFS SocDpaFsmstatus2 incoming interrupt
       incoming: true
       width: 1
     }
     {
-      name: PWC_CCS_5_DVFS_FSM
-      module_name: PWC_CCS_5
+      name: PWC_DVFS_SocDpaFsmstatus3
+      module_name: PWC_DVFS
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: PWC_CCS_5 DVFS_FSM incoming interrupt
+      desc: PWC_DVFS SocDpaFsmstatus3 incoming interrupt
       incoming: true
       width: 1
     }
     {
-      name: PWC_CCS_6_DVFS_FSM
-      module_name: PWC_CCS_6
+      name: PWC_DVFS_SocDpaFsmstatus4
+      module_name: PWC_DVFS
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: PWC_CCS_6 DVFS_FSM incoming interrupt
+      desc: PWC_DVFS SocDpaFsmstatus4 incoming interrupt
       incoming: true
       width: 1
     }
     {
-      name: PWC_CCS_7_DVFS_FSM
-      module_name: PWC_CCS_7
+      name: PWC_DVFS_SocDpaFsmstatus5
+      module_name: PWC_DVFS
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: PWC_CCS_7 DVFS_FSM incoming interrupt
+      desc: PWC_DVFS SocDpaFsmstatus5 incoming interrupt
       incoming: true
       width: 1
     }
@@ -13878,6 +13886,16 @@
       intr_type: IntrType.Event
       default_val: false
       desc: PWC_CCS_1 CSTATE_EXIT incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: PWC_spareEcoIrq1
+      module_name: PWC
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC spareEcoIrq1 incoming interrupt
       incoming: true
       width: 1
     }
