@@ -4,14 +4,19 @@
 
 package prim_diff_pkg;
 
-// Struct for a differentially encoded signal
-typedef struct packed {
-  logic p;
-  logic n;
-} diff_t;
+  // Struct for a differentially encoded signal
+  typedef struct packed {
+    logic p;
+    logic n;
+  } diff_t;
+
+  // Default zero-parameter for a differentially encoded signal
+  parameter diff_t DIFF_DEFAULT = '{
+    p: 1'b0,
+    n: 1'b1
+  };
 
 endpackage
-
 // Local Variables:
 // fill-column:1
 // verilog-auto-arg-sort:t
