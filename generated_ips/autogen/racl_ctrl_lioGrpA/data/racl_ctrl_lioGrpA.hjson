@@ -136,6 +136,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:all_rd_wr_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_ROT_PRIVATE_POLICY_SHADOWED"
@@ -163,6 +166,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:rot_private_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED"
@@ -190,6 +196,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:hw_rot_pwc_wr_all_rd_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_PWC_PRIVATE_POLICY_SHADOWED"
@@ -217,6 +226,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:pwc_private_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_MIO_PRIVATE_POLICY_SHADOWED"
@@ -244,6 +256,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:mio_private_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_PWMPOLICY_SHADOWED"
@@ -271,6 +286,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:pwmPolicy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_GPIOPOLICY_SHADOWED"
@@ -298,6 +316,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:gpioPolicy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_UARTPOLICY_SHADOWED"
@@ -325,6 +346,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:uartPolicy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_I2C0POLICY_SHADOWED"
@@ -352,6 +376,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:i2c0Policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_I2C1POLICY_SHADOWED"
@@ -379,6 +406,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:i2c1Policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_I2C2POLICY_SHADOWED"
@@ -406,6 +436,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:i2c2Policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_I3C0POLICY_SHADOWED"
@@ -433,6 +466,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:i3c0Policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_I3C1POLICY_SHADOWED"
@@ -460,6 +496,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:i3c1Policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_I3C2POLICY_SHADOWED"
@@ -487,6 +526,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:i3c2Policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_SPIHSTPOLICY_SHADOWED"
@@ -514,6 +556,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:spihstPolicy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_SPIDEVPOLICY_SHADOWED"
@@ -541,6 +586,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpA:spidevPolicy"
+      ],
     }
     { reserved: "1" }
     { skipto: "0xE8" }

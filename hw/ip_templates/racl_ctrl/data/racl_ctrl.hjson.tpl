@@ -143,6 +143,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:${racl_group}:${policy['name']}"
+      ],
     }
     { reserved: "1" }
     % endfor

@@ -56,6 +56,7 @@ def main():
         "nr_policies":          len(racl_policies),
         'nr_subscribing_ips':   1,
         "policies":             racl_policies,
+        "racl_group":           args.racl_group,
     }
     ipconfig = {
         "instance_name":        args.instance_name,

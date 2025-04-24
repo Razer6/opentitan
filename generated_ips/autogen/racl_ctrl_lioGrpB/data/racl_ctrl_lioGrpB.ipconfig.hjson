@@ -346,5 +346,6 @@
         wr_default: 864
       }
     ]
+    racl_group: lioGrpB
   }
 }

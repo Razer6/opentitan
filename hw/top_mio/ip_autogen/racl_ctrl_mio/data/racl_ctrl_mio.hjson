@@ -136,6 +136,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:Null:all_rd_wr_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED"
@@ -163,6 +166,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:Null:hw_rot_pwc_wr_all_rd_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_PRE_BOOT_M_POLICY_SHADOWED"
@@ -190,6 +196,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:Null:pre_boot_m_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_POST_BOOT_M_POLICY_SHADOWED"
@@ -217,6 +226,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:Null:post_boot_m_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_TEE_LIMITED_POLICY_SHADOWED"
@@ -244,6 +256,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:Null:tee_limited_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_RCODE_PRIVATE_POLICY_SHADOWED"
@@ -271,6 +286,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:Null:rcode_private_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_ROT_PRIVATE_POLICY_SHADOWED"
@@ -298,6 +316,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:Null:rot_private_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_PWC_PRIVATE_POLICY_SHADOWED"
@@ -325,6 +346,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:Null:pwc_private_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_MIO_PRIVATE_POLICY_SHADOWED"
@@ -352,6 +376,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:Null:mio_private_policy"
+      ],
     }
     { reserved: "1" }
     { name: "POLICY_DUC_PRIVATE_POLICY_SHADOWED"
@@ -379,6 +406,9 @@
                 '''
         }
       ]
+      tags: [
+        "racl_ctrl_policy_name:Null:duc_private_policy"
+      ],
     }
     { reserved: "1" }
     { skipto: "0xE8" }
