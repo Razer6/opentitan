@@ -149,6 +149,18 @@ otp_json(
             name = "HW_CFG1",
             items = {
                 "EN_SRAM_IFETCH": True,
+            },
+            lock = True,
+        ),
+    ],
+)
+
+otp_json(
+    name = "otp_json_hw_cfg2",
+    partitions = [
+        otp_partition(
+            name = "HW_CFG2",
+            items = {
                 "SOC_DBG_STATE": otp_hex(CONST.SCD.SOC_DBG_PROD),
             },
             lock = True,
@@ -222,6 +234,12 @@ otp_json(
             name = "HW_CFG1",
             items = {
                 "EN_SRAM_IFETCH": True,
+            },
+            lock = True,
+        ),
+        otp_partition(
+            name = "HW_CFG2",
+            items = {
                 "SOC_DBG_STATE": otp_hex(CONST.SCD.SOC_DBG_RAW),
             },
             lock = True,
@@ -236,6 +254,12 @@ otp_json(
             name = "HW_CFG1",
             items = {
                 "EN_SRAM_IFETCH": True,
+            },
+            lock = True,
+        ),
+        otp_partition(
+            name = "HW_CFG2",
+            items = {
                 "SOC_DBG_STATE": otp_hex(CONST.SCD.SOC_DBG_PRE_PROD),
             },
             lock = True,
@@ -250,6 +274,12 @@ otp_json(
             name = "HW_CFG1",
             items = {
                 "EN_SRAM_IFETCH": True,
+            },
+            lock = True,
+        ),
+        otp_partition(
+            name = "HW_CFG2",
+            items = {
                 "SOC_DBG_STATE": otp_hex(CONST.SCD.SOC_DBG_PROD),
             },
             lock = True,

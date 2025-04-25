@@ -10,6 +10,7 @@ DARJEELING_STD_OTP_OVERLAYS_WITHOUT_SECRET_PARTITIONS = [
     "@//hw/top_darjeeling/data/otp:otp_json_owner_sw_cfg",
     "@//hw/top_darjeeling/data/otp:otp_json_hw_cfg0",
     "@//hw/top_darjeeling/data/otp:otp_json_hw_cfg1",
+    "@//hw/top_darjeeling/data/otp:otp_json_hw_cfg2",
 ]
 
 # This is a set of overlays to generate a generic, standard OTP image.
