@@ -2,8 +2,22 @@
 
 Maintainer/Owner: Robert Schilling rschilling@rivosinc.com
 
+# Updating OpenTitan
+
 This OpentTtan (OT) fork is kept in sync with upstream by cherry-picking upstream commits using [util/sync_opentitan_repo.sh](util/sync_opentitan_repo.sh).
 The script writes the commit hash of the last cherry-pick into [LAST_OPENTITAN_SYNC](LAST_OPENTITAN_SYNC).
+
+Steps to follow when updating:
+
+- opentitan repository:
+  - Check if there are any changes to `toplevel.sv.tpl` or other topgen-related templates.
+  - Update all other Rivos tops based on the toplevel template changes: e.g., top_pwc, top_mio
+  - `make -C hw top_and_cmdgen regs`
+  - `generated_ips/generate_ips.sh`
+- rvsys repository:
+  - `rvscs/scripts/genHdrALL.sh`
+  - `rvscs/dv/tests/tools/scsctl.py build --destination rvscs/images`
+  - `rvscs/dv/tests/tools/scsctl.py build --otp-image otp_gb0_imgs`
 
 ## Notable changes
 
