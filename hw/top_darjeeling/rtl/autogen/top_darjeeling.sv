@@ -295,7 +295,7 @@ module top_darjeeling #(
   input  prim_mubi_pkg::mubi4_t       tston_i,
 
   // Incoming interrupt of group rot_external
-  input logic [23:0] incoming_interrupt_rot_external_i,
+  input logic [top_darjeeling_pkg::NIncomingInterruptsRotExternal-1:0] incoming_interrupt_rot_external_i,
 
   // All externally supplied clocks
   input clk_main_i,

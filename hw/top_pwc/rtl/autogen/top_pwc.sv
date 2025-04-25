@@ -138,7 +138,7 @@ module top_pwc #(
   input  prim_mubi_pkg::mubi8_t       ac_range_check_overwrite_i,
 
   // Incoming interrupt of group pwc_external
-  input logic [191:0] incoming_interrupt_pwc_external_i,
+  input logic [top_pwc_pkg::NIncomingInterruptsPwcExternal-1:0] incoming_interrupt_pwc_external_i,
   // Outgoing interrupt of group pwc
   output logic [top_pwc_pkg::NOutgoingInterruptsPwc-1:0] outgoing_interrupt_pwc_o,
 

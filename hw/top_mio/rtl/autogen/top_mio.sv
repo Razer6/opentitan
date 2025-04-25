@@ -133,7 +133,7 @@ module top_mio #(
   input  prim_mubi_pkg::mubi8_t       ac_range_check_overwrite_i,
 
   // Incoming interrupt of group mio_external
-  input logic [8:0] incoming_interrupt_mio_external_i,
+  input logic [top_mio_pkg::NIncomingInterruptsMioExternal-1:0] incoming_interrupt_mio_external_i,
   // Outgoing interrupt of group mio
   output logic [top_mio_pkg::NOutgoingInterruptsMio-1:0] outgoing_interrupt_mio_o,
 

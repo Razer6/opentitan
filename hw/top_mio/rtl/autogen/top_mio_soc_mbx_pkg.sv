@@ -101,13 +101,13 @@ package top_mio_soc_mbx_pkg;
    */
   parameter int unsigned TOP_MIO_SOC_MBX_AC_RANGE_CHECK_SIZE_BYTES = 32'h400;
 
-  
+
   // Number of mio outgoing alerts
   parameter int unsigned NOutgoingAlertsMio = 30;
 
   // Number of LPGs for outgoing alert group mio
   parameter int unsigned NOutgoingLpgsMio = 2;
-  
+
   // Enumeration of mio outgoing alert modules
   typedef enum int unsigned {
     TopMioAlertPeripheralRvTimer = 0,
@@ -200,9 +200,6 @@ package top_mio_soc_mbx_pkg;
     1'b1
   };
 
-
-  // Number of mio outgoing interrupts
-  parameter int unsigned NOutgoingInterruptsMio = 1;
 
 
 endpackage

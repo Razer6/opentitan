@@ -21,13 +21,13 @@ package top_pwc_soc_dbg_pkg;
    */
   parameter int unsigned TOP_PWC_SOC_DBG_RV_DM_DBG_SIZE_BYTES = 32'h200;
 
-  
+
   // Number of pwc outgoing alerts
   parameter int unsigned NOutgoingAlertsPwc = 31;
 
   // Number of LPGs for outgoing alert group pwc
   parameter int unsigned NOutgoingLpgsPwc = 2;
-  
+
   // Enumeration of pwc outgoing alert modules
   typedef enum int unsigned {
     TopPwcAlertPeripheralGpio = 0,
@@ -123,9 +123,6 @@ package top_pwc_soc_dbg_pkg;
     1'b1
   };
 
-
-  // Number of pwc outgoing interrupts
-  parameter int unsigned NOutgoingInterruptsPwc = 1;
 
 
 endpackage

@@ -271,13 +271,13 @@ package top_mio_pkg;
    */
   parameter int unsigned TOP_MIO_RAM_MBOX_SIZE_BYTES = 32'h1000;
 
-  
+
   // Number of mio outgoing alerts
   parameter int unsigned NOutgoingAlertsMio = 30;
 
   // Number of LPGs for outgoing alert group mio
   parameter int unsigned NOutgoingLpgsMio = 2;
-  
+
   // Enumeration of mio outgoing alert modules
   typedef enum int unsigned {
     TopMioAlertPeripheralRvTimer = 0,
@@ -371,8 +371,72 @@ package top_mio_pkg;
   };
 
 
+  // Enumeration of interrupts
+  typedef enum int unsigned {
+    TopMioIrqIdRvTimerTimerExpiredHart0Timer0 = 1,
+    TopMioIrqIdAonTimerAonWkupTimerExpired = 2,
+    TopMioIrqIdAonTimerAonWdogTimerBark = 3,
+    TopMioIrqIdDmaDmaDone = 4,
+    TopMioIrqIdDmaDmaChunkDone = 5,
+    TopMioIrqIdDmaDmaError = 6,
+    TopMioIrqIdMbx0MbxReady = 7,
+    TopMioIrqIdMbx0MbxAbort = 8,
+    TopMioIrqIdMbx0MbxError = 9,
+    TopMioIrqIdMbx1MbxReady = 10,
+    TopMioIrqIdMbx1MbxAbort = 11,
+    TopMioIrqIdMbx1MbxError = 12,
+    TopMioIrqIdMbx2MbxReady = 13,
+    TopMioIrqIdMbx2MbxAbort = 14,
+    TopMioIrqIdMbx2MbxError = 15,
+    TopMioIrqIdMbx3MbxReady = 16,
+    TopMioIrqIdMbx3MbxAbort = 17,
+    TopMioIrqIdMbx3MbxError = 18,
+    TopMioIrqIdMbx4MbxReady = 19,
+    TopMioIrqIdMbx4MbxAbort = 20,
+    TopMioIrqIdMbx4MbxError = 21,
+    TopMioIrqIdMbx5MbxReady = 22,
+    TopMioIrqIdMbx5MbxAbort = 23,
+    TopMioIrqIdMbx5MbxError = 24,
+    TopMioIrqIdMbxPcie0MbxReady = 25,
+    TopMioIrqIdMbxPcie0MbxAbort = 26,
+    TopMioIrqIdMbxPcie0MbxError = 27,
+    TopMioIrqIdAcRangeCheckDenyCntReached = 28,
+    TopMioIrqIdMioHdrIpiFromMio0 = 29,
+    TopMioIrqIdMioHdrIpiFromMio1 = 30,
+    TopMioIrqIdMioHdrIpiFromMio2 = 31,
+    TopMioIrqIdMioHdrIpiFromRot = 32,
+    TopMioIrqIdMioHdrIpiFromPwc = 33,
+    TopMioIrqIdMioHdrIpiFromDuc = 34,
+    TopMioIrqIdLioGrpAIbexIrq = 35,
+    TopMioIrqIdLioGrpBIbexIrq = 36,
+    TopMioIrqIdLioGrpCIbexIrq = 37,
+    TopMioIrqIdCount
+  } interrupt_id_e;
+
+  // Number of mio_external incoming interrupts
+  parameter int unsigned NIncomingInterruptsMioExternal = 9;
+
+  // Enumeration of interrupts for incoming group mio_external
+  typedef enum int unsigned {
+    TopMioIncomingIrqMioExternalIdMioHdrIpiFromMio0 = 0,
+    TopMioIncomingIrqMioExternalIdMioHdrIpiFromMio1 = 1,
+    TopMioIncomingIrqMioExternalIdMioHdrIpiFromMio2 = 2,
+    TopMioIncomingIrqMioExternalIdMioHdrIpiFromRot = 3,
+    TopMioIncomingIrqMioExternalIdMioHdrIpiFromPwc = 4,
+    TopMioIncomingIrqMioExternalIdMioHdrIpiFromDuc = 5,
+    TopMioIncomingIrqMioExternalIdLioGrpAIbexIrq = 6,
+    TopMioIncomingIrqMioExternalIdLioGrpBIbexIrq = 7,
+    TopMioIncomingIrqMioExternalIdLioGrpCIbexIrq = 8,
+    TopMioIncomingIrqIdCount
+  } incoming_interrupt_mio_external_id_e;
+
   // Number of mio outgoing interrupts
   parameter int unsigned NOutgoingInterruptsMio = 1;
 
+  // Enumeration of interrupts for outgoing group mio
+  typedef enum int unsigned {
+    TopMioOutgoingIrqMioIdRaclCtrlRaclError = 0,
+    TopMioOutgoingIrqIdCount
+  } outgoing_interrupt_mio_id_e;
 
 endpackage
