@@ -1091,7 +1091,6 @@
       template_type: otp_ctrl
       ipgen_param:
       {
-        enable_flash_key: false
         use_rivos_config: true
       }
       clock_srcs:
