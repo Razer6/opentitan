@@ -714,23 +714,32 @@
                   regwen:       "DIO_PAD_ATTR_REGWEN",
                   regwen_multi: "true",
                   cname:        "DIO_PAD",
-		  resval:       0,
                   fields: [
                     { bits: "0",
                       name: "PUEN",
                       desc: "Active high pull-up enable."
+                      // Specifically enable active high pull-up for the following pins
+                      // 10: GPIO0 (EarlyRotSync_0)
+                      // 12: GPIO2 (EarlyRotSync_1)
+                      // 43: DioSpiDeviceCsb (SPI_Device_FWLoad_CS_L)
+                      resval: (multireg_idx == 10 or multireg_idx == 12 or multireg_idx == 43)
                     },
                     { bits: "1",
                       name: "PDEN",
                       desc: "Active high pull-down enable."
+                      // Specifically enable active high pull-down for the following pins
+                      // 30: DioGpioGpio20 (ENABLE_FUSE_VQPS)
+                      resval: (multireg_idx == 30)
                     },
                     { bits: "2",
                       name: "SMTEN",
                       desc: "Active high Schmitt trigger enable."
+                      resval: 0,
                     },
                     { bits: "6:4",
                       name: "DRV",
                       desc: "Programmable drive strength (0x0: weakest, 0x7: strongest)"
+                      resval: 0,
                     }
                   ],
                   // these CSRs have have hardware side effects since they drive the
