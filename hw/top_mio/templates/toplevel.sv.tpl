@@ -447,7 +447,7 @@ slice = f"{lo+w-1}:{lo}"
       .alert_rx_i  ( alert_rx[${slice}] ),
       % endif
     % endif
-  <%include file="/toplevel_racl_signals.tpl" args="module=m,top=top,block=block"/>\
+<%include file="/toplevel_racl_signals.tpl" args="module=m,top=top,block=block"/>\
     ## TODO: Inter-module Connection
     % if m.get('inter_signal_list'):
 
