@@ -54,7 +54,9 @@ module rv_core_ibex_pwc
   parameter top_racl_pkg::racl_policy_sel_t
     RaclPolicySelVecCfg[rv_core_ibex_pwc_reg_pkg::NumRegsCfg] =
       '{rv_core_ibex_pwc_reg_pkg::NumRegsCfg{0}},
-  parameter logic [tlul_pkg::RsvdWidth-1:0] TlulHostUserRsvdBits   = 0
+  parameter logic [tlul_pkg::RsvdWidth-1:0] TlulHostUserRsvdBits   = 0,
+  parameter logic [31:0]            CsrMvendorId                   = 32'b0,
+  parameter logic [31:0]            CsrMimpId                      = 32'b0
 ) (
   // Clock and Reset
   input  logic        clk_i,
@@ -429,7 +431,9 @@ module rv_core_ibex_pwc
     .DmBaseAddr                  ( DmBaseAddr               ),
     .DmAddrMask                  ( DmAddrMask               ),
     .DmHaltAddr                  ( DmHaltAddr               ),
-    .DmExceptionAddr             ( DmExceptionAddr          )
+    .DmExceptionAddr             ( DmExceptionAddr          ),
+    .CsrMvendorId                ( CsrMvendorId             ),
+    .CsrMimpId                   ( CsrMimpId                )
   ) u_core (
     .clk_i              (ibex_top_clk_i),
     .rst_ni,

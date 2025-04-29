@@ -95,7 +95,9 @@ module top_pwc #(
   parameter int unsigned RvCoreIbexPwcDmExceptionAddr =
       tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0],
   parameter bit RvCoreIbexPwcPipeLine = 0,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexPwcTlulHostUserRsvdBits = '0
+  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexPwcTlulHostUserRsvdBits = '0,
+  parameter logic [31:0] RvCoreIbexPwcCsrMvendorId = '0,
+  parameter logic [31:0] RvCoreIbexPwcCsrMimpId = '0
 ) (
 
 
@@ -1105,7 +1107,9 @@ module top_pwc #(
     .DmHaltAddr(RvCoreIbexPwcDmHaltAddr),
     .DmExceptionAddr(RvCoreIbexPwcDmExceptionAddr),
     .PipeLine(RvCoreIbexPwcPipeLine),
-    .TlulHostUserRsvdBits(RvCoreIbexPwcTlulHostUserRsvdBits)
+    .TlulHostUserRsvdBits(RvCoreIbexPwcTlulHostUserRsvdBits),
+    .CsrMvendorId(RvCoreIbexPwcCsrMvendorId),
+    .CsrMimpId(RvCoreIbexPwcCsrMimpId)
   ) u_rv_core_ibex_pwc (
       // External alert group "pwc" [27]: fatal_sw_err
       // External alert group "pwc" [28]: recov_sw_err

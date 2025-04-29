@@ -92,7 +92,9 @@ module top_mio #(
   parameter int unsigned RvCoreIbexMioDmExceptionAddr =
       tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0],
   parameter bit RvCoreIbexMioPipeLine = 0,
-  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexMioTlulHostUserRsvdBits = '0
+  parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexMioTlulHostUserRsvdBits = '0,
+  parameter logic [31:0] RvCoreIbexMioCsrMvendorId = '0,
+  parameter logic [31:0] RvCoreIbexMioCsrMimpId = '0
 ) (
 
 
@@ -1032,7 +1034,9 @@ module top_mio #(
     .DmHaltAddr(RvCoreIbexMioDmHaltAddr),
     .DmExceptionAddr(RvCoreIbexMioDmExceptionAddr),
     .PipeLine(RvCoreIbexMioPipeLine),
-    .TlulHostUserRsvdBits(RvCoreIbexMioTlulHostUserRsvdBits)
+    .TlulHostUserRsvdBits(RvCoreIbexMioTlulHostUserRsvdBits),
+    .CsrMvendorId(RvCoreIbexMioCsrMvendorId),
+    .CsrMimpId(RvCoreIbexMioCsrMimpId)
   ) u_rv_core_ibex_mio (
       // External alert group "mio" [26]: fatal_sw_err
       // External alert group "mio" [27]: recov_sw_err
