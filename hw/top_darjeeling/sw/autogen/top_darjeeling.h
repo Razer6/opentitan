@@ -1261,7 +1261,23 @@ typedef enum top_darjeeling_plic_irq_id {
   kTopDarjeelingPlicIrqIdLioGrpARaclError = 181, /**< LIO_GRP_A_RACL_ERROR */
   kTopDarjeelingPlicIrqIdPwcRaclError = 182, /**< PWC_RACL_ERROR */
   kTopDarjeelingPlicIrqIdMioRaclError = 183, /**< MIO_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdLast = 183, /**< \internal The Last Valid Interrupt ID. */
+  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassA = 184, /**< LIO_GRP_A_ALERTHANDLER_CLASS_A */
+  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassB = 185, /**< LIO_GRP_A_ALERTHANDLER_CLASS_B */
+  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassC = 186, /**< LIO_GRP_A_ALERTHANDLER_CLASS_C */
+  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassD = 187, /**< LIO_GRP_A_ALERTHANDLER_CLASS_D */
+  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassA = 188, /**< LIO_GRP_B_ALERTHANDLER_CLASS_A */
+  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassB = 189, /**< LIO_GRP_B_ALERTHANDLER_CLASS_B */
+  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassC = 190, /**< LIO_GRP_B_ALERTHANDLER_CLASS_C */
+  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassD = 191, /**< LIO_GRP_B_ALERTHANDLER_CLASS_D */
+  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassA = 192, /**< LIO_GRP_C_ALERTHANDLER_CLASS_A */
+  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassB = 193, /**< LIO_GRP_C_ALERTHANDLER_CLASS_B */
+  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassC = 194, /**< LIO_GRP_C_ALERTHANDLER_CLASS_C */
+  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassD = 195, /**< LIO_GRP_C_ALERTHANDLER_CLASS_D */
+  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassA = 196, /**< LIO_GRP_D_ALERTHANDLER_CLASS_A */
+  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassB = 197, /**< LIO_GRP_D_ALERTHANDLER_CLASS_B */
+  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassC = 198, /**< LIO_GRP_D_ALERTHANDLER_CLASS_C */
+  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassD = 199, /**< LIO_GRP_D_ALERTHANDLER_CLASS_D */
+  kTopDarjeelingPlicIrqIdLast = 199, /**< \internal The Last Valid Interrupt ID. */
 } top_darjeeling_plic_irq_id_t;
 
 /**
@@ -1271,7 +1287,7 @@ typedef enum top_darjeeling_plic_irq_id {
  * `top_darjeeling_plic_peripheral_t`.
  */
 extern const top_darjeeling_plic_peripheral_t
-    top_darjeeling_plic_interrupt_for_peripheral[184];
+    top_darjeeling_plic_interrupt_for_peripheral[200];
 
 /**
  * PLIC Interrupt Target.

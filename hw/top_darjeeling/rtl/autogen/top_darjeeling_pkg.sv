@@ -980,11 +980,27 @@ package top_darjeeling_pkg;
     TopDarjeelingIrqIdLioGrpARaclError = 181,
     TopDarjeelingIrqIdPwcRaclError = 182,
     TopDarjeelingIrqIdMioRaclError = 183,
+    TopDarjeelingIrqIdLioGrpAAlerthandlerClassA = 184,
+    TopDarjeelingIrqIdLioGrpAAlerthandlerClassB = 185,
+    TopDarjeelingIrqIdLioGrpAAlerthandlerClassC = 186,
+    TopDarjeelingIrqIdLioGrpAAlerthandlerClassD = 187,
+    TopDarjeelingIrqIdLioGrpBAlerthandlerClassA = 188,
+    TopDarjeelingIrqIdLioGrpBAlerthandlerClassB = 189,
+    TopDarjeelingIrqIdLioGrpBAlerthandlerClassC = 190,
+    TopDarjeelingIrqIdLioGrpBAlerthandlerClassD = 191,
+    TopDarjeelingIrqIdLioGrpCAlerthandlerClassA = 192,
+    TopDarjeelingIrqIdLioGrpCAlerthandlerClassB = 193,
+    TopDarjeelingIrqIdLioGrpCAlerthandlerClassC = 194,
+    TopDarjeelingIrqIdLioGrpCAlerthandlerClassD = 195,
+    TopDarjeelingIrqIdLioGrpDAlerthandlerClassA = 196,
+    TopDarjeelingIrqIdLioGrpDAlerthandlerClassB = 197,
+    TopDarjeelingIrqIdLioGrpDAlerthandlerClassC = 198,
+    TopDarjeelingIrqIdLioGrpDAlerthandlerClassD = 199,
     TopDarjeelingIrqIdCount
   } interrupt_id_e;
 
   // Number of rot_external incoming interrupts
-  parameter int unsigned NIncomingInterruptsRotExternal = 24;
+  parameter int unsigned NIncomingInterruptsRotExternal = 40;
 
   // Enumeration of interrupts for incoming group rot_external
   typedef enum int unsigned {
@@ -1012,6 +1028,22 @@ package top_darjeeling_pkg;
     TopDarjeelingIncomingIrqRotExternalIdLioGrpARaclError = 21,
     TopDarjeelingIncomingIrqRotExternalIdPwcRaclError = 22,
     TopDarjeelingIncomingIrqRotExternalIdMioRaclError = 23,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpAAlerthandlerClassA = 24,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpAAlerthandlerClassB = 25,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpAAlerthandlerClassC = 26,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpAAlerthandlerClassD = 27,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpBAlerthandlerClassA = 28,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpBAlerthandlerClassB = 29,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpBAlerthandlerClassC = 30,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpBAlerthandlerClassD = 31,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpCAlerthandlerClassA = 32,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpCAlerthandlerClassB = 33,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpCAlerthandlerClassC = 34,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpCAlerthandlerClassD = 35,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassA = 36,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassB = 37,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassC = 38,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassD = 39,
     TopDarjeelingIncomingIrqIdCount
   } incoming_interrupt_rot_external_id_e;
 

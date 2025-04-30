@@ -226,7 +226,7 @@ const top_darjeeling_alert_peripheral_t
  * `top_darjeeling_plic_peripheral_t`.
  */
 const top_darjeeling_plic_peripheral_t
-    top_darjeeling_plic_interrupt_for_peripheral[184] = {
+    top_darjeeling_plic_interrupt_for_peripheral[200] = {
   [kTopDarjeelingPlicIrqIdNone] = kTopDarjeelingPlicPeripheralUnknown,
   [kTopDarjeelingPlicIrqIdUart0TxWatermark] = kTopDarjeelingPlicPeripheralUart0,
   [kTopDarjeelingPlicIrqIdUart0RxWatermark] = kTopDarjeelingPlicPeripheralUart0,
@@ -411,4 +411,20 @@ const top_darjeeling_plic_peripheral_t
   [kTopDarjeelingPlicIrqIdLioGrpARaclError] = kTopDarjeelingPlicPeripheralUnknown,
   [kTopDarjeelingPlicIrqIdPwcRaclError] = kTopDarjeelingPlicPeripheralUnknown,
   [kTopDarjeelingPlicIrqIdMioRaclError] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassA] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassB] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassC] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassD] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassA] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassB] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassC] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassD] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassA] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassB] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassC] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassD] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassA] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassB] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassC] = kTopDarjeelingPlicPeripheralUnknown,
+  [kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassD] = kTopDarjeelingPlicPeripheralUnknown,
 };

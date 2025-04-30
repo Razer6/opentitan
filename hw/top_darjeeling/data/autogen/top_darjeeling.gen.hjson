@@ -18532,6 +18532,118 @@
         intr_type: IntrType.Status
         default_val: false
       }
+      {
+        name: CLASS_A
+        module_name: LIO_GRP_A_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_B
+        module_name: LIO_GRP_A_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_C
+        module_name: LIO_GRP_A_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_D
+        module_name: LIO_GRP_A_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_A
+        module_name: LIO_GRP_B_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_B
+        module_name: LIO_GRP_B_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_C
+        module_name: LIO_GRP_B_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_D
+        module_name: LIO_GRP_B_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_A
+        module_name: LIO_GRP_C_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_B
+        module_name: LIO_GRP_C_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_C
+        module_name: LIO_GRP_C_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_D
+        module_name: LIO_GRP_C_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_A
+        module_name: LIO_GRP_D_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_B
+        module_name: LIO_GRP_D_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_C
+        module_name: LIO_GRP_D_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: CLASS_D
+        module_name: LIO_GRP_D_ALERTHANDLER
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
     ]
   }
   exported_clks: {}
@@ -22670,6 +22782,166 @@
       intr_type: IntrType.Status
       default_val: false
       desc: MIO RACL_ERROR incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_ALERTHANDLER_CLASS_A
+      module_name: LIO_GRP_A_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_A_ALERTHANDLER CLASS_A incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_ALERTHANDLER_CLASS_B
+      module_name: LIO_GRP_A_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_A_ALERTHANDLER CLASS_B incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_ALERTHANDLER_CLASS_C
+      module_name: LIO_GRP_A_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_A_ALERTHANDLER CLASS_C incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_A_ALERTHANDLER_CLASS_D
+      module_name: LIO_GRP_A_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_A_ALERTHANDLER CLASS_D incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_ALERTHANDLER_CLASS_A
+      module_name: LIO_GRP_B_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_B_ALERTHANDLER CLASS_A incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_ALERTHANDLER_CLASS_B
+      module_name: LIO_GRP_B_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_B_ALERTHANDLER CLASS_B incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_ALERTHANDLER_CLASS_C
+      module_name: LIO_GRP_B_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_B_ALERTHANDLER CLASS_C incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_B_ALERTHANDLER_CLASS_D
+      module_name: LIO_GRP_B_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_B_ALERTHANDLER CLASS_D incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_ALERTHANDLER_CLASS_A
+      module_name: LIO_GRP_C_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_C_ALERTHANDLER CLASS_A incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_ALERTHANDLER_CLASS_B
+      module_name: LIO_GRP_C_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_C_ALERTHANDLER CLASS_B incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_ALERTHANDLER_CLASS_C
+      module_name: LIO_GRP_C_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_C_ALERTHANDLER CLASS_C incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_C_ALERTHANDLER_CLASS_D
+      module_name: LIO_GRP_C_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_C_ALERTHANDLER CLASS_D incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_D_ALERTHANDLER_CLASS_A
+      module_name: LIO_GRP_D_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_D_ALERTHANDLER CLASS_A incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_D_ALERTHANDLER_CLASS_B
+      module_name: LIO_GRP_D_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_D_ALERTHANDLER CLASS_B incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_D_ALERTHANDLER_CLASS_C
+      module_name: LIO_GRP_D_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_D_ALERTHANDLER CLASS_C incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: LIO_GRP_D_ALERTHANDLER_CLASS_D
+      module_name: LIO_GRP_D_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: LIO_GRP_D_ALERTHANDLER CLASS_D incoming interrupt
       incoming: true
       width: 1
     }

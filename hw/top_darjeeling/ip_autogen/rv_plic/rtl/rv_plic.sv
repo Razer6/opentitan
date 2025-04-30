@@ -282,11 +282,27 @@ module rv_plic import rv_plic_reg_pkg::*; #(
   assign prio[181] = reg2hw.prio[181].q;
   assign prio[182] = reg2hw.prio[182].q;
   assign prio[183] = reg2hw.prio[183].q;
+  assign prio[184] = reg2hw.prio[184].q;
+  assign prio[185] = reg2hw.prio[185].q;
+  assign prio[186] = reg2hw.prio[186].q;
+  assign prio[187] = reg2hw.prio[187].q;
+  assign prio[188] = reg2hw.prio[188].q;
+  assign prio[189] = reg2hw.prio[189].q;
+  assign prio[190] = reg2hw.prio[190].q;
+  assign prio[191] = reg2hw.prio[191].q;
+  assign prio[192] = reg2hw.prio[192].q;
+  assign prio[193] = reg2hw.prio[193].q;
+  assign prio[194] = reg2hw.prio[194].q;
+  assign prio[195] = reg2hw.prio[195].q;
+  assign prio[196] = reg2hw.prio[196].q;
+  assign prio[197] = reg2hw.prio[197].q;
+  assign prio[198] = reg2hw.prio[198].q;
+  assign prio[199] = reg2hw.prio[199].q;
 
   //////////////////////
   // Interrupt Enable //
   //////////////////////
-  for (genvar s = 0; s < 184; s++) begin : gen_ie0
+  for (genvar s = 0; s < 200; s++) begin : gen_ie0
     assign ie[0][s] = reg2hw.ie0[s].q;
   end
 
@@ -312,7 +328,7 @@ module rv_plic import rv_plic_reg_pkg::*; #(
   ////////
   // IP //
   ////////
-  for (genvar s = 0; s < 184; s++) begin : gen_ip
+  for (genvar s = 0; s < 200; s++) begin : gen_ip
     assign hw2reg.ip[s].de = 1'b1; // Always write
     assign hw2reg.ip[s].d  = ip[s];
   end

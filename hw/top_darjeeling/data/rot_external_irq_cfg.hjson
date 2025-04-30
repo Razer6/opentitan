@@ -192,5 +192,133 @@
       intr_type: IntrType.Status
       default_val: false
     }
+    // IDX 24
+    {
+      name: CLASS_A
+      module_name: LIO_GRP_A_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 25
+    {
+      name: CLASS_B
+      module_name: LIO_GRP_A_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 26
+    {
+      name: CLASS_C
+      module_name: LIO_GRP_A_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 27
+    {
+      name: CLASS_D
+      module_name: LIO_GRP_A_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 28
+    {
+      name: CLASS_A
+      module_name: LIO_GRP_B_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 29
+    {
+      name: CLASS_B
+      module_name: LIO_GRP_B_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 30
+    {
+      name: CLASS_C
+      module_name: LIO_GRP_B_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 31
+    {
+      name: CLASS_D
+      module_name: LIO_GRP_B_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 32
+    {
+      name: CLASS_A
+      module_name: LIO_GRP_C_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 33
+    {
+      name: CLASS_B
+      module_name: LIO_GRP_C_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 34
+    {
+      name: CLASS_C
+      module_name: LIO_GRP_C_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 35
+    {
+      name: CLASS_D
+      module_name: LIO_GRP_C_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 36
+    {
+      name: CLASS_A
+      module_name: LIO_GRP_D_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 37
+    {
+      name: CLASS_B
+      module_name: LIO_GRP_D_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 38
+    {
+      name: CLASS_C
+      module_name: LIO_GRP_D_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 39
+    {
+      name: CLASS_D
+      module_name: LIO_GRP_D_ALERTHANDLER
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
   ]
 }

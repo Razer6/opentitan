@@ -1274,6 +1274,38 @@ pub enum PlicIrqId {
     PwcRaclError = 182,
     /// MIO_RACL_ERROR
     MioRaclError = 183,
+    /// LIO_GRP_A_ALERTHANDLER_CLASS_A
+    LioGrpAAlerthandlerClassA = 184,
+    /// LIO_GRP_A_ALERTHANDLER_CLASS_B
+    LioGrpAAlerthandlerClassB = 185,
+    /// LIO_GRP_A_ALERTHANDLER_CLASS_C
+    LioGrpAAlerthandlerClassC = 186,
+    /// LIO_GRP_A_ALERTHANDLER_CLASS_D
+    LioGrpAAlerthandlerClassD = 187,
+    /// LIO_GRP_B_ALERTHANDLER_CLASS_A
+    LioGrpBAlerthandlerClassA = 188,
+    /// LIO_GRP_B_ALERTHANDLER_CLASS_B
+    LioGrpBAlerthandlerClassB = 189,
+    /// LIO_GRP_B_ALERTHANDLER_CLASS_C
+    LioGrpBAlerthandlerClassC = 190,
+    /// LIO_GRP_B_ALERTHANDLER_CLASS_D
+    LioGrpBAlerthandlerClassD = 191,
+    /// LIO_GRP_C_ALERTHANDLER_CLASS_A
+    LioGrpCAlerthandlerClassA = 192,
+    /// LIO_GRP_C_ALERTHANDLER_CLASS_B
+    LioGrpCAlerthandlerClassB = 193,
+    /// LIO_GRP_C_ALERTHANDLER_CLASS_C
+    LioGrpCAlerthandlerClassC = 194,
+    /// LIO_GRP_C_ALERTHANDLER_CLASS_D
+    LioGrpCAlerthandlerClassD = 195,
+    /// LIO_GRP_D_ALERTHANDLER_CLASS_A
+    LioGrpDAlerthandlerClassA = 196,
+    /// LIO_GRP_D_ALERTHANDLER_CLASS_B
+    LioGrpDAlerthandlerClassB = 197,
+    /// LIO_GRP_D_ALERTHANDLER_CLASS_C
+    LioGrpDAlerthandlerClassC = 198,
+    /// LIO_GRP_D_ALERTHANDLER_CLASS_D
+    LioGrpDAlerthandlerClassD = 199,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -1464,6 +1496,22 @@ impl TryFrom<u32> for PlicIrqId {
             181 => Ok(Self::LioGrpARaclError),
             182 => Ok(Self::PwcRaclError),
             183 => Ok(Self::MioRaclError),
+            184 => Ok(Self::LioGrpAAlerthandlerClassA),
+            185 => Ok(Self::LioGrpAAlerthandlerClassB),
+            186 => Ok(Self::LioGrpAAlerthandlerClassC),
+            187 => Ok(Self::LioGrpAAlerthandlerClassD),
+            188 => Ok(Self::LioGrpBAlerthandlerClassA),
+            189 => Ok(Self::LioGrpBAlerthandlerClassB),
+            190 => Ok(Self::LioGrpBAlerthandlerClassC),
+            191 => Ok(Self::LioGrpBAlerthandlerClassD),
+            192 => Ok(Self::LioGrpCAlerthandlerClassA),
+            193 => Ok(Self::LioGrpCAlerthandlerClassB),
+            194 => Ok(Self::LioGrpCAlerthandlerClassC),
+            195 => Ok(Self::LioGrpCAlerthandlerClassD),
+            196 => Ok(Self::LioGrpDAlerthandlerClassA),
+            197 => Ok(Self::LioGrpDAlerthandlerClassB),
+            198 => Ok(Self::LioGrpDAlerthandlerClassC),
+            199 => Ok(Self::LioGrpDAlerthandlerClassD),
             _ => Err(val),
         }
     }
@@ -1484,7 +1532,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 184] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 200] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // Uart0TxWatermark -> PlicPeripheral::Uart0
@@ -1852,6 +1900,38 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 184] = [
     // PwcRaclError -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // MioRaclError -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpAAlerthandlerClassA -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpAAlerthandlerClassB -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpAAlerthandlerClassC -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpAAlerthandlerClassD -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpBAlerthandlerClassA -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpBAlerthandlerClassB -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpBAlerthandlerClassC -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpBAlerthandlerClassD -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpCAlerthandlerClassA -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpCAlerthandlerClassB -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpCAlerthandlerClassC -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpCAlerthandlerClassD -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpDAlerthandlerClassA -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpDAlerthandlerClassB -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpDAlerthandlerClassC -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // LioGrpDAlerthandlerClassD -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
 ];
 
