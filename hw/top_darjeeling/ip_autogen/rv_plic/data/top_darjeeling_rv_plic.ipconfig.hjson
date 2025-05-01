@@ -7,7 +7,7 @@
   {
     racl_support: false
     module_instance_name: rv_plic
-    src: 203
+    src: 202
     target: 1
     prio: 3
     topname: darjeeling

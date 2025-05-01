@@ -1246,72 +1246,70 @@ pub enum PlicIrqId {
     LioGrpAIbexIrq = 168,
     /// RAS_CTRL_ERROR_IRQ
     RasCtrlErrorIrq = 169,
-    /// RAS_CTRL_IBEX_IRQ
-    RasCtrlIbexIrq = 170,
     /// AMS_REF_CLK_SLOW
-    AmsRefClkSlow = 171,
+    AmsRefClkSlow = 170,
     /// AMS_REF_CLK_FAST
-    AmsRefClkFast = 172,
+    AmsRefClkFast = 171,
     /// AMS_AVGS_GLITCH
-    AmsAvgsGlitch = 173,
+    AmsAvgsGlitch = 172,
     /// SCSIFREGS_RACL_ERROR
-    ScsifregsRaclError = 174,
+    ScsifregsRaclError = 173,
     /// NSGRP_RACL_ERROR
-    NsgrpRaclError = 175,
+    NsgrpRaclError = 174,
     /// LIO_GRP_V_RACL_ERROR
-    LioGrpVRaclError = 176,
+    LioGrpVRaclError = 175,
     /// LIO_GRP_P_RACL_ERROR
-    LioGrpPRaclError = 177,
+    LioGrpPRaclError = 176,
     /// LIO_GRP_D_RACL_ERROR
-    LioGrpDRaclError = 178,
+    LioGrpDRaclError = 177,
     /// LIO_GRP_C_RACL_ERROR
-    LioGrpCRaclError = 179,
+    LioGrpCRaclError = 178,
     /// LIO_GRP_B_RACL_ERROR
-    LioGrpBRaclError = 180,
+    LioGrpBRaclError = 179,
     /// LIO_GRP_A_RACL_ERROR
-    LioGrpARaclError = 181,
+    LioGrpARaclError = 180,
     /// PWC_RACL_ERROR
-    PwcRaclError = 182,
+    PwcRaclError = 181,
     /// MIO_RACL_ERROR
-    MioRaclError = 183,
+    MioRaclError = 182,
     /// LIO_GRP_A_ALERTHANDLER_CLASS_A
-    LioGrpAAlerthandlerClassA = 184,
+    LioGrpAAlerthandlerClassA = 183,
     /// LIO_GRP_A_ALERTHANDLER_CLASS_B
-    LioGrpAAlerthandlerClassB = 185,
+    LioGrpAAlerthandlerClassB = 184,
     /// LIO_GRP_A_ALERTHANDLER_CLASS_C
-    LioGrpAAlerthandlerClassC = 186,
+    LioGrpAAlerthandlerClassC = 185,
     /// LIO_GRP_A_ALERTHANDLER_CLASS_D
-    LioGrpAAlerthandlerClassD = 187,
+    LioGrpAAlerthandlerClassD = 186,
     /// LIO_GRP_B_ALERTHANDLER_CLASS_A
-    LioGrpBAlerthandlerClassA = 188,
+    LioGrpBAlerthandlerClassA = 187,
     /// LIO_GRP_B_ALERTHANDLER_CLASS_B
-    LioGrpBAlerthandlerClassB = 189,
+    LioGrpBAlerthandlerClassB = 188,
     /// LIO_GRP_B_ALERTHANDLER_CLASS_C
-    LioGrpBAlerthandlerClassC = 190,
+    LioGrpBAlerthandlerClassC = 189,
     /// LIO_GRP_B_ALERTHANDLER_CLASS_D
-    LioGrpBAlerthandlerClassD = 191,
+    LioGrpBAlerthandlerClassD = 190,
     /// LIO_GRP_C_ALERTHANDLER_CLASS_A
-    LioGrpCAlerthandlerClassA = 192,
+    LioGrpCAlerthandlerClassA = 191,
     /// LIO_GRP_C_ALERTHANDLER_CLASS_B
-    LioGrpCAlerthandlerClassB = 193,
+    LioGrpCAlerthandlerClassB = 192,
     /// LIO_GRP_C_ALERTHANDLER_CLASS_C
-    LioGrpCAlerthandlerClassC = 194,
+    LioGrpCAlerthandlerClassC = 193,
     /// LIO_GRP_C_ALERTHANDLER_CLASS_D
-    LioGrpCAlerthandlerClassD = 195,
+    LioGrpCAlerthandlerClassD = 194,
     /// LIO_GRP_D_ALERTHANDLER_CLASS_A
-    LioGrpDAlerthandlerClassA = 196,
+    LioGrpDAlerthandlerClassA = 195,
     /// LIO_GRP_D_ALERTHANDLER_CLASS_B
-    LioGrpDAlerthandlerClassB = 197,
+    LioGrpDAlerthandlerClassB = 196,
     /// LIO_GRP_D_ALERTHANDLER_CLASS_C
-    LioGrpDAlerthandlerClassC = 198,
+    LioGrpDAlerthandlerClassC = 197,
     /// LIO_GRP_D_ALERTHANDLER_CLASS_D
-    LioGrpDAlerthandlerClassD = 199,
+    LioGrpDAlerthandlerClassD = 198,
     /// SCSCTNIF0_AC_RANGE_CTN_DENY_CNT_REACHED
-    Scsctnif0AcRangeCtnDenyCntReached = 200,
+    Scsctnif0AcRangeCtnDenyCntReached = 199,
     /// SCSCTNIF0_AC_RANGE_BCAST_DENY_CNT_REACHED
-    Scsctnif0AcRangeBcastDenyCntReached = 201,
+    Scsctnif0AcRangeBcastDenyCntReached = 200,
     /// SCSCTNIF1_AC_RANGE_CTN_DENY_CNT_REACHED
-    Scsctnif1AcRangeCtnDenyCntReached = 202,
+    Scsctnif1AcRangeCtnDenyCntReached = 201,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -1488,39 +1486,38 @@ impl TryFrom<u32> for PlicIrqId {
             167 => Ok(Self::LioGrpBIbexIrq),
             168 => Ok(Self::LioGrpAIbexIrq),
             169 => Ok(Self::RasCtrlErrorIrq),
-            170 => Ok(Self::RasCtrlIbexIrq),
-            171 => Ok(Self::AmsRefClkSlow),
-            172 => Ok(Self::AmsRefClkFast),
-            173 => Ok(Self::AmsAvgsGlitch),
-            174 => Ok(Self::ScsifregsRaclError),
-            175 => Ok(Self::NsgrpRaclError),
-            176 => Ok(Self::LioGrpVRaclError),
-            177 => Ok(Self::LioGrpPRaclError),
-            178 => Ok(Self::LioGrpDRaclError),
-            179 => Ok(Self::LioGrpCRaclError),
-            180 => Ok(Self::LioGrpBRaclError),
-            181 => Ok(Self::LioGrpARaclError),
-            182 => Ok(Self::PwcRaclError),
-            183 => Ok(Self::MioRaclError),
-            184 => Ok(Self::LioGrpAAlerthandlerClassA),
-            185 => Ok(Self::LioGrpAAlerthandlerClassB),
-            186 => Ok(Self::LioGrpAAlerthandlerClassC),
-            187 => Ok(Self::LioGrpAAlerthandlerClassD),
-            188 => Ok(Self::LioGrpBAlerthandlerClassA),
-            189 => Ok(Self::LioGrpBAlerthandlerClassB),
-            190 => Ok(Self::LioGrpBAlerthandlerClassC),
-            191 => Ok(Self::LioGrpBAlerthandlerClassD),
-            192 => Ok(Self::LioGrpCAlerthandlerClassA),
-            193 => Ok(Self::LioGrpCAlerthandlerClassB),
-            194 => Ok(Self::LioGrpCAlerthandlerClassC),
-            195 => Ok(Self::LioGrpCAlerthandlerClassD),
-            196 => Ok(Self::LioGrpDAlerthandlerClassA),
-            197 => Ok(Self::LioGrpDAlerthandlerClassB),
-            198 => Ok(Self::LioGrpDAlerthandlerClassC),
-            199 => Ok(Self::LioGrpDAlerthandlerClassD),
-            200 => Ok(Self::Scsctnif0AcRangeCtnDenyCntReached),
-            201 => Ok(Self::Scsctnif0AcRangeBcastDenyCntReached),
-            202 => Ok(Self::Scsctnif1AcRangeCtnDenyCntReached),
+            170 => Ok(Self::AmsRefClkSlow),
+            171 => Ok(Self::AmsRefClkFast),
+            172 => Ok(Self::AmsAvgsGlitch),
+            173 => Ok(Self::ScsifregsRaclError),
+            174 => Ok(Self::NsgrpRaclError),
+            175 => Ok(Self::LioGrpVRaclError),
+            176 => Ok(Self::LioGrpPRaclError),
+            177 => Ok(Self::LioGrpDRaclError),
+            178 => Ok(Self::LioGrpCRaclError),
+            179 => Ok(Self::LioGrpBRaclError),
+            180 => Ok(Self::LioGrpARaclError),
+            181 => Ok(Self::PwcRaclError),
+            182 => Ok(Self::MioRaclError),
+            183 => Ok(Self::LioGrpAAlerthandlerClassA),
+            184 => Ok(Self::LioGrpAAlerthandlerClassB),
+            185 => Ok(Self::LioGrpAAlerthandlerClassC),
+            186 => Ok(Self::LioGrpAAlerthandlerClassD),
+            187 => Ok(Self::LioGrpBAlerthandlerClassA),
+            188 => Ok(Self::LioGrpBAlerthandlerClassB),
+            189 => Ok(Self::LioGrpBAlerthandlerClassC),
+            190 => Ok(Self::LioGrpBAlerthandlerClassD),
+            191 => Ok(Self::LioGrpCAlerthandlerClassA),
+            192 => Ok(Self::LioGrpCAlerthandlerClassB),
+            193 => Ok(Self::LioGrpCAlerthandlerClassC),
+            194 => Ok(Self::LioGrpCAlerthandlerClassD),
+            195 => Ok(Self::LioGrpDAlerthandlerClassA),
+            196 => Ok(Self::LioGrpDAlerthandlerClassB),
+            197 => Ok(Self::LioGrpDAlerthandlerClassC),
+            198 => Ok(Self::LioGrpDAlerthandlerClassD),
+            199 => Ok(Self::Scsctnif0AcRangeCtnDenyCntReached),
+            200 => Ok(Self::Scsctnif0AcRangeBcastDenyCntReached),
+            201 => Ok(Self::Scsctnif1AcRangeCtnDenyCntReached),
             _ => Err(val),
         }
     }
@@ -1541,7 +1538,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 203] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 202] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // Uart0TxWatermark -> PlicPeripheral::Uart0
@@ -1881,8 +1878,6 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 203] = [
     // LioGrpAIbexIrq -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // RasCtrlErrorIrq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // RasCtrlIbexIrq -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // AmsRefClkSlow -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,

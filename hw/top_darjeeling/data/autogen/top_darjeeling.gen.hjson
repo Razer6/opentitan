@@ -18435,13 +18435,6 @@
         default_val: false
       }
       {
-        name: IBEX_IRQ
-        module_name: RAS_CTRL
-        type: interrupt
-        intr_type: IntrType.Event
-        default_val: false
-      }
-      {
         name: REF_CLK_SLOW
         module_name: AMS
         type: interrupt
@@ -23675,16 +23668,6 @@
       intr_type: IntrType.Event
       default_val: false
       desc: RAS_CTRL ERROR_IRQ incoming interrupt
-      incoming: true
-      width: 1
-    }
-    {
-      name: RAS_CTRL_IBEX_IRQ
-      module_name: RAS_CTRL
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      desc: RAS_CTRL IBEX_IRQ incoming interrupt
       incoming: true
       width: 1
     }

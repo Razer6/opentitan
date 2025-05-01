@@ -226,7 +226,7 @@ const top_darjeeling_alert_peripheral_t
  * `top_darjeeling_plic_peripheral_t`.
  */
 const top_darjeeling_plic_peripheral_t
-    top_darjeeling_plic_interrupt_for_peripheral[203] = {
+    top_darjeeling_plic_interrupt_for_peripheral[202] = {
   [kTopDarjeelingPlicIrqIdNone] = kTopDarjeelingPlicPeripheralUnknown,
   [kTopDarjeelingPlicIrqIdUart0TxWatermark] = kTopDarjeelingPlicPeripheralUart0,
   [kTopDarjeelingPlicIrqIdUart0RxWatermark] = kTopDarjeelingPlicPeripheralUart0,
@@ -397,7 +397,6 @@ const top_darjeeling_plic_peripheral_t
   [kTopDarjeelingPlicIrqIdLioGrpBIbexIrq] = kTopDarjeelingPlicPeripheralUnknown,
   [kTopDarjeelingPlicIrqIdLioGrpAIbexIrq] = kTopDarjeelingPlicPeripheralUnknown,
   [kTopDarjeelingPlicIrqIdRasCtrlErrorIrq] = kTopDarjeelingPlicPeripheralUnknown,
-  [kTopDarjeelingPlicIrqIdRasCtrlIbexIrq] = kTopDarjeelingPlicPeripheralUnknown,
   [kTopDarjeelingPlicIrqIdAmsRefClkSlow] = kTopDarjeelingPlicPeripheralUnknown,
   [kTopDarjeelingPlicIrqIdAmsRefClkFast] = kTopDarjeelingPlicPeripheralUnknown,
   [kTopDarjeelingPlicIrqIdAmsAvgsGlitch] = kTopDarjeelingPlicPeripheralUnknown,

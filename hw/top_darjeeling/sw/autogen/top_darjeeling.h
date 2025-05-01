@@ -1247,40 +1247,39 @@ typedef enum top_darjeeling_plic_irq_id {
   kTopDarjeelingPlicIrqIdLioGrpBIbexIrq = 167, /**< LIO_GRP_B_IBEX_IRQ */
   kTopDarjeelingPlicIrqIdLioGrpAIbexIrq = 168, /**< LIO_GRP_A_IBEX_IRQ */
   kTopDarjeelingPlicIrqIdRasCtrlErrorIrq = 169, /**< RAS_CTRL_ERROR_IRQ */
-  kTopDarjeelingPlicIrqIdRasCtrlIbexIrq = 170, /**< RAS_CTRL_IBEX_IRQ */
-  kTopDarjeelingPlicIrqIdAmsRefClkSlow = 171, /**< AMS_REF_CLK_SLOW */
-  kTopDarjeelingPlicIrqIdAmsRefClkFast = 172, /**< AMS_REF_CLK_FAST */
-  kTopDarjeelingPlicIrqIdAmsAvgsGlitch = 173, /**< AMS_AVGS_GLITCH */
-  kTopDarjeelingPlicIrqIdScsifregsRaclError = 174, /**< SCSIFREGS_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdNsgrpRaclError = 175, /**< NSGRP_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdLioGrpVRaclError = 176, /**< LIO_GRP_V_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdLioGrpPRaclError = 177, /**< LIO_GRP_P_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdLioGrpDRaclError = 178, /**< LIO_GRP_D_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdLioGrpCRaclError = 179, /**< LIO_GRP_C_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdLioGrpBRaclError = 180, /**< LIO_GRP_B_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdLioGrpARaclError = 181, /**< LIO_GRP_A_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdPwcRaclError = 182, /**< PWC_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdMioRaclError = 183, /**< MIO_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassA = 184, /**< LIO_GRP_A_ALERTHANDLER_CLASS_A */
-  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassB = 185, /**< LIO_GRP_A_ALERTHANDLER_CLASS_B */
-  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassC = 186, /**< LIO_GRP_A_ALERTHANDLER_CLASS_C */
-  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassD = 187, /**< LIO_GRP_A_ALERTHANDLER_CLASS_D */
-  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassA = 188, /**< LIO_GRP_B_ALERTHANDLER_CLASS_A */
-  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassB = 189, /**< LIO_GRP_B_ALERTHANDLER_CLASS_B */
-  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassC = 190, /**< LIO_GRP_B_ALERTHANDLER_CLASS_C */
-  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassD = 191, /**< LIO_GRP_B_ALERTHANDLER_CLASS_D */
-  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassA = 192, /**< LIO_GRP_C_ALERTHANDLER_CLASS_A */
-  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassB = 193, /**< LIO_GRP_C_ALERTHANDLER_CLASS_B */
-  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassC = 194, /**< LIO_GRP_C_ALERTHANDLER_CLASS_C */
-  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassD = 195, /**< LIO_GRP_C_ALERTHANDLER_CLASS_D */
-  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassA = 196, /**< LIO_GRP_D_ALERTHANDLER_CLASS_A */
-  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassB = 197, /**< LIO_GRP_D_ALERTHANDLER_CLASS_B */
-  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassC = 198, /**< LIO_GRP_D_ALERTHANDLER_CLASS_C */
-  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassD = 199, /**< LIO_GRP_D_ALERTHANDLER_CLASS_D */
-  kTopDarjeelingPlicIrqIdScsctnif0AcRangeCtnDenyCntReached = 200, /**< SCSCTNIF0_AC_RANGE_CTN_DENY_CNT_REACHED */
-  kTopDarjeelingPlicIrqIdScsctnif0AcRangeBcastDenyCntReached = 201, /**< SCSCTNIF0_AC_RANGE_BCAST_DENY_CNT_REACHED */
-  kTopDarjeelingPlicIrqIdScsctnif1AcRangeCtnDenyCntReached = 202, /**< SCSCTNIF1_AC_RANGE_CTN_DENY_CNT_REACHED */
-  kTopDarjeelingPlicIrqIdLast = 202, /**< \internal The Last Valid Interrupt ID. */
+  kTopDarjeelingPlicIrqIdAmsRefClkSlow = 170, /**< AMS_REF_CLK_SLOW */
+  kTopDarjeelingPlicIrqIdAmsRefClkFast = 171, /**< AMS_REF_CLK_FAST */
+  kTopDarjeelingPlicIrqIdAmsAvgsGlitch = 172, /**< AMS_AVGS_GLITCH */
+  kTopDarjeelingPlicIrqIdScsifregsRaclError = 173, /**< SCSIFREGS_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdNsgrpRaclError = 174, /**< NSGRP_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLioGrpVRaclError = 175, /**< LIO_GRP_V_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLioGrpPRaclError = 176, /**< LIO_GRP_P_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLioGrpDRaclError = 177, /**< LIO_GRP_D_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLioGrpCRaclError = 178, /**< LIO_GRP_C_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLioGrpBRaclError = 179, /**< LIO_GRP_B_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLioGrpARaclError = 180, /**< LIO_GRP_A_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdPwcRaclError = 181, /**< PWC_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdMioRaclError = 182, /**< MIO_RACL_ERROR */
+  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassA = 183, /**< LIO_GRP_A_ALERTHANDLER_CLASS_A */
+  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassB = 184, /**< LIO_GRP_A_ALERTHANDLER_CLASS_B */
+  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassC = 185, /**< LIO_GRP_A_ALERTHANDLER_CLASS_C */
+  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassD = 186, /**< LIO_GRP_A_ALERTHANDLER_CLASS_D */
+  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassA = 187, /**< LIO_GRP_B_ALERTHANDLER_CLASS_A */
+  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassB = 188, /**< LIO_GRP_B_ALERTHANDLER_CLASS_B */
+  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassC = 189, /**< LIO_GRP_B_ALERTHANDLER_CLASS_C */
+  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassD = 190, /**< LIO_GRP_B_ALERTHANDLER_CLASS_D */
+  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassA = 191, /**< LIO_GRP_C_ALERTHANDLER_CLASS_A */
+  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassB = 192, /**< LIO_GRP_C_ALERTHANDLER_CLASS_B */
+  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassC = 193, /**< LIO_GRP_C_ALERTHANDLER_CLASS_C */
+  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassD = 194, /**< LIO_GRP_C_ALERTHANDLER_CLASS_D */
+  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassA = 195, /**< LIO_GRP_D_ALERTHANDLER_CLASS_A */
+  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassB = 196, /**< LIO_GRP_D_ALERTHANDLER_CLASS_B */
+  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassC = 197, /**< LIO_GRP_D_ALERTHANDLER_CLASS_C */
+  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassD = 198, /**< LIO_GRP_D_ALERTHANDLER_CLASS_D */
+  kTopDarjeelingPlicIrqIdScsctnif0AcRangeCtnDenyCntReached = 199, /**< SCSCTNIF0_AC_RANGE_CTN_DENY_CNT_REACHED */
+  kTopDarjeelingPlicIrqIdScsctnif0AcRangeBcastDenyCntReached = 200, /**< SCSCTNIF0_AC_RANGE_BCAST_DENY_CNT_REACHED */
+  kTopDarjeelingPlicIrqIdScsctnif1AcRangeCtnDenyCntReached = 201, /**< SCSCTNIF1_AC_RANGE_CTN_DENY_CNT_REACHED */
+  kTopDarjeelingPlicIrqIdLast = 201, /**< \internal The Last Valid Interrupt ID. */
 } top_darjeeling_plic_irq_id_t;
 
 /**
@@ -1290,7 +1289,7 @@ typedef enum top_darjeeling_plic_irq_id {
  * `top_darjeeling_plic_peripheral_t`.
  */
 extern const top_darjeeling_plic_peripheral_t
-    top_darjeeling_plic_interrupt_for_peripheral[203];
+    top_darjeeling_plic_interrupt_for_peripheral[202];
 
 /**
  * PLIC Interrupt Target.
