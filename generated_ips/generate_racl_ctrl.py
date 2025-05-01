@@ -48,12 +48,14 @@ def main():
     if racl_policies is None:
         raise SystemExit(f'RACL group {args.racl_group} not defined in RACL config')
 
+    max_num_policies = max(len(policies) for policies in racl_config['policies'].values())
+
     params = {
         "topname":              args.top_name,
         "module_instance_name": args.instance_name,
         "nr_role_bits":         racl_config["nr_role_bits"],
         "nr_ctn_uid_bits":      racl_config["nr_ctn_uid_bits"],
-        "nr_policies":          len(racl_policies),
+        "nr_policies":          max_num_policies,
         'nr_subscribing_ips':   1,
         "policies":             racl_policies,
         "racl_group":           args.racl_group,

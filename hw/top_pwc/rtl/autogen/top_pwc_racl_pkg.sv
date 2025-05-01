@@ -27,6 +27,50 @@ package top_pwc_racl_pkg;
    *      7: pwc_private_policy
    *      8: mio_private_policy
    *      9: duc_private_policy
+   *   nsEfuse
+   *      0: all_rd_wr_policy
+   *      1: hw_rot_pwc_wr_all_rd_policy
+   *      2: pre_boot_m_policy
+   *      3: post_boot_m_policy
+   *      4: tee_limited_policy
+   *      5: rcode_private_policy
+   *      6: rot_private_policy
+   *      7: pwc_private_policy
+   *      8: mio_private_policy
+   *      9: duc_private_policy
+   *   lioGrpV
+   *      0: all_rd_wr_policy
+   *      1: hw_rot_pwc_wr_all_rd_policy
+   *      2: pre_boot_m_policy
+   *      3: post_boot_m_policy
+   *      4: tee_limited_policy
+   *      5: rcode_private_policy
+   *      6: rot_private_policy
+   *      7: pwc_private_policy
+   *      8: mio_private_policy
+   *      9: duc_private_policy
+   *   lioGrpP
+   *      0: all_rd_wr_policy
+   *      1: hw_rot_pwc_wr_all_rd_policy
+   *      2: pre_boot_m_policy
+   *      3: post_boot_m_policy
+   *      4: tee_limited_policy
+   *      5: rcode_private_policy
+   *      6: rot_private_policy
+   *      7: pwc_private_policy
+   *      8: mio_private_policy
+   *      9: duc_private_policy
+   *   scsifregshdr
+   *      0: all_rd_wr_policy
+   *      1: hw_rot_pwc_wr_all_rd_policy
+   *      2: pre_boot_m_policy
+   *      3: post_boot_m_policy
+   *      4: tee_limited_policy
+   *      5: rcode_private_policy
+   *      6: rot_private_policy
+   *      7: pwc_private_policy
+   *      8: mio_private_policy
+   *      9: duc_private_policy
    *   lioGrpA
    *      0: all_rd_wr_policy
    *      1: rot_private_policy

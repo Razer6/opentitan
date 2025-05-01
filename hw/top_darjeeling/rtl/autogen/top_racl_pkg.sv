@@ -138,6 +138,58 @@ package top_racl_pkg;
   parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_PRIVATE_POLICY = 8;
   parameter racl_policy_sel_t RACL_POLICY_SEL_DUC_PRIVATE_POLICY = 9;
   /**
+   * RACL Policy Selectors for group nsEfuse
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_NSEFUSE_ALL_RD_WR_POLICY = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_NSEFUSE_HW_ROT_PWC_WR_ALL_RD_POLICY = 1;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_NSEFUSE_PRE_BOOT_M_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_NSEFUSE_POST_BOOT_M_POLICY = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_NSEFUSE_TEE_LIMITED_POLICY = 4;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_NSEFUSE_RCODE_PRIVATE_POLICY = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_NSEFUSE_ROT_PRIVATE_POLICY = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_NSEFUSE_PWC_PRIVATE_POLICY = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_NSEFUSE_MIO_PRIVATE_POLICY = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_NSEFUSE_DUC_PRIVATE_POLICY = 9;
+  /**
+   * RACL Policy Selectors for group lioGrpV
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPV_ALL_RD_WR_POLICY = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPV_HW_ROT_PWC_WR_ALL_RD_POLICY = 1;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPV_PRE_BOOT_M_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPV_POST_BOOT_M_POLICY = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPV_TEE_LIMITED_POLICY = 4;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPV_RCODE_PRIVATE_POLICY = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPV_ROT_PRIVATE_POLICY = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPV_PWC_PRIVATE_POLICY = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPV_MIO_PRIVATE_POLICY = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPV_DUC_PRIVATE_POLICY = 9;
+  /**
+   * RACL Policy Selectors for group lioGrpP
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPP_ALL_RD_WR_POLICY = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPP_HW_ROT_PWC_WR_ALL_RD_POLICY = 1;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPP_PRE_BOOT_M_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPP_POST_BOOT_M_POLICY = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPP_TEE_LIMITED_POLICY = 4;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPP_RCODE_PRIVATE_POLICY = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPP_ROT_PRIVATE_POLICY = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPP_PWC_PRIVATE_POLICY = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPP_MIO_PRIVATE_POLICY = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPP_DUC_PRIVATE_POLICY = 9;
+  /**
+   * RACL Policy Selectors for group scsifregshdr
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_SCSIFREGSHDR_ALL_RD_WR_POLICY = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_SCSIFREGSHDR_HW_ROT_PWC_WR_ALL_RD_POLICY = 1;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_SCSIFREGSHDR_PRE_BOOT_M_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_SCSIFREGSHDR_POST_BOOT_M_POLICY = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_SCSIFREGSHDR_TEE_LIMITED_POLICY = 4;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_SCSIFREGSHDR_RCODE_PRIVATE_POLICY = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_SCSIFREGSHDR_ROT_PRIVATE_POLICY = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_SCSIFREGSHDR_PWC_PRIVATE_POLICY = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_SCSIFREGSHDR_MIO_PRIVATE_POLICY = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_SCSIFREGSHDR_DUC_PRIVATE_POLICY = 9;
+  /**
    * RACL Policy Selectors for group lioGrpA
    */
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_ALL_RD_WR_POLICY = 0;

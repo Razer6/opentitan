@@ -19,6 +19,70 @@
 | duc_private_policy          |       9 |               |
 
 
+### RACL group: nsEfuse
+
+| Policy Name                 |   Index | Description   |
+|:----------------------------|--------:|:--------------|
+| all_rd_wr_policy            |       0 |               |
+| hw_rot_pwc_wr_all_rd_policy |       1 |               |
+| pre_boot_m_policy           |       2 |               |
+| post_boot_m_policy          |       3 |               |
+| tee_limited_policy          |       4 |               |
+| rcode_private_policy        |       5 |               |
+| rot_private_policy          |       6 |               |
+| pwc_private_policy          |       7 |               |
+| mio_private_policy          |       8 |               |
+| duc_private_policy          |       9 |               |
+
+
+### RACL group: lioGrpV
+
+| Policy Name                 |   Index | Description   |
+|:----------------------------|--------:|:--------------|
+| all_rd_wr_policy            |       0 |               |
+| hw_rot_pwc_wr_all_rd_policy |       1 |               |
+| pre_boot_m_policy           |       2 |               |
+| post_boot_m_policy          |       3 |               |
+| tee_limited_policy          |       4 |               |
+| rcode_private_policy        |       5 |               |
+| rot_private_policy          |       6 |               |
+| pwc_private_policy          |       7 |               |
+| mio_private_policy          |       8 |               |
+| duc_private_policy          |       9 |               |
+
+
+### RACL group: lioGrpP
+
+| Policy Name                 |   Index | Description   |
+|:----------------------------|--------:|:--------------|
+| all_rd_wr_policy            |       0 |               |
+| hw_rot_pwc_wr_all_rd_policy |       1 |               |
+| pre_boot_m_policy           |       2 |               |
+| post_boot_m_policy          |       3 |               |
+| tee_limited_policy          |       4 |               |
+| rcode_private_policy        |       5 |               |
+| rot_private_policy          |       6 |               |
+| pwc_private_policy          |       7 |               |
+| mio_private_policy          |       8 |               |
+| duc_private_policy          |       9 |               |
+
+
+### RACL group: scsifregshdr
+
+| Policy Name                 |   Index | Description   |
+|:----------------------------|--------:|:--------------|
+| all_rd_wr_policy            |       0 |               |
+| hw_rot_pwc_wr_all_rd_policy |       1 |               |
+| pre_boot_m_policy           |       2 |               |
+| post_boot_m_policy          |       3 |               |
+| tee_limited_policy          |       4 |               |
+| rcode_private_policy        |       5 |               |
+| rot_private_policy          |       6 |               |
+| pwc_private_policy          |       7 |               |
+| mio_private_policy          |       8 |               |
+| duc_private_policy          |       9 |               |
+
+
 ### RACL group: lioGrpA
 
 | Policy Name                 |   Index | Description   |

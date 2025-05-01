@@ -38,7 +38,7 @@ rm -rf autogen/scs_ac_range_check/doc
 rm -rf autogen/scs_ac_range_check/fpv
 rm -f  autogen/scs_ac_range_check/README.md
 
-for RACLGROUP in lioGrpA lioGrpB lioGrpC lioGrpD ; do
+for RACLGROUP in lioGrpA lioGrpB lioGrpC lioGrpD nsEfuse lioGrpV lioGrpP scsifregshdr ; do
   rm -rf autogen/racl_ctrl_${RACLGROUP}/
   ./generate_racl_ctrl.py --racl-config ../hw/top_darjeeling/data/rivos-racl/racl.hjson --racl-group ${RACLGROUP} --top-name darjeeling --instance-name racl_ctrl_${RACLGROUP} --output data/racl_ctrl_${RACLGROUP}_cfg.hjson
   ../util/ipgen.py generate -C ../hw/ip_templates/racl_ctrl -c data/racl_ctrl_${RACLGROUP}_cfg.hjson -o autogen/racl_ctrl_${RACLGROUP}
