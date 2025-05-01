@@ -26,8 +26,8 @@
         }
         // IDX 2
         {
-            name: fatal_fault
-            module_name: scsif_regs_racl_ctrl
+            name: scsifregs_racl_ctrl_fatal_fault
+            module_name: scsifregs_racl_ctrl
             index: 2
             type: alert
             async: 1
@@ -36,8 +36,8 @@
         }
         // IDX 3
         {
-            name: recov_ctrl_update_err
-            module_name: scsif_regs_racl_ctrl
+            name: scsifregs_racl_ctrl_recov_ctrl_update_err
+            module_name: scsifregs_racl_ctrl
             index: 3
             type: alert
             async: 1
@@ -46,8 +46,8 @@
         }
         // IDX 4
         {
-            name: scsif_regs_err
-            module_name: scsif_regs
+            name: scsifregs_err
+            module_name: scsifregs
             index: 4
             type: alert
             async: 1
@@ -116,7 +116,7 @@
         }
         // IDX 11
         {
-            name: fatal_fault
+            name: nsgrp_racl_ctrl_fatal_fault
             module_name: nsgrp_racl_ctrl
             index: 11
             type: alert
@@ -126,7 +126,7 @@
         }
         // IDX 12
         {
-            name: recov_ctrl_update_err
+            name: nsgrp_racl_ctrl_recov_ctrl_update_err
             module_name: nsgrp_racl_ctrl
             index: 12
             type: alert
@@ -136,7 +136,7 @@
         }
         // IDX 13
         {
-            name: bus_integ_err
+            name: nsefuse_bus_integ_err
             module_name: nsefuse
             index: 13
             type: alert
@@ -146,7 +146,7 @@
         }
         // IDX 14
         {
-            name: prim_fatal_err
+            name: nsefuse_prim_fatal_err
             module_name: nsefuse
             index: 14
             type: alert
@@ -156,7 +156,7 @@
         }
         // IDX 15
         {
-            name: prim_recov_err
+            name: nsefuse_prim_recov_err
             module_name: nsefuse
             index: 15
             type: alert
@@ -166,7 +166,7 @@
         }
         // IDX 16
         {
-            name: apb_adapter_integ_err
+            name: nsefuse_apb_adapter_integ_err
             module_name: nsefuse
             index: 16
             type: alert
@@ -176,7 +176,7 @@
         }
         // IDX 17
         {
-            name: fatal_fault
+            name: lio_group_v_racl_ctrl_fatal_fault
             module_name: lio_group_v_racl_ctrl
             index: 17
             type: alert
@@ -186,7 +186,7 @@
         }
         // IDX 18
         {
-            name: recov_ctrl_update_err
+            name: lio_group_v_racl_ctrl_recov_ctrl_update_err
             module_name: lio_group_v_racl_ctrl
             index: 18
             type: alert
@@ -206,7 +206,7 @@
         }
         // IDX 20
         {
-            name: fatal_fault
+            name: lio_group_p_racl_ctrl_fatal_fault
             module_name: lio_group_p_racl_ctrl
             index: 20
             type: alert
@@ -216,7 +216,7 @@
         }
         // IDX 21
         {
-            name: recov_ctrl_update_err
+            name: lio_group_p_racl_ctrl_recov_ctrl_update_err
             module_name: lio_group_p_racl_ctrl
             index: 21
             type: alert

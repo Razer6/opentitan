@@ -2855,44 +2855,60 @@ module top_darjeeling #(
   // Alert mapping to the alert handler for alert group rot_extra_alerts
   // [166]: ams_ip_wrapper_integ_error
   // [167]: ams_ip_wrapper_csrng_recov
-  // [168]: lsio_group_esc_err_0
-  // [169]: lsio_group_esc_err_1
-  // [170]: lsio_group_esc_err_2
-  // [171]: lsio_group_esc_err_3
-  // [172]: rc_widget_integ_error
-  // [173]: rot_hdr_integ_error
-  // [174]: rot_pcie_adapter_integ_error
-  // [175]: ras_ctl_reset_alert
-  // [176]: scs_rai_alert_trigger
-  assign alert_tx[176:166] = incoming_alert_rot_extra_alerts_tx_i;
-  assign incoming_alert_rot_extra_alerts_rx_o = alert_rx[176:166];
+  // [168]: rc_widget_integ_error
+  // [169]: rot_hdr_integ_error
+  // [170]: rot_pcie_adapter_integ_error
+  // [171]: ras_ctl_reset_alert
+  // [172]: scs_rai_alert_trigger
+  // [173]: lsio_group_a_esc_err_0
+  // [174]: lsio_group_a_esc_err_1
+  // [175]: lsio_group_a_esc_err_2
+  // [176]: lsio_group_a_esc_err_3
+  // [177]: lsio_group_b_esc_err_0
+  // [178]: lsio_group_b_esc_err_1
+  // [179]: lsio_group_b_esc_err_2
+  // [180]: lsio_group_b_esc_err_3
+  // [181]: lsio_group_c_esc_err_0
+  // [182]: lsio_group_c_esc_err_1
+  // [183]: lsio_group_c_esc_err_2
+  // [184]: lsio_group_c_esc_err_3
+  // [185]: lsio_group_d_esc_err_0
+  // [186]: lsio_group_d_esc_err_1
+  // [187]: lsio_group_d_esc_err_2
+  // [188]: lsio_group_d_esc_err_3
+  // [189]: lsio_group_a_timer_rst_req
+  // [190]: lsio_group_b_timer_rst_req
+  // [191]: lsio_group_c_timer_rst_req
+  // [192]: lsio_group_d_timer_rst_req
+  assign alert_tx[192:166] = incoming_alert_rot_extra_alerts_tx_i;
+  assign incoming_alert_rot_extra_alerts_rx_o = alert_rx[192:166];
 
   // Alert mapping to the alert handler for alert group other_extra_alerts
-  // [177]: ssram_lo_integ_err
-  // [178]: ssram_hi_integ_err
-  // [179]: fatal_fault
-  // [180]: recov_ctrl_update_err
-  // [181]: scsif_regs_err
-  // [182]: scsctnif0_ctn_ac_range_recov_err
-  // [183]: scsctnif0_ctn_ac_range_fatal_err
-  // [184]: scsctnif0_bcast_ac_range_recov_err
-  // [185]: scsctnif0_bcast_ac_range_fatal_err
-  // [186]: scsctnif1_ctn_ac_range_recov_err
-  // [187]: scsctnif1_ctn_ac_range_fatal_err
-  // [188]: fatal_fault
-  // [189]: recov_ctrl_update_err
-  // [190]: bus_integ_err
-  // [191]: prim_fatal_err
-  // [192]: prim_recov_err
-  // [193]: apb_adapter_integ_err
-  // [194]: fatal_fault
-  // [195]: recov_ctrl_update_err
-  // [196]: lio_group_v_integ_error
-  // [197]: fatal_fault
-  // [198]: recov_ctrl_update_err
-  // [199]: lio_group_p_integ_error
-  assign alert_tx[199:177] = incoming_alert_other_extra_alerts_tx_i;
-  assign incoming_alert_other_extra_alerts_rx_o = alert_rx[199:177];
+  // [193]: ssram_lo_integ_err
+  // [194]: ssram_hi_integ_err
+  // [195]: scsifregs_racl_ctrl_fatal_fault
+  // [196]: scsifregs_racl_ctrl_recov_ctrl_update_err
+  // [197]: scsifregs_err
+  // [198]: scsctnif0_ctn_ac_range_recov_err
+  // [199]: scsctnif0_ctn_ac_range_fatal_err
+  // [200]: scsctnif0_bcast_ac_range_recov_err
+  // [201]: scsctnif0_bcast_ac_range_fatal_err
+  // [202]: scsctnif1_ctn_ac_range_recov_err
+  // [203]: scsctnif1_ctn_ac_range_fatal_err
+  // [204]: nsgrp_racl_ctrl_fatal_fault
+  // [205]: nsgrp_racl_ctrl_recov_ctrl_update_err
+  // [206]: nsefuse_bus_integ_err
+  // [207]: nsefuse_prim_fatal_err
+  // [208]: nsefuse_prim_recov_err
+  // [209]: nsefuse_apb_adapter_integ_err
+  // [210]: lio_group_v_racl_ctrl_fatal_fault
+  // [211]: lio_group_v_racl_ctrl_recov_ctrl_update_err
+  // [212]: lio_group_v_integ_error
+  // [213]: lio_group_p_racl_ctrl_fatal_fault
+  // [214]: lio_group_p_racl_ctrl_recov_ctrl_update_err
+  // [215]: lio_group_p_integ_error
+  assign alert_tx[215:193] = incoming_alert_other_extra_alerts_tx_i;
+  assign incoming_alert_other_extra_alerts_rx_o = alert_rx[215:193];
 
   // interrupt assignments
   assign intr_vector = {

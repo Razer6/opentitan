@@ -133,7 +133,7 @@ package top_${top["name"]}${addr_space_suffix}_pkg;
   // Enumeration of ${alert_group} incoming alerts
   typedef enum int unsigned {
 %       for alert in alerts:
-    ${lib.Name.from_snake_case(f"top_{top['name']}_alert_id_{alert['name']}").as_camel_case()} = ${loop.index},
+    ${lib.Name.from_snake_case(f"top_{top['name']}_incoming_alert_{alert_group}_id_{alert['name']}").as_camel_case()} = ${loop.index},
 %       endfor
     ${lib.Name.from_snake_case(f"top_{top['name']}_incoming_alert_{alert_group}_id_count").as_camel_case()}
   } ${f"outgoing_alert_{alert_group}_id_e"};
