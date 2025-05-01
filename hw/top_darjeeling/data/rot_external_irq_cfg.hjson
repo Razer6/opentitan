@@ -320,5 +320,29 @@
       intr_type: IntrType.Status
       default_val: false
     }
+    // IDX 40
+    {
+      name: DENY_CNT_REACHED
+      module_name: SCSCTNIF0_AC_RANGE_CTN
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 41
+    {
+      name: DENY_CNT_REACHED
+      module_name: SCSCTNIF0_AC_RANGE_BCAST
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
+    // IDX 42
+    {
+      name: DENY_CNT_REACHED
+      module_name: SCSCTNIF1_AC_RANGE_CTN
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
   ]
 }

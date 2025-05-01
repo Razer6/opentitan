@@ -1306,6 +1306,12 @@ pub enum PlicIrqId {
     LioGrpDAlerthandlerClassC = 198,
     /// LIO_GRP_D_ALERTHANDLER_CLASS_D
     LioGrpDAlerthandlerClassD = 199,
+    /// SCSCTNIF0_AC_RANGE_CTN_DENY_CNT_REACHED
+    Scsctnif0AcRangeCtnDenyCntReached = 200,
+    /// SCSCTNIF0_AC_RANGE_BCAST_DENY_CNT_REACHED
+    Scsctnif0AcRangeBcastDenyCntReached = 201,
+    /// SCSCTNIF1_AC_RANGE_CTN_DENY_CNT_REACHED
+    Scsctnif1AcRangeCtnDenyCntReached = 202,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -1512,6 +1518,9 @@ impl TryFrom<u32> for PlicIrqId {
             197 => Ok(Self::LioGrpDAlerthandlerClassB),
             198 => Ok(Self::LioGrpDAlerthandlerClassC),
             199 => Ok(Self::LioGrpDAlerthandlerClassD),
+            200 => Ok(Self::Scsctnif0AcRangeCtnDenyCntReached),
+            201 => Ok(Self::Scsctnif0AcRangeBcastDenyCntReached),
+            202 => Ok(Self::Scsctnif1AcRangeCtnDenyCntReached),
             _ => Err(val),
         }
     }
@@ -1532,7 +1541,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 200] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 203] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // Uart0TxWatermark -> PlicPeripheral::Uart0
@@ -1932,6 +1941,12 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 200] = [
     // LioGrpDAlerthandlerClassC -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // LioGrpDAlerthandlerClassD -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // Scsctnif0AcRangeCtnDenyCntReached -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // Scsctnif0AcRangeBcastDenyCntReached -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // Scsctnif1AcRangeCtnDenyCntReached -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
 ];
 

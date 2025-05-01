@@ -996,11 +996,14 @@ package top_darjeeling_pkg;
     TopDarjeelingIrqIdLioGrpDAlerthandlerClassB = 197,
     TopDarjeelingIrqIdLioGrpDAlerthandlerClassC = 198,
     TopDarjeelingIrqIdLioGrpDAlerthandlerClassD = 199,
+    TopDarjeelingIrqIdScsctnif0AcRangeCtnDenyCntReached = 200,
+    TopDarjeelingIrqIdScsctnif0AcRangeBcastDenyCntReached = 201,
+    TopDarjeelingIrqIdScsctnif1AcRangeCtnDenyCntReached = 202,
     TopDarjeelingIrqIdCount
   } interrupt_id_e;
 
   // Number of rot_external incoming interrupts
-  parameter int unsigned NIncomingInterruptsRotExternal = 40;
+  parameter int unsigned NIncomingInterruptsRotExternal = 43;
 
   // Enumeration of interrupts for incoming group rot_external
   typedef enum int unsigned {
@@ -1044,6 +1047,9 @@ package top_darjeeling_pkg;
     TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassB = 37,
     TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassC = 38,
     TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassD = 39,
+    TopDarjeelingIncomingIrqRotExternalIdScsctnif0AcRangeCtnDenyCntReached = 40,
+    TopDarjeelingIncomingIrqRotExternalIdScsctnif0AcRangeBcastDenyCntReached = 41,
+    TopDarjeelingIncomingIrqRotExternalIdScsctnif1AcRangeCtnDenyCntReached = 42,
     TopDarjeelingIncomingIrqIdCount
   } incoming_interrupt_rot_external_id_e;
 

@@ -18644,6 +18644,27 @@
         intr_type: IntrType.Status
         default_val: false
       }
+      {
+        name: DENY_CNT_REACHED
+        module_name: SCSCTNIF0_AC_RANGE_CTN
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: DENY_CNT_REACHED
+        module_name: SCSCTNIF0_AC_RANGE_BCAST
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
+      {
+        name: DENY_CNT_REACHED
+        module_name: SCSCTNIF1_AC_RANGE_CTN
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
     ]
   }
   exported_clks: {}
@@ -22942,6 +22963,36 @@
       intr_type: IntrType.Status
       default_val: false
       desc: LIO_GRP_D_ALERTHANDLER CLASS_D incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: SCSCTNIF0_AC_RANGE_CTN_DENY_CNT_REACHED
+      module_name: SCSCTNIF0_AC_RANGE_CTN
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: SCSCTNIF0_AC_RANGE_CTN DENY_CNT_REACHED incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: SCSCTNIF0_AC_RANGE_BCAST_DENY_CNT_REACHED
+      module_name: SCSCTNIF0_AC_RANGE_BCAST
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: SCSCTNIF0_AC_RANGE_BCAST DENY_CNT_REACHED incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: SCSCTNIF1_AC_RANGE_CTN_DENY_CNT_REACHED
+      module_name: SCSCTNIF1_AC_RANGE_CTN
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: SCSCTNIF1_AC_RANGE_CTN DENY_CNT_REACHED incoming interrupt
       incoming: true
       width: 1
     }
