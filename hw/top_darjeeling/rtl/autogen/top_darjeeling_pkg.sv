@@ -602,42 +602,6 @@ package top_darjeeling_pkg;
   parameter int unsigned TOP_DARJEELING_ROM1_SIZE_BYTES = 32'h10000;
 
 
-  // Number of mio incoming alerts
-  parameter int unsigned NIncomingAlertsMio = 30;
-
-  // Number of LPGs for incoming alert group mio
-  parameter int unsigned NIncomingLpgsMio = 2;
-
-  // Number of pwc incoming alerts
-  parameter int unsigned NIncomingAlertsPwc = 31;
-
-  // Number of LPGs for incoming alert group pwc
-  parameter int unsigned NIncomingLpgsPwc = 2;
-
-  // Number of mio_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsMio_extra_alerts = 1;
-
-  // Number of LPGs for incoming alert group mio_extra_alerts
-  parameter int unsigned NIncomingLpgsMio_extra_alerts = 1;
-
-  // Number of pwc_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsPwc_extra_alerts = 1;
-
-  // Number of LPGs for incoming alert group pwc_extra_alerts
-  parameter int unsigned NIncomingLpgsPwc_extra_alerts = 1;
-
-  // Number of rot_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsRot_extra_alerts = 11;
-
-  // Number of LPGs for incoming alert group rot_extra_alerts
-  parameter int unsigned NIncomingLpgsRot_extra_alerts = 1;
-
-  // Number of other_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsOther_extra_alerts = 23;
-
-  // Number of LPGs for incoming alert group other_extra_alerts
-  parameter int unsigned NIncomingLpgsOther_extra_alerts = 1;
-
   // Enumeration of alert modules
   typedef enum int unsigned {
     TopDarjeelingAlertPeripheralUart0 = 0,
@@ -794,6 +758,169 @@ package top_darjeeling_pkg;
     TopDarjeelingAlertIdRvCoreIbexRecovHwErr = 102,
     TopDarjeelingAlertIdCount
   } alert_id_e;
+
+  // Enumeration of mio incoming alerts
+  typedef enum int unsigned {
+    TopDarjeelingAlertIdRvTimerFatalFault = 0,
+    TopDarjeelingAlertIdAonTimerAonFatalFault = 1,
+    TopDarjeelingAlertIdSramCtrlRetAonFatalError = 2,
+    TopDarjeelingAlertIdRvDmFatalFault = 3,
+    TopDarjeelingAlertIdRvPlicMioFatalFault = 4,
+    TopDarjeelingAlertIdSramCtrlMainFatalError = 5,
+    TopDarjeelingAlertIdSramCtrlMboxFatalError = 6,
+    TopDarjeelingAlertIdDmaFatalFault = 7,
+    TopDarjeelingAlertIdMbx0FatalFault = 8,
+    TopDarjeelingAlertIdMbx0RecovFault = 9,
+    TopDarjeelingAlertIdMbx1FatalFault = 10,
+    TopDarjeelingAlertIdMbx1RecovFault = 11,
+    TopDarjeelingAlertIdMbx2FatalFault = 12,
+    TopDarjeelingAlertIdMbx2RecovFault = 13,
+    TopDarjeelingAlertIdMbx3FatalFault = 14,
+    TopDarjeelingAlertIdMbx3RecovFault = 15,
+    TopDarjeelingAlertIdMbx4FatalFault = 16,
+    TopDarjeelingAlertIdMbx4RecovFault = 17,
+    TopDarjeelingAlertIdMbx5FatalFault = 18,
+    TopDarjeelingAlertIdMbx5RecovFault = 19,
+    TopDarjeelingAlertIdMbxPcie0FatalFault = 20,
+    TopDarjeelingAlertIdMbxPcie0RecovFault = 21,
+    TopDarjeelingAlertIdRaclCtrlFatalFault = 22,
+    TopDarjeelingAlertIdRaclCtrlRecovCtrlUpdateErr = 23,
+    TopDarjeelingAlertIdAcRangeCheckRecovCtrlUpdateErr = 24,
+    TopDarjeelingAlertIdAcRangeCheckFatalFault = 25,
+    TopDarjeelingAlertIdRvCoreIbexMioFatalSwErr = 26,
+    TopDarjeelingAlertIdRvCoreIbexMioRecovSwErr = 27,
+    TopDarjeelingAlertIdRvCoreIbexMioFatalHwErr = 28,
+    TopDarjeelingAlertIdRvCoreIbexMioRecovHwErr = 29,
+    TopDarjeelingIncomingAlertMioIdCount
+  } outgoing_alert_mio_id_e;
+
+  // Number of mio incoming alerts
+  parameter int unsigned NIncomingAlertsMio = 30;
+
+  // Number of LPGs for incoming alert group mio
+  parameter int unsigned NIncomingLpgsMio = 2;
+
+  // Enumeration of pwc incoming alerts
+  typedef enum int unsigned {
+    TopDarjeelingAlertIdGpioFatalFault = 0,
+    TopDarjeelingAlertIdRvTimerFatalFault = 1,
+    TopDarjeelingAlertIdAonTimerAonFatalFault = 2,
+    TopDarjeelingAlertIdSramCtrlRetAonFatalError = 3,
+    TopDarjeelingAlertIdRvDmFatalFault = 4,
+    TopDarjeelingAlertIdRvPlicPwcFatalFault = 5,
+    TopDarjeelingAlertIdSramCtrlMainFatalError = 6,
+    TopDarjeelingAlertIdSramCtrlMboxFatalError = 7,
+    TopDarjeelingAlertIdDmaFatalFault = 8,
+    TopDarjeelingAlertIdMbx0FatalFault = 9,
+    TopDarjeelingAlertIdMbx0RecovFault = 10,
+    TopDarjeelingAlertIdMbx1FatalFault = 11,
+    TopDarjeelingAlertIdMbx1RecovFault = 12,
+    TopDarjeelingAlertIdMbx2FatalFault = 13,
+    TopDarjeelingAlertIdMbx2RecovFault = 14,
+    TopDarjeelingAlertIdMbx3FatalFault = 15,
+    TopDarjeelingAlertIdMbx3RecovFault = 16,
+    TopDarjeelingAlertIdMbx4FatalFault = 17,
+    TopDarjeelingAlertIdMbx4RecovFault = 18,
+    TopDarjeelingAlertIdMbx5FatalFault = 19,
+    TopDarjeelingAlertIdMbx5RecovFault = 20,
+    TopDarjeelingAlertIdMbxPcie0FatalFault = 21,
+    TopDarjeelingAlertIdMbxPcie0RecovFault = 22,
+    TopDarjeelingAlertIdRaclCtrlFatalFault = 23,
+    TopDarjeelingAlertIdRaclCtrlRecovCtrlUpdateErr = 24,
+    TopDarjeelingAlertIdAcRangeCheckRecovCtrlUpdateErr = 25,
+    TopDarjeelingAlertIdAcRangeCheckFatalFault = 26,
+    TopDarjeelingAlertIdRvCoreIbexPwcFatalSwErr = 27,
+    TopDarjeelingAlertIdRvCoreIbexPwcRecovSwErr = 28,
+    TopDarjeelingAlertIdRvCoreIbexPwcFatalHwErr = 29,
+    TopDarjeelingAlertIdRvCoreIbexPwcRecovHwErr = 30,
+    TopDarjeelingIncomingAlertPwcIdCount
+  } outgoing_alert_pwc_id_e;
+
+  // Number of pwc incoming alerts
+  parameter int unsigned NIncomingAlertsPwc = 31;
+
+  // Number of LPGs for incoming alert group pwc
+  parameter int unsigned NIncomingLpgsPwc = 2;
+
+  // Enumeration of mio_extra_alerts incoming alerts
+  typedef enum int unsigned {
+    TopDarjeelingAlertIdIntegError = 0,
+    TopDarjeelingIncomingAlertMioExtraAlertsIdCount
+  } outgoing_alert_mio_extra_alerts_id_e;
+
+  // Number of mio_extra_alerts incoming alerts
+  parameter int unsigned NIncomingAlertsMio_extra_alerts = 1;
+
+  // Number of LPGs for incoming alert group mio_extra_alerts
+  parameter int unsigned NIncomingLpgsMio_extra_alerts = 1;
+
+  // Enumeration of pwc_extra_alerts incoming alerts
+  typedef enum int unsigned {
+    TopDarjeelingAlertIdIntegError = 0,
+    TopDarjeelingIncomingAlertPwcExtraAlertsIdCount
+  } outgoing_alert_pwc_extra_alerts_id_e;
+
+  // Number of pwc_extra_alerts incoming alerts
+  parameter int unsigned NIncomingAlertsPwc_extra_alerts = 1;
+
+  // Number of LPGs for incoming alert group pwc_extra_alerts
+  parameter int unsigned NIncomingLpgsPwc_extra_alerts = 1;
+
+  // Enumeration of rot_extra_alerts incoming alerts
+  typedef enum int unsigned {
+    TopDarjeelingAlertIdAmsIpWrapperIntegError = 0,
+    TopDarjeelingAlertIdAmsIpWrapperCsrngRecov = 1,
+    TopDarjeelingAlertIdLsioGroupEscErr0 = 2,
+    TopDarjeelingAlertIdLsioGroupEscErr1 = 3,
+    TopDarjeelingAlertIdLsioGroupEscErr2 = 4,
+    TopDarjeelingAlertIdLsioGroupEscErr3 = 5,
+    TopDarjeelingAlertIdRcWidgetIntegError = 6,
+    TopDarjeelingAlertIdRotHdrIntegError = 7,
+    TopDarjeelingAlertIdRotPcieAdapterIntegError = 8,
+    TopDarjeelingAlertIdRasCtlResetAlert = 9,
+    TopDarjeelingAlertIdScsRaiAlertTrigger = 10,
+    TopDarjeelingIncomingAlertRotExtraAlertsIdCount
+  } outgoing_alert_rot_extra_alerts_id_e;
+
+  // Number of rot_extra_alerts incoming alerts
+  parameter int unsigned NIncomingAlertsRot_extra_alerts = 11;
+
+  // Number of LPGs for incoming alert group rot_extra_alerts
+  parameter int unsigned NIncomingLpgsRot_extra_alerts = 1;
+
+  // Enumeration of other_extra_alerts incoming alerts
+  typedef enum int unsigned {
+    TopDarjeelingAlertIdSsramLoIntegErr = 0,
+    TopDarjeelingAlertIdSsramHiIntegErr = 1,
+    TopDarjeelingAlertIdFatalFault = 2,
+    TopDarjeelingAlertIdRecovCtrlUpdateErr = 3,
+    TopDarjeelingAlertIdScsifRegsErr = 4,
+    TopDarjeelingAlertIdScsctnif0CtnAcRangeRecovErr = 5,
+    TopDarjeelingAlertIdScsctnif0CtnAcRangeFatalErr = 6,
+    TopDarjeelingAlertIdScsctnif0BcastAcRangeRecovErr = 7,
+    TopDarjeelingAlertIdScsctnif0BcastAcRangeFatalErr = 8,
+    TopDarjeelingAlertIdScsctnif1CtnAcRangeRecovErr = 9,
+    TopDarjeelingAlertIdScsctnif1CtnAcRangeFatalErr = 10,
+    TopDarjeelingAlertIdFatalFault = 11,
+    TopDarjeelingAlertIdRecovCtrlUpdateErr = 12,
+    TopDarjeelingAlertIdBusIntegErr = 13,
+    TopDarjeelingAlertIdPrimFatalErr = 14,
+    TopDarjeelingAlertIdPrimRecovErr = 15,
+    TopDarjeelingAlertIdApbAdapterIntegErr = 16,
+    TopDarjeelingAlertIdFatalFault = 17,
+    TopDarjeelingAlertIdRecovCtrlUpdateErr = 18,
+    TopDarjeelingAlertIdLioGroupVIntegError = 19,
+    TopDarjeelingAlertIdFatalFault = 20,
+    TopDarjeelingAlertIdRecovCtrlUpdateErr = 21,
+    TopDarjeelingAlertIdLioGroupPIntegError = 22,
+    TopDarjeelingIncomingAlertOtherExtraAlertsIdCount
+  } outgoing_alert_other_extra_alerts_id_e;
+
+  // Number of other_extra_alerts incoming alerts
+  parameter int unsigned NIncomingAlertsOther_extra_alerts = 23;
+
+  // Number of LPGs for incoming alert group other_extra_alerts
+  parameter int unsigned NIncomingLpgsOther_extra_alerts = 1;
 
   // Enumeration of interrupts
   typedef enum int unsigned {

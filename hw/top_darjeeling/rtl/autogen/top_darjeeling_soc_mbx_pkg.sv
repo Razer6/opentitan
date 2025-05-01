@@ -122,42 +122,6 @@ package top_darjeeling_soc_mbx_pkg;
   parameter int unsigned TOP_DARJEELING_SOC_MBX_AC_RANGE_CHECK_SIZE_BYTES = 32'h400;
 
 
-  // Number of mio incoming alerts
-  parameter int unsigned NIncomingAlertsMio = 30;
-
-  // Number of LPGs for incoming alert group mio
-  parameter int unsigned NIncomingLpgsMio = 2;
-
-  // Number of pwc incoming alerts
-  parameter int unsigned NIncomingAlertsPwc = 31;
-
-  // Number of LPGs for incoming alert group pwc
-  parameter int unsigned NIncomingLpgsPwc = 2;
-
-  // Number of mio_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsMio_extra_alerts = 1;
-
-  // Number of LPGs for incoming alert group mio_extra_alerts
-  parameter int unsigned NIncomingLpgsMio_extra_alerts = 1;
-
-  // Number of pwc_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsPwc_extra_alerts = 1;
-
-  // Number of LPGs for incoming alert group pwc_extra_alerts
-  parameter int unsigned NIncomingLpgsPwc_extra_alerts = 1;
-
-  // Number of rot_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsRot_extra_alerts = 11;
-
-  // Number of LPGs for incoming alert group rot_extra_alerts
-  parameter int unsigned NIncomingLpgsRot_extra_alerts = 1;
-
-  // Number of other_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsOther_extra_alerts = 23;
-
-  // Number of LPGs for incoming alert group other_extra_alerts
-  parameter int unsigned NIncomingLpgsOther_extra_alerts = 1;
-
 
 
 endpackage

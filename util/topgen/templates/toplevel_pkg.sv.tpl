@@ -111,14 +111,6 @@ package top_${top["name"]}${addr_space_suffix}_pkg;
 %       endfor
   };
 %   endfor
-%   for alert_group, alerts in top["incoming_alert"].items():
-
-  // Number of ${alert_group} incoming alerts
-  parameter int unsigned NIncomingAlerts${alert_group.capitalize()} = ${len(alerts)};
-
-  // Number of LPGs for incoming alert group ${alert_group}
-  parameter int unsigned NIncomingLpgs${alert_group.capitalize()} = ${max(alert['lpg_idx'] for alert in alerts) + 1};
-%   endfor
 
 % if has_alert_handler:
   // Enumeration of alert modules
@@ -136,6 +128,22 @@ package top_${top["name"]}${addr_space_suffix}_pkg;
 %   endfor
     ${lib.Name.from_snake_case("top_" + top["name"] + "_alert_id_count").as_camel_case()}
   } alert_id_e;
+%   for alert_group, alerts in top["incoming_alert"].items():
+
+  // Enumeration of ${alert_group} incoming alerts
+  typedef enum int unsigned {
+%       for alert in alerts:
+    ${lib.Name.from_snake_case(f"top_{top['name']}_alert_id_{alert['name']}").as_camel_case()} = ${loop.index},
+%       endfor
+    ${lib.Name.from_snake_case(f"top_{top['name']}_incoming_alert_{alert_group}_id_count").as_camel_case()}
+  } ${f"outgoing_alert_{alert_group}_id_e"};
+
+  // Number of ${alert_group} incoming alerts
+  parameter int unsigned NIncomingAlerts${alert_group.capitalize()} = ${len(alerts)};
+
+  // Number of LPGs for incoming alert group ${alert_group}
+  parameter int unsigned NIncomingLpgs${alert_group.capitalize()} = ${max(alert['lpg_idx'] for alert in alerts) + 1};
+%   endfor
 % endif # has_alert_handler
 
 % if has_plic:
