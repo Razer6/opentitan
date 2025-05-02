@@ -138,6 +138,45 @@ package top_racl_pkg;
   parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_PRIVATE_POLICY = 8;
   parameter racl_policy_sel_t RACL_POLICY_SEL_DUC_PRIVATE_POLICY = 9;
   /**
+   * RACL Policy Selectors for group rot
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_ROT_ALL_RD_WR_POLICY = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_ROT_HW_ROT_PWC_WR_ALL_RD_POLICY = 1;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_ROT_PRE_BOOT_M_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_ROT_POST_BOOT_M_POLICY = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_ROT_TEE_LIMITED_POLICY = 4;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_ROT_RCODE_PRIVATE_POLICY = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_ROT_ROT_PRIVATE_POLICY = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_ROT_PWC_PRIVATE_POLICY = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_ROT_MIO_PRIVATE_POLICY = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_ROT_DUC_PRIVATE_POLICY = 9;
+  /**
+   * RACL Policy Selectors for group pwc
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_PWC_HW_ROT_PWC_WR_ALL_RD_POLICY = 1;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_PWC_PRE_BOOT_M_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_PWC_POST_BOOT_M_POLICY = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_PWC_TEE_LIMITED_POLICY = 4;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_PWC_RCODE_PRIVATE_POLICY = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_PWC_ROT_PRIVATE_POLICY = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_PWC_PWC_PRIVATE_POLICY = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_PWC_MIO_PRIVATE_POLICY = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_PWC_DUC_PRIVATE_POLICY = 9;
+  /**
+   * RACL Policy Selectors for group mio
+   */
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY = 0;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_HW_ROT_PWC_WR_ALL_RD_POLICY = 1;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_PRE_BOOT_M_POLICY = 2;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_POST_BOOT_M_POLICY = 3;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_TEE_LIMITED_POLICY = 4;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_RCODE_PRIVATE_POLICY = 5;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_ROT_PRIVATE_POLICY = 6;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_PWC_PRIVATE_POLICY = 7;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_MIO_PRIVATE_POLICY = 8;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_MIO_DUC_PRIVATE_POLICY = 9;
+  /**
    * RACL Policy Selectors for group nsEfuse
    */
   parameter racl_policy_sel_t RACL_POLICY_SEL_NSEFUSE_ALL_RD_WR_POLICY = 0;

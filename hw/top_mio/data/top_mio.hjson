@@ -235,7 +235,7 @@
         hart: "0x30000000",
       },
       outgoing_alert: "mio"
-      racl_mapping:  '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      racl_mapping:  '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
     },
     { name: "aon_timer_aon",
       type: "aon_timer",
@@ -246,7 +246,7 @@
         hart: "0x30470000",
       },
       outgoing_alert: "mio"
-      racl_mapping:  '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      racl_mapping:  '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
     },
     { name: "mio_soc_proxy",
       type: "mio_soc_proxy",
@@ -305,7 +305,7 @@
       }
       outgoing_alert: "mio"
       racl_mappings: {
-        regs: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+        regs: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
       }
     },
     { name: "rv_dm",
@@ -329,7 +329,7 @@
       generate_dif: "False"
       outgoing_alert: "mio"
       racl_mappings:  {
-        regs: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+        regs: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
       }
     },
     { name: "rv_plic_mio",
@@ -349,7 +349,7 @@
       incoming_interrupt: [
         "mio_external_irq_cfg.hjson"
       ]
-      racl_mapping:  '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      racl_mapping:  '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
     },
     { name: "sram_ctrl_main",
       type: "sram_ctrl",
@@ -383,7 +383,7 @@
       }
       outgoing_alert: "mio"
       racl_mappings: {
-        regs: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+        regs: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
       }
     },
     { name: "sram_ctrl_mbox",
@@ -416,7 +416,7 @@
       }
       outgoing_alert: "mio"
       racl_mappings: {
-        regs: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+        regs: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
       }
     },
     { name: "dma",
@@ -426,7 +426,7 @@
       reset_connections: {rst_ni: "ext_rst_main"},
       base_addr: {hart: "0x22010000"},
       outgoing_alert: "mio"
-      racl_mapping:  '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      racl_mapping:  '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
     },
     { name: "mbx0",
       type: "mbx",
@@ -439,8 +439,8 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_mio_private_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/mbx_mio_private_mapping.hjson'
       }
     },
     { name: "mbx1",
@@ -454,8 +454,8 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_mio_private_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/mbx_mio_private_mapping.hjson'
       }
     },
     { name: "mbx2",
@@ -469,8 +469,8 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_mio_private_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/mbx_mio_private_mapping.hjson'
       }
     },
     { name: "mbx3",
@@ -484,8 +484,8 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/mbx_rot_private_mapping.hjson'
       }
     },
     { name: "mbx4",
@@ -499,8 +499,8 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_pwc_private_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/mbx_pwc_private_mapping.hjson'
       }
     },
     { name: "mbx5",
@@ -514,8 +514,8 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_duc_private_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/mbx_duc_private_mapping.hjson'
       }
     },
     { name: "mbx_pcie0",
@@ -529,8 +529,8 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_all_rd_wr_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/mbx_all_rd_wr_mapping.hjson'
       }
     },
     { name: "racl_ctrl",
@@ -542,7 +542,10 @@
       base_addr: {
         soc_mbx: "0x01483000",
       },
-      attr: "ipgen"
+      attr: "ipgen",
+      ipgen_param: {
+        racl_group: "mio"
+      },
       outgoing_alert: "mio"
       outgoing_interrupt: "mio"
     },
@@ -560,7 +563,7 @@
       }
       attr: "ipgen",
       outgoing_alert: "mio"
-      racl_mapping: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
+      racl_mapping: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/mbx_rot_private_mapping.hjson'
     },
     { name: "rv_core_ibex_mio",
       type: "rv_core_ibex_mio",
@@ -620,7 +623,7 @@
       },
       outgoing_alert: "mio"
       racl_mappings: {
-        cfg: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+        cfg: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
       }
     },
   ]

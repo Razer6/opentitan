@@ -1,0 +1,14 @@
+// Copyright lowRISC contributors (OpenTitan project).
+// Licensed under the Apache License, Version 2.0, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0
+
+{
+  rot: {
+    registers: {
+      "*": "all_rd_wr_policy"
+    }
+    windows: {
+      "*": "all_rd_wr_policy"
+    }
+  }
+}

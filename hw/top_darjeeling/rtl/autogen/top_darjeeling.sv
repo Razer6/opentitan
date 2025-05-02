@@ -2246,9 +2246,9 @@ module top_darjeeling #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX0_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX0_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX0_SOC_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX0_ROT_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX0_ROT_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX0_ROT_SOC_RDATA),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[74:73])
   ) u_mbx0 (
 
@@ -2282,9 +2282,9 @@ module top_darjeeling #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX1_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX1_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX1_SOC_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX1_ROT_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX1_ROT_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX1_ROT_SOC_RDATA),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[76:75])
   ) u_mbx1 (
 
@@ -2318,9 +2318,9 @@ module top_darjeeling #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX2_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX2_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX2_SOC_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX2_ROT_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX2_ROT_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX2_ROT_SOC_RDATA),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[78:77])
   ) u_mbx2 (
 
@@ -2354,9 +2354,9 @@ module top_darjeeling #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX3_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX3_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX3_SOC_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX3_ROT_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX3_ROT_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX3_ROT_SOC_RDATA),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[80:79])
   ) u_mbx3 (
 
@@ -2390,9 +2390,9 @@ module top_darjeeling #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX4_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX4_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX4_SOC_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX4_ROT_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX4_ROT_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX4_ROT_SOC_RDATA),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[82:81])
   ) u_mbx4 (
 
@@ -2426,9 +2426,9 @@ module top_darjeeling #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX5_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX5_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX5_SOC_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX5_ROT_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX5_ROT_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX5_ROT_SOC_RDATA),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[84:83])
   ) u_mbx5 (
 
@@ -2462,9 +2462,9 @@ module top_darjeeling #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX6_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX6_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX6_SOC_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX6_ROT_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX6_ROT_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX6_ROT_SOC_RDATA),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[86:85])
   ) u_mbx6 (
 
@@ -2529,9 +2529,9 @@ module top_darjeeling #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX_PCIE0_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX_PCIE0_ROT_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_ROT_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_ROT_SOC_RDATA),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[90:89])
   ) u_mbx_pcie0 (
 
@@ -2565,9 +2565,9 @@ module top_darjeeling #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX_PCIE1_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX_PCIE1_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX_PCIE1_SOC_RDATA),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX_PCIE1_ROT_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX_PCIE1_ROT_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX_PCIE1_ROT_SOC_RDATA),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[92:91])
   ) u_mbx_pcie1 (
 
@@ -2654,7 +2654,7 @@ module top_darjeeling #(
   ac_range_check #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK_ROT),
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[98:97]),
     .RangeCheckErrorRsp(AcRangeCheckRangeCheckErrorRsp)
   ) u_ac_range_check (

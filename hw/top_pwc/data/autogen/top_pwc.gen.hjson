@@ -523,7 +523,7 @@
       {
         null:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             INTR_STATE: 0
@@ -635,7 +635,7 @@
       {
         null:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             ALERT_TEST: 6
@@ -805,7 +805,7 @@
       {
         null:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             ALERT_TEST: 6
@@ -1232,7 +1232,7 @@
       {
         regs:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             ALERT_TEST: 6
@@ -1579,7 +1579,7 @@
       {
         regs:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             ALERT_TEST: 6
@@ -2083,7 +2083,7 @@
       {
         null:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             PRIO_0: 0
@@ -2427,7 +2427,7 @@
       {
         regs:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             ALERT_TEST: 6
@@ -2792,7 +2792,7 @@
       {
         regs:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             ALERT_TEST: 6
@@ -3291,7 +3291,7 @@
       {
         null:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             INTR_STATE: 0
@@ -3399,7 +3399,7 @@
       {
         core:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             INTR_STATE: 0
@@ -3425,7 +3425,7 @@
         }
         soc:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             SOC_CONTROL: 7
@@ -3596,7 +3596,7 @@
       {
         core:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             INTR_STATE: 0
@@ -3622,7 +3622,7 @@
         }
         soc:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             SOC_CONTROL: 7
@@ -3793,7 +3793,7 @@
       {
         core:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             INTR_STATE: 0
@@ -3819,7 +3819,7 @@
         }
         soc:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             SOC_CONTROL: 7
@@ -3990,7 +3990,7 @@
       {
         core:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             INTR_STATE: 0
@@ -4016,7 +4016,7 @@
         }
         soc:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             SOC_CONTROL: 6
@@ -4187,7 +4187,7 @@
       {
         core:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             INTR_STATE: 0
@@ -4213,7 +4213,7 @@
         }
         soc:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             SOC_CONTROL: 8
@@ -4384,7 +4384,7 @@
       {
         core:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             INTR_STATE: 0
@@ -4410,7 +4410,7 @@
         }
         soc:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             SOC_CONTROL: 9
@@ -4581,7 +4581,7 @@
       {
         core:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             INTR_STATE: 0
@@ -4607,7 +4607,7 @@
         }
         soc:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             SOC_CONTROL: 0
@@ -4764,6 +4764,10 @@
         }
       }
       attr: ipgen
+      ipgen_param:
+      {
+        racl_group: pwc
+      }
       outgoing_alert: pwc
       outgoing_interrupt: pwc
       clock_connections:
@@ -5072,7 +5076,7 @@
       {
         null:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             INTR_STATE: 6
@@ -5337,7 +5341,7 @@
       {
         cfg:
         {
-          racl_group: Null
+          racl_group: pwc
           register_mapping:
           {
             ALERT_TEST: 6
@@ -9665,6 +9669,765 @@
         {
           name: rot_private_policy
           rot_private: true
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+          ]
+          rd_default: 96
+          wr_default: 96
+        }
+        {
+          name: pwc_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          rd_default: 864
+          wr_default: 864
+        }
+        {
+          name: mio_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          rd_default: 992
+          wr_default: 992
+        }
+        {
+          name: duc_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          rd_default: 13152
+          wr_default: 13152
+        }
+      ]
+      rot:
+      [
+        {
+          name: all_rd_wr_policy
+          allowed_wr:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+            IO_AGENT
+            TEE_IO_AGENT
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+            IO_AGENT
+            TEE_IO_AGENT
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          rd_default: 16383
+          wr_default: 16383
+        }
+        {
+          name: hw_rot_pwc_wr_all_rd_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+            IO_AGENT
+            TEE_IO_AGENT
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          rd_default: 16383
+          wr_default: 864
+        }
+        {
+          name: pre_boot_m_policy
+          allowed_wr:
+          [
+            M_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          rd_default: 1023
+          wr_default: 890
+        }
+        {
+          name: post_boot_m_policy
+          allowed_wr:
+          [
+            M_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          rd_default: 1023
+          wr_default: 890
+        }
+        {
+          name: tee_limited_policy
+          allowed_wr:
+          [
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            TEE_IO_AGENT
+          ]
+          allowed_rd:
+          [
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            TEE_IO_AGENT
+          ]
+          rd_default: 2940
+          wr_default: 2940
+        }
+        {
+          name: rcode_private_policy
+          allowed_wr:
+          [
+            R_CODE
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            R_CODE
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          rd_default: 872
+          wr_default: 872
+        }
+        {
+          name: rot_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+          ]
+          rd_default: 96
+          wr_default: 96
+        }
+        {
+          name: pwc_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          rd_default: 864
+          wr_default: 864
+        }
+        {
+          name: mio_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          rd_default: 992
+          wr_default: 992
+        }
+        {
+          name: duc_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          rd_default: 13152
+          wr_default: 13152
+        }
+      ]
+      pwc:
+      [
+        {
+          name: all_rd_wr_policy
+          allowed_wr:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+            IO_AGENT
+            TEE_IO_AGENT
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+            IO_AGENT
+            TEE_IO_AGENT
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          rd_default: 16383
+          wr_default: 16383
+        }
+        {
+          name: hw_rot_pwc_wr_all_rd_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+            IO_AGENT
+            TEE_IO_AGENT
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          rd_default: 16383
+          wr_default: 864
+        }
+        {
+          name: pre_boot_m_policy
+          allowed_wr:
+          [
+            M_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          rd_default: 1023
+          wr_default: 890
+        }
+        {
+          name: post_boot_m_policy
+          allowed_wr:
+          [
+            M_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          rd_default: 1023
+          wr_default: 890
+        }
+        {
+          name: tee_limited_policy
+          allowed_wr:
+          [
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            TEE_IO_AGENT
+          ]
+          allowed_rd:
+          [
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            TEE_IO_AGENT
+          ]
+          rd_default: 2940
+          wr_default: 2940
+        }
+        {
+          name: rcode_private_policy
+          allowed_wr:
+          [
+            R_CODE
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            R_CODE
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          rd_default: 872
+          wr_default: 872
+        }
+        {
+          name: rot_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+          ]
+          rd_default: 96
+          wr_default: 96
+        }
+        {
+          name: pwc_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          rd_default: 864
+          wr_default: 864
+        }
+        {
+          name: mio_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          rd_default: 992
+          wr_default: 992
+        }
+        {
+          name: duc_private_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          allowed_rd:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          rd_default: 13152
+          wr_default: 13152
+        }
+      ]
+      mio:
+      [
+        {
+          name: all_rd_wr_policy
+          allowed_wr:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+            IO_AGENT
+            TEE_IO_AGENT
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+            IO_AGENT
+            TEE_IO_AGENT
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          rd_default: 16383
+          wr_default: 16383
+        }
+        {
+          name: hw_rot_pwc_wr_all_rd_policy
+          allowed_wr:
+          [
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+            IO_AGENT
+            TEE_IO_AGENT
+            DUC_UC
+            MIMT_R_MODE
+          ]
+          rd_default: 16383
+          wr_default: 864
+        }
+        {
+          name: pre_boot_m_policy
+          allowed_wr:
+          [
+            M_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          rd_default: 1023
+          wr_default: 890
+        }
+        {
+          name: post_boot_m_policy
+          allowed_wr:
+          [
+            M_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            NOT_TEE
+            M_MODE
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            MIO
+            PWC
+            INT_SOC
+          ]
+          rd_default: 1023
+          wr_default: 890
+        }
+        {
+          name: tee_limited_policy
+          allowed_wr:
+          [
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            TEE_IO_AGENT
+          ]
+          allowed_rd:
+          [
+            TEE_MODE
+            R_CODE
+            CAT2_DEBUG
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+            TEE_IO_AGENT
+          ]
+          rd_default: 2940
+          wr_default: 2940
+        }
+        {
+          name: rcode_private_policy
+          allowed_wr:
+          [
+            R_CODE
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          allowed_rd:
+          [
+            R_CODE
+            CAT3_DEBUG
+            ROT
+            PWC
+            INT_SOC
+          ]
+          rd_default: 872
+          wr_default: 872
+        }
+        {
+          name: rot_private_policy
           allowed_wr:
           [
             CAT3_DEBUG

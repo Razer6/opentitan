@@ -3,13 +3,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 {
-  Null: {
+  mio: {
     registers: {
-      "ALERT_TEST": "rot_private_policy"
-      "*": "all_rd_wr_policy"
+      "*": "duc_private_policy"
     }
     windows: {
-      "*": "all_rd_wr_policy"
+      "*": "duc_private_policy"
     }
   }
 }

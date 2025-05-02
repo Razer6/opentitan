@@ -19,6 +19,54 @@
 | duc_private_policy          |       9 |               |
 
 
+### RACL group: rot
+
+| Policy Name                 |   Index | Description   |
+|:----------------------------|--------:|:--------------|
+| all_rd_wr_policy            |       0 |               |
+| hw_rot_pwc_wr_all_rd_policy |       1 |               |
+| pre_boot_m_policy           |       2 |               |
+| post_boot_m_policy          |       3 |               |
+| tee_limited_policy          |       4 |               |
+| rcode_private_policy        |       5 |               |
+| rot_private_policy          |       6 |               |
+| pwc_private_policy          |       7 |               |
+| mio_private_policy          |       8 |               |
+| duc_private_policy          |       9 |               |
+
+
+### RACL group: pwc
+
+| Policy Name                 |   Index | Description   |
+|:----------------------------|--------:|:--------------|
+| all_rd_wr_policy            |       0 |               |
+| hw_rot_pwc_wr_all_rd_policy |       1 |               |
+| pre_boot_m_policy           |       2 |               |
+| post_boot_m_policy          |       3 |               |
+| tee_limited_policy          |       4 |               |
+| rcode_private_policy        |       5 |               |
+| rot_private_policy          |       6 |               |
+| pwc_private_policy          |       7 |               |
+| mio_private_policy          |       8 |               |
+| duc_private_policy          |       9 |               |
+
+
+### RACL group: mio
+
+| Policy Name                 |   Index | Description   |
+|:----------------------------|--------:|:--------------|
+| all_rd_wr_policy            |       0 |               |
+| hw_rot_pwc_wr_all_rd_policy |       1 |               |
+| pre_boot_m_policy           |       2 |               |
+| post_boot_m_policy          |       3 |               |
+| tee_limited_policy          |       4 |               |
+| rcode_private_policy        |       5 |               |
+| rot_private_policy          |       6 |               |
+| pwc_private_policy          |       7 |               |
+| mio_private_policy          |       8 |               |
+| duc_private_policy          |       9 |               |
+
+
 ### RACL group: nsEfuse
 
 | Policy Name                 |   Index | Description   |
@@ -177,7 +225,7 @@
 
 - IP: mbx
 - Instance base address: 0x1465000
-- RACL group: Null
+- RACL group: rot
 
 
 | Name                             | Offset   | Address   | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
@@ -193,7 +241,7 @@
 
 - IP: mbx
 - Instance base address: 0x1465100
-- RACL group: Null
+- RACL group: rot
 
 
 | Name                             | Offset   | Address   | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
@@ -209,7 +257,7 @@
 
 - IP: mbx
 - Instance base address: 0x1465200
-- RACL group: Null
+- RACL group: rot
 
 
 | Name                             | Offset   | Address   | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
@@ -225,7 +273,7 @@
 
 - IP: mbx
 - Instance base address: 0x1465300
-- RACL group: Null
+- RACL group: rot
 
 
 | Name                             | Offset   | Address   | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
@@ -241,7 +289,7 @@
 
 - IP: mbx
 - Instance base address: 0x1465400
-- RACL group: Null
+- RACL group: rot
 
 
 | Name                             | Offset   | Address   | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
@@ -257,7 +305,7 @@
 
 - IP: mbx
 - Instance base address: 0x1465500
-- RACL group: Null
+- RACL group: rot
 
 
 | Name                             | Offset   | Address   | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
@@ -273,7 +321,7 @@
 
 - IP: mbx
 - Instance base address: 0x1496000
-- RACL group: Null
+- RACL group: rot
 
 
 | Name                             | Offset   | Address   | Width   | Policy                   | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
@@ -289,7 +337,7 @@
 
 - IP: mbx
 - Instance base address: 0x1460100
-- RACL group: Null
+- RACL group: rot
 
 
 | Name                                  | Offset   | Address   | Width   | Policy               | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
@@ -305,7 +353,7 @@
 
 - IP: mbx
 - Instance base address: 0x1460200
-- RACL group: Null
+- RACL group: rot
 
 
 | Name                                  | Offset   | Address   | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |
@@ -321,7 +369,7 @@
 
 - IP: ac_range_check
 - Instance base address: 0x1464000
-- RACL group: Null
+- RACL group: rot
 
 
 | Name                                           | Offset   | Address   | Width   | Policy                 | NOT_TEE   | M_MODE   | TEE_MODE   | R_CODE   | CAT2_DEBUG   | CAT3_DEBUG   | ROT   | MIO   | PWC   | INT_SOC   | IO_AGENT   | TEE_IO_AGENT   | DUC_UC   | MIMT_R_MODE   |

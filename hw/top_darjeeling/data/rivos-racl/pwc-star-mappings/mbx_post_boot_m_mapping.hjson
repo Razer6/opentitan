@@ -3,9 +3,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 {
-  Null: {
+  pwc: {
     registers: {
-      "*": "all_rd_wr_policy"
+      "*": "post_boot_m_policy"
+    }
+    windows: {
+      "*": "post_boot_m_policy"
     }
   }
 }

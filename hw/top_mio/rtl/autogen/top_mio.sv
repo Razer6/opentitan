@@ -355,7 +355,7 @@ module top_mio #(
   rv_timer #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_RV_TIMER),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_RV_TIMER_MIO),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[0:0])
   ) u_rv_timer (
 
@@ -378,7 +378,7 @@ module top_mio #(
   aon_timer #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AON_TIMER_AON),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AON_TIMER_AON_MIO),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[1:1])
   ) u_aon_timer_aon (
 
@@ -435,7 +435,7 @@ module top_mio #(
   sram_ctrl #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_SRAM_CTRL_RET_AON_REGS),
+    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_SRAM_CTRL_RET_AON_MIO_REGS),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[2:2]),
     .RndCnstSramKey(RndCnstSramCtrlRetAonSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlRetAonSramNonce),
@@ -480,7 +480,7 @@ module top_mio #(
   rv_dm #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_RV_DM_REGS),
+    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_RV_DM_MIO_REGS),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[3:3]),
     .IdcodeValue(RvDmIdcodeValue),
     .UseDmiInterface(RvDmUseDmiInterface),
@@ -529,7 +529,7 @@ module top_mio #(
   rv_plic_mio #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_RV_PLIC_MIO),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_RV_PLIC_MIO_MIO),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[4:4])
   ) u_rv_plic_mio (
       // External alert group "mio" [4]: fatal_fault
@@ -553,7 +553,7 @@ module top_mio #(
   sram_ctrl #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_SRAM_CTRL_MAIN_REGS),
+    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_SRAM_CTRL_MAIN_MIO_REGS),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[5:5]),
     .RndCnstSramKey(RndCnstSramCtrlMainSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlMainSramNonce),
@@ -598,7 +598,7 @@ module top_mio #(
   sram_ctrl #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_SRAM_CTRL_MBOX_REGS),
+    .RaclPolicySelVecRegs(RACL_POLICY_SEL_VEC_SRAM_CTRL_MBOX_MIO_REGS),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[6:6]),
     .RndCnstSramKey(RndCnstSramCtrlMboxSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlMboxSramNonce),
@@ -643,7 +643,7 @@ module top_mio #(
   dma #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_DMA),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_DMA_MIO),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[7:7]),
     .EnableDataIntgGen(DmaEnableDataIntgGen),
     .EnableRspDataIntgCheck(DmaEnableRspDataIntgCheck),
@@ -681,10 +681,10 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX0_CORE),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX0_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX0_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX0_SOC_RDATA),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX0_MIO_CORE),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX0_MIO_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX0_MIO_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX0_MIO_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[9:8])
   ) u_mbx0 (
 
@@ -718,10 +718,10 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX1_CORE),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX1_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX1_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX1_SOC_RDATA),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX1_MIO_CORE),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX1_MIO_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX1_MIO_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX1_MIO_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[11:10])
   ) u_mbx1 (
 
@@ -755,10 +755,10 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX2_CORE),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX2_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX2_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX2_SOC_RDATA),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX2_MIO_CORE),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX2_MIO_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX2_MIO_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX2_MIO_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[13:12])
   ) u_mbx2 (
 
@@ -792,10 +792,10 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX3_CORE),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX3_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX3_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX3_SOC_RDATA),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX3_MIO_CORE),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX3_MIO_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX3_MIO_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX3_MIO_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[15:14])
   ) u_mbx3 (
 
@@ -829,10 +829,10 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX4_CORE),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX4_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX4_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX4_SOC_RDATA),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX4_MIO_CORE),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX4_MIO_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX4_MIO_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX4_MIO_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[17:16])
   ) u_mbx4 (
 
@@ -866,10 +866,10 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX5_CORE),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX5_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX5_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX5_SOC_RDATA),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX5_MIO_CORE),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX5_MIO_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX5_MIO_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX5_MIO_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[19:18])
   ) u_mbx5 (
 
@@ -903,10 +903,10 @@ module top_mio #(
   mbx #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX_PCIE0_CORE),
-    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX_PCIE0_SOC),
-    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_WDATA),
-    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_SOC_RDATA),
+    .RaclPolicySelVecCore(RACL_POLICY_SEL_VEC_MBX_PCIE0_MIO_CORE),
+    .RaclPolicySelVecSoc(RACL_POLICY_SEL_VEC_MBX_PCIE0_MIO_SOC),
+    .RaclPolicySelWinSocWdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_MIO_SOC_WDATA),
+    .RaclPolicySelWinSocRdata(RACL_POLICY_SEL_WIN_MBX_PCIE0_MIO_SOC_RDATA),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[21:20])
   ) u_mbx_pcie0 (
 
@@ -967,7 +967,7 @@ module top_mio #(
   ac_range_check_mio #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK_MIO),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[25:24]),
     .RangeCheckErrorRsp(AcRangeCheckRangeCheckErrorRsp)
   ) u_ac_range_check (
@@ -998,8 +998,8 @@ module top_mio #(
   rv_core_ibex_mio #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVecCfg(RACL_POLICY_SEL_VEC_RV_CORE_IBEX_MIO_CFG),
-    .RaclPolicySelWinCfgDvsimwindow(RACL_POLICY_SEL_WIN_RV_CORE_IBEX_MIO_CFG_DV_SIM_WINDOW),
+    .RaclPolicySelVecCfg(RACL_POLICY_SEL_VEC_RV_CORE_IBEX_MIO_MIO_CFG),
+    .RaclPolicySelWinCfgDvsimwindow(RACL_POLICY_SEL_WIN_RV_CORE_IBEX_MIO_MIO_CFG_DV_SIM_WINDOW),
     .AlertAsyncOn(AsyncOnOutgoingAlertMio[29:26]),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexMioLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexMioLfsrPerm),

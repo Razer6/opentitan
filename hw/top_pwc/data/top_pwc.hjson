@@ -243,7 +243,7 @@
       },
       attr: "ipgen",
       outgoing_alert: "pwc"
-      racl_mapping:  '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      racl_mapping:  '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
     },
     { name: "rv_timer",
       type: "rv_timer",
@@ -253,7 +253,7 @@
         hart: "0x30100000",
       },
       outgoing_alert: "pwc"
-      racl_mapping:  '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      racl_mapping:  '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
     },
     { name: "aon_timer_aon",
       type: "aon_timer",
@@ -264,7 +264,7 @@
         hart: "0x30470000",
       },
       outgoing_alert: "pwc"
-      racl_mapping:  '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      racl_mapping:  '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
     },
     { name: "pwc_soc_proxy",
       type: "pwc_soc_proxy",
@@ -323,7 +323,7 @@
       }
       outgoing_alert: "pwc"
       racl_mappings: {
-        regs: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+        regs: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
       }
     },
     { name: "rv_dm",
@@ -347,7 +347,7 @@
       generate_dif: "False"
       outgoing_alert: "pwc"
       racl_mappings:  {
-        regs: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+        regs: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
       }
     },
     { name: "rv_plic_pwc",
@@ -367,7 +367,7 @@
       incoming_interrupt: [
         "pwc_external_irq_cfg.hjson"
       ]
-      racl_mapping:  '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      racl_mapping:  '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
     },
     { name: "sram_ctrl_main",
       type: "sram_ctrl",
@@ -401,7 +401,7 @@
       }
       outgoing_alert: "pwc"
       racl_mappings: {
-        regs: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+        regs: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
       }
     },
     { name: "sram_ctrl_mbox",
@@ -434,7 +434,7 @@
       }
       outgoing_alert: "pwc"
       racl_mappings: {
-        regs: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+        regs: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
       }
     },
     { name: "dma",
@@ -444,7 +444,7 @@
       reset_connections: {rst_ni: "ext_rst_main"},
       base_addr: {hart: "0x22010000"},
       outgoing_alert: "pwc"
-      racl_mapping:  '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+      racl_mapping:  '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
     },
     { name: "mbx0",
       type: "mbx",
@@ -457,8 +457,8 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_pwc_private_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/mbx_pwc_private_mapping.hjson'
       }
     },
     { name: "mbx1",
@@ -472,8 +472,8 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_pwc_private_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/mbx_pwc_private_mapping.hjson'
       }
     },
     { name: "mbx2",
@@ -487,8 +487,8 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_pwc_private_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/mbx_pwc_private_mapping.hjson'
       }
     },
     { name: "mbx3",
@@ -502,8 +502,8 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/mbx_rot_private_mapping.hjson'
       }
     },
     { name: "mbx4",
@@ -517,8 +517,8 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_mio_private_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/mbx_mio_private_mapping.hjson'
       }
     },
     { name: "mbx5",
@@ -532,8 +532,8 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_duc_private_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/mbx_duc_private_mapping.hjson'
       }
     },
     { name: "mbx_pcie0",
@@ -547,8 +547,8 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        core: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
-        soc: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_all_rd_wr_mapping.hjson'
+        core: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
+        soc: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/mbx_all_rd_wr_mapping.hjson'
       }
     },
     { name: "racl_ctrl",
@@ -560,7 +560,10 @@
       base_addr: {
         soc_mbx: "0x01473000",
       },
-      attr: "ipgen"
+      attr: "ipgen",
+      ipgen_param: {
+        racl_group: "pwc"
+      },
       outgoing_alert: "pwc"
       outgoing_interrupt: "pwc"
     },
@@ -578,7 +581,7 @@
       }
       attr: "ipgen",
       outgoing_alert: "pwc"
-      racl_mapping: '../../top_darjeeling/data/rivos-racl/star-mappings/mbx_rot_private_mapping.hjson'
+      racl_mapping: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/mbx_rot_private_mapping.hjson'
     },
     { name: "rv_core_ibex_pwc",
       type: "rv_core_ibex_pwc",
@@ -638,7 +641,7 @@
       },
       outgoing_alert: "pwc"
       racl_mappings: {
-        cfg: '../../top_darjeeling/data/rivos-racl/star-mappings/isolate_alert_test_mapping.hjson'
+        cfg: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/isolate_alert_test_mapping.hjson'
       }
     },
   ]

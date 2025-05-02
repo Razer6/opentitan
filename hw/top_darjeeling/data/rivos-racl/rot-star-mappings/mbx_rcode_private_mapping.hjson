@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 {
-  Null: {
+  rot: {
     registers: {
       "*": "rcode_private_policy"
     }

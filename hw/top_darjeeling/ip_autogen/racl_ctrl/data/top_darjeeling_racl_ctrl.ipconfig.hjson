@@ -186,7 +186,6 @@
       }
       {
         name: rot_private_policy
-        rot_private: true
         allowed_wr:
         [
           CAT3_DEBUG

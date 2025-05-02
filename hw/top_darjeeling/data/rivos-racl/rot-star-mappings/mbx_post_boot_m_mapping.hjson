@@ -3,12 +3,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 {
-  Null: {
+  rot: {
     registers: {
-      "*": "duc_private_policy"
+      "*": "post_boot_m_policy"
     }
     windows: {
-      "*": "duc_private_policy"
+      "*": "post_boot_m_policy"
     }
   }
 }
