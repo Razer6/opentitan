@@ -771,6 +771,7 @@ def _get_racl_params(top: ConfigT) -> ParamsT:
         "nr_ctn_uid_bits": top["racl"]["nr_ctn_uid_bits"],
         "nr_policies": top["racl"]["nr_policies"],
         'nr_subscribing_ips': num_subscribing_ips[racl_group],
+        "racl_group": racl_group,
         "policies": policies
     }
 

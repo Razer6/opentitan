@@ -137,7 +137,7 @@
         }
       ]
       tags: [
-        "racl_ctrl_policy_name:Null:all_rd_wr_policy"
+        "racl_ctrl_policy_name:pwc:all_rd_wr_policy"
       ],
     }
     { reserved: "1" }
@@ -167,7 +167,7 @@
         }
       ]
       tags: [
-        "racl_ctrl_policy_name:Null:hw_rot_pwc_wr_all_rd_policy"
+        "racl_ctrl_policy_name:pwc:hw_rot_pwc_wr_all_rd_policy"
       ],
     }
     { reserved: "1" }
@@ -197,7 +197,7 @@
         }
       ]
       tags: [
-        "racl_ctrl_policy_name:Null:pre_boot_m_policy"
+        "racl_ctrl_policy_name:pwc:pre_boot_m_policy"
       ],
     }
     { reserved: "1" }
@@ -227,7 +227,7 @@
         }
       ]
       tags: [
-        "racl_ctrl_policy_name:Null:post_boot_m_policy"
+        "racl_ctrl_policy_name:pwc:post_boot_m_policy"
       ],
     }
     { reserved: "1" }
@@ -257,7 +257,7 @@
         }
       ]
       tags: [
-        "racl_ctrl_policy_name:Null:tee_limited_policy"
+        "racl_ctrl_policy_name:pwc:tee_limited_policy"
       ],
     }
     { reserved: "1" }
@@ -287,7 +287,7 @@
         }
       ]
       tags: [
-        "racl_ctrl_policy_name:Null:rcode_private_policy"
+        "racl_ctrl_policy_name:pwc:rcode_private_policy"
       ],
     }
     { reserved: "1" }
@@ -317,7 +317,7 @@
         }
       ]
       tags: [
-        "racl_ctrl_policy_name:Null:rot_private_policy"
+        "racl_ctrl_policy_name:pwc:rot_private_policy"
       ],
     }
     { reserved: "1" }
@@ -347,7 +347,7 @@
         }
       ]
       tags: [
-        "racl_ctrl_policy_name:Null:pwc_private_policy"
+        "racl_ctrl_policy_name:pwc:pwc_private_policy"
       ],
     }
     { reserved: "1" }
@@ -377,7 +377,7 @@
         }
       ]
       tags: [
-        "racl_ctrl_policy_name:Null:mio_private_policy"
+        "racl_ctrl_policy_name:pwc:mio_private_policy"
       ],
     }
     { reserved: "1" }
@@ -407,7 +407,7 @@
         }
       ]
       tags: [
-        "racl_ctrl_policy_name:Null:duc_private_policy"
+        "racl_ctrl_policy_name:pwc:duc_private_policy"
       ],
     }
     { reserved: "1" }

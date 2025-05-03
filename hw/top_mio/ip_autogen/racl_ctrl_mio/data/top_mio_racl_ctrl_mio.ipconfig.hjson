@@ -10,6 +10,7 @@
     nr_ctn_uid_bits: 5
     nr_policies: 16
     nr_subscribing_ips: 17
+    racl_group: mio
     policies:
     [
       {
