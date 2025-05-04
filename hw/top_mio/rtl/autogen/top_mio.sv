@@ -453,7 +453,7 @@ module top_mio #(
       // External alert group "mio" [2]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[2:2] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[2:2] ),
-      .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
+      .racl_policy_sel_ranges_ram_i('0),
 
       // Inter-module signals
       .sram_otp_key_o(),
@@ -571,7 +571,7 @@ module top_mio #(
       // External alert group "mio" [5]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[5:5] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[5:5] ),
-      .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
+      .racl_policy_sel_ranges_ram_i('0),
 
       // Inter-module signals
       .sram_otp_key_o(),
@@ -616,7 +616,7 @@ module top_mio #(
       // External alert group "mio" [6]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[6:6] ),
       .alert_rx_i  ( outgoing_alert_mio_rx_i[6:6] ),
-      .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
+      .racl_policy_sel_ranges_ram_i('0),
 
       // Inter-module signals
       .sram_otp_key_o(),

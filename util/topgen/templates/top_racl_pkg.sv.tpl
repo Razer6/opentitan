@@ -53,9 +53,6 @@ package top_racl_pkg;
   // Default policy vector for unconnected RACL IPs
   parameter racl_policy_vec_t RACL_POLICY_VEC_DEFAULT = '0;
 
-  // Default policy selection range for unconnected RACL IPs
-  parameter racl_range_t RACL_RANGE_T_DEFAULT = '0;
-
   // Default ROT Private read policy value
   parameter racl_role_vec_t RACL_POLICY_ROT_PRIVATE_RD = ${racl_role_vec_len}'h${f"{racl_config['rot_private_policy_rd']:x}"};
 

@@ -1711,7 +1711,7 @@ module top_darjeeling #(
       // [50]: fatal_error
       .alert_tx_o  ( alert_tx[50:50] ),
       .alert_rx_i  ( alert_rx[50:50] ),
-      .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
+      .racl_policy_sel_ranges_ram_i('0),
 
       // Inter-module signals
       .sram_otp_key_o(otp_ctrl_sram_otp_key_req[1]),
@@ -2088,7 +2088,7 @@ module top_darjeeling #(
       // [68]: fatal_error
       .alert_tx_o  ( alert_tx[68:68] ),
       .alert_rx_i  ( alert_rx[68:68] ),
-      .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
+      .racl_policy_sel_ranges_ram_i('0),
 
       // Inter-module signals
       .sram_otp_key_o(otp_ctrl_sram_otp_key_req[0]),
@@ -2130,7 +2130,7 @@ module top_darjeeling #(
       // [69]: fatal_error
       .alert_tx_o  ( alert_tx[69:69] ),
       .alert_rx_i  ( alert_rx[69:69] ),
-      .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
+      .racl_policy_sel_ranges_ram_i('0),
 
       // Inter-module signals
       .sram_otp_key_o(otp_ctrl_sram_otp_key_req[2]),

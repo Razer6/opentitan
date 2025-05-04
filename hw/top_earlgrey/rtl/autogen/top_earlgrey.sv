@@ -2186,7 +2186,7 @@ module top_earlgrey #(
       // [34]: fatal_error
       .alert_tx_o  ( alert_tx[34:34] ),
       .alert_rx_i  ( alert_rx[34:34] ),
-      .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
+      .racl_policy_sel_ranges_ram_i('0),
 
       // Inter-module signals
       .sram_otp_key_o(otp_ctrl_sram_otp_key_req[1]),
@@ -2680,7 +2680,7 @@ module top_earlgrey #(
       // [59]: fatal_error
       .alert_tx_o  ( alert_tx[59:59] ),
       .alert_rx_i  ( alert_rx[59:59] ),
-      .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
+      .racl_policy_sel_ranges_ram_i('0),
 
       // Inter-module signals
       .sram_otp_key_o(otp_ctrl_sram_otp_key_req[0]),

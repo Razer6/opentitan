@@ -526,7 +526,7 @@ module top_pwc #(
       // External alert group "pwc" [3]: fatal_error
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[3:3] ),
       .alert_rx_i  ( outgoing_alert_pwc_rx_i[3:3] ),
-      .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
+      .racl_policy_sel_ranges_ram_i('0),
 
       // Inter-module signals
       .sram_otp_key_o(),
@@ -644,7 +644,7 @@ module top_pwc #(
       // External alert group "pwc" [6]: fatal_error
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[6:6] ),
       .alert_rx_i  ( outgoing_alert_pwc_rx_i[6:6] ),
-      .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
+      .racl_policy_sel_ranges_ram_i('0),
 
       // Inter-module signals
       .sram_otp_key_o(),
@@ -689,7 +689,7 @@ module top_pwc #(
       // External alert group "pwc" [7]: fatal_error
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[7:7] ),
       .alert_rx_i  ( outgoing_alert_pwc_rx_i[7:7] ),
-      .racl_policy_sel_ranges_ram_i('{top_racl_pkg::RACL_RANGE_T_DEFAULT}),
+      .racl_policy_sel_ranges_ram_i('0),
 
       // Inter-module signals
       .sram_otp_key_o(),
