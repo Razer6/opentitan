@@ -7,7 +7,6 @@
 # util/topgen.py -t hw/top_pwc/data/top_pwc.hjson
 # -o hw/top_pwc
 
-load("//rules/opentitan:hw.bzl", "opentitan_top")
 load("//hw/top_pwc/ip_autogen/ac_range_check_pwc:defs.bzl", "AC_RANGE_CHECK_PWC")
 load("//hw/ip/aon_timer:defs.bzl", "AON_TIMER")
 load("//hw/ip/dma:defs.bzl", "DMA")
@@ -21,26 +20,20 @@ load("//hw/top_pwc/ip_autogen/rv_plic_pwc:defs.bzl", "RV_PLIC_PWC")
 load("//hw/ip/rv_timer:defs.bzl", "RV_TIMER")
 load("//hw/ip/sram_ctrl:defs.bzl", "SRAM_CTRL")
 
-PWC = opentitan_top(
-    name = "pwc",
-    hjson = "//hw/top_pwc/data/autogen:top_pwc.gen.hjson",
-    top_lib = "//hw/top_pwc/sw/autogen:top_pwc",
-    top_ld = "//hw/top_pwc/sw/autogen:top_pwc_memory",
-    ips = [
-        AC_RANGE_CHECK_PWC,
-        AON_TIMER,
-        DMA,
-        GPIO_PWC,
-        MBX,
-        PWC_SOC_PROXY,
-        RACL_CTRL_PWC,
-        RV_CORE_IBEX_PWC,
-        RV_DM,
-        RV_PLIC_PWC,
-        RV_TIMER,
-        SRAM_CTRL,
-    ],
-)
+PWC_IPS = [
+    AC_RANGE_CHECK_PWC,
+    AON_TIMER,
+    DMA,
+    GPIO_PWC,
+    MBX,
+    PWC_SOC_PROXY,
+    RACL_CTRL_PWC,
+    RV_CORE_IBEX_PWC,
+    RV_DM,
+    RV_PLIC_PWC,
+    RV_TIMER,
+    SRAM_CTRL,
+]
 
 PWC_ALERTS = [
 ]
