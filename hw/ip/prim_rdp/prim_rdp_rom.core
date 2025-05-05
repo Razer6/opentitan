@@ -5,6 +5,9 @@ CAPI=2:
 
 name: "lowrisc:prim_rdp:rom"
 description: "Technology-independent Read-Only Memory (ROM) implementation"
+virtual:
+  - lowrisc:prim:rom
+
 filesets:
   files_rtl:
     depend:
@@ -12,7 +15,7 @@ filesets:
       - lowrisc:prim:rom_pkg
       - rivos:ip:rvscs_ot_rom
     files:
-      - rtl/prim_rdp_rom.sv
+      - rtl/prim_rom.sv
     file_type: systemVerilogSource
 
   files_verilator_waiver:

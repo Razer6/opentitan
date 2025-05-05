@@ -1,0 +1,60 @@
+CAPI=2:
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+
+name: "lowrisc:prim_rdp:all:0.1"
+description: "Technology-independent prim library"
+
+filesets:
+  files_rtl:
+    depend:
+      - lowrisc:prim_rdp:and2
+      - lowrisc:prim_rdp:buf
+      - lowrisc:prim_rdp:clock_buf
+      - lowrisc:prim_rdp:clock_gating
+      - lowrisc:prim_rdp:clock_inv
+      - lowrisc:prim_rdp:clock_mux2
+      - lowrisc:prim_rdp:flop
+      - lowrisc:prim_rdp:flop_2sync
+      - lowrisc:prim_rdp:flop_en
+      - lowrisc:prim_rdp:ram_1p
+      - lowrisc:prim_rdp:ram_1r1w
+      - lowrisc:prim_rdp:rom
+      - lowrisc:prim_rdp:xnor2
+      - lowrisc:prim_rdp:xor2
+      - lowrisc:prim_rdp:otp_cfg_pkg
+      - lowrisc:prim_rdp:ram_1p_pkg
+      - lowrisc:prim_rdp:ram_2p_pkg
+      - lowrisc:prim_rdp:rom_pkg
+
+# Note that flash and otp are macros that depend on IPs, so they are not
+# included here. They must be brought in explicitly.
+#      - lowrisc:prim_generic:flash
+#      - lowrisc:prim_generic:otp
+
+mapping:
+  "lowrisc:prim:and2"         : "lowrisc:prim_rdp:and2"
+  "lowrisc:prim:buf"          : "lowrisc:prim_rdp:buf"
+  "lowrisc:prim:clock_buf"    : "lowrisc:prim_rdp:clock_buf"
+  "lowrisc:prim:clock_gating" : "lowrisc:prim_rdp:clock_gating"
+  "lowrisc:prim:clock_inv"    : "lowrisc:prim_rdp:clock_inv"
+  "lowrisc:prim:clock_mux2"   : "lowrisc:prim_rdp:clock_mux2"
+  "lowrisc:prim:flop"         : "lowrisc:prim_rdp:flop"
+  "lowrisc:prim:flop_2sync"   : "lowrisc:prim_rdp:flop_2sync"
+  "lowrisc:prim:flop_en"      : "lowrisc:prim_rdp:flop_en"
+  "lowrisc:prim:flop_no_rst"  : "lowrisc:prim_rdp:flop_no_rst"
+  "lowrisc:prim:ram_1p"       : "lowrisc:prim_rdp:ram_1p"
+  "lowrisc:prim:ram_1r1w"     : "lowrisc:prim_rdp:ram_1r1w"
+  "lowrisc:prim:rom"          : "lowrisc:prim_rdp:rom"
+  "lowrisc:prim:xnor2"        : "lowrisc:prim_rdp:xnor2"
+  "lowrisc:prim:xor2"         : "lowrisc:prim_rdp:xor2"
+  "lowrisc:prim:otp_cfg_pkg"  : "lowrisc:prim_rdp:otp_cfg_pkg"
+  "lowrisc:prim:ram_1p_pkg"   : "lowrisc:prim_rdp:ram_1p_pkg"
+  "lowrisc:prim:ram_2p_pkg"   : "lowrisc:prim_rdp:ram_2p_pkg"
+  "lowrisc:prim:rom_pkg"      : "lowrisc:prim_rdp:rom_pkg"
+
+targets:
+  default:
+    filesets:
+      - files_rtl

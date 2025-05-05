@@ -4,7 +4,7 @@
 
 `include "prim_assert.sv"
 
-module prim_rdp_clock_buf #(
+module prim_clock_buf #(
   // Turning off these verilator lints because keeping these parameters makes it consistent with
   // the IP in hw/ip/prim_xilinx/rtl/ .
   /* verilator lint_off UNUSED */
@@ -28,4 +28,4 @@ RDP_GATE_CKBUF
     .Z(clk_o)
   );
 
-endmodule // prim_rdp_clock_buf
+endmodule // prim_clock_buf

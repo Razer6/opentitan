@@ -5,6 +5,9 @@ CAPI=2:
 
 name: "lowrisc:prim_rdp:clock_buf"
 description: "RDP clock buffer"
+virtual:
+  - lowrisc:prim:clock_buf
+
 filesets:
   files_rtl:
     depend:
@@ -12,7 +15,7 @@ filesets:
       - rivos:rdplib:rdp_async
       - rivos:rdplib:rdp_gate
     files:
-      - rtl/prim_rdp_clock_buf.sv
+      - rtl/prim_clock_buf.sv
     file_type: systemVerilogSource
 
   files_verilator_waiver:

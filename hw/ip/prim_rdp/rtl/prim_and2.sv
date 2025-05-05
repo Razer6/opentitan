@@ -4,7 +4,7 @@
 
 `include "prim_assert.sv"
 
-module prim_rdp_and2 #(
+module prim_and2 #(
   parameter int Width = 1
 ) (
   input        [Width-1:0] in0_i,

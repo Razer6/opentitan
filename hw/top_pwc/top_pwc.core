@@ -7,6 +7,7 @@ description: "Technology-independent Pwc toplevel"
 filesets:
   files_rtl_generic:
     depend:
+      - lowrisc:prim_rdp:all
       # Place the autogen packages first to avoid conflicts
       - lowrisc:ip:uart:0.1
       - lowrisc:ip:rv_dm

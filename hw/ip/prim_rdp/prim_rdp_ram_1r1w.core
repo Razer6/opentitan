@@ -5,6 +5,9 @@ CAPI=2:
 
 name: "lowrisc:prim_rdp:ram_1r1w"
 description: "RDP ram_1r1w"
+virtual:
+  - lowrisc:prim:ram_1r1w
+
 filesets:
   files_rtl:
     depend:
@@ -13,7 +16,7 @@ filesets:
       - rivos:ip:rvscs_ot_sram
       - scs:lib:cdc_buf
     files:
-      - rtl/prim_rdp_ram_1r1w.sv
+      - rtl/prim_ram_1r1w.sv
     file_type: systemVerilogSource
 
   files_verilator_waiver:

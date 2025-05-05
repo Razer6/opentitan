@@ -4,7 +4,7 @@
 
 `include "prim_assert.sv"
 
-module prim_rdp_flop_2sync #(
+module prim_flop_2sync #(
   parameter int               Width      = 16,
   parameter logic [Width-1:0] ResetValue = '0,
   parameter bit               EnablePrimCdcRand = 1

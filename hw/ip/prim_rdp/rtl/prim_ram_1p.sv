@@ -6,7 +6,7 @@
 
 `include "prim_assert.sv"
 
-module prim_rdp_ram_1p
+module prim_ram_1p
   import prim_ram_1p_pkg::*;
   import prim_util_pkg::*;
 #(

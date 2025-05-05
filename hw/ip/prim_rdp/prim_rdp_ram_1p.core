@@ -5,6 +5,9 @@ CAPI=2:
 
 name: "lowrisc:prim_rdp:ram_1p"
 description: "Single port TSMC RAM"
+virtual:
+  - lowrisc:prim:ram_1p
+
 filesets:
   files_rtl:
     depend:
@@ -13,7 +16,7 @@ filesets:
       - lowrisc:prim:util
       - rivos:ip:rvscs_ot_sram
     files:
-      - rtl/prim_rdp_ram_1p.sv
+      - rtl/prim_ram_1p.sv
     file_type: systemVerilogSource
 
   files_verilator_waiver:

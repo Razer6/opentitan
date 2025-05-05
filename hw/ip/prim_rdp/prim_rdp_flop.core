@@ -5,12 +5,15 @@ CAPI=2:
 
 name: "lowrisc:prim_rdp:flop"
 description: "RDP flop"
+virtual:
+  - lowrisc:prim:flop
+
 filesets:
   files_rtl:
     depend:
       - rivos:rdplib:rdp_gate
     files:
-      - rtl/prim_rdp_flop.sv
+      - rtl/prim_flop.sv
     file_type: systemVerilogSource
 
   files_verilator_waiver:

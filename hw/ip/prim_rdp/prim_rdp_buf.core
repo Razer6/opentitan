@@ -5,6 +5,9 @@ CAPI=2:
 
 name: "lowrisc:prim_rdp:buf"
 description: "RDP buffer"
+virtual:
+  - lowrisc:prim:buf
+
 filesets:
   files_rtl:
     depend:
@@ -12,7 +15,7 @@ filesets:
       - rivos:rdplib:rdp_async
       - rivos:rdplib:rdp_gate
     files:
-      - rtl/prim_rdp_buf.sv
+      - rtl/prim_buf.sv
     file_type: systemVerilogSource
 
   files_verilator_waiver:

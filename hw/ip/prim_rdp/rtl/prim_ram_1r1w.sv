@@ -7,7 +7,9 @@
 //   Implementing ECC should be done inside wrapper not this model.
 `include "prim_assert.sv"
 
-module prim_rdp_ram_1r1w import prim_ram_2p_pkg::*; #(
+
+
+module prim_ram_1r1w import prim_ram_2p_pkg::*; #(
   parameter  int Width           = 32, // bit
   parameter  int Depth           = 128,
   parameter  int DataBitsPerMask = 1, // Number of data bits per bit of write mask
@@ -151,14 +153,14 @@ module prim_rdp_ram_1r1w import prim_ram_2p_pkg::*; #(
       .ram_dft_signals (ram_dft_signals)
     );
   end else begin : gen_ot_default
-    prim_generic_ram_1r1w #(
-      .Width(Width),
-      .Depth(Depth),
-      .DataBitsPerMask(DataBitsPerMask),
-      .MemInitFile(MemInitFile)
-    ) u_ram_1r1w (
-      .*
-    );
+    // prim_generic_ram_1r1w #(
+    //   .Width(Width),
+    //   .Depth(Depth),
+    //   .DataBitsPerMask(DataBitsPerMask),
+    //   .MemInitFile(MemInitFile)
+    // ) u_ram_1r1w (
+    //   .*
+    // );
   end
 `endif
 endmodule

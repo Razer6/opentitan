@@ -4,26 +4,24 @@
 
 `include "prim_assert.sv"
 
-module prim_rdp_xor2 #(
+module prim_buf #(
   parameter int Width = 1
 ) (
-  input        [Width-1:0] in0_i,
-  input        [Width-1:0] in1_i,
+  input        [Width-1:0] in_i,
   output logic [Width-1:0] out_o
 );
 
 import rdplib_pkg::*;
 
-RDP_GATE_XOR2
-  #(
-    .WIDTH (Width),
-    .STATUS(SIZE_ONLY)
-  )
-  prim_xor
-  (
-    .A1(in0_i),
-    .A2(in1_i),
-    .Z (out_o)
-  );
+RDP_GATE_BUF
+#(
+  .WIDTH (Width),
+  .STATUS(SIZE_ONLY)
+)
+buf_prim
+(
+  .I(in_i),
+  .Z(out_o)
+);
 
 endmodule

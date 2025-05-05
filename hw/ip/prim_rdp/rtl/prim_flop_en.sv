@@ -4,7 +4,7 @@
 
 `include "prim_assert.sv"
 
-module prim_rdp_flop_en #(
+module prim_flop_en #(
   parameter int               Width      = 1,
   // Depth of the flop, used for pipelining. Values >= 1 lead to the corresponding number of flop
   // stages, connected in series. The `en_i` input determines when the *first* flop stage gets
@@ -81,7 +81,7 @@ module prim_rdp_flop_en #(
     end
 
     // Later stages unconditionally propgate first stage
-    prim_rdp_flop #(
+    prim_flop #(
       .Width      ( Width      ),
       .Depth      ( Depth - 1  ),
       .ResetValue ( ResetValue )

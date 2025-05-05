@@ -5,6 +5,9 @@ CAPI=2:
 
 name: "lowrisc:prim_rdp:clock_inv"
 description: "RDP Clock inverter with scanmode bypass mux"
+virtual:
+  - lowrisc:prim:clock_inv
+
 filesets:
   files_rtl:
     depend:
@@ -13,7 +16,7 @@ filesets:
       - rivos:rdplib:rdp_async
       - rivos:rdplib:rdp_gate
     files:
-      - rtl/prim_rdp_clock_inv.sv
+      - rtl/prim_clock_inv.sv
     file_type: systemVerilogSource
 
   files_verilator_waiver:
@@ -21,13 +24,15 @@ filesets:
       # common waivers
       - lowrisc:lint:common
     files:
-      # - lint/prim_rdp_clock_inv.vlt
+      - lint/prim_rdp_clock_inv.vlt
     file_type: vlt
 
   files_ascentlint_waiver:
     depend:
       # common waivers
       - lowrisc:lint:common
+    files:
+      - lint/prim_rdp_clock_inv.waiver
     file_type: waiver
 
   files_veriblelint_waiver:

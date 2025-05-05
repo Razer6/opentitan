@@ -2,8 +2,9 @@
 # Licensed under the Apache License, Version 2.0, see LICENSE for details.
 # SPDX-License-Identifier: Apache-2.0
 #
-# waiver file for prim_rdp_rom
+# waiver file for prim_rom
 
-waive -rules NOT_DRIVEN  -location {prim_rdp_rom.sv} -regexp {Signal 'mem' has no driver in module 'prim_rdp_rom'} \
+waive -rules NOT_DRIVEN  -location {prim_rom.sv} -regexp {Signal 'mem' has no driver in module 'prim_rom'} \
       -comment "since this is a ROM, the signal mem has no driver, but it is populated using an initialization file"
 
+waive -rules PARAM_NOT_USED  -location {prim_rom.sv} -regexp {Parameter 'MemInitFile' not used in module 'prim_rom'} -comment "MemInitFile is not used in RDP primitive"

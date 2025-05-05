@@ -4,24 +4,22 @@
 
 `include "prim_assert.sv"
 
-module prim_rdp_buf #(
+module prim_flop_no_rst #(
   parameter int Width = 1
 ) (
-  input        [Width-1:0] in_i,
-  output logic [Width-1:0] out_o
+  input                    clk_i,
+  input        [Width-1:0] d_i,
+  output logic [Width-1:0] q_o
 );
 
-import rdplib_pkg::*;
 
-RDP_GATE_BUF
-#(
-  .WIDTH (Width),
-  .STATUS(SIZE_ONLY)
-)
-buf_prim
-(
-  .I(in_i),
-  .Z(out_o)
-);
+  RDP_AFF #(
+    .WIDTH(Width)
+  ) u_flop (
+    .clk  (clk_i),
+    .en   (1'b1),
+    .d    (d_i),
+    .q    (q_o)
+  );
 
 endmodule

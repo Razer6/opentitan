@@ -5,6 +5,9 @@ CAPI=2:
 
 name: "lowrisc:prim_rdp:clock_gating"
 description: "RDP Clock gating"
+virtual:
+  - lowrisc:prim:clock_gating
+
 filesets:
   files_rtl:
     depend:
@@ -12,7 +15,7 @@ filesets:
       - rivos:rdplib:rdp_async
       - rivos:rdplib:rdp_gate
     files:
-      - rtl/prim_rdp_clock_gating.sv
+      - rtl/prim_clock_gating.sv
     file_type: systemVerilogSource
 
   files_verilator_waiver:

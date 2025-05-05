@@ -3,14 +3,17 @@ CAPI=2:
 # Licensed under the Apache License, Version 2.0, see LICENSE for details.
 # SPDX-License-Identifier: Apache-2.0
 
-name: "lowrisc:prim_rdp:sync_cell"
-description: "RDP sync_cell"
+name: "lowrisc:prim_rdp:flop_no_rst"
+description: "RDP flop without a reset"
+virtual:
+  - lowrisc:prim:flop_no_rst
+
 filesets:
   files_rtl:
     depend:
-      - rivos:rdplib:rtl_primitives
+      - rivos:rdplib:rdp_gate
     files:
-      - rtl/prim_rdp_sync_cell.sv
+      - rtl/prim_flop_no_rst.sv
     file_type: systemVerilogSource
 
   files_verilator_waiver:

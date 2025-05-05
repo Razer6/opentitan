@@ -4,7 +4,7 @@
 
 `include "prim_assert.sv"
 
-module prim_rdp_xnor2 #(
+module prim_xor2 #(
   parameter int Width = 1
 ) (
   input        [Width-1:0] in0_i,
@@ -14,12 +14,12 @@ module prim_rdp_xnor2 #(
 
 import rdplib_pkg::*;
 
-RDP_GATE_XNOR2
+RDP_GATE_XOR2
   #(
     .WIDTH (Width),
     .STATUS(SIZE_ONLY)
   )
-  prim_xnor
+  prim_xor
   (
     .A1(in0_i),
     .A2(in1_i),

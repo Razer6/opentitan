@@ -5,7 +5,7 @@
 // Clock inverter
 //   Varies on the process
 
-module prim_rdp_clock_inv #(
+module prim_clock_inv #(
   parameter bit HasScanMode = 1'b1,
   parameter bit NoFpgaBufG  = 1'b0 // only used in FPGA case
 ) (
@@ -26,4 +26,4 @@ RDP_GATE_CKINV
     .Z(clk_no)
   );
 
-endmodule : prim_rdp_clock_inv
+endmodule : prim_clock_inv
