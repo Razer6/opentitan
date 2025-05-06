@@ -99,7 +99,7 @@ dif_result_t dif_dma_handshake_disable(const dif_dma_t *dma) {
 
 dif_result_t dif_dma_start(const dif_dma_t *dma,
                            dif_dma_transaction_opcode_t opcode,
-                           bool initial_transfer = true) {
+                           bool initial_transfer) {
   if (dma == NULL) {
     return kDifBadArg;
   }
