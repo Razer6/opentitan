@@ -120,11 +120,14 @@ targets:
       - tool_veriblelint ? (files_veriblelint_waiver)
       - files_rtl_generic
     toplevel: top_darjeeling
+    parameters:
+      - PRIM_DEFAULT_IMPL
 
   sim:
     default_tool: icarus
     parameters_append:
       - RDV_NO_SYSCTL=true
+      - PRIM_DEFAULT_IMPL
     filesets:
       - files_rtl_generic
     toplevel: top_darjeeling
@@ -132,7 +135,7 @@ targets:
   lint:
     <<: *default_target
     default_tool: verilator
-    parameters:
+    parameters_append:
       - SYNTHESIS=true
     tools:
       verilator:
@@ -148,7 +151,7 @@ targets:
     # this option is available
     # olofk/edalize#89
     default_tool: icarus
-    parameters:
+    parameters_append:
       - SYNTHESIS=true
     toplevel: top_darjeeling
 

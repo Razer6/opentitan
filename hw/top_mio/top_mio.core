@@ -73,6 +73,15 @@ parameters:
   SYNTHESIS:
     datatype: bool
     paramtype: vlogdefine
+  RDV_NO_SYSCTL:
+    datatype: bool
+    default: true
+    paramtype: vlogdefine
+  PRIM_DEFAULT_IMPL:
+    datatype: str
+    paramtype: vlogdefine
+    description: Use the RDP primitive library
+    default: prim_pkg::ImplRdp
 
 targets:
   default: &default_target
@@ -82,9 +91,14 @@ targets:
       - tool_veriblelint ? (files_veriblelint_waiver)
       - files_rtl_generic
     toplevel: top_mio
+    parameters:
+      - PRIM_DEFAULT_IMPL
 
   sim:
     default_tool: icarus
+    parameters_append:
+      - RDV_NO_SYSCTL=true
+      - PRIM_DEFAULT_IMPL
     filesets:
       - files_rtl_generic
     toplevel: top_mio
@@ -92,7 +106,7 @@ targets:
   lint:
     <<: *default_target
     default_tool: verilator
-    parameters:
+    parameters_append:
       - SYNTHESIS=true
     tools:
       verilator:
@@ -106,7 +120,7 @@ targets:
     # this option is available
     # olofk/edalize#89
     default_tool: icarus
-    parameters:
+    parameters_append:
       - SYNTHESIS=true
     toplevel: top_mio
 
