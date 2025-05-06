@@ -6,18 +6,18 @@
 | Name                                                         | Offset   |   Length | Description                                                                |
 |:-------------------------------------------------------------|:---------|---------:|:---------------------------------------------------------------------------|
 | clkmgr.[`ALERT_TEST`](#alert_test)                           | 0x0      |        4 | Alert Test Register                                                        |
-| clkmgr.[`JITTER_REGWEN`](#jitter_regwen)                     | 0x10     |        4 | Jitter write enable                                                        |
-| clkmgr.[`JITTER_ENABLE`](#jitter_enable)                     | 0x14     |        4 | Enable jittery clock                                                       |
-| clkmgr.[`CLK_ENABLES`](#clk_enables)                         | 0x18     |        4 | Clock enable for software gateable clocks.                                 |
-| clkmgr.[`CLK_HINTS`](#clk_hints)                             | 0x1c     |        4 | Clock hint for software gateable transactional clocks during active mode.  |
-| clkmgr.[`CLK_HINTS_STATUS`](#clk_hints_status)               | 0x20     |        4 | Since the final state of !!CLK_HINTS is not always determined by software, |
-| clkmgr.[`MEASURE_CTRL_REGWEN`](#measure_ctrl_regwen)         | 0x24     |        4 | Measurement control write enable                                           |
-| clkmgr.[`IO_MEAS_CTRL_EN`](#io_meas_ctrl_en)                 | 0x28     |        4 | Enable for measurement control                                             |
-| clkmgr.[`IO_MEAS_CTRL_SHADOWED`](#io_meas_ctrl_shadowed)     | 0x2c     |        4 | Configuration controls for io measurement.                                 |
-| clkmgr.[`MAIN_MEAS_CTRL_EN`](#main_meas_ctrl_en)             | 0x30     |        4 | Enable for measurement control                                             |
-| clkmgr.[`MAIN_MEAS_CTRL_SHADOWED`](#main_meas_ctrl_shadowed) | 0x34     |        4 | Configuration controls for main measurement.                               |
-| clkmgr.[`RECOV_ERR_CODE`](#recov_err_code)                   | 0x38     |        4 | Recoverable Error code                                                     |
-| clkmgr.[`FATAL_ERR_CODE`](#fatal_err_code)                   | 0x3c     |        4 | Error code                                                                 |
+| clkmgr.[`JITTER_REGWEN`](#jitter_regwen)                     | 0x4      |        4 | Jitter write enable                                                        |
+| clkmgr.[`JITTER_ENABLE`](#jitter_enable)                     | 0x8      |        4 | Enable jittery clock                                                       |
+| clkmgr.[`CLK_ENABLES`](#clk_enables)                         | 0xc      |        4 | Clock enable for software gateable clocks.                                 |
+| clkmgr.[`CLK_HINTS`](#clk_hints)                             | 0x10     |        4 | Clock hint for software gateable transactional clocks during active mode.  |
+| clkmgr.[`CLK_HINTS_STATUS`](#clk_hints_status)               | 0x14     |        4 | Since the final state of !!CLK_HINTS is not always determined by software, |
+| clkmgr.[`MEASURE_CTRL_REGWEN`](#measure_ctrl_regwen)         | 0x18     |        4 | Measurement control write enable                                           |
+| clkmgr.[`IO_MEAS_CTRL_EN`](#io_meas_ctrl_en)                 | 0x1c     |        4 | Enable for measurement control                                             |
+| clkmgr.[`IO_MEAS_CTRL_SHADOWED`](#io_meas_ctrl_shadowed)     | 0x20     |        4 | Configuration controls for io measurement.                                 |
+| clkmgr.[`MAIN_MEAS_CTRL_EN`](#main_meas_ctrl_en)             | 0x24     |        4 | Enable for measurement control                                             |
+| clkmgr.[`MAIN_MEAS_CTRL_SHADOWED`](#main_meas_ctrl_shadowed) | 0x28     |        4 | Configuration controls for main measurement.                               |
+| clkmgr.[`RECOV_ERR_CODE`](#recov_err_code)                   | 0x2c     |        4 | Recoverable Error code                                                     |
+| clkmgr.[`FATAL_ERR_CODE`](#fatal_err_code)                   | 0x30     |        4 | Error code                                                                 |
 
 ## ALERT_TEST
 Alert Test Register
@@ -39,7 +39,7 @@ Alert Test Register
 
 ## JITTER_REGWEN
 Jitter write enable
-- Offset: `0x10`
+- Offset: `0x4`
 - Reset default: `0x1`
 - Reset mask: `0x1`
 
@@ -56,7 +56,7 @@ Jitter write enable
 
 ## JITTER_ENABLE
 Enable jittery clock
-- Offset: `0x14`
+- Offset: `0x8`
 - Reset default: `0x9`
 - Reset mask: `0xf`
 - Register enable: [`JITTER_REGWEN`](#jitter_regwen)
@@ -75,7 +75,7 @@ Enable jittery clock
 ## CLK_ENABLES
 Clock enable for software gateable clocks.
 These clocks are directly controlled by software.
-- Offset: `0x18`
+- Offset: `0xc`
 - Reset default: `0x1`
 - Reset mask: `0x1`
 
@@ -102,7 +102,7 @@ If the hardware block is not idle, the clock is kept on.
 
 For the enable case, the software hint is immediately honored and the clock turned on.  Hardware does not provide any
 feedback in this case.
-- Offset: `0x1c`
+- Offset: `0x10`
 - Reset default: `0xf`
 - Reset mask: `0xf`
 
@@ -124,7 +124,7 @@ feedback in this case.
 Since the final state of [`CLK_HINTS`](#clk_hints) is not always determined by software,
 this register provides read feedback for the current clock state.
 
-- Offset: `0x20`
+- Offset: `0x14`
 - Reset default: `0xf`
 - Reset mask: `0xf`
 
@@ -144,7 +144,7 @@ this register provides read feedback for the current clock state.
 
 ## MEASURE_CTRL_REGWEN
 Measurement control write enable
-- Offset: `0x24`
+- Offset: `0x18`
 - Reset default: `0x1`
 - Reset mask: `0x1`
 
@@ -161,7 +161,7 @@ Measurement control write enable
 
 ## IO_MEAS_CTRL_EN
 Enable for measurement control
-- Offset: `0x28`
+- Offset: `0x1c`
 - Reset default: `0x9`
 - Reset mask: `0xf`
 - Register enable: [`MEASURE_CTRL_REGWEN`](#measure_ctrl_regwen)
@@ -182,7 +182,7 @@ Configuration controls for io measurement.
 
 The threshold fields are made wider than required (by 1 bit) to ensure
 there is room to adjust for measurement inaccuracies.
-- Offset: `0x2c`
+- Offset: `0x20`
 - Reset default: `0xec8a`
 - Reset mask: `0x3ffff`
 - Register enable: [`MEASURE_CTRL_REGWEN`](#measure_ctrl_regwen)
@@ -201,7 +201,7 @@ there is room to adjust for measurement inaccuracies.
 
 ## MAIN_MEAS_CTRL_EN
 Enable for measurement control
-- Offset: `0x30`
+- Offset: `0x24`
 - Reset default: `0x9`
 - Reset mask: `0xf`
 - Register enable: [`MEASURE_CTRL_REGWEN`](#measure_ctrl_regwen)
@@ -222,7 +222,7 @@ Configuration controls for main measurement.
 
 The threshold fields are made wider than required (by 1 bit) to ensure
 there is room to adjust for measurement inaccuracies.
-- Offset: `0x34`
+- Offset: `0x28`
 - Reset default: `0xec8a`
 - Reset mask: `0x3ffff`
 - Register enable: [`MEASURE_CTRL_REGWEN`](#measure_ctrl_regwen)
@@ -241,7 +241,7 @@ there is room to adjust for measurement inaccuracies.
 
 ## RECOV_ERR_CODE
 Recoverable Error code
-- Offset: `0x38`
+- Offset: `0x2c`
 - Reset default: `0x0`
 - Reset mask: `0x1f`
 
@@ -262,7 +262,7 @@ Recoverable Error code
 
 ## FATAL_ERR_CODE
 Error code
-- Offset: `0x3c`
+- Offset: `0x30`
 - Reset default: `0x0`
 - Reset mask: `0x7`
 

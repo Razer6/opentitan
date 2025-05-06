@@ -196,18 +196,18 @@ package clkmgr_reg_pkg;
 
   // Register offsets
   parameter logic [BlockAw-1:0] CLKMGR_ALERT_TEST_OFFSET = 6'h 0;
-  parameter logic [BlockAw-1:0] CLKMGR_JITTER_REGWEN_OFFSET = 6'h 10;
-  parameter logic [BlockAw-1:0] CLKMGR_JITTER_ENABLE_OFFSET = 6'h 14;
-  parameter logic [BlockAw-1:0] CLKMGR_CLK_ENABLES_OFFSET = 6'h 18;
-  parameter logic [BlockAw-1:0] CLKMGR_CLK_HINTS_OFFSET = 6'h 1c;
-  parameter logic [BlockAw-1:0] CLKMGR_CLK_HINTS_STATUS_OFFSET = 6'h 20;
-  parameter logic [BlockAw-1:0] CLKMGR_MEASURE_CTRL_REGWEN_OFFSET = 6'h 24;
-  parameter logic [BlockAw-1:0] CLKMGR_IO_MEAS_CTRL_EN_OFFSET = 6'h 28;
-  parameter logic [BlockAw-1:0] CLKMGR_IO_MEAS_CTRL_SHADOWED_OFFSET = 6'h 2c;
-  parameter logic [BlockAw-1:0] CLKMGR_MAIN_MEAS_CTRL_EN_OFFSET = 6'h 30;
-  parameter logic [BlockAw-1:0] CLKMGR_MAIN_MEAS_CTRL_SHADOWED_OFFSET = 6'h 34;
-  parameter logic [BlockAw-1:0] CLKMGR_RECOV_ERR_CODE_OFFSET = 6'h 38;
-  parameter logic [BlockAw-1:0] CLKMGR_FATAL_ERR_CODE_OFFSET = 6'h 3c;
+  parameter logic [BlockAw-1:0] CLKMGR_JITTER_REGWEN_OFFSET = 6'h 4;
+  parameter logic [BlockAw-1:0] CLKMGR_JITTER_ENABLE_OFFSET = 6'h 8;
+  parameter logic [BlockAw-1:0] CLKMGR_CLK_ENABLES_OFFSET = 6'h c;
+  parameter logic [BlockAw-1:0] CLKMGR_CLK_HINTS_OFFSET = 6'h 10;
+  parameter logic [BlockAw-1:0] CLKMGR_CLK_HINTS_STATUS_OFFSET = 6'h 14;
+  parameter logic [BlockAw-1:0] CLKMGR_MEASURE_CTRL_REGWEN_OFFSET = 6'h 18;
+  parameter logic [BlockAw-1:0] CLKMGR_IO_MEAS_CTRL_EN_OFFSET = 6'h 1c;
+  parameter logic [BlockAw-1:0] CLKMGR_IO_MEAS_CTRL_SHADOWED_OFFSET = 6'h 20;
+  parameter logic [BlockAw-1:0] CLKMGR_MAIN_MEAS_CTRL_EN_OFFSET = 6'h 24;
+  parameter logic [BlockAw-1:0] CLKMGR_MAIN_MEAS_CTRL_SHADOWED_OFFSET = 6'h 28;
+  parameter logic [BlockAw-1:0] CLKMGR_RECOV_ERR_CODE_OFFSET = 6'h 2c;
+  parameter logic [BlockAw-1:0] CLKMGR_FATAL_ERR_CODE_OFFSET = 6'h 30;
 
   // Reset values for hwext registers and their fields
   parameter logic [1:0] CLKMGR_ALERT_TEST_RESVAL = 2'h 0;

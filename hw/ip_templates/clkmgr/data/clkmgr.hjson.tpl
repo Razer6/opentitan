@@ -402,9 +402,6 @@ rg_srcs = get_rg_srcs(typed_clocks)
         },
       ]
     },
-    % else:
-    // Skip 3 registers for SW compatibility on the register layout if no derived clocks are in use
-    { reserved: "3" }
     % endif
 
     { name: "JITTER_REGWEN",
