@@ -134,11 +134,13 @@ dif_result_t dif_dma_handshake_disable(const dif_dma_t *dma);
  *
  * @param dma A DMA Controller handle.
  * @param opcode Transaction opcode.
+ * @param initial_transfer Indicates if the the function starts the initial transfer.
  * @return The result of the operation.
  */
 OT_WARN_UNUSED_RESULT
 dif_result_t dif_dma_start(const dif_dma_t *dma,
-                           dif_dma_transaction_opcode_t opcode);
+                           dif_dma_transaction_opcode_t opcode,
+                           bool initial_transfer);
 
 /**
  * Abort the DMA Controller transaction in execution.

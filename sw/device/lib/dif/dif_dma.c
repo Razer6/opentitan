@@ -98,7 +98,8 @@ dif_result_t dif_dma_handshake_disable(const dif_dma_t *dma) {
 }
 
 dif_result_t dif_dma_start(const dif_dma_t *dma,
-                           dif_dma_transaction_opcode_t opcode) {
+                           dif_dma_transaction_opcode_t opcode,
+                           bool initial_transfer = true) {
   if (dma == NULL) {
     return kDifBadArg;
   }
@@ -106,7 +107,9 @@ dif_result_t dif_dma_start(const dif_dma_t *dma,
   uint32_t reg = mmio_region_read32(dma->base_addr, DMA_CONTROL_REG_OFFSET);
   reg = bitfield_field32_write(reg, DMA_CONTROL_OPCODE_FIELD, opcode);
   reg = bitfield_bit32_write(reg, DMA_CONTROL_GO_BIT, 1);
-  reg = bitfield_bit32_write(reg, DMA_CONTROL_INITIAL_TRANSFER_BIT, 1);
+  if (initial_transfer) {
+    reg = bitfield_bit32_write(reg, DMA_CONTROL_INITIAL_TRANSFER_BIT, 1);
+  }
   mmio_region_write32(dma->base_addr, DMA_CONTROL_REG_OFFSET, reg);
   return kDifOk;
 }
