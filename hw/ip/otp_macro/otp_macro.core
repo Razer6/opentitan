@@ -12,6 +12,7 @@ filesets:
       - lowrisc:prim:clock_inv
       - lowrisc:prim:lc_sync
       - lowrisc:prim:ram_1p_adv
+      - lowrisc:prim:secded
       - lowrisc:ip:otp_macro_pkg
       - lowrisc:virtual_ip:otp_ctrl_macro_pkg
       # need for rivos_tsmc_fuse_wrapper logic

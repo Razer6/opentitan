@@ -13,8 +13,6 @@ module otp_macro
   // This determines the maximum number of native words that
   // can be transferred across the interface in one cycle.
   parameter  int    SizeWidth        = 2,
-  // Derived parameters
-  localparam int    AddrWidth        = prim_util_pkg::vbits(Depth),
   // VMEM file to initialize the memory with
   parameter         MemInitFile   = "",
 
@@ -97,7 +95,15 @@ module otp_macro
   // below, and is straightforward to extend, if needed.
   localparam int EccWidth = 6;
   localparam int TotalEccWidth = 8;  // used to log all ecc fuses in register to enable mbist access path
+
   `ASSERT_INIT(SecDecWidth_A, Width == 16)
+  // Use a standard Hamming ECC for OTP, parameterized by Width.
+  // Check that the secded width and type combination is supported.
+  if (!prim_secded_pkg::is_width_valid(prim_secded_pkg::SecdedHamming, Width))
+    $error("Width %0d is not supported for SecdedHamming", Width);
+
+  // The ECC syndrome width is parameterized based on Width.
+  localparam int EccWidth = prim_secded_pkg::get_synd_width(prim_secded_pkg::SecdedHamming, Width);
 
   // Not supported in open-source emulation model.
   pwr_seq_t unused_pwr_seq_h;
@@ -443,18 +449,15 @@ module otp_macro
   logic [2**SizeWidth-1:0][TotalEccWidth-1:0] rdata_ecc_reshaped;
   logic [2**SizeWidth-1:0][Width+TotalEccWidth-1:0] rdata_q;
 
-  // Use a standard Hamming ECC for OTP.
-  prim_secded_hamming_22_16_enc u_enc (
-    .data_i(wdata_q[cnt_q]),
-    .data_o(wdata_ecc)
-  );
+  // Instantiate secded encoder and decoder based on parameters.
+`include "prim_secded_inc.svh"
 
-  prim_secded_hamming_22_16_dec u_dec (
-    .data_i     (rdata_ecc[Width+EccWidth-1:0]),
-    .data_o     (rdata_corr),
-    .syndrome_o ( ),
-    .err_o      (rerror)
-  );
+`SECDED_INST_ENC(prim_secded_pkg::SecdedHamming, Width, u_enc, wdata_q[cnt_q], wdata_ecc)
+
+`SECDED_INST_DEC(prim_secded_pkg::SecdedHamming, Width, u_dec, rdata_ecc, rdata_corr, , rerror)
+
+`undef SECDED_INST_DEC
+`undef SECDED_INST_ENC
 
   assign rdata_d = (read_ecc_on) ? {rdata_ecc[Width+:TotalEccWidth], rdata_corr}
                                  : rdata_ecc;
