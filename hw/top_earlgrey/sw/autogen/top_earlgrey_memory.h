@@ -286,7 +286,7 @@
  * address between #TOP_EARLGREY_OTP_MACRO_BASE_ADDR and
  * `TOP_EARLGREY_OTP_MACRO_BASE_ADDR + TOP_EARLGREY_OTP_MACRO_SIZE_BYTES`.
  */
-#define TOP_EARLGREY_OTP_MACRO_SIZE_BYTES 0x20
+#define TOP_EARLGREY_OTP_MACRO_SIZE_BYTES 0x80
 /**
  * Peripheral base address for regs device on lc_ctrl in top earlgrey.
  *

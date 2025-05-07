@@ -139,7 +139,7 @@ package top_earlgrey_pkg;
   /**
    * Peripheral size in bytes for otp_macro in top earlgrey.
    */
-  parameter int unsigned TOP_EARLGREY_OTP_MACRO_SIZE_BYTES = 32'h20;
+  parameter int unsigned TOP_EARLGREY_OTP_MACRO_SIZE_BYTES = 32'h80;
 
   /**
    * Peripheral base address for regs device on lc_ctrl in top earlgrey.

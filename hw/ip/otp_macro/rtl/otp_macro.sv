@@ -17,9 +17,28 @@ module otp_macro
   localparam int    AddrWidth        = prim_util_pkg::vbits(Depth),
   // VMEM file to initialize the memory with
   parameter         MemInitFile   = "",
+
+  parameter  bit FUSE_MBIST_EN                     = prim_otp_cfg_pkg::FUSE_MBIST_EN,
+  parameter  int FUSE_MBIST_ARRAY_BASE             = prim_otp_cfg_pkg::FUSE_MBIST_ARRAY_BASE,
+  parameter  int FUSE_MBIST_ARRAY_SIZE             = prim_otp_cfg_pkg::FUSE_MBIST_ARRAY_SIZE,
+  parameter  int FUSE_MBIST_ECC_ARRAY_BASE         = prim_otp_cfg_pkg::FUSE_MBIST_ECC_ARRAY_BASE,
+  parameter  int FUSE_MBIST_ECC_ARRAY_SIZE         = prim_otp_cfg_pkg::FUSE_MBIST_ECC_ARRAY_SIZE,
+  parameter  int FUSE_NUM_MBIST_ARRAYS             = prim_otp_cfg_pkg::FUSE_NUM_MBIST_ARRAYS,
+  parameter  int FUSE_RF_DATA_WIDTH                = prim_otp_cfg_pkg::FUSE_RF_DATA_WIDTH,
+  // tsmc fuse macro wrapper parameters
+  parameter  int FUSE_NUM_ARRAYS                   = prim_otp_cfg_pkg::FUSE_NUM_ARRAYS,
+  parameter  int FUSE_ADDR_WIDTH                   = prim_otp_cfg_pkg::FUSE_ADDR_WIDTH,
+  parameter  int FUSE_TEST_ADDR_WIDTH              = prim_otp_cfg_pkg::FUSE_TEST_ADDR_WIDTH,
+  parameter  int FUSE_DATA_WIDTH                   = prim_otp_cfg_pkg::FUSE_DATA_WIDTH,
+
   // Vendor test partition offset and size (both in bytes)
   parameter  int    VendorTestOffset = 0,
-  parameter  int    VendorTestSize   = 0
+  parameter  int    VendorTestSize   = 0,
+  // RACL definitions
+  parameter bit  EnableRacl       = 1'b0,
+  parameter bit  RaclErrorRsp     = 1'b1,
+  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[otp_ctrl_macro_pkg::NumRegsPrim] =
+    '{otp_ctrl_macro_pkg::NumRegsPrim{0}}
 ) (
   input                          clk_i,
   input                          rst_ni,
@@ -51,6 +70,10 @@ module otp_macro
   // Incoming request from OTP_CTRL
   input                          otp_ctrl_macro_req_t otp_i,
   output                         otp_ctrl_macro_rsp_t otp_o,
+
+  // RACL interface
+  input  top_racl_pkg::racl_policy_vec_t  racl_policies_i,
+  output top_racl_pkg::racl_error_log_t   racl_error_o,
 
   // DFT config and response port
   input                          otp_cfg_t cfg_i,
@@ -92,9 +115,42 @@ module otp_macro
   assign test_vect = '0;
   assign test_o.status = '0;
 
-  logic unused_cfg;
-  assign unused_cfg = ^cfg_i;
-  assign cfg_rsp_o  = '0;
+  logic        integrity_disable;
+
+  logic [11:0] tsur_pd_ps_cycles;
+  logic [9:0]  tsur_ps_cycles;
+  logic [8:0]  tsur_ps_cs_cycles;
+  
+  logic [8:0]  tsup_ps_cs_cycles;
+  logic [9:0]  tsup_ps_cycles;
+  logic [9:0]  tsq_cycles;
+  
+  logic [10:0] tsq_m_cycles;
+  logic [13:0] tpgm_cycles;
+  logic [6:0]  tsur_ld_cycles;
+  
+  logic [9:0]  thr_ps_cycles;
+  logic [9:0]  thp_ps_cycles;
+  logic [8:0]  thp_cs_cycles;
+  
+  logic [8:0]  thr_cs_cycles;
+  logic [8:0]  thp_ps_cs_cycles;
+  logic [8:0]  thr_ps_cs_cycles;
+  
+  logic [7:0]  tsur_a_cycles;
+  logic [7:0]  tsup_a_cycles;
+  logic [7:0]  thp_a_cycles;
+  logic [7:0]  tsup_ld_cycles;
+  
+  logic [9:0]  trd_cycles;
+  logic [10:0] trd_m_cycles;
+  logic [7:0]  thr_a_cycles;
+  
+  logic [7:0]  thp_pd_ps_cycles;
+  logic [7:0]  data_capture_cycles;
+  logic [7:0]  addr_capture_cycles;
+  
+  logic [17:0] trigger_power_down_cycles;
 
   ///////////////////////////////////////
   // Life Cycle Signal Synchronization //
@@ -145,7 +201,11 @@ module otp_macro
 
   otp_macro_reg_pkg::otp_macro_reg2hw_t reg2hw;
   otp_macro_reg_pkg::otp_macro_hw2reg_t hw2reg;
-  otp_macro_reg_top u_reg_top (
+  otp_macro_reg_top #(
+    .EnableRacl       ( EnableRacl       ),
+    .RaclErrorRsp     ( RaclErrorRsp     ),
+    .RaclPolicySelVec ( RaclPolicySelVec )
+  ) u_reg_top (
     .clk_i,
     .rst_ni,
     .tl_i      (tl_h2d_gated ),
@@ -197,6 +257,7 @@ module otp_macro
     ReadWaitSt   = 10'b1001001101,
     WriteCheckSt = 10'b1111101011,
     WriteWaitSt  = 10'b0011000010,
+    IssueWriteSt = 10'b1000001100, // (neal) script was not rerun to generate this state encoding
     WriteSt      = 10'b0110100101,
     ErrorSt      = 10'b1110011000
   } state_e;
@@ -204,28 +265,36 @@ module otp_macro
   state_e state_d, state_q;
   err_e err_d, err_q;
   logic valid_d, valid_q;
+  logic ecc_valid_d, ecc_valid_q;
   logic integrity_en_d, integrity_en_q;
   logic req, wren, rvalid;
   logic [1:0] rerror;
-  otp_macro_addr_t addr_q;
-  logic [SizeWidth-1:0] size_q;
+  logic [AddrWidth-1:0] addr_q;
+  logic [SizeWidth-1:0] size_q, size_d;
   logic [SizeWidth-1:0] cnt_d, cnt_q;
   logic cnt_clr, cnt_en;
   logic read_ecc_on, write_ecc_on;
   logic wdata_inconsistent;
+  logic wrapper_ready;
 
-  // Response to otp_ctrl
-  assign otp_o.rvalid = valid_q;
-  assign otp_o.err   = err_q;
 
   assign cnt_d = (cnt_clr) ? '0           :
                  (cnt_en)  ? cnt_q + 1'b1 : cnt_q;
+
+  assign valid_o = valid_q;
+  assign err_o   = err_q;
+
+  assign integrity_disable = reg2hw.macro_control.ecc_disable.q ||
+                             (reg2hw.macro_control.macro_mode.q != 2'b00);  // only want integrity in array mode
+
+  assign cfg_rsp_o.macro_mode = reg2hw.macro_control.macro_mode.q;
 
   always_comb begin : p_fsm
     // Default
     state_d        = state_q;
     otp_o.ready    = 1'b0;
     valid_d        = 1'b0;
+    ecc_valid_d    = 1'b0;
     err_d          = err_q;
     req            = 1'b0;
     wren           = 1'b0;
@@ -263,11 +332,11 @@ module otp_macro
           unique case (otp_i.cmd)
             Read:  begin
               state_d = ReadSt;
-              integrity_en_d = 1'b1;
+              integrity_en_d = (!integrity_disable);
             end
             Write: begin
               state_d = WriteCheckSt;
-              integrity_en_d = 1'b1;
+              integrity_en_d = (!integrity_disable);
             end
             ReadRaw:  begin
               state_d = ReadSt;
@@ -283,8 +352,10 @@ module otp_macro
       end
       // Issue a read command to the macro.
       ReadSt: begin
-        state_d = ReadWaitSt;
-        req     = 1'b1;
+        if (wrapper_ready) begin
+          state_d = ReadWaitSt;
+          req     = 1'b1;
+        end
         // Suppress ECC correction if needed.
         read_ecc_on = integrity_en_q;
       end
@@ -298,11 +369,13 @@ module otp_macro
           if (rerror[1] && integrity_en_q) begin
             state_d = IdleSt;
             valid_d = 1'b1;
+            ecc_valid_d = 1'b1;
             err_d = MacroEccUncorrError;
           end else begin
             if (cnt_q == size_q) begin
               state_d = IdleSt;
               valid_d = 1'b1;
+              ecc_valid_d = 1'b1;
             end else begin
               state_d = ReadSt;
             end
@@ -316,8 +389,10 @@ module otp_macro
       // First, read out to perform the write blank check and
       // read-modify-write operation.
       WriteCheckSt: begin
-        state_d = WriteWaitSt;
-        req     = 1'b1;
+        if (wrapper_ready) begin
+          state_d = WriteWaitSt;
+          req     = 1'b1;
+        end
         // Register raw memory contents without correction so that we can
         // perform the read-modify-write correctly.
         read_ecc_on = 1'b0;
@@ -332,7 +407,7 @@ module otp_macro
 
           if (cnt_q == size_q) begin
             cnt_clr = 1'b1;
-            state_d = WriteSt;
+            state_d = IssueWriteSt;
           end else begin
             state_d = WriteCheckSt;
           end
@@ -340,10 +415,10 @@ module otp_macro
       end
       // If the write data attempts to clear an already programmed bit,
       // the MacroWriteBlankError needs to be asserted.
-      WriteSt: begin
+      IssueWriteSt: begin
         req = 1'b1;
         wren = 1'b1;
-        cnt_en = 1'b1;
+
         // Suppress ECC calculation if needed.
         write_ecc_on = integrity_en_q;
 
@@ -351,9 +426,20 @@ module otp_macro
           err_d = MacroWriteBlankError;
         end
 
-        if (cnt_q == size_q) begin
-          valid_d = 1'b1;
-          state_d = IdleSt;
+        state_d = WriteSt;
+      end
+      // Wait in this state for write to complete
+      WriteSt: begin
+        // need handshake from fuse wrapper that write has completed
+        if (rvalid) begin
+          cnt_en = 1'b1;
+
+          if (cnt_q == size_q) begin
+            valid_d = 1'b1;
+            state_d = IdleSt;
+          end else begin
+            state_d = IssueWriteSt;
+          end
         end
       end
       // If the FSM is glitched into an invalid state.
@@ -371,13 +457,15 @@ module otp_macro
   // Emulate using ECC protected Block RAM //
   ///////////////////////////////////////////
 
-  otp_macro_addr_t addr;
+  logic [AddrWidth-1:0] addr;
   assign addr = addr_q + AddrWidth'(cnt_q);
 
   logic [Width-1:0] rdata_corr;
-  logic [Width+EccWidth-1:0] rdata_d, wdata_ecc, rdata_ecc, wdata_rmw;
+  logic [Width+TotalEccWidth-1:0] rdata_d, rdata_ecc;
+  logic [Width+EccWidth-1:0]      wdata_ecc, wdata_rmw;
   logic [2**SizeWidth-1:0][Width-1:0] wdata_q, rdata_reshaped;
-  logic [2**SizeWidth-1:0][Width+EccWidth-1:0] rdata_q;
+  logic [2**SizeWidth-1:0][TotalEccWidth-1:0] rdata_ecc_reshaped;
+  logic [2**SizeWidth-1:0][Width+TotalEccWidth-1:0] rdata_q;
 
   // Use a standard Hamming ECC for OTP.
   prim_secded_hamming_22_16_enc u_enc (
@@ -386,53 +474,372 @@ module otp_macro
   );
 
   prim_secded_hamming_22_16_dec u_dec (
-    .data_i     (rdata_ecc),
+    .data_i     (rdata_ecc[Width+EccWidth-1:0]),
     .data_o     (rdata_corr),
     .syndrome_o ( ),
     .err_o      (rerror)
   );
 
-  assign rdata_d = (read_ecc_on) ? {{EccWidth{1'b0}}, rdata_corr}
+  assign rdata_d = (read_ecc_on) ? {rdata_ecc[Width+:TotalEccWidth], rdata_corr}
                                  : rdata_ecc;
 
   // Read-modify-write (OTP can only set bits to 1, but not clear to 0).
-  assign wdata_rmw = (write_ecc_on) ? wdata_ecc | rdata_q[cnt_q]
-                                    : {{EccWidth{1'b0}}, wdata_q[cnt_q]} | rdata_q[cnt_q];
+  always_comb begin
+    wdata_rmw = '0;
+
+    for (int i = 0; i<(Width+EccWidth); i++) begin
+      if((!write_ecc_on) && (i>=Width)) begin
+        wdata_rmw[i] = 1'b0;
+      end
+      else if (wdata_ecc[i]) begin           // only consider blowing fuse if incoming data has bit set
+        if (rdata_q[cnt_q][i] && (reg2hw.macro_control.macro_mode.q == 2'b00)) begin    // if incoming write has bit set and the fuse is already set then don't write again
+                                                                                       // only do rmw check in array mode
+          wdata_rmw[i] = 1'b0;
+        end
+        else begin                      // only write fuse if incoming write has the bit set and the fuse is not already blown
+          wdata_rmw[i] = 1'b1;
+        end
+      end
+    end
+  end
 
   // This indicates if the write data is inconsistent (i.e., if the operation attempts to
   // clear an already programmed bit to zero).
-  assign wdata_inconsistent = (rdata_q[cnt_q] & wdata_ecc) != rdata_q[cnt_q];
+  // recoded as below): assign wdata_inconsistent = (rdata_q[cnt_q] & wdata_ecc) != rdata_q[cnt_q];
+  always_comb begin
+    wdata_inconsistent = '0;
+
+    if(reg2hw.macro_control.macro_mode.q == 2'b00) begin  // only check data consistency in array mode
+      for (int i = 0; i<(Width+EccWidth); i++) begin
+        if((!write_ecc_on) && (i>=Width)) begin
+          wdata_inconsistent |= 1'b0;
+        end
+        else if((rdata_q[cnt_q][i]) && (!wdata_ecc[i])) begin   // assert error when the incoming write data is trying to clear a bit that is already set
+          wdata_inconsistent |= 1'b1;
+        end
+      end
+    end
+  end
 
   // Output data without ECC bits.
   always_comb begin : p_output_map
     for (int k = 0; k < 2**SizeWidth; k++) begin
-      rdata_reshaped[k] = rdata_q[k][Width-1:0];
+      rdata_reshaped[k]     = rdata_q[k][Width-1:0];
+      rdata_ecc_reshaped[k] = rdata_q[k][Width+:TotalEccWidth];
     end
-    otp_o.rdata = rdata_reshaped;
+
+    if ((reg2hw.macro_control.macro_mode.q == 2'b10) &&
+        (reg2hw.macro_control.test_row_col_sel.q[1])) begin // test col mode
+      rdata_o    = '0;
+      rdata_o[0] = rdata_reshaped[0][0];
+    end
+    else begin
+      rdata_o = rdata_reshaped;
+    end
   end
 
-  prim_ram_1p_adv #(
-    .Depth                (Depth),
-    .Width                (Width + EccWidth),
-    .MemInitFile          (MemInitFile),
-    .EnableInputPipeline  (1),
-    .EnableOutputPipeline (1)
-  ) u_prim_ram_1p_adv (
+  assign hw2reg.macro_control.reset_allowed.de = 1'b1;
+  assign hw2reg.macro_control.reset_allowed.d  = cfg_rsp_o.reset_allowed;
+
+  assign hw2reg.read_ecc_info.ecc_info_0.de = ecc_valid_q;
+  assign hw2reg.read_ecc_info.ecc_info_0.d  = rdata_ecc_reshaped[0];
+  
+  assign hw2reg.read_ecc_info.ecc_info_1.de = ecc_valid_q;
+  assign hw2reg.read_ecc_info.ecc_info_1.d  = rdata_ecc_reshaped[1];
+
+  generate
+    if(SizeWidth == 2) begin : gen_ecc_info_assign
+      assign hw2reg.read_ecc_info.ecc_info_2.de = ecc_valid_q;
+      assign hw2reg.read_ecc_info.ecc_info_2.d  = rdata_ecc_reshaped[2];
+   
+      assign hw2reg.read_ecc_info.ecc_info_3.de = ecc_valid_q;
+      assign hw2reg.read_ecc_info.ecc_info_3.d  = rdata_ecc_reshaped[3];
+    end
+    else begin : gen_default_ecc_info_assign
+      assign hw2reg.read_ecc_info.ecc_info_2.de = '0;
+      assign hw2reg.read_ecc_info.ecc_info_2.d  = '0;
+   
+      assign hw2reg.read_ecc_info.ecc_info_3.de = '0;
+      assign hw2reg.read_ecc_info.ecc_info_3.d  = '0;
+    end
+  endgenerate
+   
+  logic SYNC_sel_wr_timing;
+
+  prim_flop_2sync #(
+    .Width(1)
+  ) u_alert_nmi_sync (
     .clk_i,
     .rst_ni,
-    .req_i         ( req                    ),
-    .write_i       ( wren                   ),
-    .addr_i        ( addr                   ),
-    .wdata_i       ( wdata_rmw              ),
-    .wmask_i       ( {Width+EccWidth{1'b1}} ),
-    .rdata_o       ( rdata_ecc              ),
-    .rvalid_o      ( rvalid                 ),
-    .rvalid_mubi_o (                        ),
-    .rerror_o      (                        ),
-    .cfg_i         ( '0                     ),
-    .cfg_rsp_o     (                        ),
-    .alert_o       (                        )
+    .d_i(cfg_i.sel_wr_timing),
+    .q_o(SYNC_sel_wr_timing)
   );
+
+  always_comb begin
+    tsur_pd_ps_cycles         = reg2hw.fuse_wrapper_rd_cfg_0.tsur_pd_ps_cycles.q;
+    tsur_ps_cycles            = reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cycles.q;
+    tsur_ps_cs_cycles         = reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cs_cycles.q;
+    
+    tsup_ps_cs_cycles         = reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cs_cycles.q;
+    tsup_ps_cycles            = reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cycles.q;
+    tsq_cycles                = reg2hw.fuse_wrapper_rd_cfg_1.tsq_cycles.q;
+    
+    tsq_m_cycles              = reg2hw.fuse_wrapper_rd_cfg_2.tsq_m_cycles.q;
+    tpgm_cycles               = reg2hw.fuse_wrapper_rd_cfg_2.tpgm_cycles.q;
+    tsur_ld_cycles            = reg2hw.fuse_wrapper_rd_cfg_2.tsur_ld_cycles.q;
+    
+    thr_ps_cycles             = reg2hw.fuse_wrapper_rd_cfg_3.thr_ps_cycles.q;
+    thp_ps_cycles             = reg2hw.fuse_wrapper_rd_cfg_3.thp_ps_cycles.q;
+    thp_cs_cycles             = reg2hw.fuse_wrapper_rd_cfg_3.thp_cs_cycles.q;
+    
+    thr_cs_cycles             = reg2hw.fuse_wrapper_rd_cfg_4.thr_cs_cycles.q;
+    thp_ps_cs_cycles          = reg2hw.fuse_wrapper_rd_cfg_4.thp_ps_cs_cycles.q;
+    thr_ps_cs_cycles          = reg2hw.fuse_wrapper_rd_cfg_4.thr_ps_cs_cycles.q;
+    
+    tsur_a_cycles             = reg2hw.fuse_wrapper_rd_cfg_5.tsur_a_cycles.q;
+    tsup_a_cycles             = reg2hw.fuse_wrapper_rd_cfg_5.tsup_a_cycles.q;
+    thp_a_cycles              = reg2hw.fuse_wrapper_rd_cfg_5.thp_a_cycles.q;
+    tsup_ld_cycles            = reg2hw.fuse_wrapper_rd_cfg_5.tsup_ld_cycles.q;
+    
+    trd_cycles                = reg2hw.fuse_wrapper_rd_cfg_6.trd_cycles.q;
+    trd_m_cycles              = reg2hw.fuse_wrapper_rd_cfg_6.trd_m_cycles.q;
+    thr_a_cycles              = reg2hw.fuse_wrapper_rd_cfg_6.thr_a_cycles.q;
+    
+    thp_pd_ps_cycles          = reg2hw.fuse_wrapper_rd_cfg_7.thp_pd_ps_cycles.q;
+    data_capture_cycles       = reg2hw.fuse_wrapper_rd_cfg_7.data_capture_cycles.q;
+    addr_capture_cycles       = reg2hw.fuse_wrapper_rd_cfg_7.addr_capture_cycles.q;
+    
+    trigger_power_down_cycles = reg2hw.fuse_wrapper_rd_cfg_8.q;
+
+    if(SYNC_sel_wr_timing) begin
+      tsur_pd_ps_cycles         = reg2hw.fuse_wrapper_wr_cfg_0.tsur_pd_ps_cycles.q;
+      tsur_ps_cycles            = reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cycles.q;
+      tsur_ps_cs_cycles         = reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cs_cycles.q;
+      
+      tsup_ps_cs_cycles         = reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cs_cycles.q;
+      tsup_ps_cycles            = reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cycles.q;
+      tsq_cycles                = reg2hw.fuse_wrapper_wr_cfg_1.tsq_cycles.q;
+      
+      tsq_m_cycles              = reg2hw.fuse_wrapper_wr_cfg_2.tsq_m_cycles.q;
+      tpgm_cycles               = reg2hw.fuse_wrapper_wr_cfg_2.tpgm_cycles.q;
+      tsur_ld_cycles            = reg2hw.fuse_wrapper_wr_cfg_2.tsur_ld_cycles.q;
+      
+      thr_ps_cycles             = reg2hw.fuse_wrapper_wr_cfg_3.thr_ps_cycles.q;
+      thp_ps_cycles             = reg2hw.fuse_wrapper_wr_cfg_3.thp_ps_cycles.q;
+      thp_cs_cycles             = reg2hw.fuse_wrapper_wr_cfg_3.thp_cs_cycles.q;
+      
+      thr_cs_cycles             = reg2hw.fuse_wrapper_wr_cfg_4.thr_cs_cycles.q;
+      thp_ps_cs_cycles          = reg2hw.fuse_wrapper_wr_cfg_4.thp_ps_cs_cycles.q;
+      thr_ps_cs_cycles          = reg2hw.fuse_wrapper_wr_cfg_4.thr_ps_cs_cycles.q;
+      
+      tsur_a_cycles             = reg2hw.fuse_wrapper_wr_cfg_5.tsur_a_cycles.q;
+      tsup_a_cycles             = reg2hw.fuse_wrapper_wr_cfg_5.tsup_a_cycles.q;
+      thp_a_cycles              = reg2hw.fuse_wrapper_wr_cfg_5.thp_a_cycles.q;
+      tsup_ld_cycles            = reg2hw.fuse_wrapper_wr_cfg_5.tsup_ld_cycles.q;
+      
+      trd_cycles                = reg2hw.fuse_wrapper_wr_cfg_6.trd_cycles.q;
+      trd_m_cycles              = reg2hw.fuse_wrapper_wr_cfg_6.trd_m_cycles.q;
+      thr_a_cycles              = reg2hw.fuse_wrapper_wr_cfg_6.thr_a_cycles.q;
+      
+      thp_pd_ps_cycles          = reg2hw.fuse_wrapper_wr_cfg_7.thp_pd_ps_cycles.q;
+      data_capture_cycles       = reg2hw.fuse_wrapper_wr_cfg_7.data_capture_cycles.q;
+      addr_capture_cycles       = reg2hw.fuse_wrapper_wr_cfg_7.addr_capture_cycles.q;
+      
+      trigger_power_down_cycles = reg2hw.fuse_wrapper_wr_cfg_8.q;
+    end
+  end
+
+/*rivos_tsmc_fuse_wrapper AUTO_TEMPLATE (
+    .Width                              (Width),
+    .EccWidth                           (TotalEccWidth),
+    .Depth                              (Depth),
+    .FUSE_NUM_ARRAYS                    (FUSE_NUM_ARRAYS),
+    .FUSE_NUM_MBIST_ARRAYS              (FUSE_NUM_MBIST_ARRAYS),
+    .FUSE_MBIST_EN                      (FUSE_MBIST_EN),
+    .FUSE_MBIST_ARRAY_BASE              (FUSE_MBIST_ARRAY_BASE),
+    .FUSE_MBIST_ARRAY_SIZE              (FUSE_MBIST_ARRAY_SIZE),
+    .FUSE_MBIST_ECC_ARRAY_BASE          (FUSE_MBIST_ECC_ARRAY_BASE),
+    .FUSE_MBIST_ECC_ARRAY_SIZE          (FUSE_MBIST_ECC_ARRAY_SIZE),
+    .FUSE_RF_DATA_WIDTH                 (FUSE_RF_DATA_WIDTH),
+    .FUSE_ADDR_WIDTH                    (FUSE_ADDR_WIDTH),
+    .FUSE_TEST_ADDR_WIDTH               (FUSE_TEST_ADDR_WIDTH),
+    .FUSE_DATA_WIDTH                    (FUSE_DATA_WIDTH),
+    .trace_fuse_csb_o                   (cfg_rsp_o.trace_fuse_csb),
+    .trace_fuse_strobe_o                (cfg_rsp_o.trace_fuse_strobe),
+    .trace_fuse_array_sel_o             (cfg_rsp_o.trace_fuse_array_sel[(FUSE_ARRAY_SEL_WIDTH-1):0]),
+    .trace_fuse_load_o                  (cfg_rsp_o.trace_fuse_load),
+    .trace_fuse_pgenb_o                 (cfg_rsp_o.trace_fuse_pgenb),
+    .trace_fuse_ps_o                    (cfg_rsp_o.trace_fuse_ps),
+    .trace_fuse_pd_o                    (cfg_rsp_o.trace_fuse_pd),
+    .trace_final_fuse_mr_o              (cfg_rsp_o.trace_final_fuse_mr),
+    .trace_fuse_address_o               (cfg_rsp_o.trace_fuse_address[(FUSE_ADDR_WIDTH-1):0]),
+    .trace_final_fuse_tcrs_o            (cfg_rsp_o.trace_final_fuse_tcrs),
+    .trace_fuse_test_address_o          (cfg_rsp_o.trace_fuse_test_address[(FUSE_TEST_ADDR_WIDTH-1):0]),
+    .trace_final_fuse_rsb_o             (cfg_rsp_o.trace_final_fuse_rsb),
+    .trace_final_fuse_rwl_o             (cfg_rsp_o.trace_final_fuse_rwl),
+    .trace_fuse_ecc_strobe_o            (cfg_rsp_o.trace_fuse_ecc_strobe),
+    .trace_fuse_ecc_array_sel_o         (cfg_rsp_o.trace_fuse_ecc_array_sel[(FUSE_ECC_ARRAY_SEL_WIDTH-1):0]),
+    .trace_fuse_ecc_ps_o                (cfg_rsp_o.trace_fuse_ecc_ps),
+    .trace_fuse_ecc_address_o           (cfg_rsp_o.trace_fuse_ecc_address[(FUSE_ADDR_WIDTH-1):0]),
+    .trace_fuse_data_o                  (cfg_rsp_o.trace_fuse_data[(FUSE_NUM_ARRAYS-1):0]),
+    .trace_fuse_ecc_data_o              (cfg_rsp_o.trace_fuse_ecc_data[(FUSE_NUM_ECC_ARRAYS-1):0]),
+    .req_i                              (req),
+    .write_i                            (wren),
+    .addr_i                             (addr),
+    .wdata_i                            ({2'b0,wdata_rmw[]}), // padding upper two bits so we never write ecc[7:6] but we can read it
+    .mode_i                             (reg2hw.macro_control.macro_mode.q),
+    .ecc_sel_i                          (reg2hw.macro_control.ecc_sel.q),
+    .margin_i                           (reg2hw.macro_control.read_margin.q),
+    .test_row_col_sel_i                 (reg2hw.macro_control.test_row_col_sel.q),
+    .rvalid_o                           (rvalid),
+    .rdata_o                            (rdata_ecc[(Width+TotalEccWidth-1):0]),
+    .err_o                              (),
+    .wrapper_ready_o                    (wrapper_ready),
+    .tsur_pd_ps_cycles_i                (tsur_pd_ps_cycles),
+    .tsur_ps_cycles_i                   (tsur_ps_cycles),
+    .tsur_ps_cs_cycles_i                (tsur_ps_cs_cycles),
+    .tsup_ps_cs_cycles_i                (tsup_ps_cs_cycles),
+    .tsup_ps_cycles_i                   (tsup_ps_cycles),            
+    .tsq_cycles_i                       (tsq_cycles),                
+    .tsq_m_cycles_i                     (tsq_m_cycles),              
+    .tpgm_cycles_i                      (tpgm_cycles),               
+    .tsur_ld_cycles_i                   (tsur_ld_cycles),               
+    .thr_ps_cycles_i                    (thr_ps_cycles),             
+    .thp_ps_cycles_i                    (thp_ps_cycles),             
+    .thp_cs_cycles_i                    (thp_cs_cycles),             
+    .thr_cs_cycles_i                    (thr_cs_cycles),  
+    .thp_ps_cs_cycles_i                 (thp_ps_cs_cycles),   
+    .thr_ps_cs_cycles_i                 (thr_ps_cs_cycles),   
+    .tsur_a_cycles_i                    (tsur_a_cycles),  
+    .tsup_a_cycles_i                    (tsup_a_cycles),  
+    .thp_a_cycles_i                     (thp_a_cycles),   
+    .tsup_ld_cycles_i                   (tsup_ld_cycles),               
+    .trd_cycles_i                       (trd_cycles),     
+    .trd_m_cycles_i                     (trd_m_cycles),   
+    .thr_a_cycles_i                     (thr_a_cycles),   
+    .thp_pd_ps_cycles_i                 (thp_pd_ps_cycles),    
+    .data_capture_cycles_i              (data_capture_cycles),
+    .addr_capture_cycles_i              (addr_capture_cycles),
+    .trigger_power_down_cycles_i        (trigger_power_down_cycles),
+    .tstrst_i                           (cfg_i.tstrst),
+    .tstrstsel_i                        (cfg_i.tstrstsel),
+    .redundancy_autoinit_disable_i      (reg2hw.macro_control.redundancy_autoinit_disable.q),
+    .clk_efuse_i                        (cfg_i.clk_efuse),
+    .mbist_sel_i                        (cfg_i.mbist_sel),
+    .mbist_fuse_csb_i                   (cfg_i.mbist_fuse_csb),
+    .mbist_fuse_load_i                  (cfg_i.mbist_fuse_load),
+    .mbist_fuse_pgenb_i                 (cfg_i.mbist_fuse_pgenb),
+    .mbist_fuse_ps_i                    (cfg_i.mbist_fuse_ps),
+    .mbist_fuse_pd_i                    (cfg_i.mbist_fuse_pd),
+    .mbist_fuse_mr_i                    (cfg_i.mbist_fuse_mr),
+    .mbist_fuse_rwl_i                   (cfg_i.mbist_fuse_rwl),
+    .mbist_fuse_rsb_i                   (cfg_i.mbist_fuse_rsb),
+    .mbist_fuse_strobe_array_i          (cfg_i.mbist_fuse_strobe_array),
+    .mbist_fuse_address_i               (cfg_i.mbist_fuse_address),
+    .mbist_fuse_rf_data_o               (cfg_rsp_o.mbist_fuse_rf_data),
+    .mbist_fuse_data_o                  (cfg_rsp_o.mbist_fuse_data),
+    .reset_allowed_o                    (cfg_rsp_o.reset_allowed),
+);
+*/
+
+rivos_tsmc_fuse_wrapper 
+  #(/*AUTOINSTPARAM*/
+    // Parameters
+    .Width                              (Width),                 // Templated
+    .EccWidth                           (TotalEccWidth),         // Templated
+    .Depth                              (Depth),                 // Templated
+    .FUSE_NUM_ARRAYS                    (FUSE_NUM_ARRAYS),       // Templated
+    .FUSE_NUM_MBIST_ARRAYS              (FUSE_NUM_MBIST_ARRAYS), // Templated
+    .FUSE_MBIST_EN                      (FUSE_MBIST_EN),         // Templated
+    .FUSE_MBIST_ARRAY_BASE              (FUSE_MBIST_ARRAY_BASE), // Templated
+    .FUSE_MBIST_ARRAY_SIZE              (FUSE_MBIST_ARRAY_SIZE), // Templated
+    .FUSE_MBIST_ECC_ARRAY_BASE          (FUSE_MBIST_ECC_ARRAY_BASE), // Templated
+    .FUSE_MBIST_ECC_ARRAY_SIZE          (FUSE_MBIST_ECC_ARRAY_SIZE), // Templated
+    .FUSE_ADDR_WIDTH                    (FUSE_ADDR_WIDTH),       // Templated
+    .FUSE_TEST_ADDR_WIDTH               (FUSE_TEST_ADDR_WIDTH),  // Templated
+    .FUSE_DATA_WIDTH                    (FUSE_DATA_WIDTH),       // Templated
+    .FUSE_RF_DATA_WIDTH                 (FUSE_RF_DATA_WIDTH))    // Templated
+  u_fuse_wrapper (/*AUTOINST*/
+                  // Interfaces
+                  .err_o                (),                      // Templated
+                  // Outputs
+                  .rvalid_o             (rvalid),                // Templated
+                  .rdata_o              (rdata_ecc[(Width+TotalEccWidth-1):0]), // Templated
+                  .wrapper_ready_o      (wrapper_ready),         // Templated
+                  .mbist_fuse_rf_data_o (cfg_rsp_o.mbist_fuse_rf_data), // Templated
+                  .mbist_fuse_data_o    (cfg_rsp_o.mbist_fuse_data), // Templated
+                  .reset_allowed_o      (cfg_rsp_o.reset_allowed), // Templated
+                  .trace_fuse_csb_o     (cfg_rsp_o.trace_fuse_csb), // Templated
+                  .trace_fuse_strobe_o  (cfg_rsp_o.trace_fuse_strobe), // Templated
+                  .trace_fuse_array_sel_o(cfg_rsp_o.trace_fuse_array_sel[(FUSE_ARRAY_SEL_WIDTH-1):0]), // Templated
+                  .trace_fuse_load_o    (cfg_rsp_o.trace_fuse_load), // Templated
+                  .trace_fuse_pgenb_o   (cfg_rsp_o.trace_fuse_pgenb), // Templated
+                  .trace_fuse_ps_o      (cfg_rsp_o.trace_fuse_ps), // Templated
+                  .trace_fuse_pd_o      (cfg_rsp_o.trace_fuse_pd), // Templated
+                  .trace_final_fuse_mr_o(cfg_rsp_o.trace_final_fuse_mr), // Templated
+                  .trace_fuse_address_o (cfg_rsp_o.trace_fuse_address[(FUSE_ADDR_WIDTH-1):0]), // Templated
+                  .trace_final_fuse_tcrs_o(cfg_rsp_o.trace_final_fuse_tcrs), // Templated
+                  .trace_fuse_test_address_o(cfg_rsp_o.trace_fuse_test_address[(FUSE_TEST_ADDR_WIDTH-1):0]), // Templated
+                  .trace_final_fuse_rsb_o(cfg_rsp_o.trace_final_fuse_rsb), // Templated
+                  .trace_final_fuse_rwl_o(cfg_rsp_o.trace_final_fuse_rwl), // Templated
+                  .trace_fuse_ecc_strobe_o(cfg_rsp_o.trace_fuse_ecc_strobe), // Templated
+                  .trace_fuse_ecc_array_sel_o(cfg_rsp_o.trace_fuse_ecc_array_sel[(FUSE_ECC_ARRAY_SEL_WIDTH-1):0]), // Templated
+                  .trace_fuse_ecc_ps_o  (cfg_rsp_o.trace_fuse_ecc_ps), // Templated
+                  .trace_fuse_ecc_address_o(cfg_rsp_o.trace_fuse_ecc_address[(FUSE_ADDR_WIDTH-1):0]), // Templated
+                  .trace_fuse_data_o    (cfg_rsp_o.trace_fuse_data[(FUSE_NUM_ARRAYS-1):0]), // Templated
+                  .trace_fuse_ecc_data_o(cfg_rsp_o.trace_fuse_ecc_data[(FUSE_NUM_ECC_ARRAYS-1):0]), // Templated
+                  // Inputs
+                  .clk_i                (clk_i),
+                  .rst_ni               (rst_ni),
+                  .clk_efuse_i          (cfg_i.clk_efuse),       // Templated
+                  .req_i                (req),                   // Templated
+                  .write_i              (wren),                  // Templated
+                  .addr_i               (addr),                  // Templated
+                  .wdata_i              ({2'b0,wdata_rmw[(Width+EccWidth-1):0]}), // Templated
+                  .mode_i               (reg2hw.macro_control.macro_mode.q), // Templated
+                  .ecc_sel_i            (reg2hw.macro_control.ecc_sel.q), // Templated
+                  .margin_i             (reg2hw.macro_control.read_margin.q), // Templated
+                  .test_row_col_sel_i   (reg2hw.macro_control.test_row_col_sel.q), // Templated
+                  .tsur_pd_ps_cycles_i  (tsur_pd_ps_cycles),     // Templated
+                  .tsur_ps_cycles_i     (tsur_ps_cycles),        // Templated
+                  .tsur_ps_cs_cycles_i  (tsur_ps_cs_cycles),     // Templated
+                  .tsur_ld_cycles_i     (tsur_ld_cycles),        // Templated
+                  .tsup_ld_cycles_i     (tsup_ld_cycles),        // Templated
+                  .tsup_ps_cs_cycles_i  (tsup_ps_cs_cycles),     // Templated
+                  .tsup_ps_cycles_i     (tsup_ps_cycles),        // Templated
+                  .tsq_cycles_i         (tsq_cycles),            // Templated
+                  .tsq_m_cycles_i       (tsq_m_cycles),          // Templated
+                  .tpgm_cycles_i        (tpgm_cycles),           // Templated
+                  .thr_ps_cycles_i      (thr_ps_cycles),         // Templated
+                  .thp_ps_cycles_i      (thp_ps_cycles),         // Templated
+                  .thp_cs_cycles_i      (thp_cs_cycles),         // Templated
+                  .thr_cs_cycles_i      (thr_cs_cycles),         // Templated
+                  .thp_ps_cs_cycles_i   (thp_ps_cs_cycles),      // Templated
+                  .thr_ps_cs_cycles_i   (thr_ps_cs_cycles),      // Templated
+                  .tsur_a_cycles_i      (tsur_a_cycles),         // Templated
+                  .tsup_a_cycles_i      (tsup_a_cycles),         // Templated
+                  .thp_a_cycles_i       (thp_a_cycles),          // Templated
+                  .trd_cycles_i         (trd_cycles),            // Templated
+                  .trd_m_cycles_i       (trd_m_cycles),          // Templated
+                  .thr_a_cycles_i       (thr_a_cycles),          // Templated
+                  .thp_pd_ps_cycles_i   (thp_pd_ps_cycles),      // Templated
+                  .data_capture_cycles_i(data_capture_cycles),   // Templated
+                  .addr_capture_cycles_i(addr_capture_cycles),   // Templated
+                  .trigger_power_down_cycles_i(trigger_power_down_cycles), // Templated
+                  .redundancy_autoinit_disable_i(reg2hw.macro_control.redundancy_autoinit_disable.q), // Templated
+                  .tstrst_i             (cfg_i.tstrst),          // Templated
+                  .tstrstsel_i          (cfg_i.tstrstsel),       // Templated
+                  .mbist_sel_i          (cfg_i.mbist_sel),       // Templated
+                  .mbist_fuse_csb_i     (cfg_i.mbist_fuse_csb),  // Templated
+                  .mbist_fuse_load_i    (cfg_i.mbist_fuse_load), // Templated
+                  .mbist_fuse_pgenb_i   (cfg_i.mbist_fuse_pgenb), // Templated
+                  .mbist_fuse_ps_i      (cfg_i.mbist_fuse_ps),   // Templated
+                  .mbist_fuse_pd_i      (cfg_i.mbist_fuse_pd),   // Templated
+                  .mbist_fuse_mr_i      (cfg_i.mbist_fuse_mr),   // Templated
+                  .mbist_fuse_rwl_i     (cfg_i.mbist_fuse_rwl),  // Templated
+                  .mbist_fuse_rsb_i     (cfg_i.mbist_fuse_rsb),  // Templated
+                  .mbist_fuse_strobe_array_i(cfg_i.mbist_fuse_strobe_array), // Templated
+                  .mbist_fuse_address_i (cfg_i.mbist_fuse_address)); // Templated
 
   // Currently it is assumed that no wrap arounds can occur.
   `ASSERT(NoWrapArounds_A, req |-> (addr >= addr_q))
@@ -443,9 +850,36 @@ module otp_macro
 
  `PRIM_FLOP_SPARSE_FSM(u_state_regs, state_d, state_q, state_e, ResetSt)
 
+  always_comb begin
+    size_d = size_i;
+
+    if(reg2hw.macro_control.macro_mode.q == 2'b01) begin // redundancy mode
+      // want reads  to be 32b
+      // want writes to be 16b 
+      if((otp_i.cmd == Read) || (otp_i.cmd == ReadRaw)) begin
+        size_d = SizeWidth'(1'b1);
+      end
+      else if((otp_i.cmd == Write) || (otp_i.cmd == WriteRaw)) begin
+        size_d = SizeWidth'(1'b0);
+      end
+    end
+    else if (reg2hw.macro_control.macro_mode.q == 2'b10) begin // test mode
+      // want writes    to be 16b 
+      // want row reads to be 32b
+      // want col reads to be 16b
+      if((otp_i.cmd == Write) || (otp_i.cmd == WriteRaw) || (reg2hw.macro_control.test_row_col_sel.q[1])) begin
+        size_d = SizeWidth'(1'b0);
+      end
+      else if(!reg2hw.macro_control.test_row_col_sel.q[1]) begin
+        size_d = SizeWidth'(1'b1);
+      end
+    end
+  end
+
   always_ff @(posedge clk_i or negedge rst_ni) begin : p_regs
     if (!rst_ni) begin
       valid_q <= '0;
+      ecc_valid_q <= '0;
       err_q   <= NoError;
       addr_q  <= '0;
       wdata_q <= '0;
@@ -455,13 +889,14 @@ module otp_macro
       integrity_en_q <= 1'b0;
     end else begin
       valid_q <= valid_d;
+      ecc_valid_q <= ecc_valid_d;
       err_q   <= err_d;
       cnt_q   <= cnt_d;
       integrity_en_q <= integrity_en_d;
-      if (otp_o.ready && otp_i.valid) begin
-        addr_q  <= otp_i.addr;
-        wdata_q <= otp_i.wdata;
-        size_q  <= otp_i.size;
+      if (ready_o && otp_i.valid) begin
+        addr_q  <= addr_i;
+        wdata_q <= wdata_i;
+        size_q  <= size_d;
       end
       if (rvalid) begin
         rdata_q[cnt_q] <= rdata_d;
@@ -474,42 +909,8 @@ module otp_macro
   ////////////////
 
   // Check that the otp_ctrl FSMs only issue legal commands to the wrapper.
-  `ASSERT(CheckCommands0_A, state_q == ResetSt && otp_i.valid && otp_o.ready |-> otp_i.cmd == Init)
-  `ASSERT(CheckCommands1_A, state_q != ResetSt && otp_i.valid && otp_o.ready
+  `ASSERT(CheckCommands0_A, state_q == ResetSt && otp_i.valid && ready_o |-> otp_i.cmd == Init)
+  `ASSERT(CheckCommands1_A, state_q != ResetSt && otp_i.valid && ready_o
       |-> otp_i.cmd inside {Read, ReadRaw, Write, WriteRaw})
-
-  // Check all parameters are as expected.
-  `ASSERT_INIT(WidthMatches_A, Width == otp_ctrl_macro_pkg::OtpWidth)
-  `ASSERT_INIT(DepthMatches_A, Depth == otp_ctrl_macro_pkg::OtpDepth)
-  `ASSERT_INIT(SizeWidthMatches_A, SizeWidth == otp_ctrl_macro_pkg::OtpSizeWidth)
-  `ASSERT_INIT(VendorTestOffsetMatches_A, VendorTestOffset == otp_ctrl_reg_pkg::VendorTestOffset)
-  `ASSERT_INIT(VendorTestSizeMatches_A, VendorTestSize == otp_ctrl_reg_pkg::VendorTestSize)
-
-  `ASSERT_KNOWN(OtpAstPwrSeqKnown_A, pwr_seq_o)
-  `ASSERT_KNOWN(OtpMacroTlOutKnown_A, tl_o)
-
-  // Assertions for countermeasures inside otp_macro are done in three parts
-  // - Assert invalid conditions propagate to otp_o.fatal_alert
-  // - Check that otp_o.fatal_alert is connected to u_otp_ctrl.otp_macro_i as a connectivity check
-  // - Check that u_otp_ctrl.otp_macro_i is connected to u_otp_ctrl.alert_tx_o[3]
-//  `ASSERT_PRIM_FSM_ERROR_TRIGGER_ALERT(PrimFsmCheck_A, u_state_regs, otp_o.fatal_alert)
-  `ASSERT_ERROR_TRIGGER_ERR(PrimFsmCheck_A, u_state_regs, otp_o.fatal_alert, 0,
-      `_SEC_CM_ALERT_MAX_CYC, unused_err_o, `ASSERT_DEFAULT_CLK, `ASSERT_DEFAULT_RST)
-  `ASSUME_FPV(PrimFsmCheck_ATriggerAfterAlertInit_S,
-              $stable(rst_ni) == 0 |-> u_state_regs.unused_err_o == 0 [*10])
-
-  `ASSERT_ERROR_TRIGGER_ERR(TlLcGateFsm_A, u_tlul_lc_gate.u_state_regs, otp_o.fatal_lc_fsm_err, 0,
-      `_SEC_CM_ALERT_MAX_CYC, unused_err_o, `ASSERT_DEFAULT_CLK, `ASSERT_DEFAULT_RST)
-  `ASSUME_FPV(TlLcGateFsm_ATriggerAfterAlertInit_S,
-              $stable(rst_ni) == 0 |-> u_tlul_lc_gate.u_state_regs.unused_err_o == 0 [*10])
-
-
-//  `ASSERT_PRIM_REG_WE_ONEHOT_ERROR_TRIGGER_ALERT(PrimRegWeOnehotCheck_A,
-//      u_reg_top, otp_o.fatal_alert)
-  `ASSERT_ERROR_TRIGGER_ERR(PrimRegWeOnehotCheck_A,
-      u_reg_top.u_prim_reg_we_check.u_prim_onehot_check, otp_o.fatal_alert, 0,
-      `_SEC_CM_ALERT_MAX_CYC, err_o, `ASSERT_DEFAULT_CLK, `ASSERT_DEFAULT_RST)
-  `ASSUME_FPV(PrimRegWeOneHotCheck_ATriggerAfterAlertInit_S,
-              $stable(rst_ni) == 0 |-> u_state_regs.err_o == 0 [*10])
 
 endmodule : otp_macro

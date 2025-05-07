@@ -154,7 +154,7 @@ extern "C" {
  * address between #TOP_DARJEELING_OTP_MACRO_BASE_ADDR and
  * `TOP_DARJEELING_OTP_MACRO_BASE_ADDR + TOP_DARJEELING_OTP_MACRO_SIZE_BYTES`.
  */
-#define TOP_DARJEELING_OTP_MACRO_SIZE_BYTES 0x20u
+#define TOP_DARJEELING_OTP_MACRO_SIZE_BYTES 0x80u
 
 /**
  * Peripheral base address for regs device on lc_ctrl in top darjeeling.

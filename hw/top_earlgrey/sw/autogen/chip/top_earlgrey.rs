@@ -201,7 +201,7 @@ pub const OTP_MACRO_BASE_ADDR: usize = 0x40138000;
 /// memory-mapped registers associated with this peripheral should have an
 /// address between #OTP_MACRO_BASE_ADDR and
 /// `OTP_MACRO_BASE_ADDR + OTP_MACRO_SIZE_BYTES`.
-pub const OTP_MACRO_SIZE_BYTES: usize = 0x20;
+pub const OTP_MACRO_SIZE_BYTES: usize = 0x80;
 
 /// Peripheral base address for regs device on lc_ctrl in top earlgrey.
 ///
