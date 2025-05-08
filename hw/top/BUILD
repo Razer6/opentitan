@@ -59,12 +59,9 @@ opentitan_alias_top_attr(
     attr_name = "top_ld",
 )
 
-alias(
+opentitan_alias_top_attr(
     name = "top_otp_map",
-    actual = select({
-        "is_{}".format(top): "//hw/top_{}/data/otp:otp_ctrl_mmap.hjson".format(top)
-        for top in ALL_TOP_NAMES
-    }),
+    attr_name = "otp_map",
 )
 
 # C register headers for all IPs.
