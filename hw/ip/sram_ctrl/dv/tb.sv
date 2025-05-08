@@ -10,6 +10,7 @@ module tb;
   import sram_ctrl_env_pkg::*;
   import sram_ctrl_test_pkg::*;
   import sram_ctrl_bkdr_util_pkg::sram_ctrl_bkdr_util;
+  import top_racl_pkg::*;
 
   // macro includes
   `include "uvm_macros.svh"
@@ -20,15 +21,18 @@ module tb;
   wire clk_otp;
   wire rst_otp_n;
   wire [NUM_MAX_INTERRUPTS-1:0] interrupts;
-
+  // RACL:
+  // Currently not used, but copying RTL's default value
+  parameter int unsigned RaclPolicySelNumRangesRam = 1;
+  racl_policy_vec_t racl_policies;
+  assign racl_policies = 0; // Not currently used
+  racl_range_t [RaclPolicySelNumRangesRam-1:0] racl_policy_sel_ranges_ram;
   // OTP key derivation interface
   otp_ctrl_pkg::sram_otp_key_req_t key_req;
   otp_ctrl_pkg::sram_otp_key_rsp_t key_rsp;
 
   otp_ctrl_pkg::sram_key_t   key;
   otp_ctrl_pkg::sram_nonce_t nonce;
-
-  prim_ram_1p_pkg::ram_1p_cfg_t ram_cfg;
 
   wire seed_valid;
 
@@ -62,18 +66,6 @@ module tb;
   `define SRAM_WORD_ADDR_WIDTH 32
 `endif
 
-  always_comb begin
-    ram_cfg = '0;
-
-    if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin : gen_impl_rdp
-      // Rivos RDP RAM config
-      ram_cfg.sram_test_cfg.wa     = 3'h5;
-      ram_cfg.sram_test_cfg.rm     = 4'h4;
-      ram_cfg.sram_test_cfg.test1  = 1'h1;
-    end
-  end
-
-
   sram_ctrl #(
     // memory size in bytes
     .MemSizeRam(4 * 2 ** `SRAM_WORD_ADDR_WIDTH),
@@ -83,29 +75,39 @@ module tb;
     .FlopRamOutput(1)
   ) dut (
     // main clock
-    .clk_i               (clk                       ),
-    .rst_ni              (rst_n                     ),
+    .clk_i                        (clk                        ),
+    .rst_ni                       (rst_n                      ),
     // OTP clock
-    .clk_otp_i           (clk_otp                   ),
-    .rst_otp_ni          (rst_otp_n                 ),
+    .clk_otp_i                    (clk_otp                    ),
+    .rst_otp_ni                   (rst_otp_n                  ),
     // TLUL interface for CSR regfile
-    .ram_tl_i            (sram_tl_if.h2d            ),
-    .ram_tl_o            (sram_tl_if.d2h            ),
+    .ram_tl_i                     (sram_tl_if.h2d             ),
+    .ram_tl_o                     (sram_tl_if.d2h             ),
     // TLUL interface for CSR regfile
-    .regs_tl_i           (tl_if.h2d                 ),
-    .regs_tl_o           (tl_if.d2h                 ),
+    .regs_tl_i                    (tl_if.h2d                  ),
+    .regs_tl_o                    (tl_if.d2h                  ),
     // Alert I/O
-    .alert_rx_i          (alert_rx                  ),
-    .alert_tx_o          (alert_tx                  ),
+    .alert_rx_i                   (alert_rx                   ),
+    .alert_tx_o                   (alert_tx                   ),
+    // RACL IF
+    .racl_policies_i              (racl_policies              ),
+    .racl_error_o                 (                           ),
+    .racl_policy_sel_ranges_ram_i (racl_policy_sel_ranges_ram ),
+
+
     // Life cycle escalation
-    .lc_escalate_en_i    (lc_if.lc_esc_en           ),
+    .lc_escalate_en_i             (lc_if.lc_esc_en            ),
     // OTP key derivation interface
-    .sram_otp_key_o      (key_req                   ),
-    .sram_otp_key_i      (key_rsp                   ),
+    .sram_otp_key_o               (key_req                    ),
+    .sram_otp_key_i               (key_rsp                    ),
     // SRAM ifetch interface
-    .lc_hw_debug_en_i    (exec_if.lc_hw_debug_en    ),
-    .otp_en_sram_ifetch_i(exec_if.otp_en_sram_ifetch),
-    .cfg_i               ( ram_cfg                  )
+    .lc_hw_debug_en_i             (exec_if.lc_hw_debug_en     ),
+    .otp_en_sram_ifetch_i         (exec_if.otp_en_sram_ifetch ),
+    // config
+    .cfg_i                        ('0                         ),
+    .cfg_rsp_o                    (                           ),
+    // Error record
+    .sram_rerror_o                (                           )
   );
 
   // KDI interface assignments
