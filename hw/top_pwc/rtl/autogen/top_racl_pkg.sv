@@ -13,7 +13,7 @@
 
 package top_racl_pkg;
   // Number of RACL policies used
-  parameter int unsigned NrRaclPolicies = 16;
+  parameter int unsigned NrRaclPolicies = 18;
 
   // RACL Policy selector bits
   parameter int unsigned RaclPolicySelLen = prim_util_pkg::vbits(NrRaclPolicies);
@@ -244,6 +244,8 @@ package top_racl_pkg;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_I3C2POLICY = 13;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_SPIHSTPOLICY = 14;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_SPIDEVPOLICY = 15;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_PLICPOLICY = 16;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPA_TIMERPOLICY = 17;
   /**
    * RACL Policy Selectors for group lioGrpB
    */
@@ -263,6 +265,8 @@ package top_racl_pkg;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_I3C2POLICY = 13;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_SPIHSTPOLICY = 14;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_SPIDEVPOLICY = 15;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_PLICPOLICY = 16;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPB_TIMERPOLICY = 17;
   /**
    * RACL Policy Selectors for group lioGrpC
    */
@@ -282,6 +286,8 @@ package top_racl_pkg;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_I3C2POLICY = 13;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_SPIHSTPOLICY = 14;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_SPIDEVPOLICY = 15;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_PLICPOLICY = 16;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPC_TIMERPOLICY = 17;
   /**
    * RACL Policy Selectors for group lioGrpD
    */
@@ -301,6 +307,8 @@ package top_racl_pkg;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_I3C2POLICY = 13;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_SPIHSTPOLICY = 14;
   parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_SPIDEVPOLICY = 15;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_PLICPOLICY = 16;
+  parameter racl_policy_sel_t RACL_POLICY_SEL_LIOGRPD_TIMERPOLICY = 17;
 
 
 endpackage

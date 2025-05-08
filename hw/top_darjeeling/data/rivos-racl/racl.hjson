@@ -428,6 +428,14 @@
         allowed_wr: [ "CAT3_DEBUG", "ROT" ]
         allowed_rd: [ "CAT3_DEBUG", "ROT" ]
       }
+      { name: "plicPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
+      { name: "timerPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT" ]
+      }
     ]
     lioGrpB: [
       { name: "all_rd_wr_policy"
@@ -491,6 +499,14 @@
         allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
       }
       { name: "spidevPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "plicPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
+      }
+      { name: "timerPolicy"
         allowed_wr: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
         allowed_rd: [ "CAT3_DEBUG", "ROT", "PWC", "INT_SOC" ]
       }
@@ -560,6 +576,14 @@
         allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
         allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
       }
+      { name: "plicPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
+      { name: "timerPolicy"
+        allowed_wr: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+        allowed_rd: [ "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC" ]
+      }
     ]
     lioGrpD: [
       { name: "all_rd_wr_policy"
@@ -623,6 +647,14 @@
         allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
       }
       { name: "spidevPolicy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "plicPolicy"
+        allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+        allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
+      }
+      { name: "timerPolicy"
         allowed_wr: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
         allowed_rd: [ "NOT_TEE", "M_MODE", "TEE_MODE", "R_CODE", "CAT2_DEBUG", "CAT3_DEBUG", "ROT", "MIO", "PWC", "INT_SOC", "IO_AGENT", "TEE_IO_AGENT", "DUC_UC", "MIMT_R_MODE" ]
       }

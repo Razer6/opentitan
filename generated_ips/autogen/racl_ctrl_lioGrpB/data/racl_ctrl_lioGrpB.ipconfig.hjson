@@ -9,7 +9,7 @@
     module_instance_name: racl_ctrl_lioGrpB
     nr_role_bits: 4
     nr_ctn_uid_bits: 5
-    nr_policies: 16
+    nr_policies: 18
     nr_subscribing_ips: 1
     policies:
     [
@@ -328,6 +328,44 @@
       }
       {
         name: spidevPolicy
+        allowed_wr:
+        [
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        allowed_rd:
+        [
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        rd_default: 864
+        wr_default: 864
+      }
+      {
+        name: plicPolicy
+        allowed_wr:
+        [
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        allowed_rd:
+        [
+          CAT3_DEBUG
+          ROT
+          PWC
+          INT_SOC
+        ]
+        rd_default: 864
+        wr_default: 864
+      }
+      {
+        name: timerPolicy
         allowed_wr:
         [
           CAT3_DEBUG

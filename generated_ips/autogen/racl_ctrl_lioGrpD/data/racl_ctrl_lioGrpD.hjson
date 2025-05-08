@@ -591,6 +591,66 @@
       ],
     }
     { reserved: "1" }
+    { name: "POLICY_PLICPOLICY_SHADOWED"
+      desc: '''
+            Read and write policy for plicPolicy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 16383
+          desc: '''
+                Write permission for policy plicPolicy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 16383
+          desc: '''
+                Read permission for policy plicPolicy
+                '''
+        }
+      ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpD:plicPolicy"
+      ],
+    }
+    { reserved: "1" }
+    { name: "POLICY_TIMERPOLICY_SHADOWED"
+      desc: '''
+            Read and write policy for timerPolicy
+            '''
+      swaccess: "rw"
+      hwaccess: "hro"
+      shadowed: "true"
+      update_err_alert: "recov_ctrl_update_err"
+      storage_err_alert: "fatal_fault"
+      fields: [
+        { bits: "31:16"
+          name: "write_perm"
+          resval: 16383
+          desc: '''
+                Write permission for policy timerPolicy
+                '''
+        }
+        { bits: "15:0"
+          name: "read_perm"
+          resval: 16383
+          desc: '''
+                Read permission for policy timerPolicy
+                '''
+        }
+      ]
+      tags: [
+        "racl_ctrl_policy_name:lioGrpD:timerPolicy"
+      ],
+    }
+    { reserved: "1" }
     { skipto: "0xE8" }
     { name: "INTR_STATE",
       desc: "Interrupt State Register",

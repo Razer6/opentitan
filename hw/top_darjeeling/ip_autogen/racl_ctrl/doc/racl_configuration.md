@@ -151,6 +151,8 @@
 | i3c2Policy                  |      13 |               |
 | spihstPolicy                |      14 |               |
 | spidevPolicy                |      15 |               |
+| plicPolicy                  |      16 |               |
+| timerPolicy                 |      17 |               |
 
 
 ### RACL group: lioGrpB
@@ -173,6 +175,8 @@
 | i3c2Policy                  |      13 |               |
 | spihstPolicy                |      14 |               |
 | spidevPolicy                |      15 |               |
+| plicPolicy                  |      16 |               |
+| timerPolicy                 |      17 |               |
 
 
 ### RACL group: lioGrpC
@@ -195,6 +199,8 @@
 | i3c2Policy                  |      13 |               |
 | spihstPolicy                |      14 |               |
 | spidevPolicy                |      15 |               |
+| plicPolicy                  |      16 |               |
+| timerPolicy                 |      17 |               |
 
 
 ### RACL group: lioGrpD
@@ -217,6 +223,8 @@
 | i3c2Policy                  |      13 |               |
 | spihstPolicy                |      14 |               |
 | spidevPolicy                |      15 |               |
+| plicPolicy                  |      16 |               |
+| timerPolicy                 |      17 |               |
 
 
 ## RACL configuration

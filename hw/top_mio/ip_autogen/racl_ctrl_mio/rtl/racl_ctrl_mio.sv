@@ -146,6 +146,8 @@ module racl_ctrl_mio import racl_ctrl_mio_reg_pkg::*; #(
     UnusedPolicy,
     UnusedPolicy,
     UnusedPolicy,
+    UnusedPolicy,
+    UnusedPolicy,
     policy_duc_private_policy,
     policy_mio_private_policy,
     policy_pwc_private_policy,

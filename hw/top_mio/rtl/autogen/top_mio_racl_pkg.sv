@@ -121,6 +121,8 @@ package top_mio_racl_pkg;
    *     13: i3c2Policy
    *     14: spihstPolicy
    *     15: spidevPolicy
+   *     16: plicPolicy
+   *     17: timerPolicy
    *   lioGrpB
    *      0: all_rd_wr_policy
    *      1: rot_private_policy
@@ -138,6 +140,8 @@ package top_mio_racl_pkg;
    *     13: i3c2Policy
    *     14: spihstPolicy
    *     15: spidevPolicy
+   *     16: plicPolicy
+   *     17: timerPolicy
    *   lioGrpC
    *      0: all_rd_wr_policy
    *      1: rot_private_policy
@@ -155,6 +159,8 @@ package top_mio_racl_pkg;
    *     13: i3c2Policy
    *     14: spihstPolicy
    *     15: spidevPolicy
+   *     16: plicPolicy
+   *     17: timerPolicy
    *   lioGrpD
    *      0: all_rd_wr_policy
    *      1: rot_private_policy
@@ -172,6 +178,8 @@ package top_mio_racl_pkg;
    *     13: i3c2Policy
    *     14: spihstPolicy
    *     15: spidevPolicy
+   *     16: plicPolicy
+   *     17: timerPolicy
    */
 
   /**

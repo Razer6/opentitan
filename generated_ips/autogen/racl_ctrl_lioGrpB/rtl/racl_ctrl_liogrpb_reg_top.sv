@@ -63,9 +63,9 @@ module racl_ctrl_liogrpb_reg_top
 
   // also check for spurious write enables
   logic reg_we_err;
-  logic [21:0] reg_we_check;
+  logic [23:0] reg_we_check;
   prim_reg_we_check #(
-    .OneHotWidth(22)
+    .OneHotWidth(24)
   ) u_prim_reg_we_check (
     .clk_i(clk_i),
     .rst_ni(rst_ni),
@@ -293,6 +293,26 @@ module racl_ctrl_liogrpb_reg_top
   logic [15:0] policy_spidevpolicy_shadowed_write_perm_wd;
   logic policy_spidevpolicy_shadowed_write_perm_storage_err;
   logic policy_spidevpolicy_shadowed_write_perm_update_err;
+  logic policy_plicpolicy_shadowed_re;
+  logic policy_plicpolicy_shadowed_we;
+  logic [15:0] policy_plicpolicy_shadowed_read_perm_qs;
+  logic [15:0] policy_plicpolicy_shadowed_read_perm_wd;
+  logic policy_plicpolicy_shadowed_read_perm_storage_err;
+  logic policy_plicpolicy_shadowed_read_perm_update_err;
+  logic [15:0] policy_plicpolicy_shadowed_write_perm_qs;
+  logic [15:0] policy_plicpolicy_shadowed_write_perm_wd;
+  logic policy_plicpolicy_shadowed_write_perm_storage_err;
+  logic policy_plicpolicy_shadowed_write_perm_update_err;
+  logic policy_timerpolicy_shadowed_re;
+  logic policy_timerpolicy_shadowed_we;
+  logic [15:0] policy_timerpolicy_shadowed_read_perm_qs;
+  logic [15:0] policy_timerpolicy_shadowed_read_perm_wd;
+  logic policy_timerpolicy_shadowed_read_perm_storage_err;
+  logic policy_timerpolicy_shadowed_read_perm_update_err;
+  logic [15:0] policy_timerpolicy_shadowed_write_perm_qs;
+  logic [15:0] policy_timerpolicy_shadowed_write_perm_wd;
+  logic policy_timerpolicy_shadowed_write_perm_storage_err;
+  logic policy_timerpolicy_shadowed_write_perm_update_err;
   logic intr_state_qs;
   logic intr_enable_we;
   logic intr_enable_qs;
@@ -1496,6 +1516,154 @@ module racl_ctrl_liogrpb_reg_top
   );
 
 
+  // R[policy_plicpolicy_shadowed]: V(False)
+  //   F[read_perm]: 15:0
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h360),
+    .Mubi    (1'b0)
+  ) u_policy_plicpolicy_shadowed_read_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_plicpolicy_shadowed_re),
+    .we     (policy_plicpolicy_shadowed_we),
+    .wd     (policy_plicpolicy_shadowed_read_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_plicpolicy_shadowed.read_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_plicpolicy_shadowed_read_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_plicpolicy_shadowed_read_perm_update_err),
+    .err_storage (policy_plicpolicy_shadowed_read_perm_storage_err)
+  );
+
+  //   F[write_perm]: 31:16
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h360),
+    .Mubi    (1'b0)
+  ) u_policy_plicpolicy_shadowed_write_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_plicpolicy_shadowed_re),
+    .we     (policy_plicpolicy_shadowed_we),
+    .wd     (policy_plicpolicy_shadowed_write_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_plicpolicy_shadowed.write_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_plicpolicy_shadowed_write_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_plicpolicy_shadowed_write_perm_update_err),
+    .err_storage (policy_plicpolicy_shadowed_write_perm_storage_err)
+  );
+
+
+  // R[policy_timerpolicy_shadowed]: V(False)
+  //   F[read_perm]: 15:0
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h360),
+    .Mubi    (1'b0)
+  ) u_policy_timerpolicy_shadowed_read_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_timerpolicy_shadowed_re),
+    .we     (policy_timerpolicy_shadowed_we),
+    .wd     (policy_timerpolicy_shadowed_read_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_timerpolicy_shadowed.read_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_timerpolicy_shadowed_read_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_timerpolicy_shadowed_read_perm_update_err),
+    .err_storage (policy_timerpolicy_shadowed_read_perm_storage_err)
+  );
+
+  //   F[write_perm]: 31:16
+  prim_subreg_shadow #(
+    .DW      (16),
+    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .RESVAL  (16'h360),
+    .Mubi    (1'b0)
+  ) u_policy_timerpolicy_shadowed_write_perm (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+    .rst_shadowed_ni (rst_shadowed_ni),
+
+    // from register interface
+    .re     (policy_timerpolicy_shadowed_re),
+    .we     (policy_timerpolicy_shadowed_we),
+    .wd     (policy_timerpolicy_shadowed_write_perm_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.policy_timerpolicy_shadowed.write_perm.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (policy_timerpolicy_shadowed_write_perm_qs),
+
+    // Shadow register phase. Relevant for hwext only.
+    .phase  (),
+
+    // Shadow register error conditions
+    .err_update  (policy_timerpolicy_shadowed_write_perm_update_err),
+    .err_storage (policy_timerpolicy_shadowed_write_perm_storage_err)
+  );
+
+
   // R[intr_state]: V(False)
   prim_subreg #(
     .DW      (1),
@@ -1791,12 +1959,12 @@ module racl_ctrl_liogrpb_reg_top
 
 
 
-  logic [21:0] addr_hit;
+  logic [23:0] addr_hit;
   top_racl_pkg::racl_role_vec_t racl_role_vec;
   top_racl_pkg::racl_role_t racl_role;
 
-  logic [21:0] racl_addr_hit_read;
-  logic [21:0] racl_addr_hit_write;
+  logic [23:0] racl_addr_hit_read;
+  logic [23:0] racl_addr_hit_write;
 
   if (EnableRacl) begin : gen_racl_role_logic
     // Retrieve RACL role from user bits and one-hot encode that for the comparison bitmap
@@ -1837,15 +2005,17 @@ module racl_ctrl_liogrpb_reg_top
     addr_hit[13] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_I3C2POLICY_SHADOWED_OFFSET);
     addr_hit[14] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_SPIHSTPOLICY_SHADOWED_OFFSET);
     addr_hit[15] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_SPIDEVPOLICY_SHADOWED_OFFSET);
-    addr_hit[16] = (reg_addr == RACL_CTRL_LIOGRPB_INTR_STATE_OFFSET);
-    addr_hit[17] = (reg_addr == RACL_CTRL_LIOGRPB_INTR_ENABLE_OFFSET);
-    addr_hit[18] = (reg_addr == RACL_CTRL_LIOGRPB_INTR_TEST_OFFSET);
-    addr_hit[19] = (reg_addr == RACL_CTRL_LIOGRPB_ALERT_TEST_OFFSET);
-    addr_hit[20] = (reg_addr == RACL_CTRL_LIOGRPB_ERROR_LOG_OFFSET);
-    addr_hit[21] = (reg_addr == RACL_CTRL_LIOGRPB_ERROR_LOG_ADDRESS_OFFSET);
+    addr_hit[16] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_PLICPOLICY_SHADOWED_OFFSET);
+    addr_hit[17] = (reg_addr == RACL_CTRL_LIOGRPB_POLICY_TIMERPOLICY_SHADOWED_OFFSET);
+    addr_hit[18] = (reg_addr == RACL_CTRL_LIOGRPB_INTR_STATE_OFFSET);
+    addr_hit[19] = (reg_addr == RACL_CTRL_LIOGRPB_INTR_ENABLE_OFFSET);
+    addr_hit[20] = (reg_addr == RACL_CTRL_LIOGRPB_INTR_TEST_OFFSET);
+    addr_hit[21] = (reg_addr == RACL_CTRL_LIOGRPB_ALERT_TEST_OFFSET);
+    addr_hit[22] = (reg_addr == RACL_CTRL_LIOGRPB_ERROR_LOG_OFFSET);
+    addr_hit[23] = (reg_addr == RACL_CTRL_LIOGRPB_ERROR_LOG_ADDRESS_OFFSET);
 
     if (EnableRacl) begin : gen_racl_hit
-      for (int unsigned slice_idx = 0; slice_idx < 22; slice_idx++) begin
+      for (int unsigned slice_idx = 0; slice_idx < 24; slice_idx++) begin
         // Static RACL protection with ROT_PRIVATE policy
         racl_addr_hit_read[slice_idx] =
           addr_hit[slice_idx] & (|(top_racl_pkg::RACL_POLICY_ROT_PRIVATE_RD & racl_role_vec));
@@ -1898,7 +2068,9 @@ module racl_ctrl_liogrpb_reg_top
                (racl_addr_hit_write[18] & (|(RACL_CTRL_LIOGRPB_PERMIT[18] & ~reg_be))) |
                (racl_addr_hit_write[19] & (|(RACL_CTRL_LIOGRPB_PERMIT[19] & ~reg_be))) |
                (racl_addr_hit_write[20] & (|(RACL_CTRL_LIOGRPB_PERMIT[20] & ~reg_be))) |
-               (racl_addr_hit_write[21] & (|(RACL_CTRL_LIOGRPB_PERMIT[21] & ~reg_be)))));
+               (racl_addr_hit_write[21] & (|(RACL_CTRL_LIOGRPB_PERMIT[21] & ~reg_be))) |
+               (racl_addr_hit_write[22] & (|(RACL_CTRL_LIOGRPB_PERMIT[22] & ~reg_be))) |
+               (racl_addr_hit_write[23] & (|(RACL_CTRL_LIOGRPB_PERMIT[23] & ~reg_be)))));
   end
 
   // Generate write-enables
@@ -1998,18 +2170,30 @@ module racl_ctrl_liogrpb_reg_top
   assign policy_spidevpolicy_shadowed_read_perm_wd = reg_wdata[15:0];
 
   assign policy_spidevpolicy_shadowed_write_perm_wd = reg_wdata[31:16];
-  assign intr_enable_we = racl_addr_hit_write[17] & reg_we & !reg_error;
+  assign policy_plicpolicy_shadowed_re = racl_addr_hit_read[16] & reg_re & !reg_error;
+  assign policy_plicpolicy_shadowed_we = racl_addr_hit_write[16] & reg_we & !reg_error;
+
+  assign policy_plicpolicy_shadowed_read_perm_wd = reg_wdata[15:0];
+
+  assign policy_plicpolicy_shadowed_write_perm_wd = reg_wdata[31:16];
+  assign policy_timerpolicy_shadowed_re = racl_addr_hit_read[17] & reg_re & !reg_error;
+  assign policy_timerpolicy_shadowed_we = racl_addr_hit_write[17] & reg_we & !reg_error;
+
+  assign policy_timerpolicy_shadowed_read_perm_wd = reg_wdata[15:0];
+
+  assign policy_timerpolicy_shadowed_write_perm_wd = reg_wdata[31:16];
+  assign intr_enable_we = racl_addr_hit_write[19] & reg_we & !reg_error;
 
   assign intr_enable_wd = reg_wdata[0];
-  assign intr_test_we = racl_addr_hit_write[18] & reg_we & !reg_error;
+  assign intr_test_we = racl_addr_hit_write[20] & reg_we & !reg_error;
 
   assign intr_test_wd = reg_wdata[0];
-  assign alert_test_we = racl_addr_hit_write[19] & reg_we & !reg_error;
+  assign alert_test_we = racl_addr_hit_write[21] & reg_we & !reg_error;
 
   assign alert_test_fatal_fault_wd = reg_wdata[0];
 
   assign alert_test_recov_ctrl_update_err_wd = reg_wdata[1];
-  assign error_log_we = racl_addr_hit_write[20] & reg_we & !reg_error;
+  assign error_log_we = racl_addr_hit_write[22] & reg_we & !reg_error;
 
   assign error_log_valid_wd = reg_wdata[0];
 
@@ -2031,12 +2215,14 @@ module racl_ctrl_liogrpb_reg_top
     reg_we_check[13] = policy_i3c2policy_shadowed_we;
     reg_we_check[14] = policy_spihstpolicy_shadowed_we;
     reg_we_check[15] = policy_spidevpolicy_shadowed_we;
-    reg_we_check[16] = 1'b0;
-    reg_we_check[17] = intr_enable_we;
-    reg_we_check[18] = intr_test_we;
-    reg_we_check[19] = alert_test_we;
-    reg_we_check[20] = error_log_we;
-    reg_we_check[21] = 1'b0;
+    reg_we_check[16] = policy_plicpolicy_shadowed_we;
+    reg_we_check[17] = policy_timerpolicy_shadowed_we;
+    reg_we_check[18] = 1'b0;
+    reg_we_check[19] = intr_enable_we;
+    reg_we_check[20] = intr_test_we;
+    reg_we_check[21] = alert_test_we;
+    reg_we_check[22] = error_log_we;
+    reg_we_check[23] = 1'b0;
   end
 
   // Read data return
@@ -2124,23 +2310,33 @@ module racl_ctrl_liogrpb_reg_top
       end
 
       racl_addr_hit_read[16]: begin
-        reg_rdata_next[0] = intr_state_qs;
+        reg_rdata_next[15:0] = policy_plicpolicy_shadowed_read_perm_qs;
+        reg_rdata_next[31:16] = policy_plicpolicy_shadowed_write_perm_qs;
       end
 
       racl_addr_hit_read[17]: begin
-        reg_rdata_next[0] = intr_enable_qs;
+        reg_rdata_next[15:0] = policy_timerpolicy_shadowed_read_perm_qs;
+        reg_rdata_next[31:16] = policy_timerpolicy_shadowed_write_perm_qs;
       end
 
       racl_addr_hit_read[18]: begin
-        reg_rdata_next[0] = '0;
+        reg_rdata_next[0] = intr_state_qs;
       end
 
       racl_addr_hit_read[19]: begin
+        reg_rdata_next[0] = intr_enable_qs;
+      end
+
+      racl_addr_hit_read[20]: begin
+        reg_rdata_next[0] = '0;
+      end
+
+      racl_addr_hit_read[21]: begin
         reg_rdata_next[0] = '0;
         reg_rdata_next[1] = '0;
       end
 
-      racl_addr_hit_read[20]: begin
+      racl_addr_hit_read[22]: begin
         reg_rdata_next[0] = error_log_valid_qs;
         reg_rdata_next[1] = error_log_overflow_qs;
         reg_rdata_next[2] = error_log_read_access_qs;
@@ -2148,7 +2344,7 @@ module racl_ctrl_liogrpb_reg_top
         reg_rdata_next[11:7] = error_log_ctn_uid_qs;
       end
 
-      racl_addr_hit_read[21]: begin
+      racl_addr_hit_read[23]: begin
         reg_rdata_next[31:0] = error_log_address_qs;
       end
 
@@ -2214,7 +2410,11 @@ module racl_ctrl_liogrpb_reg_top
     policy_spihstpolicy_shadowed_read_perm_storage_err,
     policy_spihstpolicy_shadowed_write_perm_storage_err,
     policy_spidevpolicy_shadowed_read_perm_storage_err,
-    policy_spidevpolicy_shadowed_write_perm_storage_err
+    policy_spidevpolicy_shadowed_write_perm_storage_err,
+    policy_plicpolicy_shadowed_read_perm_storage_err,
+    policy_plicpolicy_shadowed_write_perm_storage_err,
+    policy_timerpolicy_shadowed_read_perm_storage_err,
+    policy_timerpolicy_shadowed_write_perm_storage_err
   };
   assign shadowed_update_err_o = |{
     policy_all_rd_wr_policy_shadowed_read_perm_update_err,
@@ -2248,7 +2448,11 @@ module racl_ctrl_liogrpb_reg_top
     policy_spihstpolicy_shadowed_read_perm_update_err,
     policy_spihstpolicy_shadowed_write_perm_update_err,
     policy_spidevpolicy_shadowed_read_perm_update_err,
-    policy_spidevpolicy_shadowed_write_perm_update_err
+    policy_spidevpolicy_shadowed_write_perm_update_err,
+    policy_plicpolicy_shadowed_read_perm_update_err,
+    policy_plicpolicy_shadowed_write_perm_update_err,
+    policy_timerpolicy_shadowed_read_perm_update_err,
+    policy_timerpolicy_shadowed_write_perm_update_err
   };
 
   // register busy

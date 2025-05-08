@@ -13,7 +13,7 @@ package racl_ctrl_liogrpa_reg_pkg;
   parameter int BlockAw = 8;
 
   // Number of registers for every interface
-  parameter int NumRegs = 22;
+  parameter int NumRegs = 24;
 
   ////////////////////////////
   // Typedefs for registers //
@@ -164,6 +164,24 @@ package racl_ctrl_liogrpa_reg_pkg;
   } racl_ctrl_liogrpa_reg2hw_policy_spidevpolicy_shadowed_reg_t;
 
   typedef struct packed {
+    struct packed {
+      logic [15:0] q;
+    } write_perm;
+    struct packed {
+      logic [15:0] q;
+    } read_perm;
+  } racl_ctrl_liogrpa_reg2hw_policy_plicpolicy_shadowed_reg_t;
+
+  typedef struct packed {
+    struct packed {
+      logic [15:0] q;
+    } write_perm;
+    struct packed {
+      logic [15:0] q;
+    } read_perm;
+  } racl_ctrl_liogrpa_reg2hw_policy_timerpolicy_shadowed_reg_t;
+
+  typedef struct packed {
     logic        q;
   } racl_ctrl_liogrpa_reg2hw_intr_state_reg_t;
 
@@ -230,36 +248,39 @@ package racl_ctrl_liogrpa_reg_pkg;
   // Register -> HW type
   typedef struct packed {
     racl_ctrl_liogrpa_reg2hw_policy_all_rd_wr_policy_shadowed_reg_t
-        policy_all_rd_wr_policy_shadowed; // [521:490]
+        policy_all_rd_wr_policy_shadowed; // [585:554]
     racl_ctrl_liogrpa_reg2hw_policy_rot_private_policy_shadowed_reg_t
-        policy_rot_private_policy_shadowed; // [489:458]
+        policy_rot_private_policy_shadowed; // [553:522]
     racl_ctrl_liogrpa_reg2hw_policy_hw_rot_pwc_wr_all_rd_policy_shadowed_reg_t
-        policy_hw_rot_pwc_wr_all_rd_policy_shadowed; // [457:426]
+        policy_hw_rot_pwc_wr_all_rd_policy_shadowed; // [521:490]
     racl_ctrl_liogrpa_reg2hw_policy_pwc_private_policy_shadowed_reg_t
-        policy_pwc_private_policy_shadowed; // [425:394]
+        policy_pwc_private_policy_shadowed; // [489:458]
     racl_ctrl_liogrpa_reg2hw_policy_mio_private_policy_shadowed_reg_t
-        policy_mio_private_policy_shadowed; // [393:362]
-    racl_ctrl_liogrpa_reg2hw_policy_pwmpolicy_shadowed_reg_t policy_pwmpolicy_shadowed; // [361:330]
+        policy_mio_private_policy_shadowed; // [457:426]
+    racl_ctrl_liogrpa_reg2hw_policy_pwmpolicy_shadowed_reg_t policy_pwmpolicy_shadowed; // [425:394]
     racl_ctrl_liogrpa_reg2hw_policy_gpiopolicy_shadowed_reg_t
-        policy_gpiopolicy_shadowed; // [329:298]
+        policy_gpiopolicy_shadowed; // [393:362]
     racl_ctrl_liogrpa_reg2hw_policy_uartpolicy_shadowed_reg_t
-        policy_uartpolicy_shadowed; // [297:266]
+        policy_uartpolicy_shadowed; // [361:330]
     racl_ctrl_liogrpa_reg2hw_policy_i2c0policy_shadowed_reg_t
-        policy_i2c0policy_shadowed; // [265:234]
+        policy_i2c0policy_shadowed; // [329:298]
     racl_ctrl_liogrpa_reg2hw_policy_i2c1policy_shadowed_reg_t
-        policy_i2c1policy_shadowed; // [233:202]
+        policy_i2c1policy_shadowed; // [297:266]
     racl_ctrl_liogrpa_reg2hw_policy_i2c2policy_shadowed_reg_t
-        policy_i2c2policy_shadowed; // [201:170]
+        policy_i2c2policy_shadowed; // [265:234]
     racl_ctrl_liogrpa_reg2hw_policy_i3c0policy_shadowed_reg_t
-        policy_i3c0policy_shadowed; // [169:138]
+        policy_i3c0policy_shadowed; // [233:202]
     racl_ctrl_liogrpa_reg2hw_policy_i3c1policy_shadowed_reg_t
-        policy_i3c1policy_shadowed; // [137:106]
+        policy_i3c1policy_shadowed; // [201:170]
     racl_ctrl_liogrpa_reg2hw_policy_i3c2policy_shadowed_reg_t
-        policy_i3c2policy_shadowed; // [105:74]
+        policy_i3c2policy_shadowed; // [169:138]
     racl_ctrl_liogrpa_reg2hw_policy_spihstpolicy_shadowed_reg_t
-        policy_spihstpolicy_shadowed; // [73:42]
+        policy_spihstpolicy_shadowed; // [137:106]
     racl_ctrl_liogrpa_reg2hw_policy_spidevpolicy_shadowed_reg_t
-        policy_spidevpolicy_shadowed; // [41:10]
+        policy_spidevpolicy_shadowed; // [105:74]
+    racl_ctrl_liogrpa_reg2hw_policy_plicpolicy_shadowed_reg_t policy_plicpolicy_shadowed; // [73:42]
+    racl_ctrl_liogrpa_reg2hw_policy_timerpolicy_shadowed_reg_t
+        policy_timerpolicy_shadowed; // [41:10]
     racl_ctrl_liogrpa_reg2hw_intr_state_reg_t intr_state; // [9:9]
     racl_ctrl_liogrpa_reg2hw_intr_enable_reg_t intr_enable; // [8:8]
     racl_ctrl_liogrpa_reg2hw_intr_test_reg_t intr_test; // [7:6]
@@ -291,6 +312,8 @@ package racl_ctrl_liogrpa_reg_pkg;
   parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPA_POLICY_I3C2POLICY_SHADOWED_OFFSET = 8'h 68;
   parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPA_POLICY_SPIHSTPOLICY_SHADOWED_OFFSET = 8'h 70;
   parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPA_POLICY_SPIDEVPOLICY_SHADOWED_OFFSET = 8'h 78;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPA_POLICY_PLICPOLICY_SHADOWED_OFFSET = 8'h 80;
+  parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPA_POLICY_TIMERPOLICY_SHADOWED_OFFSET = 8'h 88;
   parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPA_INTR_STATE_OFFSET = 8'h e8;
   parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPA_INTR_ENABLE_OFFSET = 8'h ec;
   parameter logic [BlockAw-1:0] RACL_CTRL_LIOGRPA_INTR_TEST_OFFSET = 8'h f0;
@@ -320,6 +343,8 @@ package racl_ctrl_liogrpa_reg_pkg;
     RACL_CTRL_LIOGRPA_POLICY_I3C2POLICY_SHADOWED,
     RACL_CTRL_LIOGRPA_POLICY_SPIHSTPOLICY_SHADOWED,
     RACL_CTRL_LIOGRPA_POLICY_SPIDEVPOLICY_SHADOWED,
+    RACL_CTRL_LIOGRPA_POLICY_PLICPOLICY_SHADOWED,
+    RACL_CTRL_LIOGRPA_POLICY_TIMERPOLICY_SHADOWED,
     RACL_CTRL_LIOGRPA_INTR_STATE,
     RACL_CTRL_LIOGRPA_INTR_ENABLE,
     RACL_CTRL_LIOGRPA_INTR_TEST,
@@ -329,7 +354,7 @@ package racl_ctrl_liogrpa_reg_pkg;
   } racl_ctrl_liogrpa_id_e;
 
   // Register width information to check illegal writes
-  parameter logic [3:0] RACL_CTRL_LIOGRPA_PERMIT [22] = '{
+  parameter logic [3:0] RACL_CTRL_LIOGRPA_PERMIT [24] = '{
     4'b 1111, // index[ 0] RACL_CTRL_LIOGRPA_POLICY_ALL_RD_WR_POLICY_SHADOWED
     4'b 1111, // index[ 1] RACL_CTRL_LIOGRPA_POLICY_ROT_PRIVATE_POLICY_SHADOWED
     4'b 1111, // index[ 2] RACL_CTRL_LIOGRPA_POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED
@@ -346,12 +371,14 @@ package racl_ctrl_liogrpa_reg_pkg;
     4'b 1111, // index[13] RACL_CTRL_LIOGRPA_POLICY_I3C2POLICY_SHADOWED
     4'b 1111, // index[14] RACL_CTRL_LIOGRPA_POLICY_SPIHSTPOLICY_SHADOWED
     4'b 1111, // index[15] RACL_CTRL_LIOGRPA_POLICY_SPIDEVPOLICY_SHADOWED
-    4'b 0001, // index[16] RACL_CTRL_LIOGRPA_INTR_STATE
-    4'b 0001, // index[17] RACL_CTRL_LIOGRPA_INTR_ENABLE
-    4'b 0001, // index[18] RACL_CTRL_LIOGRPA_INTR_TEST
-    4'b 0001, // index[19] RACL_CTRL_LIOGRPA_ALERT_TEST
-    4'b 0011, // index[20] RACL_CTRL_LIOGRPA_ERROR_LOG
-    4'b 1111  // index[21] RACL_CTRL_LIOGRPA_ERROR_LOG_ADDRESS
+    4'b 1111, // index[16] RACL_CTRL_LIOGRPA_POLICY_PLICPOLICY_SHADOWED
+    4'b 1111, // index[17] RACL_CTRL_LIOGRPA_POLICY_TIMERPOLICY_SHADOWED
+    4'b 0001, // index[18] RACL_CTRL_LIOGRPA_INTR_STATE
+    4'b 0001, // index[19] RACL_CTRL_LIOGRPA_INTR_ENABLE
+    4'b 0001, // index[20] RACL_CTRL_LIOGRPA_INTR_TEST
+    4'b 0001, // index[21] RACL_CTRL_LIOGRPA_ALERT_TEST
+    4'b 0011, // index[22] RACL_CTRL_LIOGRPA_ERROR_LOG
+    4'b 1111  // index[23] RACL_CTRL_LIOGRPA_ERROR_LOG_ADDRESS
   };
 
 endpackage

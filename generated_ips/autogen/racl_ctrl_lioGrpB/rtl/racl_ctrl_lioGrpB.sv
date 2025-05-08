@@ -110,6 +110,8 @@ module racl_ctrl_lioGrpB import racl_ctrl_liogrpb_reg_pkg::*; #(
   racl_policy_t policy_i3c2policy;
   racl_policy_t policy_spihstpolicy;
   racl_policy_t policy_spidevpolicy;
+  racl_policy_t policy_plicpolicy;
+  racl_policy_t policy_timerpolicy;
 
   // Assign register policy values to policy structs
   assign policy_all_rd_wr_policy.read_perm = reg2hw.policy_all_rd_wr_policy_shadowed.read_perm.q;
@@ -160,8 +162,16 @@ module racl_ctrl_lioGrpB import racl_ctrl_liogrpb_reg_pkg::*; #(
   assign policy_spidevpolicy.read_perm = reg2hw.policy_spidevpolicy_shadowed.read_perm.q;
   assign policy_spidevpolicy.write_perm = reg2hw.policy_spidevpolicy_shadowed.write_perm.q;
 
+  assign policy_plicpolicy.read_perm = reg2hw.policy_plicpolicy_shadowed.read_perm.q;
+  assign policy_plicpolicy.write_perm = reg2hw.policy_plicpolicy_shadowed.write_perm.q;
+
+  assign policy_timerpolicy.read_perm = reg2hw.policy_timerpolicy_shadowed.read_perm.q;
+  assign policy_timerpolicy.write_perm = reg2hw.policy_timerpolicy_shadowed.write_perm.q;
+
   // Broadcast all policies via policy vector
   assign racl_policies_o = {
+    policy_timerpolicy,
+    policy_plicpolicy,
     policy_spidevpolicy,
     policy_spihstpolicy,
     policy_i3c2policy,
