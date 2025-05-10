@@ -769,7 +769,7 @@ prim_otp_mem
     .FUSE_TEST_ADDR_WIDTH               (FUSE_TEST_ADDR_WIDTH),  // Templated
     .FUSE_DATA_WIDTH                    (FUSE_DATA_WIDTH),       // Templated
     .FUSE_RF_DATA_WIDTH                 (FUSE_RF_DATA_WIDTH))    // Templated
-  u_otp (/*AUTOINST*/
+  u_otp_mem (/*AUTOINST*/
                   // Interfaces
                   .err_o                (),                      // Templated
                   // Outputs
