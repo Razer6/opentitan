@@ -34,11 +34,17 @@ module otp_macro
   // Vendor test partition offset and size (both in bytes)
   parameter  int    VendorTestOffset = 0,
   parameter  int    VendorTestSize   = 0,
+  // Type definitions of the config in response ports
+  parameter type OtpReqType_t     = otp_ctrl_macro_req_t,
+  parameter type OtpRspType_t     = otp_ctrl_macro_rsp_t,
+  // Type definitions of the config in response ports
+  parameter type CfgType_t        = prim_otp_cfg_pkg::otp_cfg_t,
+  parameter type CfgRspType_t     = prim_otp_cfg_pkg::otp_cfg_rsp_t,
   // RACL definitions
   parameter bit  EnableRacl       = 1'b0,
   parameter bit  RaclErrorRsp     = 1'b1,
-  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[otp_ctrl_macro_pkg::NumRegsPrim] =
-    '{otp_ctrl_macro_pkg::NumRegsPrim{0}}
+  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[otp_macro_reg_pkg::NumRegs] =
+    '{otp_macro_reg_pkg::NumRegs{0}}
 ) (
   input                          clk_i,
   input                          rst_ni,
@@ -68,24 +74,29 @@ module otp_macro
   input                          scan_rst_ni,
 
   // Incoming request from OTP_CTRL
-  input                          otp_ctrl_macro_req_t otp_i,
-  output                         otp_ctrl_macro_rsp_t otp_o,
+  input                          OtpReqType_t otp_i,
+  output                         OtpRspType_t otp_o,
 
   // RACL interface
   input  top_racl_pkg::racl_policy_vec_t  racl_policies_i,
   output top_racl_pkg::racl_error_log_t   racl_error_o,
 
   // DFT config and response port
-  input                          otp_cfg_t cfg_i,
-  output                         otp_cfg_rsp_t cfg_rsp_o
+  input CfgType_t                         cfg_i,
+  output CfgRspType_t                     cfg_rsp_o
 );
   // SEC_CM: MACRO.MEM.INTEGRITY
   // SEC_CM: MACRO.MEM.CM
   import prim_mubi_pkg::MuBi4False;
 
+  localparam int FUSE_ARRAY_SEL_WIDTH     = prim_util_pkg::vbits(FUSE_NUM_ARRAYS);
+  localparam int FUSE_NUM_ECC_ARRAYS      = (FUSE_NUM_ARRAYS > 1) ? (FUSE_NUM_ARRAYS >> 1) : 1;
+  localparam int FUSE_ECC_ARRAY_SEL_WIDTH = prim_util_pkg::vbits(FUSE_NUM_ECC_ARRAYS);
+
   // This is only restricted by the supported ECC poly further
   // below, and is straightforward to extend, if needed.
   localparam int EccWidth = 6;
+  localparam int TotalEccWidth = 8;  // used to log all ecc fuses in register to enable mbist access path
   `ASSERT_INIT(SecDecWidth_A, Width == 16)
 
   // Not supported in open-source emulation model.
@@ -217,9 +228,8 @@ module otp_macro
     .racl_error_o
   );
 
-  logic unused_reg_sig;
-  assign unused_reg_sig = ^reg2hw;
-  assign hw2reg = '0;
+  // logic unused_reg_sig;
+  // assign unused_reg_sig = ^reg2hw;
 
   ///////////////////
   // Control logic //
@@ -281,8 +291,8 @@ module otp_macro
   assign cnt_d = (cnt_clr) ? '0           :
                  (cnt_en)  ? cnt_q + 1'b1 : cnt_q;
 
-  assign valid_o = valid_q;
-  assign err_o   = err_q;
+  assign otp_o.rvalid = valid_q;
+  assign otp_o.err   = err_q;
 
   assign integrity_disable = reg2hw.macro_control.ecc_disable.q ||
                              (reg2hw.macro_control.macro_mode.q != 2'b00);  // only want integrity in array mode
@@ -530,11 +540,11 @@ module otp_macro
 
     if ((reg2hw.macro_control.macro_mode.q == 2'b10) &&
         (reg2hw.macro_control.test_row_col_sel.q[1])) begin // test col mode
-      rdata_o    = '0;
-      rdata_o[0] = rdata_reshaped[0][0];
+      otp_o.rdata    = '0;
+      otp_o.rdata[0] = rdata_reshaped[0][0];
     end
     else begin
-      rdata_o = rdata_reshaped;
+      otp_o.rdata = rdata_reshaped;
     end
   end
 
@@ -649,7 +659,7 @@ module otp_macro
     end
   end
 
-/*rivos_tsmc_fuse_wrapper AUTO_TEMPLATE (
+/*prim_otp_mem AUTO_TEMPLATE (
     .Width                              (Width),
     .EccWidth                           (TotalEccWidth),
     .Depth                              (Depth),
@@ -742,7 +752,7 @@ module otp_macro
 );
 */
 
-rivos_tsmc_fuse_wrapper 
+prim_otp_mem 
   #(/*AUTOINSTPARAM*/
     // Parameters
     .Width                              (Width),                 // Templated
@@ -759,7 +769,7 @@ rivos_tsmc_fuse_wrapper
     .FUSE_TEST_ADDR_WIDTH               (FUSE_TEST_ADDR_WIDTH),  // Templated
     .FUSE_DATA_WIDTH                    (FUSE_DATA_WIDTH),       // Templated
     .FUSE_RF_DATA_WIDTH                 (FUSE_RF_DATA_WIDTH))    // Templated
-  u_fuse_wrapper (/*AUTOINST*/
+  u_otp (/*AUTOINST*/
                   // Interfaces
                   .err_o                (),                      // Templated
                   // Outputs
@@ -851,7 +861,7 @@ rivos_tsmc_fuse_wrapper
  `PRIM_FLOP_SPARSE_FSM(u_state_regs, state_d, state_q, state_e, ResetSt)
 
   always_comb begin
-    size_d = size_i;
+    size_d = otp_i.size;
 
     if(reg2hw.macro_control.macro_mode.q == 2'b01) begin // redundancy mode
       // want reads  to be 32b
@@ -893,9 +903,9 @@ rivos_tsmc_fuse_wrapper
       err_q   <= err_d;
       cnt_q   <= cnt_d;
       integrity_en_q <= integrity_en_d;
-      if (ready_o && otp_i.valid) begin
-        addr_q  <= addr_i;
-        wdata_q <= wdata_i;
+      if (otp_o.ready  && otp_i.valid) begin
+        addr_q  <= otp_i.addr;
+        wdata_q <= otp_i.wdata;
         size_q  <= size_d;
       end
       if (rvalid) begin
@@ -909,8 +919,47 @@ rivos_tsmc_fuse_wrapper
   ////////////////
 
   // Check that the otp_ctrl FSMs only issue legal commands to the wrapper.
-  `ASSERT(CheckCommands0_A, state_q == ResetSt && otp_i.valid && ready_o |-> otp_i.cmd == Init)
-  `ASSERT(CheckCommands1_A, state_q != ResetSt && otp_i.valid && ready_o
+  `ASSERT(CheckCommands0_A, state_q == ResetSt && otp_i.valid && otp_o.ready  |-> otp_i.cmd == Init)
+  `ASSERT(CheckCommands1_A, state_q != ResetSt && otp_i.valid && otp_o.ready 
       |-> otp_i.cmd inside {Read, ReadRaw, Write, WriteRaw})
 
+  // Check all parameters are as expected.
+  // `ASSERT_INIT(WidthMatches_A, Width == otp_ctrl_macro_pkg::OtpWidth)
+  // `ASSERT_INIT(DepthMatches_A, Depth == otp_ctrl_macro_pkg::OtpDepth)
+  // `ASSERT_INIT(SizeWidthMatches_A, SizeWidth == otp_ctrl_macro_pkg::OtpSizeWidth)
+  // `ASSERT_INIT(VendorTestOffsetMatches_A, VendorTestOffset == otp_ctrl_reg_pkg::VendorTestOffset)
+  // `ASSERT_INIT(VendorTestSizeMatches_A, VendorTestSize == otp_ctrl_reg_pkg::VendorTestSize)
+
+  `ASSERT_KNOWN(OtpAstPwrSeqKnown_A, pwr_seq_o)
+  `ASSERT_KNOWN(OtpMacroTlOutKnown_A, tl_o)
+
+  // Assertions for countermeasures inside otp_macro are done in three parts
+  // - Assert invalid conditions propagate to otp_o.fatal_alert
+  // - Check that otp_o.fatal_alert is connected to u_otp_ctrl.otp_macro_i as a connectivity check
+  // - Check that u_otp_ctrl.otp_macro_i is connected to u_otp_ctrl.alert_tx_o[3]
+//  `ASSERT_PRIM_FSM_ERROR_TRIGGER_ALERT(PrimFsmCheck_A, u_state_regs, otp_o.fatal_alert)
+  `ASSERT_ERROR_TRIGGER_ERR(PrimFsmCheck_A, u_state_regs, otp_o.fatal_alert, 0,
+      `_SEC_CM_ALERT_MAX_CYC, unused_err_o, `ASSERT_DEFAULT_CLK, `ASSERT_DEFAULT_RST)
+  `ASSUME_FPV(PrimFsmCheck_ATriggerAfterAlertInit_S,
+              $stable(rst_ni) == 0 |-> u_state_regs.unused_err_o == 0 [*10])
+
+  `ASSERT_ERROR_TRIGGER_ERR(TlLcGateFsm_A, u_tlul_lc_gate.u_state_regs, otp_o.fatal_lc_fsm_err, 0,
+      `_SEC_CM_ALERT_MAX_CYC, unused_err_o, `ASSERT_DEFAULT_CLK, `ASSERT_DEFAULT_RST)
+  `ASSUME_FPV(TlLcGateFsm_ATriggerAfterAlertInit_S,
+              $stable(rst_ni) == 0 |-> u_tlul_lc_gate.u_state_regs.unused_err_o == 0 [*10])
+
+
+//  `ASSERT_PRIM_REG_WE_ONEHOT_ERROR_TRIGGER_ALERT(PrimRegWeOnehotCheck_A,
+//      u_reg_top, otp_o.fatal_alert)
+  `ASSERT_ERROR_TRIGGER_ERR(PrimRegWeOnehotCheck_A,
+      u_reg_top.u_prim_reg_we_check.u_prim_onehot_check, otp_o.fatal_alert, 0,
+      `_SEC_CM_ALERT_MAX_CYC, err_o, `ASSERT_DEFAULT_CLK, `ASSERT_DEFAULT_RST)
+  `ASSUME_FPV(PrimRegWeOneHotCheck_ATriggerAfterAlertInit_S,
+              $stable(rst_ni) == 0 |-> u_state_regs.err_o == 0 [*10])
+
 endmodule : otp_macro
+// Local Variables:
+// fill-column:1
+// verilog-auto-arg-sort:t
+// verilog-typedef-regexp: "_[etu]$"
+// End:

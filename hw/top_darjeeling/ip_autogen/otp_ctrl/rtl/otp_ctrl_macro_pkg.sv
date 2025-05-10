@@ -21,7 +21,7 @@ package otp_ctrl_macro_pkg;
   parameter int OtpSizeWidth     = 2;
   parameter int OtpPwrSeqWidth   = 2;
 
-  parameter int OtpAddrWidth     = 13;
+  parameter int OtpAddrWidth     = 14;
   parameter int OtpIfWidth       = 2**OtpSizeWidth*OtpWidth;
   // Number of Byte address bits to cut off in order to get the native OTP word address.
   parameter int OtpAddrShift     = 1;

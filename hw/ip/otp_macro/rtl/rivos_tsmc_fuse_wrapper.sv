@@ -6,7 +6,7 @@
 `include "prim_assert.sv"
 
 module rivos_tsmc_fuse_wrapper
-  import prim_otp_pkg::*;
+  import otp_ctrl_macro_pkg::*;
 #(
         parameter  int Width                             = 16,
         parameter  int EccWidth                          = 6,

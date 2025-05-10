@@ -12,9 +12,65 @@ waive -rules {INOUT_AS_IN} -location {otp_macro.sv} \
       -comment "This signal is not driven in the generic model."
 
 waive -rules {PARAM_NOT_USED} -location {otp_macro.sv} \
-      -regexp {Parameter '(VendorTestOffset|VendorTestSize)' not used in module 'otp_macro'} \
+      -regexp {Parameter '(VendorTestOffset|VendorTestSize|MemInitFile)' not used in module 'otp_macro'} \
       -comment "These two parameters are not used in the generic model."
+
+waive -rules {LINE_LENGTH} -location {otp_macro.sv} \
+      -comment "line line is not a concern."
+
+waive -rules {LINE_LENGTH} -location {otp_macro_pkg.sv} \
+      -comment "line line is not a concern."
+
 
 waive -rules {PARAM_NOT_USED} -location {prim_generic_otp.sv} \
       -regexp {Parameter '(FUSE_MBIST_EN|FUSE_MBIST_ARRAY_BASE|FUSE_MBIST_ARRAY_BASE|FUSE_MBIST_ARRAY_SIZE|FUSE_MBIST_ECC_ARRAY_BASE|FUSE_MBIST_ECC_ARRAY_SIZE|FUSE_RF_DATA_WIDTH)' not used in module 'prim_generic_otp'} \
       -comment "These parameters are not used in the generic model but only in the Rivos implementation."
+
+waive -rules HIER_NET_NOT_READ -location {otp_macro.sv} -regexp {Net 'tsur_ps_cycles' in module 'otp_macro'} \
+      -comment "register exists so we should route the data into the wrapper"
+waive -rules HIER_NET_NOT_READ -location {otp_macro.sv} -regexp {Net 'tsup_ps_cycles' in module 'otp_macro'} \
+      -comment "register exists so we should route the data into the wrapper"
+waive -rules HIER_NET_NOT_READ -location {otp_macro.sv} -regexp {Net 'thr_ps_cycles' in module 'otp_macro'} \
+      -comment "register exists so we should route the data into the wrapper"
+waive -rules HIER_NET_NOT_READ -location {otp_macro.sv} -regexp {Net 'thp_ps_cycles' in module 'otp_macro'} \
+      -comment "register exists so we should route the data into the wrapper"
+
+waive -rules INPUT_NOT_READ -location {otp_macro.sv} -regexp {Input port 'cfg_i.trace_en' is not read} \
+      -comment "no trace enable"
+waive -rules INPUT_NOT_READ -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Input port 'tsur_ps_cycles_i' is not read from in module 'rivos_tsmc_fuse_wrapper'} \
+      -comment "register exists so we should route the data into the wrapper"
+waive -rules INPUT_NOT_READ -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Input port 'tsup_ps_cycles_i' is not read from in module 'rivos_tsmc_fuse_wrapper'} \
+      -comment "register exists so we should route the data into the wrapper"
+waive -rules INPUT_NOT_READ -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Input port 'thr_ps_cycles_i' is not read from in module 'rivos_tsmc_fuse_wrapper'} \
+      -comment "intentionally unused, want to leave the connection to config register"
+waive -rules INPUT_NOT_READ -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Input port 'thp_ps_cycles_i' is not read from in module 'rivos_tsmc_fuse_wrapper'} \
+      -comment "intentionally unused, want to leave the connection to config register"
+waive -rules BLACKBOX -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Instance 'u_fuse_data' of blackbox module 'TEF03FE256X32HD18_PHRM'} \
+      -comment "blackbox is expected for these ebb instances"
+waive -rules BLACKBOX -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Instance 'u_fuse_ecc_data' of blackbox module 'TEF03FE256X32HD18_PHRM'} \
+      -comment "blackbox is expected for these ebb instances"
+waive -rules DEFAULT_REQ -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Case statement does not have a 'default' clause} \
+      -comment "outputs properly defaulted in always comb block"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(tsur_a_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(trd_m_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(thr_a_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(tsur_a_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(trd_m_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(thr_a_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(tsur_a_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(trd_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(thr_a_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(tsur_a_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(tsq_m_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(data_capture_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(tsur_a_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(tsq_m_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(data_capture_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(tsur_a_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(tsq_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(data_capture_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(thr_cs_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(thr_ps_cs_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(tsur_a_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(trd_m_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(tsur_a_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(trd_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(tsup_a_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(tpgm_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(thp_a_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(thp_cs_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(thp_ps_cs_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(tsup_a_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(tpgm_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(thr_ps_cs_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(thp_pd_ps_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(tsur_ld_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(tsur_ps_cs_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+waive -rules ARITH_CONTEXT -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Bitlength of arithmetic operation '\(FUSE_STATE_COUNT_BITS'\(tsup_ld_cycles_i\) \+ FUSE_STATE_COUNT_BITS'\(tsup_ps_cs_cycles_i\)\)' is self-determined in this context}  -comment "ok per rivos lint ruleset"
+
+waive -rules GENERATE_NAME -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Name 'fuse_data_arrays' does not match any pattern 'gen_\*', 'g_\*'} \
+      -comment "generate blocks have a dependency on rvsys, leave it"
+waive -rules GENERATE_NAME -location {rivos_tsmc_fuse_wrapper.sv} -regexp {Name 'fuse_ecc_arrays' does not match any pattern 'gen_\*', 'g_\*'} \
+      -comment "generate blocks have a dependency on rvsys, leave it"
+waive -rules GENERATE_NAME -location {otp_macro.sv} -regexp {Name 'u_otp' does not match any pattern 'gen_\*', 'g_\*'} \
+      -comment "Add artificial hierarchy for prim instance"
+

@@ -486,7 +486,7 @@ module otp_macro_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.read_ecc_info.ecc_info_0.q),
+    .q      (),
     .ds     (),
 
     // to register interface (read)
@@ -513,7 +513,7 @@ module otp_macro_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.read_ecc_info.ecc_info_1.q),
+    .q      (),
     .ds     (),
 
     // to register interface (read)
@@ -540,7 +540,7 @@ module otp_macro_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.read_ecc_info.ecc_info_2.q),
+    .q      (),
     .ds     (),
 
     // to register interface (read)
@@ -567,7 +567,7 @@ module otp_macro_reg_top
 
     // to internal hardware
     .qe     (),
-    .q      (reg2hw.read_ecc_info.ecc_info_3.q),
+    .q      (),
     .ds     (),
 
     // to register interface (read)

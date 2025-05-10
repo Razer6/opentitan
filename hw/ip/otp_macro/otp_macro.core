@@ -7,6 +7,7 @@ description: "One-Time Programmable (OTP) macro"
 filesets:
   files_rtl:
     depend:
+      - lowrisc:prim:util
       - lowrisc:prim:clock_gating
       - lowrisc:prim:clock_inv
       - lowrisc:prim:lc_sync
@@ -21,11 +22,18 @@ filesets:
       - rivos:dv:rdv_assert_env
       - rivos:rdplib:dv_primitives
       - rivos:rdplib:chipware
+      - lowrisc:prim_rdp:otp_cfg_pkg
     files:
       - rtl/rivos_tsmc_fuse_wrapper.sv
+      - rtl/prim_otp_mem.sv
       - rtl/otp_macro_reg_pkg.sv
       - rtl/otp_macro_reg_top.sv
       - rtl/otp_macro.sv
+    file_type: systemVerilogSource
+
+  files_tef:
+    files:
+      - "!skip_hard_macros ? (/ip/tsmc/n3e/release/efuse/tsmc/1.1.0.a/tef03fe256x32hd18_phrm/vlg/tef03fe256x32hd18_phrm_110a_ssgnp0p675v1p080vm40c.v)"
     file_type: systemVerilogSource
 
   files_verilator_waiver:
@@ -53,3 +61,4 @@ targets:
       - tool_ascentlint  ? (files_ascentlint_waiver)
       - tool_veriblelint ? (files_veriblelint_waiver)
       - files_rtl
+      - "!use_emul_memories ? (files_tef)"

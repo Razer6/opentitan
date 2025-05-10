@@ -8,6 +8,8 @@ description: "OTP MACRO package"
 
 filesets:
   files_rtl:
+    depend:
+      - lowrisc:prim:util
     files:
       - rtl/otp_macro_pkg.sv
     file_type: systemVerilogSource

@@ -16,7 +16,7 @@ filesets:
       - ${instance_vlnv("lowrisc:ip:pinmux:0.1")}
       - lowrisc:fpv:csr_assert_gen
       - ${instance_vlnv("lowrisc:fpv:pinmux_common_fpv:0.1")}
-      - lowrisc:virtual_constants:top_pkg"
+      - ${instance_vlnv("lowrisc:constants:top_pkg")}
       - ${instance_vlnv("lowrisc:systems:scan_role_pkg")}
     files:
       - tb/pinmux_chip_tb.sv

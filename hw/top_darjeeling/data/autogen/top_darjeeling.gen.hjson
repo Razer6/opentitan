@@ -1602,7 +1602,7 @@
         {
           name: cfg
           struct: otp_cfg
-          package: otp_macro_pkg
+          package: prim_otp_cfg_pkg
           type: uni
           act: rcv
           width: 1
@@ -1616,7 +1616,7 @@
         {
           name: cfg_rsp
           struct: otp_cfg_rsp
-          package: otp_macro_pkg
+          package: prim_otp_cfg_pkg
           type: uni
           act: req
           width: 1
@@ -1625,6 +1625,32 @@
           external: true
           top_signame: otp_cfg_rsp
           conn_type: false
+          index: -1
+        }
+        {
+          name: racl_policies
+          desc:
+            '''
+            Incoming RACL policy vector from a racl_ctrl instance.
+            The policy selection vector (parameter) selects the policy for each register.
+            '''
+          struct: racl_policy_vec
+          package: top_racl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          inst_name: otp_macro
+          index: -1
+        }
+        {
+          name: racl_error
+          desc: RACL error log information of this module.
+          struct: racl_error_log
+          package: top_racl_pkg
+          type: uni
+          act: req
+          width: 1
+          inst_name: otp_macro
           index: -1
         }
         {
@@ -26459,7 +26485,7 @@
       {
         name: cfg
         struct: otp_cfg
-        package: otp_macro_pkg
+        package: prim_otp_cfg_pkg
         type: uni
         act: rcv
         width: 1
@@ -26473,7 +26499,7 @@
       {
         name: cfg_rsp
         struct: otp_cfg_rsp
-        package: otp_macro_pkg
+        package: prim_otp_cfg_pkg
         type: uni
         act: req
         width: 1
@@ -26482,6 +26508,32 @@
         external: true
         top_signame: otp_cfg_rsp
         conn_type: false
+        index: -1
+      }
+      {
+        name: racl_policies
+        desc:
+          '''
+          Incoming RACL policy vector from a racl_ctrl instance.
+          The policy selection vector (parameter) selects the policy for each register.
+          '''
+        struct: racl_policy_vec
+        package: top_racl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        inst_name: otp_macro
+        index: -1
+      }
+      {
+        name: racl_error
+        desc: RACL error log information of this module.
+        struct: racl_error_log
+        package: top_racl_pkg
+        type: uni
+        act: req
+        width: 1
+        inst_name: otp_macro
         index: -1
       }
       {
@@ -33993,7 +34045,7 @@
         netname: otp_obs
       }
       {
-        package: otp_macro_pkg
+        package: prim_otp_cfg_pkg
         struct: otp_cfg
         signame: otp_cfg_i
         width: 1
@@ -34005,7 +34057,7 @@
         netname: otp_cfg
       }
       {
-        package: otp_macro_pkg
+        package: prim_otp_cfg_pkg
         struct: otp_cfg_rsp
         signame: otp_cfg_rsp_o
         width: 1

@@ -39,21 +39,6 @@ package otp_macro_reg_pkg;
 
   typedef struct packed {
     struct packed {
-      logic [7:0]  q;
-    } ecc_info_3;
-    struct packed {
-      logic [7:0]  q;
-    } ecc_info_2;
-    struct packed {
-      logic [7:0]  q;
-    } ecc_info_1;
-    struct packed {
-      logic [7:0]  q;
-    } ecc_info_0;
-  } otp_macro_reg2hw_read_ecc_info_reg_t;
-
-  typedef struct packed {
-    struct packed {
       logic [8:0]  q;
     } tsur_ps_cs_cycles;
     struct packed {
@@ -286,8 +271,7 @@ package otp_macro_reg_pkg;
 
   // Register -> HW type
   typedef struct packed {
-    otp_macro_reg2hw_macro_control_reg_t macro_control; // [541:534]
-    otp_macro_reg2hw_read_ecc_info_reg_t read_ecc_info; // [533:502]
+    otp_macro_reg2hw_macro_control_reg_t macro_control; // [509:502]
     otp_macro_reg2hw_fuse_wrapper_rd_cfg_0_reg_t fuse_wrapper_rd_cfg_0; // [501:471]
     otp_macro_reg2hw_fuse_wrapper_rd_cfg_1_reg_t fuse_wrapper_rd_cfg_1; // [470:442]
     otp_macro_reg2hw_fuse_wrapper_rd_cfg_2_reg_t fuse_wrapper_rd_cfg_2; // [441:410]

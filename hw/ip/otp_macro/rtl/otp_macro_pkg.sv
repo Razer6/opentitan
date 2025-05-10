@@ -36,15 +36,4 @@ package otp_macro_pkg;
 
   parameter otp_test_req_t OTP_TEST_DEFAULT = '0;
 
-  // Config interface
-  typedef struct packed {
-    logic test;
-  } otp_cfg_t;
-
-  typedef struct packed {
-    logic done;
-  } otp_cfg_rsp_t;
-
-  parameter otp_cfg_t OTP_CFG_DEFAULT = '0;
-
 endpackage : otp_macro_pkg
