@@ -254,11 +254,7 @@ package otp_macro_reg_pkg;
     struct packed {
       logic [7:0]  d;
       logic        de;
-    } ecc_info_0;
-    struct packed {
-      logic [7:0]  d;
-      logic        de;
-    } ecc_info_1;
+    } ecc_info_3;
     struct packed {
       logic [7:0]  d;
       logic        de;
@@ -266,7 +262,11 @@ package otp_macro_reg_pkg;
     struct packed {
       logic [7:0]  d;
       logic        de;
-    } ecc_info_3;
+    } ecc_info_1;
+    struct packed {
+      logic [7:0]  d;
+      logic        de;
+    } ecc_info_0;
   } otp_macro_hw2reg_read_ecc_info_reg_t;
 
   // Register -> HW type

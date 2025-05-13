@@ -827,11 +827,7 @@ package alert_handler_reg_pkg;
     struct packed {
       logic        d;
       logic        de;
-    } classa;
-    struct packed {
-      logic        d;
-      logic        de;
-    } classb;
+    } classd;
     struct packed {
       logic        d;
       logic        de;
@@ -839,7 +835,11 @@ package alert_handler_reg_pkg;
     struct packed {
       logic        d;
       logic        de;
-    } classd;
+    } classb;
+    struct packed {
+      logic        d;
+      logic        de;
+    } classa;
   } alert_handler_hw2reg_intr_state_reg_t;
 
   typedef struct packed {

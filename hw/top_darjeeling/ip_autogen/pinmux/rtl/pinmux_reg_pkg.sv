@@ -130,32 +130,32 @@ package pinmux_reg_pkg;
 
   typedef struct packed {
     struct packed {
+      logic [2:0]  d;
+    } drv;
+    struct packed {
       logic        d;
-    } puen;
+    } smten;
     struct packed {
       logic        d;
     } pden;
     struct packed {
       logic        d;
-    } smten;
-    struct packed {
-      logic [2:0]  d;
-    } drv;
+    } puen;
   } pinmux_hw2reg_mio_pad_attr_mreg_t;
 
   typedef struct packed {
     struct packed {
+      logic [2:0]  d;
+    } drv;
+    struct packed {
       logic        d;
-    } puen;
+    } smten;
     struct packed {
       logic        d;
     } pden;
     struct packed {
       logic        d;
-    } smten;
-    struct packed {
-      logic [2:0]  d;
-    } drv;
+    } puen;
   } pinmux_hw2reg_dio_pad_attr_mreg_t;
 
   typedef struct packed {
