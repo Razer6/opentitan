@@ -12,7 +12,11 @@ filesets:
       - lowrisc:prim:mubi
       - lowrisc:prim:all
       - lowrisc:prim:racl_error_arb
+      # TODO: This is used by the register top and shouldn't be pulled explicitly here.
+      - lowrisc:prim:onehot
       - lowrisc:virtual_constants:top_racl_pkg
+      # Rivos: Don't use top-specific racl_pkg as we use the darjeeling ones also for other tops
+      # - lowrisc:darjeeling_constants:top_racl_pkg
     files:
       - rtl/racl_ctrl_liogrpv_reg_pkg.sv
       - rtl/racl_ctrl_liogrpv_reg_top.sv
