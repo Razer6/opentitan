@@ -16,7 +16,7 @@ localparam int TL_SZW=$clog2($clog2(TL_DBW)+1);
 // NOTE THAT THIS IS A FEATURE FOR TEST CHIPS ONLY TO MITIGATE
 // THE RISK OF A BROKEN OTP MACRO. THIS WILL BE DISABLED FOR
 // PRODUCTION DEVICES.
-localparam int SecVolatileRawUnlockEn = 1;
+localparam int SecVolatileRawUnlockEn = 0;
 
 // The CTN SRAM is set to the same size as the discrete flash (2 x 512kB).
 localparam int CtnSramSize = 2 * 512 * 1024;
