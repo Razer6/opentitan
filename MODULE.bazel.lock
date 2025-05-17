@@ -6202,8 +6202,8 @@
           "@@+tock+elf2tab//Cargo.toml": "b3d5d0abcf067b73e0bbfed145dcf6c94b235100d14a6d5bfaed59ce585e0a54",
           "@@//third_party/mdbook/Cargo.lock": "85c4abbea6a132af53248fe0a1ec9b687e3671f03a35791be8a63df05848b0dd",
           "@@//third_party/mdbook/Cargo.toml": "48d52e448cfa21f3c5033b5561c9c80a5781f34c51d9028b3decb485a634236f",
-          "@@//third_party/rust/Cargo.lock": "f74d6260f26df564d97f3a0f656b1dbb208fae76a2f991ddbe57d451c3c32656",
-          "@@//third_party/rust/Cargo.toml": "aa7fd0ea5e1809beae621e161a4f29659f57d2fe6d72d555952b8e19b5b67079",
+          "@@//third_party/rust/Cargo.lock": "a265c4ee36f01599d98bd2ffd37c9cc95e5ced6c79ff9a2c3f8eccbf89a5e164",
+          "@@//third_party/rust/Cargo.toml": "61e5e51ae08da9a1517142d6a91031078c3c731ef928137e4f346295c5a7e954",
           "@@//third_party/tock/Cargo.lock": "b5a7a833ae205f1e3697a510e97e3185b44b195d7a22879b4669bff95febd5c8",
           "@@//third_party/tock/Cargo.toml": "5a939bd934aef4775b65a82e678f1180ec00aa78cf214f6052cc82353c975cc4"
         },
