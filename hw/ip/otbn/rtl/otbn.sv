@@ -354,6 +354,7 @@ module otbn
     .rdata_o  (imem_rdata),
     .raddr_o  (),
     .rerror_o (),
+    .wr_collision_o (),
     .cfg_i    (ram_cfg_imem_i),
     .cfg_rsp_o(ram_cfg_rsp_imem_o),
 
@@ -562,6 +563,7 @@ module otbn
     .rdata_o  (dmem_rdata),
     .raddr_o  (),
     .rerror_o (),
+    .wr_collision_o (),
     .cfg_i    (ram_cfg_dmem_i),
     .cfg_rsp_o(ram_cfg_rsp_dmem_o),
 

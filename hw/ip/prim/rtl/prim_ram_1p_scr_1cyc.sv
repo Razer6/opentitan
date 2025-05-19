@@ -462,6 +462,7 @@ module prim_ram_1p_scr_1cyc import prim_ram_1p_pkg::*; #(
     .wmask_i  ( wmask_q     ),
     .rdata_o  ( rdata_scr   ),
     .rvalid_o ( ),
+    .rvalid_mubi_o ( ),
     .rerror_o,
     .cfg_i,
     .cfg_rsp_o,

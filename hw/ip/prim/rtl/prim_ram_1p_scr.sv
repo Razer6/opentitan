@@ -101,9 +101,7 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
 );
 
   import prim_mubi_pkg::mubi4_t;
-  import prim_mubi_pkg::mubi4_and_hi;
   import prim_mubi_pkg::mubi4_bool_to_mubi;
-  import prim_mubi_pkg::mubi4_or_hi;
   import prim_mubi_pkg::mubi4_test_invalid;
   import prim_mubi_pkg::mubi4_test_true_loose;
   import prim_mubi_pkg::mubi4_test_false_loose;
@@ -288,6 +286,13 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
     );
 
     assign keystream_q_repl = Width'({NumParKeystr{keystream_q}});
+
+    // Unread unused bits from keystream
+    if ((Width % 64) > 0) begin : gen_unread_last
+      localparam int UnusedWidth = 64 - (Width % 64);
+      logic [UnusedWidth-1:0] unused_keystream_q;
+      assign unused_keystream_q = keystream_q[NumParScr * 64 - 1 -: UnusedWidth];
+    end
   end
 
   /////////////////////
@@ -449,6 +454,7 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
     .wmask_i  ( wmask_q     ),
     .rdata_o  ( rdata_scr   ),
     .rvalid_o ( ),
+    .rvalid_mubi_o ( ),
     .rerror_o,
     .cfg_i,
     .cfg_rsp_o,

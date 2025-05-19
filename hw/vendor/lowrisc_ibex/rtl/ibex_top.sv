@@ -618,7 +618,7 @@ module ibex_top import ibex_pkg::*; #(
           .rerror_o         (),
           .cfg_i            (ram_cfg_icache_tag_i),
           .cfg_rsp_o        (ram_cfg_rsp_icache_tag_o[way]),
-          // .wr_collision_o   (), TODO: remove upstream (patch for now?)
+          .wr_collision_o   (),
           .write_pending_o  (),
 
           .alert_o          (icache_tag_alert[way])
@@ -653,7 +653,7 @@ module ibex_top import ibex_pkg::*; #(
           .rerror_o         (),
           .cfg_i            (ram_cfg_icache_data_i),
           .cfg_rsp_o        (ram_cfg_rsp_icache_data_o[way]),
-          // .wr_collision_o   (), TODO: remove upstream (patch for now?)
+          .wr_collision_o   (),
           .write_pending_o  (),
 
           .alert_o          (icache_data_alert[way])

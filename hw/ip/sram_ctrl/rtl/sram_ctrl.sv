@@ -27,8 +27,6 @@ module sram_ctrl
   parameter int NumPrinceRoundsHalf                        = 3,
   // Number of outstanding TLUL transfers
   parameter int Outstanding                                = 2,
-  // Add a flop stage on the RAM macro output
-  parameter bit FlopRamOutput                              = 0,
   // Enable single-bit error correction and error logging
   parameter bit                         EccCorrection      = 0,
   // RACL configuration
