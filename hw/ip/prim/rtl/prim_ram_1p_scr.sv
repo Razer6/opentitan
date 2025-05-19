@@ -61,6 +61,8 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   localparam int DataKeyWidth        = 128,
   // Each 64 bit scrambling primitive requires a 64bit IV
   localparam int NonceWidth          = 64 * NumParScr,
+  // Select between compiled RAM and OT generic
+  parameter bit UseCompiledRam       = 0,
   // Compute RAM tiling
   localparam int NumRamInst          = prim_util_pkg::ceil_div(Depth, InstDepth)
 ) (
@@ -433,6 +435,7 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
     .Width(Width),
     .DataBitsPerMask(DataBitsPerMask),
     .EnableECC(1'b0),
+    .UseCompiledRam(UseCompiledRam),
     .EnableParity(EnableParity),
     .EnableInputPipeline(1'b0),
     .EnableOutputPipeline(EnableOutputPipeline)

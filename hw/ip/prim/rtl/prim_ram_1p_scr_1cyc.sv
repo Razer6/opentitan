@@ -17,6 +17,8 @@ module prim_ram_1p_scr_1cyc import prim_ram_1p_pkg::*; #(
   parameter  int DiffWidth           = DataBitsPerMask,
   parameter  int NumAddrScrRounds    = 2,
   parameter  bit ReplicateKeyStream  = 1'b0,
+  // Select between compiled RAM and OT generic
+  parameter bit UseCompiledRam       = 0,
   localparam int AddrWidth           = prim_util_pkg::vbits(Depth),
   localparam int NumParScr           = (ReplicateKeyStream) ? 1 : (Width + 63) / 64,
   localparam int NumParKeystr        = (ReplicateKeyStream) ? (Width + 63) / 64 : 1,
@@ -446,6 +448,7 @@ module prim_ram_1p_scr_1cyc import prim_ram_1p_pkg::*; #(
     .Width(Width),
     .DataBitsPerMask(DataBitsPerMask),
     .EnableECC(1'b0),
+    .UseCompiledRam(UseCompiledRam),
     .EnableParity(EnableParity),
     .EnableInputPipeline(1'b0),
     .EnableOutputPipeline(1'b0)
