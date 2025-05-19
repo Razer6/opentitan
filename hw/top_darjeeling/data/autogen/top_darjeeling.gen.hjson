@@ -370,6 +370,10 @@
     ]
   }
   num_cores: "1"
+  interrupts:
+  {
+    default_plic: rv_plic
+  }
   addr_spaces:
   [
     {
@@ -24108,6 +24112,8 @@
       intr_type: IntrType.Status
       default_val: true
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: uart0_rx_watermark
@@ -24118,6 +24124,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: uart0_tx_done
@@ -24128,6 +24136,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: uart0_rx_overflow
@@ -24138,6 +24148,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: uart0_rx_frame_err
@@ -24148,6 +24160,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: uart0_rx_break_err
@@ -24158,6 +24172,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: uart0_rx_timeout
@@ -24168,6 +24184,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: uart0_rx_parity_err
@@ -24178,6 +24196,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: uart0_tx_empty
@@ -24188,6 +24208,8 @@
       intr_type: IntrType.Status
       default_val: true
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: gpio_gpio
@@ -24198,6 +24220,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: spi_device_upload_cmdfifo_not_empty
@@ -24208,6 +24232,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: spi_device_upload_payload_not_empty
@@ -24218,6 +24244,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: spi_device_upload_payload_overflow
@@ -24228,6 +24256,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: spi_device_readbuf_watermark
@@ -24238,6 +24268,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: spi_device_readbuf_flip
@@ -24248,6 +24280,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: spi_device_tpm_header_not_empty
@@ -24258,6 +24292,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: spi_device_tpm_rdfifo_cmd_end
@@ -24268,6 +24304,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: spi_device_tpm_rdfifo_drop
@@ -24278,6 +24316,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_fmt_threshold
@@ -24288,6 +24328,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_rx_threshold
@@ -24298,6 +24340,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_acq_threshold
@@ -24308,6 +24352,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_rx_overflow
@@ -24318,6 +24364,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_controller_halt
@@ -24328,6 +24376,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_scl_interference
@@ -24338,6 +24388,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_sda_interference
@@ -24348,6 +24400,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_stretch_timeout
@@ -24358,6 +24412,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_sda_unstable
@@ -24368,6 +24424,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_cmd_complete
@@ -24378,6 +24436,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_tx_stretch
@@ -24388,6 +24448,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_tx_threshold
@@ -24398,6 +24460,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_acq_stretch
@@ -24408,6 +24472,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_unexp_stop
@@ -24418,6 +24484,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: i2c0_host_timeout
@@ -24428,6 +24496,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: rv_timer_timer_expired_hart0_timer0
@@ -24438,6 +24508,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: otp_ctrl_otp_operation_done
@@ -24448,6 +24520,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: otp_ctrl_otp_error
@@ -24458,6 +24532,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: alert_handler_classa
@@ -24468,6 +24544,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: alert_handler_classb
@@ -24478,6 +24556,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: alert_handler_classc
@@ -24488,6 +24568,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: alert_handler_classd
@@ -24498,6 +24580,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: spi_host0_error
@@ -24508,6 +24592,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: spi_host0_spi_event
@@ -24518,6 +24604,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: pwrmgr_aon_wakeup
@@ -24528,6 +24616,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: aon_timer_aon_wkup_timer_expired
@@ -24538,6 +24628,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: aon_timer_aon_wdog_timer_bark
@@ -24548,6 +24640,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: hmac_hmac_done
@@ -24558,6 +24652,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: hmac_fifo_empty
@@ -24568,6 +24664,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: hmac_hmac_err
@@ -24578,6 +24676,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: kmac_kmac_done
@@ -24588,6 +24688,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: kmac_fifo_empty
@@ -24598,6 +24700,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: kmac_kmac_err
@@ -24608,6 +24712,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: otbn_done
@@ -24618,6 +24724,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: keymgr_dpe_op_done
@@ -24628,6 +24736,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: csrng_cs_cmd_req_done
@@ -24638,6 +24748,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: csrng_cs_entropy_req
@@ -24648,6 +24760,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: csrng_cs_hw_inst_exc
@@ -24658,6 +24772,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: csrng_cs_fatal_err
@@ -24668,6 +24784,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: entropy_src_es_entropy_valid
@@ -24678,6 +24796,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: entropy_src_es_health_test_failed
@@ -24688,6 +24808,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: entropy_src_es_observe_fifo_ready
@@ -24698,6 +24820,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: entropy_src_es_fatal_err
@@ -24708,6 +24832,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: edn0_edn_cmd_req_done
@@ -24718,6 +24844,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: edn0_edn_fatal_err
@@ -24728,6 +24856,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: edn1_edn_cmd_req_done
@@ -24738,6 +24868,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: edn1_edn_fatal_err
@@ -24748,6 +24880,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: dma_dma_done
@@ -24758,6 +24892,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: dma_dma_chunk_done
@@ -24768,6 +24904,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: dma_dma_error
@@ -24778,6 +24916,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx0_mbx_ready
@@ -24788,6 +24928,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx0_mbx_abort
@@ -24798,6 +24940,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx0_mbx_error
@@ -24808,6 +24952,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx1_mbx_ready
@@ -24818,6 +24964,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx1_mbx_abort
@@ -24828,6 +24976,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx1_mbx_error
@@ -24838,6 +24988,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx2_mbx_ready
@@ -24848,6 +25000,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx2_mbx_abort
@@ -24858,6 +25012,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx2_mbx_error
@@ -24868,6 +25024,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx3_mbx_ready
@@ -24878,6 +25036,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx3_mbx_abort
@@ -24888,6 +25048,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx3_mbx_error
@@ -24898,6 +25060,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx4_mbx_ready
@@ -24908,6 +25072,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx4_mbx_abort
@@ -24918,6 +25084,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx4_mbx_error
@@ -24928,6 +25096,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx5_mbx_ready
@@ -24938,6 +25108,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx5_mbx_abort
@@ -24948,6 +25120,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx5_mbx_error
@@ -24958,6 +25132,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx6_mbx_ready
@@ -24968,6 +25144,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx6_mbx_abort
@@ -24978,6 +25156,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx6_mbx_error
@@ -24988,6 +25168,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx_jtag_mbx_ready
@@ -24998,6 +25180,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx_jtag_mbx_abort
@@ -25008,6 +25192,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx_jtag_mbx_error
@@ -25018,6 +25204,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx_pcie0_mbx_ready
@@ -25028,6 +25216,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx_pcie0_mbx_abort
@@ -25038,6 +25228,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx_pcie0_mbx_error
@@ -25048,6 +25240,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx_pcie1_mbx_ready
@@ -25058,6 +25252,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx_pcie1_mbx_abort
@@ -25068,6 +25264,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: mbx_pcie1_mbx_error
@@ -25078,6 +25276,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: racl_ctrl_racl_error
@@ -25088,6 +25288,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: ac_range_check_deny_cnt_reached
@@ -25098,6 +25300,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: ROT_HDR_IPI_FROM_DUC
@@ -25108,6 +25312,8 @@
       desc: ROT_HDR IPI_FROM_DUC incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: ROT_HDR_IPI_FROM_MIO
@@ -25118,6 +25324,8 @@
       desc: ROT_HDR IPI_FROM_MIO incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: ROT_HDR_IPI_FROM_PWC
@@ -25128,6 +25336,8 @@
       desc: ROT_HDR IPI_FROM_PWC incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: ROT_HDR_IPI_FROM_ROT_2
@@ -25138,6 +25348,8 @@
       desc: ROT_HDR IPI_FROM_ROT_2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: ROT_HDR_IPI_FROM_ROT_1
@@ -25148,6 +25360,8 @@
       desc: ROT_HDR IPI_FROM_ROT_1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: ROT_HDR_IPI_FROM_ROT_0
@@ -25158,6 +25372,8 @@
       desc: ROT_HDR IPI_FROM_ROT_0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_C_IBEX_IRQ
@@ -25168,6 +25384,8 @@
       desc: LIO_GRP_C IBEX_IRQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_B_IBEX_IRQ
@@ -25178,6 +25396,8 @@
       desc: LIO_GRP_B IBEX_IRQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_A_IBEX_IRQ
@@ -25188,6 +25408,8 @@
       desc: LIO_GRP_A IBEX_IRQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: RAS_CTRL_ERROR_IRQ
@@ -25198,6 +25420,8 @@
       desc: RAS_CTRL ERROR_IRQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: AMS_REF_CLK_SLOW
@@ -25208,6 +25432,8 @@
       desc: AMS REF_CLK_SLOW incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: AMS_REF_CLK_FAST
@@ -25218,6 +25444,8 @@
       desc: AMS REF_CLK_FAST incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: AMS_AVGS_GLITCH
@@ -25228,6 +25456,8 @@
       desc: AMS AVGS_GLITCH incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: SCSIFREGS_RACL_ERROR
@@ -25238,6 +25468,8 @@
       desc: SCSIFREGS RACL_ERROR incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: NSGRP_RACL_ERROR
@@ -25248,6 +25480,8 @@
       desc: NSGRP RACL_ERROR incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_V_RACL_ERROR
@@ -25258,6 +25492,8 @@
       desc: LIO_GRP_V RACL_ERROR incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_P_RACL_ERROR
@@ -25268,6 +25504,8 @@
       desc: LIO_GRP_P RACL_ERROR incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_D_RACL_ERROR
@@ -25278,6 +25516,8 @@
       desc: LIO_GRP_D RACL_ERROR incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_C_RACL_ERROR
@@ -25288,6 +25528,8 @@
       desc: LIO_GRP_C RACL_ERROR incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_B_RACL_ERROR
@@ -25298,6 +25540,8 @@
       desc: LIO_GRP_B RACL_ERROR incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_A_RACL_ERROR
@@ -25308,6 +25552,8 @@
       desc: LIO_GRP_A RACL_ERROR incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_A_ALERTHANDLER_CLASS_A
@@ -25318,6 +25564,8 @@
       desc: LIO_GRP_A_ALERTHANDLER CLASS_A incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_A_ALERTHANDLER_CLASS_B
@@ -25328,6 +25576,8 @@
       desc: LIO_GRP_A_ALERTHANDLER CLASS_B incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_A_ALERTHANDLER_CLASS_C
@@ -25338,6 +25588,8 @@
       desc: LIO_GRP_A_ALERTHANDLER CLASS_C incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_A_ALERTHANDLER_CLASS_D
@@ -25348,6 +25600,8 @@
       desc: LIO_GRP_A_ALERTHANDLER CLASS_D incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_B_ALERTHANDLER_CLASS_A
@@ -25358,6 +25612,8 @@
       desc: LIO_GRP_B_ALERTHANDLER CLASS_A incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_B_ALERTHANDLER_CLASS_B
@@ -25368,6 +25624,8 @@
       desc: LIO_GRP_B_ALERTHANDLER CLASS_B incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_B_ALERTHANDLER_CLASS_C
@@ -25378,6 +25636,8 @@
       desc: LIO_GRP_B_ALERTHANDLER CLASS_C incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_B_ALERTHANDLER_CLASS_D
@@ -25388,6 +25648,8 @@
       desc: LIO_GRP_B_ALERTHANDLER CLASS_D incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_C_ALERTHANDLER_CLASS_A
@@ -25398,6 +25660,8 @@
       desc: LIO_GRP_C_ALERTHANDLER CLASS_A incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_C_ALERTHANDLER_CLASS_B
@@ -25408,6 +25672,8 @@
       desc: LIO_GRP_C_ALERTHANDLER CLASS_B incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_C_ALERTHANDLER_CLASS_C
@@ -25418,6 +25684,8 @@
       desc: LIO_GRP_C_ALERTHANDLER CLASS_C incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_C_ALERTHANDLER_CLASS_D
@@ -25428,6 +25696,8 @@
       desc: LIO_GRP_C_ALERTHANDLER CLASS_D incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_D_ALERTHANDLER_CLASS_A
@@ -25438,6 +25708,8 @@
       desc: LIO_GRP_D_ALERTHANDLER CLASS_A incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_D_ALERTHANDLER_CLASS_B
@@ -25448,6 +25720,8 @@
       desc: LIO_GRP_D_ALERTHANDLER CLASS_B incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_D_ALERTHANDLER_CLASS_C
@@ -25458,6 +25732,8 @@
       desc: LIO_GRP_D_ALERTHANDLER CLASS_C incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: LIO_GRP_D_ALERTHANDLER_CLASS_D
@@ -25468,6 +25744,8 @@
       desc: LIO_GRP_D_ALERTHANDLER CLASS_D incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: SCSCTNIF0_AC_RANGE_CTN_DENY_CNT_REACHED
@@ -25478,6 +25756,8 @@
       desc: SCSCTNIF0_AC_RANGE_CTN DENY_CNT_REACHED incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: SCSCTNIF0_AC_RANGE_BCAST_DENY_CNT_REACHED
@@ -25488,6 +25768,8 @@
       desc: SCSCTNIF0_AC_RANGE_BCAST DENY_CNT_REACHED incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: SCSCTNIF1_AC_RANGE_CTN_DENY_CNT_REACHED
@@ -25498,6 +25780,8 @@
       desc: SCSCTNIF1_AC_RANGE_CTN DENY_CNT_REACHED incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: NSGRP_nsefuse_prog_error
@@ -25508,6 +25792,8 @@
       desc: NSGRP nsefuse_prog_error incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: racl_ctrl_mio_racl_ctrl_mio_racl_error
@@ -25518,6 +25804,8 @@
       intr_type: IntrType.Status
       default_val: False
       incoming: true
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: ac_range_check_mio_ac_range_check_mio_deny_cnt_reached
@@ -25528,6 +25816,8 @@
       intr_type: IntrType.Status
       default_val: False
       incoming: true
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: racl_ctrl_pwc_racl_ctrl_pwc_racl_error
@@ -25538,6 +25828,8 @@
       intr_type: IntrType.Status
       default_val: False
       incoming: true
+      plic: rv_plic
+      outgoing: false
     }
     {
       name: ac_range_check_pwc_ac_range_check_pwc_deny_cnt_reached
@@ -25548,6 +25840,8 @@
       intr_type: IntrType.Status
       default_val: False
       incoming: true
+      plic: rv_plic
+      outgoing: false
     }
   ]
   outgoing_interrupt: {}

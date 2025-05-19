@@ -340,6 +340,10 @@
     ]
   }
   num_cores: "1"
+  interrupts:
+  {
+    default_plic: rv_plic_pwc
+  }
   addr_spaces:
   [
     {
@@ -13679,6 +13683,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: rv_timer_timer_expired_hart0_timer0
@@ -13689,6 +13695,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: aon_timer_aon_wkup_timer_expired
@@ -13699,6 +13707,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: aon_timer_aon_wdog_timer_bark
@@ -13709,6 +13719,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: dma_dma_done
@@ -13719,6 +13731,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: dma_dma_chunk_done
@@ -13729,6 +13743,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: dma_dma_error
@@ -13739,6 +13755,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx0_mbx_ready
@@ -13749,6 +13767,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx0_mbx_abort
@@ -13759,6 +13779,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx0_mbx_error
@@ -13769,6 +13791,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx1_mbx_ready
@@ -13779,6 +13803,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx1_mbx_abort
@@ -13789,6 +13815,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx1_mbx_error
@@ -13799,6 +13827,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx2_mbx_ready
@@ -13809,6 +13839,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx2_mbx_abort
@@ -13819,6 +13851,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx2_mbx_error
@@ -13829,6 +13863,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx3_mbx_ready
@@ -13839,6 +13875,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx3_mbx_abort
@@ -13849,6 +13887,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx3_mbx_error
@@ -13859,6 +13899,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx4_mbx_ready
@@ -13869,6 +13911,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx4_mbx_abort
@@ -13879,6 +13923,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx4_mbx_error
@@ -13889,6 +13935,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx5_mbx_ready
@@ -13899,6 +13947,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx5_mbx_abort
@@ -13909,6 +13959,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx5_mbx_error
@@ -13919,6 +13971,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx_pcie0_mbx_ready
@@ -13929,6 +13983,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx_pcie0_mbx_abort
@@ -13939,6 +13995,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: mbx_pcie0_mbx_error
@@ -13949,6 +14007,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_LTEU_SOC_HOT
@@ -13959,6 +14019,8 @@
       desc: PWC_LTEU SOC_HOT incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_LTEU_FW_TRIP
@@ -13969,6 +14031,8 @@
       desc: PWC_LTEU FW_TRIP incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_LTEU_CAT_TRIP
@@ -13979,6 +14043,8 @@
       desc: PWC_LTEU CAT_TRIP incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_A_IBEX_IRQ
@@ -13989,6 +14055,8 @@
       desc: LIO_GRP_A IBEX_IRQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_B_IBEX_IRQ
@@ -13999,6 +14067,8 @@
       desc: LIO_GRP_B IBEX_IRQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_C_IBEX_IRQ
@@ -14009,6 +14079,8 @@
       desc: LIO_GRP_C IBEX_IRQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: DUC0_ducPvlReq0
@@ -14019,6 +14091,8 @@
       desc: DUC0 ducPvlReq0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: DUC1_ducPvlReq1
@@ -14029,6 +14103,8 @@
       desc: DUC1 ducPvlReq1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: DUC0_ducIvdrReq0
@@ -14039,6 +14115,8 @@
       desc: DUC0 ducIvdrReq0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: DUC1_ducIvdrReq1
@@ -14049,6 +14127,8 @@
       desc: DUC1 ducIvdrReq1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_spareEcoIrq0
@@ -14059,6 +14139,8 @@
       desc: PWC spareEcoIrq0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS0
@@ -14069,6 +14151,8 @@
       desc: PWC_DVFS TargetCmdAVS0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS1
@@ -14079,6 +14163,8 @@
       desc: PWC_DVFS TargetCmdAVS1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS2
@@ -14089,6 +14175,8 @@
       desc: PWC_DVFS TargetCmdAVS2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS3
@@ -14099,6 +14187,8 @@
       desc: PWC_DVFS TargetCmdAVS3 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS4
@@ -14109,6 +14199,8 @@
       desc: PWC_DVFS TargetCmdAVS4 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS5
@@ -14119,6 +14211,8 @@
       desc: PWC_DVFS TargetCmdAVS5 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS6
@@ -14129,6 +14223,8 @@
       desc: PWC_DVFS TargetCmdAVS6 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS7
@@ -14139,6 +14235,8 @@
       desc: PWC_DVFS TargetCmdAVS7 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS8
@@ -14149,6 +14247,8 @@
       desc: PWC_DVFS TargetCmdAVS8 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS9
@@ -14159,6 +14259,8 @@
       desc: PWC_DVFS TargetCmdAVS9 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS10
@@ -14169,6 +14271,8 @@
       desc: PWC_DVFS TargetCmdAVS10 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS11
@@ -14179,6 +14283,8 @@
       desc: PWC_DVFS TargetCmdAVS11 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS12
@@ -14189,6 +14295,8 @@
       desc: PWC_DVFS TargetCmdAVS12 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_TargetCmdAVS13
@@ -14199,6 +14307,8 @@
       desc: PWC_DVFS TargetCmdAVS13 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_0
@@ -14209,6 +14319,8 @@
       desc: PWC_AVS AVS_ERROR_0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_1
@@ -14219,6 +14331,8 @@
       desc: PWC_AVS AVS_ERROR_1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_2
@@ -14229,6 +14343,8 @@
       desc: PWC_AVS AVS_ERROR_2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_3
@@ -14239,6 +14355,8 @@
       desc: PWC_AVS AVS_ERROR_3 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_4
@@ -14249,6 +14367,8 @@
       desc: PWC_AVS AVS_ERROR_4 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_5
@@ -14259,6 +14379,8 @@
       desc: PWC_AVS AVS_ERROR_5 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_6
@@ -14269,6 +14391,8 @@
       desc: PWC_AVS AVS_ERROR_6 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_7
@@ -14279,6 +14403,8 @@
       desc: PWC_AVS AVS_ERROR_7 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_8
@@ -14289,6 +14415,8 @@
       desc: PWC_AVS AVS_ERROR_8 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_9
@@ -14299,6 +14427,8 @@
       desc: PWC_AVS AVS_ERROR_9 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_10
@@ -14309,6 +14439,8 @@
       desc: PWC_AVS AVS_ERROR_10 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_11
@@ -14319,6 +14451,8 @@
       desc: PWC_AVS AVS_ERROR_11 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_12
@@ -14329,6 +14463,8 @@
       desc: PWC_AVS AVS_ERROR_12 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_13
@@ -14339,6 +14475,8 @@
       desc: PWC_AVS AVS_ERROR_13 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_14
@@ -14349,6 +14487,8 @@
       desc: PWC_AVS AVS_ERROR_14 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_15
@@ -14359,6 +14499,8 @@
       desc: PWC_AVS AVS_ERROR_15 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_16
@@ -14369,6 +14511,8 @@
       desc: PWC_AVS AVS_ERROR_16 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_17
@@ -14379,6 +14523,8 @@
       desc: PWC_AVS AVS_ERROR_17 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_18
@@ -14389,6 +14535,8 @@
       desc: PWC_AVS AVS_ERROR_18 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_19
@@ -14399,6 +14547,8 @@
       desc: PWC_AVS AVS_ERROR_19 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_ERROR_20
@@ -14409,6 +14559,8 @@
       desc: PWC_AVS AVS_ERROR_20 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_0
@@ -14419,6 +14571,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_1
@@ -14429,6 +14583,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_2
@@ -14439,6 +14595,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_3
@@ -14449,6 +14607,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_3 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_4
@@ -14459,6 +14619,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_4 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_5
@@ -14469,6 +14631,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_5 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_6
@@ -14479,6 +14643,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_6 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_7
@@ -14489,6 +14655,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_7 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_8
@@ -14499,6 +14667,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_8 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_9
@@ -14509,6 +14679,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_9 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_10
@@ -14519,6 +14691,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_10 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_11
@@ -14529,6 +14703,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_11 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_12
@@ -14539,6 +14715,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_12 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_13
@@ -14549,6 +14727,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_13 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_14
@@ -14559,6 +14739,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_14 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_15
@@ -14569,6 +14751,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_15 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_16
@@ -14579,6 +14763,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_16 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_17
@@ -14589,6 +14775,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_17 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_18
@@ -14599,6 +14787,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_18 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_19
@@ -14609,6 +14799,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_19 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_20
@@ -14619,6 +14811,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_20 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_21
@@ -14629,6 +14823,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_21 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_22
@@ -14639,6 +14835,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_22 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_23
@@ -14649,6 +14847,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_23 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_24
@@ -14659,6 +14859,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_24 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_25
@@ -14669,6 +14871,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_25 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_26
@@ -14679,6 +14883,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_26 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_27
@@ -14689,6 +14895,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_27 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_AVS_AVS_RESPONSE_TO_FW_28
@@ -14699,6 +14907,8 @@
       desc: PWC_AVS AVS_RESPONSE_TO_FW_28 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_BCAST_C_STATE_ENTRY
@@ -14709,6 +14919,8 @@
       desc: PWC_BCAST C_STATE_ENTRY incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_BCAST_C_STATE_EXIT
@@ -14719,6 +14931,8 @@
       desc: PWC_BCAST C_STATE_EXIT incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_BCAST_DPA_IDLE_ENTRY
@@ -14729,6 +14943,8 @@
       desc: PWC_BCAST DPA_IDLE_ENTRY incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_BCAST_DPA_IDLE_EXIT
@@ -14739,6 +14955,8 @@
       desc: PWC_BCAST DPA_IDLE_EXIT incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_0_PWR_VIRUS_LVL_REQ
@@ -14749,6 +14967,8 @@
       desc: PWC_CCS_0 PWR_VIRUS_LVL_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_1_PWR_VIRUS_LVL_REQ
@@ -14759,6 +14979,8 @@
       desc: PWC_CCS_1 PWR_VIRUS_LVL_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_2_PWR_VIRUS_LVL_REQ
@@ -14769,6 +14991,8 @@
       desc: PWC_CCS_2 PWR_VIRUS_LVL_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_3_PWR_VIRUS_LVL_REQ
@@ -14779,6 +15003,8 @@
       desc: PWC_CCS_3 PWR_VIRUS_LVL_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_4_PWR_VIRUS_LVL_REQ
@@ -14789,6 +15015,8 @@
       desc: PWC_CCS_4 PWR_VIRUS_LVL_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_5_PWR_VIRUS_LVL_REQ
@@ -14799,6 +15027,8 @@
       desc: PWC_CCS_5 PWR_VIRUS_LVL_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_6_PWR_VIRUS_LVL_REQ
@@ -14809,6 +15039,8 @@
       desc: PWC_CCS_6 PWR_VIRUS_LVL_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_7_PWR_VIRUS_LVL_REQ
@@ -14819,6 +15051,8 @@
       desc: PWC_CCS_7 PWR_VIRUS_LVL_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_0_DVFS_FSM
@@ -14829,6 +15063,8 @@
       desc: PWC_CCS_0 DVFS_FSM incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_1_DVFS_FSM
@@ -14839,6 +15075,8 @@
       desc: PWC_CCS_1 DVFS_FSM incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_SocDpaFsmstatus0
@@ -14849,6 +15087,8 @@
       desc: PWC_DVFS SocDpaFsmstatus0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_SocDpaFsmstatus1
@@ -14859,6 +15099,8 @@
       desc: PWC_DVFS SocDpaFsmstatus1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_SocDpaFsmstatus2
@@ -14869,6 +15111,8 @@
       desc: PWC_DVFS SocDpaFsmstatus2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_SocDpaFsmstatus3
@@ -14879,6 +15123,8 @@
       desc: PWC_DVFS SocDpaFsmstatus3 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_SocDpaFsmstatus4
@@ -14889,6 +15135,8 @@
       desc: PWC_DVFS SocDpaFsmstatus4 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_DVFS_SocDpaFsmstatus5
@@ -14899,6 +15147,8 @@
       desc: PWC_DVFS SocDpaFsmstatus5 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_HMS_East_STATUS
@@ -14909,6 +15159,8 @@
       desc: PWC_HMS East_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_HMS_WEST_STATUS
@@ -14919,6 +15171,8 @@
       desc: PWC_HMS WEST_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_0_ALL_PORTS_STATUS
@@ -14929,6 +15183,8 @@
       desc: PWC_PCS_0 ALL_PORTS_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_0_LINK_BRINGUP_0
@@ -14939,6 +15195,8 @@
       desc: PWC_PCS_0 LINK_BRINGUP_0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_0_LINK_BRINGUP_1
@@ -14949,6 +15207,8 @@
       desc: PWC_PCS_0 LINK_BRINGUP_1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_0_LINK_BRINGUP_2
@@ -14959,6 +15219,8 @@
       desc: PWC_PCS_0 LINK_BRINGUP_2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_0_LINK_BRINGUP_3
@@ -14969,6 +15231,8 @@
       desc: PWC_PCS_0 LINK_BRINGUP_3 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_0_MSG_CTRL
@@ -14979,6 +15243,8 @@
       desc: PWC_PCS_0 MSG_CTRL incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_0_PHY_STATUS
@@ -14989,6 +15255,8 @@
       desc: PWC_PCS_0 PHY_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_1_ALL_PORTS_STATUS
@@ -14999,6 +15267,8 @@
       desc: PWC_PCS_1 ALL_PORTS_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_1_LINK_BRINGUP_0
@@ -15009,6 +15279,8 @@
       desc: PWC_PCS_1 LINK_BRINGUP_0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_1_LINK_BRINGUP_1
@@ -15019,6 +15291,8 @@
       desc: PWC_PCS_1 LINK_BRINGUP_1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_1_LINK_BRINGUP_2
@@ -15029,6 +15303,8 @@
       desc: PWC_PCS_1 LINK_BRINGUP_2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_1_LINK_BRINGUP_3
@@ -15039,6 +15315,8 @@
       desc: PWC_PCS_1 LINK_BRINGUP_3 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_1_MSG_CTRL
@@ -15049,6 +15327,8 @@
       desc: PWC_PCS_1 MSG_CTRL incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_1_PHY_STATUS
@@ -15059,6 +15339,8 @@
       desc: PWC_PCS_1 PHY_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_2_ALL_PORTS_STATUS
@@ -15069,6 +15351,8 @@
       desc: PWC_PCS_2 ALL_PORTS_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_2_LINK_BRINGUP_0
@@ -15079,6 +15363,8 @@
       desc: PWC_PCS_2 LINK_BRINGUP_0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_2_LINK_BRINGUP_1
@@ -15089,6 +15375,8 @@
       desc: PWC_PCS_2 LINK_BRINGUP_1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_2_LINK_BRINGUP_2
@@ -15099,6 +15387,8 @@
       desc: PWC_PCS_2 LINK_BRINGUP_2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_2_LINK_BRINGUP_3
@@ -15109,6 +15399,8 @@
       desc: PWC_PCS_2 LINK_BRINGUP_3 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_2_MSG_CTRL
@@ -15119,6 +15411,8 @@
       desc: PWC_PCS_2 MSG_CTRL incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_2_PHY_STATUS
@@ -15129,6 +15423,8 @@
       desc: PWC_PCS_2 PHY_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_3_ALL_PORTS_STATUS
@@ -15139,6 +15435,8 @@
       desc: PWC_PCS_3 ALL_PORTS_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_3_LINK_BRINGUP_0
@@ -15149,6 +15447,8 @@
       desc: PWC_PCS_3 LINK_BRINGUP_0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_3_LINK_BRINGUP_1
@@ -15159,6 +15459,8 @@
       desc: PWC_PCS_3 LINK_BRINGUP_1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_3_LINK_BRINGUP_2
@@ -15169,6 +15471,8 @@
       desc: PWC_PCS_3 LINK_BRINGUP_2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_3_LINK_BRINGUP_3
@@ -15179,6 +15483,8 @@
       desc: PWC_PCS_3 LINK_BRINGUP_3 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_3_MSG_CTRL
@@ -15189,6 +15495,8 @@
       desc: PWC_PCS_3 MSG_CTRL incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_3_PHY_STATUS
@@ -15199,6 +15507,8 @@
       desc: PWC_PCS_3 PHY_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_4_ALL_PORTS_STATUS
@@ -15209,6 +15519,8 @@
       desc: PWC_PCS_4 ALL_PORTS_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_4_LINK_BRINGUP_0
@@ -15219,6 +15531,8 @@
       desc: PWC_PCS_4 LINK_BRINGUP_0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_4_LINK_BRINGUP_1
@@ -15229,6 +15543,8 @@
       desc: PWC_PCS_4 LINK_BRINGUP_1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_4_LINK_BRINGUP_2
@@ -15239,6 +15555,8 @@
       desc: PWC_PCS_4 LINK_BRINGUP_2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_4_LINK_BRINGUP_3
@@ -15249,6 +15567,8 @@
       desc: PWC_PCS_4 LINK_BRINGUP_3 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_4_MSG_CTRL
@@ -15259,6 +15579,8 @@
       desc: PWC_PCS_4 MSG_CTRL incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_4_PHY_STATUS
@@ -15269,6 +15591,8 @@
       desc: PWC_PCS_4 PHY_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_5_ALL_PORTS_STATUS
@@ -15279,6 +15603,8 @@
       desc: PWC_PCS_5 ALL_PORTS_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_5_LINK_BRINGUP_0
@@ -15289,6 +15615,8 @@
       desc: PWC_PCS_5 LINK_BRINGUP_0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_5_LINK_BRINGUP_1
@@ -15299,6 +15627,8 @@
       desc: PWC_PCS_5 LINK_BRINGUP_1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_5_LINK_BRINGUP_2
@@ -15309,6 +15639,8 @@
       desc: PWC_PCS_5 LINK_BRINGUP_2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_5_LINK_BRINGUP_3
@@ -15319,6 +15651,8 @@
       desc: PWC_PCS_5 LINK_BRINGUP_3 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_5_MSG_CTRL
@@ -15329,6 +15663,8 @@
       desc: PWC_PCS_5 MSG_CTRL incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_5_PHY_STATUS
@@ -15339,6 +15675,8 @@
       desc: PWC_PCS_5 PHY_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_6_ALL_PORTS_STATUS
@@ -15349,6 +15687,8 @@
       desc: PWC_PCS_6 ALL_PORTS_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_6_LINK_BRINGUP_0
@@ -15359,6 +15699,8 @@
       desc: PWC_PCS_6 LINK_BRINGUP_0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_6_LINK_BRINGUP_1
@@ -15369,6 +15711,8 @@
       desc: PWC_PCS_6 LINK_BRINGUP_1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_6_LINK_BRINGUP_2
@@ -15379,6 +15723,8 @@
       desc: PWC_PCS_6 LINK_BRINGUP_2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_6_LINK_BRINGUP_3
@@ -15389,6 +15735,8 @@
       desc: PWC_PCS_6 LINK_BRINGUP_3 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_6_MSG_CTRL
@@ -15399,6 +15747,8 @@
       desc: PWC_PCS_6 MSG_CTRL incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_6_PHY_STATUS
@@ -15409,6 +15759,8 @@
       desc: PWC_PCS_6 PHY_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_7_ALL_PORTS_STATUS
@@ -15419,6 +15771,8 @@
       desc: PWC_PCS_7 ALL_PORTS_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_7_LINK_BRINGUP_0
@@ -15429,6 +15783,8 @@
       desc: PWC_PCS_7 LINK_BRINGUP_0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_7_LINK_BRINGUP_1
@@ -15439,6 +15795,8 @@
       desc: PWC_PCS_7 LINK_BRINGUP_1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_7_LINK_BRINGUP_2
@@ -15449,6 +15807,8 @@
       desc: PWC_PCS_7 LINK_BRINGUP_2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_7_LINK_BRINGUP_3
@@ -15459,6 +15819,8 @@
       desc: PWC_PCS_7 LINK_BRINGUP_3 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_7_MSG_CTRL
@@ -15469,6 +15831,8 @@
       desc: PWC_PCS_7 MSG_CTRL incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_PCS_7_PHY_STATUS
@@ -15479,6 +15843,8 @@
       desc: PWC_PCS_7 PHY_STATUS incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_HDR_IPI_FROM_PWC_0
@@ -15489,6 +15855,8 @@
       desc: PWC_HDR IPI_FROM_PWC_0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_HDR_IPI_FROM_PWC_1
@@ -15499,6 +15867,8 @@
       desc: PWC_HDR IPI_FROM_PWC_1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_HDR_IPI_FROM_PWC_2
@@ -15509,6 +15879,8 @@
       desc: PWC_HDR IPI_FROM_PWC_2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_HDR_IPI_FROM_ROT
@@ -15519,6 +15891,8 @@
       desc: PWC_HDR IPI_FROM_ROT incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_HDR_IPI_FROM_MIO
@@ -15529,6 +15903,8 @@
       desc: PWC_HDR IPI_FROM_MIO incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_HDR_IPI_FROM_DUC
@@ -15539,6 +15915,8 @@
       desc: PWC_HDR IPI_FROM_DUC incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_A_IPI_FROM_LIOGRPA_I3C0_PERIPH_RST_REQ
@@ -15549,6 +15927,8 @@
       desc: LIO_GRP_A IPI_FROM_LIOGRPA_I3C0_PERIPH_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_A_IPI_FROM_LIOGRPA_I3C0_CHIP_RST_REQ
@@ -15559,6 +15939,8 @@
       desc: LIO_GRP_A IPI_FROM_LIOGRPA_I3C0_CHIP_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_A_IPI_FROM_LIOGRPA_I3C1_PERIPH_RST_REQ
@@ -15569,6 +15951,8 @@
       desc: LIO_GRP_A IPI_FROM_LIOGRPA_I3C1_PERIPH_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_A_IPI_FROM_LIOGRPA_I3C1_CHIP_RST_REQ
@@ -15579,6 +15963,8 @@
       desc: LIO_GRP_A IPI_FROM_LIOGRPA_I3C1_CHIP_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_A_IPI_FROM_LIOGRPA_I3C2_PERIPH_RST_REQ
@@ -15589,6 +15975,8 @@
       desc: LIO_GRP_A IPI_FROM_LIOGRPA_I3C2_PERIPH_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_A_IPI_FROM_LIOGRPA_I3C2_CHIP_RST_REQ
@@ -15599,6 +15987,8 @@
       desc: LIO_GRP_A IPI_FROM_LIOGRPA_I3C2_CHIP_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_B_IPI_FROM_LIOGRPB_I3C0_PERIPH_RST_REQ
@@ -15609,6 +15999,8 @@
       desc: LIO_GRP_B IPI_FROM_LIOGRPB_I3C0_PERIPH_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_B_IPI_FROM_LIOGRPB_I3C0_CHIP_RST_REQ
@@ -15619,6 +16011,8 @@
       desc: LIO_GRP_B IPI_FROM_LIOGRPB_I3C0_CHIP_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_B_IPI_FROM_LIOGRPB_I3C1_PERIPH_RST_REQ
@@ -15629,6 +16023,8 @@
       desc: LIO_GRP_B IPI_FROM_LIOGRPB_I3C1_PERIPH_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_B_IPI_FROM_LIOGRPB_I3C1_CHIP_RST_REQ
@@ -15639,6 +16035,8 @@
       desc: LIO_GRP_B IPI_FROM_LIOGRPB_I3C1_CHIP_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_B_IPI_FROM_LIOGRPB_I3C2_PERIPH_RST_REQ
@@ -15649,6 +16047,8 @@
       desc: LIO_GRP_B IPI_FROM_LIOGRPB_I3C2_PERIPH_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_B_IPI_FROM_LIOGRPB_I3C2_CHIP_RST_REQ
@@ -15659,6 +16059,8 @@
       desc: LIO_GRP_B IPI_FROM_LIOGRPB_I3C2_CHIP_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_C_IPI_FROM_LIOGRPC_I3C0_PERIPH_RST_REQ
@@ -15669,6 +16071,8 @@
       desc: LIO_GRP_C IPI_FROM_LIOGRPC_I3C0_PERIPH_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_C_IPI_FROM_LIOGRPC_I3C0_CHIP_RST_REQ
@@ -15679,6 +16083,8 @@
       desc: LIO_GRP_C IPI_FROM_LIOGRPC_I3C0_CHIP_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_C_IPI_FROM_LIOGRPC_I3C1_PERIPH_RST_REQ
@@ -15689,6 +16095,8 @@
       desc: LIO_GRP_C IPI_FROM_LIOGRPC_I3C1_PERIPH_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_C_IPI_FROM_LIOGRPC_I3C1_CHIP_RST_REQ
@@ -15699,6 +16107,8 @@
       desc: LIO_GRP_C IPI_FROM_LIOGRPC_I3C1_CHIP_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_C_IPI_FROM_LIOGRPC_I3C2_PERIPH_RST_REQ
@@ -15709,6 +16119,8 @@
       desc: LIO_GRP_C IPI_FROM_LIOGRPC_I3C2_PERIPH_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_C_IPI_FROM_LIOGRPC_I3C2_CHIP_RST_REQ
@@ -15719,6 +16131,8 @@
       desc: LIO_GRP_C IPI_FROM_LIOGRPC_I3C2_CHIP_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_D_IPI_FROM_LIOGRPD_I3C0_PERIPH_RST_REQ
@@ -15729,6 +16143,8 @@
       desc: LIO_GRP_D IPI_FROM_LIOGRPD_I3C0_PERIPH_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_D_IPI_FROM_LIOGRPD_I3C0_CHIP_RST_REQ
@@ -15739,6 +16155,8 @@
       desc: LIO_GRP_D IPI_FROM_LIOGRPD_I3C0_CHIP_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_D_IPI_FROM_LIOGRPD_I3C1_PERIPH_RST_REQ
@@ -15749,6 +16167,8 @@
       desc: LIO_GRP_D IPI_FROM_LIOGRPD_I3C1_PERIPH_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_D_IPI_FROM_LIOGRPD_I3C1_CHIP_RST_REQ
@@ -15759,6 +16179,8 @@
       desc: LIO_GRP_D IPI_FROM_LIOGRPD_I3C1_CHIP_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_D_IPI_FROM_LIOGRPD_I3C2_PERIPH_RST_REQ
@@ -15769,6 +16191,8 @@
       desc: LIO_GRP_D IPI_FROM_LIOGRPD_I3C2_PERIPH_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: LIO_GRP_D_IPI_FROM_LIOGRPD_I3C2_CHIP_RST_REQ
@@ -15779,6 +16203,8 @@
       desc: LIO_GRP_D IPI_FROM_LIOGRPD_I3C2_CHIP_RST_REQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_ERS0_REQ0_ERS_REQ_INTERRUPT
@@ -15789,6 +16215,8 @@
       desc: PWC_ERS0_REQ0 ERS_REQ_INTERRUPT incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_ERS0_REQ1_ERS_REQ_INTERRUPT
@@ -15799,6 +16227,8 @@
       desc: PWC_ERS0_REQ1 ERS_REQ_INTERRUPT incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_ERS1_REQ0_ERS_REQ_INTERRUPT
@@ -15809,6 +16239,8 @@
       desc: PWC_ERS1_REQ0 ERS_REQ_INTERRUPT incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_ERS1_REQ1_ERS_REQ_INTERRUPT
@@ -15819,6 +16251,8 @@
       desc: PWC_ERS1_REQ1 ERS_REQ_INTERRUPT incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_0_CSTATE_ENTRY
@@ -15829,6 +16263,8 @@
       desc: PWC_CCS_0 CSTATE_ENTRY incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_0_CSTATE_EXIT
@@ -15839,6 +16275,8 @@
       desc: PWC_CCS_0 CSTATE_EXIT incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_1_CSTATE_ENTRY
@@ -15849,6 +16287,8 @@
       desc: PWC_CCS_1 CSTATE_ENTRY incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_CCS_1_CSTATE_EXIT
@@ -15859,6 +16299,8 @@
       desc: PWC_CCS_1 CSTATE_EXIT incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
     {
       name: PWC_spareEcoIrq1
@@ -15869,6 +16311,8 @@
       desc: PWC spareEcoIrq1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_pwc
+      outgoing: false
     }
   ]
   outgoing_interrupt:
@@ -15884,6 +16328,8 @@
         intr_type: IntrType.Status
         default_val: false
         incoming: false
+        plic: rv_plic_pwc
+        outgoing: true
       }
       {
         name: ac_range_check_pwc_deny_cnt_reached
@@ -15894,6 +16340,8 @@
         intr_type: IntrType.Status
         default_val: false
         incoming: false
+        plic: rv_plic_pwc
+        outgoing: true
       }
     ]
   }
