@@ -15,7 +15,6 @@ package tl_main_pkg;
   localparam logic [0:0][31:0] ADDR_SPACE_PERI                 = {
     32'h 30000000
   };
-  localparam logic [31:0] ADDR_SPACE_SOC_PROXY__CORE      = 32'h 22030000;
   localparam logic [31:0] ADDR_SPACE_SOC_PROXY__CTN       = 32'h 40000000;
   localparam logic [31:0] ADDR_SPACE_HMAC                 = 32'h 21110000;
   localparam logic [31:0] ADDR_SPACE_KMAC                 = 32'h 21120000;
@@ -52,7 +51,6 @@ package tl_main_pkg;
   localparam logic [0:0][31:0] ADDR_MASK_PERI                 = {
     32'h 007fffff
   };
-  localparam logic [31:0] ADDR_MASK_SOC_PROXY__CORE      = 32'h 0000000f;
   localparam logic [31:0] ADDR_MASK_SOC_PROXY__CTN       = 32'h 3fffffff;
   localparam logic [31:0] ADDR_MASK_HMAC                 = 32'h 00001fff;
   localparam logic [31:0] ADDR_MASK_KMAC                 = 32'h 00000fff;
@@ -81,7 +79,7 @@ package tl_main_pkg;
   localparam logic [31:0] ADDR_MASK_MBX_PCIE1__CORE      = 32'h 0000007f;
 
   localparam int N_HOST   = 14;
-  localparam int N_DEVICE = 34;
+  localparam int N_DEVICE = 33;
 
   typedef enum int {
     TlRvDmRegs = 0,
@@ -91,33 +89,32 @@ package tl_main_pkg;
     TlRomCtrl1Rom = 4,
     TlRomCtrl1Regs = 5,
     TlPeri = 6,
-    TlSocProxyCore = 7,
-    TlSocProxyCtn = 8,
-    TlHmac = 9,
-    TlKmac = 10,
-    TlAes = 11,
-    TlCsrng = 12,
-    TlEdn0 = 13,
-    TlEdn1 = 14,
-    TlRvPlic = 15,
-    TlOtbn = 16,
-    TlKeymgrDpe = 17,
-    TlRvCoreIbexCfg = 18,
-    TlSramCtrlMainRegs = 19,
-    TlSramCtrlMainRam = 20,
-    TlSramCtrlMboxRegs = 21,
-    TlSramCtrlMboxRam = 22,
-    TlDma = 23,
-    TlMbx0Core = 24,
-    TlMbx1Core = 25,
-    TlMbx2Core = 26,
-    TlMbx3Core = 27,
-    TlMbx4Core = 28,
-    TlMbx5Core = 29,
-    TlMbx6Core = 30,
-    TlMbxJtagCore = 31,
-    TlMbxPcie0Core = 32,
-    TlMbxPcie1Core = 33
+    TlSocProxyCtn = 7,
+    TlHmac = 8,
+    TlKmac = 9,
+    TlAes = 10,
+    TlCsrng = 11,
+    TlEdn0 = 12,
+    TlEdn1 = 13,
+    TlRvPlic = 14,
+    TlOtbn = 15,
+    TlKeymgrDpe = 16,
+    TlRvCoreIbexCfg = 17,
+    TlSramCtrlMainRegs = 18,
+    TlSramCtrlMainRam = 19,
+    TlSramCtrlMboxRegs = 20,
+    TlSramCtrlMboxRam = 21,
+    TlDma = 22,
+    TlMbx0Core = 23,
+    TlMbx1Core = 24,
+    TlMbx2Core = 25,
+    TlMbx3Core = 26,
+    TlMbx4Core = 27,
+    TlMbx5Core = 28,
+    TlMbx6Core = 29,
+    TlMbxJtagCore = 30,
+    TlMbxPcie0Core = 31,
+    TlMbxPcie1Core = 32
   } tl_device_e;
 
   typedef enum int {

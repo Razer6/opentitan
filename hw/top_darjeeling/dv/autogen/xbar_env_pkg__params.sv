@@ -25,9 +25,6 @@ tl_device_t xbar_devices[$] = '{
     '{"rom_ctrl1__regs", '{
         '{32'h211e1000, 32'h211e107f}
     }},
-    '{"soc_proxy__core", '{
-        '{32'h22030000, 32'h2203000f}
-    }},
     '{"soc_proxy__ctn", '{
         '{32'h40000000, 32'h7fffffff}
     }},
@@ -215,8 +212,7 @@ tl_host_t xbar_hosts[$] = '{
         "rom_ctrl0__rom",
         "rom_ctrl1__rom",
         "rv_dm__mem",
-        "sram_ctrl_main__ram",
-        "soc_proxy__ctn"}}
+        "sram_ctrl_main__ram"}}
     ,
     '{"rv_core_ibex__cored", 1, '{
         "rom_ctrl0__rom",
@@ -259,7 +255,6 @@ tl_host_t xbar_hosts[$] = '{
         "sram_ctrl_mbox__ram",
         "sram_ctrl_mbox__regs",
         "soc_proxy__ctn",
-        "soc_proxy__core",
         "dma",
         "mbx0__core",
         "mbx1__core",
@@ -313,7 +308,6 @@ tl_host_t xbar_hosts[$] = '{
         "sram_ctrl_mbox__ram",
         "sram_ctrl_mbox__regs",
         "soc_proxy__ctn",
-        "soc_proxy__core",
         "dma",
         "mbx0__core",
         "mbx1__core",

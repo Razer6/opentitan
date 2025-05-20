@@ -13,7 +13,6 @@ filesets:
       - lowrisc:systems:soc_proxy_pkg
       - lowrisc:systems:bat
     files:
-      - rtl/soc_proxy_core_reg_top.sv
       - rtl/soc_proxy.sv
     file_type: systemVerilogSource
 
