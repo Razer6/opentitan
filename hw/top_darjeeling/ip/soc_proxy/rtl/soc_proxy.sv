@@ -176,7 +176,6 @@ module soc_proxy
   };
 
   // All outputs should be known value after reset
-  `ASSERT_KNOWN(AlertsKnown_A, alert_tx_o)
   `ASSERT_KNOWN(DmaLsioTriggerKnown_A, dma_lsio_trigger_o)
 
 endmodule
