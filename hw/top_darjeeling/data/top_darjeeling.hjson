@@ -806,6 +806,7 @@
         InstrExec: "1",
         InstSize: 65536,
         FlopRamOutput: 1,
+        FlopWdataScramble: 1,
         Outstanding: 6
       }
       base_addrs: {
@@ -834,6 +835,7 @@
         InstrExec: "0",
         InstSize: 4096,
         FlopRamOutput: 1,
+        FlopWdataScramble: 1,
         Outstanding: 6
       }
       base_addrs: {

@@ -363,6 +363,7 @@
         InstSize: 65536,
         FlopRamOutput: 1,
         EccCorrection: 1,
+        FlopWdataScramble: 1,
         Outstanding: 6
       }
       base_addrs: {
@@ -396,6 +397,7 @@
         InstSize: 4096,
         FlopRamOutput: 1,
         EccCorrection: 1,
+        FlopWdataScramble: 1,
         Outstanding: 6
       }
       base_addrs: {

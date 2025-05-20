@@ -1366,6 +1366,15 @@
           expose: "true"
           name_top: SramCtrlRetAonFlopRamOutput
         }
+        {
+          name: FlopWdataScramble
+          desc: Add a flop stage after the write data scrambler.
+          type: bit
+          default: "0"
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlRetAonFlopWdataScramble
+        }
       ]
       inter_signal_list:
       [
@@ -2397,6 +2406,7 @@
         InstSize: 65536
         FlopRamOutput: 1
         EccCorrection: 1
+        FlopWdataScramble: 1
         Outstanding: 6
       }
       base_addrs:
@@ -2560,6 +2570,15 @@
           local: "false"
           expose: "true"
           name_top: SramCtrlMainFlopRamOutput
+        }
+        {
+          name: FlopWdataScramble
+          desc: Add a flop stage after the write data scrambler.
+          type: bit
+          default: 1
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlMainFlopWdataScramble
         }
       ]
       inter_signal_list:
@@ -2762,6 +2781,7 @@
         InstSize: 4096
         FlopRamOutput: 1
         EccCorrection: 1
+        FlopWdataScramble: 1
         Outstanding: 6
       }
       base_addrs:
@@ -2925,6 +2945,15 @@
           local: "false"
           expose: "true"
           name_top: SramCtrlMboxFlopRamOutput
+        }
+        {
+          name: FlopWdataScramble
+          desc: Add a flop stage after the write data scrambler.
+          type: bit
+          default: 1
+          local: "false"
+          expose: "true"
+          name_top: SramCtrlMboxFlopWdataScramble
         }
       ]
       inter_signal_list:

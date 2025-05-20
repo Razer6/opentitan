@@ -6572,6 +6572,7 @@
         InstrExec: "1"
         InstSize: 65536
         FlopRamOutput: 1
+        FlopWdataScramble: 1
         Outstanding: 6
       }
       base_addrs:
@@ -6718,7 +6719,7 @@
           name: FlopWdataScramble
           desc: Add a flop stage after the write data scrambler.
           type: bit
-          default: "0"
+          default: 1
           local: "false"
           expose: "true"
           name_top: SramCtrlMainFlopWdataScramble
@@ -6919,6 +6920,7 @@
         InstrExec: "0"
         InstSize: 4096
         FlopRamOutput: 1
+        FlopWdataScramble: 1
         Outstanding: 6
       }
       base_addrs:
@@ -7065,7 +7067,7 @@
           name: FlopWdataScramble
           desc: Add a flop stage after the write data scrambler.
           type: bit
-          default: "0"
+          default: 1
           local: "false"
           expose: "true"
           name_top: SramCtrlMboxFlopWdataScramble

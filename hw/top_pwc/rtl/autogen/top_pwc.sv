@@ -27,6 +27,7 @@ module top_pwc #(
   parameter int SramCtrlRetAonNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlRetAonEccCorrection = 1,
   parameter bit SramCtrlRetAonFlopRamOutput = 1,
+  parameter bit SramCtrlRetAonFlopWdataScramble = 0,
   // parameters for rv_dm
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
   parameter bit RvDmUseDmiInterface = 1,
@@ -40,6 +41,7 @@ module top_pwc #(
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMainEccCorrection = 1,
   parameter bit SramCtrlMainFlopRamOutput = 1,
+  parameter bit SramCtrlMainFlopWdataScramble = 1,
   // parameters for sram_ctrl_mbox
   parameter int SramCtrlMboxInstSize = 4096,
   parameter int SramCtrlMboxNumRamInst = 1,
@@ -47,6 +49,7 @@ module top_pwc #(
   parameter int SramCtrlMboxNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMboxEccCorrection = 1,
   parameter bit SramCtrlMboxFlopRamOutput = 1,
+  parameter bit SramCtrlMboxFlopWdataScramble = 1,
   // parameters for dma
   parameter bit DmaEnableDataIntgGen = 1'b1,
   parameter bit DmaEnableRspDataIntgCheck = 1'b1,
@@ -521,7 +524,8 @@ module top_pwc #(
     .NumPrinceRoundsHalf(SramCtrlRetAonNumPrinceRoundsHalf),
     .Outstanding(SramCtrlRetAonOutstanding),
     .EccCorrection(SramCtrlRetAonEccCorrection),
-    .FlopRamOutput(SramCtrlRetAonFlopRamOutput)
+    .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
+    .FlopWdataScramble(SramCtrlRetAonFlopWdataScramble)
   ) u_sram_ctrl_ret_aon (
       // External alert group "pwc" [3]: fatal_error
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[3:3] ),
@@ -639,7 +643,8 @@ module top_pwc #(
     .NumPrinceRoundsHalf(SramCtrlMainNumPrinceRoundsHalf),
     .Outstanding(SramCtrlMainOutstanding),
     .EccCorrection(SramCtrlMainEccCorrection),
-    .FlopRamOutput(SramCtrlMainFlopRamOutput)
+    .FlopRamOutput(SramCtrlMainFlopRamOutput),
+    .FlopWdataScramble(SramCtrlMainFlopWdataScramble)
   ) u_sram_ctrl_main (
       // External alert group "pwc" [6]: fatal_error
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[6:6] ),
@@ -684,7 +689,8 @@ module top_pwc #(
     .NumPrinceRoundsHalf(SramCtrlMboxNumPrinceRoundsHalf),
     .Outstanding(SramCtrlMboxOutstanding),
     .EccCorrection(SramCtrlMboxEccCorrection),
-    .FlopRamOutput(SramCtrlMboxFlopRamOutput)
+    .FlopRamOutput(SramCtrlMboxFlopRamOutput),
+    .FlopWdataScramble(SramCtrlMboxFlopWdataScramble)
   ) u_sram_ctrl_mbox (
       // External alert group "pwc" [7]: fatal_error
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[7:7] ),
