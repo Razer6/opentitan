@@ -540,7 +540,7 @@
       clock_group: "infra",
       reset_connections: {rst_ni: "ext_rst_main"},
       base_addr: {
-        soc_mbx: "0x01483000",
+        soc_mbx: "0x01481f00",
       },
       attr: "ipgen",
       ipgen_param: {

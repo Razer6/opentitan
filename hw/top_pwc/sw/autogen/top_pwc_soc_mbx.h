@@ -158,7 +158,7 @@ extern "C" {
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_PWC_SOC_MBX_RACL_CTRL_BASE_ADDR 0x1473000u
+#define TOP_PWC_SOC_MBX_RACL_CTRL_BASE_ADDR 0x1471F00u
 
 /**
  * Peripheral size for racl_ctrl in top pwc.

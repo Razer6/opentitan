@@ -13,7 +13,7 @@ package tl_pwc_mbx_pkg;
   localparam logic [31:0] ADDR_SPACE_MBX4__SOC      = 32'h 01475400;
   localparam logic [31:0] ADDR_SPACE_MBX5__SOC      = 32'h 01475500;
   localparam logic [31:0] ADDR_SPACE_MBX_PCIE0__SOC = 32'h 01470100;
-  localparam logic [31:0] ADDR_SPACE_RACL_CTRL      = 32'h 01473000;
+  localparam logic [31:0] ADDR_SPACE_RACL_CTRL      = 32'h 01471f00;
   localparam logic [31:0] ADDR_SPACE_AC_RANGE_CHECK = 32'h 01474000;
 
   localparam logic [31:0] ADDR_MASK_MBX0__SOC      = 32'h 0000001f;

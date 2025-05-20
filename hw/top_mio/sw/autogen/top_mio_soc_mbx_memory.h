@@ -151,7 +151,7 @@
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR 0x1483000
+#define TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR 0x1481F00
 
 /**
  * Peripheral size for racl_ctrl in top mio.

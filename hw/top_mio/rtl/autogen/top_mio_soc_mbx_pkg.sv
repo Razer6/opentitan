@@ -84,7 +84,7 @@ package top_mio_soc_mbx_pkg;
   /**
    * Peripheral base address for racl_ctrl in top mio.
    */
-  parameter int unsigned TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR = 32'h1483000;
+  parameter int unsigned TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR = 32'h1481F00;
 
   /**
    * Peripheral size in bytes for racl_ctrl in top mio.

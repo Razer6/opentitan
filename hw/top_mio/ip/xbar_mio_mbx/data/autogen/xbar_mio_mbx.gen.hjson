@@ -227,7 +227,7 @@
         {
           base_addrs:
           {
-            soc_mbx: 0x1483000
+            soc_mbx: 0x1481f00
           }
           size_byte: 0x100
         }

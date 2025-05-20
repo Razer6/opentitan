@@ -13,7 +13,7 @@ package tl_mio_mbx_pkg;
   localparam logic [31:0] ADDR_SPACE_MBX4__SOC      = 32'h 01485400;
   localparam logic [31:0] ADDR_SPACE_MBX5__SOC      = 32'h 01485500;
   localparam logic [31:0] ADDR_SPACE_MBX_PCIE0__SOC = 32'h 01480100;
-  localparam logic [31:0] ADDR_SPACE_RACL_CTRL      = 32'h 01483000;
+  localparam logic [31:0] ADDR_SPACE_RACL_CTRL      = 32'h 01481f00;
   localparam logic [31:0] ADDR_SPACE_AC_RANGE_CHECK = 32'h 01484000;
 
   localparam logic [31:0] ADDR_MASK_MBX0__SOC      = 32'h 0000001f;

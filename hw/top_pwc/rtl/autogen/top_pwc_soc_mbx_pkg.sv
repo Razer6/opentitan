@@ -84,7 +84,7 @@ package top_pwc_soc_mbx_pkg;
   /**
    * Peripheral base address for racl_ctrl in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_MBX_RACL_CTRL_BASE_ADDR = 32'h1473000;
+  parameter int unsigned TOP_PWC_SOC_MBX_RACL_CTRL_BASE_ADDR = 32'h1471F00;
 
   /**
    * Peripheral size in bytes for racl_ctrl in top pwc.
