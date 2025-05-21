@@ -24,6 +24,9 @@ waive -rules {LINE_LENGTH} -location {otp_macro_pkg.sv} \
 waive -rules {LINE_LENGTH} -location {prim_otp_mem.sv} \
       -comment "line line is not a concern."
 
+waive -rules {LINE_LENGTH} -location {SCS_CDC_BUF_DFT.sv} \
+      -comment "line line is not a concern."
+
 waive -rules {PARAM_NOT_USED} -location {prim_generic_otp.sv} \
       -regexp {Parameter '(FUSE_MBIST_EN|FUSE_MBIST_ARRAY_BASE|FUSE_MBIST_ARRAY_BASE|FUSE_MBIST_ARRAY_SIZE|FUSE_MBIST_ECC_ARRAY_BASE|FUSE_MBIST_ECC_ARRAY_SIZE|FUSE_RF_DATA_WIDTH)' not used in module 'prim_generic_otp'} \
       -comment "These parameters are not used in the generic model but only in the Rivos implementation."
