@@ -275,6 +275,17 @@ module otp_macro_reg_top
 
   // Register instances
   // R[macro_control]: V(False)
+  logic macro_control_qe;
+  logic [6:0] macro_control_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_macro_control0_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&(macro_control_flds_we | 7'h40)),
+    .q_o(macro_control_qe)
+  );
   //   F[macro_mode]: 1:0
   prim_subreg #(
     .DW      (2),
@@ -294,13 +305,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (macro_control_flds_we[0]),
     .q      (reg2hw.macro_control.macro_mode.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (macro_control_macro_mode_qs)
   );
+  assign reg2hw.macro_control.macro_mode.qe = macro_control_qe;
 
   //   F[ecc_sel]: 2:2
   prim_subreg #(
@@ -321,13 +333,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (macro_control_flds_we[1]),
     .q      (reg2hw.macro_control.ecc_sel.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (macro_control_ecc_sel_qs)
   );
+  assign reg2hw.macro_control.ecc_sel.qe = macro_control_qe;
 
   //   F[test_row_col_sel]: 4:3
   prim_subreg #(
@@ -348,13 +361,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (macro_control_flds_we[2]),
     .q      (reg2hw.macro_control.test_row_col_sel.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (macro_control_test_row_col_sel_qs)
   );
+  assign reg2hw.macro_control.test_row_col_sel.qe = macro_control_qe;
 
   //   F[read_margin]: 5:5
   prim_subreg #(
@@ -375,13 +389,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (macro_control_flds_we[3]),
     .q      (reg2hw.macro_control.read_margin.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (macro_control_read_margin_qs)
   );
+  assign reg2hw.macro_control.read_margin.qe = macro_control_qe;
 
   //   F[ecc_disable]: 6:6
   prim_subreg #(
@@ -402,13 +417,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (macro_control_flds_we[4]),
     .q      (reg2hw.macro_control.ecc_disable.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (macro_control_ecc_disable_qs)
   );
+  assign reg2hw.macro_control.ecc_disable.qe = macro_control_qe;
 
   //   F[redundancy_autoinit_disable]: 7:7
   prim_subreg #(
@@ -429,13 +445,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (macro_control_flds_we[5]),
     .q      (reg2hw.macro_control.redundancy_autoinit_disable.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (macro_control_redundancy_autoinit_disable_qs)
   );
+  assign reg2hw.macro_control.redundancy_autoinit_disable.qe = macro_control_qe;
 
   //   F[reset_allowed]: 8:8
   prim_subreg #(
@@ -456,7 +473,7 @@ module otp_macro_reg_top
     .d      (hw2reg.macro_control.reset_allowed.d),
 
     // to internal hardware
-    .qe     (),
+    .qe     (macro_control_flds_we[6]),
     .q      (),
     .ds     (),
 
@@ -576,6 +593,17 @@ module otp_macro_reg_top
 
 
   // R[fuse_wrapper_rd_cfg_0]: V(False)
+  logic fuse_wrapper_rd_cfg_0_qe;
+  logic [2:0] fuse_wrapper_rd_cfg_0_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_rd_cfg_00_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_rd_cfg_0_flds_we),
+    .q_o(fuse_wrapper_rd_cfg_0_qe)
+  );
   //   F[tsur_pd_ps_cycles]: 11:0
   prim_subreg #(
     .DW      (12),
@@ -595,13 +623,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_0_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_0.tsur_pd_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_0_tsur_pd_ps_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_0.tsur_pd_ps_cycles.qe = fuse_wrapper_rd_cfg_0_qe;
 
   //   F[tsur_ps_cycles]: 21:12
   prim_subreg #(
@@ -622,13 +651,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_0_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_0_tsur_ps_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cycles.qe = fuse_wrapper_rd_cfg_0_qe;
 
   //   F[tsur_ps_cs_cycles]: 30:22
   prim_subreg #(
@@ -649,16 +679,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_0_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_0_tsur_ps_cs_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cs_cycles.qe = fuse_wrapper_rd_cfg_0_qe;
 
 
   // R[fuse_wrapper_rd_cfg_1]: V(False)
+  logic fuse_wrapper_rd_cfg_1_qe;
+  logic [2:0] fuse_wrapper_rd_cfg_1_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_rd_cfg_10_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_rd_cfg_1_flds_we),
+    .q_o(fuse_wrapper_rd_cfg_1_qe)
+  );
   //   F[tsup_ps_cs_cycles]: 8:0
   prim_subreg #(
     .DW      (9),
@@ -678,13 +720,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_1_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_1_tsup_ps_cs_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cs_cycles.qe = fuse_wrapper_rd_cfg_1_qe;
 
   //   F[tsup_ps_cycles]: 18:9
   prim_subreg #(
@@ -705,13 +748,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_1_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_1_tsup_ps_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cycles.qe = fuse_wrapper_rd_cfg_1_qe;
 
   //   F[tsq_cycles]: 28:19
   prim_subreg #(
@@ -732,16 +776,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_1_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_1.tsq_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_1_tsq_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_1.tsq_cycles.qe = fuse_wrapper_rd_cfg_1_qe;
 
 
   // R[fuse_wrapper_rd_cfg_2]: V(False)
+  logic fuse_wrapper_rd_cfg_2_qe;
+  logic [2:0] fuse_wrapper_rd_cfg_2_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_rd_cfg_20_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_rd_cfg_2_flds_we),
+    .q_o(fuse_wrapper_rd_cfg_2_qe)
+  );
   //   F[tsq_m_cycles]: 10:0
   prim_subreg #(
     .DW      (11),
@@ -761,13 +817,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_2_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_2.tsq_m_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_2_tsq_m_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_2.tsq_m_cycles.qe = fuse_wrapper_rd_cfg_2_qe;
 
   //   F[tpgm_cycles]: 24:11
   prim_subreg #(
@@ -788,13 +845,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_2_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_2.tpgm_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_2_tpgm_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_2.tpgm_cycles.qe = fuse_wrapper_rd_cfg_2_qe;
 
   //   F[tsur_ld_cycles]: 31:25
   prim_subreg #(
@@ -815,16 +873,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_2_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_2.tsur_ld_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_2_tsur_ld_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_2.tsur_ld_cycles.qe = fuse_wrapper_rd_cfg_2_qe;
 
 
   // R[fuse_wrapper_rd_cfg_3]: V(False)
+  logic fuse_wrapper_rd_cfg_3_qe;
+  logic [2:0] fuse_wrapper_rd_cfg_3_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_rd_cfg_30_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_rd_cfg_3_flds_we),
+    .q_o(fuse_wrapper_rd_cfg_3_qe)
+  );
   //   F[thr_ps_cycles]: 9:0
   prim_subreg #(
     .DW      (10),
@@ -844,13 +914,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_3_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_3.thr_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_3_thr_ps_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_3.thr_ps_cycles.qe = fuse_wrapper_rd_cfg_3_qe;
 
   //   F[thp_ps_cycles]: 19:10
   prim_subreg #(
@@ -871,13 +942,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_3_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_3.thp_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_3_thp_ps_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_3.thp_ps_cycles.qe = fuse_wrapper_rd_cfg_3_qe;
 
   //   F[thp_cs_cycles]: 28:20
   prim_subreg #(
@@ -898,16 +970,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_3_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_3.thp_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_3_thp_cs_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_3.thp_cs_cycles.qe = fuse_wrapper_rd_cfg_3_qe;
 
 
   // R[fuse_wrapper_rd_cfg_4]: V(False)
+  logic fuse_wrapper_rd_cfg_4_qe;
+  logic [2:0] fuse_wrapper_rd_cfg_4_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_rd_cfg_40_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_rd_cfg_4_flds_we),
+    .q_o(fuse_wrapper_rd_cfg_4_qe)
+  );
   //   F[thr_cs_cycles]: 8:0
   prim_subreg #(
     .DW      (9),
@@ -927,13 +1011,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_4_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_4.thr_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_4_thr_cs_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_4.thr_cs_cycles.qe = fuse_wrapper_rd_cfg_4_qe;
 
   //   F[thp_ps_cs_cycles]: 17:9
   prim_subreg #(
@@ -954,13 +1039,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_4_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_4.thp_ps_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_4_thp_ps_cs_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_4.thp_ps_cs_cycles.qe = fuse_wrapper_rd_cfg_4_qe;
 
   //   F[thr_ps_cs_cycles]: 26:18
   prim_subreg #(
@@ -981,16 +1067,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_4_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_4.thr_ps_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_4_thr_ps_cs_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_4.thr_ps_cs_cycles.qe = fuse_wrapper_rd_cfg_4_qe;
 
 
   // R[fuse_wrapper_rd_cfg_5]: V(False)
+  logic fuse_wrapper_rd_cfg_5_qe;
+  logic [3:0] fuse_wrapper_rd_cfg_5_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_rd_cfg_50_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_rd_cfg_5_flds_we),
+    .q_o(fuse_wrapper_rd_cfg_5_qe)
+  );
   //   F[tsur_a_cycles]: 7:0
   prim_subreg #(
     .DW      (8),
@@ -1010,13 +1108,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_5_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_5.tsur_a_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_5_tsur_a_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_5.tsur_a_cycles.qe = fuse_wrapper_rd_cfg_5_qe;
 
   //   F[tsup_a_cycles]: 15:8
   prim_subreg #(
@@ -1037,13 +1136,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_5_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_5.tsup_a_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_5_tsup_a_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_5.tsup_a_cycles.qe = fuse_wrapper_rd_cfg_5_qe;
 
   //   F[thp_a_cycles]: 23:16
   prim_subreg #(
@@ -1064,13 +1164,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_5_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_5.thp_a_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_5_thp_a_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_5.thp_a_cycles.qe = fuse_wrapper_rd_cfg_5_qe;
 
   //   F[tsup_ld_cycles]: 31:24
   prim_subreg #(
@@ -1091,16 +1192,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_5_flds_we[3]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_5.tsup_ld_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_5_tsup_ld_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_5.tsup_ld_cycles.qe = fuse_wrapper_rd_cfg_5_qe;
 
 
   // R[fuse_wrapper_rd_cfg_6]: V(False)
+  logic fuse_wrapper_rd_cfg_6_qe;
+  logic [2:0] fuse_wrapper_rd_cfg_6_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_rd_cfg_60_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_rd_cfg_6_flds_we),
+    .q_o(fuse_wrapper_rd_cfg_6_qe)
+  );
   //   F[trd_cycles]: 9:0
   prim_subreg #(
     .DW      (10),
@@ -1120,13 +1233,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_6_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_6.trd_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_6_trd_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_6.trd_cycles.qe = fuse_wrapper_rd_cfg_6_qe;
 
   //   F[trd_m_cycles]: 20:10
   prim_subreg #(
@@ -1147,13 +1261,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_6_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_6.trd_m_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_6_trd_m_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_6.trd_m_cycles.qe = fuse_wrapper_rd_cfg_6_qe;
 
   //   F[thr_a_cycles]: 28:21
   prim_subreg #(
@@ -1174,16 +1289,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_6_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_6.thr_a_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_6_thr_a_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_6.thr_a_cycles.qe = fuse_wrapper_rd_cfg_6_qe;
 
 
   // R[fuse_wrapper_rd_cfg_7]: V(False)
+  logic fuse_wrapper_rd_cfg_7_qe;
+  logic [2:0] fuse_wrapper_rd_cfg_7_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_rd_cfg_70_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_rd_cfg_7_flds_we),
+    .q_o(fuse_wrapper_rd_cfg_7_qe)
+  );
   //   F[thp_pd_ps_cycles]: 7:0
   prim_subreg #(
     .DW      (8),
@@ -1203,13 +1330,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_7_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_7.thp_pd_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_7_thp_pd_ps_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_7.thp_pd_ps_cycles.qe = fuse_wrapper_rd_cfg_7_qe;
 
   //   F[data_capture_cycles]: 15:8
   prim_subreg #(
@@ -1230,13 +1358,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_7_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_7.data_capture_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_7_data_capture_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_7.data_capture_cycles.qe = fuse_wrapper_rd_cfg_7_qe;
 
   //   F[addr_capture_cycles]: 23:16
   prim_subreg #(
@@ -1257,16 +1386,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_7_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_7.addr_capture_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_7_addr_capture_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_7.addr_capture_cycles.qe = fuse_wrapper_rd_cfg_7_qe;
 
 
   // R[fuse_wrapper_rd_cfg_8]: V(False)
+  logic fuse_wrapper_rd_cfg_8_qe;
+  logic [0:0] fuse_wrapper_rd_cfg_8_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_rd_cfg_80_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_rd_cfg_8_flds_we),
+    .q_o(fuse_wrapper_rd_cfg_8_qe)
+  );
   prim_subreg #(
     .DW      (18),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
@@ -1285,16 +1426,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_rd_cfg_8_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_rd_cfg_8.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_rd_cfg_8_qs)
   );
+  assign reg2hw.fuse_wrapper_rd_cfg_8.qe = fuse_wrapper_rd_cfg_8_qe;
 
 
   // R[fuse_wrapper_wr_cfg_0]: V(False)
+  logic fuse_wrapper_wr_cfg_0_qe;
+  logic [2:0] fuse_wrapper_wr_cfg_0_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_wr_cfg_00_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_wr_cfg_0_flds_we),
+    .q_o(fuse_wrapper_wr_cfg_0_qe)
+  );
   //   F[tsur_pd_ps_cycles]: 11:0
   prim_subreg #(
     .DW      (12),
@@ -1314,13 +1467,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_0_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_0.tsur_pd_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_0_tsur_pd_ps_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_0.tsur_pd_ps_cycles.qe = fuse_wrapper_wr_cfg_0_qe;
 
   //   F[tsur_ps_cycles]: 21:12
   prim_subreg #(
@@ -1341,13 +1495,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_0_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_0_tsur_ps_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cycles.qe = fuse_wrapper_wr_cfg_0_qe;
 
   //   F[tsur_ps_cs_cycles]: 30:22
   prim_subreg #(
@@ -1368,16 +1523,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_0_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_0_tsur_ps_cs_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cs_cycles.qe = fuse_wrapper_wr_cfg_0_qe;
 
 
   // R[fuse_wrapper_wr_cfg_1]: V(False)
+  logic fuse_wrapper_wr_cfg_1_qe;
+  logic [2:0] fuse_wrapper_wr_cfg_1_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_wr_cfg_10_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_wr_cfg_1_flds_we),
+    .q_o(fuse_wrapper_wr_cfg_1_qe)
+  );
   //   F[tsup_ps_cs_cycles]: 8:0
   prim_subreg #(
     .DW      (9),
@@ -1397,13 +1564,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_1_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_1_tsup_ps_cs_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cs_cycles.qe = fuse_wrapper_wr_cfg_1_qe;
 
   //   F[tsup_ps_cycles]: 18:9
   prim_subreg #(
@@ -1424,13 +1592,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_1_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_1_tsup_ps_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cycles.qe = fuse_wrapper_wr_cfg_1_qe;
 
   //   F[tsq_cycles]: 28:19
   prim_subreg #(
@@ -1451,16 +1620,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_1_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_1.tsq_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_1_tsq_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_1.tsq_cycles.qe = fuse_wrapper_wr_cfg_1_qe;
 
 
   // R[fuse_wrapper_wr_cfg_2]: V(False)
+  logic fuse_wrapper_wr_cfg_2_qe;
+  logic [2:0] fuse_wrapper_wr_cfg_2_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_wr_cfg_20_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_wr_cfg_2_flds_we),
+    .q_o(fuse_wrapper_wr_cfg_2_qe)
+  );
   //   F[tsq_m_cycles]: 10:0
   prim_subreg #(
     .DW      (11),
@@ -1480,13 +1661,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_2_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_2.tsq_m_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_2_tsq_m_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_2.tsq_m_cycles.qe = fuse_wrapper_wr_cfg_2_qe;
 
   //   F[tpgm_cycles]: 24:11
   prim_subreg #(
@@ -1507,13 +1689,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_2_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_2.tpgm_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_2_tpgm_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_2.tpgm_cycles.qe = fuse_wrapper_wr_cfg_2_qe;
 
   //   F[tsur_ld_cycles]: 31:25
   prim_subreg #(
@@ -1534,16 +1717,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_2_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_2.tsur_ld_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_2_tsur_ld_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_2.tsur_ld_cycles.qe = fuse_wrapper_wr_cfg_2_qe;
 
 
   // R[fuse_wrapper_wr_cfg_3]: V(False)
+  logic fuse_wrapper_wr_cfg_3_qe;
+  logic [2:0] fuse_wrapper_wr_cfg_3_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_wr_cfg_30_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_wr_cfg_3_flds_we),
+    .q_o(fuse_wrapper_wr_cfg_3_qe)
+  );
   //   F[thr_ps_cycles]: 9:0
   prim_subreg #(
     .DW      (10),
@@ -1563,13 +1758,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_3_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_3.thr_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_3_thr_ps_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_3.thr_ps_cycles.qe = fuse_wrapper_wr_cfg_3_qe;
 
   //   F[thp_ps_cycles]: 19:10
   prim_subreg #(
@@ -1590,13 +1786,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_3_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_3.thp_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_3_thp_ps_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_3.thp_ps_cycles.qe = fuse_wrapper_wr_cfg_3_qe;
 
   //   F[thp_cs_cycles]: 28:20
   prim_subreg #(
@@ -1617,16 +1814,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_3_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_3.thp_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_3_thp_cs_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_3.thp_cs_cycles.qe = fuse_wrapper_wr_cfg_3_qe;
 
 
   // R[fuse_wrapper_wr_cfg_4]: V(False)
+  logic fuse_wrapper_wr_cfg_4_qe;
+  logic [2:0] fuse_wrapper_wr_cfg_4_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_wr_cfg_40_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_wr_cfg_4_flds_we),
+    .q_o(fuse_wrapper_wr_cfg_4_qe)
+  );
   //   F[thr_cs_cycles]: 8:0
   prim_subreg #(
     .DW      (9),
@@ -1646,13 +1855,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_4_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_4.thr_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_4_thr_cs_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_4.thr_cs_cycles.qe = fuse_wrapper_wr_cfg_4_qe;
 
   //   F[thp_ps_cs_cycles]: 17:9
   prim_subreg #(
@@ -1673,13 +1883,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_4_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_4.thp_ps_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_4_thp_ps_cs_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_4.thp_ps_cs_cycles.qe = fuse_wrapper_wr_cfg_4_qe;
 
   //   F[thr_ps_cs_cycles]: 26:18
   prim_subreg #(
@@ -1700,16 +1911,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_4_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_4.thr_ps_cs_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_4_thr_ps_cs_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_4.thr_ps_cs_cycles.qe = fuse_wrapper_wr_cfg_4_qe;
 
 
   // R[fuse_wrapper_wr_cfg_5]: V(False)
+  logic fuse_wrapper_wr_cfg_5_qe;
+  logic [3:0] fuse_wrapper_wr_cfg_5_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_wr_cfg_50_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_wr_cfg_5_flds_we),
+    .q_o(fuse_wrapper_wr_cfg_5_qe)
+  );
   //   F[tsur_a_cycles]: 7:0
   prim_subreg #(
     .DW      (8),
@@ -1729,13 +1952,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_5_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_5.tsur_a_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_5_tsur_a_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_5.tsur_a_cycles.qe = fuse_wrapper_wr_cfg_5_qe;
 
   //   F[tsup_a_cycles]: 15:8
   prim_subreg #(
@@ -1756,13 +1980,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_5_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_5.tsup_a_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_5_tsup_a_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_5.tsup_a_cycles.qe = fuse_wrapper_wr_cfg_5_qe;
 
   //   F[thp_a_cycles]: 23:16
   prim_subreg #(
@@ -1783,13 +2008,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_5_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_5.thp_a_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_5_thp_a_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_5.thp_a_cycles.qe = fuse_wrapper_wr_cfg_5_qe;
 
   //   F[tsup_ld_cycles]: 31:24
   prim_subreg #(
@@ -1810,16 +2036,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_5_flds_we[3]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_5.tsup_ld_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_5_tsup_ld_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_5.tsup_ld_cycles.qe = fuse_wrapper_wr_cfg_5_qe;
 
 
   // R[fuse_wrapper_wr_cfg_6]: V(False)
+  logic fuse_wrapper_wr_cfg_6_qe;
+  logic [2:0] fuse_wrapper_wr_cfg_6_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_wr_cfg_60_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_wr_cfg_6_flds_we),
+    .q_o(fuse_wrapper_wr_cfg_6_qe)
+  );
   //   F[trd_cycles]: 9:0
   prim_subreg #(
     .DW      (10),
@@ -1839,13 +2077,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_6_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_6.trd_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_6_trd_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_6.trd_cycles.qe = fuse_wrapper_wr_cfg_6_qe;
 
   //   F[trd_m_cycles]: 20:10
   prim_subreg #(
@@ -1866,13 +2105,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_6_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_6.trd_m_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_6_trd_m_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_6.trd_m_cycles.qe = fuse_wrapper_wr_cfg_6_qe;
 
   //   F[thr_a_cycles]: 28:21
   prim_subreg #(
@@ -1893,16 +2133,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_6_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_6.thr_a_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_6_thr_a_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_6.thr_a_cycles.qe = fuse_wrapper_wr_cfg_6_qe;
 
 
   // R[fuse_wrapper_wr_cfg_7]: V(False)
+  logic fuse_wrapper_wr_cfg_7_qe;
+  logic [2:0] fuse_wrapper_wr_cfg_7_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_wr_cfg_70_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_wr_cfg_7_flds_we),
+    .q_o(fuse_wrapper_wr_cfg_7_qe)
+  );
   //   F[thp_pd_ps_cycles]: 7:0
   prim_subreg #(
     .DW      (8),
@@ -1922,13 +2174,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_7_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_7.thp_pd_ps_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_7_thp_pd_ps_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_7.thp_pd_ps_cycles.qe = fuse_wrapper_wr_cfg_7_qe;
 
   //   F[data_capture_cycles]: 15:8
   prim_subreg #(
@@ -1949,13 +2202,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_7_flds_we[1]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_7.data_capture_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_7_data_capture_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_7.data_capture_cycles.qe = fuse_wrapper_wr_cfg_7_qe;
 
   //   F[addr_capture_cycles]: 23:16
   prim_subreg #(
@@ -1976,16 +2230,28 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_7_flds_we[2]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_7.addr_capture_cycles.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_7_addr_capture_cycles_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_7.addr_capture_cycles.qe = fuse_wrapper_wr_cfg_7_qe;
 
 
   // R[fuse_wrapper_wr_cfg_8]: V(False)
+  logic fuse_wrapper_wr_cfg_8_qe;
+  logic [0:0] fuse_wrapper_wr_cfg_8_flds_we;
+  prim_flop #(
+    .Width(1),
+    .ResetValue(0)
+  ) u_fuse_wrapper_wr_cfg_80_qe (
+    .clk_i(clk_i),
+    .rst_ni(rst_ni),
+    .d_i(&fuse_wrapper_wr_cfg_8_flds_we),
+    .q_o(fuse_wrapper_wr_cfg_8_qe)
+  );
   prim_subreg #(
     .DW      (18),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
@@ -2004,13 +2270,14 @@ module otp_macro_reg_top
     .d      ('0),
 
     // to internal hardware
-    .qe     (),
+    .qe     (fuse_wrapper_wr_cfg_8_flds_we[0]),
     .q      (reg2hw.fuse_wrapper_wr_cfg_8.q),
     .ds     (),
 
     // to register interface (read)
     .qs     (fuse_wrapper_wr_cfg_8_qs)
   );
+  assign reg2hw.fuse_wrapper_wr_cfg_8.qe = fuse_wrapper_wr_cfg_8_qe;
 
 
 

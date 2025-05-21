@@ -150,6 +150,7 @@ waive -rules INPUT_NOT_READ -location {prim_rdp_clock_inv.sv} -regexp {Input por
 waive -rules INPUT_NOT_READ -location {prim_rdp_otp.sv} -regexp {Input port 'cfg_i.trace_en' is not read from, instance}                                                    -comment "needed for rivos compiled memory"
 
 waive -rules NOT_READ -location {RDP_ASYNC_FIFO_RD.sv} -regexp {Signal 'occupancy' is not read from, instance} -comment "needed for rivos compiled memory"
+waive -rules NOT_READ -location {otp_macro.sv} -comment "new cdc crossing based on rivos components"
 
 waive -rules HIER_NET_NOT_READ -location {rvscs_ot_sram_wrap.sv} -regexp {Net 'ram_controls.consistency_check2' in module 'rvscs_ot_sram_wrap'}   -comment "needed for rivos compiled memory"
 waive -rules HIER_NET_NOT_READ -location {rvscs_ot_sram_wrap.sv} -regexp {Net 'ram_controls.disable_clock_gating' in module 'rvscs_ot_sram_wrap'} -comment "needed for rivos compiled memory"
@@ -161,6 +162,8 @@ waive -rules HIER_NET_NOT_READ -location {prim_rdp_otp.sv} -regexp {Net 'tsup_ps
 waive -rules HIER_NET_NOT_READ -location {prim_rdp_otp.sv} -regexp {Net 'thr_ps_cycles' in module 'prim_rdp_otp'}                                 -comment "needed for rivos compiled memory"
 waive -rules HIER_NET_NOT_READ -location {prim_rdp_otp.sv} -regexp {Net 'thp_ps_cycles' in module 'prim_rdp_otp'}                                 -comment "needed for rivos compiled memory"
 waive -rules HIER_NET_NOT_READ -location {prim_rdp_otp.sv} -regexp {Net 'thp_ps_cycles' in module 'prim_rdp_otp'}                                 -comment "needed for rivos compiled memory"
+waive -rules HIER_NET_NOT_READ -location {otp_macro.sv} -comment "new cdc crossing based on rivos components"
+waive -rules HIER_NET_NOT_READ -location {otp_macro_reg_top.sv} -comment "new cdc crossing based on rivos components"
 waive -rules HIER_NET_NOT_READ -location {prim_rdp_ram_1r1w.sv} -regexp {Net 'ram_controls.consistency_check2' in module 'prim_rdp_ram_1r1w'}     -comment "needed for rivos compiled memory"
 waive -rules HIER_NET_NOT_READ -location {prim_rdp_ram_1r1w.sv} -regexp {Net 'ram_controls.disable_clock_gating' in module 'prim_rdp_ram_1r1w'}   -comment "needed for rivos compiled memory"
 waive -rules HIER_NET_NOT_READ -location {prim_rdp_ram_1r1w.sv} -regexp {Net 'ram_controls.ra' in module 'prim_rdp_ram_1r1w'}                     -comment "needed for rivos compiled memory"

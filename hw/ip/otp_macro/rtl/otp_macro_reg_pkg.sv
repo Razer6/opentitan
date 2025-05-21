@@ -19,228 +19,286 @@ package otp_macro_reg_pkg;
   typedef struct packed {
     struct packed {
       logic        q;
+      logic        qe;
     } redundancy_autoinit_disable;
     struct packed {
       logic        q;
+      logic        qe;
     } ecc_disable;
     struct packed {
       logic        q;
+      logic        qe;
     } read_margin;
     struct packed {
       logic [1:0]  q;
+      logic        qe;
     } test_row_col_sel;
     struct packed {
       logic        q;
+      logic        qe;
     } ecc_sel;
     struct packed {
       logic [1:0]  q;
+      logic        qe;
     } macro_mode;
   } otp_macro_reg2hw_macro_control_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [8:0]  q;
+      logic        qe;
     } tsur_ps_cs_cycles;
     struct packed {
       logic [9:0] q;
+      logic        qe;
     } tsur_ps_cycles;
     struct packed {
       logic [11:0] q;
+      logic        qe;
     } tsur_pd_ps_cycles;
   } otp_macro_reg2hw_fuse_wrapper_rd_cfg_0_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [9:0] q;
+      logic        qe;
     } tsq_cycles;
     struct packed {
       logic [9:0] q;
+      logic        qe;
     } tsup_ps_cycles;
     struct packed {
       logic [8:0]  q;
+      logic        qe;
     } tsup_ps_cs_cycles;
   } otp_macro_reg2hw_fuse_wrapper_rd_cfg_1_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [6:0]  q;
+      logic        qe;
     } tsur_ld_cycles;
     struct packed {
       logic [13:0] q;
+      logic        qe;
     } tpgm_cycles;
     struct packed {
       logic [10:0] q;
+      logic        qe;
     } tsq_m_cycles;
   } otp_macro_reg2hw_fuse_wrapper_rd_cfg_2_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [8:0]  q;
+      logic        qe;
     } thp_cs_cycles;
     struct packed {
       logic [9:0] q;
+      logic        qe;
     } thp_ps_cycles;
     struct packed {
       logic [9:0] q;
+      logic        qe;
     } thr_ps_cycles;
   } otp_macro_reg2hw_fuse_wrapper_rd_cfg_3_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [8:0]  q;
+      logic        qe;
     } thr_ps_cs_cycles;
     struct packed {
       logic [8:0]  q;
+      logic        qe;
     } thp_ps_cs_cycles;
     struct packed {
       logic [8:0]  q;
+      logic        qe;
     } thr_cs_cycles;
   } otp_macro_reg2hw_fuse_wrapper_rd_cfg_4_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } tsup_ld_cycles;
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } thp_a_cycles;
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } tsup_a_cycles;
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } tsur_a_cycles;
   } otp_macro_reg2hw_fuse_wrapper_rd_cfg_5_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } thr_a_cycles;
     struct packed {
       logic [10:0] q;
+      logic        qe;
     } trd_m_cycles;
     struct packed {
       logic [9:0] q;
+      logic        qe;
     } trd_cycles;
   } otp_macro_reg2hw_fuse_wrapper_rd_cfg_6_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } addr_capture_cycles;
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } data_capture_cycles;
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } thp_pd_ps_cycles;
   } otp_macro_reg2hw_fuse_wrapper_rd_cfg_7_reg_t;
 
   typedef struct packed {
     logic [17:0] q;
+    logic        qe;
   } otp_macro_reg2hw_fuse_wrapper_rd_cfg_8_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [8:0]  q;
+      logic        qe;
     } tsur_ps_cs_cycles;
     struct packed {
       logic [9:0] q;
+      logic        qe;
     } tsur_ps_cycles;
     struct packed {
       logic [11:0] q;
+      logic        qe;
     } tsur_pd_ps_cycles;
   } otp_macro_reg2hw_fuse_wrapper_wr_cfg_0_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [9:0] q;
+      logic        qe;
     } tsq_cycles;
     struct packed {
       logic [9:0] q;
+      logic        qe;
     } tsup_ps_cycles;
     struct packed {
       logic [8:0]  q;
+      logic        qe;
     } tsup_ps_cs_cycles;
   } otp_macro_reg2hw_fuse_wrapper_wr_cfg_1_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [6:0]  q;
+      logic        qe;
     } tsur_ld_cycles;
     struct packed {
       logic [13:0] q;
+      logic        qe;
     } tpgm_cycles;
     struct packed {
       logic [10:0] q;
+      logic        qe;
     } tsq_m_cycles;
   } otp_macro_reg2hw_fuse_wrapper_wr_cfg_2_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [8:0]  q;
+      logic        qe;
     } thp_cs_cycles;
     struct packed {
       logic [9:0] q;
+      logic        qe;
     } thp_ps_cycles;
     struct packed {
       logic [9:0] q;
+      logic        qe;
     } thr_ps_cycles;
   } otp_macro_reg2hw_fuse_wrapper_wr_cfg_3_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [8:0]  q;
+      logic        qe;
     } thr_ps_cs_cycles;
     struct packed {
       logic [8:0]  q;
+      logic        qe;
     } thp_ps_cs_cycles;
     struct packed {
       logic [8:0]  q;
+      logic        qe;
     } thr_cs_cycles;
   } otp_macro_reg2hw_fuse_wrapper_wr_cfg_4_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } tsup_ld_cycles;
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } thp_a_cycles;
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } tsup_a_cycles;
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } tsur_a_cycles;
   } otp_macro_reg2hw_fuse_wrapper_wr_cfg_5_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } thr_a_cycles;
     struct packed {
       logic [10:0] q;
+      logic        qe;
     } trd_m_cycles;
     struct packed {
       logic [9:0] q;
+      logic        qe;
     } trd_cycles;
   } otp_macro_reg2hw_fuse_wrapper_wr_cfg_6_reg_t;
 
   typedef struct packed {
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } addr_capture_cycles;
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } data_capture_cycles;
     struct packed {
       logic [7:0]  q;
+      logic        qe;
     } thp_pd_ps_cycles;
   } otp_macro_reg2hw_fuse_wrapper_wr_cfg_7_reg_t;
 
   typedef struct packed {
     logic [17:0] q;
+    logic        qe;
   } otp_macro_reg2hw_fuse_wrapper_wr_cfg_8_reg_t;
 
   typedef struct packed {
@@ -271,25 +329,25 @@ package otp_macro_reg_pkg;
 
   // Register -> HW type
   typedef struct packed {
-    otp_macro_reg2hw_macro_control_reg_t macro_control; // [509:502]
-    otp_macro_reg2hw_fuse_wrapper_rd_cfg_0_reg_t fuse_wrapper_rd_cfg_0; // [501:471]
-    otp_macro_reg2hw_fuse_wrapper_rd_cfg_1_reg_t fuse_wrapper_rd_cfg_1; // [470:442]
-    otp_macro_reg2hw_fuse_wrapper_rd_cfg_2_reg_t fuse_wrapper_rd_cfg_2; // [441:410]
-    otp_macro_reg2hw_fuse_wrapper_rd_cfg_3_reg_t fuse_wrapper_rd_cfg_3; // [409:381]
-    otp_macro_reg2hw_fuse_wrapper_rd_cfg_4_reg_t fuse_wrapper_rd_cfg_4; // [380:354]
-    otp_macro_reg2hw_fuse_wrapper_rd_cfg_5_reg_t fuse_wrapper_rd_cfg_5; // [353:322]
-    otp_macro_reg2hw_fuse_wrapper_rd_cfg_6_reg_t fuse_wrapper_rd_cfg_6; // [321:293]
-    otp_macro_reg2hw_fuse_wrapper_rd_cfg_7_reg_t fuse_wrapper_rd_cfg_7; // [292:269]
-    otp_macro_reg2hw_fuse_wrapper_rd_cfg_8_reg_t fuse_wrapper_rd_cfg_8; // [268:251]
-    otp_macro_reg2hw_fuse_wrapper_wr_cfg_0_reg_t fuse_wrapper_wr_cfg_0; // [250:220]
-    otp_macro_reg2hw_fuse_wrapper_wr_cfg_1_reg_t fuse_wrapper_wr_cfg_1; // [219:191]
-    otp_macro_reg2hw_fuse_wrapper_wr_cfg_2_reg_t fuse_wrapper_wr_cfg_2; // [190:159]
-    otp_macro_reg2hw_fuse_wrapper_wr_cfg_3_reg_t fuse_wrapper_wr_cfg_3; // [158:130]
-    otp_macro_reg2hw_fuse_wrapper_wr_cfg_4_reg_t fuse_wrapper_wr_cfg_4; // [129:103]
-    otp_macro_reg2hw_fuse_wrapper_wr_cfg_5_reg_t fuse_wrapper_wr_cfg_5; // [102:71]
-    otp_macro_reg2hw_fuse_wrapper_wr_cfg_6_reg_t fuse_wrapper_wr_cfg_6; // [70:42]
-    otp_macro_reg2hw_fuse_wrapper_wr_cfg_7_reg_t fuse_wrapper_wr_cfg_7; // [41:18]
-    otp_macro_reg2hw_fuse_wrapper_wr_cfg_8_reg_t fuse_wrapper_wr_cfg_8; // [17:0]
+    otp_macro_reg2hw_macro_control_reg_t macro_control; // [567:554]
+    otp_macro_reg2hw_fuse_wrapper_rd_cfg_0_reg_t fuse_wrapper_rd_cfg_0; // [553:520]
+    otp_macro_reg2hw_fuse_wrapper_rd_cfg_1_reg_t fuse_wrapper_rd_cfg_1; // [519:488]
+    otp_macro_reg2hw_fuse_wrapper_rd_cfg_2_reg_t fuse_wrapper_rd_cfg_2; // [487:453]
+    otp_macro_reg2hw_fuse_wrapper_rd_cfg_3_reg_t fuse_wrapper_rd_cfg_3; // [452:421]
+    otp_macro_reg2hw_fuse_wrapper_rd_cfg_4_reg_t fuse_wrapper_rd_cfg_4; // [420:391]
+    otp_macro_reg2hw_fuse_wrapper_rd_cfg_5_reg_t fuse_wrapper_rd_cfg_5; // [390:355]
+    otp_macro_reg2hw_fuse_wrapper_rd_cfg_6_reg_t fuse_wrapper_rd_cfg_6; // [354:323]
+    otp_macro_reg2hw_fuse_wrapper_rd_cfg_7_reg_t fuse_wrapper_rd_cfg_7; // [322:296]
+    otp_macro_reg2hw_fuse_wrapper_rd_cfg_8_reg_t fuse_wrapper_rd_cfg_8; // [295:277]
+    otp_macro_reg2hw_fuse_wrapper_wr_cfg_0_reg_t fuse_wrapper_wr_cfg_0; // [276:243]
+    otp_macro_reg2hw_fuse_wrapper_wr_cfg_1_reg_t fuse_wrapper_wr_cfg_1; // [242:211]
+    otp_macro_reg2hw_fuse_wrapper_wr_cfg_2_reg_t fuse_wrapper_wr_cfg_2; // [210:176]
+    otp_macro_reg2hw_fuse_wrapper_wr_cfg_3_reg_t fuse_wrapper_wr_cfg_3; // [175:144]
+    otp_macro_reg2hw_fuse_wrapper_wr_cfg_4_reg_t fuse_wrapper_wr_cfg_4; // [143:114]
+    otp_macro_reg2hw_fuse_wrapper_wr_cfg_5_reg_t fuse_wrapper_wr_cfg_5; // [113:78]
+    otp_macro_reg2hw_fuse_wrapper_wr_cfg_6_reg_t fuse_wrapper_wr_cfg_6; // [77:46]
+    otp_macro_reg2hw_fuse_wrapper_wr_cfg_7_reg_t fuse_wrapper_wr_cfg_7; // [45:19]
+    otp_macro_reg2hw_fuse_wrapper_wr_cfg_8_reg_t fuse_wrapper_wr_cfg_8; // [18:0]
   } otp_macro_reg2hw_t;
 
   // HW -> register type

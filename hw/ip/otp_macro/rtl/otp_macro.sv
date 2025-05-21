@@ -128,40 +128,68 @@ module otp_macro
 
   logic        integrity_disable;
 
-  logic [11:0] tsur_pd_ps_cycles;
-  logic [9:0]  tsur_ps_cycles;
-  logic [8:0]  tsur_ps_cs_cycles;
+  logic [11:0] tsur_pd_ps_cycles, tsur_pd_ps_cycles_sysclk;
+  logic        tsur_pd_ps_cycles_sysclk_we;
+  logic [9:0]  tsur_ps_cycles, tsur_ps_cycles_sysclk;
+  logic        tsur_ps_cycles_sysclk_we;
+  logic [8:0]  tsur_ps_cs_cycles, tsur_ps_cs_cycles_sysclk;
+  logic        tsur_ps_cs_cycles_sysclk_we;
   
-  logic [8:0]  tsup_ps_cs_cycles;
-  logic [9:0]  tsup_ps_cycles;
-  logic [9:0]  tsq_cycles;
+  logic [8:0]  tsup_ps_cs_cycles, tsup_ps_cs_cycles_sysclk;
+  logic        tsup_ps_cs_cycles_sysclk_we;
+  logic [9:0]  tsup_ps_cycles, tsup_ps_cycles_sysclk;
+  logic        tsup_ps_cycles_sysclk_we;
+  logic [9:0]  tsq_cycles, tsq_cycles_sysclk;
+  logic        tsq_cycles_sysclk_we;
   
-  logic [10:0] tsq_m_cycles;
-  logic [13:0] tpgm_cycles;
-  logic [6:0]  tsur_ld_cycles;
+  logic [10:0] tsq_m_cycles, tsq_m_cycles_sysclk;
+  logic        tsq_m_cycles_sysclk_we;
+  logic [13:0] tpgm_cycles, tpgm_cycles_sysclk;
+  logic        tpgm_cycles_sysclk_we;
+  logic [6:0]  tsur_ld_cycles, tsur_ld_cycles_sysclk;
+  logic        tsur_ld_cycles_sysclk_we;
   
-  logic [9:0]  thr_ps_cycles;
-  logic [9:0]  thp_ps_cycles;
-  logic [8:0]  thp_cs_cycles;
+  logic [9:0]  thr_ps_cycles, thr_ps_cycles_sysclk;
+  logic        thr_ps_cycles_sysclk_we;
+  logic [9:0]  thp_ps_cycles, thp_ps_cycles_sysclk;
+  logic        thp_ps_cycles_sysclk_we;
+  logic [8:0]  thp_cs_cycles, thp_cs_cycles_sysclk;
+  logic        thp_cs_cycles_sysclk_we;
   
-  logic [8:0]  thr_cs_cycles;
-  logic [8:0]  thp_ps_cs_cycles;
-  logic [8:0]  thr_ps_cs_cycles;
+  logic [8:0]  thr_cs_cycles, thr_cs_cycles_sysclk;
+  logic        thr_cs_cycles_sysclk_we;
+  logic [8:0]  thp_ps_cs_cycles, thp_ps_cs_cycles_sysclk;
+  logic        thp_ps_cs_cycles_sysclk_we;
+  logic [8:0]  thr_ps_cs_cycles, thr_ps_cs_cycles_sysclk;
+  logic        thr_ps_cs_cycles_sysclk_we;
   
-  logic [7:0]  tsur_a_cycles;
-  logic [7:0]  tsup_a_cycles;
-  logic [7:0]  thp_a_cycles;
-  logic [7:0]  tsup_ld_cycles;
+  logic [7:0]  tsur_a_cycles, tsur_a_cycles_sysclk;
+  logic        tsur_a_cycles_sysclk_we;
+  logic [7:0]  tsup_a_cycles, tsup_a_cycles_sysclk;
+  logic        tsup_a_cycles_sysclk_we;
+  logic [7:0]  thp_a_cycles, thp_a_cycles_sysclk;
+  logic        thp_a_cycles_sysclk_we;
+  logic [7:0]  tsup_ld_cycles, tsup_ld_cycles_sysclk;
+  logic        tsup_ld_cycles_sysclk_we;
   
-  logic [9:0]  trd_cycles;
-  logic [10:0] trd_m_cycles;
-  logic [7:0]  thr_a_cycles;
+  logic [9:0]  trd_cycles, trd_cycles_sysclk;
+  logic        trd_cycles_sysclk_we;
+  logic [10:0] trd_m_cycles, trd_m_cycles_sysclk;
+  logic        trd_m_cycles_sysclk_we;
+  logic [7:0]  thr_a_cycles, thr_a_cycles_sysclk;
+  logic        thr_a_cycles_sysclk_we;
   
-  logic [7:0]  thp_pd_ps_cycles;
-  logic [7:0]  data_capture_cycles;
-  logic [7:0]  addr_capture_cycles;
+  logic [7:0]  thp_pd_ps_cycles, thp_pd_ps_cycles_sysclk;
+  logic        thp_pd_ps_cycles_sysclk_we;
+  logic [7:0]  data_capture_cycles, data_capture_cycles_sysclk;
+  logic        data_capture_cycles_sysclk_we;
+  logic [7:0]  addr_capture_cycles, addr_capture_cycles_sysclk;
+  logic        addr_capture_cycles_sysclk_we;
   
-  logic [17:0] trigger_power_down_cycles;
+  logic [17:0] trigger_power_down_cycles, trigger_power_down_cycles_sysclk;
+  logic        trigger_power_down_cycles_sysclk_we;
+
+  logic        redundancy_autoinit_disable;
 
   ///////////////////////////////////////
   // Life Cycle Signal Synchronization //
@@ -575,6 +603,8 @@ module otp_macro
   endgenerate
    
   logic SYNC_sel_wr_timing;
+  logic SYNC_sel_wr_timing0;
+  logic SYNC_sel_wr_timing_changed;
 
   prim_flop_2sync #(
     .Width(1)
@@ -585,79 +615,682 @@ module otp_macro
     .q_o(SYNC_sel_wr_timing)
   );
 
+  prim_flop #(
+    .Width(1),
+    .ResetValue('0)
+  ) u_sel_wr_timing_flop (
+    .clk_i,
+    .rst_ni,
+
+    .d_i(SYNC_sel_wr_timing),
+    .q_o(SYNC_sel_wr_timing0)
+  );
+
+  assign SYNC_sel_wr_timing_changed = SYNC_sel_wr_timing ^ SYNC_sel_wr_timing0;
+
   always_comb begin
-    tsur_pd_ps_cycles         = reg2hw.fuse_wrapper_rd_cfg_0.tsur_pd_ps_cycles.q;
-    tsur_ps_cycles            = reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cycles.q;
-    tsur_ps_cs_cycles         = reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cs_cycles.q;
+    tsur_pd_ps_cycles_sysclk         = reg2hw.fuse_wrapper_rd_cfg_0.tsur_pd_ps_cycles.q;
+    tsur_pd_ps_cycles_sysclk_we      = reg2hw.fuse_wrapper_rd_cfg_0.tsur_pd_ps_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    tsur_ps_cycles_sysclk            = reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cycles.q;
+    tsur_ps_cycles_sysclk_we         = reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    tsur_ps_cs_cycles_sysclk         = reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cs_cycles.q;
+    tsur_ps_cs_cycles_sysclk_we      = reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
+
     
-    tsup_ps_cs_cycles         = reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cs_cycles.q;
-    tsup_ps_cycles            = reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cycles.q;
-    tsq_cycles                = reg2hw.fuse_wrapper_rd_cfg_1.tsq_cycles.q;
+    tsup_ps_cs_cycles_sysclk         = reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cs_cycles.q;
+    tsup_ps_cs_cycles_sysclk_we      = reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    tsup_ps_cycles_sysclk            = reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cycles.q;
+    tsup_ps_cycles_sysclk_we         = reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    tsq_cycles_sysclk                = reg2hw.fuse_wrapper_rd_cfg_1.tsq_cycles.q;
+    tsq_cycles_sysclk_we             = reg2hw.fuse_wrapper_rd_cfg_1.tsq_cycles.qe || SYNC_sel_wr_timing_changed;
+
     
-    tsq_m_cycles              = reg2hw.fuse_wrapper_rd_cfg_2.tsq_m_cycles.q;
-    tpgm_cycles               = reg2hw.fuse_wrapper_rd_cfg_2.tpgm_cycles.q;
-    tsur_ld_cycles            = reg2hw.fuse_wrapper_rd_cfg_2.tsur_ld_cycles.q;
+    tsq_m_cycles_sysclk              = reg2hw.fuse_wrapper_rd_cfg_2.tsq_m_cycles.q;
+    tsq_m_cycles_sysclk_we           = reg2hw.fuse_wrapper_rd_cfg_2.tsq_m_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    tpgm_cycles_sysclk               = reg2hw.fuse_wrapper_rd_cfg_2.tpgm_cycles.q;
+    tpgm_cycles_sysclk_we            = reg2hw.fuse_wrapper_rd_cfg_2.tpgm_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    tsur_ld_cycles_sysclk            = reg2hw.fuse_wrapper_rd_cfg_2.tsur_ld_cycles.q;
+    tsur_ld_cycles_sysclk_we         = reg2hw.fuse_wrapper_rd_cfg_2.tsur_ld_cycles.qe || SYNC_sel_wr_timing_changed;
+
     
-    thr_ps_cycles             = reg2hw.fuse_wrapper_rd_cfg_3.thr_ps_cycles.q;
-    thp_ps_cycles             = reg2hw.fuse_wrapper_rd_cfg_3.thp_ps_cycles.q;
-    thp_cs_cycles             = reg2hw.fuse_wrapper_rd_cfg_3.thp_cs_cycles.q;
+    thr_ps_cycles_sysclk             = reg2hw.fuse_wrapper_rd_cfg_3.thr_ps_cycles.q;
+    thr_ps_cycles_sysclk_we          = reg2hw.fuse_wrapper_rd_cfg_3.thr_ps_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    thp_ps_cycles_sysclk             = reg2hw.fuse_wrapper_rd_cfg_3.thp_ps_cycles.q;
+    thp_ps_cycles_sysclk_we          = reg2hw.fuse_wrapper_rd_cfg_3.thp_ps_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    thp_cs_cycles_sysclk             = reg2hw.fuse_wrapper_rd_cfg_3.thp_cs_cycles.q;
+    thp_cs_cycles_sysclk_we          = reg2hw.fuse_wrapper_rd_cfg_3.thp_cs_cycles.qe || SYNC_sel_wr_timing_changed;
+
     
-    thr_cs_cycles             = reg2hw.fuse_wrapper_rd_cfg_4.thr_cs_cycles.q;
-    thp_ps_cs_cycles          = reg2hw.fuse_wrapper_rd_cfg_4.thp_ps_cs_cycles.q;
-    thr_ps_cs_cycles          = reg2hw.fuse_wrapper_rd_cfg_4.thr_ps_cs_cycles.q;
+    thr_cs_cycles_sysclk             = reg2hw.fuse_wrapper_rd_cfg_4.thr_cs_cycles.q;
+    thr_cs_cycles_sysclk_we          = reg2hw.fuse_wrapper_rd_cfg_4.thr_cs_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    thp_ps_cs_cycles_sysclk          = reg2hw.fuse_wrapper_rd_cfg_4.thp_ps_cs_cycles.q;
+    thp_ps_cs_cycles_sysclk_we       = reg2hw.fuse_wrapper_rd_cfg_4.thp_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    thr_ps_cs_cycles_sysclk          = reg2hw.fuse_wrapper_rd_cfg_4.thr_ps_cs_cycles.q;
+    thr_ps_cs_cycles_sysclk_we       = reg2hw.fuse_wrapper_rd_cfg_4.thr_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
+
     
-    tsur_a_cycles             = reg2hw.fuse_wrapper_rd_cfg_5.tsur_a_cycles.q;
-    tsup_a_cycles             = reg2hw.fuse_wrapper_rd_cfg_5.tsup_a_cycles.q;
-    thp_a_cycles              = reg2hw.fuse_wrapper_rd_cfg_5.thp_a_cycles.q;
-    tsup_ld_cycles            = reg2hw.fuse_wrapper_rd_cfg_5.tsup_ld_cycles.q;
+    tsur_a_cycles_sysclk             = reg2hw.fuse_wrapper_rd_cfg_5.tsur_a_cycles.q;
+    tsur_a_cycles_sysclk_we          = reg2hw.fuse_wrapper_rd_cfg_5.tsur_a_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    tsup_a_cycles_sysclk             = reg2hw.fuse_wrapper_rd_cfg_5.tsup_a_cycles.q;
+    tsup_a_cycles_sysclk_we          = reg2hw.fuse_wrapper_rd_cfg_5.tsup_a_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    thp_a_cycles_sysclk              = reg2hw.fuse_wrapper_rd_cfg_5.thp_a_cycles.q;
+    thp_a_cycles_sysclk_we           = reg2hw.fuse_wrapper_rd_cfg_5.thp_a_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    tsup_ld_cycles_sysclk            = reg2hw.fuse_wrapper_rd_cfg_5.tsup_ld_cycles.q;
+    tsup_ld_cycles_sysclk_we         = reg2hw.fuse_wrapper_rd_cfg_5.tsup_ld_cycles.qe || SYNC_sel_wr_timing_changed;
+
     
-    trd_cycles                = reg2hw.fuse_wrapper_rd_cfg_6.trd_cycles.q;
-    trd_m_cycles              = reg2hw.fuse_wrapper_rd_cfg_6.trd_m_cycles.q;
-    thr_a_cycles              = reg2hw.fuse_wrapper_rd_cfg_6.thr_a_cycles.q;
+    trd_cycles_sysclk                = reg2hw.fuse_wrapper_rd_cfg_6.trd_cycles.q;
+    trd_cycles_sysclk_we             = reg2hw.fuse_wrapper_rd_cfg_6.trd_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    trd_m_cycles_sysclk              = reg2hw.fuse_wrapper_rd_cfg_6.trd_m_cycles.q;
+    trd_m_cycles_sysclk_we           = reg2hw.fuse_wrapper_rd_cfg_6.trd_m_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    thr_a_cycles_sysclk              = reg2hw.fuse_wrapper_rd_cfg_6.thr_a_cycles.q;
+    thr_a_cycles_sysclk_we           = reg2hw.fuse_wrapper_rd_cfg_6.thr_a_cycles.qe || SYNC_sel_wr_timing_changed;
+
     
-    thp_pd_ps_cycles          = reg2hw.fuse_wrapper_rd_cfg_7.thp_pd_ps_cycles.q;
-    data_capture_cycles       = reg2hw.fuse_wrapper_rd_cfg_7.data_capture_cycles.q;
-    addr_capture_cycles       = reg2hw.fuse_wrapper_rd_cfg_7.addr_capture_cycles.q;
+    thp_pd_ps_cycles_sysclk          = reg2hw.fuse_wrapper_rd_cfg_7.thp_pd_ps_cycles.q;
+    thp_pd_ps_cycles_sysclk_we       = reg2hw.fuse_wrapper_rd_cfg_7.thp_pd_ps_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    data_capture_cycles_sysclk       = reg2hw.fuse_wrapper_rd_cfg_7.data_capture_cycles.q;
+    data_capture_cycles_sysclk_we    = reg2hw.fuse_wrapper_rd_cfg_7.data_capture_cycles.qe || SYNC_sel_wr_timing_changed;
+
+    addr_capture_cycles_sysclk       = reg2hw.fuse_wrapper_rd_cfg_7.addr_capture_cycles.q;
+    addr_capture_cycles_sysclk_we    = reg2hw.fuse_wrapper_rd_cfg_7.addr_capture_cycles.qe || SYNC_sel_wr_timing_changed;
+
     
-    trigger_power_down_cycles = reg2hw.fuse_wrapper_rd_cfg_8.q;
+    trigger_power_down_cycles_sysclk    = reg2hw.fuse_wrapper_rd_cfg_8.q;
+    trigger_power_down_cycles_sysclk_we = reg2hw.fuse_wrapper_rd_cfg_8.qe || SYNC_sel_wr_timing_changed;
+
 
     if(SYNC_sel_wr_timing) begin
-      tsur_pd_ps_cycles         = reg2hw.fuse_wrapper_wr_cfg_0.tsur_pd_ps_cycles.q;
-      tsur_ps_cycles            = reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cycles.q;
-      tsur_ps_cs_cycles         = reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cs_cycles.q;
+      tsur_pd_ps_cycles_sysclk         = reg2hw.fuse_wrapper_wr_cfg_0.tsur_pd_ps_cycles.q;
+      tsur_pd_ps_cycles_sysclk_we      = reg2hw.fuse_wrapper_wr_cfg_0.tsur_pd_ps_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      tsur_ps_cycles_sysclk            = reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cycles.q;
+      tsur_ps_cycles_sysclk_we         = reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      tsur_ps_cs_cycles_sysclk         = reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cs_cycles.q;
+      tsur_ps_cs_cycles_sysclk_we      = reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
+
       
-      tsup_ps_cs_cycles         = reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cs_cycles.q;
-      tsup_ps_cycles            = reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cycles.q;
-      tsq_cycles                = reg2hw.fuse_wrapper_wr_cfg_1.tsq_cycles.q;
+      tsup_ps_cs_cycles_sysclk         = reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cs_cycles.q;
+      tsup_ps_cs_cycles_sysclk_we      = reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      tsup_ps_cycles_sysclk            = reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cycles.q;
+      tsup_ps_cycles_sysclk_we         = reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      tsq_cycles_sysclk                = reg2hw.fuse_wrapper_wr_cfg_1.tsq_cycles.q;
+      tsq_cycles_sysclk_we             = reg2hw.fuse_wrapper_wr_cfg_1.tsq_cycles.qe || SYNC_sel_wr_timing_changed;
+
       
-      tsq_m_cycles              = reg2hw.fuse_wrapper_wr_cfg_2.tsq_m_cycles.q;
-      tpgm_cycles               = reg2hw.fuse_wrapper_wr_cfg_2.tpgm_cycles.q;
-      tsur_ld_cycles            = reg2hw.fuse_wrapper_wr_cfg_2.tsur_ld_cycles.q;
+      tsq_m_cycles_sysclk              = reg2hw.fuse_wrapper_wr_cfg_2.tsq_m_cycles.q;
+      tsq_m_cycles_sysclk_we           = reg2hw.fuse_wrapper_wr_cfg_2.tsq_m_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      tpgm_cycles_sysclk               = reg2hw.fuse_wrapper_wr_cfg_2.tpgm_cycles.q;
+      tpgm_cycles_sysclk_we            = reg2hw.fuse_wrapper_wr_cfg_2.tpgm_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      tsur_ld_cycles_sysclk            = reg2hw.fuse_wrapper_wr_cfg_2.tsur_ld_cycles.q;
+      tsur_ld_cycles_sysclk_we         = reg2hw.fuse_wrapper_wr_cfg_2.tsur_ld_cycles.qe || SYNC_sel_wr_timing_changed;
+
       
-      thr_ps_cycles             = reg2hw.fuse_wrapper_wr_cfg_3.thr_ps_cycles.q;
-      thp_ps_cycles             = reg2hw.fuse_wrapper_wr_cfg_3.thp_ps_cycles.q;
-      thp_cs_cycles             = reg2hw.fuse_wrapper_wr_cfg_3.thp_cs_cycles.q;
+      thr_ps_cycles_sysclk             = reg2hw.fuse_wrapper_wr_cfg_3.thr_ps_cycles.q;
+      thr_ps_cycles_sysclk_we          = reg2hw.fuse_wrapper_wr_cfg_3.thr_ps_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      thp_ps_cycles_sysclk             = reg2hw.fuse_wrapper_wr_cfg_3.thp_ps_cycles.q;
+      thp_ps_cycles_sysclk_we          = reg2hw.fuse_wrapper_wr_cfg_3.thp_ps_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      thp_cs_cycles_sysclk             = reg2hw.fuse_wrapper_wr_cfg_3.thp_cs_cycles.q;
+      thp_cs_cycles_sysclk_we          = reg2hw.fuse_wrapper_wr_cfg_3.thp_cs_cycles.qe || SYNC_sel_wr_timing_changed;
+
       
-      thr_cs_cycles             = reg2hw.fuse_wrapper_wr_cfg_4.thr_cs_cycles.q;
-      thp_ps_cs_cycles          = reg2hw.fuse_wrapper_wr_cfg_4.thp_ps_cs_cycles.q;
-      thr_ps_cs_cycles          = reg2hw.fuse_wrapper_wr_cfg_4.thr_ps_cs_cycles.q;
+      thr_cs_cycles_sysclk             = reg2hw.fuse_wrapper_wr_cfg_4.thr_cs_cycles.q;
+      thr_cs_cycles_sysclk_we          = reg2hw.fuse_wrapper_wr_cfg_4.thr_cs_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      thp_ps_cs_cycles_sysclk          = reg2hw.fuse_wrapper_wr_cfg_4.thp_ps_cs_cycles.q;
+      thp_ps_cs_cycles_sysclk_we       = reg2hw.fuse_wrapper_wr_cfg_4.thp_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      thr_ps_cs_cycles_sysclk          = reg2hw.fuse_wrapper_wr_cfg_4.thr_ps_cs_cycles.q;
+      thr_ps_cs_cycles_sysclk_we       = reg2hw.fuse_wrapper_wr_cfg_4.thr_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
+
       
-      tsur_a_cycles             = reg2hw.fuse_wrapper_wr_cfg_5.tsur_a_cycles.q;
-      tsup_a_cycles             = reg2hw.fuse_wrapper_wr_cfg_5.tsup_a_cycles.q;
-      thp_a_cycles              = reg2hw.fuse_wrapper_wr_cfg_5.thp_a_cycles.q;
-      tsup_ld_cycles            = reg2hw.fuse_wrapper_wr_cfg_5.tsup_ld_cycles.q;
+      tsur_a_cycles_sysclk             = reg2hw.fuse_wrapper_wr_cfg_5.tsur_a_cycles.q;
+      tsur_a_cycles_sysclk_we          = reg2hw.fuse_wrapper_wr_cfg_5.tsur_a_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      tsup_a_cycles_sysclk             = reg2hw.fuse_wrapper_wr_cfg_5.tsup_a_cycles.q;
+      tsup_a_cycles_sysclk_we          = reg2hw.fuse_wrapper_wr_cfg_5.tsup_a_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      thp_a_cycles_sysclk              = reg2hw.fuse_wrapper_wr_cfg_5.thp_a_cycles.q;
+      thp_a_cycles_sysclk_we           = reg2hw.fuse_wrapper_wr_cfg_5.thp_a_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      tsup_ld_cycles_sysclk            = reg2hw.fuse_wrapper_wr_cfg_5.tsup_ld_cycles.q;
+      tsup_ld_cycles_sysclk_we         = reg2hw.fuse_wrapper_wr_cfg_5.tsup_ld_cycles.qe || SYNC_sel_wr_timing_changed;
+
       
-      trd_cycles                = reg2hw.fuse_wrapper_wr_cfg_6.trd_cycles.q;
-      trd_m_cycles              = reg2hw.fuse_wrapper_wr_cfg_6.trd_m_cycles.q;
-      thr_a_cycles              = reg2hw.fuse_wrapper_wr_cfg_6.thr_a_cycles.q;
+      trd_cycles_sysclk                = reg2hw.fuse_wrapper_wr_cfg_6.trd_cycles.q;
+      trd_cycles_sysclk_we             = reg2hw.fuse_wrapper_wr_cfg_6.trd_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      trd_m_cycles_sysclk              = reg2hw.fuse_wrapper_wr_cfg_6.trd_m_cycles.q;
+      trd_m_cycles_sysclk_we           = reg2hw.fuse_wrapper_wr_cfg_6.trd_m_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      thr_a_cycles_sysclk              = reg2hw.fuse_wrapper_wr_cfg_6.thr_a_cycles.q;
+      thr_a_cycles_sysclk_we           = reg2hw.fuse_wrapper_wr_cfg_6.thr_a_cycles.qe || SYNC_sel_wr_timing_changed;
+
       
-      thp_pd_ps_cycles          = reg2hw.fuse_wrapper_wr_cfg_7.thp_pd_ps_cycles.q;
-      data_capture_cycles       = reg2hw.fuse_wrapper_wr_cfg_7.data_capture_cycles.q;
-      addr_capture_cycles       = reg2hw.fuse_wrapper_wr_cfg_7.addr_capture_cycles.q;
+      thp_pd_ps_cycles_sysclk          = reg2hw.fuse_wrapper_wr_cfg_7.thp_pd_ps_cycles.q;
+      thp_pd_ps_cycles_sysclk_we       = reg2hw.fuse_wrapper_wr_cfg_7.thp_pd_ps_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      data_capture_cycles_sysclk       = reg2hw.fuse_wrapper_wr_cfg_7.data_capture_cycles.q;
+      data_capture_cycles_sysclk_we    = reg2hw.fuse_wrapper_wr_cfg_7.data_capture_cycles.qe || SYNC_sel_wr_timing_changed;
+
+      addr_capture_cycles_sysclk       = reg2hw.fuse_wrapper_wr_cfg_7.addr_capture_cycles.q;
+      addr_capture_cycles_sysclk_we    = reg2hw.fuse_wrapper_wr_cfg_7.addr_capture_cycles.qe || SYNC_sel_wr_timing_changed;
+
       
-      trigger_power_down_cycles = reg2hw.fuse_wrapper_wr_cfg_8.q;
+      trigger_power_down_cycles_sysclk    = reg2hw.fuse_wrapper_wr_cfg_8.q;
+      trigger_power_down_cycles_sysclk_we = reg2hw.fuse_wrapper_wr_cfg_8.qe || SYNC_sel_wr_timing_changed;
     end
   end
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(tsur_pd_ps_cycles_sysclk)))
+tsur_pd_ps_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (tsur_pd_ps_cycles_sysclk),
+    .data_in_val  (tsur_pd_ps_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (tsur_pd_ps_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(tsur_ps_cycles_sysclk)))
+tsur_ps_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (tsur_ps_cycles_sysclk),
+    .data_in_val  (tsur_ps_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (tsur_ps_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(tsur_ps_cs_cycles_sysclk)))
+tsur_ps_cs_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (tsur_ps_cs_cycles_sysclk),
+    .data_in_val  (tsur_ps_cs_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (tsur_ps_cs_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(tsup_ps_cs_cycles_sysclk)))
+tsup_ps_cs_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (tsup_ps_cs_cycles_sysclk),
+    .data_in_val  (tsup_ps_cs_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (tsup_ps_cs_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(tsup_ps_cycles_sysclk)))
+tsup_ps_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (tsup_ps_cycles_sysclk),
+    .data_in_val  (tsup_ps_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (tsup_ps_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(tsq_cycles_sysclk)))
+tsq_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (tsq_cycles_sysclk),
+    .data_in_val  (tsq_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (tsq_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(tsq_m_cycles_sysclk)))
+tsq_m_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (tsq_m_cycles_sysclk),
+    .data_in_val  (tsq_m_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (tsq_m_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(tpgm_cycles_sysclk)))
+tpgm_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (tpgm_cycles_sysclk),
+    .data_in_val  (tpgm_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (tpgm_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(tsur_ld_cycles_sysclk)))
+tsur_ld_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (tsur_ld_cycles_sysclk),
+    .data_in_val  (tsur_ld_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (tsur_ld_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(thr_ps_cycles_sysclk)))
+thr_ps_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (thr_ps_cycles_sysclk),
+    .data_in_val  (thr_ps_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (thr_ps_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(thp_ps_cycles_sysclk)))
+thp_ps_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (thp_ps_cycles_sysclk),
+    .data_in_val  (thp_ps_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (thp_ps_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(thp_cs_cycles_sysclk)))
+thp_cs_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (thp_cs_cycles_sysclk),
+    .data_in_val  (thp_cs_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (thp_cs_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(thr_cs_cycles_sysclk)))
+thr_cs_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (thr_cs_cycles_sysclk),
+    .data_in_val  (thr_cs_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (thr_cs_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(thp_ps_cs_cycles_sysclk)))
+thp_ps_cs_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (thp_ps_cs_cycles_sysclk),
+    .data_in_val  (thp_ps_cs_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (thp_ps_cs_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(thr_ps_cs_cycles_sysclk)))
+thr_ps_cs_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (thr_ps_cs_cycles_sysclk),
+    .data_in_val  (thr_ps_cs_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (thr_ps_cs_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(tsur_a_cycles_sysclk)))
+tsur_a_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (tsur_a_cycles_sysclk),
+    .data_in_val  (tsur_a_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (tsur_a_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(tsup_a_cycles_sysclk)))
+tsup_a_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (tsup_a_cycles_sysclk),
+    .data_in_val  (tsup_a_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (tsup_a_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(thp_a_cycles_sysclk)))
+thp_a_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (thp_a_cycles_sysclk),
+    .data_in_val  (thp_a_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (thp_a_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(tsup_ld_cycles_sysclk)))
+tsup_ld_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (tsup_ld_cycles_sysclk),
+    .data_in_val  (tsup_ld_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (tsup_ld_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(trd_cycles_sysclk)))
+trd_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (trd_cycles_sysclk),
+    .data_in_val  (trd_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (trd_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(trd_m_cycles_sysclk)))
+trd_m_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (trd_m_cycles_sysclk),
+    .data_in_val  (trd_m_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (trd_m_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(thr_a_cycles_sysclk)))
+thr_a_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (thr_a_cycles_sysclk),
+    .data_in_val  (thr_a_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (thr_a_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(thp_pd_ps_cycles_sysclk)))
+thp_pd_ps_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (thp_pd_ps_cycles_sysclk),
+    .data_in_val  (thp_pd_ps_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (thp_pd_ps_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(data_capture_cycles_sysclk)))
+data_capture_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (data_capture_cycles_sysclk),
+    .data_in_val  (data_capture_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (data_capture_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(addr_capture_cycles_sysclk)))
+addr_capture_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (addr_capture_cycles_sysclk),
+    .data_in_val  (addr_capture_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (addr_capture_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(trigger_power_down_cycles_sysclk)))
+trigger_power_down_cycles_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (trigger_power_down_cycles_sysclk),
+    .data_in_val  (trigger_power_down_cycles_sysclk_we),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (trigger_power_down_cycles),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
+SCS_CDC_BUF_DFT #(.WIDTH($bits(redundancy_autoinit_disable)))
+redundancy_autoinit_disable_sysclkXCDCBUF
+  (
+    .wr_clk       (clk_i),      // sysclk
+    .wr_rst_l     (rst_ni),     // reset in sysclk domain
+    .data_in      (reg2hw.macro_control.redundancy_autoinit_disable.q),
+    .data_in_val  (reg2hw.macro_control.redundancy_autoinit_disable.qe),
+
+    .rd_clk       (cfg_i.clk_efuse),
+    .rd_rst_l     (cfg_i.rst_efuse_n), // reset in efuse-clk domain
+    .data_out     (redundancy_autoinit_disable),
+    .data_out_val (),
+
+    .tstrst       (cfg_i.tstrst),
+    .tstrstsel    (cfg_i.tstrstsel)
+  );
+
+
 
 /*prim_otp_mem AUTO_TEMPLATE (
     .Width                              (Width),
@@ -733,7 +1366,7 @@ module otp_macro
     .trigger_power_down_cycles_i        (trigger_power_down_cycles),
     .tstrst_i                           (cfg_i.tstrst),
     .tstrstsel_i                        (cfg_i.tstrstsel),
-    .redundancy_autoinit_disable_i      (reg2hw.macro_control.redundancy_autoinit_disable.q),
+    .redundancy_autoinit_disable_i      (redundancy_autoinit_disable),
     .clk_efuse_i                        (cfg_i.clk_efuse),
     .mbist_sel_i                        (cfg_i.mbist_sel),
     .mbist_fuse_csb_i                   (cfg_i.mbist_fuse_csb),
@@ -770,86 +1403,85 @@ prim_otp_mem
     .FUSE_DATA_WIDTH                    (FUSE_DATA_WIDTH),       // Templated
     .FUSE_RF_DATA_WIDTH                 (FUSE_RF_DATA_WIDTH))    // Templated
   u_otp_mem (/*AUTOINST*/
-                  // Interfaces
-                  .err_o                (),                      // Templated
-                  // Outputs
-                  .rvalid_o             (rvalid),                // Templated
-                  .rdata_o              (rdata_ecc[(Width+TotalEccWidth-1):0]), // Templated
-                  .wrapper_ready_o      (wrapper_ready),         // Templated
-                  .mbist_fuse_rf_data_o (cfg_rsp_o.mbist_fuse_rf_data), // Templated
-                  .mbist_fuse_data_o    (cfg_rsp_o.mbist_fuse_data), // Templated
-                  .reset_allowed_o      (cfg_rsp_o.reset_allowed), // Templated
-                  .trace_fuse_csb_o     (cfg_rsp_o.trace_fuse_csb), // Templated
-                  .trace_fuse_strobe_o  (cfg_rsp_o.trace_fuse_strobe), // Templated
-                  .trace_fuse_array_sel_o(cfg_rsp_o.trace_fuse_array_sel[(FUSE_ARRAY_SEL_WIDTH-1):0]), // Templated
-                  .trace_fuse_load_o    (cfg_rsp_o.trace_fuse_load), // Templated
-                  .trace_fuse_pgenb_o   (cfg_rsp_o.trace_fuse_pgenb), // Templated
-                  .trace_fuse_ps_o      (cfg_rsp_o.trace_fuse_ps), // Templated
-                  .trace_fuse_pd_o      (cfg_rsp_o.trace_fuse_pd), // Templated
-                  .trace_final_fuse_mr_o(cfg_rsp_o.trace_final_fuse_mr), // Templated
-                  .trace_fuse_address_o (cfg_rsp_o.trace_fuse_address[(FUSE_ADDR_WIDTH-1):0]), // Templated
-                  .trace_final_fuse_tcrs_o(cfg_rsp_o.trace_final_fuse_tcrs), // Templated
-                  .trace_fuse_test_address_o(cfg_rsp_o.trace_fuse_test_address[(FUSE_TEST_ADDR_WIDTH-1):0]), // Templated
-                  .trace_final_fuse_rsb_o(cfg_rsp_o.trace_final_fuse_rsb), // Templated
-                  .trace_final_fuse_rwl_o(cfg_rsp_o.trace_final_fuse_rwl), // Templated
-                  .trace_fuse_ecc_strobe_o(cfg_rsp_o.trace_fuse_ecc_strobe), // Templated
-                  .trace_fuse_ecc_array_sel_o(cfg_rsp_o.trace_fuse_ecc_array_sel[(FUSE_ECC_ARRAY_SEL_WIDTH-1):0]), // Templated
-                  .trace_fuse_ecc_ps_o  (cfg_rsp_o.trace_fuse_ecc_ps), // Templated
-                  .trace_fuse_ecc_address_o(cfg_rsp_o.trace_fuse_ecc_address[(FUSE_ADDR_WIDTH-1):0]), // Templated
-                  .trace_fuse_data_o    (cfg_rsp_o.trace_fuse_data[(FUSE_NUM_ARRAYS-1):0]), // Templated
-                  .trace_fuse_ecc_data_o(cfg_rsp_o.trace_fuse_ecc_data[(FUSE_NUM_ECC_ARRAYS-1):0]), // Templated
-                  // Inputs
-                  .clk_i                (clk_i),
-                  .rst_ni               (rst_ni),
-                  .clk_efuse_i          (cfg_i.clk_efuse),       // Templated
-                  .req_i                (req),                   // Templated
-                  .write_i              (wren),                  // Templated
-                  .addr_i               (addr),                  // Templated
-                  .wdata_i              ({2'b0,wdata_rmw[(Width+EccWidth-1):0]}), // Templated
-                  .mode_i               (reg2hw.macro_control.macro_mode.q), // Templated
-                  .ecc_sel_i            (reg2hw.macro_control.ecc_sel.q), // Templated
-                  .margin_i             (reg2hw.macro_control.read_margin.q), // Templated
-                  .test_row_col_sel_i   (reg2hw.macro_control.test_row_col_sel.q), // Templated
-                  .tsur_pd_ps_cycles_i  (tsur_pd_ps_cycles),     // Templated
-                  .tsur_ps_cycles_i     (tsur_ps_cycles),        // Templated
-                  .tsur_ps_cs_cycles_i  (tsur_ps_cs_cycles),     // Templated
-                  .tsur_ld_cycles_i     (tsur_ld_cycles),        // Templated
-                  .tsup_ld_cycles_i     (tsup_ld_cycles),        // Templated
-                  .tsup_ps_cs_cycles_i  (tsup_ps_cs_cycles),     // Templated
-                  .tsup_ps_cycles_i     (tsup_ps_cycles),        // Templated
-                  .tsq_cycles_i         (tsq_cycles),            // Templated
-                  .tsq_m_cycles_i       (tsq_m_cycles),          // Templated
-                  .tpgm_cycles_i        (tpgm_cycles),           // Templated
-                  .thr_ps_cycles_i      (thr_ps_cycles),         // Templated
-                  .thp_ps_cycles_i      (thp_ps_cycles),         // Templated
-                  .thp_cs_cycles_i      (thp_cs_cycles),         // Templated
-                  .thr_cs_cycles_i      (thr_cs_cycles),         // Templated
-                  .thp_ps_cs_cycles_i   (thp_ps_cs_cycles),      // Templated
-                  .thr_ps_cs_cycles_i   (thr_ps_cs_cycles),      // Templated
-                  .tsur_a_cycles_i      (tsur_a_cycles),         // Templated
-                  .tsup_a_cycles_i      (tsup_a_cycles),         // Templated
-                  .thp_a_cycles_i       (thp_a_cycles),          // Templated
-                  .trd_cycles_i         (trd_cycles),            // Templated
-                  .trd_m_cycles_i       (trd_m_cycles),          // Templated
-                  .thr_a_cycles_i       (thr_a_cycles),          // Templated
-                  .thp_pd_ps_cycles_i   (thp_pd_ps_cycles),      // Templated
-                  .data_capture_cycles_i(data_capture_cycles),   // Templated
-                  .addr_capture_cycles_i(addr_capture_cycles),   // Templated
-                  .trigger_power_down_cycles_i(trigger_power_down_cycles), // Templated
-                  .redundancy_autoinit_disable_i(reg2hw.macro_control.redundancy_autoinit_disable.q), // Templated
-                  .tstrst_i             (cfg_i.tstrst),          // Templated
-                  .tstrstsel_i          (cfg_i.tstrstsel),       // Templated
-                  .mbist_sel_i          (cfg_i.mbist_sel),       // Templated
-                  .mbist_fuse_csb_i     (cfg_i.mbist_fuse_csb),  // Templated
-                  .mbist_fuse_load_i    (cfg_i.mbist_fuse_load), // Templated
-                  .mbist_fuse_pgenb_i   (cfg_i.mbist_fuse_pgenb), // Templated
-                  .mbist_fuse_ps_i      (cfg_i.mbist_fuse_ps),   // Templated
-                  .mbist_fuse_pd_i      (cfg_i.mbist_fuse_pd),   // Templated
-                  .mbist_fuse_mr_i      (cfg_i.mbist_fuse_mr),   // Templated
-                  .mbist_fuse_rwl_i     (cfg_i.mbist_fuse_rwl),  // Templated
-                  .mbist_fuse_rsb_i     (cfg_i.mbist_fuse_rsb),  // Templated
-                  .mbist_fuse_strobe_array_i(cfg_i.mbist_fuse_strobe_array), // Templated
-                  .mbist_fuse_address_i (cfg_i.mbist_fuse_address)); // Templated
+             // Outputs
+             .rvalid_o                  (rvalid),                // Templated
+             .rdata_o                   (rdata_ecc[(Width+TotalEccWidth-1):0]), // Templated
+             .err_o                     (),                      // Templated
+             .wrapper_ready_o           (wrapper_ready),         // Templated
+             .mbist_fuse_rf_data_o      (cfg_rsp_o.mbist_fuse_rf_data), // Templated
+             .mbist_fuse_data_o         (cfg_rsp_o.mbist_fuse_data), // Templated
+             .reset_allowed_o           (cfg_rsp_o.reset_allowed), // Templated
+             .trace_fuse_csb_o          (cfg_rsp_o.trace_fuse_csb), // Templated
+             .trace_fuse_strobe_o       (cfg_rsp_o.trace_fuse_strobe), // Templated
+             .trace_fuse_array_sel_o    (cfg_rsp_o.trace_fuse_array_sel[(FUSE_ARRAY_SEL_WIDTH-1):0]), // Templated
+             .trace_fuse_load_o         (cfg_rsp_o.trace_fuse_load), // Templated
+             .trace_fuse_pgenb_o        (cfg_rsp_o.trace_fuse_pgenb), // Templated
+             .trace_fuse_ps_o           (cfg_rsp_o.trace_fuse_ps), // Templated
+             .trace_fuse_pd_o           (cfg_rsp_o.trace_fuse_pd), // Templated
+             .trace_final_fuse_mr_o     (cfg_rsp_o.trace_final_fuse_mr), // Templated
+             .trace_fuse_address_o      (cfg_rsp_o.trace_fuse_address[(FUSE_ADDR_WIDTH-1):0]), // Templated
+             .trace_final_fuse_tcrs_o   (cfg_rsp_o.trace_final_fuse_tcrs), // Templated
+             .trace_fuse_test_address_o (cfg_rsp_o.trace_fuse_test_address[(FUSE_TEST_ADDR_WIDTH-1):0]), // Templated
+             .trace_final_fuse_rsb_o    (cfg_rsp_o.trace_final_fuse_rsb), // Templated
+             .trace_final_fuse_rwl_o    (cfg_rsp_o.trace_final_fuse_rwl), // Templated
+             .trace_fuse_ecc_strobe_o   (cfg_rsp_o.trace_fuse_ecc_strobe), // Templated
+             .trace_fuse_ecc_array_sel_o(cfg_rsp_o.trace_fuse_ecc_array_sel[(FUSE_ECC_ARRAY_SEL_WIDTH-1):0]), // Templated
+             .trace_fuse_ecc_ps_o       (cfg_rsp_o.trace_fuse_ecc_ps), // Templated
+             .trace_fuse_ecc_address_o  (cfg_rsp_o.trace_fuse_ecc_address[(FUSE_ADDR_WIDTH-1):0]), // Templated
+             .trace_fuse_data_o         (cfg_rsp_o.trace_fuse_data[(FUSE_NUM_ARRAYS-1):0]), // Templated
+             .trace_fuse_ecc_data_o     (cfg_rsp_o.trace_fuse_ecc_data[(FUSE_NUM_ECC_ARRAYS-1):0]), // Templated
+             // Inputs
+             .clk_i                     (clk_i),
+             .rst_ni                    (rst_ni),
+             .clk_efuse_i               (cfg_i.clk_efuse),       // Templated
+             .req_i                     (req),                   // Templated
+             .write_i                   (wren),                  // Templated
+             .addr_i                    (addr),                  // Templated
+             .wdata_i                   ({2'b0,wdata_rmw[(Width+EccWidth-1):0]}), // Templated
+             .mode_i                    (reg2hw.macro_control.macro_mode.q), // Templated
+             .ecc_sel_i                 (reg2hw.macro_control.ecc_sel.q), // Templated
+             .margin_i                  (reg2hw.macro_control.read_margin.q), // Templated
+             .test_row_col_sel_i        (reg2hw.macro_control.test_row_col_sel.q), // Templated
+             .tsur_pd_ps_cycles_i       (tsur_pd_ps_cycles),     // Templated
+             .tsur_ps_cycles_i          (tsur_ps_cycles),        // Templated
+             .tsur_ps_cs_cycles_i       (tsur_ps_cs_cycles),     // Templated
+             .tsur_ld_cycles_i          (tsur_ld_cycles),        // Templated
+             .tsup_ld_cycles_i          (tsup_ld_cycles),        // Templated
+             .tsup_ps_cs_cycles_i       (tsup_ps_cs_cycles),     // Templated
+             .tsup_ps_cycles_i          (tsup_ps_cycles),        // Templated
+             .tsq_cycles_i              (tsq_cycles),            // Templated
+             .tsq_m_cycles_i            (tsq_m_cycles),          // Templated
+             .tpgm_cycles_i             (tpgm_cycles),           // Templated
+             .thr_ps_cycles_i           (thr_ps_cycles),         // Templated
+             .thp_ps_cycles_i           (thp_ps_cycles),         // Templated
+             .thp_cs_cycles_i           (thp_cs_cycles),         // Templated
+             .thr_cs_cycles_i           (thr_cs_cycles),         // Templated
+             .thp_ps_cs_cycles_i        (thp_ps_cs_cycles),      // Templated
+             .thr_ps_cs_cycles_i        (thr_ps_cs_cycles),      // Templated
+             .tsur_a_cycles_i           (tsur_a_cycles),         // Templated
+             .tsup_a_cycles_i           (tsup_a_cycles),         // Templated
+             .thp_a_cycles_i            (thp_a_cycles),          // Templated
+             .trd_cycles_i              (trd_cycles),            // Templated
+             .trd_m_cycles_i            (trd_m_cycles),          // Templated
+             .thr_a_cycles_i            (thr_a_cycles),          // Templated
+             .thp_pd_ps_cycles_i        (thp_pd_ps_cycles),      // Templated
+             .data_capture_cycles_i     (data_capture_cycles),   // Templated
+             .addr_capture_cycles_i     (addr_capture_cycles),   // Templated
+             .trigger_power_down_cycles_i(trigger_power_down_cycles), // Templated
+             .redundancy_autoinit_disable_i(redundancy_autoinit_disable), // Templated
+             .tstrst_i                  (cfg_i.tstrst),          // Templated
+             .tstrstsel_i               (cfg_i.tstrstsel),       // Templated
+             .mbist_sel_i               (cfg_i.mbist_sel),       // Templated
+             .mbist_fuse_csb_i          (cfg_i.mbist_fuse_csb),  // Templated
+             .mbist_fuse_load_i         (cfg_i.mbist_fuse_load), // Templated
+             .mbist_fuse_pgenb_i        (cfg_i.mbist_fuse_pgenb), // Templated
+             .mbist_fuse_ps_i           (cfg_i.mbist_fuse_ps),   // Templated
+             .mbist_fuse_pd_i           (cfg_i.mbist_fuse_pd),   // Templated
+             .mbist_fuse_mr_i           (cfg_i.mbist_fuse_mr),   // Templated
+             .mbist_fuse_rwl_i          (cfg_i.mbist_fuse_rwl),  // Templated
+             .mbist_fuse_rsb_i          (cfg_i.mbist_fuse_rsb),  // Templated
+             .mbist_fuse_strobe_array_i (cfg_i.mbist_fuse_strobe_array), // Templated
+             .mbist_fuse_address_i      (cfg_i.mbist_fuse_address)); // Templated
 
   // Currently it is assumed that no wrap arounds can occur.
   `ASSERT(NoWrapArounds_A, req |-> (addr >= addr_q))

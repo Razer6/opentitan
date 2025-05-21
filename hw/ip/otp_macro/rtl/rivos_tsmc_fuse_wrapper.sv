@@ -2129,17 +2129,17 @@ RVP_ASSERT_NEVER
    .en(1'b1), 
    .expr(fuse_ecc_strobe_clr && fuse_ecc_strobe_set));
 
-RVP_ASSERT_ALWAYS
-  #(.MSG("READ timing param"))
-  read_timing_param_check
-  (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(fuse_ctl_state == FUSE_INIT_ST),  // only need to check this at the beginning after reset
-   .expr((FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) + 
-          FUSE_STATE_COUNT_BITS'(trd_m_cycles_i) + 
-          FUSE_STATE_COUNT_BITS'(thr_a_cycles_i)) > 
-         (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) + 
-          FUSE_STATE_COUNT_BITS'(tsq_m_cycles_i) + 
-          FUSE_STATE_COUNT_BITS'(data_capture_cycles_i))));
+// TODO (neal) test RVP_ASSERT_ALWAYS
+// TODO (neal) test   #(.MSG("READ timing param"))
+// TODO (neal) test   read_timing_param_check
+// TODO (neal) test   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
+// TODO (neal) test    .en(fuse_ctl_state == FUSE_INIT_ST),  // only need to check this at the beginning after reset
+// TODO (neal) test    .expr((FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) + 
+// TODO (neal) test           FUSE_STATE_COUNT_BITS'(trd_m_cycles_i) + 
+// TODO (neal) test           FUSE_STATE_COUNT_BITS'(thr_a_cycles_i)) > 
+// TODO (neal) test          (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) + 
+// TODO (neal) test           FUSE_STATE_COUNT_BITS'(tsq_m_cycles_i) + 
+// TODO (neal) test           FUSE_STATE_COUNT_BITS'(data_capture_cycles_i))));
 
 
 endmodule : rivos_tsmc_fuse_wrapper

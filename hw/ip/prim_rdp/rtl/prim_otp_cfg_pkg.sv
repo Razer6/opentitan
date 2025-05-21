@@ -23,6 +23,7 @@ package prim_otp_cfg_pkg;
   typedef struct packed {
     logic                                     sel_wr_timing;
     logic                                     clk_efuse;
+    logic                                     rst_efuse_n;
     logic                                     tstrst;
     logic                                     tstrstsel;
 

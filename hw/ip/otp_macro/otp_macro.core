@@ -22,6 +22,7 @@ filesets:
       - rivos:dv:rdv_assert_env
       - rivos:rdplib:dv_primitives
       - rivos:rdplib:chipware
+      - scs:lib:cdc_buf
       - lowrisc:prim_rdp:otp_cfg_pkg
     files:
       - rtl/rivos_tsmc_fuse_wrapper.sv

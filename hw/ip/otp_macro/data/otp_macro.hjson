@@ -239,7 +239,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to MACRO_CONTROL randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -318,7 +318,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to FUSE_WRAPPER_RD_CFG_0 randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -344,7 +344,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -370,7 +370,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -396,7 +396,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -422,7 +422,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -448,7 +448,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -479,7 +479,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -505,7 +505,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -531,7 +531,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -547,7 +547,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -573,7 +573,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -599,7 +599,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -625,7 +625,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -651,7 +651,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -677,7 +677,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -708,7 +708,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -734,7 +734,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
@@ -760,7 +760,7 @@
       swaccess: "rw",
       hwaccess: "hro",
       hwext:    "false",
-      hwqe:     "false",
+      hwqe:     "true",
       tags: [ // Write to this register randomly might cause OTP_ERRORs and illegal sequences
               "excl:CsrAllTests:CsrExclWrite"],
       fields: [
