@@ -61,6 +61,7 @@ waive -rules HIER_BRANCH_NOT_READ   -location {RVP_ASSERT_NEVER.sv}  -regexp {Ne
 waive -rules HIER_BRANCH_NOT_READ   -location {RVP_ASSERT_NEVER.sv}  -regexp {Net 'expr' is not read from in module 'RVP_ASSERT_NEVER'} -comment "needed for rivos assertions"
 waive -rules HIER_BRANCH_NOT_READ   -location {rvscs_ot_32k_ecc_rom.sv}  -regexp {Net 'reset_' in module 'rvscs_ot_32k_ecc_rom' is not read from,} -comment "needed for rivos assertions"
 waive -rules HIER_BRANCH_NOT_READ   -location {rvscs_ot_64k_ecc_rom.sv}  -regexp {Net 'reset_' in module 'rvscs_ot_64k_ecc_rom' is not read from,} -comment "needed for rivos assertions"
+waive -rules HIER_BRANCH_NOT_READ   -location {prim_otp_mem.sv}  -comment "new cdc crossing based on rivos components"
 
 waive -rules INPUT_NOT_READ -location {RVP_ASSERT_ALWAYS.sv} -regexp {Input port 'rst_l' is not read from in module 'RVP_ASSERT_ALWAYS'} -comment "needed for rivos assertions"
 waive -rules INPUT_NOT_READ -location {RVP_ASSERT_ALWAYS.sv} -regexp {Input port 'en' is not read from in module 'RVP_ASSERT_ALWAYS'} -comment "needed for rivos assertions"
@@ -81,6 +82,7 @@ waive -rules INPUT_NOT_READ -location {RVP_ASSERT_NEVER.sv}  -regexp {Input port
 waive -rules INPUT_NOT_READ -location {RDP_ASYNC_FIFO.sv}    -regexp {Input port 'tston_rd' is not read from in module 'RDP_ASYNC_FIFO'} -comment "needed for rivos assertions"
 waive -rules INPUT_NOT_READ -location {RDP_ASYNC_FIFO_RD.sv} -regexp {Input port 'rdFifoDbgClkDis' is not read from, instance} -comment "needed for rivos assertions"
 waive -rules INPUT_NOT_READ -location {RDP_ASYNC_FIFO_WR.sv} -regexp {Input port 'wrFifoDbgClkDis' is not read from, instance} -comment "needed for rivos assertions"
+waive -rules INPUT_NOT_READ -location {prim_otp_mem.sv} -comment "new cdc crossing based on rivos components"
 
 waive -rules PARAM_NOT_USED -location {RVP_ASSERT_ALWAYS.sv} -regexp {Parameter 'MSG' not used in module 'RVP_ASSERT_ALWAYS'} -comment "needed for rivos assertions"
 waive -rules PARAM_NOT_USED -location {RVP_ASSERT_ALWAYS.sv} -regexp {Parameter 'ASSUME' not used in module 'RVP_ASSERT_ALWAYS'} -comment "needed for rivos assertions"
@@ -150,7 +152,7 @@ waive -rules INPUT_NOT_READ -location {prim_rdp_clock_inv.sv} -regexp {Input por
 waive -rules INPUT_NOT_READ -location {prim_rdp_otp.sv} -regexp {Input port 'cfg_i.trace_en' is not read from, instance}                                                    -comment "needed for rivos compiled memory"
 
 waive -rules NOT_READ -location {RDP_ASYNC_FIFO_RD.sv} -regexp {Signal 'occupancy' is not read from, instance} -comment "needed for rivos compiled memory"
-waive -rules NOT_READ -location {otp_macro.sv} -comment "new cdc crossing based on rivos components"
+waive -rules NOT_READ -location {prim_otp_mem.sv} -comment "new cdc crossing based on rivos components"
 
 waive -rules HIER_NET_NOT_READ -location {rvscs_ot_sram_wrap.sv} -regexp {Net 'ram_controls.consistency_check2' in module 'rvscs_ot_sram_wrap'}   -comment "needed for rivos compiled memory"
 waive -rules HIER_NET_NOT_READ -location {rvscs_ot_sram_wrap.sv} -regexp {Net 'ram_controls.disable_clock_gating' in module 'rvscs_ot_sram_wrap'} -comment "needed for rivos compiled memory"
@@ -163,6 +165,7 @@ waive -rules HIER_NET_NOT_READ -location {prim_rdp_otp.sv} -regexp {Net 'thr_ps_
 waive -rules HIER_NET_NOT_READ -location {prim_rdp_otp.sv} -regexp {Net 'thp_ps_cycles' in module 'prim_rdp_otp'}                                 -comment "needed for rivos compiled memory"
 waive -rules HIER_NET_NOT_READ -location {prim_rdp_otp.sv} -regexp {Net 'thp_ps_cycles' in module 'prim_rdp_otp'}                                 -comment "needed for rivos compiled memory"
 waive -rules HIER_NET_NOT_READ -location {otp_macro.sv} -comment "new cdc crossing based on rivos components"
+waive -rules HIER_NET_NOT_READ -location {prim_otp_mem.sv} -comment "new cdc crossing based on rivos components"
 waive -rules HIER_NET_NOT_READ -location {otp_macro_reg_top.sv} -comment "new cdc crossing based on rivos components"
 waive -rules HIER_NET_NOT_READ -location {prim_rdp_ram_1r1w.sv} -regexp {Net 'ram_controls.consistency_check2' in module 'prim_rdp_ram_1r1w'}     -comment "needed for rivos compiled memory"
 waive -rules HIER_NET_NOT_READ -location {prim_rdp_ram_1r1w.sv} -regexp {Net 'ram_controls.disable_clock_gating' in module 'prim_rdp_ram_1r1w'}   -comment "needed for rivos compiled memory"
