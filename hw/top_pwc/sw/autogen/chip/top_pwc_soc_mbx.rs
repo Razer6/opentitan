@@ -117,30 +117,30 @@ pub const MBX_PCIE0_SOC_BASE_ADDR: usize = 0x1470100;
 /// `MBX_PCIE0_SOC_BASE_ADDR + MBX_PCIE0_SOC_SIZE_BYTES`.
 pub const MBX_PCIE0_SOC_SIZE_BYTES: usize = 0x20;
 
-/// Peripheral base address for racl_ctrl in top pwc.
+/// Peripheral base address for racl_ctrl_pwc in top pwc.
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const RACL_CTRL_BASE_ADDR: usize = 0x1471F00;
+pub const RACL_CTRL_PWC_BASE_ADDR: usize = 0x1471F00;
 
-/// Peripheral size for racl_ctrl in top pwc.
+/// Peripheral size for racl_ctrl_pwc in top pwc.
 ///
 /// This is the size (in bytes) of the peripheral's reserved memory area. All
 /// memory-mapped registers associated with this peripheral should have an
-/// address between #RACL_CTRL_BASE_ADDR and
-/// `RACL_CTRL_BASE_ADDR + RACL_CTRL_SIZE_BYTES`.
-pub const RACL_CTRL_SIZE_BYTES: usize = 0x100;
+/// address between #RACL_CTRL_PWC_BASE_ADDR and
+/// `RACL_CTRL_PWC_BASE_ADDR + RACL_CTRL_PWC_SIZE_BYTES`.
+pub const RACL_CTRL_PWC_SIZE_BYTES: usize = 0x100;
 
-/// Peripheral base address for ac_range_check in top pwc.
+/// Peripheral base address for ac_range_check_pwc in top pwc.
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const AC_RANGE_CHECK_BASE_ADDR: usize = 0x1474000;
+pub const AC_RANGE_CHECK_PWC_BASE_ADDR: usize = 0x1474000;
 
-/// Peripheral size for ac_range_check in top pwc.
+/// Peripheral size for ac_range_check_pwc in top pwc.
 ///
 /// This is the size (in bytes) of the peripheral's reserved memory area. All
 /// memory-mapped registers associated with this peripheral should have an
-/// address between #AC_RANGE_CHECK_BASE_ADDR and
-/// `AC_RANGE_CHECK_BASE_ADDR + AC_RANGE_CHECK_SIZE_BYTES`.
-pub const AC_RANGE_CHECK_SIZE_BYTES: usize = 0x400;
+/// address between #AC_RANGE_CHECK_PWC_BASE_ADDR and
+/// `AC_RANGE_CHECK_PWC_BASE_ADDR + AC_RANGE_CHECK_PWC_SIZE_BYTES`.
+pub const AC_RANGE_CHECK_PWC_SIZE_BYTES: usize = 0x400;

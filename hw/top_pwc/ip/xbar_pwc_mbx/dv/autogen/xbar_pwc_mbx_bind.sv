@@ -56,17 +56,17 @@ module xbar_pwc_mbx_bind;
     .h2d    (tl_mbx_pcie0__soc_o),
     .d2h    (tl_mbx_pcie0__soc_i)
   );
-  bind xbar_pwc_mbx tlul_assert #(.EndpointType("Host")) tlul_assert_device_racl_ctrl (
+  bind xbar_pwc_mbx tlul_assert #(.EndpointType("Host")) tlul_assert_device_racl_ctrl_pwc (
     .clk_i  (clk_mbx_i),
     .rst_ni (rst_mbx_ni),
-    .h2d    (tl_racl_ctrl_o),
-    .d2h    (tl_racl_ctrl_i)
+    .h2d    (tl_racl_ctrl_pwc_o),
+    .d2h    (tl_racl_ctrl_pwc_i)
   );
-  bind xbar_pwc_mbx tlul_assert #(.EndpointType("Host")) tlul_assert_device_ac_range_check (
+  bind xbar_pwc_mbx tlul_assert #(.EndpointType("Host")) tlul_assert_device_ac_range_check_pwc (
     .clk_i  (clk_mbx_i),
     .rst_ni (rst_mbx_ni),
-    .h2d    (tl_ac_range_check_o),
-    .d2h    (tl_ac_range_check_i)
+    .h2d    (tl_ac_range_check_pwc_o),
+    .d2h    (tl_ac_range_check_pwc_i)
   );
 `endif
 endmodule

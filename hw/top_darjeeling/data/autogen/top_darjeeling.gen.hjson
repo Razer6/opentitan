@@ -4890,6 +4890,8 @@
       incoming_interrupt:
       [
         rot_external_irq_cfg.hjson
+        ../../top_mio/data/autogen/outgoing_interrupts_mio.hjson
+        ../../top_pwc/data/autogen/outgoing_interrupts_pwc.hjson
       ]
       clock_connections:
       {
@@ -17742,8 +17744,8 @@
         lpg_idx: 1
       }
       {
-        name: racl_ctrl_fatal_fault
-        module_name: racl_ctrl
+        name: racl_ctrl_mio_fatal_fault
+        module_name: racl_ctrl_mio
         index: 22
         type: alert
         async: 1
@@ -17751,8 +17753,8 @@
         lpg_idx: 1
       }
       {
-        name: racl_ctrl_recov_ctrl_update_err
-        module_name: racl_ctrl
+        name: racl_ctrl_mio_recov_ctrl_update_err
+        module_name: racl_ctrl_mio
         index: 23
         type: alert
         async: 1
@@ -17760,8 +17762,8 @@
         lpg_idx: 1
       }
       {
-        name: ac_range_check_recov_ctrl_update_err
-        module_name: ac_range_check
+        name: ac_range_check_mio_recov_ctrl_update_err
+        module_name: ac_range_check_mio
         index: 24
         type: alert
         async: 1
@@ -17769,8 +17771,8 @@
         lpg_idx: 1
       }
       {
-        name: ac_range_check_fatal_fault
-        module_name: ac_range_check
+        name: ac_range_check_mio_fatal_fault
+        module_name: ac_range_check_mio
         index: 25
         type: alert
         async: 1
@@ -18024,8 +18026,8 @@
         lpg_idx: 1
       }
       {
-        name: racl_ctrl_fatal_fault
-        module_name: racl_ctrl
+        name: racl_ctrl_pwc_fatal_fault
+        module_name: racl_ctrl_pwc
         index: 23
         type: alert
         async: 1
@@ -18033,8 +18035,8 @@
         lpg_idx: 1
       }
       {
-        name: racl_ctrl_recov_ctrl_update_err
-        module_name: racl_ctrl
+        name: racl_ctrl_pwc_recov_ctrl_update_err
+        module_name: racl_ctrl_pwc
         index: 24
         type: alert
         async: 1
@@ -18042,8 +18044,8 @@
         lpg_idx: 1
       }
       {
-        name: ac_range_check_recov_ctrl_update_err
-        module_name: ac_range_check
+        name: ac_range_check_pwc_recov_ctrl_update_err
+        module_name: ac_range_check_pwc
         index: 25
         type: alert
         async: 1
@@ -18051,8 +18053,8 @@
         lpg_idx: 1
       }
       {
-        name: ac_range_check_fatal_fault
-        module_name: ac_range_check
+        name: ac_range_check_pwc_fatal_fault
+        module_name: ac_range_check_pwc
         index: 26
         type: alert
         async: 1
@@ -18729,20 +18731,6 @@
         default_val: false
       }
       {
-        name: RACL_ERROR
-        module_name: PWC
-        type: interrupt
-        intr_type: IntrType.Status
-        default_val: false
-      }
-      {
-        name: RACL_ERROR
-        module_name: MIO
-        type: interrupt
-        intr_type: IntrType.Status
-        default_val: false
-      }
-      {
         name: CLASS_A
         module_name: LIO_GRP_A_ALERTHANDLER
         type: interrupt
@@ -18874,6 +18862,48 @@
         type: interrupt
         intr_type: IntrType.Status
         default_val: false
+      }
+    ]
+    mio:
+    [
+      {
+        name: racl_ctrl_mio_racl_error
+        module_name: racl_ctrl_mio
+        desc: racl_ctrl_mio racl_error interrupt
+        type: interrupt
+        width: 1
+        intr_type: IntrType.Status
+        default_val: False
+      }
+      {
+        name: ac_range_check_mio_deny_cnt_reached
+        module_name: ac_range_check_mio
+        desc: ac_range_check_mio deny_cnt_reached interrupt
+        type: interrupt
+        width: 1
+        intr_type: IntrType.Event
+        default_val: False
+      }
+    ]
+    pwc:
+    [
+      {
+        name: racl_ctrl_pwc_racl_error
+        module_name: racl_ctrl_pwc
+        desc: racl_ctrl_pwc racl_error interrupt
+        type: interrupt
+        width: 1
+        intr_type: IntrType.Status
+        default_val: False
+      }
+      {
+        name: ac_range_check_pwc_deny_cnt_reached
+        module_name: ac_range_check_pwc
+        desc: ac_range_check_pwc deny_cnt_reached interrupt
+        type: interrupt
+        width: 1
+        intr_type: IntrType.Event
+        default_val: False
       }
     ]
   }
@@ -24646,26 +24676,6 @@
       width: 1
     }
     {
-      name: PWC_RACL_ERROR
-      module_name: PWC
-      type: interrupt
-      intr_type: IntrType.Status
-      default_val: false
-      desc: PWC RACL_ERROR incoming interrupt
-      incoming: true
-      width: 1
-    }
-    {
-      name: MIO_RACL_ERROR
-      module_name: MIO
-      type: interrupt
-      intr_type: IntrType.Status
-      default_val: false
-      desc: MIO RACL_ERROR incoming interrupt
-      incoming: true
-      width: 1
-    }
-    {
       name: LIO_GRP_A_ALERTHANDLER_CLASS_A
       module_name: LIO_GRP_A_ALERTHANDLER
       type: interrupt
@@ -24854,6 +24864,46 @@
       desc: SCSCTNIF1_AC_RANGE_CTN DENY_CNT_REACHED incoming interrupt
       incoming: true
       width: 1
+    }
+    {
+      name: racl_ctrl_mio_racl_ctrl_mio_racl_error
+      module_name: racl_ctrl_mio
+      desc: racl_ctrl_mio racl_ctrl_mio_racl_error incoming interrupt
+      type: interrupt
+      width: 1
+      intr_type: IntrType.Status
+      default_val: False
+      incoming: true
+    }
+    {
+      name: ac_range_check_mio_ac_range_check_mio_deny_cnt_reached
+      module_name: ac_range_check_mio
+      desc: ac_range_check_mio ac_range_check_mio_deny_cnt_reached incoming interrupt
+      type: interrupt
+      width: 1
+      intr_type: IntrType.Event
+      default_val: False
+      incoming: true
+    }
+    {
+      name: racl_ctrl_pwc_racl_ctrl_pwc_racl_error
+      module_name: racl_ctrl_pwc
+      desc: racl_ctrl_pwc racl_ctrl_pwc_racl_error incoming interrupt
+      type: interrupt
+      width: 1
+      intr_type: IntrType.Status
+      default_val: False
+      incoming: true
+    }
+    {
+      name: ac_range_check_pwc_ac_range_check_pwc_deny_cnt_reached
+      module_name: ac_range_check_pwc
+      desc: ac_range_check_pwc ac_range_check_pwc_deny_cnt_reached incoming interrupt
+      type: interrupt
+      width: 1
+      intr_type: IntrType.Event
+      default_val: False
+      incoming: true
     }
   ]
   outgoing_interrupt: {}

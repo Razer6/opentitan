@@ -7,13 +7,22 @@
 {
     mio: [
         {
-            name: racl_ctrl_racl_error
-            module_name: racl_ctrl
-            desc: racl_ctrl racl_error interrupt
-            index: 0
+            name: racl_ctrl_mio_racl_error
+            module_name: racl_ctrl_mio
+            desc: racl_ctrl_mio racl_error interrupt
             type: interrupt
             width: 1
             intr_type: IntrType.Status
+            default_val: False
+        }
+        {
+            name: ac_range_check_mio_deny_cnt_reached
+            module_name: ac_range_check_mio
+            desc: ac_range_check_mio deny_cnt_reached interrupt
+            type: interrupt
+            width: 1
+            intr_type: IntrType.Event
+            default_val: False
         }
     ]
 }

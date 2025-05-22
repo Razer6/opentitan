@@ -146,39 +146,39 @@
  */
 #define TOP_MIO_SOC_MBX_MBX_PCIE0_SOC_SIZE_BYTES 0x20
 /**
- * Peripheral base address for racl_ctrl in top mio.
+ * Peripheral base address for racl_ctrl_mio in top mio.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR 0x1481F00
+#define TOP_MIO_SOC_MBX_RACL_CTRL_MIO_BASE_ADDR 0x1481F00
 
 /**
- * Peripheral size for racl_ctrl in top mio.
+ * Peripheral size for racl_ctrl_mio in top mio.
  *
  * This is the size (in bytes) of the peripheral's reserved memory area. All
  * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR and
- * `TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR + TOP_MIO_SOC_MBX_RACL_CTRL_SIZE_BYTES`.
+ * address between #TOP_MIO_SOC_MBX_RACL_CTRL_MIO_BASE_ADDR and
+ * `TOP_MIO_SOC_MBX_RACL_CTRL_MIO_BASE_ADDR + TOP_MIO_SOC_MBX_RACL_CTRL_MIO_SIZE_BYTES`.
  */
-#define TOP_MIO_SOC_MBX_RACL_CTRL_SIZE_BYTES 0x100
+#define TOP_MIO_SOC_MBX_RACL_CTRL_MIO_SIZE_BYTES 0x100
 /**
- * Peripheral base address for ac_range_check in top mio.
+ * Peripheral base address for ac_range_check_mio in top mio.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
  * registers associated with the peripheral (usually via a DIF).
  */
-#define TOP_MIO_SOC_MBX_AC_RANGE_CHECK_BASE_ADDR 0x1484000
+#define TOP_MIO_SOC_MBX_AC_RANGE_CHECK_MIO_BASE_ADDR 0x1484000
 
 /**
- * Peripheral size for ac_range_check in top mio.
+ * Peripheral size for ac_range_check_mio in top mio.
  *
  * This is the size (in bytes) of the peripheral's reserved memory area. All
  * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_MIO_SOC_MBX_AC_RANGE_CHECK_BASE_ADDR and
- * `TOP_MIO_SOC_MBX_AC_RANGE_CHECK_BASE_ADDR + TOP_MIO_SOC_MBX_AC_RANGE_CHECK_SIZE_BYTES`.
+ * address between #TOP_MIO_SOC_MBX_AC_RANGE_CHECK_MIO_BASE_ADDR and
+ * `TOP_MIO_SOC_MBX_AC_RANGE_CHECK_MIO_BASE_ADDR + TOP_MIO_SOC_MBX_AC_RANGE_CHECK_MIO_SIZE_BYTES`.
  */
-#define TOP_MIO_SOC_MBX_AC_RANGE_CHECK_SIZE_BYTES 0x400
+#define TOP_MIO_SOC_MBX_AC_RANGE_CHECK_MIO_SIZE_BYTES 0x400
 
 
 #endif  // __ASSEMBLER__

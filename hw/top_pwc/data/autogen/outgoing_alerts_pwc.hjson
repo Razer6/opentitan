@@ -214,8 +214,8 @@
             lpg_idx: 1
         }
         {
-            name: racl_ctrl_fatal_fault
-            module_name: racl_ctrl
+            name: racl_ctrl_pwc_fatal_fault
+            module_name: racl_ctrl_pwc
             index: 23
             type: alert
             async: 1
@@ -223,8 +223,8 @@
             lpg_idx: 1
         }
         {
-            name: racl_ctrl_recov_ctrl_update_err
-            module_name: racl_ctrl
+            name: racl_ctrl_pwc_recov_ctrl_update_err
+            module_name: racl_ctrl_pwc
             index: 24
             type: alert
             async: 1
@@ -232,8 +232,8 @@
             lpg_idx: 1
         }
         {
-            name: ac_range_check_recov_ctrl_update_err
-            module_name: ac_range_check
+            name: ac_range_check_pwc_recov_ctrl_update_err
+            module_name: ac_range_check_pwc
             index: 25
             type: alert
             async: 1
@@ -241,8 +241,8 @@
             lpg_idx: 1
         }
         {
-            name: ac_range_check_fatal_fault
-            module_name: ac_range_check
+            name: ac_range_check_pwc_fatal_fault
+            module_name: ac_range_check_pwc
             index: 26
             type: alert
             async: 1

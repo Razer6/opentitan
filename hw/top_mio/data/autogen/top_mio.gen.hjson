@@ -426,7 +426,7 @@
           width: 1
           inst_name: rv_timer
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -439,7 +439,7 @@
           width: 1
           inst_name: rv_timer
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 0
         }
         {
@@ -596,7 +596,7 @@
           width: 1
           inst_name: aon_timer_aon
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -609,7 +609,7 @@
           width: 1
           inst_name: aon_timer_aon
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 1
         }
         {
@@ -856,7 +856,7 @@
           width: 1
           inst_name: mio_soc_proxy
           default: ""
-          top_signame: ac_range_check_ctn_filtered_tl_h2d
+          top_signame: ac_range_check_mio_ctn_filtered_tl_h2d
           index: -1
         }
         {
@@ -869,7 +869,7 @@
           width: 1
           inst_name: mio_soc_proxy
           default: ""
-          top_signame: ac_range_check_ctn_filtered_tl_d2h
+          top_signame: ac_range_check_mio_ctn_filtered_tl_d2h
           index: -1
         }
         {
@@ -1288,7 +1288,7 @@
           width: 1
           inst_name: sram_ctrl_ret_aon
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -1301,7 +1301,7 @@
           width: 1
           inst_name: sram_ctrl_ret_aon
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 2
         }
         {
@@ -1693,7 +1693,7 @@
           width: 1
           inst_name: rv_dm
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -1706,7 +1706,7 @@
           width: 1
           inst_name: rv_dm
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 3
         }
         {
@@ -1853,7 +1853,7 @@
           width: 1
           inst_name: rv_plic_mio
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -1866,7 +1866,7 @@
           width: 1
           inst_name: rv_plic_mio
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 4
         }
         {
@@ -1935,7 +1935,6 @@
             PRIO_34: 0
             PRIO_35: 0
             PRIO_36: 0
-            PRIO_37: 0
             IP_0: 0
             IP_1: 0
             IE0_0: 0
@@ -2269,7 +2268,7 @@
           width: 1
           inst_name: sram_ctrl_main
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -2282,7 +2281,7 @@
           width: 1
           inst_name: sram_ctrl_main
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 5
         }
         {
@@ -2641,7 +2640,7 @@
           width: 1
           inst_name: sram_ctrl_mbox
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -2654,7 +2653,7 @@
           width: 1
           inst_name: sram_ctrl_mbox
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 6
         }
         {
@@ -2842,7 +2841,7 @@
           width: 1
           inst_name: dma
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -2855,7 +2854,7 @@
           width: 1
           inst_name: dma
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 7
         }
         {
@@ -3108,7 +3107,7 @@
           width: 1
           inst_name: mbx0
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -3121,7 +3120,7 @@
           width: 1
           inst_name: mbx0
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 8
         }
         {
@@ -3305,7 +3304,7 @@
           width: 1
           inst_name: mbx1
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -3318,7 +3317,7 @@
           width: 1
           inst_name: mbx1
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 9
         }
         {
@@ -3502,7 +3501,7 @@
           width: 1
           inst_name: mbx2
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -3515,7 +3514,7 @@
           width: 1
           inst_name: mbx2
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 10
         }
         {
@@ -3699,7 +3698,7 @@
           width: 1
           inst_name: mbx3
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -3712,7 +3711,7 @@
           width: 1
           inst_name: mbx3
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 11
         }
         {
@@ -3896,7 +3895,7 @@
           width: 1
           inst_name: mbx4
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -3909,7 +3908,7 @@
           width: 1
           inst_name: mbx4
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 12
         }
         {
@@ -4093,7 +4092,7 @@
           width: 1
           inst_name: mbx5
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -4106,7 +4105,7 @@
           width: 1
           inst_name: mbx5
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 13
         }
         {
@@ -4290,7 +4289,7 @@
           width: 1
           inst_name: mbx_pcie0
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -4303,7 +4302,7 @@
           width: 1
           inst_name: mbx_pcie0
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 14
         }
         {
@@ -4352,7 +4351,7 @@
       ]
     }
     {
-      name: racl_ctrl
+      name: racl_ctrl_mio
       type: racl_ctrl_mio
       template_type: racl_ctrl
       clock_srcs:
@@ -4390,7 +4389,7 @@
           default: 17
           local: "true"
           expose: "true"
-          name_top: RaclCtrlNumSubscribingIps
+          name_top: RaclCtrlMioNumSubscribingIps
         }
         {
           name: NumExternalSubscribingIps
@@ -4399,7 +4398,7 @@
           default: 1
           local: "false"
           expose: "true"
-          name_top: RaclCtrlNumExternalSubscribingIps
+          name_top: RaclCtrlMioNumExternalSubscribingIps
         }
       ]
       inter_signal_list:
@@ -4412,11 +4411,11 @@
           type: uni
           act: req
           width: 1
-          inst_name: racl_ctrl
+          inst_name: racl_ctrl_mio
           default: ""
           end_idx: -1
           top_type: broadcast
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
           external: true
           conn_type: true
@@ -4441,13 +4440,13 @@
             default: 17
             local: true
             expose: true
-            name_top: RaclCtrlNumSubscribingIps
+            name_top: RaclCtrlMioNumSubscribingIps
           }
-          inst_name: racl_ctrl
+          inst_name: racl_ctrl_mio
           default: ""
           end_idx: -1
           top_type: one-to-N
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: -1
         }
         {
@@ -4470,9 +4469,9 @@
             default: 1
             local: false
             expose: true
-            name_top: RaclCtrlNumExternalSubscribingIps
+            name_top: RaclCtrlMioNumExternalSubscribingIps
           }
-          inst_name: racl_ctrl
+          inst_name: racl_ctrl_mio
           default: ""
           external: true
           top_signame: racl_error
@@ -4486,10 +4485,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: racl_ctrl
+          inst_name: racl_ctrl_mio
           default: ""
           end_idx: -1
-          top_signame: racl_ctrl_tl
+          top_signame: racl_ctrl_mio_tl
           index: -1
         }
       ]
@@ -4507,7 +4506,7 @@
       ]
     }
     {
-      name: ac_range_check
+      name: ac_range_check_mio
       type: ac_range_check_mio
       template_type: ac_range_check
       clock_srcs:
@@ -4529,6 +4528,7 @@
       }
       attr: ipgen
       outgoing_alert: mio
+      outgoing_interrupt: mio
       clock_connections:
       {
         clk_i: clk_ext_main_i
@@ -4549,7 +4549,7 @@
           default: "1"
           local: "false"
           expose: "true"
-          name_top: AcRangeCheckRangeCheckErrorRsp
+          name_top: AcRangeCheckMioRangeCheckErrorRsp
         }
       ]
       inter_signal_list:
@@ -4562,7 +4562,7 @@
           type: uni
           act: rcv
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_mio
           default: ""
           external: true
           top_signame: ac_range_check_overwrite
@@ -4577,7 +4577,7 @@
           type: uni
           act: rcv
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_mio
           default: ""
           top_signame: mio_soc_proxy_muxed_tl_h2d
           index: -1
@@ -4590,7 +4590,7 @@
           type: uni
           act: req
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_mio
           default: ""
           top_signame: mio_soc_proxy_muxed_tl_d2h
           index: -1
@@ -4603,11 +4603,11 @@
           type: uni
           act: req
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_mio
           default: ""
           end_idx: -1
           top_type: broadcast
-          top_signame: ac_range_check_ctn_filtered_tl_h2d
+          top_signame: ac_range_check_mio_ctn_filtered_tl_h2d
           index: -1
         }
         {
@@ -4618,11 +4618,11 @@
           type: uni
           act: rcv
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_mio
           default: ""
           end_idx: -1
           top_type: broadcast
-          top_signame: ac_range_check_ctn_filtered_tl_d2h
+          top_signame: ac_range_check_mio_ctn_filtered_tl_d2h
           index: -1
         }
         {
@@ -4637,9 +4637,9 @@
           type: uni
           act: rcv
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_mio
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -4650,9 +4650,9 @@
           type: uni
           act: req
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_mio
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 15
         }
         {
@@ -4662,10 +4662,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_mio
           default: ""
           end_idx: -1
-          top_signame: ac_range_check_tl
+          top_signame: ac_range_check_mio_tl
           index: -1
         }
       ]
@@ -5614,7 +5614,7 @@
           width: 1
           inst_name: rv_core_ibex_mio
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_mio_racl_policies
           index: -1
         }
         {
@@ -5627,7 +5627,7 @@
           width: 1
           inst_name: rv_core_ibex_mio
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_mio_racl_error
           index: 16
         }
         {
@@ -5740,17 +5740,17 @@
       ]
       mio_soc_proxy.muxed_tl_h2d:
       [
-        ac_range_check.ctn_tl_h2d
+        ac_range_check_mio.ctn_tl_h2d
       ]
       mio_soc_proxy.muxed_tl_d2h:
       [
-        ac_range_check.ctn_tl_d2h
+        ac_range_check_mio.ctn_tl_d2h
       ]
-      ac_range_check.ctn_filtered_tl_h2d:
+      ac_range_check_mio.ctn_filtered_tl_h2d:
       [
         mio_soc_proxy.ac_range_tl_h2d
       ]
-      ac_range_check.ctn_filtered_tl_d2h:
+      ac_range_check_mio.ctn_filtered_tl_d2h:
       [
         mio_soc_proxy.ac_range_tl_d2h
       ]
@@ -5914,15 +5914,15 @@
       [
         mio_mbx.tl_mbx_pcie0__soc
       ]
-      racl_ctrl.tl:
+      racl_ctrl_mio.tl:
       [
-        mio_mbx.tl_racl_ctrl
+        mio_mbx.tl_racl_ctrl_mio
       ]
-      ac_range_check.tl:
+      ac_range_check_mio.tl:
       [
-        mio_mbx.tl_ac_range_check
+        mio_mbx.tl_ac_range_check_mio
       ]
-      racl_ctrl.racl_policies:
+      racl_ctrl_mio.racl_policies:
       [
         rv_timer.racl_policies
         aon_timer_aon.racl_policies
@@ -5939,10 +5939,10 @@
         mbx4.racl_policies
         mbx5.racl_policies
         mbx_pcie0.racl_policies
-        ac_range_check.racl_policies
+        ac_range_check_mio.racl_policies
         rv_core_ibex_mio.racl_policies
       ]
-      racl_ctrl.racl_error:
+      racl_ctrl_mio.racl_error:
       [
         rv_timer.racl_error
         aon_timer_aon.racl_error
@@ -5959,7 +5959,7 @@
         mbx4.racl_error
         mbx5.racl_error
         mbx_pcie0.racl_error
-        ac_range_check.racl_error
+        ac_range_check_mio.racl_error
         rv_core_ibex_mio.racl_error
       ]
     }
@@ -5996,9 +5996,9 @@
       sram_ctrl_main.cfg_rsp: sram_ctrl_main_ram_1p_cfg_rsp
       sram_ctrl_mbox.cfg: sram_ctrl_mbox_ram_1p_cfg
       sram_ctrl_mbox.cfg_rsp: sram_ctrl_mbox_ram_1p_cfg_rsp
-      racl_ctrl.racl_policies: racl_policies
-      racl_ctrl.racl_error_external: racl_error
-      ac_range_check.range_check_overwrite: ac_range_check_overwrite
+      racl_ctrl_mio.racl_policies: racl_policies
+      racl_ctrl_mio.racl_error_external: racl_error
+      ac_range_check_mio.range_check_overwrite: ac_range_check_overwrite
     }
   }
   xbar:
@@ -7267,8 +7267,8 @@
           mbx4.soc
           mbx5.soc
           mbx_pcie0.soc
-          racl_ctrl
-          ac_range_check
+          racl_ctrl_mio
+          ac_range_check_mio
         ]
       }
       nodes:
@@ -7441,7 +7441,7 @@
           req_fifo_pass: true
         }
         {
-          name: racl_ctrl
+          name: racl_ctrl_mio
           type: device
           addr_space: soc_mbx
           clock: clk_mbx_i
@@ -7463,7 +7463,7 @@
           req_fifo_pass: true
         }
         {
-          name: ac_range_check
+          name: ac_range_check_mio
           type: device
           addr_space: soc_mbx
           clock: clk_mbx_i
@@ -7592,7 +7592,7 @@
           index: -1
         }
         {
-          name: tl_racl_ctrl
+          name: tl_racl_ctrl_mio
           struct: tl
           package: tlul_pkg
           type: req_rsp
@@ -7600,11 +7600,11 @@
           inst_name: mio_mbx
           width: 1
           default: ""
-          top_signame: racl_ctrl_tl
+          top_signame: racl_ctrl_mio_tl
           index: -1
         }
         {
-          name: tl_ac_range_check
+          name: tl_ac_range_check_mio
           struct: tl
           package: tlul_pkg
           type: req_rsp
@@ -7612,7 +7612,7 @@
           inst_name: mio_mbx
           width: 1
           default: ""
-          top_signame: ac_range_check_tl
+          top_signame: ac_range_check_mio_tl
           index: -1
         }
       ]
@@ -11779,42 +11779,42 @@
         lpg_idx: 1
       }
       {
-        name: racl_ctrl_fatal_fault
+        name: racl_ctrl_mio_fatal_fault
         width: 1
         type: alert
         async: "1"
-        module_name: racl_ctrl
-        desc: racl_ctrl fatal_fault alert
+        module_name: racl_ctrl_mio
+        desc: racl_ctrl_mio fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
         lpg_idx: 1
       }
       {
-        name: racl_ctrl_recov_ctrl_update_err
+        name: racl_ctrl_mio_recov_ctrl_update_err
         width: 1
         type: alert
         async: "1"
-        module_name: racl_ctrl
-        desc: racl_ctrl recov_ctrl_update_err alert
+        module_name: racl_ctrl_mio
+        desc: racl_ctrl_mio recov_ctrl_update_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
         lpg_idx: 1
       }
       {
-        name: ac_range_check_recov_ctrl_update_err
+        name: ac_range_check_mio_recov_ctrl_update_err
         width: 1
         type: alert
         async: "1"
-        module_name: ac_range_check
-        desc: ac_range_check recov_ctrl_update_err alert
+        module_name: ac_range_check_mio
+        desc: ac_range_check_mio recov_ctrl_update_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
         lpg_idx: 1
       }
       {
-        name: ac_range_check_fatal_fault
+        name: ac_range_check_mio_fatal_fault
         width: 1
         type: alert
         async: "1"
-        module_name: ac_range_check
-        desc: ac_range_check fatal_fault alert
+        module_name: ac_range_check_mio
+        desc: ac_range_check_mio fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
         lpg_idx: 1
       }
@@ -12133,16 +12133,6 @@
       incoming: false
     }
     {
-      name: ac_range_check_deny_cnt_reached
-      width: 1
-      type: interrupt
-      module_name: ac_range_check
-      desc: ac_range_check deny_cnt_reached interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
       name: MIO_HDR_IPI_FROM_MIO_0
       module_name: MIO_HDR
       type: interrupt
@@ -12238,12 +12228,22 @@
     mio:
     [
       {
-        name: racl_ctrl_racl_error
+        name: racl_ctrl_mio_racl_error
         width: 1
         type: interrupt
-        module_name: racl_ctrl
-        desc: racl_ctrl racl_error interrupt
+        module_name: racl_ctrl_mio
+        desc: racl_ctrl_mio racl_error interrupt
         intr_type: IntrType.Status
+        default_val: false
+        incoming: false
+      }
+      {
+        name: ac_range_check_mio_deny_cnt_reached
+        width: 1
+        type: interrupt
+        module_name: ac_range_check_mio
+        desc: ac_range_check_mio deny_cnt_reached interrupt
+        intr_type: IntrType.Event
         default_val: false
         incoming: false
       }
@@ -12262,7 +12262,6 @@
     mbx4
     mbx5
     mbx_pcie0
-    ac_range_check
   ]
   outgoing_alert_module:
   {
@@ -12283,8 +12282,8 @@
       mbx4
       mbx5
       mbx_pcie0
-      racl_ctrl
-      ac_range_check
+      racl_ctrl_mio
+      ac_range_check_mio
       rv_core_ibex_mio
     ]
   }
@@ -12292,7 +12291,8 @@
   {
     mio:
     [
-      racl_ctrl
+      racl_ctrl_mio
+      ac_range_check_mio
     ]
   }
   alert_lpgs: []
@@ -12344,7 +12344,7 @@
         width: 1
         inst_name: rv_timer
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -12357,7 +12357,7 @@
         width: 1
         inst_name: rv_timer
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 0
       }
       {
@@ -12442,7 +12442,7 @@
         width: 1
         inst_name: aon_timer_aon
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -12455,7 +12455,7 @@
         width: 1
         inst_name: aon_timer_aon
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 1
       }
       {
@@ -12617,7 +12617,7 @@
         width: 1
         inst_name: mio_soc_proxy
         default: ""
-        top_signame: ac_range_check_ctn_filtered_tl_h2d
+        top_signame: ac_range_check_mio_ctn_filtered_tl_h2d
         index: -1
       }
       {
@@ -12630,7 +12630,7 @@
         width: 1
         inst_name: mio_soc_proxy
         default: ""
-        top_signame: ac_range_check_ctn_filtered_tl_d2h
+        top_signame: ac_range_check_mio_ctn_filtered_tl_d2h
         index: -1
       }
       {
@@ -12838,7 +12838,7 @@
         width: 1
         inst_name: sram_ctrl_ret_aon
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -12851,7 +12851,7 @@
         width: 1
         inst_name: sram_ctrl_ret_aon
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 2
       }
       {
@@ -13127,7 +13127,7 @@
         width: 1
         inst_name: rv_dm
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -13140,7 +13140,7 @@
         width: 1
         inst_name: rv_dm
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 3
       }
       {
@@ -13246,7 +13246,7 @@
         width: 1
         inst_name: rv_plic_mio
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -13259,7 +13259,7 @@
         width: 1
         inst_name: rv_plic_mio
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 4
       }
       {
@@ -13385,7 +13385,7 @@
         width: 1
         inst_name: sram_ctrl_main
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -13398,7 +13398,7 @@
         width: 1
         inst_name: sram_ctrl_main
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 5
       }
       {
@@ -13545,7 +13545,7 @@
         width: 1
         inst_name: sram_ctrl_mbox
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -13558,7 +13558,7 @@
         width: 1
         inst_name: sram_ctrl_mbox
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 6
       }
       {
@@ -13666,7 +13666,7 @@
         width: 1
         inst_name: dma
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -13679,7 +13679,7 @@
         width: 1
         inst_name: dma
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 7
       }
       {
@@ -13761,7 +13761,7 @@
         width: 1
         inst_name: mbx0
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -13774,7 +13774,7 @@
         width: 1
         inst_name: mbx0
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 8
       }
       {
@@ -13869,7 +13869,7 @@
         width: 1
         inst_name: mbx1
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -13882,7 +13882,7 @@
         width: 1
         inst_name: mbx1
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 9
       }
       {
@@ -13977,7 +13977,7 @@
         width: 1
         inst_name: mbx2
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -13990,7 +13990,7 @@
         width: 1
         inst_name: mbx2
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 10
       }
       {
@@ -14085,7 +14085,7 @@
         width: 1
         inst_name: mbx3
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -14098,7 +14098,7 @@
         width: 1
         inst_name: mbx3
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 11
       }
       {
@@ -14193,7 +14193,7 @@
         width: 1
         inst_name: mbx4
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -14206,7 +14206,7 @@
         width: 1
         inst_name: mbx4
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 12
       }
       {
@@ -14301,7 +14301,7 @@
         width: 1
         inst_name: mbx5
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -14314,7 +14314,7 @@
         width: 1
         inst_name: mbx5
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 13
       }
       {
@@ -14409,7 +14409,7 @@
         width: 1
         inst_name: mbx_pcie0
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -14422,7 +14422,7 @@
         width: 1
         inst_name: mbx_pcie0
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 14
       }
       {
@@ -14471,11 +14471,11 @@
         type: uni
         act: req
         width: 1
-        inst_name: racl_ctrl
+        inst_name: racl_ctrl_mio
         default: ""
         end_idx: -1
         top_type: broadcast
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
         external: true
         conn_type: true
@@ -14500,13 +14500,13 @@
           default: 17
           local: true
           expose: true
-          name_top: RaclCtrlNumSubscribingIps
+          name_top: RaclCtrlMioNumSubscribingIps
         }
-        inst_name: racl_ctrl
+        inst_name: racl_ctrl_mio
         default: ""
         end_idx: -1
         top_type: one-to-N
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: -1
       }
       {
@@ -14529,9 +14529,9 @@
           default: 1
           local: false
           expose: true
-          name_top: RaclCtrlNumExternalSubscribingIps
+          name_top: RaclCtrlMioNumExternalSubscribingIps
         }
-        inst_name: racl_ctrl
+        inst_name: racl_ctrl_mio
         default: ""
         external: true
         top_signame: racl_error
@@ -14545,10 +14545,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: racl_ctrl
+        inst_name: racl_ctrl_mio
         default: ""
         end_idx: -1
-        top_signame: racl_ctrl_tl
+        top_signame: racl_ctrl_mio_tl
         index: -1
       }
       {
@@ -14559,7 +14559,7 @@
         type: uni
         act: rcv
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_mio
         default: ""
         external: true
         top_signame: ac_range_check_overwrite
@@ -14574,7 +14574,7 @@
         type: uni
         act: rcv
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_mio
         default: ""
         top_signame: mio_soc_proxy_muxed_tl_h2d
         index: -1
@@ -14587,7 +14587,7 @@
         type: uni
         act: req
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_mio
         default: ""
         top_signame: mio_soc_proxy_muxed_tl_d2h
         index: -1
@@ -14600,11 +14600,11 @@
         type: uni
         act: req
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_mio
         default: ""
         end_idx: -1
         top_type: broadcast
-        top_signame: ac_range_check_ctn_filtered_tl_h2d
+        top_signame: ac_range_check_mio_ctn_filtered_tl_h2d
         index: -1
       }
       {
@@ -14615,11 +14615,11 @@
         type: uni
         act: rcv
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_mio
         default: ""
         end_idx: -1
         top_type: broadcast
-        top_signame: ac_range_check_ctn_filtered_tl_d2h
+        top_signame: ac_range_check_mio_ctn_filtered_tl_d2h
         index: -1
       }
       {
@@ -14634,9 +14634,9 @@
         type: uni
         act: rcv
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_mio
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -14647,9 +14647,9 @@
         type: uni
         act: req
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_mio
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 15
       }
       {
@@ -14659,10 +14659,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_mio
         default: ""
         end_idx: -1
-        top_signame: ac_range_check_tl
+        top_signame: ac_range_check_mio_tl
         index: -1
       }
       {
@@ -14944,7 +14944,7 @@
         width: 1
         inst_name: rv_core_ibex_mio
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_mio_racl_policies
         index: -1
       }
       {
@@ -14957,7 +14957,7 @@
         width: 1
         inst_name: rv_core_ibex_mio
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_mio_racl_error
         index: 16
       }
       {
@@ -15516,7 +15516,7 @@
         index: -1
       }
       {
-        name: tl_racl_ctrl
+        name: tl_racl_ctrl_mio
         struct: tl
         package: tlul_pkg
         type: req_rsp
@@ -15524,11 +15524,11 @@
         inst_name: mio_mbx
         width: 1
         default: ""
-        top_signame: racl_ctrl_tl
+        top_signame: racl_ctrl_mio_tl
         index: -1
       }
       {
-        name: tl_ac_range_check
+        name: tl_ac_range_check_mio
         struct: tl
         package: tlul_pkg
         type: req_rsp
@@ -15536,7 +15536,7 @@
         inst_name: mio_mbx
         width: 1
         default: ""
-        top_signame: ac_range_check_tl
+        top_signame: ac_range_check_mio_tl
         index: -1
       }
     ]
@@ -15948,7 +15948,7 @@
         direction: out
         conn_type: true
         index: -1
-        netname: racl_ctrl_racl_policies
+        netname: racl_ctrl_mio_racl_policies
       }
       {
         package: top_racl_pkg
@@ -15963,7 +15963,7 @@
           default: 1
           local: false
           expose: true
-          name_top: RaclCtrlNumExternalSubscribingIps
+          name_top: RaclCtrlMioNumExternalSubscribingIps
         }
         type: uni
         default: ""
@@ -16122,7 +16122,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: ac_range_check_ctn_filtered_tl_h2d
+        signame: ac_range_check_mio_ctn_filtered_tl_h2d
         width: 1
         type: uni
         end_idx: -1
@@ -16133,7 +16133,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: ac_range_check_ctn_filtered_tl_d2h
+        signame: ac_range_check_mio_ctn_filtered_tl_d2h
         width: 1
         type: uni
         end_idx: -1
@@ -17024,7 +17024,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: racl_ctrl_tl_req
+        signame: racl_ctrl_mio_tl_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -17035,7 +17035,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: racl_ctrl_tl_rsp
+        signame: racl_ctrl_mio_tl_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -17046,7 +17046,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: ac_range_check_tl_req
+        signame: ac_range_check_mio_tl_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -17057,7 +17057,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: ac_range_check_tl_rsp
+        signame: ac_range_check_mio_tl_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -17068,7 +17068,7 @@
       {
         package: top_racl_pkg
         struct: racl_policy_vec
-        signame: racl_ctrl_racl_policies
+        signame: racl_ctrl_mio_racl_policies
         width: 1
         type: uni
         end_idx: -1
@@ -17079,7 +17079,7 @@
       {
         package: top_racl_pkg
         struct: racl_error_log
-        signame: racl_ctrl_racl_error
+        signame: racl_ctrl_mio_racl_error
         width:
         {
           name: NumSubscribingIps
@@ -17089,7 +17089,7 @@
           default: 17
           local: true
           expose: true
-          name_top: RaclCtrlNumSubscribingIps
+          name_top: RaclCtrlMioNumSubscribingIps
         }
         type: uni
         end_idx: -1

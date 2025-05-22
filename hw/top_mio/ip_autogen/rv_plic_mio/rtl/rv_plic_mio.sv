@@ -142,12 +142,11 @@ module rv_plic_mio import rv_plic_mio_reg_pkg::*; #(
   assign prio[34] = reg2hw.prio[34].q;
   assign prio[35] = reg2hw.prio[35].q;
   assign prio[36] = reg2hw.prio[36].q;
-  assign prio[37] = reg2hw.prio[37].q;
 
   //////////////////////
   // Interrupt Enable //
   //////////////////////
-  for (genvar s = 0; s < 38; s++) begin : gen_ie0
+  for (genvar s = 0; s < 37; s++) begin : gen_ie0
     assign ie[0][s] = reg2hw.ie0[s].q;
   end
 
@@ -173,7 +172,7 @@ module rv_plic_mio import rv_plic_mio_reg_pkg::*; #(
   ////////
   // IP //
   ////////
-  for (genvar s = 0; s < 38; s++) begin : gen_ip
+  for (genvar s = 0; s < 37; s++) begin : gen_ip
     assign hw2reg.ip[s].de = 1'b1; // Always write
     assign hw2reg.ip[s].d  = ip[s];
   end

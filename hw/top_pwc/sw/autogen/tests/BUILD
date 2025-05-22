@@ -52,7 +52,6 @@ NR_IRQ_PERIPH_TESTS = 1
             "//hw/top_pwc/sw/autogen:top_pwc",
             "//sw/device/lib/arch:boot_stage",
             "//sw/device/lib/base:mmio",
-            "//sw/device/lib/dif/autogen:ac_range_check_pwc",
             "//sw/device/lib/dif/autogen:aon_timer",
             "//sw/device/lib/dif/autogen:dma",
             "//sw/device/lib/dif/autogen:gpio_pwc",

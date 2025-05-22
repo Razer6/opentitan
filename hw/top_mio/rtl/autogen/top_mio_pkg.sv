@@ -295,8 +295,8 @@ package top_mio_pkg;
     TopMioAlertPeripheralMbx4 = 12,
     TopMioAlertPeripheralMbx5 = 13,
     TopMioAlertPeripheralMbxPcie0 = 14,
-    TopMioAlertPeripheralRaclCtrl = 15,
-    TopMioAlertPeripheralAcRangeCheck = 16,
+    TopMioAlertPeripheralRaclCtrlMio = 15,
+    TopMioAlertPeripheralAcRangeCheckMio = 16,
     TopMioAlertPeripheralRvCoreIbexMio = 17,
     TopMioOutgoingAlertMioPeripheralCount
   } outgoing_alert_mio_peripheral_e;
@@ -325,10 +325,10 @@ package top_mio_pkg;
     TopMioAlertIdMbx5RecovFault = 19,
     TopMioAlertIdMbxPcie0FatalFault = 20,
     TopMioAlertIdMbxPcie0RecovFault = 21,
-    TopMioAlertIdRaclCtrlFatalFault = 22,
-    TopMioAlertIdRaclCtrlRecovCtrlUpdateErr = 23,
-    TopMioAlertIdAcRangeCheckRecovCtrlUpdateErr = 24,
-    TopMioAlertIdAcRangeCheckFatalFault = 25,
+    TopMioAlertIdRaclCtrlMioFatalFault = 22,
+    TopMioAlertIdRaclCtrlMioRecovCtrlUpdateErr = 23,
+    TopMioAlertIdAcRangeCheckMioRecovCtrlUpdateErr = 24,
+    TopMioAlertIdAcRangeCheckMioFatalFault = 25,
     TopMioAlertIdRvCoreIbexMioFatalSwErr = 26,
     TopMioAlertIdRvCoreIbexMioRecovSwErr = 27,
     TopMioAlertIdRvCoreIbexMioFatalHwErr = 28,
@@ -400,16 +400,15 @@ package top_mio_pkg;
     TopMioIrqIdMbxPcie0MbxReady = 25,
     TopMioIrqIdMbxPcie0MbxAbort = 26,
     TopMioIrqIdMbxPcie0MbxError = 27,
-    TopMioIrqIdAcRangeCheckDenyCntReached = 28,
-    TopMioIrqIdMioHdrIpiFromMio0 = 29,
-    TopMioIrqIdMioHdrIpiFromMio1 = 30,
-    TopMioIrqIdMioHdrIpiFromMio2 = 31,
-    TopMioIrqIdMioHdrIpiFromRot = 32,
-    TopMioIrqIdMioHdrIpiFromPwc = 33,
-    TopMioIrqIdMioHdrIpiFromDuc = 34,
-    TopMioIrqIdLioGrpAIbexIrq = 35,
-    TopMioIrqIdLioGrpBIbexIrq = 36,
-    TopMioIrqIdLioGrpCIbexIrq = 37,
+    TopMioIrqIdMioHdrIpiFromMio0 = 28,
+    TopMioIrqIdMioHdrIpiFromMio1 = 29,
+    TopMioIrqIdMioHdrIpiFromMio2 = 30,
+    TopMioIrqIdMioHdrIpiFromRot = 31,
+    TopMioIrqIdMioHdrIpiFromPwc = 32,
+    TopMioIrqIdMioHdrIpiFromDuc = 33,
+    TopMioIrqIdLioGrpAIbexIrq = 34,
+    TopMioIrqIdLioGrpBIbexIrq = 35,
+    TopMioIrqIdLioGrpCIbexIrq = 36,
     TopMioIrqIdCount
   } interrupt_id_e;
 
@@ -427,16 +426,17 @@ package top_mio_pkg;
     TopMioIncomingIrqMioExternalIdLioGrpAIbexIrq = 6,
     TopMioIncomingIrqMioExternalIdLioGrpBIbexIrq = 7,
     TopMioIncomingIrqMioExternalIdLioGrpCIbexIrq = 8,
-    TopMioIncomingIrqIdCount
+    TopMioIncomingIrqMioExternalIdCount
   } incoming_interrupt_mio_external_id_e;
 
   // Number of mio outgoing interrupts
-  parameter int unsigned NOutgoingInterruptsMio = 1;
+  parameter int unsigned NOutgoingInterruptsMio = 2;
 
   // Enumeration of interrupts for outgoing group mio
   typedef enum int unsigned {
-    TopMioOutgoingIrqMioIdRaclCtrlRaclError = 0,
-    TopMioOutgoingIrqIdCount
+    TopMioOutgoingIrqMioIdRaclCtrlMioRaclError = 0,
+    TopMioOutgoingIrqMioIdAcRangeCheckMioDenyCntReached = 1,
+    TopMioOutgoingIrqMioIdCount
   } outgoing_interrupt_mio_id_e;
 
 endpackage

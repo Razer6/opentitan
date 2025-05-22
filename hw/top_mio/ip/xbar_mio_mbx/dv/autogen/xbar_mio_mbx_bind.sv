@@ -56,17 +56,17 @@ module xbar_mio_mbx_bind;
     .h2d    (tl_mbx_pcie0__soc_o),
     .d2h    (tl_mbx_pcie0__soc_i)
   );
-  bind xbar_mio_mbx tlul_assert #(.EndpointType("Host")) tlul_assert_device_racl_ctrl (
+  bind xbar_mio_mbx tlul_assert #(.EndpointType("Host")) tlul_assert_device_racl_ctrl_mio (
     .clk_i  (clk_mbx_i),
     .rst_ni (rst_mbx_ni),
-    .h2d    (tl_racl_ctrl_o),
-    .d2h    (tl_racl_ctrl_i)
+    .h2d    (tl_racl_ctrl_mio_o),
+    .d2h    (tl_racl_ctrl_mio_i)
   );
-  bind xbar_mio_mbx tlul_assert #(.EndpointType("Host")) tlul_assert_device_ac_range_check (
+  bind xbar_mio_mbx tlul_assert #(.EndpointType("Host")) tlul_assert_device_ac_range_check_mio (
     .clk_i  (clk_mbx_i),
     .rst_ni (rst_mbx_ni),
-    .h2d    (tl_ac_range_check_o),
-    .d2h    (tl_ac_range_check_i)
+    .h2d    (tl_ac_range_check_mio_o),
+    .d2h    (tl_ac_range_check_mio_i)
   );
 `endif
 endmodule

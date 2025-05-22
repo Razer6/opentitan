@@ -481,7 +481,7 @@
           width: 1
           inst_name: gpio
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -494,7 +494,7 @@
           width: 1
           inst_name: gpio
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 0
         }
         {
@@ -593,7 +593,7 @@
           width: 1
           inst_name: rv_timer
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -606,7 +606,7 @@
           width: 1
           inst_name: rv_timer
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 1
         }
         {
@@ -763,7 +763,7 @@
           width: 1
           inst_name: aon_timer_aon
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -776,7 +776,7 @@
           width: 1
           inst_name: aon_timer_aon
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 2
         }
         {
@@ -1053,7 +1053,7 @@
           width: 1
           inst_name: pwc_soc_proxy
           default: ""
-          top_signame: ac_range_check_ctn_filtered_tl_h2d
+          top_signame: ac_range_check_pwc_ctn_filtered_tl_h2d
           index: -1
         }
         {
@@ -1066,7 +1066,7 @@
           width: 1
           inst_name: pwc_soc_proxy
           default: ""
-          top_signame: ac_range_check_ctn_filtered_tl_d2h
+          top_signame: ac_range_check_pwc_ctn_filtered_tl_d2h
           index: -1
         }
         {
@@ -1485,7 +1485,7 @@
           width: 1
           inst_name: sram_ctrl_ret_aon
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -1498,7 +1498,7 @@
           width: 1
           inst_name: sram_ctrl_ret_aon
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 3
         }
         {
@@ -1890,7 +1890,7 @@
           width: 1
           inst_name: rv_dm
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -1903,7 +1903,7 @@
           width: 1
           inst_name: rv_dm
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 4
         }
         {
@@ -2050,7 +2050,7 @@
           width: 1
           inst_name: rv_plic_pwc
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -2063,7 +2063,7 @@
           width: 1
           inst_name: rv_plic_pwc
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 5
         }
         {
@@ -2347,7 +2347,6 @@
             PRIO_249: 0
             PRIO_250: 0
             PRIO_251: 0
-            PRIO_252: 0
             IP_0: 0
             IP_1: 0
             IP_2: 0
@@ -2693,7 +2692,7 @@
           width: 1
           inst_name: sram_ctrl_main
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -2706,7 +2705,7 @@
           width: 1
           inst_name: sram_ctrl_main
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 6
         }
         {
@@ -3065,7 +3064,7 @@
           width: 1
           inst_name: sram_ctrl_mbox
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -3078,7 +3077,7 @@
           width: 1
           inst_name: sram_ctrl_mbox
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 7
         }
         {
@@ -3266,7 +3265,7 @@
           width: 1
           inst_name: dma
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -3279,7 +3278,7 @@
           width: 1
           inst_name: dma
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 8
         }
         {
@@ -3532,7 +3531,7 @@
           width: 1
           inst_name: mbx0
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -3545,7 +3544,7 @@
           width: 1
           inst_name: mbx0
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 9
         }
         {
@@ -3729,7 +3728,7 @@
           width: 1
           inst_name: mbx1
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -3742,7 +3741,7 @@
           width: 1
           inst_name: mbx1
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 10
         }
         {
@@ -3926,7 +3925,7 @@
           width: 1
           inst_name: mbx2
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -3939,7 +3938,7 @@
           width: 1
           inst_name: mbx2
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 11
         }
         {
@@ -4123,7 +4122,7 @@
           width: 1
           inst_name: mbx3
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -4136,7 +4135,7 @@
           width: 1
           inst_name: mbx3
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 12
         }
         {
@@ -4320,7 +4319,7 @@
           width: 1
           inst_name: mbx4
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -4333,7 +4332,7 @@
           width: 1
           inst_name: mbx4
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 13
         }
         {
@@ -4517,7 +4516,7 @@
           width: 1
           inst_name: mbx5
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -4530,7 +4529,7 @@
           width: 1
           inst_name: mbx5
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 14
         }
         {
@@ -4714,7 +4713,7 @@
           width: 1
           inst_name: mbx_pcie0
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -4727,7 +4726,7 @@
           width: 1
           inst_name: mbx_pcie0
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 15
         }
         {
@@ -4776,7 +4775,7 @@
       ]
     }
     {
-      name: racl_ctrl
+      name: racl_ctrl_pwc
       type: racl_ctrl_pwc
       template_type: racl_ctrl
       clock_srcs:
@@ -4814,7 +4813,7 @@
           default: 18
           local: "true"
           expose: "true"
-          name_top: RaclCtrlNumSubscribingIps
+          name_top: RaclCtrlPwcNumSubscribingIps
         }
         {
           name: NumExternalSubscribingIps
@@ -4823,7 +4822,7 @@
           default: 1
           local: "false"
           expose: "true"
-          name_top: RaclCtrlNumExternalSubscribingIps
+          name_top: RaclCtrlPwcNumExternalSubscribingIps
         }
       ]
       inter_signal_list:
@@ -4836,11 +4835,11 @@
           type: uni
           act: req
           width: 1
-          inst_name: racl_ctrl
+          inst_name: racl_ctrl_pwc
           default: ""
           end_idx: -1
           top_type: broadcast
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
           external: true
           conn_type: true
@@ -4865,13 +4864,13 @@
             default: 18
             local: true
             expose: true
-            name_top: RaclCtrlNumSubscribingIps
+            name_top: RaclCtrlPwcNumSubscribingIps
           }
-          inst_name: racl_ctrl
+          inst_name: racl_ctrl_pwc
           default: ""
           end_idx: -1
           top_type: one-to-N
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: -1
         }
         {
@@ -4894,9 +4893,9 @@
             default: 1
             local: false
             expose: true
-            name_top: RaclCtrlNumExternalSubscribingIps
+            name_top: RaclCtrlPwcNumExternalSubscribingIps
           }
-          inst_name: racl_ctrl
+          inst_name: racl_ctrl_pwc
           default: ""
           external: true
           top_signame: racl_error
@@ -4910,10 +4909,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: racl_ctrl
+          inst_name: racl_ctrl_pwc
           default: ""
           end_idx: -1
-          top_signame: racl_ctrl_tl
+          top_signame: racl_ctrl_pwc_tl
           index: -1
         }
       ]
@@ -4931,7 +4930,7 @@
       ]
     }
     {
-      name: ac_range_check
+      name: ac_range_check_pwc
       type: ac_range_check_pwc
       template_type: ac_range_check
       clock_srcs:
@@ -4953,6 +4952,7 @@
       }
       attr: ipgen
       outgoing_alert: pwc
+      outgoing_interrupt: pwc
       clock_connections:
       {
         clk_i: clk_ext_main_i
@@ -4973,7 +4973,7 @@
           default: "1"
           local: "false"
           expose: "true"
-          name_top: AcRangeCheckRangeCheckErrorRsp
+          name_top: AcRangeCheckPwcRangeCheckErrorRsp
         }
       ]
       inter_signal_list:
@@ -4986,7 +4986,7 @@
           type: uni
           act: rcv
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_pwc
           default: ""
           external: true
           top_signame: ac_range_check_overwrite
@@ -5001,7 +5001,7 @@
           type: uni
           act: rcv
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_pwc
           default: ""
           top_signame: pwc_soc_proxy_muxed_tl_h2d
           index: -1
@@ -5014,7 +5014,7 @@
           type: uni
           act: req
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_pwc
           default: ""
           top_signame: pwc_soc_proxy_muxed_tl_d2h
           index: -1
@@ -5027,11 +5027,11 @@
           type: uni
           act: req
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_pwc
           default: ""
           end_idx: -1
           top_type: broadcast
-          top_signame: ac_range_check_ctn_filtered_tl_h2d
+          top_signame: ac_range_check_pwc_ctn_filtered_tl_h2d
           index: -1
         }
         {
@@ -5042,11 +5042,11 @@
           type: uni
           act: rcv
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_pwc
           default: ""
           end_idx: -1
           top_type: broadcast
-          top_signame: ac_range_check_ctn_filtered_tl_d2h
+          top_signame: ac_range_check_pwc_ctn_filtered_tl_d2h
           index: -1
         }
         {
@@ -5061,9 +5061,9 @@
           type: uni
           act: rcv
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_pwc
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -5074,9 +5074,9 @@
           type: uni
           act: req
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_pwc
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 16
         }
         {
@@ -5086,10 +5086,10 @@
           type: req_rsp
           act: rsp
           width: 1
-          inst_name: ac_range_check
+          inst_name: ac_range_check_pwc
           default: ""
           end_idx: -1
-          top_signame: ac_range_check_tl
+          top_signame: ac_range_check_pwc_tl
           index: -1
         }
       ]
@@ -6038,7 +6038,7 @@
           width: 1
           inst_name: rv_core_ibex_pwc
           default: ""
-          top_signame: racl_ctrl_racl_policies
+          top_signame: racl_ctrl_pwc_racl_policies
           index: -1
         }
         {
@@ -6051,7 +6051,7 @@
           width: 1
           inst_name: rv_core_ibex_pwc
           default: ""
-          top_signame: racl_ctrl_racl_error
+          top_signame: racl_ctrl_pwc_racl_error
           index: 17
         }
         {
@@ -6164,17 +6164,17 @@
       ]
       pwc_soc_proxy.muxed_tl_h2d:
       [
-        ac_range_check.ctn_tl_h2d
+        ac_range_check_pwc.ctn_tl_h2d
       ]
       pwc_soc_proxy.muxed_tl_d2h:
       [
-        ac_range_check.ctn_tl_d2h
+        ac_range_check_pwc.ctn_tl_d2h
       ]
-      ac_range_check.ctn_filtered_tl_h2d:
+      ac_range_check_pwc.ctn_filtered_tl_h2d:
       [
         pwc_soc_proxy.ac_range_tl_h2d
       ]
-      ac_range_check.ctn_filtered_tl_d2h:
+      ac_range_check_pwc.ctn_filtered_tl_d2h:
       [
         pwc_soc_proxy.ac_range_tl_d2h
       ]
@@ -6342,15 +6342,15 @@
       [
         pwc_mbx.tl_mbx_pcie0__soc
       ]
-      racl_ctrl.tl:
+      racl_ctrl_pwc.tl:
       [
-        pwc_mbx.tl_racl_ctrl
+        pwc_mbx.tl_racl_ctrl_pwc
       ]
-      ac_range_check.tl:
+      ac_range_check_pwc.tl:
       [
-        pwc_mbx.tl_ac_range_check
+        pwc_mbx.tl_ac_range_check_pwc
       ]
-      racl_ctrl.racl_policies:
+      racl_ctrl_pwc.racl_policies:
       [
         gpio.racl_policies
         rv_timer.racl_policies
@@ -6368,10 +6368,10 @@
         mbx4.racl_policies
         mbx5.racl_policies
         mbx_pcie0.racl_policies
-        ac_range_check.racl_policies
+        ac_range_check_pwc.racl_policies
         rv_core_ibex_pwc.racl_policies
       ]
-      racl_ctrl.racl_error:
+      racl_ctrl_pwc.racl_error:
       [
         gpio.racl_error
         rv_timer.racl_error
@@ -6389,7 +6389,7 @@
         mbx4.racl_error
         mbx5.racl_error
         mbx_pcie0.racl_error
-        ac_range_check.racl_error
+        ac_range_check_pwc.racl_error
         rv_core_ibex_pwc.racl_error
       ]
     }
@@ -6428,9 +6428,9 @@
       sram_ctrl_main.cfg_rsp: sram_ctrl_main_ram_1p_cfg_rsp
       sram_ctrl_mbox.cfg: sram_ctrl_mbox_ram_1p_cfg
       sram_ctrl_mbox.cfg_rsp: sram_ctrl_mbox_ram_1p_cfg_rsp
-      racl_ctrl.racl_policies: racl_policies
-      racl_ctrl.racl_error_external: racl_error
-      ac_range_check.range_check_overwrite: ac_range_check_overwrite
+      racl_ctrl_pwc.racl_policies: racl_policies
+      racl_ctrl_pwc.racl_error_external: racl_error
+      ac_range_check_pwc.range_check_overwrite: ac_range_check_overwrite
     }
   }
   xbar:
@@ -7733,8 +7733,8 @@
           mbx4.soc
           mbx5.soc
           mbx_pcie0.soc
-          racl_ctrl
-          ac_range_check
+          racl_ctrl_pwc
+          ac_range_check_pwc
         ]
       }
       nodes:
@@ -7907,7 +7907,7 @@
           req_fifo_pass: true
         }
         {
-          name: racl_ctrl
+          name: racl_ctrl_pwc
           type: device
           addr_space: soc_mbx
           clock: clk_mbx_i
@@ -7929,7 +7929,7 @@
           req_fifo_pass: true
         }
         {
-          name: ac_range_check
+          name: ac_range_check_pwc
           type: device
           addr_space: soc_mbx
           clock: clk_mbx_i
@@ -8058,7 +8058,7 @@
           index: -1
         }
         {
-          name: tl_racl_ctrl
+          name: tl_racl_ctrl_pwc
           struct: tl
           package: tlul_pkg
           type: req_rsp
@@ -8066,11 +8066,11 @@
           inst_name: pwc_mbx
           width: 1
           default: ""
-          top_signame: racl_ctrl_tl
+          top_signame: racl_ctrl_pwc_tl
           index: -1
         }
         {
-          name: tl_ac_range_check
+          name: tl_ac_range_check_pwc
           struct: tl
           package: tlul_pkg
           type: req_rsp
@@ -8078,7 +8078,7 @@
           inst_name: pwc_mbx
           width: 1
           default: ""
-          top_signame: ac_range_check_tl
+          top_signame: ac_range_check_pwc_tl
           index: -1
         }
       ]
@@ -13536,42 +13536,42 @@
         lpg_idx: 1
       }
       {
-        name: racl_ctrl_fatal_fault
+        name: racl_ctrl_pwc_fatal_fault
         width: 1
         type: alert
         async: "1"
-        module_name: racl_ctrl
-        desc: racl_ctrl fatal_fault alert
+        module_name: racl_ctrl_pwc
+        desc: racl_ctrl_pwc fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
         lpg_idx: 1
       }
       {
-        name: racl_ctrl_recov_ctrl_update_err
+        name: racl_ctrl_pwc_recov_ctrl_update_err
         width: 1
         type: alert
         async: "1"
-        module_name: racl_ctrl
-        desc: racl_ctrl recov_ctrl_update_err alert
+        module_name: racl_ctrl_pwc
+        desc: racl_ctrl_pwc recov_ctrl_update_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
         lpg_idx: 1
       }
       {
-        name: ac_range_check_recov_ctrl_update_err
+        name: ac_range_check_pwc_recov_ctrl_update_err
         width: 1
         type: alert
         async: "1"
-        module_name: ac_range_check
-        desc: ac_range_check recov_ctrl_update_err alert
+        module_name: ac_range_check_pwc
+        desc: ac_range_check_pwc recov_ctrl_update_err alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
         lpg_idx: 1
       }
       {
-        name: ac_range_check_fatal_fault
+        name: ac_range_check_pwc_fatal_fault
         width: 1
         type: alert
         async: "1"
-        module_name: ac_range_check
-        desc: ac_range_check fatal_fault alert
+        module_name: ac_range_check_pwc
+        desc: ac_range_check_pwc fatal_fault alert
         lpg_name: clk_ext_main_i_ext_rst_main_0
         lpg_idx: 1
       }
@@ -13895,16 +13895,6 @@
       type: interrupt
       module_name: mbx_pcie0
       desc: mbx_pcie0 mbx_error interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      incoming: false
-    }
-    {
-      name: ac_range_check_deny_cnt_reached
-      width: 1
-      type: interrupt
-      module_name: ac_range_check
-      desc: ac_range_check deny_cnt_reached interrupt
       intr_type: IntrType.Event
       default_val: false
       incoming: false
@@ -15835,12 +15825,22 @@
     pwc:
     [
       {
-        name: racl_ctrl_racl_error
+        name: racl_ctrl_pwc_racl_error
         width: 1
         type: interrupt
-        module_name: racl_ctrl
-        desc: racl_ctrl racl_error interrupt
+        module_name: racl_ctrl_pwc
+        desc: racl_ctrl_pwc racl_error interrupt
         intr_type: IntrType.Status
+        default_val: false
+        incoming: false
+      }
+      {
+        name: ac_range_check_pwc_deny_cnt_reached
+        width: 1
+        type: interrupt
+        module_name: ac_range_check_pwc
+        desc: ac_range_check_pwc deny_cnt_reached interrupt
+        intr_type: IntrType.Event
         default_val: false
         incoming: false
       }
@@ -15860,7 +15860,6 @@
     mbx4
     mbx5
     mbx_pcie0
-    ac_range_check
   ]
   outgoing_alert_module:
   {
@@ -15882,8 +15881,8 @@
       mbx4
       mbx5
       mbx_pcie0
-      racl_ctrl
-      ac_range_check
+      racl_ctrl_pwc
+      ac_range_check_pwc
       rv_core_ibex_pwc
     ]
   }
@@ -15891,7 +15890,8 @@
   {
     pwc:
     [
-      racl_ctrl
+      racl_ctrl_pwc
+      ac_range_check_pwc
     ]
   }
   alert_lpgs: []
@@ -15970,7 +15970,7 @@
         width: 1
         inst_name: gpio
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -15983,7 +15983,7 @@
         width: 1
         inst_name: gpio
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 0
       }
       {
@@ -16013,7 +16013,7 @@
         width: 1
         inst_name: rv_timer
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -16026,7 +16026,7 @@
         width: 1
         inst_name: rv_timer
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 1
       }
       {
@@ -16111,7 +16111,7 @@
         width: 1
         inst_name: aon_timer_aon
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -16124,7 +16124,7 @@
         width: 1
         inst_name: aon_timer_aon
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 2
       }
       {
@@ -16316,7 +16316,7 @@
         width: 1
         inst_name: pwc_soc_proxy
         default: ""
-        top_signame: ac_range_check_ctn_filtered_tl_h2d
+        top_signame: ac_range_check_pwc_ctn_filtered_tl_h2d
         index: -1
       }
       {
@@ -16329,7 +16329,7 @@
         width: 1
         inst_name: pwc_soc_proxy
         default: ""
-        top_signame: ac_range_check_ctn_filtered_tl_d2h
+        top_signame: ac_range_check_pwc_ctn_filtered_tl_d2h
         index: -1
       }
       {
@@ -16537,7 +16537,7 @@
         width: 1
         inst_name: sram_ctrl_ret_aon
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -16550,7 +16550,7 @@
         width: 1
         inst_name: sram_ctrl_ret_aon
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 3
       }
       {
@@ -16826,7 +16826,7 @@
         width: 1
         inst_name: rv_dm
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -16839,7 +16839,7 @@
         width: 1
         inst_name: rv_dm
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 4
       }
       {
@@ -16945,7 +16945,7 @@
         width: 1
         inst_name: rv_plic_pwc
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -16958,7 +16958,7 @@
         width: 1
         inst_name: rv_plic_pwc
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 5
       }
       {
@@ -17084,7 +17084,7 @@
         width: 1
         inst_name: sram_ctrl_main
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -17097,7 +17097,7 @@
         width: 1
         inst_name: sram_ctrl_main
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 6
       }
       {
@@ -17244,7 +17244,7 @@
         width: 1
         inst_name: sram_ctrl_mbox
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -17257,7 +17257,7 @@
         width: 1
         inst_name: sram_ctrl_mbox
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 7
       }
       {
@@ -17365,7 +17365,7 @@
         width: 1
         inst_name: dma
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -17378,7 +17378,7 @@
         width: 1
         inst_name: dma
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 8
       }
       {
@@ -17460,7 +17460,7 @@
         width: 1
         inst_name: mbx0
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -17473,7 +17473,7 @@
         width: 1
         inst_name: mbx0
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 9
       }
       {
@@ -17568,7 +17568,7 @@
         width: 1
         inst_name: mbx1
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -17581,7 +17581,7 @@
         width: 1
         inst_name: mbx1
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 10
       }
       {
@@ -17676,7 +17676,7 @@
         width: 1
         inst_name: mbx2
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -17689,7 +17689,7 @@
         width: 1
         inst_name: mbx2
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 11
       }
       {
@@ -17784,7 +17784,7 @@
         width: 1
         inst_name: mbx3
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -17797,7 +17797,7 @@
         width: 1
         inst_name: mbx3
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 12
       }
       {
@@ -17892,7 +17892,7 @@
         width: 1
         inst_name: mbx4
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -17905,7 +17905,7 @@
         width: 1
         inst_name: mbx4
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 13
       }
       {
@@ -18000,7 +18000,7 @@
         width: 1
         inst_name: mbx5
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -18013,7 +18013,7 @@
         width: 1
         inst_name: mbx5
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 14
       }
       {
@@ -18108,7 +18108,7 @@
         width: 1
         inst_name: mbx_pcie0
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -18121,7 +18121,7 @@
         width: 1
         inst_name: mbx_pcie0
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 15
       }
       {
@@ -18170,11 +18170,11 @@
         type: uni
         act: req
         width: 1
-        inst_name: racl_ctrl
+        inst_name: racl_ctrl_pwc
         default: ""
         end_idx: -1
         top_type: broadcast
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
         external: true
         conn_type: true
@@ -18199,13 +18199,13 @@
           default: 18
           local: true
           expose: true
-          name_top: RaclCtrlNumSubscribingIps
+          name_top: RaclCtrlPwcNumSubscribingIps
         }
-        inst_name: racl_ctrl
+        inst_name: racl_ctrl_pwc
         default: ""
         end_idx: -1
         top_type: one-to-N
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: -1
       }
       {
@@ -18228,9 +18228,9 @@
           default: 1
           local: false
           expose: true
-          name_top: RaclCtrlNumExternalSubscribingIps
+          name_top: RaclCtrlPwcNumExternalSubscribingIps
         }
-        inst_name: racl_ctrl
+        inst_name: racl_ctrl_pwc
         default: ""
         external: true
         top_signame: racl_error
@@ -18244,10 +18244,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: racl_ctrl
+        inst_name: racl_ctrl_pwc
         default: ""
         end_idx: -1
-        top_signame: racl_ctrl_tl
+        top_signame: racl_ctrl_pwc_tl
         index: -1
       }
       {
@@ -18258,7 +18258,7 @@
         type: uni
         act: rcv
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_pwc
         default: ""
         external: true
         top_signame: ac_range_check_overwrite
@@ -18273,7 +18273,7 @@
         type: uni
         act: rcv
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_pwc
         default: ""
         top_signame: pwc_soc_proxy_muxed_tl_h2d
         index: -1
@@ -18286,7 +18286,7 @@
         type: uni
         act: req
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_pwc
         default: ""
         top_signame: pwc_soc_proxy_muxed_tl_d2h
         index: -1
@@ -18299,11 +18299,11 @@
         type: uni
         act: req
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_pwc
         default: ""
         end_idx: -1
         top_type: broadcast
-        top_signame: ac_range_check_ctn_filtered_tl_h2d
+        top_signame: ac_range_check_pwc_ctn_filtered_tl_h2d
         index: -1
       }
       {
@@ -18314,11 +18314,11 @@
         type: uni
         act: rcv
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_pwc
         default: ""
         end_idx: -1
         top_type: broadcast
-        top_signame: ac_range_check_ctn_filtered_tl_d2h
+        top_signame: ac_range_check_pwc_ctn_filtered_tl_d2h
         index: -1
       }
       {
@@ -18333,9 +18333,9 @@
         type: uni
         act: rcv
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_pwc
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -18346,9 +18346,9 @@
         type: uni
         act: req
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_pwc
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 16
       }
       {
@@ -18358,10 +18358,10 @@
         type: req_rsp
         act: rsp
         width: 1
-        inst_name: ac_range_check
+        inst_name: ac_range_check_pwc
         default: ""
         end_idx: -1
-        top_signame: ac_range_check_tl
+        top_signame: ac_range_check_pwc_tl
         index: -1
       }
       {
@@ -18643,7 +18643,7 @@
         width: 1
         inst_name: rv_core_ibex_pwc
         default: ""
-        top_signame: racl_ctrl_racl_policies
+        top_signame: racl_ctrl_pwc_racl_policies
         index: -1
       }
       {
@@ -18656,7 +18656,7 @@
         width: 1
         inst_name: rv_core_ibex_pwc
         default: ""
-        top_signame: racl_ctrl_racl_error
+        top_signame: racl_ctrl_pwc_racl_error
         index: 17
       }
       {
@@ -19227,7 +19227,7 @@
         index: -1
       }
       {
-        name: tl_racl_ctrl
+        name: tl_racl_ctrl_pwc
         struct: tl
         package: tlul_pkg
         type: req_rsp
@@ -19235,11 +19235,11 @@
         inst_name: pwc_mbx
         width: 1
         default: ""
-        top_signame: racl_ctrl_tl
+        top_signame: racl_ctrl_pwc_tl
         index: -1
       }
       {
-        name: tl_ac_range_check
+        name: tl_ac_range_check_pwc
         struct: tl
         package: tlul_pkg
         type: req_rsp
@@ -19247,7 +19247,7 @@
         inst_name: pwc_mbx
         width: 1
         default: ""
-        top_signame: ac_range_check_tl
+        top_signame: ac_range_check_pwc_tl
         index: -1
       }
     ]
@@ -19683,7 +19683,7 @@
         direction: out
         conn_type: true
         index: -1
-        netname: racl_ctrl_racl_policies
+        netname: racl_ctrl_pwc_racl_policies
       }
       {
         package: top_racl_pkg
@@ -19698,7 +19698,7 @@
           default: 1
           local: false
           expose: true
-          name_top: RaclCtrlNumExternalSubscribingIps
+          name_top: RaclCtrlPwcNumExternalSubscribingIps
         }
         type: uni
         default: ""
@@ -19857,7 +19857,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: ac_range_check_ctn_filtered_tl_h2d
+        signame: ac_range_check_pwc_ctn_filtered_tl_h2d
         width: 1
         type: uni
         end_idx: -1
@@ -19868,7 +19868,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: ac_range_check_ctn_filtered_tl_d2h
+        signame: ac_range_check_pwc_ctn_filtered_tl_d2h
         width: 1
         type: uni
         end_idx: -1
@@ -20781,7 +20781,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: racl_ctrl_tl_req
+        signame: racl_ctrl_pwc_tl_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -20792,7 +20792,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: racl_ctrl_tl_rsp
+        signame: racl_ctrl_pwc_tl_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -20803,7 +20803,7 @@
       {
         package: tlul_pkg
         struct: tl_h2d
-        signame: ac_range_check_tl_req
+        signame: ac_range_check_pwc_tl_req
         width: 1
         type: req_rsp
         end_idx: -1
@@ -20814,7 +20814,7 @@
       {
         package: tlul_pkg
         struct: tl_d2h
-        signame: ac_range_check_tl_rsp
+        signame: ac_range_check_pwc_tl_rsp
         width: 1
         type: req_rsp
         end_idx: -1
@@ -20825,7 +20825,7 @@
       {
         package: top_racl_pkg
         struct: racl_policy_vec
-        signame: racl_ctrl_racl_policies
+        signame: racl_ctrl_pwc_racl_policies
         width: 1
         type: uni
         end_idx: -1
@@ -20836,7 +20836,7 @@
       {
         package: top_racl_pkg
         struct: racl_error_log
-        signame: racl_ctrl_racl_error
+        signame: racl_ctrl_pwc_racl_error
         width:
         {
           name: NumSubscribingIps
@@ -20846,7 +20846,7 @@
           default: 18
           local: true
           expose: true
-          name_top: RaclCtrlNumSubscribingIps
+          name_top: RaclCtrlPwcNumSubscribingIps
         }
         type: uni
         end_idx: -1

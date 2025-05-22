@@ -82,24 +82,24 @@ package top_pwc_soc_mbx_pkg;
   parameter int unsigned TOP_PWC_SOC_MBX_MBX_PCIE0_SOC_SIZE_BYTES = 32'h20;
 
   /**
-   * Peripheral base address for racl_ctrl in top pwc.
+   * Peripheral base address for racl_ctrl_pwc in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_MBX_RACL_CTRL_BASE_ADDR = 32'h1471F00;
+  parameter int unsigned TOP_PWC_SOC_MBX_RACL_CTRL_PWC_BASE_ADDR = 32'h1471F00;
 
   /**
-   * Peripheral size in bytes for racl_ctrl in top pwc.
+   * Peripheral size in bytes for racl_ctrl_pwc in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_MBX_RACL_CTRL_SIZE_BYTES = 32'h100;
+  parameter int unsigned TOP_PWC_SOC_MBX_RACL_CTRL_PWC_SIZE_BYTES = 32'h100;
 
   /**
-   * Peripheral base address for ac_range_check in top pwc.
+   * Peripheral base address for ac_range_check_pwc in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_MBX_AC_RANGE_CHECK_BASE_ADDR = 32'h1474000;
+  parameter int unsigned TOP_PWC_SOC_MBX_AC_RANGE_CHECK_PWC_BASE_ADDR = 32'h1474000;
 
   /**
-   * Peripheral size in bytes for ac_range_check in top pwc.
+   * Peripheral size in bytes for ac_range_check_pwc in top pwc.
    */
-  parameter int unsigned TOP_PWC_SOC_MBX_AC_RANGE_CHECK_SIZE_BYTES = 32'h400;
+  parameter int unsigned TOP_PWC_SOC_MBX_AC_RANGE_CHECK_PWC_SIZE_BYTES = 32'h400;
 
 
   // Number of pwc outgoing alerts
@@ -126,8 +126,8 @@ package top_pwc_soc_mbx_pkg;
     TopPwcAlertPeripheralMbx4 = 13,
     TopPwcAlertPeripheralMbx5 = 14,
     TopPwcAlertPeripheralMbxPcie0 = 15,
-    TopPwcAlertPeripheralRaclCtrl = 16,
-    TopPwcAlertPeripheralAcRangeCheck = 17,
+    TopPwcAlertPeripheralRaclCtrlPwc = 16,
+    TopPwcAlertPeripheralAcRangeCheckPwc = 17,
     TopPwcAlertPeripheralRvCoreIbexPwc = 18,
     TopPwcOutgoingAlertPwcPeripheralCount
   } outgoing_alert_pwc_peripheral_e;
@@ -157,10 +157,10 @@ package top_pwc_soc_mbx_pkg;
     TopPwcAlertIdMbx5RecovFault = 20,
     TopPwcAlertIdMbxPcie0FatalFault = 21,
     TopPwcAlertIdMbxPcie0RecovFault = 22,
-    TopPwcAlertIdRaclCtrlFatalFault = 23,
-    TopPwcAlertIdRaclCtrlRecovCtrlUpdateErr = 24,
-    TopPwcAlertIdAcRangeCheckRecovCtrlUpdateErr = 25,
-    TopPwcAlertIdAcRangeCheckFatalFault = 26,
+    TopPwcAlertIdRaclCtrlPwcFatalFault = 23,
+    TopPwcAlertIdRaclCtrlPwcRecovCtrlUpdateErr = 24,
+    TopPwcAlertIdAcRangeCheckPwcRecovCtrlUpdateErr = 25,
+    TopPwcAlertIdAcRangeCheckPwcFatalFault = 26,
     TopPwcAlertIdRvCoreIbexPwcFatalSwErr = 27,
     TopPwcAlertIdRvCoreIbexPwcRecovSwErr = 28,
     TopPwcAlertIdRvCoreIbexPwcFatalHwErr = 29,

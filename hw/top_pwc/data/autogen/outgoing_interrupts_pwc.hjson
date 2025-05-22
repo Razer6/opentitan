@@ -7,13 +7,22 @@
 {
     pwc: [
         {
-            name: racl_ctrl_racl_error
-            module_name: racl_ctrl
-            desc: racl_ctrl racl_error interrupt
-            index: 0
+            name: racl_ctrl_pwc_racl_error
+            module_name: racl_ctrl_pwc
+            desc: racl_ctrl_pwc racl_error interrupt
             type: interrupt
             width: 1
             intr_type: IntrType.Status
+            default_val: False
+        }
+        {
+            name: ac_range_check_pwc_deny_cnt_reached
+            module_name: ac_range_check_pwc
+            desc: ac_range_check_pwc deny_cnt_reached interrupt
+            type: interrupt
+            width: 1
+            intr_type: IntrType.Event
+            default_val: False
         }
     ]
 }

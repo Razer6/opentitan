@@ -82,24 +82,24 @@ package top_mio_soc_mbx_pkg;
   parameter int unsigned TOP_MIO_SOC_MBX_MBX_PCIE0_SOC_SIZE_BYTES = 32'h20;
 
   /**
-   * Peripheral base address for racl_ctrl in top mio.
+   * Peripheral base address for racl_ctrl_mio in top mio.
    */
-  parameter int unsigned TOP_MIO_SOC_MBX_RACL_CTRL_BASE_ADDR = 32'h1481F00;
+  parameter int unsigned TOP_MIO_SOC_MBX_RACL_CTRL_MIO_BASE_ADDR = 32'h1481F00;
 
   /**
-   * Peripheral size in bytes for racl_ctrl in top mio.
+   * Peripheral size in bytes for racl_ctrl_mio in top mio.
    */
-  parameter int unsigned TOP_MIO_SOC_MBX_RACL_CTRL_SIZE_BYTES = 32'h100;
+  parameter int unsigned TOP_MIO_SOC_MBX_RACL_CTRL_MIO_SIZE_BYTES = 32'h100;
 
   /**
-   * Peripheral base address for ac_range_check in top mio.
+   * Peripheral base address for ac_range_check_mio in top mio.
    */
-  parameter int unsigned TOP_MIO_SOC_MBX_AC_RANGE_CHECK_BASE_ADDR = 32'h1484000;
+  parameter int unsigned TOP_MIO_SOC_MBX_AC_RANGE_CHECK_MIO_BASE_ADDR = 32'h1484000;
 
   /**
-   * Peripheral size in bytes for ac_range_check in top mio.
+   * Peripheral size in bytes for ac_range_check_mio in top mio.
    */
-  parameter int unsigned TOP_MIO_SOC_MBX_AC_RANGE_CHECK_SIZE_BYTES = 32'h400;
+  parameter int unsigned TOP_MIO_SOC_MBX_AC_RANGE_CHECK_MIO_SIZE_BYTES = 32'h400;
 
 
   // Number of mio outgoing alerts
@@ -125,8 +125,8 @@ package top_mio_soc_mbx_pkg;
     TopMioAlertPeripheralMbx4 = 12,
     TopMioAlertPeripheralMbx5 = 13,
     TopMioAlertPeripheralMbxPcie0 = 14,
-    TopMioAlertPeripheralRaclCtrl = 15,
-    TopMioAlertPeripheralAcRangeCheck = 16,
+    TopMioAlertPeripheralRaclCtrlMio = 15,
+    TopMioAlertPeripheralAcRangeCheckMio = 16,
     TopMioAlertPeripheralRvCoreIbexMio = 17,
     TopMioOutgoingAlertMioPeripheralCount
   } outgoing_alert_mio_peripheral_e;
@@ -155,10 +155,10 @@ package top_mio_soc_mbx_pkg;
     TopMioAlertIdMbx5RecovFault = 19,
     TopMioAlertIdMbxPcie0FatalFault = 20,
     TopMioAlertIdMbxPcie0RecovFault = 21,
-    TopMioAlertIdRaclCtrlFatalFault = 22,
-    TopMioAlertIdRaclCtrlRecovCtrlUpdateErr = 23,
-    TopMioAlertIdAcRangeCheckRecovCtrlUpdateErr = 24,
-    TopMioAlertIdAcRangeCheckFatalFault = 25,
+    TopMioAlertIdRaclCtrlMioFatalFault = 22,
+    TopMioAlertIdRaclCtrlMioRecovCtrlUpdateErr = 23,
+    TopMioAlertIdAcRangeCheckMioRecovCtrlUpdateErr = 24,
+    TopMioAlertIdAcRangeCheckMioFatalFault = 25,
     TopMioAlertIdRvCoreIbexMioFatalSwErr = 26,
     TopMioAlertIdRvCoreIbexMioRecovSwErr = 27,
     TopMioAlertIdRvCoreIbexMioFatalHwErr = 28,

@@ -255,7 +255,7 @@ package top_mio_racl_pkg;
    *   TLUL interface name: None
    *   RACL group: mio
    */
-  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_RV_PLIC_MIO_MIO [46] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_RV_PLIC_MIO_MIO [45] = '{
     RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            //  0 PRIO_0     : Policy Idx  0
     RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            //  1 PRIO_1     : Policy Idx  0
     RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            //  2 PRIO_2     : Policy Idx  0
@@ -293,15 +293,14 @@ package top_mio_racl_pkg;
     RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 34 PRIO_34    : Policy Idx  0
     RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 35 PRIO_35    : Policy Idx  0
     RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 36 PRIO_36    : Policy Idx  0
-    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 37 PRIO_37    : Policy Idx  0
-    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 38 IP_0       : Policy Idx  0
-    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 39 IP_1       : Policy Idx  0
-    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 40 IE0_0      : Policy Idx  0
-    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 41 IE0_1      : Policy Idx  0
-    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 42 THRESHOLD0 : Policy Idx  0
-    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 43 CC0        : Policy Idx  0
-    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 44 MSIP0      : Policy Idx  0
-    RACL_POLICY_SEL_MIO_ROT_PRIVATE_POLICY           // 45 ALERT_TEST : Policy Idx  6
+    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 37 IP_0       : Policy Idx  0
+    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 38 IP_1       : Policy Idx  0
+    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 39 IE0_0      : Policy Idx  0
+    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 40 IE0_1      : Policy Idx  0
+    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 41 THRESHOLD0 : Policy Idx  0
+    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 42 CC0        : Policy Idx  0
+    RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY,            // 43 MSIP0      : Policy Idx  0
+    RACL_POLICY_SEL_MIO_ROT_PRIVATE_POLICY           // 44 ALERT_TEST : Policy Idx  6
   };
 
   /**
@@ -697,11 +696,11 @@ package top_mio_racl_pkg;
     RACL_POLICY_SEL_MIO_ALL_RD_WR_POLICY;            // Policy Idx  0
 
   /**
-   * Policy selection vector for ac_range_check
+   * Policy selection vector for ac_range_check_mio
    *   TLUL interface name: None
    *   RACL group: mio
    */
-  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_AC_RANGE_CHECK_MIO [168] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_AC_RANGE_CHECK_MIO_MIO [168] = '{
     RACL_POLICY_SEL_MIO_ROT_PRIVATE_POLICY,          //   0 INTR_STATE                    : Policy Idx  6
     RACL_POLICY_SEL_MIO_ROT_PRIVATE_POLICY,          //   1 INTR_ENABLE                   : Policy Idx  6
     RACL_POLICY_SEL_MIO_ROT_PRIVATE_POLICY,          //   2 INTR_TEST                     : Policy Idx  6

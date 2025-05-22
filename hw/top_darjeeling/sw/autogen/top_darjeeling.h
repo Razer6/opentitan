@@ -1207,28 +1207,30 @@ typedef enum top_darjeeling_plic_irq_id {
   kTopDarjeelingPlicIrqIdLioGrpCRaclError = 146, /**< LIO_GRP_C_RACL_ERROR */
   kTopDarjeelingPlicIrqIdLioGrpBRaclError = 147, /**< LIO_GRP_B_RACL_ERROR */
   kTopDarjeelingPlicIrqIdLioGrpARaclError = 148, /**< LIO_GRP_A_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdPwcRaclError = 149, /**< PWC_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdMioRaclError = 150, /**< MIO_RACL_ERROR */
-  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassA = 151, /**< LIO_GRP_A_ALERTHANDLER_CLASS_A */
-  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassB = 152, /**< LIO_GRP_A_ALERTHANDLER_CLASS_B */
-  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassC = 153, /**< LIO_GRP_A_ALERTHANDLER_CLASS_C */
-  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassD = 154, /**< LIO_GRP_A_ALERTHANDLER_CLASS_D */
-  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassA = 155, /**< LIO_GRP_B_ALERTHANDLER_CLASS_A */
-  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassB = 156, /**< LIO_GRP_B_ALERTHANDLER_CLASS_B */
-  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassC = 157, /**< LIO_GRP_B_ALERTHANDLER_CLASS_C */
-  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassD = 158, /**< LIO_GRP_B_ALERTHANDLER_CLASS_D */
-  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassA = 159, /**< LIO_GRP_C_ALERTHANDLER_CLASS_A */
-  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassB = 160, /**< LIO_GRP_C_ALERTHANDLER_CLASS_B */
-  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassC = 161, /**< LIO_GRP_C_ALERTHANDLER_CLASS_C */
-  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassD = 162, /**< LIO_GRP_C_ALERTHANDLER_CLASS_D */
-  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassA = 163, /**< LIO_GRP_D_ALERTHANDLER_CLASS_A */
-  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassB = 164, /**< LIO_GRP_D_ALERTHANDLER_CLASS_B */
-  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassC = 165, /**< LIO_GRP_D_ALERTHANDLER_CLASS_C */
-  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassD = 166, /**< LIO_GRP_D_ALERTHANDLER_CLASS_D */
-  kTopDarjeelingPlicIrqIdScsctnif0AcRangeCtnDenyCntReached = 167, /**< SCSCTNIF0_AC_RANGE_CTN_DENY_CNT_REACHED */
-  kTopDarjeelingPlicIrqIdScsctnif0AcRangeBcastDenyCntReached = 168, /**< SCSCTNIF0_AC_RANGE_BCAST_DENY_CNT_REACHED */
-  kTopDarjeelingPlicIrqIdScsctnif1AcRangeCtnDenyCntReached = 169, /**< SCSCTNIF1_AC_RANGE_CTN_DENY_CNT_REACHED */
-  kTopDarjeelingPlicIrqIdLast = 169, /**< \internal The Last Valid Interrupt ID. */
+  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassA = 149, /**< LIO_GRP_A_ALERTHANDLER_CLASS_A */
+  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassB = 150, /**< LIO_GRP_A_ALERTHANDLER_CLASS_B */
+  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassC = 151, /**< LIO_GRP_A_ALERTHANDLER_CLASS_C */
+  kTopDarjeelingPlicIrqIdLioGrpAAlerthandlerClassD = 152, /**< LIO_GRP_A_ALERTHANDLER_CLASS_D */
+  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassA = 153, /**< LIO_GRP_B_ALERTHANDLER_CLASS_A */
+  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassB = 154, /**< LIO_GRP_B_ALERTHANDLER_CLASS_B */
+  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassC = 155, /**< LIO_GRP_B_ALERTHANDLER_CLASS_C */
+  kTopDarjeelingPlicIrqIdLioGrpBAlerthandlerClassD = 156, /**< LIO_GRP_B_ALERTHANDLER_CLASS_D */
+  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassA = 157, /**< LIO_GRP_C_ALERTHANDLER_CLASS_A */
+  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassB = 158, /**< LIO_GRP_C_ALERTHANDLER_CLASS_B */
+  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassC = 159, /**< LIO_GRP_C_ALERTHANDLER_CLASS_C */
+  kTopDarjeelingPlicIrqIdLioGrpCAlerthandlerClassD = 160, /**< LIO_GRP_C_ALERTHANDLER_CLASS_D */
+  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassA = 161, /**< LIO_GRP_D_ALERTHANDLER_CLASS_A */
+  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassB = 162, /**< LIO_GRP_D_ALERTHANDLER_CLASS_B */
+  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassC = 163, /**< LIO_GRP_D_ALERTHANDLER_CLASS_C */
+  kTopDarjeelingPlicIrqIdLioGrpDAlerthandlerClassD = 164, /**< LIO_GRP_D_ALERTHANDLER_CLASS_D */
+  kTopDarjeelingPlicIrqIdScsctnif0AcRangeCtnDenyCntReached = 165, /**< SCSCTNIF0_AC_RANGE_CTN_DENY_CNT_REACHED */
+  kTopDarjeelingPlicIrqIdScsctnif0AcRangeBcastDenyCntReached = 166, /**< SCSCTNIF0_AC_RANGE_BCAST_DENY_CNT_REACHED */
+  kTopDarjeelingPlicIrqIdScsctnif1AcRangeCtnDenyCntReached = 167, /**< SCSCTNIF1_AC_RANGE_CTN_DENY_CNT_REACHED */
+  kTopDarjeelingPlicIrqIdRaclCtrlMioRaclCtrlMioRaclError = 168, /**< racl_ctrl_mio_racl_ctrl_mio_racl_error */
+  kTopDarjeelingPlicIrqIdAcRangeCheckMioAcRangeCheckMioDenyCntReached = 169, /**< ac_range_check_mio_ac_range_check_mio_deny_cnt_reached */
+  kTopDarjeelingPlicIrqIdRaclCtrlPwcRaclCtrlPwcRaclError = 170, /**< racl_ctrl_pwc_racl_ctrl_pwc_racl_error */
+  kTopDarjeelingPlicIrqIdAcRangeCheckPwcAcRangeCheckPwcDenyCntReached = 171, /**< ac_range_check_pwc_ac_range_check_pwc_deny_cnt_reached */
+  kTopDarjeelingPlicIrqIdLast = 171, /**< \internal The Last Valid Interrupt ID. */
 } top_darjeeling_plic_irq_id_t;
 
 /**
@@ -1238,7 +1240,7 @@ typedef enum top_darjeeling_plic_irq_id {
  * `top_darjeeling_plic_peripheral_t`.
  */
 extern const top_darjeeling_plic_peripheral_t
-    top_darjeeling_plic_interrupt_for_peripheral[170];
+    top_darjeeling_plic_interrupt_for_peripheral[172];
 
 /**
  * PLIC Interrupt Target.
@@ -1408,10 +1410,10 @@ typedef enum top_darjeeling_alert_id {
   kTopDarjeelingAlertIdIncomingMioMbx5RecovFault = 93, /**< incoming_mio_mbx5_recov_fault */
   kTopDarjeelingAlertIdIncomingMioMbxPcie0FatalFault = 94, /**< incoming_mio_mbx_pcie0_fatal_fault */
   kTopDarjeelingAlertIdIncomingMioMbxPcie0RecovFault = 95, /**< incoming_mio_mbx_pcie0_recov_fault */
-  kTopDarjeelingAlertIdIncomingMioRaclCtrlFatalFault = 96, /**< incoming_mio_racl_ctrl_fatal_fault */
-  kTopDarjeelingAlertIdIncomingMioRaclCtrlRecovCtrlUpdateErr = 97, /**< incoming_mio_racl_ctrl_recov_ctrl_update_err */
-  kTopDarjeelingAlertIdIncomingMioAcRangeCheckRecovCtrlUpdateErr = 98, /**< incoming_mio_ac_range_check_recov_ctrl_update_err */
-  kTopDarjeelingAlertIdIncomingMioAcRangeCheckFatalFault = 99, /**< incoming_mio_ac_range_check_fatal_fault */
+  kTopDarjeelingAlertIdIncomingMioRaclCtrlMioFatalFault = 96, /**< incoming_mio_racl_ctrl_mio_fatal_fault */
+  kTopDarjeelingAlertIdIncomingMioRaclCtrlMioRecovCtrlUpdateErr = 97, /**< incoming_mio_racl_ctrl_mio_recov_ctrl_update_err */
+  kTopDarjeelingAlertIdIncomingMioAcRangeCheckMioRecovCtrlUpdateErr = 98, /**< incoming_mio_ac_range_check_mio_recov_ctrl_update_err */
+  kTopDarjeelingAlertIdIncomingMioAcRangeCheckMioFatalFault = 99, /**< incoming_mio_ac_range_check_mio_fatal_fault */
   kTopDarjeelingAlertIdIncomingMioRvCoreIbexMioFatalSwErr = 100, /**< incoming_mio_rv_core_ibex_mio_fatal_sw_err */
   kTopDarjeelingAlertIdIncomingMioRvCoreIbexMioRecovSwErr = 101, /**< incoming_mio_rv_core_ibex_mio_recov_sw_err */
   kTopDarjeelingAlertIdIncomingMioRvCoreIbexMioFatalHwErr = 102, /**< incoming_mio_rv_core_ibex_mio_fatal_hw_err */
@@ -1439,10 +1441,10 @@ typedef enum top_darjeeling_alert_id {
   kTopDarjeelingAlertIdIncomingPwcMbx5RecovFault = 124, /**< incoming_pwc_mbx5_recov_fault */
   kTopDarjeelingAlertIdIncomingPwcMbxPcie0FatalFault = 125, /**< incoming_pwc_mbx_pcie0_fatal_fault */
   kTopDarjeelingAlertIdIncomingPwcMbxPcie0RecovFault = 126, /**< incoming_pwc_mbx_pcie0_recov_fault */
-  kTopDarjeelingAlertIdIncomingPwcRaclCtrlFatalFault = 127, /**< incoming_pwc_racl_ctrl_fatal_fault */
-  kTopDarjeelingAlertIdIncomingPwcRaclCtrlRecovCtrlUpdateErr = 128, /**< incoming_pwc_racl_ctrl_recov_ctrl_update_err */
-  kTopDarjeelingAlertIdIncomingPwcAcRangeCheckRecovCtrlUpdateErr = 129, /**< incoming_pwc_ac_range_check_recov_ctrl_update_err */
-  kTopDarjeelingAlertIdIncomingPwcAcRangeCheckFatalFault = 130, /**< incoming_pwc_ac_range_check_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcRaclCtrlPwcFatalFault = 127, /**< incoming_pwc_racl_ctrl_pwc_fatal_fault */
+  kTopDarjeelingAlertIdIncomingPwcRaclCtrlPwcRecovCtrlUpdateErr = 128, /**< incoming_pwc_racl_ctrl_pwc_recov_ctrl_update_err */
+  kTopDarjeelingAlertIdIncomingPwcAcRangeCheckPwcRecovCtrlUpdateErr = 129, /**< incoming_pwc_ac_range_check_pwc_recov_ctrl_update_err */
+  kTopDarjeelingAlertIdIncomingPwcAcRangeCheckPwcFatalFault = 130, /**< incoming_pwc_ac_range_check_pwc_fatal_fault */
   kTopDarjeelingAlertIdIncomingPwcRvCoreIbexPwcFatalSwErr = 131, /**< incoming_pwc_rv_core_ibex_pwc_fatal_sw_err */
   kTopDarjeelingAlertIdIncomingPwcRvCoreIbexPwcRecovSwErr = 132, /**< incoming_pwc_rv_core_ibex_pwc_recov_sw_err */
   kTopDarjeelingAlertIdIncomingPwcRvCoreIbexPwcFatalHwErr = 133, /**< incoming_pwc_rv_core_ibex_pwc_fatal_hw_err */

@@ -52,7 +52,6 @@ NR_IRQ_PERIPH_TESTS = 1
             "//hw/top_mio/sw/autogen:top_mio",
             "//sw/device/lib/arch:boot_stage",
             "//sw/device/lib/base:mmio",
-            "//sw/device/lib/dif/autogen:ac_range_check_mio",
             "//sw/device/lib/dif/autogen:aon_timer",
             "//sw/device/lib/dif/autogen:dma",
             "//sw/device/lib/dif/autogen:mbx",

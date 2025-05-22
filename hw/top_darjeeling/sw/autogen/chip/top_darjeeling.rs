@@ -1187,48 +1187,52 @@ pub enum PlicIrqId {
     LioGrpBRaclError = 147,
     /// LIO_GRP_A_RACL_ERROR
     LioGrpARaclError = 148,
-    /// PWC_RACL_ERROR
-    PwcRaclError = 149,
-    /// MIO_RACL_ERROR
-    MioRaclError = 150,
     /// LIO_GRP_A_ALERTHANDLER_CLASS_A
-    LioGrpAAlerthandlerClassA = 151,
+    LioGrpAAlerthandlerClassA = 149,
     /// LIO_GRP_A_ALERTHANDLER_CLASS_B
-    LioGrpAAlerthandlerClassB = 152,
+    LioGrpAAlerthandlerClassB = 150,
     /// LIO_GRP_A_ALERTHANDLER_CLASS_C
-    LioGrpAAlerthandlerClassC = 153,
+    LioGrpAAlerthandlerClassC = 151,
     /// LIO_GRP_A_ALERTHANDLER_CLASS_D
-    LioGrpAAlerthandlerClassD = 154,
+    LioGrpAAlerthandlerClassD = 152,
     /// LIO_GRP_B_ALERTHANDLER_CLASS_A
-    LioGrpBAlerthandlerClassA = 155,
+    LioGrpBAlerthandlerClassA = 153,
     /// LIO_GRP_B_ALERTHANDLER_CLASS_B
-    LioGrpBAlerthandlerClassB = 156,
+    LioGrpBAlerthandlerClassB = 154,
     /// LIO_GRP_B_ALERTHANDLER_CLASS_C
-    LioGrpBAlerthandlerClassC = 157,
+    LioGrpBAlerthandlerClassC = 155,
     /// LIO_GRP_B_ALERTHANDLER_CLASS_D
-    LioGrpBAlerthandlerClassD = 158,
+    LioGrpBAlerthandlerClassD = 156,
     /// LIO_GRP_C_ALERTHANDLER_CLASS_A
-    LioGrpCAlerthandlerClassA = 159,
+    LioGrpCAlerthandlerClassA = 157,
     /// LIO_GRP_C_ALERTHANDLER_CLASS_B
-    LioGrpCAlerthandlerClassB = 160,
+    LioGrpCAlerthandlerClassB = 158,
     /// LIO_GRP_C_ALERTHANDLER_CLASS_C
-    LioGrpCAlerthandlerClassC = 161,
+    LioGrpCAlerthandlerClassC = 159,
     /// LIO_GRP_C_ALERTHANDLER_CLASS_D
-    LioGrpCAlerthandlerClassD = 162,
+    LioGrpCAlerthandlerClassD = 160,
     /// LIO_GRP_D_ALERTHANDLER_CLASS_A
-    LioGrpDAlerthandlerClassA = 163,
+    LioGrpDAlerthandlerClassA = 161,
     /// LIO_GRP_D_ALERTHANDLER_CLASS_B
-    LioGrpDAlerthandlerClassB = 164,
+    LioGrpDAlerthandlerClassB = 162,
     /// LIO_GRP_D_ALERTHANDLER_CLASS_C
-    LioGrpDAlerthandlerClassC = 165,
+    LioGrpDAlerthandlerClassC = 163,
     /// LIO_GRP_D_ALERTHANDLER_CLASS_D
-    LioGrpDAlerthandlerClassD = 166,
+    LioGrpDAlerthandlerClassD = 164,
     /// SCSCTNIF0_AC_RANGE_CTN_DENY_CNT_REACHED
-    Scsctnif0AcRangeCtnDenyCntReached = 167,
+    Scsctnif0AcRangeCtnDenyCntReached = 165,
     /// SCSCTNIF0_AC_RANGE_BCAST_DENY_CNT_REACHED
-    Scsctnif0AcRangeBcastDenyCntReached = 168,
+    Scsctnif0AcRangeBcastDenyCntReached = 166,
     /// SCSCTNIF1_AC_RANGE_CTN_DENY_CNT_REACHED
-    Scsctnif1AcRangeCtnDenyCntReached = 169,
+    Scsctnif1AcRangeCtnDenyCntReached = 167,
+    /// racl_ctrl_mio_racl_ctrl_mio_racl_error
+    RaclCtrlMioRaclCtrlMioRaclError = 168,
+    /// ac_range_check_mio_ac_range_check_mio_deny_cnt_reached
+    AcRangeCheckMioAcRangeCheckMioDenyCntReached = 169,
+    /// racl_ctrl_pwc_racl_ctrl_pwc_racl_error
+    RaclCtrlPwcRaclCtrlPwcRaclError = 170,
+    /// ac_range_check_pwc_ac_range_check_pwc_deny_cnt_reached
+    AcRangeCheckPwcAcRangeCheckPwcDenyCntReached = 171,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -1384,27 +1388,29 @@ impl TryFrom<u32> for PlicIrqId {
             146 => Ok(Self::LioGrpCRaclError),
             147 => Ok(Self::LioGrpBRaclError),
             148 => Ok(Self::LioGrpARaclError),
-            149 => Ok(Self::PwcRaclError),
-            150 => Ok(Self::MioRaclError),
-            151 => Ok(Self::LioGrpAAlerthandlerClassA),
-            152 => Ok(Self::LioGrpAAlerthandlerClassB),
-            153 => Ok(Self::LioGrpAAlerthandlerClassC),
-            154 => Ok(Self::LioGrpAAlerthandlerClassD),
-            155 => Ok(Self::LioGrpBAlerthandlerClassA),
-            156 => Ok(Self::LioGrpBAlerthandlerClassB),
-            157 => Ok(Self::LioGrpBAlerthandlerClassC),
-            158 => Ok(Self::LioGrpBAlerthandlerClassD),
-            159 => Ok(Self::LioGrpCAlerthandlerClassA),
-            160 => Ok(Self::LioGrpCAlerthandlerClassB),
-            161 => Ok(Self::LioGrpCAlerthandlerClassC),
-            162 => Ok(Self::LioGrpCAlerthandlerClassD),
-            163 => Ok(Self::LioGrpDAlerthandlerClassA),
-            164 => Ok(Self::LioGrpDAlerthandlerClassB),
-            165 => Ok(Self::LioGrpDAlerthandlerClassC),
-            166 => Ok(Self::LioGrpDAlerthandlerClassD),
-            167 => Ok(Self::Scsctnif0AcRangeCtnDenyCntReached),
-            168 => Ok(Self::Scsctnif0AcRangeBcastDenyCntReached),
-            169 => Ok(Self::Scsctnif1AcRangeCtnDenyCntReached),
+            149 => Ok(Self::LioGrpAAlerthandlerClassA),
+            150 => Ok(Self::LioGrpAAlerthandlerClassB),
+            151 => Ok(Self::LioGrpAAlerthandlerClassC),
+            152 => Ok(Self::LioGrpAAlerthandlerClassD),
+            153 => Ok(Self::LioGrpBAlerthandlerClassA),
+            154 => Ok(Self::LioGrpBAlerthandlerClassB),
+            155 => Ok(Self::LioGrpBAlerthandlerClassC),
+            156 => Ok(Self::LioGrpBAlerthandlerClassD),
+            157 => Ok(Self::LioGrpCAlerthandlerClassA),
+            158 => Ok(Self::LioGrpCAlerthandlerClassB),
+            159 => Ok(Self::LioGrpCAlerthandlerClassC),
+            160 => Ok(Self::LioGrpCAlerthandlerClassD),
+            161 => Ok(Self::LioGrpDAlerthandlerClassA),
+            162 => Ok(Self::LioGrpDAlerthandlerClassB),
+            163 => Ok(Self::LioGrpDAlerthandlerClassC),
+            164 => Ok(Self::LioGrpDAlerthandlerClassD),
+            165 => Ok(Self::Scsctnif0AcRangeCtnDenyCntReached),
+            166 => Ok(Self::Scsctnif0AcRangeBcastDenyCntReached),
+            167 => Ok(Self::Scsctnif1AcRangeCtnDenyCntReached),
+            168 => Ok(Self::RaclCtrlMioRaclCtrlMioRaclError),
+            169 => Ok(Self::AcRangeCheckMioAcRangeCheckMioDenyCntReached),
+            170 => Ok(Self::RaclCtrlPwcRaclCtrlPwcRaclError),
+            171 => Ok(Self::AcRangeCheckPwcAcRangeCheckPwcDenyCntReached),
             _ => Err(val),
         }
     }
@@ -1425,7 +1431,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 170] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 172] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // Uart0TxWatermark -> PlicPeripheral::Uart0
@@ -1724,10 +1730,6 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 170] = [
     PlicPeripheral::Unknown,
     // LioGrpARaclError -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
-    // PwcRaclError -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // MioRaclError -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
     // LioGrpAAlerthandlerClassA -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // LioGrpAAlerthandlerClassB -> PlicPeripheral::Unknown
@@ -1765,6 +1767,14 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 170] = [
     // Scsctnif0AcRangeBcastDenyCntReached -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // Scsctnif1AcRangeCtnDenyCntReached -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // RaclCtrlMioRaclCtrlMioRaclError -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // AcRangeCheckMioAcRangeCheckMioDenyCntReached -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // RaclCtrlPwcRaclCtrlPwcRaclError -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // AcRangeCheckPwcAcRangeCheckPwcDenyCntReached -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
 ];
 
@@ -2064,14 +2074,14 @@ pub enum AlertId {
     IncomingMioMbxPcie0FatalFault = 94,
     /// incoming_mio_mbx_pcie0_recov_fault
     IncomingMioMbxPcie0RecovFault = 95,
-    /// incoming_mio_racl_ctrl_fatal_fault
-    IncomingMioRaclCtrlFatalFault = 96,
-    /// incoming_mio_racl_ctrl_recov_ctrl_update_err
-    IncomingMioRaclCtrlRecovCtrlUpdateErr = 97,
-    /// incoming_mio_ac_range_check_recov_ctrl_update_err
-    IncomingMioAcRangeCheckRecovCtrlUpdateErr = 98,
-    /// incoming_mio_ac_range_check_fatal_fault
-    IncomingMioAcRangeCheckFatalFault = 99,
+    /// incoming_mio_racl_ctrl_mio_fatal_fault
+    IncomingMioRaclCtrlMioFatalFault = 96,
+    /// incoming_mio_racl_ctrl_mio_recov_ctrl_update_err
+    IncomingMioRaclCtrlMioRecovCtrlUpdateErr = 97,
+    /// incoming_mio_ac_range_check_mio_recov_ctrl_update_err
+    IncomingMioAcRangeCheckMioRecovCtrlUpdateErr = 98,
+    /// incoming_mio_ac_range_check_mio_fatal_fault
+    IncomingMioAcRangeCheckMioFatalFault = 99,
     /// incoming_mio_rv_core_ibex_mio_fatal_sw_err
     IncomingMioRvCoreIbexMioFatalSwErr = 100,
     /// incoming_mio_rv_core_ibex_mio_recov_sw_err
@@ -2126,14 +2136,14 @@ pub enum AlertId {
     IncomingPwcMbxPcie0FatalFault = 125,
     /// incoming_pwc_mbx_pcie0_recov_fault
     IncomingPwcMbxPcie0RecovFault = 126,
-    /// incoming_pwc_racl_ctrl_fatal_fault
-    IncomingPwcRaclCtrlFatalFault = 127,
-    /// incoming_pwc_racl_ctrl_recov_ctrl_update_err
-    IncomingPwcRaclCtrlRecovCtrlUpdateErr = 128,
-    /// incoming_pwc_ac_range_check_recov_ctrl_update_err
-    IncomingPwcAcRangeCheckRecovCtrlUpdateErr = 129,
-    /// incoming_pwc_ac_range_check_fatal_fault
-    IncomingPwcAcRangeCheckFatalFault = 130,
+    /// incoming_pwc_racl_ctrl_pwc_fatal_fault
+    IncomingPwcRaclCtrlPwcFatalFault = 127,
+    /// incoming_pwc_racl_ctrl_pwc_recov_ctrl_update_err
+    IncomingPwcRaclCtrlPwcRecovCtrlUpdateErr = 128,
+    /// incoming_pwc_ac_range_check_pwc_recov_ctrl_update_err
+    IncomingPwcAcRangeCheckPwcRecovCtrlUpdateErr = 129,
+    /// incoming_pwc_ac_range_check_pwc_fatal_fault
+    IncomingPwcAcRangeCheckPwcFatalFault = 130,
     /// incoming_pwc_rv_core_ibex_pwc_fatal_sw_err
     IncomingPwcRvCoreIbexPwcFatalSwErr = 131,
     /// incoming_pwc_rv_core_ibex_pwc_recov_sw_err
@@ -2348,10 +2358,10 @@ impl TryFrom<u32> for AlertId {
             93 => Ok(Self::IncomingMioMbx5RecovFault),
             94 => Ok(Self::IncomingMioMbxPcie0FatalFault),
             95 => Ok(Self::IncomingMioMbxPcie0RecovFault),
-            96 => Ok(Self::IncomingMioRaclCtrlFatalFault),
-            97 => Ok(Self::IncomingMioRaclCtrlRecovCtrlUpdateErr),
-            98 => Ok(Self::IncomingMioAcRangeCheckRecovCtrlUpdateErr),
-            99 => Ok(Self::IncomingMioAcRangeCheckFatalFault),
+            96 => Ok(Self::IncomingMioRaclCtrlMioFatalFault),
+            97 => Ok(Self::IncomingMioRaclCtrlMioRecovCtrlUpdateErr),
+            98 => Ok(Self::IncomingMioAcRangeCheckMioRecovCtrlUpdateErr),
+            99 => Ok(Self::IncomingMioAcRangeCheckMioFatalFault),
             100 => Ok(Self::IncomingMioRvCoreIbexMioFatalSwErr),
             101 => Ok(Self::IncomingMioRvCoreIbexMioRecovSwErr),
             102 => Ok(Self::IncomingMioRvCoreIbexMioFatalHwErr),
@@ -2379,10 +2389,10 @@ impl TryFrom<u32> for AlertId {
             124 => Ok(Self::IncomingPwcMbx5RecovFault),
             125 => Ok(Self::IncomingPwcMbxPcie0FatalFault),
             126 => Ok(Self::IncomingPwcMbxPcie0RecovFault),
-            127 => Ok(Self::IncomingPwcRaclCtrlFatalFault),
-            128 => Ok(Self::IncomingPwcRaclCtrlRecovCtrlUpdateErr),
-            129 => Ok(Self::IncomingPwcAcRangeCheckRecovCtrlUpdateErr),
-            130 => Ok(Self::IncomingPwcAcRangeCheckFatalFault),
+            127 => Ok(Self::IncomingPwcRaclCtrlPwcFatalFault),
+            128 => Ok(Self::IncomingPwcRaclCtrlPwcRecovCtrlUpdateErr),
+            129 => Ok(Self::IncomingPwcAcRangeCheckPwcRecovCtrlUpdateErr),
+            130 => Ok(Self::IncomingPwcAcRangeCheckPwcFatalFault),
             131 => Ok(Self::IncomingPwcRvCoreIbexPwcFatalSwErr),
             132 => Ok(Self::IncomingPwcRvCoreIbexPwcRecovSwErr),
             133 => Ok(Self::IncomingPwcRvCoreIbexPwcFatalHwErr),
@@ -2641,13 +2651,13 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 187] = [
     AlertPeripheral::External,
     // IncomingMioMbxPcie0RecovFault -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingMioRaclCtrlFatalFault -> AlertPeripheral::External
+    // IncomingMioRaclCtrlMioFatalFault -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingMioRaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::External
+    // IncomingMioRaclCtrlMioRecovCtrlUpdateErr -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingMioAcRangeCheckRecovCtrlUpdateErr -> AlertPeripheral::External
+    // IncomingMioAcRangeCheckMioRecovCtrlUpdateErr -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingMioAcRangeCheckFatalFault -> AlertPeripheral::External
+    // IncomingMioAcRangeCheckMioFatalFault -> AlertPeripheral::External
     AlertPeripheral::External,
     // IncomingMioRvCoreIbexMioFatalSwErr -> AlertPeripheral::External
     AlertPeripheral::External,
@@ -2703,13 +2713,13 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 187] = [
     AlertPeripheral::External,
     // IncomingPwcMbxPcie0RecovFault -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingPwcRaclCtrlFatalFault -> AlertPeripheral::External
+    // IncomingPwcRaclCtrlPwcFatalFault -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingPwcRaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::External
+    // IncomingPwcRaclCtrlPwcRecovCtrlUpdateErr -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingPwcAcRangeCheckRecovCtrlUpdateErr -> AlertPeripheral::External
+    // IncomingPwcAcRangeCheckPwcRecovCtrlUpdateErr -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingPwcAcRangeCheckFatalFault -> AlertPeripheral::External
+    // IncomingPwcAcRangeCheckPwcFatalFault -> AlertPeripheral::External
     AlertPeripheral::External,
     // IncomingPwcRvCoreIbexPwcFatalSwErr -> AlertPeripheral::External
     AlertPeripheral::External,

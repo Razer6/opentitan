@@ -281,7 +281,7 @@ package top_pwc_racl_pkg;
    *   TLUL interface name: None
    *   RACL group: pwc
    */
-  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_RV_PLIC_PWC_PWC [273] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_RV_PLIC_PWC_PWC [272] = '{
     RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            //   0 PRIO_0     : Policy Idx  0
     RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            //   1 PRIO_1     : Policy Idx  0
     RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            //   2 PRIO_2     : Policy Idx  0
@@ -534,27 +534,26 @@ package top_pwc_racl_pkg;
     RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 249 PRIO_249   : Policy Idx  0
     RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 250 PRIO_250   : Policy Idx  0
     RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 251 PRIO_251   : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 252 PRIO_252   : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 253 IP_0       : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 254 IP_1       : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 255 IP_2       : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 256 IP_3       : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 257 IP_4       : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 258 IP_5       : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 259 IP_6       : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 260 IP_7       : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 261 IE0_0      : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 262 IE0_1      : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 263 IE0_2      : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 264 IE0_3      : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 265 IE0_4      : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 266 IE0_5      : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 267 IE0_6      : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 268 IE0_7      : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 269 THRESHOLD0 : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 270 CC0        : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 271 MSIP0      : Policy Idx  0
-    RACL_POLICY_SEL_PWC_ROT_PRIVATE_POLICY           // 272 ALERT_TEST : Policy Idx  6
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 252 IP_0       : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 253 IP_1       : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 254 IP_2       : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 255 IP_3       : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 256 IP_4       : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 257 IP_5       : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 258 IP_6       : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 259 IP_7       : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 260 IE0_0      : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 261 IE0_1      : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 262 IE0_2      : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 263 IE0_3      : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 264 IE0_4      : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 265 IE0_5      : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 266 IE0_6      : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 267 IE0_7      : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 268 THRESHOLD0 : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 269 CC0        : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY,            // 270 MSIP0      : Policy Idx  0
+    RACL_POLICY_SEL_PWC_ROT_PRIVATE_POLICY           // 271 ALERT_TEST : Policy Idx  6
   };
 
   /**
@@ -950,11 +949,11 @@ package top_pwc_racl_pkg;
     RACL_POLICY_SEL_PWC_ALL_RD_WR_POLICY;            // Policy Idx  0
 
   /**
-   * Policy selection vector for ac_range_check
+   * Policy selection vector for ac_range_check_pwc
    *   TLUL interface name: None
    *   RACL group: pwc
    */
-  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_AC_RANGE_CHECK_PWC [168] = '{
+  parameter racl_policy_sel_t RACL_POLICY_SEL_VEC_AC_RANGE_CHECK_PWC_PWC [168] = '{
     RACL_POLICY_SEL_PWC_ROT_PRIVATE_POLICY,          //   0 INTR_STATE                    : Policy Idx  6
     RACL_POLICY_SEL_PWC_ROT_PRIVATE_POLICY,          //   1 INTR_ENABLE                   : Policy Idx  6
     RACL_POLICY_SEL_PWC_ROT_PRIVATE_POLICY,          //   2 INTR_TEST                     : Policy Idx  6

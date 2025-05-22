@@ -7,7 +7,7 @@
   {
     racl_support: true
     module_instance_name: rv_plic_mio
-    src: 38
+    src: 37
     target: 1
     prio: 3
     topname: mio

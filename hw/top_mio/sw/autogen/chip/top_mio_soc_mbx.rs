@@ -117,30 +117,30 @@ pub const MBX_PCIE0_SOC_BASE_ADDR: usize = 0x1480100;
 /// `MBX_PCIE0_SOC_BASE_ADDR + MBX_PCIE0_SOC_SIZE_BYTES`.
 pub const MBX_PCIE0_SOC_SIZE_BYTES: usize = 0x20;
 
-/// Peripheral base address for racl_ctrl in top mio.
+/// Peripheral base address for racl_ctrl_mio in top mio.
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const RACL_CTRL_BASE_ADDR: usize = 0x1481F00;
+pub const RACL_CTRL_MIO_BASE_ADDR: usize = 0x1481F00;
 
-/// Peripheral size for racl_ctrl in top mio.
+/// Peripheral size for racl_ctrl_mio in top mio.
 ///
 /// This is the size (in bytes) of the peripheral's reserved memory area. All
 /// memory-mapped registers associated with this peripheral should have an
-/// address between #RACL_CTRL_BASE_ADDR and
-/// `RACL_CTRL_BASE_ADDR + RACL_CTRL_SIZE_BYTES`.
-pub const RACL_CTRL_SIZE_BYTES: usize = 0x100;
+/// address between #RACL_CTRL_MIO_BASE_ADDR and
+/// `RACL_CTRL_MIO_BASE_ADDR + RACL_CTRL_MIO_SIZE_BYTES`.
+pub const RACL_CTRL_MIO_SIZE_BYTES: usize = 0x100;
 
-/// Peripheral base address for ac_range_check in top mio.
+/// Peripheral base address for ac_range_check_mio in top mio.
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
 /// registers associated with the peripheral (usually via a DIF).
-pub const AC_RANGE_CHECK_BASE_ADDR: usize = 0x1484000;
+pub const AC_RANGE_CHECK_MIO_BASE_ADDR: usize = 0x1484000;
 
-/// Peripheral size for ac_range_check in top mio.
+/// Peripheral size for ac_range_check_mio in top mio.
 ///
 /// This is the size (in bytes) of the peripheral's reserved memory area. All
 /// memory-mapped registers associated with this peripheral should have an
-/// address between #AC_RANGE_CHECK_BASE_ADDR and
-/// `AC_RANGE_CHECK_BASE_ADDR + AC_RANGE_CHECK_SIZE_BYTES`.
-pub const AC_RANGE_CHECK_SIZE_BYTES: usize = 0x400;
+/// address between #AC_RANGE_CHECK_MIO_BASE_ADDR and
+/// `AC_RANGE_CHECK_MIO_BASE_ADDR + AC_RANGE_CHECK_MIO_SIZE_BYTES`.
+pub const AC_RANGE_CHECK_MIO_SIZE_BYTES: usize = 0x400;

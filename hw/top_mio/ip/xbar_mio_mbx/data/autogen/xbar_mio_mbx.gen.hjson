@@ -41,8 +41,8 @@
       mbx4.soc
       mbx5.soc
       mbx_pcie0.soc
-      racl_ctrl
-      ac_range_check
+      racl_ctrl_mio
+      ac_range_check_mio
     ]
   }
   nodes:
@@ -215,7 +215,7 @@
       req_fifo_pass: true
     }
     {
-      name: racl_ctrl
+      name: racl_ctrl_mio
       type: device
       addr_space: soc_mbx
       clock: clk_mbx_i
@@ -237,7 +237,7 @@
       req_fifo_pass: true
     }
     {
-      name: ac_range_check
+      name: ac_range_check_mio
       type: device
       addr_space: soc_mbx
       clock: clk_mbx_i
@@ -366,7 +366,7 @@
       index: -1
     }
     {
-      name: tl_racl_ctrl
+      name: tl_racl_ctrl_mio
       struct: tl
       package: tlul_pkg
       type: req_rsp
@@ -374,11 +374,11 @@
       inst_name: mio_mbx
       width: 1
       default: ""
-      top_signame: racl_ctrl_tl
+      top_signame: racl_ctrl_mio_tl
       index: -1
     }
     {
-      name: tl_ac_range_check
+      name: tl_ac_range_check_mio
       struct: tl
       package: tlul_pkg
       type: req_rsp
@@ -386,7 +386,7 @@
       inst_name: mio_mbx
       width: 1
       default: ""
-      top_signame: ac_range_check_tl
+      top_signame: ac_range_check_mio_tl
       index: -1
     }
   ]

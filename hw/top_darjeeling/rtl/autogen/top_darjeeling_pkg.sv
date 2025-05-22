@@ -743,10 +743,10 @@ package top_darjeeling_pkg;
     TopDarjeelingIncomingAlertMioIdMbx5RecovFault = 19,
     TopDarjeelingIncomingAlertMioIdMbxPcie0FatalFault = 20,
     TopDarjeelingIncomingAlertMioIdMbxPcie0RecovFault = 21,
-    TopDarjeelingIncomingAlertMioIdRaclCtrlFatalFault = 22,
-    TopDarjeelingIncomingAlertMioIdRaclCtrlRecovCtrlUpdateErr = 23,
-    TopDarjeelingIncomingAlertMioIdAcRangeCheckRecovCtrlUpdateErr = 24,
-    TopDarjeelingIncomingAlertMioIdAcRangeCheckFatalFault = 25,
+    TopDarjeelingIncomingAlertMioIdRaclCtrlMioFatalFault = 22,
+    TopDarjeelingIncomingAlertMioIdRaclCtrlMioRecovCtrlUpdateErr = 23,
+    TopDarjeelingIncomingAlertMioIdAcRangeCheckMioRecovCtrlUpdateErr = 24,
+    TopDarjeelingIncomingAlertMioIdAcRangeCheckMioFatalFault = 25,
     TopDarjeelingIncomingAlertMioIdRvCoreIbexMioFatalSwErr = 26,
     TopDarjeelingIncomingAlertMioIdRvCoreIbexMioRecovSwErr = 27,
     TopDarjeelingIncomingAlertMioIdRvCoreIbexMioFatalHwErr = 28,
@@ -785,10 +785,10 @@ package top_darjeeling_pkg;
     TopDarjeelingIncomingAlertPwcIdMbx5RecovFault = 20,
     TopDarjeelingIncomingAlertPwcIdMbxPcie0FatalFault = 21,
     TopDarjeelingIncomingAlertPwcIdMbxPcie0RecovFault = 22,
-    TopDarjeelingIncomingAlertPwcIdRaclCtrlFatalFault = 23,
-    TopDarjeelingIncomingAlertPwcIdRaclCtrlRecovCtrlUpdateErr = 24,
-    TopDarjeelingIncomingAlertPwcIdAcRangeCheckRecovCtrlUpdateErr = 25,
-    TopDarjeelingIncomingAlertPwcIdAcRangeCheckFatalFault = 26,
+    TopDarjeelingIncomingAlertPwcIdRaclCtrlPwcFatalFault = 23,
+    TopDarjeelingIncomingAlertPwcIdRaclCtrlPwcRecovCtrlUpdateErr = 24,
+    TopDarjeelingIncomingAlertPwcIdAcRangeCheckPwcRecovCtrlUpdateErr = 25,
+    TopDarjeelingIncomingAlertPwcIdAcRangeCheckPwcFatalFault = 26,
     TopDarjeelingIncomingAlertPwcIdRvCoreIbexPwcFatalSwErr = 27,
     TopDarjeelingIncomingAlertPwcIdRvCoreIbexPwcRecovSwErr = 28,
     TopDarjeelingIncomingAlertPwcIdRvCoreIbexPwcFatalHwErr = 29,
@@ -1048,32 +1048,34 @@ package top_darjeeling_pkg;
     TopDarjeelingIrqIdLioGrpCRaclError = 146,
     TopDarjeelingIrqIdLioGrpBRaclError = 147,
     TopDarjeelingIrqIdLioGrpARaclError = 148,
-    TopDarjeelingIrqIdPwcRaclError = 149,
-    TopDarjeelingIrqIdMioRaclError = 150,
-    TopDarjeelingIrqIdLioGrpAAlerthandlerClassA = 151,
-    TopDarjeelingIrqIdLioGrpAAlerthandlerClassB = 152,
-    TopDarjeelingIrqIdLioGrpAAlerthandlerClassC = 153,
-    TopDarjeelingIrqIdLioGrpAAlerthandlerClassD = 154,
-    TopDarjeelingIrqIdLioGrpBAlerthandlerClassA = 155,
-    TopDarjeelingIrqIdLioGrpBAlerthandlerClassB = 156,
-    TopDarjeelingIrqIdLioGrpBAlerthandlerClassC = 157,
-    TopDarjeelingIrqIdLioGrpBAlerthandlerClassD = 158,
-    TopDarjeelingIrqIdLioGrpCAlerthandlerClassA = 159,
-    TopDarjeelingIrqIdLioGrpCAlerthandlerClassB = 160,
-    TopDarjeelingIrqIdLioGrpCAlerthandlerClassC = 161,
-    TopDarjeelingIrqIdLioGrpCAlerthandlerClassD = 162,
-    TopDarjeelingIrqIdLioGrpDAlerthandlerClassA = 163,
-    TopDarjeelingIrqIdLioGrpDAlerthandlerClassB = 164,
-    TopDarjeelingIrqIdLioGrpDAlerthandlerClassC = 165,
-    TopDarjeelingIrqIdLioGrpDAlerthandlerClassD = 166,
-    TopDarjeelingIrqIdScsctnif0AcRangeCtnDenyCntReached = 167,
-    TopDarjeelingIrqIdScsctnif0AcRangeBcastDenyCntReached = 168,
-    TopDarjeelingIrqIdScsctnif1AcRangeCtnDenyCntReached = 169,
+    TopDarjeelingIrqIdLioGrpAAlerthandlerClassA = 149,
+    TopDarjeelingIrqIdLioGrpAAlerthandlerClassB = 150,
+    TopDarjeelingIrqIdLioGrpAAlerthandlerClassC = 151,
+    TopDarjeelingIrqIdLioGrpAAlerthandlerClassD = 152,
+    TopDarjeelingIrqIdLioGrpBAlerthandlerClassA = 153,
+    TopDarjeelingIrqIdLioGrpBAlerthandlerClassB = 154,
+    TopDarjeelingIrqIdLioGrpBAlerthandlerClassC = 155,
+    TopDarjeelingIrqIdLioGrpBAlerthandlerClassD = 156,
+    TopDarjeelingIrqIdLioGrpCAlerthandlerClassA = 157,
+    TopDarjeelingIrqIdLioGrpCAlerthandlerClassB = 158,
+    TopDarjeelingIrqIdLioGrpCAlerthandlerClassC = 159,
+    TopDarjeelingIrqIdLioGrpCAlerthandlerClassD = 160,
+    TopDarjeelingIrqIdLioGrpDAlerthandlerClassA = 161,
+    TopDarjeelingIrqIdLioGrpDAlerthandlerClassB = 162,
+    TopDarjeelingIrqIdLioGrpDAlerthandlerClassC = 163,
+    TopDarjeelingIrqIdLioGrpDAlerthandlerClassD = 164,
+    TopDarjeelingIrqIdScsctnif0AcRangeCtnDenyCntReached = 165,
+    TopDarjeelingIrqIdScsctnif0AcRangeBcastDenyCntReached = 166,
+    TopDarjeelingIrqIdScsctnif1AcRangeCtnDenyCntReached = 167,
+    TopDarjeelingIrqIdRaclCtrlMioRaclCtrlMioRaclError = 168,
+    TopDarjeelingIrqIdAcRangeCheckMioAcRangeCheckMioDenyCntReached = 169,
+    TopDarjeelingIrqIdRaclCtrlPwcRaclCtrlPwcRaclError = 170,
+    TopDarjeelingIrqIdAcRangeCheckPwcAcRangeCheckPwcDenyCntReached = 171,
     TopDarjeelingIrqIdCount
   } interrupt_id_e;
 
   // Number of rot_external incoming interrupts
-  parameter int unsigned NIncomingInterruptsRotExternal = 42;
+  parameter int unsigned NIncomingInterruptsRotExternal = 40;
 
   // Enumeration of interrupts for incoming group rot_external
   typedef enum int unsigned {
@@ -1098,29 +1100,47 @@ package top_darjeeling_pkg;
     TopDarjeelingIncomingIrqRotExternalIdLioGrpCRaclError = 18,
     TopDarjeelingIncomingIrqRotExternalIdLioGrpBRaclError = 19,
     TopDarjeelingIncomingIrqRotExternalIdLioGrpARaclError = 20,
-    TopDarjeelingIncomingIrqRotExternalIdPwcRaclError = 21,
-    TopDarjeelingIncomingIrqRotExternalIdMioRaclError = 22,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpAAlerthandlerClassA = 23,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpAAlerthandlerClassB = 24,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpAAlerthandlerClassC = 25,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpAAlerthandlerClassD = 26,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpBAlerthandlerClassA = 27,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpBAlerthandlerClassB = 28,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpBAlerthandlerClassC = 29,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpBAlerthandlerClassD = 30,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpCAlerthandlerClassA = 31,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpCAlerthandlerClassB = 32,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpCAlerthandlerClassC = 33,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpCAlerthandlerClassD = 34,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassA = 35,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassB = 36,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassC = 37,
-    TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassD = 38,
-    TopDarjeelingIncomingIrqRotExternalIdScsctnif0AcRangeCtnDenyCntReached = 39,
-    TopDarjeelingIncomingIrqRotExternalIdScsctnif0AcRangeBcastDenyCntReached = 40,
-    TopDarjeelingIncomingIrqRotExternalIdScsctnif1AcRangeCtnDenyCntReached = 41,
-    TopDarjeelingIncomingIrqIdCount
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpAAlerthandlerClassA = 21,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpAAlerthandlerClassB = 22,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpAAlerthandlerClassC = 23,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpAAlerthandlerClassD = 24,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpBAlerthandlerClassA = 25,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpBAlerthandlerClassB = 26,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpBAlerthandlerClassC = 27,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpBAlerthandlerClassD = 28,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpCAlerthandlerClassA = 29,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpCAlerthandlerClassB = 30,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpCAlerthandlerClassC = 31,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpCAlerthandlerClassD = 32,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassA = 33,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassB = 34,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassC = 35,
+    TopDarjeelingIncomingIrqRotExternalIdLioGrpDAlerthandlerClassD = 36,
+    TopDarjeelingIncomingIrqRotExternalIdScsctnif0AcRangeCtnDenyCntReached = 37,
+    TopDarjeelingIncomingIrqRotExternalIdScsctnif0AcRangeBcastDenyCntReached = 38,
+    TopDarjeelingIncomingIrqRotExternalIdScsctnif1AcRangeCtnDenyCntReached = 39,
+    TopDarjeelingIncomingIrqRotExternalIdCount
   } incoming_interrupt_rot_external_id_e;
+
+  // Number of mio incoming interrupts
+  parameter int unsigned NIncomingInterruptsMio = 2;
+
+  // Enumeration of interrupts for incoming group mio
+  typedef enum int unsigned {
+    TopDarjeelingIncomingIrqMioIdRaclCtrlMioRaclCtrlMioRaclError = 0,
+    TopDarjeelingIncomingIrqMioIdAcRangeCheckMioAcRangeCheckMioDenyCntReached = 1,
+    TopDarjeelingIncomingIrqMioIdCount
+  } incoming_interrupt_mio_id_e;
+
+  // Number of pwc incoming interrupts
+  parameter int unsigned NIncomingInterruptsPwc = 2;
+
+  // Enumeration of interrupts for incoming group pwc
+  typedef enum int unsigned {
+    TopDarjeelingIncomingIrqPwcIdRaclCtrlPwcRaclCtrlPwcRaclError = 0,
+    TopDarjeelingIncomingIrqPwcIdAcRangeCheckPwcAcRangeCheckPwcDenyCntReached = 1,
+    TopDarjeelingIncomingIrqPwcIdCount
+  } incoming_interrupt_pwc_id_e;
 
   // Enumeration of IO power domains.
   // Only used in ASIC target.

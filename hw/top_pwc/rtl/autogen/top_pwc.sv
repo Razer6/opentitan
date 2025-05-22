@@ -63,10 +63,10 @@ module top_pwc #(
   // parameters for mbx4
   // parameters for mbx5
   // parameters for mbx_pcie0
-  // parameters for racl_ctrl
-  parameter int RaclCtrlNumExternalSubscribingIps = 1,
-  // parameters for ac_range_check
-  parameter bit AcRangeCheckRangeCheckErrorRsp = 1,
+  // parameters for racl_ctrl_pwc
+  parameter int RaclCtrlPwcNumExternalSubscribingIps = 1,
+  // parameters for ac_range_check_pwc
+  parameter bit AcRangeCheckPwcRangeCheckErrorRsp = 1,
   // parameters for rv_core_ibex_pwc
   parameter bit RvCoreIbexPwcPMPEnable = 1,
   parameter int unsigned RvCoreIbexPwcPMPGranularity = 0,
@@ -136,7 +136,7 @@ module top_pwc #(
   input  prim_ram_1p_pkg::ram_1p_cfg_t [SramCtrlMboxNumRamInst-1:0] sram_ctrl_mbox_ram_1p_cfg_i,
   output prim_ram_1p_pkg::ram_1p_cfg_rsp_t [SramCtrlMboxNumRamInst-1:0] sram_ctrl_mbox_ram_1p_cfg_rsp_o,
   output top_racl_pkg::racl_policy_vec_t       racl_policies_o,
-  input  top_racl_pkg::racl_error_log_t [RaclCtrlNumExternalSubscribingIps-1:0] racl_error_i,
+  input  top_racl_pkg::racl_error_log_t [RaclCtrlPwcNumExternalSubscribingIps-1:0] racl_error_i,
   input  prim_mubi_pkg::mubi8_t       ac_range_check_overwrite_i,
 
   // Incoming interrupt of group pwc_external
@@ -164,8 +164,8 @@ module top_pwc #(
   // mbx4
   // mbx5
   // mbx_pcie0
-  // racl_ctrl
-  // ac_range_check
+  // racl_ctrl_pwc
+  // ac_range_check_pwc
   // rv_core_ibex_pwc
 
   // All externally supplied clocks
@@ -212,10 +212,10 @@ module top_pwc #(
   localparam int SramCtrlMainOutstanding = 6;
   // local parameters for sram_ctrl_mbox
   localparam int SramCtrlMboxOutstanding = 6;
-  // local parameters for racl_ctrl
-  localparam int RaclCtrlNumSubscribingIps = 18;
+  // local parameters for racl_ctrl_pwc
+  localparam int RaclCtrlPwcNumSubscribingIps = 18;
 
-  logic [252:0]  intr_vector;
+  logic [251:0]  intr_vector;
   // Interrupt source list
   logic [31:0] intr_gpio_gpio;
   logic intr_rv_timer_timer_expired_hart0_timer0;
@@ -245,7 +245,6 @@ module top_pwc #(
   logic intr_mbx_pcie0_mbx_ready;
   logic intr_mbx_pcie0_mbx_abort;
   logic intr_mbx_pcie0_mbx_error;
-  logic intr_ac_range_check_deny_cnt_reached;
 
   // define inter-module signals
   logic       aon_timer_aon_nmi_wdog_timer_bark;
@@ -260,8 +259,8 @@ module top_pwc #(
   tlul_pkg::tl_d2h_t       pwc_soc_proxy_dma_tl_d2h;
   tlul_pkg::tl_h2d_t       pwc_soc_proxy_muxed_tl_h2d;
   tlul_pkg::tl_d2h_t       pwc_soc_proxy_muxed_tl_d2h;
-  tlul_pkg::tl_h2d_t       ac_range_check_ctn_filtered_tl_h2d;
-  tlul_pkg::tl_d2h_t       ac_range_check_ctn_filtered_tl_d2h;
+  tlul_pkg::tl_h2d_t       ac_range_check_pwc_ctn_filtered_tl_h2d;
+  tlul_pkg::tl_d2h_t       ac_range_check_pwc_ctn_filtered_tl_d2h;
   tlul_pkg::tl_h2d_t       pwc_main_tl_rv_core_ibex_pwc__corei_req;
   tlul_pkg::tl_d2h_t       pwc_main_tl_rv_core_ibex_pwc__corei_rsp;
   tlul_pkg::tl_h2d_t       pwc_main_tl_rv_core_ibex_pwc__cored_req;
@@ -344,18 +343,18 @@ module top_pwc #(
   tlul_pkg::tl_d2h_t       mbx5_soc_tl_d_rsp;
   tlul_pkg::tl_h2d_t       mbx_pcie0_soc_tl_d_req;
   tlul_pkg::tl_d2h_t       mbx_pcie0_soc_tl_d_rsp;
-  tlul_pkg::tl_h2d_t       racl_ctrl_tl_req;
-  tlul_pkg::tl_d2h_t       racl_ctrl_tl_rsp;
-  tlul_pkg::tl_h2d_t       ac_range_check_tl_req;
-  tlul_pkg::tl_d2h_t       ac_range_check_tl_rsp;
-  top_racl_pkg::racl_policy_vec_t       racl_ctrl_racl_policies;
-  top_racl_pkg::racl_error_log_t [RaclCtrlNumSubscribingIps-1:0] racl_ctrl_racl_error;
+  tlul_pkg::tl_h2d_t       racl_ctrl_pwc_tl_req;
+  tlul_pkg::tl_d2h_t       racl_ctrl_pwc_tl_rsp;
+  tlul_pkg::tl_h2d_t       ac_range_check_pwc_tl_req;
+  tlul_pkg::tl_d2h_t       ac_range_check_pwc_tl_rsp;
+  top_racl_pkg::racl_policy_vec_t       racl_ctrl_pwc_racl_policies;
+  top_racl_pkg::racl_error_log_t [RaclCtrlPwcNumSubscribingIps-1:0] racl_ctrl_pwc_racl_error;
   logic       rv_core_ibex_pwc_irq_timer;
   logic [31:0] rv_core_ibex_pwc_hart_id;
   prim_mubi_pkg::mubi8_t       rv_dm_otp_dis_rv_dm_late_debug;
 
   // define mixed connection to port
-  assign racl_policies_o = racl_ctrl_racl_policies;
+  assign racl_policies_o = racl_ctrl_pwc_racl_policies;
 
   // define partial inter-module tie-off
 
@@ -417,8 +416,8 @@ module top_pwc #(
       // Inter-module signals
       .strap_en_i(1'b0),
       .sampled_straps_o(),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[0]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[0]),
       .tl_i(gpio_tl_req),
       .tl_o(gpio_tl_rsp),
 
@@ -440,8 +439,8 @@ module top_pwc #(
       .alert_rx_i  ( outgoing_alert_pwc_rx_i[1:1] ),
 
       // Inter-module signals
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[1]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[1]),
       .tl_i(rv_timer_tl_req),
       .tl_o(rv_timer_tl_rsp),
 
@@ -469,8 +468,8 @@ module top_pwc #(
       .aon_timer_rst_req_o(),
       .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
       .sleep_mode_i('0),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[2]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[2]),
       .tl_i(aon_timer_aon_tl_req),
       .tl_o(aon_timer_aon_tl_rsp),
 
@@ -493,8 +492,8 @@ module top_pwc #(
       .misc_tl_d2h_o(ctn_misc_tl_d2h_o),
       .muxed_tl_h2d_o(pwc_soc_proxy_muxed_tl_h2d),
       .muxed_tl_d2h_i(pwc_soc_proxy_muxed_tl_d2h),
-      .ac_range_tl_h2d_i(ac_range_check_ctn_filtered_tl_h2d),
-      .ac_range_tl_d2h_o(ac_range_check_ctn_filtered_tl_d2h),
+      .ac_range_tl_h2d_i(ac_range_check_pwc_ctn_filtered_tl_h2d),
+      .ac_range_tl_d2h_o(ac_range_check_pwc_ctn_filtered_tl_d2h),
       .ctn_tl_h2d_o(ctn_tl_h2d_o),
       .ctn_tl_d2h_i(ctn_tl_d2h_i),
       .soc_lsio_trigger_i(soc_lsio_trigger_i),
@@ -540,8 +539,8 @@ module top_pwc #(
       .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
       .lc_hw_debug_en_i(pwc_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[3]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[3]),
       .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_ret_aon_regs_tl_req),
       .regs_tl_o(sram_ctrl_ret_aon_regs_tl_rsp),
@@ -584,8 +583,8 @@ module top_pwc #(
       .lc_check_byp_en_i(lc_check_byp_en_i),
       .strap_en_i(rv_dm_strap_en_i),
       .strap_en_override_i(rv_dm_strap_en_override_i),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[4]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[4]),
       .sba_tl_h_o(pwc_main_tl_rv_dm__sba_req),
       .sba_tl_h_i(pwc_main_tl_rv_dm__sba_rsp),
       .regs_tl_d_i(rv_dm_regs_tl_d_req),
@@ -617,8 +616,8 @@ module top_pwc #(
       .irq_o(rv_plic_pwc_irq),
       .irq_id_o(),
       .msip_o(rv_plic_pwc_msip),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[5]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[5]),
       .tl_i(rv_plic_pwc_tl_req),
       .tl_o(rv_plic_pwc_tl_rsp),
       .intr_src_i (intr_vector),
@@ -659,8 +658,8 @@ module top_pwc #(
       .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
       .lc_hw_debug_en_i(pwc_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(sram_ctrl_main_otp_en_sram_ifetch),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[6]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[6]),
       .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_main_regs_tl_req),
       .regs_tl_o(sram_ctrl_main_regs_tl_rsp),
@@ -705,8 +704,8 @@ module top_pwc #(
       .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
       .lc_hw_debug_en_i(pwc_soc_proxy_lc_hw_debug_en),
       .otp_en_sram_ifetch_i(prim_mubi_pkg::MuBi8False),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[7]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[7]),
       .sram_rerror_o(),
       .regs_tl_i(sram_ctrl_mbox_regs_tl_req),
       .regs_tl_o(sram_ctrl_mbox_regs_tl_rsp),
@@ -745,8 +744,8 @@ module top_pwc #(
       .sys_i(dma_sys_rsp_i),
       .ctn_tl_h2d_o(pwc_soc_proxy_dma_tl_h2d),
       .ctn_tl_d2h_i(pwc_soc_proxy_dma_tl_d2h),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[8]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[8]),
       .host_tl_h_o(pwc_main_tl_dma__host_req),
       .host_tl_h_i(pwc_main_tl_dma__host_rsp),
       .tl_d_i(dma_tl_d_req),
@@ -781,8 +780,8 @@ module top_pwc #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[9]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[9]),
       .sram_tl_h_o(pwc_main_tl_mbx0__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx0__sram_rsp),
       .core_tl_d_i(mbx0_core_tl_d_req),
@@ -818,8 +817,8 @@ module top_pwc #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[10]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[10]),
       .sram_tl_h_o(pwc_main_tl_mbx1__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx1__sram_rsp),
       .core_tl_d_i(mbx1_core_tl_d_req),
@@ -855,8 +854,8 @@ module top_pwc #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[11]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[11]),
       .sram_tl_h_o(pwc_main_tl_mbx2__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx2__sram_rsp),
       .core_tl_d_i(mbx2_core_tl_d_req),
@@ -892,8 +891,8 @@ module top_pwc #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[12]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[12]),
       .sram_tl_h_o(pwc_main_tl_mbx3__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx3__sram_rsp),
       .core_tl_d_i(mbx3_core_tl_d_req),
@@ -929,8 +928,8 @@ module top_pwc #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[13]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[13]),
       .sram_tl_h_o(pwc_main_tl_mbx4__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx4__sram_rsp),
       .core_tl_d_i(mbx4_core_tl_d_req),
@@ -966,8 +965,8 @@ module top_pwc #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[14]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[14]),
       .sram_tl_h_o(pwc_main_tl_mbx5__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx5__sram_rsp),
       .core_tl_d_i(mbx5_core_tl_d_req),
@@ -1003,8 +1002,8 @@ module top_pwc #(
       .doe_intr_en_o(),
       .doe_intr_o(),
       .doe_async_msg_support_o(),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[15]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[15]),
       .sram_tl_h_o(pwc_main_tl_mbx_pcie0__sram_req),
       .sram_tl_h_i(pwc_main_tl_mbx_pcie0__sram_rsp),
       .core_tl_d_i(mbx_pcie0_core_tl_d_req),
@@ -1019,9 +1018,9 @@ module top_pwc #(
   racl_ctrl_pwc #(
     .RaclErrorRsp(1'b0),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[24:23]),
-    .NumSubscribingIps(RaclCtrlNumSubscribingIps),
-    .NumExternalSubscribingIps(RaclCtrlNumExternalSubscribingIps)
-  ) u_racl_ctrl (
+    .NumSubscribingIps(RaclCtrlPwcNumSubscribingIps),
+    .NumExternalSubscribingIps(RaclCtrlPwcNumExternalSubscribingIps)
+  ) u_racl_ctrl_pwc (
 
       // Interrupt
       // External interrupt group "pwc" [0:0]: racl_error
@@ -1032,11 +1031,11 @@ module top_pwc #(
       .alert_rx_i  ( outgoing_alert_pwc_rx_i[24:23] ),
 
       // Inter-module signals
-      .racl_policies_o(racl_ctrl_racl_policies),
-      .racl_error_i(racl_ctrl_racl_error),
+      .racl_policies_o(racl_ctrl_pwc_racl_policies),
+      .racl_error_i(racl_ctrl_pwc_racl_error),
       .racl_error_external_i(racl_error_i),
-      .tl_i(racl_ctrl_tl_req),
-      .tl_o(racl_ctrl_tl_rsp),
+      .tl_i(racl_ctrl_pwc_tl_req),
+      .tl_o(racl_ctrl_pwc_tl_rsp),
 
       // Clock and reset connections
       .clk_i (clk_ext_main_i),
@@ -1046,13 +1045,14 @@ module top_pwc #(
   ac_range_check_pwc #(
     .EnableRacl(1'b1),
     .RaclErrorRsp(top_racl_pkg::ErrorRsp),
-    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK_PWC),
+    .RaclPolicySelVec(RACL_POLICY_SEL_VEC_AC_RANGE_CHECK_PWC_PWC),
     .AlertAsyncOn(AsyncOnOutgoingAlertPwc[26:25]),
-    .RangeCheckErrorRsp(AcRangeCheckRangeCheckErrorRsp)
-  ) u_ac_range_check (
+    .RangeCheckErrorRsp(AcRangeCheckPwcRangeCheckErrorRsp)
+  ) u_ac_range_check_pwc (
 
       // Interrupt
-      .intr_deny_cnt_reached_o (intr_ac_range_check_deny_cnt_reached),
+      // External interrupt group "pwc" [1:1]: deny_cnt_reached
+      .intr_deny_cnt_reached_o (outgoing_interrupt_pwc_o[1:1]),
       // External alert group "pwc" [25]: recov_ctrl_update_err
       // External alert group "pwc" [26]: fatal_fault
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[26:25] ),
@@ -1062,12 +1062,12 @@ module top_pwc #(
       .range_check_overwrite_i(ac_range_check_overwrite_i),
       .ctn_tl_h2d_i(pwc_soc_proxy_muxed_tl_h2d),
       .ctn_tl_d2h_o(pwc_soc_proxy_muxed_tl_d2h),
-      .ctn_filtered_tl_h2d_o(ac_range_check_ctn_filtered_tl_h2d),
-      .ctn_filtered_tl_d2h_i(ac_range_check_ctn_filtered_tl_d2h),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[16]),
-      .tl_i(ac_range_check_tl_req),
-      .tl_o(ac_range_check_tl_rsp),
+      .ctn_filtered_tl_h2d_o(ac_range_check_pwc_ctn_filtered_tl_h2d),
+      .ctn_filtered_tl_d2h_i(ac_range_check_pwc_ctn_filtered_tl_d2h),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[16]),
+      .tl_i(ac_range_check_pwc_tl_req),
+      .tl_o(ac_range_check_pwc_tl_rsp),
 
       // Clock and reset connections
       .clk_i (clk_ext_main_i),
@@ -1148,8 +1148,8 @@ module top_pwc #(
       .icache_otp_key_o(),
       .icache_otp_key_i(otp_ctrl_pkg::SRAM_OTP_KEY_RSP_DEFAULT),
       .fpga_info_i(fpga_info_i),
-      .racl_policies_i(racl_ctrl_racl_policies),
-      .racl_error_o(racl_ctrl_racl_error[17]),
+      .racl_policies_i(racl_ctrl_pwc_racl_policies),
+      .racl_error_o(racl_ctrl_pwc_racl_error[17]),
       .corei_tl_h_o(pwc_main_tl_rv_core_ibex_pwc__corei_req),
       .corei_tl_h_i(pwc_main_tl_rv_core_ibex_pwc__corei_rsp),
       .cored_tl_h_o(pwc_main_tl_rv_core_ibex_pwc__cored_req),
@@ -1171,8 +1171,7 @@ module top_pwc #(
   );
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_pwc_external_i, // IDs [61 +: 192]
-      intr_ac_range_check_deny_cnt_reached, // IDs [60 +: 1]
+      incoming_interrupt_pwc_external_i, // IDs [60 +: 192]
       intr_mbx_pcie0_mbx_error, // IDs [59 +: 1]
       intr_mbx_pcie0_mbx_abort, // IDs [58 +: 1]
       intr_mbx_pcie0_mbx_ready, // IDs [57 +: 1]
@@ -1397,13 +1396,13 @@ module top_pwc #(
     .tl_mbx_pcie0__soc_o(mbx_pcie0_soc_tl_d_req),
     .tl_mbx_pcie0__soc_i(mbx_pcie0_soc_tl_d_rsp),
 
-    // port: tl_racl_ctrl
-    .tl_racl_ctrl_o(racl_ctrl_tl_req),
-    .tl_racl_ctrl_i(racl_ctrl_tl_rsp),
+    // port: tl_racl_ctrl_pwc
+    .tl_racl_ctrl_pwc_o(racl_ctrl_pwc_tl_req),
+    .tl_racl_ctrl_pwc_i(racl_ctrl_pwc_tl_rsp),
 
-    // port: tl_ac_range_check
-    .tl_ac_range_check_o(ac_range_check_tl_req),
-    .tl_ac_range_check_i(ac_range_check_tl_rsp),
+    // port: tl_ac_range_check_pwc
+    .tl_ac_range_check_pwc_o(ac_range_check_pwc_tl_req),
+    .tl_ac_range_check_pwc_i(ac_range_check_pwc_tl_rsp),
 
 
     .scanmode_i

@@ -91,10 +91,10 @@ tl_device_t xbar_devices[$] = '{
     '{"mbx_pcie0__soc", '{
         '{32'h01480100, 32'h0148011f}
     }},
-    '{"racl_ctrl", '{
+    '{"racl_ctrl_mio", '{
         '{32'h01481f00, 32'h01481fff}
     }},
-    '{"ac_range_check", '{
+    '{"ac_range_check_mio", '{
         '{32'h01484000, 32'h014843ff}
     }}};
 

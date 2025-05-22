@@ -63,13 +63,13 @@
     }
     { struct: "tl"
       type:   "req_rsp"
-      name:   "tl_racl_ctrl"
+      name:   "tl_racl_ctrl_mio"
       act:    "req"
       package: "tlul_pkg"
     }
     { struct: "tl"
       type:   "req_rsp"
-      name:   "tl_ac_range_check"
+      name:   "tl_ac_range_check_mio"
       act:    "req"
       package: "tlul_pkg"
     }

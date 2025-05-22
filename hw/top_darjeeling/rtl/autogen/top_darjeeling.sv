@@ -294,6 +294,10 @@ module top_darjeeling #(
 
   // Incoming interrupt of group rot_external
   input logic [top_darjeeling_pkg::NIncomingInterruptsRotExternal-1:0] incoming_interrupt_rot_external_i,
+  // Incoming interrupt of group mio
+  input logic [top_darjeeling_pkg::NIncomingInterruptsMio-1:0] incoming_interrupt_mio_i,
+  // Incoming interrupt of group pwc
+  input logic [top_darjeeling_pkg::NIncomingInterruptsPwc-1:0] incoming_interrupt_pwc_i,
 
   // All externally supplied clocks
   input clk_main_i,
@@ -452,7 +456,7 @@ module top_darjeeling #(
   // rv_core_ibex
 
 
-  logic [169:0]  intr_vector;
+  logic [171:0]  intr_vector;
   // Interrupt source list
   logic intr_uart0_tx_watermark;
   logic intr_uart0_rx_watermark;
@@ -2775,10 +2779,10 @@ module top_darjeeling #(
   // [93]: mbx5_recov_fault
   // [94]: mbx_pcie0_fatal_fault
   // [95]: mbx_pcie0_recov_fault
-  // [96]: racl_ctrl_fatal_fault
-  // [97]: racl_ctrl_recov_ctrl_update_err
-  // [98]: ac_range_check_recov_ctrl_update_err
-  // [99]: ac_range_check_fatal_fault
+  // [96]: racl_ctrl_mio_fatal_fault
+  // [97]: racl_ctrl_mio_recov_ctrl_update_err
+  // [98]: ac_range_check_mio_recov_ctrl_update_err
+  // [99]: ac_range_check_mio_fatal_fault
   // [100]: rv_core_ibex_mio_fatal_sw_err
   // [101]: rv_core_ibex_mio_recov_sw_err
   // [102]: rv_core_ibex_mio_fatal_hw_err
@@ -2810,10 +2814,10 @@ module top_darjeeling #(
   // [124]: mbx5_recov_fault
   // [125]: mbx_pcie0_fatal_fault
   // [126]: mbx_pcie0_recov_fault
-  // [127]: racl_ctrl_fatal_fault
-  // [128]: racl_ctrl_recov_ctrl_update_err
-  // [129]: ac_range_check_recov_ctrl_update_err
-  // [130]: ac_range_check_fatal_fault
+  // [127]: racl_ctrl_pwc_fatal_fault
+  // [128]: racl_ctrl_pwc_recov_ctrl_update_err
+  // [129]: ac_range_check_pwc_recov_ctrl_update_err
+  // [130]: ac_range_check_pwc_fatal_fault
   // [131]: rv_core_ibex_pwc_fatal_sw_err
   // [132]: rv_core_ibex_pwc_recov_sw_err
   // [133]: rv_core_ibex_pwc_fatal_hw_err
@@ -2891,7 +2895,9 @@ module top_darjeeling #(
 
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_rot_external_i, // IDs [128 +: 42]
+      incoming_interrupt_pwc_i, // IDs [170 +: 2]
+      incoming_interrupt_mio_i, // IDs [168 +: 2]
+      incoming_interrupt_rot_external_i, // IDs [128 +: 40]
       intr_ac_range_check_deny_cnt_reached, // IDs [127 +: 1]
       intr_racl_ctrl_racl_error, // IDs [126 +: 1]
       intr_mbx_pcie1_mbx_error, // IDs [125 +: 1]
