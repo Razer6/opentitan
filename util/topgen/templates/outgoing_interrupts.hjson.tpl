@@ -6,15 +6,15 @@
 
 {
     ${interrupt_group}: [
-        % for idx, interrupt in enumerate(interrupts):
+        % for interrupt in interrupts:
         {
             name: ${interrupt['name']}
             module_name: ${interrupt['module_name']}
             desc: ${interrupt['desc']}
-            index: ${idx}
             type: ${interrupt['type']}
             width: ${interrupt['width']}
             intr_type: ${interrupt['intr_type']}
+            default_val: ${interrupt['default_val']}
         }
         % endfor
     ]

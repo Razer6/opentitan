@@ -535,7 +535,7 @@
         soc: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/mbx_all_rd_wr_mapping.hjson'
       }
     },
-    { name: "racl_ctrl",
+    { name: "racl_ctrl_mio",
       type: "racl_ctrl_mio",
       template_type: "racl_ctrl",
       clock_srcs: {clk_i: "ext_main"}
@@ -551,7 +551,7 @@
       outgoing_alert: "mio"
       outgoing_interrupt: "mio"
     },
-    { name: "ac_range_check",
+    { name: "ac_range_check_mio",
       type: "ac_range_check_mio",
       template_type: "ac_range_check",
       clock_srcs: {clk_i: "ext_main"},
@@ -565,6 +565,7 @@
       }
       attr: "ipgen",
       outgoing_alert: "mio"
+      outgoing_interrupt: "mio"
       racl_mapping: '../../top_darjeeling/data/rivos-racl/mio-star-mappings/mbx_rot_private_mapping.hjson'
     },
     { name: "rv_core_ibex_mio",
@@ -678,11 +679,11 @@
       'mio_soc_proxy.dma_tl_h2d' : ['dma.ctn_tl_h2d']
       'mio_soc_proxy.dma_tl_d2h' : ['dma.ctn_tl_d2h']
 
-      'mio_soc_proxy.muxed_tl_h2d' : ['ac_range_check.ctn_tl_h2d']
-      'mio_soc_proxy.muxed_tl_d2h' : ['ac_range_check.ctn_tl_d2h']
+      'mio_soc_proxy.muxed_tl_h2d' : ['ac_range_check_mio.ctn_tl_h2d']
+      'mio_soc_proxy.muxed_tl_d2h' : ['ac_range_check_mio.ctn_tl_d2h']
 
-      'ac_range_check.ctn_filtered_tl_h2d' : ['mio_soc_proxy.ac_range_tl_h2d'],
-      'ac_range_check.ctn_filtered_tl_d2h' : ['mio_soc_proxy.ac_range_tl_d2h'],
+      'ac_range_check_mio.ctn_filtered_tl_h2d' : ['mio_soc_proxy.ac_range_tl_h2d'],
+      'ac_range_check_mio.ctn_filtered_tl_d2h' : ['mio_soc_proxy.ac_range_tl_d2h'],
     }
 
     // top is to connect to top net/struct.
@@ -726,9 +727,9 @@
         'sram_ctrl_main.cfg_rsp'            : 'sram_ctrl_main_ram_1p_cfg_rsp',
         'sram_ctrl_mbox.cfg'                : 'sram_ctrl_mbox_ram_1p_cfg',
         'sram_ctrl_mbox.cfg_rsp'            : 'sram_ctrl_mbox_ram_1p_cfg_rsp',
-        'racl_ctrl.racl_policies'           : 'racl_policies',
-        'racl_ctrl.racl_error_external'     : 'racl_error',
-        'ac_range_check.range_check_overwrite' : 'ac_range_check_overwrite',
+        'racl_ctrl_mio.racl_policies'       : 'racl_policies',
+        'racl_ctrl_mio.racl_error_external' : 'racl_error',
+        'ac_range_check_mio.range_check_overwrite' : 'ac_range_check_overwrite',
     },
   },
 

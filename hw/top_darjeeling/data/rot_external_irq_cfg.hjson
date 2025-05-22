@@ -148,20 +148,6 @@
       default_val: false
     }
     {
-      name: RACL_ERROR
-      module_name: PWC
-      type: interrupt
-      intr_type: IntrType.Status
-      default_val: false
-    }
-    {
-      name: RACL_ERROR
-      module_name: MIO
-      type: interrupt
-      intr_type: IntrType.Status
-      default_val: false
-    }
-    {
       name: CLASS_A
       module_name: LIO_GRP_A_ALERTHANDLER
       type: interrupt

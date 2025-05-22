@@ -553,7 +553,7 @@
         soc: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/mbx_all_rd_wr_mapping.hjson'
       }
     },
-    { name: "racl_ctrl",
+    { name: "racl_ctrl_pwc",
       type: "racl_ctrl_pwc",
       template_type: "racl_ctrl",
       clock_srcs: {clk_i: "ext_main"}
@@ -569,7 +569,7 @@
       outgoing_alert: "pwc"
       outgoing_interrupt: "pwc"
     },
-    { name: "ac_range_check",
+    { name: "ac_range_check_pwc",
       type: "ac_range_check_pwc",
       template_type: "ac_range_check",
       clock_srcs: {clk_i: "ext_main"},
@@ -583,6 +583,7 @@
       }
       attr: "ipgen",
       outgoing_alert: "pwc"
+      outgoing_interrupt: "pwc"
       racl_mapping: '../../top_darjeeling/data/rivos-racl/pwc-star-mappings/mbx_rot_private_mapping.hjson'
     },
     { name: "rv_core_ibex_pwc",
@@ -696,11 +697,11 @@
       'pwc_soc_proxy.dma_tl_h2d' : ['dma.ctn_tl_h2d']
       'pwc_soc_proxy.dma_tl_d2h' : ['dma.ctn_tl_d2h']
 
-      'pwc_soc_proxy.muxed_tl_h2d' : ['ac_range_check.ctn_tl_h2d']
-      'pwc_soc_proxy.muxed_tl_d2h' : ['ac_range_check.ctn_tl_d2h']
+      'pwc_soc_proxy.muxed_tl_h2d' : ['ac_range_check_pwc.ctn_tl_h2d']
+      'pwc_soc_proxy.muxed_tl_d2h' : ['ac_range_check_pwc.ctn_tl_d2h']
 
-      'ac_range_check.ctn_filtered_tl_h2d' : ['pwc_soc_proxy.ac_range_tl_h2d'],
-      'ac_range_check.ctn_filtered_tl_d2h' : ['pwc_soc_proxy.ac_range_tl_d2h'],
+      'ac_range_check_pwc.ctn_filtered_tl_h2d' : ['pwc_soc_proxy.ac_range_tl_h2d'],
+      'ac_range_check_pwc.ctn_filtered_tl_d2h' : ['pwc_soc_proxy.ac_range_tl_d2h'],
     }
 
     // top is to connect to top net/struct.
@@ -746,9 +747,9 @@
         'sram_ctrl_main.cfg_rsp'            : 'sram_ctrl_main_ram_1p_cfg_rsp',
         'sram_ctrl_mbox.cfg'                : 'sram_ctrl_mbox_ram_1p_cfg',
         'sram_ctrl_mbox.cfg_rsp'            : 'sram_ctrl_mbox_ram_1p_cfg_rsp',
-        'racl_ctrl.racl_policies'           : 'racl_policies',
-        'racl_ctrl.racl_error_external'     : 'racl_error',
-        'ac_range_check.range_check_overwrite' : 'ac_range_check_overwrite',
+        'racl_ctrl_pwc.racl_policies'       : 'racl_policies',
+        'racl_ctrl_pwc.racl_error_external' : 'racl_error',
+        'ac_range_check_pwc.range_check_overwrite' : 'ac_range_check_overwrite',
     },
   },
 

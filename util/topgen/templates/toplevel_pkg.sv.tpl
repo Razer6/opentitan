@@ -182,7 +182,7 @@ package top_${top["name"]}${addr_space_suffix}_pkg;
 <% irq_id += 1 %>\
       % endif
     % endfor
-    ${lib.Name.from_snake_case(f"top_{top['name']}_incoming_irq_id_count").as_camel_case()}
+    ${lib.Name.from_snake_case(f"top_{top['name']}_incoming_irq_{irq_group}_id_count").as_camel_case()}
   } incoming_interrupt_${irq_group}_id_e;
 % endfor
 % for irq_group, irqs in top["outgoing_interrupt"].items():
@@ -193,9 +193,9 @@ package top_${top["name"]}${addr_space_suffix}_pkg;
   // Enumeration of interrupts for outgoing group ${irq_group}
   typedef enum int unsigned {
     % for irq in irqs:
-    ${lib.Name.from_snake_case("top_" + top["name"] + "_outgoing_irq_" + irq_group + "_id_" + irq["name"]).as_camel_case()} = ${loop.index},
+    ${lib.Name.from_snake_case(f"top_{top['name']}_outgoing_irq_{irq_group}_id_{irq['name']}").as_camel_case()} = ${loop.index},
     % endfor
-    ${lib.Name.from_snake_case("top_" + top["name"] + "_outgoing_irq_id_count").as_camel_case()}
+    ${lib.Name.from_snake_case(f"top_{top['name']}_outgoing_irq_{irq_group}_id_count").as_camel_case()}
   } outgoing_interrupt_${irq_group}_id_e;
 % endfor
 % endif # has_plic

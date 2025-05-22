@@ -697,6 +697,8 @@
       attr: "ipgen",
       incoming_interrupt: [
         "rot_external_irq_cfg.hjson"
+        '../../top_mio/data/autogen/outgoing_interrupts_mio.hjson'
+        '../../top_pwc/data/autogen/outgoing_interrupts_pwc.hjson'
       ]
     },
     { name: "aes",
