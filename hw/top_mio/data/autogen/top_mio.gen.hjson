@@ -340,6 +340,10 @@
     ]
   }
   num_cores: "1"
+  interrupts:
+  {
+    default_plic: rv_plic_mio
+  }
   addr_spaces:
   [
     {
@@ -1821,6 +1825,10 @@
       incoming_interrupt:
       [
         mio_external_irq_cfg.hjson
+      ]
+      targets:
+      [
+        rv_core_ibex_mio
       ]
       clock_connections:
       {
@@ -11922,6 +11930,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: aon_timer_aon_wkup_timer_expired
@@ -11932,6 +11942,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: aon_timer_aon_wdog_timer_bark
@@ -11942,6 +11954,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: dma_dma_done
@@ -11952,6 +11966,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: dma_dma_chunk_done
@@ -11962,6 +11978,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: dma_dma_error
@@ -11972,6 +11990,8 @@
       intr_type: IntrType.Status
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx0_mbx_ready
@@ -11982,6 +12002,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx0_mbx_abort
@@ -11992,6 +12014,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx0_mbx_error
@@ -12002,6 +12026,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx1_mbx_ready
@@ -12012,6 +12038,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx1_mbx_abort
@@ -12022,6 +12050,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx1_mbx_error
@@ -12032,6 +12062,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx2_mbx_ready
@@ -12042,6 +12074,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx2_mbx_abort
@@ -12052,6 +12086,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx2_mbx_error
@@ -12062,6 +12098,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx3_mbx_ready
@@ -12072,6 +12110,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx3_mbx_abort
@@ -12082,6 +12122,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx3_mbx_error
@@ -12092,6 +12134,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx4_mbx_ready
@@ -12102,6 +12146,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx4_mbx_abort
@@ -12112,6 +12158,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx4_mbx_error
@@ -12122,6 +12170,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx5_mbx_ready
@@ -12132,6 +12182,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx5_mbx_abort
@@ -12142,6 +12194,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx5_mbx_error
@@ -12152,6 +12206,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx_pcie0_mbx_ready
@@ -12162,6 +12218,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx_pcie0_mbx_abort
@@ -12172,6 +12230,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: mbx_pcie0_mbx_error
@@ -12182,6 +12242,8 @@
       intr_type: IntrType.Event
       default_val: false
       incoming: false
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: MIO_HDR_IPI_FROM_MIO_0
@@ -12192,6 +12254,8 @@
       desc: MIO_HDR IPI_FROM_MIO_0 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: MIO_HDR_IPI_FROM_MIO_1
@@ -12202,6 +12266,8 @@
       desc: MIO_HDR IPI_FROM_MIO_1 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: MIO_HDR_IPI_FROM_MIO_2
@@ -12212,6 +12278,8 @@
       desc: MIO_HDR IPI_FROM_MIO_2 incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: MIO_HDR_IPI_FROM_ROT
@@ -12222,6 +12290,8 @@
       desc: MIO_HDR IPI_FROM_ROT incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: MIO_HDR_IPI_FROM_PWC
@@ -12232,6 +12302,8 @@
       desc: MIO_HDR IPI_FROM_PWC incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: MIO_HDR_IPI_FROM_DUC
@@ -12242,6 +12314,8 @@
       desc: MIO_HDR IPI_FROM_DUC incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: LIO_GRP_A_IBEX_IRQ
@@ -12252,6 +12326,8 @@
       desc: LIO_GRP_A IBEX_IRQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: LIO_GRP_B_IBEX_IRQ
@@ -12262,6 +12338,8 @@
       desc: LIO_GRP_B IBEX_IRQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_mio
+      outgoing: false
     }
     {
       name: LIO_GRP_C_IBEX_IRQ
@@ -12272,6 +12350,8 @@
       desc: LIO_GRP_C IBEX_IRQ incoming interrupt
       incoming: true
       width: 1
+      plic: rv_plic_mio
+      outgoing: false
     }
   ]
   outgoing_interrupt:
@@ -12287,6 +12367,8 @@
         intr_type: IntrType.Status
         default_val: false
         incoming: false
+        plic: rv_plic_mio
+        outgoing: true
       }
       {
         name: ac_range_check_mio_deny_cnt_reached
@@ -12297,6 +12379,8 @@
         intr_type: IntrType.Status
         default_val: false
         incoming: false
+        plic: rv_plic_mio
+        outgoing: true
       }
     ]
   }

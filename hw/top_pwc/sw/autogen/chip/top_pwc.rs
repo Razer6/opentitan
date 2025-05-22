@@ -357,7 +357,7 @@ pub const RAM_MBOX_SIZE_BYTES: usize = 0x1000;
 /// interrupt.
 #[derive(Copy, Clone, PartialEq, Eq)]
 #[repr(u32)]
-pub enum PlicPeripheral {
+pub enum PlicPwcPeripheral {
     /// Unknown Peripheral
     Unknown = 0,
     /// gpio
@@ -384,7 +384,7 @@ pub enum PlicPeripheral {
     MbxPcie0 = 11,
 }
 
-impl TryFrom<u32> for PlicPeripheral {
+impl TryFrom<u32> for PlicPwcPeripheral {
     type Error = u32;
     fn try_from(val: u32) -> Result<Self, Self::Error> {
         match val {
@@ -411,7 +411,7 @@ impl TryFrom<u32> for PlicPeripheral {
 /// the same peripheral are guaranteed to be consecutive.
 #[derive(Copy, Clone, PartialEq, Eq)]
 #[repr(u32)]
-pub enum PlicIrqId {
+pub enum PlicPwcIrqId {
     /// No Interrupt
     None = 0,
     /// gpio_gpio 0
@@ -918,7 +918,7 @@ pub enum PlicIrqId {
     PwcSpareecoirq1 = 251,
 }
 
-impl TryFrom<u32> for PlicIrqId {
+impl TryFrom<u32> for PlicPwcIrqId {
     type Error = u32;
     fn try_from(val: u32) -> Result<Self, Self::Error> {
         match val {
@@ -1185,520 +1185,520 @@ impl TryFrom<u32> for PlicIrqId {
 /// access for a given interrupt target.
 #[derive(Copy, Clone, PartialEq, Eq)]
 #[repr(u32)]
-pub enum PlicTarget {
-    /// Ibex Core 0
-    Ibex0 = 0,
+pub enum PlicPwcTarget {
+    /// Ibex rv_core_ibex_pwc
+    IbexPwc = 0,
 }
 
 /// PLIC Interrupt Source to Peripheral Map
 ///
-/// This array is a mapping from `PlicIrqId` to
-/// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 252] = [
-    // None -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // GpioGpio0 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio1 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio2 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio3 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio4 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio5 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio6 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio7 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio8 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio9 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio10 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio11 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio12 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio13 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio14 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio15 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio16 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio17 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio18 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio19 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio20 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio21 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio22 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio23 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio24 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio25 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio26 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio27 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio28 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio29 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio30 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // GpioGpio31 -> PlicPeripheral::Gpio
-    PlicPeripheral::Gpio,
-    // RvTimerTimerExpiredHart0Timer0 -> PlicPeripheral::RvTimer
-    PlicPeripheral::RvTimer,
-    // AonTimerAonWkupTimerExpired -> PlicPeripheral::AonTimerAon
-    PlicPeripheral::AonTimerAon,
-    // AonTimerAonWdogTimerBark -> PlicPeripheral::AonTimerAon
-    PlicPeripheral::AonTimerAon,
-    // DmaDmaDone -> PlicPeripheral::Dma
-    PlicPeripheral::Dma,
-    // DmaDmaChunkDone -> PlicPeripheral::Dma
-    PlicPeripheral::Dma,
-    // DmaDmaError -> PlicPeripheral::Dma
-    PlicPeripheral::Dma,
-    // Mbx0MbxReady -> PlicPeripheral::Mbx0
-    PlicPeripheral::Mbx0,
-    // Mbx0MbxAbort -> PlicPeripheral::Mbx0
-    PlicPeripheral::Mbx0,
-    // Mbx0MbxError -> PlicPeripheral::Mbx0
-    PlicPeripheral::Mbx0,
-    // Mbx1MbxReady -> PlicPeripheral::Mbx1
-    PlicPeripheral::Mbx1,
-    // Mbx1MbxAbort -> PlicPeripheral::Mbx1
-    PlicPeripheral::Mbx1,
-    // Mbx1MbxError -> PlicPeripheral::Mbx1
-    PlicPeripheral::Mbx1,
-    // Mbx2MbxReady -> PlicPeripheral::Mbx2
-    PlicPeripheral::Mbx2,
-    // Mbx2MbxAbort -> PlicPeripheral::Mbx2
-    PlicPeripheral::Mbx2,
-    // Mbx2MbxError -> PlicPeripheral::Mbx2
-    PlicPeripheral::Mbx2,
-    // Mbx3MbxReady -> PlicPeripheral::Mbx3
-    PlicPeripheral::Mbx3,
-    // Mbx3MbxAbort -> PlicPeripheral::Mbx3
-    PlicPeripheral::Mbx3,
-    // Mbx3MbxError -> PlicPeripheral::Mbx3
-    PlicPeripheral::Mbx3,
-    // Mbx4MbxReady -> PlicPeripheral::Mbx4
-    PlicPeripheral::Mbx4,
-    // Mbx4MbxAbort -> PlicPeripheral::Mbx4
-    PlicPeripheral::Mbx4,
-    // Mbx4MbxError -> PlicPeripheral::Mbx4
-    PlicPeripheral::Mbx4,
-    // Mbx5MbxReady -> PlicPeripheral::Mbx5
-    PlicPeripheral::Mbx5,
-    // Mbx5MbxAbort -> PlicPeripheral::Mbx5
-    PlicPeripheral::Mbx5,
-    // Mbx5MbxError -> PlicPeripheral::Mbx5
-    PlicPeripheral::Mbx5,
-    // MbxPcie0MbxReady -> PlicPeripheral::MbxPcie0
-    PlicPeripheral::MbxPcie0,
-    // MbxPcie0MbxAbort -> PlicPeripheral::MbxPcie0
-    PlicPeripheral::MbxPcie0,
-    // MbxPcie0MbxError -> PlicPeripheral::MbxPcie0
-    PlicPeripheral::MbxPcie0,
-    // PwcLteuSocHot -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcLteuFwTrip -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcLteuCatTrip -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpAIbexIrq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpBIbexIrq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpCIbexIrq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // Duc0Ducpvlreq0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // Duc1Ducpvlreq1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // Duc0Ducivdrreq0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // Duc1Ducivdrreq1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcSpareecoirq0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs3 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs4 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs5 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs6 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs7 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs8 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs9 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs10 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs11 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs12 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsTargetcmdavs13 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError3 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError4 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError5 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError6 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError7 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError8 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError9 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError10 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError11 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError12 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError13 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError14 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError15 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError16 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError17 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError18 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError19 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsError20 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw3 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw4 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw5 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw6 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw7 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw8 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw9 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw10 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw11 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw12 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw13 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw14 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw15 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw16 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw17 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw18 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw19 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw20 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw21 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw22 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw23 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw24 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw25 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw26 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw27 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcAvsAvsResponseToFw28 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcBcastCStateEntry -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcBcastCStateExit -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcBcastDpaIdleEntry -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcBcastDpaIdleExit -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs0PwrVirusLvlReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs1PwrVirusLvlReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs2PwrVirusLvlReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs3PwrVirusLvlReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs4PwrVirusLvlReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs5PwrVirusLvlReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs6PwrVirusLvlReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs7PwrVirusLvlReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs0DvfsFsm -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs1DvfsFsm -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsSocdpafsmstatus0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsSocdpafsmstatus1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsSocdpafsmstatus2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsSocdpafsmstatus3 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsSocdpafsmstatus4 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcDvfsSocdpafsmstatus5 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcHmsEastStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcHmsWestStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs0AllPortsStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs0LinkBringup0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs0LinkBringup1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs0LinkBringup2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs0LinkBringup3 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs0MsgCtrl -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs0PhyStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs1AllPortsStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs1LinkBringup0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs1LinkBringup1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs1LinkBringup2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs1LinkBringup3 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs1MsgCtrl -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs1PhyStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs2AllPortsStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs2LinkBringup0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs2LinkBringup1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs2LinkBringup2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs2LinkBringup3 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs2MsgCtrl -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs2PhyStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs3AllPortsStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs3LinkBringup0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs3LinkBringup1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs3LinkBringup2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs3LinkBringup3 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs3MsgCtrl -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs3PhyStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs4AllPortsStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs4LinkBringup0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs4LinkBringup1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs4LinkBringup2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs4LinkBringup3 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs4MsgCtrl -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs4PhyStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs5AllPortsStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs5LinkBringup0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs5LinkBringup1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs5LinkBringup2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs5LinkBringup3 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs5MsgCtrl -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs5PhyStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs6AllPortsStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs6LinkBringup0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs6LinkBringup1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs6LinkBringup2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs6LinkBringup3 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs6MsgCtrl -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs6PhyStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs7AllPortsStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs7LinkBringup0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs7LinkBringup1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs7LinkBringup2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs7LinkBringup3 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs7MsgCtrl -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcPcs7PhyStatus -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcHdrIpiFromPwc0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcHdrIpiFromPwc1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcHdrIpiFromPwc2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcHdrIpiFromRot -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcHdrIpiFromMio -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcHdrIpiFromDuc -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpAIpiFromLiogrpaI3c0PeriphRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpAIpiFromLiogrpaI3c0ChipRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpAIpiFromLiogrpaI3c1PeriphRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpAIpiFromLiogrpaI3c1ChipRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpAIpiFromLiogrpaI3c2PeriphRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpAIpiFromLiogrpaI3c2ChipRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpBIpiFromLiogrpbI3c0PeriphRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpBIpiFromLiogrpbI3c0ChipRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpBIpiFromLiogrpbI3c1PeriphRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpBIpiFromLiogrpbI3c1ChipRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpBIpiFromLiogrpbI3c2PeriphRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpBIpiFromLiogrpbI3c2ChipRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpCIpiFromLiogrpcI3c0PeriphRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpCIpiFromLiogrpcI3c0ChipRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpCIpiFromLiogrpcI3c1PeriphRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpCIpiFromLiogrpcI3c1ChipRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpCIpiFromLiogrpcI3c2PeriphRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpCIpiFromLiogrpcI3c2ChipRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpDIpiFromLiogrpdI3c0PeriphRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpDIpiFromLiogrpdI3c0ChipRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpDIpiFromLiogrpdI3c1PeriphRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpDIpiFromLiogrpdI3c1ChipRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpDIpiFromLiogrpdI3c2PeriphRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpDIpiFromLiogrpdI3c2ChipRstReq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcErs0Req0ErsReqInterrupt -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcErs0Req1ErsReqInterrupt -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcErs1Req0ErsReqInterrupt -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcErs1Req1ErsReqInterrupt -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs0CstateEntry -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs0CstateExit -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs1CstateEntry -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcCcs1CstateExit -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // PwcSpareecoirq1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
+/// This array is a mapping from `PlicPwcIrqId` to
+/// `PlicPwcPeripheral`.
+pub const PLIC_PWC_INTERRUPT_FOR_PERIPHERAL: [PlicPwcPeripheral; 252] = [
+    // None -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // GpioGpio0 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio1 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio2 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio3 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio4 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio5 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio6 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio7 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio8 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio9 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio10 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio11 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio12 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio13 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio14 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio15 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio16 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio17 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio18 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio19 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio20 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio21 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio22 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio23 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio24 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio25 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio26 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio27 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio28 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio29 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio30 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // GpioGpio31 -> PlicPwcPeripheral::Gpio
+    PlicPwcPeripheral::Gpio,
+    // RvTimerTimerExpiredHart0Timer0 -> PlicPwcPeripheral::RvTimer
+    PlicPwcPeripheral::RvTimer,
+    // AonTimerAonWkupTimerExpired -> PlicPwcPeripheral::AonTimerAon
+    PlicPwcPeripheral::AonTimerAon,
+    // AonTimerAonWdogTimerBark -> PlicPwcPeripheral::AonTimerAon
+    PlicPwcPeripheral::AonTimerAon,
+    // DmaDmaDone -> PlicPwcPeripheral::Dma
+    PlicPwcPeripheral::Dma,
+    // DmaDmaChunkDone -> PlicPwcPeripheral::Dma
+    PlicPwcPeripheral::Dma,
+    // DmaDmaError -> PlicPwcPeripheral::Dma
+    PlicPwcPeripheral::Dma,
+    // Mbx0MbxReady -> PlicPwcPeripheral::Mbx0
+    PlicPwcPeripheral::Mbx0,
+    // Mbx0MbxAbort -> PlicPwcPeripheral::Mbx0
+    PlicPwcPeripheral::Mbx0,
+    // Mbx0MbxError -> PlicPwcPeripheral::Mbx0
+    PlicPwcPeripheral::Mbx0,
+    // Mbx1MbxReady -> PlicPwcPeripheral::Mbx1
+    PlicPwcPeripheral::Mbx1,
+    // Mbx1MbxAbort -> PlicPwcPeripheral::Mbx1
+    PlicPwcPeripheral::Mbx1,
+    // Mbx1MbxError -> PlicPwcPeripheral::Mbx1
+    PlicPwcPeripheral::Mbx1,
+    // Mbx2MbxReady -> PlicPwcPeripheral::Mbx2
+    PlicPwcPeripheral::Mbx2,
+    // Mbx2MbxAbort -> PlicPwcPeripheral::Mbx2
+    PlicPwcPeripheral::Mbx2,
+    // Mbx2MbxError -> PlicPwcPeripheral::Mbx2
+    PlicPwcPeripheral::Mbx2,
+    // Mbx3MbxReady -> PlicPwcPeripheral::Mbx3
+    PlicPwcPeripheral::Mbx3,
+    // Mbx3MbxAbort -> PlicPwcPeripheral::Mbx3
+    PlicPwcPeripheral::Mbx3,
+    // Mbx3MbxError -> PlicPwcPeripheral::Mbx3
+    PlicPwcPeripheral::Mbx3,
+    // Mbx4MbxReady -> PlicPwcPeripheral::Mbx4
+    PlicPwcPeripheral::Mbx4,
+    // Mbx4MbxAbort -> PlicPwcPeripheral::Mbx4
+    PlicPwcPeripheral::Mbx4,
+    // Mbx4MbxError -> PlicPwcPeripheral::Mbx4
+    PlicPwcPeripheral::Mbx4,
+    // Mbx5MbxReady -> PlicPwcPeripheral::Mbx5
+    PlicPwcPeripheral::Mbx5,
+    // Mbx5MbxAbort -> PlicPwcPeripheral::Mbx5
+    PlicPwcPeripheral::Mbx5,
+    // Mbx5MbxError -> PlicPwcPeripheral::Mbx5
+    PlicPwcPeripheral::Mbx5,
+    // MbxPcie0MbxReady -> PlicPwcPeripheral::MbxPcie0
+    PlicPwcPeripheral::MbxPcie0,
+    // MbxPcie0MbxAbort -> PlicPwcPeripheral::MbxPcie0
+    PlicPwcPeripheral::MbxPcie0,
+    // MbxPcie0MbxError -> PlicPwcPeripheral::MbxPcie0
+    PlicPwcPeripheral::MbxPcie0,
+    // PwcLteuSocHot -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcLteuFwTrip -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcLteuCatTrip -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpAIbexIrq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpBIbexIrq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpCIbexIrq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // Duc0Ducpvlreq0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // Duc1Ducpvlreq1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // Duc0Ducivdrreq0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // Duc1Ducivdrreq1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcSpareecoirq0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs2 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs3 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs4 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs5 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs6 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs7 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs8 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs9 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs10 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs11 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs12 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsTargetcmdavs13 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError2 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError3 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError4 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError5 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError6 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError7 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError8 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError9 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError10 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError11 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError12 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError13 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError14 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError15 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError16 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError17 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError18 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError19 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsError20 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw2 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw3 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw4 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw5 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw6 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw7 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw8 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw9 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw10 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw11 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw12 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw13 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw14 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw15 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw16 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw17 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw18 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw19 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw20 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw21 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw22 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw23 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw24 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw25 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw26 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw27 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcAvsAvsResponseToFw28 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcBcastCStateEntry -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcBcastCStateExit -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcBcastDpaIdleEntry -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcBcastDpaIdleExit -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs0PwrVirusLvlReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs1PwrVirusLvlReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs2PwrVirusLvlReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs3PwrVirusLvlReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs4PwrVirusLvlReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs5PwrVirusLvlReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs6PwrVirusLvlReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs7PwrVirusLvlReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs0DvfsFsm -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs1DvfsFsm -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsSocdpafsmstatus0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsSocdpafsmstatus1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsSocdpafsmstatus2 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsSocdpafsmstatus3 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsSocdpafsmstatus4 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcDvfsSocdpafsmstatus5 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcHmsEastStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcHmsWestStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs0AllPortsStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs0LinkBringup0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs0LinkBringup1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs0LinkBringup2 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs0LinkBringup3 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs0MsgCtrl -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs0PhyStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs1AllPortsStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs1LinkBringup0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs1LinkBringup1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs1LinkBringup2 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs1LinkBringup3 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs1MsgCtrl -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs1PhyStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs2AllPortsStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs2LinkBringup0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs2LinkBringup1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs2LinkBringup2 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs2LinkBringup3 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs2MsgCtrl -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs2PhyStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs3AllPortsStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs3LinkBringup0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs3LinkBringup1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs3LinkBringup2 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs3LinkBringup3 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs3MsgCtrl -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs3PhyStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs4AllPortsStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs4LinkBringup0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs4LinkBringup1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs4LinkBringup2 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs4LinkBringup3 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs4MsgCtrl -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs4PhyStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs5AllPortsStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs5LinkBringup0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs5LinkBringup1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs5LinkBringup2 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs5LinkBringup3 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs5MsgCtrl -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs5PhyStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs6AllPortsStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs6LinkBringup0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs6LinkBringup1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs6LinkBringup2 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs6LinkBringup3 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs6MsgCtrl -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs6PhyStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs7AllPortsStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs7LinkBringup0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs7LinkBringup1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs7LinkBringup2 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs7LinkBringup3 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs7MsgCtrl -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcPcs7PhyStatus -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcHdrIpiFromPwc0 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcHdrIpiFromPwc1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcHdrIpiFromPwc2 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcHdrIpiFromRot -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcHdrIpiFromMio -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcHdrIpiFromDuc -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpAIpiFromLiogrpaI3c0PeriphRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpAIpiFromLiogrpaI3c0ChipRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpAIpiFromLiogrpaI3c1PeriphRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpAIpiFromLiogrpaI3c1ChipRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpAIpiFromLiogrpaI3c2PeriphRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpAIpiFromLiogrpaI3c2ChipRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpBIpiFromLiogrpbI3c0PeriphRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpBIpiFromLiogrpbI3c0ChipRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpBIpiFromLiogrpbI3c1PeriphRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpBIpiFromLiogrpbI3c1ChipRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpBIpiFromLiogrpbI3c2PeriphRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpBIpiFromLiogrpbI3c2ChipRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpCIpiFromLiogrpcI3c0PeriphRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpCIpiFromLiogrpcI3c0ChipRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpCIpiFromLiogrpcI3c1PeriphRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpCIpiFromLiogrpcI3c1ChipRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpCIpiFromLiogrpcI3c2PeriphRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpCIpiFromLiogrpcI3c2ChipRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpDIpiFromLiogrpdI3c0PeriphRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpDIpiFromLiogrpdI3c0ChipRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpDIpiFromLiogrpdI3c1PeriphRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpDIpiFromLiogrpdI3c1ChipRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpDIpiFromLiogrpdI3c2PeriphRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // LioGrpDIpiFromLiogrpdI3c2ChipRstReq -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcErs0Req0ErsReqInterrupt -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcErs0Req1ErsReqInterrupt -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcErs1Req0ErsReqInterrupt -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcErs1Req1ErsReqInterrupt -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs0CstateEntry -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs0CstateExit -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs1CstateEntry -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcCcs1CstateExit -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcSpareecoirq1 -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
 ];
 
 /// MPWC Region

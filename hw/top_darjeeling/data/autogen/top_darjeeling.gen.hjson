@@ -4952,6 +4952,10 @@
         ../../top_mio/data/autogen/outgoing_interrupts_mio.hjson
         ../../top_pwc/data/autogen/outgoing_interrupts_pwc.hjson
       ]
+      targets:
+      [
+        rv_core_ibex
+      ]
       clock_connections:
       {
         clk_i: clkmgr_aon_clocks.clk_main_secure

@@ -356,6 +356,7 @@
         "mio_external_irq_cfg.hjson"
       ]
       racl_mapping:  '../../top_darjeeling/data/rivos-racl/mio-star-mappings/isolate_alert_test_mapping.hjson'
+      targets: ["rv_core_ibex_mio"]
     },
     { name: "sram_ctrl_main",
       type: "sram_ctrl",

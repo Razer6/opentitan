@@ -453,20 +453,20 @@ extern "C" {
  * Enumeration used to determine which peripheral asserted the corresponding
  * interrupt.
  */
-typedef enum top_mio_plic_peripheral {
-  kTopMioPlicPeripheralUnknown = 0, /**< Unknown Peripheral */
-  kTopMioPlicPeripheralRvTimer = 1, /**< rv_timer */
-  kTopMioPlicPeripheralAonTimerAon = 2, /**< aon_timer_aon */
-  kTopMioPlicPeripheralDma = 3, /**< dma */
-  kTopMioPlicPeripheralMbx0 = 4, /**< mbx0 */
-  kTopMioPlicPeripheralMbx1 = 5, /**< mbx1 */
-  kTopMioPlicPeripheralMbx2 = 6, /**< mbx2 */
-  kTopMioPlicPeripheralMbx3 = 7, /**< mbx3 */
-  kTopMioPlicPeripheralMbx4 = 8, /**< mbx4 */
-  kTopMioPlicPeripheralMbx5 = 9, /**< mbx5 */
-  kTopMioPlicPeripheralMbxPcie0 = 10, /**< mbx_pcie0 */
-  kTopMioPlicPeripheralLast = 10, /**< \internal Final PLIC peripheral */
-} top_mio_plic_peripheral_t;
+typedef enum top_mio_plic_mio_peripheral {
+  kTopMioPlicMioPeripheralUnknown = 0, /**< Unknown Peripheral */
+  kTopMioPlicMioPeripheralRvTimer = 1, /**< rv_timer */
+  kTopMioPlicMioPeripheralAonTimerAon = 2, /**< aon_timer_aon */
+  kTopMioPlicMioPeripheralDma = 3, /**< dma */
+  kTopMioPlicMioPeripheralMbx0 = 4, /**< mbx0 */
+  kTopMioPlicMioPeripheralMbx1 = 5, /**< mbx1 */
+  kTopMioPlicMioPeripheralMbx2 = 6, /**< mbx2 */
+  kTopMioPlicMioPeripheralMbx3 = 7, /**< mbx3 */
+  kTopMioPlicMioPeripheralMbx4 = 8, /**< mbx4 */
+  kTopMioPlicMioPeripheralMbx5 = 9, /**< mbx5 */
+  kTopMioPlicMioPeripheralMbxPcie0 = 10, /**< mbx_pcie0 */
+  kTopMioPlicMioPeripheralLast = 10, /**< \internal Final PLIC peripheral */
+} top_mio_plic_mio_peripheral_t;
 
 /**
  * PLIC Interrupt Source.
@@ -474,55 +474,55 @@ typedef enum top_mio_plic_peripheral {
  * Enumeration of all PLIC interrupt sources. The interrupt sources belonging to
  * the same peripheral are guaranteed to be consecutive.
  */
-typedef enum top_mio_plic_irq_id {
-  kTopMioPlicIrqIdNone = 0, /**< No Interrupt */
-  kTopMioPlicIrqIdRvTimerTimerExpiredHart0Timer0 = 1, /**< rv_timer_timer_expired_hart0_timer0 */
-  kTopMioPlicIrqIdAonTimerAonWkupTimerExpired = 2, /**< aon_timer_aon_wkup_timer_expired */
-  kTopMioPlicIrqIdAonTimerAonWdogTimerBark = 3, /**< aon_timer_aon_wdog_timer_bark */
-  kTopMioPlicIrqIdDmaDmaDone = 4, /**< dma_dma_done */
-  kTopMioPlicIrqIdDmaDmaChunkDone = 5, /**< dma_dma_chunk_done */
-  kTopMioPlicIrqIdDmaDmaError = 6, /**< dma_dma_error */
-  kTopMioPlicIrqIdMbx0MbxReady = 7, /**< mbx0_mbx_ready */
-  kTopMioPlicIrqIdMbx0MbxAbort = 8, /**< mbx0_mbx_abort */
-  kTopMioPlicIrqIdMbx0MbxError = 9, /**< mbx0_mbx_error */
-  kTopMioPlicIrqIdMbx1MbxReady = 10, /**< mbx1_mbx_ready */
-  kTopMioPlicIrqIdMbx1MbxAbort = 11, /**< mbx1_mbx_abort */
-  kTopMioPlicIrqIdMbx1MbxError = 12, /**< mbx1_mbx_error */
-  kTopMioPlicIrqIdMbx2MbxReady = 13, /**< mbx2_mbx_ready */
-  kTopMioPlicIrqIdMbx2MbxAbort = 14, /**< mbx2_mbx_abort */
-  kTopMioPlicIrqIdMbx2MbxError = 15, /**< mbx2_mbx_error */
-  kTopMioPlicIrqIdMbx3MbxReady = 16, /**< mbx3_mbx_ready */
-  kTopMioPlicIrqIdMbx3MbxAbort = 17, /**< mbx3_mbx_abort */
-  kTopMioPlicIrqIdMbx3MbxError = 18, /**< mbx3_mbx_error */
-  kTopMioPlicIrqIdMbx4MbxReady = 19, /**< mbx4_mbx_ready */
-  kTopMioPlicIrqIdMbx4MbxAbort = 20, /**< mbx4_mbx_abort */
-  kTopMioPlicIrqIdMbx4MbxError = 21, /**< mbx4_mbx_error */
-  kTopMioPlicIrqIdMbx5MbxReady = 22, /**< mbx5_mbx_ready */
-  kTopMioPlicIrqIdMbx5MbxAbort = 23, /**< mbx5_mbx_abort */
-  kTopMioPlicIrqIdMbx5MbxError = 24, /**< mbx5_mbx_error */
-  kTopMioPlicIrqIdMbxPcie0MbxReady = 25, /**< mbx_pcie0_mbx_ready */
-  kTopMioPlicIrqIdMbxPcie0MbxAbort = 26, /**< mbx_pcie0_mbx_abort */
-  kTopMioPlicIrqIdMbxPcie0MbxError = 27, /**< mbx_pcie0_mbx_error */
-  kTopMioPlicIrqIdMioHdrIpiFromMio0 = 28, /**< MIO_HDR_IPI_FROM_MIO_0 */
-  kTopMioPlicIrqIdMioHdrIpiFromMio1 = 29, /**< MIO_HDR_IPI_FROM_MIO_1 */
-  kTopMioPlicIrqIdMioHdrIpiFromMio2 = 30, /**< MIO_HDR_IPI_FROM_MIO_2 */
-  kTopMioPlicIrqIdMioHdrIpiFromRot = 31, /**< MIO_HDR_IPI_FROM_ROT */
-  kTopMioPlicIrqIdMioHdrIpiFromPwc = 32, /**< MIO_HDR_IPI_FROM_PWC */
-  kTopMioPlicIrqIdMioHdrIpiFromDuc = 33, /**< MIO_HDR_IPI_FROM_DUC */
-  kTopMioPlicIrqIdLioGrpAIbexIrq = 34, /**< LIO_GRP_A_IBEX_IRQ */
-  kTopMioPlicIrqIdLioGrpBIbexIrq = 35, /**< LIO_GRP_B_IBEX_IRQ */
-  kTopMioPlicIrqIdLioGrpCIbexIrq = 36, /**< LIO_GRP_C_IBEX_IRQ */
-  kTopMioPlicIrqIdLast = 36, /**< \internal The Last Valid Interrupt ID. */
-} top_mio_plic_irq_id_t;
+typedef enum top_mio_plic_mio_irq_id {
+  kTopMioPlicMioIrqIdNone = 0, /**< No Interrupt */
+  kTopMioPlicMioIrqIdRvTimerTimerExpiredHart0Timer0 = 1, /**< rv_timer_timer_expired_hart0_timer0 */
+  kTopMioPlicMioIrqIdAonTimerAonWkupTimerExpired = 2, /**< aon_timer_aon_wkup_timer_expired */
+  kTopMioPlicMioIrqIdAonTimerAonWdogTimerBark = 3, /**< aon_timer_aon_wdog_timer_bark */
+  kTopMioPlicMioIrqIdDmaDmaDone = 4, /**< dma_dma_done */
+  kTopMioPlicMioIrqIdDmaDmaChunkDone = 5, /**< dma_dma_chunk_done */
+  kTopMioPlicMioIrqIdDmaDmaError = 6, /**< dma_dma_error */
+  kTopMioPlicMioIrqIdMbx0MbxReady = 7, /**< mbx0_mbx_ready */
+  kTopMioPlicMioIrqIdMbx0MbxAbort = 8, /**< mbx0_mbx_abort */
+  kTopMioPlicMioIrqIdMbx0MbxError = 9, /**< mbx0_mbx_error */
+  kTopMioPlicMioIrqIdMbx1MbxReady = 10, /**< mbx1_mbx_ready */
+  kTopMioPlicMioIrqIdMbx1MbxAbort = 11, /**< mbx1_mbx_abort */
+  kTopMioPlicMioIrqIdMbx1MbxError = 12, /**< mbx1_mbx_error */
+  kTopMioPlicMioIrqIdMbx2MbxReady = 13, /**< mbx2_mbx_ready */
+  kTopMioPlicMioIrqIdMbx2MbxAbort = 14, /**< mbx2_mbx_abort */
+  kTopMioPlicMioIrqIdMbx2MbxError = 15, /**< mbx2_mbx_error */
+  kTopMioPlicMioIrqIdMbx3MbxReady = 16, /**< mbx3_mbx_ready */
+  kTopMioPlicMioIrqIdMbx3MbxAbort = 17, /**< mbx3_mbx_abort */
+  kTopMioPlicMioIrqIdMbx3MbxError = 18, /**< mbx3_mbx_error */
+  kTopMioPlicMioIrqIdMbx4MbxReady = 19, /**< mbx4_mbx_ready */
+  kTopMioPlicMioIrqIdMbx4MbxAbort = 20, /**< mbx4_mbx_abort */
+  kTopMioPlicMioIrqIdMbx4MbxError = 21, /**< mbx4_mbx_error */
+  kTopMioPlicMioIrqIdMbx5MbxReady = 22, /**< mbx5_mbx_ready */
+  kTopMioPlicMioIrqIdMbx5MbxAbort = 23, /**< mbx5_mbx_abort */
+  kTopMioPlicMioIrqIdMbx5MbxError = 24, /**< mbx5_mbx_error */
+  kTopMioPlicMioIrqIdMbxPcie0MbxReady = 25, /**< mbx_pcie0_mbx_ready */
+  kTopMioPlicMioIrqIdMbxPcie0MbxAbort = 26, /**< mbx_pcie0_mbx_abort */
+  kTopMioPlicMioIrqIdMbxPcie0MbxError = 27, /**< mbx_pcie0_mbx_error */
+  kTopMioPlicMioIrqIdMioHdrIpiFromMio0 = 28, /**< MIO_HDR_IPI_FROM_MIO_0 */
+  kTopMioPlicMioIrqIdMioHdrIpiFromMio1 = 29, /**< MIO_HDR_IPI_FROM_MIO_1 */
+  kTopMioPlicMioIrqIdMioHdrIpiFromMio2 = 30, /**< MIO_HDR_IPI_FROM_MIO_2 */
+  kTopMioPlicMioIrqIdMioHdrIpiFromRot = 31, /**< MIO_HDR_IPI_FROM_ROT */
+  kTopMioPlicMioIrqIdMioHdrIpiFromPwc = 32, /**< MIO_HDR_IPI_FROM_PWC */
+  kTopMioPlicMioIrqIdMioHdrIpiFromDuc = 33, /**< MIO_HDR_IPI_FROM_DUC */
+  kTopMioPlicMioIrqIdLioGrpAIbexIrq = 34, /**< LIO_GRP_A_IBEX_IRQ */
+  kTopMioPlicMioIrqIdLioGrpBIbexIrq = 35, /**< LIO_GRP_B_IBEX_IRQ */
+  kTopMioPlicMioIrqIdLioGrpCIbexIrq = 36, /**< LIO_GRP_C_IBEX_IRQ */
+  kTopMioPlicMioIrqIdLast = 36, /**< \internal The Last Valid Interrupt ID. */
+} top_mio_plic_mio_irq_id_t;
 
 /**
  * PLIC Interrupt Source to Peripheral Map
  *
- * This array is a mapping from `top_mio_plic_irq_id_t` to
- * `top_mio_plic_peripheral_t`.
+ * This array is a mapping from `top_mio_plic_mio_irq_id_t` to
+ * `top_mio_plic_mio_peripheral_t`.
  */
-extern const top_mio_plic_peripheral_t
-    top_mio_plic_interrupt_for_peripheral[37];
+extern const top_mio_plic_mio_peripheral_t
+    top_mio_plic_mio_interrupt_for_peripheral[37];
 
 /**
  * PLIC Interrupt Target.
@@ -530,10 +530,11 @@ extern const top_mio_plic_peripheral_t
  * Enumeration used to determine which set of IE, CC, threshold registers to
  * access for a given interrupt target.
  */
-typedef enum top_mio_plic_target {
-  kTopMioPlicTargetIbex0 = 0, /**< Ibex Core 0 */
-  kTopMioPlicTargetLast = 0, /**< \internal Final PLIC target */
-} top_mio_plic_target_t;
+typedef enum top_mio_plic_mio_target {
+  kTopMioPlicMioTargetIbexMio = 0, /**< Ibex rv_core_ibex_mio */
+  kTopMioPlicMioTargetLast = 0, /**< \internal Final PLIC target */
+} top_mio_plic_mio_target_t;
+
 
 /**
  * MMIO Region

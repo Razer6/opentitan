@@ -708,6 +708,7 @@
         '../../top_mio/data/autogen/outgoing_interrupts_mio.hjson'
         '../../top_pwc/data/autogen/outgoing_interrupts_pwc.hjson'
       ]
+      targets: ["rv_core_ibex"]
     },
     { name: "aes",
       type: "aes",

@@ -31,7 +31,7 @@
 #include "sw/device/lib/dif/autogen/dif_aon_timer_autogen.h"
 #include "sw/device/lib/dif/autogen/dif_dma_autogen.h"
 #include "sw/device/lib/dif/autogen/dif_mbx_autogen.h"
-#include "sw/device/lib/dif/autogen/dif_rv_plic_autogen.h"
+#include "sw/device/lib/dif/autogen/dif_rv_plic_mio_autogen.h"
 #include "sw/device/lib/dif/autogen/dif_rv_timer_autogen.h"
 #include "sw/device/lib/runtime/ibex.h"
 #include "sw/device/lib/runtime/irq.h"
@@ -147,11 +147,11 @@ void ottf_external_isr(uint32_t *exc_info) {
 
   switch (peripheral) {
 #if TEST_MIN_IRQ_PERIPHERAL <= 0 && 0 < TEST_MAX_IRQ_PERIPHERAL
-    case kTopMioPlicPeripheralAonTimerAon: {
+    case kTopMioPlicMioPeripheralAonTimerAon: {
       dif_aon_timer_irq_t irq =
           (dif_aon_timer_irq_t)(plic_irq_id -
                                 (dif_rv_plic_irq_id_t)
-                                    kTopMioPlicIrqIdAonTimerAonWkupTimerExpired);
+                                    kTopMioPlicMioIrqIdAonTimerAonWkupTimerExpired);
       CHECK(irq == aon_timer_irq_expected,
             "Incorrect aon_timer_aon IRQ triggered: exp = %d, obs = %d",
             aon_timer_irq_expected, irq);
@@ -170,11 +170,11 @@ void ottf_external_isr(uint32_t *exc_info) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 1 && 1 < TEST_MAX_IRQ_PERIPHERAL
-    case kTopMioPlicPeripheralDma: {
+    case kTopMioPlicMioPeripheralDma: {
       dif_dma_irq_t irq =
           (dif_dma_irq_t)(plic_irq_id -
                           (dif_rv_plic_irq_id_t)
-                              kTopMioPlicIrqIdDmaDmaDone);
+                              kTopMioPlicMioIrqIdDmaDmaDone);
       CHECK(irq == dma_irq_expected,
             "Incorrect dma IRQ triggered: exp = %d, obs = %d",
             dma_irq_expected, irq);
@@ -206,11 +206,11 @@ void ottf_external_isr(uint32_t *exc_info) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-    case kTopMioPlicPeripheralMbx0: {
+    case kTopMioPlicMioPeripheralMbx0: {
       dif_mbx_irq_t irq =
           (dif_mbx_irq_t)(plic_irq_id -
                           (dif_rv_plic_irq_id_t)
-                              kTopMioPlicIrqIdMbx0MbxReady);
+                              kTopMioPlicMioIrqIdMbx0MbxReady);
       CHECK(irq == mbx_irq_expected,
             "Incorrect mbx0 IRQ triggered: exp = %d, obs = %d",
             mbx_irq_expected, irq);
@@ -229,11 +229,11 @@ void ottf_external_isr(uint32_t *exc_info) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-    case kTopMioPlicPeripheralMbx1: {
+    case kTopMioPlicMioPeripheralMbx1: {
       dif_mbx_irq_t irq =
           (dif_mbx_irq_t)(plic_irq_id -
                           (dif_rv_plic_irq_id_t)
-                              kTopMioPlicIrqIdMbx1MbxReady);
+                              kTopMioPlicMioIrqIdMbx1MbxReady);
       CHECK(irq == mbx_irq_expected,
             "Incorrect mbx1 IRQ triggered: exp = %d, obs = %d",
             mbx_irq_expected, irq);
@@ -252,11 +252,11 @@ void ottf_external_isr(uint32_t *exc_info) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-    case kTopMioPlicPeripheralMbx2: {
+    case kTopMioPlicMioPeripheralMbx2: {
       dif_mbx_irq_t irq =
           (dif_mbx_irq_t)(plic_irq_id -
                           (dif_rv_plic_irq_id_t)
-                              kTopMioPlicIrqIdMbx2MbxReady);
+                              kTopMioPlicMioIrqIdMbx2MbxReady);
       CHECK(irq == mbx_irq_expected,
             "Incorrect mbx2 IRQ triggered: exp = %d, obs = %d",
             mbx_irq_expected, irq);
@@ -275,11 +275,11 @@ void ottf_external_isr(uint32_t *exc_info) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-    case kTopMioPlicPeripheralMbx3: {
+    case kTopMioPlicMioPeripheralMbx3: {
       dif_mbx_irq_t irq =
           (dif_mbx_irq_t)(plic_irq_id -
                           (dif_rv_plic_irq_id_t)
-                              kTopMioPlicIrqIdMbx3MbxReady);
+                              kTopMioPlicMioIrqIdMbx3MbxReady);
       CHECK(irq == mbx_irq_expected,
             "Incorrect mbx3 IRQ triggered: exp = %d, obs = %d",
             mbx_irq_expected, irq);
@@ -298,11 +298,11 @@ void ottf_external_isr(uint32_t *exc_info) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-    case kTopMioPlicPeripheralMbx4: {
+    case kTopMioPlicMioPeripheralMbx4: {
       dif_mbx_irq_t irq =
           (dif_mbx_irq_t)(plic_irq_id -
                           (dif_rv_plic_irq_id_t)
-                              kTopMioPlicIrqIdMbx4MbxReady);
+                              kTopMioPlicMioIrqIdMbx4MbxReady);
       CHECK(irq == mbx_irq_expected,
             "Incorrect mbx4 IRQ triggered: exp = %d, obs = %d",
             mbx_irq_expected, irq);
@@ -321,11 +321,11 @@ void ottf_external_isr(uint32_t *exc_info) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-    case kTopMioPlicPeripheralMbx5: {
+    case kTopMioPlicMioPeripheralMbx5: {
       dif_mbx_irq_t irq =
           (dif_mbx_irq_t)(plic_irq_id -
                           (dif_rv_plic_irq_id_t)
-                              kTopMioPlicIrqIdMbx5MbxReady);
+                              kTopMioPlicMioIrqIdMbx5MbxReady);
       CHECK(irq == mbx_irq_expected,
             "Incorrect mbx5 IRQ triggered: exp = %d, obs = %d",
             mbx_irq_expected, irq);
@@ -344,11 +344,11 @@ void ottf_external_isr(uint32_t *exc_info) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-    case kTopMioPlicPeripheralMbxPcie0: {
+    case kTopMioPlicMioPeripheralMbxPcie0: {
       dif_mbx_irq_t irq =
           (dif_mbx_irq_t)(plic_irq_id -
                           (dif_rv_plic_irq_id_t)
-                              kTopMioPlicIrqIdMbxPcie0MbxReady);
+                              kTopMioPlicMioIrqIdMbxPcie0MbxReady);
       CHECK(irq == mbx_irq_expected,
             "Incorrect mbx_pcie0 IRQ triggered: exp = %d, obs = %d",
             mbx_irq_expected, irq);
@@ -367,11 +367,11 @@ void ottf_external_isr(uint32_t *exc_info) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
-    case kTopMioPlicPeripheralRvTimer: {
+    case kTopMioPlicMioPeripheralRvTimer: {
       dif_rv_timer_irq_t irq =
           (dif_rv_timer_irq_t)(plic_irq_id -
                                (dif_rv_plic_irq_id_t)
-                                   kTopMioPlicIrqIdRvTimerTimerExpiredHart0Timer0);
+                                   kTopMioPlicMioIrqIdRvTimerTimerExpiredHart0Timer0);
       CHECK(irq == rv_timer_irq_expected,
             "Incorrect rv_timer IRQ triggered: exp = %d, obs = %d",
             rv_timer_irq_expected, irq);
@@ -580,7 +580,7 @@ static void peripheral_irqs_trigger(void) {
   // Since there are other tests covering this already, we just skip this for
   // non-DV setups.
   if (kDeviceType == kDeviceSimDV) {
-    peripheral_expected = kTopMioPlicPeripheralAonTimerAon;
+    peripheral_expected = kTopMioPlicMioPeripheralAonTimerAon;
     for (dif_aon_timer_irq_t irq = kDifAonTimerIrqWkupTimerExpired; irq <= kDifAonTimerIrqWdogTimerBark;
          ++irq) {
       aon_timer_irq_expected = irq;
@@ -596,7 +596,7 @@ static void peripheral_irqs_trigger(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 1 && 1 < TEST_MAX_IRQ_PERIPHERAL
-  peripheral_expected = kTopMioPlicPeripheralDma;
+  peripheral_expected = kTopMioPlicMioPeripheralDma;
   status_default_mask = 0x0;
   for (dif_dma_irq_t irq = kDifDmaIrqDmaDone; irq <= kDifDmaIrqDmaError;
        ++irq) {
@@ -620,7 +620,7 @@ static void peripheral_irqs_trigger(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-  peripheral_expected = kTopMioPlicPeripheralMbx0;
+  peripheral_expected = kTopMioPlicMioPeripheralMbx0;
   for (dif_mbx_irq_t irq = kDifMbxIrqMbxReady; irq <= kDifMbxIrqMbxError;
        ++irq) {
     mbx_irq_expected = irq;
@@ -635,7 +635,7 @@ static void peripheral_irqs_trigger(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-  peripheral_expected = kTopMioPlicPeripheralMbx1;
+  peripheral_expected = kTopMioPlicMioPeripheralMbx1;
   for (dif_mbx_irq_t irq = kDifMbxIrqMbxReady; irq <= kDifMbxIrqMbxError;
        ++irq) {
     mbx_irq_expected = irq;
@@ -650,7 +650,7 @@ static void peripheral_irqs_trigger(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-  peripheral_expected = kTopMioPlicPeripheralMbx2;
+  peripheral_expected = kTopMioPlicMioPeripheralMbx2;
   for (dif_mbx_irq_t irq = kDifMbxIrqMbxReady; irq <= kDifMbxIrqMbxError;
        ++irq) {
     mbx_irq_expected = irq;
@@ -665,7 +665,7 @@ static void peripheral_irqs_trigger(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-  peripheral_expected = kTopMioPlicPeripheralMbx3;
+  peripheral_expected = kTopMioPlicMioPeripheralMbx3;
   for (dif_mbx_irq_t irq = kDifMbxIrqMbxReady; irq <= kDifMbxIrqMbxError;
        ++irq) {
     mbx_irq_expected = irq;
@@ -680,7 +680,7 @@ static void peripheral_irqs_trigger(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-  peripheral_expected = kTopMioPlicPeripheralMbx4;
+  peripheral_expected = kTopMioPlicMioPeripheralMbx4;
   for (dif_mbx_irq_t irq = kDifMbxIrqMbxReady; irq <= kDifMbxIrqMbxError;
        ++irq) {
     mbx_irq_expected = irq;
@@ -695,7 +695,7 @@ static void peripheral_irqs_trigger(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-  peripheral_expected = kTopMioPlicPeripheralMbx5;
+  peripheral_expected = kTopMioPlicMioPeripheralMbx5;
   for (dif_mbx_irq_t irq = kDifMbxIrqMbxReady; irq <= kDifMbxIrqMbxError;
        ++irq) {
     mbx_irq_expected = irq;
@@ -710,7 +710,7 @@ static void peripheral_irqs_trigger(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 2 && 2 < TEST_MAX_IRQ_PERIPHERAL
-  peripheral_expected = kTopMioPlicPeripheralMbxPcie0;
+  peripheral_expected = kTopMioPlicMioPeripheralMbxPcie0;
   for (dif_mbx_irq_t irq = kDifMbxIrqMbxReady; irq <= kDifMbxIrqMbxError;
        ++irq) {
     mbx_irq_expected = irq;
@@ -725,7 +725,7 @@ static void peripheral_irqs_trigger(void) {
 #endif
 
 #if TEST_MIN_IRQ_PERIPHERAL <= 3 && 3 < TEST_MAX_IRQ_PERIPHERAL
-  peripheral_expected = kTopMioPlicPeripheralRvTimer;
+  peripheral_expected = kTopMioPlicMioPeripheralRvTimer;
   for (dif_rv_timer_irq_t irq = kDifRvTimerIrqTimerExpiredHart0Timer0; irq <= kDifRvTimerIrqTimerExpiredHart0Timer0;
        ++irq) {
     rv_timer_irq_expected = irq;

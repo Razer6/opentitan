@@ -2023,6 +2023,10 @@
       [
         pwc_external_irq_cfg.hjson
       ]
+      targets:
+      [
+        rv_core_ibex_pwc
+      ]
       clock_connections:
       {
         clk_i: clk_ext_main_i

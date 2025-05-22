@@ -343,7 +343,7 @@ pub const RAM_MBOX_SIZE_BYTES: usize = 0x1000;
 /// interrupt.
 #[derive(Copy, Clone, PartialEq, Eq)]
 #[repr(u32)]
-pub enum PlicPeripheral {
+pub enum PlicMioPeripheral {
     /// Unknown Peripheral
     Unknown = 0,
     /// rv_timer
@@ -368,7 +368,7 @@ pub enum PlicPeripheral {
     MbxPcie0 = 10,
 }
 
-impl TryFrom<u32> for PlicPeripheral {
+impl TryFrom<u32> for PlicMioPeripheral {
     type Error = u32;
     fn try_from(val: u32) -> Result<Self, Self::Error> {
         match val {
@@ -394,7 +394,7 @@ impl TryFrom<u32> for PlicPeripheral {
 /// the same peripheral are guaranteed to be consecutive.
 #[derive(Copy, Clone, PartialEq, Eq)]
 #[repr(u32)]
-pub enum PlicIrqId {
+pub enum PlicMioIrqId {
     /// No Interrupt
     None = 0,
     /// rv_timer_timer_expired_hart0_timer0
@@ -471,7 +471,7 @@ pub enum PlicIrqId {
     LioGrpCIbexIrq = 36,
 }
 
-impl TryFrom<u32> for PlicIrqId {
+impl TryFrom<u32> for PlicMioIrqId {
     type Error = u32;
     fn try_from(val: u32) -> Result<Self, Self::Error> {
         match val {
@@ -523,90 +523,90 @@ impl TryFrom<u32> for PlicIrqId {
 /// access for a given interrupt target.
 #[derive(Copy, Clone, PartialEq, Eq)]
 #[repr(u32)]
-pub enum PlicTarget {
-    /// Ibex Core 0
-    Ibex0 = 0,
+pub enum PlicMioTarget {
+    /// Ibex rv_core_ibex_mio
+    IbexMio = 0,
 }
 
 /// PLIC Interrupt Source to Peripheral Map
 ///
-/// This array is a mapping from `PlicIrqId` to
-/// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 37] = [
-    // None -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // RvTimerTimerExpiredHart0Timer0 -> PlicPeripheral::RvTimer
-    PlicPeripheral::RvTimer,
-    // AonTimerAonWkupTimerExpired -> PlicPeripheral::AonTimerAon
-    PlicPeripheral::AonTimerAon,
-    // AonTimerAonWdogTimerBark -> PlicPeripheral::AonTimerAon
-    PlicPeripheral::AonTimerAon,
-    // DmaDmaDone -> PlicPeripheral::Dma
-    PlicPeripheral::Dma,
-    // DmaDmaChunkDone -> PlicPeripheral::Dma
-    PlicPeripheral::Dma,
-    // DmaDmaError -> PlicPeripheral::Dma
-    PlicPeripheral::Dma,
-    // Mbx0MbxReady -> PlicPeripheral::Mbx0
-    PlicPeripheral::Mbx0,
-    // Mbx0MbxAbort -> PlicPeripheral::Mbx0
-    PlicPeripheral::Mbx0,
-    // Mbx0MbxError -> PlicPeripheral::Mbx0
-    PlicPeripheral::Mbx0,
-    // Mbx1MbxReady -> PlicPeripheral::Mbx1
-    PlicPeripheral::Mbx1,
-    // Mbx1MbxAbort -> PlicPeripheral::Mbx1
-    PlicPeripheral::Mbx1,
-    // Mbx1MbxError -> PlicPeripheral::Mbx1
-    PlicPeripheral::Mbx1,
-    // Mbx2MbxReady -> PlicPeripheral::Mbx2
-    PlicPeripheral::Mbx2,
-    // Mbx2MbxAbort -> PlicPeripheral::Mbx2
-    PlicPeripheral::Mbx2,
-    // Mbx2MbxError -> PlicPeripheral::Mbx2
-    PlicPeripheral::Mbx2,
-    // Mbx3MbxReady -> PlicPeripheral::Mbx3
-    PlicPeripheral::Mbx3,
-    // Mbx3MbxAbort -> PlicPeripheral::Mbx3
-    PlicPeripheral::Mbx3,
-    // Mbx3MbxError -> PlicPeripheral::Mbx3
-    PlicPeripheral::Mbx3,
-    // Mbx4MbxReady -> PlicPeripheral::Mbx4
-    PlicPeripheral::Mbx4,
-    // Mbx4MbxAbort -> PlicPeripheral::Mbx4
-    PlicPeripheral::Mbx4,
-    // Mbx4MbxError -> PlicPeripheral::Mbx4
-    PlicPeripheral::Mbx4,
-    // Mbx5MbxReady -> PlicPeripheral::Mbx5
-    PlicPeripheral::Mbx5,
-    // Mbx5MbxAbort -> PlicPeripheral::Mbx5
-    PlicPeripheral::Mbx5,
-    // Mbx5MbxError -> PlicPeripheral::Mbx5
-    PlicPeripheral::Mbx5,
-    // MbxPcie0MbxReady -> PlicPeripheral::MbxPcie0
-    PlicPeripheral::MbxPcie0,
-    // MbxPcie0MbxAbort -> PlicPeripheral::MbxPcie0
-    PlicPeripheral::MbxPcie0,
-    // MbxPcie0MbxError -> PlicPeripheral::MbxPcie0
-    PlicPeripheral::MbxPcie0,
-    // MioHdrIpiFromMio0 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // MioHdrIpiFromMio1 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // MioHdrIpiFromMio2 -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // MioHdrIpiFromRot -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // MioHdrIpiFromPwc -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // MioHdrIpiFromDuc -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpAIbexIrq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpBIbexIrq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
-    // LioGrpCIbexIrq -> PlicPeripheral::Unknown
-    PlicPeripheral::Unknown,
+/// This array is a mapping from `PlicMioIrqId` to
+/// `PlicMioPeripheral`.
+pub const PLIC_MIO_INTERRUPT_FOR_PERIPHERAL: [PlicMioPeripheral; 37] = [
+    // None -> PlicMioPeripheral::Unknown
+    PlicMioPeripheral::Unknown,
+    // RvTimerTimerExpiredHart0Timer0 -> PlicMioPeripheral::RvTimer
+    PlicMioPeripheral::RvTimer,
+    // AonTimerAonWkupTimerExpired -> PlicMioPeripheral::AonTimerAon
+    PlicMioPeripheral::AonTimerAon,
+    // AonTimerAonWdogTimerBark -> PlicMioPeripheral::AonTimerAon
+    PlicMioPeripheral::AonTimerAon,
+    // DmaDmaDone -> PlicMioPeripheral::Dma
+    PlicMioPeripheral::Dma,
+    // DmaDmaChunkDone -> PlicMioPeripheral::Dma
+    PlicMioPeripheral::Dma,
+    // DmaDmaError -> PlicMioPeripheral::Dma
+    PlicMioPeripheral::Dma,
+    // Mbx0MbxReady -> PlicMioPeripheral::Mbx0
+    PlicMioPeripheral::Mbx0,
+    // Mbx0MbxAbort -> PlicMioPeripheral::Mbx0
+    PlicMioPeripheral::Mbx0,
+    // Mbx0MbxError -> PlicMioPeripheral::Mbx0
+    PlicMioPeripheral::Mbx0,
+    // Mbx1MbxReady -> PlicMioPeripheral::Mbx1
+    PlicMioPeripheral::Mbx1,
+    // Mbx1MbxAbort -> PlicMioPeripheral::Mbx1
+    PlicMioPeripheral::Mbx1,
+    // Mbx1MbxError -> PlicMioPeripheral::Mbx1
+    PlicMioPeripheral::Mbx1,
+    // Mbx2MbxReady -> PlicMioPeripheral::Mbx2
+    PlicMioPeripheral::Mbx2,
+    // Mbx2MbxAbort -> PlicMioPeripheral::Mbx2
+    PlicMioPeripheral::Mbx2,
+    // Mbx2MbxError -> PlicMioPeripheral::Mbx2
+    PlicMioPeripheral::Mbx2,
+    // Mbx3MbxReady -> PlicMioPeripheral::Mbx3
+    PlicMioPeripheral::Mbx3,
+    // Mbx3MbxAbort -> PlicMioPeripheral::Mbx3
+    PlicMioPeripheral::Mbx3,
+    // Mbx3MbxError -> PlicMioPeripheral::Mbx3
+    PlicMioPeripheral::Mbx3,
+    // Mbx4MbxReady -> PlicMioPeripheral::Mbx4
+    PlicMioPeripheral::Mbx4,
+    // Mbx4MbxAbort -> PlicMioPeripheral::Mbx4
+    PlicMioPeripheral::Mbx4,
+    // Mbx4MbxError -> PlicMioPeripheral::Mbx4
+    PlicMioPeripheral::Mbx4,
+    // Mbx5MbxReady -> PlicMioPeripheral::Mbx5
+    PlicMioPeripheral::Mbx5,
+    // Mbx5MbxAbort -> PlicMioPeripheral::Mbx5
+    PlicMioPeripheral::Mbx5,
+    // Mbx5MbxError -> PlicMioPeripheral::Mbx5
+    PlicMioPeripheral::Mbx5,
+    // MbxPcie0MbxReady -> PlicMioPeripheral::MbxPcie0
+    PlicMioPeripheral::MbxPcie0,
+    // MbxPcie0MbxAbort -> PlicMioPeripheral::MbxPcie0
+    PlicMioPeripheral::MbxPcie0,
+    // MbxPcie0MbxError -> PlicMioPeripheral::MbxPcie0
+    PlicMioPeripheral::MbxPcie0,
+    // MioHdrIpiFromMio0 -> PlicMioPeripheral::Unknown
+    PlicMioPeripheral::Unknown,
+    // MioHdrIpiFromMio1 -> PlicMioPeripheral::Unknown
+    PlicMioPeripheral::Unknown,
+    // MioHdrIpiFromMio2 -> PlicMioPeripheral::Unknown
+    PlicMioPeripheral::Unknown,
+    // MioHdrIpiFromRot -> PlicMioPeripheral::Unknown
+    PlicMioPeripheral::Unknown,
+    // MioHdrIpiFromPwc -> PlicMioPeripheral::Unknown
+    PlicMioPeripheral::Unknown,
+    // MioHdrIpiFromDuc -> PlicMioPeripheral::Unknown
+    PlicMioPeripheral::Unknown,
+    // LioGrpAIbexIrq -> PlicMioPeripheral::Unknown
+    PlicMioPeripheral::Unknown,
+    // LioGrpBIbexIrq -> PlicMioPeripheral::Unknown
+    PlicMioPeripheral::Unknown,
+    // LioGrpCIbexIrq -> PlicMioPeripheral::Unknown
+    PlicMioPeripheral::Unknown,
 ];
 
 /// MMIO Region
