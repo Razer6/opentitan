@@ -73,6 +73,8 @@ dependencies = [
   # Development version with OT-specific changes
   "edalize@https://github.com/lowRISC/edalize/archive/refs/tags/v0.4.0.zip",
 
+  "peakrdl-systemrdl >= 1.0",
+
   # Development version of minimal ChipWhisperer toolchain with latest features
   # and bug fixes. We fix the version for improved stability and manually update
   # if necessary.
