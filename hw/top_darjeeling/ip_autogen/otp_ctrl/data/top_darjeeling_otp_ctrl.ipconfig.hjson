@@ -2466,5 +2466,6 @@
     use_rivos_config: true
     topname: darjeeling
     uniquified_modules: {}
+    module_instance_name: otp_ctrl
   }
 }
