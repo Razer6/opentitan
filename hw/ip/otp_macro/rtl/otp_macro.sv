@@ -201,8 +201,8 @@ module otp_macro
   ///////////////////
 
   // Encoding generated with:
-  // $ ./util/design/sparse-fsm-encode.py -d 5 -m 9 -n 10 \
-  //      -s 2599950981 --language=sv
+  // $ ./util/design/sparse-fsm-encode.py -d 5 -m 10 -n 11 \
+  //     -s 2599950981 --language=sv
   //
   // Hamming distance histogram:
   //
@@ -211,30 +211,31 @@ module otp_macro
   //  2: --
   //  3: --
   //  4: --
-  //  5: |||||||||||||||||||| (52.78%)
-  //  6: ||||||||||||||| (41.67%)
-  //  7: | (2.78%)
-  //  8: | (2.78%)
-  //  9: --
+  //  5: ||||||||||||||||| (35.56%)
+  //  6: |||||||||||||||||||| (40.00%)
+  //  7: |||||||| (17.78%)
+  //  8: || (4.44%)
+  //  9: | (2.22%)
   // 10: --
+  // 11: --
   //
   // Minimum Hamming distance: 5
-  // Maximum Hamming distance: 8
+  // Maximum Hamming distance: 9
   // Minimum Hamming weight: 3
   // Maximum Hamming weight: 8
   //
-  localparam int StateWidth = 10;
+  localparam int StateWidth = 11;
   typedef enum logic [StateWidth-1:0] {
-    ResetSt      = 10'b1100000110,
-    InitSt       = 10'b1000110011,
-    IdleSt       = 10'b0101110000,
-    ReadSt       = 10'b0010011111,
-    ReadWaitSt   = 10'b1001001101,
-    WriteCheckSt = 10'b1111101011,
-    WriteWaitSt  = 10'b0011000010,
-    IssueWriteSt = 10'b1000001100, // (neal) script was not rerun to generate this state encoding
-    WriteSt      = 10'b0110100101,
-    ErrorSt      = 10'b1110011000
+    ResetSt      = 11'b10010000001,
+    InitSt       = 11'b00100010011,
+    IdleSt       = 11'b11110000110,
+    ReadSt       = 11'b11111110001,
+    ReadWaitSt   = 11'b01101001000,
+    WriteCheckSt = 11'b10000110110,
+    WriteWaitSt  = 11'b00111101110,
+    IssueWriteSt = 11'b01010011101,
+    WriteSt      = 11'b11011011010,
+    ErrorSt      = 11'b11100101101
   } state_e;
 
   state_e state_d, state_q;
