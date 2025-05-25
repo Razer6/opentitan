@@ -63,7 +63,7 @@ module top_mio #(
   // parameters for racl_ctrl_mio
   parameter int RaclCtrlMioNumExternalSubscribingIps = 1,
   // parameters for ac_range_check_mio
-  parameter bit AcRangeCheckMioRangeCheckErrorRsp = 1,
+  parameter bit AcRangeCheckMioRangeCheckErrorRsp = 0,
   // parameters for rv_core_ibex_mio
   parameter bit RvCoreIbexMioPMPEnable = 1,
   parameter int unsigned RvCoreIbexMioPMPGranularity = 0,

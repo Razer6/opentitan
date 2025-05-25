@@ -66,7 +66,7 @@ module top_pwc #(
   // parameters for racl_ctrl_pwc
   parameter int RaclCtrlPwcNumExternalSubscribingIps = 1,
   // parameters for ac_range_check_pwc
-  parameter bit AcRangeCheckPwcRangeCheckErrorRsp = 1,
+  parameter bit AcRangeCheckPwcRangeCheckErrorRsp = 0,
   // parameters for rv_core_ibex_pwc
   parameter bit RvCoreIbexPwcPMPEnable = 1,
   parameter int unsigned RvCoreIbexPwcPMPGranularity = 0,

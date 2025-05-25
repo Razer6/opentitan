@@ -133,7 +133,7 @@ module top_darjeeling #(
   // parameters for racl_ctrl
   parameter int RaclCtrlNumExternalSubscribingIps = 1,
   // parameters for ac_range_check
-  parameter bit AcRangeCheckRangeCheckErrorRsp = 1,
+  parameter bit AcRangeCheckRangeCheckErrorRsp = 0,
   // parameters for rv_core_ibex
   parameter bit RvCoreIbexPMPEnable = 1,
   parameter int unsigned RvCoreIbexPMPGranularity = 0,

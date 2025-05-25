@@ -4946,6 +4946,10 @@
           domain: "0"
         }
       }
+      param_decl:
+      {
+        RangeCheckErrorRsp: 0
+      }
       ipgen_param:
       {
         num_ranges: 32
@@ -4957,7 +4961,6 @@
       {
         clk_i: clk_ext_main_i
       }
-      param_decl: {}
       memory: {}
       param_list:
       [
@@ -4970,7 +4973,7 @@
             0: Writes are dropped and reads return all-zero, without a TLUL error
             '''
           type: bit
-          default: "1"
+          default: 0
           local: "false"
           expose: "true"
           name_top: AcRangeCheckPwcRangeCheckErrorRsp

@@ -1072,6 +1072,9 @@
       base_addr: {
         soc_mbx: "0x01464000"
       },
+      param_decl: {
+        RangeCheckErrorRsp: 0
+      }
       ipgen_param: {
         num_ranges: 32
       }
