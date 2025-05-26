@@ -48,10 +48,7 @@
       1'd0
       1'd0
     ]
-    uniquified_modules:
-    {
-      clkmgr: clkmgr1
-    }
+    uniquified_modules: {}
     n_esc_sev: 4
   }
 }

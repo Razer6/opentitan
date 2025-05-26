@@ -411,10 +411,7 @@
       }
     ]
     racl_group: lioGrpC
-    uniquified_modules:
-    {
-      clkmgr: clkmgr1
-    }
+    uniquified_modules: {}
     enable_shadow_reg: true
   }
 }

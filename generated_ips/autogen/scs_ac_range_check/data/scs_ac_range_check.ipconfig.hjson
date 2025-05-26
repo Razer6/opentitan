@@ -8,10 +8,7 @@
     topname: darjeeling
     module_instance_name: scs_ac_range_check
     num_ranges: 64
-    uniquified_modules:
-    {
-      clkmgr: clkmgr1
-    }
+    uniquified_modules: {}
     nr_role_bits: 4
     nr_ctn_uid_bits: 5
   }

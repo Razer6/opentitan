@@ -13,7 +13,7 @@
       name: "uniquified_modules"
       desc: "A dictionary mapping template_names to uniquified_names"
       type: "object"
-      default: {"clkmgr": "clkmgr1"}
+      default: {}
     }
     {
       name: "otp_mmap"
