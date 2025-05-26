@@ -1226,11 +1226,12 @@ typedef enum top_darjeeling_plic_irq_id {
   kTopDarjeelingPlicIrqIdScsctnif0AcRangeCtnDenyCntReached = 165, /**< SCSCTNIF0_AC_RANGE_CTN_DENY_CNT_REACHED */
   kTopDarjeelingPlicIrqIdScsctnif0AcRangeBcastDenyCntReached = 166, /**< SCSCTNIF0_AC_RANGE_BCAST_DENY_CNT_REACHED */
   kTopDarjeelingPlicIrqIdScsctnif1AcRangeCtnDenyCntReached = 167, /**< SCSCTNIF1_AC_RANGE_CTN_DENY_CNT_REACHED */
-  kTopDarjeelingPlicIrqIdRaclCtrlMioRaclCtrlMioRaclError = 168, /**< racl_ctrl_mio_racl_ctrl_mio_racl_error */
-  kTopDarjeelingPlicIrqIdAcRangeCheckMioAcRangeCheckMioDenyCntReached = 169, /**< ac_range_check_mio_ac_range_check_mio_deny_cnt_reached */
-  kTopDarjeelingPlicIrqIdRaclCtrlPwcRaclCtrlPwcRaclError = 170, /**< racl_ctrl_pwc_racl_ctrl_pwc_racl_error */
-  kTopDarjeelingPlicIrqIdAcRangeCheckPwcAcRangeCheckPwcDenyCntReached = 171, /**< ac_range_check_pwc_ac_range_check_pwc_deny_cnt_reached */
-  kTopDarjeelingPlicIrqIdLast = 171, /**< \internal The Last Valid Interrupt ID. */
+  kTopDarjeelingPlicIrqIdNsgrpNsefuseProgError = 168, /**< NSGRP_nsefuse_prog_error */
+  kTopDarjeelingPlicIrqIdRaclCtrlMioRaclCtrlMioRaclError = 169, /**< racl_ctrl_mio_racl_ctrl_mio_racl_error */
+  kTopDarjeelingPlicIrqIdAcRangeCheckMioAcRangeCheckMioDenyCntReached = 170, /**< ac_range_check_mio_ac_range_check_mio_deny_cnt_reached */
+  kTopDarjeelingPlicIrqIdRaclCtrlPwcRaclCtrlPwcRaclError = 171, /**< racl_ctrl_pwc_racl_ctrl_pwc_racl_error */
+  kTopDarjeelingPlicIrqIdAcRangeCheckPwcAcRangeCheckPwcDenyCntReached = 172, /**< ac_range_check_pwc_ac_range_check_pwc_deny_cnt_reached */
+  kTopDarjeelingPlicIrqIdLast = 172, /**< \internal The Last Valid Interrupt ID. */
 } top_darjeeling_plic_irq_id_t;
 
 /**
@@ -1240,7 +1241,7 @@ typedef enum top_darjeeling_plic_irq_id {
  * `top_darjeeling_plic_peripheral_t`.
  */
 extern const top_darjeeling_plic_peripheral_t
-    top_darjeeling_plic_interrupt_for_peripheral[172];
+    top_darjeeling_plic_interrupt_for_peripheral[173];
 
 /**
  * PLIC Interrupt Target.

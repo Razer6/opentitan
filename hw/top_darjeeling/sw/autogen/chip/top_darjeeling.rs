@@ -1225,14 +1225,16 @@ pub enum PlicIrqId {
     Scsctnif0AcRangeBcastDenyCntReached = 166,
     /// SCSCTNIF1_AC_RANGE_CTN_DENY_CNT_REACHED
     Scsctnif1AcRangeCtnDenyCntReached = 167,
+    /// NSGRP_nsefuse_prog_error
+    NsgrpNsefuseProgError = 168,
     /// racl_ctrl_mio_racl_ctrl_mio_racl_error
-    RaclCtrlMioRaclCtrlMioRaclError = 168,
+    RaclCtrlMioRaclCtrlMioRaclError = 169,
     /// ac_range_check_mio_ac_range_check_mio_deny_cnt_reached
-    AcRangeCheckMioAcRangeCheckMioDenyCntReached = 169,
+    AcRangeCheckMioAcRangeCheckMioDenyCntReached = 170,
     /// racl_ctrl_pwc_racl_ctrl_pwc_racl_error
-    RaclCtrlPwcRaclCtrlPwcRaclError = 170,
+    RaclCtrlPwcRaclCtrlPwcRaclError = 171,
     /// ac_range_check_pwc_ac_range_check_pwc_deny_cnt_reached
-    AcRangeCheckPwcAcRangeCheckPwcDenyCntReached = 171,
+    AcRangeCheckPwcAcRangeCheckPwcDenyCntReached = 172,
 }
 
 impl TryFrom<u32> for PlicIrqId {
@@ -1407,10 +1409,11 @@ impl TryFrom<u32> for PlicIrqId {
             165 => Ok(Self::Scsctnif0AcRangeCtnDenyCntReached),
             166 => Ok(Self::Scsctnif0AcRangeBcastDenyCntReached),
             167 => Ok(Self::Scsctnif1AcRangeCtnDenyCntReached),
-            168 => Ok(Self::RaclCtrlMioRaclCtrlMioRaclError),
-            169 => Ok(Self::AcRangeCheckMioAcRangeCheckMioDenyCntReached),
-            170 => Ok(Self::RaclCtrlPwcRaclCtrlPwcRaclError),
-            171 => Ok(Self::AcRangeCheckPwcAcRangeCheckPwcDenyCntReached),
+            168 => Ok(Self::NsgrpNsefuseProgError),
+            169 => Ok(Self::RaclCtrlMioRaclCtrlMioRaclError),
+            170 => Ok(Self::AcRangeCheckMioAcRangeCheckMioDenyCntReached),
+            171 => Ok(Self::RaclCtrlPwcRaclCtrlPwcRaclError),
+            172 => Ok(Self::AcRangeCheckPwcAcRangeCheckPwcDenyCntReached),
             _ => Err(val),
         }
     }
@@ -1431,7 +1434,7 @@ pub enum PlicTarget {
 ///
 /// This array is a mapping from `PlicIrqId` to
 /// `PlicPeripheral`.
-pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 172] = [
+pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 173] = [
     // None -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // Uart0TxWatermark -> PlicPeripheral::Uart0
@@ -1767,6 +1770,8 @@ pub const PLIC_INTERRUPT_FOR_PERIPHERAL: [PlicPeripheral; 172] = [
     // Scsctnif0AcRangeBcastDenyCntReached -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // Scsctnif1AcRangeCtnDenyCntReached -> PlicPeripheral::Unknown
+    PlicPeripheral::Unknown,
+    // NsgrpNsefuseProgError -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,
     // RaclCtrlMioRaclCtrlMioRaclError -> PlicPeripheral::Unknown
     PlicPeripheral::Unknown,

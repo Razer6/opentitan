@@ -280,5 +280,12 @@
       intr_type: IntrType.Status
       default_val: false
     }
+    {
+      name: nsefuse_prog_error
+      module_name: NSGRP
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+    }
   ]
 }

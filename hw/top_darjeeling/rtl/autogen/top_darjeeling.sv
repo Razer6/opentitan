@@ -456,7 +456,7 @@ module top_darjeeling #(
   // rv_core_ibex
 
 
-  logic [171:0]  intr_vector;
+  logic [172:0]  intr_vector;
   // Interrupt source list
   logic intr_uart0_tx_watermark;
   logic intr_uart0_rx_watermark;
@@ -2895,9 +2895,9 @@ module top_darjeeling #(
 
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_pwc_i, // IDs [170 +: 2]
-      incoming_interrupt_mio_i, // IDs [168 +: 2]
-      incoming_interrupt_rot_external_i, // IDs [128 +: 40]
+      incoming_interrupt_pwc_i, // IDs [171 +: 2]
+      incoming_interrupt_mio_i, // IDs [169 +: 2]
+      incoming_interrupt_rot_external_i, // IDs [128 +: 41]
       intr_ac_range_check_deny_cnt_reached, // IDs [127 +: 1]
       intr_racl_ctrl_racl_error, // IDs [126 +: 1]
       intr_mbx_pcie1_mbx_error, // IDs [125 +: 1]

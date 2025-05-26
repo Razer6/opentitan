@@ -18866,6 +18866,13 @@
         intr_type: IntrType.Status
         default_val: false
       }
+      {
+        name: nsefuse_prog_error
+        module_name: NSGRP
+        type: interrupt
+        intr_type: IntrType.Status
+        default_val: false
+      }
     ]
     mio:
     [
@@ -24865,6 +24872,16 @@
       intr_type: IntrType.Status
       default_val: false
       desc: SCSCTNIF1_AC_RANGE_CTN DENY_CNT_REACHED incoming interrupt
+      incoming: true
+      width: 1
+    }
+    {
+      name: NSGRP_nsefuse_prog_error
+      module_name: NSGRP
+      type: interrupt
+      intr_type: IntrType.Status
+      default_val: false
+      desc: NSGRP nsefuse_prog_error incoming interrupt
       incoming: true
       width: 1
     }
