@@ -10,5 +10,6 @@
     module_instance_name: rv_core_ibex
     topname: earlgrey
     uniquified_modules: {}
+    sim_window_address: 128
   }
 }

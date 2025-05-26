@@ -18,5 +18,6 @@
       ac_range_check: ac_range_check_mio
       rv_plic: rv_plic_mio
     }
+    use_flat_regs: false
   }
 }

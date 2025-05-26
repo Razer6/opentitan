@@ -273,5 +273,6 @@
       ac_range_check: ac_range_check_pwc
       rv_plic: rv_plic_pwc
     }
+    enable_shadow_reg: true
   }
 }

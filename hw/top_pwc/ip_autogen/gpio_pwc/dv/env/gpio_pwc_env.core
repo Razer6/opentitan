@@ -37,6 +37,7 @@ generate:
     parameters:
       name: gpio_pwc
       ip_hjson: ../../data/gpio_pwc.hjson
+    position: prepend
 
 targets:
   default:

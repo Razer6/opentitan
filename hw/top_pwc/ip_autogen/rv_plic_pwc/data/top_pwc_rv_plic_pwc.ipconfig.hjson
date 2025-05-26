@@ -19,5 +19,6 @@
       ac_range_check: ac_range_check_pwc
       rv_plic: rv_plic_pwc
     }
+    use_flat_regs: false
   }
 }

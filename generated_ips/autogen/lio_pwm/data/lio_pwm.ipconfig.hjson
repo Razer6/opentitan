@@ -8,5 +8,9 @@
     topname: darjeeling
     module_instance_name: lio_pwm
     nr_output_channels: 8
+    uniquified_modules:
+    {
+      clkmgr: clkmgr1
+    }
   }
 }

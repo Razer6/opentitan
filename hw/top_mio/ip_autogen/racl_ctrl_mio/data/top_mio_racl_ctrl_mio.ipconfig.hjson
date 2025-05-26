@@ -272,5 +272,6 @@
       ac_range_check: ac_range_check_mio
       rv_plic: rv_plic_mio
     }
+    enable_shadow_reg: true
   }
 }

@@ -17,6 +17,7 @@ generate:
     parameters:
       name: racl_ctrl
       ip_hjson: ../data/racl_ctrl_mio.hjson
+    position: prepend
 
 targets:
   default:
