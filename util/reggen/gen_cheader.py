@@ -268,8 +268,8 @@ def gen_cdefine_multireg(outstr: TextIO, multireg: MultiRegister,
                                    len(multireg.cregs), regwidth,
                                    existing_defines)
     else:
-        log.warn("Fieldless multireg " + preg.name +
-                 " skip multireg specific data generation.")
+        log.warning("Fieldless multireg " + preg.name +
+                    " skip multireg specific data generation.")
 
     for subreg in multireg.cregs:
         gen_cdefine_register(outstr, subreg, component, regwidth, rnames,
