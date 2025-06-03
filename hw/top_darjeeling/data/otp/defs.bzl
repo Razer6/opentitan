@@ -4,7 +4,7 @@
 
 # This is a set of overlays to generate a generic, standard OTP image.
 # Additional overlays can be applied on top to further customize the OTP.
-# This set overlays does not include any of the SECRET[0-2] partitions.
+# This set of overlays does not include any of the SECRET[0-2] partitions.
 DARJEELING_STD_OTP_OVERLAYS_WITHOUT_SECRET_PARTITIONS = [
     "@//hw/top_darjeeling/data/otp:otp_json_creator_sw_cfg",
     "@//hw/top_darjeeling/data/otp:otp_json_owner_sw_cfg",
