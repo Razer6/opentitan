@@ -21,7 +21,7 @@
             desc: ac_range_check_mio deny_cnt_reached interrupt
             type: interrupt
             width: 1
-            intr_type: IntrType.Event
+            intr_type: IntrType.Status
             default_val: False
         }
     ]

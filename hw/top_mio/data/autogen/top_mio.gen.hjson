@@ -12246,7 +12246,7 @@
         type: interrupt
         module_name: ac_range_check_mio
         desc: ac_range_check_mio deny_cnt_reached interrupt
-        intr_type: IntrType.Event
+        intr_type: IntrType.Status
         default_val: false
         incoming: false
       }

@@ -15843,7 +15843,7 @@
         type: interrupt
         module_name: ac_range_check_pwc
         desc: ac_range_check_pwc deny_cnt_reached interrupt
-        intr_type: IntrType.Event
+        intr_type: IntrType.Status
         default_val: false
         incoming: false
       }
