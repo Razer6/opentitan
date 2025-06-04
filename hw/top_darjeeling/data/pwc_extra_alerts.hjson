@@ -3,11 +3,47 @@
 // SPDX-License-Identifier: Apache-2.0
 
 {
-    pwc_extra_alerts: [
+    pwc_extra: [
         {
-            name: integ_error
-            module_name: scsmio
+            name: hdr_integ_error
+            module_name: scspwc_hdr
             index: 0
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        {
+            name: dvfs_hdr_integ_error
+            module_name: scspwc_hdr
+            index: 1
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        {
+            name: lteu_hdr_integ_error
+            module_name: scspwc_hdr
+            index: 2
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        {
+            name: pwc_bcast_hdr_integ_error
+            module_name: scspwc_hdr
+            index: 3
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        {
+            name: pwc_tlul_pcie_integ_error
+            module_name: scspwc
+            index: 4
             type: alert
             async: 1
             width: 1

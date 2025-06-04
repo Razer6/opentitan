@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 {
-    rot_extra_alerts: [
+    rot_extra: [
         {
             name: ams_ip_wrapper_integ_error
             module_name: ams_ip_wrapper

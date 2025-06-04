@@ -3,11 +3,20 @@
 // SPDX-License-Identifier: Apache-2.0
 
 {
-    mio_extra_alerts: [
+    mio_extra: [
         {
-            name: integ_error
-            module_name: scsmio
+            name: hdr_integ_error
+            module_name: scsmio_hdr
             index: 0
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        {
+            name: mio_tlul_pcie_integ_error
+            module_name: scsmio
+            index: 1
             type: alert
             async: 1
             width: 1

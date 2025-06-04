@@ -18101,31 +18101,76 @@
         lpg_idx: 1
       }
     ]
-    mio_extra_alerts:
+    mio_extra:
     [
       {
-        name: integ_error
-        module_name: scsmio
+        name: hdr_integ_error
+        module_name: scsmio_hdr
         index: 0
         type: alert
         async: 1
         width: 1
         lpg_idx: 0
       }
-    ]
-    pwc_extra_alerts:
-    [
       {
-        name: integ_error
+        name: mio_tlul_pcie_integ_error
         module_name: scsmio
-        index: 0
+        index: 1
         type: alert
         async: 1
         width: 1
         lpg_idx: 0
       }
     ]
-    rot_extra_alerts:
+    pwc_extra:
+    [
+      {
+        name: hdr_integ_error
+        module_name: scspwc_hdr
+        index: 0
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+      {
+        name: dvfs_hdr_integ_error
+        module_name: scspwc_hdr
+        index: 1
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+      {
+        name: lteu_hdr_integ_error
+        module_name: scspwc_hdr
+        index: 2
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+      {
+        name: pwc_bcast_hdr_integ_error
+        module_name: scspwc_hdr
+        index: 3
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+      {
+        name: pwc_tlul_pcie_integ_error
+        module_name: scspwc
+        index: 4
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+    ]
+    rot_extra:
     [
       {
         name: ams_ip_wrapper_integ_error
@@ -18371,7 +18416,7 @@
         lpg_idx: 0
       }
     ]
-    other_extra_alerts:
+    other_extra:
     [
       {
         name: ssram_lo_integ_err

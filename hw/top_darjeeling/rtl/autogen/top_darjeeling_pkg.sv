@@ -752,7 +752,7 @@ package top_darjeeling_pkg;
     TopDarjeelingIncomingAlertMioIdRvCoreIbexMioFatalHwErr = 28,
     TopDarjeelingIncomingAlertMioIdRvCoreIbexMioRecovHwErr = 29,
     TopDarjeelingIncomingAlertMioIdCount
-  } outgoing_alert_mio_id_e;
+  } incoming_alert_mio_id_e;
 
   // Number of mio incoming alerts
   parameter int unsigned NIncomingAlertsMio = 30;
@@ -794,7 +794,7 @@ package top_darjeeling_pkg;
     TopDarjeelingIncomingAlertPwcIdRvCoreIbexPwcFatalHwErr = 29,
     TopDarjeelingIncomingAlertPwcIdRvCoreIbexPwcRecovHwErr = 30,
     TopDarjeelingIncomingAlertPwcIdCount
-  } outgoing_alert_pwc_id_e;
+  } incoming_alert_pwc_id_e;
 
   // Number of pwc incoming alerts
   parameter int unsigned NIncomingAlertsPwc = 31;
@@ -802,101 +802,106 @@ package top_darjeeling_pkg;
   // Number of LPGs for incoming alert group pwc
   parameter int unsigned NIncomingLpgsPwc = 2;
 
-  // Enumeration of mio_extra_alerts incoming alerts
+  // Enumeration of mio_extra incoming alerts
   typedef enum int unsigned {
-    TopDarjeelingIncomingAlertMioExtraAlertsIdIntegError = 0,
-    TopDarjeelingIncomingAlertMioExtraAlertsIdCount
-  } outgoing_alert_mio_extra_alerts_id_e;
+    TopDarjeelingIncomingAlertMioExtraIdHdrIntegError = 0,
+    TopDarjeelingIncomingAlertMioExtraIdMioTlulPcieIntegError = 1,
+    TopDarjeelingIncomingAlertMioExtraIdCount
+  } incoming_alert_mio_extra_id_e;
 
-  // Number of mio_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsMio_extra_alerts = 1;
+  // Number of mio_extra incoming alerts
+  parameter int unsigned NIncomingAlertsMio_extra = 2;
 
-  // Number of LPGs for incoming alert group mio_extra_alerts
-  parameter int unsigned NIncomingLpgsMio_extra_alerts = 1;
+  // Number of LPGs for incoming alert group mio_extra
+  parameter int unsigned NIncomingLpgsMio_extra = 1;
 
-  // Enumeration of pwc_extra_alerts incoming alerts
+  // Enumeration of pwc_extra incoming alerts
   typedef enum int unsigned {
-    TopDarjeelingIncomingAlertPwcExtraAlertsIdIntegError = 0,
-    TopDarjeelingIncomingAlertPwcExtraAlertsIdCount
-  } outgoing_alert_pwc_extra_alerts_id_e;
+    TopDarjeelingIncomingAlertPwcExtraIdHdrIntegError = 0,
+    TopDarjeelingIncomingAlertPwcExtraIdDvfsHdrIntegError = 1,
+    TopDarjeelingIncomingAlertPwcExtraIdLteuHdrIntegError = 2,
+    TopDarjeelingIncomingAlertPwcExtraIdPwcBcastHdrIntegError = 3,
+    TopDarjeelingIncomingAlertPwcExtraIdPwcTlulPcieIntegError = 4,
+    TopDarjeelingIncomingAlertPwcExtraIdCount
+  } incoming_alert_pwc_extra_id_e;
 
-  // Number of pwc_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsPwc_extra_alerts = 1;
+  // Number of pwc_extra incoming alerts
+  parameter int unsigned NIncomingAlertsPwc_extra = 5;
 
-  // Number of LPGs for incoming alert group pwc_extra_alerts
-  parameter int unsigned NIncomingLpgsPwc_extra_alerts = 1;
+  // Number of LPGs for incoming alert group pwc_extra
+  parameter int unsigned NIncomingLpgsPwc_extra = 1;
 
-  // Enumeration of rot_extra_alerts incoming alerts
+  // Enumeration of rot_extra incoming alerts
   typedef enum int unsigned {
-    TopDarjeelingIncomingAlertRotExtraAlertsIdAmsIpWrapperIntegError = 0,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdAmsIpWrapperCsrngRecov = 1,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdRcWidgetIntegError = 2,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdRotHdrIntegError = 3,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdRotPcieAdapterIntegError = 4,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdRasCtlResetAlert = 5,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdScsRaiAlertTrigger = 6,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupAEscErr0 = 7,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupAEscErr1 = 8,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupAEscErr2 = 9,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupAEscErr3 = 10,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupBEscErr0 = 11,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupBEscErr1 = 12,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupBEscErr2 = 13,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupBEscErr3 = 14,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupCEscErr0 = 15,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupCEscErr1 = 16,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupCEscErr2 = 17,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupCEscErr3 = 18,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupDEscErr0 = 19,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupDEscErr1 = 20,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupDEscErr2 = 21,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupDEscErr3 = 22,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupATimerRstReq = 23,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupBTimerRstReq = 24,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupCTimerRstReq = 25,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdLsioGroupDTimerRstReq = 26,
-    TopDarjeelingIncomingAlertRotExtraAlertsIdCount
-  } outgoing_alert_rot_extra_alerts_id_e;
+    TopDarjeelingIncomingAlertRotExtraIdAmsIpWrapperIntegError = 0,
+    TopDarjeelingIncomingAlertRotExtraIdAmsIpWrapperCsrngRecov = 1,
+    TopDarjeelingIncomingAlertRotExtraIdRcWidgetIntegError = 2,
+    TopDarjeelingIncomingAlertRotExtraIdRotHdrIntegError = 3,
+    TopDarjeelingIncomingAlertRotExtraIdRotPcieAdapterIntegError = 4,
+    TopDarjeelingIncomingAlertRotExtraIdRasCtlResetAlert = 5,
+    TopDarjeelingIncomingAlertRotExtraIdScsRaiAlertTrigger = 6,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupAEscErr0 = 7,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupAEscErr1 = 8,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupAEscErr2 = 9,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupAEscErr3 = 10,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBEscErr0 = 11,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBEscErr1 = 12,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBEscErr2 = 13,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBEscErr3 = 14,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCEscErr0 = 15,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCEscErr1 = 16,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCEscErr2 = 17,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCEscErr3 = 18,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDEscErr0 = 19,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDEscErr1 = 20,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDEscErr2 = 21,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDEscErr3 = 22,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupATimerRstReq = 23,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBTimerRstReq = 24,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCTimerRstReq = 25,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDTimerRstReq = 26,
+    TopDarjeelingIncomingAlertRotExtraIdCount
+  } incoming_alert_rot_extra_id_e;
 
-  // Number of rot_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsRot_extra_alerts = 27;
+  // Number of rot_extra incoming alerts
+  parameter int unsigned NIncomingAlertsRot_extra = 27;
 
-  // Number of LPGs for incoming alert group rot_extra_alerts
-  parameter int unsigned NIncomingLpgsRot_extra_alerts = 1;
+  // Number of LPGs for incoming alert group rot_extra
+  parameter int unsigned NIncomingLpgsRot_extra = 1;
 
-  // Enumeration of other_extra_alerts incoming alerts
+  // Enumeration of other_extra incoming alerts
   typedef enum int unsigned {
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdSsramLoIntegErr = 0,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdSsramHiIntegErr = 1,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdScsifregsRaclCtrlFatalFault = 2,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdScsifregsRaclCtrlRecovCtrlUpdateErr = 3,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdScsifregsErr = 4,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdScsctnif0CtnAcRangeRecovErr = 5,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdScsctnif0CtnAcRangeFatalErr = 6,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdScsctnif0BcastAcRangeRecovErr = 7,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdScsctnif0BcastAcRangeFatalErr = 8,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdScsctnif1CtnAcRangeRecovErr = 9,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdScsctnif1CtnAcRangeFatalErr = 10,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdNsgrpRaclCtrlFatalFault = 11,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdNsgrpRaclCtrlRecovCtrlUpdateErr = 12,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdNsefuseBusIntegErr = 13,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdNsefusePrimFatalErr = 14,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdNsefusePrimRecovErr = 15,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdNsefuseApbAdapterIntegErr = 16,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdLioGroupVRaclCtrlFatalFault = 17,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdLioGroupVRaclCtrlRecovCtrlUpdateErr = 18,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdLioGroupVIntegError = 19,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdLioGroupPRaclCtrlFatalFault = 20,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdLioGroupPRaclCtrlRecovCtrlUpdateErr = 21,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdLioGroupPIntegError = 22,
-    TopDarjeelingIncomingAlertOtherExtraAlertsIdCount
-  } outgoing_alert_other_extra_alerts_id_e;
+    TopDarjeelingIncomingAlertOtherExtraIdSsramLoIntegErr = 0,
+    TopDarjeelingIncomingAlertOtherExtraIdSsramHiIntegErr = 1,
+    TopDarjeelingIncomingAlertOtherExtraIdScsifregsRaclCtrlFatalFault = 2,
+    TopDarjeelingIncomingAlertOtherExtraIdScsifregsRaclCtrlRecovCtrlUpdateErr = 3,
+    TopDarjeelingIncomingAlertOtherExtraIdScsifregsErr = 4,
+    TopDarjeelingIncomingAlertOtherExtraIdScsctnif0CtnAcRangeRecovErr = 5,
+    TopDarjeelingIncomingAlertOtherExtraIdScsctnif0CtnAcRangeFatalErr = 6,
+    TopDarjeelingIncomingAlertOtherExtraIdScsctnif0BcastAcRangeRecovErr = 7,
+    TopDarjeelingIncomingAlertOtherExtraIdScsctnif0BcastAcRangeFatalErr = 8,
+    TopDarjeelingIncomingAlertOtherExtraIdScsctnif1CtnAcRangeRecovErr = 9,
+    TopDarjeelingIncomingAlertOtherExtraIdScsctnif1CtnAcRangeFatalErr = 10,
+    TopDarjeelingIncomingAlertOtherExtraIdNsgrpRaclCtrlFatalFault = 11,
+    TopDarjeelingIncomingAlertOtherExtraIdNsgrpRaclCtrlRecovCtrlUpdateErr = 12,
+    TopDarjeelingIncomingAlertOtherExtraIdNsefuseBusIntegErr = 13,
+    TopDarjeelingIncomingAlertOtherExtraIdNsefusePrimFatalErr = 14,
+    TopDarjeelingIncomingAlertOtherExtraIdNsefusePrimRecovErr = 15,
+    TopDarjeelingIncomingAlertOtherExtraIdNsefuseApbAdapterIntegErr = 16,
+    TopDarjeelingIncomingAlertOtherExtraIdLioGroupVRaclCtrlFatalFault = 17,
+    TopDarjeelingIncomingAlertOtherExtraIdLioGroupVRaclCtrlRecovCtrlUpdateErr = 18,
+    TopDarjeelingIncomingAlertOtherExtraIdLioGroupVIntegError = 19,
+    TopDarjeelingIncomingAlertOtherExtraIdLioGroupPRaclCtrlFatalFault = 20,
+    TopDarjeelingIncomingAlertOtherExtraIdLioGroupPRaclCtrlRecovCtrlUpdateErr = 21,
+    TopDarjeelingIncomingAlertOtherExtraIdLioGroupPIntegError = 22,
+    TopDarjeelingIncomingAlertOtherExtraIdCount
+  } incoming_alert_other_extra_id_e;
 
-  // Number of other_extra_alerts incoming alerts
-  parameter int unsigned NIncomingAlertsOther_extra_alerts = 23;
+  // Number of other_extra incoming alerts
+  parameter int unsigned NIncomingAlertsOther_extra = 23;
 
-  // Number of LPGs for incoming alert group other_extra_alerts
-  parameter int unsigned NIncomingLpgsOther_extra_alerts = 1;
+  // Number of LPGs for incoming alert group other_extra
+  parameter int unsigned NIncomingLpgsOther_extra = 1;
 
   // Enumeration of interrupts
   typedef enum int unsigned {

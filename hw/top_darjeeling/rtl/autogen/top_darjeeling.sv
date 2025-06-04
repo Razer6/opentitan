@@ -316,29 +316,29 @@ module top_darjeeling #(
   input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsPwc-1:0]   incoming_lpg_cg_en_pwc_i,
   input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsPwc-1:0]   incoming_lpg_rst_en_pwc_i,
   
-  // Incoming alerts for group mio_extra_alerts
-  input  prim_alert_pkg::alert_tx_t [top_darjeeling_pkg::NIncomingAlertsMio_extra_alerts-1:0] incoming_alert_mio_extra_alerts_tx_i,
-  output prim_alert_pkg::alert_rx_t [top_darjeeling_pkg::NIncomingAlertsMio_extra_alerts-1:0] incoming_alert_mio_extra_alerts_rx_o,
-  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsMio_extra_alerts-1:0]   incoming_lpg_cg_en_mio_extra_alerts_i,
-  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsMio_extra_alerts-1:0]   incoming_lpg_rst_en_mio_extra_alerts_i,
+  // Incoming alerts for group mio_extra
+  input  prim_alert_pkg::alert_tx_t [top_darjeeling_pkg::NIncomingAlertsMio_extra-1:0] incoming_alert_mio_extra_tx_i,
+  output prim_alert_pkg::alert_rx_t [top_darjeeling_pkg::NIncomingAlertsMio_extra-1:0] incoming_alert_mio_extra_rx_o,
+  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsMio_extra-1:0]   incoming_lpg_cg_en_mio_extra_i,
+  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsMio_extra-1:0]   incoming_lpg_rst_en_mio_extra_i,
   
-  // Incoming alerts for group pwc_extra_alerts
-  input  prim_alert_pkg::alert_tx_t [top_darjeeling_pkg::NIncomingAlertsPwc_extra_alerts-1:0] incoming_alert_pwc_extra_alerts_tx_i,
-  output prim_alert_pkg::alert_rx_t [top_darjeeling_pkg::NIncomingAlertsPwc_extra_alerts-1:0] incoming_alert_pwc_extra_alerts_rx_o,
-  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsPwc_extra_alerts-1:0]   incoming_lpg_cg_en_pwc_extra_alerts_i,
-  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsPwc_extra_alerts-1:0]   incoming_lpg_rst_en_pwc_extra_alerts_i,
+  // Incoming alerts for group pwc_extra
+  input  prim_alert_pkg::alert_tx_t [top_darjeeling_pkg::NIncomingAlertsPwc_extra-1:0] incoming_alert_pwc_extra_tx_i,
+  output prim_alert_pkg::alert_rx_t [top_darjeeling_pkg::NIncomingAlertsPwc_extra-1:0] incoming_alert_pwc_extra_rx_o,
+  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsPwc_extra-1:0]   incoming_lpg_cg_en_pwc_extra_i,
+  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsPwc_extra-1:0]   incoming_lpg_rst_en_pwc_extra_i,
   
-  // Incoming alerts for group rot_extra_alerts
-  input  prim_alert_pkg::alert_tx_t [top_darjeeling_pkg::NIncomingAlertsRot_extra_alerts-1:0] incoming_alert_rot_extra_alerts_tx_i,
-  output prim_alert_pkg::alert_rx_t [top_darjeeling_pkg::NIncomingAlertsRot_extra_alerts-1:0] incoming_alert_rot_extra_alerts_rx_o,
-  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsRot_extra_alerts-1:0]   incoming_lpg_cg_en_rot_extra_alerts_i,
-  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsRot_extra_alerts-1:0]   incoming_lpg_rst_en_rot_extra_alerts_i,
+  // Incoming alerts for group rot_extra
+  input  prim_alert_pkg::alert_tx_t [top_darjeeling_pkg::NIncomingAlertsRot_extra-1:0] incoming_alert_rot_extra_tx_i,
+  output prim_alert_pkg::alert_rx_t [top_darjeeling_pkg::NIncomingAlertsRot_extra-1:0] incoming_alert_rot_extra_rx_o,
+  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsRot_extra-1:0]   incoming_lpg_cg_en_rot_extra_i,
+  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsRot_extra-1:0]   incoming_lpg_rst_en_rot_extra_i,
   
-  // Incoming alerts for group other_extra_alerts
-  input  prim_alert_pkg::alert_tx_t [top_darjeeling_pkg::NIncomingAlertsOther_extra_alerts-1:0] incoming_alert_other_extra_alerts_tx_i,
-  output prim_alert_pkg::alert_rx_t [top_darjeeling_pkg::NIncomingAlertsOther_extra_alerts-1:0] incoming_alert_other_extra_alerts_rx_o,
-  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsOther_extra_alerts-1:0]   incoming_lpg_cg_en_other_extra_alerts_i,
-  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsOther_extra_alerts-1:0]   incoming_lpg_rst_en_other_extra_alerts_i,
+  // Incoming alerts for group other_extra
+  input  prim_alert_pkg::alert_tx_t [top_darjeeling_pkg::NIncomingAlertsOther_extra-1:0] incoming_alert_other_extra_tx_i,
+  output prim_alert_pkg::alert_rx_t [top_darjeeling_pkg::NIncomingAlertsOther_extra-1:0] incoming_alert_other_extra_rx_o,
+  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsOther_extra-1:0]   incoming_lpg_cg_en_other_extra_i,
+  input  prim_mubi_pkg::mubi4_t     [top_darjeeling_pkg::NIncomingLpgsOther_extra-1:0]   incoming_lpg_rst_en_other_extra_i,
 
   // All clocks forwarded to ast
   output clkmgr_pkg::clkmgr_out_t clks_ast_o,
@@ -960,14 +960,14 @@ module top_darjeeling #(
   assign lpg_rst_en[20] = incoming_lpg_rst_en_pwc_i[0];
   assign lpg_cg_en[21] = incoming_lpg_cg_en_pwc_i[1];
   assign lpg_rst_en[21] = incoming_lpg_rst_en_pwc_i[1];
-  assign lpg_cg_en[22] = incoming_lpg_cg_en_mio_extra_alerts_i[0];
-  assign lpg_rst_en[22] = incoming_lpg_rst_en_mio_extra_alerts_i[0];
-  assign lpg_cg_en[23] = incoming_lpg_cg_en_pwc_extra_alerts_i[0];
-  assign lpg_rst_en[23] = incoming_lpg_rst_en_pwc_extra_alerts_i[0];
-  assign lpg_cg_en[24] = incoming_lpg_cg_en_rot_extra_alerts_i[0];
-  assign lpg_rst_en[24] = incoming_lpg_rst_en_rot_extra_alerts_i[0];
-  assign lpg_cg_en[25] = incoming_lpg_cg_en_other_extra_alerts_i[0];
-  assign lpg_rst_en[25] = incoming_lpg_rst_en_other_extra_alerts_i[0];
+  assign lpg_cg_en[22] = incoming_lpg_cg_en_mio_extra_i[0];
+  assign lpg_rst_en[22] = incoming_lpg_rst_en_mio_extra_i[0];
+  assign lpg_cg_en[23] = incoming_lpg_cg_en_pwc_extra_i[0];
+  assign lpg_rst_en[23] = incoming_lpg_rst_en_pwc_extra_i[0];
+  assign lpg_cg_en[24] = incoming_lpg_cg_en_rot_extra_i[0];
+  assign lpg_rst_en[24] = incoming_lpg_rst_en_rot_extra_i[0];
+  assign lpg_cg_en[25] = incoming_lpg_cg_en_other_extra_i[0];
+  assign lpg_rst_en[25] = incoming_lpg_rst_en_other_extra_i[0];
 
 
 // tie-off unused connections
@@ -2825,73 +2825,78 @@ module top_darjeeling #(
   assign alert_tx[134:104] = incoming_alert_pwc_tx_i;
   assign incoming_alert_pwc_rx_o = alert_rx[134:104];
 
-  // Alert mapping to the alert handler for alert group mio_extra_alerts
-  // [135]: integ_error
-  assign alert_tx[135:135] = incoming_alert_mio_extra_alerts_tx_i;
-  assign incoming_alert_mio_extra_alerts_rx_o = alert_rx[135:135];
+  // Alert mapping to the alert handler for alert group mio_extra
+  // [135]: hdr_integ_error
+  // [136]: mio_tlul_pcie_integ_error
+  assign alert_tx[136:135] = incoming_alert_mio_extra_tx_i;
+  assign incoming_alert_mio_extra_rx_o = alert_rx[136:135];
 
-  // Alert mapping to the alert handler for alert group pwc_extra_alerts
-  // [136]: integ_error
-  assign alert_tx[136:136] = incoming_alert_pwc_extra_alerts_tx_i;
-  assign incoming_alert_pwc_extra_alerts_rx_o = alert_rx[136:136];
+  // Alert mapping to the alert handler for alert group pwc_extra
+  // [137]: hdr_integ_error
+  // [138]: dvfs_hdr_integ_error
+  // [139]: lteu_hdr_integ_error
+  // [140]: pwc_bcast_hdr_integ_error
+  // [141]: pwc_tlul_pcie_integ_error
+  assign alert_tx[141:137] = incoming_alert_pwc_extra_tx_i;
+  assign incoming_alert_pwc_extra_rx_o = alert_rx[141:137];
 
-  // Alert mapping to the alert handler for alert group rot_extra_alerts
-  // [137]: ams_ip_wrapper_integ_error
-  // [138]: ams_ip_wrapper_csrng_recov
-  // [139]: rc_widget_integ_error
-  // [140]: rot_hdr_integ_error
-  // [141]: rot_pcie_adapter_integ_error
-  // [142]: ras_ctl_reset_alert
-  // [143]: scs_rai_alert_trigger
-  // [144]: lsio_group_a_esc_err_0
-  // [145]: lsio_group_a_esc_err_1
-  // [146]: lsio_group_a_esc_err_2
-  // [147]: lsio_group_a_esc_err_3
-  // [148]: lsio_group_b_esc_err_0
-  // [149]: lsio_group_b_esc_err_1
-  // [150]: lsio_group_b_esc_err_2
-  // [151]: lsio_group_b_esc_err_3
-  // [152]: lsio_group_c_esc_err_0
-  // [153]: lsio_group_c_esc_err_1
-  // [154]: lsio_group_c_esc_err_2
-  // [155]: lsio_group_c_esc_err_3
-  // [156]: lsio_group_d_esc_err_0
-  // [157]: lsio_group_d_esc_err_1
-  // [158]: lsio_group_d_esc_err_2
-  // [159]: lsio_group_d_esc_err_3
-  // [160]: lsio_group_a_timer_rst_req
-  // [161]: lsio_group_b_timer_rst_req
-  // [162]: lsio_group_c_timer_rst_req
-  // [163]: lsio_group_d_timer_rst_req
-  assign alert_tx[163:137] = incoming_alert_rot_extra_alerts_tx_i;
-  assign incoming_alert_rot_extra_alerts_rx_o = alert_rx[163:137];
+  // Alert mapping to the alert handler for alert group rot_extra
+  // [142]: ams_ip_wrapper_integ_error
+  // [143]: ams_ip_wrapper_csrng_recov
+  // [144]: rc_widget_integ_error
+  // [145]: rot_hdr_integ_error
+  // [146]: rot_pcie_adapter_integ_error
+  // [147]: ras_ctl_reset_alert
+  // [148]: scs_rai_alert_trigger
+  // [149]: lsio_group_a_esc_err_0
+  // [150]: lsio_group_a_esc_err_1
+  // [151]: lsio_group_a_esc_err_2
+  // [152]: lsio_group_a_esc_err_3
+  // [153]: lsio_group_b_esc_err_0
+  // [154]: lsio_group_b_esc_err_1
+  // [155]: lsio_group_b_esc_err_2
+  // [156]: lsio_group_b_esc_err_3
+  // [157]: lsio_group_c_esc_err_0
+  // [158]: lsio_group_c_esc_err_1
+  // [159]: lsio_group_c_esc_err_2
+  // [160]: lsio_group_c_esc_err_3
+  // [161]: lsio_group_d_esc_err_0
+  // [162]: lsio_group_d_esc_err_1
+  // [163]: lsio_group_d_esc_err_2
+  // [164]: lsio_group_d_esc_err_3
+  // [165]: lsio_group_a_timer_rst_req
+  // [166]: lsio_group_b_timer_rst_req
+  // [167]: lsio_group_c_timer_rst_req
+  // [168]: lsio_group_d_timer_rst_req
+  assign alert_tx[168:142] = incoming_alert_rot_extra_tx_i;
+  assign incoming_alert_rot_extra_rx_o = alert_rx[168:142];
 
-  // Alert mapping to the alert handler for alert group other_extra_alerts
-  // [164]: ssram_lo_integ_err
-  // [165]: ssram_hi_integ_err
-  // [166]: scsifregs_racl_ctrl_fatal_fault
-  // [167]: scsifregs_racl_ctrl_recov_ctrl_update_err
-  // [168]: scsifregs_err
-  // [169]: scsctnif0_ctn_ac_range_recov_err
-  // [170]: scsctnif0_ctn_ac_range_fatal_err
-  // [171]: scsctnif0_bcast_ac_range_recov_err
-  // [172]: scsctnif0_bcast_ac_range_fatal_err
-  // [173]: scsctnif1_ctn_ac_range_recov_err
-  // [174]: scsctnif1_ctn_ac_range_fatal_err
-  // [175]: nsgrp_racl_ctrl_fatal_fault
-  // [176]: nsgrp_racl_ctrl_recov_ctrl_update_err
-  // [177]: nsefuse_bus_integ_err
-  // [178]: nsefuse_prim_fatal_err
-  // [179]: nsefuse_prim_recov_err
-  // [180]: nsefuse_apb_adapter_integ_err
-  // [181]: lio_group_v_racl_ctrl_fatal_fault
-  // [182]: lio_group_v_racl_ctrl_recov_ctrl_update_err
-  // [183]: lio_group_v_integ_error
-  // [184]: lio_group_p_racl_ctrl_fatal_fault
-  // [185]: lio_group_p_racl_ctrl_recov_ctrl_update_err
-  // [186]: lio_group_p_integ_error
-  assign alert_tx[186:164] = incoming_alert_other_extra_alerts_tx_i;
-  assign incoming_alert_other_extra_alerts_rx_o = alert_rx[186:164];
+  // Alert mapping to the alert handler for alert group other_extra
+  // [169]: ssram_lo_integ_err
+  // [170]: ssram_hi_integ_err
+  // [171]: scsifregs_racl_ctrl_fatal_fault
+  // [172]: scsifregs_racl_ctrl_recov_ctrl_update_err
+  // [173]: scsifregs_err
+  // [174]: scsctnif0_ctn_ac_range_recov_err
+  // [175]: scsctnif0_ctn_ac_range_fatal_err
+  // [176]: scsctnif0_bcast_ac_range_recov_err
+  // [177]: scsctnif0_bcast_ac_range_fatal_err
+  // [178]: scsctnif1_ctn_ac_range_recov_err
+  // [179]: scsctnif1_ctn_ac_range_fatal_err
+  // [180]: nsgrp_racl_ctrl_fatal_fault
+  // [181]: nsgrp_racl_ctrl_recov_ctrl_update_err
+  // [182]: nsefuse_bus_integ_err
+  // [183]: nsefuse_prim_fatal_err
+  // [184]: nsefuse_prim_recov_err
+  // [185]: nsefuse_apb_adapter_integ_err
+  // [186]: lio_group_v_racl_ctrl_fatal_fault
+  // [187]: lio_group_v_racl_ctrl_recov_ctrl_update_err
+  // [188]: lio_group_v_integ_error
+  // [189]: lio_group_p_racl_ctrl_fatal_fault
+  // [190]: lio_group_p_racl_ctrl_recov_ctrl_update_err
+  // [191]: lio_group_p_integ_error
+  assign alert_tx[191:169] = incoming_alert_other_extra_tx_i;
+  assign incoming_alert_other_extra_rx_o = alert_rx[191:169];
 
   // interrupt assignments
   assign intr_vector = {

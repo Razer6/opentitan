@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 {
-    other_extra_alerts: [
+    other_extra: [
         // IDX 0
         {
             name: ssram_lo_integ_err
