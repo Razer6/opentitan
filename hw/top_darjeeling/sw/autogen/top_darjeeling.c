@@ -165,7 +165,6 @@ const top_darjeeling_alert_peripheral_t
   [kTopDarjeelingAlertIdIncomingRotExtraRotHdrIntegError] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraRotPcieAdapterIntegError] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraRasCtlResetAlert] = kTopDarjeelingAlertPeripheralExternal,
-  [kTopDarjeelingAlertIdIncomingRotExtraScsRaiAlertTrigger] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraLsioGroupAEscErr0] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraLsioGroupAEscErr1] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraLsioGroupAEscErr2] = kTopDarjeelingAlertPeripheralExternal,
@@ -209,6 +208,7 @@ const top_darjeeling_alert_peripheral_t
   [kTopDarjeelingAlertIdIncomingOtherExtraLioGroupPRaclCtrlFatalFault] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingOtherExtraLioGroupPRaclCtrlRecovCtrlUpdateErr] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingOtherExtraLioGroupPIntegError] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingOtherExtraScsraiIntegError] = kTopDarjeelingAlertPeripheralExternal,
 };
 
 /**

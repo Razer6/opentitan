@@ -234,5 +234,15 @@
             width: 1
             lpg_idx: 0
         }
+        // IDX 23
+        {
+            name: scsrai_integ_error
+            module_name: scsrai
+            index: 23
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
     ]
 }

@@ -839,32 +839,31 @@ package top_darjeeling_pkg;
     TopDarjeelingIncomingAlertRotExtraIdRotHdrIntegError = 3,
     TopDarjeelingIncomingAlertRotExtraIdRotPcieAdapterIntegError = 4,
     TopDarjeelingIncomingAlertRotExtraIdRasCtlResetAlert = 5,
-    TopDarjeelingIncomingAlertRotExtraIdScsRaiAlertTrigger = 6,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupAEscErr0 = 7,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupAEscErr1 = 8,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupAEscErr2 = 9,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupAEscErr3 = 10,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBEscErr0 = 11,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBEscErr1 = 12,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBEscErr2 = 13,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBEscErr3 = 14,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCEscErr0 = 15,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCEscErr1 = 16,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCEscErr2 = 17,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCEscErr3 = 18,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDEscErr0 = 19,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDEscErr1 = 20,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDEscErr2 = 21,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDEscErr3 = 22,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupATimerRstReq = 23,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBTimerRstReq = 24,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCTimerRstReq = 25,
-    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDTimerRstReq = 26,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupAEscErr0 = 6,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupAEscErr1 = 7,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupAEscErr2 = 8,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupAEscErr3 = 9,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBEscErr0 = 10,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBEscErr1 = 11,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBEscErr2 = 12,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBEscErr3 = 13,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCEscErr0 = 14,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCEscErr1 = 15,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCEscErr2 = 16,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCEscErr3 = 17,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDEscErr0 = 18,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDEscErr1 = 19,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDEscErr2 = 20,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDEscErr3 = 21,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupATimerRstReq = 22,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupBTimerRstReq = 23,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupCTimerRstReq = 24,
+    TopDarjeelingIncomingAlertRotExtraIdLsioGroupDTimerRstReq = 25,
     TopDarjeelingIncomingAlertRotExtraIdCount
   } incoming_alert_rot_extra_id_e;
 
   // Number of rot_extra incoming alerts
-  parameter int unsigned NIncomingAlertsRot_extra = 27;
+  parameter int unsigned NIncomingAlertsRot_extra = 26;
 
   // Number of LPGs for incoming alert group rot_extra
   parameter int unsigned NIncomingLpgsRot_extra = 1;
@@ -894,11 +893,12 @@ package top_darjeeling_pkg;
     TopDarjeelingIncomingAlertOtherExtraIdLioGroupPRaclCtrlFatalFault = 20,
     TopDarjeelingIncomingAlertOtherExtraIdLioGroupPRaclCtrlRecovCtrlUpdateErr = 21,
     TopDarjeelingIncomingAlertOtherExtraIdLioGroupPIntegError = 22,
+    TopDarjeelingIncomingAlertOtherExtraIdScsraiIntegError = 23,
     TopDarjeelingIncomingAlertOtherExtraIdCount
   } incoming_alert_other_extra_id_e;
 
   // Number of other_extra incoming alerts
-  parameter int unsigned NIncomingAlertsOther_extra = 23;
+  parameter int unsigned NIncomingAlertsOther_extra = 24;
 
   // Number of LPGs for incoming alert group other_extra
   parameter int unsigned NIncomingLpgsOther_extra = 1;

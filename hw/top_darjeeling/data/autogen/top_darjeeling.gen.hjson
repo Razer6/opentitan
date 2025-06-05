@@ -18227,18 +18227,9 @@
         lpg_idx: 0
       }
       {
-        name: scs_rai_alert_trigger
-        module_name: scs_rai
-        index: 6
-        type: alert
-        async: 1
-        width: 1
-        lpg_idx: 0
-      }
-      {
         name: lsio_group_a_esc_err_0
         module_name: lsio_group_a
-        index: 7
+        index: 6
         type: alert
         async: 1
         width: 1
@@ -18247,7 +18238,7 @@
       {
         name: lsio_group_a_esc_err_1
         module_name: lsio_group_a
-        index: 8
+        index: 7
         type: alert
         async: 1
         width: 1
@@ -18256,7 +18247,7 @@
       {
         name: lsio_group_a_esc_err_2
         module_name: lsio_group_a
-        index: 9
+        index: 8
         type: alert
         async: 1
         width: 1
@@ -18265,7 +18256,7 @@
       {
         name: lsio_group_a_esc_err_3
         module_name: lsio_group_a
-        index: 10
+        index: 9
         type: alert
         async: 1
         width: 1
@@ -18274,7 +18265,7 @@
       {
         name: lsio_group_b_esc_err_0
         module_name: lsio_group_b
-        index: 11
+        index: 10
         type: alert
         async: 1
         width: 1
@@ -18283,7 +18274,7 @@
       {
         name: lsio_group_b_esc_err_1
         module_name: lsio_group_b
-        index: 12
+        index: 11
         type: alert
         async: 1
         width: 1
@@ -18292,7 +18283,7 @@
       {
         name: lsio_group_b_esc_err_2
         module_name: lsio_group_b
-        index: 13
+        index: 12
         type: alert
         async: 1
         width: 1
@@ -18301,7 +18292,7 @@
       {
         name: lsio_group_b_esc_err_3
         module_name: lsio_group_b
-        index: 14
+        index: 13
         type: alert
         async: 1
         width: 1
@@ -18310,7 +18301,7 @@
       {
         name: lsio_group_c_esc_err_0
         module_name: lsio_group_c
-        index: 15
+        index: 14
         type: alert
         async: 1
         width: 1
@@ -18319,7 +18310,7 @@
       {
         name: lsio_group_c_esc_err_1
         module_name: lsio_group_c
-        index: 16
+        index: 15
         type: alert
         async: 1
         width: 1
@@ -18328,7 +18319,7 @@
       {
         name: lsio_group_c_esc_err_2
         module_name: lsio_group_c
-        index: 17
+        index: 16
         type: alert
         async: 1
         width: 1
@@ -18337,7 +18328,7 @@
       {
         name: lsio_group_c_esc_err_3
         module_name: lsio_group_c
-        index: 18
+        index: 17
         type: alert
         async: 1
         width: 1
@@ -18346,7 +18337,7 @@
       {
         name: lsio_group_d_esc_err_0
         module_name: lsio_group_d
-        index: 19
+        index: 18
         type: alert
         async: 1
         width: 1
@@ -18355,7 +18346,7 @@
       {
         name: lsio_group_d_esc_err_1
         module_name: lsio_group_d
-        index: 20
+        index: 19
         type: alert
         async: 1
         width: 1
@@ -18364,7 +18355,7 @@
       {
         name: lsio_group_d_esc_err_2
         module_name: lsio_group_d
-        index: 21
+        index: 20
         type: alert
         async: 1
         width: 1
@@ -18373,7 +18364,7 @@
       {
         name: lsio_group_d_esc_err_3
         module_name: lsio_group_d
-        index: 22
+        index: 21
         type: alert
         async: 1
         width: 1
@@ -18382,7 +18373,7 @@
       {
         name: lsio_group_a_timer_rst_req
         module_name: lsio_group_a_timer
-        index: 23
+        index: 22
         type: alert
         async: 1
         width: 1
@@ -18391,7 +18382,7 @@
       {
         name: lsio_group_b_timer_rst_req
         module_name: lsio_group_b_timer
-        index: 24
+        index: 23
         type: alert
         async: 1
         width: 1
@@ -18400,7 +18391,7 @@
       {
         name: lsio_group_c_timer_rst_req
         module_name: lsio_group_c_timer
-        index: 25
+        index: 24
         type: alert
         async: 1
         width: 1
@@ -18409,7 +18400,7 @@
       {
         name: lsio_group_d_timer_rst_req
         module_name: lsio_group_d_timer
-        index: 26
+        index: 25
         type: alert
         async: 1
         width: 1
@@ -18620,6 +18611,15 @@
         name: lio_group_p_integ_error
         module_name: lio_group_p
         index: 22
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+      {
+        name: scsrai_integ_error
+        module_name: scsrai
+        index: 23
         type: alert
         async: 1
         width: 1

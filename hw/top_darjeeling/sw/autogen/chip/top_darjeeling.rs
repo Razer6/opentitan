@@ -2183,94 +2183,94 @@ pub enum AlertId {
     IncomingRotExtraRotPcieAdapterIntegError = 146,
     /// incoming_rot_extra_ras_ctl_reset_alert
     IncomingRotExtraRasCtlResetAlert = 147,
-    /// incoming_rot_extra_scs_rai_alert_trigger
-    IncomingRotExtraScsRaiAlertTrigger = 148,
     /// incoming_rot_extra_lsio_group_a_esc_err_0
-    IncomingRotExtraLsioGroupAEscErr0 = 149,
+    IncomingRotExtraLsioGroupAEscErr0 = 148,
     /// incoming_rot_extra_lsio_group_a_esc_err_1
-    IncomingRotExtraLsioGroupAEscErr1 = 150,
+    IncomingRotExtraLsioGroupAEscErr1 = 149,
     /// incoming_rot_extra_lsio_group_a_esc_err_2
-    IncomingRotExtraLsioGroupAEscErr2 = 151,
+    IncomingRotExtraLsioGroupAEscErr2 = 150,
     /// incoming_rot_extra_lsio_group_a_esc_err_3
-    IncomingRotExtraLsioGroupAEscErr3 = 152,
+    IncomingRotExtraLsioGroupAEscErr3 = 151,
     /// incoming_rot_extra_lsio_group_b_esc_err_0
-    IncomingRotExtraLsioGroupBEscErr0 = 153,
+    IncomingRotExtraLsioGroupBEscErr0 = 152,
     /// incoming_rot_extra_lsio_group_b_esc_err_1
-    IncomingRotExtraLsioGroupBEscErr1 = 154,
+    IncomingRotExtraLsioGroupBEscErr1 = 153,
     /// incoming_rot_extra_lsio_group_b_esc_err_2
-    IncomingRotExtraLsioGroupBEscErr2 = 155,
+    IncomingRotExtraLsioGroupBEscErr2 = 154,
     /// incoming_rot_extra_lsio_group_b_esc_err_3
-    IncomingRotExtraLsioGroupBEscErr3 = 156,
+    IncomingRotExtraLsioGroupBEscErr3 = 155,
     /// incoming_rot_extra_lsio_group_c_esc_err_0
-    IncomingRotExtraLsioGroupCEscErr0 = 157,
+    IncomingRotExtraLsioGroupCEscErr0 = 156,
     /// incoming_rot_extra_lsio_group_c_esc_err_1
-    IncomingRotExtraLsioGroupCEscErr1 = 158,
+    IncomingRotExtraLsioGroupCEscErr1 = 157,
     /// incoming_rot_extra_lsio_group_c_esc_err_2
-    IncomingRotExtraLsioGroupCEscErr2 = 159,
+    IncomingRotExtraLsioGroupCEscErr2 = 158,
     /// incoming_rot_extra_lsio_group_c_esc_err_3
-    IncomingRotExtraLsioGroupCEscErr3 = 160,
+    IncomingRotExtraLsioGroupCEscErr3 = 159,
     /// incoming_rot_extra_lsio_group_d_esc_err_0
-    IncomingRotExtraLsioGroupDEscErr0 = 161,
+    IncomingRotExtraLsioGroupDEscErr0 = 160,
     /// incoming_rot_extra_lsio_group_d_esc_err_1
-    IncomingRotExtraLsioGroupDEscErr1 = 162,
+    IncomingRotExtraLsioGroupDEscErr1 = 161,
     /// incoming_rot_extra_lsio_group_d_esc_err_2
-    IncomingRotExtraLsioGroupDEscErr2 = 163,
+    IncomingRotExtraLsioGroupDEscErr2 = 162,
     /// incoming_rot_extra_lsio_group_d_esc_err_3
-    IncomingRotExtraLsioGroupDEscErr3 = 164,
+    IncomingRotExtraLsioGroupDEscErr3 = 163,
     /// incoming_rot_extra_lsio_group_a_timer_rst_req
-    IncomingRotExtraLsioGroupATimerRstReq = 165,
+    IncomingRotExtraLsioGroupATimerRstReq = 164,
     /// incoming_rot_extra_lsio_group_b_timer_rst_req
-    IncomingRotExtraLsioGroupBTimerRstReq = 166,
+    IncomingRotExtraLsioGroupBTimerRstReq = 165,
     /// incoming_rot_extra_lsio_group_c_timer_rst_req
-    IncomingRotExtraLsioGroupCTimerRstReq = 167,
+    IncomingRotExtraLsioGroupCTimerRstReq = 166,
     /// incoming_rot_extra_lsio_group_d_timer_rst_req
-    IncomingRotExtraLsioGroupDTimerRstReq = 168,
+    IncomingRotExtraLsioGroupDTimerRstReq = 167,
     /// incoming_other_extra_ssram_lo_integ_err
-    IncomingOtherExtraSsramLoIntegErr = 169,
+    IncomingOtherExtraSsramLoIntegErr = 168,
     /// incoming_other_extra_ssram_hi_integ_err
-    IncomingOtherExtraSsramHiIntegErr = 170,
+    IncomingOtherExtraSsramHiIntegErr = 169,
     /// incoming_other_extra_scsifregs_racl_ctrl_fatal_fault
-    IncomingOtherExtraScsifregsRaclCtrlFatalFault = 171,
+    IncomingOtherExtraScsifregsRaclCtrlFatalFault = 170,
     /// incoming_other_extra_scsifregs_racl_ctrl_recov_ctrl_update_err
-    IncomingOtherExtraScsifregsRaclCtrlRecovCtrlUpdateErr = 172,
+    IncomingOtherExtraScsifregsRaclCtrlRecovCtrlUpdateErr = 171,
     /// incoming_other_extra_scsifregs_err
-    IncomingOtherExtraScsifregsErr = 173,
+    IncomingOtherExtraScsifregsErr = 172,
     /// incoming_other_extra_scsctnif0_ctn_ac_range_recov_err
-    IncomingOtherExtraScsctnif0CtnAcRangeRecovErr = 174,
+    IncomingOtherExtraScsctnif0CtnAcRangeRecovErr = 173,
     /// incoming_other_extra_scsctnif0_ctn_ac_range_fatal_err
-    IncomingOtherExtraScsctnif0CtnAcRangeFatalErr = 175,
+    IncomingOtherExtraScsctnif0CtnAcRangeFatalErr = 174,
     /// incoming_other_extra_scsctnif0_bcast_ac_range_recov_err_scsctnif0_ctn
-    IncomingOtherExtraScsctnif0BcastAcRangeRecovErrScsctnif0Ctn = 176,
+    IncomingOtherExtraScsctnif0BcastAcRangeRecovErrScsctnif0Ctn = 175,
     /// incoming_other_extra_scsctnif0_bcast_ac_range_fatal_err_scsctnif0_ctn
-    IncomingOtherExtraScsctnif0BcastAcRangeFatalErrScsctnif0Ctn = 177,
+    IncomingOtherExtraScsctnif0BcastAcRangeFatalErrScsctnif0Ctn = 176,
     /// incoming_other_extra_scsctnif1_ctn_ac_range_recov_err
-    IncomingOtherExtraScsctnif1CtnAcRangeRecovErr = 178,
+    IncomingOtherExtraScsctnif1CtnAcRangeRecovErr = 177,
     /// incoming_other_extra_scsctnif1_ctn_ac_range_fatal_err
-    IncomingOtherExtraScsctnif1CtnAcRangeFatalErr = 179,
+    IncomingOtherExtraScsctnif1CtnAcRangeFatalErr = 178,
     /// incoming_other_extra_nsgrp_racl_ctrl_fatal_fault
-    IncomingOtherExtraNsgrpRaclCtrlFatalFault = 180,
+    IncomingOtherExtraNsgrpRaclCtrlFatalFault = 179,
     /// incoming_other_extra_nsgrp_racl_ctrl_recov_ctrl_update_err
-    IncomingOtherExtraNsgrpRaclCtrlRecovCtrlUpdateErr = 181,
+    IncomingOtherExtraNsgrpRaclCtrlRecovCtrlUpdateErr = 180,
     /// incoming_other_extra_nsefuse_bus_integ_err
-    IncomingOtherExtraNsefuseBusIntegErr = 182,
+    IncomingOtherExtraNsefuseBusIntegErr = 181,
     /// incoming_other_extra_nsefuse_prim_fatal_err
-    IncomingOtherExtraNsefusePrimFatalErr = 183,
+    IncomingOtherExtraNsefusePrimFatalErr = 182,
     /// incoming_other_extra_nsefuse_prim_recov_err
-    IncomingOtherExtraNsefusePrimRecovErr = 184,
+    IncomingOtherExtraNsefusePrimRecovErr = 183,
     /// incoming_other_extra_nsefuse_apb_adapter_integ_err
-    IncomingOtherExtraNsefuseApbAdapterIntegErr = 185,
+    IncomingOtherExtraNsefuseApbAdapterIntegErr = 184,
     /// incoming_other_extra_lio_group_v_racl_ctrl_fatal_fault
-    IncomingOtherExtraLioGroupVRaclCtrlFatalFault = 186,
+    IncomingOtherExtraLioGroupVRaclCtrlFatalFault = 185,
     /// incoming_other_extra_lio_group_v_racl_ctrl_recov_ctrl_update_err
-    IncomingOtherExtraLioGroupVRaclCtrlRecovCtrlUpdateErr = 187,
+    IncomingOtherExtraLioGroupVRaclCtrlRecovCtrlUpdateErr = 186,
     /// incoming_other_extra_lio_group_v_integ_error
-    IncomingOtherExtraLioGroupVIntegError = 188,
+    IncomingOtherExtraLioGroupVIntegError = 187,
     /// incoming_other_extra_lio_group_p_racl_ctrl_fatal_fault
-    IncomingOtherExtraLioGroupPRaclCtrlFatalFault = 189,
+    IncomingOtherExtraLioGroupPRaclCtrlFatalFault = 188,
     /// incoming_other_extra_lio_group_p_racl_ctrl_recov_ctrl_update_err
-    IncomingOtherExtraLioGroupPRaclCtrlRecovCtrlUpdateErr = 190,
+    IncomingOtherExtraLioGroupPRaclCtrlRecovCtrlUpdateErr = 189,
     /// incoming_other_extra_lio_group_p_integ_error
-    IncomingOtherExtraLioGroupPIntegError = 191,
+    IncomingOtherExtraLioGroupPIntegError = 190,
+    /// incoming_other_extra_scsrai_integ_error
+    IncomingOtherExtraScsraiIntegError = 191,
 }
 
 impl TryFrom<u32> for AlertId {
@@ -2425,50 +2425,50 @@ impl TryFrom<u32> for AlertId {
             145 => Ok(Self::IncomingRotExtraRotHdrIntegError),
             146 => Ok(Self::IncomingRotExtraRotPcieAdapterIntegError),
             147 => Ok(Self::IncomingRotExtraRasCtlResetAlert),
-            148 => Ok(Self::IncomingRotExtraScsRaiAlertTrigger),
-            149 => Ok(Self::IncomingRotExtraLsioGroupAEscErr0),
-            150 => Ok(Self::IncomingRotExtraLsioGroupAEscErr1),
-            151 => Ok(Self::IncomingRotExtraLsioGroupAEscErr2),
-            152 => Ok(Self::IncomingRotExtraLsioGroupAEscErr3),
-            153 => Ok(Self::IncomingRotExtraLsioGroupBEscErr0),
-            154 => Ok(Self::IncomingRotExtraLsioGroupBEscErr1),
-            155 => Ok(Self::IncomingRotExtraLsioGroupBEscErr2),
-            156 => Ok(Self::IncomingRotExtraLsioGroupBEscErr3),
-            157 => Ok(Self::IncomingRotExtraLsioGroupCEscErr0),
-            158 => Ok(Self::IncomingRotExtraLsioGroupCEscErr1),
-            159 => Ok(Self::IncomingRotExtraLsioGroupCEscErr2),
-            160 => Ok(Self::IncomingRotExtraLsioGroupCEscErr3),
-            161 => Ok(Self::IncomingRotExtraLsioGroupDEscErr0),
-            162 => Ok(Self::IncomingRotExtraLsioGroupDEscErr1),
-            163 => Ok(Self::IncomingRotExtraLsioGroupDEscErr2),
-            164 => Ok(Self::IncomingRotExtraLsioGroupDEscErr3),
-            165 => Ok(Self::IncomingRotExtraLsioGroupATimerRstReq),
-            166 => Ok(Self::IncomingRotExtraLsioGroupBTimerRstReq),
-            167 => Ok(Self::IncomingRotExtraLsioGroupCTimerRstReq),
-            168 => Ok(Self::IncomingRotExtraLsioGroupDTimerRstReq),
-            169 => Ok(Self::IncomingOtherExtraSsramLoIntegErr),
-            170 => Ok(Self::IncomingOtherExtraSsramHiIntegErr),
-            171 => Ok(Self::IncomingOtherExtraScsifregsRaclCtrlFatalFault),
-            172 => Ok(Self::IncomingOtherExtraScsifregsRaclCtrlRecovCtrlUpdateErr),
-            173 => Ok(Self::IncomingOtherExtraScsifregsErr),
-            174 => Ok(Self::IncomingOtherExtraScsctnif0CtnAcRangeRecovErr),
-            175 => Ok(Self::IncomingOtherExtraScsctnif0CtnAcRangeFatalErr),
-            176 => Ok(Self::IncomingOtherExtraScsctnif0BcastAcRangeRecovErrScsctnif0Ctn),
-            177 => Ok(Self::IncomingOtherExtraScsctnif0BcastAcRangeFatalErrScsctnif0Ctn),
-            178 => Ok(Self::IncomingOtherExtraScsctnif1CtnAcRangeRecovErr),
-            179 => Ok(Self::IncomingOtherExtraScsctnif1CtnAcRangeFatalErr),
-            180 => Ok(Self::IncomingOtherExtraNsgrpRaclCtrlFatalFault),
-            181 => Ok(Self::IncomingOtherExtraNsgrpRaclCtrlRecovCtrlUpdateErr),
-            182 => Ok(Self::IncomingOtherExtraNsefuseBusIntegErr),
-            183 => Ok(Self::IncomingOtherExtraNsefusePrimFatalErr),
-            184 => Ok(Self::IncomingOtherExtraNsefusePrimRecovErr),
-            185 => Ok(Self::IncomingOtherExtraNsefuseApbAdapterIntegErr),
-            186 => Ok(Self::IncomingOtherExtraLioGroupVRaclCtrlFatalFault),
-            187 => Ok(Self::IncomingOtherExtraLioGroupVRaclCtrlRecovCtrlUpdateErr),
-            188 => Ok(Self::IncomingOtherExtraLioGroupVIntegError),
-            189 => Ok(Self::IncomingOtherExtraLioGroupPRaclCtrlFatalFault),
-            190 => Ok(Self::IncomingOtherExtraLioGroupPRaclCtrlRecovCtrlUpdateErr),
-            191 => Ok(Self::IncomingOtherExtraLioGroupPIntegError),
+            148 => Ok(Self::IncomingRotExtraLsioGroupAEscErr0),
+            149 => Ok(Self::IncomingRotExtraLsioGroupAEscErr1),
+            150 => Ok(Self::IncomingRotExtraLsioGroupAEscErr2),
+            151 => Ok(Self::IncomingRotExtraLsioGroupAEscErr3),
+            152 => Ok(Self::IncomingRotExtraLsioGroupBEscErr0),
+            153 => Ok(Self::IncomingRotExtraLsioGroupBEscErr1),
+            154 => Ok(Self::IncomingRotExtraLsioGroupBEscErr2),
+            155 => Ok(Self::IncomingRotExtraLsioGroupBEscErr3),
+            156 => Ok(Self::IncomingRotExtraLsioGroupCEscErr0),
+            157 => Ok(Self::IncomingRotExtraLsioGroupCEscErr1),
+            158 => Ok(Self::IncomingRotExtraLsioGroupCEscErr2),
+            159 => Ok(Self::IncomingRotExtraLsioGroupCEscErr3),
+            160 => Ok(Self::IncomingRotExtraLsioGroupDEscErr0),
+            161 => Ok(Self::IncomingRotExtraLsioGroupDEscErr1),
+            162 => Ok(Self::IncomingRotExtraLsioGroupDEscErr2),
+            163 => Ok(Self::IncomingRotExtraLsioGroupDEscErr3),
+            164 => Ok(Self::IncomingRotExtraLsioGroupATimerRstReq),
+            165 => Ok(Self::IncomingRotExtraLsioGroupBTimerRstReq),
+            166 => Ok(Self::IncomingRotExtraLsioGroupCTimerRstReq),
+            167 => Ok(Self::IncomingRotExtraLsioGroupDTimerRstReq),
+            168 => Ok(Self::IncomingOtherExtraSsramLoIntegErr),
+            169 => Ok(Self::IncomingOtherExtraSsramHiIntegErr),
+            170 => Ok(Self::IncomingOtherExtraScsifregsRaclCtrlFatalFault),
+            171 => Ok(Self::IncomingOtherExtraScsifregsRaclCtrlRecovCtrlUpdateErr),
+            172 => Ok(Self::IncomingOtherExtraScsifregsErr),
+            173 => Ok(Self::IncomingOtherExtraScsctnif0CtnAcRangeRecovErr),
+            174 => Ok(Self::IncomingOtherExtraScsctnif0CtnAcRangeFatalErr),
+            175 => Ok(Self::IncomingOtherExtraScsctnif0BcastAcRangeRecovErrScsctnif0Ctn),
+            176 => Ok(Self::IncomingOtherExtraScsctnif0BcastAcRangeFatalErrScsctnif0Ctn),
+            177 => Ok(Self::IncomingOtherExtraScsctnif1CtnAcRangeRecovErr),
+            178 => Ok(Self::IncomingOtherExtraScsctnif1CtnAcRangeFatalErr),
+            179 => Ok(Self::IncomingOtherExtraNsgrpRaclCtrlFatalFault),
+            180 => Ok(Self::IncomingOtherExtraNsgrpRaclCtrlRecovCtrlUpdateErr),
+            181 => Ok(Self::IncomingOtherExtraNsefuseBusIntegErr),
+            182 => Ok(Self::IncomingOtherExtraNsefusePrimFatalErr),
+            183 => Ok(Self::IncomingOtherExtraNsefusePrimRecovErr),
+            184 => Ok(Self::IncomingOtherExtraNsefuseApbAdapterIntegErr),
+            185 => Ok(Self::IncomingOtherExtraLioGroupVRaclCtrlFatalFault),
+            186 => Ok(Self::IncomingOtherExtraLioGroupVRaclCtrlRecovCtrlUpdateErr),
+            187 => Ok(Self::IncomingOtherExtraLioGroupVIntegError),
+            188 => Ok(Self::IncomingOtherExtraLioGroupPRaclCtrlFatalFault),
+            189 => Ok(Self::IncomingOtherExtraLioGroupPRaclCtrlRecovCtrlUpdateErr),
+            190 => Ok(Self::IncomingOtherExtraLioGroupPIntegError),
+            191 => Ok(Self::IncomingOtherExtraScsraiIntegError),
             _ => Err(val),
         }
     }
@@ -2775,8 +2775,6 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 192] = [
     AlertPeripheral::External,
     // IncomingRotExtraRasCtlResetAlert -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingRotExtraScsRaiAlertTrigger -> AlertPeripheral::External
-    AlertPeripheral::External,
     // IncomingRotExtraLsioGroupAEscErr0 -> AlertPeripheral::External
     AlertPeripheral::External,
     // IncomingRotExtraLsioGroupAEscErr1 -> AlertPeripheral::External
@@ -2862,6 +2860,8 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 192] = [
     // IncomingOtherExtraLioGroupPRaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::External
     AlertPeripheral::External,
     // IncomingOtherExtraLioGroupPIntegError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingOtherExtraScsraiIntegError -> AlertPeripheral::External
     AlertPeripheral::External,
 ];
 
