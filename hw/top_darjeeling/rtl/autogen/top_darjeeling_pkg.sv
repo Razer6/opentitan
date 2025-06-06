@@ -889,16 +889,17 @@ package top_darjeeling_pkg;
     TopDarjeelingIncomingAlertOtherExtraIdNsefuseApbAdapterIntegErr = 16,
     TopDarjeelingIncomingAlertOtherExtraIdLioGroupVRaclCtrlFatalFault = 17,
     TopDarjeelingIncomingAlertOtherExtraIdLioGroupVRaclCtrlRecovCtrlUpdateErr = 18,
-    TopDarjeelingIncomingAlertOtherExtraIdLioGroupVIntegError = 19,
-    TopDarjeelingIncomingAlertOtherExtraIdLioGroupPRaclCtrlFatalFault = 20,
-    TopDarjeelingIncomingAlertOtherExtraIdLioGroupPRaclCtrlRecovCtrlUpdateErr = 21,
-    TopDarjeelingIncomingAlertOtherExtraIdLioGroupPIntegError = 22,
-    TopDarjeelingIncomingAlertOtherExtraIdScsraiIntegError = 23,
+    TopDarjeelingIncomingAlertOtherExtraIdLioGroupVHdrIntegError = 19,
+    TopDarjeelingIncomingAlertOtherExtraIdLioGroupVHdrAvsError = 20,
+    TopDarjeelingIncomingAlertOtherExtraIdLioGroupPRaclCtrlFatalFault = 21,
+    TopDarjeelingIncomingAlertOtherExtraIdLioGroupPRaclCtrlRecovCtrlUpdateErr = 22,
+    TopDarjeelingIncomingAlertOtherExtraIdLioGroupPIntegError = 23,
+    TopDarjeelingIncomingAlertOtherExtraIdScsraiIntegError = 24,
     TopDarjeelingIncomingAlertOtherExtraIdCount
   } incoming_alert_other_extra_id_e;
 
   // Number of other_extra incoming alerts
-  parameter int unsigned NIncomingAlertsOther_extra = 24;
+  parameter int unsigned NIncomingAlertsOther_extra = 25;
 
   // Number of LPGs for incoming alert group other_extra
   parameter int unsigned NIncomingLpgsOther_extra = 1;

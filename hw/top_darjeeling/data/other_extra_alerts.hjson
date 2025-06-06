@@ -196,7 +196,7 @@
         }
         // IDX 19
         {
-            name: lio_group_v_integ_error
+            name: lio_group_v_hdr_integ_error
             module_name: lio_group_v
             index: 19
             type: alert
@@ -206,8 +206,8 @@
         }
         // IDX 20
         {
-            name: lio_group_p_racl_ctrl_fatal_fault
-            module_name: lio_group_p_racl_ctrl
+            name: lio_group_v_hdr_avs_error
+            module_name: lio_group_v
             index: 20
             type: alert
             async: 1
@@ -216,7 +216,7 @@
         }
         // IDX 21
         {
-            name: lio_group_p_racl_ctrl_recov_ctrl_update_err
+            name: lio_group_p_racl_ctrl_fatal_fault
             module_name: lio_group_p_racl_ctrl
             index: 21
             type: alert
@@ -226,9 +226,19 @@
         }
         // IDX 22
         {
+            name: lio_group_p_racl_ctrl_recov_ctrl_update_err
+            module_name: lio_group_p_racl_ctrl
+            index: 22
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
+        // IDX 23
+        {
             name: lio_group_p_integ_error
             module_name: lio_group_p
-            index: 22
+            index: 23
             type: alert
             async: 1
             width: 1

@@ -1502,12 +1502,13 @@ typedef enum top_darjeeling_alert_id {
   kTopDarjeelingAlertIdIncomingOtherExtraNsefuseApbAdapterIntegErr = 184, /**< incoming_other_extra_nsefuse_apb_adapter_integ_err */
   kTopDarjeelingAlertIdIncomingOtherExtraLioGroupVRaclCtrlFatalFault = 185, /**< incoming_other_extra_lio_group_v_racl_ctrl_fatal_fault */
   kTopDarjeelingAlertIdIncomingOtherExtraLioGroupVRaclCtrlRecovCtrlUpdateErr = 186, /**< incoming_other_extra_lio_group_v_racl_ctrl_recov_ctrl_update_err */
-  kTopDarjeelingAlertIdIncomingOtherExtraLioGroupVIntegError = 187, /**< incoming_other_extra_lio_group_v_integ_error */
-  kTopDarjeelingAlertIdIncomingOtherExtraLioGroupPRaclCtrlFatalFault = 188, /**< incoming_other_extra_lio_group_p_racl_ctrl_fatal_fault */
-  kTopDarjeelingAlertIdIncomingOtherExtraLioGroupPRaclCtrlRecovCtrlUpdateErr = 189, /**< incoming_other_extra_lio_group_p_racl_ctrl_recov_ctrl_update_err */
-  kTopDarjeelingAlertIdIncomingOtherExtraLioGroupPIntegError = 190, /**< incoming_other_extra_lio_group_p_integ_error */
-  kTopDarjeelingAlertIdIncomingOtherExtraScsraiIntegError = 191, /**< incoming_other_extra_scsrai_integ_error */
-  kTopDarjeelingAlertIdLast = 191, /**< \internal The Last Valid Alert ID. */
+  kTopDarjeelingAlertIdIncomingOtherExtraLioGroupVHdrIntegError = 187, /**< incoming_other_extra_lio_group_v_hdr_integ_error */
+  kTopDarjeelingAlertIdIncomingOtherExtraLioGroupVHdrAvsError = 188, /**< incoming_other_extra_lio_group_v_hdr_avs_error */
+  kTopDarjeelingAlertIdIncomingOtherExtraLioGroupPRaclCtrlFatalFault = 189, /**< incoming_other_extra_lio_group_p_racl_ctrl_fatal_fault */
+  kTopDarjeelingAlertIdIncomingOtherExtraLioGroupPRaclCtrlRecovCtrlUpdateErr = 190, /**< incoming_other_extra_lio_group_p_racl_ctrl_recov_ctrl_update_err */
+  kTopDarjeelingAlertIdIncomingOtherExtraLioGroupPIntegError = 191, /**< incoming_other_extra_lio_group_p_integ_error */
+  kTopDarjeelingAlertIdIncomingOtherExtraScsraiIntegError = 192, /**< incoming_other_extra_scsrai_integ_error */
+  kTopDarjeelingAlertIdLast = 192, /**< \internal The Last Valid Alert ID. */
 } top_darjeeling_alert_id_t;
 
 /**
@@ -1517,7 +1518,7 @@ typedef enum top_darjeeling_alert_id {
  * `top_darjeeling_alert_peripheral_t`.
  */
 extern const top_darjeeling_alert_peripheral_t
-    top_darjeeling_alert_for_peripheral[192];
+    top_darjeeling_alert_for_peripheral[193];
 
 #define PINMUX_MIO_PERIPH_INSEL_IDX_OFFSET 2
 

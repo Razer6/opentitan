@@ -2261,16 +2261,18 @@ pub enum AlertId {
     IncomingOtherExtraLioGroupVRaclCtrlFatalFault = 185,
     /// incoming_other_extra_lio_group_v_racl_ctrl_recov_ctrl_update_err
     IncomingOtherExtraLioGroupVRaclCtrlRecovCtrlUpdateErr = 186,
-    /// incoming_other_extra_lio_group_v_integ_error
-    IncomingOtherExtraLioGroupVIntegError = 187,
+    /// incoming_other_extra_lio_group_v_hdr_integ_error
+    IncomingOtherExtraLioGroupVHdrIntegError = 187,
+    /// incoming_other_extra_lio_group_v_hdr_avs_error
+    IncomingOtherExtraLioGroupVHdrAvsError = 188,
     /// incoming_other_extra_lio_group_p_racl_ctrl_fatal_fault
-    IncomingOtherExtraLioGroupPRaclCtrlFatalFault = 188,
+    IncomingOtherExtraLioGroupPRaclCtrlFatalFault = 189,
     /// incoming_other_extra_lio_group_p_racl_ctrl_recov_ctrl_update_err
-    IncomingOtherExtraLioGroupPRaclCtrlRecovCtrlUpdateErr = 189,
+    IncomingOtherExtraLioGroupPRaclCtrlRecovCtrlUpdateErr = 190,
     /// incoming_other_extra_lio_group_p_integ_error
-    IncomingOtherExtraLioGroupPIntegError = 190,
+    IncomingOtherExtraLioGroupPIntegError = 191,
     /// incoming_other_extra_scsrai_integ_error
-    IncomingOtherExtraScsraiIntegError = 191,
+    IncomingOtherExtraScsraiIntegError = 192,
 }
 
 impl TryFrom<u32> for AlertId {
@@ -2464,11 +2466,12 @@ impl TryFrom<u32> for AlertId {
             184 => Ok(Self::IncomingOtherExtraNsefuseApbAdapterIntegErr),
             185 => Ok(Self::IncomingOtherExtraLioGroupVRaclCtrlFatalFault),
             186 => Ok(Self::IncomingOtherExtraLioGroupVRaclCtrlRecovCtrlUpdateErr),
-            187 => Ok(Self::IncomingOtherExtraLioGroupVIntegError),
-            188 => Ok(Self::IncomingOtherExtraLioGroupPRaclCtrlFatalFault),
-            189 => Ok(Self::IncomingOtherExtraLioGroupPRaclCtrlRecovCtrlUpdateErr),
-            190 => Ok(Self::IncomingOtherExtraLioGroupPIntegError),
-            191 => Ok(Self::IncomingOtherExtraScsraiIntegError),
+            187 => Ok(Self::IncomingOtherExtraLioGroupVHdrIntegError),
+            188 => Ok(Self::IncomingOtherExtraLioGroupVHdrAvsError),
+            189 => Ok(Self::IncomingOtherExtraLioGroupPRaclCtrlFatalFault),
+            190 => Ok(Self::IncomingOtherExtraLioGroupPRaclCtrlRecovCtrlUpdateErr),
+            191 => Ok(Self::IncomingOtherExtraLioGroupPIntegError),
+            192 => Ok(Self::IncomingOtherExtraScsraiIntegError),
             _ => Err(val),
         }
     }
@@ -2478,7 +2481,7 @@ impl TryFrom<u32> for AlertId {
 ///
 /// This array is a mapping from `AlertId` to
 /// `AlertPeripheral`.
-pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 192] = [
+pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 193] = [
     // Uart0FatalFault -> AlertPeripheral::Uart0
     AlertPeripheral::Uart0,
     // GpioFatalFault -> AlertPeripheral::Gpio
@@ -2853,7 +2856,9 @@ pub const ALERT_FOR_PERIPHERAL: [AlertPeripheral; 192] = [
     AlertPeripheral::External,
     // IncomingOtherExtraLioGroupVRaclCtrlRecovCtrlUpdateErr -> AlertPeripheral::External
     AlertPeripheral::External,
-    // IncomingOtherExtraLioGroupVIntegError -> AlertPeripheral::External
+    // IncomingOtherExtraLioGroupVHdrIntegError -> AlertPeripheral::External
+    AlertPeripheral::External,
+    // IncomingOtherExtraLioGroupVHdrAvsError -> AlertPeripheral::External
     AlertPeripheral::External,
     // IncomingOtherExtraLioGroupPRaclCtrlFatalFault -> AlertPeripheral::External
     AlertPeripheral::External,

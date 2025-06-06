@@ -16,7 +16,7 @@
  * `top_darjeeling_alert_peripheral_t`.
  */
 const top_darjeeling_alert_peripheral_t
-    top_darjeeling_alert_for_peripheral[192] = {
+    top_darjeeling_alert_for_peripheral[193] = {
   [kTopDarjeelingAlertIdUart0FatalFault] = kTopDarjeelingAlertPeripheralUart0,
   [kTopDarjeelingAlertIdGpioFatalFault] = kTopDarjeelingAlertPeripheralGpio,
   [kTopDarjeelingAlertIdSpiDeviceFatalFault] = kTopDarjeelingAlertPeripheralSpiDevice,
@@ -204,7 +204,8 @@ const top_darjeeling_alert_peripheral_t
   [kTopDarjeelingAlertIdIncomingOtherExtraNsefuseApbAdapterIntegErr] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingOtherExtraLioGroupVRaclCtrlFatalFault] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingOtherExtraLioGroupVRaclCtrlRecovCtrlUpdateErr] = kTopDarjeelingAlertPeripheralExternal,
-  [kTopDarjeelingAlertIdIncomingOtherExtraLioGroupVIntegError] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingOtherExtraLioGroupVHdrIntegError] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingOtherExtraLioGroupVHdrAvsError] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingOtherExtraLioGroupPRaclCtrlFatalFault] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingOtherExtraLioGroupPRaclCtrlRecovCtrlUpdateErr] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingOtherExtraLioGroupPIntegError] = kTopDarjeelingAlertPeripheralExternal,

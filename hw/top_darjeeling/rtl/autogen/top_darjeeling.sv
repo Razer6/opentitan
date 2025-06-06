@@ -2890,13 +2890,14 @@ module top_darjeeling #(
   // [184]: nsefuse_apb_adapter_integ_err
   // [185]: lio_group_v_racl_ctrl_fatal_fault
   // [186]: lio_group_v_racl_ctrl_recov_ctrl_update_err
-  // [187]: lio_group_v_integ_error
-  // [188]: lio_group_p_racl_ctrl_fatal_fault
-  // [189]: lio_group_p_racl_ctrl_recov_ctrl_update_err
-  // [190]: lio_group_p_integ_error
-  // [191]: scsrai_integ_error
-  assign alert_tx[191:168] = incoming_alert_other_extra_tx_i;
-  assign incoming_alert_other_extra_rx_o = alert_rx[191:168];
+  // [187]: lio_group_v_hdr_integ_error
+  // [188]: lio_group_v_hdr_avs_error
+  // [189]: lio_group_p_racl_ctrl_fatal_fault
+  // [190]: lio_group_p_racl_ctrl_recov_ctrl_update_err
+  // [191]: lio_group_p_integ_error
+  // [192]: scsrai_integ_error
+  assign alert_tx[192:168] = incoming_alert_other_extra_tx_i;
+  assign incoming_alert_other_extra_rx_o = alert_rx[192:168];
 
   // interrupt assignments
   assign intr_vector = {
