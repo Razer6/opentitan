@@ -5,5 +5,5 @@ load("//rules/opentitan:hw.bzl", "opentitan_ip")
 
 RV_CORE_IBEX_MIO = opentitan_ip(
     name = "rv_core_ibex_mio",
-    hjson = "//hw/top_mio/ip_autogen/rv_core_ibex_mio:data/rv_core_ibex_mio.hjson",
+    hjson = "//hw/top_mio/ip_autogen/rv_core_ibex_mio/data:rv_core_ibex_mio.hjson",
 )

@@ -5,5 +5,5 @@ load("//rules/opentitan:hw.bzl", "opentitan_ip")
 
 GPIO_PWC = opentitan_ip(
     name = "gpio_pwc",
-    hjson = "//hw/top_pwc/ip_autogen/gpio_pwc:data/gpio_pwc.hjson",
+    hjson = "//hw/top_pwc/ip_autogen/gpio_pwc/data:gpio_pwc.hjson",
 )

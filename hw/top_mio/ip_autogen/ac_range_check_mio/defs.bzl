@@ -5,5 +5,5 @@ load("//rules/opentitan:hw.bzl", "opentitan_ip")
 
 AC_RANGE_CHECK_MIO = opentitan_ip(
     name = "ac_range_check_mio",
-    hjson = "//hw/top_mio/ip_autogen/ac_range_check_mio:data/ac_range_check_mio.hjson",
+    hjson = "//hw/top_mio/ip_autogen/ac_range_check_mio/data:ac_range_check_mio.hjson",
 )

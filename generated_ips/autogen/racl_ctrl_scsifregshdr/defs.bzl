@@ -5,5 +5,5 @@ load("//rules/opentitan:hw.bzl", "opentitan_ip")
 
 RACL_CTRL_SCSIFREGSHDR = opentitan_ip(
     name = "racl_ctrl_scsifregshdr",
-    hjson = "//hw/top_darjeeling/ip_autogen/racl_ctrl_scsifregshdr:data/racl_ctrl_scsifregshdr.hjson",
+    hjson = "//hw/top_darjeeling/ip_autogen/racl_ctrl_scsifregshdr/data:racl_ctrl_scsifregshdr.hjson",
 )

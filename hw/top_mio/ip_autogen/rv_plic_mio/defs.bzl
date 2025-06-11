@@ -5,5 +5,5 @@ load("//rules/opentitan:hw.bzl", "opentitan_ip")
 
 RV_PLIC_MIO = opentitan_ip(
     name = "rv_plic_mio",
-    hjson = "//hw/top_mio/ip_autogen/rv_plic_mio:data/rv_plic_mio.hjson",
+    hjson = "//hw/top_mio/ip_autogen/rv_plic_mio/data:rv_plic_mio.hjson",
 )

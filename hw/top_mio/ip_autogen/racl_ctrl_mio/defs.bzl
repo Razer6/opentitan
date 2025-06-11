@@ -5,5 +5,5 @@ load("//rules/opentitan:hw.bzl", "opentitan_ip")
 
 RACL_CTRL_MIO = opentitan_ip(
     name = "racl_ctrl_mio",
-    hjson = "//hw/top_mio/ip_autogen/racl_ctrl_mio:data/racl_ctrl_mio.hjson",
+    hjson = "//hw/top_mio/ip_autogen/racl_ctrl_mio/data:racl_ctrl_mio.hjson",
 )

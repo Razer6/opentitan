@@ -5,5 +5,5 @@ load("//rules/opentitan:hw.bzl", "opentitan_ip")
 
 RACL_CTRL_LIOGRPD = opentitan_ip(
     name = "racl_ctrl_lioGrpD",
-    hjson = "//hw/top_darjeeling/ip_autogen/racl_ctrl_lioGrpD:data/racl_ctrl_lioGrpD.hjson",
+    hjson = "//hw/top_darjeeling/ip_autogen/racl_ctrl_lioGrpD/data:racl_ctrl_lioGrpD.hjson",
 )

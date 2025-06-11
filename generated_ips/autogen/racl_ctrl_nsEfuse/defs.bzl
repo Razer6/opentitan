@@ -5,5 +5,5 @@ load("//rules/opentitan:hw.bzl", "opentitan_ip")
 
 RACL_CTRL_NSEFUSE = opentitan_ip(
     name = "racl_ctrl_nsEfuse",
-    hjson = "//hw/top_darjeeling/ip_autogen/racl_ctrl_nsEfuse:data/racl_ctrl_nsEfuse.hjson",
+    hjson = "//hw/top_darjeeling/ip_autogen/racl_ctrl_nsEfuse/data:racl_ctrl_nsEfuse.hjson",
 )

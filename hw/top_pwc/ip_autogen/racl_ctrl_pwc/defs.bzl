@@ -5,5 +5,5 @@ load("//rules/opentitan:hw.bzl", "opentitan_ip")
 
 RACL_CTRL_PWC = opentitan_ip(
     name = "racl_ctrl_pwc",
-    hjson = "//hw/top_pwc/ip_autogen/racl_ctrl_pwc:data/racl_ctrl_pwc.hjson",
+    hjson = "//hw/top_pwc/ip_autogen/racl_ctrl_pwc/data:racl_ctrl_pwc.hjson",
 )

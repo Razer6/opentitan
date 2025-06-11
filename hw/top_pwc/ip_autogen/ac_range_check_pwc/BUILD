@@ -15,3 +15,11 @@ filegroup(
         ],
     ),
 )
+
+filegroup(
+    name = "doc_files",
+    srcs = glob([
+        "**/*.md",
+        "**/*.svg",
+    ]) + ["//hw/top_pwc/ip_autogen/ac_range_check/data:doc_files"],
+)

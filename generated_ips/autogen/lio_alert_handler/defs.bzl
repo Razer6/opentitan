@@ -5,5 +5,5 @@ load("//rules/opentitan:hw.bzl", "opentitan_ip")
 
 LIO_ALERT_HANDLER = opentitan_ip(
     name = "lio_alert_handler",
-    hjson = "//hw/top_darjeeling/ip_autogen/lio_alert_handler:data/lio_alert_handler.hjson",
+    hjson = "//hw/top_darjeeling/ip_autogen/lio_alert_handler/data:lio_alert_handler.hjson",
 )

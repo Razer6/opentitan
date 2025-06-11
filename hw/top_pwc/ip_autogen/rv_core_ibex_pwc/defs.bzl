@@ -5,5 +5,5 @@ load("//rules/opentitan:hw.bzl", "opentitan_ip")
 
 RV_CORE_IBEX_PWC = opentitan_ip(
     name = "rv_core_ibex_pwc",
-    hjson = "//hw/top_pwc/ip_autogen/rv_core_ibex_pwc:data/rv_core_ibex_pwc.hjson",
+    hjson = "//hw/top_pwc/ip_autogen/rv_core_ibex_pwc/data:rv_core_ibex_pwc.hjson",
 )
