@@ -322,7 +322,7 @@
       type: device
       clock: clk_main_i
       reset: rst_main_ni
-      pipeline: false
+      pipeline: true
       inst_type: sram_ctrl
       addr_range:
       [
@@ -364,7 +364,7 @@
       type: device
       clock: clk_main_i
       reset: rst_main_ni
-      pipeline: false
+      pipeline: true
       inst_type: sram_ctrl
       addr_range:
       [

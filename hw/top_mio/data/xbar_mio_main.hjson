@@ -99,7 +99,7 @@
       type:      "device",
       clock:     "clk_main_i",
       reset:     "rst_main_ni",
-      pipeline:  false
+      pipeline:  true
     },
     { name:      "sram_ctrl_mbox.regs",
       type:      "device",
@@ -111,7 +111,7 @@
       type:      "device",
       clock:     "clk_main_i",
       reset:     "rst_main_ni",
-      pipeline:  false
+      pipeline:  true
     },
     { name:      "dma",
       type:      "device",
