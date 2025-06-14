@@ -57,6 +57,7 @@
       sram_ctrl_main.ram
       peri
       aes
+      entropy_src
       csrng
       edn0
       edn1
@@ -93,6 +94,7 @@
       sram_ctrl_main.ram
       peri
       aes
+      entropy_src
       csrng
       edn0
       edn1
@@ -445,6 +447,28 @@
           base_addrs:
           {
             hart: 0x21100000
+          }
+          size_byte: 0x100
+        }
+      ]
+      xbar: false
+      stub: false
+      pipeline: true
+    }
+    {
+      name: entropy_src
+      type: device
+      clock: clk_main_i
+      reset: rst_main_ni
+      req_fifo_pass: false
+      rsp_fifo_pass: false
+      inst_type: entropy_src
+      addr_range:
+      [
+        {
+          base_addrs:
+          {
+            hart: 0x21160000
           }
           size_byte: 0x100
         }
@@ -1399,6 +1423,18 @@
       width: 1
       default: ""
       top_signame: aes_tl
+      index: -1
+    }
+    {
+      name: tl_entropy_src
+      struct: tl
+      package: tlul_pkg
+      type: req_rsp
+      act: req
+      inst_name: main
+      width: 1
+      default: ""
+      top_signame: entropy_src_tl
       index: -1
     }
     {

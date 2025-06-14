@@ -17,6 +17,7 @@ load("//hw/top_darjeeling/ip_autogen/clkmgr:defs.bzl", "CLKMGR")
 load("//hw/ip/csrng:defs.bzl", "CSRNG")
 load("//hw/ip/dma:defs.bzl", "DMA")
 load("//hw/ip/edn:defs.bzl", "EDN")
+load("//hw/ip/entropy_src:defs.bzl", "ENTROPY_SRC")
 load("//hw/top_darjeeling/ip_autogen/gpio:defs.bzl", "GPIO")
 load("//hw/ip/hmac:defs.bzl", "HMAC")
 load("//hw/ip/i2c:defs.bzl", "I2C")
@@ -58,6 +59,7 @@ DARJEELING = opentitan_top(
         CSRNG,
         DMA,
         EDN,
+        ENTROPY_SRC,
         GPIO,
         HMAC,
         I2C,
@@ -122,6 +124,8 @@ DARJEELING_ALERTS = [
     "keymgr_dpe_fatal_fault_err",
     "csrng_recov_alert",
     "csrng_fatal_alert",
+    "entropy_src_recov_alert",
+    "entropy_src_fatal_alert",
     "edn0_recov_alert",
     "edn0_fatal_alert",
     "edn1_recov_alert",
