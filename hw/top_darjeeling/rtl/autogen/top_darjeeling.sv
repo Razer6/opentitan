@@ -376,7 +376,7 @@ module top_darjeeling #(
   localparam int SramCtrlRetAonOutstanding = 6;
   // local parameters for entropy_src
   localparam int EntropySrcEsFifoDepth = 3;
-  localparam int unsigned EntropySrcDistrFifoDepth = 5;
+  localparam int unsigned EntropySrcDistrFifoDepth = 26;
   // local parameters for sram_ctrl_main
   localparam int SramCtrlMainOutstanding = 6;
   // local parameters for sram_ctrl_mbox

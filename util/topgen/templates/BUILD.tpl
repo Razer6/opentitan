@@ -60,6 +60,7 @@ expected_irq_tests = {
 ## If this check fails, the testplans / DV tests need to be updated to account
 ## for the change in software test targets, and then the ## `expected_irq_tests`
 ## value needs updating to its new value.
+
 if irq_test_count != expected_irq_tests.get(top["name"], irq_test_count):
     raise Exception(
        "Number of PLIC IRQ tests does not match the hardcoded number. "

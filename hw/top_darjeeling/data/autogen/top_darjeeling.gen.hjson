@@ -6399,7 +6399,7 @@
         RngBusWidth: "16"
         RngBusBitSelWidth: "4"
         HealthTestWindowWidth: "20"
-        DistrFifoDepth: "5"
+        DistrFifoDepth: "26"
       }
       clock_connections:
       {
@@ -6453,7 +6453,7 @@
           name: DistrFifoDepth
           desc: Number of 32-bit entries in the distr FIFO
           type: int unsigned
-          default: "5"
+          default: "26"
           local: "true"
           expose: "true"
           name_top: EntropySrcDistrFifoDepth
