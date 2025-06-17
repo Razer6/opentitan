@@ -18,22 +18,23 @@ package top_mio_rnd_cnst_pkg;
   ////////////////////////////////////////////
   // Compile-time random reset value for SRAM scrambling key.
   parameter otp_ctrl_pkg::sram_key_t RndCnstSramCtrlRetAonSramKey = {
-    128'h9D66316F_A6C7A2CF_E54B57B9_4CCDB5B7
+    128'h67BAA00A_00025E7F_C9BD1410_2DC30C29
   };
 
   // Compile-time random reset value for SRAM scrambling nonce.
   parameter otp_ctrl_pkg::sram_nonce_t RndCnstSramCtrlRetAonSramNonce = {
-    128'h01FBC75F_A47FD1EE_356B0EE7_7C01530C
+    128'h978A4C70_C8DA26CB_202F5F59_A412A339
   };
 
   // Compile-time random bits for initial LFSR seed
   parameter sram_ctrl_pkg::lfsr_seed_t RndCnstSramCtrlRetAonLfsrSeed = {
-    32'hB2628838
+    64'h2B9403C1_90120BB3
   };
 
   // Compile-time random permutation for LFSR output
   parameter sram_ctrl_pkg::lfsr_perm_t RndCnstSramCtrlRetAonLfsrPerm = {
-    160'h4C844A07_3F640CDC_1F6E03D7_32A395BE_A23ED95E
+    128'h9DE3C807_BFF099D4_1CC7A8B8_D152FC93,
+    256'h54F2F435_B31EB952_5DF8ECF8_E009B6FA_6110546E_64A83708_C628D946_DAE4DA86
   };
 
   ////////////////////////////////////////////
@@ -41,22 +42,23 @@ package top_mio_rnd_cnst_pkg;
   ////////////////////////////////////////////
   // Compile-time random reset value for SRAM scrambling key.
   parameter otp_ctrl_pkg::sram_key_t RndCnstSramCtrlMainSramKey = {
-    128'hACF49BFA_DF4C4CEF_4A487A07_0E2D41C2
+    128'h5A8FFF2C_83BEF2B0_C1187A35_2F766926
   };
 
   // Compile-time random reset value for SRAM scrambling nonce.
   parameter otp_ctrl_pkg::sram_nonce_t RndCnstSramCtrlMainSramNonce = {
-    128'h44CB7240_CEE69DF7_6619E1BB_A8167005
+    128'h6CFD1F50_8AC4E1C5_F6668AFD_034DC05D
   };
 
   // Compile-time random bits for initial LFSR seed
   parameter sram_ctrl_pkg::lfsr_seed_t RndCnstSramCtrlMainLfsrSeed = {
-    32'hEE5B59B1
+    64'hF9EC203B_9EB85C7E
   };
 
   // Compile-time random permutation for LFSR output
   parameter sram_ctrl_pkg::lfsr_perm_t RndCnstSramCtrlMainLfsrPerm = {
-    160'h454FB4CF_E30833DB_B8ACC40D_25722DD5_2CB113CF
+    128'h3664E971_7CFA6481_9168F884_49DDEBB2,
+    256'hA58338C6_01F15005_C096F9C7_E790867E_2E823D64_BD4CA57F_4B7B2C21_CAFF6F68
   };
 
   ////////////////////////////////////////////
@@ -64,22 +66,23 @@ package top_mio_rnd_cnst_pkg;
   ////////////////////////////////////////////
   // Compile-time random reset value for SRAM scrambling key.
   parameter otp_ctrl_pkg::sram_key_t RndCnstSramCtrlMboxSramKey = {
-    128'h7FC9BD14_102DC30C_29978A4C_70C8DA26
+    128'h48B3C1C0_1FB83B84_F2C904EC_4E535184
   };
 
   // Compile-time random reset value for SRAM scrambling nonce.
   parameter otp_ctrl_pkg::sram_nonce_t RndCnstSramCtrlMboxSramNonce = {
-    128'hCB202F5F_59A412A3_392B9403_C190120B
+    128'hE7F9D667_6D1479CC_E4FDDF68_59B6EC2E
   };
 
   // Compile-time random bits for initial LFSR seed
   parameter sram_ctrl_pkg::lfsr_seed_t RndCnstSramCtrlMboxLfsrSeed = {
-    32'hB318A937
+    64'h82ECC9BB_5C13BB8B
   };
 
   // Compile-time random permutation for LFSR output
   parameter sram_ctrl_pkg::lfsr_perm_t RndCnstSramCtrlMboxLfsrPerm = {
-    160'hB0F0E3BD_20ADC9D9_AFF28891_92C34133_29B579BC
+    128'hCBA95370_3A91B647_82E74DB8_17C8B543,
+    256'hE7E16AB1_E0BBD61D_0552CFC0_4997ECEA_7F337354_8D918829_2CEFA27C_5B240B16
   };
 
   ////////////////////////////////////////////
@@ -87,22 +90,22 @@ package top_mio_rnd_cnst_pkg;
   ////////////////////////////////////////////
   // Default seed of the PRNG used for random instructions.
   parameter ibex_pkg::lfsr_seed_t RndCnstRvCoreIbexMioLfsrSeed = {
-    32'h93709238
+    32'hB0255CFB
   };
 
   // Permutation applied to the LFSR of the PRNG used for random instructions.
   parameter ibex_pkg::lfsr_perm_t RndCnstRvCoreIbexMioLfsrPerm = {
-    160'h92B5C754_3B4429D2_1807FBFC_9165788B_27768EC5
+    160'hA4F1E134_CAFBFA98_075565AF_120067E2_1DB9172B
   };
 
   // Default icache scrambling key
   parameter logic [ibex_pkg::SCRAMBLE_KEY_W-1:0] RndCnstRvCoreIbexMioIbexKeyDefault = {
-    128'h7669266C_FD1F508A_C4E1C5F6_668AFD03
+    128'h5BD2D5A5_68B1F819_9BE09EEF_E6C954E6
   };
 
   // Default icache scrambling nonce
   parameter logic [ibex_pkg::SCRAMBLE_NONCE_W-1:0] RndCnstRvCoreIbexMioIbexNonceDefault = {
-    64'h4DC05DF9_EC203B9E
+    64'h980F2134_3E3CFD5D
   };
 
 endpackage : top_mio_rnd_cnst_pkg

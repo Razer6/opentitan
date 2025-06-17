@@ -1066,7 +1066,7 @@
           randcount: 128
           randtype: data
           name_top: RndCnstSramCtrlRetAonSramKey
-          default: 0x9d66316fa6c7a2cfe54b57b94ccdb5b7
+          default: 0x67baa00a00025e7fc9bd14102dc30c29
           randwidth: 128
         }
         {
@@ -1076,28 +1076,28 @@
           randcount: 128
           randtype: data
           name_top: RndCnstSramCtrlRetAonSramNonce
-          default: 0x1fbc75fa47fd1ee356b0ee77c01530c
+          default: 0x978a4c70c8da26cb202f5f59a412a339
           randwidth: 128
         }
         {
           name: RndCnstLfsrSeed
           desc: Compile-time random bits for initial LFSR seed
           type: sram_ctrl_pkg::lfsr_seed_t
-          randcount: 32
+          randcount: 64
           randtype: data
           name_top: RndCnstSramCtrlRetAonLfsrSeed
-          default: 0xb2628838
-          randwidth: 32
+          default: 0x2b9403c190120bb3
+          randwidth: 64
         }
         {
           name: RndCnstLfsrPerm
           desc: Compile-time random permutation for LFSR output
           type: sram_ctrl_pkg::lfsr_perm_t
-          randcount: 32
+          randcount: 64
           randtype: perm
           name_top: RndCnstSramCtrlRetAonLfsrPerm
-          default: 0x4c844a073f640cdc1f6e03d732a395bea23ed95e
-          randwidth: 160
+          default: 0x9de3c807bff099d41cc7a8b8d152fc9354f2f435b31eb9525df8ecf8e009b6fa6110546e64a83708c628d946dae4da86
+          randwidth: 384
         }
         {
           name: MemSizeRam
@@ -2060,7 +2060,7 @@
           randcount: 128
           randtype: data
           name_top: RndCnstSramCtrlMainSramKey
-          default: 0xacf49bfadf4c4cef4a487a070e2d41c2
+          default: 0x5a8fff2c83bef2b0c1187a352f766926
           randwidth: 128
         }
         {
@@ -2070,28 +2070,28 @@
           randcount: 128
           randtype: data
           name_top: RndCnstSramCtrlMainSramNonce
-          default: 0x44cb7240cee69df76619e1bba8167005
+          default: 0x6cfd1f508ac4e1c5f6668afd034dc05d
           randwidth: 128
         }
         {
           name: RndCnstLfsrSeed
           desc: Compile-time random bits for initial LFSR seed
           type: sram_ctrl_pkg::lfsr_seed_t
-          randcount: 32
+          randcount: 64
           randtype: data
           name_top: RndCnstSramCtrlMainLfsrSeed
-          default: 0xee5b59b1
-          randwidth: 32
+          default: 0xf9ec203b9eb85c7e
+          randwidth: 64
         }
         {
           name: RndCnstLfsrPerm
           desc: Compile-time random permutation for LFSR output
           type: sram_ctrl_pkg::lfsr_perm_t
-          randcount: 32
+          randcount: 64
           randtype: perm
           name_top: RndCnstSramCtrlMainLfsrPerm
-          default: 0x454fb4cfe30833dbb8acc40d25722dd52cb113cf
-          randwidth: 160
+          default: 0x3664e9717cfa64819168f88449ddebb2a58338c601f15005c096f9c7e790867e2e823d64bd4ca57f4b7b2c21caff6f68
+          randwidth: 384
         }
         {
           name: MemSizeRam
@@ -2435,7 +2435,7 @@
           randcount: 128
           randtype: data
           name_top: RndCnstSramCtrlMboxSramKey
-          default: 0x7fc9bd14102dc30c29978a4c70c8da26
+          default: 0x48b3c1c01fb83b84f2c904ec4e535184
           randwidth: 128
         }
         {
@@ -2445,28 +2445,28 @@
           randcount: 128
           randtype: data
           name_top: RndCnstSramCtrlMboxSramNonce
-          default: 0xcb202f5f59a412a3392b9403c190120b
+          default: 0xe7f9d6676d1479cce4fddf6859b6ec2e
           randwidth: 128
         }
         {
           name: RndCnstLfsrSeed
           desc: Compile-time random bits for initial LFSR seed
           type: sram_ctrl_pkg::lfsr_seed_t
-          randcount: 32
+          randcount: 64
           randtype: data
           name_top: RndCnstSramCtrlMboxLfsrSeed
-          default: 0xb318a937
-          randwidth: 32
+          default: 0x82ecc9bb5c13bb8b
+          randwidth: 64
         }
         {
           name: RndCnstLfsrPerm
           desc: Compile-time random permutation for LFSR output
           type: sram_ctrl_pkg::lfsr_perm_t
-          randcount: 32
+          randcount: 64
           randtype: perm
           name_top: RndCnstSramCtrlMboxLfsrPerm
-          default: 0xb0f0e3bd20adc9d9aff2889192c3413329b579bc
-          randwidth: 160
+          default: 0xcba953703a91b64782e74db817c8b543e7e16ab1e0bbd61d0552cfc04997ecea7f3373548d9188292cefa27c5b240b16
+          randwidth: 384
         }
         {
           name: MemSizeRam
@@ -5019,7 +5019,7 @@
           randcount: 32
           randtype: data
           name_top: RndCnstRvCoreIbexMioLfsrSeed
-          default: 0x93709238
+          default: 0xb0255cfb
           randwidth: 32
         }
         {
@@ -5029,7 +5029,7 @@
           randcount: 32
           randtype: perm
           name_top: RndCnstRvCoreIbexMioLfsrPerm
-          default: 0x92b5c7543b4429d21807fbfc9165788b27768ec5
+          default: 0xa4f1e134cafbfa98075565af120067e21db9172b
           randwidth: 160
         }
         {
@@ -5039,7 +5039,7 @@
           randcount: 128
           randtype: data
           name_top: RndCnstRvCoreIbexMioIbexKeyDefault
-          default: 0x7669266cfd1f508ac4e1c5f6668afd03
+          default: 0x5bd2d5a568b1f8199be09eefe6c954e6
           randwidth: 128
         }
         {
@@ -5049,7 +5049,7 @@
           randcount: 64
           randtype: data
           name_top: RndCnstRvCoreIbexMioIbexNonceDefault
-          default: 0x4dc05df9ec203b9e
+          default: 0x980f21343e3cfd5d
           randwidth: 64
         }
         {
