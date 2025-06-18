@@ -17,4 +17,13 @@
       rv_plic: rv_plic_pwc
     }
   }
+  dtgen:
+  {
+    num_inp_period_counters:
+    {
+      type: uint8
+      name: input_period_counter_count
+      doc: number of input period counters
+    }
+  }
 }

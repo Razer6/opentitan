@@ -6,4 +6,5 @@ load("//rules/opentitan:hw.bzl", "opentitan_ip")
 LIO_PWM = opentitan_ip(
     name = "lio_pwm",
     hjson = "//hw/top_darjeeling/ip_autogen/lio_pwm/data:lio_pwm.hjson",
+    ipconfig = "//hw/top_darjeeling/ip_autogen/lio_pwm/data:top_darjeeling_lio_pwm.ipconfig.hjson",
 )

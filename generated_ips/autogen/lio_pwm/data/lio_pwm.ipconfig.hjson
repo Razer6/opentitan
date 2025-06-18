@@ -10,4 +10,13 @@
     nr_output_channels: 8
     uniquified_modules: {}
   }
+  dtgen:
+  {
+    nr_output_channels:
+    {
+      type: uint8
+      name: output_channel_count
+      doc: Number of output channels
+    }
+  }
 }

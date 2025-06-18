@@ -20,11 +20,11 @@ assert -name InterruptsLevelTriggered_A {!$rose(dut.u_gateway.le_i)}
 # rv_plic. This would only be connected for a writeable register that has an asynchronous clock
 # (see reg_top.sv.tpl), and rv_plic doesn't have any of these. As such, the code that is waived
 # here (which drives the port) is undetectable.
-check_cov -waiver -add -source_file {../src/lowrisc_prim_subreg_0/rtl/prim_subreg.sv} -start_line 64 -end_line 64 -type {branch} -comment {Checker coverage is undetectable as ds is unconnected}
+check_cov -waiver -add -source_file {src/lowrisc_prim_subreg_0/rtl/prim_subreg.sv} -start_line 64 -end_line 64 -type {branch} -comment {Checker coverage is undetectable as ds is unconnected}
 
 # For all the ip registers, de is true and hence wr_en is true. The branch misses the else part and
 # appeared dead.
-check_cov -waiver -add -source_file {../src/lowrisc_prim_subreg_0/rtl/prim_subreg.sv} -start_line 58 -end_line 58 -type {branch} -comment {wr_en is true and the branch doesn't contain the else part}
+check_cov -waiver -add -source_file {src/lowrisc_prim_subreg_0/rtl/prim_subreg.sv} -start_line 58 -end_line 58 -type {branch} -comment {wr_en is true and the branch doesn't contain the else part}
 
 # The waivers below are waiving the branch and statement (inside those branches) in mubi(4-16)_and
 # function in prim_mubi_pkg used in rv_plic_csr_assert_fpv. Since, rv_plic registers doesn't have
@@ -47,3 +47,16 @@ stopat -task FSMParasiticState "dut.gen_alert_tx\[0\].u_prim_alert_sender.state_
 # the next state as the FSM treats the unrecognized state as Idle. This assertion also covers the
 # checker coverage for the default case.
 assert -name FSMParasiticState::AlertSenderFSMParasiticState_A {!(dut.gen_alert_tx[0].u_prim_alert_sender.state_q inside  {Idle, AlertHsPhase1, AlertHsPhase2, PingHsPhase1, PingHsPhase2, Pause0, Pause1}) ->  dut.gen_alert_tx[0].u_prim_alert_sender.state_d == Idle}
+
+# These two blocking assignment appear as undetectable and making an assertion for them looks
+# unreasonable as for this particular instance, they will always be generated as zero.
+check_cov -waiver -add -start_line 67 -end_line 68 -type {statement} -instance {dut.u_reg.u_reg_if.u_rsp_intg_gen} -comment {Rsp and Data Intg will always be zero}
+
+# For now, waiving this coverage is the sensible step. prim_diff_decode FSM would get stuck into
+# faulty state unless reset happens. So, even if we add a stopat on state_q, the default case would
+# ask for an assertion to cover missing checker coverage.
+check_cov -waiver -add -source_file {../src/lowrisc_prim_diff_decode_0/rtl/prim_diff_decode.sv} -start_line 153 -end_line 153 -type {branch} -comment {Unreachable without FI}
+
+# To support the waiver above, this assertion makes sure that state_q can never transition to a
+# parasitic state. If that is no longer the case, this assertion will fail.
+assert -name PrimDiffDecodeNoParasiticState_A {dut.gen_alert_tx[0].u_prim_alert_sender.u_decode_ping.gen_async.state_q < 3}
