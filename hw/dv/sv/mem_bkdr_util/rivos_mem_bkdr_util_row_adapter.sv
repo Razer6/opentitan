@@ -54,7 +54,7 @@ class rivos_mem_bkdr_util_row_adapter extends mem_bkdr_util_row_adapter;
       for (int b = 0; b < bits_per_subword; b++) begin
         int true_col_pos;
         int intrlv_col_pos;
-        intrlv_col_pos     = (subword_idx + (((b * 4) + 1) * 4));
+        intrlv_col_pos     = (subword_idx + (((b * 2) + 1) * 4));
         true_col_pos       = (subword_idx * bits_per_subword) + b;
         data[true_col_pos] = raw_data[intrlv_col_pos];
       end
