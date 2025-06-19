@@ -9,7 +9,9 @@
 
 `include "prim_assert.sv"
 
-module ast #(
+module ast
+  import ast_pkg::EntropyStreams;
+#(
   parameter int unsigned AdcChannels     = 2,
   parameter int unsigned AdcDataWidth    = 10,
   parameter int unsigned UsbCalibWidth   = 20,
@@ -105,7 +107,7 @@ module ast #(
   input rng_en_i,                             // RNG Enable
   input rng_fips_i,                           // RNG FIPS
   output logic rng_val_o,                     // RNG Valid
-  output logic [ast_pkg::EntropyStreams-1:0] rng_b_o,  // RNG Bit(s)
+  output logic [EntropyStreams-1:0] rng_b_o,  // RNG Bit(s)
 
   // entropy distribution interface
   input edn_pkg::edn_rsp_t entropy_rsp_i,     // Entropy Response
@@ -671,7 +673,7 @@ rng #(
   .rng_en_i ( rng_en_i ),
   .rng_fips_i ( rng_fips_i ),
   .scan_mode_i ( scan_mode ),
-  .rng_b_o ( rng_b_o[ast_pkg::EntropyStreams-1:0] ),
+  .rng_b_o ( rng_b_o[EntropyStreams-1:0] ),
   .rng_val_o ( rng_val_o )
 );
 

@@ -94,7 +94,7 @@ logic src_busy;
 
 always_ff @( posedge clk_i, negedge rst_n ) begin
   if ( !rst_n ) begin
-    srate_cnt     <= 12'h000;
+    srate_cnt     <= '0;
     srate_rng_val <= 1'b0;
   end else if ( (srate_cnt == srate_value) && src_busy ) begin
     srate_rng_val <= 1'b0;
@@ -127,7 +127,7 @@ ast_pulse_sync u_rng_val_pulse_sync (
   .dst_pulse_o ( sync_rng_val )
 );
 
-// Sanple & Hold the rng_b value until the sync completes
+// Sample & Hold the rng_b value until the sync completes
 always_ff @( posedge clk_i, negedge rst_n ) begin
   if ( !rst_n ) begin
     rng_b <= {EntropyStreams{1'b0}};
