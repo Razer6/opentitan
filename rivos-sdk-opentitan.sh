@@ -41,7 +41,7 @@ VALID_CROSS="*native"
 BUILD_DIR="output"
 
 ## Relative path to the repo
-REPO_PATH="rv/si/ext/opentitan-integrated"
+REPO_PATH="rv/si/ext/opentitan-integrated-gb0"
 
 ## For local/dev/user builds point to /scratch/.cache for speed
 SCRATCH_CACHE="/scratch/.cache"
