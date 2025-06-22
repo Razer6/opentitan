@@ -93,6 +93,7 @@ module top_darjeeling #(
   // parameters for entropy_src
   parameter int EntropySrcRngBusWidth = 16,
   parameter int EntropySrcRngBusBitSelWidth = 4,
+  parameter int EntropySrcHealthTestWindowWidth = 20,
   parameter int EntropySrcEsFifoDepth = 3,
   parameter int unsigned EntropySrcDistrFifoDepth = 5,
   parameter bit EntropySrcStub = 0,
@@ -2036,6 +2037,7 @@ module top_darjeeling #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[36:35]),
     .RngBusWidth(EntropySrcRngBusWidth),
     .RngBusBitSelWidth(EntropySrcRngBusBitSelWidth),
+    .HealthTestWindowWidth(EntropySrcHealthTestWindowWidth),
     .EsFifoDepth(EntropySrcEsFifoDepth),
     .DistrFifoDepth(EntropySrcDistrFifoDepth),
     .Stub(EntropySrcStub)
@@ -2062,6 +2064,7 @@ module top_darjeeling #(
       .entropy_src_xht_valid_o(),
       .entropy_src_xht_bits_o(),
       .entropy_src_xht_bit_sel_o(),
+      .entropy_src_xht_health_test_window_o(),
       .entropy_src_xht_meta_o(),
       .entropy_src_xht_meta_i(entropy_src_pkg::ENTROPY_SRC_XHT_META_RSP_DEFAULT),
       .otp_en_entropy_src_fw_read_i(prim_mubi_pkg::MuBi8True),

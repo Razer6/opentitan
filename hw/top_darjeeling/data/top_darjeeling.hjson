@@ -789,6 +789,7 @@
       param_decl: {
         RngBusWidth: "16",
         RngBusBitSelWidth: "4",
+        HealthTestWindowWidth: "20",
         DistrFifoDepth: "5",
       },
     },

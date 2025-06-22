@@ -6390,6 +6390,7 @@
       {
         RngBusWidth: "16"
         RngBusBitSelWidth: "4"
+        HealthTestWindowWidth: "20"
         DistrFifoDepth: "5"
       }
       clock_connections:
@@ -6421,6 +6422,15 @@
           local: "false"
           expose: "true"
           name_top: EntropySrcRngBusBitSelWidth
+        }
+        {
+          name: HealthTestWindowWidth
+          desc: Explicit parameter defining the width of the health test window (16 + log2(RngBusWidth))
+          type: int
+          default: "20"
+          local: "false"
+          expose: "true"
+          name_top: EntropySrcHealthTestWindowWidth
         }
         {
           name: EsFifoDepth
@@ -6622,6 +6632,26 @@
             local: false
             expose: true
             name_top: EntropySrcRngBusBitSelWidth
+          }
+          inst_name: entropy_src
+          index: -1
+        }
+        {
+          name: entropy_src_xht_health_test_window
+          desc: Provides the window size of the health in bits.
+          struct: logic
+          type: uni
+          act: req
+          width:
+          {
+            name: HealthTestWindowWidth
+            desc: Explicit parameter defining the width of the health test window (16 + log2(RngBusWidth))
+            param_type: int
+            unpacked_dimensions: null
+            default: 18
+            local: false
+            expose: true
+            name_top: EntropySrcHealthTestWindowWidth
           }
           inst_name: entropy_src
           index: -1
@@ -29700,6 +29730,26 @@
           local: false
           expose: true
           name_top: EntropySrcRngBusBitSelWidth
+        }
+        inst_name: entropy_src
+        index: -1
+      }
+      {
+        name: entropy_src_xht_health_test_window
+        desc: Provides the window size of the health in bits.
+        struct: logic
+        type: uni
+        act: req
+        width:
+        {
+          name: HealthTestWindowWidth
+          desc: Explicit parameter defining the width of the health test window (16 + log2(RngBusWidth))
+          param_type: int
+          unpacked_dimensions: null
+          default: 18
+          local: false
+          expose: true
+          name_top: EntropySrcHealthTestWindowWidth
         }
         inst_name: entropy_src
         index: -1

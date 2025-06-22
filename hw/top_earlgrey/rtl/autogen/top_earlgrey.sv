@@ -109,6 +109,7 @@ module top_earlgrey #(
   // parameters for entropy_src
   parameter int EntropySrcRngBusWidth = 4,
   parameter int EntropySrcRngBusBitSelWidth = 2,
+  parameter int EntropySrcHealthTestWindowWidth = 18,
   parameter int EntropySrcEsFifoDepth = 3,
   parameter int unsigned EntropySrcDistrFifoDepth = 2,
   parameter bit EntropySrcStub = 0,
@@ -2619,6 +2620,7 @@ module top_earlgrey #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[54:53]),
     .RngBusWidth(EntropySrcRngBusWidth),
     .RngBusBitSelWidth(EntropySrcRngBusBitSelWidth),
+    .HealthTestWindowWidth(EntropySrcHealthTestWindowWidth),
     .EsFifoDepth(EntropySrcEsFifoDepth),
     .DistrFifoDepth(EntropySrcDistrFifoDepth),
     .Stub(EntropySrcStub)
@@ -2645,6 +2647,7 @@ module top_earlgrey #(
       .entropy_src_xht_valid_o(),
       .entropy_src_xht_bits_o(),
       .entropy_src_xht_bit_sel_o(),
+      .entropy_src_xht_health_test_window_o(),
       .entropy_src_xht_meta_o(),
       .entropy_src_xht_meta_i(entropy_src_pkg::ENTROPY_SRC_XHT_META_RSP_DEFAULT),
       .otp_en_entropy_src_fw_read_i(prim_mubi_pkg::MuBi8True),
