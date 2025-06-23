@@ -6,20 +6,20 @@
 
 `include "prim_assert.sv"
 
-module otp_macro_reg_top
+module otp_macro_prim_reg_top
   # (
     parameter bit          EnableRacl           = 1'b0,
     parameter bit          RaclErrorRsp         = 1'b1,
-    parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[otp_macro_reg_pkg::NumRegs] =
-      '{otp_macro_reg_pkg::NumRegs{0}}
+    parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[otp_macro_reg_pkg::NumRegsPrim] =
+      '{otp_macro_reg_pkg::NumRegsPrim{0}}
   ) (
   input clk_i,
   input rst_ni,
   input  tlul_pkg::tl_h2d_t tl_i,
   output tlul_pkg::tl_d2h_t tl_o,
   // To HW
-  output otp_macro_reg_pkg::otp_macro_reg2hw_t reg2hw, // Write
-  input  otp_macro_reg_pkg::otp_macro_hw2reg_t hw2reg, // Read
+  output otp_macro_reg_pkg::otp_macro_prim_reg2hw_t reg2hw, // Write
+  input  otp_macro_reg_pkg::otp_macro_prim_hw2reg_t hw2reg, // Read
 
   // RACL interface
   input  top_racl_pkg::racl_policy_vec_t racl_policies_i,
@@ -2362,26 +2362,26 @@ module otp_macro_reg_top
   // Check sub-word write is permitted
   always_comb begin
     wr_err = (reg_we &
-              ((racl_addr_hit_write[ 0] & (|(OTP_MACRO_PERMIT[ 0] & ~reg_be))) |
-               (racl_addr_hit_write[ 1] & (|(OTP_MACRO_PERMIT[ 1] & ~reg_be))) |
-               (racl_addr_hit_write[ 2] & (|(OTP_MACRO_PERMIT[ 2] & ~reg_be))) |
-               (racl_addr_hit_write[ 3] & (|(OTP_MACRO_PERMIT[ 3] & ~reg_be))) |
-               (racl_addr_hit_write[ 4] & (|(OTP_MACRO_PERMIT[ 4] & ~reg_be))) |
-               (racl_addr_hit_write[ 5] & (|(OTP_MACRO_PERMIT[ 5] & ~reg_be))) |
-               (racl_addr_hit_write[ 6] & (|(OTP_MACRO_PERMIT[ 6] & ~reg_be))) |
-               (racl_addr_hit_write[ 7] & (|(OTP_MACRO_PERMIT[ 7] & ~reg_be))) |
-               (racl_addr_hit_write[ 8] & (|(OTP_MACRO_PERMIT[ 8] & ~reg_be))) |
-               (racl_addr_hit_write[ 9] & (|(OTP_MACRO_PERMIT[ 9] & ~reg_be))) |
-               (racl_addr_hit_write[10] & (|(OTP_MACRO_PERMIT[10] & ~reg_be))) |
-               (racl_addr_hit_write[11] & (|(OTP_MACRO_PERMIT[11] & ~reg_be))) |
-               (racl_addr_hit_write[12] & (|(OTP_MACRO_PERMIT[12] & ~reg_be))) |
-               (racl_addr_hit_write[13] & (|(OTP_MACRO_PERMIT[13] & ~reg_be))) |
-               (racl_addr_hit_write[14] & (|(OTP_MACRO_PERMIT[14] & ~reg_be))) |
-               (racl_addr_hit_write[15] & (|(OTP_MACRO_PERMIT[15] & ~reg_be))) |
-               (racl_addr_hit_write[16] & (|(OTP_MACRO_PERMIT[16] & ~reg_be))) |
-               (racl_addr_hit_write[17] & (|(OTP_MACRO_PERMIT[17] & ~reg_be))) |
-               (racl_addr_hit_write[18] & (|(OTP_MACRO_PERMIT[18] & ~reg_be))) |
-               (racl_addr_hit_write[19] & (|(OTP_MACRO_PERMIT[19] & ~reg_be)))));
+              ((racl_addr_hit_write[ 0] & (|(OTP_MACRO_PRIM_PERMIT[ 0] & ~reg_be))) |
+               (racl_addr_hit_write[ 1] & (|(OTP_MACRO_PRIM_PERMIT[ 1] & ~reg_be))) |
+               (racl_addr_hit_write[ 2] & (|(OTP_MACRO_PRIM_PERMIT[ 2] & ~reg_be))) |
+               (racl_addr_hit_write[ 3] & (|(OTP_MACRO_PRIM_PERMIT[ 3] & ~reg_be))) |
+               (racl_addr_hit_write[ 4] & (|(OTP_MACRO_PRIM_PERMIT[ 4] & ~reg_be))) |
+               (racl_addr_hit_write[ 5] & (|(OTP_MACRO_PRIM_PERMIT[ 5] & ~reg_be))) |
+               (racl_addr_hit_write[ 6] & (|(OTP_MACRO_PRIM_PERMIT[ 6] & ~reg_be))) |
+               (racl_addr_hit_write[ 7] & (|(OTP_MACRO_PRIM_PERMIT[ 7] & ~reg_be))) |
+               (racl_addr_hit_write[ 8] & (|(OTP_MACRO_PRIM_PERMIT[ 8] & ~reg_be))) |
+               (racl_addr_hit_write[ 9] & (|(OTP_MACRO_PRIM_PERMIT[ 9] & ~reg_be))) |
+               (racl_addr_hit_write[10] & (|(OTP_MACRO_PRIM_PERMIT[10] & ~reg_be))) |
+               (racl_addr_hit_write[11] & (|(OTP_MACRO_PRIM_PERMIT[11] & ~reg_be))) |
+               (racl_addr_hit_write[12] & (|(OTP_MACRO_PRIM_PERMIT[12] & ~reg_be))) |
+               (racl_addr_hit_write[13] & (|(OTP_MACRO_PRIM_PERMIT[13] & ~reg_be))) |
+               (racl_addr_hit_write[14] & (|(OTP_MACRO_PRIM_PERMIT[14] & ~reg_be))) |
+               (racl_addr_hit_write[15] & (|(OTP_MACRO_PRIM_PERMIT[15] & ~reg_be))) |
+               (racl_addr_hit_write[16] & (|(OTP_MACRO_PRIM_PERMIT[16] & ~reg_be))) |
+               (racl_addr_hit_write[17] & (|(OTP_MACRO_PRIM_PERMIT[17] & ~reg_be))) |
+               (racl_addr_hit_write[18] & (|(OTP_MACRO_PRIM_PERMIT[18] & ~reg_be))) |
+               (racl_addr_hit_write[19] & (|(OTP_MACRO_PRIM_PERMIT[19] & ~reg_be)))));
   end
 
   // Generate write-enables

@@ -352,8 +352,8 @@
       clock_srcs: {clk_i: "io"},
       clock_group: "secure",
       reset_connections: {rst_ni: "lc_io"},
-      base_addr: {
-        hart: "0x30140000",
+      base_addrs: {
+        prim: {hart: "0x30140000"},
       },
       param_decl: {
         Width: "otp_ctrl_macro_pkg::OtpWidth",

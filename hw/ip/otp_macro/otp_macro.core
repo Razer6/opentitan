@@ -26,7 +26,7 @@ filesets:
       - scs:lib:cdc_buf
     files:
       - rtl/otp_macro_reg_pkg.sv
-      - rtl/otp_macro_reg_top.sv
+      - rtl/otp_macro_prim_reg_top.sv
       - rtl/rivos_tsmc_fuse_wrapper.sv
       - rtl/prim_otp_mem.sv
       - rtl/otp_macro.sv

@@ -775,8 +775,8 @@ module top_earlgrey #(
   tlul_pkg::tl_d2h_t       pinmux_aon_tl_rsp;
   tlul_pkg::tl_h2d_t       otp_ctrl_core_tl_req;
   tlul_pkg::tl_d2h_t       otp_ctrl_core_tl_rsp;
-  tlul_pkg::tl_h2d_t       otp_macro_tl_req;
-  tlul_pkg::tl_d2h_t       otp_macro_tl_rsp;
+  tlul_pkg::tl_h2d_t       otp_macro_prim_tl_req;
+  tlul_pkg::tl_d2h_t       otp_macro_prim_tl_rsp;
   tlul_pkg::tl_h2d_t       lc_ctrl_regs_tl_req;
   tlul_pkg::tl_d2h_t       lc_ctrl_regs_tl_rsp;
   tlul_pkg::tl_h2d_t       sensor_ctrl_aon_tl_req;
@@ -1577,8 +1577,8 @@ module top_earlgrey #(
       .cfg_rsp_o(),
       .racl_policies_i(top_racl_pkg::RACL_POLICY_VEC_DEFAULT),
       .racl_error_o(),
-      .tl_i(otp_macro_tl_req),
-      .tl_o(otp_macro_tl_rsp),
+      .prim_tl_i(otp_macro_prim_tl_req),
+      .prim_tl_o(otp_macro_prim_tl_rsp),
       .scanmode_i,
       .scan_rst_ni,
       .scan_en_i,
@@ -3226,9 +3226,9 @@ module top_earlgrey #(
     .tl_otp_ctrl__core_o(otp_ctrl_core_tl_req),
     .tl_otp_ctrl__core_i(otp_ctrl_core_tl_rsp),
 
-    // port: tl_otp_macro
-    .tl_otp_macro_o(otp_macro_tl_req),
-    .tl_otp_macro_i(otp_macro_tl_rsp),
+    // port: tl_otp_macro__prim
+    .tl_otp_macro__prim_o(otp_macro_prim_tl_req),
+    .tl_otp_macro__prim_i(otp_macro_prim_tl_rsp),
 
     // port: tl_lc_ctrl__regs
     .tl_lc_ctrl__regs_o(lc_ctrl_regs_tl_req),

@@ -7,14 +7,14 @@
 package otp_macro_reg_pkg;
 
   // Address widths within the block
-  parameter int BlockAw = 7;
+  parameter int PrimAw = 7;
 
   // Number of registers for every interface
-  parameter int NumRegs = 20;
+  parameter int NumRegsPrim = 20;
 
-  ////////////////////////////
-  // Typedefs for registers //
-  ////////////////////////////
+  ///////////////////////////////////////////////
+  // Typedefs for registers for prim interface //
+  ///////////////////////////////////////////////
 
   typedef struct packed {
     struct packed {
@@ -327,7 +327,7 @@ package otp_macro_reg_pkg;
     } ecc_info_0;
   } otp_macro_hw2reg_read_ecc_info_reg_t;
 
-  // Register -> HW type
+  // Register -> HW type for prim interface
   typedef struct packed {
     otp_macro_reg2hw_macro_control_reg_t macro_control; // [567:554]
     otp_macro_reg2hw_fuse_wrapper_rd_cfg_0_reg_t fuse_wrapper_rd_cfg_0; // [553:520]
@@ -348,37 +348,37 @@ package otp_macro_reg_pkg;
     otp_macro_reg2hw_fuse_wrapper_wr_cfg_6_reg_t fuse_wrapper_wr_cfg_6; // [77:46]
     otp_macro_reg2hw_fuse_wrapper_wr_cfg_7_reg_t fuse_wrapper_wr_cfg_7; // [45:19]
     otp_macro_reg2hw_fuse_wrapper_wr_cfg_8_reg_t fuse_wrapper_wr_cfg_8; // [18:0]
-  } otp_macro_reg2hw_t;
+  } otp_macro_prim_reg2hw_t;
 
-  // HW -> register type
+  // HW -> register type for prim interface
   typedef struct packed {
     otp_macro_hw2reg_macro_control_reg_t macro_control; // [37:36]
     otp_macro_hw2reg_read_ecc_info_reg_t read_ecc_info; // [35:0]
-  } otp_macro_hw2reg_t;
+  } otp_macro_prim_hw2reg_t;
 
-  // Register offsets
-  parameter logic [BlockAw-1:0] OTP_MACRO_MACRO_CONTROL_OFFSET = 7'h 0;
-  parameter logic [BlockAw-1:0] OTP_MACRO_READ_ECC_INFO_OFFSET = 7'h 4;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_0_OFFSET = 7'h 8;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_1_OFFSET = 7'h c;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_2_OFFSET = 7'h 10;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_3_OFFSET = 7'h 14;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_4_OFFSET = 7'h 18;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_5_OFFSET = 7'h 1c;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_6_OFFSET = 7'h 20;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_7_OFFSET = 7'h 24;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_8_OFFSET = 7'h 28;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_0_OFFSET = 7'h 2c;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_1_OFFSET = 7'h 30;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_2_OFFSET = 7'h 34;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_3_OFFSET = 7'h 38;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_4_OFFSET = 7'h 3c;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_5_OFFSET = 7'h 40;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_6_OFFSET = 7'h 44;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_7_OFFSET = 7'h 48;
-  parameter logic [BlockAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_8_OFFSET = 7'h 4c;
+  // Register offsets for prim interface
+  parameter logic [PrimAw-1:0] OTP_MACRO_MACRO_CONTROL_OFFSET = 7'h 0;
+  parameter logic [PrimAw-1:0] OTP_MACRO_READ_ECC_INFO_OFFSET = 7'h 4;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_0_OFFSET = 7'h 8;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_1_OFFSET = 7'h c;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_2_OFFSET = 7'h 10;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_3_OFFSET = 7'h 14;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_4_OFFSET = 7'h 18;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_5_OFFSET = 7'h 1c;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_6_OFFSET = 7'h 20;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_7_OFFSET = 7'h 24;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_RD_CFG_8_OFFSET = 7'h 28;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_0_OFFSET = 7'h 2c;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_1_OFFSET = 7'h 30;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_2_OFFSET = 7'h 34;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_3_OFFSET = 7'h 38;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_4_OFFSET = 7'h 3c;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_5_OFFSET = 7'h 40;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_6_OFFSET = 7'h 44;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_7_OFFSET = 7'h 48;
+  parameter logic [PrimAw-1:0] OTP_MACRO_FUSE_WRAPPER_WR_CFG_8_OFFSET = 7'h 4c;
 
-  // Register index
+  // Register index for prim interface
   typedef enum int {
     OTP_MACRO_MACRO_CONTROL,
     OTP_MACRO_READ_ECC_INFO,
@@ -400,10 +400,10 @@ package otp_macro_reg_pkg;
     OTP_MACRO_FUSE_WRAPPER_WR_CFG_6,
     OTP_MACRO_FUSE_WRAPPER_WR_CFG_7,
     OTP_MACRO_FUSE_WRAPPER_WR_CFG_8
-  } otp_macro_id_e;
+  } otp_macro_prim_id_e;
 
-  // Register width information to check illegal writes
-  parameter logic [3:0] OTP_MACRO_PERMIT [20] = '{
+  // Register width information to check illegal writes for prim interface
+  parameter logic [3:0] OTP_MACRO_PRIM_PERMIT [20] = '{
     4'b 0011, // index[ 0] OTP_MACRO_MACRO_CONTROL
     4'b 1111, // index[ 1] OTP_MACRO_READ_ECC_INFO
     4'b 1111, // index[ 2] OTP_MACRO_FUSE_WRAPPER_RD_CFG_0
