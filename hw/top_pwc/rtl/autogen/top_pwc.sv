@@ -138,6 +138,7 @@ module top_pwc #(
   output top_racl_pkg::racl_policy_vec_t       racl_policies_o,
   input  top_racl_pkg::racl_error_log_t [RaclCtrlPwcNumExternalSubscribingIps-1:0] racl_error_i,
   input  prim_mubi_pkg::mubi8_t       ac_range_check_overwrite_i,
+  output logic       aon_timer_rst_req_o,
 
   // Incoming interrupt of group pwc_external
   input logic [top_pwc_pkg::NIncomingInterruptsPwcExternal-1:0] incoming_interrupt_pwc_external_i,
@@ -465,7 +466,7 @@ module top_pwc #(
       // Inter-module signals
       .nmi_wdog_timer_bark_o(aon_timer_aon_nmi_wdog_timer_bark),
       .wkup_req_o(),
-      .aon_timer_rst_req_o(),
+      .aon_timer_rst_req_o(aon_timer_rst_req_o),
       .lc_escalate_en_i(pwc_soc_proxy_lc_escalate_en),
       .sleep_mode_i('0),
       .racl_policies_i(racl_ctrl_pwc_racl_policies),

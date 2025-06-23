@@ -358,7 +358,6 @@
           nodes:
           [
             rv_timer
-            rstmgr_aon
             aon_timer_aon
             sram_ctrl_ret_aon
             rv_plic_mio
@@ -559,6 +558,10 @@
           width: 1
           default: 1'b0
           inst_name: aon_timer_aon
+          package: ""
+          external: true
+          top_signame: aon_timer_rst_req
+          conn_type: false
           index: -1
         }
         {
@@ -6019,6 +6022,7 @@
       racl_ctrl_mio.racl_policies: racl_policies
       racl_ctrl_mio.racl_error_external: racl_error
       ac_range_check_mio.range_check_overwrite: ac_range_check_overwrite
+      aon_timer_aon.aon_timer_rst_req: aon_timer_rst_req
     }
   }
   xbar:
@@ -12425,6 +12429,10 @@
         width: 1
         default: 1'b0
         inst_name: aon_timer_aon
+        package: ""
+        external: true
+        top_signame: aon_timer_rst_req
+        conn_type: false
         index: -1
       }
       {
@@ -16019,6 +16027,18 @@
         conn_type: false
         index: -1
         netname: ac_range_check_overwrite
+      }
+      {
+        package: ""
+        struct: logic
+        signame: aon_timer_rst_req_o
+        width: 1
+        type: uni
+        default: 1'b0
+        direction: out
+        conn_type: false
+        index: -1
+        netname: aon_timer_rst_req
       }
     ]
     definitions:
