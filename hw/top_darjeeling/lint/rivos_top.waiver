@@ -188,6 +188,8 @@ waive -rules PARAM_NOT_USED  -location {prim_rdp_clock_inv.sv} -regexp {Paramete
 waive -rules PARAM_NOT_USED  -location {RDP_ASYNC_FIFO.sv}     -regexp {Parameter 'ALLOW_X_INPUT' not used in module 'RDP_ASYNC_FIFO'}   -comment "ALLOW_X_INPUT is not used in RDP primitive"
 
 waive -rules CLOCK_USE  -location {top_darjeeling.sv} -regexp {'clkmgr_aon_clocks.clk_io_peri' is connected to 'spi_device' port 'scan_clk_i', and used as a clock 'clk_i' at tlul_adapter_reg.sv}   -comment "IO clock used for scan"
+waive -rules CLOCK_USE  -location {prim_ram_1p_scr.sv} -regexp {'clk_i' is connected to 'prim_flop' port 'clk_i', and used as a clock 'clk' at}   -comment "clock passed down to prim"
+waive -rules RESET_USE  -location {prim_ram_1p_scr.sv} -regexp {'rst_ni' is connected to 'prim_flop' port 'rst_ni', and used as an asynchronous reset or set}   -comment "reset passed down to prim"
 
 waive -rules RESET_DRIVER -location {rivos_tsmc_fuse_wrapper.sv}    -regexp {'rst_efuse_n' is driven by instance 'efuse_rst_sync' of module 'RDP_RSTSYNC_DFT', and used as an asynchronous reset} -comment "OK per rivos reset strategy"
 waive -rules RESET_USE    -location {rstmgr_por.sv}                 -regexp {'rst_no' is used for some other purpose, and as asynchronous reset}      -comment "OT code, should be addressed by them"

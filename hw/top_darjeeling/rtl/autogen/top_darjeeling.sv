@@ -56,6 +56,7 @@ module top_darjeeling #(
   parameter bit SramCtrlRetAonEccCorrection = 0,
   parameter bit SramCtrlRetAonFlopRamOutput = 1,
   parameter bit SramCtrlRetAonFlopWdataScramble = 0,
+  parameter bit SramCtrlRetAonFlopReadAddrScramble = 0,
   // parameters for rv_dm
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
   parameter bit RvDmUseDmiInterface = 1,
@@ -99,6 +100,7 @@ module top_darjeeling #(
   parameter bit SramCtrlMainEccCorrection = 0,
   parameter bit SramCtrlMainFlopRamOutput = 1,
   parameter bit SramCtrlMainFlopWdataScramble = 1,
+  parameter bit SramCtrlMainFlopReadAddrScramble = 0,
   // parameters for sram_ctrl_mbox
   parameter int SramCtrlMboxInstSize = 4096,
   parameter int SramCtrlMboxNumRamInst = 1,
@@ -107,6 +109,7 @@ module top_darjeeling #(
   parameter bit SramCtrlMboxEccCorrection = 0,
   parameter bit SramCtrlMboxFlopRamOutput = 1,
   parameter bit SramCtrlMboxFlopWdataScramble = 1,
+  parameter bit SramCtrlMboxFlopReadAddrScramble = 0,
   // parameters for rom_ctrl0
   parameter RomCtrl0BootRomInitFile = "",
   parameter bit SecRomCtrl0DisableScrambling = 1'b0,
@@ -1689,7 +1692,8 @@ module top_darjeeling #(
     .Outstanding(SramCtrlRetAonOutstanding),
     .EccCorrection(SramCtrlRetAonEccCorrection),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
-    .FlopWdataScramble(SramCtrlRetAonFlopWdataScramble)
+    .FlopWdataScramble(SramCtrlRetAonFlopWdataScramble),
+    .FlopReadAddrScramble(SramCtrlRetAonFlopReadAddrScramble)
   ) u_sram_ctrl_ret_aon (
       // [21]: fatal_error
       .alert_tx_o  ( alert_tx[21:21] ),
@@ -2068,7 +2072,8 @@ module top_darjeeling #(
     .Outstanding(SramCtrlMainOutstanding),
     .EccCorrection(SramCtrlMainEccCorrection),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
-    .FlopWdataScramble(SramCtrlMainFlopWdataScramble)
+    .FlopWdataScramble(SramCtrlMainFlopWdataScramble),
+    .FlopReadAddrScramble(SramCtrlMainFlopReadAddrScramble)
   ) u_sram_ctrl_main (
       // [39]: fatal_error
       .alert_tx_o  ( alert_tx[39:39] ),
@@ -2111,7 +2116,8 @@ module top_darjeeling #(
     .Outstanding(SramCtrlMboxOutstanding),
     .EccCorrection(SramCtrlMboxEccCorrection),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
-    .FlopWdataScramble(SramCtrlMboxFlopWdataScramble)
+    .FlopWdataScramble(SramCtrlMboxFlopWdataScramble),
+    .FlopReadAddrScramble(SramCtrlMboxFlopReadAddrScramble)
   ) u_sram_ctrl_mbox (
       // [40]: fatal_error
       .alert_tx_o  ( alert_tx[40:40] ),

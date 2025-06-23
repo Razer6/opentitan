@@ -25,6 +25,7 @@ module top_mio #(
   parameter bit SramCtrlRetAonEccCorrection = 1,
   parameter bit SramCtrlRetAonFlopRamOutput = 1,
   parameter bit SramCtrlRetAonFlopWdataScramble = 0,
+  parameter bit SramCtrlRetAonFlopReadAddrScramble = 0,
   // parameters for rv_dm
   parameter logic [31:0] RvDmIdcodeValue = 32'h 0000_0001,
   parameter bit RvDmUseDmiInterface = 1,
@@ -39,6 +40,7 @@ module top_mio #(
   parameter bit SramCtrlMainEccCorrection = 1,
   parameter bit SramCtrlMainFlopRamOutput = 1,
   parameter bit SramCtrlMainFlopWdataScramble = 1,
+  parameter bit SramCtrlMainFlopReadAddrScramble = 0,
   // parameters for sram_ctrl_mbox
   parameter int SramCtrlMboxInstSize = 4096,
   parameter int SramCtrlMboxNumRamInst = 1,
@@ -47,6 +49,7 @@ module top_mio #(
   parameter bit SramCtrlMboxEccCorrection = 1,
   parameter bit SramCtrlMboxFlopRamOutput = 1,
   parameter bit SramCtrlMboxFlopWdataScramble = 1,
+  parameter bit SramCtrlMboxFlopReadAddrScramble = 0,
   // parameters for dma
   parameter bit DmaEnableDataIntgGen = 1'b1,
   parameter bit DmaEnableRspDataIntgCheck = 1'b1,
@@ -452,7 +455,8 @@ module top_mio #(
     .Outstanding(SramCtrlRetAonOutstanding),
     .EccCorrection(SramCtrlRetAonEccCorrection),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
-    .FlopWdataScramble(SramCtrlRetAonFlopWdataScramble)
+    .FlopWdataScramble(SramCtrlRetAonFlopWdataScramble),
+    .FlopReadAddrScramble(SramCtrlRetAonFlopReadAddrScramble)
   ) u_sram_ctrl_ret_aon (
       // External alert group "mio" [2]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[2:2] ),
@@ -572,7 +576,8 @@ module top_mio #(
     .Outstanding(SramCtrlMainOutstanding),
     .EccCorrection(SramCtrlMainEccCorrection),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
-    .FlopWdataScramble(SramCtrlMainFlopWdataScramble)
+    .FlopWdataScramble(SramCtrlMainFlopWdataScramble),
+    .FlopReadAddrScramble(SramCtrlMainFlopReadAddrScramble)
   ) u_sram_ctrl_main (
       // External alert group "mio" [5]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[5:5] ),
@@ -618,7 +623,8 @@ module top_mio #(
     .Outstanding(SramCtrlMboxOutstanding),
     .EccCorrection(SramCtrlMboxEccCorrection),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
-    .FlopWdataScramble(SramCtrlMboxFlopWdataScramble)
+    .FlopWdataScramble(SramCtrlMboxFlopWdataScramble),
+    .FlopReadAddrScramble(SramCtrlMboxFlopReadAddrScramble)
   ) u_sram_ctrl_mbox (
       // External alert group "mio" [6]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[6:6] ),
