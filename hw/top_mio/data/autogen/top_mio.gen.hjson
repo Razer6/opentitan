@@ -1978,7 +1978,8 @@
       param_decl:
       {
         InstrExec: "1"
-        InstSize: 65536
+        InstSize: 32768
+        NumRamInst: 2
         FlopRamOutput: 1
         EccCorrection: 1
         FlopWdataScramble: 1
@@ -2087,7 +2088,7 @@
           name: InstSize
           desc: Memory size of a single RAM tile (in bytes).
           type: int
-          default: 65536
+          default: 32768
           local: "false"
           expose: "true"
           name_top: SramCtrlMainInstSize
@@ -2096,7 +2097,7 @@
           name: NumRamInst
           desc: Number of internal RAM instances. Must be the same as ceil(MemSizeRam / InstSize) .
           type: int
-          default: 1
+          default: 2
           local: "false"
           expose: "true"
           name_top: SramCtrlMainNumRamInst

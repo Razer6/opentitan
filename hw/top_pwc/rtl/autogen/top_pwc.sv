@@ -35,8 +35,8 @@ module top_pwc #(
   parameter logic [tlul_pkg::RsvdWidth-1:0] RvDmTlulHostUserRsvdBits = '0,
   // parameters for rv_plic_pwc
   // parameters for sram_ctrl_main
-  parameter int SramCtrlMainInstSize = 65536,
-  parameter int SramCtrlMainNumRamInst = 1,
+  parameter int SramCtrlMainInstSize = 32768,
+  parameter int SramCtrlMainNumRamInst = 2,
   parameter bit SramCtrlMainInstrExec = 1,
   parameter int SramCtrlMainNumPrinceRoundsHalf = 3,
   parameter bit SramCtrlMainEccCorrection = 1,
