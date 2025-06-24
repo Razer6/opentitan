@@ -18171,6 +18171,15 @@
         width: 1
         lpg_idx: 0
       }
+      {
+        name: mio_rst_req
+        module_name: scsmio
+        index: 2
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
     ]
     pwc_extra:
     [
@@ -18214,6 +18223,15 @@
         name: pwc_tlul_pcie_integ_error
         module_name: scspwc
         index: 4
+        type: alert
+        async: 1
+        width: 1
+        lpg_idx: 0
+      }
+      {
+        name: pwc_rst_req
+        module_name: scspwc
+        index: 5
         type: alert
         async: 1
         width: 1

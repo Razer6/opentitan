@@ -16,7 +16,7 @@
  * `top_darjeeling_alert_peripheral_t`.
  */
 const top_darjeeling_alert_peripheral_t
-    top_darjeeling_alert_for_peripheral[193] = {
+    top_darjeeling_alert_for_peripheral[195] = {
   [kTopDarjeelingAlertIdUart0FatalFault] = kTopDarjeelingAlertPeripheralUart0,
   [kTopDarjeelingAlertIdGpioFatalFault] = kTopDarjeelingAlertPeripheralGpio,
   [kTopDarjeelingAlertIdSpiDeviceFatalFault] = kTopDarjeelingAlertPeripheralSpiDevice,
@@ -154,11 +154,13 @@ const top_darjeeling_alert_peripheral_t
   [kTopDarjeelingAlertIdIncomingPwcRvCoreIbexPwcRecovHwErr] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingMioExtraHdrIntegErrorScsmioHdr] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingMioExtraMioTlulPcieIntegErrorScsmio] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingMioExtraMioRstReqScsmio] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingPwcExtraHdrIntegErrorScspwcHdr] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingPwcExtraDvfsHdrIntegErrorScspwcHdr] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingPwcExtraLteuHdrIntegErrorScspwcHdr] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingPwcExtraPwcBcastHdrIntegErrorScspwcHdr] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingPwcExtraPwcTlulPcieIntegErrorScspwc] = kTopDarjeelingAlertPeripheralExternal,
+  [kTopDarjeelingAlertIdIncomingPwcExtraPwcRstReqScspwc] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAmsIpWrapperIntegError] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraAmsIpWrapperCsrngRecov] = kTopDarjeelingAlertPeripheralExternal,
   [kTopDarjeelingAlertIdIncomingRotExtraRcWidgetIntegError] = kTopDarjeelingAlertPeripheralExternal,

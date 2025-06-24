@@ -806,11 +806,12 @@ package top_darjeeling_pkg;
   typedef enum int unsigned {
     TopDarjeelingIncomingAlertMioExtraIdHdrIntegError = 0,
     TopDarjeelingIncomingAlertMioExtraIdMioTlulPcieIntegError = 1,
+    TopDarjeelingIncomingAlertMioExtraIdMioRstReq = 2,
     TopDarjeelingIncomingAlertMioExtraIdCount
   } incoming_alert_mio_extra_id_e;
 
   // Number of mio_extra incoming alerts
-  parameter int unsigned NIncomingAlertsMio_extra = 2;
+  parameter int unsigned NIncomingAlertsMio_extra = 3;
 
   // Number of LPGs for incoming alert group mio_extra
   parameter int unsigned NIncomingLpgsMio_extra = 1;
@@ -822,11 +823,12 @@ package top_darjeeling_pkg;
     TopDarjeelingIncomingAlertPwcExtraIdLteuHdrIntegError = 2,
     TopDarjeelingIncomingAlertPwcExtraIdPwcBcastHdrIntegError = 3,
     TopDarjeelingIncomingAlertPwcExtraIdPwcTlulPcieIntegError = 4,
+    TopDarjeelingIncomingAlertPwcExtraIdPwcRstReq = 5,
     TopDarjeelingIncomingAlertPwcExtraIdCount
   } incoming_alert_pwc_extra_id_e;
 
   // Number of pwc_extra incoming alerts
-  parameter int unsigned NIncomingAlertsPwc_extra = 5;
+  parameter int unsigned NIncomingAlertsPwc_extra = 6;
 
   // Number of LPGs for incoming alert group pwc_extra
   parameter int unsigned NIncomingLpgsPwc_extra = 1;

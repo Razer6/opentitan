@@ -49,5 +49,14 @@
             width: 1
             lpg_idx: 0
         }
+        {
+            name: pwc_rst_req
+            module_name: scspwc
+            index: 5
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
     ]
 }

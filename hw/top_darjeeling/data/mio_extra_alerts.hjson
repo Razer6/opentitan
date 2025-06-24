@@ -22,5 +22,14 @@
             width: 1
             lpg_idx: 0
         }
+        {
+            name: mio_rst_req
+            module_name: scsmio
+            index: 2
+            type: alert
+            async: 1
+            width: 1
+            lpg_idx: 0
+        }
     ]
 }
