@@ -12,6 +12,7 @@ filesets:
       - rivos:rdplib:rtl_primitives
       - rivos:rdplib:rdp_async
       - rivos:rdplib:rdp_gate
+      - lowrisc:prim_rdp:flop
     files:
       - rtl/prim_rdp_flop_en.sv
     file_type: systemVerilogSource
@@ -25,6 +26,9 @@ filesets:
     depend:
       # common waivers
       - lowrisc:lint:common
+    files:
+      - lint/prim_rdp_flop_en.waiver
+    file_type: waiver
 
   files_veriblelint_waiver:
     depend:

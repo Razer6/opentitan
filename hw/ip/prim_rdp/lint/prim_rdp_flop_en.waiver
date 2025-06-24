@@ -1,0 +1,11 @@
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+#
+# primitives: prim_rdp_flop_en
+waive -rules CLOCK_USE -location {prim_rdp_flop_en.sv} -regexp {'clk_i' is connected to 'prim_rdp_flop' port 'clk_i', and used as a clock 'clk' at RDP_GATE_AFFR.sv} \
+      -comment "Clock use ok, used to instantiate ordinary RDP flop"
+
+waive -rules RESET_USE -location {prim_rdp_flop_en.sv} -regexp {'rst_ni' is connected to 'prim_rdp_flop' port 'rst_ni', and used as an asynchronous reset or set} \
+      -comment "Reset use ok, used to instantiate ordinary RDP flop"
+
