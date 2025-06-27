@@ -119,6 +119,13 @@ package scs_ac_range_check_reg_pkg;
 
   typedef struct packed {
     struct packed {
+      logic        d;
+      logic        de;
+    } log_clear;
+  } scs_ac_range_check_hw2reg_log_config_reg_t;
+
+  typedef struct packed {
+    struct packed {
       logic [5:0]  d;
       logic        de;
     } deny_range_index;
@@ -181,8 +188,9 @@ package scs_ac_range_check_reg_pkg;
 
   // HW -> register type
   typedef struct packed {
-    scs_ac_range_check_hw2reg_intr_state_reg_t intr_state; // [81:80]
-    scs_ac_range_check_hw2reg_alert_status_reg_t alert_status; // [79:72]
+    scs_ac_range_check_hw2reg_intr_state_reg_t intr_state; // [83:82]
+    scs_ac_range_check_hw2reg_alert_status_reg_t alert_status; // [81:74]
+    scs_ac_range_check_hw2reg_log_config_reg_t log_config; // [73:72]
     scs_ac_range_check_hw2reg_log_status_reg_t log_status; // [71:33]
     scs_ac_range_check_hw2reg_log_address_reg_t log_address; // [32:0]
   } scs_ac_range_check_hw2reg_t;

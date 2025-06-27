@@ -154,7 +154,6 @@ module scs_ac_range_check_reg_top
   logic log_config_we;
   logic log_config_log_enable_qs;
   logic log_config_log_enable_wd;
-  logic log_config_log_clear_qs;
   logic log_config_log_clear_wd;
   logic [7:0] log_config_deny_cnt_threshold_qs;
   logic [7:0] log_config_deny_cnt_threshold_wd;
@@ -2356,7 +2355,7 @@ module scs_ac_range_check_reg_top
   //   F[log_clear]: 1:1
   prim_subreg #(
     .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRW),
+    .SwAccess(prim_subreg_pkg::SwAccessW1C),
     .RESVAL  (1'h0),
     .Mubi    (1'b0)
   ) u_log_config_log_clear (
@@ -2368,8 +2367,8 @@ module scs_ac_range_check_reg_top
     .wd     (log_config_log_clear_wd),
 
     // from internal hardware
-    .de     (1'b0),
-    .d      ('0),
+    .de     (hw2reg.log_config.log_clear.de),
+    .d      (hw2reg.log_config.log_clear.d),
 
     // to internal hardware
     .qe     (log_config_flds_we[1]),
@@ -2377,7 +2376,7 @@ module scs_ac_range_check_reg_top
     .ds     (),
 
     // to register interface (read)
-    .qs     (log_config_log_clear_qs)
+    .qs     ()
   );
   assign reg2hw.log_config.log_clear.qe = log_config_qe;
 
@@ -25958,7 +25957,7 @@ module scs_ac_range_check_reg_top
 
       racl_addr_hit_read[5]: begin
         reg_rdata_next[0] = log_config_log_enable_qs;
-        reg_rdata_next[1] = log_config_log_clear_qs;
+        reg_rdata_next[1] = '0;
         reg_rdata_next[9:2] = log_config_deny_cnt_threshold_qs;
       end
 
