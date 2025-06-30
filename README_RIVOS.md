@@ -10,7 +10,7 @@ The script writes the commit hash of the last cherry-pick into [LAST_OPENTITAN_S
 Steps to follow when updating:
 
 - opentitan repository:
-  - Check if there are any changes to `toplevel.sv.tpl` or other topgen-related templates.
+  - Check if there are any changes to `toplevel.sv.tpl` or other topgen-related template changes and copy them to the other top templates (e.g., pwc, mio).
   - Update all other Rivos tops based on the toplevel template changes: e.g., top_pwc, top_mio
   - `make -C hw top_and_cmdgen regs`
   - `generated_ips/generate_ips.sh`
@@ -28,8 +28,10 @@ Steps to follow when updating:
 - `hw/top_mio` top for scsmio
 - `hw/top_pwc` top for scspwc
 - vexpand footer in various `.sv` and `.sv.tpl` files
+- `util/pyregtool.py` Tool for converting OT hjson files to pyreg
+- `util/sync_opentitan_repo.sh` Script to sync with upstream
 
 Other changes can be viewed with
 ```bash
-git diff $(cat LAST_OPENTITAN_SYNC) -- $(git diff $(cat LAST_OPENTITAN_SYNC) --stat --format="" --name-only | grep -v 'autogen\|generated_ips\|hw/top_darjeeling/data/rivos-racl')
+git diff $(cat LAST_OPENTITAN_SYNC) -- $(git diff $(cat LAST_OPENTITAN_SYNC) --stat --format="" --name-only | grep -v 'autogen\|generated_ips\|hw/top_darjeeling/data/rivos-racl\|hw/top_pwc\|hw/top_mio\|util/sync_opentitan_repo.sh\|util/pyregtool.py')
 ```
