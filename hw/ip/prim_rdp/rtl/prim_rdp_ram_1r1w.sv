@@ -82,10 +82,11 @@ module prim_rdp_ram_1r1w import prim_ram_2p_pkg::*; #(
     ram_dft_signals.bist_mode   = cfg_i.sram_dft_in.bist_mode;
     ram_dft_signals.DFD_StopWE  = cfg_i.sram_dft_in.DFD_StopWE;
 
-    ram_error_inject.err_inj_loc   = cfg_i.sram_err_inj.err_inj_loc;
-    ram_error_inject.err_inj_count = cfg_i.sram_err_inj.err_inj_count;
-    ram_error_inject.err_inj_type  = cfg_i.sram_err_inj.err_inj_type;
-    ram_error_inject.err_inj_en    = cfg_i.sram_err_inj.err_inj_en;
+    ram_error_inject.err_inj_loc       = cfg_i.sram_err_inj.err_inj_loc;
+    ram_error_inject.err_inj_count     = cfg_i.sram_err_inj.err_inj_count;
+    ram_error_inject.err_inj_type      = cfg_i.sram_err_inj.err_inj_type;
+    ram_error_inject.err_inj_en        = cfg_i.sram_err_inj.err_inj_en;
+    ram_error_inject.err_inj_en_wpulse = 1'b0;
   end
 
   if(Depth==128) begin : gen_spi2sys_mem

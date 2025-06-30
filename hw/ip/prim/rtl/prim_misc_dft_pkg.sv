@@ -127,10 +127,11 @@ package prim_misc_dft_pkg;
     } copy_ram_dft_signals_t;
 
     // TODO (neal) need to fix this
-    typedef struct packed { // Total width: 13
-      logic [7:0] err_inj_loc; // lsb: 5
-      logic [1:0] err_inj_count; // lsb: 3
-      logic [1:0] err_inj_type; // lsb: 1
+    typedef struct packed { // Total width: 14
+      logic [7:0] err_inj_loc; // lsb: 6
+      logic [1:0] err_inj_count; // lsb: 4
+      logic [1:0] err_inj_type; // lsb: 2
+      logic err_inj_en_wpulse; // lsb: 1
       logic err_inj_en; // lsb: 0
     } copy_ram_error_inject_t;
 
