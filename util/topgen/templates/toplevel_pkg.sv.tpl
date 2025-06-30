@@ -111,8 +111,8 @@ package top_${top["name"]}${addr_space_suffix}_pkg;
 %       endfor
   };
 %   endfor
-
 % if has_alert_handler:
+
   // Enumeration of alert modules
   typedef enum int unsigned {
 %   for mod in top["alert_module"]:
@@ -145,8 +145,8 @@ package top_${top["name"]}${addr_space_suffix}_pkg;
   parameter int unsigned NIncomingLpgs${alert_group.capitalize()} = ${max(alert['lpg_idx'] for alert in alerts) + 1};
 %   endfor
 % endif # has_alert_handler
-
 % if has_plic:
+
   // Enumeration of interrupts
   typedef enum int unsigned {
 <% irq_id = 1 %>\

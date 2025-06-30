@@ -203,6 +203,4 @@ package top_pwc_soc_mbx_pkg;
     1'b1
   };
 
-
-
 endpackage

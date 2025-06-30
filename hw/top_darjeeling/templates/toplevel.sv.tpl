@@ -138,11 +138,11 @@ module top_${top["name"]} #(
 % for irq_group, irqs in top['incoming_interrupt'].items():
   // Incoming interrupt of group ${irq_group}
   input logic [top_${top["name"]}_pkg::NIncomingInterrupts${lib.Name.from_snake_case(irq_group).as_camel_case()}-1:0] incoming_interrupt_${irq_group}_i,
-% endfor
-% for irq_group, irqs in top["outgoing_interrupt"].items():
+  % endfor
+  % for irq_group, irqs in top["outgoing_interrupt"].items():
   // Outgoing interrupt of group ${irq_group}
   output logic [top_${top["name"]}_pkg::NOutgoingInterrupts${lib.Name.from_snake_case(irq_group).as_camel_case()}-1:0] outgoing_interrupt_${irq_group}_o,
-% endfor
+  % endfor
 
   // All externally supplied clocks
   % for clk in top['clocks'].typed_clocks().ast_clks:

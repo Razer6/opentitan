@@ -52,6 +52,4 @@ package top_darjeeling_soc_dbg_pkg;
   parameter int unsigned TOP_DARJEELING_SOC_DBG_SOC_DBG_CTRL_JTAG_SIZE_BYTES = 32'h20;
 
 
-
-
 endpackage

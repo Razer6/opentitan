@@ -383,7 +383,6 @@ package top_pwc_pkg;
     1'b1
   };
 
-
   // Enumeration of interrupts
   typedef enum int unsigned {
     TopPwcIrqIdGpioGpio0 = 1,

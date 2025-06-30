@@ -370,7 +370,6 @@ package top_mio_pkg;
     1'b1
   };
 
-
   // Enumeration of interrupts
   typedef enum int unsigned {
     TopMioIrqIdRvTimerTimerExpiredHart0Timer0 = 1,

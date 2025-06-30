@@ -123,6 +123,4 @@ package top_pwc_soc_dbg_pkg;
     1'b1
   };
 
-
-
 endpackage

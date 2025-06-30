@@ -272,7 +272,6 @@ package top_englishbreakfast_pkg;
   parameter int unsigned TOP_ENGLISHBREAKFAST_ROM_SIZE_BYTES = 32'h8000;
 
 
-
   // Enumeration of interrupts
   typedef enum int unsigned {
     TopEnglishbreakfastIrqIdUart0TxWatermark = 1,

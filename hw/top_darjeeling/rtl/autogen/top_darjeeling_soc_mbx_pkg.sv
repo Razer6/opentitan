@@ -122,6 +122,4 @@ package top_darjeeling_soc_mbx_pkg;
   parameter int unsigned TOP_DARJEELING_SOC_MBX_AC_RANGE_CHECK_SIZE_BYTES = 32'h400;
 
 
-
-
 endpackage

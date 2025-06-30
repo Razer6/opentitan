@@ -120,6 +120,4 @@ package top_mio_soc_dbg_pkg;
     1'b1
   };
 
-
-
 endpackage
