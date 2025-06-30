@@ -145,13 +145,6 @@ module top_mio #(
 
   // All externally supplied clocks
 
-  // Outgoing alerts for group mio
-  output prim_alert_pkg::alert_tx_t [top_mio_pkg::NOutgoingAlertsMio-1:0] outgoing_alert_mio_tx_o,
-  input  prim_alert_pkg::alert_rx_t [top_mio_pkg::NOutgoingAlertsMio-1:0] outgoing_alert_mio_rx_i,
-  output prim_mubi_pkg::mubi4_t     [top_mio_pkg::NOutgoingLpgsMio-1:0]   outgoing_lpg_cg_en_mio_o,
-  output prim_mubi_pkg::mubi4_t     [top_mio_pkg::NOutgoingLpgsMio-1:0]   outgoing_lpg_rst_en_mio_o,
-
-
   // Unmanaged external clocks
   input                        clk_ext_io_div4_i,
   input prim_mubi_pkg::mubi4_t cg_en_ext_io_div4_i,
@@ -167,6 +160,13 @@ module top_mio #(
   input prim_mubi_pkg::mubi4_t rst_en_ext_rst_main_i,
   input                        rst_ext_rst_aon_i,
   input prim_mubi_pkg::mubi4_t rst_en_ext_rst_aon_i,
+
+  // Outgoing alerts for group mio
+  output prim_alert_pkg::alert_tx_t [top_mio_pkg::NOutgoingAlertsMio-1:0] outgoing_alert_mio_tx_o,
+  input  prim_alert_pkg::alert_rx_t [top_mio_pkg::NOutgoingAlertsMio-1:0] outgoing_alert_mio_rx_i,
+  output prim_mubi_pkg::mubi4_t     [top_mio_pkg::NOutgoingLpgsMio-1:0]   outgoing_lpg_cg_en_mio_o,
+  output prim_mubi_pkg::mubi4_t     [top_mio_pkg::NOutgoingLpgsMio-1:0]   outgoing_lpg_rst_en_mio_o,
+
 
   input                      scan_rst_ni, // reset used for test mode
   input prim_mubi_pkg::mubi4_t scanmode_i   // lc_ctrl_pkg::On for Scan
@@ -190,7 +190,6 @@ module top_mio #(
   // local parameters for racl_ctrl_mio
   localparam int RaclCtrlMioNumSubscribingIps = 17;
 
-  // Signals
 
 
   logic [36:0]  intr_vector;
@@ -222,6 +221,7 @@ module top_mio #(
   logic intr_mbx_pcie0_mbx_ready;
   logic intr_mbx_pcie0_mbx_abort;
   logic intr_mbx_pcie0_mbx_error;
+
 
   // define inter-module signals
   logic       aon_timer_aon_nmi_wdog_timer_bark;
@@ -337,6 +337,7 @@ module top_mio #(
 
 
 
+
   // ibex specific assignments
   // TODO: This should be further automated in the future.
   assign rv_core_ibex_mio_irq_timer = intr_rv_timer_timer_expired_hart0_timer0;
@@ -347,6 +348,8 @@ module top_mio #(
 
 
 
+
+
   // Outgoing LPGs for alert group mio
   // clk_ext_io_div4_i_ext_rst_io_div4_0
   assign outgoing_lpg_cg_en_mio_o[0] = cg_en_ext_io_div4_i;
@@ -354,6 +357,7 @@ module top_mio #(
   // clk_ext_main_i_ext_rst_main_0
   assign outgoing_lpg_cg_en_mio_o[1] = cg_en_ext_main_i;
   assign outgoing_lpg_rst_en_mio_o[1] = rst_en_ext_rst_main_i;
+
 
   // Peripheral Instantiation
 
@@ -1104,6 +1108,8 @@ module top_mio #(
       .rst_esc_ni (rst_ext_rst_io_div4_i),
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
+
+
   // interrupt assignments
   assign intr_vector = {
       incoming_interrupt_mio_external_i, // IDs [28 +: 9]
@@ -1337,6 +1343,7 @@ module top_mio #(
 
     .scanmode_i
   );
+
 
   // make sure scanmode_i is never X (including during reset)
   `ASSERT_KNOWN(scanmodeKnown, scanmode_i, clk_ext_main_i, 0)

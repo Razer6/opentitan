@@ -174,13 +174,6 @@ module top_pwc #(
 
   // All externally supplied clocks
 
-  // Outgoing alerts for group pwc
-  output prim_alert_pkg::alert_tx_t [top_pwc_pkg::NOutgoingAlertsPwc-1:0] outgoing_alert_pwc_tx_o,
-  input  prim_alert_pkg::alert_rx_t [top_pwc_pkg::NOutgoingAlertsPwc-1:0] outgoing_alert_pwc_rx_i,
-  output prim_mubi_pkg::mubi4_t     [top_pwc_pkg::NOutgoingLpgsPwc-1:0]   outgoing_lpg_cg_en_pwc_o,
-  output prim_mubi_pkg::mubi4_t     [top_pwc_pkg::NOutgoingLpgsPwc-1:0]   outgoing_lpg_rst_en_pwc_o,
-
-
   // Unmanaged external clocks
   input                        clk_ext_io_div4_i,
   input prim_mubi_pkg::mubi4_t cg_en_ext_io_div4_i,
@@ -196,6 +189,13 @@ module top_pwc #(
   input prim_mubi_pkg::mubi4_t rst_en_ext_rst_main_i,
   input                        rst_ext_rst_aon_i,
   input prim_mubi_pkg::mubi4_t rst_en_ext_rst_aon_i,
+
+  // Outgoing alerts for group pwc
+  output prim_alert_pkg::alert_tx_t [top_pwc_pkg::NOutgoingAlertsPwc-1:0] outgoing_alert_pwc_tx_o,
+  input  prim_alert_pkg::alert_rx_t [top_pwc_pkg::NOutgoingAlertsPwc-1:0] outgoing_alert_pwc_rx_i,
+  output prim_mubi_pkg::mubi4_t     [top_pwc_pkg::NOutgoingLpgsPwc-1:0]   outgoing_lpg_cg_en_pwc_o,
+  output prim_mubi_pkg::mubi4_t     [top_pwc_pkg::NOutgoingLpgsPwc-1:0]   outgoing_lpg_rst_en_pwc_o,
+
 
   input                      scan_rst_ni, // reset used for test mode
   input prim_mubi_pkg::mubi4_t scanmode_i   // lc_ctrl_pkg::On for Scan
@@ -218,6 +218,8 @@ module top_pwc #(
   localparam int SramCtrlMboxOutstanding = 6;
   // local parameters for racl_ctrl_pwc
   localparam int RaclCtrlPwcNumSubscribingIps = 18;
+
+
 
   logic [251:0]  intr_vector;
   // Interrupt source list
@@ -249,6 +251,7 @@ module top_pwc #(
   logic intr_mbx_pcie0_mbx_ready;
   logic intr_mbx_pcie0_mbx_abort;
   logic intr_mbx_pcie0_mbx_error;
+
 
   // define inter-module signals
   logic       aon_timer_aon_nmi_wdog_timer_bark;
@@ -366,6 +369,7 @@ module top_pwc #(
 
 
 
+
   // ibex specific assignments
   // TODO: This should be further automated in the future.
   assign rv_core_ibex_pwc_irq_timer = intr_rv_timer_timer_expired_hart0_timer0;
@@ -374,7 +378,8 @@ module top_pwc #(
   // Unconditionally disable the late debug feature and enable early debug
   assign rv_dm_otp_dis_rv_dm_late_debug = prim_mubi_pkg::MuBi8True;
 
-  logic [31:0]  cio_gpio_gpio_p2d;
+
+  logic [31:0] cio_gpio_gpio_p2d;
   logic [31:0] cio_gpio_gpio_d2p;
   logic [31:0] cio_gpio_gpio_en_d2p;
 
@@ -391,6 +396,7 @@ module top_pwc #(
   // clk_ext_main_i_ext_rst_main_0
   assign outgoing_lpg_cg_en_pwc_o[1] = cg_en_ext_main_i;
   assign outgoing_lpg_rst_en_pwc_o[1] = rst_en_ext_rst_main_i;
+
 
   // Peripheral Instantiation
 
@@ -1177,6 +1183,8 @@ module top_pwc #(
       .rst_esc_ni (rst_ext_rst_io_div4_i),
       .rst_otp_ni (rst_ext_rst_io_div4_i)
   );
+
+
   // interrupt assignments
   assign intr_vector = {
       incoming_interrupt_pwc_external_i, // IDs [60 +: 192]
@@ -1415,6 +1423,7 @@ module top_pwc #(
 
     .scanmode_i
   );
+
 
   // make sure scanmode_i is never X (including during reset)
   `ASSERT_KNOWN(scanmodeKnown, scanmode_i, clk_ext_main_i, 0)
