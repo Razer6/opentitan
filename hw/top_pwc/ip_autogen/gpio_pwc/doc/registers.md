@@ -3,26 +3,26 @@
 <!-- BEGIN CMDGEN util/regtool.py -d ./hw/top_pwc/ip_autogen/gpio_pwc/data/gpio_pwc.hjson -->
 ## Summary
 
-| Name                                                           | Offset   |   Length | Description                                                             |
-|:---------------------------------------------------------------|:---------|---------:|:------------------------------------------------------------------------|
-| gpio_pwc.[`INTR_STATE`](#intr_state)                           | 0x0      |        4 | Interrupt State Register                                                |
-| gpio_pwc.[`INTR_ENABLE`](#intr_enable)                         | 0x4      |        4 | Interrupt Enable Register                                               |
-| gpio_pwc.[`INTR_TEST`](#intr_test)                             | 0x8      |        4 | Interrupt Test Register                                                 |
-| gpio_pwc.[`ALERT_TEST`](#alert_test)                           | 0xc      |        4 | Alert Test Register                                                     |
-| gpio_pwc.[`DATA_IN`](#data_in)                                 | 0x10     |        4 | GPIO Input data read value                                              |
-| gpio_pwc.[`DIRECT_OUT`](#direct_out)                           | 0x14     |        4 | GPIO direct output data write value                                     |
-| gpio_pwc.[`MASKED_OUT_LOWER`](#masked_out_lower)               | 0x18     |        4 | GPIO write data lower with mask.                                        |
-| gpio_pwc.[`MASKED_OUT_UPPER`](#masked_out_upper)               | 0x1c     |        4 | GPIO write data upper with mask.                                        |
-| gpio_pwc.[`DIRECT_OE`](#direct_oe)                             | 0x20     |        4 | GPIO Output Enable.                                                     |
-| gpio_pwc.[`MASKED_OE_LOWER`](#masked_oe_lower)                 | 0x24     |        4 | GPIO write Output Enable lower with mask.                               |
-| gpio_pwc.[`MASKED_OE_UPPER`](#masked_oe_upper)                 | 0x28     |        4 | GPIO write Output Enable upper with mask.                               |
-| gpio_pwc.[`INTR_CTRL_EN_RISING`](#intr_ctrl_en_rising)         | 0x2c     |        4 | GPIO interrupt enable for GPIO, rising edge.                            |
-| gpio_pwc.[`INTR_CTRL_EN_FALLING`](#intr_ctrl_en_falling)       | 0x30     |        4 | GPIO interrupt enable for GPIO, falling edge.                           |
-| gpio_pwc.[`INTR_CTRL_EN_LVLHIGH`](#intr_ctrl_en_lvlhigh)       | 0x34     |        4 | GPIO interrupt enable for GPIO, level high.                             |
-| gpio_pwc.[`INTR_CTRL_EN_LVLLOW`](#intr_ctrl_en_lvllow)         | 0x38     |        4 | GPIO interrupt enable for GPIO, level low.                              |
-| gpio_pwc.[`CTRL_EN_INPUT_FILTER`](#ctrl_en_input_filter)       | 0x3c     |        4 | filter enable for GPIO input bits.                                      |
-| gpio_pwc.[`HW_STRAPS_DATA_IN_VALID`](#hw_straps_data_in_valid) | 0x40     |        4 | Indicates whether the data in !!HW_STRAPS_DATA_IN is valid.             |
-| gpio_pwc.[`HW_STRAPS_DATA_IN`](#hw_straps_data_in)             | 0x44     |        4 | GPIO input data that was sampled as straps at most once after the block |
+| Name                                                           | Offset   |   Length | Description                                                                       |
+|:---------------------------------------------------------------|:---------|---------:|:----------------------------------------------------------------------------------|
+| gpio_pwc.[`INTR_STATE`](#intr_state)                           | 0x0      |        4 | Interrupt State Register                                                          |
+| gpio_pwc.[`INTR_ENABLE`](#intr_enable)                         | 0x4      |        4 | Interrupt Enable Register                                                         |
+| gpio_pwc.[`INTR_TEST`](#intr_test)                             | 0x8      |        4 | Interrupt Test Register                                                           |
+| gpio_pwc.[`ALERT_TEST`](#alert_test)                           | 0xc      |        4 | Alert Test Register                                                               |
+| gpio_pwc.[`DATA_IN`](#data_in)                                 | 0x10     |        4 | GPIO Input data read value                                                        |
+| gpio_pwc.[`DIRECT_OUT`](#direct_out)                           | 0x14     |        4 | GPIO direct output data write value                                               |
+| gpio_pwc.[`MASKED_OUT_LOWER`](#masked_out_lower)               | 0x18     |        4 | GPIO write data lower with mask.                                                  |
+| gpio_pwc.[`MASKED_OUT_UPPER`](#masked_out_upper)               | 0x1c     |        4 | GPIO write data upper with mask.                                                  |
+| gpio_pwc.[`DIRECT_OE`](#direct_oe)                             | 0x20     |        4 | GPIO Output Enable.                                                               |
+| gpio_pwc.[`MASKED_OE_LOWER`](#masked_oe_lower)                 | 0x24     |        4 | GPIO write Output Enable lower with mask.                                         |
+| gpio_pwc.[`MASKED_OE_UPPER`](#masked_oe_upper)                 | 0x28     |        4 | GPIO write Output Enable upper with mask.                                         |
+| gpio_pwc.[`INTR_CTRL_EN_RISING`](#intr_ctrl_en_rising)         | 0x2c     |        4 | GPIO interrupt enable for GPIO, rising edge.                                      |
+| gpio_pwc.[`INTR_CTRL_EN_FALLING`](#intr_ctrl_en_falling)       | 0x30     |        4 | GPIO interrupt enable for GPIO, falling edge.                                     |
+| gpio_pwc.[`INTR_CTRL_EN_LVLHIGH`](#intr_ctrl_en_lvlhigh)       | 0x34     |        4 | GPIO interrupt enable for GPIO, level high.                                       |
+| gpio_pwc.[`INTR_CTRL_EN_LVLLOW`](#intr_ctrl_en_lvllow)         | 0x38     |        4 | GPIO interrupt enable for GPIO, level low.                                        |
+| gpio_pwc.[`CTRL_EN_INPUT_FILTER`](#ctrl_en_input_filter)       | 0x3c     |        4 | filter enable for GPIO input bits.                                                |
+| gpio_pwc.[`HW_STRAPS_DATA_IN_VALID`](#hw_straps_data_in_valid) | 0x40     |        4 | Indicates whether the data in [`HW_STRAPS_DATA_IN`](#hw_straps_data_in) is valid. |
+| gpio_pwc.[`HW_STRAPS_DATA_IN`](#hw_straps_data_in)             | 0x44     |        4 | GPIO input data that was sampled as straps at most once after the block           |
 
 ## INTR_STATE
 Interrupt State Register
