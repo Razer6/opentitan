@@ -117,7 +117,7 @@ end
 
 
 ////////////////////////////////////////
-// Sychronize Bus & Valid to RNG Clock
+// Synchronize Bus & Valid to RNG Clock
 ////////////////////////////////////////
 logic sync_rng_val, srate_rng_val_en;
 
