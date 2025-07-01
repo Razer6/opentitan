@@ -13,8 +13,10 @@ waive -rules {TWO_STATE_TYPE} -location {*} -regexp {'sd_type' is of two state t
       -comment "sd_type is used in constant functions that are used for generates"
 waive -rules {TWO_STATE_TYPE} -location {*} -regexp {'width' is of two state type } \
       -comment "width is used in constant functions that are used for generates"
+waive -rules {TWO_STATE_TYPE} -location {*} -regexp {'prim_secded_type_e' is of two state type 'enum int { SecdedHsiao = 0, SecdedHamming = 1, SecdedInvHsiao = 2, SecdedInvHamming = 3}'} \
+      -comment "prim_secded_type_e is used in constant functions that are used for generates"
 
 # Rivos waivers to comply with interal lint setup
 waive -rules {ANSI_PORT_DIR_REQ} -location {prim_secded_pkg.sv} \
-      -regexp {ANSI port 'data_i' is declared without an explicit direction}      \
+      -regexp {ANSI port '(data_i|width|sd_type)' is declared without an explicit direction}      \
       -comment {Waive this because of the Rivos upgrade to Ascentlint version P18.1}

@@ -47,7 +47,7 @@ module prim_otp_mem
  
         output logic                        wrapper_ready_o,
 
-        input  otp_macro_reg_pkg::otp_macro_reg2hw_t reg2hw,
+        input  otp_macro_reg_pkg::otp_macro_prim_reg2hw_t reg2hw,
 
         input  logic                        sel_wr_timing_i,
 

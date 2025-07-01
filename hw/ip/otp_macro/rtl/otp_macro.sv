@@ -13,6 +13,8 @@ module otp_macro
   // This determines the maximum number of native words that
   // can be transferred across the interface in one cycle.
   parameter  int    SizeWidth        = 2,
+  // Derived parameters
+  localparam int    AddrWidth        = prim_util_pkg::vbits(Depth),
   // VMEM file to initialize the memory with
   parameter         MemInitFile   = "",
 
@@ -41,8 +43,8 @@ module otp_macro
   // RACL definitions
   parameter bit  EnableRacl       = 1'b0,
   parameter bit  RaclErrorRsp     = 1'b1,
-  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[otp_macro_reg_pkg::NumRegs] =
-    '{otp_macro_reg_pkg::NumRegs{0}}
+  parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[otp_macro_reg_pkg::NumRegsPrim] =
+    '{otp_macro_reg_pkg::NumRegsPrim{0}}
 ) (
   input                          clk_i,
   input                          rst_ni,
@@ -93,7 +95,6 @@ module otp_macro
 
   // This is only restricted by the supported ECC poly further
   // below, and is straightforward to extend, if needed.
-  localparam int EccWidth = 6;
   localparam int TotalEccWidth = 8;  // used to log all ecc fuses in register to enable mbist access path
 
   `ASSERT_INIT(SecDecWidth_A, Width == 16)
@@ -454,7 +455,7 @@ module otp_macro
 
 `SECDED_INST_ENC(prim_secded_pkg::SecdedHamming, Width, u_enc, wdata_q[cnt_q], wdata_ecc)
 
-`SECDED_INST_DEC(prim_secded_pkg::SecdedHamming, Width, u_dec, rdata_ecc, rdata_corr, , rerror)
+`SECDED_INST_DEC(prim_secded_pkg::SecdedHamming, Width, u_dec, rdata_ecc[Width+EccWidth-1:0], rdata_corr, , rerror)
 
 `undef SECDED_INST_DEC
 `undef SECDED_INST_ENC
