@@ -6437,7 +6437,7 @@
           desc: Number of 384-bit entries in the esfinal FIFO
           type: int
           default: "3"
-          local: "false"
+          local: "true"
           expose: "true"
           name_top: EntropySrcEsFifoDepth
         }
@@ -6446,7 +6446,7 @@
           desc: Number of 32-bit entries in the distr FIFO
           type: int unsigned
           default: "5"
-          local: "false"
+          local: "true"
           expose: "true"
           name_top: EntropySrcDistrFifoDepth
         }

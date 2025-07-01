@@ -94,8 +94,6 @@ module top_darjeeling #(
   parameter int EntropySrcRngBusWidth = 16,
   parameter int EntropySrcRngBusBitSelWidth = 4,
   parameter int EntropySrcHealthTestWindowWidth = 20,
-  parameter int EntropySrcEsFifoDepth = 3,
-  parameter int unsigned EntropySrcDistrFifoDepth = 5,
   parameter bit EntropySrcStub = 0,
   // parameters for edn0
   // parameters for edn1
@@ -376,6 +374,9 @@ module top_darjeeling #(
   localparam int SpiHost0NumCS = 1;
   // local parameters for sram_ctrl_ret_aon
   localparam int SramCtrlRetAonOutstanding = 6;
+  // local parameters for entropy_src
+  localparam int EntropySrcEsFifoDepth = 3;
+  localparam int unsigned EntropySrcDistrFifoDepth = 5;
   // local parameters for sram_ctrl_main
   localparam int SramCtrlMainOutstanding = 6;
   // local parameters for sram_ctrl_mbox
