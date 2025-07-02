@@ -34,7 +34,9 @@ module prim_alert_receiver
   import prim_mubi_pkg::mubi4_t;
 #(
   // enables additional synchronization logic
-  parameter bit AsyncOn = 1'b0
+  parameter bit AsyncOn = 1'b0,
+  // Number of cycles a differential skew is tolerated on the differential alert signal.
+  parameter int unsigned SkewCycles = 1
 ) (
   input             clk_i,
   input             rst_ni,
@@ -74,7 +76,8 @@ module prim_alert_receiver
   );
 
   prim_diff_decode #(
-    .AsyncOn(AsyncOn)
+    .AsyncOn(AsyncOn),
+    .SkewCycles(SkewCycles)
   ) u_decode_alert (
     .clk_i,
     .rst_ni,

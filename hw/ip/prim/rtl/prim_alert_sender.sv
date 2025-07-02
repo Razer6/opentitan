@@ -46,6 +46,8 @@ module prim_alert_sender
 #(
   // enables additional synchronization logic
   parameter bit AsyncOn = 1'b1,
+  // Number of cycles a differential skew is tolerated on the differential ack/ping signal.
+  parameter int unsigned SkewCycles = 1,
   // alert sender will latch the incoming alert event permanently and
   // keep on sending alert events until the next reset.
   parameter bit IsFatal = 1'b0
@@ -82,7 +84,8 @@ module prim_alert_sender
   );
 
   prim_diff_decode #(
-    .AsyncOn(AsyncOn)
+    .AsyncOn(AsyncOn),
+    .SkewCycles(SkewCycles)
   ) u_decode_ping (
     .clk_i,
     .rst_ni,
@@ -108,7 +111,8 @@ module prim_alert_sender
   );
 
   prim_diff_decode #(
-    .AsyncOn(AsyncOn)
+    .AsyncOn(AsyncOn),
+    .SkewCycles(SkewCycles)
   ) u_decode_ack (
     .clk_i,
     .rst_ni,
