@@ -37,7 +37,7 @@
     }
   ],
   bus_interfaces: [
-    { protocol: "tlul", direction: "device", name: "prim", racl_support: true}
+    { protocol: "tlul", direction: "device", name: "prim", racl_support: true }
   ],
   scan: "true", // Enable `scanmode_i` port
   scan_reset: "true", // Enable `scan_rst_ni` port
@@ -190,6 +190,7 @@
       default: "'0"
       package: "prim_otp_cfg_pkg"
     },
+    // RACL interface
     { struct:  "racl_policy_vec",
       type:    "uni",
       name:    "racl_policies",
