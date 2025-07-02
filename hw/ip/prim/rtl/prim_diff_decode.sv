@@ -21,8 +21,10 @@ module prim_diff_decode #(
   // enables additional synchronization logic
   parameter bit AsyncOn = 1'b0,
   // Number of cycles a differential skew is tolerated before a signal integrity issue is flagged.
+  // Only has an effect if AsyncOn = 1
   // 0 means no skew is tolerated (any mismatch is an immediate signal integrity error).
   // 1 means a one-cycle skew is tolerated.
+  // Values larger than 1 are also supported.
   parameter int unsigned SkewCycles = 1
 ) (
   input        clk_i,
@@ -139,7 +141,7 @@ module prim_diff_decode #(
               // If no skew is tolerated, immediate signal integrity error
               state_d  = SigInt;
               sigint_o = 1'b1;
-            end else if (diff_p_edge || diff_n_edge) begin
+            end else begin
               // Mismatch with an edge: likely start of a tolerated skew
               state_d    = IsSkewing;
               skew_cnt_d = 1;
@@ -154,15 +156,12 @@ module prim_diff_decode #(
             // Reset the skew counter
             skew_cnt_d = '0;
             // Assert event that was delayed due to skew resolution
-            if (level_d != level_q) begin
-              if (level_d) rise_o = 1'b1;
-              else         fall_o = 1'b1;
-            end
+            if (level) rise_o = 1'b1;
+            else       fall_o = 1'b1;
           end else begin
             if (skew_cnt_q < SkewCycles) begin
               // Still within tolerated skew cycles
               skew_cnt_d = skew_cnt_q + 1;
-              state_d    = IsSkewing;
             end else begin
               // Maximum skew cycles exceeded, raise an integrity issue
               state_d    = SigInt;
@@ -179,10 +178,8 @@ module prim_diff_decode #(
             sigint_o = 1'b0;
             level_d  = level;
             // Assert any event that was pending while in SigInt
-            if (level_d != level_q) begin
-              if (level_d) rise_o = 1'b1;
-              else         fall_o = 1'b1;
-            end
+            if (level) rise_o = 1'b1;
+            else       fall_o = 1'b1;
           end
         end
         default : ;
