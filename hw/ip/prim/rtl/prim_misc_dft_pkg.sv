@@ -100,40 +100,40 @@ package prim_misc_dft_pkg;
     logic [9:0] spare;
   } sms_server_cfg_t;
 
-    // TODO (neal) need to fix this
-    typedef struct packed { // Total width: 26
-      logic consistency_check2; // lsb: 25
-      logic disable_ls; // lsb: 24
-      logic disable_clock_gating; // lsb: 23
-      logic [1:0] ra; // lsb: 21
-      logic [2:0] wpulse; // lsb: 18
-      logic [2:0] wa; // lsb: 15
-      logic testrwm; // lsb: 14
-      logic test1b; // lsb: 13
-      logic test1a; // lsb: 12
-      logic rmeb; // lsb: 11
-      logic rmea; // lsb: 10
-      logic test_rnm; // lsb: 9
-      logic [3:0] rmb; // lsb: 5
-      logic consistency_check1; // lsb: 4
-      logic [3:0] rma; // lsb: 0
-    } copy_ram_control_dp_t;
+  // TODO (neal) need to fix this
+  typedef struct packed { // Total width: 26
+    logic consistency_check2; // lsb: 25
+    logic disable_ls; // lsb: 24
+    logic disable_clock_gating; // lsb: 23
+    logic [1:0] ra; // lsb: 21
+    logic [2:0] wpulse; // lsb: 18
+    logic [2:0] wa; // lsb: 15
+    logic testrwm; // lsb: 14
+    logic test1b; // lsb: 13
+    logic test1a; // lsb: 12
+    logic rmeb; // lsb: 11
+    logic rmea; // lsb: 10
+    logic test_rnm; // lsb: 9
+    logic [3:0] rmb; // lsb: 5
+    logic consistency_check1; // lsb: 4
+    logic [3:0] rma; // lsb: 0
+  } copy_ram_control_dp_t;
 
-    // TODO (neal) need to fix this
-    typedef struct packed { // Total width: 3
-      logic tston; // lsb: 2
-      logic bist_mode; // lsb: 1
-      logic DFD_StopWE; // lsb: 0
-    } copy_ram_dft_signals_t;
+  // TODO (neal) need to fix this
+  typedef struct packed { // Total width: 3
+    logic tston; // lsb: 2
+    logic bist_mode; // lsb: 1
+    logic DFD_StopWE; // lsb: 0
+  } copy_ram_dft_signals_t;
 
-    // TODO (neal) need to fix this
-    typedef struct packed { // Total width: 14
-      logic [7:0] err_inj_loc; // lsb: 6
-      logic [1:0] err_inj_count; // lsb: 4
-      logic [1:0] err_inj_type; // lsb: 2
-      logic err_inj_en_wpulse; // lsb: 1
-      logic err_inj_en; // lsb: 0
-    } copy_ram_error_inject_t;
+  // TODO (neal) need to fix this
+  typedef struct packed { // Total width: 14
+    logic [7:0] err_inj_loc; // lsb: 6
+    logic [1:0] err_inj_count; // lsb: 4
+    logic [1:0] err_inj_type; // lsb: 2
+    logic err_inj_en_wpulse; // lsb: 1 // not actually used in sram macros
+    logic err_inj_en; // lsb: 0
+  } copy_ram_error_inject_t;
 
 endpackage  // of prim_misc_dft_pkg
 `endif  // of __MISC_DFT_PKG_SV

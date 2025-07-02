@@ -220,8 +220,8 @@ waive -rules LINE_LENGTH  -location {RDP_ASYNC_FIFO_WR.sv}        -comment "rivo
 waive -rules LINE_LENGTH  -location {RVP_ASSERT_ALWAYS.sv}        -comment "rivos is OK with this warning"
 waive -rules LINE_LENGTH  -location {RVP_ASSERT_NOT_XZ.sv}        -comment "rivos is OK with this warning"
 
-waive -rules INPUT_NOT_READ -location {rvscs_ot_aon_sram.sv}       -comment "temp neal to fix"
-waive -rules INPUT_NOT_READ -location {rvscs_ot_otbni_sram.sv}     -comment "temp neal to fix"
-waive -rules INPUT_NOT_READ -location {rvscs_ot_sram_half_size.sv} -comment "temp neal to fix"
-waive -rules INPUT_NOT_READ -location {rvscs_spi2sys_sram.sv}      -comment "temp neal to fix"
-waive -rules INPUT_NOT_READ -location {rvscs_sys2spi_sram.sv}      -comment "temp neal to fix"
+waive -rules INPUT_NOT_READ -location {rvscs_ot_aon_sram.sv}       -comment "ok, result of rivos common error injection implementation"
+waive -rules INPUT_NOT_READ -location {rvscs_ot_otbni_sram.sv}     -comment "ok, result of rivos common error injection implementation"
+waive -rules INPUT_NOT_READ -location {rvscs_ot_sram_half_size.sv} -comment "ok, result of rivos common error injection implementation"
+waive -rules INPUT_NOT_READ -location {rvscs_spi2sys_sram.sv}      -comment "ok, result of rivos common error injection implementation"
+waive -rules INPUT_NOT_READ -location {rvscs_sys2spi_sram.sv}      -comment "ok, result of rivos common error injection implementation"
