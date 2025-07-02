@@ -165,7 +165,7 @@ class PyregParameters:
     def from_regblock_entry(
         entry: Union[Register, MultiRegister, Window],
         clocking: Clocking,
-        racl: Racl,
+        racl: Optional[Racl],
         swaccess: Optional[str],
         hwaccess: Optional[str],
     ) -> "PyregParameters":
@@ -192,8 +192,12 @@ class PyregParameters:
             ot_shadowed = True
 
         # RACL
+        racl_policy = None
         racl_ctrl_policy_name = None
-        racl_policy, racl_ctrl_group = racl.regblock_entry_to_racl_policy(entry)
+        racl_ctrl_group = None
+
+        if racl is not None:
+            racl_policy, racl_ctrl_group = racl.regblock_entry_to_racl_policy(entry)
 
         if isinstance(reg_def, Register):
             for tag in reg_def.tags:
@@ -312,7 +316,7 @@ class PyregEntry:
 
     @staticmethod
     def from_regblock_entry(
-        entry: Union[Register, MultiRegister, Window], clocking: Clocking, racl: Racl
+        entry: Union[Register, MultiRegister, Window], clocking: Clocking, racl: Optional[Racl]
     ) -> "PyregEntry":
         """Creates a PyregEntry object from a register entry."""
         # Explanation
@@ -434,7 +438,7 @@ class PydumpInfos:
         return pyreg
 
     @staticmethod
-    def from_ipblock(ip_block: IpBlock, racl: Racl, package: str) -> "PydumpInfos":
+    def from_ipblock(ip_block: IpBlock, racl: Optional[Racl], package: str) -> "PydumpInfos":
         """Creates a PydumpInfos object from an IP block."""
 
         # Collect registers
@@ -498,7 +502,7 @@ def _parse_cli_args():
         help="Generate pydump file.",
     )
 
-    racl_group = parser.add_mutually_exclusive_group()
+    racl_group = parser.add_mutually_exclusive_group(required=True)
 
     racl_group.add_argument(
         "--racl",
@@ -509,6 +513,12 @@ def _parse_cli_args():
         "--racl-mapping-hjson",
         type=argparse.FileType("r"),
         help="HJSON file containing the RACL mapping for registers.",
+    )
+
+    racl_group.add_argument(
+        "--no-racl",
+        action="store_true",
+        help="Do not generate RACL information in the output file.",
     )
 
     parser.add_argument(
@@ -554,9 +564,8 @@ def _main():
     elif args.racl:
         racl = Racl.from_predefined(args.racl, args.racl_ctrl)
 
-    if racl is None:
-        logging.error("Either --racl or --racl-mapping-hjson must be specified")
-        exit(1)
+    if racl is None and not args.no_racl:
+        raise ValueError("No RACL information could be determined from the arguments")
 
     # Generate the pydump contents
     pydump_infos = PydumpInfos.from_ipblock(ip_block, racl, args.package)
