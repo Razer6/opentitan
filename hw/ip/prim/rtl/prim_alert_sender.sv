@@ -315,14 +315,14 @@ module prim_alert_sender
     `ASSERT(SigIntPing_A, ##1 PingSigInt_S |->
         ##[SkewCycles+2:SkewCycles+3] alert_tx_o.alert_p == alert_tx_o.alert_n)
     `ASSERT(SigIntAck_A, ##1 AckSigInt_S |->
-        ##[SkewCycles+2:SkewCycles+4] alert_tx_o.alert_p == alert_tx_o.alert_n)
+        ##[SkewCycles+2:SkewCycles+3] alert_tx_o.alert_p == alert_tx_o.alert_n)
   `endif
 
     // Test in-band FSM reset request (via signal integrity error)
     `ASSERT(InBandInitFsm_A, PingSigInt_S or AckSigInt_S |->
-        ##[SkewCycles+2:SkewCycles+4] state_q == Idle)
+        ##[SkewCycles+2:SkewCycles+3] state_q == Idle)
     `ASSERT(InBandInitPing_A, PingSigInt_S or AckSigInt_S |->
-        ##[SkewCycles+2:SkewCycles+4] !ping_set_q)
+        ##[SkewCycles+2:SkewCycles+3] !ping_set_q)
     // output must be driven diff unless sigint issue detected
     `ASSERT(DiffEncoding_A, (alert_rx_i.ack_p ^ alert_rx_i.ack_n) &&
         (alert_rx_i.ping_p ^ alert_rx_i.ping_n) |->
