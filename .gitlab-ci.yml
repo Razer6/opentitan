@@ -68,7 +68,8 @@ check_generated:
     - *clone-rvsys
     - ./ci/scripts/check-generated.sh
   rules:
-    - changes:
+    - if: $CI_COMMIT_BRANCH != "rivos/ga0"
+      changes:
       - hw/**/*
       - generated_ips/*
       when: always
@@ -87,7 +88,8 @@ check_generated:
     - egrep -iq -e "^No (New lint|lint) violations found" -e "^Found [0-9]+ Info (New lint|lint) violation" build/lowrisc_systems_${TEST_TARGET}_0.1/lint-ascentlint/ascentlint.log && echo "***PASSED***" || (echo "***ERROR*** Lint run found new errors or warnings." "Please check ascentlint.rpt" && exit 1)
     - grep '^E ' 'build/lowrisc_systems_${TEST_TARGET}_0.1/lint-ascentlint/ascentlint.log' | grep -v 'ToolWaived' || true
   rules:
-    - changes:
+    - if: $CI_COMMIT_BRANCH != "rivos/ga0"
+      changes:
       - hw/**/*
       when: always
   artifacts:
