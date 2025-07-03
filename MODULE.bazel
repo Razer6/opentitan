@@ -403,6 +403,14 @@ top_desc.register(
     bazel_file = "//hw/top_englishbreakfast:defs.bzl",
     top_var = "ENGLISHBREAKFAST",
 )
+top_desc.register(
+    bazel_file = "//hw/top_mio:defs.bzl",
+    top_var = "MIO",
+)
+top_desc.register(
+    bazel_file = "//hw/top_pwc:defs.bzl",
+    top_var = "PWC",
+)
 use_repo(top_desc, "tops_desc")
 
 # Rivos: SCS tests module from rvsys

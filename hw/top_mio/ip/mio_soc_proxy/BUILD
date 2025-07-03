@@ -7,6 +7,6 @@ package(default_visibility = ["//visibility:public"])
 filegroup(
     name = "all_files",
     srcs = glob(["**"]) + [
-        "//hw/top_mio/ip/soc_proxy/data:all_files",
+        "//hw/top_mio/ip/mio_soc_proxy/data:all_files",
     ],
 )
