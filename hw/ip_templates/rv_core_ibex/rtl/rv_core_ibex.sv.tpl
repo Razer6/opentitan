@@ -13,7 +13,7 @@ module ${module_instance_name}
   import ${module_instance_name}_reg_pkg::*;
 #(
   parameter logic [NumAlerts-1:0]   AlertAsyncOn     = {NumAlerts{1'b1}},
-  // Number of cycles a differential skew is tolerated on the alert and escalation signal
+  // Number of cycles a differential skew is tolerated on the alert signal
   parameter int unsigned            AlertSkewCycles  = 1,
   parameter bit                     PMPEnable        = 1'b1,
   parameter int unsigned            PMPGranularity   = 0,

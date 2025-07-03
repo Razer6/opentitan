@@ -11,7 +11,7 @@ module alert_handler
   import prim_alert_pkg::*;
   import prim_esc_pkg::*;
 #(
-  // Number of cycles a differential skew is tolerated on the alert and escalation signal
+  // Number of cycles a differential skew is tolerated on the alert signal
   parameter int unsigned AlertSkewCycles = 1,
   parameter int EscNumSeverities = 4,
   parameter int EscPingCountWidth = 16,

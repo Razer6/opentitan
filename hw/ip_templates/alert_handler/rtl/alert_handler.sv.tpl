@@ -17,7 +17,7 @@ module ${module_instance_name}
   parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[${module_instance_name}_reg_pkg::NumRegs] = 
     '{${module_instance_name}_reg_pkg::NumRegs{0}},
 % endif
-  // Number of cycles a differential skew is tolerated on the alert and escalation signal
+  // Number of cycles a differential skew is tolerated on the alert signal
   parameter int unsigned AlertSkewCycles = 1,
   parameter int EscNumSeverities = ${n_esc_sev},
   parameter int EscPingCountWidth = ${ping_cnt_dw},

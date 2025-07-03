@@ -14,7 +14,7 @@ module entropy_src
 #(
   parameter logic [NumAlerts-1:0] AlertAsyncOn    = {NumAlerts{1'b1}},
   // Number of cycles a differential skew is tolerated on the alert signal
-  parameter int unsigned          AlertSkewCycles = 1,
+  parameter int unsigned AlertSkewCycles          = 1,
   parameter int RngBusWidth                       = 4,
   parameter int RngBusBitSelWidth                 = 2,
   parameter int HealthTestWindowWidth             = 18,
