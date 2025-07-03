@@ -1085,7 +1085,8 @@ module top_earlgrey #(
 
 
   uart #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[0:0])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[0:0]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_uart0 (
 
       // Input
@@ -1121,7 +1122,8 @@ module top_earlgrey #(
       .rst_ni (rstmgr_aon_resets.rst_lc_io_div4_n[rstmgr_pkg::Domain0Sel])
   );
   uart #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[1:1])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[1:1]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_uart1 (
 
       // Input
@@ -1157,7 +1159,8 @@ module top_earlgrey #(
       .rst_ni (rstmgr_aon_resets.rst_lc_io_div4_n[rstmgr_pkg::Domain0Sel])
   );
   uart #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[2:2])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[2:2]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_uart2 (
 
       // Input
@@ -1193,7 +1196,8 @@ module top_earlgrey #(
       .rst_ni (rstmgr_aon_resets.rst_lc_io_div4_n[rstmgr_pkg::Domain0Sel])
   );
   uart #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[3:3])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[3:3]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_uart3 (
 
       // Input
@@ -1230,6 +1234,7 @@ module top_earlgrey #(
   );
   gpio #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[4:4]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .GpioAsyncOn(GpioGpioAsyncOn),
     .GpioAsHwStrapsEn(GpioGpioAsHwStrapsEn)
   ) u_gpio (
@@ -1261,6 +1266,7 @@ module top_earlgrey #(
   );
   spi_device #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[5:5]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .SramType(SpiDeviceSramType)
   ) u_spi_device (
 
@@ -1310,6 +1316,7 @@ module top_earlgrey #(
   );
   i2c #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[6:6]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .InputDelayCycles(I2c0InputDelayCycles)
   ) u_i2c0 (
 
@@ -1358,6 +1365,7 @@ module top_earlgrey #(
   );
   i2c #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[7:7]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .InputDelayCycles(I2c1InputDelayCycles)
   ) u_i2c1 (
 
@@ -1406,6 +1414,7 @@ module top_earlgrey #(
   );
   i2c #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[8:8]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .InputDelayCycles(I2c2InputDelayCycles)
   ) u_i2c2 (
 
@@ -1453,7 +1462,8 @@ module top_earlgrey #(
       .rst_ni (rstmgr_aon_resets.rst_i2c2_n[rstmgr_pkg::Domain0Sel])
   );
   pattgen #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[9:9])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[9:9]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_pattgen (
 
       // Output
@@ -1482,7 +1492,8 @@ module top_earlgrey #(
       .rst_ni (rstmgr_aon_resets.rst_lc_io_div4_n[rstmgr_pkg::Domain0Sel])
   );
   rv_timer #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[10:10])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[10:10]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_rv_timer (
 
       // Interrupt
@@ -1503,6 +1514,7 @@ module top_earlgrey #(
   );
   otp_ctrl #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[15:11]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .RndCnstLfsrSeed(RndCnstOtpCtrlLfsrSeed),
     .RndCnstLfsrPerm(RndCnstOtpCtrlLfsrPerm),
     .RndCnstScrmblKeyInit(RndCnstOtpCtrlScrmblKeyInit)
@@ -1591,6 +1603,7 @@ module top_earlgrey #(
   );
   lc_ctrl #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[18:16]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .SecVolatileRawUnlockEn(SecLcCtrlVolatileRawUnlockEn),
     .UseDmiInterface(LcCtrlUseDmiInterface),
     .RndCnstLcKeymgrDivInvalid(RndCnstLcCtrlLcKeymgrDivInvalid),
@@ -1704,6 +1717,7 @@ module top_earlgrey #(
   );
   spi_host #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[19:19]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .NumCS(SpiHost0NumCS)
   ) u_spi_host0 (
 
@@ -1740,6 +1754,7 @@ module top_earlgrey #(
   );
   spi_host #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[20:20]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .NumCS(SpiHost1NumCS)
   ) u_spi_host1 (
 
@@ -1776,6 +1791,7 @@ module top_earlgrey #(
   );
   usbdev #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[21:21]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .Stub(UsbdevStub),
     .RcvrWakeTimeUs(UsbdevRcvrWakeTimeUs)
   ) u_usbdev (
@@ -1843,6 +1859,7 @@ module top_earlgrey #(
   );
   pwrmgr #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[22:22]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .EscNumSeverities(AlertHandlerEscNumSeverities),
     .EscPingCountWidth(AlertHandlerEscPingCountWidth)
   ) u_pwrmgr_aon (
@@ -1894,6 +1911,7 @@ module top_earlgrey #(
   );
   rstmgr #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[24:23]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .SecCheck(SecRstmgrAonCheck),
     .SecMaxSyncDelay(SecRstmgrAonMaxSyncDelay)
   ) u_rstmgr_aon (
@@ -1929,7 +1947,8 @@ module top_earlgrey #(
       .rst_por_ni (rstmgr_aon_resets.rst_por_io_div4_n[rstmgr_pkg::DomainAonSel])
   );
   clkmgr #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[26:25])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[26:25]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_clkmgr_aon (
       // [25]: recov_fault
       // [26]: fatal_fault
@@ -1979,7 +1998,8 @@ module top_earlgrey #(
       .rst_root_usb_ni (rstmgr_aon_resets.rst_por_usb_n[rstmgr_pkg::DomainAonSel])
   );
   sysrst_ctrl #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[27:27])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[27:27]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_sysrst_ctrl_aon (
 
       // Input
@@ -2029,7 +2049,8 @@ module top_earlgrey #(
       .rst_aon_ni (rstmgr_aon_resets.rst_lc_aon_n[rstmgr_pkg::DomainAonSel])
   );
   adc_ctrl #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[28:28])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[28:28]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_adc_ctrl_aon (
 
       // Interrupt
@@ -2052,7 +2073,8 @@ module top_earlgrey #(
       .rst_aon_ni (rstmgr_aon_resets.rst_lc_aon_n[rstmgr_pkg::DomainAonSel])
   );
   pwm #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[29:29])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[29:29]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_pwm_aon (
 
       // Output
@@ -2076,6 +2098,7 @@ module top_earlgrey #(
   );
   pinmux #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[30:30]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .SecVolatileRawUnlockEn(SecPinmuxAonVolatileRawUnlockEn),
     .TargetCfg(PinmuxAonTargetCfg)
   ) u_pinmux_aon (
@@ -2144,7 +2167,8 @@ module top_earlgrey #(
       .rst_sys_ni (rstmgr_aon_resets.rst_sys_io_div4_n[rstmgr_pkg::DomainAonSel])
   );
   aon_timer #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[31:31])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[31:31]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_aon_timer_aon (
 
       // Interrupt
@@ -2172,7 +2196,8 @@ module top_earlgrey #(
       .rst_aon_ni (rstmgr_aon_resets.rst_lc_aon_n[rstmgr_pkg::DomainAonSel])
   );
   sensor_ctrl #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[33:32])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[33:32]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_sensor_ctrl_aon (
 
       // Output
@@ -2206,6 +2231,7 @@ module top_earlgrey #(
   );
   sram_ctrl #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[34:34]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .RndCnstSramKey(RndCnstSramCtrlRetAonSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlRetAonSramNonce),
     .RndCnstLfsrSeed(RndCnstSramCtrlRetAonLfsrSeed),
@@ -2250,6 +2276,7 @@ module top_earlgrey #(
   );
   flash_ctrl #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[39:35]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .RndCnstAddrKey(RndCnstFlashCtrlAddrKey),
     .RndCnstDataKey(RndCnstFlashCtrlDataKey),
     .RndCnstAllSeeds(RndCnstFlashCtrlAllSeeds),
@@ -2325,6 +2352,7 @@ module top_earlgrey #(
   );
   rv_dm #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[40:40]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .IdcodeValue(RvDmIdcodeValue),
     .UseDmiInterface(RvDmUseDmiInterface),
     .SecVolatileRawUnlockEn(SecRvDmVolatileRawUnlockEn),
@@ -2371,7 +2399,8 @@ module top_earlgrey #(
       .rst_lc_ni (rstmgr_aon_resets.rst_lc_n[rstmgr_pkg::Domain0Sel])
   );
   rv_plic #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[41:41])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[41:41]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_rv_plic (
       // [41]: fatal_fault
       .alert_tx_o  ( alert_tx[41:41] ),
@@ -2391,6 +2420,7 @@ module top_earlgrey #(
   );
   aes #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[43:42]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .AES192Enable(1'b1),
     .SecMasking(SecAesMasking),
     .SecSBoxImpl(SecAesSBoxImpl),
@@ -2425,7 +2455,8 @@ module top_earlgrey #(
       .rst_edn_ni (rstmgr_aon_resets.rst_lc_n[rstmgr_pkg::Domain0Sel])
   );
   hmac #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[44:44])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[44:44]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_hmac (
 
       // Interrupt
@@ -2447,6 +2478,7 @@ module top_earlgrey #(
   );
   kmac #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[46:45]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .EnMasking(KmacEnMasking),
     .SwKeyMasked(KmacSwKeyMasked),
     .SecCmdDelay(SecKmacCmdDelay),
@@ -2489,6 +2521,7 @@ module top_earlgrey #(
   );
   otbn #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[48:47]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .Stub(OtbnStub),
     .RegFile(OtbnRegFile),
     .RndCnstUrndPrngSeed(RndCnstOtbnUrndPrngSeed),
@@ -2534,6 +2567,7 @@ module top_earlgrey #(
   );
   keymgr #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[50:49]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .UseOtpSeedsInsteadOfFlash(KeymgrUseOtpSeedsInsteadOfFlash),
     .KmacEnMasking(KeymgrKmacEnMasking),
     .RndCnstLfsrSeed(RndCnstKeymgrLfsrSeed),
@@ -2586,6 +2620,7 @@ module top_earlgrey #(
   );
   csrng #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[52:51]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .RndCnstCsKeymgrDivNonProduction(RndCnstCsrngCsKeymgrDivNonProduction),
     .RndCnstCsKeymgrDivProduction(RndCnstCsrngCsKeymgrDivProduction),
     .SBoxImpl(CsrngSBoxImpl)
@@ -2619,6 +2654,7 @@ module top_earlgrey #(
   );
   entropy_src #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[54:53]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .RngBusWidth(EntropySrcRngBusWidth),
     .RngBusBitSelWidth(EntropySrcRngBusBitSelWidth),
     .HealthTestWindowWidth(EntropySrcHealthTestWindowWidth),
@@ -2662,7 +2698,8 @@ module top_earlgrey #(
       .rst_ni (rstmgr_aon_resets.rst_lc_n[rstmgr_pkg::Domain0Sel])
   );
   edn #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[56:55])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[56:55]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_edn0 (
 
       // Interrupt
@@ -2686,7 +2723,8 @@ module top_earlgrey #(
       .rst_ni (rstmgr_aon_resets.rst_lc_n[rstmgr_pkg::Domain0Sel])
   );
   edn #(
-    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[58:57])
+    .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[58:57]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles)
   ) u_edn1 (
 
       // Interrupt
@@ -2711,6 +2749,7 @@ module top_earlgrey #(
   );
   sram_ctrl #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[59:59]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .RndCnstSramKey(RndCnstSramCtrlMainSramKey),
     .RndCnstSramNonce(RndCnstSramCtrlMainSramNonce),
     .RndCnstLfsrSeed(RndCnstSramCtrlMainLfsrSeed),
@@ -2755,6 +2794,7 @@ module top_earlgrey #(
   );
   rom_ctrl #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[60:60]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .BootRomInitFile(RomCtrlBootRomInitFile),
     .RndCnstScrNonce(RndCnstRomCtrlScrNonce),
     .RndCnstScrKey(RndCnstRomCtrlScrKey),
@@ -2782,6 +2822,7 @@ module top_earlgrey #(
   );
   rv_core_ibex #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[64:61]),
+    .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .RndCnstLfsrSeed(RndCnstRvCoreIbexLfsrSeed),
     .RndCnstLfsrPerm(RndCnstRvCoreIbexLfsrPerm),
     .RndCnstIbexKeyDefault(RndCnstRvCoreIbexIbexKeyDefault),
