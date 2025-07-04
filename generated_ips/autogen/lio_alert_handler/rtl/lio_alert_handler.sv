@@ -15,7 +15,7 @@ module lio_alert_handler
   parameter bit          RaclErrorRsp                                 = EnableRacl,
   parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[lio_alert_handler_reg_pkg::NumRegs] = 
     '{lio_alert_handler_reg_pkg::NumRegs{0}},
-  // Number of cycles a differential skew is tolerated on the alert signal
+  // Number of cycles a differential skew is tolerated on the alert and escalation signal
   parameter int unsigned AlertSkewCycles = 1,
   parameter int EscNumSeverities = 4,
   parameter int EscPingCountWidth = 16,
@@ -308,7 +308,9 @@ module lio_alert_handler
     // put this RTL label inside that module due to the way our countermeasure annotation check
     // script discovers the RTL files. The label is thus put here. Please refer to
     // prim_esc_receiver.sv for the actual implementation of this mechanism.
-    prim_esc_sender u_esc_sender (
+    prim_esc_sender # (
+      .SkewCycles(AlertSkewCycles)
+    ) u_esc_sender (
       .clk_i,
       .rst_ni,
       .ping_req_i   ( esc_ping_req[k]  ),
