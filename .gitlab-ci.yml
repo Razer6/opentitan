@@ -12,6 +12,7 @@ stages:
   - prebuild
   - check
   - build
+  - build_docs
 
 # Only run CI on merge requests events happening on a protected branch
 workflow:
@@ -145,3 +146,18 @@ build_ot_container:
       - "*-requirements.txt"
       - util/**/*
       when: always
+
+create-pages:
+  stage: build_docs
+  image: gitlab.ba.rivosinc.com:5050/rv/si/ext/opentitan-integrated
+  pages:
+    # The folder that contains the files to be exposed at the Page URL
+    publish: build-site/book
+  rules:
+    # This ensures that only pushes to the default branch will trigger
+    # a pages deploy
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  before_script:
+    - git config --global --add safe.directory /builds/rv/si/ext/opentitan-integrated
+  script:
+    - util/site/build-docs.sh build
