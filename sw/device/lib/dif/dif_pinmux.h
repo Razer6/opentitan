@@ -138,19 +138,32 @@ typedef uint8_t dif_pinmux_pad_drive_strength_t;
  *   least one of the attributes in the bitfield could not be toggled.
  */
 typedef enum dif_pinmux_pad_attr_flags {
+#if defined(OPENTITAN_IS_DARJEELING)
   kDifPinmuxPadPullUpEnable = 1 << 0,
   kDifPinmuxPadPullDownEnable = 1 << 1,
   kDifPinmuxPadAttrSchmittTriggerEnable = 1 << 2
+#elif defined(OPENTITAN_IS_EARLGREY)
+  kDifPinmuxPadAttrInvertLevel = 1 << 0,
+  kDifPinmuxPadAttrVirtualOpenDrain = 1 << 1,
+  kDifPinmuxPadAttrPullResistorEnable = 1 << 2,
+  kDifPinmuxPadAttrPullResistorUp = 1 << 3,
+  kDifPinmuxPadAttrKeeper = 1 << 4,
+  kDifPinmuxPadAttrSchmittTrigger = 1 << 5,
+  kDifPinmuxPadAttrOpenDrain = 1 << 6,
+  kDifPinmuxPadAttrInputDisable = 1 << 7,
+#endif
 } dif_pinmux_pad_attr_flags_t;
 
 /**
  * Pin multiplexer padring pad attributes.
  */
 typedef struct dif_pinmux_pad_attr {
+#if defined(OPENTITAN_IS_EARLGREY)
   /**
    * Slew rate attribute. A greater number produces a faster slew rate.
    */
   dif_pinmux_pad_slew_rate_t slew_rate;
+#endif
   /**
    * Drive strength pad attribute. A greater number produces a stronger drive.
    */
