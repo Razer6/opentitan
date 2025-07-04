@@ -12,7 +12,7 @@ module pwrmgr
   import pwrmgr_reg_pkg::*;
 #(
   parameter logic [NumAlerts-1:0] AlertAsyncOn = {NumAlerts{1'b1}},
-  // Number of cycles a differential skew is tolerated on the alert signal
+  // Number of cycles a differential skew is tolerated on the alert and escalation signal
   parameter int unsigned AlertSkewCycles = 1,
   parameter int unsigned EscNumSeverities = 4,
   parameter int unsigned EscPingCountWidth = 16

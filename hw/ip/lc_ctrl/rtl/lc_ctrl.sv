@@ -14,7 +14,7 @@ module lc_ctrl
 #(
   // Enable asynchronous transitions on alerts.
   parameter logic [NumAlerts-1:0] AlertAsyncOn = {NumAlerts{1'b1}},
-  // Number of cycles a differential skew is tolerated on the alert signal
+  // Number of cycles a differential skew is tolerated on the alert and escalation signal
   parameter int unsigned AlertSkewCycles = 1,
   // Hardware revision numbers exposed in the CSRs.
   parameter logic [SiliconCreatorIdWidth-1:0] SiliconCreatorId = '0,
