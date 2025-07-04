@@ -81,10 +81,6 @@ module otp_macro
   input  top_racl_pkg::racl_policy_vec_t  racl_policies_i,
   output top_racl_pkg::racl_error_log_t   racl_error_o,
 
-  // RACL interface
-  input  top_racl_pkg::racl_policy_vec_t  racl_policies_i,
-  output top_racl_pkg::racl_error_log_t   racl_error_o,
-
   // DFT config and response port
   input CfgType_t                         cfg_i,
   output CfgRspType_t                     cfg_rsp_o
