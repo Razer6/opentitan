@@ -42,7 +42,9 @@ void setup_pads_spi_host0(dif_pinmux_t *pinmux) {
   // set weak pull-ups for all the pads
   dif_pinmux_pad_attr_t out_attr;
   dif_pinmux_pad_attr_t in_attr = {
+#if defined(OPENTITAN_IS_EARLGREY)
       .slew_rate = 0,
+#endif
       .drive_strength = 0,
       .flags = kDifPinmuxPadAttrPullResistorEnable |
                kDifPinmuxPadAttrPullResistorUp};

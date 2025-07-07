@@ -12,7 +12,9 @@ status_t spi_host_testutils_configure_host0_pad_attrs(dif_pinmux_t *pinmux) {
   // Set fast slew rate and strong drive strengh for SPI host0 pads.
   dif_pinmux_pad_attr_t out_attr;
   dif_pinmux_pad_attr_t in_attr = {
+#if defined(OPENTITAN_IS_EARLGREY)
       .slew_rate = 1,
+#endif
       .drive_strength = 3,
       // Set weak pull-ups for all the pads.
       .flags = kDifPinmuxPadAttrPullResistorEnable |
@@ -24,6 +26,7 @@ status_t spi_host_testutils_configure_host0_pad_attrs(dif_pinmux_t *pinmux) {
     dt_pad_t pad = dt_periph_io_dio_pad(periph_io);
     res = dif_pinmux_pad_write_attrs_dt(pinmux, pad, in_attr, &out_attr);
     if (res == kDifError) {
+#if defined(OPENTITAN_IS_EARLGREY)
       // Some target platforms may not support the specified value for slew rate
       // and drive strength. If that's the case, use the values actually
       // supported.
@@ -32,6 +35,7 @@ status_t spi_host_testutils_configure_host0_pad_attrs(dif_pinmux_t *pinmux) {
             "Specified slew rate not supported, trying supported slew rate");
         in_attr.slew_rate = out_attr.slew_rate;
       }
+#endif
       if (out_attr.drive_strength != in_attr.drive_strength) {
         LOG_INFO(
             "Specified drive strength not supported, trying supported drive "
