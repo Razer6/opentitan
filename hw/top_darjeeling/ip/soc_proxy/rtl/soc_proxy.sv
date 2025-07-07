@@ -7,7 +7,6 @@
 `include "prim_assert.sv"
 
 module soc_proxy
-  import soc_proxy_reg_pkg::*;
   import soc_proxy_pkg::*;
 (
   input  logic clk_i,
@@ -37,7 +36,6 @@ module soc_proxy
   output tlul_pkg::tl_h2d_t ctn_tl_h2d_o,
   input  tlul_pkg::tl_d2h_t ctn_tl_d2h_i,
 
-  output logic wkup_internal_req_o,
   output logic wkup_external_req_o,
 
   output logic rst_req_external_o,
@@ -61,7 +59,6 @@ module soc_proxy
 
   output logic [NumSocGpio-1:0] soc_gpi_async_o,
   input  logic [NumSocGpio-1:0] soc_gpo_async_i
-
 );
   localparam int unsigned TLUL_HOST_CNT = 3;
 
@@ -121,9 +118,6 @@ module soc_proxy
     .d_i    (soc_wkup_async_i),
     .q_o    (wkup_external_req_o)
   );
-
-  // No internal wakeup requests
-  assign wkup_internal_req_o = 1'b0;
 
   // Synchronize reset request onto AON domain and filter out potential glitches
   prim_filter #(

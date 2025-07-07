@@ -660,7 +660,7 @@ module top_darjeeling #(
   tlul_pkg::tl_d2h_t       soc_proxy_muxed_tl_d2h;
   tlul_pkg::tl_h2d_t       ac_range_check_ctn_filtered_tl_h2d;
   tlul_pkg::tl_d2h_t       ac_range_check_ctn_filtered_tl_d2h;
-  logic [3:0] pwrmgr_aon_wakeups;
+  logic [2:0] pwrmgr_aon_wakeups;
   logic [1:0] pwrmgr_aon_rstreqs;
   tlul_pkg::tl_h2d_t       main_tl_rv_core_ibex__corei_req;
   tlul_pkg::tl_d2h_t       main_tl_rv_core_ibex__corei_rsp;
@@ -1692,8 +1692,7 @@ module top_darjeeling #(
       .ac_range_tl_d2h_o(ac_range_check_ctn_filtered_tl_d2h),
       .ctn_tl_h2d_o(ctn_tl_h2d_o),
       .ctn_tl_d2h_i(ctn_tl_d2h_i),
-      .wkup_internal_req_o(pwrmgr_aon_wakeups[2]),
-      .wkup_external_req_o(pwrmgr_aon_wakeups[3]),
+      .wkup_external_req_o(pwrmgr_aon_wakeups[2]),
       .rst_req_external_o(pwrmgr_aon_rstreqs[1]),
       .i2c_lsio_trigger_i(i2c0_lsio_trigger),
       .spi_host_lsio_trigger_i(spi_host0_lsio_trigger),

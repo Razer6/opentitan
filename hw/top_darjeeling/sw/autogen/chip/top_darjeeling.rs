@@ -3317,8 +3317,7 @@ impl TryFrom<u32> for MuxedPads {
 pub enum PowerManagerWakeUps {
     PinmuxAonPinWkupReq = 0,
     AonTimerAonWkupReq = 1,
-    SocProxyWkupInternalReq = 2,
-    SocProxyWkupExternalReq = 3,
+    SocProxyWkupExternalReq = 2,
 }
 
 /// Reset Manager Software Controlled Resets

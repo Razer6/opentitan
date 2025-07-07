@@ -1729,9 +1729,8 @@ typedef enum top_darjeeling_muxed_pads {
 typedef enum top_darjeeling_power_manager_wake_ups {
   kTopDarjeelingPowerManagerWakeUpsPinmuxAonPinWkupReq = 0, /**<  */
   kTopDarjeelingPowerManagerWakeUpsAonTimerAonWkupReq = 1, /**<  */
-  kTopDarjeelingPowerManagerWakeUpsSocProxyWkupInternalReq = 2, /**<  */
-  kTopDarjeelingPowerManagerWakeUpsSocProxyWkupExternalReq = 3, /**<  */
-  kTopDarjeelingPowerManagerWakeUpsLast = 3, /**< \internal Last valid pwrmgr wakeup signal */
+  kTopDarjeelingPowerManagerWakeUpsSocProxyWkupExternalReq = 2, /**<  */
+  kTopDarjeelingPowerManagerWakeUpsLast = 2, /**< \internal Last valid pwrmgr wakeup signal */
 } top_darjeeling_power_manager_wake_ups_t;
 
 /**

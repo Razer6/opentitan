@@ -39,9 +39,6 @@
   ],
 
   wakeup_list: [
-    { name: "wkup_internal_req"
-      desc: "Internal wakeup request, should be asserted whenever an external alert or IRQ is seen"
-    }
     { name: "wkup_external_req"
       desc: "External wakeup request"
     }
@@ -123,11 +120,6 @@
       name:    "ctn_tl_d2h"
       act:     "rcv"
       desc:    "TL-UL host port for egress into CTN (response part), synchronous"
-    }
-    { struct:  "logic"
-      type:    "uni"
-      name:    "wkup_internal_req"
-      act:     "req"
     }
     { struct:  "logic"
       type:    "uni"
