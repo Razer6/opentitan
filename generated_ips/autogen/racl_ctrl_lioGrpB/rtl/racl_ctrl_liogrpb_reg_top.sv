@@ -1927,10 +1927,6 @@ module racl_ctrl_liogrpb_reg_top
 
 
   // R[error_log_address]: V(False)
-  logic error_log_address_qe;
-  logic [0:0] error_log_address_flds_we;
-  // In case all fields are read-only the aggregated register QE will be zero as well.
-  assign error_log_address_qe = &error_log_address_flds_we;
   prim_subreg #(
     .DW      (32),
     .SwAccess(prim_subreg_pkg::SwAccessRO),
@@ -1949,7 +1945,7 @@ module racl_ctrl_liogrpb_reg_top
     .d      (hw2reg.error_log_address.d),
 
     // to internal hardware
-    .qe     (error_log_address_flds_we[0]),
+    .qe     (),
     .q      (),
     .ds     (),
 
