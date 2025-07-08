@@ -15,7 +15,7 @@ module lio_alert_handler
   parameter bit          RaclErrorRsp                                 = EnableRacl,
   parameter top_racl_pkg::racl_policy_sel_t RaclPolicySelVec[lio_alert_handler_reg_pkg::NumRegs] = 
     '{lio_alert_handler_reg_pkg::NumRegs{0}},
-  // Number of cycles a differential skew is tolerated on the alert signal
+  // Number of cycles a differential skew is tolerated on the alert and escalation signal
   parameter int unsigned AlertSkewCycles = 1,
   parameter int EscNumSeverities = 4,
   parameter int EscPingCountWidth = 16,
