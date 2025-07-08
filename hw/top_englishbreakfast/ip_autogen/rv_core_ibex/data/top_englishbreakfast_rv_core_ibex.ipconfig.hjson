@@ -12,4 +12,13 @@
     uniquified_modules: {}
     sim_window_address: 128
   }
+  dtgen:
+  {
+    num_regions:
+    {
+      type: uint8
+      name: num_regions
+      doc: Number of translatable regions per ibex bus
+    }
+  }
 }
