@@ -31,7 +31,6 @@ sim_dv(
         "//hw/top_mio/sw/dt:sim_dv",
     ],
     linker_script = "//sw/device/lib/testing/test_framework:ottf_ld_silicon_creator_slot_a",
-    rom_scramble_config = "//hw/top_mio/data/autogen:top_mio.gen.hjson",
 )
 
 sim_dv(

@@ -205,7 +205,7 @@
     "//hw/top:extensions.bzl%top": {
       "general": {
         "bzlTransitiveDigest": "QfImIEoq43kXUBm6iiVr2DrJ6DfYpKKMmPL2Nbe5pUU=",
-        "usagesDigest": "Hom2+PRRv7O6cjv2zazn7RPJPwGSLYJiHNmywy5WtYg=",
+        "usagesDigest": "EBDZuIfPa/IS1uo2BJnQY7Bi5G0HRRRwqmjMGnl8Mbg=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -216,14 +216,20 @@
               "bazel_files": [
                 "@@//hw/top_earlgrey:defs.bzl",
                 "@@//hw/top_darjeeling:defs.bzl",
-                "@@//hw/top_englishbreakfast:defs.bzl"
+                "@@//hw/top_englishbreakfast:defs.bzl",
+                "@@//hw/top_mio:defs.bzl",
+                "@@//hw/top_pwc:defs.bzl"
               ],
               "top_vars": [
                 "EARLGREY",
                 "DARJEELING",
-                "ENGLISHBREAKFAST"
+                "ENGLISHBREAKFAST",
+                "MIO",
+                "PWC"
               ],
               "top_names": [
+                "",
+                "",
                 "",
                 "",
                 ""

@@ -4,18 +4,39 @@
 
 #include <stdbool.h>
 
-#include "dt/dt_rv_core_ibex.h"
 #include "sw/device/lib/arch/device.h"
 
+#if defined(ROT)
+#include "dt/dt_rv_core_ibex.h"
 #include "rv_core_ibex_regs.h"
+#define DT_RV_CORE_IBEX_TYPE dt_rv_core_ibex_t
+#define KDT_RV_CORE_IBEX_COUNT kDtRvCoreIbexCount
+#define KDT_RV_CORE_IBEX_PRIMARY_REG_BLOCK dt_rv_core_ibex_primary_reg_block
+#elif defined(PWC)
+#include "dt/dt_rv_core_ibex_pwc.h"
+#include "rv_core_ibex_pwc_regs.h"
+#define DT_RV_CORE_IBEX_TYPE dt_rv_core_ibex_pwc_t
+#define KDT_RV_CORE_IBEX_COUNT kDtRvCoreIbexPwcCount
+#define KDT_RV_CORE_IBEX_PRIMARY_REG_BLOCK dt_rv_core_ibex_pwc_primary_reg_block
+#define RV_CORE_IBEX_DV_SIM_WINDOW_REG_OFFSET RV_CORE_IBEX_PWC_DV_SIM_WINDOW_REG_OFFSET
+#elif defined(MIO)
+#include "dt/dt_rv_core_ibex_mio.h"
+#include "rv_core_ibex_mio_regs.h"
+#define DT_RV_CORE_IBEX_TYPE dt_rv_core_ibex_mio_t
+#define KDT_RV_CORE_IBEX_COUNT kDtRvCoreIbexMioCount
+#define KDT_RV_CORE_IBEX_PRIMARY_REG_BLOCK dt_rv_core_ibex_mio_primary_reg_block
+#define RV_CORE_IBEX_DV_SIM_WINDOW_REG_OFFSET RV_CORE_IBEX_MIO_DV_SIM_WINDOW_REG_OFFSET
+#endif
 
-// Use the first dt_rv_core_ibex_t enum, i.e. the first Ibex core instance.
-static const dt_rv_core_ibex_t kRvCoreIbexDt = (dt_rv_core_ibex_t)0;
-static_assert(kDtRvCoreIbexCount == 1, "Only single core tops are supported");
+#if defined(ROT) || defined(PWC) || defined(MIO)
+// Use the first DT_RV_CORE_IBEX_TYPE enum, i.e. the first Ibex core instance.
+static const DT_RV_CORE_IBEX_TYPE kRvCoreIbexDt = (DT_RV_CORE_IBEX_TYPE)0;
+static_assert(KDT_RV_CORE_IBEX_COUNT == 1, "Only single core tops are supported");
 
 static inline uintptr_t rv_core_ibex_base(void) {
-  return (uintptr_t)dt_rv_core_ibex_primary_reg_block(kRvCoreIbexDt);
+    return (uintptr_t)KDT_RV_CORE_IBEX_PRIMARY_REG_BLOCK(kRvCoreIbexDt);
 }
+#endif
 
 /**
  * Device-specific symbol definitions for the DV simulation device.
@@ -61,10 +82,12 @@ const uint32_t kUartBaud1M50 =
 const uint32_t kAstCheckPollCpuCycles =
     CALCULATE_AST_CHECK_POLL_CPU_CYCLES(kClockFreqCpuHz);
 
+#if defined(ROT) || defined(PWC) || defined(MIO)
 uintptr_t device_test_status_address(void) {
-  return rv_core_ibex_base() + RV_CORE_IBEX_DV_SIM_WINDOW_REG_OFFSET;
+    return rv_core_ibex_base() + RV_CORE_IBEX_DV_SIM_WINDOW_REG_OFFSET;
 }
 
 uintptr_t device_log_bypass_uart_address(void) {
-  return rv_core_ibex_base() + RV_CORE_IBEX_DV_SIM_WINDOW_REG_OFFSET + 0x04;
+    return rv_core_ibex_base() + RV_CORE_IBEX_DV_SIM_WINDOW_REG_OFFSET + 0x04;
 }
+#endif

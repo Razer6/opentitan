@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 load("//rules:doxygen.bzl", "doxygen_gather_all_package_cc")
-load("//hw/top:defs.bzl", "opentitan_if_ip", "opentitan_require_ip")
+load("//hw/top:defs.bzl", "opentitan_if_ip", "opentitan_require_ip", "opentitan_select_top")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -108,13 +108,30 @@ cc_library(
 
 cc_library(
     name = "sim_dv",
+    copts = opentitan_select_top({
+            "darjeeling": ["-DROT"],
+            "pwc":        ["-DPWC"],
+            "mio":        ["-DMIO"],
+        },[],),
     srcs = ["device_sim_dv.c"],
     deps = [
         ":device",
         ":stub",
-        "//hw/top:dt_rv_core_ibex",
-        "//hw/top:rv_core_ibex_c_regs",
-    ],
+        "//hw/top:top_lib",
+    ] + opentitan_select_top({
+        "darjeeling": [
+            "//hw/top:dt_rv_core_ibex",
+            "//hw/top:rv_core_ibex_c_regs",
+        ],
+        "pwc":        [
+            "//hw/top:dt_rv_core_ibex_pwc",
+            "//hw/top:rv_core_ibex_pwc_c_regs",
+        ],
+        "mio":        [
+            "//hw/top:dt_rv_core_ibex_mio",
+            "//hw/top:rv_core_ibex_mio_c_regs",
+        ],
+    },[],),
 )
 
 cc_library(

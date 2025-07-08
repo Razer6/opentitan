@@ -31,7 +31,6 @@ sim_dv(
         "//hw/top_pwc/sw/dt:sim_dv",
     ],
     linker_script = "//sw/device/lib/testing/test_framework:ottf_ld_silicon_creator_slot_a",
-    rom_scramble_config = "//hw/top_pwc/data/autogen:top_pwc.gen.hjson",
 )
 
 sim_dv(
