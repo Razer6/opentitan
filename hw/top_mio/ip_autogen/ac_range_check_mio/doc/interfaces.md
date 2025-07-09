@@ -36,9 +36,13 @@ Referring to the [Comportable guideline for peripheral device functionality](htt
 
 ## Security Countermeasures
 
-| Countermeasure ID                | Description                      |
-|:---------------------------------|:---------------------------------|
-| AC_RANGE_CHECK_MIO.BUS.INTEGRITY | End-to-end bus integrity scheme. |
+| Countermeasure ID                   | Description                                                                             |
+|:------------------------------------|:----------------------------------------------------------------------------------------|
+| AC_RANGE_CHECK_MIO.BUS.INTEGRITY    | End-to-end bus integrity scheme.                                                        |
+| AC_RANGE_CHECK_MIO.CTRL.REGWEN_MUBI | Registers are protected from writes with a multi-bit encoded signal.                    |
+| AC_RANGE_CHECK_MIO.CTRL.MUBI        | Registers have multi-bit encoded fields.                                                |
+| AC_RANGE_CHECK_MIO.INTERSIG.MUBI    | Range overwrite singal to bypass the matching logic.                                    |
+| AC_RANGE_CHECK_MIO.CTR.REDUN        | The log counter is protected by a second counter that counts in the opposite direction. |
 
 
 <!-- END CMDGEN -->

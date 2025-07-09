@@ -14,4 +14,13 @@
     racl_support: true
     uniquified_modules: {}
   }
+  dtgen:
+  {
+    src:
+    {
+      type: uint8
+      name: num_irq_sources
+      doc: Number of interrupt sources
+    }
+  }
 }

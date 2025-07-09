@@ -18,4 +18,13 @@
       rv_plic: rv_plic_mio
     }
   }
+  dtgen:
+  {
+    num_regions:
+    {
+      type: uint8
+      name: num_regions
+      doc: Number of translatable regions per ibex bus
+    }
+  }
 }

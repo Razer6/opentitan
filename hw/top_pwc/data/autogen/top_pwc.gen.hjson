@@ -6005,8 +6005,8 @@
           type: uni
           act: rcv
           width: 1
+          default: lc_ctrl_pkg::On
           inst_name: rv_core_ibex_pwc
-          default: ""
           external: true
           top_signame: rv_cpu_en
           conn_type: false
@@ -19075,8 +19075,8 @@
         type: uni
         act: rcv
         width: 1
+        default: lc_ctrl_pkg::On
         inst_name: rv_core_ibex_pwc
-        default: ""
         external: true
         top_signame: rv_cpu_en
         conn_type: false
@@ -19902,7 +19902,7 @@
         signame: rv_cpu_en_i
         width: 1
         type: uni
-        default: ""
+        default: lc_ctrl_pkg::On
         direction: in
         conn_type: false
         index: -1

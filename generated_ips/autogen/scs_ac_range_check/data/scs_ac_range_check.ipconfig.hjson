@@ -12,4 +12,13 @@
     nr_role_bits: 4
     nr_ctn_uid_bits: 5
   }
+  dtgen:
+  {
+    num_ranges:
+    {
+      type: uint8
+      name: num_ranges
+      doc: Number of range registers
+    }
+  }
 }
