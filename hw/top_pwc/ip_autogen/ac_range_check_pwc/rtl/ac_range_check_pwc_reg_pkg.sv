@@ -17,6 +17,12 @@ package ac_range_check_pwc_reg_pkg;
   // Number of registers for every interface
   parameter int NumRegs = 168;
 
+  // Alert indices
+  typedef enum int {
+    AlertRecovCtrlUpdateErrIdx = 0,
+    AlertFatalFaultIdx = 1
+  } ac_range_check_pwc_alert_idx_t;
+
   ////////////////////////////
   // Typedefs for registers //
   ////////////////////////////

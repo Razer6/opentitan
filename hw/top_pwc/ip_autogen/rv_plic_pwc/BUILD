@@ -21,5 +21,5 @@ filegroup(
     srcs = glob([
         "**/*.md",
         "**/*.svg",
-    ]) + ["//hw/top_pwc/ip_autogen/rv_plic/data:doc_files"],
+    ]) + ["//hw/top_pwc/ip_autogen/rv_plic_pwc/data:doc_files"],
 )

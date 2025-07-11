@@ -18,6 +18,11 @@ package rv_plic_mio_reg_pkg;
   // Number of registers for every interface
   parameter int NumRegs = 45;
 
+  // Alert indices
+  typedef enum int {
+    AlertFatalFaultIdx = 0
+  } rv_plic_mio_alert_idx_t;
+
   ////////////////////////////
   // Typedefs for registers //
   ////////////////////////////

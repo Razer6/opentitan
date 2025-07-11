@@ -4,12 +4,12 @@
 
 package(default_visibility = ["//visibility:public"])
 
-exports_files(["top_pwc_gpio.ipconfig.hjson"])
+exports_files(["top_pwc_gpio_pwc.ipconfig.hjson"])
 
 filegroup(
     name = "doc_files",
     srcs = glob([
-        "gpio.hjson",
+        "gpio_pwc.hjson",
         "*_testplan.hjson",
     ]),
 )

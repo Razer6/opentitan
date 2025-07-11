@@ -18,5 +18,5 @@ filegroup(
 
 filegroup(
     name = "doc_files",
-    srcs = glob(["**/*.md"]) + ["//hw/top_pwc/ip_autogen/rv_core_ibex/data:doc_files"],
+    srcs = glob(["**/*.md"]) + ["//hw/top_pwc/ip_autogen/rv_core_ibex_pwc/data:doc_files"],
 )

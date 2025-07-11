@@ -18,5 +18,5 @@ filegroup(
 
 filegroup(
     name = "doc_files",
-    srcs = glob(["**/*.md"]) + ["//hw/top_mio/ip_autogen/racl_ctrl/data:doc_files"],
+    srcs = glob(["**/*.md"]) + ["//hw/top_mio/ip_autogen/racl_ctrl_mio/data:doc_files"],
 )

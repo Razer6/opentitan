@@ -4,12 +4,12 @@
 
 package(default_visibility = ["//visibility:public"])
 
-exports_files(["top_mio_rv_plic.ipconfig.hjson"])
+exports_files(["top_mio_rv_plic_mio.ipconfig.hjson"])
 
 filegroup(
     name = "doc_files",
     srcs = glob([
-        "rv_plic.hjson",
+        "rv_plic_mio.hjson",
         "*_testplan.hjson",
     ]),
 )

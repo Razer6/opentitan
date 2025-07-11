@@ -4,12 +4,12 @@
 
 package(default_visibility = ["//visibility:public"])
 
-exports_files(["top_pwc_rv_core_ibex.ipconfig.hjson"])
+exports_files(["top_pwc_rv_core_ibex_pwc.ipconfig.hjson"])
 
 filegroup(
     name = "doc_files",
     srcs = glob([
-        "rv_core_ibex.hjson",
+        "rv_core_ibex_pwc.hjson",
         "*_testplan.hjson",
     ]),
 )
