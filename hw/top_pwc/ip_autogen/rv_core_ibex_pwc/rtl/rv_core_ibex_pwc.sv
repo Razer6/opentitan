@@ -303,8 +303,10 @@ module rv_core_ibex_pwc
   logic irq_nm;
   assign irq_nm = |(reg2hw.nmi_state & reg2hw.nmi_enable);
 
-  lc_ctrl_pkg::lc_tx_t [0:0] lc_cpu_en;
-  prim_lc_sync u_lc_sync (
+  lc_ctrl_pkg::lc_tx_t [1:0] lc_cpu_en;
+  prim_lc_sync #(
+    .NumCopies(2)
+  ) u_lc_sync (
     .clk_i,
     .rst_ni,
     .lc_en_i(lc_cpu_en_i),
@@ -741,7 +743,7 @@ module rv_core_ibex_pwc
     .flush_req_i    (1'b0),
     .flush_ack_o    (),
     .resp_pending_o (),
-    .lc_en_i        (lc_cpu_en[0]),
+    .lc_en_i        (lc_cpu_en[1]),
     .err_o          (tlul_lc_gate_core_d_error)
   );
 
