@@ -390,6 +390,7 @@
         FlopRamOutput: 1,
         EccCorrection: 1,
         FlopWdataScramble: 1,
+        FlopReadAddrScramble: 1,
         Outstanding: 6
       }
       base_addrs: {
@@ -424,6 +425,7 @@
         FlopRamOutput: 1,
         EccCorrection: 1,
         FlopWdataScramble: 1,
+        FlopReadAddrScramble: 1,
         Outstanding: 6
       }
       base_addrs: {

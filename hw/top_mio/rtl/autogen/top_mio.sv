@@ -40,7 +40,7 @@ module top_mio #(
   parameter bit SramCtrlMainEccCorrection = 1,
   parameter bit SramCtrlMainFlopRamOutput = 1,
   parameter bit SramCtrlMainFlopWdataScramble = 1,
-  parameter bit SramCtrlMainFlopReadAddrScramble = 0,
+  parameter bit SramCtrlMainFlopReadAddrScramble = 1,
   // parameters for sram_ctrl_mbox
   parameter int SramCtrlMboxInstSize = 4096,
   parameter int SramCtrlMboxNumRamInst = 1,
@@ -49,7 +49,7 @@ module top_mio #(
   parameter bit SramCtrlMboxEccCorrection = 1,
   parameter bit SramCtrlMboxFlopRamOutput = 1,
   parameter bit SramCtrlMboxFlopWdataScramble = 1,
-  parameter bit SramCtrlMboxFlopReadAddrScramble = 0,
+  parameter bit SramCtrlMboxFlopReadAddrScramble = 1,
   // parameters for dma
   parameter bit DmaEnableDataIntgGen = 1'b1,
   parameter bit DmaEnableRspDataIntgCheck = 1'b1,

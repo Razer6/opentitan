@@ -826,6 +826,7 @@
         NumRamInst: 2
         FlopRamOutput: 1,
         FlopWdataScramble: 1,
+        FlopReadAddrScramble: 1,
         Outstanding: 6
       }
       base_addrs: {
@@ -855,6 +856,7 @@
         InstSize: 4096,
         FlopRamOutput: 1,
         FlopWdataScramble: 1,
+        FlopReadAddrScramble: 1,
         Outstanding: 6
       }
       base_addrs: {
