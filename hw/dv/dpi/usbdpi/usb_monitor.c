@@ -103,7 +103,7 @@ usb_monitor_ctx_t *usb_monitor_init(const char *filename,
   }
 
   // more useful for tail -f
-  setvbuf(mon->file, NULL, _IOLBF, 0);
+  setlinebuf(mon->file);
   printf(
       "\nUSBDPI: Monitor output file created at %s. Works well with tail:\n"
       "$ tail -f %s\n",

@@ -2,11 +2,6 @@
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
 
-// The code below uses cfmakeraw, which comes from unistd.h. With glibc, it is
-// only provided if the _DEFAULT_SOURCE feature test macro is defined (because
-// it came from BSD in the first place, so needs pulling in explicitly).
-#define _DEFAULT_SOURCE
-
 #include "uartdpi.h"
 
 #ifdef __linux__
@@ -46,17 +41,11 @@ void *uartdpi_create(const char *name, const char *log_file_path,
   int rv;
 
   // Initialize UART pseudo-terminal
-  rv = openpty(&ctx->host, &ctx->device, 0, 0, 0);
-  assert(rv == 0 && "failed to open pty for uart");
-
-  // Customise the slave side of the uart pseudo-terminal to be in "raw mode",
-  // using the BSD cfmakeraw function.
   struct termios tty;
-  rv = tcgetattr(ctx->device, &tty);
-  assert(rv == 0 && "failed to get device terminal attrs");
   cfmakeraw(&tty);
-  rv = tcsetattr(ctx->device, TCSANOW, &tty);
-  assert(rv == 0 && "failed to set new device terminal attrs");
+
+  rv = openpty(&ctx->host, &ctx->device, 0, &tty, 0);
+  assert(rv != -1);
 
   rv = ttyname_r(ctx->device, ctx->ptyname, 64);
   assert(rv == 0 && "ttyname_r failed");

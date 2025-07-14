@@ -1,6 +1,19 @@
 # Programmer's Guide
 
-This section discusses how firmware can interface with EDN.
+## Initialization
+
+The following code snippet demonstrates initializing the EDN block.
+
+```cpp
+
+void edn_init(unsigned int enable) {
+
+  // set the control register enable bit
+  *CTRL_REG = enable; // should be 0x1 by default
+
+  // the EDN interrupts can optionally be enabled
+}
+```
 
 ## Module enable and disable
 
@@ -62,6 +75,10 @@ The same guidance applies as for [CSRNG](../../csrng/doc/programmers_guide.md#re
 The same guidance applies as for [CSRNG](../../csrng/doc/programmers_guide.md#fully-deterministic-mode).
 However, the `generate` and `reseed` commands including the additional data fields can only be configured before starting **[Auto Request Mode](./theory_of_operation.md#auto-request-mode)** via the [`GENERATE_CMD`](registers.md#generate_cmd) and [`RESEED_CMD`](registers.md#reseed_cmd) FIFOs.
 To inject fresh entropy, firmware thus has to [uninstantiate the CSRNG instance through EDN](#uninstantiating-csrng-through-edn), disable EDN, configure the FIFOs and then re-enable EDN in Auto Request Mode, and finally trigger the `instantiate` command.
+
+## Error conditions
+
+Need to alert the system of a FIFO overflow condition.
 
 ## Device Interface Functions (DIFs)
 
