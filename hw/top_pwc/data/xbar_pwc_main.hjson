@@ -99,6 +99,8 @@
       type:      "device",
       clock:     "clk_main_i",
       reset:     "rst_main_ni",
+      req_fifo_pass: false,
+      rsp_fifo_pass: false,
       pipeline:  true
     },
     { name:      "sram_ctrl_mbox.regs",
@@ -111,6 +113,8 @@
       type:      "device",
       clock:     "clk_main_i",
       reset:     "rst_main_ni",
+      req_fifo_pass: false,
+      rsp_fifo_pass: false,
       pipeline:  true
     },
     { name:      "dma",
@@ -139,7 +143,9 @@
       addr_space: "hart",
       clock:      "clk_main_i",
       reset:      "rst_main_ni",
-      pipeline:   false,
+      req_fifo_pass: false,
+      rsp_fifo_pass: false,
+      pipeline:  true
     },
     { name:       "mbx1.core",
       type:       "device",
@@ -153,7 +159,9 @@
       addr_space: "hart",
       clock:      "clk_main_i",
       reset:      "rst_main_ni",
-      pipeline:   false,
+      req_fifo_pass: false,
+      rsp_fifo_pass: false,
+      pipeline:  true
     },
     { name:       "mbx2.core",
       type:       "device",
@@ -167,7 +175,9 @@
       addr_space: "hart",
       clock:      "clk_main_i",
       reset:      "rst_main_ni",
-      pipeline:   false,
+      req_fifo_pass: false,
+      rsp_fifo_pass: false,
+      pipeline:  true
     },
     { name:       "mbx3.core",
       type:       "device",
@@ -181,7 +191,9 @@
       addr_space: "hart",
       clock:      "clk_main_i",
       reset:      "rst_main_ni",
-      pipeline:   false,
+      req_fifo_pass: false,
+      rsp_fifo_pass: false,
+      pipeline:  true
     },
     { name:       "mbx4.core",
       type:       "device",
@@ -195,7 +207,9 @@
       addr_space: "hart",
       clock:      "clk_main_i",
       reset:      "rst_main_ni",
-      pipeline:   false,
+      req_fifo_pass: false,
+      rsp_fifo_pass: false,
+      pipeline:  true
     },
     { name:       "mbx5.core",
       type:       "device",
@@ -209,7 +223,9 @@
       addr_space: "hart",
       clock:      "clk_main_i",
       reset:      "rst_main_ni",
-      pipeline:   false,
+      req_fifo_pass: false,
+      rsp_fifo_pass: false,
+      pipeline:  true
     },
     { name:       "mbx_pcie0.core",
       type:       "device",
@@ -223,7 +239,9 @@
       addr_space: "hart",
       clock:      "clk_main_i",
       reset:      "rst_main_ni",
-      pipeline:   false,
+      req_fifo_pass: false,
+      rsp_fifo_pass: false,
+      pipeline:  true
     },
   ],
   connections: {

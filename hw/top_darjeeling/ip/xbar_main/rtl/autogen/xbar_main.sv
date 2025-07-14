@@ -1636,6 +1636,7 @@ end
   tlul_socket_m1 #(
     .HReqDepth (16'h0),
     .HRspDepth (16'h0),
+    .DReqPass  (1'b0),
     .DRspPass  (1'b0),
     .M         (4)
   ) u_sm1_52 (
@@ -1901,6 +1902,7 @@ end
   tlul_socket_m1 #(
     .HReqDepth (52'h0),
     .HRspDepth (52'h0),
+    .DReqPass  (1'b0),
     .DRspPass  (1'b0),
     .M         (13)
   ) u_sm1_71 (
@@ -2124,8 +2126,8 @@ end
     .dev_select_i (dev_sel_s1n_86)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -2139,8 +2141,8 @@ end
     .dev_select_i (dev_sel_s1n_87)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -2154,8 +2156,8 @@ end
     .dev_select_i (dev_sel_s1n_88)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -2169,8 +2171,8 @@ end
     .dev_select_i (dev_sel_s1n_89)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -2184,8 +2186,8 @@ end
     .dev_select_i (dev_sel_s1n_90)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -2199,8 +2201,8 @@ end
     .dev_select_i (dev_sel_s1n_91)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -2214,8 +2216,8 @@ end
     .dev_select_i (dev_sel_s1n_92)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -2229,8 +2231,8 @@ end
     .dev_select_i (dev_sel_s1n_93)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -2244,8 +2246,8 @@ end
     .dev_select_i (dev_sel_s1n_94)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -2259,8 +2261,8 @@ end
     .dev_select_i (dev_sel_s1n_95)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)

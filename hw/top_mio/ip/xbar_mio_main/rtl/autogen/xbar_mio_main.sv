@@ -983,6 +983,7 @@ end
   tlul_socket_m1 #(
     .HReqDepth (16'h0),
     .HRspDepth (16'h0),
+    .DReqPass  (1'b0),
     .DRspPass  (1'b0),
     .M         (4)
   ) u_sm1_31 (
@@ -1108,6 +1109,7 @@ end
   tlul_socket_m1 #(
     .HReqDepth (40'h0),
     .HRspDepth (40'h0),
+    .DReqPass  (1'b0),
     .DRspPass  (1'b0),
     .M         (10)
   ) u_sm1_40 (
@@ -1275,8 +1277,8 @@ end
     .dev_select_i (dev_sel_s1n_51)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -1290,8 +1292,8 @@ end
     .dev_select_i (dev_sel_s1n_52)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -1305,8 +1307,8 @@ end
     .dev_select_i (dev_sel_s1n_53)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -1320,8 +1322,8 @@ end
     .dev_select_i (dev_sel_s1n_54)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -1335,8 +1337,8 @@ end
     .dev_select_i (dev_sel_s1n_55)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -1350,8 +1352,8 @@ end
     .dev_select_i (dev_sel_s1n_56)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)
@@ -1365,8 +1367,8 @@ end
     .dev_select_i (dev_sel_s1n_57)
   );
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqPass  (1'b0),
+    .HRspPass  (1'b0),
     .DReqDepth (4'h0),
     .DRspDepth (4'h0),
     .N         (1)

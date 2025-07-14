@@ -6380,6 +6380,8 @@
           type: device
           clock: clk_main_i
           reset: rst_main_ni
+          req_fifo_pass: false
+          rsp_fifo_pass: false
           pipeline: true
           inst_type: sram_ctrl
           addr_range:
@@ -6394,7 +6396,6 @@
           ]
           xbar: false
           stub: false
-          req_fifo_pass: true
         }
         {
           name: sram_ctrl_mbox.regs
@@ -6422,6 +6423,8 @@
           type: device
           clock: clk_main_i
           reset: rst_main_ni
+          req_fifo_pass: false
+          rsp_fifo_pass: false
           pipeline: true
           inst_type: sram_ctrl
           addr_range:
@@ -6436,7 +6439,6 @@
           ]
           xbar: false
           stub: false
-          req_fifo_pass: true
         }
         {
           name: dma
@@ -6501,12 +6503,12 @@
           addr_space: hart
           clock: clk_main_i
           reset: rst_main_ni
-          pipeline: false
+          req_fifo_pass: false
+          rsp_fifo_pass: false
+          pipeline: true
           xbar: false
           stub: false
           inst_type: ""
-          req_fifo_pass: true
-          rsp_fifo_pass: true
         }
         {
           name: mbx1.core
@@ -6536,12 +6538,12 @@
           addr_space: hart
           clock: clk_main_i
           reset: rst_main_ni
-          pipeline: false
+          req_fifo_pass: false
+          rsp_fifo_pass: false
+          pipeline: true
           xbar: false
           stub: false
           inst_type: ""
-          req_fifo_pass: true
-          rsp_fifo_pass: true
         }
         {
           name: mbx2.core
@@ -6571,12 +6573,12 @@
           addr_space: hart
           clock: clk_main_i
           reset: rst_main_ni
-          pipeline: false
+          req_fifo_pass: false
+          rsp_fifo_pass: false
+          pipeline: true
           xbar: false
           stub: false
           inst_type: ""
-          req_fifo_pass: true
-          rsp_fifo_pass: true
         }
         {
           name: mbx3.core
@@ -6606,12 +6608,12 @@
           addr_space: hart
           clock: clk_main_i
           reset: rst_main_ni
-          pipeline: false
+          req_fifo_pass: false
+          rsp_fifo_pass: false
+          pipeline: true
           xbar: false
           stub: false
           inst_type: ""
-          req_fifo_pass: true
-          rsp_fifo_pass: true
         }
         {
           name: mbx4.core
@@ -6641,12 +6643,12 @@
           addr_space: hart
           clock: clk_main_i
           reset: rst_main_ni
-          pipeline: false
+          req_fifo_pass: false
+          rsp_fifo_pass: false
+          pipeline: true
           xbar: false
           stub: false
           inst_type: ""
-          req_fifo_pass: true
-          rsp_fifo_pass: true
         }
         {
           name: mbx5.core
@@ -6676,12 +6678,12 @@
           addr_space: hart
           clock: clk_main_i
           reset: rst_main_ni
-          pipeline: false
+          req_fifo_pass: false
+          rsp_fifo_pass: false
+          pipeline: true
           xbar: false
           stub: false
           inst_type: ""
-          req_fifo_pass: true
-          rsp_fifo_pass: true
         }
         {
           name: mbx_pcie0.core
@@ -6711,12 +6713,12 @@
           addr_space: hart
           clock: clk_main_i
           reset: rst_main_ni
-          pipeline: false
+          req_fifo_pass: false
+          rsp_fifo_pass: false
+          pipeline: true
           xbar: false
           stub: false
           inst_type: ""
-          req_fifo_pass: true
-          rsp_fifo_pass: true
         }
       ]
       addr_spaces:
