@@ -68,7 +68,9 @@
       addr_space: soc_mbx
       clock: clk_mbx_i
       reset: rst_mbx_ni
-      pipeline: false
+      req_fifo_pass: false
+      rsp_fifo_pass: false
+      pipeline: true
       inst_type: mbx
       addr_range:
       [
@@ -82,7 +84,6 @@
       ]
       xbar: false
       stub: false
-      req_fifo_pass: true
     }
     {
       name: mbx1.soc
@@ -90,7 +91,9 @@
       addr_space: soc_mbx
       clock: clk_mbx_i
       reset: rst_mbx_ni
-      pipeline: false
+      req_fifo_pass: false
+      rsp_fifo_pass: false
+      pipeline: true
       inst_type: mbx
       addr_range:
       [
@@ -104,7 +107,6 @@
       ]
       xbar: false
       stub: false
-      req_fifo_pass: true
     }
     {
       name: mbx2.soc
@@ -112,7 +114,9 @@
       addr_space: soc_mbx
       clock: clk_mbx_i
       reset: rst_mbx_ni
-      pipeline: false
+      req_fifo_pass: false
+      rsp_fifo_pass: false
+      pipeline: true
       inst_type: mbx
       addr_range:
       [
@@ -126,7 +130,6 @@
       ]
       xbar: false
       stub: false
-      req_fifo_pass: true
     }
     {
       name: mbx3.soc
@@ -134,7 +137,9 @@
       addr_space: soc_mbx
       clock: clk_mbx_i
       reset: rst_mbx_ni
-      pipeline: false
+      req_fifo_pass: false
+      rsp_fifo_pass: false
+      pipeline: true
       inst_type: mbx
       addr_range:
       [
@@ -148,7 +153,6 @@
       ]
       xbar: false
       stub: false
-      req_fifo_pass: true
     }
     {
       name: mbx4.soc
@@ -156,7 +160,9 @@
       addr_space: soc_mbx
       clock: clk_mbx_i
       reset: rst_mbx_ni
-      pipeline: false
+      req_fifo_pass: false
+      rsp_fifo_pass: false
+      pipeline: true
       inst_type: mbx
       addr_range:
       [
@@ -170,7 +176,6 @@
       ]
       xbar: false
       stub: false
-      req_fifo_pass: true
     }
     {
       name: mbx5.soc
@@ -178,7 +183,9 @@
       addr_space: soc_mbx
       clock: clk_mbx_i
       reset: rst_mbx_ni
-      pipeline: false
+      req_fifo_pass: false
+      rsp_fifo_pass: false
+      pipeline: true
       inst_type: mbx
       addr_range:
       [
@@ -192,7 +199,6 @@
       ]
       xbar: false
       stub: false
-      req_fifo_pass: true
     }
     {
       name: mbx6.soc
@@ -200,7 +206,9 @@
       addr_space: soc_mbx
       clock: clk_mbx_i
       reset: rst_mbx_ni
-      pipeline: false
+      req_fifo_pass: false
+      rsp_fifo_pass: false
+      pipeline: true
       inst_type: mbx
       addr_range:
       [
@@ -214,7 +222,6 @@
       ]
       xbar: false
       stub: false
-      req_fifo_pass: true
     }
     {
       name: mbx_pcie0.soc
@@ -222,7 +229,9 @@
       addr_space: soc_mbx
       clock: clk_mbx_i
       reset: rst_mbx_ni
-      pipeline: false
+      req_fifo_pass: false
+      rsp_fifo_pass: false
+      pipeline: true
       inst_type: mbx
       addr_range:
       [
@@ -236,7 +245,6 @@
       ]
       xbar: false
       stub: false
-      req_fifo_pass: true
     }
     {
       name: mbx_pcie1.soc
@@ -244,7 +252,9 @@
       addr_space: soc_mbx
       clock: clk_mbx_i
       reset: rst_mbx_ni
-      pipeline: false
+      req_fifo_pass: false
+      rsp_fifo_pass: false
+      pipeline: true
       inst_type: mbx
       addr_range:
       [
@@ -258,7 +268,6 @@
       ]
       xbar: false
       stub: false
-      req_fifo_pass: true
     }
     {
       name: racl_ctrl
@@ -266,7 +275,9 @@
       addr_space: soc_mbx
       clock: clk_mbx_i
       reset: rst_mbx_ni
-      pipeline: false
+      req_fifo_pass: false
+      rsp_fifo_pass: false
+      pipeline: true
       inst_type: racl_ctrl
       addr_range:
       [
@@ -280,7 +291,6 @@
       ]
       xbar: false
       stub: false
-      req_fifo_pass: true
     }
     {
       name: ac_range_check
@@ -288,7 +298,9 @@
       addr_space: soc_mbx
       clock: clk_mbx_i
       reset: rst_mbx_ni
-      pipeline: false
+      req_fifo_pass: false
+      rsp_fifo_pass: false
+      pipeline: true
       inst_type: ac_range_check
       addr_range:
       [
@@ -302,7 +314,6 @@
       ]
       xbar: false
       stub: false
-      req_fifo_pass: true
     }
   ]
   addr_spaces:
