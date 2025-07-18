@@ -4160,7 +4160,7 @@
             '''
           type: bit
           default: 1'b0
-          local: "false"
+          local: "true"
           expose: "true"
           name_top: RomCtrlFlopToKmac
         }

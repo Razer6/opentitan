@@ -124,7 +124,6 @@ module top_earlgrey #(
   parameter bit SramCtrlMainFlopReadAddrScramble = 0,
   // parameters for rom_ctrl
   parameter RomCtrlBootRomInitFile = "",
-  parameter bit RomCtrlFlopToKmac = 1'b0,
   parameter bit SecRomCtrlDisableScrambling = 1'b0,
   // parameters for rv_core_ibex
   parameter bit RvCoreIbexPMPEnable = 1,
@@ -272,6 +271,8 @@ module top_earlgrey #(
   localparam int unsigned EntropySrcDistrFifoDepth = 2;
   // local parameters for sram_ctrl_main
   localparam int SramCtrlMainOutstanding = 2;
+  // local parameters for rom_ctrl
+  localparam bit RomCtrlFlopToKmac = 1'b0;
 
   // Signals
   logic [56:0] mio_p2d;

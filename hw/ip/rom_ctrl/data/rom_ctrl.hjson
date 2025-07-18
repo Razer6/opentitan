@@ -48,7 +48,7 @@
         sent to KMAC. This may break long paths in a target chip, at the cost of
         adding chip area.
       '''
-      local:     "false",
+      local:     "true",
       expose:    "true",
       default:   "1'b0"
     }

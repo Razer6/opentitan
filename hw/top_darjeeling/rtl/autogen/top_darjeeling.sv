@@ -117,11 +117,9 @@ module top_darjeeling #(
   parameter bit SramCtrlMboxFlopReadAddrScramble = 1,
   // parameters for rom_ctrl0
   parameter RomCtrl0BootRomInitFile = "",
-  parameter bit RomCtrl0FlopToKmac = 1'b1,
   parameter bit SecRomCtrl0DisableScrambling = 1'b0,
   // parameters for rom_ctrl1
   parameter RomCtrl1BootRomInitFile = "",
-  parameter bit RomCtrl1FlopToKmac = 1'b1,
   parameter bit SecRomCtrl1DisableScrambling = 1'b0,
   // parameters for dma
   parameter bit DmaEnableDataIntgGen = 1'b1,
@@ -381,6 +379,10 @@ module top_darjeeling #(
   localparam int SramCtrlMainOutstanding = 6;
   // local parameters for sram_ctrl_mbox
   localparam int SramCtrlMboxOutstanding = 6;
+  // local parameters for rom_ctrl0
+  localparam bit RomCtrl0FlopToKmac = 1'b1;
+  // local parameters for rom_ctrl1
+  localparam bit RomCtrl1FlopToKmac = 1'b1;
   // local parameters for racl_ctrl
   localparam int RaclCtrlNumSubscribingIps = 10;
 

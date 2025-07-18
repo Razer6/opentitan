@@ -57,7 +57,6 @@ module top_englishbreakfast #(
   parameter bit SramCtrlMainFlopReadAddrScramble = 0,
   // parameters for rom_ctrl
   parameter RomCtrlBootRomInitFile = "",
-  parameter bit RomCtrlFlopToKmac = 1'b0,
   parameter bit SecRomCtrlDisableScrambling = 1'b1,
   // parameters for rv_core_ibex
   parameter bit RvCoreIbexPMPEnable = 0,
@@ -173,6 +172,8 @@ module top_englishbreakfast #(
   localparam int SpiHost0NumCS = 1;
   // local parameters for sram_ctrl_main
   localparam int SramCtrlMainOutstanding = 2;
+  // local parameters for rom_ctrl
+  localparam bit RomCtrlFlopToKmac = 1'b0;
 
   // Signals
   logic [37:0] mio_p2d;
