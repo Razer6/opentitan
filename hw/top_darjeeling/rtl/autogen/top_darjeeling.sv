@@ -117,9 +117,11 @@ module top_darjeeling #(
   parameter bit SramCtrlMboxFlopReadAddrScramble = 1,
   // parameters for rom_ctrl0
   parameter RomCtrl0BootRomInitFile = "",
+  parameter bit RomCtrl0TwoCycleRom = 1'b0,
   parameter bit SecRomCtrl0DisableScrambling = 1'b0,
   // parameters for rom_ctrl1
   parameter RomCtrl1BootRomInitFile = "",
+  parameter bit RomCtrl1TwoCycleRom = 1'b0,
   parameter bit SecRomCtrl1DisableScrambling = 1'b0,
   // parameters for dma
   parameter bit DmaEnableDataIntgGen = 1'b1,
@@ -2243,6 +2245,7 @@ module top_darjeeling #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[43:43]),
     .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .BootRomInitFile(RomCtrl0BootRomInitFile),
+    .TwoCycleRom(RomCtrl0TwoCycleRom),
     .RndCnstScrNonce(RndCnstRomCtrl0ScrNonce),
     .RndCnstScrKey(RndCnstRomCtrl0ScrKey),
     .SecDisableScrambling(SecRomCtrl0DisableScrambling),
@@ -2271,6 +2274,7 @@ module top_darjeeling #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[44:44]),
     .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .BootRomInitFile(RomCtrl1BootRomInitFile),
+    .TwoCycleRom(RomCtrl1TwoCycleRom),
     .RndCnstScrNonce(RndCnstRomCtrl1ScrNonce),
     .RndCnstScrKey(RndCnstRomCtrl1ScrKey),
     .SecDisableScrambling(SecRomCtrl1DisableScrambling),
