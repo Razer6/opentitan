@@ -4,12 +4,12 @@
 
 package(default_visibility = ["//visibility:public"])
 
-exports_files(["top_darjeeling_pwm.ipconfig.hjson"])
+exports_files(["top_darjeeling_lio_pwm.ipconfig.hjson"])
 
 filegroup(
     name = "doc_files",
     srcs = glob([
-        "pwm.hjson",
+        "lio_pwm.hjson",
         "*_testplan.hjson",
     ]),
 )

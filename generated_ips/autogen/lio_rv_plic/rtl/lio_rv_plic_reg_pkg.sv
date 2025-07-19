@@ -18,6 +18,11 @@ package lio_rv_plic_reg_pkg;
   // Number of registers for every interface
   parameter int NumRegs = 342;
 
+  // Alert indices
+  typedef enum int {
+    AlertFatalFaultIdx = 0
+  } lio_rv_plic_alert_idx_t;
+
   ////////////////////////////
   // Typedefs for registers //
   ////////////////////////////

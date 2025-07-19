@@ -15,6 +15,12 @@ package racl_ctrl_scsifregshdr_reg_pkg;
   // Number of registers for every interface
   parameter int NumRegs = 16;
 
+  // Alert indices
+  typedef enum int {
+    AlertFatalFaultIdx = 0,
+    AlertRecovCtrlUpdateErrIdx = 1
+  } racl_ctrl_scsifregshdr_alert_idx_t;
+
   ////////////////////////////
   // Typedefs for registers //
   ////////////////////////////

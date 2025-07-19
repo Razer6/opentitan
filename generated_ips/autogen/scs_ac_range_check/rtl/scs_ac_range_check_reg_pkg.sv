@@ -17,6 +17,12 @@ package scs_ac_range_check_reg_pkg;
   // Number of registers for every interface
   parameter int NumRegs = 328;
 
+  // Alert indices
+  typedef enum int {
+    AlertRecovCtrlUpdateErrIdx = 0,
+    AlertFatalFaultIdx = 1
+  } scs_ac_range_check_alert_idx_t;
+
   ////////////////////////////
   // Typedefs for registers //
   ////////////////////////////

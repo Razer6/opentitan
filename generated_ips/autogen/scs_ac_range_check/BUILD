@@ -21,5 +21,5 @@ filegroup(
     srcs = glob([
         "**/*.md",
         "**/*.svg",
-    ]) + ["//hw/top_darjeeling/ip_autogen/ac_range_check/data:doc_files"],
+    ]) + ["//hw/top_darjeeling/ip_autogen/scs_ac_range_check/data:doc_files"],
 )
