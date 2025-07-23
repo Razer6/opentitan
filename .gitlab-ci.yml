@@ -132,19 +132,12 @@ build_ot_container:
   stage: build
   extends: .prepare-docker
   script:
-    - >
-      docker build
-      --pull
-      --tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
-      --tag "$CI_REGISTRY_IMAGE:latest"
-      --file util/container/Dockerfile
-      .
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
-    - docker push $CI_REGISTRY_IMAGE:latest
+    - ./ci/scripts/build-push-container-image.sh
   rules:
     - changes:
       - "*-requirements.txt"
       - util/**/*
+      - ci/scripts/build-push-container-image.sh
       when: always
 
 create-pages:
