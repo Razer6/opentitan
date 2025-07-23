@@ -57,7 +57,6 @@ module top_englishbreakfast #(
   parameter bit SramCtrlMainFlopReadAddrScramble = 0,
   // parameters for rom_ctrl
   parameter RomCtrlBootRomInitFile = "",
-  parameter bit RomCtrlFlopToKmac = 1'b0,
   parameter bit SecRomCtrlDisableScrambling = 1'b1,
   // parameters for rv_core_ibex
   parameter bit RvCoreIbexPMPEnable = 0,
@@ -1252,7 +1251,6 @@ module top_englishbreakfast #(
     .AlertAsyncOn(alert_handler_reg_pkg::AsyncOn[23:23]),
     .AlertSkewCycles(top_pkg::AlertSkewCycles),
     .BootRomInitFile(RomCtrlBootRomInitFile),
-    .FlopToKmac(RomCtrlFlopToKmac),
     .RndCnstScrNonce(RndCnstRomCtrlScrNonce),
     .RndCnstScrKey(RndCnstRomCtrlScrKey),
     .SecDisableScrambling(SecRomCtrlDisableScrambling),
