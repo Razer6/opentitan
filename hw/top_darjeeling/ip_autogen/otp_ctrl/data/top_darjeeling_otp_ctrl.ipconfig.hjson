@@ -60,7 +60,6 @@
           name: VENDOR_TEST
           variant: Unbuffered
           absorb: false
-          size: 64
           secret: false
           sw_digest: true
           hw_digest: false
@@ -103,13 +102,13 @@
             '''
           iskeymgr_creator: false
           iskeymgr_owner: false
+          size: 64
           offset: 0
         }
         {
           name: CREATOR_SW_CFG
           variant: Unbuffered
           absorb: false
-          size: 184
           secret: false
           sw_digest: true
           hw_digest: false
@@ -355,13 +354,13 @@
             '''
           iskeymgr_creator: false
           iskeymgr_owner: false
+          size: 184
           offset: 64
         }
         {
           name: OWNER_SW_CFG
           variant: Unbuffered
           absorb: false
-          size: 624
           secret: false
           sw_digest: true
           hw_digest: false
@@ -692,6 +691,7 @@
             '''
           iskeymgr_creator: false
           iskeymgr_owner: false
+          size: 624
           offset: 248
         }
         {
