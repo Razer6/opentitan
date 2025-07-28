@@ -24,11 +24,17 @@ package lio_alert_handler_reg_pkg;
   1'd0,
   1'd0,
   1'd0,
+  1'd0,
+  1'd0,
+  1'd0,
   1'd0
 };
   parameter int EscCntDw = 32;
   parameter int AccuCntDw = 16;
   parameter logic [NAlerts-1:0] AsyncOn = {
+  1'b1,
+  1'b1,
+  1'b1,
   1'b1,
   1'b1,
   1'b1,
