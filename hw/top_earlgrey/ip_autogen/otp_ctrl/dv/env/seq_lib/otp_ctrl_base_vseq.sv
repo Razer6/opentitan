@@ -160,7 +160,7 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     `uvm_info(`gfn, $sformatf("dai write addr %0h, data %0h", addr, wdata0), UVM_HIGH)
     csr_wr(ral.direct_access_address, addr);
     csr_wr(ral.direct_access_wdata[0], wdata0);
-    if (is_secret(addr) || is_sw_digest(addr)) csr_wr(ral.direct_access_wdata[1], wdata1);
+    if (is_secret(addr) || is_zeroized_addr(addr) || is_sw_digest(addr)) csr_wr(ral.direct_access_wdata[1], wdata1);
 
     do_otp_wr = 1;
     csr_wr(ral.direct_access_cmd, int'(otp_ctrl_top_specific_pkg::DaiWrite));
@@ -201,7 +201,7 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
 
     wait_dai_op_done();
     csr_rd(ral.direct_access_rdata[0], rdata0);
-    if (is_secret(addr) || is_digest(addr)) csr_rd(ral.direct_access_rdata[1], rdata1);
+    if (is_granule_64(addr)) csr_rd(ral.direct_access_rdata[1], rdata1);
     rd_and_clear_intrs();
   endtask : dai_rd
 
@@ -212,7 +212,7 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     dai_rd(addr, rdata0, rdata1);
     if (!cfg.under_reset) begin
       `DV_CHECK_EQ(rdata0, exp_data0, $sformatf("dai addr %0h rdata0 readout mismatch", addr))
-      if (is_secret(addr) || is_digest(addr)) begin
+      if (is_granule_64(addr)) begin
         `DV_CHECK_EQ(rdata1, exp_data1, $sformatf("dai addr %0h rdata1 readout mismatch", addr))
       end
     end
@@ -412,7 +412,7 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
   // This function backdoor inject error according to ecc_err:
   // - for OtpEccUncorrErr it injects a 2 bit error
   // - for OtpEccCorrErr it injects a 1 bit error
-  // This function will output original backdoor read data for the given address
+  // This function will return original backdoor read data for the given address
   // so the error can be cleared.
   virtual function bit [TL_DW-1:0] backdoor_inject_ecc_err(bit [TL_DW-1:0] addr,
                                                            otp_ecc_err_e   ecc_err);
@@ -513,7 +513,7 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
 
   // first two or three LSB bits of DAI address can be randomized based on if it is secret
   virtual function bit [TL_AW-1:0] randomize_dai_addr(bit [TL_AW-1:0] dai_addr);
-    if (is_secret(dai_addr)) begin
+    if (is_granule_64(dai_addr)) begin
       bit [2:0] rand_addr = $urandom();
       randomize_dai_addr = {dai_addr[TL_DW-1:3], rand_addr};
     end else begin
