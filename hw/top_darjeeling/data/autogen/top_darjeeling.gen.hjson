@@ -4662,6 +4662,7 @@
           width: 1
           default: lc_ctrl_pkg::Off
           inst_name: rv_dm
+          top_signame: lc_ctrl_lc_dft_en
           index: -1
         }
         {
@@ -11743,6 +11744,7 @@
         ast.lc_dft_en
         pwrmgr_aon.lc_dft_en
         soc_dbg_ctrl.lc_dft_en
+        rv_dm.lc_dft_en
       ]
       lc_ctrl.lc_hw_debug_clr:
       [
@@ -28970,6 +28972,7 @@
         width: 1
         default: lc_ctrl_pkg::Off
         inst_name: rv_dm
+        top_signame: lc_ctrl_lc_dft_en
         index: -1
       }
       {
