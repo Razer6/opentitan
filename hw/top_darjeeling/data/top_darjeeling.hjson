@@ -645,7 +645,8 @@
         InstrExec: "0",
         InstSize: 4096,
         FlopRamOutput: 1,
-        Outstanding: 6
+        Outstanding: 6,
+        EccCorrection: 1
       }
       base_addrs: {
         regs: {hart: "0x30500000"},
@@ -827,7 +828,8 @@
         FlopRamOutput: 1,
         FlopWdataScramble: 1,
         FlopReadAddrScramble: 1,
-        Outstanding: 6
+        Outstanding: 6,
+        EccCorrection: 1
       }
       base_addrs: {
         regs: {hart: "0x211c0000"},
@@ -857,7 +859,8 @@
         FlopRamOutput: 1,
         FlopWdataScramble: 1,
         FlopReadAddrScramble: 1,
-        Outstanding: 6
+        Outstanding: 6,
+        EccCorrection: 1
       }
       base_addrs: {
         regs: {hart: "0x211d0000"},
