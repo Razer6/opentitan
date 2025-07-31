@@ -8,7 +8,6 @@ Command-line tool to generate pyreg/pydump files from register HJSON files.
 """
 
 import argparse
-import logging
 import sys
 from dataclasses import dataclass, asdict
 from typing import Dict, TextIO, Optional, Union, Tuple, List
@@ -160,11 +159,13 @@ class PyregParameters:
     racl_ctrl_policy_name: Optional[str]
     racl_ctrl: Optional[str]
     reset_sig: str
+    bytes_per_reg: int
 
     @staticmethod
     def from_regblock_entry(
         entry: Union[Register, MultiRegister, Window],
         clocking: Clocking,
+        regwidth: int,
         racl: Optional[Racl],
         swaccess: Optional[str],
         hwaccess: Optional[str],
@@ -226,6 +227,7 @@ class PyregParameters:
             racl_ctrl_policy_name,
             racl_ctrl_group,
             reset_sig,
+            regwidth // 8,
         )
 
 
@@ -306,6 +308,24 @@ class PyregField:
 
 
 @dataclass
+class PyregFieldParameters:
+    """Represents the parameters of a pyreg field."""
+
+    expl: Optional[str]
+    reset: str
+    width: int
+    lsb: int
+    swaccess: Optional[str]
+    hwaccess: Optional[str]
+
+    @staticmethod
+    def from_pyreg_field(field: PyregField) -> "PyregFieldParameters":
+        return PyregFieldParameters(
+            field.expl, field.reset, field.width, field.lsb, field.swaccess, field.hwaccess
+        )
+
+
+@dataclass
 class PyregEntry:
     """Represents a pyreg file entry."""
 
@@ -313,10 +333,15 @@ class PyregEntry:
     expl: str
     parameters: PyregParameters
     fields: Dict[str, PyregField]
+    field_parameters: Dict[str, PyregFieldParameters]
+    array: int
 
     @staticmethod
     def from_regblock_entry(
-        entry: Union[Register, MultiRegister, Window], clocking: Clocking, racl: Optional[Racl]
+        entry: Union[Register, MultiRegister, Window],
+        clocking: Clocking,
+        regwidth: int,
+        racl: Optional[Racl],
     ) -> "PyregEntry":
         """Creates a PyregEntry object from a register entry."""
         # Explanation
@@ -338,6 +363,10 @@ class PyregEntry:
             fields = {field.name: PyregField.from_field(field) for field in reg_def.fields}
             fields = dict(sorted(fields.items(), key=lambda item: item[1].lsb))
 
+        field_parameters = {
+            name: PyregFieldParameters.from_pyreg_field(field) for name, field in fields.items()
+        }
+
         # Software/hardware access
         swaccesses = {field.swaccess for field in fields.values()}
         hwaccesses = {field.hwaccess for field in fields.values()}
@@ -353,10 +382,16 @@ class PyregEntry:
 
         # Parameters
         pyreg_params = PyregParameters.from_regblock_entry(
-            entry, clocking, racl, swaccess, hwaccess
+            entry, clocking, regwidth, racl, swaccess, hwaccess
         )
 
-        return PyregEntry(entry.name, expl, pyreg_params, fields)
+        # Array size
+        if pyreg_params.array is not None:
+            array = pyreg_params.array
+        else:
+            array = 1
+
+        return PyregEntry(entry.name, expl, pyreg_params, fields, field_parameters, array)
 
 
 @dataclass
@@ -448,7 +483,7 @@ class PydumpInfos:
             regblock_entry: Union[Register, MultiRegister, Window]
             regblock_pyregs[rb.name] = {
                 regblock_entry.name: PyregEntry.from_regblock_entry(
-                    regblock_entry, ip_block.clocking, racl
+                    regblock_entry, ip_block.clocking, ip_block.regwidth, racl
                 )
                 for regblock_entry in rb.entries
             }
