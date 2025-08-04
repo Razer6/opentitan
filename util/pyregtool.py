@@ -473,7 +473,9 @@ class PydumpInfos:
         return pyreg
 
     @staticmethod
-    def from_ipblock(ip_block: IpBlock, racl: Optional[Racl], package: str) -> "PydumpInfos":
+    def from_ipblock(
+        ip_block: IpBlock, racl: Optional[Racl], pydump_package: str, pydump_name: Optional[str]
+    ) -> "PydumpInfos":
         """Creates a PydumpInfos object from an IP block."""
 
         # Collect registers
@@ -497,7 +499,10 @@ class PydumpInfos:
                 regblock_entry.name: regblock_entry.offset for regblock_entry in rb.entries
             }
 
-        return PydumpInfos(ip_block.name, ip_block.name, package, regblock_pyregs, reg_map)
+        if pydump_name is None:
+            pydump_name = ip_block.name
+
+        return PydumpInfos(pydump_name, ip_block.name, pydump_package, regblock_pyregs, reg_map)
 
 
 def _parse_cli_args():
@@ -570,10 +575,17 @@ def _parse_cli_args():
     )
 
     parser.add_argument(
+        "--pydump-package",
         "--package",
         type=str,
         default="ot_ip_reg_pkg",
-        help="Package name to use in the generated pydump file.",
+        help="Package set in the generated file (pydump gen only).",
+    )
+
+    parser.add_argument(
+        "--pydump-name",
+        type=str,
+        help="Name set in the generated file (pydump gen only).",
     )
 
     args = parser.parse_args()
@@ -603,7 +615,7 @@ def _main():
         raise ValueError("No RACL information could be determined from the arguments")
 
     # Generate the pydump contents
-    pydump_infos = PydumpInfos.from_ipblock(ip_block, racl, args.package)
+    pydump_infos = PydumpInfos.from_ipblock(ip_block, racl, args.pydump_package, args.pydump_name)
 
     # Dump to the output
     yaml.add_representer(FoldedUnicode, folded_unicode_representer)
