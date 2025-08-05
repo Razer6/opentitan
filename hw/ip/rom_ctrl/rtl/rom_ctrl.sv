@@ -224,8 +224,7 @@ module rom_ctrl
 
   rom_ctrl_mux #(
     .AW (RomIndexWidth),
-    .DW (DataWidth),
-    .TwoCycleRom(TwoCycleRom)
+    .DW (DataWidth)
   ) u_mux (
     .clk_i,
     .rst_ni,
