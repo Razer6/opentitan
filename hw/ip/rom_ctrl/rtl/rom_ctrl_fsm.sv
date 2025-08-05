@@ -298,9 +298,6 @@ module rom_ctrl_fsm
 
   assign read_rel_addr_wide = counter_read_addr - TopStartAddr;
 
-  logic [AW-TAW-1:0] unused_read_rel_addr_wide;
-  assign unused_read_rel_addr_wide = read_rel_addr_wide[AW-1:TAW];
-
   assign {unused_rel_addr, rel_addrs_d} = {rel_addrs_q, read_rel_addr_wide[TAW-1:0]};
 
   always_ff @(posedge clk_i) begin
