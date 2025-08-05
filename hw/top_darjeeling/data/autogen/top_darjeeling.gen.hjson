@@ -7647,7 +7647,6 @@
       param_decl:
       {
         SecDisableScrambling: 1'b0
-        TwoCycleRom: 1'b1
       }
       clock_connections:
       {
@@ -7672,7 +7671,7 @@
             sent to KMAC. This may break long paths.
             '''
           type: bit
-          default: 1'b1
+          default: 1'b0
           local: "false"
           expose: "true"
           name_top: RomCtrl0TwoCycleRom
@@ -7847,7 +7846,6 @@
       param_decl:
       {
         SecDisableScrambling: 1'b0
-        TwoCycleRom: 1'b1
       }
       clock_connections:
       {
@@ -7872,7 +7870,7 @@
             sent to KMAC. This may break long paths.
             '''
           type: bit
-          default: 1'b1
+          default: 1'b0
           local: "false"
           expose: "true"
           name_top: RomCtrl1TwoCycleRom
