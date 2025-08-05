@@ -900,7 +900,8 @@
         }
       },
       param_decl: {
-        SecDisableScrambling: "1'b0"
+        SecDisableScrambling: "1'b0",
+        FlopToKmac: "1'b1"
       }
     },
     { name: "rom_ctrl1",
@@ -926,7 +927,8 @@
         }
       },
       param_decl: {
-        SecDisableScrambling: "1'b0"
+        SecDisableScrambling: "1'b0",
+        FlopToKmac: "1'b1"
       }
     },
     { name: "dma",
