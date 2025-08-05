@@ -83,11 +83,10 @@ module rom_ctrl
 
   // Pack / unpack kmac connection data ========================================
 
-  logic [63:0]              kmac_rom_data_full;
+  logic [63:0]              kmac_rom_data;
   logic                     kmac_rom_rdy;
   logic                     kmac_rom_vld;
   logic                     kmac_rom_last;
-  logic [DataWidth-1:0]     kmac_rom_data;
   logic                     kmac_done;
   logic [255:0]             kmac_digest;
   logic                     kmac_err;
@@ -119,7 +118,7 @@ module rom_ctrl
 
     // SEC_CM: MEM.DIGEST
     assign kmac_data_o = '{valid: kmac_rom_vld,
-                           data: kmac_rom_data_full,
+                           data: kmac_rom_data,
                            strb: kmac_pkg::MsgStrbW'({NumBytes{1'b1}}),
                            last: kmac_rom_last};
 
@@ -311,7 +310,7 @@ module rom_ctrl
   end : gen_rom_scramble_disabled
 
   // Zero expand checker rdata to pass to KMAC
-  assign kmac_rom_data_full = {{64-DataWidth{1'b0}}, kmac_rom_data};
+  assign kmac_rom_data = {{64-DataWidth{1'b0}}, checker_rom_rdata};
 
   // Register block ============================================================
 
@@ -343,9 +342,8 @@ module rom_ctrl
   if (!SecDisableScrambling) begin : gen_fsm_scramble_enabled
 
     rom_ctrl_fsm #(
-      .RomDepth  (RomSizeWords),
-      .TopCount  (8),
-      .DataWidth (DataWidth)
+      .RomDepth (RomSizeWords),
+      .TopCount (8)
     ) u_checker_fsm (
       .clk_i,
       .rst_ni,
@@ -361,13 +359,12 @@ module rom_ctrl
       .kmac_rom_rdy_i       (kmac_rom_rdy),
       .kmac_rom_vld_o       (kmac_rom_vld),
       .kmac_rom_last_o      (kmac_rom_last),
-      .kmac_rom_data_o      (kmac_rom_data),
       .kmac_done_i          (kmac_done),
       .kmac_digest_i        (kmac_digest),
       .kmac_err_i           (kmac_err),
       .rom_select_bus_o     (rom_select_bus),
       .rom_addr_o           (checker_rom_index),
-      .rom_data_i           (checker_rom_rdata),
+      .rom_data_i           (checker_rom_rdata[31:0]),
       .alert_o              (checker_alert)
     );
 
