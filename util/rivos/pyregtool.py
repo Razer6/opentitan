@@ -19,6 +19,7 @@ import hjson
 import yaml
 
 from reggen.field import Field
+from reggen.gen_md import multireg_is_compact
 from reggen.ip_block import IpBlock
 from reggen.multi_register import MultiRegister
 from reggen.register import Register
@@ -175,16 +176,17 @@ class PyregParameters:
         hwaccess: Optional[str],
     ) -> "PyregParameters":
         """Creates a PyregParameters object from a register entry."""
+        if isinstance(entry, MultiRegister) and multireg_is_compact(entry, regwidth):
+            raise ValueError(
+                "Cannot handle compact multiregs directly. Please pass the individual register instance definitions instead."
+            )
+
         # Array count
         array = None
         array_offset = None
 
         if isinstance(entry, MultiRegister):
-            if entry.compact:
-                array = len(entry.cregs)
-            else:
-                array = len(entry.pregs)
-
+            array = len(entry.pregs)
             array_offset = entry.stride
         elif isinstance(entry, Window) and entry.items > 1:
             array = entry.items
@@ -353,6 +355,11 @@ class PyregEntry:
         racl: Optional[Racl],
     ) -> "PyregEntry":
         """Creates a PyregEntry object from a register entry."""
+        if isinstance(entry, MultiRegister) and multireg_is_compact(entry, regwidth):
+            raise ValueError(
+                "Cannot handle compact multiregs directly. Please pass the individual register instance definitions instead."
+            )
+
         # Explanation
         if isinstance(entry, MultiRegister):
             reg_def = entry.pregs[0]
@@ -487,26 +494,36 @@ class PydumpInfos:
     ) -> "PydumpInfos":
         """Creates a PydumpInfos object from an IP block."""
 
-        # Collect registers
+        # Collect registers and their offsets
         regblock_pyregs: Dict[str, Dict[str, PyregEntry]] = {}
-
-        for rb in ip_block.reg_blocks.values():
-            regblock_entry: Union[Register, MultiRegister, Window]
-            regblock_pyregs[rb.name] = {
-                regblock_entry.name: PyregEntry.from_regblock_entry(
-                    regblock_entry, ip_block.clocking, ip_block.regwidth, racl
-                )
-                for regblock_entry in rb.entries
-            }
-
-        # Collect register offsets
         reg_map: Dict[str, Dict[str, int]] = {}
 
         for rb in ip_block.reg_blocks.values():
-            regblock_entry: Union[Register, MultiRegister, Window]
-            reg_map[rb.name] = {
-                regblock_entry.name: regblock_entry.offset for regblock_entry in rb.entries
-            }
+            regblock_pyregs[rb.name] = {}
+            reg_map[rb.name] = {}
+
+            for regblock_entry in rb.entries:
+                if isinstance(regblock_entry, MultiRegister) and multireg_is_compact(
+                    regblock_entry, ip_block.regwidth
+                ):
+                    # We need to handle compact multiregs separately because the definition
+                    # of one register instance may vary from the next.
+                    #
+                    # We don't treat compact multiregs as arrayed registers if all compacted
+                    # definitions are the same to avoid adding a source of breaking changes in
+                    # case the register count or the compacted definition changes.
+                    for creg in regblock_entry.cregs:
+                        regblock_pyregs[rb.name][creg.name] = PyregEntry.from_regblock_entry(
+                            creg, ip_block.clocking, ip_block.regwidth, racl
+                        )
+
+                        reg_map[rb.name][creg.name] = creg.offset
+                else:
+                    regblock_pyregs[rb.name][regblock_entry.name] = PyregEntry.from_regblock_entry(
+                        regblock_entry, ip_block.clocking, ip_block.regwidth, racl
+                    )
+
+                    reg_map[rb.name][regblock_entry.name] = regblock_entry.offset
 
         if pydump_name is None:
             pydump_name = ip_block.name
