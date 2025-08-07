@@ -97,7 +97,7 @@ module top_mio #(
       tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0],
   parameter int unsigned RvCoreIbexMioDmExceptionAddr =
       tl_mio_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0],
-  parameter bit RvCoreIbexMioPipeLine = 0,
+  parameter bit RvCoreIbexMioPipeLine = 1,
   parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexMioTlulHostUserRsvdBits = '0,
   parameter logic [31:0] RvCoreIbexMioCsrMvendorId = '0,
   parameter logic [31:0] RvCoreIbexMioCsrMimpId = '0
@@ -189,6 +189,8 @@ module top_mio #(
   localparam int SramCtrlMboxOutstanding = 6;
   // local parameters for racl_ctrl_mio
   localparam int RaclCtrlMioNumSubscribingIps = 17;
+  // local parameters for rv_core_ibex_mio
+  localparam bit RvCoreIbexMioInstructionPipeline = 1;
 
 
 
@@ -1072,7 +1074,8 @@ module top_mio #(
     .PipeLine(RvCoreIbexMioPipeLine),
     .TlulHostUserRsvdBits(RvCoreIbexMioTlulHostUserRsvdBits),
     .CsrMvendorId(RvCoreIbexMioCsrMvendorId),
-    .CsrMimpId(RvCoreIbexMioCsrMimpId)
+    .CsrMimpId(RvCoreIbexMioCsrMimpId),
+    .InstructionPipeline(RvCoreIbexMioInstructionPipeline)
   ) u_rv_core_ibex_mio (
       // External alert group "mio" [26]: fatal_sw_err
       // External alert group "mio" [27]: recov_sw_err

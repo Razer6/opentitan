@@ -100,7 +100,7 @@ module top_pwc #(
       tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::HaltAddress[31:0],
   parameter int unsigned RvCoreIbexPwcDmExceptionAddr =
       tl_pwc_main_pkg::ADDR_SPACE_RV_DM__MEM + dm::ExceptionAddress[31:0],
-  parameter bit RvCoreIbexPwcPipeLine = 0,
+  parameter bit RvCoreIbexPwcPipeLine = 1,
   parameter logic [tlul_pkg::RsvdWidth-1:0] RvCoreIbexPwcTlulHostUserRsvdBits = '0,
   parameter logic [31:0] RvCoreIbexPwcCsrMvendorId = '0,
   parameter logic [31:0] RvCoreIbexPwcCsrMimpId = '0
@@ -218,6 +218,8 @@ module top_pwc #(
   localparam int SramCtrlMboxOutstanding = 6;
   // local parameters for racl_ctrl_pwc
   localparam int RaclCtrlPwcNumSubscribingIps = 18;
+  // local parameters for rv_core_ibex_pwc
+  localparam bit RvCoreIbexPwcInstructionPipeline = 1;
 
 
 
@@ -1148,7 +1150,8 @@ module top_pwc #(
     .PipeLine(RvCoreIbexPwcPipeLine),
     .TlulHostUserRsvdBits(RvCoreIbexPwcTlulHostUserRsvdBits),
     .CsrMvendorId(RvCoreIbexPwcCsrMvendorId),
-    .CsrMimpId(RvCoreIbexPwcCsrMimpId)
+    .CsrMimpId(RvCoreIbexPwcCsrMimpId),
+    .InstructionPipeline(RvCoreIbexPwcInstructionPipeline)
   ) u_rv_core_ibex_pwc (
       // External alert group "pwc" [27]: fatal_sw_err
       // External alert group "pwc" [28]: recov_sw_err
