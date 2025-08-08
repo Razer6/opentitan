@@ -740,7 +740,7 @@ module otp_ctrl_part_buf
         error_d = FsmStateError;
       end
     end
-    if (Info.zeroizable) begin : gen_zeroized_errors
+    if (Info.zeroizable) begin
       // Unconditionally transfer the partition into the terminal error state
       // when an invalid indicator is detected.
       if (mubi8_test_invalid(is_zeroized) || zer_mrk_ecc_err) begin
