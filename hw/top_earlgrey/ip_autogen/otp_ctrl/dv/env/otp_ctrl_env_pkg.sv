@@ -115,7 +115,6 @@ package otp_ctrl_env_pkg;
     Secret2DigestOffset >> 2
   };
 
-  // lc partition is not zeroizable
   parameter int PART_OTP_ZEROIZED_ADDRS [NumPart-1] = {
     -1, // This partition has no zeroized field.
     -1, // This partition has no zeroized field.

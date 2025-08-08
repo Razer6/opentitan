@@ -122,7 +122,6 @@ package otp_ctrl_env_pkg;
 % endfor
   };
 
-  // lc partition is not zeroizable
   parameter int PART_OTP_ZEROIZED_ADDRS [NumPart-1] = {
 % for part in parts_without_lc:
 <%

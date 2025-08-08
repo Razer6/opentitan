@@ -155,7 +155,6 @@ package otp_ctrl_env_pkg;
     Secret3DigestOffset >> 2
   };
 
-  // lc partition is not zeroizable
   parameter int PART_OTP_ZEROIZED_ADDRS [NumPart-1] = {
     VendorTestZerOffset >> 2,
     CreatorSwCfgZerOffset >> 2,

@@ -454,7 +454,7 @@ class OtpMemImg(OtpMemMap):
         # The digest is stored after the data. It is the last block of a
         # partition when the partition is not zeroizable and the penultimate
         # if it is.
-        digest_idx = len(data_blocks)-2 if part['zeroizable'] else len(data_blocks)-1
+        digest_idx = len(data_blocks) - 2 if part['zeroizable'] else len(data_blocks) - 1
         if part['hw_digest']:
             # Make sure that this HW-governed digest has not been
             # overridden manually
