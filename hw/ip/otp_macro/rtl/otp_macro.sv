@@ -232,7 +232,7 @@ module otp_macro
   // Minimum Hamming distance: 5
   // Maximum Hamming distance: 9
   // Minimum Hamming weight: 3
-  // Maximum Hamming weight: 8
+  // Maximum Hamming weight: 9
   //
   localparam int StateWidth = 11;
   typedef enum logic [StateWidth-1:0] {
@@ -455,8 +455,7 @@ module otp_macro
         req     = 1'b1;
         read_ecc_on = 1'b0;
       end
-      // Wait for the read out the complete. Any error will
-      // result in MacroZeroizeError.
+      // Wait for the read out to complete.
       ZerReadWaitSt: begin
         read_ecc_on = 1'b0;
         if (rvalid) begin
