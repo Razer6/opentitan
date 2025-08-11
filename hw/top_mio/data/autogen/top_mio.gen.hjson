@@ -340,10 +340,7 @@
     ]
   }
   num_cores: "1"
-  interrupts:
-  {
-    default_plic: rv_plic_mio
-  }
+  default_plic: rv_plic_mio
   addr_spaces:
   [
     {

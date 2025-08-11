@@ -340,10 +340,7 @@
     ]
   }
   num_cores: "1"
-  interrupts:
-  {
-    default_plic: rv_plic_pwc
-  }
+  default_plic: rv_plic_pwc
   addr_spaces:
   [
     {
