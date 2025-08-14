@@ -208,8 +208,8 @@ module otp_macro
   ///////////////////
 
   // Encoding generated with:
-  // $ ./util/design/sparse-fsm-encode.py -d 5 -m 10 -n 11 \
-  //     -s 2599950981 --language=sv
+  // $ ./util/design/sparse-fsm-encode.py -d 5 -m 13 -n 11 \
+  //     -s 761853025 --language=sv
   //
   // Hamming distance histogram:
   //
@@ -218,11 +218,11 @@ module otp_macro
   //  2: --
   //  3: --
   //  4: --
-  //  5: ||||||||||||||||| (35.56%)
-  //  6: |||||||||||||||||||| (40.00%)
-  //  7: |||||||| (17.78%)
-  //  8: || (4.44%)
-  //  9: | (2.22%)
+  //  5: |||||||||||||||||||| (39.74%)
+  //  6: ||||||||||||||||||| (38.46%)
+  //  7: |||||| (12.82%)
+  //  8: ||| (7.69%)
+  //  9:  (1.28%)
   // 10: --
   // 11: --
   //
@@ -233,16 +233,19 @@ module otp_macro
   //
   localparam int StateWidth = 11;
   typedef enum logic [StateWidth-1:0] {
-    ResetSt      = 11'b10010000001,
-    InitSt       = 11'b00100010011,
-    IdleSt       = 11'b11110000110,
-    ReadSt       = 11'b11111110001,
-    ReadWaitSt   = 11'b01101001000,
-    WriteCheckSt = 11'b10000110110,
-    WriteWaitSt  = 11'b00111101110,
-    IssueWriteSt = 11'b01010011101,
-    WriteSt      = 11'b11011011010,
-    ErrorSt      = 11'b11100101101
+    ResetSt       = 11'b11100010111,
+    InitSt        = 11'b10111101100,
+    IdleSt        = 11'b01001001011,
+    ReadSt        = 11'b00011110101,
+    ReadWaitSt    = 11'b01110000100,
+    WriteCheckSt  = 11'b01010111110,
+    WriteWaitSt   = 11'b11000101101,
+    IssueWriteSt  = 11'b00110011011,
+    WriteSt       = 11'b11001110000,
+    ZerWriteSt    = 11'b10001011110,
+    ZerReadSt     = 11'b10010000001,
+    ZerReadWaitSt = 11'b00100100010,
+    ErrorSt       = 11'b11111100011
   } state_e;
 
   state_e state_d, state_q;
@@ -259,6 +262,7 @@ module otp_macro
   logic read_ecc_on, write_ecc_on;
   logic wdata_inconsistent;
   logic wrapper_ready;
+  logic zer_en;
 
 
   assign cnt_d = (cnt_clr) ? '0           :
@@ -287,6 +291,7 @@ module otp_macro
     write_ecc_on   = 1'b1;
     fsm_err        = 1'b0;
     integrity_en_d = integrity_en_q;
+    zer_en = 1'b0;
 
     unique case (state_q)
       // Wait here until we receive an initialization command.
@@ -327,6 +332,10 @@ module otp_macro
             end
             WriteRaw: begin
               state_d = WriteCheckSt;
+              integrity_en_d = 1'b0;
+            end
+            Zeroize: begin
+              state_d = ZerWriteSt;
               integrity_en_d = 1'b0;
             end
             default: ;
@@ -425,6 +434,38 @@ module otp_macro
           end
         end
       end
+      // Zeroize the word.
+      ZerWriteSt: begin
+        req = 1'b1;
+        wren = 1'b1;
+        cnt_en = 1'b1;
+        zer_en = 1'b1;
+
+        if (cnt_q == size_q) begin
+          state_d = ZerReadSt;
+          cnt_clr = 1'b1;
+        end
+      end
+      // Read back the zeroized word.
+      ZerReadSt: begin
+        state_d = ZerReadWaitSt;
+        req     = 1'b1;
+        read_ecc_on = 1'b0;
+      end
+      // Wait for the read out the complete. Any error will
+      // result in MacroZeroizeError.
+      ZerReadWaitSt: begin
+        read_ecc_on = 1'b0;
+        if (rvalid) begin
+          cnt_en = 1'b1;
+          if (cnt_q == size_q) begin
+            state_d = IdleSt;
+            valid_d = 1'b1;
+          end else begin
+            state_d = ZerReadSt;
+          end
+        end
+      end
       // If the FSM is glitched into an invalid state.
       ErrorSt: begin
         fsm_err = 1'b1;
@@ -464,19 +505,26 @@ module otp_macro
                                  : rdata_ecc;
 
   // Read-modify-write (OTP can only set bits to 1, but not clear to 0).
+  // If the write is a zeroization simply set ECC and data to 1.
   always_comb begin
     wdata_rmw = '0;
 
-    for (int i = 0; i<(Width+EccWidth); i++) begin
-      if((!write_ecc_on) && (i>=Width)) begin
-        wdata_rmw[i] = 1'b0;
-      end
-      else if (wdata_ecc[i]) begin           // only consider blowing fuse if incoming data has bit set
-        if (rdata_q[cnt_q][i] && (reg2hw.macro_control.macro_mode.q == 2'b00)) begin    // if incoming write has bit set and the fuse is already set then don't write again
-                                                                                       // only do rmw check in array mode
-          wdata_rmw[i] = 1'b0;
+    for (int i = 0; i < (Width+EccWidth); i++) begin
+      if (zer_en) begin
+        // Zeroize fuse if not yet set
+        if (!rdata_q[cnt_q][i]) begin
+          wdata_rmw[i] = 1'b1;
         end
-        else begin                      // only write fuse if incoming write has the bit set and the fuse is not already blown
+      end else if ((!write_ecc_on) && (i >= Width)) begin
+        wdata_rmw[i] = 1'b0;
+      end else if (wdata_ecc[i]) begin
+        // only consider blowing fuse if incoming data has bit set
+        // if incoming write has bit set and the fuse is already set then don't write again
+        // only do rmw check in array mode
+        if (rdata_q[cnt_q][i] && (reg2hw.macro_control.macro_mode.q == 2'b00)) begin
+          wdata_rmw[i] = 1'b0;
+        end else begin
+          // only write fuse if incoming write has the bit set and the fuse is not already blown
           wdata_rmw[i] = 1'b1;
         end
       end
@@ -484,17 +532,17 @@ module otp_macro
   end
 
   // This indicates if the write data is inconsistent (i.e., if the operation attempts to
-  // clear an already programmed bit to zero).
+  // clear an already programmed bit to zero). Disable the writeblank check for zeroization writes.
   // recoded as below): assign wdata_inconsistent = (rdata_q[cnt_q] & wdata_ecc) != rdata_q[cnt_q];
   always_comb begin
     wdata_inconsistent = '0;
-
-    if(reg2hw.macro_control.macro_mode.q == 2'b00) begin  // only check data consistency in array mode
+    // only check data consistency in array mode
+    if(reg2hw.macro_control.macro_mode.q == 2'b00) begin  
       for (int i = 0; i<(Width+EccWidth); i++) begin
         if((!write_ecc_on) && (i>=Width)) begin
           wdata_inconsistent |= 1'b0;
-        end
-        else if((rdata_q[cnt_q][i]) && (!wdata_ecc[i])) begin   // assert error when the incoming write data is trying to clear a bit that is already set
+        end else if((rdata_q[cnt_q][i]) && (!wdata_ecc[i])) begin
+          // assert error when the incoming write data is trying to clear a bit that is already set
           wdata_inconsistent |= 1'b1;
         end
       end
@@ -523,7 +571,7 @@ module otp_macro
 
   assign hw2reg.read_ecc_info.ecc_info_0.de = ecc_valid_q;
   assign hw2reg.read_ecc_info.ecc_info_0.d  = rdata_ecc_reshaped[0];
-  
+
   assign hw2reg.read_ecc_info.ecc_info_1.de = ecc_valid_q;
   assign hw2reg.read_ecc_info.ecc_info_1.d  = rdata_ecc_reshaped[1];
 
@@ -531,14 +579,14 @@ module otp_macro
     if(SizeWidth == 2) begin : gen_ecc_info_assign
       assign hw2reg.read_ecc_info.ecc_info_2.de = ecc_valid_q;
       assign hw2reg.read_ecc_info.ecc_info_2.d  = rdata_ecc_reshaped[2];
-   
+
       assign hw2reg.read_ecc_info.ecc_info_3.de = ecc_valid_q;
       assign hw2reg.read_ecc_info.ecc_info_3.d  = rdata_ecc_reshaped[3];
     end
     else begin : gen_default_ecc_info_assign
       assign hw2reg.read_ecc_info.ecc_info_2.de = '0;
       assign hw2reg.read_ecc_info.ecc_info_2.d  = '0;
-   
+
       assign hw2reg.read_ecc_info.ecc_info_3.de = '0;
       assign hw2reg.read_ecc_info.ecc_info_3.d  = '0;
     end
@@ -613,7 +661,7 @@ module otp_macro
 );
 */
 
-prim_otp_mem 
+prim_otp_mem
   #(/*AUTOINSTPARAM*/
     // Parameters
     .Width                              (Width),                 // Templated
@@ -702,7 +750,7 @@ prim_otp_mem
 
     if(reg2hw.macro_control.macro_mode.q == 2'b01) begin // redundancy mode
       // want reads  to be 32b
-      // want writes to be 16b 
+      // want writes to be 16b
       if((otp_i.cmd == Read) || (otp_i.cmd == ReadRaw)) begin
         size_d = SizeWidth'(1'b1);
       end
@@ -711,7 +759,7 @@ prim_otp_mem
       end
     end
     else if (reg2hw.macro_control.macro_mode.q == 2'b10) begin // test mode
-      // want writes    to be 16b 
+      // want writes    to be 16b
       // want row reads to be 32b
       // want col reads to be 16b
       if((otp_i.cmd == Write) || (otp_i.cmd == WriteRaw) || (reg2hw.macro_control.test_row_col_sel.q[1])) begin
@@ -756,9 +804,9 @@ prim_otp_mem
   ////////////////
 
   // Check that the otp_ctrl FSMs only issue legal commands to the wrapper.
-  `ASSERT(CheckCommands0_A, state_q == ResetSt && otp_i.valid && otp_o.ready  |-> otp_i.cmd == Init)
-  `ASSERT(CheckCommands1_A, state_q != ResetSt && otp_i.valid && otp_o.ready 
-      |-> otp_i.cmd inside {Read, ReadRaw, Write, WriteRaw})
+  `ASSERT(CheckCommands0_A, state_q == ResetSt && otp_i.valid && otp_o.ready |-> otp_i.cmd == Init)
+  `ASSERT(CheckCommands1_A, state_q != ResetSt && otp_i.valid && otp_o.ready
+      |-> otp_i.cmd inside {Read, ReadRaw, Write, WriteRaw, Zeroize})
 
   // Check all parameters are as expected.
   // `ASSERT_INIT(WidthMatches_A, Width == otp_ctrl_macro_pkg::OtpWidth)
@@ -774,7 +822,6 @@ prim_otp_mem
   // - Assert invalid conditions propagate to otp_o.fatal_alert
   // - Check that otp_o.fatal_alert is connected to u_otp_ctrl.otp_macro_i as a connectivity check
   // - Check that u_otp_ctrl.otp_macro_i is connected to u_otp_ctrl.alert_tx_o[3]
-//  `ASSERT_PRIM_FSM_ERROR_TRIGGER_ALERT(PrimFsmCheck_A, u_state_regs, otp_o.fatal_alert)
   `ASSERT_ERROR_TRIGGER_ERR(PrimFsmCheck_A, u_state_regs, otp_o.fatal_alert, 0,
       `_SEC_CM_ALERT_MAX_CYC, unused_err_o, `ASSERT_DEFAULT_CLK, `ASSERT_DEFAULT_RST)
   `ASSUME_FPV(PrimFsmCheck_ATriggerAfterAlertInit_S,
@@ -785,9 +832,6 @@ prim_otp_mem
   `ASSUME_FPV(TlLcGateFsm_ATriggerAfterAlertInit_S,
               $stable(rst_ni) == 0 |-> u_tlul_lc_gate.u_state_regs.unused_err_o == 0 [*10])
 
-
-//  `ASSERT_PRIM_REG_WE_ONEHOT_ERROR_TRIGGER_ALERT(PrimRegWeOnehotCheck_A,
-//      u_reg_top, otp_o.fatal_alert)
   `ASSERT_ERROR_TRIGGER_ERR(PrimRegWeOnehotCheck_A,
       u_reg_top.u_prim_reg_we_check.u_prim_onehot_check, otp_o.fatal_alert, 0,
       `_SEC_CM_ALERT_MAX_CYC, err_o, `ASSERT_DEFAULT_CLK, `ASSERT_DEFAULT_RST)
