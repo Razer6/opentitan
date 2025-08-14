@@ -83,9 +83,13 @@ $(tock_rust_destdir):
 	mkdir -p $@
 endif
 
-.PHONY: $(ips_reg) $(tops_gen)
+# Target to build ipgen IPs for Rivos out-of-tree usage
+rivos_generate_ips:
+	${PRJ_DIR}/generated_ips/generate_ips.sh
 
-all: $(ips_reg) $(tops_gen) cmdgen
+.PHONY: $(ips_reg) $(tops_gen) rivos_generate_ips
+
+all: $(ips_reg) $(tops_gen) cmdgen rivos_generate_ips
 
 regs: $(ips_reg)
 
