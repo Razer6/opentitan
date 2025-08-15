@@ -702,30 +702,30 @@ pub enum PlicPwcIrqId {
     PwcCcs4PwrVirusLvlReq = 143,
     /// PWC_CCS_5_PWR_VIRUS_LVL_REQ
     PwcCcs5PwrVirusLvlReq = 144,
-    /// PWC_CCS_6_PWR_VIRUS_LVL_REQ
-    PwcCcs6PwrVirusLvlReq = 145,
-    /// PWC_CCS_7_PWR_VIRUS_LVL_REQ
-    PwcCcs7PwrVirusLvlReq = 146,
     /// PWC_CCS_0_DVFS_FSM
-    PwcCcs0DvfsFsm = 147,
+    PwcCcs0DvfsFsm = 145,
     /// PWC_CCS_1_DVFS_FSM
-    PwcCcs1DvfsFsm = 148,
+    PwcCcs1DvfsFsm = 146,
     /// PWC_DVFS_SocDpaFsmstatus0
-    PwcDvfsSocdpafsmstatus0 = 149,
+    PwcDvfsSocdpafsmstatus0 = 147,
     /// PWC_DVFS_SocDpaFsmstatus1
-    PwcDvfsSocdpafsmstatus1 = 150,
+    PwcDvfsSocdpafsmstatus1 = 148,
     /// PWC_DVFS_SocDpaFsmstatus2
-    PwcDvfsSocdpafsmstatus2 = 151,
+    PwcDvfsSocdpafsmstatus2 = 149,
     /// PWC_DVFS_SocDpaFsmstatus3
-    PwcDvfsSocdpafsmstatus3 = 152,
+    PwcDvfsSocdpafsmstatus3 = 150,
     /// PWC_DVFS_SocDpaFsmstatus4
-    PwcDvfsSocdpafsmstatus4 = 153,
+    PwcDvfsSocdpafsmstatus4 = 151,
     /// PWC_DVFS_SocDpaFsmstatus5
-    PwcDvfsSocdpafsmstatus5 = 154,
-    /// PWC_HMS_East_STATUS
-    PwcHmsEastStatus = 155,
-    /// PWC_HMS_WEST_STATUS
-    PwcHmsWestStatus = 156,
+    PwcDvfsSocdpafsmstatus5 = 152,
+    /// PWC_HMS_0_STATUS
+    PwcHms0Status = 153,
+    /// PWC_HMS_1_STATUS
+    PwcHms1Status = 154,
+    /// PWC_HMS_2_STATUS
+    PwcHms2Status = 155,
+    /// PWC_HMS_3_STATUS
+    PwcHms3Status = 156,
     /// PWC_PCS_0_ALL_PORTS_STATUS
     PwcPcs0AllPortsStatus = 157,
     /// PWC_PCS_0_LINK_BRINGUP_0
@@ -1067,18 +1067,18 @@ impl TryFrom<u32> for PlicPwcIrqId {
             142 => Ok(Self::PwcCcs3PwrVirusLvlReq),
             143 => Ok(Self::PwcCcs4PwrVirusLvlReq),
             144 => Ok(Self::PwcCcs5PwrVirusLvlReq),
-            145 => Ok(Self::PwcCcs6PwrVirusLvlReq),
-            146 => Ok(Self::PwcCcs7PwrVirusLvlReq),
-            147 => Ok(Self::PwcCcs0DvfsFsm),
-            148 => Ok(Self::PwcCcs1DvfsFsm),
-            149 => Ok(Self::PwcDvfsSocdpafsmstatus0),
-            150 => Ok(Self::PwcDvfsSocdpafsmstatus1),
-            151 => Ok(Self::PwcDvfsSocdpafsmstatus2),
-            152 => Ok(Self::PwcDvfsSocdpafsmstatus3),
-            153 => Ok(Self::PwcDvfsSocdpafsmstatus4),
-            154 => Ok(Self::PwcDvfsSocdpafsmstatus5),
-            155 => Ok(Self::PwcHmsEastStatus),
-            156 => Ok(Self::PwcHmsWestStatus),
+            145 => Ok(Self::PwcCcs0DvfsFsm),
+            146 => Ok(Self::PwcCcs1DvfsFsm),
+            147 => Ok(Self::PwcDvfsSocdpafsmstatus0),
+            148 => Ok(Self::PwcDvfsSocdpafsmstatus1),
+            149 => Ok(Self::PwcDvfsSocdpafsmstatus2),
+            150 => Ok(Self::PwcDvfsSocdpafsmstatus3),
+            151 => Ok(Self::PwcDvfsSocdpafsmstatus4),
+            152 => Ok(Self::PwcDvfsSocdpafsmstatus5),
+            153 => Ok(Self::PwcHms0Status),
+            154 => Ok(Self::PwcHms1Status),
+            155 => Ok(Self::PwcHms2Status),
+            156 => Ok(Self::PwcHms3Status),
             157 => Ok(Self::PwcPcs0AllPortsStatus),
             158 => Ok(Self::PwcPcs0LinkBringup0),
             159 => Ok(Self::PwcPcs0LinkBringup1),
@@ -1485,10 +1485,6 @@ pub const PLIC_PWC_INTERRUPT_FOR_PERIPHERAL: [PlicPwcPeripheral; 252] = [
     PlicPwcPeripheral::Unknown,
     // PwcCcs5PwrVirusLvlReq -> PlicPwcPeripheral::Unknown
     PlicPwcPeripheral::Unknown,
-    // PwcCcs6PwrVirusLvlReq -> PlicPwcPeripheral::Unknown
-    PlicPwcPeripheral::Unknown,
-    // PwcCcs7PwrVirusLvlReq -> PlicPwcPeripheral::Unknown
-    PlicPwcPeripheral::Unknown,
     // PwcCcs0DvfsFsm -> PlicPwcPeripheral::Unknown
     PlicPwcPeripheral::Unknown,
     // PwcCcs1DvfsFsm -> PlicPwcPeripheral::Unknown
@@ -1505,9 +1501,13 @@ pub const PLIC_PWC_INTERRUPT_FOR_PERIPHERAL: [PlicPwcPeripheral; 252] = [
     PlicPwcPeripheral::Unknown,
     // PwcDvfsSocdpafsmstatus5 -> PlicPwcPeripheral::Unknown
     PlicPwcPeripheral::Unknown,
-    // PwcHmsEastStatus -> PlicPwcPeripheral::Unknown
+    // PwcHms0Status -> PlicPwcPeripheral::Unknown
     PlicPwcPeripheral::Unknown,
-    // PwcHmsWestStatus -> PlicPwcPeripheral::Unknown
+    // PwcHms1Status -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcHms2Status -> PlicPwcPeripheral::Unknown
+    PlicPwcPeripheral::Unknown,
+    // PwcHms3Status -> PlicPwcPeripheral::Unknown
     PlicPwcPeripheral::Unknown,
     // PwcPcs0AllPortsStatus -> PlicPwcPeripheral::Unknown
     PlicPwcPeripheral::Unknown,

@@ -8781,20 +8781,6 @@
         default_val: false
       }
       {
-        name: PWR_VIRUS_LVL_REQ
-        module_name: PWC_CCS_6
-        type: interrupt
-        intr_type: IntrType.Event
-        default_val: false
-      }
-      {
-        name: PWR_VIRUS_LVL_REQ
-        module_name: PWC_CCS_7
-        type: interrupt
-        intr_type: IntrType.Event
-        default_val: false
-      }
-      {
         name: DVFS_FSM
         module_name: PWC_CCS_0
         type: interrupt
@@ -8851,15 +8837,29 @@
         default_val: false
       }
       {
-        name: East_STATUS
-        module_name: PWC_HMS
+        name: STATUS
+        module_name: PWC_HMS_0
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
       }
       {
-        name: WEST_STATUS
-        module_name: PWC_HMS
+        name: STATUS
+        module_name: PWC_HMS_1
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: STATUS
+        module_name: PWC_HMS_2
+        type: interrupt
+        intr_type: IntrType.Event
+        default_val: false
+      }
+      {
+        name: STATUS
+        module_name: PWC_HMS_3
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
@@ -15086,30 +15086,6 @@
       outgoing: false
     }
     {
-      name: PWC_CCS_6_PWR_VIRUS_LVL_REQ
-      module_name: PWC_CCS_6
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      desc: PWC_CCS_6 PWR_VIRUS_LVL_REQ incoming interrupt
-      incoming: true
-      width: 1
-      plic: rv_plic_pwc
-      outgoing: false
-    }
-    {
-      name: PWC_CCS_7_PWR_VIRUS_LVL_REQ
-      module_name: PWC_CCS_7
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      desc: PWC_CCS_7 PWR_VIRUS_LVL_REQ incoming interrupt
-      incoming: true
-      width: 1
-      plic: rv_plic_pwc
-      outgoing: false
-    }
-    {
       name: PWC_CCS_0_DVFS_FSM
       module_name: PWC_CCS_0
       type: interrupt
@@ -15206,24 +15182,48 @@
       outgoing: false
     }
     {
-      name: PWC_HMS_East_STATUS
-      module_name: PWC_HMS
+      name: PWC_HMS_0_STATUS
+      module_name: PWC_HMS_0
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: PWC_HMS East_STATUS incoming interrupt
+      desc: PWC_HMS_0 STATUS incoming interrupt
       incoming: true
       width: 1
       plic: rv_plic_pwc
       outgoing: false
     }
     {
-      name: PWC_HMS_WEST_STATUS
-      module_name: PWC_HMS
+      name: PWC_HMS_1_STATUS
+      module_name: PWC_HMS_1
       type: interrupt
       intr_type: IntrType.Event
       default_val: false
-      desc: PWC_HMS WEST_STATUS incoming interrupt
+      desc: PWC_HMS_1 STATUS incoming interrupt
+      incoming: true
+      width: 1
+      plic: rv_plic_pwc
+      outgoing: false
+    }
+    {
+      name: PWC_HMS_2_STATUS
+      module_name: PWC_HMS_2
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_HMS_2 STATUS incoming interrupt
+      incoming: true
+      width: 1
+      plic: rv_plic_pwc
+      outgoing: false
+    }
+    {
+      name: PWC_HMS_3_STATUS
+      module_name: PWC_HMS_3
+      type: interrupt
+      intr_type: IntrType.Event
+      default_val: false
+      desc: PWC_HMS_3 STATUS incoming interrupt
       incoming: true
       width: 1
       plic: rv_plic_pwc
