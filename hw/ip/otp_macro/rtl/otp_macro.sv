@@ -590,6 +590,7 @@ module otp_macro
     .rdata_o                            (rdata_ecc[(Width+TotalEccWidth-1):0]),
     .err_o                              (),
     .wrapper_ready_o                    (wrapper_ready),
+    .scan_en_i                          (cfg_i.scan_en),
     .tstrst_i                           (cfg_i.tstrst),
     .tstrstsel_i                        (cfg_i.tstrstsel),
     .sel_wr_timing_i                    (cfg_i.sel_wr_timing),
@@ -672,6 +673,7 @@ prim_otp_mem
              .test_row_col_sel_i        (reg2hw.macro_control.test_row_col_sel.q), // Templated
              .reg2hw                    (reg2hw),
              .sel_wr_timing_i           (cfg_i.sel_wr_timing),   // Templated
+             .scan_en_i                 (cfg_i.scan_en),         // Templated
              .tstrst_i                  (cfg_i.tstrst),          // Templated
              .tstrstsel_i               (cfg_i.tstrstsel),       // Templated
              .mbist_sel_i               (cfg_i.mbist_sel),       // Templated

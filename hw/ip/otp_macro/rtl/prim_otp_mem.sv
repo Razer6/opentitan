@@ -51,6 +51,7 @@ module prim_otp_mem
 
         input  logic                        sel_wr_timing_i,
 
+        input  logic                        scan_en_i,
         input  logic                        tstrst_i,
         input  logic                        tstrstsel_i,
 
@@ -373,6 +374,7 @@ module prim_otp_mem
       .data_out     (tsur_pd_ps_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -391,6 +393,7 @@ module prim_otp_mem
       .data_out     (tsur_ps_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -409,6 +412,7 @@ module prim_otp_mem
       .data_out     (tsur_ps_cs_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -427,6 +431,7 @@ module prim_otp_mem
       .data_out     (tsup_ps_cs_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -445,6 +450,7 @@ module prim_otp_mem
       .data_out     (tsup_ps_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -463,6 +469,7 @@ module prim_otp_mem
       .data_out     (tsq_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -481,6 +488,7 @@ module prim_otp_mem
       .data_out     (tsq_m_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -499,6 +507,7 @@ module prim_otp_mem
       .data_out     (tpgm_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -517,6 +526,7 @@ module prim_otp_mem
       .data_out     (tsur_ld_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -535,6 +545,7 @@ module prim_otp_mem
       .data_out     (thr_ps_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -553,6 +564,7 @@ module prim_otp_mem
       .data_out     (thp_ps_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -571,6 +583,7 @@ module prim_otp_mem
       .data_out     (thp_cs_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -589,6 +602,7 @@ module prim_otp_mem
       .data_out     (thr_cs_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -607,6 +621,7 @@ module prim_otp_mem
       .data_out     (thp_ps_cs_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -625,6 +640,7 @@ module prim_otp_mem
       .data_out     (thr_ps_cs_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -643,6 +659,7 @@ module prim_otp_mem
       .data_out     (tsur_a_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -661,6 +678,7 @@ module prim_otp_mem
       .data_out     (tsup_a_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -679,6 +697,7 @@ module prim_otp_mem
       .data_out     (thp_a_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -697,6 +716,7 @@ module prim_otp_mem
       .data_out     (tsup_ld_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -715,6 +735,7 @@ module prim_otp_mem
       .data_out     (trd_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -733,6 +754,7 @@ module prim_otp_mem
       .data_out     (trd_m_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -751,6 +773,7 @@ module prim_otp_mem
       .data_out     (thr_a_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -769,6 +792,7 @@ module prim_otp_mem
       .data_out     (thp_pd_ps_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -787,6 +811,7 @@ module prim_otp_mem
       .data_out     (data_capture_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -805,6 +830,7 @@ module prim_otp_mem
       .data_out     (addr_capture_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -823,6 +849,7 @@ module prim_otp_mem
       .data_out     (trigger_power_down_cycles),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
@@ -841,6 +868,7 @@ module prim_otp_mem
       .data_out     (redundancy_autoinit_disable),
       .data_out_val (),
   
+      .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );

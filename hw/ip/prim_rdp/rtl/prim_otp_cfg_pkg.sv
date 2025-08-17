@@ -24,6 +24,7 @@ package prim_otp_cfg_pkg;
     logic                                     sel_wr_timing;
     logic                                     clk_efuse;
     logic                                     rst_efuse_n;
+    logic                                     scan_en;
     logic                                     tstrst;
     logic                                     tstrstsel;
 
