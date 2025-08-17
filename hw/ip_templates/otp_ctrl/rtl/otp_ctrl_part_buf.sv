@@ -740,12 +740,14 @@ module otp_ctrl_part_buf
         error_d = FsmStateError;
       end
     end
-    // Unconditionally transfer the partition into the terminal error state
-    // when an invalid indicator is detected.
-    if (Info.zeroizable && (mubi8_test_invalid(is_zeroized) || zer_mrk_ecc_err)) begin
-      state_d = ErrorSt;
-      fsm_err_o = 1'b1;
-      error_d = FsmStateError;
+    if (Info.zeroizable) begin : gen_zeroized_errors
+      // Unconditionally transfer the partition into the terminal error state
+      // when an invalid indicator is detected.
+      if (mubi8_test_invalid(is_zeroized) || zer_mrk_ecc_err) begin
+        state_d = ErrorSt;
+        fsm_err_o = 1'b1;
+        error_d = FsmStateError;
+      end
     end
     // The command is flopped and needs to permanently check for invalid values.
     if (!(otp_cmd_o inside {otp_ctrl_macro_pkg::ReadRaw, otp_ctrl_macro_pkg::Read})) begin
