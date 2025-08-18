@@ -38,6 +38,7 @@ filesets:
       - lowrisc:constants:top_darjeeling_jtag_id_pkg
       - lowrisc:constants:top_darjeeling_ibex_pmp_reset_pkg
       - lowrisc:ip:lc_ctrl
+      - lowrisc:darjeeling_constants:lc_ctrl_state_pkg
       - lowrisc:ip:mbx
       - lowrisc:top_darjeeling:xbar_dbg
       - lowrisc:top_darjeeling:xbar_main
