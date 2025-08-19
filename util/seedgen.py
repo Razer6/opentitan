@@ -107,7 +107,7 @@ def main():
     seed_type = args.type
     is_production = (seed_type == "prod")
 
-    seeds_to_include = ["topgen_seed", *args.include_seeds]
+    seeds_to_include = ["topgen", *args.include_seeds]
 
     output_dir = Path(f"{REPO_TOP}/hw/top_{top_name}/data")
     filename = f"top_{top_name}_seed.{seed_type}.hjson"

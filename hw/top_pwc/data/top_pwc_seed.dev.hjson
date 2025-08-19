@@ -1,0 +1,11 @@
+// SPDX-FileCopyrightText: Copyright (c) 2025 by Rivos Inc.
+// SPDX-License-Identifier: LicenseRef-Rivos-Internal-Only
+//////////////////////////////////////////////////////////////////////////////////////
+// Seed configuration for topgen and subsequent flows                               //
+// 256 bit seeds for compile-time random constants. All seeds must be different     //
+// NOTE: REPLACE THIS FILE WITH A PRODUCTION SEED CONFIGURATION BEFORE THE TAPEOUT  //
+//////////////////////////////////////////////////////////////////////////////////////
+{
+  name: dev
+  topgen_seed: 56102744355537000026776215634241684889261893736619588406986107855056748453929
+}

@@ -8,7 +8,7 @@
 // util/topgen.py -t hw/top_pwc/data/top_pwc.hjson \
 //                -o hw/top_pwc/ \
 //                --rnd_cnst_seed \
-//                1017106219537032642877583828875051302543807092889754935647094601236425074047
+//                56102744355537000026776215634241684889261893736619588406986107855056748453929
 
 
 package top_pwc_rnd_cnst_pkg;
@@ -18,23 +18,23 @@ package top_pwc_rnd_cnst_pkg;
   ////////////////////////////////////////////
   // Compile-time random reset value for SRAM scrambling key.
   parameter otp_ctrl_pkg::sram_key_t RndCnstSramCtrlRetAonSramKey = {
-    128'h67BAA00A_00025E7F_C9BD1410_2DC30C29
+    128'h8896974D_5F98EB1D_6290B7BB_E63D4B82
   };
 
   // Compile-time random reset value for SRAM scrambling nonce.
   parameter otp_ctrl_pkg::sram_nonce_t RndCnstSramCtrlRetAonSramNonce = {
-    128'h978A4C70_C8DA26CB_202F5F59_A412A339
+    128'h626D6005_3C15CE1D_8CAAAFAB_F740C96D
   };
 
   // Compile-time random bits for initial LFSR seed
   parameter sram_ctrl_pkg::lfsr_seed_t RndCnstSramCtrlRetAonLfsrSeed = {
-    64'h2B9403C1_90120BB3
+    64'h4039450E_325D5D56
   };
 
   // Compile-time random permutation for LFSR output
   parameter sram_ctrl_pkg::lfsr_perm_t RndCnstSramCtrlRetAonLfsrPerm = {
-    128'h9DE3C807_BFF099D4_1CC7A8B8_D152FC93,
-    256'h54F2F435_B31EB952_5DF8ECF8_E009B6FA_6110546E_64A83708_C628D946_DAE4DA86
+    128'h3837C2A3_79E1BD5E_40CFC6E3_997FF8D6,
+    256'hEAD18ADA_4F736164_1D8F596B_250B9742_3AFB1250_B2A13B78_14CC29DC_065A048D
   };
 
   ////////////////////////////////////////////
@@ -42,23 +42,23 @@ package top_pwc_rnd_cnst_pkg;
   ////////////////////////////////////////////
   // Compile-time random reset value for SRAM scrambling key.
   parameter otp_ctrl_pkg::sram_key_t RndCnstSramCtrlMainSramKey = {
-    128'h5A8FFF2C_83BEF2B0_C1187A35_2F766926
+    128'h02548F22_F6E6C8CB_CCBFD6AE_D7D14714
   };
 
   // Compile-time random reset value for SRAM scrambling nonce.
   parameter otp_ctrl_pkg::sram_nonce_t RndCnstSramCtrlMainSramNonce = {
-    128'h6CFD1F50_8AC4E1C5_F6668AFD_034DC05D
+    128'h81103B5F_76D723C2_419DF4BE_83410D04
   };
 
   // Compile-time random bits for initial LFSR seed
   parameter sram_ctrl_pkg::lfsr_seed_t RndCnstSramCtrlMainLfsrSeed = {
-    64'hF9EC203B_9EB85C7E
+    64'h1CC4590E_721008E8
   };
 
   // Compile-time random permutation for LFSR output
   parameter sram_ctrl_pkg::lfsr_perm_t RndCnstSramCtrlMainLfsrPerm = {
-    128'h3664E971_7CFA6481_9168F884_49DDEBB2,
-    256'hA58338C6_01F15005_C096F9C7_E790867E_2E823D64_BD4CA57F_4B7B2C21_CAFF6F68
+    128'h32DC2700_1E4BFEA6_513A25B1_221D136E,
+    256'h0CA66A37_977C476B_F9548FF2_8BEEDE94_140981BB_147D73EB_635CE099_0A0EC97D
   };
 
   ////////////////////////////////////////////
@@ -66,23 +66,23 @@ package top_pwc_rnd_cnst_pkg;
   ////////////////////////////////////////////
   // Compile-time random reset value for SRAM scrambling key.
   parameter otp_ctrl_pkg::sram_key_t RndCnstSramCtrlMboxSramKey = {
-    128'h48B3C1C0_1FB83B84_F2C904EC_4E535184
+    128'h9DAA7FD5_5DF626FE_693FC3AF_E61BC595
   };
 
   // Compile-time random reset value for SRAM scrambling nonce.
   parameter otp_ctrl_pkg::sram_nonce_t RndCnstSramCtrlMboxSramNonce = {
-    128'hE7F9D667_6D1479CC_E4FDDF68_59B6EC2E
+    128'hC095D102_7BD20ECE_CFFBA09B_074C0A27
   };
 
   // Compile-time random bits for initial LFSR seed
   parameter sram_ctrl_pkg::lfsr_seed_t RndCnstSramCtrlMboxLfsrSeed = {
-    64'h82ECC9BB_5C13BB8B
+    64'hF823C38C_97BFA0B0
   };
 
   // Compile-time random permutation for LFSR output
   parameter sram_ctrl_pkg::lfsr_perm_t RndCnstSramCtrlMboxLfsrPerm = {
-    128'hCBA95370_3A91B647_82E74DB8_17C8B543,
-    256'hE7E16AB1_E0BBD61D_0552CFC0_4997ECEA_7F337354_8D918829_2CEFA27C_5B240B16
+    128'h3B2D0A8B_DD6951B6_3311C193_1D603604,
+    256'hF81F251A_E53035EA_7AFC3B9F_19A8FD90_BEF12DED_B8D2E1E0_555DE634_2CE8891A
   };
 
   ////////////////////////////////////////////
@@ -90,22 +90,22 @@ package top_pwc_rnd_cnst_pkg;
   ////////////////////////////////////////////
   // Default seed of the PRNG used for random instructions.
   parameter ibex_pkg::lfsr_seed_t RndCnstRvCoreIbexPwcLfsrSeed = {
-    32'hB0255CFB
+    32'h3670D523
   };
 
   // Permutation applied to the LFSR of the PRNG used for random instructions.
   parameter ibex_pkg::lfsr_perm_t RndCnstRvCoreIbexPwcLfsrPerm = {
-    160'hA4F1E134_CAFBFA98_075565AF_120067E2_1DB9172B
+    160'hEBC5A987_F267B002_70AD51E9_15EEAE35_A091DD19
   };
 
   // Default icache scrambling key
   parameter logic [ibex_pkg::SCRAMBLE_KEY_W-1:0] RndCnstRvCoreIbexPwcIbexKeyDefault = {
-    128'h5BD2D5A5_68B1F819_9BE09EEF_E6C954E6
+    128'h4057CDAE_6DD80E2E_CD33A5FD_7C52AEDE
   };
 
   // Default icache scrambling nonce
   parameter logic [ibex_pkg::SCRAMBLE_NONCE_W-1:0] RndCnstRvCoreIbexPwcIbexNonceDefault = {
-    64'h980F2134_3E3CFD5D
+    64'h2F256E6D_E57E267D
   };
 
 endpackage : top_pwc_rnd_cnst_pkg
