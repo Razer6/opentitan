@@ -7,4 +7,4 @@
 # util/topgen.py -t hw/top_pwc/data/top_pwc.hjson \
 #                -o hw/top_pwc/
 
-exports_files(["top_pwc.gen.hjson"])
+exports_files(glob(["*.hjson"]))

@@ -1061,46 +1061,6 @@
       param_list:
       [
         {
-          name: RndCnstSramKey
-          desc: Compile-time random reset value for SRAM scrambling key.
-          type: otp_ctrl_pkg::sram_key_t
-          randcount: 128
-          randtype: data
-          name_top: RndCnstSramCtrlRetAonSramKey
-          default: 0xc5bb5eac1b50f6bf20dccba6c88548a2
-          randwidth: 128
-        }
-        {
-          name: RndCnstSramNonce
-          desc: Compile-time random reset value for SRAM scrambling nonce.
-          type: otp_ctrl_pkg::sram_nonce_t
-          randcount: 128
-          randtype: data
-          name_top: RndCnstSramCtrlRetAonSramNonce
-          default: 0x82b7d3d990ae66fca0f1ddc851351453
-          randwidth: 128
-        }
-        {
-          name: RndCnstLfsrSeed
-          desc: Compile-time random bits for initial LFSR seed
-          type: sram_ctrl_pkg::lfsr_seed_t
-          randcount: 64
-          randtype: data
-          name_top: RndCnstSramCtrlRetAonLfsrSeed
-          default: 0x2dfd1fcde2547613
-          randwidth: 64
-        }
-        {
-          name: RndCnstLfsrPerm
-          desc: Compile-time random permutation for LFSR output
-          type: sram_ctrl_pkg::lfsr_perm_t
-          randcount: 64
-          randtype: perm
-          name_top: RndCnstSramCtrlRetAonLfsrPerm
-          default: 0xf8203a986f6e851ced39ea623c3d965f8708535481f286f73502ef272b2333f619ad596a29a1dd9fb4f91717e4134830
-          randwidth: 384
-        }
-        {
           name: MemSizeRam
           desc: Memory size of the RAM (in bytes).
           type: int
@@ -2069,46 +2029,6 @@
       param_list:
       [
         {
-          name: RndCnstSramKey
-          desc: Compile-time random reset value for SRAM scrambling key.
-          type: otp_ctrl_pkg::sram_key_t
-          randcount: 128
-          randtype: data
-          name_top: RndCnstSramCtrlMainSramKey
-          default: 0xdc8e7f11763279e01340a3e5ad9f7af4
-          randwidth: 128
-        }
-        {
-          name: RndCnstSramNonce
-          desc: Compile-time random reset value for SRAM scrambling nonce.
-          type: otp_ctrl_pkg::sram_nonce_t
-          randcount: 128
-          randtype: data
-          name_top: RndCnstSramCtrlMainSramNonce
-          default: 0x6d153037ef1d93ff64629143a9ecaa01
-          randwidth: 128
-        }
-        {
-          name: RndCnstLfsrSeed
-          desc: Compile-time random bits for initial LFSR seed
-          type: sram_ctrl_pkg::lfsr_seed_t
-          randcount: 64
-          randtype: data
-          name_top: RndCnstSramCtrlMainLfsrSeed
-          default: 0x39b25b40c4450da3
-          randwidth: 64
-        }
-        {
-          name: RndCnstLfsrPerm
-          desc: Compile-time random permutation for LFSR output
-          type: sram_ctrl_pkg::lfsr_perm_t
-          randcount: 64
-          randtype: perm
-          name_top: RndCnstSramCtrlMainLfsrPerm
-          default: 0xdc1b29afa6bc4b486ec7d08b5b6e00b6570d0e6bde544c8a7d367f31d5f3609c14ec83a08a4168e4f9d1a9bf901a31f5
-          randwidth: 384
-        }
-        {
           name: MemSizeRam
           desc: Memory size of the RAM (in bytes).
           type: int
@@ -2453,46 +2373,6 @@
       }
       param_list:
       [
-        {
-          name: RndCnstSramKey
-          desc: Compile-time random reset value for SRAM scrambling key.
-          type: otp_ctrl_pkg::sram_key_t
-          randcount: 128
-          randtype: data
-          name_top: RndCnstSramCtrlMboxSramKey
-          default: 0x68c5cf48c92fe4642d78114a48a03997
-          randwidth: 128
-        }
-        {
-          name: RndCnstSramNonce
-          desc: Compile-time random reset value for SRAM scrambling nonce.
-          type: otp_ctrl_pkg::sram_nonce_t
-          randcount: 128
-          randtype: data
-          name_top: RndCnstSramCtrlMboxSramNonce
-          default: 0x45873b59792cef69f6635995ababe81c
-          randwidth: 128
-        }
-        {
-          name: RndCnstLfsrSeed
-          desc: Compile-time random bits for initial LFSR seed
-          type: sram_ctrl_pkg::lfsr_seed_t
-          randcount: 64
-          randtype: data
-          name_top: RndCnstSramCtrlMboxLfsrSeed
-          default: 0x846c908d2398c15d
-          randwidth: 64
-        }
-        {
-          name: RndCnstLfsrPerm
-          desc: Compile-time random permutation for LFSR output
-          type: sram_ctrl_pkg::lfsr_perm_t
-          randcount: 64
-          randtype: perm
-          name_top: RndCnstSramCtrlMboxLfsrPerm
-          default: 0x1943d6d28ab33266a372becac42643222a61e7c49176f240dd83b8c157d71cd6c193a2ecdbd17fcb5967110b537a0fae
-          randwidth: 384
-        }
         {
           name: MemSizeRam
           desc: Memory size of the RAM (in bytes).
@@ -5049,46 +4929,6 @@
       memory: {}
       param_list:
       [
-        {
-          name: RndCnstLfsrSeed
-          desc: Default seed of the PRNG used for random instructions.
-          type: ibex_pkg::lfsr_seed_t
-          randcount: 32
-          randtype: data
-          name_top: RndCnstRvCoreIbexMioLfsrSeed
-          default: 0x4faa89e5
-          randwidth: 32
-        }
-        {
-          name: RndCnstLfsrPerm
-          desc: Permutation applied to the LFSR of the PRNG used for random instructions.
-          type: ibex_pkg::lfsr_perm_t
-          randcount: 32
-          randtype: perm
-          name_top: RndCnstRvCoreIbexMioLfsrPerm
-          default: 0xca4f8e86571187a8454e692dfd96a0e3e8b67a68
-          randwidth: 160
-        }
-        {
-          name: RndCnstIbexKeyDefault
-          desc: Default icache scrambling key
-          type: logic [ibex_pkg::SCRAMBLE_KEY_W-1:0]
-          randcount: 128
-          randtype: data
-          name_top: RndCnstRvCoreIbexMioIbexKeyDefault
-          default: 0xc7f9ef3a0bb542b7a4e6470dab218002
-          randwidth: 128
-        }
-        {
-          name: RndCnstIbexNonceDefault
-          desc: Default icache scrambling nonce
-          type: logic [ibex_pkg::SCRAMBLE_NONCE_W-1:0]
-          randcount: 64
-          randtype: data
-          name_top: RndCnstRvCoreIbexMioIbexNonceDefault
-          default: 0xfdca1dc41668d202
-          randwidth: 64
-        }
         {
           name: NEscalationSeverities
           desc: Number of escalation severities
@@ -7713,14 +7553,6 @@
     enable_strap_sampling: false
   }
   targets: []
-  seed:
-  {
-    topgen_seed:
-    {
-      seed_mode: dev
-      value: 84252111381156105906016178546403128403668998942386444069761969928428529963019
-    }
-  }
   incoming_alert: {}
   incoming_interrupt:
   {

@@ -7,4 +7,4 @@
 # util/topgen.py -t hw/top_mio/data/top_mio.hjson \
 #                -o hw/top_mio/
 
-exports_files(["top_mio.gen.hjson"])
+exports_files(glob(["*.hjson"]))
