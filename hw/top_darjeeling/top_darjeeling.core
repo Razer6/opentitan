@@ -38,7 +38,6 @@ filesets:
       - lowrisc:constants:top_darjeeling_jtag_id_pkg
       - lowrisc:constants:top_darjeeling_ibex_pmp_reset_pkg
       - lowrisc:ip:lc_ctrl
-      - lowrisc:darjeeling_constants:lc_ctrl_state_pkg
       - lowrisc:ip:mbx
       - lowrisc:top_darjeeling:xbar_dbg
       - lowrisc:top_darjeeling:xbar_main
@@ -71,10 +70,19 @@ filesets:
       - "!fileset_partner ? (lowrisc:systems:top_darjeeling_ast_pkg)"
       - "!synth_run? (lowrisc:ibex:ibex_tracer)"
     files:
-      - rtl/autogen/top_darjeeling_rnd_cnst_pkg.sv
       - rtl/autogen/top_darjeeling_racl_pkg.sv
       - rtl/autogen/top_darjeeling.sv
     file_type: systemVerilogSource
+
+  files_rtl_dev:
+    depend:
+      - lowrisc:darjeeling_constants:dev_rnd_cnst_pkg
+      - lowrisc:darjeeling_constants:dev_lc_ctrl_state_pkg
+
+  files_rtl_prod:
+    depend:
+      - lowrisc:darjeeling_constants:prod_rnd_cnst_pkg
+      - lowrisc:darjeeling_constants:prod_lc_ctrl_state_pkg
 
   files_verilator_waiver:
     depend:
@@ -124,6 +132,8 @@ targets:
       - tool_verilator   ? (files_verilator_waiver)
       - tool_ascentlint  ? (files_ascentlint_waiver)
       - tool_veriblelint ? (files_veriblelint_waiver)
+      - fileset_prod     ? (files_rtl_prod)
+      - "!fileset_prod   ? (files_rtl_dev)"
       - files_rtl_generic
     toplevel: top_darjeeling
     parameters:
@@ -135,6 +145,8 @@ targets:
       - RDV_NO_SYSCTL=true
       - PRIM_DEFAULT_IMPL
     filesets:
+      - fileset_prod     ? (files_rtl_prod)
+      - "!fileset_prod   ? (files_rtl_dev)"
       - files_rtl_generic
     toplevel: top_darjeeling
 

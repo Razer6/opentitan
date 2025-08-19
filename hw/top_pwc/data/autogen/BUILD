@@ -4,7 +4,7 @@
 #
 # ------------------- W A R N I N G: A U T O - G E N E R A T E D   C O D E !! -------------------#
 # PLEASE DO NOT HAND-EDIT THIS FILE. IT HAS BEEN AUTO-GENERATED WITH THE FOLLOWING COMMAND:
-# util/topgen.py -t hw/top_pwc/data/top_pwc.hjson
-# -o hw/top_pwc
+# util/topgen.py -t hw/top_pwc/data/top_pwc.hjson \
+#                -o hw/top_pwc/
 
 exports_files(["top_pwc.gen.hjson"])

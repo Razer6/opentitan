@@ -4,8 +4,8 @@
 //
 // ------------------- W A R N I N G: A U T O - G E N E R A T E D   C O D E !! -------------------//
 // PLEASE DO NOT HAND-EDIT THIS FILE. IT HAS BEEN AUTO-GENERATED WITH THE FOLLOWING COMMAND:
-// util/topgen.py -t hw/top_mio/data/top_mio.hjson
-// -o hw/top_mio
+// util/topgen.py -t hw/top_mio/data/top_mio.hjson \
+//                -o hw/top_mio/
 
 #ifndef OPENTITAN_HW_TOP_MIO_SW_AUTOGEN_TOP_MIO_SOC_MBX_MEMORY_H_
 #define OPENTITAN_HW_TOP_MIO_SW_AUTOGEN_TOP_MIO_SOC_MBX_MEMORY_H_

@@ -6,9 +6,7 @@
 // PLEASE DO NOT HAND-EDIT THIS FILE. IT HAS BEEN AUTO-GENERATED WITH THE FOLLOWING COMMAND:
 //
 // util/topgen.py -t hw/top_pwc/data/top_pwc.hjson \
-//                -o hw/top_pwc/ \
-//                --rnd_cnst_seed \
-//                56102744355537000026776215634241684889261893736619588406986107855056748453929
+//                -o hw/top_pwc/
 
 package top_pwc_soc_dbg_pkg;
   /**

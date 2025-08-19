@@ -6,9 +6,7 @@
 // PLEASE DO NOT HAND-EDIT THIS FILE. IT HAS BEEN AUTO-GENERATED WITH THE FOLLOWING COMMAND:
 //
 // util/topgen.py -t hw/top_mio/data/top_mio.hjson \
-//                -o hw/top_mio/ \
-//                --rnd_cnst_seed \
-//                84252111381156105906016178546403128403668998942386444069761969928428529963019
+//                -o hw/top_mio/
 
 package top_mio_soc_mbx_pkg;
   /**
