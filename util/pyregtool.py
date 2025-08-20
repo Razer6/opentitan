@@ -152,6 +152,7 @@ class PyregParameters:
     """Represents the parameters of a pyreg entry."""
 
     array: Optional[int]
+    array_offset: Optional[int]
     swaccess: Optional[str]
     hwaccess: Optional[str]
     ot_shadowed: Optional[bool]
@@ -173,14 +174,18 @@ class PyregParameters:
         """Creates a PyregParameters object from a register entry."""
         # Array count
         array = None
+        array_offset = None
 
         if isinstance(entry, MultiRegister):
             if entry.compact:
                 array = len(entry.cregs)
             else:
                 array = len(entry.pregs)
+
+            array_offset = entry.stride
         elif isinstance(entry, Window) and entry.items > 1:
             array = entry.items
+            array_offset = regwidth // 8
 
         # Shadowed
         if isinstance(entry, MultiRegister):
@@ -220,6 +225,7 @@ class PyregParameters:
 
         return PyregParameters(
             array,
+            array_offset,
             swaccess,
             hwaccess,
             ot_shadowed,
