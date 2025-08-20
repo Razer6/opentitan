@@ -576,7 +576,6 @@ def _parse_cli_args():
 
     parser.add_argument(
         "--pydump-package",
-        "--package",
         type=str,
         default="ot_ip_reg_pkg",
         help="Package set in the generated file (pydump gen only).",
