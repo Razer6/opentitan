@@ -64,6 +64,8 @@ filesets:
       - lowrisc:prim:all
       - lowrisc:prim:mubi
       - lowrisc:systems:top_darjeeling_pkg
+      # TODO(#27347): prim_pkg is deprecated
+      - lowrisc:prim:prim_legacy_pkg
       - "fileset_partner  ? (partner:systems:top_darjeeling_ast_pkg)"
       - "!fileset_partner ? (lowrisc:systems:top_darjeeling_ast_pkg)"
       - "!synth_run? (lowrisc:ibex:ibex_tracer)"

@@ -60,6 +60,8 @@ filesets:
       - lowrisc:prim:usb_diff_rx
       - lowrisc:prim:mubi
       - lowrisc:systems:top_earlgrey_pkg
+      # TODO(#27347): prim_pkg is deprecated
+      - lowrisc:prim:prim_legacy_pkg
       - "fileset_partner  ? (partner:systems:top_earlgrey_ast_pkg)"
       - "!fileset_partner ? (lowrisc:systems:top_earlgrey_ast_pkg)"
       - "fileset_partner  ? (partner:ip:otp_macro)"
