@@ -309,7 +309,7 @@
                 }
                 {
                     name: "OWNER_SW_CFG_ROM_ALERT_CLASSIFICATION",
-                    size: "412",
+                    size: "788",
                     desc: '''
                     The alert classifications (A through D) for each alert
                     source of the alert_handler to be configured by the ROM. The
@@ -318,18 +318,19 @@
                     of a single alert source across four lifecycle states, in
                     order from LSB to MSB: PROD, PROD_END, DEV, and RMA. Each
                     byte should be set to an `alert_class_t` value accordingly.
-                    The order of the 80 32-bit words, from LSB to MSB can be
-                    found in the EARLGREY_ALERTS list in `rules/const.bzl`.
+                    The order of the 197 32-bit words, from LSB to MSB can be
+                    found in the DARJEELING_ALERTS list in
+                    `hw/top_darjeeling/data/autogen/defs.bzl`.
                     See the alert_handler documentation for more details.
                     '''
                 }
                 {
                     name: "OWNER_SW_CFG_ROM_LOCAL_ALERT_CLASSIFICATION",
-                    size: "64",
+                    size: "28",
                     desc: '''
                     Same as the `OWNER_SW_CFG_ROM_ALERT_CLASSIFICATION` field,
                     except these configuration correspond to the local alert
-                    sources found in the `EARLGREY_LOC_ALERTS list in
+                    sources found in the `DARJEELING_LOC_ALERTS list in
                     `rules/const.bzl`.
                     '''
                 }

@@ -249,15 +249,6 @@ DARJEELING_LOC_ALERTS = [
     "bus_integfail",
     "shadow_reg_update_error",
     "shadow_reg_storage_error",
-    "loc_dummy7",
-    "loc_dummy8",
-    "loc_dummy9",
-    "loc_dummy10",
-    "loc_dummy11",
-    "loc_dummy12",
-    "loc_dummy13",
-    "loc_dummy14",
-    "loc_dummy15",
 ]
 
 KEY_AUTHENTICITY = [
