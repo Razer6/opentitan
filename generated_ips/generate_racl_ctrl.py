@@ -59,6 +59,7 @@ def main():
         'nr_subscribing_ips':   1,
         "policies":             racl_policies,
         "racl_group":           args.racl_group,
+        "use_rivos_config":     True,
     }
     ipconfig = {
         "instance_name":        args.instance_name,

@@ -213,6 +213,51 @@
       hwaccess: "hwo"
       hwqe: "true"
       fields: [
+% if use_rivos_config:
+<%
+  assert nr_role_bits == 4
+  assert nr_ctn_uid_bits <= 15
+%>
+        { bits: "${0 + nr_ctn_uid_bits - 1}:0"
+          name: "ctn_uid"
+          resval: 0x0
+          desc: '''
+                CTN UID causing the error.
+                '''
+        }
+        { bits: "18:15"
+          name: "role"
+          resval: 0x0
+          desc: '''
+                RACL role causing the error.
+                '''
+        }
+        { bits: "19"
+          name: "valid"
+          resval: 0x0
+          swaccess: "rw1c"
+          hwaccess: "hrw"
+          desc: '''
+                Indicates a RACL error and the log register contains valid data.
+                Writing a one clears this register and the !!ERROR_LOG_ADDRESS register.
+                '''
+        }
+        { bits: "20"
+          name: "overflow"
+          resval: 0x0
+          desc: '''
+                Indicates a RACL error overflow when a RACL error occurred while the log register was set.
+                '''
+        }
+        { bits: "21"
+          name: "read_access"
+          resval: 0x0
+          desc: '''
+                0: Write transfer was denied.
+                1: Read transfer was denied.
+                '''
+        }
+% else:
         { bits: "0"
           name: "valid"
           resval: 0x0
@@ -252,6 +297,7 @@
                 CTN UID causing the error.
                 '''
         }
+% endif
       ]
     }
     { name: "ERROR_LOG_ADDRESS"

@@ -553,7 +553,8 @@
       },
       attr: "ipgen",
       ipgen_params: {
-        racl_group: "mio"
+        racl_group: "mio",
+        use_rivos_config: true,
       },
       outgoing_alert: "mio"
       outgoing_interrupt: "mio"

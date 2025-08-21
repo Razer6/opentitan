@@ -1090,7 +1090,8 @@
       },
       attr: "ipgen",
       ipgen_params: {
-        racl_group: "rot"
+        racl_group: "rot",
+        use_rivos_config: true,
       },
     },
     { name: "ac_range_check",

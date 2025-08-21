@@ -571,7 +571,8 @@
       },
       attr: "ipgen",
       ipgen_params: {
-        racl_group: "pwc"
+        racl_group: "pwc",
+        use_rivos_config: true,
       },
       outgoing_alert: "pwc"
       outgoing_interrupt: "pwc"
