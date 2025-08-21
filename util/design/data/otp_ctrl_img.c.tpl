@@ -13,7 +13,7 @@ ${fileheader}
 // file.
 #include "sw/lib/sw/device/silicon_creator/manuf/otp_img_types.h"
 
-#include "otp_ctrl_regs.h"
+#include "hw/top/otp_ctrl_regs.h"  // Generated.
 
 #ifdef __cplusplus
 extern "C" {

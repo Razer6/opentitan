@@ -9,7 +9,7 @@
 #include "sw/device/lib/base/bitfield.h"
 #include "sw/device/lib/dif/dif_base.h"
 
-#include "pwm_regs.h"  // Generated.
+#include "hw/top/pwm_regs.h"  // Generated.
 
 static_assert(PWM_CFG_DC_RESN_MASK == 0xf,
               "Expected duty cycle configuration register to be 4 bits.");

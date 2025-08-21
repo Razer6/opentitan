@@ -29,11 +29,16 @@
 #include "sw/device/silicon_creator/lib/epmp_defs.h"
 #include "sw/device/silicon_creator/lib/stack_utilization.h"
 
-#include "alert_handler_regs.h"
-#include "flash_ctrl_regs.h"
-#include "hw/top_earlgrey/sw/autogen/top_earlgrey.h"
-#include "keymgr_regs.h"
-#include "lc_ctrl_regs.h"
+#ifdef HAS_FLASH_CTRL
+#include "sw/device/silicon_creator/lib/drivers/flash_ctrl.h"
+#endif
+
+#ifdef HAS_KEYMGR
+#include "sw/device/silicon_creator/lib/drivers/keymgr.h"
+#endif
+
+#include "hw/top/alert_handler_regs.h"
+#include "hw/top/lc_ctrl_regs.h"
 #include "otp_ctrl_regs.h"
 #include "rstmgr_regs.h"
 #include "rv_core_ibex_regs.h"
