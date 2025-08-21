@@ -262,5 +262,6 @@
       }
     ]
     racl_group: scsifregshdr
+    use_rivos_config: true
   }
 }

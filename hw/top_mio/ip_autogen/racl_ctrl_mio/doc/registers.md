@@ -265,22 +265,23 @@ Alert Test Register.
 Error logging registers
 - Offset: `0xf8`
 - Reset default: `0x0`
-- Reset mask: `0xfff`
+- Reset mask: `0x3f801f`
 
 ### Fields
 
 ```wavejson
-{"reg": [{"name": "valid", "bits": 1, "attr": ["rw1c"], "rotate": -90}, {"name": "overflow", "bits": 1, "attr": ["ro"], "rotate": -90}, {"name": "read_access", "bits": 1, "attr": ["ro"], "rotate": -90}, {"name": "role", "bits": 4, "attr": ["ro"], "rotate": 0}, {"name": "ctn_uid", "bits": 5, "attr": ["ro"], "rotate": 0}, {"bits": 20}], "config": {"lanes": 1, "fontsize": 10, "vspace": 130}}
+{"reg": [{"name": "ctn_uid", "bits": 5, "attr": ["ro"], "rotate": 0}, {"bits": 10}, {"name": "role", "bits": 4, "attr": ["ro"], "rotate": 0}, {"name": "valid", "bits": 1, "attr": ["rw1c"], "rotate": -90}, {"name": "overflow", "bits": 1, "attr": ["ro"], "rotate": -90}, {"name": "read_access", "bits": 1, "attr": ["ro"], "rotate": -90}, {"bits": 10}], "config": {"lanes": 1, "fontsize": 10, "vspace": 130}}
 ```
 
 |  Bits  |  Type  |  Reset  | Name        | Description                                                                                                                                                     |
 |:------:|:------:|:-------:|:------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 31:12  |        |         |             | Reserved                                                                                                                                                        |
-|  11:7  |   ro   |   0x0   | ctn_uid     | CTN UID causing the error.                                                                                                                                      |
-|  6:3   |   ro   |   0x0   | role        | RACL role causing the error.                                                                                                                                    |
-|   2    |   ro   |   0x0   | read_access | 0: Write transfer was denied. 1: Read transfer was denied.                                                                                                      |
-|   1    |   ro   |   0x0   | overflow    | Indicates a RACL error overflow when a RACL error occurred while the log register was set.                                                                      |
-|   0    |  rw1c  |   0x0   | valid       | Indicates a RACL error and the log register contains valid data. Writing a one clears this register and the [`ERROR_LOG_ADDRESS`](#error_log_address) register. |
+| 31:22  |        |         |             | Reserved                                                                                                                                                        |
+|   21   |   ro   |   0x0   | read_access | 0: Write transfer was denied. 1: Read transfer was denied.                                                                                                      |
+|   20   |   ro   |   0x0   | overflow    | Indicates a RACL error overflow when a RACL error occurred while the log register was set.                                                                      |
+|   19   |  rw1c  |   0x0   | valid       | Indicates a RACL error and the log register contains valid data. Writing a one clears this register and the [`ERROR_LOG_ADDRESS`](#error_log_address) register. |
+| 18:15  |   ro   |   0x0   | role        | RACL role causing the error.                                                                                                                                    |
+|  14:5  |        |         |             | Reserved                                                                                                                                                        |
+|  4:0   |   ro   |   0x0   | ctn_uid     | CTN UID causing the error.                                                                                                                                      |
 
 ## ERROR_LOG_ADDRESS
 Contains the bits [top_pkg::TL_AW-1:2] of the address on which a RACL violation occurred.

@@ -385,6 +385,7 @@
       }
     ]
     racl_group: lioGrpB
+    use_rivos_config: true
     uniquified_modules: {}
     enable_shadow_reg: true
   }

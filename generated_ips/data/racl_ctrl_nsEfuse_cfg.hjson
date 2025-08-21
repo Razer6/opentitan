@@ -262,5 +262,6 @@
       }
     ]
     racl_group: nsEfuse
+    use_rivos_config: true
   }
 }

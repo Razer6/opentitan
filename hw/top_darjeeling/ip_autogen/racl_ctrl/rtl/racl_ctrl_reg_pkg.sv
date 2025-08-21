@@ -153,14 +153,6 @@ package racl_ctrl_reg_pkg;
 
   typedef struct packed {
     struct packed {
-      logic [4:0]  d;
-      logic        de;
-    } ctn_uid;
-    struct packed {
-      logic [3:0]  d;
-      logic        de;
-    } role;
-    struct packed {
       logic        d;
       logic        de;
     } read_access;
@@ -172,6 +164,14 @@ package racl_ctrl_reg_pkg;
       logic        d;
       logic        de;
     } valid;
+    struct packed {
+      logic [3:0]  d;
+      logic        de;
+    } role;
+    struct packed {
+      logic [4:0]  d;
+      logic        de;
+    } ctn_uid;
   } racl_ctrl_hw2reg_error_log_reg_t;
 
   typedef struct packed {
@@ -273,7 +273,7 @@ package racl_ctrl_reg_pkg;
     4'b 0001, // index[11] RACL_CTRL_INTR_ENABLE
     4'b 0001, // index[12] RACL_CTRL_INTR_TEST
     4'b 0001, // index[13] RACL_CTRL_ALERT_TEST
-    4'b 0011, // index[14] RACL_CTRL_ERROR_LOG
+    4'b 0111, // index[14] RACL_CTRL_ERROR_LOG
     4'b 1111  // index[15] RACL_CTRL_ERROR_LOG_ADDRESS
   };
 

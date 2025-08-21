@@ -10239,6 +10239,7 @@
       ipgen_params:
       {
         racl_group: rot
+        use_rivos_config: true
       }
       clock_connections:
       {

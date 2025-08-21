@@ -243,12 +243,12 @@ module racl_ctrl_scsifregshdr_reg_top
   logic alert_test_fatal_fault_wd;
   logic alert_test_recov_ctrl_update_err_wd;
   logic error_log_we;
+  logic [4:0] error_log_ctn_uid_qs;
+  logic [3:0] error_log_role_qs;
   logic error_log_valid_qs;
   logic error_log_valid_wd;
   logic error_log_overflow_qs;
   logic error_log_read_access_qs;
-  logic [3:0] error_log_role_qs;
-  logic [4:0] error_log_ctn_uid_qs;
   logic [29:0] error_log_address_qs;
 
   // Register instances
@@ -1114,119 +1114,10 @@ module racl_ctrl_scsifregshdr_reg_top
   ) u_error_log0_qe (
     .clk_i(clk_i),
     .rst_ni(rst_ni),
-    .d_i(&(error_log_flds_we | 5'h1e)),
+    .d_i(&(error_log_flds_we | 5'h1b)),
     .q_o(error_log_qe)
   );
-  //   F[valid]: 0:0
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessW1C),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_error_log_valid (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (error_log_we),
-    .wd     (error_log_valid_wd),
-
-    // from internal hardware
-    .de     (hw2reg.error_log.valid.de),
-    .d      (hw2reg.error_log.valid.d),
-
-    // to internal hardware
-    .qe     (error_log_flds_we[0]),
-    .q      (reg2hw.error_log.valid.q),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (error_log_valid_qs)
-  );
-  assign reg2hw.error_log.valid.qe = error_log_qe;
-
-  //   F[overflow]: 1:1
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_error_log_overflow (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (1'b0),
-    .wd     ('0),
-
-    // from internal hardware
-    .de     (hw2reg.error_log.overflow.de),
-    .d      (hw2reg.error_log.overflow.d),
-
-    // to internal hardware
-    .qe     (error_log_flds_we[1]),
-    .q      (),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (error_log_overflow_qs)
-  );
-
-  //   F[read_access]: 2:2
-  prim_subreg #(
-    .DW      (1),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (1'h0),
-    .Mubi    (1'b0)
-  ) u_error_log_read_access (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (1'b0),
-    .wd     ('0),
-
-    // from internal hardware
-    .de     (hw2reg.error_log.read_access.de),
-    .d      (hw2reg.error_log.read_access.d),
-
-    // to internal hardware
-    .qe     (error_log_flds_we[2]),
-    .q      (),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (error_log_read_access_qs)
-  );
-
-  //   F[role]: 6:3
-  prim_subreg #(
-    .DW      (4),
-    .SwAccess(prim_subreg_pkg::SwAccessRO),
-    .RESVAL  (4'h0),
-    .Mubi    (1'b0)
-  ) u_error_log_role (
-    .clk_i   (clk_i),
-    .rst_ni  (rst_ni),
-
-    // from register interface
-    .we     (1'b0),
-    .wd     ('0),
-
-    // from internal hardware
-    .de     (hw2reg.error_log.role.de),
-    .d      (hw2reg.error_log.role.d),
-
-    // to internal hardware
-    .qe     (error_log_flds_we[3]),
-    .q      (),
-    .ds     (),
-
-    // to register interface (read)
-    .qs     (error_log_role_qs)
-  );
-
-  //   F[ctn_uid]: 11:7
+  //   F[ctn_uid]: 4:0
   prim_subreg #(
     .DW      (5),
     .SwAccess(prim_subreg_pkg::SwAccessRO),
@@ -1245,12 +1136,121 @@ module racl_ctrl_scsifregshdr_reg_top
     .d      (hw2reg.error_log.ctn_uid.d),
 
     // to internal hardware
-    .qe     (error_log_flds_we[4]),
+    .qe     (error_log_flds_we[0]),
     .q      (),
     .ds     (),
 
     // to register interface (read)
     .qs     (error_log_ctn_uid_qs)
+  );
+
+  //   F[role]: 18:15
+  prim_subreg #(
+    .DW      (4),
+    .SwAccess(prim_subreg_pkg::SwAccessRO),
+    .RESVAL  (4'h0),
+    .Mubi    (1'b0)
+  ) u_error_log_role (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (1'b0),
+    .wd     ('0),
+
+    // from internal hardware
+    .de     (hw2reg.error_log.role.de),
+    .d      (hw2reg.error_log.role.d),
+
+    // to internal hardware
+    .qe     (error_log_flds_we[1]),
+    .q      (),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (error_log_role_qs)
+  );
+
+  //   F[valid]: 19:19
+  prim_subreg #(
+    .DW      (1),
+    .SwAccess(prim_subreg_pkg::SwAccessW1C),
+    .RESVAL  (1'h0),
+    .Mubi    (1'b0)
+  ) u_error_log_valid (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (error_log_we),
+    .wd     (error_log_valid_wd),
+
+    // from internal hardware
+    .de     (hw2reg.error_log.valid.de),
+    .d      (hw2reg.error_log.valid.d),
+
+    // to internal hardware
+    .qe     (error_log_flds_we[2]),
+    .q      (reg2hw.error_log.valid.q),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (error_log_valid_qs)
+  );
+  assign reg2hw.error_log.valid.qe = error_log_qe;
+
+  //   F[overflow]: 20:20
+  prim_subreg #(
+    .DW      (1),
+    .SwAccess(prim_subreg_pkg::SwAccessRO),
+    .RESVAL  (1'h0),
+    .Mubi    (1'b0)
+  ) u_error_log_overflow (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (1'b0),
+    .wd     ('0),
+
+    // from internal hardware
+    .de     (hw2reg.error_log.overflow.de),
+    .d      (hw2reg.error_log.overflow.d),
+
+    // to internal hardware
+    .qe     (error_log_flds_we[3]),
+    .q      (),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (error_log_overflow_qs)
+  );
+
+  //   F[read_access]: 21:21
+  prim_subreg #(
+    .DW      (1),
+    .SwAccess(prim_subreg_pkg::SwAccessRO),
+    .RESVAL  (1'h0),
+    .Mubi    (1'b0)
+  ) u_error_log_read_access (
+    .clk_i   (clk_i),
+    .rst_ni  (rst_ni),
+
+    // from register interface
+    .we     (1'b0),
+    .wd     ('0),
+
+    // from internal hardware
+    .de     (hw2reg.error_log.read_access.de),
+    .d      (hw2reg.error_log.read_access.d),
+
+    // to internal hardware
+    .qe     (error_log_flds_we[4]),
+    .q      (),
+    .ds     (),
+
+    // to register interface (read)
+    .qs     (error_log_read_access_qs)
   );
 
 
@@ -1455,7 +1455,7 @@ module racl_ctrl_scsifregshdr_reg_top
   assign alert_test_recov_ctrl_update_err_wd = reg_wdata[1];
   assign error_log_we = racl_addr_hit_write[14] & reg_we & !reg_error;
 
-  assign error_log_valid_wd = reg_wdata[0];
+  assign error_log_valid_wd = reg_wdata[19];
 
   // Assign write-enables to checker logic vector.
   always_comb begin
@@ -1549,11 +1549,11 @@ module racl_ctrl_scsifregshdr_reg_top
       end
 
       racl_addr_hit_read[14]: begin
-        reg_rdata_next[0] = error_log_valid_qs;
-        reg_rdata_next[1] = error_log_overflow_qs;
-        reg_rdata_next[2] = error_log_read_access_qs;
-        reg_rdata_next[6:3] = error_log_role_qs;
-        reg_rdata_next[11:7] = error_log_ctn_uid_qs;
+        reg_rdata_next[4:0] = error_log_ctn_uid_qs;
+        reg_rdata_next[18:15] = error_log_role_qs;
+        reg_rdata_next[19] = error_log_valid_qs;
+        reg_rdata_next[20] = error_log_overflow_qs;
+        reg_rdata_next[21] = error_log_read_access_qs;
       end
 
       racl_addr_hit_read[15]: begin

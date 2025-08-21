@@ -6,6 +6,7 @@
   param_values:
   {
     racl_group: pwc
+    use_rivos_config: true
     module_instance_name: racl_ctrl_pwc
     nr_role_bits: 4
     nr_ctn_uid_bits: 5

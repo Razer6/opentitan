@@ -642,5 +642,6 @@
       }
     ]
     racl_group: lioGrpD
+    use_rivos_config: true
   }
 }

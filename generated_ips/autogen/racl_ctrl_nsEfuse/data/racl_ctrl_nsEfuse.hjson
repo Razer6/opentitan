@@ -475,7 +475,22 @@
       hwaccess: "hwo"
       hwqe: "true"
       fields: [
-        { bits: "0"
+
+        { bits: "4:0"
+          name: "ctn_uid"
+          resval: 0x0
+          desc: '''
+                CTN UID causing the error.
+                '''
+        }
+        { bits: "18:15"
+          name: "role"
+          resval: 0x0
+          desc: '''
+                RACL role causing the error.
+                '''
+        }
+        { bits: "19"
           name: "valid"
           resval: 0x0
           swaccess: "rw1c"
@@ -485,33 +500,19 @@
                 Writing a one clears this register and the !!ERROR_LOG_ADDRESS register.
                 '''
         }
-        { bits: "1"
+        { bits: "20"
           name: "overflow"
           resval: 0x0
           desc: '''
                 Indicates a RACL error overflow when a RACL error occurred while the log register was set.
                 '''
         }
-        { bits: "2"
+        { bits: "21"
           name: "read_access"
           resval: 0x0
           desc: '''
                 0: Write transfer was denied.
                 1: Read transfer was denied.
-                '''
-        }
-        { bits: "6:3"
-          name: "role"
-          resval: 0x0
-          desc: '''
-                RACL role causing the error.
-                '''
-        }
-        { bits: "11:7"
-          name: "ctn_uid"
-          resval: 0x0
-          desc: '''
-                CTN UID causing the error.
                 '''
         }
       ]
