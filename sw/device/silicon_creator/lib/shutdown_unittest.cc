@@ -7,6 +7,10 @@
 #include <array>
 
 #include "gtest/gtest.h"
+#include "hw/top/dt/dt_flash_ctrl.h"
+#include "hw/top/dt/dt_lc_ctrl.h"
+#include "hw/top/dt/dt_otp_ctrl.h"
+#include "hw/top/dt/dt_rv_core_ibex.h"
 #include "sw/device/lib/base/global_mock.h"
 #include "sw/device/lib/base/macros.h"
 #include "sw/device/lib/base/mmio.h"
