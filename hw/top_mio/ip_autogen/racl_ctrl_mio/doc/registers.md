@@ -3,24 +3,24 @@
 <!-- BEGIN CMDGEN util/regtool.py -d ./hw/top_mio/ip_autogen/racl_ctrl_mio/data/racl_ctrl_mio.hjson -->
 ## Summary
 
-| Name                                                                                                        | Offset   |   Length | Description                                              |
-|:------------------------------------------------------------------------------------------------------------|:---------|---------:|:---------------------------------------------------------|
-| racl_ctrl_mio.[`POLICY_ALL_RD_WR_POLICY_SHADOWED`](#policy_all_rd_wr_policy_shadowed)                       | 0x0      |        4 | Read and write policy for all_rd_wr_policy               |
-| racl_ctrl_mio.[`POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED`](#policy_hw_rot_pwc_wr_all_rd_policy_shadowed) | 0x8      |        4 | Read and write policy for hw_rot_pwc_wr_all_rd_policy    |
-| racl_ctrl_mio.[`POLICY_PRE_BOOT_M_POLICY_SHADOWED`](#policy_pre_boot_m_policy_shadowed)                     | 0x10     |        4 | Read and write policy for pre_boot_m_policy              |
-| racl_ctrl_mio.[`POLICY_POST_BOOT_M_POLICY_SHADOWED`](#policy_post_boot_m_policy_shadowed)                   | 0x18     |        4 | Read and write policy for post_boot_m_policy             |
-| racl_ctrl_mio.[`POLICY_TEE_LIMITED_POLICY_SHADOWED`](#policy_tee_limited_policy_shadowed)                   | 0x20     |        4 | Read and write policy for tee_limited_policy             |
-| racl_ctrl_mio.[`POLICY_RCODE_PRIVATE_POLICY_SHADOWED`](#policy_rcode_private_policy_shadowed)               | 0x28     |        4 | Read and write policy for rcode_private_policy           |
-| racl_ctrl_mio.[`POLICY_ROT_PRIVATE_POLICY_SHADOWED`](#policy_rot_private_policy_shadowed)                   | 0x30     |        4 | Read and write policy for rot_private_policy             |
-| racl_ctrl_mio.[`POLICY_PWC_PRIVATE_POLICY_SHADOWED`](#policy_pwc_private_policy_shadowed)                   | 0x38     |        4 | Read and write policy for pwc_private_policy             |
-| racl_ctrl_mio.[`POLICY_MIO_PRIVATE_POLICY_SHADOWED`](#policy_mio_private_policy_shadowed)                   | 0x40     |        4 | Read and write policy for mio_private_policy             |
-| racl_ctrl_mio.[`POLICY_DUC_PRIVATE_POLICY_SHADOWED`](#policy_duc_private_policy_shadowed)                   | 0x48     |        4 | Read and write policy for duc_private_policy             |
-| racl_ctrl_mio.[`INTR_STATE`](#intr_state)                                                                   | 0xe8     |        4 | Interrupt State Register                                 |
-| racl_ctrl_mio.[`INTR_ENABLE`](#intr_enable)                                                                 | 0xec     |        4 | Interrupt Enable Register                                |
-| racl_ctrl_mio.[`INTR_TEST`](#intr_test)                                                                     | 0xf0     |        4 | Interrupt Test Register                                  |
-| racl_ctrl_mio.[`ALERT_TEST`](#alert_test)                                                                   | 0xf4     |        4 | Alert Test Register.                                     |
-| racl_ctrl_mio.[`ERROR_LOG`](#error_log)                                                                     | 0xf8     |        4 | Error logging registers                                  |
-| racl_ctrl_mio.[`ERROR_LOG_ADDRESS`](#error_log_address)                                                     | 0xfc     |        4 | Contains the address on which a RACL violation occurred. |
+| Name                                                                                                        | Offset   |   Length | Description                                                                               |
+|:------------------------------------------------------------------------------------------------------------|:---------|---------:|:------------------------------------------------------------------------------------------|
+| racl_ctrl_mio.[`POLICY_ALL_RD_WR_POLICY_SHADOWED`](#policy_all_rd_wr_policy_shadowed)                       | 0x0      |        4 | Read and write policy for all_rd_wr_policy                                                |
+| racl_ctrl_mio.[`POLICY_HW_ROT_PWC_WR_ALL_RD_POLICY_SHADOWED`](#policy_hw_rot_pwc_wr_all_rd_policy_shadowed) | 0x8      |        4 | Read and write policy for hw_rot_pwc_wr_all_rd_policy                                     |
+| racl_ctrl_mio.[`POLICY_PRE_BOOT_M_POLICY_SHADOWED`](#policy_pre_boot_m_policy_shadowed)                     | 0x10     |        4 | Read and write policy for pre_boot_m_policy                                               |
+| racl_ctrl_mio.[`POLICY_POST_BOOT_M_POLICY_SHADOWED`](#policy_post_boot_m_policy_shadowed)                   | 0x18     |        4 | Read and write policy for post_boot_m_policy                                              |
+| racl_ctrl_mio.[`POLICY_TEE_LIMITED_POLICY_SHADOWED`](#policy_tee_limited_policy_shadowed)                   | 0x20     |        4 | Read and write policy for tee_limited_policy                                              |
+| racl_ctrl_mio.[`POLICY_RCODE_PRIVATE_POLICY_SHADOWED`](#policy_rcode_private_policy_shadowed)               | 0x28     |        4 | Read and write policy for rcode_private_policy                                            |
+| racl_ctrl_mio.[`POLICY_ROT_PRIVATE_POLICY_SHADOWED`](#policy_rot_private_policy_shadowed)                   | 0x30     |        4 | Read and write policy for rot_private_policy                                              |
+| racl_ctrl_mio.[`POLICY_PWC_PRIVATE_POLICY_SHADOWED`](#policy_pwc_private_policy_shadowed)                   | 0x38     |        4 | Read and write policy for pwc_private_policy                                              |
+| racl_ctrl_mio.[`POLICY_MIO_PRIVATE_POLICY_SHADOWED`](#policy_mio_private_policy_shadowed)                   | 0x40     |        4 | Read and write policy for mio_private_policy                                              |
+| racl_ctrl_mio.[`POLICY_DUC_PRIVATE_POLICY_SHADOWED`](#policy_duc_private_policy_shadowed)                   | 0x48     |        4 | Read and write policy for duc_private_policy                                              |
+| racl_ctrl_mio.[`INTR_STATE`](#intr_state)                                                                   | 0xe8     |        4 | Interrupt State Register                                                                  |
+| racl_ctrl_mio.[`INTR_ENABLE`](#intr_enable)                                                                 | 0xec     |        4 | Interrupt Enable Register                                                                 |
+| racl_ctrl_mio.[`INTR_TEST`](#intr_test)                                                                     | 0xf0     |        4 | Interrupt Test Register                                                                   |
+| racl_ctrl_mio.[`ALERT_TEST`](#alert_test)                                                                   | 0xf4     |        4 | Alert Test Register.                                                                      |
+| racl_ctrl_mio.[`ERROR_LOG`](#error_log)                                                                     | 0xf8     |        4 | Error logging registers                                                                   |
+| racl_ctrl_mio.[`ERROR_LOG_ADDRESS`](#error_log_address)                                                     | 0xfc     |        4 | Contains the bits [top_pkg::TL_AW-1:2] of the address on which a RACL violation occurred. |
 
 ## POLICY_ALL_RD_WR_POLICY_SHADOWED
 Read and write policy for all_rd_wr_policy
@@ -283,23 +283,25 @@ Error logging registers
 |   0    |  rw1c  |   0x0   | valid       | Indicates a RACL error and the log register contains valid data. Writing a one clears this register and the [`ERROR_LOG_ADDRESS`](#error_log_address) register. |
 
 ## ERROR_LOG_ADDRESS
-Contains the address on which a RACL violation occurred.
+Contains the bits [top_pkg::TL_AW-1:2] of the address on which a RACL violation occurred.
+   The address is shifted by 2 bits since TLUL access are always 4 byte aligned.
    This register is valid if and only if the `valid` field of [`ERROR_LOG`](#error_log) is true.
    Once valid, the address doesn't change (even if there are subsequent RACL violations) until the register gets cleared.
    This register gets cleared when SW writes `1` to the `valid` field of the [`ERROR_LOG`](#error_log) register.
 - Offset: `0xfc`
 - Reset default: `0x0`
-- Reset mask: `0xffffffff`
+- Reset mask: `0x3fffffff`
 
 ### Fields
 
 ```wavejson
-{"reg": [{"name": "address", "bits": 32, "attr": ["ro"], "rotate": 0}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+{"reg": [{"name": "address", "bits": 30, "attr": ["ro"], "rotate": 0}, {"bits": 2}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
 ```
 
-|  Bits  |  Type  |  Reset  | Name    | Description                                 |
-|:------:|:------:|:-------:|:--------|:--------------------------------------------|
-|  31:0  |   ro   |   0x0   | address | Address on which a RACL violation occurred. |
+|  Bits  |  Type  |  Reset  | Name    | Description                                                                 |
+|:------:|:------:|:-------:|:--------|:----------------------------------------------------------------------------|
+| 31:30  |        |         |         | Reserved                                                                    |
+|  29:0  |   ro   |   0x0   | address | Address on which a RACL violation occurred, shifted by 2 bits to the right. |
 
 
 <!-- END CMDGEN -->
