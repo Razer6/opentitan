@@ -560,35 +560,17 @@ package otp_ctrl_part_pkg;
   typedef struct packed {
     logic [255:0] device_id;
   } otp_hw_cfg0_data_t;
-
-  // default value used for intermodule
-  parameter otp_hw_cfg0_data_t OTP_HW_CFG0_DATA_DEFAULT = '{
-    device_id: 256'h90C7F21F6224F027F98C48B1F93772844A22D4B78FE0266FBEE3958332F2939B
-  };
   typedef struct packed {
     logic [47:0] unallocated;
     prim_mubi_pkg::mubi8_t en_sram_ifetch;
     prim_mubi_pkg::mubi8_t en_csrng_sw_app_read;
   } otp_hw_cfg1_data_t;
-
-  // default value used for intermodule
-  parameter otp_hw_cfg1_data_t OTP_HW_CFG1_DATA_DEFAULT = '{
-    unallocated: 48'h0,
-    en_sram_ifetch: prim_mubi_pkg::mubi8_t'(8'h69),
-    en_csrng_sw_app_read: prim_mubi_pkg::mubi8_t'(8'h69)
-  };
   typedef struct packed {
     logic [31:0] unallocated;
     logic [255:0] manuf_state;
     logic [31:0] soc_dbg_state;
   } otp_hw_cfg2_data_t;
 
-  // default value used for intermodule
-  parameter otp_hw_cfg2_data_t OTP_HW_CFG2_DATA_DEFAULT = '{
-    unallocated: 32'h0,
-    manuf_state: 256'h63B9485A3856C417CF7A50A9A91EF7F7B3A5B4421F462370FFF698183664DC7E,
-    soc_dbg_state: 32'h0
-  };
   typedef struct packed {
     // This reuses the same encoding as the life cycle signals for indicating valid status.
     lc_ctrl_pkg::lc_tx_t valid;
@@ -597,16 +579,8 @@ package otp_ctrl_part_pkg;
     otp_hw_cfg0_data_t hw_cfg0_data;
   } otp_broadcast_t;
 
-  // default value for intermodule
-  parameter otp_broadcast_t OTP_BROADCAST_DEFAULT = '{
-    valid: lc_ctrl_pkg::Off,
-    hw_cfg2_data: OTP_HW_CFG2_DATA_DEFAULT,
-    hw_cfg1_data: OTP_HW_CFG1_DATA_DEFAULT,
-    hw_cfg0_data: OTP_HW_CFG0_DATA_DEFAULT
-  };
 
-
-  // OTP invalid partition default for all partitions.
+  // OTP invalid partition default for buffered partitions.
   parameter logic [163839:0] PartInvDefault = 163840'({
     // LIFE_CYCLE default
     704'({
