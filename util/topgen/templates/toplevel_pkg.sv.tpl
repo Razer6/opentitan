@@ -279,6 +279,7 @@ package top_${top["name"]}${addr_space_suffix}_pkg;
   } peripheral_e;
 
   // TODO: Enumeration for PLIC Interrupt source peripheral.
+% if has_pinmux: # RIVOS: temporary fix so that INOUT_AI/INOUT_AO are only defined in a single top
 
 // MACROs for AST analog simulation support
 `ifdef ANALOGSIM
@@ -289,5 +290,6 @@ package top_${top["name"]}${addr_space_suffix}_pkg;
   `define INOUT_AO inout
 `endif
 % endif # addr_space_suffix
+% endif # has_pinmux
 
 endpackage
