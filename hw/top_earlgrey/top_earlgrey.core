@@ -62,7 +62,7 @@ filesets:
       - lowrisc:prim:mubi
       - lowrisc:systems:top_earlgrey_pkg
       # TODO(#27347): prim_pkg is deprecated
-      - lowrisc:prim:prim_legacy_pkg
+      # - lowrisc:prim:prim_legacy_pkg # FIXME Rivos/rschilling: Re-enable after upgrading to upstream fusesoc
       - "fileset_partner  ? (partner:systems:top_earlgrey_ast_pkg)"
       - "!fileset_partner ? (lowrisc:systems:top_earlgrey_ast_pkg)"
       - "fileset_partner  ? (partner:ip:otp_macro)"
