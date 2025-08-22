@@ -440,4 +440,37 @@ package top_mio_pkg;
     TopMioOutgoingIrqMioIdCount
   } outgoing_interrupt_mio_id_e;
 
+  // List of peripheral instantiated in this chip.
+  typedef enum {
+    PeripheralAonTimerAon,
+    PeripheralDma,
+    PeripheralMbx0,
+    PeripheralMbx1,
+    PeripheralMbx2,
+    PeripheralMbx3,
+    PeripheralMbx4,
+    PeripheralMbx5,
+    PeripheralMbxPcie0,
+    PeripheralMioSocProxy,
+    PeripheralRvCoreIbexMio,
+    PeripheralRvDm,
+    PeripheralRvPlicMio,
+    PeripheralRvTimer,
+    PeripheralSramCtrlMain,
+    PeripheralSramCtrlMbox,
+    PeripheralSramCtrlRetAon,
+    PeripheralCount
+  } peripheral_e;
+
+  // TODO: Enumeration for PLIC Interrupt source peripheral.
+
+// MACROs for AST analog simulation support
+`ifdef ANALOGSIM
+  `define INOUT_AI input ast_pkg::awire_t
+  `define INOUT_AO output ast_pkg::awire_t
+`else
+  `define INOUT_AI inout
+  `define INOUT_AO inout
+`endif
+
 endpackage

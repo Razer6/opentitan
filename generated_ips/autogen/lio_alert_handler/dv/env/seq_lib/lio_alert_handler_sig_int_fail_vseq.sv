@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
 
-// this sequence enable signal intergrity fail.
+// this sequence enable signal integrity fail.
 
 class lio_alert_handler_sig_int_fail_vseq extends lio_alert_handler_smoke_vseq;
   `uvm_object_utils(lio_alert_handler_sig_int_fail_vseq)

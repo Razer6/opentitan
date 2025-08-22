@@ -851,4 +851,38 @@ package top_pwc_pkg;
     TopPwcOutgoingIrqPwcIdCount
   } outgoing_interrupt_pwc_id_e;
 
+  // List of peripheral instantiated in this chip.
+  typedef enum {
+    PeripheralAonTimerAon,
+    PeripheralDma,
+    PeripheralGpio,
+    PeripheralMbx0,
+    PeripheralMbx1,
+    PeripheralMbx2,
+    PeripheralMbx3,
+    PeripheralMbx4,
+    PeripheralMbx5,
+    PeripheralMbxPcie0,
+    PeripheralPwcSocProxy,
+    PeripheralRvCoreIbexPwc,
+    PeripheralRvDm,
+    PeripheralRvPlicPwc,
+    PeripheralRvTimer,
+    PeripheralSramCtrlMain,
+    PeripheralSramCtrlMbox,
+    PeripheralSramCtrlRetAon,
+    PeripheralCount
+  } peripheral_e;
+
+  // TODO: Enumeration for PLIC Interrupt source peripheral.
+
+// MACROs for AST analog simulation support
+`ifdef ANALOGSIM
+  `define INOUT_AI input ast_pkg::awire_t
+  `define INOUT_AO output ast_pkg::awire_t
+`else
+  `define INOUT_AI inout
+  `define INOUT_AO inout
+`endif
+
 endpackage
