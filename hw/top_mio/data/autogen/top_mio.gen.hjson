@@ -406,6 +406,7 @@
         clk_i: clk_ext_io_div4_i
       }
       param_decl: {}
+      memory: {}
       param_list: []
       inter_signal_list:
       [
@@ -521,6 +522,7 @@
         clk_aon_i: clk_ext_aon_i
       }
       param_decl: {}
+      memory: {}
       param_list: []
       inter_signal_list:
       [
@@ -1798,6 +1800,7 @@
         clk_i: clk_ext_main_i
       }
       param_decl: {}
+      memory: {}
       param_list: []
       inter_signal_list:
       [
@@ -3009,6 +3012,7 @@
         clk_i: clk_ext_main_i
       }
       param_decl: {}
+      memory: {}
       param_list: []
       inter_signal_list:
       [
@@ -3206,6 +3210,7 @@
         clk_i: clk_ext_main_i
       }
       param_decl: {}
+      memory: {}
       param_list: []
       inter_signal_list:
       [
@@ -3403,6 +3408,7 @@
         clk_i: clk_ext_main_i
       }
       param_decl: {}
+      memory: {}
       param_list: []
       inter_signal_list:
       [
@@ -3600,6 +3606,7 @@
         clk_i: clk_ext_main_i
       }
       param_decl: {}
+      memory: {}
       param_list: []
       inter_signal_list:
       [
@@ -3797,6 +3804,7 @@
         clk_i: clk_ext_main_i
       }
       param_decl: {}
+      memory: {}
       param_list: []
       inter_signal_list:
       [
@@ -3994,6 +4002,7 @@
         clk_i: clk_ext_main_i
       }
       param_decl: {}
+      memory: {}
       param_list: []
       inter_signal_list:
       [
@@ -4191,6 +4200,7 @@
         clk_i: clk_ext_main_i
       }
       param_decl: {}
+      memory: {}
       param_list: []
       inter_signal_list:
       [

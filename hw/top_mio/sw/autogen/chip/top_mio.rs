@@ -47,20 +47,6 @@ pub const AON_TIMER_AON_BASE_ADDR: usize = 0x30470000;
 /// `AON_TIMER_AON_BASE_ADDR + AON_TIMER_AON_SIZE_BYTES`.
 pub const AON_TIMER_AON_SIZE_BYTES: usize = 0x40;
 
-/// Peripheral base address for ctn device on mio_soc_proxy in top mio.
-///
-/// This should be used with #mmio_region_from_addr to access the memory-mapped
-/// registers associated with the peripheral (usually via a DIF).
-pub const MIO_SOC_PROXY_CTN_BASE_ADDR: usize = 0x40000000;
-
-/// Peripheral size for ctn device on mio_soc_proxy in top mio.
-///
-/// This is the size (in bytes) of the peripheral's reserved memory area. All
-/// memory-mapped registers associated with this peripheral should have an
-/// address between #MIO_SOC_PROXY_CTN_BASE_ADDR and
-/// `MIO_SOC_PROXY_CTN_BASE_ADDR + MIO_SOC_PROXY_CTN_SIZE_BYTES`.
-pub const MIO_SOC_PROXY_CTN_SIZE_BYTES: usize = 0x80000000;
-
 /// Peripheral base address for regs device on sram_ctrl_ret_aon in top mio.
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
@@ -74,20 +60,6 @@ pub const SRAM_CTRL_RET_AON_REGS_BASE_ADDR: usize = 0x30500000;
 /// address between #SRAM_CTRL_RET_AON_REGS_BASE_ADDR and
 /// `SRAM_CTRL_RET_AON_REGS_BASE_ADDR + SRAM_CTRL_RET_AON_REGS_SIZE_BYTES`.
 pub const SRAM_CTRL_RET_AON_REGS_SIZE_BYTES: usize = 0x40;
-
-/// Peripheral base address for ram device on sram_ctrl_ret_aon in top mio.
-///
-/// This should be used with #mmio_region_from_addr to access the memory-mapped
-/// registers associated with the peripheral (usually via a DIF).
-pub const SRAM_CTRL_RET_AON_RAM_BASE_ADDR: usize = 0x30600000;
-
-/// Peripheral size for ram device on sram_ctrl_ret_aon in top mio.
-///
-/// This is the size (in bytes) of the peripheral's reserved memory area. All
-/// memory-mapped registers associated with this peripheral should have an
-/// address between #SRAM_CTRL_RET_AON_RAM_BASE_ADDR and
-/// `SRAM_CTRL_RET_AON_RAM_BASE_ADDR + SRAM_CTRL_RET_AON_RAM_SIZE_BYTES`.
-pub const SRAM_CTRL_RET_AON_RAM_SIZE_BYTES: usize = 0x1000;
 
 /// Peripheral base address for regs device on rv_dm in top mio.
 ///
@@ -145,20 +117,6 @@ pub const SRAM_CTRL_MAIN_REGS_BASE_ADDR: usize = 0x211C0000;
 /// `SRAM_CTRL_MAIN_REGS_BASE_ADDR + SRAM_CTRL_MAIN_REGS_SIZE_BYTES`.
 pub const SRAM_CTRL_MAIN_REGS_SIZE_BYTES: usize = 0x40;
 
-/// Peripheral base address for ram device on sram_ctrl_main in top mio.
-///
-/// This should be used with #mmio_region_from_addr to access the memory-mapped
-/// registers associated with the peripheral (usually via a DIF).
-pub const SRAM_CTRL_MAIN_RAM_BASE_ADDR: usize = 0x10000000;
-
-/// Peripheral size for ram device on sram_ctrl_main in top mio.
-///
-/// This is the size (in bytes) of the peripheral's reserved memory area. All
-/// memory-mapped registers associated with this peripheral should have an
-/// address between #SRAM_CTRL_MAIN_RAM_BASE_ADDR and
-/// `SRAM_CTRL_MAIN_RAM_BASE_ADDR + SRAM_CTRL_MAIN_RAM_SIZE_BYTES`.
-pub const SRAM_CTRL_MAIN_RAM_SIZE_BYTES: usize = 0x10000;
-
 /// Peripheral base address for regs device on sram_ctrl_mbox in top mio.
 ///
 /// This should be used with #mmio_region_from_addr to access the memory-mapped
@@ -172,20 +130,6 @@ pub const SRAM_CTRL_MBOX_REGS_BASE_ADDR: usize = 0x211D0000;
 /// address between #SRAM_CTRL_MBOX_REGS_BASE_ADDR and
 /// `SRAM_CTRL_MBOX_REGS_BASE_ADDR + SRAM_CTRL_MBOX_REGS_SIZE_BYTES`.
 pub const SRAM_CTRL_MBOX_REGS_SIZE_BYTES: usize = 0x40;
-
-/// Peripheral base address for ram device on sram_ctrl_mbox in top mio.
-///
-/// This should be used with #mmio_region_from_addr to access the memory-mapped
-/// registers associated with the peripheral (usually via a DIF).
-pub const SRAM_CTRL_MBOX_RAM_BASE_ADDR: usize = 0x11000000;
-
-/// Peripheral size for ram device on sram_ctrl_mbox in top mio.
-///
-/// This is the size (in bytes) of the peripheral's reserved memory area. All
-/// memory-mapped registers associated with this peripheral should have an
-/// address between #SRAM_CTRL_MBOX_RAM_BASE_ADDR and
-/// `SRAM_CTRL_MBOX_RAM_BASE_ADDR + SRAM_CTRL_MBOX_RAM_SIZE_BYTES`.
-pub const SRAM_CTRL_MBOX_RAM_SIZE_BYTES: usize = 0x1000;
 
 /// Peripheral base address for dma in top mio.
 ///
@@ -314,28 +258,28 @@ pub const RV_CORE_IBEX_MIO_CFG_BASE_ADDR: usize = 0x211F0000;
 pub const RV_CORE_IBEX_MIO_CFG_SIZE_BYTES: usize = 0x800;
 
 /// Memory base address for ctn in top mio.
-pub const CTN_BASE_ADDR: usize = 0x40000000;
+pub const MIO_SOC_PROXY_CTN_BASE_ADDR: usize = 0x40000000;
 
 /// Memory size for ctn in top mio.
-pub const CTN_SIZE_BYTES: usize = 0x80000000;
+pub const MIO_SOC_PROXY_CTN_SIZE_BYTES: usize = 0x80000000;
 
 /// Memory base address for ram_ret_aon in top mio.
-pub const RAM_RET_AON_BASE_ADDR: usize = 0x30600000;
+pub const SRAM_CTRL_RET_AON_RAM_BASE_ADDR: usize = 0x30600000;
 
 /// Memory size for ram_ret_aon in top mio.
-pub const RAM_RET_AON_SIZE_BYTES: usize = 0x1000;
+pub const SRAM_CTRL_RET_AON_RAM_SIZE_BYTES: usize = 0x1000;
 
 /// Memory base address for ram_main in top mio.
-pub const RAM_MAIN_BASE_ADDR: usize = 0x10000000;
+pub const SRAM_CTRL_MAIN_RAM_BASE_ADDR: usize = 0x10000000;
 
 /// Memory size for ram_main in top mio.
-pub const RAM_MAIN_SIZE_BYTES: usize = 0x10000;
+pub const SRAM_CTRL_MAIN_RAM_SIZE_BYTES: usize = 0x10000;
 
 /// Memory base address for ram_mbox in top mio.
-pub const RAM_MBOX_BASE_ADDR: usize = 0x11000000;
+pub const SRAM_CTRL_MBOX_RAM_BASE_ADDR: usize = 0x11000000;
 
 /// Memory size for ram_mbox in top mio.
-pub const RAM_MBOX_SIZE_BYTES: usize = 0x1000;
+pub const SRAM_CTRL_MBOX_RAM_SIZE_BYTES: usize = 0x1000;
 
 /// PLIC Interrupt Source Peripheral.
 ///

@@ -131,7 +131,7 @@
       name:    "rst_req_external"
       act:     "req"
     }
-    
+
     { struct:  "logic"
       type:    "uni"
       name:    "i2c_lsio_trigger"
@@ -201,9 +201,7 @@
 
   regwidth: "32"
 
-  registers: {
-    ctn: [
-      // no CSRs defined here
-    ]
+  memory: {
+    ctn: {}
   }
 }

@@ -163,9 +163,8 @@
 
   regwidth: "32"
 
-  registers: {
-    ctn: [
-      // no CSRs defined here
-    ]
+  memory: {
+    ctn: {
+    }
   }
 }

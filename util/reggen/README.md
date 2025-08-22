@@ -96,7 +96,6 @@ name | required | string | name of the component
 cip_id | required | int | unique comportable IP identifier
 clocking | required | list | clocking for the device
 bus_interfaces | required | list | bus interfaces for the device
-registers | required | list | list of register definition groups and offset control groups
 human_name | optional | string | human-readable name of the component
 one_line_desc | optional | string | one-line description of the component
 one_paragraph_desc | optional | string | one-paragraph description of the component
@@ -131,6 +130,8 @@ SPDX-License-Identifier | optional | string | License identifier (if using pure 
 wakeup_list | optional | name list+ | list of peripheral wakeups
 countermeasures | optional | name list | list of countermeasures in this block
 features | optional | name list | list of functional features in this block
+memory | optional | list | list of memory definitions
+registers | optional | list | list of register definition groups and offset control groups
 
 The basic structure of a register definition file is thus:
 

@@ -118,23 +118,6 @@
  */
 #define TOP_PWC_AON_TIMER_AON_SIZE_BYTES 0x40
 /**
- * Peripheral base address for ctn device on pwc_soc_proxy in top pwc.
- *
- * This should be used with #mmio_region_from_addr to access the memory-mapped
- * registers associated with the peripheral (usually via a DIF).
- */
-#define TOP_PWC_PWC_SOC_PROXY_CTN_BASE_ADDR 0x40000000
-
-/**
- * Peripheral size for ctn device on pwc_soc_proxy in top pwc.
- *
- * This is the size (in bytes) of the peripheral's reserved memory area. All
- * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_PWC_PWC_SOC_PROXY_CTN_BASE_ADDR and
- * `TOP_PWC_PWC_SOC_PROXY_CTN_BASE_ADDR + TOP_PWC_PWC_SOC_PROXY_CTN_SIZE_BYTES`.
- */
-#define TOP_PWC_PWC_SOC_PROXY_CTN_SIZE_BYTES 0x80000000
-/**
  * Peripheral base address for regs device on sram_ctrl_ret_aon in top pwc.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
@@ -151,23 +134,6 @@
  * `TOP_PWC_SRAM_CTRL_RET_AON_REGS_BASE_ADDR + TOP_PWC_SRAM_CTRL_RET_AON_REGS_SIZE_BYTES`.
  */
 #define TOP_PWC_SRAM_CTRL_RET_AON_REGS_SIZE_BYTES 0x40
-/**
- * Peripheral base address for ram device on sram_ctrl_ret_aon in top pwc.
- *
- * This should be used with #mmio_region_from_addr to access the memory-mapped
- * registers associated with the peripheral (usually via a DIF).
- */
-#define TOP_PWC_SRAM_CTRL_RET_AON_RAM_BASE_ADDR 0x30600000
-
-/**
- * Peripheral size for ram device on sram_ctrl_ret_aon in top pwc.
- *
- * This is the size (in bytes) of the peripheral's reserved memory area. All
- * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_PWC_SRAM_CTRL_RET_AON_RAM_BASE_ADDR and
- * `TOP_PWC_SRAM_CTRL_RET_AON_RAM_BASE_ADDR + TOP_PWC_SRAM_CTRL_RET_AON_RAM_SIZE_BYTES`.
- */
-#define TOP_PWC_SRAM_CTRL_RET_AON_RAM_SIZE_BYTES 0x1000
 /**
  * Peripheral base address for regs device on rv_dm in top pwc.
  *
@@ -237,23 +203,6 @@
  */
 #define TOP_PWC_SRAM_CTRL_MAIN_REGS_SIZE_BYTES 0x40
 /**
- * Peripheral base address for ram device on sram_ctrl_main in top pwc.
- *
- * This should be used with #mmio_region_from_addr to access the memory-mapped
- * registers associated with the peripheral (usually via a DIF).
- */
-#define TOP_PWC_SRAM_CTRL_MAIN_RAM_BASE_ADDR 0x10000000
-
-/**
- * Peripheral size for ram device on sram_ctrl_main in top pwc.
- *
- * This is the size (in bytes) of the peripheral's reserved memory area. All
- * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_PWC_SRAM_CTRL_MAIN_RAM_BASE_ADDR and
- * `TOP_PWC_SRAM_CTRL_MAIN_RAM_BASE_ADDR + TOP_PWC_SRAM_CTRL_MAIN_RAM_SIZE_BYTES`.
- */
-#define TOP_PWC_SRAM_CTRL_MAIN_RAM_SIZE_BYTES 0x10000
-/**
  * Peripheral base address for regs device on sram_ctrl_mbox in top pwc.
  *
  * This should be used with #mmio_region_from_addr to access the memory-mapped
@@ -270,23 +219,6 @@
  * `TOP_PWC_SRAM_CTRL_MBOX_REGS_BASE_ADDR + TOP_PWC_SRAM_CTRL_MBOX_REGS_SIZE_BYTES`.
  */
 #define TOP_PWC_SRAM_CTRL_MBOX_REGS_SIZE_BYTES 0x40
-/**
- * Peripheral base address for ram device on sram_ctrl_mbox in top pwc.
- *
- * This should be used with #mmio_region_from_addr to access the memory-mapped
- * registers associated with the peripheral (usually via a DIF).
- */
-#define TOP_PWC_SRAM_CTRL_MBOX_RAM_BASE_ADDR 0x11000000
-
-/**
- * Peripheral size for ram device on sram_ctrl_mbox in top pwc.
- *
- * This is the size (in bytes) of the peripheral's reserved memory area. All
- * memory-mapped registers associated with this peripheral should have an
- * address between #TOP_PWC_SRAM_CTRL_MBOX_RAM_BASE_ADDR and
- * `TOP_PWC_SRAM_CTRL_MBOX_RAM_BASE_ADDR + TOP_PWC_SRAM_CTRL_MBOX_RAM_SIZE_BYTES`.
- */
-#define TOP_PWC_SRAM_CTRL_MBOX_RAM_SIZE_BYTES 0x1000
 /**
  * Peripheral base address for dma in top pwc.
  *

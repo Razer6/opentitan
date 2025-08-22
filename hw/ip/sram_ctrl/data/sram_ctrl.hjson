@@ -568,9 +568,9 @@
         ]
       },
     ],
-
-    ram: [
-      // no CSRs defined here.
-    ]
+  }
+  memory: {
+    ram: {
+    }
   }
 }
