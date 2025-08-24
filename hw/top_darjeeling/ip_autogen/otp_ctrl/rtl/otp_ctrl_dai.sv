@@ -43,6 +43,8 @@ module otp_ctrl_dai
   // Access/lock status from partitions
   // SEC_CM: ACCESS.CTRL.MUBI
   input  part_access_t [NumPart-1:0]     part_access_i,
+  // Macro Mode for Rivos TSMC OTP Macro
+  input  logic [1:0]                     otp_macro_mode_i,
   // CSR interface
   input        [OtpByteAddrWidth-1:0]    dai_addr_i,
   input dai_cmd_e                        dai_cmd_i,
@@ -916,6 +918,8 @@ module otp_ctrl_dai
     otp_size_o = OtpSizeWidth'(unsigned'(32 / OtpWidth - 1));
     addr_base = {dai_addr_i[OtpByteAddrWidth-1:2], 2'h0};
 
+    // Rivos: Only do OT addr_base/size selection in normal operation mode
+    if (otp_macro_mode_i == 2'b00) begin 
     // 64bit transaction for scrambled partitions.
     if (PartInfo[part_idx].secret) begin
       otp_size_o = OtpSizeWidth'(unsigned'(ScrmblBlockWidth / OtpWidth - 1));
@@ -936,6 +940,7 @@ module otp_ctrl_dai
         ({dai_addr_i[OtpByteAddrWidth-1:3], 2'b0} == digest_addr_lut[part_idx])) begin
       otp_size_o = OtpSizeWidth'(unsigned'(ScrmblBlockWidth / OtpWidth - 1));
       addr_base = {dai_addr_i[OtpByteAddrWidth-1:3], 3'h0};
+    end
     end
   end
 

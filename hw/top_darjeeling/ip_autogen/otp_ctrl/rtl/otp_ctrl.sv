@@ -979,6 +979,7 @@ end
     .error_o          ( part_error[DaiIdx]                    ),
     .fsm_err_o        ( part_fsm_err[DaiIdx]                  ),
     .part_access_i    ( part_access_dai                       ),
+    .otp_macro_mode_i ( otp_macro_i.macro_mode                ),
     .dai_addr_i       ( dai_addr                              ),
     .dai_cmd_i        ( dai_cmd                               ),
     .dai_req_i        ( dai_req                               ),

@@ -92,6 +92,8 @@ package otp_ctrl_macro_pkg;
     logic fatal_lc_fsm_err;
     logic fatal_alert;
     logic recov_alert;
+    // Rivos: Provide current operation mode of the OTP macro to the OTP Ctrl
+    logic [1:0] macro_mode;
   } otp_ctrl_macro_rsp_t;
 
 endpackage : otp_ctrl_macro_pkg

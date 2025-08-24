@@ -203,6 +203,9 @@ module otp_macro
   // logic unused_reg_sig;
   // assign unused_reg_sig = ^reg2hw;
 
+  // Rivos: Provide current macro mode OTP ctrl for DAI operations
+  assign otp_o.macro_mode = reg2hw.macro_control.macro_mode.q;
+
   ///////////////////
   // Control logic //
   ///////////////////
