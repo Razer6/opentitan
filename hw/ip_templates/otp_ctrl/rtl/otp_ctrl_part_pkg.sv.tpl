@@ -18,8 +18,8 @@ package otp_ctrl_part_pkg;
   // Scrambling Constants and Types //
   ////////////////////////////////////
 
-  parameter int NumScrmblKeys = ${len(otp_mmap["scrambling"]["keys"])};
-  parameter int NumDigestSets = ${len(otp_mmap["scrambling"]["digests"])};
+  parameter int NumScrmblKeys = ${otp_mmap["scrambling"]["num_keys"]};
+  parameter int NumDigestSets = ${otp_mmap["scrambling"]["num_digests"]};
 
   parameter int ScrmblKeySelWidth = vbits(NumScrmblKeys);
   parameter int DigestSetSelWidth = vbits(NumDigestSets);
@@ -47,29 +47,6 @@ package otp_ctrl_part_pkg;
     ${dig["name"]}${"" if loop.last else ","}
 % endfor
   } digest_sel_e;
-
-  // SEC_CM: SECRET.MEM.SCRAMBLE
-  parameter key_array_t RndCnstKey = {
-% for key in otp_mmap["scrambling"]["keys"][::-1]:
-    ${"{0:}'h{1:0X}".format(otp_mmap["scrambling"]["key_size"] * 8, key["value"])}${"" if loop.last else ","}
-% endfor
-  };
-
-  // SEC_CM: PART.MEM.DIGEST
-  // Note: digest set 0 is used for computing the partition digests. Constants at
-  // higher indices are used to compute the scrambling keys.
-  parameter digest_const_array_t RndCnstDigestConst = {
-% for dig in otp_mmap["scrambling"]["digests"][::-1]:
-    ${"{0:}'h{1:0X}".format(otp_mmap["scrambling"]["cnst_size"] * 8, dig["cnst_value"])}${"" if loop.last else ","}
-% endfor
-  };
-
-  parameter digest_iv_array_t RndCnstDigestIV = {
-% for dig in otp_mmap["scrambling"]["digests"][::-1]:
-    ${"{0:}'h{1:0X}".format(otp_mmap["scrambling"]["iv_size"] * 8, dig["iv_value"])}${"" if loop.last else ","}
-% endfor
-  };
-
 
   /////////////////////////////////////
   // Typedefs for Partition Metadata //
@@ -191,26 +168,6 @@ package otp_ctrl_part_pkg;
 % endfor
   } otp_broadcast_t;
 
-<% offset =  int(otp_mmap["partitions"][-1]["offset"]) + int(otp_mmap["partitions"][-1]["size"]) %>
-  // OTP invalid partition default for buffered partitions.
-  parameter logic [${offset * 8 - 1}:0] PartInvDefault = ${offset * 8}'({
-  % for k, part in enumerate(otp_mmap["partitions"][::-1]):
-    // ${part["name"]} default
-    ${int(part["size"])*8}'({
-    % for item in part["items"][::-1]:
-      // ${item["name"]}
-      % if offset > item["offset"] + item["size"]:
-      ${"{}'h{:0X}".format((offset - item["size"] - item["offset"]) * 8, 0)}, // unallocated ${offset - item["offset"] - item["size"]} bytes
-<% offset = item["offset"] + item["size"] %>\
-      % endif
-<%
-sep = ("," if not loop.last else ("\n    })," if k < len(otp_mmap["partitions"])-1 else "\n    })});"))
-%>\
-      ${"{}'h{:0X}".format(item["size"] * 8, item["inv_default"])}${sep}
-<% offset -= item["size"] %>\
-    % endfor
-  % endfor
-
   ///////////////////////////////////////////////
   // Parameterized Assignment Helper Functions //
   ///////////////////////////////////////////////
@@ -254,9 +211,10 @@ sep = ("," if not loop.last else ("\n    })," if k < len(otp_mmap["partitions"])
 
   // Create the broadcast data from specific partitions excluding digests since they
   // are of no use for consumers of this data data.
+<% offset = int(otp_mmap["partitions"][-1]["offset"]) + int(otp_mmap["partitions"][-1]["size"]) %>\
   function automatic otp_broadcast_t named_broadcast_assign(
       logic [NumPart-1:0] part_init_done,
-      logic [$bits(PartInvDefault)/8-1:0][7:0] part_buf_data);
+      logic [${offset-1}:0][7:0] part_buf_data);
     otp_broadcast_t otp_broadcast;
     logic valid, unused;
     unused = 1'b0;
@@ -295,7 +253,8 @@ elif part["hw_digest"] or part["sw_digest"] or part["zeroizable"]:
 
   function automatic otp_keymgr_key_t named_keymgr_key_assign(
       logic [NumPart-1:0][ScrmblBlockWidth-1:0] part_digest,
-      logic [$bits(PartInvDefault)/8-1:0][7:0] part_buf_data,
+      logic [${offset-1}:0][7:0] part_buf_data,
+      logic [${offset*8-1}:0] part_inv_default,
       lc_ctrl_pkg::lc_tx_t lc_seed_hw_rd_en);
     otp_keymgr_key_t otp_keymgr_key;
     logic valid, unused;
@@ -322,7 +281,7 @@ elif part["hw_digest"] or part["sw_digest"] or part["zeroizable"]:
           part_buf_data[${item_name_camel}Offset +: ${item_name_camel}Size];
     end else begin
       otp_keymgr_key.${item["name"].lower()} =
-          PartInvDefault[${item_name_camel}Offset*8 +: ${item_name_camel}Size*8];
+          part_inv_default[${item_name_camel}Offset*8 +: ${item_name_camel}Size*8];
     end
       % else:
         % if not item["isdigest"]:
