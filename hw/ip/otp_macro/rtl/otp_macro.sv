@@ -510,44 +510,45 @@ module otp_macro
   // Read-modify-write (OTP can only set bits to 1, but not clear to 0).
   // If the write is a zeroization simply set ECC and data to 1.
   always_comb begin
+    // Initialize to all zeros
     wdata_rmw = '0;
-
-    for (int i = 0; i < (Width+EccWidth); i++) begin
-      if (zer_en) begin
-        // Zeroize fuse if not yet set
-        if (!rdata_q[cnt_q][i]) begin
-          wdata_rmw[i] = 1'b1;
-        end
-      end else if ((!write_ecc_on) && (i >= Width)) begin
-        wdata_rmw[i] = 1'b0;
-      end else if (wdata_ecc[i]) begin
-        // only consider blowing fuse if incoming data has bit set
-        // if incoming write has bit set and the fuse is already set then don't write again
-        // only do rmw check in array mode
-        if (rdata_q[cnt_q][i] && (reg2hw.macro_control.macro_mode.q == 2'b00)) begin
-          wdata_rmw[i] = 1'b0;
-        end else begin
-          // only write fuse if incoming write has the bit set and the fuse is not already blown
-          wdata_rmw[i] = 1'b1;
-        end
+    
+    if (zer_en) begin
+      // Zeroize: set bits for unset fuses (invert the current state)
+      wdata_rmw = ~rdata_q[cnt_q][Width+EccWidth-1:0];
+    end else begin
+      // Normal write mode
+      if (!write_ecc_on) begin
+        // Only write data bits, not ECC bits
+        wdata_rmw[Width-1:0] = wdata_ecc[Width-1:0];
+      end else begin
+        // Write both data and ECC bits
+        wdata_rmw = wdata_ecc;
+      end
+      
+      // Apply RMW logic: don't write if fuse already blown (in array mode)
+      if (reg2hw.macro_control.macro_mode.q == 2'b00) begin
+        // Array mode: mask out already-blown fuses
+        wdata_rmw &= ~rdata_q[cnt_q][Width+EccWidth-1:0];
       end
     end
   end
 
   // This indicates if the write data is inconsistent (i.e., if the operation attempts to
   // clear an already programmed bit to zero). Disable the writeblank check for zeroization writes.
-  // recoded as below): assign wdata_inconsistent = (rdata_q[cnt_q] & wdata_ecc) != rdata_q[cnt_q];
+  // recoded as below):
+  // Rivos: Only check for inconsitencies in array mode
   always_comb begin
     wdata_inconsistent = '0;
-    // only check data consistency in array mode
-    if(reg2hw.macro_control.macro_mode.q == 2'b00) begin  
-      for (int i = 0; i<(Width+EccWidth); i++) begin
-        if((!write_ecc_on) && (i>=Width)) begin
-          wdata_inconsistent |= 1'b0;
-        end else if((rdata_q[cnt_q][i]) && (!wdata_ecc[i])) begin
-          // assert error when the incoming write data is trying to clear a bit that is already set
-          wdata_inconsistent |= 1'b1;
-        end
+    
+    // Only check data consistency in array mode
+    if (reg2hw.macro_control.macro_mode.q == 2'b00) begin
+      if (!write_ecc_on) begin
+        // ECC disabled: only check data bits for consistency
+        wdata_inconsistent = |(rdata_q[cnt_q][Width-1:0] & ~wdata_ecc[Width-1:0]);
+      end else begin
+        // ECC enabled: check all bits for consistency
+        wdata_inconsistent = |(rdata_q[cnt_q][Width+EccWidth-1:0] & ~wdata_ecc);
       end
     end
   end
