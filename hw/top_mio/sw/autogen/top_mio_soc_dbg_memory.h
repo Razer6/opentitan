@@ -25,7 +25,6 @@
 // Include guard for assembler
 #ifdef __ASSEMBLER__
 
-
 /**
  * Peripheral base address for dbg device on rv_dm in top mio.
  *

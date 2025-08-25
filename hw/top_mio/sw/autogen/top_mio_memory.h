@@ -65,7 +65,6 @@
 #define TOP_MIO_RAM_MBOX_SIZE_BYTES 0x1000
 
 
-
 /**
  * Peripheral base address for rv_timer in top mio.
  *

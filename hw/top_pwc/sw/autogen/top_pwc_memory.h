@@ -65,7 +65,6 @@
 #define TOP_PWC_RAM_MBOX_SIZE_BYTES 0x1000
 
 
-
 /**
  * Peripheral base address for gpio in top pwc.
  *
