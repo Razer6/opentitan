@@ -6,6 +6,10 @@
 
 #include <array>
 
+#include "hw/top/dt/dt_flash_ctrl.h"
+#include "hw/top/dt/dt_lc_ctrl.h"
+#include "hw/top/dt/dt_otp_ctrl.h"
+#include "hw/top/dt/dt_rv_core_ibex.h"
 #include "gtest/gtest.h"
 #include "hw/top/dt/dt_flash_ctrl.h"
 #include "hw/top/dt/dt_lc_ctrl.h"
@@ -246,7 +250,7 @@ static_assert(ARRAYSIZE(kDefaultAlertClassification) <=
               "The default alert classification must be less than or equal to "
               "the number of reserved OTP words");
 
-static_assert(kTopEarlgreyAlertIdLast < ARRAYSIZE(kDefaultAlertClassification),
+static_assert(kDtAlertCount <= ARRAYSIZE(kDefaultAlertClassification),
               "The number of alert sources must be smaller than the alert "
               "classification");
 
@@ -521,10 +525,10 @@ TEST_F(ShutdownTest, RedactPolicyManufacturing) {
       LC_CTRL_LC_STATE_STATE_VALUE_TEST_UNLOCKED7,
       LC_CTRL_LC_STATE_STATE_VALUE_RMA,
   };
+  const uint32_t lc_ctrl_base = dt_lc_ctrl_primary_reg_block(kDtLcCtrl);
   for (const auto state : kManufacturingStates) {
-    EXPECT_ABS_READ32(
-        TOP_EARLGREY_LC_CTRL_REGS_BASE_ADDR + LC_CTRL_LC_STATE_REG_OFFSET,
-        static_cast<uint32_t>(state));
+    EXPECT_ABS_READ32(lc_ctrl_base + LC_CTRL_LC_STATE_REG_OFFSET,
+                      static_cast<uint32_t>(state));
     EXPECT_EQ(shutdown_redact_policy(), kShutdownErrorRedactNone);
   }
 }
@@ -536,13 +540,14 @@ TEST_F(ShutdownTest, RedactPolicyProduction) {
       LC_CTRL_LC_STATE_STATE_VALUE_PROD,
       LC_CTRL_LC_STATE_STATE_VALUE_PROD_END,
   };
+  const uint32_t lc_ctrl_base = dt_lc_ctrl_primary_reg_block(kDtLcCtrl);
+  const uint32_t otp_ctrl_base = dt_otp_ctrl_primary_reg_block(kDtOtpCtrl);
+
   for (const auto state : kProductionStates) {
+    EXPECT_ABS_READ32(lc_ctrl_base + LC_CTRL_LC_STATE_REG_OFFSET,
+                      static_cast<uint32_t>(state));
     EXPECT_ABS_READ32(
-        TOP_EARLGREY_LC_CTRL_REGS_BASE_ADDR + LC_CTRL_LC_STATE_REG_OFFSET,
-        static_cast<uint32_t>(state));
-    EXPECT_ABS_READ32(
-        TOP_EARLGREY_OTP_CTRL_CORE_BASE_ADDR +
-            OTP_CTRL_SW_CFG_WINDOW_REG_OFFSET +
+        otp_ctrl_base + OTP_CTRL_SW_CFG_WINDOW_REG_OFFSET +
             OTP_CTRL_PARAM_OWNER_SW_CFG_ROM_ERROR_REPORTING_OFFSET,
         static_cast<uint32_t>(kShutdownErrorRedactModule));
     EXPECT_EQ(shutdown_redact_policy(), kShutdownErrorRedactModule);
@@ -552,8 +557,8 @@ TEST_F(ShutdownTest, RedactPolicyProduction) {
 TEST_F(ShutdownTest, RedactPolicyInvalid) {
   // Invalid states should result in the highest redaction level regardless of
   // the redaction level set by OTP.
-  EXPECT_ABS_READ32(
-      TOP_EARLGREY_LC_CTRL_REGS_BASE_ADDR + LC_CTRL_LC_STATE_REG_OFFSET, 0);
+  const uint32_t lc_ctrl_base = dt_lc_ctrl_primary_reg_block(kDtLcCtrl);
+  EXPECT_ABS_READ32(lc_ctrl_base + LC_CTRL_LC_STATE_REG_OFFSET, 0);
   EXPECT_EQ(shutdown_redact_policy(), kShutdownErrorRedactAll);
 }
 
@@ -594,8 +599,9 @@ TEST_F(ShutdownTest, ShutdownFinalize) {
 }
 
 TEST_F(ShutdownTest, FlashKill) {
-  EXPECT_ABS_WRITE32(
-      TOP_EARLGREY_FLASH_CTRL_CORE_BASE_ADDR + FLASH_CTRL_DIS_REG_OFFSET, 0);
+  const uint32_t flash_ctrl_base =
+      dt_flash_ctrl_reg_block(kDtFlashCtrl, kDtFlashCtrlRegBlockCore);
+  EXPECT_ABS_WRITE32(flash_ctrl_base + FLASH_CTRL_DIS_REG_OFFSET, 0);
   unmocked_shutdown_flash_kill();
 }
 
@@ -611,9 +617,9 @@ TEST_F(ShutdownTest, ShutdownIfErrorUnknown) {
 }
 
 TEST_F(ShutdownTest, SoftwareEscalate) {
-  EXPECT_ABS_WRITE32(TOP_EARLGREY_RV_CORE_IBEX_CFG_BASE_ADDR +
-                         RV_CORE_IBEX_SW_FATAL_ERR_REG_OFFSET,
-                     0);
+  const uint32_t ibex_core_base =
+      dt_rv_core_ibex_primary_reg_block(kDtRvCoreIbex);
+  EXPECT_ABS_WRITE32(ibex_core_base + RV_CORE_IBEX_SW_FATAL_ERR_REG_OFFSET, 0);
   unmocked_shutdown_software_escalate();
 }
 }  // namespace
