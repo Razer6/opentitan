@@ -1661,7 +1661,7 @@
         "bzlTransitiveDigest": "o/whtsO23lJVry1VyWqgpH+wKL0qvCL0/hUtHawp+1A=",
         "usagesDigest": "tdFxsSLiRUnMAr6sM+iVki4hl8WLIChPzoBKi0CpPXU=",
         "recordedFileInputs": {
-          "@@//python-requirements.txt": "ee106bc9bf83cdb982a68897a1f09b85a9ed67f72c9ca258de08198a5aaf1aaf",
+          "@@//python-requirements.txt": "8599e9286a797222d2d1ccce10d58d869625096383b8eb27efc32c4df048adaf",
           "@@lowrisc_misc_linters+//requirements.txt": "c6970973760040a085c07efdfd08dcadb7e052a18efa51f88a3eb19ab9f787c7",
           "@@protobuf+//python/requirements.txt": "983be60d3cec4b319dcab6d48aeb3f5b2f7c3350f26b3a9e97486c37967c73c5",
           "@@rules_fuzzing+//fuzzing/requirements.txt": "ab04664be026b632a0d2a2446c4f65982b7654f5b6851d2f9d399a19b7242a5b",
@@ -1825,7 +1825,7 @@
               "dep_template": "@ot_python_deps//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_10_host//:python",
               "repo": "ot_python_deps_310",
-              "requirement": "edalize @ https://github.com/lowRISC/edalize/archive/refs/tags/v0.4.0.zip --hash=sha256:da816ef1040d8063d4aa7377ef1fea33f0bffeca1f79a68b7a8930ef9d90c7c8"
+              "requirement": "edalize==0.6.1 --hash=sha256:2773339a404310b3b076ac8bcc68cadec8c937eba5a76c0a9b941064cd5ff9d7 --hash=sha256:6617b6b817d0445a7eaa003f2e7906f910b4ee659f9330ec6faeee633238536b"
             }
           },
           "ot_python_deps_310_enlighten": {
@@ -1870,7 +1870,7 @@
               "dep_template": "@ot_python_deps//{name}:{target}",
               "python_interpreter_target": "@@rules_python++python+python_3_10_host//:python",
               "repo": "ot_python_deps_310",
-              "requirement": "fusesoc @ https://github.com/lowRISC/fusesoc/archive/refs/tags/ot-0.5.dev0.zip --hash=sha256:6d1d9b202748d160bc6da70ea8cf7a700ca80e1e7e4a78cbc1ec039bde595c65"
+              "requirement": "fusesoc==2.4.3 --hash=sha256:9ab4a82a5b7d4decbeb8f76049673a1b0806732ab8f807fee285bbc0452b3dc3 --hash=sha256:fc25b06cb52f516cd00c6d04c9f638205e46f3e35e840fc3f8ec00bb3a6405d5"
             }
           },
           "ot_python_deps_310_gitdb": {
