@@ -68,7 +68,9 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   // Each 64 bit scrambling primitive requires a 64bit IV
   localparam int NonceWidth          = 64 * NumParScr,
   // Compute RAM tiling
-  localparam int NumRamInst          = prim_util_pkg::ceil_div(Depth, InstDepth)
+  localparam int NumRamInst          = prim_util_pkg::ceil_div(Depth, InstDepth),
+  // Rivos: KeystreamDepth is a WA for a LEC parameter evaluation inference issue [RVSDS-6035]
+  localparam int KeystreamDepth      = EnableAddrScrPipeline + EnableOutputPipeline
 ) (
   input                                    clk_i,
   input                                    rst_ni,
@@ -320,7 +322,7 @@ module prim_ram_1p_scr import prim_ram_1p_pkg::*; #(
   logic [NumParScr*64-1:0] keystream_pipelined;
   prim_flop_en #(
     .Width (NumParScr*64),
-    .Depth (EnableAddrScrPipeline + EnableOutputPipeline),
+    .Depth (KeystreamDepth),
     .ResetValue ('0),
     .EnSecBuf (1'b0)
   ) u_flop_keystream (
