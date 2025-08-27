@@ -211,7 +211,7 @@ module otp_macro
   ///////////////////
 
   // Encoding generated with:
-  // $ ./util/design/sparse-fsm-encode.py -d 5 -m 13 -n 11 \
+  // $ ./util/design/sparse-fsm-encode.py -d 5 -m 14 -n 12 \
   //     -s 761853025 --language=sv
   //
   // Hamming distance histogram:
@@ -221,34 +221,36 @@ module otp_macro
   //  2: --
   //  3: --
   //  4: --
-  //  5: |||||||||||||||||||| (39.74%)
-  //  6: ||||||||||||||||||| (38.46%)
-  //  7: |||||| (12.82%)
-  //  8: ||| (7.69%)
-  //  9:  (1.28%)
+  //  5: ||||||||||||| (21.98%)
+  //  6: |||||||||||||||||||| (31.87%)
+  //  7: |||||||||||||||||| (29.67%)
+  //  8: |||||||| (14.29%)
+  //  9: | (2.20%)
   // 10: --
   // 11: --
+  // 12: --
   //
   // Minimum Hamming distance: 5
   // Maximum Hamming distance: 9
   // Minimum Hamming weight: 3
   // Maximum Hamming weight: 9
   //
-  localparam int StateWidth = 11;
+  localparam int StateWidth = 12;
   typedef enum logic [StateWidth-1:0] {
-    ResetSt       = 11'b11100010111,
-    InitSt        = 11'b10111101100,
-    IdleSt        = 11'b01001001011,
-    ReadSt        = 11'b00011110101,
-    ReadWaitSt    = 11'b01110000100,
-    WriteCheckSt  = 11'b01010111110,
-    WriteWaitSt   = 11'b11000101101,
-    IssueWriteSt  = 11'b00110011011,
-    WriteSt       = 11'b11001110000,
-    ZerWriteSt    = 11'b10001011110,
-    ZerReadSt     = 11'b10010000001,
-    ZerReadWaitSt = 11'b00100100010,
-    ErrorSt       = 11'b11111100011
+    ResetSt         = 12'b111100111010,
+    InitSt          = 12'b001111110001,
+    IdleSt          = 12'b101001101100,
+    ReadSt          = 12'b010101000100,
+    ReadWaitSt      = 12'b001010001111,
+    WriteCheckSt    = 12'b111111001101,
+    WriteWaitSt     = 12'b000000011001,
+    IssueWriteSt    = 12'b100001100011,
+    WriteSt         = 12'b110010010100,
+    ZerIssueWriteSt = 12'b100111010010,
+    ZerWriteSt      = 12'b011100100111,
+    ZerReadSt       = 12'b000110101000,
+    ZerReadWaitSt   = 12'b010011111111,
+    ErrorSt         = 12'b111000000001
   } state_e;
 
   state_e state_d, state_q;
@@ -423,7 +425,7 @@ module otp_macro
 
         state_d = WriteSt;
       end
-      // Wait in this state for write to complete
+      // Rivos: Wait in this state for write to complete
       WriteSt: begin
         // need handshake from fuse wrapper that write has completed
         if (rvalid) begin
@@ -438,15 +440,25 @@ module otp_macro
         end
       end
       // Zeroize the word.
-      ZerWriteSt: begin
+      ZerIssueWriteSt: begin
         req = 1'b1;
         wren = 1'b1;
-        cnt_en = 1'b1;
         zer_en = 1'b1;
 
-        if (cnt_q == size_q) begin
-          state_d = ZerReadSt;
-          cnt_clr = 1'b1;
+        state_d = ZerWriteSt;
+      end
+      // Rivos: Wait in this state for the zeroize write to complete
+      ZerWriteSt: begin
+        // need handshake from fuse wrapper that write has completed
+        if (rvalid) begin
+          cnt_en = 1'b1;
+
+          if (cnt_q == size_q) begin
+            state_d = ZerReadSt;
+            cnt_clr = 1'b1;
+          end else begin
+            state_d = ZerIssueWriteSt;
+          end
         end
       end
       // Read back the zeroized word.
