@@ -297,7 +297,6 @@ otp_json(
             state = "RAW",
         ),
     ],
-    seed = "52408960416235844780753299194502148156786072650816676092165912261205302331741",
 )
 
 [
@@ -310,7 +309,6 @@ otp_json(
                 state = "TEST_UNLOCKED{}".format(i),
             ),
         ],
-        seed = "52408960416235844780753299194502148156786072650816676092165912261205302331741",
     )
     for i in range(0, 8)
 ]
@@ -325,7 +323,6 @@ otp_json(
                 state = "TEST_LOCKED{}".format(i),
             ),
         ],
-        seed = "52408960416235844780753299194502148156786072650816676092165912261205302331741",
     )
     for i in range(0, 7)
 ]
@@ -339,7 +336,6 @@ otp_json(
             state = "DEV",
         ),
     ],
-    seed = "85452983286950371191603618368782861611109037138182535346147818831008789508651",
 )
 
 otp_json(
@@ -351,7 +347,6 @@ otp_json(
             state = "PROD",
         ),
     ],
-    seed = "113517944176559405110937879233240229311794601727326023435899657066678782830485",
 )
 
 otp_json(
@@ -363,7 +358,6 @@ otp_json(
             state = "PROD_END",
         ),
     ],
-    seed = "113517944176559405110937879233240229311794601727326023435899657066678782830485",
 )
 
 otp_json(
@@ -375,7 +369,6 @@ otp_json(
             state = "RMA",
         ),
     ],
-    seed = "52408960416235844780753299194502148156786072650816676092165912261205302331741",
 )
 
 # Create an overlay for the alert_handler digest.
@@ -390,6 +383,7 @@ otp_alert_digest(
 otp_image(
     name = "img_raw",
     src = ":otp_json_raw",
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
 )
 
 [
@@ -404,6 +398,7 @@ otp_image(
             ":otp_json_secret0",
             ":otp_json_creator_sw_cfg",
         ],
+        top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
     )
     for i in range(0, 8)
 ]
@@ -416,6 +411,7 @@ otp_image(
             ":otp_json_secret0",
             ":otp_json_creator_sw_cfg",
         ],
+        top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
     )
     for i in range(0, 7)
 ]
@@ -424,24 +420,28 @@ otp_image(
     name = "img_dev",
     src = ":otp_json_dev",
     overlays = STD_OTP_OVERLAYS,
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
 )
 
 otp_image(
     name = "img_prod",
     src = ":otp_json_prod",
     overlays = STD_OTP_OVERLAYS,
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
 )
 
 otp_image(
     name = "img_prod_end",
     src = ":otp_json_prod_end",
     overlays = STD_OTP_OVERLAYS,
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
 )
 
 otp_image(
     name = "img_rma",
     src = ":otp_json_rma",
     overlays = STD_OTP_OVERLAYS,
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
 )
 
 # Create an execution-disabling overlay
@@ -459,6 +459,7 @@ otp_image(
     name = "img_exec_disabled",
     src = ":otp_json_rma",
     overlays = STD_OTP_OVERLAYS + [":otp_json_exec_disabled"],
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
 )
 
 # Create a bootstrap-disabling overlay
@@ -476,6 +477,7 @@ otp_image(
     name = "img_bootstrap_disabled",
     src = ":otp_json_rma",
     overlays = STD_OTP_OVERLAYS + [":otp_json_bootstrap_disabled"],
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
 )
 
 filegroup(
@@ -510,7 +512,7 @@ pkg_files(
 )
 
 # Partition used to set a fixed seed value in `otp_image_consts` targets.
+# FIXME: This needs to be removed since seeds are provided through HJSON seed config files now.
 otp_json(
     name = "otp_json_baseline",
-    seed = "85452983286950371191603618368782861611109037138182535346147818831008789508651",
 )
