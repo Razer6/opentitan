@@ -1236,6 +1236,7 @@
             key_sel:    "NoKey",
             integrity:  true,
             bkout_type: true,
+            zeroizable: true,
             items: [
                 {
                     name:        "SOC_DBG_STATE",

@@ -1809,7 +1809,7 @@
     { name: "RomPatchSize",
       desc: "Size of the ROM_PATCH partition",
       type: "int",
-      default: "11312",
+      default: "11304",
       local: "true"
     },
     { name: "RomPatchDataOffset",
@@ -1827,7 +1827,7 @@
     { name: "RomPatchDigestOffset",
       desc: "Offset of ROM_PATCH_DIGEST",
       type: "int",
-      default: "15888",
+      default: "15880",
       local: "true"
     },
     { name: "RomPatchDigestSize",
@@ -1839,7 +1839,7 @@
     { name: "RomPatchZerOffset",
       desc: "Offset of ROM_PATCH_ZER",
       type: "int",
-      default: "15896",
+      default: "15888",
       local: "true"
     },
     { name: "RomPatchZerSize",
@@ -1851,7 +1851,7 @@
     { name: "SocFusesCpOffset",
       desc: "Offset of the SOC_FUSES_CP partition",
       type: "int",
-      default: "15904",
+      default: "15896",
       local: "true"
     },
     { name: "SocFusesCpSize",
@@ -1863,7 +1863,7 @@
     { name: "SocFusesCp1DataOffset",
       desc: "Offset of SOC_FUSES_CP1_DATA",
       type: "int",
-      default: "15904",
+      default: "15896",
       local: "true"
     },
     { name: "SocFusesCp1DataSize",
@@ -1875,7 +1875,7 @@
     { name: "SocFusesCp2DataOffset",
       desc: "Offset of SOC_FUSES_CP2_DATA",
       type: "int",
-      default: "16160",
+      default: "16152",
       local: "true"
     },
     { name: "SocFusesCp2DataSize",
@@ -1887,7 +1887,7 @@
     { name: "SocFusesCpDigestOffset",
       desc: "Offset of SOC_FUSES_CP_DIGEST",
       type: "int",
-      default: "16416",
+      default: "16408",
       local: "true"
     },
     { name: "SocFusesCpDigestSize",
@@ -1899,7 +1899,7 @@
     { name: "SocFusesFtOffset",
       desc: "Offset of the SOC_FUSES_FT partition",
       type: "int",
-      default: "16424",
+      default: "16416",
       local: "true"
     },
     { name: "SocFusesFtSize",
@@ -1911,7 +1911,7 @@
     { name: "SocFusesFt1DataOffset",
       desc: "Offset of SOC_FUSES_FT1_DATA",
       type: "int",
-      default: "16424",
+      default: "16416",
       local: "true"
     },
     { name: "SocFusesFt1DataSize",
@@ -1923,7 +1923,7 @@
     { name: "SocFusesFt2DataOffset",
       desc: "Offset of SOC_FUSES_FT2_DATA",
       type: "int",
-      default: "16936",
+      default: "16928",
       local: "true"
     },
     { name: "SocFusesFt2DataSize",
@@ -1935,7 +1935,7 @@
     { name: "SocFusesFtDigestOffset",
       desc: "Offset of SOC_FUSES_FT_DIGEST",
       type: "int",
-      default: "20008",
+      default: "20000",
       local: "true"
     },
     { name: "SocFusesFtDigestSize",
@@ -1947,7 +1947,7 @@
     { name: "HwCfg0Offset",
       desc: "Offset of the HW_CFG0 partition",
       type: "int",
-      default: "20016",
+      default: "20008",
       local: "true"
     },
     { name: "HwCfg0Size",
@@ -1959,7 +1959,7 @@
     { name: "DeviceIdOffset",
       desc: "Offset of DEVICE_ID",
       type: "int",
-      default: "20016",
+      default: "20008",
       local: "true"
     },
     { name: "DeviceIdSize",
@@ -1971,7 +1971,7 @@
     { name: "HwCfg0DigestOffset",
       desc: "Offset of HW_CFG0_DIGEST",
       type: "int",
-      default: "20048",
+      default: "20040",
       local: "true"
     },
     { name: "HwCfg0DigestSize",
@@ -1983,7 +1983,7 @@
     { name: "HwCfg0ZerOffset",
       desc: "Offset of HW_CFG0_ZER",
       type: "int",
-      default: "20056",
+      default: "20048",
       local: "true"
     },
     { name: "HwCfg0ZerSize",
@@ -1995,7 +1995,7 @@
     { name: "HwCfg1Offset",
       desc: "Offset of the HW_CFG1 partition",
       type: "int",
-      default: "20064",
+      default: "20056",
       local: "true"
     },
     { name: "HwCfg1Size",
@@ -2007,7 +2007,7 @@
     { name: "EnCsrngSwAppReadOffset",
       desc: "Offset of EN_CSRNG_SW_APP_READ",
       type: "int",
-      default: "20064",
+      default: "20056",
       local: "true"
     },
     { name: "EnCsrngSwAppReadSize",
@@ -2019,7 +2019,7 @@
     { name: "EnSramIfetchOffset",
       desc: "Offset of EN_SRAM_IFETCH",
       type: "int",
-      default: "20065",
+      default: "20057",
       local: "true"
     },
     { name: "EnSramIfetchSize",
@@ -2031,7 +2031,7 @@
     { name: "HwCfg1DigestOffset",
       desc: "Offset of HW_CFG1_DIGEST",
       type: "int",
-      default: "20072",
+      default: "20064",
       local: "true"
     },
     { name: "HwCfg1DigestSize",
@@ -2043,7 +2043,7 @@
     { name: "HwCfg1ZerOffset",
       desc: "Offset of HW_CFG1_ZER",
       type: "int",
-      default: "20080",
+      default: "20072",
       local: "true"
     },
     { name: "HwCfg1ZerSize",
@@ -2055,19 +2055,19 @@
     { name: "HwCfg2Offset",
       desc: "Offset of the HW_CFG2 partition",
       type: "int",
-      default: "20088",
+      default: "20080",
       local: "true"
     },
     { name: "HwCfg2Size",
       desc: "Size of the HW_CFG2 partition",
       type: "int",
-      default: "48",
+      default: "56",
       local: "true"
     },
     { name: "SocDbgStateOffset",
       desc: "Offset of SOC_DBG_STATE",
       type: "int",
-      default: "20088",
+      default: "20080",
       local: "true"
     },
     { name: "SocDbgStateSize",
@@ -2079,7 +2079,7 @@
     { name: "ManufStateOffset",
       desc: "Offset of MANUF_STATE",
       type: "int",
-      default: "20092",
+      default: "20084",
       local: "true"
     },
     { name: "ManufStateSize",
@@ -2091,11 +2091,23 @@
     { name: "HwCfg2DigestOffset",
       desc: "Offset of HW_CFG2_DIGEST",
       type: "int",
-      default: "20128",
+      default: "20120",
       local: "true"
     },
     { name: "HwCfg2DigestSize",
       desc: "Size of HW_CFG2_DIGEST",
+      type: "int",
+      default: "8",
+      local: "true"
+    },
+    { name: "HwCfg2ZerOffset",
+      desc: "Offset of HW_CFG2_ZER",
+      type: "int",
+      default: "20128",
+      local: "true"
+    },
+    { name: "HwCfg2ZerSize",
+      desc: "Size of HW_CFG2_ZER",
       type: "int",
       default: "8",
       local: "true"

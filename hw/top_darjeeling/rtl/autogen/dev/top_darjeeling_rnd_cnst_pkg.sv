@@ -102,7 +102,8 @@ package top_darjeeling_rnd_cnst_pkg;
       128'hB5742826D2CE8D8BB874DDD1DBCA5322,
       128'h1FB5110B0618183CBF722F142EF9FACF
     }),
-    384'({
+    448'({
+      64'h0,
       64'h5A7F3E2373A78AA2,
       32'h0, // unallocated space
       256'hE78E601C1704C34A6DFD043E96E1EF76D15C0798EF406091D605165216FD3F85,
@@ -130,10 +131,10 @@ package top_darjeeling_rnd_cnst_pkg;
       2048'h0,
       2048'h0
     }),
-    90496'({
+    90432'({
       64'h0,
       64'hCA832DA13EB53FEA,
-      16832'h0, // unallocated space
+      16768'h0, // unallocated space
       73536'h0
     }),
     8256'({

@@ -323,7 +323,7 @@ package otp_ctrl_part_pkg;
     '{
       variant:          Unbuffered,
       offset:           15'd4592,
-      size:             11312,
+      size:             11304,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
       sw_digest:        1'b1,
@@ -338,7 +338,7 @@ package otp_ctrl_part_pkg;
     // SOC_FUSES_CP
     '{
       variant:          Unbuffered,
-      offset:           15'd15904,
+      offset:           15'd15896,
       size:             520,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -354,7 +354,7 @@ package otp_ctrl_part_pkg;
     // SOC_FUSES_FT
     '{
       variant:          Unbuffered,
-      offset:           15'd16424,
+      offset:           15'd16416,
       size:             3592,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -370,7 +370,7 @@ package otp_ctrl_part_pkg;
     // HW_CFG0
     '{
       variant:          Buffered,
-      offset:           15'd20016,
+      offset:           15'd20008,
       size:             48,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -386,7 +386,7 @@ package otp_ctrl_part_pkg;
     // HW_CFG1
     '{
       variant:          Buffered,
-      offset:           15'd20064,
+      offset:           15'd20056,
       size:             24,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -402,8 +402,8 @@ package otp_ctrl_part_pkg;
     // HW_CFG2
     '{
       variant:          Buffered,
-      offset:           15'd20088,
-      size:             48,
+      offset:           15'd20080,
+      size:             56,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
       sw_digest:        1'b0,
@@ -413,7 +413,7 @@ package otp_ctrl_part_pkg;
       integrity:        1'b1,
       iskeymgr_creator: 1'b0,
       iskeymgr_owner:   1'b0,
-      zeroizable:       1'b0
+      zeroizable:       1'b1
     },
     // SECRET0
     '{
@@ -742,8 +742,8 @@ package otp_ctrl_part_pkg;
     unused ^= ^part_buf_data[HwCfg1Offset + (HwCfg1Size - 16) +: 16];
     // HW_CFG2
     valid &= part_init_done[HwCfg2Idx];
-    otp_broadcast.hw_cfg2_data = otp_hw_cfg2_data_t'(part_buf_data[HwCfg2Offset +: (HwCfg2Size - 8)]);
-    unused ^= ^part_buf_data[HwCfg2Offset + (HwCfg2Size - 8) +: 8];
+    otp_broadcast.hw_cfg2_data = otp_hw_cfg2_data_t'(part_buf_data[HwCfg2Offset +: (HwCfg2Size - 16)]);
+    unused ^= ^part_buf_data[HwCfg2Offset + (HwCfg2Size - 16) +: 16];
     // SECRET0
     unused ^= ^{part_init_done[Secret0Idx],
                 part_buf_data[Secret0Offset +: Secret0Size]};

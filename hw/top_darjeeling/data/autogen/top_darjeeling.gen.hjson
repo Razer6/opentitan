@@ -3509,7 +3509,7 @@
               {
                 name: ROM_PATCH_DIGEST
                 size: 8
-                offset: 15888
+                offset: 15880
                 ismubi: false
                 isdigest: true
                 iszer: false
@@ -3520,7 +3520,7 @@
               {
                 name: ROM_PATCH_ZER
                 size: 8
-                offset: 15896
+                offset: 15888
                 ismubi: false
                 isdigest: false
                 iszer: true
@@ -3532,7 +3532,7 @@
             desc: ROM Patch Code section. May contain multiple signed ROM2 patches.
             iskeymgr_creator: false
             iskeymgr_owner: false
-            size: 11312
+            size: 11304
             offset: 4592
           }
           {
@@ -3558,7 +3558,7 @@
                 iskeymgr_creator: false
                 iskeymgr_owner: false
                 inv_default: 0
-                offset: 15904
+                offset: 15896
               }
               {
                 name: SOC_FUSES_CP2_DATA
@@ -3569,12 +3569,12 @@
                 iskeymgr_creator: false
                 iskeymgr_owner: false
                 inv_default: 0
-                offset: 16160
+                offset: 16152
               }
               {
                 name: SOC_FUSES_CP_DIGEST
                 size: 8
-                offset: 16416
+                offset: 16408
                 ismubi: false
                 isdigest: true
                 iszer: false
@@ -3588,7 +3588,7 @@
             iskeymgr_owner: false
             zeroizable: false
             size: 520
-            offset: 15904
+            offset: 15896
           }
           {
             name: SOC_FUSES_FT
@@ -3613,7 +3613,7 @@
                 iskeymgr_creator: false
                 iskeymgr_owner: false
                 inv_default: 0
-                offset: 16424
+                offset: 16416
               }
               {
                 name: SOC_FUSES_FT2_DATA
@@ -3624,12 +3624,12 @@
                 iskeymgr_creator: false
                 iskeymgr_owner: false
                 inv_default: 0
-                offset: 16936
+                offset: 16928
               }
               {
                 name: SOC_FUSES_FT_DIGEST
                 size: 8
-                offset: 20008
+                offset: 20000
                 ismubi: false
                 isdigest: true
                 iszer: false
@@ -3643,7 +3643,7 @@
             iskeymgr_owner: false
             zeroizable: false
             size: 3592
-            offset: 16424
+            offset: 16416
           }
           {
             name: HW_CFG0
@@ -3674,12 +3674,12 @@
                 ismubi: false
                 iskeymgr_creator: false
                 iskeymgr_owner: false
-                offset: 20016
+                offset: 20008
               }
               {
                 name: HW_CFG0_DIGEST
                 size: 8
-                offset: 20048
+                offset: 20040
                 ismubi: false
                 isdigest: true
                 iszer: false
@@ -3690,7 +3690,7 @@
               {
                 name: HW_CFG0_ZER
                 size: 8
-                offset: 20056
+                offset: 20048
                 ismubi: false
                 isdigest: false
                 iszer: true
@@ -3708,7 +3708,7 @@
             iskeymgr_creator: false
             iskeymgr_owner: false
             size: 48
-            offset: 20016
+            offset: 20008
           }
           {
             name: HW_CFG1
@@ -3740,7 +3740,7 @@
                 iszer: false
                 iskeymgr_creator: false
                 iskeymgr_owner: false
-                offset: 20064
+                offset: 20056
               }
               {
                 name: EN_SRAM_IFETCH
@@ -3757,12 +3757,12 @@
                 iszer: false
                 iskeymgr_creator: false
                 iskeymgr_owner: false
-                offset: 20065
+                offset: 20057
               }
               {
                 name: HW_CFG1_DIGEST
                 size: 8
-                offset: 20072
+                offset: 20064
                 ismubi: false
                 isdigest: true
                 iszer: false
@@ -3773,7 +3773,7 @@
               {
                 name: HW_CFG1_ZER
                 size: 8
-                offset: 20080
+                offset: 20072
                 ismubi: false
                 isdigest: false
                 iszer: true
@@ -3791,7 +3791,7 @@
             iskeymgr_creator: false
             iskeymgr_owner: false
             size: 24
-            offset: 20064
+            offset: 20056
           }
           {
             name: HW_CFG2
@@ -3804,6 +3804,7 @@
             key_sel: NoKey
             integrity: true
             bkout_type: true
+            zeroizable: true
             items:
             [
               {
@@ -3834,7 +3835,7 @@
                 ismubi: false
                 iskeymgr_creator: false
                 iskeymgr_owner: false
-                offset: 20088
+                offset: 20080
               }
               {
                 name: MANUF_STATE
@@ -3846,16 +3847,27 @@
                 ismubi: false
                 iskeymgr_creator: false
                 iskeymgr_owner: false
-                offset: 20092
+                offset: 20084
               }
               {
                 name: HW_CFG2_DIGEST
                 size: 8
-                offset: 20128
+                offset: 20120
                 ismubi: false
                 isdigest: true
                 iszer: false
                 inv_default: <random>
+                iskeymgr_creator: false
+                iskeymgr_owner: false
+              }
+              {
+                name: HW_CFG2_ZER
+                size: 8
+                offset: 20128
+                ismubi: false
+                isdigest: false
+                iszer: true
+                inv_default: 0
                 iskeymgr_creator: false
                 iskeymgr_owner: false
               }
@@ -3868,9 +3880,8 @@
             absorb: false
             iskeymgr_creator: false
             iskeymgr_owner: false
-            zeroizable: false
-            size: 48
-            offset: 20088
+            size: 56
+            offset: 20080
           }
           {
             name: SECRET0

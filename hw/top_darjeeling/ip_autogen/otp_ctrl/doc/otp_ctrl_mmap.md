@@ -121,25 +121,26 @@ It has been generated with ./util/topgen.py -t hw/top_darjeeling/data/top_darjee
 |         |                       |            |              |      64bit       |                      PLAT_OWNER_AUTH_SLOT3_ZER                      |     0xDE0      |     8      |
 |   13    |        EXT_NVM        |    1032    |     yes      |      32bit       |                  EXT_NVM_ANTIREPLAY_FRESHNESS_CNT                   |     0xDE8      |    1024    |
 |         |                       |            |              |      64bit       |                             EXT_NVM_ZER                             |     0x11E8     |     8      |
-|   14    |       ROM_PATCH       |   11312    |     yes      |      32bit       |                           ROM_PATCH_DATA                            |     0x11F0     |    9192    |
-|         |                       |            |              |      64bit       |             [ROM_PATCH_DIGEST](#Reg_rom_patch_digest_0)             |     0x3E10     |     8      |
-|         |                       |            |              |      64bit       |                            ROM_PATCH_ZER                            |     0x3E18     |     8      |
-|   15    |     SOC_FUSES_CP      |    520     |      no      |      32bit       |                         SOC_FUSES_CP1_DATA                          |     0x3E20     |    256     |
-|         |                       |            |              |      32bit       |                         SOC_FUSES_CP2_DATA                          |     0x3F20     |    256     |
-|         |                       |            |              |      64bit       |          [SOC_FUSES_CP_DIGEST](#Reg_soc_fuses_cp_digest_0)          |     0x4020     |     8      |
-|   16    |     SOC_FUSES_FT      |    3592    |      no      |      32bit       |                         SOC_FUSES_FT1_DATA                          |     0x4028     |    512     |
-|         |                       |            |              |      32bit       |                         SOC_FUSES_FT2_DATA                          |     0x4228     |    3072    |
-|         |                       |            |              |      64bit       |          [SOC_FUSES_FT_DIGEST](#Reg_soc_fuses_ft_digest_0)          |     0x4E28     |     8      |
-|   17    |        HW_CFG0        |     48     |     yes      |      32bit       |                              DEVICE_ID                              |     0x4E30     |     32     |
-|         |                       |            |              |      64bit       |               [HW_CFG0_DIGEST](#Reg_hw_cfg0_digest_0)               |     0x4E50     |     8      |
-|         |                       |            |              |      64bit       |                             HW_CFG0_ZER                             |     0x4E58     |     8      |
-|   18    |        HW_CFG1        |     24     |     yes      |      32bit       |                        EN_CSRNG_SW_APP_READ                         |     0x4E60     |     1      |
-|         |                       |            |              |      32bit       |                           EN_SRAM_IFETCH                            |     0x4E61     |     1      |
-|         |                       |            |              |      64bit       |               [HW_CFG1_DIGEST](#Reg_hw_cfg1_digest_0)               |     0x4E68     |     8      |
-|         |                       |            |              |      64bit       |                             HW_CFG1_ZER                             |     0x4E70     |     8      |
-|   19    |        HW_CFG2        |     48     |      no      |      32bit       |                            SOC_DBG_STATE                            |     0x4E78     |     4      |
-|         |                       |            |              |      32bit       |                             MANUF_STATE                             |     0x4E7C     |     32     |
-|         |                       |            |              |      64bit       |               [HW_CFG2_DIGEST](#Reg_hw_cfg2_digest_0)               |     0x4EA0     |     8      |
+|   14    |       ROM_PATCH       |   11304    |     yes      |      32bit       |                           ROM_PATCH_DATA                            |     0x11F0     |    9192    |
+|         |                       |            |              |      64bit       |             [ROM_PATCH_DIGEST](#Reg_rom_patch_digest_0)             |     0x3E08     |     8      |
+|         |                       |            |              |      64bit       |                            ROM_PATCH_ZER                            |     0x3E10     |     8      |
+|   15    |     SOC_FUSES_CP      |    520     |      no      |      32bit       |                         SOC_FUSES_CP1_DATA                          |     0x3E18     |    256     |
+|         |                       |            |              |      32bit       |                         SOC_FUSES_CP2_DATA                          |     0x3F18     |    256     |
+|         |                       |            |              |      64bit       |          [SOC_FUSES_CP_DIGEST](#Reg_soc_fuses_cp_digest_0)          |     0x4018     |     8      |
+|   16    |     SOC_FUSES_FT      |    3592    |      no      |      32bit       |                         SOC_FUSES_FT1_DATA                          |     0x4020     |    512     |
+|         |                       |            |              |      32bit       |                         SOC_FUSES_FT2_DATA                          |     0x4220     |    3072    |
+|         |                       |            |              |      64bit       |          [SOC_FUSES_FT_DIGEST](#Reg_soc_fuses_ft_digest_0)          |     0x4E20     |     8      |
+|   17    |        HW_CFG0        |     48     |     yes      |      32bit       |                              DEVICE_ID                              |     0x4E28     |     32     |
+|         |                       |            |              |      64bit       |               [HW_CFG0_DIGEST](#Reg_hw_cfg0_digest_0)               |     0x4E48     |     8      |
+|         |                       |            |              |      64bit       |                             HW_CFG0_ZER                             |     0x4E50     |     8      |
+|   18    |        HW_CFG1        |     24     |     yes      |      32bit       |                        EN_CSRNG_SW_APP_READ                         |     0x4E58     |     1      |
+|         |                       |            |              |      32bit       |                           EN_SRAM_IFETCH                            |     0x4E59     |     1      |
+|         |                       |            |              |      64bit       |               [HW_CFG1_DIGEST](#Reg_hw_cfg1_digest_0)               |     0x4E60     |     8      |
+|         |                       |            |              |      64bit       |                             HW_CFG1_ZER                             |     0x4E68     |     8      |
+|   19    |        HW_CFG2        |     56     |     yes      |      32bit       |                            SOC_DBG_STATE                            |     0x4E70     |     4      |
+|         |                       |            |              |      32bit       |                             MANUF_STATE                             |     0x4E74     |     32     |
+|         |                       |            |              |      64bit       |               [HW_CFG2_DIGEST](#Reg_hw_cfg2_digest_0)               |     0x4E98     |     8      |
+|         |                       |            |              |      64bit       |                             HW_CFG2_ZER                             |     0x4EA0     |     8      |
 |   20    |        SECRET0        |     48     |     yes      |      64bit       |                          TEST_UNLOCK_TOKEN                          |     0x4EA8     |     16     |
 |         |                       |            |              |      64bit       |                           TEST_EXIT_TOKEN                           |     0x4EB8     |     16     |
 |         |                       |            |              |      64bit       |               [SECRET0_DIGEST](#Reg_secret0_digest_0)               |     0x4EC8     |     8      |

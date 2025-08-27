@@ -120,7 +120,7 @@ package otp_ctrl_env_pkg;
     SocFusesFtOffset + SocFusesFtSize - 8,
     HwCfg0Offset + HwCfg0Size - 16,
     HwCfg1Offset + HwCfg1Size - 16,
-    HwCfg2Offset + HwCfg2Size - 8,
+    HwCfg2Offset + HwCfg2Size - 16,
     Secret0Offset + Secret0Size - 16,
     Secret1Offset + Secret1Size - 16,
     Secret2Offset + Secret2Size - 16,
@@ -175,7 +175,7 @@ package otp_ctrl_env_pkg;
     -1, // This partition has no zeroized field.
     HwCfg0ZerOffset >> 2,
     HwCfg1ZerOffset >> 2,
-    -1, // This partition has no zeroized field.
+    HwCfg2ZerOffset >> 2,
     Secret0ZerOffset >> 2,
     Secret1ZerOffset >> 2,
     Secret2ZerOffset >> 2,
