@@ -7,7 +7,7 @@
   {
     racl_support: true
     module_instance_name: rv_plic_pwc
-    src: 252
+    src: 250
     target: 1
     prio: 3
     topname: pwc

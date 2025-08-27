@@ -71,13 +71,6 @@
       default_val: false
     }
     {
-      name: spareEcoIrq0
-      module_name: PWC
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-    }
-    {
       name: TargetCmdAVS0
       module_name: PWC_DVFS
       type: interrupt
@@ -1336,13 +1329,6 @@
     {
       name: CSTATE_EXIT
       module_name: PWC_CCS_1
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-    }
-    {
-      name: spareEcoIrq1
-      module_name: PWC
       type: interrupt
       intr_type: IntrType.Event
       default_val: false

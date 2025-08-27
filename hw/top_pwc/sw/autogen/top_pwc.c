@@ -16,7 +16,7 @@
  * `top_pwc_plic_pwc_peripheral_t`.
  */
 const top_pwc_plic_pwc_peripheral_t
-    top_pwc_plic_pwc_interrupt_for_peripheral[252] = {
+    top_pwc_plic_pwc_interrupt_for_peripheral[250] = {
   [kTopPwcPlicPwcIrqIdNone] = kTopPwcPlicPwcPeripheralUnknown,
   [kTopPwcPlicPwcIrqIdGpioGpio0] = kTopPwcPlicPwcPeripheralGpio,
   [kTopPwcPlicPwcIrqIdGpioGpio1] = kTopPwcPlicPwcPeripheralGpio,
@@ -87,7 +87,6 @@ const top_pwc_plic_pwc_peripheral_t
   [kTopPwcPlicPwcIrqIdDuc1Ducpvlreq1] = kTopPwcPlicPwcPeripheralUnknown,
   [kTopPwcPlicPwcIrqIdDuc0Ducivdrreq0] = kTopPwcPlicPwcPeripheralUnknown,
   [kTopPwcPlicPwcIrqIdDuc1Ducivdrreq1] = kTopPwcPlicPwcPeripheralUnknown,
-  [kTopPwcPlicPwcIrqIdPwcSpareecoirq0] = kTopPwcPlicPwcPeripheralUnknown,
   [kTopPwcPlicPwcIrqIdPwcDvfsTargetcmdavs0] = kTopPwcPlicPwcPeripheralUnknown,
   [kTopPwcPlicPwcIrqIdPwcDvfsTargetcmdavs1] = kTopPwcPlicPwcPeripheralUnknown,
   [kTopPwcPlicPwcIrqIdPwcDvfsTargetcmdavs2] = kTopPwcPlicPwcPeripheralUnknown,
@@ -268,5 +267,4 @@ const top_pwc_plic_pwc_peripheral_t
   [kTopPwcPlicPwcIrqIdPwcCcs0CstateExit] = kTopPwcPlicPwcPeripheralUnknown,
   [kTopPwcPlicPwcIrqIdPwcCcs1CstateEntry] = kTopPwcPlicPwcPeripheralUnknown,
   [kTopPwcPlicPwcIrqIdPwcCcs1CstateExit] = kTopPwcPlicPwcPeripheralUnknown,
-  [kTopPwcPlicPwcIrqIdPwcSpareecoirq1] = kTopPwcPlicPwcPeripheralUnknown,
 };

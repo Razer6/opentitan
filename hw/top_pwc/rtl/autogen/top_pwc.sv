@@ -223,7 +223,7 @@ module top_pwc #(
 
 
 
-  logic [251:0]  intr_vector;
+  logic [249:0]  intr_vector;
   // Interrupt source list
   logic [31:0] intr_gpio_gpio;
   logic intr_rv_timer_timer_expired_hart0_timer0;
@@ -1208,7 +1208,7 @@ module top_pwc #(
 
   // interrupt assignments
   assign intr_vector = {
-      incoming_interrupt_pwc_external_i, // IDs [60 +: 192]
+      incoming_interrupt_pwc_external_i, // IDs [60 +: 190]
       intr_mbx_pcie0_mbx_error, // IDs [59 +: 1]
       intr_mbx_pcie0_mbx_abort, // IDs [58 +: 1]
       intr_mbx_pcie0_mbx_ready, // IDs [57 +: 1]

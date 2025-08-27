@@ -2378,8 +2378,6 @@
             PRIO_247: 0
             PRIO_248: 0
             PRIO_249: 0
-            PRIO_250: 0
-            PRIO_251: 0
             IP_0: 0
             IP_1: 0
             IP_2: 0
@@ -8258,13 +8256,6 @@
         default_val: false
       }
       {
-        name: spareEcoIrq0
-        module_name: PWC
-        type: interrupt
-        intr_type: IntrType.Event
-        default_val: false
-      }
-      {
         name: TargetCmdAVS0
         module_name: PWC_DVFS
         type: interrupt
@@ -9520,13 +9511,6 @@
       {
         name: CSTATE_EXIT
         module_name: PWC_CCS_1
-        type: interrupt
-        intr_type: IntrType.Event
-        default_val: false
-      }
-      {
-        name: spareEcoIrq1
-        module_name: PWC
         type: interrupt
         intr_type: IntrType.Event
         default_val: false
@@ -14188,18 +14172,6 @@
       outgoing: false
     }
     {
-      name: PWC_spareEcoIrq0
-      module_name: PWC
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      desc: PWC spareEcoIrq0 incoming interrupt
-      incoming: true
-      width: 1
-      plic: rv_plic_pwc
-      outgoing: false
-    }
-    {
       name: PWC_DVFS_TargetCmdAVS0
       module_name: PWC_DVFS
       type: interrupt
@@ -16354,18 +16326,6 @@
       intr_type: IntrType.Event
       default_val: false
       desc: PWC_CCS_1 CSTATE_EXIT incoming interrupt
-      incoming: true
-      width: 1
-      plic: rv_plic_pwc
-      outgoing: false
-    }
-    {
-      name: PWC_spareEcoIrq1
-      module_name: PWC
-      type: interrupt
-      intr_type: IntrType.Event
-      default_val: false
-      desc: PWC spareEcoIrq1 incoming interrupt
       incoming: true
       width: 1
       plic: rv_plic_pwc
