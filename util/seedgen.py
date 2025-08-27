@@ -97,9 +97,9 @@ def main():
     parser.add_argument(
         "--include-seeds",
         nargs='*',
-        choices=['lc_ctrl', 'otp_ctrl'],
+        choices=["lc_ctrl", "otp_img"],
         default=[],
-        help="Optionally include specific seeds. Can be 'lc_ctrl', 'otp_ctrl', or both."
+        help="Optionally include specific seeds. Can be 'lc_ctrl', 'otp_img', or both."
     )
     args = parser.parse_args()
 
