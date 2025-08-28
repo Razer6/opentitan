@@ -7,6 +7,7 @@
 #include <array>
 #include <limits>
 
+#include "dt/dt_keymgr.h"
 #include "gtest/gtest.h"
 #include "hw/top/dt/dt_keymgr.h"
 #include "sw/device/lib/base/mock_abs_mmio.h"
@@ -126,7 +127,7 @@ class KeymgrTest : public rom_test::RomTest {
     EXPECT_ABS_READ32(base_ + KEYMGR_OP_STATUS_REG_OFFSET, end_status);
     EXPECT_ABS_WRITE32(base_ + KEYMGR_OP_STATUS_REG_OFFSET, end_status);
   }
-  uint32_t base_ = TOP_EARLGREY_KEYMGR_BASE_ADDR;
+  uint32_t base_ = dt_keymgr_reg_block(kDtKeymgr, kDtKeymgrRegBlockCore);
   SwBindingCfg cfg_ = {
       .max_key_ver = 0xA5A5A5A5,
       .binding_value_sealing = {0, 1, 2, 3, 4, 6, 7, 8},
