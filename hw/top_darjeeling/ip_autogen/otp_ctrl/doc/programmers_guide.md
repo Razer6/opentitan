@@ -97,6 +97,12 @@ Note that SW is responsible for keeping track of already programmed OTP word loc
 
 ### Digest Calculation Sequence
 
+Each partition is configured to have its digest written either by hardware or by software.
+Depending on this configuration attribute, the digest calculation and writing sequence is different.
+The following subsections describe the programming sequence for each case.
+
+#### Partitions with a Hardware-Written Digest
+
 The hardware digest computation for the hardware and secret partitions can be triggered as follows:
 
 1. Check whether the DAI is idle by reading the [`STATUS`](registers.md#status) register.
@@ -132,6 +138,18 @@ The zeroization did not succeed and should be tried again if possible.
 If the data read for a secret partition is the same as that in step 2 not enough bits were affected, but this was below the fatal threshold, so perhaps try it again.
 
 These steps need to be done for each item intended to be zeroized. When all is done, trigger a device reset.
+
+#### Partitions with a Software-Written Digest
+
+Partitions for which software computes and writes the digest have a separate `DIGEST` entry in the DAI address map.
+Software must write the desired digest value via the DAI to set the digest in the OTP storage and lock the partition.
+This can be done as follows:
+
+1. Compute a 64-bit digest over the relevant parts of the partition, and [program](#programming-sequence) that value via the DAI, using the address of the corresponding `DIGEST` entry in the DAI address map.
+2. [Read](#readout-sequence) the digest back via the DAI and verify it.
+
+After the next full-system reset, the corresponding digest *CSRs* (not DAI addresses!) get populated with the digest value.
+If the partition is digest-locked, it is locked at that point.
 
 ### Software Integrity Handling
 
