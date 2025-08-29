@@ -310,7 +310,7 @@ module keymgr_dpe_ctrl
         key_slots_d[slot_dst_sel_i].key[0] ^= root_key_i.key[0];
         key_slots_d[slot_dst_sel_i].key[1] ^= root_key_i.key[1];
         key_slots_d[slot_dst_sel_i].max_key_version = max_key_version_i;
-        key_slots_d[slot_dst_sel_i].key_policy = DEFAULT_UDS_POLICY;
+        key_slots_d[slot_dst_sel_i].key_policy = slot_policy_i;
       end
 
       // `SlotLoadFromKmac` is used at the end of a successful advance operation, so that the
