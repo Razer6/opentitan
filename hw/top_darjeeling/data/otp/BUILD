@@ -383,7 +383,7 @@ otp_alert_digest(
 otp_image(
     name = "img_raw",
     src = ":otp_json_raw",
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 [
@@ -398,7 +398,7 @@ otp_image(
             ":otp_json_secret0",
             ":otp_json_creator_sw_cfg",
         ],
-        top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
+        top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
     )
     for i in range(0, 8)
 ]
@@ -411,7 +411,7 @@ otp_image(
             ":otp_json_secret0",
             ":otp_json_creator_sw_cfg",
         ],
-        top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
+        top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
     )
     for i in range(0, 7)
 ]
@@ -420,28 +420,28 @@ otp_image(
     name = "img_dev",
     src = ":otp_json_dev",
     overlays = STD_OTP_OVERLAYS,
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 otp_image(
     name = "img_prod",
     src = ":otp_json_prod",
     overlays = STD_OTP_OVERLAYS,
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 otp_image(
     name = "img_prod_end",
     src = ":otp_json_prod_end",
     overlays = STD_OTP_OVERLAYS,
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 otp_image(
     name = "img_rma",
     src = ":otp_json_rma",
     overlays = STD_OTP_OVERLAYS,
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 # Create an execution-disabling overlay
@@ -459,7 +459,7 @@ otp_image(
     name = "img_exec_disabled",
     src = ":otp_json_rma",
     overlays = STD_OTP_OVERLAYS + [":otp_json_exec_disabled"],
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 # Create a bootstrap-disabling overlay
@@ -477,7 +477,7 @@ otp_image(
     name = "img_bootstrap_disabled",
     src = ":otp_json_rma",
     overlays = STD_OTP_OVERLAYS + [":otp_json_bootstrap_disabled"],
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.dev.gen.hjson",
+    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 filegroup(

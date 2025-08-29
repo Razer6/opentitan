@@ -41,13 +41,13 @@ filesets:
       - rtl/autogen/top_pwc.sv
     file_type: systemVerilogSource
 
-  files_rtl_dev:
+  files_rtl_testing:
     depend:
-      - lowrisc:pwc_constants:dev_rnd_cnst_pkg
+      - lowrisc:pwc_constants:testing_rnd_cnst_pkg
 
-  files_rtl_prod:
+  files_rtl_tapeout:
     depend:
-      - lowrisc:pwc_constants:prod_rnd_cnst_pkg
+      - lowrisc:pwc_constants:tapeout_rnd_cnst_pkg
 
   files_verilator_waiver:
     depend:
@@ -94,11 +94,11 @@ parameters:
 targets:
   default: &default_target
     filesets:
-      - tool_verilator   ? (files_verilator_waiver)
-      - tool_ascentlint  ? (files_ascentlint_waiver)
-      - tool_veriblelint ? (files_veriblelint_waiver)
-      - fileset_prod     ? (files_rtl_prod)
-      - "!fileset_prod   ? (files_rtl_dev)"
+      - tool_verilator    ? (files_verilator_waiver)
+      - tool_ascentlint   ? (files_ascentlint_waiver)
+      - tool_veriblelint  ? (files_veriblelint_waiver)
+      - fileset_tapeout   ? (files_rtl_tapeout)
+      - "!fileset_tapeout ? (files_rtl_testing)"
       - files_rtl_generic
     toplevel: top_pwc
     parameters:
