@@ -17,7 +17,7 @@ import rdplib_pkg::*;
 RDP_GATE_XNOR2
   #(
     .WIDTH (Width),
-    .STATUS(SIZE_ONLY)
+    .STATUS(DONT_TOUCH)
   )
   prim_xnor
   (

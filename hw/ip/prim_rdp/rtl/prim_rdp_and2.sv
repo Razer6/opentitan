@@ -19,7 +19,7 @@ logic [Width-1:0] out_n;
 RDP_GATE_NAND2
 #(
   .WIDTH (Width),
-  .STATUS(SIZE_ONLY)
+  .STATUS(DONT_TOUCH)
 )
 nand2_prim
 (
@@ -31,7 +31,7 @@ nand2_prim
 RDP_GATE_INV
 #(
   .WIDTH (Width),
-  .STATUS(SIZE_ONLY)
+  .STATUS(DONT_TOUCH)
 )
 inv_prim
 (

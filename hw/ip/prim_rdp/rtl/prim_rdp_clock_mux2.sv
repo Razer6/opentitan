@@ -21,7 +21,7 @@ import rdplib_pkg::*;
 
   RDP_GATE_CKINV
   #(
-    .STATUS(SIZE_ONLY)
+    .STATUS(DONT_TOUCH)
   )
   sel_inv
   (
@@ -31,7 +31,7 @@ import rdplib_pkg::*;
 
   RDP_GATE_CKAN2
   #(
-    .STATUS(SIZE_ONLY)
+    .STATUS(DONT_TOUCH)
   )
   clk1_sel
   (
@@ -42,7 +42,7 @@ import rdplib_pkg::*;
 
   RDP_GATE_CKAN2
   #(
-    .STATUS(SIZE_ONLY)
+    .STATUS(DONT_TOUCH)
   )
   clk0_sel
   (
@@ -53,7 +53,7 @@ import rdplib_pkg::*;
 
   RDP_GATE_CKOR2
   #(
-    .STATUS(SIZE_ONLY)
+    .STATUS(DONT_TOUCH)
   )
   mux_or
   (

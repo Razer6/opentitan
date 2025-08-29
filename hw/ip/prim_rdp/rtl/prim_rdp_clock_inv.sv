@@ -18,7 +18,7 @@ import rdplib_pkg::*;
 
 RDP_GATE_CKINV
   #(
-    .STATUS(SIZE_ONLY)
+    .STATUS(DONT_TOUCH)
   )
   ckinv_prim
   (
