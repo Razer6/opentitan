@@ -147,8 +147,8 @@ CONST = struct(
     # SoC DBG state. Must match the definitions in lc_ctrl_state.hjson
     SCD = struct(
         SOC_DBG_RAW = 0x0,
-        SOC_DBG_PRE_PROD = 0x0df80a44,
-        SOC_DBG_PROD = 0xcff99e6c,
+        SOC_DBG_PRE_PROD = 0xE03A14B4,
+        SOC_DBG_PROD = 0xE63F9CF6,
     ),
 )
 
