@@ -3,10 +3,11 @@
 # SPDX-License-Identifier: Apache-2.0
 
 load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
-load("//hw/top_darjeeling/data/autogen:defs.bzl", "DARJEELING_ALERTS")
 load("//rules:const.bzl", "CONST", "DARJEELING_LOC_ALERTS")
+load("//hw/top_darjeeling/data/autogen:defs.bzl", "DARJEELING_ALERTS")
 load(
     "//rules:otp.bzl",
+    "OTP_SIGVERIFY_FAKE_KEYS",
     "STD_OTP_OVERLAYS",
     "otp_alert_classification",
     "otp_alert_digest",
@@ -18,8 +19,13 @@ load(
     "otp_per_class_ints",
     "otp_per_class_lists",
 )
+load("//hw/top:defs.bzl", "opentitan_require_top")
 
 package(default_visibility = ["//visibility:public"])
+
+# All otp_json targets are marked as compatible only with Darjeeling to avoid
+# using them on other tops by mistake
+TARGET_COMPATIBLE_WITH = opentitan_require_top("darjeeling")
 
 exports_files(["otp_ctrl_mmap.hjson"])
 
@@ -52,6 +58,7 @@ otp_json(
             },
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_json(
@@ -127,6 +134,7 @@ otp_json(
             },
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_json(
@@ -140,6 +148,7 @@ otp_json(
             lock = True,
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_json(
@@ -153,6 +162,7 @@ otp_json(
             lock = True,
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_json(
@@ -161,11 +171,12 @@ otp_json(
         otp_partition(
             name = "HW_CFG2",
             items = {
-                "SOC_DBG_STATE": otp_hex(CONST.SCD.SOC_DBG_PROD),
+                "SOC_DBG_STATE": "SOC_DBG_PROD",
             },
             lock = True,
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_json(
@@ -180,6 +191,7 @@ otp_json(
             lock = True,
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_json(
@@ -193,6 +205,7 @@ otp_json(
             lock = True,
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_json(
@@ -209,6 +222,7 @@ otp_json(
             lock = True,
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_json(
@@ -240,11 +254,12 @@ otp_json(
         otp_partition(
             name = "HW_CFG2",
             items = {
-                "SOC_DBG_STATE": otp_hex(CONST.SCD.SOC_DBG_RAW),
+                "SOC_DBG_STATE": "SOC_DBG_RAW",
             },
             lock = True,
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_json(
@@ -260,11 +275,12 @@ otp_json(
         otp_partition(
             name = "HW_CFG2",
             items = {
-                "SOC_DBG_STATE": otp_hex(CONST.SCD.SOC_DBG_PRE_PROD),
+                "SOC_DBG_STATE": "SOC_DBG_PRE_PROD",
             },
             lock = True,
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_json(
@@ -280,11 +296,12 @@ otp_json(
         otp_partition(
             name = "HW_CFG2",
             items = {
-                "SOC_DBG_STATE": otp_hex(CONST.SCD.SOC_DBG_PROD),
+                "SOC_DBG_STATE": "SOC_DBG_PROD",
             },
             lock = True,
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 # OTP LC STATE-SPECIFIC CONFIGS
@@ -297,6 +314,7 @@ otp_json(
             state = "RAW",
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 [
@@ -309,6 +327,7 @@ otp_json(
                 state = "TEST_UNLOCKED{}".format(i),
             ),
         ],
+        target_compatible_with = TARGET_COMPATIBLE_WITH,
     )
     for i in range(0, 8)
 ]
@@ -323,6 +342,7 @@ otp_json(
                 state = "TEST_LOCKED{}".format(i),
             ),
         ],
+        target_compatible_with = TARGET_COMPATIBLE_WITH,
     )
     for i in range(0, 7)
 ]
@@ -336,6 +356,7 @@ otp_json(
             state = "DEV",
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_json(
@@ -347,6 +368,7 @@ otp_json(
             state = "PROD",
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_json(
@@ -358,6 +380,7 @@ otp_json(
             state = "PROD_END",
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_json(
@@ -369,6 +392,7 @@ otp_json(
             state = "RMA",
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 # Create an overlay for the alert_handler digest.
@@ -383,7 +407,6 @@ otp_alert_digest(
 otp_image(
     name = "img_raw",
     src = ":otp_json_raw",
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 [
@@ -398,7 +421,7 @@ otp_image(
             ":otp_json_secret0",
             ":otp_json_creator_sw_cfg",
         ],
-        top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
+        target_compatible_with = TARGET_COMPATIBLE_WITH,
     )
     for i in range(0, 8)
 ]
@@ -411,7 +434,7 @@ otp_image(
             ":otp_json_secret0",
             ":otp_json_creator_sw_cfg",
         ],
-        top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
+        target_compatible_with = TARGET_COMPATIBLE_WITH,
     )
     for i in range(0, 7)
 ]
@@ -420,28 +443,24 @@ otp_image(
     name = "img_dev",
     src = ":otp_json_dev",
     overlays = STD_OTP_OVERLAYS,
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 otp_image(
     name = "img_prod",
     src = ":otp_json_prod",
     overlays = STD_OTP_OVERLAYS,
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 otp_image(
     name = "img_prod_end",
     src = ":otp_json_prod_end",
     overlays = STD_OTP_OVERLAYS,
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 otp_image(
     name = "img_rma",
     src = ":otp_json_rma",
     overlays = STD_OTP_OVERLAYS,
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 # Create an execution-disabling overlay
@@ -453,13 +472,13 @@ otp_json(
             items = {"CREATOR_SW_CFG_ROM_EXEC_EN": otp_hex(0x0)},
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_image(
     name = "img_exec_disabled",
     src = ":otp_json_rma",
     overlays = STD_OTP_OVERLAYS + [":otp_json_exec_disabled"],
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 # Create a bootstrap-disabling overlay
@@ -471,13 +490,13 @@ otp_json(
             items = {"OWNER_SW_CFG_ROM_BOOTSTRAP_DIS": otp_hex(CONST.HARDENED_TRUE)},
         ),
     ],
+    target_compatible_with = TARGET_COMPATIBLE_WITH,
 )
 
 otp_image(
     name = "img_bootstrap_disabled",
     src = ":otp_json_rma",
     overlays = STD_OTP_OVERLAYS + [":otp_json_bootstrap_disabled"],
-    top_secret_cfg = "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
 )
 
 filegroup(
@@ -512,7 +531,6 @@ pkg_files(
 )
 
 # Partition used to set a fixed seed value in `otp_image_consts` targets.
-# FIXME: This needs to be removed since seeds are provided through HJSON seed config files now.
 otp_json(
     name = "otp_json_baseline",
 )
