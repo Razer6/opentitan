@@ -10,6 +10,7 @@ load(
     "EARLGREY_LOC_ALERTS",
     "get_lc_items",
 )
+load("//hw/top_earlgrey/data/autogen:defs.bzl", "EARLGREY_ALERTS")
 load(
     "//rules/opentitan:defs.bzl",
     "cw310_params",
