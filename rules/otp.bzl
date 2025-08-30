@@ -233,8 +233,8 @@ otp_image = rule(
         ),
         "top_secret_cfg": attr.label(
             allow_single_file = True,
+            default = "//hw/top:secrets",
             doc = "Generated top configuration file including secrets.",
-            mandatory = True,
         ),
         "data_perm": attr.label(
             default = "//util/design/data:data_perm",
@@ -305,8 +305,8 @@ otp_image_consts = rule(
         ),
         "top_secret_cfg": attr.label(
             allow_single_file = True,
+            default = "//hw/top:secrets",
             doc = "Generated top configuration file including secrets.",
-            mandatory = True,
         ),
         "c_template": attr.label(
             allow_single_file = True,
