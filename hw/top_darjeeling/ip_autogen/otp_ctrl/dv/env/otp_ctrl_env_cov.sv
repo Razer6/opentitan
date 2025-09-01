@@ -104,7 +104,9 @@ class otp_ctrl_csr_rd_after_alert_cg_wrap;
         ral.secret2_digest[0].get_offset(),
         ral.secret2_digest[1].get_offset(),
         ral.secret3_digest[0].get_offset(),
-        ral.secret3_digest[1].get_offset()
+        ral.secret3_digest[1].get_offset(),
+        ral.secret4_digest[0].get_offset(),
+        ral.secret4_digest[1].get_offset()
       };
       bins direct_access_rdata = {
         ral.direct_access_rdata[0].get_offset(),
@@ -140,7 +142,8 @@ class otp_ctrl_csr_rd_after_alert_cg_wrap;
         ral.err_code[23].get_offset(),
         ral.err_code[24].get_offset(),
         ral.err_code[25].get_offset(),
-        ral.err_code[26].get_offset()
+        ral.err_code[26].get_offset(),
+        ral.err_code[27].get_offset()
       };
     }
   endgroup
@@ -223,6 +226,7 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
     secret1_lock: coverpoint parts_locked[21];
     secret2_lock: coverpoint parts_locked[22];
     secret3_lock: coverpoint parts_locked[23];
+    secret4_lock: coverpoint parts_locked[24];
   endgroup
 
   // This covergroup is sampled only if sram request passed scb check.
@@ -298,6 +302,7 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
       bins secret1 = {Secret1Idx};
       bins secret2 = {Secret2Idx};
       bins secret3 = {Secret3Idx};
+      bins secret4 = {Secret4Idx};
       bins life_cycle = {LifeCycleIdx};
       bins illegal_idx    = default;
     }
@@ -464,6 +469,9 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
         buf_err_code_cg_wrap[part_idx - NumPartUnbuf].buf_err_code_cg.sample(val);
       end
       OtpSecret3ErrIdx: begin
+        buf_err_code_cg_wrap[part_idx - NumPartUnbuf].buf_err_code_cg.sample(val);
+      end
+      OtpSecret4ErrIdx: begin
         buf_err_code_cg_wrap[part_idx - NumPartUnbuf].buf_err_code_cg.sample(val);
       end
       OtpLifeCycleErrIdx: begin

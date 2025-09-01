@@ -121,41 +121,44 @@ It has been generated with ./util/topgen.py -t hw/top_darjeeling/data/top_darjee
 |         |                       |            |              |      64bit       |                      PLAT_OWNER_AUTH_SLOT3_ZER                      |     0xDE0      |     8      |
 |   13    |        EXT_NVM        |    1032    |     yes      |      32bit       |                  EXT_NVM_ANTIREPLAY_FRESHNESS_CNT                   |     0xDE8      |    1024    |
 |         |                       |            |              |      64bit       |                             EXT_NVM_ZER                             |     0x11E8     |     8      |
-|   14    |       ROM_PATCH       |   11304    |     yes      |      32bit       |                           ROM_PATCH_DATA                            |     0x11F0     |    9192    |
-|         |                       |            |              |      64bit       |             [ROM_PATCH_DIGEST](#Reg_rom_patch_digest_0)             |     0x3E08     |     8      |
-|         |                       |            |              |      64bit       |                            ROM_PATCH_ZER                            |     0x3E10     |     8      |
-|   15    |     SOC_FUSES_CP      |    520     |      no      |      32bit       |                         SOC_FUSES_CP1_DATA                          |     0x3E18     |    256     |
-|         |                       |            |              |      32bit       |                         SOC_FUSES_CP2_DATA                          |     0x3F18     |    256     |
-|         |                       |            |              |      64bit       |          [SOC_FUSES_CP_DIGEST](#Reg_soc_fuses_cp_digest_0)          |     0x4018     |     8      |
-|   16    |     SOC_FUSES_FT      |    3592    |      no      |      32bit       |                         SOC_FUSES_FT1_DATA                          |     0x4020     |    512     |
-|         |                       |            |              |      32bit       |                         SOC_FUSES_FT2_DATA                          |     0x4220     |    3072    |
-|         |                       |            |              |      64bit       |          [SOC_FUSES_FT_DIGEST](#Reg_soc_fuses_ft_digest_0)          |     0x4E20     |     8      |
-|   17    |        HW_CFG0        |     48     |     yes      |      32bit       |                              DEVICE_ID                              |     0x4E28     |     32     |
-|         |                       |            |              |      64bit       |               [HW_CFG0_DIGEST](#Reg_hw_cfg0_digest_0)               |     0x4E48     |     8      |
-|         |                       |            |              |      64bit       |                             HW_CFG0_ZER                             |     0x4E50     |     8      |
-|   18    |        HW_CFG1        |     24     |     yes      |      32bit       |                        EN_CSRNG_SW_APP_READ                         |     0x4E58     |     1      |
-|         |                       |            |              |      32bit       |                           EN_SRAM_IFETCH                            |     0x4E59     |     1      |
-|         |                       |            |              |      64bit       |               [HW_CFG1_DIGEST](#Reg_hw_cfg1_digest_0)               |     0x4E60     |     8      |
-|         |                       |            |              |      64bit       |                             HW_CFG1_ZER                             |     0x4E68     |     8      |
-|   19    |        HW_CFG2        |     56     |     yes      |      32bit       |                            SOC_DBG_STATE                            |     0x4E70     |     4      |
-|         |                       |            |              |      32bit       |                             MANUF_STATE                             |     0x4E74     |     32     |
-|         |                       |            |              |      64bit       |               [HW_CFG2_DIGEST](#Reg_hw_cfg2_digest_0)               |     0x4E98     |     8      |
-|         |                       |            |              |      64bit       |                             HW_CFG2_ZER                             |     0x4EA0     |     8      |
-|   20    |        SECRET0        |     48     |     yes      |      64bit       |                          TEST_UNLOCK_TOKEN                          |     0x4EA8     |     16     |
-|         |                       |            |              |      64bit       |                           TEST_EXIT_TOKEN                           |     0x4EB8     |     16     |
-|         |                       |            |              |      64bit       |               [SECRET0_DIGEST](#Reg_secret0_digest_0)               |     0x4EC8     |     8      |
-|         |                       |            |              |      64bit       |                             SECRET0_ZER                             |     0x4ED0     |     8      |
-|   21    |        SECRET1        |     32     |     yes      |      64bit       |                         SRAM_DATA_KEY_SEED                          |     0x4ED8     |     16     |
-|         |                       |            |              |      64bit       |               [SECRET1_DIGEST](#Reg_secret1_digest_0)               |     0x4EE8     |     8      |
-|         |                       |            |              |      64bit       |                             SECRET1_ZER                             |     0x4EF0     |     8      |
-|   22    |        SECRET2        |    128     |     yes      |      64bit       |                              RMA_TOKEN                              |     0x4EF8     |     16     |
-|         |                       |            |              |      64bit       |                       CREATOR_ROOT_KEY_SHARE0                       |     0x4F08     |     32     |
-|         |                       |            |              |      64bit       |                       CREATOR_ROOT_KEY_SHARE1                       |     0x4F28     |     32     |
-|         |                       |            |              |      64bit       |                            CREATOR_SEED                             |     0x4F48     |     32     |
-|         |                       |            |              |      64bit       |               [SECRET2_DIGEST](#Reg_secret2_digest_0)               |     0x4F68     |     8      |
-|         |                       |            |              |      64bit       |                             SECRET2_ZER                             |     0x4F70     |     8      |
-|   23    |        SECRET3        |     48     |     yes      |      64bit       |                             OWNER_SEED                              |     0x4F78     |     32     |
-|         |                       |            |              |      64bit       |               [SECRET3_DIGEST](#Reg_secret3_digest_0)               |     0x4F98     |     8      |
-|         |                       |            |              |      64bit       |                             SECRET3_ZER                             |     0x4FA0     |     8      |
-|   24    |      LIFE_CYCLE       |     88     |      no      |      32bit       |                          LC_TRANSITION_CNT                          |     0x4FA8     |     48     |
+|   14    |       ROM_PATCH       |   11256    |     yes      |      32bit       |                           ROM_PATCH_DATA                            |     0x11F0     |    9192    |
+|         |                       |            |              |      64bit       |             [ROM_PATCH_DIGEST](#Reg_rom_patch_digest_0)             |     0x3DD8     |     8      |
+|         |                       |            |              |      64bit       |                            ROM_PATCH_ZER                            |     0x3DE0     |     8      |
+|   15    |     SOC_FUSES_CP      |    520     |      no      |      32bit       |                         SOC_FUSES_CP1_DATA                          |     0x3DE8     |    256     |
+|         |                       |            |              |      32bit       |                         SOC_FUSES_CP2_DATA                          |     0x3EE8     |    256     |
+|         |                       |            |              |      64bit       |          [SOC_FUSES_CP_DIGEST](#Reg_soc_fuses_cp_digest_0)          |     0x3FE8     |     8      |
+|   16    |     SOC_FUSES_FT      |    3592    |      no      |      32bit       |                         SOC_FUSES_FT1_DATA                          |     0x3FF0     |    512     |
+|         |                       |            |              |      32bit       |                         SOC_FUSES_FT2_DATA                          |     0x41F0     |    3072    |
+|         |                       |            |              |      64bit       |          [SOC_FUSES_FT_DIGEST](#Reg_soc_fuses_ft_digest_0)          |     0x4DF0     |     8      |
+|   17    |        HW_CFG0        |     48     |     yes      |      32bit       |                              DEVICE_ID                              |     0x4DF8     |     32     |
+|         |                       |            |              |      64bit       |               [HW_CFG0_DIGEST](#Reg_hw_cfg0_digest_0)               |     0x4E18     |     8      |
+|         |                       |            |              |      64bit       |                             HW_CFG0_ZER                             |     0x4E20     |     8      |
+|   18    |        HW_CFG1        |     24     |     yes      |      32bit       |                        EN_CSRNG_SW_APP_READ                         |     0x4E28     |     1      |
+|         |                       |            |              |      32bit       |                           EN_SRAM_IFETCH                            |     0x4E29     |     1      |
+|         |                       |            |              |      64bit       |               [HW_CFG1_DIGEST](#Reg_hw_cfg1_digest_0)               |     0x4E30     |     8      |
+|         |                       |            |              |      64bit       |                             HW_CFG1_ZER                             |     0x4E38     |     8      |
+|   19    |        HW_CFG2        |     56     |     yes      |      32bit       |                            SOC_DBG_STATE                            |     0x4E40     |     4      |
+|         |                       |            |              |      32bit       |                             MANUF_STATE                             |     0x4E44     |     32     |
+|         |                       |            |              |      64bit       |               [HW_CFG2_DIGEST](#Reg_hw_cfg2_digest_0)               |     0x4E68     |     8      |
+|         |                       |            |              |      64bit       |                             HW_CFG2_ZER                             |     0x4E70     |     8      |
+|   20    |        SECRET0        |     48     |     yes      |      64bit       |                          TEST_UNLOCK_TOKEN                          |     0x4E78     |     16     |
+|         |                       |            |              |      64bit       |                           TEST_EXIT_TOKEN                           |     0x4E88     |     16     |
+|         |                       |            |              |      64bit       |               [SECRET0_DIGEST](#Reg_secret0_digest_0)               |     0x4E98     |     8      |
+|         |                       |            |              |      64bit       |                             SECRET0_ZER                             |     0x4EA0     |     8      |
+|   21    |        SECRET1        |     32     |     yes      |      64bit       |                         SRAM_DATA_KEY_SEED                          |     0x4EA8     |     16     |
+|         |                       |            |              |      64bit       |               [SECRET1_DIGEST](#Reg_secret1_digest_0)               |     0x4EB8     |     8      |
+|         |                       |            |              |      64bit       |                             SECRET1_ZER                             |     0x4EC0     |     8      |
+|   22    |        SECRET2        |    128     |     yes      |      64bit       |                              RMA_TOKEN                              |     0x4EC8     |     16     |
+|         |                       |            |              |      64bit       |                       CREATOR_ROOT_KEY_SHARE0                       |     0x4ED8     |     32     |
+|         |                       |            |              |      64bit       |                       CREATOR_ROOT_KEY_SHARE1                       |     0x4EF8     |     32     |
+|         |                       |            |              |      64bit       |                            CREATOR_SEED                             |     0x4F18     |     32     |
+|         |                       |            |              |      64bit       |               [SECRET2_DIGEST](#Reg_secret2_digest_0)               |     0x4F38     |     8      |
+|         |                       |            |              |      64bit       |                             SECRET2_ZER                             |     0x4F40     |     8      |
+|   23    |        SECRET3        |     48     |     yes      |      64bit       |                             OWNER_SEED                              |     0x4F48     |     32     |
+|         |                       |            |              |      64bit       |               [SECRET3_DIGEST](#Reg_secret3_digest_0)               |     0x4F68     |     8      |
+|         |                       |            |              |      64bit       |                             SECRET3_ZER                             |     0x4F70     |     8      |
+|   24    |        SECRET4        |     48     |     yes      |      64bit       |                            UCIE_CTA_SEED                            |     0x4F78     |     32     |
+|         |                       |            |              |      64bit       |               [SECRET4_DIGEST](#Reg_secret4_digest_0)               |     0x4F98     |     8      |
+|         |                       |            |              |      64bit       |                             SECRET4_ZER                             |     0x4FA0     |     8      |
+|   25    |      LIFE_CYCLE       |     88     |      no      |      32bit       |                          LC_TRANSITION_CNT                          |     0x4FA8     |     48     |
 |         |                       |            |              |      32bit       |                              LC_STATE                               |     0x4FD8     |     40     |

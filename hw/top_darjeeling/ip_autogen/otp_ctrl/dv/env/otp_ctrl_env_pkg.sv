@@ -96,7 +96,8 @@ package otp_ctrl_env_pkg;
     Secret0Offset,
     Secret1Offset,
     Secret2Offset,
-    Secret3Offset
+    Secret3Offset,
+    Secret4Offset
   };
 
   // start address of special locations, either digest or zeroized field
@@ -124,7 +125,8 @@ package otp_ctrl_env_pkg;
     Secret0Offset + Secret0Size - 16,
     Secret1Offset + Secret1Size - 16,
     Secret2Offset + Secret2Size - 16,
-    Secret3Offset + Secret3Size - 16
+    Secret3Offset + Secret3Size - 16,
+    Secret4Offset + Secret4Size - 16
   };
 
   // lc partition does not have digest
@@ -152,7 +154,8 @@ package otp_ctrl_env_pkg;
     Secret0DigestOffset >> 2,
     Secret1DigestOffset >> 2,
     Secret2DigestOffset >> 2,
-    Secret3DigestOffset >> 2
+    Secret3DigestOffset >> 2,
+    Secret4DigestOffset >> 2
   };
 
   parameter int PART_OTP_ZEROIZED_ADDRS [NumPart-1] = {
@@ -179,7 +182,8 @@ package otp_ctrl_env_pkg;
     Secret0ZerOffset >> 2,
     Secret1ZerOffset >> 2,
     Secret2ZerOffset >> 2,
-    Secret3ZerOffset >> 2
+    Secret3ZerOffset >> 2,
+    Secret4ZerOffset >> 2
   };
 
   // types
@@ -214,6 +218,7 @@ package otp_ctrl_env_pkg;
     OtpSecret1ErrIdx,
     OtpSecret2ErrIdx,
     OtpSecret3ErrIdx,
+    OtpSecret4ErrIdx,
     OtpLifeCycleErrIdx,
     OtpDaiErrIdx,
     OtpLciErrIdx,

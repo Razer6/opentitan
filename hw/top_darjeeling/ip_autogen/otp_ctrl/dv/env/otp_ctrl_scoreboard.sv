@@ -123,6 +123,15 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
           otp_a[i] = ((i - Secret3Offset / TL_SIZE) % 2) ?
               data[SCRAMBLE_DATA_SIZE-1:TL_DW] : data[TL_DW-1:0];
         end
+        // secret partitions have been scrambled before writing to OTP.
+        // here calculate the pre-scrambled raw data when clearing internal OTP to all 0s.
+        data = descramble_data(0, Secret4Idx);
+        for (int i = Secret4Offset / TL_SIZE;
+             i <= Secret4DigestOffset / TL_SIZE - 1;
+             i++) begin
+          otp_a[i] = ((i - Secret4Offset / TL_SIZE) % 2) ?
+              data[SCRAMBLE_DATA_SIZE-1:TL_DW] : data[TL_DW-1:0];
+        end
         `uvm_info(`gfn, "clear internal memory and digest", UVM_HIGH)
         cfg.backdoor_clear_mem = 0;
         dai_wr_ip = 0;
@@ -268,6 +277,17 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
             // Check otp_keymgr_key_t struct by item is easier to debug.
             `DV_CHECK_EQ(cfg.otp_ctrl_vif.keymgr_key_o.owner_seed_valid,
                          exp_keymgr_data.owner_seed_valid)
+            exp_keymgr_data.ucie_cta_seed_valid = get_otp_digest_val(Secret4Idx) != 0;
+            if (cfg.otp_ctrl_vif.lc_seed_hw_rd_en_i == lc_ctrl_pkg::On) begin
+              exp_keymgr_data.ucie_cta_seed =
+                  {<<32 {otp_a[UcieCtaSeedOffset/4 +: UcieCtaSeedSize/4]}};
+            end else begin
+              exp_keymgr_data.ucie_cta_seed =
+                  top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlPartInvDefault[UcieCtaSeedOffset*8 +: UcieCtaSeedSize*8];
+            end
+            // Check otp_keymgr_key_t struct by item is easier to debug.
+            `DV_CHECK_EQ(cfg.otp_ctrl_vif.keymgr_key_o.ucie_cta_seed_valid,
+                         exp_keymgr_data.ucie_cta_seed_valid)
 
             // Check otp_keymgr_key_t struct all together in case there is any missed item.
             `DV_CHECK_EQ(cfg.otp_ctrl_vif.keymgr_key_o, exp_keymgr_data)
@@ -1196,6 +1216,14 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
           cov.collect_err_code_cov(26, item.d_data, access_part_idx);
         end
       end
+      "err_code_27": begin
+        if (cfg.m_lc_prog_pull_agent_cfg.vif.req) do_read_check = 0;
+        if (cfg.en_cov && do_read_check && data_phase_read) begin
+          bit [TL_DW-1:0] dai_addr = `gmv(ral.direct_access_address) >> 2 << 2;
+          int access_part_idx = get_part_index(dai_addr);
+          cov.collect_err_code_cov(27, item.d_data, access_part_idx);
+        end
+      end
       "vendor_test_digest_0", "vendor_test_digest_1",
       "creator_sw_cfg_digest_0", "creator_sw_cfg_digest_1",
       "owner_sw_cfg_digest_0", "owner_sw_cfg_digest_1",
@@ -1217,7 +1245,8 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
       "secret0_digest_0", "secret0_digest_1",
       "secret1_digest_0", "secret1_digest_1",
       "secret2_digest_0", "secret2_digest_1",
-      "secret3_digest_0", "secret3_digest_1": begin
+      "secret3_digest_0", "secret3_digest_1",
+      "secret4_digest_0", "secret4_digest_1": begin
         if (ignore_digest_chk) do_read_check = 0;
       end
       "vendor_test_read_lock",
@@ -1541,6 +1570,13 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
     void'(ral.secret3_digest[1].predict(
           .value(otp_a[PART_OTP_DIGEST_ADDRS[Secret3Idx] + 1]),
           .kind(UVM_PREDICT_DIRECT)));
+
+    void'(ral.secret4_digest[0].predict(
+          .value(otp_a[PART_OTP_DIGEST_ADDRS[Secret4Idx]]),
+          .kind(UVM_PREDICT_DIRECT)));
+    void'(ral.secret4_digest[1].predict(
+          .value(otp_a[PART_OTP_DIGEST_ADDRS[Secret4Idx] + 1]),
+          .kind(UVM_PREDICT_DIRECT)));
   endfunction
 
   function void update_digest_to_otp(int part_idx, bit [TL_DW*2-1:0] digest);
@@ -1588,6 +1624,7 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
       Secret1Idx: mem_q = otp_a[Secret1Offset / TL_SIZE : Secret1DigestOffset / TL_SIZE - 1];
       Secret2Idx: mem_q = otp_a[Secret2Offset / TL_SIZE : Secret2DigestOffset / TL_SIZE - 1];
       Secret3Idx: mem_q = otp_a[Secret3Offset / TL_SIZE : Secret3DigestOffset / TL_SIZE - 1];
+      Secret4Idx: mem_q = otp_a[Secret4Offset / TL_SIZE : Secret4DigestOffset / TL_SIZE - 1];
       default: begin
         `uvm_fatal(`gfn, $sformatf("Access unexpected partition %0d", part_idx))
       end
@@ -1811,6 +1848,10 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
       Secret3Idx: begin
         digest = {`gmv(ral.secret3_digest[1]),
                   `gmv(ral.secret3_digest[0])};
+      end
+      Secret4Idx: begin
+        digest = {`gmv(ral.secret4_digest[1]),
+                  `gmv(ral.secret4_digest[0])};
       end
       default: `uvm_fatal(`gfn, $sformatf("Partition %0d does not have digest", part_idx))
     endcase

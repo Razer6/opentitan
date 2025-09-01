@@ -85,6 +85,7 @@ module otp_ctrl_cov_bind;
   `PART_MUBI_COV(secret1, otp_ctrl_part_pkg::Secret1Idx)
   `PART_MUBI_COV(secret2, otp_ctrl_part_pkg::Secret2Idx)
   `PART_MUBI_COV(secret3, otp_ctrl_part_pkg::Secret3Idx)
+  `PART_MUBI_COV(secret4, otp_ctrl_part_pkg::Secret4Idx)
 
   // Mubi internal coverage for DAI interface access
   `DAI_MUBI_COV(vendor_test, otp_ctrl_part_pkg::VendorTestIdx)
@@ -111,6 +112,7 @@ module otp_ctrl_cov_bind;
   `DAI_MUBI_COV(secret1, otp_ctrl_part_pkg::Secret1Idx)
   `DAI_MUBI_COV(secret2, otp_ctrl_part_pkg::Secret2Idx)
   `DAI_MUBI_COV(secret3, otp_ctrl_part_pkg::Secret3Idx)
+  `DAI_MUBI_COV(secret4, otp_ctrl_part_pkg::Secret4Idx)
 
 `undef PART_MUBI_COV
 `undef DAI_MUBI_COV

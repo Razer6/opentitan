@@ -39,6 +39,10 @@
             name: Secret3Key
             value: <random>
           }
+          {
+            name: Secret4Key
+            value: <random>
+          }
         ]
         digests:
         [
@@ -53,7 +57,7 @@
             cnst_value: <random>
           }
         ]
-        num_keys: 4
+        num_keys: 5
         num_digests: 2
       }
       partitions:
@@ -2153,7 +2157,7 @@
             {
               name: ROM_PATCH_DIGEST
               size: 8
-              offset: 15880
+              offset: 15832
               ismubi: false
               isdigest: true
               iszer: false
@@ -2164,7 +2168,7 @@
             {
               name: ROM_PATCH_ZER
               size: 8
-              offset: 15888
+              offset: 15840
               ismubi: false
               isdigest: false
               iszer: true
@@ -2176,7 +2180,7 @@
           desc: ROM Patch Code section. May contain multiple signed ROM2 patches.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          size: 11304
+          size: 11256
           offset: 4592
         }
         {
@@ -2202,7 +2206,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 15896
+              offset: 15848
             }
             {
               name: SOC_FUSES_CP2_DATA
@@ -2213,12 +2217,12 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 16152
+              offset: 16104
             }
             {
               name: SOC_FUSES_CP_DIGEST
               size: 8
-              offset: 16408
+              offset: 16360
               ismubi: false
               isdigest: true
               iszer: false
@@ -2232,7 +2236,7 @@
           iskeymgr_owner: false
           zeroizable: false
           size: 520
-          offset: 15896
+          offset: 15848
         }
         {
           name: SOC_FUSES_FT
@@ -2257,7 +2261,7 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 16416
+              offset: 16368
             }
             {
               name: SOC_FUSES_FT2_DATA
@@ -2268,12 +2272,12 @@
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 16928
+              offset: 16880
             }
             {
               name: SOC_FUSES_FT_DIGEST
               size: 8
-              offset: 20000
+              offset: 19952
               ismubi: false
               isdigest: true
               iszer: false
@@ -2287,7 +2291,7 @@
           iskeymgr_owner: false
           zeroizable: false
           size: 3592
-          offset: 16416
+          offset: 16368
         }
         {
           name: HW_CFG0
@@ -2318,12 +2322,12 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 20008
+              offset: 19960
             }
             {
               name: HW_CFG0_DIGEST
               size: 8
-              offset: 20040
+              offset: 19992
               ismubi: false
               isdigest: true
               iszer: false
@@ -2334,7 +2338,7 @@
             {
               name: HW_CFG0_ZER
               size: 8
-              offset: 20048
+              offset: 20000
               ismubi: false
               isdigest: false
               iszer: true
@@ -2352,7 +2356,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 48
-          offset: 20008
+          offset: 19960
         }
         {
           name: HW_CFG1
@@ -2384,7 +2388,7 @@
               iszer: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 20056
+              offset: 20008
             }
             {
               name: EN_SRAM_IFETCH
@@ -2401,12 +2405,12 @@
               iszer: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 20057
+              offset: 20009
             }
             {
               name: HW_CFG1_DIGEST
               size: 8
-              offset: 20064
+              offset: 20016
               ismubi: false
               isdigest: true
               iszer: false
@@ -2417,7 +2421,7 @@
             {
               name: HW_CFG1_ZER
               size: 8
-              offset: 20072
+              offset: 20024
               ismubi: false
               isdigest: false
               iszer: true
@@ -2435,7 +2439,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 24
-          offset: 20056
+          offset: 20008
         }
         {
           name: HW_CFG2
@@ -2479,7 +2483,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 20080
+              offset: 20032
             }
             {
               name: MANUF_STATE
@@ -2491,12 +2495,12 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 20084
+              offset: 20036
             }
             {
               name: HW_CFG2_DIGEST
               size: 8
-              offset: 20120
+              offset: 20072
               ismubi: false
               isdigest: true
               iszer: false
@@ -2507,7 +2511,7 @@
             {
               name: HW_CFG2_ZER
               size: 8
-              offset: 20128
+              offset: 20080
               ismubi: false
               isdigest: false
               iszer: true
@@ -2525,7 +2529,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 56
-          offset: 20080
+          offset: 20032
         }
         {
           name: SECRET0
@@ -2550,7 +2554,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 20136
+              offset: 20088
             }
             {
               name: TEST_EXIT_TOKEN
@@ -2561,12 +2565,12 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 20152
+              offset: 20104
             }
             {
               name: SECRET0_DIGEST
               size: 8
-              offset: 20168
+              offset: 20120
               ismubi: false
               isdigest: true
               iszer: false
@@ -2577,7 +2581,7 @@
             {
               name: SECRET0_ZER
               size: 8
-              offset: 20176
+              offset: 20128
               ismubi: false
               isdigest: false
               iszer: true
@@ -2595,7 +2599,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 48
-          offset: 20136
+          offset: 20088
         }
         {
           name: SECRET1
@@ -2620,12 +2624,12 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 20184
+              offset: 20136
             }
             {
               name: SECRET1_DIGEST
               size: 8
-              offset: 20200
+              offset: 20152
               ismubi: false
               isdigest: true
               iszer: false
@@ -2636,7 +2640,7 @@
             {
               name: SECRET1_ZER
               size: 8
-              offset: 20208
+              offset: 20160
               ismubi: false
               isdigest: false
               iszer: true
@@ -2654,7 +2658,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 32
-          offset: 20184
+          offset: 20136
         }
         {
           name: SECRET2
@@ -2679,7 +2683,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
-              offset: 20216
+              offset: 20168
             }
             {
               name: CREATOR_ROOT_KEY_SHARE0
@@ -2690,7 +2694,7 @@
               iszer: false
               ismubi: false
               iskeymgr_owner: false
-              offset: 20232
+              offset: 20184
             }
             {
               name: CREATOR_ROOT_KEY_SHARE1
@@ -2701,7 +2705,7 @@
               iszer: false
               ismubi: false
               iskeymgr_owner: false
-              offset: 20264
+              offset: 20216
             }
             {
               name: CREATOR_SEED
@@ -2712,12 +2716,12 @@
               iszer: false
               ismubi: false
               iskeymgr_owner: false
-              offset: 20296
+              offset: 20248
             }
             {
               name: SECRET2_DIGEST
               size: 8
-              offset: 20328
+              offset: 20280
               ismubi: false
               isdigest: true
               iszer: false
@@ -2728,7 +2732,7 @@
             {
               name: SECRET2_ZER
               size: 8
-              offset: 20336
+              offset: 20288
               ismubi: false
               isdigest: false
               iszer: true
@@ -2746,7 +2750,7 @@
           iskeymgr_creator: true
           iskeymgr_owner: false
           size: 128
-          offset: 20216
+          offset: 20168
         }
         {
           name: SECRET3
@@ -2771,12 +2775,12 @@
               iszer: false
               ismubi: false
               iskeymgr_creator: false
-              offset: 20344
+              offset: 20296
             }
             {
               name: SECRET3_DIGEST
               size: 8
-              offset: 20376
+              offset: 20328
               ismubi: false
               isdigest: true
               iszer: false
@@ -2787,7 +2791,7 @@
             {
               name: SECRET3_ZER
               size: 8
-              offset: 20384
+              offset: 20336
               ismubi: false
               isdigest: false
               iszer: true
@@ -2800,6 +2804,65 @@
             '''
             Secret partition 3.
             This contains the owner seed.
+            '''
+          absorb: false
+          iskeymgr_creator: false
+          iskeymgr_owner: true
+          size: 48
+          offset: 20296
+        }
+        {
+          name: SECRET4
+          variant: Buffered
+          secret: true
+          sw_digest: false
+          hw_digest: true
+          write_lock: Digest
+          read_lock: Digest
+          key_sel: Secret4Key
+          integrity: true
+          bkout_type: false
+          zeroizable: true
+          items:
+          [
+            {
+              name: UCIE_CTA_SEED
+              inv_default: <random>
+              size: 32
+              iskeymgr_owner: true
+              isdigest: false
+              iszer: false
+              ismubi: false
+              iskeymgr_creator: false
+              offset: 20344
+            }
+            {
+              name: SECRET4_DIGEST
+              size: 8
+              offset: 20376
+              ismubi: false
+              isdigest: true
+              iszer: false
+              inv_default: <random>
+              iskeymgr_creator: false
+              iskeymgr_owner: false
+            }
+            {
+              name: SECRET4_ZER
+              size: 8
+              offset: 20384
+              ismubi: false
+              isdigest: false
+              iszer: true
+              inv_default: 0
+              iskeymgr_creator: false
+              iskeymgr_owner: false
+            }
+          ]
+          desc:
+            '''
+            Secret partition 4.
+            This contains the UCIe Chiplet Trust Anchor (CTA) seed.
             '''
           absorb: false
           iskeymgr_creator: false

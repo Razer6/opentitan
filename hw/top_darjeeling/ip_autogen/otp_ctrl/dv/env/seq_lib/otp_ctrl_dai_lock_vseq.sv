@@ -98,6 +98,9 @@ class otp_ctrl_dai_lock_vseq extends otp_ctrl_smoke_vseq;
     if (part_idx == Secret3Idx) {
       dai_addr inside `PART_ADDR_RANGE(Secret3Idx);
     }
+    if (part_idx == Secret4Idx) {
+      dai_addr inside `PART_ADDR_RANGE(Secret4Idx);
+    }
     if (part_idx == LifeCycleIdx) {
       if (write_unused_addr) {
         dai_addr inside {[PartInfo[LifeCycleIdx].offset : {OTP_ADDR_WIDTH{1'b1}}]};
@@ -132,7 +135,8 @@ class otp_ctrl_dai_lock_vseq extends otp_ctrl_smoke_vseq;
         Secret0DigestOffset,
         Secret1DigestOffset,
         Secret2DigestOffset,
-        Secret3DigestOffset
+        Secret3DigestOffset,
+        Secret4DigestOffset
       } :/ 1,
       [VendorTestOffset : '1] :/ 9
     };

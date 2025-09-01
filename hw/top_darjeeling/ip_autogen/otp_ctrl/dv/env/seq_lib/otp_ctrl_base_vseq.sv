@@ -379,6 +379,8 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     csr_rd(.ptr(ral.secret2_digest[1]), .value(val));
     csr_rd(.ptr(ral.secret3_digest[0]), .value(val));
     csr_rd(.ptr(ral.secret3_digest[1]), .value(val));
+    csr_rd(.ptr(ral.secret4_digest[0]), .value(val));
+    csr_rd(.ptr(ral.secret4_digest[1]), .value(val));
   endtask
 
   // If the partition is read/write locked, there is 20% chance we will force the internal mubi
@@ -500,6 +502,11 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
           !$urandom_range(0, 4)) begin
         forced_mubi_part_access[Secret3Idx].write_lock = 1;
       end
+      if ((`gmv(ral.secret4_digest[0]) ||
+           `gmv(ral.secret4_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[Secret4Idx].write_lock = 1;
+      end
 
       // CSR read locks
       if ((`gmv(ral.vendor_test_read_lock) == 0) && !$urandom_range(0, 4)) begin
@@ -575,6 +582,11 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
            `gmv(ral.secret3_digest[1])) &&
           !$urandom_range(0, 4)) begin
         forced_mubi_part_access[Secret3Idx].read_lock = 1;
+      end
+      if ((`gmv(ral.secret4_digest[0]) ||
+           `gmv(ral.secret4_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[Secret4Idx].read_lock = 1;
       end
 
       foreach (forced_mubi_part_access[i]) begin

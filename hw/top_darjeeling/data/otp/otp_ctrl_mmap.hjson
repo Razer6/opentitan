@@ -41,6 +41,10 @@
                 name:  "Secret3Key",
                 value: "<random>",
             }
+            {
+                name:  "Secret4Key",
+                value: "<random>",
+            }
         ]
         digests: [
             // This is the consistency digest used by all partitions.
@@ -1390,6 +1394,30 @@
             ],
             desc: '''Secret partition 3.
             This contains the owner seed.
+            '''
+        }
+        {
+            name:       "SECRET4",
+            variant:    "Buffered",
+            secret:     true,
+            sw_digest:  false,
+            hw_digest:  true,
+            write_lock: "Digest",
+            read_lock:  "Digest",
+            key_sel:    "Secret4Key",
+            integrity:  true,
+            bkout_type: false,
+            zeroizable: true,
+            items: [
+                {
+                    name: "UCIE_CTA_SEED",
+                    inv_default: "<random>",
+                    size: "32",
+                    iskeymgr_owner: true
+                }
+            ],
+            desc: '''Secret partition 4.
+            This contains the UCIe Chiplet Trust Anchor (CTA) seed.
             '''
         }
         {

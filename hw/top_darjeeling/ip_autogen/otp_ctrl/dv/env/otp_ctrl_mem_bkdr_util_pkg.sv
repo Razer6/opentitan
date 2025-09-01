@@ -258,6 +258,28 @@ package otp_ctrl_mem_bkdr_util_pkg;
     mem_bkdr_util_h.write64(Secret3DigestOffset, digest);
   endfunction
 
+  function automatic void otp_write_secret4_partition(
+      mem_bkdr_util_pkg::mem_bkdr_util mem_bkdr_util_h,
+      bit [UcieCtaSeedSize*8-1:0] ucie_cta_seed
+  );
+    bit [Secret4DigestSize*8-1:0] digest;
+    bit [bus_params_pkg::BUS_DW-1:0] partition_data[$];
+    bit [UcieCtaSeedSize*8-1:0] scrambled_ucie_cta_seed;
+
+    for (int i = 0; i < UcieCtaSeedSize; i += 8) begin
+      scrambled_ucie_cta_seed[i*8+:64] = scramble_data(
+          ucie_cta_seed[i*8+:64], Secret4Idx);
+      mem_bkdr_util_h.write64(i + UcieCtaSeedOffset,
+                              scrambled_ucie_cta_seed[i*8+:64]);
+    end
+
+    partition_data = {<<32{
+      scrambled_ucie_cta_seed
+    }};
+    digest = cal_digest(Secret4Idx, partition_data);
+    mem_bkdr_util_h.write64(Secret4DigestOffset, digest);
+  endfunction
+
   // Functions that clear the provisioning state of the buffered partitions.
   // This is useful in tests that make front-door accesses for provisioning purposes.
   function automatic void otp_clear_hw_cfg0_partition(
@@ -313,6 +335,14 @@ package otp_ctrl_mem_bkdr_util_pkg;
   );
     for (int i = 0; i < Secret3Size; i += 4) begin
       mem_bkdr_util_h.write32(i + Secret3Offset, 32'h0);
+    end
+  endfunction
+
+  function automatic void otp_clear_secret4_partition(
+      mem_bkdr_util_pkg::mem_bkdr_util mem_bkdr_util_h
+  );
+    for (int i = 0; i < Secret4Size; i += 4) begin
+      mem_bkdr_util_h.write32(i + Secret4Offset, 32'h0);
     end
   endfunction
 
