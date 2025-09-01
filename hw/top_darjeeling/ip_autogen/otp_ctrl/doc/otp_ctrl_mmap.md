@@ -121,14 +121,14 @@ It has been generated with ./util/topgen.py -t hw/top_darjeeling/data/top_darjee
 |         |                       |            |              |      64bit       |                      PLAT_OWNER_AUTH_SLOT3_ZER                      |     0xDE0      |     8      |
 |   13    |        EXT_NVM        |    1032    |     yes      |      32bit       |                  EXT_NVM_ANTIREPLAY_FRESHNESS_CNT                   |     0xDE8      |    1024    |
 |         |                       |            |              |      64bit       |                             EXT_NVM_ZER                             |     0x11E8     |     8      |
-|   14    |       ROM_PATCH       |   11256    |     yes      |      32bit       |                           ROM_PATCH_DATA                            |     0x11F0     |    9192    |
-|         |                       |            |              |      64bit       |             [ROM_PATCH_DIGEST](#Reg_rom_patch_digest_0)             |     0x3DD8     |     8      |
-|         |                       |            |              |      64bit       |                            ROM_PATCH_ZER                            |     0x3DE0     |     8      |
-|   15    |     SOC_FUSES_CP      |    520     |      no      |      32bit       |                         SOC_FUSES_CP1_DATA                          |     0x3DE8     |    256     |
-|         |                       |            |              |      32bit       |                         SOC_FUSES_CP2_DATA                          |     0x3EE8     |    256     |
-|         |                       |            |              |      64bit       |          [SOC_FUSES_CP_DIGEST](#Reg_soc_fuses_cp_digest_0)          |     0x3FE8     |     8      |
-|   16    |     SOC_FUSES_FT      |    3592    |      no      |      32bit       |                         SOC_FUSES_FT1_DATA                          |     0x3FF0     |    512     |
-|         |                       |            |              |      32bit       |                         SOC_FUSES_FT2_DATA                          |     0x41F0     |    3072    |
+|   14    |       ROM_PATCH       |   10744    |     yes      |      32bit       |                           ROM_PATCH_DATA                            |     0x11F0     |    9192    |
+|         |                       |            |              |      64bit       |             [ROM_PATCH_DIGEST](#Reg_rom_patch_digest_0)             |     0x3BD8     |     8      |
+|         |                       |            |              |      64bit       |                            ROM_PATCH_ZER                            |     0x3BE0     |     8      |
+|   15    |     SOC_FUSES_CP      |    392     |      no      |      32bit       |                         SOC_FUSES_CP1_DATA                          |     0x3BE8     |    256     |
+|         |                       |            |              |      32bit       |                         SOC_FUSES_CP2_DATA                          |     0x3CE8     |    128     |
+|         |                       |            |              |      64bit       |          [SOC_FUSES_CP_DIGEST](#Reg_soc_fuses_cp_digest_0)          |     0x3D68     |     8      |
+|   16    |     SOC_FUSES_FT      |    4232    |      no      |      32bit       |                         SOC_FUSES_FT1_DATA                          |     0x3D70     |    384     |
+|         |                       |            |              |      32bit       |                         SOC_FUSES_FT2_DATA                          |     0x3EF0     |    3840    |
 |         |                       |            |              |      64bit       |          [SOC_FUSES_FT_DIGEST](#Reg_soc_fuses_ft_digest_0)          |     0x4DF0     |     8      |
 |   17    |        HW_CFG0        |     48     |     yes      |      32bit       |                              DEVICE_ID                              |     0x4DF8     |     32     |
 |         |                       |            |              |      64bit       |               [HW_CFG0_DIGEST](#Reg_hw_cfg0_digest_0)               |     0x4E18     |     8      |

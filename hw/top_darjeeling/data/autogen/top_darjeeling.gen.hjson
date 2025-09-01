@@ -3513,7 +3513,7 @@
               {
                 name: ROM_PATCH_DIGEST
                 size: 8
-                offset: 15832
+                offset: 15320
                 ismubi: false
                 isdigest: true
                 iszer: false
@@ -3524,7 +3524,7 @@
               {
                 name: ROM_PATCH_ZER
                 size: 8
-                offset: 15840
+                offset: 15328
                 ismubi: false
                 isdigest: false
                 iszer: true
@@ -3536,7 +3536,7 @@
             desc: ROM Patch Code section. May contain multiple signed ROM2 patches.
             iskeymgr_creator: false
             iskeymgr_owner: false
-            size: 11256
+            size: 10744
             offset: 4592
           }
           {
@@ -3562,23 +3562,23 @@
                 iskeymgr_creator: false
                 iskeymgr_owner: false
                 inv_default: 0
-                offset: 15848
+                offset: 15336
               }
               {
                 name: SOC_FUSES_CP2_DATA
-                size: 256
+                size: 128
                 isdigest: false
                 iszer: false
                 ismubi: false
                 iskeymgr_creator: false
                 iskeymgr_owner: false
                 inv_default: 0
-                offset: 16104
+                offset: 15592
               }
               {
                 name: SOC_FUSES_CP_DIGEST
                 size: 8
-                offset: 16360
+                offset: 15720
                 ismubi: false
                 isdigest: true
                 iszer: false
@@ -3591,8 +3591,8 @@
             iskeymgr_creator: false
             iskeymgr_owner: false
             zeroizable: false
-            size: 520
-            offset: 15848
+            size: 392
+            offset: 15336
           }
           {
             name: SOC_FUSES_FT
@@ -3610,25 +3610,25 @@
             [
               {
                 name: SOC_FUSES_FT1_DATA
-                size: 512
+                size: 384
                 isdigest: false
                 iszer: false
                 ismubi: false
                 iskeymgr_creator: false
                 iskeymgr_owner: false
                 inv_default: 0
-                offset: 16368
+                offset: 15728
               }
               {
                 name: SOC_FUSES_FT2_DATA
-                size: 3072
+                size: 3840
                 isdigest: false
                 iszer: false
                 ismubi: false
                 iskeymgr_creator: false
                 iskeymgr_owner: false
                 inv_default: 0
-                offset: 16880
+                offset: 16112
               }
               {
                 name: SOC_FUSES_FT_DIGEST
@@ -3646,8 +3646,8 @@
             iskeymgr_creator: false
             iskeymgr_owner: false
             zeroizable: false
-            size: 3592
-            offset: 16368
+            size: 4232
+            offset: 15728
           }
           {
             name: HW_CFG0

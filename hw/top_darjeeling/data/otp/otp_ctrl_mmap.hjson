@@ -1126,7 +1126,7 @@
                 }
                 {
                    name: "SOC_FUSES_CP2_DATA",
-                   size: "256"
+                   size: "128"
                 }
             ],
             desc: ''' SoC fuses partition for the Chip Probe (CP) manufacturing stage.
@@ -1147,11 +1147,11 @@
             items: [
                 {
                    name: "SOC_FUSES_FT1_DATA",
-                   size: "512"
+                   size: "384"
                 }
                 {
                    name: "SOC_FUSES_FT2_DATA",
-                   size: "3072"
+                   size: "3840"
                 }
             ],
             desc: ''' SoC fuses partition for the Factory Testing (FT) manufacturing stage.
