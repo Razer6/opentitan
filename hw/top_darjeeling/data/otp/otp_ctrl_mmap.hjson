@@ -119,13 +119,11 @@
                     '''
                 }
                 {
-                    name: "CREATOR_SW_CFG_AST_INIT_EN",
+                    name: "CREATOR_SW_CFG_AST_INIT_SIZE",
                     size: "4",
                     desc: '''
-                    Controls whether or not the CREATOR_SW_CFG_AST_CFG values
+                    Controls how many 32-bit words from the CREATOR_SW_CFG_AST_CFG item
                     get copied to the AST CSRs during ROM execution.
-                    A value of kMultiBitBool4True enables copying; all other
-                    values disable.
                     '''
                 }
                 {
@@ -213,24 +211,48 @@
                     '''
                 }
                 {
-                    name: "CREATOR_SW_CFG_RMA_SPIN_EN",
-                    size: "4",
-                    desc: '''
-                    Whether or not to enable a busy-wait delay loop in the ROM,
-                    when a specific SW strapping configuration is applied during
-                    boot, to provide time to trigger an RMA life-cycle transition
-                    over JTAG. A value of kHardenedBoolTrue enables, all other
-                    values disable.
-                    '''
+                    name: "CREATOR_SW_CFG_RNG_REPCNT_THRESHOLDS",
+                    size: "4"
                 }
                 {
-                    name: "CREATOR_SW_CFG_RMA_SPIN_CYCLES",
-                    size: "4",
-                    desc: '''
-                    The number of Ibex clock cycles to spin for when waiting for
-                    an RMA transition. Used in combination with the
-                    CREATOR_SW_CFG_RMA_SPIN_EN field.
-                    '''
+                    name: "CREATOR_SW_CFG_RNG_REPCNTS_THRESHOLDS",
+                    size: "4"
+                }
+                {
+                    name: "CREATOR_SW_CFG_RNG_ADAPTP_HI_THRESHOLDS",
+                    size: "4"
+                }
+                {
+                    name: "CREATOR_SW_CFG_RNG_ADAPTP_LO_THRESHOLDS",
+                    size: "4"
+                }
+                {
+                    name: "CREATOR_SW_CFG_RNG_BUCKET_THRESHOLDS",
+                    size: "4"
+                }
+                {
+                    name: "CREATOR_SW_CFG_RNG_MARKOV_HI_THRESHOLDS",
+                    size: "4"
+                }
+                {
+                    name: "CREATOR_SW_CFG_RNG_MARKOV_LO_THRESHOLDS",
+                    size: "4"
+                }
+                {
+                    name: "CREATOR_SW_CFG_RNG_EXTHT_HI_THRESHOLDS",
+                    size: "4"
+                }
+                {
+                    name: "CREATOR_SW_CFG_RNG_EXTHT_LO_THRESHOLDS",
+                    size: "4"
+                }
+                {
+                    name: "CREATOR_SW_CFG_RNG_ALERT_THRESHOLD",
+                    size: "4"
+                }
+                {
+                    name: "CREATOR_SW_CFG_RNG_HEALTH_CONFIG_DIGEST",
+                    size: "4"
                 }
                 {
                     name: "CREATOR_SW_CFG_SRAM_KEY_RENEW_EN",
@@ -269,19 +291,6 @@
                     Should be configured to one of several
                     `shutdown_error_redact_t` values. See
                     `sw/device/silicon_creator/lib/shutdown.h` for more details.
-                    '''
-                }
-                {
-                    name: "OWNER_SW_CFG_ROM_BOOTSTRAP_DIS",
-                    size: "4",
-                    desc: '''
-                    Whether or not to disable ROM bootstrap mechanism. A value
-                    of kHardenedBoolTrue disable bootstrap mechanism in the ROM,
-                    while all other values enable it. Note, the provisioning
-                    flow should take care when to program this field if it is
-                    used by a SKU, as there is no way to get firmware into flash
-                    in a PROD LC state if a valid ROM_EXT does not already exist
-                    in flash once this value is configured to true.
                     '''
                 }
                 {
@@ -477,7 +486,7 @@
                 {
                     name: "OWNERSHIP_SLOT_STATE_ROT_OWNER_AUTH",
                     size: "16"
-                    desc: ''' Creator Ownership transfer state management
+                    desc: ''' RoT Owner Ownership transfer state management
                     OWNERSHIP_ST_RAW:       ownership not yet claimed (factory default)
                     OWNERSHIP_ST_LOCKED0:   first ownership slot claimed
                     OWNERSHIP_ST_RELEASED0: first ownership slot released (assets have been cleared, ready to xfer)
@@ -488,7 +497,7 @@
                 {
                     name: "OWNERSHIP_SLOT_STATE_PLAT_INTEG_AUTH",
                     size: "16"
-                    desc: ''' Creator Ownership transfer state management
+                    desc: ''' Platform Integrator Ownership transfer state management
                     OWNERSHIP_ST_RAW:       ownership not yet claimed (factory default)
                     OWNERSHIP_ST_LOCKED0:   first ownership slot claimed
                     OWNERSHIP_ST_RELEASED0: first ownership slot released (assets have been cleared, ready to xfer)
@@ -499,7 +508,7 @@
                 {
                     name: "OWNERSHIP_SLOT_STATE_PLAT_OWNER_AUTH",
                     size: "16"
-                    desc: ''' Creator Ownership transfer state management
+                    desc: ''' Platform Owner Ownership transfer state management
                     OWNERSHIP_ST_RAW:       ownership not yet claimed (factory default)
                     OWNERSHIP_ST_LOCKED0:   first ownership slot claimed
                     OWNERSHIP_ST_RELEASED0: first ownership slot released (assets have been cleared, ready to xfer)
@@ -644,6 +653,9 @@
                 {
                     name: "ROT_OWNER_AUTH_SLOT0_KEY_DEVICE_ID",
                     size: "32"
+                    desc: ''' A key identifier used to make the ROT_OWNER_AUTH_SLOT0 item device specific.
+                    This must be a device specific value known at FT, like for example the SoC manufacturing ID.
+                    '''
                 }
                 {
                     name: "ROT_OWNER_AUTH_SLOT0_KEY_METADATA",
@@ -680,6 +692,46 @@
             bkout_type: false,
             zeroizable: true,
             items: [
+                {
+                    name: "ROT_OWNER_AUTH_SLOT1_NON_RAW_MFW_CODESIGN_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "ROT_OWNER_AUTH_SLOT1_NON_RAW_MFW_CODESIGN_KEY_ROLE",
+                    size: "4"
+                }
+                {
+                    name: "ROT_OWNER_AUTH_SLOT1_NON_RAW_MFW_CODESIGN_KEY",
+                    size: "64"
+                    desc: ''' Public Key used to verify manufacturing and debug firmware images.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Final Test (FT) stage when LC = TEST_UNLOCKED.
+                    Together with the ROM2_PATCH_SIGVERIFY_KEY and KEYMANIFEST_KEY keys, and their
+                    associated device ID and metadata (stored in resp. KEY_DEVICE_ID and KEY_METADATA),
+                    this key is signed with a Silicon Creator endorsed ECDSA P-256 key in order to protect
+                    it from supply-chain and manufacturing attacks.
+                    '''
+                }
+                {
+                    name: "ROT_OWNER_AUTH_SLOT1_ROM2_PATCH_SIGVERIFY_KEY_TYPE",
+                    size: "4"
+                }
+                {
+                    name: "ROT_OWNER_AUTH_SLOT1_ROM2_PATCH_SIGVERIFY_KEY_ROLE",
+                    size: "4"
+                }
+                {
+                    name: "ROT_OWNER_AUTH_SLOT1_ROM2_PATCH_SIGVERIFY_KEY",
+                    size: "64"
+                    desc: ''' Public Key used to verify the ROM2 OTP based patch.
+                    Key Type: ECC NIST-P256 Curve.
+                    It is expected to be provisioned at Final Test (FT) stage when LC = TEST_UNLOCKED.
+                    Together with the NON_RAW_MFW_CODESIGN_KEY and KEYMANIFEST_KEY keys, and their
+                    associated device ID and metadata (stored in resp. KEY_DEVICE_ID and KEY_METADATA),
+                    this key is signed with a Silicon Creator endorsed ECDSA P-256 key in order to protect
+                    it from supply-chain and manufacturing attacks.
+                    '''
+                }
                 {
                     name: "ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE",
                     size: "4"

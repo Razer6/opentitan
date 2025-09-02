@@ -116,7 +116,7 @@ package otp_ctrl_part_pkg;
     '{
       variant:          Unbuffered,
       offset:           15'd72,
-      size:             192,
+      size:             224,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
       sw_digest:        1'b1,
@@ -131,8 +131,8 @@ package otp_ctrl_part_pkg;
     // OWNER_SW_CFG
     '{
       variant:          Unbuffered,
-      offset:           15'd264,
-      size:             976,
+      offset:           15'd296,
+      size:             968,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
       sw_digest:        1'b1,
@@ -147,7 +147,7 @@ package otp_ctrl_part_pkg;
     // OWNERSHIP_SLOT_STATE
     '{
       variant:          Unbuffered,
-      offset:           15'd1240,
+      offset:           15'd1264,
       size:             56,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -163,7 +163,7 @@ package otp_ctrl_part_pkg;
     // ROT_CREATOR_IDENTITY
     '{
       variant:          Unbuffered,
-      offset:           15'd1296,
+      offset:           15'd1320,
       size:             800,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -179,7 +179,7 @@ package otp_ctrl_part_pkg;
     // ROT_OWNER_AUTH_SLOT0
     '{
       variant:          Unbuffered,
-      offset:           15'd2096,
+      offset:           15'd2120,
       size:             344,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -195,8 +195,8 @@ package otp_ctrl_part_pkg;
     // ROT_OWNER_AUTH_SLOT1
     '{
       variant:          Unbuffered,
-      offset:           15'd2440,
-      size:             160,
+      offset:           15'd2464,
+      size:             304,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
       sw_digest:        1'b1,
@@ -211,7 +211,7 @@ package otp_ctrl_part_pkg;
     // PLAT_INTEG_AUTH_SLOT0
     '{
       variant:          Unbuffered,
-      offset:           15'd2600,
+      offset:           15'd2768,
       size:             160,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -227,7 +227,7 @@ package otp_ctrl_part_pkg;
     // PLAT_INTEG_AUTH_SLOT1
     '{
       variant:          Unbuffered,
-      offset:           15'd2760,
+      offset:           15'd2928,
       size:             160,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -243,7 +243,7 @@ package otp_ctrl_part_pkg;
     // PLAT_OWNER_AUTH_SLOT0
     '{
       variant:          Unbuffered,
-      offset:           15'd2920,
+      offset:           15'd3088,
       size:             160,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -259,7 +259,7 @@ package otp_ctrl_part_pkg;
     // PLAT_OWNER_AUTH_SLOT1
     '{
       variant:          Unbuffered,
-      offset:           15'd3080,
+      offset:           15'd3248,
       size:             160,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -275,7 +275,7 @@ package otp_ctrl_part_pkg;
     // PLAT_OWNER_AUTH_SLOT2
     '{
       variant:          Unbuffered,
-      offset:           15'd3240,
+      offset:           15'd3408,
       size:             160,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -291,7 +291,7 @@ package otp_ctrl_part_pkg;
     // PLAT_OWNER_AUTH_SLOT3
     '{
       variant:          Unbuffered,
-      offset:           15'd3400,
+      offset:           15'd3568,
       size:             160,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -307,7 +307,7 @@ package otp_ctrl_part_pkg;
     // EXT_NVM
     '{
       variant:          Unbuffered,
-      offset:           15'd3560,
+      offset:           15'd3728,
       size:             1032,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -323,8 +323,8 @@ package otp_ctrl_part_pkg;
     // ROM_PATCH
     '{
       variant:          Unbuffered,
-      offset:           15'd4592,
-      size:             10744,
+      offset:           15'd4760,
+      size:             10576,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
       sw_digest:        1'b1,
