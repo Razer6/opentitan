@@ -129,6 +129,10 @@ package otp_ctrl_pkg;
     logic creator_seed_valid;
     logic [KeyMgrKeyWidth-1:0] owner_seed;
     logic owner_seed_valid;
+  % if use_rivos_config:
+    logic [KeyMgrKeyWidth-1:0] ucie_cta_seed;
+    logic ucie_cta_seed_valid;
+  % endif
   } otp_keymgr_key_t;
 
   parameter otp_keymgr_key_t OTP_KEYMGR_KEY_DEFAULT = '{
@@ -138,6 +142,10 @@ package otp_ctrl_pkg;
     creator_root_key_share1_valid: 1'b1,
     creator_seed: 256'hc7c50b38655cc87f821e5b07fed85d2c07e222a9e00bef308b3eccba0ba406fa,
     creator_seed_valid: 1'b1,
+ % if use_rivos_config:
+    ucie_cta_seed: 256'he059e3a1dd7b2a1ade040a8986048cfbc3fe92188d20678cd87015c348426c5e,
+    ucie_cta_seed_valid: 1'b1,
+  % endif
     owner_seed: 256'hf5052c0f14782d8b066be9f49c0b2000d3643ff3723ea7db972f69cd3e2e3e68,
     owner_seed_valid: 1'b1
   };
