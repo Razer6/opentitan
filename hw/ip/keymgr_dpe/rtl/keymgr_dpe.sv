@@ -809,6 +809,9 @@ module keymgr_dpe
   assign unused_active_policy = active_key_slot.key_policy;
   assign unused_active_key_version = active_key_slot.max_key_version;
 
+  logic unused_cta_seed;
+  assign unused_cta_seed = ^{otp_key_i.ucie_cta_seed, otp_key_i.ucie_cta_seed_valid};
+
   `ASSERT_INIT(KeyWidthEqualityCheck_A, otp_ctrl_pkg::KeyMgrKeyWidth == KeyWidth)
 
   `ASSERT_INIT_NET(KmacMaskCheck_A, KmacEnMasking == kmac_en_masking_i)
