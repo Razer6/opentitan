@@ -17,7 +17,7 @@ import rdplib_pkg::*;
 RDP_GATE_XOR2
   #(
     .WIDTH (Width),
-    .STATUS(DONT_TOUCH)
+    .STATUS(SIZE_ONLY)
   )
   prim_xor
   (

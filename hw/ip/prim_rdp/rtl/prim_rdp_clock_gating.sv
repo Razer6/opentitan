@@ -21,7 +21,7 @@ import rdplib_pkg::*;
 
 RDP_GATE_CKG
 #(
-  .STATUS(DONT_TOUCH)
+  .STATUS(SIZE_ONLY)
 )
 ckg_prim
 (

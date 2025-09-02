@@ -20,7 +20,7 @@ import rdplib_pkg::*;
 
 RDP_GATE_CKBUF
   #(
-    .STATUS(DONT_TOUCH)
+    .STATUS(SIZE_ONLY)
   )
   ckbuf_prim
   (

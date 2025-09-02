@@ -16,7 +16,7 @@ import rdplib_pkg::*;
 RDP_GATE_BUF
 #(
   .WIDTH (Width),
-  .STATUS(DONT_TOUCH)
+  .STATUS(SIZE_ONLY)
 )
 buf_prim
 (

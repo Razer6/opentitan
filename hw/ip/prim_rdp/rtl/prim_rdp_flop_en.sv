@@ -43,7 +43,7 @@ module prim_rdp_flop_en #(
     logic clk;
 
     RDP_GATE_CKG #(
-      .STATUS(DONT_TOUCH)
+      .STATUS(SIZE_ONLY)
     ) prim_aff_gate  (
       .clkin (clk_i),
       .en    (en),
@@ -55,7 +55,7 @@ module prim_rdp_flop_en #(
     for(genvar i = 0; i < Width; i++) begin : gen_rdp_gate_aff
       if(ResetValue[i]) begin : gen_pos_reset
         RDP_GATE_AFFS #(
-          .STATUS(DONT_TOUCH)
+          .STATUS(SIZE_ONLY)
         ) prim_aff (
           .clk   (clk),        ///< posedge triggered clock
           .rst_l (rst_ni),     ///< active low async reset
@@ -67,7 +67,7 @@ module prim_rdp_flop_en #(
         );
       end else begin  : gen_neg_reset
         RDP_GATE_AFFR #(
-          .STATUS(DONT_TOUCH)
+          .STATUS(SIZE_ONLY)
         ) prim_aff (
           .clk   (clk),        ///< posedge triggered clock
           .rst_l (rst_ni),     ///< active low async reset

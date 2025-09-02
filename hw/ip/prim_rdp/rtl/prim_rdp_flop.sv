@@ -38,7 +38,7 @@ module prim_rdp_flop #(
         if(ResetValue[i]) begin : gen_pos_reset
           RDP_GATE_AFFS
             #(
-              .STATUS(DONT_TOUCH)
+              .STATUS(SIZE_ONLY)
             )
             prim_aff
             (
@@ -54,7 +54,7 @@ module prim_rdp_flop #(
         else begin : gen_neg_reset
           RDP_GATE_AFFR
             #(
-              .STATUS(DONT_TOUCH)
+              .STATUS(SIZE_ONLY)
             )
             prim_aff
             (
