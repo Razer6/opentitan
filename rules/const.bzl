@@ -144,12 +144,6 @@ CONST = struct(
         PERSO_INITIAL = 0x00000000,
         PERSONALIZED = 0x53524550,  # ASCII `PERS`.
     ),
-    # SoC DBG state. Must match the definitions in lc_ctrl_state.hjson
-    SCD = struct(
-        SOC_DBG_RAW = 0x0,
-        SOC_DBG_PRE_PROD = 0xE03A14B4,
-        SOC_DBG_PROD = 0xE63F9CF6,
-    ),
 )
 
 _DEFAULT_LC_STATES = [
