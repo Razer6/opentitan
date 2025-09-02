@@ -171,7 +171,7 @@ otp_json(
         otp_partition(
             name = "HW_CFG2",
             items = {
-                "SOC_DBG_STATE": "SOC_DBG_PROD",
+                "SOC_DBG_STATE": "PROD",
             },
             lock = True,
         ),
@@ -254,7 +254,7 @@ otp_json(
         otp_partition(
             name = "HW_CFG2",
             items = {
-                "SOC_DBG_STATE": "SOC_DBG_RAW",
+                "SOC_DBG_STATE": "BLANK",
             },
             lock = True,
         ),
@@ -275,7 +275,7 @@ otp_json(
         otp_partition(
             name = "HW_CFG2",
             items = {
-                "SOC_DBG_STATE": "SOC_DBG_PRE_PROD",
+                "SOC_DBG_STATE": "PRE_PROD",
             },
             lock = True,
         ),
@@ -296,7 +296,7 @@ otp_json(
         otp_partition(
             name = "HW_CFG2",
             items = {
-                "SOC_DBG_STATE": "SOC_DBG_PROD",
+                "SOC_DBG_STATE": "PROD",
             },
             lock = True,
         ),
