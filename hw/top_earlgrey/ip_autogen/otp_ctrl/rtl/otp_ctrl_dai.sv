@@ -494,7 +494,7 @@ module otp_ctrl_dai
              (PartInfo[part_idx].variant == Buffered && PartInfo[part_idx].hw_digest &&
               base_sel_q == DaiOffset &&
               otp_addr_o[OtpAddrWidth-1:2] < digest_addr_lut[part_idx][OtpAddrWidth-1:2]) ||
-             // If this is a write to an unbuffered partition
+             // If this is a write to an unbuffered partition and not to the zeroized item
              (PartInfo[part_idx].variant != Buffered && base_sel_q == DaiOffset &&
               !(PartInfo[part_idx].zeroizable &&
                 (otp_addr_o[OtpAddrWidth-1:2] ==

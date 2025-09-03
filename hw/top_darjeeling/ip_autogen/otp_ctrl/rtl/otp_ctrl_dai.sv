@@ -496,9 +496,11 @@ module otp_ctrl_dai
              (PartInfo[part_idx].variant == Buffered && PartInfo[part_idx].hw_digest &&
               base_sel_q == DaiOffset &&
               otp_addr_o[OtpAddrWidth-1:2] < digest_addr_lut[part_idx][OtpAddrWidth-1:2]) ||
-             // If this is a write to an unbuffered partition
+             // If this is a write to an unbuffered partition and not to the zeroized item
+             // Rivos: Write to zeroized field is permitted for special modes (mode != 2'b00)
              (PartInfo[part_idx].variant != Buffered && base_sel_q == DaiOffset &&
               !(PartInfo[part_idx].zeroizable &&
+                otp_macro_mode_i == 2'b00 && // Rivos
                 (otp_addr_o[OtpAddrWidth-1:2] ==
                  zeroize_addr_lut[part_idx][OtpAddrWidth-1:2]))))) begin
           otp_req_o = 1'b1;
@@ -537,8 +539,10 @@ module otp_ctrl_dai
               base_sel_q == DaiOffset &&
               otp_addr_o[OtpAddrWidth-1:2] < digest_addr_lut[part_idx][OtpAddrWidth-1:2]) ||
              // If this is a write to an unbuffered partition and not to the zeroized item
+             // Rivos: Write to zeroized field is permitted for special modes (mode != 2'b00)
              (PartInfo[part_idx].variant != Buffered && base_sel_q == DaiOffset &&
               !(PartInfo[part_idx].zeroizable &&
+                otp_macro_mode_i == 2'b00 && // Rivos
                 (otp_addr_o[OtpAddrWidth-1:2] ==
                  zeroize_addr_lut[part_idx][OtpAddrWidth-1:2]))))) begin
 
