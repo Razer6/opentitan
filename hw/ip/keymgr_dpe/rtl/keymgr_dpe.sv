@@ -260,10 +260,7 @@ module keymgr_dpe
     assign kmac_data_truncated[i] = kmac_data[i][KeyWidth-1:0];
   end
 
-  hw_key_req_t root_key;
-  assign root_key.key = '{otp_key_i.creator_root_key_share1,
-                          otp_key_i.creator_root_key_share0};
-
+  logic creator_key_valid;
   prim_flop_2sync # (
     .Width(1)
   ) u_key_valid_sync (
@@ -271,8 +268,33 @@ module keymgr_dpe
     .rst_ni,
     .d_i(otp_key_i.creator_root_key_share0_valid &
          otp_key_i.creator_root_key_share1_valid),
-    .q_o(root_key.valid)
+    .q_o(creator_key_valid)
   );
+
+  logic cta_seed_valid;
+  prim_flop_2sync # (
+    .Width(1)
+  ) u_cta_seed_valid_sync (
+    .clk_i,
+    .rst_ni,
+    .d_i(otp_key_i.ucie_cta_seed_share0_valid &
+         otp_key_i.ucie_cta_seed_share1_valid),
+    .q_o(cta_seed_valid)
+  );
+
+  // Rivos: Mux between creator and CTA seed as a root key
+  hw_key_req_t root_key;
+  always_comb begin
+    if (reg2hw.control_shadowed.root_key_sel.q == 1'b1) begin
+      root_key.key = '{otp_key_i.ucie_cta_seed_share1,
+                       otp_key_i.ucie_cta_seed_share0};
+      root_key.valid = cta_seed_valid;
+    end else begin
+      root_key.key = '{otp_key_i.creator_root_key_share1,
+                       otp_key_i.creator_root_key_share0};
+      root_key.valid = creator_key_valid;
+    end
+  end
 
   keymgr_dpe_slot_t active_key_slot;
   logic op_start;
@@ -816,12 +838,6 @@ module keymgr_dpe
   logic [KeyVersionWidth-1:0] unused_active_key_version;
   assign unused_active_policy = active_key_slot.key_policy;
   assign unused_active_key_version = active_key_slot.max_key_version;
-
-  logic unused_cta_seed;
-  assign unused_cta_seed = ^{otp_key_i.ucie_cta_seed_share0,
-                             otp_key_i.ucie_cta_seed_share1,
-                             otp_key_i.ucie_cta_seed_share0_valid,
-                             otp_key_i.ucie_cta_seed_share1_valid};
 
   `ASSERT_INIT(KeyWidthEqualityCheck_A, otp_ctrl_pkg::KeyMgrKeyWidth == KeyWidth)
 

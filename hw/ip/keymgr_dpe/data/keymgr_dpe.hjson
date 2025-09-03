@@ -537,6 +537,16 @@ countermeasures: [
           desc: '''
             Only apply software binding as a message input to the advance operation.
           '''
+        },
+        {
+          bits: "23"
+          name: "ROOT_KEY_SEL",
+          resval: "0"
+          desc: '''
+            The source of the root key used for the load root key operation.
+            0: Select creator key
+            1: Select UCIe CTA seed as root key
+          '''
         }
       ],
     },

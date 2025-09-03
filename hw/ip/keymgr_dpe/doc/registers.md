@@ -176,18 +176,19 @@ Other values are reserved.
 Key manager operation controls
 - Offset: `0x18`
 - Reset default: `0x10`
-- Reset mask: `0x5df070`
+- Reset mask: `0xddf070`
 - Register enable: [`CFG_REGWEN`](#cfg_regwen)
 
 ### Fields
 
 ```wavejson
-{"reg": [{"bits": 4}, {"name": "OPERATION", "bits": 3, "attr": ["rw"], "rotate": -90}, {"bits": 5}, {"name": "DEST_SEL", "bits": 2, "attr": ["rw"], "rotate": -90}, {"name": "SLOT_SRC_SEL", "bits": 3, "attr": ["rw"], "rotate": -90}, {"bits": 1}, {"name": "SLOT_DST_SEL", "bits": 3, "attr": ["rw"], "rotate": -90}, {"bits": 1}, {"name": "SW_BINDING_ONLY", "bits": 1, "attr": ["rw"], "rotate": -90}, {"bits": 9}], "config": {"lanes": 1, "fontsize": 10, "vspace": 170}}
+{"reg": [{"bits": 4}, {"name": "OPERATION", "bits": 3, "attr": ["rw"], "rotate": -90}, {"bits": 5}, {"name": "DEST_SEL", "bits": 2, "attr": ["rw"], "rotate": -90}, {"name": "SLOT_SRC_SEL", "bits": 3, "attr": ["rw"], "rotate": -90}, {"bits": 1}, {"name": "SLOT_DST_SEL", "bits": 3, "attr": ["rw"], "rotate": -90}, {"bits": 1}, {"name": "SW_BINDING_ONLY", "bits": 1, "attr": ["rw"], "rotate": -90}, {"name": "ROOT_KEY_SEL", "bits": 1, "attr": ["rw"], "rotate": -90}, {"bits": 8}], "config": {"lanes": 1, "fontsize": 10, "vspace": 170}}
 ```
 
 |  Bits  |  Type  |  Reset  | Name                                                  |
 |:------:|:------:|:-------:|:------------------------------------------------------|
-| 31:23  |        |         | Reserved                                              |
+| 31:24  |        |         | Reserved                                              |
+|   23   |   rw   |   0x0   | [ROOT_KEY_SEL](#control_shadowed--root_key_sel)       |
 |   22   |   rw   |   0x0   | [SW_BINDING_ONLY](#control_shadowed--sw_binding_only) |
 |   21   |        |         | Reserved                                              |
 | 20:18  |   rw   |   0x0   | [SLOT_DST_SEL](#control_shadowed--slot_dst_sel)       |
@@ -197,6 +198,11 @@ Key manager operation controls
 |  11:7  |        |         | Reserved                                              |
 |  6:4   |   rw   |   0x1   | [OPERATION](#control_shadowed--operation)             |
 |  3:0   |        |         | Reserved                                              |
+
+### CONTROL_SHADOWED . ROOT_KEY_SEL
+The source of the root key used for the load root key operation.
+0: Select creator key
+1: Select UCIe CTA seed as root key
 
 ### CONTROL_SHADOWED . SW_BINDING_ONLY
 Only apply software binding as a message input to the advance operation.
