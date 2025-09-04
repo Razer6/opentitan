@@ -14,7 +14,7 @@ REPO_TOP = Path(__file__).resolve().parents[1]
 HJSON_TEMPLATE = """\
 // SPDX-FileCopyrightText: Copyright (c) 2025 by Rivos Inc.
 // SPDX-License-Identifier: LicenseRef-Rivos-Internal-Only
-{% if is_dev %}
+{% if is_tapeout %}
 //////////////////////////////////////////////////////////////////////////////////////
 // Seed configuration for topgen and subsequent flows                               //
 // 256 bit seeds for compile-time random constants. All seeds must be different     //
@@ -33,10 +33,10 @@ HJSON_TEMPLATE = """\
 def _get_256_bit_seed(is_production: bool) -> int:
     """Generates a cryptographically secure 256-bit random integer.
 
-    For development builds (is_production=False), this function uses
+    For development builds (is_tapeout=False), this function uses
     Python's 'secrets' module for entropy.
 
-    For production builds (is_production=True), it is intended to source
+    For production builds (is_tapeout=True), it is intended to source
     high quality entropy from a Hardware Security Module (HSM).
 
     Args:
@@ -54,7 +54,7 @@ def _get_256_bit_seed(is_production: bool) -> int:
 
 def create_seed_hjson(
     name: str,
-    is_production: bool,
+    is_tapeout: bool,
     output_path: Path,
     seeds_to_include: List[str]
 ) -> None:
@@ -66,12 +66,12 @@ def create_seed_hjson(
 
     context = {
         "name": name,
-        "is_dev": not is_production
+        "is_tapeout": is_tapeout
     }
 
     context["seeds"] = {}
     for seed in seeds_to_include:
-        context["seeds"][seed + "_seed"] = _get_256_bit_seed(is_production)
+        context["seeds"][seed + "_seed"] = _get_256_bit_seed(is_tapeout)
 
     hjson_content = template.render(context)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -86,7 +86,7 @@ def main():
     )
     parser.add_argument(
         "type",
-        choices=["dev", "prod"],
+        choices=["testing", "tapeout"],
         help="The type of seed to generate."
     )
     parser.add_argument(
@@ -105,7 +105,7 @@ def main():
 
     top_name = args.top
     seed_type = args.type
-    is_production = (seed_type == "prod")
+    is_tapeout = (seed_type == "tapeout")
 
     seeds_to_include = ["topgen", *args.include_seeds]
 
@@ -115,7 +115,7 @@ def main():
 
     create_seed_hjson(
         name=seed_type,
-        is_production=is_production,
+        is_tapeout=is_tapeout,
         output_path=full_output_path,
         seeds_to_include=seeds_to_include
     )
