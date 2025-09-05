@@ -47,14 +47,6 @@ otp_json(
                 # https://ibex-core.readthedocs.io/en/latest/03_reference/cs_registers.html#cpu-control-register-cpuctrl
                 "CREATOR_SW_CFG_CPUCTRL": otp_hex(0x1),
                 "CREATOR_SW_CFG_JITTER_EN": otp_hex(CONST.MUBI4_FALSE),
-                "CREATOR_SW_CFG_AST_INIT_EN": otp_hex(CONST.MUBI4_TRUE),
-                # TODO: This enables a busyloop in the ROM to give time to
-                # trigger an RMA lifecycle transition via JTAG.  The current
-                # value of 10 cycles is useful for test code which verifies
-                # the path through the ROM.  This value is not useful for a
-                # real chip.
-                "CREATOR_SW_CFG_RMA_SPIN_EN": otp_hex(CONST.HARDENED_TRUE),
-                "CREATOR_SW_CFG_RMA_SPIN_CYCLES": "10",
             },
         ),
     ],
@@ -67,9 +59,6 @@ otp_json(
         otp_partition(
             name = "OWNER_SW_CFG",
             items = {
-                # Enable bootstrap. See `hardened_bool_t` in
-                # sw/lib/sw/device/base/hardened.h.
-                "OWNER_SW_CFG_ROM_BOOTSTRAP_DIS": otp_hex(CONST.HARDENED_FALSE),
                 # Set to 0x739 to use the ROM_EXT hash measurement as the key
                 # manager attestation binding value.
                 "OWNER_SW_CFG_ROM_KEYMGR_OTP_MEAS_EN": otp_hex(0x0),
