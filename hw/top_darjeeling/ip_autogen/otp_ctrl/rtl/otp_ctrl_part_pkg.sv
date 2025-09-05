@@ -324,7 +324,7 @@ package otp_ctrl_part_pkg;
     '{
       variant:          Unbuffered,
       offset:           15'd4760,
-      size:             10544,
+      size:             8208,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
       sw_digest:        1'b1,
@@ -339,7 +339,7 @@ package otp_ctrl_part_pkg;
     // SOC_FUSES_CP
     '{
       variant:          Unbuffered,
-      offset:           15'd15304,
+      offset:           15'd12968,
       size:             392,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -355,7 +355,7 @@ package otp_ctrl_part_pkg;
     // SOC_FUSES_FT
     '{
       variant:          Unbuffered,
-      offset:           15'd15696,
+      offset:           15'd13360,
       size:             4232,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -367,6 +367,22 @@ package otp_ctrl_part_pkg;
       iskeymgr_creator: 1'b0,
       iskeymgr_owner:   1'b0,
       zeroizable:       1'b0
+    },
+    // SCRATCH_FUSES
+    '{
+      variant:          Unbuffered,
+      offset:           15'd17592,
+      size:             2336,
+      key_sel:          key_sel_e'('0),
+      secret:           1'b0,
+      sw_digest:        1'b0,
+      hw_digest:        1'b0,
+      write_lock:       1'b0,
+      read_lock:        1'b0,
+      integrity:        1'b1,
+      iskeymgr_creator: 1'b0,
+      iskeymgr_owner:   1'b0,
+      zeroizable:       1'b1
     },
     // HW_CFG0
     '{
@@ -532,6 +548,7 @@ package otp_ctrl_part_pkg;
     RomPatchIdx,
     SocFusesCpIdx,
     SocFusesFtIdx,
+    ScratchFusesIdx,
     HwCfg0Idx,
     HwCfg1Idx,
     HwCfg2Idx,
@@ -688,6 +705,10 @@ package otp_ctrl_part_pkg;
     if (!reg2hw.soc_fuses_ft_read_lock) begin
       part_access_pre[SocFusesFtIdx].read_lock = prim_mubi_pkg::MuBi8True;
     end
+    // SCRATCH_FUSES
+    if (!reg2hw.scratch_fuses_read_lock) begin
+      part_access_pre[ScratchFusesIdx].read_lock = prim_mubi_pkg::MuBi8True;
+    end
     return part_access_pre;
   endfunction : named_part_access_pre
 
@@ -751,6 +772,9 @@ package otp_ctrl_part_pkg;
     // SOC_FUSES_FT
     unused ^= ^{part_init_done[SocFusesFtIdx],
                 part_buf_data[SocFusesFtOffset +: SocFusesFtSize]};
+    // SCRATCH_FUSES
+    unused ^= ^{part_init_done[ScratchFusesIdx],
+                part_buf_data[ScratchFusesOffset +: ScratchFusesSize]};
     // HW_CFG0
     valid &= part_init_done[HwCfg0Idx];
     otp_broadcast.hw_cfg0_data = otp_hw_cfg0_data_t'(part_buf_data[HwCfg0Offset +: (HwCfg0Size - 16)]);
@@ -848,6 +872,9 @@ package otp_ctrl_part_pkg;
     // SOC_FUSES_FT
     unused ^= ^{part_digest[SocFusesFtIdx],
                 part_buf_data[SocFusesFtOffset +: SocFusesFtSize]};
+    // SCRATCH_FUSES
+    unused ^= ^{part_digest[ScratchFusesIdx],
+                part_buf_data[ScratchFusesOffset +: ScratchFusesSize]};
     // HW_CFG0
     unused ^= ^{part_digest[HwCfg0Idx],
                 part_buf_data[HwCfg0Offset +: HwCfg0Size]};

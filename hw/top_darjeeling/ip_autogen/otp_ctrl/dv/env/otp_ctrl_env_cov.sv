@@ -143,7 +143,8 @@ class otp_ctrl_csr_rd_after_alert_cg_wrap;
         ral.err_code[24].get_offset(),
         ral.err_code[25].get_offset(),
         ral.err_code[26].get_offset(),
-        ral.err_code[27].get_offset()
+        ral.err_code[27].get_offset(),
+        ral.err_code[28].get_offset()
       };
     }
   endgroup
@@ -219,14 +220,15 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
     rom_patch_lock: coverpoint parts_locked[14];
     soc_fuses_cp_lock: coverpoint parts_locked[15];
     soc_fuses_ft_lock: coverpoint parts_locked[16];
-    hw_cfg0_lock: coverpoint parts_locked[17];
-    hw_cfg1_lock: coverpoint parts_locked[18];
-    hw_cfg2_lock: coverpoint parts_locked[19];
-    secret0_lock: coverpoint parts_locked[20];
-    secret1_lock: coverpoint parts_locked[21];
-    secret2_lock: coverpoint parts_locked[22];
-    secret3_lock: coverpoint parts_locked[23];
-    secret4_lock: coverpoint parts_locked[24];
+    scratch_fuses_lock: coverpoint parts_locked[17];
+    hw_cfg0_lock: coverpoint parts_locked[18];
+    hw_cfg1_lock: coverpoint parts_locked[19];
+    hw_cfg2_lock: coverpoint parts_locked[20];
+    secret0_lock: coverpoint parts_locked[21];
+    secret1_lock: coverpoint parts_locked[22];
+    secret2_lock: coverpoint parts_locked[23];
+    secret3_lock: coverpoint parts_locked[24];
+    secret4_lock: coverpoint parts_locked[25];
   endgroup
 
   // This covergroup is sampled only if sram request passed scb check.
@@ -295,6 +297,7 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
       bins rom_patch = {RomPatchIdx};
       bins soc_fuses_cp = {SocFusesCpIdx};
       bins soc_fuses_ft = {SocFusesFtIdx};
+      bins scratch_fuses = {ScratchFusesIdx};
       bins hw_cfg0 = {HwCfg0Idx};
       bins hw_cfg1 = {HwCfg1Idx};
       bins hw_cfg2 = {HwCfg2Idx};
@@ -448,6 +451,9 @@ class otp_ctrl_env_cov extends cip_base_env_cov #(.CFG_T(otp_ctrl_env_cfg));
         unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
       end
       OtpSocFusesFtErrIdx: begin
+        unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
+      end
+      OtpScratchFusesErrIdx: begin
         unbuf_err_code_cg_wrap[part_idx].unbuf_err_code_cg.sample(val);
       end
       OtpHwCfg0ErrIdx: begin

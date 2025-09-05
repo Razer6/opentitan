@@ -90,6 +90,7 @@ package otp_ctrl_env_pkg;
     RomPatchOffset,
     SocFusesCpOffset,
     SocFusesFtOffset,
+    ScratchFusesOffset,
     HwCfg0Offset,
     HwCfg1Offset,
     HwCfg2Offset,
@@ -119,6 +120,7 @@ package otp_ctrl_env_pkg;
     RomPatchOffset + RomPatchSize - 16,
     SocFusesCpOffset + SocFusesCpSize - 8,
     SocFusesFtOffset + SocFusesFtSize - 8,
+    ScratchFusesOffset + ScratchFusesSize - 8,
     HwCfg0Offset + HwCfg0Size - 16,
     HwCfg1Offset + HwCfg1Size - 16,
     HwCfg2Offset + HwCfg2Size - 16,
@@ -148,6 +150,7 @@ package otp_ctrl_env_pkg;
     RomPatchDigestOffset >> 2,
     SocFusesCpDigestOffset >> 2,
     SocFusesFtDigestOffset >> 2,
+    -1, // This partition does not have a digest.
     HwCfg0DigestOffset >> 2,
     HwCfg1DigestOffset >> 2,
     HwCfg2DigestOffset >> 2,
@@ -176,6 +179,7 @@ package otp_ctrl_env_pkg;
     RomPatchZerOffset >> 2,
     -1, // This partition has no zeroized field.
     -1, // This partition has no zeroized field.
+    ScratchFusesZerOffset >> 2,
     HwCfg0ZerOffset >> 2,
     HwCfg1ZerOffset >> 2,
     HwCfg2ZerOffset >> 2,
@@ -211,6 +215,7 @@ package otp_ctrl_env_pkg;
     OtpRomPatchErrIdx,
     OtpSocFusesCpErrIdx,
     OtpSocFusesFtErrIdx,
+    OtpScratchFusesErrIdx,
     OtpHwCfg0ErrIdx,
     OtpHwCfg1ErrIdx,
     OtpHwCfg2ErrIdx,

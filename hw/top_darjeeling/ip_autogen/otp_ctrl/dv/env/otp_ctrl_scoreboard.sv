@@ -747,6 +747,8 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
             sw_read_lock = `gmv(ral.soc_fuses_cp_read_lock) == 0;
           end else if (part_idx == SocFusesFtIdx) begin
             sw_read_lock = `gmv(ral.soc_fuses_ft_read_lock) == 0;
+          end else if (part_idx == ScratchFusesIdx) begin
+            sw_read_lock = `gmv(ral.scratch_fuses_read_lock) == 0;
           end
 
           // LC partition cannot be access via DAI
@@ -1235,6 +1237,14 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
           cov.collect_err_code_cov(27, item.d_data, access_part_idx);
         end
       end
+      "err_code_28": begin
+        if (cfg.m_lc_prog_pull_agent_cfg.vif.req) do_read_check = 0;
+        if (cfg.en_cov && do_read_check && data_phase_read) begin
+          bit [TL_DW-1:0] dai_addr = `gmv(ral.direct_access_address) >> 2 << 2;
+          int access_part_idx = get_part_index(dai_addr);
+          cov.collect_err_code_cov(28, item.d_data, access_part_idx);
+        end
+      end
       "vendor_test_digest_0", "vendor_test_digest_1",
       "creator_sw_cfg_digest_0", "creator_sw_cfg_digest_1",
       "owner_sw_cfg_digest_0", "owner_sw_cfg_digest_1",
@@ -1277,6 +1287,7 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
       "rom_patch_read_lock",
       "soc_fuses_cp_read_lock",
       "soc_fuses_ft_read_lock",
+      "scratch_fuses_read_lock",
       "direct_access_wdata_0",
       "direct_access_wdata_1",
       "direct_access_address",
@@ -2148,6 +2159,23 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
           if (cfg.en_cov) begin
             cov.unbuf_access_lock_cg_wrap[SocFusesFtIdx].sample(.read_lock(1),
                 .write_lock(get_digest_reg_val(SocFusesFtIdx) != 0), .is_write(0));
+          end
+          return 0;
+        end
+      end
+      if (`gmv(ral.scratch_fuses_read_lock) == 0 ||
+          cfg.otp_ctrl_vif.under_error_states()) begin
+        if (addr inside {
+            [cfg.ral_models[ral_name].mem_ranges[0].start_addr + ScratchFusesOffset :
+             cfg.ral_models[ral_name].mem_ranges[0].start_addr + ScratchFusesOffset +
+             ScratchFusesSize - 1]}) begin
+          predict_err(OtpScratchFusesErrIdx, OtpAccessError);
+          custom_err = 1;
+          if (cfg.en_cov) begin
+            // TODO: we should probably create a different covergroup
+            // for unbuffered partitions without digest.
+            cov.unbuf_access_lock_cg_wrap[ScratchFusesIdx].sample(.read_lock(1),
+                .write_lock(0), .is_write(0));
           end
           return 0;
         end

@@ -62,6 +62,8 @@ class otp_ctrl_smoke_vseq extends otp_ctrl_base_vseq;
         dai_addr inside `PART_CONTENT_RANGE(SocFusesCpIdx);
     if (part_idx == SocFusesFtIdx)
         dai_addr inside `PART_CONTENT_RANGE(SocFusesFtIdx);
+    if (part_idx == ScratchFusesIdx)
+        dai_addr inside `PART_CONTENT_RANGE(ScratchFusesIdx);
     if (part_idx == HwCfg0Idx)
         dai_addr inside `PART_CONTENT_RANGE(HwCfg0Idx);
     if (part_idx == HwCfg1Idx)

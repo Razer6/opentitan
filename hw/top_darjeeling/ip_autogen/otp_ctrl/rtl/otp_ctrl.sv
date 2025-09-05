@@ -597,6 +597,7 @@ module otp_ctrl
     hw2reg.partition_status_0.rom_patch_error.d = part_errors_reduced[RomPatchIdx];
     hw2reg.partition_status_0.soc_fuses_cp_error.d = part_errors_reduced[SocFusesCpIdx];
     hw2reg.partition_status_0.soc_fuses_ft_error.d = part_errors_reduced[SocFusesFtIdx];
+    hw2reg.partition_status_0.scratch_fuses_error.d = part_errors_reduced[ScratchFusesIdx];
     hw2reg.partition_status_0.hw_cfg0_error.d = part_errors_reduced[HwCfg0Idx];
     hw2reg.partition_status_0.hw_cfg1_error.d = part_errors_reduced[HwCfg1Idx];
     hw2reg.partition_status_0.hw_cfg2_error.d = part_errors_reduced[HwCfg2Idx];

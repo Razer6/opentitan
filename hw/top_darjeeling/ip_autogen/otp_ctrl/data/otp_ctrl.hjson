@@ -205,7 +205,7 @@
     { name: "NumErrorEntries",
       desc: "Number of error register entries.",
       type: "int",
-      default: "28", // partitions + DAI/LCI
+      default: "29", // partitions + DAI/LCI
       local: "true"
     },
     { name: "NumDaiWords",
@@ -231,13 +231,13 @@
     { name: "NumPart",
       desc: "Number of partitions",
       type: "int",
-      default: "26",
+      default: "27",
       local: "true"
     },
     { name: "NumPartUnbuf",
       desc: "Number of unbuffered partitions",
       type: "int",
-      default: "17",
+      default: "18",
       local: "true"
     },
     { name: "NumPartBuf",
@@ -1983,7 +1983,7 @@
     { name: "RomPatchSize",
       desc: "Size of the ROM_PATCH partition",
       type: "int",
-      default: "10544",
+      default: "8208",
       local: "true"
     },
     { name: "RomPatchDataOffset",
@@ -1995,13 +1995,13 @@
     { name: "RomPatchDataSize",
       desc: "Size of ROM_PATCH_DATA",
       type: "int",
-      default: "9192",
+      default: "8192",
       local: "true"
     },
     { name: "RomPatchDigestOffset",
       desc: "Offset of ROM_PATCH_DIGEST",
       type: "int",
-      default: "15288",
+      default: "12952",
       local: "true"
     },
     { name: "RomPatchDigestSize",
@@ -2013,7 +2013,7 @@
     { name: "RomPatchZerOffset",
       desc: "Offset of ROM_PATCH_ZER",
       type: "int",
-      default: "15296",
+      default: "12960",
       local: "true"
     },
     { name: "RomPatchZerSize",
@@ -2025,7 +2025,7 @@
     { name: "SocFusesCpOffset",
       desc: "Offset of the SOC_FUSES_CP partition",
       type: "int",
-      default: "15304",
+      default: "12968",
       local: "true"
     },
     { name: "SocFusesCpSize",
@@ -2037,7 +2037,7 @@
     { name: "SocFusesCp1DataOffset",
       desc: "Offset of SOC_FUSES_CP1_DATA",
       type: "int",
-      default: "15304",
+      default: "12968",
       local: "true"
     },
     { name: "SocFusesCp1DataSize",
@@ -2049,7 +2049,7 @@
     { name: "SocFusesCp2DataOffset",
       desc: "Offset of SOC_FUSES_CP2_DATA",
       type: "int",
-      default: "15560",
+      default: "13224",
       local: "true"
     },
     { name: "SocFusesCp2DataSize",
@@ -2061,7 +2061,7 @@
     { name: "SocFusesCpDigestOffset",
       desc: "Offset of SOC_FUSES_CP_DIGEST",
       type: "int",
-      default: "15688",
+      default: "13352",
       local: "true"
     },
     { name: "SocFusesCpDigestSize",
@@ -2073,7 +2073,7 @@
     { name: "SocFusesFtOffset",
       desc: "Offset of the SOC_FUSES_FT partition",
       type: "int",
-      default: "15696",
+      default: "13360",
       local: "true"
     },
     { name: "SocFusesFtSize",
@@ -2085,7 +2085,7 @@
     { name: "SocFusesFt1DataOffset",
       desc: "Offset of SOC_FUSES_FT1_DATA",
       type: "int",
-      default: "15696",
+      default: "13360",
       local: "true"
     },
     { name: "SocFusesFt1DataSize",
@@ -2097,7 +2097,7 @@
     { name: "SocFusesFt2DataOffset",
       desc: "Offset of SOC_FUSES_FT2_DATA",
       type: "int",
-      default: "16080",
+      default: "13744",
       local: "true"
     },
     { name: "SocFusesFt2DataSize",
@@ -2109,11 +2109,47 @@
     { name: "SocFusesFtDigestOffset",
       desc: "Offset of SOC_FUSES_FT_DIGEST",
       type: "int",
-      default: "19920",
+      default: "17584",
       local: "true"
     },
     { name: "SocFusesFtDigestSize",
       desc: "Size of SOC_FUSES_FT_DIGEST",
+      type: "int",
+      default: "8",
+      local: "true"
+    },
+    { name: "ScratchFusesOffset",
+      desc: "Offset of the SCRATCH_FUSES partition",
+      type: "int",
+      default: "17592",
+      local: "true"
+    },
+    { name: "ScratchFusesSize",
+      desc: "Size of the SCRATCH_FUSES partition",
+      type: "int",
+      default: "2336",
+      local: "true"
+    },
+    { name: "ScratchFusesDataOffset",
+      desc: "Offset of SCRATCH_FUSES_DATA",
+      type: "int",
+      default: "17592",
+      local: "true"
+    },
+    { name: "ScratchFusesDataSize",
+      desc: "Size of SCRATCH_FUSES_DATA",
+      type: "int",
+      default: "2328",
+      local: "true"
+    },
+    { name: "ScratchFusesZerOffset",
+      desc: "Offset of SCRATCH_FUSES_ZER",
+      type: "int",
+      default: "19920",
+      local: "true"
+    },
+    { name: "ScratchFusesZerSize",
+      desc: "Size of SCRATCH_FUSES_ZER",
       type: "int",
       default: "8",
       local: "true"
@@ -3219,62 +3255,69 @@
                   '''
           }
           { bits: "17"
-            name: "HW_CFG0_ERROR"
+            name: "SCRATCH_FUSES_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "18"
-            name: "HW_CFG1_ERROR"
+            name: "HW_CFG0_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "19"
-            name: "HW_CFG2_ERROR"
+            name: "HW_CFG1_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "20"
-            name: "SECRET0_ERROR"
+            name: "HW_CFG2_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "21"
-            name: "SECRET1_ERROR"
+            name: "SECRET0_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "22"
-            name: "SECRET2_ERROR"
+            name: "SECRET1_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "23"
-            name: "SECRET3_ERROR"
+            name: "SECRET2_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "24"
-            name: "SECRET4_ERROR"
+            name: "SECRET3_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "25"
+            name: "SECRET4_ERROR"
+            desc: '''
+                  Set to 1 if an error occurred in this partition.
+                  If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
+                  '''
+          }
+          { bits: "26"
             name: "LIFE_CYCLE_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
@@ -4001,6 +4044,27 @@
           { bits:   "0",
             desc: '''
             When cleared to 0, read access to the SOC_FUSES_FT partition is locked.
+            Write 0 to clear this bit.
+            '''
+            resval: 1,
+          },
+        ]
+      },
+      { name: "SCRATCH_FUSES_READ_LOCK",
+        desc: '''
+              Runtime read lock for the SCRATCH_FUSES partition.
+              ''',
+        swaccess: "rw0c",
+        hwaccess: "hro",
+        regwen:   "DIRECT_ACCESS_REGWEN",
+        tags:     [ // The value of this register can affect the read access of the this
+                    // partition's memory window. Excluding this register from writing can ensure
+                    // memories have read and write access.
+                    "excl:CsrNonInitTests:CsrExclWrite"],
+        fields: [
+          { bits:   "0",
+            desc: '''
+            When cleared to 0, read access to the SCRATCH_FUSES partition is locked.
             Write 0 to clear this bit.
             '''
             resval: 1,

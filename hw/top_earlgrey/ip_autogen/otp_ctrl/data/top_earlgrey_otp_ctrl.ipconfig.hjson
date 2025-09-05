@@ -85,6 +85,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 0
             }
@@ -143,6 +144,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 64
             }
@@ -161,6 +163,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 220
             }
@@ -173,6 +176,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 224
             }
@@ -193,6 +197,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 228
             }
@@ -210,6 +215,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 232
             }
@@ -227,6 +233,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 236
             }
@@ -249,6 +256,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 240
             }
@@ -267,6 +275,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 244
             }
@@ -283,6 +292,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 248
             }
@@ -301,6 +311,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 252
             }
@@ -318,6 +329,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 256
             }
@@ -339,6 +351,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 260
             }
@@ -356,6 +369,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 264
             }
@@ -372,6 +386,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 268
             }
@@ -388,6 +403,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 272
             }
@@ -407,6 +423,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 276
             }
@@ -426,6 +443,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 280
             }
@@ -443,6 +461,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 284
             }
@@ -461,6 +480,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 288
             }
@@ -479,6 +499,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 292
             }
@@ -497,6 +518,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 296
             }
@@ -515,6 +537,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 300
             }
@@ -533,6 +556,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 304
             }
@@ -551,6 +575,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 308
             }
@@ -569,6 +594,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 312
             }
@@ -587,6 +613,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 316
             }
@@ -605,6 +632,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 320
             }
@@ -623,6 +651,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 324
             }
@@ -641,6 +670,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 328
             }
@@ -658,6 +688,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 332
             }
@@ -675,6 +706,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 336
             }
@@ -691,6 +723,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 340
             }
@@ -703,6 +736,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 344
             }
@@ -715,6 +749,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 348
             }
@@ -731,6 +766,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 380
             }
@@ -787,6 +823,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 432
             }
@@ -808,6 +845,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 436
             }
@@ -828,6 +866,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 440
             }
@@ -848,6 +887,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 444
             }
@@ -872,6 +912,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 448
             }
@@ -890,6 +931,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 768
             }
@@ -910,6 +952,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 832
             }
@@ -927,6 +970,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 848
             }
@@ -955,6 +999,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 864
             }
@@ -978,6 +1023,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 928
             }
@@ -995,6 +1041,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 932
             }
@@ -1012,6 +1059,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 936
             }
@@ -1029,6 +1077,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 940
             }
@@ -1041,6 +1090,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 944
             }
@@ -1062,6 +1112,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 948
             }
@@ -1079,6 +1130,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 952
             }
@@ -1104,6 +1156,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 956
             }
@@ -1116,6 +1169,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 960
             }
@@ -1141,6 +1195,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 964
             }
@@ -1162,6 +1217,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 976
             }
@@ -1181,6 +1237,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 980
             }
@@ -1203,6 +1260,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 984
             }
@@ -1221,6 +1279,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 988
             }
@@ -1245,6 +1304,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 992
             }
@@ -1261,6 +1321,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 996
             }
@@ -1311,6 +1372,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1144
             }
@@ -1322,6 +1384,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1148
             }
@@ -1333,6 +1396,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1212
             }
@@ -1344,6 +1408,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1216
             }
@@ -1355,6 +1420,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1280
             }
@@ -1366,6 +1432,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1284
             }
@@ -1377,6 +1444,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1348
             }
@@ -1388,6 +1456,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1352
             }
@@ -1399,6 +1468,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1416
             }
@@ -1410,6 +1480,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1420
             }
@@ -1421,6 +1492,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1452
             }
@@ -1432,6 +1504,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1456
             }
@@ -1443,6 +1516,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1460
             }
@@ -1454,6 +1528,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1492
             }
@@ -1465,6 +1540,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1496
             }
@@ -1476,6 +1552,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1500
             }
@@ -1487,6 +1564,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1532
             }
@@ -1498,6 +1576,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1536
             }
@@ -1509,6 +1588,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1540
             }
@@ -1520,6 +1600,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1572
             }
@@ -1531,6 +1612,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1576
             }
@@ -1582,6 +1664,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1616
             }
@@ -1593,6 +1676,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1620
             }
@@ -1604,6 +1688,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1624
             }
@@ -1615,6 +1700,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1628
             }
@@ -1626,6 +1712,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1632
             }
@@ -1637,6 +1724,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1636
             }
@@ -1648,6 +1736,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1640
             }
@@ -1659,6 +1748,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1644
             }
@@ -1725,6 +1815,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1656
             }
             {
@@ -1741,6 +1832,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1688
             }
             {
@@ -1796,6 +1888,7 @@
               iszer: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1728
             }
             {
@@ -1814,6 +1907,7 @@
               iszer: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1729
             }
             {
@@ -1833,6 +1927,7 @@
               iszer: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1730
             }
             {
@@ -1882,6 +1977,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1744
             }
             {
@@ -1893,6 +1989,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1760
             }
             {
@@ -1942,6 +2039,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1784
             }
             {
@@ -1953,6 +2051,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1816
             }
             {
@@ -1964,6 +2063,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1848
             }
             {
@@ -2013,6 +2113,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1872
             }
             {
@@ -2024,6 +2125,7 @@
               iszer: false
               ismubi: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1888
             }
             {
@@ -2035,6 +2137,7 @@
               iszer: false
               ismubi: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1920
             }
             {
@@ -2084,6 +2187,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 1960
             }
             {
@@ -2095,6 +2199,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 2008
             }
           ]

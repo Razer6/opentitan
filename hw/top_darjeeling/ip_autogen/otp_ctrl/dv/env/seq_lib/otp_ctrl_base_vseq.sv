@@ -330,6 +330,7 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     if (do_rd_lock[RomPatchIdx]) csr_wr(ral.rom_patch_read_lock, 0);
     if (do_rd_lock[SocFusesCpIdx]) csr_wr(ral.soc_fuses_cp_read_lock, 0);
     if (do_rd_lock[SocFusesFtIdx]) csr_wr(ral.soc_fuses_ft_read_lock, 0);
+    if (do_rd_lock[ScratchFusesIdx]) csr_wr(ral.scratch_fuses_read_lock, 0);
   endtask
 
   // The digest CSR values are verified in otp_ctrl_scoreboard
@@ -559,6 +560,9 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
       end
       if ((`gmv(ral.soc_fuses_ft_read_lock) == 0) && !$urandom_range(0, 4)) begin
         forced_mubi_part_access[SocFusesFtIdx].read_lock = 1;
+      end
+      if ((`gmv(ral.scratch_fuses_read_lock) == 0) && !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[ScratchFusesIdx].read_lock = 1;
       end
 
 

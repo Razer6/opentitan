@@ -86,6 +86,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 0
             }
@@ -154,6 +155,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 72
             }
@@ -170,6 +172,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 196
             }
@@ -188,6 +191,7 @@
               iszer: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 200
             }
             {
@@ -206,6 +210,7 @@
               iszer: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 204
             }
             {
@@ -224,6 +229,7 @@
               iszer: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 208
             }
             {
@@ -243,6 +249,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 212
             }
@@ -261,6 +268,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 216
             }
@@ -277,6 +285,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 220
             }
@@ -295,6 +304,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 224
             }
@@ -312,6 +322,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 228
             }
@@ -323,6 +334,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 232
             }
@@ -334,6 +346,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 236
             }
@@ -345,6 +358,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 240
             }
@@ -356,6 +370,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 244
             }
@@ -367,6 +382,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 248
             }
@@ -378,6 +394,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 252
             }
@@ -389,6 +406,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 256
             }
@@ -400,6 +418,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 260
             }
@@ -411,6 +430,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 264
             }
@@ -422,6 +442,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 268
             }
@@ -433,6 +454,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 272
             }
@@ -450,6 +472,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 276
             }
@@ -517,6 +540,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 296
             }
@@ -537,6 +561,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 300
             }
@@ -557,6 +582,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 304
             }
@@ -582,6 +608,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 308
             }
@@ -600,6 +627,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1096
             }
@@ -620,6 +648,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1124
             }
@@ -637,6 +666,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1140
             }
@@ -665,6 +695,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1156
             }
@@ -688,6 +719,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1220
             }
@@ -705,6 +737,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1224
             }
@@ -722,6 +755,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1228
             }
@@ -739,6 +773,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1232
             }
@@ -751,6 +786,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1236
             }
@@ -770,6 +806,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1240
             }
@@ -795,6 +832,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1244
             }
@@ -865,6 +903,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1264
             }
@@ -885,6 +924,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1280
             }
@@ -909,6 +949,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1296
             }
@@ -983,6 +1024,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 1320
             }
@@ -995,6 +1037,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2088
             }
@@ -1050,6 +1093,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2120
             }
@@ -1061,6 +1105,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2124
             }
@@ -1082,6 +1127,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2128
             }
@@ -1093,6 +1139,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2192
             }
@@ -1104,6 +1151,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2196
             }
@@ -1125,6 +1173,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2200
             }
@@ -1136,6 +1185,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2264
             }
@@ -1147,6 +1197,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2268
             }
@@ -1167,6 +1218,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2272
             }
@@ -1183,6 +1235,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2336
             }
@@ -1194,6 +1247,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2368
             }
@@ -1216,6 +1270,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2384
             }
@@ -1271,6 +1326,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2464
             }
@@ -1282,6 +1338,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2468
             }
@@ -1303,6 +1360,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2472
             }
@@ -1314,6 +1372,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2536
             }
@@ -1325,6 +1384,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2540
             }
@@ -1346,6 +1406,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2544
             }
@@ -1357,6 +1418,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2608
             }
@@ -1368,6 +1430,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2612
             }
@@ -1388,6 +1451,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2616
             }
@@ -1399,6 +1463,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2680
             }
@@ -1410,6 +1475,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2684
             }
@@ -1430,6 +1496,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2688
             }
@@ -1485,6 +1552,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2768
             }
@@ -1496,6 +1564,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2772
             }
@@ -1516,6 +1585,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2776
             }
@@ -1527,6 +1597,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2840
             }
@@ -1538,6 +1609,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2844
             }
@@ -1558,6 +1630,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2848
             }
@@ -1613,6 +1686,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2928
             }
@@ -1624,6 +1698,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2932
             }
@@ -1643,6 +1718,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 2936
             }
@@ -1654,6 +1730,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3000
             }
@@ -1665,6 +1742,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3004
             }
@@ -1684,6 +1762,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3008
             }
@@ -1739,6 +1818,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3088
             }
@@ -1750,6 +1830,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3092
             }
@@ -1770,6 +1851,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3096
             }
@@ -1781,6 +1863,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3160
             }
@@ -1792,6 +1875,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3164
             }
@@ -1812,6 +1896,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3168
             }
@@ -1867,6 +1952,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3248
             }
@@ -1878,6 +1964,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3252
             }
@@ -1897,6 +1984,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3256
             }
@@ -1908,6 +1996,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3320
             }
@@ -1919,6 +2008,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3324
             }
@@ -1938,6 +2028,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3328
             }
@@ -1993,6 +2084,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3408
             }
@@ -2004,6 +2096,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3412
             }
@@ -2023,6 +2116,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3416
             }
@@ -2034,6 +2128,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3480
             }
@@ -2045,6 +2140,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3484
             }
@@ -2064,6 +2160,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3488
             }
@@ -2119,6 +2216,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3568
             }
@@ -2130,6 +2228,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3572
             }
@@ -2149,6 +2248,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3576
             }
@@ -2160,6 +2260,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3640
             }
@@ -2171,6 +2272,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3644
             }
@@ -2190,6 +2292,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3648
             }
@@ -2253,6 +2356,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 3728
             }
@@ -2277,7 +2381,7 @@
         {
           name: ROM_PATCH
           variant: Unbuffered
-          absorb: true
+          absorb: false
           secret: false
           sw_digest: true
           hw_digest: false
@@ -2291,27 +2395,27 @@
           [
             {
               name: ROM_PATCH_DATA
-              size: 9192
+              size: 8192
               desc:
                 '''
-                Fully SW managed partition
-                ROM patch section
-                signed patch(es)
-                Each patch Contains header, signature, patch match/redirect configuration and patch code
-                Please refer to the ROM boot & patching specification for Integrated OT for more details
+                Fully SW managed partition.
+                ROM patch section for signed ROM patches.
+                Each patch contains a header, a signature, the patch match/redirect configuration and the actual patch code.
+                Please refer to the Darjeeling ROM boot & patching specification for more details.
                 '''
               isdigest: false
               iszer: false
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
               offset: 4760
             }
             {
               name: ROM_PATCH_DIGEST
               size: 8
-              offset: 15288
+              offset: 12952
               ismubi: false
               isdigest: true
               iszer: false
@@ -2322,7 +2426,7 @@
             {
               name: ROM_PATCH_ZER
               size: 8
-              offset: 15296
+              offset: 12960
               ismubi: false
               isdigest: false
               iszer: true
@@ -2334,7 +2438,7 @@
           desc: ROM Patch Code section. May contain multiple signed ROM2 patches.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          size: 10544
+          size: 8208
           offset: 4760
         }
         {
@@ -2359,8 +2463,9 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
-              offset: 15304
+              offset: 12968
             }
             {
               name: SOC_FUSES_CP2_DATA
@@ -2370,13 +2475,14 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
-              offset: 15560
+              offset: 13224
             }
             {
               name: SOC_FUSES_CP_DIGEST
               size: 8
-              offset: 15688
+              offset: 13352
               ismubi: false
               isdigest: true
               iszer: false
@@ -2390,7 +2496,7 @@
           iskeymgr_owner: false
           zeroizable: false
           size: 392
-          offset: 15304
+          offset: 12968
         }
         {
           name: SOC_FUSES_FT
@@ -2414,8 +2520,9 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
-              offset: 15696
+              offset: 13360
             }
             {
               name: SOC_FUSES_FT2_DATA
@@ -2425,13 +2532,14 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               inv_default: 0
-              offset: 16080
+              offset: 13744
             }
             {
               name: SOC_FUSES_FT_DIGEST
               size: 8
-              offset: 19920
+              offset: 17584
               ismubi: false
               isdigest: true
               iszer: false
@@ -2445,7 +2553,58 @@
           iskeymgr_owner: false
           zeroizable: false
           size: 4232
-          offset: 15696
+          offset: 13360
+        }
+        {
+          name: SCRATCH_FUSES
+          variant: Unbuffered
+          absorb: true
+          secret: false
+          sw_digest: false
+          hw_digest: false
+          write_lock: None
+          read_lock: CSR
+          key_sel: NoKey
+          integrity: true
+          bkout_type: false
+          zeroizable: true
+          items:
+          [
+            {
+              name: SCRATCH_FUSES_DATA
+              absorb: true
+              desc:
+                '''
+                Fully SW managed partition.
+                Unstructured, single item partition for any RoT firmware (runtime,
+                bootstrap, manufacturing) to use and organize freely.
+                '''
+              size: 2328
+              isdigest: false
+              iszer: false
+              ismubi: false
+              iskeymgr_creator: false
+              iskeymgr_owner: false
+              inv_default: 0
+              offset: 17592
+            }
+            {
+              name: SCRATCH_FUSES_ZER
+              size: 8
+              offset: 19920
+              ismubi: false
+              isdigest: false
+              iszer: true
+              inv_default: 0
+              iskeymgr_creator: false
+              iskeymgr_owner: false
+            }
+          ]
+          desc: Unstructured scratch data partition.
+          iskeymgr_creator: false
+          iskeymgr_owner: false
+          size: 2336
+          offset: 17592
         }
         {
           name: HW_CFG0
@@ -2477,6 +2636,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 19928
             }
             {
@@ -2544,6 +2704,7 @@
               iszer: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 19976
             }
             {
@@ -2561,6 +2722,7 @@
               iszer: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 19977
             }
             {
@@ -2639,6 +2801,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 20000
             }
             {
@@ -2651,6 +2814,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 20004
             }
             {
@@ -2711,6 +2875,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 20056
             }
             {
@@ -2722,6 +2887,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 20072
             }
             {
@@ -2782,6 +2948,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 20104
             }
             {
@@ -2842,6 +3009,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 20136
             }
             {
@@ -2853,6 +3021,7 @@
               iszer: false
               ismubi: false
               iskeymgr_owner: false
+              absorb: false
               offset: 20152
             }
             {
@@ -2864,6 +3033,7 @@
               iszer: false
               ismubi: false
               iskeymgr_owner: false
+              absorb: false
               offset: 20184
             }
             {
@@ -2875,6 +3045,7 @@
               iszer: false
               ismubi: false
               iskeymgr_owner: false
+              absorb: false
               offset: 20216
             }
             {
@@ -2935,6 +3106,7 @@
               iszer: false
               ismubi: false
               iskeymgr_creator: false
+              absorb: false
               offset: 20264
             }
             {
@@ -2995,6 +3167,7 @@
               iszer: false
               ismubi: false
               iskeymgr_creator: false
+              absorb: false
               offset: 20312
             }
             {
@@ -3006,6 +3179,7 @@
               iszer: false
               ismubi: false
               iskeymgr_creator: false
+              absorb: false
               offset: 20344
             }
             {
@@ -3065,6 +3239,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 20392
             }
             {
@@ -3076,6 +3251,7 @@
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
+              absorb: false
               offset: 20440
             }
           ]
