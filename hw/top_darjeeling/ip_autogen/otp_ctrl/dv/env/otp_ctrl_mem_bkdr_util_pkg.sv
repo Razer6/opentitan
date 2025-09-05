@@ -260,21 +260,30 @@ package otp_ctrl_mem_bkdr_util_pkg;
 
   function automatic void otp_write_secret4_partition(
       mem_bkdr_util_pkg::mem_bkdr_util mem_bkdr_util_h,
-      bit [UcieCtaSeedSize*8-1:0] ucie_cta_seed
+      bit [UcieCtaSeedShare0Size*8-1:0] ucie_cta_seed_share0,
+      bit [UcieCtaSeedShare1Size*8-1:0] ucie_cta_seed_share1
   );
     bit [Secret4DigestSize*8-1:0] digest;
     bit [bus_params_pkg::BUS_DW-1:0] partition_data[$];
-    bit [UcieCtaSeedSize*8-1:0] scrambled_ucie_cta_seed;
+    bit [UcieCtaSeedShare0Size*8-1:0] scrambled_ucie_cta_seed_share0;
+    bit [UcieCtaSeedShare1Size*8-1:0] scrambled_ucie_cta_seed_share1;
 
-    for (int i = 0; i < UcieCtaSeedSize; i += 8) begin
-      scrambled_ucie_cta_seed[i*8+:64] = scramble_data(
-          ucie_cta_seed[i*8+:64], Secret4Idx);
-      mem_bkdr_util_h.write64(i + UcieCtaSeedOffset,
-                              scrambled_ucie_cta_seed[i*8+:64]);
+    for (int i = 0; i < UcieCtaSeedShare0Size; i += 8) begin
+      scrambled_ucie_cta_seed_share0[i*8+:64] = scramble_data(
+          ucie_cta_seed_share0[i*8+:64], Secret4Idx);
+      mem_bkdr_util_h.write64(i + UcieCtaSeedShare0Offset,
+                              scrambled_ucie_cta_seed_share0[i*8+:64]);
+    end
+    for (int i = 0; i < UcieCtaSeedShare1Size; i += 8) begin
+      scrambled_ucie_cta_seed_share1[i*8+:64] = scramble_data(
+          ucie_cta_seed_share1[i*8+:64], Secret4Idx);
+      mem_bkdr_util_h.write64(i + UcieCtaSeedShare1Offset,
+                              scrambled_ucie_cta_seed_share1[i*8+:64]);
     end
 
     partition_data = {<<32{
-      scrambled_ucie_cta_seed
+      scrambled_ucie_cta_seed_share1,
+      scrambled_ucie_cta_seed_share0
     }};
     digest = cal_digest(Secret4Idx, partition_data);
     mem_bkdr_util_h.write64(Secret4DigestOffset, digest);

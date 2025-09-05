@@ -1983,7 +1983,7 @@
     { name: "RomPatchSize",
       desc: "Size of the ROM_PATCH partition",
       type: "int",
-      default: "10576",
+      default: "10544",
       local: "true"
     },
     { name: "RomPatchDataOffset",
@@ -2001,7 +2001,7 @@
     { name: "RomPatchDigestOffset",
       desc: "Offset of ROM_PATCH_DIGEST",
       type: "int",
-      default: "15320",
+      default: "15288",
       local: "true"
     },
     { name: "RomPatchDigestSize",
@@ -2013,7 +2013,7 @@
     { name: "RomPatchZerOffset",
       desc: "Offset of ROM_PATCH_ZER",
       type: "int",
-      default: "15328",
+      default: "15296",
       local: "true"
     },
     { name: "RomPatchZerSize",
@@ -2025,7 +2025,7 @@
     { name: "SocFusesCpOffset",
       desc: "Offset of the SOC_FUSES_CP partition",
       type: "int",
-      default: "15336",
+      default: "15304",
       local: "true"
     },
     { name: "SocFusesCpSize",
@@ -2037,7 +2037,7 @@
     { name: "SocFusesCp1DataOffset",
       desc: "Offset of SOC_FUSES_CP1_DATA",
       type: "int",
-      default: "15336",
+      default: "15304",
       local: "true"
     },
     { name: "SocFusesCp1DataSize",
@@ -2049,7 +2049,7 @@
     { name: "SocFusesCp2DataOffset",
       desc: "Offset of SOC_FUSES_CP2_DATA",
       type: "int",
-      default: "15592",
+      default: "15560",
       local: "true"
     },
     { name: "SocFusesCp2DataSize",
@@ -2061,7 +2061,7 @@
     { name: "SocFusesCpDigestOffset",
       desc: "Offset of SOC_FUSES_CP_DIGEST",
       type: "int",
-      default: "15720",
+      default: "15688",
       local: "true"
     },
     { name: "SocFusesCpDigestSize",
@@ -2073,7 +2073,7 @@
     { name: "SocFusesFtOffset",
       desc: "Offset of the SOC_FUSES_FT partition",
       type: "int",
-      default: "15728",
+      default: "15696",
       local: "true"
     },
     { name: "SocFusesFtSize",
@@ -2085,7 +2085,7 @@
     { name: "SocFusesFt1DataOffset",
       desc: "Offset of SOC_FUSES_FT1_DATA",
       type: "int",
-      default: "15728",
+      default: "15696",
       local: "true"
     },
     { name: "SocFusesFt1DataSize",
@@ -2097,7 +2097,7 @@
     { name: "SocFusesFt2DataOffset",
       desc: "Offset of SOC_FUSES_FT2_DATA",
       type: "int",
-      default: "16112",
+      default: "16080",
       local: "true"
     },
     { name: "SocFusesFt2DataSize",
@@ -2109,7 +2109,7 @@
     { name: "SocFusesFtDigestOffset",
       desc: "Offset of SOC_FUSES_FT_DIGEST",
       type: "int",
-      default: "19952",
+      default: "19920",
       local: "true"
     },
     { name: "SocFusesFtDigestSize",
@@ -2121,7 +2121,7 @@
     { name: "HwCfg0Offset",
       desc: "Offset of the HW_CFG0 partition",
       type: "int",
-      default: "19960",
+      default: "19928",
       local: "true"
     },
     { name: "HwCfg0Size",
@@ -2133,7 +2133,7 @@
     { name: "DeviceIdOffset",
       desc: "Offset of DEVICE_ID",
       type: "int",
-      default: "19960",
+      default: "19928",
       local: "true"
     },
     { name: "DeviceIdSize",
@@ -2145,7 +2145,7 @@
     { name: "HwCfg0DigestOffset",
       desc: "Offset of HW_CFG0_DIGEST",
       type: "int",
-      default: "19992",
+      default: "19960",
       local: "true"
     },
     { name: "HwCfg0DigestSize",
@@ -2157,7 +2157,7 @@
     { name: "HwCfg0ZerOffset",
       desc: "Offset of HW_CFG0_ZER",
       type: "int",
-      default: "20000",
+      default: "19968",
       local: "true"
     },
     { name: "HwCfg0ZerSize",
@@ -2169,7 +2169,7 @@
     { name: "HwCfg1Offset",
       desc: "Offset of the HW_CFG1 partition",
       type: "int",
-      default: "20008",
+      default: "19976",
       local: "true"
     },
     { name: "HwCfg1Size",
@@ -2181,7 +2181,7 @@
     { name: "EnCsrngSwAppReadOffset",
       desc: "Offset of EN_CSRNG_SW_APP_READ",
       type: "int",
-      default: "20008",
+      default: "19976",
       local: "true"
     },
     { name: "EnCsrngSwAppReadSize",
@@ -2193,7 +2193,7 @@
     { name: "EnSramIfetchOffset",
       desc: "Offset of EN_SRAM_IFETCH",
       type: "int",
-      default: "20009",
+      default: "19977",
       local: "true"
     },
     { name: "EnSramIfetchSize",
@@ -2205,7 +2205,7 @@
     { name: "HwCfg1DigestOffset",
       desc: "Offset of HW_CFG1_DIGEST",
       type: "int",
-      default: "20016",
+      default: "19984",
       local: "true"
     },
     { name: "HwCfg1DigestSize",
@@ -2217,7 +2217,7 @@
     { name: "HwCfg1ZerOffset",
       desc: "Offset of HW_CFG1_ZER",
       type: "int",
-      default: "20024",
+      default: "19992",
       local: "true"
     },
     { name: "HwCfg1ZerSize",
@@ -2229,7 +2229,7 @@
     { name: "HwCfg2Offset",
       desc: "Offset of the HW_CFG2 partition",
       type: "int",
-      default: "20032",
+      default: "20000",
       local: "true"
     },
     { name: "HwCfg2Size",
@@ -2241,7 +2241,7 @@
     { name: "SocDbgStateOffset",
       desc: "Offset of SOC_DBG_STATE",
       type: "int",
-      default: "20032",
+      default: "20000",
       local: "true"
     },
     { name: "SocDbgStateSize",
@@ -2253,7 +2253,7 @@
     { name: "ManufStateOffset",
       desc: "Offset of MANUF_STATE",
       type: "int",
-      default: "20036",
+      default: "20004",
       local: "true"
     },
     { name: "ManufStateSize",
@@ -2265,7 +2265,7 @@
     { name: "HwCfg2DigestOffset",
       desc: "Offset of HW_CFG2_DIGEST",
       type: "int",
-      default: "20072",
+      default: "20040",
       local: "true"
     },
     { name: "HwCfg2DigestSize",
@@ -2277,7 +2277,7 @@
     { name: "HwCfg2ZerOffset",
       desc: "Offset of HW_CFG2_ZER",
       type: "int",
-      default: "20080",
+      default: "20048",
       local: "true"
     },
     { name: "HwCfg2ZerSize",
@@ -2289,7 +2289,7 @@
     { name: "Secret0Offset",
       desc: "Offset of the SECRET0 partition",
       type: "int",
-      default: "20088",
+      default: "20056",
       local: "true"
     },
     { name: "Secret0Size",
@@ -2301,7 +2301,7 @@
     { name: "TestUnlockTokenOffset",
       desc: "Offset of TEST_UNLOCK_TOKEN",
       type: "int",
-      default: "20088",
+      default: "20056",
       local: "true"
     },
     { name: "TestUnlockTokenSize",
@@ -2313,7 +2313,7 @@
     { name: "TestExitTokenOffset",
       desc: "Offset of TEST_EXIT_TOKEN",
       type: "int",
-      default: "20104",
+      default: "20072",
       local: "true"
     },
     { name: "TestExitTokenSize",
@@ -2325,7 +2325,7 @@
     { name: "Secret0DigestOffset",
       desc: "Offset of SECRET0_DIGEST",
       type: "int",
-      default: "20120",
+      default: "20088",
       local: "true"
     },
     { name: "Secret0DigestSize",
@@ -2337,7 +2337,7 @@
     { name: "Secret0ZerOffset",
       desc: "Offset of SECRET0_ZER",
       type: "int",
-      default: "20128",
+      default: "20096",
       local: "true"
     },
     { name: "Secret0ZerSize",
@@ -2349,7 +2349,7 @@
     { name: "Secret1Offset",
       desc: "Offset of the SECRET1 partition",
       type: "int",
-      default: "20136",
+      default: "20104",
       local: "true"
     },
     { name: "Secret1Size",
@@ -2361,7 +2361,7 @@
     { name: "SramDataKeySeedOffset",
       desc: "Offset of SRAM_DATA_KEY_SEED",
       type: "int",
-      default: "20136",
+      default: "20104",
       local: "true"
     },
     { name: "SramDataKeySeedSize",
@@ -2373,7 +2373,7 @@
     { name: "Secret1DigestOffset",
       desc: "Offset of SECRET1_DIGEST",
       type: "int",
-      default: "20152",
+      default: "20120",
       local: "true"
     },
     { name: "Secret1DigestSize",
@@ -2385,7 +2385,7 @@
     { name: "Secret1ZerOffset",
       desc: "Offset of SECRET1_ZER",
       type: "int",
-      default: "20160",
+      default: "20128",
       local: "true"
     },
     { name: "Secret1ZerSize",
@@ -2397,7 +2397,7 @@
     { name: "Secret2Offset",
       desc: "Offset of the SECRET2 partition",
       type: "int",
-      default: "20168",
+      default: "20136",
       local: "true"
     },
     { name: "Secret2Size",
@@ -2409,7 +2409,7 @@
     { name: "RmaTokenOffset",
       desc: "Offset of RMA_TOKEN",
       type: "int",
-      default: "20168",
+      default: "20136",
       local: "true"
     },
     { name: "RmaTokenSize",
@@ -2421,7 +2421,7 @@
     { name: "CreatorRootKeyShare0Offset",
       desc: "Offset of CREATOR_ROOT_KEY_SHARE0",
       type: "int",
-      default: "20184",
+      default: "20152",
       local: "true"
     },
     { name: "CreatorRootKeyShare0Size",
@@ -2433,7 +2433,7 @@
     { name: "CreatorRootKeyShare1Offset",
       desc: "Offset of CREATOR_ROOT_KEY_SHARE1",
       type: "int",
-      default: "20216",
+      default: "20184",
       local: "true"
     },
     { name: "CreatorRootKeyShare1Size",
@@ -2445,7 +2445,7 @@
     { name: "CreatorSeedOffset",
       desc: "Offset of CREATOR_SEED",
       type: "int",
-      default: "20248",
+      default: "20216",
       local: "true"
     },
     { name: "CreatorSeedSize",
@@ -2457,7 +2457,7 @@
     { name: "Secret2DigestOffset",
       desc: "Offset of SECRET2_DIGEST",
       type: "int",
-      default: "20280",
+      default: "20248",
       local: "true"
     },
     { name: "Secret2DigestSize",
@@ -2469,7 +2469,7 @@
     { name: "Secret2ZerOffset",
       desc: "Offset of SECRET2_ZER",
       type: "int",
-      default: "20288",
+      default: "20256",
       local: "true"
     },
     { name: "Secret2ZerSize",
@@ -2481,7 +2481,7 @@
     { name: "Secret3Offset",
       desc: "Offset of the SECRET3 partition",
       type: "int",
-      default: "20296",
+      default: "20264",
       local: "true"
     },
     { name: "Secret3Size",
@@ -2493,7 +2493,7 @@
     { name: "OwnerSeedOffset",
       desc: "Offset of OWNER_SEED",
       type: "int",
-      default: "20296",
+      default: "20264",
       local: "true"
     },
     { name: "OwnerSeedSize",
@@ -2505,7 +2505,7 @@
     { name: "Secret3DigestOffset",
       desc: "Offset of SECRET3_DIGEST",
       type: "int",
-      default: "20328",
+      default: "20296",
       local: "true"
     },
     { name: "Secret3DigestSize",
@@ -2517,7 +2517,7 @@
     { name: "Secret3ZerOffset",
       desc: "Offset of SECRET3_ZER",
       type: "int",
-      default: "20336",
+      default: "20304",
       local: "true"
     },
     { name: "Secret3ZerSize",
@@ -2529,23 +2529,35 @@
     { name: "Secret4Offset",
       desc: "Offset of the SECRET4 partition",
       type: "int",
-      default: "20344",
+      default: "20312",
       local: "true"
     },
     { name: "Secret4Size",
       desc: "Size of the SECRET4 partition",
       type: "int",
-      default: "48",
+      default: "80",
       local: "true"
     },
-    { name: "UcieCtaSeedOffset",
-      desc: "Offset of UCIE_CTA_SEED",
+    { name: "UcieCtaSeedShare0Offset",
+      desc: "Offset of UCIE_CTA_SEED_SHARE0",
+      type: "int",
+      default: "20312",
+      local: "true"
+    },
+    { name: "UcieCtaSeedShare0Size",
+      desc: "Size of UCIE_CTA_SEED_SHARE0",
+      type: "int",
+      default: "32",
+      local: "true"
+    },
+    { name: "UcieCtaSeedShare1Offset",
+      desc: "Offset of UCIE_CTA_SEED_SHARE1",
       type: "int",
       default: "20344",
       local: "true"
     },
-    { name: "UcieCtaSeedSize",
-      desc: "Size of UCIE_CTA_SEED",
+    { name: "UcieCtaSeedShare1Size",
+      desc: "Size of UCIE_CTA_SEED_SHARE1",
       type: "int",
       default: "32",
       local: "true"

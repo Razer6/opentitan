@@ -1470,7 +1470,13 @@
             skip_sw_header: true,
             items: [
                 {
-                    name: "UCIE_CTA_SEED",
+                    name: "UCIE_CTA_SEED_SHARE0",
+                    inv_default: "<random>",
+                    size: "32",
+                    iskeymgr_owner: true
+                }
+                {
+                    name: "UCIE_CTA_SEED_SHARE1",
                     inv_default: "<random>",
                     size: "32",
                     iskeymgr_owner: true

@@ -324,7 +324,7 @@ package otp_ctrl_part_pkg;
     '{
       variant:          Unbuffered,
       offset:           15'd4760,
-      size:             10576,
+      size:             10544,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
       sw_digest:        1'b1,
@@ -339,7 +339,7 @@ package otp_ctrl_part_pkg;
     // SOC_FUSES_CP
     '{
       variant:          Unbuffered,
-      offset:           15'd15336,
+      offset:           15'd15304,
       size:             392,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -355,7 +355,7 @@ package otp_ctrl_part_pkg;
     // SOC_FUSES_FT
     '{
       variant:          Unbuffered,
-      offset:           15'd15728,
+      offset:           15'd15696,
       size:             4232,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -371,7 +371,7 @@ package otp_ctrl_part_pkg;
     // HW_CFG0
     '{
       variant:          Buffered,
-      offset:           15'd19960,
+      offset:           15'd19928,
       size:             48,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -387,7 +387,7 @@ package otp_ctrl_part_pkg;
     // HW_CFG1
     '{
       variant:          Buffered,
-      offset:           15'd20008,
+      offset:           15'd19976,
       size:             24,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -403,7 +403,7 @@ package otp_ctrl_part_pkg;
     // HW_CFG2
     '{
       variant:          Buffered,
-      offset:           15'd20032,
+      offset:           15'd20000,
       size:             56,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
@@ -419,7 +419,7 @@ package otp_ctrl_part_pkg;
     // SECRET0
     '{
       variant:          Buffered,
-      offset:           15'd20088,
+      offset:           15'd20056,
       size:             48,
       key_sel:          Secret0Key,
       secret:           1'b1,
@@ -435,7 +435,7 @@ package otp_ctrl_part_pkg;
     // SECRET1
     '{
       variant:          Buffered,
-      offset:           15'd20136,
+      offset:           15'd20104,
       size:             32,
       key_sel:          Secret1Key,
       secret:           1'b1,
@@ -451,7 +451,7 @@ package otp_ctrl_part_pkg;
     // SECRET2
     '{
       variant:          Buffered,
-      offset:           15'd20168,
+      offset:           15'd20136,
       size:             128,
       key_sel:          Secret2Key,
       secret:           1'b1,
@@ -467,7 +467,7 @@ package otp_ctrl_part_pkg;
     // SECRET3
     '{
       variant:          Buffered,
-      offset:           15'd20296,
+      offset:           15'd20264,
       size:             48,
       key_sel:          Secret3Key,
       secret:           1'b1,
@@ -483,8 +483,8 @@ package otp_ctrl_part_pkg;
     // SECRET4
     '{
       variant:          Buffered,
-      offset:           15'd20344,
-      size:             48,
+      offset:           15'd20312,
+      size:             80,
       key_sel:          Secret4Key,
       secret:           1'b1,
       sw_digest:        1'b0,
@@ -910,13 +910,21 @@ package otp_ctrl_part_pkg;
     unused ^= ^part_buf_data[Secret3DigestOffset +: Secret3DigestSize];
     // SECRET4
     valid = (part_digest[Secret4Idx] != 0);
-    otp_keymgr_key.ucie_cta_seed_valid = valid;
+    otp_keymgr_key.ucie_cta_seed_share0_valid = valid;
     if (lc_ctrl_pkg::lc_tx_test_true_strict(lc_seed_hw_rd_en)) begin
-      otp_keymgr_key.ucie_cta_seed =
-          part_buf_data[UcieCtaSeedOffset +: UcieCtaSeedSize];
+      otp_keymgr_key.ucie_cta_seed_share0 =
+          part_buf_data[UcieCtaSeedShare0Offset +: UcieCtaSeedShare0Size];
     end else begin
-      otp_keymgr_key.ucie_cta_seed =
-          part_inv_default[UcieCtaSeedOffset*8 +: UcieCtaSeedSize*8];
+      otp_keymgr_key.ucie_cta_seed_share0 =
+          part_inv_default[UcieCtaSeedShare0Offset*8 +: UcieCtaSeedShare0Size*8];
+    end
+    otp_keymgr_key.ucie_cta_seed_share1_valid = valid;
+    if (lc_ctrl_pkg::lc_tx_test_true_strict(lc_seed_hw_rd_en)) begin
+      otp_keymgr_key.ucie_cta_seed_share1 =
+          part_buf_data[UcieCtaSeedShare1Offset +: UcieCtaSeedShare1Size];
+    end else begin
+      otp_keymgr_key.ucie_cta_seed_share1 =
+          part_inv_default[UcieCtaSeedShare1Offset*8 +: UcieCtaSeedShare1Size*8];
     end
     unused ^= ^part_buf_data[Secret4ZerOffset +: Secret4ZerSize];
     // This is not used since we consume the

@@ -113,8 +113,10 @@ package otp_ctrl_pkg;
     logic [KeyMgrKeyWidth-1:0] owner_seed;
     logic owner_seed_valid;
     // Rivos: Add UCIe CTA seed for chiplet provisioning
-    logic [KeyMgrKeyWidth-1:0] ucie_cta_seed;
-    logic ucie_cta_seed_valid;
+    logic [KeyMgrKeyWidth-1:0] ucie_cta_seed_share0;
+    logic ucie_cta_seed_share0_valid;
+    logic [KeyMgrKeyWidth-1:0] ucie_cta_seed_share1;
+    logic ucie_cta_seed_share1_valid;
   } otp_keymgr_key_t;
 
   parameter otp_keymgr_key_t OTP_KEYMGR_KEY_DEFAULT = '{
@@ -127,8 +129,10 @@ package otp_ctrl_pkg;
     owner_seed: 256'hf5052c0f14782d8b066be9f49c0b2000d3643ff3723ea7db972f69cd3e2e3e68,
     owner_seed_valid: 1'b1,
     // Rivos: Add UCIe CTA seed for chiplet provisioning
-    ucie_cta_seed: 256'he059e3a1dd7b2a1ade040a8986048cfbc3fe92188d20678cd87015c348426c5e,
-    ucie_cta_seed_valid: 1'b1
+    ucie_cta_seed_share0: 256'he059e3a1dd7b2a1ade040a8986048cfbc3fe92188d20678cd87015c348426c5e,
+    ucie_cta_seed_share0_valid: 1'b1,
+    ucie_cta_seed_share1: 256'hb73349688d775f66a42a49a8e359c199ec29a092889e9a933dcd4ce78677ce0d,
+    ucie_cta_seed_share1_valid: 1'b1
   };
 
   typedef struct packed {

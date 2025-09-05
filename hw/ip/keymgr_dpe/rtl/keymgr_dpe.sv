@@ -810,7 +810,10 @@ module keymgr_dpe
   assign unused_active_key_version = active_key_slot.max_key_version;
 
   logic unused_cta_seed;
-  assign unused_cta_seed = ^{otp_key_i.ucie_cta_seed, otp_key_i.ucie_cta_seed_valid};
+  assign unused_cta_seed = ^{otp_key_i.ucie_cta_seed_share0,
+                             otp_key_i.ucie_cta_seed_share1,
+                             otp_key_i.ucie_cta_seed_share0_valid,
+                             otp_key_i.ucie_cta_seed_share1_valid};
 
   `ASSERT_INIT(KeyWidthEqualityCheck_A, otp_ctrl_pkg::KeyMgrKeyWidth == KeyWidth)
 

@@ -345,10 +345,7 @@ module top_${top["name"]} #(
   logic unused_otp_broadcast_bits;
   assign unused_otp_broadcast_bits = ^{
     otp_ctrl_otp_broadcast.valid,
-    otp_ctrl_otp_broadcast.hw_cfg1_data.unallocated,
-    // FIXME: Connect properly to keymgr
-    otp_ctrl_otp_keymgr_key.ucie_cta_seed,
-    otp_ctrl_otp_keymgr_key.ucie_cta_seed_valid
+    otp_ctrl_otp_broadcast.hw_cfg1_data.unallocated
   };
   % endif
 % endfor

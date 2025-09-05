@@ -277,17 +277,28 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
             // Check otp_keymgr_key_t struct by item is easier to debug.
             `DV_CHECK_EQ(cfg.otp_ctrl_vif.keymgr_key_o.owner_seed_valid,
                          exp_keymgr_data.owner_seed_valid)
-            exp_keymgr_data.ucie_cta_seed_valid = get_otp_digest_val(Secret4Idx) != 0;
+            exp_keymgr_data.ucie_cta_seed_share0_valid = get_otp_digest_val(Secret4Idx) != 0;
             if (cfg.otp_ctrl_vif.lc_seed_hw_rd_en_i == lc_ctrl_pkg::On) begin
-              exp_keymgr_data.ucie_cta_seed =
-                  {<<32 {otp_a[UcieCtaSeedOffset/4 +: UcieCtaSeedSize/4]}};
+              exp_keymgr_data.ucie_cta_seed_share0 =
+                  {<<32 {otp_a[UcieCtaSeedShare0Offset/4 +: UcieCtaSeedShare0Size/4]}};
             end else begin
-              exp_keymgr_data.ucie_cta_seed =
-                  top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlPartInvDefault[UcieCtaSeedOffset*8 +: UcieCtaSeedSize*8];
+              exp_keymgr_data.ucie_cta_seed_share0 =
+                  top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlPartInvDefault[UcieCtaSeedShare0Offset*8 +: UcieCtaSeedShare0Size*8];
             end
             // Check otp_keymgr_key_t struct by item is easier to debug.
-            `DV_CHECK_EQ(cfg.otp_ctrl_vif.keymgr_key_o.ucie_cta_seed_valid,
-                         exp_keymgr_data.ucie_cta_seed_valid)
+            `DV_CHECK_EQ(cfg.otp_ctrl_vif.keymgr_key_o.ucie_cta_seed_share0_valid,
+                         exp_keymgr_data.ucie_cta_seed_share0_valid)
+            exp_keymgr_data.ucie_cta_seed_share1_valid = get_otp_digest_val(Secret4Idx) != 0;
+            if (cfg.otp_ctrl_vif.lc_seed_hw_rd_en_i == lc_ctrl_pkg::On) begin
+              exp_keymgr_data.ucie_cta_seed_share1 =
+                  {<<32 {otp_a[UcieCtaSeedShare1Offset/4 +: UcieCtaSeedShare1Size/4]}};
+            end else begin
+              exp_keymgr_data.ucie_cta_seed_share1 =
+                  top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlPartInvDefault[UcieCtaSeedShare1Offset*8 +: UcieCtaSeedShare1Size*8];
+            end
+            // Check otp_keymgr_key_t struct by item is easier to debug.
+            `DV_CHECK_EQ(cfg.otp_ctrl_vif.keymgr_key_o.ucie_cta_seed_share1_valid,
+                         exp_keymgr_data.ucie_cta_seed_share1_valid)
 
             // Check otp_keymgr_key_t struct all together in case there is any missed item.
             `DV_CHECK_EQ(cfg.otp_ctrl_vif.keymgr_key_o, exp_keymgr_data)
