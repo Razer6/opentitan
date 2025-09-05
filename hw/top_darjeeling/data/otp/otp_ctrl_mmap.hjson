@@ -1149,11 +1149,10 @@
                 {
                     name: "ROM_PATCH_DATA",
                     size: "8192"
-                    desc: ''' Fully SW managed partition
-                    ROM patch section
-                    signed patch(es)
-                    Each patch Contains header, signature, patch match/redirect configuration and patch code
-                    Please refer to the ROM boot & patching specification for Integrated OT for more details
+                    desc: ''' Fully SW managed partition.
+                    ROM patch section for signed ROM patches.
+                    Each patch contains a header, a signature, the patch match/redirect configuration and the actual patch code.
+                    Please refer to the Darjeeling ROM boot & patching specification for more details.
                     '''
                 }
             ],
