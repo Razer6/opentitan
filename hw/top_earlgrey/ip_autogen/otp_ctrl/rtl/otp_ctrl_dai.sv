@@ -370,13 +370,14 @@ module otp_ctrl_dai
       // that is the case, we immediately bail out. Otherwise, we
       // request a block of data from OTP.
       ReadSt: begin
-        if (part_sel_valid &&
+        if (
+            (part_sel_valid &&
             (mubi8_test_false_strict(part_access_i[part_idx].read_lock) ||
              // HW digests and zeroization markers always remain readable.
              (PartInfo[part_idx].hw_digest &&
               otp_addr_o[OtpAddrWidth-1:2] == digest_addr_lut[part_idx][OtpAddrWidth-1:2]) ||
              (PartInfo[part_idx].zeroizable &&
-              otp_addr_o[OtpAddrWidth-1:2] == zeroize_addr_lut[part_idx][OtpAddrWidth-1:2]))) begin
+              otp_addr_o[OtpAddrWidth-1:2] == zeroize_addr_lut[part_idx][OtpAddrWidth-1:2])))) begin
           otp_req_o = 1'b1;
           // The `Read` OTP command takes integrity errors into account, the `ReadRaw` command
           // ignores them. The following means integrity errors are taken into account if all of the
@@ -408,13 +409,14 @@ module otp_ctrl_dai
       // terminal error state.
       ReadWaitSt: begin
         // Continuously check read access and bail out if this is not consistent.
-        if (part_sel_valid &&
+        if (
+            (part_sel_valid &&
             (mubi8_test_false_strict(part_access_i[part_idx].read_lock) ||
              // HW digests and zeroization markers always remain readable.
              (PartInfo[part_idx].hw_digest &&
               otp_addr_o[OtpAddrWidth-1:2] == digest_addr_lut[part_idx][OtpAddrWidth-1:2]) ||
              (PartInfo[part_idx].zeroizable &&
-              otp_addr_o[OtpAddrWidth-1:2] == zeroize_addr_lut[part_idx][OtpAddrWidth-1:2]))) begin
+              otp_addr_o[OtpAddrWidth-1:2] == zeroize_addr_lut[part_idx][OtpAddrWidth-1:2])))) begin
           if (otp_rvalid_i) begin
             // Check OTP return code.
             if (otp_err inside {NoError, MacroEccCorrError}) begin
@@ -485,7 +487,8 @@ module otp_ctrl_dai
       // permanently write locked and can hence not be written via the DAI.
       WriteSt: begin
         dai_prog_idle_o = 1'b0;
-        if (part_sel_valid && mubi8_test_false_strict(part_access_i[part_idx].write_lock) &&
+        if (
+            (part_sel_valid && mubi8_test_false_strict(part_access_i[part_idx].write_lock) &&
             // If this is a HW digest write to a buffered partition.
             ((PartInfo[part_idx].variant == Buffered && PartInfo[part_idx].hw_digest &&
               base_sel_q == PartOffset &&
@@ -498,7 +501,8 @@ module otp_ctrl_dai
              (PartInfo[part_idx].variant != Buffered && base_sel_q == DaiOffset &&
               !(PartInfo[part_idx].zeroizable &&
                 (otp_addr_o[OtpAddrWidth-1:2] ==
-                 zeroize_addr_lut[part_idx][OtpAddrWidth-1:2]))))) begin
+                 zeroize_addr_lut[part_idx][OtpAddrWidth-1:2])))))) begin
+
           otp_req_o = 1'b1;
           // Depending on the partition configuration,
           // the wrapper is instructed to ignore integrity errors.
@@ -525,7 +529,8 @@ module otp_ctrl_dai
       WriteWaitSt: begin
         dai_prog_idle_o = 1'b0;
         // Continuously check write access and bail out if this is not consistent.
-        if (part_sel_valid && mubi8_test_false_strict(part_access_i[part_idx].write_lock) &&
+        if (
+            (part_sel_valid && mubi8_test_false_strict(part_access_i[part_idx].write_lock) &&
             // If this is a HW digest write to a buffered partition.
             ((PartInfo[part_idx].variant == Buffered && PartInfo[part_idx].hw_digest &&
               base_sel_q == PartOffset &&
@@ -538,7 +543,7 @@ module otp_ctrl_dai
              (PartInfo[part_idx].variant != Buffered && base_sel_q == DaiOffset &&
               !(PartInfo[part_idx].zeroizable &&
                 (otp_addr_o[OtpAddrWidth-1:2] ==
-                 zeroize_addr_lut[part_idx][OtpAddrWidth-1:2]))))) begin
+                 zeroize_addr_lut[part_idx][OtpAddrWidth-1:2])))))) begin
 
           if (otp_rvalid_i) begin
             // Check OTP return code. Note that non-blank errors are recoverable.

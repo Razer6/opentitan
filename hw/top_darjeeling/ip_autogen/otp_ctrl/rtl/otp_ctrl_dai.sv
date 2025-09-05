@@ -348,19 +348,25 @@ module otp_ctrl_dai
               data_en = 1'b1;
               base_sel_d = DaiOffset;
               // If this partition is scrambled, directly go to write scrambling first.
-              if (PartInfo[part_idx].secret) begin
+              // Rivos: Special modes (!=2'b00) never use scrambling.
+              //        Otherwise that would break the redundancy mode.
+              if (PartInfo[part_idx].secret && otp_macro_mode_i == 2'b00) begin
                 state_d = ScrSt;
               end else begin
                 state_d = WriteSt;
               end
             end
             DaiDigest: begin
+              if (otp_macro_mode_i == 2'b00) begin // Rivos: Only allow DaiDigest in normal mode.
               state_d = DigClrSt;
               scrmbl_mtx_req_o = 1'b1;
               base_sel_d = PartOffset;
+              end
             end
             DaiZeroize: begin
-              state_d = ZerSt;
+              if (otp_macro_mode_i == 2'b00) begin // Rivos: Only allow zeroization in normal mode.
+                state_d = ZerSt;
+              end
             end
             default: ; // Ignore invalid commands
           endcase // dai_cmd_i
@@ -372,13 +378,17 @@ module otp_ctrl_dai
       // that is the case, we immediately bail out. Otherwise, we
       // request a block of data from OTP.
       ReadSt: begin
-        if (part_sel_valid &&
+        if (
+            // Rivos: If special macro mode then comparing partition data does not make sense.
+            //        Instead, always allow such accesses.
+            otp_macro_mode_i != 2'b00 || 
+            (part_sel_valid &&
             (mubi8_test_false_strict(part_access_i[part_idx].read_lock) ||
              // HW digests and zeroization markers always remain readable.
              (PartInfo[part_idx].hw_digest &&
               otp_addr_o[OtpAddrWidth-1:2] == digest_addr_lut[part_idx][OtpAddrWidth-1:2]) ||
              (PartInfo[part_idx].zeroizable &&
-              otp_addr_o[OtpAddrWidth-1:2] == zeroize_addr_lut[part_idx][OtpAddrWidth-1:2]))) begin
+              otp_addr_o[OtpAddrWidth-1:2] == zeroize_addr_lut[part_idx][OtpAddrWidth-1:2])))) begin
           otp_req_o = 1'b1;
           // The `Read` OTP command takes integrity errors into account, the `ReadRaw` command
           // ignores them. The following means integrity errors are taken into account if all of the
@@ -388,7 +398,13 @@ module otp_ctrl_dai
           //   which is only updated after reset);
           // - the read doesn't address the zeroization marker (which means the zeroization marker
           //   can always be read without risking fatal integrity errors).
+          // - Rivos: we are not using a special macro mode.
           if (PartInfo[part_idx].integrity && mubi8_test_false_loose(zer_i[part_idx]) &&
+            // Rivos: Only compare partition data in normal macro mode.
+            //        Special modes always use ReadRaw such that integrity errors are ignored.
+            //        Special modes also disable integrity in otp_macro.sv,
+            //        but this check acts as an extra safeguard.
+            otp_macro_mode_i == 2'b00 &&
               !(otp_addr_o[OtpAddrWidth-1:2] == zeroize_addr_lut[part_idx][OtpAddrWidth-1:2])) begin
             otp_cmd_o = otp_ctrl_macro_pkg::Read;
           end else begin
@@ -410,13 +426,17 @@ module otp_ctrl_dai
       // terminal error state.
       ReadWaitSt: begin
         // Continuously check read access and bail out if this is not consistent.
-        if (part_sel_valid &&
+        if (
+            // Rivos: If special macro mode then comparing partition data does not make sense.
+            //        Instead, always allow such accesses.
+            (otp_macro_mode_i != 2'b00) ||
+            (part_sel_valid &&
             (mubi8_test_false_strict(part_access_i[part_idx].read_lock) ||
              // HW digests and zeroization markers always remain readable.
              (PartInfo[part_idx].hw_digest &&
               otp_addr_o[OtpAddrWidth-1:2] == digest_addr_lut[part_idx][OtpAddrWidth-1:2]) ||
              (PartInfo[part_idx].zeroizable &&
-              otp_addr_o[OtpAddrWidth-1:2] == zeroize_addr_lut[part_idx][OtpAddrWidth-1:2]))) begin
+              otp_addr_o[OtpAddrWidth-1:2] == zeroize_addr_lut[part_idx][OtpAddrWidth-1:2])))) begin
           if (otp_rvalid_i) begin
             // Check OTP return code.
             if (otp_err inside {NoError, MacroEccCorrError}) begin
@@ -425,6 +445,9 @@ module otp_ctrl_dai
               if (PartInfo[part_idx].secret &&
                   (otp_addr_o[OtpAddrWidth-1:2] !=
                    digest_addr_lut[part_idx][OtpAddrWidth-1:2]) &&
+                   // Rivos: Special modes (!=2'b00) never use scrambling. 
+                   // Otherwise that would break the redundancy mode.
+                   otp_macro_mode_i == 2'b00 &&
                   (otp_addr_o[OtpAddrWidth-1:2] !=
                    zeroize_addr_lut[part_idx][OtpAddrWidth-1:2])) begin
                 state_d = DescrSt;
@@ -487,7 +510,11 @@ module otp_ctrl_dai
       // permanently write locked and can hence not be written via the DAI.
       WriteSt: begin
         dai_prog_idle_o = 1'b0;
-        if (part_sel_valid && mubi8_test_false_strict(part_access_i[part_idx].write_lock) &&
+        if (
+            // Rivos: If special macro mode then comparing partition data does not make sense.
+            //        Instead, always allow such accesses.
+            (otp_macro_mode_i != 2'b00) ||
+            (part_sel_valid && mubi8_test_false_strict(part_access_i[part_idx].write_lock) &&
             // If this is a HW digest write to a buffered partition.
             ((PartInfo[part_idx].variant == Buffered && PartInfo[part_idx].hw_digest &&
               base_sel_q == PartOffset &&
@@ -497,16 +524,18 @@ module otp_ctrl_dai
               base_sel_q == DaiOffset &&
               otp_addr_o[OtpAddrWidth-1:2] < digest_addr_lut[part_idx][OtpAddrWidth-1:2]) ||
              // If this is a write to an unbuffered partition and not to the zeroized item
-             // Rivos: Write to zeroized field is permitted for special modes (mode != 2'b00)
              (PartInfo[part_idx].variant != Buffered && base_sel_q == DaiOffset &&
               !(PartInfo[part_idx].zeroizable &&
-                otp_macro_mode_i == 2'b00 && // Rivos
                 (otp_addr_o[OtpAddrWidth-1:2] ==
-                 zeroize_addr_lut[part_idx][OtpAddrWidth-1:2]))))) begin
+                 zeroize_addr_lut[part_idx][OtpAddrWidth-1:2])))))) begin
+
           otp_req_o = 1'b1;
           // Depending on the partition configuration,
           // the wrapper is instructed to ignore integrity errors.
-          if (PartInfo[part_idx].integrity) begin
+          // Rivos: Special modes (!=2'b00) should always use WriteRaw and ignore integrity.
+          //        In these modes integrity is also disabled in otp_macro.sv.
+          //        But this acts as an extra safeguard.
+          if (otp_macro_mode_i == 2'b00 && PartInfo[part_idx].integrity) begin
             otp_cmd_o = otp_ctrl_macro_pkg::Write;
           end else begin
             otp_cmd_o = otp_ctrl_macro_pkg::WriteRaw;
@@ -529,7 +558,11 @@ module otp_ctrl_dai
       WriteWaitSt: begin
         dai_prog_idle_o = 1'b0;
         // Continuously check write access and bail out if this is not consistent.
-        if (part_sel_valid && mubi8_test_false_strict(part_access_i[part_idx].write_lock) &&
+        if (
+            // Rivos: If special macro mode then comparing partition data does not make sense.
+            //        Instead, always allow such accesses.
+            (otp_macro_mode_i != 2'b00) ||
+            (part_sel_valid && mubi8_test_false_strict(part_access_i[part_idx].write_lock) &&
             // If this is a HW digest write to a buffered partition.
             ((PartInfo[part_idx].variant == Buffered && PartInfo[part_idx].hw_digest &&
               base_sel_q == PartOffset &&
@@ -539,12 +572,10 @@ module otp_ctrl_dai
               base_sel_q == DaiOffset &&
               otp_addr_o[OtpAddrWidth-1:2] < digest_addr_lut[part_idx][OtpAddrWidth-1:2]) ||
              // If this is a write to an unbuffered partition and not to the zeroized item
-             // Rivos: Write to zeroized field is permitted for special modes (mode != 2'b00)
              (PartInfo[part_idx].variant != Buffered && base_sel_q == DaiOffset &&
               !(PartInfo[part_idx].zeroizable &&
-                otp_macro_mode_i == 2'b00 && // Rivos
                 (otp_addr_o[OtpAddrWidth-1:2] ==
-                 zeroize_addr_lut[part_idx][OtpAddrWidth-1:2]))))) begin
+                 zeroize_addr_lut[part_idx][OtpAddrWidth-1:2])))))) begin
 
           if (otp_rvalid_i) begin
             // Check OTP return code. Note that non-blank errors are recoverable.
