@@ -1135,7 +1135,7 @@
         {
             name:       "ROM_PATCH",
             variant:    "Unbuffered",
-            absorb:     true,
+            absorb:     false,
             secret:     false,
             sw_digest:  true,
             hw_digest:  false,
@@ -1148,7 +1148,7 @@
             items: [
                 {
                     name: "ROM_PATCH_DATA",
-                    size: "9192"
+                    size: "8192"
                     desc: ''' Fully SW managed partition
                     ROM patch section
                     signed patch(es)
@@ -1209,6 +1209,32 @@
             ],
             desc: ''' SoC fuses partition for the Factory Testing (FT) manufacturing stage.
                 '''
+        }
+        {
+            name:       "SCRATCH_FUSES",
+            variant:    "Unbuffered",
+            absorb:     true,
+            secret:     false,
+            sw_digest:  false,
+            hw_digest:  false,
+            write_lock: "None",
+            read_lock:  "CSR",
+            key_sel:    "NoKey",
+            integrity:  true,
+            bkout_type: false,
+            zeroizable: true,
+            items: [
+                {
+                    name: "SCRATCH_FUSES_DATA",
+                    absorb: true,
+                    desc: ''' Fully SW managed partition.
+                    Unstructured, single item partition for any RoT firmware (runtime,
+                    bootstrap, manufacturing) to use and organize freely.
+                    '''
+                }
+            ],
+            desc: '''Unstructured scratch data partition.
+            '''
         }
         {
             name:           "HW_CFG0",
