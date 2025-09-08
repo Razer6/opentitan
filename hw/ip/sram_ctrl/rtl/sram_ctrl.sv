@@ -33,6 +33,8 @@ module sram_ctrl
   parameter int Outstanding                                = 2,
   // Enable single-bit error correction and error logging
   parameter bit                         EccCorrection      = 0,
+  // Rivos: Raise TLUL error on ECC error
+  parameter bit TlulErrorOnEccError                        = 1'b1,
   // RACL configuration
   parameter bit                         EnableRacl       = 1'b0,
   parameter bit                         EnableSramRacl   = 1'b0,
@@ -627,14 +629,19 @@ module sram_ctrl
       sram_rerror_o.address[2+:AddrWidth] = sram_rerror_addr_scr;
     end
 
+    logic sram_rvalid_raw;
     prim_flop #(
       .Width(1)
     ) u_flop_rvalid (
       .clk_i,
       .rst_ni,
       .d_i(sram_rvalid_scr),
-      .q_o(sram_rvalid)
+      .q_o(sram_rvalid_raw)
     );
+    // Rivos: Hang the transaction on an uncorrectable ECC error (sram_rerror[1]) by not returning
+    // rvalid. The uncorrectable error is propagated through the RAS interface. If TlulErrorOnEccError
+    // is set, the error is propagated through the TLUL interface.
+    assign sram_rvalid = sram_rvalid_raw & (~sram_rerror[1] | TlulErrorOnEccError);
 
     prim_flop #(
       .Width(DataWidth)
