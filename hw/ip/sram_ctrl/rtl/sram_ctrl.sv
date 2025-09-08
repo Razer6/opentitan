@@ -35,6 +35,7 @@ module sram_ctrl
   parameter bit                         EccCorrection      = 0,
   // Rivos: Raise TLUL error on ECC error
   parameter bit TlulErrorOnEccError                        = 1'b1,
+  parameter bit FlopEccOutput                              = 1'b1,
   // RACL configuration
   parameter bit                         EnableRacl       = 1'b0,
   parameter bit                         EnableSramRacl   = 1'b0,
@@ -605,14 +606,18 @@ module sram_ctrl
     );
 
     logic uncorrectable_error_q;
-    prim_flop #(
-      .Width(1)
-    ) u_flop_uncorr_error (
-      .clk_i,
-      .rst_ni,
-      .d_i(ecc_error[1]),
-      .q_o(uncorrectable_error_q)
-    );
+    if (FlopEccOutput) begin : gen_flop_ecc_output_error
+      prim_flop #(
+        .Width(1)
+      ) u_flop_uncorr_error (
+        .clk_i,
+        .rst_ni,
+        .d_i(ecc_error[1]),
+        .q_o(uncorrectable_error_q)
+      );
+    end else begin : gen_no_flop_ecc_output_error
+      assign uncorrectable_error_q = ecc_error[1];
+    end
 
     // Correctable errors are corrected.
     // Uncorrectable errors are passed through to the requester.
@@ -630,27 +635,35 @@ module sram_ctrl
     end
 
     logic sram_rvalid_raw;
-    prim_flop #(
-      .Width(1)
-    ) u_flop_rvalid (
-      .clk_i,
-      .rst_ni,
-      .d_i(sram_rvalid_scr),
-      .q_o(sram_rvalid_raw)
-    );
+    if (FlopEccOutput) begin : gen_flop_ecc_output_rvalid
+      prim_flop #(
+        .Width(1)
+      ) u_flop_rvalid (
+        .clk_i,
+        .rst_ni,
+        .d_i(sram_rvalid_scr),
+        .q_o(sram_rvalid_raw)
+      );
+    end else begin : gen_no_flop_ecc_output_rvalid
+      assign sram_rvalid_raw = sram_rvalid_scr;
+    end
     // Rivos: Hang the transaction on an uncorrectable ECC error (sram_rerror[1]) by not returning
     // rvalid. The uncorrectable error is propagated through the RAS interface. If TlulErrorOnEccError
     // is set, the error is propagated through the TLUL interface.
     assign sram_rvalid = sram_rvalid_raw & (~sram_rerror[1] | TlulErrorOnEccError);
 
-    prim_flop #(
-      .Width(DataWidth)
-    ) u_flop_enc_data (
-      .clk_i,
-      .rst_ni,
-      .d_i(ecc_enc_data),
-      .q_o(sram_rdata)
-    );
+    if (FlopEccOutput) begin : gen_flop_ecc_output_data
+      prim_flop #(
+        .Width(DataWidth)
+      ) u_flop_enc_data (
+        .clk_i,
+        .rst_ni,
+        .d_i(ecc_enc_data),
+        .q_o(sram_rdata)
+        );
+    end else begin : gen_no_flop_ecc_output_data
+      assign sram_rdata = ecc_enc_data;
+    end
 
     // We don't use the read error from the prim, we re-compute it here
     logic unused_rerror;

@@ -176,6 +176,7 @@ module top_englishbreakfast #(
   localparam int SpiHost0NumCS = 1;
   // local parameters for sram_ctrl_main
   localparam int SramCtrlMainOutstanding = 2;
+  localparam bit SramCtrlMainFlopEccOutput = 0;
   // local parameters for rom_ctrl
   localparam bit RomCtrlFlopToKmac = 1'b0;
   // local parameters for rv_core_ibex
@@ -1225,7 +1226,8 @@ module top_englishbreakfast #(
     .EccCorrection(SramCtrlMainEccCorrection),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .FlopWdataScramble(SramCtrlMainFlopWdataScramble),
-    .FlopReadAddrScramble(SramCtrlMainFlopReadAddrScramble)
+    .FlopReadAddrScramble(SramCtrlMainFlopReadAddrScramble),
+    .FlopEccOutput(SramCtrlMainFlopEccOutput)
   ) u_sram_ctrl_main (
       // External alert group "englishbreakfast" [22]: fatal_error
       .alert_tx_o  ( outgoing_alert_englishbreakfast_tx_o[22:22] ),

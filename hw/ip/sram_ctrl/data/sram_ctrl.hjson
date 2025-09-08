@@ -143,6 +143,13 @@
       expose:   "true",
       default:  "0"
     },
+    { name:      "FlopEccOutput",
+      desc:      "Add a flop stage after the ECC output.",
+      type:      "bit",
+      local:     "true",
+      expose:    "true",
+      default:   "0"
+    },
   ]
 
   features: [

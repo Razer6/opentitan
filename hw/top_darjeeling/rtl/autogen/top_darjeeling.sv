@@ -370,14 +370,17 @@ module top_darjeeling #(
   localparam int SpiHost0NumCS = 1;
   // local parameters for sram_ctrl_ret_aon
   localparam int SramCtrlRetAonOutstanding = 6;
+  localparam bit SramCtrlRetAonFlopEccOutput = 0;
   // local parameters for entropy_src
   localparam int EntropySrcEsFifoDepth = 3;
   localparam bit EntropySrcEnCsAesHaltReqIf = 0;
   localparam int unsigned EntropySrcDistrFifoDepth = 11;
   // local parameters for sram_ctrl_main
   localparam int SramCtrlMainOutstanding = 6;
+  localparam bit SramCtrlMainFlopEccOutput = 0;
   // local parameters for sram_ctrl_mbox
   localparam int SramCtrlMboxOutstanding = 6;
+  localparam bit SramCtrlMboxFlopEccOutput = 0;
   // local parameters for rom_ctrl0
   localparam bit RomCtrl0FlopToKmac = 1'b1;
   // local parameters for rom_ctrl1
@@ -1741,7 +1744,8 @@ module top_darjeeling #(
     .EccCorrection(SramCtrlRetAonEccCorrection),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .FlopWdataScramble(SramCtrlRetAonFlopWdataScramble),
-    .FlopReadAddrScramble(SramCtrlRetAonFlopReadAddrScramble)
+    .FlopReadAddrScramble(SramCtrlRetAonFlopReadAddrScramble),
+    .FlopEccOutput(SramCtrlRetAonFlopEccOutput)
   ) u_sram_ctrl_ret_aon (
       // alert_handler[21]: fatal_error
       .alert_tx_o  ( alert_tx[21:21] ),
@@ -2178,7 +2182,8 @@ module top_darjeeling #(
     .EccCorrection(SramCtrlMainEccCorrection),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .FlopWdataScramble(SramCtrlMainFlopWdataScramble),
-    .FlopReadAddrScramble(SramCtrlMainFlopReadAddrScramble)
+    .FlopReadAddrScramble(SramCtrlMainFlopReadAddrScramble),
+    .FlopEccOutput(SramCtrlMainFlopEccOutput)
   ) u_sram_ctrl_main (
       // alert_handler[41]: fatal_error
       .alert_tx_o  ( alert_tx[41:41] ),
@@ -2223,7 +2228,8 @@ module top_darjeeling #(
     .EccCorrection(SramCtrlMboxEccCorrection),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
     .FlopWdataScramble(SramCtrlMboxFlopWdataScramble),
-    .FlopReadAddrScramble(SramCtrlMboxFlopReadAddrScramble)
+    .FlopReadAddrScramble(SramCtrlMboxFlopReadAddrScramble),
+    .FlopEccOutput(SramCtrlMboxFlopEccOutput)
   ) u_sram_ctrl_mbox (
       // alert_handler[42]: fatal_error
       .alert_tx_o  ( alert_tx[42:42] ),

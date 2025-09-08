@@ -264,12 +264,14 @@ module top_earlgrey #(
   localparam int SpiHost1NumCS = 1;
   // local parameters for sram_ctrl_ret_aon
   localparam int SramCtrlRetAonOutstanding = 2;
+  localparam bit SramCtrlRetAonFlopEccOutput = 0;
   // local parameters for entropy_src
   localparam int EntropySrcEsFifoDepth = 3;
   localparam bit EntropySrcEnCsAesHaltReqIf = 1;
   localparam int unsigned EntropySrcDistrFifoDepth = 2;
   // local parameters for sram_ctrl_main
   localparam int SramCtrlMainOutstanding = 2;
+  localparam bit SramCtrlMainFlopEccOutput = 0;
   // local parameters for rom_ctrl
   localparam bit RomCtrlFlopToKmac = 1'b0;
   // local parameters for rv_core_ibex
@@ -2258,7 +2260,8 @@ module top_earlgrey #(
     .EccCorrection(SramCtrlRetAonEccCorrection),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .FlopWdataScramble(SramCtrlRetAonFlopWdataScramble),
-    .FlopReadAddrScramble(SramCtrlRetAonFlopReadAddrScramble)
+    .FlopReadAddrScramble(SramCtrlRetAonFlopReadAddrScramble),
+    .FlopEccOutput(SramCtrlRetAonFlopEccOutput)
   ) u_sram_ctrl_ret_aon (
       // alert_handler[34]: fatal_error
       .alert_tx_o  ( alert_tx[34:34] ),
@@ -2777,7 +2780,8 @@ module top_earlgrey #(
     .EccCorrection(SramCtrlMainEccCorrection),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .FlopWdataScramble(SramCtrlMainFlopWdataScramble),
-    .FlopReadAddrScramble(SramCtrlMainFlopReadAddrScramble)
+    .FlopReadAddrScramble(SramCtrlMainFlopReadAddrScramble),
+    .FlopEccOutput(SramCtrlMainFlopEccOutput)
   ) u_sram_ctrl_main (
       // alert_handler[59]: fatal_error
       .alert_tx_o  ( alert_tx[59:59] ),

@@ -5871,6 +5871,15 @@
           expose: "true"
           name_top: SramCtrlRetAonFlopReadAddrScramble
         }
+        {
+          name: FlopEccOutput
+          desc: Add a flop stage after the ECC output.
+          type: bit
+          default: "0"
+          local: "true"
+          expose: "true"
+          name_top: SramCtrlRetAonFlopEccOutput
+        }
       ]
       inter_signal_list:
       [
@@ -8725,6 +8734,15 @@
           local: "false"
           expose: "true"
           name_top: SramCtrlMainFlopReadAddrScramble
+        }
+        {
+          name: FlopEccOutput
+          desc: Add a flop stage after the ECC output.
+          type: bit
+          default: "0"
+          local: "true"
+          expose: "true"
+          name_top: SramCtrlMainFlopEccOutput
         }
       ]
       inter_signal_list:

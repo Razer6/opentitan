@@ -210,10 +210,13 @@ module top_pwc #(
   // Local Parameters
   // local parameters for sram_ctrl_ret_aon
   localparam int SramCtrlRetAonOutstanding = 6;
+  localparam bit SramCtrlRetAonFlopEccOutput = 0;
   // local parameters for sram_ctrl_main
   localparam int SramCtrlMainOutstanding = 6;
+  localparam bit SramCtrlMainFlopEccOutput = 0;
   // local parameters for sram_ctrl_mbox
   localparam int SramCtrlMboxOutstanding = 6;
+  localparam bit SramCtrlMboxFlopEccOutput = 0;
   // local parameters for racl_ctrl_pwc
   localparam int RaclCtrlPwcNumSubscribingIps = 18;
   // local parameters for rv_core_ibex_pwc
@@ -538,7 +541,8 @@ module top_pwc #(
     .EccCorrection(SramCtrlRetAonEccCorrection),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .FlopWdataScramble(SramCtrlRetAonFlopWdataScramble),
-    .FlopReadAddrScramble(SramCtrlRetAonFlopReadAddrScramble)
+    .FlopReadAddrScramble(SramCtrlRetAonFlopReadAddrScramble),
+    .FlopEccOutput(SramCtrlRetAonFlopEccOutput)
   ) u_sram_ctrl_ret_aon (
       // External alert group "pwc" [3]: fatal_error
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[3:3] ),
@@ -662,7 +666,8 @@ module top_pwc #(
     .EccCorrection(SramCtrlMainEccCorrection),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .FlopWdataScramble(SramCtrlMainFlopWdataScramble),
-    .FlopReadAddrScramble(SramCtrlMainFlopReadAddrScramble)
+    .FlopReadAddrScramble(SramCtrlMainFlopReadAddrScramble),
+    .FlopEccOutput(SramCtrlMainFlopEccOutput)
   ) u_sram_ctrl_main (
       // External alert group "pwc" [6]: fatal_error
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[6:6] ),
@@ -710,7 +715,8 @@ module top_pwc #(
     .EccCorrection(SramCtrlMboxEccCorrection),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
     .FlopWdataScramble(SramCtrlMboxFlopWdataScramble),
-    .FlopReadAddrScramble(SramCtrlMboxFlopReadAddrScramble)
+    .FlopReadAddrScramble(SramCtrlMboxFlopReadAddrScramble),
+    .FlopEccOutput(SramCtrlMboxFlopEccOutput)
   ) u_sram_ctrl_mbox (
       // External alert group "pwc" [7]: fatal_error
       .alert_tx_o  ( outgoing_alert_pwc_tx_o[7:7] ),

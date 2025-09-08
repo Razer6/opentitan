@@ -181,10 +181,13 @@ module top_mio #(
   // Local Parameters
   // local parameters for sram_ctrl_ret_aon
   localparam int SramCtrlRetAonOutstanding = 6;
+  localparam bit SramCtrlRetAonFlopEccOutput = 0;
   // local parameters for sram_ctrl_main
   localparam int SramCtrlMainOutstanding = 6;
+  localparam bit SramCtrlMainFlopEccOutput = 0;
   // local parameters for sram_ctrl_mbox
   localparam int SramCtrlMboxOutstanding = 6;
+  localparam bit SramCtrlMboxFlopEccOutput = 0;
   // local parameters for racl_ctrl_mio
   localparam int RaclCtrlMioNumSubscribingIps = 17;
   // local parameters for rv_core_ibex_mio
@@ -462,7 +465,8 @@ module top_mio #(
     .EccCorrection(SramCtrlRetAonEccCorrection),
     .FlopRamOutput(SramCtrlRetAonFlopRamOutput),
     .FlopWdataScramble(SramCtrlRetAonFlopWdataScramble),
-    .FlopReadAddrScramble(SramCtrlRetAonFlopReadAddrScramble)
+    .FlopReadAddrScramble(SramCtrlRetAonFlopReadAddrScramble),
+    .FlopEccOutput(SramCtrlRetAonFlopEccOutput)
   ) u_sram_ctrl_ret_aon (
       // External alert group "mio" [2]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[2:2] ),
@@ -586,7 +590,8 @@ module top_mio #(
     .EccCorrection(SramCtrlMainEccCorrection),
     .FlopRamOutput(SramCtrlMainFlopRamOutput),
     .FlopWdataScramble(SramCtrlMainFlopWdataScramble),
-    .FlopReadAddrScramble(SramCtrlMainFlopReadAddrScramble)
+    .FlopReadAddrScramble(SramCtrlMainFlopReadAddrScramble),
+    .FlopEccOutput(SramCtrlMainFlopEccOutput)
   ) u_sram_ctrl_main (
       // External alert group "mio" [5]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[5:5] ),
@@ -634,7 +639,8 @@ module top_mio #(
     .EccCorrection(SramCtrlMboxEccCorrection),
     .FlopRamOutput(SramCtrlMboxFlopRamOutput),
     .FlopWdataScramble(SramCtrlMboxFlopWdataScramble),
-    .FlopReadAddrScramble(SramCtrlMboxFlopReadAddrScramble)
+    .FlopReadAddrScramble(SramCtrlMboxFlopReadAddrScramble),
+    .FlopEccOutput(SramCtrlMboxFlopEccOutput)
   ) u_sram_ctrl_mbox (
       // External alert group "mio" [6]: fatal_error
       .alert_tx_o  ( outgoing_alert_mio_tx_o[6:6] ),
