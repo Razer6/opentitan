@@ -553,7 +553,7 @@ module otp_ctrl_dai
              (PartInfo[part_idx].variant != Buffered && base_sel_q == DaiOffset)) &&
             // Don't allow DAI writes to the zeroization marker.
             !(PartInfo[part_idx].zeroizable &&
-                (otp_addr_o[OtpAddrWidth-1:2] == zeroize_addr_lut[part_idx][OtpAddrWidth-1:2]))
+                (otp_addr_o[OtpAddrWidth-1:2] == zeroize_addr_lut[part_idx][OtpAddrWidth-1:2])))
         ) begin
           otp_req_o = 1'b1;
           // Depending on the partition configuration,
@@ -607,7 +607,7 @@ module otp_ctrl_dai
              (PartInfo[part_idx].variant != Buffered && base_sel_q == DaiOffset)) &&
             // Don't allow DAI writes to the zeroization marker.
             !(PartInfo[part_idx].zeroizable &&
-                (otp_addr_o[OtpAddrWidth-1:2] == zeroize_addr_lut[part_idx][OtpAddrWidth-1:2]))
+                (otp_addr_o[OtpAddrWidth-1:2] == zeroize_addr_lut[part_idx][OtpAddrWidth-1:2])))
         ) begin
 
           if (otp_rvalid_i) begin
