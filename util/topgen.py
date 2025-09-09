@@ -1820,14 +1820,20 @@ def main():
 # These lines are too long due to templating
 waive --rule=line-length --location="{rnd_cnst_sv_file}"
 """)
+        core_file_kargs = {
+            "package": f"lowrisc:{topname}_constants:{seed_mode}_rnd_cnst_pkg:0.1",
+            "description": "Random netlist constant package",
+            "dependencies": rnd_cnst_deps,
+            "files": [rnd_cnst_sv_file],
+            "files_veriblelint_waiver": rnd_cnst_vbl_file
+        }
+        # Don't add virtual package for MIO and PWC because that creates circular dependencies.
+        if topname not in ["mio", "pwc"]:
+            core_file_kargs["virtual_package"] = "lowrisc:virtual_constants:rnd_cnst_pkg"
+
         render_template(TOPGEN_TEMPLATE_PATH / "core_file.core.tpl",
                         out_path / rnd_cnst_path / f"top_{topname}_{seed_mode}_rnd_cnst_pkg.core",
-                        package=f"lowrisc:{topname}_constants:{seed_mode}_rnd_cnst_pkg:0.1",
-                        description="Random netlist constant package",
-                        virtual_package="lowrisc:virtual_constants:rnd_cnst_pkg",
-                        dependencies=rnd_cnst_deps,
-                        files=[rnd_cnst_sv_file],
-                        files_veriblelint_waiver=rnd_cnst_vbl_file)
+                        **core_file_kargs)
 
         racl_config = completecfg.get('racl', DEFAULT_RACL_CONFIG)
         render_template(TOPGEN_TEMPLATE_PATH / 'top_racl_pkg.sv.tpl',
