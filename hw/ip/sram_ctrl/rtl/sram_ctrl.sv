@@ -35,7 +35,7 @@ module sram_ctrl
   parameter bit                         EccCorrection      = 0,
   // Rivos: Raise TLUL error on ECC error
   parameter bit TlulErrorOnEccError                        = 1'b1,
-  parameter bit FlopEccOutput                              = 1'b1,
+  parameter bit FlopEccOutput                              = 1'b0,
   // RACL configuration
   parameter bit                         EnableRacl       = 1'b0,
   parameter bit                         EnableSramRacl   = 1'b0,
