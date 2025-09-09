@@ -312,20 +312,20 @@
                 //
                 //    and enter the new values in this file.
                 {
-                    name: "OWNER_SW_CFG_ROM_ALERT_DIGEST_DEV",
-                    value: "0x8a12908b",
-                },
-                {
                     name: "OWNER_SW_CFG_ROM_ALERT_DIGEST_PROD",
-                    value: "0xe4bab764",
+                    value: 3693256189
                 },
                 {
                     name: "OWNER_SW_CFG_ROM_ALERT_DIGEST_PROD_END",
-                    value: "0x10f153e1",
+                    value: 678001016
+                },
+                {
+                    name: "OWNER_SW_CFG_ROM_ALERT_DIGEST_DEV",
+                    value: 2995436050
                 },
                 {
                     name: "OWNER_SW_CFG_ROM_ALERT_DIGEST_RMA",
-                    value: "0x4ec41fc0",
+                    value: 1985754457
                 }
             ],
         }

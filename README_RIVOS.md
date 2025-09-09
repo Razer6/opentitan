@@ -19,6 +19,17 @@ Steps to follow when updating:
   - `rvscs/dv/tests/tools/scsctl.py build --destination rvscs/images`
   - `rvscs/dv/tests/tools/scsctl.py build --otp-image otp_gb0_imgs`
 
+When the number of alerts change, the alert digest values for the OTP image need to be updated.
+First, update the `OWNER_SW_CFG_ROM_ALERT_CLASSIFICATION` field in `hw/top_darjeeling/data/otp/otp_ctrl_img_owner_sw_cfg.hjson` and add a configuration for the new alerts.
+Second, run the following commands and copy the output of `opentitantool` back to `hw/top_darjeeling/data/otp/otp_ctrl_img_owner_sw_cfg.hjson`.
+
+```bash
+./util/regtool.py hw/top_darjeeling/ip_autogen/alert_handler/data/alert_handler.hjson -D -o alert_handler_regs.h
+bindgen alert_handler_regs.h -o sw/host/opentitanlib/src/otp/alert_handler_regs.rs
+rustfmt -f sw/host/opentitanlib/src/otp/alert_handler_regs.rs
+bazel run //sw/host/opentitantool -- --rcfile="" otp alert-digest $(realpath hw/top_darjeeling/data/otp/otp_ctrl_img_owner_sw_cfg.hjson)
+```
+
 ## Notable changes
 
 - `README_RIVOS.md` this file
