@@ -211,7 +211,7 @@ module otp_macro
   ///////////////////
 
   // Encoding generated with:
-  // $ ./util/design/sparse-fsm-encode.py -d 5 -m 14 -n 12 \
+  // $ ./util/design/sparse-fsm-encode.py -d 5 -m 16 -n 12 \
   //     -s 761853025 --language=sv
   //
   // Hamming distance histogram:
@@ -221,11 +221,11 @@ module otp_macro
   //  2: --
   //  3: --
   //  4: --
-  //  5: ||||||||||||| (21.98%)
-  //  6: |||||||||||||||||||| (31.87%)
-  //  7: |||||||||||||||||| (29.67%)
-  //  8: |||||||| (14.29%)
-  //  9: | (2.20%)
+  //  5: ||||||||||||||| (25.00%)
+  //  6: |||||||||||||||||||| (33.33%)
+  //  7: ||||||||||||||| (25.83%)
+  //  8: |||||||| (13.33%)
+  //  9: | (2.50%)
   // 10: --
   // 11: --
   // 12: --
@@ -246,11 +246,13 @@ module otp_macro
     WriteWaitSt     = 12'b000000011001,
     IssueWriteSt    = 12'b100001100011,
     WriteSt         = 12'b110010010100,
-    ZerIssueWriteSt = 12'b100111010010,
-    ZerWriteSt      = 12'b011100100111,
-    ZerReadSt       = 12'b000110101000,
-    ZerReadWaitSt   = 12'b010011111111,
-    ErrorSt         = 12'b111000000001
+    ZerWriteCheckSt = 12'b100111010010,
+    ZerWriteWaitSt  = 12'b011100100111,
+    ZerIssueWriteSt = 12'b000110101000,
+    ZerWriteSt      = 12'b010011111111,
+    ZerReadSt       = 12'b111000000001,
+    ZerReadWaitSt   = 12'b001101011110,
+    ErrorSt         = 12'b100100110101
   } state_e;
 
   state_e state_d, state_q;
@@ -340,7 +342,7 @@ module otp_macro
               integrity_en_d = 1'b0;
             end
             Zeroize: begin
-              state_d = ZerWriteSt;
+              state_d = ZerWriteCheckSt;
               integrity_en_d = 1'b0;
             end
             default: ;
@@ -439,6 +441,34 @@ module otp_macro
           end
         end
       end
+
+      // First, read out to perform the write blank check and
+      // read-modify-write operation.
+      ZerWriteCheckSt: begin
+        if (wrapper_ready) begin
+          state_d = ZerWriteWaitSt;
+          req     = 1'b1;
+        end
+        // Register raw memory contents without correction so that we can
+        // perform the read-modify-write correctly.
+        read_ecc_on = 1'b0;
+      end
+      // Wait for readout to complete first.
+      ZerWriteWaitSt: begin
+        // Register raw memory contents without correction so that we can
+        // perform the read-modify-write correctly.
+        read_ecc_on = 1'b0;
+        if (rvalid) begin
+          cnt_en = 1'b1;
+
+          if (cnt_q == size_q) begin
+            cnt_clr = 1'b1;
+            state_d = ZerIssueWriteSt;
+          end else begin
+            state_d = ZerWriteCheckSt;
+          end
+        end
+      end
       // Zeroize the word.
       ZerIssueWriteSt: begin
         req = 1'b1;
@@ -463,9 +493,11 @@ module otp_macro
       end
       // Read back the zeroized word.
       ZerReadSt: begin
-        state_d = ZerReadWaitSt;
-        req     = 1'b1;
-        read_ecc_on = 1'b0;
+        if (wrapper_ready) begin
+          state_d = ZerReadWaitSt;
+          req     = 1'b1;
+          read_ecc_on = 1'b0;
+        end
       end
       // Wait for the read out to complete.
       ZerReadWaitSt: begin
