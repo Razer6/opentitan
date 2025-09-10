@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: Copyright (c) 2025 by Rivos Inc.
 # SPDX-License-Identifier: LicenseRef-Rivos-Internal-Only
+
+# Import path setup to ensure we can import modules from util/
+import _path_setup
+
+from repo_top import repo_top
 import secrets
 import argparse
 from jinja2 import Environment
 from pathlib import Path
 from typing import List
-
-# This file is under $REPO_TOP/util/, so parents[1] gets back to the top.
-REPO_TOP = Path(__file__).resolve().parents[1]
 
 
 HJSON_TEMPLATE = """\
@@ -109,7 +111,7 @@ def main():
 
     seeds_to_include = ["topgen", *args.include_seeds]
 
-    output_dir = Path(f"{REPO_TOP}/hw/top_{top_name}/data")
+    output_dir = Path(f"{repo_top()}/hw/top_{top_name}/data")
     filename = f"top_{top_name}_seed.{seed_type}.hjson"
     full_output_path = output_dir / filename
 

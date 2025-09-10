@@ -7,6 +7,9 @@
 Command-line tool to generate pyreg/pydump files from register HJSON files.
 """
 
+# Import path setup to ensure we can import modules from util/
+import _path_setup
+
 import argparse
 import sys
 from dataclasses import dataclass, asdict

@@ -6,17 +6,18 @@ r"""RACL Generator.
 This utility computes the policy selection vector for a given ip, RACL config, and RACL mapping.
 """
 
+# Import path setup to ensure we can import modules from util/
+import _path_setup
+
 import argparse
+import sys
 from pathlib import Path
 from mako.template import Template
 from mako import exceptions
 from raclgen.lib import _read_hjson
 from reggen.ip_block import IpBlock
+from repo_top import repo_top
 import topgen.lib as topgen_lib
-import sys
-
-# This file is under $REPO_TOP/util/, so parents[1] gets back to the top.
-REPO_TOP = Path(__file__).resolve().parents[1]
 
 
 def main():
@@ -35,7 +36,7 @@ def main():
         ip_name = module['type']
         if ip_name not in ip_blocks:
             try:
-                ip_path = topgen_lib.get_ip_hjson_path(ip_name, top, REPO_TOP)
+                ip_path = topgen_lib.get_ip_hjson_path(ip_name, top, repo_top())
                 if ip_name in replace:
                     ip_path = replace[ip_name]
                 ip_blocks[ip_name] = IpBlock.from_path(path=ip_path, param_defaults=[])

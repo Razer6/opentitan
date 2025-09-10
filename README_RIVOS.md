@@ -4,7 +4,7 @@ Maintainer/Owner: Robert Schilling rschilling@rivosinc.com
 
 # Updating OpenTitan
 
-This OpentTtan (OT) fork is kept in sync with upstream by cherry-picking upstream commits using [util/sync_opentitan_repo.sh](util/sync_opentitan_repo.sh).
+This OpentTtan (OT) fork is kept in sync with upstream by cherry-picking upstream commits using [util/rivos/sync_opentitan_repo.sh](util/rivos/sync_opentitan_repo.sh).
 The script writes the commit hash of the last cherry-pick into [LAST_OPENTITAN_SYNC](LAST_OPENTITAN_SYNC).
 
 Steps to follow when updating:
@@ -28,10 +28,9 @@ Steps to follow when updating:
 - `hw/top_mio` top for scsmio
 - `hw/top_pwc` top for scspwc
 - vexpand footer in various `.sv` and `.sv.tpl` files
-- `util/pyregtool.py` Tool for converting OT hjson files to pyreg
-- `util/sync_opentitan_repo.sh` Script to sync with upstream
+- `util/rivos/` Tools for Rivos-internal usages based on OpenTitan tooling
 
 Other changes can be viewed with
 ```bash
-git diff $(cat LAST_OPENTITAN_SYNC) -- $(git diff $(cat LAST_OPENTITAN_SYNC) --stat --format="" --name-only | grep -v 'autogen\|generated_ips\|hw/top_darjeeling/data/rivos-racl\|hw/top_pwc\|hw/top_mio\|util/sync_opentitan_repo.sh\|util/pyregtool.py')
+git diff $(cat LAST_OPENTITAN_SYNC) -- $(git diff $(cat LAST_OPENTITAN_SYNC) --stat --format="" --name-only | grep -v 'autogen\|generated_ips\|hw/top_darjeeling/data/rivos-racl\|hw/top_pwc\|hw/top_mio\|util/rivos)
 ```
