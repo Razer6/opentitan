@@ -23,7 +23,7 @@ fi
 SEED_TYPE="$1"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SEEDGEN_SCRIPT="$SCRIPT_DIR/seedgen.py"
-HW_DIR="$SCRIPT_DIR/../hw"
+HW_DIR="$SCRIPT_DIR/../../hw"
 
 echo "Running seed generation for type: $SEED_TYPE"
 echo "Script directory: $SCRIPT_DIR"
@@ -58,7 +58,7 @@ python3 "$SEEDGEN_SCRIPT" "$SEED_TYPE" -t mio
 echo ""
 echo "=== Running Makefile in hw directory ==="
 cd "$HW_DIR"
-make all
+make all SEED_MODE="$SEED_TYPE" TOPS="top_darjeeling top_mio top_pwc"
 
 echo ""
 echo "=== Seed generation and build completed successfully ==="

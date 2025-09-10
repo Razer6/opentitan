@@ -11,6 +11,9 @@ import argparse
 from jinja2 import Environment
 from pathlib import Path
 from typing import List
+import subprocess
+import base64
+import sys
 
 
 HJSON_TEMPLATE = """\
@@ -49,7 +52,44 @@ def _get_256_bit_seed(is_production: bool) -> int:
     """
     if is_production:
         # FIXME: Use HSM API when available
-        assert 0
+        command = [
+            "aws", "kms", "generate-random",
+            "--number-of-bytes", "32",
+            "--query", "Plaintext",
+            "--output", "text"
+        ]
+        try:
+            # Run the command
+            # - capture_output=True: Captures stdout and stderr
+            # - text=True: Decodes stdout/stderr as text
+            # - check=True: Raises an exception if the command returns a non-zero exit code
+            result = subprocess.run(
+                command,
+                capture_output=True,
+                text=True,
+                check=True
+            )
+
+            # 1. Get the Base64 string from the command's standard output
+            base64_string = result.stdout.strip()
+
+            # 2. Decode the Base64 string into a 'bytes' object
+            random_bytes = base64.b64decode(base64_string)
+
+            # 3. Convert the bytes into an integer
+            # The 'big' argument means it treats the first byte as the most significant one.
+            random_integer = int.from_bytes(random_bytes, 'big')
+
+            return random_integer
+        except FileNotFoundError:
+            print("Error: The 'aws' command was not found.", file=sys.stderr)
+            print("Please ensure the AWS CLI is installed and in your system's PATH.", file=sys.stderr)
+            sys.exit(1)
+        except subprocess.CalledProcessError as e:
+            print(f"Error executing AWS CLI command:", file=sys.stderr)
+            print(f"Stderr: {e.stderr.strip()}", file=sys.stderr)
+            sys.exit(1)
+
     else:
         return secrets.randbits(256)
 
