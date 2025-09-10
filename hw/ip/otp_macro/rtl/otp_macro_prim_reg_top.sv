@@ -1452,7 +1452,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (12),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (12'h57),
+    .RESVAL  (12'h88),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_0_tsur_pd_ps_cycles (
     .clk_i   (clk_i),
@@ -1480,7 +1480,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (10),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (10'h17),
+    .RESVAL  (10'h25),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_0_tsur_ps_cycles (
     .clk_i   (clk_i),
@@ -1508,7 +1508,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (9),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (9'h11),
+    .RESVAL  (9'h1b),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_0_tsur_ps_cs_cycles (
     .clk_i   (clk_i),
@@ -1549,7 +1549,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (9),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (9'h11),
+    .RESVAL  (9'h1b),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_1_tsup_ps_cs_cycles (
     .clk_i   (clk_i),
@@ -1577,7 +1577,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (10),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (10'h17),
+    .RESVAL  (10'h25),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_1_tsup_ps_cycles (
     .clk_i   (clk_i),
@@ -1605,7 +1605,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (10),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (10'h17),
+    .RESVAL  (10'h24),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_1_tsq_cycles (
     .clk_i   (clk_i),
@@ -1646,7 +1646,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (11),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (11'h3a),
+    .RESVAL  (11'h5a),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_2_tsq_m_cycles (
     .clk_i   (clk_i),
@@ -1674,7 +1674,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (14),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (14'h1f4),
+    .RESVAL  (14'h30e),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_2_tpgm_cycles (
     .clk_i   (clk_i),
@@ -1702,7 +1702,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (7),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (7'hd),
+    .RESVAL  (7'h15),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_2_tsur_ld_cycles (
     .clk_i   (clk_i),
@@ -1743,7 +1743,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (10),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (10'h19),
+    .RESVAL  (10'h27),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_3_thr_ps_cycles (
     .clk_i   (clk_i),
@@ -1771,7 +1771,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (10),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (10'h19),
+    .RESVAL  (10'h27),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_3_thp_ps_cycles (
     .clk_i   (clk_i),
@@ -1799,7 +1799,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (9),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (9'hb),
+    .RESVAL  (9'h11),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_3_thp_cs_cycles (
     .clk_i   (clk_i),
@@ -1840,7 +1840,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (9),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (9'hb),
+    .RESVAL  (9'h11),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_4_thr_cs_cycles (
     .clk_i   (clk_i),
@@ -1868,7 +1868,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (9),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (9'he),
+    .RESVAL  (9'h16),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_4_thp_ps_cs_cycles (
     .clk_i   (clk_i),
@@ -1896,7 +1896,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (9),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (9'he),
+    .RESVAL  (9'h16),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_4_thr_ps_cs_cycles (
     .clk_i   (clk_i),
@@ -1937,7 +1937,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (8),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (8'h4),
+    .RESVAL  (8'h7),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_5_tsur_a_cycles (
     .clk_i   (clk_i),
@@ -1965,7 +1965,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (8),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (8'h4),
+    .RESVAL  (8'h7),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_5_tsup_a_cycles (
     .clk_i   (clk_i),
@@ -1993,7 +1993,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (8),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (8'h5),
+    .RESVAL  (8'h8),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_5_thp_a_cycles (
     .clk_i   (clk_i),
@@ -2021,7 +2021,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (8),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (8'hd),
+    .RESVAL  (8'h15),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_5_tsup_ld_cycles (
     .clk_i   (clk_i),
@@ -2062,7 +2062,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (10),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (10'h1b),
+    .RESVAL  (10'h25),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_6_trd_cycles (
     .clk_i   (clk_i),
@@ -2090,7 +2090,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (11),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (11'h3a),
+    .RESVAL  (11'h5b),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_6_trd_m_cycles (
     .clk_i   (clk_i),
@@ -2118,7 +2118,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (8),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (8'h5),
+    .RESVAL  (8'h8),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_6_thr_a_cycles (
     .clk_i   (clk_i),
@@ -2159,7 +2159,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (8),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (8'h7),
+    .RESVAL  (8'hb),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_7_thp_pd_ps_cycles (
     .clk_i   (clk_i),
@@ -2255,7 +2255,7 @@ module otp_macro_prim_reg_top
   prim_subreg #(
     .DW      (18),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (18'h1388),
+    .RESVAL  (18'h1e85),
     .Mubi    (1'b0)
   ) u_fuse_wrapper_wr_cfg_8 (
     .clk_i   (clk_i),

@@ -555,17 +555,17 @@
           { bits: "11:0",
             name: "TSUR_PD_PS_CYCLES",
             desc: "number oscillator clock cycles to satisfy TSUR_PD_PS timing"
-            resval: "0x57",
+            resval: "0x88",
           }
           { bits: "21:12",
             name: "TSUR_PS_CYCLES",
             desc: "number oscillator clock cycles to satisfy TSUR_PS timing"
-            resval: "0x17",
+            resval: "0x25",
           }
           { bits: "30:22",
             name: "TSUR_PS_CS_CYCLES",
             desc: "number oscillator clock cycles to satisfy TSUR_PS_CS timing"
-            resval: "0x11",
+            resval: "0x1B",
           }
         ]
       },
@@ -581,17 +581,17 @@
           { bits: "8:0",
             name: "TSUP_PS_CS_CYCLES",
             desc: "number oscillator clock cycles to satisfy TSUP_PS_CS timing"
-            resval: "0x11",
+            resval: "0x1B",
           }
           { bits: "18:9",
             name: "TSUP_PS_CYCLES",
             desc: "number oscillator clock cycles to satisfy TSUP_PS timing"
-            resval: "0x17",
+            resval: "0x25",
           }
           { bits: "28:19",
             name: "TSQ_CYCLES",
             desc: "number oscillator clock cycles to satisfy TSQ timing"
-            resval: "0x17",
+            resval: "0x24",
           }
         ]
       },
@@ -607,17 +607,17 @@
           { bits: "10:0",
             name: "TSQ_M_CYCLES",
             desc: "number oscillator clock cycles to satisfy TSQ_M timing"
-            resval: "0x3A",
+            resval: "0x5A",
           }
           { bits: "24:11",
             name: "TPGM_CYCLES",
             desc: "number oscillator clock cycles to satisfy TPGM timing"
-            resval: "0x1F4",
+            resval: "0x30E",
           }
           { bits: "31:25",
             name: "TSUR_LD_CYCLES",
             desc: "number oscillator clock cycles to satisfy TSUR_LD timing"
-            resval: "0xD",
+            resval: "0x15",
           }
         ]
       },
@@ -633,17 +633,17 @@
           { bits: "9:0",
             name: "THR_PS_CYCLES",
             desc: "number oscillator clock cycles to satisfy THR_PS timing"
-            resval: "0x19",
+            resval: "0x27",
           }
           { bits: "19:10",
             name: "THP_PS_CYCLES",
             desc: "number oscillator clock cycles to satisfy THP_PS timing"
-            resval: "0x19",
+            resval: "0x27",
           }
           { bits: "28:20",
             name: "THP_CS_CYCLES",
             desc: "number oscillator clock cycles to satisfy THP_CS timing"
-            resval: "0xB",
+            resval: "0x11",
           }
         ]
       },
@@ -659,17 +659,17 @@
           { bits: "8:0",
             name: "THR_CS_CYCLES",
             desc: "number oscillator clock cycles to satisfy THR_CS timing"
-            resval: "0xB",
+            resval: "0x11",
           }
           { bits: "17:9",
             name: "THP_PS_CS_CYCLES",
             desc: "number oscillator clock cycles to satisfy THP_PS_CS timing"
-            resval: "0xE",
+            resval: "0x16",
           }
           { bits: "26:18",
             name: "THR_PS_CS_CYCLES",
             desc: "number oscillator clock cycles to satisfy THR_PS_CS timing"
-            resval: "0xE",
+            resval: "0x16",
           }
         ]
       },
@@ -685,22 +685,22 @@
           { bits: "7:0",
             name: "TSUR_A_CYCLES",
             desc: "number oscillator clock cycles to satisfy TSUR_A timing"
-            resval: "0x4",
+            resval: "0x7",
           }
           { bits: "15:8",
             name: "TSUP_A_CYCLES",
             desc: "number oscillator clock cycles to satisfy TSUP_A timing"
-            resval: "0x4",
+            resval: "0x7",
           }
           { bits: "23:16",
             name: "THP_A_CYCLES",
             desc: "number oscillator clock cycles to satisfy THP_A timing"
-            resval: "0x5",
+            resval: "0x8",
           }
           { bits: "31:24",
             name: "TSUP_LD_CYCLES",
             desc: "number oscillator clock cycles to satisfy TSUP_LD timing"
-            resval: "0xD",
+            resval: "0x15",
           }
         ]
       },
@@ -716,17 +716,17 @@
           { bits: "9:0",
             name: "TRD_CYCLES",
             desc: "number oscillator clock cycles to satisfy TRD timing"
-            resval: "0x1B",
+            resval: "0x25",
           }
           { bits: "20:10",
             name: "TRD_M_CYCLES",
             desc: "number oscillator clock cycles to satisfy TRD_M timing"
-            resval: "0x3A",
+            resval: "0x5B",
           }
           { bits: "28:21",
             name: "THR_A_CYCLES",
             desc: "number oscillator clock cycles to satisfy THR_A timing"
-            resval: "0x5",
+            resval: "0x8",
           }
         ]
       },
@@ -742,7 +742,7 @@
           { bits: "7:0",
             name: "THP_PD_PS_CYCLES",
             desc: "number oscillator clock cycles to satisfy THP_PD_PS timing"
-            resval: "0x7",
+            resval: "0xB",
           }
           { bits: "15:8",
             name: "DATA_CAPTURE_CYCLES",
@@ -768,7 +768,7 @@
           { bits: "17:0",
             name: "TRIGGER_POWER_DOWN_CYCLES",
             desc: "number oscillator clock cycles to satisfy TRIGGER_POWER_DOWN timing"
-            resval: "0x1388",
+            resval: "0x1E85",
           }
         ]
       },
