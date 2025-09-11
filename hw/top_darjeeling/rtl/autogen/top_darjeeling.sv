@@ -1257,6 +1257,7 @@ module top_darjeeling #(
     .RndCnstScrmblKey2(RndCnstOtpCtrlScrmblKey2),
     .RndCnstScrmblKey3(RndCnstOtpCtrlScrmblKey3),
     .RndCnstScrmblKey4(RndCnstOtpCtrlScrmblKey4),
+    .RndCnstScrmblKey5(RndCnstOtpCtrlScrmblKey5),
     .RndCnstDigestConst0(RndCnstOtpCtrlDigestConst0),
     .RndCnstDigestConst1(RndCnstOtpCtrlDigestConst1),
     .RndCnstDigestIV0(RndCnstOtpCtrlDigestIV0),

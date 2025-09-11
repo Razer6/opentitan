@@ -94,6 +94,7 @@ module tb;
     .RndCnstScrmblKey2(top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlScrmblKey2),
     .RndCnstScrmblKey3(top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlScrmblKey3),
     .RndCnstScrmblKey4(top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlScrmblKey4),
+    .RndCnstScrmblKey5(top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlScrmblKey5),
     .RndCnstDigestConst0(top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlDigestConst0),
     .RndCnstDigestConst1(top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlDigestConst1),
     .RndCnstDigestIV0(top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlDigestIV0),

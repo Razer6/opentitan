@@ -329,6 +329,7 @@ interface otp_ctrl_if(input clk_i, input rst_ni);
   task automatic force_invalid_part_cmd_o(int part_idx);
     @(posedge clk_i);
     case (part_idx)
+      CreatorManufCfgIdx: force `BUF_PART_OTP_CMD_PATH(CreatorManufCfgIdx) = otp_ctrl_macro_pkg::cmd_e'(2'b10);
       HwCfg0Idx: force `BUF_PART_OTP_CMD_PATH(HwCfg0Idx) = otp_ctrl_macro_pkg::cmd_e'(2'b10);
       HwCfg1Idx: force `BUF_PART_OTP_CMD_PATH(HwCfg1Idx) = otp_ctrl_macro_pkg::cmd_e'(2'b10);
       HwCfg2Idx: force `BUF_PART_OTP_CMD_PATH(HwCfg2Idx) = otp_ctrl_macro_pkg::cmd_e'(2'b10);
@@ -348,6 +349,7 @@ interface otp_ctrl_if(input clk_i, input rst_ni);
   task automatic release_invalid_part_cmd_o(int part_idx);
     @(posedge clk_i);
     case (part_idx)
+      CreatorManufCfgIdx: release `BUF_PART_OTP_CMD_PATH(CreatorManufCfgIdx);
       HwCfg0Idx: release `BUF_PART_OTP_CMD_PATH(HwCfg0Idx);
       HwCfg1Idx: release `BUF_PART_OTP_CMD_PATH(HwCfg1Idx);
       HwCfg2Idx: release `BUF_PART_OTP_CMD_PATH(HwCfg2Idx);
@@ -387,6 +389,7 @@ interface otp_ctrl_if(input clk_i, input rst_ni);
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(SocFusesCpIdx)
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(SocFusesFtIdx)
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(ScratchFusesIdx)
+    `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(CreatorManufCfgIdx)
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(HwCfg0Idx)
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(HwCfg1Idx)
     `FORCE_OTP_PART_LOCK_WITH_RAND_NON_MUBI_VAL(HwCfg2Idx)

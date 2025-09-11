@@ -366,6 +366,8 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
     csr_rd(.ptr(ral.soc_fuses_cp_digest[1]), .value(val));
     csr_rd(.ptr(ral.soc_fuses_ft_digest[0]), .value(val));
     csr_rd(.ptr(ral.soc_fuses_ft_digest[1]), .value(val));
+    csr_rd(.ptr(ral.creator_manuf_cfg_digest[0]), .value(val));
+    csr_rd(.ptr(ral.creator_manuf_cfg_digest[1]), .value(val));
     csr_rd(.ptr(ral.hw_cfg0_digest[0]), .value(val));
     csr_rd(.ptr(ral.hw_cfg0_digest[1]), .value(val));
     csr_rd(.ptr(ral.hw_cfg1_digest[0]), .value(val));
@@ -468,6 +470,11 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
           !$urandom_range(0, 4)) begin
         forced_mubi_part_access[SocFusesFtIdx].write_lock = 1;
       end
+      if ((`gmv(ral.creator_manuf_cfg_digest[0]) ||
+           `gmv(ral.creator_manuf_cfg_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[CreatorManufCfgIdx].write_lock = 1;
+      end
       if ((`gmv(ral.hw_cfg0_digest[0]) ||
            `gmv(ral.hw_cfg0_digest[1])) &&
           !$urandom_range(0, 4)) begin
@@ -567,6 +574,11 @@ class otp_ctrl_base_vseq extends cip_base_vseq #(
 
 
       // Digest read locks
+      if ((`gmv(ral.creator_manuf_cfg_digest[0]) ||
+           `gmv(ral.creator_manuf_cfg_digest[1])) &&
+          !$urandom_range(0, 4)) begin
+        forced_mubi_part_access[CreatorManufCfgIdx].read_lock = 1;
+      end
       if ((`gmv(ral.secret0_digest[0]) ||
            `gmv(ral.secret0_digest[1])) &&
           !$urandom_range(0, 4)) begin

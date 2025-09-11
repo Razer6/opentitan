@@ -89,6 +89,15 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
         otp_lc_data  = '{default:0};
         // secret partitions have been scrambled before writing to OTP.
         // here calculate the pre-scrambled raw data when clearing internal OTP to all 0s.
+        data = descramble_data(0, CreatorManufCfgIdx);
+        for (int i = CreatorManufCfgOffset / TL_SIZE;
+             i <= CreatorManufCfgDigestOffset / TL_SIZE - 1;
+             i++) begin
+          otp_a[i] = ((i - CreatorManufCfgOffset / TL_SIZE) % 2) ?
+              data[SCRAMBLE_DATA_SIZE-1:TL_DW] : data[TL_DW-1:0];
+        end
+        // secret partitions have been scrambled before writing to OTP.
+        // here calculate the pre-scrambled raw data when clearing internal OTP to all 0s.
         data = descramble_data(0, Secret0Idx);
         for (int i = Secret0Offset / TL_SIZE;
              i <= Secret0DigestOffset / TL_SIZE - 1;
@@ -1245,6 +1254,14 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
           cov.collect_err_code_cov(28, item.d_data, access_part_idx);
         end
       end
+      "err_code_29": begin
+        if (cfg.m_lc_prog_pull_agent_cfg.vif.req) do_read_check = 0;
+        if (cfg.en_cov && do_read_check && data_phase_read) begin
+          bit [TL_DW-1:0] dai_addr = `gmv(ral.direct_access_address) >> 2 << 2;
+          int access_part_idx = get_part_index(dai_addr);
+          cov.collect_err_code_cov(29, item.d_data, access_part_idx);
+        end
+      end
       "vendor_test_digest_0", "vendor_test_digest_1",
       "creator_sw_cfg_digest_0", "creator_sw_cfg_digest_1",
       "owner_sw_cfg_digest_0", "owner_sw_cfg_digest_1",
@@ -1260,6 +1277,7 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
       "rom_patch_digest_0", "rom_patch_digest_1",
       "soc_fuses_cp_digest_0", "soc_fuses_cp_digest_1",
       "soc_fuses_ft_digest_0", "soc_fuses_ft_digest_1",
+      "creator_manuf_cfg_digest_0", "creator_manuf_cfg_digest_1",
       "hw_cfg0_digest_0", "hw_cfg0_digest_1",
       "hw_cfg1_digest_0", "hw_cfg1_digest_1",
       "hw_cfg2_digest_0", "hw_cfg2_digest_1",
@@ -1544,6 +1562,13 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
           .value(otp_a[PART_OTP_DIGEST_ADDRS[SocFusesFtIdx] + 1]),
           .kind(UVM_PREDICT_DIRECT)));
 
+    void'(ral.creator_manuf_cfg_digest[0].predict(
+          .value(otp_a[PART_OTP_DIGEST_ADDRS[CreatorManufCfgIdx]]),
+          .kind(UVM_PREDICT_DIRECT)));
+    void'(ral.creator_manuf_cfg_digest[1].predict(
+          .value(otp_a[PART_OTP_DIGEST_ADDRS[CreatorManufCfgIdx] + 1]),
+          .kind(UVM_PREDICT_DIRECT)));
+
     void'(ral.hw_cfg0_digest[0].predict(
           .value(otp_a[PART_OTP_DIGEST_ADDRS[HwCfg0Idx]]),
           .kind(UVM_PREDICT_DIRECT)));
@@ -1639,6 +1664,7 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
       dai_digest_ip = part_idx;
     end
     case (part_idx)
+      CreatorManufCfgIdx: mem_q = otp_a[CreatorManufCfgOffset / TL_SIZE : CreatorManufCfgDigestOffset / TL_SIZE - 1];
       HwCfg0Idx: mem_q = otp_a[HwCfg0Offset / TL_SIZE : HwCfg0DigestOffset / TL_SIZE - 1];
       HwCfg1Idx: mem_q = otp_a[HwCfg1Offset / TL_SIZE : HwCfg1DigestOffset / TL_SIZE - 1];
       HwCfg2Idx: mem_q = otp_a[HwCfg2Offset / TL_SIZE : HwCfg2DigestOffset / TL_SIZE - 1];
@@ -1842,6 +1868,10 @@ class otp_ctrl_scoreboard #(type CFG_T = otp_ctrl_env_cfg)
       SocFusesFtIdx: begin
         digest = {`gmv(ral.soc_fuses_ft_digest[1]),
                   `gmv(ral.soc_fuses_ft_digest[0])};
+      end
+      CreatorManufCfgIdx: begin
+        digest = {`gmv(ral.creator_manuf_cfg_digest[1]),
+                  `gmv(ral.creator_manuf_cfg_digest[0])};
       end
       HwCfg0Idx: begin
         digest = {`gmv(ral.hw_cfg0_digest[1]),

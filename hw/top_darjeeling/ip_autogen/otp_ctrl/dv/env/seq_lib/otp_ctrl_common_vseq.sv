@@ -213,6 +213,7 @@ class otp_ctrl_common_vseq extends otp_ctrl_base_vseq;
           $assertoff(0, "tb.dut.gen_partitions[23].gen_buffered.u_part_buf.ScrmblDataKnown_A");
           $assertoff(0, "tb.dut.gen_partitions[24].gen_buffered.u_part_buf.ScrmblDataKnown_A");
           $assertoff(0, "tb.dut.gen_partitions[25].gen_buffered.u_part_buf.ScrmblDataKnown_A");
+          $assertoff(0, "tb.dut.gen_partitions[26].gen_buffered.u_part_buf.ScrmblDataKnown_A");
         end else begin
           $asserton(0, "tb.dut.gen_partitions[18].gen_buffered.u_part_buf.ScrmblDataKnown_A");
           $asserton(0, "tb.dut.gen_partitions[19].gen_buffered.u_part_buf.ScrmblDataKnown_A");
@@ -222,6 +223,7 @@ class otp_ctrl_common_vseq extends otp_ctrl_base_vseq;
           $asserton(0, "tb.dut.gen_partitions[23].gen_buffered.u_part_buf.ScrmblDataKnown_A");
           $asserton(0, "tb.dut.gen_partitions[24].gen_buffered.u_part_buf.ScrmblDataKnown_A");
           $asserton(0, "tb.dut.gen_partitions[25].gen_buffered.u_part_buf.ScrmblDataKnown_A");
+          $asserton(0, "tb.dut.gen_partitions[26].gen_buffered.u_part_buf.ScrmblDataKnown_A");
        end
       end
       SecCmPrimSparseFsmFlop, SecCmPrimDoubleLfsr, SecCmPrimOnehot: begin

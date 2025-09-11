@@ -15,7 +15,7 @@ package otp_ctrl_part_pkg;
   // Scrambling Constants and Types //
   ////////////////////////////////////
 
-  parameter int NumScrmblKeys = 5;
+  parameter int NumScrmblKeys = 6;
   parameter int NumDigestSets = 2;
 
   parameter int ScrmblKeySelWidth = vbits(NumScrmblKeys);
@@ -38,7 +38,8 @@ package otp_ctrl_part_pkg;
     Secret1Key,
     Secret2Key,
     Secret3Key,
-    Secret4Key
+    Secret4Key,
+    Secret5Key
   } key_sel_e;
 
   typedef enum logic [ConstSelWidth-1:0] {
@@ -372,12 +373,28 @@ package otp_ctrl_part_pkg;
     '{
       variant:          Unbuffered,
       offset:           15'd17592,
-      size:             2336,
+      size:             2312,
       key_sel:          key_sel_e'('0),
       secret:           1'b0,
       sw_digest:        1'b0,
       hw_digest:        1'b0,
       write_lock:       1'b0,
+      read_lock:        1'b0,
+      integrity:        1'b1,
+      iskeymgr_creator: 1'b0,
+      iskeymgr_owner:   1'b0,
+      zeroizable:       1'b1
+    },
+    // CREATOR_MANUF_CFG
+    '{
+      variant:          Buffered,
+      offset:           15'd19904,
+      size:             24,
+      key_sel:          Secret5Key,
+      secret:           1'b1,
+      sw_digest:        1'b0,
+      hw_digest:        1'b1,
+      write_lock:       1'b1,
       read_lock:        1'b0,
       integrity:        1'b1,
       iskeymgr_creator: 1'b0,
@@ -549,6 +566,7 @@ package otp_ctrl_part_pkg;
     SocFusesCpIdx,
     SocFusesFtIdx,
     ScratchFusesIdx,
+    CreatorManufCfgIdx,
     HwCfg0Idx,
     HwCfg1Idx,
     HwCfg2Idx,
@@ -617,6 +635,7 @@ package otp_ctrl_part_pkg;
     hw2reg.rom_patch_digest = part_digest[RomPatchIdx];
     hw2reg.soc_fuses_cp_digest = part_digest[SocFusesCpIdx];
     hw2reg.soc_fuses_ft_digest = part_digest[SocFusesFtIdx];
+    hw2reg.creator_manuf_cfg_digest = part_digest[CreatorManufCfgIdx];
     hw2reg.hw_cfg0_digest = part_digest[HwCfg0Idx];
     hw2reg.hw_cfg1_digest = part_digest[HwCfg1Idx];
     hw2reg.hw_cfg2_digest = part_digest[HwCfg2Idx];
@@ -775,6 +794,9 @@ package otp_ctrl_part_pkg;
     // SCRATCH_FUSES
     unused ^= ^{part_init_done[ScratchFusesIdx],
                 part_buf_data[ScratchFusesOffset +: ScratchFusesSize]};
+    // CREATOR_MANUF_CFG
+    unused ^= ^{part_init_done[CreatorManufCfgIdx],
+                part_buf_data[CreatorManufCfgOffset +: CreatorManufCfgSize]};
     // HW_CFG0
     valid &= part_init_done[HwCfg0Idx];
     otp_broadcast.hw_cfg0_data = otp_hw_cfg0_data_t'(part_buf_data[HwCfg0Offset +: (HwCfg0Size - 16)]);
@@ -875,6 +897,9 @@ package otp_ctrl_part_pkg;
     // SCRATCH_FUSES
     unused ^= ^{part_digest[ScratchFusesIdx],
                 part_buf_data[ScratchFusesOffset +: ScratchFusesSize]};
+    // CREATOR_MANUF_CFG
+    unused ^= ^{part_digest[CreatorManufCfgIdx],
+                part_buf_data[CreatorManufCfgOffset +: CreatorManufCfgSize]};
     // HW_CFG0
     unused ^= ^{part_digest[HwCfg0Idx],
                 part_buf_data[HwCfg0Offset +: HwCfg0Size]};

@@ -91,6 +91,7 @@ package otp_ctrl_env_pkg;
     SocFusesCpOffset,
     SocFusesFtOffset,
     ScratchFusesOffset,
+    CreatorManufCfgOffset,
     HwCfg0Offset,
     HwCfg1Offset,
     HwCfg2Offset,
@@ -121,6 +122,7 @@ package otp_ctrl_env_pkg;
     SocFusesCpOffset + SocFusesCpSize - 8,
     SocFusesFtOffset + SocFusesFtSize - 8,
     ScratchFusesOffset + ScratchFusesSize - 8,
+    CreatorManufCfgOffset + CreatorManufCfgSize - 16,
     HwCfg0Offset + HwCfg0Size - 16,
     HwCfg1Offset + HwCfg1Size - 16,
     HwCfg2Offset + HwCfg2Size - 16,
@@ -151,6 +153,7 @@ package otp_ctrl_env_pkg;
     SocFusesCpDigestOffset >> 2,
     SocFusesFtDigestOffset >> 2,
     -1, // This partition does not have a digest.
+    CreatorManufCfgDigestOffset >> 2,
     HwCfg0DigestOffset >> 2,
     HwCfg1DigestOffset >> 2,
     HwCfg2DigestOffset >> 2,
@@ -180,6 +183,7 @@ package otp_ctrl_env_pkg;
     -1, // This partition has no zeroized field.
     -1, // This partition has no zeroized field.
     ScratchFusesZerOffset >> 2,
+    CreatorManufCfgZerOffset >> 2,
     HwCfg0ZerOffset >> 2,
     HwCfg1ZerOffset >> 2,
     HwCfg2ZerOffset >> 2,
@@ -216,6 +220,7 @@ package otp_ctrl_env_pkg;
     OtpSocFusesCpErrIdx,
     OtpSocFusesFtErrIdx,
     OtpScratchFusesErrIdx,
+    OtpCreatorManufCfgErrIdx,
     OtpHwCfg0ErrIdx,
     OtpHwCfg1ErrIdx,
     OtpHwCfg2ErrIdx,

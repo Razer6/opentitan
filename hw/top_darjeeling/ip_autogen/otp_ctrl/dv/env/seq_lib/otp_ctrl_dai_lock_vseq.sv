@@ -80,6 +80,9 @@ class otp_ctrl_dai_lock_vseq extends otp_ctrl_smoke_vseq;
     if (part_idx == ScratchFusesIdx) {
       dai_addr inside `PART_ADDR_RANGE(ScratchFusesIdx);
     }
+    if (part_idx == CreatorManufCfgIdx) {
+      dai_addr inside `PART_ADDR_RANGE(CreatorManufCfgIdx);
+    }
     if (part_idx == HwCfg0Idx) {
       dai_addr inside `PART_ADDR_RANGE(HwCfg0Idx);
     }
@@ -132,6 +135,7 @@ class otp_ctrl_dai_lock_vseq extends otp_ctrl_smoke_vseq;
         RomPatchDigestOffset,
         SocFusesCpDigestOffset,
         SocFusesFtDigestOffset,
+        CreatorManufCfgDigestOffset,
         HwCfg0DigestOffset,
         HwCfg1DigestOffset,
         HwCfg2DigestOffset,

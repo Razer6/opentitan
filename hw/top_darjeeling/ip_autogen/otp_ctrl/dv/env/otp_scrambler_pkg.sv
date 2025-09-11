@@ -20,6 +20,7 @@ package otp_scrambler_pkg;
   string path = "otp_scrambler_pkg";
 
   parameter key_array_t RndCnstKey = {
+    top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlScrmblKey5,
     top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlScrmblKey4,
     top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlScrmblKey3,
     top_darjeeling_rnd_cnst_pkg::RndCnstOtpCtrlScrmblKey2,

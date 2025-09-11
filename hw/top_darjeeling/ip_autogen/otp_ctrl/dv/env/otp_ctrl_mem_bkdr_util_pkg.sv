@@ -71,6 +71,28 @@ package otp_ctrl_mem_bkdr_util_pkg;
   // - No other partition except for HW_CFG1 has such small items.
   // - The small items in HW_CFG1 will be contained within 32 bits.
 
+  function automatic void otp_write_creator_manuf_cfg_partition(
+      mem_bkdr_util_pkg::mem_bkdr_util mem_bkdr_util_h,
+      bit [ManufKeySaltSize*8-1:0] manuf_key_salt
+  );
+    bit [CreatorManufCfgDigestSize*8-1:0] digest;
+    bit [bus_params_pkg::BUS_DW-1:0] partition_data[$];
+    bit [ManufKeySaltSize*8-1:0] scrambled_manuf_key_salt;
+
+    for (int i = 0; i < ManufKeySaltSize; i += 8) begin
+      scrambled_manuf_key_salt[i*8+:64] = scramble_data(
+          manuf_key_salt[i*8+:64], CreatorManufCfgIdx);
+      mem_bkdr_util_h.write64(i + ManufKeySaltOffset,
+                              scrambled_manuf_key_salt[i*8+:64]);
+    end
+
+    partition_data = {<<32{
+      scrambled_manuf_key_salt
+    }};
+    digest = cal_digest(CreatorManufCfgIdx, partition_data);
+    mem_bkdr_util_h.write64(CreatorManufCfgDigestOffset, digest);
+  endfunction
+
   function automatic void otp_write_hw_cfg0_partition(
       mem_bkdr_util_pkg::mem_bkdr_util mem_bkdr_util_h,
       bit [DeviceIdSize*8-1:0] device_id
@@ -291,6 +313,14 @@ package otp_ctrl_mem_bkdr_util_pkg;
 
   // Functions that clear the provisioning state of the buffered partitions.
   // This is useful in tests that make front-door accesses for provisioning purposes.
+  function automatic void otp_clear_creator_manuf_cfg_partition(
+      mem_bkdr_util_pkg::mem_bkdr_util mem_bkdr_util_h
+  );
+    for (int i = 0; i < CreatorManufCfgSize; i += 4) begin
+      mem_bkdr_util_h.write32(i + CreatorManufCfgOffset, 32'h0);
+    end
+  endfunction
+
   function automatic void otp_clear_hw_cfg0_partition(
       mem_bkdr_util_pkg::mem_bkdr_util mem_bkdr_util_h
   );

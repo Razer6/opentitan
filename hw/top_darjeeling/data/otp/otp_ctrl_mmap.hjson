@@ -45,6 +45,10 @@
                 name:  "Secret4Key",
                 value: "<random>",
             }
+            {
+                name:  "Secret5Key",
+                value: "<random>",
+            }
         ]
         digests: [
             // This is the consistency digest used by all partitions.
@@ -1233,6 +1237,32 @@
                 }
             ],
             desc: '''Unstructured scratch data partition.
+            '''
+        }
+        {
+            name:           "CREATOR_MANUF_CFG",
+            variant:        "Buffered",
+            secret:         true,
+            sw_digest:      false,
+            hw_digest:      true,
+            write_lock:     "Digest",
+            read_lock:      "None",
+            key_sel:        "Secret5Key",
+            integrity:      true,
+            bkout_type:     false,
+            zeroizable:     true,
+            skip_sw_header: false,
+            items: [
+                {
+                    name:        "MANUF_KEY_SALT",
+                    size:        "8",
+                    inv_default: "<random>",
+                    desc: '''
+                    Manufacturing key salt.
+                    '''
+                }
+            ],
+            desc: '''Manufacturing key salt partition.
             '''
         }
         {

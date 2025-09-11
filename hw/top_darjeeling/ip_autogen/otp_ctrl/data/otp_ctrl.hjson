@@ -139,6 +139,12 @@
       randcount: "128",
       randtype:  "extdata",
     }
+    { name:      "RndCnstScrmblKey5",
+      desc:      "Compile-time scrambling key",
+      type:      "otp_ctrl_top_specific_pkg::key_t"
+      randcount: "128",
+      randtype:  "extdata",
+    }
     { name:      "RndCnstDigestConst0",
       desc:      "Compile-time digest const",
       type:      "otp_ctrl_top_specific_pkg::digest_const_t"
@@ -205,7 +211,7 @@
     { name: "NumErrorEntries",
       desc: "Number of error register entries.",
       type: "int",
-      default: "29", // partitions + DAI/LCI
+      default: "30", // partitions + DAI/LCI
       local: "true"
     },
     { name: "NumDaiWords",
@@ -231,7 +237,7 @@
     { name: "NumPart",
       desc: "Number of partitions",
       type: "int",
-      default: "27",
+      default: "28",
       local: "true"
     },
     { name: "NumPartUnbuf",
@@ -243,7 +249,7 @@
     { name: "NumPartBuf",
       desc: "Number of buffered partitions (including 1 lifecycle partition)",
       type: "int",
-      default: "9",
+      default: "10",
       local: "true"
     },
     { name: "VendorTestOffset",
@@ -2127,7 +2133,7 @@
     { name: "ScratchFusesSize",
       desc: "Size of the SCRATCH_FUSES partition",
       type: "int",
-      default: "2336",
+      default: "2312",
       local: "true"
     },
     { name: "ScratchFusesDataOffset",
@@ -2139,17 +2145,65 @@
     { name: "ScratchFusesDataSize",
       desc: "Size of SCRATCH_FUSES_DATA",
       type: "int",
-      default: "2328",
+      default: "2304",
       local: "true"
     },
     { name: "ScratchFusesZerOffset",
       desc: "Offset of SCRATCH_FUSES_ZER",
       type: "int",
-      default: "19920",
+      default: "19896",
       local: "true"
     },
     { name: "ScratchFusesZerSize",
       desc: "Size of SCRATCH_FUSES_ZER",
+      type: "int",
+      default: "8",
+      local: "true"
+    },
+    { name: "CreatorManufCfgOffset",
+      desc: "Offset of the CREATOR_MANUF_CFG partition",
+      type: "int",
+      default: "19904",
+      local: "true"
+    },
+    { name: "CreatorManufCfgSize",
+      desc: "Size of the CREATOR_MANUF_CFG partition",
+      type: "int",
+      default: "24",
+      local: "true"
+    },
+    { name: "ManufKeySaltOffset",
+      desc: "Offset of MANUF_KEY_SALT",
+      type: "int",
+      default: "19904",
+      local: "true"
+    },
+    { name: "ManufKeySaltSize",
+      desc: "Size of MANUF_KEY_SALT",
+      type: "int",
+      default: "8",
+      local: "true"
+    },
+    { name: "CreatorManufCfgDigestOffset",
+      desc: "Offset of CREATOR_MANUF_CFG_DIGEST",
+      type: "int",
+      default: "19912",
+      local: "true"
+    },
+    { name: "CreatorManufCfgDigestSize",
+      desc: "Size of CREATOR_MANUF_CFG_DIGEST",
+      type: "int",
+      default: "8",
+      local: "true"
+    },
+    { name: "CreatorManufCfgZerOffset",
+      desc: "Offset of CREATOR_MANUF_CFG_ZER",
+      type: "int",
+      default: "19920",
+      local: "true"
+    },
+    { name: "CreatorManufCfgZerSize",
+      desc: "Size of CREATOR_MANUF_CFG_ZER",
       type: "int",
       default: "8",
       local: "true"
@@ -3262,62 +3316,69 @@
                   '''
           }
           { bits: "18"
-            name: "HW_CFG0_ERROR"
+            name: "CREATOR_MANUF_CFG_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "19"
-            name: "HW_CFG1_ERROR"
+            name: "HW_CFG0_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "20"
-            name: "HW_CFG2_ERROR"
+            name: "HW_CFG1_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "21"
-            name: "SECRET0_ERROR"
+            name: "HW_CFG2_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "22"
-            name: "SECRET1_ERROR"
+            name: "SECRET0_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "23"
-            name: "SECRET2_ERROR"
+            name: "SECRET1_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "24"
-            name: "SECRET3_ERROR"
+            name: "SECRET2_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "25"
-            name: "SECRET4_ERROR"
+            name: "SECRET3_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
                   If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
                   '''
           }
           { bits: "26"
+            name: "SECRET4_ERROR"
+            desc: '''
+                  Set to 1 if an error occurred in this partition.
+                  If set to 1, SW should check the !!ERR_CODE register at the corresponding index.
+                  '''
+          }
+          { bits: "27"
             name: "LIFE_CYCLE_ERROR"
             desc: '''
                   Set to 1 if an error occurred in this partition.
@@ -4405,6 +4466,27 @@
                     digest value via the direct access interface in order to lock the partition.
                     After a reset, write access to the SOC_FUSES_FT partition is locked and
                     the digest becomes visible in this CSR.
+                    ''',
+          count:     "NumDigestWords",
+          swaccess:  "ro",
+          hwaccess:  "hwo",
+          hwext:     "true",
+          cname:     "WORD",
+          resval:    0,
+          tags: [ // OTP internal HW will update status so can not auto-predict its value.
+                  "excl:CsrAllTests:CsrExclCheck"],
+          fields: [
+            { bits: "31:0"
+            }
+          ]
+        }
+      },
+      { multireg: {
+          name:     "CREATOR_MANUF_CFG_DIGEST",
+          desc:     '''
+                    Integrity digest for the CREATOR_MANUF_CFG partition.
+                    The integrity digest is 0 by default. The digest calculation can be triggered via the !!DIRECT_ACCESS_CMD.
+                    After a reset, the digest then becomes visible in this CSR, and the corresponding partition becomes write-locked.
                     ''',
           count:     "NumDigestWords",
           swaccess:  "ro",

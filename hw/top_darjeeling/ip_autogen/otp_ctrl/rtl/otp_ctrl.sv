@@ -30,6 +30,7 @@ module otp_ctrl
   parameter key_t RndCnstScrmblKey2 = '0,
   parameter key_t RndCnstScrmblKey3 = '0,
   parameter key_t RndCnstScrmblKey4 = '0,
+  parameter key_t RndCnstScrmblKey5 = '0,
   parameter digest_const_t RndCnstDigestConst0 = '0,
   parameter digest_const_t RndCnstDigestConst1 = '0,
   parameter digest_iv_t RndCnstDigestIV0 = '0,
@@ -114,6 +115,7 @@ module otp_ctrl
   `ASSERT_INIT(ScrmblKeyNotAllZero_A2, RndCnstScrmblKey2 != 0)
   `ASSERT_INIT(ScrmblKeyNotAllZero_A3, RndCnstScrmblKey3 != 0)
   `ASSERT_INIT(ScrmblKeyNotAllZero_A4, RndCnstScrmblKey4 != 0)
+  `ASSERT_INIT(ScrmblKeyNotAllZero_A5, RndCnstScrmblKey5 != 0)
   `ASSERT_INIT(DigestConstNotAllZero_A0, RndCnstDigestConst0 != 0)
   `ASSERT_INIT(DigestIVNotAllZero_A0, RndCnstDigestIV0 != 0)
   `ASSERT_INIT(DigestConstNotAllZero_A1, RndCnstDigestConst1 != 0)
@@ -126,6 +128,7 @@ module otp_ctrl
   // Based on the flat random constant parameters, build up arrays
   // SEC_CM: SECRET.MEM.SCRAMBLE
   localparam key_array_t RndCnstKey = {
+    RndCnstScrmblKey5,
     RndCnstScrmblKey4,
     RndCnstScrmblKey3,
     RndCnstScrmblKey2,
@@ -598,6 +601,7 @@ module otp_ctrl
     hw2reg.partition_status_0.soc_fuses_cp_error.d = part_errors_reduced[SocFusesCpIdx];
     hw2reg.partition_status_0.soc_fuses_ft_error.d = part_errors_reduced[SocFusesFtIdx];
     hw2reg.partition_status_0.scratch_fuses_error.d = part_errors_reduced[ScratchFusesIdx];
+    hw2reg.partition_status_0.creator_manuf_cfg_error.d = part_errors_reduced[CreatorManufCfgIdx];
     hw2reg.partition_status_0.hw_cfg0_error.d = part_errors_reduced[HwCfg0Idx];
     hw2reg.partition_status_0.hw_cfg1_error.d = part_errors_reduced[HwCfg1Idx];
     hw2reg.partition_status_0.hw_cfg2_error.d = part_errors_reduced[HwCfg2Idx];

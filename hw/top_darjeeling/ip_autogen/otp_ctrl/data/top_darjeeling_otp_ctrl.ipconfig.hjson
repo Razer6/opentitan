@@ -43,6 +43,10 @@
             name: Secret4Key
             value: <random>
           }
+          {
+            name: Secret5Key
+            value: <random>
+          }
         ]
         digests:
         [
@@ -57,7 +61,7 @@
             cnst_value: <random>
           }
         ]
-        num_keys: 5
+        num_keys: 6
         num_digests: 2
       }
       partitions:
@@ -2579,7 +2583,7 @@
                 Unstructured, single item partition for any RoT firmware (runtime,
                 bootstrap, manufacturing) to use and organize freely.
                 '''
-              size: 2328
+              size: 2304
               isdigest: false
               iszer: false
               ismubi: false
@@ -2591,7 +2595,7 @@
             {
               name: SCRATCH_FUSES_ZER
               size: 8
-              offset: 19920
+              offset: 19896
               ismubi: false
               isdigest: false
               iszer: true
@@ -2603,8 +2607,66 @@
           desc: Unstructured scratch data partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          size: 2336
+          size: 2312
           offset: 17592
+        }
+        {
+          name: CREATOR_MANUF_CFG
+          variant: Buffered
+          secret: true
+          sw_digest: false
+          hw_digest: true
+          write_lock: Digest
+          read_lock: None
+          key_sel: Secret5Key
+          integrity: true
+          bkout_type: false
+          zeroizable: true
+          skip_sw_header: false
+          items:
+          [
+            {
+              name: MANUF_KEY_SALT
+              size: 8
+              inv_default: <random>
+              desc: Manufacturing key salt.
+              isdigest: false
+              iszer: false
+              ismubi: false
+              iskeymgr_creator: false
+              iskeymgr_owner: false
+              absorb: false
+              offset: 19904
+            }
+            {
+              name: CREATOR_MANUF_CFG_DIGEST
+              size: 8
+              offset: 19912
+              ismubi: false
+              isdigest: true
+              iszer: false
+              inv_default: <random>
+              iskeymgr_creator: false
+              iskeymgr_owner: false
+            }
+            {
+              name: CREATOR_MANUF_CFG_ZER
+              size: 8
+              offset: 19920
+              ismubi: false
+              isdigest: false
+              iszer: true
+              inv_default: 0
+              iskeymgr_creator: false
+              iskeymgr_owner: false
+            }
+          ]
+          desc: Manufacturing key salt partition.
+          absorb: false
+          iskeymgr_creator: false
+          iskeymgr_owner: false
+          size: 24
+          offset: 19904
         }
         {
           name: HW_CFG0

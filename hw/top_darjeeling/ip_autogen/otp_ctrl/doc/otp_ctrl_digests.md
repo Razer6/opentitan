@@ -20,6 +20,7 @@ It has been generated with ./util/topgen.py -t hw/top_darjeeling/data/top_darjee
 |             [ROM_PATCH_DIGEST](#Reg_rom_patch_digest_0)             |       ROM_PATCH       |         no         |
 |          [SOC_FUSES_CP_DIGEST](#Reg_soc_fuses_cp_digest_0)          |     SOC_FUSES_CP      |         no         |
 |          [SOC_FUSES_FT_DIGEST](#Reg_soc_fuses_ft_digest_0)          |     SOC_FUSES_FT      |         no         |
+|     [CREATOR_MANUF_CFG_DIGEST](#Reg_creator_manuf_cfg_digest_0)     |   CREATOR_MANUF_CFG   |        yes         |
 |               [HW_CFG0_DIGEST](#Reg_hw_cfg0_digest_0)               |        HW_CFG0        |        yes         |
 |               [HW_CFG1_DIGEST](#Reg_hw_cfg1_digest_0)               |        HW_CFG1        |        yes         |
 |               [HW_CFG2_DIGEST](#Reg_hw_cfg2_digest_0)               |        HW_CFG2        |        yes         |
