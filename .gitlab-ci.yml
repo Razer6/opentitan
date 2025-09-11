@@ -53,6 +53,19 @@ variables:
   - module purge
   - module load rivos/init opentitan/1.0.1 rust
 
+check_freeze:
+  tags: [shell]
+  stage: check
+  extends: .git-auth-fixup
+  script:
+    - *setup-ot-env
+    - python3 ci/scripts/freeze/freeze.py --freeze-file BLOCKFILE
+  rules:
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "rivos/main" && $CI_PIPELINE_SOURCE == "merge_request_event"'
+  variables:
+    FREEZE_API_SERVER_URL: https://script.google.com/macros/s/AKfycbzBJYJCfh6R8nmNs1SZTr1RxN6s7EwR8Np_rnOohm4QkTQjCCxixePIRiwaTnIo9cjZsA/exec
+
+
 check_change_id:
   tags: [shell]
   stage: check
