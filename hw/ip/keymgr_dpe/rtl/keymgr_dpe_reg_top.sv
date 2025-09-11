@@ -163,8 +163,8 @@ module keymgr_dpe_reg_top (
   logic control_shadowed_sw_binding_only_wd;
   logic control_shadowed_sw_binding_only_storage_err;
   logic control_shadowed_sw_binding_only_update_err;
-  logic control_shadowed_root_key_sel_qs;
-  logic control_shadowed_root_key_sel_wd;
+  logic [1:0] control_shadowed_root_key_sel_qs;
+  logic [1:0] control_shadowed_root_key_sel_wd;
   logic control_shadowed_root_key_sel_storage_err;
   logic control_shadowed_root_key_sel_update_err;
   logic sideload_clear_we;
@@ -696,11 +696,11 @@ module keymgr_dpe_reg_top (
     .err_storage (control_shadowed_sw_binding_only_storage_err)
   );
 
-  //   F[root_key_sel]: 23:23
+  //   F[root_key_sel]: 24:23
   prim_subreg_shadow #(
-    .DW      (1),
+    .DW      (2),
     .SwAccess(prim_subreg_pkg::SwAccessRW),
-    .RESVAL  (1'h0),
+    .RESVAL  (2'h0),
     .Mubi    (1'b0)
   ) u_control_shadowed_root_key_sel (
     .clk_i   (clk_i),
@@ -2971,7 +2971,7 @@ module keymgr_dpe_reg_top (
 
   assign control_shadowed_sw_binding_only_wd = reg_wdata[22];
 
-  assign control_shadowed_root_key_sel_wd = reg_wdata[23];
+  assign control_shadowed_root_key_sel_wd = reg_wdata[24:23];
   assign sideload_clear_we = addr_hit[7] & reg_we & !reg_error;
 
   assign sideload_clear_wd = reg_wdata[2:0];
@@ -3230,7 +3230,7 @@ module keymgr_dpe_reg_top (
         reg_rdata_next[16:14] = control_shadowed_slot_src_sel_qs;
         reg_rdata_next[20:18] = control_shadowed_slot_dst_sel_qs;
         reg_rdata_next[22] = control_shadowed_sw_binding_only_qs;
-        reg_rdata_next[23] = control_shadowed_root_key_sel_qs;
+        reg_rdata_next[24:23] = control_shadowed_root_key_sel_qs;
       end
 
       addr_hit[7]: begin

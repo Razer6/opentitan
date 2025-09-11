@@ -23,6 +23,8 @@ module keymgr_dpe
   parameter seed_t RndCnstSoftOutputSeed       = RndCnstSoftOutputSeedDefault,
   parameter seed_t RndCnstHardOutputSeed       = RndCnstHardOutputSeedDefault,
   parameter seed_t RndCnstNoneSeed             = RndCnstNoneSeedDefault,
+  parameter seed_t RndCnstManufKeyShare0       = RndCnstManufKeyShare0Default,
+  parameter seed_t RndCnstManufKeyShare1       = RndCnstManufKeyShare1Default,
   parameter seed_t RndCnstAesSeed              = RndCnstAesSeedDefault,
   parameter seed_t RndCnstOtbnSeed             = RndCnstOtbnSeedDefault,
   parameter seed_t RndCnstKmacSeed             = RndCnstKmacSeedDefault
@@ -282,18 +284,32 @@ module keymgr_dpe
     .q_o(cta_seed_valid)
   );
 
-  // Rivos: Mux between creator and CTA seed as a root key
+  // Rivos: Mux between creator, CTA seed, and manufacturing key as a root key
   hw_key_req_t root_key;
   always_comb begin
-    if (reg2hw.control_shadowed.root_key_sel.q == 1'b1) begin
-      root_key.key = '{otp_key_i.ucie_cta_seed_share1,
-                       otp_key_i.ucie_cta_seed_share0};
-      root_key.valid = cta_seed_valid;
-    end else begin
-      root_key.key = '{otp_key_i.creator_root_key_share1,
-                       otp_key_i.creator_root_key_share0};
-      root_key.valid = creator_key_valid;
-    end
+    unique case (reg2hw.control_shadowed.root_key_sel.q)
+      RootKeySelCreator: begin
+        root_key.key = '{otp_key_i.creator_root_key_share1,
+                         otp_key_i.creator_root_key_share0};
+        root_key.valid = creator_key_valid;
+      end
+      RootKeySelCtaSeed: begin
+        root_key.key = '{otp_key_i.ucie_cta_seed_share1,
+                         otp_key_i.ucie_cta_seed_share0};
+        root_key.valid = cta_seed_valid;
+      end
+      RootKeySelManufKey: begin
+        root_key.key = '{RndCnstManufKeyShare1,
+                         RndCnstManufKeyShare0};
+        // Manufacturing key is always valid since it's coming from a netlist constant
+        root_key.valid = 1'b1;
+      end
+      // Default to invalid root key
+      default: begin
+        root_key.key   = '{default: '0};
+        root_key.valid = 1'b0;
+      end
+    endcase
   end
 
   keymgr_dpe_slot_t active_key_slot;

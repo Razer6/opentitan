@@ -127,4 +127,17 @@ package keymgr_dpe_pkg;
     KeymgrDpeEnLast
   } keymgr_lc_en_usage_e;
 
+  // Rivos: Manufacturing key default netlist constant
+  parameter seed_t RndCnstManufKeyShare0Default =
+    256'h18cbb629_8c4ab776_9d5c4a36_3b4c3ebd_0f7ba0b0_a952d9da_1c29407f_4f577608;
+  parameter seed_t RndCnstManufKeyShare1Default =
+    256'h701290b6_e942ba45_78bec43f_f7dbff68_2cdff8fc_7a12d8f7_07d76b5c_06e9e950;
+
+  // Rivos: Root key selection
+  typedef enum logic [1:0] {
+    RootKeySelCreator = 0,
+    RootKeySelCtaSeed = 1,
+    RootKeySelManufKey = 2
+  } keymgr_dpe_root_key_sel_e;
+
 endpackage : keymgr_dpe_pkg

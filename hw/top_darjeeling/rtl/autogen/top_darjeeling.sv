@@ -2002,7 +2002,9 @@ module top_darjeeling #(
     .RndCnstAesSeed(RndCnstKeymgrDpeAesSeed),
     .RndCnstKmacSeed(RndCnstKeymgrDpeKmacSeed),
     .RndCnstOtbnSeed(RndCnstKeymgrDpeOtbnSeed),
-    .RndCnstNoneSeed(RndCnstKeymgrDpeNoneSeed)
+    .RndCnstNoneSeed(RndCnstKeymgrDpeNoneSeed),
+    .RndCnstManufKeyShare0(RndCnstKeymgrDpeManufKeyShare0),
+    .RndCnstManufKeyShare1(RndCnstKeymgrDpeManufKeyShare1)
   ) u_keymgr_dpe (
 
       // Interrupt

@@ -60,7 +60,7 @@ package keymgr_dpe_reg_pkg;
 
   typedef struct packed {
     struct packed {
-      logic        q;
+      logic [1:0]  q;
     } root_key_sel;
     struct packed {
       logic        q;
@@ -340,12 +340,12 @@ package keymgr_dpe_reg_pkg;
 
   // Register -> HW type
   typedef struct packed {
-    keymgr_dpe_reg2hw_intr_state_reg_t intr_state; // [640:640]
-    keymgr_dpe_reg2hw_intr_enable_reg_t intr_enable; // [639:639]
-    keymgr_dpe_reg2hw_intr_test_reg_t intr_test; // [638:637]
-    keymgr_dpe_reg2hw_alert_test_reg_t alert_test; // [636:633]
-    keymgr_dpe_reg2hw_start_reg_t start; // [632:632]
-    keymgr_dpe_reg2hw_control_shadowed_reg_t control_shadowed; // [631:619]
+    keymgr_dpe_reg2hw_intr_state_reg_t intr_state; // [641:641]
+    keymgr_dpe_reg2hw_intr_enable_reg_t intr_enable; // [640:640]
+    keymgr_dpe_reg2hw_intr_test_reg_t intr_test; // [639:638]
+    keymgr_dpe_reg2hw_alert_test_reg_t alert_test; // [637:634]
+    keymgr_dpe_reg2hw_start_reg_t start; // [633:633]
+    keymgr_dpe_reg2hw_control_shadowed_reg_t control_shadowed; // [632:619]
     keymgr_dpe_reg2hw_sideload_clear_reg_t sideload_clear; // [618:616]
     keymgr_dpe_reg2hw_reseed_interval_shadowed_reg_t reseed_interval_shadowed; // [615:600]
     keymgr_dpe_reg2hw_slot_policy_regwen_reg_t slot_policy_regwen; // [599:598]
@@ -514,7 +514,7 @@ package keymgr_dpe_reg_pkg;
     4'b 0001, // index[ 3] KEYMGR_DPE_ALERT_TEST
     4'b 0001, // index[ 4] KEYMGR_DPE_CFG_REGWEN
     4'b 0001, // index[ 5] KEYMGR_DPE_START
-    4'b 0111, // index[ 6] KEYMGR_DPE_CONTROL_SHADOWED
+    4'b 1111, // index[ 6] KEYMGR_DPE_CONTROL_SHADOWED
     4'b 0001, // index[ 7] KEYMGR_DPE_SIDELOAD_CLEAR
     4'b 0001, // index[ 8] KEYMGR_DPE_RESEED_INTERVAL_REGWEN
     4'b 0011, // index[ 9] KEYMGR_DPE_RESEED_INTERVAL_SHADOWED

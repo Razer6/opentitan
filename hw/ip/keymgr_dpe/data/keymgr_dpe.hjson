@@ -192,6 +192,22 @@
       randcount: "256",
       randtype:  "data",
     },
+
+    // Rivos: Manufacturing key netlist constant
+    { name:      "RndCnstManufKeyShare0",
+      desc:      "Compile-time random bits for manufacturing key share 0",
+      type:      "keymgr_pkg::seed_t"
+      randcount: "256",
+      randtype:  "data",
+    },
+
+    { name:      "RndCnstManufKeyShare1",
+      desc:      "Compile-time random bits for manufacturing key share 1",
+      type:      "keymgr_pkg::seed_t"
+      randcount: "256",
+      randtype:  "data",
+    },
+
     { name: "NumSaltReg",
       desc: "Number of Registers for SW inputs (Salt)",
       type: "int",
@@ -538,15 +554,34 @@ countermeasures: [
             Only apply software binding as a message input to the advance operation.
           '''
         },
+        // Rivos: Ability to select between creator key, UCIe CTA seed, and manufacturing key as a root key
         {
-          bits: "23"
+          bits: "24:23"
           name: "ROOT_KEY_SEL",
           resval: "0"
           desc: '''
             The source of the root key used for the load root key operation.
-            0: Select creator key
-            1: Select UCIe CTA seed as root key
           '''
+          enum: [
+            { value: "0",
+              name: "Creator key",
+              desc: '''
+                Select creator key
+              '''
+            },
+            { value: "1",
+              name: "UCIe CTA seed",
+              desc: '''
+                Select UCIe CTA seed as root key
+              '''
+            },
+            { value: "2",
+              name: "Manufacturing key",
+              desc: '''
+                Select manufacturing key
+              '''
+            },
+          ],
         }
       ],
     },
