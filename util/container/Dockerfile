@@ -57,6 +57,8 @@ RUN sed -i -e '/^$/d' -e '/^#/d' -e 's/#.*//' /tmp/apt-requirements.txt \
         locales-all \
         minicom \
         screen \
+        csh \
+        vim \
         dc \
         time \
         software-properties-common \
@@ -132,6 +134,20 @@ ENV PATH="/tools/verible/bin:${PATH}"
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US:en
+
+# Settings for Rivos Cadence tools
+ENV XCELIUM_VERSION=24.09-s008
+ENV XCELIUM_ROOT=/tools/eda/cadence/xcelium
+ENV CADENCE_ENABLE_AVSREQ_44905_PHASE_1=1
+ENV CADENCE_DISABLE_AVSREQ_OUTPUT=1
+ENV CDS_AUTO_64BIT=ALL
+ENV INCA_64BIT=1
+ENV AMSHOME=$XCELIUM_ROOT/$XCELIUM_VERSION
+ENV INCISIVE_HOME=$XCELIUM_ROOT/$XCELIUM_VERSION
+ENV XCELIUM_HOME=$XCELIUM_ROOT/$XCELIUM_VERSION
+ENV PATH=$XCELIUM_ROOT/$XCELIUM_VERSION/bin:$PATH
+ENV PATH=$XCELIUM_ROOT/$XCELIUM_VERSION/tools/bin:$PATH
+ENV LM_LICENSE_FILE="${LM_LICENSE_FILE}:5280@admin1.ba.rivosinc.com"
 
 # Scripting for use within this container.
 COPY util/container/start.sh /start.sh
