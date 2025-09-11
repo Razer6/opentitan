@@ -9,6 +9,11 @@
 `ifndef PRIM_ASSERT_SV
 `define PRIM_ASSERT_SV
 
+`ifdef UVM
+`include "uvm_macros.svh"
+import uvm_pkg::*;
+`endif
+
 ///////////////////
 // Helper macros //
 ///////////////////
