@@ -26,12 +26,12 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Construct the absolute path to the LAST_SYNC file
 LAST_SYNC_FILENAME="LAST_OPENTITAN_SYNC"
-LAST_SYNC_FILE="$SCRIPT_DIR/../$LAST_SYNC_FILENAME"
+LAST_SYNC_FILE="$SCRIPT_DIR/../../$LAST_SYNC_FILENAME"
 
 echo "OT Sync: Script directory: $SCRIPT_DIR"
 echo "OT Sync: LAST_SYNC file: $LAST_SYNC_FILE"
 
-cd "${SCRIPT_DIR}/.." || exit 1
+cd "${SCRIPT_DIR}/../.." || exit 1
 
 if ! git config "remote.${REMOTE_REPO}.url" > /dev/null; then
   echo "OT Sync: Remote '$REMOTE_REPO' not found"
