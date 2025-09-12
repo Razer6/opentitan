@@ -5600,7 +5600,7 @@
           "@@+tock+elf2tab//Cargo.toml": "b3d5d0abcf067b73e0bbfed145dcf6c94b235100d14a6d5bfaed59ce585e0a54",
           "@@//third_party/mdbook/Cargo.lock": "016b012024cd9dce5be7c958215a9e09e13f005f42f66b199adeebf8f711a1b6",
           "@@//third_party/mdbook/Cargo.toml": "334d3b905cce5adf4db0c4dbccd00adf5e99e68af9cdda0e40bc9d970a882eec",
-          "@@//third_party/rust/Cargo.lock": "65d39442073bf914a62765ea1f6f070001fc7b223ebaa638b72cd6f6d533e43d",
+          "@@//third_party/rust/Cargo.lock": "531710fccc4a31c55fdf68ac75d9a62444f6e719d2076744028114843bfa198d",
           "@@//third_party/rust/Cargo.toml": "e35c632e7d568af077a64482053743c98d0a64800092165b145f2db8e521914c",
           "@@//third_party/tock/Cargo.lock": "b5a7a833ae205f1e3697a510e97e3185b44b195d7a22879b4669bff95febd5c8",
           "@@//third_party/tock/Cargo.toml": "5a939bd934aef4775b65a82e678f1180ec00aa78cf214f6052cc82353c975cc4"
