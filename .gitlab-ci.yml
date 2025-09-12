@@ -112,20 +112,21 @@ check_generated:
       - build/lowrisc_systems_${TEST_TARGET}_0.1/lint-ascentlint/*.rpt
     expire_in: 1 week
 
-lint_rot:
-  extends: .lint-rtl
-  variables:
-    TEST_TARGET: top_darjeeling
+# TODO: re-enable these once we fix the fusesoc version in CI
+# lint_rot:
+#   extends: .lint-rtl
+#  variables:
+#    TEST_TARGET: top_darjeeling
 
-lint_mio:
-  extends: .lint-rtl
-  variables:
-    TEST_TARGET: top_mio
+# lint_mio:
+#  extends: .lint-rtl
+#  variables:
+#    TEST_TARGET: top_mio
 
-lint_pwc:
-  extends: .lint-rtl
-  variables:
-    TEST_TARGET: top_pwc
+#lint_pwc:
+#  extends: .lint-rtl
+#  variables:
+#    TEST_TARGET: top_pwc
 
 # Common initialization step for Docker-in-Docker jobs
 .prepare-docker: &prepare-docker
