@@ -228,6 +228,7 @@ waive -rules LINE_LENGTH  -location {RDP_ASYNC_FIFO_RD.sv}        -comment "rivo
 waive -rules LINE_LENGTH  -location {RDP_ASYNC_FIFO_WR.sv}        -comment "rivos is OK with this warning"
 waive -rules LINE_LENGTH  -location {RVP_ASSERT_ALWAYS.sv}        -comment "rivos is OK with this warning"
 waive -rules LINE_LENGTH  -location {RVP_ASSERT_NOT_XZ.sv}        -comment "rivos is OK with this warning"
+waive -rules LINE_LENGTH  -location {rdplib.svh}                  -comment "rivos is OK with this warning"
 
 waive -rules INPUT_NOT_READ -location {rvscs_ot_aon_sram.sv}       -comment "ok, result of rivos common error injection implementation"
 waive -rules INPUT_NOT_READ -location {rvscs_ot_otbni_sram.sv}     -comment "ok, result of rivos common error injection implementation"
@@ -268,3 +269,16 @@ waive -rules HIER_NET_NOT_READ   -location {top_darjeeling.sv}      -regexp {Con
 waive -rules HIER_NET_NOT_READ   -location {top_darjeeling.sv}      -regexp {Net 'spi_device_ram_2p_cfg_spi2sys_i.ls' in module 'top_darjeeling' is not read from,} -comment "needed for rivos compiled memory"
 waive -rules HIER_NET_NOT_READ   -location {top_darjeeling.sv}      -regexp {Connected net 'LS' at rvscs_spi2sys_sram.sv:22 is not read from in module 'rvscs_spi2sys_sram'} -comment "needed for rivos compiled memory"
 
+waive -rules HIER_NET_NOT_READ   -location {top_mio.sv}             -regexp {Net 'sram_ctrl_ret_aon_ram_1p_cfg_i[0].ls' in module 'top_mio' is not read from}               -comment "needed for rivos compiled memory"
+waive -rules HIER_NET_NOT_READ   -location {top_mio.sv}             -regexp {Connected net 'LS' at rvscs_ot_aon_sram.sv:21 is not read from in module 'rvscs_ot_aon_sram'}  -comment "needed for rivos compiled memory"
+waive -rules HIER_NET_NOT_READ   -location {top_mio.sv}             -regexp {Net 'sram_ctrl_main_ram_1p_cfg_i[0:1].ls' in module 'top_mio' is not read from}                -comment "needed for rivos compiled memory"
+waive -rules HIER_NET_NOT_READ   -location {top_mio.sv}             -regexp {Connected net 'LS' at rvscs_ot_sram_half_size.sv:21 is not read from in module 'rvscs_ot_sram_half_size'} -comment "needed for rivos compiled memory"
+waive -rules HIER_NET_NOT_READ   -location {top_mio.sv}             -regexp {Net 'sram_ctrl_mbox_ram_1p_cfg_i[0].ls' in module 'top_mio' is not read from}                            -comment "needed for rivos compiled memory"
+waive -rules HIER_NET_NOT_READ   -location {top_mio.sv}             -regexp {Connected net 'LS' at rvscs_ot_aon_sram.sv:21 is not read from in module 'rvscs_ot_aon_sram'}             -comment "needed for rivos compiled memory"
+
+waive -rules HIER_NET_NOT_READ   -location {top_pwc.sv}             -regexp {Net 'sram_ctrl_ret_aon_ram_1p_cfg_i[0].ls' in module 'top_pwc' is not read from}               -comment "needed for rivos compiled memory"
+waive -rules HIER_NET_NOT_READ   -location {top_pwc.sv}             -regexp {Connected net 'LS' at rvscs_ot_aon_sram.sv:21 is not read from in module 'rvscs_ot_aon_sram'}  -comment "needed for rivos compiled memory"
+waive -rules HIER_NET_NOT_READ   -location {top_pwc.sv}             -regexp {Net 'sram_ctrl_main_ram_1p_cfg_i[0:1].ls' in module 'top_pwc' is not read from}                -comment "needed for rivos compiled memory"
+waive -rules HIER_NET_NOT_READ   -location {top_pwc.sv}             -regexp {Connected net 'LS' at rvscs_ot_sram_half_size.sv:21 is not read from in module 'rvscs_ot_sram_half_size'} -comment "needed for rivos compiled memory"
+waive -rules HIER_NET_NOT_READ   -location {top_pwc.sv}             -regexp {Net 'sram_ctrl_mbox_ram_1p_cfg_i[0].ls' in module 'top_pwc' is not read from,}                            -comment "needed for rivos compiled memory"
+waive -rules HIER_NET_NOT_READ   -location {top_pwc.sv}             -regexp {Connected net 'LS' at rvscs_ot_aon_sram.sv:21 is not read from in module 'rvscs_ot_aon_sram'}             -comment "needed for rivos compiled memory"

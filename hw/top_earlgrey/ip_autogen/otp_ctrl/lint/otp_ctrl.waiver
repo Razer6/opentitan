@@ -24,3 +24,6 @@ waive -rules {LOOP_VAR_OP FOR_LOOP_BOUNDS} -location {prim_cipher_pkg.sv} -regex
 
 waive -rules {ASSIGN_SIGN} -location {otp_ctrl_part_buf.sv} -regexp {Unsigned target 'step_i' assigned signed value 'CntWidth'\(1\)'} \
       -comment "This is fine as long as CntWidth is greater equal 2 which is checked using an SVA."
+
+waive -rules {LINE_LENGTH} -location {otp_ctrl_part_pkg.sv} -regexp {Line length of [0-9]+ exceeds 100 character limit} \
+      -comment "otp_ctrl_part_pkg is auto-generated and adhering to the line length limit is not always feasible for auto-generated code"

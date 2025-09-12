@@ -648,8 +648,8 @@ module sram_ctrl
       assign sram_rvalid_raw = sram_rvalid_scr;
     end
     // Rivos: Hang the transaction on an uncorrectable ECC error (sram_rerror[1]) by not returning
-    // rvalid. The uncorrectable error is propagated through the RAS interface. If TlulErrorOnEccError
-    // is set, the error is propagated through the TLUL interface.
+    // rvalid. The uncorrectable error is propagated through the RAS interface. If
+    // TlulErrorOnEccError is set, the error is propagated through the TLUL interface.
     assign sram_rvalid = sram_rvalid_raw & (~sram_rerror[1] | TlulErrorOnEccError);
 
     if (FlopEccOutput) begin : gen_flop_ecc_output_data
