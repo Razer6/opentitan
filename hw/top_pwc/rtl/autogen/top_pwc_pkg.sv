@@ -868,6 +868,11 @@ package top_pwc_pkg;
     PeripheralCount
   } peripheral_e;
 
+  // MPWC Region
+  //
+  parameter int unsigned TOP_PWC_MPWC_BASE_ADDR = 32'h211C0000;
+  parameter int unsigned TOP_PWC_MPWC_SIZE_BYTES = 32'hF441000;
+
   // TODO: Enumeration for PLIC Interrupt source peripheral.
 
 endpackage

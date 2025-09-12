@@ -55,6 +55,7 @@
       1'd0
     ]
     uniquified_modules: {}
+    n_loc_alert: 7
     n_esc_sev: 4
   }
 }

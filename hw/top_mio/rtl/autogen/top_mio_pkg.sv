@@ -460,6 +460,11 @@ package top_mio_pkg;
     PeripheralCount
   } peripheral_e;
 
+  // MMIO Region
+  //
+  parameter int unsigned TOP_MIO_MMIO_BASE_ADDR = 32'h211C0000;
+  parameter int unsigned TOP_MIO_MMIO_SIZE_BYTES = 32'hF441000;
+
   // TODO: Enumeration for PLIC Interrupt source peripheral.
 
 endpackage
