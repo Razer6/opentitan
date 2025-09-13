@@ -51,14 +51,18 @@ variables:
 
 .setup-ot-env: &setup-ot-env
   - module purge
-  - module load rivos/init opentitan/1.0.1 rust
+  - module load rivos/init rust
+  - uv venv
+  - source .venv/bin/activate
+  - uv pip sync python-requirements.txt
+
 
 check_freeze:
   tags: [shell]
   stage: check
   extends: .git-auth-fixup
   script:
-    - *setup-ot-env
+    - module load rivos/init rust
     - python3 ci/scripts/freeze/freeze.py --freeze-file BLOCKFILE
   rules:
     - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "rivos/main" && $CI_PIPELINE_SOURCE == "merge_request_event"'
@@ -92,8 +96,6 @@ check_generated:
   stage: check
   extends: .git-auth-fixup
   script:
-    # Try to remove any exsiting fusesoc version before loading the module
-    - pip uninstall -y fusesoc || true
     - *setup-ot-env
     - *clone-rvsys
     - module load ascentlint
@@ -113,20 +115,20 @@ check_generated:
     expire_in: 1 week
 
 # TODO: re-enable these once we fix the fusesoc version in CI
-# lint_rot:
-#   extends: .lint-rtl
-#  variables:
-#    TEST_TARGET: top_darjeeling
+lint_rot:
+  extends: .lint-rtl
+  variables:
+   TEST_TARGET: top_darjeeling
 
-# lint_mio:
-#  extends: .lint-rtl
-#  variables:
-#    TEST_TARGET: top_mio
+lint_mio:
+ extends: .lint-rtl
+ variables:
+   TEST_TARGET: top_mio
 
-#lint_pwc:
-#  extends: .lint-rtl
-#  variables:
-#    TEST_TARGET: top_pwc
+lint_pwc:
+ extends: .lint-rtl
+ variables:
+   TEST_TARGET: top_pwc
 
 # Common initialization step for Docker-in-Docker jobs
 .prepare-docker: &prepare-docker
@@ -144,6 +146,9 @@ check_generated:
 build_ot_container:
   stage: build
   extends: .prepare-docker
+  variables:
+    # Enable Docker BuildKit, which is required for secrets
+    DOCKER_BUILDKIT: "1"
   script:
     - ./ci/scripts/build-push-container-image.sh
   rules:

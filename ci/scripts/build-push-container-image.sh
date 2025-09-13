@@ -10,7 +10,7 @@
 set -ex
 
 # Build the container image
-docker build --tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" --file util/container/Dockerfile .
+docker build --secret id=gitlab_token,env=CI_JOB_TOKEN --tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" --file util/container/Dockerfile .
 
 # Push the image if the job is not running on a dev branch
 if [ -n "$CI_COMMIT_BRANCH" ] && [ "$CI_COMMIT_BRANCH" != "dev/*" ]; then

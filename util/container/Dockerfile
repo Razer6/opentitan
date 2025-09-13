@@ -153,6 +153,12 @@ ENV LM_LICENSE_FILE="${LM_LICENSE_FILE}:5280@admin1.ba.rivosinc.com"
 COPY util/container/start.sh /start.sh
 COPY util/container/sudoconf /etc/sudoers.d/dev
 
+# Now, mount the secret and use it to install dependencies.
+# The secret becomes available at /run/secrets/gitlab_token
+RUN --mount=type=secret,id=gitlab_token,uid=1000 \
+    export GITLAB_TOKEN=$(cat /run/secrets/gitlab_token) && \
+    git config --global url."https://gitlab-ci-token:${GITLAB_TOKEN}@gitlab.ba.rivosinc.com".insteadOf "https://gitlab.ba.rivosinc.com"
+
 # Add the development user (UID/GID to be replaced).
 RUN groupadd dev \
     && useradd --create-home -g dev dev \
@@ -171,10 +177,23 @@ USER dev:dev
 # version, which then fails to run.
 ENV PATH="/home/dev/.local/bin:${PATH}"
 COPY --chown=dev:dev python-requirements.txt /tmp/python-requirements.txt
-RUN python3 -m pip install --user -U pip "setuptools<66.0.0" \
-    && python3 -m pip install --user -r /tmp/python-requirements.txt \
-        --no-warn-script-location \
-    && rm -f /tmp/python-requirements.txt
+
+# 1. Upgrade pip and setuptools first
+RUN python3 -m pip install --user -U pip "setuptools<66.0.0" && \
+    \
+    # 2. Install Git dependencies by filtering the file (NO --require-hashes)
+    #    'grep' finds lines with 'git+' and pipes them to pip.
+    grep 'git+' /tmp/python-requirements.txt | python3 -m pip install --user -r /dev/stdin \
+        --no-warn-script-location && \
+    \
+    # 3. Install PyPI dependencies by filtering the file (WITH --require-hashes)
+    #    'grep -v' finds lines WITHOUT 'git+' and pipes them to pip.
+    grep -v 'git+' /tmp/python-requirements.txt | python3 -m pip install --user -r /dev/stdin \
+        --require-hashes \
+        --no-warn-script-location && \
+    \
+    # 4. Clean up the requirements file
+    rm -f /tmp/python-requirements.txt
 
 USER root:root
 

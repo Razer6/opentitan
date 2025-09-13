@@ -65,7 +65,8 @@ dependencies = [
   "tockloader==1.13",
 
   # The hardware package manager and build system.
-  "fusesoc==2.4.3",
+  "fusesoc @ git+https://gitlab.ba.rivosinc.com/pub/it/fusesoc.git@v2.4.3+rivos.20250829",
+  "edalize @ git+https://gitlab.ba.rivosinc.com/pub/it/edalize.git@v0.6.1+rivos.20250909",
 
   "peakrdl-systemrdl >= 1.0",
 ]
