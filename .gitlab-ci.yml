@@ -155,6 +155,31 @@ lint_pwc:
  variables:
    TEST_TARGET: top_pwc
 
+.xcelium:
+  tags: [centos7-hw-shell]
+  stage: check
+  extends: .git-auth-fixup
+  script:
+    - *setup-ot-env
+    - *clone-rvsys
+    -  ./util/dvsim/dvsim.py ${TEST_CONFIG} -i ${TEST_TARGET} --tool xcelium -mp 16 --verbose
+  rules:
+    - changes:
+      - hw/**/*
+      when: always
+  artifacts:
+    when: on_failure
+    paths:
+      - scratch/**/*.log
+    expire_in: 1 week
+
+block_level_smoke:
+  extends: .xcelium
+  tags: [centos7-hw-shell]
+  variables:
+    TEST_TARGET: smoke
+    TEST_CONFIG: hw/top_darjeeling/dv/top_darjeeling_sim_cfgs.hjson
+
 # Common initialization step for Docker-in-Docker jobs
 .prepare-docker: &prepare-docker
   extends: .git-auth-fixup
