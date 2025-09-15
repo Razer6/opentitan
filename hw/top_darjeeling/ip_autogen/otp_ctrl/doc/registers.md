@@ -929,7 +929,7 @@ Runtime read lock for the SCRATCH_FUSES partition.
 
 ## VENDOR_TEST_DIGEST
 Integrity digest for the VENDOR_TEST partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the VENDOR_TEST partition is locked and
 the digest becomes visible in this CSR.
@@ -956,7 +956,7 @@ the digest becomes visible in this CSR.
 
 ## CREATOR_SW_CFG_DIGEST
 Integrity digest for the CREATOR_SW_CFG partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the CREATOR_SW_CFG partition is locked and
 the digest becomes visible in this CSR.
@@ -983,7 +983,7 @@ the digest becomes visible in this CSR.
 
 ## OWNER_SW_CFG_DIGEST
 Integrity digest for the OWNER_SW_CFG partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the OWNER_SW_CFG partition is locked and
 the digest becomes visible in this CSR.
@@ -1010,7 +1010,7 @@ the digest becomes visible in this CSR.
 
 ## ROT_CREATOR_IDENTITY_DIGEST
 Integrity digest for the ROT_CREATOR_IDENTITY partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the ROT_CREATOR_IDENTITY partition is locked and
 the digest becomes visible in this CSR.
@@ -1037,7 +1037,7 @@ the digest becomes visible in this CSR.
 
 ## ROT_OWNER_AUTH_SLOT0_DIGEST
 Integrity digest for the ROT_OWNER_AUTH_SLOT0 partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the ROT_OWNER_AUTH_SLOT0 partition is locked and
 the digest becomes visible in this CSR.
@@ -1064,7 +1064,7 @@ the digest becomes visible in this CSR.
 
 ## ROT_OWNER_AUTH_SLOT1_DIGEST
 Integrity digest for the ROT_OWNER_AUTH_SLOT1 partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the ROT_OWNER_AUTH_SLOT1 partition is locked and
 the digest becomes visible in this CSR.
@@ -1091,7 +1091,7 @@ the digest becomes visible in this CSR.
 
 ## PLAT_INTEG_AUTH_SLOT0_DIGEST
 Integrity digest for the PLAT_INTEG_AUTH_SLOT0 partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the PLAT_INTEG_AUTH_SLOT0 partition is locked and
 the digest becomes visible in this CSR.
@@ -1118,7 +1118,7 @@ the digest becomes visible in this CSR.
 
 ## PLAT_INTEG_AUTH_SLOT1_DIGEST
 Integrity digest for the PLAT_INTEG_AUTH_SLOT1 partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the PLAT_INTEG_AUTH_SLOT1 partition is locked and
 the digest becomes visible in this CSR.
@@ -1145,7 +1145,7 @@ the digest becomes visible in this CSR.
 
 ## PLAT_OWNER_AUTH_SLOT0_DIGEST
 Integrity digest for the PLAT_OWNER_AUTH_SLOT0 partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the PLAT_OWNER_AUTH_SLOT0 partition is locked and
 the digest becomes visible in this CSR.
@@ -1172,7 +1172,7 @@ the digest becomes visible in this CSR.
 
 ## PLAT_OWNER_AUTH_SLOT1_DIGEST
 Integrity digest for the PLAT_OWNER_AUTH_SLOT1 partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the PLAT_OWNER_AUTH_SLOT1 partition is locked and
 the digest becomes visible in this CSR.
@@ -1199,7 +1199,7 @@ the digest becomes visible in this CSR.
 
 ## PLAT_OWNER_AUTH_SLOT2_DIGEST
 Integrity digest for the PLAT_OWNER_AUTH_SLOT2 partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the PLAT_OWNER_AUTH_SLOT2 partition is locked and
 the digest becomes visible in this CSR.
@@ -1226,7 +1226,7 @@ the digest becomes visible in this CSR.
 
 ## PLAT_OWNER_AUTH_SLOT3_DIGEST
 Integrity digest for the PLAT_OWNER_AUTH_SLOT3 partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the PLAT_OWNER_AUTH_SLOT3 partition is locked and
 the digest becomes visible in this CSR.
@@ -1253,7 +1253,7 @@ the digest becomes visible in this CSR.
 
 ## ROM_PATCH_DIGEST
 Integrity digest for the ROM_PATCH partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the ROM_PATCH partition is locked and
 the digest becomes visible in this CSR.
@@ -1280,7 +1280,7 @@ the digest becomes visible in this CSR.
 
 ## SOC_FUSES_CP_DIGEST
 Integrity digest for the SOC_FUSES_CP partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the SOC_FUSES_CP partition is locked and
 the digest becomes visible in this CSR.
@@ -1307,7 +1307,7 @@ the digest becomes visible in this CSR.
 
 ## SOC_FUSES_FT_DIGEST
 Integrity digest for the SOC_FUSES_FT partition.
-The integrity digest is 0 by default. Software must write this
+The integrity digest is 0 by default. Software must write a non-zero
 digest value via the direct access interface in order to lock the partition.
 After a reset, write access to the SOC_FUSES_FT partition is locked and
 the digest becomes visible in this CSR.
