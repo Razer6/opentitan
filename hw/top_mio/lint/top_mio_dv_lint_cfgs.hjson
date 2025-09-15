@@ -209,11 +209,6 @@
           //         fusesoc_core: lowrisc:dv:chip_sim
           //         import_cfgs: ["{proj_root}/hw/lint/tools/dvsim/common_lint_cfg.hjson"]
           //         rel_path: "hw/top_mio/dv/lint/{tool}"
-          //         overrides: [
-          //           {
-          //             name: design_level
-          //             value: "top"
-          //           }
           //         ]
           //    },
             ]

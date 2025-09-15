@@ -40,12 +40,6 @@
                   fusesoc_core: lowrisc:opentitan:top_pwc_alert_handler
                   import_cfgs: ["{proj_root}/hw/lint/tools/dvsim/common_lint_cfg.hjson"]
                   rel_path: "hw/top_pwc/ip_autogen/alert_handler/lint/{tool}"
-                  overrides: [
-                    {
-                      name: design_level
-                      value: "top"
-                    }
-                  ]
              },
              {    name: aon_timer
                   fusesoc_core: lowrisc:ip:aon_timer
@@ -56,23 +50,11 @@
                   fusesoc_core: lowrisc:systems:ast
                   import_cfgs: ["{proj_root}/hw/lint/tools/dvsim/common_lint_cfg.hjson"]
                   rel_path: "hw/top_pwc/ip/ast/lint/{tool}"
-                  overrides: [
-                    {
-                      name: design_level
-                      value: "top"
-                    }
-                  ]
              },
              {    name: clkmgr
                   fusesoc_core: lowrisc:opentitan:top_pwc_clkmgr
                   import_cfgs: ["{proj_root}/hw/lint/tools/dvsim/common_lint_cfg.hjson"],
                   rel_path: "hw/top_pwc/ip_autogen/clkmgr/lint/{tool}",
-                  overrides: [
-                    {
-                      name: design_level
-                      value: "top"
-                    }
-                  ]
              },
              {    name: csrng
                   fusesoc_core: lowrisc:ip:csrng
@@ -88,12 +70,6 @@
                   fusesoc_core: lowrisc:opentitan:top_pwc_flash_ctrl
                   import_cfgs: ["{proj_root}/hw/lint/tools/dvsim/common_lint_cfg.hjson"]
                   rel_path: "hw/top_pwc/ip_autogen/flash_ctrl/lint/{tool}"
-                  overrides: [
-                    {
-                      name: design_level
-                      value: "top"
-                    }
-                  ]
              },
              {    name: gpio
                   fusesoc_core: lowrisc:ip:gpio
@@ -119,12 +95,6 @@
                   fusesoc_core: lowrisc:ip:lc_ctrl
                   import_cfgs: ["{proj_root}/hw/lint/tools/dvsim/common_lint_cfg.hjson"]
                   rel_path: "hw/ip/lc_ctrl/lint/{tool}"
-                  overrides: [
-                    {
-                      name: design_level
-                      value: "top"
-                    }
-                  ]
              },
              {    name: keymgr
                   fusesoc_core: lowrisc:ip:keymgr
@@ -145,45 +115,21 @@
                   fusesoc_core: lowrisc:ip:otp_ctrl
                   import_cfgs: ["{proj_root}/hw/lint/tools/dvsim/common_lint_cfg.hjson"]
                   rel_path: "hw/ip/otp_ctrl/lint/{tool}"
-                  overrides: [
-                    {
-                      name: design_level
-                      value: "top"
-                    }
-                  ]
              },
              {    name: pinmux
                   fusesoc_core: lowrisc:ip:pinmux
                   import_cfgs: ["{proj_root}/hw/lint/tools/dvsim/common_lint_cfg.hjson"]
                   rel_path: "hw/ip/pinmux/lint/{tool}"
-                  overrides: [
-                    {
-                      name: design_level
-                      value: "top"
-                    }
-                  ]
              },
              {    name: pwm
                   fusesoc_core: lowrisc:ip:pwm
                   import_cfgs: ["{proj_root}/hw/lint/tools/dvsim/common_lint_cfg.hjson"]
                   rel_path: "hw/ip/pwm/lint/{tool}"
-                  overrides: [
-                    {
-                      name: design_level
-                      value: "top"
-                    }
-                  ]
              },
              {    name: pwrmgr
                   fusesoc_core: lowrisc:opentitan:top_pwc_pwrmgr
                   import_cfgs: ["{proj_root}/hw/lint/tools/dvsim/common_lint_cfg.hjson"],
                   rel_path: "hw/top_pwc/ip_autogen/pwrmgr/lint/{tool}",
-                  overrides: [
-                    {
-                      name: design_level
-                      value: "top"
-                    }
-                  ]
              },
              {    name: rom_ctrl
                   fusesoc_core: lowrisc:ip:rom_ctrl
@@ -194,12 +140,6 @@
                   fusesoc_core: lowrisc:opentitan:top_pwc_rstmgr
                   import_cfgs: ["{proj_root}/hw/lint/tools/dvsim/common_lint_cfg.hjson"],
                   rel_path: "hw/top_pwc/ip_autogen/rstmgr/lint/{tool}",
-                  overrides: [
-                    {
-                      name: design_level
-                      value: "top"
-                    }
-                  ]
              },
              {    name: rv_core_ibex
                   fusesoc_core: lowrisc:ip:rv_core_ibex
@@ -240,12 +180,6 @@
                   fusesoc_core: lowrisc:ip:sram_ctrl
                   import_cfgs: ["{proj_root}/hw/lint/tools/dvsim/common_lint_cfg.hjson"]
                   rel_path: "hw/ip/sram_ctrl/lint/{tool}"
-                  overrides: [
-                    {
-                      name: design_level
-                      value: "top"
-                    }
-                  ]
              },
              {    name: uart
                   fusesoc_core: lowrisc:ip:uart
@@ -296,12 +230,6 @@
                   fusesoc_core: lowrisc:systems:chip_pwc_asic
                   import_cfgs: ["{proj_root}/hw/lint/tools/dvsim/common_lint_cfg.hjson"]
                   rel_path: "hw/top_pwc/lint/{tool}"
-                  overrides: [
-                    {
-                      name: design_level
-                      value: "top"
-                    }
-                  ]
              },
             ]
 
