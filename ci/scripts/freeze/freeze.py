@@ -68,7 +68,7 @@ def merge_authorized(merge_request_id: str, head: str) -> dict:
     try:
         response = requests.get(
             API,
-            params={"mrid": merge_request_id, "ot":true, "head": head},
+            params={"mrid": merge_request_id, "ot": "true", "head": head},
             headers={"Accept": "application/json"},
             timeout=10,
         )
