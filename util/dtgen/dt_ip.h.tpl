@@ -23,7 +23,7 @@
  * This file contains the type definitions and global functions of the ${device_name}.
  */
 
-#include "dt_api.h"
+#include "hw/top/dt/dt_api.h"
 #include <stdint.h>
 
 ## Extension
