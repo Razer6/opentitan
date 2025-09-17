@@ -22,8 +22,12 @@ fi
 
 SEED_TYPE="$1"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 SEEDGEN_SCRIPT="$SCRIPT_DIR/seedgen.py"
-HW_DIR="$SCRIPT_DIR/../../hw"
+HW_DIR="$PROJECT_ROOT/hw"
+
+# Source the shared security functions
+source "$SCRIPT_DIR/filesystem_checks.sh"
 
 echo "Running seed generation for type: $SEED_TYPE"
 echo "Script directory: $SCRIPT_DIR"
@@ -39,6 +43,11 @@ fi
 # Check if hw directory exists
 if [ ! -d "$HW_DIR" ]; then
     echo "Error: hw directory not found at $HW_DIR"
+    exit 1
+fi
+
+# Security checks before proceeding
+if ! perform_security_checks "$PROJECT_ROOT" "."; then
     exit 1
 fi
 
