@@ -56,7 +56,6 @@ variables:
   - source .venv/bin/activate
   - uv pip sync python-requirements.txt
 
-
 check_freeze:
   tags: [shell]
   stage: check
@@ -69,12 +68,34 @@ check_freeze:
   variables:
     FREEZE_API_SERVER_URL: https://script.google.com/macros/s/AKfycbzBJYJCfh6R8nmNs1SZTr1RxN6s7EwR8Np_rnOohm4QkTQjCCxixePIRiwaTnIo9cjZsA/exec
 
-
 check_change_id:
   tags: [shell]
   stage: check
   script:
     - ./ci/scripts/check-change-id.sh
+
+quick_lint:
+  stage: check
+  image: gitlab.ba.rivosinc.com:5050/rv/si/ext/opentitan-integrated
+  extends: .git-auth-fixup
+  before_script:
+    - git config --global --add safe.directory /builds/rv/si/ext/opentitan-integrated
+    - git fetch origin $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+  script:
+    - ./ci/scripts/exec-check.sh
+    - ./ci/scripts/check-ascii.sh
+    - ./ci/scripts/python-lint.sh $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    # - ./ci/scripts/mypy.sh
+    - ruff check
+    - ./ci/scripts/validate_testplans.sh
+    - ./bazelisk.sh test //quality:clang_format_check
+    - ./bazelisk.sh test //quality:rustfmt_check
+    # - ./bazelisk.sh test //quality:shellcheck_check
+    - ./ci/scripts/include-guard.sh $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    - ./ci/scripts/whitespace.sh $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    # - ./ci/scripts/check-links.sh
+    - ./ci/scripts/check-cmdgen.sh
+    #- ./ci/scripts/check-lock-files.sh
 
 check_generated:
   tags: [shell]
