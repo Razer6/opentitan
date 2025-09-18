@@ -12,32 +12,32 @@
 # Function to validate SOPS configuration
 validate_sops() {
     echo "Validating SOPS configuration..."
-    
+
     # Check if SOPS can access keys
     if ! sops --version &>/dev/null; then
         echo "Error: SOPS is not working properly"
         return 1
     fi
-    
+
     # Try to list available keys (this will fail if no keys are configured)
     if ! sops --help | grep -q "encrypt\|decrypt"; then
         echo "Error: SOPS is not properly configured"
         return 1
     fi
-    
-    echo "  ✓ SOPS is properly configured"
+
+    echo "  SOPS is properly configured"
     return 0
 }
 
 # Function to extract file patterns from .sops.yaml
 get_files_from_sops_config() {
     local sops_file=".sops.yaml"
-    
+
     if [ ! -f "$sops_file" ]; then
         echo "Error: .sops.yaml file not found in project root"
         return 1
     fi
-    
+
     # Extract path_regex values from .sops.yaml
     # Format: "  - path_regex: filename"
     grep -E "^\s*-\s+path_regex:" "$sops_file" | sed 's/.*path_regex:\s*//' | tr -d ' '
@@ -48,21 +48,21 @@ process_file() {
     local file="$1"
     local sops_output=""
     local sops_exit_code=0
-    
+
     # Check if file exists
     if [ ! -f "$file" ]; then
         echo "Warning: File does not exist: $file"
         return 1
     fi
-    
+
     echo "${OPERATION^}ing: $file"
-    
+
     if [ "$DRY_RUN" = true ]; then
         echo "  [DRY RUN] Would ${OPERATION} $file"
         return 0
     fi
-    
-    # Use sops to encrypt or decrypt the file into stdout and then use dd with the right 
+
+    # Use sops to encrypt or decrypt the file into stdout and then use dd with the right
     # file permissions to create the file atomically
     if [ "$OPERATION" = "encrypt" ]; then
         sops_output=$(sops --encrypt "$file" 2>&1)
@@ -71,22 +71,22 @@ process_file() {
         sops_output=$(sops --decrypt "$file" 2>&1)
         sops_exit_code=$?
     fi
-    
+
     if [ $sops_exit_code -eq 0 ]; then
         rm -f "$file"
-        
+
         # Create file atomically with secure permissions using dd
         echo "$sops_output" | dd of="$file" oflag=excl mode=600 2>/dev/null
-        
+
         if [ $? -eq 0 ]; then
-            echo "  ✓ Successfully ${OPERATION}ed: $file"
+            echo "  Successfully ${OPERATION}ed: $file"
             return 0
         else
-            echo "  ✗ Failed to create secure file: $file"
+            echo "  Failed to create secure file: $file"
             return 1
         fi
     else
-        echo "  ✗ Failed to ${OPERATION} $file"
+        echo "  Failed to ${OPERATION} $file"
         echo "  Error: $sops_output"
         return 1
     fi
@@ -181,7 +181,7 @@ if [ ${#files_to_encrypt[@]} -eq 0 ]; then
     exit 1
 fi
 
-echo "  ✓ Found ${#files_to_encrypt[@]} file patterns in .sops.yaml"
+echo "  Found ${#files_to_encrypt[@]} file patterns in .sops.yaml"
 
 echo "Files to ${OPERATION}:"
 for file in "${files_to_encrypt[@]}"; do
