@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: LicenseRef-Rivos-Internal-Only
 
 # Import path setup to ensure we can import modules from util/
-import _path_setup
+import _path_setup  # noqa: F401
 
 from repo_top import repo_top
 import secrets
@@ -83,10 +83,11 @@ def _get_256_bit_seed(is_production: bool) -> int:
             return random_integer
         except FileNotFoundError:
             print("Error: The 'aws' command was not found.", file=sys.stderr)
-            print("Please ensure the AWS CLI is installed and in your system's PATH.", file=sys.stderr)
+            print("Please ensure the AWS CLI is installed and in your system's PATH.",
+                  file=sys.stderr)
             sys.exit(1)
         except subprocess.CalledProcessError as e:
-            print(f"Error executing AWS CLI command:", file=sys.stderr)
+            print("Error executing AWS CLI command:", file=sys.stderr)
             print(f"Stderr: {e.stderr.strip()}", file=sys.stderr)
             sys.exit(1)
 

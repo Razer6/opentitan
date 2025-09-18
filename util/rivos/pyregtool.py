@@ -8,7 +8,7 @@ Command-line tool to generate pyreg/pydump files from register HJSON files.
 """
 
 # Import path setup to ensure we can import modules from util/
-import _path_setup
+import _path_setup  # noqa: F401
 
 import argparse
 import sys
@@ -178,7 +178,8 @@ class PyregParameters:
         """Creates a PyregParameters object from a register entry."""
         if isinstance(entry, MultiRegister) and multireg_is_compact(entry, regwidth):
             raise ValueError(
-                "Cannot handle compact multiregs directly. Please pass the individual register instance definitions instead."
+                "Cannot handle compact multiregs directly. Please pass the "
+                "individual register instance definitions instead."
             )
 
         # Array count
@@ -304,7 +305,8 @@ class PyregField:
     def _convert_hwaccess(ot_hwaccess: str, ot_swaccess: str, hwqe: bool) -> str:
         """Converts an OT hwaccess to a pyreg hwaccess."""
         if hwqe:
-            # If hw uses q enable signal (latched signal of software write pulse) we need to add the corresponding pyreg attribute
+            # If hw uses q enable signal (latched signal of software write pulse)
+            # we need to add the corresponding pyreg attribute
             hwaccess = "r, wpulse"
         else:
             if ot_hwaccess == "hwo":
@@ -357,7 +359,8 @@ class PyregEntry:
         """Creates a PyregEntry object from a register entry."""
         if isinstance(entry, MultiRegister) and multireg_is_compact(entry, regwidth):
             raise ValueError(
-                "Cannot handle compact multiregs directly. Please pass the individual register instance definitions instead."
+                "Cannot handle compact multiregs directly. Please pass the "
+                "individual register instance definitions instead."
             )
 
         # Explanation

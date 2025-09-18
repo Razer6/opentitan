@@ -7,11 +7,10 @@ This utility computes the policy selection vector for a given ip, RACL config, a
 """
 
 # Import path setup to ensure we can import modules from util/
-import _path_setup
+import _path_setup  # noqa: F401
 
 import argparse
 import sys
-from pathlib import Path
 from mako.template import Template
 from mako import exceptions
 from raclgen.lib import _read_hjson
