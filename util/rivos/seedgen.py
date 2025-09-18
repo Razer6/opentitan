@@ -6,6 +6,7 @@
 import _path_setup  # noqa: F401
 
 from repo_top import repo_top
+from topgen.lib import write_file_secure
 import secrets
 import argparse
 from jinja2 import Environment
@@ -51,7 +52,7 @@ def _get_256_bit_seed(is_production: bool) -> int:
         A 256-bit random integer.
     """
     if is_production:
-        # FIXME: Use HSM API when available
+        # Request entropy from the AWS KMS API
         command = [
             "aws", "kms", "generate-random",
             "--number-of-bytes", "32",
@@ -117,8 +118,7 @@ def create_seed_hjson(
         context["seeds"][seed + "_seed"] = _get_256_bit_seed(is_tapeout)
 
     hjson_content = template.render(context)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(hjson_content)
+    write_file_secure(output_path, hjson_content)
 
     print(f"Successfully created HJSON file at: {output_path}")
 
