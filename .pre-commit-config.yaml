@@ -24,3 +24,9 @@ repos:
       - id: trailing-whitespace
         files: ^(sw/|hw/dv/)
         exclude: ^sw/vendor/
+  - repo: local
+    hooks:
+    - id: sops-encryption-check
+      name: Check for unencrypted secrets
+      entry: util/rivos/sops_precommit_check.sh
+      language: script
