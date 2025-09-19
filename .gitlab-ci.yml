@@ -79,6 +79,9 @@ quick_lint:
   stage: check
   image: gitlab.ba.rivosinc.com:5050/rv/si/ext/opentitan-integrated
   extends: .git-auth-fixup
+  rules:
+    # check scripts rely on CI_MERGE_REQUEST_TARGET_BRANCH_NAME, which is only set for merge events
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   before_script:
     - git config --global --add safe.directory /builds/rv/si/ext/opentitan-integrated
     - git fetch origin $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
