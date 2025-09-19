@@ -8133,7 +8133,7 @@
           name: DistrFifoDepth
           desc: Number of 32-bit entries in the distr FIFO
           type: int unsigned
-          default: "2"
+          default: "3"
           local: "true"
           expose: "true"
           name_top: EntropySrcDistrFifoDepth
