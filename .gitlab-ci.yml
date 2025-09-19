@@ -25,6 +25,7 @@ variables:
   DOCKER_TLS_CERTDIR: ""
   GIT_CLEAN_FLAGS: -ffdx -e .cache/ -e 11e283c7cfdf742e8a30d55ba62ebe28/
   OT_DESTRUCTIVE: 1
+  GIT_DEPTH: 50
 
 #
 # Authentication helper for git accesses.
