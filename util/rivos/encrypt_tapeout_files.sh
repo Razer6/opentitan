@@ -43,6 +43,17 @@ get_files_from_sops_config() {
     grep -E "^\s*-\s+path_regex:" "$sops_file" | sed 's/.*path_regex:\s*//' | tr -d ' '
 }
 
+# Function to check if a file is already encrypted
+is_encrypted() {
+    local file="$1"
+    # Use SOPS to check if file is encrypted (sops will fail if not encrypted)
+    if sops --decrypt "$file" >/dev/null 2>&1; then
+        return 0  # File is encrypted
+    else
+        return 1  # File is not encrypted
+    fi
+}
+
 # Function to process a single file
 process_file() {
     local file="$1"
@@ -53,6 +64,18 @@ process_file() {
     if [ ! -f "$file" ]; then
         echo "Warning: File does not exist: $file"
         return 1
+    fi
+
+    # For encryption, check if file is already encrypted
+    if [ "$OPERATION" = "encrypt" ] && is_encrypted "$file"; then
+        echo "Skipping: $file (already encrypted)"
+        return 0
+    fi
+
+    # For decryption, check if file is encrypted
+    if [ "$OPERATION" = "decrypt" ] && ! is_encrypted "$file"; then
+        echo "Skipping: $file (not encrypted)"
+        return 0
     fi
 
     echo "${OPERATION^}ing: $file"
@@ -73,16 +96,18 @@ process_file() {
     fi
 
     if [ $sops_exit_code -eq 0 ]; then
-        rm -f "$file"
-
-        # Create file atomically with secure permissions using dd
-        echo "$sops_output" | dd of="$file" oflag=excl mode=600 2>/dev/null
-
-        if [ $? -eq 0 ]; then
+        # Create/truncate file and set secure permissions immediately
+        > "$file" && chmod 600 "$file"
+        if [ $? -ne 0 ]; then
+            echo "  Error: Failed to create/truncate file or set permissions"
+            return 1
+        fi
+        # Pipe SOPS output directly to file
+        if echo "$sops_output" > "$file"; then
             echo "  Successfully ${OPERATION}ed: $file"
             return 0
         else
-            echo "  Failed to create secure file: $file"
+            echo "  Error: Failed to write ${OPERATION}ed content"
             return 1
         fi
     else
