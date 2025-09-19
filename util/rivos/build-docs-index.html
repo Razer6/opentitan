@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivos - OpenTitan Documentation</title>
+    <style>
+        :root {
+            --rivos-indigo: #025862;
+            --rivos-dark-text: #025862;
+            --background-light: #f8f9fa;
+            --border-color: #dee2e6;
+            --card-background: #ffffff;
+            --body-text-light: #6c757d;
+            --body-text: #495057;
+        }
+        a {
+            color: #00a7ba;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--background-light);
+            color: var(--body-text);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            padding: 2rem;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--rivos-dark-text);
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.2rem;
+            color: var(--body-text-light);
+            margin-bottom: 3rem;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(74, 72, 255, 0.1);
+            border-color: var(--rivos-indigo);
+        }
+        .card .icon {
+            margin-bottom: 1rem;
+            width: 48px;
+            height: 48px;
+            color: var(--rivos-indigo);
+        }
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--rivos-indigo);
+        }
+        .card p {
+            font-size: 1rem;
+            color: var(--body-text);
+            flex-grow: 1;
+        }
+        footer {
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            color: var(--body-text-light);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>OpenTitan Project Documentation</h1>
+            <p>Generated from <a href="https://gitlab.ba.rivosinc.com/rv/si/ext/opentitan-integrated">https://gitlab.ba.rivosinc.com/rv/si/ext/opentitan-integrated</a></p>
+        </header>
+
+        <main>
+            <div class="card-grid">
+                <a href='./book' class="card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path></svg>
+                    </div>
+                    <h2>Full Documentation</h2>
+                    <p>Comprehensive hardware specifications, tooling, and software reference manuals.</p>
+                </a>
+
+                <a href='./gen/doxy' class="card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"></path></svg>
+                    </div>
+                    <h2>Software API Reference</h2>
+                    <p>Auto-generated Doxygen reference for all public software APIs and data structures.</p>
+                </a>
+            </div>
+        </main>
+
+        <footer>
+            <p>Page generated on: $date</p>
+        </footer>
+    </div>
+</body>
+</html>

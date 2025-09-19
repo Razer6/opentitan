@@ -188,7 +188,7 @@ create-pages:
   image: gitlab.ba.rivosinc.com:5050/rv/si/ext/opentitan-integrated
   pages:
     # The folder that contains the files to be exposed at the Page URL
-    publish: build-site/book
+    publish: build-site
   rules:
     # This ensures that only pushes to the default branch will trigger
     # a pages deploy
