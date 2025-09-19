@@ -1,0 +1,30 @@
+CAPI=2:
+# Copyright lowRISC contributors (OpenTitan project).
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+
+name: "lowrisc:pwc_constants:tapeout_rnd_cnst_pkg:0.1"
+description: "Random netlist constant package"
+
+filesets:
+  files_rtl:
+    depend:
+      - lowrisc:ibex:ibex_pkg
+      - lowrisc:ip:sram_ctrl_pkg
+    files:
+      - top_pwc_rnd_cnst_pkg.sv
+    file_type: systemVerilogSource
+
+  files_veriblelint_waiver:
+    depend:
+      - lowrisc:lint:common
+      - lowrisc:lint:comportable
+    files:
+      - top_pwc_rnd_cnst_pkg.vbl
+    file_type: veriblelintWaiver
+
+targets:
+  default:
+    filesets:
+      - files_rtl
+      - tool_veriblelint ? (files_veriblelint_waiver)
