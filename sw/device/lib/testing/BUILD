@@ -47,7 +47,6 @@ cc_library(
         "//hw/top:dt",
         "//sw/device/lib/dif:alert_handler",
         "//sw/device/lib/dif:base",
-        "//sw/device/lib/dif:edn",
         "//sw/device/lib/dif:rstmgr",
         "//sw/device/lib/testing/test_framework:check",
     ],
@@ -214,7 +213,6 @@ cc_library(
     target_compatible_with = [OPENTITAN_CPU],
     deps = [
         "//hw/top:i2c_c_regs",
-        "//hw/top_earlgrey/sw/autogen:top_earlgrey",
         "//sw/device/lib/dif:i2c",
         "//sw/device/lib/dif:pinmux",
         "//sw/device/lib/runtime:ibex",
@@ -631,6 +629,14 @@ TESTUTILS_EXCEPTIONS = [
     "i2c",
     "uart",
     "rstmgr",
+    "alert_handler", # Rivos: pwc/mio dont have alert_handler+rstmgr
+    "rv_plic", # Rivos: depends on rv_core_ibex via rand_testutils
+    "pinmux", # Rivos: pwc/mio have no pinmux
+    "spi_device", # Rivos: spi_device_testutils depends on pinmux???
+    "spi_host", # Rivos: spi_host_testutils depends on pinmux???
+]
+TESTUTILS_EXCEPTIONS_DARJEELING = [
+    "dma", # Rivos: requires darjeeling
 ]
 
 # We need to transition to the opentitan platform since
@@ -649,10 +655,12 @@ doxygen_gather_cc(
         )
         for ip in ALL_IP_NAMES
         if existing_rule("{}_testutils".format(ip)) != None and
-           ip not in TESTUTILS_EXCEPTIONS
+           ip not in TESTUTILS_EXCEPTIONS and
+           ip not in TESTUTILS_EXCEPTIONS_DARJEELING
     ]) + opentitan_select_top(
         {
             "earlgrey": ["{}_testutils".format(ip) for ip in TESTUTILS_EXCEPTIONS],
+            "darjeeling": ["{}_testutils".format(ip) for ip in TESTUTILS_EXCEPTIONS_DARJEELING],
         },
         [],
     ),

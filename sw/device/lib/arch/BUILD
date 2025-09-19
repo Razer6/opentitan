@@ -140,9 +140,20 @@ cc_library(
     deps = [
         ":device",
         ":stub",
-        "//hw/top:dt_rv_core_ibex",
-        "//hw/top:rv_core_ibex_c_regs",
-    ],
+    ] + opentitan_select_top({
+        "darjeeling": [
+            "//hw/top:dt_rv_core_ibex",
+            "//hw/top:rv_core_ibex_c_regs",
+        ],
+        "pwc":        [
+            "//hw/top:dt_rv_core_ibex_pwc",
+            "//hw/top:rv_core_ibex_pwc_c_regs",
+        ],
+        "mio":        [
+            "//hw/top:dt_rv_core_ibex_mio",
+            "//hw/top:rv_core_ibex_mio_c_regs",
+        ],
+    },[],),
 )
 
 cc_library(
@@ -150,10 +161,21 @@ cc_library(
     srcs = ["device_sim_qemu.c"],
     deps = [
         ":device",
-        "//hw/top:dt_rv_core_ibex",
-        "//hw/top:rv_core_ibex_c_regs",
         "//sw/device/lib/base:macros",
-    ] + opentitan_if_ip(
+    ] + opentitan_select_top({
+        "darjeeling": [
+            "//hw/top:dt_rv_core_ibex",
+            "//hw/top:rv_core_ibex_c_regs",
+        ],
+        "pwc":        [
+            "//hw/top:dt_rv_core_ibex_pwc",
+            "//hw/top:rv_core_ibex_pwc_c_regs",
+        ],
+        "mio":        [
+            "//hw/top:dt_rv_core_ibex_mio",
+            "//hw/top:rv_core_ibex_mio_c_regs",
+        ],
+    },[],) + opentitan_if_ip(
         "uart",
         [":uart"],
         [":stub"],

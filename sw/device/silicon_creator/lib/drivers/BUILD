@@ -20,6 +20,7 @@ load(
     "qemu_params",
     "verilator_params",
 )
+load("//hw/top:defs.bzl", "opentitan_select_top")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -254,7 +255,6 @@ dual_cc_library(
     ),
     deps = dual_inputs(
         shared = [
-            "//hw/top:rv_core_ibex_c_regs",
             "//hw/top:dt",
             "//sw/device/lib/arch:device",
             "//sw/device/lib/base:abs_mmio",
@@ -263,7 +263,17 @@ dual_cc_library(
             "//sw/device/lib/base:macros",
             "//sw/device/lib/runtime:hart",
             "//sw/device/silicon_creator/lib/base:sec_mmio",
-        ],
+        ] + opentitan_select_top({
+            "darjeeling": [
+                "//hw/top:rv_core_ibex_c_regs",
+            ],
+            "pwc":        [
+                "//hw/top:rv_core_ibex_pwc_c_regs",
+            ],
+            "mio":        [
+                "//hw/top:rv_core_ibex_mio_c_regs",
+            ],
+        },[],),
     ),
 )
 
