@@ -9,7 +9,6 @@
 #include "sw/device/lib/testing/test_framework/check.h"
 #include "sw/device/lib/testing/test_framework/ottf_main.h"
 
-#include "hw/top_earlgrey/sw/autogen/top_earlgrey.h"
 
 OTTF_DEFINE_TEST_CONFIG();
 
@@ -61,7 +60,7 @@ static void hmac_process_message(const dif_hmac_t *hmac, const char *data,
 bool test_main(void) {
   dif_hmac_t hmac;
   CHECK_DIF_OK(
-      dif_hmac_init(mmio_region_from_addr(TOP_EARLGREY_HMAC_BASE_ADDR), &hmac));
+      dif_hmac_init_from_dt(kDtHmac, &hmac));
 
   static const dif_hmac_transaction_t kHmacTransactionConfig = {
       .digest_endianness = kDifHmacEndiannessLittle,

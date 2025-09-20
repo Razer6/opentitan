@@ -19,7 +19,6 @@
 
 #include "hw/top/keymgr_regs.h"  // Generated.
 #include "hw/top/kmac_regs.h"    // Generated.
-#include "hw/top_earlgrey/sw/autogen/top_earlgrey.h"
 
 // The KMAC dif expects a secret key, even though if the configuration is set
 // to use the sideloaded key then it will be ignored. We will write a software
@@ -57,9 +56,8 @@ OTTF_DEFINE_TEST_CONFIG();
  */
 static void init_peripheral_handles(void) {
   CHECK_DIF_OK(
-      dif_kmac_init(mmio_region_from_addr(TOP_EARLGREY_KMAC_BASE_ADDR), &kmac));
-  CHECK_DIF_OK(dif_keymgr_init(
-      mmio_region_from_addr(TOP_EARLGREY_KEYMGR_BASE_ADDR), &keymgr));
+      dif_kmac_init_from_dt(kDtKmac, &kmac));
+  CHECK_DIF_OK(dif_keymgr_init_from_dt(kDtKeymgr, &keymgr));
 }
 
 /**

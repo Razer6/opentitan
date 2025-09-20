@@ -19,7 +19,6 @@
 #include "sw/device/lib/testing/test_framework/ottf_main.h"
 
 #include "hw/top/otbn_regs.h"  // Generated.
-#include "hw/top_earlgrey/sw/autogen/top_earlgrey.h"
 
 static dif_keymgr_t keymgr;
 static dif_kmac_t kmac;
@@ -42,11 +41,10 @@ OTTF_DEFINE_TEST_CONFIG();
  */
 static void init_peripheral_handles(void) {
   CHECK_DIF_OK(
-      dif_kmac_init(mmio_region_from_addr(TOP_EARLGREY_KMAC_BASE_ADDR), &kmac));
-  CHECK_DIF_OK(dif_keymgr_init(
-      mmio_region_from_addr(TOP_EARLGREY_KEYMGR_BASE_ADDR), &keymgr));
+      dif_kmac_init_from_dt(kDtKmac, &kmac));
+  CHECK_DIF_OK(dif_keymgr_init_from_dt(kDtKeymgr, &keymgr));
   CHECK_DIF_OK(
-      dif_otbn_init(mmio_region_from_addr(TOP_EARLGREY_OTBN_BASE_ADDR), &otbn));
+      dif_otbn_init_from_dt(kDtOtbn, &otbn));
 }
 
 /**

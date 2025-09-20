@@ -18,7 +18,6 @@
 #include "sw/device/lib/testing/test_framework/ottf_main.h"
 #include "sw/device/tests/otbn_randomness_impl.h"
 
-#include "hw/top_earlgrey/sw/autogen/top_earlgrey.h"
 #include "sw/device/lib/testing/autogen/isr_testutils.h"
 
 static dif_csrng_t csrng;
@@ -62,16 +61,14 @@ static volatile bool irq_flags[kTestIrqFlagCount];
  * Initializes the peripherals used in this test.
  */
 static void init_peripherals(void) {
-  CHECK_DIF_OK(dif_csrng_init(
-      mmio_region_from_addr(TOP_EARLGREY_CSRNG_BASE_ADDR), &csrng));
+  CHECK_DIF_OK(dif_csrng_init_from_dt(kDtCsrng, &csrng));
   CHECK_DIF_OK(
-      dif_edn_init(mmio_region_from_addr(TOP_EARLGREY_EDN0_BASE_ADDR), &edn0));
+      dif_edn_init_from_dt(kDtEdn0, &edn0));
   CHECK_DIF_OK(
-      dif_edn_init(mmio_region_from_addr(TOP_EARLGREY_EDN1_BASE_ADDR), &edn1));
+      dif_edn_init_from_dt(kDtEdn1, &edn1));
   CHECK_DIF_OK(
-      dif_otbn_init(mmio_region_from_addr(TOP_EARLGREY_OTBN_BASE_ADDR), &otbn));
-  CHECK_DIF_OK(dif_rv_plic_init(
-      mmio_region_from_addr(TOP_EARLGREY_RV_PLIC_BASE_ADDR), &plic));
+      dif_otbn_init_from_dt(kDtOtbn, &otbn));
+  CHECK_DIF_OK(dif_rv_plic_init_from_dt(kDtRvPlic, &plic));
 }
 
 /**

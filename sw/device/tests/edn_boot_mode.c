@@ -19,7 +19,6 @@
 #include "sw/device/tests/otbn_randomness_impl.h"
 
 #include "hw/top/edn_regs.h"  // Generated
-#include "hw/top_earlgrey/sw/autogen/top_earlgrey.h"
 
 enum {
   kEdnBootModeTimeout = (10 * 1000 * 1000),
@@ -48,18 +47,15 @@ OTTF_DEFINE_TEST_CONFIG();
 
 // Initializes the peripherals used in this test.
 static void init_peripherals(void) {
-  CHECK_DIF_OK(dif_entropy_src_init(
-      mmio_region_from_addr(TOP_EARLGREY_ENTROPY_SRC_BASE_ADDR), &entropy_src));
-  CHECK_DIF_OK(dif_csrng_init(
-      mmio_region_from_addr(TOP_EARLGREY_CSRNG_BASE_ADDR), &csrng));
+  CHECK_DIF_OK(dif_entropy_src_init_from_dt(kDtEntropySrc, &entropy_src));
+  CHECK_DIF_OK(dif_csrng_init_from_dt(kDtCsrng, &csrng));
   CHECK_DIF_OK(
-      dif_edn_init(mmio_region_from_addr(TOP_EARLGREY_EDN0_BASE_ADDR), &edn0));
+      dif_edn_init_from_dt(kDtEdn0, &edn0));
   CHECK_DIF_OK(
-      dif_edn_init(mmio_region_from_addr(TOP_EARLGREY_EDN1_BASE_ADDR), &edn1));
+      dif_edn_init_from_dt(kDtEdn1, &edn1));
   CHECK_DIF_OK(
-      dif_otbn_init(mmio_region_from_addr(TOP_EARLGREY_OTBN_BASE_ADDR), &otbn));
-  CHECK_DIF_OK(dif_rv_core_ibex_init(
-      mmio_region_from_addr(TOP_EARLGREY_RV_CORE_IBEX_CFG_BASE_ADDR),
+      dif_otbn_init_from_dt(kDtOtbn, &otbn));
+  CHECK_DIF_OK(dif_rv_core_ibex_init_from_dt(kDtRvCoreIbex,
       &rv_core_ibex));
 }
 

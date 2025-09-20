@@ -30,7 +30,6 @@
 #include "hw/top/alert_handler_regs.h"
 #include "hw/top/aon_timer_regs.h"
 #include "hw/top/pwm_regs.h"
-#include "hw/top_earlgrey/sw/autogen/top_earlgrey.h"
 
 typedef void (*isr_handler)(void);
 static volatile isr_handler expected_isr_handler;
@@ -139,7 +138,7 @@ bool test_main(void) {
   CHECK_DIF_OK(dif_otp_ctrl_init(
       mmio_region_from_addr(TOP_EARLGREY_OTP_CTRL_CORE_BASE_ADDR), &otp_ctrl));
   CHECK_DIF_OK(
-      dif_gpio_init(mmio_region_from_addr(TOP_EARLGREY_GPIO_BASE_ADDR), &gpio));
+      dif_gpio_init_from_dt(kDtGpio, &gpio));
   CHECK_DIF_OK(dif_adc_ctrl_init(
       mmio_region_from_addr(TOP_EARLGREY_ADC_CTRL_AON_BASE_ADDR), &adc_ctrl));
 

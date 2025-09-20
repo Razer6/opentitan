@@ -17,7 +17,6 @@
 #include "sw/device/lib/testing/test_framework/ottf_main.h"
 #include "sw/device/silicon_creator/lib/drivers/retention_sram.h"
 
-#include "hw/top_earlgrey/sw/autogen/top_earlgrey.h"
 
 // The KMAC dif expects a secret key, even though if the configuration is set
 // to use the sideloaded key then it will be ignored. We will write a software
@@ -44,7 +43,7 @@ enum {
   /**
    * Retention SRAM start address (inclusive).
    */
-  kRetSramBaseAddr = TOP_EARLGREY_SRAM_CTRL_RET_AON_RAM_BASE_ADDR,
+  kRetSramBaseAddr = dt_sram_ctrl_ret_aon_ram_base_addr(),
 
   kRetSramOwnerAddr = kRetSramBaseAddr + offsetof(retention_sram_t, owner),
   kRetRamLastAddr =
@@ -63,13 +62,10 @@ OTTF_DEFINE_TEST_CONFIG();
  */
 static void init_peripheral_handles(void) {
   CHECK_DIF_OK(
-      dif_kmac_init(mmio_region_from_addr(TOP_EARLGREY_KMAC_BASE_ADDR), &kmac));
-  CHECK_DIF_OK(dif_keymgr_init(
-      mmio_region_from_addr(TOP_EARLGREY_KEYMGR_BASE_ADDR), &keymgr));
-  CHECK_DIF_OK(dif_rstmgr_init(
-      mmio_region_from_addr(TOP_EARLGREY_RSTMGR_AON_BASE_ADDR), &rstmgr));
-  CHECK_DIF_OK(dif_sram_ctrl_init(
-      mmio_region_from_addr(TOP_EARLGREY_SRAM_CTRL_RET_AON_REGS_BASE_ADDR),
+      dif_kmac_init_from_dt(kDtKmac, &kmac));
+  CHECK_DIF_OK(dif_keymgr_init_from_dt(kDtKeymgr, &keymgr));
+  CHECK_DIF_OK(dif_rstmgr_init_from_dt(kDtRstmgr, &rstmgr));
+  CHECK_DIF_OK(dif_sram_ctrl_init_from_dt(kDtSramCtrlRetAon,
       &ret_sram));
 }
 

@@ -15,7 +15,6 @@
 #include "sw/device/lib/testing/test_framework/ottf_main.h"
 
 #include "hw/top/kmac_regs.h"  // Generated.
-#include "hw/top_earlgrey/sw/autogen/top_earlgrey.h"
 
 #define TIMEOUT (1000 * 1000)
 
@@ -43,9 +42,8 @@ OTTF_DEFINE_TEST_CONFIG();
  */
 static void init_peripheral_handles(void) {
   CHECK_DIF_OK(
-      dif_kmac_init(mmio_region_from_addr(TOP_EARLGREY_KMAC_BASE_ADDR), &kmac));
-  CHECK_DIF_OK(dif_keymgr_init(
-      mmio_region_from_addr(TOP_EARLGREY_KEYMGR_BASE_ADDR), &keymgr));
+      dif_kmac_init_from_dt(kDtKmac, &kmac));
+  CHECK_DIF_OK(dif_keymgr_init_from_dt(kDtKeymgr, &keymgr));
 }
 
 status_t aes_crypt(dif_aes_t aes, dif_aes_data_t in_data,
@@ -112,7 +110,7 @@ void aes_test(void) {
   // Initialize AES.
   dif_aes_t aes;
   CHECK_DIF_OK(
-      dif_aes_init(mmio_region_from_addr(TOP_EARLGREY_AES_BASE_ADDR), &aes));
+      dif_aes_init_from_dt(kDtAes, &aes));
   CHECK_DIF_OK(dif_aes_reset(&aes));
 
   dif_aes_data_t in_data_plain;

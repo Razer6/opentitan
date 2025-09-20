@@ -32,7 +32,6 @@
 #include "hw/top/spi_device_regs.h"
 #include "hw/top/spi_host_regs.h"
 #include "hw/top/usbdev_regs.h"
-#include "hw/top_earlgrey/sw/autogen/top_earlgrey.h"
 #include "sw/device/lib/testing/autogen/isr_testutils.h"
 
 OTTF_DEFINE_TEST_CONFIG();
@@ -54,40 +53,25 @@ static const uint32_t kPlicTarget = kTopEarlgreyPlicTargetIbex0;
  * Initialize the peripherals used in this test.
  */
 static void init_peripherals(void) {
-  mmio_region_t base_addr =
-      mmio_region_from_addr(TOP_EARLGREY_RV_PLIC_BASE_ADDR);
-  CHECK_DIF_OK(dif_rv_plic_init(base_addr, &plic));
+  CHECK_DIF_OK(dif_rv_plic_init_from_dt(kDtRvPlic, &plic));
+  CHECK_DIF_OK(dif_alert_handler_init_from_dt(kDtAlertHandler, &alert_handler));
 
-  base_addr = mmio_region_from_addr(TOP_EARLGREY_ALERT_HANDLER_BASE_ADDR);
-  CHECK_DIF_OK(dif_alert_handler_init(base_addr, &alert_handler));
-
-  CHECK_DIF_OK(dif_rstmgr_init(
-      mmio_region_from_addr(TOP_EARLGREY_RSTMGR_AON_BASE_ADDR), &rstmgr));
-
-  CHECK_DIF_OK(dif_usbdev_init(
-      mmio_region_from_addr(TOP_EARLGREY_USBDEV_BASE_ADDR), &usbdev));
-
-  CHECK_DIF_OK(dif_spi_device_init(
-      mmio_region_from_addr(TOP_EARLGREY_SPI_DEVICE_BASE_ADDR), &spi_dev.dev));
-
-  CHECK_DIF_OK(dif_spi_host_init(
-      mmio_region_from_addr(TOP_EARLGREY_SPI_HOST0_BASE_ADDR), &spi_host0));
-
-  CHECK_DIF_OK(dif_spi_host_init(
-      mmio_region_from_addr(TOP_EARLGREY_SPI_HOST1_BASE_ADDR), &spi_host1));
+  CHECK_DIF_OK(dif_rstmgr_init_from_dt(kDtRstmgr, &rstmgr));
+  CHECK_DIF_OK(dif_usbdev_init_from_dt(kDtUsbdev, &usbdev));
+  CHECK_DIF_OK(dif_spi_device_init_from_dt(kDtSpiDevice, &spi_dev.dev));
+  CHECK_DIF_OK(dif_spi_host_init_from_dt(kDtSpiHost0, &spi_host0));
+  CHECK_DIF_OK(dif_spi_host_init_from_dt(kDtSpiHost1, &spi_host1));
 
   CHECK_DIF_OK(
-      dif_i2c_init(mmio_region_from_addr(TOP_EARLGREY_I2C0_BASE_ADDR), &i2c0));
+      dif_i2c_init_from_dt(kDtI2c0, &i2c0));
 
   CHECK_DIF_OK(
-      dif_i2c_init(mmio_region_from_addr(TOP_EARLGREY_I2C1_BASE_ADDR), &i2c1));
+      dif_i2c_init_from_dt(kDtI2c1, &i2c1));
 
   CHECK_DIF_OK(
-      dif_i2c_init(mmio_region_from_addr(TOP_EARLGREY_I2C2_BASE_ADDR), &i2c2));
+      dif_i2c_init_from_dt(kDtI2c2, &i2c2));
 
-  mmio_region_t ibex_addr =
-      mmio_region_from_addr(TOP_EARLGREY_RV_CORE_IBEX_CFG_BASE_ADDR);
-  CHECK_DIF_OK(dif_rv_core_ibex_init(ibex_addr, &ibex));
+  CHECK_DIF_OK(dif_rv_core_ibex_init_from_dt(kDtRvCoreIbex, &ibex));
 
   // Enable all the alert_handler interrupts used in this test.
   rv_plic_testutils_irq_range_enable(&plic, kPlicTarget,

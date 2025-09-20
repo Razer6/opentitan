@@ -51,7 +51,6 @@
 #include "hw/top/pwm_regs.h"          // Generated.
 #include "hw/top/spi_host_regs.h"     // Generated.
 #include "hw/top/uart_regs.h"         // Generated.
-#include "hw/top_earlgrey/sw/autogen/top_earlgrey.h"
 
 OTTF_DEFINE_TEST_CONFIG(.enable_concurrency = true,
                         .enable_uart_flow_control = true);
@@ -352,16 +351,16 @@ static void init_peripheral_handles(void) {
   CHECK_DIF_OK(dif_adc_ctrl_init(
       mmio_region_from_addr(TOP_EARLGREY_ADC_CTRL_AON_BASE_ADDR), &adc_ctrl));
   CHECK_DIF_OK(
-      dif_aes_init(mmio_region_from_addr(TOP_EARLGREY_AES_BASE_ADDR), &aes));
+      dif_aes_init_from_dt(kDtAes, &aes));
   CHECK_DIF_OK(dif_alert_handler_init(
       mmio_region_from_addr(TOP_EARLGREY_ALERT_HANDLER_BASE_ADDR),
       &alert_handler));
   CHECK_DIF_OK(dif_csrng_init(
       mmio_region_from_addr(TOP_EARLGREY_CSRNG_BASE_ADDR), &csrng));
   CHECK_DIF_OK(
-      dif_edn_init(mmio_region_from_addr(TOP_EARLGREY_EDN0_BASE_ADDR), &edn_0));
+      dif_edn_init_from_dt(kDtEdn0, &edn_0));
   CHECK_DIF_OK(
-      dif_edn_init(mmio_region_from_addr(TOP_EARLGREY_EDN1_BASE_ADDR), &edn_1));
+      dif_edn_init_from_dt(kDtEdn1, &edn_1));
   CHECK_DIF_OK(dif_entropy_src_init(
       mmio_region_from_addr(TOP_EARLGREY_ENTROPY_SRC_BASE_ADDR), &entropy_src));
   CHECK_DIF_OK(
