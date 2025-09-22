@@ -7,21 +7,21 @@
 #include "sw/device/lib/arch/device.h"
 
 #if defined(ROT)
-#include "dt/dt_rv_core_ibex.h"
-#include "rv_core_ibex_regs.h"
+#include "hw/top/dt/dt_rv_core_ibex.h"
+#include "hw/top/rv_core_ibex_regs.h"
 #define DT_RV_CORE_IBEX_TYPE dt_rv_core_ibex_t
 #define KDT_RV_CORE_IBEX_COUNT kDtRvCoreIbexCount
 #define KDT_RV_CORE_IBEX_PRIMARY_REG_BLOCK dt_rv_core_ibex_primary_reg_block
 #elif defined(PWC)
-#include "dt/dt_rv_core_ibex_pwc.h"
-#include "rv_core_ibex_pwc_regs.h"
+#include "hw/top/dt/dt_rv_core_ibex_pwc.h"
+#include "hw/top/rv_core_ibex_pwc_regs.h"
 #define DT_RV_CORE_IBEX_TYPE dt_rv_core_ibex_pwc_t
 #define KDT_RV_CORE_IBEX_COUNT kDtRvCoreIbexPwcCount
 #define KDT_RV_CORE_IBEX_PRIMARY_REG_BLOCK dt_rv_core_ibex_pwc_primary_reg_block
 #define RV_CORE_IBEX_DV_SIM_WINDOW_REG_OFFSET RV_CORE_IBEX_PWC_DV_SIM_WINDOW_REG_OFFSET
 #elif defined(MIO)
-#include "dt/dt_rv_core_ibex_mio.h"
-#include "rv_core_ibex_mio_regs.h"
+#include "hw/top/dt/dt_rv_core_ibex_mio.h"
+#include "hw/top/rv_core_ibex_mio_regs.h"
 #define DT_RV_CORE_IBEX_TYPE dt_rv_core_ibex_mio_t
 #define KDT_RV_CORE_IBEX_COUNT kDtRvCoreIbexMioCount
 #define KDT_RV_CORE_IBEX_PRIMARY_REG_BLOCK dt_rv_core_ibex_mio_primary_reg_block
