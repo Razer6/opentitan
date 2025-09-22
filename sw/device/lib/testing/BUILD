@@ -637,6 +637,7 @@ TESTUTILS_EXCEPTIONS = [
 ]
 TESTUTILS_EXCEPTIONS_DARJEELING = [
     "dma", # Rivos: requires darjeeling
+    "isr", # Rivos: moved from general doxy_target because PWC/MIO have no rv_plic
 ]
 
 # We need to transition to the opentitan platform since
@@ -645,7 +646,7 @@ doxygen_gather_cc(
     name = "doxy_target",
     platform = OPENTITAN_PLATFORM,
     deps = [
-        "isr_testutils",
+        # "isr_testutils", # Rivos: commented out because PWC/MIO dont have rv_plic
     ] + flatten([
         # Add all compatible register headers
         opentitan_if_ip(
