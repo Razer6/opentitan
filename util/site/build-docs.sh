@@ -109,6 +109,7 @@ buildSite () {
     echo "Build Directory : ${build_dir}"
     mkdir -p "${build_dir}"
     mkdir -p "${build_dir}/gen/doxy"
+    touch "${build_dir}/FUSESOC_IGNORE"
 
     echo "Building doxygen..."
     # shellcheck disable=SC2086
