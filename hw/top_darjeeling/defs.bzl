@@ -19,5 +19,6 @@ DARJEELING = opentitan_top(
     ips = DARJEELING_IPS + LIO_IPS,
     secret_cfgs = {
         "testing": "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.testing.gen.hjson",
+        "tapeout": "//hw/top_darjeeling/data/autogen:top_darjeeling.secrets.tapeout.gen.hjson",
     },
 )

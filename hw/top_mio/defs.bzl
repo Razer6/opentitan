@@ -15,5 +15,6 @@ MIO = opentitan_top(
     ips = MIO_IPS + LIO_IPS,
     secret_cfgs = {
         "testing": "//hw/top_mio/data/autogen:top_mio.secrets.testing.gen.hjson",
+        "tapeout": "//hw/top_mio/data/autogen:top_mio.secrets.tapeout.gen.hjson",
     },
 )

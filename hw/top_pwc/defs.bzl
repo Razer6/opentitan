@@ -15,5 +15,6 @@ PWC = opentitan_top(
     ips = PWC_IPS + LIO_IPS,
     secret_cfgs = {
         "testing": "//hw/top_pwc/data/autogen:top_pwc.secrets.testing.gen.hjson",
+        "tapeout": "//hw/top_pwc/data/autogen:top_pwc.secrets.tapeout.gen.hjson",
     },
 )
