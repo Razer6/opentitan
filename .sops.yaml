@@ -1,5 +1,5 @@
 # sops file defining which secrets are encrypted for the tapeout
-keys: &kms_arn 'arn:aws:kms:us-east-2:332666482539:key/908f3d89-7bd8-4e5d-aee5-5efa938202b2'
+keys: &kms_arn 'arn:aws:kms:us-east-2:332666482539:key/8617ec30-d4fa-4cec-8172-c93e0175048d'
 creation_rules:
   - path_regex: hw/top_darjeeling/data/top_darjeeling_seed.tapeout.hjson
     kms: *kms_arn
