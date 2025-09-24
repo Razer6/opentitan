@@ -118,6 +118,9 @@ mapping:
   "lowrisc:dv:chip_env": "lowrisc:dv:top_darjeeling_chip_env"
   # TODO(#27347): prim_legacy_pkg is deprecated
   "lowrisc:prim:prim_pkg": "lowrisc:prim:prim_legacy_pkg"
+  # Default mapping for Block-level DV using testings seeds
+  "lowrisc:virtual_constants:rnd_cnst_pkg": "lowrisc:darjeeling_constants:testing_rnd_cnst_pkg"
+  "lowrisc:virtual_ip:lc_ctrl_state_pkg": "lowrisc:darjeeling_constants:testing_lc_ctrl_state_pkg"
 
 parameters:
   SYNTHESIS:
