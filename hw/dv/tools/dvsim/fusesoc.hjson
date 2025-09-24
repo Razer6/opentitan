@@ -13,6 +13,6 @@
   fusesoc_cores_root_dirs: ["--cores-root {proj_root}/hw"]
   sv_flist_gen_dir:   "{build_dir}/fusesoc-work"
   sv_flist:           "{sv_flist_gen_dir}/{fusesoc_core_}.scr"
-  sv_flist_gen_flags: ["--flag=include_tb_lib",       // Rivos: Include TB Dependencies
-                       "--flag=use_behav_memories"]   // Rivos: Use the right models
+  #sv_flist_gen_flags: ["--flag=include_tb_lib",       // Rivos: Include TB Dependencies
+  #                     "--flag=use_behav_memories"]   // Rivos: Use the right models
 }

@@ -13,7 +13,8 @@
                      "{dv_root}/tools/dvsim/bazel.hjson",
                      "{dv_root}/tools/dvsim/{tool}.hjson"]
 
-  sv_flist_gen_flags: ["--mapping=lowrisc:prim_generic:all:0.1"]
+  sv_flist_gen_flags: ["--mapping=lowrisc:prim_generic:all:0.1",
+                       "--mapping=lowrisc:systems:top_darjeeling:0.1"]  # FIXME: Rivos Provde default cnst mappings from DJ
 
   // Default directory structure for the output
   build_dir:          "{scratch_path}/{build_mode}"
