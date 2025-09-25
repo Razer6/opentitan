@@ -1092,6 +1092,19 @@
             {
               name: ROT_OWNER_AUTH_SLOT0_NON_RAW_MFW_CODESIGN_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1104,6 +1117,12 @@
             {
               name: ROT_OWNER_AUTH_SLOT0_NON_RAW_MFW_CODESIGN_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleBootstrapFirmwareSigning` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1138,6 +1157,19 @@
             {
               name: ROT_OWNER_AUTH_SLOT0_ROM2_PATCH_SIGVERIFY_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1150,6 +1182,12 @@
             {
               name: ROT_OWNER_AUTH_SLOT0_ROM2_PATCH_SIGVERIFY_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleRomPatchSigning` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1184,6 +1222,19 @@
             {
               name: ROT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1196,6 +1247,12 @@
             {
               name: ROT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleKeyBundleSigning` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1227,12 +1284,15 @@
               offset: 2272
             }
             {
-              name: ROT_OWNER_AUTH_SLOT0_KEY_DEVICE_ID
-              size: 32
+              name: ROT_OWNER_AUTH_SLOT0_KEY_BINDING
+              size: 64
               desc:
                 '''
-                A key identifier used to make the ROT_OWNER_AUTH_SLOT0 item device specific.
-                This must be a device specific value known at FT, like for example the SoC manufacturing ID.
+                A key binding value used to bind the ROT_OWNER_AUTH_SLOT0 keys to a SKU.
+                This item must store a SKU specific payload known at FT, like for example a fused
+                product identitfier or a ROM constant. The base ROM must verify the authenticity of
+                the ROT_OWNER_AUTH_SLOT0 first and then match the KEY_BINDING via an inline ROM check
+                before it uses the keys provisioned in this partition.
                 '''
               isdigest: false
               iszer: false
@@ -1244,25 +1304,12 @@
               offset: 2336
             }
             {
-              name: ROT_OWNER_AUTH_SLOT0_KEY_METADATA
-              size: 16
-              isdigest: false
-              iszer: false
-              ismubi: false
-              iskeymgr_creator: false
-              iskeymgr_owner: false
-              absorb: false
-              inv_default: 0
-              offset: 2368
-            }
-            {
               name: ROT_OWNER_AUTH_SLOT0_KEY_SIGNATURE
               size: 64
               desc:
                 '''
                 ECDSA P-256 signature of the NON_RAW_MFW_CODESIGN_KEY,
-                ROM2_PATCH_SIGVERIFY_KEY, KEYMANIFEST_KEY, KEY_DEVICE_ID and KEY_METADATA fields in
-                this partition.
+                ROM2_PATCH_SIGVERIFY_KEY, KEYMANIFEST_KEY, KEY_BINDING items in this partition.
                 As those three keys are expected to be provisioned at Final Test (FT) stage when
                 LC = TEST_UNLOCKED, this signatures aims at protecting them from supply-chain and
                 manufacturing attacks.
@@ -1276,12 +1323,12 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2384
+              offset: 2400
             }
             {
               name: ROT_OWNER_AUTH_SLOT0_DIGEST
               size: 8
-              offset: 2448
+              offset: 2464
               ismubi: false
               isdigest: true
               iszer: false
@@ -1292,7 +1339,7 @@
             {
               name: ROT_OWNER_AUTH_SLOT0_ZER
               size: 8
-              offset: 2456
+              offset: 2472
               ismubi: false
               isdigest: false
               iszer: true
@@ -1304,7 +1351,7 @@
           desc: Software managed partition for the first RoT Owner (a.k.a. RoT Creator) key manifest.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          size: 344
+          size: 360
           offset: 2120
         }
         {
@@ -1325,6 +1372,19 @@
             {
               name: ROT_OWNER_AUTH_SLOT1_NON_RAW_MFW_CODESIGN_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1332,11 +1392,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2464
+              offset: 2480
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_NON_RAW_MFW_CODESIGN_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleBootstrapFirmwareSigning` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1344,7 +1410,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2468
+              offset: 2484
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_NON_RAW_MFW_CODESIGN_KEY
@@ -1366,11 +1432,24 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2472
+              offset: 2488
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_ROM2_PATCH_SIGVERIFY_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1378,11 +1457,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2536
+              offset: 2552
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_ROM2_PATCH_SIGVERIFY_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleRomPatchSigning` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1390,7 +1475,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2540
+              offset: 2556
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_ROM2_PATCH_SIGVERIFY_KEY
@@ -1412,11 +1497,24 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2544
+              offset: 2560
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1424,11 +1522,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2608
+              offset: 2624
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleKeyBundleSigning` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1436,7 +1540,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2612
+              offset: 2628
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY
@@ -1457,11 +1561,24 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2616
+              offset: 2632
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1469,11 +1586,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2680
+              offset: 2696
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleRelinquishOwnership` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1481,7 +1604,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2684
+              offset: 2700
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY
@@ -1502,12 +1625,12 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2688
+              offset: 2704
             }
             {
               name: ROT_OWNER_AUTH_SLOT1_DIGEST
               size: 8
-              offset: 2752
+              offset: 2768
               ismubi: false
               isdigest: true
               iszer: false
@@ -1518,7 +1641,7 @@
             {
               name: ROT_OWNER_AUTH_SLOT1_ZER
               size: 8
-              offset: 2760
+              offset: 2776
               ismubi: false
               isdigest: false
               iszer: true
@@ -1531,7 +1654,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 304
-          offset: 2464
+          offset: 2480
         }
         {
           name: PLAT_INTEG_AUTH_SLOT0
@@ -1551,6 +1674,19 @@
             {
               name: PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1558,11 +1694,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2768
+              offset: 2784
             }
             {
               name: PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleKeyBundleSigning` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1570,7 +1712,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2772
+              offset: 2788
             }
             {
               name: PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY
@@ -1591,11 +1733,24 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2776
+              offset: 2792
             }
             {
               name: PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1603,11 +1758,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2840
+              offset: 2856
             }
             {
               name: PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleRelinquishOwnership` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1615,7 +1776,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2844
+              offset: 2860
             }
             {
               name: PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY
@@ -1636,12 +1797,12 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2848
+              offset: 2864
             }
             {
               name: PLAT_INTEG_AUTH_SLOT0_DIGEST
               size: 8
-              offset: 2912
+              offset: 2928
               ismubi: false
               isdigest: true
               iszer: false
@@ -1652,7 +1813,7 @@
             {
               name: PLAT_INTEG_AUTH_SLOT0_ZER
               size: 8
-              offset: 2920
+              offset: 2936
               ismubi: false
               isdigest: false
               iszer: true
@@ -1665,7 +1826,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 160
-          offset: 2768
+          offset: 2784
         }
         {
           name: PLAT_INTEG_AUTH_SLOT1
@@ -1685,6 +1846,19 @@
             {
               name: PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1692,11 +1866,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2928
+              offset: 2944
             }
             {
               name: PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleKeyBundleSigning` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1704,7 +1884,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2932
+              offset: 2948
             }
             {
               name: PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY
@@ -1724,11 +1904,24 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 2936
+              offset: 2952
             }
             {
               name: PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1736,11 +1929,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3000
+              offset: 3016
             }
             {
               name: PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleRelinquishOwnership` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1748,7 +1947,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3004
+              offset: 3020
             }
             {
               name: PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY
@@ -1768,12 +1967,12 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3008
+              offset: 3024
             }
             {
               name: PLAT_INTEG_AUTH_SLOT1_DIGEST
               size: 8
-              offset: 3072
+              offset: 3088
               ismubi: false
               isdigest: true
               iszer: false
@@ -1784,7 +1983,7 @@
             {
               name: PLAT_INTEG_AUTH_SLOT1_ZER
               size: 8
-              offset: 3080
+              offset: 3096
               ismubi: false
               isdigest: false
               iszer: true
@@ -1797,7 +1996,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 160
-          offset: 2928
+          offset: 2944
         }
         {
           name: PLAT_OWNER_AUTH_SLOT0
@@ -1817,6 +2016,19 @@
             {
               name: PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1824,11 +2036,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3088
+              offset: 3104
             }
             {
               name: PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleKeyBundleSigning` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1836,7 +2054,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3092
+              offset: 3108
             }
             {
               name: PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY
@@ -1857,11 +2075,24 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3096
+              offset: 3112
             }
             {
               name: PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1869,11 +2100,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3160
+              offset: 3176
             }
             {
               name: PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleRelinquishOwnership` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1881,7 +2118,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3164
+              offset: 3180
             }
             {
               name: PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY
@@ -1902,12 +2139,12 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3168
+              offset: 3184
             }
             {
               name: PLAT_OWNER_AUTH_SLOT0_DIGEST
               size: 8
-              offset: 3232
+              offset: 3248
               ismubi: false
               isdigest: true
               iszer: false
@@ -1918,7 +2155,7 @@
             {
               name: PLAT_OWNER_AUTH_SLOT0_ZER
               size: 8
-              offset: 3240
+              offset: 3256
               ismubi: false
               isdigest: false
               iszer: true
@@ -1931,7 +2168,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 160
-          offset: 3088
+          offset: 3104
         }
         {
           name: PLAT_OWNER_AUTH_SLOT1
@@ -1951,6 +2188,19 @@
             {
               name: PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1958,11 +2208,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3248
+              offset: 3264
             }
             {
               name: PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleKeyBundleSigning` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -1970,7 +2226,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3252
+              offset: 3268
             }
             {
               name: PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY
@@ -1990,11 +2246,24 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3256
+              offset: 3272
             }
             {
               name: PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -2002,11 +2271,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3320
+              offset: 3336
             }
             {
               name: PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleRelinquishOwnership` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -2014,7 +2289,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3324
+              offset: 3340
             }
             {
               name: PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY
@@ -2034,12 +2309,12 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3328
+              offset: 3344
             }
             {
               name: PLAT_OWNER_AUTH_SLOT1_DIGEST
               size: 8
-              offset: 3392
+              offset: 3408
               ismubi: false
               isdigest: true
               iszer: false
@@ -2050,7 +2325,7 @@
             {
               name: PLAT_OWNER_AUTH_SLOT1_ZER
               size: 8
-              offset: 3400
+              offset: 3416
               ismubi: false
               isdigest: false
               iszer: true
@@ -2063,7 +2338,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 160
-          offset: 3248
+          offset: 3264
         }
         {
           name: PLAT_OWNER_AUTH_SLOT2
@@ -2083,6 +2358,19 @@
             {
               name: PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -2090,11 +2378,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3408
+              offset: 3424
             }
             {
               name: PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleKeyBundleSigning` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -2102,7 +2396,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3412
+              offset: 3428
             }
             {
               name: PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY
@@ -2122,11 +2416,24 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3416
+              offset: 3432
             }
             {
               name: PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -2134,11 +2441,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3480
+              offset: 3496
             }
             {
               name: PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleRelinquishOwnership` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -2146,7 +2459,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3484
+              offset: 3500
             }
             {
               name: PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY
@@ -2166,12 +2479,12 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3488
+              offset: 3504
             }
             {
               name: PLAT_OWNER_AUTH_SLOT2_DIGEST
               size: 8
-              offset: 3552
+              offset: 3568
               ismubi: false
               isdigest: true
               iszer: false
@@ -2182,7 +2495,7 @@
             {
               name: PLAT_OWNER_AUTH_SLOT2_ZER
               size: 8
-              offset: 3560
+              offset: 3576
               ismubi: false
               isdigest: false
               iszer: true
@@ -2195,7 +2508,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 160
-          offset: 3408
+          offset: 3424
         }
         {
           name: PLAT_OWNER_AUTH_SLOT3
@@ -2215,6 +2528,19 @@
             {
               name: PLAT_OWNER_AUTH_SLOT3_KEYMANIFEST_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -2222,11 +2548,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3568
+              offset: 3584
             }
             {
               name: PLAT_OWNER_AUTH_SLOT3_KEYMANIFEST_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleKeyBundleSigning` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -2234,7 +2566,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3572
+              offset: 3588
             }
             {
               name: PLAT_OWNER_AUTH_SLOT3_KEYMANIFEST_KEY
@@ -2254,11 +2586,24 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3576
+              offset: 3592
             }
             {
               name: PLAT_OWNER_AUTH_SLOT3_UNLOCK4XFER_KEY_TYPE
               size: 4
+              desc:
+                '''
+                Key usage type. One of the following 32-bit values defined
+                by the sigverify API:
+                - kSigverifyKeyTypeTest for manufacturing, testing and RMA keys.
+                Keys of this type can be used only in TEST_UNLOCKED* and RMA life
+                cycle states.
+                - kSigverifyKeyTypeProd for production keys.
+                Keys of this type can be used in all operational life cycle states, i.e.
+                states in which CPU execution is enabled.
+                - kSigverifyKeyTypeDev for development keys.
+                Keys of this type can be used only in the DEV life cycle state.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -2266,11 +2611,17 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3640
+              offset: 3656
             }
             {
               name: PLAT_OWNER_AUTH_SLOT3_UNLOCK4XFER_KEY_ROLE
               size: 4
+              desc:
+                '''
+                Key role that describes the kind of assets a key could sign.
+                This must be set to the `kSigverifyKeyRoleRelinquishOwnership` 32-bit
+                value as defined by the sigverify API.
+                '''
               isdigest: false
               iszer: false
               ismubi: false
@@ -2278,7 +2629,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3644
+              offset: 3660
             }
             {
               name: PLAT_OWNER_AUTH_SLOT3_UNLOCK4XFER_KEY
@@ -2298,12 +2649,12 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3648
+              offset: 3664
             }
             {
               name: PLAT_OWNER_AUTH_SLOT3_DIGEST
               size: 8
-              offset: 3712
+              offset: 3728
               ismubi: false
               isdigest: true
               iszer: false
@@ -2314,7 +2665,7 @@
             {
               name: PLAT_OWNER_AUTH_SLOT3_ZER
               size: 8
-              offset: 3720
+              offset: 3736
               ismubi: false
               isdigest: false
               iszer: true
@@ -2327,7 +2678,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 160
-          offset: 3568
+          offset: 3584
         }
         {
           name: EXT_NVM
@@ -2362,12 +2713,12 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 3728
+              offset: 3744
             }
             {
               name: EXT_NVM_ZER
               size: 8
-              offset: 4752
+              offset: 4768
               ismubi: false
               isdigest: false
               iszer: true
@@ -2380,7 +2731,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 1032
-          offset: 3728
+          offset: 3744
         }
         {
           name: ROM_PATCH
@@ -2414,12 +2765,12 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 4760
+              offset: 4776
             }
             {
               name: ROM_PATCH_DIGEST
               size: 8
-              offset: 12952
+              offset: 12968
               ismubi: false
               isdigest: true
               iszer: false
@@ -2430,7 +2781,7 @@
             {
               name: ROM_PATCH_ZER
               size: 8
-              offset: 12960
+              offset: 12976
               ismubi: false
               isdigest: false
               iszer: true
@@ -2443,7 +2794,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           size: 8208
-          offset: 4760
+          offset: 4776
         }
         {
           name: SOC_FUSES_CP
@@ -2469,7 +2820,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 12968
+              offset: 12984
             }
             {
               name: SOC_FUSES_CP2_DATA
@@ -2481,12 +2832,12 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 13224
+              offset: 13240
             }
             {
               name: SOC_FUSES_CP_DIGEST
               size: 8
-              offset: 13352
+              offset: 13368
               ismubi: false
               isdigest: true
               iszer: false
@@ -2500,7 +2851,7 @@
           iskeymgr_owner: false
           zeroizable: false
           size: 392
-          offset: 12968
+          offset: 12984
         }
         {
           name: SOC_FUSES_FT
@@ -2526,7 +2877,7 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 13360
+              offset: 13376
             }
             {
               name: SOC_FUSES_FT2_DATA
@@ -2538,12 +2889,12 @@
               iskeymgr_owner: false
               absorb: false
               inv_default: 0
-              offset: 13744
+              offset: 13760
             }
             {
               name: SOC_FUSES_FT_DIGEST
               size: 8
-              offset: 17584
+              offset: 17600
               ismubi: false
               isdigest: true
               iszer: false
@@ -2557,7 +2908,7 @@
           iskeymgr_owner: false
           zeroizable: false
           size: 4232
-          offset: 13360
+          offset: 13376
         }
         {
           name: SCRATCH_FUSES
@@ -2583,14 +2934,14 @@
                 Unstructured, single item partition for any RoT firmware (runtime,
                 bootstrap, manufacturing) to use and organize freely.
                 '''
-              size: 2304
+              size: 2288
               isdigest: false
               iszer: false
               ismubi: false
               iskeymgr_creator: false
               iskeymgr_owner: false
               inv_default: 0
-              offset: 17592
+              offset: 17608
             }
             {
               name: SCRATCH_FUSES_ZER
@@ -2607,8 +2958,8 @@
           desc: Unstructured scratch data partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
-          size: 2312
-          offset: 17592
+          size: 2296
+          offset: 17608
         }
         {
           name: CREATOR_MANUF_CFG

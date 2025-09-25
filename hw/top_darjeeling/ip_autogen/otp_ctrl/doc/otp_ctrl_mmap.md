@@ -57,7 +57,7 @@ It has been generated with ./util/topgen.py -t hw/top_darjeeling/data/top_darjee
 |         |                       |            |              |      32bit       |                   ROT_CREATOR_IDENTITY_CERT_CMAC                    |     0x828      |     16     |
 |         |                       |            |              |      64bit       |  [ROT_CREATOR_IDENTITY_DIGEST](#Reg_rot_creator_identity_digest_0)  |     0x838      |     8      |
 |         |                       |            |              |      64bit       |                      ROT_CREATOR_IDENTITY_ZER                       |     0x840      |     8      |
-|    5    | ROT_OWNER_AUTH_SLOT0  |    344     |     yes      |      32bit       |         ROT_OWNER_AUTH_SLOT0_NON_RAW_MFW_CODESIGN_KEY_TYPE          |     0x848      |     4      |
+|    5    | ROT_OWNER_AUTH_SLOT0  |    360     |     yes      |      32bit       |         ROT_OWNER_AUTH_SLOT0_NON_RAW_MFW_CODESIGN_KEY_TYPE          |     0x848      |     4      |
 |         |                       |            |              |      32bit       |         ROT_OWNER_AUTH_SLOT0_NON_RAW_MFW_CODESIGN_KEY_ROLE          |     0x84C      |     4      |
 |         |                       |            |              |      32bit       |            ROT_OWNER_AUTH_SLOT0_NON_RAW_MFW_CODESIGN_KEY            |     0x850      |     64     |
 |         |                       |            |              |      32bit       |         ROT_OWNER_AUTH_SLOT0_ROM2_PATCH_SIGVERIFY_KEY_TYPE          |     0x890      |     4      |
@@ -66,85 +66,84 @@ It has been generated with ./util/topgen.py -t hw/top_darjeeling/data/top_darjee
 |         |                       |            |              |      32bit       |              ROT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE              |     0x8D8      |     4      |
 |         |                       |            |              |      32bit       |              ROT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE              |     0x8DC      |     4      |
 |         |                       |            |              |      32bit       |                ROT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY                 |     0x8E0      |     64     |
-|         |                       |            |              |      32bit       |                 ROT_OWNER_AUTH_SLOT0_KEY_DEVICE_ID                  |     0x920      |     32     |
-|         |                       |            |              |      32bit       |                  ROT_OWNER_AUTH_SLOT0_KEY_METADATA                  |     0x940      |     16     |
-|         |                       |            |              |      32bit       |                 ROT_OWNER_AUTH_SLOT0_KEY_SIGNATURE                  |     0x950      |     64     |
-|         |                       |            |              |      64bit       |  [ROT_OWNER_AUTH_SLOT0_DIGEST](#Reg_rot_owner_auth_slot0_digest_0)  |     0x990      |     8      |
-|         |                       |            |              |      64bit       |                      ROT_OWNER_AUTH_SLOT0_ZER                       |     0x998      |     8      |
-|    6    | ROT_OWNER_AUTH_SLOT1  |    304     |     yes      |      32bit       |         ROT_OWNER_AUTH_SLOT1_NON_RAW_MFW_CODESIGN_KEY_TYPE          |     0x9A0      |     4      |
-|         |                       |            |              |      32bit       |         ROT_OWNER_AUTH_SLOT1_NON_RAW_MFW_CODESIGN_KEY_ROLE          |     0x9A4      |     4      |
-|         |                       |            |              |      32bit       |            ROT_OWNER_AUTH_SLOT1_NON_RAW_MFW_CODESIGN_KEY            |     0x9A8      |     64     |
-|         |                       |            |              |      32bit       |         ROT_OWNER_AUTH_SLOT1_ROM2_PATCH_SIGVERIFY_KEY_TYPE          |     0x9E8      |     4      |
-|         |                       |            |              |      32bit       |         ROT_OWNER_AUTH_SLOT1_ROM2_PATCH_SIGVERIFY_KEY_ROLE          |     0x9EC      |     4      |
-|         |                       |            |              |      32bit       |            ROT_OWNER_AUTH_SLOT1_ROM2_PATCH_SIGVERIFY_KEY            |     0x9F0      |     64     |
-|         |                       |            |              |      32bit       |              ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE              |     0xA30      |     4      |
-|         |                       |            |              |      32bit       |              ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE              |     0xA34      |     4      |
-|         |                       |            |              |      32bit       |                ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY                 |     0xA38      |     64     |
-|         |                       |            |              |      32bit       |              ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE              |     0xA78      |     4      |
-|         |                       |            |              |      32bit       |              ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE              |     0xA7C      |     4      |
-|         |                       |            |              |      32bit       |                ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY                 |     0xA80      |     64     |
-|         |                       |            |              |      64bit       |  [ROT_OWNER_AUTH_SLOT1_DIGEST](#Reg_rot_owner_auth_slot1_digest_0)  |     0xAC0      |     8      |
-|         |                       |            |              |      64bit       |                      ROT_OWNER_AUTH_SLOT1_ZER                       |     0xAC8      |     8      |
-|    7    | PLAT_INTEG_AUTH_SLOT0 |    160     |     yes      |      32bit       |             PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE              |     0xAD0      |     4      |
-|         |                       |            |              |      32bit       |             PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE              |     0xAD4      |     4      |
-|         |                       |            |              |      32bit       |                PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY                |     0xAD8      |     64     |
-|         |                       |            |              |      32bit       |             PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE              |     0xB18      |     4      |
-|         |                       |            |              |      32bit       |             PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE              |     0xB1C      |     4      |
-|         |                       |            |              |      32bit       |                PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY                |     0xB20      |     64     |
-|         |                       |            |              |      64bit       | [PLAT_INTEG_AUTH_SLOT0_DIGEST](#Reg_plat_integ_auth_slot0_digest_0) |     0xB60      |     8      |
-|         |                       |            |              |      64bit       |                      PLAT_INTEG_AUTH_SLOT0_ZER                      |     0xB68      |     8      |
-|    8    | PLAT_INTEG_AUTH_SLOT1 |    160     |     yes      |      32bit       |             PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE              |     0xB70      |     4      |
-|         |                       |            |              |      32bit       |             PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE              |     0xB74      |     4      |
-|         |                       |            |              |      32bit       |                PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY                |     0xB78      |     64     |
-|         |                       |            |              |      32bit       |             PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE              |     0xBB8      |     4      |
-|         |                       |            |              |      32bit       |             PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE              |     0xBBC      |     4      |
-|         |                       |            |              |      32bit       |                PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY                |     0xBC0      |     64     |
-|         |                       |            |              |      64bit       | [PLAT_INTEG_AUTH_SLOT1_DIGEST](#Reg_plat_integ_auth_slot1_digest_0) |     0xC00      |     8      |
-|         |                       |            |              |      64bit       |                      PLAT_INTEG_AUTH_SLOT1_ZER                      |     0xC08      |     8      |
-|    9    | PLAT_OWNER_AUTH_SLOT0 |    160     |     yes      |      32bit       |             PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE              |     0xC10      |     4      |
-|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE              |     0xC14      |     4      |
-|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY                |     0xC18      |     64     |
-|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE              |     0xC58      |     4      |
-|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE              |     0xC5C      |     4      |
-|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY                |     0xC60      |     64     |
-|         |                       |            |              |      64bit       | [PLAT_OWNER_AUTH_SLOT0_DIGEST](#Reg_plat_owner_auth_slot0_digest_0) |     0xCA0      |     8      |
-|         |                       |            |              |      64bit       |                      PLAT_OWNER_AUTH_SLOT0_ZER                      |     0xCA8      |     8      |
-|   10    | PLAT_OWNER_AUTH_SLOT1 |    160     |     yes      |      32bit       |             PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE              |     0xCB0      |     4      |
-|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE              |     0xCB4      |     4      |
-|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY                |     0xCB8      |     64     |
-|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE              |     0xCF8      |     4      |
-|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE              |     0xCFC      |     4      |
-|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY                |     0xD00      |     64     |
-|         |                       |            |              |      64bit       | [PLAT_OWNER_AUTH_SLOT1_DIGEST](#Reg_plat_owner_auth_slot1_digest_0) |     0xD40      |     8      |
-|         |                       |            |              |      64bit       |                      PLAT_OWNER_AUTH_SLOT1_ZER                      |     0xD48      |     8      |
-|   11    | PLAT_OWNER_AUTH_SLOT2 |    160     |     yes      |      32bit       |             PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY_TYPE              |     0xD50      |     4      |
-|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY_ROLE              |     0xD54      |     4      |
-|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY                |     0xD58      |     64     |
-|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY_TYPE              |     0xD98      |     4      |
-|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY_ROLE              |     0xD9C      |     4      |
-|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY                |     0xDA0      |     64     |
-|         |                       |            |              |      64bit       | [PLAT_OWNER_AUTH_SLOT2_DIGEST](#Reg_plat_owner_auth_slot2_digest_0) |     0xDE0      |     8      |
-|         |                       |            |              |      64bit       |                      PLAT_OWNER_AUTH_SLOT2_ZER                      |     0xDE8      |     8      |
-|   12    | PLAT_OWNER_AUTH_SLOT3 |    160     |     yes      |      32bit       |             PLAT_OWNER_AUTH_SLOT3_KEYMANIFEST_KEY_TYPE              |     0xDF0      |     4      |
-|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT3_KEYMANIFEST_KEY_ROLE              |     0xDF4      |     4      |
-|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT3_KEYMANIFEST_KEY                |     0xDF8      |     64     |
-|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT3_UNLOCK4XFER_KEY_TYPE              |     0xE38      |     4      |
-|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT3_UNLOCK4XFER_KEY_ROLE              |     0xE3C      |     4      |
-|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT3_UNLOCK4XFER_KEY                |     0xE40      |     64     |
-|         |                       |            |              |      64bit       | [PLAT_OWNER_AUTH_SLOT3_DIGEST](#Reg_plat_owner_auth_slot3_digest_0) |     0xE80      |     8      |
-|         |                       |            |              |      64bit       |                      PLAT_OWNER_AUTH_SLOT3_ZER                      |     0xE88      |     8      |
-|   13    |        EXT_NVM        |    1032    |     yes      |      32bit       |                  EXT_NVM_ANTIREPLAY_FRESHNESS_CNT                   |     0xE90      |    1024    |
-|         |                       |            |              |      64bit       |                             EXT_NVM_ZER                             |     0x1290     |     8      |
-|   14    |       ROM_PATCH       |    8208    |     yes      |      32bit       |                           ROM_PATCH_DATA                            |     0x1298     |    8192    |
-|         |                       |            |              |      64bit       |             [ROM_PATCH_DIGEST](#Reg_rom_patch_digest_0)             |     0x3298     |     8      |
-|         |                       |            |              |      64bit       |                            ROM_PATCH_ZER                            |     0x32A0     |     8      |
-|   15    |     SOC_FUSES_CP      |    392     |      no      |      32bit       |                         SOC_FUSES_CP1_DATA                          |     0x32A8     |    256     |
-|         |                       |            |              |      32bit       |                         SOC_FUSES_CP2_DATA                          |     0x33A8     |    128     |
-|         |                       |            |              |      64bit       |          [SOC_FUSES_CP_DIGEST](#Reg_soc_fuses_cp_digest_0)          |     0x3428     |     8      |
-|   16    |     SOC_FUSES_FT      |    4232    |      no      |      32bit       |                         SOC_FUSES_FT1_DATA                          |     0x3430     |    384     |
-|         |                       |            |              |      32bit       |                         SOC_FUSES_FT2_DATA                          |     0x35B0     |    3840    |
-|         |                       |            |              |      64bit       |          [SOC_FUSES_FT_DIGEST](#Reg_soc_fuses_ft_digest_0)          |     0x44B0     |     8      |
-|   17    |     SCRATCH_FUSES     |    2312    |     yes      |      32bit       |                         SCRATCH_FUSES_DATA                          |     0x44B8     |    2304    |
+|         |                       |            |              |      32bit       |                  ROT_OWNER_AUTH_SLOT0_KEY_BINDING                   |     0x920      |     64     |
+|         |                       |            |              |      32bit       |                 ROT_OWNER_AUTH_SLOT0_KEY_SIGNATURE                  |     0x960      |     64     |
+|         |                       |            |              |      64bit       |  [ROT_OWNER_AUTH_SLOT0_DIGEST](#Reg_rot_owner_auth_slot0_digest_0)  |     0x9A0      |     8      |
+|         |                       |            |              |      64bit       |                      ROT_OWNER_AUTH_SLOT0_ZER                       |     0x9A8      |     8      |
+|    6    | ROT_OWNER_AUTH_SLOT1  |    304     |     yes      |      32bit       |         ROT_OWNER_AUTH_SLOT1_NON_RAW_MFW_CODESIGN_KEY_TYPE          |     0x9B0      |     4      |
+|         |                       |            |              |      32bit       |         ROT_OWNER_AUTH_SLOT1_NON_RAW_MFW_CODESIGN_KEY_ROLE          |     0x9B4      |     4      |
+|         |                       |            |              |      32bit       |            ROT_OWNER_AUTH_SLOT1_NON_RAW_MFW_CODESIGN_KEY            |     0x9B8      |     64     |
+|         |                       |            |              |      32bit       |         ROT_OWNER_AUTH_SLOT1_ROM2_PATCH_SIGVERIFY_KEY_TYPE          |     0x9F8      |     4      |
+|         |                       |            |              |      32bit       |         ROT_OWNER_AUTH_SLOT1_ROM2_PATCH_SIGVERIFY_KEY_ROLE          |     0x9FC      |     4      |
+|         |                       |            |              |      32bit       |            ROT_OWNER_AUTH_SLOT1_ROM2_PATCH_SIGVERIFY_KEY            |     0xA00      |     64     |
+|         |                       |            |              |      32bit       |              ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE              |     0xA40      |     4      |
+|         |                       |            |              |      32bit       |              ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE              |     0xA44      |     4      |
+|         |                       |            |              |      32bit       |                ROT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY                 |     0xA48      |     64     |
+|         |                       |            |              |      32bit       |              ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE              |     0xA88      |     4      |
+|         |                       |            |              |      32bit       |              ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE              |     0xA8C      |     4      |
+|         |                       |            |              |      32bit       |                ROT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY                 |     0xA90      |     64     |
+|         |                       |            |              |      64bit       |  [ROT_OWNER_AUTH_SLOT1_DIGEST](#Reg_rot_owner_auth_slot1_digest_0)  |     0xAD0      |     8      |
+|         |                       |            |              |      64bit       |                      ROT_OWNER_AUTH_SLOT1_ZER                       |     0xAD8      |     8      |
+|    7    | PLAT_INTEG_AUTH_SLOT0 |    160     |     yes      |      32bit       |             PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE              |     0xAE0      |     4      |
+|         |                       |            |              |      32bit       |             PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE              |     0xAE4      |     4      |
+|         |                       |            |              |      32bit       |                PLAT_INTEG_AUTH_SLOT0_KEYMANIFEST_KEY                |     0xAE8      |     64     |
+|         |                       |            |              |      32bit       |             PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE              |     0xB28      |     4      |
+|         |                       |            |              |      32bit       |             PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE              |     0xB2C      |     4      |
+|         |                       |            |              |      32bit       |                PLAT_INTEG_AUTH_SLOT0_UNLOCK4XFER_KEY                |     0xB30      |     64     |
+|         |                       |            |              |      64bit       | [PLAT_INTEG_AUTH_SLOT0_DIGEST](#Reg_plat_integ_auth_slot0_digest_0) |     0xB70      |     8      |
+|         |                       |            |              |      64bit       |                      PLAT_INTEG_AUTH_SLOT0_ZER                      |     0xB78      |     8      |
+|    8    | PLAT_INTEG_AUTH_SLOT1 |    160     |     yes      |      32bit       |             PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE              |     0xB80      |     4      |
+|         |                       |            |              |      32bit       |             PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE              |     0xB84      |     4      |
+|         |                       |            |              |      32bit       |                PLAT_INTEG_AUTH_SLOT1_KEYMANIFEST_KEY                |     0xB88      |     64     |
+|         |                       |            |              |      32bit       |             PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE              |     0xBC8      |     4      |
+|         |                       |            |              |      32bit       |             PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE              |     0xBCC      |     4      |
+|         |                       |            |              |      32bit       |                PLAT_INTEG_AUTH_SLOT1_UNLOCK4XFER_KEY                |     0xBD0      |     64     |
+|         |                       |            |              |      64bit       | [PLAT_INTEG_AUTH_SLOT1_DIGEST](#Reg_plat_integ_auth_slot1_digest_0) |     0xC10      |     8      |
+|         |                       |            |              |      64bit       |                      PLAT_INTEG_AUTH_SLOT1_ZER                      |     0xC18      |     8      |
+|    9    | PLAT_OWNER_AUTH_SLOT0 |    160     |     yes      |      32bit       |             PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_TYPE              |     0xC20      |     4      |
+|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY_ROLE              |     0xC24      |     4      |
+|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT0_KEYMANIFEST_KEY                |     0xC28      |     64     |
+|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_TYPE              |     0xC68      |     4      |
+|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY_ROLE              |     0xC6C      |     4      |
+|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT0_UNLOCK4XFER_KEY                |     0xC70      |     64     |
+|         |                       |            |              |      64bit       | [PLAT_OWNER_AUTH_SLOT0_DIGEST](#Reg_plat_owner_auth_slot0_digest_0) |     0xCB0      |     8      |
+|         |                       |            |              |      64bit       |                      PLAT_OWNER_AUTH_SLOT0_ZER                      |     0xCB8      |     8      |
+|   10    | PLAT_OWNER_AUTH_SLOT1 |    160     |     yes      |      32bit       |             PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_TYPE              |     0xCC0      |     4      |
+|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY_ROLE              |     0xCC4      |     4      |
+|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT1_KEYMANIFEST_KEY                |     0xCC8      |     64     |
+|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_TYPE              |     0xD08      |     4      |
+|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY_ROLE              |     0xD0C      |     4      |
+|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT1_UNLOCK4XFER_KEY                |     0xD10      |     64     |
+|         |                       |            |              |      64bit       | [PLAT_OWNER_AUTH_SLOT1_DIGEST](#Reg_plat_owner_auth_slot1_digest_0) |     0xD50      |     8      |
+|         |                       |            |              |      64bit       |                      PLAT_OWNER_AUTH_SLOT1_ZER                      |     0xD58      |     8      |
+|   11    | PLAT_OWNER_AUTH_SLOT2 |    160     |     yes      |      32bit       |             PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY_TYPE              |     0xD60      |     4      |
+|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY_ROLE              |     0xD64      |     4      |
+|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT2_KEYMANIFEST_KEY                |     0xD68      |     64     |
+|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY_TYPE              |     0xDA8      |     4      |
+|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY_ROLE              |     0xDAC      |     4      |
+|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT2_UNLOCK4XFER_KEY                |     0xDB0      |     64     |
+|         |                       |            |              |      64bit       | [PLAT_OWNER_AUTH_SLOT2_DIGEST](#Reg_plat_owner_auth_slot2_digest_0) |     0xDF0      |     8      |
+|         |                       |            |              |      64bit       |                      PLAT_OWNER_AUTH_SLOT2_ZER                      |     0xDF8      |     8      |
+|   12    | PLAT_OWNER_AUTH_SLOT3 |    160     |     yes      |      32bit       |             PLAT_OWNER_AUTH_SLOT3_KEYMANIFEST_KEY_TYPE              |     0xE00      |     4      |
+|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT3_KEYMANIFEST_KEY_ROLE              |     0xE04      |     4      |
+|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT3_KEYMANIFEST_KEY                |     0xE08      |     64     |
+|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT3_UNLOCK4XFER_KEY_TYPE              |     0xE48      |     4      |
+|         |                       |            |              |      32bit       |             PLAT_OWNER_AUTH_SLOT3_UNLOCK4XFER_KEY_ROLE              |     0xE4C      |     4      |
+|         |                       |            |              |      32bit       |                PLAT_OWNER_AUTH_SLOT3_UNLOCK4XFER_KEY                |     0xE50      |     64     |
+|         |                       |            |              |      64bit       | [PLAT_OWNER_AUTH_SLOT3_DIGEST](#Reg_plat_owner_auth_slot3_digest_0) |     0xE90      |     8      |
+|         |                       |            |              |      64bit       |                      PLAT_OWNER_AUTH_SLOT3_ZER                      |     0xE98      |     8      |
+|   13    |        EXT_NVM        |    1032    |     yes      |      32bit       |                  EXT_NVM_ANTIREPLAY_FRESHNESS_CNT                   |     0xEA0      |    1024    |
+|         |                       |            |              |      64bit       |                             EXT_NVM_ZER                             |     0x12A0     |     8      |
+|   14    |       ROM_PATCH       |    8208    |     yes      |      32bit       |                           ROM_PATCH_DATA                            |     0x12A8     |    8192    |
+|         |                       |            |              |      64bit       |             [ROM_PATCH_DIGEST](#Reg_rom_patch_digest_0)             |     0x32A8     |     8      |
+|         |                       |            |              |      64bit       |                            ROM_PATCH_ZER                            |     0x32B0     |     8      |
+|   15    |     SOC_FUSES_CP      |    392     |      no      |      32bit       |                         SOC_FUSES_CP1_DATA                          |     0x32B8     |    256     |
+|         |                       |            |              |      32bit       |                         SOC_FUSES_CP2_DATA                          |     0x33B8     |    128     |
+|         |                       |            |              |      64bit       |          [SOC_FUSES_CP_DIGEST](#Reg_soc_fuses_cp_digest_0)          |     0x3438     |     8      |
+|   16    |     SOC_FUSES_FT      |    4232    |      no      |      32bit       |                         SOC_FUSES_FT1_DATA                          |     0x3440     |    384     |
+|         |                       |            |              |      32bit       |                         SOC_FUSES_FT2_DATA                          |     0x35C0     |    3840    |
+|         |                       |            |              |      64bit       |          [SOC_FUSES_FT_DIGEST](#Reg_soc_fuses_ft_digest_0)          |     0x44C0     |     8      |
+|   17    |     SCRATCH_FUSES     |    2296    |     yes      |      32bit       |                         SCRATCH_FUSES_DATA                          |     0x44C8     |    2288    |
 |         |                       |            |              |      64bit       |                          SCRATCH_FUSES_ZER                          |     0x4DB8     |     8      |
 |   18    |   CREATOR_MANUF_CFG   |     24     |     yes      |      64bit       |                           MANUF_KEY_SALT                            |     0x4DC0     |     8      |
 |         |                       |            |              |      64bit       |     [CREATOR_MANUF_CFG_DIGEST](#Reg_creator_manuf_cfg_digest_0)     |     0x4DC8     |     8      |

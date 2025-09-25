@@ -142,9 +142,9 @@ package top_darjeeling_rnd_cnst_pkg;
       64'h7A2CC14A2068B696,
       64'h2D09093501B8DC7E
     }),
-    18496'({
+    18368'({
       64'h0,
-      18432'h0
+      18304'h0
     }),
     33856'({
       64'h6E75C751292A3B2,
@@ -241,12 +241,11 @@ package top_darjeeling_rnd_cnst_pkg;
       32'h0,
       32'h0
     }),
-    2752'({
+    2880'({
       64'h0,
       64'h81C72CA00A0EE6AA,
       512'h0,
-      128'h0,
-      256'h0,
+      512'h0,
       512'h0,
       32'h0,
       32'h0,
