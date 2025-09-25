@@ -73,12 +73,12 @@ filesets:
   files_rtl_testing:
     depend:
       - lowrisc:earlgrey_constants:testing_rnd_cnst_pkg
-      - lowrisc:earlgrey_constants:testing_lc_ctrl_state_pkg
+      - lowrisc:earlgrey_constants:testing_lc_ctrl_token_pkg
 
   files_rtl_tapeout:
     depend:
       - lowrisc:earlgrey_constants:tapeout_rnd_cnst_pkg
-      - lowrisc:earlgrey_constants:tapeout_lc_ctrl_state_pkg
+      - lowrisc:earlgrey_constants:tapeout_lc_ctrl_token_pkg
 
   files_verilator_waiver:
     depend:
@@ -115,6 +115,9 @@ mapping:
   "lowrisc:dv:chip_env": "lowrisc:dv:top_earlgrey_chip_env"
   # TODO(#27347): prim_legacy_pkg is deprecated
   "lowrisc:prim:prim_pkg": "lowrisc:prim:prim_legacy_pkg"
+  # Default mapping for Block-level DV using testings seeds
+  "lowrisc:virtual_constants:rnd_cnst_pkg": "lowrisc:earlgrey_constants:testing_rnd_cnst_pkg"
+  "lowrisc:virtual_constants:lc_ctrl_token_pkg": "lowrisc:earlgrey_constants:testing_lc_ctrl_token_pkg"
 
 parameters:
   SYNTHESIS:

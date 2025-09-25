@@ -45,12 +45,10 @@ filesets:
   files_rtl_testing:
     depend:
       - lowrisc:pwc_constants:testing_rnd_cnst_pkg
-      - lowrisc:darjeeling_constants:testing_lc_ctrl_state_pkg
 
   files_rtl_tapeout:
     depend:
       - lowrisc:pwc_constants:tapeout_rnd_cnst_pkg
-      - lowrisc:darjeeling_constants:tapeout_lc_ctrl_state_pkg
 
   files_verilator_waiver:
     depend:

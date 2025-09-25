@@ -57,18 +57,21 @@ package otp_ctrl_pkg;
   // Note that we put the life cycle into
   // TEST_UNLOCKED0 by default such that top levels without
   // the OTP controller can still function.
-  parameter otp_lc_data_t OTP_LC_DATA_DEFAULT = '{
-    valid: 1'b1,
-    error: 1'b0,
-    state: lc_ctrl_state_pkg::LcStTestUnlocked0,
-    count: lc_ctrl_state_pkg::LcCnt1,
-    secrets_valid: lc_ctrl_pkg::Off,
-    test_tokens_valid: lc_ctrl_pkg::Off,
-    test_unlock_token: '0,
-    test_exit_token: '0,
-    rma_token_valid: lc_ctrl_pkg::Off,
-    rma_token: '0
-  };
+
+  // Rivos: Remove default value as it depends on the secret lc_ctrl_token_pkg
+  // This pulls in the secrets whenever we include the otp_ctrl_pkg.
+  // parameter otp_lc_data_t OTP_LC_DATA_DEFAULT = '{
+  //   valid: 1'b1,
+  //   error: 1'b0,
+  //   state: lc_ctrl_token_pkg::LcStTestUnlocked0,
+  //   count: lc_ctrl_token_pkg::LcCnt1,
+  //   secrets_valid: lc_ctrl_pkg::Off,
+  //   test_tokens_valid: lc_ctrl_pkg::Off,
+  //   test_unlock_token: '0,
+  //   test_exit_token: '0,
+  //   rma_token_valid: lc_ctrl_pkg::Off,
+  //   rma_token: '0
+  // };
 
   typedef struct packed {
     logic req;
