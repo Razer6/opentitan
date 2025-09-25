@@ -117,20 +117,49 @@ process_file() {
     fi
 }
 
+# Function to clean (restore encrypted files from git)
+clean_files() {
+    local file="$1"
+
+    # Check if file exists in git
+    if ! git ls-files --error-unmatch "$file" >/dev/null 2>&1; then
+        echo "Warning: File not tracked in git: $file"
+        return 1
+    fi
+
+    echo "Cleaning: $file"
+
+    if [ "$DRY_RUN" = true ]; then
+        echo "  [DRY RUN] Would restore $file from git"
+        return 0
+    fi
+
+    # Use git to restore the file to its last committed state
+    if git checkout HEAD -- "$file" 2>/dev/null; then
+        echo "  Successfully restored: $file"
+        return 0
+    else
+        echo "  Error: Failed to restore $file from git"
+        return 1
+    fi
+}
+
 # =============================================================================
 # MAIN SCRIPT
 # =============================================================================
 
 # Check if operation argument is provided
 if [ $# -eq 0 ]; then
-    echo "Usage: $0 <encrypt|decrypt> [--dry-run]"
+    echo "Usage: $0 <encrypt|decrypt|clean> [--dry-run]"
     echo "  encrypt: Encrypt all tapeout files using sops"
     echo "  decrypt: Decrypt all tapeout files using sops"
+    echo "  clean: Restore encrypted files from git (removes decrypted files)"
     echo "  --dry-run: Show what would be done without making changes"
     echo ""
     echo "Examples:"
     echo "  $0 encrypt"
     echo "  $0 decrypt"
+    echo "  $0 clean"
     echo "  $0 decrypt --dry-run"
     exit 1
 fi
@@ -141,9 +170,9 @@ DRY_RUN=false
 
 for arg in "$@"; do
     case $arg in
-        encrypt|decrypt)
+        encrypt|decrypt|clean)
             if [ -n "$OPERATION" ]; then
-                echo "Error: Multiple operations specified. Use either 'encrypt' or 'decrypt'"
+                echo "Error: Multiple operations specified. Use either 'encrypt', 'decrypt', or 'clean'"
                 exit 1
             fi
             OPERATION="$arg"
@@ -153,7 +182,7 @@ for arg in "$@"; do
             ;;
         *)
             echo "Error: Unknown argument '$arg'"
-            echo "Usage: $0 <encrypt|decrypt> [--dry-run]"
+            echo "Usage: $0 <encrypt|decrypt|clean> [--dry-run]"
             exit 1
             ;;
     esac
@@ -161,8 +190,8 @@ done
 
 # Validate operation argument
 if [ -z "$OPERATION" ]; then
-    echo "Error: Operation must be either 'encrypt' or 'decrypt'"
-    echo "Usage: $0 <encrypt|decrypt> [--dry-run]"
+    echo "Error: Operation must be either 'encrypt', 'decrypt', or 'clean'"
+    echo "Usage: $0 <encrypt|decrypt|clean> [--dry-run]"
     exit 1
 fi
 
@@ -179,37 +208,37 @@ echo "Project root: $PROJECT_ROOT"
 # Change to project root directory
 cd "$PROJECT_ROOT"
 
-# Check if sops is available
-if ! command -v sops &> /dev/null; then
+# Check if sops is available (only needed for encrypt/decrypt operations)
+if [ "$OPERATION" != "clean" ] && ! command -v sops &> /dev/null; then
     echo "Error: sops command not found. Please install sops first."
     exit 1
 fi
 
-# Security checks before proceeding
-if ! perform_security_checks "$PROJECT_ROOT" "."; then
+# Security checks before proceeding (only needed for encrypt/decrypt operations)
+if [ "$OPERATION" != "clean" ] && ! perform_security_checks "$PROJECT_ROOT" "."; then
     exit 1
 fi
 
-# Validate SOPS configuration
-if ! validate_sops; then
+# Validate SOPS configuration (only needed for encrypt/decrypt operations)
+if [ "$OPERATION" != "clean" ] && ! validate_sops; then
     exit 1
 fi
 
 echo ""
 
-# Get the files to encrypt from .sops.yaml
+# Get the files to process from .sops.yaml
 echo "Reading file list from .sops.yaml..."
-files_to_encrypt=($(get_files_from_sops_config))
+files_to_process=($(get_files_from_sops_config))
 
-if [ ${#files_to_encrypt[@]} -eq 0 ]; then
+if [ ${#files_to_process[@]} -eq 0 ]; then
     echo "Error: No files found in .sops.yaml or failed to parse .sops.yaml"
     exit 1
 fi
 
-echo "  Found ${#files_to_encrypt[@]} file patterns in .sops.yaml"
+echo "  Found ${#files_to_process[@]} file patterns in .sops.yaml"
 
 echo "Files to ${OPERATION}:"
-for file in "${files_to_encrypt[@]}"; do
+for file in "${files_to_process[@]}"; do
     echo "  $file"
 done
 echo ""
@@ -218,11 +247,19 @@ echo ""
 processed_count=0
 failed_count=0
 
-for file in "${files_to_encrypt[@]}"; do
-    if process_file "$file"; then
-        processed_count=$((processed_count + 1))
+for file in "${files_to_process[@]}"; do
+    if [ "$OPERATION" = "clean" ]; then
+        if clean_files "$file"; then
+            processed_count=$((processed_count + 1))
+        else
+            failed_count=$((failed_count + 1))
+        fi
     else
-        failed_count=$((failed_count + 1))
+        if process_file "$file"; then
+            processed_count=$((processed_count + 1))
+        else
+            failed_count=$((failed_count + 1))
+        fi
     fi
 done
 
@@ -245,5 +282,9 @@ else
     fi
 
     echo ""
-    echo "All tapeout files have been successfully ${OPERATION}ed with sops!"
+    if [ "$OPERATION" = "clean" ]; then
+        echo "All tapeout files have been successfully restored from git!"
+    else
+        echo "All tapeout files have been successfully ${OPERATION}ed with sops!"
+    fi
 fi
