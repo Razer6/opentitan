@@ -130,7 +130,11 @@ waive -rules GENERATE_NAME -location {rvscs_ot_sram_wrap.sv} -regexp {Name 'OT_S
 waive -rules GENERATE_NAME -location {rvscs_ot_sram_wrap.sv} -regexp {Name 'OT_SRAM' is not lowercase} -comment "generate name is OK upon review"
 waive -rules GENERATE_NAME -location {RDP_ASYNC_FIFO_RD.sv}  -regexp {Name 'gem_stage' does not match any pattern 'gen_\*', 'g_\*'} -comment "generate name is OK upon review"
 waive -rules GENERATE_NAME -location {RDP_ASYNC_FIFO_RD.sv}  -regexp {Name 'ptr_syncs' does not match any pattern 'gen_\*', 'g_\*'} -comment "generate name is OK upon review"
+waive -rules GENERATE_NAME -location {RDP_ASYNC_FIFO_RD.sv}  -regexp {Name 'gen_nonscan_rdFault' is not lowercase} -comment "generate name is OK upon review"
+waive -rules GENERATE_NAME -location {RDP_ASYNC_FIFO_RD.sv}  -regexp {Name 'gen_scannable_rdFault' is not lowercase} -comment "generate name is OK upon review"
 waive -rules GENERATE_NAME -location {RDP_ASYNC_FIFO_WR.sv}  -regexp {Name 'ptr_syncs' does not match any pattern 'gen_\*', 'g_\*'} -comment "generate name is OK upon review"
+waive -rules GENERATE_NAME -location {RDP_ASYNC_FIFO_WR.sv}  -regexp {Name 'gen_nonscan_wrFault' is not lowercase} -comment "generate name is OK upon review"
+waive -rules GENERATE_NAME -location {RDP_ASYNC_FIFO_WR.sv}  -regexp {Name 'gen_scannable_wrFault' is not lowercase} -comment "generate name is OK upon review"
 
 waive -rules INPUT_NOT_READ -location {rvscs_ot_aon_sram.sv}       -regexp {Input port 'ram_controls.disable_clock_gating' is not read from in module 'rvscs_ot_aon_sram'}    -comment "needed for rivos compiled memory"
 waive -rules INPUT_NOT_READ -location {rvscs_ot_aon_sram.sv}       -regexp {Input port 'ram_controls.ra' is not read from in module 'rvscs_ot_aon_sram'}                      -comment "needed for rivos compiled memory"
@@ -140,7 +144,7 @@ waive -rules INPUT_NOT_READ -location {rvscs_ot_sram.sv}           -regexp {Inpu
 waive -rules INPUT_NOT_READ -location {rvscs_ot_sram.sv}           -regexp {Input port 'ram_dft_signals.tston' is not read from in module 'rvscs_ot_sram'}                    -comment "needed for rivos compiled memory"
 waive -rules INPUT_NOT_READ -location {rvscs_ot_sram_half_size.sv} -regexp {Input port 'ram_controls.disable_clock_gating' is not read from in module 'rvscs_ot_sram_half_size'}        -comment "needed for rivos compiled memory"
 waive -rules INPUT_NOT_READ -location {rvscs_ot_sram_half_size.sv} -regexp {Input port 'ram_controls.ra' is not read from in module 'rvscs_ot_sram_half_size'}                          -comment "needed for rivos compiled memory"
-waive -rules INPUT_NOT_READ -location {rvscs_ot_sram_half_size.sv} -regexp {Input port 'ram_dft_signals.tston' is not read from in module 'rvscs_ot_sram_half_size'}   
+waive -rules INPUT_NOT_READ -location {rvscs_ot_sram_half_size.sv} -regexp {Input port 'ram_dft_signals.tston' is not read from in module 'rvscs_ot_sram_half_size'}
 waive -rules INPUT_NOT_READ -location {rvscs_ot_32k_ecc_rom.sv} -regexp {Input port 'ram_controls.disable_clock_gating' is not read from in module 'rvscs_ot_32k_ecc_rom'}  -comment "needed for rivos compiled memory"
 waive -rules INPUT_NOT_READ -location {rvscs_ot_32k_ecc_rom.sv} -regexp {Input port 'ram_controls.ra' is not read from in module 'rvscs_ot_32k_ecc_rom'}                    -comment "needed for rivos compiled memory"
 waive -rules INPUT_NOT_READ -location {rvscs_ot_32k_ecc_rom.sv} -regexp {Input port 'ram_dft_signals.DFD_StopWE' is not read from in module 'rvscs_ot_32k_ecc_rom'}         -comment "needed for rivos compiled memory"
