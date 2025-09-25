@@ -7,7 +7,7 @@ creation_rules:
     kms: *kms_arn
   - path_regex: hw/top_darjeeling/rtl/autogen/tapeout/top_darjeeling_rnd_cnst_pkg.sv
     kms: *kms_arn
-  - path_regex: hw/top_darjeeling/rtl/autogen/tapeout/lc_ctrl_state_pkg.sv
+  - path_regex: hw/top_darjeeling/rtl/autogen/tapeout/lc_ctrl_token_pkg.sv
     kms: *kms_arn
   - path_regex: hw/top_mio/data/top_mio_seed.tapeout.hjson
     kms: *kms_arn

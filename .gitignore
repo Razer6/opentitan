@@ -97,7 +97,7 @@ book
 hw/top_darjeeling/data/top_darjeeling_seed.tapeout.hjson
 hw/top_darjeeling/data/autogen/top_darjeeling.secrets.tapeout.gen.hjson
 hw/top_darjeeling/rtl/autogen/tapeout/top_darjeeling_rnd_cnst_pkg.sv
-hw/top_darjeeling/rtl/autogen/tapeout/lc_ctrl_state_pkg.sv
+hw/top_darjeeling/rtl/autogen/tapeout/lc_ctrl_token_pkg.sv
 hw/top_mio/data/top_mio_seed.tapeout.hjson
 hw/top_mio/data/autogen/top_mio.secrets.tapeout.gen.hjson
 hw/top_mio/rtl/autogen/tapeout/top_mio_rnd_cnst_pkg.sv
