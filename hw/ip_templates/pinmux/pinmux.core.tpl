@@ -17,7 +17,9 @@ filesets:
       - lowrisc:prim:lc_sender
       - lowrisc:prim:lc_or_hardened
       - lowrisc:prim:pad_wrapper_pkg
+    % if not use_rivos_config:
       - lowrisc:prim:pad_attr
+    % endif
       - lowrisc:ip:jtag_pkg
     % if enable_usb_wakeup:
       - lowrisc:ip:usbdev
