@@ -120,7 +120,8 @@ GENERATE_ECLIPSEHELP   = NO
 
 ENUM_VALUES_PER_LINE   = 1
 
-SEARCHENGINE           = NO
+SEARCHENGINE           = YES
+SERVER_BASED_SEARCH    = NO
 
 #---------------------------------------------------------------------------
 # Configuration options related to the LaTeX output
