@@ -123,11 +123,15 @@ check_generated:
   stage: check
   extends: .git-auth-fixup
   script:
+    # setup environment and run lint
     - *setup-ot-env
     - *clone-rvsys
     - module load ascentlint
     - fusesoc --cores-root . run --flag fileset_top --flag fileset_opentitan_lint --target lint --tool ascentlint --flag local_exe  lowrisc:systems:${TEST_TARGET} || true
+    # print errors in the log for easier review in gitlab
     - grep "^E " "build/lowrisc_systems_${TEST_TARGET}_0.1/lint-ascentlint/ascentlint.log" | grep -v "ToolWaived" || true
+    - grep "^E " "build/lowrisc_systems_${TEST_TARGET}_0.1/lint-ascentlint/ascentlint.rpt" || true
+    # Fail if new violations are found
     - egrep -iq -e "^No (New lint|lint) violations found" -e "^Found [0-9]+ Info (New lint|lint) violation" build/lowrisc_systems_${TEST_TARGET}_0.1/lint-ascentlint/ascentlint.log && echo "***PASSED***" || (echo "***ERROR*** Lint run found new errors or warnings." "Please check ascentlint.rpt" && exit 1)
   rules:
     - if: $CI_COMMIT_BRANCH != "rivos/ga0"
