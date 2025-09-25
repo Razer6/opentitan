@@ -89,13 +89,8 @@ waive -rules INPUT_NOT_READ -location {RDP_ASYNC_FIFO.sv}    -regexp {Input port
 waive -rules INPUT_NOT_READ -location {RDP_ASYNC_FIFO_RD.sv} -regexp {Input port 'rdFifoDbgClkDis' is not read from, instance} -comment "needed for rivos assertions"
 waive -rules INPUT_NOT_READ -location {RDP_ASYNC_FIFO_WR.sv} -regexp {Input port 'wrFifoDbgClkDis' is not read from, instance} -comment "needed for rivos assertions"
 waive -rules INPUT_NOT_READ -location {prim_otp_mem.sv} -comment "new cdc crossing based on rivos components"
-waive -rules INPUT_NOT_READ -location {rvscs_ot_32k_ecc_rom.sv} -regexp {Input port 'LS' is not read from in module 'rvscs_ot_32k_ecc_rom'} -comment "needed for rivos compiled memory"
-waive -rules INPUT_NOT_READ -location {rvscs_ot_32k_ecc_rom.sv} -regexp {Input port 'ram_controls.disable_ls' is not read from in module 'rvscs_ot_32k_ecc_rom'} -comment "needed for rivos compiled memory"
-waive -rules INPUT_NOT_READ -location {rvscs_ot_32k_ecc_rom.sv} -regexp {Input port 'ram_dft_signals' is not read from in module 'rvscs_ot_32k_ecc_rom'} -comment "needed for rivos compiled memory"
-waive -rules INPUT_NOT_READ -location {rvscs_ot_64k_ecc_rom.sv} -regexp {Input port 'LS' is not read from in module 'rvscs_ot_64k_ecc_rom'} -comment "needed for rivos compiled memory"
-waive -rules INPUT_NOT_READ -location {rvscs_ot_64k_ecc_rom.sv} -regexp {Input port 'ram_controls.disable_ls' is not read from in module 'rvscs_ot_64k_ecc_rom'} -comment "needed for rivos compiled memory"
-waive -rules INPUT_NOT_READ -location {rvscs_ot_64k_ecc_rom.sv} -regexp {Input port 'ram_dft_signals' is not read from in module 'rvscs_ot_64k_ecc_rom'} -comment "needed for rivos compiled memory"
-
+waive -rules INPUT_NOT_READ -location {rvscs_ot_32k_ecc_rom.sv} -regexp {Input port '(LS|ram_controls.disable_ls|ram_dft_signals|ram_dft_signals.bist_mode)' is not read} -comment "needed for rivos compiled memory"
+waive -rules INPUT_NOT_READ -location {rvscs_ot_64k_ecc_rom.sv} -regexp {Input port '(LS|ram_controls.disable_ls|ram_dft_signals|ram_dft_signals.bist_mode)' is not read} -comment "needed for rivos compiled memory"
 
 waive -rules PARAM_NOT_USED -location {RVP_ASSERT_ALWAYS.sv} -regexp {Parameter 'MSG' not used in module 'RVP_ASSERT_ALWAYS'} -comment "needed for rivos assertions"
 waive -rules PARAM_NOT_USED -location {RVP_ASSERT_ALWAYS.sv} -regexp {Parameter 'ASSUME' not used in module 'RVP_ASSERT_ALWAYS'} -comment "needed for rivos assertions"
@@ -173,6 +168,9 @@ waive -rules INPUT_NOT_READ -location {prim_otp.sv}           -regexp {Input por
 
 waive -rules NOT_READ -location {RDP_ASYNC_FIFO_RD.sv} -regexp {Signal 'occupancy' is not read from, instance} -comment "needed for rivos compiled memory"
 waive -rules NOT_READ -location {prim_otp_mem.sv} -comment "new cdc crossing based on rivos components"
+waive -rules NOT_READ -location {rvscs_ot_aon_sram.sv} -regexp {Signal 'TESTRWM_mod' is not read} -comment "needed for rivos compiled memory"
+waive -rules NOT_READ -location {rvscs_ot_otbni_sram.sv} -regexp {Signal 'TESTRWM_mod' is not read} -comment "needed for rivos compiled memory"
+waive -rules NOT_READ -location {rvscs_ot_sram_half_size.sv} -regexp {Signal 'TESTRWM_mod' is not read} -comment "needed for rivos compiled memory"
 
 waive -rules HIER_NET_NOT_READ -location {rvscs_ot_sram_wrap.sv} -regexp {Net 'ram_controls.consistency_check2' in module 'rvscs_ot_sram_wrap'}   -comment "needed for rivos compiled memory"
 waive -rules HIER_NET_NOT_READ -location {rvscs_ot_sram_wrap.sv} -regexp {Net 'ram_controls.disable_clock_gating' in module 'rvscs_ot_sram_wrap'} -comment "needed for rivos compiled memory"
