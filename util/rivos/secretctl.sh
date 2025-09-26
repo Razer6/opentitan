@@ -5,6 +5,11 @@
 
 # set -e  # Commented out to prevent script from exiting on arithmetic operations
 
+# Color definitions
+RED='\033[0;31m'
+ORANGE='\033[0;33m'
+NC='\033[0m' # No Color
+
 # =============================================================================
 # FUNCTIONS
 # =============================================================================
@@ -15,13 +20,13 @@ validate_sops() {
 
     # Check if SOPS can access keys
     if ! sops --version &>/dev/null; then
-        echo "Error: SOPS is not working properly"
+        echo -e "${RED}Error: SOPS is not working properly${NC}"
         return 1
     fi
 
     # Try to list available keys (this will fail if no keys are configured)
     if ! sops --help | grep -q "encrypt\|decrypt"; then
-        echo "Error: SOPS is not properly configured"
+        echo -e "${RED}Error: SOPS is not properly configured${NC}"
         return 1
     fi
 
@@ -34,7 +39,7 @@ get_files_from_sops_config() {
     local sops_file=".sops.yaml"
 
     if [ ! -f "$sops_file" ]; then
-        echo "Error: .sops.yaml file not found in project root"
+        echo -e "${RED}Error: .sops.yaml file not found in project root${NC}"
         return 1
     fi
 
@@ -62,7 +67,7 @@ process_file() {
 
     # Check if file exists
     if [ ! -f "$file" ]; then
-        echo "Warning: File does not exist: $file"
+        echo -e "${ORANGE}Warning: File does not exist: $file${NC}"
         return 1
     fi
 
@@ -99,7 +104,7 @@ process_file() {
         # Create/truncate file and set secure permissions immediately
         > "$file" && chmod 600 "$file"
         if [ $? -ne 0 ]; then
-            echo "  Error: Failed to create/truncate file or set permissions"
+            echo -e "  ${RED}Error: Failed to create/truncate file or set permissions${NC}"
             return 1
         fi
         # Pipe SOPS output directly to file
@@ -107,12 +112,12 @@ process_file() {
             echo "  Successfully ${OPERATION}ed: $file"
             return 0
         else
-            echo "  Error: Failed to write ${OPERATION}ed content"
+            echo -e "  ${RED}Error: Failed to write ${OPERATION}ed content${NC}"
             return 1
         fi
     else
-        echo "  Failed to ${OPERATION} $file"
-        echo "  Error: $sops_output"
+        echo -e "  ${RED}Failed to ${OPERATION} $file${NC}"
+        echo -e "  ${RED}Error: $sops_output${NC}"
         return 1
     fi
 }
@@ -123,7 +128,7 @@ clean_files() {
 
     # Check if file exists in git
     if ! git ls-files --error-unmatch "$file" >/dev/null 2>&1; then
-        echo "Warning: File not tracked in git: $file"
+        echo -e "${ORANGE}Warning: File not tracked in git: $file${NC}"
         return 1
     fi
 
@@ -139,7 +144,7 @@ clean_files() {
         echo "  Successfully restored: $file"
         return 0
     else
-        echo "  Error: Failed to restore $file from git"
+        echo -e "  ${RED}Error: Failed to restore $file from git${NC}"
         return 1
     fi
 }
@@ -167,17 +172,17 @@ perform_hjson_sanity_check() {
         if python3 "$hjson_diff_script" "$encrypted_file" "$testing_file" >/dev/null 2>&1; then
             echo "  HJSON structure sanity check passed for top_${top_config}"
         else
-            echo "  ERROR: HJSON structure mismatch detected for top_${top_config}!"
+            echo -e "  ${RED}ERROR: HJSON structure mismatch detected for top_${top_config}!${NC}"
             echo ""
-            echo "The structure of the decrypted tapeout secrets file does not match"
-            echo "the structure of the testing secrets file. This indicates a potential"
-            echo "issue with the secret generation or file structure."
+            echo -e "${RED}The structure of the decrypted tapeout secrets file does not match${NC}"
+            echo -e "${RED}the structure of the testing secrets file. This indicates a potential${NC}"
+            echo -e "${RED}issue with the secret generation or file structure.${NC}"
             echo ""
-            echo "Please contact one of the following people immediately:"
-            echo "  - Robert Schilling (rschilling@rivosinc.com)"
-            echo "  - David Schrammel (davidschrammel@rivosinc.com)"
+            echo -e "${RED}Please contact one of the following people immediately:${NC}"
+            echo -e "${RED}  - Robert Schilling (rschilling@rivosinc.com)${NC}"
+            echo -e "${RED}  - David Schrammel (davidschrammel@rivosinc.com)${NC}"
             echo ""
-            echo "Detailed structure differences:"
+            echo -e "${RED}Detailed structure differences:${NC}"
             python3 "$hjson_diff_script" "$encrypted_file" "$testing_file"
             echo ""
             overall_success=1
@@ -189,7 +194,7 @@ perform_hjson_sanity_check() {
         echo "All HJSON structure sanity checks passed!"
     else
         echo ""
-        echo "One or more HJSON structure sanity checks failed!"
+        echo -e "${RED}One or more HJSON structure sanity checks failed!${NC}"
     fi
 
     return $overall_success
@@ -201,17 +206,17 @@ perform_hjson_sanity_check() {
 
 # Check if operation argument is provided
 if [ $# -eq 0 ]; then
-    echo "Usage: $0 <encrypt|decrypt|clean> [--dry-run]"
-    echo "  encrypt: Encrypt all tapeout files using sops"
-    echo "  decrypt: Decrypt all tapeout files using sops"
-    echo "  clean: Restore encrypted files from git (removes decrypted files)"
-    echo "  --dry-run: Show what would be done without making changes"
+    echo -e "${RED}Usage: $0 <encrypt|decrypt|clean> [--dry-run]${NC}"
+    echo -e "${RED}  encrypt: Encrypt all tapeout files using sops${NC}"
+    echo -e "${RED}  decrypt: Decrypt all tapeout files using sops${NC}"
+    echo -e "${RED}  clean: Restore encrypted files from git (removes decrypted files)${NC}"
+    echo -e "${RED}  --dry-run: Show what would be done without making changes${NC}"
     echo ""
-    echo "Examples:"
-    echo "  $0 encrypt"
-    echo "  $0 decrypt"
-    echo "  $0 clean"
-    echo "  $0 decrypt --dry-run"
+    echo -e "${RED}Examples:${NC}"
+    echo -e "${RED}  $0 encrypt${NC}"
+    echo -e "${RED}  $0 decrypt${NC}"
+    echo -e "${RED}  $0 clean${NC}"
+    echo -e "${RED}  $0 decrypt --dry-run${NC}"
     exit 1
 fi
 
@@ -223,7 +228,7 @@ for arg in "$@"; do
     case $arg in
         encrypt|decrypt|clean)
             if [ -n "$OPERATION" ]; then
-                echo "Error: Multiple operations specified. Use either 'encrypt', 'decrypt', or 'clean'"
+                echo -e "${RED}Error: Multiple operations specified. Use either 'encrypt', 'decrypt', or 'clean'${NC}"
                 exit 1
             fi
             OPERATION="$arg"
@@ -232,8 +237,8 @@ for arg in "$@"; do
             DRY_RUN=true
             ;;
         *)
-            echo "Error: Unknown argument '$arg'"
-            echo "Usage: $0 <encrypt|decrypt|clean> [--dry-run]"
+            echo -e "${RED}Error: Unknown argument '$arg'${NC}"
+            echo -e "${RED}Usage: $0 <encrypt|decrypt|clean> [--dry-run]${NC}"
             exit 1
             ;;
     esac
@@ -241,8 +246,8 @@ done
 
 # Validate operation argument
 if [ -z "$OPERATION" ]; then
-    echo "Error: Operation must be either 'encrypt', 'decrypt', or 'clean'"
-    echo "Usage: $0 <encrypt|decrypt|clean> [--dry-run]"
+    echo -e "${RED}Error: Operation must be either 'encrypt', 'decrypt', or 'clean'${NC}"
+    echo -e "${RED}Usage: $0 <encrypt|decrypt|clean> [--dry-run]${NC}"
     exit 1
 fi
 
@@ -261,7 +266,7 @@ cd "$PROJECT_ROOT"
 
 # Check if sops is available (only needed for encrypt/decrypt operations)
 if [ "$OPERATION" != "clean" ] && ! command -v sops &> /dev/null; then
-    echo "Error: sops command not found. Please install sops first."
+    echo -e "${RED}Error: sops command not found. Please install sops first.${NC}"
     exit 1
 fi
 
@@ -275,6 +280,17 @@ if [ "$OPERATION" != "clean" ] && ! validate_sops; then
     exit 1
 fi
 
+# Perform HJSON validation before encryption
+if [ "$OPERATION" = "encrypt" ]; then
+    echo ""
+    if ! perform_hjson_sanity_check; then
+        echo ""
+        echo -e "${RED}HJSON structure validation failed before encryption!${NC}"
+        echo -e "${RED}Please review the error message above and contact the appropriate people.${NC}"
+        exit 1
+    fi
+fi
+
 echo ""
 
 # Get the files to process from .sops.yaml
@@ -282,7 +298,7 @@ echo "Reading file list from .sops.yaml..."
 files_to_process=($(get_files_from_sops_config))
 
 if [ ${#files_to_process[@]} -eq 0 ]; then
-    echo "Error: No files found in .sops.yaml or failed to parse .sops.yaml"
+    echo -e "${RED}Error: No files found in .sops.yaml or failed to parse .sops.yaml${NC}"
     exit 1
 fi
 
@@ -328,7 +344,7 @@ else
 
     if [ $failed_count -gt 0 ]; then
         echo ""
-        echo "Some files failed to ${OPERATION}. Please check the errors above."
+        echo -e "${RED}Some files failed to ${OPERATION}. Please check the errors above.${NC}"
         exit 1
     fi
 
@@ -343,8 +359,8 @@ else
             echo ""
             if ! perform_hjson_sanity_check; then
                 echo ""
-                echo "Decryption completed but HJSON structure sanity check failed!"
-                echo "Please review the error message above and contact the appropriate people."
+                echo -e "${RED}Decryption completed but HJSON structure sanity check failed!${NC}"
+                echo -e "${RED}Please review the error message above and contact the appropriate people.${NC}"
                 exit 1
             fi
         fi

@@ -96,8 +96,6 @@ def main() -> None:
         print("The structures of the two HJSON files are identical.")
     else:
         print(f"Found {len(differences)} structural difference(s):")
-        for diff in differences:
-            print(f"  - {diff}")
         sys.exit(1)
 
 
