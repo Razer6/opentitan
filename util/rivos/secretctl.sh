@@ -144,6 +144,57 @@ clean_files() {
     fi
 }
 
+# Function to perform HJSON structure sanity check
+perform_hjson_sanity_check() {
+    local hjson_diff_script="$SCRIPT_DIR/hjson_structure_diff.py"
+    local overall_success=0
+
+    echo "Performing HJSON structure sanity checks..."
+
+    # Define the top configurations to check
+    local -a top_configs=("darjeeling" "mio" "pwc")
+
+    for top_config in "${top_configs[@]}"; do
+        local encrypted_file="hw/top_${top_config}/data/autogen/top_${top_config}.secrets.tapeout.gen.hjson"
+        local testing_file="hw/top_${top_config}/data/autogen/top_${top_config}.secrets.testing.gen.hjson"
+
+        echo ""
+        echo "Checking top_${top_config}:"
+        echo "  Comparing: $encrypted_file"
+        echo "  With:      $testing_file"
+
+        # Run the structure comparison
+        if python3 "$hjson_diff_script" "$encrypted_file" "$testing_file" >/dev/null 2>&1; then
+            echo "  HJSON structure sanity check passed for top_${top_config}"
+        else
+            echo "  ERROR: HJSON structure mismatch detected for top_${top_config}!"
+            echo ""
+            echo "The structure of the decrypted tapeout secrets file does not match"
+            echo "the structure of the testing secrets file. This indicates a potential"
+            echo "issue with the secret generation or file structure."
+            echo ""
+            echo "Please contact one of the following people immediately:"
+            echo "  - Robert Schilling (rschilling@rivosinc.com)"
+            echo "  - David Schrammel (davidschrammel@rivosinc.com)"
+            echo ""
+            echo "Detailed structure differences:"
+            python3 "$hjson_diff_script" "$encrypted_file" "$testing_file"
+            echo ""
+            overall_success=1
+        fi
+    done
+
+    if [ $overall_success -eq 0 ]; then
+        echo ""
+        echo "All HJSON structure sanity checks passed!"
+    else
+        echo ""
+        echo "One or more HJSON structure sanity checks failed!"
+    fi
+
+    return $overall_success
+}
+
 # =============================================================================
 # MAIN SCRIPT
 # =============================================================================
@@ -286,5 +337,16 @@ else
         echo "All tapeout files have been successfully restored from git!"
     else
         echo "All tapeout files have been successfully ${OPERATION}ed with sops!"
+
+        # Perform HJSON structure sanity check after decryption
+        if [ "$OPERATION" = "decrypt" ]; then
+            echo ""
+            if ! perform_hjson_sanity_check; then
+                echo ""
+                echo "Decryption completed but HJSON structure sanity check failed!"
+                echo "Please review the error message above and contact the appropriate people."
+                exit 1
+            fi
+        fi
     fi
 fi
