@@ -11,6 +11,7 @@ DARJEELING_OTP_SIGVERIFY_FAKE_KEYS = [
 DARJEELING_STD_OTP_OVERLAYS_WITHOUT_SECRET_PARTITIONS = [
     "@//hw/top_darjeeling/data/otp:otp_json_creator_sw_cfg",
     "@//hw/top_darjeeling/data/otp:otp_json_owner_sw_cfg",
+    "@//hw/top_darjeeling/data/otp:otp_json_alert_digest_cfg",
     "@//hw/top_darjeeling/data/otp:otp_json_hw_cfg0",
     "@//hw/top_darjeeling/data/otp:otp_json_hw_cfg1",
     "@//hw/top_darjeeling/data/otp:otp_json_hw_cfg2",

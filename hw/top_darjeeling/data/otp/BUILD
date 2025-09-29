@@ -42,6 +42,9 @@ otp_json(
                 # Enable use of entropy for countermeasures. See the definition
                 # of `hardened_bool_t` in sw/device/lib/base/hardened.h.
                 "CREATOR_SW_CFG_RNG_EN": otp_hex(CONST.HARDENED_TRUE),
+                # ROM execution is enabled if this item is set to a non-zero
+                # value.
+                "CREATOR_SW_CFG_ROM_EXEC_EN": otp_hex(0xffffffff),
                 # Value to write to the cpuctrl CSR in `rom_init()`.
                 # See:
                 # https://ibex-core.readthedocs.io/en/latest/03_reference/cs_registers.html#cpu-control-register-cpuctrl
@@ -59,10 +62,6 @@ otp_json(
         otp_partition(
             name = "OWNER_SW_CFG",
             items = {
-                # Set to 0x739 to use the ROM_EXT hash measurement as the key
-                # manager attestation binding value.
-                "OWNER_SW_CFG_ROM_KEYMGR_OTP_MEAS_EN": otp_hex(0x0),
-                # Report errors without any redaction.
                 "OWNER_SW_CFG_ROM_ERROR_REPORTING": otp_hex(CONST.SHUTDOWN.REDACT.NONE),
                 # Set the enables to kAlertEnableNone.
                 # See `alert_enable_t` in
@@ -146,6 +145,8 @@ otp_json(
         otp_partition(
             name = "HW_CFG1",
             items = {
+                "SOC_DBG_STATE": "PRE_PROD",
+                # Enable code execution from SRAM.
                 "EN_SRAM_IFETCH": True,
             },
             lock = True,
