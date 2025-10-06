@@ -128,6 +128,7 @@
             '''
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 72
           offset: 0
         }
@@ -511,6 +512,7 @@
             '''
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 224
           offset: 72
         }
@@ -872,6 +874,7 @@
             '''
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 968
           offset: 296
         }
@@ -995,6 +998,7 @@
             '''
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 56
           offset: 1264
         }
@@ -1071,6 +1075,7 @@
           desc: Software managed partition for the RoT Creator identity.
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 800
           offset: 1320
         }
@@ -1351,6 +1356,7 @@
           desc: Software managed partition for the first RoT Owner (a.k.a. RoT Creator) key manifest.
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 360
           offset: 2120
         }
@@ -1653,6 +1659,7 @@
           desc: Software managed RoT Owner slot 1 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 304
           offset: 2480
         }
@@ -1825,6 +1832,7 @@
           desc: Software managed Platform Integrator slot 0 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 160
           offset: 2784
         }
@@ -1995,6 +2003,7 @@
           desc: Software managed Platform Integrator slot 1 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 160
           offset: 2944
         }
@@ -2167,6 +2176,7 @@
           desc: Software managed Platform Owner slot 0 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 160
           offset: 3104
         }
@@ -2337,6 +2347,7 @@
           desc: Software managed Platform Owner slot 1 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 160
           offset: 3264
         }
@@ -2507,6 +2518,7 @@
           desc: Software managed Platform Owner slot 2 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 160
           offset: 3424
         }
@@ -2677,6 +2689,7 @@
           desc: Software managed Platform Owner slot 3 partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 160
           offset: 3584
         }
@@ -2730,6 +2743,7 @@
           desc: Anti-replay protection Strike Counters partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 1032
           offset: 3744
         }
@@ -2793,6 +2807,7 @@
           desc: ROM Patch Code section. May contain multiple signed ROM2 patches.
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 8208
           offset: 4776
         }
@@ -2850,6 +2865,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           zeroizable: false
+          ignore_read_lock_in_rma: false
           size: 392
           offset: 12984
         }
@@ -2907,6 +2923,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           zeroizable: false
+          ignore_read_lock_in_rma: false
           size: 4232
           offset: 13376
         }
@@ -2958,6 +2975,7 @@
           desc: Unstructured scratch data partition.
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 2296
           offset: 17608
         }
@@ -3016,6 +3034,7 @@
           absorb: false
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 24
           offset: 19904
         }
@@ -3083,6 +3102,7 @@
           absorb: false
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 48
           offset: 19928
         }
@@ -3169,6 +3189,7 @@
           absorb: false
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 24
           offset: 19976
         }
@@ -3261,6 +3282,7 @@
           absorb: false
           iskeymgr_creator: false
           iskeymgr_owner: false
+          ignore_read_lock_in_rma: false
           size: 56
           offset: 20000
         }
@@ -3272,6 +3294,7 @@
           hw_digest: true
           write_lock: Digest
           read_lock: Digest
+          ignore_read_lock_in_rma: true
           key_sel: Secret0Key
           integrity: true
           bkout_type: false
@@ -3345,6 +3368,7 @@
           hw_digest: true
           write_lock: Digest
           read_lock: Digest
+          ignore_read_lock_in_rma: true
           key_sel: Secret1Key
           integrity: true
           bkout_type: false
@@ -3406,6 +3430,7 @@
           hw_digest: true
           write_lock: Digest
           read_lock: Digest
+          ignore_read_lock_in_rma: true
           key_sel: Secret2Key
           integrity: true
           bkout_type: false
@@ -3553,6 +3578,7 @@
           absorb: false
           iskeymgr_creator: false
           iskeymgr_owner: true
+          ignore_read_lock_in_rma: false
           size: 48
           offset: 20264
         }
@@ -3564,6 +3590,7 @@
           hw_digest: true
           write_lock: Digest
           read_lock: Digest
+          ignore_read_lock_in_rma: true
           key_sel: Secret4Key
           integrity: true
           bkout_type: false
@@ -3684,6 +3711,7 @@
           iskeymgr_creator: false
           iskeymgr_owner: false
           zeroizable: false
+          ignore_read_lock_in_rma: false
           size: 88
           offset: 20392
         }
