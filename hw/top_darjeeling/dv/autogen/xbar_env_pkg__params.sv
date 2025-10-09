@@ -26,7 +26,7 @@ tl_device_t xbar_devices[$] = '{
         '{32'h211e1000, 32'h211e107f}
     }},
     '{"soc_proxy__ctn", '{
-        '{32'h40000000, 32'h7fffffff}
+        '{32'h40000000, 32'hbfffffff}
     }},
     '{"hmac", '{
         '{32'h21110000, 32'h21111fff}

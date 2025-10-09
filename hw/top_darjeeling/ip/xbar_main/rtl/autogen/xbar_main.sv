@@ -1254,8 +1254,8 @@ end
                   ~(ADDR_MASK_SRAM_CTRL_MBOX__REGS)) == ADDR_SPACE_SRAM_CTRL_MBOX__REGS) begin
       dev_sel_s1n_53 = 6'd21;
 
-    end else if ((tl_s1n_53_us_h2d.a_address &
-                  ~(ADDR_MASK_SOC_PROXY__CTN)) == ADDR_SPACE_SOC_PROXY__CTN) begin
+    end else if (((tl_s1n_53_us_h2d.a_address < (ADDR_SPACE_SOC_PROXY__CTN + ADDR_SIZE_SOC_PROXY__CTN)) &&
+       (tl_s1n_53_us_h2d.a_address >= ADDR_SPACE_SOC_PROXY__CTN))) begin
       dev_sel_s1n_53 = 6'd22;
 
     end else if ((tl_s1n_53_us_h2d.a_address &
@@ -1395,8 +1395,8 @@ end
                   ~(ADDR_MASK_SRAM_CTRL_MBOX__REGS)) == ADDR_SPACE_SRAM_CTRL_MBOX__REGS) begin
       dev_sel_s1n_85 = 6'd21;
 
-    end else if ((tl_s1n_85_us_h2d.a_address &
-                  ~(ADDR_MASK_SOC_PROXY__CTN)) == ADDR_SPACE_SOC_PROXY__CTN) begin
+    end else if (((tl_s1n_85_us_h2d.a_address < (ADDR_SPACE_SOC_PROXY__CTN + ADDR_SIZE_SOC_PROXY__CTN)) &&
+       (tl_s1n_85_us_h2d.a_address >= ADDR_SPACE_SOC_PROXY__CTN))) begin
       dev_sel_s1n_85 = 6'd22;
 
     end else if ((tl_s1n_85_us_h2d.a_address &
@@ -1476,8 +1476,8 @@ end
                   ~(ADDR_MASK_KMAC)) == ADDR_SPACE_KMAC) begin
       dev_sel_s1n_86 = 4'd6;
 
-    end else if ((tl_s1n_86_us_h2d.a_address &
-                  ~(ADDR_MASK_SOC_PROXY__CTN)) == ADDR_SPACE_SOC_PROXY__CTN) begin
+    end else if (((tl_s1n_86_us_h2d.a_address < (ADDR_SPACE_SOC_PROXY__CTN + ADDR_SIZE_SOC_PROXY__CTN)) &&
+       (tl_s1n_86_us_h2d.a_address >= ADDR_SPACE_SOC_PROXY__CTN))) begin
       dev_sel_s1n_86 = 4'd7;
 
     end else if ((tl_s1n_86_us_h2d.a_address &
