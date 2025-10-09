@@ -10,3 +10,6 @@ ignore =
   # recommendations on this have changed in 2016, so leave out the explicit
   # checks: https://www.flake8rules.com/rules/W503.html
   W503, W504
+
+# Disable line length check for this file
+per-file-ignores = util/rivos/check_for_missing_commits.py: E501
