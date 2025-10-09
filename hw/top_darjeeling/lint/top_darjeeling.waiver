@@ -81,6 +81,9 @@ waive -rules {LINE_LENGTH} -location {top_racl_pkg.sv} -regexp {Line length of \
 waive -rules LINE_LENGTH -location {top_darjeeling_rnd_cnst_pkg.sv} -regexp {Line length of [0-9]+ exceeds 100 character limit} \
       -comment "top_darjeeling_rnd_cnst_pkg is auto-generated and adhering to the line length limit is not always feasible for auto-generated code"
 
+waive -rules {LINE_LENGTH} -location {xbar_main.sv} -regexp {Line length of [0-9]+ exceeds 100 character limit} \
+      -comment "xbar_main is auto-generated and adhering to the line length limit is not always feasible for auto-generated code"
+
  waive -rules {PARAM_NOT_USED} -location {prim_generic_ram_1p.sv} \
       -msg {Parameter 'MemInitFile' not used in module 'prim_generic_ram_1p'} \
       -comment "MemInitFile is not used in synthesis for Rivos"
@@ -102,7 +105,7 @@ waive -rules {NOT_READ} -location {tlul_socket_m1.sv} \
 waive -rules {NOT_READ} -location {tlul_socket_m1.sv} \
       -msg {Signal 'TIMING_dfifo_rspready_merged' is not read from in module 'tlul_socket_m1'} \
       -comment "Custom Rivos timing fix"
-  
+
 waive -rules {LINE_LENGTH} -location {prim_misc_dft_pkg.sv} \
       -regexp {Line length of } \
       -comment "Waive Rivos line length"
@@ -114,4 +117,3 @@ waive -rules {LINE_LENGTH} -location {prim_otp_cfg_pkg.sv} \
 waive -rules {LINE_LENGTH} -location {top_darjeeling_racl_pkg.sv} \
       -regexp {Line length of } \
       -comment "Waive line length violations in generated code. "
-
