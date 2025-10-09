@@ -32,7 +32,7 @@
 /**
  * Memory size for mio_soc_proxy_ctn in top mio.
  */
-#define TOP_MIO_CTN_SIZE_BYTES 0x40000000
+#define TOP_MIO_CTN_SIZE_BYTES 0x80000000
 
 /**
  * Memory base for sram_ctrl_ret_aon_ram_ret_aon in top mio.
@@ -116,7 +116,7 @@
  * address between #TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR and
  * `TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR + TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES`.
  */
-#define TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES 0x40000000
+#define TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES 0x80000000
 /**
  * Peripheral base address for regs device on sram_ctrl_ret_aon in top mio.
  *

@@ -705,8 +705,8 @@ module xbar_mio_main (
                   ~(ADDR_MASK_SRAM_CTRL_MAIN__RAM)) == ADDR_SPACE_SRAM_CTRL_MAIN__RAM) begin
       dev_sel_s1n_29 = 2'd1;
 
-    end else if ((tl_s1n_29_us_h2d.a_address &
-                  ~(ADDR_MASK_MIO_SOC_PROXY__CTN)) == ADDR_SPACE_MIO_SOC_PROXY__CTN) begin
+    end else if (((tl_s1n_29_us_h2d.a_address < (ADDR_SPACE_MIO_SOC_PROXY__CTN + ADDR_SIZE_MIO_SOC_PROXY__CTN)) &&
+       (tl_s1n_29_us_h2d.a_address >= ADDR_SPACE_MIO_SOC_PROXY__CTN))) begin
       dev_sel_s1n_29 = 2'd2;
 end
   end
@@ -750,8 +750,8 @@ end
                   ~(ADDR_MASK_SRAM_CTRL_MBOX__REGS)) == ADDR_SPACE_SRAM_CTRL_MBOX__REGS) begin
       dev_sel_s1n_33 = 5'd8;
 
-    end else if ((tl_s1n_33_us_h2d.a_address &
-                  ~(ADDR_MASK_MIO_SOC_PROXY__CTN)) == ADDR_SPACE_MIO_SOC_PROXY__CTN) begin
+    end else if (((tl_s1n_33_us_h2d.a_address < (ADDR_SPACE_MIO_SOC_PROXY__CTN + ADDR_SIZE_MIO_SOC_PROXY__CTN)) &&
+       (tl_s1n_33_us_h2d.a_address >= ADDR_SPACE_MIO_SOC_PROXY__CTN))) begin
       dev_sel_s1n_33 = 5'd9;
 
     end else if ((tl_s1n_33_us_h2d.a_address &
@@ -827,8 +827,8 @@ end
                   ~(ADDR_MASK_SRAM_CTRL_MBOX__REGS)) == ADDR_SPACE_SRAM_CTRL_MBOX__REGS) begin
       dev_sel_s1n_50 = 5'd8;
 
-    end else if ((tl_s1n_50_us_h2d.a_address &
-                  ~(ADDR_MASK_MIO_SOC_PROXY__CTN)) == ADDR_SPACE_MIO_SOC_PROXY__CTN) begin
+    end else if (((tl_s1n_50_us_h2d.a_address < (ADDR_SPACE_MIO_SOC_PROXY__CTN + ADDR_SIZE_MIO_SOC_PROXY__CTN)) &&
+       (tl_s1n_50_us_h2d.a_address >= ADDR_SPACE_MIO_SOC_PROXY__CTN))) begin
       dev_sel_s1n_50 = 5'd9;
 
     end else if ((tl_s1n_50_us_h2d.a_address &
@@ -876,8 +876,8 @@ end
                   ~(ADDR_MASK_SRAM_CTRL_MBOX__RAM)) == ADDR_SPACE_SRAM_CTRL_MBOX__RAM) begin
       dev_sel_s1n_51 = 3'd1;
 
-    end else if ((tl_s1n_51_us_h2d.a_address &
-                  ~(ADDR_MASK_MIO_SOC_PROXY__CTN)) == ADDR_SPACE_MIO_SOC_PROXY__CTN) begin
+    end else if (((tl_s1n_51_us_h2d.a_address < (ADDR_SPACE_MIO_SOC_PROXY__CTN + ADDR_SIZE_MIO_SOC_PROXY__CTN)) &&
+       (tl_s1n_51_us_h2d.a_address >= ADDR_SPACE_MIO_SOC_PROXY__CTN))) begin
       dev_sel_s1n_51 = 3'd2;
 
     end else if ((tl_s1n_51_us_h2d.a_address &

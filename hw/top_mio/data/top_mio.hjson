@@ -266,7 +266,7 @@
           data_intg_passthru: "true",
           exec: "True",
           byte_write: "True",
-          size: "0x40000000",
+          size: "0x80000000",
         }
       }
       outgoing_alert: "mio"
@@ -645,7 +645,7 @@
   // For example, this allows us to designate a port as part of inter-module
   // connections.
   port: [
-    { 
+    {
     },
   ]
 
@@ -662,7 +662,7 @@
       // DMA LSIO triggers
       'dma.lsio_trigger'        : ['mio_soc_proxy.dma_lsio_trigger'],
 
-    
+
       // rv_plic connections
       'rv_plic_mio.msip' : ['rv_core_ibex_mio.irq_software'],
       'rv_plic_mio.irq'  : ['rv_core_ibex_mio.irq_external'],

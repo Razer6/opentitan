@@ -79,7 +79,7 @@ extern "C" {
  * address between #TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR and
  * `TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR + TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES`.
  */
-#define TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES 0x40000000u
+#define TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES 0x80000000u
 
 /**
  * Peripheral base address for regs device on sram_ctrl_ret_aon in top mio.
@@ -414,7 +414,7 @@ extern "C" {
 /**
  * Memory size for ctn in top mio.
  */
-#define TOP_MIO_CTN_SIZE_BYTES 0x40000000u
+#define TOP_MIO_CTN_SIZE_BYTES 0x80000000u
 
 /**
  * Memory base address for ram_ret_aon in top mio.

@@ -284,7 +284,7 @@
           data_intg_passthru: "true",
           exec: "True",
           byte_write: "True",
-          size: "0x40000000",
+          size: "0x80000000",
         }
       }
       outgoing_alert: "pwc"
@@ -663,7 +663,7 @@
   // For example, this allows us to designate a port as part of inter-module
   // connections.
   port: [
-    { 
+    {
     },
   ]
 
@@ -680,7 +680,7 @@
       // DMA LSIO triggers
       'dma.lsio_trigger'        : ['pwc_soc_proxy.dma_lsio_trigger'],
 
-    
+
       // rv_plic connections
       'rv_plic_pwc.msip' : ['rv_core_ibex_pwc.irq_software'],
       'rv_plic_pwc.irq'  : ['rv_core_ibex_pwc.irq_external'],
@@ -756,7 +756,7 @@
         'racl_ctrl_pwc.racl_policies'       : 'racl_policies',
         'racl_ctrl_pwc.racl_error_external' : 'racl_error',
         'ac_range_check_pwc.range_check_overwrite' : 'ac_range_check_overwrite',
-        'aon_timer_aon.aon_timer_rst_req'   : 'aon_timer_rst_req'                 
+        'aon_timer_aon.aon_timer_rst_req'   : 'aon_timer_rst_req'
     },
   },
 

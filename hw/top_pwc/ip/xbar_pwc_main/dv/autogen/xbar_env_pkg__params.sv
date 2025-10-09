@@ -17,7 +17,7 @@ tl_device_t xbar_devices[$] = '{
         '{32'h30000000, 32'h307fffff}
     }},
     '{"pwc_soc_proxy__ctn", '{
-        '{32'h40000000, 32'h7fffffff}
+        '{32'h40000000, 32'hbfffffff}
     }},
     '{"rv_plic_pwc", '{
         '{32'h28000000, 32'h2fffffff}

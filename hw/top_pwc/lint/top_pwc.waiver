@@ -45,3 +45,6 @@ waive -rules {LINE_LENGTH} -location {prim_misc_dft_pkg.sv} \
 waive -rules {LINE_LENGTH} -location {top_pwc_racl_pkg.sv} \
       -regexp {Line length of } \
       -comment "Waive line length violations in generated code. "
+
+waive -rules {LINE_LENGTH} -location {xbar_pwc_main.sv} -regexp {Line length of [0-9]+ exceeds 100 character limit} \
+      -comment "xbar_pwc_main is auto-generated and adhering to the line length limit is not always feasible for auto-generated code"

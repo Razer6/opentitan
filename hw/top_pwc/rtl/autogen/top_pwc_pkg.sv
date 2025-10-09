@@ -47,7 +47,7 @@ package top_pwc_pkg;
   /**
    * Peripheral size in bytes for ctn device on pwc_soc_proxy in top pwc.
    */
-  parameter int unsigned TOP_PWC_PWC_SOC_PROXY_CTN_SIZE_BYTES = 32'h40000000;
+  parameter int unsigned TOP_PWC_PWC_SOC_PROXY_CTN_SIZE_BYTES = 32'h80000000;
 
   /**
    * Peripheral base address for regs device on sram_ctrl_ret_aon in top pwc.
@@ -237,7 +237,7 @@ package top_pwc_pkg;
   /**
    * Memory size for ctn in top pwc.
    */
-  parameter int unsigned TOP_PWC_CTN_SIZE_BYTES = 32'h40000000;
+  parameter int unsigned TOP_PWC_CTN_SIZE_BYTES = 32'h80000000;
 
   /**
   * Memory base address for ram_ctn in top pwc.

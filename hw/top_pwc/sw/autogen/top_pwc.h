@@ -97,7 +97,7 @@ extern "C" {
  * address between #TOP_PWC_PWC_SOC_PROXY_CTN_BASE_ADDR and
  * `TOP_PWC_PWC_SOC_PROXY_CTN_BASE_ADDR + TOP_PWC_PWC_SOC_PROXY_CTN_SIZE_BYTES`.
  */
-#define TOP_PWC_PWC_SOC_PROXY_CTN_SIZE_BYTES 0x40000000u
+#define TOP_PWC_PWC_SOC_PROXY_CTN_SIZE_BYTES 0x80000000u
 
 /**
  * Peripheral base address for regs device on sram_ctrl_ret_aon in top pwc.
@@ -432,7 +432,7 @@ extern "C" {
 /**
  * Memory size for ctn in top pwc.
  */
-#define TOP_PWC_CTN_SIZE_BYTES 0x40000000u
+#define TOP_PWC_CTN_SIZE_BYTES 0x80000000u
 
 /**
  * Memory base address for ram_ret_aon in top pwc.

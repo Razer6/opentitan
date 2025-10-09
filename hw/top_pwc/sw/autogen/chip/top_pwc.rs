@@ -73,7 +73,7 @@ pub const PWC_SOC_PROXY_CTN_BASE_ADDR: usize = 0x40000000;
 /// memory-mapped registers associated with this peripheral should have an
 /// address between #PWC_SOC_PROXY_CTN_BASE_ADDR and
 /// `PWC_SOC_PROXY_CTN_BASE_ADDR + PWC_SOC_PROXY_CTN_SIZE_BYTES`.
-pub const PWC_SOC_PROXY_CTN_SIZE_BYTES: usize = 0x40000000;
+pub const PWC_SOC_PROXY_CTN_SIZE_BYTES: usize = 0x80000000;
 
 /// Peripheral base address for regs device on sram_ctrl_ret_aon in top pwc.
 ///
@@ -331,7 +331,7 @@ pub const RV_CORE_IBEX_PWC_CFG_SIZE_BYTES: usize = 0x800;
 pub const CTN_BASE_ADDR: usize = 0x40000000;
 
 /// Memory size for ctn in top pwc.
-pub const CTN_SIZE_BYTES: usize = 0x40000000;
+pub const CTN_SIZE_BYTES: usize = 0x80000000;
 
 /// Memory base address for ram_ret_aon in top pwc.
 pub const RAM_RET_AON_BASE_ADDR: usize = 0x30600000;

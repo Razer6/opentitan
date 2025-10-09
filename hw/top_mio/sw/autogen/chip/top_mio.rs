@@ -59,7 +59,7 @@ pub const MIO_SOC_PROXY_CTN_BASE_ADDR: usize = 0x40000000;
 /// memory-mapped registers associated with this peripheral should have an
 /// address between #MIO_SOC_PROXY_CTN_BASE_ADDR and
 /// `MIO_SOC_PROXY_CTN_BASE_ADDR + MIO_SOC_PROXY_CTN_SIZE_BYTES`.
-pub const MIO_SOC_PROXY_CTN_SIZE_BYTES: usize = 0x40000000;
+pub const MIO_SOC_PROXY_CTN_SIZE_BYTES: usize = 0x80000000;
 
 /// Peripheral base address for regs device on sram_ctrl_ret_aon in top mio.
 ///
@@ -317,7 +317,7 @@ pub const RV_CORE_IBEX_MIO_CFG_SIZE_BYTES: usize = 0x800;
 pub const CTN_BASE_ADDR: usize = 0x40000000;
 
 /// Memory size for ctn in top mio.
-pub const CTN_SIZE_BYTES: usize = 0x40000000;
+pub const CTN_SIZE_BYTES: usize = 0x80000000;
 
 /// Memory base address for ram_ret_aon in top mio.
 pub const RAM_RET_AON_BASE_ADDR: usize = 0x30600000;

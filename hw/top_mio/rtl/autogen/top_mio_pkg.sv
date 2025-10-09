@@ -37,7 +37,7 @@ package top_mio_pkg;
   /**
    * Peripheral size in bytes for ctn device on mio_soc_proxy in top mio.
    */
-  parameter int unsigned TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES = 32'h40000000;
+  parameter int unsigned TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES = 32'h80000000;
 
   /**
    * Peripheral base address for regs device on sram_ctrl_ret_aon in top mio.
@@ -227,7 +227,7 @@ package top_mio_pkg;
   /**
    * Memory size for ctn in top mio.
    */
-  parameter int unsigned TOP_MIO_CTN_SIZE_BYTES = 32'h40000000;
+  parameter int unsigned TOP_MIO_CTN_SIZE_BYTES = 32'h80000000;
 
   /**
   * Memory base address for ram_ctn in top mio.

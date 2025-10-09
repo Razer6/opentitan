@@ -32,7 +32,7 @@ package tl_mio_main_pkg;
   localparam logic [0:0][31:0] ADDR_MASK_MIO_PERI              = {
     32'h 007fffff
   };
-  localparam logic [31:0] ADDR_MASK_MIO_SOC_PROXY__CTN    = 32'h 3fffffff;
+  localparam logic [31:0] ADDR_SIZE_MIO_SOC_PROXY__CTN    = 32'h 80000000;
   localparam logic [31:0] ADDR_MASK_RV_PLIC_MIO           = 32'h 07ffffff;
   localparam logic [31:0] ADDR_MASK_RV_CORE_IBEX_MIO__CFG = 32'h 000007ff;
   localparam logic [31:0] ADDR_MASK_SRAM_CTRL_MAIN__REGS  = 32'h 0000003f;
