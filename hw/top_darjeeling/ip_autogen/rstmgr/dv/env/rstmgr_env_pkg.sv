@@ -45,8 +45,7 @@ package rstmgr_env_pkg;
     "u_daon_lc_aon",
     "u_daon_lc_shadowed",
     "u_daon_por",
-    "u_daon_por_io",
-    "u_daon_sys_io"
+    "u_daon_por_io"
   };
 
   // Instances of rstmgr_leaf_rst modules which have a shadow pair.

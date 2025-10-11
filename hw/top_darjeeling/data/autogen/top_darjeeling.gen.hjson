@@ -270,20 +270,6 @@
         clock: main
       }
       {
-        name: sys_io
-        gen: true
-        type: top
-        domains:
-        [
-          Aon
-        ]
-        shadowed: false
-        sw: false
-        path: rstmgr_aon_resets.rst_sys_io_n
-        parent: sys_src
-        clock: io
-      }
-      {
         name: spi_device
         gen: true
         type: top
@@ -3347,11 +3333,6 @@
         rst_aon_ni:
         {
           name: lc_aon
-          domain: Aon
-        }
-        rst_sys_ni:
-        {
-          name: sys_io
           domain: Aon
         }
       }

@@ -14,6 +14,8 @@ def preferred_clk():
         return "io"
     else:
         assert 0, "No preferred clock available"
+
+has_sys_io = any('sys_io' in d['name'] for d in output_rsts) if output_rsts else False
 %>\
 class rstmgr_leaf_rst_shadow_attack_vseq extends rstmgr_base_vseq;
   `uvm_object_utils(rstmgr_leaf_rst_shadow_attack_vseq)
@@ -33,8 +35,10 @@ class rstmgr_leaf_rst_shadow_attack_vseq extends rstmgr_base_vseq;
   endtask : body
 
   task leaf_rst_attack(string npath, string gpath);
+  % if has_sys_io:
     // Wait for any bit in rst_sys_${preferred_clk()}_n to become inactive.
     wait(|cfg.rstmgr_vif.resets_o.rst_sys_${preferred_clk()}_n);
+  % endif
     // Disable cascading reset assertions, since forcing related signals causes failures.
     cfg.rstmgr_cascading_sva_vif.disable_sva = 1'b1;
     `uvm_info(`gfn, $sformatf("Starting leaf attack between %s and %s", npath, gpath), UVM_MEDIUM)

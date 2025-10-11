@@ -30,7 +30,6 @@ package rstmgr_pkg;
     logic [PowerDomains-1:0] rst_lc_io_shadowed_n;
     logic [PowerDomains-1:0] rst_lc_io_n;
     logic [PowerDomains-1:0] rst_sys_n;
-    logic [PowerDomains-1:0] rst_sys_io_n;
     logic [PowerDomains-1:0] rst_spi_device_n;
     logic [PowerDomains-1:0] rst_spi_host0_n;
     logic [PowerDomains-1:0] rst_i2c0_n;
@@ -47,13 +46,12 @@ package rstmgr_pkg;
     prim_mubi_pkg::mubi4_t [PowerDomains-1:0] lc_io_shadowed;
     prim_mubi_pkg::mubi4_t [PowerDomains-1:0] lc_io;
     prim_mubi_pkg::mubi4_t [PowerDomains-1:0] sys;
-    prim_mubi_pkg::mubi4_t [PowerDomains-1:0] sys_io;
     prim_mubi_pkg::mubi4_t [PowerDomains-1:0] spi_device;
     prim_mubi_pkg::mubi4_t [PowerDomains-1:0] spi_host0;
     prim_mubi_pkg::mubi4_t [PowerDomains-1:0] i2c0;
   } rstmgr_rst_en_t;
 
-  parameter int NumOutputRst = 13 * PowerDomains;
+  parameter int NumOutputRst = 12 * PowerDomains;
 
   // cpu reset requests and status
   typedef struct packed {

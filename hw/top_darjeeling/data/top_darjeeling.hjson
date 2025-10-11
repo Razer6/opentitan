@@ -152,10 +152,9 @@
       { name: "lc_aon",         gen: true,  type: "top", parent: "lc_src",  clock: "aon"     }
       { name: "lc_io",          gen: true,  type: "top", parent: "lc_src",  clock: "io"      }
       { name: "sys",            gen: true,  type: "top", parent: "sys_src", clock: "main"    }
-      { name: "sys_io",         gen: true,  type: "top", parent: "sys_src", clock: "io" }
-      { name: "spi_device",     gen: true,  type: "top", parent: "lc_src", clock: "io", sw: true }
-      { name: "spi_host0",      gen: true,  type: "top", parent: "lc_src", clock: "io", sw: true }
-      { name: "i2c0",           gen: true,  type: "top", parent: "lc_src", clock: "io", sw: true },
+      { name: "spi_device",     gen: true,  type: "top", parent: "lc_src",  clock: "io", sw: true }
+      { name: "spi_host0",      gen: true,  type: "top", parent: "lc_src",  clock: "io", sw: true }
+      { name: "i2c0",           gen: true,  type: "top", parent: "lc_src",  clock: "io", sw: true },
     ]
   }
   // The reset requests: peripherals are deduced, but internal and debug need
@@ -537,7 +536,6 @@
       clock_group: "powerup",
       reset_connections: {rst_ni: "lc_io",
                           rst_aon_ni: "lc_aon",
-                          rst_sys_ni: "sys_io"
                          },
       domain: ["Aon"],
       base_addr: {

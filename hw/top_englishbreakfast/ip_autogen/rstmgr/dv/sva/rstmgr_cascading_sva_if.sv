@@ -155,7 +155,7 @@ interface rstmgr_cascading_sva_if (
 
     // Controlled by rst_sys_src_n.
     if (pd == rstmgr_pkg::DomainAonSel) begin : gen_sys_io_div4_chk
-      `CASCADED_ASSERTS(CascadeSysToSysIoDiv4, rst_sys_src_n[pd], resets_o.rst_sys_io_div4_n[pd],
+      `CASCADED_ASSERTS(CascadeSysToSysIo, rst_sys_src_n[pd], resets_o.rst_sys_io_div4_n[pd],
                         SysCycles, clk_io_div4_i)
     end
   end

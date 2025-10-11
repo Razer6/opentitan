@@ -12,6 +12,8 @@ def preferred_domain():
         return "io"
     else:
         assert 0, "No preferred clock available"
+
+has_sys_io = any('sys_io' in d['name'] for d in output_rsts) if output_rsts else False
 %>\
 // This has assertions that check the reset outputs of rstmgr cascade properly.
 // This means higher level resets always cause the lower level ones to assert.
@@ -161,11 +163,13 @@ interface rstmgr_cascading_sva_if (
     // The latter is checked independently in pwrmgr_rstmgr_sva_if.
     `CASCADED_ASSERTS(CascadeLcToSys, lc_rst_or_sys_req_n[pd], rst_sys_src_n[pd], SysCycles, clk_i)
 
+% if has_sys_io:
     // Controlled by rst_sys_src_n.
     if (pd == rstmgr_pkg::DomainAonSel) begin : gen_sys_${preferred_domain()}_chk
-      `CASCADED_ASSERTS(CascadeSysToSysIoDiv4, rst_sys_src_n[pd], resets_o.rst_sys_${preferred_domain()}_n[pd],
+      `CASCADED_ASSERTS(CascadeSysToSysIo, rst_sys_src_n[pd], resets_o.rst_sys_${preferred_domain()}_n[pd],
                         SysCycles, clk_${preferred_domain()}_i)
     end
+% endif
   end
 
   // Aon to POR
