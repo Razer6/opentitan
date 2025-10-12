@@ -245,3 +245,6 @@ waive -rules LINE_LENGTH  -location {RDP_ASYNC_FIFO_WR.sv}        -comment "rivo
 waive -rules LINE_LENGTH  -location {RVP_ASSERT_ALWAYS.sv}        -comment "rivos is OK with this warning"
 waive -rules LINE_LENGTH  -location {RVP_ASSERT_NOT_XZ.sv}        -comment "rivos is OK with this warning"
 waive -rules LINE_LENGTH  -location {rdplib.svh}                  -comment "rivos is OK with this warning"
+
+waive -rules TODO         -location {csrng_core.sv}               -comment "OT IP doesnt adhere to TODO comment rule"
+waive -rules TODO         -location {csrng_ctr_drbg_gen.sv}       -comment "OT IP doesnt adhere to TODO comment rule"
