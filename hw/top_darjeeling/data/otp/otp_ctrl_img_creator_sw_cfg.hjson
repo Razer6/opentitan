@@ -63,12 +63,6 @@
                     value: "0x739",
                 },
                 {
-                    name: "CREATOR_SW_CFG_ROM_EXEC_EN",
-                    // ROM execution is enabled if this item is set to a
-                    // non-zero value.
-                    value: "0xffffffff",
-                },
-                {
                     name: "CREATOR_SW_CFG_CPUCTRL",
                     // Value to write to the `cpuctrl` CSR in `rom_init()`.
                     // Note: Only bits 5:0 are written to the `cpuctrl` CSR.
