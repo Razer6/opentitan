@@ -186,7 +186,7 @@ cc_library(
         "//sw/device/silicon_creator/lib/drivers:sensor_ctrl",
         "//sw/device/silicon_creator/lib/drivers:watchdog",
         "//sw/device/silicon_creator/lib/sigverify",
-        "@rom_hooks",
+        "@earlgrey_rom_hooks",
     ],
 )
 

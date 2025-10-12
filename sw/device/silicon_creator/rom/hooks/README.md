@@ -99,5 +99,5 @@ To link an OpenTitan ROM image with external hooks override, use `bazel --overri
 For example:
 
 ``` bash
-./bazelisk.sh test --override_module=rom_hooks=<path/to/ROM_hooks> --test_output=streamed --cache_test_results=no //sw/device/silicon_creator/rom/e2e:rom_e2e_smoke_sim_verilator
+EARLGREY_ROM_HOOKS_DIR=/PATH/TO/LOCAL/ROM/HOOKS ./bazelisk.sh test --test_output=streamed --cache_test_results=no //sw/device/silicon_creator/rom/e2e:rom_e2e_smoke_sim_verilator
 ```
