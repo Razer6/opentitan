@@ -15,7 +15,7 @@ module bat (
   input  tlul_pkg::tl_d2h_t tl_out_d2h_i
 );
 
-  // A valid request in the range [1G,2G) or a broadcast request is considered to be valid
+  // A valid request in the range [1G,3G) or a broadcast request is considered to be valid
   logic ctn_request;
   assign ctn_request = tl_in_h2d_i.a_valid & (tl_in_h2d_i.a_address[31:30] >= 2'b01)
                                            & (tl_in_h2d_i.a_address[31:30] <  2'b11);
@@ -33,12 +33,12 @@ module bat (
 
   logic broadcast_pwc;
   assign broadcast_pwc = (tl_in_h2d_i.a_address[31:30] == 2'd01) &  // decode on pre-bat addr
-                         (tl_in_h2d_i.a_address[25:21] == 5'd31) & 
+                         (tl_in_h2d_i.a_address[25:21] == 5'd31) &
                          (tl_in_h2d_i.a_address[20:16] == 5'd9);
 
   // up-lift PWC.bcastAddr by 32K, assume there are less than 32K bcast registers
   logic [3:0] post_bat_page_id;
-  assign post_bat_page_id = broadcast_pwc ? (tl_in_h2d_i.a_address[15:12] + 4'd8) : 
+  assign post_bat_page_id = broadcast_pwc ? (tl_in_h2d_i.a_address[15:12] + 4'd8) :
                                              tl_in_h2d_i.a_address[15:12];
 
   logic [top_pkg::TL_AW-1:0] bat_address;
@@ -47,7 +47,7 @@ module bat (
   // else use the original address
   assign bat_address = ctn_request ?          // CTN: [1G,2G), indicates wether addr[29:28],
     {                                         // [27:26] need to be recovered
-      post_bat_addr_31_30,                    // Need to zero out [31:30] to shift ibex 1G-3G down to 
+      post_bat_addr_31_30,                    // Need to zero out [31:30] to shift ibex 1G-3G down to
                                               // system 0-2G
       post_bat_sid,                           // offset'ed SID, to-be-recovered
       post_bat_cid,                           // offset'ed CID, to-be-recovered
