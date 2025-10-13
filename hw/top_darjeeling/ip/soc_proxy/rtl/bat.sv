@@ -25,7 +25,7 @@ module bat (
 
   // Need to subtract my socket and chip ID's before sending to SCX
   // so that transaction targeting our own SCS instance will stay on our SCX
-  // before sending the transaction to CTN, the scsctnif module will add 
+  // before sending the transaction to CTN, the scsctnif module will add
   // my socket and chip ID's back
   logic[1:0] post_bat_sid, post_bat_cid;
   assign post_bat_sid = tl_in_h2d_i.a_address[29:28] - integrator_id_i[3:2]; // Socket ID
@@ -51,7 +51,7 @@ module bat (
                                               // system 0-2G
       post_bat_sid,                           // offset'ed SID, to-be-recovered
       post_bat_cid,                           // offset'ed CID, to-be-recovered
-      tl_in_h2d_i.a_address[25:21],           // SSID is NOT altered, SSID for SCS is looped back by SCX, 
+      tl_in_h2d_i.a_address[25:21],           // SSID is NOT altered, SSID for SCS is looped back by SCX,
                                               // otherwise routed to SCS's CTR
       tl_in_h2d_i.a_address[20:16],           // UID is not altered
       post_bat_page_id,                       // PageID is altered/recovered if {SSID = 31, UID = 9 = PWC}
