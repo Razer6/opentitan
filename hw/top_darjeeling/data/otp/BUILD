@@ -142,7 +142,6 @@ otp_json(
         otp_partition(
             name = "HW_CFG1",
             items = {
-                "SOC_DBG_STATE": "PRE_PROD",
                 # Enable code execution from SRAM.
                 "EN_SRAM_IFETCH": True,
             },
