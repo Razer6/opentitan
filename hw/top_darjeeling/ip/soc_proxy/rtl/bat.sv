@@ -47,14 +47,15 @@ module bat (
   // else use the original address
   assign bat_address = ctn_request ?          // CTN: [1G,2G), indicates wether addr[29:28],
     {                                         // [27:26] need to be recovered
-      post_bat_addr_31_30,                    // Need to zero out [31:30] to shift ibex 1G-3G down to
-                                              // system 0-2G
+      post_bat_addr_31_30,                    // Need to zero out [31:30] to shift ibex 1G-3G
+                                              // down to system 0-2G
       post_bat_sid,                           // offset'ed SID, to-be-recovered
       post_bat_cid,                           // offset'ed CID, to-be-recovered
-      tl_in_h2d_i.a_address[25:21],           // SSID is NOT altered, SSID for SCS is looped back by SCX,
-                                              // otherwise routed to SCS's CTR
+      tl_in_h2d_i.a_address[25:21],           // SSID is NOT altered, SSID for SCS is looped
+                                              // back by SCX, otherwise routed to SCS's CTR
       tl_in_h2d_i.a_address[20:16],           // UID is not altered
-      post_bat_page_id,                       // PageID is altered/recovered if {SSID = 31, UID = 9 = PWC}
+      post_bat_page_id,                       // PageID is altered/recovered if
+                                              // {SSID = 31, UID = 9 = PWC}
       tl_in_h2d_i.a_address[11:0]
     }
     : tl_in_h2d_i.a_address;
