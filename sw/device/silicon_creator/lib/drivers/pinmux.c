@@ -115,11 +115,22 @@ static rom_error_t pinmux_configure_pull(dt_pad_t pad, bool enable, bool up) {
   uintptr_t reg_addr;
   uint32_t reg_value = 0;
 
+#if defined(OPENTITAN_IS_EARLGREY)
   reg_value = bitfield_bit32_write(reg_value,
                                    PINMUX_MIO_PAD_ATTR_0_PULL_EN_0_BIT, enable);
   reg_value = bitfield_bit32_write(reg_value,
                                    PINMUX_MIO_PAD_ATTR_0_PULL_SELECT_0_BIT, up);
 
+#elif defined(OPENTITAN_IS_DARJEELING)
+  if (enable) {
+    reg_value = bitfield_bit32_write(reg_value,
+                                     up ? PINMUX_MIO_PAD_ATTR_0_PUEN_0_BIT
+                                        : PINMUX_MIO_PAD_ATTR_0_PDEN_0_BIT,
+                                     enable);
+  }
+#else
+#error unsupported top
+#endif
   HARDENED_RETURN_IF_ERROR(pad_attr_reg_addr(pad, &reg_addr));
 
   abs_mmio_write32(reg_addr, reg_value);
