@@ -75,19 +75,62 @@ module tb;
   bind dut.gen_fsm_scramble_enabled.u_checker_fsm.u_compare rom_ctrl_compare_if u_compare_if ();
 
   // Instantiate the memory backdoor util instance.
-  `define ROM_CTRL_MEM_HIER \
-    tb.dut.gen_rom_scramble_enabled.u_rom.u_rom.u_prim_rom.mem
+  if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplGeneric) begin : gen_impl_generic
+    `define ROM_CTRL_MEM_HIER tb.dut.gen_rom_scramble_enabled.u_rom.u_rom.u_prim_rom.mem
+    initial begin : mem_bkdr_util_gen
+      rom_ctrl_bkdr_util m_rom_ctrl_bkdr_util;
+      m_rom_ctrl_bkdr_util = new(.name  ("rom_ctrl_bkdr_util"),
+                                .path  (`DV_STRINGIFY(`ROM_CTRL_MEM_HIER)),
+                                .depth ($size(`ROM_CTRL_MEM_HIER)),
+                                .n_bits($bits(`ROM_CTRL_MEM_HIER)),
+                                .err_detection_scheme(mem_bkdr_util_pkg::EccInv_39_32),
+                                .extra_bits_per_subword(0),
+                                // Encryption configuration will be provided dynamically.
+                                .key('0), .nonce('0)  // Not used.
+                                );
+      uvm_config_db#(rom_ctrl_bkdr_util)::set(null, "*.env", "rom_ctrl_bkdr_util",
+        m_rom_ctrl_bkdr_util);
+    end : mem_bkdr_util_gen
+    `undef ROM_CTRL_MEM_HIER
+  end else if (`PRIM_DEFAULT_IMPL == prim_pkg::ImplRdp) begin : gen_impl_rdp
+    if (ROM_SIZE_BYTES == 32'h8000) begin : gen_impl_rdp_32k
+      `define ROM_CTRL_MEM_HIER tb.dut.gen_rom_scramble_enabled.u_rom.u_rom.u_prim_rom.gen_ecc_rom.gen_32k_rom.u_rom.ram0.u0.mem_core_array
+      initial begin : mem_bkdr_util_gen
+        rom_ctrl_bkdr_util m_rom_ctrl_bkdr_util;
+        m_rom_ctrl_bkdr_util = new(.name  ("rom_ctrl_bkdr_util"),
+                                  .path  (`DV_STRINGIFY(`ROM_CTRL_MEM_HIER)),
+                                  .depth ($size(`ROM_CTRL_MEM_HIER)),
+                                  .n_bits($bits(`ROM_CTRL_MEM_HIER)),
+                                  .err_detection_scheme(mem_bkdr_util_pkg::EccInv_39_32),
+                                  .extra_bits_per_subword(1), // Rivos 40bit memory instead of 39
+                                  // Encryption configuration will be provided dynamically.
+                                  .key('0), .nonce('0)  // Not used.
+                                  );
+        uvm_config_db#(rom_ctrl_bkdr_util)::set(null, "*.env", "rom_ctrl_bkdr_util",
+          m_rom_ctrl_bkdr_util);
+      end : mem_bkdr_util_gen
+      `undef ROM_CTRL_MEM_HIER
+    end else if (ROM_SIZE_BYTES == 32'h10000) begin : gen_impl_rdp_64k
+      `define ROM_CTRL_MEM_HIER tb.dut.gen_rom_scramble_enabled.u_rom.u_rom.u_prim_rom.gen_ecc_rom.gen_64k_rom.u_rom.ram0.u0.mem_core_array
+      initial begin : mem_bkdr_util_gen
+        rom_ctrl_bkdr_util m_rom_ctrl_bkdr_util;
+        m_rom_ctrl_bkdr_util = new(.name  ("rom_ctrl_bkdr_util"),
+                                  .path  (`DV_STRINGIFY(`ROM_CTRL_MEM_HIER)),
+                                  .depth ($size(`ROM_CTRL_MEM_HIER)),
+                                  .n_bits($bits(`ROM_CTRL_MEM_HIER)),
+                                  .err_detection_scheme(mem_bkdr_util_pkg::EccInv_39_32),
+                                  .extra_bits_per_subword(1), // Rivos 40bit memory instead of 39
+                                  // Encryption configuration will be provided dynamically.
+                                  .key('0), .nonce('0)  // Not used.
+                                  );
+        uvm_config_db#(rom_ctrl_bkdr_util)::set(null, "*.env", "rom_ctrl_bkdr_util",
+          m_rom_ctrl_bkdr_util);
+      end : mem_bkdr_util_gen
+      `undef ROM_CTRL_MEM_HIER
+    end : gen_impl_rdp_64k
+  end : gen_impl_rdp
 
   initial begin
-    rom_ctrl_bkdr_util m_rom_ctrl_bkdr_util;
-    m_rom_ctrl_bkdr_util = new(.name  ("rom_ctrl_bkdr_util"),
-                               .path  (`DV_STRINGIFY(`ROM_CTRL_MEM_HIER)),
-                               .depth ($size(`ROM_CTRL_MEM_HIER)),
-                               .n_bits($bits(`ROM_CTRL_MEM_HIER)),
-                               .err_detection_scheme(mem_bkdr_util_pkg::EccInv_39_32),
-                               // Encryption configuration will be provided dynamically.
-                               .key('0), .nonce('0)  // Not used.
-                              );
 
     // drive clk and rst_n from clk_if
     clk_rst_if.set_active();
@@ -99,8 +142,6 @@ module tb;
         "*.env.m_tl_agent_rom_ctrl_prim_reg_block*", "vif", tl_rom_if);
     uvm_config_db#(virtual tl_if)::set(null,
         "*.env.m_tl_agent_rom_ctrl_regs_reg_block*", "vif", tl_if);
-    uvm_config_db#(rom_ctrl_bkdr_util)::set(null, "*.env", "rom_ctrl_bkdr_util",
-        m_rom_ctrl_bkdr_util);
     uvm_config_db#(virtual kmac_app_intf)::set(null, "*.env.m_kmac_agent*", "vif", kmac_app_if);
     uvm_config_db#(rom_ctrl_vif)::set(null, "*.env", "rom_ctrl_vif", dut.rom_ctrl_if);
     uvm_config_db#(virtual rom_ctrl_fsm_if)::set(
@@ -127,6 +168,5 @@ module tb;
   // We see a response from KMAC before we assert that we're done to pwrmgr
   `ASSERT(KmacResponseBeforePwmgrDone_A,
           pwrmgr_data.done != prim_mubi_pkg::MuBi4False |-> kmac_done_occured, clk, rst_n)
-  `undef ROM_CTRL_MEM_HIER
 
 endmodule

@@ -103,7 +103,8 @@ module tb;
     .ram_cfg_spi2sys_i(ram_cfg_spi2sys),
     .ram_cfg_rsp_spi2sys_o(),
 
-    .mbist_en_i     (1'b0),
+    // .mbist_en_i     (1'b0), // Rivos
+    .tston_i        (prim_mubi_pkg::MuBi4False), //Rivos
     .scan_clk_i     (1'b0),
     .scan_rst_ni    (1'b0),
     .scanmode_i     (prim_mubi_pkg::MuBi4False)

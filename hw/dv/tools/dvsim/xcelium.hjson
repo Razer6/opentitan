@@ -59,6 +59,7 @@
                "-I{proj_root}/../../rdplib/dv/xtors/common_modules/cpp",
                "-I{proj_root}/../../rdplib/dv/xtors/slave_xtor/lib/cpp",
                "+define+RDV_NO_SYSCTL",
+               "+define+RVP_COVER_RDV_DIS",
                "+define+VIRAGE_FAST_VERILOG",
                // Enable new SV constructs needed for rvsys
                "-newsv"

@@ -13,7 +13,9 @@
                      "{dv_root}/tools/dvsim/bazel.hjson",
                      "{dv_root}/tools/dvsim/{tool}.hjson"]
 
-  sv_flist_gen_flags: ["--mapping=lowrisc:prim_generic:all:0.1",
+  sv_flist_gen_flags: [
+                       // "--mapping=lowrisc:prim_generic:all:0.1",
+                       "--mapping=lowrisc:prim_rdp:all:0.1", // Rivos
                        "--mapping=lowrisc:systems:top_darjeeling:0.1"]  # FIXME: Rivos Provde default cnst mappings from DJ
 
   // Default directory structure for the output
@@ -70,10 +72,15 @@
                "+define+UVM_REG_DATA_WIDTH={tl_dw}",
                "+define+UVM_REG_BYTENABLE_WIDTH={tl_dbw}",
                "+define+SIMULATION",
-               "+define+DUT_HIER={dut_instance}"]
+               "+define+DUT_HIER={dut_instance}",
+               "+define+PRIM_DEFAULT_IMPL=prim_pkg::ImplRdp +define+PRIM_RDP", // Rivos: Use RDP
+               "+define+RVP_RDV_DIS", // Rivos: This disables randomization in RDP_SYNC
+               ]
 
   run_opts: ["+UVM_NO_RELNOTES",
-             "+UVM_VERBOSITY={expand_uvm_verbosity_{verbosity}}"]
+             "+UVM_VERBOSITY={expand_uvm_verbosity_{verbosity}}",
+             "-sv_lib {build_dir}/fusesoc-work/libdpi.so",
+            ]
 
   // Default list of things to export to shell
   exports: [

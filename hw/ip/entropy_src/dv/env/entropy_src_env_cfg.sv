@@ -275,6 +275,7 @@ class entropy_src_env_cfg extends cip_base_env_cfg #(.RAL_T(entropy_src_reg_bloc
     // only support 1 outstanding TL item
     m_tl_agent_cfg.max_outstanding_req = 1;
 
+`ifndef RVP_RDV_DIS // Rivos: Simulating without random delays.
     // Disable random CDC delays in alert sender because the scoreboard otherwise could not
     // accurately predict whether an alert request gets merged with an outstanding request or not
     // (#18796).
@@ -287,6 +288,7 @@ class entropy_src_env_cfg extends cip_base_env_cfg #(.RAL_T(entropy_src_reg_bloc
      endcase
      disabled_prim_cdc_rand_delays[i] = {path, ".u_prim_cdc_rand_delay"};
     end
+`endif
   endfunction
 
   virtual function string convert2string();

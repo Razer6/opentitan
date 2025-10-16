@@ -12,7 +12,8 @@ package prim_pkg;
     ImplGeneric,
     ImplXilinx,
     ImplBadbit,
-    ImplXilinx_ultrascale
+    ImplXilinx_ultrascale,
+    ImplRdp // Rivos
   } impl_e;
 
   `ifndef PRIM_DEFAULT_IMPL

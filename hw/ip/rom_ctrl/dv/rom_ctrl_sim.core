@@ -15,6 +15,8 @@ filesets:
       - lowrisc:dv:rom_ctrl_test
       - lowrisc:dv:rom_ctrl_sva
       - lowrisc:dv:rom_ctrl_cov
+      # TODO(#27347): prim_pkg is deprecated
+      - lowrisc:prim:prim_pkg
     files:
       - tb/tb.sv
       - tb/rom_ctrl_if.sv

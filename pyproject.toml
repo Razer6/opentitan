@@ -13,7 +13,7 @@ dependencies = [
   "beautifulsoup4 ~= 4.12",
   "hjson==3.1.0",
   "libclang==16.0.0",
-  "libcst ~= 1.1",
+  "libcst == 1.5.1",
   "lxml ~= 5.0",
   "mako ~= 1.2",
   "ninja ~= 1.11.1.1",
@@ -65,8 +65,9 @@ dependencies = [
   "tockloader==1.13",
 
   # The hardware package manager and build system.
-  "fusesoc @ git+https://gitlab.ba.rivosinc.com/pub/it/fusesoc.git@v2.4.3+rivos.20250829",
+  "fusesoc @ git+https://gitlab.ba.rivosinc.com/pub/it/fusesoc.git@v2.4.3+rivos.20250925",
   "edalize @ git+https://gitlab.ba.rivosinc.com/pub/it/edalize.git@v0.6.1+rivos.20250909",
+  "rivos-fusesoc-filters @ https://pypi.ba.rivosinc.com/packages/rivos_fusesoc_filters-0.0.5-py3-none-any.whl",
 
   "peakrdl-systemrdl >= 1.0",
 ]
