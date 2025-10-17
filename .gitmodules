@@ -1,0 +1,3 @@
+[submodule "sw/vendor/rivos/rot-rom-hooks"]
+	path = sw/vendor/rivos/rot-rom-hooks
+	url = git@gitlab.ba.rivosinc.com:rv/sw/int/fw/rot-rom-hooks.git
