@@ -273,6 +273,13 @@ use_repo(crate, "elf2tab_index")
 tock = use_extension("//third_party/tock:extensions.bzl", "tock")
 use_repo(tock, "elf2tab", "libtock", "tock")
 
+rtl_store_deps = use_extension("//third_party/rtl_store:deps.bzl", "rtl_store_deps")
+use_repo(rtl_store_deps, "bazel_skylib_150")
+use_repo(rtl_store_deps, "riplang-tool")
+
+rtl_store = use_extension("//third_party/rtl_store:extensions.bzl", "rtl_store")
+use_repo(rtl_store, "rtl_store")
+
 # Repository rules:
 bitstreams_repo = use_repo_rule("//rules:bitstreams.bzl", "bitstreams_repo")
 

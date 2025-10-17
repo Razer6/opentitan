@@ -876,36 +876,10 @@
         ]
       }
     },
-    "//third_party/rust:extensions.bzl%serde_annotate": {
+    "//third_party/rtl_store:deps.bzl%rtl_store_deps": {
       "general": {
-        "bzlTransitiveDigest": "QDMDUXqVCpQP+b1YPGlZm5j6q1qJN3zW7rIlV4cazwA=",
-        "usagesDigest": "Tsf/q9LjKCtQ8nKZW4yKxNPGltd7MZ1oZ54ZaytQHiI=",
-        "recordedFileInputs": {},
-        "recordedDirentsInputs": {},
-        "envVariables": {},
-        "generatedRepoSpecs": {
-          "lowrisc_serde_annotate": {
-            "repoRuleId": "@@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
-            "attributes": {
-              "integrity": "sha256-pT+WAj/aVJADXzwHjNmKXIDh+7yWiy8ti8dENmDb7z4=",
-              "strip_prefix": "serde-annotate-0.0.13",
-              "url": "https://github.com/lowRISC/serde-annotate/archive/refs/tags/v0.0.13.tar.gz"
-            }
-          }
-        },
-        "recordedRepoMappingEntries": [
-          [
-            "",
-            "bazel_tools",
-            "bazel_tools"
-          ]
-        ]
-      }
-    },
-    "//third_party/scs_tests:extensions.bzl%rtl_store_deps": {
-      "general": {
-        "bzlTransitiveDigest": "u6orsjgQofTeHUOhkV13Y9x0otMWTAb/QATxCf/7jgg=",
-        "usagesDigest": "xwOzMuyrkfmZ3JFEDGuswR8j7Va0bQwlpVsQBboW/V8=",
+        "bzlTransitiveDigest": "yhU9eHkbeh6mbnBTHwQ+Przaap07ZEMzWTlMcI+Kt5o=",
+        "usagesDigest": "kUTO81rQI+vSDYFg0CoB2ot2uLVKTX5BmyOZdEmYkxE=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -913,10 +887,10 @@
           "riplang-tool": {
             "repoRuleId": "@@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
             "attributes": {
-              "url": "https://gitlab.ba.rivosinc.com/api/v4/projects/234/packages/generic/rivos-sdk-riplang/0.27.0-20250925T172245.gb308cc7/riplang-centos.tar.xz",
-              "sha256": "899d4fd1fec42c3465d734d9fd263d8883762f27c9006a4220d86e42e025a609",
-              "build_file": "@@+_repo_rules3+rtl_store//fwlib/riplang:BUILD.riplang",
-              "strip_prefix": "release/sw/sdk/modules/centos.7/x86_64/riplang/20250925T172245.gb308cc7"
+              "url": "https://gitlab.ba.rivosinc.com/api/v4/projects/234/packages/generic/rivos-sdk-riplang/0.27.5-20251024T123503.gb1dd998/riplang-centos.tar.xz",
+              "sha256": "215069861cdedc6d6913ce29bbe075c1c7cec0e78714e67c05ff74bb1c412eab",
+              "build_file": "@@+rtl_store+rtl_store//fwlib/riplang:BUILD.riplang",
+              "strip_prefix": "release/sw/sdk/modules/centos.7/x86_64/riplang/20251024T123503.gb1dd998"
             }
           },
           "bazel_skylib_150": {
@@ -939,7 +913,59 @@
           [
             "",
             "rtl_store",
-            "+_repo_rules3+rtl_store"
+            "+rtl_store+rtl_store"
+          ]
+        ]
+      }
+    },
+    "//third_party/rtl_store:extensions.bzl%rtl_store": {
+      "general": {
+        "bzlTransitiveDigest": "zhCC/f21t0ak2vUuOJrdAbjMkAcihAgmiVlpqEmcST4=",
+        "usagesDigest": "o2XFYYcmYV6BNBUF2tUvYvv+VI79svMMBVii9jCsDxw=",
+        "recordedFileInputs": {},
+        "recordedDirentsInputs": {},
+        "envVariables": {},
+        "generatedRepoSpecs": {
+          "rtl_store": {
+            "repoRuleId": "@@bazel_tools//tools/build_defs/repo:git.bzl%git_repository",
+            "attributes": {
+              "commit": "3568db2396166881f29779ca4409b580d3886d14",
+              "remote": "git@gitlab.ba.rivosinc.com:rv/sw/int/fw/rtl_store.git",
+              "shallow_since": "1761946040 +0000"
+            }
+          }
+        },
+        "recordedRepoMappingEntries": [
+          [
+            "",
+            "bazel_tools",
+            "bazel_tools"
+          ]
+        ]
+      }
+    },
+    "//third_party/rust:extensions.bzl%serde_annotate": {
+      "general": {
+        "bzlTransitiveDigest": "QDMDUXqVCpQP+b1YPGlZm5j6q1qJN3zW7rIlV4cazwA=",
+        "usagesDigest": "Tsf/q9LjKCtQ8nKZW4yKxNPGltd7MZ1oZ54ZaytQHiI=",
+        "recordedFileInputs": {},
+        "recordedDirentsInputs": {},
+        "envVariables": {},
+        "generatedRepoSpecs": {
+          "lowrisc_serde_annotate": {
+            "repoRuleId": "@@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
+            "attributes": {
+              "integrity": "sha256-pT+WAj/aVJADXzwHjNmKXIDh+7yWiy8ti8dENmDb7z4=",
+              "strip_prefix": "serde-annotate-0.0.13",
+              "url": "https://github.com/lowRISC/serde-annotate/archive/refs/tags/v0.0.13.tar.gz"
+            }
+          }
+        },
+        "recordedRepoMappingEntries": [
+          [
+            "",
+            "bazel_tools",
+            "bazel_tools"
           ]
         ]
       }

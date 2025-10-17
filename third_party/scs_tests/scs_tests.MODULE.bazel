@@ -5,11 +5,6 @@
 local_repository = use_repo_rule("@bazel_tools//tools/build_defs/repo:local.bzl", "local_repository")
 
 local_repository(
-    name = "rtl_store",
-    path = "../dv/tests/rtl_store",
-)
-
-local_repository(
     name = "scs-tests",
     path = "../dv/tests",
 )
@@ -18,7 +13,3 @@ local_repository(
     name = "common",
     path = "../dv/tests/src/common",
 )
-
-rtl_store_deps = use_extension("//third_party/scs_tests:extensions.bzl", "rtl_store_deps")
-use_repo(rtl_store_deps, "bazel_skylib_150")
-use_repo(rtl_store_deps, "riplang-tool")
