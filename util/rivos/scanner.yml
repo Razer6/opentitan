@@ -1,0 +1,15 @@
+# Secret Scanner Configuration
+# This file defines which directories to scan for secret files
+
+# Path to the SOPS configuration file
+sops_config_file: "../../.sops.yaml"
+
+# Additional patterns to scan for (beyond SOPS patterns)
+additional_patterns:
+  - "*.tapeout"
+
+scan_directories:
+  - "/work/rschilling"
+  - "/work/davidschrammel"
+  - "/work/aadhithan/"
+  - "/work/surendramsk/"
