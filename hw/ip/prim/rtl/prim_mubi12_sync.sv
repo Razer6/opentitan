@@ -118,7 +118,8 @@ module prim_mubi12_sync
       end
       `ASSERT(OutputIfUnstable_A, sig_unstable |-> mubi_o == {NumCopies{reset_value}})
       `ASSERT(OutputDelay_A,
-              rst_ni |-> ##[3:4] sig_unstable || mubi_o == {NumCopies{$past(mubi_in_sva_q, 2)}})
+              rst_ni |-> ##[4:5] sig_unstable || mubi_o == {NumCopies{$past(mubi_in_sva_q, 3)}})
+      // Rivos: Changed from [3:4] to [4:5] and 2 to 3 because (RDP_SYNC MAX_DELAY = DEPTH = 2)
 `endif
     end else begin : gen_no_stable_chks
       assign mubi = mubi_sync;
@@ -127,9 +128,13 @@ module prim_mubi12_sync
       always_ff @(posedge clk_i) begin
         mubi_in_sva_q <= mubi_i;
       end
+      // `ASSERT(OutputDelay_A,
+      //         rst_ni |-> ##3 (mubi_o == {NumCopies{$past(mubi_in_sva_q, 2)}} ||
+      //                         $past(mubi_in_sva_q, 2) != $past(mubi_in_sva_q, 1)))
+      // Rivos: RDP_SYNC MAX_DELAY = DEPTH = 2 instead of 1 for prim_generic.
       `ASSERT(OutputDelay_A,
-              rst_ni |-> ##3 (mubi_o == {NumCopies{$past(mubi_in_sva_q, 2)}} ||
-                              $past(mubi_in_sva_q, 2) != $past(mubi_in_sva_q, 1)))
+              rst_ni |-> ##4 (mubi_o == {NumCopies{$past(mubi_in_sva_q, 3)}} ||
+                              $past(mubi_in_sva_q, 3) != $past(mubi_in_sva_q, 1)))
 `endif
     end
   end else begin : gen_no_flops
