@@ -514,6 +514,7 @@ module top_mio #(
       .next_dm_addr_i(rv_dm_next_dm_addr_i),
       .jtag_i(jtag_pkg::JTAG_REQ_DEFAULT),
       .jtag_o(),
+      .lc_init_done_i(lc_ctrl_pkg::Off),
       .lc_hw_debug_clr_i(lc_ctrl_pkg::Off),
       .lc_hw_debug_en_i(mio_soc_proxy_lc_hw_debug_en),
       .lc_dft_en_i(lc_ctrl_pkg::Off),

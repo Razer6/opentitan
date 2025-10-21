@@ -1666,6 +1666,18 @@
           index: -1
         }
         {
+          name: lc_init_done
+          desc: Lifecycle initialization done signal coming from life cycle controller.
+          struct: lc_tx
+          package: lc_ctrl_pkg
+          type: uni
+          act: rcv
+          width: 1
+          default: lc_ctrl_pkg::Off
+          inst_name: rv_dm
+          index: -1
+        }
+        {
           name: lc_hw_debug_clr
           desc:
             '''
@@ -17215,6 +17227,18 @@
         type: req_rsp
         act: rsp
         width: 1
+        inst_name: rv_dm
+        index: -1
+      }
+      {
+        name: lc_init_done
+        desc: Lifecycle initialization done signal coming from life cycle controller.
+        struct: lc_tx
+        package: lc_ctrl_pkg
+        type: uni
+        act: rcv
+        width: 1
+        default: lc_ctrl_pkg::Off
         inst_name: rv_dm
         index: -1
       }

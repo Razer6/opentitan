@@ -24,45 +24,46 @@
 
 // Include guard for assembler
 #ifdef __ASSEMBLER__
-/**
- * Memory base for mio_soc_proxy_ctn in top mio.
- */
-#define TOP_MIO_CTN_BASE_ADDR 0x40000000
 
 /**
- * Memory size for mio_soc_proxy_ctn in top mio.
+ * Memory base for ctn memory on mio_soc_proxy in top mio.
  */
-#define TOP_MIO_CTN_SIZE_BYTES 0x80000000
+#define TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR 0x40000000
 
 /**
- * Memory base for sram_ctrl_ret_aon_ram_ret_aon in top mio.
+ * Memory size for ctn memory on mio_soc_proxy in top mio.
  */
-#define TOP_MIO_RAM_RET_AON_BASE_ADDR 0x30600000
+#define TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES 0x80000000
 
 /**
- * Memory size for sram_ctrl_ret_aon_ram_ret_aon in top mio.
+ * Memory base for ram memory on sram_ctrl_ret_aon in top mio.
  */
-#define TOP_MIO_RAM_RET_AON_SIZE_BYTES 0x1000
+#define TOP_MIO_SRAM_CTRL_RET_AON_RAM_BASE_ADDR 0x30600000
 
 /**
- * Memory base for sram_ctrl_main_ram_main in top mio.
+ * Memory size for ram memory on sram_ctrl_ret_aon in top mio.
  */
-#define TOP_MIO_RAM_MAIN_BASE_ADDR 0x10000000
+#define TOP_MIO_SRAM_CTRL_RET_AON_RAM_SIZE_BYTES 0x1000
 
 /**
- * Memory size for sram_ctrl_main_ram_main in top mio.
+ * Memory base for ram memory on sram_ctrl_main in top mio.
  */
-#define TOP_MIO_RAM_MAIN_SIZE_BYTES 0x10000
+#define TOP_MIO_SRAM_CTRL_MAIN_RAM_BASE_ADDR 0x10000000
 
 /**
- * Memory base for sram_ctrl_mbox_ram_mbox in top mio.
+ * Memory size for ram memory on sram_ctrl_main in top mio.
  */
-#define TOP_MIO_RAM_MBOX_BASE_ADDR 0x11000000
+#define TOP_MIO_SRAM_CTRL_MAIN_RAM_SIZE_BYTES 0x10000
 
 /**
- * Memory size for sram_ctrl_mbox_ram_mbox in top mio.
+ * Memory base for ram memory on sram_ctrl_mbox in top mio.
  */
-#define TOP_MIO_RAM_MBOX_SIZE_BYTES 0x1000
+#define TOP_MIO_SRAM_CTRL_MBOX_RAM_BASE_ADDR 0x11000000
+
+/**
+ * Memory size for ram memory on sram_ctrl_mbox in top mio.
+ */
+#define TOP_MIO_SRAM_CTRL_MBOX_RAM_SIZE_BYTES 0x1000
 
 
 /**

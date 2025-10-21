@@ -335,42 +335,42 @@ extern "C" {
 
 
 /**
- * Memory base address for ctn in top mio.
+ * Memory base address for ctn memory on mio_soc_proxy in top mio.
  */
 #define TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR 0x40000000u
 
 /**
- * Memory size for ctn in top mio.
+ * Memory size for ctn memory on mio_soc_proxy in top mio.
  */
 #define TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES 0x80000000u
 
 /**
- * Memory base address for ram_ret_aon in top mio.
+ * Memory base address for ram memory on sram_ctrl_ret_aon in top mio.
  */
 #define TOP_MIO_SRAM_CTRL_RET_AON_RAM_BASE_ADDR 0x30600000u
 
 /**
- * Memory size for ram_ret_aon in top mio.
+ * Memory size for ram memory on sram_ctrl_ret_aon in top mio.
  */
 #define TOP_MIO_SRAM_CTRL_RET_AON_RAM_SIZE_BYTES 0x1000u
 
 /**
- * Memory base address for ram_main in top mio.
+ * Memory base address for ram memory on sram_ctrl_main in top mio.
  */
 #define TOP_MIO_SRAM_CTRL_MAIN_RAM_BASE_ADDR 0x10000000u
 
 /**
- * Memory size for ram_main in top mio.
+ * Memory size for ram memory on sram_ctrl_main in top mio.
  */
 #define TOP_MIO_SRAM_CTRL_MAIN_RAM_SIZE_BYTES 0x10000u
 
 /**
- * Memory base address for ram_mbox in top mio.
+ * Memory base address for ram memory on sram_ctrl_mbox in top mio.
  */
 #define TOP_MIO_SRAM_CTRL_MBOX_RAM_BASE_ADDR 0x11000000u
 
 /**
- * Memory size for ram_mbox in top mio.
+ * Memory size for ram memory on sram_ctrl_mbox in top mio.
  */
 #define TOP_MIO_SRAM_CTRL_MBOX_RAM_SIZE_BYTES 0x1000u
 

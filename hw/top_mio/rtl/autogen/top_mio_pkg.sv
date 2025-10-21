@@ -180,52 +180,42 @@ package top_mio_pkg;
   parameter int unsigned TOP_MIO_RV_CORE_IBEX_MIO_CFG_SIZE_BYTES = 32'h800;
 
   /**
-   * Memory base address for ctn in top mio.
+   * Memory base address for ctn memory on mio_soc_proxy in top mio.
    */
   parameter int unsigned TOP_MIO_MIO_SOC_PROXY_CTN_BASE_ADDR = 32'h40000000;
 
   /**
-   * Memory size for ctn in top mio.
+   * Memory size for ctn memory on mio_soc_proxy in top mio.
    */
   parameter int unsigned TOP_MIO_MIO_SOC_PROXY_CTN_SIZE_BYTES = 32'h80000000;
 
   /**
-  * Memory base address for ram_ctn in top mio.
-  */
-  parameter int unsigned TOP_MIO_MIO_SOC_PROXY_RAM_CTN_BASE_ADDR = 32'h41000000;
-
-  /**
-  * Memory size for ram_ctn in top mio.
-  */
-  parameter int unsigned TOP_MIO_MIO_SOC_PROXY_RAM_CTN_SIZE_BYTES = 32'h100000;
-
-  /**
-   * Memory base address for ram_ret_aon in top mio.
+   * Memory base address for ram memory on sram_ctrl_ret_aon in top mio.
    */
   parameter int unsigned TOP_MIO_SRAM_CTRL_RET_AON_RAM_BASE_ADDR = 32'h30600000;
 
   /**
-   * Memory size for ram_ret_aon in top mio.
+   * Memory size for ram memory on sram_ctrl_ret_aon in top mio.
    */
   parameter int unsigned TOP_MIO_SRAM_CTRL_RET_AON_RAM_SIZE_BYTES = 32'h1000;
 
   /**
-   * Memory base address for ram_main in top mio.
+   * Memory base address for ram memory on sram_ctrl_main in top mio.
    */
   parameter int unsigned TOP_MIO_SRAM_CTRL_MAIN_RAM_BASE_ADDR = 32'h10000000;
 
   /**
-   * Memory size for ram_main in top mio.
+   * Memory size for ram memory on sram_ctrl_main in top mio.
    */
   parameter int unsigned TOP_MIO_SRAM_CTRL_MAIN_RAM_SIZE_BYTES = 32'h10000;
 
   /**
-   * Memory base address for ram_mbox in top mio.
+   * Memory base address for ram memory on sram_ctrl_mbox in top mio.
    */
   parameter int unsigned TOP_MIO_SRAM_CTRL_MBOX_RAM_BASE_ADDR = 32'h11000000;
 
   /**
-   * Memory size for ram_mbox in top mio.
+   * Memory size for ram memory on sram_ctrl_mbox in top mio.
    */
   parameter int unsigned TOP_MIO_SRAM_CTRL_MBOX_RAM_SIZE_BYTES = 32'h1000;
 

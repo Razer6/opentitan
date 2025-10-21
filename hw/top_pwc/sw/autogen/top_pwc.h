@@ -353,42 +353,42 @@ extern "C" {
 
 
 /**
- * Memory base address for ctn in top pwc.
+ * Memory base address for ctn memory on pwc_soc_proxy in top pwc.
  */
 #define TOP_PWC_PWC_SOC_PROXY_CTN_BASE_ADDR 0x40000000u
 
 /**
- * Memory size for ctn in top pwc.
+ * Memory size for ctn memory on pwc_soc_proxy in top pwc.
  */
 #define TOP_PWC_PWC_SOC_PROXY_CTN_SIZE_BYTES 0x80000000u
 
 /**
- * Memory base address for ram_ret_aon in top pwc.
+ * Memory base address for ram memory on sram_ctrl_ret_aon in top pwc.
  */
 #define TOP_PWC_SRAM_CTRL_RET_AON_RAM_BASE_ADDR 0x30600000u
 
 /**
- * Memory size for ram_ret_aon in top pwc.
+ * Memory size for ram memory on sram_ctrl_ret_aon in top pwc.
  */
 #define TOP_PWC_SRAM_CTRL_RET_AON_RAM_SIZE_BYTES 0x1000u
 
 /**
- * Memory base address for ram_main in top pwc.
+ * Memory base address for ram memory on sram_ctrl_main in top pwc.
  */
 #define TOP_PWC_SRAM_CTRL_MAIN_RAM_BASE_ADDR 0x10000000u
 
 /**
- * Memory size for ram_main in top pwc.
+ * Memory size for ram memory on sram_ctrl_main in top pwc.
  */
 #define TOP_PWC_SRAM_CTRL_MAIN_RAM_SIZE_BYTES 0x10000u
 
 /**
- * Memory base address for ram_mbox in top pwc.
+ * Memory base address for ram memory on sram_ctrl_mbox in top pwc.
  */
 #define TOP_PWC_SRAM_CTRL_MBOX_RAM_BASE_ADDR 0x11000000u
 
 /**
- * Memory size for ram_mbox in top pwc.
+ * Memory size for ram memory on sram_ctrl_mbox in top pwc.
  */
 #define TOP_PWC_SRAM_CTRL_MBOX_RAM_SIZE_BYTES 0x1000u
 

@@ -257,28 +257,28 @@ pub const RV_CORE_IBEX_MIO_CFG_BASE_ADDR: usize = 0x211F0000;
 /// `RV_CORE_IBEX_MIO_CFG_BASE_ADDR + RV_CORE_IBEX_MIO_CFG_SIZE_BYTES`.
 pub const RV_CORE_IBEX_MIO_CFG_SIZE_BYTES: usize = 0x800;
 
-/// Memory base address for ctn in top mio.
+/// Memory base address for ctn memory on mio_soc_proxy in top mio.
 pub const MIO_SOC_PROXY_CTN_BASE_ADDR: usize = 0x40000000;
 
-/// Memory size for ctn in top mio.
+/// Memory size for ctn memory on mio_soc_proxy in top mio.
 pub const MIO_SOC_PROXY_CTN_SIZE_BYTES: usize = 0x80000000;
 
-/// Memory base address for ram_ret_aon in top mio.
+/// Memory base address for ram memory on sram_ctrl_ret_aon in top mio.
 pub const SRAM_CTRL_RET_AON_RAM_BASE_ADDR: usize = 0x30600000;
 
-/// Memory size for ram_ret_aon in top mio.
+/// Memory size for ram memory on sram_ctrl_ret_aon in top mio.
 pub const SRAM_CTRL_RET_AON_RAM_SIZE_BYTES: usize = 0x1000;
 
-/// Memory base address for ram_main in top mio.
+/// Memory base address for ram memory on sram_ctrl_main in top mio.
 pub const SRAM_CTRL_MAIN_RAM_BASE_ADDR: usize = 0x10000000;
 
-/// Memory size for ram_main in top mio.
+/// Memory size for ram memory on sram_ctrl_main in top mio.
 pub const SRAM_CTRL_MAIN_RAM_SIZE_BYTES: usize = 0x10000;
 
-/// Memory base address for ram_mbox in top mio.
+/// Memory base address for ram memory on sram_ctrl_mbox in top mio.
 pub const SRAM_CTRL_MBOX_RAM_BASE_ADDR: usize = 0x11000000;
 
-/// Memory size for ram_mbox in top mio.
+/// Memory size for ram memory on sram_ctrl_mbox in top mio.
 pub const SRAM_CTRL_MBOX_RAM_SIZE_BYTES: usize = 0x1000;
 
 /// PLIC Interrupt Source Peripheral.
