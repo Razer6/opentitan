@@ -145,6 +145,18 @@ check_generated:
       - build/lowrisc_systems_${TEST_TARGET}_0.1/lint-ascentlint/*.rpt
     expire_in: 1 week
 
+# Trigger downstream pipeline on rom-rot-releases to generate a release
+trigger-rom-rot-releases:
+  stage: build
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "rivos/gb0"
+  variables:
+    UPDATED_REVISION: "$CI_COMMIT_SHA"
+    TRIGGERED_ACTION: "generate_release"
+  trigger:
+    project: rv/sw/int/fw/rom-rot-releases
+    branch: rivos/gb0
+
 # TODO: re-enable these once we fix the fusesoc version in CI
 lint_rot:
   extends: .lint-rtl
