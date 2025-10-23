@@ -67,19 +67,8 @@ module soc_dbg_ctrl_decode #(
   end
 
   // Sample the debug policy and the relocked signal on the rising edge of valid
-  soc_dbg_ctrl_pkg::dbg_category_e debug_category_q;
   prim_mubi_pkg::mubi4_t relocked_q;
 
-  prim_flop_en #(
-    .Width       ( $bits(soc_dbg_ctrl_pkg::dbg_category_e) ),
-    .ResetValue  ( {soc_dbg_ctrl_pkg::DbgCategoryLocked}   )
-  ) u_sampled_policy (
-    .clk_i  ( clk_i                         ),
-    .rst_ni ( rst_ni                        ),
-    .en_i   ( valid_rising                  ),
-    .d_i    ( soc_dbg_policy_bus_i.category ),
-    .q_o    ( {debug_category_q}            )
-  );
 
   prim_flop_en #(
     .Width      ( prim_mubi_pkg::MuBi4Width   ),
@@ -92,15 +81,72 @@ module soc_dbg_ctrl_decode #(
     .q_o    ( {relocked_q}  )
   );
 
-  logic relocked_decoded;
-  assign relocked_decoded = prim_mubi_pkg::mubi4_test_true_strict(relocked_q);
+  logic relocked_decoded, relocked_decoded_q;
+  assign relocked_decoded   = prim_mubi_pkg::mubi4_test_true_strict(relocked_sync);
+  assign relocked_decoded_q = prim_mubi_pkg::mubi4_test_true_strict(relocked_q);
+
+  ///////////////////////////////////////////////////////////////////////////////
+  // Decode and register outputs (ECO: make cat3 sticky)
+  ///////////////////////////////////////////////////////////////////////////////
+
+  logic cat2_dbg_d, cat2_dbg_q;
+  logic cat3_dbg_d, cat3_dbg_q;
+  logic cat4_dbg_d, cat4_dbg_q;
+
+  // Decode logic
+  assign cat4_dbg_d = soc_dbg_policy_bus_i.category == soc_dbg_ctrl_pkg::DbgCategory4;
+  assign cat2_dbg_d = (soc_dbg_policy_bus_i.category == soc_dbg_ctrl_pkg::DbgCategory4 |
+                       soc_dbg_policy_bus_i.category == soc_dbg_ctrl_pkg::DbgCategory3 |
+                       soc_dbg_policy_bus_i.category == soc_dbg_ctrl_pkg::DbgCategory2);
+
+  // RVSDS-4244 ECO: Make cat3 sticky by moving ~relocked condition to flop input
+  // Once CAT3 is asserted, it stays asserted until relocked to avoid scan modifying the debug
+  // policy.
+  assign cat3_dbg_d = cat3_dbg_q |
+                      ((soc_dbg_policy_bus_i.category == soc_dbg_ctrl_pkg::DbgCategory4 |
+                        soc_dbg_policy_bus_i.category == soc_dbg_ctrl_pkg::DbgCategory3) &
+                       ~relocked_decoded);
+
+  // Register outputs
+  prim_flop_en #(
+    .Width      ( 1    ),
+    .ResetValue ( 1'b0 )
+  ) u_cat2_dbg_flop (
+    .clk_i  ( clk_i        ),
+    .rst_ni ( rst_ni       ),
+    .en_i   ( valid_rising ),
+    .d_i    ( cat2_dbg_d   ),
+    .q_o    ( cat2_dbg_q   )
+  );
+
+  prim_flop_en #(
+    .Width      ( 1    ),
+    .ResetValue ( 1'b0 )
+  ) u_cat3_dbg_flop (
+    .clk_i  ( clk_i        ),
+    .rst_ni ( rst_ni       ),
+    .en_i   ( valid_rising ),
+    .d_i    ( cat3_dbg_d   ),
+    .q_o    ( cat3_dbg_q   )
+  );
+
+  prim_flop_en #(
+    .Width      ( 1    ),
+    .ResetValue ( 1'b0 )
+  ) u_cat4_dbg_flop (
+    .clk_i  ( clk_i        ),
+    .rst_ni ( rst_ni       ),
+    .en_i   ( valid_rising ),
+    .d_i    ( cat4_dbg_d   ),
+    .q_o    ( cat4_dbg_q   )
+  );
 
   // Output the decoded logic
-  assign relocked_o = relocked_decoded;
-  assign cat4_dbg_o = debug_category_q == soc_dbg_ctrl_pkg::DbgCategory4;
-  assign cat3_dbg_o = (cat4_dbg_o || debug_category_q == soc_dbg_ctrl_pkg::DbgCategory3) &&
-                      !relocked_decoded;
-  assign cat2_dbg_o = (cat4_dbg_o || cat3_dbg_o ||
-                      debug_category_q == soc_dbg_ctrl_pkg::DbgCategory2) &&
-                      !relocked_decoded;
+  assign relocked_o = relocked_decoded_q;
+  assign cat4_dbg_o = cat4_dbg_q;
+  // ECO: cat3 is already qualified with ~relocked in the flop input
+  assign cat3_dbg_o = cat3_dbg_q;
+  // cat2 needs to be qualified with ~relocked at output
+  assign cat2_dbg_o = cat2_dbg_q && ~relocked_decoded_q;
+
 endmodule
