@@ -106,13 +106,21 @@ cc_library(
     ],
 )
 
+config_setting(
+    name = "gls_enabled",
+    values = {"define": "gls=true"},
+)
+
 cc_library(
     name = "sim_dv",
     copts = opentitan_select_top({
             "darjeeling": ["-DROT"],
             "pwc":        ["-DPWC"],
             "mio":        ["-DMIO"],
-        },[],),
+        },[],) + select({
+            ":gls_enabled": ["-DGLS=1"],
+            "//conditions:default": [],
+      }),
     srcs = ["device_sim_dv.c"],
     deps = [
         ":device",

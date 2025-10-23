@@ -58,8 +58,17 @@ cc_library(
     ],
 )
 
+config_setting(
+    name = "gls_enabled",
+    values = {"define": "gls=true"},
+)
+
 cc_library(
     name = "log",
+    copts = select({
+            ":gls_enabled": ["-DGLS=1"],
+            "//conditions:default": [],
+        }),
     srcs = ["log.c"],
     hdrs = ["log.h"],
     target_compatible_with = [OPENTITAN_CPU],

@@ -83,11 +83,22 @@ const uint32_t kAstCheckPollCpuCycles =
     CALCULATE_AST_CHECK_POLL_CPU_CYCLES(kClockFreqCpuHz);
 
 #if defined(ROT) || defined(PWC) || defined(MIO)
+#define SCS_SSRAM_LO_BASE_ADDR 0x41000000u
 uintptr_t device_test_status_address(void) {
+#if defined(GLS)
+    // This corresponds to SSRAM_SW_STATUS_ADDR in rvscs/tb/scs_tb/env/scs_common_env_pkg.sv
+    return SCS_SSRAM_LO_BASE_ADDR + 0x540;
+#else
     return rv_core_ibex_base() + RV_CORE_IBEX_DV_SIM_WINDOW_REG_OFFSET;
+#endif
 }
 
 uintptr_t device_log_bypass_uart_address(void) {
+#if defined(GLS)
+    // This corresponds to SSRAM_SW_LOGGER_ADDR in rvscs/tb/scs_tb/env/scs_common_env_pkg.sv
+    return SCS_SSRAM_LO_BASE_ADDR + 0x540 + 0x04;
+#else
     return rv_core_ibex_base() + RV_CORE_IBEX_DV_SIM_WINDOW_REG_OFFSET + 0x04;
+#endif
 }
 #endif
