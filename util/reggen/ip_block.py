@@ -349,9 +349,8 @@ class IpBlock:
         clocking = Clocking.from_raw(rd['clocking'],
                                      'clocking field of ' + what)
 
-        registers = rd.get('registers', [])
-        if registers:
-            reg_blocks = RegBlock.build_blocks(init_block, registers,
+        if "registers" in rd:
+            reg_blocks = RegBlock.build_blocks(init_block, rd["registers"],
                                                bus_interfaces, clocking, False)
         else:
             reg_blocks = {}
