@@ -448,13 +448,14 @@ class PydumpInfos:
         If the IP does not have interfaces, the specified interface is ignored.
         """
         interface = self._determine_interface(interface)
+        reg_map = self.reg_map.get(interface, {})
         pyreg = self._get_pyreg(interface)
         pydump = {
-            "addr_map": {value: key for key, value in self.reg_map[interface].items()},
+            "addr_map": {value: key for key, value in reg_map.items()},
             "expl": FoldedUnicode(self.desc),
             "name": self.name,
             "package": self.package,
-            "reg_map": self.reg_map[interface],
+            "reg_map": reg_map,
             "registers": pyreg,
         }
 
@@ -486,7 +487,7 @@ class PydumpInfos:
 
     def _get_pyreg(self, interface: str) -> Dict[str, Dict[str, PyregEntry]]:
         """Prepares the register block to be dumped as pyreg."""
-        pyreg = {k: asdict(v) for k, v in self.regblocks[interface].items()}
+        pyreg = {k: asdict(v) for k, v in self.regblocks.get(interface, {}).items()}
         pyreg = remove_none(pyreg)
 
         return pyreg
