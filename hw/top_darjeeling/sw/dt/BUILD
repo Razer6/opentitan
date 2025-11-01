@@ -9,6 +9,7 @@ package(default_visibility = ["//visibility:public"])
 TARGETS = [
     "silicon",
     "sim_dv",
+    "sim_verilator",
 ]
 
 [
