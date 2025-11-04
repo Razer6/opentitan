@@ -202,6 +202,8 @@ waive -rules HIER_NET_NOT_READ   -location {top_darjeeling.sv}      -regexp {Con
 waive -rules HIER_NET_NOT_READ   -location {top_mio.sv}             -regexp {Connected net 'LS' at (rvscs_ot_aon_sram|rvscs_ot_sram_half_size|rvscs_ot_otbni_sram|rvscs_sys2spi_sram|rvscs_spi2sys_sram).sv.* is not read from} -comment "needed for rivos compiled memory"
 waive -rules HIER_NET_NOT_READ   -location {top_pwc.sv}             -regexp {Connected net 'LS' at (rvscs_ot_aon_sram|rvscs_ot_sram_half_size|rvscs_ot_otbni_sram|rvscs_sys2spi_sram|rvscs_spi2sys_sram).sv.* is not read from} -comment "needed for rivos compiled memory"
 
+waive -rules HIER_NET_NOT_READ   -location {top_darjeeling.sv}      -regexp {rst_efuse_n} -comment "rvsds 6595, late eco minimizing change, clean up in gen2"
+
 waive -rules PARAM_NOT_USED  -location {prim_rdp_clock_inv.sv} -regexp {Parameter 'NoFpgaBufG' not used in module 'prim_rdp_clock_inv'}  -comment "NoFpgaBufG is not used in RDP primitive"
 waive -rules PARAM_NOT_USED  -location {prim_rdp_clock_inv.sv} -regexp {Parameter 'HasScanMode' not used in module 'prim_rdp_clock_inv'} -comment "HasScanMode is not used in RDP primitive"
 waive -rules PARAM_NOT_USED  -location {RDP_ASYNC_FIFO.sv}     -regexp {Parameter 'ALLOW_X_INPUT' not used in module 'RDP_ASYNC_FIFO'}   -comment "ALLOW_X_INPUT is not used in RDP primitive"

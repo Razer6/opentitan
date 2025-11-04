@@ -31,7 +31,7 @@ module prim_otp_mem
         input logic                         clk_i,
         input logic                         rst_ni,
         input logic                         clk_efuse_i,
-        input logic                         rst_efuse_ni,
+        input logic                         rst_efuse_ni, // unused to solve RDC violation
         input logic                         req_i,
         input logic                         write_i,
         input logic [(Aw-1):0]              addr_i,
@@ -157,6 +157,8 @@ module prim_otp_mem
   logic        trigger_power_down_cycles_sysclk_we;
 
   logic        redundancy_autoinit_disable;
+
+  logic        rvsds_6595_rst_efuse_n;
 
   logic SYNC_sel_wr_timing;
   logic SYNC_sel_wr_timing0;
@@ -370,7 +372,7 @@ module prim_otp_mem
       .data_in_val  (tsur_pd_ps_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsur_pd_ps_cycles),
       .data_out_val (),
   
@@ -389,7 +391,7 @@ module prim_otp_mem
       .data_in_val  (tsur_ps_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsur_ps_cycles),
       .data_out_val (),
   
@@ -408,7 +410,7 @@ module prim_otp_mem
       .data_in_val  (tsur_ps_cs_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsur_ps_cs_cycles),
       .data_out_val (),
   
@@ -427,7 +429,7 @@ module prim_otp_mem
       .data_in_val  (tsup_ps_cs_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsup_ps_cs_cycles),
       .data_out_val (),
   
@@ -446,7 +448,7 @@ module prim_otp_mem
       .data_in_val  (tsup_ps_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsup_ps_cycles),
       .data_out_val (),
   
@@ -465,7 +467,7 @@ module prim_otp_mem
       .data_in_val  (tsq_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsq_cycles),
       .data_out_val (),
   
@@ -484,7 +486,7 @@ module prim_otp_mem
       .data_in_val  (tsq_m_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsq_m_cycles),
       .data_out_val (),
   
@@ -503,7 +505,7 @@ module prim_otp_mem
       .data_in_val  (tpgm_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tpgm_cycles),
       .data_out_val (),
   
@@ -522,7 +524,7 @@ module prim_otp_mem
       .data_in_val  (tsur_ld_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsur_ld_cycles),
       .data_out_val (),
   
@@ -541,7 +543,7 @@ module prim_otp_mem
       .data_in_val  (thr_ps_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thr_ps_cycles),
       .data_out_val (),
   
@@ -560,7 +562,7 @@ module prim_otp_mem
       .data_in_val  (thp_ps_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thp_ps_cycles),
       .data_out_val (),
   
@@ -579,7 +581,7 @@ module prim_otp_mem
       .data_in_val  (thp_cs_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thp_cs_cycles),
       .data_out_val (),
   
@@ -598,7 +600,7 @@ module prim_otp_mem
       .data_in_val  (thr_cs_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thr_cs_cycles),
       .data_out_val (),
   
@@ -617,7 +619,7 @@ module prim_otp_mem
       .data_in_val  (thp_ps_cs_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thp_ps_cs_cycles),
       .data_out_val (),
   
@@ -636,7 +638,7 @@ module prim_otp_mem
       .data_in_val  (thr_ps_cs_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thr_ps_cs_cycles),
       .data_out_val (),
   
@@ -655,7 +657,7 @@ module prim_otp_mem
       .data_in_val  (tsur_a_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsur_a_cycles),
       .data_out_val (),
   
@@ -674,7 +676,7 @@ module prim_otp_mem
       .data_in_val  (tsup_a_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsup_a_cycles),
       .data_out_val (),
   
@@ -693,7 +695,7 @@ module prim_otp_mem
       .data_in_val  (thp_a_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thp_a_cycles),
       .data_out_val (),
   
@@ -712,7 +714,7 @@ module prim_otp_mem
       .data_in_val  (tsup_ld_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsup_ld_cycles),
       .data_out_val (),
   
@@ -731,7 +733,7 @@ module prim_otp_mem
       .data_in_val  (trd_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (trd_cycles),
       .data_out_val (),
   
@@ -750,7 +752,7 @@ module prim_otp_mem
       .data_in_val  (trd_m_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (trd_m_cycles),
       .data_out_val (),
   
@@ -769,7 +771,7 @@ module prim_otp_mem
       .data_in_val  (thr_a_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thr_a_cycles),
       .data_out_val (),
   
@@ -788,7 +790,7 @@ module prim_otp_mem
       .data_in_val  (thp_pd_ps_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thp_pd_ps_cycles),
       .data_out_val (),
   
@@ -807,7 +809,7 @@ module prim_otp_mem
       .data_in_val  (data_capture_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (data_capture_cycles),
       .data_out_val (),
   
@@ -826,7 +828,7 @@ module prim_otp_mem
       .data_in_val  (addr_capture_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (addr_capture_cycles),
       .data_out_val (),
   
@@ -845,7 +847,7 @@ module prim_otp_mem
       .data_in_val  (trigger_power_down_cycles_sysclk_we),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (trigger_power_down_cycles),
       .data_out_val (),
   
@@ -864,7 +866,7 @@ module prim_otp_mem
       .data_in_val  (reg2hw.macro_control.redundancy_autoinit_disable.qe),
   
       .rd_clk       (clk_efuse_i),
-      .rd_rst_l     (rst_efuse_ni), // reset in efuse-clk domain
+      .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (redundancy_autoinit_disable),
       .data_out_val (),
   
@@ -925,6 +927,7 @@ module prim_otp_mem
       .clk_i            (clk_i),
       .rst_ni           (rst_ni),
       .clk_efuse_i      (clk_efuse_i),
+      .rvsds_6595_rst_efuse_no (rvsds_6595_rst_efuse_n),
       .req_i            (req_i),
       .write_i          (write_i),
       .addr_i           (addr_i[(Aw-1):0]),

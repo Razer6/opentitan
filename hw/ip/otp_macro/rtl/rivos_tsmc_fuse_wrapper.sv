@@ -45,6 +45,8 @@ module rivos_tsmc_fuse_wrapper
  
         output logic                        wrapper_ready_o,
 
+        output logic                        rvsds_6595_rst_efuse_no, // FIXME_GEN2 cleanup signal naming, want to be very obvious for gB0 eco
+
         input  logic [11:0]                 tsur_pd_ps_cycles_i,
         input  logic [9:0]                  tsur_ps_cycles_i,
         input  logic [8:0]                  tsur_ps_cs_cycles_i,
@@ -403,6 +405,7 @@ RDP_ASYNC_FIFO
      .rst_l       (rst_efuse_n)
    );
 
+  assign rvsds_6595_rst_efuse_no = rst_efuse_n;
 
   // need to figure out max bit to write for current operation
   // REDUNDANCY and TEST modes write single bit per operation
