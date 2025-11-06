@@ -30,7 +30,7 @@ ci/scripts/check-pr-changes-allowed.py
 hw/top_darjeeling/ip/*/rtl/*
 hw/top_darjeeling/ip/*/rtl/**/*
 hw/top_darjeeling/ip_autogen/*/rtl/*
-hw/top_darjeeling/rtl/*
+hw/top_darjeeling/rtl/**/*
 
 hw/top_darjeeling/ip_autogen/ac_range_check/ac_range_check.hjson
 hw/top_darjeeling/ip_autogen/alert_handler/alert_handler.hjson
@@ -59,7 +59,7 @@ hw/top_darjeeling/data/autogen/top_darjeeling.secrets.tapeout.gen.hjson
 hw/top_mio/ip/*/rtl/*
 hw/top_mio/ip/*/rtl/**/*
 hw/top_mio/ip_autogen/*/rtl/*
-hw/top_mio/rtl/*
+hw/top_mio/rtl/**/*
 
 hw/top_mio/ip_autogen/ac_range_check_mio/ac_range_check_mio.hjson
 hw/top_mio/ip_autogen/racl_ctrl_mio/racl_ctrl_mio.hjson
@@ -80,7 +80,7 @@ hw/top_mio/data/autogen/top_mio.secrets.tapeout.gen.hjson
 hw/top_pwc/ip/*/rtl/*
 hw/top_pwc/ip/*/rtl/**/*
 hw/top_pwc/ip_autogen/*/rtl/*
-hw/top_pwc/rtl/*
+hw/top_pwc/rtl/**/*
 
 hw/top_pwc/ip_autogen/ac_range_check_pwc/ac_range_check_pwc.hjson
 hw/top_pwc/ip_autogen/gpio_pwc/gpio_pwc.hjson
