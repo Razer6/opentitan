@@ -1,4 +1,3 @@
-
 // Copyright lowRISC contributors (OpenTitan project).
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
@@ -44,7 +43,7 @@ module prim_otp_mem
         output logic                        rvalid_o,
         output logic [(Width+EccWidth-1):0] rdata_o,
         output err_e                        err_o,
- 
+
         output logic                        wrapper_ready_o,
 
         input  otp_macro_reg_pkg::otp_macro_prim_reg2hw_t reg2hw,
@@ -89,47 +88,47 @@ module prim_otp_mem
         output logic                                                         trace_fuse_ecc_ps_o,
         output [(FUSE_ADDR_WIDTH-1):0]                                       trace_fuse_ecc_address_o,
         output [(FUSE_NUM_ARRAYS-1):0][(FUSE_DATA_WIDTH-1):0]                trace_fuse_data_o,
-        output [(FUSE_NUM_ECC_ARRAYS-1):0][(FUSE_DATA_WIDTH-1):0]            trace_fuse_ecc_data_o 
+        output [(FUSE_NUM_ECC_ARRAYS-1):0][(FUSE_DATA_WIDTH-1):0]            trace_fuse_ecc_data_o
 
 
 
       );
-  
+
   logic [11:0] tsur_pd_ps_cycles, tsur_pd_ps_cycles_sysclk;
   logic        tsur_pd_ps_cycles_sysclk_we;
   logic [9:0]  tsur_ps_cycles, tsur_ps_cycles_sysclk;
   logic        tsur_ps_cycles_sysclk_we;
   logic [8:0]  tsur_ps_cs_cycles, tsur_ps_cs_cycles_sysclk;
   logic        tsur_ps_cs_cycles_sysclk_we;
-  
+
   logic [8:0]  tsup_ps_cs_cycles, tsup_ps_cs_cycles_sysclk;
   logic        tsup_ps_cs_cycles_sysclk_we;
   logic [9:0]  tsup_ps_cycles, tsup_ps_cycles_sysclk;
   logic        tsup_ps_cycles_sysclk_we;
   logic [9:0]  tsq_cycles, tsq_cycles_sysclk;
   logic        tsq_cycles_sysclk_we;
-  
+
   logic [10:0] tsq_m_cycles, tsq_m_cycles_sysclk;
   logic        tsq_m_cycles_sysclk_we;
   logic [13:0] tpgm_cycles, tpgm_cycles_sysclk;
   logic        tpgm_cycles_sysclk_we;
   logic [6:0]  tsur_ld_cycles, tsur_ld_cycles_sysclk;
   logic        tsur_ld_cycles_sysclk_we;
-  
+
   logic [9:0]  thr_ps_cycles, thr_ps_cycles_sysclk;
   logic        thr_ps_cycles_sysclk_we;
   logic [9:0]  thp_ps_cycles, thp_ps_cycles_sysclk;
   logic        thp_ps_cycles_sysclk_we;
   logic [8:0]  thp_cs_cycles, thp_cs_cycles_sysclk;
   logic        thp_cs_cycles_sysclk_we;
-  
+
   logic [8:0]  thr_cs_cycles, thr_cs_cycles_sysclk;
   logic        thr_cs_cycles_sysclk_we;
   logic [8:0]  thp_ps_cs_cycles, thp_ps_cs_cycles_sysclk;
   logic        thp_ps_cs_cycles_sysclk_we;
   logic [8:0]  thr_ps_cs_cycles, thr_ps_cs_cycles_sysclk;
   logic        thr_ps_cs_cycles_sysclk_we;
-  
+
   logic [7:0]  tsur_a_cycles, tsur_a_cycles_sysclk;
   logic        tsur_a_cycles_sysclk_we;
   logic [7:0]  tsup_a_cycles, tsup_a_cycles_sysclk;
@@ -138,21 +137,21 @@ module prim_otp_mem
   logic        thp_a_cycles_sysclk_we;
   logic [7:0]  tsup_ld_cycles, tsup_ld_cycles_sysclk;
   logic        tsup_ld_cycles_sysclk_we;
-  
+
   logic [9:0]  trd_cycles, trd_cycles_sysclk;
   logic        trd_cycles_sysclk_we;
   logic [10:0] trd_m_cycles, trd_m_cycles_sysclk;
   logic        trd_m_cycles_sysclk_we;
   logic [7:0]  thr_a_cycles, thr_a_cycles_sysclk;
   logic        thr_a_cycles_sysclk_we;
-  
+
   logic [7:0]  thp_pd_ps_cycles, thp_pd_ps_cycles_sysclk;
   logic        thp_pd_ps_cycles_sysclk_we;
   logic [7:0]  data_capture_cycles, data_capture_cycles_sysclk;
   logic        data_capture_cycles_sysclk_we;
   logic [7:0]  addr_capture_cycles, addr_capture_cycles_sysclk;
   logic        addr_capture_cycles_sysclk_we;
-  
+
   logic [17:0] trigger_power_down_cycles, trigger_power_down_cycles_sysclk;
   logic        trigger_power_down_cycles_sysclk_we;
 
@@ -196,7 +195,7 @@ module prim_otp_mem
     tsur_ps_cs_cycles_sysclk         = reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cs_cycles.q;
     tsur_ps_cs_cycles_sysclk_we      = reg2hw.fuse_wrapper_rd_cfg_0.tsur_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
 
-    
+
     tsup_ps_cs_cycles_sysclk         = reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cs_cycles.q;
     tsup_ps_cs_cycles_sysclk_we      = reg2hw.fuse_wrapper_rd_cfg_1.tsup_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -206,7 +205,7 @@ module prim_otp_mem
     tsq_cycles_sysclk                = reg2hw.fuse_wrapper_rd_cfg_1.tsq_cycles.q;
     tsq_cycles_sysclk_we             = reg2hw.fuse_wrapper_rd_cfg_1.tsq_cycles.qe || SYNC_sel_wr_timing_changed;
 
-    
+
     tsq_m_cycles_sysclk              = reg2hw.fuse_wrapper_rd_cfg_2.tsq_m_cycles.q;
     tsq_m_cycles_sysclk_we           = reg2hw.fuse_wrapper_rd_cfg_2.tsq_m_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -216,7 +215,7 @@ module prim_otp_mem
     tsur_ld_cycles_sysclk            = reg2hw.fuse_wrapper_rd_cfg_2.tsur_ld_cycles.q;
     tsur_ld_cycles_sysclk_we         = reg2hw.fuse_wrapper_rd_cfg_2.tsur_ld_cycles.qe || SYNC_sel_wr_timing_changed;
 
-    
+
     thr_ps_cycles_sysclk             = reg2hw.fuse_wrapper_rd_cfg_3.thr_ps_cycles.q;
     thr_ps_cycles_sysclk_we          = reg2hw.fuse_wrapper_rd_cfg_3.thr_ps_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -226,7 +225,7 @@ module prim_otp_mem
     thp_cs_cycles_sysclk             = reg2hw.fuse_wrapper_rd_cfg_3.thp_cs_cycles.q;
     thp_cs_cycles_sysclk_we          = reg2hw.fuse_wrapper_rd_cfg_3.thp_cs_cycles.qe || SYNC_sel_wr_timing_changed;
 
-    
+
     thr_cs_cycles_sysclk             = reg2hw.fuse_wrapper_rd_cfg_4.thr_cs_cycles.q;
     thr_cs_cycles_sysclk_we          = reg2hw.fuse_wrapper_rd_cfg_4.thr_cs_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -236,7 +235,7 @@ module prim_otp_mem
     thr_ps_cs_cycles_sysclk          = reg2hw.fuse_wrapper_rd_cfg_4.thr_ps_cs_cycles.q;
     thr_ps_cs_cycles_sysclk_we       = reg2hw.fuse_wrapper_rd_cfg_4.thr_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
 
-    
+
     tsur_a_cycles_sysclk             = reg2hw.fuse_wrapper_rd_cfg_5.tsur_a_cycles.q;
     tsur_a_cycles_sysclk_we          = reg2hw.fuse_wrapper_rd_cfg_5.tsur_a_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -249,7 +248,7 @@ module prim_otp_mem
     tsup_ld_cycles_sysclk            = reg2hw.fuse_wrapper_rd_cfg_5.tsup_ld_cycles.q;
     tsup_ld_cycles_sysclk_we         = reg2hw.fuse_wrapper_rd_cfg_5.tsup_ld_cycles.qe || SYNC_sel_wr_timing_changed;
 
-    
+
     trd_cycles_sysclk                = reg2hw.fuse_wrapper_rd_cfg_6.trd_cycles.q;
     trd_cycles_sysclk_we             = reg2hw.fuse_wrapper_rd_cfg_6.trd_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -259,7 +258,7 @@ module prim_otp_mem
     thr_a_cycles_sysclk              = reg2hw.fuse_wrapper_rd_cfg_6.thr_a_cycles.q;
     thr_a_cycles_sysclk_we           = reg2hw.fuse_wrapper_rd_cfg_6.thr_a_cycles.qe || SYNC_sel_wr_timing_changed;
 
-    
+
     thp_pd_ps_cycles_sysclk          = reg2hw.fuse_wrapper_rd_cfg_7.thp_pd_ps_cycles.q;
     thp_pd_ps_cycles_sysclk_we       = reg2hw.fuse_wrapper_rd_cfg_7.thp_pd_ps_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -269,7 +268,7 @@ module prim_otp_mem
     addr_capture_cycles_sysclk       = reg2hw.fuse_wrapper_rd_cfg_7.addr_capture_cycles.q;
     addr_capture_cycles_sysclk_we    = reg2hw.fuse_wrapper_rd_cfg_7.addr_capture_cycles.qe || SYNC_sel_wr_timing_changed;
 
-    
+
     trigger_power_down_cycles_sysclk    = reg2hw.fuse_wrapper_rd_cfg_8.q;
     trigger_power_down_cycles_sysclk_we = reg2hw.fuse_wrapper_rd_cfg_8.qe || SYNC_sel_wr_timing_changed;
 
@@ -284,7 +283,7 @@ module prim_otp_mem
       tsur_ps_cs_cycles_sysclk         = reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cs_cycles.q;
       tsur_ps_cs_cycles_sysclk_we      = reg2hw.fuse_wrapper_wr_cfg_0.tsur_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
 
-      
+
       tsup_ps_cs_cycles_sysclk         = reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cs_cycles.q;
       tsup_ps_cs_cycles_sysclk_we      = reg2hw.fuse_wrapper_wr_cfg_1.tsup_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -294,7 +293,7 @@ module prim_otp_mem
       tsq_cycles_sysclk                = reg2hw.fuse_wrapper_wr_cfg_1.tsq_cycles.q;
       tsq_cycles_sysclk_we             = reg2hw.fuse_wrapper_wr_cfg_1.tsq_cycles.qe || SYNC_sel_wr_timing_changed;
 
-      
+
       tsq_m_cycles_sysclk              = reg2hw.fuse_wrapper_wr_cfg_2.tsq_m_cycles.q;
       tsq_m_cycles_sysclk_we           = reg2hw.fuse_wrapper_wr_cfg_2.tsq_m_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -304,7 +303,7 @@ module prim_otp_mem
       tsur_ld_cycles_sysclk            = reg2hw.fuse_wrapper_wr_cfg_2.tsur_ld_cycles.q;
       tsur_ld_cycles_sysclk_we         = reg2hw.fuse_wrapper_wr_cfg_2.tsur_ld_cycles.qe || SYNC_sel_wr_timing_changed;
 
-      
+
       thr_ps_cycles_sysclk             = reg2hw.fuse_wrapper_wr_cfg_3.thr_ps_cycles.q;
       thr_ps_cycles_sysclk_we          = reg2hw.fuse_wrapper_wr_cfg_3.thr_ps_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -314,7 +313,7 @@ module prim_otp_mem
       thp_cs_cycles_sysclk             = reg2hw.fuse_wrapper_wr_cfg_3.thp_cs_cycles.q;
       thp_cs_cycles_sysclk_we          = reg2hw.fuse_wrapper_wr_cfg_3.thp_cs_cycles.qe || SYNC_sel_wr_timing_changed;
 
-      
+
       thr_cs_cycles_sysclk             = reg2hw.fuse_wrapper_wr_cfg_4.thr_cs_cycles.q;
       thr_cs_cycles_sysclk_we          = reg2hw.fuse_wrapper_wr_cfg_4.thr_cs_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -324,7 +323,7 @@ module prim_otp_mem
       thr_ps_cs_cycles_sysclk          = reg2hw.fuse_wrapper_wr_cfg_4.thr_ps_cs_cycles.q;
       thr_ps_cs_cycles_sysclk_we       = reg2hw.fuse_wrapper_wr_cfg_4.thr_ps_cs_cycles.qe || SYNC_sel_wr_timing_changed;
 
-      
+
       tsur_a_cycles_sysclk             = reg2hw.fuse_wrapper_wr_cfg_5.tsur_a_cycles.q;
       tsur_a_cycles_sysclk_we          = reg2hw.fuse_wrapper_wr_cfg_5.tsur_a_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -337,7 +336,7 @@ module prim_otp_mem
       tsup_ld_cycles_sysclk            = reg2hw.fuse_wrapper_wr_cfg_5.tsup_ld_cycles.q;
       tsup_ld_cycles_sysclk_we         = reg2hw.fuse_wrapper_wr_cfg_5.tsup_ld_cycles.qe || SYNC_sel_wr_timing_changed;
 
-      
+
       trd_cycles_sysclk                = reg2hw.fuse_wrapper_wr_cfg_6.trd_cycles.q;
       trd_cycles_sysclk_we             = reg2hw.fuse_wrapper_wr_cfg_6.trd_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -347,7 +346,7 @@ module prim_otp_mem
       thr_a_cycles_sysclk              = reg2hw.fuse_wrapper_wr_cfg_6.thr_a_cycles.q;
       thr_a_cycles_sysclk_we           = reg2hw.fuse_wrapper_wr_cfg_6.thr_a_cycles.qe || SYNC_sel_wr_timing_changed;
 
-      
+
       thp_pd_ps_cycles_sysclk          = reg2hw.fuse_wrapper_wr_cfg_7.thp_pd_ps_cycles.q;
       thp_pd_ps_cycles_sysclk_we       = reg2hw.fuse_wrapper_wr_cfg_7.thp_pd_ps_cycles.qe || SYNC_sel_wr_timing_changed;
 
@@ -357,7 +356,7 @@ module prim_otp_mem
       addr_capture_cycles_sysclk       = reg2hw.fuse_wrapper_wr_cfg_7.addr_capture_cycles.q;
       addr_capture_cycles_sysclk_we    = reg2hw.fuse_wrapper_wr_cfg_7.addr_capture_cycles.qe || SYNC_sel_wr_timing_changed;
 
-      
+
       trigger_power_down_cycles_sysclk    = reg2hw.fuse_wrapper_wr_cfg_8.q;
       trigger_power_down_cycles_sysclk_we = reg2hw.fuse_wrapper_wr_cfg_8.qe || SYNC_sel_wr_timing_changed;
     end
@@ -370,18 +369,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (tsur_pd_ps_cycles_sysclk),
       .data_in_val  (tsur_pd_ps_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsur_pd_ps_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(tsur_ps_cycles_sysclk)))
   tsur_ps_cycles_sysclkXCDCBUF
     (
@@ -389,18 +388,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (tsur_ps_cycles_sysclk),
       .data_in_val  (tsur_ps_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsur_ps_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(tsur_ps_cs_cycles_sysclk)))
   tsur_ps_cs_cycles_sysclkXCDCBUF
     (
@@ -408,18 +407,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (tsur_ps_cs_cycles_sysclk),
       .data_in_val  (tsur_ps_cs_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsur_ps_cs_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(tsup_ps_cs_cycles_sysclk)))
   tsup_ps_cs_cycles_sysclkXCDCBUF
     (
@@ -427,18 +426,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (tsup_ps_cs_cycles_sysclk),
       .data_in_val  (tsup_ps_cs_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsup_ps_cs_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(tsup_ps_cycles_sysclk)))
   tsup_ps_cycles_sysclkXCDCBUF
     (
@@ -446,18 +445,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (tsup_ps_cycles_sysclk),
       .data_in_val  (tsup_ps_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsup_ps_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(tsq_cycles_sysclk)))
   tsq_cycles_sysclkXCDCBUF
     (
@@ -465,18 +464,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (tsq_cycles_sysclk),
       .data_in_val  (tsq_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsq_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(tsq_m_cycles_sysclk)))
   tsq_m_cycles_sysclkXCDCBUF
     (
@@ -484,18 +483,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (tsq_m_cycles_sysclk),
       .data_in_val  (tsq_m_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsq_m_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(tpgm_cycles_sysclk)))
   tpgm_cycles_sysclkXCDCBUF
     (
@@ -503,18 +502,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (tpgm_cycles_sysclk),
       .data_in_val  (tpgm_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tpgm_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(tsur_ld_cycles_sysclk)))
   tsur_ld_cycles_sysclkXCDCBUF
     (
@@ -522,18 +521,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (tsur_ld_cycles_sysclk),
       .data_in_val  (tsur_ld_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsur_ld_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(thr_ps_cycles_sysclk)))
   thr_ps_cycles_sysclkXCDCBUF
     (
@@ -541,18 +540,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (thr_ps_cycles_sysclk),
       .data_in_val  (thr_ps_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thr_ps_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(thp_ps_cycles_sysclk)))
   thp_ps_cycles_sysclkXCDCBUF
     (
@@ -560,18 +559,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (thp_ps_cycles_sysclk),
       .data_in_val  (thp_ps_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thp_ps_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(thp_cs_cycles_sysclk)))
   thp_cs_cycles_sysclkXCDCBUF
     (
@@ -579,18 +578,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (thp_cs_cycles_sysclk),
       .data_in_val  (thp_cs_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thp_cs_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(thr_cs_cycles_sysclk)))
   thr_cs_cycles_sysclkXCDCBUF
     (
@@ -598,18 +597,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (thr_cs_cycles_sysclk),
       .data_in_val  (thr_cs_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thr_cs_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(thp_ps_cs_cycles_sysclk)))
   thp_ps_cs_cycles_sysclkXCDCBUF
     (
@@ -617,18 +616,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (thp_ps_cs_cycles_sysclk),
       .data_in_val  (thp_ps_cs_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thp_ps_cs_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(thr_ps_cs_cycles_sysclk)))
   thr_ps_cs_cycles_sysclkXCDCBUF
     (
@@ -636,18 +635,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (thr_ps_cs_cycles_sysclk),
       .data_in_val  (thr_ps_cs_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thr_ps_cs_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(tsur_a_cycles_sysclk)))
   tsur_a_cycles_sysclkXCDCBUF
     (
@@ -655,18 +654,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (tsur_a_cycles_sysclk),
       .data_in_val  (tsur_a_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsur_a_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(tsup_a_cycles_sysclk)))
   tsup_a_cycles_sysclkXCDCBUF
     (
@@ -674,18 +673,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (tsup_a_cycles_sysclk),
       .data_in_val  (tsup_a_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsup_a_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(thp_a_cycles_sysclk)))
   thp_a_cycles_sysclkXCDCBUF
     (
@@ -693,18 +692,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (thp_a_cycles_sysclk),
       .data_in_val  (thp_a_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thp_a_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(tsup_ld_cycles_sysclk)))
   tsup_ld_cycles_sysclkXCDCBUF
     (
@@ -712,18 +711,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (tsup_ld_cycles_sysclk),
       .data_in_val  (tsup_ld_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (tsup_ld_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(trd_cycles_sysclk)))
   trd_cycles_sysclkXCDCBUF
     (
@@ -731,18 +730,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (trd_cycles_sysclk),
       .data_in_val  (trd_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (trd_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(trd_m_cycles_sysclk)))
   trd_m_cycles_sysclkXCDCBUF
     (
@@ -750,18 +749,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (trd_m_cycles_sysclk),
       .data_in_val  (trd_m_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (trd_m_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(thr_a_cycles_sysclk)))
   thr_a_cycles_sysclkXCDCBUF
     (
@@ -769,18 +768,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (thr_a_cycles_sysclk),
       .data_in_val  (thr_a_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thr_a_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(thp_pd_ps_cycles_sysclk)))
   thp_pd_ps_cycles_sysclkXCDCBUF
     (
@@ -788,18 +787,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (thp_pd_ps_cycles_sysclk),
       .data_in_val  (thp_pd_ps_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (thp_pd_ps_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(data_capture_cycles_sysclk)))
   data_capture_cycles_sysclkXCDCBUF
     (
@@ -807,18 +806,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (data_capture_cycles_sysclk),
       .data_in_val  (data_capture_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (data_capture_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(addr_capture_cycles_sysclk)))
   addr_capture_cycles_sysclkXCDCBUF
     (
@@ -826,18 +825,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (addr_capture_cycles_sysclk),
       .data_in_val  (addr_capture_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (addr_capture_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(trigger_power_down_cycles_sysclk)))
   trigger_power_down_cycles_sysclkXCDCBUF
     (
@@ -845,18 +844,18 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (trigger_power_down_cycles_sysclk),
       .data_in_val  (trigger_power_down_cycles_sysclk_we),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (trigger_power_down_cycles),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
     );
-  
-  
+
+
   SCS_CDC_BUF_DFT #(.WIDTH($bits(redundancy_autoinit_disable)))
   redundancy_autoinit_disable_sysclkXCDCBUF
     (
@@ -864,12 +863,12 @@ module prim_otp_mem
       .wr_rst_l     (rst_ni),     // reset in sysclk domain
       .data_in      (reg2hw.macro_control.redundancy_autoinit_disable.q),
       .data_in_val  (reg2hw.macro_control.redundancy_autoinit_disable.qe),
-  
+
       .rd_clk       (clk_efuse_i),
       .rd_rst_l     (rvsds_6595_rst_efuse_n), // reset in efuse-clk domain
       .data_out     (redundancy_autoinit_disable),
       .data_out_val (),
-  
+
       .scan_en      (scan_en_i),
       .tstrst       (tstrst_i),
       .tstrstsel    (tstrstsel_i)
@@ -976,7 +975,7 @@ module prim_otp_mem
       .mbist_fuse_rsb_i (mbist_fuse_rsb_i),
       .mbist_fuse_strobe_array_i(mbist_fuse_strobe_array_i[(FUSE_NUM_MBIST_ARRAYS-1):0]),
       .mbist_fuse_address_i(mbist_fuse_address_i/*[(FUSE_NUM_MBIST_ARRAYS-1):0][(FUSE_ADDR_WIDTH-1):0]*/));
-  
+
 endmodule
 // Local Variables:
 // fill-column:1

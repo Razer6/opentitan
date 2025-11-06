@@ -1,4 +1,3 @@
-
 // Copyright lowRISC contributors (OpenTitan project).
 // Licensed under the Apache License, Version 2.0, see LICENSE for details.
 // SPDX-License-Identifier: Apache-2.0
@@ -42,7 +41,7 @@ module rivos_tsmc_fuse_wrapper
         output logic                        rvalid_o,
         output logic [(Width+EccWidth-1):0] rdata_o,
         output err_e                        err_o,
- 
+
         output logic                        wrapper_ready_o,
 
         output logic                        rvsds_6595_rst_efuse_no, // FIXME_GEN2 cleanup signal naming, want to be very obvious for gB0 eco
@@ -122,7 +121,7 @@ module rivos_tsmc_fuse_wrapper
         output logic                                                         trace_fuse_ecc_ps_o,
         output [(FUSE_ADDR_WIDTH-1):0]                                       trace_fuse_ecc_address_o,
         output [(FUSE_NUM_ARRAYS-1):0][(FUSE_DATA_WIDTH-1):0]                trace_fuse_data_o,
-        output [(FUSE_NUM_ECC_ARRAYS-1):0][(FUSE_DATA_WIDTH-1):0]            trace_fuse_ecc_data_o 
+        output [(FUSE_NUM_ECC_ARRAYS-1):0][(FUSE_DATA_WIDTH-1):0]            trace_fuse_ecc_data_o
 
 
 
@@ -146,7 +145,7 @@ module rivos_tsmc_fuse_wrapper
 
   localparam int FUSE_ECC_BIT_ADDR_WIDTH = 3;
 
-  localparam int FUSE_STATE_COUNT_BITS = 19; // should be largest of cycle bits+1 
+  localparam int FUSE_STATE_COUNT_BITS = 19; // should be largest of cycle bits+1
 
   typedef enum logic [3:0] {
       FUSE_INIT_ST        = 4'b0000,
@@ -166,12 +165,12 @@ module rivos_tsmc_fuse_wrapper
       FUSE_MODE_REDUNDANCY = 2'b01,
       FUSE_MODE_TEST       = 2'b10
   } fuse_mode_e;
-  
+
   typedef enum logic {
       FUSE_OP_READ  = 1'b0,
       FUSE_OP_WRITE = 1'b1
   } fuse_operation_e;
-  
+
   typedef struct packed {
       fuse_operation_e       op;
       fuse_mode_e            mode;
@@ -182,10 +181,10 @@ module rivos_tsmc_fuse_wrapper
       logic [(Width-1):0]    wdata;
       logic [(EccWidth-1):0] wdata_ecc;
   } fuse_cmd_s;
-  
+
   logic reset;
   logic rst_efuse_n;
-  
+
   logic fuse_csb, fuse_csb_set, fuse_csb_clr, next_fuse_csb;
   logic [(FUSE_NUM_ARRAYS-1):0] final_fuse_csb_array;
   logic [(FUSE_NUM_ECC_ARRAYS-1):0] final_fuse_ecc_csb_array;
@@ -199,7 +198,7 @@ module rivos_tsmc_fuse_wrapper
   logic fuse_pgenb, fuse_pgenb_set, fuse_pgenb_clr, next_fuse_pgenb;
   logic [(FUSE_NUM_ARRAYS-1):0] final_fuse_pgenb_array;
   logic [(FUSE_NUM_ECC_ARRAYS-1):0] final_fuse_ecc_pgenb_array;
-  logic fuse_ps, fuse_ps_set, fuse_ps_clr, next_fuse_ps; 
+  logic fuse_ps, fuse_ps_set, fuse_ps_clr, next_fuse_ps;
   logic fuse_ecc_ps, fuse_ecc_ps_set, fuse_ecc_ps_clr, next_fuse_ecc_ps;
   logic [(FUSE_NUM_ARRAYS-1):0] final_fuse_ps_array, fuse_ps_array;
   logic [(FUSE_NUM_ECC_ARRAYS-1):0] fuse_ecc_ps_array, final_fuse_ecc_ps_array;
@@ -227,7 +226,7 @@ module rivos_tsmc_fuse_wrapper
   wire [(FUSE_NUM_ARRAYS-1):0][(FUSE_RF_DATA_WIDTH-1):0] fuse_rf_data;
   // (neal) outputs from fuse macro verilog file need to be wires instead of logic
   wire [(FUSE_NUM_ECC_ARRAYS-1):0][(FUSE_DATA_WIDTH-1):0]    fuse_ecc_data;    // ecc data has 32b reads, will select what chunk is needed downstream
-  wire [(FUSE_NUM_ECC_ARRAYS-1):0][(FUSE_RF_DATA_WIDTH-1):0] fuse_ecc_rf_data; 
+  wire [(FUSE_NUM_ECC_ARRAYS-1):0][(FUSE_RF_DATA_WIDTH-1):0] fuse_ecc_rf_data;
 
   logic [(FUSE_DATA_WIDTH-1):0] fuse_data_out, next_fuse_data_out;
   logic [(FUSE_DATA_WIDTH-1):0] fuse_ecc_data_out, next_fuse_ecc_data_out; // ecc data has 32b reads, will select what chunk is needed downstream
@@ -236,7 +235,7 @@ module rivos_tsmc_fuse_wrapper
   logic                         fuse_data_chunk_sel, next_fuse_data_chunk_sel;
   logic [1:0]                   fuse_ecc_data_chunk_sel, next_fuse_ecc_data_chunk_sel;
   logic [(EccWidth-1):0]        fuse_read_return_ecc;
-  
+
   logic            cur_redundancy_init, next_redundancy_init, finished_redundancy_init;
   logic            cur_redundancy_init_1;
 
@@ -339,7 +338,7 @@ module rivos_tsmc_fuse_wrapper
     redundancy_init_cmd.ecc              = 1'b0;                 // N/A for this case, need init for both data and ecc arrays
     redundancy_init_cmd.margin           = 1'b0;                 // first initialization will always be in regular margin mode
     redundancy_init_cmd.test_row_col_sel = 1'b0;                 // N/A in REDUNDANCY mode
-    redundancy_init_cmd.addr             = {9'b0, next_fuse_redundancy_init_read_count, 1'b0}; 
+    redundancy_init_cmd.addr             = {9'b0, next_fuse_redundancy_init_read_count, 1'b0};
     redundancy_init_cmd.wdata            = '0;
     redundancy_init_cmd.wdata_ecc        = '0;
   end
@@ -352,7 +351,7 @@ RDP_ASYNC_FIFO
     .ENTRIES (8),
     .DATA_WIDTH ($bits(fuse_cmd_s))
   )
-  incoming_cmd_fifo 
+  incoming_cmd_fifo
   (
     // global
    .wrClk(clk_i),
@@ -384,24 +383,24 @@ RDP_ASYNC_FIFO
    .rdData(new_cmd)               ///< Data currently first on output (valid when rdValid)
   );
 
- 
- 
+
+
    // ready to capture a new command when in READ or WRITE READY states or STANDBY state
    // need to not be doing redundancy initialization
-   // need to not be currently writing fuse bits.  this is needed because an OTP write is 16 bits, and fuses are written 
+   // need to not be currently writing fuse bits.  this is needed because an OTP write is 16 bits, and fuses are written
    // one bit at a time, and the FSM cycles through the ready state for each bit
    // incoming_fifo_valid indicates that there is a valid command waiting in the incomming fifo
    assign capture_new_cmd = ready_for_new_cmd && (!(next_redundancy_init || cur_redundancy_init)) && (!fuse_write_active) && incoming_fifo_valid;
- 
+
    // generate reset in the 100mhz clock domain based on aon reset
    RDP_RSTSYNC_DFT efuse_rst_sync
    (
      .clk         (clk_efuse_i),
      .async_rst_l (rst_ni),
-   
+
      .tstrstsel   (tstrstsel_i),
      .tstrst      (tstrst_i),
-   
+
      .rst_l       (rst_efuse_n)
    );
 
@@ -445,10 +444,10 @@ RDP_ASYNC_FIFO
 
     if(fuse_redundancy_inc_read_count) begin
       next_fuse_redundancy_init_read_count = fuse_redundancy_init_read_count + 2'b01;
-    end 
-  end 
+    end
+  end
 
-  RDP_AFFR #( .WIDTH($bits(fuse_redundancy_init_read_count)) ) 
+  RDP_AFFR #( .WIDTH($bits(fuse_redundancy_init_read_count)) )
     aff_fuse_redundancy_init_count (.clk(clk_efuse_i), .rst_l(rst_efuse_n), .en(fuse_redundancy_inc_read_count), .d(next_fuse_redundancy_init_read_count), .q(fuse_redundancy_init_read_count));
 
   // fuse_write_active indicates that there is a write in progress
@@ -493,10 +492,10 @@ RDP_ASYNC_FIFO
     end
     else if(fuse_inc_write_count) begin
       next_fuse_write_bit_count = fuse_write_bit_count + 4'h1;
-    end 
-  end 
+    end
+  end
 
-  RDP_AFFR #( .WIDTH($bits(fuse_write_bit_count)) )  
+  RDP_AFFR #( .WIDTH($bits(fuse_write_bit_count)) )
     aff_fuse_write_bit_count (.clk(clk_efuse_i), .rst_l(rst_efuse_n), .en(fuse_inc_write_count||(!fuse_write_active)), .d(next_fuse_write_bit_count), .q(fuse_write_bit_count));
 
   // get new command from incoming fifo unless
@@ -515,7 +514,7 @@ RDP_ASYNC_FIFO
   RDP_AFFR #( .WIDTH($bits(cur_cmd)) ) aff_fuse_cur_cmd (.clk(clk_efuse_i), .rst_l(rst_efuse_n), .en(capture_new_cmd||fuse_redundancy_load_cmd), .d(next_cmd), .q(cur_cmd));
 
   // need to load a new redundancy init command
-  // this is done right out or reset or after completing the previous 
+  // this is done right out or reset or after completing the previous
   // redundancy init command.  there are a total of 4 commands needed.
   assign fuse_redundancy_load_cmd = fuse_redundancy_inc_read_count || fuse_load_first_redundancy_cmd;
 
@@ -527,8 +526,8 @@ RDP_ASYNC_FIFO
 
   // indicates that the operation or mode is changing or coming out of standby
   // and a new configuraiton needs to be setup
-  assign new_setup_needed = capture_new_cmd && 
-                            ((cur_cmd.mode != next_cmd.mode)     || 
+  assign new_setup_needed = capture_new_cmd &&
+                            ((cur_cmd.mode != next_cmd.mode)     ||
                              (cur_cmd.op != next_cmd.op)         ||
                              (cur_cmd.margin != next_cmd.margin) ||
                              (fuse_ctl_state == FUSE_POWER_DOWN_ST));
@@ -547,7 +546,7 @@ RDP_ASYNC_FIFO
       next_setup_needed = 1'b0;
     end
   end
-  
+
   RDP_AFFR aff_fuse_setup_needed (.clk(clk_efuse_i), .rst_l(rst_efuse_n), .en(new_setup_needed||clear_setup_needed), .d(next_setup_needed), .q(setup_was_needed));
 
   assign new_init_needed = (!redundancy_autoinit_disable_i) &&
@@ -564,7 +563,7 @@ RDP_ASYNC_FIFO
       next_init_needed = 1'b0;
     end
   end
-  
+
   RDP_AFFR aff_fuse_init_needed (.clk(clk_efuse_i), .rst_l(rst_efuse_n), .en(new_init_needed||clear_init_needed), .d(next_init_needed), .q(init_needed));
 
   generate
@@ -627,7 +626,7 @@ RDP_ASYNC_FIFO
     unique case (fuse_ctl_state)
       FUSE_INIT_ST: begin
         // this state drives the PD pin on the fuse macro interface
-        // it needs to drive PD for TSUP_PD_PS 
+        // it needs to drive PD for TSUP_PD_PS
         // reads do not have a dependency on PD to PS spacing
         // although first transition is always to reads, no guarantee
         // that a read operation will exceed TSUP_PD_PS, so waiting to be safe
@@ -638,7 +637,7 @@ RDP_ASYNC_FIFO
         fuse_pd_clr = 1'b1;
 
         // fuse_init_complete fires when in INIT state and TSUR_PD_PS cycles have completed
-        if(fuse_init_complete) begin 
+        if(fuse_init_complete) begin
           fuse_load_first_redundancy_cmd = 1'b1;
           next_fuse_ctl_state = FUSE_READ_SETUP_ST; // always transition to read coming out of reset to capture redundancy info
         end
@@ -648,7 +647,7 @@ RDP_ASYNC_FIFO
         // this state drives the read initialization sequence
         // already waited TSUP_PD_PS in FUSE_INIT_ST
 
-        // 1) drive PS 
+        // 1) drive PS
         fuse_ps_clr     = 1'b1;
         fuse_ecc_ps_clr = 1'b1;
 
@@ -660,21 +659,21 @@ RDP_ASYNC_FIFO
           fuse_mr_set    = cur_cmd.margin;
           fuse_pgenb_set = 1'b1;
           fuse_load_set  = 1'b1;
-          
+
           unique case (cur_cmd.mode)
-            FUSE_MODE_ARRAY: begin 
+            FUSE_MODE_ARRAY: begin
               // redundancy should always be enabled
               fuse_rsb_clr   = 1'b1;
               fuse_rwl_clr   = 1'b1;
               fuse_tcrs_clr  = 1'b1;
             end
-            FUSE_MODE_REDUNDANCY: begin 
+            FUSE_MODE_REDUNDANCY: begin
               // redundancy should always be enabled
               fuse_rsb_clr   = 1'b1;
               fuse_rwl_set   = 1'b1;
               fuse_tcrs_clr  = 1'b1;
             end
-            FUSE_MODE_TEST: begin 
+            FUSE_MODE_TEST: begin
               // redundancy should always be enabled
               fuse_rsb_clr   = 1'b1;
               fuse_rwl_clr   = 1'b1;
@@ -704,14 +703,14 @@ RDP_ASYNC_FIFO
         else begin
           ready_for_new_cmd = 1'b1;
         end
-      
+
         // when doing redundancy init, we already have a command to process
         // so transition to READ
         if(cur_redundancy_init) begin
            next_fuse_ctl_state = FUSE_READ_ST;
         end
         // if a new setup was needed then we need to process the command that
-        // triggered the new configuration, or a new command is captured that 
+        // triggered the new configuration, or a new command is captured that
         // does not need a new config, we need to perform the READ
         else if(setup_was_needed || (capture_new_cmd && !new_setup_needed)) begin
            next_fuse_ctl_state = FUSE_READ_ST;
@@ -748,18 +747,18 @@ RDP_ASYNC_FIFO
         // fuse_ecc_address[12:11] is used to determing which 8b chunk of the 32b fuse read
         // return is needed
         unique case (cur_cmd.mode)
-          FUSE_MODE_ARRAY: begin 
+          FUSE_MODE_ARRAY: begin
             func_fuse_address[7:0]       = cur_cmd.addr[8:1];
             func_fuse_address[12]        = cur_cmd.addr[0];
             func_fuse_ecc_address[7:0]   = cur_cmd.addr[9:2];
             func_fuse_ecc_address[12:11] = cur_cmd.addr[1:0];
           end
-          FUSE_MODE_REDUNDANCY: begin 
+          FUSE_MODE_REDUNDANCY: begin
             func_fuse_address[7:6] = cur_cmd.addr[2:1];
             func_fuse_address[12]  = cur_cmd.addr[0];
             func_fuse_ecc_address  = func_fuse_address; // redundancy ecc array is programmed exactly the same as redundancy data
           end
-          FUSE_MODE_TEST: begin 
+          FUSE_MODE_TEST: begin
             // if test row is selected, data comes out Q31-Q0
             // if test 1st column is selected, data comes out Q0
             // if test 2nd column is selected, data comes out Q31
@@ -788,7 +787,7 @@ RDP_ASYNC_FIFO
         if(fuse_addr_capture_complete) begin
           fuse_address_en = 1'b0;
         end
- 
+
         // 2) after TSUR_A drive strobe
         // 3) after TRD/TRD_M clear strobe
         // only set data array strobe if reading data array
@@ -806,7 +805,7 @@ RDP_ASYNC_FIFO
              fuse_strobe_clr = 1'b1;
           end
         end
-  
+
         // only set ecc array strobe if reading ecc array
         // only set ecc strobe if in array mode, or !array and ecc
         if((cur_cmd.mode == FUSE_MODE_ARRAY) ||
@@ -822,8 +821,8 @@ RDP_ASYNC_FIFO
              fuse_ecc_strobe_clr = 1'b1;
           end
         end
-  
-  
+
+
         // 4) pick up valid data after TSQ/TSQ_M (will be greater than THR_A, so don't need to worry about this one)
         // done in fuse_data_out flop with enable being the fuse_read_complete siganl
 
@@ -850,7 +849,7 @@ RDP_ASYNC_FIFO
 
         // fuse_read_csb_hold_complete fires when in READ_HOLD state and FUSE_THR_CS cycles have completed
         if(fuse_read_csb_hold_complete) begin
-           fuse_csb_set = 1'b1; 
+           fuse_csb_set = 1'b1;
         end
 
         // fuse_read_hold_complete fires when in READ_HOLD state and (FUSE_THR_CS + FUSE_THR_PS_CS) cycles have completed
@@ -871,7 +870,7 @@ RDP_ASYNC_FIFO
         // this state drives the write initialization sequence
         // already waited TSUP_PD_PS in FUSE_INIT_ST
 
-        // 1) drive PS 
+        // 1) drive PS
         fuse_ps_set = 1'b1;
 
         if((cur_cmd.mode == FUSE_MODE_ARRAY) ||
@@ -886,19 +885,19 @@ RDP_ASYNC_FIFO
           fuse_pgenb_clr = 1'b1;
           fuse_load_clr  = 1'b1;
           unique case (cur_cmd.mode)
-            FUSE_MODE_ARRAY: begin 
+            FUSE_MODE_ARRAY: begin
               // redundancy should always be enabled
               fuse_rsb_clr   = 1'b1;
               fuse_rwl_clr   = 1'b1;
               fuse_tcrs_clr  = 1'b1;
             end
-            FUSE_MODE_REDUNDANCY: begin 
+            FUSE_MODE_REDUNDANCY: begin
               // redundancy should always be enabled
               fuse_rsb_clr   = 1'b1;
               fuse_rwl_set   = 1'b1;
               fuse_tcrs_clr  = 1'b1;
             end
-            FUSE_MODE_TEST: begin 
+            FUSE_MODE_TEST: begin
               // redundancy should always be enabled
               fuse_rsb_clr   = 1'b1;
               fuse_rwl_clr   = 1'b1;
@@ -914,7 +913,7 @@ RDP_ASYNC_FIFO
       end
 
       FUSE_WRITE_READY_ST: begin
-        // this state checks for a new command or transisitons to WRITE 
+        // this state checks for a new command or transisitons to WRITE
         // cycle over bits in write command
 
         // squashing ready for new command when doing redundancy init,
@@ -930,7 +929,7 @@ RDP_ASYNC_FIFO
         // skipping write state if neither data or ecc bit is not set
         // as only want to write data that is 1 to the fuse array
         // need to increment the write counter anyway
-        if(fuse_write_active && (!((cur_cmd.wdata[fuse_write_bit_count]) || 
+        if(fuse_write_active && (!((cur_cmd.wdata[fuse_write_bit_count]) ||
                                    (fuse_ecc_write_active && cur_cmd.wdata_ecc[fuse_write_bit_count[(FUSE_ECC_BIT_ADDR_WIDTH-1):0]])))) begin
             fuse_inc_write_count = 1'b1;
         end
@@ -939,14 +938,14 @@ RDP_ASYNC_FIFO
         if(fuse_write_active) begin
            // only perform write if the data or ecc data input is 1
            if((cur_cmd.mode != FUSE_MODE_ARRAY) ||
-              ((cur_cmd.wdata[fuse_write_bit_count]) || 
+              ((cur_cmd.wdata[fuse_write_bit_count]) ||
                (fuse_ecc_write_active && cur_cmd.wdata_ecc[fuse_write_bit_count[(FUSE_ECC_BIT_ADDR_WIDTH-1):0]]))) begin
               next_fuse_ctl_state = FUSE_WRITE_ST;
            end
         end
         else begin
           // if a new setup was needed then we need to process the command that
-          // triggered the new configuration, or a new command is captured that 
+          // triggered the new configuration, or a new command is captured that
           // does not need a new config, we need to perform the WRITE
           if(setup_was_needed || (capture_new_cmd && !new_setup_needed)) begin
              next_fuse_ctl_state = FUSE_WRITE_ST;
@@ -980,7 +979,7 @@ RDP_ASYNC_FIFO
         // ecc data is stored 6 bits per 16 bits of fuse data
         // bits[7:6] of each 8b chunk of ecc data are unused
         unique case (cur_cmd.mode)
-          FUSE_MODE_ARRAY: begin 
+          FUSE_MODE_ARRAY: begin
             func_fuse_address[7:0]  = cur_cmd.addr[8:1];
             func_fuse_address[11:8] = fuse_write_bit_count;
             func_fuse_address[12]   = cur_cmd.addr[0];
@@ -988,11 +987,11 @@ RDP_ASYNC_FIFO
             func_fuse_ecc_address[12:11]  = cur_cmd.addr[1:0];
             func_fuse_ecc_address[10:8]   = fuse_write_bit_count[2:0]; // only 6 bits of ECC info, so using [2:0]
           end
-          FUSE_MODE_REDUNDANCY: begin 
+          FUSE_MODE_REDUNDANCY: begin
             func_fuse_address[12:6] = cur_cmd.addr[7:1];
             func_fuse_ecc_address  = func_fuse_address; // redundancy ecc array is programmed exactly the same as redundancy data
           end
-          FUSE_MODE_TEST: begin 
+          FUSE_MODE_TEST: begin
             // no data associated with TEST write, only address
 
             // test addr determines if reading row or column
@@ -1018,7 +1017,7 @@ RDP_ASYNC_FIFO
         if(fuse_addr_capture_complete) begin
           fuse_address_en = 1'b0;
         end
- 
+
         // 2) after TSUP_A drive strobe
         // 3) after TRD/TRD_M clear strobe
         // only set data array strobe if blowing bit
@@ -1037,7 +1036,7 @@ RDP_ASYNC_FIFO
             end
           end
         end
-  
+
         // only set ecc array strobe if blowing bit
         // only set ecc strobe if in array mode, or !array and ecc
         if((cur_cmd.mode != FUSE_MODE_ARRAY) ||
@@ -1055,7 +1054,7 @@ RDP_ASYNC_FIFO
             end
           end
         end
-  
+
         // fuse_write_complete fires when (FUSE_TSUP_A + FUSE_TPGM + FUSE_THP_A)
         if(fuse_write_complete) begin
           // if a new setup was needed and we have processed the command that triggered the
@@ -1079,7 +1078,7 @@ RDP_ASYNC_FIFO
 
         // fuse_write_csb_hold_complete fires when in WRITE_HOLD state and FUSE_THP_CS cycles have complete
         if(fuse_write_csb_hold_complete) begin
-           fuse_csb_set = 1'b1; 
+           fuse_csb_set = 1'b1;
         end
 
         // fuse_write_hold_complete fires when in WRITE_HOLD state and (FUSE_THP_CS + FUSE_THP_PS_CS) cycles have completed
@@ -1132,7 +1131,7 @@ RDP_ASYNC_FIFO
   end
 
   RDP_AFFR #( .DTYPE(fuse_ctl_state_e) ) aff_fuse_ctl_state (.clk(clk_efuse_i), .rst_l(rst_efuse_n), .en(1'b1), .d(next_fuse_ctl_state), .q(fuse_ctl_state));
-  
+
   // clear timer that counts how long FSM is in a state any time we transition states or reset
   assign clear_fuse_state_count = reset || (next_fuse_ctl_state != fuse_ctl_state);
 
@@ -1149,52 +1148,52 @@ RDP_ASYNC_FIFO
   RDP_AFFR #( .WIDTH(FUSE_STATE_COUNT_BITS) ) aff_fuse_state_count (.clk(clk_efuse_i), .rst_l(rst_efuse_n), .en(1'b1), .d(next_fuse_state_count), .q(fuse_state_count));
 
   assign fuse_init_complete            = (fuse_ctl_state == FUSE_INIT_ST)       && (fuse_state_count == FUSE_STATE_COUNT_BITS'(tsur_pd_ps_cycles_i));
-  assign fuse_read_setup_complete      = (fuse_ctl_state == FUSE_READ_SETUP_ST) && (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_ld_cycles_i) + 
+  assign fuse_read_setup_complete      = (fuse_ctl_state == FUSE_READ_SETUP_ST) && (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_ld_cycles_i) +
                                                                                                          FUSE_STATE_COUNT_BITS'(tsur_ps_cs_cycles_i)));
 
-  assign fuse_read_complete            = (fuse_ctl_state == FUSE_READ_ST)       && 
-                                         (cur_cmd.margin ? (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) + 
-                                                                                 FUSE_STATE_COUNT_BITS'(trd_m_cycles_i) + 
+  assign fuse_read_complete            = (fuse_ctl_state == FUSE_READ_ST)       &&
+                                         (cur_cmd.margin ? (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) +
+                                                                                 FUSE_STATE_COUNT_BITS'(trd_m_cycles_i) +
                                                                                  FUSE_STATE_COUNT_BITS'(thr_a_cycles_i))) :
-                                                           (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) + 
-                                                                                 FUSE_STATE_COUNT_BITS'(trd_cycles_i) + 
+                                                           (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) +
+                                                                                 FUSE_STATE_COUNT_BITS'(trd_cycles_i) +
                                                                                  FUSE_STATE_COUNT_BITS'(thr_a_cycles_i)))); // need addition because counter starts at the beginning of this state
 
-  assign fuse_read_data_ready          = (fuse_ctl_state == FUSE_READ_ST)       && 
-                                         (cur_cmd.margin ? (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) + 
-                                                                                 FUSE_STATE_COUNT_BITS'(tsq_m_cycles_i) + 
+  assign fuse_read_data_ready          = (fuse_ctl_state == FUSE_READ_ST)       &&
+                                         (cur_cmd.margin ? (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) +
+                                                                                 FUSE_STATE_COUNT_BITS'(tsq_m_cycles_i) +
                                                                                  FUSE_STATE_COUNT_BITS'(data_capture_cycles_i))) :
-                                                           (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) + 
-                                                                                 FUSE_STATE_COUNT_BITS'(tsq_cycles_i) + 
+                                                           (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) +
+                                                                                 FUSE_STATE_COUNT_BITS'(tsq_cycles_i) +
                                                                                  FUSE_STATE_COUNT_BITS'(data_capture_cycles_i)))); // need addition because counter starts at the beginning of this state
 
-  assign fuse_read_hold_complete       = (fuse_ctl_state == FUSE_READ_HOLD_ST)  && (fuse_state_count >= (FUSE_STATE_COUNT_BITS'(thr_cs_cycles_i) + 
+  assign fuse_read_hold_complete       = (fuse_ctl_state == FUSE_READ_HOLD_ST)  && (fuse_state_count >= (FUSE_STATE_COUNT_BITS'(thr_cs_cycles_i) +
                                                                                                          FUSE_STATE_COUNT_BITS'(thr_ps_cs_cycles_i)));
   assign fuse_read_csb_hold_complete   = (fuse_ctl_state == FUSE_READ_HOLD_ST)  && (fuse_state_count == FUSE_STATE_COUNT_BITS'(thr_cs_cycles_i));
   assign fuse_tsur_ps_cs_complete      = (fuse_ctl_state == FUSE_READ_SETUP_ST) && (fuse_state_count == FUSE_STATE_COUNT_BITS'(tsur_ps_cs_cycles_i));
   assign fuse_tsur_a_complete          = (fuse_ctl_state == FUSE_READ_ST)       && (fuse_state_count == FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i));
 
-  assign fuse_trd_complete             = (fuse_ctl_state == FUSE_READ_ST)       && 
-                                         (cur_cmd.margin ? (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) + 
+  assign fuse_trd_complete             = (fuse_ctl_state == FUSE_READ_ST)       &&
+                                         (cur_cmd.margin ? (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) +
                                                                                  FUSE_STATE_COUNT_BITS'(trd_m_cycles_i))) :
-                                                           (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) + 
+                                                           (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) +
                                                                                  FUSE_STATE_COUNT_BITS'(trd_cycles_i)))); // need addition because counter starts at the beginning of this state
 
-  assign fuse_write_setup_complete     = (fuse_ctl_state == FUSE_WRITE_SETUP_ST) && (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsup_ld_cycles_i) + 
+  assign fuse_write_setup_complete     = (fuse_ctl_state == FUSE_WRITE_SETUP_ST) && (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsup_ld_cycles_i) +
                                                                                                           FUSE_STATE_COUNT_BITS'(tsup_ps_cs_cycles_i)));
-  assign fuse_write_complete           = (fuse_ctl_state == FUSE_WRITE_ST)       && (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsup_a_cycles_i) + 
-                                                                                                          FUSE_STATE_COUNT_BITS'(tpgm_cycles_i) + 
+  assign fuse_write_complete           = (fuse_ctl_state == FUSE_WRITE_ST)       && (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsup_a_cycles_i) +
+                                                                                                          FUSE_STATE_COUNT_BITS'(tpgm_cycles_i) +
                                                                                                           FUSE_STATE_COUNT_BITS'(thp_a_cycles_i)));
-  assign fuse_write_hold_complete      = (fuse_ctl_state == FUSE_WRITE_HOLD_ST)  && (fuse_state_count >= (FUSE_STATE_COUNT_BITS'(thp_cs_cycles_i) + 
+  assign fuse_write_hold_complete      = (fuse_ctl_state == FUSE_WRITE_HOLD_ST)  && (fuse_state_count >= (FUSE_STATE_COUNT_BITS'(thp_cs_cycles_i) +
                                                                                                           FUSE_STATE_COUNT_BITS'(thp_ps_cs_cycles_i)));
   assign fuse_write_csb_hold_complete  = (fuse_ctl_state == FUSE_WRITE_HOLD_ST)  && (fuse_state_count == FUSE_STATE_COUNT_BITS'(thp_cs_cycles_i));
   assign fuse_tsup_ps_cs_complete      = (fuse_ctl_state == FUSE_WRITE_SETUP_ST) && (fuse_state_count == FUSE_STATE_COUNT_BITS'(tsup_ps_cs_cycles_i));
   assign fuse_tsup_a_complete          = (fuse_ctl_state == FUSE_WRITE_ST)       && (fuse_state_count == FUSE_STATE_COUNT_BITS'(tsup_a_cycles_i));
-  assign fuse_tpgm_complete            = (fuse_ctl_state == FUSE_WRITE_ST)       && (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsup_a_cycles_i) + 
+  assign fuse_tpgm_complete            = (fuse_ctl_state == FUSE_WRITE_ST)       && (fuse_state_count == (FUSE_STATE_COUNT_BITS'(tsup_a_cycles_i) +
                                                                                                           FUSE_STATE_COUNT_BITS'(tpgm_cycles_i))); // need addition because counter starts at the beginning of this state
 
   assign fuse_thr_ps_cs_complete       = (fuse_ctl_state == FUSE_POWER_DOWN_ST) && (fuse_state_count == FUSE_STATE_COUNT_BITS'(thr_ps_cs_cycles_i));
-  assign fuse_thp_pd_ps_complete       = (fuse_ctl_state == FUSE_POWER_DOWN_ST) && (fuse_state_count == (FUSE_STATE_COUNT_BITS'(thr_ps_cs_cycles_i) + 
+  assign fuse_thp_pd_ps_complete       = (fuse_ctl_state == FUSE_POWER_DOWN_ST) && (fuse_state_count == (FUSE_STATE_COUNT_BITS'(thr_ps_cs_cycles_i) +
                                                                                                          FUSE_STATE_COUNT_BITS'(thp_pd_ps_cycles_i)));
 
   assign fuse_addr_capture_complete    = ((fuse_ctl_state == FUSE_READ_ST) || (fuse_ctl_state == FUSE_WRITE_ST)) && (fuse_state_count >= FUSE_STATE_COUNT_BITS'(addr_capture_cycles_i));
@@ -1403,7 +1402,7 @@ RDP_ASYNC_FIFO
   end
 
   RDP_AFFR #( .WIDTH($bits(fuse_ecc_address)) )  aff_fuse_ecc_address (.clk(clk_efuse_i), .rst_l(rst_efuse_n), .en(fuse_address_en), .d(next_fuse_ecc_address), .q(fuse_ecc_address));
-  
+
   always_comb begin
     next_fuse_ecc_array_sel = fuse_ecc_array_sel;
 
@@ -1451,19 +1450,19 @@ RDP_ASYNC_FIFO
       fuse_ecc_ps_array     = {FUSE_NUM_ECC_ARRAYS{fuse_ecc_ps}};
     end
     else begin
-      if (FUSE_NUM_ARRAYS>1) begin 
+      if (FUSE_NUM_ARRAYS>1) begin
         fuse_strobe_array[fuse_array_sel]         = fuse_strobe;
         fuse_ps_array[fuse_array_sel]             = fuse_ps;
       end
-      else begin 
+      else begin
         fuse_strobe_array                         = fuse_strobe;
         fuse_ps_array                             = fuse_ps;
       end
-      if (FUSE_NUM_ECC_ARRAYS>1) begin 
+      if (FUSE_NUM_ECC_ARRAYS>1) begin
         fuse_ecc_strobe_array[fuse_ecc_array_sel] = fuse_ecc_strobe;
         fuse_ecc_ps_array[fuse_ecc_array_sel]     = fuse_ecc_ps;
       end
-      else begin 
+      else begin
         fuse_ecc_strobe_array                     = fuse_ecc_strobe;
         fuse_ecc_ps_array                         = fuse_ecc_ps;
       end
@@ -1481,21 +1480,21 @@ RDP_ASYNC_FIFO
     if (fuse_data_valid) begin
       // if !ecc fall through to last else
       if ((cur_cmd.mode == FUSE_MODE_REDUNDANCY) && (cur_cmd.ecc)) begin
-        if (FUSE_NUM_ECC_ARRAYS>1) begin 
+        if (FUSE_NUM_ECC_ARRAYS>1) begin
           next_fuse_data_out = fuse_ecc_data[fuse_ecc_array_sel];
         end
-        else begin 
+        else begin
           next_fuse_data_out = fuse_ecc_data;
         end
-      end  
+      end
       else if (cur_cmd.mode == FUSE_MODE_TEST && (cur_cmd.test_row_col_sel[1] == 1'b1)) begin // column test mode
         next_fuse_data_out = '0;
         if(cur_cmd.test_row_col_sel[0] == 1'b0) begin // 1st test column selected
           if(!cur_cmd.ecc) begin
-            next_fuse_data_out[0] = fuse_data[fuse_array_sel][0];  
+            next_fuse_data_out[0] = fuse_data[fuse_array_sel][0];
           end
           else begin
-            if (FUSE_NUM_ECC_ARRAYS>1) begin 
+            if (FUSE_NUM_ECC_ARRAYS>1) begin
               next_fuse_data_out[0] = fuse_ecc_data[fuse_ecc_array_sel][0];
             end
             else begin
@@ -1505,10 +1504,10 @@ RDP_ASYNC_FIFO
         end
         else begin                                    // 2nd test column selected
           if(!cur_cmd.ecc) begin
-            next_fuse_data_out[0] = fuse_data[fuse_array_sel][31];  
+            next_fuse_data_out[0] = fuse_data[fuse_array_sel][31];
           end
           else begin
-            if (FUSE_NUM_ECC_ARRAYS>1) begin 
+            if (FUSE_NUM_ECC_ARRAYS>1) begin
               next_fuse_data_out[0] = fuse_ecc_data[fuse_ecc_array_sel][31];
             end
             else begin
@@ -1519,17 +1518,17 @@ RDP_ASYNC_FIFO
       end
       // if !ecc fall through to last else
       else if (cur_cmd.mode == FUSE_MODE_TEST && (cur_cmd.test_row_col_sel[1] == 1'b0) && (cur_cmd.ecc)) begin // test mode row
-        if (FUSE_NUM_ECC_ARRAYS>1) begin 
+        if (FUSE_NUM_ECC_ARRAYS>1) begin
           next_fuse_data_out = fuse_ecc_data[fuse_ecc_array_sel];
         end
-        else begin 
+        else begin
           next_fuse_data_out = fuse_ecc_data;
         end
       end
-      else if (FUSE_NUM_ARRAYS>1) begin 
+      else if (FUSE_NUM_ARRAYS>1) begin
         next_fuse_data_out = fuse_data[fuse_array_sel];
       end
-      else begin 
+      else begin
         next_fuse_data_out = fuse_data;
       end
     end
@@ -1544,10 +1543,10 @@ RDP_ASYNC_FIFO
       if (cur_cmd.mode != FUSE_MODE_ARRAY) begin
         next_fuse_ecc_data_out = '0;
       end
-      else if (FUSE_NUM_ECC_ARRAYS>1) begin 
+      else if (FUSE_NUM_ECC_ARRAYS>1) begin
         next_fuse_ecc_data_out = fuse_ecc_data[fuse_ecc_array_sel];
       end
-      else begin 
+      else begin
         next_fuse_ecc_data_out = fuse_ecc_data;
       end
     end
@@ -1571,7 +1570,7 @@ RDP_ASYNC_FIFO
     next_fuse_data_chunk_sel = fuse_data_chunk_sel;
 
     // need to determine with 16b chunk of data from 32b fuse read is needed
-    if (fuse_data_valid && 
+    if (fuse_data_valid &&
         (cur_cmd.mode == FUSE_MODE_TEST) && next_fuse_test_address[1]) begin // selected test column
       next_fuse_data_chunk_sel = 1'b0;
     end
@@ -1586,7 +1585,7 @@ RDP_ASYNC_FIFO
     next_fuse_ecc_data_chunk_sel = fuse_ecc_data_chunk_sel;
 
     // need to determine with 8b chunk of data from 32b fuse read is needed
-    if (fuse_data_valid && 
+    if (fuse_data_valid &&
         (cur_cmd.mode == FUSE_MODE_TEST) && next_fuse_test_address[1]) begin // selected 1st test column
       next_fuse_ecc_data_chunk_sel = 2'b0;
     end
@@ -1609,7 +1608,7 @@ RDP_ASYNC_FIFO
       2'b10: fuse_read_return_ecc = fuse_ecc_data_out[23:16];
       2'b11: fuse_read_return_ecc = fuse_ecc_data_out[31:24];
     endcase
-    
+
   end
 
   assign err_o = NoError; // (neal) no errors from fuse macro
@@ -1623,7 +1622,7 @@ RDP_ASYNC_FIFO
     .ENTRIES (8),
     .DATA_WIDTH (Width+EccWidth)
   )
-  outgoing_response_fifo 
+  outgoing_response_fifo
   (
     // global
    .wrClk(clk_efuse_i),
@@ -1758,7 +1757,7 @@ RDP_ASYNC_FIFO
                       .PS(final_fuse_ps_array[g_i]),
                       .PD(final_fuse_pd_array[g_i]),
                       .MR(final_fuse_mr),
-      
+
                       .A0(final_fuse_address[g_i][0]),
                       .A1(final_fuse_address[g_i][1]),
                       .A2(final_fuse_address[g_i][2]),
@@ -1772,11 +1771,11 @@ RDP_ASYNC_FIFO
                       .A10(final_fuse_address[g_i][10]),
                       .A11(final_fuse_address[g_i][11]),
                       .A12(final_fuse_address[g_i][12]),
-      
+
                       .TRCS(final_fuse_tcrs),
                       .AT1(final_fuse_test_address[g_i][1]),
                       .AT0(final_fuse_test_address[g_i][0]),
-      
+
                       .RSB(final_fuse_rsb),
                       .RWL(final_fuse_rwl),
                       .RF0(fuse_rf_data[g_i][0]),
@@ -1787,7 +1786,7 @@ RDP_ASYNC_FIFO
                       .RF5(fuse_rf_data[g_i][5]),
                       .RF6(fuse_rf_data[g_i][6]),
                       .RF7(fuse_rf_data[g_i][7]),
-      
+
                       .Q0(fuse_data[g_i][0]),
                       .Q1(fuse_data[g_i][1]),
                       .Q2(fuse_data[g_i][2]),
@@ -1835,7 +1834,7 @@ RDP_ASYNC_FIFO
                       .PS(final_fuse_ecc_ps_array[g_i]),
                       .PD(final_fuse_ecc_pd_array[g_i]),
                       .MR(final_fuse_mr),
-      
+
                       .A0(final_fuse_ecc_address[g_i][0]),
                       .A1(final_fuse_ecc_address[g_i][1]),
                       .A2(final_fuse_ecc_address[g_i][2]),
@@ -1849,11 +1848,11 @@ RDP_ASYNC_FIFO
                       .A10(final_fuse_ecc_address[g_i][10]),
                       .A11(final_fuse_ecc_address[g_i][11]),
                       .A12(final_fuse_ecc_address[g_i][12]),
-      
+
                       .TRCS(final_fuse_tcrs),
                       .AT1(final_fuse_test_ecc_address[g_i][1]),
                       .AT0(final_fuse_test_ecc_address[g_i][0]),
-      
+
                       .RSB(final_fuse_rsb),
                       .RWL(final_fuse_rwl),
                       .RF0(fuse_ecc_rf_data[g_i][0]),
@@ -1864,7 +1863,7 @@ RDP_ASYNC_FIFO
                       .RF5(fuse_ecc_rf_data[g_i][5]),
                       .RF6(fuse_ecc_rf_data[g_i][6]),
                       .RF7(fuse_ecc_rf_data[g_i][7]),
-      
+
                       .Q0(fuse_ecc_data[g_i][0]),
                       .Q1(fuse_ecc_data[g_i][1]),
                       .Q2(fuse_ecc_data[g_i][2]),
@@ -1916,7 +1915,7 @@ generate
                                     mbist_fuse_pgenb_i,
                                     mbist_fuse_pd_i,
                                     mbist_fuse_strobe_array_i,
-                                    mbist_fuse_address_i}; 
+                                    mbist_fuse_address_i};
 
   end
 endgenerate
@@ -1931,42 +1930,42 @@ RVP_ASSERT_ALWAYS
   #(.MSG("invalid write configuration"))
   write_config_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((|fuse_strobe_array) && (cur_cmd.op == FUSE_OP_WRITE)), 
-   .expr(((!fuse_pd) && fuse_ps && (!fuse_csb) && (!fuse_pgenb) && (!fuse_load)))); 
+   .en((|fuse_strobe_array) && (cur_cmd.op == FUSE_OP_WRITE)),
+   .expr(((!fuse_pd) && fuse_ps && (!fuse_csb) && (!fuse_pgenb) && (!fuse_load))));
 
 RVP_ASSERT_ALWAYS
   #(.MSG("invalid read configuration"))
   read_config_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((|fuse_strobe_array) && (cur_cmd.op == FUSE_OP_READ)), 
+   .en((|fuse_strobe_array) && (cur_cmd.op == FUSE_OP_READ)),
    .expr(((!fuse_pd) && (!fuse_ps) && (!fuse_csb) && fuse_pgenb && fuse_load )));
 
 RVP_ASSERT_NEVER
   #(.MSG("PS and PD not allowed to prevent uninteded programming"))
   ps_and_pd_invalid_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(rst_efuse_n), 
+   .en(rst_efuse_n),
    .expr(fuse_ps && fuse_pd));
 
 RVP_ASSERT_ALWAYS
   #(.MSG("TRCS must be set in test mode"))
   test_mode_config_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((|fuse_strobe_array) && (cur_cmd.mode == FUSE_MODE_TEST)), 
+   .en((|fuse_strobe_array) && (cur_cmd.mode == FUSE_MODE_TEST)),
    .expr(fuse_tcrs));
 
 RVP_ASSERT_ALWAYS
   #(.MSG("redundancy should always be enabled"))
   redundancy_config_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(|fuse_strobe_array), 
+   .en(|fuse_strobe_array),
    .expr(!fuse_rsb));
 
 RVP_ASSERT_ALWAYS
   #(.MSG("must do redundancy reads after INIT"))
   redundancy_init_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((fuse_ctl_state == FUSE_INIT_ST) && (next_fuse_ctl_state == FUSE_READ_SETUP_ST)), 
+   .en((fuse_ctl_state == FUSE_INIT_ST) && (next_fuse_ctl_state == FUSE_READ_SETUP_ST)),
    .expr(next_cmd.mode == FUSE_MODE_REDUNDANCY));
 
 // assertions ensuring valid state transitions
@@ -1974,21 +1973,21 @@ RVP_ASSERT_ALWAYS
   #(.MSG("INIT state transition invalid"))
   init_transition_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((fuse_ctl_state == FUSE_INIT_ST) && (next_fuse_ctl_state != FUSE_INIT_ST)), 
+   .en((fuse_ctl_state == FUSE_INIT_ST) && (next_fuse_ctl_state != FUSE_INIT_ST)),
    .expr(next_fuse_ctl_state == FUSE_READ_SETUP_ST));
 
 RVP_ASSERT_ALWAYS
   #(.MSG("READ_SETUP state transition invalid"))
   read_setup_transition_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((fuse_ctl_state == FUSE_READ_SETUP_ST) && (next_fuse_ctl_state != FUSE_READ_SETUP_ST)), 
+   .en((fuse_ctl_state == FUSE_READ_SETUP_ST) && (next_fuse_ctl_state != FUSE_READ_SETUP_ST)),
    .expr(next_fuse_ctl_state == FUSE_READ_READY_ST));
 
 RVP_ASSERT_ALWAYS
   #(.MSG("READ_READY state transition invalid"))
   read_ready_transition_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((fuse_ctl_state == FUSE_READ_READY_ST) && (next_fuse_ctl_state != FUSE_READ_READY_ST)), 
+   .en((fuse_ctl_state == FUSE_READ_READY_ST) && (next_fuse_ctl_state != FUSE_READ_READY_ST)),
    .expr((next_fuse_ctl_state == FUSE_READ_ST) ||
          (next_fuse_ctl_state == FUSE_READ_HOLD_ST) ||
          (next_fuse_ctl_state == FUSE_POWER_DOWN_ST)));
@@ -1997,14 +1996,14 @@ RVP_ASSERT_ALWAYS
   #(.MSG("READ state transition invalid"))
   read_transition_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((fuse_ctl_state == FUSE_READ_ST) && (next_fuse_ctl_state != FUSE_READ_ST)), 
+   .en((fuse_ctl_state == FUSE_READ_ST) && (next_fuse_ctl_state != FUSE_READ_ST)),
    .expr(next_fuse_ctl_state == FUSE_READ_READY_ST));
 
 RVP_ASSERT_ALWAYS
   #(.MSG("READ_HOLD state transition invalid"))
   read_hold_transition_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((fuse_ctl_state == FUSE_READ_HOLD_ST) && (next_fuse_ctl_state != FUSE_READ_HOLD_ST)), 
+   .en((fuse_ctl_state == FUSE_READ_HOLD_ST) && (next_fuse_ctl_state != FUSE_READ_HOLD_ST)),
    .expr((next_fuse_ctl_state == FUSE_READ_SETUP_ST) ||
          (next_fuse_ctl_state == FUSE_WRITE_SETUP_ST) ||
          (next_fuse_ctl_state == FUSE_INIT_ST)));
@@ -2013,14 +2012,14 @@ RVP_ASSERT_ALWAYS
   #(.MSG("WRITE_SETUP state transition invalid"))
   write_setup_transition_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((fuse_ctl_state == FUSE_WRITE_SETUP_ST) && (next_fuse_ctl_state != FUSE_WRITE_SETUP_ST)), 
+   .en((fuse_ctl_state == FUSE_WRITE_SETUP_ST) && (next_fuse_ctl_state != FUSE_WRITE_SETUP_ST)),
    .expr(next_fuse_ctl_state == FUSE_WRITE_READY_ST));
 
 RVP_ASSERT_ALWAYS
   #(.MSG("WRITE_READY state transition invalid"))
   write_ready_transition_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((fuse_ctl_state == FUSE_WRITE_READY_ST) && (next_fuse_ctl_state != FUSE_WRITE_READY_ST)), 
+   .en((fuse_ctl_state == FUSE_WRITE_READY_ST) && (next_fuse_ctl_state != FUSE_WRITE_READY_ST)),
    .expr((next_fuse_ctl_state == FUSE_WRITE_ST) ||
          (next_fuse_ctl_state == FUSE_WRITE_HOLD_ST) ||
          (next_fuse_ctl_state == FUSE_POWER_DOWN_ST)));
@@ -2029,14 +2028,14 @@ RVP_ASSERT_ALWAYS
   #(.MSG("WRITE state transition invalid"))
   write_transition_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((fuse_ctl_state == FUSE_WRITE_ST) && (next_fuse_ctl_state != FUSE_WRITE_ST)), 
+   .en((fuse_ctl_state == FUSE_WRITE_ST) && (next_fuse_ctl_state != FUSE_WRITE_ST)),
    .expr(next_fuse_ctl_state == FUSE_WRITE_READY_ST));
 
 RVP_ASSERT_ALWAYS
   #(.MSG("WRITE_HOLD state transition invalid"))
   write_hold_transition_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((fuse_ctl_state == FUSE_WRITE_HOLD_ST) && (next_fuse_ctl_state != FUSE_WRITE_HOLD_ST)), 
+   .en((fuse_ctl_state == FUSE_WRITE_HOLD_ST) && (next_fuse_ctl_state != FUSE_WRITE_HOLD_ST)),
    .expr((next_fuse_ctl_state == FUSE_READ_SETUP_ST) ||
          (next_fuse_ctl_state == FUSE_WRITE_SETUP_ST) ||
          (next_fuse_ctl_state == FUSE_INIT_ST)));
@@ -2045,91 +2044,91 @@ RVP_ASSERT_ALWAYS
   #(.MSG("STANDBY state transition invalid"))
   standby_transition_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en((fuse_ctl_state == FUSE_POWER_DOWN_ST) && (next_fuse_ctl_state != FUSE_POWER_DOWN_ST)), 
+   .en((fuse_ctl_state == FUSE_POWER_DOWN_ST) && (next_fuse_ctl_state != FUSE_POWER_DOWN_ST)),
    .expr(next_fuse_ctl_state == FUSE_INIT_ST));
 
 RVP_ASSERT_NEVER
   #(.MSG("should not try to set and clear PD in same cycle"))
   pd_set_and_clear_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(1'b1), 
+   .en(1'b1),
    .expr(fuse_pd_clr && fuse_pd_set));
 
 RVP_ASSERT_NEVER
   #(.MSG("should not try to set and clear PS in same cycle"))
   ps_set_and_clear_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(1'b1), 
+   .en(1'b1),
    .expr(fuse_ps_clr && fuse_ps_set));
 
 RVP_ASSERT_NEVER
   #(.MSG("should not try to set and clear ecc PS in same cycle"))
   ecc_ps_set_and_clear_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(1'b1), 
+   .en(1'b1),
    .expr(fuse_ecc_ps_clr && fuse_ecc_ps_set));
 
 RVP_ASSERT_NEVER
   #(.MSG("should not try to set and clear CSB in same cycle"))
   csb_set_and_clear_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(1'b1), 
+   .en(1'b1),
    .expr(fuse_csb_clr && fuse_csb_set));
 
 RVP_ASSERT_NEVER
   #(.MSG("should not try to set and clear MR in same cycle"))
   mr_set_and_clear_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(1'b1), 
+   .en(1'b1),
    .expr(fuse_mr_clr && fuse_mr_set));
 
 RVP_ASSERT_NEVER
   #(.MSG("should not try to set and clear PGENB in same cycle"))
   pgenb_set_and_clear_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(1'b1), 
+   .en(1'b1),
    .expr(fuse_pgenb_clr && fuse_pgenb_set));
 
 RVP_ASSERT_NEVER
   #(.MSG("should not try to set and clear LOAD in same cycle"))
   load_set_and_clear_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(1'b1), 
+   .en(1'b1),
    .expr(fuse_load_clr && fuse_load_set));
 
 RVP_ASSERT_NEVER
   #(.MSG("should not try to set and clear RSB in same cycle"))
   rsb_set_and_clear_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(1'b1), 
+   .en(1'b1),
    .expr(fuse_rsb_clr && fuse_rsb_set));
 
 RVP_ASSERT_NEVER
   #(.MSG("should not try to set and clear RWL in same cycle"))
   rwl_set_and_clear_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(1'b1), 
+   .en(1'b1),
    .expr(fuse_rwl_clr && fuse_rwl_set));
 
 RVP_ASSERT_NEVER
   #(.MSG("should not try to set and clear TCRS in same cycle"))
   tcrs_set_and_clear_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(1'b1), 
+   .en(1'b1),
    .expr(fuse_tcrs_clr && fuse_tcrs_set));
 
 RVP_ASSERT_NEVER
   #(.MSG("should not try to set and clear STROBE in same cycle"))
   strobe_set_and_clear_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(1'b1), 
+   .en(1'b1),
    .expr(fuse_strobe_clr && fuse_strobe_set));
 
 RVP_ASSERT_NEVER
   #(.MSG("should not try to set and clear ECC_STROBE in same cycle"))
   ecc_strobe_set_and_clear_check
   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
-   .en(1'b1), 
+   .en(1'b1),
    .expr(fuse_ecc_strobe_clr && fuse_ecc_strobe_set));
 
 // TODO (neal) test RVP_ASSERT_ALWAYS
@@ -2137,11 +2136,11 @@ RVP_ASSERT_NEVER
 // TODO (neal) test   read_timing_param_check
 // TODO (neal) test   (.clk(clk_efuse_i), .rst_l(rst_efuse_n),
 // TODO (neal) test    .en(fuse_ctl_state == FUSE_INIT_ST),  // only need to check this at the beginning after reset
-// TODO (neal) test    .expr((FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) + 
-// TODO (neal) test           FUSE_STATE_COUNT_BITS'(trd_m_cycles_i) + 
-// TODO (neal) test           FUSE_STATE_COUNT_BITS'(thr_a_cycles_i)) > 
-// TODO (neal) test          (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) + 
-// TODO (neal) test           FUSE_STATE_COUNT_BITS'(tsq_m_cycles_i) + 
+// TODO (neal) test    .expr((FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) +
+// TODO (neal) test           FUSE_STATE_COUNT_BITS'(trd_m_cycles_i) +
+// TODO (neal) test           FUSE_STATE_COUNT_BITS'(thr_a_cycles_i)) >
+// TODO (neal) test          (FUSE_STATE_COUNT_BITS'(tsur_a_cycles_i) +
+// TODO (neal) test           FUSE_STATE_COUNT_BITS'(tsq_m_cycles_i) +
 // TODO (neal) test           FUSE_STATE_COUNT_BITS'(data_capture_cycles_i))));
 
 
