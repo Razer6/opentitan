@@ -58,6 +58,7 @@ enum module_ {
   kModuleDice =            MODULE_CODE('D', 'C'),
   kModulePwrmgr =          MODULE_CODE('P', 'M'),
   kModulePinMux =          MODULE_CODE('P', 'M'),
+  kModuleRomHooks =        MODULE_CODE('R', 'H'),
   // clang-format on
 };
 
@@ -248,6 +249,23 @@ enum module_ {
   X(kErrorPinMuxLockedPad,            ERROR_(2, kModulePinMux, kInvalidArgument)), \
   X(kErrorPinMuxInvalidPeriphIo,      ERROR_(3, kModulePinMux, kInvalidArgument)), \
   X(kErrorPinMuxLockedPeriphIo,       ERROR_(4, kModulePinMux, kInvalidArgument)), \
+  \
+  X(kErrorRomHooks0,                  ERROR_(0, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks1,                  ERROR_(1, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks2,                  ERROR_(2, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks3,                  ERROR_(3, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks4,                  ERROR_(4, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks5,                  ERROR_(5, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks6,                  ERROR_(6, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks7,                  ERROR_(7, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks8,                  ERROR_(8, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks9,                  ERROR_(9, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks10,                 ERROR_(10, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks11,                 ERROR_(11, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks12,                 ERROR_(12, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks13,                 ERROR_(13, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks14,                 ERROR_(14, kModulePinMux, kInternal)), \
+  X(kErrorRomHooks15,                 ERROR_(15, kModulePinMux, kInternal)), \
   \
   /* This comment prevent clang from trying to format the macro. */
 
