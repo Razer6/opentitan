@@ -26,7 +26,3 @@ def _rtl_store_deps():
             "https://github.com/bazelbuild/bazel-skylib/releases/download/1.5.0/bazel-skylib-1.5.0.tar.gz",
         ],
     )
-
-    #rust_bindgen_dependencies()
-
-    #rust_bindgen_register_toolchains()
