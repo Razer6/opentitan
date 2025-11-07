@@ -81,6 +81,7 @@ cc_library(
         "//sw/device/lib/base:stdasm",
         "//sw/device/lib/crt",
         "//sw/device/lib/runtime:hart",
+        "//sw/device/silicon_creator/lib:cfi",
         "//sw/device/silicon_creator/lib:dbg_print",
         "//sw/device/silicon_creator/lib:shutdown",
         "//sw/device/silicon_creator/lib:stack_utilization",
@@ -100,7 +101,8 @@ cc_library(
         "//sw/device/silicon_creator/lib/drivers:rnd",
         "//sw/device/silicon_creator/lib/drivers:rstmgr",
         "//sw/device/silicon_creator/lib/drivers:watchdog",
-        "@darjeeling_rom_hooks",
+        "//sw/device/silicon_creator/rom:rom_state",
+        "@darjeeling_rom_hooks//:hooks",
     ],
 )
 
@@ -237,6 +239,7 @@ cc_library(
         "//sw/device/lib/base:stdasm",
         "//sw/device/lib/crt",
         "//sw/device/lib/runtime:hart",
+        "//sw/device/silicon_creator/lib:cfi",
         "//sw/device/silicon_creator/lib:dbg_print",
         "//sw/device/silicon_creator/lib:shutdown",
         "//sw/device/silicon_creator/lib:stack_utilization",
@@ -255,7 +258,8 @@ cc_library(
         "//sw/device/silicon_creator/lib/drivers:retention_sram",
         "//sw/device/silicon_creator/lib/drivers:rnd",
         "//sw/device/silicon_creator/lib/drivers:rstmgr",
-        "@darjeeling_rom_hooks",
+        "//sw/device/silicon_creator/rom:rom_state",
+        "@darjeeling_rom_hooks//:hooks",
     ],
 )
 
