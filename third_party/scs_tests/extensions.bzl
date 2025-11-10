@@ -3,14 +3,14 @@
 # SPDX-License-Identifier: Apache-2.0
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load("@rtl_store//:version.bzl", "RIPLANG_VERSION", "RIPLANG_SHA256")
+load("@rtl_store//:version.bzl", "RIPLANG_SHA256", "RIPLANG_VERSION")
 
 rtl_store_deps = module_extension(
     implementation = lambda _: _rtl_store_deps(),
 )
 
 def _rtl_store_deps():
-    git_version = RIPLANG_VERSION.split('-')[1]
+    git_version = RIPLANG_VERSION.split("-")[1]
     http_archive(
         name = "riplang-tool",
         url = "https://gitlab.ba.rivosinc.com/api/v4/projects/234/packages/generic/rivos-sdk-riplang/" + RIPLANG_VERSION + "/riplang-centos.tar.xz",
