@@ -56,6 +56,17 @@ variables:
   - source .venv/bin/activate
   - uv pip sync python-requirements.txt
 
+build_rom:
+  image: ubuntu:22.04
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+  stage: build
+  extends: .git-auth-fixup
+  script:
+    - ./ci/scripts/build-rom.sh
+  rules:
+    - when: always
+
 check_freeze:
   tags: [shell]
   stage: check
