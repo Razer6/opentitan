@@ -11,8 +11,7 @@ rtl_store = module_extension(
 def _rtl_store_repos():
     git_repository(
         name = "rtl_store",
-        # branch = "rivos/main",
-        commit = "3568db2396166881f29779ca4409b580d3886d14",
+        commit = "4b5636bd090ad726e58e0448c52e6e1f2b32809e",
         remote = "git@gitlab.ba.rivosinc.com:rv/sw/int/fw/rtl_store.git",
-        shallow_since = "1761946040 +0000"
+        shallow_since = "1762773275 +0000",
     )

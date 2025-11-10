@@ -878,7 +878,7 @@
     },
     "//third_party/rtl_store:deps.bzl%rtl_store_deps": {
       "general": {
-        "bzlTransitiveDigest": "yhU9eHkbeh6mbnBTHwQ+Przaap07ZEMzWTlMcI+Kt5o=",
+        "bzlTransitiveDigest": "xdDPE5wvl731dJSNx7D0AKQhqrbRSrrJnc5zLStxs3A=",
         "usagesDigest": "kUTO81rQI+vSDYFg0CoB2ot2uLVKTX5BmyOZdEmYkxE=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -887,10 +887,10 @@
           "riplang-tool": {
             "repoRuleId": "@@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
             "attributes": {
-              "url": "https://gitlab.ba.rivosinc.com/api/v4/projects/234/packages/generic/rivos-sdk-riplang/0.27.5-20251024T123503.gb1dd998/riplang-centos.tar.xz",
-              "sha256": "215069861cdedc6d6913ce29bbe075c1c7cec0e78714e67c05ff74bb1c412eab",
+              "url": "https://gitlab.ba.rivosinc.com/api/v4/projects/234/packages/generic/rivos-sdk-riplang/0.27.6-20251106T071554.gf3f91ef/riplang-centos.tar.xz",
+              "sha256": "b791bbec7514a14b055b915a3a208e3ef0dc118c20bd5b3c7fe86ee2e42b75fa",
               "build_file": "@@+rtl_store+rtl_store//fwlib/riplang:BUILD.riplang",
-              "strip_prefix": "release/sw/sdk/modules/centos.7/x86_64/riplang/20251024T123503.gb1dd998"
+              "strip_prefix": "release/sw/sdk/modules/centos.7/x86_64/riplang/20251106T071554.gf3f91ef"
             }
           },
           "bazel_skylib_150": {
@@ -920,7 +920,7 @@
     },
     "//third_party/rtl_store:extensions.bzl%rtl_store": {
       "general": {
-        "bzlTransitiveDigest": "zhCC/f21t0ak2vUuOJrdAbjMkAcihAgmiVlpqEmcST4=",
+        "bzlTransitiveDigest": "ozq1EXX4QFia3SFiSYuw5HnC+2+rDM9jaWEEMoFzy6U=",
         "usagesDigest": "o2XFYYcmYV6BNBUF2tUvYvv+VI79svMMBVii9jCsDxw=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -929,9 +929,9 @@
           "rtl_store": {
             "repoRuleId": "@@bazel_tools//tools/build_defs/repo:git.bzl%git_repository",
             "attributes": {
-              "commit": "3568db2396166881f29779ca4409b580d3886d14",
+              "commit": "4b5636bd090ad726e58e0448c52e6e1f2b32809e",
               "remote": "git@gitlab.ba.rivosinc.com:rv/sw/int/fw/rtl_store.git",
-              "shallow_since": "1761946040 +0000"
+              "shallow_since": "1762773275 +0000"
             }
           }
         },
