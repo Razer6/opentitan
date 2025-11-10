@@ -13,8 +13,8 @@ static const uint32_t clock_freqs[kDtClockCount] = {
 };
 
 uint32_t dt_clock_frequency(dt_clock_t clk) {
-    if (clk < kDtClockCount) {
-        return clock_freqs[clk];
-    }
-    return 0;
+  if (clk < kDtClockCount) {
+    return clock_freqs[clk];
+  }
+  return 0;
 }
