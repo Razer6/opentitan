@@ -25,15 +25,17 @@ void base_rom_epmp_state_init(lifecycle_state_t lc_state) {
                                        .end = (uintptr_t)_text_end};
   const epmp_region_t base_rom = {
       .start = TOP_DARJEELING_ROM_CTRL0_ROM_BASE_ADDR,
-      .end = TOP_DARJEELING_ROM_CTRL0_ROM_BASE_ADDR + TOP_DARJEELING_ROM_CTRL0_ROM_SIZE_BYTES};
+      .end = TOP_DARJEELING_ROM_CTRL0_ROM_BASE_ADDR +
+             TOP_DARJEELING_ROM_CTRL0_ROM_SIZE_BYTES};
   const epmp_region_t mmio = {
       .start = TOP_DARJEELING_MMIO_BASE_ADDR,
       .end = TOP_DARJEELING_MMIO_BASE_ADDR + TOP_DARJEELING_MMIO_SIZE_BYTES};
   const epmp_region_t stack_guard = {.start = (uintptr_t)_stack_start,
                                      .end = (uintptr_t)_stack_start + 4};
-  const epmp_region_t ram = {.start = TOP_DARJEELING_SRAM_CTRL_MAIN_RAM_BASE_ADDR,
-                             .end = TOP_DARJEELING_SRAM_CTRL_MAIN_RAM_BASE_ADDR +
-                                    TOP_DARJEELING_SRAM_CTRL_MAIN_RAM_SIZE_BYTES};
+  const epmp_region_t ram = {
+      .start = TOP_DARJEELING_SRAM_CTRL_MAIN_RAM_BASE_ADDR,
+      .end = TOP_DARJEELING_SRAM_CTRL_MAIN_RAM_BASE_ADDR +
+             TOP_DARJEELING_SRAM_CTRL_MAIN_RAM_SIZE_BYTES};
 
   // Initialize in-memory copy of ePMP register state.
   //
@@ -56,7 +58,8 @@ void base_rom_epmp_unlock_second_rom_rx(void) {
           (uintptr_t)_second_rom_boot_address + (uintptr_t)_epmp_reset_rx_size};
   const epmp_region_t second_rom = {
       .start = TOP_DARJEELING_ROM_CTRL1_ROM_BASE_ADDR,
-      .end = TOP_DARJEELING_ROM_CTRL1_ROM_BASE_ADDR + TOP_DARJEELING_ROM_CTRL1_ROM_SIZE_BYTES};
+      .end = TOP_DARJEELING_ROM_CTRL1_ROM_BASE_ADDR +
+             TOP_DARJEELING_ROM_CTRL1_ROM_SIZE_BYTES};
 
   // Update the in-memory copy of ePMP register state.
   epmp_state_configure_tor(5, second_rom_text, kEpmpPermLockedReadExecute);

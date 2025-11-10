@@ -27,12 +27,13 @@ void second_rom_epmp_state_init(void) {
   epmp_state_configure_tor(5, second_rom_text, kEpmpPermLockedReadExecute);
 
   // Open Mailbox RAM and CTN and update Debug ROM access.
-  const epmp_region_t ram_mbox = {.start = TOP_DARJEELING_SRAM_CTRL_MBOX_RAM_BASE_ADDR,
-                                  .end = TOP_DARJEELING_SRAM_CTRL_MBOX_RAM_BASE_ADDR +
-                                         TOP_DARJEELING_SRAM_CTRL_MBOX_RAM_SIZE_BYTES};
-  const epmp_region_t ctn = {
-      .start = TOP_DARJEELING_SOC_PROXY_CTN_BASE_ADDR,
-      .end = TOP_DARJEELING_SOC_PROXY_CTN_BASE_ADDR + TOP_DARJEELING_SOC_PROXY_CTN_SIZE_BYTES};
+  const epmp_region_t ram_mbox = {
+      .start = TOP_DARJEELING_SRAM_CTRL_MBOX_RAM_BASE_ADDR,
+      .end = TOP_DARJEELING_SRAM_CTRL_MBOX_RAM_BASE_ADDR +
+             TOP_DARJEELING_SRAM_CTRL_MBOX_RAM_SIZE_BYTES};
+  const epmp_region_t ctn = {.start = TOP_DARJEELING_SOC_PROXY_CTN_BASE_ADDR,
+                             .end = TOP_DARJEELING_SOC_PROXY_CTN_BASE_ADDR +
+                                    TOP_DARJEELING_SOC_PROXY_CTN_SIZE_BYTES};
   // Update the hardware configuration (CSRs).
   //
   //            32           24             16             8             0
