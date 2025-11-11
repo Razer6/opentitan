@@ -32,7 +32,7 @@ module prim_alert_to_diff #(
   output logic                      diff_no
 );
   // Ensure StretchCycles is greater than 0 for shift register
-  `ASSERT_INIT(StretchCycles_A, StretchCycles > 0);
+  `ASSERT_INIT(StretchCycles_A, StretchCycles > 0)
 
   logic integ_error;
   logic alert;
