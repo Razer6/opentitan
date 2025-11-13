@@ -83,10 +83,7 @@ package prim_misc_dft_pkg;
 
   // rom test cfg
   typedef struct packed {
-    logic [3:0] rm;
-    logic       rme;
-    logic       ls;
-    logic       test1;
+    logic       unused;  // leaving to not touch rdplib
   } rom_test_cfg_t;
 
   // sms server cfg
@@ -134,6 +131,18 @@ package prim_misc_dft_pkg;
     logic err_inj_en_wpulse; // lsb: 1 // not actually used in sram macros
     logic err_inj_en; // lsb: 0
   } copy_ram_error_inject_t;
+
+  // TODO (neal) need to fix this
+  typedef struct packed { // Total width: 12
+      logic consistency_check2; // lsb: 11
+      logic disable_ls; // lsb: 10
+      logic disable_clock_gating; // lsb: 9
+      logic [1:0] ra; // lsb: 7
+      logic test1; // lsb: 6
+      logic rme; // lsb: 5
+      logic consistency_check1; // lsb: 4
+      logic [3:0] rm; // lsb: 0
+  } copy_ram_control_genrom_t;
 
 endpackage  // of prim_misc_dft_pkg
 `endif  // of __MISC_DFT_PKG_SV

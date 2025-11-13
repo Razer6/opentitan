@@ -31,9 +31,9 @@ module prim_rom import prim_rom_pkg::*; #(
             .addr           (addr_i),
             .rdData         (rdata_o),
             // Software controller ports
-            .LS             (cfg_i.test_cfg.ls),
-            .ram_controls   (12'd4),
-            .ram_dft_signals('0)
+            .LS             (1'b0),
+            .ram_controls   (cfg_i.test_cfg),
+            .ram_dft_signals(cfg_i.dft_cfg)
         );
       end else begin : gen_64k_rom
         rvscs_ot_64k_ecc_rom u_rom (
@@ -43,9 +43,9 @@ module prim_rom import prim_rom_pkg::*; #(
             .addr           (addr_i),
             .rdData         (rdata_o),
             // Software controller ports
-            .LS             (cfg_i.test_cfg.ls),
-            .ram_controls   (12'd4),
-            .ram_dft_signals('0)
+            .LS             (1'b0),
+            .ram_controls   (cfg_i.test_cfg),
+            .ram_dft_signals(cfg_i.dft_cfg)
         );
       end
   end else begin : gen_no_ecc_rom
@@ -57,9 +57,9 @@ module prim_rom import prim_rom_pkg::*; #(
           .addr           (addr_i),
           .rdData         (rdata_o),
           // Software controller ports
-          .LS             (cfg_i.test_cfg.ls),
-          .ram_controls   (12'd4),
-          .ram_dft_signals('0)
+          .LS             (1'b0),
+          .ram_controls   (cfg_i.test_cfg),
+          .ram_dft_signals(cfg_i.dft_cfg)
       );
     end else begin : gen_64k_rom
       rvscs_ot_64k_rom u_rom (
@@ -69,9 +69,9 @@ module prim_rom import prim_rom_pkg::*; #(
           .addr           (addr_i),
           .rdData         (rdata_o),
           // Software controller ports
-          .LS             (cfg_i.test_cfg.ls),
-          .ram_controls   (12'd4),
-          .ram_dft_signals('0)
+          .LS             (1'b0),
+          .ram_controls   (cfg_i.test_cfg),
+          .ram_dft_signals(cfg_i.dft_cfg)
       );
     end
   end
